@@ -16,9 +16,9 @@ type iReleaseMem0PublicConnectionResponseBody interface {
 }
 
 type ReleaseMem0PublicConnectionResponseBody struct {
-	// The details about the access denial.
+	// The detailed reason for access denial.
 	AccessDeniedDetail *ReleaseMem0PublicConnectionResponseBodyAccessDeniedDetail `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty" type:"Struct"`
-	// The request ID.
+	// Id of the request
 	//
 	// example:
 	//
@@ -66,13 +66,13 @@ type ReleaseMem0PublicConnectionResponseBodyAccessDeniedDetail struct {
 	//
 	// example:
 	//
-	// xxx
+	// polardbx:ReleaseMem0PublicConnection
 	AuthAction *string `json:"AuthAction,omitempty" xml:"AuthAction,omitempty"`
 	// The identity used for authentication in the request.
 	//
 	// example:
 	//
-	// xxx
+	// Sample RAM user
 	AuthPrincipalDisplayName *string `json:"AuthPrincipalDisplayName,omitempty" xml:"AuthPrincipalDisplayName,omitempty"`
 	// Same as above.
 	//
@@ -92,13 +92,13 @@ type ReleaseMem0PublicConnectionResponseBodyAccessDeniedDetail struct {
 	//
 	// AQEAAAAAaKPfwjY0MzMyODRGLUZCQkQtNTA1RS04MUUxLTc5NTkzODk2MUIzMg==
 	EncodedDiagnosticMessage *string `json:"EncodedDiagnosticMessage,omitempty" xml:"EncodedDiagnosticMessage,omitempty"`
-	// The type of missing permission.
+	// NoPermissionType
 	//
 	// example:
 	//
 	// ImplicitDeny
 	NoPermissionType *string `json:"NoPermissionType,omitempty" xml:"NoPermissionType,omitempty"`
-	// The policy type.
+	// PolicyType
 	//
 	// example:
 	//

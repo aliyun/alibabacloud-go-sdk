@@ -18,7 +18,7 @@ type iDescribeShowStorageInfoResponseBody interface {
 }
 
 type DescribeShowStorageInfoResponseBody struct {
-	// The return code of the request. > This parameter is empty when the request is successful. When the request fails, exception information such as error codes is returned.
+	// The return code of the request. This parameter is empty if the request is successful. If the request fails, an error message such as an error code is returned.
 	//
 	// example:
 	//
@@ -114,7 +114,7 @@ func (s *DescribeShowStorageInfoResponseBodyData) Validate() error {
 }
 
 type DescribeShowStorageInfoResponseBodyDataStorageInfos struct {
-	// The specification type (specification code) of the instance.
+	// The instance type (specification code).
 	//
 	// example:
 	//
@@ -140,11 +140,11 @@ type DescribeShowStorageInfoResponseBodyDataStorageInfos struct {
 	GroupCount *int64 `json:"GroupCount,omitempty" xml:"GroupCount,omitempty"`
 	// The role type of the instance. Valid values:
 	//
-	// - MASTER: primary instance.
+	// - MASTER: primary instance
 	//
-	// - READONLY: read-only instance.
+	// - READONLY: read-only instance
 	//
-	// - STANDBY: standby instance (high-availability scenario).
+	// - STANDBY: secondary instance in high-availability scenarios
 	//
 	// example:
 	//

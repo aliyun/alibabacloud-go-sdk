@@ -28,9 +28,9 @@ type ModifyOpenSearchAccessProtocolRequest struct {
 	DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
 	// The access protocol. Valid values:
 	//
-	// - **http**: HTTP protocol.
+	// - **http**: HTTP.
 	//
-	// - **https**: HTTPS protocol.
+	// - **https**: HTTPS.
 	//
 	// This parameter is required.
 	//

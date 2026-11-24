@@ -22,11 +22,17 @@ type iUntagResourcesRequest interface {
 }
 
 type UntagResourcesRequest struct {
-	// Specifies whether to delete all tags. This parameter is valid only when TagKey.N is empty. Valid values: true, false, True, and False. Default value: false.
+	// Specifies whether to delete all tags. This parameter takes effect only when TagKey.N is empty. Valid values:
+	//
+	// - true: Deletes all tags.
+	//
+	// - false: Does not delete all tags.
+	//
+	// Default value: false.
 	//
 	// example:
 	//
-	// Specifies whether to delete all tags
+	// false
 	All *bool `json:"All,omitempty" xml:"All,omitempty"`
 	// The region ID.
 	//
@@ -36,11 +42,11 @@ type UntagResourcesRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The resource IDs. A maximum of 50 subkeys are supported.
+	// The resource IDs. You can specify up to 50 resource IDs.
 	//
 	// This parameter is required.
 	ResourceId []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
-	// The resource type. The value must be PolarDBXInstance.
+	// The resource type. Valid value: PolarDBXInstance.
 	//
 	// This parameter is required.
 	//
@@ -48,7 +54,7 @@ type UntagResourcesRequest struct {
 	//
 	// PolarDBXInstance
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// The tag keys. A maximum of 20 subkeys are supported.
+	// The tag keys. You can specify up to 20 tag keys.
 	TagKey []*string `json:"TagKey,omitempty" xml:"TagKey,omitempty" type:"Repeated"`
 }
 

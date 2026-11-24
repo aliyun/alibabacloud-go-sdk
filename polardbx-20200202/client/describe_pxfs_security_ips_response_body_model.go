@@ -84,13 +84,13 @@ type DescribePxfsSecurityIpsResponseBodyAccessDeniedDetail struct {
 	//
 	// example:
 	//
-	// xxx
+	// polardbx:DescribePxfsSecurityIps
 	AuthAction *string `json:"AuthAction,omitempty" xml:"AuthAction,omitempty"`
 	// The identity used for authentication in the request.
 	//
 	// example:
 	//
-	// xxx
+	// Sample RAM user
 	AuthPrincipalDisplayName *string `json:"AuthPrincipalDisplayName,omitempty" xml:"AuthPrincipalDisplayName,omitempty"`
 	// The owner ID of the authentication principal.
 	//
@@ -98,13 +98,13 @@ type DescribePxfsSecurityIpsResponseBodyAccessDeniedDetail struct {
 	//
 	// 111
 	AuthPrincipalOwnerId *string `json:"AuthPrincipalOwnerId,omitempty" xml:"AuthPrincipalOwnerId,omitempty"`
-	// The description is as described above.
+	// Same as above.
 	//
 	// example:
 	//
 	// 222
 	AuthPrincipalType *string `json:"AuthPrincipalType,omitempty" xml:"AuthPrincipalType,omitempty"`
-	// The diagnostic message.
+	// The diagnostic information.
 	//
 	// example:
 	//
@@ -206,7 +206,7 @@ type DescribePxfsSecurityIpsResponseBodyData struct {
 	//
 	// pxfs-xxxxxxxx
 	CustinsName *string `json:"CustinsName,omitempty" xml:"CustinsName,omitempty"`
-	// The whitelist groups.
+	// The list of whitelist groups.
 	Groups []*DescribePxfsSecurityIpsResponseBodyDataGroups `json:"Groups,omitempty" xml:"Groups,omitempty" type:"Repeated"`
 }
 
@@ -262,7 +262,7 @@ type DescribePxfsSecurityIpsResponseBodyDataGroups struct {
 	//
 	// default
 	GroupTag *string `json:"GroupTag,omitempty" xml:"GroupTag,omitempty"`
-	// The IP addresses.
+	// The list of IP addresses.
 	//
 	// example:
 	//

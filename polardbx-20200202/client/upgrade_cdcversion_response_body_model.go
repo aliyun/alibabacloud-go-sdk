@@ -20,9 +20,9 @@ type iUpgradeCDCVersionResponseBody interface {
 }
 
 type UpgradeCDCVersionResponseBody struct {
-	// The returned result.
+	// The returned data.
 	Data *UpgradeCDCVersionResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The response message.
+	// The message returned in the response.
 	//
 	// example:
 	//
@@ -96,7 +96,7 @@ func (s *UpgradeCDCVersionResponseBody) Validate() error {
 }
 
 type UpgradeCDCVersionResponseBodyData struct {
-	// The target version number.
+	// The target minor version.
 	//
 	// example:
 	//
@@ -152,11 +152,11 @@ type UpgradeCDCVersionResponseBodyDataTaskList struct {
 	//
 	// rm-uf68f345****88zf8
 	DbInstanceName *string `json:"DbInstanceName,omitempty" xml:"DbInstanceName,omitempty"`
-	// The target task ID.
+	// The task ID.
 	//
 	// example:
 	//
-	// 1861190497624654848
+	// 2209883
 	TaskId *int32 `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 

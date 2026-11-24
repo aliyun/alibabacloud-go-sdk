@@ -26,7 +26,7 @@ type EnableOpenSearchPublicEndpointRequest struct {
   // 
   // pxc-********
   DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
-  // The target node type. Valid values:
+  // The type of the target node. Valid values:
   // 
   // - **search**: data node. This is the default value.
   // 

@@ -25,9 +25,14 @@ type DeleteSubCNInstanceRequest struct {
 	// example:
 	//
 	// pxc-********
-	DBInstanceName      *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
+	DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
+	// The name of the instance cluster. You can call the DescribeDBInstanceTopology operation to query the name.
+	//
+	// example:
+	//
+	// example_cluster
 	InstanceClusterName *string `json:"InstanceClusterName,omitempty" xml:"InstanceClusterName,omitempty"`
-	// The region where the instance resides.
+	// The region ID of the instance.
 	//
 	// This parameter is required.
 	//

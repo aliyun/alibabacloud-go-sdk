@@ -28,19 +28,19 @@ type UpgradeColumnarVersionRequest struct {
 	//
 	// polarx-col-kernel-5.4.20-20250819_17555906
 	ColumnarVersion *string `json:"ColumnarVersion,omitempty" xml:"ColumnarVersion,omitempty"`
-	// The instance name.
+	// The name of the instance.
 	//
 	// example:
 	//
 	// pxc-xxx
 	DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
-	// The instance name.
+	// The name of the instance.
 	//
 	// example:
 	//
 	// pxc-hzrh51fze****pon-cdc
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	// The region in which the instance resides.
+	// The region ID.
 	//
 	// example:
 	//

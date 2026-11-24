@@ -123,29 +123,29 @@ type DescribeDBInstancesResponseBodyDBInstances struct {
 	//
 	// pxc-c-dmlgit****
 	CdcInstanceName *string `json:"CdcInstanceName,omitempty" xml:"CdcInstanceName,omitempty"`
-	// The CN node specifications. Valid values:
+	// The node specifications of the CN node. Valid values:
 	//
-	// - **polarx.x4.medium.2e**: 2 cores, 8 GB
+	// - **polarx.x4.medium.2e**: 2 cores and 8 GB memory
 	//
-	// - **polarx.x4.large.2e**: 4 cores, 16 GB
+	// - **polarx.x4.large.2e**: 4 cores and 16 GB memory
 	//
-	// - **polarx.x8.large.2e**: 4 cores, 32 GB
+	// - **polarx.x8.large.2e**: 4 cores and 32 GB memory
 	//
-	// - **polarx.x4.xlarge.2e**: 8 cores, 32 GB
+	// - **polarx.x4.xlarge.2e**: 8 cores and 32 GB memory
 	//
-	// - **polarx.x8.xlarge.2e**: 8 cores, 64 GB
+	// - **polarx.x8.xlarge.2e**: 8 cores and 64 GB memory
 	//
-	// - **polarx.x4.2xlarge.2e**: 16 cores, 64 GB
+	// - **polarx.x4.2xlarge.2e**: 16 cores and 64 GB memory
 	//
-	// - **polarx.x8.2xlarge.2e**: 16 cores, 128 GB
+	// - **polarx.x8.2xlarge.2e**: 16 cores and 128 GB memory
 	//
-	// - **polarx.x4.4xlarge.2e**: 32 cores, 128 GB
+	// - **polarx.x4.4xlarge.2e**: 32 cores and 128 GB memory
 	//
-	// - **polarx.x8.4xlarge.2e**: 32 cores, 256 GB
+	// - **polarx.x8.4xlarge.2e**: 32 cores and 256 GB memory
 	//
-	// - **polarx.st.8xlarge.2e**: 60 cores, 470 GB
+	// - **polarx.st.8xlarge.2e**: 60 cores and 470 GB memory
 	//
-	// - **polarx.st.12xlarge.2e**: 90 cores, 720 GB
+	// - **polarx.st.12xlarge.2e**: 90 cores and 720 GB memory
 	//
 	// example:
 	//
@@ -165,13 +165,13 @@ type DescribeDBInstancesResponseBodyDBInstances struct {
 	ColumnarInstanceName *string `json:"ColumnarInstanceName,omitempty" xml:"ColumnarInstanceName,omitempty"`
 	// The information about the column store read-only instance.
 	ColumnarReadDBInstances []*string `json:"ColumnarReadDBInstances,omitempty" xml:"ColumnarReadDBInstances,omitempty" type:"Repeated"`
-	// The commodity code.
+	// The commodity type.
 	//
 	// example:
 	//
 	// drds_polarxpre_public_cn
 	CommodityCode *string `json:"CommodityCode,omitempty" xml:"CommodityCode,omitempty"`
-	// Indicates whether the multi-flow log service is included. Valid values:
+	// Indicates whether the multi-stream log service is included. Valid values:
 	//
 	// - **true**: yes
 	//
@@ -217,37 +217,37 @@ type DescribeDBInstancesResponseBodyDBInstances struct {
 	//
 	// Test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The DN node specifications. Valid values:
+	// The node specifications of the DN node. Valid values:
 	//
-	// - **mysql.n2.medium.25**: 2 cores, 4 GB
+	// - **mysql.n2.medium.25**: 2 cores and 4 GB memory
 	//
-	// - **mysql.n4.medium.25**: 2 cores, 8 GB
+	// - **mysql.n4.medium.25**: 2 cores and 8 GB memory
 	//
-	// - **mysql.x8.medium.25**: 2 cores, 16 GB
+	// - **mysql.x8.medium.25**: 2 cores and 16 GB memory
 	//
-	// - **mysql.n2.large.25**: 4 cores, 8 GB
+	// - **mysql.n2.large.25**: 4 cores and 8 GB memory
 	//
-	// - **mysql.n4.large.25**: 4 cores, 16 GB
+	// - **mysql.n4.large.25**: 4 cores and 16 GB memory
 	//
-	// - **mysql.x8.large.25**: 4 cores, 32 GB
+	// - **mysql.x8.large.25**: 4 cores and 32 GB memory
 	//
-	// - **mysql.n2.xlarge.25**: 8 cores, 16 GB
+	// - **mysql.n2.xlarge.25**: 8 cores and 16 GB memory
 	//
-	// - **mysql.n4.xlarge.25**: 8 cores, 32 GB
+	// - **mysql.n4.xlarge.25**: 8 cores and 32 GB memory
 	//
-	// - **mysql.x8.xlarge.25**: 8 cores, 64 GB
+	// - **mysql.x8.xlarge.25**: 8 cores and 64 GB memory
 	//
-	// - **mysql.n4.2xlarge.25**: 16 cores, 64 GB
+	// - **mysql.n4.2xlarge.25**: 16 cores and 64 GB memory
 	//
-	// - **mysql.x8.2xlarge.25**: 16 cores, 128 GB
+	// - **mysql.x8.2xlarge.25**: 16 cores and 128 GB memory
 	//
-	// - **mysql.x4.4xlarge.25**: 32 cores, 128 GB
+	// - **mysql.x4.4xlarge.25**: 32 cores and 128 GB memory
 	//
-	// - **mysql.x8.4xlarge.25**: 32 cores, 256 GB
+	// - **mysql.x8.4xlarge.25**: 32 cores and 256 GB memory
 	//
-	// - **mysql.st.8xlarge.25**: 60 cores, 470 GB
+	// - **mysql.st.8xlarge.25**: 60 cores and 470 GB memory
 	//
-	// - **mysql.st.12xlarge.25**: 90 cores, 720 GB
+	// - **mysql.st.12xlarge.25**: 90 cores and 720 GB memory
 	//
 	// example:
 	//
@@ -299,7 +299,7 @@ type DescribeDBInstancesResponseBodyDBInstances struct {
 	//
 	// example:
 	//
-	// Overdue payments
+	// Overdue payment
 	LockReason *string `json:"LockReason,omitempty" xml:"LockReason,omitempty"`
 	// The current kernel version.
 	//
@@ -381,7 +381,7 @@ type DescribeDBInstancesResponseBodyDBInstances struct {
 	//
 	// enterprise
 	Series *string `json:"Series,omitempty" xml:"Series,omitempty"`
-	// The instance status. For more information, see the following section.
+	// The instance status. For more information, see the following table.
 	//
 	// example:
 	//
@@ -393,7 +393,7 @@ type DescribeDBInstancesResponseBodyDBInstances struct {
 	//
 	// custom_local_ssd | cloud_auto
 	StorageType *string `json:"StorageType,omitempty" xml:"StorageType,omitempty"`
-	// The storage usage.
+	// The used storage.
 	//
 	// example:
 	//
@@ -411,7 +411,7 @@ type DescribeDBInstancesResponseBodyDBInstances struct {
 	SupportBinlogX *bool `json:"SupportBinlogX,omitempty" xml:"SupportBinlogX,omitempty"`
 	// The tag set.
 	TagSet []*DescribeDBInstancesResponseBodyDBInstancesTagSet `json:"TagSet,omitempty" xml:"TagSet,omitempty" type:"Repeated"`
-	// The third active zone in a Three-zone deployment.
+	// The third zone in a Three-zone deployment.
 	//
 	// example:
 	//
@@ -419,9 +419,9 @@ type DescribeDBInstancesResponseBodyDBInstances struct {
 	TertiaryZone *string `json:"TertiaryZone,omitempty" xml:"TertiaryZone,omitempty"`
 	// The topology type. Valid values:
 	//
-	// - **3azones**: Three-zone deployment (three active zones)
+	// - **3azones**: Three-zone deployment
 	//
-	// - **1azone**: Single-zone deployment (single active zone)
+	// - **1azone**: Single zone
 	//
 	// This parameter is required.
 	//
@@ -457,7 +457,7 @@ type DescribeDBInstancesResponseBodyDBInstances struct {
 	//
 	// master | standby
 	GdnRole *string `json:"gdnRole,omitempty" xml:"gdnRole,omitempty"`
-	// Indicates whether the instance belongs to a global database network (GDN).
+	// Indicates whether the instance belongs to a GDN.
 	//
 	// example:
 	//
@@ -919,7 +919,7 @@ func (s *DescribeDBInstancesResponseBodyDBInstances) Validate() error {
 }
 
 type DescribeDBInstancesResponseBodyDBInstancesNodes struct {
-	// The instance type.
+	// The instance specifications.
 	//
 	// example:
 	//

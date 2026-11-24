@@ -54,7 +54,7 @@ type CreateOpenSearchWhitelistGroupRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The description of the group.
+	// The description of the whitelist group.
 	//
 	// example:
 	//

@@ -34,7 +34,7 @@ type DescribePxfsTenantRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The tenant ID.
+	// The ID of the tenant.
 	//
 	// This parameter is required.
 	//

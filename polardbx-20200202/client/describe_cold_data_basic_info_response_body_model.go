@@ -80,13 +80,13 @@ type DescribeColdDataBasicInfoResponseBodyData struct {
 	//
 	// aliyunOSS
 	CloudProduct *string `json:"CloudProduct,omitempty" xml:"CloudProduct,omitempty"`
-	// The data size of cold storage.
+	// The data size in cold storage.
 	//
 	// example:
 	//
 	// 0
 	CurrentSpaceSize *float64 `json:"CurrentSpaceSize,omitempty" xml:"CurrentSpaceSize,omitempty"`
-	// The data redundancy type of cold storage. LRS indicates locally redundant storage.
+	// The data redundancy type for cold storage. LRS indicates locally redundant storage.
 	//
 	// example:
 	//

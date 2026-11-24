@@ -18,7 +18,7 @@ type iDescribeActiveOperationTaskCountRequest interface {
 }
 
 type DescribeActiveOperationTaskCountRequest struct {
-	// A reserved parameter. You do not need to specify this parameter.
+	// The reserved parameter. You do not need to specify this parameter.
 	//
 	// example:
 	//

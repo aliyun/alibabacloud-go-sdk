@@ -20,7 +20,7 @@ type iDescribeOpenSearchNodesResponseBody interface {
 type DescribeOpenSearchNodesResponseBody struct {
 	// The details of the access denial.
 	AccessDeniedDetail *DescribeOpenSearchNodesResponseBodyAccessDeniedDetail `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty" type:"Struct"`
-	// The data struct.
+	// The data structure.
 	Data *DescribeOpenSearchNodesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// Id of the request
 	//
@@ -84,13 +84,13 @@ type DescribeOpenSearchNodesResponseBodyAccessDeniedDetail struct {
 	//
 	// example:
 	//
-	// xxx
+	// polardbx:DescribeOpenSearchNodes
 	AuthAction *string `json:"AuthAction,omitempty" xml:"AuthAction,omitempty"`
-	// The identity used for authentication in the request.
+	// The identity identifier used for authentication in the request.
 	//
 	// example:
 	//
-	// xxx
+	// Sample RAM user
 	AuthPrincipalDisplayName *string `json:"AuthPrincipalDisplayName,omitempty" xml:"AuthPrincipalDisplayName,omitempty"`
 	// The owner ID of the authentication principal.
 	//
@@ -98,19 +98,19 @@ type DescribeOpenSearchNodesResponseBodyAccessDeniedDetail struct {
 	//
 	// 111
 	AuthPrincipalOwnerId *string `json:"AuthPrincipalOwnerId,omitempty" xml:"AuthPrincipalOwnerId,omitempty"`
-	// The type of the authentication principal.
+	// The description as above.
 	//
 	// example:
 	//
 	// 222
 	AuthPrincipalType *string `json:"AuthPrincipalType,omitempty" xml:"AuthPrincipalType,omitempty"`
-	// The encoded diagnostic message.
+	// The diagnostic message.
 	//
 	// example:
 	//
 	// AQEAAAAAaKPfwjY0MzMyODRGLUZCQkQtNTA1RS04MUUxLTc5NTkzODk2MUIzMg==
 	EncodedDiagnosticMessage *string `json:"EncodedDiagnosticMessage,omitempty" xml:"EncodedDiagnosticMessage,omitempty"`
-	// The type of the permission denial.
+	// The no-permission type.
 	//
 	// example:
 	//
@@ -241,7 +241,7 @@ type DescribeOpenSearchNodesResponseBodyDataResult struct {
 	//
 	// 1
 	CpuCores *int32 `json:"CpuCores,omitempty" xml:"CpuCores,omitempty"`
-	// The CPU usage (%).
+	// The CPU utilization (%).
 	//
 	// example:
 	//
@@ -253,19 +253,19 @@ type DescribeOpenSearchNodesResponseBodyDataResult struct {
 	//
 	// 500
 	DiskSizeGB *int32 `json:"DiskSizeGB,omitempty" xml:"DiskSizeGB,omitempty"`
-	// The disk space usage of the node.
+	// The disk space utilization of the node.
 	//
 	// example:
 	//
 	// 42.5
 	DiskUsedPercent *string `json:"DiskUsedPercent,omitempty" xml:"DiskUsedPercent,omitempty"`
-	// The total number of unresolved baseline check items.
+	// The total number of unresolved baseline checks.
 	//
 	// example:
 	//
 	// GREEN
 	Health *string `json:"Health,omitempty" xml:"Health,omitempty"`
-	// The JVM heap memory usage of the node.
+	// The JVM heap memory utilization of the node.
 	//
 	// example:
 	//
@@ -277,7 +277,7 @@ type DescribeOpenSearchNodesResponseBodyDataResult struct {
 	//
 	// 100.115.107.0/24
 	Host *string `json:"Host,omitempty" xml:"Host,omitempty"`
-	// The name of the host on which the node instance runs. You can log on to the host and run the `hostname` command to view the hostname.
+	// The name of the host where the node instance runs. You can log on to the host and run the `hostname` command to view the hostname.
 	//
 	// example:
 	//
@@ -289,19 +289,19 @@ type DescribeOpenSearchNodesResponseBodyDataResult struct {
 	//
 	// 1.25
 	LoadOneM *string `json:"LoadOneM,omitempty" xml:"LoadOneM,omitempty"`
-	// The amount of memory used.
+	// The amount of used memory.
 	//
 	// example:
 	//
 	// 16
 	MemoryGB *int32 `json:"MemoryGB,omitempty" xml:"MemoryGB,omitempty"`
-	// The node type to query. Valid values:
+	// The type of node to query. Valid values:
 	//
-	// - all: queries both dn and gms nodes.
+	// - all: Queries both dn and gms nodes.
 	//
-	// - gms: queries only gms nodes.
+	// - gms: Queries only gms nodes.
 	//
-	// - dn: queries only dn nodes.
+	// - dn: Queries only dn nodes.
 	//
 	// example:
 	//

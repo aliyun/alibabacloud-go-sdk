@@ -24,7 +24,7 @@ type DescribeStoragePoolInfoResponseBody struct {
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The instance details.
+	// The list of instance details.
 	Data *DescribeStoragePoolInfoResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// Id of the request
 	//
@@ -114,7 +114,7 @@ func (s *DescribeStoragePoolInfoResponseBodyData) Validate() error {
 }
 
 type DescribeStoragePoolInfoResponseBodyDataStoragePools struct {
-	// The specification type of the instance (the specification code).
+	// The instance type, which is the specification code.
 	//
 	// example:
 	//
@@ -124,7 +124,7 @@ type DescribeStoragePoolInfoResponseBodyDataStoragePools struct {
 	//
 	// example:
 	//
-	// [pxc-xdb-s-pxcbj****xxnwp0wac2c4\\",\\"pxc-xdb-s-pxcbjr3b8****p0wa1589\\"]
+	// ["pxc-xdb-s-pxcbj****xxnwp0wac2c4","pxc-xdb-s-pxcbjr3b8****p0wa1589"]
 	DnIdList []*string `json:"DnIdList,omitempty" xml:"DnIdList,omitempty" type:"Repeated"`
 	// DN id
 	//
@@ -132,7 +132,7 @@ type DescribeStoragePoolInfoResponseBodyDataStoragePools struct {
 	//
 	// pxc-xdb-s-pxcshr****rh7fn2654fc
 	DnIdString *string `json:"DnIdString,omitempty" xml:"DnIdString,omitempty"`
-	// A reserved field.
+	// The reserved field.
 	//
 	// example:
 	//
@@ -144,7 +144,7 @@ type DescribeStoragePoolInfoResponseBodyDataStoragePools struct {
 	//
 	// 2025-08-27 23:19:52.0
 	GmtCreated *string `json:"GmtCreated,omitempty" xml:"GmtCreated,omitempty"`
-	// The time when the storage pool was last modified, in timestamp format.
+	// The modification time, in timestamp format.
 	//
 	// example:
 	//
@@ -154,7 +154,7 @@ type DescribeStoragePoolInfoResponseBodyDataStoragePools struct {
 	//
 	// example:
 	//
-	// none
+	// []
 	IdleDNIdList []*string `json:"IdleDNIdList,omitempty" xml:"IdleDNIdList,omitempty" type:"Repeated"`
 	// The name.
 	//

@@ -26,7 +26,7 @@ type CreateServiceAccountRequest struct {
 	//
 	// pxc-*********
 	DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
-	// The region in which the instance resides.
+	// The region ID.
 	//
 	// This parameter is required.
 	//
@@ -34,7 +34,7 @@ type CreateServiceAccountRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The type of the service account.
+	// The service account type.
 	//
 	// This parameter is required.
 	//

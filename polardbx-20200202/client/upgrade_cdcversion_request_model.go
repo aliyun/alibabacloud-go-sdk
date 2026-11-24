@@ -24,19 +24,19 @@ type iUpgradeCDCVersionRequest interface {
 }
 
 type UpgradeCDCVersionRequest struct {
-	// The target database version to which you want to upgrade. > You can call the [DescribeDBClusterVersion](https://help.aliyun.com/document_detail/196830.html) operation to query the upgrade instructions for all database versions in the specified region.
+	// The target database version for the upgrade. You can call the [DescribeDBClusterVersion](https://help.aliyun.com/document_detail/196830.html) operation to view the upgrade instructions for all database versions in the target region.
 	//
 	// example:
 	//
 	// 2.343
 	CdcDbVersion *string `json:"CdcDbVersion,omitempty" xml:"CdcDbVersion,omitempty"`
-	// The target version number to which you want to upgrade.
+	// The target minor version for the upgrade.
 	//
 	// example:
 	//
 	// polarx-cdc-kernel-5.4.19-20240928_17274884
 	CdcMinorVersion *string `json:"CdcMinorVersion,omitempty" xml:"CdcMinorVersion,omitempty"`
-	// The instance ID. > You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/196830.html) operation to query the details of all instances in the specified region, including instance IDs.
+	// The instance ID. You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/196830.html) operation to query the details of all instances in a specific region, including instance IDs.
 	//
 	// example:
 	//
@@ -48,17 +48,17 @@ type UpgradeCDCVersionRequest struct {
 	//
 	// pxc-shrvdc****wtf5uk-cdc
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	// The region in which the instance resides. > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196841.html) operation to query the regions supported by PolarDB-X, including region IDs.
+	// The region where the instance resides. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196841.html) operation to query the details of regions supported by PolarDB-X, including region IDs.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The switch mode. Valid values:
+	// The switchover mode. Valid values:
 	//
-	// - 0: immediately switches.
+	// - 0: Switches immediately.
 	//
-	// - 1: switches within the O&M window.
+	// - 1: Switches within the O&M window.
 	//
 	// example:
 	//

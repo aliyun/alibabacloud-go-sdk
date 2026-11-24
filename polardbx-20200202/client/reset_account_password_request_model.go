@@ -56,13 +56,13 @@ type ResetAccountPasswordRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The name of the cryptographic officer (CO) account.
+	// The security administrator account.
 	//
 	// example:
 	//
 	// account_sec
 	SecurityAccountName *string `json:"SecurityAccountName,omitempty" xml:"SecurityAccountName,omitempty"`
-	// The password of the cryptographic officer (CO) account.
+	// The password of the security administrator account.
 	//
 	// example:
 	//

@@ -84,13 +84,13 @@ type DescribeOpenSearchInstancesResponseBodyAccessDeniedDetail struct {
 	//
 	// example:
 	//
-	// xxx
+	// polardbx:DescribeOpenSearchInstances
 	AuthAction *string `json:"AuthAction,omitempty" xml:"AuthAction,omitempty"`
 	// The display name of the authentication principal.
 	//
 	// example:
 	//
-	// xxx
+	// Sample RAM user
 	AuthPrincipalDisplayName *string `json:"AuthPrincipalDisplayName,omitempty" xml:"AuthPrincipalDisplayName,omitempty"`
 	// The owner ID of the authentication principal.
 	//
@@ -104,13 +104,13 @@ type DescribeOpenSearchInstancesResponseBodyAccessDeniedDetail struct {
 	//
 	// 222
 	AuthPrincipalType *string `json:"AuthPrincipalType,omitempty" xml:"AuthPrincipalType,omitempty"`
-	// The encoded diagnostic message.
+	// The diagnostic message.
 	//
 	// example:
 	//
 	// AQEAAAAAaKPfwjY0MzMyODRGLUZCQkQtNTA1RS04MUUxLTc5NTkzODk2MUIzMg==
 	EncodedDiagnosticMessage *string `json:"EncodedDiagnosticMessage,omitempty" xml:"EncodedDiagnosticMessage,omitempty"`
-	// The type of the permission denial.
+	// The access denial type.
 	//
 	// example:
 	//
@@ -202,7 +202,7 @@ func (s *DescribeOpenSearchInstancesResponseBodyAccessDeniedDetail) Validate() e
 type DescribeOpenSearchInstancesResponseBodyData struct {
 	// The cluster ID.
 	Instances []*DescribeOpenSearchInstancesResponseBodyDataInstances `json:"Instances,omitempty" xml:"Instances,omitempty" type:"Repeated"`
-	// The maximum number of entries per page for a paging query. Maximum value: 100. Default value: If you do not specify a value or the value is less than 10, the default value is 10. If the value is greater than 100, the default value is 100.
+	// The number of entries per page for paging in a paged query. Maximum value: 100. Default value: 10 if no Settings are specified or the Settings value is less than 10. If the Settings value is greater than 100, the default value is 100.
 	//
 	// example:
 	//
@@ -350,7 +350,7 @@ type DescribeOpenSearchInstancesResponseBodyDataInstances struct {
 	//
 	// My Supabase project
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The DPI engine version. Default value: 2.0.
+	// The database engine version of the DPI engine. Default value: 2.0.
 	//
 	// example:
 	//
@@ -362,7 +362,7 @@ type DescribeOpenSearchInstancesResponseBodyDataInstances struct {
 	//
 	// pxc-shrdb7a2t8w3c1
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The memory size. Unit: GB.
+	// The configured memory size, in GB.
 	//
 	// example:
 	//
@@ -386,11 +386,11 @@ type DescribeOpenSearchInstancesResponseBodyDataInstances struct {
 	//
 	// cn-beijing
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The display name of the instance specifications.
+	// The display name of the instance type.
 	//
 	// example:
 	//
-	// 8 cores 32 GB
+	// 8 vCPUs, 32 GB
 	SpecDisplay *string `json:"SpecDisplay,omitempty" xml:"SpecDisplay,omitempty"`
 	// The instance status.
 	//
@@ -398,7 +398,7 @@ type DescribeOpenSearchInstancesResponseBodyDataInstances struct {
 	//
 	// RUNNING
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The storage size of a single data node. Unit: GB.
+	// The storage space of a single data node, in GB.
 	//
 	// example:
 	//

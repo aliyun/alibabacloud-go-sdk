@@ -18,7 +18,7 @@ type iDescribePxfuseInfoResponseBody interface {
 }
 
 type DescribePxfuseInfoResponseBody struct {
-	// The details of the access denial.
+	// The access denial details.
 	AccessDeniedDetail *DescribePxfuseInfoResponseBodyAccessDeniedDetail `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty" type:"Struct"`
 	// The monitoring data.
 	Data *DescribePxfuseInfoResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
@@ -84,13 +84,13 @@ type DescribePxfuseInfoResponseBodyAccessDeniedDetail struct {
 	//
 	// example:
 	//
-	// xxx
+	// polardbx:DescribePxfuseInfo
 	AuthAction *string `json:"AuthAction,omitempty" xml:"AuthAction,omitempty"`
 	// The identity used for authentication in the request.
 	//
 	// example:
 	//
-	// xxx
+	// Sample RAM user
 	AuthPrincipalDisplayName *string `json:"AuthPrincipalDisplayName,omitempty" xml:"AuthPrincipalDisplayName,omitempty"`
 	// The owner ID of the authentication principal.
 	//
@@ -98,19 +98,19 @@ type DescribePxfuseInfoResponseBodyAccessDeniedDetail struct {
 	//
 	// 111
 	AuthPrincipalOwnerId *string `json:"AuthPrincipalOwnerId,omitempty" xml:"AuthPrincipalOwnerId,omitempty"`
-	// The authentication principal type.
+	// The type of the authentication principal.
 	//
 	// example:
 	//
 	// 222
 	AuthPrincipalType *string `json:"AuthPrincipalType,omitempty" xml:"AuthPrincipalType,omitempty"`
-	// The diagnostic information.
+	// The diagnostic message.
 	//
 	// example:
 	//
 	// AQEAAAAAaKPfwjY0MzMyODRGLUZCQkQtNTA1RS04MUUxLTc5NTkzODk2MUIzMg==
 	EncodedDiagnosticMessage *string `json:"EncodedDiagnosticMessage,omitempty" xml:"EncodedDiagnosticMessage,omitempty"`
-	// The type of missing permission.
+	// The no permission type.
 	//
 	// example:
 	//
@@ -428,7 +428,7 @@ type DescribePxfuseInfoResponseBodyDataInstanceConnAddrs struct {
 	//
 	// 3306
 	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
-	// The endpoint type.
+	// The type of the endpoint.
 	//
 	// example:
 	//

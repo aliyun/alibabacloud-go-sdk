@@ -18,9 +18,9 @@ type iDescribeOpenSearchConnectionInfoResponseBody interface {
 }
 
 type DescribeOpenSearchConnectionInfoResponseBody struct {
-	// The details of the access denial.
+	// The access denied details.
 	AccessDeniedDetail *DescribeOpenSearchConnectionInfoResponseBodyAccessDeniedDetail `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty" type:"Struct"`
-	// The data struct.
+	// The data structure.
 	Data *DescribeOpenSearchConnectionInfoResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// Id of the request
 	//
@@ -84,21 +84,21 @@ type DescribeOpenSearchConnectionInfoResponseBodyAccessDeniedDetail struct {
 	//
 	// example:
 	//
-	// xxx
+	// polardbx:DescribeOpenSearchConnectionInfo
 	AuthAction *string `json:"AuthAction,omitempty" xml:"AuthAction,omitempty"`
-	// The display name of the authentication principal.
+	// The display name of the authenticated principal.
 	//
 	// example:
 	//
-	// xxx
+	// Sample RAM user
 	AuthPrincipalDisplayName *string `json:"AuthPrincipalDisplayName,omitempty" xml:"AuthPrincipalDisplayName,omitempty"`
-	// The owner ID of the authentication principal.
+	// The owner ID of the authenticated principal.
 	//
 	// example:
 	//
 	// 111
 	AuthPrincipalOwnerId *string `json:"AuthPrincipalOwnerId,omitempty" xml:"AuthPrincipalOwnerId,omitempty"`
-	// The description is the same as above.
+	// The description is as above.
 	//
 	// example:
 	//
@@ -200,11 +200,11 @@ func (s *DescribeOpenSearchConnectionInfoResponseBodyAccessDeniedDetail) Validat
 }
 
 type DescribeOpenSearchConnectionInfoResponseBodyData struct {
-	// The internal endpoint of the OpenSearch Dashboard.
+	// The internal endpoint of OpenSearch Dashboard.
 	DashboardEndpoint *DescribeOpenSearchConnectionInfoResponseBodyDataDashboardEndpoint `json:"DashboardEndpoint,omitempty" xml:"DashboardEndpoint,omitempty" type:"Struct"`
-	// The public network access endpoint of the OpenSearch Dashboard.
+	// The public network access endpoint of OpenSearch Dashboard.
 	DashboardPublicEndpoint *DescribeOpenSearchConnectionInfoResponseBodyDataDashboardPublicEndpoint `json:"DashboardPublicEndpoint,omitempty" xml:"DashboardPublicEndpoint,omitempty" type:"Struct"`
-	// The default account name of OpenSearch.
+	// The default username for OpenSearch.
 	//
 	// example:
 	//
@@ -212,15 +212,15 @@ type DescribeOpenSearchConnectionInfoResponseBodyData struct {
 	DefaultUsername *string `json:"DefaultUsername,omitempty" xml:"DefaultUsername,omitempty"`
 	// The VPC endpoint of the instance.
 	PrivateEndpoint *DescribeOpenSearchConnectionInfoResponseBodyDataPrivateEndpoint `json:"PrivateEndpoint,omitempty" xml:"PrivateEndpoint,omitempty" type:"Struct"`
-	// The protocol of the monitoring task. Valid values:
+	// The protocol of the probe task. Valid values:
 	//
-	// - **ICMP**.
+	// - **ICMP**
 	//
-	// - **TCP**.
+	// - **TCP**
 	//
-	// - **HTTP**.
+	// - **HTTP**
 	//
-	// > Private network monitoring supports only the ICMP and TCP protocols.
+	// > Internal network probing supports only the ICMP and TCP protocols.
 	//
 	// example:
 	//
@@ -317,7 +317,7 @@ func (s *DescribeOpenSearchConnectionInfoResponseBodyData) Validate() error {
 }
 
 type DescribeOpenSearchConnectionInfoResponseBodyDataDashboardEndpoint struct {
-	// Specifies whether static frame check is enabled. Default value: false.
+	// Specifies whether still frame checking is enabled. Default value: false.
 	//
 	// example:
 	//
@@ -335,7 +335,7 @@ type DescribeOpenSearchConnectionInfoResponseBodyDataDashboardEndpoint struct {
 	//
 	// 3306
 	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
-	// The URL.
+	// The article URL.
 	//
 	// example:
 	//
@@ -402,7 +402,7 @@ type DescribeOpenSearchConnectionInfoResponseBodyDataDashboardPublicEndpoint str
 	//
 	// true
 	Enabled *bool `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
-	// The hostname. Retrieves data under the specified host.
+	// The hostname.
 	//
 	// example:
 	//
@@ -414,7 +414,7 @@ type DescribeOpenSearchConnectionInfoResponseBodyDataDashboardPublicEndpoint str
 	//
 	// 3306
 	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
-	// The URL.
+	// The article URL.
 	//
 	// example:
 	//
@@ -471,7 +471,7 @@ func (s *DescribeOpenSearchConnectionInfoResponseBodyDataDashboardPublicEndpoint
 }
 
 type DescribeOpenSearchConnectionInfoResponseBodyDataPrivateEndpoint struct {
-	// Specifies whether to enable the echo feature. This parameter is required. Valid values: true/false.
+	// Specifies whether additional features are enabled. This parameter is required. Valid values: true and false.
 	//
 	// example:
 	//
@@ -531,7 +531,7 @@ func (s *DescribeOpenSearchConnectionInfoResponseBodyDataPrivateEndpoint) Valida
 }
 
 type DescribeOpenSearchConnectionInfoResponseBodyDataPublicEndpoint struct {
-	// Specifies whether to enable dead-letter message delivery.
+	// Specifies whether dead-letter message delivery is enabled.
 	//
 	// example:
 	//

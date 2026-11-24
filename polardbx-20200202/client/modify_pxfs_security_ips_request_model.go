@@ -22,7 +22,7 @@ type iModifyPxfsSecurityIpsRequest interface {
 }
 
 type ModifyPxfsSecurityIpsRequest struct {
-	// The ID of the PolarDB-X instance.
+	// The PolarDB-X instance ID.
 	//
 	// This parameter is required.
 	//

@@ -18,7 +18,7 @@ type iDescribeSupabaseInstanceAttributeResponseBody interface {
 }
 
 type DescribeSupabaseInstanceAttributeResponseBody struct {
-	// The details of the access denial.
+	// The access denied details.
 	AccessDeniedDetail *DescribeSupabaseInstanceAttributeResponseBodyAccessDeniedDetail `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty" type:"Struct"`
 	// The instance details.
 	Data *DescribeSupabaseInstanceAttributeResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
@@ -86,7 +86,7 @@ type DescribeSupabaseInstanceAttributeResponseBodyAccessDeniedDetail struct {
 	//
 	// xxx
 	AuthAction *string `json:"AuthAction,omitempty" xml:"AuthAction,omitempty"`
-	// The display name of the authentication principal.
+	// The name of the authentication principal.
 	//
 	// example:
 	//
@@ -104,13 +104,13 @@ type DescribeSupabaseInstanceAttributeResponseBodyAccessDeniedDetail struct {
 	//
 	// 222
 	AuthPrincipalType *string `json:"AuthPrincipalType,omitempty" xml:"AuthPrincipalType,omitempty"`
-	// The encoded diagnostic message.
+	// The diagnostic message.
 	//
 	// example:
 	//
 	// AQEAAAAAaKPfwjY0MzMyODRGLUZCQkQtNTA1RS04MUUxLTc5NTkzODk2MUIzMg==
 	EncodedDiagnosticMessage *string `json:"EncodedDiagnosticMessage,omitempty" xml:"EncodedDiagnosticMessage,omitempty"`
-	// The type of the permission denial.
+	// The no permission type.
 	//
 	// example:
 	//
@@ -200,7 +200,7 @@ func (s *DescribeSupabaseInstanceAttributeResponseBodyAccessDeniedDetail) Valida
 }
 
 type DescribeSupabaseInstanceAttributeResponseBodyData struct {
-	// The list of endpoints.
+	// The endpoints.
 	ConnAddrs []*DescribeSupabaseInstanceAttributeResponseBodyDataConnAddrs `json:"ConnAddrs,omitempty" xml:"ConnAddrs,omitempty" type:"Repeated"`
 	// The creation time.
 	//
@@ -214,7 +214,7 @@ type DescribeSupabaseInstanceAttributeResponseBodyData struct {
 	//
 	// pxc-supabase-001
 	DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
-	// The database engine version.
+	// The DPI engine version.
 	//
 	// example:
 	//
@@ -232,7 +232,7 @@ type DescribeSupabaseInstanceAttributeResponseBodyData struct {
 	//
 	// Unlock
 	LockMode *string `json:"LockMode,omitempty" xml:"LockMode,omitempty"`
-	// The minor engine version.
+	// The minor version.
 	//
 	// example:
 	//
@@ -250,7 +250,7 @@ type DescribeSupabaseInstanceAttributeResponseBodyData struct {
 	//
 	// 1
 	NodeCount *int32 `json:"NodeCount,omitempty" xml:"NodeCount,omitempty"`
-	// The list of nodes.
+	// The nodes.
 	Nodes []*DescribeSupabaseInstanceAttributeResponseBodyDataNodes `json:"Nodes,omitempty" xml:"Nodes,omitempty" type:"Repeated"`
 	// The name of the associated PolarDB-X instance.
 	//
@@ -270,7 +270,7 @@ type DescribeSupabaseInstanceAttributeResponseBodyData struct {
 	//
 	// Running
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The Supabase class code.
+	// The Supabase specification code.
 	//
 	// example:
 	//
@@ -585,7 +585,7 @@ func (s *DescribeSupabaseInstanceAttributeResponseBodyDataConnAddrs) Validate() 
 }
 
 type DescribeSupabaseInstanceAttributeResponseBodyDataNodes struct {
-	// The class code.
+	// The specification code.
 	//
 	// example:
 	//

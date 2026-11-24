@@ -20,7 +20,7 @@ type iDescribeActiveOperationMaintainConfResponseBody interface {
 type DescribeActiveOperationMaintainConfResponseBody struct {
 	// The configuration information.
 	Config *DescribeActiveOperationMaintainConfResponseBodyConfig `json:"Config,omitempty" xml:"Config,omitempty" type:"Struct"`
-	// Specifies whether the settings are configured. Valid values:
+	// Specifies whether the O&M window is configured. Valid values:
 	//
 	// - 1: Configured.
 	//

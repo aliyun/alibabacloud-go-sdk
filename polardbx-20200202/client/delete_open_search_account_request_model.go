@@ -26,7 +26,7 @@ type DeleteOpenSearchAccountRequest struct {
 	//
 	// testaccount
 	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
-	// The instance name.
+	// The name of the instance.
 	//
 	// This parameter is required.
 	//

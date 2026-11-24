@@ -22,11 +22,11 @@ type iCreateDataImportTaskResponseBody interface {
 type CreateDataImportTaskResponseBody struct {
 	// The returned result.
 	Data *CreateDataImportTaskResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The response message.
+	// The message returned by the request.
 	//
 	// example:
 	//
-	// *****
+	// Sample returned message: The request is processed
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The request ID.
 	//
@@ -34,7 +34,7 @@ type CreateDataImportTaskResponseBody struct {
 	//
 	// 173CA69A-3513-591D-8A09-C1EA37CBE2D9
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	//
 	// example:
 	//

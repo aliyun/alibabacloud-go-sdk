@@ -22,19 +22,19 @@ type iDescribeSecurityIpsResponseBody interface {
 type DescribeSecurityIpsResponseBody struct {
 	// The returned data.
 	Data *DescribeSecurityIpsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The additional information returned. "success" is returned if the request is successful. Otherwise, an error code is returned.
+	// The additional message returned by the API operation. If the call is successful, success is returned. Otherwise, the corresponding error code is returned.
 	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
 	// 14036EBE-CF2E-44DB-ACE9-AC6157D3A6FC
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request is successful.
+	// Indicates whether the request was successful.
 	//
 	// example:
 	//
@@ -96,7 +96,7 @@ func (s *DescribeSecurityIpsResponseBody) Validate() error {
 }
 
 type DescribeSecurityIpsResponseBodyData struct {
-	// The instance name.
+	// The name of the instance.
 	//
 	// example:
 	//
@@ -152,7 +152,7 @@ type DescribeSecurityIpsResponseBodyDataGroupItems struct {
 	//
 	// defaultGroup
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
-	// The details of the whitelist in the group.
+	// The IP addresses in the whitelist group.
 	//
 	// example:
 	//

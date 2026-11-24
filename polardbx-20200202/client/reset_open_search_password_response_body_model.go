@@ -18,7 +18,7 @@ type iResetOpenSearchPasswordResponseBody interface {
 }
 
 type ResetOpenSearchPasswordResponseBody struct {
-	// The details of the access denial.
+	// The detailed reasons for access denial.
 	AccessDeniedDetail *ResetOpenSearchPasswordResponseBodyAccessDeniedDetail `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty" type:"Struct"`
 	// The monitoring data.
 	Data *ResetOpenSearchPasswordResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
@@ -104,7 +104,7 @@ type ResetOpenSearchPasswordResponseBodyAccessDeniedDetail struct {
 	//
 	// 222
 	AuthPrincipalType *string `json:"AuthPrincipalType,omitempty" xml:"AuthPrincipalType,omitempty"`
-	// The encoded diagnostic message.
+	// The diagnostic message.
 	//
 	// example:
 	//
@@ -200,11 +200,11 @@ func (s *ResetOpenSearchPasswordResponseBodyAccessDeniedDetail) Validate() error
 }
 
 type ResetOpenSearchPasswordResponseBodyData struct {
-	// The additional information returned by the operation. "success" is returned if the operation is successful. Otherwise, the corresponding error code is returned.
+	// The additional information returned by the API operation. If the request is successful, success is returned. If the request fails, the corresponding error code is returned.
 	//
 	// example:
 	//
-	// 【环境：huanghe】\\nhuanghe 503_UC_OUTBOUND告警超过阈值！\\n\\n详情请查看: https://grafana-cn-lbj34sreu03.grafana.aliyuncs.com/d/_rOiq2lNk/asm-status-code-monitor?var-datasource=DataSource-HUANGHE\\n
+	// [Environment: huanghe]\\nhuanghe 503_UC_OUTBOUND alert exceeds the threshold!\\n\\nFor details, see: https://grafana-cn-lbj34sreu03.grafana.aliyuncs.com/d/_rOiq2lNk/asm-status-code-monitor?var-datasource=DataSource-HUANGHE\\n
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The time when the password was last modified.
 	//

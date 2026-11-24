@@ -26,11 +26,11 @@ type CreateServiceAccountResponseBody struct {
 	AccessDeniedDetail *CreateServiceAccountResponseBodyAccessDeniedDetail `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty" type:"Struct"`
 	// The returned policy details.
 	Data *CreateServiceAccountResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The additional information returned. If the request is successful, **success*	- is returned. If the request fails, the corresponding error code is returned.
+	// The additional information returned by the API. success is returned for a successful request, and an error code is returned for a failed request.
 	//
 	// example:
 	//
-	// *****
+	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The request ID.
 	//
@@ -118,9 +118,9 @@ type CreateServiceAccountResponseBodyAccessDeniedDetail struct {
 	//
 	// example:
 	//
-	// xxx
+	// polardbx:CreateServiceAccount
 	AuthAction *string `json:"AuthAction,omitempty" xml:"AuthAction,omitempty"`
-	// The authentication principal type.
+	// The type of the authenticated principal.
 	//
 	// example:
 	//
@@ -210,7 +210,7 @@ type CreateServiceAccountResponseBodyData struct {
 	//
 	// polardbx_meta_ro
 	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
-	// Indicates whether the account already exists.
+	// Indicates whether it already exists.
 	//
 	// example:
 	//
@@ -222,11 +222,11 @@ type CreateServiceAccountResponseBodyData struct {
 	//
 	// 1E5DCFFC-A00D-****-836E-73318F8CA577
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The type of the service account.
+	// The service account type.
 	//
 	// example:
 	//
-	// 服务账号类型
+	// Service account type
 	ServiceAccountType *string `json:"ServiceAccountType,omitempty" xml:"ServiceAccountType,omitempty"`
 	// The instance status.
 	//

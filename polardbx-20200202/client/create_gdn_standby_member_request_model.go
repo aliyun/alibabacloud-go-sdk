@@ -60,11 +60,11 @@ type iCreateGdnStandbyMemberRequest interface {
 }
 
 type CreateGdnStandbyMemberRequest struct {
-	// Specifies whether to enable auto-renewal. Default value: true.
+	// Specifies whether to enable auto-renewal. Default value: true. Valid values:
 	//
-	// - **true**: Enabled.
+	// - **true**: yes
 	//
-	// - **false**: Disabled.
+	// - **false**: no
 	//
 	// example:
 	//
@@ -76,7 +76,7 @@ type CreateGdnStandbyMemberRequest struct {
 	//
 	// 2
 	CNNodeCount *string `json:"CNNodeCount,omitempty" xml:"CNNodeCount,omitempty"`
-	// The client token that is used to ensure the idempotence of the request. Make sure that the value is different for each request.
+	// The client token that is used to ensure the idempotence of the request. Make sure that the token is unique for each request.
 	//
 	// example:
 	//
@@ -90,7 +90,7 @@ type CreateGdnStandbyMemberRequest struct {
 	//
 	// pxc-***
 	CloneInstanceName *string `json:"CloneInstanceName,omitempty" xml:"CloneInstanceName,omitempty"`
-	// The compute node specifications. This parameter is required for Enterprise Edition instances and is not required for Standard Edition instances.
+	// The compute node specifications. This parameter is required when you create an Enterprise Edition instance and is not required when you create a Standard Edition instance.
 	//
 	// Enterprise Edition with local disks:
 	//
@@ -159,13 +159,13 @@ type CreateGdnStandbyMemberRequest struct {
 	//
 	// 2
 	DNNodeCount *string `json:"DNNodeCount,omitempty" xml:"DNNodeCount,omitempty"`
-	// The description of the instance.
+	// The description.
 	//
 	// example:
 	//
 	// go-to-the-docks-for-french-fries
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The storage node specifications. This parameter is required for Enterprise Edition instances and is not required for Standard Edition instances.
+	// The storage node specifications. This parameter is required when you create an Enterprise Edition instance and is not required when you create a Standard Edition instance.
 	//
 	// Enterprise Edition with local disks:
 	//
@@ -244,7 +244,7 @@ type CreateGdnStandbyMemberRequest struct {
 	//
 	// 4 cores, 32 GB
 	DnClass *string `json:"DnClass,omitempty" xml:"DnClass,omitempty"`
-	// The MySQL DPI engine version. Valid values: 5.7 and 8.0.
+	// The MySQL DPI engine version. Valid values: 5.7 or 8.0
 	//
 	// This parameter is required.
 	//
@@ -258,7 +258,7 @@ type CreateGdnStandbyMemberRequest struct {
 	//
 	// vpc
 	NetworkType *string `json:"NetworkType,omitempty" xml:"NetworkType,omitempty"`
-	// The billing method of the instance.
+	// The billing method of the instance. Valid values:
 	//
 	// - **PREPAY**: subscription
 	//
@@ -270,13 +270,7 @@ type CreateGdnStandbyMemberRequest struct {
 	//
 	// PREPAY
 	PayType *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
-	// The unit of the subscription duration. Valid values:
-	//
-	// - Year
-	//
-	// - Month
-	//
-	// For pay-as-you-go instances, the default value is Hour.
+	// The billing cycle. Valid values for the subscription billing method are Year and Month. The default value for the pay-as-you-go billing method is Hour.
 	//
 	// example:
 	//
@@ -288,7 +282,7 @@ type CreateGdnStandbyMemberRequest struct {
 	//
 	// cn-shenzhen-e
 	PrimaryZone *string `json:"PrimaryZone,omitempty" xml:"PrimaryZone,omitempty"`
-	// The region in which the instance resides.
+	// The region where the instance resides.
 	//
 	// This parameter is required.
 	//
@@ -296,7 +290,7 @@ type CreateGdnStandbyMemberRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The resource group ID. This parameter can be left empty. This parameter is not supported.
+	// The resource group ID. This parameter can be left empty. Resource groups are not supported.
 	//
 	// example:
 	//
@@ -310,15 +304,15 @@ type CreateGdnStandbyMemberRequest struct {
 	SecondaryZone *string `json:"SecondaryZone,omitempty" xml:"SecondaryZone,omitempty"`
 	// The edition of the instance. Valid values:
 	//
-	// - enterprise: Enterprise Edition.
+	// - **enterprise**: Enterprise Edition
 	//
-	// - standard: Standard Edition.
+	// - **standard**: Standard Edition
 	//
 	// example:
 	//
 	// enterprise
 	Series *string `json:"Series,omitempty" xml:"Series,omitempty"`
-	// The region in which the source instance resides.
+	// The region where the source instance resides.
 	//
 	// This parameter is required.
 	//
@@ -332,7 +326,7 @@ type CreateGdnStandbyMemberRequest struct {
 	//
 	// cloud_auto
 	StorageType *string `json:"StorageType,omitempty" xml:"StorageType,omitempty"`
-	// The zone for Three-zone deployment.
+	// The third active zone in a Three-zone deployment.
 	//
 	// example:
 	//
@@ -340,9 +334,9 @@ type CreateGdnStandbyMemberRequest struct {
 	TertiaryZone *string `json:"TertiaryZone,omitempty" xml:"TertiaryZone,omitempty"`
 	// The topology type. Valid values:
 	//
-	// - **3azones**: three-zone deployment.
+	// - **3azones**: three-zone deployment
 	//
-	// - **1azone**: single-zone deployment.
+	// - **1azone**: single-zone deployment
 	//
 	// This parameter is required.
 	//
@@ -350,15 +344,15 @@ type CreateGdnStandbyMemberRequest struct {
 	//
 	// 3azones
 	TopologyType *string `json:"TopologyType,omitempty" xml:"TopologyType,omitempty"`
-	// The subscription duration. Unit: months or years.
+	// The subscription duration. You can specify a duration in months or years.
 	//
-	// > If Period is set to Year, valid values of this parameter are 1, 2, and 3.
+	// > If Period is set to Year, valid values are 1, 2, and 3.
 	//
 	// example:
 	//
 	// 1
 	UsedTime *int32 `json:"UsedTime,omitempty" xml:"UsedTime,omitempty"`
-	// VPC ID。
+	// The VPC ID.
 	//
 	// example:
 	//

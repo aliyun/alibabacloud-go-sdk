@@ -22,7 +22,7 @@ type iAllocateContext0PublicConnectionRequest interface {
 }
 
 type AllocateContext0PublicConnectionRequest struct {
-	// The prefix of the public network connection string.
+	// The prefix of the public connection string.
 	//
 	// example:
 	//
@@ -36,7 +36,7 @@ type AllocateContext0PublicConnectionRequest struct {
 	//
 	// pxsp-*********
 	DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
-	// The target node type. Valid values: service and dashboard.
+	// The target node type. Valid values: service, dashboard.
 	//
 	// example:
 	//

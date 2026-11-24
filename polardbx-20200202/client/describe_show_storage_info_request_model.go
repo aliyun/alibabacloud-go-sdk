@@ -18,7 +18,7 @@ type iDescribeShowStorageInfoRequest interface {
 }
 
 type DescribeShowStorageInfoRequest struct {
-	// The instance name.
+	// The name of the instance.
 	//
 	// This parameter is required.
 	//
@@ -26,7 +26,7 @@ type DescribeShowStorageInfoRequest struct {
 	//
 	// pxc-**************
 	DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
-	// The region where the instance resides.
+	// The region where the instance is located.
 	//
 	// This parameter is required.
 	//

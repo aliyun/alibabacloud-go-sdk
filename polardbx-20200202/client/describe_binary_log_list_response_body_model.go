@@ -24,7 +24,7 @@ type iDescribeBinaryLogListResponseBody interface {
 type DescribeBinaryLogListResponseBody struct {
 	// The list of binary log files.
 	LogList []*DescribeBinaryLogListResponseBodyLogList `json:"LogList,omitempty" xml:"LogList,omitempty" type:"Repeated"`
-	// The current page number.
+	// The page number of the returned page.
 	//
 	// example:
 	//
@@ -167,9 +167,9 @@ type DescribeBinaryLogListResponseBodyLogList struct {
 	ModifiedTime *string `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
 	// The cleanup status. Valid values:
 	//
-	// - 0: Not deleted.
+	// - 0: not deleted
 	//
-	// - 1: Deleted.
+	// - 1: deleted
 	//
 	// example:
 	//
@@ -183,11 +183,11 @@ type DescribeBinaryLogListResponseBodyLogList struct {
 	UploadHost *string `json:"UploadHost,omitempty" xml:"UploadHost,omitempty"`
 	// The backup status. Valid values:
 	//
-	// - 0: Not backed up.
+	// - 0: not backed up
 	//
-	// - 1: Being backed up.
+	// - 1: being backed up
 	//
-	// - 2: Backed up.
+	// - 2: backed up
 	//
 	// example:
 	//

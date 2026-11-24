@@ -82,7 +82,7 @@ type CreatePolardbxSupabaseInstanceRequest struct {
 	//
 	// polarx.supabase.x2.small
 	NodeSpec *string `json:"NodeSpec,omitempty" xml:"NodeSpec,omitempty"`
-	// The billing method. Valid values: PREPAY and POSTPAY.
+	// The billing method.
 	//
 	// This parameter is required.
 	//
@@ -90,7 +90,7 @@ type CreatePolardbxSupabaseInstanceRequest struct {
 	//
 	// PREPAY
 	PayType *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
-	// The billing cycle. Valid values: Year, Month, and Hour.
+	// The billing cycle.
 	//
 	// example:
 	//
@@ -110,7 +110,7 @@ type CreatePolardbxSupabaseInstanceRequest struct {
 	//
 	// null
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// Specifies whether to enable multi-tenant mode.
+	// Specifies whether to enable the multi-tenant mode.
 	//
 	// example:
 	//

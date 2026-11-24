@@ -26,7 +26,7 @@ type CreateContext0Request struct {
 	//
 	// pxc-********
 	DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
-	// The name of the PolarDB-X Search instance.
+	// The name of the PolarDBX Search instance.
 	//
 	// This parameter is required.
 	//

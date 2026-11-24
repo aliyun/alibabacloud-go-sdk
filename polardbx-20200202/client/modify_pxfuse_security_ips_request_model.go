@@ -36,19 +36,19 @@ type ModifyPxfuseSecurityIpsRequest struct {
 	//
 	// default
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
-	// The modification mode of the whitelist. Valid values:
+	// The modification mode for the whitelist. Valid values:
 	//
-	// - 0: overwrites the whitelist group.
+	// - 0: Overwrites the whitelist group.
 	//
-	// - 1: adds a whitelist group.
+	// - 1: Appends to the whitelist group.
 	//
-	// - 2: deletes a whitelist group.
+	// - 2: Deletes the whitelist group.
 	//
 	// example:
 	//
 	// 1
 	ModifyMode *string `json:"ModifyMode,omitempty" xml:"ModifyMode,omitempty"`
-	// The region in which the instance resides.
+	// The region where the instance resides.
 	//
 	// This parameter is required.
 	//
@@ -56,7 +56,7 @@ type ModifyPxfuseSecurityIpsRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The IP addresses in the whitelist group. Separate multiple IP addresses with commas (,).
+	// The list of IP addresses in the whitelist group. Separate multiple IP addresses with commas (,).
 	//
 	// This parameter is required.
 	//

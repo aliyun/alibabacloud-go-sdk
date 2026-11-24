@@ -22,13 +22,13 @@ type iCreateRplInspectionTaskResponseBody interface {
 type CreateRplInspectionTaskResponseBody struct {
 	// The task details.
 	Data *CreateRplInspectionTaskResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The error message of the task. > This parameter is returned only when the task status is **stop**.
+	// The error message of the task. This parameter is returned only when the task status is **stop**.
 	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
@@ -96,7 +96,7 @@ func (s *CreateRplInspectionTaskResponseBody) Validate() error {
 }
 
 type CreateRplInspectionTaskResponseBodyData struct {
-	// The slink task ID.
+	// The ID of the Slink task.
 	//
 	// example:
 	//

@@ -18,7 +18,7 @@ type iCreatePolardbxSupabaseInstanceResponseBody interface {
 }
 
 type CreatePolardbxSupabaseInstanceResponseBody struct {
-	// The access denied details.
+	// The access denial details.
 	AccessDeniedDetail *CreatePolardbxSupabaseInstanceResponseBodyAccessDeniedDetail `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty" type:"Struct"`
 	// The creation result.
 	Data *CreatePolardbxSupabaseInstanceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
@@ -84,13 +84,13 @@ type CreatePolardbxSupabaseInstanceResponseBodyAccessDeniedDetail struct {
 	//
 	// example:
 	//
-	// xxx
+	// polardbx:CreatePolardbxSupabaseInstance
 	AuthAction *string `json:"AuthAction,omitempty" xml:"AuthAction,omitempty"`
 	// The display name of the authentication principal.
 	//
 	// example:
 	//
-	// xxx
+	// Sample RAM user
 	AuthPrincipalDisplayName *string `json:"AuthPrincipalDisplayName,omitempty" xml:"AuthPrincipalDisplayName,omitempty"`
 	// The owner ID of the authentication principal.
 	//
@@ -104,13 +104,13 @@ type CreatePolardbxSupabaseInstanceResponseBodyAccessDeniedDetail struct {
 	//
 	// 222
 	AuthPrincipalType *string `json:"AuthPrincipalType,omitempty" xml:"AuthPrincipalType,omitempty"`
-	// The encoded diagnostic message.
+	// The diagnostic message.
 	//
 	// example:
 	//
 	// AQEAAAAAaKPfwjY0MzMyODRGLUZCQkQtNTA1RS04MUUxLTc5NTkzODk2MUIzMg==
 	EncodedDiagnosticMessage *string `json:"EncodedDiagnosticMessage,omitempty" xml:"EncodedDiagnosticMessage,omitempty"`
-	// The no permission type.
+	// The access denial type.
 	//
 	// example:
 	//
@@ -200,7 +200,7 @@ func (s *CreatePolardbxSupabaseInstanceResponseBodyAccessDeniedDetail) Validate(
 }
 
 type CreatePolardbxSupabaseInstanceResponseBodyData struct {
-	// The endpoint.
+	// The connection endpoint.
 	//
 	// example:
 	//

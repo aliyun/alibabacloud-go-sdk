@@ -84,21 +84,21 @@ type CreatePxfsResponseBodyAccessDeniedDetail struct {
 	//
 	// example:
 	//
-	// xxx
+	// polardbx:CreatePxfs
 	AuthAction *string `json:"AuthAction,omitempty" xml:"AuthAction,omitempty"`
-	// The display name of the security principal.
+	// The name of the authentication principal.
 	//
 	// example:
 	//
-	// xxx
+	// Sample RAM user
 	AuthPrincipalDisplayName *string `json:"AuthPrincipalDisplayName,omitempty" xml:"AuthPrincipalDisplayName,omitempty"`
-	// The owner ID of the security principal.
+	// The owner ID of the authentication principal.
 	//
 	// example:
 	//
 	// 111
 	AuthPrincipalOwnerId *string `json:"AuthPrincipalOwnerId,omitempty" xml:"AuthPrincipalOwnerId,omitempty"`
-	// The type of the security principal.
+	// The type of the authentication principal.
 	//
 	// example:
 	//
@@ -110,7 +110,7 @@ type CreatePxfsResponseBodyAccessDeniedDetail struct {
 	//
 	// AQEAAAAAaKPfwjY0MzMyODRGLUZCQkQtNTA1RS04MUUxLTc5NTkzODk2MUIzMg==
 	EncodedDiagnosticMessage *string `json:"EncodedDiagnosticMessage,omitempty" xml:"EncodedDiagnosticMessage,omitempty"`
-	// The type of the permission denial.
+	// The type of permission denial.
 	//
 	// example:
 	//

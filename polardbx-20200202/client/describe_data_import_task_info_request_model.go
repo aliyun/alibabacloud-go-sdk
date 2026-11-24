@@ -24,13 +24,13 @@ type iDescribeDataImportTaskInfoRequest interface {
 }
 
 type DescribeDataImportTaskInfoRequest struct {
-	// The page number of the failed records.
+	// The page number for failed records.
 	//
 	// example:
 	//
 	// 1
 	FailPageNumber *int32 `json:"FailPageNumber,omitempty" xml:"FailPageNumber,omitempty"`
-	// The number of failed records to display per page.
+	// The number of failed records to return on each page.
 	//
 	// example:
 	//
@@ -52,13 +52,13 @@ type DescribeDataImportTaskInfoRequest struct {
 	//
 	// etx-szr2rr6i*****
 	SlinkTaskId *string `json:"SlinkTaskId,omitempty" xml:"SlinkTaskId,omitempty"`
-	// The page number of the successful records.
+	// The page number for successful records.
 	//
 	// example:
 	//
 	// 1
 	SuccessPageNumber *int64 `json:"SuccessPageNumber,omitempty" xml:"SuccessPageNumber,omitempty"`
-	// The number of successful records to display per page.
+	// The number of successful records to return on each page.
 	//
 	// example:
 	//

@@ -28,19 +28,19 @@ type DescribeDBInstanceEndpointRequest struct {
 	//
 	// pxc-hzjasd****
 	DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
-	// The number of entries per page for a paged query. Maximum value: 100. Default value: If the value is not specified or is less than 10, the default value is 10. If the value is greater than 100, the default value is 100.
+	// The number of entries to return on each page in a paged query. Maximum value: 100. Default value: 10. If you do not specify a value in Settings or the specified value is less than 10, the default value 10 is used for paging. If the specified value is greater than 100, the default value 100 is used.
 	//
 	// example:
 	//
 	// 1000
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The token for the next query.
+	// The token used to start the next query.
 	//
 	// example:
 	//
 	// xxdds
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The region in which the instance resides.
+	// The region ID of the instance.
 	//
 	// example:
 	//

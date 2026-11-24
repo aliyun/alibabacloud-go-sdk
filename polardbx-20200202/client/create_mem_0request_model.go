@@ -24,7 +24,7 @@ type CreateMem0Request struct {
 	//
 	// pxc-xxx
 	DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
-	// The region where the instance is located.
+	// The region where the instance resides.
 	//
 	// This parameter is required.
 	//

@@ -16,7 +16,7 @@ type iDescribeCustomEndpointListResponseBody interface {
 }
 
 type DescribeCustomEndpointListResponseBody struct {
-	// The data struct.
+	// The data structure.
 	Data *DescribeCustomEndpointListResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// Id of the request
 	//
@@ -68,7 +68,7 @@ type DescribeCustomEndpointListResponseBodyData struct {
 	//
 	// 0
 	CanDeleteCount *int32 `json:"CanDeleteCount,omitempty" xml:"CanDeleteCount,omitempty"`
-	// The endpoint details.
+	// The detailed information about the endpoints.
 	Endpoints []*DescribeCustomEndpointListResponseBodyDataEndpoints `json:"Endpoints,omitempty" xml:"Endpoints,omitempty" type:"Repeated"`
 }
 
@@ -120,7 +120,7 @@ type DescribeCustomEndpointListResponseBodyDataEndpoints struct {
 	//
 	// pxc-shra****zq0j01.polarx.rds.aliyuncs.com
 	ConnectionString *string `json:"ConnectionString,omitempty" xml:"ConnectionString,omitempty"`
-	// The custom endpoint ID.
+	// The ID of the custom endpoint.
 	//
 	// example:
 	//
@@ -138,15 +138,15 @@ type DescribeCustomEndpointListResponseBodyDataEndpoints struct {
 	//
 	// Name
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// Specifies whether the node automatically joins the cluster and starts providing services after being added or restored.
+	// Indicates whether the node automatically joins the cluster and starts providing services after being added or restored.
 	//
 	// example:
 	//
 	// true
 	NodeAutoEnter *string `json:"NodeAutoEnter,omitempty" xml:"NodeAutoEnter,omitempty"`
-	// If you want to query the metrics of a read-only node in a cloud-native read/write splitting architecture instance, set this parameter to **READONLY*	- along with the specific **NodeId**.
+	// If you want to query the metrics of read-only nodes in a cloud-native instance with the read/write splitting architecture, you must set this parameter to **READONLY*	- and specify the **NodeId*	- parameter.
 	//
-	// >  In other cases, you do not need to specify this parameter (or set it to **MASTER**).
+	// > In other cases, you do not need to specify this parameter or you can set it to **MASTER**.
 	//
 	// example:
 	//
@@ -164,13 +164,13 @@ type DescribeCustomEndpointListResponseBodyDataEndpoints struct {
 	//
 	// created
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The vSwitch ID.
+	// The ID of the vSwitch.
 	//
 	// example:
 	//
 	// vsw-8vbkw****5yh4nrd639ih
 	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	// The ID of the VPC where the endpoint resides.
+	// The ID of the virtual private cloud (VPC) where the endpoint resides.
 	//
 	// example:
 	//

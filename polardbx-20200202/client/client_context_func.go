@@ -118,11 +118,11 @@ func (client *Client) AllocateColdDataVolumeWithContext(ctx context.Context, req
 
 // Summary:
 //
-// Enables public network connections for a specified physical ReplicaSet of the context service.
+// Enables public network access for a specified physical ReplicaSet of the context service.
 //
 // Description:
 //
-// This operation confirms that no active connections exist before a rollback task to ensure operational security.
+// This operation confirms that no active connections exist before rolling back a task to ensure operational security.
 //
 // @param request - AllocateContext0PublicConnectionRequest
 //
@@ -182,11 +182,11 @@ func (client *Client) AllocateContext0PublicConnectionWithContext(ctx context.Co
 
 // Summary:
 //
-// Enables a public network connection for a ContextDB-X service ReplicaSet.
+// Enables public network connection for a ContextDB-X service ReplicaSet.
 //
 // Description:
 //
-// This operation is used to confirm that no active connections exist before a rollback task, ensuring operation safety.
+// This operation verifies that no active connections exist before a rollback task to ensure operational security.
 //
 // @param request - AllocateContextDBPublicConnectionRequest
 //
@@ -326,7 +326,7 @@ func (client *Client) AllocateInstancePublicConnectionWithContext(ctx context.Co
 //
 // Description:
 //
-// This operation checks for active connections before a rollback task to ensure operational security.
+// This operation verifies that no active connections exist before rolling back a task to ensure operational security.
 //
 // @param request - AllocateMem0PublicConnectionRequest
 //
@@ -382,11 +382,11 @@ func (client *Client) AllocateMem0PublicConnectionWithContext(ctx context.Contex
 
 // Summary:
 //
-// Enables public network connection for PXFS.
+// Enables a public network connection for PXFS.
 //
 // Description:
 //
-// Enables public network connection for the agent file service.
+// Enables a public network connection for the Agent file service.
 //
 // @param request - AllocatePxfsPublicConnectionRequest
 //
@@ -638,7 +638,7 @@ func (client *Client) CheckCloudResourceAuthorizedWithContext(ctx context.Contex
 
 // Summary:
 //
-// Performs a service health check.
+// Checks the health of the service.
 //
 // @param request - CheckHealthRequest
 //
@@ -1407,11 +1407,11 @@ func (client *Client) CreateDBInstanceWithContext(ctx context.Context, tmpReq *C
 
 // Summary:
 //
-// Creates a data import task to import external data files such as SQL scripts and CSV files into a target database instance.
+// Creates a data import task to import external data files, such as SQL scripts and CSV files, into a destination database instance.
 //
 // Description:
 //
-// The CreateDataImportTask operation creates a data import task that supports importing SQL or CSV files stored in OSS, ECS, or directly uploaded into a target database instance. By specifying the instance ID, database name, engine type, data source (such as an OSS path), and import type, the system performs data write operations asynchronously or synchronously. This operation is applicable to scenarios such as data migration, initialization, and data backfill. A task ID is returned for subsequent status queries and management.
+// The CreateDataImportTask operation creates a data import task. It supports importing SQL or CSV files stored in OSS or ECS, or directly passed files, into a destination database instance. By specifying the instance ID, database name, engine type, data source such as the OSS path, and import type, the system asynchronously or synchronously performs data write operations. This operation is applicable to scenarios such as data migration, initialization, and data backfilling. It returns a task ID for subsequent status query and management.
 //
 // @param request - CreateDataImportTaskRequest
 //
@@ -1615,7 +1615,7 @@ func (client *Client) CreateGdnInstanceWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// Adds a secondary instance to a global database network (GDN).
+// Adds a GDN secondary instance.
 //
 // Description:
 //
@@ -1807,7 +1807,7 @@ func (client *Client) CreateMem0WithContext(ctx context.Context, request *Create
 
 // Summary:
 //
-// Creates a PolarDBX Search instance.
+// Creates a PolarDB-X Search instance.
 //
 // Description:
 //
@@ -2495,11 +2495,11 @@ func (client *Client) CreatePxfuseWithContext(ctx context.Context, request *Crea
 
 // Summary:
 //
-// Performs a health check on a replication task during data migration.
+// Performs a health check on the replication link during data migration.
 //
 // Description:
 //
-// During the data synchronization phase, proactively initiates a diagnostic task for the replication task to check for issues such as latency, replication interruption, or data inconsistency.
+// Initiates a diagnostic task for the replication link during the data synchronization phase to check for anomalies such as latency, interruption, and data inconsistency.
 //
 // @param request - CreateRplInspectionTaskRequest
 //
@@ -2571,7 +2571,7 @@ func (client *Client) CreateRplInspectionTaskWithContext(ctx context.Context, re
 
 // Summary:
 //
-// Creates a SQL statement assessment task. You submit SQL statements through this operation, and the system performs static analysis and risk assessment to identify execution risks and compatibility issues on the target database instance.
+// Creates an SQL statement evaluation task. This operation submits SQL statements for static analysis and risk assessment, and outputs execution risks and compatibility issues on the target database instance.
 //
 // @param request - CreateSQLEvaluateTaskRequest
 //
@@ -3129,7 +3129,7 @@ func (client *Client) DeleteAccountWithContext(ctx context.Context, request *Del
 //
 // Description:
 //
-// Deletes the custom endpoint of a specified database instance and disables access through the domain name.
+// Deletes the custom endpoint of a specified database instance and closes the access entry for the domain name.
 //
 // @param request - DeleteContext0Request
 //
@@ -3541,7 +3541,7 @@ func (client *Client) DeleteMem0WithContext(ctx context.Context, request *Delete
 //
 // Description:
 //
-// Deletes a custom endpoint of a specified database instance and disables access through the domain name.
+// Deletes the custom endpoint of a specified database instance and disables access to the domain name.
 //
 // @param request - DeleteOpenSearchRequest
 //
@@ -3651,9 +3651,9 @@ func (client *Client) DeleteOpenSearchAccountWithContext(ctx context.Context, re
 //
 // - Binary log files are retained for 15 days by default.
 //
-// - The returned log list contains all logs whose log record end time is after the query start time and whose log record start time is before the query end time.
+// - The returned log list includes all log records whose log record end time is later than the query start time and whose log record start time is earlier than the query end time.
 //
-// - If DownloadLink is not NULL, you can use the URL to download the backup file. The URL is valid for 2 days after it is generated. Download the file before the URL expires.
+// - If the DownloadLink parameter is not NULL, you can use this URL to download the backup file. The URL is valid for two days after it is generated. Download the file before it expires.
 //
 // @param request - DeleteOpenSearchWhitelistGroupRequest
 //
@@ -3809,11 +3809,11 @@ func (client *Client) DeletePxfsWithContext(ctx context.Context, request *Delete
 
 // Summary:
 //
-// Deletes an Agent file service tenant identity.
+// Deletes the tenant identity for the Agent file service.
 //
 // Description:
 //
-// Deletes an Agent file service tenant identity.
+// Deletes the tenant identity for the Agent file service.
 //
 // @param request - DeletePxfsUserRequest
 //
@@ -3873,7 +3873,7 @@ func (client *Client) DeletePxfsUserWithContext(ctx context.Context, request *De
 //
 // Description:
 //
-// Deletes a custom endpoint of a specified database instance and disables access through the domain name.
+// Deletes the custom endpoint of a specified database instance and disables access to the domain name.
 //
 // @param request - DeletePxfuseRequest
 //
@@ -4085,7 +4085,7 @@ func (client *Client) DeleteSupabaseNetTypeWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// Queries the list of accounts by calling the DescribeAccountList operation.
+// Queries the list of accounts.
 //
 // @param request - DescribeAccountListRequest
 //
@@ -4141,7 +4141,7 @@ func (client *Client) DescribeAccountListWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// Queries the O&M time configuration.
+// Queries the O&M window configuration.
 //
 // @param request - DescribeActiveOperationMaintainConfRequest
 //
@@ -4333,7 +4333,7 @@ func (client *Client) DescribeArchiveTableListWithContext(ctx context.Context, r
 
 // Summary:
 //
-// Queries the list of available regions that support cross-region operations, typically used for multi-region deployment or data replication scenarios.
+// Queries the list of zones that support cross-region operations, typically used for multi-region deployment or data replication scenarios.
 //
 // @param request - DescribeAvailableCrossRegionsRequest
 //
@@ -4429,7 +4429,7 @@ func (client *Client) DescribeBackupPolicyWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// Queries the details of a backup set by calling the DescribeBackupSet operation.
+// Queries the details of a backup set.
 //
 // @param request - DescribeBackupSetRequest
 //
@@ -4485,7 +4485,7 @@ func (client *Client) DescribeBackupSetWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// Queries the list of backup sets by calling the DescribeBackupSetList operation.
+// Queries the list of backup sets.
 //
 // @param request - DescribeBackupSetListRequest
 //
@@ -4533,7 +4533,7 @@ func (client *Client) DescribeBackupSetListWithContext(ctx context.Context, requ
 //
 // - The returned log list includes all log records whose end time is later than the query start time and whose start time is earlier than the query end time.
 //
-// - If the value of DownloadLink is not NULL, you can use this URL to download the backup file. The URL is valid for two days after it is generated. Download the file before it expires.
+// - If DownloadLink is not NULL, you can download the backup file by using this URL. The URL is valid for two days after it is generated. Download the file before it expires.
 //
 // @param request - DescribeBinaryLogListRequest
 //
@@ -4661,7 +4661,7 @@ func (client *Client) DescribeCdcClassListWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// Queries CDC information.
+// Queries the CDC information.
 //
 // @param request - DescribeCdcInfoRequest
 //
@@ -4709,15 +4709,15 @@ func (client *Client) DescribeCdcInfoWithContext(ctx context.Context, request *D
 
 // Summary:
 //
-// Retrieves a list of CDC versions.
+// Queries the list of CDC versions.
 //
 // Description:
 //
 // - Binary log files are retained for 15 days by default.
 //
-// - The returned log list includes all log records whose end time is after the query start time and whose start time is before the query end time.
+// - The returned log list includes all log records whose end time is later than the query start time and whose start time is earlier than the query end time.
 //
-// - If DownloadLink is not NULL, you can download the backup file by using this URL. The URL is valid for 2 days after it is generated. Download the file before it expires.
+// - If DownloadLink is not NULL, you can download the backup file by using this URL. The URL is valid for two days after it is generated. Download the file before it expires.
 //
 // @param request - DescribeCdcVersionListRequest
 //
@@ -4769,7 +4769,7 @@ func (client *Client) DescribeCdcVersionListWithContext(ctx context.Context, req
 
 // Summary:
 //
-// Invokes the DescribeCharacterSet operation to query the character set types supported by databases in a target instance.
+// Invokes the DescribeCharacterSet operation to query the character set types supported by the database on the target instance.
 //
 // @param request - DescribeCharacterSetRequest
 //
@@ -4857,7 +4857,7 @@ func (client *Client) DescribeColdDataBasicInfoWithContext(ctx context.Context, 
 
 // Summary:
 //
-// Queries the list of column store specifications for an instance.
+// Queries the column store specifications of an instance.
 //
 // @param request - DescribeColumnarClassListRequest
 //
@@ -4963,9 +4963,9 @@ func (client *Client) DescribeColumnarInfoWithContext(ctx context.Context, reque
 //
 // - Binary log files are retained for 15 days by default.
 //
-// - The returned log list includes all logs whose log record end time is after the query start time and whose log record start time is before the query end time.
+// - The returned log list includes all log records whose end time is later than the query start time and whose start time is earlier than the query end time.
 //
-// - If DownloadLink is not NULL, you can download the backup file from this URL. The URL is valid for 2 days after it is generated. Download the file before the URL expires.
+// - If DownloadLink is not NULL, you can download the backup file by using this URL. The URL is valid for 2 days after it is generated. Download the file before it expires.
 //
 // @param request - DescribeColumnarVersionListRequest
 //
@@ -5013,7 +5013,7 @@ func (client *Client) DescribeColumnarVersionListWithContext(ctx context.Context
 
 // Summary:
 //
-// Retrieves the property information of a specified component, including property names and types.
+// Retrieves the property information of a specified component, including the property name and type.
 //
 // @param request - DescribeComponentPropetiesRequest
 //
@@ -5073,7 +5073,7 @@ func (client *Client) DescribeComponentPropetiesWithContext(ctx context.Context,
 //
 // Description:
 //
-// > 	- PolarDB-X 2.0 SQL audit and analysis feature is free of charge, but Simple Log Service charges fees for storage space, read traffic, number of requests, data transformation, and data shipping. For more information about the SQL audit feature, see [Enable SQL audit and analysis](https://help.aliyun.com/document_detail/184619.html).
+// > 	- The SQL audit and analysis feature of PolarDB-X 2.0 is free of charge. However, Simple Log Service charges fees for storage space, read traffic, number of requests, data transformation, and data shipping. For more information about the SQL audit feature, see [Enable SQL audit and analysis](https://help.aliyun.com/document_detail/184619.html).
 //
 // @param request - DescribeContext0ConfigRequest
 //
@@ -5121,11 +5121,11 @@ func (client *Client) DescribeContext0ConfigWithContext(ctx context.Context, req
 
 // Summary:
 //
-// Queries the information about context service instances.
+// Queries the details of a context service instance.
 //
 // Description:
 //
-// > 	- The SQL audit and analysis feature of PolarDB-X 2.0 is free of charge, but Simple Log Service charges fees for storage space, read traffic, number of requests, data transformation, and data shipping. For more information about the SQL audit feature, see [Enable SQL audit and analysis](https://help.aliyun.com/document_detail/184619.html).
+// > 	- The SQL audit and analysis feature of PolarDB-X 2.0 is free of charge. However, Simple Log Service charges fees for storage space, read traffic, number of requests, data transformation, and data shipping. For more information about the SQL audit feature, see [Enable SQL audit and analysis](https://help.aliyun.com/document_detail/184619.html).
 //
 // @param request - DescribeContext0InfoRequest
 //
@@ -5173,11 +5173,11 @@ func (client *Client) DescribeContext0InfoWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// Queries the whitelist for the context service.
+// Queries the context service whitelist.
 //
 // Description:
 //
-// > 	- The SQL audit and analysis feature of PolarDB-X 2.0 is free of charge. However, Simple Log Service charges fees for storage space, read traffic, number of requests, data transformation, and data shipping. For more information about the SQL audit feature, see [Enable SQL audit and analysis](https://help.aliyun.com/document_detail/184619.html).
+// > 	- The SQL audit and analysis feature of PolarDB-X 2.0 is free of charge. However, Simple Log Service charges fees for storage space, read traffic, number of requests, data processing, and data shipping. For more information about the SQL audit feature, see [Enable SQL audit and analysis](https://help.aliyun.com/document_detail/184619.html).
 //
 // @param request - DescribeContext0SecurityIpsRequest
 //
@@ -5277,7 +5277,7 @@ func (client *Client) DescribeContextDBConfigWithContext(ctx context.Context, re
 
 // Summary:
 //
-// Queries the information of a ContextDB-X instance.
+// Queries the information of ContextDB-X instances.
 //
 // Description:
 //
@@ -5329,11 +5329,11 @@ func (client *Client) DescribeContextDBInfoWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// Queries the whitelist of a ContextDB-X instance.
+// Queries the ContextDB-X whitelist.
 //
 // Description:
 //
-// > 	- The SQL audit and analysis feature of PolarDB-X 2.0 is free of charge. However, Simple Log Service charges fees for storage space, read traffic, number of requests, data transformation, and data shipping. For more information about the SQL audit feature, see [Enable SQL audit and analysis](https://help.aliyun.com/document_detail/184619.html).
+// > 	- The SQL audit and analysis feature of PolarDB-X 2.0 is free of charge. However, Simple Log Service charges fees for storage space, read traffic, number of requests, data transformation, and data delivery. For more information about the SQL audit feature, see [Enable SQL audit and analysis](https://help.aliyun.com/document_detail/184619.html).
 //
 // @param request - DescribeContextDBSecurityIpsRequest
 //
@@ -5381,11 +5381,11 @@ func (client *Client) DescribeContextDBSecurityIpsWithContext(ctx context.Contex
 
 // Summary:
 //
-// Queries the list of user-defined custom domain names.
+// Queries the list of custom endpoints.
 //
 // Description:
 //
-// This operation retrieves the list of custom endpoints configured by the user, which facilitates the management and viewing of private connection or VPC endpoint service settings.
+// Retrieves the list of custom endpoints configured by users to facilitate the management and viewing of private connections or VPC endpoint service settings.
 //
 // @param request - DescribeCustomEndpointListRequest
 //
@@ -5445,7 +5445,7 @@ func (client *Client) DescribeCustomEndpointListWithContext(ctx context.Context,
 //
 // Description:
 //
-// This operation retrieves the list of custom endpoints configured by the user to facilitate the management and viewing of private connections or VPC endpoint service settings.
+// This operation retrieves the list of custom endpoints configured by users to facilitate the management and viewing of private connections or VPC endpoint service settings.
 //
 // @param request - DescribeDBInstanceAttributeRequest
 //
@@ -5497,7 +5497,7 @@ func (client *Client) DescribeDBInstanceAttributeWithContext(ctx context.Context
 
 // Summary:
 //
-// Calls the DescribeDBInstanceConfig operation to retrieve instance configuration parameters.
+// Queries the configuration parameters of an instance.
 //
 // @param request - DescribeDBInstanceConfigRequest
 //
@@ -5553,7 +5553,7 @@ func (client *Client) DescribeDBInstanceConfigWithContext(ctx context.Context, r
 //
 // Description:
 //
-// Queries the list of custom endpoints configured by a user, which helps manage and view private connection or VPC endpoint service settings.
+// Retrieves a list of custom endpoints configured by the user to facilitate the management and viewing of private connections or VPC endpoint services.
 //
 // @param request - DescribeDBInstanceEndpointRequest
 //
@@ -5609,7 +5609,7 @@ func (client *Client) DescribeDBInstanceEndpointWithContext(ctx context.Context,
 
 // Summary:
 //
-// Queries the high availability information of an instance.
+// Queries the high availability (HA) information of an instance.
 //
 // @param request - DescribeDBInstanceHARequest
 //
@@ -5705,7 +5705,7 @@ func (client *Client) DescribeDBInstanceSSLWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// Queries the details of Transparent Data Encryption (TDE) for an instance.
+// Retrieves the TDE details of an instance.
 //
 // @param request - DescribeDBInstanceTDERequest
 //
@@ -5813,7 +5813,7 @@ func (client *Client) DescribeDBInstanceTopologyWithContext(ctx context.Context,
 
 // Summary:
 //
-// Retrieves the basic information of an instance by using the endpoint of the instance.
+// Queries the basic information of an instance based on its endpoint.
 //
 // @param request - DescribeDBInstanceViaEndpointRequest
 //
@@ -5861,7 +5861,7 @@ func (client *Client) DescribeDBInstanceViaEndpointWithContext(ctx context.Conte
 
 // Summary:
 //
-// Queries a list of database instances.
+// Queries a list of instances.
 //
 // @param request - DescribeDBInstancesRequest
 //
@@ -5947,9 +5947,9 @@ func (client *Client) DescribeDBInstancesWithContext(ctx context.Context, reques
 //
 // Note:
 //
-// - The **endpoint*	- differs from other API operations. For Chinese mainland regions and Singapore, use **polardbx.aliyuncs.com**. For other regions, use **polardbx.{region id}.aliyunc.com**.
+// - The **endpoint*	- for this operation is different from other operations. Use **polardbx.aliyuncs.com*	- for the Chinese mainland and Singapore regions, and use **polardbx.{region id}.aliyunc.com*	- for other regions.
 //
-// - When debugging this API operation, if you receive a service unavailable error, verify that the **endpoint*	- is correct. You can switch the **service address*	- to **Dubai*	- or **India*	- and change the **endpoint*	- to **polardbx.aliyuncs.com**.
+// - If a "service unavailable" error occurs when debugging this API operation, check whether the **endpoint*	- is correct. You can switch the **service address*	- to **Dubai*	- or **India*	- to change the **endpoint*	- to **polardbx.aliyuncs.com**.
 //
 // @param request - DescribeDBNodePerformanceRequest
 //
@@ -6237,7 +6237,7 @@ func (client *Client) DescribeEnabledCrossRegionsWithContext(ctx context.Context
 
 // Summary:
 //
-// Queries the list of PolarDB-X assessment import tasks. (single)
+// Queries the list of PolarDB-X assessment import tasks.
 //
 // @param request - DescribeEvaluateAndImportTaskRequest
 //
@@ -6285,11 +6285,11 @@ func (client *Client) DescribeEvaluateAndImportTaskWithContext(ctx context.Conte
 
 // Summary:
 //
-// Queries a list of assessment import tasks for PolarDB-X.
+// Queries the list of PolarDB-X assessment import tasks.
 //
 // Description:
 //
-// The CreateDataImportTask operation creates a data import task. You can use this operation to import SQL or CSV files stored in OSS or ECS, or directly provided, into a destination database instance. By specifying the instance ID, database name, engine type, data source (such as an OSS path), and import type, the system performs data write operations asynchronously or synchronously. This operation is applicable to scenarios such as data migration, initialization, and data backfill. A task ID is returned for subsequent status queries and management.
+// The CreateDataImportTask operation creates a data import task. It supports importing SQL or CSV files stored in OSS, on ECS instances, or directly passed in the request into a target database instance. By specifying the instance ID, database name, engine type, data source (such as the OSS path), and import type, the system asynchronously or synchronously writes data. This operation is suitable for scenarios such as data migration, initialization, and data backfilling. It returns a task ID for subsequent status query and management.
 //
 // @param request - DescribeEvaluateAndImportTasksRequest
 //
@@ -6381,7 +6381,7 @@ func (client *Client) DescribeEventsWithContext(ctx context.Context, request *De
 
 // Summary:
 //
-// Queries the list of global database network (GDN) instances.
+// Queries a list of global database network (GDN) instances.
 //
 // @param request - DescribeGdnInstancesRequest
 //
@@ -6445,11 +6445,11 @@ func (client *Client) DescribeGdnInstancesWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// # View Memory Engine Information
+// Retrieves the memory engine information.
 //
 // Description:
 //
-// > 	- The SQL audit and analysis feature of PolarDB-X 2.0 is free of charge. However, Log Service charges fees for storage space, read traffic, the number of requests, data transformation, and data shipping. For more information about the SQL audit feature, see [Enable SQL audit and analysis](https://help.aliyun.com/document_detail/184619.html).
+// > 	- The SQL audit and analysis feature of PolarDB-X 2.0 is free of charge. However, Simple Log Service charges fees for storage space, read traffic, number of requests, data transformation, and data shipping. For more information about the SQL audit feature, see [Enable SQL audit and analysis](https://help.aliyun.com/document_detail/184619.html).
 //
 // @param request - DescribeMem0InfoRequest
 //
@@ -6601,7 +6601,7 @@ func (client *Client) DescribeOpenBackupSetWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// Queries the account information of PolarDB-X Search.
+// Queries the account information of PolarDBX Search.
 //
 // Description:
 //
@@ -6653,11 +6653,11 @@ func (client *Client) DescribeOpenSearchAccountInfoWithContext(ctx context.Conte
 
 // Summary:
 //
-// Queries the connection information of PolarDB-X Search, including internal, public, and Dashboard endpoints and protocols.
+// Queries the connection information of PolarDB-X Search, including internal, public, and dashboard endpoints and protocols.
 //
 // Description:
 //
-// During the data synchronization phase, proactively initiates a diagnostic task for the replication task to check for exceptions such as latency, replication interruption, or data inconsistency.
+// During the data synchronization phase, initiates a diagnostic task for the replication task to check for anomalies such as latency, interruptions, and data inconsistency.
 //
 // @param request - DescribeOpenSearchConnectionInfoRequest
 //
@@ -6757,11 +6757,11 @@ func (client *Client) DescribeOpenSearchInfoWithContext(ctx context.Context, req
 
 // Summary:
 //
-// Queries the list of PolarDBX Search instances.
+// Queries PolarDB-X Search instances.
 //
 // Description:
 //
-// Queries the list of custom endpoints that you have configured. This operation helps you manage and view the settings of private connections or VPC endpoint services.
+// Retrieves a list of custom endpoints configured by the user to facilitate the management and viewing of private connection or VPC endpoint service settings.
 //
 // @param request - DescribeOpenSearchInstancesRequest
 //
@@ -6829,7 +6829,7 @@ func (client *Client) DescribeOpenSearchInstancesWithContext(ctx context.Context
 //
 // Description:
 //
-// Retrieves the list of virtual private clouds (VPCs) available under your account for an instance, so that you can select an appropriate network environment when creating or managing database instances.
+// This operation retrieves the list of virtual private clouds (VPCs) available under your account for instances, allowing you to select an appropriate network environment when creating or managing database instances.
 //
 // @param request - DescribeOpenSearchNodesRequest
 //
@@ -6935,9 +6935,9 @@ func (client *Client) DescribeOpenSearchResourceUsageWithContext(ctx context.Con
 //
 // - Binary log files are retained for 15 days by default.
 //
-// - The returned log list contains all log records whose log record end time is later than the query start time and whose log record start time is earlier than the query end time.
+// - The returned log list includes all log records whose end time is later than the query start time and whose start time is earlier than the query end time.
 //
-// - If DownloadLink is not NULL, you can use this URL to download the backup file. This URL is valid for 2 days after it is generated. Download the file before the URL expires.
+// - If DownloadLink is not NULL, you can use this URL to download the backup file. The URL is valid for two days after it is generated. Download the file before it expires.
 //
 // @param request - DescribeOpenSearchTopologyRequest
 //
@@ -6985,15 +6985,15 @@ func (client *Client) DescribeOpenSearchTopologyWithContext(ctx context.Context,
 
 // Summary:
 //
-// Queries the whitelist of a PolarDB-X Search instance. You can filter the results by network type.
+// Queries the PolarDB-X Search whitelists. You can filter the whitelists by network type.
 //
 // Description:
 //
 // - Binary log files are retained for 15 days by default.
 //
-// - The returned log list includes all logs whose log record end time is after the query start time and whose log record start time is before the query end time.
+// - The returned log list includes all log records whose end time is later than the query start time and whose start time is earlier than the query end time.
 //
-// - If DownloadLink is not NULL, you can use the URL to download the backup file. The URL is valid for 2 days after it is generated. Download the file before the URL expires.
+// - If DownloadLink is not NULL, you can download the backup file by using this URL. The URL is valid for two days after it is generated. Download the file before it expires.
 //
 // @param request - DescribeOpenSearchWhitelistsRequest
 //
@@ -7041,7 +7041,7 @@ func (client *Client) DescribeOpenSearchWhitelistsWithContext(ctx context.Contex
 
 // Summary:
 //
-// Queries the list of database parameter templates created by users or supported by the system, including basic information, associated engine types, and modification times of each parameter template.
+// Queries the list of database parameter groups created by users or supported by the system, including the basic information, associated engine types, and modification time of each parameter group.
 //
 // @param request - DescribeParameterGroupsRequest
 //
@@ -7081,7 +7081,7 @@ func (client *Client) DescribeParameterGroupsWithContext(ctx context.Context, re
 
 // Summary:
 //
-// Queries the instance parameter templates.
+// Queries the parameter templates of an instance.
 //
 // @param request - DescribeParameterTemplatesRequest
 //
@@ -7189,7 +7189,7 @@ func (client *Client) DescribeParametersWithContext(ctx context.Context, request
 
 // Summary:
 //
-// Queries the details of all data nodes (Data Nodes) in a PolarDB-X instance, including node status, storage usage, and network addresses, to facilitate operations management and monitoring.
+// Queries the details of all data nodes in a PolarDB-X instance, including node status, storage usage, and network addresses, to facilitate operations management and monitoring.
 //
 // @param request - DescribePolarxDataNodesRequest
 //
@@ -7249,11 +7249,11 @@ func (client *Client) DescribePolarxDataNodesWithContext(ctx context.Context, re
 
 // Summary:
 //
-// Queries the access token for the Agent file service.
+// Queries the access token for the agent file service.
 //
 // Description:
 //
-// Queries the access token for the Agent file service.
+// Queries the access token for the agent file service.
 //
 // @param request - DescribePxfsAccessTokensRequest
 //
@@ -7309,11 +7309,11 @@ func (client *Client) DescribePxfsAccessTokensWithContext(ctx context.Context, r
 
 // Summary:
 //
-// Queries the information about an Agent file service instance.
+// Queries the information of an Agent file service instance.
 //
 // Description:
 //
-// Queries the information about an Agent file service instance.
+// Queries the information of an Agent file service instance.
 //
 // @param request - DescribePxfsInfoRequest
 //
@@ -7361,11 +7361,11 @@ func (client *Client) DescribePxfsInfoWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// Queries the whitelist for the Agent file service.
+// Queries the whitelist for the agent file service.
 //
 // Description:
 //
-// Queries the whitelist for the Agent file service.
+// Queries the whitelist for the agent file service.
 //
 // @param request - DescribePxfsSecurityIpsRequest
 //
@@ -7629,11 +7629,11 @@ func (client *Client) DescribePxfuseSecurityIpsWithContext(ctx context.Context, 
 
 // Summary:
 //
-// Queries the list of VPCs for PolarDB-X.
+// Queries the list of virtual private clouds (VPCs) available for PolarDB-X.
 //
 // Description:
 //
-// Queries the list of virtual private clouds (VPCs) available under your account. You can use this operation to select an appropriate network environment when creating or managing database instances.
+// Retrieves the list of virtual private clouds (VPCs) available in your account for instances, so that you can select an appropriate network environment when creating or managing database instances.
 //
 // @param request - DescribeRdsVpcsRequest
 //
@@ -7681,11 +7681,11 @@ func (client *Client) DescribeRdsVpcsWithContext(ctx context.Context, request *D
 
 // Summary:
 //
-// Queries the list of available vSwitches in a virtual private cloud (VPC) for an ApsaraDB RDS instance.
+// Queries the list of vSwitches available for an ApsaraDB RDS instance in a virtual private cloud (VPC).
 //
 // Description:
 //
-// Queries the list of available virtual private clouds (VPCs) under your account for an instance, so that you can select an appropriate network environment when creating or managing database instances.
+// Retrieves the list of virtual private clouds (VPCs) available in your account to help you select an appropriate network environment when you create or manage database instances.
 //
 // @param request - DescribeRdsVswitchesRequest
 //
@@ -7737,11 +7737,11 @@ func (client *Client) DescribeRdsVswitchesWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// Queries the details of the replication lag inspection task for an instance.
+// Queries the details of the replication latency inspection task for an instance.
 //
 // Description:
 //
-// During the data synchronization phase, proactively initiates a diagnostic task for the replication task to check for exceptions such as latency, interruption, or data inconsistency.
+// During the data synchronization phase, proactively initiates a diagnostic task for the replication task to check for anomalies such as latency, interruption, and data inconsistency.
 //
 // @param request - DescribeRplInspectionTaskRequest
 //
@@ -7805,7 +7805,7 @@ func (client *Client) DescribeRplInspectionTaskWithContext(ctx context.Context, 
 
 // Summary:
 //
-// Retrieves the progress of a scale-out migration task.
+// Displays the progress of a scale-out migration task.
 //
 // @param request - DescribeScaleOutMigrateTaskListRequest
 //
@@ -7869,7 +7869,7 @@ func (client *Client) DescribeScaleOutMigrateTaskListWithContext(ctx context.Con
 
 // Summary:
 //
-// Queries the IP whitelist of an instance.
+// Queries the IP address whitelists of an instance.
 //
 // @param request - DescribeSecurityIpsRequest
 //
@@ -7969,7 +7969,7 @@ func (client *Client) DescribeServiceAccountWithContext(ctx context.Context, req
 
 // Summary:
 //
-// Queries the storage usage details of an instance, including total capacity, used space, and remaining space.
+// Queries the storage space usage details of an instance, including the total capacity, used space, and remaining space.
 //
 // @param request - DescribeShowStorageInfoRequest
 //
@@ -8097,11 +8097,11 @@ func (client *Client) DescribeSlowLogRecordsWithContext(ctx context.Context, req
 
 // Summary:
 //
-// Queries SQL audit information.
+// Retrieves SQL audit information.
 //
 // Description:
 //
-// > 	- The SQL audit and analysis feature of PolarDB-X 2.0 is free of charge. However, Simple Log Service charges fees for storage space, read traffic, number of requests, data transformation, and data delivery. For more information about the SQL audit feature, see [Enable SQL audit and analysis](https://help.aliyun.com/document_detail/184619.html).
+// > 	- The SQL audit and analysis feature of PolarDB-X 2.0 is free of charge. However, Simple Log Service charges fees for storage space, read traffic, number of requests, data transformation, and data shipping. For more information about the SQL audit feature, see [Enable SQL audit and analysis](https://help.aliyun.com/document_detail/184619.html).
 //
 // @param request - DescribeSqlAuditInfoRequest
 //
@@ -8205,7 +8205,7 @@ func (client *Client) DescribeSqlFlashbackTaskListWithContext(ctx context.Contex
 
 // Summary:
 //
-// Queries the details of a storage pool, including capacity, usage, and status.
+// Queries the details of storage pools, including capacity, usage, and status.
 //
 // @param request - DescribeStoragePoolInfoRequest
 //
@@ -8257,11 +8257,11 @@ func (client *Client) DescribeStoragePoolInfoWithContext(ctx context.Context, re
 
 // Summary:
 //
-// Queries the details of a database schema import task.
+// Queries the details of a database structure import task.
 //
 // Description:
 //
-// The CreateDataImportTask operation creates a data import task. This operation supports importing SQL or CSV files stored in OSS or ECS, or directly provided, into a destination database instance. By specifying the instance ID, database name, engine type, data source (such as an OSS path), and import type, the system performs data write operations asynchronously or synchronously. This operation is applicable to scenarios such as data migration, initialization, and data backfill. A task ID is returned for subsequent status queries and management.
+// The CreateDataImportTask operation creates a data import task. It supports importing SQL or CSV files stored in OSS, on ECS instances, or directly passed in the request into a target database instance. By specifying the instance ID, database name, engine type, data source (such as the OSS path), and import type, the system asynchronously or synchronously performs data write operations. This operation is applicable to scenarios such as data migration, initialization, and data backfilling. It returns a task ID for subsequent status query and management.
 //
 // @param request - DescribeStructureImportTaskInfoRequest
 //
@@ -8315,9 +8315,9 @@ func (client *Client) DescribeStructureImportTaskInfoWithContext(ctx context.Con
 //
 // - Binary log files are retained for 15 days by default.
 //
-// - The returned log list includes all log records whose end time is after the query start time and whose start time is before the query end time.
+// - The returned log list includes all logs whose log record end time is after the query start time and whose log record start time is before the query end time.
 //
-// - If DownloadLink is not NULL, you can use this URL to download the backup file. This URL is valid for 2 days after it is generated. Download the file before it expires.
+// - If DownloadLink is not NULL, you can use this URL to download the backup file. The URL is valid for 2 days after it is generated. Download the file before it expires.
 //
 // @param request - DescribeSupabaseApiKeyRequest
 //
@@ -8495,9 +8495,9 @@ func (client *Client) DescribeSupabaseInstancesWithContext(ctx context.Context, 
 //
 // - Binary log files are retained for 15 days by default.
 //
-// - The returned log list includes all log records whose record end time is after the query start time and whose record start time is before the query end time.
+// - The returned log list includes all log records whose log record end time is after the query start time and whose log record start time is before the query end time.
 //
-// - If DownloadLink is not NULL, you can use this URL to download the backup file. The URL is valid for two days after it is generated. Download the file before it expires.
+// - If DownloadLink is not NULL, you can download the backup file by using this URL. The URL is valid for 2 days after it is generated. Download the file before it expires.
 //
 // @param request - DescribeSupabaseIpWhitelistRequest
 //
@@ -8601,7 +8601,7 @@ func (client *Client) DescribeTagsWithContext(ctx context.Context, request *Desc
 
 // Summary:
 //
-// Retrieves the list of tasks for an instance.
+// Retrieves the task list of an instance.
 //
 // @param request - DescribeTasksRequest
 //
@@ -8681,7 +8681,7 @@ func (client *Client) DescribeTasksWithContext(ctx context.Context, request *Des
 
 // Summary:
 //
-// Queries the current status of a task that upgrades or converts a standard instance to an Enterprise instance.
+// Queries the current status of an upgrade or conversion task from a standard instance to an enterprise instance.
 //
 // @param request - DescribeTransformStatusRequest
 //
@@ -8733,7 +8733,7 @@ func (client *Client) DescribeTransformStatusWithContext(ctx context.Context, re
 
 // Summary:
 //
-// Calls the DescribeUserEncryptionKeyList operation to retrieve the list of Transparent Data Encryption (TDE) keys for a user.
+// Retrieves the list of user TDE keys.
 //
 // @param request - DescribeUserEncryptionKeyListRequest
 //
@@ -8837,7 +8837,7 @@ func (client *Client) DisableOpenSearchPublicEndpointWithContext(ctx context.Con
 
 // Summary:
 //
-// Disables three-role mode.
+// Disables the three-role mode.
 //
 // @param request - DisableRightsSeparationRequest
 //
@@ -8953,7 +8953,7 @@ func (client *Client) DisableSqlAuditWithContext(ctx context.Context, request *D
 
 // Summary:
 //
-// Enables public network access for PolarDBX Search.
+// Enables public network access for PolarDB-X Search.
 //
 // Description:
 //
@@ -9009,7 +9009,7 @@ func (client *Client) EnableOpenSearchPublicEndpointWithContext(ctx context.Cont
 
 // Summary:
 //
-// Enables three-role mode.
+// Enables the three-role mode.
 //
 // @param request - EnableRightsSeparationRequest
 //
@@ -9149,7 +9149,7 @@ func (client *Client) EnableSqlAuditWithContext(ctx context.Context, request *En
 //
 // Description:
 //
-// Deletes the custom endpoint of a specified database instance and disables access through the domain name.
+// Deletes the custom endpoint of a specified database instance and disables access to the domain name.
 //
 // @param request - ExecuteMetaQueryRequest
 //
@@ -9209,7 +9209,59 @@ func (client *Client) ExecuteMetaQueryWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// Retrieves a list of labels.
+// Queries the PXFS tenants.
+//
+// Description:
+//
+// Queries the PXFS tenants of a specified PolarDB-X instance and returns the quota, throttling, and usage information of the tenants.
+//
+// @param request - ListPxfsTenantsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListPxfsTenantsResponse
+func (client *Client) ListPxfsTenantsWithContext(ctx context.Context, request *ListPxfsTenantsRequest, runtime *dara.RuntimeOptions) (_result *ListPxfsTenantsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DBInstanceName) {
+		query["DBInstanceName"] = request.DBInstanceName
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListPxfsTenants"),
+		Version:     dara.String("2020-02-02"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListPxfsTenantsResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Retrieves a list of tags.
 //
 // @param request - ListTagResourcesRequest
 //
@@ -10473,7 +10525,7 @@ func (client *Client) ModifyEngineMigrationWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// Modifies the whitelist of a memory engine.
+// Modifies the memory engine whitelist.
 //
 // Description:
 //
@@ -10593,7 +10645,7 @@ func (client *Client) ModifyOpenSearchAccessProtocolWithContext(ctx context.Cont
 
 // Summary:
 //
-// Modifies the specifications of a PolarDBX Search instance.
+// Modifies the specifications of a PolarDB-X Search instance.
 //
 // Description:
 //
@@ -10781,11 +10833,11 @@ func (client *Client) ModifyParameterWithContext(ctx context.Context, request *M
 
 // Summary:
 //
-// Modifies the whitelist of the Agent file service.
+// Modifies the whitelist for the Agent file service.
 //
 // Description:
 //
-// Modifies the whitelist of the Agent file service.
+// Modifies the whitelist for the Agent file service.
 //
 // @param request - ModifyPxfsSecurityIpsRequest
 //
@@ -10845,7 +10897,79 @@ func (client *Client) ModifyPxfsSecurityIpsWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// Modifies the PXFuse node whitelist.
+// Adjusts the quotas of a PXFS tenant.
+//
+// Description:
+//
+// Adjusts the storage capacity quota, file count quota, maximum request rate, and maximum write bandwidth of a specified PXFS tenant. Parameters that are not passed remain unchanged.
+//
+// @param request - ModifyPxfsTenantQuotaRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyPxfsTenantQuotaResponse
+func (client *Client) ModifyPxfsTenantQuotaWithContext(ctx context.Context, request *ModifyPxfsTenantQuotaRequest, runtime *dara.RuntimeOptions) (_result *ModifyPxfsTenantQuotaResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DBInstanceName) {
+		query["DBInstanceName"] = request.DBInstanceName
+	}
+
+	if !dara.IsNil(request.QuotaBytes) {
+		query["QuotaBytes"] = request.QuotaBytes
+	}
+
+	if !dara.IsNil(request.QuotaFiles) {
+		query["QuotaFiles"] = request.QuotaFiles
+	}
+
+	if !dara.IsNil(request.RateLimitRps) {
+		query["RateLimitRps"] = request.RateLimitRps
+	}
+
+	if !dara.IsNil(request.RateLimitWbps) {
+		query["RateLimitWbps"] = request.RateLimitWbps
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.TenantId) {
+		query["TenantId"] = request.TenantId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ModifyPxfsTenantQuota"),
+		Version:     dara.String("2020-02-02"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ModifyPxfsTenantQuotaResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Modifies the whitelist of a PXFuse node.
 //
 // Description:
 //
@@ -10969,7 +11093,7 @@ func (client *Client) ModifySecurityIpsWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// Modifies the Supabase Dashboard password.
+// Modifies the password for the Supabase dashboard.
 //
 // Description:
 //
@@ -11025,7 +11149,7 @@ func (client *Client) ModifySupabaseDashboardPasswordWithContext(ctx context.Con
 
 // Summary:
 //
-// Modifies the IP whitelist for Supabase.
+// Modifies the Supabase IP whitelist.
 //
 // Description:
 //
@@ -11388,11 +11512,11 @@ func (client *Client) ReleaseColdDataVolumeWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// Shuts down the public network connection of a specified physical ReplicaSet for the context service.
+// Initiates a shutdown of the public network connection for a specified physical ReplicaSet of the context service.
 //
 // Description:
 //
-// This operation is used to confirm that no active connections exist before a rollback task, ensuring operation safety.
+// This API operation confirms that no active connections exist before a rollback task to ensure operational security.
 //
 // @param request - ReleaseContext0PublicConnectionRequest
 //
@@ -11564,7 +11688,7 @@ func (client *Client) ReleaseInstancePublicConnectionWithContext(ctx context.Con
 //
 // Description:
 //
-// This operation is used to verify that no active connections exist before a rollback task to ensure operational safety.
+// This operation verifies that no active connections exist before a rollback task to ensure operational security.
 //
 // @param request - ReleaseMem0PublicConnectionRequest
 //
@@ -11856,7 +11980,7 @@ func (client *Client) ResetMem0AccountPasswordWithContext(ctx context.Context, r
 
 // Summary:
 //
-// Resets the password of a PolarDB-X Search instance without requiring the old password (RAM permission check required).
+// Resets the password of a PolarDB-X Search instance without requiring the old password. RAM permission verification is required.
 //
 // Description:
 //
@@ -12404,7 +12528,7 @@ func (client *Client) RevokePxfsAccessTokenWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// Scales in nodes of a PolarDB-X Search cluster.
+// Scales down nodes in a PolarDB-X Search cluster.
 //
 // Description:
 //
@@ -12976,7 +13100,7 @@ func (client *Client) TagResourcesWithContext(ctx context.Context, request *TagR
 
 // Summary:
 //
-// Deletes tags from a resource.
+// Removes tags from resources.
 //
 // @param request - UntagResourcesRequest
 //
@@ -13160,7 +13284,7 @@ func (client *Client) UpdateBackupPolicyWithContext(ctx context.Context, request
 
 // Summary:
 //
-// Updates instance labels.
+// Modifies instance labels.
 //
 // Description:
 //
@@ -13412,7 +13536,7 @@ func (client *Client) UpdatePolarDBXInstanceNodeWithContext(ctx context.Context,
 
 // Summary:
 //
-// Upgrades the CDC node version of a PolarDB-X instance.
+// Upgrades the version of a PolarDB-X CDC node.
 //
 // @param request - UpgradeCDCVersionRequest
 //

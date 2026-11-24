@@ -22,19 +22,19 @@ type iDescribeAccountListResponseBody interface {
 type DescribeAccountListResponseBody struct {
 	// The data struct.
 	Data []*DescribeAccountListResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	// The response message. "success" is returned if the request is successful. Otherwise, the corresponding error code is returned.
+	// The message returned. If the request is successful, success is returned. If an error occurs, the corresponding error code is returned.
 	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
 	// 9B2F3840-5C98-475C-B269-2D5C3A31797C
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request is successful.
+	// Indicates whether the request was successful.
 	//
 	// example:
 	//
@@ -118,11 +118,11 @@ type DescribeAccountListResponseBodyData struct {
 	//
 	// ReadWrite
 	AccountPrivilege *string `json:"AccountPrivilege,omitempty" xml:"AccountPrivilege,omitempty"`
-	// The type of the account.
+	// The type of the account. Valid values:
 	//
-	// - Before three-role mode is enabled: 0 indicates a standard account, and 1 indicates a privileged user account.
+	// - Before the three-role mode is enabled: 0 indicates a standard account, and 1 indicates a privileged account.
 	//
-	// - After three-role mode is enabled: 0 indicates a standard account, 2 indicates a system administrator account, 3 indicates a security administrator account, and 4 indicates an audit administrator account.
+	// - After the three-role mode is enabled: 0 indicates a standard account, 2 indicates a system administrator account, 3 indicates a security administrator account, and 4 indicates an audit administrator account.
 	//
 	// example:
 	//
@@ -134,7 +134,7 @@ type DescribeAccountListResponseBodyData struct {
 	//
 	// pxc-*********
 	DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
-	// The database to which the account is granted permissions.
+	// The database on which the account is granted permissions.
 	//
 	// example:
 	//

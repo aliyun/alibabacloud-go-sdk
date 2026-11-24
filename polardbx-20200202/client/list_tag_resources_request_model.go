@@ -36,9 +36,9 @@ type ListTagResourcesRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The resource IDs. You can specify up to 50 subkeys.
+	// The IDs of the resources. You can specify up to 50 resource IDs.
 	ResourceId []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
-	// The resource type. Set this parameter to PolarDBXInstance.
+	// The resource type. Set the value to PolarDBXInstance.
 	//
 	// This parameter is required.
 	//
@@ -46,7 +46,7 @@ type ListTagResourcesRequest struct {
 	//
 	// PolarDBXInstance
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// The list of labels. You can specify up to 20 subkeys.
+	// The list of tags. You can specify up to 20 tags.
 	Tag []*ListTagResourcesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
@@ -117,13 +117,13 @@ func (s *ListTagResourcesRequest) Validate() error {
 }
 
 type ListTagResourcesRequestTag struct {
-	// The key of the label.
+	// The key of the tag.
 	//
 	// example:
 	//
 	// 1
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The value of the label.
+	// The value of the tag.
 	//
 	// example:
 	//

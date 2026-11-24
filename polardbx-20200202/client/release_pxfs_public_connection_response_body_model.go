@@ -18,7 +18,7 @@ type iReleasePxfsPublicConnectionResponseBody interface {
 }
 
 type ReleasePxfsPublicConnectionResponseBody struct {
-	// The details of the access denial.
+	// The detailed cause of the access denial.
 	AccessDeniedDetail *ReleasePxfsPublicConnectionResponseBodyAccessDeniedDetail `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty" type:"Struct"`
 	// The response data.
 	Data *ReleasePxfsPublicConnectionResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
@@ -84,13 +84,13 @@ type ReleasePxfsPublicConnectionResponseBodyAccessDeniedDetail struct {
 	//
 	// example:
 	//
-	// xxx
+	// polardbx:ReleasePxfsPublicConnection
 	AuthAction *string `json:"AuthAction,omitempty" xml:"AuthAction,omitempty"`
 	// The identity used for authentication in the request.
 	//
 	// example:
 	//
-	// xxx
+	// Sample RAM user
 	AuthPrincipalDisplayName *string `json:"AuthPrincipalDisplayName,omitempty" xml:"AuthPrincipalDisplayName,omitempty"`
 	// The owner ID of the authentication principal.
 	//
@@ -104,7 +104,7 @@ type ReleasePxfsPublicConnectionResponseBodyAccessDeniedDetail struct {
 	//
 	// 222
 	AuthPrincipalType *string `json:"AuthPrincipalType,omitempty" xml:"AuthPrincipalType,omitempty"`
-	// The diagnostic information.
+	// The diagnostic message.
 	//
 	// example:
 	//
@@ -200,13 +200,13 @@ func (s *ReleasePxfsPublicConnectionResponseBodyAccessDeniedDetail) Validate() e
 }
 
 type ReleasePxfsPublicConnectionResponseBodyData struct {
-	// The instance ID of the PolarDB-X instance.
+	// The PolarDB-X instance ID.
 	//
 	// example:
 	//
 	// pxc-xxxxxxxx
 	DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
-	// The instance ID of the Agent file service.
+	// The Agent file service instance ID.
 	//
 	// example:
 	//

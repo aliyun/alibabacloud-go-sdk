@@ -26,9 +26,9 @@ type iDescribeEvaluateAndImportTasksResponseBody interface {
 }
 
 type DescribeEvaluateAndImportTasksResponseBody struct {
-	// The details of the restoration tasks.
+	// The recovery task details.
 	Data []*DescribeEvaluateAndImportTasksResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	// The returned message. > This parameter is empty when the request succeeds. When the request fails, exception information such as an error code is returned.
+	// The returned message. > This parameter is empty if the request is successful. If the request fails, an error message (such as an error code) is returned.
 	//
 	// example:
 	//
@@ -52,7 +52,7 @@ type DescribeEvaluateAndImportTasksResponseBody struct {
 	//
 	// 81519FDE-713B-****-B6F1-231479A4C9DB
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	//
 	// example:
 	//
@@ -163,29 +163,29 @@ type DescribeEvaluateAndImportTasksResponseBodyData struct {
 	//
 	// 346650
 	Creator *string `json:"Creator,omitempty" xml:"Creator,omitempty"`
-	// Indicates whether the task is deleted.
+	// Specifies whether the task is deleted.
 	//
 	// example:
 	//
-	// fase
+	// false
 	Deleted *bool `json:"Deleted,omitempty" xml:"Deleted,omitempty"`
 	// The timestamp when the task was created. Unit: milliseconds.
 	//
 	// example:
 	//
-	// 2025-01-08T15:00Z
+	// 1736348400000
 	GmtCreated *int64 `json:"GmtCreated,omitempty" xml:"GmtCreated,omitempty"`
-	// The time when the metadata information was last modified.
+	// The time when the metadata was modified.
 	//
 	// example:
 	//
-	// 2025-04-02T02:10:59Z
+	// 1743559859000
 	GmtModified *int64 `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
 	// The task ID.
 	//
 	// example:
 	//
-	// ap-northeast-1
+	// 76251
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
 	// The region ID.
 	//
@@ -193,67 +193,67 @@ type DescribeEvaluateAndImportTasksResponseBodyData struct {
 	//
 	// cn-zhangjiakou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The name of the slink destination database.
+	// The name of the destination Slink database.
 	//
 	// example:
 	//
 	// e3plus_*****_prod
 	SlinkDstDb *string `json:"SlinkDstDb,omitempty" xml:"SlinkDstDb,omitempty"`
-	// The instance ID of the destination.
+	// The destination instance ID.
 	//
 	// example:
 	//
 	// pxc-hzrehc****5zye
 	SlinkDstResId *string `json:"SlinkDstResId,omitempty" xml:"SlinkDstResId,omitempty"`
-	// The username for the data connection of the destination.
+	// The username for the destination data connection.
 	//
 	// example:
 	//
 	// dts_temp_2_23
 	SlinkDstUserName *string `json:"SlinkDstUserName,omitempty" xml:"SlinkDstUserName,omitempty"`
-	// The name of the slink source database.
+	// The name of the source Slink database.
 	//
 	// example:
 	//
 	// stock
 	SlinkSrcDb *string `json:"SlinkSrcDb,omitempty" xml:"SlinkSrcDb,omitempty"`
-	// The instance ID of the source.
+	// The source instance ID.
 	//
 	// example:
 	//
 	// drdshbga*****w4p
 	SlinkSrcResId *string `json:"SlinkSrcResId,omitempty" xml:"SlinkSrcResId,omitempty"`
-	// The resource type of the source.
+	// The type of the source resource.
 	//
 	// example:
 	//
 	// RDS_MYSQL
 	SlinkSrcResType *string `json:"SlinkSrcResType,omitempty" xml:"SlinkSrcResType,omitempty"`
-	// The username for the data connection of the source.
+	// The username for the source data connection.
 	//
 	// example:
 	//
 	// dtdba
 	SlinkSrcUserName *string `json:"SlinkSrcUserName,omitempty" xml:"SlinkSrcUserName,omitempty"`
-	// The stage of the synchronization task.
+	// The stage of the synchronization.
 	//
 	// example:
 	//
 	// DATA_IMPORT_RUNNING
 	SlinkStage *string `json:"SlinkStage,omitempty" xml:"SlinkStage,omitempty"`
-	// The running status of the synchronization task.
+	// The running status of the synchronization.
 	//
 	// example:
 	//
 	// IMPORT_NOT_BEGIN
 	SlinkStatus *string `json:"SlinkStatus,omitempty" xml:"SlinkStatus,omitempty"`
-	// The description of the slink task.
+	// The description of the Slink task.
 	//
 	// example:
 	//
 	// test
 	SlinkTaskDesc *string `json:"SlinkTaskDesc,omitempty" xml:"SlinkTaskDesc,omitempty"`
-	// The slink task ID.
+	// The Slink task ID.
 	//
 	// example:
 	//

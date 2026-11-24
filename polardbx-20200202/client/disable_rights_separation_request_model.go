@@ -42,7 +42,7 @@ type DisableRightsSeparationRequest struct {
 	//
 	// example:
 	//
-	// *****
+	// DemoPass1@
 	DbaAccountPassword *string `json:"DbaAccountPassword,omitempty" xml:"DbaAccountPassword,omitempty"`
 	// The region ID of the instance.
 	//

@@ -80,25 +80,25 @@ func (s *DescribeOpenSearchInfoResponseBody) Validate() error {
 }
 
 type DescribeOpenSearchInfoResponseBodyAccessDeniedDetail struct {
-	// The authorization action.
+	// The authentication action.
 	//
 	// example:
 	//
-	// xxx
+	// polardbx:DescribeOpenSearchInfo
 	AuthAction *string `json:"AuthAction,omitempty" xml:"AuthAction,omitempty"`
-	// The identity used for authorization in the request.
+	// The identity used for authentication in the request.
 	//
 	// example:
 	//
-	// xxx
+	// Sample RAM user
 	AuthPrincipalDisplayName *string `json:"AuthPrincipalDisplayName,omitempty" xml:"AuthPrincipalDisplayName,omitempty"`
-	// The ID of the owner of the authorization principal.
+	// The owner ID of the authentication principal.
 	//
 	// example:
 	//
 	// 111
 	AuthPrincipalOwnerId *string `json:"AuthPrincipalOwnerId,omitempty" xml:"AuthPrincipalOwnerId,omitempty"`
-	// The type of the authorization principal.
+	// The type of the authentication principal.
 	//
 	// example:
 	//
@@ -110,7 +110,7 @@ type DescribeOpenSearchInfoResponseBodyAccessDeniedDetail struct {
 	//
 	// AQEAAAAAaKPfwjY0MzMyODRGLUZCQkQtNTA1RS04MUUxLTc5NTkzODk2MUIzMg==
 	EncodedDiagnosticMessage *string `json:"EncodedDiagnosticMessage,omitempty" xml:"EncodedDiagnosticMessage,omitempty"`
-	// The type of access denial.
+	// The type of the missing permission.
 	//
 	// example:
 	//
@@ -327,7 +327,7 @@ type DescribeOpenSearchInfoResponseBodyDataInstance struct {
 	//
 	// Running
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The last task update time in UNIX timestamp format.
+	// The last task update time in timestamp format.
 	//
 	// example:
 	//
@@ -498,7 +498,7 @@ type DescribeOpenSearchInfoResponseBodyDataSpec struct {
 	//
 	// 4
 	CoordinatorNodeCpu *int32 `json:"CoordinatorNodeCpu,omitempty" xml:"CoordinatorNodeCpu,omitempty"`
-	// Indicates whether the coordinator node is enabled.
+	// Specifies whether the coordinator node is enabled.
 	CoordinatorNodeEnabled *bool `json:"CoordinatorNodeEnabled,omitempty" xml:"CoordinatorNodeEnabled,omitempty"`
 	// The memory size per coordinator node, in GB.
 	//
@@ -526,9 +526,9 @@ type DescribeOpenSearchInfoResponseBodyDataSpec struct {
 	DataNodeMemoryGB *int32 `json:"DataNodeMemoryGB,omitempty" xml:"DataNodeMemoryGB,omitempty"`
 	// The master node type. Valid values:
 	//
-	// - **0**: single-node master
+	// - **0**: The master node is a single node.
 	//
-	// - **2**: cluster-edition master
+	// - **2**: The master node is of the Cluster Edition.
 	//
 	// example:
 	//
@@ -540,7 +540,7 @@ type DescribeOpenSearchInfoResponseBodyDataSpec struct {
 	//
 	// 4
 	MasterNodeCpu *int32 `json:"MasterNodeCpu,omitempty" xml:"MasterNodeCpu,omitempty"`
-	// Indicates whether the dedicated master node is enabled.
+	// Specifies whether the dedicated master node is enabled.
 	MasterNodeEnabled *bool `json:"MasterNodeEnabled,omitempty" xml:"MasterNodeEnabled,omitempty"`
 	// The memory size per dedicated master node, in GB.
 	//

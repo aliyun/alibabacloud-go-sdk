@@ -36,19 +36,19 @@ type ModifyContextDBSecurityIpsRequest struct {
 	//
 	// default
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
-	// The modification mode of the whitelist. Valid values:
+	// The whitelist modification mode. Valid values:
 	//
 	// - 0: overwrites the whitelist group.
 	//
-	// - 1: adds a whitelist group.
+	// - 1: adds IP addresses to the whitelist group.
 	//
-	// - 2: deletes a whitelist group.
+	// - 2: removes IP addresses from the whitelist group.
 	//
 	// example:
 	//
 	// 1
 	ModifyMode *string `json:"ModifyMode,omitempty" xml:"ModifyMode,omitempty"`
-	// The region in which the instance resides.
+	// The region ID.
 	//
 	// This parameter is required.
 	//

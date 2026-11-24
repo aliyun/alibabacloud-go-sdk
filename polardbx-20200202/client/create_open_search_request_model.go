@@ -54,15 +54,15 @@ type iCreateOpenSearchRequest interface {
 type CreateOpenSearchRequest struct {
 	// Specifies whether to enable auto-renewal. Default value: true. Valid values:
 	//
-	// - **true**: enables auto-renewal
+	// - **true**: Yes.
 	//
-	// - **false**: disables auto-renewal
+	// - **false**: No.
 	//
 	// example:
 	//
 	// true
 	AutoRenew *bool `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
-	// The idempotency token. Make sure that the value is unique for each creation request.
+	// The client token that is used to ensure the idempotence of the request. Keep the value unique for each request.
 	//
 	// example:
 	//
@@ -74,7 +74,7 @@ type CreateOpenSearchRequest struct {
 	//
 	// Test instance
 	DBInstanceDescription *string `json:"DBInstanceDescription,omitempty" xml:"DBInstanceDescription,omitempty"`
-	// The code for the node specifications of the PolarDBX Search data node. The active node specifications vary by region and sales configuration. Use a PolarDBX Search node specifications code that is available for purchase in the current region.
+	// The node specification code of the PolarDB-X Search data node. Available specifications vary by region and sales configuration. Use a PolarDB-X Search node specification code that is available for purchase in the current region.
 	//
 	// This parameter is required.
 	//
@@ -82,19 +82,19 @@ type CreateOpenSearchRequest struct {
 	//
 	// opensearch.sn2ne.large.1
 	DBNodeClass *string `json:"DBNodeClass,omitempty" xml:"DBNodeClass,omitempty"`
-	// The database engine version of PolarDBX Search. The current fixed DPI engine version is 3.0. If this parameter is not specified, 3.0 is used.
+	// The PolarDB-X Search engine version. The value is fixed to 3.0. If you do not specify this parameter, 3.0 is used.
 	//
 	// example:
 	//
 	// 3.0
 	EngineVersion *string `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
-	// A compatible parameter. This parameter does not take effect. Specify the node specifications of the PolarDBX Search data node by using DBNodeClass.
+	// A compatible parameter. This parameter does not take effect. Specify the node specification of the PolarDB-X Search data node by using DBNodeClass.
 	//
 	// example:
 	//
 	// opensearch.sn2ne.large.1
 	InstanceSpec *string `json:"InstanceSpec,omitempty" xml:"InstanceSpec,omitempty"`
-	// The number of PolarDBX Search data nodes. The value must be a positive integer and an integer multiple of the number of selected zones.
+	// The number of PolarDB-X Search data nodes. The value must be a positive integer and an integer multiple of the number of selected zones.
 	//
 	// This parameter is required.
 	//
@@ -104,9 +104,9 @@ type CreateOpenSearchRequest struct {
 	NodeCount *int32 `json:"NodeCount,omitempty" xml:"NodeCount,omitempty"`
 	// The billing method of the instance. Valid values:
 	//
-	// - **PREPAY**: subscription
+	// - **PREPAY**: Subscription.
 	//
-	// - **POSTPAY**: pay-as-you-go
+	// - **POSTPAY**: Pay-as-you-go.
 	//
 	// This parameter is required.
 	//
@@ -114,13 +114,13 @@ type CreateOpenSearchRequest struct {
 	//
 	// PREPAY
 	PayType *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
-	// The billing cycle. For subscription instances, only Year and Month are supported. For pay-as-you-go instances, the default value is Hour.
+	// The billing cycle. For subscription instances, valid values are Year and Month. For pay-as-you-go instances, the default value is Hour.
 	//
 	// example:
 	//
 	// Month
 	Period *string `json:"Period,omitempty" xml:"Period,omitempty"`
-	// The region ID.
+	// The region ID of the instance.
 	//
 	// This parameter is required.
 	//
@@ -128,13 +128,13 @@ type CreateOpenSearchRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The resource group ID. This parameter can be left empty and is not currently supported.
+	// The resource group ID. This parameter can be left empty. Resource groups are not currently supported.
 	//
 	// example:
 	//
 	// rg-xxxxx
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The storage space per node, in GB. The value must be a positive integer.
+	// The storage space per node. Unit: GB. The value must be a positive integer.
 	//
 	// example:
 	//
@@ -146,9 +146,9 @@ type CreateOpenSearchRequest struct {
 	//
 	// cloud_auto
 	StorageType *string `json:"StorageType,omitempty" xml:"StorageType,omitempty"`
-	// The active topology type. Valid values:
+	// The topology type. Valid values:
 	//
-	// - **1azone**: single-zone.
+	// - **1azone**: Single zone.
 	//
 	// - **3azones**: Three-zone deployment.
 	//
@@ -156,9 +156,9 @@ type CreateOpenSearchRequest struct {
 	//
 	// 3azones
 	TopologyType *string `json:"TopologyType,omitempty" xml:"TopologyType,omitempty"`
-	// The subscription duration. You can specify a duration in months or years for subscription instances.
+	// Specifies the subscription duration in months or years.
 	//
-	// > When Period is set to Year, valid values for this parameter are 1, 2, and 3.
+	// > If Period is set to Year, valid values for this parameter are 1, 2, and 3.
 	//
 	// example:
 	//
@@ -180,19 +180,19 @@ type CreateOpenSearchRequest struct {
 	//
 	// vsw-*********
 	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	// The secondary zone. This parameter is required when TopologyType is set to 3azones, and the value must be different from other zones.
+	// The secondary zone. This parameter is required when TopologyType is set to 3azones, and it cannot be the same as other zones.
 	//
 	// example:
 	//
 	// cn-hangzhou-i
 	Zone2 *string `json:"Zone2,omitempty" xml:"Zone2,omitempty"`
-	// The third zone for Three-zone deployment. This parameter is required when TopologyType is set to 3azones, and the value must be different from other active zones.
+	// The third zone. This parameter is required when TopologyType is set to 3azones, and it cannot be the same as other zones.
 	//
 	// example:
 	//
 	// cn-hangzhou-j
 	Zone3 *string `json:"Zone3,omitempty" xml:"Zone3,omitempty"`
-	// The zone of the instance.
+	// The zone ID of the instance.
 	//
 	// This parameter is required.
 	//

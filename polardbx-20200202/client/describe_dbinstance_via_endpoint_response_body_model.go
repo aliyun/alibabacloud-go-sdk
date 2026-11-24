@@ -96,7 +96,7 @@ type DescribeDBInstanceViaEndpointResponseBodyDBInstance struct {
 	//
 	// 2
 	CnNodeCount *int32 `json:"CnNodeCount,omitempty" xml:"CnNodeCount,omitempty"`
-	// The commodity code of the instance. The value is fixed as drds_polarxpost_public_cn.
+	// The commodity type of the instance. The value is fixed as drds_polarxpost_public_cn.
 	//
 	// example:
 	//
@@ -118,9 +118,9 @@ type DescribeDBInstanceViaEndpointResponseBodyDBInstance struct {
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	// The instance type. Valid values:
 	//
-	// - **ReadWrite**: primary instance.
+	// - **ReadWrite**: primary instance
 	//
-	// - **ReadOnly**: read-only instance.
+	// - **ReadOnly**: read-only instance
 	//
 	// example:
 	//
@@ -132,7 +132,7 @@ type DescribeDBInstanceViaEndpointResponseBodyDBInstance struct {
 	//
 	// polarx.x4.large.2e
 	DBNodeClass *string `json:"DBNodeClass,omitempty" xml:"DBNodeClass,omitempty"`
-	// The number of instance nodes.
+	// The number of nodes in the instance.
 	//
 	// example:
 	//
@@ -140,19 +140,19 @@ type DescribeDBInstanceViaEndpointResponseBodyDBInstance struct {
 	DBNodeCount *int32 `json:"DBNodeCount,omitempty" xml:"DBNodeCount,omitempty"`
 	// The database node information.
 	DBNodes []*DescribeDBInstanceViaEndpointResponseBodyDBInstanceDBNodes `json:"DBNodes,omitempty" xml:"DBNodes,omitempty" type:"Repeated"`
-	// The database type. The value is fixed as polarx.
+	// The database engine type. The value is fixed as polarx.
 	//
 	// example:
 	//
 	// polarx
 	DBType *string `json:"DBType,omitempty" xml:"DBType,omitempty"`
-	// The database version.
+	// The database engine version.
 	//
 	// example:
 	//
 	// 5.5
 	DBVersion *string `json:"DBVersion,omitempty" xml:"DBVersion,omitempty"`
-	// The instance description.
+	// The description of the instance.
 	//
 	// example:
 	//
@@ -200,13 +200,13 @@ type DescribeDBInstanceViaEndpointResponseBodyDBInstance struct {
 	//
 	// 2
 	DnNodeCount *int32 `json:"DnNodeCount,omitempty" xml:"DnNodeCount,omitempty"`
-	// The database type. The value is fixed as MySQL.
+	// The database engine. The value is fixed as MySQL.
 	//
 	// example:
 	//
 	// MySQL
 	Engine *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
-	// The expiration time. The time is in the yyyy-MM-ddTHH:mm:ss.sss+0000 format (UTC).
+	// The expiration time. The format is yyyy-MM-ddTHH:mm:ss.sss+0000 (UTC).
 	//
 	// example:
 	//
@@ -214,9 +214,9 @@ type DescribeDBInstanceViaEndpointResponseBodyDBInstance struct {
 	ExpireDate *string `json:"ExpireDate,omitempty" xml:"ExpireDate,omitempty"`
 	// Indicates whether the instance has expired. Valid values:
 	//
-	// - **true**: Expired.
+	// - **true**: The instance has expired.
 	//
-	// - **false**: Not expired.
+	// - **false**: The instance has not expired.
 	//
 	// example:
 	//
@@ -234,11 +234,11 @@ type DescribeDBInstanceViaEndpointResponseBodyDBInstance struct {
 	//
 	// 18
 	KindCode *int32 `json:"KindCode,omitempty" xml:"KindCode,omitempty"`
-	// The LTS version numbers.
+	// The LTS version number.
 	//
 	// This parameter is required.
 	LTSVersions []*string `json:"LTSVersions,omitempty" xml:"LTSVersions,omitempty" type:"Repeated"`
-	// The latest kernel version supported by the instance.
+	// The latest kernel version supported by the current instance.
 	//
 	// example:
 	//
@@ -246,29 +246,29 @@ type DescribeDBInstanceViaEndpointResponseBodyDBInstance struct {
 	LatestMinorVersion *string `json:"LatestMinorVersion,omitempty" xml:"LatestMinorVersion,omitempty"`
 	// The lock mode of the instance. Valid values:
 	//
-	// - **Unlock**: Normal.
+	// - **Unlock**: normal
 	//
-	// - **ManualLock**: Manually locked.
+	// - **ManualLock**: manually locked
 	//
-	// - **LockByExpiration**: Automatically locked due to instance expiration.
+	// - **LockByExpiration**: automatically locked due to expiration
 	//
-	// - **LockByRestoration**: Automatically locked before instance rollback.
+	// - **LockByRestoration**: automatically locked before a rollback
 	//
-	// - **LockByDiskQuota**: Automatically locked due to insufficient disk space.
+	// - **LockByDiskQuota**: automatically locked due to full storage space
 	//
-	// - **LockReadInstanceByDiskQuota**: Read-only instance automatically locked due to insufficient disk space.
+	// - **LockReadInstanceByDiskQuota**: automatically locked due to full storage space of the read-only instance
 	//
 	// example:
 	//
 	// Unlock
 	LockMode *string `json:"LockMode,omitempty" xml:"LockMode,omitempty"`
-	// The end time of the maintenance window. The time is in UTC. Add 8 hours to obtain the maintenance window displayed in the console.
+	// The end time of the maintenance window for the instance. The time is in UTC. Add 8 hours to the time to obtain the maintenance window displayed in the console.
 	//
 	// example:
 	//
 	// 06:00
 	MaintainEndTime *string `json:"MaintainEndTime,omitempty" xml:"MaintainEndTime,omitempty"`
-	// The start time of the maintenance window. The time is in UTC. Add 8 hours to obtain the maintenance window displayed in the console.
+	// The start time of the maintenance window for the instance. The time is in UTC. Add 8 hours to the time to obtain the maintenance window displayed in the console.
 	//
 	// example:
 	//
@@ -280,7 +280,7 @@ type DescribeDBInstanceViaEndpointResponseBodyDBInstance struct {
 	//
 	// polarx-kernel_5.4.11-16301083_xcluster-20210805
 	MinorVersion *string `json:"MinorVersion,omitempty" xml:"MinorVersion,omitempty"`
-	// The network type of the instance. Only VPC is supported, which indicates a virtual private cloud (VPC).
+	// The network type of the instance. The only valid value is VPC, which indicates a VPC.
 	//
 	// example:
 	//
@@ -288,21 +288,21 @@ type DescribeDBInstanceViaEndpointResponseBodyDBInstance struct {
 	Network *string `json:"Network,omitempty" xml:"Network,omitempty"`
 	// The billing method of the instance. Valid values:
 	//
-	// - **Postpaid**: pay-as-you-go.
+	// - **Postpaid**: pay-as-you-go
 	//
-	// - **Prepaid**: subscription.
+	// - **Prepaid**: subscription
 	//
 	// example:
 	//
 	// Postpaid
 	PayType *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
-	// The port of the instance endpoint.
+	// The connection port of the instance.
 	//
 	// example:
 	//
 	// 3306
 	Port *string `json:"Port,omitempty" xml:"Port,omitempty"`
-	// The names of read-only instances.
+	// The names of the read-only instances.
 	ReadDBInstances []*string `json:"ReadDBInstances,omitempty" xml:"ReadDBInstances,omitempty" type:"Repeated"`
 	// The region where the instance resides.
 	//
@@ -318,9 +318,9 @@ type DescribeDBInstanceViaEndpointResponseBodyDBInstance struct {
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	// Indicates whether the three-role mode is enabled. Valid values:
 	//
-	// - **false**: Disabled.
+	// - **false**: The three-role mode is not enabled.
 	//
-	// - **true**: Enabled.
+	// - **true**: The three-role mode is enabled.
 	//
 	// example:
 	//
@@ -328,13 +328,13 @@ type DescribeDBInstanceViaEndpointResponseBodyDBInstance struct {
 	RightsSeparationEnabled *bool `json:"RightsSeparationEnabled,omitempty" xml:"RightsSeparationEnabled,omitempty"`
 	// The three-role mode status. Valid values:
 	//
-	// - **disabled**: Disabled.
+	// - **disabled**: not enabled
 	//
-	// - **enabled**: Enabled.
+	// - **enabled**: enabled
 	//
-	// - **processing**: Being processed.
+	// - **processing**: processing
 	//
-	// - **unknown**: Unknown. This may be caused by the instance being unreachable.
+	// - **unknown**: unknown, which may be caused by the inability to connect to the instance
 	//
 	// example:
 	//
@@ -342,15 +342,15 @@ type DescribeDBInstanceViaEndpointResponseBodyDBInstance struct {
 	RightsSeparationStatus *string `json:"RightsSeparationStatus,omitempty" xml:"RightsSeparationStatus,omitempty"`
 	// The instance edition. Valid values:
 	//
-	// - **enterprise**: Enterprise Edition.
+	// - **enterprise**: Enterprise Edition
 	//
-	// - **standard**: Standard Edition.
+	// - **standard**: Standard Edition
 	//
 	// example:
 	//
 	// enterprise
 	Series *string `json:"Series,omitempty" xml:"Series,omitempty"`
-	// The instance status. For more information, see [Instance status](https://help.aliyun.com/document_detail/339826.html).
+	// The instance status. For more information, see [Instance status table](https://help.aliyun.com/document_detail/339826.html).
 	//
 	// example:
 	//
@@ -366,15 +366,15 @@ type DescribeDBInstanceViaEndpointResponseBodyDBInstance struct {
 	TagSet []*DescribeDBInstanceViaEndpointResponseBodyDBInstanceTagSet `json:"TagSet,omitempty" xml:"TagSet,omitempty" type:"Repeated"`
 	// The instance type. Valid values:
 	//
-	// - **ReadWrite**: primary instance.
+	// - **ReadWrite**: primary instance
 	//
-	// - **ReadOnly**: read-only instance.
+	// - **ReadOnly**: read-only instance
 	//
 	// example:
 	//
 	// ReadWrite
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// VPC ID。
+	// The VPC ID.
 	//
 	// example:
 	//
@@ -818,19 +818,19 @@ type DescribeDBInstanceViaEndpointResponseBodyDBInstanceConnAddrs struct {
 	//
 	// polardbx-xxx.aliyuncs.com
 	ConnectionString *string `json:"ConnectionString,omitempty" xml:"ConnectionString,omitempty"`
-	// The port number.
+	// The connection port number.
 	//
 	// example:
 	//
 	// 3306
 	Port *int64 `json:"Port,omitempty" xml:"Port,omitempty"`
-	// The connection type. **VPC*	- indicates an internal network connection. **PUBLIC*	- indicates a public network connection.
+	// The connection type. **VPC*	- indicates an internal network connection, and **PUBLIC*	- indicates a public network connection.
 	//
 	// example:
 	//
 	// VPC
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// VPC ID。
+	// The VPC ID.
 	//
 	// example:
 	//
@@ -842,7 +842,7 @@ type DescribeDBInstanceViaEndpointResponseBodyDBInstanceConnAddrs struct {
 	//
 	// vsw-*********
 	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	// The internal CloudInstanceId within the VPC. This parameter can be ignored.
+	// The internal CloudInstanceId in the VPC. You can ignore this parameter.
 	//
 	// example:
 	//
@@ -941,13 +941,13 @@ type DescribeDBInstanceViaEndpointResponseBodyDBInstanceDBNodes struct {
 	//
 	// polarx.x4.large.2e
 	NodeClass *string `json:"NodeClass,omitempty" xml:"NodeClass,omitempty"`
-	// The region ID of the node.
+	// The ID of the region where the node resides.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The zone where the node resides.
+	// The name of the zone where the node resides.
 	//
 	// example:
 	//

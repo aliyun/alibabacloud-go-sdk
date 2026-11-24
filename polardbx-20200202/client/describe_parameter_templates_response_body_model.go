@@ -80,7 +80,7 @@ type DescribeParameterTemplatesResponseBodyData struct {
 	//
 	// 218
 	ParameterCount *int32 `json:"ParameterCount,omitempty" xml:"ParameterCount,omitempty"`
-	// The list of parameters.
+	// The parameter list.
 	Parameters []*DescribeParameterTemplatesResponseBodyDataParameters `json:"Parameters,omitempty" xml:"Parameters,omitempty" type:"Repeated"`
 }
 
@@ -150,9 +150,9 @@ type DescribeParameterTemplatesResponseBodyDataParameters struct {
 	CheckingCode *string `json:"CheckingCode,omitempty" xml:"CheckingCode,omitempty"`
 	// Specifies whether the parameter is dynamic. Valid values:
 	//
-	// - **0**: no.
+	// - **0**: no
 	//
-	// - **1**: yes.
+	// - **1**: yes
 	//
 	// example:
 	//
@@ -178,15 +178,15 @@ type DescribeParameterTemplatesResponseBodyDataParameters struct {
 	ParameterValue *string `json:"ParameterValue,omitempty" xml:"ParameterValue,omitempty"`
 	// Specifies whether the parameter can be modified. Valid values:
 	//
-	// - **0**: The parameter cannot be modified.
+	// - **0**: cannot be modified
 	//
-	// - **1**: The parameter can be modified.
+	// - **1**: can be modified
 	//
 	// example:
 	//
 	// 0
 	Revisable *int32 `json:"Revisable,omitempty" xml:"Revisable,omitempty"`
-	// Specifies whether the parameter can be modified by the user.
+	// Specifies whether the parameter can be modified by users.
 	//
 	// example:
 	//

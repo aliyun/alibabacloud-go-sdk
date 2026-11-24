@@ -20,9 +20,9 @@ type iDescribePxfsTenantResponseBody interface {
 type DescribePxfsTenantResponseBody struct {
 	// The details of the access denial.
 	AccessDeniedDetail *DescribePxfsTenantResponseBodyAccessDeniedDetail `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty" type:"Struct"`
-	// The returned data.
+	// The response data.
 	Data *DescribePxfsTenantResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
@@ -90,7 +90,7 @@ type DescribePxfsTenantResponseBodyAccessDeniedDetail struct {
 	//
 	// example:
 	//
-	// xxx
+	// Sample RAM user
 	AuthPrincipalDisplayName *string `json:"AuthPrincipalDisplayName,omitempty" xml:"AuthPrincipalDisplayName,omitempty"`
 	// The owner ID of the authentication principal.
 	//
@@ -104,13 +104,13 @@ type DescribePxfsTenantResponseBodyAccessDeniedDetail struct {
 	//
 	// 222
 	AuthPrincipalType *string `json:"AuthPrincipalType,omitempty" xml:"AuthPrincipalType,omitempty"`
-	// The encoded diagnostic message.
+	// The diagnostic message.
 	//
 	// example:
 	//
 	// AQEAAAAAaKPfwjY0MzMyODRGLUZCQkQtNTA1RS04MUUxLTc5NTkzODk2MUIzMg==
 	EncodedDiagnosticMessage *string `json:"EncodedDiagnosticMessage,omitempty" xml:"EncodedDiagnosticMessage,omitempty"`
-	// The type of the permission denial.
+	// The no-permission type.
 	//
 	// example:
 	//
@@ -200,7 +200,7 @@ func (s *DescribePxfsTenantResponseBodyAccessDeniedDetail) Validate() error {
 }
 
 type DescribePxfsTenantResponseBodyData struct {
-	// The capacity quota.
+	// The storage quota.
 	//
 	// example:
 	//
@@ -230,25 +230,25 @@ type DescribePxfsTenantResponseBodyData struct {
 	//
 	// ACTIVE
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The tenant ID.
+	// The ID of the tenant.
 	//
 	// example:
 	//
 	// tenant-001
 	TenantId *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
-	// The tenant name.
+	// The name of the tenant.
 	//
 	// example:
 	//
 	// agent-files
 	TenantName *string `json:"TenantName,omitempty" xml:"TenantName,omitempty"`
-	// The used capacity.
+	// The used storage capacity.
 	//
 	// example:
 	//
 	// 1048576
 	UsedBytes *int64 `json:"UsedBytes,omitempty" xml:"UsedBytes,omitempty"`
-	// The used file count.
+	// The number of used files.
 	//
 	// example:
 	//

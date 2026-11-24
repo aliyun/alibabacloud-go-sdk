@@ -20,9 +20,9 @@ type iDescribeStructureImportTaskInfoResponseBody interface {
 }
 
 type DescribeStructureImportTaskInfoResponseBody struct {
-	// The result set.
+	// The returned result set.
 	Data *DescribeStructureImportTaskInfoResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The returned message. This parameter is empty when the request succeeds. When the request fails, an exception message is returned, such as an error code.
+	// The returned message. This parameter is empty when the request is successful. If the request fails, an error message such as an error code is returned.
 	//
 	// example:
 	//
@@ -34,7 +34,7 @@ type DescribeStructureImportTaskInfoResponseBody struct {
 	//
 	// 1AD222E9-E606-4A42-BF6D-8A4442913CEF
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	//
 	// example:
 	//
@@ -96,13 +96,13 @@ func (s *DescribeStructureImportTaskInfoResponseBody) Validate() error {
 }
 
 type DescribeStructureImportTaskInfoResponseBodyData struct {
-	// The slink status.
+	// The Slink status.
 	//
 	// example:
 	//
 	// STRUCTURE_IMPORT
 	SlinkStage *string `json:"SlinkStage,omitempty" xml:"SlinkStage,omitempty"`
-	// The import result of the schema import task.
+	// The import result of the structure import task.
 	StructureImportResult *DescribeStructureImportTaskInfoResponseBodyDataStructureImportResult `json:"StructureImportResult,omitempty" xml:"StructureImportResult,omitempty" type:"Struct"`
 }
 
@@ -148,7 +148,7 @@ type DescribeStructureImportTaskInfoResponseBodyDataStructureImportResult struct
 	//
 	// java.sql.SQLException: [1a7a5f22aa403000][10.239.190.4:3058][hash_realtime_new]ERR-CODE: [TDDL-5123][ERR_INSTANCE_READ_ONLY_OPTION_NOT_SUPPORT] server is running with the instance-read-only option so it cannot execute this statement
 	ExceptionDetail *string `json:"ExceptionDetail,omitempty" xml:"ExceptionDetail,omitempty"`
-	// The name of the table that encountered an exception.
+	// The name of the table with exceptions.
 	//
 	// example:
 	//
@@ -160,7 +160,7 @@ type DescribeStructureImportTaskInfoResponseBodyDataStructureImportResult struct
 	//
 	// 118
 	FinishedNum *int32 `json:"FinishedNum,omitempty" xml:"FinishedNum,omitempty"`
-	// The current progress in percentage.
+	// The current progress (percentage).
 	//
 	// example:
 	//

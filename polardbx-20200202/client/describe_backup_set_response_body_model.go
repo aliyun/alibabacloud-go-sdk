@@ -20,7 +20,7 @@ type iDescribeBackupSetResponseBody interface {
 }
 
 type DescribeBackupSetResponseBody struct {
-	// The data list.
+	// The list of data.
 	Data []*DescribeBackupSetResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
 	// The error message.
 	//
@@ -34,7 +34,7 @@ type DescribeBackupSetResponseBody struct {
 	//
 	// 1A6D328C-84B8-40DC-BF49-6C73984D7494
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	//
 	// example:
 	//
@@ -102,21 +102,21 @@ func (s *DescribeBackupSetResponseBody) Validate() error {
 type DescribeBackupSetResponseBodyData struct {
 	// The backup mode. Valid values:
 	//
-	// - **0**: Automatic backup.
+	// - **0**: automatic backup
 	//
-	// - **1**: Manual backup.
+	// - **1**: manual backup
 	//
 	// example:
 	//
 	// 0
 	BackupModel *int32 `json:"BackupModel,omitempty" xml:"BackupModel,omitempty"`
-	// The backup set ID.
+	// The ID of the backup set.
 	//
 	// example:
 	//
 	// 111
 	BackupSetId *int64 `json:"BackupSetId,omitempty" xml:"BackupSetId,omitempty"`
-	// The size of the backup set, in bytes.
+	// The size of the backup set. Unit: bytes.
 	//
 	// example:
 	//
@@ -124,21 +124,21 @@ type DescribeBackupSetResponseBodyData struct {
 	BackupSetSize *int64 `json:"BackupSetSize,omitempty" xml:"BackupSetSize,omitempty"`
 	// The backup type. Valid values:
 	//
-	// - **0**: Fast backup.
+	// - **0**: quick backup
 	//
-	// - **1**: Consistent backup.
+	// - **1**: consistent backup
 	//
 	// example:
 	//
 	// 1
 	BackupType *int32 `json:"BackupType,omitempty" xml:"BackupType,omitempty"`
-	// The backup start time.
+	// The start time of the backup.
 	//
 	// example:
 	//
 	// 1650250861754
 	BeginTime *int64 `json:"BeginTime,omitempty" xml:"BeginTime,omitempty"`
-	// The backup end time.
+	// The end time of the backup.
 	//
 	// example:
 	//
@@ -148,11 +148,11 @@ type DescribeBackupSetResponseBodyData struct {
 	OSSList []*DescribeBackupSetResponseBodyDataOSSList `json:"OSSList,omitempty" xml:"OSSList,omitempty" type:"Repeated"`
 	// The status of the backup set. Valid values:
 	//
-	// - **0**: Backing up.
+	// - **0**: in progress
 	//
-	// - **1**: Backup succeeded.
+	// - **1**: successful
 	//
-	// - **2**: Backup failed.
+	// - **2**: failed
 	//
 	// example:
 	//
@@ -254,25 +254,25 @@ func (s *DescribeBackupSetResponseBodyData) Validate() error {
 }
 
 type DescribeBackupSetResponseBodyDataOSSList struct {
-	// The OSS file name.
+	// The name of the OSS file.
 	//
 	// example:
 	//
 	// hins3084_data_20220418110623_qp.xb
 	BackupSetFile *string `json:"BackupSetFile,omitempty" xml:"BackupSetFile,omitempty"`
-	// The public download URL.
+	// The Internet download URL.
 	//
 	// example:
 	//
 	// https://pre-rdsbak-cn-xxx.oss-cn-beijing.aliyuncs.com/custins2255/hins3084_data_20220418110623_qp.xb?OSSAccessKeyId=LTAI****************&Expires=1650441697&dd=7KJzkUSbXf6dwy
 	DownloadLink *string `json:"DownloadLink,omitempty" xml:"DownloadLink,omitempty"`
-	// The internal network OSS download URL.
+	// The internal OSS download URL.
 	//
 	// example:
 	//
 	// http://pre-rdsbak-cn-beijing.oss-cn-beijing-internal.aliyuncs.com/custins2255/hins3084_data_20220418110623_qp.xb?
 	IntranetDownloadLink *string `json:"IntranetDownloadLink,omitempty" xml:"IntranetDownloadLink,omitempty"`
-	// The expiration time of the OSS file link.
+	// The expiration time of the OSS file download link.
 	//
 	// example:
 	//

@@ -20,21 +20,21 @@ type iDescribeEvaluateAndImportTaskResponseBody interface {
 }
 
 type DescribeEvaluateAndImportTaskResponseBody struct {
-	// The returned result.
+	// The returned data.
 	Data *DescribeEvaluateAndImportTaskResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The response message. This parameter is empty when the request succeeds. When the request fails, an exception message is returned, such as an error code.
+	// The message returned by the request. This parameter is empty if the request is successful. If the request fails, an error message such as an error code is returned.
 	//
 	// example:
 	//
 	// Success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
 	// 73559800-****-11ec-bd40-99cfcff3fe1e
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	//
 	// example:
 	//
@@ -106,7 +106,7 @@ type DescribeEvaluateAndImportTaskResponseBodyData struct {
 	//
 	// example:
 	//
-	// "{\\"structureImportResult\\":{\\"status\\":\\"finish\\",\\"finishedNum\\":382,\\"totalNum\\":382,\\"percentage\\":100},\\"switchTips\\":\\"Forward switchover is allowed only when the forward synchronization latency is low\\",\\"autoTableSuggestionSwitch\\":false,\\"structureAlterationMap\\":{},\\"acceptFilterMap\\":{\\"fr_import\\":[\\"dy_dr_new\\"],\\"e3plus_drp_prod_new\\":[],\\"qbtong_prod\\":[],\\"e3plus_account_prod\\":[],\\"e3plus_drp_prod\\":[]},\\"structChunkMap\\":{},\\"count\\":1,\\"requestId\\":\\"9380D025-C9B1-51D6-A4B9-733C4879CC4A\\"}",
+	// "{\\"structureImportResult\\":{\\"status\\":\\"finish\\",\\"finishedNum\\":382,\\"totalNum\\":382,\\"percentage\\":100},\\"switchTips\\":\\"Forward switchover is allowed only when the forward synchronization latency is low.\\",\\"autoTableSuggestionSwitch\\":false,\\"structureAlterationMap\\":{},\\"acceptFilterMap\\":{\\"fr_import\\":[\\"dy_dr_new\\"],\\"e3plus_drp_prod_new\\":[],\\"qbtong_prod\\":[],\\"e3plus_account_prod\\":[],\\"e3plus_drp_prod\\":[]},\\"structChunkMap\\":{},\\"count\\":1,\\"requestId\\":\\"9380D025-C9B1-51D6-A4B9-733C4879CC4A\\"}",
 	Context *string `json:"Context,omitempty" xml:"Context,omitempty"`
 	// The creator of the import task.
 	//
@@ -114,7 +114,7 @@ type DescribeEvaluateAndImportTaskResponseBodyData struct {
 	//
 	// 346650
 	Creator *string `json:"Creator,omitempty" xml:"Creator,omitempty"`
-	// Indicates whether the import task is successful.
+	// Indicates whether the import task is deleted.
 	//
 	// example:
 	//
@@ -124,15 +124,15 @@ type DescribeEvaluateAndImportTaskResponseBodyData struct {
 	//
 	// example:
 	//
-	// 2025-06-08T15:00Z
+	// 1749394800000
 	GmtCreated *int64 `json:"GmtCreated,omitempty" xml:"GmtCreated,omitempty"`
-	// The modification time in timestamp format.
+	// The timestamp when the task was last modified.
 	//
 	// example:
 	//
 	// 1605080537000
 	GmtModified *int64 `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	// The task ID.
+	// The ID of the task.
 	//
 	// example:
 	//
@@ -144,49 +144,49 @@ type DescribeEvaluateAndImportTaskResponseBodyData struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The name of the slink destination database.
+	// The name of the destination database.
 	//
 	// example:
 	//
 	// fr_import
 	SlinkDstDb *string `json:"SlinkDstDb,omitempty" xml:"SlinkDstDb,omitempty"`
-	// The instance ID of the destination.
+	// The destination instance ID.
 	//
 	// example:
 	//
 	// pxc-hzrehc60jz5zye
 	SlinkDstResId *string `json:"SlinkDstResId,omitempty" xml:"SlinkDstResId,omitempty"`
-	// The username for the data connection of the destination.
+	// The username for the destination data connection.
 	//
 	// example:
 	//
 	// dts_dtdba
 	SlinkDstUserName *string `json:"SlinkDstUserName,omitempty" xml:"SlinkDstUserName,omitempty"`
-	// The name of the slink source database.
+	// The name of the source database.
 	//
 	// example:
 	//
 	// fr_import
 	SlinkSrcDb *string `json:"SlinkSrcDb,omitempty" xml:"SlinkSrcDb,omitempty"`
-	// The instance ID of the source.
+	// The source instance ID.
 	//
 	// example:
 	//
 	// drdshbga69378w4p
 	SlinkSrcResId *string `json:"SlinkSrcResId,omitempty" xml:"SlinkSrcResId,omitempty"`
-	// The resource type of the source.
+	// The source resource type.
 	//
 	// example:
 	//
 	// POLARX1
 	SlinkSrcResType *string `json:"SlinkSrcResType,omitempty" xml:"SlinkSrcResType,omitempty"`
-	// The username for the data connection of the source.
+	// The username for the source data connection.
 	//
 	// example:
 	//
 	// dtdba
 	SlinkSrcUserName *string `json:"SlinkSrcUserName,omitempty" xml:"SlinkSrcUserName,omitempty"`
-	// The stage of the synchronization.
+	// The current stage of the synchronization.
 	//
 	// example:
 	//
@@ -204,7 +204,7 @@ type DescribeEvaluateAndImportTaskResponseBodyData struct {
 	//
 	// drdsprod_to_2.0
 	SlinkTaskDesc *string `json:"SlinkTaskDesc,omitempty" xml:"SlinkTaskDesc,omitempty"`
-	// The slink task ID.
+	// The ID of the slink task.
 	//
 	// example:
 	//

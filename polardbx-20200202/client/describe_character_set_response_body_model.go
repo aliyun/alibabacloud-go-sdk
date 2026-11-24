@@ -20,9 +20,9 @@ type iDescribeCharacterSetResponseBody interface {
 }
 
 type DescribeCharacterSetResponseBody struct {
-	// The data struct.
+	// The data structure.
 	Data *DescribeCharacterSetResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The response message. "success" is returned if the request is successful. Otherwise, an error code is returned.
+	// The returned message. If the request is successful, success is returned. If the request fails, an error code is returned.
 	//
 	// example:
 	//
@@ -106,7 +106,7 @@ type DescribeCharacterSetResponseBodyData struct {
 	//
 	// - utf8
 	CharacterSet []*string `json:"CharacterSet,omitempty" xml:"CharacterSet,omitempty" type:"Repeated"`
-	// The storage type of databases in the target instance. Currently, only polarx is supported.
+	// The storage type of the database on the target instance. Only polarx is supported.
 	//
 	// example:
 	//

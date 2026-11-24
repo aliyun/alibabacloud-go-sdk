@@ -18,7 +18,7 @@ type iModifySupabaseSecurityIPListResponseBody interface {
 }
 
 type ModifySupabaseSecurityIPListResponseBody struct {
-	// The details of the access denied error.
+	// The details of the access denial.
 	AccessDeniedDetail *ModifySupabaseSecurityIPListResponseBodyAccessDeniedDetail `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty" type:"Struct"`
 	// The operation result.
 	Data *ModifySupabaseSecurityIPListResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
@@ -84,13 +84,13 @@ type ModifySupabaseSecurityIPListResponseBodyAccessDeniedDetail struct {
 	//
 	// example:
 	//
-	// xxx
+	// polardbx:ModifySupabaseSecurityIPList
 	AuthAction *string `json:"AuthAction,omitempty" xml:"AuthAction,omitempty"`
 	// The display name of the authentication principal.
 	//
 	// example:
 	//
-	// xxx
+	// Sample RAM user
 	AuthPrincipalDisplayName *string `json:"AuthPrincipalDisplayName,omitempty" xml:"AuthPrincipalDisplayName,omitempty"`
 	// The owner ID of the authentication principal.
 	//
@@ -104,13 +104,13 @@ type ModifySupabaseSecurityIPListResponseBodyAccessDeniedDetail struct {
 	//
 	// 222
 	AuthPrincipalType *string `json:"AuthPrincipalType,omitempty" xml:"AuthPrincipalType,omitempty"`
-	// The diagnostic message.
+	// The encoded diagnostic message.
 	//
 	// example:
 	//
 	// AQEAAAAAaKPfwjY0MzMyODRGLUZCQkQtNTA1RS04MUUxLTc5NTkzODk2MUIzMg==
 	EncodedDiagnosticMessage *string `json:"EncodedDiagnosticMessage,omitempty" xml:"EncodedDiagnosticMessage,omitempty"`
-	// The type of the no permission error.
+	// The type of the permission denial.
 	//
 	// example:
 	//
@@ -212,7 +212,7 @@ type ModifySupabaseSecurityIPListResponseBodyData struct {
 	//
 	// special
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
-	// The IP whitelist.
+	// The IP addresses in the whitelist.
 	//
 	// example:
 	//

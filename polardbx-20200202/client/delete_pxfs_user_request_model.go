@@ -28,7 +28,7 @@ type DeletePxfsUserRequest struct {
 	//
 	// pxc-xxxxxxxx
 	DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
-	// The identity name.
+	// The name of the identity.
 	//
 	// This parameter is required.
 	//
@@ -44,7 +44,7 @@ type DeletePxfsUserRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The tenant ID.
+	// The ID of the tenant.
 	//
 	// This parameter is required.
 	//

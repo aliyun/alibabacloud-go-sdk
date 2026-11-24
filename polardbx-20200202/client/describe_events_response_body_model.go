@@ -141,13 +141,13 @@ type DescribeEventsResponseBodyEventItems struct {
 	//
 	// FROM_USER
 	EventReason *string `json:"EventReason,omitempty" xml:"EventReason,omitempty"`
-	// The record time. The time is in the YYYY-MM-DDTHH:mm:ssZ format in UTC.
+	// The record time. The time must be in UTC and in the YYYY-MM-DDTHH:mm:ssZ format.
 	//
 	// example:
 	//
 	// 2021-10-15T06:39:49Z
 	EventRecordTime *string `json:"EventRecordTime,omitempty" xml:"EventRecordTime,omitempty"`
-	// The event time. The time is in the YYYY-MM-DDTHH:mm:ssZ format in UTC.
+	// The event time. The time must be in UTC and in the YYYY-MM-DDTHH:mm:ssZ format.
 	//
 	// example:
 	//

@@ -50,7 +50,7 @@ type ModifySupabaseSecurityIPListRequest struct {
 	//
 	// cn-beijing
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The IP whitelist. Separate multiple IP addresses with commas.
+	// The list of IP addresses in the whitelist. Separate multiple IP addresses with commas.
 	//
 	// This parameter is required.
 	//

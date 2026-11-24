@@ -22,7 +22,7 @@ type CheckHealthResponseBody struct {
 	//
 	// 173CA69A-3513-591D-8A09-C1EA37CBE2D9
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the component is healthy. A return value of UP indicates healthy. Any other value or an empty value indicates an exception.
+	// Indicates whether the component is healthy. A value of UP indicates that the component is healthy. Any other value or an empty value indicates an abnormal state.
 	//
 	// example:
 	//

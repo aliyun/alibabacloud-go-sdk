@@ -127,19 +127,23 @@ type DescribeRdsVpcsResponseBodyVpcsVpc struct {
 	//
 	// 2024-09-29 17:47:56
 	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	// Indicates whether the VPC is the default VPC. Valid values: **true**: The VPC is the default VPC. **false**: The VPC is not the default VPC.
+	// Indicates whether the VPC is the default VPC. Valid values:
+	//
+	// - true: The VPC is the default VPC.
+	//
+	// - false: The VPC is not the default VPC.
 	//
 	// example:
 	//
 	// False
 	IsDefault *bool `json:"IsDefault,omitempty" xml:"IsDefault,omitempty"`
-	// The region in which the VPC resides.
+	// The region where the VPC resides.
 	//
 	// example:
 	//
 	// cn-shanghai
 	RegionNo *string `json:"RegionNo,omitempty" xml:"RegionNo,omitempty"`
-	// The VPC status.
+	// The status of the VPC.
 	//
 	// example:
 	//
@@ -288,13 +292,13 @@ type DescribeRdsVpcsResponseBodyVpcsVpcVSwitchs struct {
 	//
 	// 10.0.0.0/24
 	CidrBlock *string `json:"CidrBlock,omitempty" xml:"CidrBlock,omitempty"`
-	// The time when the vSwitch was created. The value is a UNIX timestamp accurate to milliseconds.
+	// The creation time, which is a UNIX timestamp accurate to milliseconds.
 	//
 	// example:
 	//
 	// 1574156944000
 	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	// The time when the vSwitch was last modified. The value is a UNIX timestamp.
+	// The last modification time. The value is a UNIX timestamp.
 	//
 	// example:
 	//
@@ -312,13 +316,13 @@ type DescribeRdsVpcsResponseBodyVpcsVpcVSwitchs struct {
 	//
 	// cn-beijing-g
 	IzNo *string `json:"IzNo,omitempty" xml:"IzNo,omitempty"`
-	// The vSwitch status.
+	// The status of the vSwitch.
 	//
 	// example:
 	//
 	// Available
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The vSwitch ID.
+	// The ID of the vSwitch.
 	//
 	// example:
 	//

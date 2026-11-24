@@ -40,7 +40,7 @@ type DescribeActiveOperationTasksResponseBody struct {
 	//
 	// example:
 	//
-	// xxxx
+	// 9B2F3840-5C98-475C-B269-2D5C3A31797C
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The total number of entries.
 	//
@@ -117,21 +117,21 @@ func (s *DescribeActiveOperationTasksResponseBody) Validate() error {
 }
 
 type DescribeActiveOperationTasksResponseBodyItems struct {
-	// Indicates whether the event can be canceled. Valid values:
+	// Indicates whether cancellation is allowed. Valid values:
 	//
-	// - **0**: No.
+	// - **0**: no
 	//
-	// - **1**: Yes.
+	// - **1**: yes
 	//
 	// example:
 	//
 	// 0
 	AllowCancel *string `json:"AllowCancel,omitempty" xml:"AllowCancel,omitempty"`
-	// Indicates whether the time can be modified. Valid values:
+	// Indicates whether modification is allowed. Valid values:
 	//
-	// - **0**: No.
+	// - **0**: no
 	//
-	// - **1**: Yes.
+	// - **1**: yes
 	//
 	// example:
 	//
@@ -155,7 +155,7 @@ type DescribeActiveOperationTasksResponseBodyItems struct {
 	//
 	// 风险修复
 	ChangeLevelZh *string `json:"ChangeLevelZh,omitempty" xml:"ChangeLevelZh,omitempty"`
-	// The creation time. The time is displayed in UTC in the YYYY-MM-DDTHH:mm:ssZ format.
+	// The creation time. The time is in UTC and follows the YYYY-MM-DDTHH:mm:ssZ format.
 	//
 	// example:
 	//
@@ -221,7 +221,7 @@ type DescribeActiveOperationTasksResponseBodyItems struct {
 	//
 	// pxc-dd
 	InsName *string `json:"InsName,omitempty" xml:"InsName,omitempty"`
-	// The modification time. The time is displayed in UTC in the YYYY-MM-DDTHH:mm:ssZ format.
+	// The modification time. The time is in UTC and follows the YYYY-MM-DDTHH:mm:ssZ format.
 	//
 	// example:
 	//
@@ -245,7 +245,7 @@ type DescribeActiveOperationTasksResponseBodyItems struct {
 	//
 	// --
 	ResultInfo *string `json:"ResultInfo,omitempty" xml:"ResultInfo,omitempty"`
-	// The start time. The time is displayed in UTC in the YYYY-MM-DDTHH:mm:ssZ format.
+	// The start time. The time is in UTC and follows the YYYY-MM-DDTHH:mm:ssZ format.
 	//
 	// example:
 	//
@@ -263,7 +263,7 @@ type DescribeActiveOperationTasksResponseBodyItems struct {
 	Status *int64 `json:"Status,omitempty" xml:"Status,omitempty"`
 	// The list of child instances.
 	SubInsNames []*string `json:"SubInsNames,omitempty" xml:"SubInsNames,omitempty" type:"Repeated"`
-	// The switchover time. The time is displayed in UTC in the YYYY-MM-DDTHH:mm:ssZ format.
+	// The switchover time. The time is in UTC and follows the YYYY-MM-DDTHH:mm:ssZ format.
 	//
 	// example:
 	//

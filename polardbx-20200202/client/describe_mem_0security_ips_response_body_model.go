@@ -84,13 +84,13 @@ type DescribeMem0SecurityIpsResponseBodyAccessDeniedDetail struct {
 	//
 	// example:
 	//
-	// xxx
+	// polardbx:DescribeMem0SecurityIps
 	AuthAction *string `json:"AuthAction,omitempty" xml:"AuthAction,omitempty"`
 	// The identity used for authentication in the request.
 	//
 	// example:
 	//
-	// xxx
+	// 示例 RAM 用户
 	AuthPrincipalDisplayName *string `json:"AuthPrincipalDisplayName,omitempty" xml:"AuthPrincipalDisplayName,omitempty"`
 	// Same as above.
 	//

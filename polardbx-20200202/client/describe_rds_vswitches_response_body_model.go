@@ -16,7 +16,7 @@ type iDescribeRdsVswitchesResponseBody interface {
 }
 
 type DescribeRdsVswitchesResponseBody struct {
-	// The data struct.
+	// The data structure.
 	Data *DescribeRdsVswitchesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// Id of the request
 	//
@@ -62,7 +62,7 @@ func (s *DescribeRdsVswitchesResponseBody) Validate() error {
 }
 
 type DescribeRdsVswitchesResponseBodyData struct {
-	// The vSwitch list.
+	// The list of vSwitches.
 	VswitchList []*DescribeRdsVswitchesResponseBodyDataVswitchList `json:"VswitchList,omitempty" xml:"VswitchList,omitempty" type:"Repeated"`
 }
 
@@ -109,7 +109,7 @@ type DescribeRdsVswitchesResponseBodyDataVswitchList struct {
 	//
 	// 172.16.0.0/24
 	CidrBlock *string `json:"CidrBlock,omitempty" xml:"CidrBlock,omitempty"`
-	// The description of the database.
+	// The database description.
 	//
 	// example:
 	//
@@ -119,7 +119,7 @@ type DescribeRdsVswitchesResponseBodyDataVswitchList struct {
 	//
 	// example:
 	//
-	// babac91eff704edf9bdccfaa6ba4efce
+	// 123456
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
 	// The instance ID.
 	//
@@ -127,11 +127,11 @@ type DescribeRdsVswitchesResponseBodyDataVswitchList struct {
 	//
 	// drdshbgae0han226
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// Indicates whether the VPC is the default VPC. Valid values:
+	// Specifies whether the VPC is the default VPC. Valid values:
 	//
-	// - **true**: The VPC is the default VPC.
+	// - true: The VPC is the default VPC.
 	//
-	// - **false**: The VPC is not the default VPC.
+	// - false: The VPC is not the default VPC.
 	//
 	// example:
 	//
@@ -149,7 +149,7 @@ type DescribeRdsVswitchesResponseBodyDataVswitchList struct {
 	//
 	// szt-backup
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// vpc id。
+	// The VPC ID.
 	//
 	// example:
 	//

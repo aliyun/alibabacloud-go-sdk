@@ -62,7 +62,7 @@ func (s *DescribeParametersResponseBody) Validate() error {
 }
 
 type DescribeParametersResponseBodyData struct {
-	// The list of original parameters.
+	// The original parameter list.
 	ConfigParameters []*DescribeParametersResponseBodyDataConfigParameters `json:"ConfigParameters,omitempty" xml:"ConfigParameters,omitempty" type:"Repeated"`
 	// The instance ID.
 	//
@@ -82,7 +82,7 @@ type DescribeParametersResponseBodyData struct {
 	//
 	// 2.0
 	EngineVersion *string `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
-	// The list of running parameter details.
+	// The list of running parameters.
 	RunningParameters []*DescribeParametersResponseBodyDataRunningParameters `json:"RunningParameters,omitempty" xml:"RunningParameters,omitempty" type:"Repeated"`
 }
 

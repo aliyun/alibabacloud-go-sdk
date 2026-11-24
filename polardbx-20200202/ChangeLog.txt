@@ -1,3 +1,6 @@
+2026-11-24 Version: v4.12.3
+- Generated golang 2020-02-02 for polardbx.
+
 2026-10-30 Version: v4.12.2
 - Update API DescribeDBInstanceAttribute: add response parameters Body.DBInstance.SearchEnabled.
 - Update API DescribeDBInstanceAttribute: add response parameters Body.DBInstance.SearchInstance.

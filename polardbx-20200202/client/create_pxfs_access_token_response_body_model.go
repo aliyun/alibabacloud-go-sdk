@@ -90,7 +90,7 @@ type CreatePxfsAccessTokenResponseBodyAccessDeniedDetail struct {
 	//
 	// example:
 	//
-	// xxx
+	// Sample RAM user
 	AuthPrincipalDisplayName *string `json:"AuthPrincipalDisplayName,omitempty" xml:"AuthPrincipalDisplayName,omitempty"`
 	// The owner ID of the authentication principal.
 	//
@@ -104,7 +104,7 @@ type CreatePxfsAccessTokenResponseBodyAccessDeniedDetail struct {
 	//
 	// 222
 	AuthPrincipalType *string `json:"AuthPrincipalType,omitempty" xml:"AuthPrincipalType,omitempty"`
-	// The diagnostic message.
+	// The diagnostic information.
 	//
 	// example:
 	//
@@ -236,7 +236,7 @@ type CreatePxfsAccessTokenResponseBodyData struct {
 	//
 	// tenant-001
 	TenantId *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
-	// The plaintext of the token.
+	// The plaintext token.
 	//
 	// example:
 	//

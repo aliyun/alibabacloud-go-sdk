@@ -62,7 +62,7 @@ func (s *DescribeUserEncryptionKeyListResponseBody) Validate() error {
 }
 
 type DescribeUserEncryptionKeyListResponseBodyData struct {
-	// The key list.
+	// The list of keys.
 	KeyIds []*string `json:"KeyIds,omitempty" xml:"KeyIds,omitempty" type:"Repeated"`
 }
 

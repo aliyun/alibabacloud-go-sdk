@@ -48,7 +48,7 @@ type DescribeBinaryLogListRequest struct {
 	//
 	// pxc-hzrh51fze****pon-cdc
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	// The page number. Pages start from page 1. Default value: 1.
+	// The page number. Default value: 1.
 	//
 	// example:
 	//

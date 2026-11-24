@@ -34,7 +34,7 @@ type DescribeRplInspectionTaskResponseBody struct {
 	//
 	// 1AD222E9-E606-4A42-BF6D-8A4442913CEF
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	//
 	// example:
 	//
@@ -98,7 +98,7 @@ func (s *DescribeRplInspectionTaskResponseBody) Validate() error {
 type DescribeRplInspectionTaskResponseBodyData struct {
 	// The machine task information.
 	InspectionTaskList []*DescribeRplInspectionTaskResponseBodyDataInspectionTaskList `json:"InspectionTaskList,omitempty" xml:"InspectionTaskList,omitempty" type:"Repeated"`
-	// The slink status.
+	// The Slink status.
 	//
 	// example:
 	//
@@ -150,7 +150,7 @@ type DescribeRplInspectionTaskResponseBodyDataInspectionTaskList struct {
 	//
 	// example:
 	//
-	// 2025-09-25T02:36:20.000+0000
+	// 1758597921000
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	// The description of the inspection task.
 	//
@@ -164,7 +164,7 @@ type DescribeRplInspectionTaskResponseBodyDataInspectionTaskList struct {
 	//
 	// 10142
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// slinktaskid。
+	// The Slink task ID.
 	//
 	// example:
 	//
@@ -182,11 +182,11 @@ type DescribeRplInspectionTaskResponseBodyDataInspectionTaskList struct {
 	//
 	// SUCCEEDED
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The timestamp when the task was last updated.
+	// The timestamp of the last task update.
 	//
 	// example:
 	//
-	// 2025-09-23T03:25:21.000+0000
+	// 1758767780000
 	UpdateTime *int64 `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
 }
 

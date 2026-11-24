@@ -24,7 +24,7 @@ type iDescribeGdnInstancesRequest interface {
 }
 
 type DescribeGdnInstancesRequest struct {
-	// The message filter type.
+	// The filter type.
 	//
 	// example:
 	//
@@ -32,9 +32,7 @@ type DescribeGdnInstancesRequest struct {
 	//
 	// polarx_id
 	FilterType *string `json:"FilterType,omitempty" xml:"FilterType,omitempty"`
-	// The filter value used when querying resources.
-	//
-	// This parameter is used in conjunction with FilterKey.
+	// The filter value used to query resources. This parameter is used in conjunction with FilterKey.
 	//
 	// example:
 	//
@@ -54,7 +52,7 @@ type DescribeGdnInstancesRequest struct {
 	//
 	// 50
 	PageNum *string `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
-	// The page size.
+	// The number of entries per page.
 	//
 	// example:
 	//

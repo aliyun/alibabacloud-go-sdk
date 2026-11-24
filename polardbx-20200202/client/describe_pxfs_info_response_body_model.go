@@ -18,9 +18,9 @@ type iDescribePxfsInfoResponseBody interface {
 }
 
 type DescribePxfsInfoResponseBody struct {
-	// The details about the access denial.
+	// The details of the access denial.
 	AccessDeniedDetail *DescribePxfsInfoResponseBodyAccessDeniedDetail `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty" type:"Struct"`
-	// The response data.
+	// The returned data.
 	Data *DescribePxfsInfoResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -80,17 +80,17 @@ func (s *DescribePxfsInfoResponseBody) Validate() error {
 }
 
 type DescribePxfsInfoResponseBodyAccessDeniedDetail struct {
-	// The authorization action. Same as described above.
+	// Same as above.
 	//
 	// example:
 	//
-	// xxx
+	// polardbx:DescribePxfsInfo
 	AuthAction *string `json:"AuthAction,omitempty" xml:"AuthAction,omitempty"`
-	// The display name of the authentication principal.
+	// The name of the authentication principal.
 	//
 	// example:
 	//
-	// xxx
+	// Sample RAM user
 	AuthPrincipalDisplayName *string `json:"AuthPrincipalDisplayName,omitempty" xml:"AuthPrincipalDisplayName,omitempty"`
 	// The owner ID of the authentication principal.
 	//
@@ -98,19 +98,19 @@ type DescribePxfsInfoResponseBodyAccessDeniedDetail struct {
 	//
 	// 111
 	AuthPrincipalOwnerId *string `json:"AuthPrincipalOwnerId,omitempty" xml:"AuthPrincipalOwnerId,omitempty"`
-	// The authorization action. Same as described above.
+	// Same as above.
 	//
 	// example:
 	//
 	// 222
 	AuthPrincipalType *string `json:"AuthPrincipalType,omitempty" xml:"AuthPrincipalType,omitempty"`
-	// The encoded diagnostic message.
+	// The diagnostic information.
 	//
 	// example:
 	//
 	// AQEAAAAAaKPfwjY0MzMyODRGLUZCQkQtNTA1RS04MUUxLTc5NTkzODk2MUIzMg==
 	EncodedDiagnosticMessage *string `json:"EncodedDiagnosticMessage,omitempty" xml:"EncodedDiagnosticMessage,omitempty"`
-	// The type of missing permission.
+	// The type of the permission denial.
 	//
 	// example:
 	//
@@ -231,13 +231,13 @@ func (s *DescribePxfsInfoResponseBodyData) Validate() error {
 }
 
 type DescribePxfsInfoResponseBodyDataInstance struct {
-	// The node specification.
+	// The node specifications.
 	//
 	// example:
 	//
 	// polarx.pxfs.x4.xlarge
 	ClassCode *string `json:"ClassCode,omitempty" xml:"ClassCode,omitempty"`
-	// The list of connection addresses.
+	// The list of endpoints.
 	ConnAddrs []*DescribePxfsInfoResponseBodyDataInstanceConnAddrs `json:"ConnAddrs,omitempty" xml:"ConnAddrs,omitempty" type:"Repeated"`
 	// The creation time.
 	//
@@ -281,7 +281,7 @@ type DescribePxfsInfoResponseBodyDataInstance struct {
 	//
 	// ACTIVE
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The storage size.
+	// The storage capacity.
 	//
 	// example:
 	//
@@ -293,7 +293,7 @@ type DescribePxfsInfoResponseBodyDataInstance struct {
 	//
 	// cloud_essd
 	StorageType *string `json:"StorageType,omitempty" xml:"StorageType,omitempty"`
-	// The virtual private cloud (VPC) ID.
+	// The VPC ID.
 	//
 	// example:
 	//
@@ -482,13 +482,13 @@ type DescribePxfsInfoResponseBodyDataInstanceConnAddrs struct {
 	//
 	// agent-files.example.com:12049
 	ConnectionString *string `json:"ConnectionString,omitempty" xml:"ConnectionString,omitempty"`
-	// The endpoint.
+	// The access endpoint.
 	//
 	// example:
 	//
 	// agent-files.example.com
 	Endpoint *string `json:"Endpoint,omitempty" xml:"Endpoint,omitempty"`
-	// The port number.
+	// The port.
 	//
 	// example:
 	//
@@ -500,7 +500,7 @@ type DescribePxfsInfoResponseBodyDataInstanceConnAddrs struct {
 	//
 	// NFS
 	Protocol *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
-	// Indicates whether TLS is enabled.
+	// Specifies whether TLS is enabled.
 	//
 	// example:
 	//
@@ -518,7 +518,7 @@ type DescribePxfsInfoResponseBodyDataInstanceConnAddrs struct {
 	//
 	// Intranet
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// The virtual private cloud (VPC) ID.
+	// The VPC ID.
 	//
 	// example:
 	//

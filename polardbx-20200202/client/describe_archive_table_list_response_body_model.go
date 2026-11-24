@@ -74,13 +74,13 @@ type DescribeArchiveTableListResponseBodyData struct {
 	//
 	// 20
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The number of tables in the PAUSE state.
+	// The number of tables whose archiving is paused.
 	//
 	// example:
 	//
 	// 0
 	PausedCount *int32 `json:"PausedCount,omitempty" xml:"PausedCount,omitempty"`
-	// The number of tables being archived.
+	// The number of tables currently being archived.
 	//
 	// example:
 	//

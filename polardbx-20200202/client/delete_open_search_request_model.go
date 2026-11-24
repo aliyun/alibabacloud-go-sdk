@@ -16,7 +16,7 @@ type iDeleteOpenSearchRequest interface {
 }
 
 type DeleteOpenSearchRequest struct {
-	// The instance name.
+	// The name of the instance.
 	//
 	// This parameter is required.
 	//

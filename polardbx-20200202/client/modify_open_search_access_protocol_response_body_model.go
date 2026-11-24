@@ -20,9 +20,9 @@ type iModifyOpenSearchAccessProtocolResponseBody interface {
 }
 
 type ModifyOpenSearchAccessProtocolResponseBody struct {
-	// The details of the access denial.
+	// The details of the access denied error.
 	AccessDeniedDetail *ModifyOpenSearchAccessProtocolResponseBodyAccessDeniedDetail `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty" type:"Struct"`
-	// The response message. "success" is returned for a successful request. An error code is returned for a failed request.
+	// The response message. If the request is successful, success is returned. If an error occurs, the corresponding error code is returned.
 	//
 	// example:
 	//
@@ -30,11 +30,11 @@ type ModifyOpenSearchAccessProtocolResponseBody struct {
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The backend protocol. Valid values:
 	//
-	// - **HTTP*	- (default): supports association with HTTPS, HTTP, and QUIC listeners.
+	// - **HTTP*	- (default): Supports association with HTTPS, HTTP, and QUIC listeners.
 	//
-	// - **HTTPS**: supports association with HTTPS listeners.
+	// - **HTTPS**: Supports association with HTTPS listeners.
 	//
-	// - **gRPC**: supports association with HTTPS and QUIC listeners.
+	// - **gRPC**: Supports association with HTTPS and QUIC listeners.
 	//
 	// > If **ServerGroupType*	- is set to **Fc**, you do not need to configure the backend protocol.
 	//
@@ -108,13 +108,13 @@ type ModifyOpenSearchAccessProtocolResponseBodyAccessDeniedDetail struct {
 	//
 	// example:
 	//
-	// xxx
+	// polardbx:ModifyOpenSearchAccessProtocol
 	AuthAction *string `json:"AuthAction,omitempty" xml:"AuthAction,omitempty"`
 	// The display name of the authentication principal.
 	//
 	// example:
 	//
-	// xxx
+	// Sample RAM user
 	AuthPrincipalDisplayName *string `json:"AuthPrincipalDisplayName,omitempty" xml:"AuthPrincipalDisplayName,omitempty"`
 	// The owner ID of the authentication principal.
 	//
@@ -122,7 +122,7 @@ type ModifyOpenSearchAccessProtocolResponseBodyAccessDeniedDetail struct {
 	//
 	// 111
 	AuthPrincipalOwnerId *string `json:"AuthPrincipalOwnerId,omitempty" xml:"AuthPrincipalOwnerId,omitempty"`
-	// The identity type used for authentication in the request. Valid values:
+	// The type of identity used for authentication in the request. Valid values:
 	//
 	// - SubUser: RAM user
 	//
@@ -140,7 +140,7 @@ type ModifyOpenSearchAccessProtocolResponseBodyAccessDeniedDetail struct {
 	//
 	// AQEAAAAAaKPfwjY0MzMyODRGLUZCQkQtNTA1RS04MUUxLTc5NTkzODk2MUIzMg==
 	EncodedDiagnosticMessage *string `json:"EncodedDiagnosticMessage,omitempty" xml:"EncodedDiagnosticMessage,omitempty"`
-	// The type of the permission denial.
+	// The permission denial type.
 	//
 	// example:
 	//

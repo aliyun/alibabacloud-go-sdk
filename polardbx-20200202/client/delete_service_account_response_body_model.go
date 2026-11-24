@@ -26,19 +26,19 @@ type DeleteServiceAccountResponseBody struct {
 	AccessDeniedDetail *DeleteServiceAccountResponseBodyAccessDeniedDetail `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty" type:"Struct"`
 	// The data struct.
 	Data *DeleteServiceAccountResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The error message returned if the request failed. This parameter is empty if the request is successful.
+	// The error message returned if the request fails. This parameter is empty if the request succeeds.
 	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
 	// 9B2F3840-5C98-475C-B269-2D5C3A31797C
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request is successful.
+	// Indicates whether the request was successful.
 	//
 	// example:
 	//
@@ -118,7 +118,7 @@ type DeleteServiceAccountResponseBodyAccessDeniedDetail struct {
 	//
 	// example:
 	//
-	// xxx
+	// polardbx:DeleteServiceAccount
 	AuthAction *string `json:"AuthAction,omitempty" xml:"AuthAction,omitempty"`
 	// The type of the authentication principal.
 	//
@@ -132,13 +132,13 @@ type DeleteServiceAccountResponseBodyAccessDeniedDetail struct {
 	//
 	// AQEAAAAAaKPfwjY0MzMyODRGLUZCQkQtNTA1RS04MUUxLTc5NTkzODk2MUIzMg==
 	EncodedDiagnosticMessage *string `json:"EncodedDiagnosticMessage,omitempty" xml:"EncodedDiagnosticMessage,omitempty"`
-	// The type of the missing permission.
+	// The type of the permission denial.
 	//
 	// example:
 	//
 	// ImplicitDeny
 	NoPermissionType *string `json:"NoPermissionType,omitempty" xml:"NoPermissionType,omitempty"`
-	// The policy type.
+	// The type of the policy.
 	//
 	// example:
 	//
@@ -204,19 +204,19 @@ func (s *DeleteServiceAccountResponseBodyAccessDeniedDetail) Validate() error {
 }
 
 type DeleteServiceAccountResponseBodyData struct {
-	// The account name.
+	// The name of the account.
 	//
 	// example:
 	//
 	// polardbx_meta_ro
 	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
-	// Indicates whether the import task is successful.
+	// Indicates whether the import task was successful.
 	//
 	// example:
 	//
-	// fase
+	// false
 	Deleted *bool `json:"Deleted,omitempty" xml:"Deleted,omitempty"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
@@ -234,11 +234,11 @@ type DeleteServiceAccountResponseBodyData struct {
 	//
 	// Running
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The task ID.
+	// The ID of the task.
 	//
 	// example:
 	//
-	// ******
+	// 2209883
 	TaskId *int32 `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 

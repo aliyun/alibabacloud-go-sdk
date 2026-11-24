@@ -20,7 +20,7 @@ type iReleaseContext0PublicConnectionRequest interface {
 }
 
 type ReleaseContext0PublicConnectionRequest struct {
-	// The public network connection string to release. If this parameter is not specified, the Mem0 public address is subject to automatic release.
+	// The public connection string to release. This parameter is optional. If you do not specify this parameter, the Mem0 public endpoint is automatically released.
 	//
 	// example:
 	//
@@ -34,11 +34,7 @@ type ReleaseContext0PublicConnectionRequest struct {
 	//
 	// pxc-htri0****r4k9p
 	DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
-	// The target node type. Valid values:
-	//
-	// - service
-	//
-	// - dashboard
+	// The type of the target node. Valid values: service, dashboard.
 	//
 	// example:
 	//

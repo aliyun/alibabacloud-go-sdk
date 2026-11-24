@@ -18,7 +18,7 @@ type iDescribeOpenSearchResourceUsageResponseBody interface {
 }
 
 type DescribeOpenSearchResourceUsageResponseBody struct {
-	// The details of the access denial.
+	// The access denial details.
 	AccessDeniedDetail *DescribeOpenSearchResourceUsageResponseBodyAccessDeniedDetail `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty" type:"Struct"`
 	// The returned data.
 	Data *DescribeOpenSearchResourceUsageResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
@@ -84,13 +84,13 @@ type DescribeOpenSearchResourceUsageResponseBodyAccessDeniedDetail struct {
 	//
 	// example:
 	//
-	// xxx
+	// polardbx:DescribeOpenSearchResourceUsage
 	AuthAction *string `json:"AuthAction,omitempty" xml:"AuthAction,omitempty"`
 	// The display name of the authentication principal.
 	//
 	// example:
 	//
-	// xxx
+	// Sample RAM user
 	AuthPrincipalDisplayName *string `json:"AuthPrincipalDisplayName,omitempty" xml:"AuthPrincipalDisplayName,omitempty"`
 	// The owner ID of the authentication principal.
 	//
@@ -104,7 +104,7 @@ type DescribeOpenSearchResourceUsageResponseBodyAccessDeniedDetail struct {
 	//
 	// 222
 	AuthPrincipalType *string `json:"AuthPrincipalType,omitempty" xml:"AuthPrincipalType,omitempty"`
-	// The diagnostic information.
+	// The diagnostic message.
 	//
 	// example:
 	//
@@ -206,11 +206,11 @@ type DescribeOpenSearchResourceUsageResponseBodyData struct {
 	//
 	// 1000000
 	DocCount *int64 `json:"DocCount,omitempty" xml:"DocCount,omitempty"`
-	// The number of indexes. This is a filter condition for the number of indexes that the missing index table currently has. The input format is `operator + separator "" + index count`, for example, `>=100`.
+	// The number of indexes.
 	//
 	// example:
 	//
-	// >=
+	// 0
 	IndexCount *int32 `json:"IndexCount,omitempty" xml:"IndexCount,omitempty"`
 	// The used storage space, in bytes.
 	//
@@ -224,7 +224,7 @@ type DescribeOpenSearchResourceUsageResponseBodyData struct {
 	//
 	// 536870912000
 	StorageTotalInBytes *int64 `json:"StorageTotalInBytes,omitempty" xml:"StorageTotalInBytes,omitempty"`
-	// The storage space usage.
+	// The storage usage percentage.
 	//
 	// example:
 	//

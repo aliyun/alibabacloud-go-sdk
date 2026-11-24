@@ -22,7 +22,7 @@ type MigrateDBInstanceResponseBody struct {
 	//
 	// example:
 	//
-	// *****
+	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The request ID.
 	//

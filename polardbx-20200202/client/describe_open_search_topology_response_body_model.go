@@ -18,9 +18,9 @@ type iDescribeOpenSearchTopologyResponseBody interface {
 }
 
 type DescribeOpenSearchTopologyResponseBody struct {
-	// The details of the access denial.
+	// The access denial details.
 	AccessDeniedDetail *DescribeOpenSearchTopologyResponseBodyAccessDeniedDetail `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty" type:"Struct"`
-	// The data struct.
+	// The data structure.
 	Data *DescribeOpenSearchTopologyResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// Id of the request
 	//
@@ -84,27 +84,27 @@ type DescribeOpenSearchTopologyResponseBodyAccessDeniedDetail struct {
 	//
 	// example:
 	//
-	// xxx
+	// polardbx:DescribeOpenSearchTopology
 	AuthAction *string `json:"AuthAction,omitempty" xml:"AuthAction,omitempty"`
-	// The display name of the authentication principal.
+	// The name of the authentication principal.
 	//
 	// example:
 	//
-	// xxx
+	// Sample RAM user
 	AuthPrincipalDisplayName *string `json:"AuthPrincipalDisplayName,omitempty" xml:"AuthPrincipalDisplayName,omitempty"`
-	// The owner ID of the authentication principal.
+	// The OwnerId of the authentication principal.
 	//
 	// example:
 	//
 	// 111
 	AuthPrincipalOwnerId *string `json:"AuthPrincipalOwnerId,omitempty" xml:"AuthPrincipalOwnerId,omitempty"`
-	// The authentication principal type.
+	// The description as above.
 	//
 	// example:
 	//
 	// 222
 	AuthPrincipalType *string `json:"AuthPrincipalType,omitempty" xml:"AuthPrincipalType,omitempty"`
-	// The encoded diagnostic message.
+	// The diagnostic information.
 	//
 	// example:
 	//
@@ -202,7 +202,7 @@ func (s *DescribeOpenSearchTopologyResponseBodyAccessDeniedDetail) Validate() er
 type DescribeOpenSearchTopologyResponseBodyData struct {
 	// The node IDs.
 	Nodes []*DescribeOpenSearchTopologyResponseBodyDataNodes `json:"Nodes,omitempty" xml:"Nodes,omitempty" type:"Repeated"`
-	// The configuration of the automatic storage scaling feature for the instance.
+	// The configuration information of the Automatic storage scaling feature for instance storage.
 	Storage *DescribeOpenSearchTopologyResponseBodyDataStorage `json:"Storage,omitempty" xml:"Storage,omitempty" type:"Struct"`
 }
 
@@ -261,9 +261,9 @@ type DescribeOpenSearchTopologyResponseBodyDataNodes struct {
 	//
 	// example:
 	//
-	// 0.25
+	// 4
 	Cpu *int32 `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
-	// The Origin Domain Name that you configured in the DCDN console, including IPv4 addresses, IPv6 addresses, common domain names, and OSS domain names.
+	// The origin domain name that you configured in the DCDN console, including IPv4 addresses, IPv6 addresses, regular domain names, and OSS domain names.
 	//
 	// example:
 	//
@@ -271,7 +271,7 @@ type DescribeOpenSearchTopologyResponseBodyDataNodes struct {
 	Host *string `json:"Host,omitempty" xml:"Host,omitempty"`
 	// Indicates whether the current node is the primary node.
 	IsLeader *bool `json:"IsLeader,omitempty" xml:"IsLeader,omitempty"`
-	// The memory size.
+	// The configured memory size.
 	//
 	// example:
 	//
@@ -283,7 +283,7 @@ type DescribeOpenSearchTopologyResponseBodyDataNodes struct {
 	//
 	// pxc-c-jf0pivh2dt
 	NodeId *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
-	// The role of a node in the three-node RDS cluster. Valid values:
+	// The role of a node in the three-node RDS architecture. Valid values:
 	//
 	// - **leader**: primary node
 	//
@@ -297,19 +297,19 @@ type DescribeOpenSearchTopologyResponseBodyDataNodes struct {
 	Role *string `json:"Role,omitempty" xml:"Role,omitempty"`
 	// The node status. Valid values:
 	//
-	// - **0**: Running
+	// - **0**: running
 	//
-	// - **1**: Creating
+	// - **1**: creating
 	//
-	// - **2**: Abnormal
+	// - **2**: abnormal
 	//
-	// - **3**: Expired
+	// - **3**: expired
 	//
-	// - **4**: Releasing
+	// - **4**: releasing
 	//
-	// - **5**: Released
+	// - **5**: released
 	//
-	// - **6**: Locked
+	// - **6**: locked
 	//
 	// example:
 	//
@@ -404,13 +404,13 @@ func (s *DescribeOpenSearchTopologyResponseBodyDataNodes) Validate() error {
 type DescribeOpenSearchTopologyResponseBodyDataStorage struct {
 	// The number of secondary nodes in the primary zone.
 	//
-	// > The **ReplicaCount*	- and **SlaveReplicaCount*	- parameters apply only to cloud-native instances. If the instance uses the cluster architecture, these parameters indicate the number of secondary nodes of a **single shard*	- in the primary and secondary zones.
+	// > The **ReplicaCount*	- and **SlaveReplicaCount*	- parameters apply only to cloud-native instances. If the instance uses a cluster architecture, these parameters indicate the number of secondary nodes in the primary and secondary zones for a **single shard**.
 	//
 	// example:
 	//
 	// 1
 	ReplicaCount *int32 `json:"ReplicaCount,omitempty" xml:"ReplicaCount,omitempty"`
-	// The total storage capacity of the node. Unit: GB.
+	// The total storage capacity of the node, in GB.
 	//
 	// example:
 	//

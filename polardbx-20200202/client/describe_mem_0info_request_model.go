@@ -16,7 +16,7 @@ type iDescribeMem0InfoRequest interface {
 }
 
 type DescribeMem0InfoRequest struct {
-	// Instance Name
+	// The name of the instance.
 	//
 	// This parameter is required.
 	//
@@ -24,7 +24,7 @@ type DescribeMem0InfoRequest struct {
 	//
 	// pxc-spsil01pww4hfz
 	DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
-	// Region
+	// The region ID.
 	//
 	// This parameter is required.
 	//

@@ -24,17 +24,17 @@ type iDescribePolarxDataNodesRequest interface {
 type DescribePolarxDataNodesRequest struct {
 	// The type of nodes to query. Valid values:
 	//
-	// - all: queries both dn and gms nodes.
+	// - all: Queries both dn and gms nodes.
 	//
-	// - gms: queries only gms nodes.
+	// - gms: Queries only gms nodes.
 	//
-	// - dn: queries only dn nodes.
+	// - dn: Queries only dn nodes.
 	//
 	// example:
 	//
 	// dn
 	NodeType *string `json:"NodeType,omitempty" xml:"NodeType,omitempty"`
-	// The page number. The value must be a positive integer that does not exceed the maximum value of the integer data type. Default value: **1**.
+	// The page number. The value must be an integer greater than 0 and less than or equal to the maximum value of the INTEGER data type. Default value: **1**.
 	//
 	// example:
 	//
@@ -46,7 +46,7 @@ type DescribePolarxDataNodesRequest struct {
 	//
 	// 30
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The region in which the instance resides.
+	// The region ID of the instance.
 	//
 	// This parameter is required.
 	//
@@ -54,7 +54,7 @@ type DescribePolarxDataNodesRequest struct {
 	//
 	// cn-shanghai
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The keyword for filtering results.
+	// The keyword.
 	//
 	// example:
 	//

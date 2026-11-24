@@ -84,13 +84,13 @@ type DeleteOpenSearchResponseBodyAccessDeniedDetail struct {
 	//
 	// example:
 	//
-	// xxx
+	// polardbx:DeleteOpenSearch
 	AuthAction *string `json:"AuthAction,omitempty" xml:"AuthAction,omitempty"`
 	// The display name of the authentication principal.
 	//
 	// example:
 	//
-	// xxx
+	// Sample RAM user
 	AuthPrincipalDisplayName *string `json:"AuthPrincipalDisplayName,omitempty" xml:"AuthPrincipalDisplayName,omitempty"`
 	// The owner ID of the authentication principal.
 	//
@@ -110,7 +110,7 @@ type DeleteOpenSearchResponseBodyAccessDeniedDetail struct {
 	//
 	// AQEAAAAAaKPfwjY0MzMyODRGLUZCQkQtNTA1RS04MUUxLTc5NTkzODk2MUIzMg==
 	EncodedDiagnosticMessage *string `json:"EncodedDiagnosticMessage,omitempty" xml:"EncodedDiagnosticMessage,omitempty"`
-	// The type of the permission denial.
+	// The no-permission type.
 	//
 	// example:
 	//
@@ -200,7 +200,7 @@ func (s *DeleteOpenSearchResponseBodyAccessDeniedDetail) Validate() error {
 }
 
 type DeleteOpenSearchResponseBodyData struct {
-	// The instance name.
+	// The name of the instance.
 	//
 	// example:
 	//

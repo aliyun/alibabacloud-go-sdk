@@ -28,7 +28,7 @@ type ResetOpenSearchPasswordRequest struct {
 	//
 	// testAccount
 	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
-	// The new password. The password must be 6 to 32 characters in length and must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters (!@#$&%^*()_+-=).
+	// The new password. The password must be 6 to 32 characters in length and contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters (!@#$&%^*()_+-=).
 	//
 	// This parameter is required.
 	//

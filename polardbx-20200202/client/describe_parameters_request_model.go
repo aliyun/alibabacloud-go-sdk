@@ -36,7 +36,7 @@ type DescribeParametersRequest struct {
 	//
 	// compute
 	ParamLevel *string `json:"ParamLevel,omitempty" xml:"ParamLevel,omitempty"`
-	// The region ID of the instance.
+	// The region ID.
 	//
 	// This parameter is required.
 	//

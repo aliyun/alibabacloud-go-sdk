@@ -16,7 +16,7 @@ type iDescribeCdcInfoRequest interface {
 }
 
 type DescribeCdcInfoRequest struct {
-	// The instance name.
+	// The name of the instance.
 	//
 	// This parameter is required.
 	//

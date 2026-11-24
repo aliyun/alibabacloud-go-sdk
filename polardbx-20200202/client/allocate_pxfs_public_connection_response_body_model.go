@@ -18,7 +18,7 @@ type iAllocatePxfsPublicConnectionResponseBody interface {
 }
 
 type AllocatePxfsPublicConnectionResponseBody struct {
-	// The access denial details.
+	// The details of the access denial.
 	AccessDeniedDetail *AllocatePxfsPublicConnectionResponseBodyAccessDeniedDetail `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty" type:"Struct"`
 	// The response data.
 	Data *AllocatePxfsPublicConnectionResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
@@ -80,19 +80,19 @@ func (s *AllocatePxfsPublicConnectionResponseBody) Validate() error {
 }
 
 type AllocatePxfsPublicConnectionResponseBodyAccessDeniedDetail struct {
-	// Same as above.
+	// The description is the same as above.
 	//
 	// example:
 	//
-	// xxx
+	// polardbx:AllocatePxfsPublicConnection
 	AuthAction *string `json:"AuthAction,omitempty" xml:"AuthAction,omitempty"`
 	// The identity used for authentication in the request.
 	//
 	// example:
 	//
-	// xxx
+	// Sample RAM user
 	AuthPrincipalDisplayName *string `json:"AuthPrincipalDisplayName,omitempty" xml:"AuthPrincipalDisplayName,omitempty"`
-	// Same as above.
+	// The description is the same as above.
 	//
 	// example:
 	//
@@ -116,7 +116,7 @@ type AllocatePxfsPublicConnectionResponseBodyAccessDeniedDetail struct {
 	//
 	// ImplicitDeny
 	NoPermissionType *string `json:"NoPermissionType,omitempty" xml:"NoPermissionType,omitempty"`
-	// The policy type.
+	// The type of the policy.
 	//
 	// example:
 	//

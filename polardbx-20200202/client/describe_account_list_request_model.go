@@ -26,11 +26,11 @@ type DescribeAccountListRequest struct {
 	//
 	// testaccount
 	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
-	// The type of the account. Specify this parameter to query accounts of a specific type. If you set this parameter to null, all accounts are returned.
+	// The type of the account. Specify this parameter to query accounts of a specific type. If this parameter is left empty, all accounts are returned. Valid values:
 	//
-	// - Before three-role mode is enabled: 0 indicates a standard account, and 1 indicates a privileged user account.
+	// - Before the three-role mode is enabled: 0 indicates a standard account, and 1 indicates a privileged account.
 	//
-	// - After three-role mode is enabled: 0 indicates a standard account, 2 indicates a system administrator account, 3 indicates a security administrator account, and 4 indicates an audit administrator account.
+	// - After the three-role mode is enabled: 0 indicates a standard account, 2 indicates a system administrator account, 3 indicates a security administrator account, and 4 indicates an audit administrator account.
 	//
 	// example:
 	//

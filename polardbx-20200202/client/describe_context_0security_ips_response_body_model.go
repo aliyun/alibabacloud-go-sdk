@@ -18,7 +18,7 @@ type iDescribeContext0SecurityIpsResponseBody interface {
 }
 
 type DescribeContext0SecurityIpsResponseBody struct {
-	// The details of the access denied error.
+	// The details of the access denial.
 	AccessDeniedDetail *DescribeContext0SecurityIpsResponseBodyAccessDeniedDetail `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty" type:"Struct"`
 	// The monitoring data.
 	Data *DescribeContext0SecurityIpsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
@@ -84,13 +84,13 @@ type DescribeContext0SecurityIpsResponseBodyAccessDeniedDetail struct {
 	//
 	// example:
 	//
-	// xxx
+	// polardbx:DescribeContext0SecurityIps
 	AuthAction *string `json:"AuthAction,omitempty" xml:"AuthAction,omitempty"`
-	// The name of the authentication principal.
+	// The display name of the authentication principal.
 	//
 	// example:
 	//
-	// xxx
+	// Sample RAM user
 	AuthPrincipalDisplayName *string `json:"AuthPrincipalDisplayName,omitempty" xml:"AuthPrincipalDisplayName,omitempty"`
 	// The owner ID of the authentication principal.
 	//
@@ -116,7 +116,7 @@ type DescribeContext0SecurityIpsResponseBodyAccessDeniedDetail struct {
 	//
 	// ImplicitDeny
 	NoPermissionType *string `json:"NoPermissionType,omitempty" xml:"NoPermissionType,omitempty"`
-	// The type of the policy.
+	// The policy type.
 	//
 	// example:
 	//
@@ -277,7 +277,7 @@ type DescribeContext0SecurityIpsResponseBodyDataGroupItems struct {
 	//
 	// group1
 	GroupTag *string `json:"GroupTag,omitempty" xml:"GroupTag,omitempty"`
-	// The details of the whitelist in the group.
+	// The whitelist details for the group.
 	//
 	// example:
 	//

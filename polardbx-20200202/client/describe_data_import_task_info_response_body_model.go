@@ -22,15 +22,15 @@ type iDescribeDataImportTaskInfoResponseBody interface {
 }
 
 type DescribeDataImportTaskInfoResponseBody struct {
-	// The response code. This parameter is empty when the request succeeds. If the request fails, an error message is returned, such as an error code.
+	// The response code. This parameter is empty when the request is successful. If the request fails, an exception message such as an error code is returned.
 	//
 	// example:
 	//
 	// 200
 	Code *int64 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The result set.
+	// The returned result set.
 	Data *DescribeDataImportTaskInfoResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The response message. This parameter has a value only when the task status is success. Otherwise, an empty value is returned.
+	// The returned message. This parameter has a value only when the task status is success. Otherwise, it is empty.
 	//
 	// example:
 	//
@@ -42,7 +42,7 @@ type DescribeDataImportTaskInfoResponseBody struct {
 	//
 	// 9B2F3840-5C98-****-B269-2D5C3A31797C
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	//
 	// example:
 	//
@@ -150,19 +150,19 @@ type DescribeDataImportTaskInfoResponseBodyDataDataImportTaskDetailInfo struct {
 	//
 	// 1
 	FsmId *int64 `json:"FsmId,omitempty" xml:"FsmId,omitempty"`
-	// The state identifier in the data migration or synchronization task.
+	// A state identifier in a data migration or synchronization task.
 	//
 	// example:
 	//
 	// RECON_FINISHED_CATCH_UP
 	FsmState *string `json:"FsmState,omitempty" xml:"FsmState,omitempty"`
-	// The status in the data migration, import, or synchronization system.
+	// The status in systems such as data migration, import, and synchronization.
 	//
 	// example:
 	//
 	// IMPORT_NOT_BEGIN
 	FsmStatus *string `json:"FsmStatus,omitempty" xml:"FsmStatus,omitempty"`
-	// The data import task details.
+	// The details of the data import task.
 	ServiceDetailList []*DescribeDataImportTaskInfoResponseBodyDataDataImportTaskDetailInfoServiceDetailList `json:"ServiceDetailList,omitempty" xml:"ServiceDetailList,omitempty" type:"Repeated"`
 }
 
@@ -238,11 +238,11 @@ type DescribeDataImportTaskInfoResponseBodyDataDataImportTaskDetailInfoServiceDe
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	// The task details.
 	TaskDetailList []*DescribeDataImportTaskInfoResponseBodyDataDataImportTaskDetailInfoServiceDetailListTaskDetailList `json:"TaskDetailList,omitempty" xml:"TaskDetailList,omitempty" type:"Repeated"`
-	// The replication type. Valid values:
+	// Valid values:
 	//
-	// - FULL_COPY: full replication.
+	// - FULL_COPY: Full replication.
 	//
-	// - INC_COPY: incremental replication.
+	// - INC_COPY: Incremental replication.
 	//
 	// example:
 	//
@@ -314,13 +314,13 @@ type DescribeDataImportTaskInfoResponseBodyDataDataImportTaskDetailInfoServiceDe
 	//
 	// 58329
 	Delay *int64 `json:"Delay,omitempty" xml:"Delay,omitempty"`
-	// The most recent error message.
+	// The latest error message.
 	//
 	// example:
 	//
 	// null
 	LastError *string `json:"LastError,omitempty" xml:"LastError,omitempty"`
-	// The physical database name.
+	// The name of the physical database.
 	//
 	// example:
 	//
@@ -358,7 +358,7 @@ type DescribeDataImportTaskInfoResponseBodyDataDataImportTaskDetailInfoServiceDe
 	//
 	// example:
 	//
-	// fc3b1568-ad96-****-adca-dfe018b38077
+	// 1991610
 	TaskId *int64 `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 	// The task type.
 	//

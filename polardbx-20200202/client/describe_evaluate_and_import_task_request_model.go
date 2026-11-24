@@ -24,7 +24,7 @@ type DescribeEvaluateAndImportTaskRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the link task.
+	// The ID of the slink task.
 	//
 	// example:
 	//

@@ -18,7 +18,7 @@ type iDescribeContext0InfoResponseBody interface {
 }
 
 type DescribeContext0InfoResponseBody struct {
-	// The details of the access denial.
+	// The access denial details.
 	AccessDeniedDetail *DescribeContext0InfoResponseBodyAccessDeniedDetail `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty" type:"Struct"`
 	// The data details.
 	Data *DescribeContext0InfoResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
@@ -84,13 +84,13 @@ type DescribeContext0InfoResponseBodyAccessDeniedDetail struct {
 	//
 	// example:
 	//
-	// xxx
+	// polardbx:DescribeContext0Info
 	AuthAction *string `json:"AuthAction,omitempty" xml:"AuthAction,omitempty"`
 	// The display name of the authentication principal.
 	//
 	// example:
 	//
-	// xxx
+	// Sample RAM user
 	AuthPrincipalDisplayName *string `json:"AuthPrincipalDisplayName,omitempty" xml:"AuthPrincipalDisplayName,omitempty"`
 	// The owner ID of the authentication principal.
 	//
@@ -110,13 +110,13 @@ type DescribeContext0InfoResponseBodyAccessDeniedDetail struct {
 	//
 	// AQEAAAAAaKPfwjY0MzMyODRGLUZCQkQtNTA1RS04MUUxLTc5NTkzODk2MUIzMg==
 	EncodedDiagnosticMessage *string `json:"EncodedDiagnosticMessage,omitempty" xml:"EncodedDiagnosticMessage,omitempty"`
-	// The no-permission type.
+	// The type of the access denial.
 	//
 	// example:
 	//
 	// ImplicitDeny
 	NoPermissionType *string `json:"NoPermissionType,omitempty" xml:"NoPermissionType,omitempty"`
-	// The policy type.
+	// The type of the policy.
 	//
 	// example:
 	//
@@ -231,7 +231,7 @@ func (s *DescribeContext0InfoResponseBodyData) Validate() error {
 }
 
 type DescribeContext0InfoResponseBodyDataInstance struct {
-	// The instance class.
+	// The instance type.
 	//
 	// example:
 	//
@@ -257,7 +257,7 @@ type DescribeContext0InfoResponseBodyDataInstance struct {
 	//
 	// pxc-spsil01pww4hfz-mem
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The full tag of the minor version currently confirmed for the service. This parameter is empty when the version is unknown.
+	// The full tag of the currently confirmed minor version of the service. This parameter is empty if the version is unknown.
 	//
 	// example:
 	//
@@ -487,19 +487,19 @@ type DescribeContext0InfoResponseBodyDataInstanceConnAddrs struct {
 	//
 	// pxc-spsil01pww4hfz.polarx.singapore.rds.aliyuncs.com
 	ConnectionString *string `json:"ConnectionString,omitempty" xml:"ConnectionString,omitempty"`
-	// The target node type. Valid values: service, dashboard.
+	// The type of the target node: service or dashboard.
 	//
 	// example:
 	//
 	// service
 	NodeType *string `json:"NodeType,omitempty" xml:"NodeType,omitempty"`
-	// The port.
+	// The port number.
 	//
 	// example:
 	//
 	// 3306
 	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
-	// The endpoint type.
+	// The type of the endpoint.
 	//
 	// example:
 	//
@@ -517,7 +517,7 @@ type DescribeContext0InfoResponseBodyDataInstanceConnAddrs struct {
 	//
 	// vsw-t4ny14pr37spmjsbv5dc2
 	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	// The VPC instance ID.
+	// The VPC-connected instance ID.
 	//
 	// example:
 	//
@@ -601,7 +601,7 @@ func (s *DescribeContext0InfoResponseBodyDataInstanceConnAddrs) Validate() error
 }
 
 type DescribeContext0InfoResponseBodyDataInstanceReplicaSets struct {
-	// The instance class.
+	// The instance type.
 	//
 	// example:
 	//
@@ -627,7 +627,7 @@ type DescribeContext0InfoResponseBodyDataInstanceReplicaSets struct {
 	//
 	// 1
 	NodeCount *int32 `json:"NodeCount,omitempty" xml:"NodeCount,omitempty"`
-	// The target node type. Valid values: service, dashboard.
+	// The type of the target node: service or dashboard.
 	//
 	// example:
 	//
@@ -635,19 +635,19 @@ type DescribeContext0InfoResponseBodyDataInstanceReplicaSets struct {
 	NodeType *string `json:"NodeType,omitempty" xml:"NodeType,omitempty"`
 	// The node status. Valid values:
 	//
-	// - **0**: running
+	// - **0**: running.
 	//
-	// - **1**: creating
+	// - **1**: creating.
 	//
-	// - **2**: abnormal
+	// - **2**: abnormal.
 	//
-	// - **3**: expired
+	// - **3**: expired.
 	//
-	// - **4**: releasing
+	// - **4**: releasing.
 	//
-	// - **5**: released
+	// - **5**: released.
 	//
-	// - **6**: locked
+	// - **6**: locked.
 	//
 	// example:
 	//
@@ -776,13 +776,13 @@ type DescribeContext0InfoResponseBodyDataInstanceReplicaSetsConnAddrs struct {
 	//
 	// pxc-hzrlz8e3khuaoz.polarx.rds.aliyuncs.com
 	ConnectionString *string `json:"ConnectionString,omitempty" xml:"ConnectionString,omitempty"`
-	// The target node type. Valid values: service, dashboard.
+	// The type of the target node: service or dashboard.
 	//
 	// example:
 	//
 	// service
 	NodeType *string `json:"NodeType,omitempty" xml:"NodeType,omitempty"`
-	// The port.
+	// The port number.
 	//
 	// example:
 	//
@@ -790,9 +790,9 @@ type DescribeContext0InfoResponseBodyDataInstanceReplicaSetsConnAddrs struct {
 	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
 	// The instance type. Valid values:
 	//
-	// - **ReadWrite**: primary instance
+	// - **ReadWrite**: primary instance.
 	//
-	// - **ReadOnly**: read-only instance
+	// - **ReadOnly**: read-only instance.
 	//
 	// example:
 	//
@@ -810,7 +810,7 @@ type DescribeContext0InfoResponseBodyDataInstanceReplicaSetsConnAddrs struct {
 	//
 	// vsw-2zedp17pfss1133bvdizl
 	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	// The VPC instance ID.
+	// The VPC-connected instance ID.
 	//
 	// example:
 	//

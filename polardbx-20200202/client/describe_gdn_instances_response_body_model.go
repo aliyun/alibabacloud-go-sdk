@@ -22,9 +22,7 @@ type iDescribeGdnInstancesResponseBody interface {
 type DescribeGdnInstancesResponseBody struct {
 	// The list of instance details.
 	Data *DescribeGdnInstancesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The message returned for the request.
-	//
-	// > This parameter is empty if the request is successful. If the request fails, an error message such as an error code is returned.
+	// The returned message. If the request is successful, this parameter is empty. If the request fails, an error message such as an error code is returned.
 	//
 	// example:
 	//
@@ -106,7 +104,7 @@ type DescribeGdnInstancesResponseBodyData struct {
 	//
 	// 1
 	PageNumber *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The page size.
+	// The number of entries per page.
 	//
 	// example:
 	//
@@ -190,7 +188,7 @@ type DescribeGdnInstancesResponseBodyDataGdnInstanceList struct {
 	//
 	// gdn-***
 	GdnInstanceName *string `json:"GdnInstanceName,omitempty" xml:"GdnInstanceName,omitempty"`
-	// The replication mode of the GDN. Valid values: gdn_mode_master_slave and gdn_mode_bidirectional.
+	// The GDN replication mode. Valid values: gdn_mode_master_slave and gdn_mode_bidirectional.
 	//
 	// example:
 	//
@@ -230,7 +228,7 @@ type DescribeGdnInstancesResponseBodyDataGdnInstanceList struct {
 	//
 	// Creating
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The switchover logs.
+	// The switchover log.
 	//
 	// example:
 	//
@@ -393,7 +391,7 @@ type DescribeGdnInstancesResponseBodyDataGdnInstanceListMemberList struct {
 	//
 	// polarx.x4.medium.2e
 	CnNodeClassCode *string `json:"CnNodeClassCode,omitempty" xml:"CnNodeClassCode,omitempty"`
-	// The number of compute nodes (CNs).
+	// The number of CNs.
 	//
 	// example:
 	//
@@ -406,6 +404,10 @@ type DescribeGdnInstancesResponseBodyDataGdnInstanceListMemberList struct {
 	// drds_polarxpre_public_cn
 	CommodityCode *string `json:"CommodityCode,omitempty" xml:"CommodityCode,omitempty"`
 	// The data synchronization status of the member.
+	//
+	// example:
+	//
+	// SYNC
 	DataSyncStatus *string `json:"DataSyncStatus,omitempty" xml:"DataSyncStatus,omitempty"`
 	// The DN node specifications. Valid values:
 	//
@@ -443,13 +445,13 @@ type DescribeGdnInstancesResponseBodyDataGdnInstanceListMemberList struct {
 	//
 	// mysql.n4.medium.25
 	DnNodeClassCode *string `json:"DnNodeClassCode,omitempty" xml:"DnNodeClassCode,omitempty"`
-	// The number of data nodes (DNs).
+	// The number of DNs.
 	//
 	// example:
 	//
 	// 2
 	DnNodeCount *string `json:"DnNodeCount,omitempty" xml:"DnNodeCount,omitempty"`
-	// The expiration time. The format is YYYY-MM-DDTHH:mm:ss.SSS±HHmm, which includes the time zone offset.
+	// The expiration time. The time is in the YYYY-MM-DDTHH:mm:ss.SSS±HHmm format, which includes the time zone offset.
 	//
 	// example:
 	//
@@ -469,9 +471,9 @@ type DescribeGdnInstancesResponseBodyDataGdnInstanceListMemberList struct {
 	MemberName *string `json:"MemberName,omitempty" xml:"MemberName,omitempty"`
 	// The billing method of the instance. Valid values:
 	//
-	// - **Postpaid**: pay-as-you-go
+	// - **Postpaid**: pay-as-you-go.
 	//
-	// - **Prepaid**: subscription
+	// - **Prepaid**: subscription.
 	//
 	// example:
 	//
@@ -484,6 +486,10 @@ type DescribeGdnInstancesResponseBodyDataGdnInstanceListMemberList struct {
 	// cn-zhangjiakou-a
 	PrimaryZone *string `json:"PrimaryZone,omitempty" xml:"PrimaryZone,omitempty"`
 	// The read/write status of the member.
+	//
+	// example:
+	//
+	// R
 	ReadWriteStatus *string `json:"ReadWriteStatus,omitempty" xml:"ReadWriteStatus,omitempty"`
 	// The region ID.
 	//
@@ -521,17 +527,17 @@ type DescribeGdnInstancesResponseBodyDataGdnInstanceListMemberList struct {
 	//
 	// example:
 	//
-	// prepared: Parameter initialization completed
+	// prepared: Parameter initialization is complete.
 	//
-	// set_old_primary_readonly: Write operations disabled on the original primary instance
+	// set_old_primary_readonly: The original primary instance is set to read-only.
 	//
-	// set_new_primary_read_write: Switchover completed
+	// set_new_primary_read_write: The switchover is complete.
 	//
-	// timeout: Task timed out
+	// timeout: The task timed out.
 	//
-	// rollback: Rolled back
+	// rollback: The task is rolled back
 	TaskStatus *string `json:"TaskStatus,omitempty" xml:"TaskStatus,omitempty"`
-	// The third active zone in a three-zone deployment.
+	// The third active zone in a Three-zone deployment.
 	//
 	// example:
 	//

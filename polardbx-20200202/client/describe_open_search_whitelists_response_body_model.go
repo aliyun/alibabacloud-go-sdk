@@ -18,7 +18,7 @@ type iDescribeOpenSearchWhitelistsResponseBody interface {
 }
 
 type DescribeOpenSearchWhitelistsResponseBody struct {
-	// The details of the access denial.
+	// The access denial details.
 	AccessDeniedDetail *DescribeOpenSearchWhitelistsResponseBodyAccessDeniedDetail `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty" type:"Struct"`
 	// The monitoring data.
 	Data *DescribeOpenSearchWhitelistsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
@@ -84,33 +84,33 @@ type DescribeOpenSearchWhitelistsResponseBodyAccessDeniedDetail struct {
 	//
 	// example:
 	//
-	// xxx
+	// polardbx:DescribeOpenSearchWhitelists
 	AuthAction *string `json:"AuthAction,omitempty" xml:"AuthAction,omitempty"`
-	// The display name of the authentication principal.
+	// The name of the authentication principal.
 	//
 	// example:
 	//
-	// xxx
+	// Sample RAM user
 	AuthPrincipalDisplayName *string `json:"AuthPrincipalDisplayName,omitempty" xml:"AuthPrincipalDisplayName,omitempty"`
-	// The owner ID of the authentication principal.
+	// The OwnerId of the authentication principal.
 	//
 	// example:
 	//
 	// 111
 	AuthPrincipalOwnerId *string `json:"AuthPrincipalOwnerId,omitempty" xml:"AuthPrincipalOwnerId,omitempty"`
-	// The authentication principal type.
+	// The description is the same as above.
 	//
 	// example:
 	//
 	// 222
 	AuthPrincipalType *string `json:"AuthPrincipalType,omitempty" xml:"AuthPrincipalType,omitempty"`
-	// The encoded diagnostic message.
+	// The diagnostic information.
 	//
 	// example:
 	//
 	// AQEAAAAAaKPfwjY0MzMyODRGLUZCQkQtNTA1RS04MUUxLTc5NTkzODk2MUIzMg==
 	EncodedDiagnosticMessage *string `json:"EncodedDiagnosticMessage,omitempty" xml:"EncodedDiagnosticMessage,omitempty"`
-	// The type of the missing permission.
+	// The no-permission type.
 	//
 	// example:
 	//
@@ -253,25 +253,25 @@ type DescribeOpenSearchWhitelistsResponseBodyDataWhitelists struct {
 	//
 	// ack_worker_new
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
-	// The IP address list.
+	// The list of IP addresses.
 	//
 	// example:
 	//
 	// []
 	Ips *string `json:"Ips,omitempty" xml:"Ips,omitempty"`
-	// The network type. Only VPC is supported.
+	// The network type. Only VPC networks are supported.
 	//
 	// example:
 	//
 	// vpc
 	NetworkType *string `json:"NetworkType,omitempty" xml:"NetworkType,omitempty"`
-	// The policy remarks.
+	// The policy remark.
 	//
 	// example:
 	//
 	// vpc-t4nt9qxfgbzab587cshhc
 	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
-	// The time when the task was last updated, in timestamp format.
+	// The last update time of the task in timestamp format.
 	//
 	// example:
 	//

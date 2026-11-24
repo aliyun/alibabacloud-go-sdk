@@ -84,13 +84,13 @@ type DescribeOpenSearchAccountInfoResponseBodyAccessDeniedDetail struct {
 	//
 	// example:
 	//
-	// xxx
+	// polardbx:DescribeOpenSearchAccountInfo
 	AuthAction *string `json:"AuthAction,omitempty" xml:"AuthAction,omitempty"`
 	// The display name of the authentication principal.
 	//
 	// example:
 	//
-	// xxx
+	// Sample RAM user
 	AuthPrincipalDisplayName *string `json:"AuthPrincipalDisplayName,omitempty" xml:"AuthPrincipalDisplayName,omitempty"`
 	// The owner ID of the authentication principal.
 	//
@@ -98,13 +98,13 @@ type DescribeOpenSearchAccountInfoResponseBodyAccessDeniedDetail struct {
 	//
 	// 111
 	AuthPrincipalOwnerId *string `json:"AuthPrincipalOwnerId,omitempty" xml:"AuthPrincipalOwnerId,omitempty"`
-	// The authentication principal type.
+	// The type of the authentication principal.
 	//
 	// example:
 	//
 	// 222
 	AuthPrincipalType *string `json:"AuthPrincipalType,omitempty" xml:"AuthPrincipalType,omitempty"`
-	// The diagnostic information.
+	// The encoded diagnostic message.
 	//
 	// example:
 	//
@@ -208,7 +208,7 @@ type DescribeOpenSearchAccountInfoResponseBodyData struct {
 	//
 	// 2026-08-21T12:00:00Z
 	PasswordLastModified *string `json:"PasswordLastModified,omitempty" xml:"PasswordLastModified,omitempty"`
-	// The account name of the OpenSearch instance.
+	// The username of the OpenSearch instance account.
 	//
 	// example:
 	//
@@ -279,15 +279,15 @@ type DescribeOpenSearchAccountInfoResponseBodyDataAccounts struct {
 	AccountStatus *string `json:"AccountStatus,omitempty" xml:"AccountStatus,omitempty"`
 	// The account type.
 	//
-	// - Before three-role mode is enabled: 0 indicates a standard account, and 1 indicates a privileged account.
+	// - Before the three-role mode is enabled: 0 indicates a standard account, and 1 indicates a privileged account.
 	//
-	// - After three-role mode is enabled: 0 indicates a standard account, 2 indicates a system administrator account, 3 indicates a security administrator account, and 4 indicates an audit administrator account.
+	// - After the three-role mode is enabled: 0 indicates a standard account, 2 indicates a system administrator account, 3 indicates a security administrator account, and 4 indicates an audit administrator account.
 	//
 	// example:
 	//
 	// 2,3,4
 	AccountType *string `json:"AccountType,omitempty" xml:"AccountType,omitempty"`
-	// The account name of the OpenSearch instance.
+	// The username of the OpenSearch instance account.
 	//
 	// example:
 	//

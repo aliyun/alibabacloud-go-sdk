@@ -38,7 +38,7 @@ type MigrateDBInstanceRequest struct {
 	//
 	// pxc-xxx
 	DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
-	// The zone ID of the primary zone for a multi-zone instance. **This parameter is required if you want to create a multi-zone instance.**
+	// The zone ID of the primary zone for a multi-zone instance. **This parameter is required to create a multi-zone instance.**
 	//
 	// This parameter is required.
 	//
@@ -54,15 +54,15 @@ type MigrateDBInstanceRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The secondary zone ID.
+	// The zone ID of the secondary zone.
 	//
-	// > This parameter cannot be the same as the ZoneId property.
+	// > This parameter cannot have the same value as the ZoneId property.
 	//
 	// example:
 	//
 	// cn-beijing-l
 	SecondaryZoneId *string `json:"SecondaryZoneId,omitempty" xml:"SecondaryZoneId,omitempty"`
-	// The switch mode. Valid values:
+	// The switchover mode. Valid values:
 	//
 	// - 0: Immediate switchover.
 	//
@@ -72,7 +72,7 @@ type MigrateDBInstanceRequest struct {
 	//
 	// 0
 	SwitchMode *string `json:"SwitchMode,omitempty" xml:"SwitchMode,omitempty"`
-	// The third active zone.
+	// The tertiary zone for a Three-zone deployment. The zone must be active.
 	//
 	// example:
 	//
@@ -90,7 +90,7 @@ type MigrateDBInstanceRequest struct {
 	//
 	// 3azones
 	TopologyType *string `json:"TopologyType,omitempty" xml:"TopologyType,omitempty"`
-	// The ID of the VPC where the access endpoint resides.
+	// The ID of the VPC where the access endpoint is located.
 	//
 	// example:
 	//

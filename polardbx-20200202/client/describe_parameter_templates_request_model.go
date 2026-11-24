@@ -34,9 +34,9 @@ type DescribeParameterTemplatesRequest struct {
 	EngineVersion *string `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
 	// The parameter level. Valid values:
 	//
-	// - **compute**: the compute layer.
+	// - **compute**: compute layer
 	//
-	// - **storage**: the storage layer.
+	// - **storage**: storage layer
 	//
 	// example:
 	//

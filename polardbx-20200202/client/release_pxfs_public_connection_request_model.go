@@ -16,7 +16,7 @@ type iReleasePxfsPublicConnectionRequest interface {
 }
 
 type ReleasePxfsPublicConnectionRequest struct {
-	// The instance ID of the PolarDB-X instance.
+	// The PolarDB-X instance ID.
 	//
 	// This parameter is required.
 	//

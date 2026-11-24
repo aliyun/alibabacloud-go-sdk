@@ -46,17 +46,17 @@ type CreateSQLEvaluateTaskRequest struct {
 	//
 	// pxc-shr4idrgogti89
 	DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
-	// The ID of the instance on which the target SQL statement is executed. > You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/196830.html) operation to query the details of the target SQL statement, including the instance ID.
+	// The ID of the instance that executes the target SQL statement. > You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/196830.html) operation to query the details of the target SQL statement, including the instance ID.
 	//
 	// example:
 	//
 	// transfer_for_st
 	DstDb *string `json:"DstDb,omitempty" xml:"DstDb,omitempty"`
-	// The password of the target SQL statement. > You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/196830.html) operation to query the details of the target SQL statement, including the password.
+	// The password of the target SQL statement.
 	//
 	// example:
 	//
-	// ******
+	// DemoPass1@
 	DstPassword *string `json:"DstPassword,omitempty" xml:"DstPassword,omitempty"`
 	// The ID of the target SQL statement. > You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/196830.html) operation to query the details of the target SQL statement, including the ID.
 	//
@@ -64,13 +64,13 @@ type CreateSQLEvaluateTaskRequest struct {
 	//
 	// pxc-zkrc1****l54rc
 	DstResId *string `json:"DstResId,omitempty" xml:"DstResId,omitempty"`
-	// The username of the destination instance.
+	// The destination username.
 	//
 	// example:
 	//
 	// drds_test
 	DstUserName *string `json:"DstUserName,omitempty" xml:"DstUserName,omitempty"`
-	// The region ID of the instance. > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196841.html) operation to query the regions supported by PolarDB-X, including region IDs.
+	// The region ID of the instance. > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196841.html) operation to query the details of regions supported by PolarDB-X, including region IDs.
 	//
 	// This parameter is required.
 	//
@@ -84,23 +84,27 @@ type CreateSQLEvaluateTaskRequest struct {
 	//
 	// test-drds->auto
 	SlinkTaskDesc *string `json:"SlinkTaskDesc,omitempty" xml:"SlinkTaskDesc,omitempty"`
-	// The task ID for executing the target SQL statement. > You can call the [DescribeCloudCenterInstances](https://help.aliyun.com/document_detail/196830.html) operation to query the IDs of target SQL statements supported by PolarDB-X.
+	// The ID of the task that executes the target SQL statement. > You can call the [DescribeCloudCenterInstances](https://help.aliyun.com/document_detail/196830.html) operation to query the IDs of target SQL statements supported by PolarDB-X.
 	//
 	// example:
 	//
 	// etx-szr2rr6i*****
 	SlinkTaskId *string `json:"SlinkTaskId,omitempty" xml:"SlinkTaskId,omitempty"`
-	// Specifies whether to enable the source ApsaraDB RDS instance. Valid values: **enable**: enables the source ApsaraDB RDS instance. **disabled**: disables the source ApsaraDB RDS instance.
+	// Specifies whether the source ApsaraDB RDS instance is enabled. Valid values:
+	//
+	// - **enable**: The source ApsaraDB RDS instance is enabled.
+	//
+	// - **disabled**: The source ApsaraDB RDS instance is disabled.
 	//
 	// example:
 	//
 	// transfer_test3
 	SrcDb *string `json:"SrcDb,omitempty" xml:"SrcDb,omitempty"`
-	// The port number of the source instance. Valid values: 3200 to 3999. > This parameter is available and required only when **DBEndpointInstanceType*	- is set to **polardb-o**.
+	// The source port number. Valid values: 3200 to 3999. > This parameter is available and required only when **dbendpointinstancetype*	- is set to **polardb-o**.
 	//
 	// example:
 	//
-	// ******
+	// 3306
 	SrcPassword *string `json:"SrcPassword,omitempty" xml:"SrcPassword,omitempty"`
 	// The ID of the source ApsaraDB RDS instance. > You can call the [DescribeDropSystemEventMetaList](https://help.aliyun.com/document_detail/196836.html) operation to query the details of all source ApsaraDB RDS instances in the target region, including instance IDs.
 	//
@@ -108,13 +112,13 @@ type CreateSQLEvaluateTaskRequest struct {
 	//
 	// pxc-shr****rgkh87z
 	SrcResId *string `json:"SrcResId,omitempty" xml:"SrcResId,omitempty"`
-	// The type of the source instance. Valid values: RDS_MYSQL, POLARX1, POLARX2_STANDARD, POLARX2_ENTERPRISE, and POLARDB_M.
+	// The source instance type. Valid values: RDS_MYSQL, POLARX1, POLARX2_STANDARD, POLARX2_ENTERPRISE, and POLARDB_M.
 	//
 	// example:
 	//
 	// POLARX2
 	SrcResType *string `json:"SrcResType,omitempty" xml:"SrcResType,omitempty"`
-	// The username of the source instance.
+	// The source username.
 	//
 	// example:
 	//

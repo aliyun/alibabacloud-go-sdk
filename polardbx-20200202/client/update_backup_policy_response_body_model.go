@@ -20,9 +20,9 @@ type iUpdateBackupPolicyResponseBody interface {
 }
 
 type UpdateBackupPolicyResponseBody struct {
-	// The backup policy details.
+	// The returned policy details.
 	Data *UpdateBackupPolicyResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The response message. "success" is returned if the request is successful. Otherwise, the corresponding error code is returned.
+	// The returned message. If the call is successful, success is returned. If the call fails, the corresponding error code is returned.
 	//
 	// example:
 	//
@@ -96,76 +96,132 @@ func (s *UpdateBackupPolicyResponseBody) Validate() error {
 }
 
 type UpdateBackupPolicyResponseBodyData struct {
+	// The backup cycle. Specify at least two days. The value is a 7-digit string, where each digit from left to right represents whether backups are enabled for Monday through Sunday. A value of 0 indicates that backups are disabled, and a value of 1 indicates that backups are enabled:
+	//
+	// - First digit: Monday
+	//
+	// - Second digit: Tuesday
+	//
+	// - Third digit: Wednesday
+	//
+	// - Fourth digit: Thursday
+	//
+	// - Fifth digit: Friday
+	//
+	// - Sixth digit: Saturday
+	//
+	// - Seventh digit: Sunday
+	//
 	// example:
 	//
 	// 1001000
 	BackupPeriod *string `json:"BackupPeriod,omitempty" xml:"BackupPeriod,omitempty"`
+	// The time when the daily backup starts, in UTC.
+	//
 	// example:
 	//
 	// 03:00Z
 	BackupPlanBegin *string `json:"BackupPlanBegin,omitempty" xml:"BackupPlanBegin,omitempty"`
+	// The retention period of the backup set, in days.
+	//
 	// example:
 	//
 	// 30
 	BackupSetRetention *int32 `json:"BackupSetRetention,omitempty" xml:"BackupSetRetention,omitempty"`
+	// The backup type. A value of 0 indicates a quick backup.
+	//
 	// example:
 	//
 	// 0
 	BackupType *string `json:"BackupType,omitempty" xml:"BackupType,omitempty"`
+	// The backup method. Valid values:
+	//
+	// - **P**: physical backup
+	//
+	// - **L**: logical backup
+	//
 	// example:
 	//
 	// P
 	BackupWay *string `json:"BackupWay,omitempty" xml:"BackupWay,omitempty"`
+	// The interval at which cold data is backed up, in days. Valid values: 1 to 59.
+	//
 	// example:
 	//
 	// 30
 	ColdDataBackupInterval *int32 `json:"ColdDataBackupInterval,omitempty" xml:"ColdDataBackupInterval,omitempty"`
+	// The retention period of cold data backups, in days.
+	//
 	// example:
 	//
 	// 30
 	ColdDataBackupRetention *int32 `json:"ColdDataBackupRetention,omitempty" xml:"ColdDataBackupRetention,omitempty"`
+	// The retention period of cross-region data backups, in days.
+	//
 	// example:
 	//
 	// 30
 	CrossRegionDataBackupRetention *int32 `json:"CrossRegionDataBackupRetention,omitempty" xml:"CrossRegionDataBackupRetention,omitempty"`
+	// The number of days selected for cross-region backups.
+	//
 	// example:
 	//
 	// 3,7,1,5,6,2,4
 	CrossRegionFilterValue *string `json:"CrossRegionFilterValue,omitempty" xml:"CrossRegionFilterValue,omitempty"`
+	// The retention period of cross-region log backups, in days.
+	//
 	// example:
 	//
 	// 30
 	CrossRegionLogBackupRetention *int32 `json:"CrossRegionLogBackupRetention,omitempty" xml:"CrossRegionLogBackupRetention,omitempty"`
+	// The instance ID.
+	//
 	// example:
 	//
 	// pxc-hzjasdyuoo
 	DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
+	// The destination region for cross-region backups.
+	//
 	// example:
 	//
 	// cn-shanghai
 	DestCrossRegion *string `json:"DestCrossRegion,omitempty" xml:"DestCrossRegion,omitempty"`
+	// Specifies whether to forcibly clear binary logs when the storage usage of the instance is excessively high. A value of 1 indicates yes, and a value of 0 indicates no.
+	//
 	// example:
 	//
 	// 1
-	ForceCleanOnHighSpaceUsage     *int32 `json:"ForceCleanOnHighSpaceUsage,omitempty" xml:"ForceCleanOnHighSpaceUsage,omitempty"`
-	IsCrossRegionDataBackupEnabled *bool  `json:"IsCrossRegionDataBackupEnabled,omitempty" xml:"IsCrossRegionDataBackupEnabled,omitempty"`
-	IsCrossRegionLogBackupEnabled  *bool  `json:"IsCrossRegionLogBackupEnabled,omitempty" xml:"IsCrossRegionLogBackupEnabled,omitempty"`
+	ForceCleanOnHighSpaceUsage *int32 `json:"ForceCleanOnHighSpaceUsage,omitempty" xml:"ForceCleanOnHighSpaceUsage,omitempty"`
+	// Specifies whether to enable cross-region data backups. Default value: false.
+	IsCrossRegionDataBackupEnabled *bool `json:"IsCrossRegionDataBackupEnabled,omitempty" xml:"IsCrossRegionDataBackupEnabled,omitempty"`
+	// Specifies whether to enable cross-region log backups. Default value: false.
+	IsCrossRegionLogBackupEnabled *bool `json:"IsCrossRegionLogBackupEnabled,omitempty" xml:"IsCrossRegionLogBackupEnabled,omitempty"`
+	// Specifies whether to enable backups. The fixed value is 1, which indicates that backups are enabled.
+	//
 	// example:
 	//
 	// 1
 	IsEnabled *int32 `json:"IsEnabled,omitempty" xml:"IsEnabled,omitempty"`
+	// The local retention period of log backups, in hours. Valid values: 0 to 168. A value of 0 indicates that log backups are not retained. Default value: 7.
+	//
 	// example:
 	//
 	// 7
 	LocalLogRetention *int32 `json:"LocalLogRetention,omitempty" xml:"LocalLogRetention,omitempty"`
+	// The number of local binary logs to retain. Valid values: 6 to 100. Default value: 60.
+	//
 	// example:
 	//
 	// 60
 	LocalLogRetentionNumber *int32 `json:"LocalLogRetentionNumber,omitempty" xml:"LocalLogRetentionNumber,omitempty"`
+	// The maximum space usage for binary logs. The parameter value ranges from 0 to 50. This is a loop space. Default value: 30.
+	//
 	// example:
 	//
 	// 30
 	LogLocalRetentionSpace *int32 `json:"LogLocalRetentionSpace,omitempty" xml:"LogLocalRetentionSpace,omitempty"`
+	// The remote retention period of log backups, in days. Valid values: 7 to 730. Default value: 7.
+	//
 	// example:
 	//
 	// 7

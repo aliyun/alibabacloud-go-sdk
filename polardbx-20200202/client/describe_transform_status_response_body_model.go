@@ -62,7 +62,7 @@ func (s *DescribeTransformStatusResponseBody) Validate() error {
 }
 
 type DescribeTransformStatusResponseBodyData struct {
-	// Indicates whether the task can be canceled.
+	// Specifies whether the task can be canceled.
 	//
 	// example:
 	//
@@ -74,7 +74,7 @@ type DescribeTransformStatusResponseBodyData struct {
 	//
 	// true
 	CanFinish *bool `json:"CanFinish,omitempty" xml:"CanFinish,omitempty"`
-	// Indicates whether a migration switchover can be performed. Valid values:
+	// Specifies whether a migration switchover can be performed. Valid values:
 	//
 	// - **true**: Yes.
 	//
@@ -82,9 +82,9 @@ type DescribeTransformStatusResponseBodyData struct {
 	//
 	// > This parameter is used by the one-click upgrade feature of PolarDB.
 	CanSwitch *bool `json:"CanSwitch,omitempty" xml:"CanSwitch,omitempty"`
-	// Indicates whether the switchover operation can be undone.
+	// Specifies whether the switchover operation can be undone.
 	CanUndoSwitch *bool `json:"CanUndoSwitch,omitempty" xml:"CanUndoSwitch,omitempty"`
-	// The name of the Enterprise instance.
+	// The name of the enterprise instance.
 	//
 	// example:
 	//
@@ -96,7 +96,11 @@ type DescribeTransformStatusResponseBodyData struct {
 	//
 	// none
 	Phase *string `json:"Phase,omitempty" xml:"Phase,omitempty"`
-	// The report summary.
+	// The report summary information.
+	//
+	// example:
+	//
+	// {"example":["Sample report summary"]}
 	ReportSummary map[string]interface{} `json:"ReportSummary,omitempty" xml:"ReportSummary,omitempty"`
 	// The generation date of the data report.
 	//

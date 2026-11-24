@@ -147,7 +147,7 @@ type DescribeDBInstanceTopologyResponseBodyDataLogicInstanceTopology struct {
 	//
 	// polarx
 	Engine *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
-	// The DPI engine version. Default value: 2.0.
+	// The database engine version. Default value: 2.0.
 	//
 	// example:
 	//
@@ -362,19 +362,19 @@ func (s *DescribeDBInstanceTopologyResponseBodyDataLogicInstanceTopology) Valida
 }
 
 type DescribeDBInstanceTopologyResponseBodyDataLogicInstanceTopologyHistoryItems struct {
-	// Indicates whether the node is enabled. In the compute layer, only the nodes in the primary zone are enabled. After a primary/secondary switchover is performed on the instance, the secondary nodes in the compute layer are switched to primary nodes. All nodes in the storage layer are enabled.
+	// Indicates whether the node is enabled. In the compute layer, only nodes in the primary zone are enabled. After a primary/secondary switchover is performed on the instance, the secondary node in the compute layer is switched to the primary node. All nodes in the storage layer are enabled.
 	//
 	// example:
 	//
 	// true
 	Activated *bool `json:"Activated,omitempty" xml:"Activated,omitempty"`
-	// The zone to which the node belongs. If the node is an ApsaraDB RDS node, the zones of multiple child nodes are separated by semicolons (;).
+	// The zone to which the node belongs. If the node is an ApsaraDB RDS node, the zones of multiple child nodes are separated by semicolons.
 	//
 	// example:
 	//
 	// cn-hangzhou-a
 	Azone *string `json:"Azone,omitempty" xml:"Azone,omitempty"`
-	// The node attribute. Valid values:
+	// The node type. Valid values:
 	//
 	// - **polarx_cn**: Compute node.
 	//
@@ -404,7 +404,7 @@ type DescribeDBInstanceTopologyResponseBodyDataLogicInstanceTopologyHistoryItems
 	//
 	// pxc-unrbk8oyz**********
 	PhyInstanceName *string `json:"PhyInstanceName,omitempty" xml:"PhyInstanceName,omitempty"`
-	// The region to which the node belongs. If the node is an ApsaraDB RDS node, the regions of multiple child nodes are separated by semicolons (;).
+	// The region to which the node belongs. If the node is an ApsaraDB RDS node, the regions of multiple child nodes are separated by semicolons.
 	//
 	// example:
 	//
@@ -507,21 +507,21 @@ func (s *DescribeDBInstanceTopologyResponseBodyDataLogicInstanceTopologyHistoryI
 }
 
 type DescribeDBInstanceTopologyResponseBodyDataLogicInstanceTopologyItems struct {
-	// Indicates whether the node is enabled. In the compute layer, only the nodes in the primary zone are enabled. After a primary/secondary switchover is performed on the instance, the secondary nodes in the compute layer are switched to primary nodes. All nodes in the storage layer are enabled.
+	// Indicates whether the node is enabled. In the compute layer, only nodes in the primary zone are enabled. After a primary/secondary switchover is performed on the instance, the secondary node in the compute layer is switched to the primary node. All nodes in the storage layer are enabled.
 	//
 	// example:
 	//
 	// true
 	Activated *bool `json:"Activated,omitempty" xml:"Activated,omitempty"`
-	// The zone to which the node belongs. If the node is an ApsaraDB RDS node, the zones of multiple child nodes are separated by semicolons (;).
+	// The zone to which the node belongs. If the node is an ApsaraDB RDS node, the zones of multiple child nodes are separated by semicolons.
 	//
 	// example:
 	//
 	// cn-hangzhou-a
 	Azone *string `json:"Azone,omitempty" xml:"Azone,omitempty"`
-	// The list of data information for the three-node ApsaraDB RDS deployment.
+	// The list of information about the three ApsaraDB RDS nodes.
 	AzoneRoleList []*DescribeDBInstanceTopologyResponseBodyDataLogicInstanceTopologyItemsAzoneRoleList `json:"AzoneRoleList,omitempty" xml:"AzoneRoleList,omitempty" type:"Repeated"`
-	// The node attribute. Valid values:
+	// The node type. Valid values:
 	//
 	// - **polarx_cn**: Compute node.
 	//
@@ -583,7 +583,7 @@ type DescribeDBInstanceTopologyResponseBodyDataLogicInstanceTopologyItems struct
 	//
 	// 3145728
 	DiskSize *int64 `json:"DiskSize,omitempty" xml:"DiskSize,omitempty"`
-	// The DPI engine version. Valid values:
+	// The database engine version. Valid values:
 	//
 	// - **mysql**
 	//
@@ -595,7 +595,7 @@ type DescribeDBInstanceTopologyResponseBodyDataLogicInstanceTopologyItems struct
 	//
 	// mysql
 	Engine *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
-	// The DPI engine version. Default value: 2.0.
+	// The database engine version. Default value: 2.0.
 	//
 	// example:
 	//
@@ -607,7 +607,7 @@ type DescribeDBInstanceTopologyResponseBodyDataLogicInstanceTopologyItems struct
 	//
 	// default
 	InstanceClusterName *string `json:"InstanceClusterName,omitempty" xml:"InstanceClusterName,omitempty"`
-	// The lock status. Valid values:
+	// Indicates whether the node is locked. Valid values:
 	//
 	// - **0**: Unlocked.
 	//
@@ -687,7 +687,7 @@ type DescribeDBInstanceTopologyResponseBodyDataLogicInstanceTopologyItems struct
 	//
 	// ReadWrite
 	ReadType *string `json:"ReadType,omitempty" xml:"ReadType,omitempty"`
-	// The region to which the node belongs. If the node is an ApsaraDB RDS node, the regions of multiple child nodes are separated by semicolons (;).
+	// The region to which the node belongs. If the node is an ApsaraDB RDS node, the regions of multiple child nodes are separated by semicolons.
 	//
 	// example:
 	//
@@ -1038,13 +1038,13 @@ func (s *DescribeDBInstanceTopologyResponseBodyDataLogicInstanceTopologyItems) V
 }
 
 type DescribeDBInstanceTopologyResponseBodyDataLogicInstanceTopologyItemsAzoneRoleList struct {
-	// The zone to which a specific node in the three-node ApsaraDB RDS deployment belongs.
+	// The zone to which a specific node among the three ApsaraDB RDS nodes belongs.
 	//
 	// example:
 	//
 	// cn-hangzhou-a
 	Azone *string `json:"Azone,omitempty" xml:"Azone,omitempty"`
-	// The role of a specific node in the three-node ApsaraDB RDS deployment. Valid values:
+	// The role of a specific node among the three ApsaraDB RDS nodes. Valid values:
 	//
 	// - **leader**: Primary node.
 	//

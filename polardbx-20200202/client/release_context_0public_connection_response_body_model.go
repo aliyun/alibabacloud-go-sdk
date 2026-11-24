@@ -18,7 +18,7 @@ type iReleaseContext0PublicConnectionResponseBody interface {
 }
 
 type ReleaseContext0PublicConnectionResponseBody struct {
-	// The details of the access denial.
+	// The detailed reasons for the access denial.
 	AccessDeniedDetail *ReleaseContext0PublicConnectionResponseBodyAccessDeniedDetail `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty" type:"Struct"`
 	// The task details.
 	Data *ReleaseContext0PublicConnectionResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
@@ -80,25 +80,25 @@ func (s *ReleaseContext0PublicConnectionResponseBody) Validate() error {
 }
 
 type ReleaseContext0PublicConnectionResponseBodyAccessDeniedDetail struct {
-	// The description is as above.
+	// The description as mentioned above.
 	//
 	// example:
 	//
-	// xxx
+	// polardbx:ReleaseContext0PublicConnection
 	AuthAction *string `json:"AuthAction,omitempty" xml:"AuthAction,omitempty"`
 	// The identity used for authentication in the request.
 	//
 	// example:
 	//
-	// xxx
+	// Sample RAM user
 	AuthPrincipalDisplayName *string `json:"AuthPrincipalDisplayName,omitempty" xml:"AuthPrincipalDisplayName,omitempty"`
-	// The description is as above.
+	// The description as mentioned above.
 	//
 	// example:
 	//
 	// 111
 	AuthPrincipalOwnerId *string `json:"AuthPrincipalOwnerId,omitempty" xml:"AuthPrincipalOwnerId,omitempty"`
-	// The description is as above.
+	// The description as mentioned above.
 	//
 	// example:
 	//
@@ -200,7 +200,7 @@ func (s *ReleaseContext0PublicConnectionResponseBodyAccessDeniedDetail) Validate
 }
 
 type ReleaseContext0PublicConnectionResponseBodyData struct {
-	// The context service instance name.
+	// The name of the context service instance.
 	//
 	// example:
 	//
@@ -210,7 +210,7 @@ type ReleaseContext0PublicConnectionResponseBodyData struct {
 	//
 	// example:
 	//
-	// pxsp-xxxxxxxxxx
+	// 123456
 	DBInstanceId *int32 `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	// The instance name.
 	//
@@ -224,7 +224,7 @@ type ReleaseContext0PublicConnectionResponseBodyData struct {
 	//
 	// 0
 	NetType *int32 `json:"NetType,omitempty" xml:"NetType,omitempty"`
-	// The query node type. Valid values:
+	// The type of the queried node. Valid values:
 	//
 	// - service
 	//
@@ -240,7 +240,7 @@ type ReleaseContext0PublicConnectionResponseBodyData struct {
 	//
 	// ***.polarxcontextdb.rds.aliyuncs.com
 	OldConnectionString *string `json:"OldConnectionString,omitempty" xml:"OldConnectionString,omitempty"`
-	// The previous port value.
+	// The previous port number.
 	//
 	// example:
 	//

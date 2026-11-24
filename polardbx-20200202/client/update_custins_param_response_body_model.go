@@ -66,7 +66,7 @@ type UpdateCustinsParamResponseBodyData struct {
 	//
 	// example:
 	//
-	// ******
+	// 123456
 	TaskId *int32 `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 

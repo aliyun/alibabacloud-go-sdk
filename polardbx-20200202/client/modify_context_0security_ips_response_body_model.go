@@ -80,25 +80,25 @@ func (s *ModifyContext0SecurityIpsResponseBody) Validate() error {
 }
 
 type ModifyContext0SecurityIpsResponseBodyAccessDeniedDetail struct {
-	// The authentication action.
+	// The authorization action.
 	//
 	// example:
 	//
-	// xxx
+	// polardbx:ModifyContext0SecurityIps
 	AuthAction *string `json:"AuthAction,omitempty" xml:"AuthAction,omitempty"`
-	// The name of the authentication principal.
+	// The display name of the authenticated principal.
 	//
 	// example:
 	//
-	// xxx
+	// Example RAM user
 	AuthPrincipalDisplayName *string `json:"AuthPrincipalDisplayName,omitempty" xml:"AuthPrincipalDisplayName,omitempty"`
-	// The owner ID of the authentication principal.
+	// The owner ID of the authenticated principal.
 	//
 	// example:
 	//
 	// 111
 	AuthPrincipalOwnerId *string `json:"AuthPrincipalOwnerId,omitempty" xml:"AuthPrincipalOwnerId,omitempty"`
-	// The type of identity used for authentication in the request. Valid values:
+	// The type of the identity used for authentication in the request. Valid values:
 	//
 	// - SubUser: RAM user.
 	//
@@ -216,7 +216,7 @@ type ModifyContext0SecurityIpsResponseBodyData struct {
 	//
 	// example:
 	//
-	// pxsp-xxxxxxxxxx
+	// 123456
 	DBInstanceId *int32 `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	// The name of the instance.
 	//
@@ -228,9 +228,9 @@ type ModifyContext0SecurityIpsResponseBodyData struct {
 	//
 	// example:
 	//
-	// ******
+	// 2209883
 	TaskId *int32 `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	// The list of task IDs in the task group.
+	// The IDs of the tasks in the task group.
 	TaskIds []*int32 `json:"TaskIds,omitempty" xml:"TaskIds,omitempty" type:"Repeated"`
 }
 

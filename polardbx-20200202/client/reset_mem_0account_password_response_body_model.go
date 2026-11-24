@@ -86,19 +86,19 @@ type ResetMem0AccountPasswordResponseBodyAccessDeniedDetail struct {
 	//
 	// polardbx:ResetMem0AccountPassword
 	AuthAction *string `json:"AuthAction,omitempty" xml:"AuthAction,omitempty"`
-	// The display name of the security principal.
+	// The display name of the authentication principal.
 	//
 	// example:
 	//
 	// Sample RAM user
 	AuthPrincipalDisplayName *string `json:"AuthPrincipalDisplayName,omitempty" xml:"AuthPrincipalDisplayName,omitempty"`
-	// The owner ID of the security principal.
+	// The owner ID of the authentication principal.
 	//
 	// example:
 	//
 	// 111
 	AuthPrincipalOwnerId *string `json:"AuthPrincipalOwnerId,omitempty" xml:"AuthPrincipalOwnerId,omitempty"`
-	// The type of the security principal, such as RAM user SubUser or RAM role AssumedRoleUser.
+	// The type of the authentication principal, such as RAM user SubUser or RAM role AssumedRoleUser.
 	//
 	// example:
 	//
@@ -110,7 +110,7 @@ type ResetMem0AccountPasswordResponseBodyAccessDeniedDetail struct {
 	//
 	// AQEAAAAAaKPfwjY0MzMyODRGLUZCQkQtNTA1RS04MUUxLTc5NTkzODk2MUIzMg==
 	EncodedDiagnosticMessage *string `json:"EncodedDiagnosticMessage,omitempty" xml:"EncodedDiagnosticMessage,omitempty"`
-	// The type of the missing permission.
+	// The no-permission type.
 	//
 	// example:
 	//

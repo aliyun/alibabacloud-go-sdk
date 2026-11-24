@@ -121,7 +121,7 @@ type DescribePolarxDataNodesResponseBodyDBInstanceDataNodes struct {
 	//
 	// example:
 	//
-	// pxc-z****nfxsxy728 : PROD-OMS-Auto-ProductionDBCloneInstance
+	// pxc-z****nfxsxy728 : PROD-OMS-Auto-Production database clone instance
 	DBInstanceDescription *string `json:"DBInstanceDescription,omitempty" xml:"DBInstanceDescription,omitempty"`
 	// The instance ID.
 	//

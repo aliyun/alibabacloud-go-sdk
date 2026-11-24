@@ -18,7 +18,7 @@ type iCreateGatewayConsumerForPolarDBXResponseBody interface {
 }
 
 type CreateGatewayConsumerForPolarDBXResponseBody struct {
-	// The instance name.
+	// The name of the instance.
 	//
 	// example:
 	//
@@ -30,7 +30,7 @@ type CreateGatewayConsumerForPolarDBXResponseBody struct {
 	//
 	// A501A191-BD70-5E50-98A9-C2A486A82****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The backend task ID.
+	// The ID of the backend task.
 	//
 	// example:
 	//

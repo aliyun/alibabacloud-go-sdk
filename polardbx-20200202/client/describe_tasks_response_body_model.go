@@ -22,7 +22,7 @@ type iDescribeTasksResponseBody interface {
 }
 
 type DescribeTasksResponseBody struct {
-	// The list of result items.
+	// The list of items.
 	Items []*DescribeTasksResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
 	// The page number.
 	//
@@ -30,7 +30,7 @@ type DescribeTasksResponseBody struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries returned on the current page.
+	// The number of entries per page.
 	//
 	// example:
 	//
@@ -123,7 +123,7 @@ type DescribeTasksResponseBodyItems struct {
 	//
 	// 2021-10-20T19:40:00Z
 	BeginTime *string `json:"BeginTime,omitempty" xml:"BeginTime,omitempty"`
-	// The name of the database associated with the task. This field is usually empty.
+	// The name of the database associated with the task. This parameter is usually empty.
 	//
 	// example:
 	//
@@ -141,13 +141,13 @@ type DescribeTasksResponseBodyItems struct {
 	//
 	// 80
 	Progress *string `json:"Progress,omitempty" xml:"Progress,omitempty"`
-	// The detailed progress of the task. This field is usually empty.
+	// The detailed task progress. This parameter is usually empty.
 	//
 	// example:
 	//
 	// ProgressInfo
 	ProgressInfo *string `json:"ProgressInfo,omitempty" xml:"ProgressInfo,omitempty"`
-	// The scale-out token. If the task is a scale-out task, this field returns a scale-out ID, which is a unique backend key.
+	// The scale-out ID, which is a unique backend key. This parameter is returned only for scale-out tasks.
 	//
 	// example:
 	//
@@ -163,19 +163,19 @@ type DescribeTasksResponseBodyItems struct {
 	//
 	// RUNNING
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The task action. This is a unique key for the backend task type.
+	// The task action, which is a unique key for the backend task type.
 	//
 	// example:
 	//
 	// multi_scale_out
 	TaskAction *string `json:"TaskAction,omitempty" xml:"TaskAction,omitempty"`
-	// The error code of the failed task.
+	// The error code returned when the task fails.
 	//
 	// example:
 	//
 	// TaskErrorCode
 	TaskErrorCode *string `json:"TaskErrorCode,omitempty" xml:"TaskErrorCode,omitempty"`
-	// The error message of the failed task.
+	// The error message returned when the task fails.
 	//
 	// example:
 	//

@@ -18,7 +18,7 @@ type iCreateOpenSearchAccountResponseBody interface {
 }
 
 type CreateOpenSearchAccountResponseBody struct {
-	// The details of the access denied error.
+	// The details of the access denial.
 	AccessDeniedDetail *CreateOpenSearchAccountResponseBodyAccessDeniedDetail `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty" type:"Struct"`
 	// The returned policy details.
 	Data *CreateOpenSearchAccountResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
@@ -84,13 +84,13 @@ type CreateOpenSearchAccountResponseBodyAccessDeniedDetail struct {
 	//
 	// example:
 	//
-	// xxx
+	// polardbx:CreateOpenSearchAccount
 	AuthAction *string `json:"AuthAction,omitempty" xml:"AuthAction,omitempty"`
-	// The display name of the authentication principal.
+	// The name of the authentication principal.
 	//
 	// example:
 	//
-	// xxx
+	// Sample RAM user
 	AuthPrincipalDisplayName *string `json:"AuthPrincipalDisplayName,omitempty" xml:"AuthPrincipalDisplayName,omitempty"`
 	// The owner ID of the authentication principal.
 	//

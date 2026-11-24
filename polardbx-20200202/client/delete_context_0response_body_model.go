@@ -20,7 +20,7 @@ type iDeleteContext0ResponseBody interface {
 type DeleteContext0ResponseBody struct {
 	// The details of the access denial.
 	AccessDeniedDetail *DeleteContext0ResponseBodyAccessDeniedDetail `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty" type:"Struct"`
-	// The data struct.
+	// The data structure.
 	Data *DeleteContext0ResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// Id of the request
 	//
@@ -84,13 +84,13 @@ type DeleteContext0ResponseBodyAccessDeniedDetail struct {
 	//
 	// example:
 	//
-	// xxx
+	// polardbx:DeleteContext0
 	AuthAction *string `json:"AuthAction,omitempty" xml:"AuthAction,omitempty"`
 	// The display name of the authentication principal.
 	//
 	// example:
 	//
-	// xxx
+	// Sample RAM user
 	AuthPrincipalDisplayName *string `json:"AuthPrincipalDisplayName,omitempty" xml:"AuthPrincipalDisplayName,omitempty"`
 	// The owner ID of the authentication principal.
 	//
@@ -104,7 +104,7 @@ type DeleteContext0ResponseBodyAccessDeniedDetail struct {
 	//
 	// 222
 	AuthPrincipalType *string `json:"AuthPrincipalType,omitempty" xml:"AuthPrincipalType,omitempty"`
-	// The encoded diagnostic message.
+	// The diagnostic message.
 	//
 	// example:
 	//
@@ -212,13 +212,13 @@ type DeleteContext0ResponseBodyData struct {
 	//
 	// pxc-*********
 	DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
-	// The name of the context service dashboard instance.
+	// The name of the dashboard instance for the context service.
 	//
 	// example:
 	//
 	// pxt-*********-d
 	DashboardReplicaSetName *string `json:"DashboardReplicaSetName,omitempty" xml:"DashboardReplicaSetName,omitempty"`
-	// The name of the context service instance.
+	// The name of the service instance for the context service.
 	//
 	// example:
 	//
@@ -228,7 +228,7 @@ type DeleteContext0ResponseBodyData struct {
 	//
 	// example:
 	//
-	// ******
+	// 2209883
 	TaskId *int32 `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 

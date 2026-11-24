@@ -18,9 +18,9 @@ type iCreatePxfuseResponseBody interface {
 }
 
 type CreatePxfuseResponseBody struct {
-	// The details of the access denial.
+	// The access denial details.
 	AccessDeniedDetail *CreatePxfuseResponseBodyAccessDeniedDetail `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty" type:"Struct"`
-	// The details of the returned policy.
+	// The returned policy details.
 	Data *CreatePxfuseResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -84,13 +84,13 @@ type CreatePxfuseResponseBodyAccessDeniedDetail struct {
 	//
 	// example:
 	//
-	// xxx
+	// polardbx:CreatePxfuse
 	AuthAction *string `json:"AuthAction,omitempty" xml:"AuthAction,omitempty"`
 	// The display name of the authentication principal.
 	//
 	// example:
 	//
-	// xxx
+	// Example RAM user
 	AuthPrincipalDisplayName *string `json:"AuthPrincipalDisplayName,omitempty" xml:"AuthPrincipalDisplayName,omitempty"`
 	// The owner ID of the authentication principal.
 	//
@@ -110,7 +110,7 @@ type CreatePxfuseResponseBodyAccessDeniedDetail struct {
 	//
 	// AQEAAAAAaKPfwjY0MzMyODRGLUZCQkQtNTA1RS04MUUxLTc5NTkzODk2MUIzMg==
 	EncodedDiagnosticMessage *string `json:"EncodedDiagnosticMessage,omitempty" xml:"EncodedDiagnosticMessage,omitempty"`
-	// The type of access denial.
+	// The type of the missing permission.
 	//
 	// example:
 	//
@@ -200,7 +200,7 @@ func (s *CreatePxfuseResponseBodyAccessDeniedDetail) Validate() error {
 }
 
 type CreatePxfuseResponseBodyData struct {
-	// Indicates whether the resource already exists.
+	// Indicates whether the instance already exists.
 	//
 	// example:
 	//

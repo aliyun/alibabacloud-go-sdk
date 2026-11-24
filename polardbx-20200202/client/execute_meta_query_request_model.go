@@ -44,7 +44,7 @@ type ExecuteMetaQueryRequest struct {
   // 
   // cn-hangzhou
   RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-  // The SQL statement to execute.
+  // The SQL statement to be executed.
   // 
   // This parameter is required.
   // 

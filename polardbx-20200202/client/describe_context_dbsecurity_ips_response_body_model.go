@@ -18,7 +18,7 @@ type iDescribeContextDBSecurityIpsResponseBody interface {
 }
 
 type DescribeContextDBSecurityIpsResponseBody struct {
-	// The details of the access denial.
+	// The access denial details.
 	AccessDeniedDetail *DescribeContextDBSecurityIpsResponseBodyAccessDeniedDetail `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty" type:"Struct"`
 	// The paginated result of the instance list.
 	Data *DescribeContextDBSecurityIpsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
@@ -84,27 +84,27 @@ type DescribeContextDBSecurityIpsResponseBodyAccessDeniedDetail struct {
 	//
 	// example:
 	//
-	// xxx
+	// polardbx:DescribeContextDBSecurityIps
 	AuthAction *string `json:"AuthAction,omitempty" xml:"AuthAction,omitempty"`
-	// The display name of the authentication principal.
+	// The name of the authenticated principal.
 	//
 	// example:
 	//
-	// xxx
+	// Sample RAM user
 	AuthPrincipalDisplayName *string `json:"AuthPrincipalDisplayName,omitempty" xml:"AuthPrincipalDisplayName,omitempty"`
-	// The owner ID of the authentication principal.
+	// The owner ID of the authenticated principal.
 	//
 	// example:
 	//
 	// 111
 	AuthPrincipalOwnerId *string `json:"AuthPrincipalOwnerId,omitempty" xml:"AuthPrincipalOwnerId,omitempty"`
-	// The authentication principal type.
+	// The type of the authenticated principal.
 	//
 	// example:
 	//
 	// 222
 	AuthPrincipalType *string `json:"AuthPrincipalType,omitempty" xml:"AuthPrincipalType,omitempty"`
-	// The diagnostic information.
+	// The diagnostic message.
 	//
 	// example:
 	//
@@ -200,7 +200,7 @@ func (s *DescribeContextDBSecurityIpsResponseBodyAccessDeniedDetail) Validate() 
 }
 
 type DescribeContextDBSecurityIpsResponseBodyData struct {
-	// The context service instance name.
+	// The name of the context service instance.
 	//
 	// example:
 	//
@@ -212,7 +212,7 @@ type DescribeContextDBSecurityIpsResponseBodyData struct {
 	//
 	// pxc-*********
 	DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
-	// The whitelist group list.
+	// The list of whitelist groups.
 	GroupItems []*DescribeContextDBSecurityIpsResponseBodyDataGroupItems `json:"GroupItems,omitempty" xml:"GroupItems,omitempty" type:"Repeated"`
 }
 
@@ -265,7 +265,7 @@ func (s *DescribeContextDBSecurityIpsResponseBodyData) Validate() error {
 }
 
 type DescribeContextDBSecurityIpsResponseBodyDataGroupItems struct {
-	// The whitelist group name.
+	// The name of the whitelist group.
 	//
 	// example:
 	//
@@ -277,7 +277,7 @@ type DescribeContextDBSecurityIpsResponseBodyDataGroupItems struct {
 	//
 	// group1
 	GroupTag *string `json:"GroupTag,omitempty" xml:"GroupTag,omitempty"`
-	// The details of the whitelist group.
+	// The whitelist details of the group.
 	//
 	// example:
 	//

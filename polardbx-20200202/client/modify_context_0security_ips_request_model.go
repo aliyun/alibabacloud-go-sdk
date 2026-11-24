@@ -40,9 +40,9 @@ type ModifyContext0SecurityIpsRequest struct {
 	//
 	// - 0: Overwrites the whitelist group.
 	//
-	// - 1: Adds a whitelist group.
+	// - 1: Appends IP addresses to the whitelist group.
 	//
-	// - 2: Deletes a whitelist group.
+	// - 2: Deletes the whitelist group.
 	//
 	// example:
 	//

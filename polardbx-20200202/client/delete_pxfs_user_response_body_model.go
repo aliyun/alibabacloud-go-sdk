@@ -22,7 +22,7 @@ type DeletePxfsUserResponseBody struct {
 	AccessDeniedDetail *DeletePxfsUserResponseBodyAccessDeniedDetail `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty" type:"Struct"`
 	// The response data.
 	Data *DeletePxfsUserResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
@@ -80,37 +80,37 @@ func (s *DeletePxfsUserResponseBody) Validate() error {
 }
 
 type DeletePxfsUserResponseBodyAccessDeniedDetail struct {
-	// The authorization action.
+	// The authentication action.
 	//
 	// example:
 	//
-	// xxx
+	// polardbx:DeletePxfsUser
 	AuthAction *string `json:"AuthAction,omitempty" xml:"AuthAction,omitempty"`
-	// The display name of the authorization principal.
+	// The display name of the authentication principal.
 	//
 	// example:
 	//
-	// xxx
+	// Sample RAM user
 	AuthPrincipalDisplayName *string `json:"AuthPrincipalDisplayName,omitempty" xml:"AuthPrincipalDisplayName,omitempty"`
-	// The description is the same as above.
+	// Same as above.
 	//
 	// example:
 	//
 	// 111
 	AuthPrincipalOwnerId *string `json:"AuthPrincipalOwnerId,omitempty" xml:"AuthPrincipalOwnerId,omitempty"`
-	// The type of the authorization principal.
+	// The type of the authentication principal.
 	//
 	// example:
 	//
 	// 222
 	AuthPrincipalType *string `json:"AuthPrincipalType,omitempty" xml:"AuthPrincipalType,omitempty"`
-	// The encoded diagnostic message.
+	// The diagnostic information.
 	//
 	// example:
 	//
 	// AQEAAAAAaKPfwjY0MzMyODRGLUZCQkQtNTA1RS04MUUxLTc5NTkzODk2MUIzMg==
 	EncodedDiagnosticMessage *string `json:"EncodedDiagnosticMessage,omitempty" xml:"EncodedDiagnosticMessage,omitempty"`
-	// The type of the no-permission error.
+	// The no-permission type.
 	//
 	// example:
 	//
@@ -206,13 +206,13 @@ type DeletePxfsUserResponseBodyData struct {
 	//
 	// true
 	Deleted *bool `json:"Deleted,omitempty" xml:"Deleted,omitempty"`
-	// The identity name.
+	// The name of the identity.
 	//
 	// example:
 	//
 	// agent-runtime
 	IdentityName *string `json:"IdentityName,omitempty" xml:"IdentityName,omitempty"`
-	// The tenant ID.
+	// The ID of the tenant.
 	//
 	// example:
 	//

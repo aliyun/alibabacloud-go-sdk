@@ -19,9 +19,9 @@ type iDescribeMem0InfoResponseBody interface {
 
 type DescribeMem0InfoResponseBody struct {
 	AccessDeniedDetail *DescribeMem0InfoResponseBodyAccessDeniedDetail `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty" type:"Struct"`
-	// Response data
+	// The returned data.
 	Data *DescribeMem0InfoResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// Request ID
+	// The request ID.
 	//
 	// example:
 	//
@@ -164,7 +164,7 @@ func (s *DescribeMem0InfoResponseBodyAccessDeniedDetail) Validate() error {
 }
 
 type DescribeMem0InfoResponseBodyData struct {
-	// Instance information
+	// The instance information.
 	Instance *DescribeMem0InfoResponseBodyDataInstance `json:"Instance,omitempty" xml:"Instance,omitempty" type:"Struct"`
 }
 
@@ -195,13 +195,13 @@ func (s *DescribeMem0InfoResponseBodyData) Validate() error {
 }
 
 type DescribeMem0InfoResponseBodyDataInstance struct {
-	// Instance specifications
+	// The instance type.
 	//
 	// example:
 	//
 	// mysql.x2.large.2c
 	ClassCode *string `json:"ClassCode,omitempty" xml:"ClassCode,omitempty"`
-	// Connection address list
+	// The list of endpoints.
 	ConnAddrs []*DescribeMem0InfoResponseBodyDataInstanceConnAddrs `json:"ConnAddrs,omitempty" xml:"ConnAddrs,omitempty" type:"Repeated"`
 	// The creation time.
 	//
@@ -209,31 +209,31 @@ type DescribeMem0InfoResponseBodyDataInstance struct {
 	//
 	// 2026-02-17T02:00:20Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// Instance ID
+	// The instance ID.
 	//
 	// example:
 	//
 	// pxc-spsil01pww4hfz-mem
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// Number of nodes
+	// The number of nodes.
 	//
 	// example:
 	//
 	// 1
 	NodeCount *int32 `json:"NodeCount,omitempty" xml:"NodeCount,omitempty"`
-	// Region ID
+	// The region ID.
 	//
 	// example:
 	//
 	// ap-southeast-1
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// Instance status
+	// The instance status.
 	//
 	// example:
 	//
 	// Running
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// Storage type
+	// The storage type.
 	//
 	// example:
 	//
@@ -245,13 +245,13 @@ type DescribeMem0InfoResponseBodyDataInstance struct {
 	//
 	// vpc-t4n4hf9xey7ea3lp4bwwx
 	VPCId *string `json:"VPCId,omitempty" xml:"VPCId,omitempty"`
-	// vSwitch ID
+	// The vSwitch ID.
 	//
 	// example:
 	//
 	// vsw-t4ny14pr37spmjsbv5dc2
 	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	// Zone ID
+	// The zone ID.
 	//
 	// example:
 	//
@@ -380,19 +380,19 @@ func (s *DescribeMem0InfoResponseBodyDataInstance) Validate() error {
 }
 
 type DescribeMem0InfoResponseBodyDataInstanceConnAddrs struct {
-	// Connection address
+	// The endpoint.
 	//
 	// example:
 	//
 	// pxc-spsil01pww4hfz.polarx.singapore.rds.aliyuncs.com
 	ConnectionString *string `json:"ConnectionString,omitempty" xml:"ConnectionString,omitempty"`
-	// Port
+	// The port.
 	//
 	// example:
 	//
 	// 3306
 	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
-	// Connection address type
+	// The endpoint type.
 	//
 	// example:
 	//
@@ -404,13 +404,13 @@ type DescribeMem0InfoResponseBodyDataInstanceConnAddrs struct {
 	//
 	// vpc-t4n4hf9xey7ea3lp4bwwx
 	VPCId *string `json:"VPCId,omitempty" xml:"VPCId,omitempty"`
-	// vSwitch ID
+	// The vSwitch ID.
 	//
 	// example:
 	//
 	// vsw-t4ny14pr37spmjsbv5dc2
 	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	// VPC instance ID
+	// The VPC instance ID.
 	//
 	// example:
 	//

@@ -78,7 +78,7 @@ type DescribeDBInstanceSSLResponseBodyData struct {
 	//
 	// false
 	SSLEnabled *bool `json:"SSLEnabled,omitempty" xml:"SSLEnabled,omitempty"`
-	// The expiration time of the certificate. The time is in the YYYY-MM-DDTHH:mm:ssZ format and is in UTC.
+	// The expiration time of the certificate. The time is displayed in UTC in the YYYY-MM-DDTHH:mm:ssZ format.
 	//
 	// example:
 	//

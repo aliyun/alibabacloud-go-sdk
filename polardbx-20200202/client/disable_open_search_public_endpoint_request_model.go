@@ -26,7 +26,7 @@ type DisableOpenSearchPublicEndpointRequest struct {
 	//
 	// pxc-********
 	DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
-	// The type of the target node. Valid values:
+	// The type of the destination node. Valid values:
 	//
 	// - **search**: data node. This is the default value.
 	//
@@ -36,7 +36,7 @@ type DisableOpenSearchPublicEndpointRequest struct {
 	//
 	// search
 	NodeType *string `json:"NodeType,omitempty" xml:"NodeType,omitempty"`
-	// The region ID of the instance.
+	// The region where the instance resides.
 	//
 	// This parameter is required.
 	//

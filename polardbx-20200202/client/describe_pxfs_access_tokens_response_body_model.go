@@ -18,7 +18,7 @@ type iDescribePxfsAccessTokensResponseBody interface {
 }
 
 type DescribePxfsAccessTokensResponseBody struct {
-	// The detailed reason why access was denied.
+	// The detailed reasons for the access denial.
 	AccessDeniedDetail *DescribePxfsAccessTokensResponseBodyAccessDeniedDetail `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty" type:"Struct"`
 	// The response data.
 	Data *DescribePxfsAccessTokensResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
@@ -80,31 +80,31 @@ func (s *DescribePxfsAccessTokensResponseBody) Validate() error {
 }
 
 type DescribePxfsAccessTokensResponseBodyAccessDeniedDetail struct {
-	// The authorization action.
+	// The authentication action.
 	//
 	// example:
 	//
-	// xxx
+	// polardbx:DescribePxfsAccessTokens
 	AuthAction *string `json:"AuthAction,omitempty" xml:"AuthAction,omitempty"`
-	// The identity used for authorization in the request.
+	// The identity identifier used for authentication in the request.
 	//
 	// example:
 	//
-	// xxx
+	// Sample RAM user
 	AuthPrincipalDisplayName *string `json:"AuthPrincipalDisplayName,omitempty" xml:"AuthPrincipalDisplayName,omitempty"`
-	// The owner ID of the authorization principal.
+	// The owner ID of the authentication principal.
 	//
 	// example:
 	//
 	// 111
 	AuthPrincipalOwnerId *string `json:"AuthPrincipalOwnerId,omitempty" xml:"AuthPrincipalOwnerId,omitempty"`
-	// The type of the authorization principal.
+	// The type of the authentication principal.
 	//
 	// example:
 	//
 	// 222
 	AuthPrincipalType *string `json:"AuthPrincipalType,omitempty" xml:"AuthPrincipalType,omitempty"`
-	// The diagnostic information.
+	// The diagnostic message.
 	//
 	// example:
 	//

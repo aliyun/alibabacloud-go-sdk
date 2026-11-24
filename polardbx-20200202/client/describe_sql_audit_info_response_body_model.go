@@ -16,7 +16,7 @@ type iDescribeSqlAuditInfoResponseBody interface {
 }
 
 type DescribeSqlAuditInfoResponseBody struct {
-	// The returned result set.
+	// The result set.
 	Data *DescribeSqlAuditInfoResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The request ID.
 	//

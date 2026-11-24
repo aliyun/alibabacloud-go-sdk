@@ -18,11 +18,11 @@ type iUpgradePxfsVersionResponseBody interface {
 }
 
 type UpgradePxfsVersionResponseBody struct {
-	// The details of the access denial.
+	// The details of the unauthorized access.
 	AccessDeniedDetail *UpgradePxfsVersionResponseBodyAccessDeniedDetail `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty" type:"Struct"`
 	// The response data.
 	Data *UpgradePxfsVersionResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
@@ -84,21 +84,21 @@ type UpgradePxfsVersionResponseBodyAccessDeniedDetail struct {
 	//
 	// example:
 	//
-	// xxx
+	// polardbx:UpgradePxfsVersion
 	AuthAction *string `json:"AuthAction,omitempty" xml:"AuthAction,omitempty"`
-	// The identity used for authorization in the request.
+	// The identity used for authentication in the request.
 	//
 	// example:
 	//
-	// xxx
+	// Sample RAM user
 	AuthPrincipalDisplayName *string `json:"AuthPrincipalDisplayName,omitempty" xml:"AuthPrincipalDisplayName,omitempty"`
-	// The owner ID of the authorization principal.
+	// The owner ID of the authenticated principal.
 	//
 	// example:
 	//
 	// 111
 	AuthPrincipalOwnerId *string `json:"AuthPrincipalOwnerId,omitempty" xml:"AuthPrincipalOwnerId,omitempty"`
-	// The authorization principal type.
+	// The type of the authenticated principal.
 	//
 	// example:
 	//
@@ -110,13 +110,13 @@ type UpgradePxfsVersionResponseBodyAccessDeniedDetail struct {
 	//
 	// AQEAAAAAaKPfwjY0MzMyODRGLUZCQkQtNTA1RS04MUUxLTc5NTkzODk2MUIzMg==
 	EncodedDiagnosticMessage *string `json:"EncodedDiagnosticMessage,omitempty" xml:"EncodedDiagnosticMessage,omitempty"`
-	// The type of missing permission.
+	// The type of the access denial.
 	//
 	// example:
 	//
 	// ImplicitDeny
 	NoPermissionType *string `json:"NoPermissionType,omitempty" xml:"NoPermissionType,omitempty"`
-	// The policy type.
+	// The type of the policy.
 	//
 	// example:
 	//
@@ -218,7 +218,7 @@ type UpgradePxfsVersionResponseBodyData struct {
 	//
 	// pxfs-xxxxxxxx
 	PxfsInstanceId *string `json:"PxfsInstanceId,omitempty" xml:"PxfsInstanceId,omitempty"`
-	// The task ID.
+	// The ID of the task.
 	//
 	// example:
 	//

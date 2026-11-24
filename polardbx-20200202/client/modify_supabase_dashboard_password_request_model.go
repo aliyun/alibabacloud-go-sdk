@@ -32,7 +32,7 @@ type ModifySupabaseDashboardPasswordRequest struct {
 	//
 	// example:
 	//
-	// ********
+	// DemoPass1@
 	NewPassword *string `json:"NewPassword,omitempty" xml:"NewPassword,omitempty"`
 	// The region ID.
 	//

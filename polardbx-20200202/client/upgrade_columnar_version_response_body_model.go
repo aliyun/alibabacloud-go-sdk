@@ -22,7 +22,7 @@ type iUpgradeColumnarVersionResponseBody interface {
 type UpgradeColumnarVersionResponseBody struct {
 	// The returned data.
 	Data *UpgradeColumnarVersionResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The response message.
+	// The message returned for the request.
 	//
 	// example:
 	//
@@ -96,7 +96,7 @@ func (s *UpgradeColumnarVersionResponseBody) Validate() error {
 }
 
 type UpgradeColumnarVersionResponseBodyData struct {
-	// The target version number.
+	// The target minor version.
 	//
 	// example:
 	//
@@ -146,17 +146,17 @@ func (s *UpgradeColumnarVersionResponseBodyData) Validate() error {
 }
 
 type UpgradeColumnarVersionResponseBodyDataTaskList struct {
-	// The instance ID.
+	// The ID of the instance.
 	//
 	// example:
 	//
 	// rm-uf68f345****88zf8
 	DbInstanceName *string `json:"DbInstanceName,omitempty" xml:"DbInstanceName,omitempty"`
-	// The target task ID.
+	// The ID of the target task.
 	//
 	// example:
 	//
-	// 1861190497624654848
+	// 2209883
 	TaskId *int32 `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 

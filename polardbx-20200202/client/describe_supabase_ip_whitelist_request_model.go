@@ -26,7 +26,7 @@ type DescribeSupabaseIpWhitelistRequest struct {
 	//
 	// pcsp-**************
 	DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
-	// The name of the whitelist group.
+	// The whitelist group name.
 	//
 	// example:
 	//

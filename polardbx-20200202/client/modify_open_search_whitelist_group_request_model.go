@@ -30,7 +30,7 @@ type ModifyOpenSearchWhitelistGroupRequest struct {
 	//
 	// pxc-xxx
 	DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
-	// The group ID.
+	// The ID of the group.
 	//
 	// This parameter is required.
 	//
@@ -46,7 +46,7 @@ type ModifyOpenSearchWhitelistGroupRequest struct {
 	//
 	// 192.168.1.0/24
 	IPs *string `json:"IPs,omitempty" xml:"IPs,omitempty"`
-	// The region of the instance.
+	// The region ID of the instance.
 	//
 	// This parameter is required.
 	//
@@ -54,7 +54,7 @@ type ModifyOpenSearchWhitelistGroupRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The remark.
+	// The description.
 	//
 	// example:
 	//

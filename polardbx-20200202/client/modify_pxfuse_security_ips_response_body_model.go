@@ -80,25 +80,25 @@ func (s *ModifyPxfuseSecurityIpsResponseBody) Validate() error {
 }
 
 type ModifyPxfuseSecurityIpsResponseBodyAccessDeniedDetail struct {
-	// The name of the operation.
+	// The name of the API operation.
 	//
 	// example:
 	//
-	// xxx
+	// polardbx:ModifyPxfuseSecurityIps
 	AuthAction *string `json:"AuthAction,omitempty" xml:"AuthAction,omitempty"`
-	// The display name of the authenticated principal.
+	// The display name of the authentication principal.
 	//
 	// example:
 	//
-	// xxx
+	// Sample RAM user
 	AuthPrincipalDisplayName *string `json:"AuthPrincipalDisplayName,omitempty" xml:"AuthPrincipalDisplayName,omitempty"`
-	// The owner ID of the authenticated principal.
+	// The owner ID of the authentication principal.
 	//
 	// example:
 	//
 	// 111
 	AuthPrincipalOwnerId *string `json:"AuthPrincipalOwnerId,omitempty" xml:"AuthPrincipalOwnerId,omitempty"`
-	// The type of the identity used for authentication in the request. Valid values:
+	// The type of identity used for authentication in the request. Valid values:
 	//
 	// - SubUser: RAM user.
 	//
@@ -110,13 +110,13 @@ type ModifyPxfuseSecurityIpsResponseBodyAccessDeniedDetail struct {
 	//
 	// 222
 	AuthPrincipalType *string `json:"AuthPrincipalType,omitempty" xml:"AuthPrincipalType,omitempty"`
-	// The diagnostic information.
+	// The diagnostic message.
 	//
 	// example:
 	//
 	// AQEAAAAAaKPfwjY0MzMyODRGLUZCQkQtNTA1RS04MUUxLTc5NTkzODk2MUIzMg==
 	EncodedDiagnosticMessage *string `json:"EncodedDiagnosticMessage,omitempty" xml:"EncodedDiagnosticMessage,omitempty"`
-	// The type of the permission denial.
+	// The type of access denial.
 	//
 	// example:
 	//
@@ -210,7 +210,7 @@ type ModifyPxfuseSecurityIpsResponseBodyData struct {
 	//
 	// example:
 	//
-	// ******
+	// 2209883
 	TaskId *int32 `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 

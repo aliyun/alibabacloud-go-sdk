@@ -2,6 +2,7 @@
 package client
 
 import (
+	gatewayclient "github.com/alibabacloud-go/alibabacloud-gateway-pop/client"
 	openapi "github.com/alibabacloud-go/darabonba-openapi/v2/client"
 	openapiutil "github.com/alibabacloud-go/darabonba-openapi/v2/utils"
 	"github.com/alibabacloud-go/tea/dara"
@@ -24,6 +25,13 @@ func (client *Client) Init(config *openapiutil.Config) (_err error) {
 	if _err != nil {
 		return _err
 	}
+	client.ProductId = dara.String("polardbx")
+	gatewayClient, _err := gatewayclient.NewClient()
+	if _err != nil {
+		return _err
+	}
+
+	client.Spi = gatewayClient
 	client.EndpointRule = dara.String("regional")
 	client.EndpointMap = map[string]*string{
 		"ap-northeast-1":              dara.String("polardbx.aliyuncs.com"),
@@ -249,11 +257,11 @@ func (client *Client) AllocateColdDataVolume(request *AllocateColdDataVolumeRequ
 
 // Summary:
 //
-// Enables public network connections for a specified physical ReplicaSet of the context service.
+// Enables public network access for a specified physical ReplicaSet of the context service.
 //
 // Description:
 //
-// This operation confirms that no active connections exist before a rollback task to ensure operational security.
+// This operation confirms that no active connections exist before rolling back a task to ensure operational security.
 //
 // @param request - AllocateContext0PublicConnectionRequest
 //
@@ -313,11 +321,11 @@ func (client *Client) AllocateContext0PublicConnectionWithOptions(request *Alloc
 
 // Summary:
 //
-// Enables public network connections for a specified physical ReplicaSet of the context service.
+// Enables public network access for a specified physical ReplicaSet of the context service.
 //
 // Description:
 //
-// This operation confirms that no active connections exist before a rollback task to ensure operational security.
+// This operation confirms that no active connections exist before rolling back a task to ensure operational security.
 //
 // @param request - AllocateContext0PublicConnectionRequest
 //
@@ -335,11 +343,11 @@ func (client *Client) AllocateContext0PublicConnection(request *AllocateContext0
 
 // Summary:
 //
-// Enables a public network connection for a ContextDB-X service ReplicaSet.
+// Enables public network connection for a ContextDB-X service ReplicaSet.
 //
 // Description:
 //
-// This operation is used to confirm that no active connections exist before a rollback task, ensuring operation safety.
+// This operation verifies that no active connections exist before a rollback task to ensure operational security.
 //
 // @param request - AllocateContextDBPublicConnectionRequest
 //
@@ -399,11 +407,11 @@ func (client *Client) AllocateContextDBPublicConnectionWithOptions(request *Allo
 
 // Summary:
 //
-// Enables a public network connection for a ContextDB-X service ReplicaSet.
+// Enables public network connection for a ContextDB-X service ReplicaSet.
 //
 // Description:
 //
-// This operation is used to confirm that no active connections exist before a rollback task, ensuring operation safety.
+// This operation verifies that no active connections exist before a rollback task to ensure operational security.
 //
 // @param request - AllocateContextDBPublicConnectionRequest
 //
@@ -519,7 +527,7 @@ func (client *Client) AllocateInstancePublicConnection(request *AllocateInstance
 //
 // Description:
 //
-// This operation checks for active connections before a rollback task to ensure operational security.
+// This operation verifies that no active connections exist before rolling back a task to ensure operational security.
 //
 // @param request - AllocateMem0PublicConnectionRequest
 //
@@ -579,7 +587,7 @@ func (client *Client) AllocateMem0PublicConnectionWithOptions(request *AllocateM
 //
 // Description:
 //
-// This operation checks for active connections before a rollback task to ensure operational security.
+// This operation verifies that no active connections exist before rolling back a task to ensure operational security.
 //
 // @param request - AllocateMem0PublicConnectionRequest
 //
@@ -597,11 +605,11 @@ func (client *Client) AllocateMem0PublicConnection(request *AllocateMem0PublicCo
 
 // Summary:
 //
-// Enables public network connection for PXFS.
+// Enables a public network connection for PXFS.
 //
 // Description:
 //
-// Enables public network connection for the agent file service.
+// Enables a public network connection for the Agent file service.
 //
 // @param request - AllocatePxfsPublicConnectionRequest
 //
@@ -649,11 +657,11 @@ func (client *Client) AllocatePxfsPublicConnectionWithOptions(request *AllocateP
 
 // Summary:
 //
-// Enables public network connection for PXFS.
+// Enables a public network connection for PXFS.
 //
 // Description:
 //
-// Enables public network connection for the agent file service.
+// Enables a public network connection for the Agent file service.
 //
 // @param request - AllocatePxfsPublicConnectionRequest
 //
@@ -955,7 +963,7 @@ func (client *Client) CheckCloudResourceAuthorized(request *CheckCloudResourceAu
 
 // Summary:
 //
-// Performs a service health check.
+// Checks the health of the service.
 //
 // @param request - CheckHealthRequest
 //
@@ -992,7 +1000,7 @@ func (client *Client) CheckHealthWithOptions(request *CheckHealthRequest, runtim
 
 // Summary:
 //
-// Performs a service health check.
+// Checks the health of the service.
 //
 // @param request - CheckHealthRequest
 //
@@ -1948,11 +1956,11 @@ func (client *Client) CreateDBInstance(request *CreateDBInstanceRequest) (_resul
 
 // Summary:
 //
-// Creates a data import task to import external data files such as SQL scripts and CSV files into a target database instance.
+// Creates a data import task to import external data files, such as SQL scripts and CSV files, into a destination database instance.
 //
 // Description:
 //
-// The CreateDataImportTask operation creates a data import task that supports importing SQL or CSV files stored in OSS, ECS, or directly uploaded into a target database instance. By specifying the instance ID, database name, engine type, data source (such as an OSS path), and import type, the system performs data write operations asynchronously or synchronously. This operation is applicable to scenarios such as data migration, initialization, and data backfill. A task ID is returned for subsequent status queries and management.
+// The CreateDataImportTask operation creates a data import task. It supports importing SQL or CSV files stored in OSS or ECS, or directly passed files, into a destination database instance. By specifying the instance ID, database name, engine type, data source such as the OSS path, and import type, the system asynchronously or synchronously performs data write operations. This operation is applicable to scenarios such as data migration, initialization, and data backfilling. It returns a task ID for subsequent status query and management.
 //
 // @param request - CreateDataImportTaskRequest
 //
@@ -2036,11 +2044,11 @@ func (client *Client) CreateDataImportTaskWithOptions(request *CreateDataImportT
 
 // Summary:
 //
-// Creates a data import task to import external data files such as SQL scripts and CSV files into a target database instance.
+// Creates a data import task to import external data files, such as SQL scripts and CSV files, into a destination database instance.
 //
 // Description:
 //
-// The CreateDataImportTask operation creates a data import task that supports importing SQL or CSV files stored in OSS, ECS, or directly uploaded into a target database instance. By specifying the instance ID, database name, engine type, data source (such as an OSS path), and import type, the system performs data write operations asynchronously or synchronously. This operation is applicable to scenarios such as data migration, initialization, and data backfill. A task ID is returned for subsequent status queries and management.
+// The CreateDataImportTask operation creates a data import task. It supports importing SQL or CSV files stored in OSS or ECS, or directly passed files, into a destination database instance. By specifying the instance ID, database name, engine type, data source such as the OSS path, and import type, the system asynchronously or synchronously performs data write operations. This operation is applicable to scenarios such as data migration, initialization, and data backfilling. It returns a task ID for subsequent status query and management.
 //
 // @param request - CreateDataImportTaskRequest
 //
@@ -2218,7 +2226,7 @@ func (client *Client) CreateGdnInstance(request *CreateGdnInstanceRequest) (_res
 
 // Summary:
 //
-// Adds a secondary instance to a global database network (GDN).
+// Adds a GDN secondary instance.
 //
 // Description:
 //
@@ -2358,7 +2366,7 @@ func (client *Client) CreateGdnStandbyMemberWithOptions(request *CreateGdnStandb
 
 // Summary:
 //
-// Adds a secondary instance to a global database network (GDN).
+// Adds a GDN secondary instance.
 //
 // Description:
 //
@@ -2454,7 +2462,7 @@ func (client *Client) CreateMem0(request *CreateMem0Request) (_result *CreateMem
 
 // Summary:
 //
-// Creates a PolarDBX Search instance.
+// Creates a PolarDB-X Search instance.
 //
 // Description:
 //
@@ -2578,7 +2586,7 @@ func (client *Client) CreateOpenSearchWithOptions(request *CreateOpenSearchReque
 
 // Summary:
 //
-// Creates a PolarDBX Search instance.
+// Creates a PolarDB-X Search instance.
 //
 // Description:
 //
@@ -3340,11 +3348,11 @@ func (client *Client) CreatePxfuse(request *CreatePxfuseRequest) (_result *Creat
 
 // Summary:
 //
-// Performs a health check on a replication task during data migration.
+// Performs a health check on the replication link during data migration.
 //
 // Description:
 //
-// During the data synchronization phase, proactively initiates a diagnostic task for the replication task to check for issues such as latency, replication interruption, or data inconsistency.
+// Initiates a diagnostic task for the replication link during the data synchronization phase to check for anomalies such as latency, interruption, and data inconsistency.
 //
 // @param request - CreateRplInspectionTaskRequest
 //
@@ -3416,11 +3424,11 @@ func (client *Client) CreateRplInspectionTaskWithOptions(request *CreateRplInspe
 
 // Summary:
 //
-// Performs a health check on a replication task during data migration.
+// Performs a health check on the replication link during data migration.
 //
 // Description:
 //
-// During the data synchronization phase, proactively initiates a diagnostic task for the replication task to check for issues such as latency, replication interruption, or data inconsistency.
+// Initiates a diagnostic task for the replication link during the data synchronization phase to check for anomalies such as latency, interruption, and data inconsistency.
 //
 // @param request - CreateRplInspectionTaskRequest
 //
@@ -3438,7 +3446,7 @@ func (client *Client) CreateRplInspectionTask(request *CreateRplInspectionTaskRe
 
 // Summary:
 //
-// Creates a SQL statement assessment task. You submit SQL statements through this operation, and the system performs static analysis and risk assessment to identify execution risks and compatibility issues on the target database instance.
+// Creates an SQL statement evaluation task. This operation submits SQL statements for static analysis and risk assessment, and outputs execution risks and compatibility issues on the target database instance.
 //
 // @param request - CreateSQLEvaluateTaskRequest
 //
@@ -3530,7 +3538,7 @@ func (client *Client) CreateSQLEvaluateTaskWithOptions(request *CreateSQLEvaluat
 
 // Summary:
 //
-// Creates a SQL statement assessment task. You submit SQL statements through this operation, and the system performs static analysis and risk assessment to identify execution risks and compatibility issues on the target database instance.
+// Creates an SQL statement evaluation task. This operation submits SQL statements for static analysis and risk assessment, and outputs execution risks and compatibility issues on the target database instance.
 //
 // @param request - CreateSQLEvaluateTaskRequest
 //
@@ -4170,7 +4178,7 @@ func (client *Client) DeleteAccount(request *DeleteAccountRequest) (_result *Del
 //
 // Description:
 //
-// Deletes the custom endpoint of a specified database instance and disables access through the domain name.
+// Deletes the custom endpoint of a specified database instance and closes the access entry for the domain name.
 //
 // @param request - DeleteContext0Request
 //
@@ -4222,7 +4230,7 @@ func (client *Client) DeleteContext0WithOptions(request *DeleteContext0Request, 
 //
 // Description:
 //
-// Deletes the custom endpoint of a specified database instance and disables access through the domain name.
+// Deletes the custom endpoint of a specified database instance and closes the access entry for the domain name.
 //
 // @param request - DeleteContext0Request
 //
@@ -4746,7 +4754,7 @@ func (client *Client) DeleteMem0(request *DeleteMem0Request) (_result *DeleteMem
 //
 // Description:
 //
-// Deletes a custom endpoint of a specified database instance and disables access through the domain name.
+// Deletes the custom endpoint of a specified database instance and disables access to the domain name.
 //
 // @param request - DeleteOpenSearchRequest
 //
@@ -4798,7 +4806,7 @@ func (client *Client) DeleteOpenSearchWithOptions(request *DeleteOpenSearchReque
 //
 // Description:
 //
-// Deletes a custom endpoint of a specified database instance and disables access through the domain name.
+// Deletes the custom endpoint of a specified database instance and disables access to the domain name.
 //
 // @param request - DeleteOpenSearchRequest
 //
@@ -4900,9 +4908,9 @@ func (client *Client) DeleteOpenSearchAccount(request *DeleteOpenSearchAccountRe
 //
 // - Binary log files are retained for 15 days by default.
 //
-// - The returned log list contains all logs whose log record end time is after the query start time and whose log record start time is before the query end time.
+// - The returned log list includes all log records whose log record end time is later than the query start time and whose log record start time is earlier than the query end time.
 //
-// - If DownloadLink is not NULL, you can use the URL to download the backup file. The URL is valid for 2 days after it is generated. Download the file before the URL expires.
+// - If the DownloadLink parameter is not NULL, you can use this URL to download the backup file. The URL is valid for two days after it is generated. Download the file before it expires.
 //
 // @param request - DeleteOpenSearchWhitelistGroupRequest
 //
@@ -4960,9 +4968,9 @@ func (client *Client) DeleteOpenSearchWhitelistGroupWithOptions(request *DeleteO
 //
 // - Binary log files are retained for 15 days by default.
 //
-// - The returned log list contains all logs whose log record end time is after the query start time and whose log record start time is before the query end time.
+// - The returned log list includes all log records whose log record end time is later than the query start time and whose log record start time is earlier than the query end time.
 //
-// - If DownloadLink is not NULL, you can use the URL to download the backup file. The URL is valid for 2 days after it is generated. Download the file before the URL expires.
+// - If the DownloadLink parameter is not NULL, you can use this URL to download the backup file. The URL is valid for two days after it is generated. Download the file before it expires.
 //
 // @param request - DeleteOpenSearchWhitelistGroupRequest
 //
@@ -5128,11 +5136,11 @@ func (client *Client) DeletePxfs(request *DeletePxfsRequest) (_result *DeletePxf
 
 // Summary:
 //
-// Deletes an Agent file service tenant identity.
+// Deletes the tenant identity for the Agent file service.
 //
 // Description:
 //
-// Deletes an Agent file service tenant identity.
+// Deletes the tenant identity for the Agent file service.
 //
 // @param request - DeletePxfsUserRequest
 //
@@ -5188,11 +5196,11 @@ func (client *Client) DeletePxfsUserWithOptions(request *DeletePxfsUserRequest, 
 
 // Summary:
 //
-// Deletes an Agent file service tenant identity.
+// Deletes the tenant identity for the Agent file service.
 //
 // Description:
 //
-// Deletes an Agent file service tenant identity.
+// Deletes the tenant identity for the Agent file service.
 //
 // @param request - DeletePxfsUserRequest
 //
@@ -5214,7 +5222,7 @@ func (client *Client) DeletePxfsUser(request *DeletePxfsUserRequest) (_result *D
 //
 // Description:
 //
-// Deletes a custom endpoint of a specified database instance and disables access through the domain name.
+// Deletes the custom endpoint of a specified database instance and disables access to the domain name.
 //
 // @param request - DeletePxfuseRequest
 //
@@ -5266,7 +5274,7 @@ func (client *Client) DeletePxfuseWithOptions(request *DeletePxfuseRequest, runt
 //
 // Description:
 //
-// Deletes a custom endpoint of a specified database instance and disables access through the domain name.
+// Deletes the custom endpoint of a specified database instance and disables access to the domain name.
 //
 // @param request - DeletePxfuseRequest
 //
@@ -5514,7 +5522,7 @@ func (client *Client) DeleteSupabaseNetType(request *DeleteSupabaseNetTypeReques
 
 // Summary:
 //
-// Queries the list of accounts by calling the DescribeAccountList operation.
+// Queries the list of accounts.
 //
 // @param request - DescribeAccountListRequest
 //
@@ -5570,7 +5578,7 @@ func (client *Client) DescribeAccountListWithOptions(request *DescribeAccountLis
 
 // Summary:
 //
-// Queries the list of accounts by calling the DescribeAccountList operation.
+// Queries the list of accounts.
 //
 // @param request - DescribeAccountListRequest
 //
@@ -5588,7 +5596,7 @@ func (client *Client) DescribeAccountList(request *DescribeAccountListRequest) (
 
 // Summary:
 //
-// Queries the O&M time configuration.
+// Queries the O&M window configuration.
 //
 // @param request - DescribeActiveOperationMaintainConfRequest
 //
@@ -5632,7 +5640,7 @@ func (client *Client) DescribeActiveOperationMaintainConfWithOptions(request *De
 
 // Summary:
 //
-// Queries the O&M time configuration.
+// Queries the O&M window configuration.
 //
 // @param request - DescribeActiveOperationMaintainConfRequest
 //
@@ -5852,7 +5860,7 @@ func (client *Client) DescribeArchiveTableList(request *DescribeArchiveTableList
 
 // Summary:
 //
-// Queries the list of available regions that support cross-region operations, typically used for multi-region deployment or data replication scenarios.
+// Queries the list of zones that support cross-region operations, typically used for multi-region deployment or data replication scenarios.
 //
 // @param request - DescribeAvailableCrossRegionsRequest
 //
@@ -5900,7 +5908,7 @@ func (client *Client) DescribeAvailableCrossRegionsWithOptions(request *Describe
 
 // Summary:
 //
-// Queries the list of available regions that support cross-region operations, typically used for multi-region deployment or data replication scenarios.
+// Queries the list of zones that support cross-region operations, typically used for multi-region deployment or data replication scenarios.
 //
 // @param request - DescribeAvailableCrossRegionsRequest
 //
@@ -5984,7 +5992,7 @@ func (client *Client) DescribeBackupPolicy(request *DescribeBackupPolicyRequest)
 
 // Summary:
 //
-// Queries the details of a backup set by calling the DescribeBackupSet operation.
+// Queries the details of a backup set.
 //
 // @param request - DescribeBackupSetRequest
 //
@@ -6040,7 +6048,7 @@ func (client *Client) DescribeBackupSetWithOptions(request *DescribeBackupSetReq
 
 // Summary:
 //
-// Queries the details of a backup set by calling the DescribeBackupSet operation.
+// Queries the details of a backup set.
 //
 // @param request - DescribeBackupSetRequest
 //
@@ -6058,7 +6066,7 @@ func (client *Client) DescribeBackupSet(request *DescribeBackupSetRequest) (_res
 
 // Summary:
 //
-// Queries the list of backup sets by calling the DescribeBackupSetList operation.
+// Queries the list of backup sets.
 //
 // @param request - DescribeBackupSetListRequest
 //
@@ -6098,7 +6106,7 @@ func (client *Client) DescribeBackupSetListWithOptions(request *DescribeBackupSe
 
 // Summary:
 //
-// Queries the list of backup sets by calling the DescribeBackupSetList operation.
+// Queries the list of backup sets.
 //
 // @param request - DescribeBackupSetListRequest
 //
@@ -6124,7 +6132,7 @@ func (client *Client) DescribeBackupSetList(request *DescribeBackupSetListReques
 //
 // - The returned log list includes all log records whose end time is later than the query start time and whose start time is earlier than the query end time.
 //
-// - If the value of DownloadLink is not NULL, you can use this URL to download the backup file. The URL is valid for two days after it is generated. Download the file before it expires.
+// - If DownloadLink is not NULL, you can download the backup file by using this URL. The URL is valid for two days after it is generated. Download the file before it expires.
 //
 // @param request - DescribeBinaryLogListRequest
 //
@@ -6200,7 +6208,7 @@ func (client *Client) DescribeBinaryLogListWithOptions(request *DescribeBinaryLo
 //
 // - The returned log list includes all log records whose end time is later than the query start time and whose start time is earlier than the query end time.
 //
-// - If the value of DownloadLink is not NULL, you can use this URL to download the backup file. The URL is valid for two days after it is generated. Download the file before it expires.
+// - If DownloadLink is not NULL, you can download the backup file by using this URL. The URL is valid for two days after it is generated. Download the file before it expires.
 //
 // @param request - DescribeBinaryLogListRequest
 //
@@ -6304,7 +6312,7 @@ func (client *Client) DescribeCdcClassList(request *DescribeCdcClassListRequest)
 
 // Summary:
 //
-// Queries CDC information.
+// Queries the CDC information.
 //
 // @param request - DescribeCdcInfoRequest
 //
@@ -6352,7 +6360,7 @@ func (client *Client) DescribeCdcInfoWithOptions(request *DescribeCdcInfoRequest
 
 // Summary:
 //
-// Queries CDC information.
+// Queries the CDC information.
 //
 // @param request - DescribeCdcInfoRequest
 //
@@ -6370,15 +6378,15 @@ func (client *Client) DescribeCdcInfo(request *DescribeCdcInfoRequest) (_result 
 
 // Summary:
 //
-// Retrieves a list of CDC versions.
+// Queries the list of CDC versions.
 //
 // Description:
 //
 // - Binary log files are retained for 15 days by default.
 //
-// - The returned log list includes all log records whose end time is after the query start time and whose start time is before the query end time.
+// - The returned log list includes all log records whose end time is later than the query start time and whose start time is earlier than the query end time.
 //
-// - If DownloadLink is not NULL, you can download the backup file by using this URL. The URL is valid for 2 days after it is generated. Download the file before it expires.
+// - If DownloadLink is not NULL, you can download the backup file by using this URL. The URL is valid for two days after it is generated. Download the file before it expires.
 //
 // @param request - DescribeCdcVersionListRequest
 //
@@ -6430,15 +6438,15 @@ func (client *Client) DescribeCdcVersionListWithOptions(request *DescribeCdcVers
 
 // Summary:
 //
-// Retrieves a list of CDC versions.
+// Queries the list of CDC versions.
 //
 // Description:
 //
 // - Binary log files are retained for 15 days by default.
 //
-// - The returned log list includes all log records whose end time is after the query start time and whose start time is before the query end time.
+// - The returned log list includes all log records whose end time is later than the query start time and whose start time is earlier than the query end time.
 //
-// - If DownloadLink is not NULL, you can download the backup file by using this URL. The URL is valid for 2 days after it is generated. Download the file before it expires.
+// - If DownloadLink is not NULL, you can download the backup file by using this URL. The URL is valid for two days after it is generated. Download the file before it expires.
 //
 // @param request - DescribeCdcVersionListRequest
 //
@@ -6456,7 +6464,7 @@ func (client *Client) DescribeCdcVersionList(request *DescribeCdcVersionListRequ
 
 // Summary:
 //
-// Invokes the DescribeCharacterSet operation to query the character set types supported by databases in a target instance.
+// Invokes the DescribeCharacterSet operation to query the character set types supported by the database on the target instance.
 //
 // @param request - DescribeCharacterSetRequest
 //
@@ -6504,7 +6512,7 @@ func (client *Client) DescribeCharacterSetWithOptions(request *DescribeCharacter
 
 // Summary:
 //
-// Invokes the DescribeCharacterSet operation to query the character set types supported by databases in a target instance.
+// Invokes the DescribeCharacterSet operation to query the character set types supported by the database on the target instance.
 //
 // @param request - DescribeCharacterSetRequest
 //
@@ -6580,7 +6588,7 @@ func (client *Client) DescribeColdDataBasicInfo(request *DescribeColdDataBasicIn
 
 // Summary:
 //
-// Queries the list of column store specifications for an instance.
+// Queries the column store specifications of an instance.
 //
 // @param request - DescribeColumnarClassListRequest
 //
@@ -6632,7 +6640,7 @@ func (client *Client) DescribeColumnarClassListWithOptions(request *DescribeColu
 
 // Summary:
 //
-// Queries the list of column store specifications for an instance.
+// Queries the column store specifications of an instance.
 //
 // @param request - DescribeColumnarClassListRequest
 //
@@ -6722,9 +6730,9 @@ func (client *Client) DescribeColumnarInfo(request *DescribeColumnarInfoRequest)
 //
 // - Binary log files are retained for 15 days by default.
 //
-// - The returned log list includes all logs whose log record end time is after the query start time and whose log record start time is before the query end time.
+// - The returned log list includes all log records whose end time is later than the query start time and whose start time is earlier than the query end time.
 //
-// - If DownloadLink is not NULL, you can download the backup file from this URL. The URL is valid for 2 days after it is generated. Download the file before the URL expires.
+// - If DownloadLink is not NULL, you can download the backup file by using this URL. The URL is valid for 2 days after it is generated. Download the file before it expires.
 //
 // @param request - DescribeColumnarVersionListRequest
 //
@@ -6778,9 +6786,9 @@ func (client *Client) DescribeColumnarVersionListWithOptions(request *DescribeCo
 //
 // - Binary log files are retained for 15 days by default.
 //
-// - The returned log list includes all logs whose log record end time is after the query start time and whose log record start time is before the query end time.
+// - The returned log list includes all log records whose end time is later than the query start time and whose start time is earlier than the query end time.
 //
-// - If DownloadLink is not NULL, you can download the backup file from this URL. The URL is valid for 2 days after it is generated. Download the file before the URL expires.
+// - If DownloadLink is not NULL, you can download the backup file by using this URL. The URL is valid for 2 days after it is generated. Download the file before it expires.
 //
 // @param request - DescribeColumnarVersionListRequest
 //
@@ -6798,7 +6806,7 @@ func (client *Client) DescribeColumnarVersionList(request *DescribeColumnarVersi
 
 // Summary:
 //
-// Retrieves the property information of a specified component, including property names and types.
+// Retrieves the property information of a specified component, including the property name and type.
 //
 // @param request - DescribeComponentPropetiesRequest
 //
@@ -6854,7 +6862,7 @@ func (client *Client) DescribeComponentPropetiesWithOptions(request *DescribeCom
 
 // Summary:
 //
-// Retrieves the property information of a specified component, including property names and types.
+// Retrieves the property information of a specified component, including the property name and type.
 //
 // @param request - DescribeComponentPropetiesRequest
 //
@@ -6876,7 +6884,7 @@ func (client *Client) DescribeComponentPropeties(request *DescribeComponentPrope
 //
 // Description:
 //
-// > 	- PolarDB-X 2.0 SQL audit and analysis feature is free of charge, but Simple Log Service charges fees for storage space, read traffic, number of requests, data transformation, and data shipping. For more information about the SQL audit feature, see [Enable SQL audit and analysis](https://help.aliyun.com/document_detail/184619.html).
+// > 	- The SQL audit and analysis feature of PolarDB-X 2.0 is free of charge. However, Simple Log Service charges fees for storage space, read traffic, number of requests, data transformation, and data shipping. For more information about the SQL audit feature, see [Enable SQL audit and analysis](https://help.aliyun.com/document_detail/184619.html).
 //
 // @param request - DescribeContext0ConfigRequest
 //
@@ -6928,7 +6936,7 @@ func (client *Client) DescribeContext0ConfigWithOptions(request *DescribeContext
 //
 // Description:
 //
-// > 	- PolarDB-X 2.0 SQL audit and analysis feature is free of charge, but Simple Log Service charges fees for storage space, read traffic, number of requests, data transformation, and data shipping. For more information about the SQL audit feature, see [Enable SQL audit and analysis](https://help.aliyun.com/document_detail/184619.html).
+// > 	- The SQL audit and analysis feature of PolarDB-X 2.0 is free of charge. However, Simple Log Service charges fees for storage space, read traffic, number of requests, data transformation, and data shipping. For more information about the SQL audit feature, see [Enable SQL audit and analysis](https://help.aliyun.com/document_detail/184619.html).
 //
 // @param request - DescribeContext0ConfigRequest
 //
@@ -6946,11 +6954,11 @@ func (client *Client) DescribeContext0Config(request *DescribeContext0ConfigRequ
 
 // Summary:
 //
-// Queries the information about context service instances.
+// Queries the details of a context service instance.
 //
 // Description:
 //
-// > 	- The SQL audit and analysis feature of PolarDB-X 2.0 is free of charge, but Simple Log Service charges fees for storage space, read traffic, number of requests, data transformation, and data shipping. For more information about the SQL audit feature, see [Enable SQL audit and analysis](https://help.aliyun.com/document_detail/184619.html).
+// > 	- The SQL audit and analysis feature of PolarDB-X 2.0 is free of charge. However, Simple Log Service charges fees for storage space, read traffic, number of requests, data transformation, and data shipping. For more information about the SQL audit feature, see [Enable SQL audit and analysis](https://help.aliyun.com/document_detail/184619.html).
 //
 // @param request - DescribeContext0InfoRequest
 //
@@ -6998,11 +7006,11 @@ func (client *Client) DescribeContext0InfoWithOptions(request *DescribeContext0I
 
 // Summary:
 //
-// Queries the information about context service instances.
+// Queries the details of a context service instance.
 //
 // Description:
 //
-// > 	- The SQL audit and analysis feature of PolarDB-X 2.0 is free of charge, but Simple Log Service charges fees for storage space, read traffic, number of requests, data transformation, and data shipping. For more information about the SQL audit feature, see [Enable SQL audit and analysis](https://help.aliyun.com/document_detail/184619.html).
+// > 	- The SQL audit and analysis feature of PolarDB-X 2.0 is free of charge. However, Simple Log Service charges fees for storage space, read traffic, number of requests, data transformation, and data shipping. For more information about the SQL audit feature, see [Enable SQL audit and analysis](https://help.aliyun.com/document_detail/184619.html).
 //
 // @param request - DescribeContext0InfoRequest
 //
@@ -7020,11 +7028,11 @@ func (client *Client) DescribeContext0Info(request *DescribeContext0InfoRequest)
 
 // Summary:
 //
-// Queries the whitelist for the context service.
+// Queries the context service whitelist.
 //
 // Description:
 //
-// > 	- The SQL audit and analysis feature of PolarDB-X 2.0 is free of charge. However, Simple Log Service charges fees for storage space, read traffic, number of requests, data transformation, and data shipping. For more information about the SQL audit feature, see [Enable SQL audit and analysis](https://help.aliyun.com/document_detail/184619.html).
+// > 	- The SQL audit and analysis feature of PolarDB-X 2.0 is free of charge. However, Simple Log Service charges fees for storage space, read traffic, number of requests, data processing, and data shipping. For more information about the SQL audit feature, see [Enable SQL audit and analysis](https://help.aliyun.com/document_detail/184619.html).
 //
 // @param request - DescribeContext0SecurityIpsRequest
 //
@@ -7072,11 +7080,11 @@ func (client *Client) DescribeContext0SecurityIpsWithOptions(request *DescribeCo
 
 // Summary:
 //
-// Queries the whitelist for the context service.
+// Queries the context service whitelist.
 //
 // Description:
 //
-// > 	- The SQL audit and analysis feature of PolarDB-X 2.0 is free of charge. However, Simple Log Service charges fees for storage space, read traffic, number of requests, data transformation, and data shipping. For more information about the SQL audit feature, see [Enable SQL audit and analysis](https://help.aliyun.com/document_detail/184619.html).
+// > 	- The SQL audit and analysis feature of PolarDB-X 2.0 is free of charge. However, Simple Log Service charges fees for storage space, read traffic, number of requests, data processing, and data shipping. For more information about the SQL audit feature, see [Enable SQL audit and analysis](https://help.aliyun.com/document_detail/184619.html).
 //
 // @param request - DescribeContext0SecurityIpsRequest
 //
@@ -7168,7 +7176,7 @@ func (client *Client) DescribeContextDBConfig(request *DescribeContextDBConfigRe
 
 // Summary:
 //
-// Queries the information of a ContextDB-X instance.
+// Queries the information of ContextDB-X instances.
 //
 // Description:
 //
@@ -7220,7 +7228,7 @@ func (client *Client) DescribeContextDBInfoWithOptions(request *DescribeContextD
 
 // Summary:
 //
-// Queries the information of a ContextDB-X instance.
+// Queries the information of ContextDB-X instances.
 //
 // Description:
 //
@@ -7242,11 +7250,11 @@ func (client *Client) DescribeContextDBInfo(request *DescribeContextDBInfoReques
 
 // Summary:
 //
-// Queries the whitelist of a ContextDB-X instance.
+// Queries the ContextDB-X whitelist.
 //
 // Description:
 //
-// > 	- The SQL audit and analysis feature of PolarDB-X 2.0 is free of charge. However, Simple Log Service charges fees for storage space, read traffic, number of requests, data transformation, and data shipping. For more information about the SQL audit feature, see [Enable SQL audit and analysis](https://help.aliyun.com/document_detail/184619.html).
+// > 	- The SQL audit and analysis feature of PolarDB-X 2.0 is free of charge. However, Simple Log Service charges fees for storage space, read traffic, number of requests, data transformation, and data delivery. For more information about the SQL audit feature, see [Enable SQL audit and analysis](https://help.aliyun.com/document_detail/184619.html).
 //
 // @param request - DescribeContextDBSecurityIpsRequest
 //
@@ -7294,11 +7302,11 @@ func (client *Client) DescribeContextDBSecurityIpsWithOptions(request *DescribeC
 
 // Summary:
 //
-// Queries the whitelist of a ContextDB-X instance.
+// Queries the ContextDB-X whitelist.
 //
 // Description:
 //
-// > 	- The SQL audit and analysis feature of PolarDB-X 2.0 is free of charge. However, Simple Log Service charges fees for storage space, read traffic, number of requests, data transformation, and data shipping. For more information about the SQL audit feature, see [Enable SQL audit and analysis](https://help.aliyun.com/document_detail/184619.html).
+// > 	- The SQL audit and analysis feature of PolarDB-X 2.0 is free of charge. However, Simple Log Service charges fees for storage space, read traffic, number of requests, data transformation, and data delivery. For more information about the SQL audit feature, see [Enable SQL audit and analysis](https://help.aliyun.com/document_detail/184619.html).
 //
 // @param request - DescribeContextDBSecurityIpsRequest
 //
@@ -7316,11 +7324,11 @@ func (client *Client) DescribeContextDBSecurityIps(request *DescribeContextDBSec
 
 // Summary:
 //
-// Queries the list of user-defined custom domain names.
+// Queries the list of custom endpoints.
 //
 // Description:
 //
-// This operation retrieves the list of custom endpoints configured by the user, which facilitates the management and viewing of private connection or VPC endpoint service settings.
+// Retrieves the list of custom endpoints configured by users to facilitate the management and viewing of private connections or VPC endpoint service settings.
 //
 // @param request - DescribeCustomEndpointListRequest
 //
@@ -7376,11 +7384,11 @@ func (client *Client) DescribeCustomEndpointListWithOptions(request *DescribeCus
 
 // Summary:
 //
-// Queries the list of user-defined custom domain names.
+// Queries the list of custom endpoints.
 //
 // Description:
 //
-// This operation retrieves the list of custom endpoints configured by the user, which facilitates the management and viewing of private connection or VPC endpoint service settings.
+// Retrieves the list of custom endpoints configured by users to facilitate the management and viewing of private connections or VPC endpoint service settings.
 //
 // @param request - DescribeCustomEndpointListRequest
 //
@@ -7402,7 +7410,7 @@ func (client *Client) DescribeCustomEndpointList(request *DescribeCustomEndpoint
 //
 // Description:
 //
-// This operation retrieves the list of custom endpoints configured by the user to facilitate the management and viewing of private connections or VPC endpoint service settings.
+// This operation retrieves the list of custom endpoints configured by users to facilitate the management and viewing of private connections or VPC endpoint service settings.
 //
 // @param request - DescribeDBInstanceAttributeRequest
 //
@@ -7458,7 +7466,7 @@ func (client *Client) DescribeDBInstanceAttributeWithOptions(request *DescribeDB
 //
 // Description:
 //
-// This operation retrieves the list of custom endpoints configured by the user to facilitate the management and viewing of private connections or VPC endpoint service settings.
+// This operation retrieves the list of custom endpoints configured by users to facilitate the management and viewing of private connections or VPC endpoint service settings.
 //
 // @param request - DescribeDBInstanceAttributeRequest
 //
@@ -7476,7 +7484,7 @@ func (client *Client) DescribeDBInstanceAttribute(request *DescribeDBInstanceAtt
 
 // Summary:
 //
-// Calls the DescribeDBInstanceConfig operation to retrieve instance configuration parameters.
+// Queries the configuration parameters of an instance.
 //
 // @param request - DescribeDBInstanceConfigRequest
 //
@@ -7528,7 +7536,7 @@ func (client *Client) DescribeDBInstanceConfigWithOptions(request *DescribeDBIns
 
 // Summary:
 //
-// Calls the DescribeDBInstanceConfig operation to retrieve instance configuration parameters.
+// Queries the configuration parameters of an instance.
 //
 // @param request - DescribeDBInstanceConfigRequest
 //
@@ -7550,7 +7558,7 @@ func (client *Client) DescribeDBInstanceConfig(request *DescribeDBInstanceConfig
 //
 // Description:
 //
-// Queries the list of custom endpoints configured by a user, which helps manage and view private connection or VPC endpoint service settings.
+// Retrieves a list of custom endpoints configured by the user to facilitate the management and viewing of private connections or VPC endpoint services.
 //
 // @param request - DescribeDBInstanceEndpointRequest
 //
@@ -7610,7 +7618,7 @@ func (client *Client) DescribeDBInstanceEndpointWithOptions(request *DescribeDBI
 //
 // Description:
 //
-// Queries the list of custom endpoints configured by a user, which helps manage and view private connection or VPC endpoint service settings.
+// Retrieves a list of custom endpoints configured by the user to facilitate the management and viewing of private connections or VPC endpoint services.
 //
 // @param request - DescribeDBInstanceEndpointRequest
 //
@@ -7628,7 +7636,7 @@ func (client *Client) DescribeDBInstanceEndpoint(request *DescribeDBInstanceEndp
 
 // Summary:
 //
-// Queries the high availability information of an instance.
+// Queries the high availability (HA) information of an instance.
 //
 // @param request - DescribeDBInstanceHARequest
 //
@@ -7676,7 +7684,7 @@ func (client *Client) DescribeDBInstanceHAWithOptions(request *DescribeDBInstanc
 
 // Summary:
 //
-// Queries the high availability information of an instance.
+// Queries the high availability (HA) information of an instance.
 //
 // @param request - DescribeDBInstanceHARequest
 //
@@ -7760,7 +7768,7 @@ func (client *Client) DescribeDBInstanceSSL(request *DescribeDBInstanceSSLReques
 
 // Summary:
 //
-// Queries the details of Transparent Data Encryption (TDE) for an instance.
+// Retrieves the TDE details of an instance.
 //
 // @param request - DescribeDBInstanceTDERequest
 //
@@ -7808,7 +7816,7 @@ func (client *Client) DescribeDBInstanceTDEWithOptions(request *DescribeDBInstan
 
 // Summary:
 //
-// Queries the details of Transparent Data Encryption (TDE) for an instance.
+// Retrieves the TDE details of an instance.
 //
 // @param request - DescribeDBInstanceTDERequest
 //
@@ -7904,7 +7912,7 @@ func (client *Client) DescribeDBInstanceTopology(request *DescribeDBInstanceTopo
 
 // Summary:
 //
-// Retrieves the basic information of an instance by using the endpoint of the instance.
+// Queries the basic information of an instance based on its endpoint.
 //
 // @param request - DescribeDBInstanceViaEndpointRequest
 //
@@ -7952,7 +7960,7 @@ func (client *Client) DescribeDBInstanceViaEndpointWithOptions(request *Describe
 
 // Summary:
 //
-// Retrieves the basic information of an instance by using the endpoint of the instance.
+// Queries the basic information of an instance based on its endpoint.
 //
 // @param request - DescribeDBInstanceViaEndpointRequest
 //
@@ -7970,7 +7978,7 @@ func (client *Client) DescribeDBInstanceViaEndpoint(request *DescribeDBInstanceV
 
 // Summary:
 //
-// Queries a list of database instances.
+// Queries a list of instances.
 //
 // @param request - DescribeDBInstancesRequest
 //
@@ -8050,7 +8058,7 @@ func (client *Client) DescribeDBInstancesWithOptions(request *DescribeDBInstance
 
 // Summary:
 //
-// Queries a list of database instances.
+// Queries a list of instances.
 //
 // @param request - DescribeDBInstancesRequest
 //
@@ -8074,9 +8082,9 @@ func (client *Client) DescribeDBInstances(request *DescribeDBInstancesRequest) (
 //
 // Note:
 //
-// - The **endpoint*	- differs from other API operations. For Chinese mainland regions and Singapore, use **polardbx.aliyuncs.com**. For other regions, use **polardbx.{region id}.aliyunc.com**.
+// - The **endpoint*	- for this operation is different from other operations. Use **polardbx.aliyuncs.com*	- for the Chinese mainland and Singapore regions, and use **polardbx.{region id}.aliyunc.com*	- for other regions.
 //
-// - When debugging this API operation, if you receive a service unavailable error, verify that the **endpoint*	- is correct. You can switch the **service address*	- to **Dubai*	- or **India*	- and change the **endpoint*	- to **polardbx.aliyuncs.com**.
+// - If a "service unavailable" error occurs when debugging this API operation, check whether the **endpoint*	- is correct. You can switch the **service address*	- to **Dubai*	- or **India*	- to change the **endpoint*	- to **polardbx.aliyuncs.com**.
 //
 // @param request - DescribeDBNodePerformanceRequest
 //
@@ -8154,9 +8162,9 @@ func (client *Client) DescribeDBNodePerformanceWithOptions(request *DescribeDBNo
 //
 // Note:
 //
-// - The **endpoint*	- differs from other API operations. For Chinese mainland regions and Singapore, use **polardbx.aliyuncs.com**. For other regions, use **polardbx.{region id}.aliyunc.com**.
+// - The **endpoint*	- for this operation is different from other operations. Use **polardbx.aliyuncs.com*	- for the Chinese mainland and Singapore regions, and use **polardbx.{region id}.aliyunc.com*	- for other regions.
 //
-// - When debugging this API operation, if you receive a service unavailable error, verify that the **endpoint*	- is correct. You can switch the **service address*	- to **Dubai*	- or **India*	- and change the **endpoint*	- to **polardbx.aliyuncs.com**.
+// - If a "service unavailable" error occurs when debugging this API operation, check whether the **endpoint*	- is correct. You can switch the **service address*	- to **Dubai*	- or **India*	- to change the **endpoint*	- to **polardbx.aliyuncs.com**.
 //
 // @param request - DescribeDBNodePerformanceRequest
 //
@@ -8462,7 +8470,7 @@ func (client *Client) DescribeEnabledCrossRegions(request *DescribeEnabledCrossR
 
 // Summary:
 //
-// Queries the list of PolarDB-X assessment import tasks. (single)
+// Queries the list of PolarDB-X assessment import tasks.
 //
 // @param request - DescribeEvaluateAndImportTaskRequest
 //
@@ -8510,7 +8518,7 @@ func (client *Client) DescribeEvaluateAndImportTaskWithOptions(request *Describe
 
 // Summary:
 //
-// Queries the list of PolarDB-X assessment import tasks. (single)
+// Queries the list of PolarDB-X assessment import tasks.
 //
 // @param request - DescribeEvaluateAndImportTaskRequest
 //
@@ -8528,11 +8536,11 @@ func (client *Client) DescribeEvaluateAndImportTask(request *DescribeEvaluateAnd
 
 // Summary:
 //
-// Queries a list of assessment import tasks for PolarDB-X.
+// Queries the list of PolarDB-X assessment import tasks.
 //
 // Description:
 //
-// The CreateDataImportTask operation creates a data import task. You can use this operation to import SQL or CSV files stored in OSS or ECS, or directly provided, into a destination database instance. By specifying the instance ID, database name, engine type, data source (such as an OSS path), and import type, the system performs data write operations asynchronously or synchronously. This operation is applicable to scenarios such as data migration, initialization, and data backfill. A task ID is returned for subsequent status queries and management.
+// The CreateDataImportTask operation creates a data import task. It supports importing SQL or CSV files stored in OSS, on ECS instances, or directly passed in the request into a target database instance. By specifying the instance ID, database name, engine type, data source (such as the OSS path), and import type, the system asynchronously or synchronously writes data. This operation is suitable for scenarios such as data migration, initialization, and data backfilling. It returns a task ID for subsequent status query and management.
 //
 // @param request - DescribeEvaluateAndImportTasksRequest
 //
@@ -8584,11 +8592,11 @@ func (client *Client) DescribeEvaluateAndImportTasksWithOptions(request *Describ
 
 // Summary:
 //
-// Queries a list of assessment import tasks for PolarDB-X.
+// Queries the list of PolarDB-X assessment import tasks.
 //
 // Description:
 //
-// The CreateDataImportTask operation creates a data import task. You can use this operation to import SQL or CSV files stored in OSS or ECS, or directly provided, into a destination database instance. By specifying the instance ID, database name, engine type, data source (such as an OSS path), and import type, the system performs data write operations asynchronously or synchronously. This operation is applicable to scenarios such as data migration, initialization, and data backfill. A task ID is returned for subsequent status queries and management.
+// The CreateDataImportTask operation creates a data import task. It supports importing SQL or CSV files stored in OSS, on ECS instances, or directly passed in the request into a target database instance. By specifying the instance ID, database name, engine type, data source (such as the OSS path), and import type, the system asynchronously or synchronously writes data. This operation is suitable for scenarios such as data migration, initialization, and data backfilling. It returns a task ID for subsequent status query and management.
 //
 // @param request - DescribeEvaluateAndImportTasksRequest
 //
@@ -8664,7 +8672,7 @@ func (client *Client) DescribeEvents(request *DescribeEventsRequest) (_result *D
 
 // Summary:
 //
-// Queries the list of global database network (GDN) instances.
+// Queries a list of global database network (GDN) instances.
 //
 // @param request - DescribeGdnInstancesRequest
 //
@@ -8728,7 +8736,7 @@ func (client *Client) DescribeGdnInstancesWithOptions(request *DescribeGdnInstan
 
 // Summary:
 //
-// Queries the list of global database network (GDN) instances.
+// Queries a list of global database network (GDN) instances.
 //
 // @param request - DescribeGdnInstancesRequest
 //
@@ -8746,11 +8754,11 @@ func (client *Client) DescribeGdnInstances(request *DescribeGdnInstancesRequest)
 
 // Summary:
 //
-// # View Memory Engine Information
+// Retrieves the memory engine information.
 //
 // Description:
 //
-// > 	- The SQL audit and analysis feature of PolarDB-X 2.0 is free of charge. However, Log Service charges fees for storage space, read traffic, the number of requests, data transformation, and data shipping. For more information about the SQL audit feature, see [Enable SQL audit and analysis](https://help.aliyun.com/document_detail/184619.html).
+// > 	- The SQL audit and analysis feature of PolarDB-X 2.0 is free of charge. However, Simple Log Service charges fees for storage space, read traffic, number of requests, data transformation, and data shipping. For more information about the SQL audit feature, see [Enable SQL audit and analysis](https://help.aliyun.com/document_detail/184619.html).
 //
 // @param request - DescribeMem0InfoRequest
 //
@@ -8798,11 +8806,11 @@ func (client *Client) DescribeMem0InfoWithOptions(request *DescribeMem0InfoReque
 
 // Summary:
 //
-// # View Memory Engine Information
+// Retrieves the memory engine information.
 //
 // Description:
 //
-// > 	- The SQL audit and analysis feature of PolarDB-X 2.0 is free of charge. However, Log Service charges fees for storage space, read traffic, the number of requests, data transformation, and data shipping. For more information about the SQL audit feature, see [Enable SQL audit and analysis](https://help.aliyun.com/document_detail/184619.html).
+// > 	- The SQL audit and analysis feature of PolarDB-X 2.0 is free of charge. However, Simple Log Service charges fees for storage space, read traffic, number of requests, data transformation, and data shipping. For more information about the SQL audit feature, see [Enable SQL audit and analysis](https://help.aliyun.com/document_detail/184619.html).
 //
 // @param request - DescribeMem0InfoRequest
 //
@@ -8964,7 +8972,7 @@ func (client *Client) DescribeOpenBackupSet(request *DescribeOpenBackupSetReques
 
 // Summary:
 //
-// Queries the account information of PolarDB-X Search.
+// Queries the account information of PolarDBX Search.
 //
 // Description:
 //
@@ -9016,7 +9024,7 @@ func (client *Client) DescribeOpenSearchAccountInfoWithOptions(request *Describe
 
 // Summary:
 //
-// Queries the account information of PolarDB-X Search.
+// Queries the account information of PolarDBX Search.
 //
 // Description:
 //
@@ -9038,11 +9046,11 @@ func (client *Client) DescribeOpenSearchAccountInfo(request *DescribeOpenSearchA
 
 // Summary:
 //
-// Queries the connection information of PolarDB-X Search, including internal, public, and Dashboard endpoints and protocols.
+// Queries the connection information of PolarDB-X Search, including internal, public, and dashboard endpoints and protocols.
 //
 // Description:
 //
-// During the data synchronization phase, proactively initiates a diagnostic task for the replication task to check for exceptions such as latency, replication interruption, or data inconsistency.
+// During the data synchronization phase, initiates a diagnostic task for the replication task to check for anomalies such as latency, interruptions, and data inconsistency.
 //
 // @param request - DescribeOpenSearchConnectionInfoRequest
 //
@@ -9090,11 +9098,11 @@ func (client *Client) DescribeOpenSearchConnectionInfoWithOptions(request *Descr
 
 // Summary:
 //
-// Queries the connection information of PolarDB-X Search, including internal, public, and Dashboard endpoints and protocols.
+// Queries the connection information of PolarDB-X Search, including internal, public, and dashboard endpoints and protocols.
 //
 // Description:
 //
-// During the data synchronization phase, proactively initiates a diagnostic task for the replication task to check for exceptions such as latency, replication interruption, or data inconsistency.
+// During the data synchronization phase, initiates a diagnostic task for the replication task to check for anomalies such as latency, interruptions, and data inconsistency.
 //
 // @param request - DescribeOpenSearchConnectionInfoRequest
 //
@@ -9186,11 +9194,11 @@ func (client *Client) DescribeOpenSearchInfo(request *DescribeOpenSearchInfoRequ
 
 // Summary:
 //
-// Queries the list of PolarDBX Search instances.
+// Queries PolarDB-X Search instances.
 //
 // Description:
 //
-// Queries the list of custom endpoints that you have configured. This operation helps you manage and view the settings of private connections or VPC endpoint services.
+// Retrieves a list of custom endpoints configured by the user to facilitate the management and viewing of private connection or VPC endpoint service settings.
 //
 // @param request - DescribeOpenSearchInstancesRequest
 //
@@ -9254,11 +9262,11 @@ func (client *Client) DescribeOpenSearchInstancesWithOptions(request *DescribeOp
 
 // Summary:
 //
-// Queries the list of PolarDBX Search instances.
+// Queries PolarDB-X Search instances.
 //
 // Description:
 //
-// Queries the list of custom endpoints that you have configured. This operation helps you manage and view the settings of private connections or VPC endpoint services.
+// Retrieves a list of custom endpoints configured by the user to facilitate the management and viewing of private connection or VPC endpoint service settings.
 //
 // @param request - DescribeOpenSearchInstancesRequest
 //
@@ -9280,7 +9288,7 @@ func (client *Client) DescribeOpenSearchInstances(request *DescribeOpenSearchIns
 //
 // Description:
 //
-// Retrieves the list of virtual private clouds (VPCs) available under your account for an instance, so that you can select an appropriate network environment when creating or managing database instances.
+// This operation retrieves the list of virtual private clouds (VPCs) available under your account for instances, allowing you to select an appropriate network environment when creating or managing database instances.
 //
 // @param request - DescribeOpenSearchNodesRequest
 //
@@ -9332,7 +9340,7 @@ func (client *Client) DescribeOpenSearchNodesWithOptions(request *DescribeOpenSe
 //
 // Description:
 //
-// Retrieves the list of virtual private clouds (VPCs) available under your account for an instance, so that you can select an appropriate network environment when creating or managing database instances.
+// This operation retrieves the list of virtual private clouds (VPCs) available under your account for instances, allowing you to select an appropriate network environment when creating or managing database instances.
 //
 // @param request - DescribeOpenSearchNodesRequest
 //
@@ -9430,9 +9438,9 @@ func (client *Client) DescribeOpenSearchResourceUsage(request *DescribeOpenSearc
 //
 // - Binary log files are retained for 15 days by default.
 //
-// - The returned log list contains all log records whose log record end time is later than the query start time and whose log record start time is earlier than the query end time.
+// - The returned log list includes all log records whose end time is later than the query start time and whose start time is earlier than the query end time.
 //
-// - If DownloadLink is not NULL, you can use this URL to download the backup file. This URL is valid for 2 days after it is generated. Download the file before the URL expires.
+// - If DownloadLink is not NULL, you can use this URL to download the backup file. The URL is valid for two days after it is generated. Download the file before it expires.
 //
 // @param request - DescribeOpenSearchTopologyRequest
 //
@@ -9486,9 +9494,9 @@ func (client *Client) DescribeOpenSearchTopologyWithOptions(request *DescribeOpe
 //
 // - Binary log files are retained for 15 days by default.
 //
-// - The returned log list contains all log records whose log record end time is later than the query start time and whose log record start time is earlier than the query end time.
+// - The returned log list includes all log records whose end time is later than the query start time and whose start time is earlier than the query end time.
 //
-// - If DownloadLink is not NULL, you can use this URL to download the backup file. This URL is valid for 2 days after it is generated. Download the file before the URL expires.
+// - If DownloadLink is not NULL, you can use this URL to download the backup file. The URL is valid for two days after it is generated. Download the file before it expires.
 //
 // @param request - DescribeOpenSearchTopologyRequest
 //
@@ -9506,15 +9514,15 @@ func (client *Client) DescribeOpenSearchTopology(request *DescribeOpenSearchTopo
 
 // Summary:
 //
-// Queries the whitelist of a PolarDB-X Search instance. You can filter the results by network type.
+// Queries the PolarDB-X Search whitelists. You can filter the whitelists by network type.
 //
 // Description:
 //
 // - Binary log files are retained for 15 days by default.
 //
-// - The returned log list includes all logs whose log record end time is after the query start time and whose log record start time is before the query end time.
+// - The returned log list includes all log records whose end time is later than the query start time and whose start time is earlier than the query end time.
 //
-// - If DownloadLink is not NULL, you can use the URL to download the backup file. The URL is valid for 2 days after it is generated. Download the file before the URL expires.
+// - If DownloadLink is not NULL, you can download the backup file by using this URL. The URL is valid for two days after it is generated. Download the file before it expires.
 //
 // @param request - DescribeOpenSearchWhitelistsRequest
 //
@@ -9562,15 +9570,15 @@ func (client *Client) DescribeOpenSearchWhitelistsWithOptions(request *DescribeO
 
 // Summary:
 //
-// Queries the whitelist of a PolarDB-X Search instance. You can filter the results by network type.
+// Queries the PolarDB-X Search whitelists. You can filter the whitelists by network type.
 //
 // Description:
 //
 // - Binary log files are retained for 15 days by default.
 //
-// - The returned log list includes all logs whose log record end time is after the query start time and whose log record start time is before the query end time.
+// - The returned log list includes all log records whose end time is later than the query start time and whose start time is earlier than the query end time.
 //
-// - If DownloadLink is not NULL, you can use the URL to download the backup file. The URL is valid for 2 days after it is generated. Download the file before the URL expires.
+// - If DownloadLink is not NULL, you can download the backup file by using this URL. The URL is valid for two days after it is generated. Download the file before it expires.
 //
 // @param request - DescribeOpenSearchWhitelistsRequest
 //
@@ -9588,7 +9596,7 @@ func (client *Client) DescribeOpenSearchWhitelists(request *DescribeOpenSearchWh
 
 // Summary:
 //
-// Queries the list of database parameter templates created by users or supported by the system, including basic information, associated engine types, and modification times of each parameter template.
+// Queries the list of database parameter groups created by users or supported by the system, including the basic information, associated engine types, and modification time of each parameter group.
 //
 // @param request - DescribeParameterGroupsRequest
 //
@@ -9628,7 +9636,7 @@ func (client *Client) DescribeParameterGroupsWithOptions(request *DescribeParame
 
 // Summary:
 //
-// Queries the list of database parameter templates created by users or supported by the system, including basic information, associated engine types, and modification times of each parameter template.
+// Queries the list of database parameter groups created by users or supported by the system, including the basic information, associated engine types, and modification time of each parameter group.
 //
 // @param request - DescribeParameterGroupsRequest
 //
@@ -9646,7 +9654,7 @@ func (client *Client) DescribeParameterGroups(request *DescribeParameterGroupsRe
 
 // Summary:
 //
-// Queries the instance parameter templates.
+// Queries the parameter templates of an instance.
 //
 // @param request - DescribeParameterTemplatesRequest
 //
@@ -9702,7 +9710,7 @@ func (client *Client) DescribeParameterTemplatesWithOptions(request *DescribePar
 
 // Summary:
 //
-// Queries the instance parameter templates.
+// Queries the parameter templates of an instance.
 //
 // @param request - DescribeParameterTemplatesRequest
 //
@@ -9790,7 +9798,7 @@ func (client *Client) DescribeParameters(request *DescribeParametersRequest) (_r
 
 // Summary:
 //
-// Queries the details of all data nodes (Data Nodes) in a PolarDB-X instance, including node status, storage usage, and network addresses, to facilitate operations management and monitoring.
+// Queries the details of all data nodes in a PolarDB-X instance, including node status, storage usage, and network addresses, to facilitate operations management and monitoring.
 //
 // @param request - DescribePolarxDataNodesRequest
 //
@@ -9850,7 +9858,7 @@ func (client *Client) DescribePolarxDataNodesWithOptions(request *DescribePolarx
 
 // Summary:
 //
-// Queries the details of all data nodes (Data Nodes) in a PolarDB-X instance, including node status, storage usage, and network addresses, to facilitate operations management and monitoring.
+// Queries the details of all data nodes in a PolarDB-X instance, including node status, storage usage, and network addresses, to facilitate operations management and monitoring.
 //
 // @param request - DescribePolarxDataNodesRequest
 //
@@ -9868,11 +9876,11 @@ func (client *Client) DescribePolarxDataNodes(request *DescribePolarxDataNodesRe
 
 // Summary:
 //
-// Queries the access token for the Agent file service.
+// Queries the access token for the agent file service.
 //
 // Description:
 //
-// Queries the access token for the Agent file service.
+// Queries the access token for the agent file service.
 //
 // @param request - DescribePxfsAccessTokensRequest
 //
@@ -9928,11 +9936,11 @@ func (client *Client) DescribePxfsAccessTokensWithOptions(request *DescribePxfsA
 
 // Summary:
 //
-// Queries the access token for the Agent file service.
+// Queries the access token for the agent file service.
 //
 // Description:
 //
-// Queries the access token for the Agent file service.
+// Queries the access token for the agent file service.
 //
 // @param request - DescribePxfsAccessTokensRequest
 //
@@ -9950,11 +9958,11 @@ func (client *Client) DescribePxfsAccessTokens(request *DescribePxfsAccessTokens
 
 // Summary:
 //
-// Queries the information about an Agent file service instance.
+// Queries the information of an Agent file service instance.
 //
 // Description:
 //
-// Queries the information about an Agent file service instance.
+// Queries the information of an Agent file service instance.
 //
 // @param request - DescribePxfsInfoRequest
 //
@@ -10002,11 +10010,11 @@ func (client *Client) DescribePxfsInfoWithOptions(request *DescribePxfsInfoReque
 
 // Summary:
 //
-// Queries the information about an Agent file service instance.
+// Queries the information of an Agent file service instance.
 //
 // Description:
 //
-// Queries the information about an Agent file service instance.
+// Queries the information of an Agent file service instance.
 //
 // @param request - DescribePxfsInfoRequest
 //
@@ -10024,11 +10032,11 @@ func (client *Client) DescribePxfsInfo(request *DescribePxfsInfoRequest) (_resul
 
 // Summary:
 //
-// Queries the whitelist for the Agent file service.
+// Queries the whitelist for the agent file service.
 //
 // Description:
 //
-// Queries the whitelist for the Agent file service.
+// Queries the whitelist for the agent file service.
 //
 // @param request - DescribePxfsSecurityIpsRequest
 //
@@ -10076,11 +10084,11 @@ func (client *Client) DescribePxfsSecurityIpsWithOptions(request *DescribePxfsSe
 
 // Summary:
 //
-// Queries the whitelist for the Agent file service.
+// Queries the whitelist for the agent file service.
 //
 // Description:
 //
-// Queries the whitelist for the Agent file service.
+// Queries the whitelist for the agent file service.
 //
 // @param request - DescribePxfsSecurityIpsRequest
 //
@@ -10402,11 +10410,11 @@ func (client *Client) DescribePxfuseSecurityIps(request *DescribePxfuseSecurityI
 
 // Summary:
 //
-// Queries the list of VPCs for PolarDB-X.
+// Queries the list of virtual private clouds (VPCs) available for PolarDB-X.
 //
 // Description:
 //
-// Queries the list of virtual private clouds (VPCs) available under your account. You can use this operation to select an appropriate network environment when creating or managing database instances.
+// Retrieves the list of virtual private clouds (VPCs) available in your account for instances, so that you can select an appropriate network environment when creating or managing database instances.
 //
 // @param request - DescribeRdsVpcsRequest
 //
@@ -10454,11 +10462,11 @@ func (client *Client) DescribeRdsVpcsWithOptions(request *DescribeRdsVpcsRequest
 
 // Summary:
 //
-// Queries the list of VPCs for PolarDB-X.
+// Queries the list of virtual private clouds (VPCs) available for PolarDB-X.
 //
 // Description:
 //
-// Queries the list of virtual private clouds (VPCs) available under your account. You can use this operation to select an appropriate network environment when creating or managing database instances.
+// Retrieves the list of virtual private clouds (VPCs) available in your account for instances, so that you can select an appropriate network environment when creating or managing database instances.
 //
 // @param request - DescribeRdsVpcsRequest
 //
@@ -10476,11 +10484,11 @@ func (client *Client) DescribeRdsVpcs(request *DescribeRdsVpcsRequest) (_result 
 
 // Summary:
 //
-// Queries the list of available vSwitches in a virtual private cloud (VPC) for an ApsaraDB RDS instance.
+// Queries the list of vSwitches available for an ApsaraDB RDS instance in a virtual private cloud (VPC).
 //
 // Description:
 //
-// Queries the list of available virtual private clouds (VPCs) under your account for an instance, so that you can select an appropriate network environment when creating or managing database instances.
+// Retrieves the list of virtual private clouds (VPCs) available in your account to help you select an appropriate network environment when you create or manage database instances.
 //
 // @param request - DescribeRdsVswitchesRequest
 //
@@ -10532,11 +10540,11 @@ func (client *Client) DescribeRdsVswitchesWithOptions(request *DescribeRdsVswitc
 
 // Summary:
 //
-// Queries the list of available vSwitches in a virtual private cloud (VPC) for an ApsaraDB RDS instance.
+// Queries the list of vSwitches available for an ApsaraDB RDS instance in a virtual private cloud (VPC).
 //
 // Description:
 //
-// Queries the list of available virtual private clouds (VPCs) under your account for an instance, so that you can select an appropriate network environment when creating or managing database instances.
+// Retrieves the list of virtual private clouds (VPCs) available in your account to help you select an appropriate network environment when you create or manage database instances.
 //
 // @param request - DescribeRdsVswitchesRequest
 //
@@ -10554,7 +10562,7 @@ func (client *Client) DescribeRdsVswitches(request *DescribeRdsVswitchesRequest)
 
 // Summary:
 //
-// Calls the DescribeRegions operation to retrieve the list of regions.
+// Queries the list of regions.
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
@@ -10583,7 +10591,7 @@ func (client *Client) DescribeRegionsWithOptions(runtime *dara.RuntimeOptions) (
 
 // Summary:
 //
-// Calls the DescribeRegions operation to retrieve the list of regions.
+// Queries the list of regions.
 //
 // @return DescribeRegionsResponse
 func (client *Client) DescribeRegions() (_result *DescribeRegionsResponse, _err error) {
@@ -10599,11 +10607,11 @@ func (client *Client) DescribeRegions() (_result *DescribeRegionsResponse, _err 
 
 // Summary:
 //
-// Queries the details of the replication lag inspection task for an instance.
+// Queries the details of the replication latency inspection task for an instance.
 //
 // Description:
 //
-// During the data synchronization phase, proactively initiates a diagnostic task for the replication task to check for exceptions such as latency, interruption, or data inconsistency.
+// During the data synchronization phase, proactively initiates a diagnostic task for the replication task to check for anomalies such as latency, interruption, and data inconsistency.
 //
 // @param request - DescribeRplInspectionTaskRequest
 //
@@ -10667,11 +10675,11 @@ func (client *Client) DescribeRplInspectionTaskWithOptions(request *DescribeRplI
 
 // Summary:
 //
-// Queries the details of the replication lag inspection task for an instance.
+// Queries the details of the replication latency inspection task for an instance.
 //
 // Description:
 //
-// During the data synchronization phase, proactively initiates a diagnostic task for the replication task to check for exceptions such as latency, interruption, or data inconsistency.
+// During the data synchronization phase, proactively initiates a diagnostic task for the replication task to check for anomalies such as latency, interruption, and data inconsistency.
 //
 // @param request - DescribeRplInspectionTaskRequest
 //
@@ -10689,7 +10697,7 @@ func (client *Client) DescribeRplInspectionTask(request *DescribeRplInspectionTa
 
 // Summary:
 //
-// Retrieves the progress of a scale-out migration task.
+// Displays the progress of a scale-out migration task.
 //
 // @param request - DescribeScaleOutMigrateTaskListRequest
 //
@@ -10753,7 +10761,7 @@ func (client *Client) DescribeScaleOutMigrateTaskListWithOptions(request *Descri
 
 // Summary:
 //
-// Retrieves the progress of a scale-out migration task.
+// Displays the progress of a scale-out migration task.
 //
 // @param request - DescribeScaleOutMigrateTaskListRequest
 //
@@ -10771,7 +10779,7 @@ func (client *Client) DescribeScaleOutMigrateTaskList(request *DescribeScaleOutM
 
 // Summary:
 //
-// Queries the IP whitelist of an instance.
+// Queries the IP address whitelists of an instance.
 //
 // @param request - DescribeSecurityIpsRequest
 //
@@ -10819,7 +10827,7 @@ func (client *Client) DescribeSecurityIpsWithOptions(request *DescribeSecurityIp
 
 // Summary:
 //
-// Queries the IP whitelist of an instance.
+// Queries the IP address whitelists of an instance.
 //
 // @param request - DescribeSecurityIpsRequest
 //
@@ -10911,7 +10919,7 @@ func (client *Client) DescribeServiceAccount(request *DescribeServiceAccountRequ
 
 // Summary:
 //
-// Queries the storage usage details of an instance, including total capacity, used space, and remaining space.
+// Queries the storage space usage details of an instance, including the total capacity, used space, and remaining space.
 //
 // @param request - DescribeShowStorageInfoRequest
 //
@@ -10963,7 +10971,7 @@ func (client *Client) DescribeShowStorageInfoWithOptions(request *DescribeShowSt
 
 // Summary:
 //
-// Queries the storage usage details of an instance, including total capacity, used space, and remaining space.
+// Queries the storage space usage details of an instance, including the total capacity, used space, and remaining space.
 //
 // @param request - DescribeShowStorageInfoRequest
 //
@@ -11075,11 +11083,11 @@ func (client *Client) DescribeSlowLogRecords(request *DescribeSlowLogRecordsRequ
 
 // Summary:
 //
-// Queries SQL audit information.
+// Retrieves SQL audit information.
 //
 // Description:
 //
-// > 	- The SQL audit and analysis feature of PolarDB-X 2.0 is free of charge. However, Simple Log Service charges fees for storage space, read traffic, number of requests, data transformation, and data delivery. For more information about the SQL audit feature, see [Enable SQL audit and analysis](https://help.aliyun.com/document_detail/184619.html).
+// > 	- The SQL audit and analysis feature of PolarDB-X 2.0 is free of charge. However, Simple Log Service charges fees for storage space, read traffic, number of requests, data transformation, and data shipping. For more information about the SQL audit feature, see [Enable SQL audit and analysis](https://help.aliyun.com/document_detail/184619.html).
 //
 // @param request - DescribeSqlAuditInfoRequest
 //
@@ -11135,11 +11143,11 @@ func (client *Client) DescribeSqlAuditInfoWithOptions(request *DescribeSqlAuditI
 
 // Summary:
 //
-// Queries SQL audit information.
+// Retrieves SQL audit information.
 //
 // Description:
 //
-// > 	- The SQL audit and analysis feature of PolarDB-X 2.0 is free of charge. However, Simple Log Service charges fees for storage space, read traffic, number of requests, data transformation, and data delivery. For more information about the SQL audit feature, see [Enable SQL audit and analysis](https://help.aliyun.com/document_detail/184619.html).
+// > 	- The SQL audit and analysis feature of PolarDB-X 2.0 is free of charge. However, Simple Log Service charges fees for storage space, read traffic, number of requests, data transformation, and data shipping. For more information about the SQL audit feature, see [Enable SQL audit and analysis](https://help.aliyun.com/document_detail/184619.html).
 //
 // @param request - DescribeSqlAuditInfoRequest
 //
@@ -11223,7 +11231,7 @@ func (client *Client) DescribeSqlFlashbackTaskList(request *DescribeSqlFlashback
 
 // Summary:
 //
-// Queries the details of a storage pool, including capacity, usage, and status.
+// Queries the details of storage pools, including capacity, usage, and status.
 //
 // @param request - DescribeStoragePoolInfoRequest
 //
@@ -11275,7 +11283,7 @@ func (client *Client) DescribeStoragePoolInfoWithOptions(request *DescribeStorag
 
 // Summary:
 //
-// Queries the details of a storage pool, including capacity, usage, and status.
+// Queries the details of storage pools, including capacity, usage, and status.
 //
 // @param request - DescribeStoragePoolInfoRequest
 //
@@ -11293,11 +11301,11 @@ func (client *Client) DescribeStoragePoolInfo(request *DescribeStoragePoolInfoRe
 
 // Summary:
 //
-// Queries the details of a database schema import task.
+// Queries the details of a database structure import task.
 //
 // Description:
 //
-// The CreateDataImportTask operation creates a data import task. This operation supports importing SQL or CSV files stored in OSS or ECS, or directly provided, into a destination database instance. By specifying the instance ID, database name, engine type, data source (such as an OSS path), and import type, the system performs data write operations asynchronously or synchronously. This operation is applicable to scenarios such as data migration, initialization, and data backfill. A task ID is returned for subsequent status queries and management.
+// The CreateDataImportTask operation creates a data import task. It supports importing SQL or CSV files stored in OSS, on ECS instances, or directly passed in the request into a target database instance. By specifying the instance ID, database name, engine type, data source (such as the OSS path), and import type, the system asynchronously or synchronously performs data write operations. This operation is applicable to scenarios such as data migration, initialization, and data backfilling. It returns a task ID for subsequent status query and management.
 //
 // @param request - DescribeStructureImportTaskInfoRequest
 //
@@ -11345,11 +11353,11 @@ func (client *Client) DescribeStructureImportTaskInfoWithOptions(request *Descri
 
 // Summary:
 //
-// Queries the details of a database schema import task.
+// Queries the details of a database structure import task.
 //
 // Description:
 //
-// The CreateDataImportTask operation creates a data import task. This operation supports importing SQL or CSV files stored in OSS or ECS, or directly provided, into a destination database instance. By specifying the instance ID, database name, engine type, data source (such as an OSS path), and import type, the system performs data write operations asynchronously or synchronously. This operation is applicable to scenarios such as data migration, initialization, and data backfill. A task ID is returned for subsequent status queries and management.
+// The CreateDataImportTask operation creates a data import task. It supports importing SQL or CSV files stored in OSS, on ECS instances, or directly passed in the request into a target database instance. By specifying the instance ID, database name, engine type, data source (such as the OSS path), and import type, the system asynchronously or synchronously performs data write operations. This operation is applicable to scenarios such as data migration, initialization, and data backfilling. It returns a task ID for subsequent status query and management.
 //
 // @param request - DescribeStructureImportTaskInfoRequest
 //
@@ -11373,9 +11381,9 @@ func (client *Client) DescribeStructureImportTaskInfo(request *DescribeStructure
 //
 // - Binary log files are retained for 15 days by default.
 //
-// - The returned log list includes all log records whose end time is after the query start time and whose start time is before the query end time.
+// - The returned log list includes all logs whose log record end time is after the query start time and whose log record start time is before the query end time.
 //
-// - If DownloadLink is not NULL, you can use this URL to download the backup file. This URL is valid for 2 days after it is generated. Download the file before it expires.
+// - If DownloadLink is not NULL, you can use this URL to download the backup file. The URL is valid for 2 days after it is generated. Download the file before it expires.
 //
 // @param request - DescribeSupabaseApiKeyRequest
 //
@@ -11429,9 +11437,9 @@ func (client *Client) DescribeSupabaseApiKeyWithOptions(request *DescribeSupabas
 //
 // - Binary log files are retained for 15 days by default.
 //
-// - The returned log list includes all log records whose end time is after the query start time and whose start time is before the query end time.
+// - The returned log list includes all logs whose log record end time is after the query start time and whose log record start time is before the query end time.
 //
-// - If DownloadLink is not NULL, you can use this URL to download the backup file. This URL is valid for 2 days after it is generated. Download the file before it expires.
+// - If DownloadLink is not NULL, you can use this URL to download the backup file. The URL is valid for 2 days after it is generated. Download the file before it expires.
 //
 // @param request - DescribeSupabaseApiKeyRequest
 //
@@ -11623,9 +11631,9 @@ func (client *Client) DescribeSupabaseInstances(request *DescribeSupabaseInstanc
 //
 // - Binary log files are retained for 15 days by default.
 //
-// - The returned log list includes all log records whose record end time is after the query start time and whose record start time is before the query end time.
+// - The returned log list includes all log records whose log record end time is after the query start time and whose log record start time is before the query end time.
 //
-// - If DownloadLink is not NULL, you can use this URL to download the backup file. The URL is valid for two days after it is generated. Download the file before it expires.
+// - If DownloadLink is not NULL, you can download the backup file by using this URL. The URL is valid for 2 days after it is generated. Download the file before it expires.
 //
 // @param request - DescribeSupabaseIpWhitelistRequest
 //
@@ -11683,9 +11691,9 @@ func (client *Client) DescribeSupabaseIpWhitelistWithOptions(request *DescribeSu
 //
 // - Binary log files are retained for 15 days by default.
 //
-// - The returned log list includes all log records whose record end time is after the query start time and whose record start time is before the query end time.
+// - The returned log list includes all log records whose log record end time is after the query start time and whose log record start time is before the query end time.
 //
-// - If DownloadLink is not NULL, you can use this URL to download the backup file. The URL is valid for two days after it is generated. Download the file before it expires.
+// - If DownloadLink is not NULL, you can download the backup file by using this URL. The URL is valid for 2 days after it is generated. Download the file before it expires.
 //
 // @param request - DescribeSupabaseIpWhitelistRequest
 //
@@ -11773,7 +11781,7 @@ func (client *Client) DescribeTags(request *DescribeTagsRequest) (_result *Descr
 
 // Summary:
 //
-// Retrieves the list of tasks for an instance.
+// Retrieves the task list of an instance.
 //
 // @param request - DescribeTasksRequest
 //
@@ -11853,7 +11861,7 @@ func (client *Client) DescribeTasksWithOptions(request *DescribeTasksRequest, ru
 
 // Summary:
 //
-// Retrieves the list of tasks for an instance.
+// Retrieves the task list of an instance.
 //
 // @param request - DescribeTasksRequest
 //
@@ -11871,7 +11879,7 @@ func (client *Client) DescribeTasks(request *DescribeTasksRequest) (_result *Des
 
 // Summary:
 //
-// Queries the current status of a task that upgrades or converts a standard instance to an Enterprise instance.
+// Queries the current status of an upgrade or conversion task from a standard instance to an enterprise instance.
 //
 // @param request - DescribeTransformStatusRequest
 //
@@ -11923,7 +11931,7 @@ func (client *Client) DescribeTransformStatusWithOptions(request *DescribeTransf
 
 // Summary:
 //
-// Queries the current status of a task that upgrades or converts a standard instance to an Enterprise instance.
+// Queries the current status of an upgrade or conversion task from a standard instance to an enterprise instance.
 //
 // @param request - DescribeTransformStatusRequest
 //
@@ -11941,7 +11949,7 @@ func (client *Client) DescribeTransformStatus(request *DescribeTransformStatusRe
 
 // Summary:
 //
-// Calls the DescribeUserEncryptionKeyList operation to retrieve the list of Transparent Data Encryption (TDE) keys for a user.
+// Retrieves the list of user TDE keys.
 //
 // @param request - DescribeUserEncryptionKeyListRequest
 //
@@ -11989,7 +11997,7 @@ func (client *Client) DescribeUserEncryptionKeyListWithOptions(request *Describe
 
 // Summary:
 //
-// Calls the DescribeUserEncryptionKeyList operation to retrieve the list of Transparent Data Encryption (TDE) keys for a user.
+// Retrieves the list of user TDE keys.
 //
 // @param request - DescribeUserEncryptionKeyListRequest
 //
@@ -12085,7 +12093,7 @@ func (client *Client) DisableOpenSearchPublicEndpoint(request *DisableOpenSearch
 
 // Summary:
 //
-// Disables three-role mode.
+// Disables the three-role mode.
 //
 // @param request - DisableRightsSeparationRequest
 //
@@ -12141,7 +12149,7 @@ func (client *Client) DisableRightsSeparationWithOptions(request *DisableRightsS
 
 // Summary:
 //
-// Disables three-role mode.
+// Disables the three-role mode.
 //
 // @param request - DisableRightsSeparationRequest
 //
@@ -12241,7 +12249,7 @@ func (client *Client) DisableSqlAudit(request *DisableSqlAuditRequest) (_result 
 
 // Summary:
 //
-// Enables public network access for PolarDBX Search.
+// Enables public network access for PolarDB-X Search.
 //
 // Description:
 //
@@ -12297,7 +12305,7 @@ func (client *Client) EnableOpenSearchPublicEndpointWithOptions(request *EnableO
 
 // Summary:
 //
-// Enables public network access for PolarDBX Search.
+// Enables public network access for PolarDB-X Search.
 //
 // Description:
 //
@@ -12319,7 +12327,7 @@ func (client *Client) EnableOpenSearchPublicEndpoint(request *EnableOpenSearchPu
 
 // Summary:
 //
-// Enables three-role mode.
+// Enables the three-role mode.
 //
 // @param request - EnableRightsSeparationRequest
 //
@@ -12391,7 +12399,7 @@ func (client *Client) EnableRightsSeparationWithOptions(request *EnableRightsSep
 
 // Summary:
 //
-// Enables three-role mode.
+// Enables the three-role mode.
 //
 // @param request - EnableRightsSeparationRequest
 //
@@ -12499,7 +12507,7 @@ func (client *Client) EnableSqlAudit(request *EnableSqlAuditRequest) (_result *E
 //
 // Description:
 //
-// Deletes the custom endpoint of a specified database instance and disables access through the domain name.
+// Deletes the custom endpoint of a specified database instance and disables access to the domain name.
 //
 // @param request - ExecuteMetaQueryRequest
 //
@@ -12563,7 +12571,7 @@ func (client *Client) ExecuteMetaQueryWithOptions(request *ExecuteMetaQueryReque
 //
 // Description:
 //
-// Deletes the custom endpoint of a specified database instance and disables access through the domain name.
+// Deletes the custom endpoint of a specified database instance and disables access to the domain name.
 //
 // @param request - ExecuteMetaQueryRequest
 //
@@ -12581,7 +12589,81 @@ func (client *Client) ExecuteMetaQuery(request *ExecuteMetaQueryRequest) (_resul
 
 // Summary:
 //
-// Retrieves a list of labels.
+// Queries the PXFS tenants.
+//
+// Description:
+//
+// Queries the PXFS tenants of a specified PolarDB-X instance and returns the quota, throttling, and usage information of the tenants.
+//
+// @param request - ListPxfsTenantsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListPxfsTenantsResponse
+func (client *Client) ListPxfsTenantsWithOptions(request *ListPxfsTenantsRequest, runtime *dara.RuntimeOptions) (_result *ListPxfsTenantsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DBInstanceName) {
+		query["DBInstanceName"] = request.DBInstanceName
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListPxfsTenants"),
+		Version:     dara.String("2020-02-02"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListPxfsTenantsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the PXFS tenants.
+//
+// Description:
+//
+// Queries the PXFS tenants of a specified PolarDB-X instance and returns the quota, throttling, and usage information of the tenants.
+//
+// @param request - ListPxfsTenantsRequest
+//
+// @return ListPxfsTenantsResponse
+func (client *Client) ListPxfsTenants(request *ListPxfsTenantsRequest) (_result *ListPxfsTenantsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ListPxfsTenantsResponse{}
+	_body, _err := client.ListPxfsTenantsWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Retrieves a list of tags.
 //
 // @param request - ListTagResourcesRequest
 //
@@ -12641,7 +12723,7 @@ func (client *Client) ListTagResourcesWithOptions(request *ListTagResourcesReque
 
 // Summary:
 //
-// Retrieves a list of labels.
+// Retrieves a list of tags.
 //
 // @param request - ListTagResourcesRequest
 //
@@ -14241,7 +14323,7 @@ func (client *Client) ModifyEngineMigration(request *ModifyEngineMigrationReques
 
 // Summary:
 //
-// Modifies the whitelist of a memory engine.
+// Modifies the memory engine whitelist.
 //
 // Description:
 //
@@ -14305,7 +14387,7 @@ func (client *Client) ModifyMem0SecurityIpsWithOptions(request *ModifyMem0Securi
 
 // Summary:
 //
-// Modifies the whitelist of a memory engine.
+// Modifies the memory engine whitelist.
 //
 // Description:
 //
@@ -14405,7 +14487,7 @@ func (client *Client) ModifyOpenSearchAccessProtocol(request *ModifyOpenSearchAc
 
 // Summary:
 //
-// Modifies the specifications of a PolarDBX Search instance.
+// Modifies the specifications of a PolarDB-X Search instance.
 //
 // Description:
 //
@@ -14465,7 +14547,7 @@ func (client *Client) ModifyOpenSearchClassWithOptions(request *ModifyOpenSearch
 
 // Summary:
 //
-// Modifies the specifications of a PolarDBX Search instance.
+// Modifies the specifications of a PolarDB-X Search instance.
 //
 // Description:
 //
@@ -14655,11 +14737,11 @@ func (client *Client) ModifyParameter(request *ModifyParameterRequest) (_result 
 
 // Summary:
 //
-// Modifies the whitelist of the Agent file service.
+// Modifies the whitelist for the Agent file service.
 //
 // Description:
 //
-// Modifies the whitelist of the Agent file service.
+// Modifies the whitelist for the Agent file service.
 //
 // @param request - ModifyPxfsSecurityIpsRequest
 //
@@ -14719,11 +14801,11 @@ func (client *Client) ModifyPxfsSecurityIpsWithOptions(request *ModifyPxfsSecuri
 
 // Summary:
 //
-// Modifies the whitelist of the Agent file service.
+// Modifies the whitelist for the Agent file service.
 //
 // Description:
 //
-// Modifies the whitelist of the Agent file service.
+// Modifies the whitelist for the Agent file service.
 //
 // @param request - ModifyPxfsSecurityIpsRequest
 //
@@ -14741,7 +14823,101 @@ func (client *Client) ModifyPxfsSecurityIps(request *ModifyPxfsSecurityIpsReques
 
 // Summary:
 //
-// Modifies the PXFuse node whitelist.
+// Adjusts the quotas of a PXFS tenant.
+//
+// Description:
+//
+// Adjusts the storage capacity quota, file count quota, maximum request rate, and maximum write bandwidth of a specified PXFS tenant. Parameters that are not passed remain unchanged.
+//
+// @param request - ModifyPxfsTenantQuotaRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyPxfsTenantQuotaResponse
+func (client *Client) ModifyPxfsTenantQuotaWithOptions(request *ModifyPxfsTenantQuotaRequest, runtime *dara.RuntimeOptions) (_result *ModifyPxfsTenantQuotaResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DBInstanceName) {
+		query["DBInstanceName"] = request.DBInstanceName
+	}
+
+	if !dara.IsNil(request.QuotaBytes) {
+		query["QuotaBytes"] = request.QuotaBytes
+	}
+
+	if !dara.IsNil(request.QuotaFiles) {
+		query["QuotaFiles"] = request.QuotaFiles
+	}
+
+	if !dara.IsNil(request.RateLimitRps) {
+		query["RateLimitRps"] = request.RateLimitRps
+	}
+
+	if !dara.IsNil(request.RateLimitWbps) {
+		query["RateLimitWbps"] = request.RateLimitWbps
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.TenantId) {
+		query["TenantId"] = request.TenantId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ModifyPxfsTenantQuota"),
+		Version:     dara.String("2020-02-02"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ModifyPxfsTenantQuotaResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Adjusts the quotas of a PXFS tenant.
+//
+// Description:
+//
+// Adjusts the storage capacity quota, file count quota, maximum request rate, and maximum write bandwidth of a specified PXFS tenant. Parameters that are not passed remain unchanged.
+//
+// @param request - ModifyPxfsTenantQuotaRequest
+//
+// @return ModifyPxfsTenantQuotaResponse
+func (client *Client) ModifyPxfsTenantQuota(request *ModifyPxfsTenantQuotaRequest) (_result *ModifyPxfsTenantQuotaResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ModifyPxfsTenantQuotaResponse{}
+	_body, _err := client.ModifyPxfsTenantQuotaWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Modifies the whitelist of a PXFuse node.
 //
 // Description:
 //
@@ -14805,7 +14981,7 @@ func (client *Client) ModifyPxfuseSecurityIpsWithOptions(request *ModifyPxfuseSe
 
 // Summary:
 //
-// Modifies the PXFuse node whitelist.
+// Modifies the whitelist of a PXFuse node.
 //
 // Description:
 //
@@ -14905,7 +15081,7 @@ func (client *Client) ModifySecurityIps(request *ModifySecurityIpsRequest) (_res
 
 // Summary:
 //
-// Modifies the Supabase Dashboard password.
+// Modifies the password for the Supabase dashboard.
 //
 // Description:
 //
@@ -14961,7 +15137,7 @@ func (client *Client) ModifySupabaseDashboardPasswordWithOptions(request *Modify
 
 // Summary:
 //
-// Modifies the Supabase Dashboard password.
+// Modifies the password for the Supabase dashboard.
 //
 // Description:
 //
@@ -14983,7 +15159,7 @@ func (client *Client) ModifySupabaseDashboardPassword(request *ModifySupabaseDas
 
 // Summary:
 //
-// Modifies the IP whitelist for Supabase.
+// Modifies the Supabase IP whitelist.
 //
 // Description:
 //
@@ -15047,7 +15223,7 @@ func (client *Client) ModifySupabaseSecurityIPListWithOptions(request *ModifySup
 
 // Summary:
 //
-// Modifies the IP whitelist for Supabase.
+// Modifies the Supabase IP whitelist.
 //
 // Description:
 //
@@ -15466,11 +15642,11 @@ func (client *Client) ReleaseColdDataVolume(request *ReleaseColdDataVolumeReques
 
 // Summary:
 //
-// Shuts down the public network connection of a specified physical ReplicaSet for the context service.
+// Initiates a shutdown of the public network connection for a specified physical ReplicaSet of the context service.
 //
 // Description:
 //
-// This operation is used to confirm that no active connections exist before a rollback task, ensuring operation safety.
+// This API operation confirms that no active connections exist before a rollback task to ensure operational security.
 //
 // @param request - ReleaseContext0PublicConnectionRequest
 //
@@ -15526,11 +15702,11 @@ func (client *Client) ReleaseContext0PublicConnectionWithOptions(request *Releas
 
 // Summary:
 //
-// Shuts down the public network connection of a specified physical ReplicaSet for the context service.
+// Initiates a shutdown of the public network connection for a specified physical ReplicaSet of the context service.
 //
 // Description:
 //
-// This operation is used to confirm that no active connections exist before a rollback task, ensuring operation safety.
+// This API operation confirms that no active connections exist before a rollback task to ensure operational security.
 //
 // @param request - ReleaseContext0PublicConnectionRequest
 //
@@ -15704,7 +15880,7 @@ func (client *Client) ReleaseInstancePublicConnection(request *ReleaseInstancePu
 //
 // Description:
 //
-// This operation is used to verify that no active connections exist before a rollback task to ensure operational safety.
+// This operation verifies that no active connections exist before a rollback task to ensure operational security.
 //
 // @param request - ReleaseMem0PublicConnectionRequest
 //
@@ -15760,7 +15936,7 @@ func (client *Client) ReleaseMem0PublicConnectionWithOptions(request *ReleaseMem
 //
 // Description:
 //
-// This operation is used to verify that no active connections exist before a rollback task to ensure operational safety.
+// This operation verifies that no active connections exist before a rollback task to ensure operational security.
 //
 // @param request - ReleaseMem0PublicConnectionRequest
 //
@@ -16102,7 +16278,7 @@ func (client *Client) ResetMem0AccountPassword(request *ResetMem0AccountPassword
 
 // Summary:
 //
-// Resets the password of a PolarDB-X Search instance without requiring the old password (RAM permission check required).
+// Resets the password of a PolarDB-X Search instance without requiring the old password. RAM permission verification is required.
 //
 // Description:
 //
@@ -16162,7 +16338,7 @@ func (client *Client) ResetOpenSearchPasswordWithOptions(request *ResetOpenSearc
 
 // Summary:
 //
-// Resets the password of a PolarDB-X Search instance without requiring the old password (RAM permission check required).
+// Resets the password of a PolarDB-X Search instance without requiring the old password. RAM permission verification is required.
 //
 // Description:
 //
@@ -16818,7 +16994,7 @@ func (client *Client) RevokePxfsAccessToken(request *RevokePxfsAccessTokenReques
 
 // Summary:
 //
-// Scales in nodes of a PolarDB-X Search cluster.
+// Scales down nodes in a PolarDB-X Search cluster.
 //
 // Description:
 //
@@ -16874,7 +17050,7 @@ func (client *Client) ScaleInOpenSearchWithOptions(request *ScaleInOpenSearchReq
 
 // Summary:
 //
-// Scales in nodes of a PolarDB-X Search cluster.
+// Scales down nodes in a PolarDB-X Search cluster.
 //
 // Description:
 //
@@ -17560,7 +17736,7 @@ func (client *Client) TagResources(request *TagResourcesRequest) (_result *TagRe
 
 // Summary:
 //
-// Deletes tags from a resource.
+// Removes tags from resources.
 //
 // @param request - UntagResourcesRequest
 //
@@ -17620,7 +17796,7 @@ func (client *Client) UntagResourcesWithOptions(request *UntagResourcesRequest, 
 
 // Summary:
 //
-// Deletes tags from a resource.
+// Removes tags from resources.
 //
 // @param request - UntagResourcesRequest
 //
@@ -17780,7 +17956,7 @@ func (client *Client) UpdateBackupPolicy(request *UpdateBackupPolicyRequest) (_r
 
 // Summary:
 //
-// Updates instance labels.
+// Modifies instance labels.
 //
 // Description:
 //
@@ -17840,7 +18016,7 @@ func (client *Client) UpdateCustinsParamWithOptions(request *UpdateCustinsParamR
 
 // Summary:
 //
-// Updates instance labels.
+// Modifies instance labels.
 //
 // Description:
 //
@@ -18108,7 +18284,7 @@ func (client *Client) UpdatePolarDBXInstanceNode(request *UpdatePolarDBXInstance
 
 // Summary:
 //
-// Upgrades the CDC node version of a PolarDB-X instance.
+// Upgrades the version of a PolarDB-X CDC node.
 //
 // @param request - UpgradeCDCVersionRequest
 //
@@ -18172,7 +18348,7 @@ func (client *Client) UpgradeCDCVersionWithOptions(request *UpgradeCDCVersionReq
 
 // Summary:
 //
-// Upgrades the CDC node version of a PolarDB-X instance.
+// Upgrades the version of a PolarDB-X CDC node.
 //
 // @param request - UpgradeCDCVersionRequest
 //

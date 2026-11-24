@@ -30,13 +30,13 @@ type EnableOpenSearchPublicEndpointResponseBody struct {
   // 
   // https://sddp-datamask.oss-cn-zhangjiakou.aliyuncs.com
   Host *string `json:"Host,omitempty" xml:"Host,omitempty"`
-  // The additional information returned by the operation. "success" is returned if the operation is successful. Otherwise, the corresponding error code is returned.
+  // The additional information returned by the API operation. If the request is successful, success is returned. If an error occurs, the corresponding error code is returned.
   // 
   // example:
   // 
-  // *****
+  // success
   Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-  // The public endpoint port.
+  // The port of the public endpoint.
   // 
   // example:
   // 
@@ -117,15 +117,15 @@ type EnableOpenSearchPublicEndpointResponseBodyAccessDeniedDetail struct {
   // 
   // example:
   // 
-  // xxx
+  // polardbx:EnableOpenSearchPublicEndpoint
   AuthAction *string `json:"AuthAction,omitempty" xml:"AuthAction,omitempty"`
   // The display name of the authentication principal.
   // 
   // example:
   // 
-  // xxx
+  // Sample RAM user
   AuthPrincipalDisplayName *string `json:"AuthPrincipalDisplayName,omitempty" xml:"AuthPrincipalDisplayName,omitempty"`
-  // The description is the same as above.
+  // The description is as described above.
   // 
   // example:
   // 

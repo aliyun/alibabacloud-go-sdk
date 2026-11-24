@@ -32,7 +32,7 @@ type DescribeColumnarClassListRequest struct {
 	//
 	// pxc-shrvdc****wtf5uk-cdc
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	// The region in which the instance resides.
+	// The region where the instance is located.
 	//
 	// This parameter is required.
 	//

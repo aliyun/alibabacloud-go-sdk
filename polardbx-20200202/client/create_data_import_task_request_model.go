@@ -34,23 +34,23 @@ type iCreateDataImportTaskRequest interface {
 }
 
 type CreateDataImportTaskRequest struct {
-	// The instance ID. > You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/196830.html) operation to query the details of all instances in the target region, including instance IDs.
+	// The instance ID. > You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/196830.html) operation to query the details of all instances in the destination region, including instance IDs.
 	//
 	// example:
 	//
 	// pxc-********
 	DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
-	// The execution status of the target SQL import. Valid values: 	- **importing**: importing. 	- **success**: import succeeded. 	- **fail**: import failed.
+	// The execution environment for importing the destination SQL. Valid values: **importing**: Importing. **success**: Import succeeded. **fail**: Import failed.
 	//
 	// example:
 	//
 	// transfer_test3
 	DstDb *string `json:"DstDb,omitempty" xml:"DstDb,omitempty"`
-	// The password of the privileged account for the target ApsaraDB RDS instance. > 	- You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/196830.html) operation to query the privileged account information of the target instance, including the password. 	- This parameter takes effect only when DstPassword is set to true.
+	// The password of the privileged account of the destination ApsaraDB RDS instance. This parameter takes effect only when [unk]dstpassword=true[unk].
 	//
 	// example:
 	//
-	// ******
+	// DemoPass1@
 	DstPassword *string `json:"DstPassword,omitempty" xml:"DstPassword,omitempty"`
 	// The migration task ID.
 	//
@@ -58,13 +58,13 @@ type CreateDataImportTaskRequest struct {
 	//
 	// pxc-shr8****k36vrn
 	DstResId *string `json:"DstResId,omitempty" xml:"DstResId,omitempty"`
-	// The username of the target instance.
+	// The destination username.
 	//
 	// example:
 	//
 	// bbt_cms_prod
 	DstUserName *string `json:"DstUserName,omitempty" xml:"DstUserName,omitempty"`
-	// The region where the instance resides. > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196841.html) operation to query the regions supported by PolarDB-X, including region IDs.
+	// The region where the instance resides. > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196841.html) operation to query the details of regions supported by PolarDB-X, including region IDs.
 	//
 	// This parameter is required.
 	//
@@ -80,25 +80,25 @@ type CreateDataImportTaskRequest struct {
 	//
 	// etx-szr2rr6i*****
 	SlinkTaskId *string `json:"SlinkTaskId,omitempty" xml:"SlinkTaskId,omitempty"`
-	// The database information of the migration source when the source database is ApsaraDB RDS for MySQL. > The source database must be consistent with the target database.
+	// The database information of the migration source when the source database is ApsaraDB RDS for MySQL. > The source database must be consistent with the destination database.
 	//
 	// example:
 	//
 	// transfer_for_st
 	SrcDb *string `json:"SrcDb,omitempty" xml:"SrcDb,omitempty"`
-	// The read/write mode for executing the import task on the source instance. Valid values: 	- **rw**: read/write. 	- **ro**: read-only.
+	// The read/write mode for executing the import task on the source end. Valid values: **rw**: Read and write. **ro**: Read-only.
 	//
 	// example:
 	//
-	// ******
+	// rw
 	SrcPassword *string `json:"SrcPassword,omitempty" xml:"SrcPassword,omitempty"`
-	// The ID of the source ApsaraDB RDS instance. > You can call the [DescribeDrivingAccess](https://help.aliyun.com/document_detail/196830.html) operation to query the details of all source ApsaraDB RDS instances in the target region, including instance IDs.
+	// The source ApsaraDB RDS instance ID. > You can call the [DescribeDrivingAccess](https://help.aliyun.com/document_detail/196830.html) operation to query the details of all source ApsaraDB RDS instances in the destination region, including instance IDs.
 	//
 	// example:
 	//
 	// pxc-shrnv****kh87z
 	SrcResId *string `json:"SrcResId,omitempty" xml:"SrcResId,omitempty"`
-	// The username of the source instance.
+	// The source username.
 	//
 	// example:
 	//

@@ -80,17 +80,17 @@ func (s *CreateContextDBResponseBody) Validate() error {
 }
 
 type CreateContextDBResponseBodyAccessDeniedDetail struct {
-	// As described above.
+	// The description as above.
 	//
 	// example:
 	//
-	// xxx
+	// polardbx:CreateContextDB
 	AuthAction *string `json:"AuthAction,omitempty" xml:"AuthAction,omitempty"`
 	// The display name of the authentication principal.
 	//
 	// example:
 	//
-	// xxx
+	// Sample RAM user
 	AuthPrincipalDisplayName *string `json:"AuthPrincipalDisplayName,omitempty" xml:"AuthPrincipalDisplayName,omitempty"`
 	// The owner ID of the authentication principal.
 	//
@@ -218,7 +218,7 @@ type CreateContextDBResponseBodyData struct {
 	//
 	// pxc-*********
 	DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
-	// The name of the context service dashboard instance.
+	// The name of the context service dashboard replica set.
 	//
 	// example:
 	//
@@ -230,7 +230,7 @@ type CreateContextDBResponseBodyData struct {
 	//
 	// pxs-*********
 	OpenSearchInstanceName *string `json:"OpenSearchInstanceName,omitempty" xml:"OpenSearchInstanceName,omitempty"`
-	// The name of the context service service instance.
+	// The name of the context service replica set.
 	//
 	// example:
 	//

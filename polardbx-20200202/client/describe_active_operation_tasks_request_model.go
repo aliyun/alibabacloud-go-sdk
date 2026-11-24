@@ -36,13 +36,13 @@ type iDescribeActiveOperationTasksRequest interface {
 }
 
 type DescribeActiveOperationTasksRequest struct {
-	// Specifies whether the event can be canceled. Valid values:
+	// Specifies whether cancellation is allowed. Valid values:
 	//
-	// - **-1**: All O&M events can be canceled.
+	// - **-1**: allows canceling all O&M events
 	//
-	// - **0**: The event cannot be canceled.
+	// - **0**: not allowed
 	//
-	// - **1**: The event can be canceled.
+	// - **1**: allowed
 	//
 	// example:
 	//
@@ -50,11 +50,11 @@ type DescribeActiveOperationTasksRequest struct {
 	AllowCancel *int64 `json:"AllowCancel,omitempty" xml:"AllowCancel,omitempty"`
 	// Specifies whether the time can be modified. Valid values:
 	//
-	// - **-1**: The time of all O&M events can be modified.
+	// - **-1**: allows modifying the time of all O&M events
 	//
-	// - **0**: The time cannot be modified.
+	// - **0**: not allowed
 	//
-	// - **1**: The time can be modified.
+	// - **1**: allowed
 	//
 	// example:
 	//
@@ -62,9 +62,9 @@ type DescribeActiveOperationTasksRequest struct {
 	AllowChange *int64 `json:"AllowChange,omitempty" xml:"AllowChange,omitempty"`
 	// The change level. Default value: all. Valid values:
 	//
-	// - **all**: all exception fix and system O&M levels
+	// - **all**: all anomaly fix and system O&M levels
 	//
-	// - **S0**: exception fix
+	// - **S0**: anomaly fix
 	//
 	// - **S1**: system O&M
 	//
@@ -128,7 +128,7 @@ type DescribeActiveOperationTasksRequest struct {
 	//
 	// -1
 	Status *int64 `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The task type. Set the value to all to query all tasks under the current account.
+	// The task type. Set the value to all to query all tasks of the current user.
 	//
 	// example:
 	//

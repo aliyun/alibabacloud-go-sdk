@@ -38,7 +38,7 @@ type DescribeDBInstancesRequest struct {
 	//
 	// 5.5
 	DbVersion *string `json:"DbVersion,omitempty" xml:"DbVersion,omitempty"`
-	// The description or remark of the database.
+	// The description or remarks of the database.
 	//
 	// example:
 	//

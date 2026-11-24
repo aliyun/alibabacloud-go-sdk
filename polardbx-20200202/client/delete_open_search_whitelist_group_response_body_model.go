@@ -84,13 +84,13 @@ type DeleteOpenSearchWhitelistGroupResponseBodyAccessDeniedDetail struct {
 	//
 	// example:
 	//
-	// xxx
+	// polardbx:DeleteOpenSearchWhitelistGroup
 	AuthAction *string `json:"AuthAction,omitempty" xml:"AuthAction,omitempty"`
 	// The display name of the authentication principal.
 	//
 	// example:
 	//
-	// xxx
+	// Sample RAM user
 	AuthPrincipalDisplayName *string `json:"AuthPrincipalDisplayName,omitempty" xml:"AuthPrincipalDisplayName,omitempty"`
 	// The owner ID of the authentication principal.
 	//
@@ -104,7 +104,7 @@ type DeleteOpenSearchWhitelistGroupResponseBodyAccessDeniedDetail struct {
 	//
 	// 222
 	AuthPrincipalType *string `json:"AuthPrincipalType,omitempty" xml:"AuthPrincipalType,omitempty"`
-	// The diagnostic information.
+	// The diagnostic message.
 	//
 	// example:
 	//
@@ -200,7 +200,7 @@ func (s *DeleteOpenSearchWhitelistGroupResponseBodyAccessDeniedDetail) Validate(
 }
 
 type DeleteOpenSearchWhitelistGroupResponseBodyData struct {
-	// The response message. "success" is returned if the request is successful. Otherwise, the corresponding error code is returned.
+	// The returned message. If the request is successful, success is returned. If the request fails, the corresponding error code is returned.
 	//
 	// example:
 	//

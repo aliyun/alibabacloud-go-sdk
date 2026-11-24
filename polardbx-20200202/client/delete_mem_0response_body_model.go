@@ -18,7 +18,7 @@ type iDeleteMem0ResponseBody interface {
 }
 
 type DeleteMem0ResponseBody struct {
-	// The detailed cause of the access denial.
+	// The detailed reasons for the access denial.
 	AccessDeniedDetail *DeleteMem0ResponseBodyAccessDeniedDetail `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty" type:"Struct"`
 	// The returned data.
 	Data *DeleteMem0ResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
@@ -104,7 +104,7 @@ type DeleteMem0ResponseBodyAccessDeniedDetail struct {
 	//
 	// SubUser
 	AuthPrincipalType *string `json:"AuthPrincipalType,omitempty" xml:"AuthPrincipalType,omitempty"`
-	// The diagnostic information.
+	// The diagnostic message.
 	//
 	// example:
 	//
@@ -204,7 +204,7 @@ type DeleteMem0ResponseBodyData struct {
 	//
 	// example:
 	//
-	// ******
+	// 2209883
 	TaskId *int32 `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 }
 

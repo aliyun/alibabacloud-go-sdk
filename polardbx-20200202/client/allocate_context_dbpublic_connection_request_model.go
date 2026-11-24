@@ -36,19 +36,19 @@ type AllocateContextDBPublicConnectionRequest struct {
 	//
 	// pxc-xxx
 	DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
-	// The type of the target node. Valid values: service and dashboard.
+	// The target node type. Valid values: service and dashboard.
 	//
 	// example:
 	//
 	// service
 	NodeType *string `json:"NodeType,omitempty" xml:"NodeType,omitempty"`
-	// The port.
+	// The port number.
 	//
 	// example:
 	//
 	// 3306
 	Port *string `json:"Port,omitempty" xml:"Port,omitempty"`
-	// The region in which the instance resides.
+	// The region ID.
 	//
 	// This parameter is required.
 	//

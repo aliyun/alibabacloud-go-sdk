@@ -22,13 +22,13 @@ type iDescribeDBInstanceEndpointResponseBody interface {
 type DescribeDBInstanceEndpointResponseBody struct {
 	// The monitoring data.
 	Data *DescribeDBInstanceEndpointResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The number of entries per page for a paged query. Maximum value: 100. Default value: If the value is not specified or is less than 10, the default value is 10. If the value is greater than 100, the default value is 100.
+	// The number of entries to return on each page in a paged query. Maximum value: 100. Default value: 10. If you do not specify a value in Settings or the specified value is less than 10, the default value 10 is used for paging. If the specified value is greater than 100, the default value 100 is used.
 	//
 	// example:
 	//
 	// 1000
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The token for the next query.
+	// The token used to start the next query.
 	//
 	// example:
 	//
@@ -96,7 +96,7 @@ func (s *DescribeDBInstanceEndpointResponseBody) Validate() error {
 }
 
 type DescribeDBInstanceEndpointResponseBodyData struct {
-	// The internal connection type. The value is fixed as 1, which indicates the classic network.
+	// The internal connection method. Fixed value: 1, which indicates the classic network.
 	Items []*DescribeDBInstanceEndpointResponseBodyDataItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
 }
 
@@ -188,7 +188,7 @@ type DescribeDBInstanceEndpointResponseBodyDataItemsEndpoint struct {
 	//
 	// 10.21.1.82
 	Address *string `json:"Address,omitempty" xml:"Address,omitempty"`
-	// The instance specification type (specification code).
+	// The instance type (instance type code).
 	//
 	// example:
 	//
@@ -198,47 +198,39 @@ type DescribeDBInstanceEndpointResponseBodyDataItemsEndpoint struct {
 	//
 	// example:
 	//
-	// epg-bp14wgzai7flglwdtkxfa
+	// 123456
 	EndpointGroupId *int64 `json:"EndpointGroupId,omitempty" xml:"EndpointGroupId,omitempty"`
-	// The logical node ID.
+	// The ID of the logical node.
 	//
 	// example:
 	//
 	// 2899
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// Indicates whether this is the default vSwitch.
+	// Indicates whether the vSwitch is the default vSwitch.
 	//
 	// example:
 	//
 	// True
 	IsDefault *bool `json:"IsDefault,omitempty" xml:"IsDefault,omitempty"`
-	// The payload type. Valid values:
-	//
-	// - agentTurn: agent conversation.
-	//
-	// - systemEvent: system event.
+	// The payload type. Valid values: `agentTurn` (agent conversation) and `systemEvent` (system event).
 	//
 	// example:
 	//
 	// instance
 	Kind *string `json:"Kind,omitempty" xml:"Kind,omitempty"`
-	// The network type of the endpoint. Valid values:
+	// The network type of the connection string. Valid values:
 	//
-	// 	- **Public**: public endpoint.
+	// 	- **Public**: public network address.
 	//
-	// 	- **Private**: private endpoint.
+	// 	- **Private**: private network address.
 	//
-	// 	- **Inner**: private endpoint (classic network).
+	// 	- **Inner**: private network address (classic network).
 	//
 	// example:
 	//
 	// VPC
 	NetType *string `json:"NetType,omitempty" xml:"NetType,omitempty"`
-	// The read/write type. Valid values:
-	//
-	// - ReadWrite: row store read/write.
-	//
-	// - ColumnarRead: column store read-only.
+	// The read/write type. Valid values: ReadWrite (row store read/write) and ColumnarRead (column store read-only).
 	//
 	// example:
 	//
@@ -266,7 +258,7 @@ type DescribeDBInstanceEndpointResponseBodyDataItemsEndpoint struct {
 	//
 	// TXT
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// Indicates whether the endpoint is visible to the user.
+	// Indicates whether the endpoint is visible to users.
 	UserVisible *bool `json:"UserVisible,omitempty" xml:"UserVisible,omitempty"`
 	// The vSwitch ID.
 	//
@@ -274,13 +266,13 @@ type DescribeDBInstanceEndpointResponseBodyDataItemsEndpoint struct {
 	//
 	// vsw-2ze51hh6s8tsjgy19g5eu
 	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	// The IP address of the Anti-DDoS Pro or Anti-DDoS Premium instance protected by the policy.
+	// The IP address of the Anti-DDoS instance protected by the policy.
 	//
 	// example:
 	//
 	// http://100.100.100.200/latest/meta-data
 	Vip *string `json:"Vip,omitempty" xml:"Vip,omitempty"`
-	// The ID of the VPC in which the endpoint resides.
+	// The ID of the VPC where the endpoint resides.
 	//
 	// example:
 	//
@@ -290,7 +282,7 @@ type DescribeDBInstanceEndpointResponseBodyDataItemsEndpoint struct {
 	//
 	// example:
 	//
-	// vport
+	// 80
 	Vport *int64 `json:"Vport,omitempty" xml:"Vport,omitempty"`
 	// The zone ID.
 	//
@@ -466,13 +458,13 @@ func (s *DescribeDBInstanceEndpointResponseBodyDataItemsEndpoint) Validate() err
 }
 
 type DescribeDBInstanceEndpointResponseBodyDataItemsRealServer struct {
-	// Indicates whether the node is enabled. For the compute layer, only the primary zone node is enabled. After a primary/secondary switchover, the standby compute node becomes the primary node. All storage layer nodes are enabled.
+	// Indicates whether the node is enabled. In the compute layer, only nodes in the primary zone are enabled. After a primary/secondary switchover is performed on the instance, the secondary node in the compute layer is switched to the primary node. All nodes in the storage layer are enabled.
 	//
 	// example:
 	//
 	// False
 	Activated *bool `json:"Activated,omitempty" xml:"Activated,omitempty"`
-	// The instance specification type (specification code).
+	// The instance type (instance type code).
 	//
 	// example:
 	//
@@ -484,7 +476,7 @@ type DescribeDBInstanceEndpointResponseBodyDataItemsRealServer struct {
 	//
 	// 172.29.32.166
 	Ip *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
-	// The port number.
+	// The connection port number.
 	//
 	// example:
 	//
@@ -494,17 +486,17 @@ type DescribeDBInstanceEndpointResponseBodyDataItemsRealServer struct {
 	//
 	// example:
 	//
-	// 节点id
+	// 123456
 	ReplicaId *int64 `json:"ReplicaId,omitempty" xml:"ReplicaId,omitempty"`
 	// The weight of the destination route.
 	//
-	// - For VPN gateway instances that support the dual-tunnel mode for IPsec-VPN connections, the weight of the destination route is **100*	- by default and has no practical significance.
+	// - For VPN gateway instances that support the dual-tunnel mode for IPsec-VPN connections, the default weight of the destination route is **100**, which has no actual significance.
 	//
-	// - For VPN gateway instances that support the single-tunnel mode for IPsec-VPN connections, the weight represents the priority of the destination route:
+	// - For VPN gateway instances that support the single-tunnel mode for IPsec-VPN connections, the weight of the destination route indicates the priority of the destination route:
 	//
-	//     - **100**: high priority. If multiple destination routes have the same destination CIDR block, the IPsec-VPN connection associated with this route serves as the active link.
+	//     - **100**: high priority. If multiple destination routes have the same destination CIDR block, the IPsec-VPN connection associated with this destination route serves as the primary link.
 	//
-	//     - **0**: low priority. If multiple destination routes have the same destination CIDR block, the IPsec-VPN connection associated with this route serves as the standby link.
+	//     - **0**: low priority. If multiple destination routes have the same destination CIDR block, the IPsec-VPN connection associated with this destination route serves as the secondary link.
 	//
 	// example:
 	//

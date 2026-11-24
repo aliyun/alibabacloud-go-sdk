@@ -24,7 +24,7 @@ type CreateSupabaseNetTypeRequest struct {
 	//
 	// pxsp-*********
 	ConnectionString *string `json:"ConnectionString,omitempty" xml:"ConnectionString,omitempty"`
-	// The instance name.
+	// The name of the instance.
 	//
 	// This parameter is required.
 	//

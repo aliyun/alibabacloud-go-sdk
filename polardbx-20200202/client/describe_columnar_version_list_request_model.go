@@ -22,7 +22,7 @@ type DescribeColumnarVersionListRequest struct {
 	//
 	// pxc-hzjasd****
 	DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
-	// The region where the instance resides.
+	// The region where the instance is located.
 	//
 	// example:
 	//

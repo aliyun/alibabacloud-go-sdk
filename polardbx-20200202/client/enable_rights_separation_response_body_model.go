@@ -18,19 +18,19 @@ type iEnableRightsSeparationResponseBody interface {
 }
 
 type EnableRightsSeparationResponseBody struct {
-  // Returns success if the request is successful, or the corresponding error code if an error occurs.
+  // The returned message. If the request succeeds, success is returned. If the request fails, an error code is returned.
   // 
   // example:
   // 
   // success
   Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-  // The unique request ID.
+  // The ID of the request.
   // 
   // example:
   // 
   // 73559800-3c8c-11ec-bd40-99cfcff3fe1e
   RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-  // Indicates whether the request is successful.
+  // Indicates whether the request was successful.
   // 
   // example:
   // 

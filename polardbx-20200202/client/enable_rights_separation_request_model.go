@@ -28,13 +28,13 @@ type iEnableRightsSeparationRequest interface {
 }
 
 type EnableRightsSeparationRequest struct {
-  // The description of the audit account.
+  // The description of the auditor account.
   // 
   // example:
   // 
   // test123
   AuditAccountDescription *string `json:"AuditAccountDescription,omitempty" xml:"AuditAccountDescription,omitempty"`
-  // The name of the audit account.
+  // The name of the auditor account.
   // 
   // This parameter is required.
   // 
@@ -42,13 +42,13 @@ type EnableRightsSeparationRequest struct {
   // 
   // account_audit
   AuditAccountName *string `json:"AuditAccountName,omitempty" xml:"AuditAccountName,omitempty"`
-  // The password of the audit account.
+  // The password of the auditor account.
   // 
   // This parameter is required.
   // 
   // example:
   // 
-  // ******
+  // DemoPass1@
   AuditAccountPassword *string `json:"AuditAccountPassword,omitempty" xml:"AuditAccountPassword,omitempty"`
   // The name of the instance.
   // 
@@ -72,7 +72,7 @@ type EnableRightsSeparationRequest struct {
   // 
   // test123
   SecurityAccountDescription *string `json:"SecurityAccountDescription,omitempty" xml:"SecurityAccountDescription,omitempty"`
-  // The name of the security administrator account.
+  // The security administrator account.
   // 
   // This parameter is required.
   // 
@@ -80,13 +80,13 @@ type EnableRightsSeparationRequest struct {
   // 
   // account_sec
   SecurityAccountName *string `json:"SecurityAccountName,omitempty" xml:"SecurityAccountName,omitempty"`
-  // The password of the security administrator account.
+  // The password of the security administrator.
   // 
   // This parameter is required.
   // 
   // example:
   // 
-  // *****
+  // DemoPass1@
   SecurityAccountPassword *string `json:"SecurityAccountPassword,omitempty" xml:"SecurityAccountPassword,omitempty"`
 }
 

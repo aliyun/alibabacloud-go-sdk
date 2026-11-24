@@ -22,15 +22,15 @@ type iDescribeServiceAccountResponseBody interface {
 }
 
 type DescribeServiceAccountResponseBody struct {
-	// The details of the access denial.
+	// The details of the access denied error.
 	AccessDeniedDetail *DescribeServiceAccountResponseBodyAccessDeniedDetail `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty" type:"Struct"`
 	// The instance details.
 	Data *DescribeServiceAccountResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The response message. "success" is returned if the request was successful. Otherwise, an error code is returned.
+	// The message returned. If the request is successful, \\"success\\" is returned. If the request fails, the corresponding error code is returned.
 	//
 	// example:
 	//
-	// ****
+	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// Id of the request
 	//
@@ -38,7 +38,7 @@ type DescribeServiceAccountResponseBody struct {
 	//
 	// 9B2F3840-5C98-475C-B269-2D5C3A31797C
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	//
 	// example:
 	//
@@ -118,27 +118,27 @@ type DescribeServiceAccountResponseBodyAccessDeniedDetail struct {
 	//
 	// example:
 	//
-	// xxx
+	// polardbx:DescribeServiceAccount
 	AuthAction *string `json:"AuthAction,omitempty" xml:"AuthAction,omitempty"`
-	// The authentication principal type.
+	// The type of the authenticated principal.
 	//
 	// example:
 	//
 	// 222
 	AuthPrincipalType *string `json:"AuthPrincipalType,omitempty" xml:"AuthPrincipalType,omitempty"`
-	// The diagnostic information.
+	// The diagnostic message.
 	//
 	// example:
 	//
 	// AQEAAAAAaKPfwjY0MzMyODRGLUZCQkQtNTA1RS04MUUxLTc5NTkzODk2MUIzMg==
 	EncodedDiagnosticMessage *string `json:"EncodedDiagnosticMessage,omitempty" xml:"EncodedDiagnosticMessage,omitempty"`
-	// The type of the permission denial.
+	// The type of the access denial.
 	//
 	// example:
 	//
 	// ImplicitDeny
 	NoPermissionType *string `json:"NoPermissionType,omitempty" xml:"NoPermissionType,omitempty"`
-	// The policy type.
+	// The type of the policy.
 	//
 	// example:
 	//
@@ -239,7 +239,7 @@ func (s *DescribeServiceAccountResponseBodyData) Validate() error {
 }
 
 type DescribeServiceAccountResponseBodyDataServiceAccounts struct {
-	// The account name.
+	// The name of the account.
 	//
 	// example:
 	//
@@ -251,13 +251,13 @@ type DescribeServiceAccountResponseBodyDataServiceAccounts struct {
 	//
 	// 2023-07-21T14:17:25+08:00
 	CreatedTime *string `json:"CreatedTime,omitempty" xml:"CreatedTime,omitempty"`
-	// The service account type.
+	// The type of the service account.
 	//
 	// example:
 	//
 	// METADATA_READONLY
 	ServiceAccountType *string `json:"ServiceAccountType,omitempty" xml:"ServiceAccountType,omitempty"`
-	// The status of the backup set. Valid values:
+	// The status of the backup set:
 	//
 	// - **0**: Backing up.
 	//

@@ -97,7 +97,7 @@ func (s *DescribeColumnarClassListResponseBodyData) Validate() error {
 }
 
 type DescribeColumnarClassListResponseBodyDataClassCodeList struct {
-	// The instance type.
+	// The instance specification.
 	//
 	// example:
 	//

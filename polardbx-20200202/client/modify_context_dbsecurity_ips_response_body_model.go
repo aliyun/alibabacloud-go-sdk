@@ -18,9 +18,9 @@ type iModifyContextDBSecurityIpsResponseBody interface {
 }
 
 type ModifyContextDBSecurityIpsResponseBody struct {
-	// The details of the access denial.
+	// The access denial details.
 	AccessDeniedDetail *ModifyContextDBSecurityIpsResponseBodyAccessDeniedDetail `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty" type:"Struct"`
-	// The data struct.
+	// The data structure.
 	Data *ModifyContextDBSecurityIpsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// Id of the request
 	//
@@ -84,21 +84,21 @@ type ModifyContextDBSecurityIpsResponseBodyAccessDeniedDetail struct {
 	//
 	// example:
 	//
-	// xxx
+	// polardbx:ModifyContextDBSecurityIps
 	AuthAction *string `json:"AuthAction,omitempty" xml:"AuthAction,omitempty"`
-	// The display name of the authentication principal.
+	// The name of the authentication principal.
 	//
 	// example:
 	//
-	// xxx
+	// Sample RAM user
 	AuthPrincipalDisplayName *string `json:"AuthPrincipalDisplayName,omitempty" xml:"AuthPrincipalDisplayName,omitempty"`
-	// The ID of the Alibaba Cloud account to which the authentication principal belongs.
+	// The Alibaba Cloud account ID of the authentication principal.
 	//
 	// example:
 	//
 	// 111
 	AuthPrincipalOwnerId *string `json:"AuthPrincipalOwnerId,omitempty" xml:"AuthPrincipalOwnerId,omitempty"`
-	// The identity type used for authentication in the request. Valid values:
+	// The type of identity used for authentication in the request. Valid values:
 	//
 	// - SubUser: RAM user.
 	//
@@ -110,13 +110,13 @@ type ModifyContextDBSecurityIpsResponseBodyAccessDeniedDetail struct {
 	//
 	// 222
 	AuthPrincipalType *string `json:"AuthPrincipalType,omitempty" xml:"AuthPrincipalType,omitempty"`
-	// The diagnostic information.
+	// The diagnostic message.
 	//
 	// example:
 	//
 	// AQEAAAAAaKPfwjY0MzMyODRGLUZCQkQtNTA1RS04MUUxLTc5NTkzODk2MUIzMg==
 	EncodedDiagnosticMessage *string `json:"EncodedDiagnosticMessage,omitempty" xml:"EncodedDiagnosticMessage,omitempty"`
-	// The type of the permission denial.
+	// The no permission type.
 	//
 	// example:
 	//
@@ -206,7 +206,7 @@ func (s *ModifyContextDBSecurityIpsResponseBodyAccessDeniedDetail) Validate() er
 }
 
 type ModifyContextDBSecurityIpsResponseBodyData struct {
-	// The context service instance name.
+	// The name of the context service instance.
 	//
 	// example:
 	//
@@ -216,7 +216,7 @@ type ModifyContextDBSecurityIpsResponseBodyData struct {
 	//
 	// example:
 	//
-	// pxc-xxxxxxxxxx
+	// 123456
 	DBInstanceId *int32 `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	// The instance ID.
 	//
@@ -228,7 +228,7 @@ type ModifyContextDBSecurityIpsResponseBodyData struct {
 	//
 	// example:
 	//
-	// ******
+	// 2209883
 	TaskId *int32 `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 	// The list of task IDs in the task group.
 	TaskIds []*int32 `json:"TaskIds,omitempty" xml:"TaskIds,omitempty" type:"Repeated"`

@@ -18,7 +18,7 @@ type iDescribePxfsUsersRequest interface {
 }
 
 type DescribePxfsUsersRequest struct {
-	// The instance ID of the PolarDB-X instance.
+	// The PolarDB-X instance ID.
 	//
 	// This parameter is required.
 	//

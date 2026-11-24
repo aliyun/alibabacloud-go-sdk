@@ -20,7 +20,7 @@ type iDescribeBackupSetRequest interface {
 }
 
 type DescribeBackupSetRequest struct {
-	// The backup set ID.
+	// The ID of the backup set.
 	//
 	// This parameter is required.
 	//

@@ -84,21 +84,21 @@ type CreateOpenSearchResponseBodyAccessDeniedDetail struct {
 	//
 	// example:
 	//
-	// xxx
+	// polardbx:CreateOpenSearch
 	AuthAction *string `json:"AuthAction,omitempty" xml:"AuthAction,omitempty"`
-	// The name of the security principal.
+	// The name of the authenticated principal.
 	//
 	// example:
 	//
-	// xxx
+	// Sample RAM user
 	AuthPrincipalDisplayName *string `json:"AuthPrincipalDisplayName,omitempty" xml:"AuthPrincipalDisplayName,omitempty"`
-	// The Alibaba Cloud account ID of the security principal.
+	// The ID of the Alibaba Cloud account to which the authenticated principal belongs.
 	//
 	// example:
 	//
 	// 111
 	AuthPrincipalOwnerId *string `json:"AuthPrincipalOwnerId,omitempty" xml:"AuthPrincipalOwnerId,omitempty"`
-	// Same as above.
+	// The type of the authenticated principal.
 	//
 	// example:
 	//

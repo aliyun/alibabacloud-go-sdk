@@ -22,11 +22,11 @@ type iCreateSQLEvaluateTaskResponseBody interface {
 type CreateSQLEvaluateTaskResponseBody struct {
 	// The returned result.
 	Data *CreateSQLEvaluateTaskResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The response message. > This parameter is empty when the request succeeds. If the request fails, an exception message is returned, such as an error code.
+	// The returned message. > This parameter is empty if the request is successful. If the request fails, an error message is returned, such as an error code.
 	//
 	// example:
 	//
-	// *****
+	// Sample error message: Processing failed
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The request ID.
 	//
@@ -34,7 +34,7 @@ type CreateSQLEvaluateTaskResponseBody struct {
 	//
 	// 6352AC16-76BF-5135-B1EA-ED49293526E6
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	//
 	// example:
 	//
@@ -96,7 +96,7 @@ func (s *CreateSQLEvaluateTaskResponseBody) Validate() error {
 }
 
 type CreateSQLEvaluateTaskResponseBodyData struct {
-	// The slink task ID.
+	// The Slink task ID.
 	//
 	// example:
 	//

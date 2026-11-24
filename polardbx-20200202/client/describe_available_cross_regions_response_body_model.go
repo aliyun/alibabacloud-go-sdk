@@ -22,11 +22,11 @@ type iDescribeAvailableCrossRegionsResponseBody interface {
 type DescribeAvailableCrossRegionsResponseBody struct {
 	// The parameter details.
 	Data []*DescribeAvailableCrossRegionsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	// The additional information returned. "success" is returned if the request is successful. Otherwise, the corresponding error code is returned.
+	// The additional information returned by the API operation. If the request is successful, success is returned. If an error occurs, the corresponding error code is returned.
 	//
 	// example:
 	//
-	// *****
+	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// Id of the request
 	//

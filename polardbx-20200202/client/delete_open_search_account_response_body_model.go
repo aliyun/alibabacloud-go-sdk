@@ -18,9 +18,9 @@ type iDeleteOpenSearchAccountResponseBody interface {
 }
 
 type DeleteOpenSearchAccountResponseBody struct {
-	// The details of the access denial.
+	// The access denial details.
 	AccessDeniedDetail *DeleteOpenSearchAccountResponseBodyAccessDeniedDetail `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty" type:"Struct"`
-	// The data struct.
+	// The data structure.
 	Data *DeleteOpenSearchAccountResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// Id of the request
 	//
@@ -84,13 +84,13 @@ type DeleteOpenSearchAccountResponseBodyAccessDeniedDetail struct {
 	//
 	// example:
 	//
-	// xxx
+	// polardbx:DeleteOpenSearchAccount
 	AuthAction *string `json:"AuthAction,omitempty" xml:"AuthAction,omitempty"`
 	// The display name of the authentication principal.
 	//
 	// example:
 	//
-	// xxx
+	// Sample RAM user
 	AuthPrincipalDisplayName *string `json:"AuthPrincipalDisplayName,omitempty" xml:"AuthPrincipalDisplayName,omitempty"`
 	// The owner ID of the authentication principal.
 	//
@@ -104,7 +104,7 @@ type DeleteOpenSearchAccountResponseBodyAccessDeniedDetail struct {
 	//
 	// 222
 	AuthPrincipalType *string `json:"AuthPrincipalType,omitempty" xml:"AuthPrincipalType,omitempty"`
-	// The encoded diagnostic message.
+	// The diagnostic message.
 	//
 	// example:
 	//
@@ -200,7 +200,7 @@ func (s *DeleteOpenSearchAccountResponseBodyAccessDeniedDetail) Validate() error
 }
 
 type DeleteOpenSearchAccountResponseBodyData struct {
-	// The account name.
+	// The name of the account.
 	//
 	// example:
 	//

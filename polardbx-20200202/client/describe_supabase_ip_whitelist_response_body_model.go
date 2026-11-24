@@ -18,7 +18,7 @@ type iDescribeSupabaseIpWhitelistResponseBody interface {
 }
 
 type DescribeSupabaseIpWhitelistResponseBody struct {
-	// The details of the access denied error.
+	// The access denied details.
 	AccessDeniedDetail *DescribeSupabaseIpWhitelistResponseBodyAccessDeniedDetail `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty" type:"Struct"`
 	// The whitelist information.
 	Data *DescribeSupabaseIpWhitelistResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
@@ -84,13 +84,13 @@ type DescribeSupabaseIpWhitelistResponseBodyAccessDeniedDetail struct {
 	//
 	// example:
 	//
-	// xxx
+	// polardbx:DescribeSupabaseIpWhitelist
 	AuthAction *string `json:"AuthAction,omitempty" xml:"AuthAction,omitempty"`
-	// The display name of the authentication principal.
+	// The authentication principal name.
 	//
 	// example:
 	//
-	// xxx
+	// Sample RAM user
 	AuthPrincipalDisplayName *string `json:"AuthPrincipalDisplayName,omitempty" xml:"AuthPrincipalDisplayName,omitempty"`
 	// The owner ID of the authentication principal.
 	//
@@ -98,25 +98,25 @@ type DescribeSupabaseIpWhitelistResponseBodyAccessDeniedDetail struct {
 	//
 	// 111
 	AuthPrincipalOwnerId *string `json:"AuthPrincipalOwnerId,omitempty" xml:"AuthPrincipalOwnerId,omitempty"`
-	// The type of the authentication principal.
+	// The authentication principal type.
 	//
 	// example:
 	//
 	// 222
 	AuthPrincipalType *string `json:"AuthPrincipalType,omitempty" xml:"AuthPrincipalType,omitempty"`
-	// The encoded diagnostic message.
+	// The diagnostic message.
 	//
 	// example:
 	//
 	// AQEAAAAAaKPfwjY0MzMyODRGLUZCQkQtNTA1RS04MUUxLTc5NTkzODk2MUIzMg==
 	EncodedDiagnosticMessage *string `json:"EncodedDiagnosticMessage,omitempty" xml:"EncodedDiagnosticMessage,omitempty"`
-	// The type of the permission denial.
+	// The no permission type.
 	//
 	// example:
 	//
 	// ImplicitDeny
 	NoPermissionType *string `json:"NoPermissionType,omitempty" xml:"NoPermissionType,omitempty"`
-	// The type of the policy.
+	// The policy type.
 	//
 	// example:
 	//
@@ -206,7 +206,7 @@ type DescribeSupabaseIpWhitelistResponseBodyData struct {
 	//
 	// pxc-unrf5ssig0ecg8
 	DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
-	// The list of whitelist groups.
+	// The whitelist group list.
 	GroupItems []*DescribeSupabaseIpWhitelistResponseBodyDataGroupItems `json:"GroupItems,omitempty" xml:"GroupItems,omitempty" type:"Repeated"`
 }
 
@@ -250,13 +250,13 @@ func (s *DescribeSupabaseIpWhitelistResponseBodyData) Validate() error {
 }
 
 type DescribeSupabaseIpWhitelistResponseBodyDataGroupItems struct {
-	// The name of the group.
+	// The group name.
 	//
 	// example:
 	//
 	// defaultGroup
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
-	// The tag of the group.
+	// The group tag.
 	//
 	// example:
 	//

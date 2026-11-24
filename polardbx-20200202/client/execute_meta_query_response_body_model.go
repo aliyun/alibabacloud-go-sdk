@@ -26,7 +26,7 @@ type ExecuteMetaQueryResponseBody struct {
   AccessDeniedDetail *ExecuteMetaQueryResponseBodyAccessDeniedDetail `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty" type:"Struct"`
   // The list of instance details.
   Data *ExecuteMetaQueryResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-  // The additional message returned by the API operation. If the request is successful, success is returned. If an error occurs, the corresponding error code is returned.
+  // The additional information returned by the API operation. If the request is successful, success is returned. If the request fails, the corresponding error code is returned.
   // 
   // example:
   // 
@@ -114,13 +114,13 @@ func (s *ExecuteMetaQueryResponseBody) Validate() error {
 }
 
 type ExecuteMetaQueryResponseBodyAccessDeniedDetail struct {
-  // Same as above.
+  // The description is the same as above.
   // 
   // example:
   // 
-  // xxx
+  // polardbx:ExecuteMetaQuery
   AuthAction *string `json:"AuthAction,omitempty" xml:"AuthAction,omitempty"`
-  // Same as above.
+  // The description is the same as above.
   // 
   // example:
   // 
@@ -210,7 +210,7 @@ type ExecuteMetaQueryResponseBodyData struct {
   // 
   // 0
   AppliedOffset *int64 `json:"AppliedOffset,omitempty" xml:"AppliedOffset,omitempty"`
-  // The effective upper limit of returned rows for this request.
+  // The effective maximum number of rows to return for this request.
   // 
   // example:
   // 
@@ -220,7 +220,7 @@ type ExecuteMetaQueryResponseBodyData struct {
   Columns []*string `json:"Columns,omitempty" xml:"Columns,omitempty" type:"Repeated"`
   // Indicates whether the query result contains at least one more row beyond the effective row limit for this request.
   HasMore *bool `json:"HasMore,omitempty" xml:"HasMore,omitempty"`
-  // The size in bytes of the Rows JSON array in the returned result after UTF-8 encoding, excluding protocol overhead.
+  // The size in bytes of the Rows JSON array in the response after UTF-8 encoding, excluding protocol overhead.
   // 
   // example:
   // 

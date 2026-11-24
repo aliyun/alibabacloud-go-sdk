@@ -18,7 +18,7 @@ type iCreateContext0ResponseBody interface {
 }
 
 type CreateContext0ResponseBody struct {
-	// The access denial details.
+	// The details of the access denial.
 	AccessDeniedDetail *CreateContext0ResponseBodyAccessDeniedDetail `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty" type:"Struct"`
 	// The instance data.
 	Data *CreateContext0ResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
@@ -84,13 +84,13 @@ type CreateContext0ResponseBodyAccessDeniedDetail struct {
 	//
 	// example:
 	//
-	// xxx
+	// polardbx:CreateContext0
 	AuthAction *string `json:"AuthAction,omitempty" xml:"AuthAction,omitempty"`
-	// The name of the authentication principal.
+	// The display name of the authentication principal.
 	//
 	// example:
 	//
-	// xxx
+	// Sample RAM user
 	AuthPrincipalDisplayName *string `json:"AuthPrincipalDisplayName,omitempty" xml:"AuthPrincipalDisplayName,omitempty"`
 	// The owner ID of the authentication principal.
 	//
@@ -98,7 +98,7 @@ type CreateContext0ResponseBodyAccessDeniedDetail struct {
 	//
 	// 111
 	AuthPrincipalOwnerId *string `json:"AuthPrincipalOwnerId,omitempty" xml:"AuthPrincipalOwnerId,omitempty"`
-	// The authentication principal type.
+	// The type of the authentication principal.
 	//
 	// example:
 	//
@@ -218,19 +218,19 @@ type CreateContext0ResponseBodyData struct {
 	//
 	// pxc-*********
 	DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
-	// The dashboard instance name of the context service.
+	// The dashboard replica set name of the context service.
 	//
 	// example:
 	//
 	// pxt-*********-d
 	DashboardReplicaSetName *string `json:"DashboardReplicaSetName,omitempty" xml:"DashboardReplicaSetName,omitempty"`
-	// The name of the PolarDB-X Search instance.
+	// The name of the PolarDBX Search instance.
 	//
 	// example:
 	//
 	// pxs-*********
 	OpenSearchInstanceName *string `json:"OpenSearchInstanceName,omitempty" xml:"OpenSearchInstanceName,omitempty"`
-	// The service instance name of the context service.
+	// The service replica set name of the context service.
 	//
 	// example:
 	//

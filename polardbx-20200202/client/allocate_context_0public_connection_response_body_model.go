@@ -80,17 +80,17 @@ func (s *AllocateContext0PublicConnectionResponseBody) Validate() error {
 }
 
 type AllocateContext0PublicConnectionResponseBodyAccessDeniedDetail struct {
-	// The action that is evaluated.
+	// The authorization action.
 	//
 	// example:
 	//
-	// xxx
+	// polardbx:AllocateContext0PublicConnection
 	AuthAction *string `json:"AuthAction,omitempty" xml:"AuthAction,omitempty"`
-	// The identity used for authentication in the request.
+	// The identity identifier used for authentication in the request.
 	//
 	// example:
 	//
-	// xxx
+	// Sample RAM user
 	AuthPrincipalDisplayName *string `json:"AuthPrincipalDisplayName,omitempty" xml:"AuthPrincipalDisplayName,omitempty"`
 	// The owner ID of the authentication principal.
 	//
@@ -98,7 +98,7 @@ type AllocateContext0PublicConnectionResponseBodyAccessDeniedDetail struct {
 	//
 	// 111
 	AuthPrincipalOwnerId *string `json:"AuthPrincipalOwnerId,omitempty" xml:"AuthPrincipalOwnerId,omitempty"`
-	// The action that is evaluated.
+	// The authorization action.
 	//
 	// example:
 	//
@@ -216,9 +216,9 @@ type AllocateContext0PublicConnectionResponseBodyData struct {
 	//
 	// example:
 	//
-	// pxsp-xxxxxxxxxx
+	// 123456
 	DBInstanceId *int32 `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// The instance name.
+	// The instance ID.
 	//
 	// example:
 	//
@@ -230,7 +230,7 @@ type AllocateContext0PublicConnectionResponseBodyData struct {
 	//
 	// 1
 	DBInstanceNetType *int32 `json:"DBInstanceNetType,omitempty" xml:"DBInstanceNetType,omitempty"`
-	// The target node type. Valid values: service and dashboard.
+	// The target node type. Valid values: service, dashboard.
 	//
 	// example:
 	//
@@ -248,7 +248,7 @@ type AllocateContext0PublicConnectionResponseBodyData struct {
 	//
 	// 2209883
 	TaskId *int32 `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	// The IP address of the Anti-DDoS Pro or Anti-DDoS Premium instance protected by the policy.
+	// The IP address of the Anti-DDoS instance protected by the policy.
 	//
 	// example:
 	//

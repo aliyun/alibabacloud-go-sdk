@@ -18,7 +18,7 @@ type iModifyOpenSearchClassResponseBody interface {
 }
 
 type ModifyOpenSearchClassResponseBody struct {
-	// The details of the access denial.
+	// The access denial details.
 	AccessDeniedDetail *ModifyOpenSearchClassResponseBodyAccessDeniedDetail `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty" type:"Struct"`
 	// The returned result.
 	Data *ModifyOpenSearchClassResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
@@ -80,43 +80,43 @@ func (s *ModifyOpenSearchClassResponseBody) Validate() error {
 }
 
 type ModifyOpenSearchClassResponseBodyAccessDeniedDetail struct {
-	// The authorization action.
+	// The authentication action.
 	//
 	// example:
 	//
-	// xxx
+	// polardbx:ModifyOpenSearchClass
 	AuthAction *string `json:"AuthAction,omitempty" xml:"AuthAction,omitempty"`
-	// The display name of the authorization principal.
+	// The display name of the authentication principal.
 	//
 	// example:
 	//
-	// xxx
+	// Sample RAM user
 	AuthPrincipalDisplayName *string `json:"AuthPrincipalDisplayName,omitempty" xml:"AuthPrincipalDisplayName,omitempty"`
-	// The owner ID of the authorization principal.
+	// The owner ID of the authentication principal.
 	//
 	// example:
 	//
 	// 111
 	AuthPrincipalOwnerId *string `json:"AuthPrincipalOwnerId,omitempty" xml:"AuthPrincipalOwnerId,omitempty"`
-	// The type of identity used for authorization in the request. Valid values:
+	// The type of identity used for authentication in the request. Valid values:
 	//
-	// - SubUser: RAM user.
+	// - SubUser: RAM user
 	//
-	// - AssumedRoleUser: RAM role.
+	// - AssumedRoleUser: RAM role
 	//
-	// - Federated: SSO federated identity.
+	// - Federated: SSO federated identity
 	//
 	// example:
 	//
 	// 222
 	AuthPrincipalType *string `json:"AuthPrincipalType,omitempty" xml:"AuthPrincipalType,omitempty"`
-	// The encoded full diagnostic message.
+	// The encoded complete diagnostic message.
 	//
 	// example:
 	//
 	// AQEAAAAAaKPfwjY0MzMyODRGLUZCQkQtNTA1RS04MUUxLTc5NTkzODk2MUIzMg==
 	EncodedDiagnosticMessage *string `json:"EncodedDiagnosticMessage,omitempty" xml:"EncodedDiagnosticMessage,omitempty"`
-	// The no permission type.
+	// The permission denial type.
 	//
 	// example:
 	//

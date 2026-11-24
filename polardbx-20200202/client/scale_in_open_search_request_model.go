@@ -34,7 +34,7 @@ type ScaleInOpenSearchRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The total number of data nodes after the scale-in. The value must be a positive integer and less than the current number of data nodes.
+	// The total number of data nodes after the scale-down. The value must be a positive integer and less than the current number of data nodes.
 	//
 	// This parameter is required.
 	//

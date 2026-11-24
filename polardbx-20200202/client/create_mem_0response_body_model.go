@@ -18,7 +18,7 @@ type iCreateMem0ResponseBody interface {
 }
 
 type CreateMem0ResponseBody struct {
-	// The detailed reasons for the access denial.
+	// The details of the access denial.
 	AccessDeniedDetail *CreateMem0ResponseBodyAccessDeniedDetail `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty" type:"Struct"`
 	// The data struct.
 	Data *CreateMem0ResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
@@ -104,7 +104,7 @@ type CreateMem0ResponseBodyAccessDeniedDetail struct {
 	//
 	// SubUser
 	AuthPrincipalType *string `json:"AuthPrincipalType,omitempty" xml:"AuthPrincipalType,omitempty"`
-	// The diagnostic message.
+	// The diagnostic information.
 	//
 	// example:
 	//

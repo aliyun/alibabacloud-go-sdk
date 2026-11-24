@@ -18,9 +18,9 @@ type iDescribePxfuseSecurityIpsResponseBody interface {
 }
 
 type DescribePxfuseSecurityIpsResponseBody struct {
-	// The details about the access denial.
+	// The details of the access denial.
 	AccessDeniedDetail *DescribePxfuseSecurityIpsResponseBodyAccessDeniedDetail `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty" type:"Struct"`
-	// The instance details.
+	// The list of instance details.
 	Data *DescribePxfuseSecurityIpsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -80,17 +80,17 @@ func (s *DescribePxfuseSecurityIpsResponseBody) Validate() error {
 }
 
 type DescribePxfuseSecurityIpsResponseBodyAccessDeniedDetail struct {
-	// The description is the same as above.
+	// The description as mentioned above.
 	//
 	// example:
 	//
-	// xxx
+	// polardbx:DescribePxfuseSecurityIps
 	AuthAction *string `json:"AuthAction,omitempty" xml:"AuthAction,omitempty"`
-	// The display name of the authentication principal.
+	// The name of the authentication principal.
 	//
 	// example:
 	//
-	// xxx
+	// Sample RAM user
 	AuthPrincipalDisplayName *string `json:"AuthPrincipalDisplayName,omitempty" xml:"AuthPrincipalDisplayName,omitempty"`
 	// The owner ID of the authentication principal.
 	//
@@ -104,13 +104,13 @@ type DescribePxfuseSecurityIpsResponseBodyAccessDeniedDetail struct {
 	//
 	// 222
 	AuthPrincipalType *string `json:"AuthPrincipalType,omitempty" xml:"AuthPrincipalType,omitempty"`
-	// The encoded diagnostic message.
+	// The diagnostic information.
 	//
 	// example:
 	//
 	// AQEAAAAAaKPfwjY0MzMyODRGLUZCQkQtNTA1RS04MUUxLTc5NTkzODk2MUIzMg==
 	EncodedDiagnosticMessage *string `json:"EncodedDiagnosticMessage,omitempty" xml:"EncodedDiagnosticMessage,omitempty"`
-	// The type of the no-permission error.
+	// The no-permission type.
 	//
 	// example:
 	//
@@ -206,7 +206,7 @@ type DescribePxfuseSecurityIpsResponseBodyData struct {
 	//
 	// pxc-***-mem
 	CustinsName *string `json:"CustinsName,omitempty" xml:"CustinsName,omitempty"`
-	// The groups corresponding to the consumed service.
+	// The groups corresponding to the consumed services.
 	Groups []*DescribePxfuseSecurityIpsResponseBodyDataGroups `json:"Groups,omitempty" xml:"Groups,omitempty" type:"Repeated"`
 }
 
@@ -262,11 +262,11 @@ type DescribePxfuseSecurityIpsResponseBodyDataGroups struct {
 	//
 	// test
 	GroupTag *string `json:"GroupTag,omitempty" xml:"GroupTag,omitempty"`
-	// Specifies whether an IP address that is already used for a DNAT entry can also be used for an SNAT entry. Valid values:
+	// Specifies whether an IP address that is already used in a DNAT entry can also be used in an SNAT entry. Valid values:
 	//
-	// - **true**: Destination IP address can also be used for an SNAT entry.
+	// - **true**: Destination IP address can also be used in an SNAT entry.
 	//
-	// - **false**: Destination IP address cannot be used for an SNAT entry.
+	// - **false**: Destination IP address cannot be used in an SNAT entry.
 	//
 	// example:
 	//

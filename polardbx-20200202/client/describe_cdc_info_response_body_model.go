@@ -22,7 +22,7 @@ type iDescribeCdcInfoResponseBody interface {
 type DescribeCdcInfoResponseBody struct {
 	// The instance data.
 	Data *DescribeCdcInfoResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The HTTP status code.
+	// The HTTP status code of the request.
 	//
 	// This parameter is required.
 	//
@@ -36,7 +36,7 @@ type DescribeCdcInfoResponseBody struct {
 	//
 	// 9B2F3840-5C98-475C-B269-2D5C3A31797C
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	//
 	// This parameter is required.
 	//
@@ -100,7 +100,7 @@ func (s *DescribeCdcInfoResponseBody) Validate() error {
 }
 
 type DescribeCdcInfoResponseBodyData struct {
-	// The number of days that binlogs are retained.
+	// The number of days for which binlogs are retained.
 	//
 	// example:
 	//
@@ -122,7 +122,7 @@ type DescribeCdcInfoResponseBodyData struct {
 	//
 	// polarx-cdc-kernel-***
 	CdcNewVersion *string `json:"CdcNewVersion,omitempty" xml:"CdcNewVersion,omitempty"`
-	// The checksum switch.
+	// Indicates whether the checksum feature is enabled.
 	//
 	// example:
 	//
@@ -134,7 +134,7 @@ type DescribeCdcInfoResponseBodyData struct {
 	//
 	// true
 	EnableCyclicReplication *bool `json:"EnableCyclicReplication,omitempty" xml:"EnableCyclicReplication,omitempty"`
-	// The instance list.
+	// The list of instances.
 	InstanceTopologyList []*DescribeCdcInfoResponseBodyDataInstanceTopologyList `json:"InstanceTopologyList,omitempty" xml:"InstanceTopologyList,omitempty" type:"Repeated"`
 	// server id
 	//
@@ -142,9 +142,9 @@ type DescribeCdcInfoResponseBodyData struct {
 	//
 	// example:
 	//
-	// 3014767486
+	// 123456
 	ServerId *int32 `json:"ServerId,omitempty" xml:"ServerId,omitempty"`
-	// Indicates whether multi-stream CDC is supported.
+	// Indicates whether multiple CDC streams are supported.
 	//
 	// example:
 	//
@@ -252,13 +252,13 @@ type DescribeCdcInfoResponseBodyDataInstanceTopologyList struct {
 	//
 	// BINLOG_X
 	ClusterType *string `json:"ClusterType,omitempty" xml:"ClusterType,omitempty"`
-	// The instance type remarks.
+	// The comment on the instance type.
 	//
 	// example:
 	//
-	// ***
+	// Sample instance type comment
 	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
-	// The multi-stream group name.
+	// The name of the multi-stream group.
 	//
 	// example:
 	//
@@ -270,13 +270,13 @@ type DescribeCdcInfoResponseBodyDataInstanceTopologyList struct {
 	//
 	// RECORD
 	HashLevel *string `json:"HashLevel,omitempty" xml:"HashLevel,omitempty"`
-	// The instance name.
+	// The name of the instance.
 	//
 	// example:
 	//
 	// pxc-***
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	// The node array.
+	// The array of nodes.
 	PhysicalNodes []*DescribeCdcInfoResponseBodyDataInstanceTopologyListPhysicalNodes `json:"PhysicalNodes,omitempty" xml:"PhysicalNodes,omitempty" type:"Repeated"`
 	// The number of splits.
 	//
@@ -383,7 +383,7 @@ type DescribeCdcInfoResponseBodyDataInstanceTopologyListPhysicalNodes struct {
 	//
 	// 204800
 	Disk *int32 `json:"Disk,omitempty" xml:"Disk,omitempty"`
-	// The instance specifications.
+	// The instance type.
 	//
 	// example:
 	//
@@ -393,9 +393,9 @@ type DescribeCdcInfoResponseBodyDataInstanceTopologyListPhysicalNodes struct {
 	//
 	// example:
 	//
-	// ***
+	// pxc-c-jf0pivh2dt
 	NodeId *string `json:"NodeId,omitempty" xml:"NodeId,omitempty"`
-	// The node name.
+	// The name of the node.
 	//
 	// example:
 	//

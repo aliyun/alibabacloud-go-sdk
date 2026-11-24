@@ -18,7 +18,7 @@ type iModifyPxfsSecurityIpsResponseBody interface {
 }
 
 type ModifyPxfsSecurityIpsResponseBody struct {
-	// The details of the access denial.
+	// The details of the access denied error.
 	AccessDeniedDetail *ModifyPxfsSecurityIpsResponseBodyAccessDeniedDetail `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty" type:"Struct"`
 	// The response data.
 	Data *ModifyPxfsSecurityIpsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
@@ -80,25 +80,25 @@ func (s *ModifyPxfsSecurityIpsResponseBody) Validate() error {
 }
 
 type ModifyPxfsSecurityIpsResponseBodyAccessDeniedDetail struct {
-	// The authorization action.
+	// The authentication action.
 	//
 	// example:
 	//
-	// xxx
+	// polardbx:ModifyPxfsSecurityIps
 	AuthAction *string `json:"AuthAction,omitempty" xml:"AuthAction,omitempty"`
-	// The identity used for authentication in the request.
+	// The identity identifier used for authentication in the request.
 	//
 	// example:
 	//
-	// xxx
+	// Sample RAM user
 	AuthPrincipalDisplayName *string `json:"AuthPrincipalDisplayName,omitempty" xml:"AuthPrincipalDisplayName,omitempty"`
-	// The owner ID of the authorization principal.
+	// The owner ID of the authentication principal.
 	//
 	// example:
 	//
 	// 111
 	AuthPrincipalOwnerId *string `json:"AuthPrincipalOwnerId,omitempty" xml:"AuthPrincipalOwnerId,omitempty"`
-	// The description is the same as above.
+	// Same as above.
 	//
 	// example:
 	//
