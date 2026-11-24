@@ -70,9 +70,7 @@ type iCreateApsKafkaHudiJobRequest interface {
 }
 
 type CreateApsKafkaHudiJobRequest struct {
-	// The RAM role whose trusted entity is an Alibaba Cloud account. For more information about how to create a RAM role, see Create a RAM role for a trusted Alibaba Cloud account.
-	//
-	// In the RAM role, the Alibaba Cloud account to which AnalyticDB for MySQL belongs must be configured as a trusted account for the Alibaba Cloud account to which the Kafka instance belongs.
+	// The RAM role whose trusted entity is an Alibaba Cloud account. For more information about how to create a RAM role, see Create a RAM role for a trusted Alibaba Cloud account. In the RAM role, the Alibaba Cloud account to which AnalyticDB for MySQL belongs is configured as a trusted account for the Alibaba Cloud account to which Kafka belongs.
 	//
 	// example:
 	//
@@ -96,7 +94,7 @@ type CreateApsKafkaHudiJobRequest struct {
 	Columns []*CreateApsKafkaHudiJobRequestColumns `json:"Columns,omitempty" xml:"Columns,omitempty" type:"Repeated"`
 	// The cluster ID.
 	//
-	// > You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/129857.html) operation to query the IDs of all AnalyticDB for MySQL Data Lakehouse Edition (3.0) clusters in the specified region.
+	// > You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/129857.html) operation to view the IDs of all AnalyticDB for MySQL Data Lakehouse Edition (3.0) clusters in the target region.
 	//
 	// This parameter is required.
 	//
@@ -112,9 +110,9 @@ type CreateApsKafkaHudiJobRequest struct {
 	DataFormatType *string `json:"DataFormatType,omitempty" xml:"DataFormatType,omitempty"`
 	// The data output format. Valid values:
 	//
-	// - Single: The source is a single-line JSON record.
+	// - Single: the source is a single-line JSON record.
 	//
-	// - Multi: The source is a JSON array. A single JSON record must be output.
+	// - Multi: the source is a JSON array. A single JSON record must be output.
 	//
 	// example:
 	//
@@ -134,19 +132,19 @@ type CreateApsKafkaHudiJobRequest struct {
 	//
 	// testDB
 	DbName *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
-	// The full synchronization configurations.
+	// The full data synchronization configurations.
 	//
 	// example:
 	//
 	// 2ACU
 	FullComputeUnit *string `json:"FullComputeUnit,omitempty" xml:"FullComputeUnit,omitempty"`
-	// The destination Hudi configurations.
+	// The advanced HUDI configurations for the target.
 	//
 	// example:
 	//
 	// hoodie.keep.min.commits=20
 	HudiAdvancedConfig *string `json:"HudiAdvancedConfig,omitempty" xml:"HudiAdvancedConfig,omitempty"`
-	// The incremental synchronization configurations.
+	// The incremental data synchronization configurations.
 	//
 	// This parameter is required.
 	//
@@ -154,31 +152,31 @@ type CreateApsKafkaHudiJobRequest struct {
 	//
 	// 2ACU
 	IncrementalComputeUnit *string `json:"IncrementalComputeUnit,omitempty" xml:"IncrementalComputeUnit,omitempty"`
-	// The nesting parse level for JSON. Valid values:
+	// Specifies the JSON nesting parse level. Valid values:
 	//
-	// - 0: No parsing.
+	// - 0: does not parse JSON.
 	//
-	// - 1: Parse one level.
+	// - 1: parses one level.
 	//
-	// - 2: Parse two levels.
+	// - 2: parses two levels.
 	//
-	// - 3: Parse three levels.
+	// - 3: parses three levels.
 	//
-	// - 4: Parse four levels.
+	// - 4: parses four levels.
 	//
-	// Default value: 1. For more information about the JSON nesting parse strategy, see JSON parse levels and schema field inference examples.
+	// Default value: 1. For more information about the JSON nesting parse strategy, see JSON parsing levels and schema field inference examples.
 	//
 	// example:
 	//
 	// 0
 	JsonParseLevel *int32 `json:"JsonParseLevel,omitempty" xml:"JsonParseLevel,omitempty"`
-	// Instance ID of the Kafka instance. You can obtain instance ID in the Kafka console.
+	// Instance ID of the Kafka instance. You can obtain instance ID from the Kafka console.
 	//
 	// example:
 	//
-	// xxx
+	// alikafka_pre-cn-aaa1a1aa1111
 	KafkaClusterId *string `json:"KafkaClusterId,omitempty" xml:"KafkaClusterId,omitempty"`
-	// The ID of the Kafka topic. You can obtain the ID in the Kafka console.
+	// The ID of the Kafka topic. You can obtain the ID from the Kafka console.
 	//
 	// example:
 	//
@@ -196,7 +194,7 @@ type CreateApsKafkaHudiJobRequest struct {
 	//
 	// 50000
 	MaxOffsetsPerTrigger *int64 `json:"MaxOffsetsPerTrigger,omitempty" xml:"MaxOffsetsPerTrigger,omitempty"`
-	// The destination lakehouse address, which is a complete OSS path.
+	// The destination data lakehouse address, which is the complete OSS path.
 	//
 	// example:
 	//
@@ -229,9 +227,9 @@ type CreateApsKafkaHudiJobRequest struct {
 	//
 	// ],
 	//
-	// "RecordVersionField","xxx"
+	// "RecordVersionField":"xxx"
 	//
-	// RecordVersionField specifies the Hudi record version.
+	// RecordVersionField specifies the HUDI record version.
 	//
 	// example:
 	//
@@ -261,11 +259,11 @@ type CreateApsKafkaHudiJobRequest struct {
 	SourceRegionId *string `json:"SourceRegionId,omitempty" xml:"SourceRegionId,omitempty"`
 	// The starting consumption offset for Kafka. Valid values:
 	//
-	// - begin_cursor: The earliest offset.
+	// - begin_cursor: the earliest offset.
 	//
-	// - end_cursor: The latest offset.
+	// - end_cursor: the latest offset.
 	//
-	// - timestamp: A specified time.
+	// - timestamp: a specified timestamp.
 	//
 	// This parameter is required.
 	//
@@ -281,13 +279,13 @@ type CreateApsKafkaHudiJobRequest struct {
 	//
 	// testTB
 	TableName *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
-	// The destination generation rule.
+	// The target generation rule.
 	//
 	// example:
 	//
 	// xxx
 	TargetGenerateRule *string `json:"TargetGenerateRule,omitempty" xml:"TargetGenerateRule,omitempty"`
-	// The destination type.
+	// The target type.
 	//
 	// example:
 	//
@@ -586,13 +584,13 @@ func (s *CreateApsKafkaHudiJobRequest) Validate() error {
 }
 
 type CreateApsKafkaHudiJobRequestColumns struct {
-	// The name of the destination field.
+	// The name of the target field.
 	//
 	// example:
 	//
 	// b
 	MapName *string `json:"MapName,omitempty" xml:"MapName,omitempty"`
-	// The type of the destination field.
+	// The data type of the target field.
 	//
 	// example:
 	//
@@ -604,7 +602,7 @@ type CreateApsKafkaHudiJobRequestColumns struct {
 	//
 	// a
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The type of the source field.
+	// The data type of the source field.
 	//
 	// example:
 	//

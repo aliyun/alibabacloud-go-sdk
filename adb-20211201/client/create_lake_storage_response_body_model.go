@@ -24,25 +24,25 @@ type iCreateLakeStorageResponseBody interface {
 }
 
 type CreateLakeStorageResponseBody struct {
-	// The API status or POP error code.
+	// The API status code or POP error code.
 	//
 	// example:
 	//
 	// InvalidInput
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The resource usage details of the cluster.
+	// The details of cluster resource usage.
 	//
 	// example:
 	//
 	// true
 	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	// The HTTP status code returned. A value of 200 indicates that the request was successful.
+	// The HTTP status code returned. 200 indicates that the request was successful.
 	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// If the creation operation is implemented asynchronously, a specific JobId is returned.
+	// The explicit job ID returned if the creation operation is asynchronous.
 	//
 	// example:
 	//
@@ -52,13 +52,13 @@ type CreateLakeStorageResponseBody struct {
 	//
 	// example:
 	//
-	// ******
+	// 12345678-1234-4ABC-8DEF-123456789012
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the call was successful. Valid values:
 	//
-	// - **true**: Successful.
+	// - **true**: The call was successful.
 	//
-	// - **false**: Failed.
+	// - **false**: The call failed.
 	//
 	// example:
 	//

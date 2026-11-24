@@ -38,7 +38,7 @@ type QueryFormationTasksByTypeResponseBody struct {
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The response message. OK is returned if the call was successful.
+	// The message returned. The value is OK if the call is successful.
 	//
 	// example:
 	//
@@ -50,7 +50,7 @@ type QueryFormationTasksByTypeResponseBody struct {
 	//
 	// 1AD222E9-E606-4A42-BF6D-8A4442913CEF
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the call was successful. Valid values:
+	// Indicates whether the call was successful.
 	//
 	// - **true**: The call was successful.
 	//
@@ -144,7 +144,7 @@ type QueryFormationTasksByTypeResponseBodyData struct {
 	//
 	// 2026-07-08 17:05:25
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The execution duration of the most recent task.
+	// The execution time of the most recent task.
 	//
 	// example:
 	//
@@ -160,9 +160,9 @@ type QueryFormationTasksByTypeResponseBodyData struct {
 	//
 	// example:
 	//
-	// xxx
+	// The task execution failed.
 	LastTaskInstMessage *string `json:"LastTaskInstMessage,omitempty" xml:"LastTaskInstMessage,omitempty"`
-	// The instance status of the most recent node.
+	// The status of the most recent task instance.
 	//
 	// example:
 	//

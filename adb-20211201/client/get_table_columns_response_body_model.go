@@ -24,7 +24,7 @@ type iGetTableColumnsResponseBody interface {
 type GetTableColumnsResponseBody struct {
 	// The returned data.
 	Data *GetTableColumnsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The page number. The value is a positive integer that does not exceed the maximum value of the Integer data type. Default value: 1.
+	// The page number. Valid values: an integer greater than 0 and up to the maximum value of the Integer data type. Default value: 1.
 	//
 	// example:
 	//
@@ -48,7 +48,7 @@ type GetTableColumnsResponseBody struct {
 	//
 	// 1AD222E9-E606-4A42-BF6D-8A4442913CEF
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries in the result.
+	// The total number of entries returned.
 	//
 	// example:
 	//
@@ -119,7 +119,7 @@ func (s *GetTableColumnsResponseBody) Validate() error {
 }
 
 type GetTableColumnsResponseBodyData struct {
-	// The page number. The value is a positive integer that does not exceed the maximum value of the Integer data type. Default value: 1.
+	// The page number. Valid values: an integer greater than 0 and up to the maximum value of the Integer data type. Default value: 1.
 	//
 	// example:
 	//
@@ -139,7 +139,7 @@ type GetTableColumnsResponseBodyData struct {
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The details of the table.
 	Table *TableDetailModel `json:"Table,omitempty" xml:"Table,omitempty"`
-	// The total number of entries in the result.
+	// The total number of entries returned.
 	//
 	// example:
 	//

@@ -36,9 +36,9 @@ type iDescribeProcessListRequest interface {
 }
 
 type DescribeProcessListRequest struct {
-	// The cluster ID of the AnalyticDB for MySQL Data Lakehouse Edition.
+	// The ID of the AnalyticDB for MySQL Data Lakehouse Edition cluster.
 	//
-	// > Call the [DescribeDBClusters](https://help.aliyun.com/document_detail/129857.html) operation to view details of all AnalyticDB for MySQL Data Lakehouse Edition clusters in the destination region, including cluster IDs.
+	// > You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/129857.html) operation to query the details of all AnalyticDB for MySQL Data Lakehouse Edition clusters in a specified region, including cluster IDs.
 	//
 	// This parameter is required.
 	//
@@ -46,17 +46,17 @@ type DescribeProcessListRequest struct {
 	//
 	// amv-xxxxxxxxx
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	// Filter keyword. Currently, only **SELECT*	- is supported.
+	// The filter keyword. Only **SELECT*	- is supported.
 	//
 	// example:
 	//
 	// SELECT
 	Keyword *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
-	// Sort by the specified field in JSON format, `[{"Field":"Time","Type":"Desc" },{ "Field":"User", "Type":"Asc" }]`. Values:
+	// The sorting rule in JSON format. Example: `[{"Field":"Time","Type":"Desc" },{ "Field":"User", "Type":"Asc" }]`. Parameters:
 	//
-	// - **Field**: The name of the field to sort by. Supports Time, User, Host, and DB fields.
+	// - **Field**: The field name used for sorting. Valid values: Time, User, Host, and DB.
 	//
-	// - **Type**: Sort type. **Desc*	- for descending order, **Asc*	- for ascending order.
+	// - **Type**: The sort order. Valid values: **Desc*	- (descending) and **Asc*	- (ascending).
 	//
 	// example:
 	//
@@ -64,15 +64,15 @@ type DescribeProcessListRequest struct {
 	Order        *string `json:"Order,omitempty" xml:"Order,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// Page number. Must be a positive integer. Default value: **1**.
+	// The page number. The value must be a positive integer. Default value: **1**.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// Number of records per page. Values:
+	// The number of entries per page. Valid values:
 	//
-	// - **30*	- (Default value)
+	// - **30*	- (default)
 	//
 	// - **50**
 	//
@@ -84,13 +84,13 @@ type DescribeProcessListRequest struct {
 	PageSize             *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// Filter by running time. Displays queries that have run longer than the specified time. Unit: seconds.
+	// Filters queries by runtime and displays only queries whose runtime exceeds the specified value. Unit: seconds.
 	//
 	// example:
 	//
 	// 20
 	RunningTime *int32 `json:"RunningTime,omitempty" xml:"RunningTime,omitempty"`
-	// Specifies whether to display the full SQL statement. Values:
+	// Specifies whether to display the full SQL statement. Valid values:
 	//
 	// - **True**: Displays the full SQL statement.
 	//

@@ -26,7 +26,7 @@ type iDescribeSparkAuditLogRecordsResponseBody interface {
 }
 
 type DescribeSparkAuditLogRecordsResponseBody struct {
-	// The details about the access denial. This parameter is returned only if Resource Access Management (RAM) permission verification failed.
+	// The details of the access denial. This field is returned only when RAM authentication fails.
 	//
 	// example:
 	//
@@ -54,7 +54,7 @@ type DescribeSparkAuditLogRecordsResponseBody struct {
 	//
 	// amv-bp1j7******78j8i
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	// The list of SQL audit logs.
+	// The list of SQL records.
 	Items []*DescribeSparkAuditLogRecordsResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
 	// The page number.
 	//
@@ -62,7 +62,7 @@ type DescribeSparkAuditLogRecordsResponseBody struct {
 	//
 	// 1
 	PageNumber *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries to return per page.
+	// The number of entries per page.
 	//
 	// example:
 	//
@@ -74,7 +74,7 @@ type DescribeSparkAuditLogRecordsResponseBody struct {
 	//
 	// 2D5867CF-423F-559F-BBB1-199A289E****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries.
+	// The total number of records.
 	//
 	// example:
 	//
@@ -179,31 +179,31 @@ type DescribeSparkAuditLogRecordsResponseBodyItems struct {
 	//
 	// 192.168.XX.XX
 	ClientIp *string `json:"ClientIp,omitempty" xml:"ClientIp,omitempty"`
-	// The SQL execution error message.
+	// The error message of the SQL execution.
 	//
 	// example:
 	//
 	// notFoundIp
 	ErrorMsg *string `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
-	// The SQL execution error stack trace.
+	// The error stack trace of the SQL execution.
 	//
 	// example:
 	//
 	// notFoundIpException
 	ErrorTrace *string `json:"ErrorTrace,omitempty" xml:"ErrorTrace,omitempty"`
-	// The start time of the SQL statement. The time is in the yyyy-MM-ddTHH:mm:ssZ format. The time is in UTC.
+	// The start time of the SQL execution. The time is in UTC and follows the yyyy-MM-ddTHH:mm:ssZ format.
 	//
 	// example:
 	//
 	// 2022-01-23T16:05:08Z
 	ExecuteTime *string `json:"ExecuteTime,omitempty" xml:"ExecuteTime,omitempty"`
-	// The ID of the query executed within the Spark application.
+	// The internal query execution ID of the Spark application.
 	//
 	// example:
 	//
 	// 1
 	InnerQueryId *string `json:"InnerQueryId,omitempty" xml:"InnerQueryId,omitempty"`
-	// Whether it can be diagnosed.
+	// Indicates whether the SQL statement can be diagnosed.
 	//
 	// example:
 	//
@@ -215,31 +215,25 @@ type DescribeSparkAuditLogRecordsResponseBodyItems struct {
 	//
 	// 999f2439-6b10-xxxx-a5d3-daf3b35c****
 	ProcessId *string `json:"ProcessId,omitempty" xml:"ProcessId,omitempty"`
-	// The resource group name.
+	// The name of the resource group.
 	//
 	// example:
 	//
 	// test_job
 	ResourceGroupName *string `json:"ResourceGroupName,omitempty" xml:"ResourceGroupName,omitempty"`
-	// The SQL statement.
+	// The details of the SQL statement.
 	//
 	// example:
 	//
 	// SELECT 	- FROM adb_hdfs_import_source
 	SQLText *string `json:"SQLText,omitempty" xml:"SQLText,omitempty"`
-	// The ID of the statement.
+	// The statement ID.
 	//
 	// example:
 	//
 	// fbd22066-1c03-xxxx-aa16-6ae28288****
 	StatementId *string `json:"StatementId,omitempty" xml:"StatementId,omitempty"`
-	// The source from which the query was initiated.
-	//
-	// Valid values:
-	//
-	// 	- SQL_EDITOR: SQL_EDITOR.
-	//
-	// 	- JDBC: JDBC.
+	// The source from which the query is initiated.
 	//
 	// example:
 	//
@@ -247,27 +241,17 @@ type DescribeSparkAuditLogRecordsResponseBodyItems struct {
 	StatementSource *string `json:"StatementSource,omitempty" xml:"StatementSource,omitempty"`
 	// The execution status of the SQL statement.
 	//
-	// Valid values:
-	//
-	// 	- cancel: The task is canceled .
-	//
-	// 	- finished: The execution succeeds .
-	//
-	// 	- error: The execution fails .
-	//
-	// 	- timeout: The execution of the command timed out.
-	//
 	// example:
 	//
 	// finish
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The duration of the SQL statement. Unit: milliseconds.
+	// The execution duration of the SQL statement. Unit: milliseconds.
 	//
 	// example:
 	//
 	// 40000
 	TotalTime *int64 `json:"TotalTime,omitempty" xml:"TotalTime,omitempty"`
-	// The username that is used to execute SQL statements.
+	// The username that executed the SQL statement.
 	//
 	// example:
 	//

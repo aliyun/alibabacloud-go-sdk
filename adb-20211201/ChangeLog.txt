@@ -1,3 +1,8 @@
+2026-11-24 Version: v5.3.5
+- Update API AddKnowledgeFile: add response parameters Body.Id.
+- Update API AddKnowledgeFile: add response parameters Body.Location.
+
+
 2026-10-30 Version: v5.3.4
 - Generated golang 2021-12-01 for adb.
 

@@ -26,7 +26,7 @@ type DescribeApsProgressResponseBody struct {
 	//
 	// example:
 	//
-	// -
+	// [{"DbName":"example_db","TbName":"example_table","Progress":"95","Speed":"2"}]
 	ApsHiveProgress []*DescribeApsProgressResponseBodyApsHiveProgress `json:"ApsHiveProgress,omitempty" xml:"ApsHiveProgress,omitempty" type:"Repeated"`
 	// The request ID.
 	//

@@ -64,21 +64,21 @@ func (s *GetSparkReplSessionResponseBody) Validate() error {
 type GetSparkReplSessionResponseBodyData struct {
 	// Indicates whether the session is active. Valid values:
 	//
-	// 	- true
+	// - true: Active.
 	//
-	// 	- false
+	// - false: Inactive.
 	//
 	// example:
 	//
 	// true
 	Active *string `json:"Active,omitempty" xml:"Active,omitempty"`
-	// The ID of the Alibaba Cloud account that owns the cluster.
+	// The ID of the Alibaba Cloud account to which the instance belongs.
 	//
 	// example:
 	//
 	// 178157466101****
 	AliyunUid *string `json:"AliyunUid,omitempty" xml:"AliyunUid,omitempty"`
-	// The attempt ID of the Spark application.
+	// The retry ID of the Spark application.
 	//
 	// example:
 	//
@@ -90,25 +90,25 @@ type GetSparkReplSessionResponseBodyData struct {
 	//
 	// Session timed out
 	Error *string `json:"Error,omitempty" xml:"Error,omitempty"`
-	// The ID of the session that executes the code.
+	// The ID of the session for code execution.
 	//
 	// example:
 	//
 	// 1
 	SessionId *int64 `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
-	// The status of the session. Valid values:
+	// The current session status. Valid values:
 	//
-	// 	- IDLE
+	// - IDLE: The session is idle.
 	//
-	// 	- BUSY
+	// - BUSY: The session is busy and executing a task.
 	//
-	// 	- DEAD
+	// - DEAD: The session is closed.
 	//
 	// example:
 	//
 	// IDEL
 	State *string `json:"State,omitempty" xml:"State,omitempty"`
-	// The URL of the web UI for the Spark application.
+	// The Web UI address of the Spark application.
 	//
 	// example:
 	//

@@ -34,7 +34,7 @@ type DescribeSparkSQLDiagnosisAttributeRequest struct {
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
 	// The cluster ID.
 	//
-	// > 	- You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/98094.html) operation to view the information of all clusters in the specified region, including cluster IDs.
+	// > 	- You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/98094.html) operation to view the information of all clusters in the specified region, including the cluster ID.
 	//
 	// This parameter is required.
 	//
@@ -50,7 +50,7 @@ type DescribeSparkSQLDiagnosisAttributeRequest struct {
 	//
 	// 1
 	InnerQueryId *int64 `json:"InnerQueryId,omitempty" xml:"InnerQueryId,omitempty"`
-	// The language type. The description of the system access policy is returned in this language.
+	// The language type. The description of the system access policy is returned in this language. Valid values:
 	//
 	// - en: English.
 	//

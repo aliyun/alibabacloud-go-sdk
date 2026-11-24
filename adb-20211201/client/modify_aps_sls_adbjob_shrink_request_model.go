@@ -38,13 +38,13 @@ type iModifyApsSlsADBJobShrinkRequest interface {
 }
 
 type ModifyApsSlsADBJobShrinkRequest struct {
-	// The information about columns.
+	// The column information.
 	//
 	// example:
 	//
-	// -
+	// [{"MapName":"map_name","MapType":"bigint","Name":"test_name","Type":"bigint"}]
 	ColumnsShrink *string `json:"Columns,omitempty" xml:"Columns,omitempty"`
-	// The cluster ID.
+	// The ID of the cluster.
 	//
 	// This parameter is required.
 	//
@@ -64,13 +64,13 @@ type ModifyApsSlsADBJobShrinkRequest struct {
 	//
 	// STOP
 	DirtyDataProcessPattern *string `json:"DirtyDataProcessPattern,omitempty" xml:"DirtyDataProcessPattern,omitempty"`
-	// Specifies whether to enable the consistency check.
+	// Specifies whether exactly-once processing is enabled.
 	//
 	// example:
 	//
 	// true
 	ExactlyOnce *string `json:"ExactlyOnce,omitempty" xml:"ExactlyOnce,omitempty"`
-	// The password of the database account.
+	// The password.
 	//
 	// example:
 	//
@@ -84,7 +84,7 @@ type ModifyApsSlsADBJobShrinkRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The start offset.
+	// The starting offset.
 	//
 	// example:
 	//
@@ -100,15 +100,15 @@ type ModifyApsSlsADBJobShrinkRequest struct {
 	//
 	// example:
 	//
-	// -
+	// {"Transform":false}
 	UnixTimestampConvert *string `json:"UnixTimestampConvert,omitempty" xml:"UnixTimestampConvert,omitempty"`
-	// The name of the database account.
+	// The username.
 	//
 	// example:
 	//
 	// user-name
 	UserName *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
-	// The job ID.
+	// The ID of the data link task.
 	//
 	// This parameter is required.
 	//

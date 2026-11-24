@@ -42,15 +42,13 @@ type DescribeViewJobsRequest struct {
 	//
 	// admin
 	FilterOwner *string `json:"FilterOwner,omitempty" xml:"FilterOwner,omitempty"`
-	// The view name.
+	// The name of the view.
 	//
 	// example:
 	//
 	// test_mv
 	FilterViewName *string `json:"FilterViewName,omitempty" xml:"FilterViewName,omitempty"`
-	// The view type.
-	//
-	// Valid values:
+	// The view type. Valid values:
 	//
 	// - VIRTUAL_VIEW
 	//
@@ -62,15 +60,13 @@ type DescribeViewJobsRequest struct {
 	//
 	// MATERIALIZED_VIEW
 	FilterViewType *string `json:"FilterViewType,omitempty" xml:"FilterViewType,omitempty"`
-	// The sort field.
-	//
-	// Valid values for the sort order:
+	// The sort field. Valid values for the sort order:
 	//
 	// - Asc
 	//
 	// - Desc
 	//
-	// Valid values for the sort field:
+	// Valid values for the field:
 	//
 	// - StartTime
 	//
@@ -88,7 +84,7 @@ type DescribeViewJobsRequest struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of records per page.
+	// The number of entries per page.
 	//
 	// example:
 	//
@@ -100,7 +96,7 @@ type DescribeViewJobsRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The database name.
+	// The name of the database.
 	//
 	// example:
 	//

@@ -24,17 +24,17 @@ type iDescribeAppliedAdvicesResponseBody interface {
 }
 
 type DescribeAppliedAdvicesResponseBody struct {
-	// Details.
+	// The details.
 	Items []*DescribeAppliedAdvicesResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
-	// The page number of the returned page. The value must be an integer that is greater than 0. Default value: 1.
+	// The page number. The value must be greater than 0 and no more than the maximum value of the Integer data type. Default value: 1.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries to return on each page. Valid values:
+	// The number of entries per page. Valid values:
 	//
-	// - **30*	- (Default)
+	// - **30*	- (default)
 	//
 	// - **50**
 	//
@@ -50,9 +50,9 @@ type DescribeAppliedAdvicesResponseBody struct {
 	//
 	// 84489769-3065-5A28-A4CB-977CD426F1C3
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The concatenated strings of database and table names.
+	// The concatenated string of the database name and table name.
 	SchemaTableNames []*string `json:"SchemaTableNames,omitempty" xml:"SchemaTableNames,omitempty" type:"Repeated"`
-	// The total number of entries returned. The value must be an integer that is greater than or equal to 0. Default value: 0.
+	// The total number of returned results. The value must be greater than or equal to 0 and no more than the maximum value of the Integer data type. Default value: 0.
 	//
 	// example:
 	//
@@ -136,19 +136,19 @@ func (s *DescribeAppliedAdvicesResponseBody) Validate() error {
 }
 
 type DescribeAppliedAdvicesResponseBodyItems struct {
-	// The advice ID.
+	// The suggestion ID.
 	//
 	// example:
 	//
 	// 7417db9c-914d-43f3-a123-4d0e448f****
 	AdviceId *string `json:"AdviceId,omitempty" xml:"AdviceId,omitempty"`
-	// The benefit of the advice.
+	// The benefit of the suggestion.
 	//
 	// example:
 	//
-	// 节省0.4 GB的存储空间
+	// Saves 0.4 GB of storage space
 	Benefit *string `json:"Benefit,omitempty" xml:"Benefit,omitempty"`
-	// The SQL statement of the build task.
+	// The SQL statement used to execute the build task.
 	//
 	// example:
 	//
@@ -160,25 +160,25 @@ type DescribeAppliedAdvicesResponseBodyItems struct {
 	//
 	// message
 	IndexFields *string `json:"IndexFields,omitempty" xml:"IndexFields,omitempty"`
-	// The status of the task that is used to apply the advice. Valid values:
+	// The status of the task that executes the suggestion. Valid values:
 	//
-	// - **SUCCEED**: The task is successful.
+	// - **SUCCEED**: Succeeded.
 	//
-	// - **FAILED**: The task has failed.
+	// - **FAILED**: Failed.
 	//
 	// example:
 	//
 	// SUCCEED
 	JobStatus *string `json:"JobStatus,omitempty" xml:"JobStatus,omitempty"`
-	// The page number of the returned page. The value must be an integer that is greater than 0. Default value: 1.
+	// The page number. The value must be greater than 0 and no more than the maximum value of the Integer data type. Default value: 1.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries to return on each page. Valid values:
+	// The number of entries per page. Valid values:
 	//
-	// - **30*	- (Default)
+	// - **30*	- (default)
 	//
 	// - **50**
 	//
@@ -188,13 +188,13 @@ type DescribeAppliedAdvicesResponseBodyItems struct {
 	//
 	// 30
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The SQL statement that is used to roll back the advice.
+	// The rollback SQL statement for the suggestion.
 	//
 	// example:
 	//
 	// alter table `schema1`.`table1` add key col1_1_idx(col1)
 	RollbackSQL *string `json:"RollbackSQL,omitempty" xml:"RollbackSQL,omitempty"`
-	// The SQL statement that is used to apply the advice.
+	// The SQL statement used to apply the suggestion.
 	//
 	// example:
 	//
@@ -206,17 +206,17 @@ type DescribeAppliedAdvicesResponseBodyItems struct {
 	//
 	// adb_demo
 	SchemaName *string `json:"SchemaName,omitempty" xml:"SchemaName,omitempty"`
-	// The submission status of the advice. Valid values:
+	// The delivery status of the suggestion. Valid values:
 	//
-	// - **SUCCEED**: The advice is submitted.
+	// - **SUCCEED**: Succeeded.
 	//
-	// - **FAILED**: The advice fails to be submitted.
+	// - **FAILED**: Failed.
 	//
 	// example:
 	//
 	// SUCCEED
 	SubmitStatus *string `json:"SubmitStatus,omitempty" xml:"SubmitStatus,omitempty"`
-	// The time when the advice was submitted. The time is in the `yyMMddHHmm` format. The time is displayed in UTC.
+	// The time when the suggestion was issued. Format: yyMMddHHmm (UTC).
 	//
 	// example:
 	//
@@ -228,7 +228,7 @@ type DescribeAppliedAdvicesResponseBodyItems struct {
 	//
 	// test
 	TableName *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
-	// The total number of entries returned. The value must be an integer that is greater than or equal to 0. Default value: 0.
+	// The total number of returned results. The value must be greater than or equal to 0 and no more than the maximum value of the Integer data type. Default value: 0.
 	//
 	// example:
 	//

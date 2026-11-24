@@ -121,7 +121,7 @@ func (s *GetDatabaseObjectsResponseBody) Validate() error {
 type GetDatabaseObjectsResponseBodyData struct {
 	// The result array.
 	DatabaseSummaryModels []*DatabaseSummaryModel `json:"DatabaseSummaryModels,omitempty" xml:"DatabaseSummaryModels,omitempty" type:"Repeated"`
-	// The page number. The value must be greater than 0 and no greater than the maximum value of the Integer data type. Default value: **1**.
+	// The page number. The value must be greater than 0 and less than or equal to the maximum value of the Integer data type. Default value: **1**.
 	//
 	// example:
 	//

@@ -43,8 +43,16 @@ type TableSummaryModel struct {
 	// 2023-01-05 13:17:55
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	// The creation source of the table or view.
+	//
+	// example:
+	//
+	// XIHE
 	CreatedBySource *string `json:"CreatedBySource,omitempty" xml:"CreatedBySource,omitempty"`
 	// The user who created the table or view.
+	//
+	// example:
+	//
+	// example_user
 	CreatedByUser *string `json:"CreatedByUser,omitempty" xml:"CreatedByUser,omitempty"`
 	// The description.
 	//

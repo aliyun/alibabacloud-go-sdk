@@ -46,29 +46,29 @@ type iOpenStructMvDetailModel interface {
 }
 
 type OpenStructMvDetailModel struct {
-	// All direct parent base tables of the materialized view.
+	// All direct parent base tables of the current materialized view.
 	BaseTableInfos []*OpenStructMvDetailModelBaseTableInfos `json:"BaseTableInfos,omitempty" xml:"BaseTableInfos,omitempty" type:"Repeated"`
-	// All direct parent base tables of the materialized view.
+	// All direct parent base tables of the current materialized view.
 	BaseTableNames [][]*string `json:"BaseTableNames,omitempty" xml:"BaseTableNames,omitempty" type:"Repeated"`
-	// Indicates whether to enable alerting for refresh latency. Valid values:
+	// Specifies whether to enable the refresh delay alert. Valid values:
 	//
-	// - true: Yes.
+	// - 1: Yes.
 	//
-	// - false: No.
+	// - 0: No.
 	//
 	// example:
 	//
-	// false
+	// 0
 	EnableDelayAlert *int32 `json:"EnableDelayAlert,omitempty" xml:"EnableDelayAlert,omitempty"`
-	// Indicates whether to enable alerting for refresh task failures. Valid values:
+	// Specifies whether to enable the refresh task failure alert. Valid values:
 	//
-	// - true: Yes.
+	// - 1: Yes.
 	//
-	// - false: No.
+	// - 0: No.
 	//
 	// example:
 	//
-	// false
+	// 0
 	EnableFailureAlert *int32 `json:"EnableFailureAlert,omitempty" xml:"EnableFailureAlert,omitempty"`
 	// The total number of explicit query hits in the last 7 days.
 	//
@@ -88,25 +88,25 @@ type OpenStructMvDetailModel struct {
 	//
 	// 20
 	ImplicitHit *int64 `json:"ImplicitHit,omitempty" xml:"ImplicitHit,omitempty"`
-	// Indicates whether the materialized view has not been accessed by explicit or implicit queries for more than 30 days since its creation.
+	// Indicates whether the current materialized view has not been accessed (including explicit and implicit queries) for more than 30 days since its creation.
 	//
 	// example:
 	//
 	// false
 	IsInactive *bool `json:"IsInactive,omitempty" xml:"IsInactive,omitempty"`
-	// The refresh latency toleration, in minutes.
+	// The refresh delay tolerance, in minutes.
 	//
 	// example:
 	//
 	// 2
 	LatencyTolerance *int32 `json:"LatencyTolerance,omitempty" xml:"LatencyTolerance,omitempty"`
-	// The disk space that the materialized view occupies for hot data, in bytes.
+	// The hot data disk space occupied by the materialized view, in bytes.
 	//
 	// example:
 	//
 	// 1234
 	LocalSize *int64 `json:"LocalSize,omitempty" xml:"LocalSize,omitempty"`
-	// Whether query rewrite is enabled for the materialized view.
+	// Specifies whether query rewrite is enabled for the current materialized view.
 	//
 	// example:
 	//
@@ -124,13 +124,13 @@ type OpenStructMvDetailModel struct {
 	//
 	// FAST
 	RefreshState *string `json:"RefreshState,omitempty" xml:"RefreshState,omitempty"`
-	// The disk space that the materialized view occupies for cold data, in bytes.
+	// The cold data disk space occupied by the materialized view, in bytes.
 	//
 	// example:
 	//
 	// 1234
 	RemoteSize *int64 `json:"RemoteSize,omitempty" xml:"RemoteSize,omitempty"`
-	// The resource group on which the refresh depends.
+	// The resource group that the refresh depends on.
 	//
 	// example:
 	//
@@ -325,7 +325,7 @@ func (s *OpenStructMvDetailModel) Validate() error {
 }
 
 type OpenStructMvDetailModelBaseTableInfos struct {
-	// Whether the base table is a materialized view.
+	// Specifies whether the base table is a materialized view.
 	//
 	// example:
 	//

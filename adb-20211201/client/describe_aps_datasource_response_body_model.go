@@ -16,7 +16,7 @@ type iDescribeApsDatasourceResponseBody interface {
 }
 
 type DescribeApsDatasourceResponseBody struct {
-	// -
+	// The APS data source information.
 	ApsDatasource *DescribeApsDatasourceResponseBodyApsDatasource `json:"ApsDatasource,omitempty" xml:"ApsDatasource,omitempty" type:"Struct"`
 	// The ID of the request.
 	//
@@ -78,7 +78,7 @@ type DescribeApsDatasourceResponseBodyApsDatasource struct {
 	//
 	// example:
 	//
-	// -
+	// {"workspaceURL":"https://workspace.example.com"}
 	DatabricksInfo *DescribeApsDatasourceResponseBodyApsDatasourceDatabricksInfo `json:"DatabricksInfo,omitempty" xml:"DatabricksInfo,omitempty" type:"Struct"`
 	// The description of the data source.
 	//
@@ -102,13 +102,13 @@ type DescribeApsDatasourceResponseBodyApsDatasource struct {
 	//
 	// example:
 	//
-	// -
+	// {"Vswitch":"vsw-******","SecurityGroup":"sg-******"}
 	HiveInfo *DescribeApsDatasourceResponseBodyApsDatasourceHiveInfo `json:"HiveInfo,omitempty" xml:"HiveInfo,omitempty" type:"Struct"`
 	// The Kafka instance information.
 	//
 	// example:
 	//
-	// -
+	// {"KafkaClusterId":"alikafka_pre-cn-aaa1a1aaa111","KafkaTopic":"example-topic"}
 	KafkaInfo *DescribeApsDatasourceResponseBodyApsDatasourceKafkaInfo `json:"KafkaInfo,omitempty" xml:"KafkaInfo,omitempty" type:"Struct"`
 	// This parameter is no longer supported.
 	//
@@ -126,7 +126,7 @@ type DescribeApsDatasourceResponseBodyApsDatasource struct {
 	//
 	// example:
 	//
-	// -
+	// {"Project":"example-project","Store":"example-logstore"}
 	SlsInfo *DescribeApsDatasourceResponseBodyApsDatasourceSlsInfo `json:"SlsInfo,omitempty" xml:"SlsInfo,omitempty" type:"Struct"`
 }
 
@@ -276,13 +276,13 @@ type DescribeApsDatasourceResponseBodyApsDatasourceDatabricksInfo struct {
 	//
 	// example:
 	//
-	// ******
+	// example****token
 	AccessToken *string `json:"accessToken,omitempty" xml:"accessToken,omitempty"`
 	// The URL of the workspace.
 	//
 	// example:
 	//
-	// -
+	// https://workspace.example.com
 	WorkspaceURL *string `json:"workspaceURL,omitempty" xml:"workspaceURL,omitempty"`
 }
 
@@ -317,11 +317,11 @@ func (s *DescribeApsDatasourceResponseBodyApsDatasourceDatabricksInfo) Validate(
 }
 
 type DescribeApsDatasourceResponseBodyApsDatasourceHiveInfo struct {
-	// The ID of the E-MapReduce (EMR) cluster.
+	// The ID of the EMR cluster.
 	//
 	// example:
 	//
-	// -
+	// c-b933c5aac8fe****
 	EmrClusterId *string `json:"EmrClusterId,omitempty" xml:"EmrClusterId,omitempty"`
 	// The Hive metastore URL.
 	//
@@ -329,13 +329,13 @@ type DescribeApsDatasourceResponseBodyApsDatasourceHiveInfo struct {
 	//
 	// -
 	MetaStoreUri *string `json:"MetaStoreUri,omitempty" xml:"MetaStoreUri,omitempty"`
-	// The ID of the security group.
+	// The security group ID.
 	//
 	// example:
 	//
 	// sg-******
 	SecurityGroup *string `json:"SecurityGroup,omitempty" xml:"SecurityGroup,omitempty"`
-	// The ID of the vSwitch.
+	// The vSwitch ID.
 	//
 	// example:
 	//
@@ -396,7 +396,7 @@ type DescribeApsDatasourceResponseBodyApsDatasourceKafkaInfo struct {
 	//
 	// example:
 	//
-	// -
+	// alikafka_pre-cn-aaa1a1aaa111
 	KafkaClusterId *string `json:"KafkaClusterId,omitempty" xml:"KafkaClusterId,omitempty"`
 	// kafka topic
 	//
@@ -662,7 +662,7 @@ func (s *DescribeApsDatasourceResponseBodyApsDatasourceRdsMysqlInfo) Validate() 
 }
 
 type DescribeApsDatasourceResponseBodyApsDatasourceSlsInfo struct {
-	// Specifies whether the resource is cross-account. Valid values:
+	// Specifies whether the resource belongs to a different account. Valid values:
 	//
 	// - **true**: The current network instance is a cross-account resource.
 	//
@@ -688,7 +688,7 @@ type DescribeApsDatasourceResponseBodyApsDatasourceSlsInfo struct {
 	//
 	// example:
 	//
-	// ***
+	// example-project
 	Project *string `json:"Project,omitempty" xml:"Project,omitempty"`
 	// The ID of the region to which the production site belongs.
 	//
@@ -700,7 +700,7 @@ type DescribeApsDatasourceResponseBodyApsDatasourceSlsInfo struct {
 	//
 	// example:
 	//
-	// ***
+	// example-logstore
 	Store *string `json:"Store,omitempty" xml:"Store,omitempty"`
 }
 

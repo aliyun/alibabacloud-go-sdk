@@ -32,7 +32,7 @@ type CreateFormationCrawlerResponseBody struct {
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// Indicates whether the request is processed.
+	// Indicates whether the request was processed successfully.
 	//
 	// example:
 	//
@@ -44,21 +44,21 @@ type CreateFormationCrawlerResponseBody struct {
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The response message. A value of OK indicates success.
+	// The returned message. The value is OK if the request is successful.
 	//
 	// example:
 	//
 	// OK
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The request ID.
+	// The request tracking ID.
 	//
 	// example:
 	//
 	// 019F3BE7-E8FA-3DC5-8EE7-501A90B5A54D
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the call is successful. Valid values:
+	// Indicates whether the call was successful. Valid values:
 	//
-	// - **true**: The call is successful.
+	// - **true**: The call was successful.
 	//
 	// - **false**: The call failed.
 	//
@@ -66,7 +66,7 @@ type CreateFormationCrawlerResponseBody struct {
 	//
 	// True
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// The operation result. A value of true indicates that the task is created.
+	// The operation result. A value of true indicates that the task was created successfully.
 	//
 	// example:
 	//

@@ -24,7 +24,7 @@ type iModifyApsSlsADBJobResponseBody interface {
 }
 
 type ModifyApsSlsADBJobResponseBody struct {
-	// The HTTP status code or the error code.
+	// The status code or POP error code.
 	//
 	// example:
 	//
@@ -34,35 +34,35 @@ type ModifyApsSlsADBJobResponseBody struct {
 	//
 	// example:
 	//
-	// -
+	// {"test":"test","test2":1}
 	Data map[string]interface{} `json:"Data,omitempty" xml:"Data,omitempty"`
-	// The response code. The status code 200 indicates that the request was successful.
+	// The HTTP status code returned by the request. A status code of 200 indicates that the request was successful.
 	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The returned message. Valid values:
+	// The execution result of applying the suggestion. Valid values:
 	//
-	// 	- If the request was successful, a success message is returned.****
+	// - If the request is successful, **SUCCESS*	- is returned.
 	//
-	// 	- If the request failed, an error message is returned.
+	// - If an exception occurs, the specific error message is returned.
 	//
 	// example:
 	//
 	// SUCCESS
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
 	// ******-3EEC-******-9F06-******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. Valid values:
+	// Indicates whether the call was successful. Valid values:
 	//
-	// 	- **true**
+	// - **true**: The call was successful.
 	//
-	// 	- **false**
+	// - **false**: The call failed.
 	//
 	// example:
 	//

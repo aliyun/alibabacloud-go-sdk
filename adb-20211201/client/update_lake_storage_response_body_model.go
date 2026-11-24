@@ -24,29 +24,29 @@ type iUpdateLakeStorageResponseBody interface {
 }
 
 type UpdateLakeStorageResponseBody struct {
-	// The status code. A value of 200 indicates that the request is successful.
+	// The status code. A value of 200 indicates success.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The returned data.
+	// The returned result.
 	//
 	// example:
 	//
-	// -
+	// {"Description":"Sample lake storage","RowCount":1000,"TableCount":1}
 	Data *UpdateLakeStorageResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The HTTP status code. A value of 200 indicates that the request was successful.
+	// The HTTP status code returned for the request. A value of 200 indicates that the request was successful.
 	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The returned message. Valid values:
+	// The additional information about the call result. Description:
 	//
-	// 	- If the request was successful, an OK message is returned.
+	// - If the request is successful, OK is returned.
 	//
-	// 	- If the request failed, an error message is returned.
+	// - If the request fails, a specific error code is returned.
 	//
 	// example:
 	//
@@ -58,11 +58,11 @@ type UpdateLakeStorageResponseBody struct {
 	//
 	// ******-3EEC-******-9F06-******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. Valid values:
+	// Indicates whether the call was successful. Valid values:
 	//
-	// 	- **true**
+	// - **true**: The call was successful.
 	//
-	// 	- **false**
+	// - **false**: The call failed.
 	//
 	// example:
 	//
@@ -142,19 +142,19 @@ func (s *UpdateLakeStorageResponseBody) Validate() error {
 }
 
 type UpdateLakeStorageResponseBodyData struct {
-	// The time when the lake storage was created.
+	// The creation time.
 	//
 	// example:
 	//
 	// 2023-05-15T07:24:58Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The creator UID.
+	// The UID of the creator.
 	//
 	// example:
 	//
 	// 123456
 	CreatorUid *string `json:"CreatorUid,omitempty" xml:"CreatorUid,omitempty"`
-	// The ID of the AnalyticDB for MySQL cluster that is associated with the lake storage.
+	// The ADB instance ID.
 	//
 	// example:
 	//
@@ -176,15 +176,15 @@ type UpdateLakeStorageResponseBodyData struct {
 	//
 	// example:
 	//
-	// -
+	// adb-lake-cn-hangzhou-1a1aaaa11a
 	LakeStorageId *string `json:"LakeStorageId,omitempty" xml:"LakeStorageId,omitempty"`
-	// The operator UID.
+	// The UID of the operator.
 	//
 	// example:
 	//
 	// 123456
 	OperatorUid *string `json:"OperatorUid,omitempty" xml:"OperatorUid,omitempty"`
-	// The owner UID.
+	// The UID of the owner.
 	//
 	// example:
 	//
@@ -196,11 +196,11 @@ type UpdateLakeStorageResponseBodyData struct {
 	//
 	// 0
 	PartitionCount *string `json:"PartitionCount,omitempty" xml:"PartitionCount,omitempty"`
-	// The permissions on the lake storage.
+	// The permissions of the lake storage.
 	//
 	// example:
 	//
-	// -
+	// [{"Account":"1234567890123456","Read":true,"Write":true}]
 	Permissions []*UpdateLakeStorageResponseBodyDataPermissions `json:"Permissions,omitempty" xml:"Permissions,omitempty" type:"Repeated"`
 	// The region ID.
 	//
@@ -208,19 +208,19 @@ type UpdateLakeStorageResponseBodyData struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The total number of entries returned.
+	// The total number of data rows.
 	//
 	// example:
 	//
-	// >=
+	// 1000
 	RowCount *int64 `json:"RowCount,omitempty" xml:"RowCount,omitempty"`
-	// The number of tables.
+	// The number of databases and tables.
 	//
 	// example:
 	//
 	// 1234
 	TableCount *int32 `json:"TableCount,omitempty" xml:"TableCount,omitempty"`
-	// The time when the lake storage was last updated.
+	// The update time.
 	//
 	// example:
 	//
@@ -380,9 +380,9 @@ type UpdateLakeStorageResponseBodyDataPermissions struct {
 	//
 	// example:
 	//
-	// test
+	// 1234567890123456
 	Account *string `json:"Account,omitempty" xml:"Account,omitempty"`
-	// The read permissions.
+	// The read permission.
 	//
 	// example:
 	//
@@ -394,7 +394,7 @@ type UpdateLakeStorageResponseBodyDataPermissions struct {
 	//
 	// SUB
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// The write permissions.
+	// The write permission.
 	//
 	// example:
 	//

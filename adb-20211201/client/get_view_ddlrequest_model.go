@@ -20,7 +20,7 @@ type iGetViewDDLRequest interface {
 }
 
 type GetViewDDLRequest struct {
-	// The cluster ID.
+	// The ID of the cluster.
 	//
 	// This parameter is required.
 	//

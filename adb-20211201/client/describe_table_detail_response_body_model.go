@@ -26,7 +26,7 @@ type iDescribeTableDetailResponseBody interface {
 }
 
 type DescribeTableDetailResponseBody struct {
-	// The detailed reason why the access was denied.
+	// The detailed reason for access denial.
 	//
 	// example:
 	//
@@ -48,13 +48,13 @@ type DescribeTableDetailResponseBody struct {
 	//
 	// }
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	// The average number of rows in a shard.
+	// The average number of rows per shard.
 	//
 	// example:
 	//
 	// 160
 	AvgSize *string `json:"AvgSize,omitempty" xml:"AvgSize,omitempty"`
-	// The queried data distribution.
+	// The details.
 	Items *DescribeTableDetailResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Struct"`
 	// The page number.
 	//
@@ -62,7 +62,7 @@ type DescribeTableDetailResponseBody struct {
 	//
 	// 1
 	PageNumber *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page.
+	// The number of records per page.
 	//
 	// example:
 	//
@@ -74,7 +74,7 @@ type DescribeTableDetailResponseBody struct {
 	//
 	// 1AD222E9-E606-4A42-BF6D-8A4442913CEF
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries returned.
+	// The total number of records.
 	//
 	// example:
 	//
@@ -163,7 +163,7 @@ func (s *DescribeTableDetailResponseBody) Validate() error {
 }
 
 type DescribeTableDetailResponseBodyItems struct {
-	// The queried shards.
+	// The list of shards.
 	Shard []*DescribeTableDetailResponseBodyItemsShard `json:"Shard,omitempty" xml:"Shard,omitempty" type:"Repeated"`
 }
 
@@ -198,13 +198,13 @@ func (s *DescribeTableDetailResponseBodyItems) Validate() error {
 }
 
 type DescribeTableDetailResponseBodyItemsShard struct {
-	// The shard ID. Only the numeric part of the shard name is returned.
+	// The shard number. Only the numeric part of the shard name is returned.
 	//
 	// example:
 	//
 	// 1
 	Id *int32 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The number of rows in the table.
+	// The table size and number of rows.
 	//
 	// example:
 	//

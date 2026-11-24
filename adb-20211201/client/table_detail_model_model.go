@@ -53,8 +53,16 @@ type TableDetailModel struct {
 	// 2023-01-05 13:17:55
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	// The creation source of the table.
+	//
+	// example:
+	//
+	// APS
 	CreatedBySource *string `json:"CreatedBySource,omitempty" xml:"CreatedBySource,omitempty"`
 	// The user who created the table.
+	//
+	// example:
+	//
+	// example_user
 	CreatedByUser *string `json:"CreatedByUser,omitempty" xml:"CreatedByUser,omitempty"`
 	// The description.
 	//
@@ -75,6 +83,10 @@ type TableDetailModel struct {
 	// abc
 	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
 	// The table property parameters.
+	//
+	// example:
+	//
+	// {"escape.delim":"\\\\","field.delim":" "}
 	Parameters map[string]*string `json:"Parameters,omitempty" xml:"Parameters,omitempty"`
 	// The logical database name.
 	//

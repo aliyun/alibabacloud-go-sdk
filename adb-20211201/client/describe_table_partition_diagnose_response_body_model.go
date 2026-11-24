@@ -32,7 +32,7 @@ type iDescribeTablePartitionDiagnoseResponseBody interface {
 }
 
 type DescribeTablePartitionDiagnoseResponseBody struct {
-	// The information about the request denial.
+	// The details of the access denial.
 	//
 	// example:
 	//
@@ -60,9 +60,9 @@ type DescribeTablePartitionDiagnoseResponseBody struct {
 	//
 	// amv-bp171g24yvbxxxxx
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	// The queried detection items and detection results.
+	// The list of check items and check results.
 	DetectionItems []*DescribeTablePartitionDiagnoseResponseBodyDetectionItems `json:"DetectionItems,omitempty" xml:"DetectionItems,omitempty" type:"Repeated"`
-	// The queried partition diagnostic information.
+	// The details.
 	Items []*DescribeTablePartitionDiagnoseResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
 	// The page number.
 	//
@@ -82,19 +82,19 @@ type DescribeTablePartitionDiagnoseResponseBody struct {
 	//
 	// 1AD222E9-E606-4A42-BF6D-8A4442913CEF
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The recommended maximum number of rows in each partition.
+	// The recommended maximum number of rows for subpartitions.
 	//
 	// example:
 	//
 	// 640000000
 	SuggestMaxRecordsPerPartition *int64 `json:"SuggestMaxRecordsPerPartition,omitempty" xml:"SuggestMaxRecordsPerPartition,omitempty"`
-	// The recommended minimum number of rows in each partition.
+	// The recommended minimum number of rows for subpartitions.
 	//
 	// example:
 	//
 	// 64000000
 	SuggestMinRecordsPerPartition *int64 `json:"SuggestMinRecordsPerPartition,omitempty" xml:"SuggestMinRecordsPerPartition,omitempty"`
-	// The total number of entries returned.
+	// The total number of entries.
 	//
 	// example:
 	//
@@ -223,25 +223,25 @@ func (s *DescribeTablePartitionDiagnoseResponseBody) Validate() error {
 }
 
 type DescribeTablePartitionDiagnoseResponseBodyDetectionItems struct {
-	// The detection result.
+	// The check result message.
 	//
 	// example:
 	//
-	// Multiple oversized non-partitioned tables are detected.
+	// Unreasonable partitions detected in the table
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The name of the detection item.
+	// The name of the check item.
 	//
 	// example:
 	//
-	// Improper partition field diagnostics
+	// Table partition rationality check
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The severity level of the detection result. Valid values:
+	// The status of the check result. Valid values:
 	//
-	// 	- NORMAL
+	// - NORMAL
 	//
-	// 	- WARNING
+	// - WARNING
 	//
-	// 	- CRITICAL
+	// - CRITICAL
 	//
 	// example:
 	//
@@ -289,7 +289,7 @@ func (s *DescribeTablePartitionDiagnoseResponseBodyDetectionItems) Validate() er
 }
 
 type DescribeTablePartitionDiagnoseResponseBodyItems struct {
-	// The improper partitions.
+	// The unreasonable partitions.
 	//
 	// example:
 	//
@@ -301,27 +301,27 @@ type DescribeTablePartitionDiagnoseResponseBodyItems struct {
 	//
 	// 2
 	PartitionNumber *int32 `json:"PartitionNumber,omitempty" xml:"PartitionNumber,omitempty"`
-	// The name of the database.
+	// The database name.
 	//
 	// example:
 	//
 	// test_db
 	SchemaName *string `json:"SchemaName,omitempty" xml:"SchemaName,omitempty"`
-	// The storage percentage of the table. Unit: %.
+	// The table storage proportion. Unit: %.
 	//
-	// >  Formula: Table storage percentage = Total data size of a table/Total data size of the cluster × 100%.
+	// > Calculation formula: Table storage proportion = Total data volume of the table / Total data volume of the instance × 100.
 	//
 	// example:
 	//
 	// 66.23
 	SpaceRatio *float64 `json:"SpaceRatio,omitempty" xml:"SpaceRatio,omitempty"`
-	// The name of the table.
+	// The table name.
 	//
 	// example:
 	//
 	// user
 	TableName *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
-	// The total data size of the table. Unit: bytes.
+	// The total data volume. Unit: bytes.
 	//
 	// example:
 	//

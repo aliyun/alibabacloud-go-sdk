@@ -28,7 +28,7 @@ type iDescribeApsActionLogsResponseBody interface {
 }
 
 type DescribeApsActionLogsResponseBody struct {
-	// The information about the request denial.
+	// The details of the access denial.
 	//
 	// example:
 	//
@@ -50,9 +50,9 @@ type DescribeApsActionLogsResponseBody struct {
 	//
 	// }
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	// The queried logs.
+	// The list of logs.
 	ActionLogs []*DescribeApsActionLogsResponseBodyActionLogs `json:"ActionLogs,omitempty" xml:"ActionLogs,omitempty" type:"Repeated"`
-	// The ID of the AnalyticDB for MySQL Data Lakehouse Edition (V3.0) cluster.
+	// The cluster ID.
 	//
 	// example:
 	//
@@ -76,13 +76,13 @@ type DescribeApsActionLogsResponseBody struct {
 	//
 	// A5EDBA27-AF3E-5966-9503-FD1557E19167
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries returned.
+	// The total number of entries.
 	//
 	// example:
 	//
 	// 3
 	TotalCount *string `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	// The ID of the real-time data ingestion job.
+	// The ID of the data link task.
 	//
 	// example:
 	//
@@ -184,37 +184,37 @@ func (s *DescribeApsActionLogsResponseBody) Validate() error {
 }
 
 type DescribeApsActionLogsResponseBodyActionLogs struct {
-	// The content of the log.
+	// The log content.
 	//
 	// example:
 	//
 	// DDL migration job finished
 	Context *string `json:"Context,omitempty" xml:"Context,omitempty"`
-	// The phase during which the log was generated. Valid values:
+	// The task stage. Valid values:
 	//
-	// 	- **StructureMigrate**: schema migration.
+	// - **StructureMigrate**: Schema migration.
 	//
-	// 	- **FullDataSync**: full data synchronization.
+	// - **FullDataSync**: Full data synchronization.
 	//
-	// 	- **IncrementalSync**: incremental data synchronization.
+	// - **IncrementalSync**: Incremental data synchronization.
 	//
 	// example:
 	//
 	// FullDataSync
 	Stage *string `json:"Stage,omitempty" xml:"Stage,omitempty"`
-	// The type of the log. Multiple log types are separated by commas (,). Valid values:
+	// The log type. Separate multiple log types with commas (,). Valid values:
 	//
-	// 	- **INFO**
+	// - **INFO**: Information.
 	//
-	// 	- **WARN**
+	// - **WARN**: Warning.
 	//
-	// 	- **ERROR**
+	// - **ERROR**: Error.
 	//
 	// example:
 	//
 	// INFO,WARN,ERROR
 	State *string `json:"State,omitempty" xml:"State,omitempty"`
-	// The time when the log was generated. The time follows the ISO 8601 standard in the **yyyy-MM-ddTHH:mm:ssZ*	- format. The time is displayed in UTC.
+	// The log time. The time is in the **yyyy-MM-ddTHH:mm:ssZ*	- format and must be in UTC.
 	//
 	// example:
 	//

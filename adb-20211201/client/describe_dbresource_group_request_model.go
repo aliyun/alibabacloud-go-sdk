@@ -34,7 +34,7 @@ type DescribeDBResourceGroupRequest struct {
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
 	// The name of the resource group.
 	//
-	// > If you do not specify this parameter, information about all resource groups in the specified cluster is returned by default.
+	// > If you do not specify this parameter, the information about all resource groups in the specified cluster is returned by default.
 	//
 	// example:
 	//
@@ -46,7 +46,7 @@ type DescribeDBResourceGroupRequest struct {
 	//
 	// - **Job**
 	//
-	// > For more information about resource groups in Data Lakehouse Edition, see [Resource group overview](https://help.aliyun.com/document_detail/428610.html).
+	// > For more information about Data Lakehouse Edition resource groups, see [Resource groups](https://help.aliyun.com/document_detail/428610.html).
 	//
 	// example:
 	//

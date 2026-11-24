@@ -30,11 +30,11 @@ type iDescribeApsJobsResponseBody interface {
 }
 
 type DescribeApsJobsResponseBody struct {
-	// The list of APS tasks.
+	// The list of tasks.
 	//
 	// example:
 	//
-	// -
+	// [{"ApsJobId":"aps-example","ApsJobName":"example-job","CreateTime":"2022-06-28 15:00:04"}]
 	APSJobs []*DescribeApsJobsResponseBodyAPSJobs `json:"APSJobs,omitempty" xml:"APSJobs,omitempty" type:"Repeated"`
 	// The backend error code.
 	//
@@ -42,7 +42,7 @@ type DescribeApsJobsResponseBody struct {
 	//
 	// ok
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The HTTP status code returned for the request. A value of 200 indicates that the request was successful.
+	// The HTTP status code. A status code of 200 indicates that the request was successful.
 	//
 	// example:
 	//
@@ -50,9 +50,9 @@ type DescribeApsJobsResponseBody struct {
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
 	// The additional information about the call result. Valid values:
 	//
-	// - If the request is successful, **Success*	- is returned.
+	// - If the request is normal, **Success*	- is returned.
 	//
-	// - If the request fails, a specific error code is returned.
+	// - If the request is abnormal, a specific error code is returned.
 	//
 	// example:
 	//
@@ -78,9 +78,9 @@ type DescribeApsJobsResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the call was successful. Valid values:
 	//
-	// - **true**: Successful.
+	// - **true**: The call was successful.
 	//
-	// - **false**: Failed.
+	// - **false**: The call failed.
 	//
 	// example:
 	//
@@ -209,7 +209,7 @@ type DescribeApsJobsResponseBodyAPSJobs struct {
 	//
 	// data-sync-******
 	ApsJobName *string `json:"ApsJobName,omitempty" xml:"ApsJobName,omitempty"`
-	// The creation time in the yyyy-MM-dd HH:mm:ss format.
+	// The creation time. The time is in the yyyy-MM-dd HH:mm:ss format.
 	//
 	// example:
 	//
@@ -249,13 +249,13 @@ type DescribeApsJobsResponseBodyAPSJobs struct {
 	//
 	// example:
 	//
-	// -
+	// Synchronizing
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	// The status of the subtask.
 	//
 	// example:
 	//
-	// -
+	// Synchronizing
 	SubStatus *string `json:"SubStatus,omitempty" xml:"SubStatus,omitempty"`
 }
 

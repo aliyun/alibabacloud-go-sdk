@@ -26,7 +26,7 @@ type iAddKnowledgeFileRequest interface {
 }
 
 type AddKnowledgeFileRequest struct {
-	// The AnalyticDB for MySQL cluster ID.
+	// The ID of the AnalyticDB for MySQL cluster.
 	//
 	// This parameter is required.
 	//
@@ -48,7 +48,7 @@ type AddKnowledgeFileRequest struct {
 	//
 	// pdf
 	FileType *string `json:"FileType,omitempty" xml:"FileType,omitempty"`
-	// Specifies whether the path is a folder.
+	// Specifies whether the object is a directory.
 	//
 	// example:
 	//
@@ -60,13 +60,13 @@ type AddKnowledgeFileRequest struct {
 	//
 	// high
 	Priority *string `json:"Priority,omitempty" xml:"Priority,omitempty"`
-	// The file tags in JSON format.
+	// The tags of the file, in JSON format.
 	//
 	// example:
 	//
 	// {"type":"game"}
 	Tags *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
-	// The user who uploads the knowledge base file.
+	// The user who uploads the file to the knowledge base.
 	//
 	// example:
 	//

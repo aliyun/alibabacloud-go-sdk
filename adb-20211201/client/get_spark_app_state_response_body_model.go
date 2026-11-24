@@ -80,7 +80,7 @@ type GetSparkAppStateResponseBodyData struct {
 	//
 	// amv-bp1h405854m****
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	// The alert message returned, such as task execution failure or insufficient resources. This parameter is empty if no alerts are generated.
+	// The alert message, such as task execution failure or insufficient resources. This field is empty if no alerts are triggered.
 	//
 	// example:
 	//

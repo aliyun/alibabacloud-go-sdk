@@ -30,7 +30,7 @@ type iDescribeMvRecommendSubTasksRequest interface {
 }
 
 type DescribeMvRecommendSubTasksRequest struct {
-	// A fixed value. This value cannot be modified.
+	// A fixed value. This parameter cannot be modified.
 	//
 	// example:
 	//
@@ -42,7 +42,7 @@ type DescribeMvRecommendSubTasksRequest struct {
 	//
 	// am-bp1ub9grke1****
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	// A fixed value. This value cannot be modified.
+	// A fixed value. This parameter cannot be modified.
 	//
 	// example:
 	//
@@ -56,7 +56,7 @@ type DescribeMvRecommendSubTasksRequest struct {
 	//
 	// - Desc
 	//
-	// Valid values for the sort field:
+	// Valid values for the field:
 	//
 	// - StartTime
 	//

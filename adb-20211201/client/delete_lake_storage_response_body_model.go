@@ -24,13 +24,13 @@ type iDeleteLakeStorageResponseBody interface {
 }
 
 type DeleteLakeStorageResponseBody struct {
-	// The response code. The status code 200 indicates that the request was successful. Other status codes indicate that the request failed.
+	// The status code. A value of 200 indicates success.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// Indicates whether the delete operation was successful.
+	// The deletion result.
 	//
 	// example:
 	//
@@ -42,7 +42,7 @@ type DeleteLakeStorageResponseBody struct {
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The returned message. If the operation is asynchronously implemented, the job ID is returned.
+	// The job ID returned if the creation API is implemented asynchronously.
 	//
 	// example:
 	//
@@ -54,11 +54,11 @@ type DeleteLakeStorageResponseBody struct {
 	//
 	// 2******-B2C1-408E-AA73-DB8D59******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. Valid values:
+	// Indicates whether the call is successful.
 	//
-	// 	- **true**
+	// - **true**: The call is successful.
 	//
-	// 	- **false**
+	// - **false**: The call failed.
 	//
 	// example:
 	//

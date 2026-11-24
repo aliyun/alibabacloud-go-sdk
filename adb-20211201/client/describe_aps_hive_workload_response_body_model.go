@@ -20,7 +20,7 @@ type DescribeApsHiveWorkloadResponseBody struct {
 	//
 	// example:
 	//
-	// -
+	// {"WorkloadName":"test","State":"COMPLETED","FullComputeUnit":"16"}
 	ApsWorkload *DescribeApsHiveWorkloadResponseBodyApsWorkload `json:"ApsWorkload,omitempty" xml:"ApsWorkload,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -66,13 +66,13 @@ func (s *DescribeApsHiveWorkloadResponseBody) Validate() error {
 }
 
 type DescribeApsHiveWorkloadResponseBodyApsWorkload struct {
-	// The advanced configurations.
+	// The advanced configuration.
 	//
 	// example:
 	//
 	// test.adv.config=value
 	AdvancedConfig *string `json:"AdvancedConfig,omitempty" xml:"AdvancedConfig,omitempty"`
-	// The handling strategy when a database or table with the same name exists at the destination.
+	// The handling strategy for databases or tables with the same name in the destination.
 	//
 	// example:
 	//
@@ -106,9 +106,9 @@ type DescribeApsHiveWorkloadResponseBodyApsWorkload struct {
 	//
 	// example:
 	//
-	// -
+	// c-b933c5aac8fe****
 	EmrClusterId *string `json:"EmrClusterId,omitempty" xml:"EmrClusterId,omitempty"`
-	// The number of ACUs required for migration.
+	// The number of ACUs required for the migration.
 	//
 	// example:
 	//
@@ -138,7 +138,7 @@ type DescribeApsHiveWorkloadResponseBodyApsWorkload struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The resource pool to which the SQL statement belongs.
+	// The resource pool to which the SQL statements belong.
 	//
 	// example:
 	//
@@ -186,7 +186,7 @@ type DescribeApsHiveWorkloadResponseBodyApsWorkload struct {
 	//
 	// test
 	WorkloadName *string `json:"WorkloadName,omitempty" xml:"WorkloadName,omitempty"`
-	// The workload name.
+	// The workload type name.
 	//
 	// example:
 	//

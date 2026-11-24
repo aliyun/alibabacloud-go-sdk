@@ -20,21 +20,25 @@ type iSerDeInfoModel interface {
 }
 
 type SerDeInfoModel struct {
-	// The name of the serialization or deserialization information.
+	// The name of the serialization information.
 	//
 	// example:
 	//
 	// example
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The serialization or deserialization configuration parameter.
+	// The configuration parameters for the serialization and deserialization sequence.
+	//
+	// example:
+	//
+	// {"serialization.format":"|","field.delim":"|"}
 	Parameters map[string]*string `json:"Parameters,omitempty" xml:"Parameters,omitempty"`
-	// The ID of the serialization or deserialization information.
+	// The ID.
 	//
 	// example:
 	//
 	// 123
 	SerDeId *int64 `json:"SerDeId,omitempty" xml:"SerDeId,omitempty"`
-	// The library that is used for serialization.
+	// The library used for serialization.
 	//
 	// example:
 	//

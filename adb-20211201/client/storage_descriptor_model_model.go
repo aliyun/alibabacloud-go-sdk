@@ -30,19 +30,19 @@ type iStorageDescriptorModel interface {
 }
 
 type StorageDescriptorModel struct {
-	// Indicates whether the storage description is compressed.
+	// Specifies whether the data is compressed.
 	//
 	// example:
 	//
 	// false
 	Compressed *bool `json:"Compressed,omitempty" xml:"Compressed,omitempty"`
-	// The input format of the storage description.
+	// The input format.
 	//
 	// example:
 	//
 	// org.apache.hadoop.hive.ql.io.parquet.MapredParquetInputFormat
 	InputFormat *string `json:"InputFormat,omitempty" xml:"InputFormat,omitempty"`
-	// The location of the storage description.
+	// The storage location.
 	//
 	// example:
 	//
@@ -54,23 +54,27 @@ type StorageDescriptorModel struct {
 	//
 	// 1
 	NumBuckets *int64 `json:"NumBuckets,omitempty" xml:"NumBuckets,omitempty"`
-	// The output format of the storage description.
+	// The output format.
 	//
 	// example:
 	//
 	// org.apache.hadoop.hive.ql.io.parquet.MapredParquetInputFormat
 	OutputFormat *string `json:"OutputFormat,omitempty" xml:"OutputFormat,omitempty"`
-	// The storage configuration parameter.
+	// The storage configuration parameters.
+	//
+	// example:
+	//
+	// {}
 	Parameters map[string]*string `json:"Parameters,omitempty" xml:"Parameters,omitempty"`
-	// The ID of the storage description.
+	// The storage ID of the description.
 	//
 	// example:
 	//
 	// 1
 	SdId *int64 `json:"SdId,omitempty" xml:"SdId,omitempty"`
-	// The information about serialization or deserialization.
+	// The serialization and deserialization sequence information.
 	SerDeInfo *SerDeInfoModel `json:"SerDeInfo,omitempty" xml:"SerDeInfo,omitempty"`
-	// Indicates whether the storage description is stored in subdirectories.
+	// Specifies whether the data is stored in subdirectories.
 	//
 	// example:
 	//

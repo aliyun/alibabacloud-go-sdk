@@ -52,13 +52,15 @@ type GetViewObjectsRequest struct {
 	//
 	// test_filter
 	FilterViewName *string `json:"FilterViewName,omitempty" xml:"FilterViewName,omitempty"`
-	// The view type. Valid values:
+	// The view type.
+	//
+	// Valid values:
 	//
 	// - VIRTUAL_VIEW
 	//
 	// - MATERIALIZED_VIEW
 	//
-	// Default value: empty.
+	// Default value: null.
 	//
 	// example:
 	//
@@ -66,13 +68,13 @@ type GetViewObjectsRequest struct {
 	FilterViewType *string `json:"FilterViewType,omitempty" xml:"FilterViewType,omitempty"`
 	// The sort field.
 	//
-	// Valid values for the sort type:
+	// Valid values for Type:
 	//
 	// - Asc
 	//
 	// - Desc
 	//
-	// Valid values for the sort field:
+	// Valid values for Field:
 	//
 	// - ViewName
 	//
@@ -118,7 +120,7 @@ type GetViewObjectsRequest struct {
 	//
 	// adb_demo
 	SchemaName *string `json:"SchemaName,omitempty" xml:"SchemaName,omitempty"`
-	// Specifies whether to display the base table information of materialized views.
+	// Specifies whether to display the base table information of the materialized view.
 	//
 	// example:
 	//

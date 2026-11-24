@@ -20,19 +20,19 @@ type iGetFormationCrawlerRequest interface {
 }
 
 type GetFormationCrawlerRequest struct {
-	// The task ID.
+	// The ID of the task.
 	//
 	// example:
 	//
 	// 247
 	CrawlerTaskId *int64 `json:"CrawlerTaskId,omitempty" xml:"CrawlerTaskId,omitempty"`
-	// The task name.
+	// The name of the task.
 	//
 	// example:
 	//
 	// test-crawler-dbname
 	CrawlerTaskName *string `json:"CrawlerTaskName,omitempty" xml:"CrawlerTaskName,omitempty"`
-	// The cluster ID.
+	// The ID of the cluster.
 	//
 	// This parameter is required.
 	//
@@ -42,7 +42,7 @@ type GetFormationCrawlerRequest struct {
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
 	// The region ID.
 	//
-	// > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/143074.html) operation to query the supported regions and zones, including region IDs.
+	// > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/143074.html) operation to view information about supported regions and zones, including region IDs.
 	//
 	// This parameter is required.
 	//

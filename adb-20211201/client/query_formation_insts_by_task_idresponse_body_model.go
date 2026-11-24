@@ -48,7 +48,7 @@ type QueryFormationInstsByTaskIDResponseBody struct {
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
 	// The task list.
 	Items []map[string]interface{} `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
-	// The message. The value is OK when the request is successful.
+	// The message. The value is OK if the request is successful.
 	//
 	// example:
 	//
@@ -60,7 +60,7 @@ type QueryFormationInstsByTaskIDResponseBody struct {
 	//
 	// 1
 	PageNumber *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The total number of pages.
+	// The page size.
 	//
 	// example:
 	//
@@ -72,7 +72,7 @@ type QueryFormationInstsByTaskIDResponseBody struct {
 	//
 	// 1AD222E9-E606-4A42-BF6D-8A4442913CEF
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request is successful.
+	// Indicates whether the request was successful.
 	//
 	// example:
 	//
@@ -240,11 +240,7 @@ type QueryFormationInstsByTaskIDResponseBodyData struct {
 	//
 	// default
 	Schema *string `json:"Schema,omitempty" xml:"Schema,omitempty"`
-	// The task source. Valid values:
-	//
-	// - **system**: System.
-	//
-	// - **custom**: Custom.
+	// The task source. Valid values: - **system**: System. - **custom**: Custom.
 	//
 	// example:
 	//

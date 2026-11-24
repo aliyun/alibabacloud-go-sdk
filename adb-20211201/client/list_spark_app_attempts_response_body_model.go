@@ -62,59 +62,59 @@ func (s *ListSparkAppAttemptsResponseBody) Validate() error {
 }
 
 type ListSparkAppAttemptsResponseBodyData struct {
-	// The list of retry information. Metric description:
+	// The retry information list. Response parameter description:
 	//
-	// - **AttemptId**: the retry ID.
+	// - **AttemptId**: The retry ID.
 	//
-	// - **State**: the execute status of the application. Valid values:
+	// - **State**: The execution state of the application. Valid values:
 	//
-	//     - **SUBMITTED**: commit.
+	//     - **SUBMITTED**: Submitted.
 	//
-	//     - **STARTING**: starting.
+	//     - **STARTING**: Starting.
 	//
-	//     - **RUNNING**: executing.
+	//     - **RUNNING**: Running.
 	//
-	//     - **FAILING**: the node failed and the environment is being cleaned up.
+	//     - **FAILING**: The task failed. Cleaning up the environment.
 	//
-	//     - **FAILED**: failed.
+	//     - **FAILED**: Failed.
 	//
-	//     - **KILLING**: aborting the task and cleaning up the environment.
+	//     - **KILLING**: Aborting the task. Cleaning up the environment.
 	//
-	//     - **KILLED**: the task is aborted.
+	//     - **KILLED**: The task aborted.
 	//
-	//     - **SUCCEEDING**: the node execution is complete and the environment is being cleaned up.
+	//     - **SUCCEEDING**: The task execution ended. Cleaning up the environment.
 	//
-	//     - **COMPLETED**: the node execution is complete.
+	//     - **COMPLETED**: The task execution ended.
 	//
-	//     - **FATAL**: unexpected failure.
+	//     - **FATAL**: Unexpected failure.
 	//
-	//     - **UNKNOWN**: unknown fault.
+	//     - **UNKNOWN**: Unknown error.
 	//
-	// - **Message**: the alerting message. This parameter is empty if no alerting is generated.
+	// - **Message**: The alert information. If no alert is generated, an empty value is returned.
 	//
-	// - **Data**: the Spark application template data.
+	// - **Data**: The Spark application template data.
 	//
-	// - **EstimateExecutionCpuTimeInSeconds**: the CPU time consumed to execute the Spark application, in milliseconds (ms).
+	// - **EstimateExecutionCpuTimeInSeconds**: The CPU time consumed to execute the Spark application, in milliseconds.
 	//
-	// - **LogRootPath**: the storage path of log files.
+	// - **LogRootPath**: The storage path of the log file.
 	//
-	// - **LastAttemptId**: the ID of the last retry.
+	// - **LastAttemptId**: The ID of the last retry.
 	//
-	// - **WebUiAddress**: the web UI address.
+	// - **WebUiAddress**: The Web UI address.
 	//
-	// - **SubmittedTimeInMillis**: the time when the Spark application was committed. This value is a UNIX timestamp in milliseconds (ms).
+	// - **SubmittedTimeInMillis**: The time when the Spark application was submitted. The value is a UNIX timestamp in milliseconds.
 	//
-	// - **StartedTimeInMillis**: the time when the Spark application was created. This value is a UNIX timestamp in milliseconds (ms).
+	// - **StartedTimeInMillis**: The time when the Spark application was created. The value is a UNIX timestamp in milliseconds.
 	//
-	// - **LastUpdatedTimeInMillis**: the time when the Spark application was last updated. This value is a UNIX timestamp in milliseconds (ms).
+	// - **LastUpdatedTimeInMillis**: The time when the Spark application was last updated. The value is a UNIX timestamp in milliseconds.
 	//
-	// - **TerminatedTimeInMillis**: the time when the Spark application stopped executing. This value is a UNIX timestamp in milliseconds (ms).
+	// - **TerminatedTimeInMillis**: The time when the execution of the Spark application was stopped. The value is a UNIX timestamp in milliseconds.
 	//
-	// - **DBClusterId**: the ID of the cluster that executes the Spark application.
+	// - **DBClusterId**: The ID of the cluster where the Spark application is executed.
 	//
-	// - **ResourceGroupName**: the name of the Job-type resource group.
+	// - **ResourceGroupName**: The name of the job resource group.
 	//
-	// - **DurationInMillis**: the execution duration of the Spark application, in milliseconds (ms).
+	// - **DurationInMillis**: The execution duration of the Spark application, in milliseconds.
 	AttemptInfoList []*SparkAttemptInfo `json:"AttemptInfoList,omitempty" xml:"AttemptInfoList,omitempty" type:"Repeated"`
 	// The page number.
 	//

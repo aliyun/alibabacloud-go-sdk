@@ -22,11 +22,11 @@ type iDescribeApsDatasourcesResponseBody interface {
 }
 
 type DescribeApsDatasourcesResponseBody struct {
-	// The data sources.
+	// The array of data sources.
 	//
 	// example:
 	//
-	// -
+	// [{"CreateTime":"2024-01-10 14:44:33","DatasourceDescription":"Sample data source","DatasourceId":1,"DatasourceName":"example-source","DatasourceType":"SLS","HasJob":false}]
 	ApsDatasources []*DescribeApsDatasourcesResponseBodyApsDatasources `json:"ApsDatasources,omitempty" xml:"ApsDatasources,omitempty" type:"Repeated"`
 	// The page number.
 	//
@@ -46,7 +46,7 @@ type DescribeApsDatasourcesResponseBody struct {
 	//
 	// ******-5213-******-B608-******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of returned entries.
+	// The total number of returned results.
 	//
 	// example:
 	//
@@ -139,7 +139,7 @@ type DescribeApsDatasourcesResponseBodyApsDatasources struct {
 	//
 	// 1
 	DatasourceId *int64 `json:"DatasourceId,omitempty" xml:"DatasourceId,omitempty"`
-	// The name of the data source.
+	// The name of the target data source.
 	//
 	// example:
 	//
@@ -151,7 +151,7 @@ type DescribeApsDatasourcesResponseBodyApsDatasources struct {
 	//
 	// SLS
 	DatasourceType *string `json:"DatasourceType,omitempty" xml:"DatasourceType,omitempty"`
-	// Indicates whether a job is using the data source.
+	// Indicates whether a task is using the data source.
 	//
 	// example:
 	//

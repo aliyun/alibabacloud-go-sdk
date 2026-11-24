@@ -20,9 +20,26 @@ type iAdb4MysqlSparkDiagnosisInfo interface {
 }
 
 type Adb4MysqlSparkDiagnosisInfo struct {
-	DiagnosisCode      *string `json:"DiagnosisCode,omitempty" xml:"DiagnosisCode,omitempty"`
+	// The diagnostic code.
+	//
+	// example:
+	//
+	// task_long_tail
+	DiagnosisCode *string `json:"DiagnosisCode,omitempty" xml:"DiagnosisCode,omitempty"`
+	// The diagnostic cause.
+	//
+	// example:
+	//
+	// 查询执行耗时较长。
 	DiagnosisCodeLabel *string `json:"DiagnosisCodeLabel,omitempty" xml:"DiagnosisCodeLabel,omitempty"`
-	DiagnosisMsg       *string `json:"DiagnosisMsg,omitempty" xml:"DiagnosisMsg,omitempty"`
+	// The diagnostic suggestion.
+	//
+	// example:
+	//
+	// 检查查询执行计划并优化 SQL。
+	DiagnosisMsg *string `json:"DiagnosisMsg,omitempty" xml:"DiagnosisMsg,omitempty"`
+	// The diagnostic information type.
+	//
 	// example:
 	//
 	// APPLICATION

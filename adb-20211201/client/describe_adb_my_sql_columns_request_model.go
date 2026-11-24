@@ -35,7 +35,7 @@ type DescribeAdbMySqlColumnsRequest struct {
 	//
 	// <props="intl">The ID of the Data Lakehouse Edition cluster.
 	//
-	// > You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/454250.html) operation to query the IDs of all clusters in the target region.
+	// > You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/454250.html) operation to query the IDs of all clusters in a specified region.
 	//
 	// This parameter is required.
 	//

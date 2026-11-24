@@ -64,7 +64,7 @@ type DescribePerformanceViewAttributeResponseBody struct {
 	//
 	// amv-bp198m028ih55xxxx
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	// Indicates whether the keys completed in the original monitoring view are populated when you view the monitoring view. Valid values:
+	// Specifies whether to populate the keys from the original monitoring view when querying the monitoring view. Valid values:
 	//
 	// - true
 	//
@@ -86,7 +86,7 @@ type DescribePerformanceViewAttributeResponseBody struct {
 	//
 	// example:
 	//
-	// Custom-All metrics-2 columns-Linked
+	// Custom-All metrics-2 columns-linked
 	ViewName *string `json:"ViewName,omitempty" xml:"ViewName,omitempty"`
 }
 
@@ -173,7 +173,7 @@ func (s *DescribePerformanceViewAttributeResponseBody) Validate() error {
 type DescribePerformanceViewAttributeResponseBodyViewDetail struct {
 	// The list of metric categories.
 	Categories []*DescribePerformanceViewAttributeResponseBodyViewDetailCategories `json:"Categories,omitempty" xml:"Categories,omitempty" type:"Repeated"`
-	// Indicates whether it is a linkage chart. Valid values:
+	// Specifies whether it is a linkage chart. Valid values:
 	//
 	// - true
 	//
@@ -309,7 +309,7 @@ type DescribePerformanceViewAttributeResponseBodyViewDetailCategoriesKeys struct
 	//
 	// AnalyticDB_CPU
 	KeyName *string `json:"KeyName,omitempty" xml:"KeyName,omitempty"`
-	// Indicates whether the metric is selected. Valid values:
+	// Specifies whether the metric is selected. Valid values:
 	//
 	// - true
 	//

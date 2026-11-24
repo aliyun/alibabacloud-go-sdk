@@ -24,25 +24,25 @@ type iDescribeDBClusterHealthStatusResponseBody interface {
 }
 
 type DescribeDBClusterHealthStatusResponseBody struct {
-	// Details of the authentication failure.
+	// The details of the authentication failure.
 	//
 	// example:
 	//
 	// Authentication failed.
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	// The health status of the instance access nodes.
+	// The list of instance access node statuses.
 	CS *DescribeDBClusterHealthStatusResponseBodyCS `json:"CS,omitempty" xml:"CS,omitempty" type:"Struct"`
-	// The health status of the executor groups.
+	// The list of health statuses for compute node groups.
 	Executor *DescribeDBClusterHealthStatusResponseBodyExecutor `json:"Executor,omitempty" xml:"Executor,omitempty" type:"Struct"`
 	// The health status of the cluster. Valid values:
 	//
-	// - **RISK**: The cluster is at risk.
+	// - **RISK**: At risk.
 	//
-	// - **NORMAL**: The cluster is healthy.
+	// - **NORMAL**: Healthy.
 	//
-	// - **UNAVAILABLE**: The cluster is unavailable.
+	// - **UNAVAILABLE**: Unavailable.
 	//
-	// > The cluster health status is considered **NORMAL*	- only if the instance access nodes, executor groups, and worker node groups are all **NORMAL**, and the instance is responsive. If any of these components has a **RISK*	- status, the cluster status is **RISK**. If any component has an **UNAVAILABLE*	- status, the cluster status is **UNAVAILABLE**.
+	// > If the instance access node status, compute node group health status, and storage node group health status are all **Healthy*	- and the instance health check succeeds, the cluster health status is **Healthy**. If any of the three statuses is **At risk**, the cluster health status is **At risk**. If any of the three statuses is **Unavailable**, the cluster health status is **Unavailable**.
 	//
 	// example:
 	//
@@ -54,7 +54,7 @@ type DescribeDBClusterHealthStatusResponseBody struct {
 	//
 	// 1AD222E9-E606-4A42-BF6D-8A4442913CAV
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The health status of the worker node groups.
+	// The list of health statuses for storage node groups.
 	Worker *DescribeDBClusterHealthStatusResponseBodyWorker `json:"Worker,omitempty" xml:"Worker,omitempty" type:"Struct"`
 }
 
@@ -140,37 +140,37 @@ func (s *DescribeDBClusterHealthStatusResponseBody) Validate() error {
 }
 
 type DescribeDBClusterHealthStatusResponseBodyCS struct {
-	// The number of healthy instance access nodes.
+	// The number of healthy nodes.
 	//
 	// example:
 	//
 	// 0
 	ActiveCount *int64 `json:"ActiveCount,omitempty" xml:"ActiveCount,omitempty"`
-	// The total number of instance access nodes.
+	// The total number of access nodes.
 	//
 	// example:
 	//
 	// 1
 	ExpectedCount *int64 `json:"ExpectedCount,omitempty" xml:"ExpectedCount,omitempty"`
-	// The number of instance access nodes at risk.
+	// The number of nodes at risk.
 	//
 	// example:
 	//
 	// 0
 	RiskCount *int64 `json:"RiskCount,omitempty" xml:"RiskCount,omitempty"`
-	// The health status of the instance access nodes. Valid values:
+	// The status of instance access nodes. Valid values:
 	//
-	// - **RISK**: The instance access nodes are at risk.
+	// - **RISK**: At risk.
 	//
-	// - **NORMAL**: The instance access nodes are healthy.
+	// - **NORMAL**: Healthy.
 	//
-	// - **UNAVAILABLE**: The instance access nodes are unavailable.
+	// - **UNAVAILABLE**: Unavailable.
 	//
 	// example:
 	//
 	// UNAVAILABLE
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The number of unavailable instance access nodes.
+	// The number of unavailable nodes.
 	//
 	// example:
 	//
@@ -236,37 +236,37 @@ func (s *DescribeDBClusterHealthStatusResponseBodyCS) Validate() error {
 }
 
 type DescribeDBClusterHealthStatusResponseBodyExecutor struct {
-	// The number of healthy executor nodes.
+	// The number of healthy nodes.
 	//
 	// example:
 	//
 	// 0
 	ActiveCount *int64 `json:"ActiveCount,omitempty" xml:"ActiveCount,omitempty"`
-	// The total number of executor nodes.
+	// The total number of compute nodes.
 	//
 	// example:
 	//
 	// 1
 	ExpectedCount *int64 `json:"ExpectedCount,omitempty" xml:"ExpectedCount,omitempty"`
-	// The number of executor nodes at risk.
+	// The number of nodes at risk.
 	//
 	// example:
 	//
 	// 0
 	RiskCount *int64 `json:"RiskCount,omitempty" xml:"RiskCount,omitempty"`
-	// The health status of the executor groups. Valid values:
+	// The health status of compute node groups. Valid values:
 	//
-	// - **RISK**: The executor groups are at risk.
+	// - **RISK**: At risk.
 	//
-	// - **NORMAL**: The executor groups are healthy.
+	// - **NORMAL**: Healthy.
 	//
-	// - **UNAVAILABLE**: The executor groups are unavailable.
+	// - **UNAVAILABLE**: Unavailable.
 	//
 	// example:
 	//
 	// UNAVAILABLE
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The number of unavailable executor nodes.
+	// The number of unavailable nodes.
 	//
 	// example:
 	//
@@ -332,37 +332,37 @@ func (s *DescribeDBClusterHealthStatusResponseBodyExecutor) Validate() error {
 }
 
 type DescribeDBClusterHealthStatusResponseBodyWorker struct {
-	// The number of healthy worker node groups.
+	// The number of healthy storage node groups.
 	//
 	// example:
 	//
 	// 0
 	ActiveCount *int64 `json:"ActiveCount,omitempty" xml:"ActiveCount,omitempty"`
-	// The total number of worker node groups.
+	// The total number of storage node groups.
 	//
 	// example:
 	//
 	// 1
 	ExpectedCount *int64 `json:"ExpectedCount,omitempty" xml:"ExpectedCount,omitempty"`
-	// The number of worker node groups at risk.
+	// The number of storage node groups at risk.
 	//
 	// example:
 	//
 	// 1
 	RiskCount *int64 `json:"RiskCount,omitempty" xml:"RiskCount,omitempty"`
-	// The health status of the worker node groups. Valid values:
+	// The health status of storage node groups. Valid values:
 	//
-	// - **RISK**: The worker node groups are at risk.
+	// - **RISK**: At risk.
 	//
-	// - **NORMAL**: The worker node groups are healthy.
+	// - **NORMAL**: Healthy.
 	//
-	// - **UNAVAILABLE**: The worker node groups are unavailable.
+	// - **UNAVAILABLE**: Unavailable.
 	//
 	// example:
 	//
 	// UNAVAILABLE
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The number of unavailable worker node groups.
+	// The number of unavailable storage node groups.
 	//
 	// example:
 	//

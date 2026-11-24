@@ -44,7 +44,7 @@ type DescribeSQLPatternsRequest struct {
 	//
 	// amv-8vb8de93v9b****
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	// The end time of the query. Specify the time in UTC in the <i>yyyy-MM-ddTHH:mm:ssZ</i> format.
+	// The end time of the query. Specify the time in the ISO 8601 standard in the <i>yyyy-MM-ddTHH:mm:ssZ</i> format. The time must be in UTC.
 	//
 	// > The end time must be later than the start time.
 	//
@@ -60,7 +60,7 @@ type DescribeSQLPatternsRequest struct {
 	Keyword *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
 	// The language configuration. Valid values:
 	//
-	// - **zh**: Simplified Chinese (default language).
+	// - **zh**: Simplified Chinese (default).
 	//
 	// - **en**: English.
 	//
@@ -72,23 +72,23 @@ type DescribeSQLPatternsRequest struct {
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The sorting rule for the query results. The format is a JSON character string. Example: `[{"Field":"AverageQueryTime","Type":"Asc"}]`. The JSON character string contains the following parameters:
+	// The sorting configuration for the query results. The value is a JSON string. Example: `[{"Field":"AverageQueryTime","Type":"Asc"}]`. Parameters:
 	//
-	// - `Field`: the field by which to sort the results. Valid values:
+	// - `Field`: the sorting field. Valid values:
 	//
-	//     - `PatternCreationTime`: the earliest commit time of the pattern within the query time range.
+	//     - `PatternCreationTime`: the earliest submission time of the pattern within the query time range.
 	//
-	//     - `AverageQueryTime`: the average total time consumed by the pattern within the query time range.
+	//     - `AverageQueryTime`: the average total duration of the pattern within the query time range.
 	//
-	//     - `MaxQueryTime`: the maximum total time consumed by the pattern within the query time range.
+	//     - `MaxQueryTime`: the maximum total duration of the pattern within the query time range.
 	//
 	//     - `AverageExecutionTime`: the average execution duration of the pattern within the query time range.
 	//
 	//     - `MaxExecutionTime`: the maximum execution duration of the pattern within the query time range.
 	//
-	//     - `AveragePeakMemory`: the average peak memory usage of the pattern within the query time range.
+	//     - `AveragePeakMemory`: the average peak memory of the pattern within the query time range.
 	//
-	//     - `MaxPeakMemory`: the maximum peak memory usage of the pattern within the query time range.
+	//     - `MaxPeakMemory`: the maximum peak memory of the pattern within the query time range.
 	//
 	//     - `AverageScanSize`: the average amount of data read by the pattern within the query time range.
 	//
@@ -96,9 +96,9 @@ type DescribeSQLPatternsRequest struct {
 	//
 	//     - `QueryCount`: the number of executions of the pattern within the query time range.
 	//
-	//     - `FailedCount`: the number of failed executions of the pattern within the query time range.
+	//     - `FailedCount`: the number of failures of the pattern within the query time range.
 	//
-	// - `Type`: the sort order. The value is not case-sensitive. Valid values:
+	// - `Type`: the sorting method. The value is case-insensitive. Valid values:
 	//
 	//     - `Asc`: ascending order.
 	//
@@ -108,7 +108,7 @@ type DescribeSQLPatternsRequest struct {
 	//
 	// [{"Field":"AverageQueryTime","Type":"Asc"}]
 	Order *string `json:"Order,omitempty" xml:"Order,omitempty"`
-	// The page number. Valid values: integers greater than 0 and up to the maximum integer value.
+	// The page number. Valid values: positive integers up to the maximum value of the Integer data type.
 	//
 	// Default value: 1.
 	//
@@ -118,7 +118,7 @@ type DescribeSQLPatternsRequest struct {
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// The number of entries per page. Valid values:
 	//
-	// - **10*	- (default value)
+	// - **10*	- (default)
 	//
 	// - **30**
 	//
@@ -138,9 +138,13 @@ type DescribeSQLPatternsRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The hash value of the SQL pattern, which is used to filter a specific SQL pattern.
+	// The hash value of the SQL pattern, which is used to filter specific SQL patterns.
+	//
+	// example:
+	//
+	// 1234567890123456789
 	SqlPatternHash *int64 `json:"SqlPatternHash,omitempty" xml:"SqlPatternHash,omitempty"`
-	// The start time of the query. Specify the time in UTC in the <i>yyyy-MM-ddTHH:mm:ssZ</i> format.
+	// The start time of the query. Specify the time in the ISO 8601 standard in the <i>yyyy-MM-ddTHH:mm:ssZ</i> format. The time must be in UTC.
 	//
 	// >  - You can only query data from the last 14 days.
 	//

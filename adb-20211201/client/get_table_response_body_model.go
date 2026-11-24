@@ -34,7 +34,7 @@ type GetTableResponseBody struct {
 	//
 	// ""
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
@@ -46,7 +46,7 @@ type GetTableResponseBody struct {
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// The detailed table information.
+	// The details of the table.
 	Table *TableModel `json:"Table,omitempty" xml:"Table,omitempty"`
 }
 

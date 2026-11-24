@@ -32,39 +32,39 @@ type DescribeTablePartitionDiagnoseRequest struct {
 	//
 	// amv-bp171g24yvbxxxxx
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	// The language of the content within the request and response. Default value: **zh**. Valid values:
+	// Specifies the language of the request and response. Default value: **zh**. Valid values:
 	//
-	// 	- **zh**: simplified Chinese.
+	// - **zh**: Chinese
 	//
-	// 	- **en**: English.
+	// - **en**: English
 	//
-	// 	- **ja**: Japanese.
+	// - **ja**: Japanese
 	//
-	// 	- **zh-tw**: traditional Chinese.
+	// - **zh-tw**: Traditional Chinese
 	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The order by which to sort query results. Specify the parameter value in the JSON string format. Example: `[{"Field":"TotalSize","Type":"Desc"}]`.
+	// Sorts the query results by a specified field. The value must be a JSON string. Example: `[{"Field":"TotalSize","Type":"Desc"}]`. The JSON string contains the following parameters:
 	//
-	// 	- `Field` specifies the field by which to sort the query results. Valid values:
+	// - `Field`: the field by which to sort the results. Valid values:
 	//
-	//     	- `SchemaName`: the name of the database to which the table belongs.
+	//     - `SchemaName`: the name of the database to which the table belongs.
 	//
-	//     	- `TableName`: the name of the table.
+	//     - `TableName`: the table name.
 	//
-	//     	- `TotalSize`: the total data size of the table.
+	//     - `TotalSize`: the total data volume.
 	//
-	//     	- `SpaceRatio`: the storage percentage of the table.
+	//     - `SpaceRatio`: the storage space proportion.
 	//
-	// 	- `Type` specifies the sorting order. Valid values:
+	// - `Type`: the sort order. Valid values:
 	//
-	//     	- `Asc`: ascending order.
+	//     - `Asc`: ascending order.
 	//
-	//     	- `Desc`: descending order.
+	//     - `Desc`: descending order.
 	//
-	// >  If you do not specify this parameter, the query results are sorted by the TotalSize field in descending order.
+	// > If this parameter is not specified, the results are sorted in descending order of the total data volume of the target table by default.
 	//
 	// example:
 	//

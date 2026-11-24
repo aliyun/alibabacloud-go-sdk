@@ -26,25 +26,25 @@ type iDescribeAdbMySqlIndexesResponseBody interface {
 }
 
 type DescribeAdbMySqlIndexesResponseBody struct {
-	// The number of indexes.````
+	// The filter condition for the number of indexes (the number of indexes currently owned by the table with missing indexes). The input format is `operator + separator "" + number of indexes`, such as `>=100`.
 	//
 	// example:
 	//
 	// 10
 	IndexCount *int32 `json:"IndexCount,omitempty" xml:"IndexCount,omitempty"`
-	// The queried indexes.
+	// The list of indexes.
 	Indexes []*DescribeAdbMySqlIndexesResponseBodyIndexes `json:"Indexes,omitempty" xml:"Indexes,omitempty" type:"Repeated"`
-	// The returned message. Valid values:
+	// The message returned for the call. Valid values:
 	//
-	// 	- If the request was successful, a success message is returned.****
+	// - **Success**: The request is successful.
 	//
-	// 	- If the request failed, an error message is returned.
+	// - Specific error message: returned when the request fails.
 	//
 	// example:
 	//
 	// Success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
@@ -52,19 +52,17 @@ type DescribeAdbMySqlIndexesResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The name of the database.
 	//
-	// **
-	//
-	// ****\\
+	// > <br>If this parameter is specified, subsequent migration or synchronization operations are performed only on this database.
 	//
 	// example:
 	//
 	// adb_demo
 	Schema *string `json:"Schema,omitempty" xml:"Schema,omitempty"`
-	// Indicates whether the request was successful. Valid values:
+	// Indicates whether the call was successful. Valid values:
 	//
-	// 	- **true**
+	// - **true**: The call was successful.
 	//
-	// 	- **false**
+	// - **false**: The call failed.
 	//
 	// example:
 	//
@@ -175,7 +173,7 @@ type DescribeAdbMySqlIndexesResponseBodyIndexes struct {
 	//
 	// ttl
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The index type.
+	// The type of the index.
 	//
 	// example:
 	//

@@ -20,7 +20,7 @@ type DescribeDBClusterHealthStatusRequest struct {
 	//
 	// <props="intl">The ID of the Data Lakehouse Edition cluster.
 	//
-	// > You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/612397.html) operation to query the IDs of clusters.
+	// > You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/612397.html) operation to query the cluster ID.
 	//
 	// This parameter is required.
 	//
@@ -28,9 +28,9 @@ type DescribeDBClusterHealthStatusRequest struct {
 	//
 	// amv-uf6o6m8p6x7v****
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	// The region ID of the cluster.
+	// The region ID.
 	//
-	// > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/143074.html) operation to query the most recent region list.
+	// > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/143074.html) operation to query the region ID of the cluster.
 	//
 	// This parameter is required.
 	//

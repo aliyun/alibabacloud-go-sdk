@@ -54,7 +54,7 @@ type UpdateApsWebhookResponseBody struct {
 	//
 	// example:
 	//
-	// Operation succeeded
+	// 操作成功
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The request ID.
 	//

@@ -40,7 +40,7 @@ type ModifyApsDatasoureRequest struct {
 	//
 	// amv-*******
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	// The description of the data source.
+	// The data source description.
 	//
 	// example:
 	//
@@ -54,31 +54,31 @@ type ModifyApsDatasoureRequest struct {
 	//
 	// 1
 	DatasourceId *int64 `json:"DatasourceId,omitempty" xml:"DatasourceId,omitempty"`
-	// The name of the data source.
+	// The data source name.
 	//
 	// example:
 	//
 	// sls-******
 	DatasourceName *string `json:"DatasourceName,omitempty" xml:"DatasourceName,omitempty"`
-	// The information about the Kafka instance.
+	// The Kafka data source information.
 	//
 	// example:
 	//
-	// -
+	// {"KafkaTopic":"test-topic"}
 	KafkaInfo *ModifyApsDatasoureRequestKafkaInfo `json:"KafkaInfo,omitempty" xml:"KafkaInfo,omitempty" type:"Struct"`
-	// The lakehouse ID.
+	// The Lakehouse ID.
 	//
 	// example:
 	//
-	// 123
+	// {"VpcId":"vpc-******"}
 	LakehouseId *ModifyApsDatasoureRequestLakehouseId `json:"LakehouseId,omitempty" xml:"LakehouseId,omitempty" type:"Struct"`
-	// The parameter is no longer supported.
+	// The deprecated data source information.
 	//
 	// example:
 	//
 	// -
 	PolarDBMysqlInfo *ModifyApsDatasoureRequestPolarDBMysqlInfo `json:"PolarDBMysqlInfo,omitempty" xml:"PolarDBMysqlInfo,omitempty" type:"Struct"`
-	// The parameter is no longer supported.
+	// The deprecated data source information.
 	//
 	// example:
 	//
@@ -92,11 +92,11 @@ type ModifyApsDatasoureRequest struct {
 	//
 	// cn-shanghai
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The information about Simple Log Service (SLS).
+	// The Simple Log Service (SLS) information.
 	//
 	// example:
 	//
-	// -
+	// {"Project":"example-project","Store":"example-logstore","Across":false}
 	SlsInfo *ModifyApsDatasoureRequestSlsInfo `json:"SlsInfo,omitempty" xml:"SlsInfo,omitempty" type:"Struct"`
 }
 
@@ -228,13 +228,13 @@ func (s *ModifyApsDatasoureRequest) Validate() error {
 }
 
 type ModifyApsDatasoureRequestKafkaInfo struct {
-	// The ID of the Kafka instance.
+	// The Kafka instance ID.
 	//
 	// example:
 	//
 	// -
 	KafkaClusterId *string `json:"KafkaClusterId,omitempty" xml:"KafkaClusterId,omitempty"`
-	// The topic of the Kafka instance.
+	// The Kafka topic name.
 	//
 	// example:
 	//
@@ -273,19 +273,19 @@ func (s *ModifyApsDatasoureRequestKafkaInfo) Validate() error {
 }
 
 type ModifyApsDatasoureRequestLakehouseId struct {
-	// The name of the security group.
+	// The security group name.
 	//
 	// example:
 	//
 	// sg-******
 	SecurityGroup *string `json:"SecurityGroup,omitempty" xml:"SecurityGroup,omitempty"`
-	// The virtual private cloud (VPC) ID.
+	// The VPC ID.
 	//
 	// example:
 	//
 	// vpc-******
 	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
-	// The name of the vSwitch.
+	// The vSwitch name.
 	//
 	// example:
 	//
@@ -333,25 +333,25 @@ func (s *ModifyApsDatasoureRequestLakehouseId) Validate() error {
 }
 
 type ModifyApsDatasoureRequestPolarDBMysqlInfo struct {
-	// The parameter is no longer supported.
+	// -
 	//
 	// example:
 	//
 	// -
 	ConnectUrl *string `json:"ConnectUrl,omitempty" xml:"ConnectUrl,omitempty"`
-	// The parameter is no longer supported.
+	// -
 	//
 	// example:
 	//
 	// -
 	Password *string `json:"Password,omitempty" xml:"Password,omitempty"`
-	// The parameter is no longer supported.
+	// -
 	//
 	// example:
 	//
 	// -
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The parameter is no longer supported.
+	// -
 	//
 	// example:
 	//
@@ -408,25 +408,25 @@ func (s *ModifyApsDatasoureRequestPolarDBMysqlInfo) Validate() error {
 }
 
 type ModifyApsDatasoureRequestRdsMysqlInfo struct {
-	// The parameter is no longer supported.
+	// -
 	//
 	// example:
 	//
 	// -
 	ConnectUrl *string `json:"ConnectUrl,omitempty" xml:"ConnectUrl,omitempty"`
-	// The parameter is no longer supported.
+	// -
 	//
 	// example:
 	//
 	// -
 	Password *string `json:"Password,omitempty" xml:"Password,omitempty"`
-	// The parameter is no longer supported.
+	// -
 	//
 	// example:
 	//
 	// -
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The parameter is no longer supported.
+	// -
 	//
 	// example:
 	//
@@ -483,17 +483,17 @@ func (s *ModifyApsDatasoureRequestRdsMysqlInfo) Validate() error {
 }
 
 type ModifyApsDatasoureRequestSlsInfo struct {
-	// Specifies whether to use a cross-account resource as the data source. Valid values:
+	// Specifies whether the resource is cross-account. Valid values:
 	//
-	// 	- **true**
+	// - **true**: The current network instance is a cross-account resource.
 	//
-	// 	- **false**
+	// - **false**: The current network instance is a resource within the current account.
 	//
 	// example:
 	//
 	// false
 	Across *bool `json:"Across,omitempty" xml:"Across,omitempty"`
-	// The name of the cross-account role.
+	// The cross-account role.
 	//
 	// example:
 	//
@@ -505,7 +505,7 @@ type ModifyApsDatasoureRequestSlsInfo struct {
 	//
 	// 123456
 	AcrossUid *string `json:"AcrossUid,omitempty" xml:"AcrossUid,omitempty"`
-	// The region ID.
+	// The source region ID.
 	//
 	// example:
 	//

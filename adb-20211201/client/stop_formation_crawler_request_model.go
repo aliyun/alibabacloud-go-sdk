@@ -20,7 +20,7 @@ type iStopFormationCrawlerRequest interface {
 }
 
 type StopFormationCrawlerRequest struct {
-	// The task ID.
+	// The ID of the task.
 	//
 	// This parameter is required.
 	//
@@ -28,7 +28,7 @@ type StopFormationCrawlerRequest struct {
 	//
 	// 21
 	CrawlerTaskId *int64 `json:"CrawlerTaskId,omitempty" xml:"CrawlerTaskId,omitempty"`
-	// The task name.
+	// The name of the task.
 	//
 	// This parameter is required.
 	//
@@ -36,7 +36,7 @@ type StopFormationCrawlerRequest struct {
 	//
 	// test-crawler-dbname
 	CrawlerTaskName *string `json:"CrawlerTaskName,omitempty" xml:"CrawlerTaskName,omitempty"`
-	// The instance ID.
+	// The ID of the instance.
 	//
 	// This parameter is required.
 	//

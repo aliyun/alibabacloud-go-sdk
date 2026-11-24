@@ -22,7 +22,7 @@ type iUpdateLakeStorageShrinkRequest interface {
 }
 
 type UpdateLakeStorageShrinkRequest struct {
-	// The ID of the AnalyticDB for MySQL cluster that is associated with the lake storage.
+	// The ADB instance ID.
 	//
 	// example:
 	//
@@ -38,13 +38,13 @@ type UpdateLakeStorageShrinkRequest struct {
 	//
 	// example:
 	//
-	// -
+	// adb-lake-cn-hangzhou-1a1aaaa11a
 	LakeStorageId *string `json:"LakeStorageId,omitempty" xml:"LakeStorageId,omitempty"`
-	// The permissions on the lake storage.
+	// The permissions of the lake storage.
 	//
 	// example:
 	//
-	// -
+	// [{"Account":"1234567890123456","Read":true,"Type":"User","Write":true}]
 	PermissionsShrink *string `json:"Permissions,omitempty" xml:"Permissions,omitempty"`
 	// The region ID.
 	//

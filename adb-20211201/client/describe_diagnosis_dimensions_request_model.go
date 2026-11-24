@@ -26,7 +26,7 @@ type iDescribeDiagnosisDimensionsRequest interface {
 type DescribeDiagnosisDimensionsRequest struct {
 	// The cluster ID.
 	//
-	// >  You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/454250.html) operation to query the IDs of all AnalyticDB for MySQL Data Lakehouse Edition (V3.0) clusters within a region.
+	// > You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/454250.html) operation to query the IDs of all AnalyticDB for MySQL Data Lakehouse Edition (3.0) clusters in the specified region.
 	//
 	// This parameter is required.
 	//
@@ -34,45 +34,43 @@ type DescribeDiagnosisDimensionsRequest struct {
 	//
 	// amv-bt6u59zcmd945****
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	// The end of the time range to query. Set the time to a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	// The end time of the query. Specify the time as a UNIX timestamp in milliseconds.
 	//
-	// >
+	// > 	- The end time must be later than the start time.
 	//
-	// 	- The end time must be later than the start time.
-	//
-	// 	- The maximum time range that can be specified is 24 hours.
+	// > 	- The interval between the start time and the end time cannot exceed 24 hours.
 	//
 	// example:
 	//
 	// 1625220213000
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The language. Valid values:
+	// The language configuration. Valid values:
 	//
-	// 	- **zh-CN*	- (default): simplified Chinese.
+	// - **zh-CN**: Simplified Chinese (default).
 	//
-	// 	- **en-US**: English.
+	// - **en-US**: English.
 	//
-	// 	- **ja**: Japanese.
+	// - **ja**: Japanese.
 	//
 	// example:
 	//
 	// zh-CN
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The query condition for SQL statements, which can contain the `Type`, `Value`, `Min`, and `Max` fields. Specify the condition in the JSON format. `Type` specifies the query dimension. Valid values for Type: `maxCost`, `status`, and `cost`. `Value`, `Min`, or `Max` specifies the query range for the dimension. Valid values:
+	// The search conditions for SQL queries. The value is a JSON string that contains fields such as `Type`, `Value`, `Min`, and `Max`. The `Type` field specifies the query dimension. Valid values: `maxCost`, `status`, and `cost`. The `Value`, `Min`, or `Max` field specifies the query range for the dimension. Valid values:
 	//
-	// 	- `{"Type":"maxCost","Value":"100"}`: queries the top 100 most time-consuming SQL statements. Set `Value` to 100.
+	// - `{"Type":"maxCost","Value":"100"}`: queries the details of the top 100 SQL statements with the longest execution duration. Currently, you can only set `Value` to 100.
 	//
-	// 	- `{"Type":"status","Value":"finished"}`: queries the executed SQL statements. You can set `Value` to `running` to query the SQL statements that are being executed. You can also set Value to `failed` to query the SQL statements that failed to be executed.
+	// - `{"Type":"status","Value":"finished"}`: queries the details of completed SQL statements. You can also set `Value` to `running` or `failed` to query the details of running or failed SQL statements.
 	//
-	// 	- `{"Type":"cost","Min":"10","Max":"200"}`: queries the SQL statements whose execution duration is in the range of 10 to 200 milliseconds. You can also specify custom values for the Min and Max fields.
+	// - `{"Type":"cost","Min":"10","Max":"200"}`: queries the details of SQL statements whose execution duration is between 10 milliseconds and 200 milliseconds. You can also customize the minimum and maximum execution duration in milliseconds.
 	//
 	// example:
 	//
 	// {"Type":"maxCost","Value":"100"}
 	QueryCondition *string `json:"QueryCondition,omitempty" xml:"QueryCondition,omitempty"`
-	// The region ID of the cluster.
+	// The region ID.
 	//
-	// >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/454314.html) operation to query the most recent region list.
+	// > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/454314.html) operation to query the region ID of the specified AnalyticDB for MySQL Data Lakehouse Edition (3.0) cluster.
 	//
 	// This parameter is required.
 	//
@@ -80,9 +78,9 @@ type DescribeDiagnosisDimensionsRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The beginning of the time range to query. Set the time to a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	// The start time of the query. Specify the time as a UNIX timestamp in milliseconds.
 	//
-	// >  You can query data only within the last 14 days.
+	// > You can only query data from the last 14 days. If you query data from more than 14 days ago, an empty result is returned.
 	//
 	// example:
 	//

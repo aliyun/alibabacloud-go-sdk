@@ -78,13 +78,13 @@ type CreateApsDatasoureShrinkRequest struct {
 	//
 	// example:
 	//
-	// -
+	// {"Vswitch":"vsw-bp1*****k","SecurityGroup":"sg-uf*******h"}
 	HiveInfoShrink *string `json:"HiveInfo,omitempty" xml:"HiveInfo,omitempty"`
 	// The Kafka information.
 	//
 	// example:
 	//
-	// -
+	// {"KafkaClusterId":"alikafka_pre-cn-aaa1a1aaa111","KafkaTopic":"example-topic"}
 	KafkaInfoShrink *string `json:"KafkaInfo,omitempty" xml:"KafkaInfo,omitempty"`
 	// The mode.
 	//
@@ -96,7 +96,7 @@ type CreateApsDatasoureShrinkRequest struct {
 	//
 	// example:
 	//
-	// -
+	// {"RegionId":"cn-shanghai"}
 	PolarDBMysqlInfoShrink *string `json:"PolarDBMysqlInfo,omitempty" xml:"PolarDBMysqlInfo,omitempty"`
 	// The PolarDB-X data source information.
 	//
@@ -108,7 +108,7 @@ type CreateApsDatasoureShrinkRequest struct {
 	//
 	// example:
 	//
-	// -
+	// {"RegionId":"cn-shanghai"}
 	RdsMysqlInfoShrink *string `json:"RdsMysqlInfo,omitempty" xml:"RdsMysqlInfo,omitempty"`
 	// The region ID.
 	//
@@ -122,7 +122,7 @@ type CreateApsDatasoureShrinkRequest struct {
 	//
 	// example:
 	//
-	// -
+	// {"Project":"example-project","Store":"example-logstore","Across":false}
 	SlsInfoShrink *string `json:"SlsInfo,omitempty" xml:"SlsInfo,omitempty"`
 }
 

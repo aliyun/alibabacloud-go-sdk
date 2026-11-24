@@ -30,9 +30,9 @@ type DescribeAccountsRequest struct {
 	//
 	// test_accout
 	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
-	// <props="china">The ID of the cluster. The cluster can be of the Enterprise Edition, Basic Edition, or Data Lakehouse Edition.
+	// <props="china">The ID of the cluster. The cluster runs Enterprise Edition, Basic Edition, or Data Lakehouse Edition.
 	//
-	// <props="intl">The ID of the Data Lakehouse Edition cluster.
+	// <props="intl">The ID of the cluster. The cluster runs Data Lakehouse Edition.
 	//
 	// This parameter is required.
 	//
@@ -44,7 +44,7 @@ type DescribeAccountsRequest struct {
 	//
 	// - **AnalyticDB*	- (default): AnalyticDB for MySQL engine
 	//
-	// - **Clickhouse**: wide-table engine
+	// - **Clickhouse**: wide table engine
 	//
 	// example:
 	//

@@ -18,7 +18,7 @@ type iGetSparkWarehouseBatchSQLRequest interface {
 }
 
 type GetSparkWarehouseBatchSQLRequest struct {
-	// The client name for auxiliary logging. The value is a meaningful string of up to 16 characters.
+	// The client name used for logging. This is a meaningful string up to 16 characters in length.
 	//
 	// example:
 	//
@@ -30,7 +30,7 @@ type GetSparkWarehouseBatchSQLRequest struct {
 	//
 	// amv-uf6485635f***
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	// The execution ID of the Spark SQL statement.
+	// The Spark SQL execution ID.
 	//
 	// This parameter is required.
 	//

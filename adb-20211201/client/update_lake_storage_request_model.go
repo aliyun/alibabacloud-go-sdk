@@ -22,7 +22,7 @@ type iUpdateLakeStorageRequest interface {
 }
 
 type UpdateLakeStorageRequest struct {
-	// The ID of the AnalyticDB for MySQL cluster that is associated with the lake storage.
+	// The ADB instance ID.
 	//
 	// example:
 	//
@@ -38,13 +38,13 @@ type UpdateLakeStorageRequest struct {
 	//
 	// example:
 	//
-	// -
+	// adb-lake-cn-hangzhou-1a1aaaa11a
 	LakeStorageId *string `json:"LakeStorageId,omitempty" xml:"LakeStorageId,omitempty"`
-	// The permissions on the lake storage.
+	// The permissions of the lake storage.
 	//
 	// example:
 	//
-	// -
+	// [{"Account":"1234567890123456","Read":true,"Type":"User","Write":true}]
 	Permissions []*UpdateLakeStorageRequestPermissions `json:"Permissions,omitempty" xml:"Permissions,omitempty" type:"Repeated"`
 	// The region ID.
 	//
@@ -127,9 +127,9 @@ type UpdateLakeStorageRequestPermissions struct {
 	//
 	// example:
 	//
-	// test
+	// 1234567890123456
 	Account *string `json:"Account,omitempty" xml:"Account,omitempty"`
-	// The read permissions.
+	// The read permission.
 	//
 	// This parameter is required.
 	//
@@ -143,9 +143,9 @@ type UpdateLakeStorageRequestPermissions struct {
 	//
 	// example:
 	//
-	// SUB
+	// User
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// The write permissions.
+	// The write permission.
 	//
 	// This parameter is required.
 	//

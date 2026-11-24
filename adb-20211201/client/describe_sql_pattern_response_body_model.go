@@ -119,7 +119,7 @@ func (s *DescribeSqlPatternResponseBody) Validate() error {
 type DescribeSqlPatternResponseBodyItems struct {
 	// The client IP address.
 	//
-	// > This parameter is returned only when the Type parameter is set to accessip.
+	// > This parameter is returned only when the **Type*	- parameter is set to **accessip**.
 	//
 	// example:
 	//
@@ -131,13 +131,13 @@ type DescribeSqlPatternResponseBodyItems struct {
 	//
 	// 1.0625
 	AvgCpuTime *string `json:"AvgCpuTime,omitempty" xml:"AvgCpuTime,omitempty"`
-	// The average peak memory. Unit: KB.
+	// The average peak memory usage. Unit: KB.
 	//
 	// example:
 	//
 	// 240048
 	AvgPeakMemory *string `json:"AvgPeakMemory,omitempty" xml:"AvgPeakMemory,omitempty"`
-	// The average scan size. Unit: KB.
+	// The average scanned data size. Unit: KB.
 	//
 	// example:
 	//
@@ -173,7 +173,7 @@ type DescribeSqlPatternResponseBodyItems struct {
 	//
 	// 480096
 	MaxPeakMemory *string `json:"MaxPeakMemory,omitempty" xml:"MaxPeakMemory,omitempty"`
-	// The maximum scan size. Unit: KB.
+	// The maximum scanned data size. Unit: KB.
 	//
 	// example:
 	//
@@ -211,7 +211,7 @@ type DescribeSqlPatternResponseBodyItems struct {
 	ReportDate *string `json:"ReportDate,omitempty" xml:"ReportDate,omitempty"`
 	// The username.
 	//
-	// > This parameter is returned only when the Type parameter is left empty or set to user.
+	// > This parameter is returned only when the **Type*	- parameter is left empty or set to **user**.
 	//
 	// example:
 	//

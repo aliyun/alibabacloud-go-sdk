@@ -30,7 +30,7 @@ type DescribeTableAccessCountRequest struct {
 	//
 	// <props="intl">The ID of the Data Lakehouse Edition cluster.
 	//
-	// > You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/454250.html) operation to query the IDs of all clusters in a region.
+	// > You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/454250.html) operation to query the IDs of all clusters in the specified region.
 	//
 	// This parameter is required.
 	//
@@ -38,23 +38,23 @@ type DescribeTableAccessCountRequest struct {
 	//
 	// amv-2ze627uzpkh8a8****
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	// Sorts the query results by a specified field. The value is a JSON string. Example: `[{"Field":"TableSchema","Type":"Asc"}]`.
+	// Sorts the query results by a specified field. The value is a JSON string. Example: `[{"Field":"TableSchema","Type":"Asc"}]`. Parameters in the JSON string:
 	//
-	// - `Field` specifies the field by which to sort. Valid values:
+	// - `Field`: the field by which to sort. Valid values:
 	//
 	//     - `TableSchema`: the name of the database to which the table belongs.
 	//
-	//     - `TableName`: the table name.
+	//     - `TableName`: the name of the table.
 	//
 	//     - `AccessCount`: the number of times the table is accessed.
 	//
-	// - `Type` specifies the sort order. Valid values:
+	// - `Type`: the sort order. Valid values:
 	//
 	//     - `Asc`: ascending order.
 	//
 	//     - `Desc`: descending order.
 	//
-	// > If this parameter is not specified, the results are sorted by the database name of the table in ascending order by default.
+	// > If this parameter is not specified, the results are sorted in ascending order by the database to which the target table belongs.
 	//
 	// example:
 	//
@@ -88,15 +88,15 @@ type DescribeTableAccessCountRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The beginning of the time range to query, in UTC. Format: yyyy-MM-ddTHH:mm:ssZ.
+	// The start time of the query. The time is displayed in UTC in the yyyy-MM-ddTHH:mm:ssZ format.
 	//
-	// > Only data within the last 30 days can be queried.
+	// > You can only query data within the last 30 days.
 	//
 	// example:
 	//
 	// 2022-09-25T12:10:00Z
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The name of the table.
+	// The name of the target table.
 	//
 	// > If this parameter is left empty, the access frequency data of all tables in the cluster within the specified date range is returned.
 	//

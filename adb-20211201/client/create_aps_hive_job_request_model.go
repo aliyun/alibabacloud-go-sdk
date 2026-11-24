@@ -48,11 +48,11 @@ type CreateApsHiveJobRequest struct {
 	//
 	// example:
 	//
-	// Intercept: reports error and aborts.
+	// Intercept：报错拦截，暂停迁移
 	//
-	// Ignore: ignores and continues.
+	// Ignore：忽略并继续执行，仍然迁移相关库表
 	//
-	// Skip: skips relevant tables.
+	// Skip：跳过相关库表，只迁移其他库表
 	ConflictStrategy *string `json:"ConflictStrategy,omitempty" xml:"ConflictStrategy,omitempty"`
 	// The AnalyticDB for MySQL cluster ID.
 	//

@@ -20,7 +20,7 @@ type iGetTableDDLRequest interface {
 }
 
 type GetTableDDLRequest struct {
-	// The cluster ID.
+	// The ID of the cluster.
 	//
 	// This parameter is required.
 	//

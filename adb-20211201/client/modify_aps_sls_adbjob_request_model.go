@@ -38,13 +38,13 @@ type iModifyApsSlsADBJobRequest interface {
 }
 
 type ModifyApsSlsADBJobRequest struct {
-	// The information about columns.
+	// The column information.
 	//
 	// example:
 	//
-	// -
+	// [{"MapName":"map_name","MapType":"bigint","Name":"test_name","Type":"bigint"}]
 	Columns []*ModifyApsSlsADBJobRequestColumns `json:"Columns,omitempty" xml:"Columns,omitempty" type:"Repeated"`
-	// The cluster ID.
+	// The ID of the cluster.
 	//
 	// This parameter is required.
 	//
@@ -64,13 +64,13 @@ type ModifyApsSlsADBJobRequest struct {
 	//
 	// STOP
 	DirtyDataProcessPattern *string `json:"DirtyDataProcessPattern,omitempty" xml:"DirtyDataProcessPattern,omitempty"`
-	// Specifies whether to enable the consistency check.
+	// Specifies whether exactly-once processing is enabled.
 	//
 	// example:
 	//
 	// true
 	ExactlyOnce *string `json:"ExactlyOnce,omitempty" xml:"ExactlyOnce,omitempty"`
-	// The password of the database account.
+	// The password.
 	//
 	// example:
 	//
@@ -84,7 +84,7 @@ type ModifyApsSlsADBJobRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The start offset.
+	// The starting offset.
 	//
 	// example:
 	//
@@ -100,15 +100,15 @@ type ModifyApsSlsADBJobRequest struct {
 	//
 	// example:
 	//
-	// -
+	// {"Transform":false}
 	UnixTimestampConvert *string `json:"UnixTimestampConvert,omitempty" xml:"UnixTimestampConvert,omitempty"`
-	// The name of the database account.
+	// The username.
 	//
 	// example:
 	//
 	// user-name
 	UserName *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
-	// The job ID.
+	// The ID of the data link task.
 	//
 	// This parameter is required.
 	//
@@ -263,19 +263,19 @@ func (s *ModifyApsSlsADBJobRequest) Validate() error {
 }
 
 type ModifyApsSlsADBJobRequestColumns struct {
-	// The name of the mapping.
+	// The mapped name.
 	//
 	// example:
 	//
 	// map_name
 	MapName *string `json:"MapName,omitempty" xml:"MapName,omitempty"`
-	// The type of the mapping.
+	// The mapping type.
 	//
 	// example:
 	//
 	// bigint
 	MapType *string `json:"MapType,omitempty" xml:"MapType,omitempty"`
-	// The name of the column.
+	// The name.
 	//
 	// example:
 	//

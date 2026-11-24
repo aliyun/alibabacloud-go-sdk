@@ -40,7 +40,7 @@ type ModifyApsDatasoureShrinkRequest struct {
 	//
 	// amv-*******
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	// The description of the data source.
+	// The data source description.
 	//
 	// example:
 	//
@@ -54,31 +54,31 @@ type ModifyApsDatasoureShrinkRequest struct {
 	//
 	// 1
 	DatasourceId *int64 `json:"DatasourceId,omitempty" xml:"DatasourceId,omitempty"`
-	// The name of the data source.
+	// The data source name.
 	//
 	// example:
 	//
 	// sls-******
 	DatasourceName *string `json:"DatasourceName,omitempty" xml:"DatasourceName,omitempty"`
-	// The information about the Kafka instance.
+	// The Kafka data source information.
 	//
 	// example:
 	//
-	// -
+	// {"KafkaTopic":"test-topic"}
 	KafkaInfoShrink *string `json:"KafkaInfo,omitempty" xml:"KafkaInfo,omitempty"`
-	// The lakehouse ID.
+	// The Lakehouse ID.
 	//
 	// example:
 	//
-	// 123
+	// {"VpcId":"vpc-******"}
 	LakehouseIdShrink *string `json:"LakehouseId,omitempty" xml:"LakehouseId,omitempty"`
-	// The parameter is no longer supported.
+	// The deprecated data source information.
 	//
 	// example:
 	//
 	// -
 	PolarDBMysqlInfoShrink *string `json:"PolarDBMysqlInfo,omitempty" xml:"PolarDBMysqlInfo,omitempty"`
-	// The parameter is no longer supported.
+	// The deprecated data source information.
 	//
 	// example:
 	//
@@ -92,11 +92,11 @@ type ModifyApsDatasoureShrinkRequest struct {
 	//
 	// cn-shanghai
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The information about Simple Log Service (SLS).
+	// The Simple Log Service (SLS) information.
 	//
 	// example:
 	//
-	// -
+	// {"Project":"example-project","Store":"example-logstore","Across":false}
 	SlsInfoShrink *string `json:"SlsInfo,omitempty" xml:"SlsInfo,omitempty"`
 }
 

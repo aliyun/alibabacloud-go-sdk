@@ -210,6 +210,10 @@ type DescribeSqlPatternCompareReportResponseBodyItems struct {
 	// - `SCAN_SIZE`: the scan data volume.
 	//
 	// > Each result contains only one key that matches the `MetricType` request parameter.
+	//
+	// example:
+	//
+	// {"CPU_COST":{"MetricCode":"CPU_COST","MetricName":"OperatorCost","Primary":true,"Time2":{"AvgDisplayValue":"3s","AvgRatioPercent":10.0,"AvgValue":3.0,"MaxDisplayValue":"9s","MaxValue":9.0,"SumDisplayValue":"180s","SumRatioPercent":10.0,"SumValue":180.0}}}
 	MetricValues map[string]*ItemsMetricValuesValue `json:"MetricValues,omitempty" xml:"MetricValues,omitempty"`
 	// The parameterized SQL Pattern text. This field is empty or not returned when IncludePattern is set to false. When the text is unavailable, a prompt containing a hash identifier may be returned.
 	//

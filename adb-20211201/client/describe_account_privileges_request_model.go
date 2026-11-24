@@ -30,7 +30,7 @@ type iDescribeAccountPrivilegesRequest interface {
 }
 
 type DescribeAccountPrivilegesRequest struct {
-	// The name of the database account whose privileges you want to query.
+	// The name of the database account whose permissions you want to query.
 	//
 	// This parameter is required.
 	//
@@ -38,15 +38,15 @@ type DescribeAccountPrivilegesRequest struct {
 	//
 	// account1
 	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
-	// Filters the results by column name. This parameter is used only when `PrivilegeType` is set to `Column`.
+	// Filters the results by column name. This parameter is available only when the privilege level is column.
 	//
 	// example:
 	//
 	// col1
 	ColumnPrivilegeObject *string `json:"ColumnPrivilegeObject,omitempty" xml:"ColumnPrivilegeObject,omitempty"`
-	// <props="china">The ID of the Enterprise Edition, Basic Edition, or Lakehouse Edition cluster.
+	// <props="china">The ID of the Enterprise Edition, Basic Edition, or Data Lakehouse Edition cluster.
 	//
-	// <props="intl">The ID of the Lakehouse Edition cluster.
+	// <props="intl">The ID of the Data Lakehouse Edition cluster.
 	//
 	// This parameter is required.
 	//
@@ -54,13 +54,13 @@ type DescribeAccountPrivilegesRequest struct {
 	//
 	// amv-bp1k5p066e1a****
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	// Filters the results by database name. This parameter is used only when `PrivilegeType` is set to `Database`, `Table`, or `Column`.
+	// Filters the results by database name. This parameter is available only when the privilege level is database, table, or column.
 	//
 	// example:
 	//
 	// db1
 	DatabasePrivilegeObject *string `json:"DatabasePrivilegeObject,omitempty" xml:"DatabasePrivilegeObject,omitempty"`
-	// The page number. Pages start at 1. Default value: 1.
+	// The page number. Pages start from 1. Default value: 1.
 	//
 	// example:
 	//
@@ -72,7 +72,7 @@ type DescribeAccountPrivilegesRequest struct {
 	//
 	// 10
 	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The privilege level to query. To obtain the valid values for this parameter, call the `DescribeEnabledPrivileges` operation.
+	// The privilege level to query. This value is returned by the DescribeEnabledPrivileges operation.
 	//
 	// example:
 	//
@@ -86,7 +86,7 @@ type DescribeAccountPrivilegesRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// Filters the results by table name. You can use this parameter with `DatabasePrivilegeObject` to refine the search. This parameter is used only when `PrivilegeType` is set to `Table` or `Column`.
+	// Filters the results by table name. You can use this parameter together with the database name for joint filtering. This parameter is available only when the privilege level is table or column.
 	//
 	// example:
 	//

@@ -18,7 +18,7 @@ type iDescribeSparkAppTypeResponseBody interface {
 }
 
 type DescribeSparkAppTypeResponseBody struct {
-	// The detailed reason why the access was denied.
+	// The details of the access denial.
 	//
 	// example:
 	//
@@ -48,9 +48,9 @@ type DescribeSparkAppTypeResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The type of the Spark application. Valid values:
 	//
-	// 	- BATCH
+	// - BATCH: batch application.
 	//
-	// 	- SQLENGINE
+	// - SQLENGINE: SQL engine application.
 	//
 	// example:
 	//

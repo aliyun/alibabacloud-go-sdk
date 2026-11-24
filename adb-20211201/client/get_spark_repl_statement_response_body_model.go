@@ -62,45 +62,45 @@ func (s *GetSparkReplStatementResponseBody) Validate() error {
 }
 
 type GetSparkReplStatementResponseBodyData struct {
-	// The ID of the Alibaba Cloud account that owns the cluster.
+	// The ID of the Alibaba Cloud account to which the instance belongs.
 	//
 	// example:
 	//
 	// 144740799645****
 	AliyunUid *int64 `json:"AliyunUid,omitempty" xml:"AliyunUid,omitempty"`
-	// The code that is executed.
+	// The executed code.
 	//
 	// example:
 	//
 	// print(1+1)
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The code execution status. Valid values:
+	// The execution status of the code. Valid values:
 	//
-	// 	- CANCELLED
+	// - CANCELLED: The execution is canceled.
 	//
-	// 	- RUNNING
+	// - RUNNING: The execution is in progress.
 	//
-	// 	- SUCCEEDED
+	// - SUCCEEDED: The execution is completed.
 	//
-	// 	- ERROR
+	// - ERROR: The execution failed.
 	//
 	// example:
 	//
 	// RUNNING
 	CodeState *string `json:"CodeState,omitempty" xml:"CodeState,omitempty"`
-	// The code type. Valid values:
+	// The type of the code. Valid values:
 	//
-	// 	- PYTHON
+	// - PYTHON
 	//
-	// 	- SCALA
+	// - SCALA
 	//
 	// example:
 	//
 	// PYTHON
 	CodeType *string `json:"CodeType,omitempty" xml:"CodeType,omitempty"`
-	// The column names.
+	// The array of column names.
 	Columns []*string `json:"Columns,omitempty" xml:"Columns,omitempty" type:"Repeated"`
-	// The end time of the query. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	// The end time of the task. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
@@ -112,31 +112,25 @@ type GetSparkReplStatementResponseBodyData struct {
 	//
 	// stackoverflow error
 	Error *string `json:"Error,omitempty" xml:"Error,omitempty"`
-	// The code execution result, which is a JSON string.
+	// The output result, which is a string in JSON format.
 	//
 	// example:
 	//
 	// {"text/plain": 2}
 	Output *string `json:"Output,omitempty" xml:"Output,omitempty"`
-	// The execution result type.
-	//
-	// Valid values:
-	//
-	// 	- TABLE
-	//
-	// 	- TEXT
+	// The type of the output result.
 	//
 	// example:
 	//
 	// TEXT
 	OutputType *string `json:"OutputType,omitempty" xml:"OutputType,omitempty"`
-	// The start time of the query. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	// The start time of the task. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
 	// 1730968194000
 	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The unique ID of the code block in the Spark job.
+	// The unique ID of the code block in this Spark job.
 	//
 	// example:
 	//

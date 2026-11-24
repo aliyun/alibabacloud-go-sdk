@@ -16,9 +16,9 @@ type iGetSparkSQLEngineStateResponseBody interface {
 }
 
 type GetSparkSQLEngineStateResponseBody struct {
-	// The state information about the Spark SQL engine.
+	// The status details of the Spark SQL engine.
 	Data *GetSparkSQLEngineStateResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The request ID.
+	// Id of the request
 	//
 	// example:
 	//
@@ -62,7 +62,7 @@ func (s *GetSparkSQLEngineStateResponseBody) Validate() error {
 }
 
 type GetSparkSQLEngineStateResponseBodyData struct {
-	// The ID of the Spark application.
+	// The application ID.
 	//
 	// example:
 	//
@@ -74,59 +74,59 @@ type GetSparkSQLEngineStateResponseBodyData struct {
 	//
 	// {"key1": "value1", "key2": "value2"}
 	Config *string `json:"Config,omitempty" xml:"Config,omitempty"`
-	// The third-party JAR package.
+	// The third-party JAR packages.
 	//
 	// example:
 	//
 	// oss://test-bucket/test.jar
 	Jars *string `json:"Jars,omitempty" xml:"Jars,omitempty"`
-	// The maximum number of started Spark executors.
+	// The maximum number of Spark executors to start.
 	//
 	// example:
 	//
 	// 3
 	MaxExecutor *string `json:"MaxExecutor,omitempty" xml:"MaxExecutor,omitempty"`
-	// The minimum number of started Spark executors.
+	// The minimum number of Spark executors to start.
 	//
 	// example:
 	//
 	// 1
 	MinExecutor *string `json:"MinExecutor,omitempty" xml:"MinExecutor,omitempty"`
-	// The slot number of the Spark application.
+	// The slot value of the Spark application.
 	//
 	// example:
 	//
 	// 2
 	SlotNum *string `json:"SlotNum,omitempty" xml:"SlotNum,omitempty"`
-	// The execution state of the application. Valid values:
+	// The execution status of the application. Valid values:
 	//
-	// 	- SUBMITTED
+	// 	- SUBMITTED: Submitted.
 	//
-	// 	- STARTING
+	// 	- STARTING: Starting.
 	//
-	// 	- RUNNING
+	// 	- RUNNING: Running.
 	//
-	// 	- FAILING
+	// 	- FAILING: The task failed and the environment is being cleaned up.
 	//
-	// 	- FAILED
+	// 	- FAILED: Failed.
 	//
-	// 	- KILLING
+	// 	- KILLING: The task is being terminated and the environment is being cleaned up.
 	//
-	// 	- KILLED
+	// 	- KILLED: Terminated.
 	//
-	// 	- SUCCEEDING
+	// 	- SUCCEEDING: The task execution is complete and the environment is being cleaned up.
 	//
-	// 	- COMPLETED
+	// 	- COMPLETED: Completed.
 	//
-	// 	- FATAL
+	// 	- FATAL: Unexpected failure.
 	//
-	// 	- UNKNOWN
+	// 	- UNKNOWN: Unknown error.
 	//
 	// example:
 	//
 	// COMPLETED
 	State *string `json:"State,omitempty" xml:"State,omitempty"`
-	// The timestamp when the Spark SQL application was submitted. Unit: milliseconds.
+	// The submission time of the Spark SQL application. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//

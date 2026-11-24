@@ -121,9 +121,9 @@ type DescribeApsMigrationWorkloadsResponseBodyMigrationWorkloads struct {
 	//
 	// example:
 	//
-	// -
+	// 16
 	AcuCount *int32 `json:"AcuCount,omitempty" xml:"AcuCount,omitempty"`
-	// The time when the task was created. The time is in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format and in UTC.
+	// The time when the task was created. The time is displayed in UTC and follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format.
 	//
 	// example:
 	//
@@ -133,7 +133,7 @@ type DescribeApsMigrationWorkloadsResponseBodyMigrationWorkloads struct {
 	//
 	// example:
 	//
-	// -
+	// The task execution failed
 	FailedMsg *string `json:"FailedMsg,omitempty" xml:"FailedMsg,omitempty"`
 	// The task ID.
 	//
@@ -147,7 +147,7 @@ type DescribeApsMigrationWorkloadsResponseBodyMigrationWorkloads struct {
 	//
 	// 1000
 	MaxRT *string `json:"MaxRT,omitempty" xml:"MaxRT,omitempty"`
-	// The time when the task was modified. The time is in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format and in UTC.
+	// The time when the task was modified. The time is displayed in UTC and follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format.
 	//
 	// example:
 	//

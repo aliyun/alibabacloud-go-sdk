@@ -58,7 +58,7 @@ type iModifyDBResourceGroupShrinkRequest interface {
 type ModifyDBResourceGroupShrinkRequest struct {
 	// The PromQL resource group configuration.
 	AtmConfigShrink *string `json:"AtmConfig,omitempty" xml:"AtmConfig,omitempty"`
-	// The auto-stop time.
+	// The automatic stop time.
 	//
 	// example:
 	//
@@ -86,7 +86,7 @@ type ModifyDBResourceGroupShrinkRequest struct {
 	//
 	// amv-bp1r053byu48p****
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	// Specifies whether to enable the spot instance feature for the resource group. After you enable this feature, the unit price of resources decreases, but the resources may be released. This feature can be enabled only for Job resource groups. Valid values:
+	// Specifies whether to enable the spot instance feature for the resource group. After you enable spot instances, the unit price of resources decreases, but the instances may be released. This feature can be enabled only for Job resource groups. Valid values:
 	//
 	// - **True**: Enables the spot instance feature.
 	//
@@ -96,11 +96,11 @@ type ModifyDBResourceGroupShrinkRequest struct {
 	//
 	// True
 	EnableSpot *bool `json:"EnableSpot,omitempty" xml:"EnableSpot,omitempty"`
-	// The engine configurations.
+	// The engine configuration.
 	//
 	// example:
 	//
-	// {\\"spark.adb.version\\":\\"3.5\\"}
+	// {"spark.adb.version":"3.5"}
 	EngineParamsShrink *string `json:"EngineParams,omitempty" xml:"EngineParams,omitempty"`
 	// The GPU time-based elastic plan.
 	GpuElasticPlanShrink *string `json:"GpuElasticPlan,omitempty" xml:"GpuElasticPlan,omitempty"`
@@ -120,7 +120,7 @@ type ModifyDBResourceGroupShrinkRequest struct {
 	//
 	// - **Job**
 	//
-	// > For more information about Data Lakehouse Edition resource groups, see [Resource groups](https://help.aliyun.com/document_detail/428610.html).
+	// > For more information about Data Lakehouse Edition resource groups, refer to [Resource group overview](https://help.aliyun.com/document_detail/428610.html).
 	//
 	// This parameter is required.
 	//
@@ -132,13 +132,13 @@ type ModifyDBResourceGroupShrinkRequest struct {
 	//
 	// example:
 	//
-	// None
+	// 1
 	MaxClusterCount *int32 `json:"MaxClusterCount,omitempty" xml:"MaxClusterCount,omitempty"`
 	// The maximum reserved computing resources.
 	//
-	// - If the resource group type is Interactive, the maximum reserved computing resources is the currently unallocated resources of the cluster, and the step size is 16 ACUs.
+	// - If the resource group type is Interactive, the maximum reserved computing resources is the current unallocated resources of the cluster, in increments of 16 ACU.
 	//
-	// - If the resource group type is Job, the maximum reserved computing resources is the currently unallocated resources of the cluster, and the step size is 8 ACUs.
+	// - If the resource group type is Job, the maximum reserved computing resources is the current unallocated resources of the cluster, in increments of 8 ACU.
 	//
 	// example:
 	//
@@ -148,19 +148,19 @@ type ModifyDBResourceGroupShrinkRequest struct {
 	//
 	// example:
 	//
-	// Reserved parameter
+	// 1
 	MaxGpuQuantity *int32 `json:"MaxGpuQuantity,omitempty" xml:"MaxGpuQuantity,omitempty"`
 	// Reserved parameter.
 	//
 	// example:
 	//
-	// None
+	// 1
 	MinClusterCount *int32 `json:"MinClusterCount,omitempty" xml:"MinClusterCount,omitempty"`
 	// The minimum reserved computing resources.
 	//
-	// - If the resource group type is Interactive, the minimum reserved computing resources is 16 ACUs.
+	// - If the resource group type is Interactive, the minimum reserved computing resources is 16 ACU.
 	//
-	// - If the resource group type is Job, the minimum reserved computing resources is 0 ACUs.
+	// - If the resource group type is Job, the minimum reserved computing resources is 0 ACU.
 	//
 	// example:
 	//
@@ -170,7 +170,7 @@ type ModifyDBResourceGroupShrinkRequest struct {
 	//
 	// example:
 	//
-	// Reserved parameter
+	// 1
 	MinGpuQuantity *int32 `json:"MinGpuQuantity,omitempty" xml:"MinGpuQuantity,omitempty"`
 	// The Ray configuration information. This parameter is required when the resource group is an AI resource group and the corresponding engine is RayCluster.
 	RayConfigShrink *string `json:"RayConfig,omitempty" xml:"RayConfig,omitempty"`
@@ -182,7 +182,7 @@ type ModifyDBResourceGroupShrinkRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The job delivery rules.
+	// The job routing rules.
 	RulesShrink *string `json:"Rules,omitempty" xml:"Rules,omitempty"`
 	// Reserved parameter.
 	//

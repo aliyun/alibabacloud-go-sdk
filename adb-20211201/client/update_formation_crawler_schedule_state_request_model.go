@@ -56,11 +56,11 @@ type UpdateFormationCrawlerScheduleStateRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The scheduling state. Valid values:
+	// The schedule state. Valid values:
 	//
-	// - NORMAL: resume.
+	// - NORMAL: resumes the schedule.
 	//
-	// - DISABLED: pause.
+	// - DISABLED: pauses the schedule.
 	//
 	// This parameter is required.
 	//

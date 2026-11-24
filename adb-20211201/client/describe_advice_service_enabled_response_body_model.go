@@ -18,11 +18,11 @@ type iDescribeAdviceServiceEnabledResponseBody interface {
 }
 
 type DescribeAdviceServiceEnabledResponseBody struct {
-	// The message about the call result. Valid values:
+	// The message returned for the call result.
 	//
-	// - **Success**: The request is successful.
+	// - If the request is successful, **Success*	- is returned.
 	//
-	// - Specific error message: Returned when an exception occurs.
+	// - If the request fails, the specific error message is returned.
 	//
 	// example:
 	//
@@ -36,9 +36,9 @@ type DescribeAdviceServiceEnabledResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the advisory service is enabled. Valid values:
 	//
-	// - **True**: The advisory service is enabled.
+	// - **True**: Enabled.
 	//
-	// - **False**: The advisory service is disabled.
+	// - **False**: Disabled.
 	//
 	// example:
 	//

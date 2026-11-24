@@ -18,13 +18,13 @@ type iGetSparkReplSessionRequest interface {
 type GetSparkReplSessionRequest struct {
 	// The application ID.
 	//
-	// >  You can call the [ListSparkApps](https://help.aliyun.com/document_detail/455888.html) operation to query all application IDs.
+	// > You can call the [ListSparkApps](https://help.aliyun.com/document_detail/455888.html) operation to query all application IDs.
 	//
 	// example:
 	//
 	// s202411071444hzdvk486d9d200****
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// The ID of the session that executes the code.
+	// The ID of the session for code execution.
 	//
 	// This parameter is required.
 	//

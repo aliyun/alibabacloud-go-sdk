@@ -34,13 +34,13 @@ type DescribeTableDetailRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The name of the database.
+	// The database name.
 	//
 	// example:
 	//
 	// adb_demo
 	SchemaName *string `json:"SchemaName,omitempty" xml:"SchemaName,omitempty"`
-	// The name of the table.
+	// The table name.
 	//
 	// example:
 	//

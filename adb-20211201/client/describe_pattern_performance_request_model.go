@@ -24,7 +24,7 @@ type iDescribePatternPerformanceRequest interface {
 type DescribePatternPerformanceRequest struct {
 	// The cluster ID.
 	//
-	// > You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/129857.html) operation to query the details of all clusters in a region, including their cluster IDs.
+	// > You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/129857.html) operation to query the details of all clusters in the specified region, including the cluster IDs.
 	//
 	// This parameter is required.
 	//
@@ -32,7 +32,7 @@ type DescribePatternPerformanceRequest struct {
 	//
 	// amv-uf6li1r3do8m****
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	// The end of the time range to query. Specify the time in UTC in the *yyyy-MM-ddTHH:mm:ssZ	- format.
+	// The end time of the query. The time is in UTC and follows the <i>yyyy-MM-ddTHH:mmZ</i> format.
 	//
 	// > The end time must be later than the start time.
 	//
@@ -42,7 +42,7 @@ type DescribePatternPerformanceRequest struct {
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// The ID of the SQL pattern.
 	//
-	// > You can call the [DescribeSQLPatterns](https://help.aliyun.com/document_detail/321868.html) operation to query information about all SQL patterns in a cluster within a specified time range, including the ID of each SQL pattern.
+	// > You can call the [DescribeSQLPatterns](https://help.aliyun.com/document_detail/321868.html) operation to query the list of all SQL patterns in the specified cluster within a specified time period, including the SQL pattern IDs.
 	//
 	// example:
 	//
@@ -56,11 +56,11 @@ type DescribePatternPerformanceRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The beginning of the time range to query. Specify the time in UTC in the *yyyy-MM-ddTHH:mm:ssZ	- format.
+	// The start time of the query. The time is in UTC and follows the <i>yyyy-MM-ddTHH:mm:ssZ</i> format.
 	//
-	// > - You can query data from the last 14 days. If you specify a start time earlier than this period, an empty value is returned. For example, if the current date is August 22, 2022 (China Standard Time), the earliest valid start time is 2022-08-08T16:00:00Z.
+	// >  - If the current date is August 22, 2022 (UTC+8), the earliest data you can query is from August 9, 2022 (UTC+8), which corresponds to 2022-08-08T16:00:00Z in UTC. If the specified start time is earlier than August 9, 2022 (UTC+8) or 2022-08-08T16:00:00Z in UTC, an empty response is returned.
 	//
-	// - The interval between the start time and the end time cannot exceed 24 hours.
+	// - The interval between the start time and the end time of the query cannot exceed 24 hours.
 	//
 	// example:
 	//

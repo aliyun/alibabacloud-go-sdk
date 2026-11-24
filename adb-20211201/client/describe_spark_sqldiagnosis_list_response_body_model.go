@@ -48,7 +48,7 @@ type DescribeSparkSQLDiagnosisListResponseBody struct {
 	//
 	// A91C9D07-7462-5F35-BB47-83629CE6CCAC
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The SQL diagnostics information collection.
+	// The collection of SQL diagnostic information.
 	SQLDiagnosisList []*DescribeSparkSQLDiagnosisListResponseBodySQLDiagnosisList `json:"SQLDiagnosisList,omitempty" xml:"SQLDiagnosisList,omitempty" type:"Repeated"`
 	// The total number of entries.
 	//
@@ -148,7 +148,7 @@ type DescribeSparkSQLDiagnosisListResponseBodySQLDiagnosisList struct {
 	//
 	// 100
 	ElapsedTime *int64 `json:"ElapsedTime,omitempty" xml:"ElapsedTime,omitempty"`
-	// The internal query execution ID within the Spark application.
+	// The internal query execution ID of the Spark application.
 	//
 	// example:
 	//
@@ -186,13 +186,13 @@ type DescribeSparkSQLDiagnosisListResponseBodySQLDiagnosisList struct {
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	// The final execution state of the query. Valid values:
 	//
-	// - COMPLETED: The query is completed.
+	// - COMPLETED: completed.
 	//
-	// - CANCELED: The query is canceled.
+	// - CANCELED: canceled.
 	//
-	// - ABORTED: The query is aborted.
+	// - ABORTED: aborted.
 	//
-	// - FAILED: The query failed.
+	// - FAILED: failed.
 	//
 	// example:
 	//

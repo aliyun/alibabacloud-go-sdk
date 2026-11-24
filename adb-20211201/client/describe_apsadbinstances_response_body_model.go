@@ -30,7 +30,7 @@ type iDescribeAPSADBInstancesResponseBody interface {
 }
 
 type DescribeAPSADBInstancesResponseBody struct {
-	// The HTTP status code or the error code.
+	// The status code or POP error code.
 	//
 	// example:
 	//
@@ -42,17 +42,17 @@ type DescribeAPSADBInstancesResponseBody struct {
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The queried clusters.
+	// The list of items.
 	//
 	// example:
 	//
-	// -
+	// [{"DBClusterId":"amv-example","DBClusterDescription":"Example cluster"}]
 	Items []*DescribeAPSADBInstancesResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
-	// The returned message. Valid values:
+	// The additional information about the call result. Valid values:
 	//
-	// 	- If the request was successful, a success message is returned.****
+	// - If the request is normal, **Success*	- is returned.
 	//
-	// 	- If the request failed, an error message is returned.
+	// - If the request is abnormal, a specific error code is returned.
 	//
 	// example:
 	//
@@ -74,19 +74,19 @@ type DescribeAPSADBInstancesResponseBody struct {
 	//
 	// example:
 	//
-	// ******
+	// 12345678-1234-4ABC-8DEF-123456789012
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. Valid values:
+	// Indicates whether the call was successful. Valid values:
 	//
-	// 	- **true**
+	// - **true**: The call was successful.
 	//
-	// 	- **false**
+	// - **false**: The call failed.
 	//
 	// example:
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// The total number of entries returned.
+	// The total number of returned entries.
 	//
 	// example:
 	//
@@ -197,7 +197,7 @@ func (s *DescribeAPSADBInstancesResponseBody) Validate() error {
 }
 
 type DescribeAPSADBInstancesResponseBodyItems struct {
-	// The specifications of the reserved computing resources.
+	// The specifications of reserved compute resources.
 	//
 	// example:
 	//
@@ -209,7 +209,7 @@ type DescribeAPSADBInstancesResponseBodyItems struct {
 	//
 	// adb_test
 	DBClusterDescription *string `json:"DBClusterDescription,omitempty" xml:"DBClusterDescription,omitempty"`
-	// The ID of the AnalyticDB for MySQL Data Lakehouse Edition cluster.
+	// The ID of the AnalyticDB for MySQL Data Lakehouse Edition (3.0) cluster.
 	//
 	// example:
 	//
@@ -221,13 +221,13 @@ type DescribeAPSADBInstancesResponseBodyItems struct {
 	//
 	// Running
 	DBClusterStatus *string `json:"DBClusterStatus,omitempty" xml:"DBClusterStatus,omitempty"`
-	// The amount of remaining reserved computing resources that are available in the cluster.
+	// The remaining allocatable reserved compute resources of the cluster.
 	//
 	// example:
 	//
 	// 24ACU
 	ReservedACU *string `json:"ReservedACU,omitempty" xml:"ReservedACU,omitempty"`
-	// The specifications of the reserved storage resources.
+	// The specifications of reserved storage resources.
 	//
 	// example:
 	//

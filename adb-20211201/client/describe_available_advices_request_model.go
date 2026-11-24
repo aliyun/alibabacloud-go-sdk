@@ -32,9 +32,9 @@ type iDescribeAvailableAdvicesRequest interface {
 }
 
 type DescribeAvailableAdvicesRequest struct {
-	// The generation date of the suggestion, in the yyyyMMdd format.
+	// The generation date of the suggestions, in the yyyyMMdd format.
 	//
-	// > Data is generated after daily analysis in the early morning. Therefore, you must specify a date of T-1 or earlier to query the data. For example, if today is 20240627, you must specify 20240626 or an earlier date.
+	// > Data is generated after daily analysis in the early morning. Therefore, you must specify a date of T-1 or earlier to query the data. For example, if today is 20240627, you should pass 20240626 or an earlier date.
 	//
 	// example:
 	//
@@ -42,9 +42,9 @@ type DescribeAvailableAdvicesRequest struct {
 	AdviceDate *int64 `json:"AdviceDate,omitempty" xml:"AdviceDate,omitempty"`
 	// The type of the suggestion. Valid values:
 	//
-	// - **INDEX**: Index optimization.
+	// - **INDEX**: index optimization.
 	//
-	// - **TIERING**: Hot and cold data optimization.
+	// - **TIERING**: hot and cold data optimization.
 	//
 	// example:
 	//
@@ -78,7 +78,7 @@ type DescribeAvailableAdvicesRequest struct {
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The field by which to sort the query results. The value is a JSON string. Example: `[{"Field":"SchemaName","Type":"Asc"}]`. Parameters:
+	// The field by which to sort the query results. The value must be a JSON string. Example: `[{"Field":"SchemaName","Type":"Asc"}]`. Parameters:
 	//
 	// - `Field`: the sort field. Valid values:
 	//
@@ -126,7 +126,7 @@ type DescribeAvailableAdvicesRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The concatenated string of the database name and table name.
+	// The concatenated string of the database name and the table name.
 	//
 	// example:
 	//

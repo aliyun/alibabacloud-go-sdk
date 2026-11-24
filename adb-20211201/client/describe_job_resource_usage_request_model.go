@@ -34,7 +34,7 @@ type DescribeJobResourceUsageRequest struct {
 	//
 	// am-uf6g8w25jacm7****
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	// The end time of the query. The end time must be later than the start time. Format: <i>yyyy-MM-ddTHH:mm:ssZ</i> (UTC time).
+	// The end time of the query, which must be later than the start time. Format: <i>yyyy-MM-ddTHH:mm:ssZ</i> (UTC time).
 	//
 	// This parameter is required.
 	//

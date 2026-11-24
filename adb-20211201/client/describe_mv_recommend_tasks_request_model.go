@@ -26,11 +26,11 @@ type iDescribeMvRecommendTasksRequest interface {
 }
 
 type DescribeMvRecommendTasksRequest struct {
-	// A fixed value. This parameter cannot be modified.
+	// A fixed value that cannot be modified.
 	//
 	// example:
 	//
-	// Not modifiable
+	// Cannot be modified
 	ActionInner *string `json:"ActionInner,omitempty" xml:"ActionInner,omitempty"`
 	// The cluster ID.
 	//
@@ -38,11 +38,11 @@ type DescribeMvRecommendTasksRequest struct {
 	//
 	// amv-bp11q28kvl688****
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	// A fixed value. This parameter cannot be modified.
+	// A fixed value that cannot be modified.
 	//
 	// example:
 	//
-	// Not modifiable
+	// Cannot be modified
 	From *string `json:"From,omitempty" xml:"From,omitempty"`
 	// The page number.
 	//

@@ -50,9 +50,9 @@ type DescribeAvailableAdvicesResponseBody struct {
 	//
 	// 96A55627-28E9-5E47-B8F6-D786BE551349
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The concatenated string of the database name and table name.
+	// The concatenated string of the database name and the table name.
 	SchemaTableNames []*string `json:"SchemaTableNames,omitempty" xml:"SchemaTableNames,omitempty" type:"Repeated"`
-	// The total number of returned results. Valid values: greater than or equal to 0 and up to the maximum value of the Integer data type. Default value: 0.
+	// The total number of returned results. Valid values: 0 to the maximum value of the Integer data type. Default value: 0.
 	//
 	// example:
 	//
@@ -136,7 +136,7 @@ func (s *DescribeAvailableAdvicesResponseBody) Validate() error {
 }
 
 type DescribeAvailableAdvicesResponseBodyItems struct {
-	// The time when the suggestion was generated, in the yyyyMMdd format.
+	// The generation time of the suggestion, in the yyyyMMdd format.
 	//
 	// example:
 	//
@@ -150,9 +150,9 @@ type DescribeAvailableAdvicesResponseBodyItems struct {
 	AdviceId *string `json:"AdviceId,omitempty" xml:"AdviceId,omitempty"`
 	// The type of the suggestion. Valid values:
 	//
-	// - **INDEX**: Index optimization.
+	// - **INDEX**: index optimization.
 	//
-	// - **TIERING**: Hot and cold data optimization.
+	// - **TIERING**: hot and cold data optimization.
 	//
 	// example:
 	//
@@ -188,13 +188,13 @@ type DescribeAvailableAdvicesResponseBodyItems struct {
 	//
 	// 30
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The reason for generating optimization suggestions.
+	// The reason for generating the optimization suggestions.
 	//
 	// example:
 	//
-	// Not used for 15 days, and the historical usage probability is less than 1%
+	// Unused for 15 days, with a historical usage probability of less than 1%
 	Reason *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
-	// The SQL statement to apply the suggestion.
+	// The SQL statement used to apply the suggestion.
 	//
 	// example:
 	//
@@ -212,7 +212,7 @@ type DescribeAvailableAdvicesResponseBodyItems struct {
 	//
 	// test_table
 	TableName *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
-	// The total number of returned results. Valid values: greater than or equal to 0 and up to the maximum value of the Integer data type. Default value: 0.
+	// The total number of returned results. Valid values: 0 to the maximum value of the Integer data type. Default value: 0.
 	//
 	// example:
 	//

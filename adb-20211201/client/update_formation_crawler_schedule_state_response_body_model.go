@@ -42,7 +42,7 @@ type UpdateFormationCrawlerScheduleStateResponseBody struct {
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The response message. OK is returned if the call was successful.
+	// The message returned. OK is returned when the call is successful.
 	//
 	// example:
 	//
@@ -56,9 +56,9 @@ type UpdateFormationCrawlerScheduleStateResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the call was successful. Valid values:
 	//
-	// - **true**: Successful.
+	// - **true**: The call was successful.
 	//
-	// - **false**: Failed.
+	// - **false**: The call failed.
 	//
 	// example:
 	//

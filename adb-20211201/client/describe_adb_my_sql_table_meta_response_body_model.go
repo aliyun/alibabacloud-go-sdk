@@ -20,11 +20,11 @@ type iDescribeAdbMySqlTableMetaResponseBody interface {
 }
 
 type DescribeAdbMySqlTableMetaResponseBody struct {
-	// The returned message. Valid values:
+	// The additional information about the call result. Valid values:
 	//
-	// 	- If the request was successful, a success message is returned.****
+	// - **Success**: The request is successful.
 	//
-	// 	- If the request failed, an error message is returned.
+	// - Specific error code: The request is abnormal.
 	//
 	// example:
 	//
@@ -36,17 +36,17 @@ type DescribeAdbMySqlTableMetaResponseBody struct {
 	//
 	// 2FED790E-FB61-4721-8C1C-07C627FA5A19
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. Valid values:
+	// Indicates whether the call was successful. Valid values:
 	//
-	// 	- **true**
+	// - **true**: The call was successful.
 	//
-	// 	- **false**
+	// - **false**: The call failed.
 	//
 	// example:
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// The queried table metadata.
+	// The table metadata.
 	TableMeta *DescribeAdbMySqlTableMetaResponseBodyTableMeta `json:"TableMeta,omitempty" xml:"TableMeta,omitempty" type:"Struct"`
 }
 
@@ -104,7 +104,7 @@ func (s *DescribeAdbMySqlTableMetaResponseBody) Validate() error {
 }
 
 type DescribeAdbMySqlTableMetaResponseBodyTableMeta struct {
-	// The time when the table was created.
+	// The creation time.
 	//
 	// example:
 	//
@@ -122,41 +122,41 @@ type DescribeAdbMySqlTableMetaResponseBodyTableMeta struct {
 	//
 	// hash
 	DistributeType *string `json:"DistributeType,omitempty" xml:"DistributeType,omitempty"`
-	// Indicates whether full-column indexes are used.
+	// Indicates whether full indexing is enabled.
 	//
 	// example:
 	//
 	// false
 	IsAllIndex *bool `json:"IsAllIndex,omitempty" xml:"IsAllIndex,omitempty"`
-	// Indicates whether dictionary encoding is used.
+	// Indicates whether dictionary encoding is enabled.
 	//
 	// example:
 	//
 	// true
 	IsDictEncode *bool `json:"IsDictEncode,omitempty" xml:"IsDictEncode,omitempty"`
-	// Indicates whether full-text indexes are used.
+	// Indicates whether full-text indexing is enabled.
 	//
 	// example:
 	//
 	// true
 	IsFullTextDict *bool `json:"IsFullTextDict,omitempty" xml:"IsFullTextDict,omitempty"`
-	// Indicates whether pages are hidden.
+	// Indicates whether the page is hidden. Valid values:
 	//
-	// 	- **false**
+	// - **false**: The page is not hidden.
 	//
-	// 	- **true**
+	// - **true**: The page is hidden.
 	//
 	// example:
 	//
 	// true
 	IsHidden *bool `json:"IsHidden,omitempty" xml:"IsHidden,omitempty"`
-	// The partition key column.
+	// The partition column information.
 	//
 	// example:
 	//
 	// DATE_FORMAT(login_time, \\"%Y%m%d\\")
 	PartitionColumn *string `json:"PartitionColumn,omitempty" xml:"PartitionColumn,omitempty"`
-	// The type of the partition.
+	// The partition type.
 	//
 	// example:
 	//
@@ -176,9 +176,7 @@ type DescribeAdbMySqlTableMetaResponseBodyTableMeta struct {
 	TableEngine *string `json:"TableEngine,omitempty" xml:"TableEngine,omitempty"`
 	// The name of the table.
 	//
-	// **
-	//
-	// ****
+	// > If this parameter is left empty, the usage frequency data of all tables in the specified cluster on the current day is returned.
 	//
 	// example:
 	//
@@ -196,7 +194,7 @@ type DescribeAdbMySqlTableMetaResponseBodyTableMeta struct {
 	//
 	// fact_table
 	TableType *string `json:"TableType,omitempty" xml:"TableType,omitempty"`
-	// The time when the table was updated.
+	// The update time.
 	//
 	// example:
 	//

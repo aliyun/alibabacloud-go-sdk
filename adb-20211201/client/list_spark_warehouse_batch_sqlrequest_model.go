@@ -28,7 +28,7 @@ type ListSparkWarehouseBatchSQLRequest struct {
 	//
 	// am-bp1ub9grke1****
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	// The page number.
+	// The current page number.
 	//
 	// example:
 	//

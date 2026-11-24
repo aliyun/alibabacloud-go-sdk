@@ -24,7 +24,7 @@ type DescribeJobResourceUsageResponseBody struct {
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The returned data.
+	// The response data.
 	Data *DescribeJobResourceUsageResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -93,7 +93,7 @@ type DescribeJobResourceUsageResponseBodyData struct {
 	//
 	// 2023-05-23T16:00:00Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The ACU usage of the job resource group.
+	// The ACU usage of job resource groups.
 	JobAcuUsage []*DescribeJobResourceUsageResponseBodyDataJobAcuUsage `json:"JobAcuUsage,omitempty" xml:"JobAcuUsage,omitempty" type:"Repeated"`
 	// The page number.
 	//
@@ -206,7 +206,7 @@ func (s *DescribeJobResourceUsageResponseBodyData) Validate() error {
 }
 
 type DescribeJobResourceUsageResponseBodyDataJobAcuUsage struct {
-	// The ACU resource usage details.
+	// The ACU resource usage.
 	AcuUsageDetail *DescribeJobResourceUsageResponseBodyDataJobAcuUsageAcuUsageDetail `json:"AcuUsageDetail,omitempty" xml:"AcuUsageDetail,omitempty" type:"Struct"`
 	// The end time of the job. Format: yyyy-MM-ddTHH:mmZ (UTC time).
 	//
@@ -238,7 +238,7 @@ type DescribeJobResourceUsageResponseBodyDataJobAcuUsage struct {
 	//
 	// SparkTest
 	SparkAppName *string `json:"SparkAppName,omitempty" xml:"SparkAppName,omitempty"`
-	// Indicates whether the cache pool is used.
+	// Indicates whether the hot pool is used.
 	//
 	// example:
 	//
@@ -331,21 +331,21 @@ type DescribeJobResourceUsageResponseBodyDataJobAcuUsageAcuUsageDetail struct {
 	//
 	// example:
 	//
-	// 16ACU
+	// 16
 	ElasticAcuNumber *float32 `json:"ElasticAcuNumber,omitempty" xml:"ElasticAcuNumber,omitempty"`
 	// The number of reserved ACUs.
 	//
 	// example:
 	//
-	// 16ACU
+	// 16
 	ReservedAcuNumber *float32 `json:"ReservedAcuNumber,omitempty" xml:"ReservedAcuNumber,omitempty"`
 	// The number of spot instance ACUs.
 	//
 	// example:
 	//
-	// 16ACU
+	// 16
 	SpotAcuNumber *float32 `json:"SpotAcuNumber,omitempty" xml:"SpotAcuNumber,omitempty"`
-	// The percentage of spot instance resources in the total elastic resources.
+	// The ratio of spot instance resources to total elastic resources.
 	//
 	// example:
 	//
@@ -355,7 +355,7 @@ type DescribeJobResourceUsageResponseBodyDataJobAcuUsageAcuUsageDetail struct {
 	//
 	// example:
 	//
-	// 32ACU
+	// 32
 	TotalAcuNumber *float32 `json:"TotalAcuNumber,omitempty" xml:"TotalAcuNumber,omitempty"`
 }
 

@@ -18,7 +18,7 @@ type iDescribeClusterNetInfoResponseBody interface {
 }
 
 type DescribeClusterNetInfoResponseBody struct {
-	// The network type of the cluster. Only VPCs are supported. The value is fixed as **VPC**.
+	// The network type of the cluster. Only virtual private clouds (VPCs) are supported. The value is fixed to **VPC**.
 	//
 	// example:
 	//

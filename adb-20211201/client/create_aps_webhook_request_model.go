@@ -20,7 +20,7 @@ type iCreateApsWebhookRequest interface {
 }
 
 type CreateApsWebhookRequest struct {
-	// The cluster ID.
+	// The ID of the cluster.
 	//
 	// This parameter is required.
 	//
@@ -28,9 +28,9 @@ type CreateApsWebhookRequest struct {
 	//
 	// amv-bp11q28kvl688****
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	// The task type. Valid values:
+	// The node type. Valid values:
 	//
-	// ResultExport: SLS/OSS export task.
+	// - ResultExport: SLS or OSS export task.
 	//
 	// This parameter is required.
 	//
@@ -112,7 +112,7 @@ type CreateApsWebhookRequestWebhook struct {
 	//
 	// example:
 	//
-	// ***
+	// example****key
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	// The webhook name.
 	//

@@ -24,7 +24,7 @@ type iDescribeSQLPatternsResponseBody interface {
 }
 
 type DescribeSQLPatternsResponseBody struct {
-	// The details of the access denial. This field is returned only when RAM authentication fails.
+	// The details of the access denial. This field is returned only when the RAM authentication fails.
 	//
 	// example:
 	//
@@ -58,7 +58,7 @@ type DescribeSQLPatternsResponseBody struct {
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The list of patterns.
+	// The list.
 	PatternDetails []*DescribeSQLPatternsResponseBodyPatternDetails `json:"PatternDetails,omitempty" xml:"PatternDetails,omitempty" type:"Repeated"`
 	// The request ID.
 	//
@@ -156,7 +156,7 @@ type DescribeSQLPatternsResponseBodyPatternDetails struct {
 	//
 	// 192.168.xx.xx
 	AccessIp *string `json:"AccessIp,omitempty" xml:"AccessIp,omitempty"`
-	// The average execution time of the pattern within the specified time range. Unit: milliseconds.
+	// The average execution duration of the pattern within the specified time range. Unit: milliseconds.
 	//
 	// example:
 	//
@@ -174,13 +174,13 @@ type DescribeSQLPatternsResponseBodyPatternDetails struct {
 	//
 	// 234.22
 	AveragePeakMemory *float64 `json:"AveragePeakMemory,omitempty" xml:"AveragePeakMemory,omitempty"`
-	// The average total time consumed by the pattern within the specified time range. Unit: milliseconds.
+	// The average total duration of the pattern within the specified time range. Unit: milliseconds.
 	//
 	// example:
 	//
 	// 4
 	AverageQueryTime *float64 `json:"AverageQueryTime,omitempty" xml:"AverageQueryTime,omitempty"`
-	// The average scan time.
+	// The average scan duration.
 	//
 	// example:
 	//
@@ -204,13 +204,13 @@ type DescribeSQLPatternsResponseBodyPatternDetails struct {
 	//
 	// true
 	Blockable *bool `json:"Blockable,omitempty" xml:"Blockable,omitempty"`
-	// The number of failed executions of the pattern within the specified time range.
+	// The number of failures of the pattern within the specified time range.
 	//
 	// example:
 	//
 	// 18
 	FailedCount *int64 `json:"FailedCount,omitempty" xml:"FailedCount,omitempty"`
-	// The maximum execution time of the pattern within the specified time range. Unit: milliseconds.
+	// The maximum execution duration of the pattern within the specified time range. Unit: milliseconds.
 	//
 	// example:
 	//
@@ -222,19 +222,19 @@ type DescribeSQLPatternsResponseBodyPatternDetails struct {
 	//
 	// 5
 	MaxOperatorCost *float64 `json:"MaxOperatorCost,omitempty" xml:"MaxOperatorCost,omitempty"`
-	// The maximum peak memory usage for the SQL statement related to the pattern. Unit: bytes.
+	// The maximum peak memory for the SQL statement related to the pattern. Unit: bytes.
 	//
 	// example:
 	//
 	// 234149
 	MaxPeakMemory *int64 `json:"MaxPeakMemory,omitempty" xml:"MaxPeakMemory,omitempty"`
-	// The maximum total time consumed by the pattern within the specified time range. Unit: milliseconds.
+	// The maximum total duration of the pattern within the specified time range. Unit: milliseconds.
 	//
 	// example:
 	//
 	// 2341
 	MaxQueryTime *int64 `json:"MaxQueryTime,omitempty" xml:"MaxQueryTime,omitempty"`
-	// The maximum scan time.
+	// The maximum scan duration.
 	//
 	// example:
 	//
@@ -264,7 +264,7 @@ type DescribeSQLPatternsResponseBodyPatternDetails struct {
 	//
 	// 2022-09-06 05:06:00
 	PatternCreationTime *string `json:"PatternCreationTime,omitempty" xml:"PatternCreationTime,omitempty"`
-	// The ID of the SQL pattern.
+	// The ID of the SQL pattern statement.
 	//
 	// example:
 	//
@@ -288,19 +288,19 @@ type DescribeSQLPatternsResponseBodyPatternDetails struct {
 	//
 	// 345
 	QueryCount *int64 `json:"QueryCount,omitempty" xml:"QueryCount,omitempty"`
-	// The percentage of the time consumed by a single pattern within the query time range out of the total time consumed by all patterns. Unit: %.
+	// The percentage of the total duration of a single pattern within the query time range out of the total duration of all patterns. Unit: %.
 	//
 	// example:
 	//
 	// 10
 	QueryTimePercentage *float64 `json:"QueryTimePercentage,omitempty" xml:"QueryTimePercentage,omitempty"`
-	// The total time consumed. Unit: milliseconds.
+	// The total duration. Unit: milliseconds.
 	//
 	// example:
 	//
 	// 5
 	QueryTimeSum *float64 `json:"QueryTimeSum,omitempty" xml:"QueryTimeSum,omitempty"`
-	// The SQL statement of the pattern.
+	// The SQL pattern statement.
 	//
 	// example:
 	//

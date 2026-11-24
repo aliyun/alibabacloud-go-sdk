@@ -24,9 +24,9 @@ type iDescribeRegionsRequest interface {
 }
 
 type DescribeRegionsRequest struct {
-	// The language used for the names of regions and zones (the LocalName values in the response). Valid values:
+	// The language used for the region and zone names (the LocalName field in the response). Valid values:
 	//
-	// - **zh-CN**: simplified Chinese (default).
+	// - **zh-CN**: Simplified Chinese (default).
 	//
 	// - **en-US**: English.
 	//

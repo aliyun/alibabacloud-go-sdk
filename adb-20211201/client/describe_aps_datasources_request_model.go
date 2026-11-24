@@ -28,7 +28,7 @@ type iDescribeApsDatasourcesRequest interface {
 }
 
 type DescribeApsDatasourcesRequest struct {
-	// The ADB instance ID. This parameter is required. You can invoke the DescribeDBClusters operation to query the cluster ID in the specified region.
+	// The ADB instance ID. This parameter is required when you invoke the operation. You can invoke the DescribeDBClusters operation to query the cluster ID in the target region.
 	//
 	// example:
 	//

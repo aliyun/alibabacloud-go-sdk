@@ -30,7 +30,7 @@ type CheckFormationSchemaExistsResponseBody struct {
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// Indicates whether the schema exists.
+	// Indicates whether the metadata discovery schema exists.
 	//
 	// example:
 	//
@@ -42,7 +42,7 @@ type CheckFormationSchemaExistsResponseBody struct {
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The returned message. OK is returned if the request is successful.
+	// The returned message. The value is OK if the request is successful.
 	//
 	// example:
 	//
@@ -54,7 +54,7 @@ type CheckFormationSchemaExistsResponseBody struct {
 	//
 	// 82C80833-BE26-424D-B485-1ABC8431E14
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request is successful.
+	// Indicates whether the request was successful.
 	//
 	// example:
 	//

@@ -38,7 +38,7 @@ type iDescribeSparkAppDiagnosisInfoResponseBody interface {
 }
 
 type DescribeSparkAppDiagnosisInfoResponseBody struct {
-	// The information about the request denial.
+	// The details of the access denial.
 	//
 	// example:
 	//
@@ -62,27 +62,27 @@ type DescribeSparkAppDiagnosisInfoResponseBody struct {
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
 	// The application ID.
 	//
-	// >  You can call the [ListSparkApps](https://help.aliyun.com/document_detail/455888.html) operation to query all application IDs.
+	// > You can call the [ListSparkApps](https://help.aliyun.com/document_detail/455888.html) operation to query all application IDs.
 	//
 	// example:
 	//
 	// s202404141952sz6a1391200****
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// The CPU utilization. Unit: %.
+	// The CPU utilization. Unit: percentage (%).
 	//
 	// example:
 	//
 	// 100
 	CpuUtilization *float64 `json:"CpuUtilization,omitempty" xml:"CpuUtilization,omitempty"`
-	// The queried diagnostic information.
+	// The list of Spark analysis information.
 	DiagnosisInfoList []*Adb4MysqlSparkDiagnosisInfo `json:"DiagnosisInfoList,omitempty" xml:"DiagnosisInfoList,omitempty" type:"Repeated"`
-	// The execution duration of the application. Unit: milliseconds.
+	// The execution duration of the Spark application. Unit: milliseconds.
 	//
 	// example:
 	//
 	// 281063
 	DurationInMillis *int64 `json:"DurationInMillis,omitempty" xml:"DurationInMillis,omitempty"`
-	// The amount of time consumed by the Java virtual machine to perform garbage collection operations. Unit: milliseconds.
+	// The time consumed by the Java Virtual Machine (JVM) to perform garbage collection. Unit: milliseconds.
 	//
 	// example:
 	//
@@ -100,37 +100,37 @@ type DescribeSparkAppDiagnosisInfoResponseBody struct {
 	//
 	// FB5AC339-91F6-5000-8E5A-F47065B01B87
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The amount of data used for shuffle reads. Unit: bytes.
+	// The amount of data read during the shuffle process. Unit: bytes.
 	//
 	// example:
 	//
 	// 4096000
 	ShuffleReadInByte *int64 `json:"ShuffleReadInByte,omitempty" xml:"ShuffleReadInByte,omitempty"`
-	// The amount of data used for shuffle writes. Unit: bytes.
+	// The amount of data written during the shuffle process. Unit: bytes.
 	//
 	// example:
 	//
 	// 4096000
 	ShuffleWriteInByte *int64 `json:"ShuffleWriteInByte,omitempty" xml:"ShuffleWriteInByte,omitempty"`
-	// The amount of data spilled to disks when the memory is insufficient. Unit: bytes.
+	// The data volume spilled to disk when out of memory. Unit: bytes.
 	//
 	// example:
 	//
 	// 0
 	SpillInByte *int64 `json:"SpillInByte,omitempty" xml:"SpillInByte,omitempty"`
-	// The time when the application started to be executed.
+	// The start time of the execution.
 	//
 	// example:
 	//
 	// 1718329831000
 	StartedTime *int64 `json:"StartedTime,omitempty" xml:"StartedTime,omitempty"`
-	// The status of the asynchronous import or export job. Valid values:
+	// The status of the asynchronous import or export task to query. Valid values:
 	//
-	// 	- **RUNNING**
+	// 	- **RUNNING**: The task is in progress.
 	//
-	// 	- **FINISHED**
+	// 	- **FINISHED**: The task succeeded.
 	//
-	// 	- **FAILED**
+	// 	- **FAILED**: The task failed.
 	//
 	// example:
 	//

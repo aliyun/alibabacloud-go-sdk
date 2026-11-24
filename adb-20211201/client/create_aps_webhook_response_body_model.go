@@ -54,7 +54,7 @@ type CreateApsWebhookResponseBody struct {
 	//
 	// 1234567890abcdef
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	//
 	// example:
 	//

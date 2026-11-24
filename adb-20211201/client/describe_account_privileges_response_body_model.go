@@ -22,15 +22,15 @@ type iDescribeAccountPrivilegesResponseBody interface {
 }
 
 type DescribeAccountPrivilegesResponseBody struct {
-	// A list of privilege details.
+	// The list of permission details.
 	Data []*DescribeAccountPrivilegesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	// The page number. This value matches the `PageNumber` input parameter.
+	// The page number, which is the same as the page number in the request.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page. This value matches the `PageSize` input parameter.
+	// The number of entries per page, which is the same as the page size in the request.
 	//
 	// example:
 	//
@@ -42,7 +42,7 @@ type DescribeAccountPrivilegesResponseBody struct {
 	//
 	// DA32480A-E3E5-1BE7-BA98-724551DC04C8
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total count of privileges at the specified privilege level.
+	// The total number of permissions that the user has at the privilege level.
 	//
 	// example:
 	//
@@ -117,15 +117,15 @@ func (s *DescribeAccountPrivilegesResponseBody) Validate() error {
 }
 
 type DescribeAccountPrivilegesResponseBodyData struct {
-	// The privilege object, which specifies the database, table, column, and description.
+	// The privilege object, which is a triplet of database, table, and column, along with additional description information.
 	PrivilegeObject *DescribeAccountPrivilegesResponseBodyDataPrivilegeObject `json:"PrivilegeObject,omitempty" xml:"PrivilegeObject,omitempty" type:"Struct"`
-	// The privilege level. Valid values: `Global`, `Database`, `Table`, and `Column`. The `DescribeEnabledPrivileges` API returns this value.
+	// The privilege level, which can be Global, Databae, Table, or Column. This value is returned by the DescribeEnabledPrivileges operation.
 	//
 	// example:
 	//
 	// Column
 	PrivilegeType *string `json:"PrivilegeType,omitempty" xml:"PrivilegeType,omitempty"`
-	// A list of privileges.
+	// The list of permissions.
 	Privileges []*string `json:"Privileges,omitempty" xml:"Privileges,omitempty" type:"Repeated"`
 }
 

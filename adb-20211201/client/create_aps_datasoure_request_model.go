@@ -78,13 +78,13 @@ type CreateApsDatasoureRequest struct {
 	//
 	// example:
 	//
-	// -
+	// {"Vswitch":"vsw-bp1*****k","SecurityGroup":"sg-uf*******h"}
 	HiveInfo *CreateApsDatasoureRequestHiveInfo `json:"HiveInfo,omitempty" xml:"HiveInfo,omitempty" type:"Struct"`
 	// The Kafka information.
 	//
 	// example:
 	//
-	// -
+	// {"KafkaClusterId":"alikafka_pre-cn-aaa1a1aaa111","KafkaTopic":"example-topic"}
 	KafkaInfo *CreateApsDatasoureRequestKafkaInfo `json:"KafkaInfo,omitempty" xml:"KafkaInfo,omitempty" type:"Struct"`
 	// The mode.
 	//
@@ -96,7 +96,7 @@ type CreateApsDatasoureRequest struct {
 	//
 	// example:
 	//
-	// -
+	// {"RegionId":"cn-shanghai"}
 	PolarDBMysqlInfo *CreateApsDatasoureRequestPolarDBMysqlInfo `json:"PolarDBMysqlInfo,omitempty" xml:"PolarDBMysqlInfo,omitempty" type:"Struct"`
 	// The PolarDB-X data source information.
 	//
@@ -108,7 +108,7 @@ type CreateApsDatasoureRequest struct {
 	//
 	// example:
 	//
-	// -
+	// {"RegionId":"cn-shanghai"}
 	RdsMysqlInfo *CreateApsDatasoureRequestRdsMysqlInfo `json:"RdsMysqlInfo,omitempty" xml:"RdsMysqlInfo,omitempty" type:"Struct"`
 	// The region ID.
 	//
@@ -122,7 +122,7 @@ type CreateApsDatasoureRequest struct {
 	//
 	// example:
 	//
-	// -
+	// {"Project":"example-project","Store":"example-logstore","Across":false}
 	SlsInfo *CreateApsDatasoureRequestSlsInfo `json:"SlsInfo,omitempty" xml:"SlsInfo,omitempty" type:"Struct"`
 }
 
@@ -430,9 +430,9 @@ type CreateApsDatasoureRequestKafkaInfo struct {
 	//
 	// example:
 	//
-	// ******
+	// alikafka_pre-cn-aaa1a1aaa111
 	KafkaClusterId *string `json:"KafkaClusterId,omitempty" xml:"KafkaClusterId,omitempty"`
-	// The name of the allocated Kafka topic.
+	// The assigned Kafka topic name.
 	//
 	// example:
 	//
@@ -493,7 +493,7 @@ type CreateApsDatasoureRequestPolarDBMysqlInfo struct {
 	//
 	// 123456789*
 	AcrossUid *string `json:"AcrossUid,omitempty" xml:"AcrossUid,omitempty"`
-	// The endpoint of the private custom RDS instance.
+	// The private custom RDS endpoint.
 	//
 	// example:
 	//
@@ -509,7 +509,7 @@ type CreateApsDatasoureRequestPolarDBMysqlInfo struct {
 	//
 	// example:
 	//
-	// ***
+	// Example****123!
 	Password *string `json:"Password,omitempty" xml:"Password,omitempty"`
 	// The region ID.
 	//
@@ -671,7 +671,7 @@ type CreateApsDatasoureRequestRdsMysqlInfo struct {
 	//
 	// example:
 	//
-	// ******
+	// Example****123!
 	Password *string `json:"Password,omitempty" xml:"Password,omitempty"`
 	// The region ID.
 	//
@@ -689,7 +689,7 @@ type CreateApsDatasoureRequestRdsMysqlInfo struct {
 	//
 	// example:
 	//
-	// Username.
+	// username
 	UserName *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
 }
 
@@ -766,7 +766,7 @@ type CreateApsDatasoureRequestSlsInfo struct {
 	//
 	// false
 	Across *bool `json:"Across,omitempty" xml:"Across,omitempty"`
-	// The name of the cross-account role.
+	// The cross-account role name.
 	//
 	// example:
 	//
@@ -790,7 +790,7 @@ type CreateApsDatasoureRequestSlsInfo struct {
 	//
 	// cn-beijing
 	SourceRegionId *string `json:"SourceRegionId,omitempty" xml:"SourceRegionId,omitempty"`
-	// The Simple Log Service Logstore.
+	// The Simple Log Service (SLS) Logstore.
 	//
 	// example:
 	//

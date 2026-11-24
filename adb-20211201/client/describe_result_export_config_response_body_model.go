@@ -24,41 +24,41 @@ type iDescribeResultExportConfigResponseBody interface {
 }
 
 type DescribeResultExportConfigResponseBody struct {
-	// API status or POP error code.
+	// The operation status code or POP error code.
 	//
 	// example:
 	//
 	// InvalidInput
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The data returned.
+	// The returned data.
 	Data *DescribeResultExportConfigResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The HTTP response status code. A value of 200 indicates that the request was successful.
+	// The HTTP status code returned. A status code of 200 indicates that the request was successful.
 	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The returned message. Valid values:
+	// The message returned for the call result.
 	//
-	// 	- The request succeeded, and the server returns **OK**.
+	// - If the request is successful, **OK*	- is returned.
 	//
-	// 	- The request failed, and the server returns an error message.
+	// - If an exception occurs, the specific error message is returned.
 	//
 	// example:
 	//
 	// OK
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Request ID.
+	// The request ID.
 	//
 	// example:
 	//
 	// 1AD222E9-E606-4A42-BF6D-8A4442913CEF
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the call was successful. Valid values: Valid values:
+	// Indicates whether the request is successful. Valid values:
 	//
-	// 	- **True: Succeeded.**
+	// - **True**: The request is successful.
 	//
-	// 	- **False: Failed.
+	// - **False**: The request failed.
 	//
 	// example:
 	//
@@ -140,17 +140,17 @@ func (s *DescribeResultExportConfigResponseBody) Validate() error {
 type DescribeResultExportConfigResponseBodyData struct {
 	// The export type. Valid values:
 	//
-	// 	- SLS: Indicates that the export destination is SLS.
+	// - SLS: The export destination is SLS.
 	//
-	// 	- OSS: Indicates that the export destination is OSS.
+	// - OSS: The export destination is OSS.
 	//
 	// example:
 	//
 	// OSS
 	ExportType *string `json:"ExportType,omitempty" xml:"ExportType,omitempty"`
-	// The configured OSS export settings, returned when the export destination is OSS.
+	// The OSS information when the export type is OSS.
 	OssInfo *DescribeResultExportConfigResponseBodyDataOssInfo `json:"OssInfo,omitempty" xml:"OssInfo,omitempty" type:"Struct"`
-	// The configured SLS export settings, returned when the export destination is SLS.
+	// The SLS configurations when the export type is SLS.
 	SlsInfo *DescribeResultExportConfigResponseBodyDataSlsInfo `json:"SlsInfo,omitempty" xml:"SlsInfo,omitempty" type:"Struct"`
 }
 
@@ -204,19 +204,19 @@ func (s *DescribeResultExportConfigResponseBodyData) Validate() error {
 }
 
 type DescribeResultExportConfigResponseBodyDataOssInfo struct {
-	// The path of the OSS bucket to which the result sets are exported.
+	// The OSS path where the export results are stored.
 	//
 	// example:
 	//
 	// oss://testBucketName/data_result
 	ExportBasePath *string `json:"ExportBasePath,omitempty" xml:"ExportBasePath,omitempty"`
-	// The name of the resource group that runs the export SQL.
+	// The name of the resource group in which the export SQL statement is executed.
 	//
 	// example:
 	//
 	// aps
 	ResourceGroup *string `json:"ResourceGroup,omitempty" xml:"ResourceGroup,omitempty"`
-	// The expiration period (in days) for the OSS file. The returned value is between 1 and 30 days (inclusive).
+	// The expiration time of the OSS files. Unit: days. Minimum value: 1. Maximum value: 30.
 	//
 	// example:
 	//
@@ -264,13 +264,13 @@ func (s *DescribeResultExportConfigResponseBodyDataOssInfo) Validate() error {
 }
 
 type DescribeResultExportConfigResponseBodyDataSlsInfo struct {
-	// The expiration period (in days) for the temporary Logstore automatically created during result set export. The Logstore is automatically deleted after expiration. The returned value is between 1 and 30 days (inclusive).
+	// The expiration time of the temporarily generated Logstore for result set export. Unit: days. The Logstore is automatically deleted after it expires. Minimum value: 1. Maximum value: 30.
 	//
 	// example:
 	//
 	// 10
 	LogstoreTtl *int32 `json:"LogstoreTtl,omitempty" xml:"LogstoreTtl,omitempty"`
-	// The name of the resource group that runs the export SQL.
+	// The name of the resource group in which the export SQL statement is executed.
 	//
 	// example:
 	//

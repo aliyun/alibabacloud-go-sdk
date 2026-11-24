@@ -16,7 +16,7 @@ type iGetTableDDLResponseBody interface {
 }
 
 type GetTableDDLResponseBody struct {
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//

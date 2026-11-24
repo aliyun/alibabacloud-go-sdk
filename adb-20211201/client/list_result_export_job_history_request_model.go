@@ -32,9 +32,9 @@ type iListResultExportJobHistoryRequest interface {
 }
 
 type ListResultExportJobHistoryRequest struct {
-	// The ID of the AnalyticDB for MySQL Data Lakehouse Edition cluster.
+	// The ID of the AnalyticDB for MySQL Data Lakehouse Edition (3.0) cluster.
 	//
-	// >  You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/129857.html) operation to query the IDs of all AnalyticDB for MySQL Data Lakehouse Edition clusters within a region.
+	// > You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/129857.html) operation to query the IDs of all AnalyticDB for MySQL Data Lakehouse Edition (3.0) clusters in the specified region.
 	//
 	// This parameter is required.
 	//
@@ -42,45 +42,46 @@ type ListResultExportJobHistoryRequest struct {
 	//
 	// amv-7xv5ty5m9o4v****
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	// The name of the database account.
+	// The database user.
 	//
 	// example:
 	//
 	// test1
 	DatabaseUser *string `json:"DatabaseUser,omitempty" xml:"DatabaseUser,omitempty"`
-	// The end of the time range to query. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
+	// The end time of the query. Specify the time in the yyyy-MM-ddTHH:mmZ format. The time must be in UTC.
 	//
-	// >  The end time must be later than the start time.
+	// > The end time must be later than the start time.
 	//
 	// example:
 	//
 	// 2023-05-25T06:54:00Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The order in which to sort the SQL statements by field, which contains the `Field` and `Type` fields. Specify the order in the JSON format. Example: `[{"Field":"CreateTimee", "Type": "desc" }]`.
+	// The sorting conditions for SQL statements based on specified fields. The value is in JSON format and is an ordered JSON array that specifies composite sorting based on the sequence of the input array. The array contains the `Field` and `Type` fields. Example: `[{"Field":"CreateTimee", "Type": "desc" }]`. Details:
 	//
-	// 	- `Field` specifies the field that is used to sort the SQL statements. Valid values:
+	// - `Field`: the name of the field by which to sort the statements. Valid values:
 	//
-	//     	- `CreateTime`: the time when the result set export job was created.
+	//     - `CreateTime`: the execution start time.
 	//
-	//     	- `Status`: the execution status.
+	//     - `Status`: the execution status.
 	//
-	//     	- `DatabaseUser`: the name of the database account.
+	//     - `DatabaseUser`: the username.
 	//
-	//     	- `TimeCost`: the execution duration.
+	//     - `TimeCost`: the execution duration.
 	//
-	//     	- `ResourceGroup`: the name of the resource group.
+	//     - `ResourceGroup`: the resource group.
 	//
-	//     	- `ExportRows`: the number of exported rows.
+	//     - `ExportRows`: the number of exported rows.
 	//
-	//     	- `Progress`: the export progress.
+	//     - `Progress`: the export progress.
 	//
-	// 	- `Type` specifies the sorting order. Valid values (case-insensitive):
 	//
-	//     	- `Desc`: descending order.
+	// - `Type`: the sorting type. Valid values (case-insensitive):
 	//
-	//     	- `Asc`: ascending order.
+	//     - `Desc`: descending order.
+	//
+	//     - `Asc`: ascending order.
 	Order *ListResultExportJobHistoryRequestOrder `json:"Order,omitempty" xml:"Order,omitempty" type:"Struct"`
-	// The page number. Pages start from page 1.
+	// The page number. The value must be an integer greater than 0 and less than or equal to the maximum value of the Integer data type.
 	//
 	// example:
 	//
@@ -88,19 +89,19 @@ type ListResultExportJobHistoryRequest struct {
 	PageNumber *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// The number of entries per page. Valid values:
 	//
-	// 	- **30*	- (default)
+	// - **30*	- (default)
 	//
-	// 	- **50**
+	// - **50**
 	//
-	// 	- **100**
+	// - **100**
 	//
 	// example:
 	//
 	// 30
 	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The region ID of the cluster.
+	// The region ID.
 	//
-	// >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/143074.html) operation to query the most recent region list.
+	// > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/143074.html) operation to query the regions and zones supported by AnalyticDB for MySQL, including region IDs.
 	//
 	// This parameter is required.
 	//
@@ -108,19 +109,19 @@ type ListResultExportJobHistoryRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The name of the resource group that runs the result set export jobs. You can use this parameter to query the execution records of export jobs that are run in a specific resource group.
+	// The resource group in which the task is executed. You can filter tasks by resource group.
 	//
 	// example:
 	//
 	// user_default
 	ResourceGroup *string `json:"ResourceGroup,omitempty" xml:"ResourceGroup,omitempty"`
-	// The beginning of the time range to query. Specify the time in the ISO 8601 standard in the *yyyy-MM-ddTHH:mm:ssZ	- format. The time must be in UTC.
+	// The start time of the query. Specify the time in the <i>yyyy-MM-ddTHH:mm:ssZ</i> format. The time must be in UTC.
 	//
 	// example:
 	//
 	// 2022-01-01T12:01:00Z
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The execution status of result set export jobs. You can use this parameter to query the execution records of export jobs that are in a specific state.
+	// The list of task execution statuses. You can filter tasks by status.
 	StatusList []*string `json:"StatusList,omitempty" xml:"StatusList,omitempty" type:"Repeated"`
 }
 
@@ -232,31 +233,31 @@ func (s *ListResultExportJobHistoryRequest) Validate() error {
 }
 
 type ListResultExportJobHistoryRequestOrder struct {
-	// The field that is used to sort the SQL statements. Valid values:
+	// The name of the field by which to sort. Valid values:
 	//
-	// 	- CreateTime
+	// - CreateTime
 	//
-	// 	- DatabaseUser
+	// - DatabaseUser
 	//
-	// 	- TimeCost
+	// - TimeCost
 	//
-	// 	- ResourceGroup
+	// - ResourceGroup
 	//
-	// 	- Status
+	// - Status
 	//
-	// 	- Progress
+	// - Progress
 	//
-	// 	- ExportRows
+	// - ExportRows
 	//
 	// example:
 	//
 	// DatabaseUser
 	Field *string `json:"Field,omitempty" xml:"Field,omitempty"`
-	// The sorting order. Valid values (case-insensitive):
+	// The sorting type. Valid values:
 	//
-	// 	- **Desc**: descending order.
+	// - **Desc**: descending order.
 	//
-	// 	- **Asc**: ascending order.
+	// - **Asc**: ascending order.
 	//
 	// example:
 	//

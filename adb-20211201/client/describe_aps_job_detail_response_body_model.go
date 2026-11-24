@@ -20,7 +20,7 @@ type DescribeApsJobDetailResponseBody struct {
 	//
 	// example:
 	//
-	// -
+	// {"SourceEndpointRegion":"cn-beijing","DestinationEndpointRegion":"cn-beijing","Status":"Running","TargetTableMode":"0"}
 	APSJobDetail *DescribeApsJobDetailResponseBodyAPSJobDetail `json:"APSJobDetail,omitempty" xml:"APSJobDetail,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -72,7 +72,7 @@ type DescribeApsJobDetailResponseBodyAPSJobDetail struct {
 	//
 	// {}
 	DbList *string `json:"DbList,omitempty" xml:"DbList,omitempty"`
-	// The target database instance ID.
+	// The instance ID of the destination database.
 	//
 	// example:
 	//
@@ -84,13 +84,13 @@ type DescribeApsJobDetailResponseBodyAPSJobDetail struct {
 	//
 	// cn-beijing
 	DestinationEndpointRegion *string `json:"DestinationEndpointRegion,omitempty" xml:"DestinationEndpointRegion,omitempty"`
-	// The list of partitions.
+	// The partition list.
 	//
 	// example:
 	//
 	// {}
 	PartitionList *string `json:"PartitionList,omitempty" xml:"PartitionList,omitempty"`
-	// The source database instance ID.
+	// The instance ID of the source database.
 	//
 	// example:
 	//

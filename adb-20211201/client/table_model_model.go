@@ -157,8 +157,16 @@ type TableModel struct {
 	// 2023-01-05 13:17:55
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	// The creation source of the table.
+	//
+	// example:
+	//
+	// XIHE
 	CreatedBySource *string `json:"CreatedBySource,omitempty" xml:"CreatedBySource,omitempty"`
 	// The user who created the table.
+	//
+	// example:
+	//
+	// example_user
 	CreatedByUser *string `json:"CreatedByUser,omitempty" xml:"CreatedByUser,omitempty"`
 	// The current version.
 	//
@@ -172,7 +180,7 @@ type TableModel struct {
 	//
 	// example
 	DbName *string `json:"DbName,omitempty" xml:"DbName,omitempty"`
-	// Indicates whether encryption is enabled.
+	// Specifies whether encryption is enabled.
 	//
 	// example:
 	//
@@ -186,7 +194,7 @@ type TableModel struct {
 	//
 	// DistributeType
 	DistributeType *string `json:"DistributeType,omitempty" xml:"DistributeType,omitempty"`
-	// Indicates whether DFS is enabled.
+	// Specifies whether DFS is enabled.
 	//
 	// example:
 	//
@@ -200,13 +208,13 @@ type TableModel struct {
 	HotPartitionCount *int64 `json:"HotPartitionCount,omitempty" xml:"HotPartitionCount,omitempty"`
 	// The indexes.
 	Indexes []*CstoreIndexModel `json:"Indexes,omitempty" xml:"Indexes,omitempty" type:"Repeated"`
-	// Indicates whether full indexing is enabled.
+	// Specifies whether full indexing is enabled.
 	//
 	// example:
 	//
 	// true
 	IsAllIndex *bool `json:"IsAllIndex,omitempty" xml:"IsAllIndex,omitempty"`
-	// Indicates whether it is a full-text index dictionary.
+	// Specifies whether it is a full-text index dictionary.
 	//
 	// example:
 	//
@@ -216,9 +224,13 @@ type TableModel struct {
 	//
 	// example:
 	//
-	// MaxColumnId
+	// 1
 	MaxColumnId *int64 `json:"MaxColumnId,omitempty" xml:"MaxColumnId,omitempty"`
 	// The parameters.
+	//
+	// example:
+	//
+	// {"format":"columnstore"}
 	Parameters map[string]*string `json:"Parameters,omitempty" xml:"Parameters,omitempty"`
 	// The partition column information.
 	//
@@ -280,7 +292,7 @@ type TableModel struct {
 	//
 	// RtEngineType
 	RtEngineType *string `json:"RtEngineType,omitempty" xml:"RtEngineType,omitempty"`
-	// Indicates whether all indexes are routed.
+	// Specifies whether all indexes are routed.
 	//
 	// example:
 	//
@@ -292,7 +304,7 @@ type TableModel struct {
 	//
 	// RtModeType
 	RtModeType *string `json:"RtModeType,omitempty" xml:"RtModeType,omitempty"`
-	// The storage description.
+	// The storage descriptor information.
 	Sd *StorageDescriptorModel `json:"Sd,omitempty" xml:"Sd,omitempty"`
 	// The storage policy.
 	//
@@ -342,7 +354,7 @@ type TableModel struct {
 	//
 	// 123
 	TblId *int64 `json:"TblId,omitempty" xml:"TblId,omitempty"`
-	// Indicates whether the table is a temporary table.
+	// Specifies whether the table is a temporary table.
 	//
 	// example:
 	//
@@ -366,7 +378,7 @@ type TableModel struct {
 	//
 	// ViewOriginalText
 	ViewOriginalText *string `json:"ViewOriginalText,omitempty" xml:"ViewOriginalText,omitempty"`
-	// The view safe mode pattern.
+	// The view security pattern.
 	//
 	// example:
 	//

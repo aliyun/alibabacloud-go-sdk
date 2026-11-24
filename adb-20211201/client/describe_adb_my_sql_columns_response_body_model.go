@@ -34,7 +34,7 @@ type DescribeAdbMySqlColumnsResponseBody struct {
 	ColumnCount *int32 `json:"ColumnCount,omitempty" xml:"ColumnCount,omitempty"`
 	// The column information.
 	Columns []*DescribeAdbMySqlColumnsResponseBodyColumns `json:"Columns,omitempty" xml:"Columns,omitempty" type:"Repeated"`
-	// The additional information about the call result. Valid values:
+	// The additional information about the call result.
 	//
 	// - If the request is successful, **Success*	- is returned.
 	//
@@ -159,7 +159,7 @@ func (s *DescribeAdbMySqlColumnsResponseBody) Validate() error {
 }
 
 type DescribeAdbMySqlColumnsResponseBodyColumns struct {
-	// The column comment.
+	// The comment of the column.
 	//
 	// example:
 	//

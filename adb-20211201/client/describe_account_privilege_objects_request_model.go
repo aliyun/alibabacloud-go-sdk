@@ -38,13 +38,15 @@ type DescribeAccountPrivilegeObjectsRequest struct {
 	//
 	// test
 	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
-	// The column name that is used to filter columns.
+	// The column name used to filter the results.
 	//
 	// example:
 	//
 	// col1
 	ColumnPrivilegeObject *string `json:"ColumnPrivilegeObject,omitempty" xml:"ColumnPrivilegeObject,omitempty"`
-	// The ID of the AnalyticDB for MySQL Data Lakehouse Edition cluster.
+	// <props="china">The ID of the Enterprise Edition, Basic Edition, or Data Lakehouse Edition cluster.
+	//
+	// <props="intl">The ID of the Data Lakehouse Edition cluster.
 	//
 	// This parameter is required.
 	//
@@ -52,31 +54,31 @@ type DescribeAccountPrivilegeObjectsRequest struct {
 	//
 	// amv-bp1k3wdmt139****
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	// The database name that is used to filter databases.
+	// The database name used to filter the results.
 	//
 	// example:
 	//
 	// database1
 	DatabasePrivilegeObject *string `json:"DatabasePrivilegeObject,omitempty" xml:"DatabasePrivilegeObject,omitempty"`
-	// The page number. Pages start from page 1. Default value: 1.
+	// The page number. Pages start from 1. Default value: 1.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page. Default value: 20.
+	// The maximum number of entries per page. Default value: 20.
 	//
 	// example:
 	//
 	// 20
 	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The permission level. Valid values: Database, Table, and Column. Global is not supported.
+	// The privilege level. Only the Database, Table, and Column levels are supported. The Global level is not supported.
 	//
 	// example:
 	//
 	// Column
 	PrivilegeType *string `json:"PrivilegeType,omitempty" xml:"PrivilegeType,omitempty"`
-	// The region ID of the cluster.
+	// The region ID.
 	//
 	// This parameter is required.
 	//
@@ -84,7 +86,7 @@ type DescribeAccountPrivilegeObjectsRequest struct {
 	//
 	// ch-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The table name that is used to filter tables.
+	// The table name used to filter the results.
 	//
 	// example:
 	//

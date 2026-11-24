@@ -30,13 +30,13 @@ type CreateAPSJobResponseBody struct {
 	//
 	// aps-bj1xxxxxx
 	ApsJobId *string `json:"ApsJobId,omitempty" xml:"ApsJobId,omitempty"`
-	// The operation status code or POP error code.
+	// The API status code or POP error code.
 	//
 	// example:
 	//
 	// InvalidInput
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The HTTP status code returned. A value of 200 indicates that the request was sent successfully.
+	// The HTTP status code. A value of 200 indicates that the request was successful.
 	//
 	// example:
 	//

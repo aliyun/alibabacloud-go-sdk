@@ -26,15 +26,31 @@ type AccessTokenModel struct {
 	//
 	// example:
 	//
-	// ******
+	// example****token
 	AccessToken *string `json:"AccessToken,omitempty" xml:"AccessToken,omitempty"`
 	// The comment for the access token.
+	//
+	// example:
+	//
+	// Sample access token
 	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
 	// The creation time of the access token.
+	//
+	// example:
+	//
+	// 2026-11-20T02:00:00Z
 	CreatedAt *string `json:"CreatedAt,omitempty" xml:"CreatedAt,omitempty"`
 	// The expiration time of the access token.
+	//
+	// example:
+	//
+	// 2026-12-20T02:00:00Z
 	ExpiredAt *string `json:"ExpiredAt,omitempty" xml:"ExpiredAt,omitempty"`
 	// The status of the access token.
+	//
+	// example:
+	//
+	// ENABLE
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 }
 

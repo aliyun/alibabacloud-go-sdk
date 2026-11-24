@@ -30,13 +30,13 @@ type DescribeApsJobsRequest struct {
 	//
 	// aps-xxxxx
 	ApsJobName *string `json:"ApsJobName,omitempty" xml:"ApsJobName,omitempty"`
-	// The end time of creation.
+	// The end of the creation time range.
 	//
 	// example:
 	//
 	// 2022-04-23T01:10Z
 	CreateTimeEnd *string `json:"CreateTimeEnd,omitempty" xml:"CreateTimeEnd,omitempty"`
-	// The start time of creation.
+	// The start of the creation time range.
 	//
 	// example:
 	//

@@ -26,7 +26,7 @@ type iCreateSqlPatternCompareReportRequest interface {
 }
 
 type CreateSqlPatternCompareReportRequest struct {
-	// The end time of time window 2. Specify the time in UTC in the yyyy-MM-ddTHH:mmZ or yyyy-MM-ddTHH:mm:ssZ format.
+	// The end time of the second time window. The time is in the yyyy-MM-ddTHH:mmZ or yyyy-MM-ddTHH:mm:ssZ format and must be in UTC.
 	//
 	// This parameter is required.
 	//
@@ -34,7 +34,7 @@ type CreateSqlPatternCompareReportRequest struct {
 	//
 	// 2026-09-08T01:00Z
 	CompareEndTime *string `json:"CompareEndTime,omitempty" xml:"CompareEndTime,omitempty"`
-	// The start time of time window 2. Specify the time in UTC in the yyyy-MM-ddTHH:mmZ or yyyy-MM-ddTHH:mm:ssZ format.
+	// The start time of the second time window. The time is in the yyyy-MM-ddTHH:mmZ or yyyy-MM-ddTHH:mm:ssZ format and must be in UTC.
 	//
 	// This parameter is required.
 	//
@@ -42,7 +42,7 @@ type CreateSqlPatternCompareReportRequest struct {
 	//
 	// 2026-09-08T00:00Z
 	CompareStartTime *string `json:"CompareStartTime,omitempty" xml:"CompareStartTime,omitempty"`
-	// The ID of the AnalyticDB for MySQL cluster.
+	// The ID of the AnalyticDB for MySQL instance.
 	//
 	// This parameter is required.
 	//
@@ -50,7 +50,7 @@ type CreateSqlPatternCompareReportRequest struct {
 	//
 	// am-2ze1234567890****
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	// The end time of time window 1. Specify the time in UTC in the yyyy-MM-ddTHH:mmZ or yyyy-MM-ddTHH:mm:ssZ format.
+	// The end time of the first time window. The time is in the yyyy-MM-ddTHH:mmZ or yyyy-MM-ddTHH:mm:ssZ format and must be in UTC.
 	//
 	// This parameter is required.
 	//
@@ -60,9 +60,9 @@ type CreateSqlPatternCompareReportRequest struct {
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// The report type. Valid values:
 	//
-	// - `NEW`: Patterns that are new in time window 2.
+	// - `NEW`: SQL patterns added in the second time window
 	//
-	// - `CHANGED`: Patterns that exist in both time windows and have an increased average value in at least one metric.
+	// - `CHANGED`: SQL patterns that exist in both time windows and have an increased average value in at least one dimension
 	//
 	// This parameter is required.
 	//
@@ -78,7 +78,7 @@ type CreateSqlPatternCompareReportRequest struct {
 	//
 	// cn-beijing
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The start time of time window 1. Specify the time in UTC in the yyyy-MM-ddTHH:mmZ or yyyy-MM-ddTHH:mm:ssZ format.
+	// The start time of the first time window. The time is in the yyyy-MM-ddTHH:mmZ or yyyy-MM-ddTHH:mm:ssZ format and must be in UTC.
 	//
 	// This parameter is required.
 	//

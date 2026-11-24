@@ -62,9 +62,7 @@ type DescribeSparkAuditLogRecordsRequest struct {
 	ClientIp *string `json:"ClientIp,omitempty" xml:"ClientIp,omitempty"`
 	// The cluster ID.
 	//
-	// >
-	//
-	// 	- You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/454250.html) operation to query cluster IDs.
+	// > - You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/454250.html) operation to query the cluster ID.
 	//
 	// This parameter is required.
 	//
@@ -72,37 +70,39 @@ type DescribeSparkAuditLogRecordsRequest struct {
 	//
 	// amv-bp1j7******78j8i
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	// Query end time. The end time must be later than the start time, and the interval between them must be less than 1 day. Format: yyyy-MM-ddTHH:mmZ (UTC time).
+	// The end time of the query. The end time must be later than the start time, and the interval between the start time and the end time must be less than one day.
+	//
+	// Format: yyyy-MM-ddTHH:mmZ (UTC).
 	//
 	// example:
 	//
 	// 2025-09-25T01:00Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// Sort the SQL statements based on specified fields. The format is a JSON array that preserves order, and composite sorting is performed according to the sequence of objects in the array. Each object contains two fields: `Field` and `Type`. For example:`[{"Field":"CreateTime", "Type": "desc" }]`. Where:
+	// The sorting rule for SQL statements based on specified fields. The value is a JSON array that specifies composite sorting in the order of the input array. The array contains the `Field` and `Type` fields. Example: `[{"Field":"TotalTime", "Type": "desc" }]`.
 	//
-	// 	- `Field` specifies the field that is used to sort the SQL statements. Valid values:
+	// - `Field`: the name of the field to sort by. Valid values:
 	//
-	//     	- `ResourceGroupName`: The name of the resource group.
+	//     - `ResourceGroupName`: the name of the resource group.
 	//
-	//     	- `Status` :SQL execution status.
+	//     - `Status`: the execution status of the SQL statement.
 	//
-	//     	- `User`: The username that is used to execute the SQL statement.
+	//     - `User`: the username that executed the SQL statement.
 	//
-	//     	- `ExecuteTime`: The start time of SQL execution.
+	//     - `ExecuteTime`: the start time of the SQL execution.
 	//
-	//     	- `TotalTime`: The amount of time consumed to execute the SQL statement.
+	//     - `TotalTime`: the execution duration of the SQL statement.
 	//
-	//     	- `ProcessId`: Query ID.
+	//     - `ProcessId`: the query ID.
 	//
-	//     	- `ClientIp`: The source IP address.
+	//     - `ClientIp`: the source IP address.
 	//
-	//     	- `StatementSource`: The source from which the query was initiated.
+	//     - `StatementSource`: the source from which the query is initiated.
 	//
-	// 	- `Type` specifies the sorting order. Valid values (case-insensitive):
+	// - `Type`: the sorting type. Valid values (case-insensitive):
 	//
-	//     	- `Desc`: Descending order.
+	//     - `Desc`: descending order.
 	//
-	//     	- `Asc`: Ascending order.
+	//     - `Asc`: ascending order.
 	//
 	// example:
 	//
@@ -116,7 +116,7 @@ type DescribeSparkAuditLogRecordsRequest struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries to return on each page.
+	// The number of entries per page.
 	//
 	// example:
 	//
@@ -128,7 +128,7 @@ type DescribeSparkAuditLogRecordsRequest struct {
 	//
 	// 999f2439-6b10-xxxx-a5d3-daf3b35c****
 	ProcessId *string `json:"ProcessId,omitempty" xml:"ProcessId,omitempty"`
-	// This parameter is deprecated.
+	// **[Deprecated]*	- This parameter is deprecated.
 	//
 	// example:
 	//
@@ -136,7 +136,7 @@ type DescribeSparkAuditLogRecordsRequest struct {
 	ProxyUser *string `json:"ProxyUser,omitempty" xml:"ProxyUser,omitempty"`
 	// The region ID.
 	//
-	// >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/612293.html) operation to query the available regions and zones, including region ID.
+	// > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/612293.html) operation to view the regions and zones supported by AnalyticDB for MySQL, including region IDs.
 	//
 	// This parameter is required.
 	//
@@ -144,9 +144,9 @@ type DescribeSparkAuditLogRecordsRequest struct {
 	//
 	// cn-shanghai
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The resource group name.
+	// The name of the resource group.
 	//
-	// >  You can call the [DescribeDBResourceGroup](https://help.aliyun.com/document_detail/612410.html) operation to query the resource group ID within a cluster.
+	// > You can call the [DescribeDBResourceGroup](https://help.aliyun.com/document_detail/612410.html) operation to view the resource group ID of the cluster.
 	//
 	// example:
 	//
@@ -160,27 +160,21 @@ type DescribeSparkAuditLogRecordsRequest struct {
 	//
 	// test_table_name
 	SQLText *string `json:"SQLText,omitempty" xml:"SQLText,omitempty"`
-	// Query start time. Format: *yyyy-MM-ddTHH:mmZ	- (UTC time).
+	// The start time of the query. Format: <i>yyyy-MM-ddTHH:mmZ</i> (UTC).
 	//
-	// >  We recommend that you set the query start time to any point in time within 30 days.
+	// > Set the start time to a point in time within the last 30 days.
 	//
 	// example:
 	//
 	// 2025-09-25T00:00Z
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The ID of the statement.
+	// The statement ID.
 	//
 	// example:
 	//
 	// fbd22066-1c03-xxxx-aa16-6ae28288****
 	StatementId *string `json:"StatementId,omitempty" xml:"StatementId,omitempty"`
-	// The source from which the query was initiated.
-	//
-	// Valid values:
-	//
-	// 	- SQL_EDITOR: SQL_EDITOR.
-	//
-	// 	- JDBC: JDBC.
+	// The source from which the query is initiated.
 	//
 	// example:
 	//
@@ -188,27 +182,17 @@ type DescribeSparkAuditLogRecordsRequest struct {
 	StatementSource *string `json:"StatementSource,omitempty" xml:"StatementSource,omitempty"`
 	// The execution status of the SQL statement.
 	//
-	// Valid values:
-	//
-	// 	- cancel: The task is canceled .
-	//
-	// 	- finished: The execution succeeds .
-	//
-	// 	- error:The execution fails .
-	//
-	// 	- timeout: The execution timed out .
-	//
 	// example:
 	//
 	// finish
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The duration of the SQL statement. Unit: milliseconds.
+	// The execution duration of the SQL statement. Unit: milliseconds.
 	//
 	// example:
 	//
 	// 3000
 	TotalTime *string `json:"TotalTime,omitempty" xml:"TotalTime,omitempty"`
-	// The username that is used to execute SQL statements.
+	// The username that executed the SQL statement.
 	//
 	// example:
 	//

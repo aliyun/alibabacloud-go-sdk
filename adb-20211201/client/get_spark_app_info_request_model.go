@@ -18,7 +18,7 @@ type iGetSparkAppInfoRequest interface {
 type GetSparkAppInfoRequest struct {
 	// The application ID.
 	//
-	// >  You can call the [ListSparkApps](https://help.aliyun.com/document_detail/455888.html) operation to query the Spark application IDs.
+	// > You can call the [ListSparkApps](https://help.aliyun.com/document_detail/455888.html) operation to query the ID of the Spark application.
 	//
 	// This parameter is required.
 	//
@@ -26,9 +26,12 @@ type GetSparkAppInfoRequest struct {
 	//
 	// s202205201533hz1209892000****
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// The ID of the AnalyticDB for MySQL Data Lakehouse Edition cluster.
+	// <props="china">The ID of the Enterprise Edition, Basic Edition, or Data Lakehouse Edition cluster.
 	//
-	// >  You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/612397.html) operation to query the IDs of all AnalyticDB for MySQL clusters within a region.
+	// <props="intl">The ID of the Data Lakehouse Edition cluster.
+	//
+	//
+	// > You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/612397.html) operation to query the cluster ID.
 	//
 	// example:
 	//

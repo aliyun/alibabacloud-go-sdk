@@ -80,9 +80,9 @@ type GetSparkAppLogResponseBodyData struct {
 	//
 	// example:
 	//
-	// 3517972480
+	// 100
 	LogSize *int32 `json:"LogSize,omitempty" xml:"LogSize,omitempty"`
-	// The alert information, such as task execution failure or insufficient resources. If no alerts are triggered, an empty value is returned.
+	// The alert information, such as task execution failure or insufficient resources. This parameter is empty if no alerts are generated.
 	//
 	// example:
 	//

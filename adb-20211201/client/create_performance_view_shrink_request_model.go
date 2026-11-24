@@ -88,7 +88,7 @@ type CreatePerformanceViewShrinkRequest struct {
 	//
 	// example:
 	//
-	// Custom-All metrics-2 columns-Linked
+	// 自定义-全部指标-2列-联动
 	ViewName *string `json:"ViewName,omitempty" xml:"ViewName,omitempty"`
 }
 

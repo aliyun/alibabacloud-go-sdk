@@ -34,15 +34,15 @@ type DescribeInclinedNodesRequest struct {
 	//
 	// amv-wz9jd******d1765
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	// The language of file titles and error messages. Valid values:
+	// Specifies the language for the title of the downloaded file and some error messages. Valid values:
 	//
-	// 	- **zh**: simplified Chinese.
+	// - **zh**: Simplified Chinese.
 	//
-	// 	- **en**: English.
+	// - **en**: English.
 	//
-	// 	- **ja**: Japanese.
+	// - **ja**: Japanese.
 	//
-	// 	- **zh-tw**: traditional Chinese.
+	// - **zh-tw**: Traditional Chinese.
 	//
 	// example:
 	//
@@ -52,7 +52,7 @@ type DescribeInclinedNodesRequest struct {
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The region ID.
 	//
-	// >  You can call the [DescribeRegions](https://help.aliyun.com/document_detail/143074.html) operation to query the most recent region list.
+	// >You can call the [DescribeRegions](https://help.aliyun.com/document_detail/143074.html) operation to query the region ID.
 	//
 	// This parameter is required.
 	//

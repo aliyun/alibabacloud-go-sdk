@@ -42,7 +42,7 @@ type DescribeSparkSQLDiagnosisAttributeResponseBody struct {
 	//
 	// s202411071444hzdvk486d9d2001****
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// The collection of diagnostic suggestions.
+	// The diagnostic suggestions.
 	DiagnosisInfos []*Adb4MysqlSparkDiagnosisInfo `json:"DiagnosisInfos,omitempty" xml:"DiagnosisInfos,omitempty" type:"Repeated"`
 	// The actual execution time, in milliseconds.
 	//
@@ -56,7 +56,7 @@ type DescribeSparkSQLDiagnosisAttributeResponseBody struct {
 	//
 	// 1
 	InnerQueryId *int64 `json:"InnerQueryId,omitempty" xml:"InnerQueryId,omitempty"`
-	// The operator queue sorted by metrics.
+	// The list of operators sorted by metrics.
 	OperatorListSortedByMetrics *DescribeSparkSQLDiagnosisAttributeResponseBodyOperatorListSortedByMetrics `json:"OperatorListSortedByMetrics,omitempty" xml:"OperatorListSortedByMetrics,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -172,9 +172,9 @@ func (s *DescribeSparkSQLDiagnosisAttributeResponseBody) Validate() error {
 }
 
 type DescribeSparkSQLDiagnosisAttributeResponseBodyOperatorListSortedByMetrics struct {
-	// The operator queue sorted by execution time.
+	// The list of operators sorted by execution time.
 	OperatorListSortedByExclusiveTime []*SparkOperatorInfo `json:"OperatorListSortedByExclusiveTime,omitempty" xml:"OperatorListSortedByExclusiveTime,omitempty" type:"Repeated"`
-	// The operator queue sorted by maximum memory consumption.
+	// The list of operators sorted by maximum memory consumption.
 	OperatorListSortedByMaxMemory []*SparkOperatorInfo `json:"OperatorListSortedByMaxMemory,omitempty" xml:"OperatorListSortedByMaxMemory,omitempty" type:"Repeated"`
 }
 

@@ -76,13 +76,13 @@ type iCreateApsSlsADBJobShrinkRequest interface {
 }
 
 type CreateApsSlsADBJobShrinkRequest struct {
-	// The role name for cross-account access.
+	// The cross-account role name.
 	//
 	// example:
 	//
 	// test-role
 	AcrossRole *string `json:"AcrossRole,omitempty" xml:"AcrossRole,omitempty"`
-	// The UID for cross-account access.
+	// The cross-account UID.
 	//
 	// example:
 	//
@@ -100,7 +100,7 @@ type CreateApsSlsADBJobShrinkRequest struct {
 	//
 	// example:
 	//
-	// -
+	// [{"MapName":"test","MapType":"int","Name":"id","Type":"bigint"}]
 	ColumnsShrink *string `json:"Columns,omitempty" xml:"Columns,omitempty"`
 	// The cluster ID.
 	//
@@ -130,7 +130,7 @@ type CreateApsSlsADBJobShrinkRequest struct {
 	//
 	// example:
 	//
-	// -
+	// STOP
 	DirtyDataHandleMode *string `json:"DirtyDataHandleMode,omitempty" xml:"DirtyDataHandleMode,omitempty"`
 	// The dirty data processing mode.
 	//
@@ -138,13 +138,13 @@ type CreateApsSlsADBJobShrinkRequest struct {
 	//
 	// STOP
 	DirtyDataProcessPattern *string `json:"DirtyDataProcessPattern,omitempty" xml:"DirtyDataProcessPattern,omitempty"`
-	// Specifies whether to enable exactly-once semantics.
+	// Specifies whether exactly-once semantics is enabled.
 	//
 	// example:
 	//
 	// false
 	ExactlyOnce *string `json:"ExactlyOnce,omitempty" xml:"ExactlyOnce,omitempty"`
-	// The number of AnalyticDB compute units (ACUs) for full data synchronization.
+	// The full ACUs.
 	//
 	// example:
 	//
@@ -156,25 +156,25 @@ type CreateApsSlsADBJobShrinkRequest struct {
 	//
 	// -
 	HudiAdvancedConfig *string `json:"HudiAdvancedConfig,omitempty" xml:"HudiAdvancedConfig,omitempty"`
-	// The number of AnalyticDB compute units (ACUs) for incremental data synchronization.
+	// The incremental ACUs.
 	//
 	// example:
 	//
 	// 168
 	IncrementalComputeUnit *string `json:"IncrementalComputeUnit,omitempty" xml:"IncrementalComputeUnit,omitempty"`
-	// lakehosue ID。
+	// The lakehouse ID.
 	//
 	// example:
 	//
 	// 123
 	LakehouseId *int64 `json:"LakehouseId,omitempty" xml:"LakehouseId,omitempty"`
-	// The maximum offset.
+	// The maximum number of offsets per trigger.
 	//
 	// example:
 	//
-	// -
+	// 20000
 	MaxOffsetsPerTrigger *int64 `json:"MaxOffsetsPerTrigger,omitempty" xml:"MaxOffsetsPerTrigger,omitempty"`
-	// The OSS address.
+	// The OSS location.
 	//
 	// example:
 	//
@@ -190,7 +190,7 @@ type CreateApsSlsADBJobShrinkRequest struct {
 	//
 	// example:
 	//
-	// -
+	// []
 	PartitionSpecsShrink *string `json:"PartitionSpecs,omitempty" xml:"PartitionSpecs,omitempty"`
 	// The password.
 	//
@@ -232,7 +232,7 @@ type CreateApsSlsADBJobShrinkRequest struct {
 	//
 	// cn-beijing
 	SourceRegionId *string `json:"SourceRegionId,omitempty" xml:"SourceRegionId,omitempty"`
-	// The starting offset for delivery.
+	// The starting offset.
 	//
 	// This parameter is required.
 	//
@@ -240,7 +240,7 @@ type CreateApsSlsADBJobShrinkRequest struct {
 	//
 	// test
 	StartingOffsets *string `json:"StartingOffsets,omitempty" xml:"StartingOffsets,omitempty"`
-	// sls Store。
+	// The SLS store.
 	//
 	// example:
 	//
@@ -254,7 +254,7 @@ type CreateApsSlsADBJobShrinkRequest struct {
 	//
 	// test
 	TableName *string `json:"TableName,omitempty" xml:"TableName,omitempty"`
-	// The generation rule for the destination.
+	// The destination generation rule.
 	//
 	// example:
 	//
@@ -266,11 +266,11 @@ type CreateApsSlsADBJobShrinkRequest struct {
 	//
 	// ADB
 	TargetType *string `json:"TargetType,omitempty" xml:"TargetType,omitempty"`
-	// The UNIX timestamp conversion configuration.
+	// The UNIX timestamp conversion.
 	//
 	// example:
 	//
-	// -
+	// {"Transform":false}
 	UnixTimestampConvertShrink *string `json:"UnixTimestampConvert,omitempty" xml:"UnixTimestampConvert,omitempty"`
 	// The username.
 	//

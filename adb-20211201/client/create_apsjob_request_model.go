@@ -64,13 +64,13 @@ type CreateAPSJobRequest struct {
 	//
 	// example:
 	//
-	// ******
+	// Example****123!
 	DestinationEndpointPassword *string `json:"DestinationEndpointPassword,omitempty" xml:"DestinationEndpointPassword,omitempty"`
 	// The username of the destination instance.
 	//
 	// example:
 	//
-	// ******
+	// example_user
 	DestinationEndpointUserName *string `json:"DestinationEndpointUserName,omitempty" xml:"DestinationEndpointUserName,omitempty"`
 	// The list of partitions.
 	//
@@ -78,9 +78,7 @@ type CreateAPSJobRequest struct {
 	//
 	// {}
 	PartitionList *string `json:"PartitionList,omitempty" xml:"PartitionList,omitempty"`
-	// The region ID.
-	//
-	// > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/143074.html) operation to query the region ID.
+	// The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/143074.html) operation to query region IDs.
 	//
 	// This parameter is required.
 	//
@@ -100,7 +98,7 @@ type CreateAPSJobRequest struct {
 	//
 	// example:
 	//
-	// ******
+	// Example****123!
 	SourceEndpointPassword *string `json:"SourceEndpointPassword,omitempty" xml:"SourceEndpointPassword,omitempty"`
 	// The region of the source database.
 	//
@@ -112,9 +110,9 @@ type CreateAPSJobRequest struct {
 	//
 	// example:
 	//
-	// xxxx
+	// example_user
 	SourceEndpointUserName *string `json:"SourceEndpointUserName,omitempty" xml:"SourceEndpointUserName,omitempty"`
-	// The destination table mode.
+	// The mode of the destination table.
 	//
 	// example:
 	//

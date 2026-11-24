@@ -26,7 +26,7 @@ type iGetTableColumnsRequest interface {
 }
 
 type GetTableColumnsRequest struct {
-	// The name of the column.
+	// The column name.
 	//
 	// example:
 	//
@@ -40,7 +40,7 @@ type GetTableColumnsRequest struct {
 	//
 	// amv-bp11q28kvl688****
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	// The page number. The value must be a positive integer that does not exceed the maximum value of the Integer data type. Default value: **1**.
+	// The page number. Valid values: an integer greater than 0 and up to the maximum value of the Integer data type. Default value: **1**.
 	//
 	// example:
 	//
@@ -66,13 +66,13 @@ type GetTableColumnsRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The name of the database.
+	// The database name.
 	//
 	// example:
 	//
 	// adb_demo
 	SchemaName *string `json:"SchemaName,omitempty" xml:"SchemaName,omitempty"`
-	// The name of the table.
+	// The table name.
 	//
 	// example:
 	//

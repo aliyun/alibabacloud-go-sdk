@@ -113,7 +113,7 @@ func (s *DescribeMvRecommendSubTasksResponseBody) Validate() error {
 }
 
 type DescribeMvRecommendSubTasksResponseBodyData struct {
-	// The execution list of the materialized view recommendation task.
+	// The list of materialized view recommendation task executions.
 	MvRecommendSubTaskModels []*OpenStructMvRecommendSubTaskModel `json:"MvRecommendSubTaskModels,omitempty" xml:"MvRecommendSubTaskModels,omitempty" type:"Repeated"`
 	// The page number.
 	//

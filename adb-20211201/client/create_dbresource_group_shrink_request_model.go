@@ -62,7 +62,7 @@ type iCreateDBResourceGroupShrinkRequest interface {
 type CreateDBResourceGroupShrinkRequest struct {
 	// The PromQL resource group configuration.
 	AtmConfigShrink *string `json:"AtmConfig,omitempty" xml:"AtmConfig,omitempty"`
-	// The automatic stop interval, in minutes (m).
+	// The auto-stop time, in minutes.
 	//
 	// example:
 	//
@@ -82,17 +82,17 @@ type CreateDBResourceGroupShrinkRequest struct {
 	//
 	// SQL
 	Classification *string `json:"Classification,omitempty" xml:"Classification,omitempty"`
-	// A reserved parameter (not applicable).
+	// The reserved parameter. This parameter is not applicable.
 	//
 	// example:
 	//
-	// -
+	// AutoScale
 	ClusterMode *string `json:"ClusterMode,omitempty" xml:"ClusterMode,omitempty"`
-	// A reserved parameter (not applicable).
+	// The reserved parameter. This parameter is not applicable.
 	//
 	// example:
 	//
-	// -
+	// 24ACU
 	ClusterSizeResource *string `json:"ClusterSizeResource,omitempty" xml:"ClusterSizeResource,omitempty"`
 	// The ID of the Enterprise Edition, Basic Edition, or Data Lakehouse Edition cluster.
 	//
@@ -102,11 +102,11 @@ type CreateDBResourceGroupShrinkRequest struct {
 	//
 	// amv-bp11q28kvl688****
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	// Specifies whether to enable the spot instance feature for the resource group. After the spot instance feature is enabled, the unit price of resources is reduced, but the resources may be released. Only Job resource groups support this feature. Valid values:
+	// Specifies whether to enable the spot instance feature for the resource group. After you enable spot instances, the unit price of resources decreases, but the instances may be released. This feature can be enabled only for Job resource groups. Valid values:
 	//
-	// - **True**: Enables the spot instance feature.
+	// - **True**: enables the spot instance feature.
 	//
-	// - **False**: Disables the spot instance feature.
+	// - **False**: disables the spot instance feature.
 	//
 	// example:
 	//
@@ -122,13 +122,13 @@ type CreateDBResourceGroupShrinkRequest struct {
 	//
 	// SparkWarehouse
 	Engine *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
-	// The engine configuration.
+	// The engine configurations.
 	//
 	// example:
 	//
-	// {\\"spark.adb.version\\":\\"3.5\\"}
+	// {"spark.adb.version":"3.5"}
 	EngineParamsShrink *string `json:"EngineParams,omitempty" xml:"EngineParams,omitempty"`
-	// The GPU time-sharing elastic plan.
+	// The GPU time-based elastic plan.
 	GpuElasticPlanShrink *string `json:"GpuElasticPlan,omitempty" xml:"GpuElasticPlan,omitempty"`
 	// The name of the resource group.
 	//
@@ -150,7 +150,7 @@ type CreateDBResourceGroupShrinkRequest struct {
 	//
 	// - **Job**
 	//
-	// > For more information about Data Lakehouse Edition resource groups, see [Resource group overview (Data Lakehouse Edition)](https://help.aliyun.com/document_detail/428610.html).
+	// > For more information about resource groups in Data Lakehouse Edition, refer to [Resource group overview (Data Lakehouse Edition)](https://help.aliyun.com/document_detail/428610.html).
 	//
 	// This parameter is required.
 	//
@@ -158,17 +158,17 @@ type CreateDBResourceGroupShrinkRequest struct {
 	//
 	// Job
 	GroupType *string `json:"GroupType,omitempty" xml:"GroupType,omitempty"`
-	// A reserved parameter (not applicable).
+	// The reserved parameter. This parameter is not applicable.
 	//
 	// example:
 	//
-	// -
+	// 1
 	MaxClusterCount *int32 `json:"MaxClusterCount,omitempty" xml:"MaxClusterCount,omitempty"`
 	// The maximum reserved computing resources, in ACUs.
 	//
-	// - If the resource group type is Interactive, the maximum reserved computing resources are the current unallocated resources of the cluster, with a step size of 16 ACUs.
+	// - If the resource group type is Interactive, the maximum reserved computing resources are the currently unallocated resources of the cluster, and the step size is 16 ACUs.
 	//
-	// - If the resource group type is Job, the maximum reserved computing resources are the current unallocated resources of the cluster, with a step size of 8 ACUs.
+	// - If the resource group type is Job, the maximum reserved computing resources are the currently unallocated resources of the cluster, and the step size is 8 ACUs.
 	//
 	// example:
 	//
@@ -180,11 +180,11 @@ type CreateDBResourceGroupShrinkRequest struct {
 	//
 	// 2
 	MaxGpuQuantity *int32 `json:"MaxGpuQuantity,omitempty" xml:"MaxGpuQuantity,omitempty"`
-	// A reserved parameter (not applicable).
+	// The reserved parameter. This parameter is not applicable.
 	//
 	// example:
 	//
-	// -
+	// 1
 	MinClusterCount *int32 `json:"MinClusterCount,omitempty" xml:"MinClusterCount,omitempty"`
 	// The minimum reserved computing resources, in ACUs.
 	//
@@ -208,7 +208,7 @@ type CreateDBResourceGroupShrinkRequest struct {
 	RayConfigShrink *string `json:"RayConfig,omitempty" xml:"RayConfig,omitempty"`
 	// The region ID.
 	//
-	// > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/612393.html) operation to query the region IDs of AnalyticDB for MySQL Data Lakehouse Edition (V3.0) clusters.
+	// > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/612393.html) operation to query the region ID of an AnalyticDB for MySQL Data Lakehouse Edition (3.0) cluster.
 	//
 	// example:
 	//
@@ -216,13 +216,13 @@ type CreateDBResourceGroupShrinkRequest struct {
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The job routing rules.
 	RulesShrink *string `json:"Rules,omitempty" xml:"Rules,omitempty"`
-	// The scaling policy of the resource group. Valid values:
+	// The scale-out policy for the resource group. Valid values:
 	//
-	// - AutoScaling: enables the AutoScaling automatic scaling policy.
+	// - AutoScaling: enables the AutoScaling policy for auto scaling.
 	//
-	// - Disable: disables automatic scaling.
+	// - Disable: disables auto scaling.
 	//
-	// - MultiCluster: enables the MultiCluster automatic scaling policy.
+	// - MultiCluster: enables the MultiCluster policy for auto scaling.
 	//
 	// example:
 	//

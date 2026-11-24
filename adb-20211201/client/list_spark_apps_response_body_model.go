@@ -113,31 +113,31 @@ func (s *ListSparkAppsResponseBody) Validate() error {
 }
 
 type ListSparkAppsResponseBodyData struct {
-	// The list of application information. Response parameter description:
+	// The application information list. Returned parameter descriptions:
 	//
-	// - **Data**: the Spark application template data.
+	// - **Data**: The Spark application template data.
 	//
-	// - **EstimateExecutionCpuTimeInSeconds**: the CPU time consumed to execute the Spark application, in milliseconds (ms).
+	// - **EstimateExecutionCpuTimeInSeconds**: The CPU time consumed to execute the Spark application, in milliseconds.
 	//
-	// - **LogRootPath**: the storage path of log files.
+	// - **LogRootPath**: The storage path of log files.
 	//
-	// - **LastAttemptId**: the retry ID.
+	// - **LastAttemptId**: The retry ID.
 	//
-	// - **WebUiAddress**: the Web UI address.
+	// - **WebUiAddress**: The Web UI address.
 	//
-	// - **SubmittedTimeInMillis**: the time when the Spark application was submitted, in UNIX timestamp format, in milliseconds (ms).
+	// - **SubmittedTimeInMillis**: The time when the Spark application was committed. The value is a UNIX timestamp in milliseconds.
 	//
-	// - **StartedTimeInMillis**: the time when the Spark application was created, in UNIX timestamp format, in milliseconds (ms).
+	// - **StartedTimeInMillis**: The time when the Spark application was created. The value is a UNIX timestamp in milliseconds.
 	//
-	// - **LastUpdatedTimeInMillis**: the time when the Spark application was last updated, in UNIX timestamp format, in milliseconds (ms).
+	// - **LastUpdatedTimeInMillis**: The time when the Spark application was last updated. The value is a UNIX timestamp in milliseconds.
 	//
-	// - **TerminatedTimeInMillis**: the time when the Spark application stopped execution, in UNIX timestamp format, in milliseconds (ms).
+	// - **TerminatedTimeInMillis**: The time when the execution of the Spark application was stopped. The value is a UNIX timestamp in milliseconds.
 	//
-	// - **DBClusterId**: the ID of the cluster that executed the Spark application.
+	// - **DBClusterId**: The ID of the cluster where the Spark application is executed.
 	//
-	// - **ResourceGroupName**: the name of the job resource group.
+	// - **ResourceGroupName**: The name of the job resource group.
 	//
-	// - **DurationInMillis**: the execution duration of the Spark application, in milliseconds (ms).
+	// - **DurationInMillis**: The execution duration of the Spark application, in milliseconds.
 	AppInfoList []*SparkAppInfo `json:"AppInfoList,omitempty" xml:"AppInfoList,omitempty" type:"Repeated"`
 	// The page number.
 	//

@@ -37,10 +37,22 @@ type DatabaseSummaryModel struct {
 	// 2023-01-05 13:17:55
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	// The creation source of the database.
+	//
+	// example:
+	//
+	// XIHE
 	CreatedBySource *string `json:"CreatedBySource,omitempty" xml:"CreatedBySource,omitempty"`
 	// The user who created the database.
+	//
+	// example:
+	//
+	// example_user
 	CreatedByUser *string `json:"CreatedByUser,omitempty" xml:"CreatedByUser,omitempty"`
 	// The database type.
+	//
+	// example:
+	//
+	// EXTERNAL_DB
 	DbType *string `json:"DbType,omitempty" xml:"DbType,omitempty"`
 	// The description.
 	//
@@ -49,6 +61,10 @@ type DatabaseSummaryModel struct {
 	// description
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The data storage location of the database.
+	//
+	// example:
+	//
+	// oss://example-bucket/database/
 	Location *string `json:"Location,omitempty" xml:"Location,omitempty"`
 	// The owner.
 	//

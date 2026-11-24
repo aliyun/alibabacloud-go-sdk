@@ -74,7 +74,7 @@ type ListSparkWarehouseBatchSQLResponseBodyData struct {
 	//
 	// 20
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The queried Spark SQL statements.
+	// The list of executed Spark SQL statements.
 	Queries []*SparkBatchSQL `json:"Queries,omitempty" xml:"Queries,omitempty" type:"Repeated"`
 	// The total number of entries.
 	//

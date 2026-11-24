@@ -30,7 +30,7 @@ type CheckFormationSchemaExistsRequest struct {
 	//
 	// amv-bp11q28kvl688****
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	// Specifies whether to enable the prefix mode. Valid values:
+	// Specifies whether the prefix mode is enabled. Valid values:
 	//
 	// - true: Yes.
 	//

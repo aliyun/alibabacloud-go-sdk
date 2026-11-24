@@ -16,7 +16,7 @@ type iDescribeEnabledPrivilegesResponseBody interface {
 }
 
 type DescribeEnabledPrivilegesResponseBody struct {
-	// The supported permission levels and the list of permissions.
+	// The supported permission levels and permissions.
 	Data []*DescribeEnabledPrivilegesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
 	// The request ID.
 	//
@@ -72,7 +72,7 @@ type DescribeEnabledPrivilegesResponseBodyData struct {
 	//
 	// example:
 	//
-	// 全局权限
+	// Global permissions
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The list of supported permissions.
 	//
@@ -141,7 +141,7 @@ type DescribeEnabledPrivilegesResponseBodyDataPrivileges struct {
 	//
 	// example:
 	//
-	// 查询数据
+	// Query data
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The permission name.
 	//

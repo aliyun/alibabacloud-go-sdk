@@ -46,13 +46,13 @@ type GetDatabaseObjectsRequest struct {
 	FilterSchemaName *string `json:"FilterSchemaName,omitempty" xml:"FilterSchemaName,omitempty"`
 	// The sort field.
 	//
-	// Valid values for Type:
+	// Valid values for the sort type:
 	//
 	// - Asc
 	//
 	// - Desc
 	//
-	// Valid values for Field:
+	// Valid values for the sort field:
 	//
 	// - DatabseName
 	//
@@ -72,7 +72,7 @@ type GetDatabaseObjectsRequest struct {
 	//
 	// }
 	OrderBy *string `json:"OrderBy,omitempty" xml:"OrderBy,omitempty"`
-	// The page number. The value must be greater than 0 and no greater than the maximum value of the Integer data type. Default value: **1**.
+	// The page number. The value must be greater than 0 and less than or equal to the maximum value of the Integer data type. Default value: **1**.
 	//
 	// example:
 	//

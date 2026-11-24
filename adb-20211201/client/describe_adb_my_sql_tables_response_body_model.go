@@ -24,15 +24,15 @@ type iDescribeAdbMySqlTablesResponseBody interface {
 type DescribeAdbMySqlTablesResponseBody struct {
 	// The additional information about the call result. Valid values:
 	//
-	// - If the request is successful, **Success*	- is returned.
+	// - **Success**: The request is successful.
 	//
-	// - If the request fails, a specific error code is returned.
+	// - Specific error code: The request is abnormal.
 	//
 	// example:
 	//
 	// Success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

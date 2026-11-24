@@ -42,7 +42,7 @@ type DescribePerformanceViewAttributeRequest struct {
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The region ID.
 	//
-	// > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/143074.html) operation to query the supported regions and zones, including region IDs.
+	// > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/143074.html) operation to query information about supported regions and zones, including region IDs.
 	//
 	// This parameter is required.
 	//
@@ -58,7 +58,7 @@ type DescribePerformanceViewAttributeRequest struct {
 	//
 	// example:
 	//
-	// Custom-All metrics-2 columns-Linked
+	// Custom-All metrics-2 columns-linked
 	ViewName *string `json:"ViewName,omitempty" xml:"ViewName,omitempty"`
 }
 

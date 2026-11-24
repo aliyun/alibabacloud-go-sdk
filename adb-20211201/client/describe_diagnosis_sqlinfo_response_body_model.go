@@ -18,7 +18,7 @@ type iDescribeDiagnosisSQLInfoResponseBody interface {
 }
 
 type DescribeDiagnosisSQLInfoResponseBody struct {
-	// The execution details of the SQL statement, including the detailed SQL statement, statistics information, execution plan, and operator information.
+	// The execute details of the SQL statement, including the detailed SQL statement, statistics information, execute plan, and operator information.
 	DiagnosisSQLInfo *string `json:"DiagnosisSQLInfo,omitempty" xml:"DiagnosisSQLInfo,omitempty"`
 	// The request ID.
 	//
@@ -26,7 +26,7 @@ type DescribeDiagnosisSQLInfoResponseBody struct {
 	//
 	// 1
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The stage-level execution information of the query.
+	// The staged execution information of the query.
 	StageInfos []*DescribeDiagnosisSQLInfoResponseBodyStageInfos `json:"StageInfos,omitempty" xml:"StageInfos,omitempty" type:"Repeated"`
 }
 
@@ -79,38 +79,43 @@ func (s *DescribeDiagnosisSQLInfoResponseBody) Validate() error {
 }
 
 type DescribeDiagnosisSQLInfoResponseBodyStageInfos struct {
+	// The type of the SQL execution engine.
+	//
+	// example:
+	//
+	// Java
 	ExecutionType *string `json:"ExecutionType,omitempty" xml:"ExecutionType,omitempty"`
-	// The total input data size of the stage, in bytes.
+	// The total amount of input data for the stage. Unit: bytes.
 	//
 	// example:
 	//
 	// 2341
 	InputDataSize *int64 `json:"InputDataSize,omitempty" xml:"InputDataSize,omitempty"`
-	// The total number of input rows in the stage.
+	// The total number of input rows for the stage.
 	//
 	// example:
 	//
 	// 2341
 	InputRows *int64 `json:"InputRows,omitempty" xml:"InputRows,omitempty"`
-	// The cumulative operator duration of the stage, in milliseconds.
+	// The cumulative execution duration of operators for the stage. Unit: milliseconds.
 	//
 	// example:
 	//
 	// 2341
 	OperatorCost *int64 `json:"OperatorCost,omitempty" xml:"OperatorCost,omitempty"`
-	// The total output data size of the stage, in bytes.
+	// The total amount of output data for the stage. Unit: bytes.
 	//
 	// example:
 	//
 	// 2341
 	OutputDataSize *int64 `json:"OutputDataSize,omitempty" xml:"OutputDataSize,omitempty"`
-	// The total number of output rows in the stage.
+	// The total number of output rows for the stage.
 	//
 	// example:
 	//
 	// 2341
 	OutputRows *int64 `json:"OutputRows,omitempty" xml:"OutputRows,omitempty"`
-	// The total peak memory of the stage, in bytes.
+	// The peak memory usage for the stage. Unit: bytes.
 	//
 	// example:
 	//
@@ -122,7 +127,7 @@ type DescribeDiagnosisSQLInfoResponseBodyStageInfos struct {
 	//
 	// 0.3
 	Progress *float64 `json:"Progress,omitempty" xml:"Progress,omitempty"`
-	// StageID。
+	// The stage ID.
 	//
 	// example:
 	//

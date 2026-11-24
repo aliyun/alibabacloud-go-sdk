@@ -22,9 +22,9 @@ type iDescribeDiagnosisDimensionsResponseBody interface {
 }
 
 type DescribeDiagnosisDimensionsResponseBody struct {
-	// The queried source IP addresses.
+	// The source IP addresses.
 	ClientIps []*string `json:"ClientIps,omitempty" xml:"ClientIps,omitempty" type:"Repeated"`
-	// The queried database names.
+	// The database names.
 	Databases []*string `json:"Databases,omitempty" xml:"Databases,omitempty" type:"Repeated"`
 	// The request ID.
 	//
@@ -32,9 +32,9 @@ type DescribeDiagnosisDimensionsResponseBody struct {
 	//
 	// DEA97C6B-D7A4-5E69-9EFC-D7F88737CED5
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The queried resource group names.
+	// The resource group names.
 	ResourceGroups []*string `json:"ResourceGroups,omitempty" xml:"ResourceGroups,omitempty" type:"Repeated"`
-	// The queried usernames.
+	// The usernames.
 	UserNames []*string `json:"UserNames,omitempty" xml:"UserNames,omitempty" type:"Repeated"`
 }
 

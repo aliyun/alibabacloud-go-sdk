@@ -26,7 +26,7 @@ type StartFormationCrawlerResponseBody struct {
 	//
 	// 69
 	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
@@ -34,15 +34,15 @@ type StartFormationCrawlerResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the call was successful. Valid values:
 	//
-	// - **true**: Successful.
+	// - **true**: The call was successful.
 	//
-	// - **false**: Failed.
+	// - **false**: The call failed.
 	//
 	// example:
 	//
 	// True
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// The task ID.
+	// The ID of the task.
 	//
 	// example:
 	//

@@ -16,7 +16,7 @@ type iDescribeInclinedNodesResponseBody interface {
 }
 
 type DescribeInclinedNodesResponseBody struct {
-	// The queried storage nodes.
+	// The list information.
 	Items []*DescribeInclinedNodesResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
 	// The request ID.
 	//
@@ -72,7 +72,7 @@ type DescribeInclinedNodesResponseBodyItems struct {
 	//
 	// 90.5
 	DiskUsageRatio *string `json:"DiskUsageRatio,omitempty" xml:"DiskUsageRatio,omitempty"`
-	// The number of the storage node.
+	// The storage node number.
 	//
 	// example:
 	//

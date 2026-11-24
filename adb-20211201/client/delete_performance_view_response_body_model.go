@@ -50,7 +50,7 @@ type DeletePerformanceViewResponseBody struct {
 	//
 	// example:
 	//
-	// SUCCESS
+	// true
 	DeleteStatus *bool `json:"DeleteStatus,omitempty" xml:"DeleteStatus,omitempty"`
 	// The request ID.
 	//

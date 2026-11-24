@@ -18,19 +18,19 @@ type iDeleteLakeStorageRequest interface {
 }
 
 type DeleteLakeStorageRequest struct {
-	// The ID of the AnalyticDB for MySQL cluster.
+	// The ADB instance ID.
 	//
 	// example:
 	//
 	// amv-bp*********
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	// The ID of the lake storage.
+	// The ID of the lake storage instance.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// -
+	// adb-lake-cn-hangzhou-1aa1a1aa11
 	LakeStorageId *string `json:"LakeStorageId,omitempty" xml:"LakeStorageId,omitempty"`
 	// The region ID.
 	//

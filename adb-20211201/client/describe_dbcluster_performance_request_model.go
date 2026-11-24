@@ -24,11 +24,11 @@ type iDescribeDBClusterPerformanceRequest interface {
 }
 
 type DescribeDBClusterPerformanceRequest struct {
-	// <props="china">The ID of the cluster in Enterprise Edition, Basic Edition, or Data Lakehouse Edition.
+	// <props="china">The ID of the Enterprise Edition, Basic Edition, or Data Lakehouse Edition cluster.
 	//
 	// <props="intl">The ID of the Data Lakehouse Edition cluster.
 	//
-	// >You can call the [DescribeDBClusters](~~~612397~~~) operation to query the IDs of all clusters in a specified region.
+	// > You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/612397.html) operation to query the IDs of all clusters in a specified region.
 	//
 	// This parameter is required.
 	//
@@ -36,15 +36,15 @@ type DescribeDBClusterPerformanceRequest struct {
 	//
 	// amv-bp1hx5n1o8f61****
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	// The end time of the query. Specify the time in UTC in the format of <i>yyyy-MM-ddTHH:mmZ</i>.
+	// The end time of the query. Specify the time in UTC in the <i>yyyy-MM-ddTHH:mmZ</i> format.
 	//
-	// > The end time must be later than the start time, and the interval between the start time and end time cannot exceed two days.
+	// > The end time must be later than the start time, and the time span between the start time and the end time cannot exceed two days.
 	//
 	// example:
 	//
 	// 2022-03-11T15:01Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The name of the performance metric (metric key) to query. Separate multiple values with commas (,). For more information about supported metrics, see [Monitoring metrics overview](https://help.aliyun.com/document_detail/2863211.html).
+	// The names of the performance metrics to query, which are the keys of the monitored items. Separate multiple values with commas (,). For more information about the supported metrics, refer to [Overview of monitoring metrics](https://help.aliyun.com/document_detail/2863211.html).
 	//
 	// example:
 	//
@@ -66,7 +66,7 @@ type DescribeDBClusterPerformanceRequest struct {
 	//
 	// user_default
 	ResourcePools *string `json:"ResourcePools,omitempty" xml:"ResourcePools,omitempty"`
-	// The start time of the query. Specify the time in UTC in the format of <i>yyyy-MM-ddTHH:mmZ</i>.
+	// The start time of the query. Specify the time in UTC in the <i>yyyy-MM-ddTHH:mmZ</i> format.
 	//
 	// example:
 	//
