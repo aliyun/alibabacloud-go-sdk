@@ -28,7 +28,7 @@ type DescribeGatewayListRequest struct {
 	//
 	// pg-xxxxxxxxxx
 	GwClusterId *string `json:"GwClusterId,omitempty" xml:"GwClusterId,omitempty"`
-	// The gateway description.
+	// The description of the gateway.
 	//
 	// example:
 	//

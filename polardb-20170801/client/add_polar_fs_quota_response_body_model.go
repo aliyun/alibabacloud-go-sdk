@@ -16,13 +16,13 @@ type iAddPolarFsQuotaResponseBody interface {
 }
 
 type AddPolarFsQuotaResponseBody struct {
-	// The ID of the Polarlakebase instance.
+	// The Polarlakebase instance ID.
 	//
 	// example:
 	//
 	// pfs-2ze0i74ka607*****
 	PolarFsInstanceId *string `json:"PolarFsInstanceId,omitempty" xml:"PolarFsInstanceId,omitempty"`
-	// The ID of the request.
+	// Id of the request
 	//
 	// example:
 	//

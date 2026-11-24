@@ -19,6 +19,8 @@ type iDescribeModelApisResponseBody interface {
 	GetPageSize() *int32
 	SetRequestId(v string) *DescribeModelApisResponseBody
 	GetRequestId() *string
+	SetTotalPages(v int32) *DescribeModelApisResponseBody
+	GetTotalPages() *int32
 	SetTotalRecordCount(v int32) *DescribeModelApisResponseBody
 	GetTotalRecordCount() *int32
 }
@@ -32,15 +34,13 @@ type DescribeModelApisResponseBody struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries on the current page.
+	// The number of records on the current page.
 	//
 	// example:
 	//
 	// 30
 	PageRecordCount *int32 `json:"PageRecordCount,omitempty" xml:"PageRecordCount,omitempty"`
-	// The number of entries per page. Valid values: **30**, **50**, and **100**.
-	//
-	// Default value: **30**.
+	// The number of entries per page. Valid values: **30**, **50**, and **100**. Default value: **30**.
 	//
 	// example:
 	//
@@ -52,7 +52,13 @@ type DescribeModelApisResponseBody struct {
 	//
 	// C61892A4-0850-4516-9E26-44D96C1782DE
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries.
+	// The total number of pages.
+	//
+	// example:
+	//
+	// 3
+	TotalPages *int32 `json:"TotalPages,omitempty" xml:"TotalPages,omitempty"`
+	// The total number of records.
 	//
 	// example:
 	//
@@ -88,6 +94,10 @@ func (s *DescribeModelApisResponseBody) GetRequestId() *string {
 	return s.RequestId
 }
 
+func (s *DescribeModelApisResponseBody) GetTotalPages() *int32 {
+	return s.TotalPages
+}
+
 func (s *DescribeModelApisResponseBody) GetTotalRecordCount() *int32 {
 	return s.TotalRecordCount
 }
@@ -114,6 +124,11 @@ func (s *DescribeModelApisResponseBody) SetPageSize(v int32) *DescribeModelApisR
 
 func (s *DescribeModelApisResponseBody) SetRequestId(v string) *DescribeModelApisResponseBody {
 	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeModelApisResponseBody) SetTotalPages(v int32) *DescribeModelApisResponseBody {
+	s.TotalPages = &v
 	return s
 }
 
@@ -154,19 +169,43 @@ type DescribeModelApisResponseBodyItems struct {
 	//
 	// {"failover":{"enabled":true,"max_provider_retries":2,"max_failover_providers":1,"retryable_status_codes":[429,500,502,503,504],"retry_delay":0.5}}
 	Config *string `json:"Config,omitempty" xml:"Config,omitempty"`
+	// The ID of the gateway instance to which the model API belongs.
+	//
+	// example:
+	//
+	// pg-2ze3x6i1d7g5rto28
+	CustinsName *string `json:"CustinsName,omitempty" xml:"CustinsName,omitempty"`
 	// The creation time.
 	//
 	// example:
 	//
 	// 2024-10-16 16:46:20
 	GmtCreated *string `json:"GmtCreated,omitempty" xml:"GmtCreated,omitempty"`
+	// The modification time of the model API.
+	//
+	// example:
+	//
+	// 2026-11-09T06:43:33Z
+	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
 	// The model API IDs.
 	//
 	// example:
 	//
 	// mi-xxxx
 	ModelApiId *string `json:"ModelApiId,omitempty" xml:"ModelApiId,omitempty"`
-	// The name of the model API.
+	// The model name mappings, which is a JSON array string. Each element is in the format of {"Source":"client model name","Target":"upstream model name"}. If not configured, this parameter is empty.
+	//
+	// example:
+	//
+	// [{"Source":"client-model-a","Target":"upstream-model-a"}]
+	ModelMappings *string `json:"ModelMappings,omitempty" xml:"ModelMappings,omitempty"`
+	// The intelligent routing candidate list, which is a JSON object string in the format of {"AllowedModels":["candidate model name"]}. If not configured, this parameter is empty.
+	//
+	// example:
+	//
+	// {"AllowedModels":["deepseek-v4-pro","glm-5.3","glm-5.3-flash"]}
+	ModelRouting *string `json:"ModelRouting,omitempty" xml:"ModelRouting,omitempty"`
+	// The model API name.
 	//
 	// example:
 	//
@@ -192,13 +231,13 @@ type DescribeModelApisResponseBodyItems struct {
 	//
 	// openai
 	Protocol *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
-	// The number of input tokens.
+	// The number of input points.
 	//
 	// example:
 	//
 	// 10
 	RecordInput *string `json:"RecordInput,omitempty" xml:"RecordInput,omitempty"`
-	// The number of output tokens.
+	// The number of output points.
 	//
 	// example:
 	//
@@ -256,7 +295,7 @@ type DescribeModelApisResponseBodyItems struct {
 	//
 	// ]
 	RouteRules *string `json:"RouteRules,omitempty" xml:"RouteRules,omitempty"`
-	// The status of the model API.
+	// The model API status.
 	//
 	// example:
 	//
@@ -280,12 +319,28 @@ func (s *DescribeModelApisResponseBodyItems) GetConfig() *string {
 	return s.Config
 }
 
+func (s *DescribeModelApisResponseBodyItems) GetCustinsName() *string {
+	return s.CustinsName
+}
+
 func (s *DescribeModelApisResponseBodyItems) GetGmtCreated() *string {
 	return s.GmtCreated
 }
 
+func (s *DescribeModelApisResponseBodyItems) GetGmtModified() *string {
+	return s.GmtModified
+}
+
 func (s *DescribeModelApisResponseBodyItems) GetModelApiId() *string {
 	return s.ModelApiId
+}
+
+func (s *DescribeModelApisResponseBodyItems) GetModelMappings() *string {
+	return s.ModelMappings
+}
+
+func (s *DescribeModelApisResponseBodyItems) GetModelRouting() *string {
+	return s.ModelRouting
 }
 
 func (s *DescribeModelApisResponseBodyItems) GetName() *string {
@@ -326,13 +381,33 @@ func (s *DescribeModelApisResponseBodyItems) SetConfig(v string) *DescribeModelA
 	return s
 }
 
+func (s *DescribeModelApisResponseBodyItems) SetCustinsName(v string) *DescribeModelApisResponseBodyItems {
+	s.CustinsName = &v
+	return s
+}
+
 func (s *DescribeModelApisResponseBodyItems) SetGmtCreated(v string) *DescribeModelApisResponseBodyItems {
 	s.GmtCreated = &v
 	return s
 }
 
+func (s *DescribeModelApisResponseBodyItems) SetGmtModified(v string) *DescribeModelApisResponseBodyItems {
+	s.GmtModified = &v
+	return s
+}
+
 func (s *DescribeModelApisResponseBodyItems) SetModelApiId(v string) *DescribeModelApisResponseBodyItems {
 	s.ModelApiId = &v
+	return s
+}
+
+func (s *DescribeModelApisResponseBodyItems) SetModelMappings(v string) *DescribeModelApisResponseBodyItems {
+	s.ModelMappings = &v
+	return s
+}
+
+func (s *DescribeModelApisResponseBodyItems) SetModelRouting(v string) *DescribeModelApisResponseBodyItems {
+	s.ModelRouting = &v
 	return s
 }
 

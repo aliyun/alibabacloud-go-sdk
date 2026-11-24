@@ -22,7 +22,7 @@ type iCreateResourceControlRequest interface {
 }
 
 type CreateResourceControlRequest struct {
-	// The maximum number of CPU cores available to the resource control rule. The minimum value is 1, and the maximum value is determined by the resource_control_cpu_count_limit kernel parameter of the cluster. You must specify either MaxCpu or CpuCount, but not both.
+	// The maximum number of CPU cores available to the resource control rule. The minimum value is 1, and the maximum value is determined by the resource_control_cpu_count_limit kernel parameter of the cluster. You must specify exactly one of the MaxCpu and CpuCount parameters.
 	//
 	// example:
 	//
@@ -36,7 +36,7 @@ type CreateResourceControlRequest struct {
 	//
 	// pc-**************
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	// The maximum CPU quota percentage available to the resource control rule. Valid values: 1 to 100. You must specify either MaxCpu or CpuCount, but not both.
+	// The maximum CPU quota percentage available to the resource control rule. Valid values: 1 to 100. You must specify exactly one of the MaxCpu and CpuCount parameters.
 	//
 	// example:
 	//

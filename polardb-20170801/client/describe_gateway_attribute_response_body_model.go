@@ -9,6 +9,8 @@ type iDescribeGatewayAttributeResponseBody interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAutoExpireTime(v string) *DescribeGatewayAttributeResponseBody
+	GetAutoExpireTime() *string
 	SetClassCode(v string) *DescribeGatewayAttributeResponseBody
 	GetClassCode() *string
 	SetCreateTime(v string) *DescribeGatewayAttributeResponseBody
@@ -43,6 +45,8 @@ type iDescribeGatewayAttributeResponseBody interface {
 	GetSecurityIPArrays() []*DescribeGatewayAttributeResponseBodySecurityIPArrays
 	SetSemanticCacheEnabled(v bool) *DescribeGatewayAttributeResponseBody
 	GetSemanticCacheEnabled() *bool
+	SetSmartRoutingEnabled(v bool) *DescribeGatewayAttributeResponseBody
+	GetSmartRoutingEnabled() *bool
 	SetStatus(v string) *DescribeGatewayAttributeResponseBody
 	GetStatus() *string
 	SetVSwitchId(v string) *DescribeGatewayAttributeResponseBody
@@ -52,7 +56,13 @@ type iDescribeGatewayAttributeResponseBody interface {
 }
 
 type DescribeGatewayAttributeResponseBody struct {
-	// The specification code.
+	// The cumulative expiration time of the smart routing privilege in UTC and ISO 8601 format. This parameter may be omitted or null if smart routing is not enabled.
+	//
+	// example:
+	//
+	// 2026-12-09T06:43:33Z
+	AutoExpireTime *string `json:"AutoExpireTime,omitempty" xml:"AutoExpireTime,omitempty"`
+	// The instance type code.
 	//
 	// example:
 	//
@@ -60,7 +70,7 @@ type DescribeGatewayAttributeResponseBody struct {
 	ClassCode *string `json:"ClassCode,omitempty" xml:"ClassCode,omitempty"`
 	// The creation time.
 	//
-	// The time is in ISO 8601 format and the UTC time zone (YYYY-MM-DDTHH:mm:ssZ).
+	// The time follows the ISO 8601 standard in UTC (YYYY-MM-DDTHH:mm:ssZ).
 	//
 	// example:
 	//
@@ -84,7 +94,7 @@ type DescribeGatewayAttributeResponseBody struct {
 	//
 	// This parameter is empty when the billing method is Postpaid.
 	//
-	// The time is in ISO 8601 format and the UTC time zone (YYYY-MM-DDTHH:mm:ssZ).
+	// The time follows the ISO 8601 standard in UTC (YYYY-MM-DDTHH:mm:ssZ).
 	//
 	// example:
 	//
@@ -92,15 +102,15 @@ type DescribeGatewayAttributeResponseBody struct {
 	ExpireTime *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
 	// Indicates whether the cluster has expired. Valid values:
 	//
-	// - true
+	// - true: The cluster has expired.
 	//
-	// - false
+	// - false: The cluster has not expired.
 	//
 	// example:
 	//
 	// False
 	Expired *bool `json:"Expired,omitempty" xml:"Expired,omitempty"`
-	// The gateway instance ID.
+	// The instance ID of the gateway.
 	//
 	// example:
 	//
@@ -120,7 +130,7 @@ type DescribeGatewayAttributeResponseBody struct {
 	LatestVersion *string `json:"LatestVersion,omitempty" xml:"LatestVersion,omitempty"`
 	// The last modification time.
 	//
-	// The time is in ISO 8601 format and the UTC time zone (YYYY-MM-DDTHH:mm:ssZ).
+	// The time follows the ISO 8601 standard in UTC (YYYY-MM-DDTHH:mm:ssZ).
 	//
 	// example:
 	//
@@ -154,10 +164,16 @@ type DescribeGatewayAttributeResponseBody struct {
 	//
 	// 2.0.0
 	RunningVersion *string `json:"RunningVersion,omitempty" xml:"RunningVersion,omitempty"`
-	// The application-level whitelist.
+	// The application-level IP whitelist.
 	SecurityIPArrays []*DescribeGatewayAttributeResponseBodySecurityIPArrays `json:"SecurityIPArrays,omitempty" xml:"SecurityIPArrays,omitempty" type:"Repeated"`
-	// Indicates whether the semantic cache is enabled. If the semantic cache is disabled or has never been enabled, the value is false.
+	// Indicates whether semantic caching is enabled. If it is disabled or has never been enabled, the value is false.
 	SemanticCacheEnabled *bool `json:"SemanticCacheEnabled,omitempty" xml:"SemanticCacheEnabled,omitempty"`
+	// Indicates whether smart routing is enabled for the instance. The value is returned by ApsaraDB based on the validity period of the privilege. A value of true does not indicate that the data plane is healthy.
+	//
+	// example:
+	//
+	// true
+	SmartRoutingEnabled *bool `json:"SmartRoutingEnabled,omitempty" xml:"SmartRoutingEnabled,omitempty"`
 	// The application status. Valid values:
 	//
 	// - CREATE: creating
@@ -188,6 +204,10 @@ func (s DescribeGatewayAttributeResponseBody) String() string {
 
 func (s DescribeGatewayAttributeResponseBody) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeGatewayAttributeResponseBody) GetAutoExpireTime() *string {
+	return s.AutoExpireTime
 }
 
 func (s *DescribeGatewayAttributeResponseBody) GetClassCode() *string {
@@ -258,6 +278,10 @@ func (s *DescribeGatewayAttributeResponseBody) GetSemanticCacheEnabled() *bool {
 	return s.SemanticCacheEnabled
 }
 
+func (s *DescribeGatewayAttributeResponseBody) GetSmartRoutingEnabled() *bool {
+	return s.SmartRoutingEnabled
+}
+
 func (s *DescribeGatewayAttributeResponseBody) GetStatus() *string {
 	return s.Status
 }
@@ -268,6 +292,11 @@ func (s *DescribeGatewayAttributeResponseBody) GetVSwitchId() *string {
 
 func (s *DescribeGatewayAttributeResponseBody) GetVpcId() *string {
 	return s.VpcId
+}
+
+func (s *DescribeGatewayAttributeResponseBody) SetAutoExpireTime(v string) *DescribeGatewayAttributeResponseBody {
+	s.AutoExpireTime = &v
+	return s
 }
 
 func (s *DescribeGatewayAttributeResponseBody) SetClassCode(v string) *DescribeGatewayAttributeResponseBody {
@@ -355,6 +384,11 @@ func (s *DescribeGatewayAttributeResponseBody) SetSemanticCacheEnabled(v bool) *
 	return s
 }
 
+func (s *DescribeGatewayAttributeResponseBody) SetSmartRoutingEnabled(v bool) *DescribeGatewayAttributeResponseBody {
+	s.SmartRoutingEnabled = &v
+	return s
+}
+
 func (s *DescribeGatewayAttributeResponseBody) SetStatus(v string) *DescribeGatewayAttributeResponseBody {
 	s.Status = &v
 	return s
@@ -393,29 +427,29 @@ func (s *DescribeGatewayAttributeResponseBody) Validate() error {
 }
 
 type DescribeGatewayAttributeResponseBodyEndpoints struct {
-	// The endpoint address.
+	// The endpoint.
 	//
 	// example:
 	//
 	// pg-xxxxx.polardbaigateway.pre.rds.aliyuncs.com
 	Address *string `json:"Address,omitempty" xml:"Address,omitempty"`
-	// The ID of the endpoint node.
+	// The ID of the endpoint.
 	//
 	// example:
 	//
 	// xxx
 	EndpointId *string `json:"EndpointId,omitempty" xml:"EndpointId,omitempty"`
-	// The gateway instance ID.
+	// The instance ID of the gateway.
 	//
 	// example:
 	//
 	// pg-xxxxxxx
 	GwClusterId *string `json:"GwClusterId,omitempty" xml:"GwClusterId,omitempty"`
-	// The type of the endpoint address. Valid values:
+	// The endpoint type. Valid values:
 	//
 	// - Private: VPC address
 	//
-	// - Public: Internet address
+	// - Public: public network address
 	//
 	// example:
 	//

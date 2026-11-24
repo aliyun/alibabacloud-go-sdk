@@ -46,7 +46,7 @@ type iCreateDBLinkRequest interface {
 }
 
 type CreateDBLinkRequest struct {
-	// A client token that is used to ensure the idempotence of the request. The client generates the token, but you must make sure that the token is unique among different requests. The token is case-sensitive and must not exceed 64 ASCII characters in length.
+	// The client token that is used to ensure the idempotence of the request and prevent duplicate submissions. You can generate the token on the client. The token must be unique across different requests and is case-sensitive. It can be up to 64 ASCII characters in length.
 	//
 	// example:
 	//
@@ -64,11 +64,11 @@ type CreateDBLinkRequest struct {
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
 	// The name of the DBLink.
 	//
-	// - It must contain lowercase letters, and can also contain digits and underscores (_).
+	// - It can contain lowercase letters, digits, and underscores (_), and must contain at least one lowercase letter.
 	//
 	// - It must start with a letter and end with a letter or a digit.
 	//
-	// - It must be no more than 64 characters in length.
+	// - It can be up to 64 characters in length.
 	//
 	// This parameter is required.
 	//
@@ -80,7 +80,7 @@ type CreateDBLinkRequest struct {
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The region ID.
 	//
-	// > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/98041.html) operation to query the details of regions.
+	// > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/98041.html) operation to query region details.
 	//
 	// example:
 	//
@@ -96,7 +96,7 @@ type CreateDBLinkRequest struct {
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	// The name of the source database.
 	//
-	// > You can call the [DescribeDatabases](https://help.aliyun.com/document_detail/173558.html) operation to query information about databases in a PolarDB cluster.
+	// > You can call the [DescribeDatabases](https://help.aliyun.com/document_detail/173558.html) operation to query the databases in the PolarDB cluster.
 	//
 	// This parameter is required.
 	//
@@ -106,7 +106,7 @@ type CreateDBLinkRequest struct {
 	SourceDBName *string `json:"SourceDBName,omitempty" xml:"SourceDBName,omitempty"`
 	// The account of the destination database.
 	//
-	// > You can call the [DescribeAccounts](https://help.aliyun.com/document_detail/173549.html) operation to query the database accounts of a PolarDB cluster.
+	// > You can call the [DescribeAccounts](https://help.aliyun.com/document_detail/173549.html) operation to query the database accounts of the PolarDB cluster.
 	//
 	// This parameter is required.
 	//
@@ -116,9 +116,7 @@ type CreateDBLinkRequest struct {
 	TargetDBAccount *string `json:"TargetDBAccount,omitempty" xml:"TargetDBAccount,omitempty"`
 	// The ID of the destination cluster for the DBLink.
 	//
-	// > - If the destination is a self-managed Oracle database that runs on an ECS instance, set this parameter to `null`.
-	//
-	// >
+	// > - If the destination is a self-managed Oracle database on an ECS instance, set this parameter to `null`.
 	//
 	// > - You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/173433.html) operation to query the list of PolarDB clusters.
 	//
@@ -128,7 +126,7 @@ type CreateDBLinkRequest struct {
 	TargetDBInstanceName *string `json:"TargetDBInstanceName,omitempty" xml:"TargetDBInstanceName,omitempty"`
 	// The name of the destination database.
 	//
-	// > You can call the [DescribeDatabases](https://help.aliyun.com/document_detail/173558.html) operation to query information about databases in a PolarDB cluster.
+	// > You can call the [DescribeDatabases](https://help.aliyun.com/document_detail/173558.html) operation to query the databases in the PolarDB cluster.
 	//
 	// This parameter is required.
 	//
@@ -136,7 +134,7 @@ type CreateDBLinkRequest struct {
 	//
 	// testdb2
 	TargetDBName *string `json:"TargetDBName,omitempty" xml:"TargetDBName,omitempty"`
-	// The password for the destination database account.
+	// The password of the destination database account.
 	//
 	// This parameter is required.
 	//
@@ -144,21 +142,21 @@ type CreateDBLinkRequest struct {
 	//
 	// Test1111
 	TargetDBPasswd *string `json:"TargetDBPasswd,omitempty" xml:"TargetDBPasswd,omitempty"`
-	// The IP address of the self-managed Oracle database that runs on an ECS instance.
+	// The IP address of the self-managed Oracle database on the ECS instance.
 	//
 	// example:
 	//
 	// 192.**.**.46
 	TargetIp *string `json:"TargetIp,omitempty" xml:"TargetIp,omitempty"`
-	// The port number of the self-managed Oracle database that runs on an ECS instance.
+	// The port number of the self-managed Oracle database on the ECS instance.
 	//
 	// example:
 	//
 	// 1521
 	TargetPort *string `json:"TargetPort,omitempty" xml:"TargetPort,omitempty"`
-	// The ID of the virtual private cloud (VPC).
+	// The ID of the VPC.
 	//
-	// > You can call the [DescribeVpcs](https://help.aliyun.com/document_detail/35739.html) operation to query the details of VPCs.
+	// > You can call the [DescribeVpcs](https://help.aliyun.com/document_detail/35739.html) operation to query VPC details.
 	//
 	// example:
 	//

@@ -9,6 +9,8 @@ type iModifyCostRuleRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetBypassQuotaCheck(v bool) *ModifyCostRuleRequest
+	GetBypassQuotaCheck() *bool
 	SetCacheCostPointsPerMillion(v string) *ModifyCostRuleRequest
 	GetCacheCostPointsPerMillion() *string
 	SetCacheCreationCostPointsPerMillion(v string) *ModifyCostRuleRequest
@@ -38,6 +40,12 @@ type iModifyCostRuleRequest interface {
 }
 
 type ModifyCostRuleRequest struct {
+	// Specifies whether to bypass the quota check. This parameter is optional and has no default value. If omitted, it is not passed through. Both false and true are passed through as-is.
+	//
+	// example:
+	//
+	// false
+	BypassQuotaCheck *bool `json:"BypassQuotaCheck,omitempty" xml:"BypassQuotaCheck,omitempty"`
 	// The cache cost points per million tokens. Default value: 0.
 	//
 	// example:
@@ -50,7 +58,7 @@ type ModifyCostRuleRequest struct {
 	//
 	// 400
 	CacheCreationCostPointsPerMillion *string `json:"CacheCreationCostPointsPerMillion,omitempty" xml:"CacheCreationCostPointsPerMillion,omitempty"`
-	// The ID of the cost rule.
+	// The cost rule ID.
 	//
 	// This parameter is required.
 	//
@@ -84,7 +92,7 @@ type ModifyCostRuleRequest struct {
 	//
 	// 0
 	InputCostPointsPerMillion *string `json:"InputCostPointsPerMillion,omitempty" xml:"InputCostPointsPerMillion,omitempty"`
-	// The input token tiered price (non-cumulative) specified as a JSON array character string. Each element contains Tier and InputCostPointsPerMillion. Valid values for Tier: "" (default tier), 0-32K, 32K-64K, 64K-128K, 128K-256K, 256K-512K, 512K-1M, and 1M+. Example: [{"Tier":"0-32K","InputCostPointsPerMillion":"1200"}]. A non-empty value replaces all existing tiers. If this parameter is not specified or is set to an empty string, the original tiers are retained. An empty array [] is not allowed.
+	// The tiered price for input tokens (non-cumulative). This parameter is a JSON array character string. Each element contains Tier and InputCostPointsPerMillion. Valid values for Tier: "" (default tier), 0-32K, 32K-64K, 64K-128K, 128K-256K, 256K-512K, 512K-1M, and 1M+. Example: [{"Tier":"0-32K","InputCostPointsPerMillion":"1200"}]. If this parameter is not empty, all tiers are replaced. If this parameter is not specified or an empty string is passed, the original tiers are retained. An empty array [] is not allowed.
 	//
 	// example:
 	//
@@ -98,7 +106,7 @@ type ModifyCostRuleRequest struct {
 	//
 	// gpt-4
 	ModelName *string `json:"ModelName,omitempty" xml:"ModelName,omitempty"`
-	// The ID of the model service.
+	// The model service ID.
 	//
 	// This parameter is required.
 	//
@@ -132,6 +140,10 @@ func (s ModifyCostRuleRequest) String() string {
 
 func (s ModifyCostRuleRequest) GoString() string {
 	return s.String()
+}
+
+func (s *ModifyCostRuleRequest) GetBypassQuotaCheck() *bool {
+	return s.BypassQuotaCheck
 }
 
 func (s *ModifyCostRuleRequest) GetCacheCostPointsPerMillion() *string {
@@ -184,6 +196,11 @@ func (s *ModifyCostRuleRequest) GetRegionId() *string {
 
 func (s *ModifyCostRuleRequest) GetVideoCostPointsPerSecond() *string {
 	return s.VideoCostPointsPerSecond
+}
+
+func (s *ModifyCostRuleRequest) SetBypassQuotaCheck(v bool) *ModifyCostRuleRequest {
+	s.BypassQuotaCheck = &v
+	return s
 }
 
 func (s *ModifyCostRuleRequest) SetCacheCostPointsPerMillion(v string) *ModifyCostRuleRequest {

@@ -34,7 +34,7 @@ type iAnswerKnowledgeBaseRequest interface {
 }
 
 type AnswerKnowledgeBaseRequest struct {
-	// The unique identifier of the knowledge base. To obtain the ID, first call CreateKnowledgeSpace to create a knowledge space, use the returned KnowledgeSpaceId to call CreateKnowledgeBase, and then use the KnowledgeBaseId returned by CreateKnowledgeBase. Separate multiple knowledge base IDs with commas.
+	// The unique identifier of the knowledge base. To obtain this ID, call CreateKnowledgeSpace to create a knowledge space, use the returned KnowledgeSpaceId to call CreateKnowledgeBase, and then use the KnowledgeBaseId returned by CreateKnowledgeBase. You can specify up to 50 knowledge base IDs separated by commas.
 	//
 	// This parameter is required.
 	//
@@ -54,7 +54,7 @@ type AnswerKnowledgeBaseRequest struct {
 	//
 	// example:
 	//
-	// Summarize this year\\"s financial report
+	// Summarize the financial report for this year
 	QueryText *string `json:"QueryText,omitempty" xml:"QueryText,omitempty"`
 	// The region ID.
 	//
@@ -94,7 +94,7 @@ type AnswerKnowledgeBaseRequest struct {
 	//
 	// This is a minimal test prompt for security verification.
 	SystemPrompt *string `json:"SystemPrompt,omitempty" xml:"SystemPrompt,omitempty"`
-	// The number of results to recall.
+	// The number of results to recall during retrieval.
 	//
 	// example:
 	//

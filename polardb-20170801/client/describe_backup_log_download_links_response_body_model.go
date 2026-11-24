@@ -16,7 +16,7 @@ type iDescribeBackupLogDownloadLinksResponseBody interface {
 }
 
 type DescribeBackupLogDownloadLinksResponseBody struct {
-	// The redo log backup details.
+	// The physical log backup details.
 	BackupLogDownloadLinkItem []*DescribeBackupLogDownloadLinksResponseBodyBackupLogDownloadLinkItem `json:"BackupLogDownloadLinkItem,omitempty" xml:"BackupLogDownloadLinkItem,omitempty" type:"Repeated"`
 	// The request ID.
 	//
@@ -66,29 +66,29 @@ func (s *DescribeBackupLogDownloadLinksResponseBody) Validate() error {
 }
 
 type DescribeBackupLogDownloadLinksResponseBodyBackupLogDownloadLinkItem struct {
-	// The redo log backup ID.
+	// The physical backup log ID.
 	//
 	// example:
 	//
 	// 78167430
 	BackupLogId *string `json:"BackupLogId,omitempty" xml:"BackupLogId,omitempty"`
-	// The public download link of the redo log backup.
+	// The Internet download link for the physical backup log.
 	DownloadLink *string `json:"DownloadLink,omitempty" xml:"DownloadLink,omitempty"`
-	// The error code for the single entry. Empty if the operation is successful.
+	// The error code for a single record. This parameter is empty if the call is successful.
 	//
 	// example:
 	//
 	// BackupLogNotFound
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The internal network download link of the redo log backup.
+	// The internal network download link for the physical backup log.
 	IntranetDownloadLink *string `json:"IntranetDownloadLink,omitempty" xml:"IntranetDownloadLink,omitempty"`
-	// The expiration time of the download links, in UTC.
+	// The expiration time of the download link. The time is displayed in UTC.
 	//
 	// example:
 	//
 	// 2026-10-23T03:00:00Z
 	LinkExpiredTime *string `json:"LinkExpiredTime,omitempty" xml:"LinkExpiredTime,omitempty"`
-	// The error message for the single entry. Empty if the operation is successful.
+	// The error message for a single record. This parameter is empty if the call is successful.
 	//
 	// example:
 	//

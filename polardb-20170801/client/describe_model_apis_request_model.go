@@ -58,7 +58,7 @@ type DescribeModelApisRequest struct {
 	//
 	// text
 	ModelCategory *string `json:"ModelCategory,omitempty" xml:"ModelCategory,omitempty"`
-	// The name of the model API.
+	// The model API name.
 	//
 	// example:
 	//
@@ -110,7 +110,7 @@ type DescribeModelApisRequest struct {
 	//
 	// cn-beijing
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The status of the model API.
+	// The model API status.
 	//
 	// example:
 	//

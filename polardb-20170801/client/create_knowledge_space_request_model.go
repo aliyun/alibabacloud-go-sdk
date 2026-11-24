@@ -92,7 +92,7 @@ type CreateKnowledgeSpaceRequest struct {
 	//
 	// text-embedding-v4
 	EmbeddingModel *string `json:"EmbeddingModel,omitempty" xml:"EmbeddingModel,omitempty"`
-	// Specifies whether to enforce ACL authentication for the knowledge space.
+	// Specifies whether to enable mandatory ACL authentication for the knowledge space.
 	//
 	// example:
 	//
@@ -144,7 +144,7 @@ type CreateKnowledgeSpaceRequest struct {
 	//
 	// cn-beijing
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The name of the reranking model.
+	// The name of the rerank model.
 	//
 	// example:
 	//
@@ -170,7 +170,7 @@ type CreateKnowledgeSpaceRequest struct {
 	//
 	// - hierarchical: The default value.
 	//
-	// - hybrid.
+	// - hybrid
 	//
 	// This parameter is required.
 	//
@@ -178,7 +178,7 @@ type CreateKnowledgeSpaceRequest struct {
 	//
 	// hierarchical
 	ShardingStrategy *string `json:"ShardingStrategy,omitempty" xml:"ShardingStrategy,omitempty"`
-	// The ID of the vSwitch for the automatic creation of the database.
+	// The ID of the vSwitch for automatic creation of the database.
 	//
 	// This parameter is required.
 	//
@@ -186,7 +186,7 @@ type CreateKnowledgeSpaceRequest struct {
 	//
 	// vsw-*********************
 	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	// The ID of the VPC for the automatic creation of the database.
+	// The ID of the VPC for automatic creation of the database.
 	//
 	// This parameter is required.
 	//
@@ -194,7 +194,7 @@ type CreateKnowledgeSpaceRequest struct {
 	//
 	// vpc-*************
 	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
-	// The active zone for the automatic creation of the database.
+	// The active zone for automatic creation of the database.
 	//
 	// This parameter is required.
 	//

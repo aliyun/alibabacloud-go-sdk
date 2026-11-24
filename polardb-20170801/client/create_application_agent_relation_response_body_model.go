@@ -16,7 +16,7 @@ type iCreateApplicationAgentRelationResponseBody interface {
 }
 
 type CreateApplicationAgentRelationResponseBody struct {
-	// The ID of the Squad application.
+	// The ID of the squad application.
 	//
 	// example:
 	//

@@ -14,7 +14,7 @@ type iCreateDBLinkResponseBody interface {
 }
 
 type CreateDBLinkResponseBody struct {
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//

@@ -17,6 +17,10 @@ type iCreateModelApiRequest interface {
 	GetGwClusterId() *string
 	SetModelCategory(v string) *CreateModelApiRequest
 	GetModelCategory() *string
+	SetModelMappings(v string) *CreateModelApiRequest
+	GetModelMappings() *string
+	SetModelRouting(v string) *CreateModelApiRequest
+	GetModelRouting() *string
 	SetName(v string) *CreateModelApiRequest
 	GetName() *string
 	SetPathPrefix(v string) *CreateModelApiRequest
@@ -62,7 +66,7 @@ type CreateModelApiRequest struct {
 	//
 	// Qwen3-32B
 	ForceModel *string `json:"ForceModel,omitempty" xml:"ForceModel,omitempty"`
-	// The gateway instance ID. You can obtain this ID from the GwClusterId parameter returned by the CreateGateway operation.
+	// The ID of the gateway instance. You can obtain this ID from the GwClusterId value returned by the CreateGateway operation.
 	//
 	// This parameter is required.
 	//
@@ -78,23 +82,29 @@ type CreateModelApiRequest struct {
 	//
 	// 	- **rerank**
 	//
-	// This parameter is required.
-	//
 	// example:
 	//
 	// text
 	ModelCategory *string `json:"ModelCategory,omitempty" xml:"ModelCategory,omitempty"`
-	// The name of the model API.
+	// The model name mappings, specified as a JSON array string. Each element is in the format of {"Source":"client model name","Target":"upstream model name"}. The Source parameter is matched in a case-insensitive manner and must be unique. The Target parameter retains its original case when forwarded. Both parameters cannot be empty and cannot contain leading or trailing spaces.
 	//
-	// This parameter is required.
+	// example:
+	//
+	// [{"Source":"client-model-a","Target":"upstream-model-a"},{"Source":"client-model-b","Target":"upstream-model-b"}]
+	ModelMappings *string `json:"ModelMappings,omitempty" xml:"ModelMappings,omitempty"`
+	// The intelligent routing candidate list, specified as a JSON object string. Currently, it only contains AllowedModels, which is a non-empty array of unique model names. The order of the array determines the candidate order. Do not pass the Enabled, cost, or quality tier parameters. Saving candidates does not enable the feature. You must first call the EnableModelRouting operation to obtain the gateway entitlements.
+	//
+	// example:
+	//
+	// {"AllowedModels":["deepseek-v4-pro","glm-5.3","glm-5.3-flash"]}
+	ModelRouting *string `json:"ModelRouting,omitempty" xml:"ModelRouting,omitempty"`
+	// The name of the model API.
 	//
 	// example:
 	//
 	// test
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The API path prefix.
-	//
-	// This parameter is required.
 	//
 	// example:
 	//
@@ -109,8 +119,6 @@ type CreateModelApiRequest struct {
 	// 	- **bailian**
 	//
 	// 	- **vllm**
-	//
-	// This parameter is required.
 	//
 	// example:
 	//
@@ -135,8 +143,6 @@ type CreateModelApiRequest struct {
 	// cn-beijing
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The list of routing rules, specified as a JSON array string.
-	//
-	// This parameter is required.
 	//
 	// example:
 	//
@@ -214,6 +220,14 @@ func (s *CreateModelApiRequest) GetModelCategory() *string {
 	return s.ModelCategory
 }
 
+func (s *CreateModelApiRequest) GetModelMappings() *string {
+	return s.ModelMappings
+}
+
+func (s *CreateModelApiRequest) GetModelRouting() *string {
+	return s.ModelRouting
+}
+
 func (s *CreateModelApiRequest) GetName() *string {
 	return s.Name
 }
@@ -259,6 +273,16 @@ func (s *CreateModelApiRequest) SetGwClusterId(v string) *CreateModelApiRequest 
 
 func (s *CreateModelApiRequest) SetModelCategory(v string) *CreateModelApiRequest {
 	s.ModelCategory = &v
+	return s
+}
+
+func (s *CreateModelApiRequest) SetModelMappings(v string) *CreateModelApiRequest {
+	s.ModelMappings = &v
+	return s
+}
+
+func (s *CreateModelApiRequest) SetModelRouting(v string) *CreateModelApiRequest {
+	s.ModelRouting = &v
 	return s
 }
 

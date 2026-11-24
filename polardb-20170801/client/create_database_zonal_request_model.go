@@ -46,17 +46,17 @@ type CreateDatabaseZonalRequest struct {
 	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
 	// The permissions of the account. Valid values:
 	//
-	// - ReadWrite: read and write permissions.
+	// - ReadWrite: read and write permissions
 	//
-	// - ReadOnly: read-only permissions.
+	// - ReadOnly: read-only permissions
 	//
-	// - DMLOnly: DML-only permissions.
+	// - DMLOnly: DML-only permissions
 	//
-	// - DDLOnly: DDL-only permissions.
+	// - DDLOnly: DDL-only permissions
 	//
-	// - ReadIndex: read and index permissions.
+	// - ReadIndex: read-only and index permissions
 	//
-	// Default value: ReadWrite.
+	// If this parameter is not specified, the default value is ReadWrite.
 	//
 	// example:
 	//
@@ -70,7 +70,7 @@ type CreateDatabaseZonalRequest struct {
 	//
 	// utf8
 	CharacterSetName *string `json:"CharacterSetName,omitempty" xml:"CharacterSetName,omitempty"`
-	// The client token that is used to ensure the idempotence of the request and prevent duplicate submissions. You can generate the value of this parameter on the client side. The value must be unique across different requests and is case-sensitive. It can contain up to 64 ASCII characters.
+	// The client token that is used to ensure the idempotence of the request and prevent duplicate submissions. You can use the client to generate the value, and ensure that the value is unique across different requests. The value is case-sensitive and can be up to 64 ASCII characters in length.
 	//
 	// example:
 	//
@@ -98,9 +98,9 @@ type CreateDatabaseZonalRequest struct {
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
 	// The description of the database. The description must meet the following requirements:
 	//
-	// - It cannot start with `http://` or `https://`.
+	// - cannot start with `http://` or `https://`
 	//
-	// - It must be 2 to 256 characters in length.
+	// - must be 2 to 256 characters in length
 	//
 	// example:
 	//
@@ -108,9 +108,9 @@ type CreateDatabaseZonalRequest struct {
 	DBDescription *string `json:"DBDescription,omitempty" xml:"DBDescription,omitempty"`
 	// The name of the database. The name must meet the following requirements:
 	//
-	// - It can contain lowercase letters, digits, hyphens (-), and underscores (_).
+	// - consists of lowercase letters, digits, hyphens (-), and underscores (_)
 	//
-	// - It must start with a letter and end with a letter or digit. It can be up to 64 characters in length.
+	// - starts with a letter and ends with a letter or digit, and can be up to 64 characters in length
 	//
 	// This parameter is required.
 	//

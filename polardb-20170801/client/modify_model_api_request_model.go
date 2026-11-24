@@ -17,6 +17,12 @@ type iModifyModelApiRequest interface {
 	GetModelApiId() *string
 	SetModelCategory(v string) *ModifyModelApiRequest
 	GetModelCategory() *string
+	SetModelMappings(v string) *ModifyModelApiRequest
+	GetModelMappings() *string
+	SetModelRouting(v string) *ModifyModelApiRequest
+	GetModelRouting() *string
+	SetName(v string) *ModifyModelApiRequest
+	GetName() *string
 	SetPathPrefix(v string) *ModifyModelApiRequest
 	GetPathPrefix() *string
 	SetProtocol(v string) *ModifyModelApiRequest
@@ -78,15 +84,29 @@ type ModifyModelApiRequest struct {
 	//
 	// 	- **rerank**
 	//
-	// This parameter is required.
-	//
 	// example:
 	//
 	// text
 	ModelCategory *string `json:"ModelCategory,omitempty" xml:"ModelCategory,omitempty"`
-	// The API path prefix.
+	// The model name mappings, specified as a JSON array string. Each element is in the format of {"Source":"client model name","Target":"upstream model name"}. If you do not specify this parameter, the current mappings are retained. If you specify "[]", the mappings are cleared. The Source field is matched in a case-insensitive manner and must be unique.
 	//
-	// This parameter is required.
+	// example:
+	//
+	// [{"Source":"client-model-a","Target":"upstream-model-a"},{"Source":"client-model-b","Target":"upstream-model-b"}]
+	ModelMappings *string `json:"ModelMappings,omitempty" xml:"ModelMappings,omitempty"`
+	// The intelligent routing candidate list, specified as a JSON object string in the format of {"AllowedModels":["candidate model name"]}. If you do not specify this parameter, the current list is retained. If you specify this parameter, the existing list is fully replaced with the new list. You cannot use an empty list to disable the feature. Saving candidates does not enable the feature. You must call EnableModelRouting first.
+	//
+	// example:
+	//
+	// {"AllowedModels":["deepseek-v4-pro","glm-5.3","glm-5.3-flash"]}
+	ModelRouting *string `json:"ModelRouting,omitempty" xml:"ModelRouting,omitempty"`
+	// The name of the model API. This parameter is modifiable. If you do not specify this parameter, the original name is retained.
+	//
+	// example:
+	//
+	// jev-chat-api
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The API path prefix.
 	//
 	// example:
 	//
@@ -101,8 +121,6 @@ type ModifyModelApiRequest struct {
 	// 	- **bailian**
 	//
 	// 	- **vllm**
-	//
-	// This parameter is required.
 	//
 	// example:
 	//
@@ -126,9 +144,7 @@ type ModifyModelApiRequest struct {
 	//
 	// cn-beijing
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The list of routing rules, formatted as a JSON array string. Usage notes: Correct the value of FallbackMode in the RouteRules parameter example by replacing it with a valid value or removing the field, and add the list of valid values and their meanings for the FallbackMode subfield to the description of RouteRules.
-	//
-	// This parameter is required.
+	// The list of routing rules, specified as a JSON array string. Usage note: Correct the value of FallbackMode in the RouteRules parameter example by replacing it with a valid value or removing the field, and add the list of valid values and their descriptions for the FallbackMode subfield in the description of RouteRules.
 	//
 	// example:
 	//
@@ -206,6 +222,18 @@ func (s *ModifyModelApiRequest) GetModelCategory() *string {
 	return s.ModelCategory
 }
 
+func (s *ModifyModelApiRequest) GetModelMappings() *string {
+	return s.ModelMappings
+}
+
+func (s *ModifyModelApiRequest) GetModelRouting() *string {
+	return s.ModelRouting
+}
+
+func (s *ModifyModelApiRequest) GetName() *string {
+	return s.Name
+}
+
 func (s *ModifyModelApiRequest) GetPathPrefix() *string {
 	return s.PathPrefix
 }
@@ -247,6 +275,21 @@ func (s *ModifyModelApiRequest) SetModelApiId(v string) *ModifyModelApiRequest {
 
 func (s *ModifyModelApiRequest) SetModelCategory(v string) *ModifyModelApiRequest {
 	s.ModelCategory = &v
+	return s
+}
+
+func (s *ModifyModelApiRequest) SetModelMappings(v string) *ModifyModelApiRequest {
+	s.ModelMappings = &v
+	return s
+}
+
+func (s *ModifyModelApiRequest) SetModelRouting(v string) *ModifyModelApiRequest {
+	s.ModelRouting = &v
+	return s
+}
+
+func (s *ModifyModelApiRequest) SetName(v string) *ModifyModelApiRequest {
+	s.Name = &v
 	return s
 }
 

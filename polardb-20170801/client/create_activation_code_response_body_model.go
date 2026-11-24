@@ -40,7 +40,7 @@ type CreateActivationCodeResponseBody struct {
 	//
 	// 2024-10-16 16:46:20
 	ActivateAt *string `json:"ActivateAt,omitempty" xml:"ActivateAt,omitempty"`
-	// The content of the activation code. Decode the Base64-encoded content and save it to the license.lic file for PolarDB to read during startup.
+	// The content of the activation code. Decode this content by using Base64 and save it to the license.lic file for PolarDB to read during startup.
 	//
 	// example:
 	//
@@ -52,19 +52,19 @@ type CreateActivationCodeResponseBody struct {
 	//
 	// testCode
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The time when the activation code expires.
+	// The expiration time.
 	//
 	// example:
 	//
 	// 2054-10-09 16:46:20
 	ExpireAt *string `json:"ExpireAt,omitempty" xml:"ExpireAt,omitempty"`
-	// The time when the activation code was created.
+	// The creation time.
 	//
 	// example:
 	//
 	// 2024-10-16 16:46:20
 	GmtCreated *string `json:"GmtCreated,omitempty" xml:"GmtCreated,omitempty"`
-	// The time when the activation code was updated.
+	// The update time.
 	//
 	// example:
 	//

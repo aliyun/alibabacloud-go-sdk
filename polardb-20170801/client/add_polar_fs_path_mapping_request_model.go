@@ -93,13 +93,13 @@ type AddPolarFsPathMappingRequestCustomBucketPathList struct {
 	//
 	// Bucket1
 	Bucket *string `json:"Bucket,omitempty" xml:"Bucket,omitempty"`
-	// The AccessKey ID for the bucket.
+	// The AccessKey ID of the bucket.
 	//
 	// example:
 	//
 	// LTAIExampleBucketAccessKeyId
 	BucketAccessKeyId *string `json:"BucketAccessKeyId,omitempty" xml:"BucketAccessKeyId,omitempty"`
-	// The AccessKey secret for the bucket.
+	// The AccessKey secret of the bucket.
 	//
 	// example:
 	//

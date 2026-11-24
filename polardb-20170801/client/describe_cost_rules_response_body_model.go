@@ -19,6 +19,8 @@ type iDescribeCostRulesResponseBody interface {
 	GetPageSize() *int32
 	SetRequestId(v string) *DescribeCostRulesResponseBody
 	GetRequestId() *string
+	SetTotalPages(v int32) *DescribeCostRulesResponseBody
+	GetTotalPages() *int32
 	SetTotalRecordCount(v int32) *DescribeCostRulesResponseBody
 	GetTotalRecordCount() *int32
 }
@@ -32,13 +34,13 @@ type DescribeCostRulesResponseBody struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries returned on the current page.
+	// The number of records on the current page.
 	//
 	// example:
 	//
 	// 30
 	PageRecordCount *int32 `json:"PageRecordCount,omitempty" xml:"PageRecordCount,omitempty"`
-	// The number of entries per page. Valid values: 30, 50, and 100. Default value: 30.
+	// The number of records per page. Valid values: 30, 50, and 100. Default value: 30.
 	//
 	// example:
 	//
@@ -50,7 +52,13 @@ type DescribeCostRulesResponseBody struct {
 	//
 	// 24A1990B-4F6E-482B-B8CB-75C612******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries.
+	// The total number of pages.
+	//
+	// example:
+	//
+	// 3
+	TotalPages *int32 `json:"TotalPages,omitempty" xml:"TotalPages,omitempty"`
+	// The total number of records.
 	//
 	// example:
 	//
@@ -86,6 +94,10 @@ func (s *DescribeCostRulesResponseBody) GetRequestId() *string {
 	return s.RequestId
 }
 
+func (s *DescribeCostRulesResponseBody) GetTotalPages() *int32 {
+	return s.TotalPages
+}
+
 func (s *DescribeCostRulesResponseBody) GetTotalRecordCount() *int32 {
 	return s.TotalRecordCount
 }
@@ -112,6 +124,11 @@ func (s *DescribeCostRulesResponseBody) SetPageSize(v int32) *DescribeCostRulesR
 
 func (s *DescribeCostRulesResponseBody) SetRequestId(v string) *DescribeCostRulesResponseBody {
 	s.RequestId = &v
+	return s
+}
+
+func (s *DescribeCostRulesResponseBody) SetTotalPages(v int32) *DescribeCostRulesResponseBody {
+	s.TotalPages = &v
 	return s
 }
 
@@ -152,25 +169,25 @@ type DescribeCostRulesResponseBodyItems struct {
 	//
 	// 924d450014e64e88ac6e8486f8e990**
 	CostRuleId *string `json:"CostRuleId,omitempty" xml:"CostRuleId,omitempty"`
-	// The end time of the effective period. The time is displayed in UTC in the YYYY-MM-DDTHH:mm:ssZ format.
+	// The effective end time. The format is YYYY-MM-DDTHH:mm:ssZ (UTC time).
 	//
 	// example:
 	//
 	// 2026-10-01T00:00:00Z
 	EffectiveEndTime *string `json:"EffectiveEndTime,omitempty" xml:"EffectiveEndTime,omitempty"`
-	// The start time of the effective period. The time is displayed in UTC in the YYYY-MM-DDTHH:mm:ssZ format.
+	// The effective start time. The format is YYYY-MM-DDTHH:mm:ssZ (UTC time).
 	//
 	// example:
 	//
 	// 2026-09-01T00:00:00Z
 	EffectiveStartTime *string `json:"EffectiveStartTime,omitempty" xml:"EffectiveStartTime,omitempty"`
-	// The type of the effective target.
+	// The effective target type.
 	//
 	// example:
 	//
 	// global
 	EffectiveTargetType *string `json:"EffectiveTargetType,omitempty" xml:"EffectiveTargetType,omitempty"`
-	// The value of the effective target.
+	// The effective target value.
 	//
 	// example:
 	//
@@ -182,13 +199,13 @@ type DescribeCostRulesResponseBodyItems struct {
 	//
 	// 100
 	ExplicitCacheCostPointsPerMillion *string `json:"ExplicitCacheCostPointsPerMillion,omitempty" xml:"ExplicitCacheCostPointsPerMillion,omitempty"`
-	// The time when the cost rule was created.
+	// The creation time.
 	//
 	// example:
 	//
 	// 2026-01-04T16:09:29+08:00
 	GmtCreated *string `json:"GmtCreated,omitempty" xml:"GmtCreated,omitempty"`
-	// The time when the cost rule was last updated.
+	// The last update time.
 	//
 	// example:
 	//
@@ -454,7 +471,7 @@ func (s *DescribeCostRulesResponseBodyItems) Validate() error {
 }
 
 type DescribeCostRulesResponseBodyItemsInputTokenTiers struct {
-	// The input cost points per million tokens for the tier.
+	// The input cost points per million tokens for this tier.
 	//
 	// example:
 	//

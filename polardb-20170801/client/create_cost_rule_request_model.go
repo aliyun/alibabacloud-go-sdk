@@ -9,6 +9,8 @@ type iCreateCostRuleRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetBypassQuotaCheck(v bool) *CreateCostRuleRequest
+	GetBypassQuotaCheck() *bool
 	SetCacheCostPointsPerMillion(v string) *CreateCostRuleRequest
 	GetCacheCostPointsPerMillion() *string
 	SetCacheCreationCostPointsPerMillion(v string) *CreateCostRuleRequest
@@ -27,6 +29,8 @@ type iCreateCostRuleRequest interface {
 	GetImageCostPointsPerCount() *string
 	SetInputCostPointsPerMillion(v string) *CreateCostRuleRequest
 	GetInputCostPointsPerMillion() *string
+	SetInputTokenTier(v string) *CreateCostRuleRequest
+	GetInputTokenTier() *string
 	SetInputTokenTiers(v string) *CreateCostRuleRequest
 	GetInputTokenTiers() *string
 	SetModelName(v string) *CreateCostRuleRequest
@@ -42,6 +46,12 @@ type iCreateCostRuleRequest interface {
 }
 
 type CreateCostRuleRequest struct {
+	// Specifies whether to bypass the quota check. This parameter is optional and has no default value. If omitted, it is not passed through. Both false and true are passed through as-is.
+	//
+	// example:
+	//
+	// false
+	BypassQuotaCheck *bool `json:"BypassQuotaCheck,omitempty" xml:"BypassQuotaCheck,omitempty"`
 	// The cache read cost points per million tokens. Default value: 0.
 	//
 	// example:
@@ -54,7 +64,7 @@ type CreateCostRuleRequest struct {
 	//
 	// 400
 	CacheCreationCostPointsPerMillion *string `json:"CacheCreationCostPointsPerMillion,omitempty" xml:"CacheCreationCostPointsPerMillion,omitempty"`
-	// The effective start time in the yyyy-MM-dd HH:mm:ss format. If this parameter is not specified, the rule takes effect immediately.
+	// The effective start time in the yyyy-MM-dd HH:mm:ss format. If this parameter is not provided, the rule takes effect immediately.
 	//
 	// example:
 	//
@@ -98,7 +108,13 @@ type CreateCostRuleRequest struct {
 	//
 	// 0
 	InputCostPointsPerMillion *string `json:"InputCostPointsPerMillion,omitempty" xml:"InputCostPointsPerMillion,omitempty"`
-	// The tiered price for input tokens (non-cumulative). The value is a JSON array character string. Each element contains Tier and InputCostPointsPerMillion. Valid values for Tier: "" (default tier), 0-32K, 32K-64K, 64K-128K, 128K-256K, 256K-512K, 512K-1M, and 1M+. Example: [{"Tier":"0-32K","InputCostPointsPerMillion":"1000"},{"Tier":"32K-64K","InputCostPointsPerMillion":"1800"}]. If this parameter is specified, it takes precedence over InputCostPointsPerMillion. An empty array [] is not allowed.
+	// The input token tier. An empty string indicates the default tier. If this parameter is omitted, it is processed by the backend.
+	//
+	// example:
+	//
+	// 0-32K
+	InputTokenTier *string `json:"InputTokenTier,omitempty" xml:"InputTokenTier,omitempty"`
+	// The tiered price for input tokens (non-cumulative). The value is a JSON array character string. Each element contains Tier and InputCostPointsPerMillion. Valid values for Tier: "" (default tier), 0-32K, 32K-64K, 64K-128K, 128K-256K, 256K-512K, 512K-1M, and 1M+. Example: [{"Tier":"0-32K","InputCostPointsPerMillion":"1000"},{"Tier":"32K-64K","InputCostPointsPerMillion":"1800"}]. If this parameter is provided, it takes precedence over InputCostPointsPerMillion. An empty array [] is not allowed.
 	//
 	// example:
 	//
@@ -148,6 +164,10 @@ func (s CreateCostRuleRequest) GoString() string {
 	return s.String()
 }
 
+func (s *CreateCostRuleRequest) GetBypassQuotaCheck() *bool {
+	return s.BypassQuotaCheck
+}
+
 func (s *CreateCostRuleRequest) GetCacheCostPointsPerMillion() *string {
 	return s.CacheCostPointsPerMillion
 }
@@ -184,6 +204,10 @@ func (s *CreateCostRuleRequest) GetInputCostPointsPerMillion() *string {
 	return s.InputCostPointsPerMillion
 }
 
+func (s *CreateCostRuleRequest) GetInputTokenTier() *string {
+	return s.InputTokenTier
+}
+
 func (s *CreateCostRuleRequest) GetInputTokenTiers() *string {
 	return s.InputTokenTiers
 }
@@ -206,6 +230,11 @@ func (s *CreateCostRuleRequest) GetRegionId() *string {
 
 func (s *CreateCostRuleRequest) GetVideoCostPointsPerSecond() *string {
 	return s.VideoCostPointsPerSecond
+}
+
+func (s *CreateCostRuleRequest) SetBypassQuotaCheck(v bool) *CreateCostRuleRequest {
+	s.BypassQuotaCheck = &v
+	return s
 }
 
 func (s *CreateCostRuleRequest) SetCacheCostPointsPerMillion(v string) *CreateCostRuleRequest {
@@ -250,6 +279,11 @@ func (s *CreateCostRuleRequest) SetImageCostPointsPerCount(v string) *CreateCost
 
 func (s *CreateCostRuleRequest) SetInputCostPointsPerMillion(v string) *CreateCostRuleRequest {
 	s.InputCostPointsPerMillion = &v
+	return s
+}
+
+func (s *CreateCostRuleRequest) SetInputTokenTier(v string) *CreateCostRuleRequest {
+	s.InputTokenTier = &v
 	return s
 }
 

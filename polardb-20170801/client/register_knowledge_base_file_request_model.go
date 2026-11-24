@@ -28,7 +28,7 @@ type RegisterKnowledgeBaseFileRequest struct {
 	//
 	// pks-2ze123456789abcd/pkb-2ze123456789abcd/example.pdf
 	FilePath *string `json:"FilePath,omitempty" xml:"FilePath,omitempty"`
-	// The ID of the knowledge base. Create a knowledge space first, then create a knowledge base, and obtain this ID from the creation result.
+	// The knowledge base ID. Create a knowledge space first, then create a knowledge base, and obtain this ID from the creation result.
 	//
 	// This parameter is required.
 	//

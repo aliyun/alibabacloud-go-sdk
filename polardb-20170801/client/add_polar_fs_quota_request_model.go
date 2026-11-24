@@ -18,13 +18,13 @@ type iAddPolarFsQuotaRequest interface {
 }
 
 type AddPolarFsQuotaRequest struct {
-	// The ID of the PolarDB instance on which the application depends.
+	// The PolarDB instance ID that the application depends on.
 	//
 	// example:
 	//
 	// pc-**************
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	// The ID of the Polarlakebase instance.
+	// The Polarlakebase instance ID.
 	//
 	// This parameter is required.
 	//
@@ -87,13 +87,13 @@ func (s *AddPolarFsQuotaRequest) Validate() error {
 }
 
 type AddPolarFsQuotaRequestQuotas struct {
-	// The time to live (TTL) for the access time. Unit: seconds.
+	// The time-to-live (TTL) for the access time. Unit: seconds.
 	//
 	// example:
 	//
 	// 7200
 	AccessTTL *int64 `json:"AccessTTL,omitempty" xml:"AccessTTL,omitempty"`
-	// The TTL for the change time. Unit: seconds.
+	// The time-to-live (TTL) for the change time. Unit: seconds.
 	//
 	// example:
 	//
@@ -105,33 +105,33 @@ type AddPolarFsQuotaRequestQuotas struct {
 	//
 	// quota_policy
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// Specifies whether to enable the rule. Valid values:
+	// Specifies whether the rule is enabled. Valid values:
 	//
-	// - **True**: The rule immediately applies to new items. This is the default value.
+	// - **True**: New events take effect immediately for new resources. This is the default value.
 	//
-	// - **False**: The rule does not apply to new items.
+	// - **False**: New events do not take effect for new resources.
 	//
 	// example:
 	//
 	// True
 	Enabled *bool `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
-	// The rule to exclude specific paths from matching.
+	// The matching rule used to exclude specific paths.
 	//
-	// - A path pattern that starts with a forward slash (/). Supports glob syntax, including `*`, `?`, and `**`.
+	// - A path pattern that starts with `/`. Glob syntax such as `*`, `?`, and `**` is supported.
 	//
 	// example:
 	//
 	// /a/*project*
 	Exclude *string `json:"Exclude,omitempty" xml:"Exclude,omitempty"`
-	// The limit on the number of files for a user in the directory.
+	// The maximum number of files allowed in the directory.
 	//
 	// example:
 	//
 	// 222
 	FileCountLimit *int64 `json:"FileCountLimit,omitempty" xml:"FileCountLimit,omitempty"`
-	// The wildcard pattern to match paths.
+	// The wildcard pattern used to match paths.
 	//
-	// - A path pattern that starts with a forward slash (/). Supports glob syntax, including `*`, `?`, and `**`.
+	// - A path pattern that starts with `/`. Glob syntax such as `*`, `?`, and `**` is supported.
 	//
 	// This parameter is required.
 	//
@@ -153,7 +153,7 @@ type AddPolarFsQuotaRequestQuotas struct {
 	//
 	// 1
 	Priority *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
-	// The total size limit for files in the directory. Unit: GB.
+	// The maximum total capacity of files in the directory. Unit: GB.
 	//
 	// - Note: The value must be at least 1 GB.
 	//

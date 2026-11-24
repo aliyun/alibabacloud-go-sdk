@@ -22,7 +22,7 @@ type CancelActiveOperationTasksResponseBody struct {
 	//
 	// 25C70FF3-D49B-594D-BECE-0DE2BA1D8BBB
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The IDs of the O&M events to cancel in batches. Separate multiple IDs with commas (,).
+	// The IDs of the O&M events to be canceled in batches. Separate multiple IDs with commas (,).
 	//
 	// example:
 	//

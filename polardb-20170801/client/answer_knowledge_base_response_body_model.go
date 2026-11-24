@@ -18,7 +18,7 @@ type iAnswerKnowledgeBaseResponseBody interface {
 }
 
 type AnswerKnowledgeBaseResponseBody struct {
-	// The unique identifier of the Q&A task.
+	// The unique identifier of the question answering task.
 	//
 	// example:
 	//
@@ -30,7 +30,7 @@ type AnswerKnowledgeBaseResponseBody struct {
 	//
 	// A7E6A8FD-C50B-46B2-BA85-D8B8D3******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The status of the Q&A task.
+	// The status of the question answering task.
 	//
 	// example:
 	//

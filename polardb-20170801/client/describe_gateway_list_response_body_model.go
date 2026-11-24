@@ -142,9 +142,15 @@ func (s *DescribeGatewayListResponseBody) Validate() error {
 }
 
 type DescribeGatewayListResponseBodyItems struct {
+	// The cumulative expiration time of the smart routing benefit. The time follows the ISO 8601 standard and is displayed in UTC. If smart routing is not enabled, this parameter may be omitted or set to null.
+	//
+	// example:
+	//
+	// 2026-12-09T06:43:33Z
+	AutoExpireTime *string `json:"AutoExpireTime,omitempty" xml:"AutoExpireTime,omitempty"`
 	// The creation time.
 	//
-	// The time is in ISO 8601 format in UTC (format: YYYY-MM-DDTHH:mm:ssZ).
+	// The time follows the ISO 8601 standard in the YYYY-MM-DDTHH:mm:ssZ format and is displayed in UTC.
 	//
 	// example:
 	//
@@ -162,7 +168,7 @@ type DescribeGatewayListResponseBodyItems struct {
 	//
 	// - If the billing method of the cluster is pay-as-you-go, an empty value is returned.
 	//
-	// The time is in ISO 8601 format in UTC (format: YYYY-MM-DDTHH:mm:ssZ).
+	// The time follows the ISO 8601 standard in the YYYY-MM-DDTHH:mm:ssZ format and is displayed in UTC.
 	//
 	// example:
 	//
@@ -184,7 +190,7 @@ type DescribeGatewayListResponseBodyItems struct {
 	//
 	// pg-xxxxxxx
 	GwClusterId *string `json:"GwClusterId,omitempty" xml:"GwClusterId,omitempty"`
-	// The gateway description.
+	// The description of the gateway.
 	//
 	// example:
 	//
@@ -192,7 +198,7 @@ type DescribeGatewayListResponseBodyItems struct {
 	GwDescription *string `json:"GwDescription,omitempty" xml:"GwDescription,omitempty"`
 	// The last modification time.
 	//
-	// The time is in ISO 8601 format in UTC (format: YYYY-MM-DDTHH:mm:ssZ).
+	// The time follows the ISO 8601 standard in the YYYY-MM-DDTHH:mm:ssZ format and is displayed in UTC.
 	//
 	// example:
 	//
@@ -214,23 +220,29 @@ type DescribeGatewayListResponseBodyItems struct {
 	//
 	// cn-beijing
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// Indicates whether smart routing is enabled for the instance. This value is returned by ApsaraDB based on the benefit validity period. A value of true does not indicate that the data plane is healthy.
+	//
+	// example:
+	//
+	// true
+	SmartRoutingEnabled *bool `json:"SmartRoutingEnabled,omitempty" xml:"SmartRoutingEnabled,omitempty"`
 	// The application status. Valid values:
 	//
-	// - CREATE: being created.
+	// - CREATE: creating
 	//
-	// - ACTIVATION: running.
+	// - ACTIVATION: running
 	//
 	// example:
 	//
 	// ACTIVATION
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The vSwitch ID.
+	// The ID of the vSwitch.
 	//
 	// example:
 	//
 	// vsw-wz9u0v2yuskt1gth3uuju
 	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	// The VPC ID.
+	// The ID of the virtual private cloud (VPC).
 	//
 	// example:
 	//
@@ -244,6 +256,10 @@ func (s DescribeGatewayListResponseBodyItems) String() string {
 
 func (s DescribeGatewayListResponseBodyItems) GoString() string {
 	return s.String()
+}
+
+func (s *DescribeGatewayListResponseBodyItems) GetAutoExpireTime() *string {
+	return s.AutoExpireTime
 }
 
 func (s *DescribeGatewayListResponseBodyItems) GetCreateTime() *string {
@@ -282,6 +298,10 @@ func (s *DescribeGatewayListResponseBodyItems) GetRegionId() *string {
 	return s.RegionId
 }
 
+func (s *DescribeGatewayListResponseBodyItems) GetSmartRoutingEnabled() *bool {
+	return s.SmartRoutingEnabled
+}
+
 func (s *DescribeGatewayListResponseBodyItems) GetStatus() *string {
 	return s.Status
 }
@@ -292,6 +312,11 @@ func (s *DescribeGatewayListResponseBodyItems) GetVSwitchId() *string {
 
 func (s *DescribeGatewayListResponseBodyItems) GetVpcId() *string {
 	return s.VpcId
+}
+
+func (s *DescribeGatewayListResponseBodyItems) SetAutoExpireTime(v string) *DescribeGatewayListResponseBodyItems {
+	s.AutoExpireTime = &v
+	return s
 }
 
 func (s *DescribeGatewayListResponseBodyItems) SetCreateTime(v string) *DescribeGatewayListResponseBodyItems {
@@ -336,6 +361,11 @@ func (s *DescribeGatewayListResponseBodyItems) SetPayType(v string) *DescribeGat
 
 func (s *DescribeGatewayListResponseBodyItems) SetRegionId(v string) *DescribeGatewayListResponseBodyItems {
 	s.RegionId = &v
+	return s
+}
+
+func (s *DescribeGatewayListResponseBodyItems) SetSmartRoutingEnabled(v bool) *DescribeGatewayListResponseBodyItems {
+	s.SmartRoutingEnabled = &v
 	return s
 }
 

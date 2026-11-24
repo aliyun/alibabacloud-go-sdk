@@ -18,7 +18,7 @@ type iCreateApplicationAgentRelationRequest interface {
 }
 
 type CreateApplicationAgentRelationRequest struct {
-	// The instance ID of the Agent to attach.
+	// The instance ID of the agent to attach.
 	//
 	// This parameter is required.
 	//
@@ -26,7 +26,7 @@ type CreateApplicationAgentRelationRequest struct {
 	//
 	// pa-xxx
 	AgentId *string `json:"AgentId,omitempty" xml:"AgentId,omitempty"`
-	// The ID of the Squad application.
+	// The ID of the squad application.
 	//
 	// This parameter is required.
 	//
