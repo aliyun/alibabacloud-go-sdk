@@ -44,7 +44,7 @@ type ListMcpsResponseBody struct {
 	HttpStatusCode *int32 `json:"httpStatusCode,omitempty" xml:"httpStatusCode,omitempty"`
 	// The list data.
 	Items []*ListMcpsResponseBodyItems `json:"items,omitempty" xml:"items,omitempty" type:"Repeated"`
-	// The maximum number of entries to return per page. Valid values: 1 to 100. Default value: 10.
+	// The maximum number of entries to return per page.
 	//
 	// example:
 	//
@@ -54,7 +54,7 @@ type ListMcpsResponseBody struct {
 	//
 	// example:
 	//
-	// Request processed successfully
+	// The request is processed successfully
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
 	// The pagination token for the next page.
 	//
@@ -183,8 +183,14 @@ func (s *ListMcpsResponseBody) Validate() error {
 type ListMcpsResponseBodyItems struct {
 	// The list of MCP service addresses.
 	Addresses []*string `json:"addresses,omitempty" xml:"addresses,omitempty" type:"Repeated"`
-	// The backend authentication configuration. The enabled field indicates whether the configuration is enabled. The directProxy field specifies the custom authentication header for the direct proxy. The httpToMcp field specifies the list of OpenAPI credentials for HTTP_TO_MCP.
+	// The backend authentication configuration. enabled specifies whether the configuration is enabled. directProxy specifies the custom authentication header for the direct proxy. httpToMcp specifies the list of OpenAPI credentials for HTTP_TO_MCP.
 	Auth *ListMcpsResponseBodyItemsAuth `json:"auth,omitempty" xml:"auth,omitempty" type:"Struct"`
+	// The saved legacy or modern backend policy, which is separate from the transport indicated by protocol and does not indicate verification. This field is not saved for newly created CODE_PACKAGE. For historical CODE_PACKAGE, the existing value does not control Function Compute session affinity or gateway protocol. For the actual protocol, refer to OriginProbe.LastResult.ActualConfiguration.BackendMcpProtocol. This field is returned as empty for historical unspecified values and HTTP_TO_MCP.
+	//
+	// example:
+	//
+	// modern
+	BackendMcpProtocol *string `json:"backendMcpProtocol,omitempty" xml:"backendMcpProtocol,omitempty"`
 	// The time when the MCP was created, in ISO 8601 UTC format.
 	//
 	// example:
@@ -193,21 +199,21 @@ type ListMcpsResponseBodyItems struct {
 	CreatedAt *string `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
 	// The custom tags. Multiple tags are supported.
 	CustomTags []*string `json:"customTags,omitempty" xml:"customTags,omitempty" type:"Repeated"`
-	// The deployment configuration for the code deployment MCP.
+	// The deployment configuration for code-deployed MCP.
 	DeploymentConfig *ListMcpsResponseBodyItemsDeploymentConfig `json:"deploymentConfig,omitempty" xml:"deploymentConfig,omitempty" type:"Struct"`
 	// The description.
 	//
 	// example:
 	//
-	// Sample description to illustrate the purpose of the resource
+	// A sample description that illustrates the purpose of the resource
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// The MCP endpoint that can be called by users or agents. This field is empty before deployment is complete.
+	// The MCP endpoint that can be called by users or agents. This field is empty before the deployment is completed.
 	//
 	// example:
 	//
 	// https://example.com/mcp
 	Endpoint *string `json:"endpoint,omitempty" xml:"endpoint,omitempty"`
-	// The Function Compute function name corresponding to the CODE_PACKAGE MCP. This field is empty before deployment is complete and for other types.
+	// The Function Compute function name for the CODE_PACKAGE MCP. This field is empty before deployment is complete and for other types.
 	//
 	// example:
 	//
@@ -233,7 +239,21 @@ type ListMcpsResponseBodyItems struct {
 	//
 	// KNOWLEDGE_BASE
 	OfficialTag *string `json:"officialTag,omitempty" xml:"officialTag,omitempty"`
-	// PUBLIC indicates public access. CONTROLLED indicates that access is controlled based on permission rules.
+	// The read-only progress of the reused existing publish task. This field does not change the primary status of the resource and is empty if no historical operation information is available.
+	Operation *ListMcpsResponseBodyItemsOperation `json:"operation,omitempty" xml:"operation,omitempty" type:"Struct"`
+	// Only code deployment returns the minimal origin verification summary of the most recent task. This field is empty for direct proxy and HTTP to MCP, and queries do not trigger probing.
+	OriginProbe *ListMcpsResponseBodyItemsOriginProbe `json:"originProbe,omitempty" xml:"originProbe,omitempty" type:"Struct"`
+	// The optional saved origin MCP protocol date display metadata, in YYYY-MM-DD format. You can specify this field during creation and modify it during updates. If omitted during an update, the current value is retained. This field only saves and displays information. It is not a software version, does not restrict the external gateway protocol, does not control backend requests, and does not indicate that real-time verification has passed. This field returns null and has no default value if it is omitted during creation and not updated, missing historically, or used for HTTP_TO_MCP.
+	//
+	// example:
+	//
+	// 2025-03-26
+	OriginProtocolVersion *string `json:"originProtocolVersion,omitempty" xml:"originProtocolVersion,omitempty"`
+	// The access permission mode. Valid values:
+	//
+	// - PUBLIC: Public access.
+	//
+	// - CONTROLLED: Access controlled based on permission rules.
 	//
 	// example:
 	//
@@ -275,7 +295,7 @@ type ListMcpsResponseBodyItems struct {
 	//
 	// 2026-08-23T01:00:00Z
 	UpdatedAt *string `json:"updatedAt,omitempty" xml:"updatedAt,omitempty"`
-	// Specifies whether the MCP is still subject to the usage constraints of the official template.
+	// Indicates whether the MCP is still subject to the usage constraints of the official template.
 	UsageActive *bool `json:"usageActive,omitempty" xml:"usageActive,omitempty"`
 }
 
@@ -293,6 +313,10 @@ func (s *ListMcpsResponseBodyItems) GetAddresses() []*string {
 
 func (s *ListMcpsResponseBodyItems) GetAuth() *ListMcpsResponseBodyItemsAuth {
 	return s.Auth
+}
+
+func (s *ListMcpsResponseBodyItems) GetBackendMcpProtocol() *string {
+	return s.BackendMcpProtocol
 }
 
 func (s *ListMcpsResponseBodyItems) GetCreatedAt() *string {
@@ -335,6 +359,18 @@ func (s *ListMcpsResponseBodyItems) GetOfficialTag() *string {
 	return s.OfficialTag
 }
 
+func (s *ListMcpsResponseBodyItems) GetOperation() *ListMcpsResponseBodyItemsOperation {
+	return s.Operation
+}
+
+func (s *ListMcpsResponseBodyItems) GetOriginProbe() *ListMcpsResponseBodyItemsOriginProbe {
+	return s.OriginProbe
+}
+
+func (s *ListMcpsResponseBodyItems) GetOriginProtocolVersion() *string {
+	return s.OriginProtocolVersion
+}
+
 func (s *ListMcpsResponseBodyItems) GetPermissionMode() *string {
 	return s.PermissionMode
 }
@@ -374,6 +410,11 @@ func (s *ListMcpsResponseBodyItems) SetAddresses(v []*string) *ListMcpsResponseB
 
 func (s *ListMcpsResponseBodyItems) SetAuth(v *ListMcpsResponseBodyItemsAuth) *ListMcpsResponseBodyItems {
 	s.Auth = v
+	return s
+}
+
+func (s *ListMcpsResponseBodyItems) SetBackendMcpProtocol(v string) *ListMcpsResponseBodyItems {
+	s.BackendMcpProtocol = &v
 	return s
 }
 
@@ -424,6 +465,21 @@ func (s *ListMcpsResponseBodyItems) SetName(v string) *ListMcpsResponseBodyItems
 
 func (s *ListMcpsResponseBodyItems) SetOfficialTag(v string) *ListMcpsResponseBodyItems {
 	s.OfficialTag = &v
+	return s
+}
+
+func (s *ListMcpsResponseBodyItems) SetOperation(v *ListMcpsResponseBodyItemsOperation) *ListMcpsResponseBodyItems {
+	s.Operation = v
+	return s
+}
+
+func (s *ListMcpsResponseBodyItems) SetOriginProbe(v *ListMcpsResponseBodyItemsOriginProbe) *ListMcpsResponseBodyItems {
+	s.OriginProbe = v
+	return s
+}
+
+func (s *ListMcpsResponseBodyItems) SetOriginProtocolVersion(v string) *ListMcpsResponseBodyItems {
+	s.OriginProtocolVersion = &v
 	return s
 }
 
@@ -483,11 +539,21 @@ func (s *ListMcpsResponseBodyItems) Validate() error {
 			return err
 		}
 	}
+	if s.Operation != nil {
+		if err := s.Operation.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.OriginProbe != nil {
+		if err := s.OriginProbe.Validate(); err != nil {
+			return err
+		}
+	}
 	return nil
 }
 
 type ListMcpsResponseBodyItemsAuth struct {
-	// The caller API Key authentication configuration for the code deployment MCP.
+	// The caller API key authentication configuration for the code deployment MCP.
 	CodePackage *ListMcpsResponseBodyItemsAuthCodePackage `json:"codePackage,omitempty" xml:"codePackage,omitempty" type:"Struct"`
 	// The authentication configuration for the direct proxy.
 	DirectProxy *ListMcpsResponseBodyItemsAuthDirectProxy `json:"directProxy,omitempty" xml:"directProxy,omitempty" type:"Struct"`
@@ -565,13 +631,13 @@ func (s *ListMcpsResponseBodyItemsAuth) Validate() error {
 }
 
 type ListMcpsResponseBodyItemsAuthCodePackage struct {
-	// The API Key used to verify the MCP caller.
+	// The API key used to verify the MCP caller.
 	//
 	// example:
 	//
 	// example-api-key
 	ApiKey *string `json:"apiKey,omitempty" xml:"apiKey,omitempty"`
-	// The name of the request header that carries the API Key.
+	// The name of the request header that carries the API key.
 	//
 	// example:
 	//
@@ -747,9 +813,13 @@ func (s *ListMcpsResponseBodyItemsAuthHttpToMcp) Validate() error {
 type ListMcpsResponseBodyItemsDeploymentConfig struct {
 	// The MCP entry access control.
 	AccessControl *ListMcpsResponseBodyItemsDeploymentConfigAccessControl `json:"accessControl,omitempty" xml:"accessControl,omitempty" type:"Struct"`
-	// The agent identity configuration.
+	// The Agent identity configuration.
 	AgentIdentityConfiguration *ListMcpsResponseBodyItemsDeploymentConfigAgentIdentityConfiguration `json:"agentIdentityConfiguration,omitempty" xml:"agentIdentityConfiguration,omitempty" type:"Struct"`
-	// The artifact type. Code indicates a ZIP code package, and Container indicates a custom container.
+	// The artifact type. Valid values:
+	//
+	// - Code: ZIP code package.
+	//
+	// - Container: Custom container.
 	//
 	// example:
 	//
@@ -983,15 +1053,15 @@ func (s *ListMcpsResponseBodyItemsDeploymentConfig) Validate() error {
 }
 
 type ListMcpsResponseBodyItemsDeploymentConfigAccessControl struct {
-	// The ID of the AgentCore credential referenced when the mode is set to CREDENTIAL.
+	// The ID of the access credential. This parameter references an AgentCore credential when the mode is set to CREDENTIAL.
 	//
 	// example:
 	//
 	// credential-id
 	CredentialId *string `json:"credentialId,omitempty" xml:"credentialId,omitempty"`
-	// Specifies whether to enable entry access control.
+	// Specifies whether entry access control is enabled.
 	Enabled *bool `json:"enabled,omitempty" xml:"enabled,omitempty"`
-	// The access control mode. ANONYMOUS indicates anonymous access, and CREDENTIAL indicates access by using AgentCore credentials.
+	// The access control mode. A value of ANONYMOUS indicates anonymous access. A value of CREDENTIAL indicates that AgentCore access credentials are used.
 	//
 	// example:
 	//
@@ -1039,7 +1109,7 @@ func (s *ListMcpsResponseBodyItemsDeploymentConfigAccessControl) Validate() erro
 }
 
 type ListMcpsResponseBodyItemsDeploymentConfigAgentIdentityConfiguration struct {
-	// Specifies whether authorization is enabled.
+	// Indicates whether authorization is enabled.
 	AuthorizationEnabled *bool `json:"authorizationEnabled,omitempty" xml:"authorizationEnabled,omitempty"`
 	// The credential provider ARN.
 	//
@@ -1053,7 +1123,7 @@ type ListMcpsResponseBodyItemsDeploymentConfigAgentIdentityConfiguration struct 
 	//
 	// oauth2
 	CredentialProviderType *string `json:"credentialProviderType,omitempty" xml:"credentialProviderType,omitempty"`
-	// Specifies whether agent identity is enabled.
+	// Specifies whether Agent identity is enabled.
 	Enabled *bool `json:"enabled,omitempty" xml:"enabled,omitempty"`
 }
 
@@ -1106,7 +1176,7 @@ func (s *ListMcpsResponseBodyItemsDeploymentConfigAgentIdentityConfiguration) Va
 }
 
 type ListMcpsResponseBodyItemsDeploymentConfigCodeConfiguration struct {
-	// The temporary code package token returned by GetMcpCodePackageUploadUrl. It is used to create or update a code deployment after a presigned upload is completed.
+	// The temporary code package token returned by GetMcpCodePackageUploadUrl. It is used to create or update a code deployment after the presigned upload is completed.
 	//
 	// example:
 	//
@@ -1114,7 +1184,7 @@ type ListMcpsResponseBodyItemsDeploymentConfigCodeConfiguration struct {
 	CodePackageToken *string `json:"codePackageToken,omitempty" xml:"codePackageToken,omitempty"`
 	// The complete startup command, passed sequentially by parameter boundaries. For example, when using supergateway to start a stdio MCP, pass supergateway, --stdio, the complete subcommand, and the remaining parameters.
 	Command []*string `json:"command,omitempty" xml:"command,omitempty" type:"Repeated"`
-	// The code package runtime. Valid values: python3.13, nodejs22, or java17.
+	// The code package runtime. Valid values: python3.13, nodejs22, and java17.
 	//
 	// example:
 	//
@@ -1184,13 +1254,13 @@ type ListMcpsResponseBodyItemsDeploymentConfigContainerConfiguration struct {
 	//
 	// ACR
 	ImageRegistryType *string `json:"imageRegistryType,omitempty" xml:"imageRegistryType,omitempty"`
-	// The MCP runtime mode. Custom containers currently must expose the standard MCP themselves. The value is SELF_HOSTED.
+	// Custom containers must currently expose the standard MCP themselves. Valid value: SELF_HOSTED.
 	//
 	// example:
 	//
 	// SELF_HOSTED
 	McpRuntimeMode *string `json:"mcpRuntimeMode,omitempty" xml:"mcpRuntimeMode,omitempty"`
-	// The container source type. Currently fixed to CONTAINER_IMAGE.
+	// Currently fixed to CONTAINER_IMAGE.
 	//
 	// example:
 	//
@@ -1274,7 +1344,7 @@ func (s *ListMcpsResponseBodyItemsDeploymentConfigContainerConfiguration) Valida
 }
 
 type ListMcpsResponseBodyItemsDeploymentConfigHookConfiguration struct {
-	// Executes the PRE_LIST_TOOLS, PRE_CALL_TOOL, POST_LIST_TOOLS, and POST_CALL_TOOL hooks in the order of the array.
+	// The ordered list of hooks. The PRE_LIST_TOOLS, PRE_CALL_TOOL, POST_LIST_TOOLS, and POST_CALL_TOOL hooks are executed in the order of the array.
 	Hooks []*ListMcpsResponseBodyItemsDeploymentConfigHookConfigurationHooks `json:"hooks,omitempty" xml:"hooks,omitempty" type:"Repeated"`
 }
 
@@ -1319,9 +1389,9 @@ type ListMcpsResponseBodyItemsDeploymentConfigHookConfigurationHooks struct {
 	//
 	// example:
 	//
-	// Record MCP tool invoke
+	// Record MCP tool invocation
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// Specifies whether to enable the hook.
+	// Specifies whether the hook is enabled.
 	Enabled *bool `json:"enabled,omitempty" xml:"enabled,omitempty"`
 	// The hook event.
 	//
@@ -1329,7 +1399,7 @@ type ListMcpsResponseBodyItemsDeploymentConfigHookConfigurationHooks struct {
 	//
 	// PRE_CALL_TOOL
 	Event *string `json:"event,omitempty" xml:"event,omitempty"`
-	// The hook request headers.
+	// The request headers of the hook.
 	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
 	// The timeout period of the hook, in milliseconds.
 	//
@@ -1421,11 +1491,11 @@ func (s *ListMcpsResponseBodyItemsDeploymentConfigHookConfigurationHooks) Valida
 }
 
 type ListMcpsResponseBodyItemsDeploymentConfigLogConfiguration struct {
-	// Specifies whether to collect instance metrics.
+	// Specifies whether instance metrics are collected.
 	EnableInstanceMetrics *bool `json:"enableInstanceMetrics,omitempty" xml:"enableInstanceMetrics,omitempty"`
 	// Specifies whether to collect request metrics.
 	EnableRequestMetrics *bool `json:"enableRequestMetrics,omitempty" xml:"enableRequestMetrics,omitempty"`
-	// The start rule for Function Compute log splitting.
+	// The start rule for splitting Function Compute logs.
 	//
 	// example:
 	//
@@ -1509,7 +1579,7 @@ type ListMcpsResponseBodyItemsDeploymentConfigMcpConfiguration struct {
 	//
 	// /mcp
 	EndpointPath *string `json:"endpointPath,omitempty" xml:"endpointPath,omitempty"`
-	// The session concurrency per instance. Currently fixed to 1.
+	// Currently fixed to 1.
 	//
 	// example:
 	//
@@ -1527,6 +1597,12 @@ type ListMcpsResponseBodyItemsDeploymentConfigMcpConfiguration struct {
 	//
 	// 21600
 	SessionMaxLifetimeSeconds *int32 `json:"sessionMaxLifetimeSeconds,omitempty" xml:"sessionMaxLifetimeSeconds,omitempty"`
+	// Applicable only to StreamableHTTP. Default value for creation: STATEFUL. If omitted during an update, the original value is retained. STATELESS disables Function Compute session affinity, and the stdio gateway does not enable stateful mode. Native HTTP services must support stateless MCP themselves.
+	//
+	// example:
+	//
+	// STATEFUL
+	SessionMode *string `json:"sessionMode,omitempty" xml:"sessionMode,omitempty"`
 }
 
 func (s ListMcpsResponseBodyItemsDeploymentConfigMcpConfiguration) String() string {
@@ -1553,6 +1629,10 @@ func (s *ListMcpsResponseBodyItemsDeploymentConfigMcpConfiguration) GetSessionMa
 	return s.SessionMaxLifetimeSeconds
 }
 
+func (s *ListMcpsResponseBodyItemsDeploymentConfigMcpConfiguration) GetSessionMode() *string {
+	return s.SessionMode
+}
+
 func (s *ListMcpsResponseBodyItemsDeploymentConfigMcpConfiguration) SetEndpointPath(v string) *ListMcpsResponseBodyItemsDeploymentConfigMcpConfiguration {
 	s.EndpointPath = &v
 	return s
@@ -1573,12 +1653,17 @@ func (s *ListMcpsResponseBodyItemsDeploymentConfigMcpConfiguration) SetSessionMa
 	return s
 }
 
+func (s *ListMcpsResponseBodyItemsDeploymentConfigMcpConfiguration) SetSessionMode(v string) *ListMcpsResponseBodyItemsDeploymentConfigMcpConfiguration {
+	s.SessionMode = &v
+	return s
+}
+
 func (s *ListMcpsResponseBodyItemsDeploymentConfigMcpConfiguration) Validate() error {
 	return dara.Validate(s)
 }
 
 type ListMcpsResponseBodyItemsDeploymentConfigNasConfiguration struct {
-	// The user group ID.
+	// The runtime user group ID.
 	//
 	// example:
 	//
@@ -1586,7 +1671,7 @@ type ListMcpsResponseBodyItemsDeploymentConfigNasConfiguration struct {
 	GroupId *int32 `json:"groupId,omitempty" xml:"groupId,omitempty"`
 	// The list of NAS mount points.
 	MountPoints []*ListMcpsResponseBodyItemsDeploymentConfigNasConfigurationMountPoints `json:"mountPoints,omitempty" xml:"mountPoints,omitempty" type:"Repeated"`
-	// The user ID.
+	// The runtime user ID.
 	//
 	// example:
 	//
@@ -1643,7 +1728,7 @@ func (s *ListMcpsResponseBodyItemsDeploymentConfigNasConfiguration) Validate() e
 }
 
 type ListMcpsResponseBodyItemsDeploymentConfigNasConfigurationMountPoints struct {
-	// Specifies whether to enable TLS.
+	// Specifies whether TLS is enabled.
 	EnableTls *bool `json:"enableTls,omitempty" xml:"enableTls,omitempty"`
 	// The local mount directory.
 	//
@@ -1651,7 +1736,7 @@ type ListMcpsResponseBodyItemsDeploymentConfigNasConfigurationMountPoints struct
 	//
 	// /mnt/data
 	MountDir *string `json:"mountDir,omitempty" xml:"mountDir,omitempty"`
-	// The NAS server address.
+	// The NAS service address.
 	//
 	// example:
 	//
@@ -1811,13 +1896,13 @@ type ListMcpsResponseBodyItemsDeploymentConfigOssMountConfigurationMountPoints s
 	//
 	// example-bucket
 	BucketName *string `json:"bucketName,omitempty" xml:"bucketName,omitempty"`
-	// The path in the OSS bucket.
+	// The path of the OSS bucket.
 	//
 	// example:
 	//
 	// /data
 	BucketPath *string `json:"bucketPath,omitempty" xml:"bucketPath,omitempty"`
-	// The endpoint of the OSS service.
+	// The OSS service endpoint.
 	//
 	// example:
 	//
@@ -1893,13 +1978,13 @@ func (s *ListMcpsResponseBodyItemsDeploymentConfigOssMountConfigurationMountPoin
 type ListMcpsResponseBodyItemsDeploymentConfigParameterTransformConfiguration struct {
 	// Specifies whether parameter transformation and result enhancement are enabled.
 	Enabled *bool `json:"enabled,omitempty" xml:"enabled,omitempty"`
-	// The reserved reference to the parameter transformation and result enhancement rule set.
+	// The reference to the reserved parameter transformation and result enhancement rule set.
 	//
 	// example:
 	//
 	// rules-1
 	RuleSetId *string `json:"ruleSetId,omitempty" xml:"ruleSetId,omitempty"`
-	// The transformation rule version.
+	// The version of the transformation rule.
 	//
 	// example:
 	//
@@ -1947,7 +2032,7 @@ func (s *ListMcpsResponseBodyItemsDeploymentConfigParameterTransformConfiguratio
 }
 
 type ListMcpsResponseBodyItemsDeploymentConfigProxyConfiguration struct {
-	// Specifies whether to enable the MCP proxy.
+	// Specifies whether the MCP proxy is enabled.
 	Enabled *bool `json:"enabled,omitempty" xml:"enabled,omitempty"`
 }
 
@@ -1973,13 +2058,13 @@ func (s *ListMcpsResponseBodyItemsDeploymentConfigProxyConfiguration) Validate()
 }
 
 type ListMcpsResponseBodyItemsDeploymentConfigRuntimeConfiguration struct {
-	// The CPU specifications in cores. Default value: 0.25.
+	// The CPU size in cores. Default value: 0.25.
 	//
 	// example:
 	//
 	// 0.25
 	Cpu *float64 `json:"cpu,omitempty" xml:"cpu,omitempty"`
-	// The temporary disk size in MB. Valid values: 512 or 10240.
+	// The ephemeral disk size in MB. Valid values: 512 and 10240.
 	//
 	// example:
 	//
@@ -1987,25 +2072,25 @@ type ListMcpsResponseBodyItemsDeploymentConfigRuntimeConfiguration struct {
 	DiskSize *int32 `json:"diskSize,omitempty" xml:"diskSize,omitempty"`
 	// The environment variables.
 	EnvironmentVariables map[string]*string `json:"environmentVariables,omitempty" xml:"environmentVariables,omitempty"`
-	// The ARN of the RAM role used when user code accesses downstream Alibaba Cloud resources.
+	// The ARN of the RAM role used by user code to access downstream Alibaba Cloud resources.
 	//
 	// example:
 	//
 	// acs:ram::1234567890123456:role/agentcore-mcp-execution
 	ExecutionRoleArn *string `json:"executionRoleArn,omitempty" xml:"executionRoleArn,omitempty"`
-	// The request concurrency per instance. Default value: 200.
+	// Default value: 200.
 	//
 	// example:
 	//
 	// 200
 	InstanceConcurrency *int32 `json:"instanceConcurrency,omitempty" xml:"instanceConcurrency,omitempty"`
-	// The memory specifications in MB. Default value: 512.
+	// The memory size in MB. Default value: 512.
 	//
 	// example:
 	//
 	// 512
 	Memory *int32 `json:"memory,omitempty" xml:"memory,omitempty"`
-	// The service port. Default value: 9000.
+	// Default value: 9000.
 	//
 	// example:
 	//
@@ -2130,5 +2215,485 @@ func (s *ListMcpsResponseBodyItemsMarketSource) SetMarketItemId(v string) *ListM
 }
 
 func (s *ListMcpsResponseBodyItemsMarketSource) Validate() error {
+	return dara.Validate(s)
+}
+
+type ListMcpsResponseBodyItemsOperation struct {
+	// The desensitized error of the current publish operation. Gateway or formal link failures after the origin server passes the probe are represented by this field.
+	Error *ListMcpsResponseBodyItemsOperationError `json:"error,omitempty" xml:"error,omitempty" type:"Struct"`
+	// The identifier of the current or most recent publish operation.
+	//
+	// example:
+	//
+	// 3541f1af-87cc-45d1-a28e-94ec5633b931
+	OperationId *string `json:"operationId,omitempty" xml:"operationId,omitempty"`
+	// The publish stage. Valid values: compute deployment, origin probe, summary save, gateway publish, entry credential synchronization, formal link verification, and deployment submission. Legacy tasks retain their original stage semantics.
+	//
+	// example:
+	//
+	// VALIDATE_ORIGIN
+	Stage *string `json:"stage,omitempty" xml:"stage,omitempty"`
+	// The operation status. Valid values: PENDING, RUNNING, SUCCEEDED, and FAILED.
+	//
+	// example:
+	//
+	// RUNNING
+	Status *string `json:"status,omitempty" xml:"status,omitempty"`
+	// The operation type. Valid value: PUBLISH.
+	//
+	// example:
+	//
+	// PUBLISH
+	Type *string `json:"type,omitempty" xml:"type,omitempty"`
+	// The time when the operation was updated, in ISO 8601 UTC format.
+	//
+	// example:
+	//
+	// 2026-11-19T08:30:00Z
+	UpdatedAt *string `json:"updatedAt,omitempty" xml:"updatedAt,omitempty"`
+}
+
+func (s ListMcpsResponseBodyItemsOperation) String() string {
+	return dara.Prettify(s)
+}
+
+func (s ListMcpsResponseBodyItemsOperation) GoString() string {
+	return s.String()
+}
+
+func (s *ListMcpsResponseBodyItemsOperation) GetError() *ListMcpsResponseBodyItemsOperationError {
+	return s.Error
+}
+
+func (s *ListMcpsResponseBodyItemsOperation) GetOperationId() *string {
+	return s.OperationId
+}
+
+func (s *ListMcpsResponseBodyItemsOperation) GetStage() *string {
+	return s.Stage
+}
+
+func (s *ListMcpsResponseBodyItemsOperation) GetStatus() *string {
+	return s.Status
+}
+
+func (s *ListMcpsResponseBodyItemsOperation) GetType() *string {
+	return s.Type
+}
+
+func (s *ListMcpsResponseBodyItemsOperation) GetUpdatedAt() *string {
+	return s.UpdatedAt
+}
+
+func (s *ListMcpsResponseBodyItemsOperation) SetError(v *ListMcpsResponseBodyItemsOperationError) *ListMcpsResponseBodyItemsOperation {
+	s.Error = v
+	return s
+}
+
+func (s *ListMcpsResponseBodyItemsOperation) SetOperationId(v string) *ListMcpsResponseBodyItemsOperation {
+	s.OperationId = &v
+	return s
+}
+
+func (s *ListMcpsResponseBodyItemsOperation) SetStage(v string) *ListMcpsResponseBodyItemsOperation {
+	s.Stage = &v
+	return s
+}
+
+func (s *ListMcpsResponseBodyItemsOperation) SetStatus(v string) *ListMcpsResponseBodyItemsOperation {
+	s.Status = &v
+	return s
+}
+
+func (s *ListMcpsResponseBodyItemsOperation) SetType(v string) *ListMcpsResponseBodyItemsOperation {
+	s.Type = &v
+	return s
+}
+
+func (s *ListMcpsResponseBodyItemsOperation) SetUpdatedAt(v string) *ListMcpsResponseBodyItemsOperation {
+	s.UpdatedAt = &v
+	return s
+}
+
+func (s *ListMcpsResponseBodyItemsOperation) Validate() error {
+	if s.Error != nil {
+		if err := s.Error.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
+}
+
+type ListMcpsResponseBodyItemsOperationError struct {
+	// The diagnostic error code. Only bounded diagnostic codes are returned. The original error body from the origin server is not returned.
+	//
+	// example:
+	//
+	// PROBE_TIMEOUT
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// The necessary diagnostics after trimming and desensitization. Credentials and original responses are not included.
+	//
+	// example:
+	//
+	// The probe deadline was exceeded.
+	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// Specifies whether the operation is suitable for retry based on a restricted policy. This field does not trigger automatic retries.
+	Retryable *bool `json:"retryable,omitempty" xml:"retryable,omitempty"`
+	// The error source. Valid values: MAGIC, ROUTER, NETWORK, ORIGIN, and UNKNOWN. The value is determined only based on actual evidence.
+	//
+	// example:
+	//
+	// UNKNOWN
+	Source *string `json:"source,omitempty" xml:"source,omitempty"`
+	// The detection or publish stage where the error occurred.
+	//
+	// example:
+	//
+	// INITIALIZE
+	Stage *string `json:"stage,omitempty" xml:"stage,omitempty"`
+}
+
+func (s ListMcpsResponseBodyItemsOperationError) String() string {
+	return dara.Prettify(s)
+}
+
+func (s ListMcpsResponseBodyItemsOperationError) GoString() string {
+	return s.String()
+}
+
+func (s *ListMcpsResponseBodyItemsOperationError) GetCode() *string {
+	return s.Code
+}
+
+func (s *ListMcpsResponseBodyItemsOperationError) GetMessage() *string {
+	return s.Message
+}
+
+func (s *ListMcpsResponseBodyItemsOperationError) GetRetryable() *bool {
+	return s.Retryable
+}
+
+func (s *ListMcpsResponseBodyItemsOperationError) GetSource() *string {
+	return s.Source
+}
+
+func (s *ListMcpsResponseBodyItemsOperationError) GetStage() *string {
+	return s.Stage
+}
+
+func (s *ListMcpsResponseBodyItemsOperationError) SetCode(v string) *ListMcpsResponseBodyItemsOperationError {
+	s.Code = &v
+	return s
+}
+
+func (s *ListMcpsResponseBodyItemsOperationError) SetMessage(v string) *ListMcpsResponseBodyItemsOperationError {
+	s.Message = &v
+	return s
+}
+
+func (s *ListMcpsResponseBodyItemsOperationError) SetRetryable(v bool) *ListMcpsResponseBodyItemsOperationError {
+	s.Retryable = &v
+	return s
+}
+
+func (s *ListMcpsResponseBodyItemsOperationError) SetSource(v string) *ListMcpsResponseBodyItemsOperationError {
+	s.Source = &v
+	return s
+}
+
+func (s *ListMcpsResponseBodyItemsOperationError) SetStage(v string) *ListMcpsResponseBodyItemsOperationError {
+	s.Stage = &v
+	return s
+}
+
+func (s *ListMcpsResponseBodyItemsOperationError) Validate() error {
+	return dara.Validate(s)
+}
+
+type ListMcpsResponseBodyItemsOriginProbe struct {
+	// Returned only for CODE_PACKAGE. This field is cleared when a new task starts and is empty if no verification has been performed or if the old task did not perform verification. If a subsequent release fails, the current summary is retained, which does not indicate real-time health or the active version status.
+	LastResult *ListMcpsResponseBodyItemsOriginProbeLastResult `json:"lastResult,omitempty" xml:"lastResult,omitempty" type:"Struct"`
+}
+
+func (s ListMcpsResponseBodyItemsOriginProbe) String() string {
+	return dara.Prettify(s)
+}
+
+func (s ListMcpsResponseBodyItemsOriginProbe) GoString() string {
+	return s.String()
+}
+
+func (s *ListMcpsResponseBodyItemsOriginProbe) GetLastResult() *ListMcpsResponseBodyItemsOriginProbeLastResult {
+	return s.LastResult
+}
+
+func (s *ListMcpsResponseBodyItemsOriginProbe) SetLastResult(v *ListMcpsResponseBodyItemsOriginProbeLastResult) *ListMcpsResponseBodyItemsOriginProbe {
+	s.LastResult = v
+	return s
+}
+
+func (s *ListMcpsResponseBodyItemsOriginProbe) Validate() error {
+	if s.LastResult != nil {
+		if err := s.LastResult.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
+}
+
+type ListMcpsResponseBodyItemsOriginProbeLastResult struct {
+	// The actual configuration confirmed by evidence in this probe. This field is empty if no confirmed information is available and is not inferred from the expected configuration.
+	ActualConfiguration *ListMcpsResponseBodyItemsOriginProbeLastResultActualConfiguration `json:"actualConfiguration,omitempty" xml:"actualConfiguration,omitempty" type:"Struct"`
+	// The probe error. This field is empty if the probe is successful. It only stores desensitized diagnostics required for this probe.
+	Error *ListMcpsResponseBodyItemsOriginProbeLastResultError `json:"error,omitempty" xml:"error,omitempty" type:"Struct"`
+	// The time when the origin server was probed, in ISO 8601 UTC format.
+	//
+	// example:
+	//
+	// 2026-11-19T08:30:00Z
+	ProbedAt *string `json:"probedAt,omitempty" xml:"probedAt,omitempty"`
+	// The probe stage. Valid values: CONNECT, DISCOVER, INITIALIZE, SESSION_CHECK, CLEANUP, and COMPLETE.
+	//
+	// example:
+	//
+	// COMPLETE
+	Stage *string `json:"stage,omitempty" xml:"stage,omitempty"`
+	// The probe result. Valid values:
+	//
+	// - SUCCESS: The protocol and applicable session checks passed. Undeclared capabilities do not affect the result.
+	//
+	// - FAILED: The checks failed.
+	//
+	// example:
+	//
+	// SUCCESS
+	Status *string `json:"status,omitempty" xml:"status,omitempty"`
+}
+
+func (s ListMcpsResponseBodyItemsOriginProbeLastResult) String() string {
+	return dara.Prettify(s)
+}
+
+func (s ListMcpsResponseBodyItemsOriginProbeLastResult) GoString() string {
+	return s.String()
+}
+
+func (s *ListMcpsResponseBodyItemsOriginProbeLastResult) GetActualConfiguration() *ListMcpsResponseBodyItemsOriginProbeLastResultActualConfiguration {
+	return s.ActualConfiguration
+}
+
+func (s *ListMcpsResponseBodyItemsOriginProbeLastResult) GetError() *ListMcpsResponseBodyItemsOriginProbeLastResultError {
+	return s.Error
+}
+
+func (s *ListMcpsResponseBodyItemsOriginProbeLastResult) GetProbedAt() *string {
+	return s.ProbedAt
+}
+
+func (s *ListMcpsResponseBodyItemsOriginProbeLastResult) GetStage() *string {
+	return s.Stage
+}
+
+func (s *ListMcpsResponseBodyItemsOriginProbeLastResult) GetStatus() *string {
+	return s.Status
+}
+
+func (s *ListMcpsResponseBodyItemsOriginProbeLastResult) SetActualConfiguration(v *ListMcpsResponseBodyItemsOriginProbeLastResultActualConfiguration) *ListMcpsResponseBodyItemsOriginProbeLastResult {
+	s.ActualConfiguration = v
+	return s
+}
+
+func (s *ListMcpsResponseBodyItemsOriginProbeLastResult) SetError(v *ListMcpsResponseBodyItemsOriginProbeLastResultError) *ListMcpsResponseBodyItemsOriginProbeLastResult {
+	s.Error = v
+	return s
+}
+
+func (s *ListMcpsResponseBodyItemsOriginProbeLastResult) SetProbedAt(v string) *ListMcpsResponseBodyItemsOriginProbeLastResult {
+	s.ProbedAt = &v
+	return s
+}
+
+func (s *ListMcpsResponseBodyItemsOriginProbeLastResult) SetStage(v string) *ListMcpsResponseBodyItemsOriginProbeLastResult {
+	s.Stage = &v
+	return s
+}
+
+func (s *ListMcpsResponseBodyItemsOriginProbeLastResult) SetStatus(v string) *ListMcpsResponseBodyItemsOriginProbeLastResult {
+	s.Status = &v
+	return s
+}
+
+func (s *ListMcpsResponseBodyItemsOriginProbeLastResult) Validate() error {
+	if s.ActualConfiguration != nil {
+		if err := s.ActualConfiguration.Validate(); err != nil {
+			return err
+		}
+	}
+	if s.Error != nil {
+		if err := s.Error.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
+}
+
+type ListMcpsResponseBodyItemsOriginProbeLastResultActualConfiguration struct {
+	// The verified backend MCP protocol policy. Valid values: legacy and modern. This field is empty if the policy is not confirmed.
+	//
+	// example:
+	//
+	// modern
+	BackendMcpProtocol *string `json:"backendMcpProtocol,omitempty" xml:"backendMcpProtocol,omitempty"`
+	// The verified MCP transport. Valid values: SSE and StreamableHTTP. This field is empty if the transport is not confirmed.
+	//
+	// example:
+	//
+	// StreamableHTTP
+	Protocol *string `json:"protocol,omitempty" xml:"protocol,omitempty"`
+	// The actual negotiated or selected and verified date version of the MCP protocol. This field is empty if the version is not confirmed.
+	//
+	// example:
+	//
+	// 2025-03-26
+	ProtocolVersion *string `json:"protocolVersion,omitempty" xml:"protocolVersion,omitempty"`
+	// The actual session mode. Valid values: STATEFUL, STATELESS, and NOT_APPLICABLE. This field is empty if the mode is not confirmed.
+	//
+	// example:
+	//
+	// STATELESS
+	SessionMode *string `json:"sessionMode,omitempty" xml:"sessionMode,omitempty"`
+}
+
+func (s ListMcpsResponseBodyItemsOriginProbeLastResultActualConfiguration) String() string {
+	return dara.Prettify(s)
+}
+
+func (s ListMcpsResponseBodyItemsOriginProbeLastResultActualConfiguration) GoString() string {
+	return s.String()
+}
+
+func (s *ListMcpsResponseBodyItemsOriginProbeLastResultActualConfiguration) GetBackendMcpProtocol() *string {
+	return s.BackendMcpProtocol
+}
+
+func (s *ListMcpsResponseBodyItemsOriginProbeLastResultActualConfiguration) GetProtocol() *string {
+	return s.Protocol
+}
+
+func (s *ListMcpsResponseBodyItemsOriginProbeLastResultActualConfiguration) GetProtocolVersion() *string {
+	return s.ProtocolVersion
+}
+
+func (s *ListMcpsResponseBodyItemsOriginProbeLastResultActualConfiguration) GetSessionMode() *string {
+	return s.SessionMode
+}
+
+func (s *ListMcpsResponseBodyItemsOriginProbeLastResultActualConfiguration) SetBackendMcpProtocol(v string) *ListMcpsResponseBodyItemsOriginProbeLastResultActualConfiguration {
+	s.BackendMcpProtocol = &v
+	return s
+}
+
+func (s *ListMcpsResponseBodyItemsOriginProbeLastResultActualConfiguration) SetProtocol(v string) *ListMcpsResponseBodyItemsOriginProbeLastResultActualConfiguration {
+	s.Protocol = &v
+	return s
+}
+
+func (s *ListMcpsResponseBodyItemsOriginProbeLastResultActualConfiguration) SetProtocolVersion(v string) *ListMcpsResponseBodyItemsOriginProbeLastResultActualConfiguration {
+	s.ProtocolVersion = &v
+	return s
+}
+
+func (s *ListMcpsResponseBodyItemsOriginProbeLastResultActualConfiguration) SetSessionMode(v string) *ListMcpsResponseBodyItemsOriginProbeLastResultActualConfiguration {
+	s.SessionMode = &v
+	return s
+}
+
+func (s *ListMcpsResponseBodyItemsOriginProbeLastResultActualConfiguration) Validate() error {
+	return dara.Validate(s)
+}
+
+type ListMcpsResponseBodyItemsOriginProbeLastResultError struct {
+	// The diagnostic error code. Only bounded diagnostic codes are returned. The original error body from the origin server is not returned.
+	//
+	// example:
+	//
+	// PROBE_TIMEOUT
+	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// The necessary diagnostics after trimming and desensitization. Credentials and original responses are not included.
+	//
+	// example:
+	//
+	// The probe deadline was exceeded.
+	Message *string `json:"message,omitempty" xml:"message,omitempty"`
+	// Specifies whether the operation is suitable for retry based on a restricted policy. This field does not trigger automatic retries.
+	Retryable *bool `json:"retryable,omitempty" xml:"retryable,omitempty"`
+	// The error source. Valid values: MAGIC, ROUTER, NETWORK, ORIGIN, and UNKNOWN. The value is determined only based on actual evidence.
+	//
+	// example:
+	//
+	// UNKNOWN
+	Source *string `json:"source,omitempty" xml:"source,omitempty"`
+	// The detection or publish stage where the error occurred.
+	//
+	// example:
+	//
+	// INITIALIZE
+	Stage *string `json:"stage,omitempty" xml:"stage,omitempty"`
+}
+
+func (s ListMcpsResponseBodyItemsOriginProbeLastResultError) String() string {
+	return dara.Prettify(s)
+}
+
+func (s ListMcpsResponseBodyItemsOriginProbeLastResultError) GoString() string {
+	return s.String()
+}
+
+func (s *ListMcpsResponseBodyItemsOriginProbeLastResultError) GetCode() *string {
+	return s.Code
+}
+
+func (s *ListMcpsResponseBodyItemsOriginProbeLastResultError) GetMessage() *string {
+	return s.Message
+}
+
+func (s *ListMcpsResponseBodyItemsOriginProbeLastResultError) GetRetryable() *bool {
+	return s.Retryable
+}
+
+func (s *ListMcpsResponseBodyItemsOriginProbeLastResultError) GetSource() *string {
+	return s.Source
+}
+
+func (s *ListMcpsResponseBodyItemsOriginProbeLastResultError) GetStage() *string {
+	return s.Stage
+}
+
+func (s *ListMcpsResponseBodyItemsOriginProbeLastResultError) SetCode(v string) *ListMcpsResponseBodyItemsOriginProbeLastResultError {
+	s.Code = &v
+	return s
+}
+
+func (s *ListMcpsResponseBodyItemsOriginProbeLastResultError) SetMessage(v string) *ListMcpsResponseBodyItemsOriginProbeLastResultError {
+	s.Message = &v
+	return s
+}
+
+func (s *ListMcpsResponseBodyItemsOriginProbeLastResultError) SetRetryable(v bool) *ListMcpsResponseBodyItemsOriginProbeLastResultError {
+	s.Retryable = &v
+	return s
+}
+
+func (s *ListMcpsResponseBodyItemsOriginProbeLastResultError) SetSource(v string) *ListMcpsResponseBodyItemsOriginProbeLastResultError {
+	s.Source = &v
+	return s
+}
+
+func (s *ListMcpsResponseBodyItemsOriginProbeLastResultError) SetStage(v string) *ListMcpsResponseBodyItemsOriginProbeLastResultError {
+	s.Stage = &v
+	return s
+}
+
+func (s *ListMcpsResponseBodyItemsOriginProbeLastResultError) Validate() error {
 	return dara.Validate(s)
 }

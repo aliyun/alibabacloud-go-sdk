@@ -72,7 +72,7 @@ type GetSkillDetailResponseBodyData struct {
 	//
 	// example:
 	//
-	// Sample description used to illustrate the purpose of the resource
+	// Sample description to illustrate the resource purpose
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
 	// The total number of downloads.
 	//
@@ -80,7 +80,7 @@ type GetSkillDetailResponseBodyData struct {
 	//
 	// 10
 	DownloadCount *int64 `json:"downloadCount,omitempty" xml:"downloadCount,omitempty"`
-	// The draft pattern. A value of HEAD indicates that the skill has a persistent draft. A value of VERSIONED indicates that each edit creates a draft with a version number. This pattern is determined by the server, and the client uses it for routing What to do next when they invoke the API.
+	// The draft pattern. HEAD indicates that the skill has a persistent draft, and VERSIONED indicates that a draft with a version number is created for each edit. This is determined by the server, and clients invoke What to do next by routing based on this value.
 	//
 	// example:
 	//
@@ -88,7 +88,7 @@ type GetSkillDetailResponseBodyData struct {
 	DraftMode *string `json:"draftMode,omitempty" xml:"draftMode,omitempty"`
 	// Indicates whether the root data is editable.
 	Editable *bool `json:"editable,omitempty" xml:"editable,omitempty"`
-	// The version being edited.
+	// The version being edited. The value is HEAD in HEAD draft mode.
 	//
 	// example:
 	//
@@ -102,7 +102,13 @@ type GetSkillDetailResponseBodyData struct {
 	//
 	// UPLOAD
 	From *string `json:"from,omitempty" xml:"from,omitempty"`
-	// The tag mapping.
+	// The label descriptions under the root data.
+	//
+	// example:
+	//
+	// {"stable":"1.0.0"}
+	LabelDescriptions map[string]*string `json:"labelDescriptions,omitempty" xml:"labelDescriptions,omitempty"`
+	// The label mapping.
 	Labels map[string]*string `json:"labels,omitempty" xml:"labels,omitempty"`
 	// The name.
 	//
@@ -122,7 +128,7 @@ type GetSkillDetailResponseBodyData struct {
 	//
 	// alice
 	Owner *string `json:"owner,omitempty" xml:"owner,omitempty"`
-	// The version under review.
+	// The version under review. The value is HEAD in HEAD draft mode.
 	//
 	// example:
 	//
@@ -134,7 +140,7 @@ type GetSkillDetailResponseBodyData struct {
 	//
 	// PRIVATE
 	Scope *string `json:"scope,omitempty" xml:"scope,omitempty"`
-	// The update time. The value is a UNIX timestamp in milliseconds.
+	// The update time. It is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
@@ -190,6 +196,10 @@ func (s *GetSkillDetailResponseBodyData) GetEnable() *bool {
 
 func (s *GetSkillDetailResponseBodyData) GetFrom() *string {
 	return s.From
+}
+
+func (s *GetSkillDetailResponseBodyData) GetLabelDescriptions() map[string]*string {
+	return s.LabelDescriptions
 }
 
 func (s *GetSkillDetailResponseBodyData) GetLabels() map[string]*string {
@@ -272,6 +282,11 @@ func (s *GetSkillDetailResponseBodyData) SetFrom(v string) *GetSkillDetailRespon
 	return s
 }
 
+func (s *GetSkillDetailResponseBodyData) SetLabelDescriptions(v map[string]*string) *GetSkillDetailResponseBodyData {
+	s.LabelDescriptions = v
+	return s
+}
+
 func (s *GetSkillDetailResponseBodyData) SetLabels(v map[string]*string) *GetSkillDetailResponseBodyData {
 	s.Labels = v
 	return s
@@ -336,7 +351,7 @@ func (s *GetSkillDetailResponseBodyData) Validate() error {
 }
 
 type GetSkillDetailResponseBodyDataVersions struct {
-	// The author of the version.
+	// The version author.
 	//
 	// example:
 	//
@@ -354,7 +369,7 @@ type GetSkillDetailResponseBodyDataVersions struct {
 	//
 	// 9e107d9d372bb6826bd81d3542a419d6
 	ContentMd5 *string `json:"contentMd5,omitempty" xml:"contentMd5,omitempty"`
-	// The creation time. The value is a UNIX timestamp in milliseconds.
+	// The creation time. It is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
@@ -364,7 +379,7 @@ type GetSkillDetailResponseBodyDataVersions struct {
 	//
 	// example:
 	//
-	// Sample description used to illustrate the purpose of the resource
+	// Sample description to illustrate the resource purpose
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
 	// The number of downloads.
 	//
@@ -372,7 +387,7 @@ type GetSkillDetailResponseBodyDataVersions struct {
 	//
 	// 10
 	DownloadCount *int64 `json:"downloadCount,omitempty" xml:"downloadCount,omitempty"`
-	// The release pipeline information.
+	// The publish pipeline information.
 	//
 	// example:
 	//
@@ -384,13 +399,13 @@ type GetSkillDetailResponseBodyDataVersions struct {
 	//
 	// READY
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
-	// The update time. The value is a UNIX timestamp in milliseconds.
+	// The update time. It is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
 	// 1787671022000
 	UpdateTime *int64 `json:"updateTime,omitempty" xml:"updateTime,omitempty"`
-	// The version number.
+	// The version number. A value of HEAD indicates a persistent draft, which should be displayed as a draft in the user interface.
 	//
 	// example:
 	//

@@ -26,13 +26,13 @@ type iListMcpsRequest interface {
 }
 
 type ListMcpsRequest struct {
-	// The custom tag used for filtering. An exact match is required.
+	// The custom tags used to filter results. An exact match is required.
 	//
 	// example:
 	//
 	// Knowledge base
 	CustomTag *string `json:"customTag,omitempty" xml:"customTag,omitempty"`
-	// The maximum number of entries to return per page. Valid values: 1 to 100. Default value: 10.
+	// The maximum number of entries to return per page.
 	//
 	// example:
 	//
@@ -50,13 +50,13 @@ type ListMcpsRequest struct {
 	//
 	// next-page-token
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
-	// The official usage tag used for filtering.
+	// The official usage tags used to filter results.
 	//
 	// example:
 	//
 	// KNOWLEDGE_BASE
 	OfficialTag *string `json:"officialTag,omitempty" xml:"officialTag,omitempty"`
-	// The name match type. This parameter takes effect only when Name is specified. Valid values: accurate (exact match) and blur (fuzzy match). Default value: blur.
+	// The name matching mode. This parameter takes effect only when Name is specified. Valid values: accurate (exact match) and blur (fuzzy match). Default value: blur.
 	//
 	// example:
 	//

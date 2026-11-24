@@ -45,6 +45,12 @@ func (s *UpdateSkillLabelsRequest) Validate() error {
 }
 
 type UpdateSkillLabelsRequestBody struct {
+	// The label descriptions.
+	//
+	// example:
+	//
+	// {"stable":"prod environment usage"}
+	LabelDescriptions *string `json:"labelDescriptions,omitempty" xml:"labelDescriptions,omitempty"`
 	// The version label mapping JSON string.
 	//
 	// This parameter is required.
@@ -63,8 +69,17 @@ func (s UpdateSkillLabelsRequestBody) GoString() string {
 	return s.String()
 }
 
+func (s *UpdateSkillLabelsRequestBody) GetLabelDescriptions() *string {
+	return s.LabelDescriptions
+}
+
 func (s *UpdateSkillLabelsRequestBody) GetLabels() *string {
 	return s.Labels
+}
+
+func (s *UpdateSkillLabelsRequestBody) SetLabelDescriptions(v string) *UpdateSkillLabelsRequestBody {
+	s.LabelDescriptions = &v
+	return s
 }
 
 func (s *UpdateSkillLabelsRequestBody) SetLabels(v string) *UpdateSkillLabelsRequestBody {

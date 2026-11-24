@@ -44,7 +44,7 @@ type ConvertMcpToFreeEditResponseBody struct {
 	//
 	// success
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// The request ID used to locate and troubleshoot the request.
+	// The request ID used to locate and troubleshoot requests.
 	//
 	// example:
 	//
@@ -130,13 +130,13 @@ type ConvertMcpToFreeEditResponseBodyData struct {
 	Addresses []*string `json:"addresses,omitempty" xml:"addresses,omitempty" type:"Repeated"`
 	// The custom tags. Multiple tags are supported.
 	CustomTags []*string `json:"customTags,omitempty" xml:"customTags,omitempty" type:"Repeated"`
-	// The deployment configuration for the code-deployed MCP.
+	// The deployment configuration of the code-deployed MCP.
 	DeploymentConfig *ConvertMcpToFreeEditResponseBodyDataDeploymentConfig `json:"deploymentConfig,omitempty" xml:"deploymentConfig,omitempty" type:"Struct"`
 	// The description of the MCP service.
 	//
 	// example:
 	//
-	// MCP service used to query knowledge bases
+	// MCP service used to query the knowledge base
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
 	// The access endpoint of the MCP service.
 	//
@@ -150,7 +150,7 @@ type ConvertMcpToFreeEditResponseBodyData struct {
 	//
 	// agentcore-mcp-example
 	FunctionName *string `json:"functionName,omitempty" xml:"functionName,omitempty"`
-	// The MCP source marketplace template.
+	// The source marketplace template for the MCP.
 	MarketSource *ConvertMcpToFreeEditResponseBodyDataMarketSource `json:"marketSource,omitempty" xml:"marketSource,omitempty" type:"Struct"`
 	// The MCP service ID.
 	//
@@ -176,7 +176,7 @@ type ConvertMcpToFreeEditResponseBodyData struct {
 	//
 	// StreamableHTTP
 	Protocol *string `json:"protocol,omitempty" xml:"protocol,omitempty"`
-	// The MCP service status.
+	// The status of the MCP service.
 	//
 	// example:
 	//
@@ -190,7 +190,7 @@ type ConvertMcpToFreeEditResponseBodyData struct {
 	StatusReason *string `json:"statusReason,omitempty" xml:"statusReason,omitempty"`
 	// The template version and input schema bound to the MCP.
 	Template *ConvertMcpToFreeEditResponseBodyDataTemplate `json:"template,omitempty" xml:"template,omitempty" type:"Struct"`
-	// The MCP type. Valid values: DIRECT_PROXY (direct proxy), HTTP_TO_MCP (HTTP to MCP), and CODE_PACKAGE (code deployment).
+	// The MCP type, which can be DIRECT_PROXY (direct proxy), HTTP_TO_MCP (HTTP to MCP), or CODE_PACKAGE (code deployment).
 	//
 	// example:
 	//
@@ -372,9 +372,9 @@ func (s *ConvertMcpToFreeEditResponseBodyData) Validate() error {
 }
 
 type ConvertMcpToFreeEditResponseBodyDataDeploymentConfig struct {
-	// The MCP entry point access control.
+	// The MCP entry access control.
 	AccessControl *ConvertMcpToFreeEditResponseBodyDataDeploymentConfigAccessControl `json:"accessControl,omitempty" xml:"accessControl,omitempty" type:"Struct"`
-	// The Agent Identity configuration.
+	// The agent identity configuration.
 	AgentIdentityConfiguration *ConvertMcpToFreeEditResponseBodyDataDeploymentConfigAgentIdentityConfiguration `json:"agentIdentityConfiguration,omitempty" xml:"agentIdentityConfiguration,omitempty" type:"Struct"`
 	// The artifact type. Code indicates a ZIP code package, and Container indicates a custom container.
 	//
@@ -610,13 +610,13 @@ func (s *ConvertMcpToFreeEditResponseBodyDataDeploymentConfig) Validate() error 
 }
 
 type ConvertMcpToFreeEditResponseBodyDataDeploymentConfigAccessControl struct {
-	// The access credential ID. It references an AgentCore credential when the mode is set to CREDENTIAL.
+	// The ID of the AgentCore credential referenced when the mode is CREDENTIAL.
 	//
 	// example:
 	//
 	// credential-id
 	CredentialId *string `json:"credentialId,omitempty" xml:"credentialId,omitempty"`
-	// Specifies whether to enable entry point access control.
+	// Specifies whether entry access control is enabled.
 	Enabled *bool `json:"enabled,omitempty" xml:"enabled,omitempty"`
 	// The access control mode. ANONYMOUS indicates anonymous access, and CREDENTIAL indicates that AgentCore access credentials are used.
 	//
@@ -666,21 +666,21 @@ func (s *ConvertMcpToFreeEditResponseBodyDataDeploymentConfigAccessControl) Vali
 }
 
 type ConvertMcpToFreeEditResponseBodyDataDeploymentConfigAgentIdentityConfiguration struct {
-	// Specifies whether to enable authorization.
+	// Specifies whether authorization is enabled.
 	AuthorizationEnabled *bool `json:"authorizationEnabled,omitempty" xml:"authorizationEnabled,omitempty"`
-	// The credential provider ARN.
+	// The ARN of the credential provider.
 	//
 	// example:
 	//
 	// acs:agentidentity:cn-hangzhou:1234567890123456:provider/example
 	CredentialProviderArn *string `json:"credentialProviderArn,omitempty" xml:"credentialProviderArn,omitempty"`
-	// The credential provider type.
+	// The type of the credential provider.
 	//
 	// example:
 	//
 	// oauth2
 	CredentialProviderType *string `json:"credentialProviderType,omitempty" xml:"credentialProviderType,omitempty"`
-	// Specifies whether to enable Agent Identity.
+	// Specifies whether agent identity is enabled.
 	Enabled *bool `json:"enabled,omitempty" xml:"enabled,omitempty"`
 }
 
@@ -733,13 +733,13 @@ func (s *ConvertMcpToFreeEditResponseBodyDataDeploymentConfigAgentIdentityConfig
 }
 
 type ConvertMcpToFreeEditResponseBodyDataDeploymentConfigCodeConfiguration struct {
-	// The temporary code package token returned by GetMcpCodePackageUploadUrl. It is used to create or update a code deployment after the presigned upload is completed.
+	// The temporary code package token returned by GetMcpCodePackageUploadUrl, which is used to create or update a code deployment after a presigned upload is completed.
 	//
 	// example:
 	//
 	// upload-token
 	CodePackageToken *string `json:"codePackageToken,omitempty" xml:"codePackageToken,omitempty"`
-	// The complete startup command, passed sequentially by parameter boundaries. For example, when using supergateway to start a stdio MCP, pass supergateway, --stdio, the complete subcommand, and the remaining parameters.
+	// The complete startup command, passed sequentially by parameter boundaries. For example, when using supergateway to start a stdio MCP, pass supergateway, --stdio, the full subcommand, and the remaining parameters.
 	Command []*string `json:"command,omitempty" xml:"command,omitempty" type:"Repeated"`
 	// The code package runtime. Valid values: python3.13, nodejs22, and java17.
 	//
@@ -789,7 +789,7 @@ func (s *ConvertMcpToFreeEditResponseBodyDataDeploymentConfigCodeConfiguration) 
 }
 
 type ConvertMcpToFreeEditResponseBodyDataDeploymentConfigContainerConfiguration struct {
-	// The ACR instance ID.
+	// The ID of the ACR instance.
 	//
 	// example:
 	//
@@ -811,13 +811,13 @@ type ConvertMcpToFreeEditResponseBodyDataDeploymentConfigContainerConfiguration 
 	//
 	// ACR
 	ImageRegistryType *string `json:"imageRegistryType,omitempty" xml:"imageRegistryType,omitempty"`
-	// The MCP runtime mode. Custom containers must expose the standard MCP themselves. Valid value: SELF_HOSTED.
+	// The MCP runtime mode. Custom containers must expose the standard MCP themselves. The value is fixed to SELF_HOSTED.
 	//
 	// example:
 	//
 	// SELF_HOSTED
 	McpRuntimeMode *string `json:"mcpRuntimeMode,omitempty" xml:"mcpRuntimeMode,omitempty"`
-	// The container source type. Currently, this is fixed to CONTAINER_IMAGE.
+	// The container source type. Currently, the value is fixed to CONTAINER_IMAGE.
 	//
 	// example:
 	//
@@ -901,7 +901,7 @@ func (s *ConvertMcpToFreeEditResponseBodyDataDeploymentConfigContainerConfigurat
 }
 
 type ConvertMcpToFreeEditResponseBodyDataDeploymentConfigHookConfiguration struct {
-	// The ordered list of hooks. Executes PRE_LIST_TOOLS, PRE_CALL_TOOL, POST_LIST_TOOLS, and POST_CALL_TOOL hooks in the order of the array.
+	// The ordered list of hooks. Executes PRE_LIST_TOOLS, PRE_CALL_TOOL, POST_LIST_TOOLS, and POST_CALL_TOOL hooks in array order.
 	Hooks []*ConvertMcpToFreeEditResponseBodyDataDeploymentConfigHookConfigurationHooks `json:"hooks,omitempty" xml:"hooks,omitempty" type:"Repeated"`
 }
 
@@ -936,19 +936,19 @@ func (s *ConvertMcpToFreeEditResponseBodyDataDeploymentConfigHookConfiguration) 
 }
 
 type ConvertMcpToFreeEditResponseBodyDataDeploymentConfigHookConfigurationHooks struct {
-	// The hook API version.
+	// The API version of the hook.
 	//
 	// example:
 	//
 	// 1.0
 	ApiVersion *string `json:"apiVersion,omitempty" xml:"apiVersion,omitempty"`
-	// The hook description.
+	// The description of the hook.
 	//
 	// example:
 	//
 	// Log MCP tool invocations
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// Specifies whether to enable the hook.
+	// Specifies whether the hook is enabled.
 	Enabled *bool `json:"enabled,omitempty" xml:"enabled,omitempty"`
 	// The hook event.
 	//
@@ -956,15 +956,15 @@ type ConvertMcpToFreeEditResponseBodyDataDeploymentConfigHookConfigurationHooks 
 	//
 	// PRE_CALL_TOOL
 	Event *string `json:"event,omitempty" xml:"event,omitempty"`
-	// The hook request headers.
+	// The request headers of the hook.
 	Headers map[string]*string `json:"headers,omitempty" xml:"headers,omitempty"`
-	// The hook timeout in milliseconds.
+	// The timeout period of the hook, in milliseconds.
 	//
 	// example:
 	//
 	// 3000
 	Timeout *int32 `json:"timeout,omitempty" xml:"timeout,omitempty"`
-	// The hook callback URL.
+	// The callback URL of the hook.
 	//
 	// example:
 	//
@@ -1064,7 +1064,7 @@ type ConvertMcpToFreeEditResponseBodyDataDeploymentConfigLogConfiguration struct
 	//
 	// mcp-logs
 	Logstore *string `json:"logstore,omitempty" xml:"logstore,omitempty"`
-	// The name of the Simple Log Service project.
+	// The name of the Log Service project.
 	//
 	// example:
 	//
@@ -1142,18 +1142,24 @@ type ConvertMcpToFreeEditResponseBodyDataDeploymentConfigMcpConfiguration struct
 	//
 	// 1
 	SessionConcurrencyPerInstance *int32 `json:"sessionConcurrencyPerInstance,omitempty" xml:"sessionConcurrencyPerInstance,omitempty"`
-	// The session idle timeout in seconds. Default value: 1800.
+	// The unit is seconds. Default value: 1800.
 	//
 	// example:
 	//
 	// 1800
 	SessionIdleTimeoutSeconds *int32 `json:"sessionIdleTimeoutSeconds,omitempty" xml:"sessionIdleTimeoutSeconds,omitempty"`
-	// The maximum session lifetime in seconds. Default value: 21600.
+	// The unit is seconds. Default value: 21600.
 	//
 	// example:
 	//
 	// 21600
 	SessionMaxLifetimeSeconds *int32 `json:"sessionMaxLifetimeSeconds,omitempty" xml:"sessionMaxLifetimeSeconds,omitempty"`
+	// Applicable only to StreamableHTTP. Default value for creation: STATEFUL. If omitted during an update, the original value is retained. STATELESS disables Function Compute (FC) session affinity, and the stdio gateway does not enable stateful mode. Native HTTP services must support stateless MCP themselves.
+	//
+	// example:
+	//
+	// STATEFUL
+	SessionMode *string `json:"sessionMode,omitempty" xml:"sessionMode,omitempty"`
 }
 
 func (s ConvertMcpToFreeEditResponseBodyDataDeploymentConfigMcpConfiguration) String() string {
@@ -1180,6 +1186,10 @@ func (s *ConvertMcpToFreeEditResponseBodyDataDeploymentConfigMcpConfiguration) G
 	return s.SessionMaxLifetimeSeconds
 }
 
+func (s *ConvertMcpToFreeEditResponseBodyDataDeploymentConfigMcpConfiguration) GetSessionMode() *string {
+	return s.SessionMode
+}
+
 func (s *ConvertMcpToFreeEditResponseBodyDataDeploymentConfigMcpConfiguration) SetEndpointPath(v string) *ConvertMcpToFreeEditResponseBodyDataDeploymentConfigMcpConfiguration {
 	s.EndpointPath = &v
 	return s
@@ -1200,6 +1210,11 @@ func (s *ConvertMcpToFreeEditResponseBodyDataDeploymentConfigMcpConfiguration) S
 	return s
 }
 
+func (s *ConvertMcpToFreeEditResponseBodyDataDeploymentConfigMcpConfiguration) SetSessionMode(v string) *ConvertMcpToFreeEditResponseBodyDataDeploymentConfigMcpConfiguration {
+	s.SessionMode = &v
+	return s
+}
+
 func (s *ConvertMcpToFreeEditResponseBodyDataDeploymentConfigMcpConfiguration) Validate() error {
 	return dara.Validate(s)
 }
@@ -1211,7 +1226,7 @@ type ConvertMcpToFreeEditResponseBodyDataDeploymentConfigNasConfiguration struct
 	//
 	// 1000
 	GroupId *int32 `json:"groupId,omitempty" xml:"groupId,omitempty"`
-	// The list of NAS mount targets.
+	// The list of NAS mount points.
 	MountPoints []*ConvertMcpToFreeEditResponseBodyDataDeploymentConfigNasConfigurationMountPoints `json:"mountPoints,omitempty" xml:"mountPoints,omitempty" type:"Repeated"`
 	// The user ID.
 	//
@@ -1278,7 +1293,7 @@ type ConvertMcpToFreeEditResponseBodyDataDeploymentConfigNasConfigurationMountPo
 	//
 	// /mnt/data
 	MountDir *string `json:"mountDir,omitempty" xml:"mountDir,omitempty"`
-	// The NAS server address.
+	// The NAS service address.
 	//
 	// example:
 	//
@@ -1518,15 +1533,15 @@ func (s *ConvertMcpToFreeEditResponseBodyDataDeploymentConfigOssMountConfigurati
 }
 
 type ConvertMcpToFreeEditResponseBodyDataDeploymentConfigParameterTransformConfiguration struct {
-	// Specifies whether to enable parameter transformation and result enhancement.
+	// Specifies whether parameter transformation and result enhancement are enabled.
 	Enabled *bool `json:"enabled,omitempty" xml:"enabled,omitempty"`
-	// The reserved reference for the parameter transformation and result enhancement rule set.
+	// The reserved reference to the parameter transformation and result enhancement rule set.
 	//
 	// example:
 	//
 	// rules-1
 	RuleSetId *string `json:"ruleSetId,omitempty" xml:"ruleSetId,omitempty"`
-	// The transformation rule version.
+	// The version of the transformation rule.
 	//
 	// example:
 	//
@@ -1574,7 +1589,7 @@ func (s *ConvertMcpToFreeEditResponseBodyDataDeploymentConfigParameterTransformC
 }
 
 type ConvertMcpToFreeEditResponseBodyDataDeploymentConfigProxyConfiguration struct {
-	// Specifies whether to enable the MCP proxy.
+	// Specifies whether the MCP proxy is enabled.
 	Enabled *bool `json:"enabled,omitempty" xml:"enabled,omitempty"`
 }
 
@@ -1600,13 +1615,13 @@ func (s *ConvertMcpToFreeEditResponseBodyDataDeploymentConfigProxyConfiguration)
 }
 
 type ConvertMcpToFreeEditResponseBodyDataDeploymentConfigRuntimeConfiguration struct {
-	// The CPU specification in cores. Default value: 0.25.
+	// The CPU specifications. Unit: cores. Default value: 0.25.
 	//
 	// example:
 	//
 	// 0.25
 	Cpu *float64 `json:"cpu,omitempty" xml:"cpu,omitempty"`
-	// The ephemeral disk size in MB. Valid values: 512 and 10240.
+	// The unit is MB. Valid values: 512 and 10240.
 	//
 	// example:
 	//
@@ -1614,7 +1629,7 @@ type ConvertMcpToFreeEditResponseBodyDataDeploymentConfigRuntimeConfiguration st
 	DiskSize *int32 `json:"diskSize,omitempty" xml:"diskSize,omitempty"`
 	// The environment variables.
 	EnvironmentVariables map[string]*string `json:"environmentVariables,omitempty" xml:"environmentVariables,omitempty"`
-	// The ARN of the RAM role used by user code to access downstream Alibaba Cloud resources.
+	// The ARN of the RAM role used when user code accesses downstream Alibaba Cloud resources.
 	//
 	// example:
 	//
@@ -1626,7 +1641,7 @@ type ConvertMcpToFreeEditResponseBodyDataDeploymentConfigRuntimeConfiguration st
 	//
 	// 200
 	InstanceConcurrency *int32 `json:"instanceConcurrency,omitempty" xml:"instanceConcurrency,omitempty"`
-	// The memory size in MB. Default value: 512.
+	// The unit is MB. Default value: 512.
 	//
 	// example:
 	//
@@ -1638,7 +1653,7 @@ type ConvertMcpToFreeEditResponseBodyDataDeploymentConfigRuntimeConfiguration st
 	//
 	// 9000
 	Port *int32 `json:"port,omitempty" xml:"port,omitempty"`
-	// The timeout period in seconds. Default value: 300.
+	// The unit is seconds. Default value: 300.
 	//
 	// example:
 	//
@@ -1731,7 +1746,7 @@ func (s *ConvertMcpToFreeEditResponseBodyDataDeploymentConfigRuntimeConfiguratio
 }
 
 type ConvertMcpToFreeEditResponseBodyDataMarketSource struct {
-	// The MCP marketplace template ID.
+	// The ID of the MCP marketplace template.
 	//
 	// example:
 	//

@@ -30,13 +30,13 @@ type iListModelsResponseBody interface {
 }
 
 type ListModelsResponseBody struct {
-	// The business status code. A value of SUCCESS indicates success.
+	// The business status code. The value is SUCCESS if the request is successful.
 	//
 	// example:
 	//
 	// SUCCESS
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// The HTTP status code. A value of 200 indicates success.
+	// The HTTP status code. The value is 200 if the request is successful.
 	//
 	// example:
 	//
@@ -56,7 +56,7 @@ type ListModelsResponseBody struct {
 	//
 	// success
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// The pagination token. Specify the token returned from the previous query. An empty response indicates that no more pages are available.
+	// The pagination token. Pass the token returned by the previous query in the request. An empty value in the response indicates that no more pages are available.
 	//
 	// example:
 	//
@@ -195,13 +195,13 @@ type ListModelsResponseBodyItems struct {
 	//
 	// 128000
 	ContextSize *int64 `json:"contextSize,omitempty" xml:"contextSize,omitempty"`
-	// The time when the resource was created, in RFC 3339 UTC format.
+	// The time when the resource was created. The time is in RFC 3339 UTC format.
 	//
 	// example:
 	//
 	// 2026-08-09T00:00:00Z
 	CreatedAt *string `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
-	// The model description, which can be up to 255 characters in length.
+	// The model description. The description can be up to 255 characters in length.
 	//
 	// example:
 	//
@@ -225,7 +225,9 @@ type ListModelsResponseBodyItems struct {
 	//
 	// qwen-max
 	ModelName *string `json:"modelName,omitempty" xml:"modelName,omitempty"`
-	// The time when the resource was last updated, in RFC 3339 UTC format.
+	// The explicit thinking levels supported by the model. An empty list indicates that only the default setting is supported. If this field is omitted, no level information is available.
+	SupportedThinkingLevels []*string `json:"supportedThinkingLevels,omitempty" xml:"supportedThinkingLevels,omitempty" type:"Repeated"`
+	// The time when the resource was last updated. The time is in RFC 3339 UTC format.
 	//
 	// example:
 	//
@@ -279,6 +281,10 @@ func (s *ListModelsResponseBodyItems) GetModelName() *string {
 	return s.ModelName
 }
 
+func (s *ListModelsResponseBodyItems) GetSupportedThinkingLevels() []*string {
+	return s.SupportedThinkingLevels
+}
+
 func (s *ListModelsResponseBodyItems) GetUpdatedAt() *string {
 	return s.UpdatedAt
 }
@@ -327,6 +333,11 @@ func (s *ListModelsResponseBodyItems) SetModelName(v string) *ListModelsResponse
 	return s
 }
 
+func (s *ListModelsResponseBodyItems) SetSupportedThinkingLevels(v []*string) *ListModelsResponseBodyItems {
+	s.SupportedThinkingLevels = v
+	return s
+}
+
 func (s *ListModelsResponseBodyItems) SetUpdatedAt(v string) *ListModelsResponseBodyItems {
 	s.UpdatedAt = &v
 	return s
@@ -347,21 +358,21 @@ func (s *ListModelsResponseBodyItems) Validate() error {
 }
 
 type ListModelsResponseBodyItemsCapabilities struct {
-	// Indicates whether the model supports audio input or output.
+	// Specifies whether the model supports audio input or output.
 	Audio *bool `json:"audio,omitempty" xml:"audio,omitempty"`
-	// Indicates whether the model supports document input.
+	// Specifies whether the model supports document input.
 	Document *bool `json:"document,omitempty" xml:"document,omitempty"`
-	// Specifies whether the model supports multiple tool calls in a single response.
+	// Specifies whether the model is able to invoke multiple tool calling operations in a single response.
 	MultiToolCall *bool `json:"multiToolCall,omitempty" xml:"multiToolCall,omitempty"`
-	// Indicates whether the model supports reasoning capabilities.
+	// Specifies whether the model supports reasoning capabilities.
 	Reasoning *bool `json:"reasoning,omitempty" xml:"reasoning,omitempty"`
-	// Specifies whether the model supports streaming tool calls.
+	// Specifies whether the model is able to invoke tool calling in a streaming manner.
 	StreamToolCall *bool `json:"streamToolCall,omitempty" xml:"streamToolCall,omitempty"`
-	// Indicates whether the model supports tool calling.
+	// Specifies whether the model supports tool calling.
 	ToolCall *bool `json:"toolCall,omitempty" xml:"toolCall,omitempty"`
-	// Indicates whether the model supports video input.
+	// Specifies whether the model supports video input.
 	Video *bool `json:"video,omitempty" xml:"video,omitempty"`
-	// Indicates whether the model supports image input.
+	// Specifies whether the model supports image input.
 	Vision *bool `json:"vision,omitempty" xml:"vision,omitempty"`
 }
 
