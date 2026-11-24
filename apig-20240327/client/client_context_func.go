@@ -333,6 +333,65 @@ func (client *Client) BatchDeleteConsumerAuthorizationRuleWithContext(ctx contex
 
 // Summary:
 //
+// Publishes specified routes or all visible routes under the same HTTP API in batches.
+//
+// Description:
+//
+// Batch requests are processed individually after passing route ownership validation. If some routes fail to be published, other successfully published routes remain valid.
+//
+// @param request - BatchDeployHttpApiRoutesRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return BatchDeployHttpApiRoutesResponse
+func (client *Client) BatchDeployHttpApiRoutesWithContext(ctx context.Context, httpApiId *string, request *BatchDeployHttpApiRoutesRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *BatchDeployHttpApiRoutesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Async) {
+		body["async"] = request.Async
+	}
+
+	if !dara.IsNil(request.DeployAll) {
+		body["deployAll"] = request.DeployAll
+	}
+
+	if !dara.IsNil(request.RouteIds) {
+		body["routeIds"] = request.RouteIds
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("BatchDeployHttpApiRoutes"),
+		Version:     dara.String("2024-03-27"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/v1/http-apis/" + dara.PercentEncode(dara.StringValue(httpApiId)) + "/routes/batch-deploy"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &BatchDeployHttpApiRoutesResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Performs a batch export of HTTP APIs.
 //
 // @param request - BatchExportHttpApisRequest
@@ -7971,6 +8030,81 @@ func (client *Client) ListBatchExportTasksWithContext(ctx context.Context, reque
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListBatchExportTasksResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the list of batch import tasks.
+//
+// @param request - ListBatchImportTasksRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListBatchImportTasksResponse
+func (client *Client) ListBatchImportTasksWithContext(ctx context.Context, request *ListBatchImportTasksRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *ListBatchImportTasksResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.EndTime) {
+		query["endTime"] = request.EndTime
+	}
+
+	if !dara.IsNil(request.GatewayId) {
+		query["gatewayId"] = request.GatewayId
+	}
+
+	if !dara.IsNil(request.MaxResults) {
+		query["maxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		query["nextToken"] = request.NextToken
+	}
+
+	if !dara.IsNil(request.PageNumber) {
+		query["pageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["pageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.StartTime) {
+		query["startTime"] = request.StartTime
+	}
+
+	if !dara.IsNil(request.Statuses) {
+		query["statuses"] = request.Statuses
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListBatchImportTasks"),
+		Version:     dara.String("2024-03-27"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/v1/http-api-batch-import-tasks"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListBatchImportTasksResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err

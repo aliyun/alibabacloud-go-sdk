@@ -1,3 +1,8 @@
+2026-11-24 Version: v11.10.0
+- Support API BatchDeployHttpApiRoutes.
+- Support API ListBatchImportTasks.
+
+
 2026-11-24 Version: v11.9.0
 - Support API GetModelTokenRateLimit.
 - Support API UpdateModelTokenRateLimit.
