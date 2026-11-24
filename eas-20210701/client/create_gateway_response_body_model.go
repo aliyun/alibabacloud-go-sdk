@@ -20,13 +20,13 @@ type iCreateGatewayResponseBody interface {
 }
 
 type CreateGatewayResponseBody struct {
-	// The region where the private gateway resides.
+	// The region where the private gateway is located.
 	//
 	// example:
 	//
 	// cn-wulanchabu
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// The ID of the private gateway.
+	// The private gateway ID.
 	//
 	// example:
 	//

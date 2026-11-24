@@ -38,7 +38,7 @@ type CreateAppServiceResponseBody struct {
 	//
 	// http://pai-eas-vpc.cn-shanghai.****
 	IntranetEndpoint *string `json:"IntranetEndpoint,omitempty" xml:"IntranetEndpoint,omitempty"`
-	// The region where the service is located.
+	// The region where the service is deployed.
 	//
 	// example:
 	//

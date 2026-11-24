@@ -16,7 +16,7 @@ type iDeleteGatewayLabelResponseBody interface {
 }
 
 type DeleteGatewayLabelResponseBody struct {
-	// The returned message.
+	// The response message.
 	//
 	// example:
 	//

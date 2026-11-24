@@ -33,6 +33,8 @@ type iListGatewayShrinkRequest interface {
 	GetSort() *string
 	SetStatus(v string) *ListGatewayShrinkRequest
 	GetStatus() *string
+	SetWorkspaceId(v string) *ListGatewayShrinkRequest
+	GetWorkspaceId() *string
 }
 
 type ListGatewayShrinkRequest struct {
@@ -42,7 +44,7 @@ type ListGatewayShrinkRequest struct {
 	//
 	// PrePaid
 	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
-	// The ID of the private gateway. For information about how to obtain the ID of a private gateway, see the private_gateway_id field in the response of the ListResources operation.
+	// The ID of the private gateway. To obtain the private gateway ID, see the private_gateway_id field in the response of the ListResources operation.
 	//
 	// example:
 	//
@@ -60,13 +62,13 @@ type ListGatewayShrinkRequest struct {
 	//
 	// Application
 	GatewayType *string `json:"GatewayType,omitempty" xml:"GatewayType,omitempty"`
-	// Specifies whether Internet access is enabled.
+	// Specifies whether public network access is enabled.
 	//
 	// example:
 	//
 	// true
 	InternetEnabled *bool `json:"InternetEnabled,omitempty" xml:"InternetEnabled,omitempty"`
-	// The label used to filter gateways.
+	// Filters the results by label.
 	//
 	// example:
 	//
@@ -84,13 +86,13 @@ type ListGatewayShrinkRequest struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The paging Settings for the number of entries to return per page in a paged query. Default value: 100.
+	// The paging settings for the number of entries to return on each page in a paged query. Default value: 100.
 	//
 	// example:
 	//
 	// 100
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the resource group. For information about how to obtain the ID of a resource group, see the ResourceId field in the response of the [ListResources](https://help.aliyun.com/document_detail/412133.html) operation.
+	// The ID of the resource group. To obtain the resource group ID, see the ResourceId field in the response of the [ListResources](https://help.aliyun.com/document_detail/412133.html) operation.
 	//
 	// example:
 	//
@@ -108,6 +110,12 @@ type ListGatewayShrinkRequest struct {
 	//
 	// Running
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The ID of the workspace.
+	//
+	// example:
+	//
+	// 123456
+	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 
 func (s ListGatewayShrinkRequest) String() string {
@@ -164,6 +172,10 @@ func (s *ListGatewayShrinkRequest) GetSort() *string {
 
 func (s *ListGatewayShrinkRequest) GetStatus() *string {
 	return s.Status
+}
+
+func (s *ListGatewayShrinkRequest) GetWorkspaceId() *string {
+	return s.WorkspaceId
 }
 
 func (s *ListGatewayShrinkRequest) SetChargeType(v string) *ListGatewayShrinkRequest {
@@ -223,6 +235,11 @@ func (s *ListGatewayShrinkRequest) SetSort(v string) *ListGatewayShrinkRequest {
 
 func (s *ListGatewayShrinkRequest) SetStatus(v string) *ListGatewayShrinkRequest {
 	s.Status = &v
+	return s
+}
+
+func (s *ListGatewayShrinkRequest) SetWorkspaceId(v string) *ListGatewayShrinkRequest {
+	s.WorkspaceId = &v
 	return s
 }
 

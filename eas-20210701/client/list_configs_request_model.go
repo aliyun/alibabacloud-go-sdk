@@ -16,13 +16,13 @@ type iListConfigsRequest interface {
 }
 
 type ListConfigsRequest struct {
-	// **Page number**. Default value: 1.
+	// **The page number**. Default value: 1.
 	//
 	// example:
 	//
 	// 1
 	Page *int32 `json:"Page,omitempty" xml:"Page,omitempty"`
-	// **Number of entries per page**. Default value: 100. Maximum value: 200.
+	// **The number of entries per page**. Default value: 100. Maximum value: 200.
 	//
 	// example:
 	//

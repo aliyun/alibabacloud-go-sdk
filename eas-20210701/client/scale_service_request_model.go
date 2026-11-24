@@ -16,7 +16,7 @@ type iScaleServiceRequest interface {
 }
 
 type ScaleServiceRequest struct {
-	// The target number of instances.
+	// The target instance count for scaling.
 	//
 	// This parameter is required.
 	//
@@ -24,7 +24,7 @@ type ScaleServiceRequest struct {
 	//
 	// 2
 	Instance *int64 `json:"Instance,omitempty" xml:"Instance,omitempty"`
-	// A list of instance names to prioritize for removal during a scale-in operation.
+	// The list of instance names to prioritize for deletion during a scale-in operation. Note: This parameter takes effect only during scale-in.
 	//
 	// if can be null:
 	// true

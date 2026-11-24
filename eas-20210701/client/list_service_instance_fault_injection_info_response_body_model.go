@@ -16,9 +16,9 @@ type iListServiceInstanceFaultInjectionInfoResponseBody interface {
 }
 
 type ListServiceInstanceFaultInjectionInfoResponseBody struct {
-	// A list of injected faults.
+	// The list of injected faults.
 	FaultInfoList []*ListServiceInstanceFaultInjectionInfoResponseBodyFaultInfoList `json:"FaultInfoList,omitempty" xml:"FaultInfoList,omitempty" type:"Repeated"`
-	// The request ID.
+	// Id of the request
 	//
 	// example:
 	//
@@ -66,37 +66,155 @@ func (s *ListServiceInstanceFaultInjectionInfoResponseBody) Validate() error {
 }
 
 type ListServiceInstanceFaultInjectionInfoResponseBodyFaultInfoList struct {
-	// The parameters for each fault type.
+	// Detailed parameters for each fault type:
 	//
 	// 1. CpuFullloadTask (CPU full load fault)
 	//
-	//    `{ "FaultType": "CpuFullloadTask", "FaultArgs": { "FaultAction": "fullload", "CpuPercent": 50 } }`
+	// `
 	//
-	// 2. MemLoadTask (Memory load fault)
+	// {
 	//
-	//    `{ "FaultType": "MemLoadTask", "FaultArgs": { "FaultAction": "load", "MemPercent": 80 } }`
+	//   "FaultType": "CpuFullloadTask",
 	//
-	// 3. NetworkTask (Network fault)
+	//   "FaultArgs": {
 	//
-	//    3.a. NetworkDelayAction (Network delay)
+	//     "FaultAction": "fullload",
 	//
-	//    `{ "FaultType": "NetworkTask", "FaultArgs": { "FaultAction": "delay", "Time": 3000, "Offset": 100 } }`
+	//     "CpuPercent": 50
 	//
-	//    3.b. NetworkCorruptAction (Network packet corruption)
+	//   }
 	//
-	//    `{ "FaultType": "NetworkTask", "FaultArgs": { "FaultAction": "corrupt", "Percent": 50 } }`
+	// }
 	//
-	//    3.c. NetworkLossAction (Network packet loss)
+	// `
 	//
-	//    `{ "FaultType": "NetworkTask", "FaultArgs": { "FaultAction": "loss", "Percent": 30 } }`
+	// 2. MemLoadTask (memory load fault)
 	//
-	// 4. DiskBurnTask (Disk read/write fault)
+	// `
 	//
-	//    `{ "FaultType": "DiskBurnTask", "FaultArgs": { "FaultAction": "burn", "Read": true, "Write": true, "Size": 100 } }`
+	// {
 	//
-	// 5. DiskFillTask (Disk fill fault)
+	//   "FaultType": "MemLoadTask",
 	//
-	//    `{ "FaultType": "DiskFillTask", "FaultArgs": { "FaultAction": "fill", "Percent": 80 } }`
+	//   "FaultArgs": {
+	//
+	//     "FaultAction": "load",
+	//
+	//     "MemPercent": 80
+	//
+	//   }
+	//
+	// }
+	//
+	// `
+	//
+	// 3. NetworkTask (network fault)
+	//
+	// 3.a. NetworkDelayAction (network delay)
+	//
+	// `
+	//
+	// {
+	//
+	//   "FaultType": "NetworkTask",
+	//
+	//   "FaultArgs": {
+	//
+	//     "FaultAction": "delay",
+	//
+	//     "Time": 3000,
+	//
+	//     "Offset": 100
+	//
+	//   }
+	//
+	// }
+	//
+	// `
+	//
+	// 3.b. NetworkCorruptAction (network packet corruption)
+	//
+	// `
+	//
+	// {
+	//
+	//   "FaultType": "NetworkTask",
+	//
+	//   "FaultArgs": {
+	//
+	//     "FaultAction": "corrupt",
+	//
+	//     "Percent": 50
+	//
+	//   }
+	//
+	// }
+	//
+	// `
+	//
+	// 3.c. NetworkLossAction (network packet loss)
+	//
+	// `
+	//
+	// {
+	//
+	//   "FaultType": "NetworkTask",
+	//
+	//   "FaultArgs": {
+	//
+	//     "FaultAction": "loss",
+	//
+	//     "Percent": 30
+	//
+	//   }
+	//
+	// }
+	//
+	// `
+	//
+	// 4. DiskBurnTask (disk read/write fault)
+	//
+	// `
+	//
+	// {
+	//
+	//   "FaultType": "DiskBurnTask",
+	//
+	//   "FaultArgs": {
+	//
+	//     "FaultAction": "burn",
+	//
+	//     "Read": true,
+	//
+	//     "Write": true,
+	//
+	//     "Size": 100
+	//
+	//   }
+	//
+	// }
+	//
+	// `
+	//
+	// 5. DiskFillTask (disk fill fault)
+	//
+	// `
+	//
+	// {
+	//
+	//   "FaultType": "DiskFillTask",
+	//
+	//   "FaultArgs": {
+	//
+	//     "FaultAction": "fill",
+	//
+	//     "Percent": 80
+	//
+	//   }
+	//
+	// }
+	//
+	// `
 	//
 	// example:
 	//
@@ -120,7 +238,17 @@ type ListServiceInstanceFaultInjectionInfoResponseBodyFaultInfoList struct {
 	FaultArgs interface{} `json:"FaultArgs,omitempty" xml:"FaultArgs,omitempty"`
 	// The fault status.
 	FaultStatus *ListServiceInstanceFaultInjectionInfoResponseBodyFaultInfoListFaultStatus `json:"FaultStatus,omitempty" xml:"FaultStatus,omitempty" type:"Struct"`
-	// The fault type. Valid values:CpuFullloadTask: a CPU full load fault.MemLoadTask: a memory load fault.NetworkTask: a network fault.DiskBurnTask: a disk read/write fault.DiskFillTask: a disk fill fault.
+	// The fault type. Valid values:
+	//
+	// - CpuFullloadTask: CPU full load fault.
+	//
+	// - MemLoadTask: memory load fault.
+	//
+	// - NetworkTask: network fault.
+	//
+	// - DiskBurnTask: disk read/write fault.
+	//
+	// - DiskFillTask: disk fill fault.
 	//
 	// example:
 	//
@@ -173,13 +301,13 @@ func (s *ListServiceInstanceFaultInjectionInfoResponseBodyFaultInfoList) Validat
 }
 
 type ListServiceInstanceFaultInjectionInfoResponseBodyFaultInfoListFaultStatus struct {
-	// The status of the fault. Valid values:
+	// The fault status. Valid values:
 	//
-	// 1. FaultNotInjected: The task was created, but the fault was not successfully injected.
+	// - FaultNotInjected: The task is created but the fault is not injected.
 	//
-	// 2. FaultInjectedSuccess: The fault was successfully injected.
+	// - FaultInjectedSuccess: The fault is successfully injected.
 	//
-	// 3. FaultInjectedFailure: The fault injection failed. The failure may be caused by parameter errors or system issues.
+	// - FaultInjectedFailure: The fault injection failed, which may be caused by parameter errors or system issues.
 	//
 	// example:
 	//

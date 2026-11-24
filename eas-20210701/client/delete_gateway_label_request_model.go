@@ -14,7 +14,7 @@ type iDeleteGatewayLabelRequest interface {
 }
 
 type DeleteGatewayLabelRequest struct {
-	// The keys of the labels that you want to delete.
+	// The gateway labels to delete.
 	//
 	// This parameter is required.
 	LabelKeys []*string `json:"LabelKeys,omitempty" xml:"LabelKeys,omitempty" type:"Repeated"`

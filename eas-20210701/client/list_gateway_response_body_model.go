@@ -24,13 +24,13 @@ type iListGatewayResponseBody interface {
 type ListGatewayResponseBody struct {
 	// The list of private gateways.
 	Gateways []*ListGatewayResponseBodyGateways `json:"Gateways,omitempty" xml:"Gateways,omitempty" type:"Repeated"`
-	// The page number of the returned gateway list.
+	// The page number of the returned page.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of gateways returned on each page.
+	// The number of entries returned per page.
 	//
 	// example:
 	//
@@ -203,6 +203,12 @@ type ListGatewayResponseBodyGateways struct {
 	//
 	// 2021-02-24T11:52:17Z
 	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	// The ID of the workspace.
+	//
+	// example:
+	//
+	// 123456
+	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 
 func (s ListGatewayResponseBodyGateways) String() string {
@@ -271,6 +277,10 @@ func (s *ListGatewayResponseBodyGateways) GetStatus() *string {
 
 func (s *ListGatewayResponseBodyGateways) GetUpdateTime() *string {
 	return s.UpdateTime
+}
+
+func (s *ListGatewayResponseBodyGateways) GetWorkspaceId() *string {
+	return s.WorkspaceId
 }
 
 func (s *ListGatewayResponseBodyGateways) SetChargeType(v string) *ListGatewayResponseBodyGateways {
@@ -345,6 +355,11 @@ func (s *ListGatewayResponseBodyGateways) SetStatus(v string) *ListGatewayRespon
 
 func (s *ListGatewayResponseBodyGateways) SetUpdateTime(v string) *ListGatewayResponseBodyGateways {
 	s.UpdateTime = &v
+	return s
+}
+
+func (s *ListGatewayResponseBodyGateways) SetWorkspaceId(v string) *ListGatewayResponseBodyGateways {
+	s.WorkspaceId = &v
 	return s
 }
 

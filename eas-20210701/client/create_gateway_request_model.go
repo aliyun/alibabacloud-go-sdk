@@ -27,10 +27,12 @@ type iCreateGatewayRequest interface {
 	GetName() *string
 	SetReplicas(v int32) *CreateGatewayRequest
 	GetReplicas() *int32
+	SetWorkspaceId(v string) *CreateGatewayRequest
+	GetWorkspaceId() *string
 }
 
 type CreateGatewayRequest struct {
-	// The name of the resource group. For more information, see the ResourceName field where ResourceType is SelfManaged in the response of the [ListResources](https://help.aliyun.com/document_detail/412133.html) operation.
+	// The name of the resource group. For more information, see the ResourceName field returned by the [ListResources](https://help.aliyun.com/document_detail/412133.html) operation when ResourceType is set to SelfManaged.
 	//
 	// example:
 	//
@@ -38,15 +40,15 @@ type CreateGatewayRequest struct {
 	ResourceName *string `json:"ResourceName,omitempty" xml:"ResourceName,omitempty"`
 	// Specifies whether to enable auto-renewal. Valid values:
 	//
-	// - false: disables auto-renewal. This is the default value.
+	// - false: Disables auto-renewal. This is the default value.
 	//
-	// - true: enables auto-renewal.
+	// - true: Enables auto-renewal.
 	AutoRenewal *bool `json:"AutoRenewal,omitempty" xml:"AutoRenewal,omitempty"`
 	// The billing method. Valid values:
 	//
-	// - PrePaid: subscription.
+	// - PrePaid: Subscription.
 	//
-	// - PostPaid: pay-as-you-go.
+	// - PostPaid: Pay-as-you-go.
 	//
 	// example:
 	//
@@ -64,7 +66,7 @@ type CreateGatewayRequest struct {
 	//
 	// true
 	EnableIntranet *bool `json:"EnableIntranet,omitempty" xml:"EnableIntranet,omitempty"`
-	// The type of the private gateway. ALB indicates an application-layer dedicated gateway, and FullyManaged indicates a fully managed dedicated gateway.
+	// The type of the private gateway. A value of ALB indicates an application-type dedicated gateway. A value of FullyManaged indicates a fully managed dedicated gateway.
 	//
 	// example:
 	//
@@ -96,6 +98,12 @@ type CreateGatewayRequest struct {
 	//
 	// 2
 	Replicas *int32 `json:"Replicas,omitempty" xml:"Replicas,omitempty"`
+	// The workspace ID.
+	//
+	// example:
+	//
+	// 123456
+	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 
 func (s CreateGatewayRequest) String() string {
@@ -142,6 +150,10 @@ func (s *CreateGatewayRequest) GetReplicas() *int32 {
 	return s.Replicas
 }
 
+func (s *CreateGatewayRequest) GetWorkspaceId() *string {
+	return s.WorkspaceId
+}
+
 func (s *CreateGatewayRequest) SetResourceName(v string) *CreateGatewayRequest {
 	s.ResourceName = &v
 	return s
@@ -184,6 +196,11 @@ func (s *CreateGatewayRequest) SetName(v string) *CreateGatewayRequest {
 
 func (s *CreateGatewayRequest) SetReplicas(v int32) *CreateGatewayRequest {
 	s.Replicas = &v
+	return s
+}
+
+func (s *CreateGatewayRequest) SetWorkspaceId(v string) *CreateGatewayRequest {
+	s.WorkspaceId = &v
 	return s
 }
 

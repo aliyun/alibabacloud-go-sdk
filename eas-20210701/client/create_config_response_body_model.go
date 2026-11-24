@@ -20,25 +20,25 @@ type iCreateConfigResponseBody interface {
 }
 
 type CreateConfigResponseBody struct {
-	// The creation time in UTC, in RFC 3339 format.
+	// The creation time in UTC format that complies with RFC 3339.
 	//
 	// example:
 	//
 	// 2024-01-01T00:00:00Z
 	CreatedAt *string `json:"CreatedAt,omitempty" xml:"CreatedAt,omitempty"`
-	// The dynamic parameter name.
+	// The name of the dynamic parameter.
 	//
 	// example:
 	//
 	// model-config
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The update time in UTC, in RFC 3339 format.
+	// The update time in UTC format that complies with RFC 3339.
 	//
 	// example:
 	//
 	// 2024-01-01T00:00:00Z
 	UpdatedAt *string `json:"UpdatedAt,omitempty" xml:"UpdatedAt,omitempty"`
-	// The dynamic parameter value.
+	// The value of the dynamic parameter.
 	//
 	// example:
 	//

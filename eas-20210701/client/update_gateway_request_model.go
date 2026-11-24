@@ -15,6 +15,8 @@ type iUpdateGatewayRequest interface {
 	GetEnableIntranet() *bool
 	SetEnableSSLRedirection(v bool) *UpdateGatewayRequest
 	GetEnableSSLRedirection() *bool
+	SetIdleTimeout(v int32) *UpdateGatewayRequest
+	GetIdleTimeout() *int32
 	SetInstanceType(v string) *UpdateGatewayRequest
 	GetInstanceType() *string
 	SetIsDefault(v bool) *UpdateGatewayRequest
@@ -23,10 +25,14 @@ type iUpdateGatewayRequest interface {
 	GetName() *string
 	SetReplicas(v int32) *UpdateGatewayRequest
 	GetReplicas() *int32
+	SetRequestTimeout(v int32) *UpdateGatewayRequest
+	GetRequestTimeout() *int32
 	SetVSwitchIds(v []*string) *UpdateGatewayRequest
 	GetVSwitchIds() []*string
 	SetVpcId(v string) *UpdateGatewayRequest
 	GetVpcId() *string
+	SetWorkspaceId(v string) *UpdateGatewayRequest
+	GetWorkspaceId() *string
 }
 
 type UpdateGatewayRequest struct {
@@ -48,6 +54,12 @@ type UpdateGatewayRequest struct {
 	//
 	// false
 	EnableSSLRedirection *bool `json:"EnableSSLRedirection,omitempty" xml:"EnableSSLRedirection,omitempty"`
+	// The idle connection timeout period. Unit: seconds. Default value: 600. Valid values: 1 to 3600.
+	//
+	// example:
+	//
+	// 600
+	IdleTimeout *int32 `json:"IdleTimeout,omitempty" xml:"IdleTimeout,omitempty"`
 	// The instance type used by the private gateway. Valid values:
 	//
 	// - 2c4g
@@ -80,6 +92,12 @@ type UpdateGatewayRequest struct {
 	//
 	// 2
 	Replicas *int32 `json:"Replicas,omitempty" xml:"Replicas,omitempty"`
+	// The request timeout period. Unit: seconds. Default value: 600. Valid values: 1 to 3600.
+	//
+	// example:
+	//
+	// 600
+	RequestTimeout *int32 `json:"RequestTimeout,omitempty" xml:"RequestTimeout,omitempty"`
 	// The list of vSwitches. This parameter applies only to dedicated gateways for applications.
 	VSwitchIds []*string `json:"VSwitchIds,omitempty" xml:"VSwitchIds,omitempty" type:"Repeated"`
 	// The ID of the VPC to which the gateway belongs. This parameter applies only to dedicated gateways for applications.
@@ -88,6 +106,12 @@ type UpdateGatewayRequest struct {
 	//
 	// vpc-bp1jkde2******3mew
 	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	// The workspace ID.
+	//
+	// example:
+	//
+	// 123456
+	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 
 func (s UpdateGatewayRequest) String() string {
@@ -110,6 +134,10 @@ func (s *UpdateGatewayRequest) GetEnableSSLRedirection() *bool {
 	return s.EnableSSLRedirection
 }
 
+func (s *UpdateGatewayRequest) GetIdleTimeout() *int32 {
+	return s.IdleTimeout
+}
+
 func (s *UpdateGatewayRequest) GetInstanceType() *string {
 	return s.InstanceType
 }
@@ -126,12 +154,20 @@ func (s *UpdateGatewayRequest) GetReplicas() *int32 {
 	return s.Replicas
 }
 
+func (s *UpdateGatewayRequest) GetRequestTimeout() *int32 {
+	return s.RequestTimeout
+}
+
 func (s *UpdateGatewayRequest) GetVSwitchIds() []*string {
 	return s.VSwitchIds
 }
 
 func (s *UpdateGatewayRequest) GetVpcId() *string {
 	return s.VpcId
+}
+
+func (s *UpdateGatewayRequest) GetWorkspaceId() *string {
+	return s.WorkspaceId
 }
 
 func (s *UpdateGatewayRequest) SetEnableInternet(v bool) *UpdateGatewayRequest {
@@ -146,6 +182,11 @@ func (s *UpdateGatewayRequest) SetEnableIntranet(v bool) *UpdateGatewayRequest {
 
 func (s *UpdateGatewayRequest) SetEnableSSLRedirection(v bool) *UpdateGatewayRequest {
 	s.EnableSSLRedirection = &v
+	return s
+}
+
+func (s *UpdateGatewayRequest) SetIdleTimeout(v int32) *UpdateGatewayRequest {
+	s.IdleTimeout = &v
 	return s
 }
 
@@ -169,6 +210,11 @@ func (s *UpdateGatewayRequest) SetReplicas(v int32) *UpdateGatewayRequest {
 	return s
 }
 
+func (s *UpdateGatewayRequest) SetRequestTimeout(v int32) *UpdateGatewayRequest {
+	s.RequestTimeout = &v
+	return s
+}
+
 func (s *UpdateGatewayRequest) SetVSwitchIds(v []*string) *UpdateGatewayRequest {
 	s.VSwitchIds = v
 	return s
@@ -176,6 +222,11 @@ func (s *UpdateGatewayRequest) SetVSwitchIds(v []*string) *UpdateGatewayRequest 
 
 func (s *UpdateGatewayRequest) SetVpcId(v string) *UpdateGatewayRequest {
 	s.VpcId = &v
+	return s
+}
+
+func (s *UpdateGatewayRequest) SetWorkspaceId(v string) *UpdateGatewayRequest {
+	s.WorkspaceId = &v
 	return s
 }
 

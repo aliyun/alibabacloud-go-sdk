@@ -16,7 +16,7 @@ type iScaleServiceResponseBody interface {
 }
 
 type ScaleServiceResponseBody struct {
-	// A message indicating the result of the operation.
+	// The operation result message.
 	//
 	// example:
 	//

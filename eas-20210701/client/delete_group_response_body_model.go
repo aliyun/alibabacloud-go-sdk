@@ -16,7 +16,7 @@ type iDeleteGroupResponseBody interface {
 }
 
 type DeleteGroupResponseBody struct {
-	// The response message.
+	// The message returned in the response.
 	//
 	// example:
 	//

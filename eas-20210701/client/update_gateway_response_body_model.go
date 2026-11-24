@@ -18,13 +18,13 @@ type iUpdateGatewayResponseBody interface {
 }
 
 type UpdateGatewayResponseBody struct {
-	// The ID of the private gateway.
+	// The private gateway ID.
 	//
 	// example:
 	//
 	// gw-1uhcqmsc7x22******
 	GatewayId *string `json:"GatewayId,omitempty" xml:"GatewayId,omitempty"`
-	// The returned message.
+	// The response message.
 	//
 	// example:
 	//

@@ -19,6 +19,8 @@ type iDescribeGatewayResponseBody interface {
 	GetGatewayId() *string
 	SetGatewayName(v string) *DescribeGatewayResponseBody
 	GetGatewayName() *string
+	SetIdleTimeout(v string) *DescribeGatewayResponseBody
+	GetIdleTimeout() *string
 	SetInstanceType(v string) *DescribeGatewayResponseBody
 	GetInstanceType() *string
 	SetInternetDomain(v string) *DescribeGatewayResponseBody
@@ -39,82 +41,92 @@ type iDescribeGatewayResponseBody interface {
 	GetReplicas() *int32
 	SetRequestId(v string) *DescribeGatewayResponseBody
 	GetRequestId() *string
+	SetRequestTimeout(v string) *DescribeGatewayResponseBody
+	GetRequestTimeout() *string
 	SetSSLRedirectionEnabled(v bool) *DescribeGatewayResponseBody
 	GetSSLRedirectionEnabled() *bool
 	SetStatus(v string) *DescribeGatewayResponseBody
 	GetStatus() *string
 	SetUpdateTime(v string) *DescribeGatewayResponseBody
 	GetUpdateTime() *string
+	SetWorkspaceId(v string) *DescribeGatewayResponseBody
+	GetWorkspaceId() *string
 }
 
 type DescribeGatewayResponseBody struct {
-	// The billing method. Valid values:
+	// The billing method.
 	//
 	// example:
 	//
 	// PrePaid
 	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
-	// The time when the dedicated gateway was created. The time is in UTC.
+	// The time when the private gateway was created. The time is displayed in UTC.
 	//
 	// example:
 	//
 	// 2020-05-19T14:19:42Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The self-managed cluster ID.
+	// The ID of the self-managed cluster.
 	//
 	// example:
 	//
 	// c935eadf284c14c2da57a2a13ad6******
 	ExternalClusterId *string `json:"ExternalClusterId,omitempty" xml:"ExternalClusterId,omitempty"`
-	// The dedicated gateway ID.
+	// The ID of the private gateway.
 	//
 	// example:
 	//
 	// gw-1uhcqmsc7x22******
 	GatewayId *string `json:"GatewayId,omitempty" xml:"GatewayId,omitempty"`
-	// The alias of the dedicated gateway.
+	// The alias of the private gateway.
 	//
 	// example:
 	//
 	// mygateway1
 	GatewayName *string `json:"GatewayName,omitempty" xml:"GatewayName,omitempty"`
-	// The instance type used by the dedicated gateway.
+	// The idle connection timeout. Default value: 600. Valid values: 1 to 3600. Unit: seconds.
+	//
+	// example:
+	//
+	// 600
+	IdleTimeout *string `json:"IdleTimeout,omitempty" xml:"IdleTimeout,omitempty"`
+	// The instance type used by the private gateway.
 	//
 	// example:
 	//
 	// 2c4g
 	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
-	// The public network access domain name.
+	// The domain name for public network access.
 	//
 	// example:
 	//
 	// gw-1uhcqmsc7x22******-1801786532******.cn-wulanchabu.pai-eas.aliyuncs.com
 	InternetDomain *string `json:"InternetDomain,omitempty" xml:"InternetDomain,omitempty"`
-	// Indicates whether public network access is enabled.
+	// Specifies whether public network access is enabled.
 	//
 	// example:
 	//
 	// true
 	InternetEnabled *bool `json:"InternetEnabled,omitempty" xml:"InternetEnabled,omitempty"`
-	// The status of public network access. Valid values:
+	// The status of enabling or disabling public network access.
 	//
 	// example:
 	//
 	// Running
 	InternetStatus *string `json:"InternetStatus,omitempty" xml:"InternetStatus,omitempty"`
-	// The internal access domain name.
+	// The domain name for internal network access.
 	//
 	// example:
 	//
 	// gw-1uhcqmsc7x22******-1801786532******-vpc.cn-wulanchabu.pai-eas.aliyuncs.com
 	IntranetDomain *string `json:"IntranetDomain,omitempty" xml:"IntranetDomain,omitempty"`
-	// Indicates whether internal network access is enabled. A value of true indicates that internal network access is enabled. A value of false indicates that internal network access is not enabled.
+	// Specifies whether internal network access is enabled. A value of true indicates that internal network access is enabled. A value of false indicates that internal network access is disabled.
 	//
 	// example:
 	//
 	// true
 	IntranetEnabled *bool `json:"IntranetEnabled,omitempty" xml:"IntranetEnabled,omitempty"`
-	// Indicates whether the dedicated gateway is the default gateway.
+	// Specifies whether the private gateway is the default private gateway.
 	//
 	// example:
 	//
@@ -122,7 +134,7 @@ type DescribeGatewayResponseBody struct {
 	IsDefault *bool `json:"IsDefault,omitempty" xml:"IsDefault,omitempty"`
 	// The list of gateway labels.
 	Labels []*DescribeGatewayResponseBodyLabels `json:"Labels,omitempty" xml:"Labels,omitempty" type:"Repeated"`
-	// The number of nodes in the dedicated gateway.
+	// The number of nodes in the private gateway.
 	//
 	// example:
 	//
@@ -134,24 +146,38 @@ type DescribeGatewayResponseBody struct {
 	//
 	// 40325405-579C-4D82****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether HTTP-to-HTTPS redirection is enabled.
+	// The request timeout. Unit: seconds.
+	//
+	// Default value: 600. Valid values: 1 to 3600.
+	//
+	// example:
+	//
+	// 600
+	RequestTimeout *string `json:"RequestTimeout,omitempty" xml:"RequestTimeout,omitempty"`
+	// Specifies whether HTTP to HTTPS redirection is enabled.
 	//
 	// example:
 	//
 	// true
 	SSLRedirectionEnabled *bool `json:"SSLRedirectionEnabled,omitempty" xml:"SSLRedirectionEnabled,omitempty"`
-	// The status of the dedicated gateway. Valid values:
+	// The status of the private gateway.
 	//
 	// example:
 	//
 	// Running
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The time when the dedicated gateway was last updated. The time is in UTC.
+	// The time when the private gateway was updated. The time is displayed in UTC.
 	//
 	// example:
 	//
 	// 2021-02-24T11:52:17Z
 	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
+	// The workspace ID.
+	//
+	// example:
+	//
+	// 123456
+	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 
 func (s DescribeGatewayResponseBody) String() string {
@@ -180,6 +206,10 @@ func (s *DescribeGatewayResponseBody) GetGatewayId() *string {
 
 func (s *DescribeGatewayResponseBody) GetGatewayName() *string {
 	return s.GatewayName
+}
+
+func (s *DescribeGatewayResponseBody) GetIdleTimeout() *string {
+	return s.IdleTimeout
 }
 
 func (s *DescribeGatewayResponseBody) GetInstanceType() *string {
@@ -222,6 +252,10 @@ func (s *DescribeGatewayResponseBody) GetRequestId() *string {
 	return s.RequestId
 }
 
+func (s *DescribeGatewayResponseBody) GetRequestTimeout() *string {
+	return s.RequestTimeout
+}
+
 func (s *DescribeGatewayResponseBody) GetSSLRedirectionEnabled() *bool {
 	return s.SSLRedirectionEnabled
 }
@@ -232,6 +266,10 @@ func (s *DescribeGatewayResponseBody) GetStatus() *string {
 
 func (s *DescribeGatewayResponseBody) GetUpdateTime() *string {
 	return s.UpdateTime
+}
+
+func (s *DescribeGatewayResponseBody) GetWorkspaceId() *string {
+	return s.WorkspaceId
 }
 
 func (s *DescribeGatewayResponseBody) SetChargeType(v string) *DescribeGatewayResponseBody {
@@ -256,6 +294,11 @@ func (s *DescribeGatewayResponseBody) SetGatewayId(v string) *DescribeGatewayRes
 
 func (s *DescribeGatewayResponseBody) SetGatewayName(v string) *DescribeGatewayResponseBody {
 	s.GatewayName = &v
+	return s
+}
+
+func (s *DescribeGatewayResponseBody) SetIdleTimeout(v string) *DescribeGatewayResponseBody {
+	s.IdleTimeout = &v
 	return s
 }
 
@@ -309,6 +352,11 @@ func (s *DescribeGatewayResponseBody) SetRequestId(v string) *DescribeGatewayRes
 	return s
 }
 
+func (s *DescribeGatewayResponseBody) SetRequestTimeout(v string) *DescribeGatewayResponseBody {
+	s.RequestTimeout = &v
+	return s
+}
+
 func (s *DescribeGatewayResponseBody) SetSSLRedirectionEnabled(v bool) *DescribeGatewayResponseBody {
 	s.SSLRedirectionEnabled = &v
 	return s
@@ -321,6 +369,11 @@ func (s *DescribeGatewayResponseBody) SetStatus(v string) *DescribeGatewayRespon
 
 func (s *DescribeGatewayResponseBody) SetUpdateTime(v string) *DescribeGatewayResponseBody {
 	s.UpdateTime = &v
+	return s
+}
+
+func (s *DescribeGatewayResponseBody) SetWorkspaceId(v string) *DescribeGatewayResponseBody {
+	s.WorkspaceId = &v
 	return s
 }
 
@@ -338,13 +391,13 @@ func (s *DescribeGatewayResponseBody) Validate() error {
 }
 
 type DescribeGatewayResponseBodyLabels struct {
-	// The gateway label key.
+	// The key of the gateway label.
 	//
 	// example:
 	//
 	// key1
 	LabelKey *string `json:"LabelKey,omitempty" xml:"LabelKey,omitempty"`
-	// The gateway label value.
+	// The value of the gateway label.
 	//
 	// example:
 	//

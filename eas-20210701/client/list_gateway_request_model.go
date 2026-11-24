@@ -33,6 +33,8 @@ type iListGatewayRequest interface {
 	GetSort() *string
 	SetStatus(v string) *ListGatewayRequest
 	GetStatus() *string
+	SetWorkspaceId(v string) *ListGatewayRequest
+	GetWorkspaceId() *string
 }
 
 type ListGatewayRequest struct {
@@ -42,7 +44,7 @@ type ListGatewayRequest struct {
 	//
 	// PrePaid
 	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
-	// The ID of the private gateway. For information about how to obtain the ID of a private gateway, see the private_gateway_id field in the response of the ListResources operation.
+	// The ID of the private gateway. To obtain the private gateway ID, see the private_gateway_id field in the response of the ListResources operation.
 	//
 	// example:
 	//
@@ -60,13 +62,13 @@ type ListGatewayRequest struct {
 	//
 	// Application
 	GatewayType *string `json:"GatewayType,omitempty" xml:"GatewayType,omitempty"`
-	// Specifies whether Internet access is enabled.
+	// Specifies whether public network access is enabled.
 	//
 	// example:
 	//
 	// true
 	InternetEnabled *bool `json:"InternetEnabled,omitempty" xml:"InternetEnabled,omitempty"`
-	// The label used to filter gateways.
+	// Filters the results by label.
 	//
 	// example:
 	//
@@ -84,13 +86,13 @@ type ListGatewayRequest struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The paging Settings for the number of entries to return per page in a paged query. Default value: 100.
+	// The paging settings for the number of entries to return on each page in a paged query. Default value: 100.
 	//
 	// example:
 	//
 	// 100
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the resource group. For information about how to obtain the ID of a resource group, see the ResourceId field in the response of the [ListResources](https://help.aliyun.com/document_detail/412133.html) operation.
+	// The ID of the resource group. To obtain the resource group ID, see the ResourceId field in the response of the [ListResources](https://help.aliyun.com/document_detail/412133.html) operation.
 	//
 	// example:
 	//
@@ -108,6 +110,12 @@ type ListGatewayRequest struct {
 	//
 	// Running
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The ID of the workspace.
+	//
+	// example:
+	//
+	// 123456
+	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 
 func (s ListGatewayRequest) String() string {
@@ -164,6 +172,10 @@ func (s *ListGatewayRequest) GetSort() *string {
 
 func (s *ListGatewayRequest) GetStatus() *string {
 	return s.Status
+}
+
+func (s *ListGatewayRequest) GetWorkspaceId() *string {
+	return s.WorkspaceId
 }
 
 func (s *ListGatewayRequest) SetChargeType(v string) *ListGatewayRequest {
@@ -223,6 +235,11 @@ func (s *ListGatewayRequest) SetSort(v string) *ListGatewayRequest {
 
 func (s *ListGatewayRequest) SetStatus(v string) *ListGatewayRequest {
 	s.Status = &v
+	return s
+}
+
+func (s *ListGatewayRequest) SetWorkspaceId(v string) *ListGatewayRequest {
+	s.WorkspaceId = &v
 	return s
 }
 

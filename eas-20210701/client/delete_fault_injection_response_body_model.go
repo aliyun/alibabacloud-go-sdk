@@ -16,13 +16,13 @@ type iDeleteFaultInjectionResponseBody interface {
 }
 
 type DeleteFaultInjectionResponseBody struct {
-	// A message that indicates the result of the operation.
+	// The operation result message.
 	//
 	// example:
 	//
 	// Successfully delete acl policy for gateway
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The request ID.
+	// Id of the request
 	//
 	// example:
 	//

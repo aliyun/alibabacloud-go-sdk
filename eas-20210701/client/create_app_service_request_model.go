@@ -40,9 +40,9 @@ type CreateAppServiceRequest struct {
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// Specifies whether to perform a dry run on the request. Valid values:
 	//
-	// - true: performs a dry run and does not create the instance. The system checks whether the required parameters are specified, the request format is valid, the service limits are met, and the ECS inventory is sufficient. If the request fails the check, an error is returned. If the request passes the check, the DryRunOperation error code is returned.
+	// - true: performs a dry run without performing the actual operation. If the request fails the dry run, an error is returned. If the request passes the dry run, the DryRunOperation error code is returned.
 	//
-	// - false (default): performs a normal request and creates the instance if the request passes the check.
+	// - false (default): sends a normal request.
 	//
 	// example:
 	//

@@ -67,6 +67,18 @@ func (s *ListTenantAddonsResponseBody) Validate() error {
 
 type ListTenantAddonsResponseBodyAddons struct {
 	// The plugin attributes.
+	//
+	// example:
+	//
+	// {
+	//
+	//  "AccessToken":"ld***.eY***.",
+	//
+	//  "InternetEndpoint": "****.com/prometheus",
+	//
+	//  "IntranetEndpoint": "****.vpc.com/prometheus"
+	//
+	// }
 	Attributes map[string]*string `json:"Attributes,omitempty" xml:"Attributes,omitempty"`
 	// The plugin name.
 	//

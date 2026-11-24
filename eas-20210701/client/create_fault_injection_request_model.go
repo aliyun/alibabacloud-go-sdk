@@ -182,7 +182,7 @@ type CreateFaultInjectionRequest struct {
 	//
 	// }
 	FaultArgs interface{} `json:"FaultArgs,omitempty" xml:"FaultArgs,omitempty"`
-	// The fault type. Device faults: 1. CPU full-load fault. 2. Memory load fault. 3. Network fault. 4. Disk read/write hang fault. 5. Disk fill fault.
+	// The fault type. Device faults include CPU full load, memory load, network fault, disk read/write hang, and disk fill.
 	//
 	// example:
 	//
