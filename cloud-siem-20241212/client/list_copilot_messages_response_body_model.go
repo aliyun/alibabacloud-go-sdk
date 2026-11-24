@@ -24,21 +24,21 @@ type iListCopilotMessagesResponseBody interface {
 type ListCopilotMessagesResponseBody struct {
 	// The API version.
 	//
-	// >You can call the [DescribeGroupProductions](~~DescribeGroupProductions~~) operation to obtain this parameter.
+	// > You can call the [DescribeGroupProductions](~~DescribeGroupProductions~~) operation to obtain this parameter.
 	//
 	// example:
 	//
 	// v1.2
 	ApiVersion *string `json:"ApiVersion,omitempty" xml:"ApiVersion,omitempty"`
-	// The list of conversation messages.
+	// The list of session messages.
 	Items []*ListCopilotMessagesResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
-	// The maximum amount of data read in this query.
+	// The maximum amount of data read in the current request.
 	//
 	// example:
 	//
 	// 50
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The token for the next query.
+	// The token for the start of the next query.
 	//
 	// example:
 	//
@@ -129,7 +129,7 @@ type ListCopilotMessagesResponseBodyItems struct {
 	//
 	// example:
 	//
-	// The correlation analysis of alerts and network logs has been completed
+	// The correlation analysis of alerts and network logs is complete
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
 	// The creation time.
 	//

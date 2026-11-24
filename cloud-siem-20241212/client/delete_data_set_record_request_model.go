@@ -22,7 +22,7 @@ type iDeleteDataSetRecordRequest interface {
 }
 
 type DeleteDataSetRecordRequest struct {
-	// The dataset ID.
+	// The ID of the dataset.
 	//
 	// This parameter is required.
 	//
@@ -30,7 +30,7 @@ type DeleteDataSetRecordRequest struct {
 	//
 	// dataset-10iy8mbifnb4gniv****
 	DataSetId *string `json:"DataSetId,omitempty" xml:"DataSetId,omitempty"`
-	// The list of dataset record IDs in JSON array format.
+	// The IDs of the dataset records, in JSON array format.
 	//
 	// This parameter is required.
 	//
@@ -52,13 +52,13 @@ type DeleteDataSetRecordRequest struct {
 	//
 	// - cn-hangzhou: Assets are located in the Chinese mainland.
 	//
-	// - ap-southeast-1: Assets are located outside the Chinese mainland.
+	// - ap-southeast-1: Assets are located in regions outside the Chinese mainland.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the user whose perspective the administrator assumes.
+	// The ID of the user whose perspective the administrator switches to.
 	//
 	// example:
 	//

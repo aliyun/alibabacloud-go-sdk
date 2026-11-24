@@ -76,7 +76,7 @@ type CreateDataSourceRequest struct {
 	//
 	// alibaba_cloud_waf_flow_log_1766185894104675
 	DataSourceRecognizer *string `json:"DataSourceRecognizer,omitempty" xml:"DataSourceRecognizer,omitempty"`
-	// The data ingestion IDs associated with the data source.
+	// The IDs of the data ingestion tasks associated with the data source.
 	DataSourceReferences []*string `json:"DataSourceReferences,omitempty" xml:"DataSourceReferences,omitempty" type:"Repeated"`
 	// The list of Simple Log Service projects.
 	DataSourceStores []*CreateDataSourceRequestDataSourceStores `json:"DataSourceStores,omitempty" xml:"DataSourceStores,omitempty" type:"Repeated"`
@@ -150,7 +150,7 @@ type CreateDataSourceRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the user whose perspective the administrator switches to.
+	// The ID of the member whose perspective the administrator switches to.
 	//
 	// example:
 	//
@@ -349,7 +349,7 @@ type CreateDataSourceRequestDataSourceStores struct {
 	//
 	// 1
 	DataSourceStoreId *string `json:"DataSourceStoreId,omitempty" xml:"DataSourceStoreId,omitempty"`
-	// The log storage status. Valid values:
+	// The status of the log storage. Valid values:
 	//
 	// - normal
 	//

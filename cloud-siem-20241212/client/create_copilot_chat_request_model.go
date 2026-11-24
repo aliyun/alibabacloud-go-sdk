@@ -44,7 +44,7 @@ type iCreateCopilotChatRequest interface {
 }
 
 type CreateCopilotChatRequest struct {
-	// The client session ID.
+	// The client conversation ID.
 	//
 	// example:
 	//
@@ -58,15 +58,15 @@ type CreateCopilotChatRequest struct {
 	//
 	// 366932fb-9a83-4a2d-94dd-c925b35f****
 	ClientMessageId *string `json:"ClientMessageId,omitempty" xml:"ClientMessageId,omitempty"`
-	// The session ID.
+	// The conversation ID.
 	//
 	// example:
 	//
 	// 54b6c969-4b75-47be-9f43-71f88aeb****
 	ConversationId *string `json:"ConversationId,omitempty" xml:"ConversationId,omitempty"`
-	// The session creation configuration.
+	// The conversation creation configuration.
 	CreateConversation *CreateCopilotChatRequestCreateConversation `json:"CreateConversation,omitempty" xml:"CreateConversation,omitempty" type:"Struct"`
-	// The language of the returned message. Valid values:
+	// The language of the returned messages. Valid values:
 	//
 	// - **zh*	- (default): Chinese.
 	//
@@ -98,11 +98,11 @@ type CreateCopilotChatRequest struct {
 	//
 	// project-incident-****
 	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	// The region of the data management center for threat analysis. Select the region of the management center based on the region where your assets reside. Valid values:
+	// The region of the data management center for threat analysis. Select the region of the management center based on the region where your assets are located. Valid values:
 	//
-	// - cn-hangzhou: Assets reside in the Chinese mainland.
+	// - cn-hangzhou: Assets are located in the Chinese mainland.
 	//
-	// - ap-southeast-1: Assets reside outside the Chinese mainland.
+	// - ap-southeast-1: Assets are located in regions outside the Chinese mainland.
 	//
 	// example:
 	//
@@ -341,7 +341,7 @@ type CreateCopilotChatRequestCreateConversation struct {
 	//
 	// enabled
 	ThinkingMode *string `json:"ThinkingMode,omitempty" xml:"ThinkingMode,omitempty"`
-	// The session title.
+	// The conversation title.
 	//
 	// example:
 	//
@@ -407,13 +407,13 @@ func (s *CreateCopilotChatRequestCreateConversation) Validate() error {
 }
 
 type CreateCopilotChatRequestMessages struct {
-	// The content of the message.
+	// The message content.
 	//
 	// example:
 	//
-	// Investigate the abnormal logon activities in the past hour
+	// Investigate abnormal logon activities in the last hour
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
-	// The role of the message.
+	// The message role.
 	//
 	// example:
 	//

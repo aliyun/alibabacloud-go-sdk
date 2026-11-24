@@ -48,13 +48,13 @@ type CreateResponseRuleRequest struct {
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The maximum number of data records to return in the current read operation.
+	// The maximum number of data records to return in the current request.
 	//
 	// example:
 	//
 	// 50
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The token that marks the position from which the current read operation starts. If you leave this parameter empty, the read operation starts from the beginning.
+	// The token that marks the position from which to start reading. If this parameter is left empty, the reading starts from the beginning.
 	//
 	// example:
 	//

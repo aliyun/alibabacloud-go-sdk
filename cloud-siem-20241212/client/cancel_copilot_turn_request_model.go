@@ -22,7 +22,7 @@ type iCancelCopilotTurnRequest interface {
 }
 
 type CancelCopilotTurnRequest struct {
-	// The session ID.
+	// The conversation ID.
 	//
 	// This parameter is required.
 	//
@@ -30,7 +30,7 @@ type CancelCopilotTurnRequest struct {
 	//
 	// 54b6c969-4b75-47be-9f43-71f88aeb****
 	ConversationId *string `json:"ConversationId,omitempty" xml:"ConversationId,omitempty"`
-	// The language of the response messages. Valid values:
+	// The language of the returned message. Valid values:
 	//
 	// - **zh*	- (default): Chinese.
 	//
@@ -40,23 +40,23 @@ type CancelCopilotTurnRequest struct {
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The region where the data management center for threat analysis is located. Select the management center region based on the region where your assets reside. Valid values:
+	// The region of the data management center for threat analysis. Select the region of the management center based on the region where your assets are located. Valid values:
 	//
 	// - cn-hangzhou: Assets are located in the Chinese mainland.
 	//
-	// - ap-southeast-1: Assets are located outside China.
+	// - ap-southeast-1: Assets are located outside the Chinese mainland.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The trace ID used to track service requests.
+	// The trace ID used to track the service request.
 	//
 	// example:
 	//
 	// 550e8400e29b41d4a71644665544****
 	TraceId *string `json:"TraceId,omitempty" xml:"TraceId,omitempty"`
-	// The conversation turn ID, obtained from the streaming response of CreateCopilotChat.
+	// The turn ID, which is obtained from the streaming response of CreateCopilotChat.
 	//
 	// This parameter is required.
 	//

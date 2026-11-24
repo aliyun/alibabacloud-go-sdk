@@ -26,7 +26,7 @@ type iUpdateDataStorageTtlRequest interface {
 }
 
 type UpdateDataStorageTtlRequest struct {
-	// The language of the response. Valid values:
+	// The language of the response message. Valid values:
 	//
 	// - **zh*	- (default): Chinese.
 	//
@@ -36,19 +36,19 @@ type UpdateDataStorageTtlRequest struct {
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The storage duration for cold storage in Simple Log Service. This setting is not yet available.
+	// The cold storage duration in Simple Log Service. This parameter is not available for configuration.
 	//
 	// example:
 	//
 	// 0
 	LogStoreColdTtl *string `json:"LogStoreColdTtl,omitempty" xml:"LogStoreColdTtl,omitempty"`
-	// The storage duration for hot storage in Simple Log Service.
+	// The hot storage duration in Simple Log Service.
 	//
 	// example:
 	//
 	// 180
 	LogStoreHotTtl *string `json:"LogStoreHotTtl,omitempty" xml:"LogStoreHotTtl,omitempty"`
-	// The name of the Logstore for threat analysis.
+	// The name of the Logstore for Threat Analysis.
 	//
 	// example:
 	//
@@ -60,17 +60,17 @@ type UpdateDataStorageTtlRequest struct {
 	//
 	// 180
 	LogStoreTtl *string `json:"LogStoreTtl,omitempty" xml:"LogStoreTtl,omitempty"`
-	// The region of the Data Management Center for threat analysis. Select a region based on the location of your assets. Valid values:
+	// The region of the data management center for Threat Analysis. Select the region of the management center based on the region where your assets are located. Valid values:
 	//
-	// - cn-hangzhou: The Chinese mainland.
+	// - cn-hangzhou: The assets are located in the Chinese mainland.
 	//
-	// - ap-southeast-1: Regions outside the Chinese mainland.
+	// - ap-southeast-1: The assets are located outside the Chinese mainland.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The user ID of the member whose perspective the administrator assumes.
+	// The ID of the user whose perspective the administrator switches to.
 	//
 	// example:
 	//

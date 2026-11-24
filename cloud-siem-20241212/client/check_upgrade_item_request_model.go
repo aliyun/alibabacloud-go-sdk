@@ -20,35 +20,35 @@ type iCheckUpgradeItemRequest interface {
 }
 
 type CheckUpgradeItemRequest struct {
-	// The language of the response. Valid values:
+	// The language of the response message. Valid values:
 	//
 	// - **zh*	- (default): Chinese.
 	//
 	// - **en**: English.
 	//
-	// Note: This parameter is required in practice. If you do not specify this parameter, the API returns a 400 error: "The specified Lang can not be empty."
+	// Note: This parameter is required. If you do not specify this parameter, the API returns a 400 error: "The specified Lang can not be empty."
 	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The region where the threat analysis data management center resides. Specify the management center region based on the region of your assets. Valid values:
+	// The region where the data management center for threat analysis is located. Select the region of the management center based on the region where your assets are located. Valid values:
 	//
-	// - cn-hangzhou: The assets reside in the Chinese mainland.
+	// - cn-hangzhou: The assets are located in the Chinese mainland.
 	//
-	// - ap-southeast-1: The assets reside outside China.
+	// - ap-southeast-1: The assets are located outside China.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the member to which the administrator switches the view.
+	// The ID of the user whose perspective the administrator switches to.
 	//
 	// example:
 	//
 	// 113091674488****
 	RoleFor *string `json:"RoleFor,omitempty" xml:"RoleFor,omitempty"`
-	// The upgrade item ID.
+	// The ID of the upgrade item.
 	//
 	// example:
 	//

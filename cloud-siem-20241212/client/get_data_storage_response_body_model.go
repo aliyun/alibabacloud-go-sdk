@@ -16,13 +16,13 @@ type iGetDataStorageResponseBody interface {
 }
 
 type GetDataStorageResponseBody struct {
-	// The detailed information returned.
+	// The detailed response content.
 	//
 	// example:
 	//
 	// {"DataStorageRegionId":"cn-shanghai","DataStorageTotalCapacity":1000,"DataStorageUsedCapacity":41.2,"LogProject":"aliyun-cloudsiem-data-1234567890123456-cn-shanghai","SasLogStores":[{"LogName":"Client events","LogStoreName":"aegis-log-client","LogDeliveryStatus":"enable","LogStoreTtl":180,"LogDeliveryUpdateTime":"2026-10-19T14:00:00","LogDeliveryPermission":"allow","LogDeliveryGroup":"host","LogSearchConditions":"[{\\"__topic__\\":\\"aegis-log-client\\"}]","LogCode":"aegis-log-client","LogStoreExisted":true,"UsedCapacity":10.3,"AccountDeliveries":[{"AccountId":1234567890123456,"AccountName":"1234567890123456","LogDeliveryStatus":"enable","LogDeliveryUpdateTime":"2026-10-19T14:00:00Z","IsDaAccount":true}]}],"NormalizationLogStores":[{"LogStoreName":"host-activity","LogStoreTtl":180,"UsedCapacity":10.3}],"UnusedLogStores":[{"LogStoreName":"cloud-siem","LogStoreTtl":180,"UsedCapacity":10.3}],"RecordLogStores":[{"LogStoreName":"alert-record","LogStoreTtl":180,"UsedCapacity":10.3}],"NormalizationLogViews":[{"CategoryName":"Endpoint security","ActivityName":"Host activity","LogViewName":"host_activity","LogStoreName":"host-activity","DetectionRuleReferenceCount":1,"DetectionRuleReferenceProductIds":["sas"],"LogSearchConditions":"[{\\"SCHEMA\\":\\"host-activity\\"}]","LogViewExisted":true}],"ColdStorageUsedCapacity":0.0,"DataStorageUsedCapacityDetail":"{\\"purchasedHotStorageCapacity\\":1000,\\"usedHotStorageCapacity\\":41.2,\\"usedColdStorageCapacity\\":0.0,\\"usedHotStorageCapacityDetail\\":{\\"cn-shanghai\\":41.2},\\"usedColdStorageCapacityDetail\\":{\\"cn-shanghai\\":0.0}}","DataStorageRegionPermission":"allow","LogServiceDisabled":false,"LogProjectStateChangeAllowed":true,"LogProjectState":"ACTIVE","DeliverySettings":{"PrerequisiteEnabled":true,"CanConfigure":true,"Enabled":true,"Initialized":true,"DaAccountId":"1234567890123456","TargetProject":"aliyun-cloudsiem-data-1234567890123456-cn-shanghai","TargetRegion":"cn-shanghai","ConfigurationVersion":1,"Accounts":[{"AccountId":"1234567890123456","AccountName":"1234567890123456","DaAccount":true,"Authorized":true}],"Types":[{"LogCode":"aegis-log-client","SelectedAccountIds":["1234567890123456"],"AutoIncludeNewAccounts":true,"Executions":[]}]}}
 	Data *GetDataStorageResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The request ID.
+	// The request message ID.
 	//
 	// example:
 	//
@@ -72,53 +72,53 @@ type GetDataStorageResponseBodyData struct {
 	//
 	// 100.0
 	ColdStorageUsedCapacity *float64 `json:"ColdStorageUsedCapacity,omitempty" xml:"ColdStorageUsedCapacity,omitempty"`
-	// The storage region of user logs.
+	// The storage region for user-side logs.
 	//
 	// example:
 	//
 	// cn-shanghai
 	DataStorageRegionId *string `json:"DataStorageRegionId,omitempty" xml:"DataStorageRegionId,omitempty"`
-	// Specifies whether the storage region can be modified. By default, the region cannot be modified. You can contact the product manager to reset the region, and the region can be reset only once. Valid values:
+	// Indicates whether the storage region can be modified. By default, modification is not allowed. Contact the product manager to reset the region. The region can be reset only once. Valid values:
 	//
-	// - allow: The region can be modified.
+	// - allow: The storage region can be modified.
 	//
-	// - deny: The region cannot be modified.
+	// - deny: The storage region cannot be modified.
 	//
 	// example:
 	//
 	// deny
 	DataStorageRegionPermission *string `json:"DataStorageRegionPermission,omitempty" xml:"DataStorageRegionPermission,omitempty"`
-	// The storage capacity purchased for subscription.
+	// The storage capacity purchased in subscription scenarios.
 	//
 	// example:
 	//
 	// 100
 	DataStorageTotalCapacity *int64 `json:"DataStorageTotalCapacity,omitempty" xml:"DataStorageTotalCapacity,omitempty"`
-	// The amount of storage used in user log management.
+	// The storage capacity used in user log management.
 	//
 	// example:
 	//
 	// 100.0
 	DataStorageUsedCapacity *float64 `json:"DataStorageUsedCapacity,omitempty" xml:"DataStorageUsedCapacity,omitempty"`
-	// The storage usage details of the log management user.
+	// The details of storage usage by log management users.
 	//
 	// example:
 	//
 	// {\\"purchasedHotStorageCapacity\\":1000,\\"usedHotStorageCapacity\\":4.2,\\"usedHotStorageCapacityDetail\\":{\\"ap-southeast-1\\":4.2,\\"cn-shenzhen\\":0.0,\\"cn-shanghai\\":0.0}}
 	DataStorageUsedCapacityDetail *string `json:"DataStorageUsedCapacityDetail,omitempty" xml:"DataStorageUsedCapacityDetail,omitempty"`
-	// The multi-account delivery settings for the current storage resources. Returned when the query is successful. If the read operation fails, see DeliverySettingsError.
+	// The multi-account delivery settings for the current storage resource. This parameter is returned when the query is successful. If the read operation fails, refer to DeliverySettingsError.
 	//
 	// example:
 	//
 	// {"PrerequisiteEnabled":true,"CanConfigure":true,"Enabled":true,"Initialized":true,"DaAccountId":"1234567890123456","TargetProject":"aliyun-cloudsiem-data-1234567890123456-cn-shanghai","TargetRegion":"cn-shanghai","ConfigurationVersion":1,"Accounts":[{"AccountId":"1234567890123456","AccountName":"1234567890123456","DaAccount":true,"Authorized":true}],"Types":[{"LogCode":"aegis-log-client","SelectedAccountIds":["1234567890123456"],"AutoIncludeNewAccounts":true,"Executions":[]}]}
 	DeliverySettings *GetDataStorageResponseBodyDataDeliverySettings `json:"DeliverySettings,omitempty" xml:"DeliverySettings,omitempty" type:"Struct"`
-	// The read error code for the optional multi-account delivery settings. If the read operation fails, DELIVERY_SETTINGS_UNAVAILABLE is returned. If the read operation is successful, this field is empty or not returned, and does not affect other storage fields.
+	// The read fault code for optional multi-account delivery settings. If the read failed, DELIVERY_SETTINGS_UNAVAILABLE is returned. If the read is successful, this field is empty or not returned and does not affect other storage fields.
 	//
 	// example:
 	//
 	// DELIVERY_SETTINGS_UNAVAILABLE
 	DeliverySettingsError *string `json:"DeliverySettingsError,omitempty" xml:"DeliverySettingsError,omitempty"`
-	// The name of the Simple Log Service project where user logs are stored.
+	// The name of the Simple Log Service project that stores user logs.
 	//
 	// example:
 	//
@@ -130,43 +130,43 @@ type GetDataStorageResponseBodyData struct {
 	//
 	// ACTIVE
 	LogProjectState *string `json:"LogProjectState,omitempty" xml:"LogProjectState,omitempty"`
-	// Specifies whether the status of the log project can be changed.
+	// Indicates whether the status of the log project can be changed.
 	//
 	// example:
 	//
 	// true
 	LogProjectStateChangeAllowed *bool `json:"LogProjectStateChangeAllowed,omitempty" xml:"LogProjectStateChangeAllowed,omitempty"`
-	// Specifies whether Simple Log Service is disabled.
+	// Indicates whether the log service is disabled.
 	//
 	// example:
 	//
 	// false
 	LogServiceDisabled *bool `json:"LogServiceDisabled,omitempty" xml:"LogServiceDisabled,omitempty"`
-	// The details of the Logstores for normalized data.
+	// The Logstore details for normalized data.
 	//
 	// example:
 	//
 	// [{"LogStoreName":"host-activity","LogStoreTtl":180,"UsedCapacity":10.3}]
 	NormalizationLogStores []*GetDataStorageResponseBodyDataNormalizationLogStores `json:"NormalizationLogStores,omitempty" xml:"NormalizationLogStores,omitempty" type:"Repeated"`
-	// The details of the normalized datasets.
+	// The details of normalized datasets.
 	//
 	// example:
 	//
 	// [{"CategoryName":"Endpoint security","ActivityName":"Host activity","LogViewName":"host_activity","LogStoreName":"host-activity","DetectionRuleReferenceCount":1,"DetectionRuleReferenceProductIds":["sas"],"LogSearchConditions":"[{\\"SCHEMA\\":\\"host-activity\\"}]","LogViewExisted":true}]
 	NormalizationLogViews []*GetDataStorageResponseBodyDataNormalizationLogViews `json:"NormalizationLogViews,omitempty" xml:"NormalizationLogViews,omitempty" type:"Repeated"`
-	// The list of Record Logstores.
+	// The list of record Logstores.
 	//
 	// example:
 	//
 	// [{"LogStoreName":"alert-record","LogStoreTtl":180,"UsedCapacity":10.3}]
 	RecordLogStores []*GetDataStorageResponseBodyDataRecordLogStores `json:"RecordLogStores,omitempty" xml:"RecordLogStores,omitempty" type:"Repeated"`
-	// The storage details of raw logs in Security Center.
+	// The storage details of raw logs from Security Center.
 	//
 	// example:
 	//
 	// [{"LogName":"Client events","LogStoreName":"aegis-log-client","LogDeliveryStatus":"enable","LogStoreTtl":180,"LogDeliveryUpdateTime":"2026-10-19T14:00:00","LogDeliveryPermission":"allow","LogDeliveryGroup":"host","LogSearchConditions":"[{\\"__topic__\\":\\"aegis-log-client\\"}]","LogCode":"aegis-log-client","LogStoreExisted":true,"UsedCapacity":10.3,"AccountDeliveries":[{"AccountId":1234567890123456,"AccountName":"1234567890123456","LogDeliveryStatus":"enable","LogDeliveryUpdateTime":"2026-10-19T14:00:00Z","IsDaAccount":true}]}]
 	SasLogStores []*GetDataStorageResponseBodyDataSasLogStores `json:"SasLogStores,omitempty" xml:"SasLogStores,omitempty" type:"Repeated"`
-	// The list of legacy Logstores in SIEM V1.
+	// The list of legacy SIEM V1 Logstores.
 	//
 	// example:
 	//
@@ -390,43 +390,43 @@ func (s *GetDataStorageResponseBodyData) Validate() error {
 }
 
 type GetDataStorageResponseBodyDataDeliverySettings struct {
-	// The account directory of the current account and managed member accounts.
+	// The account directory of the current local account and managed members.
 	//
 	// example:
 	//
 	// [{"AccountId":"1234567890123456","AccountName":"1234567890123456","DaAccount":true,"Authorized":true}]
 	Accounts []*GetDataStorageResponseBodyDataDeliverySettingsAccounts `json:"Accounts,omitempty" xml:"Accounts,omitempty" type:"Repeated"`
-	// Specifies whether the current account meets the conditions for delivery setting operations. This is determined based on authorization, target project availability, capacity orders, and the current account identity. The PrerequisiteEnabled parameter must also be met.
+	// Indicates whether the current account meets the conditions for configuring delivery settings. This is determined based on authorization, target project availability, capacity orders, and the current account identity. The PrerequisiteEnabled parameter must also be set to true.
 	//
 	// example:
 	//
 	// true
 	CanConfigure *bool `json:"CanConfigure,omitempty" xml:"CanConfigure,omitempty"`
-	// The current version of the delivery settings. When you modify multi-account configurations or specify member delivery, pass this value back as ConfigurationVersion. You must query this value again after each modification and cannot use a fixed example value.
+	// The version of the current delivery settings. When you modify multi-account configurations or specify member delivery, pass this value back as the ConfigurationVersion parameter. Query this value again after each modification. Do not use a fixed sample value.
 	//
 	// example:
 	//
 	// 1
 	ConfigurationVersion *int64 `json:"ConfigurationVersion,omitempty" xml:"ConfigurationVersion,omitempty"`
-	// The UID of the current management and delivery target account, which is a decimal string. This is also the current account that is permanently retained in the account selection list.
+	// The UID of the current management and delivery target account. The value is a decimal string. This account is also the fixed local account in the account selection list.
 	//
 	// example:
 	//
 	// 1234567890123456
 	DaAccountId *string `json:"DaAccountId,omitempty" xml:"DaAccountId,omitempty"`
-	// The master switch for the saved multi-account centralized delivery. A value of true indicates that the switch is turned on. A value of false indicates that the switch is turned off.
+	// The master switch for saved multi-account centralized delivery. A value of true indicates that the switch is turned on. A value of false indicates that the switch is turned off.
 	//
 	// example:
 	//
 	// true
 	Enabled *bool `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
-	// Specifies whether the initialization of the account scope and automatic inclusion settings is completed when the feature is enabled for the first time.
+	// Indicates whether the initialization of the account scope and automatic inclusion settings upon the first enabling is complete.
 	//
 	// example:
 	//
 	// true
 	Initialized *bool `json:"Initialized,omitempty" xml:"Initialized,omitempty"`
-	// Specifies whether the prerequisite of enabling multi-account security management in Security Center is met.
+	// Indicates whether the prerequisite of enabling multi-account security management in Security Center is met.
 	//
 	// example:
 	//
@@ -450,7 +450,17 @@ type GetDataStorageResponseBodyDataDeliverySettings struct {
 	//
 	// [{"LogCode":"aegis-log-client","SelectedAccountIds":["1234567890123456"],"AutoIncludeNewAccounts":true,"Executions":[]}]
 	Types []*GetDataStorageResponseBodyDataDeliverySettingsTypes `json:"Types,omitempty" xml:"Types,omitempty" type:"Repeated"`
-	// The reason code for being unconfigurable. Valid values: DA_UNAUTHORIZED (the management account is not authorized), TARGET_PROJECT_UNAVAILABLE (the target project is unavailable), LOG_CAPACITY_UNAVAILABLE (no valid capacity order exists), and NOT_CURRENT_ACCOUNT (the operation is not performed by the current account). This field is empty or not returned if the conditions are met.
+	// The reason code for why the configuration is unavailable. Valid values:
+	//
+	// - DA_UNAUTHORIZED: The management account is not authorized.
+	//
+	// - TARGET_PROJECT_UNAVAILABLE: The target project is unavailable.
+	//
+	// - LOG_CAPACITY_UNAVAILABLE: No valid capacity order exists.
+	//
+	// - NOT_CURRENT_ACCOUNT: The operation is not performed by the current account.
+	//
+	// If the conditions are met, this parameter is empty or not returned.
 	//
 	// example:
 	//
@@ -588,7 +598,7 @@ func (s *GetDataStorageResponseBodyDataDeliverySettings) Validate() error {
 }
 
 type GetDataStorageResponseBodyDataDeliverySettingsAccounts struct {
-	// The UID of the source Alibaba Cloud account, which is a decimal string.
+	// The UID of the source cloud account. The value is a decimal string.
 	//
 	// example:
 	//
@@ -600,13 +610,13 @@ type GetDataStorageResponseBodyDataDeliverySettingsAccounts struct {
 	//
 	// 1234567890123456
 	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
-	// Specifies whether the account has the authorization required for log delivery. This parameter must be set to true when you add a selected member.
+	// Indicates whether the account has the authorization required for log delivery. This parameter must be set to true when you add a member.
 	//
 	// example:
 	//
 	// true
 	Authorized *bool `json:"Authorized,omitempty" xml:"Authorized,omitempty"`
-	// Specifies whether the account is the current management and delivery target account, which is the current account.
+	// Indicates whether the account is the current management and delivery target account, which is the local account.
 	//
 	// example:
 	//
@@ -663,25 +673,25 @@ func (s *GetDataStorageResponseBodyDataDeliverySettingsAccounts) Validate() erro
 }
 
 type GetDataStorageResponseBodyDataDeliverySettingsTypes struct {
-	// Specifies whether to automatically add subsequent new and available managed members to the selection scope of this log type.
+	// Indicates whether to automatically add subsequent new and available managed members to the selection scope of this log type.
 	//
 	// example:
 	//
 	// true
 	AutoIncludeNewAccounts *bool `json:"AutoIncludeNewAccounts,omitempty" xml:"AutoIncludeNewAccounts,omitempty"`
-	// The status list of existing source delivery records for this log type.
+	// The list of statuses for existing source delivery records of this log type.
 	//
 	// example:
 	//
 	// []
 	Executions []*GetDataStorageResponseBodyDataDeliverySettingsTypesExecutions `json:"Executions,omitempty" xml:"Executions,omitempty" type:"Repeated"`
-	// The unique identifier of the log type, which corresponds to UpdateDataStorageDelivery.LogCode.
+	// The unique identifier of the log type. This corresponds to UpdateDataStorageDelivery.LogCode.
 	//
 	// example:
 	//
 	// aegis-log-client
 	LogCode *string `json:"LogCode,omitempty" xml:"LogCode,omitempty"`
-	// The array of UIDs of the selected source accounts for this log type, including the current account. The response is a JSON string array. When you write an array(simple) request, you must serialize it into comma-separated values.
+	// The array of UIDs of the source accounts selected for this log type, including the local account. The response is a JSON string array. When you write an array(simple) request, serialize the value as comma-separated values.
 	//
 	// example:
 	//
@@ -747,25 +757,31 @@ func (s *GetDataStorageResponseBodyDataDeliverySettingsTypes) Validate() error {
 }
 
 type GetDataStorageResponseBodyDataDeliverySettingsTypesExecutions struct {
-	// The UID of the source account for this delivery record, which is a decimal string.
+	// The UID of the source account for this delivery record. The value is a decimal string.
 	//
 	// example:
 	//
 	// 1234567890123457
 	AccountId *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
-	// A reserved compatibility field. The current implementation does not populate historical execution error codes, so this field is usually empty or not returned. If execution fails, read the error code returned by the corresponding write operation.
+	// A reserved compatibility field. The current implementation does not populate historical execution error codes. This field is usually empty or not returned. If execution fails, read the error code returned by the corresponding write operation.
 	//
 	// example:
 	//
 	// null
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The recorded delivery status. RUNNING indicates that the status is recorded as enabled after the last successful operation. STOPPED indicates that the status is recorded as disabled. This field does not indicate real-time log arrival.
+	// The recorded delivery status. Valid values:
+	//
+	// - RUNNING: The delivery is recorded as enabled after the last successful operation.
+	//
+	// - STOPPED: The delivery is recorded as disabled.
+	//
+	// This field does not indicate real-time log arrival.
 	//
 	// example:
 	//
 	// RUNNING
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The last update time of the delivery status, which is a UNIX timestamp in milliseconds. This field is empty or not returned if the record has no update time.
+	// The time when the delivery status was last updated. The value is a UNIX timestamp in milliseconds. If the record has no update time, this field is empty or not returned.
 	//
 	// example:
 	//
@@ -822,19 +838,31 @@ func (s *GetDataStorageResponseBodyDataDeliverySettingsTypesExecutions) Validate
 }
 
 type GetDataStorageResponseBodyDataNormalizationLogStores struct {
+	// Indicates whether automatic index discovery is enabled for the full-text index of the Logstore in Simple Log Service. This field is returned only when WithAutoKeyDetect=true is specified in the request, and is not returned if the read operation fails.
+	//
+	// example:
+	//
+	// true
+	AutoKeyDetect *bool `json:"AutoKeyDetect,omitempty" xml:"AutoKeyDetect,omitempty"`
+	// Indicates whether the corresponding Logstore in Simple Log Service exists. A value of true indicates that the Logstore exists. A value of false indicates that the Logstore is not created and delivery is not enabled. In this case, automatic index discovery cannot be configured. This field is returned only when WithAutoKeyDetect=true is specified in the request.
+	//
+	// example:
+	//
+	// true
+	LogStoreExisted *bool `json:"LogStoreExisted,omitempty" xml:"LogStoreExisted,omitempty"`
 	// The name of the Logstore that stores normalized data.
 	//
 	// example:
 	//
 	// vulnerability-activity
 	LogStoreName *string `json:"LogStoreName,omitempty" xml:"LogStoreName,omitempty"`
-	// The storage duration of the normalized data.
+	// The storage duration for normalized data.
 	//
 	// example:
 	//
 	// 180
 	LogStoreTtl *int32 `json:"LogStoreTtl,omitempty" xml:"LogStoreTtl,omitempty"`
-	// The amount of hot storage used.
+	// The used capacity of hot storage.
 	//
 	// example:
 	//
@@ -850,6 +878,14 @@ func (s GetDataStorageResponseBodyDataNormalizationLogStores) GoString() string 
 	return s.String()
 }
 
+func (s *GetDataStorageResponseBodyDataNormalizationLogStores) GetAutoKeyDetect() *bool {
+	return s.AutoKeyDetect
+}
+
+func (s *GetDataStorageResponseBodyDataNormalizationLogStores) GetLogStoreExisted() *bool {
+	return s.LogStoreExisted
+}
+
 func (s *GetDataStorageResponseBodyDataNormalizationLogStores) GetLogStoreName() *string {
 	return s.LogStoreName
 }
@@ -860,6 +896,16 @@ func (s *GetDataStorageResponseBodyDataNormalizationLogStores) GetLogStoreTtl() 
 
 func (s *GetDataStorageResponseBodyDataNormalizationLogStores) GetUsedCapacity() *float64 {
 	return s.UsedCapacity
+}
+
+func (s *GetDataStorageResponseBodyDataNormalizationLogStores) SetAutoKeyDetect(v bool) *GetDataStorageResponseBodyDataNormalizationLogStores {
+	s.AutoKeyDetect = &v
+	return s
+}
+
+func (s *GetDataStorageResponseBodyDataNormalizationLogStores) SetLogStoreExisted(v bool) *GetDataStorageResponseBodyDataNormalizationLogStores {
+	s.LogStoreExisted = &v
+	return s
 }
 
 func (s *GetDataStorageResponseBodyDataNormalizationLogStores) SetLogStoreName(v string) *GetDataStorageResponseBodyDataNormalizationLogStores {
@@ -882,25 +928,25 @@ func (s *GetDataStorageResponseBodyDataNormalizationLogStores) Validate() error 
 }
 
 type GetDataStorageResponseBodyDataNormalizationLogViews struct {
-	// The log type of the normalized logs.
+	// The log type of the normalized log.
 	//
 	// example:
 	//
 	// API security risk log
 	ActivityName *string `json:"ActivityName,omitempty" xml:"ActivityName,omitempty"`
-	// The category of the normalized logs.
+	// The category of the normalized log.
 	//
 	// example:
 	//
 	// Security Category
 	CategoryName *string `json:"CategoryName,omitempty" xml:"CategoryName,omitempty"`
-	// The number of times this normalized dataset is referenced in Threat Analysis and Response.
+	// The number of times the normalized dataset is referenced in the threat analysis integration center.
 	//
 	// example:
 	//
 	// 3
 	DetectionRuleReferenceCount *int32 `json:"DetectionRuleReferenceCount,omitempty" xml:"DetectionRuleReferenceCount,omitempty"`
-	// The list of products that reference this normalized dataset in Threat Analysis and Response.
+	// The list of products that reference the normalized dataset in the threat analysis integration center.
 	//
 	// example:
 	//
@@ -912,13 +958,13 @@ type GetDataStorageResponseBodyDataNormalizationLogViews struct {
 	//
 	// [{\\"SCHEMA\\":\\"AZURE_ACTIVE_DIRECTORY_AUDIT_ACTIVITY\\"}]
 	LogSearchConditions *string `json:"LogSearchConditions,omitempty" xml:"LogSearchConditions,omitempty"`
-	// The Logstore where Threat Analysis and Response stores normalized logs.
+	// The Logstore in threat analysis that stores normalized logs.
 	//
 	// example:
 	//
 	// risk-activity
 	LogStoreName *string `json:"LogStoreName,omitempty" xml:"LogStoreName,omitempty"`
-	// Specifies whether the normalized dataset exists. Valid values:
+	// Indicates whether the normalized dataset exists. Valid values:
 	//
 	// - true: The dataset exists.
 	//
@@ -1081,12 +1127,18 @@ func (s *GetDataStorageResponseBodyDataRecordLogStores) Validate() error {
 }
 
 type GetDataStorageResponseBodyDataSasLogStores struct {
-	// The delivery records of this log type expanded by source account, including the current account and member accounts with existing records.
+	// The delivery records of the log type expanded by source account, including the current account and member accounts with existing records.
 	//
 	// example:
 	//
 	// [{"AccountId":1234567890123456,"AccountName":"1234567890123456","LogDeliveryStatus":"enable","LogDeliveryUpdateTime":"2026-10-19T14:00:00Z","IsDaAccount":true}]
 	AccountDeliveries []*GetDataStorageResponseBodyDataSasLogStoresAccountDeliveries `json:"AccountDeliveries,omitempty" xml:"AccountDeliveries,omitempty" type:"Repeated"`
+	// Indicates whether automatic index discovery is enabled for the full-text index of the Logstore in Simple Log Service. This field is returned only when WithAutoKeyDetect=true is specified in the request, and is not returned if the read operation fails.
+	//
+	// example:
+	//
+	// true
+	AutoKeyDetect *bool `json:"AutoKeyDetect,omitempty" xml:"AutoKeyDetect,omitempty"`
 	// The log code.
 	//
 	// example:
@@ -1103,7 +1155,7 @@ type GetDataStorageResponseBodyDataSasLogStores struct {
 	//
 	// host
 	LogDeliveryGroup *string `json:"LogDeliveryGroup,omitempty" xml:"LogDeliveryGroup,omitempty"`
-	// Specifies whether the log delivery switch can be operated. Log delivery is unavailable if the service is not purchased. Valid values:
+	// Specifies whether you are allowed to toggle the log delivery switch. Log delivery is unavailable if the service is not purchased. Valid values:
 	//
 	// - allow: Allowed.
 	//
@@ -1115,9 +1167,9 @@ type GetDataStorageResponseBodyDataSasLogStores struct {
 	LogDeliveryPermission *string `json:"LogDeliveryPermission,omitempty" xml:"LogDeliveryPermission,omitempty"`
 	// The log delivery status. Valid values:
 	//
-	// - enable: Log delivery is enabled.
+	// - enable: Delivery is enabled for the log.
 	//
-	// - disable: Log delivery is disabled.
+	// - disable: Delivery is disabled for the log.
 	//
 	// example:
 	//
@@ -1135,7 +1187,7 @@ type GetDataStorageResponseBodyDataSasLogStores struct {
 	//
 	// Process Snapshot
 	LogName *string `json:"LogName,omitempty" xml:"LogName,omitempty"`
-	// The default query conditions for the log. When multiple logs are stored in a single Logstore, you must use query conditions to perform a log query for a specific log.
+	// The default query conditions for the log. When multiple logs are stored in a single Logstore, you must use query conditions to perform a log query.
 	//
 	// example:
 	//
@@ -1163,7 +1215,7 @@ type GetDataStorageResponseBodyDataSasLogStores struct {
 	//
 	// 180
 	LogStoreTtl *int32 `json:"LogStoreTtl,omitempty" xml:"LogStoreTtl,omitempty"`
-	// The amount of hot storage used.
+	// The used capacity of hot storage.
 	//
 	// example:
 	//
@@ -1181,6 +1233,10 @@ func (s GetDataStorageResponseBodyDataSasLogStores) GoString() string {
 
 func (s *GetDataStorageResponseBodyDataSasLogStores) GetAccountDeliveries() []*GetDataStorageResponseBodyDataSasLogStoresAccountDeliveries {
 	return s.AccountDeliveries
+}
+
+func (s *GetDataStorageResponseBodyDataSasLogStores) GetAutoKeyDetect() *bool {
+	return s.AutoKeyDetect
 }
 
 func (s *GetDataStorageResponseBodyDataSasLogStores) GetLogCode() *string {
@@ -1229,6 +1285,11 @@ func (s *GetDataStorageResponseBodyDataSasLogStores) GetUsedCapacity() *float64 
 
 func (s *GetDataStorageResponseBodyDataSasLogStores) SetAccountDeliveries(v []*GetDataStorageResponseBodyDataSasLogStoresAccountDeliveries) *GetDataStorageResponseBodyDataSasLogStores {
 	s.AccountDeliveries = v
+	return s
+}
+
+func (s *GetDataStorageResponseBodyDataSasLogStores) SetAutoKeyDetect(v bool) *GetDataStorageResponseBodyDataSasLogStores {
+	s.AutoKeyDetect = &v
 	return s
 }
 
@@ -1301,35 +1362,31 @@ func (s *GetDataStorageResponseBodyDataSasLogStores) Validate() error {
 }
 
 type GetDataStorageResponseBodyDataSasLogStoresAccountDeliveries struct {
-	// The UID of the source cloud account. This field is an int64 number.
+	// The UID of the source Alibaba Cloud account for the logs. This field is an int64 number.
 	//
 	// example:
 	//
 	// 1234567890123456
 	AccountId *int64 `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
-	// The display name of the source account. If the name is not obtained, the account UID string is used.
+	// The display name of the source account. If the name is unavailable, the account UID string is used.
 	//
 	// example:
 	//
 	// 1234567890123456
 	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
-	// Indicates whether the account is the current management or target account (the current account). A value of true indicates the current account. A value of false indicates a member source account.
+	// Indicates whether the account is the current management or target account. A value of true indicates the current account, and a value of false indicates a member source account.
 	//
 	// example:
 	//
 	// true
 	IsDaAccount *bool `json:"IsDaAccount,omitempty" xml:"IsDaAccount,omitempty"`
-	// The recorded delivery status of the source account. Valid values:
-	//
-	// - enable: Enabled.
-	//
-	// - disable: Disabled.
+	// The recorded delivery status for the source account. Valid values: enable (enabled) and disable (disabled).
 	//
 	// example:
 	//
 	// enable
 	LogDeliveryStatus *string `json:"LogDeliveryStatus,omitempty" xml:"LogDeliveryStatus,omitempty"`
-	// The last update time of the delivery status for the source account. If no record is generated, this field is empty or not returned.
+	// The last update time of the delivery status for the source account. This field is empty or not returned if no records are generated.
 	//
 	// Use the UTC time format: yyyy-MM-ddTHH:mmZ
 	//
@@ -1409,7 +1466,7 @@ type GetDataStorageResponseBodyDataUnusedLogStores struct {
 	//
 	// 180
 	LogStoreTtl *int32 `json:"LogStoreTtl,omitempty" xml:"LogStoreTtl,omitempty"`
-	// The amount of hot storage used.
+	// The used capacity of hot storage.
 	//
 	// example:
 	//

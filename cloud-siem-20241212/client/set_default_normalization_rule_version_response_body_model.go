@@ -16,9 +16,9 @@ type iSetDefaultNormalizationRuleVersionResponseBody interface {
 }
 
 type SetDefaultNormalizationRuleVersionResponseBody struct {
-	// The normalization rule version.
+	// The version of the normalization rule.
 	NormalizationRuleVersion *SetDefaultNormalizationRuleVersionResponseBodyNormalizationRuleVersion `json:"NormalizationRuleVersion,omitempty" xml:"NormalizationRuleVersion,omitempty" type:"Struct"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
@@ -62,59 +62,59 @@ func (s *SetDefaultNormalizationRuleVersionResponseBody) Validate() error {
 }
 
 type SetDefaultNormalizationRuleVersionResponseBodyNormalizationRuleVersion struct {
-	// The time when the normalization rule version was created. The value is a UNIX timestamp in milliseconds.
+	// The creation time. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
 	// 1733269771123
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The normalization rule category ID.
+	// The category ID of the normalization rule.
 	//
 	// example:
 	//
 	// NETWORK_CATEGORY
 	NormalizationCategoryId *string `json:"NormalizationCategoryId,omitempty" xml:"NormalizationCategoryId,omitempty"`
-	// The normalization rule description.
+	// The description of the normalization rule.
 	//
 	// example:
 	//
 	// normalization_rule_Z57np
 	NormalizationRuleDescription *string `json:"NormalizationRuleDescription,omitempty" xml:"NormalizationRuleDescription,omitempty"`
-	// The normalization rule expression.
+	// The expression of the normalization rule.
 	//
 	// example:
 	//
 	// 	- | pack-fields -include=\\"[\\s\\S]+\\" as extend_content
 	NormalizationRuleExpression *string `json:"NormalizationRuleExpression,omitempty" xml:"NormalizationRuleExpression,omitempty"`
-	// The normalization rule format.
+	// The format of the normalization rule.
 	//
 	// example:
 	//
 	// SPL
 	NormalizationRuleFormat *string `json:"NormalizationRuleFormat,omitempty" xml:"NormalizationRuleFormat,omitempty"`
-	// The normalization rule ID.
+	// The ID of the normalization rule.
 	//
 	// example:
 	//
 	// nr-z0b2ssjteut85uoh9nzp
 	NormalizationRuleId *string `json:"NormalizationRuleId,omitempty" xml:"NormalizationRuleId,omitempty"`
-	// The normalization rule name.
+	// The name of the normalization rule.
 	//
 	// example:
 	//
 	// normalization_rule_Z57np
 	NormalizationRuleName *string `json:"NormalizationRuleName,omitempty" xml:"NormalizationRuleName,omitempty"`
-	// The normalization rule status.
+	// The status of the normalization rule.
 	//
 	// example:
 	//
 	// started
 	NormalizationRuleStatus *string `json:"NormalizationRuleStatus,omitempty" xml:"NormalizationRuleStatus,omitempty"`
-	// The normalization rule type. Valid values:
+	// The type of the normalization rule. Valid values:
 	//
-	// - predefined: predefined normalization rule.
+	// - predefined: predefined normalization rule
 	//
-	// - custom: custom normalization rule.
+	// - custom: custom normalization rule
 	//
 	// example:
 	//
@@ -124,33 +124,33 @@ type SetDefaultNormalizationRuleVersionResponseBodyNormalizationRuleVersion stru
 	//
 	// example:
 	//
-	// V1
+	// 1
 	NormalizationRuleVersion *int32 `json:"NormalizationRuleVersion,omitempty" xml:"NormalizationRuleVersion,omitempty"`
-	// The normalization schema ID.
+	// The ID of the normalization schema.
 	//
 	// example:
 	//
 	// HTTP_ACTIVITY
 	NormalizationSchemaId *string `json:"NormalizationSchemaId,omitempty" xml:"NormalizationSchemaId,omitempty"`
-	// The normalization security domain ID.
+	// The ID of the normalization security domain.
 	//
 	// example:
 	//
 	// NETWORK_AND_WEB_SECURITY
 	NormalizationSecurityDomainId *string `json:"NormalizationSecurityDomainId,omitempty" xml:"NormalizationSecurityDomainId,omitempty"`
-	// The product ID.
+	// The ID of the product.
 	//
 	// example:
 	//
 	// alibaba_cloud_sas
 	ProductId *string `json:"ProductId,omitempty" xml:"ProductId,omitempty"`
-	// The time when the normalization rule version was last updated. The value is a UNIX timestamp in milliseconds.
+	// The update time. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
 	// 1733269771123
 	UpdateTime *int64 `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
-	// The vendor ID associated with the normalization rule.
+	// The ID of the vendor corresponding to the normalization rule.
 	//
 	// example:
 	//

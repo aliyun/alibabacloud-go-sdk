@@ -26,9 +26,9 @@ type iListAlertAggregationsResponseBody interface {
 }
 
 type ListAlertAggregationsResponseBody struct {
-	// The list of alert groups returned based on the specified aggregation method, sorted by alert count in descending order.
+	// The list of alert groups returned based on the specified aggregation method, sorted in descending order of the number of alerts.
 	AlertAggregations []*ListAlertAggregationsResponseBodyAlertAggregations `json:"AlertAggregations,omitempty" xml:"AlertAggregations,omitempty" type:"Repeated"`
-	// The maximum number of entries returned in this request.
+	// The maximum number of entries returned for this request.
 	//
 	// example:
 	//
@@ -40,7 +40,7 @@ type ListAlertAggregationsResponseBody struct {
 	//
 	// AAAAAUqcj6VO4E3ECWIrFczs****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The current page number.
+	// The page number.
 	//
 	// example:
 	//
@@ -52,7 +52,7 @@ type ListAlertAggregationsResponseBody struct {
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -153,9 +153,9 @@ func (s *ListAlertAggregationsResponseBody) Validate() error {
 type ListAlertAggregationsResponseBodyAlertAggregations struct {
 	// The list of account display values involved in the aggregation group, which corresponds one-to-one with the order of AccountIds. If the username is valid and different from the account ID, the format is "Username/Account ID". Otherwise, only the account ID is returned.
 	AccountDisplayValues []*string `json:"AccountDisplayValues,omitempty" xml:"AccountDisplayValues,omitempty" type:"Repeated"`
-	// The list of IDs of the member accounts for which the report is generated. Note: You only need to specify this parameter when you generate a multi-account report and want to generate a report for a specified range of accounts.
+	// The list of IDs of member accounts for which the report is generated. Note: This parameter is required only when you generate a multi-account report and want to generate the report for a specified range of accounts.
 	AccountIds []*string `json:"AccountIds,omitempty" xml:"AccountIds,omitempty" type:"Repeated"`
-	// The unique identifier of the aggregation group. It is concatenated by AggregationType, PrimaryValue, and SecondaryValue with colons (:). If there is no secondary aggregation value, the last segment is empty.
+	// The unique identifier of the aggregation group. It is concatenated by AggregationType, PrimaryValue, and SecondaryValue with colons (:). If no secondary aggregation value exists, the last segment is empty.
 	//
 	// example:
 	//
@@ -167,7 +167,7 @@ type ListAlertAggregationsResponseBodyAlertAggregations struct {
 	//
 	// 5m-avg
 	AggregationType *string `json:"AggregationType,omitempty" xml:"AggregationType,omitempty"`
-	// The number of consecutive failures. This parameter is optional.
+	// The number of consecutive failures. This field is optional.
 	//
 	// example:
 	//
@@ -175,7 +175,7 @@ type ListAlertAggregationsResponseBodyAlertAggregations struct {
 	AlertCount *int64 `json:"AlertCount,omitempty" xml:"AlertCount,omitempty"`
 	// The collection of MITRE ATT&CK attack techniques associated with the alerts in the aggregation group. Each element is a JSON array string.
 	AttackStages []*string `json:"AttackStages,omitempty" xml:"AttackStages,omitempty" type:"Repeated"`
-	// The distribution of alert counts by defense action in the aggregation group. Name is the value of the action field, and Value is the corresponding alert count.
+	// The distribution of the number of alerts in the aggregation group, counted by defense action. Name is the value of the action field, and Value is the corresponding number of alerts.
 	DefenseActionCounts []*ListAlertAggregationsResponseBodyAlertAggregationsDefenseActionCounts `json:"DefenseActionCounts,omitempty" xml:"DefenseActionCounts,omitempty" type:"Repeated"`
 	// The time of the first access. The value is a UNIX timestamp accurate to seconds.
 	//
@@ -189,7 +189,7 @@ type ListAlertAggregationsResponseBodyAlertAggregations struct {
 	//
 	// 1785293908000
 	LatestTime *int64 `json:"LatestTime,omitempty" xml:"LatestTime,omitempty"`
-	// The display text of the primary aggregation value. For account aggregation, it returns "Username/Account ID". If there is no valid username, only the account ID is returned. For event summaries, it returns the event name based on Lang. If the name is missing, the event UUID is returned.
+	// The display text of the primary aggregation value. For account aggregation, "Username/Account ID" is returned. If no valid username exists, only the account ID is returned. For event summaries, the event name is returned based on Lang. If the name is missing, the event UUID is returned.
 	//
 	// example:
 	//
@@ -209,9 +209,9 @@ type ListAlertAggregationsResponseBodyAlertAggregations struct {
 	SecondaryValue *string `json:"SecondaryValue,omitempty" xml:"SecondaryValue,omitempty"`
 	// The collection of event source codes.
 	//
-	// > Example: [\\"MRM\\"]
+	// > Example: [\\\\\\"MRM\\\\\\"]
 	SourceCodes []*string `json:"SourceCodes,omitempty" xml:"SourceCodes,omitempty" type:"Repeated"`
-	// The distribution of alert counts by alert status in the aggregation group. Name is the alert status value, and Value is the corresponding alert count.
+	// The distribution of the number of alerts in the aggregation group, counted by alert status. Name is the alert status value, and Value is the corresponding number of alerts.
 	StatusCounts []*ListAlertAggregationsResponseBodyAlertAggregationsStatusCounts `json:"StatusCounts,omitempty" xml:"StatusCounts,omitempty" type:"Repeated"`
 }
 
@@ -382,7 +382,7 @@ type ListAlertAggregationsResponseBodyAlertAggregationsDefenseActionCounts struc
 	//
 	// example:
 	//
-	// Test-Qiantu System AI
+	// 10
 	Value *int64 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -427,7 +427,7 @@ type ListAlertAggregationsResponseBodyAlertAggregationsStatusCounts struct {
 	//
 	// example:
 	//
-	// 123.123.123.123
+	// 11
 	Value *int64 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 

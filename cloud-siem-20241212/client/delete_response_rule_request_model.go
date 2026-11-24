@@ -38,7 +38,7 @@ type DeleteResponseRuleRequest struct {
 	//
 	// 50
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The token that specifies the position to start reading. If this parameter is left empty, the reading starts from the beginning.
+	// The token that specifies the starting position for reading. Leave this parameter empty to start reading from the beginning.
 	//
 	// example:
 	//

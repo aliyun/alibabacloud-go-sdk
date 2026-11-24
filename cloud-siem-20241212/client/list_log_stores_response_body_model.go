@@ -24,13 +24,13 @@ type iListLogStoresResponseBody interface {
 type ListLogStoresResponseBody struct {
 	// The list of Simple Log Service Logstores.
 	LogStores []*string `json:"LogStores,omitempty" xml:"LogStores,omitempty" type:"Repeated"`
-	// The maximum number of data entries to return in this request.
+	// The maximum number of entries to return for the current request.
 	//
 	// example:
 	//
 	// 50
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The token for the next query. You do not need to specify this parameter for the first query or when no subsequent query is required. If a subsequent query is required, set the value to the NextToken value returned by the previous API call.
+	// The token for the next query. If this is the first query or no subsequent query is required, you do not need to specify this parameter. If a subsequent query is required, set this parameter to the NextToken value returned by the previous API call.
 	//
 	// example:
 	//
@@ -42,7 +42,7 @@ type ListLogStoresResponseBody struct {
 	//
 	// 6276D891-*****-55B2-87B9-74D413F7****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of records.
+	// The total number of entries.
 	//
 	// example:
 	//

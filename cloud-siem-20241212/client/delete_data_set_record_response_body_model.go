@@ -14,7 +14,7 @@ type iDeleteDataSetRecordResponseBody interface {
 }
 
 type DeleteDataSetRecordResponseBody struct {
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//

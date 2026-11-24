@@ -22,7 +22,7 @@ type CreateDetectionRuleResponseBody struct {
 	//
 	// dr-ha1i09ob3zmqrs85****
 	DetectionRuleId *string `json:"DetectionRuleId,omitempty" xml:"DetectionRuleId,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

@@ -28,7 +28,7 @@ type iListLogStoresRequest interface {
 }
 
 type ListLogStoresRequest struct {
-	// The language of the response message. Valid values:
+	// The language of the returned message. Valid values:
 	//
 	// - **zh*	- (default): Chinese.
 	//
@@ -46,7 +46,7 @@ type ListLogStoresRequest struct {
 	//
 	// aliyun-cloudsiem-data-173326*******-cn-hangzhou
 	LogProjectName *string `json:"LogProjectName,omitempty" xml:"LogProjectName,omitempty"`
-	// The log storage region ID. This parameter is required when LogProjectName is provided, and the log storage region must match the log project. You can call the GetDataStorage operation to obtain valid values.
+	// The log storage region ID. This parameter is required when LogProjectName is provided, and the log storage region must be consistent with the log project. You can call the GetDataStorage operation to obtain valid values.
 	//
 	// example:
 	//
@@ -58,7 +58,7 @@ type ListLogStoresRequest struct {
 	//
 	// 173326*******
 	LogUserId *int64 `json:"LogUserId,omitempty" xml:"LogUserId,omitempty"`
-	// The maximum number of data entries to return in this request.
+	// The maximum number of entries to return for the current request.
 	//
 	// if can be null:
 	// true
@@ -67,17 +67,17 @@ type ListLogStoresRequest struct {
 	//
 	// 50
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The token for the next query. You do not need to specify this parameter for the first query or when no subsequent query is required. If a subsequent query is required, set the value to the NextToken value returned by the previous API call.
+	// The token for the next query. If this is the first query or no subsequent query is required, you do not need to specify this parameter. If a subsequent query is required, set this parameter to the NextToken value returned by the previous API call.
 	//
 	// example:
 	//
 	// AAAAAUqcj6VO4E3ECWIrFczs****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The region of the data management center for threat analysis. Select the region of the management center based on the region where your assets are located. Valid values:
+	// The region of the data management center for threat analysis. You must select the region of the management center based on the region where your assets are located. Valid values:
 	//
-	// - cn-hangzhou: The assets are located in the Chinese mainland.
+	// - cn-hangzhou: Assets are located in the Chinese mainland.
 	//
-	// - ap-southeast-1: The assets are located outside the Chinese mainland.
+	// - ap-southeast-1: Assets are located outside China.
 	//
 	// example:
 	//

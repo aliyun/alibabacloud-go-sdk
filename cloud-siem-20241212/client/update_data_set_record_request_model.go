@@ -38,7 +38,7 @@ type UpdateDataSetRecordRequest struct {
 	//
 	// dataset-10iy8mbifnb4gniv****
 	DataSetId *string `json:"DataSetId,omitempty" xml:"DataSetId,omitempty"`
-	// The content of the dataset records, in JSON array format.
+	// The content of the dataset records in JSON array format.
 	//
 	// example:
 	//
@@ -46,7 +46,7 @@ type UpdateDataSetRecordRequest struct {
 	//
 	//  {\\"ip\\":\\"2.2.2.2\\",\\"userid\\":\\"33333\\",\\"name\\":\\"a12401\\"}]
 	DataSetRecords *string `json:"DataSetRecords,omitempty" xml:"DataSetRecords,omitempty"`
-	// The language of the response. Valid values:
+	// The language of the response message. Valid values:
 	//
 	// - **zh*	- (default): Chinese.
 	//
@@ -56,17 +56,17 @@ type UpdateDataSetRecordRequest struct {
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The region where the Data Management center for threat analysis is located. Select a region for the management center based on the region of your asset. Valid values:
+	// The region where the data management center for threat analysis is located. Select the region of the management center based on the region where your assets are located. Valid values:
 	//
-	// - cn-hangzhou: The asset is in the Chinese mainland.
+	// - cn-hangzhou: Assets are located in the Chinese mainland.
 	//
-	// - ap-southeast-1: The asset is in a region outside China.
+	// - ap-southeast-1: Assets are located outside the Chinese mainland.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The user ID of the member. An administrator can use this parameter to switch to the perspective of a specific member.
+	// The ID of the user whose perspective the administrator switches to.
 	//
 	// example:
 	//

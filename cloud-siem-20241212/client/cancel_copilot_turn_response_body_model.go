@@ -18,7 +18,7 @@ type iCancelCopilotTurnResponseBody interface {
 }
 
 type CancelCopilotTurnResponseBody struct {
-	// The API version number. The value is 1.0.0.
+	// The API version number, which is "1.0.0".
 	//
 	// example:
 	//
@@ -30,7 +30,7 @@ type CancelCopilotTurnResponseBody struct {
 	//
 	// 9AAA9ED9-78F4-5021-86DC-D51C7511****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The security operations Agent conversation turn.
+	// The conversation turn of the security operations agent.
 	Turn *CancelCopilotTurnResponseBodyTurn `json:"Turn,omitempty" xml:"Turn,omitempty" type:"Struct"`
 }
 
@@ -85,25 +85,25 @@ type CancelCopilotTurnResponseBodyTurn struct {
 	//
 	// 366932fb-9a83-4a2d-94dd-c925b35f****
 	ClientMessageId *string `json:"ClientMessageId,omitempty" xml:"ClientMessageId,omitempty"`
-	// The session ID.
+	// The conversation ID.
 	//
 	// example:
 	//
 	// 54b6c969-4b75-47be-9f43-71f88aeb****
 	ConversationId *string `json:"ConversationId,omitempty" xml:"ConversationId,omitempty"`
-	// The creation time. The time follows the ISO 8601 standard in UTC.
+	// The creation time in ISO 8601 format and the UTC time zone.
 	//
 	// example:
 	//
 	// 2026-08-23T02:13:49Z
 	CreatedAt *string `json:"CreatedAt,omitempty" xml:"CreatedAt,omitempty"`
-	// The conversation feedback information.
+	// The returned conversation information.
 	//
 	// example:
 	//
 	// 1
 	Feedback *int64 `json:"Feedback,omitempty" xml:"Feedback,omitempty"`
-	// The number of tokens used for input.
+	// The number of input tokens used.
 	//
 	// example:
 	//
@@ -115,7 +115,7 @@ type CancelCopilotTurnResponseBodyTurn struct {
 	//
 	// model-****
 	ModelId *string `json:"ModelId,omitempty" xml:"ModelId,omitempty"`
-	// The number of tokens used for output.
+	// The number of output tokens.
 	//
 	// example:
 	//
@@ -127,9 +127,9 @@ type CancelCopilotTurnResponseBodyTurn struct {
 	//
 	// 420
 	ReasoningTokens *int64 `json:"ReasoningTokens,omitempty" xml:"ReasoningTokens,omitempty"`
-	// Indicates whether a retry is allowed.
+	// Specifies whether retries are allowed.
 	RetryAllowed *bool `json:"RetryAllowed,omitempty" xml:"RetryAllowed,omitempty"`
-	// The status of the conversation turn.
+	// The status.
 	//
 	// example:
 	//

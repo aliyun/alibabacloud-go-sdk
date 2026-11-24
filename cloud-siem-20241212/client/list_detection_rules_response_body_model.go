@@ -28,7 +28,7 @@ type iListDetectionRulesResponseBody interface {
 type ListDetectionRulesResponseBody struct {
 	// The list of detection rules.
 	DetectionRules []*ListDetectionRulesResponseBodyDetectionRules `json:"DetectionRules,omitempty" xml:"DetectionRules,omitempty" type:"Repeated"`
-	// The maximum number of data entries to return in this request.
+	// The maximum number of results to return in this request.
 	//
 	// example:
 	//
@@ -201,7 +201,7 @@ type ListDetectionRulesResponseBodyDetectionRules struct {
 	//
 	// - FIREWALL_ALERT_ACTIVITY: firewall alerts
 	//
-	// - WAF_ALERT_ACTIVITY: Web Application Firewall alerts
+	// - WAF_ALERT_ACTIVITY: web application firewall alerts
 	//
 	// example:
 	//
@@ -238,12 +238,16 @@ type ListDetectionRulesResponseBodyDetectionRules struct {
 	// WebShell
 	AlertType *string `json:"AlertType,omitempty" xml:"AlertType,omitempty"`
 	// The alerting type mapping.
-	AlertTypeMapping *string `json:"AlertTypeMapping,omitempty" xml:"AlertTypeMapping,omitempty"`
-	// The creation time. The format is YYYY-MM-DD HH:mm:ss.
 	//
 	// example:
 	//
-	// 2023-03-21 13:47:01
+	// 进程异常行为
+	AlertTypeMapping *string `json:"AlertTypeMapping,omitempty" xml:"AlertTypeMapping,omitempty"`
+	// The creation time.
+	//
+	// example:
+	//
+	// 1794302020000
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	// The expression content of the detection rule.
 	//
@@ -327,23 +331,23 @@ type ListDetectionRulesResponseBodyDetectionRules struct {
 	DetectionRuleType *string `json:"DetectionRuleType,omitempty" xml:"DetectionRuleType,omitempty"`
 	// The entity mapping configuration.
 	EntityMappings []*ListDetectionRulesResponseBodyDetectionRulesEntityMappings `json:"EntityMappings,omitempty" xml:"EntityMappings,omitempty" type:"Repeated"`
-	// The incident aggregation period configuration.
+	// The event aggregation period configuration.
 	//
 	// example:
 	//
 	// 5m
 	IncidentAggregationExpression *string `json:"IncidentAggregationExpression,omitempty" xml:"IncidentAggregationExpression,omitempty"`
-	// The incident aggregation type. Valid values:
+	// The event aggregation type. Valid values:
 	//
-	// - none: no event generated
+	// - none: no event generation
 	//
 	// - graph_compute: graph computing (supported by predefined rules)
 	//
-	// - expert: expert rule
+	// - expert: expert rules
 	//
 	// - passthrough: alerting pass-through (one-to-one)
 	//
-	// - window: similar aggregation (window)
+	// - window: similar event aggregation (window)
 	//
 	// example:
 	//
@@ -363,7 +367,7 @@ type ListDetectionRulesResponseBodyDetectionRules struct {
 	LogSchemaId *string `json:"LogSchemaId,omitempty" xml:"LogSchemaId,omitempty"`
 	// The XML configuration of the playbook.
 	Playbook *ListDetectionRulesResponseBodyDetectionRulesPlaybook `json:"Playbook,omitempty" xml:"Playbook,omitempty" type:"Struct"`
-	// The user-defined parameters of the playbook.
+	// The custom parameters of the playbook.
 	//
 	// example:
 	//
@@ -395,7 +399,7 @@ type ListDetectionRulesResponseBodyDetectionRules struct {
 	//
 	// 5m
 	ScheduleExpression *string `json:"ScheduleExpression,omitempty" xml:"ScheduleExpression,omitempty"`
-	// The maximum number of retries upon timeout. Valid values: 1 to 100.
+	// The maximum number of retries for a timeout. Valid values: 1 to 100.
 	//
 	// example:
 	//
@@ -423,11 +427,11 @@ type ListDetectionRulesResponseBodyDetectionRules struct {
 	//
 	// 5m
 	ScheduleWindow *string `json:"ScheduleWindow,omitempty" xml:"ScheduleWindow,omitempty"`
-	// The update time. The format is YYYY-MM-DD HH:mm:ss.
+	// The update time.
 	//
 	// example:
 	//
-	// 2023-04-16 10:51:00
+	// 1794302022000
 	UpdateTime *int64 `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
 }
 

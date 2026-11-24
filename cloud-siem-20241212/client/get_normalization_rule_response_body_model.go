@@ -70,27 +70,27 @@ type GetNormalizationRuleResponseBodyNormalizationRule struct {
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
 	// Specifies whether to pack non-standard fields into the extended field extend_content. Valid values:
 	//
-	// - enabled: Enabled.
+	// - enabled: enabled
 	//
-	// - disabled: Disabled.
+	// - disabled: disabled
 	//
 	// example:
 	//
 	// enabled
 	ExtendContentPacked *string `json:"ExtendContentPacked,omitempty" xml:"ExtendContentPacked,omitempty"`
-	// The storage mode for extended fields. Valid values: flat (ingest as-is), reject (do not ingest), and pack (pack into the extend_content field).
+	// The storage mode for extended fields. Valid values: flat: ingested as-is, reject: not ingested, pack: packed into the extend_content field.
 	//
 	// example:
 	//
 	// flat
 	ExtendFieldStoreMode *string `json:"ExtendFieldStoreMode,omitempty" xml:"ExtendFieldStoreMode,omitempty"`
-	// The category ID of the normalization rule.
+	// The ID of the normalization rule category.
 	//
 	// example:
 	//
 	// NETWORK_CATEGORY
 	NormalizationCategoryId *string `json:"NormalizationCategoryId,omitempty" xml:"NormalizationCategoryId,omitempty"`
-	// The field source:
+	// The source of the field. Valid values:
 	//
 	// - "native": raw logs
 	//
@@ -164,7 +164,7 @@ type GetNormalizationRuleResponseBodyNormalizationRule struct {
 	//
 	// example:
 	//
-	// V1
+	// 5
 	NormalizationRuleVersion *int32 `json:"NormalizationRuleVersion,omitempty" xml:"NormalizationRuleVersion,omitempty"`
 	// The ID of the normalization schema.
 	//
@@ -178,17 +178,17 @@ type GetNormalizationRuleResponseBodyNormalizationRule struct {
 	//
 	// NETWORK_AND_WEB_SECURITY
 	NormalizationSecurityDomainId *string `json:"NormalizationSecurityDomainId,omitempty" xml:"NormalizationSecurityDomainId,omitempty"`
-	// The field used to sort the rule list. Valid values:
+	// The field by which the rule list is sorted. Valid values:
 	//
-	// - GmtModified: sort by modification time
+	// - GmtModified: sorts by update time
 	//
-	// - Id: sort by rule ID (default)
+	// - Id: sorts by rule ID (default)
 	//
 	// example:
 	//
 	// GmtModified
 	OrderField *string `json:"OrderField,omitempty" xml:"OrderField,omitempty"`
-	// The product ID.
+	// The ID of the product.
 	//
 	// example:
 	//

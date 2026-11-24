@@ -17,10 +17,6 @@ type iExecuteLogQueryResponseBody interface {
 
 type ExecuteLogQueryResponseBody struct {
   // The query result.
-  // 
-  // example:
-  // 
-  // []。
   QueryResult []interface{} `json:"QueryResult,omitempty" xml:"QueryResult,omitempty" type:"Repeated"`
   // The request ID.
   // 

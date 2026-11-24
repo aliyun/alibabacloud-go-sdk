@@ -26,15 +26,15 @@ type iListDataConnectorsResponseBody interface {
 }
 
 type ListDataConnectorsResponseBody struct {
-	// The list of collectors.
+	// The list of data connectors.
 	DataConnector []*ListDataConnectorsResponseBodyDataConnector `json:"DataConnector,omitempty" xml:"DataConnector,omitempty" type:"Repeated"`
-	// The maximum number of records returned in this query.
+	// The maximum number of entries returned in the current request.
 	//
 	// example:
 	//
 	// 50
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The token for the next query.
+	// The token used to query the next page.
 	//
 	// example:
 	//
@@ -46,19 +46,19 @@ type ListDataConnectorsResponseBody struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of records per page.
+	// The number of entries returned per page.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
 	// 6276D891-*****-55B2-87B9-74D413F7****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of records.
+	// The total number of entries.
 	//
 	// example:
 	//
@@ -151,19 +151,19 @@ func (s *ListDataConnectorsResponseBody) Validate() error {
 }
 
 type ListDataConnectorsResponseBodyDataConnector struct {
-	// The configuration item ID of the collector access object in the multi-cloud configuration.
+	// The ID of the configuration item for the data connector access object in the multi-cloud configuration.
 	//
 	// example:
 	//
 	// cn-smbc-prod-cloudtrail.s3.cn-north-1.amazonaws.com.cn_AKIAX4AUG6AYSJO7FAG4
 	AuthConfigId *string `json:"AuthConfigId,omitempty" xml:"AuthConfigId,omitempty"`
-	// The cloud product to which the authentication configuration belongs.
+	// The cloud service to which the authentication configuration belongs.
 	//
 	// example:
 	//
 	// salesForceRestAPI
 	AuthConfigProduct *string `json:"AuthConfigProduct,omitempty" xml:"AuthConfigProduct,omitempty"`
-	// The cloud vendor to which the authentication configuration belongs.
+	// The cloud provider to which the authentication configuration belongs.
 	//
 	// example:
 	//
@@ -173,45 +173,45 @@ type ListDataConnectorsResponseBodyDataConnector struct {
 	//
 	// example:
 	//
-	// 2026-06-01T02:14:24Z
+	// 1792515606000
 	CreationTime *int64 `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
-	// The collector configuration information.
+	// The configuration information of the data connector.
 	//
 	// example:
 	//
 	// {\\"endpoint\\":\\"csrm-sentinel.s3.cn-north-1.amazonaws.com.cn_AKIARGUYUGSX6A6VUXQJ\\",\\"bucket\\":\\"csrm-sentinel\\",\\"prefix\\":\\"AliTest/\\",\\"format\\":{\\"type\\":\\"JSON\\"},\\"encoding\\":\\"UTF-8\\"}
 	DataConnectorConfig *string `json:"DataConnectorConfig,omitempty" xml:"DataConnectorConfig,omitempty"`
-	// The collector ID.
+	// The data connector ID.
 	//
 	// example:
 	//
 	// dc-07423146117d77db266f78bc41f4fd80
 	DataConnectorId *string `json:"DataConnectorId,omitempty" xml:"DataConnectorId,omitempty"`
-	// The data connector name.
+	// The name of the data connector.
 	//
 	// example:
 	//
 	// dc-***
 	DataConnectorName *string `json:"DataConnectorName,omitempty" xml:"DataConnectorName,omitempty"`
-	// The connector status.
+	// The enabled status of the data connector.
 	//
 	// example:
 	//
 	// enable
 	DataConnectorStatus *string `json:"DataConnectorStatus,omitempty" xml:"DataConnectorStatus,omitempty"`
-	// The connector type.
+	// The type of the data connector.
 	//
 	// example:
 	//
 	// oss
 	DataConnectorType *string `json:"DataConnectorType,omitempty" xml:"DataConnectorType,omitempty"`
-	// The destination data source ID. This parameter is required only for synchronization.
+	// The ID of the destination data source. This parameter is required only for synchronization.
 	//
 	// example:
 	//
 	// ds-t3ywipile7gctobaunx0
 	DestDataSourceId *string `json:"DestDataSourceId,omitempty" xml:"DestDataSourceId,omitempty"`
-	// The Simple Log Service project name.
+	// The name of the Simple Log Service project.
 	//
 	// example:
 	//
@@ -223,25 +223,25 @@ type ListDataConnectorsResponseBodyDataConnector struct {
 	//
 	// cn-hangzhou
 	LogRegionId *string `json:"LogRegionId,omitempty" xml:"LogRegionId,omitempty"`
-	// The Simple Log Service Logstore name.
+	// The name of the Simple Log Service Logstore.
 	//
 	// example:
 	//
 	// ls-wecom-crontasklog-prod
 	LogStoreName *string `json:"LogStoreName,omitempty" xml:"LogStoreName,omitempty"`
-	// The name of the SLS data import job for the collector.
+	// The name of the Simple Log Service (SLS) data import job for the data connector.
 	//
 	// example:
 	//
 	// 1a2b3c4d5e6f7a8b9c0d1e2f3a4b****
 	SlsIngestionJobName *string `json:"SlsIngestionJobName,omitempty" xml:"SlsIngestionJobName,omitempty"`
-	// The status of the SLS data import job for the collector.
+	// The status of the Simple Log Service (SLS) data import job for the data connector.
 	//
 	// example:
 	//
 	// running
 	SlsIngestionJobState *string `json:"SlsIngestionJobState,omitempty" xml:"SlsIngestionJobState,omitempty"`
-	// The source data type.
+	// The type of the source data source.
 	//
 	// example:
 	//
@@ -251,7 +251,7 @@ type ListDataConnectorsResponseBodyDataConnector struct {
 	//
 	// example:
 	//
-	// 2025-01-04 22:31:54
+	// 1792515606000
 	UpdateTime *int64 `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
 }
 

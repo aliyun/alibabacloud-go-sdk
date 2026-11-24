@@ -44,7 +44,7 @@ type iCreateCopilotChatShrinkRequest interface {
 }
 
 type CreateCopilotChatShrinkRequest struct {
-	// The client session ID.
+	// The client conversation ID.
 	//
 	// example:
 	//
@@ -58,15 +58,15 @@ type CreateCopilotChatShrinkRequest struct {
 	//
 	// 366932fb-9a83-4a2d-94dd-c925b35f****
 	ClientMessageId *string `json:"ClientMessageId,omitempty" xml:"ClientMessageId,omitempty"`
-	// The session ID.
+	// The conversation ID.
 	//
 	// example:
 	//
 	// 54b6c969-4b75-47be-9f43-71f88aeb****
 	ConversationId *string `json:"ConversationId,omitempty" xml:"ConversationId,omitempty"`
-	// The session creation configuration.
+	// The conversation creation configuration.
 	CreateConversationShrink *string `json:"CreateConversation,omitempty" xml:"CreateConversation,omitempty"`
-	// The language of the returned message. Valid values:
+	// The language of the returned messages. Valid values:
 	//
 	// - **zh*	- (default): Chinese.
 	//
@@ -98,11 +98,11 @@ type CreateCopilotChatShrinkRequest struct {
 	//
 	// project-incident-****
 	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	// The region of the data management center for threat analysis. Select the region of the management center based on the region where your assets reside. Valid values:
+	// The region of the data management center for threat analysis. Select the region of the management center based on the region where your assets are located. Valid values:
 	//
-	// - cn-hangzhou: Assets reside in the Chinese mainland.
+	// - cn-hangzhou: Assets are located in the Chinese mainland.
 	//
-	// - ap-southeast-1: Assets reside outside the Chinese mainland.
+	// - ap-southeast-1: Assets are located in regions outside the Chinese mainland.
 	//
 	// example:
 	//

@@ -42,7 +42,7 @@ type ValidateNormalizationRuleRequest struct {
 	//
 	// 123456
 	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	// The storage mode of extended fields. Valid values: flat, pack, and reject.
+	// The storage mode for extended fields. Valid values: flat, pack, and reject.
 	//
 	// example:
 	//
@@ -54,7 +54,7 @@ type ValidateNormalizationRuleRequest struct {
 	//
 	// - **en**: English.
 	//
-	// Note: This parameter is required in actual API calls. If this parameter is not provided, the service returns a 400 error with the message \\"The specified Lang can not be empty.\\" Explicitly specify the language code.
+	// Note: This parameter is required in actual API calls. If this parameter is not provided, the service returns a 400 error with the message "The specified Lang can not be empty." Explicitly pass the language code.
 	//
 	// example:
 	//
@@ -96,7 +96,7 @@ type ValidateNormalizationRuleRequest struct {
 	//
 	// alibaba_cloud_sas
 	ProductId *string `json:"ProductId,omitempty" xml:"ProductId,omitempty"`
-	// The region where the data management center of Threat Analysis is located. Select the region of the management center based on the region where your assets are located. Valid values:
+	// The region where the data management center of Threat Analysis is located. You must select the region of the management center based on the region where your assets are located. Valid values:
 	//
 	// - cn-hangzhou: The assets are located in the Chinese mainland.
 	//

@@ -38,13 +38,13 @@ type iExecuteLogQueryRequest interface {
 }
 
 type ExecuteLogQueryRequest struct {
-  // The end time. The value is a UNIX timestamp in milliseconds (ms).
+  // The end time. The value is a UNIX timestamp in milliseconds.
   // 
   // example:
   // 
   // 1733269771123
   EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-  // Specifies whether to pack non-standard fields into the extended field extend_content. Valid values:
+  // Specifies whether to pack non-standard fields into the extend_content field. Valid values:
   // 
   // - enabled: Enabled.
   // 
@@ -54,17 +54,17 @@ type ExecuteLogQueryRequest struct {
   // 
   // enabled
   ExtendContentPacked *string `json:"ExtendContentPacked,omitempty" xml:"ExtendContentPacked,omitempty"`
-  // The language of the response messages. Valid values:
+  // The language of the response message. Valid values:
   // 
   // - **zh*	- (default): Chinese.
   // 
-  // - **en**: English. This parameter is required. If not specified, the service returns a 400 error. Explicitly set this parameter to zh or en.
+  // - **en**: English. This parameter is actually required. If it is not provided, the service returns a 400 error. Explicitly specify zh or en.
   // 
   // example:
   // 
   // zh
   Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-  // The log query condition.
+  // The log query conditions.
   // 
   // example:
   // 
@@ -82,7 +82,7 @@ type ExecuteLogQueryRequest struct {
   // 
   // *
   LogQuery *string `json:"LogQuery,omitempty" xml:"LogQuery,omitempty"`
-  // The ID of the log storage region. This parameter is required when executing a log query.
+  // The ID of the log storage region. This parameter is actually required when you execute a log query.
   // 
   // example:
   // 
@@ -94,35 +94,35 @@ type ExecuteLogQueryRequest struct {
   // 
   // huawei-cn-cfw
   LogStoreName *string `json:"LogStoreName,omitempty" xml:"LogStoreName,omitempty"`
-  // The user ID for data access.
+  // The ID of the user for data ingestion.
   // 
   // example:
   // 
   // 173326*******
   LogUserId *int64 `json:"LogUserId,omitempty" xml:"LogUserId,omitempty"`
-  // The NormalizationSchemaId to specify if packing is enabled.
+  // The normalization schema ID. This parameter is required if packing is enabled.
   // 
   // example:
   // 
   // WAF_ALERT_ACTIVITY
   NormalizationSchemaId *string `json:"NormalizationSchemaId,omitempty" xml:"NormalizationSchemaId,omitempty"`
-  // The region where the data management center of the threat analysis feature is located. Select the management center region based on the region where your assets reside. Valid values:
+  // The region where the data management center of Threat Analysis is located. Select the region of the management center based on the region where your assets are located. Valid values:
   // 
   // - cn-hangzhou: Assets are located in the Chinese mainland.
   // 
-  // - ap-southeast-1: Assets are located outside China.
+  // - ap-southeast-1: Assets are located outside the Chinese mainland.
   // 
   // example:
   // 
   // cn-hangzhou
   RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-  // The user ID of the member account that the administrator switches to.
+  // The ID of the user whose perspective the administrator switches to.
   // 
   // example:
   // 
   // 173326*******
   RoleFor *int64 `json:"RoleFor,omitempty" xml:"RoleFor,omitempty"`
-  // The start time. The value is a UNIX timestamp in milliseconds (ms).
+  // The start time. The value is a UNIX timestamp in milliseconds.
   // 
   // example:
   // 

@@ -16,9 +16,9 @@ type iUpdateDataSetRecordResponseBody interface {
 }
 
 type UpdateDataSetRecordResponseBody struct {
-	// The result of the dataset update.
+	// The dataset update results.
 	DataSetRecordStatistic *UpdateDataSetRecordResponseBodyDataSetRecordStatistic `json:"DataSetRecordStatistic,omitempty" xml:"DataSetRecordStatistic,omitempty" type:"Struct"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//

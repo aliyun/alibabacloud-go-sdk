@@ -16,11 +16,11 @@ type iGetAlertResponseBody interface {
 }
 
 type GetAlertResponseBody struct {
-	// If this value is true, the minor engine version is not the latest version.
+	// Indicates whether the minor version is not the latest version.
 	//
-	// > If the minor engine version of your server is not the latest version, the sampling logs may be inaccurate, which causes imprecise IP statistics. We recommend that you upgrade the minor engine version at your earliest convenience.
+	// > If the minor version of your server is not the latest, the sampled logs may be inaccurate, resulting in inaccurate IP address statistics. Therefore, we recommend that you upgrade the minor version of your server as soon as possible.
 	Alert *GetAlertResponseBodyAlert `json:"Alert,omitempty" xml:"Alert,omitempty" type:"Struct"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
@@ -64,13 +64,13 @@ func (s *GetAlertResponseBody) Validate() error {
 }
 
 type GetAlertResponseBodyAlert struct {
-	// The alert content.
+	// The content of the alert.
 	//
 	// example:
 	//
 	// {***}
 	AlertRecord *string `json:"AlertRecord,omitempty" xml:"AlertRecord,omitempty"`
-	// The alert UUID.
+	// The UUID of the alert.
 	//
 	// example:
 	//

@@ -108,15 +108,15 @@ type CreateDetectionRuleRequest struct {
 	AlertDescription *string `json:"AlertDescription,omitempty" xml:"AlertDescription,omitempty"`
 	// The threat level of the alert. Valid values:
 	//
-	// - 5: critical
+	// - 5: critical.
 	//
-	// - 4: high
+	// - 4: high.
 	//
-	// - 3: medium
+	// - 3: medium.
 	//
-	// - 2: low
+	// - 2: low.
 	//
-	// - 1: informational
+	// - 1: informational.
 	//
 	// example:
 	//
@@ -136,13 +136,13 @@ type CreateDetectionRuleRequest struct {
 	AlertName *string `json:"AlertName,omitempty" xml:"AlertName,omitempty"`
 	// The ID of the alert template for the detection rule. Valid values:
 	//
-	// - ALERT_ACTIVITY: other alerts
+	// - ALERT_ACTIVITY: other alerts.
 	//
-	// - EDR_ALERT_ACTIVITY: endpoint detection and response (EDR) alerts
+	// - EDR_ALERT_ACTIVITY: endpoint detection and response (EDR) alerts.
 	//
-	// - FIREWALL_ALERT_ACTIVITY: firewall alerts
+	// - FIREWALL_ALERT_ACTIVITY: firewall alerts.
 	//
-	// - WAF_ALERT_ACTIVITY: Web Application Firewall (WAF) alerts
+	// - WAF_ALERT_ACTIVITY: Web Application Firewall (WAF) alerts.
 	//
 	// example:
 	//
@@ -160,25 +160,25 @@ type CreateDetectionRuleRequest struct {
 	//
 	// 10
 	AlertThresholdCount *int32 `json:"AlertThresholdCount,omitempty" xml:"AlertThresholdCount,omitempty"`
-	// The list of alert threshold fields, separated by commas.
+	// The list of fields for the alert threshold. Separate multiple fields with commas (,).
 	//
 	// example:
 	//
 	// alert_type,ip
 	AlertThresholdGroup *string `json:"AlertThresholdGroup,omitempty" xml:"AlertThresholdGroup,omitempty"`
-	// The length of the alert threshold period.
+	// The period length of the alert threshold.
 	//
 	// example:
 	//
 	// 5m
 	AlertThresholdPeriod *string `json:"AlertThresholdPeriod,omitempty" xml:"AlertThresholdPeriod,omitempty"`
-	// The alerting type.
+	// The alert type.
 	//
 	// example:
 	//
 	// WebShell
 	AlertType *string `json:"AlertType,omitempty" xml:"AlertType,omitempty"`
-	// The alerting type mapping.
+	// The alert type mapping.
 	//
 	// example:
 	//
@@ -218,9 +218,9 @@ type CreateDetectionRuleRequest struct {
 	DetectionExpressionContent *string `json:"DetectionExpressionContent,omitempty" xml:"DetectionExpressionContent,omitempty"`
 	// The expression type of the detection rule. Valid values:
 	//
-	// - sql: SQL
+	// - sql: SQL.
 	//
-	// - playbook: playbook
+	// - playbook: playbook.
 	//
 	// example:
 	//
@@ -258,11 +258,11 @@ type CreateDetectionRuleRequest struct {
 	DetectionRuleTemplateVersion *string `json:"DetectionRuleTemplateVersion,omitempty" xml:"DetectionRuleTemplateVersion,omitempty"`
 	// The type of the detection rule. Valid values:
 	//
-	// - preset: preset detection rule
+	// - preset: preset detection rule.
 	//
-	// - custom: custom detection rule
+	// - custom: custom detection rule.
 	//
-	// - custom_template: rule template
+	// - custom_template: rule template.
 	//
 	// example:
 	//
@@ -282,17 +282,17 @@ type CreateDetectionRuleRequest struct {
 	//
 	// 5m
 	IncidentAggregationExpression *string `json:"IncidentAggregationExpression,omitempty" xml:"IncidentAggregationExpression,omitempty"`
-	// The event summaries type. Valid values:
+	// The event aggregation type. Valid values:
 	//
-	// - none: no event generated
+	// - none: no event is generated.
 	//
-	// - graph_compute: graph computing (supported by predefined rules)
+	// - graph_compute: graph computing, supported by predefined rules.
 	//
-	// - expert: expert rules
+	// - expert: expert rules.
 	//
-	// - passthrough: alerting pass-through (1-to-1)
+	// - passthrough: alert pass-through (one-to-one).
 	//
-	// - window: homogeneous aggregation (window)
+	// - window: homogeneous aggregation (window).
 	//
 	// example:
 	//
@@ -300,11 +300,11 @@ type CreateDetectionRuleRequest struct {
 	IncidentAggregationType *string `json:"IncidentAggregationType,omitempty" xml:"IncidentAggregationType,omitempty"`
 	// The language of the response message. Valid values:
 	//
-	// - **zh*	- (default): Chinese
+	// - **zh*	- (default): Chinese.
 	//
-	// - **en**: English
+	// - **en**: English.
 	//
-	// Note: This parameter is required in actual API calls. If this parameter is not provided, the service returns a 400 error "The specified Lang can not be empty." Explicitly pass the language code.
+	// Note: This parameter is required in actual API calls. If this parameter is not provided, the service returns a 400 error with the message "The specified Lang can not be empty." Explicitly pass the language code.
 	//
 	// example:
 	//
@@ -322,7 +322,7 @@ type CreateDetectionRuleRequest struct {
 	//
 	// API_RISK_ACTIVITY
 	LogSchemaId *string `json:"LogSchemaId,omitempty" xml:"LogSchemaId,omitempty"`
-	// The custom parameters for the playbook.
+	// The custom parameters of the playbook.
 	//
 	// example:
 	//
@@ -342,11 +342,11 @@ type CreateDetectionRuleRequest struct {
 	//
 	// system_aliyun_clb_process_book
 	PlaybookUuid *string `json:"PlaybookUuid,omitempty" xml:"PlaybookUuid,omitempty"`
-	// The region where the data management center for threat analysis is located. Select the region of the management center based on the region where your assets are located. Valid values:
+	// The region of the data management center for Threat Analysis. Select the region of the management center based on the region where your assets are located. Valid values:
 	//
-	// - cn-hangzhou: Assets are located in the Chinese mainland.
+	// - cn-hangzhou: The assets are located in the Chinese mainland.
 	//
-	// - ap-southeast-1: Assets are located outside the Chinese mainland.
+	// - ap-southeast-1: The assets are located outside the Chinese mainland.
 	//
 	// example:
 	//
@@ -370,29 +370,29 @@ type CreateDetectionRuleRequest struct {
 	//
 	// 0/5 	- 	- 	- *
 	ScheduleExpression *string `json:"ScheduleExpression,omitempty" xml:"ScheduleExpression,omitempty"`
-	// The maximum number of retries after a timeout. Valid values: 1 to 100.
+	// The maximum number of retries upon timeout. Valid values: 1 to 100.
 	//
 	// example:
 	//
 	// 1
 	ScheduleMaxRetries *int32 `json:"ScheduleMaxRetries,omitempty" xml:"ScheduleMaxRetries,omitempty"`
-	// The maximum timeout period in seconds. Valid values: 60 to 1800.
+	// The maximum timeout period. Unit: seconds. Valid values: 60 to 1800.
 	//
 	// example:
 	//
 	// 60
 	ScheduleMaxTimeout *int32 `json:"ScheduleMaxTimeout,omitempty" xml:"ScheduleMaxTimeout,omitempty"`
-	// The schedule type. Valid values:
+	// The scheduling type. Valid values:
 	//
-	// - fixed_rate: fixed interval
+	// - fixed_rate: fixed interval.
 	//
-	// - cron: cron expression
+	// - cron: cron expression.
 	//
 	// example:
 	//
 	// fixed_rate
 	ScheduleType *string `json:"ScheduleType,omitempty" xml:"ScheduleType,omitempty"`
-	// The length of the schedule window.
+	// The length of the scheduling window.
 	//
 	// example:
 	//

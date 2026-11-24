@@ -26,53 +26,53 @@ type iCreateLogStoreRequest interface {
 }
 
 type CreateLogStoreRequest struct {
-	// The language of the response. Valid values:
+	// The language of the returned message. Valid values:
 	//
 	// - **zh*	- (default): Chinese.
 	//
 	// - **en**: English.
 	//
-	// Note: This parameter is required. If this parameter is not specified, the API returns a 400 error. Valid values: zh (Chinese) or en (English).
+	// Note: This parameter is required. If it is not provided, the API returns a 400 error. Valid values: zh (Chinese) or en (English).
 	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The Simple Log Service project name.
+	// The name of the Simple Log Service project.
 	//
 	// example:
 	//
 	// aliyun-cloudsiem-channel-173326*******-cn-hangzhou
 	LogProjectName *string `json:"LogProjectName,omitempty" xml:"LogProjectName,omitempty"`
-	// The log storage region ID.
+	// The ID of the log storage region.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	LogRegionId *string `json:"LogRegionId,omitempty" xml:"LogRegionId,omitempty"`
-	// The Simple Log Service LogStore name.
+	// The name of the Simple Log Service Logstore.
 	//
 	// example:
 	//
 	// logstoreqykug
 	LogStoreName *string `json:"LogStoreName,omitempty" xml:"LogStoreName,omitempty"`
-	// The user ID for data access.
+	// The ID of the user for data ingestion.
 	//
 	// example:
 	//
 	// 173326*******
 	LogUserId *int64 `json:"LogUserId,omitempty" xml:"LogUserId,omitempty"`
-	// The region where the data management center of Cloud Threat Detection and Response (CTDR) is located. Specify the management center based on the region of your assets. Valid values:
+	// The region where the data management center of Threat Analysis is located. You must select the region of the management center based on the region where your assets are located. Valid values:
 	//
-	// - cn-hangzhou: Your assets reside in the Chinese mainland.
+	// - cn-hangzhou: The assets are located in the Chinese mainland.
 	//
-	// - ap-southeast-1: Your assets reside outside China.
+	// - ap-southeast-1: The assets are located outside the Chinese mainland.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The user ID that the administrator switches to when viewing as another member.
+	// The ID of the user whose perspective the administrator switches to.
 	//
 	// example:
 	//

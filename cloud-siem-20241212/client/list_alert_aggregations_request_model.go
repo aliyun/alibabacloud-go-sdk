@@ -66,13 +66,13 @@ type ListAlertAggregationsRequest struct {
 	//
 	// 50
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The token for the next query. If this is the first query or no subsequent query is required, you do not need to specify this parameter. If a subsequent query is required, set the value to the NextToken value returned by the previous API call.
+	// The token for the next query. If this is the first query or no subsequent query is required, you do not need to specify this parameter. If a subsequent query is required, set this parameter to the NextToken value returned by the previous API call.
 	//
 	// example:
 	//
 	// AAAAAUqcj6VO4E3ECWIrFczs****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The current page number.
+	// The page number.
 	//
 	// This parameter is required.
 	//
@@ -90,19 +90,19 @@ type ListAlertAggregationsRequest struct {
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The query filter conditions in JSON format. Valid values:
 	//
-	// - `{"Type":"maxCost", "Value":"100"}`: The top 100 queries that take the longest time.
+	// - `{"Type":"maxCost", "Value":"100"}`: The top 100 queries with the longest execution duration.
 	//
 	// - `{"Type":"status","Value":"finished"}`: Completed queries.
 	//
 	// - `{"Type":"status","Value":"running"}`: Running queries.
 	//
-	// - `{"Type":"cost","Min":"30","Max":"50"}`: Custom duration queries. You can specify the minimum and maximum query durations. **Min*	- specifies the minimum duration, and **Max*	- specifies the maximum duration. Unit: milliseconds.
+	// - `{"Type":"cost","Min":"30","Max":"50"}`: Custom execution duration queries. You can specify the minimum and maximum execution duration. **Min*	- specifies the minimum execution duration. **Max*	- specifies the maximum execution duration. Unit: milliseconds.
 	//
-	//     - If only **Min*	- is specified, the query returns queries whose execution duration is greater than the specified value.
+	//     - If only **Min*	- is specified, the system queries the queries whose execution duration is greater than the specified value.
 	//
-	//     - If only **Max*	- is specified, the query returns queries whose execution duration is less than the specified value.
+	//     - If only **Max*	- is specified, the system queries the queries whose execution duration is less than the specified value.
 	//
-	//     - If both **Min*	- and **Max*	- are specified, the query returns queries whose execution duration is greater than or equal to the value of **Min*	- and less than or equal to the value of **Max**.
+	//     - If both **Min*	- and **Max*	- are specified, the system queries the queries whose execution duration is greater than or equal to the value of **Min*	- and less than or equal to the value of **Max**.
 	//
 	// example:
 	//
@@ -116,15 +116,15 @@ type ListAlertAggregationsRequest struct {
 	QueryViewId *string `json:"QueryViewId,omitempty" xml:"QueryViewId,omitempty"`
 	// The region where the data management center of Threat Analysis is located. Select the region of the management center based on the region where your assets are located. Valid values:
 	//
-	// - cn-hangzhou: Assets are located in the Chinese mainland.
+	// - cn-hangzhou: The assets are located in the Chinese mainland.
 	//
-	// - ap-southeast-1: Assets are located outside the Chinese mainland.
+	// - ap-southeast-1: The assets are located outside the Chinese mainland.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the member whose view the administrator switches to.
+	// The ID of the member whose view the administrator assumes.
 	//
 	// example:
 	//
@@ -144,7 +144,7 @@ type ListAlertAggregationsRequest struct {
 	//
 	// example:
 	//
-	// 2026-02-04T08:36:26Z
+	// 1791709871476
 	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 

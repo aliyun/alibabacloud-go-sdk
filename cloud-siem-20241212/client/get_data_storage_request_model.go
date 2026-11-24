@@ -15,26 +15,28 @@ type iGetDataStorageRequest interface {
 	GetRegionId() *string
 	SetRoleFor(v int64) *GetDataStorageRequest
 	GetRoleFor() *int64
+	SetWithAutoKeyDetect(v bool) *GetDataStorageRequest
+	GetWithAutoKeyDetect() *bool
 }
 
 type GetDataStorageRequest struct {
-	// The language of the returned message. Valid values:
+	// The language of the response message. Valid values:
 	//
 	// - **zh*	- (default): Chinese.
 	//
 	// - **en**: English.
 	//
-	// Note: This parameter is required for actual API calls. If you do not specify this parameter, the service returns a 400 error with the message "The specified Lang can not be empty.". Explicitly specify the language code.
+	// Note: This parameter is required in actual API calls. If it is not provided, the service returns a 400 error with the message "The specified Lang can not be empty." Explicitly pass the language code.
 	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The region where the data management center of Threat Analysis is located. Select the region of the management center based on the region where your assets reside. Valid values:
+	// The region where the data management center for threat analysis is located. Select the region of the management center based on the region where your assets are located. Valid values:
 	//
-	// - cn-hangzhou: The assets reside in the Chinese mainland.
+	// - cn-hangzhou: Assets are located in the Chinese mainland.
 	//
-	// - ap-southeast-1: The assets reside outside the Chinese mainland.
+	// - ap-southeast-1: Assets are located outside the Chinese mainland.
 	//
 	// example:
 	//
@@ -46,6 +48,8 @@ type GetDataStorageRequest struct {
 	//
 	// 113091674488****
 	RoleFor *int64 `json:"RoleFor,omitempty" xml:"RoleFor,omitempty"`
+	// Specifies whether to read the auto-discovered index configuration of each Logstore. This operation requires accessing Simple Log Service (SLS) for each Logstore. Default value: false. Set this parameter to true only on the storage management page.
+	WithAutoKeyDetect *bool `json:"WithAutoKeyDetect,omitempty" xml:"WithAutoKeyDetect,omitempty"`
 }
 
 func (s GetDataStorageRequest) String() string {
@@ -68,6 +72,10 @@ func (s *GetDataStorageRequest) GetRoleFor() *int64 {
 	return s.RoleFor
 }
 
+func (s *GetDataStorageRequest) GetWithAutoKeyDetect() *bool {
+	return s.WithAutoKeyDetect
+}
+
 func (s *GetDataStorageRequest) SetLang(v string) *GetDataStorageRequest {
 	s.Lang = &v
 	return s
@@ -80,6 +88,11 @@ func (s *GetDataStorageRequest) SetRegionId(v string) *GetDataStorageRequest {
 
 func (s *GetDataStorageRequest) SetRoleFor(v int64) *GetDataStorageRequest {
 	s.RoleFor = &v
+	return s
+}
+
+func (s *GetDataStorageRequest) SetWithAutoKeyDetect(v bool) *GetDataStorageRequest {
+	s.WithAutoKeyDetect = &v
 	return s
 }
 

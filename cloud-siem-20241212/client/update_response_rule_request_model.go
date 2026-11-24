@@ -48,13 +48,13 @@ type UpdateResponseRuleRequest struct {
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The maximum number of data records to read in the current request.
+	// The maximum number of data records to return in the current request.
 	//
 	// example:
 	//
 	// 50
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The token that specifies the position from which to start reading. If this parameter is left empty, the reading starts from the beginning.
+	// The token that indicates the position from which to start reading. An empty value indicates that the reading starts from the beginning.
 	//
 	// example:
 	//
@@ -94,7 +94,7 @@ type UpdateResponseRuleRequest struct {
 	//
 	// alertWhitelist
 	ResponseActionType *string `json:"ResponseActionType,omitempty" xml:"ResponseActionType,omitempty"`
-	// The rule trigger condition configuration.
+	// The trigger condition configuration of the rule.
 	//
 	// example:
 	//
@@ -118,7 +118,7 @@ type UpdateResponseRuleRequest struct {
 	//
 	// 1
 	ResponseRulePriority *int32 `json:"ResponseRulePriority,omitempty" xml:"ResponseRulePriority,omitempty"`
-	// The remarks of the response rule.
+	// The remarks for the response rule.
 	//
 	// example:
 	//

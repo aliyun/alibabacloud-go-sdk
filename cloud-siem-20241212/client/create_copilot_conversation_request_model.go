@@ -28,7 +28,7 @@ type iCreateCopilotConversationRequest interface {
 }
 
 type CreateCopilotConversationRequest struct {
-	// The language of the response messages. Valid values:
+	// The language of the returned message. Valid values:
 	//
 	// - **zh*	- (default): Chinese.
 	//
@@ -50,33 +50,33 @@ type CreateCopilotConversationRequest struct {
 	//
 	// enabled
 	PlanMode *string `json:"PlanMode,omitempty" xml:"PlanMode,omitempty"`
-	// The security project ID.
+	// The ID of the security project.
 	//
 	// example:
 	//
 	// project-incident-****
 	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	// The region where the data management center for threat analysis is located. Select the management center region based on the region where your assets reside. Valid values:
+	// The region of the data management center for threat analysis. Select the region of the management center based on the region where your assets reside. Valid values:
 	//
-	// - cn-hangzhou: Assets are located in the Chinese mainland.
+	// - cn-hangzhou: Assets reside in the Chinese mainland.
 	//
-	// - ap-southeast-1: Assets are located outside China.
+	// - ap-southeast-1: Assets reside outside the Chinese mainland.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The thinking mode configuration.
+	// The deep thinking configuration.
 	//
 	// example:
 	//
 	// enabled
 	ThinkingMode *string `json:"ThinkingMode,omitempty" xml:"ThinkingMode,omitempty"`
-	// The session title.
+	// The title of the session.
 	//
 	// example:
 	//
-	// Security incident investigation
+	// Security event investigation
 	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
 	// The trace ID of the created span object.
 	//

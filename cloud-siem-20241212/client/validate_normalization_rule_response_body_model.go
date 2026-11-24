@@ -104,17 +104,13 @@ type ValidateNormalizationRuleResponseBodyValidateResult struct {
 	//
 	// - OperationDenied.TheValueNotMatchRegularExpression: The field value fails the regular expression match.
 	//
-	// - success: The validation is passed.
+	// - success: The validation passed.
 	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The source of the normalized field. Valid values:
-	//
-	// - preset: Built-in.
-	//
-	// - custom: Custom.
+	// The source of the normalized field. Valid values: preset and custom.
 	//
 	// example:
 	//
@@ -132,7 +128,7 @@ type ValidateNormalizationRuleResponseBodyValidateResult struct {
 	//
 	// true
 	NormalizationFieldRequired *bool `json:"NormalizationFieldRequired,omitempty" xml:"NormalizationFieldRequired,omitempty"`
-	// Specifies whether the normalized field name is built into the system.
+	// Indicates whether the normalized field name is built into the system.
 	NormalizationFieldReserved *bool `json:"NormalizationFieldReserved,omitempty" xml:"NormalizationFieldReserved,omitempty"`
 	// The type of the normalized field. Valid values: text, long, double, and json.
 	//
@@ -154,11 +150,11 @@ type ValidateNormalizationRuleResponseBodyValidateResult struct {
 	NormalizationFieldValidationStatus *string `json:"NormalizationFieldValidationStatus,omitempty" xml:"NormalizationFieldValidationStatus,omitempty"`
 	// The validation result. Valid values:
 	//
-	// - 1: The validation is passed.
+	// - 1: The validation passed.
 	//
 	// - 0: A warning is returned.
 	//
-	// - 1: The validation fails.
+	// - 1: The validation failed.
 	//
 	// example:
 	//

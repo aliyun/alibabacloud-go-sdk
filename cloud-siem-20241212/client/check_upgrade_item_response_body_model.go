@@ -16,7 +16,7 @@ type iCheckUpgradeItemResponseBody interface {
 }
 
 type CheckUpgradeItemResponseBody struct {
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
@@ -62,7 +62,7 @@ func (s *CheckUpgradeItemResponseBody) Validate() error {
 }
 
 type CheckUpgradeItemResponseBodyUpgradeItem struct {
-	// The check result of the check item. Example values: OK and FAIL.
+	// The check result of the check item. Possible values include OK and FAIL.
 	//
 	// example:
 	//
@@ -74,7 +74,7 @@ type CheckUpgradeItemResponseBodyUpgradeItem struct {
 	//
 	// success
 	CheckStatus *string `json:"CheckStatus,omitempty" xml:"CheckStatus,omitempty"`
-	// The upgrade item ID.
+	// The ID of the upgrade item.
 	//
 	// example:
 	//

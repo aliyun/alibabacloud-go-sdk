@@ -24,35 +24,35 @@ type iGetAlertRequest interface {
 type GetAlertRequest struct {
 	// The ID of the alert associated with the event.
 	//
-	// > This parameter is required. If this parameter is not specified, the service returns a 400 error.
+	// Note: This parameter is required. If you do not specify this parameter, the service returns a 400 error.
 	//
 	// example:
 	//
 	// sas_71e24437d2797ce8fc59692905a4****
 	AlertUuid *string `json:"AlertUuid,omitempty" xml:"AlertUuid,omitempty"`
-	// The language of the response. Valid values:
+	// The language of the response message. Valid values:
 	//
 	// - **zh*	- (default): Chinese.
 	//
 	// - **en**: English.
 	//
-	// > This parameter is required. If this parameter is not specified, the service returns a 400 error.
+	// Note: This parameter is required. If you do not specify this parameter, the service returns a 400 error.
 	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The region where the data management center of threat detection and response is located. Specify the management center region based on the region of your assets. Valid values:
+	// The region where the data management center of Threat Analysis is located. Select the region of the management center based on the region where your assets are located. Valid values:
 	//
-	// - cn-hangzhou: Your assets belong to the Chinese mainland.
+	// - cn-hangzhou: The assets are located in the Chinese mainland.
 	//
-	// - ap-southeast-1: Your assets belong to regions outside China.
+	// - ap-southeast-1: The assets are located outside the Chinese mainland.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the member to which the administrator switches the view.
+	// The ID of the user whose perspective the administrator switches to.
 	//
 	// example:
 	//
@@ -60,9 +60,9 @@ type GetAlertRequest struct {
 	RoleFor *int64 `json:"RoleFor,omitempty" xml:"RoleFor,omitempty"`
 	// The view type. Valid values:
 	//
-	// - 0: the view of the current Alibaba Cloud account.
+	// - 0: The view of the current Alibaba Cloud account.
 	//
-	// - 1: the view of all accounts in the enterprise.
+	// - 1: The view of all accounts in the enterprise.
 	//
 	// example:
 	//
