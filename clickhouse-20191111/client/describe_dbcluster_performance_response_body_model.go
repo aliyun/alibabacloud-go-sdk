@@ -28,13 +28,13 @@ type DescribeDBClusterPerformanceResponseBody struct {
 	//
 	// cc-bp125e3uu94wo****
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	// The end of the time range that was queried. The time is in UTC, formatted as `yyyy-MM-ddTHH:mmZ`.
+	// The end time of the query. Format: yyyy-MM-ddTHH:mmZ (UTC time).
 	//
 	// example:
 	//
 	// 2021-11-27T16:38Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The list of performance metrics for the cluster.
+	// The list of cluster performance metric values.
 	Performances []*DescribeDBClusterPerformanceResponseBodyPerformances `json:"Performances,omitempty" xml:"Performances,omitempty" type:"Repeated"`
 	// The request ID.
 	//
@@ -42,7 +42,7 @@ type DescribeDBClusterPerformanceResponseBody struct {
 	//
 	// FE242962-6DA3-5FC8-9691-37B62A3210F7
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The beginning of the time range that was queried. The time is in UTC, formatted as `yyyy-MM-ddTHH:mmZ`.
+	// The start time of the query. Format: yyyy-MM-ddTHH:mmZ (UTC time).
 	//
 	// example:
 	//
@@ -117,21 +117,21 @@ func (s *DescribeDBClusterPerformanceResponseBody) Validate() error {
 }
 
 type DescribeDBClusterPerformanceResponseBodyPerformances struct {
-	// The name of the performance metric.
+	// The name of the performance metrics.
 	//
 	// example:
 	//
 	// MEM_USAGE
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The name of the performance metric.
+	// The name of the performance value.
 	//
 	// example:
 	//
 	// mem_usage
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The time series data for the metric.
+	// The collection of performance metrics.
 	Series []*DescribeDBClusterPerformanceResponseBodyPerformancesSeries `json:"Series,omitempty" xml:"Series,omitempty" type:"Repeated"`
-	// The unit of the metric.
+	// The data unit.
 	//
 	// example:
 	//
@@ -197,13 +197,13 @@ func (s *DescribeDBClusterPerformanceResponseBodyPerformances) Validate() error 
 }
 
 type DescribeDBClusterPerformanceResponseBodyPerformancesSeries struct {
-	// The name of the time series.
+	// The name of the performance data list.
 	//
 	// example:
 	//
 	// cc-bp125e3uu94wo1s0k16****
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The values of the performance metrics, each associated with a sampling timestamp.
+	// The performance metric values. Each value corresponds to a collection time point.
 	Values []*DescribeDBClusterPerformanceResponseBodyPerformancesSeriesValues `json:"Values,omitempty" xml:"Values,omitempty" type:"Repeated"`
 }
 
@@ -247,7 +247,7 @@ func (s *DescribeDBClusterPerformanceResponseBodyPerformancesSeries) Validate() 
 }
 
 type DescribeDBClusterPerformanceResponseBodyPerformancesSeriesValues struct {
-	// The value of the performance metric.
+	// The performance value.
 	Point []*string `json:"Point,omitempty" xml:"Point,omitempty" type:"Repeated"`
 }
 

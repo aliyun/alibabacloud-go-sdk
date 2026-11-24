@@ -34,9 +34,9 @@ type KillProcessRequest struct {
 	//
 	// cc-bp108z124a8o7****
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	// The search statement to stop. To stop multiple statements, separate them with commas (,).
+	// The query statements to stop. Separate multiple statements with commas (,).
 	//
-	// > If you do not specify this parameter, all search statements are stopped by default.
+	// > If this parameter is not specified, all query statements are stopped by default.
 	//
 	// example:
 	//
@@ -44,7 +44,7 @@ type KillProcessRequest struct {
 	InitialQueryId *string `json:"InitialQueryId,omitempty" xml:"InitialQueryId,omitempty"`
 	OwnerAccount   *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId        *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The region ID. Call the [DescribeRegions](https://help.aliyun.com/document_detail/170875.html) operation to query the region ID.
+	// The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/170875.html) operation to query the region ID.
 	//
 	// example:
 	//

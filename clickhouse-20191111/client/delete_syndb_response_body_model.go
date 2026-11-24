@@ -26,9 +26,9 @@ type DeleteSyndbResponseBody struct {
 	//
 	// 0
 	ErrorCode *int64 `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// - This parameter is not returned if **Status*	- is **true**.
+	// - If **Status*	- is **true**, this parameter is not returned.
 	//
-	// - If **Status*	- is **false**, this parameter indicates the reason for the failure.
+	// - If **Status*	- is **false**, this parameter indicates the cause of the deletion failure.
 	//
 	// example:
 	//

@@ -28,7 +28,7 @@ type iModifyDBClusterConfigRequest interface {
 }
 
 type ModifyDBClusterConfigRequest struct {
-	// The ID of the cluster. You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/170879.html) operation to query information about all clusters in a specific region. This information includes the cluster IDs.
+	// The cluster ID. You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/170879.html) operation to query the information about all clusters in the specified region, including cluster IDs.
 	//
 	// This parameter is required.
 	//
@@ -38,13 +38,13 @@ type ModifyDBClusterConfigRequest struct {
 	DBClusterId  *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The reason for the modification.
+	// The description of the modification.
 	//
 	// example:
 	//
 	// test
 	Reason *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
-	// The ID of the region. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/170875.html) operation to query the most recent list of regions.
+	// The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/170875.html) operation to query region IDs.
 	//
 	// example:
 	//
@@ -52,9 +52,7 @@ type ModifyDBClusterConfigRequest struct {
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The configuration parameters to modify.
-	//
-	// > You can modify a single configuration parameter. Parameters that are not specified in the request are not affected.
+	// The configuration parameters to be modified. > You can modify a single configuration parameter. Configuration parameters that are not specified remain unaffected.
 	//
 	// This parameter is required.
 	//

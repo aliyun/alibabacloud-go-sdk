@@ -52,7 +52,7 @@ type CheckScaleOutBalancedRequest struct {
 	//
 	// - **50**
 	//
-	// - **100**.
+	// - **100**
 	//
 	// example:
 	//
@@ -68,15 +68,15 @@ type CheckScaleOutBalancedRequest struct {
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The specification change type. Valid values:
+	// The upgrade/downgrade type. Valid values:
 	//
-	// - ScaleOut: horizontal scale-out
+	// - ScaleOut: horizontal scaling
 	//
 	// - ScaleIn: horizontal scale-in
 	//
-	// - MultiAzUpgrade: upgrade to multi-active zone deployment
+	// - MultiAzUpgrade: upgrade to multi-zone deployment
 	//
-	// - DiskDownGrade: cloud disk downgrade.
+	// - DiskDownGrade: decrease the quota for disks
 	//
 	// example:
 	//

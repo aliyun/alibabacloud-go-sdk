@@ -18,7 +18,7 @@ type iCheckMonitorAlertResponseBody interface {
 }
 
 type CheckMonitorAlertResponseBody struct {
-	// The parameters for alert monitoring.
+	// The monitoring and alerting parameters.
 	//
 	// example:
 	//
@@ -30,11 +30,11 @@ type CheckMonitorAlertResponseBody struct {
 	//
 	// 94F92113-FF63-5E57-8401-6FE123AD11DD
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the alert monitoring feature is enabled. Valid values:
+	// Indicates whether the monitoring and alerting feature is enabled. Valid values:
 	//
-	// - **enable**: The feature is enabled.
+	// - **enable**: Enabled.
 	//
-	// - **disable**: The feature is disabled.
+	// - **disable**: Disabled.
 	//
 	// example:
 	//

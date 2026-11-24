@@ -18,7 +18,7 @@ type iChangeResourceGroupRequest interface {
 }
 
 type ChangeResourceGroupRequest struct {
-	// The ID of the destination resource group.
+	// The target resource group.
 	//
 	// This parameter is required.
 	//

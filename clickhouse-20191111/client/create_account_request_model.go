@@ -30,27 +30,23 @@ type iCreateAccountRequest interface {
 type CreateAccountRequest struct {
 	// The description of the database account.
 	//
-	// >
+	// >- It cannot start with http:// or https://.
 	//
-	// 	- The description cannot start with http:// or https://.
-	//
-	// 	- The description must be 0 to 256 characters in length.
+	// - It must be 0 to 256 characters in length.
 	//
 	// example:
 	//
 	// ceshi
 	AccountDescription *string `json:"AccountDescription,omitempty" xml:"AccountDescription,omitempty"`
-	// The name of the database account.
+	// The database account name.
 	//
-	// >
+	// >- The name must be unique.
 	//
-	// 	- The name must be unique in the cluster.
+	// - It can contain lowercase letters, digits, and underscores (_).
 	//
-	// 	- The name can contain lowercase letters, digits, and underscores (_).
+	// - It must start with a lowercase letter and end with a lowercase letter or digit.
 	//
-	// 	- The name must start with a lowercase letter and end with a lowercase letter or a digit.
-	//
-	// 	- The name must be 2 to 64 characters in length.
+	// - It must be 2 to 64 characters in length.
 	//
 	// This parameter is required.
 	//
@@ -60,13 +56,11 @@ type CreateAccountRequest struct {
 	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
 	// The password of the database account.
 	//
-	// >
+	// >- The password must contain at least three of the following character types: uppercase letters, lowercase letters, digits, and special characters.
 	//
-	// 	- The password must contain at least three types of the following characters: uppercase letters, lowercase letters, digits, and special characters.
+	// - Special characters include !@#$%^&*()_+-=
 	//
-	// 	- The password can contain the following special characters: ! @ # $ % ^ & \\	- ( ) _ + - =
-	//
-	// 	- The password must be 8 to 32 characters in length.
+	// - It must be 8 to 32 characters in length.
 	//
 	// This parameter is required.
 	//

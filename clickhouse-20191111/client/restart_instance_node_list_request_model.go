@@ -50,7 +50,7 @@ type RestartInstanceNodeListRequest struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries to return on each page. Valid values:
+	// The number of entries per page. Valid values:
 	//
 	// - **30*	- (default)
 	//
@@ -70,9 +70,9 @@ type RestartInstanceNodeListRequest struct {
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The scheduled restart time. The time is in the yyyy-MM-ddTHH:mmZ format and is in UTC.
+	// The scheduled restart time. Format: yyyy-MM-ddTHH:mmZ (UTC).
 	//
-	// > If this parameter is left empty or set to a time earlier than the current time, the cluster restarts immediately.
+	// >If this parameter is left empty or set to a time earlier than the current time, the cluster is restarted immediately.
 	//
 	// example:
 	//

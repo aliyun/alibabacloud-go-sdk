@@ -28,7 +28,7 @@ type iModifyActiveOperationTasksRequest interface {
 }
 
 type ModifyActiveOperationTasksRequest struct {
-	// The O\\&M task IDs. Separate multiple IDs with commas (,).
+	// The IDs of the O&M tasks. Separate multiple IDs with commas (,).
 	//
 	// This parameter is required.
 	//
@@ -36,11 +36,11 @@ type ModifyActiveOperationTasksRequest struct {
 	//
 	// 188****,188****,188****
 	Ids *string `json:"Ids,omitempty" xml:"Ids,omitempty"`
-	// Specifies whether to immediately execute the O\\&M task. Valid values:
+	// Specifies whether to immediately execute the O&M tasks. Valid values:
 	//
-	// - **1**: Execute immediately.
+	// - **1**: Executes the tasks immediately.
 	//
-	// - **0**: Execute at the specified time.
+	// - **0**: Executes the tasks at the specified time.
 	//
 	// example:
 	//
@@ -51,7 +51,7 @@ type ModifyActiveOperationTasksRequest struct {
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	SecurityToken        *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
-	// The time to initiate the switch operation. The time is in UTC and the format is YYYY-MM-DDTHH:mm:ssZ.
+	// The time when the backend initiates the switchover operation. The time is in UTC and follows the YYYY-MM-DDTHH:mm:ssZ format.
 	//
 	// This parameter is required.
 	//

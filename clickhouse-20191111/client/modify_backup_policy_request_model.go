@@ -28,7 +28,7 @@ type iModifyBackupPolicyRequest interface {
 }
 
 type ModifyBackupPolicyRequest struct {
-	// The number of days to retain data backups. Valid values: 7 to 730.
+	// The data backup retention period in days. Valid values: 7 to 730.
 	//
 	// example:
 	//
@@ -44,21 +44,21 @@ type ModifyBackupPolicyRequest struct {
 	DBClusterId  *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The backup cycle. If you specify multiple values, separate them with commas. Valid values:
+	// The backup cycle. Separate multiple values with commas (,). Valid values:
 	//
-	// - **Monday**
+	// - **Monday**: Monday.
 	//
-	// - **Tuesday**
+	// - **Tuesday**: Tuesday.
 	//
-	// - **Wednesday**
+	// - **Wednesday**: Wednesday.
 	//
-	// - **Thursday**
+	// - **Thursday**: Thursday.
 	//
-	// - **Friday**
+	// - **Friday**: Friday.
 	//
-	// - **Saturday**
+	// - **Saturday**: Saturday.
 	//
-	// - **Sunday**
+	// - **Sunday**: Sunday.
 	//
 	// This parameter is required.
 	//
@@ -66,9 +66,9 @@ type ModifyBackupPolicyRequest struct {
 	//
 	// Monday
 	PreferredBackupPeriod *string `json:"PreferredBackupPeriod,omitempty" xml:"PreferredBackupPeriod,omitempty"`
-	// The backup time in UTC. The format is HH:mmZ-HH:mmZ.
+	// The backup time in UTC. Format: HH:mmZ-HH:mmZ.
 	//
-	// Example: 00:00Z-01:00Z. This means that data backup can be performed from 00:00 to 01:00 UTC. This corresponds to 08:00 to 09:00 UTC+8.
+	// Example: 00:00Z-01:00Z indicates that data backup can be performed from 00:00 to 01:00 UTC (08:00 to 09:00 UTC+8).
 	//
 	// This parameter is required.
 	//

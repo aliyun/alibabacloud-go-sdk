@@ -18,7 +18,7 @@ type iDescribeConfigHistoryRequest interface {
 }
 
 type DescribeConfigHistoryRequest struct {
-	// The cluster ID. Call the [DescribeDBClusters](https://help.aliyun.com/document_detail/170879.html) operation to query the information about all clusters in a specific region, including cluster IDs.
+	// The cluster ID. You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/170879.html) operation to query all clusters in a specific region, including their cluster IDs.
 	//
 	// This parameter is required.
 	//
@@ -26,7 +26,7 @@ type DescribeConfigHistoryRequest struct {
 	//
 	// cc-bp1p816075e21****
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	// The end of the time range to query. Use the yyyy-MM-ddTHH:mm:ssZ format. The time is in UTC.
+	// The end time of the query. Specify the time in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
 	//
 	// This parameter is required.
 	//
@@ -34,7 +34,7 @@ type DescribeConfigHistoryRequest struct {
 	//
 	// 2022-08-22T10:06:00Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The start of the time range to query. Use the yyyy-MM-ddTHH:mm:ssZ format. The time is in UTC.
+	// The start time of the query. Specify the time in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
 	//
 	// This parameter is required.
 	//

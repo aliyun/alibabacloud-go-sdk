@@ -40,7 +40,7 @@ type iCheckClickhouseToRDSRequest interface {
 }
 
 type CheckClickhouseToRDSRequest struct {
-	// The password for the ApsaraDB for ClickHouse database account.
+	// The password of the database account for the ApsaraDB for ClickHouse cluster.
 	//
 	// This parameter is required.
 	//
@@ -48,7 +48,7 @@ type CheckClickhouseToRDSRequest struct {
 	//
 	// 123456Aa
 	CkPassword *string `json:"CkPassword,omitempty" xml:"CkPassword,omitempty"`
-	// The database account for the ApsaraDB for ClickHouse cluster.
+	// The database account of the ApsaraDB for ClickHouse cluster.
 	//
 	// This parameter is required.
 	//
@@ -62,7 +62,7 @@ type CheckClickhouseToRDSRequest struct {
 	//
 	// 8123
 	ClickhousePort *int64 `json:"ClickhousePort,omitempty" xml:"ClickhousePort,omitempty"`
-	// The ID of the community-compatible ApsaraDB for ClickHouse cluster.
+	// The ID of the ApsaraDB for ClickHouse Community-compatible Edition cluster.
 	//
 	// This parameter is required.
 	//
@@ -72,7 +72,7 @@ type CheckClickhouseToRDSRequest struct {
 	DbClusterId  *string `json:"DbClusterId,omitempty" xml:"DbClusterId,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The ID of the ApsaraDB RDS instance.
+	// The instance ID of the ApsaraDB RDS database.
 	//
 	// This parameter is required.
 	//
@@ -80,7 +80,7 @@ type CheckClickhouseToRDSRequest struct {
 	//
 	// rm-bp13v4bnwlu8j****
 	RdsId *string `json:"RdsId,omitempty" xml:"RdsId,omitempty"`
-	// The password for the ApsaraDB RDS database account.
+	// The password of the database account for the ApsaraDB RDS instance.
 	//
 	// This parameter is required.
 	//
@@ -94,7 +94,7 @@ type CheckClickhouseToRDSRequest struct {
 	//
 	// 3306
 	RdsPort *int64 `json:"RdsPort,omitempty" xml:"RdsPort,omitempty"`
-	// The database account for the ApsaraDB RDS instance.
+	// The database account of the ApsaraDB RDS instance.
 	//
 	// This parameter is required.
 	//

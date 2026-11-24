@@ -46,7 +46,7 @@ type DescribeBackupsRequest struct {
 	//
 	// cc-bp1qx68m06981****
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	// The end of the time range to query. Format: yyyy-MM-ddTHH:mmZ (UTC).
+	// The end time of the query. Format: yyyy-MM-ddTHH:mmZ (UTC).
 	//
 	// This parameter is required.
 	//
@@ -76,7 +76,7 @@ type DescribeBackupsRequest struct {
 	PageSize             *int32  `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The beginning of the time range to query. Format: yyyy-MM-ddTHH:mmZ (UTC).
+	// The start time of the query. Format: yyyy-MM-ddTHH:mmZ (UTC).
 	//
 	// This parameter is required.
 	//

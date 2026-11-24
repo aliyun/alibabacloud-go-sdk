@@ -48,7 +48,7 @@ type CheckScaleOutBalancedResponseBody struct {
 	//
 	// - **50**
 	//
-	// - **100**.
+	// - **100**
 	//
 	// example:
 	//
@@ -61,7 +61,7 @@ type CheckScaleOutBalancedResponseBody struct {
 	// F5178C10-1407-4987-9133-DE4DC9119F75
 	RequestId    *string                                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	TableDetails *CheckScaleOutBalancedResponseBodyTableDetails `json:"TableDetails,omitempty" xml:"TableDetails,omitempty" type:"Struct"`
-	// The time required for the migration scale-out. Unit: minutes.
+	// The time required for migration and scaling. Unit: minutes.
 	//
 	// example:
 	//

@@ -46,7 +46,7 @@ type ModifyAccountAuthorityRequest struct {
 	//
 	// test
 	AccountName *string `json:"AccountName,omitempty" xml:"AccountName,omitempty"`
-	// The list of databases to authorize. Separate multiple database names with commas (,).
+	// The databases to which you want to grant permissions. Separate multiple databases with commas (,).
 	//
 	// This parameter is required.
 	//
@@ -54,7 +54,7 @@ type ModifyAccountAuthorityRequest struct {
 	//
 	// db1
 	AllowDatabases *string `json:"AllowDatabases,omitempty" xml:"AllowDatabases,omitempty"`
-	// The list of dictionaries to authorize. Separate multiple dictionary names with commas (,).
+	// The dictionaries to which you want to grant permissions. Separate multiple dictionaries with commas (,).
 	//
 	// This parameter is required.
 	//
@@ -70,11 +70,11 @@ type ModifyAccountAuthorityRequest struct {
 	//
 	// cc-bp108z124a8o7****
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	// Specifies whether to grant DDL permissions to the database account. Valid values:
+	// Specifies whether to grant Data Definition Language (DDL) permissions to the database account. Valid values:
 	//
-	// - **true**: Allows DDL operations.
+	// - **true**: allows DDL operations.
 	//
-	// - **false**: Denies DDL operations.
+	// - **false**: prohibits DDL operations.
 	//
 	// This parameter is required.
 	//
@@ -82,11 +82,11 @@ type ModifyAccountAuthorityRequest struct {
 	//
 	// true
 	DdlAuthority *bool `json:"DdlAuthority,omitempty" xml:"DdlAuthority,omitempty"`
-	// The DML permissions granted to the database account. Valid values:
+	// Specifies whether to grant Data Manipulation Language (DML) permissions to the database account. Valid values:
 	//
-	// - **all**: Grants read, write, and modify permissions.
+	// - **all**: read, write, and settings permissions.
 	//
-	// - **readonly,modify**: Grants read and modify permissions.
+	// - **readonly,modify**: read and settings permissions.
 	//
 	// This parameter is required.
 	//
@@ -96,7 +96,7 @@ type ModifyAccountAuthorityRequest struct {
 	DmlAuthority *string `json:"DmlAuthority,omitempty" xml:"DmlAuthority,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/170875.html) operation to query the most recent region list.
+	// The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/170875.html) operation to query region IDs.
 	//
 	// example:
 	//
@@ -104,13 +104,13 @@ type ModifyAccountAuthorityRequest struct {
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// All databases in the cluster. Separate multiple database names with commas (,).
+	// The list of all databases. Separate multiple databases with commas (,).
 	//
 	// example:
 	//
 	// db1,db2
 	TotalDatabases *string `json:"TotalDatabases,omitempty" xml:"TotalDatabases,omitempty"`
-	// All dictionaries in the cluster. Separate multiple dictionary names with commas (,).
+	// The list of all dictionaries. Separate multiple dictionaries with commas (,).
 	//
 	// example:
 	//

@@ -26,11 +26,11 @@ type DescribeDBClusterNetInfoItemsResponseBody struct {
 	//
 	// VPC
 	ClusterNetworkType *string `json:"ClusterNetworkType,omitempty" xml:"ClusterNetworkType,omitempty"`
-	// Indicates whether Server Load Balancer (SLB) is enabled in the VPC. Valid values:
+	// Indicates whether SLB is enabled in the VPC. Valid values:
 	//
-	// - true: enabled.
+	// - true: Enabled.
 	//
-	// - false: disabled.
+	// - false: Disabled.
 	//
 	// This parameter is required.
 	//

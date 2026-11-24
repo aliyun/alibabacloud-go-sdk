@@ -30,7 +30,7 @@ type iCancelRestartInstanceRequest interface {
 }
 
 type CancelRestartInstanceRequest struct {
-	// The cluster ID. You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/170879.html) operation to query information about all clusters in a specific region. The information includes the cluster IDs.
+	// The cluster ID. You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/170879.html) operation to query all clusters in the specified region, including their cluster IDs.
 	//
 	// This parameter is required.
 	//
@@ -46,7 +46,7 @@ type CancelRestartInstanceRequest struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries to return on each page. Valid values:
+	// The number of entries per page. Valid values:
 	//
 	// - 30 (default)
 	//
@@ -66,7 +66,7 @@ type CancelRestartInstanceRequest struct {
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The scheduled restart time. The time must be in the \\`yyyy-MM-ddTHH:mmZ\\` format and in UTC.
+	// The scheduled restart time. Format: yyyy-MM-ddTHH:mmZ (UTC).
 	//
 	// example:
 	//

@@ -24,7 +24,7 @@ type iCancelActiveOperationTasksRequest interface {
 }
 
 type CancelActiveOperationTasksRequest struct {
-	// The O\\&M task IDs. Separate multiple IDs with a comma (,).
+	// The IDs of the O&M tasks. Separate multiple IDs with commas (,).
 	//
 	// This parameter is required.
 	//

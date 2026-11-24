@@ -14,7 +14,7 @@ type iModifyActiveOperationMaintainConfResponseBody interface {
 }
 
 type ModifyActiveOperationMaintainConfResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

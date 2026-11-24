@@ -34,7 +34,7 @@ type iDescribeSlowLogRecordsRequest interface {
 }
 
 type DescribeSlowLogRecordsRequest struct {
-	// The cluster ID. Call the [DescribeDBClusters](https://help.aliyun.com/document_detail/170879.html) operation to query information about all clusters in the destination region, including cluster IDs.
+	// The cluster ID. You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/170879.html) operation to query all clusters in the specified region, including cluster IDs.
 	//
 	// This parameter is required.
 	//
@@ -42,9 +42,9 @@ type DescribeSlowLogRecordsRequest struct {
 	//
 	// cc-bp1z58t881wcx****
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	// The end of the time range to query. The format is \\`yyyy-MM-dd hh:mm:ss\\`. The time is in UTC.
+	// The end time of the query. Format: yyyy-MM-dd hh:mm:ss (UTC).
 	//
-	// > The end time must be later than the start time. The interval between the start time and the end time cannot exceed 7 days.
+	// >The end time must be later than the start time, and the interval between the start time and the end time must be less than 7 days.
 	//
 	// This parameter is required.
 	//
@@ -54,15 +54,15 @@ type DescribeSlowLogRecordsRequest struct {
 	EndTime      *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The page number. The value must be an integer that is greater than 0 and does not exceed the maximum value of the Integer data type. Default value: **1**.
+	// The page number. The value must be a positive integer. Default value: **1**.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries to return on each page. Valid values:
+	// The number of entries per page. Valid values:
 	//
-	// - **30*	- (Default)
+	// - **30*	- (default)
 	//
 	// - **50**
 	//
@@ -72,13 +72,13 @@ type DescribeSlowLogRecordsRequest struct {
 	//
 	// 30
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The minimum query duration, in milliseconds. The minimum value is **1000**. The default value is **1000**. The response returns information about queries that take longer than the specified duration.
+	// The minimum query duration. Minimum value: **1000**. Default value: **1000**. Unit: milliseconds. The response includes queries that exceed this duration.
 	//
 	// example:
 	//
 	// 1000
 	QueryDurationMs *int32 `json:"QueryDurationMs,omitempty" xml:"QueryDurationMs,omitempty"`
-	// The region ID. Call the [DescribeRegions](https://help.aliyun.com/document_detail/170875.html) operation to query the region ID.
+	// The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/170875.html) operation to query the region ID.
 	//
 	// example:
 	//
@@ -86,7 +86,7 @@ type DescribeSlowLogRecordsRequest struct {
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The beginning of the time range to query. The format is \\`yyyy-MM-dd hh:mm:ss\\`. The time is in UTC.
+	// The start time of the query. Format: yyyy-MM-dd hh:mm:ss (UTC).
 	//
 	// This parameter is required.
 	//

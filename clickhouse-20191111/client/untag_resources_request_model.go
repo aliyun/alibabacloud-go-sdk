@@ -36,7 +36,7 @@ type UntagResourcesRequest struct {
 	//
 	// - **false*	- (default)
 	//
-	// > This parameter is valid only when the **TagKey.N*	- parameter is empty.
+	// >This parameter takes effect only when the **TagKey.N*	- parameter is left empty.
 	//
 	// example:
 	//
@@ -46,7 +46,7 @@ type UntagResourcesRequest struct {
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The region ID.
 	//
-	// > Call the [DescribeRegions](https://help.aliyun.com/document_detail/170875.html) operation to query region IDs.
+	// > You can call the [DescribeRegions](https://help.aliyun.com/document_detail/170875.html) operation to query the region ID.
 	//
 	// This parameter is required.
 	//

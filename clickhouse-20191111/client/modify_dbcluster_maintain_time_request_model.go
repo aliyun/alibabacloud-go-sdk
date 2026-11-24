@@ -32,11 +32,11 @@ type ModifyDBClusterMaintainTimeRequest struct {
 	//
 	// cc-bp108z124a8o7****
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	// The maintenance window of the cluster. The format is HH:mmZ-HH:mmZ.
+	// The maintenance window of the cluster. Format: HH:mmZ-HH:mmZ.
 	//
-	// Example: 00:00Z-01:00Z. This means that routine maintenance can be performed from 00:00 to 01:00 (UTC), which is 08:00 to 09:00 (UTC+8).
+	// Example: 00:00Z-01:00Z indicates that routine maintenance can be performed from 00:00 to 01:00 UTC (08:00 to 09:00 UTC+8).
 	//
-	// > The maintenance window must start on the hour and last for one hour.
+	// >The maintenance window Settings must be full hours with a duration of 1 hour.
 	//
 	// This parameter is required.
 	//

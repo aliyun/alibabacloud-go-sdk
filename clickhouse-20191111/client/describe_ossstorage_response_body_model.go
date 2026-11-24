@@ -22,17 +22,17 @@ type iDescribeOSSStorageResponseBody interface {
 }
 
 type DescribeOSSStorageResponseBody struct {
-	// Indicates whether tiered storage for hot and cold data can be enabled. Valid values:
+	// Indicates whether hot and cold tiered storage is supported. Valid values:
 	//
-	// - **true**: Tiered storage can be enabled.
+	// - **true**: Supported.
 	//
-	// - **false**: Tiered storage cannot be enabled.
+	// - **false**: Not supported.
 	//
 	// example:
 	//
 	// true
 	ColdStorage *bool `json:"ColdStorage,omitempty" xml:"ColdStorage,omitempty"`
-	// The parameters of the tiered storage policy for hot and cold data.
+	// The parameters of the hot and cold tiered storage policy.
 	//
 	// example:
 	//
@@ -44,19 +44,19 @@ type DescribeOSSStorageResponseBody struct {
 	//
 	// aadbb456-ebf7-4ed8-9671-fad9f3846ca4
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The status of tiered storage for hot and cold data. Valid values:
+	// The status of the hot and cold tiered storage. Valid values:
 	//
-	// - **CREATING**: Tiered storage is being enabled.
+	// - **CREATING**: Enabling.
 	//
-	// - **DISABLE**: Tiered storage is disabled.
+	// - **DISABLE**: Disabled.
 	//
-	// - **ENABLE**: Tiered storage is enabled.
+	// - **ENABLE**: Enabled.
 	//
 	// example:
 	//
 	// ENABLE
 	State *string `json:"State,omitempty" xml:"State,omitempty"`
-	// The cold storage space used. Unit: GB.
+	// The amount of storage space used by cold data. Unit: GB.
 	//
 	// example:
 	//

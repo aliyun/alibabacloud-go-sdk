@@ -22,7 +22,7 @@ type iDescribeActiveOperationTasksResponseBody interface {
 }
 
 type DescribeActiveOperationTasksResponseBody struct {
-	// The list of O\\&M tasks.
+	// The list of O&M tasks.
 	Items []*DescribeActiveOperationTasksResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
 	// The page number.
 	//
@@ -30,9 +30,9 @@ type DescribeActiveOperationTasksResponseBody struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries returned per page. Valid values:
+	// The number of entries per page. Valid values:
 	//
-	// - **30*	- (Default)
+	// - **30*	- (default)
 	//
 	// - **50**
 	//
@@ -123,35 +123,35 @@ func (s *DescribeActiveOperationTasksResponseBody) Validate() error {
 }
 
 type DescribeActiveOperationTasksResponseBodyItems struct {
-	// Specifies whether the task can be canceled. Return values:
+	// Indicates whether the task can be canceled. Valid values:
 	//
-	// - **-1**: All
+	// - **-1**: all
 	//
-	// - **0**: No
+	// - **0**: not allowed
 	//
-	// - **1**: Yes
+	// - **1**: allowed
 	//
 	// example:
 	//
 	// -1
 	AllowCancel *string `json:"AllowCancel,omitempty" xml:"AllowCancel,omitempty"`
-	// Specifies whether the time can be changed. Return values:
+	// Indicates whether the execution time can be modified. Valid values:
 	//
-	// - **-1**: All
+	// - **-1**: all
 	//
-	// - **0**: No
+	// - **0**: not allowed
 	//
-	// - **1**: Yes
+	// - **1**: allowed
 	//
 	// example:
 	//
 	// -1
 	AllowChange *string `json:"AllowChange,omitempty" xml:"AllowChange,omitempty"`
-	// The event level code.
+	// The event level code. Valid values:
 	//
-	// - **S1**: System O\\&M.
+	// - **S1**: system O&M.
 	//
-	// - **S0**: Threat fixing.
+	// - **S0**: risk fix.
 	//
 	// example:
 	//
@@ -167,9 +167,9 @@ type DescribeActiveOperationTasksResponseBodyItems struct {
 	//
 	// example:
 	//
-	// 系统运维
+	// System O&M
 	ChangeLevelZh *string `json:"ChangeLevelZh,omitempty" xml:"ChangeLevelZh,omitempty"`
-	// The creation time. The time is in UTC format (YYYY-MM-DDTHH:mm:ssZ).
+	// The creation time in UTC. The format is YYYY-MM-DDTHH:mm:ssZ.
 	//
 	// example:
 	//
@@ -187,13 +187,13 @@ type DescribeActiveOperationTasksResponseBodyItems struct {
 	//
 	// clickhouse
 	DbType *string `json:"DbType,omitempty" xml:"DbType,omitempty"`
-	// The kernel version of the cluster.
+	// The Milvus version of the cluster kernel.
 	//
 	// example:
 	//
 	// 23.8
 	DbVersion *string `json:"DbVersion,omitempty" xml:"DbVersion,omitempty"`
-	// The latest time to which the task execution time can be adjusted. The time is in UTC format (YYYY-MM-DDTHH:mm:ssZ).
+	// The deadline for adjusting the task execution time in UTC. The format is YYYY-MM-DDTHH:mm:ssZ.
 	//
 	// example:
 	//
@@ -221,7 +221,7 @@ type DescribeActiveOperationTasksResponseBodyItems struct {
 	//
 	// example:
 	//
-	// 实例闪断。
+	// Transient instance disconnection
 	ImpactZh *string `json:"ImpactZh,omitempty" xml:"ImpactZh,omitempty"`
 	// The instance description.
 	//
@@ -235,7 +235,7 @@ type DescribeActiveOperationTasksResponseBodyItems struct {
 	//
 	// cc-bp191w*******
 	InsName *string `json:"InsName,omitempty" xml:"InsName,omitempty"`
-	// The modification time. The time is in UTC format (YYYY-MM-DDTHH:mm:ssZ).
+	// The modification time in UTC. The format is YYYY-MM-DDTHH:mm:ssZ.
 	//
 	// example:
 	//
@@ -259,39 +259,39 @@ type DescribeActiveOperationTasksResponseBodyItems struct {
 	//
 	// userCancel
 	ResultInfo *string `json:"ResultInfo,omitempty" xml:"ResultInfo,omitempty"`
-	// The time when the backend executes the task. The time is in UTC format (YYYY-MM-DDTHH:mm:ssZ).
+	// The time when the backend executes the task in UTC. The format is YYYY-MM-DDTHH:mm:ssZ.
 	//
 	// example:
 	//
 	// 2025-04-22T01:06Z
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The running status of the task. Return values:
+	// The running status of the task. Valid values:
 	//
-	// - **2**: Waiting for the user to specify a time.
+	// - **2**: waiting for the user to specify a time.
 	//
-	// - **3**: To be processed.
+	// - **3**: pending.
 	//
-	// - **4**: In progress.
+	// - **4**: in progress.
 	//
-	// - **5**: Successful.
+	// - **5**: successful.
 	//
-	// - **6**: Failed.
+	// - **6**: failed.
 	//
-	// - **7**: Canceled.
+	// - **7**: canceled.
 	//
 	// example:
 	//
 	// 2
 	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The sub-instance IDs.
+	// The instance ID of the sub-instances.
 	SubInsNames []*string `json:"SubInsNames,omitempty" xml:"SubInsNames,omitempty" type:"Repeated"`
-	// The time when the backend initiates the switchover. The time is in UTC format (YYYY-MM-DDTHH:mm:ssZ).
+	// The time when the backend initiates the switchover operation in UTC. The format is YYYY-MM-DDTHH:mm:ssZ.
 	//
 	// example:
 	//
 	// 2018-05-30T14:30:00Z
 	SwitchTime *string `json:"SwitchTime,omitempty" xml:"SwitchTime,omitempty"`
-	// The O\\&M event parameters.
+	// The O&M event parameters.
 	//
 	// example:
 	//
@@ -301,7 +301,7 @@ type DescribeActiveOperationTasksResponseBodyItems struct {
 	//
 	// }
 	TaskParams *string `json:"TaskParams,omitempty" xml:"TaskParams,omitempty"`
-	// The O\\&M event task type.
+	// The O&M event task type.
 	//
 	// example:
 	//
@@ -313,11 +313,11 @@ type DescribeActiveOperationTasksResponseBodyItems struct {
 	//
 	// Minor version update
 	TaskTypeEn *string `json:"TaskTypeEn,omitempty" xml:"TaskTypeEn,omitempty"`
-	// The task reason in Chinese.
+	// The task cause in Chinese.
 	//
 	// example:
 	//
-	// 小版本升级
+	// Minor version update
 	TaskTypeZh *string `json:"TaskTypeZh,omitempty" xml:"TaskTypeZh,omitempty"`
 }
 

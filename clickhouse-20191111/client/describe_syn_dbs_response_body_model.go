@@ -28,7 +28,7 @@ type DescribeSynDbsResponseBody struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of records on each page.
+	// The number of entries per page.
 	//
 	// example:
 	//
@@ -40,9 +40,9 @@ type DescribeSynDbsResponseBody struct {
 	//
 	// 7655F5F9-1313-5ABA-8516-F6EB79605A5F
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The synchronized data.
+	// The synchronization data.
 	SynDbs []*DescribeSynDbsResponseBodySynDbs `json:"SynDbs,omitempty" xml:"SynDbs,omitempty" type:"Repeated"`
-	// The total number of records.
+	// The total number of entries.
 	//
 	// example:
 	//
@@ -117,41 +117,41 @@ func (s *DescribeSynDbsResponseBody) Validate() error {
 }
 
 type DescribeSynDbsResponseBodySynDbs struct {
-	// - This parameter is not returned if **SynStatus*	- is **true**.
+	// - This parameter is not returned when **SynStatus*	- is **true**.
 	//
-	// - If **SynStatus*	- is **false**, this parameter indicates the reason for the synchronization failure.
+	// - When **SynStatus*	- is **false**, this parameter indicates the cause of the synchronization failure.
 	//
 	// example:
 	//
 	// ClickHouse exception, code: 49, host: 100.100.118.132, port: 49670; Code: 49, e.displayText() = DB::Exception: Logical error: there is no global context (version 20.8.17.25)n
 	ErrorMsg *string `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
-	// The instance ID of the ApsaraDB RDS for MySQL instance.
+	// The instance ID of the ApsaraDB RDS for MySQL database.
 	//
 	// example:
 	//
 	// rm-wz9d11qg1j0h4****
 	RdsId *string `json:"RdsId,omitempty" xml:"RdsId,omitempty"`
-	// The database account for the ApsaraDB RDS for MySQL instance.
+	// The database account of the ApsaraDB RDS for MySQL instance.
 	//
 	// example:
 	//
 	// test
 	RdsUserName *string `json:"RdsUserName,omitempty" xml:"RdsUserName,omitempty"`
-	// The internal endpoint of the ApsaraDB RDS for MySQL instance.
+	// The internal network connection endpoint of the ApsaraDB RDS for MySQL database.
 	//
 	// example:
 	//
 	// rm-bp16t9h3999xb0a711****.mysql.rds.aliyuncs.com:3306
 	RdsVpcUrl *string `json:"RdsVpcUrl,omitempty" xml:"RdsVpcUrl,omitempty"`
-	// The database in the ApsaraDB RDS for MySQL instance.
+	// The database of the ApsaraDB RDS for MySQL instance.
 	//
 	// example:
 	//
 	// database
 	SynDb *string `json:"SynDb,omitempty" xml:"SynDb,omitempty"`
-	// Indicates whether the synchronization was successful. Valid values:
+	// Indicates whether the synchronization is successful. Valid values:
 	//
-	// - **true**: The synchronization was successful.
+	// - **true**: The synchronization is successful.
 	//
 	// - **false**: The synchronization failed.
 	//

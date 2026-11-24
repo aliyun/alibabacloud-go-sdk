@@ -36,9 +36,9 @@ type DescribeDBClusterPerformanceRequest struct {
 	//
 	// cc-bp125e3uu94wo****
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	// The end of the time range to query. Specify the time in UTC using the `yyyy-MM-ddTHH:mmZ` format.
+	// The end time of the query. Format: yyyy-MM-ddTHH:mmZ (UTC time).
 	//
-	// > The end time must be later than the start time. The maximum time range cannot exceed 32 days.
+	// >The end time must be later than the start time, and the time interval between the start time and the end time cannot exceed 32 days.
 	//
 	// This parameter is required.
 	//
@@ -46,53 +46,53 @@ type DescribeDBClusterPerformanceRequest struct {
 	//
 	// 2021-11-27T16:38Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The performance metrics that you want to query. Separate multiple metric names with a comma (,). You can query up to five performance metrics at a time. The following performance metrics are supported:
+	// The names of the performance metrics to query. Separate multiple values with commas (,). You can query up to 5 performance metrics at a time. The following performance metrics are supported:
 	//
-	// > **Key*	- is required.
+	// >**Key*	- is required.
 	//
 	// - **CPU**:
 	//
-	//   - **CPU_USAGE**: The CPU utilization.
+	//     - **CPU_USAGE**: CPU utilization.
 	//
 	// - **Memory**:
 	//
-	//   - **MEM_USAGE**: The memory utilization.
+	//     - **MEM_USAGE**: Memory utilization.
 	//
-	//   - **MEM_USAGE_SIZE**: The memory usage in MB.
+	//     - **MEM_USAGE_SIZE**: Memory usage (unit: MB).
 	//
 	// - **Disk**:
 	//
-	//   - **DISK_USAGE**: The disk utilization.
+	//     - **DISK_USAGE**: Disk utilization.
 	//
-	//   - **DISK_USAGE_SIZE**: The disk usage in MB.
+	//     - **DISK_USAGE_SIZE**: Disk usage (unit: MB).
 	//
-	//   - **IOPS**: The disk input/output operations per second (IOPS).
+	//     - **IOPS**: Disk IOPS.
 	//
-	// - **Connection**:
+	// - **Connections**:
 	//
-	//   - **CONN_USAGE**: The database connection utilization.
+	//     - **CONN_USAGE**: Database connection utilization.
 	//
-	//   - **CONN_USAGE_COUNT**: The number of database connections.
+	//     - **CONN_USAGE_COUNT**: Number of database connections in use.
 	//
-	// - **Write**:
+	// - **Writes**:
 	//
-	//   - **TPS**: The number of rows written per second (TPS).
+	//     - **TPS**: Number of rows written per second.
 	//
-	//   - **INSERT_SIZE**: The write size per second in MB.
+	//     - **INSERT_SIZE**: Size of data written per second (unit: MB).
 	//
-	// - **Query**:
+	// - **Queries**:
 	//
-	//   - **QPS**: The queries per second (QPS).
+	//     - **QPS**: Queries per second (QPS).
 	//
-	//   - **AVG_SEEK**: The number of random SEEK calls.
+	//     - **AVG_SEEK**: Number of random SEEK calls.
 	//
 	// - **WAIT**:
 	//
-	//   - **ZK_WAIT**: The average wait time of ZooKeeper (ZK) in ms.
+	//     - **ZK_WAIT**: Average wait time for ZooKeeper (unit: ms).
 	//
-	//   - **IO_WAIT**: The average I/O wait time in ms.
+	//     - **IO_WAIT**: Average wait time for IO_WAIT (unit: ms).
 	//
-	//   - **CPU_WAIT**: The average CPU wait time in ms.
+	//     - **CPU_WAIT**: Average wait time for CPU_WAIT (unit: ms).
 	//
 	// example:
 	//
@@ -102,7 +102,7 @@ type DescribeDBClusterPerformanceRequest struct {
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The beginning of the time range to query. Specify the time in UTC using the `yyyy-MM-ddTHH:mmZ` format.
+	// The start time of the query. Format: yyyy-MM-ddTHH:mmZ (UTC time).
 	//
 	// This parameter is required.
 	//

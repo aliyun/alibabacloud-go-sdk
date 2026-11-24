@@ -20,13 +20,13 @@ type CheckModifyConfigNeedRestartResponseBody struct {
 	//
 	// - **true**: A restart is required.
 	//
-	// - **false**: A restart is not required.
+	// - **false**: No restart is required.
 	//
 	// example:
 	//
 	// true
 	NeedRestart *bool `json:"NeedRestart,omitempty" xml:"NeedRestart,omitempty"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//

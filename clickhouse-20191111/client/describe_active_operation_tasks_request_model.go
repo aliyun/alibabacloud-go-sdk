@@ -46,19 +46,19 @@ type iDescribeActiveOperationTasksRequest interface {
 type DescribeActiveOperationTasksRequest struct {
 	// Specifies whether the task can be canceled. Valid values:
 	//
-	// - **0**: The task cannot be canceled.
+	// - **0**: not allowed.
 	//
-	// - **1**: The task can be canceled.
+	// - **1**: allowed.
 	//
 	// example:
 	//
 	// -1
 	AllowCancel *int32 `json:"AllowCancel,omitempty" xml:"AllowCancel,omitempty"`
-	// Specifies whether the time can be changed. Valid values:
+	// Specifies whether the execution time can be modified. Valid values:
 	//
-	// - **0**: The time cannot be changed.
+	// - **0**: not allowed.
 	//
-	// - **1**: The time can be changed.
+	// - **1**: allowed.
 	//
 	// example:
 	//
@@ -66,11 +66,11 @@ type DescribeActiveOperationTasksRequest struct {
 	AllowChange *int32 `json:"AllowChange,omitempty" xml:"AllowChange,omitempty"`
 	// The task level. Valid values:
 	//
-	// - **all*	- (Default): All levels.
+	// - **all*	- (default): all levels.
 	//
-	// - **S0**: Returns tasks for fixing exceptions.
+	// - **S0**: exception fix tasks.
 	//
-	// - **S1**: Returns tasks for system O\\&M.
+	// - **S1**: system O&M tasks.
 	//
 	// example:
 	//
@@ -96,9 +96,9 @@ type DescribeActiveOperationTasksRequest struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries to return on each page. Valid values:
+	// The number of entries per page. Valid values:
 	//
-	// - **30*	- (Default)
+	// - **30*	- (default)
 	//
 	// - **50**
 	//
@@ -114,7 +114,7 @@ type DescribeActiveOperationTasksRequest struct {
 	//
 	// clickhouse
 	ProductId *string `json:"ProductId,omitempty" xml:"ProductId,omitempty"`
-	// The region ID.
+	// The region.
 	//
 	// example:
 	//
@@ -123,19 +123,19 @@ type DescribeActiveOperationTasksRequest struct {
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	SecurityToken        *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
-	// The task status. This parameter is used to filter tasks.
+	// The task status, which is used to filter returned tasks. Valid values:
 	//
-	// - **-1:*	- All tasks.
+	// - **-1**: all tasks.
 	//
-	// - **3:*	- Tasks to be processed.
+	// - **3**: pending tasks.
 	//
-	// - **4:*	- Tasks in progress.
+	// - **4**: in-progress tasks.
 	//
-	// - **5:*	- Successfully completed tasks.
+	// - **5**: successfully completed tasks.
 	//
-	// - **6:*	- Failed tasks.
+	// - **6**: failed tasks.
 	//
-	// - **7:*	- Canceled tasks.
+	// - **7**: canceled tasks.
 	//
 	// example:
 	//
@@ -143,9 +143,9 @@ type DescribeActiveOperationTasksRequest struct {
 	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
 	// The task type. Valid values:
 	//
-	// - **rds_apsaradb_upgrade**: Minor version upgrade.
+	// - **rds_apsaradb_upgrade**: minor version update.
 	//
-	// - **all**: All task types.
+	// - **all**: all task types.
 	//
 	// example:
 	//

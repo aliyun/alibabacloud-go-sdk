@@ -52,7 +52,7 @@ type TransferVersionRequest struct {
 	//
 	// cc-bp1tm8zf130ew****
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	// The time windows during which writes are disabled.
+	// The write suspension window.
 	//
 	// example:
 	//
@@ -66,9 +66,9 @@ type TransferVersionRequest struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries to return on each page. Valid values:
+	// The number of entries per page. Valid values:
 	//
-	// - **30*	- (Default)
+	// - **30*	- (default)
 	//
 	// - **50**
 	//
@@ -78,7 +78,7 @@ type TransferVersionRequest struct {
 	//
 	// 30
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the region. Call the [DescribeRegions](https://help.aliyun.com/document_detail/170875.html) operation to query the most recent list of regions.
+	// The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/170875.html) operation to query the region ID.
 	//
 	// This parameter is required.
 	//
@@ -96,9 +96,7 @@ type TransferVersionRequest struct {
 	//
 	// test
 	SourceAccount *string `json:"SourceAccount,omitempty" xml:"SourceAccount,omitempty"`
-	// The name of the self-managed ClickHouse cluster.
-	//
-	// To obtain the name, execute `SELECT 	- FROM system.clusters`.
+	// The cluster name of the self-managed ClickHouse cluster. You can execute the `SELECT 	- FROM system.clusters` statement to obtain the cluster name.
 	//
 	// example:
 	//
@@ -112,7 +110,7 @@ type TransferVersionRequest struct {
 	//
 	// 123456Aa
 	SourcePassword *string `json:"SourcePassword,omitempty" xml:"SourcePassword,omitempty"`
-	// The addresses and TCP ports of the shards in the self-managed ClickHouse cluster.
+	// The address and TCP port information of the self-managed ClickHouse cluster.
 	//
 	// example:
 	//

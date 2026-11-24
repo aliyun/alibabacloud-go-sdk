@@ -28,7 +28,7 @@ type iDescribeAccountAuthorityResponseBody interface {
 }
 
 type DescribeAccountAuthorityResponseBody struct {
-	// The database account name.
+	// The database account.
 	//
 	// example:
 	//
@@ -40,19 +40,19 @@ type DescribeAccountAuthorityResponseBody struct {
 	AllowDictionaries []*string `json:"AllowDictionaries,omitempty" xml:"AllowDictionaries,omitempty" type:"Repeated"`
 	// Indicates whether the account has DDL permissions. Valid values:
 	//
-	// - **true**: DDL permissions are granted.
+	// - **true**: DDL is allowed.
 	//
-	// - **false**: DDL permissions are denied.
+	// - **false**: DDL is not allowed.
 	//
 	// example:
 	//
 	// true
 	DdlAuthority *bool `json:"DdlAuthority,omitempty" xml:"DdlAuthority,omitempty"`
-	// The DML permission level for the account. Valid values:
+	// Indicates whether the account has DML permissions. Valid values:
 	//
-	// - **all**: read, write, and settings permissions.
+	// - **all**: Read, write, and settings permissions.
 	//
-	// - **readOnly,modify**: read and settings permissions.
+	// - **readOnly,modify**: Read and settings permissions.
 	//
 	// example:
 	//
@@ -64,9 +64,9 @@ type DescribeAccountAuthorityResponseBody struct {
 	//
 	// F5178C10-1407-4987-9133-DE4DC9119F75
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// A list of all databases in the cluster.
+	// The list of all databases.
 	TotalDatabases []*string `json:"TotalDatabases,omitempty" xml:"TotalDatabases,omitempty" type:"Repeated"`
-	// A list of all dictionaries in the cluster.
+	// The list of all dictionaries.
 	TotalDictionaries []*string `json:"TotalDictionaries,omitempty" xml:"TotalDictionaries,omitempty" type:"Repeated"`
 }
 

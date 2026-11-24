@@ -22,7 +22,7 @@ type DescribeSlowLogRecordsResponseBody struct {
 	//
 	// DF203CC8-5F68-5E3F-8050-3C77DD65731A
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The details of the slow query logs.
+	// The list of slow log details.
 	SlowLogRecords *DescribeSlowLogRecordsResponseBodySlowLogRecords `json:"SlowLogRecords,omitempty" xml:"SlowLogRecords,omitempty" type:"Struct"`
 }
 
@@ -63,19 +63,19 @@ func (s *DescribeSlowLogRecordsResponseBody) Validate() error {
 
 type DescribeSlowLogRecordsResponseBodySlowLogRecords struct {
 	Data *DescribeSlowLogRecordsResponseBodySlowLogRecordsData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The number of rows in the result set.
+	// The number of rows in the returned result set.
 	//
 	// example:
 	//
 	// 1
 	Rows *string `json:"Rows,omitempty" xml:"Rows,omitempty"`
-	// The number of entries on each page.
+	// The page size.
 	//
 	// example:
 	//
 	// 1
 	RowsBeforeLimitAtLeast *string `json:"RowsBeforeLimitAtLeast,omitempty" xml:"RowsBeforeLimitAtLeast,omitempty"`
-	// The statistics of the query results.
+	// The statistics information of the query results.
 	Statistics  *DescribeSlowLogRecordsResponseBodySlowLogRecordsStatistics  `json:"Statistics,omitempty" xml:"Statistics,omitempty" type:"Struct"`
 	TableSchema *DescribeSlowLogRecordsResponseBodySlowLogRecordsTableSchema `json:"TableSchema,omitempty" xml:"TableSchema,omitempty" type:"Struct"`
 }
@@ -312,19 +312,19 @@ func (s *DescribeSlowLogRecordsResponseBodySlowLogRecordsDataResultSet) Validate
 }
 
 type DescribeSlowLogRecordsResponseBodySlowLogRecordsStatistics struct {
-	// The amount of data read, in bytes.
+	// The maximum amount of data read. Unit: bytes.
 	//
 	// example:
 	//
 	// 123456
 	BytesRead *int32 `json:"BytesRead,omitempty" xml:"BytesRead,omitempty"`
-	// The time elapsed for the slow query, in milliseconds.
+	// The time elapsed for the slow query. Unit: milliseconds.
 	//
 	// example:
 	//
 	// 21.35
 	ElapsedTime *float32 `json:"ElapsedTime,omitempty" xml:"ElapsedTime,omitempty"`
-	// The number of rows read.
+	// The maximum number of rows read.
 	//
 	// example:
 	//

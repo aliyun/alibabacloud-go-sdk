@@ -30,7 +30,7 @@ type iModifyAutoRenewAttributeRequest interface {
 }
 
 type ModifyAutoRenewAttributeRequest struct {
-	// The cluster ID. To specify multiple cluster IDs, separate them with commas (,).
+	// The cluster IDs. Separate multiple cluster IDs with commas (,).
 	//
 	// This parameter is required.
 	//
@@ -38,13 +38,13 @@ type ModifyAutoRenewAttributeRequest struct {
 	//
 	// cc-bp1uy5ff6*****
 	DBClusterIds *string `json:"DBClusterIds,omitempty" xml:"DBClusterIds,omitempty"`
-	// The renewal duration. The default value is **1**.
+	// The renewal duration. Default value: **1**.
 	//
-	// - If you set \\`PeriodUnit\\` to **Month**, valid values are integers from 1 to 11.
+	// - If PeriodUnit is set to **Month**, valid values are 1 to 11.
 	//
-	// - If you set \\`PeriodUnit\\` to **Year**, valid values are 1, 2, 3, and 5.
+	// - If PeriodUnit is set to **Year**, valid values are 1, 2, 3, and 5.
 	//
-	// > A longer subscription period offers a better price. For example, a one-year subscription is more cost-effective than a 10-month or 11-month subscription.
+	// > A longer subscription duration offers a greater discount. For example, a 1-year subscription is more cost-effective than a 10-month or 11-month subscription.
 	//
 	// example:
 	//
@@ -52,7 +52,7 @@ type ModifyAutoRenewAttributeRequest struct {
 	Duration     *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The unit of the renewal duration specified by the \\`Duration\\` parameter. Valid values: Month and Year.
+	// The unit of the renewal duration, which is the unit of the Duration parameter. Valid values: Month and Year.
 	//
 	// example:
 	//
@@ -66,13 +66,13 @@ type ModifyAutoRenewAttributeRequest struct {
 	//
 	// cn-beijing
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The renewal method. Valid values:
+	// The renewal status. Valid values:
 	//
 	// - **AutoRenewal**: Auto-renewal.
 	//
 	// - **Normal**: Manual renewal.
 	//
-	// - **NotRenewal**: The cluster is not renewed after it expires.
+	// - **NotRenewal**: No renewal upon expiration.
 	//
 	// example:
 	//

@@ -16,7 +16,7 @@ type iDescribeConfigHistoryResponseBody interface {
 }
 
 type DescribeConfigHistoryResponseBody struct {
-	// The change history of the configuration parameters.
+	// The change history of configuration parameters.
 	ConfigHistoryItems []*DescribeConfigHistoryResponseBodyConfigHistoryItems `json:"ConfigHistoryItems,omitempty" xml:"ConfigHistoryItems,omitempty" type:"Repeated"`
 	// The request ID.
 	//
@@ -78,13 +78,13 @@ type DescribeConfigHistoryResponseBodyConfigHistoryItems struct {
 	//
 	// 253460731706911258
 	OwnerId *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The reason for the parameter change.
+	// The description of the configuration parameter change.
 	//
 	// example:
 	//
 	// test
 	Reason *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
-	// Indicates whether the parameter change took effect. Valid values:
+	// Indicates whether the configuration parameter change took effect. Valid values:
 	//
 	// - **true**: The change took effect.
 	//
@@ -94,7 +94,7 @@ type DescribeConfigHistoryResponseBodyConfigHistoryItems struct {
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// The time when the change was made. Use the yyyy-MM-ddTHH:mm:ssZ format. The time is in UTC.
+	// The time when the change occurred. The time is in the yyyy-MM-ddTHH:mm:ssZ format and in UTC.
 	//
 	// example:
 	//

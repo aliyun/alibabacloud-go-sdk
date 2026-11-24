@@ -16,7 +16,7 @@ type iDescribeProcessListResponseBody interface {
 }
 
 type DescribeProcessListResponseBody struct {
-	// The list of tasks.
+	// The process list.
 	ProcessList *DescribeProcessListResponseBodyProcessList `json:"ProcessList,omitempty" xml:"ProcessList,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -63,19 +63,19 @@ func (s *DescribeProcessListResponseBody) Validate() error {
 
 type DescribeProcessListResponseBodyProcessList struct {
 	Data *DescribeProcessListResponseBodyProcessListData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The number of rows returned for the query.
+	// The number of data rows returned by the query.
 	//
 	// example:
 	//
 	// 1145700
 	Rows *string `json:"Rows,omitempty" xml:"Rows,omitempty"`
-	// The page size in rows.
+	// The page size.
 	//
 	// example:
 	//
 	// 1
 	RowsBeforeLimitAtLeast *string `json:"RowsBeforeLimitAtLeast,omitempty" xml:"RowsBeforeLimitAtLeast,omitempty"`
-	// The statistics of the query result.
+	// The statistics information of the query results.
 	Statistics  *DescribeProcessListResponseBodyProcessListStatistics  `json:"Statistics,omitempty" xml:"Statistics,omitempty" type:"Struct"`
 	TableSchema *DescribeProcessListResponseBodyProcessListTableSchema `json:"TableSchema,omitempty" xml:"TableSchema,omitempty" type:"Struct"`
 }
@@ -262,19 +262,19 @@ func (s *DescribeProcessListResponseBodyProcessListDataResultSet) Validate() err
 }
 
 type DescribeProcessListResponseBodyProcessListStatistics struct {
-	// The size of the scanned data, in bytes.
+	// The size of the scanned data. Unit: bytes.
 	//
 	// example:
 	//
-	// 9141300000
+	// 1048576
 	BytesRead *int32 `json:"BytesRead,omitempty" xml:"BytesRead,omitempty"`
-	// The elapsed time.
+	// The average response time. Unit: milliseconds.
 	//
 	// example:
 	//
 	// 4156
 	ElapsedTime *float32 `json:"ElapsedTime,omitempty" xml:"ElapsedTime,omitempty"`
-	// The number of rows scanned.
+	// The number of scanned data rows.
 	//
 	// example:
 	//

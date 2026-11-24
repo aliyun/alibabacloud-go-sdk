@@ -26,11 +26,13 @@ type iModifyDBConfigRequest interface {
 }
 
 type ModifyDBConfigRequest struct {
-	// The dictionary configuration items.
+	// The dictionary configuration item to be modified.
 	//
-	// > The value of the Config parameter overwrites the existing configuration. To delete a dictionary configuration, remove it from the request.
+	// > When you call this operation, the Config parameter in the request overwrites the existing configuration. Therefore, to delete a dictionary configuration, remove it from the request parameters.
 	//
-	// Call the [DescribeDBConfig](https://help.aliyun.com/document_detail/2360627.html) operation to query the dictionary configuration of the target instance.
+	// >
+	//
+	// You can call the [DescribeDBConfig](https://help.aliyun.com/document_detail/2360627.html) operation to query the dictionary configuration of the target instance.
 	//
 	// example:
 	//
@@ -46,7 +48,7 @@ type ModifyDBConfigRequest struct {
 	DBClusterId  *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The ID of the region. Call the [DescribeRegions](https://help.aliyun.com/document_detail/170875.html) operation to query the IDs of available regions.
+	// The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/170875.html) operation to query the region ID.
 	//
 	// example:
 	//

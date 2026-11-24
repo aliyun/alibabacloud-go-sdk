@@ -26,9 +26,9 @@ type ModifyRDSToClickhouseDbResponseBody struct {
 	//
 	// 0
 	ErrorCode *int64 `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// - This parameter is not returned if **Status*	- is **1**.
+	// - This parameter is not returned when **Status*	- is **1**.
 	//
-	// - If **Status*	- is **0**, this parameter indicates the reason why the modification failed.
+	// - When **Status*	- is **0**, this parameter indicates the cause of the modification failure.
 	//
 	// example:
 	//

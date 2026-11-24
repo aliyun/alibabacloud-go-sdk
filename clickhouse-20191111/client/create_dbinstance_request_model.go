@@ -82,7 +82,7 @@ type CreateDBInstanceRequest struct {
 	//
 	// false
 	AutoRenew *bool `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
-	// The backup set ID. You can call the [DescribeBackups](https://help.aliyun.com/document_detail/360339.html) operation to query the backup set ID.
+	// The ID of the backup set. You can call the [DescribeBackups](https://help.aliyun.com/document_detail/360339.html) operation to query the backup set ID.
 	//
 	// >This parameter is required when you restore data for an ApsaraDB for ClickHouse cluster.
 	//
@@ -90,7 +90,7 @@ type CreateDBInstanceRequest struct {
 	//
 	// b-12af23adsf
 	BackupSetID *string `json:"BackupSetID,omitempty" xml:"BackupSetID,omitempty"`
-	// The client token that is used to ensure the idempotence of the request. The value is a string that contains up to 64 ASCII characters.
+	// The client token that is used to ensure the idempotence of the request. The token must be a string and can contain up to 64 ASCII characters.
 	//
 	// example:
 	//
@@ -98,9 +98,9 @@ type CreateDBInstanceRequest struct {
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// The replica configuration. Valid values:
 	//
-	// - **Basic**: single-replica edition.
+	// - **Basic**: Single-replica edition.
 	//
-	// - **HighAvailability**: double-replica edition.
+	// - **HighAvailability**: Master-replica cluster.
 	//
 	// This parameter is required.
 	//
@@ -114,43 +114,43 @@ type CreateDBInstanceRequest struct {
 	//
 	// - Single-replica edition. Valid values:
 	//
-	//     - **LS20**: large storage, 20 cores, 88 GB.
+	//     - **LS20**: Large storage, 20 cores, 88 GB.
 	//
-	//     - **LS40**: large storage, 40 cores, 176 GB.
+	//     - **LS40**: Large storage, 40 cores, 176 GB.
 	//
-	//     - **LS80**: large storage, 80 cores, 352 GB.
+	//     - **LS80**: Large storage, 80 cores, 352 GB.
 	//
-	//     - **S8**: standard, 8 cores, 32 GB.
+	//     - **S8**: Standard, 8 cores, 32 GB.
 	//
-	//     - **S16**: standard, 16 cores, 64 GB.
+	//     - **S16**: Standard, 16 cores, 64 GB.
 	//
-	//     - **S32**: standard, 32 cores, 128 GB.
+	//     - **S32**: Standard, 32 cores, 128 GB.
 	//
-	//     - **S64**: standard, 64 cores, 256 GB.
+	//     - **S64**: Standard, 64 cores, 256 GB.
 	//
-	//     - **S80**: standard, 80 cores, 384 GB.
+	//     - **S80**: Standard, 80 cores, 384 GB.
 	//
-	//     - **S104**: standard, 104 cores, 384 GB.
+	//     - **S104**: Standard, 104 cores, 384 GB.
 	//
-	// - Double-replica edition. Valid values:
+	// - Master-replica cluster. Valid values:
 	//
-	//     - **LC20**: large storage, 20 cores, 88 GB.
+	//     - **LC20**: Large storage, 20 cores, 88 GB.
 	//
-	//     - **LC40**: large storage, 40 cores, 176 GB.
+	//     - **LC40**: Large storage, 40 cores, 176 GB.
 	//
-	//     - **LC80**: large storage, 80 cores, 352 GB.
+	//     - **LC80**: Large storage, 80 cores, 352 GB.
 	//
-	//     - **C8**: standard, 8 cores, 32 GB.
+	//     - **C8**: Standard, 8 cores, 32 GB.
 	//
-	//     - **C16**: standard, 16 cores, 64 GB.
+	//     - **C16**: Standard, 16 cores, 64 GB.
 	//
-	//     - **C32**: standard, 32 cores, 128 GB.
+	//     - **C32**: Standard, 32 cores, 128 GB.
 	//
-	//     - **C64**: standard, 64 cores, 256 GB.
+	//     - **C64**: Standard, 64 cores, 256 GB.
 	//
-	//     - **C80**: standard, 80 cores, 384 GB.
+	//     - **C80**: Standard, 80 cores, 384 GB.
 	//
-	//     - **C104**: standard, 104 cores, 384 GB.
+	//     - **C104**: Standard, 104 cores, 384 GB.
 	//
 	//
 	// <props="intl">
@@ -167,7 +167,7 @@ type CreateDBInstanceRequest struct {
 	//
 	//   - **S104**: 104 cores, 384 GB.
 	//
-	// - Double-replica edition. Valid values:
+	// - Master-replica cluster. Valid values:
 	//
 	//   - **C8**: 8 cores, 32 GB.
 	//
@@ -185,7 +185,7 @@ type CreateDBInstanceRequest struct {
 	//
 	// S8
 	DBClusterClass *string `json:"DBClusterClass,omitempty" xml:"DBClusterClass,omitempty"`
-	// The cluster description.
+	// The description of the cluster.
 	//
 	// example:
 	//
@@ -213,9 +213,9 @@ type CreateDBInstanceRequest struct {
 	DBClusterVersion *string `json:"DBClusterVersion,omitempty" xml:"DBClusterVersion,omitempty"`
 	// The number of nodes.
 	//
-	// - Single-replica edition: valid values: 1 to 48.
+	// - Single-replica edition: 1 to 48.
 	//
-	// - Double-replica edition: valid values: 1 to 24.
+	// - Master-replica cluster: 1 to 24.
 	//
 	// This parameter is required.
 	//
@@ -223,9 +223,9 @@ type CreateDBInstanceRequest struct {
 	//
 	// 1
 	DBNodeGroupCount *string `json:"DBNodeGroupCount,omitempty" xml:"DBNodeGroupCount,omitempty"`
-	// The storage capacity per node. Valid values: 100 to 32000. Unit: GB.
+	// The storage space per node. Valid values: 100 to 32000. Unit: GB.
 	//
-	// >The step size is 100 GB.
+	// > The step size is 100 GB.
 	//
 	// This parameter is required.
 	//
@@ -243,7 +243,7 @@ type CreateDBInstanceRequest struct {
 	//
 	// - **CloudESSD_PL3**: PL3 ESSD.
 	//
-	// - **CloudEfficiency**: ultra cloud disk.
+	// - **CloudEfficiency**: Ultra disk.
 	//
 	// This parameter is required.
 	//
@@ -251,11 +251,9 @@ type CreateDBInstanceRequest struct {
 	//
 	// CloudESSD_PL2
 	DbNodeStorageType *string `json:"DbNodeStorageType,omitempty" xml:"DbNodeStorageType,omitempty"`
-	// The ID of the key used for cloud disk encryption. This parameter is required when EncryptionType is set to CloudDisk.
+	// The ID of the key used for cloud disk encryption. This parameter is required when EncryptionType is set to CloudDisk. You can view the key ID in the Key Management Service (KMS) console or create a new key.
 	//
-	// You can view the key ID in the Key Management Service (KMS) console or create a key.
-	//
-	// >If EncryptionType is not specified, you do not need to specify this parameter.
+	// >If EncryptionType is left empty, you do not need to specify this parameter.
 	//
 	// example:
 	//
@@ -263,7 +261,7 @@ type CreateDBInstanceRequest struct {
 	EncryptionKey *string `json:"EncryptionKey,omitempty" xml:"EncryptionKey,omitempty"`
 	// The encryption type. Only cloud disk encryption is supported. Set the value to **CloudDisk**.
 	//
-	// >If this parameter is not specified, data is not encrypted.
+	// >If you do not specify this parameter, encryption is disabled.
 	//
 	// example:
 	//
@@ -273,9 +271,9 @@ type CreateDBInstanceRequest struct {
 	OwnerId        *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The billing method. Valid values:
 	//
-	// - **Postpaid**: pay-as-you-go.
+	// - **Postpaid**: Pay-as-you-go.
 	//
-	// - **Prepaid**: subscription.
+	// - **Prepaid**: Subscription.
 	//
 	// This parameter is required.
 	//
@@ -283,13 +281,13 @@ type CreateDBInstanceRequest struct {
 	//
 	// Prepaid
 	PayType *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
-	// The subscription type of the subscription cluster. Valid values:
+	// The subscription period of the subscription cluster. Valid values:
 	//
-	// 	Notice: This parameter takes effect and is required only when PayType is set to Prepaid.
+	// 	Notice: This parameter takes effect and is required only when PayType is set to Prepaid.</notice>
 	//
-	// - **Year**: subscription on a yearly basis.
+	// - **Year**: Yearly.
 	//
-	// - **Month**: subscription on a monthly basis.
+	// - **Month**: Monthly.
 	//
 	// example:
 	//
@@ -311,7 +309,7 @@ type CreateDBInstanceRequest struct {
 	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The source cluster ID. You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/170879.html) operation to query the cluster ID.
+	// The ID of the source cluster. You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/170879.html) operation to query the source cluster ID.
 	//
 	// >This parameter is required when you restore data for an ApsaraDB for ClickHouse cluster.
 	//
@@ -321,19 +319,19 @@ type CreateDBInstanceRequest struct {
 	SourceDBClusterId *string `json:"SourceDBClusterId,omitempty" xml:"SourceDBClusterId,omitempty"`
 	// The tag information.
 	Tags []*CreateDBInstanceRequestTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
-	// The subscription duration of the subscription cluster.
+	// The subscription duration of the subscription cluster. The unit is specified by the Period parameter. If Period is set to Year, the unit is year. If Period is set to Month, the unit is month.
 	//
-	// 	Notice: This parameter takes effect and is required only when PayType is set to Prepaid.
+	// 	Notice: This parameter takes effect and is required only when PayType is set to Prepaid.</notice>
 	//
-	// - If Period is set to Year, valid values: 1 to 3 (integer).
+	// - If Period is set to Year, valid values are 1 to 3.
 	//
-	// - If Period is set to Month, valid values: 1 to 9 (integer).
+	// - If Period is set to Month, valid values are 1 to 9.
 	//
 	// example:
 	//
 	// 1
 	UsedTime *string `json:"UsedTime,omitempty" xml:"UsedTime,omitempty"`
-	// VPC ID。
+	// The VPC ID.
 	//
 	// This parameter is required.
 	//
@@ -361,7 +359,7 @@ type CreateDBInstanceRequest struct {
 	//
 	// vsw-bp1gzt31twhlo0sa5****
 	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	// The secondary zone 2.
+	// Secondary zone 2.
 	//
 	// example:
 	//
@@ -692,7 +690,7 @@ type CreateDBInstanceRequestTags struct {
 	//
 	// example:
 	//
-	// Example string
+	// Sample string
 	Value *string `json:"value,omitempty" xml:"value,omitempty"`
 }
 

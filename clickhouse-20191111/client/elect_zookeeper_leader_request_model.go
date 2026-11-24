@@ -40,13 +40,13 @@ type ElectZookeeperLeaderRequest struct {
   // 
   // cc-bp108z124a8o7****
   DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-  // Specifies whether to disable writes.
+  // Specifies whether to disable write operations.
   // 
   // example:
   // 
   // true
   DisableWrite *bool `json:"DisableWrite,omitempty" xml:"DisableWrite,omitempty"`
-  // The time to perform the leader switchover.
+  // The time when the primary switchover is performed. Specify the time in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
   // 
   // example:
   // 
@@ -60,9 +60,9 @@ type ElectZookeeperLeaderRequest struct {
   // 
   // 1
   PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-  // The number of entries to return on each page. Valid values:
+  // The number of entries per page. Valid values:
   // 
-  // - **30*	- (Default)
+  // - **30*	- (default)
   // 
   // - **50**
   // 
@@ -72,9 +72,7 @@ type ElectZookeeperLeaderRequest struct {
   // 
   // 30
   PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-  // The region ID.
-  // 
-  // > Call the [DescribeRegions](https://help.aliyun.com/document_detail/170875.html) operation to query the region ID.
+  // The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/170875.html) operation to query the region ID.
   // 
   // example:
   // 

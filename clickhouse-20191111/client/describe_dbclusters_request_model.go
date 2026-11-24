@@ -33,34 +33,36 @@ type iDescribeDBClustersRequest interface {
 	GetResourceOwnerId() *int64
 	SetTag(v []*DescribeDBClustersRequestTag) *DescribeDBClustersRequest
 	GetTag() []*DescribeDBClustersRequestTag
+	SetVpcIds(v string) *DescribeDBClustersRequest
+	GetVpcIds() *string
 }
 
 type DescribeDBClustersRequest struct {
-	// The cluster description.
+	// The description of the cluster.
 	//
 	// example:
 	//
 	// cc-bp108z124a8o7****
 	DBClusterDescription *string `json:"DBClusterDescription,omitempty" xml:"DBClusterDescription,omitempty"`
-	// The cluster ID.
+	// The cluster IDs.
 	//
-	// > If you do not specify this parameter, information about all clusters is queried by default.
+	// >If you do not specify this parameter, the information about all clusters is queried by default.
 	//
 	// example:
 	//
 	// cc-bp108z124a8o7****
 	DBClusterIds *string `json:"DBClusterIds,omitempty" xml:"DBClusterIds,omitempty"`
-	// The state of the cluster. Valid values:
+	// The status of the cluster. Valid values:
 	//
-	// - **Preparing**: The cluster is being prepared.
+	// - **Preparing**: preparing
 	//
-	// - **Creating**: The cluster is being created.
+	// - **Creating**: creating
 	//
-	// - **Running**: The cluster is running.
+	// - **Running**: running
 	//
-	// - **Deleting**: The cluster is being deleted.
+	// - **Deleting**: deleting
 	//
-	// - **SCALING_OUT**: The cluster is being scaled out.
+	// - **SCALING_OUT**: scaling out
 	//
 	// example:
 	//
@@ -76,7 +78,7 @@ type DescribeDBClustersRequest struct {
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// The number of entries per page. Valid values:
 	//
-	// - **30*	- (Default)
+	// - **30*	- (default)
 	//
 	// - **50**
 	//
@@ -104,6 +106,12 @@ type DescribeDBClustersRequest struct {
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	// The tags.
 	Tag []*DescribeDBClustersRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
+	// The VPC IDs.
+	//
+	// example:
+	//
+	// vpc-2ze4ee9z******,vpc-2ze4ee9z5l******
+	VpcIds *string `json:"VpcIds,omitempty" xml:"VpcIds,omitempty"`
 }
 
 func (s DescribeDBClustersRequest) String() string {
@@ -160,6 +168,10 @@ func (s *DescribeDBClustersRequest) GetResourceOwnerId() *int64 {
 
 func (s *DescribeDBClustersRequest) GetTag() []*DescribeDBClustersRequestTag {
 	return s.Tag
+}
+
+func (s *DescribeDBClustersRequest) GetVpcIds() *string {
+	return s.VpcIds
 }
 
 func (s *DescribeDBClustersRequest) SetDBClusterDescription(v string) *DescribeDBClustersRequest {
@@ -222,6 +234,11 @@ func (s *DescribeDBClustersRequest) SetTag(v []*DescribeDBClustersRequestTag) *D
 	return s
 }
 
+func (s *DescribeDBClustersRequest) SetVpcIds(v string) *DescribeDBClustersRequest {
+	s.VpcIds = &v
+	return s
+}
+
 func (s *DescribeDBClustersRequest) Validate() error {
 	if s.Tag != nil {
 		for _, item := range s.Tag {
@@ -236,13 +253,13 @@ func (s *DescribeDBClustersRequest) Validate() error {
 }
 
 type DescribeDBClustersRequestTag struct {
-	// The key of the tag.
+	// The tag key.
 	//
 	// example:
 	//
 	// department
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The value of the tag.
+	// The tag value.
 	//
 	// example:
 	//

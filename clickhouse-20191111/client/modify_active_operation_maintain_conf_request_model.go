@@ -32,33 +32,33 @@ type iModifyActiveOperationMaintainConfRequest interface {
 }
 
 type ModifyActiveOperationMaintainConfRequest struct {
-	// The day of the recurrence cycle.
+	// The cycle time.
 	//
-	// - If CycleType is set to Month, this parameter specifies the day of the month. Valid values are 1 to 28. Use a comma (,) to separate multiple days.
+	// - If CycleType is set to Month, the value is one or more numbers from 1 to 28 that indicate the days of the month, separated by commas (,).
 	//
-	// - If CycleType is set to Week, this parameter specifies the day of the week. Valid values are 1 to 7. Use a comma (,) to separate multiple days.
+	// - If CycleType is set to Week, the value is one or more numbers from 1 to 7 that indicate the days of the week, separated by commas (,).
 	//
 	// example:
 	//
 	// 1
 	CycleTime *string `json:"CycleTime,omitempty" xml:"CycleTime,omitempty"`
-	// The recurrence cycle. Valid values:
+	// The cycle type. Valid values:
 	//
-	// - Month: monthly
+	// - Month: Monthly.
 	//
-	// - Week: weekly
+	// - Week: Weekly.
 	//
 	// example:
 	//
 	// Week
 	CycleType *string `json:"CycleType,omitempty" xml:"CycleType,omitempty"`
-	// The end time of the maintenance window. Use the HH:mmZ format. The time is in UTC.
+	// The end time of the maintenance window. Format: HH:mmZ-HH:mmZ (UTC).
 	//
 	// example:
 	//
 	// 20:00Z
 	MaintainEndTime *string `json:"MaintainEndTime,omitempty" xml:"MaintainEndTime,omitempty"`
-	// The start time of the maintenance window. Use the HH:mmZ format. The time is in UTC.
+	// The start time of the task. Format: yyyy-MM-ddTHH:mm:ssZ (UTC).
 	//
 	// example:
 	//
@@ -69,11 +69,11 @@ type ModifyActiveOperationMaintainConfRequest struct {
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	SecurityToken        *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
-	// Specifies whether the configuration is enabled. Valid values:
+	// Specifies whether the configuration takes effect. Valid values:
 	//
-	// - **1**: Enabled.
+	// - **1**: Yes.
 	//
-	// - **2**: Disabled.
+	// - **2**: No.
 	//
 	// example:
 	//

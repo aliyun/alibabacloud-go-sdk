@@ -16,13 +16,13 @@ type iModifyActiveOperationTasksResponseBody interface {
 }
 
 type ModifyActiveOperationTasksResponseBody struct {
-	// The O\\&M event IDs. Multiple IDs are separated by commas (,).
+	// The IDs of the O&M events. Separate multiple IDs with commas (,).
 	//
 	// example:
 	//
 	// 188****,188****,188****
 	Ids *string `json:"Ids,omitempty" xml:"Ids,omitempty"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//

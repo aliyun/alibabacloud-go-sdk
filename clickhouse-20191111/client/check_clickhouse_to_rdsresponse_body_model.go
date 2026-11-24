@@ -18,9 +18,9 @@ type iCheckClickhouseToRDSResponseBody interface {
 }
 
 type CheckClickhouseToRDSResponseBody struct {
-	// - This parameter is returned only if the connection fails (**Status*	- is **false**).
+	// - This parameter is not returned when **Status*	- is **true**.
 	//
-	// - It indicates the reason for the connection failure.
+	// - When **Status*	- is **false**, this parameter indicates the cause of the connection failure.
 	//
 	// example:
 	//
@@ -32,11 +32,11 @@ type CheckClickhouseToRDSResponseBody struct {
 	//
 	// A82758F8-E793-5610-BE11-0E46664305C2
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether a connection can be established. Valid values:
+	// Indicates whether the connection is successful. Valid values:
 	//
-	// - **true**: A connection can be established.
+	// - **true**: The connection is successful.
 	//
-	// - **false**: A connection cannot be established.
+	// - **false**: The connection fails.
 	//
 	// example:
 	//

@@ -16,7 +16,7 @@ type iDescribeDBClusterConfigInXMLRequest interface {
 }
 
 type DescribeDBClusterConfigInXMLRequest struct {
-	// The cluster ID. You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/170879.html) operation to query information about all clusters in the destination region, including cluster IDs.
+	// The cluster ID. You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/170879.html) operation to query all clusters in the specified region, including their cluster IDs.
 	//
 	// This parameter is required.
 	//
@@ -24,7 +24,7 @@ type DescribeDBClusterConfigInXMLRequest struct {
 	//
 	// cc-bp108z124a8o7****
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	// The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/170875.html) operation to query region IDs.
+	// The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/170875.html) operation to query the region ID.
 	//
 	// example:
 	//

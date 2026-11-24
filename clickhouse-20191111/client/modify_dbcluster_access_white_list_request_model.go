@@ -30,15 +30,15 @@ type iModifyDBClusterAccessWhiteListRequest interface {
 }
 
 type ModifyDBClusterAccessWhiteListRequest struct {
-	// The attribute of the whitelist group. The default value is **empty**.
+	// The attribute of the whitelist group. Default value: **empty**.
 	//
 	// example:
 	//
 	// NULL
 	DBClusterIPArrayAttribute *string `json:"DBClusterIPArrayAttribute,omitempty" xml:"DBClusterIPArrayAttribute,omitempty"`
-	// The name of the whitelist group to modify.
+	// The name of the whitelist group to be modified.
 	//
-	// > If you do not specify this parameter, the whitelist of the default group is modified.
+	// > If you do not specify this parameter, the whitelist in the default group is modified.
 	//
 	// example:
 	//
@@ -52,15 +52,15 @@ type ModifyDBClusterAccessWhiteListRequest struct {
 	//
 	// cc-bp1qx68m06981****
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	// The modification method. Valid values:
+	// The modification mode. Valid values:
 	//
-	// - **Cover**: Overwrites the whitelist.
+	// - **Cover**: overwrites the original whitelist.
 	//
-	// - **Append**: Adds IP addresses to the whitelist.
+	// - **Append**: appends the specified IP addresses to the original whitelist.
 	//
-	// - **Delete**: Removes IP addresses from the whitelist.
+	// - **Delete**: deletes the original whitelist.
 	//
-	// > If you do not specify this parameter, the Cover method is used by default.
+	// > If you do not specify this parameter, the Cover mode is used by default.
 	//
 	// example:
 	//
@@ -70,15 +70,15 @@ type ModifyDBClusterAccessWhiteListRequest struct {
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The IP address whitelist. The following formats are supported:
+	// The IP whitelist. Two formats are supported:
 	//
-	// - IP address: For example, 192.168.0.1. This allows the specified IP address to access the ApsaraDB for ClickHouse cluster.
+	// - IP address: For example, 192.168.0.1 allows this IP address to access the ApsaraDB for ClickHouse cluster.
 	//
-	// - CIDR block: For example, 192.168.0.0/24. This allows IP addresses from 192.168.0.1 to 192.168.0.255 to access the ApsaraDB for ClickHouse cluster.
+	// - CIDR block: For example, 192.168.0.0/24 allows IP addresses from 192.168.0.1 to 192.168.0.255 to access the ApsaraDB for ClickHouse cluster.
 	//
-	// > 	- Do not enter 0.0.0.0.
+	// >- Do not enter 0.0.0.0.
 	//
-	// - Set this parameter to 127.0.0.1 to block access from all IP addresses.
+	// - Set the value to 127.0.0.1 to deny access from all IP addresses.
 	//
 	// This parameter is required.
 	//

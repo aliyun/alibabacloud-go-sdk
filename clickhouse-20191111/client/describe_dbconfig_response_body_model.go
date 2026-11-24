@@ -16,7 +16,7 @@ type iDescribeDBConfigResponseBody interface {
 }
 
 type DescribeDBConfigResponseBody struct {
-	// The cluster configuration.
+	// The configuration of the cluster.
 	//
 	// example:
 	//

@@ -28,7 +28,7 @@ type iDescribeAutoRenewAttributeRequest interface {
 }
 
 type DescribeAutoRenewAttributeRequest struct {
-	// The cluster ID.
+	// The cluster IDs.
 	//
 	// example:
 	//

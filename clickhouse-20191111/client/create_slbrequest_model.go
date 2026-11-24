@@ -18,7 +18,7 @@ type iCreateSLBRequest interface {
 }
 
 type CreateSLBRequest struct {
-	// The cluster ID. Call the [DescribeDBClusters](https://help.aliyun.com/document_detail/170879.html) operation to obtain the cluster ID.
+	// The cluster ID. You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/170879.html) operation to query the cluster ID.
 	//
 	// This parameter is required.
 	//

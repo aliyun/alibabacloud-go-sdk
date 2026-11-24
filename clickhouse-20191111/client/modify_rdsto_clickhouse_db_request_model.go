@@ -46,7 +46,7 @@ type iModifyRDSToClickhouseDbRequest interface {
 }
 
 type ModifyRDSToClickhouseDbRequest struct {
-	// The password of the ApsaraDB for ClickHouse database account.
+	// The password of the database account for the ApsaraDB for ClickHouse cluster.
 	//
 	// This parameter is required.
 	//
@@ -76,7 +76,7 @@ type ModifyRDSToClickhouseDbRequest struct {
 	//
 	// cc-bp158i5wvj436****
 	DbClusterId *string `json:"DbClusterId,omitempty" xml:"DbClusterId,omitempty"`
-	// The maximum number of rows to sync per second.
+	// The maximum number of rows that can be synchronized per second.
 	//
 	// example:
 	//
@@ -84,7 +84,7 @@ type ModifyRDSToClickhouseDbRequest struct {
 	LimitUpper   *int64  `json:"LimitUpper,omitempty" xml:"LimitUpper,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The instance ID of the ApsaraDB RDS for MySQL instance.
+	// The instance ID of the ApsaraDB RDS for MySQL database.
 	//
 	// This parameter is required.
 	//
@@ -92,7 +92,7 @@ type ModifyRDSToClickhouseDbRequest struct {
 	//
 	// rm-uf6x3qq4t90ok****
 	RdsId *string `json:"RdsId,omitempty" xml:"RdsId,omitempty"`
-	// The password of the ApsaraDB RDS for MySQL database account.
+	// The password of the database account for the ApsaraDB RDS for MySQL instance.
 	//
 	// This parameter is required.
 	//
@@ -106,7 +106,7 @@ type ModifyRDSToClickhouseDbRequest struct {
 	//
 	// 3306
 	RdsPort *int64 `json:"RdsPort,omitempty" xml:"RdsPort,omitempty"`
-	// The database in the ApsaraDB RDS for MySQL instance.
+	// The databases in the ApsaraDB RDS for MySQL instance.
 	//
 	// This parameter is required.
 	//
@@ -140,9 +140,9 @@ type ModifyRDSToClickhouseDbRequest struct {
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	// Specifies whether to ignore databases that do not support synchronization. Valid values:
 	//
-	// - **true**: Ignore the databases.
+	// - **true**: Ignore.
 	//
-	// - **false**: Do not ignore the databases.
+	// - **false**: Do not ignore.
 	//
 	// This parameter is required.
 	//

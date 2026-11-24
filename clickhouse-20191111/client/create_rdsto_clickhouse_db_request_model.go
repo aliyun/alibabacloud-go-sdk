@@ -46,7 +46,7 @@ type iCreateRDSToClickhouseDbRequest interface {
 }
 
 type CreateRDSToClickhouseDbRequest struct {
-	// The password for the database account of the ApsaraDB for ClickHouse cluster.
+	// The password of the database account for the ApsaraDB for ClickHouse cluster.
 	//
 	// This parameter is required.
 	//
@@ -76,7 +76,7 @@ type CreateRDSToClickhouseDbRequest struct {
 	//
 	// cc-2ze5zeyl72188****
 	DbClusterId *string `json:"DbClusterId,omitempty" xml:"DbClusterId,omitempty"`
-	// The maximum number of rows to sync per second.
+	// The maximum number of rows to synchronize per second.
 	//
 	// example:
 	//
@@ -84,7 +84,7 @@ type CreateRDSToClickhouseDbRequest struct {
 	LimitUpper   *int64  `json:"LimitUpper,omitempty" xml:"LimitUpper,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The ID of the ApsaraDB RDS for MySQL instance.
+	// The instance ID of the ApsaraDB RDS for MySQL database.
 	//
 	// This parameter is required.
 	//
@@ -92,7 +92,7 @@ type CreateRDSToClickhouseDbRequest struct {
 	//
 	// rm-8vb989qj9roh0****
 	RdsId *string `json:"RdsId,omitempty" xml:"RdsId,omitempty"`
-	// The password for the database account of the ApsaraDB RDS for MySQL instance.
+	// The password of the database account for the ApsaraDB RDS for MySQL instance.
 	//
 	// This parameter is required.
 	//
@@ -120,7 +120,7 @@ type CreateRDSToClickhouseDbRequest struct {
 	//
 	// vpc-2zen93xryil99jsfy****
 	RdsVpcId *string `json:"RdsVpcId,omitempty" xml:"RdsVpcId,omitempty"`
-	// The internal endpoint of the ApsaraDB RDS instance.
+	// The internal endpoint of ApsaraDB RDS.
 	//
 	// example:
 	//
@@ -128,11 +128,11 @@ type CreateRDSToClickhouseDbRequest struct {
 	RdsVpcUrl            *string `json:"RdsVpcUrl,omitempty" xml:"RdsVpcUrl,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// Specifies whether to skip unsupported table schemas. Valid values:
+	// Specifies whether to ignore table schemas that are not supported for synchronization. Valid values:
 	//
-	// - **true**: Skip.
+	// - **true**: Ignore.
 	//
-	// - **false**: Do not skip.
+	// - **false**: Do not ignore.
 	//
 	// This parameter is required.
 	//
@@ -140,7 +140,7 @@ type CreateRDSToClickhouseDbRequest struct {
 	//
 	// true
 	SkipUnsupported *bool `json:"SkipUnsupported,omitempty" xml:"SkipUnsupported,omitempty"`
-	// The tables to sync.
+	// The tables to be synchronized.
 	//
 	// This parameter is required.
 	//

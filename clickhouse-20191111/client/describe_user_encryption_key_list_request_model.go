@@ -18,7 +18,7 @@ type iDescribeUserEncryptionKeyListRequest interface {
 }
 
 type DescribeUserEncryptionKeyListRequest struct {
-	// The page number.
+	// The current page number.
 	//
 	// example:
 	//

@@ -38,7 +38,7 @@ type iDescribeProcessListRequest interface {
 }
 
 type DescribeProcessListRequest struct {
-	// The cluster ID. You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/170879.html) operation to find information about all clusters in the destination region, including the cluster ID.
+	// The cluster ID. You can call the [DescribeDBClusters](https://help.aliyun.com/document_detail/170879.html) operation to query all clusters in the specified region, including their cluster IDs.
 	//
 	// This parameter is required.
 	//
@@ -46,7 +46,7 @@ type DescribeProcessListRequest struct {
 	//
 	// cc-bp1190tj036am****
 	DBClusterId *string `json:"DBClusterId,omitempty" xml:"DBClusterId,omitempty"`
-	// The ID of the query.
+	// The ID of the query statement.
 	//
 	// example:
 	//
@@ -58,21 +58,21 @@ type DescribeProcessListRequest struct {
 	//
 	// user
 	InitialUser *string `json:"InitialUser,omitempty" xml:"InitialUser,omitempty"`
-	// The keyword for the query.
+	// The query keyword.
 	//
 	// example:
 	//
 	// join
 	Keyword *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
-	// The column to use for sorting. Valid values:
+	// The column by which to sort the results. Valid values:
 	//
-	// - elapsed: The total running time.
+	// - elapsed: cumulative execution time
 	//
-	// - written_rows: The number of rows written.
+	// - written_rows: number of written rows
 	//
-	// - read_rows: The number of rows read.
+	// - read_rows: number of read rows
 	//
-	// - memory_usage: The amount of memory used.
+	// - memory_usage: memory usage
 	//
 	// example:
 	//
@@ -80,15 +80,15 @@ type DescribeProcessListRequest struct {
 	Order        *string `json:"Order,omitempty" xml:"Order,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The page number. The value must be greater than 0 and cannot exceed the maximum value of the Integer data type. The default value is 1.
+	// The page number. Valid values: integers greater than 0 and less than or equal to the maximum value of the Integer data type. Default value: 1.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries to return on each page. Valid values:
+	// The number of entries per page. Valid values:
 	//
-	// - **30*	- (Default)
+	// - **30*	- (default)
 	//
 	// - **50**
 	//
@@ -98,13 +98,13 @@ type DescribeProcessListRequest struct {
 	//
 	// 30
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The shortest query duration. The minimum value is **1000**. The default value is **1000**. The unit is milliseconds. The response returns queries that run longer than this duration.
+	// The minimum query duration. Minimum value: **1000**. Default value: **1000**. Unit: milliseconds. The response returns queries whose duration exceeds this value.
 	//
 	// example:
 	//
 	// 500
 	QueryDurationMs *int32 `json:"QueryDurationMs,omitempty" xml:"QueryDurationMs,omitempty"`
-	// The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/170875.html) operation to find the region ID.
+	// The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/170875.html) operation to query the region ID.
 	//
 	// example:
 	//

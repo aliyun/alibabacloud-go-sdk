@@ -22,7 +22,7 @@ type DescribeSlowLogTrendResponseBody struct {
 	//
 	// 7D3ECB0E-98CA-5E08-A9CA-F70C5A1E9BDF
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The result set of the slow SQL queries.
+	// The result set of slow SQL statements.
 	SlowLogTrend *DescribeSlowLogTrendResponseBodySlowLogTrend `json:"SlowLogTrend,omitempty" xml:"SlowLogTrend,omitempty" type:"Struct"`
 }
 
@@ -63,19 +63,19 @@ func (s *DescribeSlowLogTrendResponseBody) Validate() error {
 
 type DescribeSlowLogTrendResponseBodySlowLogTrend struct {
 	Data *DescribeSlowLogTrendResponseBodySlowLogTrendData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The number of rows in the result set.
+	// The number of rows in the returned result set.
 	//
 	// example:
 	//
 	// 1
 	Rows *string `json:"Rows,omitempty" xml:"Rows,omitempty"`
-	// The minimum number of rows that are returned before the \\`LIMIT\\` clause is applied.
+	// The page size.
 	//
 	// example:
 	//
 	// 1
 	RowsBeforeLimitAtLeast *string `json:"RowsBeforeLimitAtLeast,omitempty" xml:"RowsBeforeLimitAtLeast,omitempty"`
-	// The statistics of the query results.
+	// The statistics information of the query results.
 	Statistics  *DescribeSlowLogTrendResponseBodySlowLogTrendStatistics  `json:"Statistics,omitempty" xml:"Statistics,omitempty" type:"Struct"`
 	TableSchema *DescribeSlowLogTrendResponseBodySlowLogTrendTableSchema `json:"TableSchema,omitempty" xml:"TableSchema,omitempty" type:"Struct"`
 }
@@ -258,7 +258,7 @@ type DescribeSlowLogTrendResponseBodySlowLogTrendStatistics struct {
 	//
 	// 697899
 	BytesRead *int32 `json:"BytesRead,omitempty" xml:"BytesRead,omitempty"`
-	// The query execution duration. Unit: seconds.
+	// The elapsed time for reading SQL statements. Unit: milliseconds.
 	//
 	// example:
 	//

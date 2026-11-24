@@ -42,7 +42,7 @@ type DescribeSynDbsRequest struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of records to return on each page.
+	// The number of entries per page.
 	//
 	// example:
 	//

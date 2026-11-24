@@ -24,7 +24,7 @@ type iDescribeDBClusterNodeInfosResponseBody interface {
 }
 
 type DescribeDBClusterNodeInfosResponseBody struct {
-	// The information about the ClickHouse nodes.
+	// The ApsaraDB for ClickHouse node information.
 	NodeInfos []*DescribeDBClusterNodeInfosResponseBodyNodeInfos `json:"NodeInfos,omitempty" xml:"NodeInfos,omitempty" type:"Repeated"`
 	// The page number.
 	//
@@ -56,7 +56,7 @@ type DescribeDBClusterNodeInfosResponseBody struct {
 	//
 	// 1
 	TotalNodeCount *int32 `json:"TotalNodeCount,omitempty" xml:"TotalNodeCount,omitempty"`
-	// The information about the ZooKeeper nodes.
+	// The ZooKeeper node information.
 	ZkNodeInfos []*DescribeDBClusterNodeInfosResponseBodyZkNodeInfos `json:"ZkNodeInfos,omitempty" xml:"ZkNodeInfos,omitempty" type:"Repeated"`
 }
 
@@ -145,13 +145,13 @@ func (s *DescribeDBClusterNodeInfosResponseBody) Validate() error {
 }
 
 type DescribeDBClusterNodeInfosResponseBodyNodeInfos struct {
-	// Indicates whether a disaster recovery test is in progress.
+	// Indicates whether a disaster recovery drill is in progress.
 	//
 	// example:
 	//
 	// true
 	FailoverTesting *bool `json:"FailoverTesting,omitempty" xml:"FailoverTesting,omitempty"`
-	// The IP address of the node.
+	// The node IP address.
 	//
 	// example:
 	//
@@ -235,7 +235,7 @@ func (s *DescribeDBClusterNodeInfosResponseBodyNodeInfos) Validate() error {
 }
 
 type DescribeDBClusterNodeInfosResponseBodyZkNodeInfos struct {
-	// Indicates whether a disaster recovery test is in progress.
+	// Indicates whether a disaster recovery drill is in progress.
 	//
 	// example:
 	//

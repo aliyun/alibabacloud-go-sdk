@@ -30,7 +30,7 @@ type iListTagResourcesRequest interface {
 }
 
 type ListTagResourcesRequest struct {
-	// The token that is used to retrieve the next page of results. You do not need to specify this parameter for the first query. If a query does not return all results, a NextToken value is returned. You can use this token in a subsequent query to retrieve the next page of results.
+	// The token used to return more results. You do not need to specify this parameter for the first query. If not all results are returned in the first query, you can pass the NextToken value returned in the previous response to continue the query.
 	//
 	// example:
 	//
@@ -52,7 +52,7 @@ type ListTagResourcesRequest struct {
 	ResourceId           []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
 	ResourceOwnerAccount *string   `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64    `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The resource type. Set the value to **DBCLUSTER**.
+	// The resource type. Valid value: **DBCLUSTER**.
 	//
 	// This parameter is required.
 	//
@@ -167,7 +167,7 @@ func (s *ListTagResourcesRequest) Validate() error {
 }
 
 type ListTagResourcesRequestTag struct {
-	// The tag key. You can specify from 1 to **20*	- tag keys.
+	// The tag key. You can specify up to N tag keys. N is an integer and ranges from **1 to 20**.
 	//
 	// > If you specify the **ResourceId.N*	- parameter, you can leave this parameter empty.
 	//
@@ -175,7 +175,7 @@ type ListTagResourcesRequestTag struct {
 	//
 	// testkey1
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The value of the tag. You can specify from 1 to **20*	- tag values.
+	// The tag value corresponding to the tag key. You can specify up to N tag values. N is an integer and ranges from **1 to 20**.
 	//
 	// > You can leave this parameter empty.
 	//

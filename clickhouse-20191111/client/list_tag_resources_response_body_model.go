@@ -18,7 +18,7 @@ type iListTagResourcesResponseBody interface {
 }
 
 type ListTagResourcesResponseBody struct {
-	// The token that is used to retrieve the next page of results. This parameter is returned only if the results are not fully returned in the current request. You can use this token in a subsequent request to retrieve the next page of results.
+	// The token used to return more results. If not all results are returned in the current query, you can pass the NextToken value returned in the previous response to continue the query.
 	//
 	// example:
 	//
@@ -30,7 +30,7 @@ type ListTagResourcesResponseBody struct {
 	//
 	// 184DE106-CB2C-4DD2-B57F-396652E6C8F8
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Information about the clusters and their tags.
+	// The information about the queried clusters and tags.
 	TagResources []*ListTagResourcesResponseBodyTagResources `json:"TagResources,omitempty" xml:"TagResources,omitempty" type:"Repeated"`
 }
 
@@ -83,19 +83,15 @@ func (s *ListTagResourcesResponseBody) Validate() error {
 }
 
 type ListTagResourcesResponseBodyTagResources struct {
-	// <props="china">
+	// <props="china">The ID of the Community-Compatible Edition cluster.
 	//
-	// The cluster ID.
-	//
-	//
-	//
-	// <props="intl">
+	// <props="intl">The cluster ID.
 	//
 	// example:
 	//
 	// cc-bp1t9lbb7a4z7****
 	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
-	// The resource type. The value is **DBCLUSTER**.
+	// The resource type. Valid value: **DBCLUSTER**.
 	//
 	// example:
 	//
@@ -107,7 +103,7 @@ type ListTagResourcesResponseBodyTagResources struct {
 	//
 	// testkey1
 	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
-	// The value of the tag.
+	// The tag value corresponding to the tag key.
 	//
 	// example:
 	//

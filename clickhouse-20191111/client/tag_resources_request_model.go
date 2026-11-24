@@ -32,7 +32,7 @@ type TagResourcesRequest struct {
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The region ID.
 	//
-	// > Call the [DescribeRegions](https://help.aliyun.com/document_detail/170875.html) operation to query region IDs.
+	// >You can call the [DescribeRegions](https://help.aliyun.com/document_detail/170875.html) operation to query the region ID.
 	//
 	// This parameter is required.
 	//
@@ -46,7 +46,7 @@ type TagResourcesRequest struct {
 	ResourceId           []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
 	ResourceOwnerAccount *string   `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64    `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The resource type. The value must be **DBCLUSTER**.
+	// The resource type. Valid value: **DBCLUSTER**.
 	//
 	// This parameter is required.
 	//
@@ -154,13 +154,13 @@ func (s *TagResourcesRequest) Validate() error {
 }
 
 type TagResourcesRequestTag struct {
-	// The tag key. You can add up to **20*	- tag keys.
+	// The tag key. You can add N tag keys. N is an integer and ranges from **1 to 20**.
 	//
 	// example:
 	//
 	// testkey1
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The value of the tag key. You can add up to **20*	- tag values.
+	// The tag value that corresponds to the tag key. You can add N tag values. N is an integer and ranges from **1 to 20**.
 	//
 	// example:
 	//

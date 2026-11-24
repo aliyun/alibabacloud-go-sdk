@@ -24,7 +24,7 @@ type iDescribeBackupPolicyResponseBody interface {
 }
 
 type DescribeBackupPolicyResponseBody struct {
-	// The backup retention period. Default value: 7. Valid values: 7 to 730. Unit: day.
+	// The backup retention period. Default value: 7 days. Valid values: 7 to 730. Unit: days.
 	//
 	// example:
 	//
@@ -38,19 +38,19 @@ type DescribeBackupPolicyResponseBody struct {
 	BackupSize *string `json:"BackupSize,omitempty" xml:"BackupSize,omitempty"`
 	// The backup cycle. Valid values:
 	//
-	// - **Monday**
+	// - **Monday**: Monday.
 	//
-	// - **Tuesday**
+	// - **Tuesday**: Tuesday.
 	//
-	// - **Wednesday**
+	// - **Wednesday**: Wednesday.
 	//
-	// - **Thursday**
+	// - **Thursday**: Thursday.
 	//
-	// - **Friday**
+	// - **Friday**: Friday.
 	//
-	// - **Saturday**
+	// - **Saturday**: Saturday.
 	//
-	// - **Sunday**
+	// - **Sunday**: Sunday.
 	//
 	// example:
 	//
@@ -68,11 +68,11 @@ type DescribeBackupPolicyResponseBody struct {
 	//
 	// F5178C10-1407-4987-9133-DE4DC9119F75
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the backup feature is enabled. Valid values:
+	// Indicates whether the backup service is enabled. Valid values:
 	//
-	// - **true**: The backup feature is enabled.
+	// - **true**: Enabled.
 	//
-	// - **false**: The backup feature is disabled.
+	// - **false**: Disabled.
 	//
 	// example:
 	//

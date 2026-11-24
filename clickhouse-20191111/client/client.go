@@ -2,6 +2,7 @@
 package client
 
 import (
+	gatewayclient "github.com/alibabacloud-go/alibabacloud-gateway-pop/client"
 	openapi "github.com/alibabacloud-go/darabonba-openapi/v2/client"
 	openapiutil "github.com/alibabacloud-go/darabonba-openapi/v2/utils"
 	"github.com/alibabacloud-go/tea/dara"
@@ -24,6 +25,13 @@ func (client *Client) Init(config *openapiutil.Config) (_err error) {
 	if _err != nil {
 		return _err
 	}
+	client.ProductId = dara.String("clickhouse")
+	gatewayClient, _err := gatewayclient.NewClient()
+	if _err != nil {
+		return _err
+	}
+
+	client.Spi = gatewayClient
 	client.EndpointRule = dara.String("regional")
 	client.EndpointMap = map[string]*string{
 		"ap-northeast-2-pop":          dara.String("clickhouse.aliyuncs.com"),
@@ -70,22 +78,8 @@ func (client *Client) Init(config *openapiutil.Config) (_err error) {
 		"rus-west-1-pop":              dara.String("clickhouse.aliyuncs.com"),
 		"us-east-1":                   dara.String("clickhouse.aliyuncs.com"),
 		"us-west-1":                   dara.String("clickhouse.aliyuncs.com"),
-		"cn-huhehaote":                dara.String("clickhouse.cn-huhehaote.aliyuncs.com"),
 		"ap-southeast-3":              dara.String("clickhouse.aliyuncs.com"),
-		"cn-wulanchabu":               dara.String("clickhouse.cn-wulanchabu.aliyuncs.com"),
-		"cn-zhangjiakou":              dara.String("clickhouse.cn-zhangjiakou.aliyuncs.com"),
-		"ap-northeast-1":              dara.String("clickhouse.ap-northeast-1.aliyuncs.com"),
-		"cn-chengdu":                  dara.String("clickhouse.cn-chengdu.aliyuncs.com"),
-		"cn-guangzhou":                dara.String("clickhouse.cn-guangzhou.aliyuncs.com"),
-		"ap-southeast-5":              dara.String("clickhouse.ap-southeast-5.aliyuncs.com"),
-		"ap-southeast-6":              dara.String("clickhouse.ap-southeast-6.aliyuncs.com"),
-		"ap-southeast-8":              dara.String("clickhouse.ap-southeast-8.aliyuncs.com"),
-		"us-southeast-1":              dara.String("clickhouse.us-southeast-1.aliyuncs.com"),
-		"na-south-1":                  dara.String("clickhouse.na-south-1.aliyuncs.com"),
-		"eu-central-1":                dara.String("clickhouse.eu-central-1.aliyuncs.com"),
-		"eu-west-1":                   dara.String("clickhouse.eu-west-1.aliyuncs.com"),
-		"me-central-1":                dara.String("clickhouse.me-central-1.aliyuncs.com"),
-		"cn-wulanchabu-gic-1":         dara.String("clickhouse.cn-wulanchabu-gic-1.aliyuncs.com"),
+		"ap-southeast-7":              dara.String("clickhouse.aliyuncs.com"),
 	}
 	_err = client.CheckConfig(config)
 	if _err != nil {
@@ -120,7 +114,7 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 
 // Summary:
 //
-// Allocates a public endpoint for a specified ApsaraDB for ClickHouse cluster.
+// Creates a public endpoint for a specified ApsaraDB for ClickHouse cluster.
 //
 // @param request - AllocateClusterPublicConnectionRequest
 //
@@ -184,7 +178,7 @@ func (client *Client) AllocateClusterPublicConnectionWithOptions(request *Alloca
 
 // Summary:
 //
-// Allocates a public endpoint for a specified ApsaraDB for ClickHouse cluster.
+// Creates a public endpoint for a specified ApsaraDB for ClickHouse cluster.
 //
 // @param request - AllocateClusterPublicConnectionRequest
 //
@@ -202,7 +196,7 @@ func (client *Client) AllocateClusterPublicConnection(request *AllocateClusterPu
 
 // Summary:
 //
-// Cancels tasks for O&M events.
+// Cancels O&M event tasks.
 //
 // @param request - CancelActiveOperationTasksRequest
 //
@@ -266,7 +260,7 @@ func (client *Client) CancelActiveOperationTasksWithOptions(request *CancelActiv
 
 // Summary:
 //
-// Cancels tasks for O&M events.
+// Cancels O&M event tasks.
 //
 // @param request - CancelActiveOperationTasksRequest
 //
@@ -284,7 +278,7 @@ func (client *Client) CancelActiveOperationTasks(request *CancelActiveOperationT
 
 // Summary:
 //
-// Cancels a scheduled ZooKeeper leader switchover on a community-compatible ClickHouse instance.
+// Cancels the scheduled ZooKeeper primary node switchover for an ApsaraDB for ClickHouse Community-compatible Edition instance.
 //
 // @param request - CancelAppointmentElectZookeeperLeaderRequest
 //
@@ -356,7 +350,7 @@ func (client *Client) CancelAppointmentElectZookeeperLeaderWithOptions(request *
 
 // Summary:
 //
-// Cancels a scheduled ZooKeeper leader switchover on a community-compatible ClickHouse instance.
+// Cancels the scheduled ZooKeeper primary node switchover for an ApsaraDB for ClickHouse Community-compatible Edition instance.
 //
 // @param request - CancelAppointmentElectZookeeperLeaderRequest
 //
@@ -374,7 +368,7 @@ func (client *Client) CancelAppointmentElectZookeeperLeader(request *CancelAppoi
 
 // Summary:
 //
-// Cancels the scheduled restart on the specified ClickHouse nodes.
+// Cancels the scheduled restart of ClickHouse nodes.
 //
 // @param request - CancelAppointmentRestartInstanceNodeListRequest
 //
@@ -446,7 +440,7 @@ func (client *Client) CancelAppointmentRestartInstanceNodeListWithOptions(reques
 
 // Summary:
 //
-// Cancels the scheduled restart on the specified ClickHouse nodes.
+// Cancels the scheduled restart of ClickHouse nodes.
 //
 // @param request - CancelAppointmentRestartInstanceNodeListRequest
 //
@@ -464,7 +458,7 @@ func (client *Client) CancelAppointmentRestartInstanceNodeList(request *CancelAp
 
 // Summary:
 //
-// Cancels a scheduled restart for a specific community-compatible ApsaraDB for ClickHouse cluster.
+// Cancels the scheduled restart time for a specified ApsaraDB for ClickHouse Community-compatible Edition cluster.
 //
 // @param request - CancelRestartInstanceRequest
 //
@@ -540,7 +534,7 @@ func (client *Client) CancelRestartInstanceWithOptions(request *CancelRestartIns
 
 // Summary:
 //
-// Cancels a scheduled restart for a specific community-compatible ApsaraDB for ClickHouse cluster.
+// Cancels the scheduled restart time for a specified ApsaraDB for ClickHouse Community-compatible Edition cluster.
 //
 // @param request - CancelRestartInstanceRequest
 //
@@ -558,7 +552,7 @@ func (client *Client) CancelRestartInstance(request *CancelRestartInstanceReques
 
 // Summary:
 //
-// Changes the resource group of a community-edition compatible ClickHouse cluster.
+// Modifies the resource group of an ApsaraDB for ClickHouse Community-compatible cluster.
 //
 // @param request - ChangeResourceGroupRequest
 //
@@ -610,7 +604,7 @@ func (client *Client) ChangeResourceGroupWithOptions(request *ChangeResourceGrou
 
 // Summary:
 //
-// Changes the resource group of a community-edition compatible ClickHouse cluster.
+// Modifies the resource group of an ApsaraDB for ClickHouse Community-compatible cluster.
 //
 // @param request - ChangeResourceGroupRequest
 //
@@ -628,7 +622,7 @@ func (client *Client) ChangeResourceGroup(request *ChangeResourceGroupRequest) (
 
 // Summary:
 //
-// Call the CheckClickhouseToRDS operation to verify the connectivity between a community-compatible ApsaraDB for ClickHouse cluster and an ApsaraDB RDS for MySQL instance.
+// Checks the connectivity between an ApsaraDB for ClickHouse Community-compatible Edition cluster and an ApsaraDB RDS for MySQL instance.
 //
 // @param request - CheckClickhouseToRDSRequest
 //
@@ -724,7 +718,7 @@ func (client *Client) CheckClickhouseToRDSWithOptions(request *CheckClickhouseTo
 
 // Summary:
 //
-// Call the CheckClickhouseToRDS operation to verify the connectivity between a community-compatible ApsaraDB for ClickHouse cluster and an ApsaraDB RDS for MySQL instance.
+// Checks the connectivity between an ApsaraDB for ClickHouse Community-compatible Edition cluster and an ApsaraDB RDS for MySQL instance.
 //
 // @param request - CheckClickhouseToRDSRequest
 //
@@ -742,11 +736,11 @@ func (client *Client) CheckClickhouseToRDS(request *CheckClickhouseToRDSRequest)
 
 // Summary:
 //
-// Calls the CheckModifyConfigNeedRestart operation to check whether modifying configuration parameters in XML mode requires a restart for an ApsaraDB for ClickHouse Community-compatible Edition cluster.
+// Queries whether a restart is required after you modify configuration parameters in XML mode for an ApsaraDB for ClickHouse Community-compatible cluster.
 //
 // Description:
 //
-// >This operation supports only Community-compatible Edition clusters created after December 1, 2021.
+// >This operation is supported only for Community-compatible clusters created after December 1, 2021.
 //
 // @param request - CheckModifyConfigNeedRestartRequest
 //
@@ -794,11 +788,11 @@ func (client *Client) CheckModifyConfigNeedRestartWithOptions(request *CheckModi
 
 // Summary:
 //
-// Calls the CheckModifyConfigNeedRestart operation to check whether modifying configuration parameters in XML mode requires a restart for an ApsaraDB for ClickHouse Community-compatible Edition cluster.
+// Queries whether a restart is required after you modify configuration parameters in XML mode for an ApsaraDB for ClickHouse Community-compatible cluster.
 //
 // Description:
 //
-// >This operation supports only Community-compatible Edition clusters created after December 1, 2021.
+// >This operation is supported only for Community-compatible clusters created after December 1, 2021.
 //
 // @param request - CheckModifyConfigNeedRestartRequest
 //
@@ -816,11 +810,11 @@ func (client *Client) CheckModifyConfigNeedRestart(request *CheckModifyConfigNee
 
 // Summary:
 //
-// Call the CheckMonitorAlert operation to check whether the alert monitoring feature of Application Real-Time Monitoring Service (ARMS) is enabled for a specified ApsaraDB for ClickHouse cluster.
+// Checks whether the monitoring and alerting feature provided by Application Real-Time Monitoring Service (ARMS) is enabled for a specified ApsaraDB for ClickHouse cluster.
 //
 // Description:
 //
-// > This operation applies only to community-compatible clusters of version 20.8 or later that were created after December 1, 2021.
+// > This operation is applicable only to Community-compatible clusters of version 20.8 or later that were created after December 1, 2021.
 //
 // @param request - CheckMonitorAlertRequest
 //
@@ -884,11 +878,11 @@ func (client *Client) CheckMonitorAlertWithOptions(request *CheckMonitorAlertReq
 
 // Summary:
 //
-// Call the CheckMonitorAlert operation to check whether the alert monitoring feature of Application Real-Time Monitoring Service (ARMS) is enabled for a specified ApsaraDB for ClickHouse cluster.
+// Checks whether the monitoring and alerting feature provided by Application Real-Time Monitoring Service (ARMS) is enabled for a specified ApsaraDB for ClickHouse cluster.
 //
 // Description:
 //
-// > This operation applies only to community-compatible clusters of version 20.8 or later that were created after December 1, 2021.
+// > This operation is applicable only to Community-compatible clusters of version 20.8 or later that were created after December 1, 2021.
 //
 // @param request - CheckMonitorAlertRequest
 //
@@ -906,7 +900,7 @@ func (client *Client) CheckMonitorAlert(request *CheckMonitorAlertRequest) (_res
 
 // Summary:
 //
-// Performs a migration scale-out check on a specified ApsaraDB for ClickHouse cluster.
+// Checks the migration and scaling of a specified ApsaraDB for ClickHouse cluster.
 //
 // @param request - CheckScaleOutBalancedRequest
 //
@@ -982,7 +976,7 @@ func (client *Client) CheckScaleOutBalancedWithOptions(request *CheckScaleOutBal
 
 // Summary:
 //
-// Performs a migration scale-out check on a specified ApsaraDB for ClickHouse cluster.
+// Checks the migration and scaling of a specified ApsaraDB for ClickHouse cluster.
 //
 // @param request - CheckScaleOutBalancedRequest
 //
@@ -1074,7 +1068,7 @@ func (client *Client) CheckServiceLinkedRole(request *CheckServiceLinkedRoleRequ
 
 // Summary:
 //
-// Creates a database account for an ApsaraDB for ClickHouse cluster.
+// Creates a database account for a specified ApsaraDB for ClickHouse cluster.
 //
 // @param request - CreateAccountRequest
 //
@@ -1146,7 +1140,7 @@ func (client *Client) CreateAccountWithOptions(request *CreateAccountRequest, ru
 
 // Summary:
 //
-// Creates a database account for an ApsaraDB for ClickHouse cluster.
+// Creates a database account for a specified ApsaraDB for ClickHouse cluster.
 //
 // @param request - CreateAccountRequest
 //
@@ -1164,11 +1158,11 @@ func (client *Client) CreateAccount(request *CreateAccountRequest) (_result *Cre
 
 // Summary:
 //
-// Creates a database account and grants permissions.
+// Creates an account and configures its permissions.
 //
 // Description:
 //
-// This API is available only for cluster versions 21.8 and earlier. For newer versions, use a high-privilege account and SQL statements to modify user permissions.
+// This operation is applicable only to version 21.8 and earlier. For versions later than 21.8, you must use a privileged account to execute SQL statements to modify the permissions of a standard user.
 //
 // @param request - CreateAccountAndAuthorityRequest
 //
@@ -1268,11 +1262,11 @@ func (client *Client) CreateAccountAndAuthorityWithOptions(request *CreateAccoun
 
 // Summary:
 //
-// Creates a database account and grants permissions.
+// Creates an account and configures its permissions.
 //
 // Description:
 //
-// This API is available only for cluster versions 21.8 and earlier. For newer versions, use a high-privilege account and SQL statements to modify user permissions.
+// This operation is applicable only to version 21.8 and earlier. For versions later than 21.8, you must use a privileged account to execute SQL statements to modify the permissions of a standard user.
 //
 // @param request - CreateAccountAndAuthorityRequest
 //
@@ -1294,7 +1288,7 @@ func (client *Client) CreateAccountAndAuthority(request *CreateAccountAndAuthori
 //
 // Description:
 //
-// > ApsaraDB for ClickHouse supports data backup for clusters that run version 20.3, 20.8, or 21.8.
+// > ApsaraDB for ClickHouse clusters running version 20.3, 20.8, or 21.8 support data backup.
 //
 // @param request - CreateBackupPolicyRequest
 //
@@ -1374,7 +1368,7 @@ func (client *Client) CreateBackupPolicyWithOptions(request *CreateBackupPolicyR
 //
 // Description:
 //
-// > ApsaraDB for ClickHouse supports data backup for clusters that run version 20.3, 20.8, or 21.8.
+// > ApsaraDB for ClickHouse clusters running version 20.3, 20.8, or 21.8 support data backup.
 //
 // @param request - CreateBackupPolicyRequest
 //
@@ -1396,7 +1390,7 @@ func (client *Client) CreateBackupPolicy(request *CreateBackupPolicyRequest) (_r
 //
 // Description:
 //
-// Before you call this operation, make sure that you fully understand the billing methods and [pricing](https://help.aliyun.com/document_detail/167450.html) of ApsaraDB for ClickHouse.
+// Make sure that you fully understand the billing methods and [pricing](https://help.aliyun.com/document_detail/167450.html) of ApsaraDB for ClickHouse before you call this operation.
 //
 // @param request - CreateDBInstanceRequest
 //
@@ -1564,7 +1558,7 @@ func (client *Client) CreateDBInstanceWithOptions(request *CreateDBInstanceReque
 //
 // Description:
 //
-// Before you call this operation, make sure that you fully understand the billing methods and [pricing](https://help.aliyun.com/document_detail/167450.html) of ApsaraDB for ClickHouse.
+// Make sure that you fully understand the billing methods and [pricing](https://help.aliyun.com/document_detail/167450.html) of ApsaraDB for ClickHouse before you call this operation.
 //
 // @param request - CreateDBInstanceRequest
 //
@@ -1664,11 +1658,11 @@ func (client *Client) CreateMonitorDataReport(request *CreateMonitorDataReportRe
 
 // Summary:
 //
-// Creates a cold storage space.
+// Creates cold storage.
 //
 // Description:
 //
-// The tiered storage of hot and cold data feature is supported only by community-compatible clusters that run version 20.8 or later. For clusters that run an earlier version, you must migrate data to a cluster that runs version 20.8 or later before you can configure tiered storage. For more information about data migration, see [Data migration between ApsaraDB for ClickHouse instances](https://help.aliyun.com/document_detail/276926.html).
+// Only Community-compatible clusters of version 20.8 and later support the tiered storage of hot and cold data feature. For unsupported earlier versions, you can first perform data migration to a cluster of version 20.8 or later before configuring tiered storage of hot and cold data. For more information about how to perform data migration, see [Data migration between ApsaraDB for ClickHouse database instances](https://help.aliyun.com/document_detail/276926.html).
 //
 // @param request - CreateOSSStorageRequest
 //
@@ -1732,11 +1726,11 @@ func (client *Client) CreateOSSStorageWithOptions(request *CreateOSSStorageReque
 
 // Summary:
 //
-// Creates a cold storage space.
+// Creates cold storage.
 //
 // Description:
 //
-// The tiered storage of hot and cold data feature is supported only by community-compatible clusters that run version 20.8 or later. For clusters that run an earlier version, you must migrate data to a cluster that runs version 20.8 or later before you can configure tiered storage. For more information about data migration, see [Data migration between ApsaraDB for ClickHouse instances](https://help.aliyun.com/document_detail/276926.html).
+// Only Community-compatible clusters of version 20.8 and later support the tiered storage of hot and cold data feature. For unsupported earlier versions, you can first perform data migration to a cluster of version 20.8 or later before configuring tiered storage of hot and cold data. For more information about how to perform data migration, see [Data migration between ApsaraDB for ClickHouse database instances](https://help.aliyun.com/document_detail/276926.html).
 //
 // @param request - CreateOSSStorageRequest
 //
@@ -1754,11 +1748,11 @@ func (client *Client) CreateOSSStorage(request *CreateOSSStorageRequest) (_resul
 
 // Summary:
 //
-// Enables the MySQL or HTTPS port for a specified ApsaraDB for ClickHouse cluster.
+// Enables the MySQL or HTTPS port for the specified ApsaraDB for ClickHouse cluster.
 //
 // Description:
 //
-// > You must manually enable the MySQL port for community-compatible clusters of version 20.8 or later that were created before December 1, 2021. For clusters created on or after this date, the MySQL port is enabled automatically.
+// >For Community-compatible Edition clusters of version 20.8 and later that were created before December 1, 2021, you must manually enable the MySQL port. For clusters created on or after this date, the MySQL port is automatically enabled.
 //
 // @param request - CreatePortsForClickHouseRequest
 //
@@ -1826,11 +1820,11 @@ func (client *Client) CreatePortsForClickHouseWithOptions(request *CreatePortsFo
 
 // Summary:
 //
-// Enables the MySQL or HTTPS port for a specified ApsaraDB for ClickHouse cluster.
+// Enables the MySQL or HTTPS port for the specified ApsaraDB for ClickHouse cluster.
 //
 // Description:
 //
-// > You must manually enable the MySQL port for community-compatible clusters of version 20.8 or later that were created before December 1, 2021. For clusters created on or after this date, the MySQL port is enabled automatically.
+// >For Community-compatible Edition clusters of version 20.8 and later that were created before December 1, 2021, you must manually enable the MySQL port. For clusters created on or after this date, the MySQL port is automatically enabled.
 //
 // @param request - CreatePortsForClickHouseRequest
 //
@@ -1848,11 +1842,11 @@ func (client *Client) CreatePortsForClickHouse(request *CreatePortsForClickHouse
 
 // Summary:
 //
-// You can call the CreateRDSToClickhouseDb operation to create a sync task for an ApsaraDB for ClickHouse Community-Compatible Edition cluster.
+// Creates a synchronization task for an ApsaraDB for ClickHouse Community-Compatible Edition cluster.
 //
 // Description:
 //
-// > This operation applies only to ApsaraDB for ClickHouse Community-Compatible Edition clusters.
+// >This operation is applicable only to ApsaraDB for ClickHouse Community-Compatible Edition clusters.
 //
 // @param request - CreateRDSToClickhouseDbRequest
 //
@@ -1960,11 +1954,11 @@ func (client *Client) CreateRDSToClickhouseDbWithOptions(request *CreateRDSToCli
 
 // Summary:
 //
-// You can call the CreateRDSToClickhouseDb operation to create a sync task for an ApsaraDB for ClickHouse Community-Compatible Edition cluster.
+// Creates a synchronization task for an ApsaraDB for ClickHouse Community-Compatible Edition cluster.
 //
 // Description:
 //
-// > This operation applies only to ApsaraDB for ClickHouse Community-Compatible Edition clusters.
+// >This operation is applicable only to ApsaraDB for ClickHouse Community-Compatible Edition clusters.
 //
 // @param request - CreateRDSToClickhouseDbRequest
 //
@@ -1982,13 +1976,13 @@ func (client *Client) CreateRDSToClickhouseDb(request *CreateRDSToClickhouseDbRe
 
 // Summary:
 //
-// Calls the CreateSLB operation to attach a Server Load Balancer (SLB) instance to a specified ApsaraDB for ClickHouse Community-Compatible Edition cluster.
+// Mounts a Server Load Balancer (SLB) instance to a specified ApsaraDB for ClickHouse Community-compatible Edition cluster.
 //
 // Description:
 //
 // ## Usage notes
 //
-// An SLB instance is a network-layer dependency that provides services for external connections and supports failover. It attaches a domain name to the IP addresses of ClickHouse nodes. The SLB instance balances and forwards cluster requests to internal nodes to distribute traffic in a multi-node deployment. It also performs health checks on backend nodes. If a node becomes unavailable, the SLB instance checks its health status and automatically isolates it. This ensures that request traffic is distributed to active nodes.
+// SLB is a network-layer dependency. It provides external connection services by binding the IP addresses of ClickHouse nodes to a domain name and supports failover. It evenly forwards cluster requests to internal nodes for multi-node traffic distribution and performs health checks on backend nodes. If a node becomes unavailable, SLB checks the node health status and automatically isolates abnormal nodes to ensure that request traffic is distributed only to available nodes.
 //
 // @param request - CreateSLBRequest
 //
@@ -2040,13 +2034,13 @@ func (client *Client) CreateSLBWithOptions(request *CreateSLBRequest, runtime *d
 
 // Summary:
 //
-// Calls the CreateSLB operation to attach a Server Load Balancer (SLB) instance to a specified ApsaraDB for ClickHouse Community-Compatible Edition cluster.
+// Mounts a Server Load Balancer (SLB) instance to a specified ApsaraDB for ClickHouse Community-compatible Edition cluster.
 //
 // Description:
 //
 // ## Usage notes
 //
-// An SLB instance is a network-layer dependency that provides services for external connections and supports failover. It attaches a domain name to the IP addresses of ClickHouse nodes. The SLB instance balances and forwards cluster requests to internal nodes to distribute traffic in a multi-node deployment. It also performs health checks on backend nodes. If a node becomes unavailable, the SLB instance checks its health status and automatically isolates it. This ensures that request traffic is distributed to active nodes.
+// SLB is a network-layer dependency. It provides external connection services by binding the IP addresses of ClickHouse nodes to a domain name and supports failover. It evenly forwards cluster requests to internal nodes for multi-node traffic distribution and performs health checks on backend nodes. If a node becomes unavailable, SLB checks the node health status and automatically isolates abnormal nodes to ensure that request traffic is distributed only to available nodes.
 //
 // @param request - CreateSLBRequest
 //
@@ -2064,11 +2058,11 @@ func (client *Client) CreateSLB(request *CreateSLBRequest) (_result *CreateSLBRe
 
 // Summary:
 //
-// Call the CreateSQLAccount operation to create a privileged or standard account for an ApsaraDB for ClickHouse cluster.
+// Creates a privileged or standard account for an ApsaraDB for ClickHouse cluster.
 //
 // Description:
 //
-// > This operation applies only to community-compatible clusters that run version 20.8 or later and were created after December 1, 2021.
+// This operation is applicable only to Community-compatible clusters of version 20.8 or later that were created after December 1, 2021.
 //
 // @param request - CreateSQLAccountRequest
 //
@@ -2144,11 +2138,11 @@ func (client *Client) CreateSQLAccountWithOptions(request *CreateSQLAccountReque
 
 // Summary:
 //
-// Call the CreateSQLAccount operation to create a privileged or standard account for an ApsaraDB for ClickHouse cluster.
+// Creates a privileged or standard account for an ApsaraDB for ClickHouse cluster.
 //
 // Description:
 //
-// > This operation applies only to community-compatible clusters that run version 20.8 or later and were created after December 1, 2021.
+// This operation is applicable only to Community-compatible clusters of version 20.8 or later that were created after December 1, 2021.
 //
 // @param request - CreateSQLAccountRequest
 //
@@ -2240,11 +2234,11 @@ func (client *Client) CreateServiceLinkedRole(request *CreateServiceLinkedRoleRe
 
 // Summary:
 //
-// Deletes a database account from an ApsaraDB for ClickHouse cluster.
+// Deletes a specified database account of a specified ApsaraDB for ClickHouse cluster.
 //
 // Description:
 //
-// > After a database account is deleted, you cannot use it to connect to ApsaraDB for ClickHouse. Proceed with caution.
+// >After you delete a specified database account, you cannot use the account to connect to ApsaraDB for ClickHouse. Proceed with caution.
 //
 // @param request - DeleteAccountRequest
 //
@@ -2308,11 +2302,11 @@ func (client *Client) DeleteAccountWithOptions(request *DeleteAccountRequest, ru
 
 // Summary:
 //
-// Deletes a database account from an ApsaraDB for ClickHouse cluster.
+// Deletes a specified database account of a specified ApsaraDB for ClickHouse cluster.
 //
 // Description:
 //
-// > After a database account is deleted, you cannot use it to connect to ApsaraDB for ClickHouse. Proceed with caution.
+// >After you delete a specified database account, you cannot use the account to connect to ApsaraDB for ClickHouse. Proceed with caution.
 //
 // @param request - DeleteAccountRequest
 //
@@ -2330,11 +2324,11 @@ func (client *Client) DeleteAccount(request *DeleteAccountRequest) (_result *Del
 
 // Summary:
 //
-// Deletes the backup policy for a community-compatible ApsaraDB for ClickHouse cluster.
+// Deletes the backup policy of an ApsaraDB for ClickHouse Community-compatible Edition cluster.
 //
 // Description:
 //
-// > The data backup feature is available only for ApsaraDB for ClickHouse clusters running version 21.8 or later.
+// > Only ApsaraDB for ClickHouse clusters of version 21.8 or later support the data backup feature.
 //
 // @param request - DeleteBackupPolicyRequest
 //
@@ -2394,11 +2388,11 @@ func (client *Client) DeleteBackupPolicyWithOptions(request *DeleteBackupPolicyR
 
 // Summary:
 //
-// Deletes the backup policy for a community-compatible ApsaraDB for ClickHouse cluster.
+// Deletes the backup policy of an ApsaraDB for ClickHouse Community-compatible Edition cluster.
 //
 // Description:
 //
-// > The data backup feature is available only for ApsaraDB for ClickHouse clusters running version 21.8 or later.
+// > Only ApsaraDB for ClickHouse clusters of version 21.8 or later support the data backup feature.
 //
 // @param request - DeleteBackupPolicyRequest
 //
@@ -2416,13 +2410,11 @@ func (client *Client) DeleteBackupPolicy(request *DeleteBackupPolicyRequest) (_r
 
 // Summary:
 //
-// Deletes a specified pay-as-you-go ApsaraDB for ClickHouse cluster.
+// Releases the specified pay-as-you-go ApsaraDB for ClickHouse cluster.
 //
 // Description:
 //
-//	Warning:
-//
-// After a cluster is deleted, all data in the cluster is deleted and cannot be recovered. Proceed with caution.
+//	Warning: After the cluster is deleted, all data in the cluster is deleted and cannot be recovered. Proceed with caution.
 //
 // @param request - DeleteDBClusterRequest
 //
@@ -2482,13 +2474,11 @@ func (client *Client) DeleteDBClusterWithOptions(request *DeleteDBClusterRequest
 
 // Summary:
 //
-// Deletes a specified pay-as-you-go ApsaraDB for ClickHouse cluster.
+// Releases the specified pay-as-you-go ApsaraDB for ClickHouse cluster.
 //
 // Description:
 //
-//	Warning:
-//
-// After a cluster is deleted, all data in the cluster is deleted and cannot be recovered. Proceed with caution.
+//	Warning: After the cluster is deleted, all data in the cluster is deleted and cannot be recovered. Proceed with caution.
 //
 // @param request - DeleteDBClusterRequest
 //
@@ -2506,13 +2496,13 @@ func (client *Client) DeleteDBCluster(request *DeleteDBClusterRequest) (_result 
 
 // Summary:
 //
-// Releases a Server Load Balancer (SLB) instance for a specified ApsaraDB for ClickHouse Community-Compatible cluster.
+// Releases the SLB instance for a specified ApsaraDB for ClickHouse Community-compatible Edition cluster.
 //
 // Description:
 //
 // ## Usage notes
 //
-// After you release the SLB instance, the system performs simple load balancing based on the domain name. Health checks are no longer performed on nodes at the request routing layer. This may cause normal requests to be routed to unavailable nodes, which can result in read and write failures.
+// After the SLB instance is released, simple load balancing is performed directly based on domain names, and the node health check at the request routing layer is no longer available. This may cause normal requests to be routed to unavailable nodes, resulting in read and write failures for some requests.
 //
 // @param request - DeleteSLBRequest
 //
@@ -2560,13 +2550,13 @@ func (client *Client) DeleteSLBWithOptions(request *DeleteSLBRequest, runtime *d
 
 // Summary:
 //
-// Releases a Server Load Balancer (SLB) instance for a specified ApsaraDB for ClickHouse Community-Compatible cluster.
+// Releases the SLB instance for a specified ApsaraDB for ClickHouse Community-compatible Edition cluster.
 //
 // Description:
 //
 // ## Usage notes
 //
-// After you release the SLB instance, the system performs simple load balancing based on the domain name. Health checks are no longer performed on nodes at the request routing layer. This may cause normal requests to be routed to unavailable nodes, which can result in read and write failures.
+// After the SLB instance is released, simple load balancing is performed directly based on domain names, and the node health check at the request routing layer is no longer available. This may cause normal requests to be routed to unavailable nodes, resulting in read and write failures for some requests.
 //
 // @param request - DeleteSLBRequest
 //
@@ -2666,11 +2656,11 @@ func (client *Client) DeleteSyndb(request *DeleteSyndbRequest) (_result *DeleteS
 
 // Summary:
 //
-// Queries the permissions of a database account.
+// Queries the permissions of an account.
 //
 // Description:
 //
-// This API applies only to clusters of v21.8 or earlier. For clusters running a later version, you must use a privileged account and execute SQL statements to modify the permissions of a regular user.
+// This operation applies only to version 21.8 and earlier. To modify the permissions of a standard user in versions later than 21.8, use a privileged account to execute SQL statements.
 //
 // @param request - DescribeAccountAuthorityRequest
 //
@@ -2738,11 +2728,11 @@ func (client *Client) DescribeAccountAuthorityWithOptions(request *DescribeAccou
 
 // Summary:
 //
-// Queries the permissions of a database account.
+// Queries the permissions of an account.
 //
 // Description:
 //
-// This API applies only to clusters of v21.8 or earlier. For clusters running a later version, you must use a privileged account and execute SQL statements to modify the permissions of a regular user.
+// This operation applies only to version 21.8 and earlier. To modify the permissions of a standard user in versions later than 21.8, use a privileged account to execute SQL statements.
 //
 // @param request - DescribeAccountAuthorityRequest
 //
@@ -2760,7 +2750,7 @@ func (client *Client) DescribeAccountAuthority(request *DescribeAccountAuthority
 
 // Summary:
 //
-// Describes the database accounts of a specified ApsaraDB for ClickHouse cluster.
+// Queries the database account information of a specified ApsaraDB for ClickHouse cluster.
 //
 // @param request - DescribeAccountsRequest
 //
@@ -2832,7 +2822,7 @@ func (client *Client) DescribeAccountsWithOptions(request *DescribeAccountsReque
 
 // Summary:
 //
-// Describes the database accounts of a specified ApsaraDB for ClickHouse cluster.
+// Queries the database account information of a specified ApsaraDB for ClickHouse cluster.
 //
 // @param request - DescribeAccountsRequest
 //
@@ -2850,7 +2840,7 @@ func (client *Client) DescribeAccounts(request *DescribeAccountsRequest) (_resul
 
 // Summary:
 //
-// Queries the active Operations and Maintenance (O&M) configuration of a ClickHouse instance.
+// Queries the proactive maintenance configurations of a ClickHouse instance.
 //
 // @param request - DescribeActiveOperationMaintainConfRequest
 //
@@ -2910,7 +2900,7 @@ func (client *Client) DescribeActiveOperationMaintainConfWithOptions(request *De
 
 // Summary:
 //
-// Queries the active Operations and Maintenance (O&M) configuration of a ClickHouse instance.
+// Queries the proactive maintenance configurations of a ClickHouse instance.
 //
 // @param request - DescribeActiveOperationMaintainConfRequest
 //
@@ -2928,7 +2918,7 @@ func (client *Client) DescribeActiveOperationMaintainConf(request *DescribeActiv
 
 // Summary:
 //
-// Queries the active operation tasks of a ClickHouse instance.
+// Queries the proactive O&M tasks for ApsaraDB for ClickHouse instances.
 //
 // @param request - DescribeActiveOperationTasksRequest
 //
@@ -3032,7 +3022,7 @@ func (client *Client) DescribeActiveOperationTasksWithOptions(request *DescribeA
 
 // Summary:
 //
-// Queries the active operation tasks of a ClickHouse instance.
+// Queries the proactive O&M tasks for ApsaraDB for ClickHouse instances.
 //
 // @param request - DescribeActiveOperationTasksRequest
 //
@@ -3050,7 +3040,7 @@ func (client *Client) DescribeActiveOperationTasks(request *DescribeActiveOperat
 
 // Summary:
 //
-// Describes all databases, tables, and columns in an instance.
+// Enumerates all databases, tables, and columns in an instance.
 //
 // @param request - DescribeAllDataSourceRequest
 //
@@ -3118,7 +3108,7 @@ func (client *Client) DescribeAllDataSourceWithOptions(request *DescribeAllDataS
 
 // Summary:
 //
-// Describes all databases, tables, and columns in an instance.
+// Enumerates all databases, tables, and columns in an instance.
 //
 // @param request - DescribeAllDataSourceRequest
 //
@@ -3136,7 +3126,7 @@ func (client *Client) DescribeAllDataSource(request *DescribeAllDataSourceReques
 
 // Summary:
 //
-// Queries the details of all data sources.
+// Queries the data source.
 //
 // @param request - DescribeAllDataSourcesRequest
 //
@@ -3204,7 +3194,7 @@ func (client *Client) DescribeAllDataSourcesWithOptions(request *DescribeAllData
 
 // Summary:
 //
-// Queries the details of all data sources.
+// Queries the data source.
 //
 // @param request - DescribeAllDataSourcesRequest
 //
@@ -3222,7 +3212,7 @@ func (client *Client) DescribeAllDataSources(request *DescribeAllDataSourcesRequ
 
 // Summary:
 //
-// Queries the auto-renewal status of a ClickHouse Community-Compatible cluster.
+// Queries the auto-renewal status of ApsaraDB for ClickHouse Community-compatible clusters.
 //
 // @param request - DescribeAutoRenewAttributeRequest
 //
@@ -3294,7 +3284,7 @@ func (client *Client) DescribeAutoRenewAttributeWithOptions(request *DescribeAut
 
 // Summary:
 //
-// Queries the auto-renewal status of a ClickHouse Community-Compatible cluster.
+// Queries the auto-renewal status of ApsaraDB for ClickHouse Community-compatible clusters.
 //
 // @param request - DescribeAutoRenewAttributeRequest
 //
@@ -3312,11 +3302,11 @@ func (client *Client) DescribeAutoRenewAttribute(request *DescribeAutoRenewAttri
 
 // Summary:
 //
-// Queries the backup settings for a specified ApsaraDB for ClickHouse cluster.
+// Queries the backup settings of a specified ApsaraDB for ClickHouse cluster.
 //
 // Description:
 //
-// > Data backup is supported for ApsaraDB for ClickHouse clusters running version 20.3, 20.8, or 21.8.
+// >ApsaraDB for ClickHouse clusters of versions 20.3, 20.8, and 21.8 support data backup.
 //
 // @param request - DescribeBackupPolicyRequest
 //
@@ -3376,11 +3366,11 @@ func (client *Client) DescribeBackupPolicyWithOptions(request *DescribeBackupPol
 
 // Summary:
 //
-// Queries the backup settings for a specified ApsaraDB for ClickHouse cluster.
+// Queries the backup settings of a specified ApsaraDB for ClickHouse cluster.
 //
 // Description:
 //
-// > Data backup is supported for ApsaraDB for ClickHouse clusters running version 20.3, 20.8, or 21.8.
+// >ApsaraDB for ClickHouse clusters of versions 20.3, 20.8, and 21.8 support data backup.
 //
 // @param request - DescribeBackupPolicyRequest
 //
@@ -3402,7 +3392,7 @@ func (client *Client) DescribeBackupPolicy(request *DescribeBackupPolicyRequest)
 //
 // Description:
 //
-// >Only ApsaraDB for ClickHouse clusters of version 21.8 or later support the data backup feature.
+// > Only ApsaraDB for ClickHouse clusters of version 21.8 and later support the data backup feature.
 //
 // @param request - DescribeBackupsRequest
 //
@@ -3486,7 +3476,7 @@ func (client *Client) DescribeBackupsWithOptions(request *DescribeBackupsRequest
 //
 // Description:
 //
-// >Only ApsaraDB for ClickHouse clusters of version 21.8 or later support the data backup feature.
+// > Only ApsaraDB for ClickHouse clusters of version 21.8 and later support the data backup feature.
 //
 // @param request - DescribeBackupsRequest
 //
@@ -3504,7 +3494,7 @@ func (client *Client) DescribeBackups(request *DescribeBackupsRequest) (_result 
 
 // Summary:
 //
-// You can view columns.
+// Queries the columns.
 //
 // @param request - DescribeColumnsRequest
 //
@@ -3572,7 +3562,7 @@ func (client *Client) DescribeColumnsWithOptions(request *DescribeColumnsRequest
 
 // Summary:
 //
-// You can view columns.
+// Queries the columns.
 //
 // @param request - DescribeColumnsRequest
 //
@@ -3590,11 +3580,11 @@ func (client *Client) DescribeColumns(request *DescribeColumnsRequest) (_result 
 
 // Summary:
 //
-// Call the DescribeConfigHistory operation to view the configuration parameter change history of a community-compatible ApsaraDB for ClickHouse cluster.
+// Queries the change history of configuration parameters for an ApsaraDB for ClickHouse Community-compatible Edition cluster.
 //
 // Description:
 //
-// > This operation supports only community-compatible clusters that are created after December 1, 2021.
+// > This operation is supported only by Community-compatible Edition clusters created after December 1, 2021.
 //
 // @param request - DescribeConfigHistoryRequest
 //
@@ -3634,11 +3624,11 @@ func (client *Client) DescribeConfigHistoryWithOptions(request *DescribeConfigHi
 
 // Summary:
 //
-// Call the DescribeConfigHistory operation to view the configuration parameter change history of a community-compatible ApsaraDB for ClickHouse cluster.
+// Queries the change history of configuration parameters for an ApsaraDB for ClickHouse Community-compatible Edition cluster.
 //
 // Description:
 //
-// > This operation supports only community-compatible clusters that are created after December 1, 2021.
+// > This operation is supported only by Community-compatible Edition clusters created after December 1, 2021.
 //
 // @param request - DescribeConfigHistoryRequest
 //
@@ -3656,11 +3646,11 @@ func (client *Client) DescribeConfigHistory(request *DescribeConfigHistoryReques
 
 // Summary:
 //
-// Call the DescribeConfigVersionDifference operation to compare the parameter values of an ApsaraDB for ClickHouse community-compatible cluster before and after a configuration change.
+// Queries the parameter values before and after configuration changes for an ApsaraDB for ClickHouse Community-compatible Edition cluster.
 //
 // Description:
 //
-// > This operation applies only to community-compatible clusters that were created after December 1, 2021.
+// > This operation is supported only for Community-compatible Edition clusters created after December 1, 2021.
 //
 // @param request - DescribeConfigVersionDifferenceRequest
 //
@@ -3700,11 +3690,11 @@ func (client *Client) DescribeConfigVersionDifferenceWithOptions(request *Descri
 
 // Summary:
 //
-// Call the DescribeConfigVersionDifference operation to compare the parameter values of an ApsaraDB for ClickHouse community-compatible cluster before and after a configuration change.
+// Queries the parameter values before and after configuration changes for an ApsaraDB for ClickHouse Community-compatible Edition cluster.
 //
 // Description:
 //
-// > This operation applies only to community-compatible clusters that were created after December 1, 2021.
+// > This operation is supported only for Community-compatible Edition clusters created after December 1, 2021.
 //
 // @param request - DescribeConfigVersionDifferenceRequest
 //
@@ -3722,7 +3712,7 @@ func (client *Client) DescribeConfigVersionDifference(request *DescribeConfigVer
 
 // Summary:
 //
-// Queries the IP address whitelist of a specified ApsaraDB for ClickHouse cluster.
+// Queries the IP whitelist of a specified ApsaraDB for ClickHouse cluster.
 //
 // @param request - DescribeDBClusterAccessWhiteListRequest
 //
@@ -3782,7 +3772,7 @@ func (client *Client) DescribeDBClusterAccessWhiteListWithOptions(request *Descr
 
 // Summary:
 //
-// Queries the IP address whitelist of a specified ApsaraDB for ClickHouse cluster.
+// Queries the IP whitelist of a specified ApsaraDB for ClickHouse cluster.
 //
 // @param request - DescribeDBClusterAccessWhiteListRequest
 //
@@ -3800,7 +3790,7 @@ func (client *Client) DescribeDBClusterAccessWhiteList(request *DescribeDBCluste
 
 // Summary:
 //
-// Queries the information of a specified ApsaraDB for ClickHouse cluster.
+// Queries the details of a specified ApsaraDB for ClickHouse cluster.
 //
 // @param request - DescribeDBClusterAttributeRequest
 //
@@ -3860,7 +3850,7 @@ func (client *Client) DescribeDBClusterAttributeWithOptions(request *DescribeDBC
 
 // Summary:
 //
-// Queries the information of a specified ApsaraDB for ClickHouse cluster.
+// Queries the details of a specified ApsaraDB for ClickHouse cluster.
 //
 // @param request - DescribeDBClusterAttributeRequest
 //
@@ -3878,7 +3868,7 @@ func (client *Client) DescribeDBClusterAttribute(request *DescribeDBClusterAttri
 
 // Summary:
 //
-// The DescribeDBClusterConfig operation queries the parameter configuration of a community-compatible ClickHouse cluster.
+// Queries the parameter settings of a community-compatible cluster.
 //
 // @param request - DescribeDBClusterConfigRequest
 //
@@ -3942,7 +3932,7 @@ func (client *Client) DescribeDBClusterConfigWithOptions(request *DescribeDBClus
 
 // Summary:
 //
-// The DescribeDBClusterConfig operation queries the parameter configuration of a community-compatible ClickHouse cluster.
+// Queries the parameter settings of a community-compatible cluster.
 //
 // @param request - DescribeDBClusterConfigRequest
 //
@@ -3960,11 +3950,11 @@ func (client *Client) DescribeDBClusterConfig(request *DescribeDBClusterConfigRe
 
 // Summary:
 //
-// You can call the DescribeDBClusterConfigInXML operation to query the configuration parameters of an ApsaraDB for ClickHouse Community-Compatible Edition cluster in XML format.
+// Queries the configuration parameters in XML mode for an ApsaraDB for ClickHouse Community-Compatible Edition cluster.
 //
 // Description:
 //
-// > This operation supports only Community-Compatible Edition clusters that are created after December 1, 2021.
+// >This operation is supported only for Community-Compatible Edition clusters created after December 1, 2021.
 //
 // @param request - DescribeDBClusterConfigInXMLRequest
 //
@@ -4012,11 +4002,11 @@ func (client *Client) DescribeDBClusterConfigInXMLWithOptions(request *DescribeD
 
 // Summary:
 //
-// You can call the DescribeDBClusterConfigInXML operation to query the configuration parameters of an ApsaraDB for ClickHouse Community-Compatible Edition cluster in XML format.
+// Queries the configuration parameters in XML mode for an ApsaraDB for ClickHouse Community-Compatible Edition cluster.
 //
 // Description:
 //
-// > This operation supports only Community-Compatible Edition clusters that are created after December 1, 2021.
+// >This operation is supported only for Community-Compatible Edition clusters created after December 1, 2021.
 //
 // @param request - DescribeDBClusterConfigInXMLRequest
 //
@@ -4034,7 +4024,7 @@ func (client *Client) DescribeDBClusterConfigInXML(request *DescribeDBClusterCon
 
 // Summary:
 //
-// Queries the network information for a specified ApsaraDB for ClickHouse cluster.
+// Queries the network information of a specified ApsaraDB for ClickHouse cluster.
 //
 // @param request - DescribeDBClusterNetInfoItemsRequest
 //
@@ -4094,7 +4084,7 @@ func (client *Client) DescribeDBClusterNetInfoItemsWithOptions(request *Describe
 
 // Summary:
 //
-// Queries the network information for a specified ApsaraDB for ClickHouse cluster.
+// Queries the network information of a specified ApsaraDB for ClickHouse cluster.
 //
 // @param request - DescribeDBClusterNetInfoItemsRequest
 //
@@ -4112,7 +4102,7 @@ func (client *Client) DescribeDBClusterNetInfoItems(request *DescribeDBClusterNe
 
 // Summary:
 //
-// Queries node information for a ClickHouse Community-Compatible instance.
+// Retrieves the node information of an ApsaraDB for ClickHouse Community-compatible Edition instance.
 //
 // @param request - DescribeDBClusterNodeInfosRequest
 //
@@ -4184,7 +4174,7 @@ func (client *Client) DescribeDBClusterNodeInfosWithOptions(request *DescribeDBC
 
 // Summary:
 //
-// Queries node information for a ClickHouse Community-Compatible instance.
+// Retrieves the node information of an ApsaraDB for ClickHouse Community-compatible Edition instance.
 //
 // @param request - DescribeDBClusterNodeInfosRequest
 //
@@ -4202,13 +4192,13 @@ func (client *Client) DescribeDBClusterNodeInfos(request *DescribeDBClusterNodeI
 
 // Summary:
 //
-// Views the performance data of an ApsaraDB for ClickHouse Community-Compatible Edition cluster.
+// Queries the performance data of an ApsaraDB for ClickHouse Community-compatible Edition cluster.
 //
 // Description:
 //
-// You can view the performance monitoring data for a specified cluster within a time range based on performance metrics. The data is collected every 30 seconds.
+// Queries the performance monitoring data of a specified cluster within a specific time range based on performance metrics. The collection granularity is 30 seconds.
 //
-// > This operation supports only ApsaraDB for ClickHouse Community-Compatible Edition clusters that were created before December 1, 2021.
+// >This operation is supported only for ApsaraDB for ClickHouse Community-compatible Edition clusters that were created before December 1, 2021.
 //
 // @param request - DescribeDBClusterPerformanceRequest
 //
@@ -4280,13 +4270,13 @@ func (client *Client) DescribeDBClusterPerformanceWithOptions(request *DescribeD
 
 // Summary:
 //
-// Views the performance data of an ApsaraDB for ClickHouse Community-Compatible Edition cluster.
+// Queries the performance data of an ApsaraDB for ClickHouse Community-compatible Edition cluster.
 //
 // Description:
 //
-// You can view the performance monitoring data for a specified cluster within a time range based on performance metrics. The data is collected every 30 seconds.
+// Queries the performance monitoring data of a specified cluster within a specific time range based on performance metrics. The collection granularity is 30 seconds.
 //
-// > This operation supports only ApsaraDB for ClickHouse Community-Compatible Edition clusters that were created before December 1, 2021.
+// >This operation is supported only for ApsaraDB for ClickHouse Community-compatible Edition clusters that were created before December 1, 2021.
 //
 // @param request - DescribeDBClusterPerformanceRequest
 //
@@ -4304,7 +4294,7 @@ func (client *Client) DescribeDBClusterPerformance(request *DescribeDBClusterPer
 
 // Summary:
 //
-// This operation queries the status set of a ClickHouse Community-Compatible Edition cluster.
+// Queries the status set of an ApsaraDB for ClickHouse Community-compatible cluster.
 //
 // @param request - DescribeDBClusterStatusSetRequest
 //
@@ -4364,7 +4354,7 @@ func (client *Client) DescribeDBClusterStatusSetWithOptions(request *DescribeDBC
 
 // Summary:
 //
-// This operation queries the status set of a ClickHouse Community-Compatible Edition cluster.
+// Queries the status set of an ApsaraDB for ClickHouse Community-compatible cluster.
 //
 // @param request - DescribeDBClusterStatusSetRequest
 //
@@ -4382,7 +4372,7 @@ func (client *Client) DescribeDBClusterStatusSet(request *DescribeDBClusterStatu
 
 // Summary:
 //
-// Describes ApsaraDB for ClickHouse clusters in a specified region.
+// Queries the information about ApsaraDB for ClickHouse clusters in a specified region.
 //
 // @param request - DescribeDBClustersRequest
 //
@@ -4445,6 +4435,10 @@ func (client *Client) DescribeDBClustersWithOptions(request *DescribeDBClustersR
 		query["Tag"] = request.Tag
 	}
 
+	if !dara.IsNil(request.VpcIds) {
+		query["VpcIds"] = request.VpcIds
+	}
+
 	req := &openapiutil.OpenApiRequest{
 		Query: openapiutil.Query(query),
 	}
@@ -4470,7 +4464,7 @@ func (client *Client) DescribeDBClustersWithOptions(request *DescribeDBClustersR
 
 // Summary:
 //
-// Describes ApsaraDB for ClickHouse clusters in a specified region.
+// Queries the information about ApsaraDB for ClickHouse clusters in a specified region.
 //
 // @param request - DescribeDBClustersRequest
 //
@@ -4488,7 +4482,7 @@ func (client *Client) DescribeDBClusters(request *DescribeDBClustersRequest) (_r
 
 // Summary:
 //
-// The DescribeDBConfig operation queries the configuration of a community-compatible cluster.
+// Queries the configuration of a community-compatible cluster.
 //
 // @param request - DescribeDBConfigRequest
 //
@@ -4552,7 +4546,7 @@ func (client *Client) DescribeDBConfigWithOptions(request *DescribeDBConfigReque
 
 // Summary:
 //
-// The DescribeDBConfig operation queries the configuration of a community-compatible cluster.
+// Queries the configuration of a community-compatible cluster.
 //
 // @param request - DescribeDBConfigRequest
 //
@@ -4722,7 +4716,7 @@ func (client *Client) DescribeOSSStorage(request *DescribeOSSStorageRequest) (_r
 
 // Summary:
 //
-// Call the DescribeProcessList operation to retrieve running queries on an ApsaraDB for ClickHouse Community-Compatible cluster.
+// Queries the running queries in an ApsaraDB for ClickHouse Community-compatible cluster.
 //
 // @param request - DescribeProcessListRequest
 //
@@ -4814,7 +4808,7 @@ func (client *Client) DescribeProcessListWithOptions(request *DescribeProcessLis
 
 // Summary:
 //
-// Call the DescribeProcessList operation to retrieve running queries on an ApsaraDB for ClickHouse Community-Compatible cluster.
+// Queries the running queries in an ApsaraDB for ClickHouse Community-compatible cluster.
 //
 // @param request - DescribeProcessListRequest
 //
@@ -4832,7 +4826,7 @@ func (client *Client) DescribeProcessList(request *DescribeProcessListRequest) (
 
 // Summary:
 //
-// Queries the available regions and zones for ApsaraDB for ClickHouse.
+// Queries the information about all regions and zones of ApsaraDB for ClickHouse.
 //
 // @param request - DescribeRegionsRequest
 //
@@ -4888,7 +4882,7 @@ func (client *Client) DescribeRegionsWithOptions(request *DescribeRegionsRequest
 
 // Summary:
 //
-// Queries the available regions and zones for ApsaraDB for ClickHouse.
+// Queries the information about all regions and zones of ApsaraDB for ClickHouse.
 //
 // @param request - DescribeRegionsRequest
 //
@@ -4906,7 +4900,7 @@ func (client *Client) DescribeRegions(request *DescribeRegionsRequest) (_result 
 
 // Summary:
 //
-// Queries all databases in an instance.
+// Lists all databases in an instance.
 //
 // @param request - DescribeSchemasRequest
 //
@@ -4966,7 +4960,7 @@ func (client *Client) DescribeSchemasWithOptions(request *DescribeSchemasRequest
 
 // Summary:
 //
-// Queries all databases in an instance.
+// Lists all databases in an instance.
 //
 // @param request - DescribeSchemasRequest
 //
@@ -5086,7 +5080,7 @@ func (client *Client) DescribeSlowLogRecords(request *DescribeSlowLogRecordsRequ
 
 // Summary:
 //
-// Queries statistics about the slow log trends for a cluster.
+// Queries the slow log trends statistics for a cluster.
 //
 // @param request - DescribeSlowLogTrendRequest
 //
@@ -5162,7 +5156,7 @@ func (client *Client) DescribeSlowLogTrendWithOptions(request *DescribeSlowLogTr
 
 // Summary:
 //
-// Queries statistics about the slow log trends for a cluster.
+// Queries the slow log trends statistics for a cluster.
 //
 // @param request - DescribeSlowLogTrendRequest
 //
@@ -5262,7 +5256,7 @@ func (client *Client) DescribeSynDbTables(request *DescribeSynDbTablesRequest) (
 
 // Summary:
 //
-// Queries information about synchronized databases.
+// Queries the synchronized databases.
 //
 // @param request - DescribeSynDbsRequest
 //
@@ -5330,7 +5324,7 @@ func (client *Client) DescribeSynDbsWithOptions(request *DescribeSynDbsRequest, 
 
 // Summary:
 //
-// Queries information about synchronized databases.
+// Queries the synchronized databases.
 //
 // @param request - DescribeSynDbsRequest
 //
@@ -5348,7 +5342,7 @@ func (client *Client) DescribeSynDbs(request *DescribeSynDbsRequest) (_result *D
 
 // Summary:
 //
-// You can call the DescribeTables operation to query tables in a community-compatible cluster.
+// Queries the table information of a community-compatible cluster.
 //
 // @param request - DescribeTablesRequest
 //
@@ -5412,7 +5406,7 @@ func (client *Client) DescribeTablesWithOptions(request *DescribeTablesRequest, 
 
 // Summary:
 //
-// You can call the DescribeTables operation to query tables in a community-compatible cluster.
+// Queries the table information of a community-compatible cluster.
 //
 // @param request - DescribeTablesRequest
 //
@@ -5430,11 +5424,11 @@ func (client *Client) DescribeTables(request *DescribeTablesRequest) (_result *D
 
 // Summary:
 //
-// View migration history.
+// Queries migration records.
 //
 // Description:
 //
-// > This API operation is used only to query data migrations between Alibaba Cloud ClickHouse clusters during version upgrades.
+// >This operation can only query data migration information from a lower version to a higher version between ApsaraDB for ClickHouse clusters.
 //
 // @param request - DescribeTransferHistoryRequest
 //
@@ -5494,11 +5488,11 @@ func (client *Client) DescribeTransferHistoryWithOptions(request *DescribeTransf
 
 // Summary:
 //
-// View migration history.
+// Queries migration records.
 //
 // Description:
 //
-// > This API operation is used only to query data migrations between Alibaba Cloud ClickHouse clusters during version upgrades.
+// >This operation can only query data migration information from a lower version to a higher version between ApsaraDB for ClickHouse clusters.
 //
 // @param request - DescribeTransferHistoryRequest
 //
@@ -5516,7 +5510,7 @@ func (client *Client) DescribeTransferHistory(request *DescribeTransferHistoryRe
 
 // Summary:
 //
-// Retrieves a list of your KMS keys.
+// Queries the list of KMS keys.
 //
 // @param request - DescribeUserEncryptionKeyListRequest
 //
@@ -5568,7 +5562,7 @@ func (client *Client) DescribeUserEncryptionKeyListWithOptions(request *Describe
 
 // Summary:
 //
-// Retrieves a list of your KMS keys.
+// Queries the list of KMS keys.
 //
 // @param request - DescribeUserEncryptionKeyListRequest
 //
@@ -5586,7 +5580,7 @@ func (client *Client) DescribeUserEncryptionKeyList(request *DescribeUserEncrypt
 
 // Summary:
 //
-// Switches the ZooKeeper leader for a community-compatible ClickHouse instance.
+// Initiates a primary switchover for ZooKeeper in an ApsaraDB for ClickHouse Community-compatible Edition instance.
 //
 // @param request - ElectZookeeperLeaderRequest
 //
@@ -5666,7 +5660,7 @@ func (client *Client) ElectZookeeperLeaderWithOptions(request *ElectZookeeperLea
 
 // Summary:
 //
-// Switches the ZooKeeper leader for a community-compatible ClickHouse instance.
+// Initiates a primary switchover for ZooKeeper in an ApsaraDB for ClickHouse Community-compatible Edition instance.
 //
 // @param request - ElectZookeeperLeaderRequest
 //
@@ -5684,7 +5678,7 @@ func (client *Client) ElectZookeeperLeader(request *ElectZookeeperLeaderRequest)
 
 // Summary:
 //
-// Stops ongoing tasks.
+// Stops an ongoing task.
 //
 // @param request - KillProcessRequest
 //
@@ -5752,7 +5746,7 @@ func (client *Client) KillProcessWithOptions(request *KillProcessRequest, runtim
 
 // Summary:
 //
-// Stops ongoing tasks.
+// Stops an ongoing task.
 //
 // @param request - KillProcessRequest
 //
@@ -5770,7 +5764,7 @@ func (client *Client) KillProcess(request *KillProcessRequest) (_result *KillPro
 
 // Summary:
 //
-// Lists the tags that are attached to ApsaraDB for ClickHouse clusters.
+// Queries the tags bound to ApsaraDB for ClickHouse clusters.
 //
 // @param request - ListTagResourcesRequest
 //
@@ -5846,7 +5840,7 @@ func (client *Client) ListTagResourcesWithOptions(request *ListTagResourcesReque
 
 // Summary:
 //
-// Lists the tags that are attached to ApsaraDB for ClickHouse clusters.
+// Queries the tags bound to ApsaraDB for ClickHouse clusters.
 //
 // @param request - ListTagResourcesRequest
 //
@@ -5864,11 +5858,11 @@ func (client *Client) ListTagResources(request *ListTagResourcesRequest) (_resul
 
 // Summary:
 //
-// Modifies the permissions of a database account.
+// Modifies the permissions of an account.
 //
 // Description:
 //
-// This API operation applies only to cluster versions 21.8 and earlier. For cluster versions later than 21.8, you must use a high-privilege account to run SQL statements to modify the permissions of standard users.
+// This operation is applicable only to version 21.8 and earlier. To modify the permissions of a standard user in versions later than 21.8, use a privileged account to execute SQL statements.
 //
 // @param request - ModifyAccountAuthorityRequest
 //
@@ -5960,11 +5954,11 @@ func (client *Client) ModifyAccountAuthorityWithOptions(request *ModifyAccountAu
 
 // Summary:
 //
-// Modifies the permissions of a database account.
+// Modifies the permissions of an account.
 //
 // Description:
 //
-// This API operation applies only to cluster versions 21.8 and earlier. For cluster versions later than 21.8, you must use a high-privilege account to run SQL statements to modify the permissions of standard users.
+// This operation is applicable only to version 21.8 and earlier. To modify the permissions of a standard user in versions later than 21.8, use a privileged account to execute SQL statements.
 //
 // @param request - ModifyAccountAuthorityRequest
 //
@@ -5982,7 +5976,7 @@ func (client *Client) ModifyAccountAuthority(request *ModifyAccountAuthorityRequ
 
 // Summary:
 //
-// Modifies the description of a database account in an ApsaraDB for ClickHouse cluster.
+// Modifies the description of a specified database account in a specified ApsaraDB for ClickHouse cluster.
 //
 // @param request - ModifyAccountDescriptionRequest
 //
@@ -6050,7 +6044,7 @@ func (client *Client) ModifyAccountDescriptionWithOptions(request *ModifyAccount
 
 // Summary:
 //
-// Modifies the description of a database account in an ApsaraDB for ClickHouse cluster.
+// Modifies the description of a specified database account in a specified ApsaraDB for ClickHouse cluster.
 //
 // @param request - ModifyAccountDescriptionRequest
 //
@@ -6068,7 +6062,7 @@ func (client *Client) ModifyAccountDescription(request *ModifyAccountDescription
 
 // Summary:
 //
-// Modifies the configuration of active O&M tasks on a community-compatible ClickHouse cluster.
+// Modifies the proactive O&M task configuration for an ApsaraDB for ClickHouse Community-compatible cluster.
 //
 // @param request - ModifyActiveOperationMaintainConfRequest
 //
@@ -6148,7 +6142,7 @@ func (client *Client) ModifyActiveOperationMaintainConfWithOptions(request *Modi
 
 // Summary:
 //
-// Modifies the configuration of active O&M tasks on a community-compatible ClickHouse cluster.
+// Modifies the proactive O&M task configuration for an ApsaraDB for ClickHouse Community-compatible cluster.
 //
 // @param request - ModifyActiveOperationMaintainConfRequest
 //
@@ -6166,7 +6160,7 @@ func (client *Client) ModifyActiveOperationMaintainConf(request *ModifyActiveOpe
 
 // Summary:
 //
-// Modifies the switch time for operations and maintenance (O&M) events on a ClickHouse Community-compatible cluster.
+// Modifies the switchover time of O&M events for an ApsaraDB for ClickHouse Community-Compatible Edition cluster.
 //
 // @param request - ModifyActiveOperationTasksRequest
 //
@@ -6238,7 +6232,7 @@ func (client *Client) ModifyActiveOperationTasksWithOptions(request *ModifyActiv
 
 // Summary:
 //
-// Modifies the switch time for operations and maintenance (O&M) events on a ClickHouse Community-compatible cluster.
+// Modifies the switchover time of O&M events for an ApsaraDB for ClickHouse Community-Compatible Edition cluster.
 //
 // @param request - ModifyActiveOperationTasksRequest
 //
@@ -6256,7 +6250,7 @@ func (client *Client) ModifyActiveOperationTasks(request *ModifyActiveOperationT
 
 // Summary:
 //
-// Modifies the auto-renewal status of a ClickHouse Community-Compatible cluster.
+// Modifies the auto-renewal status of an ApsaraDB for ClickHouse Community-compatible Edition cluster.
 //
 // @param request - ModifyAutoRenewAttributeRequest
 //
@@ -6332,7 +6326,7 @@ func (client *Client) ModifyAutoRenewAttributeWithOptions(request *ModifyAutoRen
 
 // Summary:
 //
-// Modifies the auto-renewal status of a ClickHouse Community-Compatible cluster.
+// Modifies the auto-renewal status of an ApsaraDB for ClickHouse Community-compatible Edition cluster.
 //
 // @param request - ModifyAutoRenewAttributeRequest
 //
@@ -6354,7 +6348,7 @@ func (client *Client) ModifyAutoRenewAttribute(request *ModifyAutoRenewAttribute
 //
 // Description:
 //
-// > Data backup is supported for ApsaraDB for ClickHouse clusters that run version 20.3, 20.8, or 21.8.
+// > ApsaraDB for ClickHouse clusters running version 20.3, 20.8, or 21.8 support data backup.
 //
 // @param request - ModifyBackupPolicyRequest
 //
@@ -6430,7 +6424,7 @@ func (client *Client) ModifyBackupPolicyWithOptions(request *ModifyBackupPolicyR
 //
 // Description:
 //
-// > Data backup is supported for ApsaraDB for ClickHouse clusters that run version 20.3, 20.8, or 21.8.
+// > ApsaraDB for ClickHouse clusters running version 20.3, 20.8, or 21.8 support data backup.
 //
 // @param request - ModifyBackupPolicyRequest
 //
@@ -6550,7 +6544,7 @@ func (client *Client) ModifyDBCluster(request *ModifyDBClusterRequest) (_result 
 
 // Summary:
 //
-// Modifies the IP address whitelist for a specified ApsaraDB for ClickHouse cluster.
+// Modifies the IP whitelist of a specified ApsaraDB for ClickHouse cluster.
 //
 // @param request - ModifyDBClusterAccessWhiteListRequest
 //
@@ -6626,7 +6620,7 @@ func (client *Client) ModifyDBClusterAccessWhiteListWithOptions(request *ModifyD
 
 // Summary:
 //
-// Modifies the IP address whitelist for a specified ApsaraDB for ClickHouse cluster.
+// Modifies the IP whitelist of a specified ApsaraDB for ClickHouse cluster.
 //
 // @param request - ModifyDBClusterAccessWhiteListRequest
 //
@@ -6734,11 +6728,11 @@ func (client *Client) ModifyDBClusterConfig(request *ModifyDBClusterConfigReques
 
 // Summary:
 //
-// Modifies the configuration parameters of a specified community-compatible ApsaraDB for ClickHouse cluster.
+// Modifies the configuration parameters of a specified ApsaraDB for ClickHouse Community-compatible Edition cluster.
 //
 // Description:
 //
-// > This operation supports only community-compatible clusters created after December 1, 2021.
+// >This operation is supported only for Community-compatible Edition clusters created after December 1, 2021.
 //
 // @param request - ModifyDBClusterConfigInXMLRequest
 //
@@ -6794,11 +6788,11 @@ func (client *Client) ModifyDBClusterConfigInXMLWithOptions(request *ModifyDBClu
 
 // Summary:
 //
-// Modifies the configuration parameters of a specified community-compatible ApsaraDB for ClickHouse cluster.
+// Modifies the configuration parameters of a specified ApsaraDB for ClickHouse Community-compatible Edition cluster.
 //
 // Description:
 //
-// > This operation supports only community-compatible clusters created after December 1, 2021.
+// >This operation is supported only for Community-compatible Edition clusters created after December 1, 2021.
 //
 // @param request - ModifyDBClusterConfigInXMLRequest
 //
@@ -6816,7 +6810,7 @@ func (client *Client) ModifyDBClusterConfigInXML(request *ModifyDBClusterConfigI
 
 // Summary:
 //
-// Changes the description of a specified ApsaraDB for ClickHouse cluster.
+// Modifies the name of a specified ApsaraDB for ClickHouse cluster.
 //
 // @param request - ModifyDBClusterDescriptionRequest
 //
@@ -6880,7 +6874,7 @@ func (client *Client) ModifyDBClusterDescriptionWithOptions(request *ModifyDBClu
 
 // Summary:
 //
-// Changes the description of a specified ApsaraDB for ClickHouse cluster.
+// Modifies the name of a specified ApsaraDB for ClickHouse cluster.
 //
 // @param request - ModifyDBClusterDescriptionRequest
 //
@@ -6898,7 +6892,7 @@ func (client *Client) ModifyDBClusterDescription(request *ModifyDBClusterDescrip
 
 // Summary:
 //
-// Modifies the maintenance window for a specified ApsaraDB for ClickHouse cluster.
+// Modifies the maintenance window of a specified ApsaraDB for ClickHouse cluster.
 //
 // @param request - ModifyDBClusterMaintainTimeRequest
 //
@@ -6962,7 +6956,7 @@ func (client *Client) ModifyDBClusterMaintainTimeWithOptions(request *ModifyDBCl
 
 // Summary:
 //
-// Modifies the maintenance window for a specified ApsaraDB for ClickHouse cluster.
+// Modifies the maintenance window of a specified ApsaraDB for ClickHouse cluster.
 //
 // @param request - ModifyDBClusterMaintainTimeRequest
 //
@@ -6980,13 +6974,11 @@ func (client *Client) ModifyDBClusterMaintainTime(request *ModifyDBClusterMainta
 
 // Summary:
 //
-// The ModifyDBConfig operation modifies the dictionary configuration of a community-compatible cluster.
+// Modifies the dictionary configuration of a community-compatible cluster.
 //
 // Description:
 //
-//	Notice:
-//
-// This API applies only to clusters with a kernel version of 20.8 or earlier.
+//	Notice: This API operation is applicable only to clusters whose kernel version is 20.8 or earlier.
 //
 // @param request - ModifyDBConfigRequest
 //
@@ -7054,13 +7046,11 @@ func (client *Client) ModifyDBConfigWithOptions(request *ModifyDBConfigRequest, 
 
 // Summary:
 //
-// The ModifyDBConfig operation modifies the dictionary configuration of a community-compatible cluster.
+// Modifies the dictionary configuration of a community-compatible cluster.
 //
 // Description:
 //
-//	Notice:
-//
-// This API applies only to clusters with a kernel version of 20.8 or earlier.
+//	Notice: This API operation is applicable only to clusters whose kernel version is 20.8 or earlier.
 //
 // @param request - ModifyDBConfigRequest
 //
@@ -7078,7 +7068,7 @@ func (client *Client) ModifyDBConfig(request *ModifyDBConfigRequest) (_result *M
 
 // Summary:
 //
-// Modifies the upgrade type for a ClickHouse minor version to automatic or manual.
+// Modifies the minor engine version update type (automatic or manual) for an ApsaraDB for ClickHouse cluster.
 //
 // @param request - ModifyMinorVersionGreadeTypeRequest
 //
@@ -7142,7 +7132,7 @@ func (client *Client) ModifyMinorVersionGreadeTypeWithOptions(request *ModifyMin
 
 // Summary:
 //
-// Modifies the upgrade type for a ClickHouse minor version to automatic or manual.
+// Modifies the minor engine version update type (automatic or manual) for an ApsaraDB for ClickHouse cluster.
 //
 // @param request - ModifyMinorVersionGreadeTypeRequest
 //
@@ -7160,11 +7150,11 @@ func (client *Client) ModifyMinorVersionGreadeType(request *ModifyMinorVersionGr
 
 // Summary:
 //
-// Modifies the sync task of a community-compatible ApsaraDB for ClickHouse cluster.
+// Modifies the synchronization task of an ApsaraDB for ClickHouse Community-Compatible Edition cluster.
 //
 // Description:
 //
-// > This operation applies only to community-compatible ApsaraDB for ClickHouse clusters.
+// >This operation is applicable only to ApsaraDB for ClickHouse Community-Compatible Edition clusters.
 //
 // @param request - ModifyRDSToClickhouseDbRequest
 //
@@ -7272,11 +7262,11 @@ func (client *Client) ModifyRDSToClickhouseDbWithOptions(request *ModifyRDSToCli
 
 // Summary:
 //
-// Modifies the sync task of a community-compatible ApsaraDB for ClickHouse cluster.
+// Modifies the synchronization task of an ApsaraDB for ClickHouse Community-Compatible Edition cluster.
 //
 // Description:
 //
-// > This operation applies only to community-compatible ApsaraDB for ClickHouse clusters.
+// >This operation is applicable only to ApsaraDB for ClickHouse Community-Compatible Edition clusters.
 //
 // @param request - ModifyRDSToClickhouseDbRequest
 //
@@ -7294,7 +7284,7 @@ func (client *Client) ModifyRDSToClickhouseDb(request *ModifyRDSToClickhouseDbRe
 
 // Summary:
 //
-// Releases the public endpoint of a specified ApsaraDB for ClickHouse cluster.
+// Releases the public endpoint of the specified ApsaraDB for ClickHouse cluster.
 //
 // @param request - ReleaseClusterPublicConnectionRequest
 //
@@ -7354,7 +7344,7 @@ func (client *Client) ReleaseClusterPublicConnectionWithOptions(request *Release
 
 // Summary:
 //
-// Releases the public endpoint of a specified ApsaraDB for ClickHouse cluster.
+// Releases the public endpoint of the specified ApsaraDB for ClickHouse cluster.
 //
 // @param request - ReleaseClusterPublicConnectionRequest
 //
@@ -7372,7 +7362,7 @@ func (client *Client) ReleaseClusterPublicConnection(request *ReleaseClusterPubl
 
 // Summary:
 //
-// Resets the password of a database account in a specified ApsaraDB for ClickHouse cluster.
+// Resets the password of a specified database account for a specified ApsaraDB for ClickHouse cluster.
 //
 // @param request - ResetAccountPasswordRequest
 //
@@ -7440,7 +7430,7 @@ func (client *Client) ResetAccountPasswordWithOptions(request *ResetAccountPassw
 
 // Summary:
 //
-// Resets the password of a database account in a specified ApsaraDB for ClickHouse cluster.
+// Resets the password of a specified database account for a specified ApsaraDB for ClickHouse cluster.
 //
 // @param request - ResetAccountPasswordRequest
 //
@@ -7552,7 +7542,7 @@ func (client *Client) RestartInstance(request *RestartInstanceRequest) (_result 
 
 // Summary:
 //
-// Batch restart nodes of a ClickHouse Community-compatible Edition instance.
+// Restarts multiple nodes of an ApsaraDB for ClickHouse Community-compatible Edition instance.
 //
 // @param tmpReq - RestartInstanceNodeListRequest
 //
@@ -7638,7 +7628,7 @@ func (client *Client) RestartInstanceNodeListWithOptions(tmpReq *RestartInstance
 
 // Summary:
 //
-// Batch restart nodes of a ClickHouse Community-compatible Edition instance.
+// Restarts multiple nodes of an ApsaraDB for ClickHouse Community-compatible Edition instance.
 //
 // @param request - RestartInstanceNodeListRequest
 //
@@ -7746,17 +7736,17 @@ func (client *Client) TagResources(request *TagResourcesRequest) (_result *TagRe
 
 // Summary:
 //
-// Migration between versions.
+// Migrates a version.
 //
 // Description:
 //
-// ## Prerequisites
+// ## Before you begin
 //
-// - Add the IP addresses of the source cluster to the whitelist of the destination cluster.
+// - Add the IP address of the source cluster to the whitelist of the destination cluster.
 //
-// - Add the IP addresses of the destination cluster to the whitelist of the source cluster.
+// - Add the IP address of the destination cluster to the whitelist of the source cluster.
 //
-// > You can execute the `select 	- from system.clusters;` statement to retrieve the IP addresses of an ApsaraDB for ClickHouse cluster.
+// > You can run the `select 	- from system.clusters;` statement to view the IP addresses of an ApsaraDB for ClickHouse cluster.
 //
 // @param request - TransferVersionRequest
 //
@@ -7860,17 +7850,17 @@ func (client *Client) TransferVersionWithOptions(request *TransferVersionRequest
 
 // Summary:
 //
-// Migration between versions.
+// Migrates a version.
 //
 // Description:
 //
-// ## Prerequisites
+// ## Before you begin
 //
-// - Add the IP addresses of the source cluster to the whitelist of the destination cluster.
+// - Add the IP address of the source cluster to the whitelist of the destination cluster.
 //
-// - Add the IP addresses of the destination cluster to the whitelist of the source cluster.
+// - Add the IP address of the destination cluster to the whitelist of the source cluster.
 //
-// > You can execute the `select 	- from system.clusters;` statement to retrieve the IP addresses of an ApsaraDB for ClickHouse cluster.
+// > You can run the `select 	- from system.clusters;` statement to view the IP addresses of an ApsaraDB for ClickHouse cluster.
 //
 // @param request - TransferVersionRequest
 //
@@ -7888,7 +7878,7 @@ func (client *Client) TransferVersion(request *TransferVersionRequest) (_result 
 
 // Summary:
 //
-// Removes tags from ApsaraDB for ClickHouse clusters.
+// Removes tags from one or more ApsaraDB for ClickHouse clusters.
 //
 // @param request - UntagResourcesRequest
 //
@@ -7964,7 +7954,7 @@ func (client *Client) UntagResourcesWithOptions(request *UntagResourcesRequest, 
 
 // Summary:
 //
-// Removes tags from ApsaraDB for ClickHouse clusters.
+// Removes tags from one or more ApsaraDB for ClickHouse clusters.
 //
 // @param request - UntagResourcesRequest
 //
@@ -7982,11 +7972,11 @@ func (client *Client) UntagResources(request *UntagResourcesRequest) (_result *U
 
 // Summary:
 //
-// The UpgradeMinorVersion operation upgrades the minor engine version of a specified community-compatible ApsaraDB for ClickHouse cluster.
+// Upgrades the minor engine version of a specified ApsaraDB for ClickHouse Community-compatible Edition cluster.
 //
 // Description:
 //
-// > Minor engine version upgrades are supported only for community-compatible clusters that are purchased after December 1, 2021.
+// > Only Community-compatible Edition clusters purchased after December 1, 2021 support minor engine version upgrades.
 //
 // @param request - UpgradeMinorVersionRequest
 //
@@ -8058,11 +8048,11 @@ func (client *Client) UpgradeMinorVersionWithOptions(request *UpgradeMinorVersio
 
 // Summary:
 //
-// The UpgradeMinorVersion operation upgrades the minor engine version of a specified community-compatible ApsaraDB for ClickHouse cluster.
+// Upgrades the minor engine version of a specified ApsaraDB for ClickHouse Community-compatible Edition cluster.
 //
 // Description:
 //
-// > Minor engine version upgrades are supported only for community-compatible clusters that are purchased after December 1, 2021.
+// > Only Community-compatible Edition clusters purchased after December 1, 2021 support minor engine version upgrades.
 //
 // @param request - UpgradeMinorVersionRequest
 //
