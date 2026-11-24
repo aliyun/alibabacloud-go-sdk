@@ -14,7 +14,7 @@ type iExpireLoginTokenResponseBody interface {
 }
 
 type ExpireLoginTokenResponseBody struct {
-  // The ID of the request.
+  // The request ID.
   // 
   // example:
   // 

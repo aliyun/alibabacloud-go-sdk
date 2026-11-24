@@ -22,7 +22,7 @@ type GetStsTokenResponseBody struct {
 	//
 	// CCF92035-6231-5ABB-930E-1E003C32****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The details of the token.
+	// The token details.
 	StsTokenModel *GetStsTokenResponseBodyStsTokenModel `json:"StsTokenModel,omitempty" xml:"StsTokenModel,omitempty" type:"Struct"`
 }
 
@@ -62,7 +62,7 @@ func (s *GetStsTokenResponseBody) Validate() error {
 }
 
 type GetStsTokenResponseBodyStsTokenModel struct {
-	// The tenant ID, which is the UID of the Alibaba Cloud account.
+	// The tenant ID (Alibaba Cloud account UID).
 	//
 	// example:
 	//
@@ -74,13 +74,13 @@ type GetStsTokenResponseBodyStsTokenModel struct {
 	//
 	// be4be09e-cd00-4b4c-add7-11b4d8****
 	SessionId *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
-	// The temporary credentials.
+	// The temporary identity credential.
 	//
 	// example:
 	//
 	// sts****
 	StsToken *string `json:"StsToken,omitempty" xml:"StsToken,omitempty"`
-	// The tenant ID, which is the UID of the Alibaba Cloud account.
+	// The tenant ID (Alibaba Cloud account UID).
 	//
 	// example:
 	//

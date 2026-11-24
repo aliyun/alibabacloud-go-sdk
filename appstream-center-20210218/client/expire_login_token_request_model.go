@@ -36,7 +36,7 @@ type ExpireLoginTokenRequest struct {
   // 
   // v185fdd7f6d39fa7861981639366085772e150a390a5bb7b43c4e62440d94fc392b945770e1596cebe90085ce0af4d****
   LoginToken *string `json:"LoginToken,omitempty" xml:"LoginToken,omitempty"`
-  // The ID of the workspace. This parameter is required if you log on using a workspace ID. You can leave this parameter empty if you log on using an organization ID.
+  // The ID of the workspace. This parameter is required if you log on through a workspace, and can be left empty if you log on through an organization ID.
   // 
   // example:
   // 

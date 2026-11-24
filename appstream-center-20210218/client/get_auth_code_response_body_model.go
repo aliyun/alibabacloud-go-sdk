@@ -62,19 +62,19 @@ func (s *GetAuthCodeResponseBody) Validate() error {
 }
 
 type GetAuthCodeResponseBodyAuthModel struct {
-	// The authorization code. The authorization code is valid for 3 minutes and can be used only once regardless of whether the verification succeeds or fails. If multiple authorization codes are generated for a user, only the last generated authorization code is valid.
+	// The authorization code. The authorization code is valid for 3 minutes and can be used only once regardless of whether the verification succeeds or fails. If multiple authorization codes are generated for a user, only the last generated one is valid.
 	//
 	// example:
 	//
 	// acv2ZEq2TNSqOlX+DvyetHGRT08iPhbWg/os1W4HojpBxkMQZkAnbKSfz/wNvS0E149IQZ5TogvBUE8ghCSVV+QBnv48Y+sn4z9fY5ywZA1peI5s4TplQI0TADBhPZXEIzMOdmbNsDGGlGcKOAq8ixd1Epzdu9XfvRzdLOO6o3zQwTZxXsjOgGBW8JTcgCP9W9iYiIjHIdZ2VCAnmMzuyVkyED8gymEevH10QoclyH/O3s8Yq6VF34gMXihDQeiI8PyiAZrW0JWXSWpdy3n4yGtAqMAgv46FzTA+XJ6C********
 	AuthCode *string `json:"AuthCode,omitempty" xml:"AuthCode,omitempty"`
-	// The username of the China Desktop Service convenience account.
+	// The username of the Wuying convenience account.
 	//
 	// example:
 	//
 	// alice
 	EndUserId *string `json:"EndUserId,omitempty" xml:"EndUserId,omitempty"`
-	// The expiration time of the authorization code in UTC, following the ISO 8601 standard.
+	// The expiration time of the authorization code. The time is displayed in UTC and follows the ISO 8601 standard.
 	//
 	// example:
 	//

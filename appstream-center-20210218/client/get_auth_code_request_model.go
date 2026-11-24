@@ -28,22 +28,37 @@ type iGetAuthCodeRequest interface {
 }
 
 type GetAuthCodeRequest struct {
+	// The account type. Valid values: ad (enterprise AD account) and simple (convenience account).
+	//
+	// example:
+	//
+	// simple
 	AccountType *string `json:"AccountType,omitempty" xml:"AccountType,omitempty"`
-	AdDomain    *string `json:"AdDomain,omitempty" xml:"AdDomain,omitempty"`
-	AdPassword  *string `json:"AdPassword,omitempty" xml:"AdPassword,omitempty"`
-	// Specifies whether to synchronously create an EndUserId based on ExternalUserId. This parameter takes effect only when EndUserId is empty.
+	// The Active Directory domain name. This parameter is required when the account type is ad.
+	//
+	// example:
+	//
+	// ad.example.com
+	AdDomain *string `json:"AdDomain,omitempty" xml:"AdDomain,omitempty"`
+	// The password of the enterprise AD account.
+	//
+	// example:
+	//
+	// Qa****7!Z9
+	AdPassword *string `json:"AdPassword,omitempty" xml:"AdPassword,omitempty"`
+	// Specifies whether to synchronously create an EndUserId based on ExternalUserId. This parameter takes effect only when EndUserId is left empty.
 	//
 	// example:
 	//
 	// false
 	AutoCreateUser *bool `json:"AutoCreateUser,omitempty" xml:"AutoCreateUser,omitempty"`
-	// The username of the China Desktop Service (China Desktop Service) convenience account. The username must be unique within an Alibaba Cloud account. This parameter and ExternalUserId cannot both be empty.
+	// The username of the Wuying convenience account. The username must be unique within an Alibaba Cloud account. This parameter and ExternalUserId cannot be left empty at the same time.
 	//
 	// example:
 	//
 	// alice
 	EndUserId *string `json:"EndUserId,omitempty" xml:"EndUserId,omitempty"`
-	// The external user ID. This ID is defined by the caller and must be unique within an Alibaba Cloud account. This parameter and EndUserId cannot both be empty.
+	// The external user ID. This ID is customized by the caller and must be unique within an Alibaba Cloud account. This parameter and ExternalUserId cannot be left empty at the same time.
 	//
 	// example:
 	//
@@ -61,9 +76,9 @@ type GetAuthCodeRequest struct {
 	//
 	//       "Resource": {
 	//
-	//             "Type": "<Resource type>",
+	//             "Type": "<resource type>",
 	//
-	//             "Id": "<Resource ID>"
+	//             "Id": "<resource ID>"
 	//
 	//       }
 	//
@@ -71,11 +86,11 @@ type GetAuthCodeRequest struct {
 	//
 	// ```
 	//
-	// Valid values of <Resource type>:
+	// Valid values for <resource type>:
 	//
-	// - AppInstanceGroup: delivery group. You can call the ListAppInstanceGroup operation to obtain the ID.
+	// - AppInstanceGroup: app instance group. You can call the ListAppInstanceGroup operation to obtain the ID.
 	//
-	// - AppInstance: application instance (dedicated field).
+	// - AppInstance: app instance. This is a dedicated field.
 	//
 	// - App: application. You can call the ListAppInstanceGroup operation to obtain the ID.
 	//
@@ -94,7 +109,12 @@ type GetAuthCodeRequest struct {
 	//       }
 	//
 	// }
-	Policy    *string `json:"Policy,omitempty" xml:"Policy,omitempty"`
+	Policy *string `json:"Policy,omitempty" xml:"Policy,omitempty"`
+	// The token type. Valid values: LoginToken (logon token) and StsToken (temporary identity credential).
+	//
+	// example:
+	//
+	// StsToken
 	TokenType *string `json:"TokenType,omitempty" xml:"TokenType,omitempty"`
 }
 

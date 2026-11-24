@@ -2,6 +2,7 @@
 package client
 
 import (
+	gatewayclient "github.com/alibabacloud-go/alibabacloud-gateway-pop/client"
 	openapi "github.com/alibabacloud-go/darabonba-openapi/v2/client"
 	openapiutil "github.com/alibabacloud-go/darabonba-openapi/v2/utils"
 	"github.com/alibabacloud-go/tea/dara"
@@ -24,11 +25,14 @@ func (client *Client) Init(config *openapiutil.Config) (_err error) {
 	if _err != nil {
 		return _err
 	}
-	client.EndpointRule = dara.String("regional")
-	client.EndpointMap = map[string]*string{
-		"cn-shanghai":    dara.String("appstream-center.cn-shanghai.aliyuncs.com"),
-		"ap-southeast-1": dara.String("appstream-center.ap-southeast-1.aliyuncs.com"),
+	client.ProductId = dara.String("appstream-center")
+	gatewayClient, _err := gatewayclient.NewClient()
+	if _err != nil {
+		return _err
 	}
+
+	client.Spi = gatewayClient
+	client.EndpointRule = dara.String("regional")
 	_err = client.CheckConfig(config)
 	if _err != nil {
 		return _err
@@ -62,7 +66,107 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 
 // Summary:
 //
-// Manually expires a logon token before its automatic expiration.
+// Creates a time-limited static access token for a specified user in the current account to access a single cloud desktop.
+//
+// Description:
+//
+// When you call this operation, you must provide Resource and specify both ResourceType and ResourceId. Only a single cloud desktop is supported. You cannot omit Resource to authorize or query all cloud desktops.
+//
+// AuthorizerId is the WyId of the user and cannot be replaced by a username. BusinessChannel supports Enterprise and Business. If omitted, the default value is Enterprise.
+//
+// Before creation, the user must belong to the current calling account and have access permissions for the target cloud desktop. This operation only creates an access token. It does not create a user or add an authorization relationship between the user and the cloud desktop. Each successful call creates a new time-limited token. To obtain an existing token, call GetLatestThirdAppAccessToken and pass the same AuthorizerId and Resource.
+//
+// The unit of Expiration is seconds. Valid values: 1 to 15552000. If omitted, the default value is 15552000, which equals 180 days. Permanent validity is not supported. Keep the returned AccessToken secure and avoid displaying the full token in logs or public content.
+//
+// @param tmpReq - CreateThirdAppAccessTokenRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateThirdAppAccessTokenResponse
+func (client *Client) CreateThirdAppAccessTokenWithOptions(tmpReq *CreateThirdAppAccessTokenRequest, runtime *dara.RuntimeOptions) (_result *CreateThirdAppAccessTokenResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &CreateThirdAppAccessTokenShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.Resource) {
+		request.ResourceShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Resource, dara.String("Resource"), dara.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.AuthorizerId) {
+		body["AuthorizerId"] = request.AuthorizerId
+	}
+
+	if !dara.IsNil(request.BusinessChannel) {
+		body["BusinessChannel"] = request.BusinessChannel
+	}
+
+	if !dara.IsNil(request.Expiration) {
+		body["Expiration"] = request.Expiration
+	}
+
+	if !dara.IsNil(request.ResourceShrink) {
+		body["Resource"] = request.ResourceShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateThirdAppAccessToken"),
+		Version:     dara.String("2021-02-18"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateThirdAppAccessTokenResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Creates a time-limited static access token for a specified user in the current account to access a single cloud desktop.
+//
+// Description:
+//
+// When you call this operation, you must provide Resource and specify both ResourceType and ResourceId. Only a single cloud desktop is supported. You cannot omit Resource to authorize or query all cloud desktops.
+//
+// AuthorizerId is the WyId of the user and cannot be replaced by a username. BusinessChannel supports Enterprise and Business. If omitted, the default value is Enterprise.
+//
+// Before creation, the user must belong to the current calling account and have access permissions for the target cloud desktop. This operation only creates an access token. It does not create a user or add an authorization relationship between the user and the cloud desktop. Each successful call creates a new time-limited token. To obtain an existing token, call GetLatestThirdAppAccessToken and pass the same AuthorizerId and Resource.
+//
+// The unit of Expiration is seconds. Valid values: 1 to 15552000. If omitted, the default value is 15552000, which equals 180 days. Permanent validity is not supported. Keep the returned AccessToken secure and avoid displaying the full token in logs or public content.
+//
+// @param request - CreateThirdAppAccessTokenRequest
+//
+// @return CreateThirdAppAccessTokenResponse
+func (client *Client) CreateThirdAppAccessToken(request *CreateThirdAppAccessTokenRequest) (_result *CreateThirdAppAccessTokenResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &CreateThirdAppAccessTokenResponse{}
+	_body, _err := client.CreateThirdAppAccessTokenWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Invalidates a Wuying Workspace logon session before it naturally expires.
 //
 // @param request - ExpireLoginTokenRequest
 //
@@ -118,7 +222,7 @@ func (client *Client) ExpireLoginTokenWithOptions(request *ExpireLoginTokenReque
 
 // Summary:
 //
-// Manually expires a logon token before its automatic expiration.
+// Invalidates a Wuying Workspace logon session before it naturally expires.
 //
 // @param request - ExpireLoginTokenRequest
 //
@@ -136,7 +240,11 @@ func (client *Client) ExpireLoginToken(request *ExpireLoginTokenRequest) (_resul
 
 // Summary:
 //
-// Obtains an authorization code that contains user identity and permission information. The authorization code can be used to launch a cloud application in integration scenarios.
+// Retrieves an authorization code that contains user identity and permission information, which can be used to invoke cloud applications in integration scenarios.
+//
+// Description:
+//
+// Retrieves an authorization code that contains user identity and permission information, which can be used to invoke cloud applications in integration scenarios.
 //
 // @param request - GetAuthCodeRequest
 //
@@ -210,7 +318,11 @@ func (client *Client) GetAuthCodeWithOptions(request *GetAuthCodeRequest, runtim
 
 // Summary:
 //
-// Obtains an authorization code that contains user identity and permission information. The authorization code can be used to launch a cloud application in integration scenarios.
+// Retrieves an authorization code that contains user identity and permission information, which can be used to invoke cloud applications in integration scenarios.
+//
+// Description:
+//
+// Retrieves an authorization code that contains user identity and permission information, which can be used to invoke cloud applications in integration scenarios.
 //
 // @param request - GetAuthCodeRequest
 //
@@ -228,7 +340,103 @@ func (client *Client) GetAuthCode(request *GetAuthCodeRequest) (_result *GetAuth
 
 // Summary:
 //
-// Gets a Security Token Service (STS) token.
+// Retrieves the current valid static access token for a specified user and a single cloud desktop under the current account, keeping the original expiration time.
+//
+// Description:
+//
+// You must provide Resource and specify both ResourceType and ResourceId when calling this operation. Only a single cloud desktop is supported. You cannot omit Resource to authorize or query all cloud desktops.
+//
+// AuthorizerId is the WyId of the user and cannot be replaced by a username. BusinessChannel supports Enterprise and Business. If omitted, the default value is Enterprise.
+//
+// The AuthorizerId and Resource in the query conditions must be consistent with those used when the token was created. This operation only returns the current valid token for the current account, user, and cloud desktop. It does not create a new token, renew the token, or restore or roll back to a historical token. If no valid token is found, the token has expired, or the corresponding cache has been cleared, AccessToken.NotFound is returned. To obtain a new token, call CreateThirdAppAccessToken.
+//
+// Keep the returned AccessToken secure and avoid displaying the full token in logs or public content.
+//
+// @param tmpReq - GetLatestThirdAppAccessTokenRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetLatestThirdAppAccessTokenResponse
+func (client *Client) GetLatestThirdAppAccessTokenWithOptions(tmpReq *GetLatestThirdAppAccessTokenRequest, runtime *dara.RuntimeOptions) (_result *GetLatestThirdAppAccessTokenResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &GetLatestThirdAppAccessTokenShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.Resource) {
+		request.ResourceShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Resource, dara.String("Resource"), dara.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.AuthorizerId) {
+		body["AuthorizerId"] = request.AuthorizerId
+	}
+
+	if !dara.IsNil(request.BusinessChannel) {
+		body["BusinessChannel"] = request.BusinessChannel
+	}
+
+	if !dara.IsNil(request.ResourceShrink) {
+		body["Resource"] = request.ResourceShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetLatestThirdAppAccessToken"),
+		Version:     dara.String("2021-02-18"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetLatestThirdAppAccessTokenResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Retrieves the current valid static access token for a specified user and a single cloud desktop under the current account, keeping the original expiration time.
+//
+// Description:
+//
+// You must provide Resource and specify both ResourceType and ResourceId when calling this operation. Only a single cloud desktop is supported. You cannot omit Resource to authorize or query all cloud desktops.
+//
+// AuthorizerId is the WyId of the user and cannot be replaced by a username. BusinessChannel supports Enterprise and Business. If omitted, the default value is Enterprise.
+//
+// The AuthorizerId and Resource in the query conditions must be consistent with those used when the token was created. This operation only returns the current valid token for the current account, user, and cloud desktop. It does not create a new token, renew the token, or restore or roll back to a historical token. If no valid token is found, the token has expired, or the corresponding cache has been cleared, AccessToken.NotFound is returned. To obtain a new token, call CreateThirdAppAccessToken.
+//
+// Keep the returned AccessToken secure and avoid displaying the full token in logs or public content.
+//
+// @param request - GetLatestThirdAppAccessTokenRequest
+//
+// @return GetLatestThirdAppAccessTokenResponse
+func (client *Client) GetLatestThirdAppAccessToken(request *GetLatestThirdAppAccessTokenRequest) (_result *GetLatestThirdAppAccessTokenResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &GetLatestThirdAppAccessTokenResponse{}
+	_body, _err := client.GetLatestThirdAppAccessTokenWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Retrieves a Wuying STS token (temporary identity credential).
 //
 // @param request - GetStsTokenRequest
 //
@@ -280,7 +488,7 @@ func (client *Client) GetStsTokenWithOptions(request *GetStsTokenRequest, runtim
 
 // Summary:
 //
-// Gets a Security Token Service (STS) token.
+// Retrieves a Wuying STS token (temporary identity credential).
 //
 // @param request - GetStsTokenRequest
 //
