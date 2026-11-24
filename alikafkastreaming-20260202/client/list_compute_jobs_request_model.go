@@ -26,34 +26,48 @@ type iListComputeJobsRequest interface {
 }
 
 type ListComputeJobsRequest struct {
+	// The compute instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// alikafka_streaming-cn-a1b2c3d4
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The maximum number of jobs to return in the current request. Default value: 10. Maximum value: 1000. If you set this parameter to 0, the default value is used.
+	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The pagination token. Do not specify this parameter in the first request. For subsequent requests, use the `NextToken` value returned in the previous response.
+	//
 	// example:
 	//
 	// eyJvZmZzZXQiOjIwfQ==
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The region ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The keyword used to search for jobs by name or remark.
+	//
 	// example:
 	//
 	// order
 	Search *string `json:"Search,omitempty" xml:"Search,omitempty"`
+	// The sort direction. The value is not case-sensitive. Valid values: `ASC` and `DESC`.
+	//
 	// example:
 	//
 	// DESC
 	SortDirection *string `json:"SortDirection,omitempty" xml:"SortDirection,omitempty"`
+	// The sort field. Valid values: `createTime`, `cuReserved`, `cuLimit`, `cuUsed`, `status`, and `jobName`.
+	//
 	// example:
 	//
 	// createTime

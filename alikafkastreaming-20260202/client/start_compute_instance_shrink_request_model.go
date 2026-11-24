@@ -22,24 +22,34 @@ type iStartComputeInstanceShrinkRequest interface {
 }
 
 type StartComputeInstanceShrinkRequest struct {
+	// The ID of the instance.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// alikafka_streaming-cn-pe333xxxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The name of the compute instance.
+	//
 	// example:
 	//
 	// streaming-prod
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	// The region ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The list of vSwitch IDs.
+	//
 	// This parameter is required.
 	VSwitchIdsShrink *string `json:"VSwitchIds,omitempty" xml:"VSwitchIds,omitempty"`
+	// The ID of the VPC where the instance is deployed.
+	//
 	// This parameter is required.
 	//
 	// example:

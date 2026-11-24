@@ -20,18 +20,26 @@ type iDeleteComputeInstanceResponseBody interface {
 }
 
 type DeleteComputeInstanceResponseBody struct {
+	// The return code.
+	//
 	// example:
 	//
 	// 200
 	Code *int64 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned data.
+	//
 	// example:
 	//
 	// true
 	Data *bool `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 2834B42F-FBAD-516B-94FA-95E675A5D6CC
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request is successful.
+	//
 	// example:
 	//
 	// true

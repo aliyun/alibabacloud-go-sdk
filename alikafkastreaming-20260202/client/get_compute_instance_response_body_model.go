@@ -20,15 +20,22 @@ type iGetComputeInstanceResponseBody interface {
 }
 
 type GetComputeInstanceResponseBody struct {
+	// The return code.
+	//
 	// example:
 	//
 	// 200
-	Code *int64                              `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *int64 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned data.
 	Data *GetComputeInstanceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 019F5939-507B-57C1-B82C-E55821456FA6
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request is successful.
+	//
 	// example:
 	//
 	// true
@@ -89,63 +96,92 @@ func (s *GetComputeInstanceResponseBody) Validate() error {
 }
 
 type GetComputeInstanceResponseBodyData struct {
+	// The billing method.
+	//
 	// example:
 	//
 	// POST_PAID
 	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
+	// The creation time.
+	//
 	// Use the UTC time format: yyyy-MM-ddTHH:mm:ssZ
 	//
 	// example:
 	//
 	// 2026-09-02T16:00:00Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The total CU limit.
+	//
 	// example:
 	//
 	// 4.0
 	CuLimitSum *float64 `json:"CuLimitSum,omitempty" xml:"CuLimitSum,omitempty"`
+	// The total number of reserved CUs.
+	//
 	// example:
 	//
 	// 2.0
 	CuReservedSum *float64 `json:"CuReservedSum,omitempty" xml:"CuReservedSum,omitempty"`
+	// The total number of used CUs.
+	//
 	// example:
 	//
 	// 2.5
 	CuUsedSum *float64 `json:"CuUsedSum,omitempty" xml:"CuUsedSum,omitempty"`
+	// The expiration time.
+	//
 	// Use the UTC time format: yyyy-MM-ddTHH:mm:ssZ
 	//
 	// example:
 	//
 	// 2027-09-02T16:00:00Z
 	ExpireTime *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
+	// The compute instance ID.
+	//
 	// example:
 	//
 	// alikafka_streaming-cn-pe333xxxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The name of the compute instance.
+	//
 	// example:
 	//
 	// streaming-prod
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	// The region ID.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The resource group ID.
+	//
 	// example:
 	//
 	// rg-aek53bg4tl6fgma
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	// The service status of the instance.
+	//
 	// example:
 	//
 	// RUNNING
 	ServiceStatus *string `json:"ServiceStatus,omitempty" xml:"ServiceStatus,omitempty"`
+	// The total number of jobs.
+	//
 	// example:
 	//
 	// 3
 	TotalJobs *int64 `json:"TotalJobs,omitempty" xml:"TotalJobs,omitempty"`
+	// The number of running jobs.
+	//
 	// example:
 	//
 	// 2
-	TotalRunningJobs *int64    `json:"TotalRunningJobs,omitempty" xml:"TotalRunningJobs,omitempty"`
-	VSwitchIds       []*string `json:"VSwitchIds,omitempty" xml:"VSwitchIds,omitempty" type:"Repeated"`
+	TotalRunningJobs *int64 `json:"TotalRunningJobs,omitempty" xml:"TotalRunningJobs,omitempty"`
+	// The list of vSwitch IDs.
+	VSwitchIds []*string `json:"VSwitchIds,omitempty" xml:"VSwitchIds,omitempty" type:"Repeated"`
+	// VPC ID
+	//
 	// example:
 	//
 	// vpc-bp1abcdefg

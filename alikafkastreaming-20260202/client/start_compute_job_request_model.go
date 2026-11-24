@@ -26,34 +26,50 @@ type iStartComputeJobRequest interface {
 }
 
 type StartComputeJobRequest struct {
+	// The CU limit for the job. Integers and decimals are supported.
+	//
 	// example:
 	//
 	// 2.0
 	CuLimit *float64 `json:"CuLimit,omitempty" xml:"CuLimit,omitempty"`
+	// The number of reserved CUs for the job. Integers and decimals are supported.
+	//
+	// > The number of reserved CUs cannot exceed the CU limit.
+	//
 	// example:
 	//
-	// 1.0
+	// 2.0
 	CuReserved *float64 `json:"CuReserved,omitempty" xml:"CuReserved,omitempty"`
+	// **The Flink SQL draft, which must be a self-contained and complete DDL and DML statement.**
+	//
 	// example:
 	//
 	// CREATE TEMPORARY TABLE src (id BIGINT) WITH (\\"connector\\" = \\"datagen\\"); CREATE TEMPORARY TABLE sink (id BIGINT) WITH (\\"connector\\" = \\"print\\"); INSERT INTO sink SELECT id FROM src;
 	DraftSql *string `json:"DraftSql,omitempty" xml:"DraftSql,omitempty"`
+	// **The compute instance ID.**
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// alikafka_streaming-cn-pe333xxxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// **The name of the compute job.**
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// order_enrichment
 	JobName *string `json:"JobName,omitempty" xml:"JobName,omitempty"`
+	// **The recovery mode, such as savepoint or stateless.**
+	//
 	// example:
 	//
 	// savepoint
 	RecoveryMode *string `json:"RecoveryMode,omitempty" xml:"RecoveryMode,omitempty"`
+	// **The region ID.**
+	//
 	// This parameter is required.
 	//
 	// example:

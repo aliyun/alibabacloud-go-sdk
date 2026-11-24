@@ -16,12 +16,16 @@ type iGetComputeInstanceRequest interface {
 }
 
 type GetComputeInstanceRequest struct {
+	// The compute instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// alikafka_streaming-cn-xxxxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The region ID.
+	//
 	// This parameter is required.
 	//
 	// example:

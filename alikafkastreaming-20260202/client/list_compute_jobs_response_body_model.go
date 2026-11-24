@@ -26,27 +26,40 @@ type iListComputeJobsResponseBody interface {
 }
 
 type ListComputeJobsResponseBody struct {
+	// The return code.
+	//
 	// example:
 	//
 	// 200
-	Code *int64                             `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *int64 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned data.
 	Data []*ListComputeJobsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// The maximum number of returned entries.
+	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// The pagination token.
+	//
 	// example:
 	//
 	// eyJvZmZzZXQiOjIwfQ==
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 062D8E8B-8D47-5DCC-BB12-5A1D93C3A66B
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request is successful.
+	//
 	// example:
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The total number of records that match the query conditions.
+	//
 	// example:
 	//
 	// 3
@@ -138,48 +151,70 @@ func (s *ListComputeJobsResponseBody) Validate() error {
 }
 
 type ListComputeJobsResponseBodyData struct {
+	// The creation time.
+	//
 	// Use the UTC time format: yyyy-MM-ddTHH:mm:ssZ
 	//
 	// example:
 	//
 	// 2026-09-02T16:00:00Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The CU limit for the job.
+	//
 	// example:
 	//
 	// 2.0
 	CuLimit *float64 `json:"CuLimit,omitempty" xml:"CuLimit,omitempty"`
+	// The reserved CUs for the job.
+	//
 	// example:
 	//
 	// 1.0
 	CuReserved *float64 `json:"CuReserved,omitempty" xml:"CuReserved,omitempty"`
+	// The number of CUs used.
+	//
 	// example:
 	//
 	// 1.5
 	CuUsed *float64 `json:"CuUsed,omitempty" xml:"CuUsed,omitempty"`
+	// Specifies whether the job is a debug job. Valid values: 0: No. 1: Yes.
+	//
 	// example:
 	//
 	// 0
 	DebugMode *int32 `json:"DebugMode,omitempty" xml:"DebugMode,omitempty"`
+	// The compute instance ID.
+	//
 	// example:
 	//
 	// alikafka_streaming-cn-a1b2c3d4
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The name of the compute job.
+	//
 	// example:
 	//
 	// order_enrichment
 	JobName *string `json:"JobName,omitempty" xml:"JobName,omitempty"`
+	// The owner of the resource.
+	//
 	// example:
 	//
 	// 1234567890123456
 	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
+	// The region ID.
+	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The job remark.
+	//
 	// example:
 	//
-	// 订单流实时清洗
+	// Real-time order stream cleansing
 	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
+	// The job status.
+	//
 	// example:
 	//
 	// RUNNING

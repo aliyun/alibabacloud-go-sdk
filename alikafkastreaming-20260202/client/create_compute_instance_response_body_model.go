@@ -20,15 +20,22 @@ type iCreateComputeInstanceResponseBody interface {
 }
 
 type CreateComputeInstanceResponseBody struct {
+	// The return code.
+	//
 	// example:
 	//
 	// 200
-	Code *int64                                 `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *int64 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned data.
 	Data *CreateComputeInstanceResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 062D8E8B-8D47-5DCC-BB12-5A1D93C3A66B
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request is successful.
+	//
 	// example:
 	//
 	// true
@@ -89,10 +96,14 @@ func (s *CreateComputeInstanceResponseBody) Validate() error {
 }
 
 type CreateComputeInstanceResponseBodyData struct {
+	// The compute instance ID.
+	//
 	// example:
 	//
 	// alikafka_streaming-cn-pe333xxxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The order ID.
+	//
 	// example:
 	//
 	// 1234567890

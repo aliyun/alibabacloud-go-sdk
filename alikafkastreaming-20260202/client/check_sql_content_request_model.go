@@ -20,24 +20,32 @@ type iCheckSqlContentRequest interface {
 }
 
 type CheckSqlContentRequest struct {
+	// The compute instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// alikafka_streaming-cn-a1b2c3d4
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The compute job name.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// order_enrichment
 	JobName *string `json:"JobName,omitempty" xml:"JobName,omitempty"`
+	// The region ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The Flink SQL statement to be validated.
+	//
 	// This parameter is required.
 	//
 	// example:

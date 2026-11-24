@@ -16,12 +16,16 @@ type iReopenComputeInstanceRequest interface {
 }
 
 type ReopenComputeInstanceRequest struct {
+	// The ID of the compute instance.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// alikafka_streaming-cn-pe333xxxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The region ID.
+	//
 	// This parameter is required.
 	//
 	// example:

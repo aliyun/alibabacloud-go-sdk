@@ -20,18 +20,26 @@ type iStopComputeInstanceResponseBody interface {
 }
 
 type StopComputeInstanceResponseBody struct {
+	// The return code.
+	//
 	// example:
 	//
 	// 200
 	Code *int64 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned data.
+	//
 	// example:
 	//
 	// true
 	Data *bool `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// B353C700-D3F6-5325-8A1C-376CE8E04DC4
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request is successful.
+	//
 	// example:
 	//
 	// true

@@ -18,18 +18,24 @@ type iUpdateComputeInstanceNameRequest interface {
 }
 
 type UpdateComputeInstanceNameRequest struct {
+	// The ID of the compute instance.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// alikafka_streaming-cn-pe333xxxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The name of the compute instance.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// streaming-prod
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	// The region ID.
+	//
 	// This parameter is required.
 	//
 	// example:

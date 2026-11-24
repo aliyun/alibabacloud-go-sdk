@@ -20,27 +20,35 @@ type iUpdateComputeJobRequest interface {
 }
 
 type UpdateComputeJobRequest struct {
+	// **The compute instance ID.**
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// alikafka_streaming-cn-a1b2c3d4
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// **The compute job name.**
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// order_enrichment
 	JobName *string `json:"JobName,omitempty" xml:"JobName,omitempty"`
+	// **The region ID.**
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// **The job remarks.**
+	//
 	// example:
 	//
-	// 订单流实时清洗
+	// Real-time order flow cleaning
 	Remark *string `json:"Remark,omitempty" xml:"Remark,omitempty"`
 }
 

@@ -20,18 +20,26 @@ type iReopenComputeInstanceResponseBody interface {
 }
 
 type ReopenComputeInstanceResponseBody struct {
+	// The return code.
+	//
 	// example:
 	//
 	// 200
 	Code *int64 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned data.
+	//
 	// example:
 	//
 	// true
 	Data *bool `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 019F3F8E-4159-52B9-8C9B-0C0B63D70A4B
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request is successful.
+	//
 	// example:
 	//
 	// true

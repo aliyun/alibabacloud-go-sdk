@@ -26,27 +26,40 @@ type iListComputeInstancesInPageResponseBody interface {
 }
 
 type ListComputeInstancesInPageResponseBody struct {
+	// The return code.
+	//
 	// example:
 	//
 	// 200
 	Code *int64 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The current page number.
+	//
 	// example:
 	//
 	// 1
-	CurrentPage *int32                                        `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	Data        []*ListComputeInstancesInPageResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// The returned data.
+	Data []*ListComputeInstancesInPageResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 9079DD86-09F1-5303-A64F-D9089F96BC16
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request is successful.
+	//
 	// example:
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
+	// The total number of entries that meet the query conditions.
+	//
 	// example:
 	//
 	// 3
@@ -138,67 +151,98 @@ func (s *ListComputeInstancesInPageResponseBody) Validate() error {
 }
 
 type ListComputeInstancesInPageResponseBodyData struct {
+	// Indicates whether auto-renewal is enabled.
+	//
 	// example:
 	//
 	// false
 	AutoRenewFlag *bool `json:"AutoRenewFlag,omitempty" xml:"AutoRenewFlag,omitempty"`
+	// The billing method.
+	//
 	// example:
 	//
 	// POST_PAID
 	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
+	// The creation time.
+	//
 	// Use the UTC time format: yyyy-MM-ddTHH:mm:ssZ
 	//
 	// example:
 	//
 	// 2026-09-02T16:00:00Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The total CU limit.
+	//
 	// example:
 	//
 	// 4.0
 	CuLimitSum *float64 `json:"CuLimitSum,omitempty" xml:"CuLimitSum,omitempty"`
+	// The total number of reserved CUs.
+	//
 	// example:
 	//
 	// 2.0
 	CuReservedSum *float64 `json:"CuReservedSum,omitempty" xml:"CuReservedSum,omitempty"`
+	// The total number of used CUs.
+	//
 	// example:
 	//
 	// 2.5
 	CuUsedSum *float64 `json:"CuUsedSum,omitempty" xml:"CuUsedSum,omitempty"`
+	// The expiration time.
+	//
 	// Use the UTC time format: yyyy-MM-ddTHH:mmZ
 	//
 	// example:
 	//
 	// 2027-09-02T16:00:00Z
 	ExpireTime *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
+	// The compute instance ID.
+	//
 	// example:
 	//
 	// alikafka_streaming-cn-xxxxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The instance name.
+	//
 	// example:
 	//
 	// streaming-prod
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
+	// The owner of the resource.
+	//
 	// example:
 	//
 	// 1234567890123456
 	Owner *string `json:"Owner,omitempty" xml:"Owner,omitempty"`
+	// The region ID.
+	//
 	// example:
 	//
 	// cn-beijing
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The service status of the instance.
+	//
 	// example:
 	//
 	// RUNNING
 	ServiceStatus *string `json:"ServiceStatus,omitempty" xml:"ServiceStatus,omitempty"`
+	// The total number of jobs.
+	//
 	// example:
 	//
 	// 3
 	TotalJobs *int64 `json:"TotalJobs,omitempty" xml:"TotalJobs,omitempty"`
+	// The number of running jobs.
+	//
 	// example:
 	//
 	// 2
-	TotalRunningJobs *int64    `json:"TotalRunningJobs,omitempty" xml:"TotalRunningJobs,omitempty"`
-	VSwitchIds       []*string `json:"VSwitchIds,omitempty" xml:"VSwitchIds,omitempty" type:"Repeated"`
+	TotalRunningJobs *int64 `json:"TotalRunningJobs,omitempty" xml:"TotalRunningJobs,omitempty"`
+	// The list of vSwitch IDs.
+	VSwitchIds []*string `json:"VSwitchIds,omitempty" xml:"VSwitchIds,omitempty" type:"Repeated"`
+	// The VPC ID.
+	//
 	// example:
 	//
 	// vpc-bp1abcdefg

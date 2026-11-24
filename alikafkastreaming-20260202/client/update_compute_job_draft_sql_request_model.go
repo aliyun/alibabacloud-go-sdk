@@ -20,24 +20,32 @@ type iUpdateComputeJobDraftSqlRequest interface {
 }
 
 type UpdateComputeJobDraftSqlRequest struct {
+	// The Flink SQL draft.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// INSERT INTO sink_table SELECT 	- FROM source_table;
 	DraftSql *string `json:"DraftSql,omitempty" xml:"DraftSql,omitempty"`
+	// The compute instance ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// alikafka_streaming-cn-a1b2c3d4
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The name of the compute job.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// order_enrichment
 	JobName *string `json:"JobName,omitempty" xml:"JobName,omitempty"`
+	// The region ID.
+	//
 	// This parameter is required.
 	//
 	// example:

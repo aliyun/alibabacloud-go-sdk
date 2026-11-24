@@ -20,15 +20,22 @@ type iCheckSqlContentResponseBody interface {
 }
 
 type CheckSqlContentResponseBody struct {
+	// The return code.
+	//
 	// example:
 	//
 	// 200
-	Code *int64                           `json:"Code,omitempty" xml:"Code,omitempty"`
+	Code *int64 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned data.
 	Data *CheckSqlContentResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 062D8E8B-8D47-5DCC-BB12-5A1D93C3A66B
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request is successful.
+	//
 	// example:
 	//
 	// true
@@ -89,7 +96,10 @@ func (s *CheckSqlContentResponseBody) Validate() error {
 }
 
 type CheckSqlContentResponseBodyData struct {
+	// The list of SQL validation errors.
 	ErrorList []*CheckSqlContentResponseBodyDataErrorList `json:"ErrorList,omitempty" xml:"ErrorList,omitempty" type:"Repeated"`
+	// Indicates whether the SQL statement passed the validation.
+	//
 	// example:
 	//
 	// false
@@ -136,30 +146,44 @@ func (s *CheckSqlContentResponseBodyData) Validate() error {
 }
 
 type CheckSqlContentResponseBodyDataErrorList struct {
+	// The SQL snippet where the error occurred.
+	//
 	// example:
 	//
 	// SELECT FROM source_table
 	CodeSnippet *string `json:"CodeSnippet,omitempty" xml:"CodeSnippet,omitempty"`
+	// The starting column number of the error.
+	//
 	// example:
 	//
 	// 8
 	ColumnNumber *int32 `json:"ColumnNumber,omitempty" xml:"ColumnNumber,omitempty"`
+	// The ending column number of the error.
+	//
 	// example:
 	//
 	// 12
 	EndColumnNumber *int32 `json:"EndColumnNumber,omitempty" xml:"EndColumnNumber,omitempty"`
+	// The ending line number of the error.
+	//
 	// example:
 	//
 	// 1
 	EndLineNumber *int32 `json:"EndLineNumber,omitempty" xml:"EndLineNumber,omitempty"`
+	// The error type.
+	//
 	// example:
 	//
 	// SYNTAX_ERROR
 	ErrorType *string `json:"ErrorType,omitempty" xml:"ErrorType,omitempty"`
+	// The starting line number of the error.
+	//
 	// example:
 	//
 	// 1
 	LineNumber *int32 `json:"LineNumber,omitempty" xml:"LineNumber,omitempty"`
+	// The error message.
+	//
 	// example:
 	//
 	// SQL parse failed near FROM

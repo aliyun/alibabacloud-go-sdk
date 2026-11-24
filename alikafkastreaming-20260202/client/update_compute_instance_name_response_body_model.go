@@ -20,18 +20,26 @@ type iUpdateComputeInstanceNameResponseBody interface {
 }
 
 type UpdateComputeInstanceNameResponseBody struct {
+	// The return code.
+	//
 	// example:
 	//
 	// 200
 	Code *int64 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The returned data.
+	//
 	// example:
 	//
 	// true
 	Data *bool `json:"Data,omitempty" xml:"Data,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 019F6DD7-A85E-56CF-BF45-BACA73D3FC2F
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Indicates whether the request is successful.
+	//
 	// example:
 	//
 	// true

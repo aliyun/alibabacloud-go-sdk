@@ -18,18 +18,24 @@ type iCreateComputeInstanceRequest interface {
 }
 
 type CreateComputeInstanceRequest struct {
+	// The billing method. Only 5 (pay-as-you-go) is supported.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 5
 	PaidType *int64 `json:"PaidType,omitempty" xml:"PaidType,omitempty"`
+	// The region ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	// The resource group ID.
+	//
 	// example:
 	//
 	// rg-acfm2pz25js****

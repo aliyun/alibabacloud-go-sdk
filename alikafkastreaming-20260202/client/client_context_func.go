@@ -9,23 +9,23 @@ import (
 
 // Summary:
 //
-// 检查sql语法
+// Validates whether a specified Flink SQL statement complies with the specifications.
 //
 // Description:
 //
-// ## 请求说明
+// ## Operation description
 //
-// - 该接口支持通过 GET 或 POST 方法调用。
+// - You can invoke this operation by using the GET or POST method.
 //
-// - 必须提供 `InstanceId`、`JobName` 和 `SqlContent` 参数，其中 `SqlContent` 是待校验的 Flink SQL 语句。
+// - You must specify the `InstanceId`, `JobName`, and `SqlContent` parameters. The `SqlContent` parameter specifies the Flink SQL statement to be validated.
 //
-// - 返回结果中，`Data.Valid` 字段指示 SQL 是否通过校验；若未通过，则错误详情位于 `Data.ErrorList` 中。
+// - In the response, the `Data.Valid` field indicates whether the SQL statement passed the validation. If the validation fails, the fault details are returned in the `Data.ErrorList` field.
 //
-// - 当前版本要求同时传入实例 ID (`InstanceId`) 和作业名称 (`JobName`) 以构建作业上下文。
+// - The current version requires both the instance ID (`InstanceId`) and the job name (`JobName`) to build the job context.
 //
-// - 接口返回成功仅表示校验流程执行完成，并不直接反映 SQL 的有效性，请检查 `Data.Valid` 字段来确定 SQL 是否有效。
+// - A successful response only indicates that the system starts to execute the validation flow. It does not directly indicate whether the SQL statement is valid. Check the `Data.Valid` field to determine whether the SQL statement is valid.
 //
-// - 错误码和异常处理请参考文档中的“错误码”部分。
+// - For error codes and exception handling, refer to the Error codes section in the References.
 //
 // @param request - CheckSqlContentRequest
 //
@@ -81,15 +81,15 @@ func (client *Client) CheckSqlContentWithContext(ctx context.Context, request *C
 
 // Summary:
 //
-// 创建 流计算实例
+// Creates a compute instance. This operation only completes the purchase phase. After the instance is created, call StartComputeInstance to complete network configuration and deployment.
 //
 // Description:
 //
-// 创建一个计算实例。接口只完成购买阶段；创建成功后需调用 StartComputeInstance 完成网络配置和部署。
+// Creates a compute instance. This operation only completes the purchase phase. After the instance is created, call StartComputeInstance to complete network configuration and deployment.
 //
-// - API 版本：2026-02-02
+// - API version: 2026-02-02
 //
-// - Action：CreateComputeInstance
+// - Action: CreateComputeInstance
 //
 // @param request - CreateComputeInstanceRequest
 //
@@ -141,25 +141,25 @@ func (client *Client) CreateComputeInstanceWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// 创建 JOB
+// Creates a Flink SQL job on a running compute instance.
 //
 // Description:
 //
-// ## 请求说明
+// ## Request description
 //
-// - 该API用于在指定的运行中的计算实例上创建一个新的Flink SQL作业。
+// - This API creates a new Flink SQL job on a specified running compute instance.
 //
-// - 创建后的作业将处于`INIT`状态。
+// - The created job is in the `INIT` state.
 //
-// - 用户可以通过设置`CuLimit`和`CuReserved`来控制作业的资源使用情况。
+// - You can control the resource usage of the job by setting `CuLimit` and `CuReserved`.
 //
-// - `Remark`字段允许用户为作业添加备注信息，便于管理和识别。
+// - The `Remark` field allows you to add remarks to the job for easier management and identification.
 //
-// - 确保提供的`RegionId`、`InstanceId`以及`JobName`参数准确无误，否则可能导致请求失败。
+// - Make sure that the `RegionId`, `InstanceId`, and `JobName` parameters are accurate. Otherwise, the request may fail.
 //
-// - 如果尝试创建同名作业，则会返回错误提示。
+// - If you attempt to create a job with a duplicate name, an error is returned.
 //
-// - 计算实例必须处于运行状态才能成功创建作业。
+// - The compute instance must be in the running state to successfully create a job.
 //
 // @param request - CreateComputeJobRequest
 //
@@ -223,15 +223,15 @@ func (client *Client) CreateComputeJobWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// 删除实例
+// Deletes a compute instance that is in the pending deployment, stopped, or released state.
 //
 // Description:
 //
-// 删除处于待部署、已停止或已释放状态的计算实例。
+// Deletes a compute instance that is in the pending deployment, stopped, or released state.
 //
-// - API版本：2026-02-02
+// - API version: 2026-02-02
 //
-// - Action：DeleteComputeInstance
+// - Action: DeleteComputeInstance
 //
 // @param request - DeleteComputeInstanceRequest
 //
@@ -279,21 +279,21 @@ func (client *Client) DeleteComputeInstanceWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// 删除 JOB
+// Deletes a specified compute job. A successful request indicates that the deletion request has been accepted.
 //
 // Description:
 //
-// ## 请求说明
+// ## Request description
 //
-// - 该接口用于删除一个特定的计算作业。
+// - This operation deletes a specific compute job.
 //
-// - 成功调用此接口仅表示删除请求已被系统接受，并非立即完成删除操作。
+// - A successful call to this operation only indicates that the deletion request has been accepted by the system. The deletion is not completed immediately.
 //
-// - 确保提供的`RegionId`、`InstanceId`以及`JobName`参数准确无误，否则可能导致请求失败。
+// - Make sure that the `RegionId`, `InstanceId`, and `JobName` parameters are accurate. Otherwise, the request may fail.
 //
-// - 如果计算实例或作业处于不允许删除的状态（例如：非运行状态），则会返回相应的错误信息。
+// - If the compute instance or job is in a state that does not allow deletion, such as a non-running state, an error message is returned.
 //
-// - 删除操作不可逆，请谨慎使用。
+// - The deletion operation is irreversible. Proceed with caution.
 //
 // @param request - DeleteComputeJobRequest
 //
@@ -345,7 +345,7 @@ func (client *Client) DeleteComputeJobWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// 查询单个实例
+// Queries the details of a specified compute instance.
 //
 // @param request - GetComputeInstanceRequest
 //
@@ -393,21 +393,19 @@ func (client *Client) GetComputeInstanceWithContext(ctx context.Context, request
 
 // Summary:
 //
-// 查询 JOB 详情
+// Queries the details of a compute job in Alikafka Streaming by using a parameter query.
 //
 // Description:
 //
-// ## 请求说明
+// ## Request description
 //
-// - 本接口用于查询指定计算作业的详情。
+// - This operation queries the details of a specified compute job.
 //
-// - 支持使用 GET 或 POST 方法进行请求。
+// - You can use the GET or POST method to send requests.
 //
-// - 所有时间字段以 Unix 时间戳形式返回，单位为毫秒。
+// - The `RegionId`, `InstanceId`, and `JobName` parameters are required.
 //
-// - 必须提供 `RegionId`、`InstanceId` 和 `JobName` 参数。
-//
-// - 授权操作为 `alikafkastreaming:GetComputeJob`，访问级别为读取（Read）。
+// - The authorization action is `alikafkastreaming:GetComputeJob`, and the access level is Read.
 //
 // @param request - GetComputeJobRequest
 //
@@ -597,7 +595,7 @@ func (client *Client) ListComputeInstancesWithContext(ctx context.Context, tmpRe
 
 // Summary:
 //
-// 查询实例列表（分页）
+// Queries compute instances under the current account by using paging.
 //
 // @param tmpReq - ListComputeInstancesInPageRequest
 //
@@ -663,21 +661,19 @@ func (client *Client) ListComputeInstancesInPageWithContext(ctx context.Context,
 
 // Summary:
 //
-// 分页查询 JOB 列表
+// Queries all job information under a specified compute instance by using paging.
 //
 // Description:
 //
-// ## 请求说明
+// ## Request description
 //
-// - 该接口支持通过 `MaxResults` 和 `NextToken` 参数进行游标分页查询。
+// - This operation supports a cursor-based paged query by using the `MaxResults` and `NextToken` parameters.
 //
-// - 首次请求时不需要传递 `NextToken`，后续请求需使用上一次响应中返回的 `NextToken` 值。
+// - You do not need to specify `NextToken` in the first request. For subsequent requests, use the `NextToken` value returned in the previous response.
 //
-// - 支持按作业名称或备注搜索，并可选择不同的排序字段和方向。
+// - You can search by job name or remark, and specify different sorting fields and directions.
 //
-// - 返回的时间字段均为 Unix 时间戳（单位：毫秒）。
-//
-// - 授权操作为 `alikafkastreaming:ListComputeJobs`，访问级别为列出（List），适用于全部资源。
+// - The authorization action is `alikafkastreaming:ListComputeJobs`. The access level is List, which applies to all resources.
 //
 // @param request - ListComputeJobsRequest
 //
@@ -793,15 +789,15 @@ func (client *Client) ListSupportedConnectorsWithContext(ctx context.Context, re
 
 // Summary:
 //
-// 重新启动后付费实例
+// Re-enables a stopped pay-as-you-go compute instance. A successful response indicates that the re-enablement request has been accepted.
 //
 // Description:
 //
-// 重新启用一个已停止的后付费计算实例。接口返回成功表示启用请求已受理。
+// Re-enables a stopped pay-as-you-go compute instance. A successful response indicates that the re-enablement request has been accepted.
 //
-// - API版本：2026-02-02
+// - API version: 2026-02-02
 //
-// - Action：ReopenComputeInstance
+// - Action: ReopenComputeInstance
 //
 // @param request - ReopenComputeInstanceRequest
 //
@@ -907,15 +903,15 @@ func (client *Client) RestartComputeJobWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// 部署实例
+// Configures the network and deploys a compute instance in the pending deployment state.
 //
 // Description:
 //
-// 为处于待部署状态的计算实例配置网络并发起部署。
+// Configures the network and deploys a compute instance in the pending deployment state.
 //
-// - API 版本：2026-02-02
+// - API version: 2026-02-02
 //
-// - Action：StartComputeInstance
+// - Action: StartComputeInstance
 //
 // @param tmpReq - StartComputeInstanceRequest
 //
@@ -981,17 +977,17 @@ func (client *Client) StartComputeInstanceWithContext(ctx context.Context, tmpRe
 
 // Summary:
 //
-// 创建 JOB
+// Starts, resumes, or debugs a compute job.
 //
 // Description:
 //
-// ## 请求说明
+// ## Request description
 //
-// - `RecoveryMode` 支持两种模式：`savepoint` 和 `stateless`。如果选择 `savepoint` 模式但没有可用的 savepoint，则会返回错误。
+// - `RecoveryMode` supports two modes: `savepoint` and `stateless`. If you select the `savepoint` mode but no savepoint is available, an error is returned.
 //
-// - `CuLimit` 和 `CuReserved` 参数分别用来设定作业的 CU 上限和预留 CU 数量，支持整数或小数形式输入。
+// - The `CuLimit` and `CuReserved` parameters are used to set the CU limit and the number of reserved CUs for the job, respectively. Integers and decimals are supported.
 //
-// - 确保提供的 `RegionId`, `InstanceId`, 和 `JobName` 参数值正确且存在，否则将导致请求失败。
+// - Make sure that the values of the `RegionId`, `InstanceId`, and `JobName` parameters are correct and exist. Otherwise, the request fails.
 //
 // @param request - StartComputeJobRequest
 //
@@ -1059,15 +1055,15 @@ func (client *Client) StartComputeJobWithContext(ctx context.Context, request *S
 
 // Summary:
 //
-// 停用/释放后付费实例
+// Stops a running pay-as-you-go compute instance. A successful response indicates that the stop request has been accepted.
 //
 // Description:
 //
-// 停止一个正在运行的后付费计算实例。接口返回成功表示停止请求已受理。
+// Stops a running pay-as-you-go compute instance. A successful response indicates that the stop request has been accepted.
 //
-// - API 版本：2026-02-02
+// - API version: 2026-02-02
 //
-// - Action：StopComputeInstance
+// - Action: StopComputeInstance
 //
 // @param request - StopComputeInstanceRequest
 //
@@ -1115,15 +1111,15 @@ func (client *Client) StopComputeInstanceWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// 停止 JOB
+// Stops a compute job in a specified region and instance.
 //
 // Description:
 //
-// ## 请求说明
+// ## Request description
 //
-// - 该接口用于停止指定的计算作业生产或 Debug 运行实例。
+// - This operation stops the production or debug runtime instance of a specified compute job.
 //
-// - 接口返回成功表示停止请求已被受理，但并不意味着作业立即停止。
+// - A successful response indicates that the stop request has been accepted, but it does not mean that the job stops immediately.
 //
 // @param request - StopComputeJobRequest
 //
@@ -1175,15 +1171,15 @@ func (client *Client) StopComputeJobWithContext(ctx context.Context, request *St
 
 // Summary:
 //
-// 更新实例名称
+// Updates the name of a compute instance. The instance must be in the deployment preparation or running state.
 //
 // Description:
 //
-// 修改计算实例名称。实例需处于部署准备阶段或运行中状态。
+// Updates the name of a compute instance. The instance must be in the deployment preparation or running state.
 //
-// - API 版本：2026-02-02
+// - API version: 2026-02-02
 //
-// - Action：UpdateComputeInstanceName
+// - Action: UpdateComputeInstanceName
 //
 // @param request - UpdateComputeInstanceNameRequest
 //
@@ -1235,17 +1231,17 @@ func (client *Client) UpdateComputeInstanceNameWithContext(ctx context.Context, 
 
 // Summary:
 //
-// 更新 JOB
+// Modifies the remarks of a specified compute job.
 //
 // Description:
 //
-// ## 请求说明
+// ## Request description
 //
-// - 确保提供的 `InstanceId` 和 `JobName` 是有效的，否则将返回错误。
+// - Ensure that the provided `InstanceId` and `JobName` are valid. Otherwise, an error is returned.
 //
-// - 如果实例状态不在运行中，则不允许执行此操作。
+// - You cannot execute this operation if the instance is not in the running state.
 //
-// - 当前作业状态如果为调试任务正在运行或变更中，则不支持修改。
+// - Modifications are not supported if the current job is running as a debug node or undergoing changes.
 //
 // @param request - UpdateComputeJobRequest
 //
@@ -1301,13 +1297,13 @@ func (client *Client) UpdateComputeJobWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// 更新 JOB 的 CU 配额
+// Modifies the compute unit (CU) limit and the number of reserved CUs for a specified compute job.
 //
 // Description:
 //
-// ## 请求说明
+// ## Request description
 //
-// 本API允许用户修改特定计算作业的计算单元（CU）上限和预留CU数量。在调用此接口前，请确保提供的`InstanceId`和`JobName`正确无误，并且实例处于运行状态。此外，注意检查`CuLimit`与`CuReserved`参数的有效性和合理性，避免因超出限制或不符合业务逻辑导致请求失败。
+// This operation allows you to modify the compute unit (CU) limit and the number of reserved CUs for a specific compute job. Before calling this operation, ensure that the specified `InstanceId` and `JobName` are correct and that the instance is in the running state. Additionally, verify the validity and reasonableness of the `CuLimit` and `CuReserved` parameters to prevent request failures caused by exceeding limits or violating business logic.
 //
 // @param request - UpdateComputeJobCuRequest
 //
@@ -1367,21 +1363,21 @@ func (client *Client) UpdateComputeJobCuWithContext(ctx context.Context, request
 
 // Summary:
 //
-// 更新 JOB 的 SQL
+// Updates the Flink SQL draft saved for a specified compute job.
 //
 // Description:
 //
-// ## 请求说明
+// ## Request description
 //
-// 本接口用于更新特定计算实例下的某个计算作业所保存的Flink SQL草稿内容。请确保提供的`InstanceId`和`JobName`准确无误，并且该作业当前状态支持进行SQL修改操作。
+// This operation updates the Flink SQL draft saved for a specific compute job under a given compute instance. Make sure that the provided `InstanceId` and `JobName` are accurate, and the current status of the job supports SQL modification.
 //
-// - **注意事项**：
+// - **Precautions**:
 //
-//   - 确保目标实例处于运行状态。
+//   - Make sure that the target instance is in the running state.
 //
-//   - 当前作业状态需允许修改SQL，即作业不应处于调试或变更过程中。
+//   - The current job status must allow SQL modification. The job must not be undergoing debugging or modification.
 //
-//   - `DraftSql`参数应包含完整的、格式正确的Flink SQL语句。
+//   - The `DraftSql` parameter must contain a complete and correctly formatted Flink SQL statement.
 //
 // @param request - UpdateComputeJobDraftSqlRequest
 //

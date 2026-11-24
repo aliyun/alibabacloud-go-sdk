@@ -22,30 +22,42 @@ type iUpdateComputeJobCuRequest interface {
 }
 
 type UpdateComputeJobCuRequest struct {
+	// **The CU limit for the job.**
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 2.0
 	CuLimit *float64 `json:"CuLimit,omitempty" xml:"CuLimit,omitempty"`
+	// **The reserved CUs for the job.**
+	//
+	// > The number of reserved CUs must not exceed the CU limit.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 1.0
+	// 2.0
 	CuReserved *float64 `json:"CuReserved,omitempty" xml:"CuReserved,omitempty"`
+	// **The compute instance ID.**
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// alikafka_streaming-cn-a1b2c3d4
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// **The name of the compute job.**
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// order_enrichment
 	JobName *string `json:"JobName,omitempty" xml:"JobName,omitempty"`
+	// **The region ID.**
+	//
 	// This parameter is required.
 	//
 	// example:
