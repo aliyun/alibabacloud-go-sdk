@@ -4268,9 +4268,9 @@ func (client *Client) CreateConfigGroup(request *CreateConfigGroupRequest) (_res
 //
 // Description:
 //
-// - For information about the features, common scenarios, limits, and scaling policy of shared cloud desktops, see [Overview of shared cloud desktops (formerly cloud desktop pools)](https://help.aliyun.com/document_detail/290959.html).
+// - For information about the features, Common scenarios, limits, and scaling policy of shared cloud desktops, see [Overview of shared cloud desktops (formerly cloud desktop pools)](https://help.aliyun.com/document_detail/290959.html).
 //
-// - Before you invoke this operation, make sure that required prerequisite resources such as office networks, cloud desktop templates, and policies are created.
+// - Before you invoke this operation, make sure that required prerequisite resources such as office networks, cloud desktop templates, and policy are created.
 //
 // @param request - CreateDesktopGroupRequest
 //
@@ -4558,9 +4558,9 @@ func (client *Client) CreateDesktopGroupWithOptions(request *CreateDesktopGroupR
 //
 // Description:
 //
-// - For information about the features, common scenarios, limits, and scaling policy of shared cloud desktops, see [Overview of shared cloud desktops (formerly cloud desktop pools)](https://help.aliyun.com/document_detail/290959.html).
+// - For information about the features, Common scenarios, limits, and scaling policy of shared cloud desktops, see [Overview of shared cloud desktops (formerly cloud desktop pools)](https://help.aliyun.com/document_detail/290959.html).
 //
-// - Before you invoke this operation, make sure that required prerequisite resources such as office networks, cloud desktop templates, and policies are created.
+// - Before you invoke this operation, make sure that required prerequisite resources such as office networks, cloud desktop templates, and policy are created.
 //
 // @param request - CreateDesktopGroupRequest
 //
@@ -11311,6 +11311,84 @@ func (client *Client) DescribeDesktopGroups(request *DescribeDesktopGroupsReques
 
 // Summary:
 //
+// Queries a list of cloud desktops with detected vulnerabilities.
+//
+// @param request - DescribeDesktopIdsByVulNamesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeDesktopIdsByVulNamesResponse
+func (client *Client) DescribeDesktopIdsByVulNamesWithOptions(request *DescribeDesktopIdsByVulNamesRequest, runtime *dara.RuntimeOptions) (_result *DescribeDesktopIdsByVulNamesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Necessity) {
+		query["Necessity"] = request.Necessity
+	}
+
+	if !dara.IsNil(request.OfficeSiteId) {
+		query["OfficeSiteId"] = request.OfficeSiteId
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.Type) {
+		query["Type"] = request.Type
+	}
+
+	if !dara.IsNil(request.VulName) {
+		query["VulName"] = request.VulName
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeDesktopIdsByVulNames"),
+		Version:     dara.String("2020-09-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeDesktopIdsByVulNamesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries a list of cloud desktops with detected vulnerabilities.
+//
+// @param request - DescribeDesktopIdsByVulNamesRequest
+//
+// @return DescribeDesktopIdsByVulNamesResponse
+func (client *Client) DescribeDesktopIdsByVulNames(request *DescribeDesktopIdsByVulNamesRequest) (_result *DescribeDesktopIdsByVulNamesResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DescribeDesktopIdsByVulNamesResponse{}
+	_body, _err := client.DescribeDesktopIdsByVulNamesWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries the basic information of cloud computers.
 //
 // @param request - DescribeDesktopInfoRequest
@@ -16123,6 +16201,84 @@ func (client *Client) DescribeResourceByCenterPolicyId(request *DescribeResource
 
 // Summary:
 //
+// Retrieves the statistics on the number of different resources by region.
+//
+// Description:
+//
+// - This API operation is a centralized operation and can only be called by using the endpoints in the China (Shanghai) or Singapore region.
+//
+// @param request - DescribeResourceStatisticByRegionRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeResourceStatisticByRegionResponse
+func (client *Client) DescribeResourceStatisticByRegionWithOptions(request *DescribeResourceStatisticByRegionRequest, runtime *dara.RuntimeOptions) (_result *DescribeResourceStatisticByRegionResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.IncludeGroupDesktops) {
+		query["IncludeGroupDesktops"] = request.IncludeGroupDesktops
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.SearchRegionId) {
+		query["SearchRegionId"] = request.SearchRegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeResourceStatisticByRegion"),
+		Version:     dara.String("2020-09-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeResourceStatisticByRegionResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Retrieves the statistics on the number of different resources by region.
+//
+// Description:
+//
+// - This API operation is a centralized operation and can only be called by using the endpoints in the China (Shanghai) or Singapore region.
+//
+// @param request - DescribeResourceStatisticByRegionRequest
+//
+// @return DescribeResourceStatisticByRegionResponse
+func (client *Client) DescribeResourceStatisticByRegion(request *DescribeResourceStatisticByRegionRequest) (_result *DescribeResourceStatisticByRegionResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DescribeResourceStatisticByRegionResponse{}
+	_body, _err := client.DescribeResourceStatisticByRegionWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // 查询路由条目列表
 //
 // @param request - DescribeRouteEntryListRequest
@@ -17393,13 +17549,13 @@ func (client *Client) DescribeVirtualMFADevices(request *DescribeVirtualMFADevic
 
 // Summary:
 //
-// Retrieves cloud desktop information for a vulnerability.
+// Retrieves the cloud desktop information for vulnerabilities.
 //
 // Description:
 //
-// - This operation uses a centralized endpoint in the Shanghai region. Calls from other regions are not supported.
+// - This API operation uses a centralized domain name. The endpoint is in the China (Shanghai) region. Calls from other regions are not supported.
 //
-// - The cloud desktop status information returned by this operation has a 1 to 3 second delay from the actual values.
+// - The cloud desktop status information returned by this API operation has a delay of 1 to 3 seconds compared to the actual values.
 //
 // @param request - DescribeVulDesktopsRequest
 //
@@ -17432,6 +17588,10 @@ func (client *Client) DescribeVulDesktopsWithOptions(request *DescribeVulDesktop
 
 	if !dara.IsNil(request.IncludeFixResult) {
 		query["IncludeFixResult"] = request.IncludeFixResult
+	}
+
+	if !dara.IsNil(request.IncludePatchTask) {
+		query["IncludePatchTask"] = request.IncludePatchTask
 	}
 
 	if !dara.IsNil(request.Language) {
@@ -17507,13 +17667,13 @@ func (client *Client) DescribeVulDesktopsWithOptions(request *DescribeVulDesktop
 
 // Summary:
 //
-// Retrieves cloud desktop information for a vulnerability.
+// Retrieves the cloud desktop information for vulnerabilities.
 //
 // Description:
 //
-// - This operation uses a centralized endpoint in the Shanghai region. Calls from other regions are not supported.
+// - This API operation uses a centralized domain name. The endpoint is in the China (Shanghai) region. Calls from other regions are not supported.
 //
-// - The cloud desktop status information returned by this operation has a 1 to 3 second delay from the actual values.
+// - The cloud desktop status information returned by this API operation has a delay of 1 to 3 seconds compared to the actual values.
 //
 // @param request - DescribeVulDesktopsRequest
 //
@@ -17535,7 +17695,7 @@ func (client *Client) DescribeVulDesktops(request *DescribeVulDesktopsRequest) (
 //
 // Description:
 //
-// After security protection is enabled, the system automatically scans cloud desktops for system vulnerabilities on a periodic basis (once a day).
+// After security protection is enabled, the system automatically scans cloud desktops for system vulnerability at each epoch (once a day).
 //
 // @param request - DescribeVulnerabilityRequest
 //
@@ -17611,7 +17771,7 @@ func (client *Client) DescribeVulnerabilityWithOptions(request *DescribeVulnerab
 //
 // Description:
 //
-// After security protection is enabled, the system automatically scans cloud desktops for system vulnerabilities on a periodic basis (once a day).
+// After security protection is enabled, the system automatically scans cloud desktops for system vulnerability at each epoch (once a day).
 //
 // @param request - DescribeVulnerabilityRequest
 //
@@ -22333,11 +22493,11 @@ func (client *Client) ModifyDesktopChargeType(request *ModifyDesktopChargeTypeRe
 
 // Summary:
 //
-// Modifies a shared cloud computer.
+// Modifies a shared cloud desktop.
 //
 // Description:
 //
-// After you create a shared cloud computer, the system performs automatic creation of the corresponding number of cloud computers in the shared cloud computer based on the scaling policy in Settings and the connection status of end users. These cloud computers use the same cloud computer template and security policy. In different scenarios, you can modify the shared cloud computer configurations as needed, including the shared cloud computer name, cloud computer template, and associated policies.
+// After a shared cloud desktop is created, the system performs automatic creation of a corresponding number of cloud desktops within the shared cloud desktop based on the shared cloud desktop scaling policy Settings and the end-user connection status. These cloud desktops share the same cloud desktop template and security policy. You can modify the configurations of the shared cloud desktop as needed in different scenarios, such as the name, cloud desktop template, and associated policies.
 //
 // @param request - ModifyDesktopGroupRequest
 //
@@ -22485,11 +22645,11 @@ func (client *Client) ModifyDesktopGroupWithOptions(request *ModifyDesktopGroupR
 
 // Summary:
 //
-// Modifies a shared cloud computer.
+// Modifies a shared cloud desktop.
 //
 // Description:
 //
-// After you create a shared cloud computer, the system performs automatic creation of the corresponding number of cloud computers in the shared cloud computer based on the scaling policy in Settings and the connection status of end users. These cloud computers use the same cloud computer template and security policy. In different scenarios, you can modify the shared cloud computer configurations as needed, including the shared cloud computer name, cloud computer template, and associated policies.
+// After a shared cloud desktop is created, the system performs automatic creation of a corresponding number of cloud desktops within the shared cloud desktop based on the shared cloud desktop scaling policy Settings and the end-user connection status. These cloud desktops share the same cloud desktop template and security policy. You can modify the configurations of the shared cloud desktop as needed in different scenarios, such as the name, cloud desktop template, and associated policies.
 //
 // @param request - ModifyDesktopGroupRequest
 //

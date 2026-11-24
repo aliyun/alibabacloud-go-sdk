@@ -19,6 +19,8 @@ type iDescribeVulDesktopsRequest interface {
 	GetDesktopStatus() *string
 	SetIncludeFixResult(v bool) *DescribeVulDesktopsRequest
 	GetIncludeFixResult() *bool
+	SetIncludePatchTask(v bool) *DescribeVulDesktopsRequest
+	GetIncludePatchTask() *bool
 	SetLanguage(v string) *DescribeVulDesktopsRequest
 	GetLanguage() *string
 	SetMaxResults(v int32) *DescribeVulDesktopsRequest
@@ -46,13 +48,13 @@ type iDescribeVulDesktopsRequest interface {
 }
 
 type DescribeVulDesktopsRequest struct {
-	// The connection status of the cloud desktop. Valid values: CONNECTED and DISCONNECTED.
+	// The connection status of the cloud desktop.
 	//
 	// example:
 	//
 	// Connected
 	ConnectionStatus *string `json:"ConnectionStatus,omitempty" xml:"ConnectionStatus,omitempty"`
-	// The CVE ID of the vulnerability.
+	// The vulnerability ID.
 	//
 	// example:
 	//
@@ -66,23 +68,21 @@ type DescribeVulDesktopsRequest struct {
 	//
 	// Running
 	DesktopStatus *string `json:"DesktopStatus,omitempty" xml:"DesktopStatus,omitempty"`
-	// Specifies whether to include patch update results.
+	// Specifies whether to include the patch update results.
 	//
 	// example:
 	//
 	// false
 	IncludeFixResult *bool `json:"IncludeFixResult,omitempty" xml:"IncludeFixResult,omitempty"`
-	// The language of the returned information. Valid values:
-	//
-	// - **ch**: Chinese.
-	//
-	// - **en**: English.
+	// Specifies whether to include cloud desktops that have scheduled patch tasks.
+	IncludePatchTask *bool `json:"IncludePatchTask,omitempty" xml:"IncludePatchTask,omitempty"`
+	// The language of the response.
 	//
 	// example:
 	//
 	// ch
 	Language *string `json:"Language,omitempty" xml:"Language,omitempty"`
-	// The number of entries per page in a paged query.
+	// The number of entries per page for a paging query.
 	//
 	// Maximum value: 100.
 	//
@@ -92,25 +92,25 @@ type DescribeVulDesktopsRequest struct {
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The pagination token for the next page.
+	// The token for the next page.
 	//
 	// example:
 	//
 	// AAAAAV3MpHK1AP0pfERHZN5pu6nmB7qrRFJ8vmttjxPL****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// Specifies whether to include only cloud desktops that have had fix tasks executed in the current month.
+	// Specifies whether to include only cloud desktops for which fix tasks have been executed in the current month.
 	//
 	// example:
 	//
 	// false
 	OnlyCurrentMonthFixAttempted *bool `json:"OnlyCurrentMonthFixAttempted,omitempty" xml:"OnlyCurrentMonthFixAttempted,omitempty"`
-	// The page number of the current page in a paged query.
+	// The page number of the current page for a paging query.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The page number of the current page in a paged query.
+	// The page size for a paging query.
 	//
 	// example:
 	//
@@ -122,7 +122,7 @@ type DescribeVulDesktopsRequest struct {
 	//
 	// KB5082063
 	PatchId *string `json:"PatchId,omitempty" xml:"PatchId,omitempty"`
-	// The region ID. You can call [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) to query the regions supported by WUYING Workspace.
+	// The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/196646.html) operation to query the list of regions supported by WUYING Workspace.
 	//
 	// example:
 	//
@@ -134,7 +134,7 @@ type DescribeVulDesktopsRequest struct {
 	//
 	// rg-f3s3dgt8dtb0vlqc8
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The region ID used to filter cloud desktop information for a specific region.
+	// The search region ID. This parameter is used to filter cloud desktop information for a specified region.
 	//
 	// example:
 	//
@@ -142,15 +142,15 @@ type DescribeVulDesktopsRequest struct {
 	SearchRegionId *string `json:"SearchRegionId,omitempty" xml:"SearchRegionId,omitempty"`
 	// The list of vulnerability status details.
 	StatusList []*string `json:"StatusList,omitempty" xml:"StatusList,omitempty" type:"Repeated"`
-	// The severity level of the intrusion prevention event. Valid values:
+	// The security level of the intrusion prevention event. Valid values:
 	//
-	// - **low**: Low.
+	// - **low**: low-risk.
 	//
-	// - **medium**: Medium.
+	// - **medium**: medium-risk.
 	//
-	// - **critical**: Critical.
+	// - **critical**: high-risk.
 	//
-	// > If you do not set this parameter, vulnerabilities of all severity levels are queried.
+	// > If you do not specify this parameter, vulnerabilities of all security levels are queried.
 	//
 	// example:
 	//
@@ -184,6 +184,10 @@ func (s *DescribeVulDesktopsRequest) GetDesktopStatus() *string {
 
 func (s *DescribeVulDesktopsRequest) GetIncludeFixResult() *bool {
 	return s.IncludeFixResult
+}
+
+func (s *DescribeVulDesktopsRequest) GetIncludePatchTask() *bool {
+	return s.IncludePatchTask
 }
 
 func (s *DescribeVulDesktopsRequest) GetLanguage() *string {
@@ -256,6 +260,11 @@ func (s *DescribeVulDesktopsRequest) SetDesktopStatus(v string) *DescribeVulDesk
 
 func (s *DescribeVulDesktopsRequest) SetIncludeFixResult(v bool) *DescribeVulDesktopsRequest {
 	s.IncludeFixResult = &v
+	return s
+}
+
+func (s *DescribeVulDesktopsRequest) SetIncludePatchTask(v bool) *DescribeVulDesktopsRequest {
+	s.IncludePatchTask = &v
 	return s
 }
 

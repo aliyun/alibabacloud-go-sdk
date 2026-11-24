@@ -22,17 +22,13 @@ type iDescribeVulDesktopsResponseBody interface {
 }
 
 type DescribeVulDesktopsResponseBody struct {
-	// The number of entries per page in a paged query.
-	//
-	// Maximum value: 100.
-	//
-	// Default value: 10.
+	// The number of entries per page for a paged query. Maximum value: 100. Default value: 10.
 	//
 	// example:
 	//
 	// 10
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The token for the next query. An empty value indicates that no more results exist.
+	// The token for the next query. An empty NextToken indicates that no more results are available.
 	//
 	// example:
 	//
@@ -44,13 +40,13 @@ type DescribeVulDesktopsResponseBody struct {
 	//
 	// 269BDB16-2CD8-4865-84BD-11C40BC21DB0
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries returned.
+	// The total count.
 	//
 	// example:
 	//
 	// 20
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	// The details of cloud desktops affected by the vulnerability.
+	// The list of details about cloud desktops affected by the vulnerability.
 	VulDesktops []*DescribeVulDesktopsResponseBodyVulDesktops `json:"VulDesktops,omitempty" xml:"VulDesktops,omitempty" type:"Repeated"`
 }
 
@@ -121,7 +117,7 @@ func (s *DescribeVulDesktopsResponseBody) Validate() error {
 }
 
 type DescribeVulDesktopsResponseBodyVulDesktops struct {
-	// The configuration task ID.
+	// The ID of the configuration task.
 	//
 	// example:
 	//
@@ -139,7 +135,7 @@ type DescribeVulDesktopsResponseBodyVulDesktops struct {
 	//
 	// 60
 	CveCount *int32 `json:"CveCount,omitempty" xml:"CveCount,omitempty"`
-	// The vulnerability details.
+	// The list of vulnerability details.
 	Cves []*DescribeVulDesktopsResponseBodyVulDesktopsCves `json:"Cves,omitempty" xml:"Cves,omitempty" type:"Repeated"`
 	// The ID of the cloud desktop affected by the vulnerability.
 	//
@@ -159,23 +155,23 @@ type DescribeVulDesktopsResponseBodyVulDesktops struct {
 	//
 	// False
 	Disabled *bool `json:"Disabled,omitempty" xml:"Disabled,omitempty"`
-	// The time when the vulnerability was first detected. Format: yyyy-MM-dd HH:mm:ss.
+	// The time when the vulnerability was first detected. The time is in the yyyy-MM-dd HH:mm:ss format.
 	//
 	// example:
 	//
 	// 2026-08-05 00:00:00
 	FirstFoundTime *string `json:"FirstFoundTime,omitempty" xml:"FirstFoundTime,omitempty"`
-	// The fix records of the cloud desktop.
+	// The list of fix details for the cloud desktop.
 	FixRecords []*DescribeVulDesktopsResponseBodyVulDesktopsFixRecords `json:"FixRecords,omitempty" xml:"FixRecords,omitempty" type:"Repeated"`
-	// The patch IDs.
+	// The list of patch IDs.
 	PatchIds []*string `json:"PatchIds,omitempty" xml:"PatchIds,omitempty" type:"Repeated"`
-	// The region ID. You can call [DescribeRegions](~~DescribeRegions~~) to query the regions supported by WUYING Workspace.
+	// The region ID. You can call the [DescribeRegions](~~DescribeRegions~~) operation to query the list of regions supported by WUYING Workspace.
 	//
 	// example:
 	//
 	// cn-shenzhen
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The enterprise resource group ID.
+	// The ID of the enterprise resource group.
 	//
 	// example:
 	//
@@ -187,7 +183,7 @@ type DescribeVulDesktopsResponseBodyVulDesktops struct {
 	//
 	// Fixed
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The patch level.
+	// The severity level of the patch.
 	//
 	// example:
 	//
@@ -352,25 +348,25 @@ func (s *DescribeVulDesktopsResponseBodyVulDesktops) Validate() error {
 }
 
 type DescribeVulDesktopsResponseBodyVulDesktopsCves struct {
-	// The CVE ID of the vulnerability.
+	// The vulnerability ID.
 	//
 	// example:
 	//
 	// CVE-2026-62690
 	CveId *string `json:"CveId,omitempty" xml:"CveId,omitempty"`
-	// The vulnerability level.
+	// The severity level of the vulnerability.
 	//
 	// example:
 	//
 	// low
 	CveLevel *string `json:"CveLevel,omitempty" xml:"CveLevel,omitempty"`
-	// The vulnerability name.
+	// The name of the vulnerability.
 	//
 	// example:
 	//
-	// Windows Push Notification Elevation of Privilege Vulnerability
+	// Windows Push Notifications Elevation of Privilege Vulnerability
 	CveTitle *string `json:"CveTitle,omitempty" xml:"CveTitle,omitempty"`
-	// The CVE URL.
+	// The CVE link.
 	//
 	// example:
 	//
@@ -382,13 +378,13 @@ type DescribeVulDesktopsResponseBodyVulDesktopsCves struct {
 	//
 	// 7.0
 	ImpactScore *string `json:"ImpactScore,omitempty" xml:"ImpactScore,omitempty"`
-	// The reference URL for the vulnerability details.
+	// The reference link for the vulnerability details.
 	//
 	// example:
 	//
 	// https://msrc.microsoft.com/update-guide/vulnerability/CVE-2026-62690
 	ReferenceUrl *string `json:"ReferenceUrl,omitempty" xml:"ReferenceUrl,omitempty"`
-	// The release time. The time is in the ISO 8601 standard in UTC: yyyy-MM-ddTHH:mm:ssZ.
+	// The release time. The time is in the ISO 8601 standard UTC format: yyyy-MM-ddTHH:mm:ssZ.
 	//
 	// example:
 	//
@@ -478,7 +474,7 @@ type DescribeVulDesktopsResponseBodyVulDesktopsFixRecords struct {
 	//
 	// d7f3d7bc-b98b-4da8-95ae-fea21b604b34
 	BatchId *string `json:"BatchId,omitempty" xml:"BatchId,omitempty"`
-	// The failure reason.
+	// The reason for the failure.
 	//
 	// example:
 	//
@@ -490,7 +486,7 @@ type DescribeVulDesktopsResponseBodyVulDesktopsFixRecords struct {
 	//
 	// SUCCEED
 	FixResult *string `json:"FixResult,omitempty" xml:"FixResult,omitempty"`
-	// The timestamp when the fix task ended, in milliseconds.
+	// The timestamp when the fix task ended. Unit: milliseconds.
 	//
 	// example:
 	//

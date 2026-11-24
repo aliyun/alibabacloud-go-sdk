@@ -131,9 +131,15 @@ type DescribeSnapshotsResponseBodySnapshots struct {
 	//
 	// Available
 	DiskStatus *string `json:"DiskStatus,omitempty" xml:"DiskStatus,omitempty"`
-	EnvId      *string `json:"EnvId,omitempty" xml:"EnvId,omitempty"`
-	EnvType    *string `json:"EnvType,omitempty" xml:"EnvType,omitempty"`
-	JvsId      *string `json:"JvsId,omitempty" xml:"JvsId,omitempty"`
+	// example:
+	//
+	// pmxgcnb
+	EnvId *string `json:"EnvId,omitempty" xml:"EnvId,omitempty"`
+	// example:
+	//
+	// default
+	EnvType *string `json:"EnvType,omitempty" xml:"EnvType,omitempty"`
+	JvsId   *string `json:"JvsId,omitempty" xml:"JvsId,omitempty"`
 	// The operating system type.
 	//
 	// example:
