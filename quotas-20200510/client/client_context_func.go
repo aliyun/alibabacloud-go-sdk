@@ -745,7 +745,7 @@ func (client *Client) GetQuotaTemplateServiceStatusWithContext(ctx context.Conte
 
 // Summary:
 //
-// 获取配额使用率概览
+// Retrieves an overview of quota utilization.
 //
 // @param request - GetQuotaUtilizationOverviewRequest
 //
@@ -1017,7 +1017,7 @@ func (client *Client) ListProductQuotaDimensionsWithContext(ctx context.Context,
 
 // Summary:
 //
-// Queries the quotas of a specified cloud service.
+// Queries the list of quotas for a specified cloud service.
 //
 // @param request - ListProductQuotasRequest
 //
@@ -1359,7 +1359,7 @@ func (client *Client) ListQuotaApplicationsWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// Queries the details of quota increase applications for a member in a resource directory.
+// Queries the details of quota increase applications for members in a resource directory.
 //
 // @param request - ListQuotaApplicationsDetailForTemplateRequest
 //
@@ -1503,7 +1503,7 @@ func (client *Client) ListQuotaApplicationsForTemplateWithContext(ctx context.Co
 
 // Summary:
 //
-// 列举配额使用率报告
+// Lists quota utilization reports.
 //
 // @param request - ListQuotaUtilizationReportRequest
 //
@@ -1759,7 +1759,7 @@ func (client *Client) RemindQuotaApplicationApprovalWithContext(ctx context.Cont
 
 // Summary:
 //
-// 发起配额使用率报告查询
+// Initiates a quota usage report query. This API applies only to general quotas.
 //
 // @param request - StartQuotaUtilizationReportRequest
 //
@@ -1854,6 +1854,54 @@ func (client *Client) UpdateQuotaAlarmWithContext(ctx context.Context, request *
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdateQuotaAlarmResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Withdraws a quota application.
+//
+// @param request - WithdrawQuotaApplicationRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return WithdrawQuotaApplicationResponse
+func (client *Client) WithdrawQuotaApplicationWithContext(ctx context.Context, request *WithdrawQuotaApplicationRequest, runtime *dara.RuntimeOptions) (_result *WithdrawQuotaApplicationResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.ApplicationId) {
+		body["ApplicationId"] = request.ApplicationId
+	}
+
+	if !dara.IsNil(request.Reason) {
+		body["Reason"] = request.Reason
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("WithdrawQuotaApplication"),
+		Version:     dara.String("2020-05-10"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &WithdrawQuotaApplicationResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err

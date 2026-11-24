@@ -14,6 +14,8 @@ type iGetQuotaUtilizationOverviewRequest interface {
 }
 
 type GetQuotaUtilizationOverviewRequest struct {
+	// CommonQuota, FlowControl
+	//
 	// example:
 	//
 	// CommonQuota

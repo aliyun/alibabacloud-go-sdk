@@ -68,7 +68,7 @@ type GetQuotaApplicationResponseBodyQuotaApplication struct {
 	//
 	// d314d6ae-867d-484c-9009-3d421a80****
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
-	// The time when the quota increase application was submitted.
+	// The time when the quota increase application was submitted. Format: ISO 8601, UTC time, ending with Z.
 	//
 	// example:
 	//
@@ -80,7 +80,7 @@ type GetQuotaApplicationResponseBodyQuotaApplication struct {
 	//
 	// 10
 	ApproveValue *float32 `json:"ApproveValue,omitempty" xml:"ApproveValue,omitempty"`
-	// The review comments for the quota increase application.
+	// The approval comments for the quota increase application.
 	//
 	// example:
 	//
@@ -92,21 +92,19 @@ type GetQuotaApplicationResponseBodyQuotaApplication struct {
 	//
 	// 804
 	DesireValue *int32 `json:"DesireValue,omitempty" xml:"DesireValue,omitempty"`
-	// The quota dimension.
-	//
-	// Format: `{"regionId":"region"}`.
+	// The quota dimension. Format: `{"regionId":"region"}`. Example of a region dimension: `{"regionId":"cn-shanghai"}` or `{"regionId":"cn-hangzhou"}`.
 	//
 	// example:
 	//
-	// ["cn-shanghai","cn-hangzhou"]
+	// {"regionId":"cn-shanghai"}
 	Dimension map[string]interface{} `json:"Dimension,omitempty" xml:"Dimension,omitempty"`
-	// The effective period of the quota.
+	// The effective period of the quota. Format: YYYY-MM-DD HH:mm:ss, without a time zone identity.
 	//
 	// example:
 	//
 	// 2021-01-19 15:30:00
 	EffectiveTime *string `json:"EffectiveTime,omitempty" xml:"EffectiveTime,omitempty"`
-	// The time when the quota expires.
+	// The time when the quota expires. Format: YYYY-MM-DD HH:mm:ss, without a time zone identifier.
 	//
 	// example:
 	//
@@ -114,11 +112,11 @@ type GetQuotaApplicationResponseBodyQuotaApplication struct {
 	ExpireTime *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
 	// The notification type. Valid values:
 	//
-	// - 0: no notification
+	// - 0: No notification.
 	//
-	// - 1: email notification
+	// - 1: Email notification.
 	//
-	// - 2: SMS notification
+	// - 2: SMS notification.
 	//
 	// example:
 	//
@@ -136,7 +134,7 @@ type GetQuotaApplicationResponseBodyQuotaApplication struct {
 	//
 	// q_security-groups
 	QuotaActionCode *string `json:"QuotaActionCode,omitempty" xml:"QuotaActionCode,omitempty"`
-	// The ARN of the quota.
+	// The quota ARN.
 	//
 	// example:
 	//
@@ -144,11 +142,11 @@ type GetQuotaApplicationResponseBodyQuotaApplication struct {
 	QuotaArn *string `json:"QuotaArn,omitempty" xml:"QuotaArn,omitempty"`
 	// The quota category. Valid values:
 	//
-	// - CommonQuota: general quota
+	// - CommonQuota: General quota.
 	//
-	// - FlowControl: API rate limit
+	// - FlowControl: API rate limit.
 	//
-	// - WhiteListLabel: privilege
+	// - WhiteListLabel: Privilege.
 	//
 	// example:
 	//

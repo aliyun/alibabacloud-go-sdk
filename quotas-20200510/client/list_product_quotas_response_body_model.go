@@ -32,7 +32,7 @@ type ListProductQuotasResponseBody struct {
 	//
 	// - If NextToken is empty, it indicates that no subsequent query is available.
 	//
-	// - If NextToken is returned, the value is the token used to start the next query.
+	// - If NextToken has a return value, the value indicates the token for the next query.
 	//
 	// example:
 	//
@@ -127,7 +127,11 @@ type ListProductQuotasResponseBodyQuotas struct {
 	//
 	// true
 	Adjustable *bool `json:"Adjustable,omitempty" xml:"Adjustable,omitempty"`
-	// The range of quota values that can be applied for the current quota item, which serves as a reference for quota applications.
+	// The range of quota values that can be applied for the current quota item. This range is for reference when you apply for a quota.
+	//
+	// example:
+	//
+	// [1010,10000]
 	ApplicableRange []*float32 `json:"ApplicableRange,omitempty" xml:"ApplicableRange,omitempty" type:"Repeated"`
 	// The quota adjustment type.
 	//
@@ -179,7 +183,7 @@ type ListProductQuotasResponseBodyQuotas struct {
 	//
 	// ecs
 	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
-	// The ID of the quota.
+	// The quota ID.
 	//
 	// example:
 	//
@@ -223,7 +227,11 @@ type ListProductQuotasResponseBodyQuotas struct {
 	//
 	// AMOUNT
 	QuotaUnit *string `json:"QuotaUnit,omitempty" xml:"QuotaUnit,omitempty"`
-	// The range of quota values supported by the current quota item, which serves as a reference when you configure a quota template.
+	// The range of quota values supported by the current quota item. This range is for reference when you configure a quota template.
+	//
+	// example:
+	//
+	// [1009,10000]
 	SupportedRange []*float32 `json:"SupportedRange,omitempty" xml:"SupportedRange,omitempty" type:"Repeated"`
 	// The quota value.
 	//
@@ -507,7 +515,7 @@ type ListProductQuotasResponseBodyQuotasPeriod struct {
 	//
 	// example:
 	//
-	// {}
+	// 1
 	PeriodValue *int32 `json:"PeriodValue,omitempty" xml:"PeriodValue,omitempty"`
 }
 
@@ -622,14 +630,18 @@ type ListProductQuotasResponseBodyQuotasUsageMetric struct {
 	// Format: a collection of `key:value` pairs. Example:
 	//
 	// `{"productCode":"***","metricKey":"***","regionId":"***","label":"***"}`.
+	//
+	// example:
+	//
+	// {"productCode":"ecs"}
 	MetricDimensions map[string]*string `json:"MetricDimensions,omitempty" xml:"MetricDimensions,omitempty"`
-	// The name of the CloudMonitor monitoring metric.
+	// The CloudMonitor metric name.
 	//
 	// example:
 	//
 	// Usage
 	MetricName *string `json:"MetricName,omitempty" xml:"MetricName,omitempty"`
-	// The namespace of the CloudMonitor monitoring data.
+	// The CloudMonitor monitoring data namespace.
 	//
 	// example:
 	//

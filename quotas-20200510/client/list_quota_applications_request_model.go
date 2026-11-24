@@ -30,17 +30,17 @@ type iListQuotaApplicationsRequest interface {
 type ListQuotaApplicationsRequest struct {
 	// The quota dimensions.
 	//
-	// The dimensions are properties of a quota item. A combination of dimensions (Dimensions) and a quota ID (QuotaActionCode) uniquely identifies a quota item.
+	// The properties of the quota item. The combination of dimensions and the quota ID (QuotaActionCode) uniquely identifies a quota item.
 	//
-	// > Some cloud services require dimensions. You can call [ListProductQuotaDimensions](~~ListProductQuotaDimensions~~) to query the quota dimensions supported by a cloud service. The `Requisite` response parameter indicates whether a dimension is required.
+	// > The dimensions are required for some cloud services. You can call the [ListProductQuotaDimensions](~~ListProductQuotaDimensions~~) operation to query the quota dimensions supported by a cloud service. The Requisite response parameter indicates whether a dimension is required.
 	Dimensions []*ListQuotaApplicationsRequestDimensions `json:"Dimensions,omitempty" xml:"Dimensions,omitempty" type:"Repeated"`
-	// The keyword for searching quota increase applications.
+	// The search keyword for quota increase applications.
 	//
 	// example:
 	//
 	// Cluster
 	KeyWord *string `json:"KeyWord,omitempty" xml:"KeyWord,omitempty"`
-	// The maximum number of records to return in this query.
+	// The maximum number of entries to return for the current query.
 	//
 	// Valid values: 1 to 200. Default value: 30.
 	//
@@ -48,13 +48,13 @@ type ListQuotaApplicationsRequest struct {
 	//
 	// 1
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The token that marks the position from which you want to start the query. Leave this parameter empty to query from the beginning.
+	// The pagination token that specifies the start position of the query. An empty value indicates that the query starts from the beginning.
 	//
 	// example:
 	//
 	// 1
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The abbreviation of the cloud service name.
+	// The abbreviation of the cloud service.
 	//
 	// example:
 	//
@@ -66,13 +66,13 @@ type ListQuotaApplicationsRequest struct {
 	//
 	// q_i5uzm3
 	QuotaActionCode *string `json:"QuotaActionCode,omitempty" xml:"QuotaActionCode,omitempty"`
-	// The quota category. Valid values:
+	// The quota type. Valid values:
 	//
-	// - CommonQuota: general quota.
+	// - CommonQuota: General quota.
 	//
 	// - FlowControl: API rate limit.
 	//
-	// - WhiteListLabel: privilege.
+	// - WhiteListLabel: Privilege.
 	//
 	// example:
 	//
@@ -87,6 +87,8 @@ type ListQuotaApplicationsRequest struct {
 	// - Process: Under review.
 	//
 	// - Cancel: Closed.
+	//
+	// - Withdrawn: Withdrawn.
 	//
 	// example:
 	//
@@ -190,7 +192,7 @@ func (s *ListQuotaApplicationsRequest) Validate() error {
 type ListQuotaApplicationsRequestDimensions struct {
 	// The key of the quota dimension.
 	//
-	// > `Dimensions.N.Key` and `Dimensions.N.Value` must be specified together. The valid values of N depend on the number of dimensions supported by the cloud service. You can call [ListProductQuotaDimensions](~~ListProductQuotaDimensions~~) to query the quota dimensions supported by a cloud service. The length of the returned array is the value of N.
+	// > Dimensions.N.Key and Dimensions.N.Value must be specified at the same time. The value range of N depends on the number of dimensions supported by the corresponding cloud service. You can call the [ListProductQuotaDimensions](~~ListProductQuotaDimensions~~) operation to query the quota dimensions supported by the cloud service. The length of the returned array is the value of N.
 	//
 	// example:
 	//
@@ -198,7 +200,7 @@ type ListQuotaApplicationsRequestDimensions struct {
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	// The value of the quota dimension.
 	//
-	// > `Dimensions.N.Key` and `Dimensions.N.Value` must be specified together. The valid values of N depend on the number of dimensions supported by the cloud service. You can call [ListProductQuotaDimensions](~~ListProductQuotaDimensions~~) to query the quota dimensions supported by a cloud service. The length of the returned array is the value of N.
+	// > Dimensions.N.Key and Dimensions.N.Value must be specified at the same time. The value range of N depends on the number of dimensions supported by the corresponding cloud service. You can call the [ListProductQuotaDimensions](~~ListProductQuotaDimensions~~) operation to query the quota dimensions supported by the cloud service. The length of the returned array is the value of N.
 	//
 	// example:
 	//

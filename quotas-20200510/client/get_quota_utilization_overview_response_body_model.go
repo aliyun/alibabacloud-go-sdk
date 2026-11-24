@@ -28,31 +28,56 @@ type iGetQuotaUtilizationOverviewResponseBody interface {
 }
 
 type GetQuotaUtilizationOverviewResponseBody struct {
+	// The error code.
+	//
 	// example:
 	//
 	// RAM.PERMISSION.DENIED
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
+	// The error message.
+	//
 	// example:
 	//
 	// You are not authorized to do this action or the API input parameter is invalid.
 	ErrorMsg *string `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
+	// The data generation time or statistical date. For general quotas, the time is in UTC and formatted as yyyy-MM-dd\\"T\\"HH:mm:ss\\"Z\\". For API rate limits, the format is yyyy-MM-dd.
+	//
 	// example:
 	//
 	// 2026-10-21T07:30:10Z
 	GeneratedAt *string `json:"GeneratedAt,omitempty" xml:"GeneratedAt,omitempty"`
+	// The supplementary description of the report status. Use Status to determine the status.
+	//
 	// example:
 	//
 	// Quota utilization data is available.
-	Message       *string                                               `json:"Message,omitempty" xml:"Message,omitempty"`
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The quota overview data.
 	QuotaOverview *GetQuotaUtilizationOverviewResponseBodyQuotaOverview `json:"QuotaOverview,omitempty" xml:"QuotaOverview,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 920D8A47-26BB-49FA-A09F-F98D7DAA55F3
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The query result status of the quota utilization report. Valid values:
+	//
+	// - AVAILABLE: The data is available.
+	//
+	// - GENERATING: A new report is being generated. If an unexpired historical report exists, the most recent historical report is returned.
+	//
+	// - UNAVAILABLE: No general quota report is available. You must call StartQuotaUtilizationReport to start report generation first.
+	//
 	// example:
 	//
 	// AVAILABLE
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// Indicates whether the call is successful. Valid values:
+	//
+	// - true: The call is successful.
+	//
+	// - false: The call fails.
+	//
 	// example:
 	//
 	// True
@@ -149,8 +174,11 @@ func (s *GetQuotaUtilizationOverviewResponseBody) Validate() error {
 }
 
 type GetQuotaUtilizationOverviewResponseBodyQuotaOverview struct {
-	InUse         *GetQuotaUtilizationOverviewResponseBodyQuotaOverviewInUse         `json:"InUse,omitempty" xml:"InUse,omitempty" type:"Struct"`
+	// The quotas in use.
+	InUse *GetQuotaUtilizationOverviewResponseBodyQuotaOverviewInUse `json:"InUse,omitempty" xml:"InUse,omitempty" type:"Struct"`
+	// The quotas with a utilization rate exceeding 80%.
 	Over80Percent *GetQuotaUtilizationOverviewResponseBodyQuotaOverviewOver80Percent `json:"Over80Percent,omitempty" xml:"Over80Percent,omitempty" type:"Struct"`
+	// The quotas with a utilization rate exceeding 95%.
 	Over95Percent *GetQuotaUtilizationOverviewResponseBodyQuotaOverviewOver95Percent `json:"Over95Percent,omitempty" xml:"Over95Percent,omitempty" type:"Struct"`
 }
 
@@ -209,14 +237,20 @@ func (s *GetQuotaUtilizationOverviewResponseBodyQuotaOverview) Validate() error 
 }
 
 type GetQuotaUtilizationOverviewResponseBodyQuotaOverviewInUse struct {
+	// The number of adjustable quotas in use.
+	//
 	// example:
 	//
 	// 50
 	Adjustable *int64 `json:"Adjustable,omitempty" xml:"Adjustable,omitempty"`
+	// The adjustment rate of quotas in use, without the percentage sign.
+	//
 	// example:
 	//
 	// 50
 	AdjustableRatio *float64 `json:"AdjustableRatio,omitempty" xml:"AdjustableRatio,omitempty"`
+	// The total number of quotas in use.
+	//
 	// example:
 	//
 	// 100
@@ -263,14 +297,20 @@ func (s *GetQuotaUtilizationOverviewResponseBodyQuotaOverviewInUse) Validate() e
 }
 
 type GetQuotaUtilizationOverviewResponseBodyQuotaOverviewOver80Percent struct {
+	// The number of adjustable quotas with a utilization rate exceeding 80%.
+	//
 	// example:
 	//
 	// 50
 	Adjustable *int64 `json:"Adjustable,omitempty" xml:"Adjustable,omitempty"`
+	// The adjustment rate of quotas with a utilization rate exceeding 80%, without the percentage sign.
+	//
 	// example:
 	//
 	// 50
 	AdjustableRatio *float64 `json:"AdjustableRatio,omitempty" xml:"AdjustableRatio,omitempty"`
+	// The number of quotas with a utilization rate exceeding 80%.
+	//
 	// example:
 	//
 	// 100
@@ -317,14 +357,20 @@ func (s *GetQuotaUtilizationOverviewResponseBodyQuotaOverviewOver80Percent) Vali
 }
 
 type GetQuotaUtilizationOverviewResponseBodyQuotaOverviewOver95Percent struct {
+	// The number of adjustable quotas with a utilization rate exceeding 95%.
+	//
 	// example:
 	//
 	// 50
 	Adjustable *int64 `json:"Adjustable,omitempty" xml:"Adjustable,omitempty"`
+	// The adjustment rate of quotas with a utilization rate exceeding 95%, without the percentage sign.
+	//
 	// example:
 	//
 	// 50
 	AdjustableRatio *float64 `json:"AdjustableRatio,omitempty" xml:"AdjustableRatio,omitempty"`
+	// The number of quotas with a utilization rate exceeding 95%.
+	//
 	// example:
 	//
 	// 100

@@ -34,7 +34,7 @@ type iListProductQuotasRequest interface {
 type ListProductQuotasRequest struct {
 	// The quota dimensions.
 	Dimensions []*ListProductQuotasRequestDimensions `json:"Dimensions,omitempty" xml:"Dimensions,omitempty" type:"Repeated"`
-	// The code of the dimension group.
+	// The dimension group code.
 	//
 	// example:
 	//
@@ -48,7 +48,7 @@ type ListProductQuotasRequest struct {
 	//
 	// security
 	KeyWord *string `json:"KeyWord,omitempty" xml:"KeyWord,omitempty"`
-	// The maximum number of entries to return in a single request.
+	// The maximum number of entries to return for the current query.
 	//
 	// Valid values: 1 to 100. Default value: 30.
 	//
@@ -56,19 +56,19 @@ type ListProductQuotasRequest struct {
 	//
 	// 30
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The token used to retrieve the next page of results.
+	// The token for the next query.
 	//
-	// - Leave this parameter empty for the first request or when no more results are available.
+	// - For the first query or when no subsequent query is required, you do not need to specify this parameter.
 	//
-	// - If more results are available, set this parameter to the NextToken value returned when you invoke the previous API call.
+	// - If a subsequent query is required, set the value to the NextToken value returned by the previous API call.
 	//
 	// example:
 	//
 	// AAAAAd****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The abbreviation of the cloud service.
+	// The abbreviated name of the cloud service.
 	//
-	// > For more information about how to obtain the abbreviation of a cloud service, see `ProductCode` in [ListProducts](https://help.aliyun.com/document_detail/440555.html).
+	// > For more information about how to obtain the abbreviated name of a cloud service, see `ProductCode` in [ListProducts](https://help.aliyun.com/document_detail/440555.html).
 	//
 	// This parameter is required.
 	//
@@ -76,7 +76,7 @@ type ListProductQuotasRequest struct {
 	//
 	// ecs
 	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
-	// The ID of the quota.
+	// The quota ID.
 	//
 	// example:
 	//
@@ -92,7 +92,7 @@ type ListProductQuotasRequest struct {
 	QuotaCategory *string `json:"QuotaCategory,omitempty" xml:"QuotaCategory,omitempty"`
 	// The sorting method supported by the quota.
 	//
-	// > This parameter applies only to Elastic Computing Service server instance type quotas (ecs-spec). If no Settings are specified, it is left empty.
+	// > This parameter applies only to Elastic Computing Service server instance type quotas (ecs-spec). If the Settings are not specified, it is left empty.
 	//
 	// example:
 	//
@@ -100,7 +100,7 @@ type ListProductQuotasRequest struct {
 	SortField *string `json:"SortField,omitempty" xml:"SortField,omitempty"`
 	// The sorting method supported by the quota.
 	//
-	// > This parameter applies only to Elastic Computing Service server instance type quotas (ecs-spec). If no Settings are specified, it is left empty.
+	// > This parameter applies only to Elastic Computing Service server instance type quotas (ecs-spec). If the Settings are not specified, it is left empty.
 	//
 	// example:
 	//

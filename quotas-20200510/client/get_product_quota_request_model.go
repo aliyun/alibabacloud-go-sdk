@@ -20,17 +20,17 @@ type iGetProductQuotaRequest interface {
 type GetProductQuotaRequest struct {
 	// The quota dimensions.
 	//
-	// The properties of the quota item. The combination of dimensions and QuotaActionCode determines a unique quota item.
+	// The properties of the quota item. The combination of dimensions and the quota ID (QuotaActionCode) uniquely identifies a quota item.
 	//
-	// > Dimensions are required for some cloud services. You can call the [ListProductQuotaDimensions](~~ListProductQuotaDimensions~~) operation to query the quota dimensions of a cloud service and check whether a dimension is required. The Requisite response parameter indicates whether the dimension is required.
+	// > Dimensions are required for some cloud services. You can call the [ListProductQuotaDimensions](~~ListProductQuotaDimensions~~) operation to query the quotas of a cloud service and check whether dimensions are required. The Requisite response parameter indicates whether a dimension is required.
 	//
 	// example:
 	//
-	// {\\"regionId\\":\\"cn-beijing\\"}
+	// [{"Key":"regionId","Value":"cn-beijing"}]
 	Dimensions []*GetProductQuotaRequestDimensions `json:"Dimensions,omitempty" xml:"Dimensions,omitempty" type:"Repeated"`
 	// The abbreviated name of the cloud service.
 	//
-	// > For more information about how to obtain the abbreviated name of a cloud service, see the ProductCode parameter in [ListProducts](https://help.aliyun.com/document_detail/440555.html).
+	// > For more information about how to obtain the abbreviated name of a cloud service, see ProductCode in [ListProducts](https://help.aliyun.com/document_detail/440555.html).
 	//
 	// This parameter is required.
 	//
@@ -40,7 +40,7 @@ type GetProductQuotaRequest struct {
 	ProductCode *string `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
 	// The quota ID.
 	//
-	// > For more information about how to obtain the quota ID of a specified cloud service, see the QuotaActionCode parameter in [ListProductQuotas](https://help.aliyun.com/document_detail/440554.html).
+	// > For more information about how to obtain the quota ID of a specified cloud service, see QuotaActionCode in [ListProductQuotas](https://help.aliyun.com/document_detail/440554.html).
 	//
 	// This parameter is required.
 	//
