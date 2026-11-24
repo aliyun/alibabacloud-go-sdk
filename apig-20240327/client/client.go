@@ -7311,6 +7311,10 @@ func (client *Client) GetConsumerAccessOverviewWithOptions(consumerId *string, r
 		query["gatewayId"] = request.GatewayId
 	}
 
+	if !dara.IsNil(request.IncludeModelTpm) {
+		query["includeModelTpm"] = request.IncludeModelTpm
+	}
+
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
 		Query:   openapiutil.Query(query),
@@ -9179,6 +9183,66 @@ func (client *Client) GetModelGroup(modelGroupId *string, request *GetModelGroup
 	headers := make(map[string]*string)
 	_result = &GetModelGroupResponse{}
 	_body, _err := client.GetModelGroupWithOptions(modelGroupId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the token throttling rules for a model.
+//
+// @param request - GetModelTokenRateLimitRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetModelTokenRateLimitResponse
+func (client *Client) GetModelTokenRateLimitWithOptions(gatewayId *string, modelId *string, request *GetModelTokenRateLimitRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetModelTokenRateLimitResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetModelTokenRateLimit"),
+		Version:     dara.String("2024-03-27"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/v1/gateways/" + dara.PercentEncode(dara.StringValue(gatewayId)) + "/model-tpm/" + dara.PercentEncode(dara.StringValue(modelId))),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetModelTokenRateLimitResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the token throttling rules for a model.
+//
+// @param request - GetModelTokenRateLimitRequest
+//
+// @return GetModelTokenRateLimitResponse
+func (client *Client) GetModelTokenRateLimit(gatewayId *string, modelId *string, request *GetModelTokenRateLimitRequest) (_result *GetModelTokenRateLimitResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &GetModelTokenRateLimitResponse{}
+	_body, _err := client.GetModelTokenRateLimitWithOptions(gatewayId, modelId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -12573,11 +12637,11 @@ func (client *Client) ListGatewayQuotaRules(gatewayId *string, request *ListGate
 
 // Summary:
 //
-// Queries historical WebSocket events delivered by a dedicated Professional AI gateway to the Simple Log Service (SLS) of the current user. Supports a time range of up to 31 days, conditional filtering, and cursor-based pagination. The results do not represent the online connection status.
+// Queries the historical WebSocket events delivered by a dedicated Professional AI gateway to the Simple Log Service (SLS) of the current user. Supports a time range of up to 31 days, conditional filtering, and cursor-based pagination. The results do not represent the online connection status.
 //
 // Description:
 //
-// Reads historical events delivered by the dedicated Professional AI gateway of the current user to the user\\"s SLS. Standard user log delivery and corresponding indexes must be enabled. The query time range is a left-closed and right-open interval, with a span of no more than 31 days and cannot include future time. Uses maxResults and nextToken for cursor-based pagination. The results are not an online connection directory, and missing logs do not indicate that no calls occurred.
+// Retrieves the historical events delivered by the dedicated Professional AI gateway of the current user to Simple Log Service (SLS). Standard user log delivery and the corresponding indexes must be enabled. The query time range is a left-closed and right-open interval. The time span cannot exceed 31 days and cannot include future time. Uses maxResults and nextToken for cursor-based pagination. The results do not represent an online connection directory, and missing logs do not indicate that no calls occurred.
 //
 // @param request - ListGatewayWebsocketEventsRequest
 //
@@ -12656,11 +12720,11 @@ func (client *Client) ListGatewayWebsocketEventsWithOptions(gatewayId *string, r
 
 // Summary:
 //
-// Queries historical WebSocket events delivered by a dedicated Professional AI gateway to the Simple Log Service (SLS) of the current user. Supports a time range of up to 31 days, conditional filtering, and cursor-based pagination. The results do not represent the online connection status.
+// Queries the historical WebSocket events delivered by a dedicated Professional AI gateway to the Simple Log Service (SLS) of the current user. Supports a time range of up to 31 days, conditional filtering, and cursor-based pagination. The results do not represent the online connection status.
 //
 // Description:
 //
-// Reads historical events delivered by the dedicated Professional AI gateway of the current user to the user\\"s SLS. Standard user log delivery and corresponding indexes must be enabled. The query time range is a left-closed and right-open interval, with a span of no more than 31 days and cannot include future time. Uses maxResults and nextToken for cursor-based pagination. The results are not an online connection directory, and missing logs do not indicate that no calls occurred.
+// Retrieves the historical events delivered by the dedicated Professional AI gateway of the current user to Simple Log Service (SLS). Standard user log delivery and the corresponding indexes must be enabled. The query time range is a left-closed and right-open interval. The time span cannot exceed 31 days and cannot include future time. Uses maxResults and nextToken for cursor-based pagination. The results do not represent an online connection directory, and missing logs do not indicate that no calls occurred.
 //
 // @param request - ListGatewayWebsocketEventsRequest
 //
@@ -19722,7 +19786,7 @@ func (client *Client) UpdateLogicalModel(logicalModelId *string, request *Update
 //
 // Description:
 //
-// Only sources of the **Container Service*	- type are allowed to update the configurations of listening Ingresses.
+// Only sources of the **container service*	- type are allowed to update the configurations of Ingress listeners.
 //
 // @param request - UpdateMcpServerRequest
 //
@@ -19821,7 +19885,7 @@ func (client *Client) UpdateMcpServerWithOptions(mcpServerId *string, request *U
 //
 // Description:
 //
-// Only sources of the **Container Service*	- type are allowed to update the configurations of listening Ingresses.
+// Only sources of the **container service*	- type are allowed to update the configurations of Ingress listeners.
 //
 // @param request - UpdateMcpServerRequest
 //
@@ -20105,6 +20169,80 @@ func (client *Client) UpdateModelGroup(modelGroupId *string, request *UpdateMode
 	headers := make(map[string]*string)
 	_result = &UpdateModelGroupResponse{}
 	_body, _err := client.UpdateModelGroupWithOptions(modelGroupId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Modifies the token throttling rules for a model.
+//
+// @param request - UpdateModelTokenRateLimitRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateModelTokenRateLimitResponse
+func (client *Client) UpdateModelTokenRateLimitWithOptions(gatewayId *string, modelId *string, request *UpdateModelTokenRateLimitRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateModelTokenRateLimitResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Consumers) {
+		body["consumers"] = request.Consumers
+	}
+
+	if !dara.IsNil(request.ExpectedRevision) {
+		body["expectedRevision"] = request.ExpectedRevision
+	}
+
+	if !dara.IsNil(request.GlobalTpm) {
+		body["globalTpm"] = request.GlobalTpm
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateModelTokenRateLimit"),
+		Version:     dara.String("2024-03-27"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/v1/gateways/" + dara.PercentEncode(dara.StringValue(gatewayId)) + "/model-tpm/" + dara.PercentEncode(dara.StringValue(modelId))),
+		Method:      dara.String("PUT"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateModelTokenRateLimitResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Modifies the token throttling rules for a model.
+//
+// @param request - UpdateModelTokenRateLimitRequest
+//
+// @return UpdateModelTokenRateLimitResponse
+func (client *Client) UpdateModelTokenRateLimit(gatewayId *string, modelId *string, request *UpdateModelTokenRateLimitRequest) (_result *UpdateModelTokenRateLimitResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &UpdateModelTokenRateLimitResponse{}
+	_body, _err := client.UpdateModelTokenRateLimitWithOptions(gatewayId, modelId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}

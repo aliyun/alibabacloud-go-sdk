@@ -11,6 +11,8 @@ type iGetConsumerAccessOverviewRequest interface {
 	GoString() string
 	SetGatewayId(v string) *GetConsumerAccessOverviewRequest
 	GetGatewayId() *string
+	SetIncludeModelTpm(v bool) *GetConsumerAccessOverviewRequest
+	GetIncludeModelTpm() *bool
 }
 
 type GetConsumerAccessOverviewRequest struct {
@@ -22,6 +24,12 @@ type GetConsumerAccessOverviewRequest struct {
 	//
 	// gw-123456
 	GatewayId *string `json:"gatewayId,omitempty" xml:"gatewayId,omitempty"`
+	// Specifies whether to also query the model TPM limits. Default value: false. If set to true, modelTpmLimits is returned for dedicated instances.
+	//
+	// example:
+	//
+	// true
+	IncludeModelTpm *bool `json:"includeModelTpm,omitempty" xml:"includeModelTpm,omitempty"`
 }
 
 func (s GetConsumerAccessOverviewRequest) String() string {
@@ -36,8 +44,17 @@ func (s *GetConsumerAccessOverviewRequest) GetGatewayId() *string {
 	return s.GatewayId
 }
 
+func (s *GetConsumerAccessOverviewRequest) GetIncludeModelTpm() *bool {
+	return s.IncludeModelTpm
+}
+
 func (s *GetConsumerAccessOverviewRequest) SetGatewayId(v string) *GetConsumerAccessOverviewRequest {
 	s.GatewayId = &v
+	return s
+}
+
+func (s *GetConsumerAccessOverviewRequest) SetIncludeModelTpm(v bool) *GetConsumerAccessOverviewRequest {
+	s.IncludeModelTpm = &v
 	return s
 }
 

@@ -26,7 +26,7 @@ type ListGatewayWebsocketEventsResponseBody struct {
 	//
 	// Ok
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// The query result.
+	// The query results.
 	//
 	// example:
 	//
@@ -38,7 +38,7 @@ type ListGatewayWebsocketEventsResponseBody struct {
 	//
 	// The specified gateway does not exist.
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
@@ -118,13 +118,13 @@ type ListGatewayWebsocketEventsResponseBodyData struct {
 	//
 	// []
 	Items []map[string]interface{} `json:"items,omitempty" xml:"items,omitempty" type:"Repeated"`
-	// The actual number of entries per page used for the current request. The default value is 50 and the maximum value is 100.
+	// The actual number of results per page.
 	//
 	// example:
 	//
 	// 50
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
-	// The encrypted cursor returned when there is a next page. This parameter is empty for the last page. The cursor is valid for 10 minutes and is bound to the user, gateway, time range, and filters. You can adjust maxResults for subsequent pages. SLS snapshot isolation is not guaranteed.
+	// The pagination token for the next page.
 	//
 	// example:
 	//

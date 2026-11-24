@@ -44,15 +44,15 @@ type UpdateMcpServerRequest struct {
 	BackendConfig *UpdateMcpServerRequestBackendConfig `json:"backendConfig,omitempty" xml:"backendConfig,omitempty" type:"Struct"`
 	// The creation source type. Valid values:
 	//
-	// - ApiGatewayHttpToMCP: API Gateway-managed HTTP-to-MCP
+	// - ApiGatewayHttpToMCP: Gateway-hosted HTTP-to-MCP
 	//
-	// - ApiGatewayProxyMcpHosting: API Gateway-managed direct MCP proxy
+	// - ApiGatewayProxyMcpHosting: Gateway-hosted direct MCP proxy
 	//
-	// - ApiGatewayAssembly: API Gateway MCP assembly
+	// - ApiGatewayAssembly: Gateway MCP assembly
 	//
-	// - NacosHttpToMCP: API Gateway-managed Nacos-synchronized HTTP-to-MCP
+	// - NacosHttpToMCP: Gateway-hosted Nacos-synchronized HTTP-to-MCP
 	//
-	// - NacosMcpHosting: API Gateway-managed Nacos-synchronized direct MCP proxy
+	// - NacosMcpHosting: Gateway-hosted Nacos-synchronized direct MCP proxy
 	//
 	// example:
 	//
@@ -74,7 +74,15 @@ type UpdateMcpServerRequest struct {
 	ExposedUriPath *string `json:"exposedUriPath,omitempty" xml:"exposedUriPath,omitempty"`
 	// The list of canary release MCP server route configurations.
 	GrayMcpServerConfigs []*UpdateMcpServerRequestGrayMcpServerConfigs `json:"grayMcpServerConfigs,omitempty" xml:"grayMcpServerConfigs,omitempty" type:"Repeated"`
-	// The MCP service description.
+	// The MCP service instructions. Only gateway-hosted HTTP-to-MCP services of AI Gateway Professional Edition are supported. The maximum length is 2,048 UTF-8 bytes.
+	//
+	// - Passing a non-empty string replaces the saved instructions.
+	//
+	// - Omitting this field retains the saved instructions.
+	//
+	// - Passing an empty string `""` clears the saved instructions.
+	//
+	// After you republish the MCP service, newly established MCP connections can read the updated instructions in `result.instructions` of the `initialize` response. If cleared, the response omits `instructions`.
 	//
 	// example:
 	//
@@ -391,13 +399,13 @@ type UpdateMcpServerRequestBackendConfigServices struct {
 	//
 	// 8080
 	Port *int32 `json:"port,omitempty" xml:"port,omitempty"`
-	// The protocol. Valid values:
+	// The service protocol. Valid values:
 	//
-	// - TCP.
+	// - TCP: TCP
 	//
-	// - HTTP.
+	// - HTTP: HTTP
 	//
-	// - DUBBO.
+	// - DUBBO: Dubbo
 	//
 	// example:
 	//
@@ -599,7 +607,7 @@ type UpdateMcpServerRequestGrayMcpServerConfigsBackendConfigServices struct {
 	//
 	// 8080
 	Port *int32 `json:"port,omitempty" xml:"port,omitempty"`
-	// The protocol.
+	// The service protocol.
 	//
 	// example:
 	//
@@ -683,7 +691,7 @@ func (s *UpdateMcpServerRequestGrayMcpServerConfigsBackendConfigServices) Valida
 }
 
 type UpdateMcpServerRequestMcpServerConfig struct {
-	// The MCP server configurations. This parameter is mutually exclusive with swaggerConfig.
+	// The MCP server configurations. This parameter is mutually exclusive with the swaggerConfig parameter.
 	//
 	// example:
 	//
