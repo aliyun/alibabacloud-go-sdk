@@ -26,29 +26,39 @@ type iTagResourcesRequest interface {
 type TagResourcesRequest struct {
 	// The client token that is used to ensure the idempotence of the request.
 	//
-	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
+	// Generate a parameter value from your client to ensure uniqueness across different requests. ClientToken supports only ASCII characters.
 	//
-	// >  If you do not specify this parameter, the system automatically uses the **request ID*	- as the **client token**. The **request ID*	- may be different for each request.
+	// > If you do not specify this parameter, the system uses the **RequestId*	- of the API request as the **ClientToken**. The **RequestId*	- may be different for each API request.
 	//
 	// example:
 	//
 	// 02fb3da4-130e-11e9-8e44-00****
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// Specifies whether to perform only a dry run, without performing the actual request. Valid values:
+	// Specifies whether to perform only a dry run. Valid values:
 	//
-	// 	- **true**: performs only a dry run.
+	// - **true**: performs a dry run without modifying EPS resources.
 	//
-	// 	- **false*	- (default): performs a dry run and performs the actual request.
+	// - **false*	- (default): sends a normal request.
 	//
 	// example:
 	//
 	// false
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	// The ECR IDs.
+	// The list of resource instance IDs.
+	//
+	// You can specify up to 20 resources.
 	//
 	// This parameter is required.
 	ResourceId []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
-	// The resource type. Set the value to **EXPRESSCONNECTROUTER**.
+	// The resource type. Valid values:
+	//
+	// - **EXPRESSCONNECTROUTER**: an Express Connect Router (ECR) instance.
+	//
+	// - **EXPRESSCONNECTROUTERVPCASSOCIATION**: an associate relationship between an ECR and a VPC.
+	//
+	// - **EXPRESSCONNECTROUTERTRASSOCIATION**: an associate relationship between an ECR and a transit router.
+	//
+	// - **ECRFLOWLOG**: an ECR flow log.
 	//
 	// This parameter is required.
 	//
@@ -56,7 +66,7 @@ type TagResourcesRequest struct {
 	//
 	// EXPRESSCONNECTROUTER
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// The tags to be added.
+	// The list of tags to bind.
 	//
 	// This parameter is required.
 	Tag     []*TagResourcesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
@@ -139,19 +149,19 @@ func (s *TagResourcesRequest) Validate() error {
 }
 
 type TagResourcesRequestTag struct {
-	// The tag key.
+	// The tag key of the resource.
 	//
-	// The tag key cannot be an empty string. The tag key can be up to 64 characters in length and cannot contain `http://` or `https://`. The tag key cannot start with `aliyun` or `acs:`.
+	// This parameter cannot be an empty string once specified. The tag key can be up to 64 characters in length and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
 	//
-	// You can specify up to 20 tag keys in each call.
+	// You can specify up to 20 tag keys in a single call.
 	//
 	// example:
 	//
 	// TestKey
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The tag value. The tag value can be up to 128 characters in length and cannot contain `http://` or `https://`. The tag value cannot start with `acs:` or `aliyun`. The tag value can be an empty string.
+	// The tag value. The tag value can be up to 128 characters in length and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`. Once specified, the value can be an empty string.
 	//
-	// You can add up to 20 tag values in each call.
+	// You can specify up to 20 tag values in a single call.
 	//
 	// example:
 	//

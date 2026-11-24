@@ -38,37 +38,39 @@ type iDescribeInstanceGrantedToExpressConnectRouterRequest interface {
 }
 
 type DescribeInstanceGrantedToExpressConnectRouterRequest struct {
-	// The type of the user account. Valid values:
+	// The type of the caller. Valid values:
 	//
-	// 	- **sub**: a Resource Access Management (RAM) user.
+	// - ECR
 	//
-	// 	- **parent**: an Alibaba Cloud account.
+	// - OTHER
+	//
+	// Default value: ECR.
 	//
 	// example:
 	//
-	// OTHER
+	// ECR
 	CallerType *string `json:"CallerType,omitempty" xml:"CallerType,omitempty"`
 	// The client token that is used to ensure the idempotence of the request.
 	//
-	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
+	// You can generate the parameter value from your client to ensure that the value is unique across different requests. The ClientToken parameter supports only ASCII characters.
 	//
-	// >  If you do not specify this parameter, the system automatically uses the **request ID*	- as the **client token**. The **request ID*	- may be different for each request.
+	// > If you do not specify this parameter, the system automatically uses the **RequestId*	- of the API request as the **ClientToken**. The **RequestId*	- of each API request is different.
 	//
 	// example:
 	//
 	// 02fb3da4-130e-11e9-8e44-00****
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// Specifies whether to perform only a dry run, without performing the actual request. Valid values:
+	// Specifies whether to perform a dry run. Valid values:
 	//
-	// 	- **true**: performs only a dry run.
+	// - **true**: performs a dry run. The request is checked but EPS resources are not modified.
 	//
-	// 	- **false*	- (default): performs a dry run and performs the actual request.
+	// - **false*	- (default): sends a normal request.
 	//
 	// example:
 	//
 	// true
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	// The ECR ID.
+	// The instance ID of the Express Connect Router (ECR).
 	//
 	// This parameter is required.
 	//
@@ -76,19 +78,19 @@ type DescribeInstanceGrantedToExpressConnectRouterRequest struct {
 	//
 	// ecr-mezk2idmsd0vx2****
 	EcrId *string `json:"EcrId,omitempty" xml:"EcrId,omitempty"`
-	// The ID of the network instance.
+	// The ID of the authorized instance.
 	//
 	// example:
 	//
 	// vbr-j6cwxhgg0s5nuephp****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The ID of the Alibaba Cloud account that owns the network instance.
+	// The ID of the Alibaba Cloud account to which the authorized network instance belongs.
 	//
 	// example:
 	//
-	// 129845258050****
+	// 1298452580502345
 	InstanceOwnerId *int64 `json:"InstanceOwnerId,omitempty" xml:"InstanceOwnerId,omitempty"`
-	// The region ID of the network instance.
+	// The region where the authorized network instance resides.
 	//
 	// example:
 	//
@@ -96,37 +98,37 @@ type DescribeInstanceGrantedToExpressConnectRouterRequest struct {
 	InstanceRegionId *string `json:"InstanceRegionId,omitempty" xml:"InstanceRegionId,omitempty"`
 	// The type of the network instance. Valid values:
 	//
-	// 	- **VBR**
+	// - **VBR**: VBR instance.
 	//
-	// 	- **VPC**
+	// - **VPC**: VPC instance.
 	//
 	// example:
 	//
 	// VBR
 	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
-	// The maximum number of entries to read. Valid values: 1 to 2147483647. Default value: 20.
+	// The maximum number of entries to return. Valid values: 1 to 2147483647. Default value: 20.
 	//
 	// example:
 	//
-	// 6
+	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The pagination token that is used in the next request to retrieve a new page of results. Valid values:
+	// The pagination token. Valid values:
 	//
-	// 	- You do not need to specify this parameter for the first request.
+	// - If this is the first query or no next query is available, leave this parameter empty.
 	//
-	// 	- You must specify the token that is obtained from the previous query as the value of NextToken.
+	// - If a next query is available, set the value to the NextToken value returned by the previous API call.
 	//
 	// example:
 	//
 	// gAAAAABkyGzFbZR2NnxnyVk0EiL7F3qMBtBim8Es0mugRT3qb8yEHAMaHGanzuaHUmiEq9QRmok0RgxJAINBOJZa5KPjopEu_Q==
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The ID of the resource group to which the network instance belongs.
+	// The ID of the resource group to which the instance belongs.
 	//
 	// example:
 	//
 	// rg-aek2tsvbnfe****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The tags.
+	// The list of tags.
 	TagModels []*DescribeInstanceGrantedToExpressConnectRouterRequestTagModels `json:"TagModels,omitempty" xml:"TagModels,omitempty" type:"Repeated"`
 	Version   *string                                                          `json:"Version,omitempty" xml:"Version,omitempty"`
 }
@@ -270,17 +272,17 @@ func (s *DescribeInstanceGrantedToExpressConnectRouterRequest) Validate() error 
 }
 
 type DescribeInstanceGrantedToExpressConnectRouterRequestTagModels struct {
-	// The tag key. You can specify up to 20 tag keys. The tag key cannot be an empty string.
+	// The tag key of the resource. You can specify up to 20 tag keys. If you specify this parameter, you cannot specify an empty string.
 	//
-	// The tag key can be up to 128 characters in length and cannot contain `http://` or `https://`. The tag key cannot start with `acs:` or `aliyun`.
+	// The tag key can be up to 128 characters in length. It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
 	//
 	// example:
 	//
 	// key
 	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
-	// The tag value. You can specify up to 20 tag values. The tag value cannot be an empty string.
+	// The tag value of the resource. You can specify up to 20 tag values. If you specify this parameter, you cannot specify an empty string.
 	//
-	// The tag value can be up to 128 characters in length and cannot contain `http://` or `https://`. The tag value cannot start with `acs:` or `aliyun`.
+	// The tag value can be up to 128 characters in length. It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
 	//
 	// example:
 	//

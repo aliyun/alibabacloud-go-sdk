@@ -36,15 +36,15 @@ type iDescribeExpressConnectRouterChildInstanceResponseBody interface {
 }
 
 type DescribeExpressConnectRouterChildInstanceResponseBody struct {
-	// The details about the access denial.
+	// The details of the access denial.
 	//
 	// example:
 	//
 	// Authentication is failed for ****
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	// The VBRs.
+	// The list of child instances.
 	ChildInstanceList []*DescribeExpressConnectRouterChildInstanceResponseBodyChildInstanceList `json:"ChildInstanceList,omitempty" xml:"ChildInstanceList,omitempty" type:"Repeated"`
-	// The response code. The status code 200 indicates that the request was successful. Other status codes indicate that the request failed. For more information, see Error codes.
+	// The status code that indicates whether the call was successful. A value of 200 indicates that the attachment was successful. Other values indicate that the attachment failed. For more information about the causes of failures, see the error codes.
 	//
 	// example:
 	//
@@ -56,9 +56,9 @@ type DescribeExpressConnectRouterChildInstanceResponseBody struct {
 	//
 	// IllegalParamFormat.EcrId
 	DynamicCode *string `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
-	// The dynamic part in the error message. This parameter is used to replace the `%s` variable in **ErrMessage**.
+	// The dynamic error message, which is used to replace `%s` in the **ErrMessage*	- error message.
 	//
-	// >  For example, if the value of **ErrMessage*	- is **The Value of Input Parameter %s is not valid*	- and the value of **DynamicMessage*	- is **DtsJobId**, the request parameter **DtsJobId*	- is invalid.
+	// > If **ErrMessage*	- returns **The Value of Input Parameter %s is not valid*	- and **DynamicMessage*	- returns **DtsJobId**, it indicates that the **DtsJobId*	- request parameter is invalid.
 	//
 	// example:
 	//
@@ -70,39 +70,39 @@ type DescribeExpressConnectRouterChildInstanceResponseBody struct {
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The total number of entries returned. Valid values: 1 to 2147483647. Default value: 20.
+	// The maximum number of entries returned. Valid values: 1 to 2147483647. Default value: 20.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The returned message.
+	// The message returned by the operation.
 	//
 	// example:
 	//
 	// OK
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// A pagination token. It can be used in the next request to retrieve a new page of results. Valid values:
+	// The token for the next query. Valid values:
 	//
-	// 	- If **NextToken*	- is empty, no next page exists.
+	// - If NextToken is empty, no next query is required.
 	//
-	// 	- If a value of **NextToken*	- is returned, the value indicates the token that is used for the next query.
+	// - If NextToken is returned, the value indicates the token for the next query.
 	//
 	// example:
 	//
 	// AAAAAYws9fJ0Ur4MGm/5OkDoW/Zn0J0/sCjivzwX9oBcwFnWaaas/kSG+J/WzLOxJHS4****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
 	// 05130E79-588D-5C40-A718-C4863A59****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. Valid values:
+	// Indicates whether the call was successful. Valid values:
 	//
-	// 	- **true**
+	// - **True**: successful.
 	//
-	// 	- **false**
+	// - **False**: failed.
 	//
 	// example:
 	//
@@ -246,86 +246,91 @@ func (s *DescribeExpressConnectRouterChildInstanceResponseBody) Validate() error
 }
 
 type DescribeExpressConnectRouterChildInstanceResponseBodyChildInstanceList struct {
-	// The ID of the association between the ECR and the VPC or TR.
+	// The ID used to associate the Express Connect Router (ECR) with the VBR.
 	//
 	// example:
 	//
 	// ecr-assoc-9p2qxx5phpca2m****
 	AssociationId *string `json:"AssociationId,omitempty" xml:"AssociationId,omitempty"`
-	// The VBR ID.
+	// The instance ID of the border router for routing.
 	//
 	// example:
 	//
 	// vbr-gw8vjq2zjux3ifsc9****
-	ChildInstanceId   *string `json:"ChildInstanceId,omitempty" xml:"ChildInstanceId,omitempty"`
+	ChildInstanceId *string `json:"ChildInstanceId,omitempty" xml:"ChildInstanceId,omitempty"`
+	// The name of the child instance.
+	//
+	// example:
+	//
+	// test
 	ChildInstanceName *string `json:"ChildInstanceName,omitempty" xml:"ChildInstanceName,omitempty"`
-	// The ID of the Alibaba Cloud account that owns the VBR.
+	// The Alibaba Cloud account ID to which the child instance belongs.
 	//
 	// example:
 	//
 	// 112101171212****
 	ChildInstanceOwnerId *int64 `json:"ChildInstanceOwnerId,omitempty" xml:"ChildInstanceOwnerId,omitempty"`
-	// The region ID of the VBR.
+	// The region where the child instance resides.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	ChildInstanceRegionId *string `json:"ChildInstanceRegionId,omitempty" xml:"ChildInstanceRegionId,omitempty"`
-	// The type of the VBR. The value is **VBR**.
+	// The type of the child instance. Valid values: **VBR**: virtual border router.
 	//
 	// example:
 	//
 	// VBR
 	ChildInstanceType *string `json:"ChildInstanceType,omitempty" xml:"ChildInstanceType,omitempty"`
-	// The description of the ECR.
+	// The description of the child instance.
 	//
 	// example:
 	//
 	// test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The ECR ID.
+	// The instance ID of the Express Connect Router (ECR).
 	//
 	// example:
 	//
 	// ecr-mezk2idmsd0vx2****
 	EcrId *string `json:"EcrId,omitempty" xml:"EcrId,omitempty"`
-	// The time when the association was created. The time follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ssZ format. The time is displayed in UTC.
+	// The time when the association was created. The time is displayed in UTC and follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ssZ format.
 	//
 	// example:
 	//
 	// 2024-01-09T12:18:23Z
 	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	// The time when the association was modified. The time follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ssZ format. The time is displayed in UTC.
+	// The time when the association was modified. The time is displayed in UTC and follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ssZ format.
 	//
 	// example:
 	//
 	// 2024-01-09T12:18:23Z
 	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	// The ID of the Alibaba Cloud account that owns the VBR.
+	// The Alibaba Cloud account ID to which the border router for routing belongs.
 	//
 	// example:
 	//
 	// 167509154715****
 	OwnerId *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The region ID of the VBR.
+	// The region where the VBR resides.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The deployment state of the associated resource. Valid values:
+	// The deployment status of the associated resource. Valid values:
 	//
-	// - **CREATING**: The resource is being created.
+	// - **CREATING**: creating.
 	//
-	// - **ACTIVE**: The resource is created.
+	// - **ACTIVE**: created.
 	//
-	// - **ASSOCIATING**: The resource is being associated.
+	// - **ASSOCIATING**: associating.
 	//
-	// - **DISSOCIATING**: The resource is being disassociated.
+	// - **DISSOCIATING**: dissociating.
 	//
-	// - **UPDATING**: The resource is being modified.
+	// - **UPDATING**: updating.
 	//
-	// - **DELETING**: The resource is being deleted.
+	// - **DELETING**: deleting.
 	//
 	// example:
 	//

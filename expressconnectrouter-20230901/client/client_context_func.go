@@ -9,7 +9,7 @@ import (
 
 // Summary:
 //
-// Enables log delivery for flow logs.
+// Enables log delivery for a flow log.
 //
 // @param request - ActivateFlowLogRequest
 //
@@ -71,11 +71,11 @@ func (client *Client) ActivateFlowLogWithContext(ctx context.Context, request *A
 
 // Summary:
 //
-// Associates a virtual border router (VBR) with an Express Connect router (ECR).
+// Attaches a child instance (VBR) to an Express Connect Router (ECR).
 //
 // Description:
 //
-// Before you call the **AttachExpressConnectRouterChildInstance*	- operation to associate a VBR with an ECR, make sure that the ECR is in the **Active*	- state.
+// Before you invoke the **AttachExpressConnectRouterChildInstance*	- operation to load a child instance (VBR) to an Express Connect Router (ECR), make sure that the Express Connect Router (ECR) is in the **Active*	- state.
 //
 // @param request - AttachExpressConnectRouterChildInstanceRequest
 //
@@ -153,7 +153,7 @@ func (client *Client) AttachExpressConnectRouterChildInstanceWithContext(ctx con
 
 // Summary:
 //
-// Checks the Cloud Data Transfer (CDT) service required to add a region to an Express Connect router (ECR).
+// Checks the Cloud Data Transfer (CDT) service required to add a specified region to an Express Connect Router (ECR).
 //
 // @param request - CheckAddRegionToExpressConnectRouterRequest
 //
@@ -219,7 +219,7 @@ func (client *Client) CheckAddRegionToExpressConnectRouterWithContext(ctx contex
 //
 // Description:
 //
-// After you create an ECR, it enters the **Active*	- state.
+// After you create an Express Connect Router (ECR) instance, the instance status is **Active**.
 //
 // @param request - CreateExpressConnectRouterRequest
 //
@@ -293,7 +293,7 @@ func (client *Client) CreateExpressConnectRouterWithContext(ctx context.Context,
 
 // Summary:
 //
-// Associates a virtual private cloud (VPC) or a transit router (TR) with an Express Connect router (ECR).
+// Associates an Express Connect Router (ECR) with a virtual private cloud (VPC) or a transit router (TR).
 //
 // @param request - CreateExpressConnectRouterAssociationRequest
 //
@@ -395,7 +395,7 @@ func (client *Client) CreateExpressConnectRouterAssociationWithContext(ctx conte
 
 // Summary:
 //
-// Creates a flow log and enables log delivery.
+// Creates a flow log and enables log delivery by default.
 //
 // @param request - CreateFlowLogRequest
 //
@@ -497,7 +497,73 @@ func (client *Client) CreateFlowLogWithContext(ctx context.Context, request *Cre
 
 // Summary:
 //
-// Disables log delivery.
+// Creates an association between an Express Connect Router (ECR) and a route map.
+//
+// @param request - CreateRouteMapAssociationRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return CreateRouteMapAssociationResponse
+func (client *Client) CreateRouteMapAssociationWithContext(ctx context.Context, request *CreateRouteMapAssociationRequest, runtime *dara.RuntimeOptions) (_result *CreateRouteMapAssociationResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.RegionIdList) {
+		query["RegionIdList"] = request.RegionIdList
+	}
+
+	if !dara.IsNil(request.RouteMapId) {
+		query["RouteMapId"] = request.RouteMapId
+	}
+
+	if !dara.IsNil(request.Version) {
+		query["Version"] = request.Version
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.ClientToken) {
+		body["ClientToken"] = request.ClientToken
+	}
+
+	if !dara.IsNil(request.DryRun) {
+		body["DryRun"] = request.DryRun
+	}
+
+	if !dara.IsNil(request.EcrId) {
+		body["EcrId"] = request.EcrId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("CreateRouteMapAssociation"),
+		Version:     dara.String("2023-09-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &CreateRouteMapAssociationResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Stops log delivery for a flow log.
 //
 // @param request - DeactivateFlowLogRequest
 //
@@ -559,15 +625,15 @@ func (client *Client) DeactivateFlowLogWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// Deletes an Express Connect router (ECR).
+// Deletes an Express Connect Router (ECR).
 //
 // Description:
 //
-// Take note of the following items:
+// Before you invoke the DeleteExpressConnectRouter operation to delete an Express Connect Router (ECR) instance, note the following:
 //
-//   - Before you call this operation, make sure that all resources are disassociated from the ECR.
+// - Before you delete an Express Connect Router (ECR) instance, you must delete the resources associated with the Express Connect Router (ECR) instance.
 //
-//   - You can delete only ECRs that are in the **Active*	- state.
+// - You can delete only Express Connect Router (ECR) instances that are in the **Active*	- state.
 //
 // @param request - DeleteExpressConnectRouterRequest
 //
@@ -625,7 +691,7 @@ func (client *Client) DeleteExpressConnectRouterWithContext(ctx context.Context,
 
 // Summary:
 //
-// Disassociates an Express Connect router (ECR) from a virtual private cloud (VPC) or a transit router (TR).
+// Disassociates an Express Connect Router (ECR) from a virtual private cloud (VPC) or a transit router.
 //
 // @param request - DeleteExpressConnectRouterAssociationRequest
 //
@@ -753,7 +819,69 @@ func (client *Client) DeleteFlowlogWithContext(ctx context.Context, request *Del
 
 // Summary:
 //
-// Queries the route entries that are disabled on an Express Connect router (ECR).
+// Deletes the association between an Express Connect Router (ECR) and a route policy.
+//
+// @param request - DeleteRouteMapAssociationRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteRouteMapAssociationResponse
+func (client *Client) DeleteRouteMapAssociationWithContext(ctx context.Context, request *DeleteRouteMapAssociationRequest, runtime *dara.RuntimeOptions) (_result *DeleteRouteMapAssociationResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AssociationId) {
+		query["AssociationId"] = request.AssociationId
+	}
+
+	if !dara.IsNil(request.Version) {
+		query["Version"] = request.Version
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.ClientToken) {
+		body["ClientToken"] = request.ClientToken
+	}
+
+	if !dara.IsNil(request.DryRun) {
+		body["DryRun"] = request.DryRun
+	}
+
+	if !dara.IsNil(request.EcrId) {
+		body["EcrId"] = request.EcrId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteRouteMapAssociation"),
+		Version:     dara.String("2023-09-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteRouteMapAssociationResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the disabled route entry of an Express Connect Router (ECR).
 //
 // @param request - DescribeDisabledExpressConnectRouterRouteEntriesRequest
 //
@@ -819,7 +947,7 @@ func (client *Client) DescribeDisabledExpressConnectRouterRouteEntriesWithContex
 
 // Summary:
 //
-// Queries a list of Express Connect routers (ECRs).
+// Queries a list of Express Connect Router (ECR) instances.
 //
 // @param request - DescribeExpressConnectRouterRequest
 //
@@ -897,7 +1025,7 @@ func (client *Client) DescribeExpressConnectRouterWithContext(ctx context.Contex
 
 // Summary:
 //
-// Queries the historical route prefixes of an Express Connect router (ECR).
+// Queries the history of prefix routes for an Express Connect Router (ECR).
 //
 // @param request - DescribeExpressConnectRouterAllowedPrefixHistoryRequest
 //
@@ -967,7 +1095,7 @@ func (client *Client) DescribeExpressConnectRouterAllowedPrefixHistoryWithContex
 
 // Summary:
 //
-// Queries the virtual private clouds (VPCs) and transit routers (TRs) associated with an Express Connect router (ECR).
+// Queries the virtual private clouds (VPCs) and transit routers (TRs) associated with an Express Connect Router (ECR).
 //
 // @param request - DescribeExpressConnectRouterAssociationRequest
 //
@@ -1061,7 +1189,7 @@ func (client *Client) DescribeExpressConnectRouterAssociationWithContext(ctx con
 
 // Summary:
 //
-// Queries the virtual border routers (VBRs) that are associated with an Express Connect router (ECR).
+// Queries the virtual border routers (VBRs) associated with an Express Connect Router (ECR).
 //
 // @param request - DescribeExpressConnectRouterChildInstanceRequest
 //
@@ -1143,7 +1271,7 @@ func (client *Client) DescribeExpressConnectRouterChildInstanceWithContext(ctx c
 
 // Summary:
 //
-// Queries the cross-region forwarding modes of an Express Connect router (ECR).
+// Queries the cross-region forwarding mode of an Express Connect Router (ECR).
 //
 // @param request - DescribeExpressConnectRouterInterRegionTransitModeRequest
 //
@@ -1201,7 +1329,7 @@ func (client *Client) DescribeExpressConnectRouterInterRegionTransitModeWithCont
 
 // Summary:
 //
-// Queries a list of regions in which resources related to an Express Connect router (ECR) are deployed.
+// Queries the regions where Express Connect Router (ECR) resources are located.
 //
 // @param request - DescribeExpressConnectRouterRegionRequest
 //
@@ -1259,7 +1387,7 @@ func (client *Client) DescribeExpressConnectRouterRegionWithContext(ctx context.
 
 // Summary:
 //
-// Queries the route entries of an Express Connect router (ECR).
+// Queries the route entries of an Express Connect Router (ECR).
 //
 // @param request - DescribeExpressConnectRouterRouteEntriesRequest
 //
@@ -1439,7 +1567,7 @@ func (client *Client) DescribeFlowLogsWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// Queries the network instances whose permissions are granted to an Express Connect router (ECR).
+// Queries the network instances authorized to an Express Connect Router (ECR).
 //
 // @param request - DescribeInstanceGrantedToExpressConnectRouterRequest
 //
@@ -1533,11 +1661,11 @@ func (client *Client) DescribeInstanceGrantedToExpressConnectRouterWithContext(c
 
 // Summary:
 //
-// Disassociates a virtual border router (VBR) from an Express Connect router (ECR).
+// Detaches a virtual border router (VBR) from an Express Connect Router (ECR).
 //
 // Description:
 //
-// Before you call the **DetachExpressConnectRouterChildInstance*	- operation to uninstall a VBR from an ECR, make sure that the ECR is in the **Active*	- state.
+// Before you call the **DetachExpressConnectRouterChildInstance*	- operation to detach a VBR instance from an Express Connect Router (ECR), ensure that the ECR is in the **Active*	- state.
 //
 // @param request - DetachExpressConnectRouterChildInstanceRequest
 //
@@ -1603,7 +1731,7 @@ func (client *Client) DetachExpressConnectRouterChildInstanceWithContext(ctx con
 
 // Summary:
 //
-// Disables route entries of an Express Connect router (ECR).
+// Disables a route entry of an Express Connect Router (ECR).
 //
 // @param request - DisableExpressConnectRouterRouteEntriesRequest
 //
@@ -1669,7 +1797,7 @@ func (client *Client) DisableExpressConnectRouterRouteEntriesWithContext(ctx con
 
 // Summary:
 //
-// Enables route entries of an Express Connect router (ECR).
+// Enables route entries for an Express Connect Router (ECR).
 //
 // @param request - EnableExpressConnectRouterRouteEntriesRequest
 //
@@ -1735,13 +1863,13 @@ func (client *Client) EnableExpressConnectRouterRouteEntriesWithContext(ctx cont
 
 // Summary:
 //
-// Deletes an Express Connect router (ECR) and disassociates the virtual private cloud (VPC), transit router (TR), and virtual border router (VBR) associated with the ECR.
+// Force deletes an Express Connect Router (ECR) and detaches its associated virtual private clouds (VPCs), Transit Routers (TRs), and virtual border routers (VBRs).
 //
 // Description:
 //
-//	  If you forcefully delete an ECR, all the resources associated with the ECR are disassociated at a time. Make sure that the disassociation does not affect the stability of your business.
+// - Force deleting an Express Connect Router (ECR) instance detaches all associated resources. Before you proceed, confirm that this operation does not disrupt your services.
 //
-//		- You can delete only ECRs that are in the **Active*	- state.
+// - You can delete only ECR instances that are in the **Active*	- state.
 //
 // @param request - ForceDeleteExpressConnectRouterRequest
 //
@@ -1799,11 +1927,11 @@ func (client *Client) ForceDeleteExpressConnectRouterWithContext(ctx context.Con
 
 // Summary:
 //
-// Grants permissions on a virtual private cloud (VPC) or a virtual border router (VBR) to an Express Connect router (ECR) of another account.
+// Grants a virtual private cloud (VPC) or virtual border router (VBR) authorization to a cross-account Express Connect Router (ECR).
 //
 // Description:
 //
-// When you associate a network instance of another account with an ECR, you must grant permissions on the network instance to the ECR.
+// To associate a cross-account network instance with an Express Connect Router (ECR) instance, you must grant the network instance authorization to the Express Connect Router (ECR) instance.
 //
 // @param request - GrantInstanceToExpressConnectRouterRequest
 //
@@ -1877,7 +2005,7 @@ func (client *Client) GrantInstanceToExpressConnectRouterWithContext(ctx context
 
 // Summary:
 //
-// Queries a list of regions in which the Express Connect router (ECR) feature is activated.
+// Queries the regions that support Express Connect Router (ECR).
 //
 // @param request - ListExpressConnectRouterSupportedRegionRequest
 //
@@ -1931,7 +2059,81 @@ func (client *Client) ListExpressConnectRouterSupportedRegionWithContext(ctx con
 
 // Summary:
 //
-// Queries a list of tags that are added to an Express Connect router (ECR).
+// Queries the association between an Express Connect Router (ECR) and a route map.
+//
+// @param request - ListRouteMapAssociationsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListRouteMapAssociationsResponse
+func (client *Client) ListRouteMapAssociationsWithContext(ctx context.Context, request *ListRouteMapAssociationsRequest, runtime *dara.RuntimeOptions) (_result *ListRouteMapAssociationsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AssociationId) {
+		query["AssociationId"] = request.AssociationId
+	}
+
+	if !dara.IsNil(request.MaxResults) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !dara.IsNil(request.RouteMapId) {
+		query["RouteMapId"] = request.RouteMapId
+	}
+
+	if !dara.IsNil(request.Version) {
+		query["Version"] = request.Version
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.ClientToken) {
+		body["ClientToken"] = request.ClientToken
+	}
+
+	if !dara.IsNil(request.DryRun) {
+		body["DryRun"] = request.DryRun
+	}
+
+	if !dara.IsNil(request.EcrId) {
+		body["EcrId"] = request.EcrId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListRouteMapAssociations"),
+		Version:     dara.String("2023-09-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListRouteMapAssociationsResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the list of tags bound to an Express Connect Router (ECR).
 //
 // @param request - ListTagResourcesRequest
 //
@@ -1997,11 +2199,11 @@ func (client *Client) ListTagResourcesWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// Modifies the properties such as the name of an Express Connect router (ECR).
+// Modifies the properties of an Express Connect Router (ECR), such as its name.
 //
 // Description:
 //
-// You can modify only properties of ECRs in the **Active*	- state.
+// You can modify an Express Connect Router (ECR) instance only when it is in the **Active*	- state.
 //
 // @param request - ModifyExpressConnectRouterRequest
 //
@@ -2067,7 +2269,7 @@ func (client *Client) ModifyExpressConnectRouterWithContext(ctx context.Context,
 
 // Summary:
 //
-// 修改专线网关关联的属性
+// Modifies the attributes of a child instance associated with an Express Connect Router (ECR).
 //
 // @param request - ModifyExpressConnectRouterAssociationRequest
 //
@@ -2133,7 +2335,7 @@ func (client *Client) ModifyExpressConnectRouterAssociationWithContext(ctx conte
 
 // Summary:
 //
-// Modifies the route prefixes of a virtual private cloud (VPC) or a transit router (TR) that is associated with an Express Connect router (ECR).
+// Modifies the prefixes for a virtual private cloud (VPC) or a transit router that is attached to an Express Connect Router (ECR).
 //
 // @param request - ModifyExpressConnectRouterAssociationAllowedPrefixRequest
 //
@@ -2207,7 +2409,7 @@ func (client *Client) ModifyExpressConnectRouterAssociationAllowedPrefixWithCont
 
 // Summary:
 //
-// 修改专线网关子实例的属性
+// Modifies the attributes of a child instance (VBR) associated with an Express Connect Router (ECR).
 //
 // @param request - ModifyExpressConnectRouterChildInstanceRequest
 //
@@ -2277,7 +2479,7 @@ func (client *Client) ModifyExpressConnectRouterChildInstanceWithContext(ctx con
 
 // Summary:
 //
-// Modifies the cross-region forwarding mode of an Express Connect router (ECR).
+// Modifies the inter-region forwarding mode of an Express Connect Router (ECR).
 //
 // @param request - ModifyExpressConnectRouterInterRegionTransitModeRequest
 //
@@ -2339,7 +2541,7 @@ func (client *Client) ModifyExpressConnectRouterInterRegionTransitModeWithContex
 
 // Summary:
 //
-// Modifies the name, description, sampling rate, and sampling interval.
+// Modifies the name, description, sampling rate, and sampling interval of a flow log.
 //
 // @param request - ModifyFlowLogAttributeRequest
 //
@@ -2417,7 +2619,7 @@ func (client *Client) ModifyFlowLogAttributeWithContext(ctx context.Context, req
 
 // Summary:
 //
-// Modifies the resource group to which an Express Connect router (ECR) belongs.
+// Modifies the resource group to which an Express Connect Router (ECR) belongs.
 //
 // @param request - MoveResourceGroupRequest
 //
@@ -2483,7 +2685,7 @@ func (client *Client) MoveResourceGroupWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// Revokes permissions on a virtual private cloud (VPC) or a virtual border router (VBR) from an Express Connect router (ECR) owned by another account.
+// Revokes the authorization of a virtual private cloud (VPC) or virtual border router (VBR) on a cross-account Express Connect Router (ECR).
 //
 // @param request - RevokeInstanceFromExpressConnectRouterRequest
 //
@@ -2557,11 +2759,11 @@ func (client *Client) RevokeInstanceFromExpressConnectRouterWithContext(ctx cont
 
 // Summary:
 //
-// Synchronizes the forwarding bandwidth limit between regions for an Express Connect router (ECR).
+// Synchronizes the inter-region bandwidth limits for an Express Connect Router (ECR).
 //
 // Description:
 //
-// Updates are allowed only when the ECR is in the **Active*	- state.
+// You can update an ECR instance only when it is in the **Active*	- state.
 //
 // @param request - SynchronizeExpressConnectRouterInterRegionBandwidthRequest
 //
@@ -2619,7 +2821,7 @@ func (client *Client) SynchronizeExpressConnectRouterInterRegionBandwidthWithCon
 
 // Summary:
 //
-// Adds tags to an Express Connect router (ECR). You can add tags to only one ECR each time you call this operation. You can add multiple tags at a time.
+// Binds tags to an Express Connect Router (ECR). Each call to this operation binds tags to a single ECR instance, but you can bind multiple tags at a time.
 //
 // @param request - TagResourcesRequest
 //
@@ -2685,7 +2887,7 @@ func (client *Client) TagResourcesWithContext(ctx context.Context, request *TagR
 
 // Summary:
 //
-// Removes tags from an Express Connect router (ECR).
+// Unbinds tags from an Express Connect Router (ECR).
 //
 // @param request - UntagResourcesRequest
 //
@@ -2745,6 +2947,72 @@ func (client *Client) UntagResourcesWithContext(ctx context.Context, request *Un
 		BodyType:    dara.String("json"),
 	}
 	_result = &UntagResourcesResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Updates the association between an Express Connect Router (ECR) and a routing policy.
+//
+// @param request - UpdateRouteMapAssociationRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateRouteMapAssociationResponse
+func (client *Client) UpdateRouteMapAssociationWithContext(ctx context.Context, request *UpdateRouteMapAssociationRequest, runtime *dara.RuntimeOptions) (_result *UpdateRouteMapAssociationResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AssociationId) {
+		query["AssociationId"] = request.AssociationId
+	}
+
+	if !dara.IsNil(request.RegionIdList) {
+		query["RegionIdList"] = request.RegionIdList
+	}
+
+	if !dara.IsNil(request.Version) {
+		query["Version"] = request.Version
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.ClientToken) {
+		body["ClientToken"] = request.ClientToken
+	}
+
+	if !dara.IsNil(request.DryRun) {
+		body["DryRun"] = request.DryRun
+	}
+
+	if !dara.IsNil(request.EcrId) {
+		body["EcrId"] = request.EcrId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateRouteMapAssociation"),
+		Version:     dara.String("2023-09-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateRouteMapAssociationResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err

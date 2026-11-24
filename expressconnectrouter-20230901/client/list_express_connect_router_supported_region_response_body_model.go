@@ -24,7 +24,7 @@ type iListExpressConnectRouterSupportedRegionResponseBody interface {
 }
 
 type ListExpressConnectRouterSupportedRegionResponseBody struct {
-	// The response code. The status code 200 indicates that the request was successful. Other status codes indicate that the request failed. For more information, see Error codes.
+	// The status code. A value of 200 indicates that the call was successful. For more information about other values, see the error codes.
 	//
 	// example:
 	//
@@ -48,17 +48,17 @@ type ListExpressConnectRouterSupportedRegionResponseBody struct {
 	//
 	// 6FABF516-FED3-5697-BDA2-B18C5D9A****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. Valid values:
+	// Indicates whether the call was successful. Valid values:
 	//
-	// 	- True
+	// - True: The call was successful.
 	//
-	// 	- False
+	// - False: The call failed.
 	//
 	// example:
 	//
 	// True
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// The regions in which the ECR feature is activated.
+	// The list of supported regions.
 	SupportedRegionIdList []*string `json:"SupportedRegionIdList,omitempty" xml:"SupportedRegionIdList,omitempty" type:"Repeated"`
 }
 

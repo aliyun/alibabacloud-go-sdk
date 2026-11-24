@@ -42,13 +42,13 @@ type DescribeDisabledExpressConnectRouterRouteEntriesResponseBody struct {
 	//
 	// Authentication is failed for ****
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	// The response code. The status code 200 indicates that the request was successful. Other status codes indicate that the request failed. For more information, see Error codes.
+	// The status code. A value of 200 indicates that the call was successful. Other values indicate that the call failed. For more information about the causes of failure, see error codes.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The routes that are queried.
+	// The list of queried route entries.
 	DisabledRouteEntryList []*DescribeDisabledExpressConnectRouterRouteEntriesResponseBodyDisabledRouteEntryList `json:"DisabledRouteEntryList,omitempty" xml:"DisabledRouteEntryList,omitempty" type:"Repeated"`
 	// The dynamic error code.
 	//
@@ -56,9 +56,9 @@ type DescribeDisabledExpressConnectRouterRouteEntriesResponseBody struct {
 	//
 	// IllegalParamFormat.EcrId
 	DynamicCode *string `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
-	// The dynamic part in the error message. This parameter is used to replace the `%s` variable in **ErrMessage**.
+	// The dynamic error message, which is used to replace `%s` in the **ErrMessage*	- error message.
 	//
-	// >  For example, if the value of **ErrMessage*	- is **The Value of Input Parameter %s is not valid*	- and the value of **DynamicMessage*	- is **DtsInstanceId**, the request parameter **DtsInstanceId*	- is invalid.
+	// > If **ErrMessage*	- returns **The Value of Input Parameter %s is not valid*	- and **DynamicMessage*	- returns **DtsInstanceId**, it indicates that the **DtsInstanceId*	- request parameter is invalid.
 	//
 	// example:
 	//
@@ -70,45 +70,45 @@ type DescribeDisabledExpressConnectRouterRouteEntriesResponseBody struct {
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The total number of entries returned. Valid values: 1 to 2147483647. Default value: 10.
+	// The maximum number of entries to return. Valid values: 1 to 2147483647. Default value: 10.
 	//
 	// example:
 	//
 	// 6
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The returned message.
+	// The message returned by the operation.
 	//
 	// example:
 	//
 	// OK
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// A pagination token. It can be used in the next request to retrieve a new page of results. Valid values:
+	// The token for the next query. Valid values:
 	//
-	// 	- If NextToken is empty, no next page exists.
+	// - If NextToken is empty, no next query is required.
 	//
-	// 	- If a value of NextToken is returned, the value indicates the token that is used for the next query.
+	// - If NextToken is returned, the value indicates the token for the next query.
 	//
 	// example:
 	//
 	// gAAAAABkDTaRFnmxUoMLVOn8YTIgYFeL2ch8j0sJs8VCIU8SS5438m3D9X1VqspCcaUEHRN9I_AfVwMhZHAhcNivifK_OtQxJQ==
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
 	// 6FABF516-FED3-5697-BDA2-B18C5D9A****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether routes are disabled by the ECR. Valid values:
+	// Indicates whether the disabled Express Connect Router (ECR) routing is successfully queried. Valid values:
 	//
-	// 	- **true**
+	// - **True**: The query was successful.
 	//
-	// 	- **false**
+	// - **False**: The query failed.
 	//
 	// example:
 	//
 	// True
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// The total number of routes.
+	// The total number of route entry.
 	//
 	// example:
 	//
@@ -246,13 +246,13 @@ func (s *DescribeDisabledExpressConnectRouterRouteEntriesResponseBody) Validate(
 }
 
 type DescribeDisabledExpressConnectRouterRouteEntriesResponseBodyDisabledRouteEntryList struct {
-	// The destination CIDR block of the route.
+	// The destination CIDR block of the route entry.
 	//
 	// example:
 	//
 	// 192.168.100.110/32
 	DestinationCidrBlock *string `json:"DestinationCidrBlock,omitempty" xml:"DestinationCidrBlock,omitempty"`
-	// The ECR ID.
+	// The instance ID of the Express Connect Router (ECR).
 	//
 	// example:
 	//
@@ -264,13 +264,13 @@ type DescribeDisabledExpressConnectRouterRouteEntriesResponseBodyDisabledRouteEn
 	//
 	// 1682317345
 	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	// The ID of the next-hop instance.
+	// The instance ID of the next hop.
 	//
 	// example:
 	//
 	// br-hp3u4u5f03tfuljis****
 	NexthopInstanceId *string `json:"NexthopInstanceId,omitempty" xml:"NexthopInstanceId,omitempty"`
-	// The region ID of the next-hop instance.
+	// The region ID of the next hop instance.
 	//
 	// example:
 	//

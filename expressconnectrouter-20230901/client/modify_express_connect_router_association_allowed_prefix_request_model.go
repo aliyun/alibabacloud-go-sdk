@@ -28,13 +28,13 @@ type iModifyExpressConnectRouterAssociationAllowedPrefixRequest interface {
 }
 
 type ModifyExpressConnectRouterAssociationAllowedPrefixRequest struct {
-	// The allowed route prefixes.
+	// The list of allowed route prefixes.
 	AllowedPrefixes []*string `json:"AllowedPrefixes,omitempty" xml:"AllowedPrefixes,omitempty" type:"Repeated"`
-	// The route prefix mode.
+	// The prefix routing pattern. Valid values:
 	//
-	// 	- MatchMode: After you distribute new route CIDR blocks to data centers, original specific routes that are distributed are withdrawn.
+	// - MatchMode: Publishes only the configured route prefixes to your data center. Existing specific routes are withdrawn.
 	//
-	// 	- IncrementalMode: After you distribute new route CIDR blocks to data centers, the original specific routes that fall in the CIDR blocks that you configure are withdrawn, and the original specific routes that do not fall in the CIDR blocks are still distributed.
+	// - IncrementalMode: Publishes the configured route prefixes to your data center. Withdraw previously published more specific routes that are covered by the configured prefixes. More specific routes that are not covered by the configured prefixes remain published.
 	//
 	// example:
 	//
@@ -48,27 +48,27 @@ type ModifyExpressConnectRouterAssociationAllowedPrefixRequest struct {
 	//
 	// ecr-assoc-9p2qxx5phpca2m****
 	AssociationId *string `json:"AssociationId,omitempty" xml:"AssociationId,omitempty"`
-	// The client token that is used to ensure the idempotence of the request.
+	// A client token used to ensure the idempotence of the request.
 	//
-	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
+	// Generate a parameter value from your client to make sure that the value is unique among different requests. The token can contain only ASCII characters.
 	//
-	// >  If you do not specify this parameter, the system automatically uses the **request ID*	- as the **client token**. The **request ID*	- may be different for each request.
+	// > If you do not specify this parameter, the system automatically uses the **RequestId*	- of the API request as the **ClientToken**. The **RequestId*	- of each API request may be different.
 	//
 	// example:
 	//
 	// 02fb3da4-130e-11e9-8e44-00****
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// Specifies whether to perform only a dry run, without performing the actual request. Valid values:
+	// Specifies whether to perform a dry run. Valid values:
 	//
-	// 	- **true**: performs only a dry run.
+	// - **true**: Performs a dry run.
 	//
-	// 	- **false*	- (default): performs a dry run and performs the actual request.
+	// - **false*	- (default): Sends a normal request.
 	//
 	// example:
 	//
 	// false
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	// The ECR ID.
+	// The ID of ECR.
 	//
 	// This parameter is required.
 	//

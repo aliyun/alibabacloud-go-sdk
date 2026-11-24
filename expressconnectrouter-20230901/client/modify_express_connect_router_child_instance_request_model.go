@@ -26,30 +26,54 @@ type iModifyExpressConnectRouterChildInstanceRequest interface {
 }
 
 type ModifyExpressConnectRouterChildInstanceRequest struct {
+	// The instance ID of the VBR.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// vbr-t4n6xu2d5q0iaad1yl4le
 	ChildInstanceId *string `json:"ChildInstanceId,omitempty" xml:"ChildInstanceId,omitempty"`
+	// The type of the network instance. Valid values:
+	//
+	// - **VBR**: VBR instance.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// VBR
 	ChildInstanceType *string `json:"ChildInstanceType,omitempty" xml:"ChildInstanceType,omitempty"`
+	// The client token that is used to ensure the idempotence of the request.
+	//
+	// You can generate a parameter value from your client to ensure that the parameter value is unique among different requests. The client token only supports ASCII characters.
+	//
+	// >
+	//
+	// > - If you do not specify this parameter, the system automatically uses the RequestId of the API request as the client token. The RequestId of each API request is different.
+	//
 	// example:
 	//
 	// 02fb3da4-130e-11e9-8e44-00****
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The description of the child instance. The description must be 0 to 128 characters in length.
+	//
 	// example:
 	//
 	// test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// Specifies whether the request is a dry run only. Valid values:
+	//
+	// - **true**: performs a dry run and does not modify service resources.
+	//
+	// - **false*	- (default): sends a normal request.
+	//
 	// example:
 	//
 	// false
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	// The instance ID of the Express Connect Router (ECR).
+	//
 	// This parameter is required.
 	//
 	// example:

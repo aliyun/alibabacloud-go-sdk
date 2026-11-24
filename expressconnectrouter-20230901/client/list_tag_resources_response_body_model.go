@@ -28,13 +28,13 @@ type iListTagResourcesResponseBody interface {
 }
 
 type ListTagResourcesResponseBody struct {
-	// The response code. The status code 200 indicates that the request was successful. Other status codes indicate that the request failed. For more information, see Error codes.
+	// The response code. A value of 200 indicates success. Other values indicate failure. For more information, see error codes.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The number of entries per page.
+	// The number of entries per page in a paged query.
 	//
 	// example:
 	//
@@ -46,11 +46,11 @@ type ListTagResourcesResponseBody struct {
 	//
 	// OK
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// A pagination token. It can be used in the next request to retrieve a new page of results. Valid values:
+	// The pagination token. Valid values:
 	//
-	// 	- If **NextToken*	- is empty, no next page exists.
+	// - If **NextToken*	- is empty, no next query exists.
 	//
-	// 	- If a value of **NextToken*	- is returned, the value indicates the token that is used for the next query.
+	// - If **NextToken*	- is returned, the value indicates the token for the next query.
 	//
 	// example:
 	//
@@ -62,19 +62,19 @@ type ListTagResourcesResponseBody struct {
 	//
 	// 6FABF516-FED3-5697-BDA2-B18C5D9A****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. Valid values:
+	// Indicates whether the call was successful. Valid values:
 	//
-	// 	- **true**
+	// - **True**: The call was successful.
 	//
-	// 	- **false**
+	// - **False**: The call failed.
 	//
 	// example:
 	//
 	// True
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// The tags.
+	// The list of tags.
 	TagResources []*ListTagResourcesResponseBodyTagResources `json:"TagResources,omitempty" xml:"TagResources,omitempty" type:"Repeated"`
-	// The total number of records that meet the query conditions.
+	// The total number of records that match the query conditions.
 	//
 	// example:
 	//
@@ -182,19 +182,27 @@ type ListTagResourcesResponseBodyTagResources struct {
 	//
 	// ecr-897j0jooxyr1aq****
 	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
-	// The resource type. The value is **EXPRESSCONNECTROUTER**.
+	// The resource type. Valid values:
+	//
+	// - **EXPRESSCONNECTROUTER**: Express Connect Router (ECR) instance.
+	//
+	// - **EXPRESSCONNECTROUTERVPCASSOCIATION**: association between an ECR and a VPC.
+	//
+	// - **EXPRESSCONNECTROUTERTRASSOCIATION**: association between an ECR and a transit router.
+	//
+	// - **ECRFLOWLOG**: ECR flow log.
 	//
 	// example:
 	//
 	// EXPRESSCONNECTROUTER
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// The tag key.
+	// The tag key of the resource.
 	//
 	// example:
 	//
 	// TestKey
 	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
-	// The tag value.
+	// The label value of the Express Connect Router (ECR).
 	//
 	// example:
 	//

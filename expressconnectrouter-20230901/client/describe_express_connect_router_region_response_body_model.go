@@ -36,7 +36,7 @@ type DescribeExpressConnectRouterRegionResponseBody struct {
 	//
 	// Authentication is failed for ****
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	// The response code. The status code 200 indicates that the request was successful. Other status codes indicate that the request failed. For more information, see Error codes.
+	// Indicates whether the call is successful. A value of 200 indicates success, and other values indicate failure. For the cause of failure, see error codes.
 	//
 	// example:
 	//
@@ -48,9 +48,9 @@ type DescribeExpressConnectRouterRegionResponseBody struct {
 	//
 	// IllegalParamFormat.EcrId
 	DynamicCode *string `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
-	// The dynamic part in the error message. This parameter is used to replace the `%s` variable in **ErrMessage**.
+	// The dynamic error message, which is used to replace `%s` in the error message of the **ErrMessage*	- response parameter.
 	//
-	// >  For example, if the value of **ErrMessage*	- is **The Value of Input Parameter %s is not valid*	- and the value of **DynamicMessage*	- is **DtsJobId**, the request parameter **DtsJobId*	- is invalid.
+	// > If **ErrMessage*	- returns **The Value of Input Parameter %s is not valid*	- and **DynamicMessage*	- returns **DtsJobId**, the **DtsJobId*	- request parameter is invalid.
 	//
 	// example:
 	//
@@ -68,7 +68,7 @@ type DescribeExpressConnectRouterRegionResponseBody struct {
 	//
 	// OK
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The region in which the ECR feature is activated.
+	// The list of regions where sub-resources are located.
 	RegionIdList []*string `json:"RegionIdList,omitempty" xml:"RegionIdList,omitempty" type:"Repeated"`
 	// The request ID.
 	//
@@ -76,11 +76,11 @@ type DescribeExpressConnectRouterRegionResponseBody struct {
 	//
 	// 6FABF516-FED3-5697-BDA2-B18C5D9A****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. Valid values:
+	// Indicates whether the call was successful. Valid values:
 	//
-	// 	- **true**
+	// - **True**: The call is successful.
 	//
-	// 	- **false**
+	// - **False**: The call failed.
 	//
 	// example:
 	//

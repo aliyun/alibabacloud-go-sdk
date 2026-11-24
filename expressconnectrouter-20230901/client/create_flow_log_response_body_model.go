@@ -30,13 +30,13 @@ type iCreateFlowLogResponseBody interface {
 }
 
 type CreateFlowLogResponseBody struct {
-	// The queried information about the request denial.
+	// The details about the access denial.
 	//
 	// example:
 	//
 	// Authentication is failed for ****
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	// The response code. The status code 200 indicates that the request was successful. Other status codes indicate that the request failed. For more information, see Error codes.
+	// The status code that indicates whether the call was successful. A value of 200 indicates that the request was successful. Other values indicate that the request failed. For more information about the causes of failure, see the error codes.
 	//
 	// example:
 	//
@@ -48,19 +48,19 @@ type CreateFlowLogResponseBody struct {
 	//
 	// IllegalParamFormat.EcrId
 	DynamicCode *string `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
-	// The dynamic error message. This parameter is used to replace the % **s*	- in the **ErrMessage*	- error message of the response parameter.
+	// The dynamic error message, which is used to replace the **%s*	- placeholder in the **ErrMessage*	- error message.
 	//
-	// > For example, if the value of **ErrMessage*	- is **The Value of Input Parameter*	- %**s is not valid*	- and the value of **DynamicMessage*	- is **DtsJobId**, the request parameter **DtsJobId*	- is invalid.
+	// > If **ErrMessage*	- returns **The Value of Input Parameter %s is not valid*	- and **DynamicMessage*	- returns **DtsJobId**, it indicates that the specified **DtsJobId*	- request parameter is invalid.
 	//
 	// example:
 	//
 	// The param format of EcrId ***	- is illegal.
 	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
-	// The ID of the flow log.
+	// The ID of the flow log instance.
 	//
 	// example:
 	//
-	// flowlog-m5evbtbpt****
+	// ecr-flog-m5evbtbpt****
 	FlowLogId *string `json:"FlowLogId,omitempty" xml:"FlowLogId,omitempty"`
 	// The HTTP status code.
 	//
@@ -68,7 +68,7 @@ type CreateFlowLogResponseBody struct {
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The returned message.
+	// The message returned by the operation.
 	//
 	// example:
 	//
@@ -80,11 +80,11 @@ type CreateFlowLogResponseBody struct {
 	//
 	// 6FABF516-FED3-5697-BDA2-B18C5D9A****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request is successful. Valid values:
+	// Indicates whether the call was successful. Valid values:
 	//
-	// - **True**
+	// - **True**: The call was successful.
 	//
-	// - **False**
+	// - **False**: The call failed.
 	//
 	// example:
 	//

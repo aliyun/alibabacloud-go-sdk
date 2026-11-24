@@ -36,13 +36,13 @@ type iDescribeFlowLogsResponseBody interface {
 }
 
 type DescribeFlowLogsResponseBody struct {
-	// The queried information about the request denial.
+	// The details of the access denial.
 	//
 	// example:
 	//
 	// Authentication is failed for ****
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	// The response code. The status code 200 indicates that the request was successful. Other status codes indicate that the request failed. For more information, see Error codes.
+	// The status code that indicates whether the call was successful. A value of 200 indicates that the call was successful. Other values indicate that the call failed. For more information about the failure causes, see the error codes.
 	//
 	// example:
 	//
@@ -54,15 +54,15 @@ type DescribeFlowLogsResponseBody struct {
 	//
 	// IllegalParamFormat.EcrId
 	DynamicCode *string `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
-	// The dynamic part in the error message. This parameter is used to replace the `%s` variable in **ErrMessage**.
+	// The dynamic error message, which is used to replace `%s` in the **ErrMessage*	- response parameter.
 	//
-	// >  For example, if the value of **ErrMessage*	- is **The Value of Input Parameter %s is not valid*	- and the value of **DynamicMessage*	- is **DtsJobId**, the request parameter **DtsJobId*	- is invalid.
+	// > If **ErrMessage*	- returns **The Value of Input Parameter %s is not valid*	- and **DynamicMessage*	- returns **DtsJobId**, the specified **DtsJobId*	- request parameter is invalid.
 	//
 	// example:
 	//
 	// The param format of EcrId ***	- is illegal.
 	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
-	// The information about the flow logs.
+	// The list of flow logs.
 	FlowLogs []*DescribeFlowLogsResponseBodyFlowLogs `json:"FlowLogs,omitempty" xml:"FlowLogs,omitempty" type:"Repeated"`
 	// The HTTP status code.
 	//
@@ -70,23 +70,23 @@ type DescribeFlowLogsResponseBody struct {
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The total number of entries returned. Valid values: 1 to 2147483647. Default value: 10.
+	// The maximum number of entries returned. Valid values: 1 to 2147483647. Default value: 10.
 	//
 	// example:
 	//
 	// 10
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The returned message.
+	// The message returned by the operation.
 	//
 	// example:
 	//
 	// OK
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// A pagination token. It can be used in the next request to retrieve a new page of results. Valid values:
+	// The token for the next query. Valid values:
 	//
-	// 	- If **NextToken*	- is empty, no next page exists.
+	// - If **NextToken*	- is empty, no next query is available.
 	//
-	// 	- If a value of **NextToken*	- is returned, the value indicates the token that is used for the next query.
+	// - If **NextToken*	- has a return value, the value indicates the token for the next query.
 	//
 	// example:
 	//
@@ -98,17 +98,17 @@ type DescribeFlowLogsResponseBody struct {
 	//
 	// 6FABF516-FED3-5697-BDA2-B18C5D9A****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request is successful. Valid values:
+	// Indicates whether the call was successful. Valid values:
 	//
-	// - **True**
+	// - **True**: The call was successful.
 	//
-	// - **False**
+	// - **False**: The call failed.
 	//
 	// example:
 	//
 	// True
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// The total number of records that meet the query conditions.
+	// The total number of entries that meet the query conditions.
 	//
 	// example:
 	//
@@ -246,29 +246,29 @@ func (s *DescribeFlowLogsResponseBody) Validate() error {
 }
 
 type DescribeFlowLogsResponseBodyFlowLogs struct {
-	// The time when the flow log was created. The time follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ssZ format.
+	// The time when the flow log was created. The time is displayed in UTC and follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ssZ format.
 	//
 	// example:
 	//
 	// 2023-09-21T04:20Z
 	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
-	// The description of the flow log.
+	// The description of the Express Connect Router (ECR) instance.
 	//
 	// example:
 	//
 	// myFlowlog
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The ECR ID.
+	// The instance ID of the Express Connect Router (ECR).
 	//
 	// example:
 	//
 	// ecr-h4cop1khw98*****
 	EcrId *string `json:"EcrId,omitempty" xml:"EcrId,omitempty"`
-	// The ID of the flow log.
+	// The instance ID of the flow log instance.
 	//
 	// example:
 	//
-	// flowlog-leypqehtgtia2*****
+	// ecr-flog-leypqehtgtia2*****
 	FlowLogId *string `json:"FlowLogId,omitempty" xml:"FlowLogId,omitempty"`
 	// The name of the flow log.
 	//
@@ -276,7 +276,7 @@ type DescribeFlowLogsResponseBodyFlowLogs struct {
 	//
 	// myFlowlog
 	FlowLogName *string `json:"FlowLogName,omitempty" xml:"FlowLogName,omitempty"`
-	// The ID of the network instance.
+	// The ID of the authorized instance.
 	//
 	// example:
 	//
@@ -284,15 +284,15 @@ type DescribeFlowLogsResponseBodyFlowLogs struct {
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The type of the network instance. Valid values:
 	//
-	// - **VBR**: virtual border router (VBR)
+	// - **VBR**: virtual border router (VBR) instance.
 	//
 	// example:
 	//
 	// VBR
 	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
-	// The time window for collecting log data. Unit: seconds. Valid values:
+	// The capture window duration for the traffic captured by the flow log. Unit: seconds. Valid values:
 	//
-	// - **60**
+	// - **60*	-
 	//
 	// - **600**
 	//
@@ -302,31 +302,31 @@ type DescribeFlowLogsResponseBodyFlowLogs struct {
 	//
 	// 600
 	Interval *int32 `json:"Interval,omitempty" xml:"Interval,omitempty"`
-	// The Logstore that stores the captured traffic data.
+	// The name of the Logstore that stores the captured traffic.
 	//
 	// example:
 	//
 	// FlowLogStore
 	LogStoreName *string `json:"LogStoreName,omitempty" xml:"LogStoreName,omitempty"`
-	// The name of the project that stores the captured traffic data.
+	// The name of the Simple Log Service project that stores the captured traffic.
 	//
 	// example:
 	//
 	// FlowLogProject
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	// The region ID of the flow log.
+	// The region ID of the Express Connect Router.
 	//
 	// example:
 	//
 	// cn-shanghai
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the resource group to which the ECR belongs.
+	// The ID of the resource group to which the Express Connect Router (ECR) instance belongs.
 	//
 	// example:
 	//
 	// rg-aekzb3xwrexc4ry
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The sampling proportion. Valid values:
+	// The sampling ratio. Valid values:
 	//
 	// - **1:4096**
 	//
@@ -340,7 +340,7 @@ type DescribeFlowLogsResponseBodyFlowLogs struct {
 	//
 	// 1:4096
 	SamplingRate *string `json:"SamplingRate,omitempty" xml:"SamplingRate,omitempty"`
-	// The ID of the region where Log Service is deployed.
+	// The region ID of Simple Log Service.
 	//
 	// example:
 	//
@@ -348,15 +348,15 @@ type DescribeFlowLogsResponseBodyFlowLogs struct {
 	SlsRegionId *string `json:"SlsRegionId,omitempty" xml:"SlsRegionId,omitempty"`
 	// The status of the flow log. Valid values:
 	//
-	// 	- **Active**
+	// - **Active**: The flow log is started.
 	//
-	// 	- **Inactive**
+	// - **Inactive**: The flow log is not started.
 	//
 	// example:
 	//
 	// Active
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The tag key.
+	// The tags of the Express Connect Router (ECR) instance.
 	Tags []*DescribeFlowLogsResponseBodyFlowLogsTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 }
 
@@ -526,9 +526,9 @@ func (s *DescribeFlowLogsResponseBodyFlowLogs) Validate() error {
 }
 
 type DescribeFlowLogsResponseBodyFlowLogsTags struct {
-	// The key of tag N of the instance. The tag key cannot be an empty string.
+	// The tag key of the instance. If you specify this parameter, it cannot be an empty string.
 	//
-	// > It can be up to 64 characters in length. It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
+	// > The tag key can be up to 64 characters in length. It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
 	//
 	// example:
 	//
@@ -536,7 +536,7 @@ type DescribeFlowLogsResponseBodyFlowLogsTags struct {
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	// The tag value.
 	//
-	// > It can be up to 128 characters in length. It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`. The tag value can be an empty string.
+	// > The tag value can be up to 128 characters in length. It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`. If you specify this parameter, it can be an empty string.
 	//
 	// example:
 	//

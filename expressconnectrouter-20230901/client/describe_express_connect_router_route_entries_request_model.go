@@ -34,7 +34,7 @@ type iDescribeExpressConnectRouterRouteEntriesRequest interface {
 }
 
 type DescribeExpressConnectRouterRouteEntriesRequest struct {
-	// The Autonomous System (AS) path of the route.
+	// The AS path traversed by the route entry.
 	//
 	// example:
 	//
@@ -42,37 +42,37 @@ type DescribeExpressConnectRouterRouteEntriesRequest struct {
 	AsPath *string `json:"AsPath,omitempty" xml:"AsPath,omitempty"`
 	// The client token that is used to ensure the idempotence of the request.
 	//
-	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
+	// You can generate the parameter value from your client to ensure that the value is unique across different requests. The client token can contain only ASCII characters.
 	//
-	// >  If you do not specify this parameter, the system automatically uses the **request ID*	- as the **client token**. The **request ID*	- may be different for each request.
+	// > If you do not specify this parameter, the system automatically uses the **RequestId*	- of the API request as the **ClientToken**. The **RequestId*	- of each API request is unique.
 	//
 	// example:
 	//
 	// 02fb3da4-130e-11e9-8e44-00****
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// The community value that is carried in the Border Gateway Protocol (BGP) route.
+	// The community value carried by the BGP route entry.
 	//
 	// example:
 	//
 	// 9001:9263
 	Community *string `json:"Community,omitempty" xml:"Community,omitempty"`
-	// The destination CIDR block of the route that you want to query.
+	// The destination CIDR block of the route entry to query.
 	//
 	// example:
 	//
-	// 172.20.47.0/24
+	// 172.20.4.0/24
 	DestinationCidrBlock *string `json:"DestinationCidrBlock,omitempty" xml:"DestinationCidrBlock,omitempty"`
-	// Specifies whether to perform only a dry run, without performing the actual request. Valid values:
+	// Specifies whether it is a dry run for this request. Valid values:
 	//
-	// 	- **true**: performs only a dry run.
+	// - **true**: sends a check request and does not modify EPS resources.
 	//
-	// 	- **false*	- (default): performs a dry run and performs the actual request.
+	// - **false*	- (default): sends a normal request.
 	//
 	// example:
 	//
 	// true
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	// The ECR ID.
+	// The instance ID of the Express Connect Router (ECR).
 	//
 	// This parameter is required.
 	//
@@ -80,29 +80,29 @@ type DescribeExpressConnectRouterRouteEntriesRequest struct {
 	//
 	// ecr-mezk2idmsd0vx2****
 	EcrId *string `json:"EcrId,omitempty" xml:"EcrId,omitempty"`
-	// The maximum number of entries to read. Valid values: 1 to 2147483647. Default value: 10.
+	// The maximum number of entries to return. Valid values: 1 to 2147483647. Default value: 10.
 	//
 	// example:
 	//
 	// 10
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The pagination token that is used in the next request to retrieve a new page of results. Valid values:
+	// The token for the next query. Valid values:
 	//
-	// 	- You do not need to specify this parameter for the first request.
+	// - For the first query or when no subsequent query is required, leave this parameter empty.
 	//
-	// 	- You must specify the token that is obtained from the previous query as the value of NextToken.
+	// - If a subsequent query is required, set the value to the NextToken value returned from the previous API call.
 	//
 	// example:
 	//
 	// FF9nMec/RZ6H9oqFn1pvyir/SLRlxCCyHJonbGzqL01hiM6Jb3wJowdHvjCfog7ww1b9rSHMRFJnrUBfVba68TJg==
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The ID of the next-hop instance.
+	// The next hop instance ID.
 	//
 	// example:
 	//
-	// br-hp3u4u5f03tfuljis****
+	// vbr-hp3u4u5f03tfuljis****
 	NexthopInstanceId *string `json:"NexthopInstanceId,omitempty" xml:"NexthopInstanceId,omitempty"`
-	// The region ID of the ECR.
+	// The region where the Express Connect Router (ECR) instance resides.
 	//
 	// example:
 	//

@@ -42,9 +42,9 @@ type DescribeExpressConnectRouterAssociationResponseBody struct {
 	//
 	// Authentication is failed for ****
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	// The associated resources.
+	// The list of associated resources.
 	AssociationList []*DescribeExpressConnectRouterAssociationResponseBodyAssociationList `json:"AssociationList,omitempty" xml:"AssociationList,omitempty" type:"Repeated"`
-	// The response code. The status code 200 indicates that the request was successful. Other status codes indicate that the request failed. For more information, see Error codes.
+	// The status code. A value of 200 indicates that the call was successful. Other values indicate that the call failed. For more information about the causes of failures, see Error codes.
 	//
 	// example:
 	//
@@ -56,9 +56,9 @@ type DescribeExpressConnectRouterAssociationResponseBody struct {
 	//
 	// IllegalParamFormat.EcrId
 	DynamicCode *string `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
-	// The dynamic part in the error message. This parameter is used to replace the `%s` variable in **ErrMessage**.
+	// The dynamic error message, which is used to replace `%s` in the **ErrMessage*	- error message.
 	//
-	// >  For example, if the value of **ErrMessage*	- is **The Value of Input Parameter %s is not valid*	- and the value of DynamicMessage is **DtsJobId**, the request parameter **DtsJobId*	- is invalid.
+	// > If **ErrMessage*	- returns **The Value of Input Parameter %s is not valid*	- and **DynamicMessage*	- returns **DtsJobId**, the specified **DtsJobId*	- request parameter is invalid.
 	//
 	// example:
 	//
@@ -70,7 +70,7 @@ type DescribeExpressConnectRouterAssociationResponseBody struct {
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The total number of entries returned. Valid values: 1 to 2147483647. Default value: 20.
+	// The maximum number of entries to return. Valid values: 1 to 2147483647. Default value: 20.
 	//
 	// example:
 	//
@@ -82,11 +82,11 @@ type DescribeExpressConnectRouterAssociationResponseBody struct {
 	//
 	// OK
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// A pagination token. It can be used in the next request to retrieve a new page of results. Valid values:
+	// The token for the next query. Valid values:
 	//
-	// 	- If **NextToken*	- is empty, no next page exists.
+	// - If **NextToken*	- is empty, no next query is required.
 	//
-	// 	- If a value of **NextToken*	- is returned, the value indicates the token that is used for the next query.
+	// - If **NextToken*	- is returned, the value indicates the token for the next query.
 	//
 	// example:
 	//
@@ -98,11 +98,11 @@ type DescribeExpressConnectRouterAssociationResponseBody struct {
 	//
 	// 05130E79-588D-5C40-A718-C4863A59****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. Valid values:
+	// Indicates whether the call was successful. Valid values:
 	//
-	// 	- **true**
+	// - **True**: successful.
 	//
-	// 	- **false**
+	// - **False**: failed.
 	//
 	// example:
 	//
@@ -246,19 +246,19 @@ func (s *DescribeExpressConnectRouterAssociationResponseBody) Validate() error {
 }
 
 type DescribeExpressConnectRouterAssociationResponseBodyAssociationList struct {
-	// The allowed route prefixes.
+	// The allowed route prefix list.
 	AllowedPrefixes []*string `json:"AllowedPrefixes,omitempty" xml:"AllowedPrefixes,omitempty" type:"Repeated"`
-	// The prefix route mode. Valid values:
+	// The prefix routing mode. Valid values:
 	//
-	// 	- MatchMode
+	// - MatchMode: match mode.
 	//
-	// 	- IncrementalMode
+	// - IncrementalMode: incremental mode.
 	//
 	// example:
 	//
 	// MatchMode
 	AllowedPrefixesMode *string `json:"AllowedPrefixesMode,omitempty" xml:"AllowedPrefixesMode,omitempty"`
-	// The ID of the association between the ECR and the VPC or TR.
+	// The ID used to associate the Express Connect Router (ECR) with a VPC or TR.
 	//
 	// example:
 	//
@@ -266,15 +266,15 @@ type DescribeExpressConnectRouterAssociationResponseBodyAssociationList struct {
 	AssociationId *string `json:"AssociationId,omitempty" xml:"AssociationId,omitempty"`
 	// The type of the associated resource. Valid values:
 	//
-	// 	- **VPC**
+	// - **VPC**: VPC.
 	//
-	// 	- **TR**
+	// - **TR**: transit router.
 	//
 	// example:
 	//
 	// VPC
 	AssociationNodeType *string `json:"AssociationNodeType,omitempty" xml:"AssociationNodeType,omitempty"`
-	// The ID of the CEN instance.
+	// The instance ID of the Cloud Enterprise Network (CEN).
 	//
 	// example:
 	//
@@ -286,78 +286,89 @@ type DescribeExpressConnectRouterAssociationResponseBodyAssociationList struct {
 	//
 	// test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The ECR ID.
+	// The instance ID of the Express Connect Router (ECR).
 	//
 	// example:
 	//
 	// ecr-fu8rszhgv7623c****
 	EcrId *string `json:"EcrId,omitempty" xml:"EcrId,omitempty"`
-	// The time when the association was created. The time follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ssZ format. The time is displayed in UTC.
+	// The time when the association was created. The time is displayed in UTC and follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ssZ format.
 	//
 	// example:
 	//
 	// 2024-01-09T12:18:23Z
 	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	// The time when the association was modified. The time follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ssZ format. The time is displayed in UTC.
+	// The time when the association was modified. The time is displayed in UTC and follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ssZ format.
 	//
 	// example:
 	//
 	// 2024-01-09T12:18:23Z
 	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	// The ID of the Alibaba Cloud account that owns the resource.
+	// The Alibaba Cloud account ID to which the resource belongs.
 	//
 	// example:
 	//
 	// 167509154715****
 	OwnerId *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The region ID of the resource.
+	// The region where the resource resides.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The deployment state of the associated resource. Valid values:
+	// The deployment status of the associated resource. Valid values:
 	//
-	// 	- **CREATING**: The resource is being created.
+	// - **CREATING**: The resource is being created.
 	//
-	// 	- **ACTIVE**: The resource is created.
+	// - **ACTIVE**: The resource is created.
 	//
-	// 	- **INACTIVE**: The TR is pending to be associated with the ECR.
+	// - **INACTIVE**: The Express Connect Router (ECR) is associated with the transit router, and the transit router is pending association with the ECR for forward routing.
 	//
-	// 	- **ASSOCIATING**: The resource is being associated.
+	// - **ASSOCIATING**: The resource is being attached.
 	//
-	// 	- **DISSOCIATING**: The resource is being disassociated.
+	// - **DISSOCIATING**: The resource is being disassociated.
 	//
-	// 	- **UPDATING**: The resource is being modified.
+	// - **UPDATING**: The resource is being modified.
 	//
-	// 	- **DELETING**: The resource is being deleted.
+	// - **DELETING**: The resource is being deleted.
 	//
 	// example:
 	//
 	// ACTIVE
-	Status *string                                                                   `json:"Status,omitempty" xml:"Status,omitempty"`
-	Tags   []*DescribeExpressConnectRouterAssociationResponseBodyAssociationListTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
-	// The TR ID.
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The list of tags added to the associated resource.
+	Tags []*DescribeExpressConnectRouterAssociationResponseBodyAssociationListTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
+	// The ID of the transit router.
 	//
 	// example:
 	//
 	// tr-2ze4i71c6be454e2l****
-	TransitRouterId   *string `json:"TransitRouterId,omitempty" xml:"TransitRouterId,omitempty"`
+	TransitRouterId *string `json:"TransitRouterId,omitempty" xml:"TransitRouterId,omitempty"`
+	// The name of the transit router.
+	//
+	// example:
+	//
+	// test
 	TransitRouterName *string `json:"TransitRouterName,omitempty" xml:"TransitRouterName,omitempty"`
-	// The ID of the Alibaba Cloud account that owns the TR.
+	// The Alibaba Cloud account ID to which the transit router for forward routing belongs.
 	//
 	// example:
 	//
 	// 189159362009****
 	TransitRouterOwnerId *int64 `json:"TransitRouterOwnerId,omitempty" xml:"TransitRouterOwnerId,omitempty"`
-	// The VPC ID.
+	// The ID of the VPC-connected instance.
 	//
 	// example:
 	//
 	// vpc-2zeeaxet4i2j1a7n7****
-	VpcId   *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	// The name of the VPC-connected instance.
+	//
+	// example:
+	//
+	// test
 	VpcName *string `json:"VpcName,omitempty" xml:"VpcName,omitempty"`
-	// The ID of the Alibaba Cloud account to which the VPC belongs.
+	// The Alibaba Cloud account ID to which the VPC belongs.
 	//
 	// example:
 	//
@@ -558,7 +569,17 @@ func (s *DescribeExpressConnectRouterAssociationResponseBodyAssociationList) Val
 }
 
 type DescribeExpressConnectRouterAssociationResponseBodyAssociationListTags struct {
-	Key   *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag key.
+	//
+	// example:
+	//
+	// TestKey
+	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
+	// The tag value.
+	//
+	// example:
+	//
+	// TestValue
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 

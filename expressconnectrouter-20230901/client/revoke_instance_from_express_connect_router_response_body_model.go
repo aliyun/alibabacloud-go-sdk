@@ -28,13 +28,13 @@ type iRevokeInstanceFromExpressConnectRouterResponseBody interface {
 }
 
 type RevokeInstanceFromExpressConnectRouterResponseBody struct {
-	// The details about the access denial.
+	// The access denial details.
 	//
 	// example:
 	//
 	// Authentication is failed for ****
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	// The response code. The status code 200 indicates that the request was successful. Other status codes indicate that the request failed. For more information, see Error codes.
+	// The response code. A value of 200 indicates success. Other values indicate failure. For more information, see error codes.
 	//
 	// example:
 	//
@@ -46,9 +46,9 @@ type RevokeInstanceFromExpressConnectRouterResponseBody struct {
 	//
 	// IllegalParamFormat.EcrId
 	DynamicCode *string `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
-	// The dynamic part in the error message. This parameter is used to replace the `%s` variable in **ErrMessage**.
+	// The dynamic error message, which is used to replace the `%s` placeholder in the **ErrMessage*	- parameter.
 	//
-	// >  For example, if the value of **ErrMessage*	- is **The Value of Input Parameter %s is not valid*	- and the value of **DynamicMessage*	- is **DtsJobId**, the request parameter **DtsJobId*	- is invalid.
+	// > If **ErrMessage*	- returns **The Value of Input Parameter %s is not valid*	- and **DynamicMessage*	- returns **DtsJobId**, the request parameter **DtsJobId*	- is invalid.
 	//
 	// example:
 	//
@@ -72,11 +72,11 @@ type RevokeInstanceFromExpressConnectRouterResponseBody struct {
 	//
 	// 6FABF516-FED3-5697-BDA2-B18C5D9A****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. Valid values:
+	// Indicates whether the authorization of the network instance is revoked. Valid values:
 	//
-	// 	- **true**
+	// - **true**: The authorization is revoked.
 	//
-	// 	- **false**
+	// - **false**: The authorization failed to be revoked.
 	//
 	// example:
 	//

@@ -36,13 +36,13 @@ type iDescribeExpressConnectRouterResponseBody interface {
 }
 
 type DescribeExpressConnectRouterResponseBody struct {
-	// The details about the access denial.
+	// The details of the access denial.
 	//
 	// example:
 	//
 	// Authentication is failed for ****
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	// The response code. The status code 200 indicates that the request was successful. Other status codes indicate that the request failed. For more information, see Error codes.
+	// Indicates whether the call was successful. A return value of 200 indicates success, while other values indicate failure. For the cause of failure, see the error codes.
 	//
 	// example:
 	//
@@ -54,15 +54,15 @@ type DescribeExpressConnectRouterResponseBody struct {
 	//
 	// IllegalParamFormat.Name
 	DynamicCode *string `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
-	// The dynamic part in the error message. This parameter is used to replace the `%s` variable in **ErrMessage**.
+	// The dynamic error message, which is used to replace `%s` in the **ErrMessage*	- error message.
 	//
-	// >  For example, if the value of **ErrMessage*	- is **The Value of Input Parameter %s is not valid*	- and the value of **DynamicMessage*	- is **DtsJobId**, the request parameter **DtsJobId*	- is invalid.
+	// > If **ErrMessage*	- returns **The Value of Input Parameter %s is not valid*	- and **DynamicMessage*	- returns **DtsJobId**, it indicates that the **DtsJobId*	- request parameter is invalid.
 	//
 	// example:
 	//
 	// The param format of Name ***	- is illegal.
 	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
-	// The ECRs.
+	// The list of Express Connect Router (ECR) instances.
 	EcrList []*DescribeExpressConnectRouterResponseBodyEcrList `json:"EcrList,omitempty" xml:"EcrList,omitempty" type:"Repeated"`
 	// The HTTP status code.
 	//
@@ -70,23 +70,23 @@ type DescribeExpressConnectRouterResponseBody struct {
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The total number of entries returned. Valid values: 1 to 2147483647. Default value: 20.
+	// The maximum number of entries to return. Valid values: 1 to 2147483647. Default value: 20.
 	//
 	// example:
 	//
-	// 10
+	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The returned message.
+	// The message returned for the operation.
 	//
 	// example:
 	//
 	// OK
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// A pagination token. It can be used in the next request to retrieve a new page of results. Valid values:
+	// The token for the next query. Valid values:
 	//
-	// 	- If NextToken is empty, no next page exists.
+	// - If NextToken is empty, no next query is available.
 	//
-	// 	- If a value of NextToken is returned, the value indicates the token that is used for the next query.
+	// - If NextToken has a return value, the value indicates the token for the next query.
 	//
 	// example:
 	//
@@ -98,17 +98,17 @@ type DescribeExpressConnectRouterResponseBody struct {
 	//
 	// 6FABF516-FED3-5697-BDA2-B18C5D9A****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. Valid values:
+	// Indicates whether the query for created ECR instances was successful. Valid values:
 	//
-	// 	- **true**
+	// - **True**: The query was successful.
 	//
-	// 	- **false**
+	// - **False**: The query failed.
 	//
 	// example:
 	//
 	// True
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// The total number of ECRs.
+	// The total number of Express Connect Router (ECR) instances.
 	//
 	// example:
 	//
@@ -246,87 +246,87 @@ func (s *DescribeExpressConnectRouterResponseBody) Validate() error {
 }
 
 type DescribeExpressConnectRouterResponseBodyEcrList struct {
-	// The autonomous system number (ASN) of the ECR.
+	// The ASN of the Express Connect Router (ECR) instance.
 	//
 	// example:
 	//
 	// 45104
 	AlibabaSideAsn *int64 `json:"AlibabaSideAsn,omitempty" xml:"AlibabaSideAsn,omitempty"`
-	// The business state of the ECR. Valid values:
+	// The business status of the service instance. Valid values:
 	//
-	// 	- **Normal:*	- The ECR is running as expected.
+	// - **Normal**: Normal.
 	//
-	// 	- **FinancialLocked**: The ECR is locked due to overdue payments.
+	// - **FinancialLocked**: Locked due to overdue payment.
 	//
 	// example:
 	//
 	// Normal
 	BizStatus *string `json:"BizStatus,omitempty" xml:"BizStatus,omitempty"`
-	// The description of the ECR.
+	// The description of the Express Connect Router (ECR) instance.
 	//
 	// example:
 	//
 	// test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The ECR ID.
+	// The ID of the Express Connect Router (ECR) instance.
 	//
 	// example:
 	//
 	// ecr-mezk2idmsd0vx2****
 	EcrId *string `json:"EcrId,omitempty" xml:"EcrId,omitempty"`
-	// The time when the ECR was created. The time follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ssZ format. The time is displayed in UTC.
+	// The time when the Express Connect Router (ECR) instance was created. The time is displayed in UTC and follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ssZ format.
 	//
 	// example:
 	//
 	// 2023-02-16T01:44:50Z
 	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	// The time when the ECR was modified. The time follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ssZ format. The time is displayed in UTC.
+	// The time when the Express Connect Router (ECR) instance was modified. The time is displayed in UTC and follows the ISO 8601 standard in the YYYY-MM-DDThh:mm:ssZ format.
 	//
 	// example:
 	//
 	// 2023-02-16T01:44:50Z
 	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	// The name of the ECR.
+	// The name of the Express Connect Router (ECR) instance.
 	//
 	// example:
 	//
 	// test
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The ID of the Alibaba Cloud account that owns the ECR.
+	// The Alibaba Cloud account ID to which the Express Connect Router (ECR) instance belongs.
 	//
 	// example:
 	//
 	// 170646818729****
 	OwnerId *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The ID of the resource group to which the ECR belongs.
+	// The ID of the resource group to which the Express Connect Router (ECR) instance belongs.
 	//
 	// example:
 	//
 	// rg-aekzuscospt****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The deployment state of the ECR. Valid values:
+	// The deployment status of the service instance. Valid values:
 	//
-	// 	- **ACTIVE**: The ECR is created.
+	// - **ACTIVE**: Created.
 	//
-	// 	- **UPDATING**: The ECR is being modified.
+	// - **UPDATING**: Updating.
 	//
-	// 	- **ASSOCIATING**: The ECR is being associated with resources.
+	// - **ASSOCIATING**: Associating resources.
 	//
-	// 	- **DISSOCIATING**: The resource is being disassociated from resources.
+	// - **DISSOCIATING**: Dissociating resources.
 	//
-	// 	- **LOCKED_ATTACHING**: The ECR is locked because it is being associated with an external system.
+	// - **LOCKED_ATTACHING**: Locked for association by an external system.
 	//
-	// 	- **LOCKED_DETACHING**: The ECR is locked because it is being disassociated from an external system.
+	// - **LOCKED_DETACHING**: Locked for dissociation by an external system.
 	//
-	// 	- **RECLAIMING**: The ECR is waiting to release resources.
+	// - **RECLAIMING**: Pending resource release.
 	//
-	// 	- **DELETING**: The ECR is being deleted.
+	// - **DELETING**: Deleting.
 	//
 	// example:
 	//
 	// Active
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The tags.
+	// The list of tags.
 	Tags []*DescribeExpressConnectRouterResponseBodyEcrListTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 }
 
@@ -451,13 +451,13 @@ func (s *DescribeExpressConnectRouterResponseBodyEcrList) Validate() error {
 }
 
 type DescribeExpressConnectRouterResponseBodyEcrListTags struct {
-	// The tag key.
+	// The tag key of the Express Connect Router (ECR) instance.
 	//
 	// example:
 	//
 	// test
 	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
-	// The tag value.
+	// The tag value of the Express Connect Router (ECR) instance.
 	//
 	// example:
 	//

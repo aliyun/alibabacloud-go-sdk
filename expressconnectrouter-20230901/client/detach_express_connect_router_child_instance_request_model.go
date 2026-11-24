@@ -24,7 +24,7 @@ type iDetachExpressConnectRouterChildInstanceRequest interface {
 }
 
 type DetachExpressConnectRouterChildInstanceRequest struct {
-	// The VBR ID.
+	// The VBR instance ID.
 	//
 	// This parameter is required.
 	//
@@ -32,7 +32,7 @@ type DetachExpressConnectRouterChildInstanceRequest struct {
 	//
 	// vbr-j6cwxhgg0s5nuephp****
 	ChildInstanceId *string `json:"ChildInstanceId,omitempty" xml:"ChildInstanceId,omitempty"`
-	// The type of the network instance. Set the value to **VBR**.
+	// The type of the network instance. Valid value: **VBR*	- (virtual border router).
 	//
 	// This parameter is required.
 	//
@@ -42,25 +42,25 @@ type DetachExpressConnectRouterChildInstanceRequest struct {
 	ChildInstanceType *string `json:"ChildInstanceType,omitempty" xml:"ChildInstanceType,omitempty"`
 	// The client token that is used to ensure the idempotence of the request.
 	//
-	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
+	// You can generate the value from your client and make sure that the value is unique across different requests. The client token only supports ASCII characters.
 	//
-	// >  If you do not specify this parameter, the system automatically uses the **request ID*	- as the **client token**. The **request ID*	- may be different for each request.
+	// > If you do not specify this parameter, the system automatically uses the **RequestId*	- of the API request as the **ClientToken**. The **RequestId*	- of each API request is different.
 	//
 	// example:
 	//
 	// 02fb3da4-130e-11e9-8e44-00****
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// Specifies whether to perform only a dry run, without performing the actual request. Valid values:
+	// Specifies whether to perform a dry run for this request. Valid values:
 	//
-	// 	- **true**: performs only a dry run.
+	// - **true**: sends a check request without modifying service resources.
 	//
-	// 	- **false*	- (default): performs a dry run and performs the actual request.
+	// - **false*	- (default): sends a normal request.
 	//
 	// example:
 	//
 	// true
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	// The ECR ID.
+	// The ECR instance ID.
 	//
 	// This parameter is required.
 	//

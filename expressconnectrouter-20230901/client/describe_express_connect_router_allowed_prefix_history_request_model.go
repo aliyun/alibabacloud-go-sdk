@@ -26,9 +26,9 @@ type iDescribeExpressConnectRouterAllowedPrefixHistoryRequest interface {
 }
 
 type DescribeExpressConnectRouterAllowedPrefixHistoryRequest struct {
-	// The ID of the association between the ECR and the virtual private cloud (VPC) or transit router (TR).
+	// The instance ID of the VPC or transit router (TR) associated with the Express Connect Router (ECR) for forward routing.
 	//
-	// >  You must specify either **InstanceId*	- or **AssociationId**.
+	// > You must specify either the **InstanceId*	- parameter or the **AssociationId*	- parameter.
 	//
 	// example:
 	//
@@ -36,25 +36,25 @@ type DescribeExpressConnectRouterAllowedPrefixHistoryRequest struct {
 	AssociationId *string `json:"AssociationId,omitempty" xml:"AssociationId,omitempty"`
 	// The client token that is used to ensure the idempotence of the request.
 	//
-	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
+	// You can generate the value from your client to ensure that the value is unique among different requests. The client token can contain only ASCII characters.
 	//
-	// >  If you do not specify this parameter, the system automatically uses the **request ID*	- as the **client token**. The **request ID*	- may be different for each request.
+	// > If you do not specify this parameter, the system automatically uses the **RequestId*	- of the API request as the **ClientToken**. The **RequestId*	- of each API request is unique.
 	//
 	// example:
 	//
 	// FF9nMec/RZ6H9oqFn1pvyir/SLRlxCCyHJonbGzqL01hiM6Jb3wJowdHvjCfog7ww1b9rSHMRFJnrUBfVba68TJg==
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// Specifies whether to perform only a dry run, without performing the actual request. Valid values:
+	// Specifies whether it is only a dry run for this request. Valid values:
 	//
-	// 	- **true**: performs only a dry run.
+	// - **true**: Performs a dry run for the request without modifying EPS resources.
 	//
-	// 	- **false*	- (default): performs a dry run and performs the actual request.
+	// - **false*	- (default): Sends a normal request.
 	//
 	// example:
 	//
 	// true
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	// The ECR ID.
+	// The instance ID of the Express Connect Router (ECR).
 	//
 	// This parameter is required.
 	//
@@ -62,9 +62,9 @@ type DescribeExpressConnectRouterAllowedPrefixHistoryRequest struct {
 	//
 	// ecr-mezk2idmsd0vx2****
 	EcrId *string `json:"EcrId,omitempty" xml:"EcrId,omitempty"`
-	// The ID of the network instance that is associated with the ECR.
+	// The instance ID to load into the Express Connect Router (ECR).
 	//
-	// >  You must specify either **InstanceId*	- or **AssociationId**.
+	// > You must specify either the **InstanceId*	- parameter or the **AssociationId*	- parameter.
 	//
 	// example:
 	//
@@ -72,9 +72,9 @@ type DescribeExpressConnectRouterAllowedPrefixHistoryRequest struct {
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The type of the network instance. Valid values:
 	//
-	// 	- **VPC**
+	// - **VPC**: VPC instance.
 	//
-	// 	- **TR**
+	// - **TR**: Transit router instance.
 	//
 	// example:
 	//

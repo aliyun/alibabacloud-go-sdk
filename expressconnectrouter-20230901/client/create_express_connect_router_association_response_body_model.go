@@ -30,19 +30,19 @@ type iCreateExpressConnectRouterAssociationResponseBody interface {
 }
 
 type CreateExpressConnectRouterAssociationResponseBody struct {
-	// The details about the access denial.
+	// The details of the access denial.
 	//
 	// example:
 	//
 	// Authentication is failed for ****
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	// The ID of the association between the ECR and the VPC or TR.
+	// The ID used to associate the Express Connect Router (ECR) with a VPC or TR.
 	//
 	// example:
 	//
 	// ecr-assoc-9p2qxx5phpca2m****
 	AssociationId *string `json:"AssociationId,omitempty" xml:"AssociationId,omitempty"`
-	// The response code. The status code 200 indicates that the request was successful. Other status codes indicate that the request failed. For more information, see Error codes.
+	// Indicates whether the call was successful. A return value of 200 indicates that the attachment was successful. Any other value indicates that the attachment failed. For more information about the failure causes, see Error codes.
 	//
 	// example:
 	//
@@ -54,9 +54,9 @@ type CreateExpressConnectRouterAssociationResponseBody struct {
 	//
 	// IllegalParamFormat.EcrId
 	DynamicCode *string `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
-	// The dynamic part in the error message. This parameter is used to replace the `%s` variable in **ErrMessage**.
+	// The dynamic error message, which is used to replace `%s` in the **ErrMessage*	- error message.
 	//
-	// >  For example, if the value of **ErrMessage*	- is **The Value of Input Parameter %s is not valid*	- and the value of **DynamicMessage*	- is **DtsJobId**, the request parameter **DtsJobId*	- is invalid.
+	// > If **ErrMessage*	- returns **The Value of Input Parameter %s is not valid*	- and **DynamicMessage*	- returns **DtsJobId**, it indicates that the **DtsJobId*	- request parameter is invalid.
 	//
 	// example:
 	//
@@ -68,7 +68,7 @@ type CreateExpressConnectRouterAssociationResponseBody struct {
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The returned message.
+	// The message returned by the operation.
 	//
 	// example:
 	//
@@ -80,11 +80,11 @@ type CreateExpressConnectRouterAssociationResponseBody struct {
 	//
 	// 05130E79-588D-5C40-A718-C4863A59****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. Valid values:
+	// Indicates whether the call was successful. Valid values:
 	//
-	// 	- **true**
+	// - **True**: The call was successful.
 	//
-	// 	- **false**
+	// - **False**: The call failed.
 	//
 	// example:
 	//

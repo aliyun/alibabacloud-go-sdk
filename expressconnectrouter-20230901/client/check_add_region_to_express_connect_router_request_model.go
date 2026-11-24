@@ -24,25 +24,25 @@ type iCheckAddRegionToExpressConnectRouterRequest interface {
 type CheckAddRegionToExpressConnectRouterRequest struct {
 	// The client token that is used to ensure the idempotence of the request.
 	//
-	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
+	// You can generate the parameter value on your client and ensure that the value is unique across different requests. The ClientToken parameter only supports ASCII characters.
 	//
-	// >  If you do not specify this parameter, the system automatically uses the **request ID*	- as the **client token**. The **request ID*	- may be different for each request.
+	// > If you do not specify this parameter, the system automatically uses the **RequestId*	- of the API request as the **ClientToken**. The **RequestId*	- of each API request is different.
 	//
 	// example:
 	//
 	// 02fb3da4-130e-11e9-8e44-00****
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// Specifies whether to perform only a dry run, without performing the actual request. Valid values:
+	// Specifies whether to perform only a dry run on this request. Valid values:
 	//
-	// 	- true: performs only a dry run.
+	// - true: sends a check request and does not modify EPS resources.
 	//
-	// 	- false (default): performs a dry run and performs the actual request.
+	// - false: sends a normal request. This is the default value.
 	//
 	// example:
 	//
 	// false
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	// The ECR ID.
+	// The instance ID of the Express Connect Router (ECR).
 	//
 	// This parameter is required.
 	//
@@ -50,7 +50,7 @@ type CheckAddRegionToExpressConnectRouterRequest struct {
 	//
 	// ecr-fu8rszhgv7623c****
 	EcrId *string `json:"EcrId,omitempty" xml:"EcrId,omitempty"`
-	// The ID of the region for which you want to check whether the CDT service is enabled for the ECR feature.
+	// The region for which you want to check whether the Cloud Data Transfer (CDT) service is enabled for the Express Connect Router (ECR) feature.
 	//
 	// This parameter is required.
 	//

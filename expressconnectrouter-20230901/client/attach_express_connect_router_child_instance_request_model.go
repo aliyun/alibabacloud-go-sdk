@@ -30,7 +30,7 @@ type iAttachExpressConnectRouterChildInstanceRequest interface {
 }
 
 type AttachExpressConnectRouterChildInstanceRequest struct {
-	// The VBR ID.
+	// The ID of the VBR instance.
 	//
 	// This parameter is required.
 	//
@@ -38,15 +38,15 @@ type AttachExpressConnectRouterChildInstanceRequest struct {
 	//
 	// vbr-j6cwxhgg0s5nuephp****
 	ChildInstanceId *string `json:"ChildInstanceId,omitempty" xml:"ChildInstanceId,omitempty"`
-	// The ID of the Alibaba Cloud account to which the VBR belongs.
+	// The Alibaba Cloud account ID of the account to which the VBR instance belongs.
 	//
-	// >  If you want to connect to a network instance that belongs to a different account, this parameter is required.
+	// > If you want to load a network instance that belongs to a different Alibaba Cloud account, this parameter is required.
 	//
 	// example:
 	//
-	// 190550144868****
+	// 1905501448682345
 	ChildInstanceOwnerId *int64 `json:"ChildInstanceOwnerId,omitempty" xml:"ChildInstanceOwnerId,omitempty"`
-	// The region ID of the VBR.
+	// The region ID of the VBR instance.
 	//
 	// This parameter is required.
 	//
@@ -54,7 +54,7 @@ type AttachExpressConnectRouterChildInstanceRequest struct {
 	//
 	// cn-hangzhou
 	ChildInstanceRegionId *string `json:"ChildInstanceRegionId,omitempty" xml:"ChildInstanceRegionId,omitempty"`
-	// The type of the network instance. Set the value to **VBR**.
+	// The type of the network instance. Valid value: **VBR*	- (Virtual Border Router).
 	//
 	// This parameter is required.
 	//
@@ -64,31 +64,31 @@ type AttachExpressConnectRouterChildInstanceRequest struct {
 	ChildInstanceType *string `json:"ChildInstanceType,omitempty" xml:"ChildInstanceType,omitempty"`
 	// The client token that is used to ensure the idempotence of the request.
 	//
-	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
+	// You can use the client to generate the value, but you must ensure that it is unique among different requests. The client token can contain only ASCII characters.
 	//
-	// >  If you do not specify this parameter, the system automatically uses the **request ID*	- as the **client token**. The **request ID*	- may be different for each request.
+	// > If you do not specify this parameter, the system automatically uses the **RequestId*	- of the API request as the **ClientToken**. The **RequestId*	- of each API request is unique.
 	//
 	// example:
 	//
 	// 02fb3da4-130e-11e9-8e44-00****
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// The description of the sub-instance. It must be 0 to 128 characters in length.
+	// The description of the child instance. The description must be 0 to 128 characters in length.
 	//
 	// example:
 	//
 	// test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// Specifies whether to perform only a dry run, without performing the actual request. Valid values:
+	// Specifies whether it is only a dry run for this request. Valid values:
 	//
-	// 	- **true**: performs only a dry run.
+	// - **true**: performs a dry run for the request without modifying EPS resources.
 	//
-	// 	- **false*	- (default): performs a dry run and performs the actual request.
+	// - **false*	- (default): sends a normal request.
 	//
 	// example:
 	//
 	// true
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	// The ECR ID.
+	// The instance ID of the Express Connect Router (ECR).
 	//
 	// This parameter is required.
 	//

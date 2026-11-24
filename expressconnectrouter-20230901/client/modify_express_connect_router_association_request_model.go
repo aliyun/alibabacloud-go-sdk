@@ -24,24 +24,44 @@ type iModifyExpressConnectRouterAssociationRequest interface {
 }
 
 type ModifyExpressConnectRouterAssociationRequest struct {
+	// The ID used to associate the Express Connect Router (ECR) with a VPC or transit router.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ecr-assoc-9p2qxx5phpca2m****
 	AssociationId *string `json:"AssociationId,omitempty" xml:"AssociationId,omitempty"`
+	// The client token that is used to ensure the idempotence of the request.
+	//
+	// You can generate the parameter value from your client to ensure that the value is unique among different requests. The client token supports only ASCII characters.
+	//
+	// >
+	//
+	// > - If you do not specify this parameter, the system automatically uses the RequestId of the API request as the client token. The RequestId of each API request is different.
+	//
 	// example:
 	//
 	// 02fb3da4-130e-11e9-8e44-00****
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The description of the child instance. The description must be 0 to 128 characters in length.
+	//
 	// example:
 	//
 	// test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// Specifies whether to perform a dry run for this request. Valid values:
+	//
+	// - true: Sends a dry run request without modifying any service resources.
+	//
+	// - false (default): Sends a normal request.
+	//
 	// example:
 	//
 	// true
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	// The instance ID of the Express Connect Router (ECR).
+	//
 	// This parameter is required.
 	//
 	// example:

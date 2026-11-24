@@ -28,7 +28,7 @@ type iCreateExpressConnectRouterRequest interface {
 }
 
 type CreateExpressConnectRouterRequest struct {
-	// The autonomous system number (ASN) of the ECR. Valid values: 45104, 64512 to 65534, and 4200000000 to 4294967294. Default value: 45104. The value 65025 is reserved by Alibaba Cloud.
+	// The Autonomous System Number (ASN) of the Express Connect Router (ECR) instance. Valid values: 45104 (default), 64512 to 65534, and 4200000000 to 4294967294. The value 65025 is reserved by Alibaba Cloud.
 	//
 	// This parameter is required.
 	//
@@ -38,49 +38,49 @@ type CreateExpressConnectRouterRequest struct {
 	AlibabaSideAsn *int64 `json:"AlibabaSideAsn,omitempty" xml:"AlibabaSideAsn,omitempty"`
 	// The client token that is used to ensure the idempotence of the request.
 	//
-	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters.
+	// You can generate the token from your client to ensure that the token is unique across different requests. The ClientToken parameter supports only ASCII characters.
 	//
-	// >  If you do not specify this parameter, the system automatically uses the **request ID*	- as the **client token**. The **request ID*	- may be different for each request.
+	// > If you do not specify this parameter, the system automatically uses the **RequestId*	- of the API request as the **ClientToken**. The **RequestId*	- of each API request is unique.
 	//
 	// example:
 	//
 	// 02fb3da4-130e-11e9-8e44-00****
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// The description of the ECR.
+	// The description of the Express Connect Router (ECR) instance.
 	//
-	// >  The description can be empty or 0 to 256 characters in length and cannot start with http:// or https://.
+	// > The description can be empty or 0 to 256 characters in length, and cannot start with http:// or https://.
 	//
 	// example:
 	//
 	// test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// Specifies whether to perform only a dry run, without performing the actual request. Valid values:
+	// Specifies whether it is only a dry run for this request. Valid values:
 	//
-	// 	- **true**: performs only a dry run.
+	// - **true**: Sends a check request without modifying service resources.
 	//
-	// 	- **false*	- (default): performs a dry run and performs the actual request.
+	// - **false*	- (default): Sends a normal request.
 	//
 	// example:
 	//
 	// false
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	// The name of the ECR.
+	// The name of the Express Connect Router (ECR) instance.
 	//
-	// >  The name must be 0 to 128 characters in length, and cannot start with http:// or https://.
+	// > The name can be empty or 0 to 128 characters in length, and cannot start with http:// or https://.
 	//
 	// example:
 	//
 	// test
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The ID of the resource group to which the ECR belongs.
+	// The ID of the resource group to which the Express Connect Router (ECR) instance belongs.
 	//
 	// example:
 	//
 	// rg-acfmvvajg5q****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The information about the tags.
+	// The tags.
 	//
-	// You can specify at most 20 tags in each call.
+	// You can add up to 20 tags.
 	Tag     []*CreateExpressConnectRouterRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 	Version *string                                 `json:"Version,omitempty" xml:"Version,omitempty"`
 }
@@ -179,17 +179,13 @@ func (s *CreateExpressConnectRouterRequest) Validate() error {
 }
 
 type CreateExpressConnectRouterRequestTag struct {
-	// The tag key. You can specify up to 20 tag keys. The tag key cannot be an empty string.
-	//
-	// The tag key can be up to 128 characters in length. It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
+	// The tag key of the resource. If you specify this parameter, it cannot be an empty string. The tag key can be up to 128 characters in length, and cannot start with `aliyun` or `acs:`, or contain `http://` or `https://`.
 	//
 	// example:
 	//
 	// TestKey
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The value of the tag. You can specify up to 20 tag values. The tag value can be an empty string.
-	//
-	// The tag value can be up to 128 characters in length and cannot start with `acs:` or `aliyun`. It cannot contain `http://` or `https://`.
+	// The tag value of the listener. Valid values of N: **1*	- to **20**. If specified, the value can be an empty string. The value can be up to 128 characters in length. It cannot start with `acs:` and cannot contain `http://` or `https://`.
 	//
 	// example:
 	//

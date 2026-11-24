@@ -28,13 +28,13 @@ type iModifyExpressConnectRouterResponseBody interface {
 }
 
 type ModifyExpressConnectRouterResponseBody struct {
-	// The details about the access denial.
+	// The details of the access denial.
 	//
 	// example:
 	//
 	// Authentication is failed for ****
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	// The response code. The status code 200 indicates that the request was successful. Other status codes indicate that the request failed. For more information, see Error codes.
+	// The response code. A value of 200 indicates that the request was successful. For more information about other error codes, see the "Error codes" section.
 	//
 	// example:
 	//
@@ -46,9 +46,9 @@ type ModifyExpressConnectRouterResponseBody struct {
 	//
 	// IllegalParamFormat.Name
 	DynamicCode *string `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
-	// The dynamic part in the error message. This parameter is used to replace the `%s` variable in **ErrMessage**.
+	// The dynamic error message that is used to replace the `%s` placeholder in the **ErrMessage*	- parameter.
 	//
-	// >  For example, if the value of **ErrMessage*	- is **The Value of Input Parameter %s is not valid*	- and the value of **DynamicMessage*	- is **DtsJobId**, the request parameter **DtsJobId*	- is invalid.
+	// > If **ErrMessage*	- returns **The Value of Input Parameter %s is not valid*	- and **DynamicMessage*	- returns **DtsJobId**, it indicates that the specified **DtsJobId*	- parameter is invalid.
 	//
 	// example:
 	//
@@ -72,11 +72,11 @@ type ModifyExpressConnectRouterResponseBody struct {
 	//
 	// 6FABF516-FED3-5697-BDA2-B18C5D9A****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful Valid values:
+	// Indicates whether the ECR instance was successfully modified. Valid values:
 	//
-	// 	- **true**
+	// - **true**: The instance was modified.
 	//
-	// 	- **false**
+	// - **false**: The modification failed.
 	//
 	// example:
 	//

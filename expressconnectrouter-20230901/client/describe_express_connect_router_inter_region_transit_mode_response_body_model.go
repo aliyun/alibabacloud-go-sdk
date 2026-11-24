@@ -36,7 +36,7 @@ type DescribeExpressConnectRouterInterRegionTransitModeResponseBody struct {
 	//
 	// Authentication is failed for ****
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	// The response code. The status code 200 indicates that the request was successful. Other status codes indicate that the request failed. For more information, see Error codes.
+	// Indicates whether the call was successful. A return value of 200 indicates success, and any other value indicates failure. For the cause of failure, see error codes.
 	//
 	// example:
 	//
@@ -48,9 +48,9 @@ type DescribeExpressConnectRouterInterRegionTransitModeResponseBody struct {
 	//
 	// IllegalParamFormat.EcrId
 	DynamicCode *string `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
-	// The dynamic part in the error message. This parameter is used to replace the `%s` variable in **ErrMessage**.
+	// The dynamic error message, which is used to replace `%s` in the **ErrMessage*	- response parameter.
 	//
-	// >  For example, if the value of **ErrMessage*	- is **The Value of Input Parameter %s is not valid*	- and the value of **DynamicMessage*	- is **DtsJobId**, the request parameter **DtsJobId*	- is invalid.
+	// > If **ErrMessage*	- returns **The Value of Input Parameter %s is not valid*	- and **DynamicMessage*	- returns **DtsJobId**, it indicates that the **DtsJobId*	- request parameter is invalid.
 	//
 	// example:
 	//
@@ -62,25 +62,25 @@ type DescribeExpressConnectRouterInterRegionTransitModeResponseBody struct {
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The cross-region forwarding modes.
+	// The list of cross-region forwarding modes.
 	InterRegionTransitModeList []*DescribeExpressConnectRouterInterRegionTransitModeResponseBodyInterRegionTransitModeList `json:"InterRegionTransitModeList,omitempty" xml:"InterRegionTransitModeList,omitempty" type:"Repeated"`
-	// The returned message.
+	// The message returned for the operation.
 	//
 	// example:
 	//
 	// OK
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
 	// 6FABF516-FED3-5697-BDA2-B18C5D9A****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. Valid values:
+	// Indicates whether the call was successful. Valid values:
 	//
-	// 	- **true**
+	// - **True**: The call was successful.
 	//
-	// 	- **false**
+	// - **False**: The call failed.
 	//
 	// example:
 	//
@@ -193,15 +193,15 @@ func (s *DescribeExpressConnectRouterInterRegionTransitModeResponseBody) Validat
 type DescribeExpressConnectRouterInterRegionTransitModeResponseBodyInterRegionTransitModeList struct {
 	// The cross-region forwarding mode of the ECR. Valid values:
 	//
-	// 	- **ECMP**: the load balancing mode.
+	// - **ECMP**: load balancing mode.
 	//
-	// 	- **NearBy**: the nearby forwarding mode.
+	// - **NearBy**: nearest forwarding mode.
 	//
 	// example:
 	//
 	// ECMP
 	Mode *string `json:"Mode,omitempty" xml:"Mode,omitempty"`
-	// The region ID of the ECR.
+	// The ID of the region to which the Express Connect Router (ECR) belongs.
 	//
 	// example:
 	//
