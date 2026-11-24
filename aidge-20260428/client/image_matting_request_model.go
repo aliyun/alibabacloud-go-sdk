@@ -48,13 +48,13 @@ type ImageMattingRequest struct {
 	//
 	// https://sc02.alicdn.com/kf/H09364d2c7fc942e685d3b0f656261b24Q.png
 	ImageUrl *string `json:"ImageUrl,omitempty" xml:"ImageUrl,omitempty"`
-	// The height of the target image. Unit: pixels.
+	// The target height of the image, in pixels.
 	//
 	// example:
 	//
 	// 800
 	TargetHeight *int32 `json:"TargetHeight,omitempty" xml:"TargetHeight,omitempty"`
-	// The width of the target image. Unit: pixels.
+	// The target width of the image, in pixels.
 	//
 	// example:
 	//

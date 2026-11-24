@@ -28,7 +28,7 @@ type ImageMattingResponseBody struct {
 	//
 	// success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The image matting result.
+	// The matting result.
 	Data *ImageMattingResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The error message.
 	//
@@ -44,9 +44,9 @@ type ImageMattingResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the call is successful. Valid values:
 	//
-	// - true: The call is successful.
+	// - true: Successful.
 	//
-	// - false: The call fails.
+	// - false: Failed.
 	//
 	// example:
 	//
@@ -117,13 +117,13 @@ func (s *ImageMattingResponseBody) Validate() error {
 }
 
 type ImageMattingResponseBodyData struct {
-	// The height of the result image. Unit: pixels.
+	// The height of the result image, in pixels.
 	//
 	// example:
 	//
 	// 800
 	Height *int32 `json:"Height,omitempty" xml:"Height,omitempty"`
-	// The URL of the result image.
+	// The URL of the matting result image.
 	//
 	// example:
 	//
@@ -135,7 +135,7 @@ type ImageMattingResponseBodyData struct {
 	//
 	// 0.11
 	Score *float64 `json:"Score,omitempty" xml:"Score,omitempty"`
-	// The returned layer information. This includes the URL of the original image, the URL of the matting result, and the matting area information.
+	// The returned layer information, which includes the original image URL, the matting result URL, and the matting area information.
 	//
 	// example:
 	//
@@ -169,7 +169,7 @@ type ImageMattingResponseBodyData struct {
 	//
 	// {"ProcessedImageCount":1}
 	UsageMap map[string]*int64 `json:"UsageMap,omitempty" xml:"UsageMap,omitempty"`
-	// The width of the result image. Unit: pixels.
+	// The width of the result image, in pixels.
 	//
 	// example:
 	//

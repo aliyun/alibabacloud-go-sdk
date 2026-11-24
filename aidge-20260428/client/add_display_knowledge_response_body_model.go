@@ -30,7 +30,7 @@ type AddDisplayKnowledgeResponseBody struct {
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The result of adding content to the display knowledge base.
 	Data *AddDisplayKnowledgeResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The response message or failure description.
+	// The returned message or failure description.
 	//
 	// example:
 	//
@@ -137,7 +137,7 @@ type AddDisplayKnowledgeResponseBodyData struct {
 	//
 	// 0
 	FailedCount *int32 `json:"FailedCount,omitempty" xml:"FailedCount,omitempty"`
-	// The knowledge base status.
+	// The status of the knowledge base.
 	//
 	// example:
 	//
@@ -153,7 +153,7 @@ type AddDisplayKnowledgeResponseBodyData struct {
 	//
 	// rag_xxxx
 	RagId *string `json:"RagId,omitempty" xml:"RagId,omitempty"`
-	// The processing results for each record.
+	// The processing result of each record.
 	Results []*AddDisplayKnowledgeResponseBodyDataResults `json:"Results,omitempty" xml:"Results,omitempty" type:"Repeated"`
 	// Indicates whether the business processing was successful.
 	//
@@ -299,7 +299,7 @@ type AddDisplayKnowledgeResponseBodyDataResults struct {
 	//
 	// The deviceName format is incorrect.
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	// The index in the original request array.
+	// The index of the original request array.
 	//
 	// example:
 	//
@@ -317,7 +317,7 @@ type AddDisplayKnowledgeResponseBodyDataResults struct {
 	//
 	// sku-001
 	SkuId *string `json:"SkuId,omitempty" xml:"SkuId,omitempty"`
-	// The record status.
+	// The status of the record.
 	//
 	// example:
 	//

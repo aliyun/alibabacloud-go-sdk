@@ -22,7 +22,7 @@ type iAssetOptimizeProResponseBody interface {
 }
 
 type AssetOptimizeProResponseBody struct {
-	// The status code. A value of success is returned for successful calls.
+	// The status code. A value of success indicates a successful call.
 	//
 	// example:
 	//
@@ -30,7 +30,7 @@ type AssetOptimizeProResponseBody struct {
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The submission result of the asynchronous task, which includes the asynchronous task ID.
 	Data *AssetOptimizeProResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The error message. A value of Success is returned for successful calls.
+	// The error message. A value of Success is returned for a successful call.
 	//
 	// example:
 	//

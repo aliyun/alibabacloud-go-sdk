@@ -20,7 +20,7 @@ type iSizeChartExtractAsyncShrinkRequest interface {
 }
 
 type SizeChartExtractAsyncShrinkRequest struct {
-	// The business ID of the caller. It is recorded when the request is accepted and returned as-is when you query the result of the asynchronous task.
+	// The business order number of the caller. It is recorded upon acceptance and returned as-is when you query the asynchronous task result.
 	//
 	// example:
 	//
@@ -36,7 +36,7 @@ type SizeChartExtractAsyncShrinkRequest struct {
 	//
 	// https://ae01.alicdn.com/kf/S342f0070dc9f4be09a6cbed34e90dc8fs.jpg
 	ImageUrl *string `json:"ImageUrl,omitempty" xml:"ImageUrl,omitempty"`
-	// The output language format. If you do not specify this parameter, the original language of the image is retained. If the original language of the image is Chinese or English, set this parameter to en to output English, or set it to cn to output Chinese.
+	// The output language format. If you do not specify this parameter, the original language is used. If the original language of the image is Chinese or English, specifying en outputs English, and specifying cn outputs Chinese.
 	//
 	// example:
 	//

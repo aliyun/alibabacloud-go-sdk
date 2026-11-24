@@ -35,10 +35,6 @@ type CategoryAttributeMatchShrinkRequest struct {
 	// Silk, spring new arrival
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The URLs of the product images. Up to 10 images are supported.
-	//
-	// example:
-	//
-	// https://frametour-assets.oss-cn-shanghai.aliyuncs.com/user-faces/viid_face/dd0dd06c-9351-4e5f-bc70-24166a754d7f.jpg
 	ImageUrlShrink *string `json:"ImageUrl,omitempty" xml:"ImageUrl,omitempty"`
 	// The product attributes and feature descriptions.
 	//
@@ -72,7 +68,7 @@ type CategoryAttributeMatchShrinkRequest struct {
 	//
 	// 1688
 	SourcePlatform *string `json:"SourcePlatform,omitempty" xml:"SourcePlatform,omitempty"`
-	// The target platform. Currently, only TEMU is supported.
+	// The target platform for product listing. Currently, only TEMU is supported.
 	//
 	// This parameter is required.
 	//
@@ -86,7 +82,7 @@ type CategoryAttributeMatchShrinkRequest struct {
 	//
 	// example:
 	//
-	// Women\\"s spring new arrival clothing
+	// Women\\"s spring new clothing
 	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
 }
 

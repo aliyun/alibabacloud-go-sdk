@@ -42,11 +42,7 @@ type ImageTranslationPlusResponseBody struct {
 	//
 	// E1AD60F1-BAC7-546B-9533-E7AD02B16E3F
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the call is successful. Valid values:
-	//
-	// - true: The call is successful.
-	//
-	// - false: The call fails.
+	// Indicates whether the call is successful. Valid values: true: The call is successful. false: The call fails.
 	//
 	// example:
 	//
@@ -117,7 +113,7 @@ func (s *ImageTranslationPlusResponseBody) Validate() error {
 }
 
 type ImageTranslationPlusResponseBodyData struct {
-	// The ID of the asynchronous task. You can call the queryTaskResult API operation to poll the task result later.
+	// The ID of the asynchronous task. You can use this ID to poll the result by calling the queryTaskResult operation.
 	//
 	// example:
 	//

@@ -28,9 +28,9 @@ type UpdateDisplayKnowledgeResponseBody struct {
 	//
 	// success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The modification result of the display knowledge base content.
+	// The content modification result of the display knowledge base.
 	Data *UpdateDisplayKnowledgeResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The response message or failure description.
+	// The returned message or failure description.
 	//
 	// example:
 	//
@@ -42,7 +42,7 @@ type UpdateDisplayKnowledgeResponseBody struct {
 	//
 	// 39E8A74B-F99E-1195-A5FF-3ECC5F94F304
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the call was successful.
+	// Indicates whether the call is successful.
 	//
 	// example:
 	//
@@ -149,21 +149,21 @@ type UpdateDisplayKnowledgeResponseBodyData struct {
 	//
 	// rag_001
 	RagId *string `json:"RagId,omitempty" xml:"RagId,omitempty"`
-	// The processing results for each record.
+	// The processing result of each record.
 	Results []*UpdateDisplayKnowledgeResponseBodyDataResults `json:"Results,omitempty" xml:"Results,omitempty" type:"Repeated"`
-	// Indicates whether the business processing was successful.
+	// Indicates whether the business processing is successful.
 	//
 	// example:
 	//
 	// True
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// The asynchronous task ID. This parameter is empty for synchronous API operations.
+	// The asynchronous task ID. This field is empty for synchronous API operations.
 	//
 	// example:
 	//
 	// ed9d8504-6141-9fbb-8345-4fa36433483f
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	// The usage information. This parameter is empty for free API operations.
+	// The usage information. This field is empty for free API operations.
 	//
 	// example:
 	//
@@ -295,7 +295,7 @@ type UpdateDisplayKnowledgeResponseBodyDataResults struct {
 	//
 	// Success
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	// The index of the original request array.
+	// The index in the original request array.
 	//
 	// example:
 	//
@@ -319,7 +319,7 @@ type UpdateDisplayKnowledgeResponseBodyDataResults struct {
 	//
 	// UPDATING
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// Indicates whether the record was accepted.
+	// Indicates whether the record is accepted.
 	//
 	// example:
 	//

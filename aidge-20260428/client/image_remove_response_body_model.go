@@ -28,7 +28,7 @@ type ImageRemoveResponseBody struct {
 	//
 	// "success"
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The intelligent removal result.
+	// The object removal result.
 	Data *ImageRemoveResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The error message.
 	//
@@ -42,7 +42,7 @@ type ImageRemoveResponseBody struct {
 	//
 	// 2728332e-72c1-9c0d-8869-5781b2cd25d4
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the call was successful.
+	// Indicates whether the call is successful.
 	//
 	// example:
 	//
@@ -119,7 +119,7 @@ type ImageRemoveResponseBodyData struct {
 	//
 	// 800
 	Height *int32 `json:"Height,omitempty" xml:"Height,omitempty"`
-	// The URL of the result image after removal.
+	// The URL of the result image.
 	//
 	// example:
 	//

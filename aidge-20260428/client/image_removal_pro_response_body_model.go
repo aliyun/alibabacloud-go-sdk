@@ -28,7 +28,7 @@ type ImageRemovalProResponseBody struct {
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The result of the intelligent object removal Pro operation.
+	// The result of Intelligent removal Pro.
 	Data *ImageRemovalProResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The error message. This parameter is not returned when the call is successful.
 	//
@@ -117,11 +117,11 @@ func (s *ImageRemovalProResponseBody) Validate() error {
 }
 
 type ImageRemovalProResponseBodyData struct {
-	// The URL of the result image. This parameter is returned in synchronous mode.
+	// The URL of the processed image. This parameter is returned in synchronous mode.
 	//
 	// example:
 	//
-	// https://aib-image.oss-ap-southeast-1.aliyuncs.com/ai_desc%2F250cc947-9cd5-4df0-9c23-44eba5d0dfc30.jpg?OSSAccessKeyId=LTAI5tSEGjGp5wixZgHLc3bV&Expires=4999655814&Signature=shvGNDmkyv9MLTw4%2BOxYglJCpAE%3D
+	// https://aib-image.oss-ap-southeast-1.aliyuncs.com/ai_desc%2F250cc947-9cd5-4df0-9c23-44eba5d0dfc30.jpg?OSSAccessKeyId=LTAI5tSEGj****ixZgHLc3bV&Expires=4999655814&Signature=shvGNDmkyv9MLT*****OxYglJCpAE%3D
 	ImageUrl *string `json:"ImageUrl,omitempty" xml:"ImageUrl,omitempty"`
 	// The ID of the asynchronous task. This parameter is returned in asynchronous mode and is used to query the task result.
 	//

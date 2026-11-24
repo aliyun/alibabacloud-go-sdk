@@ -22,7 +22,7 @@ type iPrepaidTextTranslateResponseBody interface {
 }
 
 type PrepaidTextTranslateResponseBody struct {
-	// The response code. If the call is successful, success is returned.
+	// The response code. success is returned for successful calls.
 	//
 	// example:
 	//
@@ -30,13 +30,13 @@ type PrepaidTextTranslateResponseBody struct {
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The translation result data, which includes the translation list and usage information.
 	Data *PrepaidTextTranslateResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The error message. If the call is successful, Success is returned. If an exception occurs, a specific error message is returned, such as "The parameter contains sensitive information. Try another input".
+	// The error message. Success is returned for successful calls. If an exception occurs, a specific error message is returned, such as \\"The parameter contains sensitive information. Try another input.\\"
 	//
 	// example:
 	//
 	// Success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the request, which is used to identify a unique API call.
+	// The ID of the request, which is used to identify a unique request call.
 	//
 	// example:
 	//

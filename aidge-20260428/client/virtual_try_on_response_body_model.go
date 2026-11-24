@@ -28,7 +28,7 @@ type VirtualTryOnResponseBody struct {
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The response data struct.
+	// The returned result struct.
 	Data *VirtualTryOnResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The error message. This parameter is not returned for successful calls.
 	//
@@ -36,7 +36,7 @@ type VirtualTryOnResponseBody struct {
 	//
 	// OK
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The request ID, which is used to identify a unique request.
+	// The ID of the request. It is used to identify a unique API call.
 	//
 	// example:
 	//
@@ -113,7 +113,7 @@ func (s *VirtualTryOnResponseBody) Validate() error {
 }
 
 type VirtualTryOnResponseBodyData struct {
-	// The ID of the asynchronous task, which is used to query the task result later.
+	// The ID of the asynchronous task. You can use this ID to query the task result later.
 	//
 	// example:
 	//

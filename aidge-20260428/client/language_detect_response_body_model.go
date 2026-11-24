@@ -22,27 +22,27 @@ type iLanguageDetectResponseBody interface {
 }
 
 type LanguageDetectResponseBody struct {
-	// The response code. A value of 200 indicates a successful call. For other response codes, refer to the error code documentation.
+	// The response code. A value of 200 indicates a successful call. For other response codes, refer to the error code information.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The language identification result data, including the detected language and usage information.
+	// The language detection result data, which includes the detected language and usage information.
 	Data *LanguageDetectResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The error message. "Success" is returned for a successful call. A specific error message is returned for a failed call, such as "The parameters contain sensitive information. Try other input."
+	// The error message. "Success" is returned for normal calls. For exceptions, a specific error message is returned, such as "The parameter contains sensitive information. Try another input."
 	//
 	// example:
 	//
 	// Success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The request ID, which uniquely identifies the request.
+	// The request ID, which is used to uniquely identify a request.
 	//
 	// example:
 	//
 	// 42542C6C-F2A4-1B2B-8EFF-130C8FD06F54
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the call is successful. A value of true indicates success. A value of false indicates failure.
+	// Indicates whether the call is successful. A value of true indicates success, and a value of false indicates failure.
 	//
 	// example:
 	//
@@ -113,13 +113,13 @@ func (s *LanguageDetectResponseBody) Validate() error {
 }
 
 type LanguageDetectResponseBodyData struct {
-	// The detected language code.
+	// The code of the detected language.
 	//
 	// example:
 	//
 	// zh
 	DetectedLanguage *string `json:"DetectedLanguage,omitempty" xml:"DetectedLanguage,omitempty"`
-	// The usage information, including the number of input characters.
+	// The usage information, which includes the number of input characters.
 	//
 	// example:
 	//

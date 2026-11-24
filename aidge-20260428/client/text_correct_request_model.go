@@ -16,7 +16,7 @@ type iTextCorrectRequest interface {
 }
 
 type TextCorrectRequest struct {
-	// The source language code. This parameter is required. You can set this parameter to auto for automatic language detection. 14 languages are supported.
+	// The language code of the source text. This parameter is required. You can set this parameter to auto for automatic language detection. 14 languages are supported.
 	//
 	// This parameter is required.
 	//
@@ -24,7 +24,7 @@ type TextCorrectRequest struct {
 	//
 	// de
 	SourceLanguage *string `json:"SourceLanguage,omitempty" xml:"SourceLanguage,omitempty"`
-	// The text to correct. This parameter is required.
+	// The text to be corrected. This parameter is required.
 	//
 	// This parameter is required.
 	//

@@ -22,7 +22,7 @@ type iImageTranslationProAsyncResponseBody interface {
 }
 
 type ImageTranslationProAsyncResponseBody struct {
-	// The response code. A value of success indicates that the task is submitted.
+	// The response code. A value of success indicates that the task is submitted successfully.
 	//
 	// example:
 	//
@@ -113,7 +113,7 @@ func (s *ImageTranslationProAsyncResponseBody) Validate() error {
 }
 
 type ImageTranslationProAsyncResponseBodyData struct {
-	// The identifier of the asynchronous task, which is used for result queries and notification association. Do not use the example prefix as a business validation rule.
+	// The ID of the asynchronous task, which is used to query results and associate notifications. Do not use the example prefix as a business validation rule.
 	//
 	// example:
 	//

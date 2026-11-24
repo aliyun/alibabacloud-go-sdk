@@ -18,13 +18,13 @@ type iSizeChartExtractShrinkRequest interface {
 }
 
 type SizeChartExtractShrinkRequest struct {
-	// The list of column names (such as Size, Bust, and Length).
+	// The list of column names, such as Size, Bust, and Length.
 	//
 	// example:
 	//
 	// ["Size","Bust","Length"]
 	ColumnNameListShrink *string `json:"ColumnNameList,omitempty" xml:"ColumnNameList,omitempty"`
-	// The URL of the size chart image to extract.
+	// The URL of the image from which the size chart is extracted.
 	//
 	// This parameter is required.
 	//
@@ -32,7 +32,7 @@ type SizeChartExtractShrinkRequest struct {
 	//
 	// https://example.com/size_chart.jpg
 	ImageUrl *string `json:"ImageUrl,omitempty" xml:"ImageUrl,omitempty"`
-	// The language model (such as en and cn).
+	// The language model, such as en and cn.
 	//
 	// example:
 	//

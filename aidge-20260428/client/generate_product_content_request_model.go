@@ -38,13 +38,13 @@ type iGenerateProductContentRequest interface {
 }
 
 type GenerateProductContentRequest struct {
-	// Takes effect only when contentType is set to bulletPoint. Valid values: 1 to 5. Default value in generate mode: 1. In rewrite mode, if manually specified, it must match the number of non-empty paragraphs in sourceText. This parameter is ignored for other copy types.
+	// Takes effect only when ContentType is set to bulletPoint. Valid values: 1 to 5. Default value in generate mode: 1. In rewrite mode, if you manually specify this parameter, the value must be the same as the number of non-empty paragraphs in SourceText. This parameter is ignored for other copy types.
 	//
 	// example:
 	//
 	// 5
 	BulletPointCount *int32 `json:"BulletPointCount,omitempty" xml:"BulletPointCount,omitempty"`
-	// The copy type. Valid values: title, highlight, keywords, bulletPoint, and description. When a platform is specified, you must select a type supported by the platform.
+	// The copy type. Valid values: title, highlight, keywords, bulletPoint, description, and general. The general value is supported only when Operation is set to customize. If a platform is specified, you must select a type supported by the platform.
 	//
 	// This parameter is required.
 	//
@@ -58,19 +58,19 @@ type GenerateProductContentRequest struct {
 	//
 	// True
 	EnableTranslation *bool `json:"EnableTranslation,omitempty" xml:"EnableTranslation,omitempty"`
-	// The maximum number of characters for the final complete output text. If specified, it must be an integer greater than or equal to 30. If a platform is specified and this parameter is not passed, the configured upper limit for the type on the platform is used. Example: 60.
+	// The maximum number of characters for the final output text. If you specify this parameter, the value must be an integer greater than or equal to 30. If a platform is specified and this parameter is not specified, the configured upper limit for the content type on the platform is used. Example: 60.
 	//
 	// example:
 	//
 	// 1000
 	MaxLength *int32 `json:"MaxLength,omitempty" xml:"MaxLength,omitempty"`
-	// The minimum number of characters for the final complete output text. If specified, it must be an integer greater than or equal to 10. If a platform is specified and this parameter is not passed, the configured lower limit for the type on the platform is used.
+	// The minimum number of characters for the final output text. If you specify this parameter, the value must be an integer greater than or equal to 10. If a platform is specified and this parameter is not specified, the configured lower limit for the content type on the platform is used.
 	//
 	// example:
 	//
 	// 500
 	MinLength *int32 `json:"MinLength,omitempty" xml:"MinLength,omitempty"`
-	// The operation type. Valid values: generate and rewrite.
+	// The operation type. Valid values: generate, rewrite, and customize. The customize value allows you to enter custom prompts.
 	//
 	// This parameter is required.
 	//
@@ -78,29 +78,31 @@ type GenerateProductContentRequest struct {
 	//
 	// generate
 	Operation *string `json:"Operation,omitempty" xml:"Operation,omitempty"`
-	// The target platform. Valid values: amazon, temu, tiktok, shopify, Wildberries, and tmall. If this parameter is not passed, the general scenario is used. Enum values are case-sensitive.
+	// The target platform. Valid values: amazon, temu, tiktok, shopify, Wildberries, and tmall. If this parameter is not specified, the general scenario is used. Enum values are case-sensitive.
 	//
 	// example:
 	//
 	// amazon
 	Platform *string `json:"Platform,omitempty" xml:"Platform,omitempty"`
-	// The product attribute materials. Default value: empty. The length is 0 to 500 characters.
+	// The product attribute information. Default value: empty. The length must be 0 to 500 characters.
 	//
 	// example:
 	//
 	// {"brand":"Supor","material":"304 stainless steel"}
 	ProductAttributes *string `json:"ProductAttributes,omitempty" xml:"ProductAttributes,omitempty"`
-	// The product category. Default value: an empty string. The length is 0 to 100 characters. It helps understand the category during generation and eliminates ambiguity during rewriting.
+	// The product category. Default value: an empty string. The length must be 0 to 100 characters. This parameter helps understand the category during generation and eliminates ambiguity during rewriting.
 	//
 	// example:
 	//
-	// Kitchen utensils
+	// Kitchenware
 	ProductCategory *string `json:"ProductCategory,omitempty" xml:"ProductCategory,omitempty"`
+	// The custom prompt. The maximum length is 10,000 characters.
+	//
 	// example:
 	//
-	// 自定义
+	// Custom
 	Prompt *string `json:"Prompt,omitempty" xml:"Prompt,omitempty"`
-	// The source language. Valid values: zh and en. Automatic language identification is not supported. Supported source languages: Chinese (zh) and English (en).
+	// The source language. Valid values: zh and en. Automatic language detection is not supported. Supported source languages: Chinese (zh) and English (en).
 	//
 	// This parameter is required.
 	//
@@ -108,7 +110,7 @@ type GenerateProductContentRequest struct {
 	//
 	// zh
 	SourceLanguage *string `json:"SourceLanguage,omitempty" xml:"SourceLanguage,omitempty"`
-	// The product materials or copy to be rewritten. The length is 20 to 3,000 characters.
+	// The product information or copy to be rewritten. The length must be 20 to 3,000 characters.
 	//
 	// This parameter is required.
 	//
@@ -116,7 +118,7 @@ type GenerateProductContentRequest struct {
 	//
 	// Stainless steel steamer 28cm 3-tier large capacity household kitchen essential steaming and boiling dual-use cookware
 	SourceText *string `json:"SourceText,omitempty" xml:"SourceText,omitempty"`
-	// Required when enableTranslation is set to true. For valid values, see Multilingual processing. If translation is disabled, this parameter is optional. If specified, it must be the same as sourceLanguage. Supported target languages: Chinese (zh), English (en), Russian (ru), German (de), French (fr), Korean (ko), Italian (it), Thai (th), Arabic (ar), Turkish (tr), Hebrew (he), Ukrainian (uk), Polish (pl), Japanese (ja), Dutch (nl), Portuguese (pt), Spanish (es), Malay (ms), Bulgarian (bg), Indonesian (id), and Vietnamese (vi).
+	// Required when EnableTranslation is set to true. For valid values, see Multilingual processing. If translation is disabled, this parameter is optional. If specified, the value must be the same as SourceLanguage. Supported target languages: Chinese (zh), English (en), Russian (ru), German (de), French (fr), Korean (ko), Italian (it), Thai (th), Arabic (ar), Turkish (tr), Hebrew (he), Ukrainian (uk), Polish (pl), Japanese (ja), Dutch (nl), Portuguese (pt), Spanish (es), Malay (ms), Bulgarian (bg), Indonesian (id), and Vietnamese (vi).
 	//
 	// example:
 	//

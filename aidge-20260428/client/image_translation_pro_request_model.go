@@ -34,7 +34,7 @@ type ImageTranslationProRequest struct {
 	//
 	// true
 	Async *bool `json:"Async,omitempty" xml:"Async,omitempty"`
-	// The ID of the intervention glossary. This parameter is optional. You must create the glossary in the console and provide its ID. If the provided intervention glossary ID is empty, the translation results are not modified.
+	// The ID of the intervention glossary. This parameter is optional. You must create the glossary in the console and provide its ID. If the intervention glossary ID is empty, the translation results are not modified.
 	//
 	// example:
 	//
@@ -44,13 +44,13 @@ type ImageTranslationProRequest struct {
 	//
 	// Image requirements:
 	//
-	// • Image URL: The image must be accessible over the Internet.
+	// - Image URL: Must be publicly accessible.
 	//
-	// • Format: PNG, JPEG, JPG, BMP, or WebP.
+	// - Formats: PNG, JPEG, JPG, BMP, and WebP.
 	//
-	// • Pixels: The width and height must not exceed 4,000 pixels.
+	// - Pixels: Both width and height must not exceed 4,000 pixels.
 	//
-	// • File size: The original file size must not exceed 10 MB.
+	// - File size: The original file must be less than or equal to 10 MB.
 	//
 	// This parameter is required.
 	//
@@ -58,7 +58,7 @@ type ImageTranslationProRequest struct {
 	//
 	// https://img.alicdn.com/imgextra/i3/O1CN01HTDhDi28Fd85ZYs7H_!!6000000007903-0-tps-800-800.jpg
 	ImageUrl *string `json:"ImageUrl,omitempty" xml:"ImageUrl,omitempty"`
-	// Specifies whether to translate the text on the image subject. This parameter is optional. Default value: false. This helps you protect information and prevents embedded information such as product names from being translated.
+	// Specifies whether to translate the text on the product subject in the image. Default value: false. This helps protect information and prevents embedded information such as product names from being translated.
 	//
 	// example:
 	//
@@ -88,7 +88,7 @@ type ImageTranslationProRequest struct {
 	//
 	// ko
 	TargetLanguage *string `json:"TargetLanguage,omitempty" xml:"TargetLanguage,omitempty"`
-	// Specifies whether to translate brand names in the image. This parameter is optional. Default value: false. This helps you protect brand name information from being translated.
+	// Specifies whether to translate brand names in the image. Default value: false. This helps protect brand name information from being translated.
 	//
 	// example:
 	//

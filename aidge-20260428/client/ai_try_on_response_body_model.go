@@ -22,7 +22,7 @@ type iAiTryOnResponseBody interface {
 }
 
 type AiTryOnResponseBody struct {
-	// The error code. This parameter is not returned if the call is successful.
+	// The error code. This parameter is not returned when the call is successful.
 	//
 	// example:
 	//
@@ -30,13 +30,13 @@ type AiTryOnResponseBody struct {
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The returned result struct.
 	Data *AiTryOnResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The error message. This parameter is not returned if the call is successful.
+	// The error message. This parameter is not returned when the call is successful.
 	//
 	// example:
 	//
 	// OK
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the request, which is used to identify a unique API call.
+	// The request ID, which is used to identify a unique request.
 	//
 	// example:
 	//
@@ -119,7 +119,7 @@ type AiTryOnResponseBodyData struct {
 	//
 	// 1360
 	ImageHeight *string `json:"ImageHeight,omitempty" xml:"ImageHeight,omitempty"`
-	// The URL of the generated image.
+	// The recognition result of a single image.
 	//
 	// example:
 	//
@@ -131,7 +131,7 @@ type AiTryOnResponseBodyData struct {
 	//
 	// 768
 	ImageWidth *string `json:"ImageWidth,omitempty" xml:"ImageWidth,omitempty"`
-	// The usage fields.
+	// The usage field.
 	//
 	// example:
 	//
@@ -199,7 +199,7 @@ type AiTryOnResponseBodyDataUsageMap struct {
 	//
 	// 1
 	ProcessedImageCount *int64 `json:"ProcessedImageCount,omitempty" xml:"ProcessedImageCount,omitempty"`
-	// The resolution of the image.
+	// The image resolution.
 	//
 	// example:
 	//

@@ -28,7 +28,7 @@ type iImageTranslationStandardAsyncRequest interface {
 }
 
 type ImageTranslationStandardAsyncRequest struct {
-	// The business order ID of the caller. It is recorded upon acceptance and returned as-is when querying the asynchronous task result.
+	// The business order ID of the caller. This ID is recorded upon acceptance and returned as-is when querying the asynchronous task result.
 	//
 	// example:
 	//
@@ -70,7 +70,7 @@ type ImageTranslationStandardAsyncRequest struct {
 	//
 	// en
 	TargetLanguage *string `json:"TargetLanguage,omitempty" xml:"TargetLanguage,omitempty"`
-	// Specifies whether to translate the brand text in the product area.
+	// Specifies whether to translate brand text in the product area.
 	//
 	// example:
 	//

@@ -129,7 +129,7 @@ type DiduiAreaDeductionResponseBodyData struct {
 	//
 	// example:
 	//
-	// OK
+	// 200
 	HttpStatus *int32 `json:"HttpStatus,omitempty" xml:"HttpStatus,omitempty"`
 	// The duration of the downstream call, in milliseconds.
 	//

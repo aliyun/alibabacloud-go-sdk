@@ -28,7 +28,7 @@ type DeleteDisplayKnowledgeResponseBody struct {
 	//
 	// success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The result of deleting content from the display knowledge base.
+	// The deletion result of the display knowledge base content.
 	Data *DeleteDisplayKnowledgeResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The returned message or failure description.
 	//
@@ -42,7 +42,7 @@ type DeleteDisplayKnowledgeResponseBody struct {
 	//
 	// 70CBEFDF-BB17-1EB3-8A21-569F3124738F
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the call was successful.
+	// Indicates whether the call is successful.
 	//
 	// example:
 	//
@@ -137,7 +137,7 @@ type DeleteDisplayKnowledgeResponseBodyData struct {
 	//
 	// 0
 	FailedCount *int32 `json:"FailedCount,omitempty" xml:"FailedCount,omitempty"`
-	// The status of the knowledge base.
+	// The knowledge base status.
 	//
 	// example:
 	//
@@ -155,15 +155,15 @@ type DeleteDisplayKnowledgeResponseBodyData struct {
 	//
 	// 50
 	RemainingCount *int32 `json:"RemainingCount,omitempty" xml:"RemainingCount,omitempty"`
-	// The processing result of each record.
+	// The processing results for each record.
 	Results []*DeleteDisplayKnowledgeResponseBodyDataResults `json:"Results,omitempty" xml:"Results,omitempty" type:"Repeated"`
-	// Indicates whether the business processing was successful.
+	// Indicates whether the business processing is successful.
 	//
 	// example:
 	//
 	// True
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// The ID of the asynchronous task. This parameter is empty for synchronous API operations.
+	// The asynchronous task ID. This parameter is empty for synchronous API operations.
 	//
 	// example:
 	//
@@ -310,7 +310,7 @@ type DeleteDisplayKnowledgeResponseBodyDataResults struct {
 	//
 	// Success
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	// The index of the item in the original request array.
+	// The index in the original request array.
 	//
 	// example:
 	//
@@ -322,19 +322,19 @@ type DeleteDisplayKnowledgeResponseBodyDataResults struct {
 	//
 	// 2746611117
 	RecordId *int64 `json:"RecordId,omitempty" xml:"RecordId,omitempty"`
-	// The SKU ID. This parameter is empty in the deletion result.
+	// The SKU ID. This parameter is empty in deletion results.
 	//
 	// example:
 	//
 	// sku-001
 	SkuId *string `json:"SkuId,omitempty" xml:"SkuId,omitempty"`
-	// The record status. This parameter is empty in the deletion result.
+	// The record status. This parameter is empty in deletion results.
 	//
 	// example:
 	//
-	// Empty for the delete operation
+	// Empty for deletion operations
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// Indicates whether the operation was successful.
+	// Indicates whether the operation is successful.
 	//
 	// example:
 	//

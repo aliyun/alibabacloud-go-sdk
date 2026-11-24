@@ -30,7 +30,7 @@ type StorefrontSceneRecognitionResponseBody struct {
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The scene recognition result.
 	Data *StorefrontSceneRecognitionResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The returned message or failure description.
+	// The response message or failure description.
 	//
 	// example:
 	//
@@ -159,7 +159,7 @@ func (s *StorefrontSceneRecognitionResponseBodyData) Validate() error {
 }
 
 type StorefrontSceneRecognitionResponseBodyDataResult struct {
-	// The classification details, which can be an empty array.
+	// The classification details. This can be an empty array.
 	Details []*StorefrontSceneRecognitionResponseBodyDataResultDetails `json:"Details,omitempty" xml:"Details,omitempty" type:"Repeated"`
 	// The localization information.
 	Grounding *StorefrontSceneRecognitionResponseBodyDataResultGrounding `json:"Grounding,omitempty" xml:"Grounding,omitempty" type:"Struct"`
@@ -225,9 +225,9 @@ type StorefrontSceneRecognitionResponseBodyDataResultDetails struct {
 	//
 	// example:
 	//
-	// oppo vivo smartphone store
+	// OPPO VIVO Smartphone Store
 	Clazz *string `json:"Clazz,omitempty" xml:"Clazz,omitempty"`
-	// A finite numerical value. The source document does not specify the value range.
+	// A finite numeric value. The value range is not specified.
 	//
 	// example:
 	//

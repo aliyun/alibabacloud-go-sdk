@@ -16,7 +16,7 @@ type iSizeChartDetectRequest interface {
 }
 
 type SizeChartDetectRequest struct {
-	// The URL of the image to detect.
+	// The URL of the image to be detected.
 	//
 	// This parameter is required.
 	//

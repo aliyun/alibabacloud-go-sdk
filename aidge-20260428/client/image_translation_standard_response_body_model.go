@@ -22,13 +22,13 @@ type iImageTranslationStandardResponseBody interface {
 }
 
 type ImageTranslationStandardResponseBody struct {
-	// The response code. A value of 200 indicates a successful call. For other response codes, refer to the error code information.
+	// The response code. A value of 200 indicates a successful call. For other response codes, see the error codes.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The translation result data, which includes the URL of the translated image and usage information.
+	// The translation result data, including the translated image URL and usage information.
 	Data *ImageTranslationStandardResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The error message. "Success" is returned for a successful call, and specific error details are returned when an exception occurs.
 	//
@@ -115,13 +115,13 @@ func (s *ImageTranslationStandardResponseBody) Validate() error {
 type ImageTranslationStandardResponseBodyData struct {
 	// The edit information.
 	EditInfo *ImageTranslationStandardResponseBodyDataEditInfo `json:"EditInfo,omitempty" xml:"EditInfo,omitempty" type:"Struct"`
-	// The URL of the generated translated image.
+	// The URL of the image generated after image translation.
 	//
 	// example:
 	//
 	// http://dashscope-a717.oss-cn-beijing.aliyuncs.com/xxx.jpg
 	ImageUrl *string `json:"ImageUrl,omitempty" xml:"ImageUrl,omitempty"`
-	// The usage information, such as the number of processed images.
+	// The usage information, including the number of processed images.
 	//
 	// example:
 	//

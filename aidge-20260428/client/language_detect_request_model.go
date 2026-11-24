@@ -16,19 +16,19 @@ type iLanguageDetectRequest interface {
 }
 
 type LanguageDetectRequest struct {
-	// The detection scenario. Default value: common. If you are identifying search phrases, set this parameter to query. If an incorrect value is specified or this parameter is left empty, the common general identification mode is used. Note: pass query in lowercase.
+	// The detection scenario. Default value: common. For search phrase scenarios, set this parameter to query. If an invalid value is specified or this parameter is left empty, the common general detection scenario is used. Note: The value query must be in lowercase.
 	//
 	// example:
 	//
 	// query
 	Scene *string `json:"Scene,omitempty" xml:"Scene,omitempty"`
-	// The source text to identify. This parameter is required.
+	// The source text to be detected. This parameter is required.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// Sample text
+	// Test text
 	SourceText *string `json:"SourceText,omitempty" xml:"SourceText,omitempty"`
 }
 

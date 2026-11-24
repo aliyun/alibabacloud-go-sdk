@@ -36,43 +36,63 @@ type ImageRecognitionRequest struct {
 	//
 	// https://fb-es.mrvcdn.com/kf/E6332bde0101849968532c4f08dac757cZ.jpg
 	ImageUrl *string `json:"ImageUrl,omitempty" xml:"ImageUrl,omitempty"`
-	// The elements to detect outside the image subject. Valid values: 1 (watermark), 2 (logo), 3 (text), and 4 (text-containing color block). You can specify multiple values. This parameter and ObjectDetectElements cannot be empty at the same time.
+	// Specifies the elements to detect on the non-subject area of the image. Valid values: 1 for watermark, 2 for logo, 3 for text, and 4 for text-containing color block. You can specify multiple element types. This parameter and ObjectDetectElements cannot be empty at the same time.
 	//
 	// example:
 	//
 	// [1,2,3,4]
 	NonObjectDetectElements []*int32 `json:"NonObjectDetectElements,omitempty" xml:"NonObjectDetectElements,omitempty" type:"Repeated"`
-	// The elements to detect on the image subject. Valid values: 1 (watermark), 2 (logo), 3 (text), and 4 (text-containing color block). You can specify multiple values.
+	// Specifies the elements to detect on the image subject. Valid values: 1 for watermark, 2 for logo, 3 for text, and 4 for text-containing color block. You can specify multiple element types.
 	//
 	// example:
 	//
 	// [1,2,3,4]
 	ObjectDetectElements []*int32 `json:"ObjectDetectElements,omitempty" xml:"ObjectDetectElements,omitempty" type:"Repeated"`
-	// Specifies whether to return border pixel information. Valid values: 1 (return) and 0 (do not return).
+	// Specifies whether to return border pixel information. Valid values:
+	//
+	// - 1: Return border pixel information.
+	//
+	// - 0: Do not return border pixel information.
 	//
 	// example:
 	//
 	// 1
 	ReturnBorderPixel *int32 `json:"ReturnBorderPixel,omitempty" xml:"ReturnBorderPixel,omitempty"`
-	// Specifies whether to return text information. Valid values: 1 (return) and 0 (do not return).
+	// Specifies whether to return text information. Valid values:
+	//
+	// - 1: Return text information.
+	//
+	// - 0: Do not return text information.
 	//
 	// example:
 	//
 	// 1
 	ReturnCharacter *int32 `json:"ReturnCharacter,omitempty" xml:"ReturnCharacter,omitempty"`
-	// Specifies whether to return text attribute information. Valid values: 1 (return) and 0 (do not return).
+	// Specifies whether to return text property information. Valid values:
+	//
+	// - 1: Return text property information.
+	//
+	// - 0: Do not return text property information.
 	//
 	// example:
 	//
 	// 1
 	ReturnCharacterProp *int32 `json:"ReturnCharacterProp,omitempty" xml:"ReturnCharacterProp,omitempty"`
-	// Specifies whether to return the product quantity. Valid values: 1 (return) and 0 (do not return).
+	// Specifies whether to return the product quantity. Valid values:
+	//
+	// - 1: Return the product quantity.
+	//
+	// - 0: Do not return the product quantity.
 	//
 	// example:
 	//
 	// 1
 	ReturnProductNum *int32 `json:"ReturnProductNum,omitempty" xml:"ReturnProductNum,omitempty"`
-	// Specifies whether to return product attribute information. Valid values: 1 (return) and 0 (do not return).
+	// Specifies whether to return product property information. Valid values:
+	//
+	// - 1: Return product property information.
+	//
+	// - 0: Do not return product property information.
 	//
 	// example:
 	//

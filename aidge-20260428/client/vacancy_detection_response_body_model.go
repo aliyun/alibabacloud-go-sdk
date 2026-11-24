@@ -32,7 +32,7 @@ type VacancyDetectionResponseBody struct {
 	//
 	// example:
 	//
-	// {\\"TaskId\\": \\"TID_2f567233-78dd-4226-8b69-ac9288a66da0\\"}
+	// {"TaskId":"TID_2f567233-78dd-4226-8b69-ac9288a66da0"}
 	Data *VacancyDetectionResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The returned message or failure description.
 	//
@@ -123,7 +123,7 @@ type VacancyDetectionResponseBodyData struct {
 	//
 	// 518c7318185d4db694236f79d672c156
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	// The usage details. This parameter is left empty during asynchronous commit and is populated by scheduling after the node reaches the desired state.
+	// The usage details. This field is left empty during asynchronous commit and is populated by scheduling after the node reaches the desired state.
 	//
 	// example:
 	//

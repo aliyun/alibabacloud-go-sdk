@@ -117,13 +117,13 @@ func (s *MerchandisePlacementDetectionResponseBody) Validate() error {
 }
 
 type MerchandisePlacementDetectionResponseBodyData struct {
-	// The number of valid detection boxes.
+	// The number of valid bounding boxes.
 	//
 	// example:
 	//
 	// 100
 	BoxCount *int32 `json:"BoxCount,omitempty" xml:"BoxCount,omitempty"`
-	// The list of retrieval details for each detection box.
+	// The list of retrieval details for each bounding box.
 	Data []*MerchandisePlacementDetectionResponseBodyDataData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
 	// The usage information. The key is the usage metric name and the value is the count.
 	//
@@ -182,23 +182,23 @@ func (s *MerchandisePlacementDetectionResponseBodyData) Validate() error {
 }
 
 type MerchandisePlacementDetectionResponseBodyDataData struct {
-	// The coordinates of the detection box in the [x1,y1,x2,y2] format.
+	// The coordinates of the bounding box in the [x1,y1,x2,y2] format.
 	Bbox []*float32 `json:"Bbox,omitempty" xml:"Bbox,omitempty" type:"Repeated"`
-	// The reason for the failure of the detection box. This parameter is null if the detection is successful.
+	// The reason why the bounding box processing failed. This parameter is null if the processing is successful.
 	//
 	// example:
 	//
-	// "Embedding failed"
+	// Embedding failed
 	Error *string `json:"Error,omitempty" xml:"Error,omitempty"`
-	// The index of the detection box.
+	// The index of the bounding box.
 	//
 	// example:
 	//
 	// 1
 	Idx *int32 `json:"Idx,omitempty" xml:"Idx,omitempty"`
-	// The top-1 retrieved product for the detection box.
+	// The top-1 retrieved product for the bounding box.
 	Top1 *MerchandisePlacementDetectionResponseBodyDataDataTop1 `json:"Top1,omitempty" xml:"Top1,omitempty" type:"Struct"`
-	// The list of top-K retrieved products for the detection box.
+	// The list of top-K retrieved products for the bounding box.
 	Topk []*MerchandisePlacementDetectionResponseBodyDataDataTopk `json:"Topk,omitempty" xml:"Topk,omitempty" type:"Repeated"`
 }
 
@@ -274,7 +274,7 @@ func (s *MerchandisePlacementDetectionResponseBodyDataData) Validate() error {
 }
 
 type MerchandisePlacementDetectionResponseBodyDataDataTop1 struct {
-	// The similarity score. Valid values: 0 to 1.
+	// The similarity score, which ranges from 0 to 1.
 	//
 	// example:
 	//
@@ -340,7 +340,7 @@ type MerchandisePlacementDetectionResponseBodyDataDataTopk struct {
 	//
 	// 1
 	Rank *int32 `json:"Rank,omitempty" xml:"Rank,omitempty"`
-	// The similarity score. Valid values: 0 to 1.
+	// The similarity score, which ranges from 0 to 1.
 	//
 	// example:
 	//

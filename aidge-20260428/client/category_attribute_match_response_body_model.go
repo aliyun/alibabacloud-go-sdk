@@ -22,7 +22,7 @@ type iCategoryAttributeMatchResponseBody interface {
 }
 
 type CategoryAttributeMatchResponseBody struct {
-	// The error code. This parameter is not returned when the call is successful.
+	// The error code. This parameter is not returned for successful calls.
 	//
 	// example:
 	//
@@ -30,7 +30,7 @@ type CategoryAttributeMatchResponseBody struct {
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The returned result.
 	Data *CategoryAttributeMatchResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The error message. This parameter is not returned when the call is successful.
+	// The error message. This parameter is not returned for successful calls.
 	//
 	// example:
 	//
@@ -119,7 +119,7 @@ type CategoryAttributeMatchResponseBodyData struct {
 	//
 	// example:
 	//
-	// FC-F3A8A2802D10606D
+	// 1516
 	CategoryId *int32 `json:"CategoryId,omitempty" xml:"CategoryId,omitempty"`
 	// The category name.
 	//
@@ -131,7 +131,7 @@ type CategoryAttributeMatchResponseBodyData struct {
 	//
 	// example:
 	//
-	// Pet Supplies/Cat Supplies/Cat Pendants, Collars, Leashes/Cat Collar
+	// Pet Supplies/Cat Supplies/Cat Pendants, Collars, and Leashes/Cat Collar
 	CategoryPath *string `json:"CategoryPath,omitempty" xml:"CategoryPath,omitempty"`
 	// The number of successfully filled attributes.
 	//
@@ -296,9 +296,9 @@ type CategoryAttributeMatchResponseBodyDataAttributes struct {
 	//
 	// a_reason
 	Reason *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
-	// The list of selected attribute value texts, such as ["iOS","Android"].
+	// The list of selected attribute value texts, such as ["iOS","Android"\\].
 	SelectedValues []*string `json:"SelectedValues,omitempty" xml:"SelectedValues,omitempty" type:"Repeated"`
-	// The list of selected attribute value IDs, such as [30127,30128].
+	// The list of selected attribute value IDs, such as [30127,30128\\].
 	//
 	// example:
 	//

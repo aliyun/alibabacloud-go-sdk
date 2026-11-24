@@ -30,7 +30,7 @@ type DocumentTranslateResponseBody struct {
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The asynchronous task information.
 	Data *DocumentTranslateResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The error message, such as "The parameters contain sensitive information. Try other inputs."
+	// The error message, such as "The parameter contains sensitive information. Try another input."
 	//
 	// This parameter is not returned when the call is successful.
 	//

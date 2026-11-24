@@ -22,7 +22,7 @@ type iImageRemoveAsyncResponseBody interface {
 }
 
 type ImageRemoveAsyncResponseBody struct {
-	// The status code, such as "success". This parameter is not returned for successful calls.
+	// The status code, such as "success".
 	//
 	// example:
 	//
@@ -36,17 +36,13 @@ type ImageRemoveAsyncResponseBody struct {
 	//
 	// OK
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The request ID, which is used to identify a unique request.
+	// The request ID, which is used to identify a unique request call.
 	//
 	// example:
 	//
 	// E1AD60F1-BAC7-546B-9533-E7AD02B16E3F
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the call is successful. Valid values:
-	//
-	// - true: The call is successful.
-	//
-	// - false: The call fails.
+	// Indicates whether the call is successful. A value of true indicates success, and a value of false indicates failure.
 	//
 	// example:
 	//
@@ -117,7 +113,7 @@ func (s *ImageRemoveAsyncResponseBody) Validate() error {
 }
 
 type ImageRemoveAsyncResponseBodyData struct {
-	// The task ID, which is used to query the result of the asynchronous task.
+	// The task ID used to query the asynchronous task result.
 	//
 	// example:
 	//

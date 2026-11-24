@@ -5,6 +5,7 @@ import (
 	gatewayclient "github.com/alibabacloud-go/alibabacloud-gateway-pop/client"
 	openapi "github.com/alibabacloud-go/darabonba-openapi/v2/client"
 	openapiutil "github.com/alibabacloud-go/darabonba-openapi/v2/utils"
+	websocketutils "github.com/alibabacloud-go/darabonba-openapi/v2/websocketUtils"
 	"github.com/alibabacloud-go/tea/dara"
 )
 
@@ -138,27 +139,27 @@ func (client *Client) AddDisplayKnowledge(request *AddDisplayKnowledgeRequest) (
 
 // Summary:
 //
-// Generates virtual try-on images by using AI algorithms to replace a model\\"s clothing with a specified garment based on the input garment and model images. The operation preserves the model\\"s posture, facial features, and other visual details while ensuring a realistic and well-fitted appearance of the garment. It returns a processed image based on the provided URL of the original product image.
+// Generates virtual try-on images by replacing the clothing on a model with specified garments based on AI algorithms. This service preserves the model\\"s original details, posture, and facial features while ensuring a realistic and well-fitted appearance. You only need to provide the URLs of the original product images to obtain the processed images.
 //
 // Description:
 //
 // # Product overview
 //
-// Virtual try-on is an AI-based image generation API service that replaces the clothing on a model with specified garments based on user-provided clothing and model images. It preserves the model\\"s other details and scene details without changing the model\\"s pose or facial features, ensuring a realistic and well-fitted appearance of the garments. You only need to provide the URLs of the original product images to obtain the processed images.
+// Virtual try-on is an AI-based image generation API service that replaces the clothing on a model with specified garments based on user-provided clothing and model images. The service preserves the model\\"s other details and image details without changing the model\\"s posture or facial features, ensuring a realistic and well-fitted appearance. You only need to provide the URL of the original product image to obtain the processed image.
 //
 // # Scenarios
 //
 //   - **Virtual try-on for clothing, shoes, and hats:**
 //
-// Supports virtual try-on for 14 categories of clothing, shoes, hats, and accessories, including tops, coats, bottoms, dresses, jumpsuits, socks, shoes, hats, earrings, necklaces, bracelets, scarves, bags, and glasses. After you upload a person image and product images, the system intelligently matches the position and proportion of the products based on the person\\"s pose and body parts to generate natural and realistic try-on effects. This intuitively displays the on-body performance of the clothing and presents a coordinated and realistic wearing effect.
+// Supports virtual try-on for 14 categories of clothing, shoes, and hats, including tops, coats, bottoms, dresses, jumpsuits, socks, shoes, hats, earrings, necklaces, bracelets, scarves, bags, and glasses. After you upload a person image and a product image, the system intelligently matches the product position and proportion based on the person\\"s posture and body parts. This generates natural and realistic try-on effects, intuitively displaying the on-body performance of the clothing and presenting a coordinated and realistic wearing effect.
 //
-//   - **Model replacement (model skin/face replacement)**
+//   - **Model replacement (model skin or face replacement)**
 //
-//     You provide the original model scene image and the face or reference image of the target model to apply the target person\\"s face to the model in the original image. This is applicable to customer-specified models, unified brand images, and character image adaptation for different markets. It also reduces the duplication of using the same model image as other merchants.
+//     You provide the original model scene image and the face or reference image of the target model to apply the target person\\"s face to the original model. This is suitable for customer-specified models, unified brand images, and character image adaptation for different markets. It also reduces the duplication of using the same model image as other merchants.
 //
-//   - **Pose replacement (pose fission)**
+//   - **Posture replacement (posture fission)**
 //
-// You provide the original model scene image and a pose reference image with a specified pose to generate the effect of the original person and outfit in the new pose. This displays the fit, silhouette, and on-body performance of the products in different poses such as standing, raising hands, and turning around.
+// You provide the original model scene image and a posture reference image with a specified pose to generate the effect of the original person and outfit in the new posture. This displays the fit, silhouette, and on-body performance of the product in different postures such as standing, raising hands, and turning around.
 //
 //   - **E-commerce product display and marketing:**
 //
@@ -166,7 +167,7 @@ func (client *Client) AddDisplayKnowledge(request *AddDisplayKnowledgeRequest) (
 //
 //   - **Online shopping experience optimization:**
 //
-// Consumers can preview the wearing effect of products through virtual try-on to more intuitively understand the style, matching, and overall effect of the products, assisting in purchase decisions and enhancing the shopping experience.
+// Consumers can preview the wearing effect of products through virtual try-on, more intuitively understand the style, matching, and overall effect of the products, assist in purchase decisions, and enhance the shopping experience.
 //
 // # Features
 //
@@ -174,11 +175,11 @@ func (client *Client) AddDisplayKnowledge(request *AddDisplayKnowledgeRequest) (
 //
 // | --- | --- | --- | --- |
 //
-// | **Clothing replacement/product wearing*	- | 	- Clothing: tops, bottoms (pants, skirts), coats, dresses, jumpsuits/rompers.
+// | **Clothing replacement or product wearing*	- | 	- Clothing: tops, bottoms (pants, skirts), coats, dresses, jumpsuits or rompers.
 //
 //   - Shoes and hats: shoes, socks, hats.
 //
-//   - Accessories: earrings, necklaces, bracelets, scarves, bags, glasses. | Upload a model image and product images, and the products will naturally fit the model. The system automatically matches the wearing position based on the clothing category, ensuring that the pose, proportion, and wearing layers are consistent with real human effects, while maintaining the person\\"s scene and pose in the original image.
+//   - Accessories: earrings, necklaces, bracelets, scarves, bags, glasses. | Upload a model image and a product image, and the product is naturally worn on the model. The system automatically matches the wearing position based on the clothing category, ensuring that the posture, proportion, and wearing layers are consistent with real human effects, while maintaining the person scene and posture in the original image.
 //
 // Try-on modes:
 //
@@ -186,21 +187,21 @@ func (client *Client) AddDisplayKnowledge(request *AddDisplayKnowledgeRequest) (
 //
 //   - Supports multi-item outfit matching (multiple items in one image or multiple items across multiple images).
 //
-// Note: The multi-item outfit matching capability was newly launched in November. | Uniformly generates the wearing effects of clothing, shoes, hats, and accessories, reducing item-by-item outfit changes and real-life shooting. |
+// Note: The multi-item outfit matching capability was launched in November. | Unifies the generation of wearing effects for clothing, shoes, hats, and accessories, reducing item-by-item outfit changes and real-life shooting. |
 //
-// | **Model replacement/model skin replacement (face replacement)*	- | Supports user-specified target models.
+// | **Model replacement or model skin replacement (face replacement)*	- | Supports user-specified target models.
 //
 // The original image can be a single-item try-on image or a multi-item outfit image. | Upload the original model scene image and provide one face photo or clear model reference image of the target person to replace the face and identity features of the model in the scene with those of the target person.
 //
-// The original outfit, pose, and scene are all preserved, and the generated result uses the person\\"s pose and background from the scene image. | Uses customer-specified or authorized model images to reduce duplication with existing model images and unify brand visuals. |
+// The original outfit, posture, and scene are all preserved, and the generated result uses the person\\"s posture and background from the scene image. | Uses customer-specified or authorized model images to reduce duplication with existing model images and unify brand visuals. |
 //
-// | **Pose replacement/pose fission*	- | Generates images based on the user-specified pose.
+// | **Posture replacement or posture fission*	- | Generates images based on the user-specified pose.
 //
-// The original image can be a single-item try-on image or a multi-item outfit image. | Upload the original model scene image and one pose reference image to change the model\\"s pose to the action in the reference image. The person and outfit remain unchanged, and the wrinkles, drape, and layers of the clothing naturally adjust to the new pose. | Displays the fit, silhouette, and on-body style of the products in different poses, expanding the detail pages and marketing materials. |
+// The original image can be a single-item try-on image or a multi-item outfit image. | Upload the original model scene image and one posture reference image to change the model\\"s posture to the action in the reference image. The person and outfit remain unchanged, and the wrinkles, drape, and layers of the clothing naturally adjust to the new posture. | Displays the fit, silhouette, and on-body style of the product in different postures, expanding the details page and marketing materials. |
 //
 // # 4. Effect examples
 //
-// | Scenario | Type/outfit description | Original model scene image | Product image/reference image | Effect image |
+// | Scenario | Type or outfit description | Original model scene image | Product image or reference image | Effect image |
 //
 // | --- | --- | --- | --- | --- |
 //
@@ -216,29 +217,29 @@ func (client *Client) AddDisplayKnowledge(request *AddDisplayKnowledgeRequest) (
 //
 // | Single-item try-on | Jumpsuit | ![image.png](https://alidocs.oss-cn-zhangjiakou.aliyuncs.com/res/YVOLrG0ZAjy0Gnpz/img/f36cad25-f199-4338-b945-7901c810c819.png) | ![image.png](https://alidocs.oss-cn-zhangjiakou.aliyuncs.com/res/YVOLrG0ZAjy0Gnpz/img/5aa1a24d-0d3f-4765-92f5-7ea6c9f0b0b8.png) | ![image.png](https://alidocs.oss-cn-zhangjiakou.aliyuncs.com/res/YVOLrG0ZAjy0Gnpz/img/0449c368-c362-42f5-8292-3ebba7b2d478.png) |
 //
-// | Single-item try-on | Skirt | ![image.png](https://alidocs.oss-cn-zhangjiakou.aliyuncs.com/res/YVOLrG0ZAjy0Gnpz/img/956b4a14-7657-4082-ae2d-48f955df662b.png) | ![image.png](https://alidocs.oss-cn-zhangjiakou.aliyuncs.com/res/YVOLrG0ZAjy0Gnpz/img/de3fb424-477d-4ed8-8e54-2561a30d3379.png) | ![image.png](https://alidocs.oss-cn-zhangjiakou.aliyuncs.com/res/YVOLrG0ZAjy0Gnpz/img/297fa740-b125-420b-acc5-9ed062a01214.png) |
+// | Single-item try-on | Dress | ![image.png](https://alidocs.oss-cn-zhangjiakou.aliyuncs.com/res/YVOLrG0ZAjy0Gnpz/img/956b4a14-7657-4082-ae2d-48f955df662b.png) | ![image.png](https://alidocs.oss-cn-zhangjiakou.aliyuncs.com/res/YVOLrG0ZAjy0Gnpz/img/de3fb424-477d-4ed8-8e54-2561a30d3379.png) | ![image.png](https://alidocs.oss-cn-zhangjiakou.aliyuncs.com/res/YVOLrG0ZAjy0Gnpz/img/297fa740-b125-420b-acc5-9ed062a01214.png) |
 //
 // | Single-item try-on | Hat | ![image.png](https://alidocs.oss-cn-zhangjiakou.aliyuncs.com/res/YVOLrG0ZAjy0Gnpz/img/2cb272dd-e8e0-456d-b671-251d88d6eb5a.png) | ![image.png](https://alidocs.oss-cn-zhangjiakou.aliyuncs.com/res/YVOLrG0ZAjy0Gnpz/img/40240f57-1e16-4b7b-bfe2-bcb560635c88.png) | ![image.png](https://alidocs.oss-cn-zhangjiakou.aliyuncs.com/res/YVOLrG0ZAjy0Gnpz/img/b3a0a6a6-c437-4aa2-842b-5b93e7af1a4f.png) |
 //
 // | Multi-item try-on | **Two-item outfit**
 //
-// Dress + high heels | ![image.png](https://alidocs.oss-cn-zhangjiakou.aliyuncs.com/res/YVOLrG0ZAjy0Gnpz/img/1c0002da-1b62-4d2e-9d0e-2e5a74d7cb50.png) | ![image.png](https://alidocs.oss-cn-zhangjiakou.aliyuncs.com/res/YVOLrG0ZAjy0Gnpz/img/f5150020-a9fb-4869-b126-57770c482d72.png) | ![image.png](https://alidocs.oss-cn-zhangjiakou.aliyuncs.com/res/YVOLrG0ZAjy0Gnpz/img/c5fd01c4-b754-4298-8c2d-914fc4ac9497.png) |
+// Dress and high heels | ![image.png](https://alidocs.oss-cn-zhangjiakou.aliyuncs.com/res/YVOLrG0ZAjy0Gnpz/img/1c0002da-1b62-4d2e-9d0e-2e5a74d7cb50.png) | ![image.png](https://alidocs.oss-cn-zhangjiakou.aliyuncs.com/res/YVOLrG0ZAjy0Gnpz/img/f5150020-a9fb-4869-b126-57770c482d72.png) | ![image.png](https://alidocs.oss-cn-zhangjiakou.aliyuncs.com/res/YVOLrG0ZAjy0Gnpz/img/c5fd01c4-b754-4298-8c2d-914fc4ac9497.png) |
 //
 // | Multi-item try-on | **Three-item outfit**
 //
-// Striped polo shirt + denim shorts + work boots | ![image.png](https://alidocs.oss-cn-zhangjiakou.aliyuncs.com/res/YVOLrG0ZAjy0Gnpz/img/da280053-6a2d-48c9-b99c-db0dc60884a2.png) | ![image.png](https://alidocs.oss-cn-zhangjiakou.aliyuncs.com/res/YVOLrG0ZAjy0Gnpz/img/3ad6de9b-75c8-44a2-8de8-a2124ac95b3b.png) | ![image.png](https://alidocs.oss-cn-zhangjiakou.aliyuncs.com/res/YVOLrG0ZAjy0Gnpz/img/8cad69c1-c1af-457f-8c1a-1c8b3faeb63f.png) |
+// Striped polo shirt, denim shorts, and work boots | ![image.png](https://alidocs.oss-cn-zhangjiakou.aliyuncs.com/res/YVOLrG0ZAjy0Gnpz/img/da280053-6a2d-48c9-b99c-db0dc60884a2.png) | ![image.png](https://alidocs.oss-cn-zhangjiakou.aliyuncs.com/res/YVOLrG0ZAjy0Gnpz/img/3ad6de9b-75c8-44a2-8de8-a2124ac95b3b.png) | ![image.png](https://alidocs.oss-cn-zhangjiakou.aliyuncs.com/res/YVOLrG0ZAjy0Gnpz/img/8cad69c1-c1af-457f-8c1a-1c8b3faeb63f.png) |
 //
 // | Multi-item try-on | **Four-item outfit**
 //
-// Printed T-shirt + pants + hat + bag | ![image.png](https://alidocs.oss-cn-zhangjiakou.aliyuncs.com/res/YVOLrG0ZAjy0Gnpz/img/a6c3cc3f-1665-43c9-8891-cce00d58535c.png) | ![image.png](https://alidocs.oss-cn-zhangjiakou.aliyuncs.com/res/YVOLrG0ZAjy0Gnpz/img/1facf32c-1876-4858-8ae8-80a8d16bf8ed.png) | ![image.png](https://alidocs.oss-cn-zhangjiakou.aliyuncs.com/res/YVOLrG0ZAjy0Gnpz/img/e979c290-3593-49f2-926b-20be35a02872.png) |
+// Printed T-shirt, pants, hat, and bag | ![image.png](https://alidocs.oss-cn-zhangjiakou.aliyuncs.com/res/YVOLrG0ZAjy0Gnpz/img/a6c3cc3f-1665-43c9-8891-cce00d58535c.png) | ![image.png](https://alidocs.oss-cn-zhangjiakou.aliyuncs.com/res/YVOLrG0ZAjy0Gnpz/img/1facf32c-1876-4858-8ae8-80a8d16bf8ed.png) | ![image.png](https://alidocs.oss-cn-zhangjiakou.aliyuncs.com/res/YVOLrG0ZAjy0Gnpz/img/e979c290-3593-49f2-926b-20be35a02872.png) |
 //
-// | Model replacement | **Model skin/face replacement**
+// | Model replacement | **Model skin or face replacement**
 //
 // Preserves the original top, pants, and scene | ![image.png](https://alidocs.oss-cn-zhangjiakou.aliyuncs.com/res/YVOLrG0ZAjy0Gnpz/img/983f7257-79f7-4100-9c49-a11d45d0f529.png) | ![image.png](https://alidocs.oss-cn-zhangjiakou.aliyuncs.com/res/YVOLrG0ZAjy0Gnpz/img/7d3f7a66-4865-4fde-a363-a202d6e2fc91.png) | ![image.png](https://alidocs.oss-cn-zhangjiakou.aliyuncs.com/res/YVOLrG0ZAjy0Gnpz/img/40519a91-bdfe-4712-a9a3-20d0bad0ed99.png) |
 //
-// | Pose replacement | **Specified pose**
+// | Posture replacement | **Specified pose**
 //
-// Preserves the original outfit and adjusts to the hand-raising pose in the reference image | ![image.png](https://alidocs.oss-cn-zhangjiakou.aliyuncs.com/res/YVOLrG0ZAjy0Gnpz/img/1626981b-8fa2-4241-930c-db5d6dd0462b.png) | ![image.png](https://alidocs.oss-cn-zhangjiakou.aliyuncs.com/res/YVOLrG0ZAjy0Gnpz/img/3db8ad38-cd33-4ecb-aa99-a3362d7b20b0.png) | ![image.png](https://alidocs.oss-cn-zhangjiakou.aliyuncs.com/res/YVOLrG0ZAjy0Gnpz/img/3c2d424f-6ab5-43d4-92c1-c1510a498bb7.png) |
+// Preserves the original outfit and adjusts to the hand-raising posture in the reference image | ![image.png](https://alidocs.oss-cn-zhangjiakou.aliyuncs.com/res/YVOLrG0ZAjy0Gnpz/img/1626981b-8fa2-4241-930c-db5d6dd0462b.png) | ![image.png](https://alidocs.oss-cn-zhangjiakou.aliyuncs.com/res/YVOLrG0ZAjy0Gnpz/img/3db8ad38-cd33-4ecb-aa99-a3362d7b20b0.png) | ![image.png](https://alidocs.oss-cn-zhangjiakou.aliyuncs.com/res/YVOLrG0ZAjy0Gnpz/img/3c2d424f-6ab5-43d4-92c1-c1510a498bb7.png) |
 //
 // @param request - AiTryOnRequest
 //
@@ -314,27 +315,27 @@ func (client *Client) AiTryOnWithOptions(request *AiTryOnRequest, runtime *dara.
 
 // Summary:
 //
-// Generates virtual try-on images by using AI algorithms to replace a model\\"s clothing with a specified garment based on the input garment and model images. The operation preserves the model\\"s posture, facial features, and other visual details while ensuring a realistic and well-fitted appearance of the garment. It returns a processed image based on the provided URL of the original product image.
+// Generates virtual try-on images by replacing the clothing on a model with specified garments based on AI algorithms. This service preserves the model\\"s original details, posture, and facial features while ensuring a realistic and well-fitted appearance. You only need to provide the URLs of the original product images to obtain the processed images.
 //
 // Description:
 //
 // # Product overview
 //
-// Virtual try-on is an AI-based image generation API service that replaces the clothing on a model with specified garments based on user-provided clothing and model images. It preserves the model\\"s other details and scene details without changing the model\\"s pose or facial features, ensuring a realistic and well-fitted appearance of the garments. You only need to provide the URLs of the original product images to obtain the processed images.
+// Virtual try-on is an AI-based image generation API service that replaces the clothing on a model with specified garments based on user-provided clothing and model images. The service preserves the model\\"s other details and image details without changing the model\\"s posture or facial features, ensuring a realistic and well-fitted appearance. You only need to provide the URL of the original product image to obtain the processed image.
 //
 // # Scenarios
 //
 //   - **Virtual try-on for clothing, shoes, and hats:**
 //
-// Supports virtual try-on for 14 categories of clothing, shoes, hats, and accessories, including tops, coats, bottoms, dresses, jumpsuits, socks, shoes, hats, earrings, necklaces, bracelets, scarves, bags, and glasses. After you upload a person image and product images, the system intelligently matches the position and proportion of the products based on the person\\"s pose and body parts to generate natural and realistic try-on effects. This intuitively displays the on-body performance of the clothing and presents a coordinated and realistic wearing effect.
+// Supports virtual try-on for 14 categories of clothing, shoes, and hats, including tops, coats, bottoms, dresses, jumpsuits, socks, shoes, hats, earrings, necklaces, bracelets, scarves, bags, and glasses. After you upload a person image and a product image, the system intelligently matches the product position and proportion based on the person\\"s posture and body parts. This generates natural and realistic try-on effects, intuitively displaying the on-body performance of the clothing and presenting a coordinated and realistic wearing effect.
 //
-//   - **Model replacement (model skin/face replacement)**
+//   - **Model replacement (model skin or face replacement)**
 //
-//     You provide the original model scene image and the face or reference image of the target model to apply the target person\\"s face to the model in the original image. This is applicable to customer-specified models, unified brand images, and character image adaptation for different markets. It also reduces the duplication of using the same model image as other merchants.
+//     You provide the original model scene image and the face or reference image of the target model to apply the target person\\"s face to the original model. This is suitable for customer-specified models, unified brand images, and character image adaptation for different markets. It also reduces the duplication of using the same model image as other merchants.
 //
-//   - **Pose replacement (pose fission)**
+//   - **Posture replacement (posture fission)**
 //
-// You provide the original model scene image and a pose reference image with a specified pose to generate the effect of the original person and outfit in the new pose. This displays the fit, silhouette, and on-body performance of the products in different poses such as standing, raising hands, and turning around.
+// You provide the original model scene image and a posture reference image with a specified pose to generate the effect of the original person and outfit in the new posture. This displays the fit, silhouette, and on-body performance of the product in different postures such as standing, raising hands, and turning around.
 //
 //   - **E-commerce product display and marketing:**
 //
@@ -342,7 +343,7 @@ func (client *Client) AiTryOnWithOptions(request *AiTryOnRequest, runtime *dara.
 //
 //   - **Online shopping experience optimization:**
 //
-// Consumers can preview the wearing effect of products through virtual try-on to more intuitively understand the style, matching, and overall effect of the products, assisting in purchase decisions and enhancing the shopping experience.
+// Consumers can preview the wearing effect of products through virtual try-on, more intuitively understand the style, matching, and overall effect of the products, assist in purchase decisions, and enhance the shopping experience.
 //
 // # Features
 //
@@ -350,11 +351,11 @@ func (client *Client) AiTryOnWithOptions(request *AiTryOnRequest, runtime *dara.
 //
 // | --- | --- | --- | --- |
 //
-// | **Clothing replacement/product wearing*	- | 	- Clothing: tops, bottoms (pants, skirts), coats, dresses, jumpsuits/rompers.
+// | **Clothing replacement or product wearing*	- | 	- Clothing: tops, bottoms (pants, skirts), coats, dresses, jumpsuits or rompers.
 //
 //   - Shoes and hats: shoes, socks, hats.
 //
-//   - Accessories: earrings, necklaces, bracelets, scarves, bags, glasses. | Upload a model image and product images, and the products will naturally fit the model. The system automatically matches the wearing position based on the clothing category, ensuring that the pose, proportion, and wearing layers are consistent with real human effects, while maintaining the person\\"s scene and pose in the original image.
+//   - Accessories: earrings, necklaces, bracelets, scarves, bags, glasses. | Upload a model image and a product image, and the product is naturally worn on the model. The system automatically matches the wearing position based on the clothing category, ensuring that the posture, proportion, and wearing layers are consistent with real human effects, while maintaining the person scene and posture in the original image.
 //
 // Try-on modes:
 //
@@ -362,21 +363,21 @@ func (client *Client) AiTryOnWithOptions(request *AiTryOnRequest, runtime *dara.
 //
 //   - Supports multi-item outfit matching (multiple items in one image or multiple items across multiple images).
 //
-// Note: The multi-item outfit matching capability was newly launched in November. | Uniformly generates the wearing effects of clothing, shoes, hats, and accessories, reducing item-by-item outfit changes and real-life shooting. |
+// Note: The multi-item outfit matching capability was launched in November. | Unifies the generation of wearing effects for clothing, shoes, hats, and accessories, reducing item-by-item outfit changes and real-life shooting. |
 //
-// | **Model replacement/model skin replacement (face replacement)*	- | Supports user-specified target models.
+// | **Model replacement or model skin replacement (face replacement)*	- | Supports user-specified target models.
 //
 // The original image can be a single-item try-on image or a multi-item outfit image. | Upload the original model scene image and provide one face photo or clear model reference image of the target person to replace the face and identity features of the model in the scene with those of the target person.
 //
-// The original outfit, pose, and scene are all preserved, and the generated result uses the person\\"s pose and background from the scene image. | Uses customer-specified or authorized model images to reduce duplication with existing model images and unify brand visuals. |
+// The original outfit, posture, and scene are all preserved, and the generated result uses the person\\"s posture and background from the scene image. | Uses customer-specified or authorized model images to reduce duplication with existing model images and unify brand visuals. |
 //
-// | **Pose replacement/pose fission*	- | Generates images based on the user-specified pose.
+// | **Posture replacement or posture fission*	- | Generates images based on the user-specified pose.
 //
-// The original image can be a single-item try-on image or a multi-item outfit image. | Upload the original model scene image and one pose reference image to change the model\\"s pose to the action in the reference image. The person and outfit remain unchanged, and the wrinkles, drape, and layers of the clothing naturally adjust to the new pose. | Displays the fit, silhouette, and on-body style of the products in different poses, expanding the detail pages and marketing materials. |
+// The original image can be a single-item try-on image or a multi-item outfit image. | Upload the original model scene image and one posture reference image to change the model\\"s posture to the action in the reference image. The person and outfit remain unchanged, and the wrinkles, drape, and layers of the clothing naturally adjust to the new posture. | Displays the fit, silhouette, and on-body style of the product in different postures, expanding the details page and marketing materials. |
 //
 // # 4. Effect examples
 //
-// | Scenario | Type/outfit description | Original model scene image | Product image/reference image | Effect image |
+// | Scenario | Type or outfit description | Original model scene image | Product image or reference image | Effect image |
 //
 // | --- | --- | --- | --- | --- |
 //
@@ -392,29 +393,29 @@ func (client *Client) AiTryOnWithOptions(request *AiTryOnRequest, runtime *dara.
 //
 // | Single-item try-on | Jumpsuit | ![image.png](https://alidocs.oss-cn-zhangjiakou.aliyuncs.com/res/YVOLrG0ZAjy0Gnpz/img/f36cad25-f199-4338-b945-7901c810c819.png) | ![image.png](https://alidocs.oss-cn-zhangjiakou.aliyuncs.com/res/YVOLrG0ZAjy0Gnpz/img/5aa1a24d-0d3f-4765-92f5-7ea6c9f0b0b8.png) | ![image.png](https://alidocs.oss-cn-zhangjiakou.aliyuncs.com/res/YVOLrG0ZAjy0Gnpz/img/0449c368-c362-42f5-8292-3ebba7b2d478.png) |
 //
-// | Single-item try-on | Skirt | ![image.png](https://alidocs.oss-cn-zhangjiakou.aliyuncs.com/res/YVOLrG0ZAjy0Gnpz/img/956b4a14-7657-4082-ae2d-48f955df662b.png) | ![image.png](https://alidocs.oss-cn-zhangjiakou.aliyuncs.com/res/YVOLrG0ZAjy0Gnpz/img/de3fb424-477d-4ed8-8e54-2561a30d3379.png) | ![image.png](https://alidocs.oss-cn-zhangjiakou.aliyuncs.com/res/YVOLrG0ZAjy0Gnpz/img/297fa740-b125-420b-acc5-9ed062a01214.png) |
+// | Single-item try-on | Dress | ![image.png](https://alidocs.oss-cn-zhangjiakou.aliyuncs.com/res/YVOLrG0ZAjy0Gnpz/img/956b4a14-7657-4082-ae2d-48f955df662b.png) | ![image.png](https://alidocs.oss-cn-zhangjiakou.aliyuncs.com/res/YVOLrG0ZAjy0Gnpz/img/de3fb424-477d-4ed8-8e54-2561a30d3379.png) | ![image.png](https://alidocs.oss-cn-zhangjiakou.aliyuncs.com/res/YVOLrG0ZAjy0Gnpz/img/297fa740-b125-420b-acc5-9ed062a01214.png) |
 //
 // | Single-item try-on | Hat | ![image.png](https://alidocs.oss-cn-zhangjiakou.aliyuncs.com/res/YVOLrG0ZAjy0Gnpz/img/2cb272dd-e8e0-456d-b671-251d88d6eb5a.png) | ![image.png](https://alidocs.oss-cn-zhangjiakou.aliyuncs.com/res/YVOLrG0ZAjy0Gnpz/img/40240f57-1e16-4b7b-bfe2-bcb560635c88.png) | ![image.png](https://alidocs.oss-cn-zhangjiakou.aliyuncs.com/res/YVOLrG0ZAjy0Gnpz/img/b3a0a6a6-c437-4aa2-842b-5b93e7af1a4f.png) |
 //
 // | Multi-item try-on | **Two-item outfit**
 //
-// Dress + high heels | ![image.png](https://alidocs.oss-cn-zhangjiakou.aliyuncs.com/res/YVOLrG0ZAjy0Gnpz/img/1c0002da-1b62-4d2e-9d0e-2e5a74d7cb50.png) | ![image.png](https://alidocs.oss-cn-zhangjiakou.aliyuncs.com/res/YVOLrG0ZAjy0Gnpz/img/f5150020-a9fb-4869-b126-57770c482d72.png) | ![image.png](https://alidocs.oss-cn-zhangjiakou.aliyuncs.com/res/YVOLrG0ZAjy0Gnpz/img/c5fd01c4-b754-4298-8c2d-914fc4ac9497.png) |
+// Dress and high heels | ![image.png](https://alidocs.oss-cn-zhangjiakou.aliyuncs.com/res/YVOLrG0ZAjy0Gnpz/img/1c0002da-1b62-4d2e-9d0e-2e5a74d7cb50.png) | ![image.png](https://alidocs.oss-cn-zhangjiakou.aliyuncs.com/res/YVOLrG0ZAjy0Gnpz/img/f5150020-a9fb-4869-b126-57770c482d72.png) | ![image.png](https://alidocs.oss-cn-zhangjiakou.aliyuncs.com/res/YVOLrG0ZAjy0Gnpz/img/c5fd01c4-b754-4298-8c2d-914fc4ac9497.png) |
 //
 // | Multi-item try-on | **Three-item outfit**
 //
-// Striped polo shirt + denim shorts + work boots | ![image.png](https://alidocs.oss-cn-zhangjiakou.aliyuncs.com/res/YVOLrG0ZAjy0Gnpz/img/da280053-6a2d-48c9-b99c-db0dc60884a2.png) | ![image.png](https://alidocs.oss-cn-zhangjiakou.aliyuncs.com/res/YVOLrG0ZAjy0Gnpz/img/3ad6de9b-75c8-44a2-8de8-a2124ac95b3b.png) | ![image.png](https://alidocs.oss-cn-zhangjiakou.aliyuncs.com/res/YVOLrG0ZAjy0Gnpz/img/8cad69c1-c1af-457f-8c1a-1c8b3faeb63f.png) |
+// Striped polo shirt, denim shorts, and work boots | ![image.png](https://alidocs.oss-cn-zhangjiakou.aliyuncs.com/res/YVOLrG0ZAjy0Gnpz/img/da280053-6a2d-48c9-b99c-db0dc60884a2.png) | ![image.png](https://alidocs.oss-cn-zhangjiakou.aliyuncs.com/res/YVOLrG0ZAjy0Gnpz/img/3ad6de9b-75c8-44a2-8de8-a2124ac95b3b.png) | ![image.png](https://alidocs.oss-cn-zhangjiakou.aliyuncs.com/res/YVOLrG0ZAjy0Gnpz/img/8cad69c1-c1af-457f-8c1a-1c8b3faeb63f.png) |
 //
 // | Multi-item try-on | **Four-item outfit**
 //
-// Printed T-shirt + pants + hat + bag | ![image.png](https://alidocs.oss-cn-zhangjiakou.aliyuncs.com/res/YVOLrG0ZAjy0Gnpz/img/a6c3cc3f-1665-43c9-8891-cce00d58535c.png) | ![image.png](https://alidocs.oss-cn-zhangjiakou.aliyuncs.com/res/YVOLrG0ZAjy0Gnpz/img/1facf32c-1876-4858-8ae8-80a8d16bf8ed.png) | ![image.png](https://alidocs.oss-cn-zhangjiakou.aliyuncs.com/res/YVOLrG0ZAjy0Gnpz/img/e979c290-3593-49f2-926b-20be35a02872.png) |
+// Printed T-shirt, pants, hat, and bag | ![image.png](https://alidocs.oss-cn-zhangjiakou.aliyuncs.com/res/YVOLrG0ZAjy0Gnpz/img/a6c3cc3f-1665-43c9-8891-cce00d58535c.png) | ![image.png](https://alidocs.oss-cn-zhangjiakou.aliyuncs.com/res/YVOLrG0ZAjy0Gnpz/img/1facf32c-1876-4858-8ae8-80a8d16bf8ed.png) | ![image.png](https://alidocs.oss-cn-zhangjiakou.aliyuncs.com/res/YVOLrG0ZAjy0Gnpz/img/e979c290-3593-49f2-926b-20be35a02872.png) |
 //
-// | Model replacement | **Model skin/face replacement**
+// | Model replacement | **Model skin or face replacement**
 //
 // Preserves the original top, pants, and scene | ![image.png](https://alidocs.oss-cn-zhangjiakou.aliyuncs.com/res/YVOLrG0ZAjy0Gnpz/img/983f7257-79f7-4100-9c49-a11d45d0f529.png) | ![image.png](https://alidocs.oss-cn-zhangjiakou.aliyuncs.com/res/YVOLrG0ZAjy0Gnpz/img/7d3f7a66-4865-4fde-a363-a202d6e2fc91.png) | ![image.png](https://alidocs.oss-cn-zhangjiakou.aliyuncs.com/res/YVOLrG0ZAjy0Gnpz/img/40519a91-bdfe-4712-a9a3-20d0bad0ed99.png) |
 //
-// | Pose replacement | **Specified pose**
+// | Posture replacement | **Specified pose**
 //
-// Preserves the original outfit and adjusts to the hand-raising pose in the reference image | ![image.png](https://alidocs.oss-cn-zhangjiakou.aliyuncs.com/res/YVOLrG0ZAjy0Gnpz/img/1626981b-8fa2-4241-930c-db5d6dd0462b.png) | ![image.png](https://alidocs.oss-cn-zhangjiakou.aliyuncs.com/res/YVOLrG0ZAjy0Gnpz/img/3db8ad38-cd33-4ecb-aa99-a3362d7b20b0.png) | ![image.png](https://alidocs.oss-cn-zhangjiakou.aliyuncs.com/res/YVOLrG0ZAjy0Gnpz/img/3c2d424f-6ab5-43d4-92c1-c1510a498bb7.png) |
+// Preserves the original outfit and adjusts to the hand-raising posture in the reference image | ![image.png](https://alidocs.oss-cn-zhangjiakou.aliyuncs.com/res/YVOLrG0ZAjy0Gnpz/img/1626981b-8fa2-4241-930c-db5d6dd0462b.png) | ![image.png](https://alidocs.oss-cn-zhangjiakou.aliyuncs.com/res/YVOLrG0ZAjy0Gnpz/img/3db8ad38-cd33-4ecb-aa99-a3362d7b20b0.png) | ![image.png](https://alidocs.oss-cn-zhangjiakou.aliyuncs.com/res/YVOLrG0ZAjy0Gnpz/img/3c2d424f-6ab5-43d4-92c1-c1510a498bb7.png) |
 //
 // @param request - AiTryOnRequest
 //
@@ -432,31 +433,31 @@ func (client *Client) AiTryOn(request *AiTryOnRequest) (_result *AiTryOnResponse
 
 // Summary:
 //
-// Optimizes cross-platform product materials for cross-border e-commerce sellers with a one-click, cost-effective service. Takes a product link from a source platform and outputs a full set of materials, including titles, attributes, main images, SKU images, detail images, and copy, tailored to the target platform requirements. Uses an official pre-built, lowest-cost workflow that focuses on filtering and lightweight processing without invoking high-cost image translation capabilities, maximizing cost control while ensuring listing compliance. (Asynchronous)
+// Optimizes cross-platform product materials for cross-border e-commerce sellers by using a cost-effective, one-click service. Takes a product link from a source platform and generates a full set of materials, including titles, attributes, main images, SKU images, detail images, and copy, tailored to the target platform requirements. Uses an official pre-built, lowest-cost workflow that focuses on filtering and lightweight processing without invoking high-cost image translation capabilities, which maximizes cost control while ensuring listing compliance. (Asynchronous)
 //
 // Description:
 //
 // ## Product introduction
 //
-// Optimizes cross-platform product materials for cross-border e-commerce sellers with a one-click, cost-effective service. Takes a product link from a source platform and outputs a full set of materials, including titles, attributes, main images, SKU images, detail images, and copy, tailored to the target platform requirements. Uses an official pre-built, lowest-cost workflow that focuses on filtering and lightweight processing without invoking high-cost image translation capabilities, maximizing cost control while ensuring listing compliance. (Asynchronous)
+// Optimizes cross-platform product materials for cross-border e-commerce sellers by using a cost-effective, one-click service. Takes a product link from a source platform and generates a full set of materials, including titles, attributes, main images, SKU images, detail images, and copy, tailored to the target platform requirements. Uses an official pre-built, lowest-cost workflow that focuses on filtering and lightweight processing without invoking high-cost image translation capabilities, which maximizes cost control while ensuring listing compliance. (Asynchronous)
 //
 // ## Scenarios
 //
-// Applies to cost-sensitive, cross-platform listing scenarios that prioritize speed, volume, and low cost. Examples include broad listing from 1688 to TEMU, bulk listing of high-SKU inventory, entry-level AI processing capabilities provided by top sellers and ERP or SaaS platforms, and merchants with high daily processing volumes but low requirements for marketing performance.
+// Applies to cost-sensitive, cross-platform listing scenarios that prioritize speed, volume, and low cost. Examples include broad listing from 1688 to TEMU, bulk listing of high-SKU inventory, providing entry-level AI processing capabilities for top sellers and ERP or SaaS platforms, and merchants with high daily processing volumes but low requirements for marketing performance.
 //
-// Reduces AI generation steps by filtering images with watermarks or non-compliant elements and prioritizing clean original images. This helps merchants complete cross-platform listing at an extremely low call cost.
+// Reduces AI generation steps by filtering out images with watermarks or non-compliant elements and prioritizing clean original images. This helps merchants complete cross-platform listing at an extremely low call cost.
 //
 // ## Features
 //
-// This service uses the official pre-built lowest-cost product optimization workflow, covering the entire process from material acquisition, compliance filtering, and text optimization to image processing:
+// This service uses the official pre-built lowest-cost product optimization workflow, which covers the entire process from material acquisition, compliance filtering, and text optimization to image processing:
 //
-// 1. Automatically parses 1688 product links and extracts multiple types of materials, including titles, SKUs, main images, detail images, and attributes.
+// 1. Automatically parses 1688 product links and extracts multiple types of materials, such as titles, SKUs, main images, detail images, and attributes.
 //
-// 2. Completes text filtering and SEO optimization based on the TEMU platform blacklist and compliance rules.
+// 2. Filters text and optimizes SEO based on the TEMU platform blacklist and compliance rules.
 //
-// 3. Intelligently identifies watermarks, logos, and Chinese copy in images, and prioritizes filtering and selecting clean original images. SKU images and a small number of main images are processed by using image translation capabilities to meet platform specifications. High-conversion images with marketing copy may be filtered out.
+// 3. Intelligently identifies watermarks, logos, and Chinese copy in images, and prioritizes filtering and selecting clean original images. Image translation capabilities are used to process SKU images and a small number of main images to meet platform specifications. High-conversion images with marketing copy may be filtered out.
 //
-// 4. Completes category matching, attribute filling, and localized rewriting based on the requirements of the target platform.
+// 4. Matches categories, fills in attributes, and performs localized rewriting based on the target platform requirements.
 //
 // @param request - AssetOptimizeLiteRequest
 //
@@ -532,31 +533,31 @@ func (client *Client) AssetOptimizeLiteWithOptions(request *AssetOptimizeLiteReq
 
 // Summary:
 //
-// Optimizes cross-platform product materials for cross-border e-commerce sellers with a one-click, cost-effective service. Takes a product link from a source platform and outputs a full set of materials, including titles, attributes, main images, SKU images, detail images, and copy, tailored to the target platform requirements. Uses an official pre-built, lowest-cost workflow that focuses on filtering and lightweight processing without invoking high-cost image translation capabilities, maximizing cost control while ensuring listing compliance. (Asynchronous)
+// Optimizes cross-platform product materials for cross-border e-commerce sellers by using a cost-effective, one-click service. Takes a product link from a source platform and generates a full set of materials, including titles, attributes, main images, SKU images, detail images, and copy, tailored to the target platform requirements. Uses an official pre-built, lowest-cost workflow that focuses on filtering and lightweight processing without invoking high-cost image translation capabilities, which maximizes cost control while ensuring listing compliance. (Asynchronous)
 //
 // Description:
 //
 // ## Product introduction
 //
-// Optimizes cross-platform product materials for cross-border e-commerce sellers with a one-click, cost-effective service. Takes a product link from a source platform and outputs a full set of materials, including titles, attributes, main images, SKU images, detail images, and copy, tailored to the target platform requirements. Uses an official pre-built, lowest-cost workflow that focuses on filtering and lightweight processing without invoking high-cost image translation capabilities, maximizing cost control while ensuring listing compliance. (Asynchronous)
+// Optimizes cross-platform product materials for cross-border e-commerce sellers by using a cost-effective, one-click service. Takes a product link from a source platform and generates a full set of materials, including titles, attributes, main images, SKU images, detail images, and copy, tailored to the target platform requirements. Uses an official pre-built, lowest-cost workflow that focuses on filtering and lightweight processing without invoking high-cost image translation capabilities, which maximizes cost control while ensuring listing compliance. (Asynchronous)
 //
 // ## Scenarios
 //
-// Applies to cost-sensitive, cross-platform listing scenarios that prioritize speed, volume, and low cost. Examples include broad listing from 1688 to TEMU, bulk listing of high-SKU inventory, entry-level AI processing capabilities provided by top sellers and ERP or SaaS platforms, and merchants with high daily processing volumes but low requirements for marketing performance.
+// Applies to cost-sensitive, cross-platform listing scenarios that prioritize speed, volume, and low cost. Examples include broad listing from 1688 to TEMU, bulk listing of high-SKU inventory, providing entry-level AI processing capabilities for top sellers and ERP or SaaS platforms, and merchants with high daily processing volumes but low requirements for marketing performance.
 //
-// Reduces AI generation steps by filtering images with watermarks or non-compliant elements and prioritizing clean original images. This helps merchants complete cross-platform listing at an extremely low call cost.
+// Reduces AI generation steps by filtering out images with watermarks or non-compliant elements and prioritizing clean original images. This helps merchants complete cross-platform listing at an extremely low call cost.
 //
 // ## Features
 //
-// This service uses the official pre-built lowest-cost product optimization workflow, covering the entire process from material acquisition, compliance filtering, and text optimization to image processing:
+// This service uses the official pre-built lowest-cost product optimization workflow, which covers the entire process from material acquisition, compliance filtering, and text optimization to image processing:
 //
-// 1. Automatically parses 1688 product links and extracts multiple types of materials, including titles, SKUs, main images, detail images, and attributes.
+// 1. Automatically parses 1688 product links and extracts multiple types of materials, such as titles, SKUs, main images, detail images, and attributes.
 //
-// 2. Completes text filtering and SEO optimization based on the TEMU platform blacklist and compliance rules.
+// 2. Filters text and optimizes SEO based on the TEMU platform blacklist and compliance rules.
 //
-// 3. Intelligently identifies watermarks, logos, and Chinese copy in images, and prioritizes filtering and selecting clean original images. SKU images and a small number of main images are processed by using image translation capabilities to meet platform specifications. High-conversion images with marketing copy may be filtered out.
+// 3. Intelligently identifies watermarks, logos, and Chinese copy in images, and prioritizes filtering and selecting clean original images. Image translation capabilities are used to process SKU images and a small number of main images to meet platform specifications. High-conversion images with marketing copy may be filtered out.
 //
-// 4. Completes category matching, attribute filling, and localized rewriting based on the requirements of the target platform.
+// 4. Matches categories, fills in attributes, and performs localized rewriting based on the target platform requirements.
 //
 // @param request - AssetOptimizeLiteRequest
 //
@@ -574,27 +575,27 @@ func (client *Client) AssetOptimizeLite(request *AssetOptimizeLiteRequest) (_res
 
 // Summary:
 //
-// Provides a one-click cross-platform product material optimization service for cross-border e-commerce sellers (optimal performance edition). This asynchronous operation takes 1688 product links as input and generates a full set of materials tailored to TEMU platform requirements, including titles, attributes, main images, SKU images, detail images, and copy. It uses officially pre-configured optimal workflows to maximize AI capabilities, retains and localizes brand marketing materials, and generates personalized materials such as size charts for categories like apparel.
+// Provides a one-click cross-platform product material optimization service (premium edition) for cross-border e-commerce sellers. Accepts a 1688 product link and generates a complete set of materials, including titles, attributes, main images, SKU images, detail images, and copywriting, tailored to TEMU platform requirements. Uses an official pre-built workflow to maximize AI capabilities, retain and localize brand marketing materials, and generate personalized materials such as size charts for apparel categories. (Asynchronous)
 //
 // Description:
 //
 // ## Product introduction
 //
-// A one-click cross-platform product material optimization service for cross-border e-commerce sellers (best effect edition). Input a 1688 product link to generate a complete set of materials, including titles, attributes, main images, SKU images, detail images, and copy, tailored to TEMU platform requirements.
+// Provides a one-click cross-platform product material optimization service (premium edition) for cross-border e-commerce sellers. Accepts a 1688 product link and generates a complete set of materials, including titles, attributes, main images, SKU images, detail images, and copywriting, tailored to TEMU platform requirements.
 //
 // ## Scenarios
 //
-// Applicable to scenarios with high requirements for the quality and conversion performance of cross-platform product materials. Examples include categories highly dependent on marketing materials such as apparel, accessories, cosmetics, and home goods; brand merchants and high-ticket items that need to retain the tone of marketing images with copy; top sellers and ERP/SaaS platforms conducting localized operations across multiple languages and markets; and scenarios requiring category-specific materials, such as size charts and weight and dimension charts, to improve listing quality and conversion rates.
+// Applicable to scenarios with high requirements for the quality and conversion performance of cross-platform product materials, such as apparel, accessories, beauty, and home categories that heavily rely on marketing materials. Suitable for brand merchants and high-ticket products that need to retain the tone of marketing images with copywriting, top sellers and ERP/SaaS platforms that require localized operations across multiple languages and markets, and scenarios that need to generate category-specific materials (such as size charts and weight and dimension charts) to improve listing quality and conversion rates.
 //
 // ## Features
 //
-// This service uses the official pre-built best-effect product optimization workflow, covering the entire pipeline from material acquisition, diagnosis, filtering, and optimization to output:
+// This service uses an official pre-built premium product optimization workflow that covers the entire pipeline from material acquisition, diagnosis, filtering, and optimization to output:
 //
-// 1. Automatically parses 1688 product links to extract a full set of materials, including titles, SKUs, main images, detail images, and attributes, and intelligently diagnoses missing materials and optimization opportunities.
+// 1. Automatically parses 1688 product links to extract a full set of materials including titles, SKUs, main images, detail images, and attributes, and intelligently diagnoses missing materials and optimization opportunities.
 //
 // 2. Uses LLMs for text compliance filtering, SEO keyword optimization, five-point description generation, and multilingual localization rewriting.
 //
-// 3. Invokes multiple capabilities for images, including intelligent recognition, intelligent background removal, intelligent object removal, Image Translation Pro, image outpainting, intelligent cropping, and high-definition upscaling.
+// 3. Invokes multiple capabilities for images, including intelligent recognition, intelligent background removal, intelligent object removal, image translation Pro, image expansion, intelligent cropping, and high-definition upscaling.
 //
 // 4. Generates category-specific materials, such as size charts and weight and dimension charts for apparel.
 //
@@ -692,27 +693,27 @@ func (client *Client) AssetOptimizeProWithOptions(tmpReq *AssetOptimizeProReques
 
 // Summary:
 //
-// Provides a one-click cross-platform product material optimization service for cross-border e-commerce sellers (optimal performance edition). This asynchronous operation takes 1688 product links as input and generates a full set of materials tailored to TEMU platform requirements, including titles, attributes, main images, SKU images, detail images, and copy. It uses officially pre-configured optimal workflows to maximize AI capabilities, retains and localizes brand marketing materials, and generates personalized materials such as size charts for categories like apparel.
+// Provides a one-click cross-platform product material optimization service (premium edition) for cross-border e-commerce sellers. Accepts a 1688 product link and generates a complete set of materials, including titles, attributes, main images, SKU images, detail images, and copywriting, tailored to TEMU platform requirements. Uses an official pre-built workflow to maximize AI capabilities, retain and localize brand marketing materials, and generate personalized materials such as size charts for apparel categories. (Asynchronous)
 //
 // Description:
 //
 // ## Product introduction
 //
-// A one-click cross-platform product material optimization service for cross-border e-commerce sellers (best effect edition). Input a 1688 product link to generate a complete set of materials, including titles, attributes, main images, SKU images, detail images, and copy, tailored to TEMU platform requirements.
+// Provides a one-click cross-platform product material optimization service (premium edition) for cross-border e-commerce sellers. Accepts a 1688 product link and generates a complete set of materials, including titles, attributes, main images, SKU images, detail images, and copywriting, tailored to TEMU platform requirements.
 //
 // ## Scenarios
 //
-// Applicable to scenarios with high requirements for the quality and conversion performance of cross-platform product materials. Examples include categories highly dependent on marketing materials such as apparel, accessories, cosmetics, and home goods; brand merchants and high-ticket items that need to retain the tone of marketing images with copy; top sellers and ERP/SaaS platforms conducting localized operations across multiple languages and markets; and scenarios requiring category-specific materials, such as size charts and weight and dimension charts, to improve listing quality and conversion rates.
+// Applicable to scenarios with high requirements for the quality and conversion performance of cross-platform product materials, such as apparel, accessories, beauty, and home categories that heavily rely on marketing materials. Suitable for brand merchants and high-ticket products that need to retain the tone of marketing images with copywriting, top sellers and ERP/SaaS platforms that require localized operations across multiple languages and markets, and scenarios that need to generate category-specific materials (such as size charts and weight and dimension charts) to improve listing quality and conversion rates.
 //
 // ## Features
 //
-// This service uses the official pre-built best-effect product optimization workflow, covering the entire pipeline from material acquisition, diagnosis, filtering, and optimization to output:
+// This service uses an official pre-built premium product optimization workflow that covers the entire pipeline from material acquisition, diagnosis, filtering, and optimization to output:
 //
-// 1. Automatically parses 1688 product links to extract a full set of materials, including titles, SKUs, main images, detail images, and attributes, and intelligently diagnoses missing materials and optimization opportunities.
+// 1. Automatically parses 1688 product links to extract a full set of materials including titles, SKUs, main images, detail images, and attributes, and intelligently diagnoses missing materials and optimization opportunities.
 //
 // 2. Uses LLMs for text compliance filtering, SEO keyword optimization, five-point description generation, and multilingual localization rewriting.
 //
-// 3. Invokes multiple capabilities for images, including intelligent recognition, intelligent background removal, intelligent object removal, Image Translation Pro, image outpainting, intelligent cropping, and high-definition upscaling.
+// 3. Invokes multiple capabilities for images, including intelligent recognition, intelligent background removal, intelligent object removal, image translation Pro, image expansion, intelligent cropping, and high-definition upscaling.
 //
 // 4. Generates category-specific materials, such as size charts and weight and dimension charts for apparel.
 //
@@ -734,25 +735,25 @@ func (client *Client) AssetOptimizePro(request *AssetOptimizeProRequest) (_resul
 
 // Summary:
 //
-// Provides an intelligent cross-platform product category attribute filling service based on multimodal large models. Accepts product information from a source platform, automatically matches the category on a target platform, and intelligently fills all required attribute fields under the category to provide a one-stop solution for category selection and attribute filling during product listing. (Synchronous)
+// Provides a cross-platform intelligent product category attribute filling service based on multimodal large models. Accepts product information from a source platform, automatically matches the category on a target platform, and intelligently fills in all required attribute fields under the category to provide a one-stop solution for category selection and attribute filling during product listing. (Synchronous)
 //
 // Description:
 //
 // # Scenarios
 //
-// Cross-platform product listing attribute filling: When merchants list products across platforms, the source platform and the TEMU platform have different attribute fields required for different categories, and there are complex hierarchical associated options (such as material -> wood type -> density). Manual filling is time-consuming and error-prone. This service automatically understands product information and intelligently fills in various attributes. It is suitable for scenarios such as automated batch product listing for top sellers, ERP/SaaS platform integration, and quick product listing for SMB merchants.
+// Cross-platform product listing attribute filling scenario: When merchants list products across platforms, the source platform and the TEMU platform have different attribute fields required for different categories, and there are complex hierarchical associated options (such as material -> wood type -> density). Manual filling is time-consuming and error-prone. This service automatically understands product information and intelligently fills in various attributes. It is applicable to scenarios such as automated batch product listing for top sellers, ERP/SaaS platform integration, and quick product listing for SMB merchants.
 //
 // # Features
 //
-// Users input the product title, source category, product details, SKU, product attributes, and product images (up to 10). The system uses multimodal AI to understand the semantic and visual features of the product and completes two core tasks: 1. Matches the precise category path of the product on the TEMU platform. 2. Automatically fills in the required attributes under the category (such as material, battery properties, size, and connectivity) and returns the confidence level and filling reason for each attribute. The API operates in synchronous mode and returns results immediately after the call.
+// Users input the product title, source category, product details, SKU, product attributes, and product images (up to 10). The system uses multimodal AI to understand the semantic and visual features of the product and completes two core tasks: 1. Matches the precise category path of the product on the TEMU platform; 2. Automatically fills in the required attributes under the category (such as material, battery properties, size, connectivity, etc.), and returns the confidence level and filling reason for each attribute. The API operates in synchronous mode and returns results immediately after the call.
 //
-// # Comparison
+// # Results comparison
 //
 // Take the attributes of a USB fan as an example:
 //
-// | **1688 attribute*	- | **1688 attribute value*	- | **TEMU attribute*	- | **TEMU attribute value*	- | **Is it an existing**
+// | **1688 attribute*	- | **1688 attribute value*	- | **TEMU attribute*	- | **TEMU attribute value*	- | **Existing 1688**
 //
-// **1688 attribute?*	- |
+// **attribute*	- |
 //
 // | --- | --- | --- | --- | --- |
 //
@@ -762,27 +763,27 @@ func (client *Client) AssetOptimizePro(request *AssetOptimizeProRequest) (_resul
 //
 // | Additional features | Digital display | Battery capacity (mAh) | 4000 | Yes |
 //
-// | Built-in battery capacity | 2000mAh-4000mAh (inclusive) | Fan features | High-speed features | No |
+// | Built-in battery capacity | 2000mAh-4000mAh (inclusive) | Fan features | High-speed feature | No |
 //
 // | Item number | X699 | Control method | Button | Yes |
 //
 // | Main downstream platforms | eBay, Amazon, Wish, AliExpress, Independent site, LAZADA, Other | Finish type | Painted | Yes |
 //
-// | Has licensable own brand | No | Recommended use | Cooling | No |
+// | Licensable proprietary brand | No | Recommended use | Cooling | No |
 //
 // | Dimensions | 65\\*60\\*171 | Fan design | Wearable fan | No |
 //
-// | Suitable gift-giving occasions | Personal gifts | Included components | None | No |
+// | Applicable gift-giving occasions | Personal gifts | Included components | None | No |
 //
-// | Shell craftsmanship | Spraying (UV paint, rubber paint, metallic paint, piano baking paint, pearlescent powder) | Material | Plastic | No |
+// | Shell finish | Spraying (UV paint, rubber paint, metallic paint, piano baking paint, pearlescent powder) | Material | Plastic | No |
 //
 // | Package volume | 65\\*60\\*171 | Special features | Portable | No |
 //
 // | Exterior dimensions | 51\\*36\\*34 | Indoor/outdoor use | Both indoor and outdoor | No |
 //
-// | Wind speed gears | 3 gears | Brand name | None | No |
+// | Fan speed settings | 3 settings | Brand name | None | No |
 //
-// | Operation method | Standard button |  |  |  |
+// | Operation method | Normal button |  |  |  |
 //
 // | Fan blade material | ABS |  |  |  |
 //
@@ -792,7 +793,7 @@ func (client *Client) AssetOptimizePro(request *AssetOptimizeProRequest) (_resul
 //
 // | Patented source | No |  |  |  |
 //
-// | Color | X699 fan-yellow, X699 fan-light purple, X699 fan-sky blue, X699 fan-orange, X699 fan-light green, Standard small fan |  |  |  |
+// | Color | X699 Fan-Yellow, X699 Fan-Light Purple, X699 Fan-Sky Blue, X699 Fan-Orange, X699 Fan-Light Green, Normal Small Fan |  |  |  |
 //
 // | Main sales regions | Japan and South Korea, Africa, South Korea, Japan, Europe, South America, Southeast Asia, North America, Northeast Asia, Middle East, Latin America, Europe and America, Other |  |  |  |
 //
@@ -806,7 +807,7 @@ func (client *Client) AssetOptimizePro(request *AssetOptimizeProRequest) (_resul
 //
 // | Net weight | 125g |  |  |  |
 //
-// | Number of fan blades | 6 or more |  |  |  |
+// | Number of fan blades | 6 and above |  |  |  |
 //
 // | Fan category | Handheld fan |  |  |  |
 //
@@ -886,25 +887,25 @@ func (client *Client) CategoryAttributeMatchWithOptions(tmpReq *CategoryAttribut
 
 // Summary:
 //
-// Provides an intelligent cross-platform product category attribute filling service based on multimodal large models. Accepts product information from a source platform, automatically matches the category on a target platform, and intelligently fills all required attribute fields under the category to provide a one-stop solution for category selection and attribute filling during product listing. (Synchronous)
+// Provides a cross-platform intelligent product category attribute filling service based on multimodal large models. Accepts product information from a source platform, automatically matches the category on a target platform, and intelligently fills in all required attribute fields under the category to provide a one-stop solution for category selection and attribute filling during product listing. (Synchronous)
 //
 // Description:
 //
 // # Scenarios
 //
-// Cross-platform product listing attribute filling: When merchants list products across platforms, the source platform and the TEMU platform have different attribute fields required for different categories, and there are complex hierarchical associated options (such as material -> wood type -> density). Manual filling is time-consuming and error-prone. This service automatically understands product information and intelligently fills in various attributes. It is suitable for scenarios such as automated batch product listing for top sellers, ERP/SaaS platform integration, and quick product listing for SMB merchants.
+// Cross-platform product listing attribute filling scenario: When merchants list products across platforms, the source platform and the TEMU platform have different attribute fields required for different categories, and there are complex hierarchical associated options (such as material -> wood type -> density). Manual filling is time-consuming and error-prone. This service automatically understands product information and intelligently fills in various attributes. It is applicable to scenarios such as automated batch product listing for top sellers, ERP/SaaS platform integration, and quick product listing for SMB merchants.
 //
 // # Features
 //
-// Users input the product title, source category, product details, SKU, product attributes, and product images (up to 10). The system uses multimodal AI to understand the semantic and visual features of the product and completes two core tasks: 1. Matches the precise category path of the product on the TEMU platform. 2. Automatically fills in the required attributes under the category (such as material, battery properties, size, and connectivity) and returns the confidence level and filling reason for each attribute. The API operates in synchronous mode and returns results immediately after the call.
+// Users input the product title, source category, product details, SKU, product attributes, and product images (up to 10). The system uses multimodal AI to understand the semantic and visual features of the product and completes two core tasks: 1. Matches the precise category path of the product on the TEMU platform; 2. Automatically fills in the required attributes under the category (such as material, battery properties, size, connectivity, etc.), and returns the confidence level and filling reason for each attribute. The API operates in synchronous mode and returns results immediately after the call.
 //
-// # Comparison
+// # Results comparison
 //
 // Take the attributes of a USB fan as an example:
 //
-// | **1688 attribute*	- | **1688 attribute value*	- | **TEMU attribute*	- | **TEMU attribute value*	- | **Is it an existing**
+// | **1688 attribute*	- | **1688 attribute value*	- | **TEMU attribute*	- | **TEMU attribute value*	- | **Existing 1688**
 //
-// **1688 attribute?*	- |
+// **attribute*	- |
 //
 // | --- | --- | --- | --- | --- |
 //
@@ -914,27 +915,27 @@ func (client *Client) CategoryAttributeMatchWithOptions(tmpReq *CategoryAttribut
 //
 // | Additional features | Digital display | Battery capacity (mAh) | 4000 | Yes |
 //
-// | Built-in battery capacity | 2000mAh-4000mAh (inclusive) | Fan features | High-speed features | No |
+// | Built-in battery capacity | 2000mAh-4000mAh (inclusive) | Fan features | High-speed feature | No |
 //
 // | Item number | X699 | Control method | Button | Yes |
 //
 // | Main downstream platforms | eBay, Amazon, Wish, AliExpress, Independent site, LAZADA, Other | Finish type | Painted | Yes |
 //
-// | Has licensable own brand | No | Recommended use | Cooling | No |
+// | Licensable proprietary brand | No | Recommended use | Cooling | No |
 //
 // | Dimensions | 65\\*60\\*171 | Fan design | Wearable fan | No |
 //
-// | Suitable gift-giving occasions | Personal gifts | Included components | None | No |
+// | Applicable gift-giving occasions | Personal gifts | Included components | None | No |
 //
-// | Shell craftsmanship | Spraying (UV paint, rubber paint, metallic paint, piano baking paint, pearlescent powder) | Material | Plastic | No |
+// | Shell finish | Spraying (UV paint, rubber paint, metallic paint, piano baking paint, pearlescent powder) | Material | Plastic | No |
 //
 // | Package volume | 65\\*60\\*171 | Special features | Portable | No |
 //
 // | Exterior dimensions | 51\\*36\\*34 | Indoor/outdoor use | Both indoor and outdoor | No |
 //
-// | Wind speed gears | 3 gears | Brand name | None | No |
+// | Fan speed settings | 3 settings | Brand name | None | No |
 //
-// | Operation method | Standard button |  |  |  |
+// | Operation method | Normal button |  |  |  |
 //
 // | Fan blade material | ABS |  |  |  |
 //
@@ -944,7 +945,7 @@ func (client *Client) CategoryAttributeMatchWithOptions(tmpReq *CategoryAttribut
 //
 // | Patented source | No |  |  |  |
 //
-// | Color | X699 fan-yellow, X699 fan-light purple, X699 fan-sky blue, X699 fan-orange, X699 fan-light green, Standard small fan |  |  |  |
+// | Color | X699 Fan-Yellow, X699 Fan-Light Purple, X699 Fan-Sky Blue, X699 Fan-Orange, X699 Fan-Light Green, Normal Small Fan |  |  |  |
 //
 // | Main sales regions | Japan and South Korea, Africa, South Korea, Japan, Europe, South America, Southeast Asia, North America, Northeast Asia, Middle East, Latin America, Europe and America, Other |  |  |  |
 //
@@ -958,7 +959,7 @@ func (client *Client) CategoryAttributeMatchWithOptions(tmpReq *CategoryAttribut
 //
 // | Net weight | 125g |  |  |  |
 //
-// | Number of fan blades | 6 or more |  |  |  |
+// | Number of fan blades | 6 and above |  |  |  |
 //
 // | Fan category | Handheld fan |  |  |  |
 //
@@ -978,25 +979,25 @@ func (client *Client) CategoryAttributeMatch(request *CategoryAttributeMatchRequ
 
 // Summary:
 //
-// Provides an intelligent cross-platform product category matching service based on large language models. Accepts product information from a source platform, automatically matches the optimal category on the target platform, and returns a confidence score and matching rationale to help merchants quickly select categories for cross-platform product listing. (Synchronous)
+// Provides an intelligent cross-platform product category matching service based on large language models. Accepts product information from a source platform, automatically identifies the optimal category on the target platform, and returns a confidence score and matching reasons to help merchants quickly select categories for cross-platform product listing. (Synchronous)
 //
 // Description:
 //
-// ## Product Introduction
+// ## Product introduction
 //
-// Provides an intelligent cross-platform product category matching service based on large language models. Accepts product information from a source platform, automatically matches the optimal category on the target platform, and returns a confidence score and matching rationale to help merchants quickly select categories for cross-platform product listing. (Synchronous)
+// Provides an intelligent cross-platform product category matching service based on large language models. Accepts product information from a source platform, automatically identifies the optimal category on the target platform, and returns a confidence score and matching reasons to help merchants quickly select categories for cross-platform product listing. (Synchronous)
 //
 // ## Scenarios
 //
-// Cross-platform product listing: After sourcing products, merchants list them on a target platform and need to map the products to the correct categories in the target platform\\"s category tree. Manual category selection requires familiarity with the target platform\\"s complete category system, which is time-consuming, labor-intensive, and error-prone. Incorrect category matching can lead to product delisting and other issues.
+// Cross-platform product listing: After sourcing products, merchants list them on a target platform and must map the products to the correct categories in the target platform\\"s category tree. Manual category selection requires familiarity with the target platform\\"s complete category system, which is time-consuming, labor-intensive, and prone to errors. Incorrect category matching can lead to product delisting.
 //
-// This service automatically completes category mapping and is suitable for scenarios such as batch calls from self-built systems of top sellers, integration of automated product listing workflows into ERP/SaaS platforms, and quick listing of single products by SMB merchants.
+// This service automatically completes category mapping and is suitable for scenarios such as batch calls from self-built systems of top sellers, integration of automated product listing workflows into ERP or SaaS platforms, and quick listing of single products by small and medium-sized business (SMB) merchants.
 //
 // The current version only supports TEMU as the target platform. It does not currently support directly retrieving product information from the source platform, requiring users to manually input parameters. Future updates will add this capability and expand support for more source and target platforms.
 //
 // ## Features
 //
-// Users input fields such as the product title, source category, product details, SKU information, and product attributes. The system uses an AI model to understand the product semantics and matches the most appropriate category path from the full category tree of the TEMU platform. The returned results include the complete category path (CategoryPath), category name (CategoryName), confidence score (0-100), and matching rationale. The API operates in synchronous mode and returns results immediately after the call, making it suitable for embedding in real-time business workflows.
+// Users input fields such as the product title, source category, product details, SKU information, and product attributes. The system uses an AI model to understand the product semantics and matches the most appropriate category path from the full category tree of the TEMU platform. The returned results include the complete category path (CategoryPath), category name (CategoryName), confidence score (0-100), and matching reasons. The API operates in synchronous mode and returns results immediately after the call, making it suitable for embedding in real-time business workflows.
 //
 // ## Examples
 //
@@ -1006,25 +1007,25 @@ func (client *Client) CategoryAttributeMatch(request *CategoryAttributeMatchRequ
 //
 // | 1688 | ![done-image-245c58c8-a9fc-4e32-b959-8b4bcd52b264.png](https://alidocs.oss-cn-zhangjiakou.aliyuncs.com/res/jP2lRYjv7234mO8g/img/69a226e8-aff1-4891-bb0a-c47c1ea397ae.png) | USB fans, mini fans | TEMU | Home Appliances
 //
-// \\>Heating, Cooling & Air Quality Appliances
+// >Heating, Cooling and Air Quality Appliances
 //
-// \\>Electric Fans
+// >Electric Fans
 //
-// \\>USB Fans |
+// >USB Fans |
 //
-// | 1688 | ![image.png](https://alidocs.oss-cn-zhangjiakou.aliyuncs.com/res/jP2lRYjv7234mO8g/img/8a546f7d-826e-43d6-b5f3-12d1edef8897.png) | Bracelets | TEMU | Clothing, Shoes & Jewelry
+// | 1688 | ![image.png](https://alidocs.oss-cn-zhangjiakou.aliyuncs.com/res/jP2lRYjv7234mO8g/img/8a546f7d-826e-43d6-b5f3-12d1edef8897.png) | Bracelets | TEMU | Clothing, Shoes and Jewelry
 //
-// \\>Women\\"s Fashion
+// >Women\\"s Fashion
 //
-// \\>Women\\"s Accessories
+// >Women\\"s Accessories
 //
-// \\>Women\\"s Fashion Bracelets & Bangles
+// >Women\\"s Fashion Bracelets and Bangles
 //
-// \\>Women\\"s Fashion Charms & Charm Bracelets
+// >Women\\"s Fashion Charms and Charm Bracelets
 //
-// \\>Women\\"s Fashion Charm Bracelets
+// >Women\\"s Fashion Charm Bracelets
 //
-// \\>Women\\"s Fashion Chain Charm Bracelets |
+// >Women\\"s Fashion Chain Charm Bracelets |
 //
 // @param request - CategoryMatchRequest
 //
@@ -1092,25 +1093,25 @@ func (client *Client) CategoryMatchWithOptions(request *CategoryMatchRequest, ru
 
 // Summary:
 //
-// Provides an intelligent cross-platform product category matching service based on large language models. Accepts product information from a source platform, automatically matches the optimal category on the target platform, and returns a confidence score and matching rationale to help merchants quickly select categories for cross-platform product listing. (Synchronous)
+// Provides an intelligent cross-platform product category matching service based on large language models. Accepts product information from a source platform, automatically identifies the optimal category on the target platform, and returns a confidence score and matching reasons to help merchants quickly select categories for cross-platform product listing. (Synchronous)
 //
 // Description:
 //
-// ## Product Introduction
+// ## Product introduction
 //
-// Provides an intelligent cross-platform product category matching service based on large language models. Accepts product information from a source platform, automatically matches the optimal category on the target platform, and returns a confidence score and matching rationale to help merchants quickly select categories for cross-platform product listing. (Synchronous)
+// Provides an intelligent cross-platform product category matching service based on large language models. Accepts product information from a source platform, automatically identifies the optimal category on the target platform, and returns a confidence score and matching reasons to help merchants quickly select categories for cross-platform product listing. (Synchronous)
 //
 // ## Scenarios
 //
-// Cross-platform product listing: After sourcing products, merchants list them on a target platform and need to map the products to the correct categories in the target platform\\"s category tree. Manual category selection requires familiarity with the target platform\\"s complete category system, which is time-consuming, labor-intensive, and error-prone. Incorrect category matching can lead to product delisting and other issues.
+// Cross-platform product listing: After sourcing products, merchants list them on a target platform and must map the products to the correct categories in the target platform\\"s category tree. Manual category selection requires familiarity with the target platform\\"s complete category system, which is time-consuming, labor-intensive, and prone to errors. Incorrect category matching can lead to product delisting.
 //
-// This service automatically completes category mapping and is suitable for scenarios such as batch calls from self-built systems of top sellers, integration of automated product listing workflows into ERP/SaaS platforms, and quick listing of single products by SMB merchants.
+// This service automatically completes category mapping and is suitable for scenarios such as batch calls from self-built systems of top sellers, integration of automated product listing workflows into ERP or SaaS platforms, and quick listing of single products by small and medium-sized business (SMB) merchants.
 //
 // The current version only supports TEMU as the target platform. It does not currently support directly retrieving product information from the source platform, requiring users to manually input parameters. Future updates will add this capability and expand support for more source and target platforms.
 //
 // ## Features
 //
-// Users input fields such as the product title, source category, product details, SKU information, and product attributes. The system uses an AI model to understand the product semantics and matches the most appropriate category path from the full category tree of the TEMU platform. The returned results include the complete category path (CategoryPath), category name (CategoryName), confidence score (0-100), and matching rationale. The API operates in synchronous mode and returns results immediately after the call, making it suitable for embedding in real-time business workflows.
+// Users input fields such as the product title, source category, product details, SKU information, and product attributes. The system uses an AI model to understand the product semantics and matches the most appropriate category path from the full category tree of the TEMU platform. The returned results include the complete category path (CategoryPath), category name (CategoryName), confidence score (0-100), and matching reasons. The API operates in synchronous mode and returns results immediately after the call, making it suitable for embedding in real-time business workflows.
 //
 // ## Examples
 //
@@ -1120,25 +1121,25 @@ func (client *Client) CategoryMatchWithOptions(request *CategoryMatchRequest, ru
 //
 // | 1688 | ![done-image-245c58c8-a9fc-4e32-b959-8b4bcd52b264.png](https://alidocs.oss-cn-zhangjiakou.aliyuncs.com/res/jP2lRYjv7234mO8g/img/69a226e8-aff1-4891-bb0a-c47c1ea397ae.png) | USB fans, mini fans | TEMU | Home Appliances
 //
-// \\>Heating, Cooling & Air Quality Appliances
+// >Heating, Cooling and Air Quality Appliances
 //
-// \\>Electric Fans
+// >Electric Fans
 //
-// \\>USB Fans |
+// >USB Fans |
 //
-// | 1688 | ![image.png](https://alidocs.oss-cn-zhangjiakou.aliyuncs.com/res/jP2lRYjv7234mO8g/img/8a546f7d-826e-43d6-b5f3-12d1edef8897.png) | Bracelets | TEMU | Clothing, Shoes & Jewelry
+// | 1688 | ![image.png](https://alidocs.oss-cn-zhangjiakou.aliyuncs.com/res/jP2lRYjv7234mO8g/img/8a546f7d-826e-43d6-b5f3-12d1edef8897.png) | Bracelets | TEMU | Clothing, Shoes and Jewelry
 //
-// \\>Women\\"s Fashion
+// >Women\\"s Fashion
 //
-// \\>Women\\"s Accessories
+// >Women\\"s Accessories
 //
-// \\>Women\\"s Fashion Bracelets & Bangles
+// >Women\\"s Fashion Bracelets and Bangles
 //
-// \\>Women\\"s Fashion Charms & Charm Bracelets
+// >Women\\"s Fashion Charms and Charm Bracelets
 //
-// \\>Women\\"s Fashion Charm Bracelets
+// >Women\\"s Fashion Charm Bracelets
 //
-// \\>Women\\"s Fashion Chain Charm Bracelets |
+// >Women\\"s Fashion Chain Charm Bracelets |
 //
 // @param request - CategoryMatchRequest
 //
@@ -1156,7 +1157,7 @@ func (client *Client) CategoryMatch(request *CategoryMatchRequest) (_result *Cat
 
 // Summary:
 //
-// Deletes multiple content items from a display knowledge base synchronously.
+// Synchronously deletes content from a display knowledge base in batches.
 //
 // @param tmpReq - DeleteDisplayKnowledgeRequest
 //
@@ -1210,7 +1211,7 @@ func (client *Client) DeleteDisplayKnowledgeWithOptions(tmpReq *DeleteDisplayKno
 
 // Summary:
 //
-// Deletes multiple content items from a display knowledge base synchronously.
+// Synchronously deletes content from a display knowledge base in batches.
 //
 // @param request - DeleteDisplayKnowledgeRequest
 //
@@ -1234,17 +1235,17 @@ func (client *Client) DeleteDisplayKnowledge(request *DeleteDisplayKnowledgeRequ
 //
 // ## Request description
 //
-// **Before calling this operation, make sure that you fully understand the billing methods and [pricing](https://www.aliyun.com/price/product#/ecs/detail) of the floor display area inference product.**
+// **Before you call this operation, make sure that you fully understand the billing methods and [pricing](https://www.aliyun.com/price/product#/ecs/detail) of the floor display area inference product.**
 //
-// - This operation infers the actual dimensions (the lengths of the two sides) and floor area of a floor display based on the provided overall image of the floor display, the SKU knowledge base, and the position information of products in the image.
+// - This operation infers the actual dimensions (lengths of the two sides) and floor area of a floor display based on the provided overall image of the floor display, the SKU knowledge base, and the position information of products in the image.
 //
-// - Make sure that the knowledge base corresponding to the provided `RagId` belongs to the caller and is in the `AVAILABLE` state.
+// - Make sure that the knowledge base corresponding to the provided RagId belongs to the caller and is in the AVAILABLE state.
 //
-// - The `Products` array must contain at least one product item, and the `Boxes` array under each product item must contain at least one bounding box.
+// - The Products array must contain at least one product item, and the Boxes array under each product item must contain at least one bounding box.
 //
-// - All coordinate values are represented in a normalized coordinate system ranging from 0 to 1000. Make sure that the input satisfies the `Left < Right` and `Top < Bottom` conditions.
+// - All coordinate values are represented in a normalized coordinate system ranging from 0 to 1000. Make sure that the input values satisfy the Left < Right and Top < Bottom conditions.
 //
-// - Set a reasonable timeout period (recommended maximum of 300 seconds) when calling this API to prevent failures caused by network latency or high processing complexity.
+// - Set a reasonable timeout period (recommended maximum: 300 seconds) when calling this API to prevent failures caused by network latency or high processing complexity.
 //
 // - For calls in the production environment, use the POP Action method for access. Internal REST addresses are mainly used for joint debugging during the development and testing phases.
 //
@@ -1314,17 +1315,17 @@ func (client *Client) DiduiAreaDeductionWithOptions(tmpReq *DiduiAreaDeductionRe
 //
 // ## Request description
 //
-// **Before calling this operation, make sure that you fully understand the billing methods and [pricing](https://www.aliyun.com/price/product#/ecs/detail) of the floor display area inference product.**
+// **Before you call this operation, make sure that you fully understand the billing methods and [pricing](https://www.aliyun.com/price/product#/ecs/detail) of the floor display area inference product.**
 //
-// - This operation infers the actual dimensions (the lengths of the two sides) and floor area of a floor display based on the provided overall image of the floor display, the SKU knowledge base, and the position information of products in the image.
+// - This operation infers the actual dimensions (lengths of the two sides) and floor area of a floor display based on the provided overall image of the floor display, the SKU knowledge base, and the position information of products in the image.
 //
-// - Make sure that the knowledge base corresponding to the provided `RagId` belongs to the caller and is in the `AVAILABLE` state.
+// - Make sure that the knowledge base corresponding to the provided RagId belongs to the caller and is in the AVAILABLE state.
 //
-// - The `Products` array must contain at least one product item, and the `Boxes` array under each product item must contain at least one bounding box.
+// - The Products array must contain at least one product item, and the Boxes array under each product item must contain at least one bounding box.
 //
-// - All coordinate values are represented in a normalized coordinate system ranging from 0 to 1000. Make sure that the input satisfies the `Left < Right` and `Top < Bottom` conditions.
+// - All coordinate values are represented in a normalized coordinate system ranging from 0 to 1000. Make sure that the input values satisfy the Left < Right and Top < Bottom conditions.
 //
-// - Set a reasonable timeout period (recommended maximum of 300 seconds) when calling this API to prevent failures caused by network latency or high processing complexity.
+// - Set a reasonable timeout period (recommended maximum: 300 seconds) when calling this API to prevent failures caused by network latency or high processing complexity.
 //
 // - For calls in the production environment, use the POP Action method for access. Internal REST addresses are mainly used for joint debugging during the development and testing phases.
 //
@@ -1344,7 +1345,7 @@ func (client *Client) DiduiAreaDeduction(request *DiduiAreaDeductionRequest) (_r
 
 // Summary:
 //
-// Analyzes the area of floor displays based on product recognition, SKU asset knowledge bases, and dedicated area reasoning model building. The product first locates products in floor displays, reads the actual length, width, height, and reference images of the corresponding SKUs, and infers the two side lengths and area of the bounding rectangle of the floor display area. This feature is suitable for evaluating the scale of floor displays in stores and conducting inspection reviews.
+// Analyzes the area of floor displays based on product recognition, SKU asset knowledge bases, and the model building of dedicated area reasoning models. It first locates products in the floor display, reads the actual length, width, height, and reference images of the corresponding SKUs, and infers the two side lengths and area of the bounding rectangle of the floor display. This is suitable for evaluating the scale of in-store floor displays and conducting inspection reviews.
 //
 // Description:
 //
@@ -1352,19 +1353,19 @@ func (client *Client) DiduiAreaDeduction(request *DiduiAreaDeductionRequest) (_r
 //
 // - Floor display area evaluation: Infers the area of the bounding rectangle based on the overall photo of the floor display and the actual dimensions of the products.
 //
-// - Multi-SKU mixed layout analysis: Uses the dimensions of different products to infer side lengths.
+// - Multi-SKU mixed layout analysis: Uses the respective dimensions of different products for side length inference.
 //
-// - Area result review: Verifies the results based on the original image, product assets, and the returned two side lengths and area.
+// - Area result review: Verifies the results by combining the original image, product assets, and the returned two side lengths and area.
 //
 // **Features**
 //
-// - SKU asset-driven: Specifies the asset knowledge base by using ragId. Each participating product must have a name, positive length, width, and height, and at least one HTTPS reference image.
+// - SKU asset-driven: Specifies the asset knowledge base through ragId. Each participating product must have a name, positive length, width, and height, and at least one HTTPS reference image.
 //
 // - Phased area inference: Sequentially forms decision edges, SKU projections, dimension accumulation, and the final area.
 //
-// - Unified units: SKU asset dimensions are stored in centimeters. The result side lengths are output in meters and the area is output in square meters.
+// - Unified units: SKU asset dimensions are stored in centimeters, while the resulting side lengths are output in meters and the area in square meters.
 //
-// - Completeness and value verification: Returns a failure if assets are missing, no valid bounding boxes are found, or the area does not match the product of the side lengths.
+// - Completeness and numerical validation: Returns a failure if there are missing assets, no valid bounding boxes, or the area does not satisfy product consistency.
 //
 // @param request - DiduiAreaDeductionProRequest
 //
@@ -1412,7 +1413,7 @@ func (client *Client) DiduiAreaDeductionProWithOptions(request *DiduiAreaDeducti
 
 // Summary:
 //
-// Analyzes the area of floor displays based on product recognition, SKU asset knowledge bases, and dedicated area reasoning model building. The product first locates products in floor displays, reads the actual length, width, height, and reference images of the corresponding SKUs, and infers the two side lengths and area of the bounding rectangle of the floor display area. This feature is suitable for evaluating the scale of floor displays in stores and conducting inspection reviews.
+// Analyzes the area of floor displays based on product recognition, SKU asset knowledge bases, and the model building of dedicated area reasoning models. It first locates products in the floor display, reads the actual length, width, height, and reference images of the corresponding SKUs, and infers the two side lengths and area of the bounding rectangle of the floor display. This is suitable for evaluating the scale of in-store floor displays and conducting inspection reviews.
 //
 // Description:
 //
@@ -1420,19 +1421,19 @@ func (client *Client) DiduiAreaDeductionProWithOptions(request *DiduiAreaDeducti
 //
 // - Floor display area evaluation: Infers the area of the bounding rectangle based on the overall photo of the floor display and the actual dimensions of the products.
 //
-// - Multi-SKU mixed layout analysis: Uses the dimensions of different products to infer side lengths.
+// - Multi-SKU mixed layout analysis: Uses the respective dimensions of different products for side length inference.
 //
-// - Area result review: Verifies the results based on the original image, product assets, and the returned two side lengths and area.
+// - Area result review: Verifies the results by combining the original image, product assets, and the returned two side lengths and area.
 //
 // **Features**
 //
-// - SKU asset-driven: Specifies the asset knowledge base by using ragId. Each participating product must have a name, positive length, width, and height, and at least one HTTPS reference image.
+// - SKU asset-driven: Specifies the asset knowledge base through ragId. Each participating product must have a name, positive length, width, and height, and at least one HTTPS reference image.
 //
 // - Phased area inference: Sequentially forms decision edges, SKU projections, dimension accumulation, and the final area.
 //
-// - Unified units: SKU asset dimensions are stored in centimeters. The result side lengths are output in meters and the area is output in square meters.
+// - Unified units: SKU asset dimensions are stored in centimeters, while the resulting side lengths are output in meters and the area in square meters.
 //
-// - Completeness and value verification: Returns a failure if assets are missing, no valid bounding boxes are found, or the area does not match the product of the side lengths.
+// - Completeness and numerical validation: Returns a failure if there are missing assets, no valid bounding boxes, or the area does not satisfy product consistency.
 //
 // @param request - DiduiAreaDeductionProRequest
 //
@@ -1450,7 +1451,7 @@ func (client *Client) DiduiAreaDeductionPro(request *DiduiAreaDeductionProReques
 
 // Summary:
 //
-// Translates documents with a solution designed specifically for document translation. It supports over 150 languages and provides pivot translation capabilities with thousands of pivot combinations. It handles multi-scenario, multi-page, and highly complex document translation, but does not currently support scanned documents. It excels in the following aspects:
+// Translates documents across more than 150 languages and provides pivot translation capabilities with up to thousands of pivot combinations. Supports multi-scenario, multi-page, and highly complex document translation, but does not currently support scanned documents. Excels in the following aspects:
 //
 // - Content accuracy: translation accuracy, and accuracy of parameters and units.
 //
@@ -1460,29 +1461,29 @@ func (client *Client) DiduiAreaDeductionPro(request *DiduiAreaDeductionProReques
 //
 // # Product introduction
 //
-// Designed specifically for document translation, this service supports more than 150 languages and provides bridging translation capabilities with thousands of language combinations. It handles multi-scenario, multi-page, and highly complex document translations, but does not currently support scanned documents.
+// Designed specifically for document translation, supports translation in over 150 languages, and provides pivot translation capabilities with up to thousands of pivot combinations. Meets the needs of multi-scenario, multi-page, and high-complexity document translation. Scanned documents are not currently supported.
 //
-// It excels in the following aspects:
+// Excels in the following aspects:
 //
-//   - Content accuracy: translation accuracy, and accuracy of parameters and units.
+//   - Content accuracy: translation accuracy, and parameter and unit accuracy
 //
-//   - Structural integrity: overall layout continuity, and restoration of page margins and layouts.
+//   - Structural rationality: overall layout continuity, and page margin and layout restoration
 //
-// # Scenarios
+// # Common scenarios
 //
-// Cross-border e-commerce product manuals, contracts, agreements, business proposals, qualification documents, teaching materials, courseware, and various other scenarios.
+// Product manuals, contracts, agreements, business proposals, qualification documents, teaching materials, and courseware for cross-border e-commerce, as well as other scenarios.
 //
 // # Features
 //
-//   - Supports PDF, Word, and Excel formats. Supports source documents that contain multiple languages. For the detailed language list, see Section 4.4.
+//   - Supports PDF, Word, and Excel formats. Supports source documents containing multiple languages. For the detailed language list, see Section 4.4.
 //
-//   - Supports the translation of text within images in documents, as well as complex translation scenarios involving other charts and special symbols.
+//   - Supports the translation of text in images within documents, as well as other complex translation scenarios such as charts and special symbols.
 //
-//   - Supports highly accurate layout restoration after translation.
+//   - Supports highly restored layout after translation.
 //
-//   - Supports the translation of a single PDF or Word document with up to **800 pages**.
+//   - Supports translation of up to **800 pages*	- for a single PDF or Word document.
 //
-//   - Supports custom translation results, including do-not-translate (ABC-ABC), specified translation (ABC-DEF), and translation omission (ABC-null value). This is commonly used in scenarios such as brand word protection. You can implement this by passing the corresponding intervention glossary ID when calling the API to meet your translation needs in different scenarios. Generally, you can upload up to 100,000 intervention terms. If you need more, contact the platform for assistance. For detailed instructions on translation intervention, see [Full-modal translation - Translation intervention instruction manual](https://www.alibabacloud.com/help/en/aidge/full-modal-translation-translation-intervention-instruction-manual)
+//   - Supports custom translation results, including do-not-translate (ABC-ABC), specified translation (ABC-DEF), and translation omission (ABC-null). Commonly used in scenarios such as brand word protection. You can achieve this by passing the corresponding intervention glossary ID when calling the API, which meets your translation needs in different scenarios. Generally, you can upload 100,000 intervention words. If you need more, contact the platform for processing. For detailed translation intervention operations, see [Omni-modal translation - Translation intervention instruction manual](https://www.alibabacloud.com/help/en/aidge/full-modal-translation-translation-intervention-instruction-manual)
 //
 // @param request - DocumentTranslateRequest
 //
@@ -1538,7 +1539,7 @@ func (client *Client) DocumentTranslateWithOptions(request *DocumentTranslateReq
 
 // Summary:
 //
-// Translates documents with a solution designed specifically for document translation. It supports over 150 languages and provides pivot translation capabilities with thousands of pivot combinations. It handles multi-scenario, multi-page, and highly complex document translation, but does not currently support scanned documents. It excels in the following aspects:
+// Translates documents across more than 150 languages and provides pivot translation capabilities with up to thousands of pivot combinations. Supports multi-scenario, multi-page, and highly complex document translation, but does not currently support scanned documents. Excels in the following aspects:
 //
 // - Content accuracy: translation accuracy, and accuracy of parameters and units.
 //
@@ -1548,29 +1549,29 @@ func (client *Client) DocumentTranslateWithOptions(request *DocumentTranslateReq
 //
 // # Product introduction
 //
-// Designed specifically for document translation, this service supports more than 150 languages and provides bridging translation capabilities with thousands of language combinations. It handles multi-scenario, multi-page, and highly complex document translations, but does not currently support scanned documents.
+// Designed specifically for document translation, supports translation in over 150 languages, and provides pivot translation capabilities with up to thousands of pivot combinations. Meets the needs of multi-scenario, multi-page, and high-complexity document translation. Scanned documents are not currently supported.
 //
-// It excels in the following aspects:
+// Excels in the following aspects:
 //
-//   - Content accuracy: translation accuracy, and accuracy of parameters and units.
+//   - Content accuracy: translation accuracy, and parameter and unit accuracy
 //
-//   - Structural integrity: overall layout continuity, and restoration of page margins and layouts.
+//   - Structural rationality: overall layout continuity, and page margin and layout restoration
 //
-// # Scenarios
+// # Common scenarios
 //
-// Cross-border e-commerce product manuals, contracts, agreements, business proposals, qualification documents, teaching materials, courseware, and various other scenarios.
+// Product manuals, contracts, agreements, business proposals, qualification documents, teaching materials, and courseware for cross-border e-commerce, as well as other scenarios.
 //
 // # Features
 //
-//   - Supports PDF, Word, and Excel formats. Supports source documents that contain multiple languages. For the detailed language list, see Section 4.4.
+//   - Supports PDF, Word, and Excel formats. Supports source documents containing multiple languages. For the detailed language list, see Section 4.4.
 //
-//   - Supports the translation of text within images in documents, as well as complex translation scenarios involving other charts and special symbols.
+//   - Supports the translation of text in images within documents, as well as other complex translation scenarios such as charts and special symbols.
 //
-//   - Supports highly accurate layout restoration after translation.
+//   - Supports highly restored layout after translation.
 //
-//   - Supports the translation of a single PDF or Word document with up to **800 pages**.
+//   - Supports translation of up to **800 pages*	- for a single PDF or Word document.
 //
-//   - Supports custom translation results, including do-not-translate (ABC-ABC), specified translation (ABC-DEF), and translation omission (ABC-null value). This is commonly used in scenarios such as brand word protection. You can implement this by passing the corresponding intervention glossary ID when calling the API to meet your translation needs in different scenarios. Generally, you can upload up to 100,000 intervention terms. If you need more, contact the platform for assistance. For detailed instructions on translation intervention, see [Full-modal translation - Translation intervention instruction manual](https://www.alibabacloud.com/help/en/aidge/full-modal-translation-translation-intervention-instruction-manual)
+//   - Supports custom translation results, including do-not-translate (ABC-ABC), specified translation (ABC-DEF), and translation omission (ABC-null). Commonly used in scenarios such as brand word protection. You can achieve this by passing the corresponding intervention glossary ID when calling the API, which meets your translation needs in different scenarios. Generally, you can upload 100,000 intervention words. If you need more, contact the platform for processing. For detailed translation intervention operations, see [Omni-modal translation - Translation intervention instruction manual](https://www.alibabacloud.com/help/en/aidge/full-modal-translation-translation-intervention-instruction-manual)
 //
 // @param request - DocumentTranslateRequest
 //
@@ -1588,45 +1589,45 @@ func (client *Client) DocumentTranslate(request *DocumentTranslateRequest) (_res
 
 // Summary:
 //
-// Provides an AI video service for e-commerce content production, covering video understanding, element replacement, quality verification, and result delivery. The service focuses on product and person consistency, detail restoration, conversion expression, and scaled production. It supports targeted replacement of products or persons based on viral video templates, quickly generating multiple versions of content while preserving original actions, camera rhythms, and marketing structures to reduce shooting, editing, and adaptation costs.
+// Generates multiple versions of e-commerce videos by replacing products or characters in a template video. This AI video service covers video understanding, element replacement, quality verification, and result delivery. It focuses on product and character consistency, detail restoration, conversion expression, and large-scale production. By retaining the original actions, camera rhythms, and marketing structures, it rapidly generates multi-version content to reduce shooting, editing, and adaptation costs.
 //
 // Description:
 //
 // ## **Product introduction**
 //
-// E-commerce video variation is an AI video service for product content production, covering video understanding, element replacement, quality verification, and result delivery. The service focuses on product and person consistency, detail restoration, conversion expression, and scaled production. It supports targeted replacement of products or persons based on viral video templates, quickly generating multiple versions of content while preserving original actions, camera rhythms, and marketing structures to reduce shooting, editing, and adaptation costs.
+// E-commerce video variation generation is an AI video service for product content production, covering video understanding, element replacement, quality verification, and result delivery. The service focuses on product and character consistency, detail restoration, conversion expression, and large-scale production. It supports targeted replacement of products or characters based on hit video templates. By retaining the original actions, camera rhythms, and marketing structures, it rapidly generates multi-version content to reduce shooting, editing, and adaptation costs.
 //
 // ## **Scenarios**
 //
-// - **Video material variation:*	- Uses an existing e-commerce video as a template and replaces only specified products or persons in the video, preserving the original camera angles, rhythm, and marketing expression as much as possible. This is suitable for producing materials with multiple SKUs, models, regions, and versions.
+// - **Video material variation:*	- Uses an existing e-commerce video as a template and replaces only specified products or characters in the video, preserving the original camera angles, rhythms, and marketing expressions as much as possible. This is suitable for producing materials with multiple SKUs, models, regions, and versions.
 //
-// - **New product launch and rapid material generation:*	- For centrally launched new products, this reduces manual shooting, studio setup, post-production editing, and repetitive production processes. It quickly deploys new product video materials, helping merchants shorten the launch cycle from spotting a viral video to breaking down the script and shooting new content.
+// - **Rapid material generation for new products:*	- For centrally launched new products, it reduces the need for live-action shooting, studio setup, post-production editing, and repetitive production. It rapidly deploys video materials for new products, helping merchants shorten the launch cycle from spotting hit videos to breaking down scripts and shooting new content.
 //
-// - **Product explanation and selling point expression:*	- Suitable for products such as apparel, beauty and personal care, food and beverages, home and daily necessities, 3C digital products, and small home appliances. It can plan the explanation structure, display actions, and camera rhythm based on the selling points of the original video, and generate explanation videos tailored for the conversion of new products.
+// - **Product explanation and selling point expression:*	- Suitable for products such as apparel, beauty and personal care, food and beverages, home and daily necessities, 3C digital products, and small home appliances. It can plan the explanation structure, display actions, and camera rhythms based on the selling points of the original video, and generate explanation videos tailored for the conversion of new products.
 //
-// - **Multi-selling point and multi-version testing:*	- Quickly generates multiple versions based on different product selling points, target audiences, scripts, camera angles, and visual styles, supporting merchants in conducting content testing and iterating delivery materials.
+// - **Multi-selling point and multi-version testing:*	- Rapidly generates multiple versions based on different product selling points, target audiences, scripts, camera angles, and visual styles. This supports merchants in conducting content testing and iterating on delivered materials.
 //
-// ## **Feature overview**
+// ## **Product capabilities**
 //
 // ### **Core capabilities**
 //
 //   - **Supports two replacement modes:**
 //
-//   - **Product replacement (**`product_replacement`**)**: Preserves the original video\\"s host identity, actions, scene, and sales structure, and replaces the original product with the target product.
+//   - **Product replacement (**`product_replacement`**)**: Retains the original video\\"s host identity, actions, scene, and sales structure, and replaces the original product with the target product.
 //
-//   - **Person replacement (**`person_replacement`**)**: Preserves the original video\\"s product, actions, scene, and sales structure, and replaces the on-screen person with the target person from reference images or descriptions.
+//   - **Character replacement (**`person_replacement`**)**: Retains the original video\\"s product, actions, scene, and sales structure, and replaces the on-screen character with the target character from reference images or descriptions.
 //
 //   - **Supports two generation modes:**
 //
-//   - **Reference generation (**`reference`**)**: 1:1 replication. Uses the original video as a complete reference to automatically generate a new video with the same duration as the original video. It preserves the original script, storyboard, actions, scene, and rhythm, and only performs targeted replacement of specified content such as persons or products.
+//   - **Reference generation (**`reference`**)**: 1:1 replication. Uses the original video as a complete reference to automatically generate a new video with the same duration as the original video. It retains the original script, storyboard, actions, scene, and rhythm, and only performs targeted replacement of specified content such as characters or products.
 //
-//   - **Rebuild generation (**`rebuild`**)**: Breaks down the script, storyboard, and key elements of the original video, retains only core content such as specified persons or products, and then redesigns and generates a new video. It is not limited by the original video duration and supports inputting a target duration.
+//   - **Rebuild generation (**`rebuild`**)**: Breaks down the script, storyboard, and key elements of the original video, retains only core content such as specified characters or products, and then redesigns and generates a new video. It is not limited by the original video duration and supports inputting a target duration.
 //
-//   - **Fully automated end-to-end generation with zero prompt threshold**: Only requires passing the reference video and target product or person images. The system automatically completes the entire process of video understanding, script planning, storyboard design, first-frame generation, and video synthesis.
+//   - **Fully automated end-to-end generation with zero prompt threshold**: Only requires passing in the reference video and target product or character images. The system automatically completes the entire process of video understanding, script planning, storyboard design, first-frame generation, and video synthesis.
 //
-//   - **Product understanding and information structuring**: Identifies product categories, appearance, materials, colors, structures, and key components, and combines them with titles, attributes, and selling points provided by merchants to generate usable video expression information.
+//   - **Product understanding and information structuring**: Identifies product categories, appearance, materials, colors, structures, and key components, and combines them with the titles, attributes, and selling points provided by merchants to generate usable video expression information.
 //
-//   - **Template video element replacement**: Supports replacing products or persons within the authorized scope, and defines the replacement scope and protection scope to minimize changes in non-target areas.
+//   - **Template video element replacement**: Supports replacing products or characters within the authorized scope, and defines the replacement scope and protection scope to reduce changes in non-target areas.
 //
 //   - **Product subject consistency**: Maintains the stability of the product\\"s shape, color, texture, pattern, packaging, and logo as much as possible across different camera angles, perspectives, actions, and scenes.
 //
@@ -1636,7 +1637,7 @@ func (client *Client) DocumentTranslate(request *DocumentTranslateRequest) (_res
 //
 //   - **Commercial model adaptation**: Supports matching corresponding model images and display methods based on product style, fit, target audience, and market demand.
 //
-//   - **Quality verification and result feedback**: Performs multi-dimensional checks on the product subject, person, clothing, text, picture integrity, audio, and overall usability, and outputs result information for manual review.
+//   - **Quality verification and result feedback**: Conducts multi-dimensional checks on the product subject, characters, clothing, text, picture integrity, audio, and overall usability, and outputs result information for manual review.
 //
 // @param tmpReq - EcomVideoRecreationRequest
 //
@@ -1694,45 +1695,45 @@ func (client *Client) EcomVideoRecreationWithOptions(tmpReq *EcomVideoRecreation
 
 // Summary:
 //
-// Provides an AI video service for e-commerce content production, covering video understanding, element replacement, quality verification, and result delivery. The service focuses on product and person consistency, detail restoration, conversion expression, and scaled production. It supports targeted replacement of products or persons based on viral video templates, quickly generating multiple versions of content while preserving original actions, camera rhythms, and marketing structures to reduce shooting, editing, and adaptation costs.
+// Generates multiple versions of e-commerce videos by replacing products or characters in a template video. This AI video service covers video understanding, element replacement, quality verification, and result delivery. It focuses on product and character consistency, detail restoration, conversion expression, and large-scale production. By retaining the original actions, camera rhythms, and marketing structures, it rapidly generates multi-version content to reduce shooting, editing, and adaptation costs.
 //
 // Description:
 //
 // ## **Product introduction**
 //
-// E-commerce video variation is an AI video service for product content production, covering video understanding, element replacement, quality verification, and result delivery. The service focuses on product and person consistency, detail restoration, conversion expression, and scaled production. It supports targeted replacement of products or persons based on viral video templates, quickly generating multiple versions of content while preserving original actions, camera rhythms, and marketing structures to reduce shooting, editing, and adaptation costs.
+// E-commerce video variation generation is an AI video service for product content production, covering video understanding, element replacement, quality verification, and result delivery. The service focuses on product and character consistency, detail restoration, conversion expression, and large-scale production. It supports targeted replacement of products or characters based on hit video templates. By retaining the original actions, camera rhythms, and marketing structures, it rapidly generates multi-version content to reduce shooting, editing, and adaptation costs.
 //
 // ## **Scenarios**
 //
-// - **Video material variation:*	- Uses an existing e-commerce video as a template and replaces only specified products or persons in the video, preserving the original camera angles, rhythm, and marketing expression as much as possible. This is suitable for producing materials with multiple SKUs, models, regions, and versions.
+// - **Video material variation:*	- Uses an existing e-commerce video as a template and replaces only specified products or characters in the video, preserving the original camera angles, rhythms, and marketing expressions as much as possible. This is suitable for producing materials with multiple SKUs, models, regions, and versions.
 //
-// - **New product launch and rapid material generation:*	- For centrally launched new products, this reduces manual shooting, studio setup, post-production editing, and repetitive production processes. It quickly deploys new product video materials, helping merchants shorten the launch cycle from spotting a viral video to breaking down the script and shooting new content.
+// - **Rapid material generation for new products:*	- For centrally launched new products, it reduces the need for live-action shooting, studio setup, post-production editing, and repetitive production. It rapidly deploys video materials for new products, helping merchants shorten the launch cycle from spotting hit videos to breaking down scripts and shooting new content.
 //
-// - **Product explanation and selling point expression:*	- Suitable for products such as apparel, beauty and personal care, food and beverages, home and daily necessities, 3C digital products, and small home appliances. It can plan the explanation structure, display actions, and camera rhythm based on the selling points of the original video, and generate explanation videos tailored for the conversion of new products.
+// - **Product explanation and selling point expression:*	- Suitable for products such as apparel, beauty and personal care, food and beverages, home and daily necessities, 3C digital products, and small home appliances. It can plan the explanation structure, display actions, and camera rhythms based on the selling points of the original video, and generate explanation videos tailored for the conversion of new products.
 //
-// - **Multi-selling point and multi-version testing:*	- Quickly generates multiple versions based on different product selling points, target audiences, scripts, camera angles, and visual styles, supporting merchants in conducting content testing and iterating delivery materials.
+// - **Multi-selling point and multi-version testing:*	- Rapidly generates multiple versions based on different product selling points, target audiences, scripts, camera angles, and visual styles. This supports merchants in conducting content testing and iterating on delivered materials.
 //
-// ## **Feature overview**
+// ## **Product capabilities**
 //
 // ### **Core capabilities**
 //
 //   - **Supports two replacement modes:**
 //
-//   - **Product replacement (**`product_replacement`**)**: Preserves the original video\\"s host identity, actions, scene, and sales structure, and replaces the original product with the target product.
+//   - **Product replacement (**`product_replacement`**)**: Retains the original video\\"s host identity, actions, scene, and sales structure, and replaces the original product with the target product.
 //
-//   - **Person replacement (**`person_replacement`**)**: Preserves the original video\\"s product, actions, scene, and sales structure, and replaces the on-screen person with the target person from reference images or descriptions.
+//   - **Character replacement (**`person_replacement`**)**: Retains the original video\\"s product, actions, scene, and sales structure, and replaces the on-screen character with the target character from reference images or descriptions.
 //
 //   - **Supports two generation modes:**
 //
-//   - **Reference generation (**`reference`**)**: 1:1 replication. Uses the original video as a complete reference to automatically generate a new video with the same duration as the original video. It preserves the original script, storyboard, actions, scene, and rhythm, and only performs targeted replacement of specified content such as persons or products.
+//   - **Reference generation (**`reference`**)**: 1:1 replication. Uses the original video as a complete reference to automatically generate a new video with the same duration as the original video. It retains the original script, storyboard, actions, scene, and rhythm, and only performs targeted replacement of specified content such as characters or products.
 //
-//   - **Rebuild generation (**`rebuild`**)**: Breaks down the script, storyboard, and key elements of the original video, retains only core content such as specified persons or products, and then redesigns and generates a new video. It is not limited by the original video duration and supports inputting a target duration.
+//   - **Rebuild generation (**`rebuild`**)**: Breaks down the script, storyboard, and key elements of the original video, retains only core content such as specified characters or products, and then redesigns and generates a new video. It is not limited by the original video duration and supports inputting a target duration.
 //
-//   - **Fully automated end-to-end generation with zero prompt threshold**: Only requires passing the reference video and target product or person images. The system automatically completes the entire process of video understanding, script planning, storyboard design, first-frame generation, and video synthesis.
+//   - **Fully automated end-to-end generation with zero prompt threshold**: Only requires passing in the reference video and target product or character images. The system automatically completes the entire process of video understanding, script planning, storyboard design, first-frame generation, and video synthesis.
 //
-//   - **Product understanding and information structuring**: Identifies product categories, appearance, materials, colors, structures, and key components, and combines them with titles, attributes, and selling points provided by merchants to generate usable video expression information.
+//   - **Product understanding and information structuring**: Identifies product categories, appearance, materials, colors, structures, and key components, and combines them with the titles, attributes, and selling points provided by merchants to generate usable video expression information.
 //
-//   - **Template video element replacement**: Supports replacing products or persons within the authorized scope, and defines the replacement scope and protection scope to minimize changes in non-target areas.
+//   - **Template video element replacement**: Supports replacing products or characters within the authorized scope, and defines the replacement scope and protection scope to reduce changes in non-target areas.
 //
 //   - **Product subject consistency**: Maintains the stability of the product\\"s shape, color, texture, pattern, packaging, and logo as much as possible across different camera angles, perspectives, actions, and scenes.
 //
@@ -1742,7 +1743,7 @@ func (client *Client) EcomVideoRecreationWithOptions(tmpReq *EcomVideoRecreation
 //
 //   - **Commercial model adaptation**: Supports matching corresponding model images and display methods based on product style, fit, target audience, and market demand.
 //
-//   - **Quality verification and result feedback**: Performs multi-dimensional checks on the product subject, person, clothing, text, picture integrity, audio, and overall usability, and outputs result information for manual review.
+//   - **Quality verification and result feedback**: Conducts multi-dimensional checks on the product subject, characters, clothing, text, picture integrity, audio, and overall usability, and outputs result information for manual review.
 //
 // @param request - EcomVideoRecreationRequest
 //
@@ -1760,13 +1761,13 @@ func (client *Client) EcomVideoRecreation(request *EcomVideoRecreationRequest) (
 
 // Summary:
 //
-// Detects whether an image is recaptured and locates main physical products, screen display areas, printed photos, and visible recapture clues based on recapture recognition and multimodal large model element localization. This general-purpose image moderation service applies to risk screening and manual review of store inspection photos across multiple categories.
+// Evaluates images for recapture risks and locates key elements such as physical products, screen display areas, printed photos, and visible recapture clues by using recapture recognition and multimodal large model element localization, which is suitable for risk screening and manual review of store inspection photos across multiple categories.
 //
 // Description:
 //
 // *Scenarios**
 //
-// 1. Inspection photo review: Screens photos submitted by stores for recapture risks.
+// 1. Inspection photo review: Screens store-submitted photos for recapture risks.
 //
 // 2. Screen or printed photo recapture verification: Locates visible screens, printed photos, and other media.
 //
@@ -1824,13 +1825,13 @@ func (client *Client) GeneralRephotographyDetectionWithOptions(request *GeneralR
 
 // Summary:
 //
-// Detects whether an image is recaptured and locates main physical products, screen display areas, printed photos, and visible recapture clues based on recapture recognition and multimodal large model element localization. This general-purpose image moderation service applies to risk screening and manual review of store inspection photos across multiple categories.
+// Evaluates images for recapture risks and locates key elements such as physical products, screen display areas, printed photos, and visible recapture clues by using recapture recognition and multimodal large model element localization, which is suitable for risk screening and manual review of store inspection photos across multiple categories.
 //
 // Description:
 //
 // *Scenarios**
 //
-// 1. Inspection photo review: Screens photos submitted by stores for recapture risks.
+// 1. Inspection photo review: Screens store-submitted photos for recapture risks.
 //
 // 2. Screen or printed photo recapture verification: Locates visible screens, printed photos, and other media.
 //
@@ -1862,15 +1863,15 @@ func (client *Client) GeneralRephotographyDetection(request *GeneralRephotograph
 
 // Summary:
 //
-// Generates or rewrites e-commerce product copy, such as titles, short highlights, search keywords, bulleted selling points, and product descriptions, based on input product information or existing copy, and adapts the content type and length to the requirements of the target platform. Supports Chinese and English input materials and optional multilingual translation for scenarios such as domestic product listing, cross-border product distribution, and product copy localization. Uses synchronous invocation to process one copy type for a single product per request.
+// Generates or rewrites e-commerce product copy, such as titles, short highlights, search keywords, bullet points, and product descriptions, based on product information or existing copy, and adapts the content type and length to the requirements of the target platform. Supports Chinese and English input materials and optional multilingual translation for scenarios such as domestic product listing, cross-border product distribution, and product copy localization. This API uses synchronous calls and processes one copy type for one product per request.
 //
 // Description:
 //
 // # Product introduction
 //
-// E-commerce product copy generation is an AI text service for e-commerce product content production. By inputting product materials or existing copy, you can generate or rewrite product titles, short highlights, search keywords, bullet points, and product descriptions, and adapt the content type and length to the target platform as needed.
+// E-commerce product copy generation is an AI text service for e-commerce product content production. By inputting product information or existing copy, you can generate or rewrite product titles, short highlights, search keywords, bullet points, and product descriptions. You can also adapt the content type and length to the requirements of the target platform.
 //
-// It supports Chinese and English material inputs and optional multilingual translation, and applies to scenarios such as domestic product listing, cross-border distribution, and product copy localization. The API uses synchronous calls and processes one copy type for one product per request.
+// It supports Chinese and English input materials and optional multilingual translation. It applies to scenarios such as domestic product listing, cross-border product distribution, and product copy localization. The API uses synchronous calls and processes one copy type for one product per request.
 //
 // # Scenarios
 //
@@ -1882,15 +1883,15 @@ func (client *Client) GeneralRephotographyDetection(request *GeneralRephotograph
 //
 // | Cross-platform content adaptation | Select the target platform to generate or rewrite content according to its configuration limits. The source platform of the input is not required. |
 //
-// | New product material production | Select generate to generate the target type based on product materials. Categories and attributes can be used to supplement facts. |
+// | New product material production | Select generate to create the target content type based on product information. You can use categories and attributes to supplement facts. |
 //
-// | Batch operation tool integration | The caller submits requests product by product. The workflow itself does not provide batch task or queue APIs. |
+// | Batch operation tool integration | Callers submit requests product by product. The workflow does not include batch task or queue APIs. |
 //
 // # Features
 //
 // ## Core capabilities
 //
-// This capability supports the production of different copy content types in domestic and cross-border e-commerce scenarios. It can produce titles, detailed descriptions, keywords, highlights, and descriptions that adapt to the content rules (length requirements and writing styles) of different platforms, and supports cross-language production.
+// This capability supports the production of different copy content types in domestic and cross-border e-commerce scenarios. It can produce titles, detailed descriptions, keywords, highlights, and descriptions that adapt to the content rules, such as length requirements and writing styles, of different platforms. It also supports cross-language production.
 //
 // | Content type | Platform |  |  |  |  |  | Target language |
 //
@@ -1904,39 +1905,39 @@ func (client *Client) GeneralRephotographyDetection(request *GeneralRephotograph
 //
 // | **highlight*	- | ✓ |  |  |  |  | ✓ |
 //
-// | **bulletPoint*	- | ✓ |  |  | ✓ |  |  |
+// | **bulletPoint*	- | ✓ |  |  |  |  |  |
 //
 // | **keywords*	- | ✓ |  |  |  |  |  |
 //
 // | **description*	- | ✓ | ✓ | ✓ | ✓ | ✓ |  |
 //
-// Based on the content inputs provided by users, two production modes are supported:
+// Based on the different content inputs provided by users, the API supports two production modes:
 //
 // | **Mode*	- | **Description*	- | **Recommended scenario*	- |
 //
 // | --- | --- | --- |
 //
-// | Generate | Reorganizes and writes copy based on product materials. | Only product parameters, attributes, or selling points are available, or other types of product materials are available, and new titles, keywords, product descriptions, and other copy need to be created. |
+// | Generate | Reorganizes and writes copy based on product information. | Use this mode when you only have product parameters, attributes, selling points, or other types of product information, and need to create new titles, keywords, product descriptions, and other copy. |
 //
-// | Rewrite | Retains the original information and main structure, and optimizes the expression. | Existing product copy is available, and you want to adjust the wording, improve readability, or localize it with translation. |
+// | Rewrite | Retains the original information and main structure, and optimizes the expression. | Use this mode when you already have product copy and want to adjust the wording, improve readability, or localize it with translation. |
 //
 // # Examples
 //
-// The following examples use the Amazon platform:
+// The following table uses the Amazon platform as an example:
 //
 // | **Content type*	- | **Source language*	- | **Source content*	- | **Target language*	- | **Generated result*	- | **Capability advantage*	- |
 //
 // | --- | --- | --- | --- | --- | --- |
 //
-// | bulletPoint | en | [VERSATILE RESIN FILTRATION SYSTEM\\] This silicone funnel and metal filter mesh combination is designed for all 3D printing enthusiasts. It is ideal for pouring used photosensitive resin back into standard bottles with a 15mm neck width ensuring a clean transfer every time. The durable metal filter effectively catches all solidified debris protecting your valuable resin from  and extending its usability. | de | [Vielseitiges Harz-Filtersystem\\] Silikontrichter und Metallfiltergitter für 3D-Druck; Einfüllen von gebrauchtem lichtempfindlichem Harz in Flaschen mit 15 mm Halsweite | Extracts core selling points, retains key information such as bottle neck size, and presents it in German bullet points for quick reading. |
+// | bulletPoint | en | [VERSATILE RESIN FILTRATION SYSTEM\\] This silicone funnel and metal filter mesh combination is designed for all 3D printing enthusiasts. It is ideal for pouring used photosensitive resin back into standard bottles with a 15 mm neck width ensuring a clean transfer every time. The durable metal filter effectively catches all solidified debris protecting your valuable resin from  and extending its usability. | de | [Vielseitiges Harz-Filtersystem\\] Silikontrichter und Metallfiltergitter für 3D-Druck; Einfüllen von gebrauchtem lichtempfindlichem Harz in Flaschen mit 15 mm Halsweite | Extracts core selling points, retains key information such as bottle neck size, and presents it in German bullet points for quick reading. |
 //
-// | description | en | [VERSATILE RESIN FILTRATION SYSTEM\\] This silicone funnel and metal filter mesh combination is designed for all 3D printing enthusiasts. It is ideal for pouring used photosensitive resin back into standard bottles with a 15mm neck width ensuring a clean transfer every time. The durable metal filter effectively catches all solidified debris protecting your valuable resin from  and extending its usability. | de | [Vielseitiges Harz-Filtrationssystem\\] Diese Kombination aus Silikontrichter und Metallfilternetz richtet sich an alle, die mit 3D-Druck arbeiten. Der flexible Silikontrichter passt sicher auf Standardflaschen mit einer Halsweite von 15 mm und ermöglicht ein sauberes Zurückfüllen von gebrauchtem lichtempfindlichem Harz ohne Kleckern. Das feine Metallfilter fängt verfestigte Partikel zuverlässig ab, sodass Ihr Harz frei von Verunreinigungen bleibt und seine Nutzbarkeit erhalten wird. Die robuste Konstruktion des Filters unterstützt eine gleichmäßige Durchflussrate beim Umfüllen. | Organizes the product purpose, usage, and filtration features into a coherent German introduction for easy understanding. |
+// | description | en | [VERSATILE RESIN FILTRATION SYSTEM\\] This silicone funnel and metal filter mesh combination is designed for all 3D printing enthusiasts. It is ideal for pouring used photosensitive resin back into standard bottles with a 15 mm neck width ensuring a clean transfer every time. The durable metal filter effectively catches all solidified debris protecting your valuable resin from  and extending its usability. | de | [Vielseitiges Harz-Filtrationssystem\\] Diese Kombination aus Silikontrichter und Metallfilternetz richtet sich an alle, die mit 3D-Druck arbeiten. Der flexible Silikontrichter passt sicher auf Standardflaschen mit einer Halsweite von 15 mm und ermöglicht ein sauberes Zurückfüllen von gebrauchtem lichtempfindlichem Harz ohne Kleckern. Das feine Metallfilter fängt verfestigte Partikel zuverlässig ab, sodass Ihr Harz frei von Verunreinigungen bleibt und seine Nutzbarkeit erhalten wird. Die robuste Konstruktion des Filters unterstützt eine gleichmäßige Durchflussrate beim Umfüllen. | Organizes the product usage, usage method, and filtering features into a coherent German introduction for easy understanding of the product. |
 //
-// | highlight | en | [VERSATILE RESIN FILTRATION SYSTEM\\] This silicone funnel and metal filter mesh combination is designed for all 3D printing enthusiasts. It is ideal for pouring used photosensitive resin back into standard bottles with a 15mm neck width ensuring a clean transfer every time. The durable metal filter effectively catches all solidified debris protecting your valuable resin from  and extending its usability. | de | [Vielseitiges Harz-Filtrationssystem\\] Silikontrichter, Metallfilternetz, für 3D-Druck-Harz | Simplifies long materials, highlights core components and purposes, and makes it easy to grasp product features at a glance. |
+// | highlight | en | [VERSATILE RESIN FILTRATION SYSTEM\\] This silicone funnel and metal filter mesh combination is designed for all 3D printing enthusiasts. It is ideal for pouring used photosensitive resin back into standard bottles with a 15 mm neck width ensuring a clean transfer every time. The durable metal filter effectively catches all solidified debris protecting your valuable resin from  and extending its usability. | de | [Vielseitiges Harz-Filtrationssystem\\] Silikontrichter, Metallfilternetz, für 3D-Druck-Harz | Simplifies long materials, highlights core components and usage, and makes it easy to grasp the product features at a glance. |
 //
-// | keywords | en | [VERSATILE RESIN FILTRATION SYSTEM\\] This silicone funnel and metal filter mesh combination is designed for all 3D printing enthusiasts. It is ideal for pouring used photosensitive resin back into standard bottles with a 15mm neck width ensuring a clean transfer every time. The durable metal filter effectively catches all solidified debris protecting your valuable resin from  and extending its usability. | de | Silikontrichter Metallfilter Harz Filterungssystem 3D Drucker Harz umfüllen Metall Sieb für Photosensitive Harze | Extracts German search terms related to materials, categories, and purposes to reduce manual sorting and translation. |
+// | keywords | en | [VERSATILE RESIN FILTRATION SYSTEM\\] This silicone funnel and metal filter mesh combination is designed for all 3D printing enthusiasts. It is ideal for pouring used photosensitive resin back into standard bottles with a 15 mm neck width ensuring a clean transfer every time. The durable metal filter effectively catches all solidified debris protecting your valuable resin from  and extending its usability. | de | Silikontrichter Metallfilter Harz Filterungssystem 3D Drucker Harz umfüllen Metall Sieb für Photosensitive Harze | Extracts German search terms related to materials, categories, and usage to reduce manual sorting and translation work. |
 //
-// | title | en | [VERSATILE RESIN FILTRATION SYSTEM\\] This silicone funnel and metal filter mesh combination is designed for all 3D printing enthusiasts. It is ideal for pouring used photosensitive resin back into standard bottles with a 15mm neck width ensuring a clean transfer every time. The durable metal filter effectively catches all solidified debris protecting your valuable resin from  and extending its usability. | de | Silikontrichter mit Metallfilter für 3D-Druck-Harz | Extracts the product name, core components, and purpose to generate a concise and clear German title. |
+// | title | en | [VERSATILE RESIN FILTRATION SYSTEM\\] This silicone funnel and metal filter mesh combination is designed for all 3D printing enthusiasts. It is ideal for pouring used photosensitive resin back into standard bottles with a 15 mm neck width ensuring a clean transfer every time. The durable metal filter effectively catches all solidified debris protecting your valuable resin from  and extending its usability. | de | Silikontrichter mit Metallfilter für 3D-Druck-Harz | Extracts the product name, core components, and usage to generate a concise and clear German title. |
 //
 // @param request - GenerateProductContentRequest
 //
@@ -2028,15 +2029,15 @@ func (client *Client) GenerateProductContentWithOptions(request *GenerateProduct
 
 // Summary:
 //
-// Generates or rewrites e-commerce product copy, such as titles, short highlights, search keywords, bulleted selling points, and product descriptions, based on input product information or existing copy, and adapts the content type and length to the requirements of the target platform. Supports Chinese and English input materials and optional multilingual translation for scenarios such as domestic product listing, cross-border product distribution, and product copy localization. Uses synchronous invocation to process one copy type for a single product per request.
+// Generates or rewrites e-commerce product copy, such as titles, short highlights, search keywords, bullet points, and product descriptions, based on product information or existing copy, and adapts the content type and length to the requirements of the target platform. Supports Chinese and English input materials and optional multilingual translation for scenarios such as domestic product listing, cross-border product distribution, and product copy localization. This API uses synchronous calls and processes one copy type for one product per request.
 //
 // Description:
 //
 // # Product introduction
 //
-// E-commerce product copy generation is an AI text service for e-commerce product content production. By inputting product materials or existing copy, you can generate or rewrite product titles, short highlights, search keywords, bullet points, and product descriptions, and adapt the content type and length to the target platform as needed.
+// E-commerce product copy generation is an AI text service for e-commerce product content production. By inputting product information or existing copy, you can generate or rewrite product titles, short highlights, search keywords, bullet points, and product descriptions. You can also adapt the content type and length to the requirements of the target platform.
 //
-// It supports Chinese and English material inputs and optional multilingual translation, and applies to scenarios such as domestic product listing, cross-border distribution, and product copy localization. The API uses synchronous calls and processes one copy type for one product per request.
+// It supports Chinese and English input materials and optional multilingual translation. It applies to scenarios such as domestic product listing, cross-border product distribution, and product copy localization. The API uses synchronous calls and processes one copy type for one product per request.
 //
 // # Scenarios
 //
@@ -2048,15 +2049,15 @@ func (client *Client) GenerateProductContentWithOptions(request *GenerateProduct
 //
 // | Cross-platform content adaptation | Select the target platform to generate or rewrite content according to its configuration limits. The source platform of the input is not required. |
 //
-// | New product material production | Select generate to generate the target type based on product materials. Categories and attributes can be used to supplement facts. |
+// | New product material production | Select generate to create the target content type based on product information. You can use categories and attributes to supplement facts. |
 //
-// | Batch operation tool integration | The caller submits requests product by product. The workflow itself does not provide batch task or queue APIs. |
+// | Batch operation tool integration | Callers submit requests product by product. The workflow does not include batch task or queue APIs. |
 //
 // # Features
 //
 // ## Core capabilities
 //
-// This capability supports the production of different copy content types in domestic and cross-border e-commerce scenarios. It can produce titles, detailed descriptions, keywords, highlights, and descriptions that adapt to the content rules (length requirements and writing styles) of different platforms, and supports cross-language production.
+// This capability supports the production of different copy content types in domestic and cross-border e-commerce scenarios. It can produce titles, detailed descriptions, keywords, highlights, and descriptions that adapt to the content rules, such as length requirements and writing styles, of different platforms. It also supports cross-language production.
 //
 // | Content type | Platform |  |  |  |  |  | Target language |
 //
@@ -2070,39 +2071,39 @@ func (client *Client) GenerateProductContentWithOptions(request *GenerateProduct
 //
 // | **highlight*	- | ✓ |  |  |  |  | ✓ |
 //
-// | **bulletPoint*	- | ✓ |  |  | ✓ |  |  |
+// | **bulletPoint*	- | ✓ |  |  |  |  |  |
 //
 // | **keywords*	- | ✓ |  |  |  |  |  |
 //
 // | **description*	- | ✓ | ✓ | ✓ | ✓ | ✓ |  |
 //
-// Based on the content inputs provided by users, two production modes are supported:
+// Based on the different content inputs provided by users, the API supports two production modes:
 //
 // | **Mode*	- | **Description*	- | **Recommended scenario*	- |
 //
 // | --- | --- | --- |
 //
-// | Generate | Reorganizes and writes copy based on product materials. | Only product parameters, attributes, or selling points are available, or other types of product materials are available, and new titles, keywords, product descriptions, and other copy need to be created. |
+// | Generate | Reorganizes and writes copy based on product information. | Use this mode when you only have product parameters, attributes, selling points, or other types of product information, and need to create new titles, keywords, product descriptions, and other copy. |
 //
-// | Rewrite | Retains the original information and main structure, and optimizes the expression. | Existing product copy is available, and you want to adjust the wording, improve readability, or localize it with translation. |
+// | Rewrite | Retains the original information and main structure, and optimizes the expression. | Use this mode when you already have product copy and want to adjust the wording, improve readability, or localize it with translation. |
 //
 // # Examples
 //
-// The following examples use the Amazon platform:
+// The following table uses the Amazon platform as an example:
 //
 // | **Content type*	- | **Source language*	- | **Source content*	- | **Target language*	- | **Generated result*	- | **Capability advantage*	- |
 //
 // | --- | --- | --- | --- | --- | --- |
 //
-// | bulletPoint | en | [VERSATILE RESIN FILTRATION SYSTEM\\] This silicone funnel and metal filter mesh combination is designed for all 3D printing enthusiasts. It is ideal for pouring used photosensitive resin back into standard bottles with a 15mm neck width ensuring a clean transfer every time. The durable metal filter effectively catches all solidified debris protecting your valuable resin from  and extending its usability. | de | [Vielseitiges Harz-Filtersystem\\] Silikontrichter und Metallfiltergitter für 3D-Druck; Einfüllen von gebrauchtem lichtempfindlichem Harz in Flaschen mit 15 mm Halsweite | Extracts core selling points, retains key information such as bottle neck size, and presents it in German bullet points for quick reading. |
+// | bulletPoint | en | [VERSATILE RESIN FILTRATION SYSTEM\\] This silicone funnel and metal filter mesh combination is designed for all 3D printing enthusiasts. It is ideal for pouring used photosensitive resin back into standard bottles with a 15 mm neck width ensuring a clean transfer every time. The durable metal filter effectively catches all solidified debris protecting your valuable resin from  and extending its usability. | de | [Vielseitiges Harz-Filtersystem\\] Silikontrichter und Metallfiltergitter für 3D-Druck; Einfüllen von gebrauchtem lichtempfindlichem Harz in Flaschen mit 15 mm Halsweite | Extracts core selling points, retains key information such as bottle neck size, and presents it in German bullet points for quick reading. |
 //
-// | description | en | [VERSATILE RESIN FILTRATION SYSTEM\\] This silicone funnel and metal filter mesh combination is designed for all 3D printing enthusiasts. It is ideal for pouring used photosensitive resin back into standard bottles with a 15mm neck width ensuring a clean transfer every time. The durable metal filter effectively catches all solidified debris protecting your valuable resin from  and extending its usability. | de | [Vielseitiges Harz-Filtrationssystem\\] Diese Kombination aus Silikontrichter und Metallfilternetz richtet sich an alle, die mit 3D-Druck arbeiten. Der flexible Silikontrichter passt sicher auf Standardflaschen mit einer Halsweite von 15 mm und ermöglicht ein sauberes Zurückfüllen von gebrauchtem lichtempfindlichem Harz ohne Kleckern. Das feine Metallfilter fängt verfestigte Partikel zuverlässig ab, sodass Ihr Harz frei von Verunreinigungen bleibt und seine Nutzbarkeit erhalten wird. Die robuste Konstruktion des Filters unterstützt eine gleichmäßige Durchflussrate beim Umfüllen. | Organizes the product purpose, usage, and filtration features into a coherent German introduction for easy understanding. |
+// | description | en | [VERSATILE RESIN FILTRATION SYSTEM\\] This silicone funnel and metal filter mesh combination is designed for all 3D printing enthusiasts. It is ideal for pouring used photosensitive resin back into standard bottles with a 15 mm neck width ensuring a clean transfer every time. The durable metal filter effectively catches all solidified debris protecting your valuable resin from  and extending its usability. | de | [Vielseitiges Harz-Filtrationssystem\\] Diese Kombination aus Silikontrichter und Metallfilternetz richtet sich an alle, die mit 3D-Druck arbeiten. Der flexible Silikontrichter passt sicher auf Standardflaschen mit einer Halsweite von 15 mm und ermöglicht ein sauberes Zurückfüllen von gebrauchtem lichtempfindlichem Harz ohne Kleckern. Das feine Metallfilter fängt verfestigte Partikel zuverlässig ab, sodass Ihr Harz frei von Verunreinigungen bleibt und seine Nutzbarkeit erhalten wird. Die robuste Konstruktion des Filters unterstützt eine gleichmäßige Durchflussrate beim Umfüllen. | Organizes the product usage, usage method, and filtering features into a coherent German introduction for easy understanding of the product. |
 //
-// | highlight | en | [VERSATILE RESIN FILTRATION SYSTEM\\] This silicone funnel and metal filter mesh combination is designed for all 3D printing enthusiasts. It is ideal for pouring used photosensitive resin back into standard bottles with a 15mm neck width ensuring a clean transfer every time. The durable metal filter effectively catches all solidified debris protecting your valuable resin from  and extending its usability. | de | [Vielseitiges Harz-Filtrationssystem\\] Silikontrichter, Metallfilternetz, für 3D-Druck-Harz | Simplifies long materials, highlights core components and purposes, and makes it easy to grasp product features at a glance. |
+// | highlight | en | [VERSATILE RESIN FILTRATION SYSTEM\\] This silicone funnel and metal filter mesh combination is designed for all 3D printing enthusiasts. It is ideal for pouring used photosensitive resin back into standard bottles with a 15 mm neck width ensuring a clean transfer every time. The durable metal filter effectively catches all solidified debris protecting your valuable resin from  and extending its usability. | de | [Vielseitiges Harz-Filtrationssystem\\] Silikontrichter, Metallfilternetz, für 3D-Druck-Harz | Simplifies long materials, highlights core components and usage, and makes it easy to grasp the product features at a glance. |
 //
-// | keywords | en | [VERSATILE RESIN FILTRATION SYSTEM\\] This silicone funnel and metal filter mesh combination is designed for all 3D printing enthusiasts. It is ideal for pouring used photosensitive resin back into standard bottles with a 15mm neck width ensuring a clean transfer every time. The durable metal filter effectively catches all solidified debris protecting your valuable resin from  and extending its usability. | de | Silikontrichter Metallfilter Harz Filterungssystem 3D Drucker Harz umfüllen Metall Sieb für Photosensitive Harze | Extracts German search terms related to materials, categories, and purposes to reduce manual sorting and translation. |
+// | keywords | en | [VERSATILE RESIN FILTRATION SYSTEM\\] This silicone funnel and metal filter mesh combination is designed for all 3D printing enthusiasts. It is ideal for pouring used photosensitive resin back into standard bottles with a 15 mm neck width ensuring a clean transfer every time. The durable metal filter effectively catches all solidified debris protecting your valuable resin from  and extending its usability. | de | Silikontrichter Metallfilter Harz Filterungssystem 3D Drucker Harz umfüllen Metall Sieb für Photosensitive Harze | Extracts German search terms related to materials, categories, and usage to reduce manual sorting and translation work. |
 //
-// | title | en | [VERSATILE RESIN FILTRATION SYSTEM\\] This silicone funnel and metal filter mesh combination is designed for all 3D printing enthusiasts. It is ideal for pouring used photosensitive resin back into standard bottles with a 15mm neck width ensuring a clean transfer every time. The durable metal filter effectively catches all solidified debris protecting your valuable resin from  and extending its usability. | de | Silikontrichter mit Metallfilter für 3D-Druck-Harz | Extracts the product name, core components, and purpose to generate a concise and clear German title. |
+// | title | en | [VERSATILE RESIN FILTRATION SYSTEM\\] This silicone funnel and metal filter mesh combination is designed for all 3D printing enthusiasts. It is ideal for pouring used photosensitive resin back into standard bottles with a 15 mm neck width ensuring a clean transfer every time. The durable metal filter effectively catches all solidified debris protecting your valuable resin from  and extending its usability. | de | Silikontrichter mit Metallfilter für 3D-Druck-Harz | Extracts the product name, core components, and usage to generate a concise and clear German title. |
 //
 // @param request - GenerateProductContentRequest
 //
@@ -2120,13 +2121,13 @@ func (client *Client) GenerateProductContent(request *GenerateProductContentRequ
 
 // Summary:
 //
-// Intelligently crops images to specified sizes by automatically identifying the main subject area and precisely cropping them to various sizes to meet design requirements across different scenarios. (Synchronous)
+// Intelligently crops an image to specified dimensions by automatically identifying the main subject area and precisely cropping the image to meet design requirements across various scenarios. (Synchronous)
 //
 // Description:
 //
 // ## Product introduction
 //
-// The image cropping service can resize input images to specified dimensions. It supports automatic identification of the main subject area and precisely crops images to various sizes to meet design requirements across different scenarios. (Synchronous)
+// The image cropping feature can resize input images to specified dimensions. It supports automatic identification of the main subject area and precise cropping to various sizes to meet design requirements across various scenarios. (Synchronous)
 //
 // ## Scenarios
 //
@@ -2138,7 +2139,7 @@ func (client *Client) GenerateProductContent(request *GenerateProductContentRequ
 //
 //   - Automatically identifies the main subject area of an image for precise cropping.
 //
-//   - Supports custom output sizes for cropping to adapt to different platforms and devices.
+//   - Supports custom output sizes to adapt to different platforms and devices.
 //
 // ## Effect comparison
 //
@@ -2202,13 +2203,13 @@ func (client *Client) ImageCroppingWithOptions(request *ImageCroppingRequest, ru
 
 // Summary:
 //
-// Intelligently crops images to specified sizes by automatically identifying the main subject area and precisely cropping them to various sizes to meet design requirements across different scenarios. (Synchronous)
+// Intelligently crops an image to specified dimensions by automatically identifying the main subject area and precisely cropping the image to meet design requirements across various scenarios. (Synchronous)
 //
 // Description:
 //
 // ## Product introduction
 //
-// The image cropping service can resize input images to specified dimensions. It supports automatic identification of the main subject area and precisely crops images to various sizes to meet design requirements across different scenarios. (Synchronous)
+// The image cropping feature can resize input images to specified dimensions. It supports automatic identification of the main subject area and precise cropping to various sizes to meet design requirements across various scenarios. (Synchronous)
 //
 // ## Scenarios
 //
@@ -2220,7 +2221,7 @@ func (client *Client) ImageCroppingWithOptions(request *ImageCroppingRequest, ru
 //
 //   - Automatically identifies the main subject area of an image for precise cropping.
 //
-//   - Supports custom output sizes for cropping to adapt to different platforms and devices.
+//   - Supports custom output sizes to adapt to different platforms and devices.
 //
 // ## Effect comparison
 //
@@ -2250,25 +2251,25 @@ func (client *Client) ImageCropping(request *ImageCroppingRequest) (_result *Ima
 
 // Summary:
 //
-// Identifies the salient subject in an image, separates the subject from the background, and returns the subject image with the background removed. This feature also provides multiple background options and custom size options to optimize product display effects. (Synchronous)
+// Identifies salient subjects in images, separates them from the background, and returns the subject images with the background removed. This product also provides multiple background options and custom size options to optimize product display. (Synchronous)
 //
 // Description:
 //
 // ## Product introduction
 //
-// The intelligent image matting feature automatically identifies the salient subject in an image, separates the subject from the background, and returns the subject image with the background removed. It also provides multiple background options and custom size options to optimize product display effects. (Synchronous)
+// The intelligent image matting product automatically identifies salient subjects in images, separates the subjects from the background, and returns the subject images with the background removed. It also provides multiple background options and custom size options to optimize product display. (Synchronous)
 //
 // ## Scenarios
 //
-//   - **Support secondary editing of materials**: After separating the image subject from the background, you can further edit the image.
+//   - **Supports secondary editing of materials**: After separating the image subject from the background, users can further edit the image.
 //
-//   - **Improve material processing efficiency**: Quickly extract the subjects from various material images to facilitate background replacement, thereby improving the production efficiency of advertising images and marketing posters.
+//   - **Improves material processing efficiency**: Quickly extracts the subjects of various material images to facilitate background replacement, thereby improving the production efficiency of advertising images and marketing posters.
 //
-// ## Features.
+// ## Features
 //
-// #### 1. One-click accurate subject identification
+// #### 1. One-click accurate subject recognition
 //
-//   - **Automatic AI identification**: Based on deep learning models, it intelligently distinguishes foreground subjects (such as portraits, products, and objects) from the background without manual outlining.
+//   - **AI-based automatic recognition**: Based on deep learning models, it intelligently distinguishes foreground subjects (portraits, products, objects, etc.) from the background without manual outlining.
 //
 //   - **Multi-scenario adaptation**: Supports accurate segmentation in complex scenarios (such as hair, transparent objects, and fur edges) with an accuracy rate of over 95%.
 //
@@ -2278,9 +2279,9 @@ func (client *Client) ImageCropping(request *ImageCroppingRequest) (_result *Ima
 //
 // #### 3. Multi-format output and background operations
 //
-//   - **Transparent background export**: Directly generates PNG images with transparent backgrounds and white backgrounds, adapting to e-commerce and design scenarios.
+//   - **Transparent background export**: Directly generates PNG images with transparent backgrounds and white backgrounds, adapting to e-commerce, design, and other scenarios.
 //
-//   - **Custom background color support**: Supports custom background colors.
+//   - **Supports custom background colors**.
 //
 // ## Effect comparison
 //
@@ -2352,25 +2353,25 @@ func (client *Client) ImageMattingWithOptions(request *ImageMattingRequest, runt
 
 // Summary:
 //
-// Identifies the salient subject in an image, separates the subject from the background, and returns the subject image with the background removed. This feature also provides multiple background options and custom size options to optimize product display effects. (Synchronous)
+// Identifies salient subjects in images, separates them from the background, and returns the subject images with the background removed. This product also provides multiple background options and custom size options to optimize product display. (Synchronous)
 //
 // Description:
 //
 // ## Product introduction
 //
-// The intelligent image matting feature automatically identifies the salient subject in an image, separates the subject from the background, and returns the subject image with the background removed. It also provides multiple background options and custom size options to optimize product display effects. (Synchronous)
+// The intelligent image matting product automatically identifies salient subjects in images, separates the subjects from the background, and returns the subject images with the background removed. It also provides multiple background options and custom size options to optimize product display. (Synchronous)
 //
 // ## Scenarios
 //
-//   - **Support secondary editing of materials**: After separating the image subject from the background, you can further edit the image.
+//   - **Supports secondary editing of materials**: After separating the image subject from the background, users can further edit the image.
 //
-//   - **Improve material processing efficiency**: Quickly extract the subjects from various material images to facilitate background replacement, thereby improving the production efficiency of advertising images and marketing posters.
+//   - **Improves material processing efficiency**: Quickly extracts the subjects of various material images to facilitate background replacement, thereby improving the production efficiency of advertising images and marketing posters.
 //
-// ## Features.
+// ## Features
 //
-// #### 1. One-click accurate subject identification
+// #### 1. One-click accurate subject recognition
 //
-//   - **Automatic AI identification**: Based on deep learning models, it intelligently distinguishes foreground subjects (such as portraits, products, and objects) from the background without manual outlining.
+//   - **AI-based automatic recognition**: Based on deep learning models, it intelligently distinguishes foreground subjects (portraits, products, objects, etc.) from the background without manual outlining.
 //
 //   - **Multi-scenario adaptation**: Supports accurate segmentation in complex scenarios (such as hair, transparent objects, and fur edges) with an accuracy rate of over 95%.
 //
@@ -2380,9 +2381,9 @@ func (client *Client) ImageMattingWithOptions(request *ImageMattingRequest, runt
 //
 // #### 3. Multi-format output and background operations
 //
-//   - **Transparent background export**: Directly generates PNG images with transparent backgrounds and white backgrounds, adapting to e-commerce and design scenarios.
+//   - **Transparent background export**: Directly generates PNG images with transparent backgrounds and white backgrounds, adapting to e-commerce, design, and other scenarios.
 //
-//   - **Custom background color support**: Supports custom background colors.
+//   - **Supports custom background colors**.
 //
 // ## Effect comparison
 //
@@ -2412,7 +2413,7 @@ func (client *Client) ImageMatting(request *ImageMattingRequest) (_result *Image
 
 // Summary:
 //
-// Automatically identifies the salient subject in an image, separates the subject from the background, and returns the subject image with the background removed. This operation also provides multiple background options and custom size options to optimize product displays.
+// Automatically identifies the salient subject in an image, separates the subject from the background, and returns the subject image with the background removed. It also provides multiple background options and custom size options to optimize product display.
 //
 // Description:
 //
@@ -2424,11 +2425,11 @@ func (client *Client) ImageMatting(request *ImageMattingRequest) (_result *Image
 //
 // # Features.
 //
-// #### 1. One-click accurate subject recognition
+// #### 1. One-click precise subject recognition
 //
 //   - **AI-based automatic recognition**: Based on deep learning models, it intelligently distinguishes foreground subjects (portraits, products, objects, etc.) from the background without manual outlining.
 //
-//   - **Multi-scenario adaptation**: Supports accurate segmentation in complex scenarios (such as hair, transparent objects, and fur edges) with an accuracy rate of over 95%.
+//   - **Multi-scenario adaptation**: Supports precise segmentation in complex scenarios (such as hair, transparent objects, and fur edges) with an accuracy rate of over 95%.
 //
 // #### 2. Intelligent edge optimization
 //
@@ -2514,7 +2515,7 @@ func (client *Client) ImageMattingAsyncWithOptions(request *ImageMattingAsyncReq
 
 // Summary:
 //
-// Automatically identifies the salient subject in an image, separates the subject from the background, and returns the subject image with the background removed. This operation also provides multiple background options and custom size options to optimize product displays.
+// Automatically identifies the salient subject in an image, separates the subject from the background, and returns the subject image with the background removed. It also provides multiple background options and custom size options to optimize product display.
 //
 // Description:
 //
@@ -2526,11 +2527,11 @@ func (client *Client) ImageMattingAsyncWithOptions(request *ImageMattingAsyncReq
 //
 // # Features.
 //
-// #### 1. One-click accurate subject recognition
+// #### 1. One-click precise subject recognition
 //
 //   - **AI-based automatic recognition**: Based on deep learning models, it intelligently distinguishes foreground subjects (portraits, products, objects, etc.) from the background without manual outlining.
 //
-//   - **Multi-scenario adaptation**: Supports accurate segmentation in complex scenarios (such as hair, transparent objects, and fur edges) with an accuracy rate of over 95%.
+//   - **Multi-scenario adaptation**: Supports precise segmentation in complex scenarios (such as hair, transparent objects, and fur edges) with an accuracy rate of over 95%.
 //
 // #### 2. Intelligent edge optimization
 //
@@ -2574,23 +2575,23 @@ func (client *Client) ImageMattingAsync(request *ImageMattingAsyncRequest) (_res
 //
 // Description:
 //
-// ## Product Introduction
+// ## Product introduction
 //
-// The intelligent element recognition API is designed specifically for recognizing specific elements in e-commerce images. It deeply analyzes image details to help users quickly identify elements such as text, logos, watermarks, and text-containing color blocks in the main subject and background of an image, greatly improving the efficiency and accuracy of image filtering. (Synchronous)
+// The Intelligent Element Recognition API is designed specifically for identifying specific elements in e-commerce images. It delves into image details to help users quickly identify elements such as text, logos, watermarks, and text-containing color blocks in the main subject and background of an image, greatly improving the efficiency and accuracy of image filtering. (Synchronous)
 //
 // ## Scenarios
 //
 // **1. Intelligent image filtering and optimization:**
 //
-// Merchants and platforms can use the intelligent element recognition API to filter images and automatically identify images containing specific elements such as watermarks and logos. After filtering, you can further call the intelligent elimination API to optimize these images, improve image quality, and shorten the product release cycle.
+// Merchants and platforms can use the Intelligent Element Recognition API for image filtering to automatically identify images containing specific elements such as watermarks and logos. After filtering, you can further call the Intelligent Erasure API to optimize these images, improve image quality, and shorten the product release cycle.
 //
 // **2. Automated image processing and efficiency improvement:**
 //
-// Through the intelligent element recognition API, merchants and platforms can automate the image processing workflow to automatically identify and mark image elements that need optimization. This workflow reduces manual intervention and improves image processing efficiency.
+// Through the Intelligent Element Recognition API, merchants and platforms can automate the image processing workflow by automatically identifying and marking image elements that require optimization. This workflow reduces manual intervention and improves image processing efficiency.
 //
 // ## Features
 //
-// **1. Definitions of image subject, image background, text, logo, watermark, and text-containing color block: For details, see the relevant examples in the elimination documentation (reserved text link).**
+// **1. Definitions of image subject, image background, text, logo, watermark, and text-containing color block: For details, see the relevant examples in the erasure documentation (reserved text link).**
 //
 //   - Image subject: The core product area in the image.
 //
@@ -2598,25 +2599,25 @@ func (client *Client) ImageMattingAsync(request *ImageMattingAsyncRequest) (_res
 //
 //   - Text: Horizontal, vertical, or slanted English or Chinese text.
 //
-//   - Logo: Logos or trademarks.
+//   - Logo: A logo or trademark.
 //
-//   - Watermark: Monochrome transparent text, logos, images, URLs, store names, etc.
+//   - Watermark: Monochrome and transparent text, logos, images, URLs, or store names.
 //
-//   - Text-containing color block: Color blocks containing text outside the subject.
+//   - Text-containing color block: Color blocks containing text outside the main subject.
 //
-// **2. The features of the intelligent element recognition API mainly include:**
+// **2. The main features of the Intelligent Element Recognition API include:**
 //
 //   - Element recognition: Identifies whether elements such as text, logos, watermarks, and text-containing color blocks exist in the image subject and background.
 //
-//   - Workflow collaboration: Used in combination with the intelligent elimination API. First, the intelligent element recognition API identifies the elements to be removed, and then the intelligent elimination API effectively removes them to ensure the accuracy and efficiency of image processing.
+//   - Workflow collaboration: Used in combination with the Intelligent Erasure API. The Intelligent Element Recognition API first identifies the elements to be removed, and then the Intelligent Erasure API effectively removes them to ensure the accuracy and efficiency of image processing.
 //
-// ## Technical advantages
+// ## Benefits
 //
-//   - Synchronous batch processing: As a synchronous API, the intelligent element recognition API can process a large number of images while maintaining fast response, adapting to business needs of different scales.
+//   - Synchronous batch processing: As a synchronous API, the Intelligent Element Recognition API can process a large number of images while maintaining fast response times, adapting to business needs of different scales.
 //
-//   - Flexibility: Users can select the types of elements to be recognized as needed, including elements in the subject and non-subject areas, such as watermarks, logos, and text, to meet personalized recognition needs.
+//   - Flexibility: Users can select the types of elements to be identified as needed, including elements in the subject and non-subject areas, such as watermarks, logos, and text, to meet personalized recognition needs.
 //
-// ## Result comparison
+// ## Effect comparison
 //
 // | **Original image*	- | **Recognition result*	- |
 //
@@ -2746,23 +2747,23 @@ func (client *Client) ImageRecognitionWithOptions(tmpReq *ImageRecognitionReques
 //
 // Description:
 //
-// ## Product Introduction
+// ## Product introduction
 //
-// The intelligent element recognition API is designed specifically for recognizing specific elements in e-commerce images. It deeply analyzes image details to help users quickly identify elements such as text, logos, watermarks, and text-containing color blocks in the main subject and background of an image, greatly improving the efficiency and accuracy of image filtering. (Synchronous)
+// The Intelligent Element Recognition API is designed specifically for identifying specific elements in e-commerce images. It delves into image details to help users quickly identify elements such as text, logos, watermarks, and text-containing color blocks in the main subject and background of an image, greatly improving the efficiency and accuracy of image filtering. (Synchronous)
 //
 // ## Scenarios
 //
 // **1. Intelligent image filtering and optimization:**
 //
-// Merchants and platforms can use the intelligent element recognition API to filter images and automatically identify images containing specific elements such as watermarks and logos. After filtering, you can further call the intelligent elimination API to optimize these images, improve image quality, and shorten the product release cycle.
+// Merchants and platforms can use the Intelligent Element Recognition API for image filtering to automatically identify images containing specific elements such as watermarks and logos. After filtering, you can further call the Intelligent Erasure API to optimize these images, improve image quality, and shorten the product release cycle.
 //
 // **2. Automated image processing and efficiency improvement:**
 //
-// Through the intelligent element recognition API, merchants and platforms can automate the image processing workflow to automatically identify and mark image elements that need optimization. This workflow reduces manual intervention and improves image processing efficiency.
+// Through the Intelligent Element Recognition API, merchants and platforms can automate the image processing workflow by automatically identifying and marking image elements that require optimization. This workflow reduces manual intervention and improves image processing efficiency.
 //
 // ## Features
 //
-// **1. Definitions of image subject, image background, text, logo, watermark, and text-containing color block: For details, see the relevant examples in the elimination documentation (reserved text link).**
+// **1. Definitions of image subject, image background, text, logo, watermark, and text-containing color block: For details, see the relevant examples in the erasure documentation (reserved text link).**
 //
 //   - Image subject: The core product area in the image.
 //
@@ -2770,25 +2771,25 @@ func (client *Client) ImageRecognitionWithOptions(tmpReq *ImageRecognitionReques
 //
 //   - Text: Horizontal, vertical, or slanted English or Chinese text.
 //
-//   - Logo: Logos or trademarks.
+//   - Logo: A logo or trademark.
 //
-//   - Watermark: Monochrome transparent text, logos, images, URLs, store names, etc.
+//   - Watermark: Monochrome and transparent text, logos, images, URLs, or store names.
 //
-//   - Text-containing color block: Color blocks containing text outside the subject.
+//   - Text-containing color block: Color blocks containing text outside the main subject.
 //
-// **2. The features of the intelligent element recognition API mainly include:**
+// **2. The main features of the Intelligent Element Recognition API include:**
 //
 //   - Element recognition: Identifies whether elements such as text, logos, watermarks, and text-containing color blocks exist in the image subject and background.
 //
-//   - Workflow collaboration: Used in combination with the intelligent elimination API. First, the intelligent element recognition API identifies the elements to be removed, and then the intelligent elimination API effectively removes them to ensure the accuracy and efficiency of image processing.
+//   - Workflow collaboration: Used in combination with the Intelligent Erasure API. The Intelligent Element Recognition API first identifies the elements to be removed, and then the Intelligent Erasure API effectively removes them to ensure the accuracy and efficiency of image processing.
 //
-// ## Technical advantages
+// ## Benefits
 //
-//   - Synchronous batch processing: As a synchronous API, the intelligent element recognition API can process a large number of images while maintaining fast response, adapting to business needs of different scales.
+//   - Synchronous batch processing: As a synchronous API, the Intelligent Element Recognition API can process a large number of images while maintaining fast response times, adapting to business needs of different scales.
 //
-//   - Flexibility: Users can select the types of elements to be recognized as needed, including elements in the subject and non-subject areas, such as watermarks, logos, and text, to meet personalized recognition needs.
+//   - Flexibility: Users can select the types of elements to be identified as needed, including elements in the subject and non-subject areas, such as watermarks, logos, and text, to meet personalized recognition needs.
 //
-// ## Result comparison
+// ## Effect comparison
 //
 // | **Original image*	- | **Recognition result*	- |
 //
@@ -2850,7 +2851,7 @@ func (client *Client) ImageRecognition(request *ImageRecognitionRequest) (_resul
 
 // Summary:
 //
-// Identifies specific elements in e-commerce images. This API extracts image details to help users quickly identify text, logos, watermarks, and text-containing color blocks in the main subject and background, significantly improving the efficiency and accuracy of image filtering.
+// Identifies specific elements in e-commerce images. It extracts image details to help users quickly identify text, logos, watermarks, and text-containing color blocks in the main subject and background, significantly improving the efficiency and accuracy of image filtering.
 //
 // Description:
 //
@@ -2864,7 +2865,7 @@ func (client *Client) ImageRecognition(request *ImageRecognitionRequest) (_resul
 //
 // Through the intelligent element recognition API, merchants and platforms can automate the image processing workflow and automatically identify and mark image elements that need to be optimized. This workflow reduces manual intervention and improves the efficiency of image processing.
 //
-// # Feature description
+// # Features
 //
 // **1. Definitions of image subject, image background, text, logo, watermark, and text-containing color block: For details, see the relevant examples in the elimination documentation (reserved text link).**
 //
@@ -2872,19 +2873,19 @@ func (client *Client) ImageRecognition(request *ImageRecognitionRequest) (_resul
 //
 //   - Image background: The rest of the image other than the product subject.
 //
-//   - Text: Horizontal, vertical, or slanted English or Chinese text.
+//   - Text: Horizontal, vertical, or diagonal English or Chinese text.
 //
 //   - Logo: A logo or trademark.
 //
 //   - Watermark: Monochrome transparent text, logos, images, URLs, store names, etc.
 //
-//   - Text-containing color block: A color block containing text outside the main subject.
+//   - Text-containing color block: A color block containing text outside the subject.
 //
-// **2. The intelligent element recognition API provides the following features:**
+// **2. The features of the intelligent element recognition API mainly include:**
 //
 //   - Element recognition: Identifies whether elements such as text, logos, watermarks, and text-containing color blocks exist in the image subject and background.
 //
-//   - Workflow collaboration: Used in combination with the intelligent elimination API. The intelligent element recognition API first identifies the elements to be removed, and then the intelligent elimination API effectively removes them to ensure the accuracy and efficiency of image processing.
+//   - Workflow collaboration: Used in combination with the intelligent elimination API. First, the intelligent element recognition API identifies the elements to be removed, and then the intelligent elimination API effectively removes them to ensure the accuracy and efficiency of image processing.
 //
 // **3. Technical advantages:**
 //
@@ -3022,7 +3023,7 @@ func (client *Client) ImageRecognitionAsyncWithOptions(tmpReq *ImageRecognitionA
 
 // Summary:
 //
-// Identifies specific elements in e-commerce images. This API extracts image details to help users quickly identify text, logos, watermarks, and text-containing color blocks in the main subject and background, significantly improving the efficiency and accuracy of image filtering.
+// Identifies specific elements in e-commerce images. It extracts image details to help users quickly identify text, logos, watermarks, and text-containing color blocks in the main subject and background, significantly improving the efficiency and accuracy of image filtering.
 //
 // Description:
 //
@@ -3036,7 +3037,7 @@ func (client *Client) ImageRecognitionAsyncWithOptions(tmpReq *ImageRecognitionA
 //
 // Through the intelligent element recognition API, merchants and platforms can automate the image processing workflow and automatically identify and mark image elements that need to be optimized. This workflow reduces manual intervention and improves the efficiency of image processing.
 //
-// # Feature description
+// # Features
 //
 // **1. Definitions of image subject, image background, text, logo, watermark, and text-containing color block: For details, see the relevant examples in the elimination documentation (reserved text link).**
 //
@@ -3044,19 +3045,19 @@ func (client *Client) ImageRecognitionAsyncWithOptions(tmpReq *ImageRecognitionA
 //
 //   - Image background: The rest of the image other than the product subject.
 //
-//   - Text: Horizontal, vertical, or slanted English or Chinese text.
+//   - Text: Horizontal, vertical, or diagonal English or Chinese text.
 //
 //   - Logo: A logo or trademark.
 //
 //   - Watermark: Monochrome transparent text, logos, images, URLs, store names, etc.
 //
-//   - Text-containing color block: A color block containing text outside the main subject.
+//   - Text-containing color block: A color block containing text outside the subject.
 //
-// **2. The intelligent element recognition API provides the following features:**
+// **2. The features of the intelligent element recognition API mainly include:**
 //
 //   - Element recognition: Identifies whether elements such as text, logos, watermarks, and text-containing color blocks exist in the image subject and background.
 //
-//   - Workflow collaboration: Used in combination with the intelligent elimination API. The intelligent element recognition API first identifies the elements to be removed, and then the intelligent elimination API effectively removes them to ensure the accuracy and efficiency of image processing.
+//   - Workflow collaboration: Used in combination with the intelligent elimination API. First, the intelligent element recognition API identifies the elements to be removed, and then the intelligent elimination API effectively removes them to ensure the accuracy and efficiency of image processing.
 //
 // **3. Technical advantages:**
 //
@@ -3126,43 +3127,43 @@ func (client *Client) ImageRecognitionAsync(request *ImageRecognitionAsyncReques
 
 // Summary:
 //
-// Intelligently removes unwanted elements from e-commerce images. Tailored for e-commerce scenarios, it automatically identifies and removes text, specific names, transparent text blocks, and watermarks. You can specify objects to remove on demand to efficiently and accurately process large image batches and simplify image editing in synchronous or asynchronous mode.
+// Removes unwanted elements from e-commerce images by automatically identifying and eliminating text, specific names, transparent text blocks, and watermarks. Allows you to specify objects to remove as needed to efficiently and accurately process large batches of images and simplify image editing in synchronous or asynchronous mode.
 //
 // Description:
 //
-// ## Product Introduction
+// ## Product introduction
 //
-// The intelligent image object removal product is customized for e-commerce images. It automatically identifies and removes text, specific names, transparent text blocks, and intrusive text overlays from e-commerce images. You can specify objects to be removed as needed to efficiently and accurately process large batches of images and simplify image editing. Supports synchronous and asynchronous modes.
+// The intelligent image removal product is customized for e-commerce images. It automatically identifies and removes text, specific names, transparent text blocks, and watermarks. You can specify objects to remove as needed to efficiently and accurately process large batches of images and simplify image editing. (Synchronous/asynchronous)
 //
 // ## Scenarios
 //
 //   - **Efficient processing of e-commerce images:**
 //
-// Removes irrelevant visual elements to provide clearer and more focused product displays, enhancing the customer shopping experience.
+// Clears irrelevant visual elements to provide clearer and more focused product displays, enhancing the shopping experience for customers.
 //
-//   - **Product information synchronization across multiple platforms:**
+//   - **Multi-platform product information synchronization:**
 //
-// When merchants list products on different e-commerce platforms, they can quickly remove specific text and intrusive text overlays to comply with the image specifications of different platforms.
+// When merchants synchronize product listings across different e-commerce platforms, they can quickly remove specific text and watermarks to comply with the image specifications of different platforms.
 //
 // ## Features
 //
-// 1.  First, clarify the definitions of the image subject and the image background. In actual use, when specifying the objects to be removed, you can choose the removal scope to be the image subject or the image background area. Both API and editor integration methods are supported to meet different types of requirements.
+// 1.  First, clarify the definitions of the image subject and the image background. In actual use, when specifying the objects to remove, you can select the removal scope as either the image subject or the image background area. Both API and editor integration methods are supported to meet different types of requirements.
 //
 //  1. Image subject: the core product area in the image.
 //
-//  2. Image background: the rest of the image other than the product subject.
+//  2. Image background: the rest of the image excluding the product subject.
 //
-// 2.  Second, the objects to be removed support the following four types: text, specific names, transparent text blocks, and intrusive text overlays. You can refer to the following examples to clarify your usage requirements and perform targeted operations:
+// 2.  Second, the objects to be removed support the following four types: text, specific names, transparent text blocks, and watermarks. You can refer to the following examples to clarify your usage requirements and perform targeted operations:
 //
-// ## Result comparison
+// ## Effect comparison
 //
-// | **Original image*	- | **Image after removal*	- |
+// | **Original image*	- | **Processed image*	- |
 //
 // | --- | --- |
 //
 // | ![Main image 1 - Leopard print large capacity millennium single shoulder crossbody canvas bag.jpeg](https://alidocs.oss-cn-zhangjiakou.aliyuncs.com/res/AJdl65AyryVZyOke/img/4bd2c812-ed3c-45da-8a86-ebd29102f4b1.jpeg) | ![image.png](https://alidocs.oss-cn-zhangjiakou.aliyuncs.com/res/5VLqXLbGJZd3VqX1/img/eff0eb1b-36df-431d-a010-3bb3b7348ff9.png) |
 //
-// | ![Main image 1 - Handled ultra-short half-cover round-head French false nails.jpeg](https://alidocs.oss-cn-zhangjiakou.aliyuncs.com/res/5VLqXLbGJZd3VqX1/img/c44ac17b-3fa4-4a6f-b411-90f1062b183b.jpeg) | ![image.png](https://alidocs.oss-cn-zhangjiakou.aliyuncs.com/res/5VLqXLbGJZd3VqX1/img/af779684-4aa5-49b0-8668-34ab8bd4bcc1.png) |
+// | ![Main image 1 - Handled ultra-short half-cover round-tip French press-on nails.jpeg](https://alidocs.oss-cn-zhangjiakou.aliyuncs.com/res/5VLqXLbGJZd3VqX1/img/c44ac17b-3fa4-4a6f-b411-90f1062b183b.jpeg) | ![image.png](https://alidocs.oss-cn-zhangjiakou.aliyuncs.com/res/5VLqXLbGJZd3VqX1/img/af779684-4aa5-49b0-8668-34ab8bd4bcc1.png) |
 //
 // @param request - ImageRemovalProRequest
 //
@@ -3210,43 +3211,43 @@ func (client *Client) ImageRemovalProWithOptions(request *ImageRemovalProRequest
 
 // Summary:
 //
-// Intelligently removes unwanted elements from e-commerce images. Tailored for e-commerce scenarios, it automatically identifies and removes text, specific names, transparent text blocks, and watermarks. You can specify objects to remove on demand to efficiently and accurately process large image batches and simplify image editing in synchronous or asynchronous mode.
+// Removes unwanted elements from e-commerce images by automatically identifying and eliminating text, specific names, transparent text blocks, and watermarks. Allows you to specify objects to remove as needed to efficiently and accurately process large batches of images and simplify image editing in synchronous or asynchronous mode.
 //
 // Description:
 //
-// ## Product Introduction
+// ## Product introduction
 //
-// The intelligent image object removal product is customized for e-commerce images. It automatically identifies and removes text, specific names, transparent text blocks, and intrusive text overlays from e-commerce images. You can specify objects to be removed as needed to efficiently and accurately process large batches of images and simplify image editing. Supports synchronous and asynchronous modes.
+// The intelligent image removal product is customized for e-commerce images. It automatically identifies and removes text, specific names, transparent text blocks, and watermarks. You can specify objects to remove as needed to efficiently and accurately process large batches of images and simplify image editing. (Synchronous/asynchronous)
 //
 // ## Scenarios
 //
 //   - **Efficient processing of e-commerce images:**
 //
-// Removes irrelevant visual elements to provide clearer and more focused product displays, enhancing the customer shopping experience.
+// Clears irrelevant visual elements to provide clearer and more focused product displays, enhancing the shopping experience for customers.
 //
-//   - **Product information synchronization across multiple platforms:**
+//   - **Multi-platform product information synchronization:**
 //
-// When merchants list products on different e-commerce platforms, they can quickly remove specific text and intrusive text overlays to comply with the image specifications of different platforms.
+// When merchants synchronize product listings across different e-commerce platforms, they can quickly remove specific text and watermarks to comply with the image specifications of different platforms.
 //
 // ## Features
 //
-// 1.  First, clarify the definitions of the image subject and the image background. In actual use, when specifying the objects to be removed, you can choose the removal scope to be the image subject or the image background area. Both API and editor integration methods are supported to meet different types of requirements.
+// 1.  First, clarify the definitions of the image subject and the image background. In actual use, when specifying the objects to remove, you can select the removal scope as either the image subject or the image background area. Both API and editor integration methods are supported to meet different types of requirements.
 //
 //  1. Image subject: the core product area in the image.
 //
-//  2. Image background: the rest of the image other than the product subject.
+//  2. Image background: the rest of the image excluding the product subject.
 //
-// 2.  Second, the objects to be removed support the following four types: text, specific names, transparent text blocks, and intrusive text overlays. You can refer to the following examples to clarify your usage requirements and perform targeted operations:
+// 2.  Second, the objects to be removed support the following four types: text, specific names, transparent text blocks, and watermarks. You can refer to the following examples to clarify your usage requirements and perform targeted operations:
 //
-// ## Result comparison
+// ## Effect comparison
 //
-// | **Original image*	- | **Image after removal*	- |
+// | **Original image*	- | **Processed image*	- |
 //
 // | --- | --- |
 //
 // | ![Main image 1 - Leopard print large capacity millennium single shoulder crossbody canvas bag.jpeg](https://alidocs.oss-cn-zhangjiakou.aliyuncs.com/res/AJdl65AyryVZyOke/img/4bd2c812-ed3c-45da-8a86-ebd29102f4b1.jpeg) | ![image.png](https://alidocs.oss-cn-zhangjiakou.aliyuncs.com/res/5VLqXLbGJZd3VqX1/img/eff0eb1b-36df-431d-a010-3bb3b7348ff9.png) |
 //
-// | ![Main image 1 - Handled ultra-short half-cover round-head French false nails.jpeg](https://alidocs.oss-cn-zhangjiakou.aliyuncs.com/res/5VLqXLbGJZd3VqX1/img/c44ac17b-3fa4-4a6f-b411-90f1062b183b.jpeg) | ![image.png](https://alidocs.oss-cn-zhangjiakou.aliyuncs.com/res/5VLqXLbGJZd3VqX1/img/af779684-4aa5-49b0-8668-34ab8bd4bcc1.png) |
+// | ![Main image 1 - Handled ultra-short half-cover round-tip French press-on nails.jpeg](https://alidocs.oss-cn-zhangjiakou.aliyuncs.com/res/5VLqXLbGJZd3VqX1/img/c44ac17b-3fa4-4a6f-b411-90f1062b183b.jpeg) | ![image.png](https://alidocs.oss-cn-zhangjiakou.aliyuncs.com/res/5VLqXLbGJZd3VqX1/img/af779684-4aa5-49b0-8668-34ab8bd4bcc1.png) |
 //
 // @param request - ImageRemovalProRequest
 //
@@ -3264,7 +3265,7 @@ func (client *Client) ImageRemovalPro(request *ImageRemovalProRequest) (_result 
 
 // Summary:
 //
-// Provides intelligent image erasure tailored for e-commerce images, automatically identifying and removing text, specific names, transparent text blocks, and unwanted overlays. It allows you to specify objects to remove as needed, enabling efficient and precise processing of large image batches and simplifying image editing workflows.
+// Intelligently removes unwanted elements from e-commerce images by automatically identifying and erasing text, specific names, transparent text blocks, and intrusive watermarks. It supports on-demand object removal, enabling efficient and accurate processing of large image batches and simplifying image editing.
 //
 // Description:
 //
@@ -3276,19 +3277,19 @@ func (client *Client) ImageRemovalPro(request *ImageRemovalProRequest) (_result 
 //
 //   - **Synchronization of product information across multiple platforms:**
 //
-//     When merchants list products on different e-commerce platforms, they can quickly remove specific text and watermarks to comply with the image specifications of different platforms.
+//     When merchants list products on different e-commerce platforms, they can quickly remove specific text and promotional text to comply with the image specifications of different platforms.
 //
 // ## Features
 //
-// 1.  First, clarify the definitions of the image subject and the image background. When specifying the objects to remove, you can choose to remove them from the image subject or the image background. Both API and editor integration methods are supported.
+// 1.  First, clarify the definitions of the image subject and the image background. In actual use, when specifying the object to remove, you can choose whether the removal scope is the image subject or the image background. Both API and editor integration methods are supported to meet different requirements.
 //
-//  1. Image subject: The core product area in the image.
+//  1. Image subject: the core product area in the image.
 //
-//  2. Image background: The rest of the image excluding the product subject.
+//  2. Image background: the rest of the image other than the product subject.
 //
-// 2.  Second, the objects to be removed support the following four types: text, specific names, transparent text blocks, and watermarks. Refer to the following examples to clarify your requirements and perform targeted operations:
+// 2.  Second, the objects to be removed support the following four types: text, specific names, transparent text blocks, and promotional text. You can refer to the following examples to clarify your requirements and perform targeted operations:
 //
-// ## Before and after
+// ## Effect comparison
 //
 // | **Original image*	- | **Processed image*	- |
 //
@@ -3296,7 +3297,7 @@ func (client *Client) ImageRemovalPro(request *ImageRemovalProRequest) (_result 
 //
 // | ![Main image 1 - Leopard print large-capacity millennium single-shoulder crossbody canvas bag.jpeg](https://alidocs.oss-cn-zhangjiakou.aliyuncs.com/res/AJdl65AyryVZyOke/img/4bd2c812-ed3c-45da-8a86-ebd29102f4b1.jpeg) | ![image.png](https://alidocs.oss-cn-zhangjiakou.aliyuncs.com/res/5VLqXLbGJZd3VqX1/img/eff0eb1b-36df-431d-a010-3bb3b7348ff9.png) |
 //
-// | ![Main image 1 - Ultra-short half-cover round-head French false nails with handle.jpeg](https://alidocs.oss-cn-zhangjiakou.aliyuncs.com/res/5VLqXLbGJZd3VqX1/img/c44ac17b-3fa4-4a6f-b411-90f1062b183b.jpeg) | ![image.png](https://alidocs.oss-cn-zhangjiakou.aliyuncs.com/res/5VLqXLbGJZd3VqX1/img/af779684-4aa5-49b0-8668-34ab8bd4bcc1.png) |
+// | ![Main image 1 - Handled ultra-short half-cover round-tip French artificial nails.jpeg](https://alidocs.oss-cn-zhangjiakou.aliyuncs.com/res/5VLqXLbGJZd3VqX1/img/c44ac17b-3fa4-4a6f-b411-90f1062b183b.jpeg) | ![image.png](https://alidocs.oss-cn-zhangjiakou.aliyuncs.com/res/5VLqXLbGJZd3VqX1/img/af779684-4aa5-49b0-8668-34ab8bd4bcc1.png) |
 //
 // @param request - ImageRemovalProAsyncRequest
 //
@@ -3344,7 +3345,7 @@ func (client *Client) ImageRemovalProAsyncWithOptions(request *ImageRemovalProAs
 
 // Summary:
 //
-// Provides intelligent image erasure tailored for e-commerce images, automatically identifying and removing text, specific names, transparent text blocks, and unwanted overlays. It allows you to specify objects to remove as needed, enabling efficient and precise processing of large image batches and simplifying image editing workflows.
+// Intelligently removes unwanted elements from e-commerce images by automatically identifying and erasing text, specific names, transparent text blocks, and intrusive watermarks. It supports on-demand object removal, enabling efficient and accurate processing of large image batches and simplifying image editing.
 //
 // Description:
 //
@@ -3356,19 +3357,19 @@ func (client *Client) ImageRemovalProAsyncWithOptions(request *ImageRemovalProAs
 //
 //   - **Synchronization of product information across multiple platforms:**
 //
-//     When merchants list products on different e-commerce platforms, they can quickly remove specific text and watermarks to comply with the image specifications of different platforms.
+//     When merchants list products on different e-commerce platforms, they can quickly remove specific text and promotional text to comply with the image specifications of different platforms.
 //
 // ## Features
 //
-// 1.  First, clarify the definitions of the image subject and the image background. When specifying the objects to remove, you can choose to remove them from the image subject or the image background. Both API and editor integration methods are supported.
+// 1.  First, clarify the definitions of the image subject and the image background. In actual use, when specifying the object to remove, you can choose whether the removal scope is the image subject or the image background. Both API and editor integration methods are supported to meet different requirements.
 //
-//  1. Image subject: The core product area in the image.
+//  1. Image subject: the core product area in the image.
 //
-//  2. Image background: The rest of the image excluding the product subject.
+//  2. Image background: the rest of the image other than the product subject.
 //
-// 2.  Second, the objects to be removed support the following four types: text, specific names, transparent text blocks, and watermarks. Refer to the following examples to clarify your requirements and perform targeted operations:
+// 2.  Second, the objects to be removed support the following four types: text, specific names, transparent text blocks, and promotional text. You can refer to the following examples to clarify your requirements and perform targeted operations:
 //
-// ## Before and after
+// ## Effect comparison
 //
 // | **Original image*	- | **Processed image*	- |
 //
@@ -3376,7 +3377,7 @@ func (client *Client) ImageRemovalProAsyncWithOptions(request *ImageRemovalProAs
 //
 // | ![Main image 1 - Leopard print large-capacity millennium single-shoulder crossbody canvas bag.jpeg](https://alidocs.oss-cn-zhangjiakou.aliyuncs.com/res/AJdl65AyryVZyOke/img/4bd2c812-ed3c-45da-8a86-ebd29102f4b1.jpeg) | ![image.png](https://alidocs.oss-cn-zhangjiakou.aliyuncs.com/res/5VLqXLbGJZd3VqX1/img/eff0eb1b-36df-431d-a010-3bb3b7348ff9.png) |
 //
-// | ![Main image 1 - Ultra-short half-cover round-head French false nails with handle.jpeg](https://alidocs.oss-cn-zhangjiakou.aliyuncs.com/res/5VLqXLbGJZd3VqX1/img/c44ac17b-3fa4-4a6f-b411-90f1062b183b.jpeg) | ![image.png](https://alidocs.oss-cn-zhangjiakou.aliyuncs.com/res/5VLqXLbGJZd3VqX1/img/af779684-4aa5-49b0-8668-34ab8bd4bcc1.png) |
+// | ![Main image 1 - Handled ultra-short half-cover round-tip French artificial nails.jpeg](https://alidocs.oss-cn-zhangjiakou.aliyuncs.com/res/5VLqXLbGJZd3VqX1/img/c44ac17b-3fa4-4a6f-b411-90f1062b183b.jpeg) | ![image.png](https://alidocs.oss-cn-zhangjiakou.aliyuncs.com/res/5VLqXLbGJZd3VqX1/img/af779684-4aa5-49b0-8668-34ab8bd4bcc1.png) |
 //
 // @param request - ImageRemovalProAsyncRequest
 //
@@ -3394,51 +3395,51 @@ func (client *Client) ImageRemovalProAsync(request *ImageRemovalProAsyncRequest)
 
 // Summary:
 //
-// Intelligently removes unwanted elements from e-commerce images. This product automatically identifies and removes text, specific names, transparent text blocks, and image blemishes from e-commerce images. You can specify objects to remove as needed, enabling efficient and precise batch processing of large volumes of images and simplifying image editing workflows. (Synchronous)
+// Removes unwanted elements from e-commerce images by automatically identifying and erasing text, specific names, transparent text blocks, watermarks, and clutter, and allows you to specify objects to be removed on demand. This synchronous operation efficiently and accurately processes large batches of images to simplify image editing.
 //
 // Description:
 //
 // # Product Introduction
 //
-// The intelligent image removal product is designed specifically for e-commerce images. It automatically identifies and removes text, specific names, transparent text blocks, and image blemishes from e-commerce images. You can specify objects to remove as needed, enabling efficient and precise batch processing of large volumes of images and simplifying image editing workflows. (Synchronous)
+// The intelligent image object removal product is tailored for e-commerce images. It automatically identifies and removes text, specific names, transparent text blocks, and promotional stickers. You can specify objects to remove for efficient and accurate batch processing to simplify image editing. (Synchronous)
 //
-// # Common scenarios
+// # Scenarios
 //
 //   - **Efficient e-commerce image processing:**
 //
-// Remove irrelevant visual elements to provide clearer, more focused product displays and enhance the shopping experience.
+// Removes irrelevant visual elements to provide clearer and more focused product displays, enhancing the customer shopping experience.
 //
 //   - **Multi-platform product information synchronization:**
 //
-// When listing products across different e-commerce platforms, quickly remove specific text and image blemishes to comply with the image standards of each platform.
+// When listing products on different e-commerce platforms, merchants can quickly remove specific text and promotional stickers to comply with the image specifications of different platforms.
 //
 //   - **Marketing material preparation:**
 //
-// Easily remove existing promotional information and quickly update images with the latest campaign details.
+// Merchants can easily remove original promotional information and quickly update it with the latest campaign information.
 //
-// > Note: Merchants or platforms can batch-remove impurities from images to optimize image quality. Use this product together with the Intelligent Recognition API (coming soon). First, filter out images that contain text, specific names, transparent text blocks, and image blemishes, and then use the Intelligent Removal API for batch removal. The Intelligent Recognition API focuses on "recognition", while the Intelligent Removal API focuses on "removal". By calling them in sequence, you can maximize removal effectiveness and reduce false removals and false identifications.
+// > Note: Merchants or platforms can batch remove visual clutter from images to optimize image quality. Use this feature in combination with the Intelligent Recognition API (coming soon) to first filter images containing text, specific names, transparent text blocks, and promotional stickers, and then use the Intelligent Object Removal API for batch removal. The Intelligent Recognition API focuses on recognition, while the Intelligent Object Removal API focuses on removal. Calling them in sequence maximizes the removal effect and reduces false removals and false recognitions.
 //
 // # Features
 //
-// 1.  First, understand the definitions of image subject and image background. When specifying objects to remove, you can choose whether the removal scope is the image subject or the image background area. Both API and editor access methods are supported to meet different requirements.
+// 1.  First, clarify the definitions of the image subject and the image background. When specifying the objects to remove, choose the image subject or the image background area as the removal scope. Both API and editor integration methods are supported to meet different types of requirements.
 //
-//  1. Image subject: The core product area in the image.
+//  1. Image subject: the core product area in the image.
 //
-//  2. Image background: The remaining part of the image other than the product subject.
+//  2. Image background: the rest of the image excluding the product subject.
 //
-// 2.  The following three types of removal targets are supported:
+// 2.  Second, the following three scenarios are supported for object removal:
 //
-//  1. Select by type only. You can select text, specific names, transparent text blocks, and image blemishes. Refer to the following examples to clarify your requirements and perform targeted operations.
+//  1. The user only selects the type. Text, specific names, transparent text blocks, and promotional stickers are supported. Refer to the following examples to clarify your requirements and perform targeted operations.
 //
-//  2. (Upgrade) Specify images to remove. You can specify multiple images at a time.
+//  2. (Upgraded) Supports specifying image elements for removal. You can specify multiple image URLs at a time.
 //
-//  3. (Upgrade) Specify text to remove. You can specify multiple text strings at a time.
+//  3. (Upgraded) Supports specifying text for removal. You can specify multiple text strings at a time.
 //
-// Processing flow: User submits the original image URL → OCR + VLM model detects text or image positions → Determines the coordinates of areas to repair → AI repairs and generates a clean image → Returns the result image URL.
+// Processing flow: The user provides the original image URL → The OCR and VLM models detect the text or image position → The coordinates of the area to be inpainted are determined → AI inpainting generates a clean image → The result image URL is returned.
 //
-// # 4. Effect comparison
+// # Effect comparison
 //
-// | **Removable objects in images*	- | **Original image*	- | **Image after removal*	- |
+// | **Removable objects in the image*	- | **Original image*	- | **Processed image*	- |
 //
 // | --- | --- | --- |
 //
@@ -3490,7 +3491,7 @@ func (client *Client) ImageRemovalProAsync(request *ImageRemovalProAsyncRequest)
 //
 // ![b05173e7-2ae5-494e-99d2-7111fc966fd5.jpeg](https://alidocs.oss-cn-zhangjiakou.aliyuncs.com/res/Mp7ld7bZAb2VAOBQ/img/05759aef-1720-41cd-8800-f7d0801e4d95.jpeg) |
 //
-// | Image blemishes | 	- Involves the image subject area
+// | Promotional stickers | 	- Involves the image subject area
 //
 //	    ![2.jpeg](https://alidocs.oss-cn-zhangjiakou.aliyuncs.com/res/Mp7ld7bZAb2VAOBQ/img/bf1442f8-a9fa-40d3-bcb0-7a8a41b49b5d.jpeg)
 //
@@ -3506,7 +3507,7 @@ func (client *Client) ImageRemovalProAsync(request *ImageRemovalProAsyncRequest)
 //
 // ![dee0c7cf-8b0d-4d6d-9677-d5f2e6099834.jpeg](https://alidocs.oss-cn-zhangjiakou.aliyuncs.com/res/Mp7ld7bZAb2VAOBQ/img/caa6994b-2f97-484d-a807-671a0dc75947.jpeg) |
 //
-// | Specified image element removal (supports multiple image links) | ![image.png](https://alidocs.oss-cn-zhangjiakou.aliyuncs.com/res/Mp7ld7bZAb2VAOBQ/img/9297951f-53c1-4476-8c69-5c31df3fce21.png) | ![image.png](https://alidocs.oss-cn-zhangjiakou.aliyuncs.com/res/Mp7ld7bZAb2VAOBQ/img/ef3f35aa-609f-454c-bba0-dd1710c83945.png) |
+// | Specified image element removal (supports multiple image URLs) | ![image.png](https://alidocs.oss-cn-zhangjiakou.aliyuncs.com/res/Mp7ld7bZAb2VAOBQ/img/9297951f-53c1-4476-8c69-5c31df3fce21.png) | ![image.png](https://alidocs.oss-cn-zhangjiakou.aliyuncs.com/res/Mp7ld7bZAb2VAOBQ/img/ef3f35aa-609f-454c-bba0-dd1710c83945.png) |
 //
 // | Specified text removal (supports multiple text strings) | ![image.png](https://alidocs.oss-cn-zhangjiakou.aliyuncs.com/res/Mp7ld7bZAb2VAOBQ/img/c784d8be-4b4d-4972-8b99-828c742b8f03.png) | ![image.png](https://alidocs.oss-cn-zhangjiakou.aliyuncs.com/res/Mp7ld7bZAb2VAOBQ/img/805423ca-bd0d-4d44-a18e-a7d7bfe88587.png) |
 //
@@ -3594,51 +3595,51 @@ func (client *Client) ImageRemoveWithOptions(tmpReq *ImageRemoveRequest, runtime
 
 // Summary:
 //
-// Intelligently removes unwanted elements from e-commerce images. This product automatically identifies and removes text, specific names, transparent text blocks, and image blemishes from e-commerce images. You can specify objects to remove as needed, enabling efficient and precise batch processing of large volumes of images and simplifying image editing workflows. (Synchronous)
+// Removes unwanted elements from e-commerce images by automatically identifying and erasing text, specific names, transparent text blocks, watermarks, and clutter, and allows you to specify objects to be removed on demand. This synchronous operation efficiently and accurately processes large batches of images to simplify image editing.
 //
 // Description:
 //
 // # Product Introduction
 //
-// The intelligent image removal product is designed specifically for e-commerce images. It automatically identifies and removes text, specific names, transparent text blocks, and image blemishes from e-commerce images. You can specify objects to remove as needed, enabling efficient and precise batch processing of large volumes of images and simplifying image editing workflows. (Synchronous)
+// The intelligent image object removal product is tailored for e-commerce images. It automatically identifies and removes text, specific names, transparent text blocks, and promotional stickers. You can specify objects to remove for efficient and accurate batch processing to simplify image editing. (Synchronous)
 //
-// # Common scenarios
+// # Scenarios
 //
 //   - **Efficient e-commerce image processing:**
 //
-// Remove irrelevant visual elements to provide clearer, more focused product displays and enhance the shopping experience.
+// Removes irrelevant visual elements to provide clearer and more focused product displays, enhancing the customer shopping experience.
 //
 //   - **Multi-platform product information synchronization:**
 //
-// When listing products across different e-commerce platforms, quickly remove specific text and image blemishes to comply with the image standards of each platform.
+// When listing products on different e-commerce platforms, merchants can quickly remove specific text and promotional stickers to comply with the image specifications of different platforms.
 //
 //   - **Marketing material preparation:**
 //
-// Easily remove existing promotional information and quickly update images with the latest campaign details.
+// Merchants can easily remove original promotional information and quickly update it with the latest campaign information.
 //
-// > Note: Merchants or platforms can batch-remove impurities from images to optimize image quality. Use this product together with the Intelligent Recognition API (coming soon). First, filter out images that contain text, specific names, transparent text blocks, and image blemishes, and then use the Intelligent Removal API for batch removal. The Intelligent Recognition API focuses on "recognition", while the Intelligent Removal API focuses on "removal". By calling them in sequence, you can maximize removal effectiveness and reduce false removals and false identifications.
+// > Note: Merchants or platforms can batch remove visual clutter from images to optimize image quality. Use this feature in combination with the Intelligent Recognition API (coming soon) to first filter images containing text, specific names, transparent text blocks, and promotional stickers, and then use the Intelligent Object Removal API for batch removal. The Intelligent Recognition API focuses on recognition, while the Intelligent Object Removal API focuses on removal. Calling them in sequence maximizes the removal effect and reduces false removals and false recognitions.
 //
 // # Features
 //
-// 1.  First, understand the definitions of image subject and image background. When specifying objects to remove, you can choose whether the removal scope is the image subject or the image background area. Both API and editor access methods are supported to meet different requirements.
+// 1.  First, clarify the definitions of the image subject and the image background. When specifying the objects to remove, choose the image subject or the image background area as the removal scope. Both API and editor integration methods are supported to meet different types of requirements.
 //
-//  1. Image subject: The core product area in the image.
+//  1. Image subject: the core product area in the image.
 //
-//  2. Image background: The remaining part of the image other than the product subject.
+//  2. Image background: the rest of the image excluding the product subject.
 //
-// 2.  The following three types of removal targets are supported:
+// 2.  Second, the following three scenarios are supported for object removal:
 //
-//  1. Select by type only. You can select text, specific names, transparent text blocks, and image blemishes. Refer to the following examples to clarify your requirements and perform targeted operations.
+//  1. The user only selects the type. Text, specific names, transparent text blocks, and promotional stickers are supported. Refer to the following examples to clarify your requirements and perform targeted operations.
 //
-//  2. (Upgrade) Specify images to remove. You can specify multiple images at a time.
+//  2. (Upgraded) Supports specifying image elements for removal. You can specify multiple image URLs at a time.
 //
-//  3. (Upgrade) Specify text to remove. You can specify multiple text strings at a time.
+//  3. (Upgraded) Supports specifying text for removal. You can specify multiple text strings at a time.
 //
-// Processing flow: User submits the original image URL → OCR + VLM model detects text or image positions → Determines the coordinates of areas to repair → AI repairs and generates a clean image → Returns the result image URL.
+// Processing flow: The user provides the original image URL → The OCR and VLM models detect the text or image position → The coordinates of the area to be inpainted are determined → AI inpainting generates a clean image → The result image URL is returned.
 //
-// # 4. Effect comparison
+// # Effect comparison
 //
-// | **Removable objects in images*	- | **Original image*	- | **Image after removal*	- |
+// | **Removable objects in the image*	- | **Original image*	- | **Processed image*	- |
 //
 // | --- | --- | --- |
 //
@@ -3690,7 +3691,7 @@ func (client *Client) ImageRemoveWithOptions(tmpReq *ImageRemoveRequest, runtime
 //
 // ![b05173e7-2ae5-494e-99d2-7111fc966fd5.jpeg](https://alidocs.oss-cn-zhangjiakou.aliyuncs.com/res/Mp7ld7bZAb2VAOBQ/img/05759aef-1720-41cd-8800-f7d0801e4d95.jpeg) |
 //
-// | Image blemishes | 	- Involves the image subject area
+// | Promotional stickers | 	- Involves the image subject area
 //
 //	    ![2.jpeg](https://alidocs.oss-cn-zhangjiakou.aliyuncs.com/res/Mp7ld7bZAb2VAOBQ/img/bf1442f8-a9fa-40d3-bcb0-7a8a41b49b5d.jpeg)
 //
@@ -3706,7 +3707,7 @@ func (client *Client) ImageRemoveWithOptions(tmpReq *ImageRemoveRequest, runtime
 //
 // ![dee0c7cf-8b0d-4d6d-9677-d5f2e6099834.jpeg](https://alidocs.oss-cn-zhangjiakou.aliyuncs.com/res/Mp7ld7bZAb2VAOBQ/img/caa6994b-2f97-484d-a807-671a0dc75947.jpeg) |
 //
-// | Specified image element removal (supports multiple image links) | ![image.png](https://alidocs.oss-cn-zhangjiakou.aliyuncs.com/res/Mp7ld7bZAb2VAOBQ/img/9297951f-53c1-4476-8c69-5c31df3fce21.png) | ![image.png](https://alidocs.oss-cn-zhangjiakou.aliyuncs.com/res/Mp7ld7bZAb2VAOBQ/img/ef3f35aa-609f-454c-bba0-dd1710c83945.png) |
+// | Specified image element removal (supports multiple image URLs) | ![image.png](https://alidocs.oss-cn-zhangjiakou.aliyuncs.com/res/Mp7ld7bZAb2VAOBQ/img/9297951f-53c1-4476-8c69-5c31df3fce21.png) | ![image.png](https://alidocs.oss-cn-zhangjiakou.aliyuncs.com/res/Mp7ld7bZAb2VAOBQ/img/ef3f35aa-609f-454c-bba0-dd1710c83945.png) |
 //
 // | Specified text removal (supports multiple text strings) | ![image.png](https://alidocs.oss-cn-zhangjiakou.aliyuncs.com/res/Mp7ld7bZAb2VAOBQ/img/c784d8be-4b4d-4972-8b99-828c742b8f03.png) | ![image.png](https://alidocs.oss-cn-zhangjiakou.aliyuncs.com/res/Mp7ld7bZAb2VAOBQ/img/805423ca-bd0d-4d44-a18e-a7d7bfe88587.png) |
 //
@@ -3726,47 +3727,47 @@ func (client *Client) ImageRemove(request *ImageRemoveRequest) (_result *ImageRe
 
 // Summary:
 //
-// Provides intelligent object removal tailored for e-commerce images. It automatically identifies and removes text, specific names, transparent text blocks, and watermarks. You can also specify objects for removal as needed, enabling efficient and accurate processing of large image batches and simplifying image editing workflows.
+// Removes unwanted elements from e-commerce images by automatically identifying and erasing text, specific names, transparent text blocks, and watermarks. Supports specifying objects to remove for efficient and accurate batch processing to simplify image editing.
 //
 // Description:
 //
 // ## Scenarios
 //
-//   - **Efficient processing of e-commerce images:*	-
+//   - **Efficient e-commerce image processing:*	-
 //
 // Removes irrelevant visual elements to provide clearer and more focused product displays, enhancing the customer shopping experience.
 //
 //   - **Multi-platform product information synchronization:*	-
 //
-// When merchants list products on different e-commerce platforms, they can quickly remove specific text and watermarks to comply with the image specifications of different platforms.
+// When merchants synchronize product listings across different e-commerce platforms, they can quickly remove specific text and watermarks to comply with the image specifications of different platforms.
 //
 //   - **Marketing material preparation:*	-
 //
-// Merchants can easily remove original promotional information and quickly update it with the latest campaign information.
+// Merchants can easily remove existing promotional information and quickly update it with the latest campaign details.
 //
-// > Note: Merchants or platforms can remove impurities from images in batches to optimize image quality. Use this API in combination with the Intelligent Recognition API (coming soon) to first filter images containing text, specific names, transparent text blocks, and watermarks, and then use the Intelligent Erasure API for batch removal. The Intelligent Recognition API focuses on recognition, while the Intelligent Erasure API focuses on erasure. Calling them in sequence maximizes the erasure effect and reduces false removals and false recognitions.
+// > Note: Merchants or platforms can batch remove unwanted elements from images to optimize image quality. We recommend using this feature in combination with the Intelligent Recognition API (coming soon) to first filter images containing text, specific names, transparent text blocks, and watermarks, and then use the Intelligent Erasure API for batch removal. The Intelligent Recognition API focuses on recognition, while the Intelligent Erasure API focuses on erasure. By calling them in sequence, you can maximize the erasure effect and reduce false removals and false recognitions.
 //
 // ## Features
 //
-// 1.  First, clarify the definitions of the image subject and the image background. In actual use, when specifying the objects to remove, you can choose whether the removal scope is the image subject or the image background. Both API and editor integration methods are supported to meet different needs.
+// 1.  First, clarify the definitions of the image subject and the image background. In actual use, when specifying the objects to remove, you can choose whether the removal scope is the image subject or the image background area. Both API and editor integration methods are supported to meet different requirements.
 //
 //  1. Image subject: the core product area in the image.
 //
-//  2. Image background: the rest of the image other than the product subject.
+//  2. Image background: the rest of the image excluding the product subject.
 //
-// 2.  Second, the following three types of objects can be removed:
+// 2.  Second, the objects to remove support the following three cases:
 //
-//  1. Select by type: You can select text, specific names, transparent text blocks, and watermarks. Refer to the following examples to clarify your requirements and perform targeted operations.
+//  1. The user selects only the type. You can select text, specific names, transparent text blocks, and watermarks. You can clarify your usage requirements through the following examples for targeted operations.
 //
-//  2. (Upgraded) Specify images to remove: You can specify multiple images at a time.
+//  2. (Upgraded) Provides specified image erasure. You can specify multiple images at a time.
 //
-//  3. (Upgraded) Specify text to remove: You can specify multiple text strings at a time.
+//  3. (Upgraded) Provides specified text erasure. You can specify multiple text strings at a time.
 //
-// Processing flow: Pass the original image URL -> The OCR and VLM models detect text or image positions -> Determine the coordinates of the area to be inpainted -> AI inpainting generates a clean image -> Return the result image URL.
+// Processing flow: The user passes the original image URL → The OCR and VLM models detect the text or image position → Determine the coordinates of the area to be repaired → AI repairs and generates a clean image → Returns the result image URL.
 //
 // ## Effect comparison
 //
-// | **Objects that can be removed*	- | **Original image*	- | **Processed image*	- |
+// | **Objects that can be removed from the image*	- | **Original image*	- | **Image after erasure*	- |
 //
 // | --- | --- | --- |
 //
@@ -3834,9 +3835,9 @@ func (client *Client) ImageRemove(request *ImageRemoveRequest) (_result *ImageRe
 //
 // ![dee0c7cf-8b0d-4d6d-9677-d5f2e6099834.jpeg](https://alidocs.oss-cn-zhangjiakou.aliyuncs.com/res/Mp7ld7bZAb2VAOBQ/img/caa6994b-2f97-484d-a807-671a0dc75947.jpeg) |
 //
-// | Specified image element removal (supports multiple image URLs) | ![image.png](https://alidocs.oss-cn-zhangjiakou.aliyuncs.com/res/Mp7ld7bZAb2VAOBQ/img/9297951f-53c1-4476-8c69-5c31df3fce21.png) | ![image.png](https://alidocs.oss-cn-zhangjiakou.aliyuncs.com/res/Mp7ld7bZAb2VAOBQ/img/ef3f35aa-609f-454c-bba0-dd1710c83945.png) |
+// | Specified image element erasure (supports multiple image URLs) | ![image.png](https://alidocs.oss-cn-zhangjiakou.aliyuncs.com/res/Mp7ld7bZAb2VAOBQ/img/9297951f-53c1-4476-8c69-5c31df3fce21.png) | ![image.png](https://alidocs.oss-cn-zhangjiakou.aliyuncs.com/res/Mp7ld7bZAb2VAOBQ/img/ef3f35aa-609f-454c-bba0-dd1710c83945.png) |
 //
-// | Specified text removal (supports multiple text strings) | ![image.png](https://alidocs.oss-cn-zhangjiakou.aliyuncs.com/res/Mp7ld7bZAb2VAOBQ/img/c784d8be-4b4d-4972-8b99-828c742b8f03.png) | ![image.png](https://alidocs.oss-cn-zhangjiakou.aliyuncs.com/res/Mp7ld7bZAb2VAOBQ/img/805423ca-bd0d-4d44-a18e-a7d7bfe88587.png) |
+// | Specified text erasure (supports multiple text strings) | ![image.png](https://alidocs.oss-cn-zhangjiakou.aliyuncs.com/res/Mp7ld7bZAb2VAOBQ/img/c784d8be-4b4d-4972-8b99-828c742b8f03.png) | ![image.png](https://alidocs.oss-cn-zhangjiakou.aliyuncs.com/res/Mp7ld7bZAb2VAOBQ/img/805423ca-bd0d-4d44-a18e-a7d7bfe88587.png) |
 //
 // @param tmpReq - ImageRemoveAsyncRequest
 //
@@ -3926,47 +3927,47 @@ func (client *Client) ImageRemoveAsyncWithOptions(tmpReq *ImageRemoveAsyncReques
 
 // Summary:
 //
-// Provides intelligent object removal tailored for e-commerce images. It automatically identifies and removes text, specific names, transparent text blocks, and watermarks. You can also specify objects for removal as needed, enabling efficient and accurate processing of large image batches and simplifying image editing workflows.
+// Removes unwanted elements from e-commerce images by automatically identifying and erasing text, specific names, transparent text blocks, and watermarks. Supports specifying objects to remove for efficient and accurate batch processing to simplify image editing.
 //
 // Description:
 //
 // ## Scenarios
 //
-//   - **Efficient processing of e-commerce images:*	-
+//   - **Efficient e-commerce image processing:*	-
 //
 // Removes irrelevant visual elements to provide clearer and more focused product displays, enhancing the customer shopping experience.
 //
 //   - **Multi-platform product information synchronization:*	-
 //
-// When merchants list products on different e-commerce platforms, they can quickly remove specific text and watermarks to comply with the image specifications of different platforms.
+// When merchants synchronize product listings across different e-commerce platforms, they can quickly remove specific text and watermarks to comply with the image specifications of different platforms.
 //
 //   - **Marketing material preparation:*	-
 //
-// Merchants can easily remove original promotional information and quickly update it with the latest campaign information.
+// Merchants can easily remove existing promotional information and quickly update it with the latest campaign details.
 //
-// > Note: Merchants or platforms can remove impurities from images in batches to optimize image quality. Use this API in combination with the Intelligent Recognition API (coming soon) to first filter images containing text, specific names, transparent text blocks, and watermarks, and then use the Intelligent Erasure API for batch removal. The Intelligent Recognition API focuses on recognition, while the Intelligent Erasure API focuses on erasure. Calling them in sequence maximizes the erasure effect and reduces false removals and false recognitions.
+// > Note: Merchants or platforms can batch remove unwanted elements from images to optimize image quality. We recommend using this feature in combination with the Intelligent Recognition API (coming soon) to first filter images containing text, specific names, transparent text blocks, and watermarks, and then use the Intelligent Erasure API for batch removal. The Intelligent Recognition API focuses on recognition, while the Intelligent Erasure API focuses on erasure. By calling them in sequence, you can maximize the erasure effect and reduce false removals and false recognitions.
 //
 // ## Features
 //
-// 1.  First, clarify the definitions of the image subject and the image background. In actual use, when specifying the objects to remove, you can choose whether the removal scope is the image subject or the image background. Both API and editor integration methods are supported to meet different needs.
+// 1.  First, clarify the definitions of the image subject and the image background. In actual use, when specifying the objects to remove, you can choose whether the removal scope is the image subject or the image background area. Both API and editor integration methods are supported to meet different requirements.
 //
 //  1. Image subject: the core product area in the image.
 //
-//  2. Image background: the rest of the image other than the product subject.
+//  2. Image background: the rest of the image excluding the product subject.
 //
-// 2.  Second, the following three types of objects can be removed:
+// 2.  Second, the objects to remove support the following three cases:
 //
-//  1. Select by type: You can select text, specific names, transparent text blocks, and watermarks. Refer to the following examples to clarify your requirements and perform targeted operations.
+//  1. The user selects only the type. You can select text, specific names, transparent text blocks, and watermarks. You can clarify your usage requirements through the following examples for targeted operations.
 //
-//  2. (Upgraded) Specify images to remove: You can specify multiple images at a time.
+//  2. (Upgraded) Provides specified image erasure. You can specify multiple images at a time.
 //
-//  3. (Upgraded) Specify text to remove: You can specify multiple text strings at a time.
+//  3. (Upgraded) Provides specified text erasure. You can specify multiple text strings at a time.
 //
-// Processing flow: Pass the original image URL -> The OCR and VLM models detect text or image positions -> Determine the coordinates of the area to be inpainted -> AI inpainting generates a clean image -> Return the result image URL.
+// Processing flow: The user passes the original image URL → The OCR and VLM models detect the text or image position → Determine the coordinates of the area to be repaired → AI repairs and generates a clean image → Returns the result image URL.
 //
 // ## Effect comparison
 //
-// | **Objects that can be removed*	- | **Original image*	- | **Processed image*	- |
+// | **Objects that can be removed from the image*	- | **Original image*	- | **Image after erasure*	- |
 //
 // | --- | --- | --- |
 //
@@ -4034,9 +4035,9 @@ func (client *Client) ImageRemoveAsyncWithOptions(tmpReq *ImageRemoveAsyncReques
 //
 // ![dee0c7cf-8b0d-4d6d-9677-d5f2e6099834.jpeg](https://alidocs.oss-cn-zhangjiakou.aliyuncs.com/res/Mp7ld7bZAb2VAOBQ/img/caa6994b-2f97-484d-a807-671a0dc75947.jpeg) |
 //
-// | Specified image element removal (supports multiple image URLs) | ![image.png](https://alidocs.oss-cn-zhangjiakou.aliyuncs.com/res/Mp7ld7bZAb2VAOBQ/img/9297951f-53c1-4476-8c69-5c31df3fce21.png) | ![image.png](https://alidocs.oss-cn-zhangjiakou.aliyuncs.com/res/Mp7ld7bZAb2VAOBQ/img/ef3f35aa-609f-454c-bba0-dd1710c83945.png) |
+// | Specified image element erasure (supports multiple image URLs) | ![image.png](https://alidocs.oss-cn-zhangjiakou.aliyuncs.com/res/Mp7ld7bZAb2VAOBQ/img/9297951f-53c1-4476-8c69-5c31df3fce21.png) | ![image.png](https://alidocs.oss-cn-zhangjiakou.aliyuncs.com/res/Mp7ld7bZAb2VAOBQ/img/ef3f35aa-609f-454c-bba0-dd1710c83945.png) |
 //
-// | Specified text removal (supports multiple text strings) | ![image.png](https://alidocs.oss-cn-zhangjiakou.aliyuncs.com/res/Mp7ld7bZAb2VAOBQ/img/c784d8be-4b4d-4972-8b99-828c742b8f03.png) | ![image.png](https://alidocs.oss-cn-zhangjiakou.aliyuncs.com/res/Mp7ld7bZAb2VAOBQ/img/805423ca-bd0d-4d44-a18e-a7d7bfe88587.png) |
+// | Specified text erasure (supports multiple text strings) | ![image.png](https://alidocs.oss-cn-zhangjiakou.aliyuncs.com/res/Mp7ld7bZAb2VAOBQ/img/c784d8be-4b4d-4972-8b99-828c742b8f03.png) | ![image.png](https://alidocs.oss-cn-zhangjiakou.aliyuncs.com/res/Mp7ld7bZAb2VAOBQ/img/805423ca-bd0d-4d44-a18e-a7d7bfe88587.png) |
 //
 // @param request - ImageRemoveAsyncRequest
 //
@@ -4054,13 +4055,13 @@ func (client *Client) ImageRemoveAsync(request *ImageRemoveAsyncRequest) (_resul
 
 // Summary:
 //
-// Provides the Image Translation Plus edition, which is specifically designed for e-commerce images and uses the MoE architecture. Compared with the Lite and Pro editions, it delivers higher translation accuracy across multiple minor languages. It is recommended for the following 12 language pairs, with more language pairs to be supported in the future.
+// Translates e-commerce images by using the Mixture of Experts (MOE) architecture. Compared with the Lite and Pro editions, the Plus edition delivers higher translation accuracy for multiple minor languages. We recommend that you use this edition for the following 12 language pairs. More language pairs will be supported in the future.
 //
 // Description:
 //
 // ## Product introduction
 //
-// The Plus edition of Image Translation is designed for e-commerce images and uses the Mixture of Experts (MoE) architecture. Compared with the Lite and Pro editions, the Plus edition delivers higher translation accuracy for multiple minor languages. This edition is recommended for the following 12 language pairs. More language pairs will be supported in the future.
+// The Plus edition of image translation is designed for e-commerce images and uses the Mixture of Experts (MOE) architecture. Compared with the Lite and Pro editions, it delivers higher translation accuracy for multiple minor languages. We recommend that you use it for the following 12 language pairs. More language pairs will be supported in the future.
 //
 // Supported language pairs:
 //
@@ -4068,7 +4069,7 @@ func (client *Client) ImageRemoveAsync(request *ImageRemoveAsyncRequest) (_resul
 //
 // | --- | --- | --- | --- | --- |
 //
-// |  | Language code | Name | Language code | Name |
+// |  | Language code | Language name | Language code | Language name |
 //
 // | 1 | en | English | ar | Arabic |
 //
@@ -4102,9 +4103,9 @@ func (client *Client) ImageRemoveAsync(request *ImageRemoveAsyncRequest) (_resul
 //
 //   - **Product subject information protection**: Allows you to specify whether to translate the text on the product subject. This helps protect the subject information, such as the embedded product name, from being translated.
 //
-//   - **Brand name protection**: Allows you to specify whether to translate the brand names in the image. This helps protect the brand names from being translated.
+//   - **Brand name protection**: Allows you to specify whether to translate the brand name in the image. This helps protect the brand name from being translated.
 //
-//   - **Translation intervention**: Allows you to customize translation results, including keeping the original text (ABC-ABC), specifying a translation (ABC-DEF), and skipping translation (ABC-null). This is commonly used in scenarios such as brand word protection. You can implement this by passing the corresponding intervention glossary ID when calling the API operation, which meets your translation needs in different scenarios. Generally, you can upload up to 100,000 intervention words. If you need more, contact the platform for assistance.
+//   - **Translation intervention**: Allows you to customize translation results, including keeping the original text (ABC-ABC), specifying a translation (ABC-DEF), and skipping translation (ABC-null). This is commonly used in scenarios such as brand word protection. You can implement this by passing the corresponding intervention glossary ID when calling the API operation, which meets your translation needs in different scenarios. Generally, you can upload up to 100,000 intervention words. If you need more, contact the platform.
 //
 // @param request - ImageTranslationPlusRequest
 //
@@ -4172,13 +4173,13 @@ func (client *Client) ImageTranslationPlusWithOptions(request *ImageTranslationP
 
 // Summary:
 //
-// Provides the Image Translation Plus edition, which is specifically designed for e-commerce images and uses the MoE architecture. Compared with the Lite and Pro editions, it delivers higher translation accuracy across multiple minor languages. It is recommended for the following 12 language pairs, with more language pairs to be supported in the future.
+// Translates e-commerce images by using the Mixture of Experts (MOE) architecture. Compared with the Lite and Pro editions, the Plus edition delivers higher translation accuracy for multiple minor languages. We recommend that you use this edition for the following 12 language pairs. More language pairs will be supported in the future.
 //
 // Description:
 //
 // ## Product introduction
 //
-// The Plus edition of Image Translation is designed for e-commerce images and uses the Mixture of Experts (MoE) architecture. Compared with the Lite and Pro editions, the Plus edition delivers higher translation accuracy for multiple minor languages. This edition is recommended for the following 12 language pairs. More language pairs will be supported in the future.
+// The Plus edition of image translation is designed for e-commerce images and uses the Mixture of Experts (MOE) architecture. Compared with the Lite and Pro editions, it delivers higher translation accuracy for multiple minor languages. We recommend that you use it for the following 12 language pairs. More language pairs will be supported in the future.
 //
 // Supported language pairs:
 //
@@ -4186,7 +4187,7 @@ func (client *Client) ImageTranslationPlusWithOptions(request *ImageTranslationP
 //
 // | --- | --- | --- | --- | --- |
 //
-// |  | Language code | Name | Language code | Name |
+// |  | Language code | Language name | Language code | Language name |
 //
 // | 1 | en | English | ar | Arabic |
 //
@@ -4220,9 +4221,9 @@ func (client *Client) ImageTranslationPlusWithOptions(request *ImageTranslationP
 //
 //   - **Product subject information protection**: Allows you to specify whether to translate the text on the product subject. This helps protect the subject information, such as the embedded product name, from being translated.
 //
-//   - **Brand name protection**: Allows you to specify whether to translate the brand names in the image. This helps protect the brand names from being translated.
+//   - **Brand name protection**: Allows you to specify whether to translate the brand name in the image. This helps protect the brand name from being translated.
 //
-//   - **Translation intervention**: Allows you to customize translation results, including keeping the original text (ABC-ABC), specifying a translation (ABC-DEF), and skipping translation (ABC-null). This is commonly used in scenarios such as brand word protection. You can implement this by passing the corresponding intervention glossary ID when calling the API operation, which meets your translation needs in different scenarios. Generally, you can upload up to 100,000 intervention words. If you need more, contact the platform for assistance.
+//   - **Translation intervention**: Allows you to customize translation results, including keeping the original text (ABC-ABC), specifying a translation (ABC-DEF), and skipping translation (ABC-null). This is commonly used in scenarios such as brand word protection. You can implement this by passing the corresponding intervention glossary ID when calling the API operation, which meets your translation needs in different scenarios. Generally, you can upload up to 100,000 intervention words. If you need more, contact the platform.
 //
 // @param request - ImageTranslationPlusRequest
 //
@@ -4240,7 +4241,7 @@ func (client *Client) ImageTranslationPlus(request *ImageTranslationPlusRequest)
 
 // Summary:
 //
-// Translates e-commerce images by using the Image Translation Plus edition. This edition adopts the Mixture of Experts (MoE) architecture and delivers higher translation accuracy for multiple minor languages compared with the Lite and Pro editions.
+// Translates e-commerce images by using the Image Translation Plus edition, which adopts the Mixture of Experts (MoE) architecture and delivers higher translation accuracy for multiple minor languages than the Lite and Pro editions.
 //
 // Description:
 //
@@ -4250,11 +4251,11 @@ func (client *Client) ImageTranslationPlus(request *ImageTranslationPlusRequest)
 //
 // ## Features
 //
-//   - **Product subject information protection**: Allows you to specify whether to translate the text on the product subject. This helps you protect the subject information, such as the embedded product name, from being translated.
+//   - **Product subject information protection**: You can specify whether to translate the text on the product subject. This helps you protect the subject information, such as the embedded product name, from being translated.
 //
-//   - **Brand name protection**: Allows you to specify whether to translate the brand names in the image. This helps you protect the brand name information from being translated.
+//   - **Brand name protection**: You can specify whether to translate the brand names in the image. This helps you protect the brand name information from being translated.
 //
-//   - **Translation intervention**: Allows you to customize translation results, including keeping the original text (ABC-ABC), specifying a translation (ABC-DEF), and skipping translation (ABC-null). This is commonly used in scenarios such as brand word protection. You can implement this by passing the corresponding intervention glossary ID when you call the API operation. This meets your translation needs in different scenarios. Generally, you can upload up to 100,000 intervention words. If you need more, contact the platform for assistance.
+//   - **Translation intervention**: You can customize translation results, including keeping the original text (ABC-ABC), specifying a translation (ABC-DEF), and skipping translation (ABC-null value). This feature is commonly used in scenarios such as brand word protection. You can implement this feature by passing the corresponding intervention glossary ID when you call the API operation. This meets your translation requirements in different scenarios. Generally, you can upload up to 100,000 intervention words. If you need more, contact the platform for assistance.
 //
 // ## Supported language pairs
 //
@@ -4292,7 +4293,7 @@ func (client *Client) ImageTranslationPlus(request *ImageTranslationPlusRequest)
 //
 // The asynchronous API operations for Image Translation Plus and other features share the same result retrieval process, RocketMQ subscription rules, message encryption protocols, dependency configurations, and Java consumption and decryption code.
 //
-// For the asynchronous call process, subscription rules, message formats and encryption protocols, and detailed integration solutions, refer to [Asynchronous API operation call instructions](https://www.alibabacloud.com/help/en/aidge/asynchronous-interface-call-instructions).
+// For the integration process of asynchronous calls, subscription rules, message formats and encryption protocols, and detailed integration solutions, refer to [Asynchronous API operation call instructions](https://www.alibabacloud.com/help/en/aidge/asynchronous-interface-call-instructions).
 //
 // @param request - ImageTranslationPlusAsyncRequest
 //
@@ -4364,7 +4365,7 @@ func (client *Client) ImageTranslationPlusAsyncWithOptions(request *ImageTransla
 
 // Summary:
 //
-// Translates e-commerce images by using the Image Translation Plus edition. This edition adopts the Mixture of Experts (MoE) architecture and delivers higher translation accuracy for multiple minor languages compared with the Lite and Pro editions.
+// Translates e-commerce images by using the Image Translation Plus edition, which adopts the Mixture of Experts (MoE) architecture and delivers higher translation accuracy for multiple minor languages than the Lite and Pro editions.
 //
 // Description:
 //
@@ -4374,11 +4375,11 @@ func (client *Client) ImageTranslationPlusAsyncWithOptions(request *ImageTransla
 //
 // ## Features
 //
-//   - **Product subject information protection**: Allows you to specify whether to translate the text on the product subject. This helps you protect the subject information, such as the embedded product name, from being translated.
+//   - **Product subject information protection**: You can specify whether to translate the text on the product subject. This helps you protect the subject information, such as the embedded product name, from being translated.
 //
-//   - **Brand name protection**: Allows you to specify whether to translate the brand names in the image. This helps you protect the brand name information from being translated.
+//   - **Brand name protection**: You can specify whether to translate the brand names in the image. This helps you protect the brand name information from being translated.
 //
-//   - **Translation intervention**: Allows you to customize translation results, including keeping the original text (ABC-ABC), specifying a translation (ABC-DEF), and skipping translation (ABC-null). This is commonly used in scenarios such as brand word protection. You can implement this by passing the corresponding intervention glossary ID when you call the API operation. This meets your translation needs in different scenarios. Generally, you can upload up to 100,000 intervention words. If you need more, contact the platform for assistance.
+//   - **Translation intervention**: You can customize translation results, including keeping the original text (ABC-ABC), specifying a translation (ABC-DEF), and skipping translation (ABC-null value). This feature is commonly used in scenarios such as brand word protection. You can implement this feature by passing the corresponding intervention glossary ID when you call the API operation. This meets your translation requirements in different scenarios. Generally, you can upload up to 100,000 intervention words. If you need more, contact the platform for assistance.
 //
 // ## Supported language pairs
 //
@@ -4416,7 +4417,7 @@ func (client *Client) ImageTranslationPlusAsyncWithOptions(request *ImageTransla
 //
 // The asynchronous API operations for Image Translation Plus and other features share the same result retrieval process, RocketMQ subscription rules, message encryption protocols, dependency configurations, and Java consumption and decryption code.
 //
-// For the asynchronous call process, subscription rules, message formats and encryption protocols, and detailed integration solutions, refer to [Asynchronous API operation call instructions](https://www.alibabacloud.com/help/en/aidge/asynchronous-interface-call-instructions).
+// For the integration process of asynchronous calls, subscription rules, message formats and encryption protocols, and detailed integration solutions, refer to [Asynchronous API operation call instructions](https://www.alibabacloud.com/help/en/aidge/asynchronous-interface-call-instructions).
 //
 // @param request - ImageTranslationPlusAsyncRequest
 //
@@ -4434,13 +4435,13 @@ func (client *Client) ImageTranslationPlusAsync(request *ImageTranslationPlusAsy
 
 // Summary:
 //
-// Provides the Pro edition of image translation, which is specifically designed for e-commerce images, integrates multimodal large language model technology for more accurate image understanding, significantly improves translation quality, and continuously expands and optimizes multilingual translation capabilities. It supports more than 400 language pairs, including bridged language pairs.
+// Translates e-commerce images by using multimodal large language models to achieve more accurate image understanding, significantly improve translation quality, and continuously expand and optimize multilingual translation capabilities. Supports more than 400 language pairs, including bridged language pairs.
 //
 // Description:
 //
 // ## Product introduction
 //
-// The Pro edition of image translation is specifically designed for e-commerce images. It integrates multimodal large language model technology to achieve more accurate image understanding, significantly improves translation quality, and continuously expands and optimizes multilingual translation capabilities. It supports more than 400 language pairs, including bridged language pairs.
+// The Pro edition of image translation is designed for e-commerce images. It integrates multimodal large language models to achieve more accurate image understanding, significantly improves translation quality, and continuously expands and optimizes multilingual translation capabilities. It supports more than 400 language pairs, including bridged language pairs.
 //
 // ## Scenarios
 //
@@ -4448,11 +4449,11 @@ func (client *Client) ImageTranslationPlusAsync(request *ImageTranslationPlusAsy
 //
 // ## Features
 //
-// - **Product subject information protection**: Allows you to specify whether to translate the text on the product subject. This helps you protect the subject information from being translated, such as embedded product names.
+// - **Product subject information protection**: Allows you to specify whether to translate the text on the product subject. This helps protect the subject information from being translated, such as embedded information like product names.
 //
-// - **Secondary editing after translation**: Allows you to specify whether to return layout information such as the position, font, and color of the text. This information can be used for secondary editing when you integrate an image editor. The SDK package for the editor is not yet available. Follow platform notifications for updates.
+// - **Secondary editing after translation**: Allows you to specify whether to return layout information such as the position, font, and color of the text. This information can be used for secondary editing when you integrate an image editor. The SDK package for the editor is not yet available. Please follow platform notifications for updates.
 //
-// - **Brand name protection**: Allows you to specify whether to translate brand names in the image. This helps you protect brand name information from being translated.
+// - **Brand name protection**: Allows you to specify whether to translate brand names in the image. This helps protect brand name information from being translated.
 //
 // - **Translation intervention**: Allows you to customize translation results, including keeping the original text (ABC-ABC), specifying a translation (ABC-DEF), or omitting the translation (ABC-null). This is commonly used in scenarios such as brand word protection. You can implement this by passing the corresponding intervention glossary ID when calling the API, which meets your translation needs in different scenarios. Generally, you can upload up to 100,000 intervention terms. If you need more, contact the platform for assistance.
 //
@@ -4528,13 +4529,13 @@ func (client *Client) ImageTranslationProWithOptions(request *ImageTranslationPr
 
 // Summary:
 //
-// Provides the Pro edition of image translation, which is specifically designed for e-commerce images, integrates multimodal large language model technology for more accurate image understanding, significantly improves translation quality, and continuously expands and optimizes multilingual translation capabilities. It supports more than 400 language pairs, including bridged language pairs.
+// Translates e-commerce images by using multimodal large language models to achieve more accurate image understanding, significantly improve translation quality, and continuously expand and optimize multilingual translation capabilities. Supports more than 400 language pairs, including bridged language pairs.
 //
 // Description:
 //
 // ## Product introduction
 //
-// The Pro edition of image translation is specifically designed for e-commerce images. It integrates multimodal large language model technology to achieve more accurate image understanding, significantly improves translation quality, and continuously expands and optimizes multilingual translation capabilities. It supports more than 400 language pairs, including bridged language pairs.
+// The Pro edition of image translation is designed for e-commerce images. It integrates multimodal large language models to achieve more accurate image understanding, significantly improves translation quality, and continuously expands and optimizes multilingual translation capabilities. It supports more than 400 language pairs, including bridged language pairs.
 //
 // ## Scenarios
 //
@@ -4542,11 +4543,11 @@ func (client *Client) ImageTranslationProWithOptions(request *ImageTranslationPr
 //
 // ## Features
 //
-// - **Product subject information protection**: Allows you to specify whether to translate the text on the product subject. This helps you protect the subject information from being translated, such as embedded product names.
+// - **Product subject information protection**: Allows you to specify whether to translate the text on the product subject. This helps protect the subject information from being translated, such as embedded information like product names.
 //
-// - **Secondary editing after translation**: Allows you to specify whether to return layout information such as the position, font, and color of the text. This information can be used for secondary editing when you integrate an image editor. The SDK package for the editor is not yet available. Follow platform notifications for updates.
+// - **Secondary editing after translation**: Allows you to specify whether to return layout information such as the position, font, and color of the text. This information can be used for secondary editing when you integrate an image editor. The SDK package for the editor is not yet available. Please follow platform notifications for updates.
 //
-// - **Brand name protection**: Allows you to specify whether to translate brand names in the image. This helps you protect brand name information from being translated.
+// - **Brand name protection**: Allows you to specify whether to translate brand names in the image. This helps protect brand name information from being translated.
 //
 // - **Translation intervention**: Allows you to customize translation results, including keeping the original text (ABC-ABC), specifying a translation (ABC-DEF), or omitting the translation (ABC-null). This is commonly used in scenarios such as brand word protection. You can implement this by passing the corresponding intervention glossary ID when calling the API, which meets your translation needs in different scenarios. Generally, you can upload up to 100,000 intervention terms. If you need more, contact the platform for assistance.
 //
@@ -4568,7 +4569,7 @@ func (client *Client) ImageTranslationPro(request *ImageTranslationProRequest) (
 
 // Summary:
 //
-// Translates images by using the Pro edition designed for e-commerce images. This feature integrates multimodal large models to achieve more accurate image understanding, significantly improve translation quality, and continuously expand and optimize multilingual translation capabilities. It supports more than 400 language pairs, including bridged languages.
+// Translates images by using the Pro edition, which is designed specifically for e-commerce images. It integrates multimodal large model technology to achieve more accurate image understanding, significantly improve translation quality, and continuously expand and optimize multilingual translation capabilities. It supports more than 400 language pairs, including pivot languages.
 //
 // Description:
 //
@@ -4578,21 +4579,21 @@ func (client *Client) ImageTranslationPro(request *ImageTranslationProRequest) (
 //
 // ## Features
 //
-//   - Product subject information protection: You can specify whether to translate the text on the product subject. This helps you protect the subject information, such as the embedded product name, from being translated.
+//   - Product subject information protection: You can specify whether to translate the text on the product subject. This helps you protect the subject information, such as the product name, from being translated.
 //
-//   - Secondary editing after translation: You can specify whether to return layout information such as the position, font, and color of the text. This information can be used for secondary editing when you integrate an image editor. The SDK package for the editor is not yet available. Follow platform notifications for updates.
+//   - Secondary editing after translation: You can specify whether to return layout information such as the position, font, and color of the text. This allows you to perform secondary editing when you integrate an image editor. The SDK package for the editor is not yet available. Follow platform notifications for updates.
 //
 //   - Brand name protection: You can specify whether to translate brand names in the image. This helps you protect brand name information from being translated.
 //
-//   - Translation intervention: You can customize translation results, including keeping the original text (ABC-ABC), specifying a translation (ABC-DEF), or skipping translation (ABC-null). This is commonly used in scenarios such as brand word protection. You can implement this by passing the corresponding intervention glossary ID when calling the API, which meets your translation needs in different scenarios. Generally, you can upload up to 100,000 intervention entries. If you need more, contact the platform for assistance.
+//   - Translation intervention: You can customize translation results, including keeping the original text (ABC-ABC), specifying a translation (ABC-DEF), or skipping translation (ABC-null). This is commonly used in scenarios such as brand word protection. You can implement this by passing the corresponding intervention glossary ID when you call the API operation, which meets your translation needs in different scenarios. Generally, you can upload up to 100,000 intervention terms. If you need more, contact the platform for assistance.
 //
 // ## Preparations and call process
 //
-// Image Translation Pro edition supports both synchronous and asynchronous call methods. This topic describes the asynchronous call API. For synchronous calls, refer to [Image Translation Pro edition](https://www.alibabacloud.com/help/en/aidge/image-translation-pro).
+// Image Translation Pro supports both synchronous and asynchronous call methods. This topic describes the asynchronous call API operation. To use synchronous calls, refer to [Image Translation Pro](https://www.alibabacloud.com/help/en/aidge/image-translation-pro).
 //
-// Asynchronous APIs for text translation and other capabilities share the result retrieval process, ApsaraMQ for RocketMQ subscription rules, message encryption protocols, dependency configurations, and Java consumption and decryption code.
+// Asynchronous API operations for text translation and other capabilities share the same result retrieval process, ApsaraMQ for RocketMQ subscription rules, message encryption protocols, dependency configurations, and Java consumption and decryption code.
 //
-// For the integration process, subscription rules, message formats and encryption protocols, and detailed integration solutions for asynchronous calls, refer to [Asynchronous API call instructions](https://www.alibabacloud.com/help/en/aidge/asynchronous-interface-call-instructions).
+// For the integration process, subscription rules, message formats and encryption protocols, and detailed integration solutions for asynchronous calls, refer to [Asynchronous API operation call instructions](https://www.alibabacloud.com/help/en/aidge/asynchronous-interface-call-instructions).
 //
 // @param request - ImageTranslationProAsyncRequest
 //
@@ -4664,7 +4665,7 @@ func (client *Client) ImageTranslationProAsyncWithOptions(request *ImageTranslat
 
 // Summary:
 //
-// Translates images by using the Pro edition designed for e-commerce images. This feature integrates multimodal large models to achieve more accurate image understanding, significantly improve translation quality, and continuously expand and optimize multilingual translation capabilities. It supports more than 400 language pairs, including bridged languages.
+// Translates images by using the Pro edition, which is designed specifically for e-commerce images. It integrates multimodal large model technology to achieve more accurate image understanding, significantly improve translation quality, and continuously expand and optimize multilingual translation capabilities. It supports more than 400 language pairs, including pivot languages.
 //
 // Description:
 //
@@ -4674,21 +4675,21 @@ func (client *Client) ImageTranslationProAsyncWithOptions(request *ImageTranslat
 //
 // ## Features
 //
-//   - Product subject information protection: You can specify whether to translate the text on the product subject. This helps you protect the subject information, such as the embedded product name, from being translated.
+//   - Product subject information protection: You can specify whether to translate the text on the product subject. This helps you protect the subject information, such as the product name, from being translated.
 //
-//   - Secondary editing after translation: You can specify whether to return layout information such as the position, font, and color of the text. This information can be used for secondary editing when you integrate an image editor. The SDK package for the editor is not yet available. Follow platform notifications for updates.
+//   - Secondary editing after translation: You can specify whether to return layout information such as the position, font, and color of the text. This allows you to perform secondary editing when you integrate an image editor. The SDK package for the editor is not yet available. Follow platform notifications for updates.
 //
 //   - Brand name protection: You can specify whether to translate brand names in the image. This helps you protect brand name information from being translated.
 //
-//   - Translation intervention: You can customize translation results, including keeping the original text (ABC-ABC), specifying a translation (ABC-DEF), or skipping translation (ABC-null). This is commonly used in scenarios such as brand word protection. You can implement this by passing the corresponding intervention glossary ID when calling the API, which meets your translation needs in different scenarios. Generally, you can upload up to 100,000 intervention entries. If you need more, contact the platform for assistance.
+//   - Translation intervention: You can customize translation results, including keeping the original text (ABC-ABC), specifying a translation (ABC-DEF), or skipping translation (ABC-null). This is commonly used in scenarios such as brand word protection. You can implement this by passing the corresponding intervention glossary ID when you call the API operation, which meets your translation needs in different scenarios. Generally, you can upload up to 100,000 intervention terms. If you need more, contact the platform for assistance.
 //
 // ## Preparations and call process
 //
-// Image Translation Pro edition supports both synchronous and asynchronous call methods. This topic describes the asynchronous call API. For synchronous calls, refer to [Image Translation Pro edition](https://www.alibabacloud.com/help/en/aidge/image-translation-pro).
+// Image Translation Pro supports both synchronous and asynchronous call methods. This topic describes the asynchronous call API operation. To use synchronous calls, refer to [Image Translation Pro](https://www.alibabacloud.com/help/en/aidge/image-translation-pro).
 //
-// Asynchronous APIs for text translation and other capabilities share the result retrieval process, ApsaraMQ for RocketMQ subscription rules, message encryption protocols, dependency configurations, and Java consumption and decryption code.
+// Asynchronous API operations for text translation and other capabilities share the same result retrieval process, ApsaraMQ for RocketMQ subscription rules, message encryption protocols, dependency configurations, and Java consumption and decryption code.
 //
-// For the integration process, subscription rules, message formats and encryption protocols, and detailed integration solutions for asynchronous calls, refer to [Asynchronous API call instructions](https://www.alibabacloud.com/help/en/aidge/asynchronous-interface-call-instructions).
+// For the integration process, subscription rules, message formats and encryption protocols, and detailed integration solutions for asynchronous calls, refer to [Asynchronous API operation call instructions](https://www.alibabacloud.com/help/en/aidge/asynchronous-interface-call-instructions).
 //
 // @param request - ImageTranslationProAsyncRequest
 //
@@ -4706,27 +4707,27 @@ func (client *Client) ImageTranslationProAsync(request *ImageTranslationProAsync
 
 // Summary:
 //
-// Provides image translation tailored for e-commerce, supporting over 400 language pairs, including bridged pairs. Accurately processes complex text layouts within images and ensures translated content aligns with the image context, helping e-commerce platforms and developers easily achieve multilingual conversion and presentation. Additionally, returns layer information such as text position, font, and color to facilitate secondary editing through image editors.
+// Translates e-commerce images with support for over 400 language pairs, including bridged pairs. Accurately processes complex text layouts within images and ensures that the translated content matches the image context, helping e-commerce platforms and developers easily achieve multilingual conversion and presentation of image content. Additionally, the service returns layer information such as the position, font, and color of the text in the image, facilitating secondary editing of the translation results through an image editor.
 //
 // Description:
 //
 // # 1. Product introduction
 //
-// The image translation product is tailored for e-commerce images, supporting over 400 language pairs, including bridged pairs. It accurately processes complex text layouts within images and ensures that the translated content aligns with the image context, helping e-commerce platforms and developers easily achieve multilingual conversion and presentation. Additionally, it returns layer information such as text position, font, and color to facilitate secondary editing through image editors.
+// The image translation service is tailored for e-commerce images and supports over 400 language pairs, including bridged pairs. It accurately processes complex text layouts within images and ensures that the translated content matches the image context, helping e-commerce platforms and developers easily achieve multilingual conversion and presentation of image content. Additionally, the service returns layer information such as the position, font, and color of the text in the image, facilitating secondary editing of the translation results through an image editor.
 //
 // # 2. Scenarios
 //
-// E-commerce product images, marketing images, and images for various other scenarios.
+// E-commerce product images, marketing images, and images in various other scenarios.
 //
 // # 3. Features
 //
-//   - **Product subject information protection**: Allows you to choose whether to translate the text on the product subject. This helps protect the subject information from being translated, avoiding the translation of embedded information such as product names.
+//   - **Product subject information protection**: Allows you to specify whether to translate the text on the product subject. This helps protect the subject information from being translated, preventing the translation of embedded information such as product names.
 //
-//   - **Brand name protection**: Allows you to choose whether to translate brand names in the image. This helps protect brand name information from being translated.
+//   - **Brand name protection**: Allows you to specify whether to translate brand names in the image. This helps protect brand name information from being translated.
 //
-//   - **Secondary editing after translation (layer information)**: Allows you to choose whether to return layer information such as text position, font, and color. This information can be used to integrate with image editors for secondary editing of the translation results. For updates on the release of the editor SDK package, refer to platform notifications.
+//   - **Secondary editing after translation (layer information)**: Allows you to specify whether to return layer information such as the position, font, and color of the text. This information can be used to integrate with an image editor for secondary editing of the translation results. For the release progress of the editor SDK, refer to platform notifications.
 //
-//   - **Translation intervention**: Allows you to customize translation results, including do not translate (ABC-ABC), specify translation (ABC-DEF), and skip translation (ABC-null value). This is commonly used in scenarios such as brand word protection. You can achieve this by passing the corresponding intervention glossary ID when calling the API, meeting your translation needs in different scenarios. Generally, you can upload up to 100,000 intervention terms. If you need more, contact the platform for assistance.
+//   - **Translation intervention**: Allows you to customize translation results, including no translation (ABC-ABC), specified translation (ABC-DEF), and skipping translation (ABC-null value). This is commonly used in scenarios such as brand word protection. You can implement this by passing the corresponding intervention glossary ID when calling the API, which meets your translation needs in different scenarios. Generally, you can upload up to 100,000 intervention words. If you need more, contact the platform for assistance.
 //
 // <props="china">	- **Image editor integration**: For more information, see [Image translation editor protocol](https://www.alibabacloud.com/help/en/document_detail/3042647.html).
 //
@@ -4796,27 +4797,27 @@ func (client *Client) ImageTranslationStandardWithOptions(request *ImageTranslat
 
 // Summary:
 //
-// Provides image translation tailored for e-commerce, supporting over 400 language pairs, including bridged pairs. Accurately processes complex text layouts within images and ensures translated content aligns with the image context, helping e-commerce platforms and developers easily achieve multilingual conversion and presentation. Additionally, returns layer information such as text position, font, and color to facilitate secondary editing through image editors.
+// Translates e-commerce images with support for over 400 language pairs, including bridged pairs. Accurately processes complex text layouts within images and ensures that the translated content matches the image context, helping e-commerce platforms and developers easily achieve multilingual conversion and presentation of image content. Additionally, the service returns layer information such as the position, font, and color of the text in the image, facilitating secondary editing of the translation results through an image editor.
 //
 // Description:
 //
 // # 1. Product introduction
 //
-// The image translation product is tailored for e-commerce images, supporting over 400 language pairs, including bridged pairs. It accurately processes complex text layouts within images and ensures that the translated content aligns with the image context, helping e-commerce platforms and developers easily achieve multilingual conversion and presentation. Additionally, it returns layer information such as text position, font, and color to facilitate secondary editing through image editors.
+// The image translation service is tailored for e-commerce images and supports over 400 language pairs, including bridged pairs. It accurately processes complex text layouts within images and ensures that the translated content matches the image context, helping e-commerce platforms and developers easily achieve multilingual conversion and presentation of image content. Additionally, the service returns layer information such as the position, font, and color of the text in the image, facilitating secondary editing of the translation results through an image editor.
 //
 // # 2. Scenarios
 //
-// E-commerce product images, marketing images, and images for various other scenarios.
+// E-commerce product images, marketing images, and images in various other scenarios.
 //
 // # 3. Features
 //
-//   - **Product subject information protection**: Allows you to choose whether to translate the text on the product subject. This helps protect the subject information from being translated, avoiding the translation of embedded information such as product names.
+//   - **Product subject information protection**: Allows you to specify whether to translate the text on the product subject. This helps protect the subject information from being translated, preventing the translation of embedded information such as product names.
 //
-//   - **Brand name protection**: Allows you to choose whether to translate brand names in the image. This helps protect brand name information from being translated.
+//   - **Brand name protection**: Allows you to specify whether to translate brand names in the image. This helps protect brand name information from being translated.
 //
-//   - **Secondary editing after translation (layer information)**: Allows you to choose whether to return layer information such as text position, font, and color. This information can be used to integrate with image editors for secondary editing of the translation results. For updates on the release of the editor SDK package, refer to platform notifications.
+//   - **Secondary editing after translation (layer information)**: Allows you to specify whether to return layer information such as the position, font, and color of the text. This information can be used to integrate with an image editor for secondary editing of the translation results. For the release progress of the editor SDK, refer to platform notifications.
 //
-//   - **Translation intervention**: Allows you to customize translation results, including do not translate (ABC-ABC), specify translation (ABC-DEF), and skip translation (ABC-null value). This is commonly used in scenarios such as brand word protection. You can achieve this by passing the corresponding intervention glossary ID when calling the API, meeting your translation needs in different scenarios. Generally, you can upload up to 100,000 intervention terms. If you need more, contact the platform for assistance.
+//   - **Translation intervention**: Allows you to customize translation results, including no translation (ABC-ABC), specified translation (ABC-DEF), and skipping translation (ABC-null value). This is commonly used in scenarios such as brand word protection. You can implement this by passing the corresponding intervention glossary ID when calling the API, which meets your translation needs in different scenarios. Generally, you can upload up to 100,000 intervention words. If you need more, contact the platform for assistance.
 //
 // <props="china">	- **Image editor integration**: For more information, see [Image translation editor protocol](https://www.alibabacloud.com/help/en/document_detail/3042647.html).
 //
@@ -4836,31 +4837,31 @@ func (client *Client) ImageTranslationStandard(request *ImageTranslationStandard
 
 // Summary:
 //
-// Translates images tailored for e-commerce, supports over 400 language pairs including bridged languages, accurately processes complex text layouts within images, and ensures that the translated content matches the image context. This helps e-commerce platforms and developers easily implement multilingual conversion and presentation of image content. Additionally, the operation returns layer information such as the position, font, and color of text in the image to facilitate secondary editing of the translation results in an image editor.
+// Translates e-commerce images and supports over 400 language pairs, including bridged languages. Accurately processes complex text layouts within images and ensures that the translated content matches the image context. This helps e-commerce platforms and developers easily convert and present image content in multiple languages. The service also returns layer information such as the position, font, and color of text in the image to facilitate secondary editing of translation results in image editors.
 //
 // Description:
 //
 // ## Scenarios
 //
-// E-commerce product images, marketing images, and images for various other scenarios.
+// Product images, marketing images, and images for various other scenarios in e-commerce.
 //
 // ## Features
 //
-//   - **Product subject information protection**: Allows you to specify whether to translate the text on the product subject. This helps protect the subject information from being translated and prevents embedded information such as product names from being translated.
+//   - **Product subject information protection**: Allows you to specify whether to translate the text on the product subject. This protects the subject information from being translated and prevents embedded information such as product names from being translated.
 //
-//   - **Brand name protection**: Allows you to specify whether to translate brand names in the image. This helps protect brand name information from being translated.
+//   - **Brand name protection**: Allows you to specify whether to translate brand names in the image. This protects brand name information from being translated.
 //
-//   - **Secondary editing after translation (layer information)**: Allows you to specify whether to return layer information such as the position, font, and color of the text. This information can be used to integrate with an image editor for secondary editing of the translation results. For the release progress of the editor SDK package, refer to platform notifications.
+//   - **Secondary editing after translation (layer information)**: Allows you to specify whether to return layer information such as the position, font, and color of the text. You can use this information to integrate with image editors for secondary editing of translation results. For updates on the release of the editor SDK package, refer to platform notifications.
 //
-//   - **Translation intervention**: Allows you to customize translation results, including not translated (ABC-ABC), specified translation (ABC-DEF), and skip translation (ABC-null value). This is commonly used in scenarios such as brand word protection. You can implement this by passing the corresponding intervention glossary ID when calling the API operation to meet your translation needs in different scenarios. Generally, you can upload up to 100,000 intervention words. If you need more, contact the platform for assistance.
+//   - **Translation intervention**: Allows you to customize translation results, including keeping the original text (ABC-ABC), specifying a translation (ABC-DEF), or omitting the translation (ABC-null). This is commonly used in scenarios such as brand word protection. You can implement this by passing the corresponding intervention glossary ID when calling the API operation to meet your translation needs in different scenarios. You can upload up to 100,000 intervention entries. If you need more, contact the platform.
 //
 // ## Preparations and call process
 //
-//   - The standard edition of image translation supports both synchronous and asynchronous call methods. This topic describes the asynchronous call API operation. To use the synchronous call method, refer to [Image translation standard edition](https://www.alibabacloud.com/help/en/aidge/image-translation).
+//   - The standard edition of image translation supports both synchronous and asynchronous calls. This topic describes the asynchronous API operation. For synchronous calls, refer to [Image translation standard edition](https://www.alibabacloud.com/help/en/aidge/image-translation).
 //
-//   - The asynchronous API operations for the standard edition of image translation and other features share the result retrieval process, ApsaraMQ for RocketMQ subscription rules, message encryption protocols, dependency configurations, and Java consumption and decryption code.
+//   - The asynchronous API operations for the standard edition of image translation and other features share the same result retrieval process, ApsaraMQ for RocketMQ subscription rules, message encryption protocols, dependency configurations, and Java consumption and decryption code.
 //
-//   - For the integration process, subscription rules, message formats and encryption protocols, and detailed integration solutions for asynchronous calls, refer to [Asynchronous API operation call instructions](https://www.alibabacloud.com/help/en/aidge/asynchronous-interface-call-instructions).
+//   - For the integration process, subscription rules, message formats and encryption protocols, and detailed integration solutions for asynchronous calls, refer to [Asynchronous API operation instructions](https://www.alibabacloud.com/help/en/aidge/asynchronous-interface-call-instructions).
 //
 // @param request - ImageTranslationStandardAsyncRequest
 //
@@ -4932,31 +4933,31 @@ func (client *Client) ImageTranslationStandardAsyncWithOptions(request *ImageTra
 
 // Summary:
 //
-// Translates images tailored for e-commerce, supports over 400 language pairs including bridged languages, accurately processes complex text layouts within images, and ensures that the translated content matches the image context. This helps e-commerce platforms and developers easily implement multilingual conversion and presentation of image content. Additionally, the operation returns layer information such as the position, font, and color of text in the image to facilitate secondary editing of the translation results in an image editor.
+// Translates e-commerce images and supports over 400 language pairs, including bridged languages. Accurately processes complex text layouts within images and ensures that the translated content matches the image context. This helps e-commerce platforms and developers easily convert and present image content in multiple languages. The service also returns layer information such as the position, font, and color of text in the image to facilitate secondary editing of translation results in image editors.
 //
 // Description:
 //
 // ## Scenarios
 //
-// E-commerce product images, marketing images, and images for various other scenarios.
+// Product images, marketing images, and images for various other scenarios in e-commerce.
 //
 // ## Features
 //
-//   - **Product subject information protection**: Allows you to specify whether to translate the text on the product subject. This helps protect the subject information from being translated and prevents embedded information such as product names from being translated.
+//   - **Product subject information protection**: Allows you to specify whether to translate the text on the product subject. This protects the subject information from being translated and prevents embedded information such as product names from being translated.
 //
-//   - **Brand name protection**: Allows you to specify whether to translate brand names in the image. This helps protect brand name information from being translated.
+//   - **Brand name protection**: Allows you to specify whether to translate brand names in the image. This protects brand name information from being translated.
 //
-//   - **Secondary editing after translation (layer information)**: Allows you to specify whether to return layer information such as the position, font, and color of the text. This information can be used to integrate with an image editor for secondary editing of the translation results. For the release progress of the editor SDK package, refer to platform notifications.
+//   - **Secondary editing after translation (layer information)**: Allows you to specify whether to return layer information such as the position, font, and color of the text. You can use this information to integrate with image editors for secondary editing of translation results. For updates on the release of the editor SDK package, refer to platform notifications.
 //
-//   - **Translation intervention**: Allows you to customize translation results, including not translated (ABC-ABC), specified translation (ABC-DEF), and skip translation (ABC-null value). This is commonly used in scenarios such as brand word protection. You can implement this by passing the corresponding intervention glossary ID when calling the API operation to meet your translation needs in different scenarios. Generally, you can upload up to 100,000 intervention words. If you need more, contact the platform for assistance.
+//   - **Translation intervention**: Allows you to customize translation results, including keeping the original text (ABC-ABC), specifying a translation (ABC-DEF), or omitting the translation (ABC-null). This is commonly used in scenarios such as brand word protection. You can implement this by passing the corresponding intervention glossary ID when calling the API operation to meet your translation needs in different scenarios. You can upload up to 100,000 intervention entries. If you need more, contact the platform.
 //
 // ## Preparations and call process
 //
-//   - The standard edition of image translation supports both synchronous and asynchronous call methods. This topic describes the asynchronous call API operation. To use the synchronous call method, refer to [Image translation standard edition](https://www.alibabacloud.com/help/en/aidge/image-translation).
+//   - The standard edition of image translation supports both synchronous and asynchronous calls. This topic describes the asynchronous API operation. For synchronous calls, refer to [Image translation standard edition](https://www.alibabacloud.com/help/en/aidge/image-translation).
 //
-//   - The asynchronous API operations for the standard edition of image translation and other features share the result retrieval process, ApsaraMQ for RocketMQ subscription rules, message encryption protocols, dependency configurations, and Java consumption and decryption code.
+//   - The asynchronous API operations for the standard edition of image translation and other features share the same result retrieval process, ApsaraMQ for RocketMQ subscription rules, message encryption protocols, dependency configurations, and Java consumption and decryption code.
 //
-//   - For the integration process, subscription rules, message formats and encryption protocols, and detailed integration solutions for asynchronous calls, refer to [Asynchronous API operation call instructions](https://www.alibabacloud.com/help/en/aidge/asynchronous-interface-call-instructions).
+//   - For the integration process, subscription rules, message formats and encryption protocols, and detailed integration solutions for asynchronous calls, refer to [Asynchronous API operation instructions](https://www.alibabacloud.com/help/en/aidge/asynchronous-interface-call-instructions).
 //
 // @param request - ImageTranslationStandardAsyncRequest
 //
@@ -4974,31 +4975,31 @@ func (client *Client) ImageTranslationStandardAsync(request *ImageTranslationSta
 
 // Summary:
 //
-// Upscales e-commerce images by intelligently enhancing resolution and details, improving textures and image quality during the upscaling process. Supports high-definition outputs such as 2K and 4K to meet the requirements for product main images, detail images, and marketing materials, enabling efficient and clear processing of large batches of images to improve product image quality. (Synchronous)
+// Upscales e-commerce images to high definition to intelligently enhance resolution and details. This synchronous operation enhances textures and optimizes image quality during upscaling, supports 2K and 4K output, and meets the high-definition requirements for main product images, detail images, and marketing materials. It enables efficient processing of large image batches to improve product image quality.
 //
 // Description:
 //
-// # Product Introduction
+// # Product introduction
 //
-// The high-definition upscaling product is customized for e-commerce images. It intelligently enhances image resolution and detail performance, and provides texture enhancement and image quality optimization during the upscaling procedure. It supports high-definition outputs such as 2K and 4K to meet the high-definition requirements for product main images, detail images, and marketing materials. It enables efficient and clear processing of large batches of images to improve product image quality. (synchronous)
+// The high-definition upscaling product is customized for e-commerce images. It intelligently enhances image resolution and detail performance, improves texture and image quality during the upscaling process, and supports high-definition outputs such as 2K and 4K. It meets the high-definition requirements for product main images, detail images, and marketing materials, enabling efficient and clear processing of large batches of images to improve product image quality. (Synchronous)
 //
 // # Scenarios
 //
-//   - High-definition e-commerce product images: Enhances the resolution and details of product main images, detail images, and marketing materials to make details such as product textures and materials clearer, improving the quality of product displays.
+//   - High-definition e-commerce product images: Enhances the resolution and details of product main images, detail images, and marketing materials to make details such as product textures and materials clearer, improving the display quality of products.
 //
-//   - Multi-platform product material adaptation: Upscales existing product images in high definition to meet the image display requirements of different e-commerce platforms, satisfying the material usage needs across multiple platforms and scenarios.
+//   - Multi-platform product material adaptation: Upscales existing product images to high definition to meet the image display requirements of different e-commerce platforms and satisfy the material usage needs across multiple platforms and scenarios.
 //
-//   - Batch optimization of existing images: Enhances existing low-resolution product images in high definition to reduce reshooting and production costs, improving the reuse efficiency of image materials.
+//   - Batch optimization of existing images: Enhances existing low-resolution product images to high definition, reducing the costs of reshooting and remaking, and improving the reuse efficiency of image materials.
 //
 // # Features
 //
-// 1.  Intelligent high-definition upscaling: Based on AI image enhancement technology, it improves the resolution and optimizes the details of input images to enhance image clarity and texture performance.
+// 1.  Intelligent high-definition upscaling: Enhances the resolution and optimizes the details of input images based on AI image enhancement technology to improve image clarity and texture performance.
 //
-// 2.  Multiple upscaling factors: Supports 2x and 4x upscaling factors, allowing flexible selection based on image quality and business requirements.
+// 2.  Multiple upscaling factors: Supports 2x and 4x upscaling factors. You can flexibly select the factor based on image quality and business requirements.
 //
 // 3.  Synchronous API calls: Supports synchronous submission of images and retrieval of processing results through APIs, facilitating integration into e-commerce image processing workflows.
 //
-// # Before and after
+// # Effect comparison
 //
 // | **Original image*	- | **Upscaled image*	- |
 //
@@ -5052,31 +5053,31 @@ func (client *Client) ImageUpscaleWithOptions(request *ImageUpscaleRequest, runt
 
 // Summary:
 //
-// Upscales e-commerce images by intelligently enhancing resolution and details, improving textures and image quality during the upscaling process. Supports high-definition outputs such as 2K and 4K to meet the requirements for product main images, detail images, and marketing materials, enabling efficient and clear processing of large batches of images to improve product image quality. (Synchronous)
+// Upscales e-commerce images to high definition to intelligently enhance resolution and details. This synchronous operation enhances textures and optimizes image quality during upscaling, supports 2K and 4K output, and meets the high-definition requirements for main product images, detail images, and marketing materials. It enables efficient processing of large image batches to improve product image quality.
 //
 // Description:
 //
-// # Product Introduction
+// # Product introduction
 //
-// The high-definition upscaling product is customized for e-commerce images. It intelligently enhances image resolution and detail performance, and provides texture enhancement and image quality optimization during the upscaling procedure. It supports high-definition outputs such as 2K and 4K to meet the high-definition requirements for product main images, detail images, and marketing materials. It enables efficient and clear processing of large batches of images to improve product image quality. (synchronous)
+// The high-definition upscaling product is customized for e-commerce images. It intelligently enhances image resolution and detail performance, improves texture and image quality during the upscaling process, and supports high-definition outputs such as 2K and 4K. It meets the high-definition requirements for product main images, detail images, and marketing materials, enabling efficient and clear processing of large batches of images to improve product image quality. (Synchronous)
 //
 // # Scenarios
 //
-//   - High-definition e-commerce product images: Enhances the resolution and details of product main images, detail images, and marketing materials to make details such as product textures and materials clearer, improving the quality of product displays.
+//   - High-definition e-commerce product images: Enhances the resolution and details of product main images, detail images, and marketing materials to make details such as product textures and materials clearer, improving the display quality of products.
 //
-//   - Multi-platform product material adaptation: Upscales existing product images in high definition to meet the image display requirements of different e-commerce platforms, satisfying the material usage needs across multiple platforms and scenarios.
+//   - Multi-platform product material adaptation: Upscales existing product images to high definition to meet the image display requirements of different e-commerce platforms and satisfy the material usage needs across multiple platforms and scenarios.
 //
-//   - Batch optimization of existing images: Enhances existing low-resolution product images in high definition to reduce reshooting and production costs, improving the reuse efficiency of image materials.
+//   - Batch optimization of existing images: Enhances existing low-resolution product images to high definition, reducing the costs of reshooting and remaking, and improving the reuse efficiency of image materials.
 //
 // # Features
 //
-// 1.  Intelligent high-definition upscaling: Based on AI image enhancement technology, it improves the resolution and optimizes the details of input images to enhance image clarity and texture performance.
+// 1.  Intelligent high-definition upscaling: Enhances the resolution and optimizes the details of input images based on AI image enhancement technology to improve image clarity and texture performance.
 //
-// 2.  Multiple upscaling factors: Supports 2x and 4x upscaling factors, allowing flexible selection based on image quality and business requirements.
+// 2.  Multiple upscaling factors: Supports 2x and 4x upscaling factors. You can flexibly select the factor based on image quality and business requirements.
 //
 // 3.  Synchronous API calls: Supports synchronous submission of images and retrieval of processing results through APIs, facilitating integration into e-commerce image processing workflows.
 //
-// # Before and after
+// # Effect comparison
 //
 // | **Original image*	- | **Upscaled image*	- |
 //
@@ -5100,13 +5101,13 @@ func (client *Client) ImageUpscale(request *ImageUpscaleRequest) (_result *Image
 
 // Summary:
 //
-// Supports automatic language identification for 31 languages in query scenarios and 35 languages in general scenarios. Applicable to short text such as search terms, titles, and conversations.
+// Detects the language of short text such as search terms, titles, and conversations. It supports 31 languages for query scenarios and 35 languages for general scenarios.
 //
 // Description:
 //
-// ## Product Introduction
+// ## Product introduction
 //
-// Supports automatic language identification for 31 languages in query phrase scenarios and 35 languages in general scenarios. Applicable to short text such as search terms, titles, and conversations. For supported language directions, refer to the [Language Direction Mapping Table](https://www.alibabacloud.com/help/en/document_detail/3041883.html).
+// Automatically detects the language of short text such as search terms, titles, and conversations, supporting 31 languages for query phrases and 35 languages for general scenarios. For supported language pairs, see [Language pair mapping table](https://www.alibabacloud.com/help/en/document_detail/3041883.html).
 //
 // @param request - LanguageDetectRequest
 //
@@ -5154,13 +5155,13 @@ func (client *Client) LanguageDetectWithOptions(request *LanguageDetectRequest, 
 
 // Summary:
 //
-// Supports automatic language identification for 31 languages in query scenarios and 35 languages in general scenarios. Applicable to short text such as search terms, titles, and conversations.
+// Detects the language of short text such as search terms, titles, and conversations. It supports 31 languages for query scenarios and 35 languages for general scenarios.
 //
 // Description:
 //
-// ## Product Introduction
+// ## Product introduction
 //
-// Supports automatic language identification for 31 languages in query phrase scenarios and 35 languages in general scenarios. Applicable to short text such as search terms, titles, and conversations. For supported language directions, refer to the [Language Direction Mapping Table](https://www.alibabacloud.com/help/en/document_detail/3041883.html).
+// Automatically detects the language of short text such as search terms, titles, and conversations, supporting 31 languages for query phrases and 35 languages for general scenarios. For supported language pairs, see [Language pair mapping table](https://www.alibabacloud.com/help/en/document_detail/3041883.html).
 //
 // @param request - LanguageDetectRequest
 //
@@ -5178,35 +5179,35 @@ func (client *Client) LanguageDetect(request *LanguageDetectRequest) (_result *L
 
 // Summary:
 //
-// Inspects the compliance of in-store marketing material displays based on a multimodal large language model (MLLM) for offline retail and channel store inspection scenarios. It evaluates standard materials such as functional table cards, posters, and door-shaped display stands, along with long-tail materials like light cloths, KT boards, floor stickers, and light boxes in actual store photos against inspection rules at the natural language level. The operation outputs structured conclusions and Chinese evidence descriptions that can be directly integrated into business systems. This is a **synchronous*	- call that returns results in a single request.
+// Detects the compliance of store marketing materials based on a multimodal large language model (MLLM) for offline retail and channel store inspection scenarios. Evaluates standard materials such as functional table cards, posters, and door display stands, as well as long-tail materials like light box cloths, KT boards, floor stickers, and light boxes in actual store photos against inspection rules at the natural language level, and outputs structured conclusions and Chinese evidence descriptions that can be directly integrated with business systems. This is a **synchronous*	- API operation that returns results in a single request.
 //
 // Description:
 //
 // ## **Scenarios**
 //
-// -   **Store marketing material compliance inspection**: Automatically determines whether specified marketing materials (feature table cards, posters, door-shaped display stands, etc.) are placed or posted in the store according to the standard display guidelines issued by the headquarters. Identifies typical issues such as missing materials, placement faults, and content mismatch.
+// -   **Store marketing material compliance inspection**: Automatically determines whether specified marketing materials (feature table cards, posters, door display stands, etc.) are placed or posted in the store according to the standard display guidelines issued by the headquarters, and identifies typical issues such as "not placed, placement fault, or content mismatch".
 //
-// -   **New product or campaign material verification**: During new product releases or sales promotions, automatically verifies in batches the listing of campaign materials in actual store photos as required, replacing manual sampling inspections.
+// -   **New product or campaign material landing verification**: During new product publish or sales promotions, automatically verifies in batches whether campaign materials in actual store photos have completed listing as required, to override manual sampling inspections.
 //
-// -   **Adaptive dual-image comparison and single-image detection**: A single API operation supports both dual-image comparison (reference image + target image, Pattern A) and single-image detection (target image only, Pattern B). An automatic switchover is performed based on whether `ImageRefer` is provided, so callers do not need to distinguish between invoke methods.
+// -   **Adaptive dual-image comparison and single-image detection**: The same API operation supports both dual-image comparison ("reference image + target image", Pattern A) and single-image detection ("target image only", Pattern B). It performs automatic switchover based on whether `ImageRefer` is passed, so invokers do not need to distinguish between invoke methods.
 //
 // ## **Features**
 //
-// -   **Multi-mode intelligent routing**: Built-in material type parsing capability. Automatically identifies the target material type based on the natural language text in `Rules` and routes the request to the corresponding material detection pipeline. Callers only need to pass the image URL and rule text. Currently supports routing for four detection items: functional table cards, posters, door-shaped display stands, and other materials. More specific marketing material detection pipelines will be added in the future.
+// -   **Multi-mode intelligent routing**: Built-in material type parsing capability. Automatically identifies the target material type based on the natural language text in `Rules` and routes it to the corresponding material detection pipeline. Callers only need to pass the image URL and rule text. Currently, four detection item routes are supported: "functional table card", "poster", "door display stand", and "other materials". Detection pipelines for more specific marketing material types will be added in the future.
 //
-// -   **MLLM semantic understanding + structured rule collaboration**: Uses a multimodal large language model to perform semantic-level understanding such as material recognition, content comparison, and text OCR. Combines rule cleaning and structured models to break down natural language rules into step-by-step verifiable steps (S1, S2, etc.), ensuring accuracy while maintaining rule flexibility and traceability.
+// -   **MLLM semantic-level understanding + rule structuring collaboration**: Uses a multimodal large language model to perform semantic-level understanding such as material recognition, content comparison, and text OCR. Combined with rule cleaning and structuring models, it breaks down natural language rules into step-by-step verifiable steps (S1/S2...), ensuring accuracy while maintaining rule flexibility and traceability.
 //
-// -   **Structured audit conclusion output**: The output is unified into the structure of `Result.OverallResult` + `Result.Steps[]` + `Result.Evidence`. The overall conclusion is derived from the logical AND of all steps. Each step is independently visible, making it easy to directly drive downstream business systems and support case-level manual review tracing.
+// -   **Structured audit conclusion output**: The output is unified into the structure of `Result.OverallResult` + `Result.Steps[]` + `Result.Evidence`. The overall conclusion is derived from the logical AND of each step. Each step is independently visible, making it easy to directly drive downstream business systems and support case-level manual review traceability.
 //
 // -   **Supported input formats**: Currently supports publicly accessible image URLs. Supports both single-image (Mode B) and dual-image (Mode A) calling formats, with completely identical output structures.
 //
-// ## **Invoke methods**
+// ## **Call methods**
 //
-// -   **Synchronous call**: Returns the detection result in a single request without the need for polling. The response uses a unified envelope containing `Code`, `Message`, `RequestId`, `Success`, and `Data`.
+// -   **Synchronous call**: Returns the detection result in a single request without polling. The response uses a unified envelope containing `Code`, `Message`, `RequestId`, `Success`, and `Data`.
 //
 // -   **Authentication and signing**: Invoked through the Aidge gateway. Authentication, signing, and common parameters follow the unified platform access methods. Refer to the officially published API documentation for the specific request path.
 //
-// -   **Timeout settings**: Set the request timeout to a value no less than the maximum response time of the API operation. Refer to the officially published documentation for the specific value.
+// -   **Timeout settings**: Set the request timeout to no less than the maximum response time of the API operation (refer to the officially published documentation for the specific value).
 //
 // @param request - MaterialInspectionRequest
 //
@@ -5266,35 +5267,35 @@ func (client *Client) MaterialInspectionWithOptions(request *MaterialInspectionR
 
 // Summary:
 //
-// Inspects the compliance of in-store marketing material displays based on a multimodal large language model (MLLM) for offline retail and channel store inspection scenarios. It evaluates standard materials such as functional table cards, posters, and door-shaped display stands, along with long-tail materials like light cloths, KT boards, floor stickers, and light boxes in actual store photos against inspection rules at the natural language level. The operation outputs structured conclusions and Chinese evidence descriptions that can be directly integrated into business systems. This is a **synchronous*	- call that returns results in a single request.
+// Detects the compliance of store marketing materials based on a multimodal large language model (MLLM) for offline retail and channel store inspection scenarios. Evaluates standard materials such as functional table cards, posters, and door display stands, as well as long-tail materials like light box cloths, KT boards, floor stickers, and light boxes in actual store photos against inspection rules at the natural language level, and outputs structured conclusions and Chinese evidence descriptions that can be directly integrated with business systems. This is a **synchronous*	- API operation that returns results in a single request.
 //
 // Description:
 //
 // ## **Scenarios**
 //
-// -   **Store marketing material compliance inspection**: Automatically determines whether specified marketing materials (feature table cards, posters, door-shaped display stands, etc.) are placed or posted in the store according to the standard display guidelines issued by the headquarters. Identifies typical issues such as missing materials, placement faults, and content mismatch.
+// -   **Store marketing material compliance inspection**: Automatically determines whether specified marketing materials (feature table cards, posters, door display stands, etc.) are placed or posted in the store according to the standard display guidelines issued by the headquarters, and identifies typical issues such as "not placed, placement fault, or content mismatch".
 //
-// -   **New product or campaign material verification**: During new product releases or sales promotions, automatically verifies in batches the listing of campaign materials in actual store photos as required, replacing manual sampling inspections.
+// -   **New product or campaign material landing verification**: During new product publish or sales promotions, automatically verifies in batches whether campaign materials in actual store photos have completed listing as required, to override manual sampling inspections.
 //
-// -   **Adaptive dual-image comparison and single-image detection**: A single API operation supports both dual-image comparison (reference image + target image, Pattern A) and single-image detection (target image only, Pattern B). An automatic switchover is performed based on whether `ImageRefer` is provided, so callers do not need to distinguish between invoke methods.
+// -   **Adaptive dual-image comparison and single-image detection**: The same API operation supports both dual-image comparison ("reference image + target image", Pattern A) and single-image detection ("target image only", Pattern B). It performs automatic switchover based on whether `ImageRefer` is passed, so invokers do not need to distinguish between invoke methods.
 //
 // ## **Features**
 //
-// -   **Multi-mode intelligent routing**: Built-in material type parsing capability. Automatically identifies the target material type based on the natural language text in `Rules` and routes the request to the corresponding material detection pipeline. Callers only need to pass the image URL and rule text. Currently supports routing for four detection items: functional table cards, posters, door-shaped display stands, and other materials. More specific marketing material detection pipelines will be added in the future.
+// -   **Multi-mode intelligent routing**: Built-in material type parsing capability. Automatically identifies the target material type based on the natural language text in `Rules` and routes it to the corresponding material detection pipeline. Callers only need to pass the image URL and rule text. Currently, four detection item routes are supported: "functional table card", "poster", "door display stand", and "other materials". Detection pipelines for more specific marketing material types will be added in the future.
 //
-// -   **MLLM semantic understanding + structured rule collaboration**: Uses a multimodal large language model to perform semantic-level understanding such as material recognition, content comparison, and text OCR. Combines rule cleaning and structured models to break down natural language rules into step-by-step verifiable steps (S1, S2, etc.), ensuring accuracy while maintaining rule flexibility and traceability.
+// -   **MLLM semantic-level understanding + rule structuring collaboration**: Uses a multimodal large language model to perform semantic-level understanding such as material recognition, content comparison, and text OCR. Combined with rule cleaning and structuring models, it breaks down natural language rules into step-by-step verifiable steps (S1/S2...), ensuring accuracy while maintaining rule flexibility and traceability.
 //
-// -   **Structured audit conclusion output**: The output is unified into the structure of `Result.OverallResult` + `Result.Steps[]` + `Result.Evidence`. The overall conclusion is derived from the logical AND of all steps. Each step is independently visible, making it easy to directly drive downstream business systems and support case-level manual review tracing.
+// -   **Structured audit conclusion output**: The output is unified into the structure of `Result.OverallResult` + `Result.Steps[]` + `Result.Evidence`. The overall conclusion is derived from the logical AND of each step. Each step is independently visible, making it easy to directly drive downstream business systems and support case-level manual review traceability.
 //
 // -   **Supported input formats**: Currently supports publicly accessible image URLs. Supports both single-image (Mode B) and dual-image (Mode A) calling formats, with completely identical output structures.
 //
-// ## **Invoke methods**
+// ## **Call methods**
 //
-// -   **Synchronous call**: Returns the detection result in a single request without the need for polling. The response uses a unified envelope containing `Code`, `Message`, `RequestId`, `Success`, and `Data`.
+// -   **Synchronous call**: Returns the detection result in a single request without polling. The response uses a unified envelope containing `Code`, `Message`, `RequestId`, `Success`, and `Data`.
 //
 // -   **Authentication and signing**: Invoked through the Aidge gateway. Authentication, signing, and common parameters follow the unified platform access methods. Refer to the officially published API documentation for the specific request path.
 //
-// -   **Timeout settings**: Set the request timeout to a value no less than the maximum response time of the API operation. Refer to the officially published documentation for the specific value.
+// -   **Timeout settings**: Set the request timeout to no less than the maximum response time of the API operation (refer to the officially published documentation for the specific value).
 //
 // @param request - MaterialInspectionRequest
 //
@@ -5312,31 +5313,31 @@ func (client *Client) MaterialInspection(request *MaterialInspectionRequest) (_r
 
 // Summary:
 //
-// Detects product displays in physical stores based on multimodal large language models (MLLMs) and visual vector recall. This capability is designed for shelf and floor display inspection scenarios in offline retail and channel stores. The service first uses an MLLM to detect the bounding boxes and preliminary names of each product in real-world shelf and floor display photos, and then performs similarity recall against a customer-specific SKU vector database, enabling an exact match for each product to the customer\\"s own SKUs. It outputs item-by-item structured results that can be directly integrated with business systems. This service is suitable for large-scale, highly concurrent visual recognition pipelines such as remote auditing of offline store displays by headquarters, SKU distribution verification, and display compliance inspections.
+// Detects product displays in physical stores by using a multimodal large language model (MLLM) and visual vector recall. This capability is designed for shelf and floor display inspection scenarios in offline retail and channel stores. The API processes real-world shelf and floor display images captured in stores, uses the MLLM to detect the border box and preliminary name of each product, and then performs similarity recall against a customer-specific SKU vector database to perform an exact match of each product to the customer\\"s own SKUs. It outputs structured, per-product results that can be directly integrated with business systems. This API is suitable for large-scale, high-concurrency visual recognition pipelines, such as remote auditing of offline store displays by headquarters, SKU distribution verification, and display compliance inspections.
 //
 // Description:
 //
 // ## **Product Introduction**
 //
-// Display detection is an intelligent recognition capability for store product displays built on multimodal large language models (MLLMs) and visual vector recall. It is designed for shelf and floor display inspection scenarios in offline retail and channel stores. For real-world shelf and floor display photos taken in stores, the service first uses an MLLM to detect the bounding boxes and preliminary names of each product, and then performs similarity recall against a customer-specific SKU vector database, enabling an exact match for each product to the customer\\"s own SKUs. It outputs item-by-item structured results that can be directly integrated with business systems. This service is suitable for large-scale, highly concurrent visual recognition pipelines such as remote auditing of offline store displays by headquarters, SKU distribution verification, and display compliance inspections.
+// Product display detection is an intelligent recognition capability built on a multimodal large language model (MLLM) and visual vector recall, designed for shelf and floor display inspection scenarios in offline retail and channel stores. The service processes real-world shelf and floor display images captured in stores, uses the MLLM to detect the border box and preliminary name of each product, and then performs similarity recall against a customer-specific SKU vector database to perform an exact match of each product to the customer\\"s own SKUs. It outputs structured, per-product results that can be directly integrated with business systems. This service is suitable for large-scale, high-concurrency visual recognition pipelines, such as remote auditing of offline store displays by headquarters, SKU distribution verification, and display compliance inspections.
 //
 // ## **Scenarios**
 //
-// -   **Shelf and floor display recognition and inventory**: Recognizes each product in a shelf or floor display image and matches it to the customer\\"s SKU database. It outputs an item-by-item list (product name, location, and similarity score) to replace manual item-by-item counting.
+// -   **Shelf and floor display recognition and inventory**: Recognizes each product in a shelf or floor display image and matches it to the customer\\"s SKU database, outputting a per-product list (product name + location + similarity score) to replace manual counting.
 //
-// -   **Distribution verification and SKU compliance**: Verifies whether stores display specified SKUs as required by headquarters, and checks for out-of-stock or misplaced items. This supports batch automatic verification during sales promotions or new product launches.
+// -   **Distribution verification and SKU compliance**: Verifies whether stores display specified SKUs as required by headquarters and checks for out-of-stock or misplaced items, supporting batch automatic verification during sales promotions or new product launches.
 //
-// -   **Customer-specific SKU database**: Customers can upload their own standard SKU images to create a dedicated vector database (isolated by RagId). During recognition, retrieval is performed only within this customer\\"s database to ensure accurate naming and data isolation between customers.
+// -   **Customer-specific SKU database**: Customers can upload their own standard SKU images to create a dedicated vector database (isolated by `RagId`). During recognition, retrieval is performed only within the customer\\"s database to ensure accurate naming and data isolation between customers.
 //
 // ## **Features**
 //
-// -   **Two-stage collaboration of detection and retrieval**: The MLLM detects the bounding box and preliminary name of each product in the entire image (semantic-level understanding, adapted for dense displays and partial occlusion). Then, visual embedding vectors are used to perform similarity retrieval within the customer\\"s SKU database. The preliminary name is replaced with the exact SKU name of the top-1 result, balancing the recall rate and naming accuracy.
+// -   **Two-stage collaboration of detection and retrieval**: The MLLM detects the bounding box and preliminary name of each product in the entire image (semantic-level understanding, adapted to dense displays and partial occlusion). Then, visual embedding vectors are used to perform similarity retrieval within the customer\\"s SKU database, and the top-1 exact SKU name overwrites the preliminary name, balancing the recall rate and naming accuracy.
 //
-// -   **Isolated retrieval with dedicated vector databases**: A dedicated SKU vector database is maintained for each customer based on RagId. Recognition retrieves data only within the corresponding database, ensuring strict isolation between customers. Added or updated SKUs take effect in real time.
+// -   **Isolated retrieval in dedicated vector databases**: A dedicated SKU vector database is maintained for each customer based on `RagId`. Recognition retrieves data only within the corresponding database, ensuring strict isolation between customers. Added or updated SKUs take effect in real time.
 //
-// -   **Item-by-item structured output**: The output is unified as Result.Items[]. Each product independently provides the bounding box, retrieved SKU name, SKU code, and similarity score. This facilitates direct integration with downstream inventory and verification systems and supports case-level manual review and tracing.
+// -   **Structured per-product output**: Structured output is unified as `Result.Items[]`. Each product independently provides the bounding box, retrieved SKU name, SKU code, and similarity score, which can directly drive downstream inventory and verification systems and support case-level manual review and tracing.
 //
-// -   **Supported input formats**: Currently supports image URLs accessible over the Internet or from OSS. A single shelf or floor display image is sufficient for recognition, and the output structure is unified.
+// -   **Supported input formats**: Currently supports image URLs accessible over the Internet or from OSS. A single shelf or floor display image can be recognized, and structured output structure is unified.
 //
 // @param request - MerchandisePlacementDetectionRequest
 //
@@ -5396,31 +5397,31 @@ func (client *Client) MerchandisePlacementDetectionWithOptions(request *Merchand
 
 // Summary:
 //
-// Detects product displays in physical stores based on multimodal large language models (MLLMs) and visual vector recall. This capability is designed for shelf and floor display inspection scenarios in offline retail and channel stores. The service first uses an MLLM to detect the bounding boxes and preliminary names of each product in real-world shelf and floor display photos, and then performs similarity recall against a customer-specific SKU vector database, enabling an exact match for each product to the customer\\"s own SKUs. It outputs item-by-item structured results that can be directly integrated with business systems. This service is suitable for large-scale, highly concurrent visual recognition pipelines such as remote auditing of offline store displays by headquarters, SKU distribution verification, and display compliance inspections.
+// Detects product displays in physical stores by using a multimodal large language model (MLLM) and visual vector recall. This capability is designed for shelf and floor display inspection scenarios in offline retail and channel stores. The API processes real-world shelf and floor display images captured in stores, uses the MLLM to detect the border box and preliminary name of each product, and then performs similarity recall against a customer-specific SKU vector database to perform an exact match of each product to the customer\\"s own SKUs. It outputs structured, per-product results that can be directly integrated with business systems. This API is suitable for large-scale, high-concurrency visual recognition pipelines, such as remote auditing of offline store displays by headquarters, SKU distribution verification, and display compliance inspections.
 //
 // Description:
 //
 // ## **Product Introduction**
 //
-// Display detection is an intelligent recognition capability for store product displays built on multimodal large language models (MLLMs) and visual vector recall. It is designed for shelf and floor display inspection scenarios in offline retail and channel stores. For real-world shelf and floor display photos taken in stores, the service first uses an MLLM to detect the bounding boxes and preliminary names of each product, and then performs similarity recall against a customer-specific SKU vector database, enabling an exact match for each product to the customer\\"s own SKUs. It outputs item-by-item structured results that can be directly integrated with business systems. This service is suitable for large-scale, highly concurrent visual recognition pipelines such as remote auditing of offline store displays by headquarters, SKU distribution verification, and display compliance inspections.
+// Product display detection is an intelligent recognition capability built on a multimodal large language model (MLLM) and visual vector recall, designed for shelf and floor display inspection scenarios in offline retail and channel stores. The service processes real-world shelf and floor display images captured in stores, uses the MLLM to detect the border box and preliminary name of each product, and then performs similarity recall against a customer-specific SKU vector database to perform an exact match of each product to the customer\\"s own SKUs. It outputs structured, per-product results that can be directly integrated with business systems. This service is suitable for large-scale, high-concurrency visual recognition pipelines, such as remote auditing of offline store displays by headquarters, SKU distribution verification, and display compliance inspections.
 //
 // ## **Scenarios**
 //
-// -   **Shelf and floor display recognition and inventory**: Recognizes each product in a shelf or floor display image and matches it to the customer\\"s SKU database. It outputs an item-by-item list (product name, location, and similarity score) to replace manual item-by-item counting.
+// -   **Shelf and floor display recognition and inventory**: Recognizes each product in a shelf or floor display image and matches it to the customer\\"s SKU database, outputting a per-product list (product name + location + similarity score) to replace manual counting.
 //
-// -   **Distribution verification and SKU compliance**: Verifies whether stores display specified SKUs as required by headquarters, and checks for out-of-stock or misplaced items. This supports batch automatic verification during sales promotions or new product launches.
+// -   **Distribution verification and SKU compliance**: Verifies whether stores display specified SKUs as required by headquarters and checks for out-of-stock or misplaced items, supporting batch automatic verification during sales promotions or new product launches.
 //
-// -   **Customer-specific SKU database**: Customers can upload their own standard SKU images to create a dedicated vector database (isolated by RagId). During recognition, retrieval is performed only within this customer\\"s database to ensure accurate naming and data isolation between customers.
+// -   **Customer-specific SKU database**: Customers can upload their own standard SKU images to create a dedicated vector database (isolated by `RagId`). During recognition, retrieval is performed only within the customer\\"s database to ensure accurate naming and data isolation between customers.
 //
 // ## **Features**
 //
-// -   **Two-stage collaboration of detection and retrieval**: The MLLM detects the bounding box and preliminary name of each product in the entire image (semantic-level understanding, adapted for dense displays and partial occlusion). Then, visual embedding vectors are used to perform similarity retrieval within the customer\\"s SKU database. The preliminary name is replaced with the exact SKU name of the top-1 result, balancing the recall rate and naming accuracy.
+// -   **Two-stage collaboration of detection and retrieval**: The MLLM detects the bounding box and preliminary name of each product in the entire image (semantic-level understanding, adapted to dense displays and partial occlusion). Then, visual embedding vectors are used to perform similarity retrieval within the customer\\"s SKU database, and the top-1 exact SKU name overwrites the preliminary name, balancing the recall rate and naming accuracy.
 //
-// -   **Isolated retrieval with dedicated vector databases**: A dedicated SKU vector database is maintained for each customer based on RagId. Recognition retrieves data only within the corresponding database, ensuring strict isolation between customers. Added or updated SKUs take effect in real time.
+// -   **Isolated retrieval in dedicated vector databases**: A dedicated SKU vector database is maintained for each customer based on `RagId`. Recognition retrieves data only within the corresponding database, ensuring strict isolation between customers. Added or updated SKUs take effect in real time.
 //
-// -   **Item-by-item structured output**: The output is unified as Result.Items[]. Each product independently provides the bounding box, retrieved SKU name, SKU code, and similarity score. This facilitates direct integration with downstream inventory and verification systems and supports case-level manual review and tracing.
+// -   **Structured per-product output**: Structured output is unified as `Result.Items[]`. Each product independently provides the bounding box, retrieved SKU name, SKU code, and similarity score, which can directly drive downstream inventory and verification systems and support case-level manual review and tracing.
 //
-// -   **Supported input formats**: Currently supports image URLs accessible over the Internet or from OSS. A single shelf or floor display image is sufficient for recognition, and the output structure is unified.
+// -   **Supported input formats**: Currently supports image URLs accessible over the Internet or from OSS. A single shelf or floor display image can be recognized, and structured output structure is unified.
 //
 // @param request - MerchandisePlacementDetectionRequest
 //
@@ -5438,27 +5439,27 @@ func (client *Client) MerchandisePlacementDetection(request *MerchandisePlacemen
 
 // Summary:
 //
-// Detects product displays in photos of shelves, endcaps, freezers, display stands, and dump bins by using product SKU recognition and multimodal large model grounding, aggregates product locations by SKU, and supplements the results with visible single-item grounding and short names to facilitate product location display, inventory counting, and distribution verification.
+// Detects product displays in photos of shelves, endcaps, freezers, display tables, and dump bins based on product SKU recognition and multimodal large model grounding, aggregates product locations by SKU, and supplements the results with visible single-item grounding and short names to facilitate product location display, display inventory, and subsequent distribution verification in business systems.
 //
 // Description:
 //
 // ## Scenarios
 //
-// - Display inventory: Aggregates recognized product bounding boxes by SKU for business system statistics.
+// - Display product inventory: Aggregates recognized product bounding boxes by SKU for business system statistics.
 //
-// - Distribution checklist verification: Compares the recognized SKU list with the target checklist on the business side.
+// - Distribution list verification: Compares the recognized SKU list with the target list on the business side.
 //
 // - Single-item location review: Assists in checking recognition results by combining product bounding boxes and visible names.
 //
 // ## Features
 //
-// - Aggregation by SKU: Aggregates multiple bounding boxes for the same SkuId in Products, and returns a deduplicated list of SKU codes in skuIds.
+// - Aggregation by SKU: Aggregates multiple Boxes for the same SkuId in Products, and skuIds returns a deduplicated list of SKU codes.
 //
-// - Supplementary single-item grounding: The multimodal model locates each recognizable sales package and provides a confirmable short name.
+// - Supplementary single-item grounding: The multimodal model locates recognizable sales packages one by one and provides confirmable short names.
 //
-// - Independent use of two result sets: Products comes from SKU recognition, and grounding comes from supplementary grounding. Grounding does not return SKU codes and does not guarantee item-by-item correspondence with Products.
+// - Independent use of two sets of results: Products comes from SKU recognition, and grounding comes from supplementary grounding. Grounding does not return SKU codes and does not guarantee item-by-item correspondence with Products.
 //
-// - Supports a single HTTPS image as input. Supplementary grounding returns up to 12 targets. Each target includes a category, a bounding box, and visible text of up to 24 characters. The coverage field indicates whether the grounding is complete.
+// - Supports single HTTPS image input. Supplementary grounding returns up to 12 targets, each containing a category, a bounding box, and up to 24 characters of visible text, and uses coverage to indicate whether the grounding is complete.
 //
 // @param request - MerchandisePlacementDetectionLiteRequest
 //
@@ -5502,27 +5503,27 @@ func (client *Client) MerchandisePlacementDetectionLiteWithOptions(request *Merc
 
 // Summary:
 //
-// Detects product displays in photos of shelves, endcaps, freezers, display stands, and dump bins by using product SKU recognition and multimodal large model grounding, aggregates product locations by SKU, and supplements the results with visible single-item grounding and short names to facilitate product location display, inventory counting, and distribution verification.
+// Detects product displays in photos of shelves, endcaps, freezers, display tables, and dump bins based on product SKU recognition and multimodal large model grounding, aggregates product locations by SKU, and supplements the results with visible single-item grounding and short names to facilitate product location display, display inventory, and subsequent distribution verification in business systems.
 //
 // Description:
 //
 // ## Scenarios
 //
-// - Display inventory: Aggregates recognized product bounding boxes by SKU for business system statistics.
+// - Display product inventory: Aggregates recognized product bounding boxes by SKU for business system statistics.
 //
-// - Distribution checklist verification: Compares the recognized SKU list with the target checklist on the business side.
+// - Distribution list verification: Compares the recognized SKU list with the target list on the business side.
 //
 // - Single-item location review: Assists in checking recognition results by combining product bounding boxes and visible names.
 //
 // ## Features
 //
-// - Aggregation by SKU: Aggregates multiple bounding boxes for the same SkuId in Products, and returns a deduplicated list of SKU codes in skuIds.
+// - Aggregation by SKU: Aggregates multiple Boxes for the same SkuId in Products, and skuIds returns a deduplicated list of SKU codes.
 //
-// - Supplementary single-item grounding: The multimodal model locates each recognizable sales package and provides a confirmable short name.
+// - Supplementary single-item grounding: The multimodal model locates recognizable sales packages one by one and provides confirmable short names.
 //
-// - Independent use of two result sets: Products comes from SKU recognition, and grounding comes from supplementary grounding. Grounding does not return SKU codes and does not guarantee item-by-item correspondence with Products.
+// - Independent use of two sets of results: Products comes from SKU recognition, and grounding comes from supplementary grounding. Grounding does not return SKU codes and does not guarantee item-by-item correspondence with Products.
 //
-// - Supports a single HTTPS image as input. Supplementary grounding returns up to 12 targets. Each target includes a category, a bounding box, and visible text of up to 24 characters. The coverage field indicates whether the grounding is complete.
+// - Supports single HTTPS image input. Supplementary grounding returns up to 12 targets, each containing a category, a bounding box, and up to 24 characters of visible text, and uses coverage to indicate whether the grounding is complete.
 //
 // @param request - MerchandisePlacementDetectionLiteRequest
 //
@@ -5540,13 +5541,13 @@ func (client *Client) MerchandisePlacementDetectionLite(request *MerchandisePlac
 
 // Summary:
 //
-// Detects the positions and names of visible products in an image. Built on a dedicated visual model, this product display detection service supports default recognition rules for the Genki Forest business type and allows the caller to invoke custom rules. It outputs the position and name of each product, and is applicable to beverage display inspection and product positioning.
+// Detects the positions and names of visible products in an image. This product display detection product is based on model building of dedicated visual models, supports default recognition rules for the Genki Forest business type, and allows the invoker to provide custom rules. It outputs the position and name of each product, and is suitable for beverage display inspection and product positioning.
 //
 // Description:
 //
 // ## Scenarios
 //
-// - Beverage display recognition: Uses the default rules for the Genki Forest business type to recognize visible beverage products.
+// - Beverage display recognition: Uses the default rules of the Genki Forest business type to recognize visible beverage products.
 //
 // - Custom detection rules: Specifies a product recognition task that meets output constraints by using the rule parameter.
 //
@@ -5558,7 +5559,7 @@ func (client *Client) MerchandisePlacementDetectionLite(request *MerchandisePlac
 //
 // - Two rule entries: A non-empty rule takes precedence. If no valid rule is provided, the type must be Genki Forest.
 //
-// - Unified result validation: Converts bounding box coordinates to integers and limits them to 0-1000, and swaps reverse coordinates. Uses unknown when the name is missing. The entire batch fails if any item is not a valid product object, the bounding box is invalid, or the bounding box has no area.
+// - Unified result verification: Converts bounding box coordinates to integers and limits them to 0-1000, and swaps reverse coordinates. If a name is missing, unknown is used. If any item is not a valid product object, the bounding box is invalid, or the bounding box has no area, the entire batch fails.
 //
 // - Result scope: Currently outputs the detected names and positions, and does not include vector database recall, SKU codes, or similarity scores.
 //
@@ -5612,13 +5613,13 @@ func (client *Client) MerchandisePlacementDetectionProWithOptions(request *Merch
 
 // Summary:
 //
-// Detects the positions and names of visible products in an image. Built on a dedicated visual model, this product display detection service supports default recognition rules for the Genki Forest business type and allows the caller to invoke custom rules. It outputs the position and name of each product, and is applicable to beverage display inspection and product positioning.
+// Detects the positions and names of visible products in an image. This product display detection product is based on model building of dedicated visual models, supports default recognition rules for the Genki Forest business type, and allows the invoker to provide custom rules. It outputs the position and name of each product, and is suitable for beverage display inspection and product positioning.
 //
 // Description:
 //
 // ## Scenarios
 //
-// - Beverage display recognition: Uses the default rules for the Genki Forest business type to recognize visible beverage products.
+// - Beverage display recognition: Uses the default rules of the Genki Forest business type to recognize visible beverage products.
 //
 // - Custom detection rules: Specifies a product recognition task that meets output constraints by using the rule parameter.
 //
@@ -5630,7 +5631,7 @@ func (client *Client) MerchandisePlacementDetectionProWithOptions(request *Merch
 //
 // - Two rule entries: A non-empty rule takes precedence. If no valid rule is provided, the type must be Genki Forest.
 //
-// - Unified result validation: Converts bounding box coordinates to integers and limits them to 0-1000, and swaps reverse coordinates. Uses unknown when the name is missing. The entire batch fails if any item is not a valid product object, the bounding box is invalid, or the bounding box has no area.
+// - Unified result verification: Converts bounding box coordinates to integers and limits them to 0-1000, and swaps reverse coordinates. If a name is missing, unknown is used. If any item is not a valid product object, the bounding box is invalid, or the bounding box has no area, the entire batch fails.
 //
 // - Result scope: Currently outputs the detected names and positions, and does not include vector database recall, SKU codes, or similarity scores.
 //
@@ -5650,27 +5651,27 @@ func (client *Client) MerchandisePlacementDetectionPro(request *MerchandisePlace
 
 // Summary:
 //
-// Detects display price tags based on price tag recognition and multimodal large model grounding. This operation extracts product information, selling prices, original prices, and locations from price tags, and provides visible bounding boxes for paper price tags, electronic price tags, and promotional price tags. It is applicable to store price collection, price tag inspection, and business-side price verification.
+// Detects display price tags based on price tag recognition and multimodal large model grounding. This product extracts product information, selling prices, original prices, and locations corresponding to price tags, and provides visible bounding boxes for paper price tags, electronic shelf labels, and promotional price boards. It is suitable for store price collection, price tag inspection, and business-side price verification.
 //
 // Description:
 //
 // ## Scenarios
 //
-// - Store price collection: Reads and recognizes the selling prices and available original prices of price tags.
+// - Store price collection: Read the recognized selling prices and available original prices of price tags.
 //
-// - Price execution verification: Compares the recognized prices with the business-side price list.
+// - Price execution verification: Compare the recognized prices with the business-side price list.
 //
-// - Manual price tag review: Locates paper, electronic, and promotional price tags for easy review of the original images.
+// - Manual price tag review: Locate paper, electronic, and promotional price tags to facilitate reviewing the original images.
 //
 // ## Features
 //
-// - Structured price output: Returns the product name, code, price, and location item by item. Prices are retained as strings.
+// - Structured price output: Return product names, codes, prices, and locations item by item. Prices are retained as strings.
 //
-// - Multi-type price tag grounding: Covers ordinary paper price tags, electronic price tags, and promotional tags with clear selling prices.
+// - Multi-type price tag grounding: Cover standard paper price tags, electronic shelf labels, and promotional boards with clear selling prices.
 //
-// - Original text and location-assisted review: Prioritizes extracting clear selling prices based on located text. Leaves the field empty if the text is unreadable. Supplementary grounding does not infer that a price tag necessarily corresponds to a specific SKU based on its location.
+// - Original text and location-assisted review: Grounded text prioritizes extracting clear selling prices, leaving the field empty if unreadable. Supplementary grounding does not infer that a price tag necessarily corresponds to a specific SKU based on its location.
 //
-// - Supports single HTTPS image input. Supplementary grounding returns up to 12 targets. Each target includes a category, a bounding box, and up to 24 characters of visible text, and uses the coverage field to indicate whether the grounding is complete.
+// - Single HTTPS image input: Supports the input of a single HTTPS image. Supplementary grounding returns up to 12 targets, each containing a category, bounding box, and up to 24 characters of visible text, with coverage indicating whether the grounding is complete.
 //
 // @param request - MerchandisePriceTagDetectionRequest
 //
@@ -5714,27 +5715,27 @@ func (client *Client) MerchandisePriceTagDetectionWithOptions(request *Merchandi
 
 // Summary:
 //
-// Detects display price tags based on price tag recognition and multimodal large model grounding. This operation extracts product information, selling prices, original prices, and locations from price tags, and provides visible bounding boxes for paper price tags, electronic price tags, and promotional price tags. It is applicable to store price collection, price tag inspection, and business-side price verification.
+// Detects display price tags based on price tag recognition and multimodal large model grounding. This product extracts product information, selling prices, original prices, and locations corresponding to price tags, and provides visible bounding boxes for paper price tags, electronic shelf labels, and promotional price boards. It is suitable for store price collection, price tag inspection, and business-side price verification.
 //
 // Description:
 //
 // ## Scenarios
 //
-// - Store price collection: Reads and recognizes the selling prices and available original prices of price tags.
+// - Store price collection: Read the recognized selling prices and available original prices of price tags.
 //
-// - Price execution verification: Compares the recognized prices with the business-side price list.
+// - Price execution verification: Compare the recognized prices with the business-side price list.
 //
-// - Manual price tag review: Locates paper, electronic, and promotional price tags for easy review of the original images.
+// - Manual price tag review: Locate paper, electronic, and promotional price tags to facilitate reviewing the original images.
 //
 // ## Features
 //
-// - Structured price output: Returns the product name, code, price, and location item by item. Prices are retained as strings.
+// - Structured price output: Return product names, codes, prices, and locations item by item. Prices are retained as strings.
 //
-// - Multi-type price tag grounding: Covers ordinary paper price tags, electronic price tags, and promotional tags with clear selling prices.
+// - Multi-type price tag grounding: Cover standard paper price tags, electronic shelf labels, and promotional boards with clear selling prices.
 //
-// - Original text and location-assisted review: Prioritizes extracting clear selling prices based on located text. Leaves the field empty if the text is unreadable. Supplementary grounding does not infer that a price tag necessarily corresponds to a specific SKU based on its location.
+// - Original text and location-assisted review: Grounded text prioritizes extracting clear selling prices, leaving the field empty if unreadable. Supplementary grounding does not infer that a price tag necessarily corresponds to a specific SKU based on its location.
 //
-// - Supports single HTTPS image input. Supplementary grounding returns up to 12 targets. Each target includes a category, a bounding box, and up to 24 characters of visible text, and uses the coverage field to indicate whether the grounding is complete.
+// - Single HTTPS image input: Supports the input of a single HTTPS image. Supplementary grounding returns up to 12 targets, each containing a category, bounding box, and up to 24 characters of visible text, with coverage indicating whether the grounding is complete.
 //
 // @param request - MerchandisePriceTagDetectionRequest
 //
@@ -5752,27 +5753,27 @@ func (client *Client) MerchandisePriceTagDetection(request *MerchandisePriceTagD
 
 // Summary:
 //
-// Detects store displays based on display scene recognition and holistic positioning of multimodal large models. Identifies display areas such as shelves, refrigerators, and floor displays, outputs available scene names, locations, and display metrics, and supplements overall facility bounding boxes for display facility inspection, area visualization, and display metric verification.
+// Detects store displays based on display scene recognition and holistic positioning of multimodal large models. Identifies display areas such as shelves, refrigerators, and floor stacks, and outputs available scene names, locations, and display metrics. Supplements overall facility bounding boxes. This API is applicable to display facility inspection, area visualization, and display metric verification.
 //
 // Description:
 //
 // ## Scenarios
 //
-// - Display facility inspection: Identifies facilities such as shelves, endcaps, floor displays, upright refrigerators, and chest freezers.
+// - Display facility inspection: identifies facilities such as shelves, endcaps, floor stacks, upright refrigerators, and chest freezers.
 //
-// - Display metric verification: Reads active metrics such as proportion, purity, and fullness for further evaluation by business systems.
+// - Display metric verification: reads active metrics such as proportion, purity, and plumpness for further evaluation by business systems.
 //
-// - Display area visualization: Displays area locations and overall facility bounding boxes on the original image.
+// - Display area visualization: visualizes area locations and overall facility bounding boxes on the original image.
 //
 // ## Features
 //
-// - Scene structured output: Returns scene names, center points, area contours, and active metrics.
+// - Scene structured output: returns scene names, center points, area contours, and active metrics.
 //
-// - Holistic facility positioning: Uses one bounding box for an independent facility or promotional display, which is suitable for overall area review.
+// - Holistic facility positioning: uses one bounding box for an independent facility or floor stack, which is suitable for overall area review.
 //
-// - Retains two types of coordinates: The positions in scenes retain the original normalization coordinates of the recognition service, while grounding uses 0-1000 integer bounding boxes.
+// - Dual coordinate retention: retains the original normalization coordinates from the recognition service for positions in scenes, and uses 0-1000 integer bounding boxes for grounding.
 //
-// - Supports single HTTPS image input. The supplementary positioning returns up to 12 targets. Each target includes a category, a bounding box, and up to 24 characters of visible text, and uses coverage to indicate whether the positioning is complete.
+// - Supports single HTTPS image input. The supplementary positioning returns up to 12 targets. Each target includes a category, a bounding box, and up to 24 characters of visible text. The coverage field indicates whether the positioning is complete.
 //
 // @param request - MerchandiseSceneDetectionRequest
 //
@@ -5816,27 +5817,27 @@ func (client *Client) MerchandiseSceneDetectionWithOptions(request *MerchandiseS
 
 // Summary:
 //
-// Detects store displays based on display scene recognition and holistic positioning of multimodal large models. Identifies display areas such as shelves, refrigerators, and floor displays, outputs available scene names, locations, and display metrics, and supplements overall facility bounding boxes for display facility inspection, area visualization, and display metric verification.
+// Detects store displays based on display scene recognition and holistic positioning of multimodal large models. Identifies display areas such as shelves, refrigerators, and floor stacks, and outputs available scene names, locations, and display metrics. Supplements overall facility bounding boxes. This API is applicable to display facility inspection, area visualization, and display metric verification.
 //
 // Description:
 //
 // ## Scenarios
 //
-// - Display facility inspection: Identifies facilities such as shelves, endcaps, floor displays, upright refrigerators, and chest freezers.
+// - Display facility inspection: identifies facilities such as shelves, endcaps, floor stacks, upright refrigerators, and chest freezers.
 //
-// - Display metric verification: Reads active metrics such as proportion, purity, and fullness for further evaluation by business systems.
+// - Display metric verification: reads active metrics such as proportion, purity, and plumpness for further evaluation by business systems.
 //
-// - Display area visualization: Displays area locations and overall facility bounding boxes on the original image.
+// - Display area visualization: visualizes area locations and overall facility bounding boxes on the original image.
 //
 // ## Features
 //
-// - Scene structured output: Returns scene names, center points, area contours, and active metrics.
+// - Scene structured output: returns scene names, center points, area contours, and active metrics.
 //
-// - Holistic facility positioning: Uses one bounding box for an independent facility or promotional display, which is suitable for overall area review.
+// - Holistic facility positioning: uses one bounding box for an independent facility or floor stack, which is suitable for overall area review.
 //
-// - Retains two types of coordinates: The positions in scenes retain the original normalization coordinates of the recognition service, while grounding uses 0-1000 integer bounding boxes.
+// - Dual coordinate retention: retains the original normalization coordinates from the recognition service for positions in scenes, and uses 0-1000 integer bounding boxes for grounding.
 //
-// - Supports single HTTPS image input. The supplementary positioning returns up to 12 targets. Each target includes a category, a bounding box, and up to 24 characters of visible text, and uses coverage to indicate whether the positioning is complete.
+// - Supports single HTTPS image input. The supplementary positioning returns up to 12 targets. Each target includes a category, a bounding box, and up to 24 characters of visible text. The coverage field indicates whether the positioning is complete.
 //
 // @param request - MerchandiseSceneDetectionRequest
 //
@@ -5854,27 +5855,27 @@ func (client *Client) MerchandiseSceneDetection(request *MerchandiseSceneDetecti
 
 // Summary:
 //
-// Detects recaptured images of milk powder can bottom codes and localizes elements based on recapture recognition and multimodal large model capabilities. The operation determines whether an uploaded photo is recaptured and localizes visible milk powder products, can bottoms, and bottom code areas. It applies to milk powder channel inspections, bottom code photo reviews, and manual verifications.
+// Audits images of milk powder can bottom codes based on recapture detection capabilities and multimodal large model element localization. The service determines whether an uploaded photo is a recapture and localizes visible milk powder products, can bottoms, and bottom code areas. It is suitable for milk powder channel inspections, can bottom code photo reviews, and manual verifications.
 //
 // Description:
 //
 // ## Features
 //
-// - Recapture binary classification: isFake=true indicates a recaptured image, and false indicates a non-recaptured image. Element localization is performed for both results.
+// - Recapture binary classification: isFake=true indicates a recapture, and false indicates a non-recapture. Element localization continues for both results.
 //
-// - Milk powder subject and bottom code localization: Prioritizes the localization of the milk powder subject. Adds bounding boxes for the can bottom, spray code, batch code, or traceability code areas when they are clear.
+// - Milk powder subject and bottom code localization: Prioritizes localizing the milk powder subject. Adds corresponding bounding boxes when the can bottom, spray code, batch code, or traceability code areas are clear.
 //
 // - Visible information output: Outputs only confirmed short names or text without guessing blurred code values. Localization results do not change the recapture conclusion.
 //
-// - Supports a single HTTPS image input. Supplementary localization returns up to 12 targets. Each target includes a category, a bounding box, and up to 24 characters of visible text. The coverage field indicates whether the localization is complete.
+// - Supports single HTTPS image input. Supplementary localization returns up to 12 targets. Each target includes a category, bounding box, and up to 24 characters of visible text, and uses coverage to indicate whether the localization is complete.
 //
-// ## Scenarios
+// ## Scenarios:
 //
-// - Bottom code photo review: Determines whether a photo of a milk powder can bottom code has a recapture risk.
+// - Can bottom code photo review: Determines whether a milk powder can bottom code photo has a recapture risk.
 //
 // - Milk powder product inspection: Localizes canned, boxed, or bagged milk powder, as well as clearly visible can bottoms and bottom codes.
 //
-// - Review result playback: Displays target bounding boxes on the original image to assist personnel in verifying the photo content.
+// - Review result playback: Displays target bounding boxes on the original image to assist personnel in verifying photo content.
 //
 // @param request - MilkPowderCanBottomCodeRephotographyDetectionRequest
 //
@@ -5918,27 +5919,27 @@ func (client *Client) MilkPowderCanBottomCodeRephotographyDetectionWithOptions(r
 
 // Summary:
 //
-// Detects recaptured images of milk powder can bottom codes and localizes elements based on recapture recognition and multimodal large model capabilities. The operation determines whether an uploaded photo is recaptured and localizes visible milk powder products, can bottoms, and bottom code areas. It applies to milk powder channel inspections, bottom code photo reviews, and manual verifications.
+// Audits images of milk powder can bottom codes based on recapture detection capabilities and multimodal large model element localization. The service determines whether an uploaded photo is a recapture and localizes visible milk powder products, can bottoms, and bottom code areas. It is suitable for milk powder channel inspections, can bottom code photo reviews, and manual verifications.
 //
 // Description:
 //
 // ## Features
 //
-// - Recapture binary classification: isFake=true indicates a recaptured image, and false indicates a non-recaptured image. Element localization is performed for both results.
+// - Recapture binary classification: isFake=true indicates a recapture, and false indicates a non-recapture. Element localization continues for both results.
 //
-// - Milk powder subject and bottom code localization: Prioritizes the localization of the milk powder subject. Adds bounding boxes for the can bottom, spray code, batch code, or traceability code areas when they are clear.
+// - Milk powder subject and bottom code localization: Prioritizes localizing the milk powder subject. Adds corresponding bounding boxes when the can bottom, spray code, batch code, or traceability code areas are clear.
 //
 // - Visible information output: Outputs only confirmed short names or text without guessing blurred code values. Localization results do not change the recapture conclusion.
 //
-// - Supports a single HTTPS image input. Supplementary localization returns up to 12 targets. Each target includes a category, a bounding box, and up to 24 characters of visible text. The coverage field indicates whether the localization is complete.
+// - Supports single HTTPS image input. Supplementary localization returns up to 12 targets. Each target includes a category, bounding box, and up to 24 characters of visible text, and uses coverage to indicate whether the localization is complete.
 //
-// ## Scenarios
+// ## Scenarios:
 //
-// - Bottom code photo review: Determines whether a photo of a milk powder can bottom code has a recapture risk.
+// - Can bottom code photo review: Determines whether a milk powder can bottom code photo has a recapture risk.
 //
 // - Milk powder product inspection: Localizes canned, boxed, or bagged milk powder, as well as clearly visible can bottoms and bottom codes.
 //
-// - Review result playback: Displays target bounding boxes on the original image to assist personnel in verifying the photo content.
+// - Review result playback: Displays target bounding boxes on the original image to assist personnel in verifying photo content.
 //
 // @param request - MilkPowderCanBottomCodeRephotographyDetectionRequest
 //
@@ -5956,27 +5957,27 @@ func (client *Client) MilkPowderCanBottomCodeRephotographyDetection(request *Mil
 
 // Summary:
 //
-// Analyzes milk powder box code images for channel inspection by using recapture detection and multimodal large model element grounding. Outputs non-recapture, recapture, or suspected recapture conclusions, and locates visible milk powder products, outer boxes, and code areas to provide a structured basis for photo review and manual verification.
+// Analyzes images of milk powder products, outer boxes, and box codes for channel inspections based on recapture detection and multimodal large model element localization. Returns non-recapture, recapture, or suspected recapture conclusions, and localizes visible milk powder products, outer boxes, and code areas to provide a structured basis for image review and manual verification.
 //
 // Description:
 //
 // ## Features
 //
-// - Three-state recapture detection: When photoStatus is 0, 1, or 2, it indicates non-recapture, recapture, or suspected recapture, respectively. The operation also outputs isFake, isSuspect, and score.
+// - Three-state recapture judgment: When photoStatus is 0, 1, or 2, it indicates non-recapture, recapture, or suspected recapture, respectively. It also returns isFake, isSuspect, and score.
 //
-// - Subject and code area grounding: Prioritizes grounding of individual milk powder products and outer boxes, and supplements clear box codes, barcodes, and QR code areas. If no box code is present, the milk powder subject can still be grounded.
+// - Subject and code area localization: Prioritizes the localization of individual milk powder products and outer boxes, and supplements clear box codes, barcodes, and QR code areas. If no box code is present, the milk powder subject can still be localized.
 //
-// - Result synergy: Element grounding supplements visible targets without changing the recapture detection conclusion. It does not decode QR codes or provide product authenticity verification.
+// - Result coordination: Element localization supplements visible targets without changing the recapture detection conclusion. It does not decode QR codes or provide product authenticity authentication.
 //
-// - Supports a single HTTPS image as input. The supplementary grounding returns up to 12 targets, each containing a category, bounding box, and up to 24 characters of visible text. The coverage field indicates whether the grounding is complete.
+// - Supports a single HTTPS image input. The supplementary localization returns up to 12 targets. Each target includes a category, a bounding box, and up to 24 characters of visible text. The coverage field indicates whether the localization is complete.
 //
 // ## Scenarios
 //
-// - Box code photo review: Checks milk powder outer box photos uploaded by stores or channels for recapture risks.
+// - Box code photo review: Checks whether milk powder outer box photos uploaded by stores or channels have recapture risks.
 //
-// - Milk powder display inspection: Locates visible individual milk powder products, full boxes, and clear code areas in photos.
+// - Milk powder display inspection: Localizes visible individual milk powder products, whole boxes, and clear code areas in photos.
 //
-// - Suspected sample review: Filters images that require manual verification based on the suspected status, algorithm score, and bounding boxes.
+// - Suspected sample review: Filters images that require manual verification based on the suspected status, algorithm score, and localization boxes.
 //
 // @param request - MilkPowderCartonCodeRephotographyDetectionRequest
 //
@@ -6020,27 +6021,27 @@ func (client *Client) MilkPowderCartonCodeRephotographyDetectionWithOptions(requ
 
 // Summary:
 //
-// Analyzes milk powder box code images for channel inspection by using recapture detection and multimodal large model element grounding. Outputs non-recapture, recapture, or suspected recapture conclusions, and locates visible milk powder products, outer boxes, and code areas to provide a structured basis for photo review and manual verification.
+// Analyzes images of milk powder products, outer boxes, and box codes for channel inspections based on recapture detection and multimodal large model element localization. Returns non-recapture, recapture, or suspected recapture conclusions, and localizes visible milk powder products, outer boxes, and code areas to provide a structured basis for image review and manual verification.
 //
 // Description:
 //
 // ## Features
 //
-// - Three-state recapture detection: When photoStatus is 0, 1, or 2, it indicates non-recapture, recapture, or suspected recapture, respectively. The operation also outputs isFake, isSuspect, and score.
+// - Three-state recapture judgment: When photoStatus is 0, 1, or 2, it indicates non-recapture, recapture, or suspected recapture, respectively. It also returns isFake, isSuspect, and score.
 //
-// - Subject and code area grounding: Prioritizes grounding of individual milk powder products and outer boxes, and supplements clear box codes, barcodes, and QR code areas. If no box code is present, the milk powder subject can still be grounded.
+// - Subject and code area localization: Prioritizes the localization of individual milk powder products and outer boxes, and supplements clear box codes, barcodes, and QR code areas. If no box code is present, the milk powder subject can still be localized.
 //
-// - Result synergy: Element grounding supplements visible targets without changing the recapture detection conclusion. It does not decode QR codes or provide product authenticity verification.
+// - Result coordination: Element localization supplements visible targets without changing the recapture detection conclusion. It does not decode QR codes or provide product authenticity authentication.
 //
-// - Supports a single HTTPS image as input. The supplementary grounding returns up to 12 targets, each containing a category, bounding box, and up to 24 characters of visible text. The coverage field indicates whether the grounding is complete.
+// - Supports a single HTTPS image input. The supplementary localization returns up to 12 targets. Each target includes a category, a bounding box, and up to 24 characters of visible text. The coverage field indicates whether the localization is complete.
 //
 // ## Scenarios
 //
-// - Box code photo review: Checks milk powder outer box photos uploaded by stores or channels for recapture risks.
+// - Box code photo review: Checks whether milk powder outer box photos uploaded by stores or channels have recapture risks.
 //
-// - Milk powder display inspection: Locates visible individual milk powder products, full boxes, and clear code areas in photos.
+// - Milk powder display inspection: Localizes visible individual milk powder products, whole boxes, and clear code areas in photos.
 //
-// - Suspected sample review: Filters images that require manual verification based on the suspected status, algorithm score, and bounding boxes.
+// - Suspected sample review: Filters images that require manual verification based on the suspected status, algorithm score, and localization boxes.
 //
 // @param request - MilkPowderCartonCodeRephotographyDetectionRequest
 //
@@ -6058,33 +6059,33 @@ func (client *Client) MilkPowderCartonCodeRephotographyDetection(request *MilkPo
 
 // Summary:
 //
-// An intelligent logistics parcel review product built on the collaboration of a multimodal large language model (MLLM) and dedicated vision algorithms. It targets automated compliance review for the "piece-weight-dimension" stage in e-commerce logistics. The product performs structured review across multiple dimensions, including bounding box validity, bounding box fit, and foreign object interference for parcels on scanning platforms. It supports different hardware capture scenarios such as white and green background boards, and outputs Boolean review conclusions with Chinese-language reason descriptions that can be directly integrated with business systems. It is suitable for large-scale, high-concurrency inbound quality inspection pipelines.
+// Audits logistics parcels for compliance in the weight and dimension measurement process of e-commerce logistics by using a multimodal large language model (MLLM) and dedicated visual algorithms. The product performs structured audits on multiple dimensions such as bounding box validity, bounding box fit, and foreign object interference on scanning platforms. It adapts to different hardware capture scenarios such as white and green background boards, and outputs Boolean audit conclusions and reason descriptions in Chinese that can be directly integrated with business systems. It is suitable for large-scale and high-concurrency inbound quality inspection pipelines.
 //
 // Description:
 //
-// ## Product Introduction
+// ## Product introduction
 //
-// An intelligent logistics parcel review product built on the collaboration of a multimodal large language model (MLLM) and dedicated vision algorithms. It targets automated compliance review for the "piece-weight-dimension" stage in e-commerce logistics. The product performs structured review across multiple dimensions, including **bounding box validity, bounding box fit, and foreign object interference*	- for parcels on scanning platforms. It supports different hardware capture scenarios such as white and green background boards, and outputs Boolean review conclusions with Chinese-language reason descriptions that can be directly integrated with business systems. It is suitable for large-scale, high-concurrency inbound quality inspection pipelines.
+// Audits logistics parcels for compliance in the weight and dimension measurement process of e-commerce logistics by using a multimodal large language model (MLLM) and dedicated visual algorithms. The product performs structured audits on multiple dimensions such as **bounding box validity, bounding box fit, and foreign object interference*	- on scanning platforms. It adapts to different hardware capture scenarios such as white and green background boards, and outputs Boolean audit conclusions and reason descriptions in Chinese that can be directly integrated with business systems. It is suitable for large-scale and high-concurrency inbound quality inspection pipelines.
 //
 // ## Scenarios
 //
-// 1. **Parcel bounding box review**: Automatically determines whether the operator\\"s manual bounding box constitutes the "minimum effective border rectangle" for the parcel, and identifies typical issues such as oversized or undersized bounding boxes.
+// 1. **Parcel bounding box audit**: Automatically determines whether the manual bounding box drawn by a job operator on a parcel forms a minimum valid border rectangle, and identifies typical issues such as oversized or undersized bounding boxes.
 //
-// 2. **Foreign object interference detection**: Automatically detects whether non-target objects such as fingers, keyboards, or supporting tools are present in the scanning area.
+// 2. **Foreign object interference detection**: Automatically identifies whether non-job target objects such as fingers, keyboards, or supporting tools are mixed into the scanning area.
 //
-// 3. **Multi-capture environment adaptation**: A single API can handle two common capture patterns — white background board (blue box) and green background board (blue box \\+ red box) — without requiring the caller to distinguish between scenarios.
+// 3. **Multi-capture environment adaptation**: A single set of APIs can process two common capture patterns: white background boards (blue boxes) and green background boards (blue boxes + red boxes). Callers do not need to distinguish between scenarios.
 //
-// 4. **Inbound quality inspection pipeline**: Used for automated compliance review in the piece-weight-dimension stage of the logistics warehouse new product inbound SOP, as a replacement for or supplement to outsourced manual review.
+// 4. **Inbound quality inspection pipeline**: Used for automatic review of the weight and dimension measurement process in the standard operating procedure (SOP) for new product inbound in a logistics repository, to override or assist manual outsourced audits.
 //
-// The product is also applicable to general image "box-subject" relationship review scenarios, such as product photo material review and document scan quality verification.
+// In addition, the product is also applicable to general image bounding box-to-subject relationship audit scenarios, such as product photo material audits and document scanning quality verification.
 //
 // ## Features
 //
-// 1. **Multi-scenario intelligent routing**: The product has built-in scenario classification capabilities. It automatically identifies the background type (white/green) and bounding box type (none/single box/double box) in the image, and routes the request to the corresponding review sub-process. The caller only needs to pass in the image URL without manually specifying the scenario.
+// 1. **Intelligent multi-scenario routing**: The product has built-in scenario classification capabilities. It automatically identifies the background type (white or green) and bounding box type (none, single box, or double boxes) in an image, and routes the request to the corresponding audit sub-process. Callers only need to pass the image URL without manually specifying the scenario.
 //
-// 2. **MLLM + dedicated CV model collaboration**: A multimodal large language model performs semantic-level scenario understanding and foreign object recognition, while a dedicated parcel segmentation and IoU evaluation model performs pixel-level bounding box fit quantification. This ensures accuracy while controlling inference latency and cost.
+// 2. **MLLM and dedicated CV model collaboration**: Uses a multimodal large language model for semantic-level scenario understanding and foreign object recognition, and uses dedicated parcel segmentation and IoU evaluation models for pixel-level bounding box fit quantification. This ensures accuracy while controlling inference latency and costs.
 //
-// 3. **Structured review conclusions**: The output is unified as a `result` (Boolean) \\+ `info` (Chinese-language reason) structure. Supported reason types include "审核通过" (review passed), "审核不通过:框选过大" (review failed: bounding box too large), "审核不通过:框选过小" (review failed: bounding box too small), and "审核不通过:存在异物" (review failed: foreign object detected), enabling direct integration with downstream business systems.
+// 3. **Structured audit conclusions**: The output is unified into a `result` (Boolean) and `info` (reason in Chinese) structure. Supported reason types include \\"审核通过\\", \\"审核不通过:框选过大\\", \\"审核不通过:框选过小\\", and \\"审核不通过:存在异物\\". This facilitates direct integration with downstream business systems.
 //
 // 4. **Supported input formats**: Currently supports publicly accessible image URLs.
 //
@@ -6134,33 +6135,33 @@ func (client *Client) PackageWeightSizeCheckWithOptions(request *PackageWeightSi
 
 // Summary:
 //
-// An intelligent logistics parcel review product built on the collaboration of a multimodal large language model (MLLM) and dedicated vision algorithms. It targets automated compliance review for the "piece-weight-dimension" stage in e-commerce logistics. The product performs structured review across multiple dimensions, including bounding box validity, bounding box fit, and foreign object interference for parcels on scanning platforms. It supports different hardware capture scenarios such as white and green background boards, and outputs Boolean review conclusions with Chinese-language reason descriptions that can be directly integrated with business systems. It is suitable for large-scale, high-concurrency inbound quality inspection pipelines.
+// Audits logistics parcels for compliance in the weight and dimension measurement process of e-commerce logistics by using a multimodal large language model (MLLM) and dedicated visual algorithms. The product performs structured audits on multiple dimensions such as bounding box validity, bounding box fit, and foreign object interference on scanning platforms. It adapts to different hardware capture scenarios such as white and green background boards, and outputs Boolean audit conclusions and reason descriptions in Chinese that can be directly integrated with business systems. It is suitable for large-scale and high-concurrency inbound quality inspection pipelines.
 //
 // Description:
 //
-// ## Product Introduction
+// ## Product introduction
 //
-// An intelligent logistics parcel review product built on the collaboration of a multimodal large language model (MLLM) and dedicated vision algorithms. It targets automated compliance review for the "piece-weight-dimension" stage in e-commerce logistics. The product performs structured review across multiple dimensions, including **bounding box validity, bounding box fit, and foreign object interference*	- for parcels on scanning platforms. It supports different hardware capture scenarios such as white and green background boards, and outputs Boolean review conclusions with Chinese-language reason descriptions that can be directly integrated with business systems. It is suitable for large-scale, high-concurrency inbound quality inspection pipelines.
+// Audits logistics parcels for compliance in the weight and dimension measurement process of e-commerce logistics by using a multimodal large language model (MLLM) and dedicated visual algorithms. The product performs structured audits on multiple dimensions such as **bounding box validity, bounding box fit, and foreign object interference*	- on scanning platforms. It adapts to different hardware capture scenarios such as white and green background boards, and outputs Boolean audit conclusions and reason descriptions in Chinese that can be directly integrated with business systems. It is suitable for large-scale and high-concurrency inbound quality inspection pipelines.
 //
 // ## Scenarios
 //
-// 1. **Parcel bounding box review**: Automatically determines whether the operator\\"s manual bounding box constitutes the "minimum effective border rectangle" for the parcel, and identifies typical issues such as oversized or undersized bounding boxes.
+// 1. **Parcel bounding box audit**: Automatically determines whether the manual bounding box drawn by a job operator on a parcel forms a minimum valid border rectangle, and identifies typical issues such as oversized or undersized bounding boxes.
 //
-// 2. **Foreign object interference detection**: Automatically detects whether non-target objects such as fingers, keyboards, or supporting tools are present in the scanning area.
+// 2. **Foreign object interference detection**: Automatically identifies whether non-job target objects such as fingers, keyboards, or supporting tools are mixed into the scanning area.
 //
-// 3. **Multi-capture environment adaptation**: A single API can handle two common capture patterns — white background board (blue box) and green background board (blue box \\+ red box) — without requiring the caller to distinguish between scenarios.
+// 3. **Multi-capture environment adaptation**: A single set of APIs can process two common capture patterns: white background boards (blue boxes) and green background boards (blue boxes + red boxes). Callers do not need to distinguish between scenarios.
 //
-// 4. **Inbound quality inspection pipeline**: Used for automated compliance review in the piece-weight-dimension stage of the logistics warehouse new product inbound SOP, as a replacement for or supplement to outsourced manual review.
+// 4. **Inbound quality inspection pipeline**: Used for automatic review of the weight and dimension measurement process in the standard operating procedure (SOP) for new product inbound in a logistics repository, to override or assist manual outsourced audits.
 //
-// The product is also applicable to general image "box-subject" relationship review scenarios, such as product photo material review and document scan quality verification.
+// In addition, the product is also applicable to general image bounding box-to-subject relationship audit scenarios, such as product photo material audits and document scanning quality verification.
 //
 // ## Features
 //
-// 1. **Multi-scenario intelligent routing**: The product has built-in scenario classification capabilities. It automatically identifies the background type (white/green) and bounding box type (none/single box/double box) in the image, and routes the request to the corresponding review sub-process. The caller only needs to pass in the image URL without manually specifying the scenario.
+// 1. **Intelligent multi-scenario routing**: The product has built-in scenario classification capabilities. It automatically identifies the background type (white or green) and bounding box type (none, single box, or double boxes) in an image, and routes the request to the corresponding audit sub-process. Callers only need to pass the image URL without manually specifying the scenario.
 //
-// 2. **MLLM + dedicated CV model collaboration**: A multimodal large language model performs semantic-level scenario understanding and foreign object recognition, while a dedicated parcel segmentation and IoU evaluation model performs pixel-level bounding box fit quantification. This ensures accuracy while controlling inference latency and cost.
+// 2. **MLLM and dedicated CV model collaboration**: Uses a multimodal large language model for semantic-level scenario understanding and foreign object recognition, and uses dedicated parcel segmentation and IoU evaluation models for pixel-level bounding box fit quantification. This ensures accuracy while controlling inference latency and costs.
 //
-// 3. **Structured review conclusions**: The output is unified as a `result` (Boolean) \\+ `info` (Chinese-language reason) structure. Supported reason types include "审核通过" (review passed), "审核不通过:框选过大" (review failed: bounding box too large), "审核不通过:框选过小" (review failed: bounding box too small), and "审核不通过:存在异物" (review failed: foreign object detected), enabling direct integration with downstream business systems.
+// 3. **Structured audit conclusions**: The output is unified into a `result` (Boolean) and `info` (reason in Chinese) structure. Supported reason types include \\"审核通过\\", \\"审核不通过:框选过大\\", \\"审核不通过:框选过小\\", and \\"审核不通过:存在异物\\". This facilitates direct integration with downstream business systems.
 //
 // 4. **Supported input formats**: Currently supports publicly accessible image URLs.
 //
@@ -6256,35 +6257,35 @@ func (client *Client) PetHealthAnalysis(request *PetHealthAnalysisRequest) (_res
 
 // Summary:
 //
-// Provides Maas-MT, an e-commerce translation model trained on over 1 billion high-quality bilingual sentence pairs, which is continuously optimized for e-commerce-specific terms such as brands, models, materials, and attributes. Supports translation across more than 400 language pairs, including bridged pairs, with a focus on Chinese-English, Chinese-multilingual, and English-multilingual translations. Supports language detection for 24 language pairs and automatically detects the source language if it is not specified.
+// Translates text by using the Maas-MT e-commerce translation model, which is trained on over 1 billion high-quality bilingual sentence pairs and continuously optimized for e-commerce terminology such as brands, models, materials, and attributes. Supports translation across more than 400 language pairs, including bridged pairs, with a focus on Chinese-English, Chinese-multilingual, and English-multilingual translation. Supports language identification for 24 language pairs and automatically detects the source language if it is not specified.
 //
 // Description:
 //
-// ## Product introduction
+// ## Product Introduction
 //
-// Marco MT is an e-commerce translation model trained on over 1 billion high-quality bilingual sentence pairs, continuously optimized for e-commerce-specific terms such as brands, models, materials, and attributes. It supports translation across more than 100 language pairs, including bridged pairs, especially between Chinese and English, Chinese and multiple languages, and English and multiple languages. It supports language detection for 24 language pairs and automatically detects the source language if it is not specified.
+// Marco MT is an e-commerce translation model trained on over 1 billion high-quality bilingual sentence pairs. It is continuously optimized for e-commerce terminology such as brands, models, materials, and attributes. It supports translation across more than 100 language pairs, including bridged pairs, with a focus on Chinese-English, Chinese-multilingual, and English-multilingual translation. It supports language identification for 24 language pairs and automatically detects the source language if it is not specified.
 //
 // ## Scenarios
 //
-// - Product titles: Marco MT large model translation can accurately translate phrases, keywords, and trending words in product titles into the target language, increasing product exposure on e-commerce platforms.
+// - Product titles: The Marco MT large language model accurately translates phrases, keywords, and trending words in product titles into the target language to increase product exposure on e-commerce platforms.
 //
-// - Product descriptions: Product descriptions are generally long and have diverse and complex formats. Marco MT large model translation supports long-text translation and HTML format, delivering excellent translation quality and format restoration.
+// - Product descriptions: Product descriptions are typically long and have diverse and complex formats. The Marco large language model supports long-text translation and HTML formatting, delivering excellent translation quality and format restoration.
 //
-// - Product attributes: Product attribute terms are short and contain e-commerce-specific words, such as models and parameters.
+// - Product attributes: Product attribute terms are short and contain e-commerce-specific words such as models and parameters.
 //
-// - Customer service conversations: In customer service scenarios, it can optimize issues such as missing context and typos, and supports polite expressions in some language pairs.
+// - Customer service conversations: In customer service scenarios, the model optimizes issues such as missing context and typos, and supports polite expressions in certain language pairs.
 //
-// Additionally, Marco MT large model translation can also be used for translation in general scenarios, such as office work, meetings, and daily conversations.
+// Additionally, the Marco MT large language model can be used for translation in general scenarios, such as office work, meetings, and daily conversations.
 //
 // ## Features
 //
-// - **Supported language pairs**: Marco MT large model translation supports translation between more than 100 languages and language detection for 23 languages. For specific language pairs, refer to the language mapping table in Section 5.6.
+// - **Supported language pairs**: The Marco MT large language model supports translation between more than 100 languages and language identification for 23 languages. For specific language pairs, see the language mapping table in Section 5.6.
 //
-// - **Ultra-low hallucination rate and high-speed inference**: Marco MT large model translation is a large language model aligned with preferences for translation scenarios. Compared with general large language models, it features faster translation inference speed and an extremely low hallucination rate, making it especially suitable for large-scale invocation scenarios.
+// - **Ultra-low hallucination rate and high-speed inference**: The Marco MT large language model is a large language model aligned with preferences in translation scenarios. Compared with general-purpose large language models, it provides faster translation inference and an extremely low hallucination rate, making it especially suitable for large-scale invocation scenarios.
 //
-// - **Supported text formats**: Currently supports text and HTML formats.
+// - **Supported text formats**: The text and HTML formats are supported.
 //
-// - **Translation intervention**: Supports custom translation results, including do-not-translate (ABC-ABC), specified translation (ABC-DEF), and skip translation (ABC-null). This is commonly used for brand word protection. You only need to pass the corresponding intervention glossary ID when calling the API. This meets your translation needs in different scenarios. Generally, you can upload up to 100,000 intervention terms. If you need more, contact the platform.
+// - **Translation intervention**: Custom translation results are supported, including do-not-translate (ABC-ABC), specified translation (ABC-DEF), and skip translation (ABC-null). This is commonly used in scenarios such as brand word protection. You can implement this by passing the corresponding intervention glossary ID when calling the API to meet your translation needs in different scenarios. Generally, you can upload up to 100,000 intervention words. If you need more, contact the platform for assistance.
 //
 // ## Translation quality comparison
 //
@@ -6370,35 +6371,35 @@ func (client *Client) PrepaidTextTranslateWithOptions(tmpReq *PrepaidTextTransla
 
 // Summary:
 //
-// Provides Maas-MT, an e-commerce translation model trained on over 1 billion high-quality bilingual sentence pairs, which is continuously optimized for e-commerce-specific terms such as brands, models, materials, and attributes. Supports translation across more than 400 language pairs, including bridged pairs, with a focus on Chinese-English, Chinese-multilingual, and English-multilingual translations. Supports language detection for 24 language pairs and automatically detects the source language if it is not specified.
+// Translates text by using the Maas-MT e-commerce translation model, which is trained on over 1 billion high-quality bilingual sentence pairs and continuously optimized for e-commerce terminology such as brands, models, materials, and attributes. Supports translation across more than 400 language pairs, including bridged pairs, with a focus on Chinese-English, Chinese-multilingual, and English-multilingual translation. Supports language identification for 24 language pairs and automatically detects the source language if it is not specified.
 //
 // Description:
 //
-// ## Product introduction
+// ## Product Introduction
 //
-// Marco MT is an e-commerce translation model trained on over 1 billion high-quality bilingual sentence pairs, continuously optimized for e-commerce-specific terms such as brands, models, materials, and attributes. It supports translation across more than 100 language pairs, including bridged pairs, especially between Chinese and English, Chinese and multiple languages, and English and multiple languages. It supports language detection for 24 language pairs and automatically detects the source language if it is not specified.
+// Marco MT is an e-commerce translation model trained on over 1 billion high-quality bilingual sentence pairs. It is continuously optimized for e-commerce terminology such as brands, models, materials, and attributes. It supports translation across more than 100 language pairs, including bridged pairs, with a focus on Chinese-English, Chinese-multilingual, and English-multilingual translation. It supports language identification for 24 language pairs and automatically detects the source language if it is not specified.
 //
 // ## Scenarios
 //
-// - Product titles: Marco MT large model translation can accurately translate phrases, keywords, and trending words in product titles into the target language, increasing product exposure on e-commerce platforms.
+// - Product titles: The Marco MT large language model accurately translates phrases, keywords, and trending words in product titles into the target language to increase product exposure on e-commerce platforms.
 //
-// - Product descriptions: Product descriptions are generally long and have diverse and complex formats. Marco MT large model translation supports long-text translation and HTML format, delivering excellent translation quality and format restoration.
+// - Product descriptions: Product descriptions are typically long and have diverse and complex formats. The Marco large language model supports long-text translation and HTML formatting, delivering excellent translation quality and format restoration.
 //
-// - Product attributes: Product attribute terms are short and contain e-commerce-specific words, such as models and parameters.
+// - Product attributes: Product attribute terms are short and contain e-commerce-specific words such as models and parameters.
 //
-// - Customer service conversations: In customer service scenarios, it can optimize issues such as missing context and typos, and supports polite expressions in some language pairs.
+// - Customer service conversations: In customer service scenarios, the model optimizes issues such as missing context and typos, and supports polite expressions in certain language pairs.
 //
-// Additionally, Marco MT large model translation can also be used for translation in general scenarios, such as office work, meetings, and daily conversations.
+// Additionally, the Marco MT large language model can be used for translation in general scenarios, such as office work, meetings, and daily conversations.
 //
 // ## Features
 //
-// - **Supported language pairs**: Marco MT large model translation supports translation between more than 100 languages and language detection for 23 languages. For specific language pairs, refer to the language mapping table in Section 5.6.
+// - **Supported language pairs**: The Marco MT large language model supports translation between more than 100 languages and language identification for 23 languages. For specific language pairs, see the language mapping table in Section 5.6.
 //
-// - **Ultra-low hallucination rate and high-speed inference**: Marco MT large model translation is a large language model aligned with preferences for translation scenarios. Compared with general large language models, it features faster translation inference speed and an extremely low hallucination rate, making it especially suitable for large-scale invocation scenarios.
+// - **Ultra-low hallucination rate and high-speed inference**: The Marco MT large language model is a large language model aligned with preferences in translation scenarios. Compared with general-purpose large language models, it provides faster translation inference and an extremely low hallucination rate, making it especially suitable for large-scale invocation scenarios.
 //
-// - **Supported text formats**: Currently supports text and HTML formats.
+// - **Supported text formats**: The text and HTML formats are supported.
 //
-// - **Translation intervention**: Supports custom translation results, including do-not-translate (ABC-ABC), specified translation (ABC-DEF), and skip translation (ABC-null). This is commonly used for brand word protection. You only need to pass the corresponding intervention glossary ID when calling the API. This meets your translation needs in different scenarios. Generally, you can upload up to 100,000 intervention terms. If you need more, contact the platform.
+// - **Translation intervention**: Custom translation results are supported, including do-not-translate (ABC-ABC), specified translation (ABC-DEF), and skip translation (ABC-null). This is commonly used in scenarios such as brand word protection. You can implement this by passing the corresponding intervention glossary ID when calling the API to meet your translation needs in different scenarios. Generally, you can upload up to 100,000 intervention words. If you need more, contact the platform for assistance.
 //
 // ## Translation quality comparison
 //
@@ -6428,27 +6429,27 @@ func (client *Client) PrepaidTextTranslate(request *PrepaidTextTranslateRequest)
 
 // Summary:
 //
-// Automatically identifies and locates specified products in an image based on a multimodal foundation model.
+// Identifies and locates specified products in images based on multimodal large models.
 //
 // Description:
 //
 // ## Request description
 //
-// **Before you use this operation, make sure that you fully understand the billing method and [pricing](https://www.aliyun.com/price/product#/ecs/detail) of the product hotzone recognition feature.**
+// **Before you call this operation, make sure that you fully understand the billing method and [pricing](https://www.aliyun.com/price/product#/ecs/detail) of the product hot zone recognition service.**
 //
-// This operation automatically identifies and locates specified products in a target scene image based on the provided target scene image and product reference images, and returns the product names and normalized bounding boxes. Each request accepts one target scene image and a set of product reference images. If the same case contains multiple target images, call this operation separately for each target image.
+// This API automatically identifies and locates specified products in a target scene image based on the provided target scene image and product reference images, and outputs the product names and normalized bounding boxes. Pass one target scene image and a set of product reference images in each request. If a case contains multiple target images, call the API once for each target image.
 //
 // ### Precautions
 //
-// - Image URLs must use HTTPS and must be accessible by the server.
+// - Image URLs must use HTTPS and be accessible by the server.
 //
 // - Common image formats such as JPEG, PNG, and WebP are supported.
 //
-// - Each image should not exceed 2 MB.
+// - The size of a single image should not exceed 2 MB.
 //
 // - When using signed URLs, set the validity period to at least 30 minutes.
 //
-// - If the same case contains multiple target scene images, call this operation separately for each target image. The reference image list can be reused.
+// - If a case contains multiple target scene images, call the API once for each target image. The list of reference images can be reused.
 //
 // @param tmpReq - ProductHotspotDetectionRequest
 //
@@ -6506,27 +6507,27 @@ func (client *Client) ProductHotspotDetectionWithOptions(tmpReq *ProductHotspotD
 
 // Summary:
 //
-// Automatically identifies and locates specified products in an image based on a multimodal foundation model.
+// Identifies and locates specified products in images based on multimodal large models.
 //
 // Description:
 //
 // ## Request description
 //
-// **Before you use this operation, make sure that you fully understand the billing method and [pricing](https://www.aliyun.com/price/product#/ecs/detail) of the product hotzone recognition feature.**
+// **Before you call this operation, make sure that you fully understand the billing method and [pricing](https://www.aliyun.com/price/product#/ecs/detail) of the product hot zone recognition service.**
 //
-// This operation automatically identifies and locates specified products in a target scene image based on the provided target scene image and product reference images, and returns the product names and normalized bounding boxes. Each request accepts one target scene image and a set of product reference images. If the same case contains multiple target images, call this operation separately for each target image.
+// This API automatically identifies and locates specified products in a target scene image based on the provided target scene image and product reference images, and outputs the product names and normalized bounding boxes. Pass one target scene image and a set of product reference images in each request. If a case contains multiple target images, call the API once for each target image.
 //
 // ### Precautions
 //
-// - Image URLs must use HTTPS and must be accessible by the server.
+// - Image URLs must use HTTPS and be accessible by the server.
 //
 // - Common image formats such as JPEG, PNG, and WebP are supported.
 //
-// - Each image should not exceed 2 MB.
+// - The size of a single image should not exceed 2 MB.
 //
 // - When using signed URLs, set the validity period to at least 30 minutes.
 //
-// - If the same case contains multiple target scene images, call this operation separately for each target image. The reference image list can be reused.
+// - If a case contains multiple target scene images, call the API once for each target image. The list of reference images can be reused.
 //
 // @param request - ProductHotspotDetectionRequest
 //
@@ -6544,35 +6545,35 @@ func (client *Client) ProductHotspotDetection(request *ProductHotspotDetectionRe
 
 // Summary:
 //
-// Generates a single-product showcase video for e-commerce merchants and platforms based on the product title and multiple images of the same product. This API optionally accepts a storyboard script, automatically selects reference images, plans a three-shot storyboard, and generates the video. It uses asynchronous tasks, supports 720p and 1080p resolutions and four aspect ratios, and is suitable for content production of non-apparel products. For apparel products, use the E-commerce Video Enhanced Edition.
+// Generates a single-product showcase video by using the E-commerce Video Basic Edition for e-commerce merchants and platforms. Based on a product title and multiple images of the same product, with an optional storyboard script, the API automatically selects reference images, plans a three-shot storyboard, and generates the video. This API uses asynchronous tasks, supports 720p and 1080p resolutions and four aspect ratios, and is suitable for product content production in non-apparel categories. For apparel categories, use the E-commerce Video Enhanced Edition.
 //
 // Description:
 //
-// # Product introduction
+// # Product Introduction
 //
-// The basic e-commerce video edition is designed for e-commerce merchants and platforms. It generates a single-product showcase video based on the product title and multiple images of the same product. You can optionally provide a storyboard script. The system automatically selects reference images, plans a three-shot storyboard, and generates the video. The API uses asynchronous tasks, supports 720p and 1080p resolutions and four aspect ratios, and is suitable for content production of non-apparel products. For apparel products, use the e-commerce enhanced edition.
+// The basic e-commerce video edition is designed for e-commerce merchants and platforms. It generates a single-product showcase video based on the product title and multiple images of the same product. You can optionally provide a storyboard script. The system automatically selects reference images, plans a three-shot storyboard, and generates the video. This API uses asynchronous tasks, supports 720P and 1080P resolutions and four aspect ratios, and applies to product content production for non-apparel categories. For apparel categories, use the e-commerce enhanced edition.
 //
 // # Scenarios
 //
-// - New product material generation: Provide the product title and images to automatically plan storyboard shots such as product debut, details, or usage demonstrations.
+//   - New product material generation: Provide the product title and images to automatically plan storyboards such as product debut, details, or usage demonstrations.
 //
-// - Video production with existing scripts: Provide a storyboard script or creative description. The system optimizes the storyboard script based on the product images and retains shot intentions that are supported by the images.
+//   - Video production with existing scripts: Provide a storyboard script or creative description. The system optimizes the storyboard script based on the product images and retains shot intentions that are supported by the images.
 //
-// - Adaptation to different video placements: Use the aspect ratio parameter to adapt to vertical short videos, main product images, detail pages, and horizontal displays. For batch production, each request corresponds to one product and one video.
+//   - Adaptation to different video display positions: Use the aspect ratio parameter to adapt to vertical short videos, main product images, detail pages, and horizontal displays. During batch production, each request corresponds to one product and one video.
 //
 // # Features
 //
-// - Automatic image selection and storyboard planning: When no script is provided, the system generates a storyboard based on the product title and images. When a script is provided, the system still performs image selection and planning, eliminating the need for callers to organize video prompts.
+//   - Automatic image selection and storyboard planning: When no script is provided, the system generates a storyboard based on the product title and images. When a script is provided, the system still performs image selection and planning, eliminating the need for callers to organize video prompts.
 //
-// - Product appearance consistency constraint: The system uses the selected complete product image as the appearance baseline. It checks the color scheme, structure, proportions, texture, version, and specifications of other images, and selects only reference images that can be confirmed to belong to the same SKU.
+//   - Product appearance consistency constraint: The system uses the selected complete product image as the appearance baseline, checks the color scheme, structure, proportion, texture, version, and specifications of other images, and selects only reference images that can be confirmed to belong to the same SKU.
 //
-// - Flexible video specifications: Without a script, the duration is 5 to 15 seconds. With a script, the duration is 5 to 30 seconds. The system supports four aspect ratios (16:9, 1:1, 3:4, and 9:16) and two resolutions (720p and 1080p).
+//   - Flexible video specifications: Without a script, the duration is 5 to 15 seconds. With a script, the duration is 5 to 30 seconds. It supports four aspect ratios (16:9, 1:1, 3:4, and 9:16) and two resolutions (720P and 1080P).
 //
-// - Asynchronous generation and task query: After a task is created, a task ID is returned. The caller queries the result by using the query API. The final video includes background music, no voiceover, and no additional subtitles or marketing text.
+//   - Asynchronous generation and task query: After a task is created, a task ID is returned. The caller uses the query API to obtain the result. The final video includes background music, no voiceover, and no additional subtitles or marketing text.
 //
 // # Examples
 //
-// [View the attachment "Digital_040_WiFi6_Gigabit_Router.mp4" in the DingTalk document.](https://alidocs.dingtalk.com/i/nodes/gwva2dxOW4vRkd9DUn1g1p6kJbkz3BRL?cid=6760411388:7016395022&corpId=dingd8e1123006514592&iframeQuery=anchorId%3DX02mvsyycduj3nepwoeush&utm_medium=im_card&utm_scene=person_space&utm_source=im)
+// [View the attachment Digital_040_WiFi6_Gigabit_Router.mp4 in the DingTalk document.](https://alidocs.dingtalk.com/i/nodes/gwva2dxOW4vRkd9DUn1g1p6kJbkz3BRL?cid=6760411388:7016395022&corpId=dingd8e1123006514592&iframeQuery=anchorId%3DX02mvsyycduj3nepwoeush&utm_medium=im_card&utm_scene=person_space&utm_source=im)
 //
 // @param tmpReq - ProductVideoGenerationRequest
 //
@@ -6642,35 +6643,35 @@ func (client *Client) ProductVideoGenerationWithOptions(tmpReq *ProductVideoGene
 
 // Summary:
 //
-// Generates a single-product showcase video for e-commerce merchants and platforms based on the product title and multiple images of the same product. This API optionally accepts a storyboard script, automatically selects reference images, plans a three-shot storyboard, and generates the video. It uses asynchronous tasks, supports 720p and 1080p resolutions and four aspect ratios, and is suitable for content production of non-apparel products. For apparel products, use the E-commerce Video Enhanced Edition.
+// Generates a single-product showcase video by using the E-commerce Video Basic Edition for e-commerce merchants and platforms. Based on a product title and multiple images of the same product, with an optional storyboard script, the API automatically selects reference images, plans a three-shot storyboard, and generates the video. This API uses asynchronous tasks, supports 720p and 1080p resolutions and four aspect ratios, and is suitable for product content production in non-apparel categories. For apparel categories, use the E-commerce Video Enhanced Edition.
 //
 // Description:
 //
-// # Product introduction
+// # Product Introduction
 //
-// The basic e-commerce video edition is designed for e-commerce merchants and platforms. It generates a single-product showcase video based on the product title and multiple images of the same product. You can optionally provide a storyboard script. The system automatically selects reference images, plans a three-shot storyboard, and generates the video. The API uses asynchronous tasks, supports 720p and 1080p resolutions and four aspect ratios, and is suitable for content production of non-apparel products. For apparel products, use the e-commerce enhanced edition.
+// The basic e-commerce video edition is designed for e-commerce merchants and platforms. It generates a single-product showcase video based on the product title and multiple images of the same product. You can optionally provide a storyboard script. The system automatically selects reference images, plans a three-shot storyboard, and generates the video. This API uses asynchronous tasks, supports 720P and 1080P resolutions and four aspect ratios, and applies to product content production for non-apparel categories. For apparel categories, use the e-commerce enhanced edition.
 //
 // # Scenarios
 //
-// - New product material generation: Provide the product title and images to automatically plan storyboard shots such as product debut, details, or usage demonstrations.
+//   - New product material generation: Provide the product title and images to automatically plan storyboards such as product debut, details, or usage demonstrations.
 //
-// - Video production with existing scripts: Provide a storyboard script or creative description. The system optimizes the storyboard script based on the product images and retains shot intentions that are supported by the images.
+//   - Video production with existing scripts: Provide a storyboard script or creative description. The system optimizes the storyboard script based on the product images and retains shot intentions that are supported by the images.
 //
-// - Adaptation to different video placements: Use the aspect ratio parameter to adapt to vertical short videos, main product images, detail pages, and horizontal displays. For batch production, each request corresponds to one product and one video.
+//   - Adaptation to different video display positions: Use the aspect ratio parameter to adapt to vertical short videos, main product images, detail pages, and horizontal displays. During batch production, each request corresponds to one product and one video.
 //
 // # Features
 //
-// - Automatic image selection and storyboard planning: When no script is provided, the system generates a storyboard based on the product title and images. When a script is provided, the system still performs image selection and planning, eliminating the need for callers to organize video prompts.
+//   - Automatic image selection and storyboard planning: When no script is provided, the system generates a storyboard based on the product title and images. When a script is provided, the system still performs image selection and planning, eliminating the need for callers to organize video prompts.
 //
-// - Product appearance consistency constraint: The system uses the selected complete product image as the appearance baseline. It checks the color scheme, structure, proportions, texture, version, and specifications of other images, and selects only reference images that can be confirmed to belong to the same SKU.
+//   - Product appearance consistency constraint: The system uses the selected complete product image as the appearance baseline, checks the color scheme, structure, proportion, texture, version, and specifications of other images, and selects only reference images that can be confirmed to belong to the same SKU.
 //
-// - Flexible video specifications: Without a script, the duration is 5 to 15 seconds. With a script, the duration is 5 to 30 seconds. The system supports four aspect ratios (16:9, 1:1, 3:4, and 9:16) and two resolutions (720p and 1080p).
+//   - Flexible video specifications: Without a script, the duration is 5 to 15 seconds. With a script, the duration is 5 to 30 seconds. It supports four aspect ratios (16:9, 1:1, 3:4, and 9:16) and two resolutions (720P and 1080P).
 //
-// - Asynchronous generation and task query: After a task is created, a task ID is returned. The caller queries the result by using the query API. The final video includes background music, no voiceover, and no additional subtitles or marketing text.
+//   - Asynchronous generation and task query: After a task is created, a task ID is returned. The caller uses the query API to obtain the result. The final video includes background music, no voiceover, and no additional subtitles or marketing text.
 //
 // # Examples
 //
-// [View the attachment "Digital_040_WiFi6_Gigabit_Router.mp4" in the DingTalk document.](https://alidocs.dingtalk.com/i/nodes/gwva2dxOW4vRkd9DUn1g1p6kJbkz3BRL?cid=6760411388:7016395022&corpId=dingd8e1123006514592&iframeQuery=anchorId%3DX02mvsyycduj3nepwoeush&utm_medium=im_card&utm_scene=person_space&utm_source=im)
+// [View the attachment Digital_040_WiFi6_Gigabit_Router.mp4 in the DingTalk document.](https://alidocs.dingtalk.com/i/nodes/gwva2dxOW4vRkd9DUn1g1p6kJbkz3BRL?cid=6760411388:7016395022&corpId=dingd8e1123006514592&iframeQuery=anchorId%3DX02mvsyycduj3nepwoeush&utm_medium=im_card&utm_scene=person_space&utm_source=im)
 //
 // @param request - ProductVideoGenerationRequest
 //
@@ -6758,7 +6759,7 @@ func (client *Client) QueryAsyncTaskResult(request *QueryAsyncTaskResultRequest)
 
 // Summary:
 //
-// Queries the display knowledge base content by using a paged query with paging (synchronization).
+// Performs a paged query on the content of a display knowledge base by using paging (synchronization).
 //
 // @param tmpReq - QueryDisplayKnowledgeRequest
 //
@@ -6828,7 +6829,7 @@ func (client *Client) QueryDisplayKnowledgeWithOptions(tmpReq *QueryDisplayKnowl
 
 // Summary:
 //
-// Queries the display knowledge base content by using a paged query with paging (synchronization).
+// Performs a paged query on the content of a display knowledge base by using paging (synchronization).
 //
 // @param request - QueryDisplayKnowledgeRequest
 //
@@ -6846,23 +6847,93 @@ func (client *Client) QueryDisplayKnowledge(request *QueryDisplayKnowledgeReques
 
 // Summary:
 //
-// Detects whether an image contains a size chart. (Synchronous)
+// Translates speech in real time.
 //
 // Description:
 //
-// # 1. Product Introduction
+// https://www.alibabacloud.com/help/en/aidge/realtimespeechtranslation#6cf37e65c2fu4
 //
-// Detects whether an image contains a size chart. (Synchronous)
+// @param request - RealtimeSpeechTranslationRequest
 //
-// # 2. Common scenarios
+// @param runtime - runtime options for this request RuntimeOptions
 //
-// **Batch processing scenario:*	- Detect images that contain size charts from a batch of images for further image translation or extraction. The size chart detection service helps reduce costs.
+// @return RealtimeSpeechTranslationResponse
+func (client *Client) RealtimeSpeechTranslationWithOptions(request *RealtimeSpeechTranslationRequest, runtime *dara.RuntimeOptions) (_result *RealtimeSpeechTranslationResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	req := &openapiutil.OpenApiRequest{}
+	params := &openapiutil.Params{
+		Action:               dara.String("RealtimeSpeechTranslation"),
+		Version:              dara.String("2026-04-28"),
+		Protocol:             dara.String("wss"),
+		Pathname:             dara.String("/"),
+		Method:               dara.String("GET"),
+		AuthType:             dara.String("AK"),
+		Style:                dara.String("RPC"),
+		ReqBodyType:          dara.String("formData"),
+		BodyType:             dara.String("json"),
+		WebsocketSubProtocol: dara.String("general"),
+	}
+	res := &RealtimeSpeechTranslationResponse{}
+	callApiTmp, err := client.CallApi(params, req, runtime)
+	if err != nil {
+		_err = err
+		return _result, _err
+	}
+	tmp := dara.ToMap(callApiTmp)
+	if !dara.IsNil(tmp["webSocketClient"]) {
+		res.WebSocketClient = websocketutils.CreateWebSocketClient(tmp["webSocketClient"])
+	}
+
+	_result = res
+	return _result, _err
+}
+
+// Summary:
+//
+// Translates speech in real time.
+//
+// Description:
+//
+// https://www.alibabacloud.com/help/en/aidge/realtimespeechtranslation#6cf37e65c2fu4
+//
+// @param request - RealtimeSpeechTranslationRequest
+//
+// @return RealtimeSpeechTranslationResponse
+func (client *Client) RealtimeSpeechTranslation(request *RealtimeSpeechTranslationRequest) (_result *RealtimeSpeechTranslationResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &RealtimeSpeechTranslationResponse{}
+	_body, _err := client.RealtimeSpeechTranslationWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Detects whether an image contains a size chart in synchronous mode.
+//
+// Description:
+//
+// # 1. Product introduction
+//
+// Detects whether an image contains a size chart in synchronous mode.
+//
+// # 2. Scenarios
+//
+// **Batch processing scenarios:*	- Detects images that contain size charts from a batch of images for further image translation or extraction. The size chart detection product helps save costs.
 //
 // # 3. Features
 //
-// The size chart detection service uses image recognition technology to automatically determine whether an input image contains size chart content. You provide an image URL, and the system returns a detection result (True/False) indicating whether the image is a size chart.
+// The size chart detection service is based on image recognition technology and automatically determines whether an input image contains a size chart. You provide the image URL, and the system returns a Boolean result (true or false) indicating whether the image is a size chart.
 //
-// You can customize the confidence threshold (default: 0.4) and flexibly adjust the detection sensitivity based on your business precision requirements. A lower threshold results in more lenient detection, while a higher threshold results in stricter detection. The API processes a single image per request, making it suitable for integration into automated batch workflows for sequential invocation.
+// You can customize the confidence threshold (default: 0.4) to flexibly adjust the detection sensitivity based on your business accuracy requirements. A lower threshold makes the detection more lenient, while a higher threshold makes it stricter. The API processes one image at a time and is suitable for image-by-image invocation in automated batch processing workflows.
 //
 // # 4. Effect comparison
 //
@@ -6920,23 +6991,23 @@ func (client *Client) SizeChartDetectWithOptions(request *SizeChartDetectRequest
 
 // Summary:
 //
-// Detects whether an image contains a size chart. (Synchronous)
+// Detects whether an image contains a size chart in synchronous mode.
 //
 // Description:
 //
-// # 1. Product Introduction
+// # 1. Product introduction
 //
-// Detects whether an image contains a size chart. (Synchronous)
+// Detects whether an image contains a size chart in synchronous mode.
 //
-// # 2. Common scenarios
+// # 2. Scenarios
 //
-// **Batch processing scenario:*	- Detect images that contain size charts from a batch of images for further image translation or extraction. The size chart detection service helps reduce costs.
+// **Batch processing scenarios:*	- Detects images that contain size charts from a batch of images for further image translation or extraction. The size chart detection product helps save costs.
 //
 // # 3. Features
 //
-// The size chart detection service uses image recognition technology to automatically determine whether an input image contains size chart content. You provide an image URL, and the system returns a detection result (True/False) indicating whether the image is a size chart.
+// The size chart detection service is based on image recognition technology and automatically determines whether an input image contains a size chart. You provide the image URL, and the system returns a Boolean result (true or false) indicating whether the image is a size chart.
 //
-// You can customize the confidence threshold (default: 0.4) and flexibly adjust the detection sensitivity based on your business precision requirements. A lower threshold results in more lenient detection, while a higher threshold results in stricter detection. The API processes a single image per request, making it suitable for integration into automated batch workflows for sequential invocation.
+// You can customize the confidence threshold (default: 0.4) to flexibly adjust the detection sensitivity based on your business accuracy requirements. A lower threshold makes the detection more lenient, while a higher threshold makes it stricter. The API processes one image at a time and is suitable for image-by-image invocation in automated batch processing workflows.
 //
 // # 4. Effect comparison
 //
@@ -6964,27 +7035,27 @@ func (client *Client) SizeChartDetect(request *SizeChartDetectRequest) (_result 
 
 // Summary:
 //
-// Intelligently extracts structured information such as size charts and package weight/dimension data from images by using a multimodal large language model. (Asynchronous)
+// Extracts structured information such as size charts and package weight and dimensions from images by using a multimodal large model. (Asynchronous)
 //
 // Description:
 //
-// ## Product Introduction
+// ## Product introduction
 //
-// Intelligently extracts structured information such as size charts and package weight/dimension data from images by using a multimodal large language model. (Asynchronous)
+// Extracts structured information such as size charts and package weight and dimensions from images by using a multimodal large model. (Asynchronous)
 //
-// ## Common scenarios
+// ## Scenarios
 //
-//   - Size chart: Extracts size charts from apparel category images into text.
+//   - Size charts: Extracts size charts of apparel categories into text.
 //
-//   - Package weight/dimensions: Extracts package weight and dimension information from images.
+//   - Package weight and dimensions: Extracts package weight and dimension information from images.
 //
-// ## Functions and features
+// ## Features
 //
-// The size chart extraction service is based on a multimodal large language model. It automatically recognizes size chart or package weight/dimension information in images and converts it into structured text output. You provide an image URL, and the system processes the request as an asynchronous task and returns the extracted structured data. You can use the ColumnNameList parameter to specify the column names to recognize (such as Size, Bust, and Length) for precise targeted extraction. You can also use the LanguageModel parameter to control the output language. Valid values: cn (Chinese) and en (English). If you leave this parameter empty, the original language is retained. This service is applicable to scenarios such as converting apparel size charts to text and batch structuring of product weight/dimension information.
+// The size chart extraction service uses a multimodal large model to automatically recognize size charts or package weight and dimension information in images and convert it into structured text output. You provide an image URL, and the system processes it as an asynchronous task and returns the extracted structured data. You can specify the column names to be recognized (such as Size, Bust, and Length) by using ColumnNameList to achieve precise targeted extraction. You can also control the output language by using the LanguageModel parameter. Valid values: cn for Chinese and en for English. If this parameter is left empty, the original language is retained. This service is applicable to scenarios such as text conversion of size charts for apparel categories and batch structuring of package weight and dimension information for commodities.
 //
-// Core capability: Provide an image URL and optional column name configurations as input, and receive structured data of size charts or package weight/dimensions from the image as output. The API uses an asynchronous task mode (background: true). After submission, a task ID is returned. Poll for the final result. This mode is suitable for processing complex images or high-volume call scenarios.
+// Core capabilities: You input an image URL and optional column name configurations, and the system outputs the structured data of the size chart or package weight and dimensions in the image. The API operation uses an asynchronous task mode (background: true). After submission, a task ID is returned. You must poll to obtain the final result. This mode is suitable for processing complex images or handling large-scale calls.
 //
-// ## Comparison
+// ## Results comparison
 //
 // | **Input image*	- | **Output result*	- |
 //
@@ -6996,13 +7067,13 @@ func (client *Client) SizeChartDetect(request *SizeChartDetectRequest) (_result 
 //
 //	  {
 //
-//	    "尺码": {
+//	    "Size": {
 //
 //	      "value": "S"
 //
 //	    },
 //
-//	    "腰围": {
+//	    "Waist": {
 //
 //	      "unit": "CM",
 //
@@ -7010,7 +7081,7 @@ func (client *Client) SizeChartDetect(request *SizeChartDetectRequest) (_result 
 //
 //	    },
 //
-//	    "裙长": {
+//	    "Skirt length": {
 //
 //	      "unit": "CM",
 //
@@ -7018,7 +7089,7 @@ func (client *Client) SizeChartDetect(request *SizeChartDetectRequest) (_result 
 //
 //	    },
 //
-//	    "体重建议": {
+//	    "Weight recommendation": {
 //
 //	      "unit": "kg",
 //
@@ -7032,13 +7103,13 @@ func (client *Client) SizeChartDetect(request *SizeChartDetectRequest) (_result 
 //
 //	  {
 //
-//	    "尺码": {
+//	    "Size": {
 //
 //	      "value": "M"
 //
 //	    },
 //
-//	    "腰围": {
+//	    "Waist": {
 //
 //	      "unit": "CM",
 //
@@ -7046,7 +7117,7 @@ func (client *Client) SizeChartDetect(request *SizeChartDetectRequest) (_result 
 //
 //	    },
 //
-//	    "裙长": {
+//	    "Skirt length": {
 //
 //	      "unit": "CM",
 //
@@ -7054,7 +7125,7 @@ func (client *Client) SizeChartDetect(request *SizeChartDetectRequest) (_result 
 //
 //	    },
 //
-//	    "体重建议": {
+//	    "Weight recommendation": {
 //
 //	      "unit": "kg",
 //
@@ -7068,13 +7139,13 @@ func (client *Client) SizeChartDetect(request *SizeChartDetectRequest) (_result 
 //
 //	  {
 //
-//	    "尺码": {
+//	    "Size": {
 //
 //	      "value": "L"
 //
 //	    },
 //
-//	    "腰围": {
+//	    "Waist": {
 //
 //	      "unit": "CM",
 //
@@ -7082,7 +7153,7 @@ func (client *Client) SizeChartDetect(request *SizeChartDetectRequest) (_result 
 //
 //	    },
 //
-//	    "裙长": {
+//	    "Skirt length": {
 //
 //	      "unit": "CM",
 //
@@ -7090,7 +7161,7 @@ func (client *Client) SizeChartDetect(request *SizeChartDetectRequest) (_result 
 //
 //	    },
 //
-//	    "体重建议": {
+//	    "Weight recommendation": {
 //
 //	      "unit": "kg",
 //
@@ -7104,13 +7175,13 @@ func (client *Client) SizeChartDetect(request *SizeChartDetectRequest) (_result 
 //
 //	  {
 //
-//	    "尺码": {
+//	    "Size": {
 //
 //	      "value": "XL"
 //
 //	    },
 //
-//	    "腰围": {
+//	    "Waist": {
 //
 //	      "unit": "CM",
 //
@@ -7118,7 +7189,7 @@ func (client *Client) SizeChartDetect(request *SizeChartDetectRequest) (_result 
 //
 //	    },
 //
-//	    "裙长": {
+//	    "Skirt length": {
 //
 //	      "unit": "CM",
 //
@@ -7126,7 +7197,7 @@ func (client *Client) SizeChartDetect(request *SizeChartDetectRequest) (_result 
 //
 //	    },
 //
-//	    "体重建议": {
+//	    "Weight recommendation": {
 //
 //	      "unit": "kg",
 //
@@ -7140,13 +7211,13 @@ func (client *Client) SizeChartDetect(request *SizeChartDetectRequest) (_result 
 //
 //	  {
 //
-//	    "尺码": {
+//	    "Size": {
 //
 //	      "value": "2XL"
 //
 //	    },
 //
-//	    "腰围": {
+//	    "Waist": {
 //
 //	      "unit": "CM",
 //
@@ -7154,7 +7225,7 @@ func (client *Client) SizeChartDetect(request *SizeChartDetectRequest) (_result 
 //
 //	    },
 //
-//	    "裙长": {
+//	    "Skirt length": {
 //
 //	      "unit": "CM",
 //
@@ -7162,7 +7233,7 @@ func (client *Client) SizeChartDetect(request *SizeChartDetectRequest) (_result 
 //
 //	    },
 //
-//	    "体重建议": {
+//	    "Weight recommendation": {
 //
 //	      "unit": "kg",
 //
@@ -7178,25 +7249,25 @@ func (client *Client) SizeChartDetect(request *SizeChartDetectRequest) (_result 
 //
 //	"SizeChartAttributes": [
 //
-//	  "尺码",
+//	  "Size",
 //
-//	  "裙长",
+//	  "Skirt length",
 //
-//	  "腰围",
+//	  "Waist",
 //
-//	  "体重建议"
+//	  "Weight recommendation"
 //
 //	\\],
 //
 //	"IntersectionAttributes": [
 //
-//	  "尺码",
+//	  "Size",
 //
-//	  "裙长",
+//	  "Skirt length",
 //
-//	  "腰围(拉伸)",
+//	  "Waist (stretched)",
 //
-//	  "体重建议"
+//	  "Weight recommendation"
 //
 //	\\]
 //
@@ -7258,27 +7329,27 @@ func (client *Client) SizeChartExtractWithOptions(tmpReq *SizeChartExtractReques
 
 // Summary:
 //
-// Intelligently extracts structured information such as size charts and package weight/dimension data from images by using a multimodal large language model. (Asynchronous)
+// Extracts structured information such as size charts and package weight and dimensions from images by using a multimodal large model. (Asynchronous)
 //
 // Description:
 //
-// ## Product Introduction
+// ## Product introduction
 //
-// Intelligently extracts structured information such as size charts and package weight/dimension data from images by using a multimodal large language model. (Asynchronous)
+// Extracts structured information such as size charts and package weight and dimensions from images by using a multimodal large model. (Asynchronous)
 //
-// ## Common scenarios
+// ## Scenarios
 //
-//   - Size chart: Extracts size charts from apparel category images into text.
+//   - Size charts: Extracts size charts of apparel categories into text.
 //
-//   - Package weight/dimensions: Extracts package weight and dimension information from images.
+//   - Package weight and dimensions: Extracts package weight and dimension information from images.
 //
-// ## Functions and features
+// ## Features
 //
-// The size chart extraction service is based on a multimodal large language model. It automatically recognizes size chart or package weight/dimension information in images and converts it into structured text output. You provide an image URL, and the system processes the request as an asynchronous task and returns the extracted structured data. You can use the ColumnNameList parameter to specify the column names to recognize (such as Size, Bust, and Length) for precise targeted extraction. You can also use the LanguageModel parameter to control the output language. Valid values: cn (Chinese) and en (English). If you leave this parameter empty, the original language is retained. This service is applicable to scenarios such as converting apparel size charts to text and batch structuring of product weight/dimension information.
+// The size chart extraction service uses a multimodal large model to automatically recognize size charts or package weight and dimension information in images and convert it into structured text output. You provide an image URL, and the system processes it as an asynchronous task and returns the extracted structured data. You can specify the column names to be recognized (such as Size, Bust, and Length) by using ColumnNameList to achieve precise targeted extraction. You can also control the output language by using the LanguageModel parameter. Valid values: cn for Chinese and en for English. If this parameter is left empty, the original language is retained. This service is applicable to scenarios such as text conversion of size charts for apparel categories and batch structuring of package weight and dimension information for commodities.
 //
-// Core capability: Provide an image URL and optional column name configurations as input, and receive structured data of size charts or package weight/dimensions from the image as output. The API uses an asynchronous task mode (background: true). After submission, a task ID is returned. Poll for the final result. This mode is suitable for processing complex images or high-volume call scenarios.
+// Core capabilities: You input an image URL and optional column name configurations, and the system outputs the structured data of the size chart or package weight and dimensions in the image. The API operation uses an asynchronous task mode (background: true). After submission, a task ID is returned. You must poll to obtain the final result. This mode is suitable for processing complex images or handling large-scale calls.
 //
-// ## Comparison
+// ## Results comparison
 //
 // | **Input image*	- | **Output result*	- |
 //
@@ -7290,13 +7361,13 @@ func (client *Client) SizeChartExtractWithOptions(tmpReq *SizeChartExtractReques
 //
 //	  {
 //
-//	    "尺码": {
+//	    "Size": {
 //
 //	      "value": "S"
 //
 //	    },
 //
-//	    "腰围": {
+//	    "Waist": {
 //
 //	      "unit": "CM",
 //
@@ -7304,7 +7375,7 @@ func (client *Client) SizeChartExtractWithOptions(tmpReq *SizeChartExtractReques
 //
 //	    },
 //
-//	    "裙长": {
+//	    "Skirt length": {
 //
 //	      "unit": "CM",
 //
@@ -7312,7 +7383,7 @@ func (client *Client) SizeChartExtractWithOptions(tmpReq *SizeChartExtractReques
 //
 //	    },
 //
-//	    "体重建议": {
+//	    "Weight recommendation": {
 //
 //	      "unit": "kg",
 //
@@ -7326,13 +7397,13 @@ func (client *Client) SizeChartExtractWithOptions(tmpReq *SizeChartExtractReques
 //
 //	  {
 //
-//	    "尺码": {
+//	    "Size": {
 //
 //	      "value": "M"
 //
 //	    },
 //
-//	    "腰围": {
+//	    "Waist": {
 //
 //	      "unit": "CM",
 //
@@ -7340,7 +7411,7 @@ func (client *Client) SizeChartExtractWithOptions(tmpReq *SizeChartExtractReques
 //
 //	    },
 //
-//	    "裙长": {
+//	    "Skirt length": {
 //
 //	      "unit": "CM",
 //
@@ -7348,7 +7419,7 @@ func (client *Client) SizeChartExtractWithOptions(tmpReq *SizeChartExtractReques
 //
 //	    },
 //
-//	    "体重建议": {
+//	    "Weight recommendation": {
 //
 //	      "unit": "kg",
 //
@@ -7362,13 +7433,13 @@ func (client *Client) SizeChartExtractWithOptions(tmpReq *SizeChartExtractReques
 //
 //	  {
 //
-//	    "尺码": {
+//	    "Size": {
 //
 //	      "value": "L"
 //
 //	    },
 //
-//	    "腰围": {
+//	    "Waist": {
 //
 //	      "unit": "CM",
 //
@@ -7376,7 +7447,7 @@ func (client *Client) SizeChartExtractWithOptions(tmpReq *SizeChartExtractReques
 //
 //	    },
 //
-//	    "裙长": {
+//	    "Skirt length": {
 //
 //	      "unit": "CM",
 //
@@ -7384,7 +7455,7 @@ func (client *Client) SizeChartExtractWithOptions(tmpReq *SizeChartExtractReques
 //
 //	    },
 //
-//	    "体重建议": {
+//	    "Weight recommendation": {
 //
 //	      "unit": "kg",
 //
@@ -7398,13 +7469,13 @@ func (client *Client) SizeChartExtractWithOptions(tmpReq *SizeChartExtractReques
 //
 //	  {
 //
-//	    "尺码": {
+//	    "Size": {
 //
 //	      "value": "XL"
 //
 //	    },
 //
-//	    "腰围": {
+//	    "Waist": {
 //
 //	      "unit": "CM",
 //
@@ -7412,7 +7483,7 @@ func (client *Client) SizeChartExtractWithOptions(tmpReq *SizeChartExtractReques
 //
 //	    },
 //
-//	    "裙长": {
+//	    "Skirt length": {
 //
 //	      "unit": "CM",
 //
@@ -7420,7 +7491,7 @@ func (client *Client) SizeChartExtractWithOptions(tmpReq *SizeChartExtractReques
 //
 //	    },
 //
-//	    "体重建议": {
+//	    "Weight recommendation": {
 //
 //	      "unit": "kg",
 //
@@ -7434,13 +7505,13 @@ func (client *Client) SizeChartExtractWithOptions(tmpReq *SizeChartExtractReques
 //
 //	  {
 //
-//	    "尺码": {
+//	    "Size": {
 //
 //	      "value": "2XL"
 //
 //	    },
 //
-//	    "腰围": {
+//	    "Waist": {
 //
 //	      "unit": "CM",
 //
@@ -7448,7 +7519,7 @@ func (client *Client) SizeChartExtractWithOptions(tmpReq *SizeChartExtractReques
 //
 //	    },
 //
-//	    "裙长": {
+//	    "Skirt length": {
 //
 //	      "unit": "CM",
 //
@@ -7456,7 +7527,7 @@ func (client *Client) SizeChartExtractWithOptions(tmpReq *SizeChartExtractReques
 //
 //	    },
 //
-//	    "体重建议": {
+//	    "Weight recommendation": {
 //
 //	      "unit": "kg",
 //
@@ -7472,25 +7543,25 @@ func (client *Client) SizeChartExtractWithOptions(tmpReq *SizeChartExtractReques
 //
 //	"SizeChartAttributes": [
 //
-//	  "尺码",
+//	  "Size",
 //
-//	  "裙长",
+//	  "Skirt length",
 //
-//	  "腰围",
+//	  "Waist",
 //
-//	  "体重建议"
+//	  "Weight recommendation"
 //
 //	\\],
 //
 //	"IntersectionAttributes": [
 //
-//	  "尺码",
+//	  "Size",
 //
-//	  "裙长",
+//	  "Skirt length",
 //
-//	  "腰围(拉伸)",
+//	  "Waist (stretched)",
 //
-//	  "体重建议"
+//	  "Weight recommendation"
 //
 //	\\]
 //
@@ -7512,7 +7583,7 @@ func (client *Client) SizeChartExtract(request *SizeChartExtractRequest) (_resul
 
 // Summary:
 //
-// Extracts structured information such as size charts and package weight and dimensions from images by using a multimodal large language model in asynchronous mode.
+// Extracts structured information such as size charts and package weight and dimensions from images by using a multimodal large model. (Asynchronous)
 //
 // Description:
 //
@@ -7522,15 +7593,15 @@ func (client *Client) SizeChartExtract(request *SizeChartExtractRequest) (_resul
 //
 // Package weight and dimensions: Extracts package weight and dimension information from images.
 //
-// ## Features
+// ## Feature description
 //
-// The size chart extraction service is based on a multimodal large language model. It automatically recognizes size charts or package weight and dimension information in images and converts the information into structured text output. You provide an image URL, and the system processes the request as an asynchronous task and returns the extracted structured data. You can specify the column names to be recognized, such as Size, Bust, and Length, by using ColumnNameList to achieve precise and targeted extraction. You can also control the output language by using the LanguageModel parameter. Valid values: cn for Chinese and en for English. If you do not specify this parameter, the original language is retained. This service is applicable to scenarios such as text conversion of size charts for apparel categories and batch structuring of package weight and dimension information for commodities.
+// The size chart extraction service is based on a multimodal large model. It automatically recognizes size charts or package weight and dimension information in images and converts the information into structured text output. You provide an image URL, and the system processes it as an asynchronous task and returns the extracted structured data. You can specify the column names to be recognized, such as Size, Bust, and Length, by using ColumnNameList to achieve precise targeted extraction. You can also control the output language by using the LanguageModel parameter. Valid values: cn for Chinese and en for English. If you do not specify this parameter, the original language is retained. This service is applicable to scenarios such as text conversion of size charts for apparel categories and batch structuring of package weight and dimension information for commodities.
 //
-// Core capabilities: You input an image URL and optional column name configurations, and the system outputs the structured data of the size chart or package weight and dimensions in the image. The API operation uses the asynchronous task mode (background: true). After you submit the task, a task ID is returned. You must poll the task to obtain the final result. This mode is suitable for processing complex images or handling large-scale calls.
+// Core capabilities: You input an image URL and optional column name configurations, and the system outputs the structured data of the size chart or package weight and dimensions in the image. The API operation uses the asynchronous task mode (background: true). After you submit the task, a task ID is returned. You must poll for the final result. This mode is suitable for processing complex images or handling a large number of calls.
 //
-// ## Comparison of results
+// ## Results
 //
-// | Input image | Output result |
+// | Input image | Output |
 //
 // | --- | --- |
 //
@@ -7738,7 +7809,7 @@ func (client *Client) SizeChartExtract(request *SizeChartExtractRequest) (_resul
 //
 //	  "Skirt length",
 //
-//	  "Waist (stretched)",
+//	  "Waist (stretch)",
 //
 //	  "Recommended weight"
 //
@@ -7806,7 +7877,7 @@ func (client *Client) SizeChartExtractAsyncWithOptions(tmpReq *SizeChartExtractA
 
 // Summary:
 //
-// Extracts structured information such as size charts and package weight and dimensions from images by using a multimodal large language model in asynchronous mode.
+// Extracts structured information such as size charts and package weight and dimensions from images by using a multimodal large model. (Asynchronous)
 //
 // Description:
 //
@@ -7816,15 +7887,15 @@ func (client *Client) SizeChartExtractAsyncWithOptions(tmpReq *SizeChartExtractA
 //
 // Package weight and dimensions: Extracts package weight and dimension information from images.
 //
-// ## Features
+// ## Feature description
 //
-// The size chart extraction service is based on a multimodal large language model. It automatically recognizes size charts or package weight and dimension information in images and converts the information into structured text output. You provide an image URL, and the system processes the request as an asynchronous task and returns the extracted structured data. You can specify the column names to be recognized, such as Size, Bust, and Length, by using ColumnNameList to achieve precise and targeted extraction. You can also control the output language by using the LanguageModel parameter. Valid values: cn for Chinese and en for English. If you do not specify this parameter, the original language is retained. This service is applicable to scenarios such as text conversion of size charts for apparel categories and batch structuring of package weight and dimension information for commodities.
+// The size chart extraction service is based on a multimodal large model. It automatically recognizes size charts or package weight and dimension information in images and converts the information into structured text output. You provide an image URL, and the system processes it as an asynchronous task and returns the extracted structured data. You can specify the column names to be recognized, such as Size, Bust, and Length, by using ColumnNameList to achieve precise targeted extraction. You can also control the output language by using the LanguageModel parameter. Valid values: cn for Chinese and en for English. If you do not specify this parameter, the original language is retained. This service is applicable to scenarios such as text conversion of size charts for apparel categories and batch structuring of package weight and dimension information for commodities.
 //
-// Core capabilities: You input an image URL and optional column name configurations, and the system outputs the structured data of the size chart or package weight and dimensions in the image. The API operation uses the asynchronous task mode (background: true). After you submit the task, a task ID is returned. You must poll the task to obtain the final result. This mode is suitable for processing complex images or handling large-scale calls.
+// Core capabilities: You input an image URL and optional column name configurations, and the system outputs the structured data of the size chart or package weight and dimensions in the image. The API operation uses the asynchronous task mode (background: true). After you submit the task, a task ID is returned. You must poll for the final result. This mode is suitable for processing complex images or handling a large number of calls.
 //
-// ## Comparison of results
+// ## Results
 //
-// | Input image | Output result |
+// | Input image | Output |
 //
 // | --- | --- |
 //
@@ -8032,7 +8103,7 @@ func (client *Client) SizeChartExtractAsyncWithOptions(tmpReq *SizeChartExtractA
 //
 //	  "Skirt length",
 //
-//	  "Waist (stretched)",
+//	  "Waist (stretch)",
 //
 //	  "Recommended weight"
 //
@@ -8056,7 +8127,7 @@ func (client *Client) SizeChartExtractAsync(request *SizeChartExtractAsyncReques
 
 // Summary:
 //
-// Audits store photos based on storefront scene recognition and multimodal large model element localization. The API outputs storefront scene classifications and confidence details, and localizes storefronts, signboards, entrances, and business signs. It is applicable to store data collection, storefront photo classification, and inspection reviews.
+// Reviews store photos based on storefront scene recognition and multimodal large model element localization. This operation outputs storefront scene classifications and confidence details, and localizes storefronts, signboards, entrances, and business signs. It is applicable to store data collection, storefront photo classification, and inspection reviews.
 //
 // Description:
 //
@@ -8070,13 +8141,13 @@ func (client *Client) SizeChartExtractAsync(request *SizeChartExtractAsyncReques
 //
 // ## Features
 //
-// - Scene classification and details: Returns a scenes string array and classification details. Non-storefront photos are also valid classification results.
+// - Scene classification and details: Returns the scenes string array and classification details. Non-storefront photos are also valid classification results.
 //
 // - Storefront key element localization: Covers storefronts, signboards, store entrances, and business-related signs.
 //
 // - Readable text extraction: Extracts only clear short text. Does not infer business status based on whether the door is open or closed, and does not infer addresses or store ownership.
 //
-// - Supports single HTTPS image input. Supplementary localization returns up to 12 targets, each containing a category, bounding box, and up to 24 characters of visible text, with coverage indicating whether the localization is complete.
+// - Supports single HTTPS image input. Supplementary localization returns up to 12 targets. Each target includes a category, a bounding box, and up to 24 characters of visible text, and uses coverage to indicate whether the localization is complete.
 //
 // @param request - StorefrontSceneRecognitionRequest
 //
@@ -8120,7 +8191,7 @@ func (client *Client) StorefrontSceneRecognitionWithOptions(request *StorefrontS
 
 // Summary:
 //
-// Audits store photos based on storefront scene recognition and multimodal large model element localization. The API outputs storefront scene classifications and confidence details, and localizes storefronts, signboards, entrances, and business signs. It is applicable to store data collection, storefront photo classification, and inspection reviews.
+// Reviews store photos based on storefront scene recognition and multimodal large model element localization. This operation outputs storefront scene classifications and confidence details, and localizes storefronts, signboards, entrances, and business signs. It is applicable to store data collection, storefront photo classification, and inspection reviews.
 //
 // Description:
 //
@@ -8134,13 +8205,13 @@ func (client *Client) StorefrontSceneRecognitionWithOptions(request *StorefrontS
 //
 // ## Features
 //
-// - Scene classification and details: Returns a scenes string array and classification details. Non-storefront photos are also valid classification results.
+// - Scene classification and details: Returns the scenes string array and classification details. Non-storefront photos are also valid classification results.
 //
 // - Storefront key element localization: Covers storefronts, signboards, store entrances, and business-related signs.
 //
 // - Readable text extraction: Extracts only clear short text. Does not infer business status based on whether the door is open or closed, and does not infer addresses or store ownership.
 //
-// - Supports single HTTPS image input. Supplementary localization returns up to 12 targets, each containing a category, bounding box, and up to 24 characters of visible text, with coverage indicating whether the localization is complete.
+// - Supports single HTTPS image input. Supplementary localization returns up to 12 targets. Each target includes a category, a bounding box, and up to 24 characters of visible text, and uses coverage to indicate whether the localization is complete.
 //
 // @param request - StorefrontSceneRecognitionRequest
 //
@@ -8158,7 +8229,7 @@ func (client *Client) StorefrontSceneRecognition(request *StorefrontSceneRecogni
 
 // Summary:
 //
-// Generates product detail page materials automatically based on a multimodal large language model (MLLM) and structured image-text extraction to help e-commerce platforms and brands supplement product detail pages. After the caller pushes product information such as the product ID, title, brand, main image, and shop name, the service automatically locates identical products, performs consistency checks, extracts size information and product attributes, renders them into SVG size and attribute charts for direct use on the detail page, and returns structured detail copy classifications and processing remarks.
+// Generates product detail page materials based on multimodal large language models (MLLMs) and structured image and text extraction to help e-commerce platforms and brands complete detail page content. After receiving product information such as the product ID, title, brand, main image, and store name, the service automatically locates identical products and performs consistency checks. It then extracts size information and product attributes from the identical products, renders them into SVG size and attribute charts for direct use on detail pages, and returns structured detail copy classifications and processing notes.
 //
 // @param request - SubmitProductMatchRequest
 //
@@ -8226,7 +8297,7 @@ func (client *Client) SubmitProductMatchWithOptions(request *SubmitProductMatchR
 
 // Summary:
 //
-// Generates product detail page materials automatically based on a multimodal large language model (MLLM) and structured image-text extraction to help e-commerce platforms and brands supplement product detail pages. After the caller pushes product information such as the product ID, title, brand, main image, and shop name, the service automatically locates identical products, performs consistency checks, extracts size information and product attributes, renders them into SVG size and attribute charts for direct use on the detail page, and returns structured detail copy classifications and processing remarks.
+// Generates product detail page materials based on multimodal large language models (MLLMs) and structured image and text extraction to help e-commerce platforms and brands complete detail page content. After receiving product information such as the product ID, title, brand, main image, and store name, the service automatically locates identical products and performs consistency checks. It then extracts size information and product attributes from the identical products, renders them into SVG size and attribute charts for direct use on detail pages, and returns structured detail copy classifications and processing notes.
 //
 // @param request - SubmitProductMatchRequest
 //
@@ -8244,17 +8315,17 @@ func (client *Client) SubmitProductMatch(request *SubmitProductMatchRequest) (_r
 
 // Summary:
 //
-// Corrects errors in search terms and titles.
+// Corrects search terms and titles.
 //
 // Description:
 //
-// ## Product Introduction
+// ## Product introduction
 //
-// Corrects errors in search terms and titles. The following 14 languages are currently supported:
+// Corrects search terms and titles. Currently, the following 14 languages are supported:
 //
 // | No. | Language name (English) | Language code | Language name (Chinese) |
 //
-// |------|------------------------|------------|------------------------|
+// |---|---|---|---|
 //
 // | 1 | Arabic | ar | 阿拉伯语 |
 //
@@ -8330,17 +8401,17 @@ func (client *Client) TextCorrectWithOptions(request *TextCorrectRequest, runtim
 
 // Summary:
 //
-// Corrects errors in search terms and titles.
+// Corrects search terms and titles.
 //
 // Description:
 //
-// ## Product Introduction
+// ## Product introduction
 //
-// Corrects errors in search terms and titles. The following 14 languages are currently supported:
+// Corrects search terms and titles. Currently, the following 14 languages are supported:
 //
 // | No. | Language name (English) | Language code | Language name (Chinese) |
 //
-// |------|------------------------|------------|------------------------|
+// |---|---|---|---|
 //
 // | 1 | Arabic | ar | 阿拉伯语 |
 //
@@ -8386,49 +8457,49 @@ func (client *Client) TextCorrect(request *TextCorrectRequest) (_result *TextCor
 
 // Summary:
 //
-// Maas-MT is an e-commerce translation model trained on over 1 billion high-quality bilingual sentence pairs, with continuous optimization for e-commerce-specific terminology such as brands, models, materials, and attributes. It supports mutual translation among more than 400 language directions (including bridged directions), especially Chinese-English, Chinese-multilingual, and English-multilingual translation. It supports language detection for query phrases in 31 languages and general scenarios in 35 languages. If you do not specify a source language, automatic detection is performed.
+// Translates text by using the Maas-MT model, an e-commerce translation model trained on over 1 billion high-quality bilingual sentence pairs. The model is continuously optimized for e-commerce terminology such as brands, models, materials, and attributes. It supports translation between more than 400 language pairs, including bridged pairs, especially between Chinese and English, Chinese and other languages, and English and other languages. It supports language identification for query phrases in 31 languages and general scenarios in 35 languages. If the source language is not specified, automatic language identification is performed.
 //
 // Description:
 //
-// ## Product Introduction
+// ## Product introduction
 //
-// Maas-MT is an e-commerce translation model trained on over 1 billion\\+ high-quality bilingual sentence pairs, with continuous optimization for e-commerce-specific terminology such as brands, models, materials, and attributes. It supports mutual translation among more than 400 language directions (including bridged directions), especially Chinese-English, Chinese-multilingual, and English-multilingual translation. It supports language detection for query phrases in 31 languages and general scenarios in 35 languages. If you do not specify a source language, automatic detection is performed.
+// Maas-MT is an e-commerce translation model trained on over 1 billion high-quality bilingual sentence pairs. It is continuously optimized for e-commerce terminology such as brands, models, materials, and attributes. It supports translation between more than 400 language pairs, including bridged pairs, especially between Chinese and English, Chinese and other languages, and English and other languages. It supports language identification for query phrases in 31 languages and general scenarios in 35 languages. If the source language is not specified, automatic language identification is performed.
 //
-// ## Common scenarios
+// ## Scenarios
 //
-// - Product titles: Maas-MT large model translation accurately translates phrases, keywords, and trending terms in product titles into the target language, improving product visibility on e-commerce platforms.
+// - Product titles: The Maas-MT large model can accurately translate phrases, keywords, and trending words in product titles into the target language, increasing product exposure on e-commerce platforms.
 //
-// - Product descriptions: Product descriptions are typically long with diverse and complex formatting. Maas-MT large model translation supports long text translation and HTML formatting, delivering excellent translation quality and format preservation.
+// - Product descriptions: Product descriptions are generally long and have diverse and complex formats. The Maas-MT large model supports long text translation and HTML format, delivering excellent translation quality and format restoration.
 //
-// - Product attributes: Product attribute terms are short and may contain e-commerce-specific terms such as model numbers and specifications.
+// - Product attributes: Product attribute terms are short and contain e-commerce specific words such as models and parameters.
 //
-// - Customer service conversations: In customer service scenarios, Maas-MT optimizes issues such as missing context and typos, and supports polite expressions for certain language directions.
+// - Customer service conversations: In customer service scenarios, it can optimize issues such as missing context and typos, and supports polite expressions in some language pairs.
 //
-// Maas-MT large model translation can also be used for general-purpose translation scenarios such as office work, meetings, and daily conversations.
+// In addition, the Maas-MT large model can be used for translation in general scenarios, such as office work, meetings, and daily conversations.
 //
-// ## Functions and features
+// ## Features
 //
-// - **Supported language directions*	-
+// - **Supported language pairs*	-
 //
-// Maas-MT large model translation supports mutual translation among more than 400 languages and language detection for query phrases in 31 languages and general scenarios in 35 languages.
+// The Maas-MT large model supports translation between more than 400 languages and language identification for query phrases in 31 languages and general scenarios in 35 languages.
 //
-// <props="china">For supported language directions, see [Language direction mapping](https://www.alibabacloud.com/help/en/document_detail/3041883.html)
+// <props="china">For supported language pairs, see [Language pair mapping table](https://www.alibabacloud.com/help/en/document_detail/3041883.html).
 //
-// <props="intl">For supported language directions, see [Language direction mapping](https://www.alibabacloud.com/help/zh/aidge/language-direction-mapping)
+// <props="intl">For supported language pairs, see [Language pair mapping table](https://www.alibabacloud.com/help/zh/aidge/language-direction-mapping).
 //
 // - **Ultra-low hallucination rate and high-speed inference*	-
 //
-// Maas-MT large model translation is a large language model with preference alignment for translation scenarios. Compared with general-purpose large language models, it delivers faster translation inference and an extremely low hallucination rate, making it especially suitable for large-scale invocation scenarios.
+// The Maas-MT large model is a large language model aligned with preferences for translation scenarios. Compared with general large language models, it features faster translation inference speed and an extremely low hallucination rate, making it especially suitable for large-scale call scenarios.
 //
-// - **Supported text format types for translation*	-
+// - **Supported text formats for translation*	-
 //
-// Currently, text and html text types are supported.
+// Currently, the text and HTML formats are supported.
 //
-// - **Translation intervention support*	-
+// - **Translation intervention*	-
 //
-// Custom translation results are supported, including do-not-translate (ABC-ABC), specified translation (ABC-DEF), and skip translation (ABC-empty value). This is commonly used for scenarios such as brand name protection. Simply pass the corresponding intervention glossary ID when calling the API to meet your translation needs across different scenarios. You can upload up to 100,000 intervention terms. If you need more, contact the platform for assistance.
+// Custom translation results are supported, including do-not-translate (ABC-ABC), specified translation (ABC-DEF), and no translation (ABC-null). This is commonly used in scenarios such as brand word protection. You only need to pass the corresponding intervention glossary ID when calling the API operation. This meets your translation needs in different scenarios. Generally, you can upload 100,000 intervention words. If you need more, contact the platform for processing.
 //
-// ## Translation quality comparison
+// ## Translation effect comparison
 //
 // | **Source text*	- | **Aidge translation*	- | **Other translation product 1*	- | **Other translation product 2*	- | **Aidge translation advantages*	- |
 //
@@ -8436,9 +8507,9 @@ func (client *Client) TextCorrect(request *TextCorrectRequest) (_result *TextCor
 //
 // | 75mm 4Pin 0.38A GA81S2U 12V GTX 960 Cooling Fan for Zotac GTX960 Graphics Card Cooling Fan | 75mm 4Pin 0.38A GA81S2U 12V GTX 960, ventilador de enfriamiento para tarjeta gráfica Zotac GTX960. | Ventilador de refrigeración de 75mm 4Pin 0.38A GA81S2U 12V para la tarjeta gráfica Zotac GTX960 Ventilador de enfriamiento GTX 960. | Ventilador de refrigeración para tarjeta gráfica Zotac GTX960, 75mm, 4 pines, 0,38A, GA81S2U, 12V, GTX 960 | Clearer product subject |
 //
-// | New Arrival Classic Style Luxury Brand 6 Hands Swiss Automatic Mechanical Men\\"s Business Steel Watch | Nueva llegada, reloj mecánico automático de lujo con 6 manecillas, estilo clásico, de acero para hombres de negocios | Nueva Llegada Reloj De Acero de Negocios para Hombre con Mecanismo Automático Suizo y 6 Agujas de Estilo Clásico de Marca de Lujo. | Reloj de acero de negocios para hombre, mecánico automático suizo, marca de lujo, estilo clásico, 6 manos, nueva llegada | More complete sentence structure, clearer expression, and more reasonable segmentation |
+// | New Arrival Classic Style Luxury Brand 6 Hands Swiss Automatic Mechanical Men\\"s Business Steel Watch | Nueva llegada, reloj mecánico automático de lujo con 6 manecillas, estilo clásico, de acero para hombres de negocios | Nueva Llegada Reloj De Acero de Negocios para Hombre con Mecanismo Automático Suizo y 6 Agujas de Estilo Clásico de Marca de Lujo. | Reloj de acero de negocios para hombre, mecánico automático suizo, marca de lujo, estilo clásico, 6 manos, nueva llegada | More complete sentence structure, clearer expression, and more reasonable punctuation |
 //
-// | Men Key Bag Genuine Cow Leather Buckets Key Cases Pouch Zipper Keychain Auto Car Key Case Women Home Key Holder Wallet | Sac à clés pour hommes en cuir de vache véritable, étuis à clés, pochette à fermeture éclair, porte-clés, étui à clé de voiture, porte-clés pour femmes, organisateur de portefeuille | Porte-clés sac en cuir de vache véritable, étuis à clés en forme de seau, pochette à fermeture éclair, porte-clés auto pour voiture, étui à clés pour femmes, organisateur de clés de maison, portefeuille. | Hommes porte-clés en cuir de vache véritable sac/pochette fermature éclair porte-clés Auto voiture porte-clés femmes maison porte-clés organisateur portefeuille | Clearer and more accurate product subject description. The translation correctly identifies the product as a "key bag" rather than a "keychain", avoiding ambiguity present in other translations.
+// | Men Key Bag Genuine Cow Leather Buckets Key Cases Pouch Zipper Keychain Auto Car Key Case Women Home Key Holder Wallet | Sac à clés pour hommes en cuir de vache véritable, étuis à clés, pochette à fermeture éclair, porte-clés, étui à clé de voiture, porte-clés pour femmes, organisateur de portefeuille | Porte-clés sac en cuir de vache véritable, étuis à clés en forme de seau, pochette à fermeture éclair, porte-clés auto pour voiture, étui à clés pour femmes, organisateur de clés de maison, portefeuille. | Hommes porte-clés en cuir de vache véritable sac/pochette fermature éclair porte-clés Auto voiture porte-clés femmes maison porte-clés organisateur portefeuille | Clearer and more explicit product subject expression, identifying it as a key bag rather than a keychain, avoiding ambiguity in other translations |
 //
 // @param tmpReq - TextTranslateRequest
 //
@@ -8512,49 +8583,49 @@ func (client *Client) TextTranslateWithOptions(tmpReq *TextTranslateRequest, run
 
 // Summary:
 //
-// Maas-MT is an e-commerce translation model trained on over 1 billion high-quality bilingual sentence pairs, with continuous optimization for e-commerce-specific terminology such as brands, models, materials, and attributes. It supports mutual translation among more than 400 language directions (including bridged directions), especially Chinese-English, Chinese-multilingual, and English-multilingual translation. It supports language detection for query phrases in 31 languages and general scenarios in 35 languages. If you do not specify a source language, automatic detection is performed.
+// Translates text by using the Maas-MT model, an e-commerce translation model trained on over 1 billion high-quality bilingual sentence pairs. The model is continuously optimized for e-commerce terminology such as brands, models, materials, and attributes. It supports translation between more than 400 language pairs, including bridged pairs, especially between Chinese and English, Chinese and other languages, and English and other languages. It supports language identification for query phrases in 31 languages and general scenarios in 35 languages. If the source language is not specified, automatic language identification is performed.
 //
 // Description:
 //
-// ## Product Introduction
+// ## Product introduction
 //
-// Maas-MT is an e-commerce translation model trained on over 1 billion\\+ high-quality bilingual sentence pairs, with continuous optimization for e-commerce-specific terminology such as brands, models, materials, and attributes. It supports mutual translation among more than 400 language directions (including bridged directions), especially Chinese-English, Chinese-multilingual, and English-multilingual translation. It supports language detection for query phrases in 31 languages and general scenarios in 35 languages. If you do not specify a source language, automatic detection is performed.
+// Maas-MT is an e-commerce translation model trained on over 1 billion high-quality bilingual sentence pairs. It is continuously optimized for e-commerce terminology such as brands, models, materials, and attributes. It supports translation between more than 400 language pairs, including bridged pairs, especially between Chinese and English, Chinese and other languages, and English and other languages. It supports language identification for query phrases in 31 languages and general scenarios in 35 languages. If the source language is not specified, automatic language identification is performed.
 //
-// ## Common scenarios
+// ## Scenarios
 //
-// - Product titles: Maas-MT large model translation accurately translates phrases, keywords, and trending terms in product titles into the target language, improving product visibility on e-commerce platforms.
+// - Product titles: The Maas-MT large model can accurately translate phrases, keywords, and trending words in product titles into the target language, increasing product exposure on e-commerce platforms.
 //
-// - Product descriptions: Product descriptions are typically long with diverse and complex formatting. Maas-MT large model translation supports long text translation and HTML formatting, delivering excellent translation quality and format preservation.
+// - Product descriptions: Product descriptions are generally long and have diverse and complex formats. The Maas-MT large model supports long text translation and HTML format, delivering excellent translation quality and format restoration.
 //
-// - Product attributes: Product attribute terms are short and may contain e-commerce-specific terms such as model numbers and specifications.
+// - Product attributes: Product attribute terms are short and contain e-commerce specific words such as models and parameters.
 //
-// - Customer service conversations: In customer service scenarios, Maas-MT optimizes issues such as missing context and typos, and supports polite expressions for certain language directions.
+// - Customer service conversations: In customer service scenarios, it can optimize issues such as missing context and typos, and supports polite expressions in some language pairs.
 //
-// Maas-MT large model translation can also be used for general-purpose translation scenarios such as office work, meetings, and daily conversations.
+// In addition, the Maas-MT large model can be used for translation in general scenarios, such as office work, meetings, and daily conversations.
 //
-// ## Functions and features
+// ## Features
 //
-// - **Supported language directions*	-
+// - **Supported language pairs*	-
 //
-// Maas-MT large model translation supports mutual translation among more than 400 languages and language detection for query phrases in 31 languages and general scenarios in 35 languages.
+// The Maas-MT large model supports translation between more than 400 languages and language identification for query phrases in 31 languages and general scenarios in 35 languages.
 //
-// <props="china">For supported language directions, see [Language direction mapping](https://www.alibabacloud.com/help/en/document_detail/3041883.html)
+// <props="china">For supported language pairs, see [Language pair mapping table](https://www.alibabacloud.com/help/en/document_detail/3041883.html).
 //
-// <props="intl">For supported language directions, see [Language direction mapping](https://www.alibabacloud.com/help/zh/aidge/language-direction-mapping)
+// <props="intl">For supported language pairs, see [Language pair mapping table](https://www.alibabacloud.com/help/zh/aidge/language-direction-mapping).
 //
 // - **Ultra-low hallucination rate and high-speed inference*	-
 //
-// Maas-MT large model translation is a large language model with preference alignment for translation scenarios. Compared with general-purpose large language models, it delivers faster translation inference and an extremely low hallucination rate, making it especially suitable for large-scale invocation scenarios.
+// The Maas-MT large model is a large language model aligned with preferences for translation scenarios. Compared with general large language models, it features faster translation inference speed and an extremely low hallucination rate, making it especially suitable for large-scale call scenarios.
 //
-// - **Supported text format types for translation*	-
+// - **Supported text formats for translation*	-
 //
-// Currently, text and html text types are supported.
+// Currently, the text and HTML formats are supported.
 //
-// - **Translation intervention support*	-
+// - **Translation intervention*	-
 //
-// Custom translation results are supported, including do-not-translate (ABC-ABC), specified translation (ABC-DEF), and skip translation (ABC-empty value). This is commonly used for scenarios such as brand name protection. Simply pass the corresponding intervention glossary ID when calling the API to meet your translation needs across different scenarios. You can upload up to 100,000 intervention terms. If you need more, contact the platform for assistance.
+// Custom translation results are supported, including do-not-translate (ABC-ABC), specified translation (ABC-DEF), and no translation (ABC-null). This is commonly used in scenarios such as brand word protection. You only need to pass the corresponding intervention glossary ID when calling the API operation. This meets your translation needs in different scenarios. Generally, you can upload 100,000 intervention words. If you need more, contact the platform for processing.
 //
-// ## Translation quality comparison
+// ## Translation effect comparison
 //
 // | **Source text*	- | **Aidge translation*	- | **Other translation product 1*	- | **Other translation product 2*	- | **Aidge translation advantages*	- |
 //
@@ -8562,9 +8633,9 @@ func (client *Client) TextTranslateWithOptions(tmpReq *TextTranslateRequest, run
 //
 // | 75mm 4Pin 0.38A GA81S2U 12V GTX 960 Cooling Fan for Zotac GTX960 Graphics Card Cooling Fan | 75mm 4Pin 0.38A GA81S2U 12V GTX 960, ventilador de enfriamiento para tarjeta gráfica Zotac GTX960. | Ventilador de refrigeración de 75mm 4Pin 0.38A GA81S2U 12V para la tarjeta gráfica Zotac GTX960 Ventilador de enfriamiento GTX 960. | Ventilador de refrigeración para tarjeta gráfica Zotac GTX960, 75mm, 4 pines, 0,38A, GA81S2U, 12V, GTX 960 | Clearer product subject |
 //
-// | New Arrival Classic Style Luxury Brand 6 Hands Swiss Automatic Mechanical Men\\"s Business Steel Watch | Nueva llegada, reloj mecánico automático de lujo con 6 manecillas, estilo clásico, de acero para hombres de negocios | Nueva Llegada Reloj De Acero de Negocios para Hombre con Mecanismo Automático Suizo y 6 Agujas de Estilo Clásico de Marca de Lujo. | Reloj de acero de negocios para hombre, mecánico automático suizo, marca de lujo, estilo clásico, 6 manos, nueva llegada | More complete sentence structure, clearer expression, and more reasonable segmentation |
+// | New Arrival Classic Style Luxury Brand 6 Hands Swiss Automatic Mechanical Men\\"s Business Steel Watch | Nueva llegada, reloj mecánico automático de lujo con 6 manecillas, estilo clásico, de acero para hombres de negocios | Nueva Llegada Reloj De Acero de Negocios para Hombre con Mecanismo Automático Suizo y 6 Agujas de Estilo Clásico de Marca de Lujo. | Reloj de acero de negocios para hombre, mecánico automático suizo, marca de lujo, estilo clásico, 6 manos, nueva llegada | More complete sentence structure, clearer expression, and more reasonable punctuation |
 //
-// | Men Key Bag Genuine Cow Leather Buckets Key Cases Pouch Zipper Keychain Auto Car Key Case Women Home Key Holder Wallet | Sac à clés pour hommes en cuir de vache véritable, étuis à clés, pochette à fermeture éclair, porte-clés, étui à clé de voiture, porte-clés pour femmes, organisateur de portefeuille | Porte-clés sac en cuir de vache véritable, étuis à clés en forme de seau, pochette à fermeture éclair, porte-clés auto pour voiture, étui à clés pour femmes, organisateur de clés de maison, portefeuille. | Hommes porte-clés en cuir de vache véritable sac/pochette fermature éclair porte-clés Auto voiture porte-clés femmes maison porte-clés organisateur portefeuille | Clearer and more accurate product subject description. The translation correctly identifies the product as a "key bag" rather than a "keychain", avoiding ambiguity present in other translations.
+// | Men Key Bag Genuine Cow Leather Buckets Key Cases Pouch Zipper Keychain Auto Car Key Case Women Home Key Holder Wallet | Sac à clés pour hommes en cuir de vache véritable, étuis à clés, pochette à fermeture éclair, porte-clés, étui à clé de voiture, porte-clés pour femmes, organisateur de portefeuille | Porte-clés sac en cuir de vache véritable, étuis à clés en forme de seau, pochette à fermeture éclair, porte-clés auto pour voiture, étui à clés pour femmes, organisateur de clés de maison, portefeuille. | Hommes porte-clés en cuir de vache véritable sac/pochette fermature éclair porte-clés Auto voiture porte-clés femmes maison porte-clés organisateur portefeuille | Clearer and more explicit product subject expression, identifying it as a key bag rather than a keychain, avoiding ambiguity in other translations |
 //
 // @param request - TextTranslateRequest
 //
@@ -8582,29 +8653,29 @@ func (client *Client) TextTranslate(request *TextTranslateRequest) (_result *Tex
 
 // Summary:
 //
-// Translates text asynchronously by using the Maas MT model, an e-commerce translation model trained on over 1 billion high-quality bilingual sentence pairs. The model is continuously optimized for e-commerce-specific terms such as brands, models, materials, and attributes. It supports 156 languages with over 400 language pairs and supports automatic language detection for source languages.
+// Submits an asynchronous text translation task by using the Maas MT model. The model is trained on over 1 billion high-quality bilingual sentence pairs and optimized for e-commerce terms such as brands, models, materials, and attributes. It supports 156 languages with more than 400 language pairs and provides automatic source language detection.
 //
 // Description:
 //
 // ## Scenarios
 //
-//   - Product titles: The Maas MT large language model accurately translates phrases, keywords, and trending words in product titles into the target language to increase product exposure on e-commerce platforms.
+//   - Product titles: The Maas MT large model accurately translates phrases, keywords, and trending words in product titles into the target language to increase product exposure on e-commerce platforms.
 //
-//   - Product descriptions: Product descriptions are typically long and have diverse and complex formats. The Maas large language model supports long-text translation and HTML formatting, delivering excellent translation quality and format restoration.
+//   - Product descriptions: Product descriptions are typically long and have diverse, complex formats. The Maas large model supports long-text translation and HTML formatting, delivering excellent translation quality and format restoration.
 //
 //   - Product attributes: Product attribute terms are short and contain e-commerce-specific words such as models and parameters.
 //
-//   - Customer service conversations: In customer service scenarios, the model optimizes issues such as missing context and typos, and supports polite expressions in some language pairs.
+//   - Customer service conversations: In customer service scenarios, the model optimizes issues such as missing context and typos, and supports polite expressions in certain language pairs.
 //
-// The Maas MT large language model can also be used for translation in general scenarios, such as office work, meetings, and daily conversations.
+// Additionally, the Maas MT large model can be used for translation in general scenarios, such as office work, meetings, and daily conversations.
 //
 // ## Features
 //
-//   - **Ultra-low hallucination rate and high-speed inference*	- The Maas MT large language model is aligned with preferences for translation scenarios. Compared with general-purpose large language models, it features faster translation inference and an extremely low hallucination rate, making it especially suitable for large-scale invocation scenarios.
+//   - **Ultra-low hallucination rate and high-speed inference**: The Maas MT large model is a large language model aligned with preferences for translation scenarios. Compared with general-purpose large language models, it provides faster translation inference and an extremely low hallucination rate, making it ideal for large-scale invocation scenarios.
 //
-//   - **Supported text formats*	- The model supports text and HTML formats.
+//   - **Supported text formats**: The text and HTML formats are supported.
 //
-//   - **Translation intervention*	- You can customize translation results, including keeping words untranslated (ABC-ABC), specifying translations (ABC-DEF), and omitting translations (ABC-null value). This is commonly used for brand word protection. You only need to pass the corresponding intervention glossary ID when calling the API. This meets your translation needs in different scenarios. You can upload up to 100,000 intervention words. If you need more, contact the platform.
+//   - **Translation intervention**: You can customize translation results, including keeping terms untranslated (ABC-ABC), specifying translations (ABC-DEF), and omitting translations (ABC-null). This is commonly used for brand word protection. You only need to pass the corresponding intervention glossary ID when calling the API. This meets your translation needs in different scenarios. Generally, you can upload up to 100,000 intervention terms. If you need more, contact the platform.
 //
 //   - **Translation quality comparison**
 //
@@ -8616,15 +8687,15 @@ func (client *Client) TextTranslate(request *TextTranslateRequest) (_result *Tex
 //
 // | New Arrival Classic Style Luxury Brand 6 Hands Swiss Automatic Mechanical Men\\"s Business Steel Watch | Nueva llegada, reloj mecánico automático de lujo con 6 manecillas, estilo clásico, de acero para hombres de negocios | Nueva Llegada Reloj De Acero de Negocios para Hombre con Mecanismo Automático Suizo y 6 Agujas de Estilo Clásico de Marca de Lujo. | Reloj de acero de negocios para hombre, mecánico automático suizo, marca de lujo, estilo clásico, 6 manos, nueva llegada | More complete sentence structure, clearer expression, and more reasonable punctuation |
 //
-// | Men Key Bag Genuine Cow Leather Buckets Key Cases Pouch Zipper Keychain Auto Car Key Case Women Home Key Holder Wallet | Sac à clés pour hommes en cuir de vache véritable, étuis à clés, pochette à fermeture éclair, porte-clés, étui à clé de voiture, porte-clés pour femmes, organisateur de portefeuille | Porte-clés sac en cuir de vache véritable, étuis à clés en forme de seau, pochette à fermeture éclair, porte-clés auto pour voiture, étui à clés pour femmes, organisateur de clés de maison, portefeuille. | Hommes porte-clés en cuir de vache véritable sac/pochette fermeture éclair porte-clés Auto voiture porte-clés femmes maison porte-clés organisateur portefeuille | Clearer and more explicit product subject. It translates to "key bag" rather than "keychain", avoiding ambiguity in other translations |
+// | Men Key Bag Genuine Cow Leather Buckets Key Cases Pouch Zipper Keychain Auto Car Key Case Women Home Key Holder Wallet | Sac à clés pour hommes en cuir de vache véritable, étuis à clés, pochette à fermeture éclair, porte-clés, étui à clé de voiture, porte-clés pour femmes, organisateur de portefeuille | Porte-clés sac en cuir de vache véritable, étuis à clés en forme de seau, pochette à fermeture éclair, porte-clés auto pour voiture, étui à clés pour femmes, organisateur de clés de maison, portefeuille. | Hommes porte-clés en cuir de vache véritable sac/pochette fermature éclair porte-clés Auto voiture porte-clés femmes maison porte-clés organisateur portefeuille | Clearer and more explicit product subject. It is a key bag rather than a keychain. Other translations may cause ambiguity about the product subject |
 //
 // ## Preparations and invoke flow
 //
-// Text translation supports both synchronization and asynchronous invoke methods. This topic describes the asynchronous invoke API. If you need to use synchronous call, see [Text translation - Synchronous API](https://api.aliyun.com/document/Aidge/2026-04-28/TextTranslate).
+// Text translation supports both synchronization and asynchronous invoke methods. This topic describes the asynchronous invoke API. For synchronous call, see [Text translation - Synchronization API](https://api.aliyun.com/document/Aidge/2026-04-28/TextTranslate).
 //
-// The asynchronous APIs for text translation and other capabilities share the same result retrieval flow, RocketMQ subscribe rules, message encryption protocols, dependency configurations, and Java consumption and decryption code.
+// The asynchronous APIs for text translation and other capabilities share the same result retrieval flow, RocketMQ subscribe rules, message encryption protocol, dependency configurations, and Java consumption and decryption code.
 //
-// For the asynchronous invoke integration flow, subscribe rules, message formats and encryption protocols, and detailed integration solutions, see [Asynchronous API invoke instructions](https://www.alibabacloud.com/help/en/aidge/asynchronous-interface-call-instructions).
+// For the asynchronous invoke flow, subscribe rules, message formats and encryption protocols, and detailed integration solutions, see [Asynchronous API invoke instructions](https://www.alibabacloud.com/help/en/aidge/asynchronous-interface-call-instructions).
 //
 // @param tmpReq - TextTranslateAsyncRequest
 //
@@ -8702,29 +8773,29 @@ func (client *Client) TextTranslateAsyncWithOptions(tmpReq *TextTranslateAsyncRe
 
 // Summary:
 //
-// Translates text asynchronously by using the Maas MT model, an e-commerce translation model trained on over 1 billion high-quality bilingual sentence pairs. The model is continuously optimized for e-commerce-specific terms such as brands, models, materials, and attributes. It supports 156 languages with over 400 language pairs and supports automatic language detection for source languages.
+// Submits an asynchronous text translation task by using the Maas MT model. The model is trained on over 1 billion high-quality bilingual sentence pairs and optimized for e-commerce terms such as brands, models, materials, and attributes. It supports 156 languages with more than 400 language pairs and provides automatic source language detection.
 //
 // Description:
 //
 // ## Scenarios
 //
-//   - Product titles: The Maas MT large language model accurately translates phrases, keywords, and trending words in product titles into the target language to increase product exposure on e-commerce platforms.
+//   - Product titles: The Maas MT large model accurately translates phrases, keywords, and trending words in product titles into the target language to increase product exposure on e-commerce platforms.
 //
-//   - Product descriptions: Product descriptions are typically long and have diverse and complex formats. The Maas large language model supports long-text translation and HTML formatting, delivering excellent translation quality and format restoration.
+//   - Product descriptions: Product descriptions are typically long and have diverse, complex formats. The Maas large model supports long-text translation and HTML formatting, delivering excellent translation quality and format restoration.
 //
 //   - Product attributes: Product attribute terms are short and contain e-commerce-specific words such as models and parameters.
 //
-//   - Customer service conversations: In customer service scenarios, the model optimizes issues such as missing context and typos, and supports polite expressions in some language pairs.
+//   - Customer service conversations: In customer service scenarios, the model optimizes issues such as missing context and typos, and supports polite expressions in certain language pairs.
 //
-// The Maas MT large language model can also be used for translation in general scenarios, such as office work, meetings, and daily conversations.
+// Additionally, the Maas MT large model can be used for translation in general scenarios, such as office work, meetings, and daily conversations.
 //
 // ## Features
 //
-//   - **Ultra-low hallucination rate and high-speed inference*	- The Maas MT large language model is aligned with preferences for translation scenarios. Compared with general-purpose large language models, it features faster translation inference and an extremely low hallucination rate, making it especially suitable for large-scale invocation scenarios.
+//   - **Ultra-low hallucination rate and high-speed inference**: The Maas MT large model is a large language model aligned with preferences for translation scenarios. Compared with general-purpose large language models, it provides faster translation inference and an extremely low hallucination rate, making it ideal for large-scale invocation scenarios.
 //
-//   - **Supported text formats*	- The model supports text and HTML formats.
+//   - **Supported text formats**: The text and HTML formats are supported.
 //
-//   - **Translation intervention*	- You can customize translation results, including keeping words untranslated (ABC-ABC), specifying translations (ABC-DEF), and omitting translations (ABC-null value). This is commonly used for brand word protection. You only need to pass the corresponding intervention glossary ID when calling the API. This meets your translation needs in different scenarios. You can upload up to 100,000 intervention words. If you need more, contact the platform.
+//   - **Translation intervention**: You can customize translation results, including keeping terms untranslated (ABC-ABC), specifying translations (ABC-DEF), and omitting translations (ABC-null). This is commonly used for brand word protection. You only need to pass the corresponding intervention glossary ID when calling the API. This meets your translation needs in different scenarios. Generally, you can upload up to 100,000 intervention terms. If you need more, contact the platform.
 //
 //   - **Translation quality comparison**
 //
@@ -8736,15 +8807,15 @@ func (client *Client) TextTranslateAsyncWithOptions(tmpReq *TextTranslateAsyncRe
 //
 // | New Arrival Classic Style Luxury Brand 6 Hands Swiss Automatic Mechanical Men\\"s Business Steel Watch | Nueva llegada, reloj mecánico automático de lujo con 6 manecillas, estilo clásico, de acero para hombres de negocios | Nueva Llegada Reloj De Acero de Negocios para Hombre con Mecanismo Automático Suizo y 6 Agujas de Estilo Clásico de Marca de Lujo. | Reloj de acero de negocios para hombre, mecánico automático suizo, marca de lujo, estilo clásico, 6 manos, nueva llegada | More complete sentence structure, clearer expression, and more reasonable punctuation |
 //
-// | Men Key Bag Genuine Cow Leather Buckets Key Cases Pouch Zipper Keychain Auto Car Key Case Women Home Key Holder Wallet | Sac à clés pour hommes en cuir de vache véritable, étuis à clés, pochette à fermeture éclair, porte-clés, étui à clé de voiture, porte-clés pour femmes, organisateur de portefeuille | Porte-clés sac en cuir de vache véritable, étuis à clés en forme de seau, pochette à fermeture éclair, porte-clés auto pour voiture, étui à clés pour femmes, organisateur de clés de maison, portefeuille. | Hommes porte-clés en cuir de vache véritable sac/pochette fermeture éclair porte-clés Auto voiture porte-clés femmes maison porte-clés organisateur portefeuille | Clearer and more explicit product subject. It translates to "key bag" rather than "keychain", avoiding ambiguity in other translations |
+// | Men Key Bag Genuine Cow Leather Buckets Key Cases Pouch Zipper Keychain Auto Car Key Case Women Home Key Holder Wallet | Sac à clés pour hommes en cuir de vache véritable, étuis à clés, pochette à fermeture éclair, porte-clés, étui à clé de voiture, porte-clés pour femmes, organisateur de portefeuille | Porte-clés sac en cuir de vache véritable, étuis à clés en forme de seau, pochette à fermeture éclair, porte-clés auto pour voiture, étui à clés pour femmes, organisateur de clés de maison, portefeuille. | Hommes porte-clés en cuir de vache véritable sac/pochette fermature éclair porte-clés Auto voiture porte-clés femmes maison porte-clés organisateur portefeuille | Clearer and more explicit product subject. It is a key bag rather than a keychain. Other translations may cause ambiguity about the product subject |
 //
 // ## Preparations and invoke flow
 //
-// Text translation supports both synchronization and asynchronous invoke methods. This topic describes the asynchronous invoke API. If you need to use synchronous call, see [Text translation - Synchronous API](https://api.aliyun.com/document/Aidge/2026-04-28/TextTranslate).
+// Text translation supports both synchronization and asynchronous invoke methods. This topic describes the asynchronous invoke API. For synchronous call, see [Text translation - Synchronization API](https://api.aliyun.com/document/Aidge/2026-04-28/TextTranslate).
 //
-// The asynchronous APIs for text translation and other capabilities share the same result retrieval flow, RocketMQ subscribe rules, message encryption protocols, dependency configurations, and Java consumption and decryption code.
+// The asynchronous APIs for text translation and other capabilities share the same result retrieval flow, RocketMQ subscribe rules, message encryption protocol, dependency configurations, and Java consumption and decryption code.
 //
-// For the asynchronous invoke integration flow, subscribe rules, message formats and encryption protocols, and detailed integration solutions, see [Asynchronous API invoke instructions](https://www.alibabacloud.com/help/en/aidge/asynchronous-interface-call-instructions).
+// For the asynchronous invoke flow, subscribe rules, message formats and encryption protocols, and detailed integration solutions, see [Asynchronous API invoke instructions](https://www.alibabacloud.com/help/en/aidge/asynchronous-interface-call-instructions).
 //
 // @param request - TextTranslateAsyncRequest
 //
@@ -8762,7 +8833,7 @@ func (client *Client) TextTranslateAsync(request *TextTranslateAsyncRequest) (_r
 
 // Summary:
 //
-// Synchronously modifies the content of a display knowledge base in batches.
+// Modifies the content of a display knowledge base in batches synchronously.
 //
 // @param tmpReq - UpdateDisplayKnowledgeRequest
 //
@@ -8816,7 +8887,7 @@ func (client *Client) UpdateDisplayKnowledgeWithOptions(tmpReq *UpdateDisplayKno
 
 // Summary:
 //
-// Synchronously modifies the content of a display knowledge base in batches.
+// Modifies the content of a display knowledge base in batches synchronously.
 //
 // @param request - UpdateDisplayKnowledgeRequest
 //
@@ -8834,7 +8905,7 @@ func (client *Client) UpdateDisplayKnowledge(request *UpdateDisplayKnowledgeRequ
 
 // Summary:
 //
-// Detects vacancies (asynchronous commit).
+// Detects empty spaces (asynchronous commit).
 //
 // @param request - VacancyDetectionRequest
 //
@@ -8886,7 +8957,7 @@ func (client *Client) VacancyDetectionWithOptions(request *VacancyDetectionReque
 
 // Summary:
 //
-// Detects vacancies (asynchronous commit).
+// Detects empty spaces (asynchronous commit).
 //
 // @param request - VacancyDetectionRequest
 //
@@ -8904,41 +8975,41 @@ func (client *Client) VacancyDetection(request *VacancyDetectionRequest) (_resul
 
 // Summary:
 //
-// Generates 5- to 30-second product showcase short videos through the e-commerce AI video generation agent for e-commerce merchants and platforms based on product main images, titles, and selling points, helping customers efficiently produce and distribute e-commerce content. The product supports multiple resolutions such as 720P and 1080P, and allows you to invoke single products quickly and generate multiple products in batches, meeting the needs of daily operations and large-scale product content production. Current capabilities overwrite all clothing categories (tops, pants, skirts, suits, underwear, swimwear, etc.), and the service is gradually expanding to core e-commerce categories such as skincare, cosmetics, food and beverages, and home appliances.
+// The e-commerce AI video generation agent generates 5- to 30-second product showcase short videos for e-commerce merchants and platforms based on product main images, titles, and selling points, helping customers efficiently produce and distribute e-commerce content. The product supports multiple resolution outputs such as 720P and 1080P, and allows you to quickly invoke single products and generate multiple products in batches, meeting the needs of both daily operations and large-scale product content production. It currently covers all apparel categories (tops, pants, skirts, suits, underwear, swimwear, etc.) and is gradually expanding to core e-commerce categories such as skincare, cosmetics, food and beverages, and home appliances.
 //
 // Description:
 //
 // # Scenarios
 //
-// - Batch generation of product short videos for sellers and platforms: Supports multiple video aspect ratios and sizes (3:4, 9:16), adapting to scenarios such as product detail page video slots, product homepage displays, information feed placements, short video promotions, and event venue materials.
+// - Batch generation of short product videos for sellers and platforms: Supports multiple video aspect ratios and sizes (3:4, 9:16), adapting to scenarios such as product detail page video slots, product homepage displays, information feed placements, short video promotions, and event venue materials.
 //
-// - Quick generation of the first batch of video materials for new product launches: When merchants have a large number of new products to launch at once, they only need to upload basic information such as product images and titles to quickly generate product showcase videos, model wearing videos, and voiceover explanation videos, helping merchants quickly complete material deployment during the launch phase.
+// - Quick generation of initial video materials for new product launches: When merchants launch a large number of new products, they only need to upload basic information such as product images and titles to quickly generate product showcase videos, model try-on videos, and voiceover explanation videos. This helps merchants quickly complete material deployment during the launch phase.
 //
-// - High-fidelity clothing display: Generates model display videos based on product main images that are closer to real commercial shooting effects, focusing on optimizing capabilities such as pattern restoration, fabric texture retention, accurate color presentation, and stable and consistent details. It supports common e-commerce display methods such as wearing, turning, walking, close-up shots, and multi-angle switching.
+// - High-fidelity apparel showcase: Generates model showcase videos based on product main images that closely resemble real commercial shooting effects. It focuses on optimizing capabilities such as silhouette restoration, fabric texture retention, accurate color presentation, and stable and consistent details. It supports common e-commerce showcase methods such as try-on, turning, walking, close-up shots, and multi-angle switching.
 //
-// - Generation of high-quality commercial shooting models: Built-in target audience model library, covering plus-size women, plus-size men, swimwear, girly style, light mature commuting, youth casual, business menswear, sports and fitness, and other body types, skin colors, and races. It supports various commercial shooting expressions such as standing display, side display, walking display, and partial close-ups.
+// - Generation of high-quality commercial shooting models: Features a built-in target audience model library that covers plus-size women, plus-size men, swimwear, girlish style, light mature commute, youth casual, business menswear, sports and fitness, and other models of various body types, skin colors, and races. It supports various commercial shooting poses such as standing, side profile, walking, and partial close-ups.
 //
-// - High-frequency e-commerce scenarios such as standard product explanations: Applicable to standardized product categories such as skincare, cosmetics, personal care small appliances, food and beverages, home cleaning daily necessities, and 3C digital products. It can quickly generate product explanation videos based on product main images, titles, selling point information, and explanation scripts.
+// - High-frequency e-commerce scenarios such as standard product explanations: Applicable to standardized product categories such as skincare, cosmetics, personal care small appliances, food and beverages, home cleaning and daily necessities, and 3C digital products. It can quickly generate product explanation videos based on product main images, titles, selling point information, and explanation scripts.
 //
-// - Multi-product and multi-selling point testing to improve delivery efficiency: For information feed advertising, short video placement, and content promotion scenarios, it can quickly generate multiple versions of video materials, making it easy for enterprises to verify the conversion effects of different selling points and presentation forms at a low cost, and improve delivery ROI.
+// - Multi-product and multi-selling point testing to improve placement efficiency: For information feed advertising, short video placement, and content promotion scenarios, it can quickly generate multiple versions of video materials. This makes it easy for enterprises to verify the conversion effects of different selling points and presentation forms at a low cost and improve placement ROI.
 //
 // # Features
 //
-// - Fully automatic end-to-end batch generation with zero prompt threshold: Callers only need to pass in the product image URL and title, and the system automatically completes the entire process from product understanding and storyboard planning to video generation, without the need to manually write prompts, select templates, or repeatedly adjust parameters. Built-in multiple agents such as product understanding, image quality inspection, script planning, and director camera movement greatly lower the threshold for use.
+// - Fully automated end-to-end batch generation with zero prompt threshold: Callers only need to pass in the product image URL and title. The system automatically completes the entire process from product understanding and storyboard planning to video generation, without the need for manual prompt writing, template selection, or repeated parameter tuning. Multiple built-in agents for product understanding, image quality inspection, script planning, and director camera movement greatly lower the barrier to entry.
 //
-// - Highly stable generation with a low waste rate: Adopts a deterministic generation process and a multi-layer quality control mechanism to output usable materials with fewer retries, reducing invalid generation and resource waste, and making the overall production cost more controllable.
+// - Highly stable generation with a low waste rate: Adopts a deterministic generation process and multi-layer quality control mechanism to output usable materials with fewer retries. This reduces invalid generation and resource waste, making the overall production cost more controllable.
 //
-// - E-commerce exclusive product fidelity capability: Built-in multi-round quality inspection agents lock the product state throughout the video generation process (such as zippers will not be pulled open, sleeves will not be rolled down, and prints will not disappear), ensuring product consistency through multi-layer defense of script rewriting, explicit constraint injection, and failure-aware retry.
+// - E-commerce exclusive product fidelity capability: A built-in multi-round quality inspection agent locks the product state throughout the video generation process (for example, zippers will not be unzipped, sleeves will not be rolled down, and prints will not disappear). It ensures product consistency through multi-layer defense of script rewriting, explicit constraint injection, and failure-aware retry.
 //
-// - Reference image first + 6-axis consistency check: Adopts the Reference-Image-First generation paradigm, using the original product image as the only visual source of truth, and automatically performs 6-dimensional VL diagnosis (color drift, pattern missing, contour deviation, structure addition or reduction, model matching, and dirt detection) to fundamentally eliminate the problem of generated images not looking like the product.
+// - Reference image first + 6-axis consistency check: Adopts the reference-image-first generation paradigm, using the original product image as the only visual source of truth. It automatically performs 6-dimensional VL diagnosis (color drift, missing patterns, contour deviation, structure addition or reduction, model matching, and dirt detection) to mechanically eliminate the problem of generated images not looking like the product.
 //
-// - Flexible storyboard arrangement and duration control: Supports adjustable video duration of 5 to 30 seconds. Agents independently plan independent storyboards to display the product effects in different scenarios. It also supports fixed scene mode to deeply display product tonality under a unified visual style.
+// - Flexible storyboard arrangement and duration control: Supports an adjustable video duration of 5 to 30 seconds. The agent independently plans storyboards to showcase the product\\"s effects in different scenarios. It also supports a fixed scene mode to deeply showcase the product tone under a unified visual style.
 //
-// - Cinematic camera movement capabilities: Built-in advanced camera movement modes such as bullet time, Grammy slow motion, 360° surround rotation, and full-body model rotation display, achieving deterministic output through precise segmented control.
+// - Cinematic camera movement capabilities: Features built-in advanced camera movement modes such as bullet time, slow motion, 360° surround rotation, and full-body model rotation showcase. It achieves deterministic output through segmented precise control.
 //
-// - Model library and customization services: Built-in multi-type model resource library, supporting merchants to specify fixed models, customize exclusive model images, and bind brand visual personas for a long time to ensure brand visual consistency.
+// - Model library and customization services: Features a built-in multi-type model resource library. It supports merchants in specifying fixed models, customizing exclusive model images, and binding brand visual personas for the long term to ensure brand visual consistency.
 //
-// - Adaptation to high-frequency e-commerce content scenarios: Supports multiple resolutions such as 720P and 1080P and multiple aspect ratios such as 3:4 and 9:16, adapting to product detail page video slots, product homepage video displays, waterfall or information feed placements, event venue materials, and new product and promotional video generation.
+// - Adaptation to high-frequency e-commerce content scenarios: Supports multiple resolutions such as 720p and 1080p, and multiple aspect ratios such as 3:4 and 9:16. It adapts to product detail page video slots, product homepage video displays, waterfall or information feed placements, event venue materials, and new product and promotional video generation.
 //
 // @param tmpReq - VideoGenerationRequest
 //
@@ -9004,41 +9075,41 @@ func (client *Client) VideoGenerationWithOptions(tmpReq *VideoGenerationRequest,
 
 // Summary:
 //
-// Generates 5- to 30-second product showcase short videos through the e-commerce AI video generation agent for e-commerce merchants and platforms based on product main images, titles, and selling points, helping customers efficiently produce and distribute e-commerce content. The product supports multiple resolutions such as 720P and 1080P, and allows you to invoke single products quickly and generate multiple products in batches, meeting the needs of daily operations and large-scale product content production. Current capabilities overwrite all clothing categories (tops, pants, skirts, suits, underwear, swimwear, etc.), and the service is gradually expanding to core e-commerce categories such as skincare, cosmetics, food and beverages, and home appliances.
+// The e-commerce AI video generation agent generates 5- to 30-second product showcase short videos for e-commerce merchants and platforms based on product main images, titles, and selling points, helping customers efficiently produce and distribute e-commerce content. The product supports multiple resolution outputs such as 720P and 1080P, and allows you to quickly invoke single products and generate multiple products in batches, meeting the needs of both daily operations and large-scale product content production. It currently covers all apparel categories (tops, pants, skirts, suits, underwear, swimwear, etc.) and is gradually expanding to core e-commerce categories such as skincare, cosmetics, food and beverages, and home appliances.
 //
 // Description:
 //
 // # Scenarios
 //
-// - Batch generation of product short videos for sellers and platforms: Supports multiple video aspect ratios and sizes (3:4, 9:16), adapting to scenarios such as product detail page video slots, product homepage displays, information feed placements, short video promotions, and event venue materials.
+// - Batch generation of short product videos for sellers and platforms: Supports multiple video aspect ratios and sizes (3:4, 9:16), adapting to scenarios such as product detail page video slots, product homepage displays, information feed placements, short video promotions, and event venue materials.
 //
-// - Quick generation of the first batch of video materials for new product launches: When merchants have a large number of new products to launch at once, they only need to upload basic information such as product images and titles to quickly generate product showcase videos, model wearing videos, and voiceover explanation videos, helping merchants quickly complete material deployment during the launch phase.
+// - Quick generation of initial video materials for new product launches: When merchants launch a large number of new products, they only need to upload basic information such as product images and titles to quickly generate product showcase videos, model try-on videos, and voiceover explanation videos. This helps merchants quickly complete material deployment during the launch phase.
 //
-// - High-fidelity clothing display: Generates model display videos based on product main images that are closer to real commercial shooting effects, focusing on optimizing capabilities such as pattern restoration, fabric texture retention, accurate color presentation, and stable and consistent details. It supports common e-commerce display methods such as wearing, turning, walking, close-up shots, and multi-angle switching.
+// - High-fidelity apparel showcase: Generates model showcase videos based on product main images that closely resemble real commercial shooting effects. It focuses on optimizing capabilities such as silhouette restoration, fabric texture retention, accurate color presentation, and stable and consistent details. It supports common e-commerce showcase methods such as try-on, turning, walking, close-up shots, and multi-angle switching.
 //
-// - Generation of high-quality commercial shooting models: Built-in target audience model library, covering plus-size women, plus-size men, swimwear, girly style, light mature commuting, youth casual, business menswear, sports and fitness, and other body types, skin colors, and races. It supports various commercial shooting expressions such as standing display, side display, walking display, and partial close-ups.
+// - Generation of high-quality commercial shooting models: Features a built-in target audience model library that covers plus-size women, plus-size men, swimwear, girlish style, light mature commute, youth casual, business menswear, sports and fitness, and other models of various body types, skin colors, and races. It supports various commercial shooting poses such as standing, side profile, walking, and partial close-ups.
 //
-// - High-frequency e-commerce scenarios such as standard product explanations: Applicable to standardized product categories such as skincare, cosmetics, personal care small appliances, food and beverages, home cleaning daily necessities, and 3C digital products. It can quickly generate product explanation videos based on product main images, titles, selling point information, and explanation scripts.
+// - High-frequency e-commerce scenarios such as standard product explanations: Applicable to standardized product categories such as skincare, cosmetics, personal care small appliances, food and beverages, home cleaning and daily necessities, and 3C digital products. It can quickly generate product explanation videos based on product main images, titles, selling point information, and explanation scripts.
 //
-// - Multi-product and multi-selling point testing to improve delivery efficiency: For information feed advertising, short video placement, and content promotion scenarios, it can quickly generate multiple versions of video materials, making it easy for enterprises to verify the conversion effects of different selling points and presentation forms at a low cost, and improve delivery ROI.
+// - Multi-product and multi-selling point testing to improve placement efficiency: For information feed advertising, short video placement, and content promotion scenarios, it can quickly generate multiple versions of video materials. This makes it easy for enterprises to verify the conversion effects of different selling points and presentation forms at a low cost and improve placement ROI.
 //
 // # Features
 //
-// - Fully automatic end-to-end batch generation with zero prompt threshold: Callers only need to pass in the product image URL and title, and the system automatically completes the entire process from product understanding and storyboard planning to video generation, without the need to manually write prompts, select templates, or repeatedly adjust parameters. Built-in multiple agents such as product understanding, image quality inspection, script planning, and director camera movement greatly lower the threshold for use.
+// - Fully automated end-to-end batch generation with zero prompt threshold: Callers only need to pass in the product image URL and title. The system automatically completes the entire process from product understanding and storyboard planning to video generation, without the need for manual prompt writing, template selection, or repeated parameter tuning. Multiple built-in agents for product understanding, image quality inspection, script planning, and director camera movement greatly lower the barrier to entry.
 //
-// - Highly stable generation with a low waste rate: Adopts a deterministic generation process and a multi-layer quality control mechanism to output usable materials with fewer retries, reducing invalid generation and resource waste, and making the overall production cost more controllable.
+// - Highly stable generation with a low waste rate: Adopts a deterministic generation process and multi-layer quality control mechanism to output usable materials with fewer retries. This reduces invalid generation and resource waste, making the overall production cost more controllable.
 //
-// - E-commerce exclusive product fidelity capability: Built-in multi-round quality inspection agents lock the product state throughout the video generation process (such as zippers will not be pulled open, sleeves will not be rolled down, and prints will not disappear), ensuring product consistency through multi-layer defense of script rewriting, explicit constraint injection, and failure-aware retry.
+// - E-commerce exclusive product fidelity capability: A built-in multi-round quality inspection agent locks the product state throughout the video generation process (for example, zippers will not be unzipped, sleeves will not be rolled down, and prints will not disappear). It ensures product consistency through multi-layer defense of script rewriting, explicit constraint injection, and failure-aware retry.
 //
-// - Reference image first + 6-axis consistency check: Adopts the Reference-Image-First generation paradigm, using the original product image as the only visual source of truth, and automatically performs 6-dimensional VL diagnosis (color drift, pattern missing, contour deviation, structure addition or reduction, model matching, and dirt detection) to fundamentally eliminate the problem of generated images not looking like the product.
+// - Reference image first + 6-axis consistency check: Adopts the reference-image-first generation paradigm, using the original product image as the only visual source of truth. It automatically performs 6-dimensional VL diagnosis (color drift, missing patterns, contour deviation, structure addition or reduction, model matching, and dirt detection) to mechanically eliminate the problem of generated images not looking like the product.
 //
-// - Flexible storyboard arrangement and duration control: Supports adjustable video duration of 5 to 30 seconds. Agents independently plan independent storyboards to display the product effects in different scenarios. It also supports fixed scene mode to deeply display product tonality under a unified visual style.
+// - Flexible storyboard arrangement and duration control: Supports an adjustable video duration of 5 to 30 seconds. The agent independently plans storyboards to showcase the product\\"s effects in different scenarios. It also supports a fixed scene mode to deeply showcase the product tone under a unified visual style.
 //
-// - Cinematic camera movement capabilities: Built-in advanced camera movement modes such as bullet time, Grammy slow motion, 360° surround rotation, and full-body model rotation display, achieving deterministic output through precise segmented control.
+// - Cinematic camera movement capabilities: Features built-in advanced camera movement modes such as bullet time, slow motion, 360° surround rotation, and full-body model rotation showcase. It achieves deterministic output through segmented precise control.
 //
-// - Model library and customization services: Built-in multi-type model resource library, supporting merchants to specify fixed models, customize exclusive model images, and bind brand visual personas for a long time to ensure brand visual consistency.
+// - Model library and customization services: Features a built-in multi-type model resource library. It supports merchants in specifying fixed models, customizing exclusive model images, and binding brand visual personas for the long term to ensure brand visual consistency.
 //
-// - Adaptation to high-frequency e-commerce content scenarios: Supports multiple resolutions such as 720P and 1080P and multiple aspect ratios such as 3:4 and 9:16, adapting to product detail page video slots, product homepage video displays, waterfall or information feed placements, event venue materials, and new product and promotional video generation.
+// - Adaptation to high-frequency e-commerce content scenarios: Supports multiple resolutions such as 720p and 1080p, and multiple aspect ratios such as 3:4 and 9:16. It adapts to product detail page video slots, product homepage video displays, waterfall or information feed placements, event venue materials, and new product and promotional video generation.
 //
 // @param request - VideoGenerationRequest
 //
@@ -9068,29 +9139,29 @@ func (client *Client) VideoGeneration(request *VideoGenerationRequest) (_result 
 //
 // ## Scenarios
 //
-//   - **Cross-border e-commerce video localization**: Translates the speech subtitles and selling point text in product introduction videos into the language of the target market to promote products on overseas platforms.
+//   - **Cross-border e-commerce video localization**: Translates the speech subtitles and selling point text in product introduction videos into the language of the target market to facilitate promotion on overseas platforms.
 //
-//   - **International social media marketing**: Localizes speech subtitles and on-screen text for platforms such as TikTok, Instagram, and YouTube with one click to improve comprehension and conversion rates among overseas users.
+//   - **International social media marketing**: Localizes speech subtitles and on-screen text for platforms such as TikTok, Instagram, and YouTube with a single click to improve comprehension and conversion rates among overseas users.
 //
-//   - **Global brand advertising**: Automatically generates video versions in the corresponding languages based on the target regions to reduce manual production costs.
+//   - **Global brand advertising**: Automatically generates video versions in the languages of the target regions to reduce manual production costs.
 //
 //   - **Training and product instructions**: Translates the speech subtitles and on-screen text in training courses or product demo videos into multiple languages for global teams.
 //
 // ## Features
 //
-// | Capability | Identifier | Description |
+// | Feature | Identifier | Description |
 //
 // | --- | --- | --- |
 //
-// | Speech subtitle translation | `speech` | Translates the video speech into target language dubbing. You can choose to erase the original subtitles only or replace them with translated subtitles. By default, the original subtitles are not processed and no new subtitles are added. |
+// | Speech subtitle translation | `speech` | Translates the video speech into target language dubbing. You can choose to only erase the original subtitles or replace them with translated subtitles. By default, the original subtitles are not processed and no new subtitles are added. |
 //
 // | On-screen text translation | `visual` | Translates the source language text in the video frames, or only erases the on-screen text without translation. You can choose to erase brand logos. |
 //
-// Speech subtitle translation (speech) generates target language dubbing based on the spoken content in the video, processes the subtitles based on the original subtitle processing option, and synthesizes the final video. Original subtitles refer to the existing subtitles in the video frames that correspond to the spoken content. Replacing with translated subtitles erases the original subtitles first and then adds subtitles synchronized with the translated speech.
+// Speech subtitle translation (`speech`) generates target language dubbing based on the spoken content in the video, processes the subtitles according to the original subtitle processing option, and synthesizes the final video. Original subtitles refer to the existing subtitles in the video frames that correspond to the spoken content. Replacing with translated subtitles first erases the original subtitles and then adds subtitles synchronized with the translated speech.
 //
-// On-screen text translation (visual) targets the recognizable original video language text in the video frames, such as titles, product selling points, and descriptive text. It can be used independently without selecting speech subtitle translation first, and does not require the text to appear in the speech. Original subtitles within the processing scope may also be processed.
+// On-screen text translation (`visual`) targets recognizable original video language text in the video frames, such as titles, product selling points, and descriptive text. It can be used independently without selecting speech subtitle translation first, and does not require the text to appear in the speech. Original subtitles within the processing scope may also be processed.
 //
-// When both speech and visual are selected, the speech subtitle translation is completed and the video is synthesized first, and then the on-screen text processing is performed on this video. The translated dubbing is retained, and a final video is output. The order of capabilities in the array does not affect the execution order. Therefore, not processing original subtitles only means that no subtitles are erased or added during the speech subtitle phase, and subsequent on-screen text processing may still change the original subtitles. Subtitles that have been replaced with translated subtitles are retained during subsequent on-screen text processing.
+// When both `speech` and `visual` are selected, the speech subtitle translation is completed and the video is synthesized first. Then, on-screen text processing is performed on this video, retaining the translated dubbing, and a final video is output. The order of features in the array does not affect the execution order. Therefore, not processing original subtitles only means that no subtitles are erased or added during the speech subtitle phase, and subsequent on-screen text processing may still alter the original subtitles. Subtitles that have been replaced with translated ones will be retained during subsequent on-screen text processing.
 //
 // @param tmpReq - VideoTranslationRequest
 //
@@ -9182,29 +9253,29 @@ func (client *Client) VideoTranslationWithOptions(tmpReq *VideoTranslationReques
 //
 // ## Scenarios
 //
-//   - **Cross-border e-commerce video localization**: Translates the speech subtitles and selling point text in product introduction videos into the language of the target market to promote products on overseas platforms.
+//   - **Cross-border e-commerce video localization**: Translates the speech subtitles and selling point text in product introduction videos into the language of the target market to facilitate promotion on overseas platforms.
 //
-//   - **International social media marketing**: Localizes speech subtitles and on-screen text for platforms such as TikTok, Instagram, and YouTube with one click to improve comprehension and conversion rates among overseas users.
+//   - **International social media marketing**: Localizes speech subtitles and on-screen text for platforms such as TikTok, Instagram, and YouTube with a single click to improve comprehension and conversion rates among overseas users.
 //
-//   - **Global brand advertising**: Automatically generates video versions in the corresponding languages based on the target regions to reduce manual production costs.
+//   - **Global brand advertising**: Automatically generates video versions in the languages of the target regions to reduce manual production costs.
 //
 //   - **Training and product instructions**: Translates the speech subtitles and on-screen text in training courses or product demo videos into multiple languages for global teams.
 //
 // ## Features
 //
-// | Capability | Identifier | Description |
+// | Feature | Identifier | Description |
 //
 // | --- | --- | --- |
 //
-// | Speech subtitle translation | `speech` | Translates the video speech into target language dubbing. You can choose to erase the original subtitles only or replace them with translated subtitles. By default, the original subtitles are not processed and no new subtitles are added. |
+// | Speech subtitle translation | `speech` | Translates the video speech into target language dubbing. You can choose to only erase the original subtitles or replace them with translated subtitles. By default, the original subtitles are not processed and no new subtitles are added. |
 //
 // | On-screen text translation | `visual` | Translates the source language text in the video frames, or only erases the on-screen text without translation. You can choose to erase brand logos. |
 //
-// Speech subtitle translation (speech) generates target language dubbing based on the spoken content in the video, processes the subtitles based on the original subtitle processing option, and synthesizes the final video. Original subtitles refer to the existing subtitles in the video frames that correspond to the spoken content. Replacing with translated subtitles erases the original subtitles first and then adds subtitles synchronized with the translated speech.
+// Speech subtitle translation (`speech`) generates target language dubbing based on the spoken content in the video, processes the subtitles according to the original subtitle processing option, and synthesizes the final video. Original subtitles refer to the existing subtitles in the video frames that correspond to the spoken content. Replacing with translated subtitles first erases the original subtitles and then adds subtitles synchronized with the translated speech.
 //
-// On-screen text translation (visual) targets the recognizable original video language text in the video frames, such as titles, product selling points, and descriptive text. It can be used independently without selecting speech subtitle translation first, and does not require the text to appear in the speech. Original subtitles within the processing scope may also be processed.
+// On-screen text translation (`visual`) targets recognizable original video language text in the video frames, such as titles, product selling points, and descriptive text. It can be used independently without selecting speech subtitle translation first, and does not require the text to appear in the speech. Original subtitles within the processing scope may also be processed.
 //
-// When both speech and visual are selected, the speech subtitle translation is completed and the video is synthesized first, and then the on-screen text processing is performed on this video. The translated dubbing is retained, and a final video is output. The order of capabilities in the array does not affect the execution order. Therefore, not processing original subtitles only means that no subtitles are erased or added during the speech subtitle phase, and subsequent on-screen text processing may still change the original subtitles. Subtitles that have been replaced with translated subtitles are retained during subsequent on-screen text processing.
+// When both `speech` and `visual` are selected, the speech subtitle translation is completed and the video is synthesized first. Then, on-screen text processing is performed on this video, retaining the translated dubbing, and a final video is output. The order of features in the array does not affect the execution order. Therefore, not processing original subtitles only means that no subtitles are erased or added during the speech subtitle phase, and subsequent on-screen text processing may still alter the original subtitles. Subtitles that have been replaced with translated ones will be retained during subsequent on-screen text processing.
 //
 // @param request - VideoTranslationRequest
 //
@@ -9222,55 +9293,55 @@ func (client *Client) VideoTranslation(request *VideoTranslationRequest) (_resul
 
 // Summary:
 //
-// Generates virtual try-on images by using AI algorithms to replace a model\\"s clothing with a specified garment. The service preserves the model\\"s pose, facial features, and background details while ensuring a realistic and well-fitted appearance. Users only need to provide the URLs of the original model and garment images to obtain the processed images.
+// Generates virtual try-on images by replacing the clothing on a model with a specified garment based on AI algorithms. The service preserves the model\\"s details, pose, and facial features while ensuring a realistic and well-fitted appearance. You can obtain processed images by providing the URLs of the original model and garment images.
 //
 // Description:
 //
 // *Note:**
 //
-// VirtualTryOn is an early version that supports only single-item try-on and is scheduled to be deprecated soon.
+// VirtualTryOn is an early version that supports only single-garment try-on and is scheduled to be deprecated soon.
 //
-// New features such as multi-item outfit matching, model replacement, and pose replacement are now available in [Virtual try-on (AiTryOn)](https://api.aliyun.com/document/Aidge/2026-04-28/AiTryOn). Refer to the new API for integration.
+// The new capabilities for multi-garment matching, model replacement, and pose replacement are now available in [Virtual try-on (AiTryOn)](https://api.aliyun.com/document/Aidge/2026-04-28/AiTryOn). Please refer to the new API for integration.
 //
 // ## Scenarios
 //
 // - **Virtual try-on for apparel:**
 //
-// Supports various apparel categories such as tops, bottoms, jumpsuits, and dresses. After users upload a model image and a product image, the service generates natural and realistic try-on effects to intuitively display how the garment looks on the model.
+// Supports various apparel categories such as tops, bottoms, jumpsuits, and dresses. After you upload a model image and a garment image, the service generates natural and realistic try-on effects to intuitively showcase how the garment looks on the model.
 //
-// - **Virtual try-on for footwear and headwear:**
+// - **Virtual try-on for shoes and hats:**
 //
-// Supports virtual try-on for products such as shoes and hats. The service intelligently matches the product position and proportion based on the model\\"s pose and body parts to present a coordinated and realistic wearing effect.
+// Supports virtual try-on for shoes and hats. The service intelligently matches the position and proportion of the product based on the model\\"s pose and body parts to present a coordinated and realistic wearing effect.
 //
 // - **E-commerce product display and marketing:**
 //
-// Helps merchants quickly generate model try-on images for different products. This reduces the costs of traditional photography, outfit changes, and post-production, and improves the production efficiency of product images.
+// Helps merchants quickly generate model try-on images for different products, reducing the costs of traditional photography, outfit changes, and post-production, and improving the production efficiency of product images.
 //
 // - **Online shopping experience optimization:**
 //
-// Allows consumers to preview the wearing effect of products through virtual try-on. This provides a more intuitive understanding of the product style, matching, and overall effect to assist in purchase decisions and enhance the shopping experience.
+// Allows consumers to preview the wearing effect of products through virtual try-on, providing a more intuitive understanding of the style, matching, and overall effect of the products to assist in purchase decisions and enhance the shopping experience.
 //
 // ## Features
 //
-// - **First, users need to input a model image and a product image. The system uses the model image as the try-on subject and applies the garment from the product image to the model:**
+// - **First, you need to provide a model image and a product image. The system uses the model image as the try-on subject and applies the garment from the product image to the model:**
 //
 //   - a. Model image: The image of the person for the virtual try-on.
 //
 //   - b. Product image: The image of the garment, shoes, or hat to be worn by the model.
 //
-// - **Second, users can select the corresponding product type based on the actual product. Supported types include tops, bottoms, jumpsuits, dresses, shoes, and hats:**
+// - **Second, you can select the corresponding product type based on the actual product. Supported types include tops, bottoms, jumpsuits, dresses, shoes, and hats:**
 //
-//   - a. Specify product type: Users can directly input the type of the current product. The system will process it according to the specified type.
+//   - a. Specify product type: You can directly specify the type of the current product, and the system will process it accordingly.
 //
-//   - b. Automatic type recognition: If users do not input the product type, the system will automatically recognize the product category in the product image and perform the virtual try-on based on the recognition result.
+//   - b. Automatic type recognition: If you do not specify the product type, the system automatically recognizes the product category in the product image and performs the virtual try-on based on the recognition result.
 //
-// - **Finally, the system combines the model image, product image, and product type to generate a virtual try-on image, displaying the wearing effect of the product on the model:**
+// - **Finally, the system generates a virtual try-on image by combining the model image, product image, and product type to showcase the wearing effect of the product on the model:**
 //
 //   - a. Preserve model details: The generation process does not alter the appearance, hairstyle, pose, body shape, or other details of the person in the original model image.
 //
 //   - b. Maintain image consistency: The background, composition, lighting, and overall visual effect of the original model image remain unchanged. Only the wearing area corresponding to the product is processed.
 //
-//   - c. Generate try-on effect: The product is naturally applied to the model, fitting the pose and body structure of the person to generate a coordinated and realistic virtual try-on image.
+//   - c. Generate try-on effect: The product is naturally applied to the model, fitting the person\\"s pose and body structure to generate a coordinated and realistic virtual try-on image.
 //
 // ## Examples
 //
@@ -9280,7 +9351,7 @@ func (client *Client) VideoTranslation(request *VideoTranslationRequest) (_resul
 //
 // | Tops | ![lQLPJv-OKUNDSxvNBojNA62wAMWEBuiTUuMKXnNidWFWAA_941_1672.png](https://alidocs.oss-cn-zhangjiakou.aliyuncs.com/res/4j6OJ5PZM1WeKq3p/img/e4273b03-0d3b-4e98-b8f3-8713fccee303.png) | ![Male model shirt front-aidge.png](https://alidocs.oss-cn-zhangjiakou.aliyuncs.com/res/4j6OJ5PZM1WeKq3p/img/d9ab77f7-8791-4fa5-8d76-4fda3e2e1310.png) | ![7c1c0c04-9828-940f-b86d-c08f7ec8fb97_qwen_image3_serving_output_0.png](https://alidocs.oss-cn-zhangjiakou.aliyuncs.com/res/4j6OJ5PZM1WeKq3p/img/42982786-73ee-4d23-a8d0-551f7a18be22.png) |
 //
-// | Bottoms | ![lQDPJwcNMfxtoRvNBQDNAtCwhseujKzDt_QKXnNSTPaeAA_720_1280.jpeg](https://alidocs.oss-cn-zhangjiakou.aliyuncs.com/res/4j6OJ5PZM1WeKq3p/img/64147be2-0c95-431a-8c04-f756fac96db2.jpeg) | ![Bootcut jeans-aidge.png](https://alidocs.oss-cn-zhangjiakou.aliyuncs.com/res/4j6OJ5PZM1WeKq3p/img/f79a31cb-08bd-4b59-be9d-9b9aa3f60230.png) | ![adbb8e02-9738-991a-9699-f46bc5c089a9_qwen_image3_serving_output_0.png](https://alidocs.oss-cn-zhangjiakou.aliyuncs.com/res/4j6OJ5PZM1WeKq3p/img/297f29eb-7bc9-49a5-b4f7-114375a0f312.png) |
+// | Bottoms | ![lQDPJwcNMfxtoRvNBQDNAtCwhseujKzDt_QKXnNSTPaeAA_720_1280.jpeg](https://alidocs.oss-cn-zhangjiakou.aliyuncs.com/res/4j6OJ5PZM1WeKq3p/img/64147be2-0c95-431a-8c04-f756fac96db2.jpeg) | ![Flare jeans-aidge.png](https://alidocs.oss-cn-zhangjiakou.aliyuncs.com/res/4j6OJ5PZM1WeKq3p/img/f79a31cb-08bd-4b59-be9d-9b9aa3f60230.png) | ![adbb8e02-9738-991a-9699-f46bc5c089a9_qwen_image3_serving_output_0.png](https://alidocs.oss-cn-zhangjiakou.aliyuncs.com/res/4j6OJ5PZM1WeKq3p/img/297f29eb-7bc9-49a5-b4f7-114375a0f312.png) |
 //
 // | Shoes | ![lQDPJwcNMfxtoRvNBQDNAtCwhseujKzDt_QKXnNSTPaeAA_720_1280.jpeg](https://alidocs.oss-cn-zhangjiakou.aliyuncs.com/res/4j6OJ5PZM1WeKq3p/img/64147be2-0c95-431a-8c04-f756fac96db2.jpeg) | ![Male model shoes front-aidge.png](https://alidocs.oss-cn-zhangjiakou.aliyuncs.com/res/4j6OJ5PZM1WeKq3p/img/bb9804b5-0ab9-485b-829b-d54708377fd2.png) | ![91d7b8c4-fc31-9a7f-8b6e-3bec5e62efb3_qwen_image3_serving_output_0.png](https://alidocs.oss-cn-zhangjiakou.aliyuncs.com/res/4j6OJ5PZM1WeKq3p/img/8e54fdc3-7a86-4e3b-aa1d-f3741ce7658c.png) |
 //
@@ -9344,55 +9415,55 @@ func (client *Client) VirtualTryOnWithOptions(request *VirtualTryOnRequest, runt
 
 // Summary:
 //
-// Generates virtual try-on images by using AI algorithms to replace a model\\"s clothing with a specified garment. The service preserves the model\\"s pose, facial features, and background details while ensuring a realistic and well-fitted appearance. Users only need to provide the URLs of the original model and garment images to obtain the processed images.
+// Generates virtual try-on images by replacing the clothing on a model with a specified garment based on AI algorithms. The service preserves the model\\"s details, pose, and facial features while ensuring a realistic and well-fitted appearance. You can obtain processed images by providing the URLs of the original model and garment images.
 //
 // Description:
 //
 // *Note:**
 //
-// VirtualTryOn is an early version that supports only single-item try-on and is scheduled to be deprecated soon.
+// VirtualTryOn is an early version that supports only single-garment try-on and is scheduled to be deprecated soon.
 //
-// New features such as multi-item outfit matching, model replacement, and pose replacement are now available in [Virtual try-on (AiTryOn)](https://api.aliyun.com/document/Aidge/2026-04-28/AiTryOn). Refer to the new API for integration.
+// The new capabilities for multi-garment matching, model replacement, and pose replacement are now available in [Virtual try-on (AiTryOn)](https://api.aliyun.com/document/Aidge/2026-04-28/AiTryOn). Please refer to the new API for integration.
 //
 // ## Scenarios
 //
 // - **Virtual try-on for apparel:**
 //
-// Supports various apparel categories such as tops, bottoms, jumpsuits, and dresses. After users upload a model image and a product image, the service generates natural and realistic try-on effects to intuitively display how the garment looks on the model.
+// Supports various apparel categories such as tops, bottoms, jumpsuits, and dresses. After you upload a model image and a garment image, the service generates natural and realistic try-on effects to intuitively showcase how the garment looks on the model.
 //
-// - **Virtual try-on for footwear and headwear:**
+// - **Virtual try-on for shoes and hats:**
 //
-// Supports virtual try-on for products such as shoes and hats. The service intelligently matches the product position and proportion based on the model\\"s pose and body parts to present a coordinated and realistic wearing effect.
+// Supports virtual try-on for shoes and hats. The service intelligently matches the position and proportion of the product based on the model\\"s pose and body parts to present a coordinated and realistic wearing effect.
 //
 // - **E-commerce product display and marketing:**
 //
-// Helps merchants quickly generate model try-on images for different products. This reduces the costs of traditional photography, outfit changes, and post-production, and improves the production efficiency of product images.
+// Helps merchants quickly generate model try-on images for different products, reducing the costs of traditional photography, outfit changes, and post-production, and improving the production efficiency of product images.
 //
 // - **Online shopping experience optimization:**
 //
-// Allows consumers to preview the wearing effect of products through virtual try-on. This provides a more intuitive understanding of the product style, matching, and overall effect to assist in purchase decisions and enhance the shopping experience.
+// Allows consumers to preview the wearing effect of products through virtual try-on, providing a more intuitive understanding of the style, matching, and overall effect of the products to assist in purchase decisions and enhance the shopping experience.
 //
 // ## Features
 //
-// - **First, users need to input a model image and a product image. The system uses the model image as the try-on subject and applies the garment from the product image to the model:**
+// - **First, you need to provide a model image and a product image. The system uses the model image as the try-on subject and applies the garment from the product image to the model:**
 //
 //   - a. Model image: The image of the person for the virtual try-on.
 //
 //   - b. Product image: The image of the garment, shoes, or hat to be worn by the model.
 //
-// - **Second, users can select the corresponding product type based on the actual product. Supported types include tops, bottoms, jumpsuits, dresses, shoes, and hats:**
+// - **Second, you can select the corresponding product type based on the actual product. Supported types include tops, bottoms, jumpsuits, dresses, shoes, and hats:**
 //
-//   - a. Specify product type: Users can directly input the type of the current product. The system will process it according to the specified type.
+//   - a. Specify product type: You can directly specify the type of the current product, and the system will process it accordingly.
 //
-//   - b. Automatic type recognition: If users do not input the product type, the system will automatically recognize the product category in the product image and perform the virtual try-on based on the recognition result.
+//   - b. Automatic type recognition: If you do not specify the product type, the system automatically recognizes the product category in the product image and performs the virtual try-on based on the recognition result.
 //
-// - **Finally, the system combines the model image, product image, and product type to generate a virtual try-on image, displaying the wearing effect of the product on the model:**
+// - **Finally, the system generates a virtual try-on image by combining the model image, product image, and product type to showcase the wearing effect of the product on the model:**
 //
 //   - a. Preserve model details: The generation process does not alter the appearance, hairstyle, pose, body shape, or other details of the person in the original model image.
 //
 //   - b. Maintain image consistency: The background, composition, lighting, and overall visual effect of the original model image remain unchanged. Only the wearing area corresponding to the product is processed.
 //
-//   - c. Generate try-on effect: The product is naturally applied to the model, fitting the pose and body structure of the person to generate a coordinated and realistic virtual try-on image.
+//   - c. Generate try-on effect: The product is naturally applied to the model, fitting the person\\"s pose and body structure to generate a coordinated and realistic virtual try-on image.
 //
 // ## Examples
 //
@@ -9402,7 +9473,7 @@ func (client *Client) VirtualTryOnWithOptions(request *VirtualTryOnRequest, runt
 //
 // | Tops | ![lQLPJv-OKUNDSxvNBojNA62wAMWEBuiTUuMKXnNidWFWAA_941_1672.png](https://alidocs.oss-cn-zhangjiakou.aliyuncs.com/res/4j6OJ5PZM1WeKq3p/img/e4273b03-0d3b-4e98-b8f3-8713fccee303.png) | ![Male model shirt front-aidge.png](https://alidocs.oss-cn-zhangjiakou.aliyuncs.com/res/4j6OJ5PZM1WeKq3p/img/d9ab77f7-8791-4fa5-8d76-4fda3e2e1310.png) | ![7c1c0c04-9828-940f-b86d-c08f7ec8fb97_qwen_image3_serving_output_0.png](https://alidocs.oss-cn-zhangjiakou.aliyuncs.com/res/4j6OJ5PZM1WeKq3p/img/42982786-73ee-4d23-a8d0-551f7a18be22.png) |
 //
-// | Bottoms | ![lQDPJwcNMfxtoRvNBQDNAtCwhseujKzDt_QKXnNSTPaeAA_720_1280.jpeg](https://alidocs.oss-cn-zhangjiakou.aliyuncs.com/res/4j6OJ5PZM1WeKq3p/img/64147be2-0c95-431a-8c04-f756fac96db2.jpeg) | ![Bootcut jeans-aidge.png](https://alidocs.oss-cn-zhangjiakou.aliyuncs.com/res/4j6OJ5PZM1WeKq3p/img/f79a31cb-08bd-4b59-be9d-9b9aa3f60230.png) | ![adbb8e02-9738-991a-9699-f46bc5c089a9_qwen_image3_serving_output_0.png](https://alidocs.oss-cn-zhangjiakou.aliyuncs.com/res/4j6OJ5PZM1WeKq3p/img/297f29eb-7bc9-49a5-b4f7-114375a0f312.png) |
+// | Bottoms | ![lQDPJwcNMfxtoRvNBQDNAtCwhseujKzDt_QKXnNSTPaeAA_720_1280.jpeg](https://alidocs.oss-cn-zhangjiakou.aliyuncs.com/res/4j6OJ5PZM1WeKq3p/img/64147be2-0c95-431a-8c04-f756fac96db2.jpeg) | ![Flare jeans-aidge.png](https://alidocs.oss-cn-zhangjiakou.aliyuncs.com/res/4j6OJ5PZM1WeKq3p/img/f79a31cb-08bd-4b59-be9d-9b9aa3f60230.png) | ![adbb8e02-9738-991a-9699-f46bc5c089a9_qwen_image3_serving_output_0.png](https://alidocs.oss-cn-zhangjiakou.aliyuncs.com/res/4j6OJ5PZM1WeKq3p/img/297f29eb-7bc9-49a5-b4f7-114375a0f312.png) |
 //
 // | Shoes | ![lQDPJwcNMfxtoRvNBQDNAtCwhseujKzDt_QKXnNSTPaeAA_720_1280.jpeg](https://alidocs.oss-cn-zhangjiakou.aliyuncs.com/res/4j6OJ5PZM1WeKq3p/img/64147be2-0c95-431a-8c04-f756fac96db2.jpeg) | ![Male model shoes front-aidge.png](https://alidocs.oss-cn-zhangjiakou.aliyuncs.com/res/4j6OJ5PZM1WeKq3p/img/bb9804b5-0ab9-485b-829b-d54708377fd2.png) | ![91d7b8c4-fc31-9a7f-8b6e-3bec5e62efb3_qwen_image3_serving_output_0.png](https://alidocs.oss-cn-zhangjiakou.aliyuncs.com/res/4j6OJ5PZM1WeKq3p/img/8e54fdc3-7a86-4e3b-aa1d-f3741ce7658c.png) |
 //
@@ -9428,55 +9499,55 @@ func (client *Client) VirtualTryOn(request *VirtualTryOnRequest) (_result *Virtu
 
 // Summary:
 //
-// Provides a one-stop AI image processing service for e-commerce sellers. Orchestrates six atomic capabilities—element recognition, intelligent cutout, intelligent erasure, image translation Pro, intelligent cropping, and high-definition upscaling—into an image processing workflow. Users can upload an image once, select the required capabilities, and complete multiple image optimizations in sequence to output product images that meet the requirements of e-commerce platforms. (Asynchronous)
+// Provides a one-stop AI image processing service for e-commerce sellers. This service orchestrates six atomic capabilities into an image processing workflow: element recognition, intelligent cutout, intelligent erasure, image translation Pro, intelligent cropping, and high-definition upscaling. You can upload an image once and select the required capabilities to complete multiple image optimizations in sequence and generate product images that meet e-commerce platform requirements. (Asynchronous)
 //
 // Description:
 //
 // # 1. Product introduction
 //
-// Provides a one-stop AI image processing service for e-commerce sellers. Orchestrates six atomic capabilities—element recognition, intelligent cutout, intelligent erasure, image translation Pro, intelligent cropping, and high-definition upscaling—into an image processing workflow. Users can upload an image once, select the required capabilities, and complete multiple image optimizations in sequence to output product images that meet the requirements of e-commerce platforms. (Asynchronous)
+// Provides a one-stop AI image processing service for e-commerce sellers. This service orchestrates six atomic capabilities into an image processing workflow: element recognition, intelligent cutout, intelligent erasure, image translation Pro, intelligent cropping, and high-definition upscaling. You can upload an image once and select the required capabilities to complete multiple image optimizations in sequence and generate product images that meet e-commerce platform requirements. (Asynchronous)
 //
 // # 2. Scenarios
 //
-// Applicable to batch optimization of product images in cross-platform listing scenarios. Adapts source product images into main images, SKU images, and detail images required by listing platforms. Supports the following operations:
+// Applicable to batch optimization of product images in cross-platform product listing scenarios. It adapts source product images into main images, SKU images, and detail images required by the target platforms. Supported features include:
 //
-//   - Identifies low-quality images with text, watermarks, logos, or cluttered text, and allows users to filter the images to be processed.
+//   - Identifying low-quality images with text, watermarks, logos, or cluttered text overlays, and allowing users to filter images for processing.
 //
-//   - Removes non-compliant elements such as watermarks, logos, cluttered text, and Chinese text from the original image.
+//   - Removing non-compliant elements such as watermarks, logos, cluttered text overlays, and Chinese text from the original image.
 //
-//   - Removes the background around the main product subject.
+//   - Removing the background around the main product subject.
 //
-//   - Translates text in the image into other languages.
+//   - Translating text in the image into other languages.
 //
-//   - Expands the image to other sizes (by ratio or dimensions) and automatically fills the background.
+//   - Expanding the image to other sizes (by aspect ratio or dimensions) and automatically filling the background.
 //
-//   - Crops the image to a specified size.
+//   - Cropping the image to a specified size.
 //
-//   - Upscales the image pixels by a specified factor.
+//   - Upscaling the image pixels by a specified factor.
 //
 // # 3. Features
 //
-// Users input the URL of a product image and select the required AI capabilities through the Ability parameter (1=Intelligent element recognition, 2=Intelligent cutout, 3=Intelligent erasure, 4=Image translation Pro, 5=Image expansion, 6=Intelligent cropping, 7=High-definition upscaling). The system executes the selected capabilities in a preset sequence. Because intelligent element recognition helps users determine whether an image contains specific elements, and the presence of these elements affects the selection of subsequent AI capabilities, an additional input option is provided. This option allows users to choose whether to filter out images from subsequent AI processing or retain them without further processing.
+// You can enter the URL of a product image and select the required AI capabilities through the Ability parameter (1=Intelligent element recognition, 2=Intelligent cutout, 3=Intelligent erasure, 4=Image translation Pro, 5=Image expansion, 6=Intelligent cropping, 7=High-definition upscaling). The system executes the selected capabilities in a preset sequence. Because intelligent element recognition helps users determine whether an image contains specific elements, and the presence of these elements affects the selection of subsequent AI capabilities, an additional input option is provided. This option allows users to choose whether to filter out images from subsequent AI processing or retain images without further processing based on the recognition results.
 //
 // ![ai-pipeline-flowchart.svg](https://alidocs.oss-cn-zhangjiakou.aliyuncs.com/res/NpQlK5jRe9w5jqDv/img/bddb522a-0795-4b5c-b25d-10e933426367.svg)
 //
 // The following section describes each AI capability:
 //
-// **1. Intelligent element recognition**: An element detection capability designed specifically for e-commerce images. It identifies elements such as text, logos, watermarks, and text blocks in the subject and background of an image, and returns Boolean detection results. Users can filter images based on the recognition results (for example, processing only images with watermarks) and link this capability with subsequent ones—first identifying the types of elements to be optimized, and then precisely executing operations such as erasure.
+// **1. Intelligent element recognition**: An element detection capability designed specifically for e-commerce images. It can recognize text, logos, watermarks, and text blocks in the subject and background of an image, and return Boolean detection results. You can filter images based on the recognition results (for example, process only images with watermarks) and link this capability with subsequent capabilities. This allows you to identify the types of elements to be optimized before precisely executing operations such as erasure.
 //
-// **2. Intelligent cutout**: Automatically identifies the main product subject in an image and precisely separates it from the background. Based on deep learning models, it supports precise segmentation of complex edges such as hair and transparent objects. It can output images with transparent or white backgrounds, supports custom background colors and target size cropping, and directly generates product display images that comply with e-commerce platform specifications.
+// **2. Intelligent cutout**: Automatically identifies the main product subject in an image and accurately separates it from the background. Based on deep learning models, it supports precise segmentation of complex edges such as hair and transparent objects. It can output images with transparent or white backgrounds, supports custom background colors and target size cropping, and directly generates product display images that comply with e-commerce platform specifications.
 //
-// **3. Intelligent erasure**: Automatically identifies and removes non-compliant elements in e-commerce images, such as text, specific names (brand or store names), transparent text blocks, and cluttered text. It supports specifying the removal of elements in the subject area or non-subject area separately. It also supports precisely specifying the removal area through the Mask parameter to achieve efficient and compliant cleanup of large batches of images.
+// **3. Intelligent erasure**: Automatically identifies and removes non-compliant elements in e-commerce images, such as text, specific names (brand or store names), transparent text blocks, and cluttered text overlays. You can specify whether to remove elements in the subject area or non-subject area. You can also use the Mask parameter to precisely specify the area to be removed, enabling efficient and compliant cleanup of large batches of images.
 //
-// **4. Image translation Pro**: Integrates multimodal large model technology to translate text in an image into a target language and directly renders it in the corresponding position of the original image. It supports over 100 language pairs. It provides features such as product subject text protection, brand name protection, and translation intervention glossaries to avoid mistranslating embedded product information. After translation, it can return layout information such as text position, font, and color to support secondary editing.
+// **4. Image translation Pro**: Integrates multimodal large model technology to translate text in an image into a target language and directly renders it in the corresponding position of the original image. It supports over 100 language pairs. It provides features such as product subject text protection, brand name protection, and translation intervention glossaries to prevent mistranslation of embedded product information. After translation, it can return layout information such as text position, font, and color to support secondary editing.
 //
-// **5. Intelligent image expansion**: Expands the image canvas based on AI generation technology to broaden the image field of view without cropping the subject. It supports multiple expansion methods: expanding by aspect ratio (1:1, 3:4, 4:3, 9:16, 16:9), scaling by horizontal or vertical proportion (1.0 to 3.0 times), and shifting pixels in the up, down, left, or right directions. The AI automatically fills and generates naturally transitioning background content.
+// **5. Intelligent image expansion**: Expands the image canvas based on AI generation technology without cropping the main subject. It supports multiple expansion methods: expanding by aspect ratio (1:1, 3:4, 4:3, 9:16, 16:9), scaling by horizontal or vertical proportion (1.0 to 3.0 times), and shifting pixels in the up, down, left, or right directions. The AI automatically fills and generates naturally transitioning background content.
 //
-// **6. Intelligent cropping**: Intelligently crops images to specified sizes, automatically identifies the main subject area of the image, and precisely retains the core content. It supports custom output width and height (100 to 5000 pixels) and adapts to the image size requirements of different e-commerce platforms and ad slots, ensuring that the subject stands out and the picture is balanced after cropping.
+// **6. Intelligent cropping**: Intelligently crops images to a specified size, automatically identifies the main subject area, and accurately retains the core content. It supports custom output width and height (100 to 5000 pixels) and adapts to the image size requirements of different e-commerce platforms and ad slots, ensuring that the subject stands out and the image is balanced after cropping.
 //
-// **7. High-definition upscaling**: Enhances details and reduces noise while upscaling the image. It supports 2x to 4x upscaling. It is applicable to improving the clarity of low-resolution product images and optimizing visual presentation. It supports output in formats such as PNG, JPG, and BMP.
+// **7. High-definition upscaling**: Enhances details and reduces noise while upscaling the image. It supports 2x to 4x upscaling. It is suitable for improving the clarity of low-resolution product images and optimizing visual presentation. It supports output in PNG, JPG, and BMP formats.
 //
-// # 4. Effect comparison
+// # 4. Before and after comparison
 //
 // | **Original image*	- | **Capabilities used*	- | **Output image*	- |
 //
@@ -9628,55 +9699,55 @@ func (client *Client) VisionFlowWithOptions(tmpReq *VisionFlowRequest, runtime *
 
 // Summary:
 //
-// Provides a one-stop AI image processing service for e-commerce sellers. Orchestrates six atomic capabilities—element recognition, intelligent cutout, intelligent erasure, image translation Pro, intelligent cropping, and high-definition upscaling—into an image processing workflow. Users can upload an image once, select the required capabilities, and complete multiple image optimizations in sequence to output product images that meet the requirements of e-commerce platforms. (Asynchronous)
+// Provides a one-stop AI image processing service for e-commerce sellers. This service orchestrates six atomic capabilities into an image processing workflow: element recognition, intelligent cutout, intelligent erasure, image translation Pro, intelligent cropping, and high-definition upscaling. You can upload an image once and select the required capabilities to complete multiple image optimizations in sequence and generate product images that meet e-commerce platform requirements. (Asynchronous)
 //
 // Description:
 //
 // # 1. Product introduction
 //
-// Provides a one-stop AI image processing service for e-commerce sellers. Orchestrates six atomic capabilities—element recognition, intelligent cutout, intelligent erasure, image translation Pro, intelligent cropping, and high-definition upscaling—into an image processing workflow. Users can upload an image once, select the required capabilities, and complete multiple image optimizations in sequence to output product images that meet the requirements of e-commerce platforms. (Asynchronous)
+// Provides a one-stop AI image processing service for e-commerce sellers. This service orchestrates six atomic capabilities into an image processing workflow: element recognition, intelligent cutout, intelligent erasure, image translation Pro, intelligent cropping, and high-definition upscaling. You can upload an image once and select the required capabilities to complete multiple image optimizations in sequence and generate product images that meet e-commerce platform requirements. (Asynchronous)
 //
 // # 2. Scenarios
 //
-// Applicable to batch optimization of product images in cross-platform listing scenarios. Adapts source product images into main images, SKU images, and detail images required by listing platforms. Supports the following operations:
+// Applicable to batch optimization of product images in cross-platform product listing scenarios. It adapts source product images into main images, SKU images, and detail images required by the target platforms. Supported features include:
 //
-//   - Identifies low-quality images with text, watermarks, logos, or cluttered text, and allows users to filter the images to be processed.
+//   - Identifying low-quality images with text, watermarks, logos, or cluttered text overlays, and allowing users to filter images for processing.
 //
-//   - Removes non-compliant elements such as watermarks, logos, cluttered text, and Chinese text from the original image.
+//   - Removing non-compliant elements such as watermarks, logos, cluttered text overlays, and Chinese text from the original image.
 //
-//   - Removes the background around the main product subject.
+//   - Removing the background around the main product subject.
 //
-//   - Translates text in the image into other languages.
+//   - Translating text in the image into other languages.
 //
-//   - Expands the image to other sizes (by ratio or dimensions) and automatically fills the background.
+//   - Expanding the image to other sizes (by aspect ratio or dimensions) and automatically filling the background.
 //
-//   - Crops the image to a specified size.
+//   - Cropping the image to a specified size.
 //
-//   - Upscales the image pixels by a specified factor.
+//   - Upscaling the image pixels by a specified factor.
 //
 // # 3. Features
 //
-// Users input the URL of a product image and select the required AI capabilities through the Ability parameter (1=Intelligent element recognition, 2=Intelligent cutout, 3=Intelligent erasure, 4=Image translation Pro, 5=Image expansion, 6=Intelligent cropping, 7=High-definition upscaling). The system executes the selected capabilities in a preset sequence. Because intelligent element recognition helps users determine whether an image contains specific elements, and the presence of these elements affects the selection of subsequent AI capabilities, an additional input option is provided. This option allows users to choose whether to filter out images from subsequent AI processing or retain them without further processing.
+// You can enter the URL of a product image and select the required AI capabilities through the Ability parameter (1=Intelligent element recognition, 2=Intelligent cutout, 3=Intelligent erasure, 4=Image translation Pro, 5=Image expansion, 6=Intelligent cropping, 7=High-definition upscaling). The system executes the selected capabilities in a preset sequence. Because intelligent element recognition helps users determine whether an image contains specific elements, and the presence of these elements affects the selection of subsequent AI capabilities, an additional input option is provided. This option allows users to choose whether to filter out images from subsequent AI processing or retain images without further processing based on the recognition results.
 //
 // ![ai-pipeline-flowchart.svg](https://alidocs.oss-cn-zhangjiakou.aliyuncs.com/res/NpQlK5jRe9w5jqDv/img/bddb522a-0795-4b5c-b25d-10e933426367.svg)
 //
 // The following section describes each AI capability:
 //
-// **1. Intelligent element recognition**: An element detection capability designed specifically for e-commerce images. It identifies elements such as text, logos, watermarks, and text blocks in the subject and background of an image, and returns Boolean detection results. Users can filter images based on the recognition results (for example, processing only images with watermarks) and link this capability with subsequent ones—first identifying the types of elements to be optimized, and then precisely executing operations such as erasure.
+// **1. Intelligent element recognition**: An element detection capability designed specifically for e-commerce images. It can recognize text, logos, watermarks, and text blocks in the subject and background of an image, and return Boolean detection results. You can filter images based on the recognition results (for example, process only images with watermarks) and link this capability with subsequent capabilities. This allows you to identify the types of elements to be optimized before precisely executing operations such as erasure.
 //
-// **2. Intelligent cutout**: Automatically identifies the main product subject in an image and precisely separates it from the background. Based on deep learning models, it supports precise segmentation of complex edges such as hair and transparent objects. It can output images with transparent or white backgrounds, supports custom background colors and target size cropping, and directly generates product display images that comply with e-commerce platform specifications.
+// **2. Intelligent cutout**: Automatically identifies the main product subject in an image and accurately separates it from the background. Based on deep learning models, it supports precise segmentation of complex edges such as hair and transparent objects. It can output images with transparent or white backgrounds, supports custom background colors and target size cropping, and directly generates product display images that comply with e-commerce platform specifications.
 //
-// **3. Intelligent erasure**: Automatically identifies and removes non-compliant elements in e-commerce images, such as text, specific names (brand or store names), transparent text blocks, and cluttered text. It supports specifying the removal of elements in the subject area or non-subject area separately. It also supports precisely specifying the removal area through the Mask parameter to achieve efficient and compliant cleanup of large batches of images.
+// **3. Intelligent erasure**: Automatically identifies and removes non-compliant elements in e-commerce images, such as text, specific names (brand or store names), transparent text blocks, and cluttered text overlays. You can specify whether to remove elements in the subject area or non-subject area. You can also use the Mask parameter to precisely specify the area to be removed, enabling efficient and compliant cleanup of large batches of images.
 //
-// **4. Image translation Pro**: Integrates multimodal large model technology to translate text in an image into a target language and directly renders it in the corresponding position of the original image. It supports over 100 language pairs. It provides features such as product subject text protection, brand name protection, and translation intervention glossaries to avoid mistranslating embedded product information. After translation, it can return layout information such as text position, font, and color to support secondary editing.
+// **4. Image translation Pro**: Integrates multimodal large model technology to translate text in an image into a target language and directly renders it in the corresponding position of the original image. It supports over 100 language pairs. It provides features such as product subject text protection, brand name protection, and translation intervention glossaries to prevent mistranslation of embedded product information. After translation, it can return layout information such as text position, font, and color to support secondary editing.
 //
-// **5. Intelligent image expansion**: Expands the image canvas based on AI generation technology to broaden the image field of view without cropping the subject. It supports multiple expansion methods: expanding by aspect ratio (1:1, 3:4, 4:3, 9:16, 16:9), scaling by horizontal or vertical proportion (1.0 to 3.0 times), and shifting pixels in the up, down, left, or right directions. The AI automatically fills and generates naturally transitioning background content.
+// **5. Intelligent image expansion**: Expands the image canvas based on AI generation technology without cropping the main subject. It supports multiple expansion methods: expanding by aspect ratio (1:1, 3:4, 4:3, 9:16, 16:9), scaling by horizontal or vertical proportion (1.0 to 3.0 times), and shifting pixels in the up, down, left, or right directions. The AI automatically fills and generates naturally transitioning background content.
 //
-// **6. Intelligent cropping**: Intelligently crops images to specified sizes, automatically identifies the main subject area of the image, and precisely retains the core content. It supports custom output width and height (100 to 5000 pixels) and adapts to the image size requirements of different e-commerce platforms and ad slots, ensuring that the subject stands out and the picture is balanced after cropping.
+// **6. Intelligent cropping**: Intelligently crops images to a specified size, automatically identifies the main subject area, and accurately retains the core content. It supports custom output width and height (100 to 5000 pixels) and adapts to the image size requirements of different e-commerce platforms and ad slots, ensuring that the subject stands out and the image is balanced after cropping.
 //
-// **7. High-definition upscaling**: Enhances details and reduces noise while upscaling the image. It supports 2x to 4x upscaling. It is applicable to improving the clarity of low-resolution product images and optimizing visual presentation. It supports output in formats such as PNG, JPG, and BMP.
+// **7. High-definition upscaling**: Enhances details and reduces noise while upscaling the image. It supports 2x to 4x upscaling. It is suitable for improving the clarity of low-resolution product images and optimizing visual presentation. It supports output in PNG, JPG, and BMP formats.
 //
-// # 4. Effect comparison
+// # 4. Before and after comparison
 //
 // | **Original image*	- | **Capabilities used*	- | **Output image*	- |
 //

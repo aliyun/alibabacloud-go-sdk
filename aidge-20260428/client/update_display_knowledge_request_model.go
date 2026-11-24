@@ -70,7 +70,7 @@ func (s *UpdateDisplayKnowledgeRequest) Validate() error {
 }
 
 type UpdateDisplayKnowledgeRequestRecords struct {
-	// The HTTP or HTTPS URL of the product image.
+	// The HTTP(S) URL of the product image.
 	//
 	// example:
 	//
@@ -82,7 +82,7 @@ type UpdateDisplayKnowledgeRequestRecords struct {
 	//
 	// 1489638581
 	RecordId *int64 `json:"RecordId,omitempty" xml:"RecordId,omitempty"`
-	// The SKU ID. If this parameter is not empty, the original value is overwritten.
+	// The SKU ID. If specified, this value overwrites the original value.
 	//
 	// example:
 	//

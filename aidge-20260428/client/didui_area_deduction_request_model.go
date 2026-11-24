@@ -24,13 +24,13 @@ type DiduiAreaDeductionRequest struct {
 	//
 	// This parameter is required.
 	Products []*DiduiAreaDeductionRequestProducts `json:"Products,omitempty" xml:"Products,omitempty" type:"Repeated"`
-	// The ID of the customer\\"s dedicated SKU vector database, which determines the database used for retrieval. The database must be created through the database creation process in advance.
+	// The ID of the customer-specific SKU vector database, which determines the database used for retrieval. The database must be created through the database creation process in advance.
 	//
 	// example:
 	//
 	// rag_xxx
 	RagId *string `json:"RagId,omitempty" xml:"RagId,omitempty"`
-	// The optional business request ID, used for end-to-end Tracing Analysis.
+	// The optional business request ID, which is used for Tracing Analysis.
 	//
 	// example:
 	//
@@ -104,7 +104,7 @@ func (s *DiduiAreaDeductionRequest) Validate() error {
 }
 
 type DiduiAreaDeductionRequestProducts struct {
-	// The bounding boxes of the current SKU, with coordinate values ranging from 0 to 1000.
+	// The instance boxes of the current SKU, with coordinate values ranging from 0 to 1000.
 	//
 	// This parameter is required.
 	Boxes []*DiduiAreaDeductionRequestProductsBoxes `json:"Boxes,omitempty" xml:"Boxes,omitempty" type:"Repeated"`

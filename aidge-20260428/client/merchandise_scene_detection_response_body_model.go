@@ -163,7 +163,7 @@ type MerchandiseSceneDetectionResponseBodyDataResult struct {
 	Grounding *MerchandiseSceneDetectionResponseBodyDataResultGrounding `json:"Grounding,omitempty" xml:"Grounding,omitempty" type:"Struct"`
 	// The list of recognized scenes.
 	Scenes []*MerchandiseSceneDetectionResponseBodyDataResultScenes `json:"Scenes,omitempty" xml:"Scenes,omitempty" type:"Repeated"`
-	// The type. Fixed value: scene.
+	// The type. Fixed to scene.
 	//
 	// example:
 	//
@@ -275,7 +275,7 @@ func (s *MerchandiseSceneDetectionResponseBodyDataResultGrounding) Validate() er
 }
 
 type MerchandiseSceneDetectionResponseBodyDataResultGroundingRegions struct {
-	// The 2D bounding box in the format of [top-left x, top-left y, bottom-right x, bottom-right y]. Valid values: 0 to 1000. The left coordinate must be less than the right coordinate, and the top coordinate must be less than the bottom coordinate.
+	// The 2D bounding box in the format of [top-left X, top-left Y, bottom-right X, bottom-right Y]. Values range from 0 to 1000. Left < right, and top < bottom.
 	//
 	// example:
 	//
@@ -347,7 +347,7 @@ type MerchandiseSceneDetectionResponseBodyDataResultScenes struct {
 	//
 	// 0
 	OwnPurity *float64 `json:"OwnPurity,omitempty" xml:"OwnPurity,omitempty"`
-	// Optional. The display fullness metric.
+	// Optional. The display plumpness metric.
 	//
 	// example:
 	//
@@ -359,15 +359,15 @@ type MerchandiseSceneDetectionResponseBodyDataResultScenes struct {
 	//
 	// Refrigerated display cabinet
 	SceneActualName *string `json:"SceneActualName,omitempty" xml:"SceneActualName,omitempty"`
-	// The center point of the scene, which retains the original normalized coordinates. If omitted, the value is an empty array.
+	// The center point of the scene. The original normalized coordinates are retained. If omitted, the value is an empty array.
 	//
 	// example:
 	//
 	// [0.501,0.493]
 	SceneCenter []*float64 `json:"SceneCenter,omitempty" xml:"SceneCenter,omitempty" type:"Repeated"`
-	// The list of area points. Each item is in the format of {x,y} and retains the original normalized coordinates. If omitted, the value is an empty array.
+	// The list of region points. Each item is in the {x,y} format and retains the original normalized coordinates. If omitted, the value is an empty array.
 	SceneLocation []*MerchandiseSceneDetectionResponseBodyDataResultScenesSceneLocation `json:"SceneLocation,omitempty" xml:"SceneLocation,omitempty" type:"Repeated"`
-	// The scene identifier. This parameter is required and cannot be empty.
+	// The scene identifier. This field is required and cannot be empty.
 	//
 	// example:
 	//
@@ -475,13 +475,13 @@ func (s *MerchandiseSceneDetectionResponseBodyDataResultScenes) Validate() error
 }
 
 type MerchandiseSceneDetectionResponseBodyDataResultScenesSceneLocation struct {
-	// The x-coordinate of the area point.
+	// The X-coordinate of the region point.
 	//
 	// example:
 	//
 	// 0.431
 	X *float64 `json:"X,omitempty" xml:"X,omitempty"`
-	// The y-coordinate of the area point.
+	// The Y-coordinate of the region point.
 	//
 	// example:
 	//

@@ -86,7 +86,7 @@ type AddDisplayKnowledgeRequestRecords struct {
 	//
 	// example:
 	//
-	// Product front image
+	// Front image of the product
 	SkuName *string `json:"SkuName,omitempty" xml:"SkuName,omitempty"`
 }
 

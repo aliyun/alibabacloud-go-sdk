@@ -22,7 +22,7 @@ type iSizeChartDetectResponseBody interface {
 }
 
 type SizeChartDetectResponseBody struct {
-	// The error code. This parameter is not returned if the call is successful.
+	// The error code. This parameter is not returned when the call is successful.
 	//
 	// example:
 	//
@@ -30,7 +30,7 @@ type SizeChartDetectResponseBody struct {
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The size chart detection result.
 	Data *SizeChartDetectResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The error message. This parameter is not returned if the call is successful.
+	// The error message. This parameter is not returned when the call is successful.
 	//
 	// example:
 	//
@@ -42,11 +42,11 @@ type SizeChartDetectResponseBody struct {
 	//
 	// E1AD60F1-BAC7-546B-9533-E7AD02B16E3F
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the call was successful. Valid values:
+	// Indicates whether the call is successful. Valid values:
 	//
-	// - true: The call was successful.
+	// - true: The call is successful.
 	//
-	// - false: The call failed.
+	// - false: The call fails.
 	//
 	// example:
 	//
@@ -123,7 +123,7 @@ type SizeChartDetectResponseBodyData struct {
 	//
 	// false
 	IsSizeChart *bool `json:"IsSizeChart,omitempty" xml:"IsSizeChart,omitempty"`
-	// The usage information. The key is the usage name and the value is the count.
+	// The usage information. The key is the usage metric name and the value is the count.
 	//
 	// example:
 	//

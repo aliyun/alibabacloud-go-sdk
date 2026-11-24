@@ -28,9 +28,9 @@ type MerchandisePriceTagDetectionResponseBody struct {
 	//
 	// success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The recognition result.
+	// The scenario recognition result.
 	Data *MerchandisePriceTagDetectionResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The returned message or failure description.
+	// The response message or failure description.
 	//
 	// example:
 	//
@@ -42,7 +42,7 @@ type MerchandisePriceTagDetectionResponseBody struct {
 	//
 	// 70CBEFDF-BB17-1EB3-8A21-569F3124738F
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the call was successful.
+	// Indicates whether the call is successful.
 	//
 	// example:
 	//
@@ -113,7 +113,7 @@ func (s *MerchandisePriceTagDetectionResponseBody) Validate() error {
 }
 
 type MerchandisePriceTagDetectionResponseBodyData struct {
-	// The details of the detection and recognition result.
+	// The detection and recognition result details.
 	Result *MerchandisePriceTagDetectionResponseBodyDataResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
 	// The usage information.
 	//
@@ -161,9 +161,9 @@ func (s *MerchandisePriceTagDetectionResponseBodyData) Validate() error {
 type MerchandisePriceTagDetectionResponseBodyDataResult struct {
 	// The grounding information.
 	Grounding *MerchandisePriceTagDetectionResponseBodyDataResultGrounding `json:"Grounding,omitempty" xml:"Grounding,omitempty" type:"Struct"`
-	// The list of price tags. This can be an empty array if no price tags are recognized.
+	// The list of price tags. This can be an empty array if no price tags are recognized under normal conditions.
 	PriceTags []*MerchandisePriceTagDetectionResponseBodyDataResultPriceTags `json:"PriceTags,omitempty" xml:"PriceTags,omitempty" type:"Repeated"`
-	// Fixed to priceTag.
+	// The fixed value priceTag.
 	//
 	// example:
 	//
@@ -339,7 +339,7 @@ type MerchandisePriceTagDetectionResponseBodyDataResultPriceTags struct {
 	//
 	// 6
 	OriginalPrice *string `json:"OriginalPrice,omitempty" xml:"OriginalPrice,omitempty"`
-	// The selling price, retained as a string.
+	// The selling price, retained as a character string.
 	//
 	// example:
 	//

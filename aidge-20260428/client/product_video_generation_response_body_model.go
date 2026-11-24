@@ -42,7 +42,7 @@ type ProductVideoGenerationResponseBody struct {
 	//
 	// 70CBEFDF-BB17-1EB3-8A21-569F3124738F
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the call was successful.
+	// Indicates whether the call is successful.
 	//
 	// example:
 	//
@@ -113,19 +113,19 @@ func (s *ProductVideoGenerationResponseBody) Validate() error {
 }
 
 type ProductVideoGenerationResponseBodyData struct {
-	// The planning route written upon acceptance. Valid values: DIRECT (with script) and AUTO_PLAN (automatic planning).
+	// The planning path written upon acceptance. Valid values: DIRECT (with script) and AUTO_PLAN (automatic planning).
 	//
 	// example:
 	//
 	// AUTO_PLAN
 	Route *string `json:"route,omitempty" xml:"route,omitempty"`
-	// The current status of the task.
+	// The current status.
 	//
 	// example:
 	//
 	// PENDING
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
-	// The task ID of the service.
+	// The task ID of this service.
 	//
 	// example:
 	//

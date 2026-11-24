@@ -42,7 +42,7 @@ type GeneralRephotographyDetectionResponseBody struct {
 	//
 	// 70CBEFDF-BB17-1EB3-8A21-569F3124738F
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the call is successful.
+	// Indicates whether the call was successful.
 	//
 	// example:
 	//
@@ -159,15 +159,13 @@ func (s *GeneralRephotographyDetectionResponseBodyData) Validate() error {
 }
 
 type GeneralRephotographyDetectionResponseBodyDataResult struct {
-	// The supplementary element localization result.
-	Grounding *GeneralRephotographyDetectionResponseBodyDataResultGrounding `json:"Grounding,omitempty" xml:"Grounding,omitempty" type:"Struct"`
 	// Indicates whether the image is recaptured.
 	//
 	// example:
 	//
 	// true
 	IsFake *bool `json:"IsFake,omitempty" xml:"IsFake,omitempty"`
-	// The detection type. Fixed to general.
+	// Fixed to general.
 	//
 	// example:
 	//
@@ -183,21 +181,12 @@ func (s GeneralRephotographyDetectionResponseBodyDataResult) GoString() string {
 	return s.String()
 }
 
-func (s *GeneralRephotographyDetectionResponseBodyDataResult) GetGrounding() *GeneralRephotographyDetectionResponseBodyDataResultGrounding {
-	return s.Grounding
-}
-
 func (s *GeneralRephotographyDetectionResponseBodyDataResult) GetIsFake() *bool {
 	return s.IsFake
 }
 
 func (s *GeneralRephotographyDetectionResponseBodyDataResult) GetType() *string {
 	return s.Type
-}
-
-func (s *GeneralRephotographyDetectionResponseBodyDataResult) SetGrounding(v *GeneralRephotographyDetectionResponseBodyDataResultGrounding) *GeneralRephotographyDetectionResponseBodyDataResult {
-	s.Grounding = v
-	return s
 }
 
 func (s *GeneralRephotographyDetectionResponseBodyDataResult) SetIsFake(v bool) *GeneralRephotographyDetectionResponseBodyDataResult {
@@ -211,120 +200,5 @@ func (s *GeneralRephotographyDetectionResponseBodyDataResult) SetType(v string) 
 }
 
 func (s *GeneralRephotographyDetectionResponseBodyDataResult) Validate() error {
-	if s.Grounding != nil {
-		if err := s.Grounding.Validate(); err != nil {
-			return err
-		}
-	}
-	return nil
-}
-
-type GeneralRephotographyDetectionResponseBodyDataResultGrounding struct {
-	// The coverage. Valid values:
-	//
-	// - `complete`: The relevant visible targets are complete.
-	//
-	// - `partial`: Only some targets are valid or recognizable.
-	//
-	// example:
-	//
-	// complete
-	Coverage *string `json:"Coverage,omitempty" xml:"Coverage,omitempty"`
-	// The target array. A maximum of 12 items are returned. This can be empty if no relevant targets are found.
-	Regions []*GeneralRephotographyDetectionResponseBodyDataResultGroundingRegions `json:"Regions,omitempty" xml:"Regions,omitempty" type:"Repeated"`
-}
-
-func (s GeneralRephotographyDetectionResponseBodyDataResultGrounding) String() string {
-	return dara.Prettify(s)
-}
-
-func (s GeneralRephotographyDetectionResponseBodyDataResultGrounding) GoString() string {
-	return s.String()
-}
-
-func (s *GeneralRephotographyDetectionResponseBodyDataResultGrounding) GetCoverage() *string {
-	return s.Coverage
-}
-
-func (s *GeneralRephotographyDetectionResponseBodyDataResultGrounding) GetRegions() []*GeneralRephotographyDetectionResponseBodyDataResultGroundingRegions {
-	return s.Regions
-}
-
-func (s *GeneralRephotographyDetectionResponseBodyDataResultGrounding) SetCoverage(v string) *GeneralRephotographyDetectionResponseBodyDataResultGrounding {
-	s.Coverage = &v
-	return s
-}
-
-func (s *GeneralRephotographyDetectionResponseBodyDataResultGrounding) SetRegions(v []*GeneralRephotographyDetectionResponseBodyDataResultGroundingRegions) *GeneralRephotographyDetectionResponseBodyDataResultGrounding {
-	s.Regions = v
-	return s
-}
-
-func (s *GeneralRephotographyDetectionResponseBodyDataResultGrounding) Validate() error {
-	if s.Regions != nil {
-		for _, item := range s.Regions {
-			if item != nil {
-				if err := item.Validate(); err != nil {
-					return err
-				}
-			}
-		}
-	}
-	return nil
-}
-
-type GeneralRephotographyDetectionResponseBodyDataResultGroundingRegions struct {
-	// The bounding box coordinates.
-	Bbox2d []*float32 `json:"Bbox2d,omitempty" xml:"Bbox2d,omitempty" type:"Repeated"`
-	// The target category. For valid values, see the following table.
-	//
-	// example:
-	//
-	// product
-	Label *string `json:"Label,omitempty" xml:"Label,omitempty"`
-	// The confirmed short name or text of up to 24 characters. This is an empty string if the text is unclear.
-	//
-	// example:
-	//
-	// Product
-	Text *string `json:"Text,omitempty" xml:"Text,omitempty"`
-}
-
-func (s GeneralRephotographyDetectionResponseBodyDataResultGroundingRegions) String() string {
-	return dara.Prettify(s)
-}
-
-func (s GeneralRephotographyDetectionResponseBodyDataResultGroundingRegions) GoString() string {
-	return s.String()
-}
-
-func (s *GeneralRephotographyDetectionResponseBodyDataResultGroundingRegions) GetBbox2d() []*float32 {
-	return s.Bbox2d
-}
-
-func (s *GeneralRephotographyDetectionResponseBodyDataResultGroundingRegions) GetLabel() *string {
-	return s.Label
-}
-
-func (s *GeneralRephotographyDetectionResponseBodyDataResultGroundingRegions) GetText() *string {
-	return s.Text
-}
-
-func (s *GeneralRephotographyDetectionResponseBodyDataResultGroundingRegions) SetBbox2d(v []*float32) *GeneralRephotographyDetectionResponseBodyDataResultGroundingRegions {
-	s.Bbox2d = v
-	return s
-}
-
-func (s *GeneralRephotographyDetectionResponseBodyDataResultGroundingRegions) SetLabel(v string) *GeneralRephotographyDetectionResponseBodyDataResultGroundingRegions {
-	s.Label = &v
-	return s
-}
-
-func (s *GeneralRephotographyDetectionResponseBodyDataResultGroundingRegions) SetText(v string) *GeneralRephotographyDetectionResponseBodyDataResultGroundingRegions {
-	s.Text = &v
-	return s
-}
-
-func (s *GeneralRephotographyDetectionResponseBodyDataResultGroundingRegions) Validate() error {
 	return dara.Validate(s)
 }

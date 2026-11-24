@@ -163,13 +163,13 @@ func (s *MaterialInspectionResponseBodyData) Validate() error {
 }
 
 type MaterialInspectionResponseBodyDataResult struct {
-	// The natural language summary, such as \\"1 rule: 1 PASS, all detection items are compliant\\".
+	// The natural language summary, such as "1 rule: 1 PASS, all detection items are compliant".
 	//
 	// example:
 	//
 	// 1 rule: 1 PASS, all detection items are compliant
 	Evidence *string `json:"Evidence,omitempty" xml:"Evidence,omitempty"`
-	// The overall judgment. Valid values: PASS and FAIL.
+	// The overall judgment. Valid values: PASS, FAIL.
 	//
 	// example:
 	//
@@ -258,7 +258,7 @@ func (s *MaterialInspectionResponseBodyDataResult) Validate() error {
 }
 
 type MaterialInspectionResponseBodyDataResultSteps struct {
-	// The judgment result. Valid values: PASS, FAIL, and UNABLE_TO_JUDGE.
+	// The judgment result. Valid values: PASS, FAIL, UNABLE_TO_JUDGE.
 	//
 	// example:
 	//
@@ -268,7 +268,7 @@ type MaterialInspectionResponseBodyDataResultSteps struct {
 	//
 	// example:
 	//
-	// XXX
+	// S1
 	StepId *string `json:"StepId,omitempty" xml:"StepId,omitempty"`
 }
 

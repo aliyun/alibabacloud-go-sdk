@@ -28,9 +28,9 @@ type MerchandisePlacementDetectionProResponseBody struct {
 	//
 	// success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The detection result of the retail display detection Pro edition.
+	// The detection results of the Pro edition.
 	Data *MerchandisePlacementDetectionProResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The returned message or failure description.
+	// The return message or failure description.
 	//
 	// example:
 	//
@@ -180,7 +180,7 @@ func (s *MerchandisePlacementDetectionProResponseBodyData) Validate() error {
 type MerchandisePlacementDetectionProResponseBodyDataData struct {
 	// The normalized bounding box coordinates in the [x1,y1,x2,y2] format. Valid values: 0 to 1000.
 	Bbox2d []*int32 `json:"Bbox2d,omitempty" xml:"Bbox2d,omitempty" type:"Repeated"`
-	// The name of the detected product. If the name cannot be determined, the value is unknown.
+	// The recognized product name. If the name cannot be determined, the value is unknown.
 	//
 	// example:
 	//

@@ -28,7 +28,7 @@ type ProductHotspotDetectionResponseBody struct {
 	//
 	// success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The product hotzone recognition result.
+	// The product hot zone recognition results.
 	Data *ProductHotspotDetectionResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The error message.
 	//
@@ -113,7 +113,7 @@ func (s *ProductHotspotDetectionResponseBody) Validate() error {
 }
 
 type ProductHotspotDetectionResponseBodyData struct {
-	// The list of detected products and their bounding boxes.
+	// The list of recognized products and detection boxes.
 	Products []*ProductHotspotDetectionResponseBodyDataProducts `json:"Products,omitempty" xml:"Products,omitempty" type:"Repeated"`
 	// The usage information.
 	//
@@ -163,7 +163,7 @@ func (s *ProductHotspotDetectionResponseBodyData) Validate() error {
 }
 
 type ProductHotspotDetectionResponseBodyDataProducts struct {
-	// The bounding boxes of the detected product instances.
+	// The detection boxes for product instances.
 	Boxes []*ProductHotspotDetectionResponseBodyDataProductsBoxes `json:"Boxes,omitempty" xml:"Boxes,omitempty" type:"Repeated"`
 	// The product name.
 	//
@@ -228,25 +228,25 @@ func (s *ProductHotspotDetectionResponseBodyDataProducts) Validate() error {
 }
 
 type ProductHotspotDetectionResponseBodyDataProductsBoxes struct {
-	// The bottom boundary of the bounding box.
+	// The bottom boundary of the detection box.
 	//
 	// example:
 	//
 	// 947
 	Bottom *float64 `json:"Bottom,omitempty" xml:"Bottom,omitempty"`
-	// The left boundary of the bounding box.
+	// The left boundary of the detection box.
 	//
 	// example:
 	//
 	// 280
 	Left *float64 `json:"Left,omitempty" xml:"Left,omitempty"`
-	// The right boundary of the bounding box.
+	// The right boundary of the detection box.
 	//
 	// example:
 	//
 	// 743
 	Right *float64 `json:"Right,omitempty" xml:"Right,omitempty"`
-	// The top boundary of the bounding box.
+	// The top boundary of the detection box.
 	//
 	// example:
 	//

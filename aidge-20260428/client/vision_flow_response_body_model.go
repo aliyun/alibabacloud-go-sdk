@@ -22,27 +22,27 @@ type iVisionFlowResponseBody interface {
 }
 
 type VisionFlowResponseBody struct {
-	// The status code. If the call is successful, "success" is returned.
+	// The status code. If the call is successful, success is returned.
 	//
 	// example:
 	//
 	// success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The submission result data of the asynchronous task, which includes the asynchronous task ID.
+	// The submission result of the asynchronous task, which includes the asynchronous task ID.
 	Data *VisionFlowResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The error message. If the call is successful, "Success" is returned.
+	// The error message. If the call is successful, Success is returned.
 	//
 	// example:
 	//
 	// Success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The request ID, which is used to identify a unique request.
+	// The ID of the request. It is used to identify a unique request.
 	//
 	// example:
 	//
 	// F3E65785-0180-1227-91B0-2F5F52F679FB
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the call is successful. A value of true indicates success, and a value of false indicates failure.
+	// Indicates whether the call is successful. A value of true indicates success. A value of false indicates failure.
 	//
 	// example:
 	//
@@ -113,7 +113,7 @@ func (s *VisionFlowResponseBody) Validate() error {
 }
 
 type VisionFlowResponseBodyData struct {
-	// The ID of the asynchronous task, which is used to query the processing result by calling QueryAsyncTaskResult.
+	// The ID of the asynchronous task. You can use this ID to call QueryAsyncTaskResult to query the processing result.
 	//
 	// example:
 	//

@@ -113,7 +113,7 @@ func (s *ImageTranslationStandardAsyncResponseBody) Validate() error {
 }
 
 type ImageTranslationStandardAsyncResponseBodyData struct {
-	// The ID of the task used to query the asynchronous task result.
+	// The task ID used to query the asynchronous task result.
 	//
 	// example:
 	//

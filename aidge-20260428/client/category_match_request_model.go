@@ -32,13 +32,13 @@ type CategoryMatchRequest struct {
 	//
 	// example:
 	//
-	// Silk, new spring arrival
+	// Silk, spring new arrival
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The product attributes and feature descriptions, such as the material of the product. Enter the product attribute name and attribute value.
+	// The product attributes and feature descriptions, such as the product material. Specify the attribute names and values.
 	//
 	// example:
 	//
-	// Material:Polyester,Target user:Universal,Brand:AMASON PET
+	// Material:Polyester,Target audience:Universal,Brand:AMASON PET
 	ItemSpec *string `json:"ItemSpec,omitempty" xml:"ItemSpec,omitempty"`
 	// The product SKU title.
 	//
@@ -76,7 +76,7 @@ type CategoryMatchRequest struct {
 	//
 	// example:
 	//
-	// Women\\"s new spring clothing
+	// Women\\"s spring new arrival clothing
 	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
 }
 

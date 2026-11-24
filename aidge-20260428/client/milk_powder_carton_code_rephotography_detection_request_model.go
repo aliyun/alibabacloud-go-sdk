@@ -14,7 +14,7 @@ type iMilkPowderCartonCodeRephotographyDetectionRequest interface {
 }
 
 type MilkPowderCartonCodeRephotographyDetectionRequest struct {
-	// The HTTP(S) URL of the image to be analyzed.
+	// The HTTP or HTTPS URL of the image to be analyzed.
 	//
 	// This parameter is required.
 	//

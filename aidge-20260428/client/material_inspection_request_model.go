@@ -28,7 +28,7 @@ type MaterialInspectionRequest struct {
 	//
 	// fb0012f49b004f889207a3c5e6ef8da9
 	ApiId *string `json:"ApiId,omitempty" xml:"ApiId,omitempty"`
-	// The URL of the reference image. This parameter is optional. If it is not empty, the multi-image difference comparison mode is used.
+	// The URL of the reference image. This parameter is optional. If it is not empty, multi-image difference comparison is used.
 	//
 	// example:
 	//
@@ -52,7 +52,7 @@ type MaterialInspectionRequest struct {
 	//
 	// example:
 	//
-	// Door-shaped display stands must be placed in the entrance area. Functional table cards must be placed on the middle counter
+	// Door display stands must be placed in the entrance area; functional table cards must be placed on the middle counter surface
 	Rules *string `json:"Rules,omitempty" xml:"Rules,omitempty"`
 }
 

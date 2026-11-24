@@ -36,13 +36,13 @@ type QueryDisplayKnowledgeResponseBody struct {
 	//
 	// Success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 70CBEFDF-BB17-1EB3-8A21-569F3124738F
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the call is successful.
+	// Indicates whether the call was successful.
 	//
 	// example:
 	//
@@ -143,7 +143,7 @@ type QueryDisplayKnowledgeResponseBodyData struct {
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the knowledge base.
+	// The knowledge base ID.
 	//
 	// example:
 	//
@@ -151,13 +151,13 @@ type QueryDisplayKnowledgeResponseBodyData struct {
 	RagId *string `json:"RagId,omitempty" xml:"RagId,omitempty"`
 	// The records on the current page.
 	Records []*QueryDisplayKnowledgeResponseBodyDataRecords `json:"Records,omitempty" xml:"Records,omitempty" type:"Repeated"`
-	// Indicates whether the business processing is successful.
+	// Indicates whether the business processing was successful.
 	//
 	// example:
 	//
 	// True
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// The ID of the asynchronous task. This parameter is empty for synchronous API operations.
+	// The asynchronous task ID. This parameter is empty for synchronous API operations.
 	//
 	// example:
 	//
@@ -313,13 +313,13 @@ func (s *QueryDisplayKnowledgeResponseBodyData) Validate() error {
 }
 
 type QueryDisplayKnowledgeResponseBodyDataRecords struct {
-	// The description of the failure reason. This parameter is returned only when the status is FAILED.
+	// The failure reason description. This parameter is returned only when the status is FAILED.
 	//
 	// example:
 	//
 	// Image not accessible
 	FailureMessage *string `json:"FailureMessage,omitempty" xml:"FailureMessage,omitempty"`
-	// The code of the failure reason. This parameter is returned only when the status is FAILED.
+	// The failure reason code. This parameter is returned only when the status is FAILED.
 	//
 	// example:
 	//
@@ -331,7 +331,7 @@ type QueryDisplayKnowledgeResponseBodyDataRecords struct {
 	//
 	// 2026-08-01T15:53:46Z
 	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	// The 24-hour signed URL of the transferred image.
+	// The signed URL of the transferred image, valid for 24 hours.
 	//
 	// example:
 	//
@@ -343,7 +343,7 @@ type QueryDisplayKnowledgeResponseBodyDataRecords struct {
 	//
 	// Date
 	ImageUrlExpireTime *string `json:"ImageUrlExpireTime,omitempty" xml:"ImageUrlExpireTime,omitempty"`
-	// The ID of the record.
+	// The record ID.
 	//
 	// example:
 	//
@@ -355,13 +355,13 @@ type QueryDisplayKnowledgeResponseBodyDataRecords struct {
 	//
 	// sku-001
 	SkuId *string `json:"SkuId,omitempty" xml:"SkuId,omitempty"`
-	// The name of the SKU.
+	// The SKU name.
 	//
 	// example:
 	//
 	// Product side image
 	SkuName *string `json:"SkuName,omitempty" xml:"SkuName,omitempty"`
-	// The status of the record.
+	// The record status.
 	//
 	// example:
 	//

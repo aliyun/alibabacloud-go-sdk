@@ -22,7 +22,7 @@ type iImageUpscaleResponseBody interface {
 }
 
 type ImageUpscaleResponseBody struct {
-	// The status code, such as success.
+	// The status code, such as "success".
 	//
 	// example:
 	//
@@ -42,7 +42,7 @@ type ImageUpscaleResponseBody struct {
 	//
 	// E1AD60F1-BAC7-546B-9533-E7AD02B16E3F
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the API call is successful. Valid values: true and false.
+	// Indicates whether the call was successful. A value of true indicates success, and a value of false indicates failure.
 	//
 	// example:
 	//
@@ -113,21 +113,21 @@ func (s *ImageUpscaleResponseBody) Validate() error {
 }
 
 type ImageUpscaleResponseBodyData struct {
-	// The high-definition upscaling result data.
+	// The upscaling result data.
 	Data *ImageUpscaleResponseBodyDataData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The error code returned when the request fails, such as InvalidParameter or DownstreamUnavailable.
+	// The error code returned when the operation fails, such as InvalidParameter or DownstreamUnavailable.
 	//
 	// example:
 	//
 	// success
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The error message returned when the request fails.
+	// The error message returned when the operation fails.
 	//
 	// example:
 	//
 	// Success
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	// Indicates whether the request is successful. Valid values: true and false.
+	// Indicates whether the operation was successful. A value of true indicates success, and a value of false indicates failure.
 	//
 	// example:
 	//
@@ -139,7 +139,7 @@ type ImageUpscaleResponseBodyData struct {
 	//
 	// ed9d8504-6141-9fbb-8345-4fa36433483f
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	// The usage information.
+	// The usage information. The key is the billing dimension name.
 	UsageMap *ImageUpscaleResponseBodyDataUsageMap `json:"UsageMap,omitempty" xml:"UsageMap,omitempty" type:"Struct"`
 }
 
@@ -226,7 +226,7 @@ type ImageUpscaleResponseBodyDataData struct {
 	//
 	// 4096
 	ImageHeight *int32 `json:"ImageHeight,omitempty" xml:"ImageHeight,omitempty"`
-	// The result information of the upscaled image.
+	// The URL of the upscaled single image.
 	//
 	// example:
 	//

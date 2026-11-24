@@ -22,7 +22,7 @@ type iCategoryMatchResponseBody interface {
 }
 
 type CategoryMatchResponseBody struct {
-	// The status code. "success" is returned for successful calls.
+	// The status code. Returns "success" for normal calls.
 	//
 	// example:
 	//
@@ -30,13 +30,13 @@ type CategoryMatchResponseBody struct {
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The product category matching result.
 	Data *CategoryMatchResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The error message. "Success" is returned for successful calls.
+	// The error message. Returns "Success" for normal calls.
 	//
 	// example:
 	//
 	// Success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The request ID, which is used to identify a unique request call.
+	// The request ID, which identifies a unique request.
 	//
 	// example:
 	//
@@ -129,7 +129,7 @@ type CategoryMatchResponseBodyData struct {
 	//
 	// example:
 	//
-	// Pet Supplies/Cat Supplies/Cat Charms, Collars & Leashes/Location and Activity Trackers
+	// Pet Supplies/Cat Supplies/Cat Collars, Harnesses and Leashes/Location and Activity Trackers
 	CategoryPath *string `json:"CategoryPath,omitempty" xml:"CategoryPath,omitempty"`
 	// The matching confidence score, ranging from 0 to 100.
 	//
@@ -137,13 +137,13 @@ type CategoryMatchResponseBodyData struct {
 	//
 	// 96
 	Confidence *int32 `json:"Confidence,omitempty" xml:"Confidence,omitempty"`
-	// Indicates whether the match is successful.
+	// Indicates whether the matching is successful.
 	//
 	// example:
 	//
 	// true
 	MatchSuccessful *bool `json:"MatchSuccessful,omitempty" xml:"MatchSuccessful,omitempty"`
-	// The matching rationale.
+	// The matching reason.
 	//
 	// example:
 	//

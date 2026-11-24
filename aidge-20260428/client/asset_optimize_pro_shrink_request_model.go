@@ -36,13 +36,13 @@ type iAssetOptimizeProShrinkRequest interface {
 }
 
 type AssetOptimizeProShrinkRequest struct {
-	// The list of column names to be recognized in the size chart. This parameter is optional.
+	// The list of column names to be recognized in the size chart. Optional.
 	//
 	// example:
 	//
 	// ["Bust","Waist","Hip"]
 	ColumnNameListShrink *string `json:"ColumnNameList,omitempty" xml:"ColumnNameList,omitempty"`
-	// The ID of the intervention glossary. This parameter is optional. You must create the glossary in the console and provide its ID. If this parameter is left empty, the translation results are not modified.
+	// The ID of the intervention glossary. Optional. You must create the glossary in the console and provide its ID. If this parameter is left empty, the translation results are not modified.
 	//
 	// example:
 	//
@@ -54,7 +54,7 @@ type AssetOptimizeProShrinkRequest struct {
 	//
 	// false
 	IncludingProductArea *bool `json:"IncludingProductArea,omitempty" xml:"IncludingProductArea,omitempty"`
-	// The output language format for the size chart. If this parameter is left empty, the original language is used. Valid values: en for English, cn for Chinese.
+	// The output language format for the size chart. If this parameter is left empty, the original language is used. Set this parameter to en for English output or cn for Chinese output.
 	//
 	// example:
 	//
@@ -68,7 +68,7 @@ type AssetOptimizeProShrinkRequest struct {
 	//
 	// true
 	NeedTrans *bool `json:"NeedTrans,omitempty" xml:"NeedTrans,omitempty"`
-	// The product URL. This parameter is required. Currently, only 1688 product links are supported.
+	// The product URL. Required. Only 1688 product links are supported.
 	//
 	// This parameter is required.
 	//
@@ -76,13 +76,13 @@ type AssetOptimizeProShrinkRequest struct {
 	//
 	// https://detail.1688.com/offer/771024907536.html
 	ProductUrl *string `json:"ProductUrl,omitempty" xml:"ProductUrl,omitempty"`
-	// The source language code. This parameter is optional. For supported language pairs, see the list of supported translation languages. This parameter is required if NeedTrans is set to true.
+	// The source language code. Optional. For supported language pairs, refer to the list of supported translation language pairs. Required if NeedTrans is set to true.
 	//
 	// example:
 	//
 	// zh
 	SourceLanguage *string `json:"SourceLanguage,omitempty" xml:"SourceLanguage,omitempty"`
-	// The source platform. Currently, only 1688 is supported.
+	// The source platform. Only 1688 is supported.
 	//
 	// This parameter is required.
 	//
@@ -90,13 +90,13 @@ type AssetOptimizeProShrinkRequest struct {
 	//
 	// 1688
 	SourcePlatform *string `json:"SourcePlatform,omitempty" xml:"SourcePlatform,omitempty"`
-	// The target language code. This parameter is optional. For supported language pairs, see the list of supported translation languages. This parameter is required if NeedTrans is set to true.
+	// The target language code. Optional. For supported language pairs, refer to the list of supported translation language pairs. Required if NeedTrans is set to true.
 	//
 	// example:
 	//
 	// en
 	TargetLanguage *string `json:"TargetLanguage,omitempty" xml:"TargetLanguage,omitempty"`
-	// The target platform for product listing. Currently, only TEMU is supported.
+	// The target platform for listing. Only TEMU is supported.
 	//
 	// This parameter is required.
 	//
@@ -110,7 +110,7 @@ type AssetOptimizeProShrinkRequest struct {
 	//
 	// 0.4
 	Threshold *float64 `json:"Threshold,omitempty" xml:"Threshold,omitempty"`
-	// Specifies whether to translate brand names in images. This parameter is optional. Default value: false. This helps protect brand names from being translated.
+	// Specifies whether to translate the brand name in the image. Optional. Default value: false. This helps protect brand name information from being translated.
 	//
 	// example:
 	//

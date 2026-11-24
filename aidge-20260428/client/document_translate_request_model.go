@@ -20,7 +20,7 @@ type iDocumentTranslateRequest interface {
 }
 
 type DocumentTranslateRequest struct {
-	// Supports PDF, WORD, and EXCEL formats. Use uppercase letters when specifying this parameter.
+	// Supports PDF, WORD, and EXCEL formats. Use uppercase letters for the input parameter.
 	//
 	// This parameter is required.
 	//
@@ -36,9 +36,9 @@ type DocumentTranslateRequest struct {
 	//
 	// ○ Specified translation (ABC-DEF).
 	//
-	// ○ Translation omission (ABC-null value).
+	// ○ Translation omission (ABC-null).
 	//
-	// This is commonly used in scenarios such as brand word protection.
+	// Commonly used in scenarios such as brand word protection.
 	//
 	// Example value: "glossary_1"
 	//
@@ -60,7 +60,7 @@ type DocumentTranslateRequest struct {
 	//
 	// example:
 	//
-	// https://aib-innovation-oss.oss-accelerate.aliyuncs.com/AI_Business/38dao/testdemo.pdf?Expires=3356578313&OSSAccessKeyId=LTAI5tE8X3gEy66SRU1V8dig&Signature=8niQY2HtMQY7h05zmSUdyORML9E%3D
+	// https://aib-innovation-oss.oss-accelerate.aliyuncs.com/AI_Business/38dao/testdemo.pdf?Expires=3356578313&OSSAccessKeyId=LTAI5tE8X3****6SRU1V8dig&Signature=8niQY2HtMQY7h****SUdyORML9E%3D
 	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
 }
 

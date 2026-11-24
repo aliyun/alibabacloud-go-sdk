@@ -22,15 +22,15 @@ type iSubmitProductMatchResponseBody interface {
 }
 
 type SubmitProductMatchResponseBody struct {
-	// The error code. This parameter is not returned for normal calls.
+	// The error code. This parameter is not returned for successful calls.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The submission result of the asynchronous task for identical product identification.
+	// The submission result of the asynchronous task for identical product recognition.
 	Data *SubmitProductMatchResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The error message. This parameter is not returned for normal calls.
+	// The error message. This parameter is not returned for successful calls.
 	//
 	// example:
 	//
@@ -42,11 +42,7 @@ type SubmitProductMatchResponseBody struct {
 	//
 	// E1AD60F1-BAC7-546B-9533-E7AD02B16E3F
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the call is successful. Valid values:
-	//
-	// - true: Successful.
-	//
-	// - false: Failed.
+	// Indicates whether the call was successful. A value of true indicates success, and a value of false indicates failure.
 	//
 	// example:
 	//
@@ -123,7 +119,7 @@ type SubmitProductMatchResponseBodyData struct {
 	//
 	// 2026-08-20T09:30:00Z
 	SubmittedAt *string `json:"SubmittedAt,omitempty" xml:"SubmittedAt,omitempty"`
-	// The ID of the asynchronous task used to query the task result by calling QueryAsyncTaskResult.
+	// The asynchronous task ID used to query the task result by calling QueryAsyncTaskResult.
 	//
 	// example:
 	//

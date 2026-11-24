@@ -36,7 +36,7 @@ type ProductVideoGenerationRequest struct {
 	//
 	// 15
 	Duration *int64 `json:"duration,omitempty" xml:"duration,omitempty"`
-	// The public image URLs. At least one image URL is required. Each URL must start with http:// or https:// after leading and trailing whitespaces are removed.
+	// The public URLs of the product images. At least one image is required. After leading and trailing whitespaces are removed, each URL must start with http:// or https://.
 	//
 	// This parameter is required.
 	ProductImages []*string `json:"product_images,omitempty" xml:"product_images,omitempty" type:"Repeated"`

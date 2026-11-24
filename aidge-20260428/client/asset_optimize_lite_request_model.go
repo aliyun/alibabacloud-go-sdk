@@ -50,7 +50,7 @@ type AssetOptimizeLiteRequest struct {
 	//
 	// true
 	NeedTrans *bool `json:"NeedTrans,omitempty" xml:"NeedTrans,omitempty"`
-	// The product URL.
+	// The product link URL.
 	//
 	// This parameter is required.
 	//

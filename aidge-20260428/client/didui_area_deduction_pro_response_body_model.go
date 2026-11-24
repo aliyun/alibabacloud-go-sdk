@@ -113,7 +113,7 @@ func (s *DiduiAreaDeductionProResponseBody) Validate() error {
 }
 
 type DiduiAreaDeductionProResponseBodyData struct {
-	// The ID of the asynchronous task used to query the result by calling QueryAsyncTaskResult.
+	// The ID of the asynchronous task used for querying with QueryAsyncTaskResult.
 	//
 	// example:
 	//
