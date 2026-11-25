@@ -16,11 +16,11 @@ type iUpdateCategoryRequest interface {
 }
 
 type UpdateCategoryRequest struct {
-	// The category ID. Only a single category ID can be specified. You can obtain the category ID by using the following methods:
+	// The category ID. You can specify only one category ID. You can obtain the category ID by using one of the following methods:
 	//
-	// - Log on to the [ApsaraVideo VOD console](https://vod.console.aliyun.com) and choose **Configuration Management*	- > **Media Asset Management Configuration*	- > **Category Management*	- > **Audio/Video/Image Category*	- or **Short Video Material Category*	- to view the category ID.
+	// - Log on to the [ApsaraVideo VOD console](https://vod.console.aliyun.com). In the left-side navigation pane, choose **Configuration Management*	- > **Media Asset Management Configuration*	- > **Category Management*	- > **Audio/Video and Image Categories*	- or **Short Video Material Categories*	- to view the category ID.
 	//
-	// - Obtain the category ID from the response of the [AddCategory](~~AddCategory~~) operation when you create a category.
+	// - The category ID is returned when you call the [AddCategory](~~AddCategory~~) operation to create a category.
 	//
 	// This parameter is required.
 	//

@@ -62,7 +62,7 @@ func (s *AddCategoryResponseBody) Validate() error {
 }
 
 type AddCategoryResponseBodyCategory struct {
-	// The category ID. You can use it as a request parameter for the [UpdateCategory](~~UpdateCategory~~), [DeleteCategory](~~DeleteCategory~~), and [GetCategories](~~GetCategories~~) operations.
+	// The category ID. You can use this ID as a request parameter for the [UpdateCategory](~~UpdateCategory~~), [DeleteCategory](~~DeleteCategory~~), and [GetCategories](~~GetCategories~~) operations.
 	//
 	// example:
 	//

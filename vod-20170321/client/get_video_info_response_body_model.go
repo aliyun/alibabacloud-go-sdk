@@ -68,9 +68,9 @@ type GetVideoInfoResponseBodyVideo struct {
 	//
 	// app-****
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// The final review result of the audio or video file. Valid values:
+	// The final moderation result of the audio or video file. Valid values:
 	//
-	// - **Normal**: Approved.
+	// - **Normal**: Passed.
 	//
 	// - **Blocked**: Blocked.
 	//
@@ -96,7 +96,7 @@ type GetVideoInfoResponseBodyVideo struct {
 	//
 	// https://example.aliyundoc.com/****.jpg
 	CoverURL *string `json:"CoverURL,omitempty" xml:"CoverURL,omitempty"`
-	// The time when the audio or video file was created. The time is in the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format (UTC).
+	// The time when the audio or video file was created. The time follows the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format. The time is displayed in UTC.
 	//
 	// example:
 	//
@@ -104,7 +104,7 @@ type GetVideoInfoResponseBodyVideo struct {
 	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
 	// The custom media asset information.
 	//
-	// > This parameter is deprecated. The API no longer returns this parameter.
+	// > **[Deprecated]*	- This parameter is deprecated and is no longer returned when you call this operation.
 	//
 	// example:
 	//
@@ -116,11 +116,11 @@ type GetVideoInfoResponseBodyVideo struct {
 	//
 	// Alibaba Cloud VOD video description
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The status of the offline download switch. After the offline download feature is enabled, mobile users can cache videos to their local devices for offline viewing by using ApsaraVideo Player. For more information, see [Offline download](https://help.aliyun.com/document_detail/86107.html). Valid values:
+	// The status of the offline download switch. After the offline download feature is enabled, mobile users can use ApsaraVideo Player to cache videos to their local devices for playback. For more information, see [Offline download](https://help.aliyun.com/document_detail/86107.html). Valid values:
 	//
-	// - **on**: enabled. Offline download is allowed.
+	// - **on**: Enabled. Offline download is allowed.
 	//
-	// - **off**: disabled. Offline download is not allowed.
+	// - **off**: Disabled. Offline download is prohibited.
 	//
 	// example:
 	//
@@ -132,13 +132,13 @@ type GetVideoInfoResponseBodyVideo struct {
 	//
 	// 135.6
 	Duration *float32 `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	// The time when the audio or video file was last updated. The time is in the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format (UTC).
+	// The last time when the audio or video file was updated. The time follows the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format. The time is displayed in UTC.
 	//
 	// example:
 	//
 	// 2017-11-14T10:15:50Z
 	ModificationTime *string `json:"ModificationTime,omitempty" xml:"ModificationTime,omitempty"`
-	// The custom ID. Only lowercase letters, uppercase letters, digits, hyphens, and underscores are supported. The length is 6 to 64 characters. The ID is unique at the user level.
+	// The custom ID. The ID must be 6 to 64 characters in length and can contain only lowercase letters, uppercase letters, digits, hyphens, and underscores. The ID must be unique per user.
 	//
 	// example:
 	//
@@ -175,7 +175,7 @@ type GetVideoInfoResponseBodyVideo struct {
 	// 10897890
 	Size      *int64                                  `json:"Size,omitempty" xml:"Size,omitempty"`
 	Snapshots *GetVideoInfoResponseBodyVideoSnapshots `json:"Snapshots,omitempty" xml:"Snapshots,omitempty" type:"Struct"`
-	// The status of the audio or video file. For more information about the operations that can be performed on audio and video files in each status and the limits, see [Status: audio and video status](~~52839#title-vqg-8cz-7p8~~). Valid values:
+	// The status of the audio or video file. For more information about the operations that can be performed and the limits in each status, see [Status: Audio and video status](~~52839#title-vqg-8cz-7p8~~). Valid values:
 	//
 	// - **Uploading**: The file is being uploaded.
 	//
@@ -189,7 +189,7 @@ type GetVideoInfoResponseBodyVideo struct {
 	//
 	// - **Blocked**: The file is blocked.
 	//
-	// - **Normal**: The file is in a normal state.
+	// - **Normal**: The file is normal.
 	//
 	// example:
 	//
@@ -197,19 +197,19 @@ type GetVideoInfoResponseBodyVideo struct {
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	// The storage class of the media asset. Valid values:
 	//
-	// - **Standard**: standard.
+	// - **Standard**: Standard.
 	//
-	// - **IA**: Infrequent Access (media asset).
+	// - **IA**: Infrequent Access for media assets.
 	//
-	// - **Archive**: Archive (media asset).
+	// - **Archive**: Archive for media assets.
 	//
-	// - **ColdArchive**: Cold Archive (media asset).
+	// - **ColdArchive**: Cold Archive for media assets.
 	//
-	// - **SourceIA**: Infrequent Access (source file).
+	// - **SourceIA**: Infrequent Access for source files.
 	//
-	// - **SourceArchive**: Archive (source file).
+	// - **SourceArchive**: Archive for source files.
 	//
-	// - **SourceColdArchive**: Cold Archive (source file).
+	// - **SourceColdArchive**: Cold Archive for source files.
 	//
 	// - **Changing**: The storage class of the media asset is being changed.
 	//
@@ -231,7 +231,7 @@ type GetVideoInfoResponseBodyVideo struct {
 	//
 	// tag1, tag2
 	Tags *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
-	// The transcoding template group ID.
+	// The ID of the transcoding template group.
 	//
 	// example:
 	//

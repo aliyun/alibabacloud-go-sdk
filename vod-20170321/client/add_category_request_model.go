@@ -22,7 +22,7 @@ type AddCategoryRequest struct {
 	//
 	// - It can be up to 64 bytes in length.
 	//
-	// - It is encoded in UTF-8.
+	// - It must be encoded in UTF-8.
 	//
 	// This parameter is required.
 	//
@@ -32,7 +32,7 @@ type AddCategoryRequest struct {
 	CateName *string `json:"CateName,omitempty" xml:"CateName,omitempty"`
 	// The ID of the parent category.
 	//
-	// Log on to the [ApsaraVideo VOD console](https://vod.console.aliyun.com) and choose **Configuration Management*	- > **Media Asset Management Configuration*	- > **Category Management*	- > **Audio/Video/Image Categories*	- or **Short Video Material Categories*	- to view the category ID.
+	// You can log on to the [ApsaraVideo VOD console](https://vod.console.aliyun.com) and choose **Configuration management*	- > **Media asset management configuration*	- > **Category management*	- > **Audio, video, and image categories*	- or **Short video material categories*	- to view the category ID.
 	//
 	// > - If you specify this parameter, a subcategory is created under the specified parent category. If you do not specify this parameter, a level-1 category is created.
 	//

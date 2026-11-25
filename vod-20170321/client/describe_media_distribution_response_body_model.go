@@ -18,7 +18,7 @@ type iDescribeMediaDistributionResponseBody interface {
 }
 
 type DescribeMediaDistributionResponseBody struct {
-	// The distribution list of audio and video media assets. Statistics are displayed based on the statistical period (calendar hour, day, week, or month) within the specified time range.
+	// The distribution list of audio and video media assets. The list is displayed based on the statistical periods such as natural hours, days, weeks, and months of the start time and end time.
 	MediaDistributionList []*DescribeMediaDistributionResponseBodyMediaDistributionList `json:"MediaDistributionList,omitempty" xml:"MediaDistributionList,omitempty" type:"Repeated"`
 	// The request ID.
 	//
@@ -83,19 +83,19 @@ func (s *DescribeMediaDistributionResponseBody) Validate() error {
 }
 
 type DescribeMediaDistributionResponseBodyMediaDistributionList struct {
-	// The number of media assets that match the specified time range within the statistical period.
+	// The number of media assets that match the specified time range within the natural statistical period.
 	//
 	// example:
 	//
 	// 12
 	Count *int64 `json:"Count,omitempty" xml:"Count,omitempty"`
-	// The end time (exclusive) of the statistical period. Format: yyyy-MM-ddTHH:mm:ssZ (UTC).
+	// The end time of the statistical period. The end time is not included. Specify the time in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
 	//
 	// example:
 	//
 	// 2017-11-14T00:00:00Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The start time (inclusive) of the statistical period. Format: yyyy-MM-ddTHH:mm:ssZ (UTC).
+	// The start time of the statistical period. The start time is included. Specify the time in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
 	//
 	// example:
 	//

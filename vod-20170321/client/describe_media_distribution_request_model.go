@@ -20,7 +20,7 @@ type iDescribeMediaDistributionRequest interface {
 }
 
 type DescribeMediaDistributionRequest struct {
-	// The end time of CreationTime. The end time must be later than the start time. Format: yyyy-MM-ddTHH:mm:ssZ (UTC). The maximum time span between the start time and end time is six months.
+	// The end time of the creation time. The end time must be later than the start time. Specify the time in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC. The maximum time span between the start time and end time is six months.
 	//
 	// example:
 	//
@@ -28,19 +28,19 @@ type DescribeMediaDistributionRequest struct {
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// The statistical interval. Default value: day. Valid values:
 	//
-	// - hour: by hour. Statistics are collected based on the calendar hours within the specified time range.
+	// - hour: Hour. Statistics are collected based on the natural hours of the start time and end time.
 	//
-	// - day: by day. Statistics are collected based on the calendar days within the specified time range.
+	// - day: Day. Statistics are collected based on the natural days of the start time and end time.
 	//
-	// - week: by week. Statistics are collected based on the calendar weeks within the specified time range.
+	// - week: Week. Statistics are collected based on the natural weeks of the start time and end time.
 	//
-	// - month: by month. Statistics are collected based on the calendar months within the specified time range.
+	// - month: Month. Statistics are collected based on the natural months of the start time and end time.
 	//
 	// example:
 	//
 	// day
 	Interval *string `json:"Interval,omitempty" xml:"Interval,omitempty"`
-	// The start time of CreationTime. Format: yyyy-MM-ddTHH:mm:ssZ (UTC). The maximum time span between the start time and end time is six months.
+	// The start time of the creation time. Specify the time in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC. The maximum time span between the start time and end time is six months.
 	//
 	// example:
 	//
@@ -48,23 +48,23 @@ type DescribeMediaDistributionRequest struct {
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	// The storage class. Valid values:
 	//
-	// - Standard: standard storage.
+	// - Standard: Standard storage.
 	//
-	// - IA: Infrequent Access.
+	// - IA: Infrequent access.
 	//
 	// - Archive: Archive storage.
 	//
-	// - ColdArchive: Cold Archive storage.
+	// - ColdArchive: Cold archive storage.
 	//
-	// - SourceIA: Infrequent Access for source files.
+	// - SourceIA: Infrequent access for source files.
 	//
 	// - SourceArchive: Archive storage for source files.
 	//
-	// - SourceColdArchive: Cold Archive storage for source files.
+	// - SourceColdArchive: Cold archive storage for source files.
 	//
-	// - Changing: the media asset storage class is being changed.
+	// - Changing: The storage type of the media asset is being changed.
 	//
-	// - SourceChanging: the source file storage class is being changed.
+	// - SourceChanging: The storage type of the source file is being changed.
 	//
 	// example:
 	//

@@ -28,19 +28,19 @@ type iListLiveRecordVideoRequest interface {
 }
 
 type ListLiveRecordVideoRequest struct {
-	// The name of the application used during recording.
+	// The application name used for recording.
 	//
 	// example:
 	//
 	// testApp
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	// The domain name used during recording.
+	// The live streaming domain name used for recording.
 	//
 	// example:
 	//
 	// example.com
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	// The end time of the recording operation (when the live stream recording begins). The end time must be later than the start time. Format: <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z (UTC).
+	// The end time of the recording operation. The end time must be later than the start time. Specify the time in the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format. The time must be in UTC.
 	//
 	// example:
 	//
@@ -58,23 +58,23 @@ type ListLiveRecordVideoRequest struct {
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The sorting method for results. Valid values:
+	// The sorting method for the results. Valid values:
 	//
-	// - **CreationTime:Desc*	- (default): sorted by creation time in descending order.
+	// - **CreationTime:Desc*	- (default): Sorts the results by creation time in descending order.
 	//
-	// - **CreationTime:Asc**: sorted by creation time in ascending order.
+	// - **CreationTime:Asc**: Sorts the results by creation time in ascending order.
 	//
 	// example:
 	//
 	// CreationTime:Desc
 	SortBy *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
-	// The start time of the recording operation (when the live stream recording begins). Format: <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z (UTC).
+	// The start time of the recording operation, which is when the live program recording starts. Specify the time in the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format. The time must be in UTC.
 	//
 	// example:
 	//
 	// 2017-01-11T12:00:00Z
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The name of the live stream used during recording.
+	// The name of the live stream used for recording.
 	//
 	// example:
 	//

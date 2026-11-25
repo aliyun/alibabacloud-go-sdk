@@ -24,7 +24,7 @@ type GetVideoListResponseBody struct {
 	//
 	// 25818875-5F78-4AF6-D7393642CA58****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of audio and video files.
+	// The total number of audio and video assets.
 	//
 	// example:
 	//

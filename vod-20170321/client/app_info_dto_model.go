@@ -31,6 +31,10 @@ type iAppInfoDTO interface {
 
 type AppInfoDTO struct {
 	// The application name.
+	//
+	// example:
+	//
+	// vod-demo-app
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
 	// The application type. Valid values:
 	//
@@ -43,18 +47,42 @@ type AppInfoDTO struct {
 	// 1
 	AppType *int32 `json:"AppType,omitempty" xml:"AppType,omitempty"`
 	// The creation time.
+	//
+	// example:
+	//
+	// 2026-01-02T03:04:05Z
 	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
 	// The creation time.
+	//
+	// example:
+	//
+	// 2026-01-02 03:04:05
 	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
 	// The update time.
+	//
+	// example:
+	//
+	// 2026-01-02 03:04:05
 	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
 	// The application ID.
+	//
+	// example:
+	//
+	// 3ba9c7d21f4e6a80
 	ItemId *string `json:"ItemId,omitempty" xml:"ItemId,omitempty"`
 	// The update time.
+	//
+	// example:
+	//
+	// 2026-01-02T03:04:05Z
 	ModificationTime *string `json:"ModificationTime,omitempty" xml:"ModificationTime,omitempty"`
-	// The list of platform information for the application.
+	// The list of platform information included in the application.
 	Platforms []*AppInfoDTOPlatforms `json:"Platforms,omitempty" xml:"Platforms,omitempty" type:"Repeated"`
 	// The user ID.
+	//
+	// example:
+	//
+	// 2544469002080159
 	UserId *int64 `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
@@ -162,16 +190,36 @@ func (s *AppInfoDTO) Validate() error {
 
 type AppInfoDTOPlatforms struct {
 	// The platform ID.
+	//
+	// example:
+	//
+	// 3ba9c7d21f4e6a81
 	ItemId *string `json:"ItemId,omitempty" xml:"ItemId,omitempty"`
-	// The list of licenses.
+	// The authorization list.
 	LicenseItemIds []*string `json:"LicenseItemIds,omitempty" xml:"LicenseItemIds,omitempty" type:"Repeated"`
 	// The package name.
+	//
+	// example:
+	//
+	// com.example.vodapp
 	PkgName *string `json:"PkgName,omitempty" xml:"PkgName,omitempty"`
 	// The package signature.
+	//
+	// example:
+	//
+	// 8e610rzjg613h0u58v8473d029h7
 	PkgSignature *string `json:"PkgSignature,omitempty" xml:"PkgSignature,omitempty"`
 	// The platform type.
+	//
+	// example:
+	//
+	// 2
 	PlatformType *int64 `json:"PlatformType,omitempty" xml:"PlatformType,omitempty"`
 	// The platform type.
+	//
+	// example:
+	//
+	// 2
 	Type *int64 `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 

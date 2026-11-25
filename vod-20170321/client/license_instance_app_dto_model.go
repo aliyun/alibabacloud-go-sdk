@@ -35,26 +35,66 @@ type iLicenseInstanceAppDTO interface {
 
 type LicenseInstanceAppDTO struct {
 	// appId
+	//
+	// example:
+	//
+	// 0d3f2a7c1b9e4f58
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
 	// beginOn
+	//
+	// example:
+	//
+	// 2026-01-02T03:04:05Z
 	BeginOn *string `json:"BeginOn,omitempty" xml:"BeginOn,omitempty"`
 	// contractNo
+	//
+	// example:
+	//
+	// 782590648253664
 	ContractNo *string `json:"ContractNo,omitempty" xml:"ContractNo,omitempty"`
 	// creationTime
+	//
+	// example:
+	//
+	// 2026-01-02T03:04:05Z
 	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
 	// expiredOn
+	//
+	// example:
+	//
+	// 2027-01-02T03:04:05Z
 	ExpiredOn *string `json:"ExpiredOn,omitempty" xml:"ExpiredOn,omitempty"`
 	// instanceId
+	//
+	// example:
+	//
+	// lsn_9f2a1c7b3d8e4f56
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// itemId
+	//
+	// example:
+	//
+	// 3ba9c7d21f4e6a80
 	ItemId *string `json:"ItemId,omitempty" xml:"ItemId,omitempty"`
 	// LicenseConfigDTOS
 	LicenseConfigs []*LicenseInstanceAppDTOLicenseConfigs `json:"LicenseConfigs,omitempty" xml:"LicenseConfigs,omitempty" type:"Repeated"`
 	// modificationTime
+	//
+	// example:
+	//
+	// 2026-01-02T03:04:05Z
 	ModificationTime *string `json:"ModificationTime,omitempty" xml:"ModificationTime,omitempty"`
 	// status
+	//
+	// example:
+	//
+	// Normal
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	// userId
+	//
+	// example:
+	//
+	// 2544469002080159
 	UserId *int64 `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
@@ -180,20 +220,48 @@ func (s *LicenseInstanceAppDTO) Validate() error {
 
 type LicenseInstanceAppDTOLicenseConfigs struct {
 	// businessType
+	//
+	// example:
+	//
+	// Player
 	BusinessType *string `json:"BusinessType,omitempty" xml:"BusinessType,omitempty"`
 	// featureIds
+	//
+	// example:
+	//
+	// 4326
 	FeatureIds *string `json:"FeatureIds,omitempty" xml:"FeatureIds,omitempty"`
 	// isTrial
 	IsTrial *bool `json:"IsTrial,omitempty" xml:"IsTrial,omitempty"`
 	// sdkId
+	//
+	// example:
+	//
+	// 150
 	SdkId *int32 `json:"SdkId,omitempty" xml:"SdkId,omitempty"`
 	// sdkName
+	//
+	// example:
+	//
+	// VOD Player SDK
 	SdkName *string `json:"SdkName,omitempty" xml:"SdkName,omitempty"`
 	// subscription
+	//
+	// example:
+	//
+	// Standard_Bundling
 	Subscription *string `json:"Subscription,omitempty" xml:"Subscription,omitempty"`
 	// subscriptionImp
+	//
+	// example:
+	//
+	// Standard
 	SubscriptionImp *string `json:"SubscriptionImp,omitempty" xml:"SubscriptionImp,omitempty"`
 	// subscriptionPkg
+	//
+	// example:
+	//
+	// Standard_Bundling
 	SubscriptionPkg *string `json:"SubscriptionPkg,omitempty" xml:"SubscriptionPkg,omitempty"`
 }
 

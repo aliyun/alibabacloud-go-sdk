@@ -16,7 +16,7 @@ type iGetMediaRefreshJobsResponseBody interface {
 }
 
 type GetMediaRefreshJobsResponseBody struct {
-	// The list of audio or video purge or prefetch task information.
+	// The list of audio and video refresh or prefetch task information.
 	MediaRefreshJobs []*GetMediaRefreshJobsResponseBodyMediaRefreshJobs `json:"MediaRefreshJobs,omitempty" xml:"MediaRefreshJobs,omitempty" type:"Repeated"`
 	// The request ID.
 	//
@@ -66,19 +66,23 @@ func (s *GetMediaRefreshJobsResponseBody) Validate() error {
 }
 
 type GetMediaRefreshJobsResponseBodyMediaRefreshJobs struct {
-	// The error code. This field is returned when the purge or prefetch task fails to be submitted.
+	// The error code.
+	//
+	// This field is returned when the refresh or prefetch task fails to be submitted.
 	//
 	// example:
 	//
 	// PreloadQueueFull
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The error message. This field is returned when the purge or prefetch task fails to be submitted.
+	// The error message.
+	//
+	// This field is returned when the refresh or prefetch task fails to be submitted.
 	//
 	// example:
 	//
 	// Preload queue is full, please try again later!
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	// The filtering policy for playback streams. The value is in JSON format and contains the request parameters of the [SubmitMediaRefreshJob](https://help.aliyun.com/document_detail/431095.html) operation.
+	// The filter policy for playback streams. The value is in JSON format and contains the request parameters of the [Submit audio and video refresh or prefetch tasks](https://help.aliyun.com/document_detail/431095.html) API operation.
 	//
 	// example:
 	//
@@ -90,7 +94,7 @@ type GetMediaRefreshJobsResponseBodyMediaRefreshJobs struct {
 	//
 	// 2022-05-20 08:23:22
 	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	// The time when the task was last modified.
+	// The time when the task was modified.
 	//
 	// example:
 	//
@@ -102,7 +106,7 @@ type GetMediaRefreshJobsResponseBodyMediaRefreshJobs struct {
 	//
 	// ca3a8f6e4957b658067095869****
 	MediaId *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
-	// The ID of the audio or video purge or prefetch task.
+	// The task ID of the audio or video refresh or prefetch task.
 	//
 	// example:
 	//
@@ -110,21 +114,21 @@ type GetMediaRefreshJobsResponseBodyMediaRefreshJobs struct {
 	MediaRefreshJobId *string `json:"MediaRefreshJobId,omitempty" xml:"MediaRefreshJobId,omitempty"`
 	// The task status. Valid values:
 	//
-	// - **success**: succeeded
+	// - **success**: success
 	//
-	// - **fail**: failed
+	// - **fail**: failure
 	//
 	// example:
 	//
 	// success
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The playback URLs that were successfully purged or prefetched.
+	// The playback URLs that are successfully refreshed or prefetched.
 	//
 	// example:
 	//
 	// https://shenzhen.****.aliyuncdn.com/74401a4f546007bf845cd8840****.m3u8,https://shenzhen.****.aliyuncdn.com/24041e7d13582d86604d8****.m3u8
 	SuccessPlayUrls *string `json:"SuccessPlayUrls,omitempty" xml:"SuccessPlayUrls,omitempty"`
-	// The task IDs for the purge or prefetch of playback URLs. Each URL corresponds to one task ID. You can use the task ID to call the [DescribeVodRefreshTasks](https://help.aliyun.com/document_detail/69214.html) operation to query the purge or prefetch status of each playback URL.
+	// The task IDs for refreshing or prefetching the playback URLs. Each URL corresponds to one task ID. You can use the task ID to call the [DescribeVodRefreshTasks](https://help.aliyun.com/document_detail/69214.html) API operation to query the refresh or prefetch status of each playback URL.
 	//
 	// example:
 	//
@@ -132,7 +136,7 @@ type GetMediaRefreshJobsResponseBodyMediaRefreshJobs struct {
 	TaskIds *string `json:"TaskIds,omitempty" xml:"TaskIds,omitempty"`
 	// The task type. Valid values:
 	//
-	// - **Refresh**: purge
+	// - **Refresh**: refresh
 	//
 	// - **Preload**: prefetch
 	//
@@ -140,7 +144,7 @@ type GetMediaRefreshJobsResponseBodyMediaRefreshJobs struct {
 	//
 	// Preload
 	TaskType *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
-	// The UserData information specified when the purge or prefetch task was submitted.
+	// The UserData information passed when the refresh or prefetch task is submitted.
 	//
 	// example:
 	//
