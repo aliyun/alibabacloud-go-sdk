@@ -18,7 +18,7 @@ type iDescribeVscsResponseBody interface {
 }
 
 type DescribeVscsResponseBody struct {
-	// The query token. The value is the NextToken value returned by the previous API call.
+	// The query token. Set the value to the NextToken value returned by the previous API call.
 	//
 	// example:
 	//
@@ -95,9 +95,9 @@ type DescribeVscsResponseBodyVscs struct {
 	//
 	// i-uf69***21l8zuoizdq
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The resource group ID. When you use this parameter to filter resources, the resource count cannot exceed 1,000.
+	// The ID of the resource group. If you use this parameter to filter resources, the resource count cannot exceed 1,000.
 	//
-	// > Filtering by the default resource group is not supported.
+	// > You cannot filter resources by the default resource group.
 	//
 	// example:
 	//
@@ -107,9 +107,9 @@ type DescribeVscsResponseBodyVscs struct {
 	//
 	// - In_use: In use.
 	//
-	// - Attaching: Attaching.
+	// - Attaching: Being attached.
 	//
-	// - Detaching: Detaching.
+	// - Detaching: Being detached.
 	//
 	// - AttachFailed: Attachment failed.
 	//

@@ -83,13 +83,13 @@ func (s *DescribeLockedSnapshotsResponseBody) Validate() error {
 }
 
 type DescribeLockedSnapshotsResponseBodyLockedSnapshotsInfo struct {
-	// The cooling-off period in compliance mode. Unit: hours.
+	// The cool-off period in compliance mode. Unit: hours.
 	//
 	// example:
 	//
 	// 3
 	CoolOffPeriod *int32 `json:"CoolOffPeriod,omitempty" xml:"CoolOffPeriod,omitempty"`
-	// The time when the cooling-off period in compliance mode ends. The time is displayed in the yyyy-MM-ddTHH:mm:ssZ format in accordance with the [ISO 8601](https://www.alibabacloud.com/help/en/ecs/developer-reference/iso-8601-time-format) standard. UTC+0 is used.
+	// The time when the cool-off period in compliance mode ends. The time is displayed in the yyyy-MM-ddTHH:mm:ssZ format in accordance with the [ISO 8601](https://www.alibabacloud.com/help/en/ecs/developer-reference/iso-8601-time-format) standard. UTC+0 is used.
 	//
 	// example:
 	//
@@ -121,7 +121,7 @@ type DescribeLockedSnapshotsResponseBodyLockedSnapshotsInfo struct {
 	LockExpiredTime *string `json:"LockExpiredTime,omitempty" xml:"LockExpiredTime,omitempty"`
 	// The lock mode. Valid values:
 	//
-	// - compliance: The snapshot is locked in compliance mode. A snapshot locked in compliance mode cannot be unlocked by any user and can be deleted only after the lock duration expires. Users cannot shorten the lock duration, but users with the required RAM permissions can extend the lock duration at any time. When you lock a snapshot in compliance mode, you can optionally specify a cooling-off period.
+	// - compliance: The snapshot is locked in compliance mode. A snapshot locked in compliance mode cannot be unlocked by any user and can be deleted only after the lock duration expires. Users cannot shorten the lock duration, but users with the required RAM permissions can extend the lock duration at any time. When you lock a snapshot in compliance mode, you can optionally specify a cool-off period.
 	//
 	// example:
 	//
@@ -129,9 +129,9 @@ type DescribeLockedSnapshotsResponseBodyLockedSnapshotsInfo struct {
 	LockMode *string `json:"LockMode,omitempty" xml:"LockMode,omitempty"`
 	// The lock status. Valid values:
 	//
-	// - compliance-cooloff: The snapshot is locked in compliance mode but is still in the cooling-off period. The snapshot cannot be deleted, but users with the required RAM permissions can unlock the snapshot, extend or shorten the cooling-off period, and extend or shorten the lock duration.
+	// - compliance-cooloff: The snapshot is locked in compliance mode but is still in the cool-off period. The snapshot cannot be deleted, but users with the required RAM permissions can unlock the snapshot, extend or shorten the cool-off period, and extend or shorten the lock duration.
 	//
-	// - compliance: The snapshot is locked in compliance mode and the cooling-off period has ended. The snapshot cannot be unlocked or deleted, but users with the required RAM permissions can extend the lock duration.
+	// - compliance: The snapshot is locked in compliance mode and the cool-off period has ended. The snapshot cannot be unlocked or deleted, but users with the required RAM permissions can extend the lock duration.
 	//
 	// - expired: The snapshot was locked, but the lock duration has ended and the lock has expired. The snapshot is currently unlocked and can be deleted.
 	//

@@ -42,23 +42,23 @@ type iDescribeSendFileResultsRequest interface {
 }
 
 type DescribeSendFileResultsRequest struct {
-	// The instance ID. If you specify this parameter, all file delivery records of the instance are queried.
+	// The instance ID. If you specify this parameter, the system queries all file sending records of the instance.
 	//
 	// example:
 	//
 	// i-hz0jdfwd9f****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The overall delivery status of the file. The overall status depends on the combined execution status of all instances involved in the delivery task. Valid values:
+	// The overall sending status of the file. The overall status depends on the execution status on all instances involved in the sending task. Valid values:
 	//
-	// - Pending: The system is verifying or delivering the file. If the file delivery status of at least one instance is Pending, the overall execution status is Pending.
+	// - Pending: The system is verifying or sending the file. If the sending status on at least one instance is Pending, the overall execution status is Pending.
 	//
-	// - Running: The file is being delivered to the instances. If the file delivery status of at least one instance is Running, the overall execution status is Running.
+	// - Running: The file is being sent to the instances. If the sending status on at least one instance is Running, the overall execution status is Running.
 	//
-	// - Success: The file is delivered successfully. If the file delivery status of all instances is Success, the overall execution status is Success.
+	// - Success: The file is sent. If the sending status on all instances is Success, the overall execution status is Success.
 	//
-	// - Failed: The file fails to be delivered. If the file delivery status of all instances is Failed, the overall execution status is Failed.
+	// - Failed: The file fails to be sent. If the sending status on all instances is Failed, the overall execution status is Failed.
 	//
-	// - PartialFailed: The file is delivered to some instances but fails to be delivered to others. If the file delivery status of all instances is either Success or Failed, the overall execution status is PartialFailed.
+	// - PartialFailed: The file is sent to some instances but fails to be sent to other instances. If the sending status on each instance is either Success or Failed, the overall execution status is PartialFailed.
 	//
 	// example:
 	//
@@ -70,7 +70,7 @@ type DescribeSendFileResultsRequest struct {
 	//
 	// f-hz0jdfwd9f****
 	InvokeId *string `json:"InvokeId,omitempty" xml:"InvokeId,omitempty"`
-	// The maximum number of entries per page for a paged query.
+	// The maximum number of entries to return on each page for paging in a paged query.
 	//
 	// Maximum value: 50.
 	//
@@ -80,13 +80,13 @@ type DescribeSendFileResultsRequest struct {
 	//
 	// 10
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The name of the file. If you specify this parameter, all delivery records of the file with the specified name are queried.
+	// The file name. If you specify this parameter, the system queries all sending records of the file with this name.
 	//
 	// example:
 	//
 	// test.txt
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The query token. Set the value to the NextToken value returned from the previous API call.
+	// The pagination token. Set the value to the NextToken value returned from the previous API call.
 	//
 	// example:
 	//
@@ -94,13 +94,13 @@ type DescribeSendFileResultsRequest struct {
 	NextToken    *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// > This parameter will soon be deprecated. We recommend that you use NextToken and MaxResults for paging.
+	// > This parameter will be deprecated soon. We recommend that you use NextToken and MaxResults for paging to perform a paged query.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// > This parameter will soon be deprecated. We recommend that you use NextToken and MaxResults for paging.
+	// > This parameter will be deprecated soon. We recommend that you use NextToken and MaxResults for paging to perform a paged query.
 	//
 	// example:
 	//
@@ -114,7 +114,7 @@ type DescribeSendFileResultsRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the resource group to which the file delivery task belongs. If you specify this parameter, you must also specify ResourceGroupId when you deliver the file. This allows you to filter the corresponding file delivery results.
+	// The ID of the resource group to which the file sending task belongs. If you specify this parameter, the system filters the file sending results based on the ResourceGroupId specified when the files were sent.
 	//
 	// example:
 	//
@@ -283,9 +283,9 @@ func (s *DescribeSendFileResultsRequest) Validate() error {
 }
 
 type DescribeSendFileResultsRequestTag struct {
-	// The tag key of the file delivery task. Valid values of N: 1 to 20. If you specify this parameter, it cannot be an empty string.
+	// The tag key of the file sending task. Valid values of N: 1 to 20. The tag key cannot be an empty string.
 	//
-	// If you use a single tag to filter resources, the resource count queried under the tag cannot exceed 1,000. If you use multiple tags to filter resources, the resource count of resources attached with multiple tags at the same time cannot exceed 1,000. If the resource count exceeds 1,000, you must call the [ListTagResources](https://help.aliyun.com/document_detail/110425.html) operation to query the resources.
+	// If you use a single tag to filter resources, the number of resources under this tag cannot exceed 1,000. If you use multiple tags to filter resources, the number of resources attached with multiple tags cannot exceed 1,000. If the number of resources exceeds 1,000, use the [ListTagResources](https://help.aliyun.com/document_detail/110425.html) operation to query the resources.
 	//
 	// The tag key can be up to 64 characters in length. It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
 	//
@@ -293,7 +293,7 @@ type DescribeSendFileResultsRequestTag struct {
 	//
 	// TestKey
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The tag value of the file delivery task. Valid values of N: 1 to 20. This parameter can be an empty string.
+	// The tag value of the file sending task. Valid values of N: 1 to 20. The tag value can be an empty string.
 	//
 	// The tag value can be up to 128 characters in length and cannot contain `http://` or `https://`.
 	//

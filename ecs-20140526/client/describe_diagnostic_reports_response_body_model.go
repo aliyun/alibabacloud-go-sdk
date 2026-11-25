@@ -18,7 +18,7 @@ type iDescribeDiagnosticReportsResponseBody interface {
 }
 
 type DescribeDiagnosticReportsResponseBody struct {
-	// The query token returned for the current call.
+	// The query token returned by the current call.
 	//
 	// example:
 	//

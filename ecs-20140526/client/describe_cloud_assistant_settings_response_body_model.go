@@ -133,25 +133,25 @@ func (s *DescribeCloudAssistantSettingsResponseBody) Validate() error {
 
 type DescribeCloudAssistantSettingsResponseBodyAgentUpgradeConfig struct {
 	AllowedUpgradeWindows *DescribeCloudAssistantSettingsResponseBodyAgentUpgradeConfigAllowedUpgradeWindows `json:"AllowedUpgradeWindows,omitempty" xml:"AllowedUpgradeWindows,omitempty" type:"Struct"`
-	// Indicates whether the Cloud Assistant Agent checks for and performs updates immediately upon startup.
+	// Specifies whether to immediately check for and perform updates when the Cloud Assistant Agent starts.
 	//
 	// example:
 	//
 	// true
 	BootstrapUpgrade *bool `json:"BootstrapUpgrade,omitempty" xml:"BootstrapUpgrade,omitempty"`
-	// Indicates whether the Cloud Assistant Agent is prohibited from checking for and performing updates.
+	// Specifies whether to prohibit the Cloud Assistant Agent from checking for and performing updates.
 	//
 	// example:
 	//
 	// true
 	DisableUpgrade *bool `json:"DisableUpgrade,omitempty" xml:"DisableUpgrade,omitempty"`
-	// Indicates whether the custom Agent upgrade configuration is enabled. If the query result is false or empty, the default behavior of attempting an upgrade every 30 minutes is retained.
+	// Specifies whether custom Agent upgrade configurations are enabled. If the query result is false or empty, the system attempts to upgrade the agent every 30 minutes by default.
 	//
 	// example:
 	//
 	// true
 	Enabled *bool `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
-	// The time zone of the allowed upgrade time windows.
+	// The time zone for the allowed upgrade time windows.
 	//
 	// example:
 	//
@@ -366,13 +366,13 @@ func (s *DescribeCloudAssistantSettingsResponseBodyOssDeliveryConfigsOssDelivery
 }
 
 type DescribeCloudAssistantSettingsResponseBodyResourceUsageConfig struct {
-	// The maximum CPU usage allowed for the Cloud Assistant Agent main process.
+	// The maximum allowed CPU usage limit for the main process of the Cloud Assistant Agent.
 	//
 	// example:
 	//
 	// 20
 	CpuLimit *int32 `json:"CpuLimit,omitempty" xml:"CpuLimit,omitempty"`
-	// Indicates whether the script file is retained in the Cloud Assistant directory after command execution is complete.
+	// Specifies whether to retain script files in the Cloud Assistant directory after command execution is complete.
 	//
 	// example:
 	//
@@ -384,19 +384,19 @@ type DescribeCloudAssistantSettingsResponseBodyResourceUsageConfig struct {
 	//
 	// 30
 	LogFileCountLimit *int32 `json:"LogFileCountLimit,omitempty" xml:"LogFileCountLimit,omitempty"`
-	// The size limit of Cloud Assistant log files.
+	// The size limit for Cloud Assistant log files.
 	//
 	// example:
 	//
 	// 100MB
 	LogSizeLimit *string `json:"LogSizeLimit,omitempty" xml:"LogSizeLimit,omitempty"`
-	// The maximum memory usage allowed for the Cloud Assistant Agent main process.
+	// The maximum allowed memory usage limit for the main process of the Cloud Assistant Agent.
 	//
 	// example:
 	//
 	// 35MB
 	MemoryLimit *string `json:"MemoryLimit,omitempty" xml:"MemoryLimit,omitempty"`
-	// The maximum number of consecutive times that CPU or memory resources usage can exceed the limit. After this limit is reached, the Cloud Assistant Agent automatically stops running.
+	// The maximum number of consecutive times that CPU or memory resources exceed the limit. After reaching this limit, the Cloud Assistant Agent automatically stops.
 	//
 	// example:
 	//
@@ -471,7 +471,7 @@ func (s *DescribeCloudAssistantSettingsResponseBodyResourceUsageConfig) Validate
 }
 
 type DescribeCloudAssistantSettingsResponseBodySessionManagerConfig struct {
-	// The toggle for the Cloud Assistant session feature. Valid values:
+	// The switch for the Cloud Assistant session feature. Valid values:
 	//
 	// 	- true: Enabled.
 	//

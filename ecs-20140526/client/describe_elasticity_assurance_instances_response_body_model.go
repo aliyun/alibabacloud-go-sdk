@@ -23,7 +23,7 @@ type iDescribeElasticityAssuranceInstancesResponseBody interface {
 
 type DescribeElasticityAssuranceInstancesResponseBody struct {
 	ElasticityAssuranceItem *DescribeElasticityAssuranceInstancesResponseBodyElasticityAssuranceItem `json:"ElasticityAssuranceItem,omitempty" xml:"ElasticityAssuranceItem,omitempty" type:"Struct"`
-	// The number of entries returned per page for paging.
+	// The number of entries returned per page for a paging query.
 	//
 	// example:
 	//

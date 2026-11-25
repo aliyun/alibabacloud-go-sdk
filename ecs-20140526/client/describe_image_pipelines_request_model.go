@@ -54,7 +54,7 @@ type DescribeImagePipelinesRequest struct {
 	//
 	// testImagePipeline
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The query token. Set the value to the NextToken value returned from the previous call. You do not need to specify this parameter for the first call.
+	// The query token. The value is the `NextToken` parameter value returned by the previous call to this operation. You do not need to specify this parameter for the first call.
 	//
 	// example:
 	//
@@ -70,7 +70,7 @@ type DescribeImagePipelinesRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the resource group. When you use this parameter to filter resources, the resource count cannot exceed 1,000.
+	// The resource group ID. When you use this parameter to filter resources, the resource count cannot exceed 1,000.
 	//
 	// > Filtering by the default resource group is not supported.
 	//

@@ -24,7 +24,7 @@ type iDescribeSnapshotsResponseBody interface {
 }
 
 type DescribeSnapshotsResponseBody struct {
-	// The token for the next query.
+	// The pagination token for the next query.
 	//
 	// example:
 	//
@@ -51,7 +51,7 @@ type DescribeSnapshotsResponseBody struct {
 	Snapshots *DescribeSnapshotsResponseBodySnapshots `json:"Snapshots,omitempty" xml:"Snapshots,omitempty" type:"Struct"`
 	// The total number of snapshots.
 	//
-	// > When you use the MaxResults and NextToken parameters for pagination, the returned value of the TotalCount parameter is invalid.
+	// > When you use the MaxResults and NextToken parameters for pagination, the returned TotalCount value is invalid.
 	//
 	// example:
 	//

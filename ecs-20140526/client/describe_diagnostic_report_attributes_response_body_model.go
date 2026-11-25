@@ -44,19 +44,19 @@ type DescribeDiagnosticReportAttributesResponseBody struct {
 	//
 	// {"OfflineDiagReportStatus":"CONFIRMED"}
 	Attributes *string `json:"Attributes,omitempty" xml:"Attributes,omitempty"`
-	// The time when the diagnostic report was created. The time is in ISO 8601 format in UTC.
+	// The time when the diagnostic report was created. The time follows the ISO 8601 standard and is in UTC.
 	//
 	// example:
 	//
 	// 2022-07-11T12:00:00Z
 	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
-	// The end time. This is the parameter passed in when you called the [CreateDiagnosticReport](https://help.aliyun.com/document_detail/442490.html) operation to create the diagnostic report. The time is in ISO 8601 format in UTC.
+	// The end time. This is the parameter passed when you call the [CreateDiagnosticReport](https://help.aliyun.com/document_detail/442490.html) operation to create a diagnostic report. The time follows the ISO 8601 standard and is in UTC.
 	//
 	// example:
 	//
 	// 2022-07-11T14:00:00Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The time when the diagnostic report was completed. The time is in ISO 8601 format in UTC.
+	// The time when the diagnostic report was completed. The time follows the ISO 8601 standard and is in UTC.
 	//
 	// example:
 	//
@@ -69,7 +69,7 @@ type DescribeDiagnosticReportAttributesResponseBody struct {
 	//
 	// dms-bp17p0qwtr72zmu*****
 	MetricSetId *string `json:"MetricSetId,omitempty" xml:"MetricSetId,omitempty"`
-	// The ID of the diagnostic report. This is the unique identifier of the resource diagnostic report.
+	// The ID of the diagnostic report, which uniquely identifies the resource diagnostic report.
 	//
 	// example:
 	//
@@ -81,27 +81,27 @@ type DescribeDiagnosticReportAttributesResponseBody struct {
 	//
 	// 473469C7-AA6F-4DC5-B3DB-A3DC0DE3****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The resource ID.
+	// The ID of the resource.
 	//
 	// example:
 	//
 	// i-uf6i0tv2refv8wz*****
 	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
-	// The resource type. The supported type is instance.
+	// The resource type. Valid value: instance.
 	//
 	// example:
 	//
 	// instance
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// The severity level of the report. This is the most severe level among all metrics. The severity levels in ascending order are:
+	// The severity level of the report. This is the highest severity level among all metrics. The severity levels in ascending order are:
 	//
-	// - Unknown: The initial state. The diagnosis has not started, or the diagnostic process exited abnormally. No diagnostic conclusion is available.
+	// - Unknown: The initial state, which indicates that the diagnosis has not started or the diagnostic program exited abnormally, and no diagnostic conclusion is available.
 	//
-	// - Normal: The diagnosis is normal. No issues were found.
+	// - Normal: The diagnosis is normal and no issues are found.
 	//
-	// - Info: Related information is available and may be associated with an exception.
+	// - Info: Associated information is available, which may be related to an exception.
 	//
-	// - Warn: Related information is available and may cause an exception.
+	// - Warn: Associated information is available, which may cause an exception.
 	//
 	// - Critical: A critical exception exists.
 	//
@@ -109,7 +109,7 @@ type DescribeDiagnosticReportAttributesResponseBody struct {
 	//
 	// Normal
 	Severity *string `json:"Severity,omitempty" xml:"Severity,omitempty"`
-	// The start time. This is the parameter passed in when you called the [CreateDiagnosticReport](https://help.aliyun.com/document_detail/442490.html) operation to create the diagnostic report. The time is in ISO 8601 format in UTC.
+	// The start time. This is the parameter passed when you call the [CreateDiagnosticReport](https://help.aliyun.com/document_detail/442490.html) operation to create a diagnostic report. The time follows the ISO 8601 standard and is in UTC.
 	//
 	// example:
 	//
@@ -119,7 +119,7 @@ type DescribeDiagnosticReportAttributesResponseBody struct {
 	//
 	// - InProgress: The diagnosis is in progress.
 	//
-	// - Finished: The diagnosis is complete.
+	// - Finished: The diagnosis is completed.
 	//
 	// - Failed: The diagnosis failed.
 	//

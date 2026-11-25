@@ -28,12 +28,19 @@ type iDeleteImageRequest interface {
 }
 
 type DeleteImageRequest struct {
+	// Specifies whether to perform a dry run. Valid values:
+	//
+	// - true: Performs a dry run and does not delete the image. If the request passes the dry run, the `DryRunOperation` error code is returned.
+	//
+	// - false: Performs a normal request and deletes the image if the request passes the check.
+	//
+	// Default value: false.
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	// Specifies whether to force delete the custom image. Valid values:
+	// Specifies whether to execute a force delete. Valid values:
 	//
-	// - true: Forces the deletion of the custom image, regardless of whether the image is in use by other instances.
+	// - true: Executes a force delete of the custom image, regardless of whether the image is in use by other instances.
 	//
-	// - false: Deletes the custom image normally and checks whether the image is in use by other instances before deletion.
+	// - false: Deletes the custom image normally. The system checks whether the image is in use by other instances before the deletion.
 	//
 	// Default value: false.
 	//

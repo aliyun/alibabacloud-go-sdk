@@ -16,7 +16,7 @@ type iSendFileResponseBody interface {
 }
 
 type SendFileResponseBody struct {
-	// The execution ID.
+	// The invocation ID.
 	//
 	// example:
 	//

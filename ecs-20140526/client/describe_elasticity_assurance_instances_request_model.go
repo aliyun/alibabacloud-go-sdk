@@ -29,7 +29,7 @@ type iDescribeElasticityAssuranceInstancesRequest interface {
 
 type DescribeElasticityAssuranceInstancesRequest struct {
 	PrivatePoolOptions *DescribeElasticityAssuranceInstancesRequestPrivatePoolOptions `json:"PrivatePoolOptions,omitempty" xml:"PrivatePoolOptions,omitempty" type:"Struct"`
-	// The number of entries to return per page for paging.
+	// The number of entries to return per page for a paging query.
 	//
 	// Maximum value: 100.
 	//
@@ -39,7 +39,7 @@ type DescribeElasticityAssuranceInstancesRequest struct {
 	//
 	// 10
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The pagination token for the query. You can obtain the token from the response of the previous request.
+	// The pagination token for the elasticity assurance query. You can obtain the token from the response of the previous request.
 	//
 	// example:
 	//

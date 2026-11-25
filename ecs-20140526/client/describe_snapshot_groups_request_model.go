@@ -52,7 +52,7 @@ type DescribeSnapshotGroupsRequest struct {
 	//
 	// i-j6ca469urv8ei629****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The number of entries per page for a paged query.
+	// The number of entries to return per page in a paging query.
 	//
 	// Maximum value: 100.
 	//
@@ -68,7 +68,7 @@ type DescribeSnapshotGroupsRequest struct {
 	//
 	// testName
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The query token. Set the value to the NextToken value returned in the last API call.
+	// The query token. The value is the NextToken value returned from the previous API call.
 	//
 	// example:
 	//
@@ -92,13 +92,13 @@ type DescribeSnapshotGroupsRequest struct {
 	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The IDs of the snapshot-consistent groups. Valid values of N: 1 to 10.
+	// The ID of snapshot-consistent group N. Valid values of N: 1 to 10.
 	//
 	// example:
 	//
 	// ssg-j6ciyh3k52qp7ovm****
 	SnapshotGroupId []*string `json:"SnapshotGroupId,omitempty" xml:"SnapshotGroupId,omitempty" type:"Repeated"`
-	// The status of the snapshot-consistent group. Valid values of N: 1 to 3. Valid values:
+	// The status of snapshot-consistent group N. Valid values of N: 1 to 3. Valid values:
 	//
 	// - progressing: The snapshot-consistent group is being created.
 	//
@@ -262,13 +262,13 @@ func (s *DescribeSnapshotGroupsRequest) Validate() error {
 }
 
 type DescribeSnapshotGroupsRequestTag struct {
-	// The tag key of the snapshot-consistent group. Valid values of N: 1 to 20.
+	// The key of tag N of the snapshot-consistent group. Valid values of N: 1 to 20.
 	//
 	// example:
 	//
 	// TestKey
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The tag value of the snapshot-consistent group. Valid values of N: 1 to 20.
+	// The value of tag N of the snapshot-consistent group. Valid values of N: 1 to 20.
 	//
 	// example:
 	//

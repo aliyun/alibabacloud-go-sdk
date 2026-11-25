@@ -56,23 +56,23 @@ type CreateSnapshotGroupRequest struct {
 	//
 	// This is description.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The ID of the disk for which you want to create a snapshot-consistent group. You can specify multiple disk IDs across instances in the same zone. Valid values of N: 1 to 128. A single snapshot-consistent group can contain up to 128 disks with a total capacity of up to 256 TiB.
+	// The ID of the disk for which you want to create a snapshot-consistent group. You can specify multiple disk IDs across instances in the same zone. Valid values of N: 1 to 128. A single snapshot-consistent group can contain up to 128 disks, and the total capacity cannot exceed 256 TiB.
 	//
 	// Take note of the following items:
 	//
-	// - This parameter and `ExcludeDiskId.N` cannot be set at the same time.
+	// - This parameter and ExcludeDiskId.N cannot be set at the same time.
 	//
-	// - If you set `InstanceId`, you can set this parameter only to the IDs of disks attached to the specified instance. Setting multiple cross-instance disk IDs is no longer supported.
+	// - If you set InstanceId, you can set this parameter only to the IDs of disks attached to the specified instance. Setting multiple cross-instance disk IDs is no longer supported.
 	DiskId []*string `json:"DiskId,omitempty" xml:"DiskId,omitempty" type:"Repeated"`
 	// The ID of the disk for which you do not want to create a snapshot in the instance. After you specify a disk ID, the created snapshot-consistent group does not contain the snapshot of the disk. Valid values of N: 1 to 128.
 	//
 	// Default value: empty, which indicates that snapshots are created for all disks in the instance.
 	//
-	// > This parameter and `DiskId.N` cannot be set at the same time.
+	// > This parameter and DiskId.N cannot be set at the same time.
 	//
 	// example:
 	//
-	// d-j6cf7l0ewidb78lq****
+	// ["d-j6cf7l0ewidb78lq****"]
 	ExcludeDiskId []*string `json:"ExcludeDiskId,omitempty" xml:"ExcludeDiskId,omitempty" type:"Repeated"`
 	// The instance ID.
 	//
@@ -80,33 +80,33 @@ type CreateSnapshotGroupRequest struct {
 	//
 	// i-j6ca469urv8ei629****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// Specifies whether to enable the snapshot instant access feature. Valid values:
+	// Specifies whether to enable snapshot instant access. Valid values:
 	//
-	// - true: enables the feature.
+	// - true: enabled.
 	//
-	// - false: disables the feature.
+	// - false: disabled.
 	//
 	// Default value: false.
 	//
-	// > This parameter is deprecated. Standard snapshots of ESSDs are upgraded to [instant access by default](https://help.aliyun.com/document_detail/193667.html). You do not need to configure this parameter, and no additional fees are incurred.
+	// > This parameter is deprecated. Standard snapshots of ESSDs are upgraded to [instant access by default](https://help.aliyun.com/document_detail/193667.html). You do not need to perform additional configurations, and no additional fees are incurred.
 	//
 	// example:
 	//
 	// false
 	InstantAccess *bool `json:"InstantAccess,omitempty" xml:"InstantAccess,omitempty"`
-	// Sets the retention period for the snapshot instant access feature. Unit: days. Valid values: 1 to 65535.
+	// The retention period of snapshot instant access. Unit: days. Valid values: 1 to 65535.
 	//
 	// This parameter takes effect only when `InstantAccess` is set to true. The snapshot instant access feature is automatically disabled when the specified period expires.
 	//
 	// Default value: empty, which indicates that the retention period is the same as the snapshot release time.
 	//
-	// > This parameter is deprecated. Standard snapshots of ESSDs are upgraded to [instant access by default](https://help.aliyun.com/document_detail/193667.html). You do not need to configure this parameter, and no additional fees are incurred.
+	// > This parameter is deprecated. Standard snapshots of ESSDs are upgraded to [instant access by default](https://help.aliyun.com/document_detail/193667.html). You do not need to perform additional configurations, and no additional fees are incurred.
 	//
 	// example:
 	//
 	// 1
 	InstantAccessRetentionDays *int32 `json:"InstantAccessRetentionDays,omitempty" xml:"InstantAccessRetentionDays,omitempty"`
-	// The name of the snapshot-consistent group. The name must be 2 to 128 characters in length and can contain letters and Chinese characters. It must start with a letter or a Chinese character and cannot start with `http://` or `https://`. It can contain digits, periods (.), underscores (_), hyphens (-), and colons (:).
+	// The name of the snapshot consistency group. The name must be 2 to 128 characters in length. It must start with a letter or a Chinese character and cannot start with `http://` or `https://`. It can contain digits, periods (.), underscores (_), hyphens (-), and colons (:).
 	//
 	// example:
 	//
@@ -306,13 +306,13 @@ func (s *CreateSnapshotGroupRequest) Validate() error {
 }
 
 type CreateSnapshotGroupRequestTag struct {
-	// The key of tag N of the snapshot-consistent group. Valid values of N: 1 to 20. The tag key cannot be an empty string. The tag key can be up to 128 characters in length and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
+	// The key of tag N of the snapshot-consistent group. Valid values of N: 1 to 20. The tag key cannot be an empty string. The tag key can be up to 128 characters in length. It cannot start with `aliyun` or `acs:` and cannot contain `http://` or `https://`.
 	//
 	// example:
 	//
 	// TestKey
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The value of tag N of the snapshot-consistent group. Valid values of N: 1 to 20. The tag value can be an empty string. The tag value can be up to 128 characters in length and cannot start with `acs:`. It cannot contain `http://` or `https://`.
+	// The value of tag N of the snapshot-consistent group. Valid values of N: 1 to 20. The tag value can be an empty string. The tag value can be up to 128 characters in length. It cannot start with `acs:` and cannot contain `http://` or `https://`.
 	//
 	// example:
 	//

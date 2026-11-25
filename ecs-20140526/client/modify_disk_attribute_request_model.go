@@ -38,85 +38,85 @@ type iModifyDiskAttributeRequest interface {
 }
 
 type ModifyDiskAttributeRequest struct {
-	// Specifies whether to enable the performance burst feature for a cloud disk that supports this feature. Valid values:
+	// Specifies whether to enable the performance burst feature for a disk that supports this feature. Valid values:
 	//
 	// - true: Yes.
 	//
 	// - false: No.
 	//
-	// > An error is returned if you specify this parameter for a cloud disk that does not support the performance burst feature.
+	// > An error is returned if you specify this parameter for a disk that does not support the performance burst feature.
 	//
 	// example:
 	//
 	// false
 	BurstingEnabled *bool `json:"BurstingEnabled,omitempty" xml:"BurstingEnabled,omitempty"`
-	// Specifies whether to delete the automatic snapshots of the cloud disk when the cloud disk is deleted. Valid values:
+	// Specifies whether to delete the automatic snapshots of the disk when the disk is deleted. Valid values:
 	//
-	// - true: Enabled.
+	// - true: Yes.
 	//
-	// - false: Disabled.
+	// - false: No.
 	//
-	// Default value: null. A value of null indicates that the current value is not changed.
+	// Default value: null. A null value indicates that the current value is not changed.
 	//
 	// example:
 	//
 	// false
 	DeleteAutoSnapshot *bool `json:"DeleteAutoSnapshot,omitempty" xml:"DeleteAutoSnapshot,omitempty"`
-	// Specifies whether to release the cloud disk when the instance is released. Default value: null. A value of null indicates that the current value is not changed.
+	// Specifies whether the disk is released along with the instance. Default value: null. A value of null indicates that the current value remains unchanged.
 	//
-	// <props="china">This parameter is not supported for cloud disks that have the multi-attach feature enabled.
+	// <props="china">This parameter is not supported for disks that have the multi-attach feature enabled.
 	//
-	// An error is returned if you set the `DeleteWithInstance` parameter to `false` in the following scenarios:
+	// An error is returned if you set the `DeleteWithInstance` parameter to `false` in either of the following scenarios:
 	//
 	//
 	//
-	// - The category of the cloud disk is local disk (ephemeral).
+	// - The disk category is local disk (ephemeral).
 	//
-	// - The category of the cloud disk is basic cloud disk (cloud) and the cloud disk is not removable (Portable=false).
+	// - The disk category is basic disk (cloud) and the disk is not detachable (Portable=false).
 	//
-	// 	Warning: If you set this parameter to false, the cloud disk is not released when the instance is released. However, if the ECS instance to which the cloud disk is attached is locked for security reasons and the "LockReason" : "security" state is added to OperationLocks, the DeleteWithInstance attribute of the cloud disk is ignored and the cloud disk is released along with the instance.</warning>
+	// 	Warning: If you configure the disk not to be released with the instance (DeleteWithInstance=false), the disk is still released along with the instance if the ECS instance to which the disk is attached is locked for security reasons and the OperationLocks parameter indicates a lock status of "LockReason":"security". In this case, the DeleteWithInstance attribute of the disk is ignored.
 	//
 	// example:
 	//
 	// false
 	DeleteWithInstance *bool `json:"DeleteWithInstance,omitempty" xml:"DeleteWithInstance,omitempty"`
-	// The description of the cloud disk. The description must be 2 to 256 characters in length and cannot start with `http://` or `https://`.
+	// The description of the disk. The description must be 2 to 256 characters in length and cannot start with `http://` or `https://`.
 	//
 	// example:
 	//
 	// TestDescription
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The ID of the cloud disk whose attributes you want to modify.
+	// The ID of the disk whose attributes you want to modify.
 	//
-	// > You cannot specify both the `DiskId` and `DiskIds.N` parameters. Specify one of them based on your business requirements.
+	// > You cannot specify both the DiskId and DiskIds.N parameters. Specify one of them based on your requirements.
 	//
 	// example:
 	//
 	// d-bp1famypsnar20bv****
 	DiskId *string `json:"DiskId,omitempty" xml:"DiskId,omitempty"`
-	// The IDs of the cloud disks whose attributes you want to modify. Valid values of N: 0 to 100.
+	// The IDs of the disks whose attributes you want to modify. Valid values of N: 0 to 100.
 	//
-	// > You cannot specify both the `DiskId` and `DiskIds.N` parameters. Specify one of them based on your business requirements.
+	// > You cannot specify both the DiskId and DiskIds.N parameters. Specify one of them based on your requirements.
 	//
 	// example:
 	//
 	// d-bp1famypsnar20bv****
 	DiskIds []*string `json:"DiskIds,omitempty" xml:"DiskIds,omitempty" type:"Repeated"`
-	// The name of the cloud disk. The name must be 2 to 128 characters in length and can contain letters and digits in Unicode. It can also contain colons (:), underscores (_), periods (.), and hyphens (-).
+	// The name of the disk. The name must be 2 to 128 characters in length and can contain letters and digits in Unicode. It can also contain colons (:), underscores (_), periods (.), and hyphens (-).
 	//
 	// example:
 	//
 	// MyDiskName
 	DiskName *string `json:"DiskName,omitempty" xml:"DiskName,omitempty"`
-	// Specifies whether to enable the automatic snapshot policy feature for the cloud disk. Valid values:
+	// Specifies whether to enable the automatic snapshot policy feature for the disk. Valid values:
 	//
-	// - true: Enabled.
+	// - true: Yes.
 	//
-	// - false: Disabled.
+	// - false: No.
 	//
-	// Default value: null. A value of null indicates that the current value is not changed.
+	// Default value: null. A null value indicates that the current value is not changed.
 	//
-	// > This parameter is deprecated. The automatic snapshot policy feature is enabled by default for newly created cloud disks. You only need to apply an automatic snapshot policy to the cloud disk to use the feature.
+	// > **[Deprecated]*	- This parameter is deprecated. The automatic snapshot policy feature is enabled by default for newly created disks. You only need to apply an automatic snapshot policy to the disk.
 	//
 	// example:
 	//

@@ -75,7 +75,7 @@ type DescribeInvocationResultsResponseBodyInvocation struct {
 	//
 	// 1
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of rows per page for paging.
+	// The number of rows per page in a paging query.
 	//
 	// example:
 	//
@@ -83,7 +83,7 @@ type DescribeInvocationResultsResponseBodyInvocation struct {
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The total number of commands.
 	//
-	// > When you use the MaxResults and NextToken parameters for paging, the returned TotalCount value is meaningless.
+	// > If you use the MaxResults and NextToken parameters for a paging query, the returned TotalCount value is meaningless.
 	//
 	// example:
 	//

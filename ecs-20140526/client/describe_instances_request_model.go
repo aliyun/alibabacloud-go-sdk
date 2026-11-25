@@ -97,23 +97,23 @@ type iDescribeInstancesRequest interface {
 
 type DescribeInstancesRequest struct {
 	Filter []*DescribeInstancesRequestFilter `json:"Filter,omitempty" xml:"Filter,omitempty" type:"Repeated"`
-	// The list of additional properties of the instance.
+	// The list of additional attributes of the instance.
 	//
 	// example:
 	//
 	// META_OPTIONS
 	AdditionalAttributes []*string `json:"AdditionalAttributes,omitempty" xml:"AdditionalAttributes,omitempty" type:"Repeated"`
-	// > This parameter is in invitational preview and is not publicly available.
+	// > This parameter is in invitational preview and is not supported.
 	//
 	// example:
 	//
 	// false
 	DeviceAvailable *bool `json:"DeviceAvailable,omitempty" xml:"DeviceAvailable,omitempty"`
-	// Specifies whether to perform only a dry run. Valid values:
+	// Specifies whether to perform only a dry run on the request. Valid values:
 	//
-	// - true: performs only a dry run. The system checks the request for potential issues, including invalid AccessKey pairs, unauthorized Resource Access Management (RAM) users, and missing parameter values. If the request fails the dry run, an error message is returned. If the request passes the dry run, the DryRunOperation error code is returned.
+	// - true: performs a dry run and does not query resources. The system checks whether your AccessKey pair is valid, whether the Resource Access Management (RAM) user has the required authorization, and whether required parameters are specified. If the request fails the dry run, an error message is returned. If the request passes the dry run, the DryRunOperation error code is returned.
 	//
-	// - false: performs a dry run and sends the request. If the request passes the dry run, a 2XX HTTP status code is returned and the operation is performed.
+	// - false: sends a normal request. If the request passes the dry run, a 2xx HTTP status code is returned and resources are queried.
 	//
 	// Default value: false.
 	//
@@ -121,47 +121,47 @@ type DescribeInstancesRequest struct {
 	//
 	// false
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	// The elastic IP addresses (EIPs) of instances. This parameter takes effect when InstanceNetworkType is set to vpc. The value is a JSON array that consists of up to 100 IP addresses. Separate the IP addresses with commas (,).
+	// The elastic IP addresses (EIPs) of the instance. This parameter takes effect only when InstanceNetworkType is set to vpc. The value can be a JSON array that consists of up to 100 IP addresses. Separate multiple IP addresses with commas (,).
 	//
 	// example:
 	//
 	// ["42.1.1.**", "42.1.2.**", … "42.1.10.**"]
 	EipAddresses *string `json:"EipAddresses,omitempty" xml:"EipAddresses,omitempty"`
-	// The ID of the HPC cluster to which the instance belongs.
+	// The ID of the High Performance Computing (HPC) cluster to which the instance belongs.
 	//
 	// example:
 	//
 	// hpc-bp67acfmxazb4p****
 	HpcClusterId *string `json:"HpcClusterId,omitempty" xml:"HpcClusterId,omitempty"`
-	// Specifies whether the access channel for instance metadata is enabled. Valid values:
+	// Specifies whether to enable the access channel for instance metadata. Valid values:
 	//
-	// - enabled: enabled.
+	// - enabled: enables the access channel.
 	//
-	// - disabled: disabled.
+	// - disabled: disables the access channel.
 	//
 	// Default value: enabled.
 	//
-	// > For more information about instance metadata, see [Overview of ECS instance metadata](https://help.aliyun.com/document_detail/49122.html).
+	// > For more information about instance metadata, see [Overview of instance metadata](https://help.aliyun.com/document_detail/49122.html).
 	//
 	// example:
 	//
 	// enabled
 	HttpEndpoint *string `json:"HttpEndpoint,omitempty" xml:"HttpEndpoint,omitempty"`
-	// > This parameter is not yet available.
+	// > This parameter is not available.
 	//
 	// example:
 	//
 	// 0
 	HttpPutResponseHopLimit *int32 `json:"HttpPutResponseHopLimit,omitempty" xml:"HttpPutResponseHopLimit,omitempty"`
-	// Specifies whether to forcefully use the hardened mode (IMDSv2) when accessing instance metadata. Valid values:
+	// Specifies whether to forcibly use the security access mode (IMDSv2) to access instance metadata. Valid values:
 	//
-	// - optional: The hardened mode is not forcefully used.
+	// - optional: does not forcibly use the security access mode.
 	//
-	// - required: The hardened mode is forcefully used. After you set this parameter to required, you cannot access instance metadata in the normal pattern.
+	// - required: forcibly uses the security access mode. After you set this value, you cannot access instance metadata in normal mode.
 	//
 	// Default value: optional.
 	//
-	// > For more information about instance metadata access patterns, see [Instance metadata access modes](https://help.aliyun.com/document_detail/150575.html).
+	// > For more information about the modes of accessing instance metadata, see [Modes of accessing instance metadata](https://help.aliyun.com/document_detail/150575.html).
 	//
 	// example:
 	//
@@ -173,9 +173,9 @@ type DescribeInstancesRequest struct {
 	//
 	// m-bp67acfmxazb4p****
 	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
-	// The internal network IP addresses of instances with the classic network type. This parameter takes effect when InstanceNetworkType is set to classic. The value is a JSON array that consists of up to 100 IP addresses. Separate the IP addresses with commas (,).
+	// The internal IP addresses of instances in the classic network. This parameter takes effect only when InstanceNetworkType is set to classic. The value can be a JSON array that consists of up to 100 IP addresses. Separate multiple IP addresses with commas (,).
 	//
-	// > - The classic network feature has been retired. For details, see [Retirement notice](https://help.aliyun.com/document_detail/2833134.html).
+	// > - The classic network feature is retired. For more information, see [retirement announcement](https://help.aliyun.com/document_detail/2833134.html).
 	//
 	// example:
 	//
@@ -193,13 +193,13 @@ type DescribeInstancesRequest struct {
 	//
 	// PostPaid
 	InstanceChargeType *string `json:"InstanceChargeType,omitempty" xml:"InstanceChargeType,omitempty"`
-	// The IDs of the instances. The value is a JSON array that consists of up to 100 instance IDs. Separate the instance IDs with commas (,).
+	// The instance IDs. The value can be a JSON array that consists of up to 100 instance IDs. Separate multiple IDs with commas (,).
 	//
 	// example:
 	//
 	// ["i-bp67acfmxazb4p****", "i-bp67acfmxazb4p****", … "i-bp67acfmxazb4p****"]
 	InstanceIds *string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty"`
-	// The name of the instance. Fuzzy search with the asterisk (\\*) wildcard is supported.
+	// The instance name. Wildcard characters (*) are supported for fuzzy search.
 	//
 	// example:
 	//
@@ -209,7 +209,7 @@ type DescribeInstancesRequest struct {
 	//
 	// - vpc: VPC.
 	//
-	// - classic: classic network. The classic network is no longer available. For more information, see [Retirement notice](https://help.aliyun.com/document_detail/2833134.html).
+	// - classic: classic network. The classic network feature is retired. For more information, see [retirement announcement](https://help.aliyun.com/document_detail/2833134.html).
 	//
 	// example:
 	//
@@ -233,7 +233,7 @@ type DescribeInstancesRequest struct {
 	//
 	// - PayByTraffic: pay-by-traffic.
 	//
-	// > In **pay-by-traffic*	- mode, the peak inbound and outbound bandwidths are used as bandwidth upper limits and are not guaranteed. When resource contention occurs, the peak bandwidths may be limited. If you require guaranteed bandwidth for your workloads, use the **pay-by-bandwidth*	- mode.
+	// > In the **pay-by-traffic*	- mode, the peak inbound and outbound bandwidth values are upper limits and are not guaranteed service level indicators. When resource contention occurs, the peak bandwidth may be limited. If your business requires guaranteed bandwidth, use the **pay-by-bandwidth*	- mode.
 	//
 	// example:
 	//
@@ -241,20 +241,20 @@ type DescribeInstancesRequest struct {
 	InternetChargeType *string `json:"InternetChargeType,omitempty" xml:"InternetChargeType,omitempty"`
 	// Specifies whether the instance is I/O optimized. Valid values:
 	//
-	// - true: The instance is I/O optimized.
+	// - true: yes.
 	//
-	// - false: The instance is not I/O optimized.
+	// - false: no.
 	//
 	// example:
 	//
 	// true
 	IoOptimized *bool `json:"IoOptimized,omitempty" xml:"IoOptimized,omitempty"`
-	// The IPv6 addresses assigned to Elastic Network Interfaces (ENIs).
+	// The IPv6 address specified for the Elastic Network Interface (ENI).
 	//
 	// if can be null:
 	// false
 	Ipv6Address []*string `json:"Ipv6Address,omitempty" xml:"Ipv6Address,omitempty" type:"Repeated"`
-	// The name of the SSH key pair bound to the instance.
+	// The name of the SSH key pair used by the instance.
 	//
 	// example:
 	//
@@ -262,39 +262,39 @@ type DescribeInstancesRequest struct {
 	KeyPairName *string `json:"KeyPairName,omitempty" xml:"KeyPairName,omitempty"`
 	// The reason why the resource is locked. Valid values:
 	//
-	// - financial: The resource is locked due to overdue payment.
+	// - financial: The resource is locked due to overdue payments.
 	//
 	// - security: The resource is locked due to security reasons.
 	//
 	// - Recycling: The spot instance is locked and pending release.
 	//
-	// - dedicatedhostfinancial: The ECS instance is locked because the dedicated host has an overdue payment.
+	// - dedicatedhostfinancial: The ECS instance is locked due to overdue payments for the dedicated host.
 	//
-	// - refunded: The resource is locked because a refund is made.
+	// - refunded: The resource is locked due to a refund.
 	//
 	// example:
 	//
 	// security
 	LockReason *string `json:"LockReason,omitempty" xml:"LockReason,omitempty"`
-	// The maximum number of entries per page for a paging query. Maximum value: 100.
+	// The number of entries per page for a paged query. Maximum value: 100.
 	//
-	// Default value:
+	// Default values:
 	//
-	// - If you do not set this parameter or set it to a value less than 10, the default value is 10.
+	// - If this parameter is not specified or the specified value is less than 10, the default value is 10.
 	//
-	// - If you set this parameter to a value greater than 100, the default value is 100.
+	// - If the specified value is greater than 100, the default value is 100.
 	//
 	// example:
 	//
 	// 10
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// > This parameter is in invitational preview and is not publicly available.
+	// > This parameter is in invitational preview and is not supported.
 	//
 	// example:
 	//
 	// false
 	NeedSaleCycle *bool `json:"NeedSaleCycle,omitempty" xml:"NeedSaleCycle,omitempty"`
-	// The query token. Set the value to the NextToken value returned in the previous API call.
+	// The query token. The value is the `NextToken` parameter value returned by the previous API call.
 	//
 	// example:
 	//
@@ -302,31 +302,31 @@ type DescribeInstancesRequest struct {
 	NextToken    *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// > This parameter is about to be deprecated. Use NextToken and MaxResults to complete paging query operations.
+	// > This parameter will be retired soon. We recommend that you use NextToken and MaxResults to perform paged query operations.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// > This parameter is about to be deprecated. Use NextToken and MaxResults to complete paging query operations.
+	// > This parameter will be retired soon. We recommend that you use NextToken and MaxResults to perform paged query operations.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The private IP addresses of instances with the VPC network type. This parameter takes effect when InstanceNetworkType is set to vpc. The value is a JSON array that consists of up to 100 IP addresses. Separate the IP addresses with commas (,).
+	// The private IP addresses of instances in a VPC. This parameter takes effect only when InstanceNetworkType is set to vpc. The value can be a JSON array that consists of up to 100 IP addresses. Separate multiple IP addresses with commas (,).
 	//
 	// example:
 	//
 	// ["172.16.1.1", "172.16.2.1", … "172.16.10.1"]
 	PrivateIpAddresses *string `json:"PrivateIpAddresses,omitempty" xml:"PrivateIpAddresses,omitempty"`
-	// The public IP addresses of instances. The value is a JSON array that consists of up to 100 IP addresses. Separate the IP addresses with commas (,).
+	// The public IP addresses of the instance. The value can be a JSON array that consists of up to 100 IP addresses. Separate multiple IP addresses with commas (,).
 	//
 	// example:
 	//
 	// ["42.1.1.**", "42.1.2.**", … "42.1.10.**"]
 	PublicIpAddresses *string `json:"PublicIpAddresses,omitempty" xml:"PublicIpAddresses,omitempty"`
-	// The RDMA IP addresses of the HPC instance.
+	// The Remote Direct Memory Access (RDMA) IP addresses of the HPC instance.
 	//
 	// example:
 	//
@@ -340,7 +340,7 @@ type DescribeInstancesRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the resource group to which the instance belongs. When you use this parameter to filter resources, the resource count cannot exceed 1,000.
+	// The ID of the enterprise resource group to which the instance belongs. When you use this parameter to filter resources, the resource count cannot exceed 1,000.
 	//
 	// > Filtering by the default resource group is not supported.
 	//
@@ -350,7 +350,7 @@ type DescribeInstancesRequest struct {
 	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The ID of the security group to which the instance belongs.
+	// The security group to which the instance belongs.
 	//
 	// example:
 	//
@@ -358,13 +358,13 @@ type DescribeInstancesRequest struct {
 	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
 	// The instance status. Valid values:
 	//
-	// - Pending: being created.
+	// - Pending: creating.
 	//
 	// - Running: running.
 	//
-	// - Starting: being started.
+	// - Starting: starting.
 	//
-	// - Stopping: being stopped.
+	// - Stopping: stopping.
 	//
 	// - Stopped: stopped.
 	//
@@ -374,13 +374,13 @@ type DescribeInstancesRequest struct {
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	// The tags.
 	Tag []*DescribeInstancesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
-	// The ID of the vSwitch.
+	// The vSwitch ID.
 	//
 	// example:
 	//
 	// vsw-bp67acfmxazb4p****
 	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	// The ID of the virtual private cloud (VPC).
+	// The VPC ID.
 	//
 	// example:
 	//
@@ -803,13 +803,13 @@ func (s *DescribeInstancesRequest) Validate() error {
 }
 
 type DescribeInstancesRequestFilter struct {
-	// The key of filter 1 used to query resources. Set the value to `CreationStartTime`. You can specify both Filter.1.Key and Filter.1.Value to query resources that were created after the specified point in time.
+	// The filter key used when querying resources. The value must be `CreationStartTime`. If you specify both `Filter.1.Key` and `Filter.1.Value`, you can query resources created after a specified point in time.
 	//
 	// example:
 	//
 	// CreationStartTime
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The value of filter 1 used to query resources. When you specify this parameter, you must also specify `Filter.1.Key`. Specify the time in the `yyyy-MM-ddTHH:mmZ` format in UTC.
+	// The filter value used when querying resources. If you specify this parameter, you must also specify the `Filter.1.Key` parameter. The value must be in the `yyyy-MM-ddTHH:mmZ` format and use the UTC+0 time zone.
 	//
 	// example:
 	//
@@ -850,7 +850,7 @@ func (s *DescribeInstancesRequestFilter) Validate() error {
 type DescribeInstancesRequestTag struct {
 	// The tag key of the instance. Valid values of N: 1 to 20.
 	//
-	// If you use a single tag to filter resources, the number of resources with this tag cannot exceed 1,000. If you use multiple tags to filter resources, the number of resources that are attached to all specified tags cannot exceed 1,000. If the resource count exceeds 1,000, use the [ListTagResources](https://help.aliyun.com/document_detail/110425.html) operation to query resources.
+	// When you use a single tag to filter resources, the resource count under the tag cannot exceed 1,000. When you use multiple tags to filter resources, the resource count of queried resources that are attached to all the specified tags cannot exceed 1,000. If the resource count exceeds 1,000, use the [ListTagResources](https://help.aliyun.com/document_detail/110425.html) operation to query resources.
 	//
 	// example:
 	//

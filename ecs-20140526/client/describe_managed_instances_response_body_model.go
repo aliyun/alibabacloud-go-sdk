@@ -38,7 +38,7 @@ type DescribeManagedInstancesResponseBody struct {
 	//
 	// 1
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries returned per page.
+	// The number of entries per page.
 	//
 	// example:
 	//
@@ -164,7 +164,7 @@ type DescribeManagedInstancesResponseBodyInstances struct {
 	//
 	// demo
 	Hostname *string `json:"Hostname,omitempty" xml:"Hostname,omitempty"`
-	// The instance ID of the managed instance.
+	// The ID of the managed instance.
 	//
 	// example:
 	//
@@ -188,19 +188,19 @@ type DescribeManagedInstancesResponseBodyInstances struct {
 	//
 	// ``10.0.**.**``
 	IntranetIp *string `json:"IntranetIp,omitempty" xml:"IntranetIp,omitempty"`
-	// The number of Cloud Assistant tasks executed on the managed instance.
+	// The number of times the managed instance executed Cloud Assistant tasks.
 	//
 	// example:
 	//
 	// 1
 	InvocationCount *int64 `json:"InvocationCount,omitempty" xml:"InvocationCount,omitempty"`
-	// The time when the last Cloud Assistant task was executed. The time follows the ISO 8601 standard in the UTC time zone.
+	// The time when the Cloud Assistant task was last executed. The time is in ISO 8601 format and in UTC.
 	//
 	// example:
 	//
 	// 2021-01-20T09:00:40Z
 	LastInvokedTime *string `json:"LastInvokedTime,omitempty" xml:"LastInvokedTime,omitempty"`
-	// The machine ID of the managed instance.
+	// The machine code of the managed instance.
 	//
 	// example:
 	//
@@ -218,7 +218,7 @@ type DescribeManagedInstancesResponseBodyInstances struct {
 	//
 	// Linux_#38~18.04.1-Ubuntu SMP Wed Jan 6 18:26:30 UTC 2021_x86_64
 	OsVersion *string `json:"OsVersion,omitempty" xml:"OsVersion,omitempty"`
-	// The time when the managed instance was registered. The time follows the ISO 8601 standard in the UTC time zone.
+	// The time when the managed instance was registered. The time is in ISO 8601 format and in UTC.
 	//
 	// example:
 	//
@@ -402,7 +402,7 @@ func (s *DescribeManagedInstancesResponseBodyInstances) Validate() error {
 type DescribeManagedInstancesResponseBodyInstancesTags struct {
 	// The tag key of the managed instance. Valid values of N: 1 to 20. The tag key cannot be an empty string.
 	//
-	// If you use a single tag to filter resources, the resource count for that tag cannot exceed 1,000. If you use multiple tags to filter resources, the resource count for resources attached to multiple tags cannot exceed 1,000. If the resource count exceeds 1,000, you must call the [ListTagResources](https://help.aliyun.com/document_detail/110425.html) operation to query the resources.
+	// If you use a single tag to filter resources, the number of returned resources cannot exceed 1,000. If you use multiple tags to filter resources, the number of returned resources that have multiple tags attached cannot exceed 1,000. If the number of resources exceeds 1,000, use the [ListTagResources](https://help.aliyun.com/document_detail/110425.html) operation to query the resources.
 	//
 	// The tag key can be up to 64 characters in length. It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
 	//

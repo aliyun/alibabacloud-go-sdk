@@ -26,7 +26,7 @@ type iResetDiskRequest interface {
 }
 
 type ResetDiskRequest struct {
-	// The ID of the cloud disk to be rolled back.
+	// The ID of the disk to be rolled back.
 	//
 	// This parameter is required.
 	//
@@ -36,9 +36,9 @@ type ResetDiskRequest struct {
 	DiskId *string `json:"DiskId,omitempty" xml:"DiskId,omitempty"`
 	// Specifies whether to perform a dry run on the request. Valid values:
 	//
-	// - true: Performs a dry run. The system checks the required parameters, request format, and resource status. If the request fails the dry run, an error message is returned. If the request passes the dry run, the `DryRunOperation` error code is returned.
+	// - true: performs a dry run without rolling back the disk. The system checks the required parameters, request format, and resource status. If the request fails the dry run, the corresponding error message is returned. If the request passes the dry run, the DryRunOperation error code is returned.
 	//
-	// - false: Performs a normal request. If the request passes the dry run, the cloud disk is rolled back.
+	// - false: performs a normal request. If the request passes the check, the disk is rolled back.
 	//
 	// Default value: false.
 	//
@@ -50,7 +50,7 @@ type ResetDiskRequest struct {
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The ID of the historical snapshot used to roll back the cloud disk.
+	// The ID of the historical snapshot to which the disk is rolled back.
 	//
 	// This parameter is required.
 	//

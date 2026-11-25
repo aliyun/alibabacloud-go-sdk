@@ -18,7 +18,7 @@ type iListTagResourcesResponseBody interface {
 }
 
 type ListTagResourcesResponseBody struct {
-	// The token used to start the next query.
+	// The token for the next query.
 	//
 	// example:
 	//

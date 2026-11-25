@@ -34,6 +34,10 @@ type RemoveBandwidthPackageIpsRequest struct {
 	OwnerAccount       *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId            *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// This parameter is required.
 	RemovedIpAddresses   []*string `json:"RemovedIpAddresses,omitempty" xml:"RemovedIpAddresses,omitempty" type:"Repeated"`

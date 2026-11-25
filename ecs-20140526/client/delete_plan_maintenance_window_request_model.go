@@ -24,7 +24,7 @@ type DeletePlanMaintenanceWindowRequest struct {
 	//
 	// pw-bp12kkvnebe7hksqnx9w
 	PlanWindowId *string `json:"PlanWindowId,omitempty" xml:"PlanWindowId,omitempty"`
-	// The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) operation to query the most recent region list.
+	// The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) operation to query the latest list of Alibaba Cloud regions.
 	//
 	// This parameter is required.
 	//

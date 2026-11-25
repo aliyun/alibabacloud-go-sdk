@@ -16,7 +16,7 @@ type iModifyManagedInstanceResponseBody interface {
 }
 
 type ModifyManagedInstanceResponseBody struct {
-	// The information about the managed instance.
+	// The collection of managed instance information.
 	Instance *ModifyManagedInstanceResponseBodyInstance `json:"Instance,omitempty" xml:"Instance,omitempty" type:"Struct"`
 	// The request ID.
 	//

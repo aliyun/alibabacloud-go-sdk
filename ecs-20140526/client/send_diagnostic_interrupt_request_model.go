@@ -16,17 +16,13 @@ type iSendDiagnosticInterruptRequest interface {
 }
 
 type SendDiagnosticInterruptRequest struct {
-	// Specifies whether to only precheck the request. Valid values:
-	//
-	// - true: Sends a check request without sending the NMI command.
-	//
-	// - false: Sends a normal NMI request to trigger a crash dump. Default value: false.
+	// Specifies whether to only precheck this request. Valid values: ● true: sends a precheck request without sending the NMI command. ● false (default): sends a normal NMI request to trigger a crash dump.
 	//
 	// example:
 	//
 	// false
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	// The instance ID to which you want to send a diagnostic break.
+	// The instance ID to send the diagnostic break.
 	//
 	// This parameter is required.
 	//

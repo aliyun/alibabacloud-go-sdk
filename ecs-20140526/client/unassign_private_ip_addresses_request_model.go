@@ -28,9 +28,9 @@ type iUnassignPrivateIpAddressesRequest interface {
 }
 
 type UnassignPrivateIpAddressesRequest struct {
-	// One or more IPv4 prefixes to remove.
+	// The IPv4 prefixes to delete.
 	Ipv4Prefix []*string `json:"Ipv4Prefix,omitempty" xml:"Ipv4Prefix,omitempty" type:"Repeated"`
-	// The ID of the Elastic Network Interface (ENI).
+	// The ID of the Elastic Network Interface (ENI) (network interface controller (NIC)).
 	//
 	// This parameter is required.
 	//
@@ -40,13 +40,13 @@ type UnassignPrivateIpAddressesRequest struct {
 	NetworkInterfaceId *string `json:"NetworkInterfaceId,omitempty" xml:"NetworkInterfaceId,omitempty"`
 	OwnerAccount       *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId            *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// One or more secondary private IP addresses to remove.
+	// The secondary private IP addresses to delete.
 	//
 	// example:
 	//
 	// ``192.168.**.**``
 	PrivateIpAddress []*string `json:"PrivateIpAddress,omitempty" xml:"PrivateIpAddress,omitempty" type:"Repeated"`
-	// The region ID of the resource. You can call [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) to query the most recent region list.
+	// The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) operation to query the latest Alibaba Cloud regions.
 	//
 	// This parameter is required.
 	//

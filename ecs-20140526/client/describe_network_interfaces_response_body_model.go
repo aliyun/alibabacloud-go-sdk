@@ -25,23 +25,23 @@ type iDescribeNetworkInterfacesResponseBody interface {
 
 type DescribeNetworkInterfacesResponseBody struct {
 	NetworkInterfaceSets *DescribeNetworkInterfacesResponseBodyNetworkInterfaceSets `json:"NetworkInterfaceSets,omitempty" xml:"NetworkInterfaceSets,omitempty" type:"Struct"`
-	// The pagination token returned by the current call.
+	// The pagination token returned by the current request.
 	//
 	// example:
 	//
 	// AAAAAdDWBF2****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The paging query parameter.
+	// The page number for paged queries.
 	//
-	// > This parameter will soon be deprecated. We recommend that you use the `NextToken` and `MaxResults` parameters for paging.
+	// > This parameter will be deprecated soon. Use NextToken and MaxResults for pagination.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The paging query parameter.
+	// The page size for paged queries.
 	//
-	// > This parameter will soon be deprecated. We recommend that you use the `NextToken` and `MaxResults` parameters for paging.
+	// > This parameter will be deprecated soon. Use NextToken and MaxResults for pagination.
 	//
 	// example:
 	//
@@ -53,9 +53,9 @@ type DescribeNetworkInterfacesResponseBody struct {
 	//
 	// 473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of Elastic Network Interface (ENI) resources returned.
+	// The total number of returned ENIs.
 	//
-	// > When you use the `MaxResults` and `NextToken` parameters for a paging query, the returned `TotalCount` value is meaningless.
+	// > When you use the `MaxResults` and `NextToken` parameters for pagination, the returned value of the `TotalCount` parameter is meaningless.
 	//
 	// example:
 	//

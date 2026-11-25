@@ -24,17 +24,17 @@ type iInstallCloudAssistantRequest interface {
 }
 
 type InstallCloudAssistantRequest struct {
-	// The IDs of the instances. You can specify 1 to 50 instance IDs.
+	// The list of instance IDs. The list can contain 1 to 50 elements.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// i-bp1iudwa5b1tqa****
+	// ["i-bp1iudwa5b1tqa****"]
 	InstanceId   []*string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty" type:"Repeated"`
 	OwnerAccount *string   `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64    `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The region ID of the instances. You can call [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) to query the most recent region list.
+	// The region ID of the instance. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) operation to query the most recent region list.
 	//
 	// This parameter is required.
 	//

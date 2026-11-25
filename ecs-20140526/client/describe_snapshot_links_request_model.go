@@ -36,7 +36,7 @@ type iDescribeSnapshotLinksRequest interface {
 }
 
 type DescribeSnapshotLinksRequest struct {
-	// The disk IDs. You can specify up to 100 disk IDs at a time. Set the value of DiskIds to a JSON array. Separate multiple IDs with commas (,).
+	// The disk IDs. You can specify up to 100 disk IDs at a time. Set the DiskIds parameter to a JSON array. Separate multiple IDs with commas (,).
 	//
 	// example:
 	//
@@ -48,19 +48,19 @@ type DescribeSnapshotLinksRequest struct {
 	//
 	// i-bp1h6jmbefj2cyqs****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The paging Settings for the maximum number of entries per page in a paged query. Maximum value: 100.
+	// The number of entries per page in a paged query. Maximum value: 100.
 	//
 	// Default value:
 	//
-	// - If you do not specify a value or the Settings value is less than 10, the default value is 10.
+	// - If you do not specify this parameter or the specified value is less than 10, the default value is 10.
 	//
-	// - If the Settings value is greater than 100, the default value is 100.
+	// - If the specified value is greater than 100, the default value is 100.
 	//
 	// example:
 	//
 	// 10
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The pagination token. Set the value to the NextToken value returned from the last API call.
+	// The pagination token. Set the value to the NextToken value returned in the last API call.
 	//
 	// example:
 	//
@@ -68,7 +68,7 @@ type DescribeSnapshotLinksRequest struct {
 	NextToken    *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The page number of the snapshot chain list. Pages start from 1.
+	// The page number of the list. Pages start from page 1.
 	//
 	// Default value: 1.
 	//
@@ -76,7 +76,7 @@ type DescribeSnapshotLinksRequest struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The paging Settings for the number of entries per page in a paged query. Valid values: 1 to 100.
+	// The number of entries per page in a paged query. Valid values: 1 to 100.
 	//
 	// Default value: 10.
 	//
@@ -94,7 +94,7 @@ type DescribeSnapshotLinksRequest struct {
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The snapshot chain IDs. You can specify up to 100 snapshot chain IDs at a time. Set the value of SnapshotLinkIds to a JSON array. Separate multiple IDs with commas (,).
+	// The snapshot chain IDs. You can specify up to 100 snapshot chain IDs at a time. Set the SnapshotLinkIds parameter to a JSON array. Separate multiple IDs with commas (,).
 	//
 	// example:
 	//

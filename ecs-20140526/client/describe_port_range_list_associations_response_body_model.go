@@ -18,13 +18,13 @@ type iDescribePortRangeListAssociationsResponseBody interface {
 }
 
 type DescribePortRangeListAssociationsResponseBody struct {
-	// The pagination token returned by the current call. If this value is empty, no more data is returned.
+	// The pagination token returned by the current call. If this value is empty, no more data is available.
 	//
 	// example:
 	//
 	// caeba0bbb2be03f84eb48b699f0a4883
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The array of resources associated with the port list.
+	// The array of resources associated with the port range list.
 	PortRangeListAssociations []*DescribePortRangeListAssociationsResponseBodyPortRangeListAssociations `json:"PortRangeListAssociations,omitempty" xml:"PortRangeListAssociations,omitempty" type:"Repeated"`
 	// The request ID.
 	//
@@ -89,7 +89,7 @@ type DescribePortRangeListAssociationsResponseBodyPortRangeListAssociations stru
 	//
 	// sg-2zefu72****
 	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
-	// The type of the resource. Valid values: SecurityGroup.
+	// The resource type. Valid value: SecurityGroup.
 	//
 	// example:
 	//

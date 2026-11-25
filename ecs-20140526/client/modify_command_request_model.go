@@ -36,13 +36,13 @@ type iModifyCommandRequest interface {
 }
 
 type ModifyCommandRequest struct {
-	// > This parameter is deprecated and does not take effect even if specified.
+	// > **[Deprecated]*	- This parameter is deprecated. Specifying this parameter does not take effect.
 	//
 	// example:
 	//
 	// echo
 	CommandContent *string `json:"CommandContent,omitempty" xml:"CommandContent,omitempty"`
-	// The command ID. You can call [DescribeCommands](https://help.aliyun.com/document_detail/64843.html) to query all available command IDs.
+	// The command ID. You can call the [DescribeCommands](https://help.aliyun.com/document_detail/64843.html) operation to query all available command IDs.
 	//
 	// This parameter is required.
 	//
@@ -50,19 +50,19 @@ type ModifyCommandRequest struct {
 	//
 	// c-hz01272yr52****
 	CommandId *string `json:"CommandId,omitempty" xml:"CommandId,omitempty"`
-	// The command description. The description supports all character sets and can be up to 512 characters in length.
+	// The command description. It supports all character sets and can be up to 512 characters in length.
 	//
 	// example:
 	//
 	// This is description.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The bootstrap program for script execution. The value can be up to 1 KB in length.
+	// The bootstrap program for script execution. It can be up to 1 KB in length.
 	//
 	// example:
 	//
 	// python3 -u {{ACS::ScriptFileName|Ext(".py")}}
 	Launcher *string `json:"Launcher,omitempty" xml:"Launcher,omitempty"`
-	// The command name. The name supports all character sets and can be up to 128 characters in length.
+	// The command name. It supports all character sets and can be up to 128 characters in length.
 	//
 	// example:
 	//
@@ -70,7 +70,7 @@ type ModifyCommandRequest struct {
 	Name         *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The region ID. You can call [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) to query the most recent region list.
+	// The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) operation to query the most recent region list.
 	//
 	// This parameter is required.
 	//
@@ -80,13 +80,13 @@ type ModifyCommandRequest struct {
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The maximum timeout period for the command to run on ECS instances. Unit: seconds. If the command cannot be completed within the specified timeout period, the command times out. When a timeout occurs, the command process is forcefully terminated by canceling the PID of the command.
+	// The maximum timeout period for executing the command on an ECS instance, in seconds. If the command cannot be run and completed within the specified period, a timeout occurs. After a timeout occurs, the command process is forcibly terminated and the PID of the command is canceled.
 	//
 	// example:
 	//
 	// 120
 	Timeout *int64 `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
-	// The execution path. The path can be up to 200 characters in length.
+	// The execution path. It can be up to 200 characters in length.
 	//
 	// example:
 	//

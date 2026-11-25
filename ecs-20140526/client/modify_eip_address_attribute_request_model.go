@@ -26,12 +26,29 @@ type iModifyEipAddressAttributeRequest interface {
 }
 
 type ModifyEipAddressAttributeRequest struct {
+	// The ID of the EIP.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// eip-2zeerraiwb7uj6i0d****
 	AllocationId *string `json:"AllocationId,omitempty" xml:"AllocationId,omitempty"`
+	// The maximum bandwidth of the EIP. Unit: Mbit/s.
+	//
 	// This parameter is required.
-	Bandwidth            *string `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
-	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	//
+	// example:
+	//
+	// 100
+	Bandwidth    *string `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
+	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The region ID of the EIP.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`

@@ -32,11 +32,11 @@ type iDescribeLockedSnapshotsRequest interface {
 }
 
 type DescribeLockedSnapshotsRequest struct {
-	// Specifies whether to only precheck the request. Valid values:
+	// Specifies whether to perform only a dry run on the request. Valid values:
 	//
-	// - true: The request is prechecked but not executed. The system checks whether required parameters are specified, the request format is valid, and service limits are met. If the request fails the precheck, an error is returned. If the request passes the precheck, the DryRunOperation error code is returned.
+	// - true: Performs a dry run only. The request is not actually executed. The system checks whether required parameters are specified, the request format is valid, and service limits are met. If the request fails the dry run, an error message is returned. If the request passes the dry run, the DryRunOperation error code is returned.
 	//
-	// - false: The request is prechecked and executed if it passes the precheck. This is the default value.
+	// - false (default): Sends a normal request and executes the request after it passes the dry run.
 	//
 	// example:
 	//
@@ -44,9 +44,9 @@ type DescribeLockedSnapshotsRequest struct {
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	// The lock status. Valid values:
 	//
-	// - compliance-cooloff: The snapshot is locked in compliance mode but is still in the cooling-off period. The snapshot cannot be deleted, but users with the required RAM permissions can unlock the snapshot, extend or shorten the cooling-off period, and extend or shorten the lock duration.
+	// - compliance-cooloff: The snapshot is locked in compliance mode but is still in the cool-off period. The snapshot cannot be deleted, but users with the required RAM permissions can unlock the snapshot, extend or shorten the cool-off period, and extend or shorten the lock duration.
 	//
-	// - compliance: The snapshot is locked in compliance mode and the cooling-off period has ended. The snapshot cannot be unlocked or deleted, but users with the required RAM permissions can extend the lock duration.
+	// - compliance: The snapshot is locked in compliance mode and the cool-off period has ended. The snapshot cannot be unlocked or deleted, but users with the required RAM permissions can extend the lock duration.
 	//
 	// - expired: The snapshot was locked, but the lock duration has ended and the lock has expired. The snapshot is currently unlocked and can be deleted.
 	//
@@ -54,7 +54,7 @@ type DescribeLockedSnapshotsRequest struct {
 	//
 	// compliance-cooloff
 	LockStatus *string `json:"LockStatus,omitempty" xml:"LockStatus,omitempty"`
-	// The number of entries per page during paging for a paged query. Maximum value: 100.
+	// The number of entries per page for paging in a paged query. Maximum value: 100.
 	//
 	// Default value:
 	//
@@ -66,7 +66,7 @@ type DescribeLockedSnapshotsRequest struct {
 	//
 	// 10
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The query token. Set the value to the NextToken parameter value returned by the previous API call.
+	// The query token. Set the value to the NextToken parameter value returned from the previous API call to invoke the next request.
 	//
 	// example:
 	//

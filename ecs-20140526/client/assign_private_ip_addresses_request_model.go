@@ -34,25 +34,25 @@ type iAssignPrivateIpAddressesRequest interface {
 }
 
 type AssignPrivateIpAddressesRequest struct {
-	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but make sure that the token is unique among different requests. The **ClientToken*	- value can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
 	//
 	// example:
 	//
 	// 123e4567-e89b-12d3-a456-426655440000
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// One or more IPv4 prefixes to specify for the elastic network interfaces (ENIs). Valid values of N: 1 to 10.
+	// The IPv4 prefixes to be allocated to the Elastic Network Interface (ENI). Valid values of N: 1 to 10.
 	//
-	// > To set IPv4 prefixes for the elastic network interfaces (ENIs), you must set either the Ipv4Prefix.N parameter or the Ipv4PrefixCount parameter, but not both.
+	// > If you need to configure IPv4 prefix settings for the Elastic Network Interface (ENI), you must specify the settings for either Ipv4Prefix.N or Ipv4PrefixCount, but you cannot specify both parameters.
 	Ipv4Prefix []*string `json:"Ipv4Prefix,omitempty" xml:"Ipv4Prefix,omitempty" type:"Repeated"`
-	// The number of randomly generated IPv4 prefixes to specify for the elastic network interfaces (ENIs). Valid values: 1 to 10.
+	// The number of randomly generated IPv4 prefixes to be allocated to the Elastic Network Interface (ENI). Valid values: 1 to 10.
 	//
-	// > To set IPv4 prefixes for the elastic network interfaces (ENIs), you must set either the Ipv4Prefix.N parameter or the Ipv4PrefixCount parameter, but not both.
+	// > If you need to configure IPv4 prefix settings for the Elastic Network Interface (ENI), you must specify the settings for either Ipv4Prefix.N or Ipv4PrefixCount, but you cannot specify both parameters.
 	//
 	// example:
 	//
 	// 1
 	Ipv4PrefixCount *int32 `json:"Ipv4PrefixCount,omitempty" xml:"Ipv4PrefixCount,omitempty"`
-	// The elastic network interfaces (ENIs) ID.
+	// The ID of the Elastic Network Interface (ENI).
 	//
 	// This parameter is required.
 	//
@@ -62,19 +62,19 @@ type AssignPrivateIpAddressesRequest struct {
 	NetworkInterfaceId *string `json:"NetworkInterfaceId,omitempty" xml:"NetworkInterfaceId,omitempty"`
 	OwnerAccount       *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId            *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// One or more secondary private IP addresses selected from the idle private IP addresses of the vSwitch to which the elastic network interfaces (ENIs) belongs. Valid values of N:
+	// The secondary private IP addresses (private IP addresses or private IPs) to be allocated from the available IP addresses of the vSwitch to which the Elastic Network Interface (ENI) belongs. Valid values of N:
 	//
-	// - When the elastic network interfaces (ENIs) is in the Available (`Available`) state: 1 to 32.
+	// - If the Elastic Network Interface (ENI) is in the `Available` state: 1 to 32.
 	//
-	// - When the elastic network interfaces (ENIs) is in the `InUse` state: subject to the instance type. For more information, see [Instance families](https://help.aliyun.com/document_detail/25378.html).
+	// - If the Elastic Network Interface (ENI) is in the `InUse` state: The value is limited by the instance type. For more information, see [Instance families](https://help.aliyun.com/document_detail/25378.html).
 	//
-	// When you allocate secondary private IP addresses, you cannot specify both `PrivateIpAddress.N` and `SecondaryPrivateIpAddressCount`.
+	// When you allocate secondary private IP addresses (private IP addresses or private IPs), you cannot specify both `PrivateIpAddress.N` and `SecondaryPrivateIpAddressCount`.
 	//
 	// example:
 	//
-	// ``10.1.**.**``
+	// ["``10.1.**.**``"]
 	PrivateIpAddress []*string `json:"PrivateIpAddress,omitempty" xml:"PrivateIpAddress,omitempty" type:"Repeated"`
-	// The region ID of the elastic network interfaces (ENIs). You can call [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) to query the most recent region list.
+	// The region ID of the Elastic Network Interface (ENI). You can call the [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) operation to query the most recent region list.
 	//
 	// This parameter is required.
 	//
@@ -84,7 +84,7 @@ type AssignPrivateIpAddressesRequest struct {
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The number of private IP addresses to automatically assign from the idle IP addresses of the vSwitch.
+	// The number of private IP addresses to be automatically assigned from the available IP addresses of the vSwitch.
 	//
 	// When you assign secondary private IP addresses, you cannot specify both `PrivateIpAddress.N` and `SecondaryPrivateIpAddressCount`.
 	//

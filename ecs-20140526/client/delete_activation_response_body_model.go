@@ -16,7 +16,7 @@ type iDeleteActivationResponseBody interface {
 }
 
 type DeleteActivationResponseBody struct {
-	// The information about the activation code and its usage.
+	// The activation code and its usage information.
 	Activation *DeleteActivationResponseBodyActivation `json:"Activation,omitempty" xml:"Activation,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -62,13 +62,13 @@ func (s *DeleteActivationResponseBody) Validate() error {
 }
 
 type DeleteActivationResponseBodyActivation struct {
-	// The activation code ID.
+	// The ID of the activation code.
 	//
 	// example:
 	//
 	// 4ECEEE12-56F1-4FBC-9AB1-890F1234****
 	ActivationId *string `json:"ActivationId,omitempty" xml:"ActivationId,omitempty"`
-	// The time when the activation code was created. The time is displayed in ISO 8601 format in UTC.
+	// The time when the activation code was created. The time follows the ISO 8601 standard and is displayed in UTC.
 	//
 	// example:
 	//
@@ -86,7 +86,7 @@ type DeleteActivationResponseBodyActivation struct {
 	//
 	// This is description.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The maximum number of times that the activation code can be used to register managed instances.
+	// The maximum number of managed instances that can be registered by using the activation code.
 	//
 	// example:
 	//
@@ -98,7 +98,7 @@ type DeleteActivationResponseBodyActivation struct {
 	//
 	// test-InstanceName
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	// The IP addresses of hosts that are allowed to use the activation code.
+	// The IP address range of the hosts that are allowed to use the activation code.
 	//
 	// example:
 	//

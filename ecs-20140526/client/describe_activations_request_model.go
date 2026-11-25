@@ -50,7 +50,7 @@ type DescribeActivationsRequest struct {
 	//
 	// test-InstanceName
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	// The maximum number of entries to return on each page during paging in a paged query.
+	// The maximum number of entries to return per page.
 	//
 	// Maximum value: 50.
 	//
@@ -60,7 +60,7 @@ type DescribeActivationsRequest struct {
 	//
 	// 10
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The query token. Set the value to the NextToken value that is returned from the previous API call.
+	// The pagination token. Set the value to the NextToken value returned from the previous API call.
 	//
 	// example:
 	//
@@ -74,7 +74,7 @@ type DescribeActivationsRequest struct {
 	//
 	// 1
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The Settings for the number of entries to return on each page during paging in a paged query.
+	// The number of entries to return per page.
 	//
 	// Maximum value: 50.
 	//
@@ -86,7 +86,7 @@ type DescribeActivationsRequest struct {
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The region ID. Supported regions: China (Qingdao), China (Beijing), China (Zhangjiakou), China (Hohhot), China (Ulanqab), China (Hangzhou), China (Shanghai), China (Shenzhen), China (Heyuan), China (Guangzhou), China (Chengdu), Hong Kong (China), Singapore, Japan (Tokyo), US (Silicon Valley), and US (Virginia).
 	//
-	// You can invoke the [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) operation to query information such as the region ID.
+	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) operation to query the most recent region list.
 	//
 	// This parameter is required.
 	//
@@ -245,19 +245,19 @@ func (s *DescribeActivationsRequest) Validate() error {
 }
 
 type DescribeActivationsRequestTag struct {
-	// The tag key of the managed instance activation code (dynamic code). Valid values of N: 1 to 20. The tag key cannot be an empty string.
+	// The tag key of the activation code for the managed instance. Valid values of N: 1 to 20. If you specify this parameter, it cannot be an empty string.
 	//
-	// If you use a single tag to filter resources, the resource count under the tag cannot exceed 1,000. If you use multiple tags to filter resources, the resource count of resources attached to multiple tags cannot exceed 1,000. If the resource count exceeds 1,000, you must invoke the [ListTagResources](https://help.aliyun.com/document_detail/110425.html) operation to query the resources.
+	// If you use a single tag to filter resources, the number of resources under this tag cannot exceed 1,000. If you use multiple tags to filter resources, the number of resources attached to all specified tags cannot exceed 1,000. If the number of resources exceeds 1,000, call the [ListTagResources](https://help.aliyun.com/document_detail/110425.html) operation to query the resources.
 	//
-	// The tag key can be up to 64 characters in length, and cannot start with aliyun or acs:. The tag key cannot contain http:// or https://.
+	// The tag key can be up to 64 characters in length. It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
 	//
 	// example:
 	//
 	// TestKey
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The tag value of the managed instance activation code. Valid values of N: 1 to 20. The tag value can be an empty string.
+	// The tag value of the activation code for the managed instance. Valid values of N: 1 to 20. This parameter can be an empty string.
 	//
-	// The tag value can be up to 128 characters in length, and cannot contain http:// or https://.
+	// The tag value can be up to 128 characters in length and cannot contain `http://` or `https://`.
 	//
 	// example:
 	//

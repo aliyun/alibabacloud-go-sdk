@@ -57,13 +57,13 @@ type DescribeEipAddressesRequest struct {
 	//
 	// i-2zebb08phyccdvf****
 	AssociatedInstanceId *string `json:"AssociatedInstanceId,omitempty" xml:"AssociatedInstanceId,omitempty"`
-	// The type of the associated cloud service instance. Valid values: EcsInstance, SlbInstance, Nat, HaVip, NetworkInterface, and IpAddress.
+	// The type of the associated cloud service instance, such as EcsInstance, SlbInstance, Nat, HaVip, NetworkInterface, or IpAddress.
 	//
 	// example:
 	//
 	// EcsInstance
 	AssociatedInstanceType *string `json:"AssociatedInstanceType,omitempty" xml:"AssociatedInstanceType,omitempty"`
-	// The billing method of the EIP. Valid values: PostPaid (pay-as-you-go) and PrePaid (subscription).
+	// The billing method of the EIP. A value of PostPaid indicates pay-as-you-go, and a value of PrePaid indicates subscription.
 	//
 	// example:
 	//
@@ -81,7 +81,7 @@ type DescribeEipAddressesRequest struct {
 	//
 	// BGP
 	ISP *string `json:"ISP,omitempty" xml:"ISP,omitempty"`
-	// The lock type. Valid values: financial (locked due to overdue payment) and security (locked due to security reasons).
+	// The lock type. A value of financial indicates a lock due to an overdue payment, and a value of security indicates a lock due to security reasons.
 	//
 	// example:
 	//
@@ -89,11 +89,19 @@ type DescribeEipAddressesRequest struct {
 	LockReason   *string `json:"LockReason,omitempty" xml:"LockReason,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The page number. Default value: 1.
+	// The page number for the paging query. Starting value: 1. Default value: 1.
+	//
+	// example:
+	//
+	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page. Maximum value: 100. Default value: 10.
+	// The number of entries per page for the paging query. Valid values: 1 to 100. Default value: 10.
+	//
+	// example:
+	//
+	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the region where the EIP resides. You can call the DescribeRegions operation to query region IDs.
+	// The ID of the region where the elastic IP address (EIP) resides. You can call the DescribeRegions operation to query region IDs.
 	//
 	// This parameter is required.
 	//
@@ -277,7 +285,7 @@ func (s *DescribeEipAddressesRequest) Validate() error {
 }
 
 type DescribeEipAddressesRequestFilter struct {
-	// The first filter key. Set the value to CreationStartTime, which specifies the start time of resource creation.
+	// The first filter key. Valid value: CreationStartTime, which specifies the start time of resource creation.
 	//
 	// example:
 	//

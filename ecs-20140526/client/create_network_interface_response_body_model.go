@@ -56,7 +56,7 @@ type iCreateNetworkInterfaceResponseBody interface {
 }
 
 type CreateNetworkInterfaceResponseBody struct {
-	// The description of the network interface controller (NIC).
+	// The description of the Elastic Network Interface (ENI).
 	//
 	// example:
 	//
@@ -65,31 +65,31 @@ type CreateNetworkInterfaceResponseBody struct {
 	Ipv4PrefixSets *CreateNetworkInterfaceResponseBodyIpv4PrefixSets `json:"Ipv4PrefixSets,omitempty" xml:"Ipv4PrefixSets,omitempty" type:"Struct"`
 	Ipv6PrefixSets *CreateNetworkInterfaceResponseBodyIpv6PrefixSets `json:"Ipv6PrefixSets,omitempty" xml:"Ipv6PrefixSets,omitempty" type:"Struct"`
 	Ipv6Sets       *CreateNetworkInterfaceResponseBodyIpv6Sets       `json:"Ipv6Sets,omitempty" xml:"Ipv6Sets,omitempty" type:"Struct"`
-	// The MAC address of the network interface controller (NIC).
+	// The MAC address of the Elastic Network Interface (ENI).
 	//
 	// example:
 	//
 	// 00:16:3e:12:**:**
 	MacAddress *string `json:"MacAddress,omitempty" xml:"MacAddress,omitempty"`
-	// The ID of the network interface controller (NIC).
+	// The ID of the Elastic Network Interface (ENI).
 	//
 	// example:
 	//
 	// eni-bp14v2sdd3v8htln****
 	NetworkInterfaceId *string `json:"NetworkInterfaceId,omitempty" xml:"NetworkInterfaceId,omitempty"`
-	// The name of the network interface controller (NIC).
+	// The name of the Elastic Network Interface (ENI).
 	//
 	// example:
 	//
 	// my-eni-name
 	NetworkInterfaceName *string `json:"NetworkInterfaceName,omitempty" xml:"NetworkInterfaceName,omitempty"`
-	// The ID of the account to which the network interface controller (NIC) belongs.
+	// The ID of the account to which the Elastic Network Interface (ENI) belongs.
 	//
 	// example:
 	//
 	// 123456****
 	OwnerId *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The private IP address of the network interface controller (NIC).
+	// The private IP address of the Elastic Network Interface (ENI).
 	//
 	// example:
 	//
@@ -109,13 +109,13 @@ type CreateNetworkInterfaceResponseBody struct {
 	// rg-2ze88m67qx5z****
 	ResourceGroupId  *string                                             `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	SecurityGroupIds *CreateNetworkInterfaceResponseBodySecurityGroupIds `json:"SecurityGroupIds,omitempty" xml:"SecurityGroupIds,omitempty" type:"Struct"`
-	// The ID of the Virtual Network Operator (VNO) associated with the network interface controller (NIC).
+	// The ID of the Virtual Network Operator (VNO) corresponding to the Elastic Network Interface (ENI).
 	//
 	// example:
 	//
 	// 12345678910
 	ServiceID *int64 `json:"ServiceID,omitempty" xml:"ServiceID,omitempty"`
-	// Indicates whether the user of the network interface controller (NIC) is a cloud service or a VNO.
+	// Indicates whether the user of the Elastic Network Interface (ENI) is a cloud service or a VNO.
 	//
 	// example:
 	//
@@ -134,7 +134,7 @@ type CreateNetworkInterfaceResponseBody struct {
 	// Available
 	Status *string                                 `json:"Status,omitempty" xml:"Status,omitempty"`
 	Tags   *CreateNetworkInterfaceResponseBodyTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
-	// The type of the network interface controller (NIC).
+	// The type of the Elastic Network Interface (ENI).
 	//
 	// example:
 	//
@@ -146,7 +146,7 @@ type CreateNetworkInterfaceResponseBody struct {
 	//
 	// vsw-bp16usj2p27htro3****
 	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	// The ID of the virtual private cloud (VPC) to which the ENI belongs.
+	// The ID of the VPC to which the ENI belongs.
 	//
 	// example:
 	//

@@ -26,7 +26,7 @@ type iDescribePortRangeListEntriesRequest interface {
 type DescribePortRangeListEntriesRequest struct {
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The ID of the port list.
+	// The port list ID.
 	//
 	// This parameter is required.
 	//

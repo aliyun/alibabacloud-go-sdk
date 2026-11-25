@@ -22,7 +22,7 @@ type iDescribePlanMaintenanceWindowsResponseBody interface {
 }
 
 type DescribePlanMaintenanceWindowsResponseBody struct {
-	// The number of entries per page in a paged query. Maximum value: 100. Default value: If the value is not specified or is less than 10, the default value is 10. If the value is greater than 100, the default value is 100.
+	// The number of entries per page in a paging query. Maximum value: 100. Default value: 10. If no value is specified or the specified value is less than 10, the default value 10 is used. If the specified value is greater than 100, the default value 100 is used.
 	//
 	// example:
 	//
@@ -36,13 +36,13 @@ type DescribePlanMaintenanceWindowsResponseBody struct {
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	// The creation time.
 	PlanMaintenanceWindowList []*DescribePlanMaintenanceWindowsResponseBodyPlanMaintenanceWindowList `json:"PlanMaintenanceWindowList,omitempty" xml:"PlanMaintenanceWindowList,omitempty" type:"Repeated"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
 	// 473469C7-AA6F-4DC5-B3DB-A3DC0DE3****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries that match the request conditions. This is an optional parameter and may not be returned by default.
+	// The total number of entries returned for the current request. This parameter is optional and is not returned by default.
 	//
 	// example:
 	//
@@ -117,9 +117,7 @@ func (s *DescribePlanMaintenanceWindowsResponseBody) Validate() error {
 }
 
 type DescribePlanMaintenanceWindowsResponseBodyPlanMaintenanceWindowList struct {
-	// The time when the O&M window was created.
-	//
-	// The time follows the ISO 8601 standard in UTC. Format: yyyy-MM-ddTHH:mm:ssZ.
+	// The time when the O&M window was created. The time is displayed in UTC and follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format.
 	//
 	// example:
 	//
@@ -130,11 +128,14 @@ type DescribePlanMaintenanceWindowsResponseBodyPlanMaintenanceWindowList struct 
 	// example:
 	//
 	// true
-	Enable                 *bool  `json:"Enable,omitempty" xml:"Enable,omitempty"`
-	MinMaintenanceInterval *int32 `json:"MinMaintenanceInterval,omitempty" xml:"MinMaintenanceInterval,omitempty"`
-	// The time when the O&M window was last modified.
+	Enable *bool `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	// The minimum interval for scheduled O&M.
 	//
-	// The time follows the ISO 8601 standard in UTC. Format: yyyy-MM-ddTHH:mm:ssZ.
+	// example:
+	//
+	// 0
+	MinMaintenanceInterval *int32 `json:"MinMaintenanceInterval,omitempty" xml:"MinMaintenanceInterval,omitempty"`
+	// The time when the O&M window was modified. The time is displayed in UTC and follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format.
 	//
 	// example:
 	//
@@ -152,7 +153,7 @@ type DescribePlanMaintenanceWindowsResponseBodyPlanMaintenanceWindowList struct 
 	//
 	// WindowName
 	PlanWindowName *string `json:"PlanWindowName,omitempty" xml:"PlanWindowName,omitempty"`
-	// The supported maintenance action.
+	// The supported O&M actions.
 	//
 	// example:
 	//
@@ -160,7 +161,7 @@ type DescribePlanMaintenanceWindowsResponseBodyPlanMaintenanceWindowList struct 
 	SupportMaintenanceAction *string `json:"SupportMaintenanceAction,omitempty" xml:"SupportMaintenanceAction,omitempty"`
 	// The resources to which the O&M window applies.
 	TargetResource *DescribePlanMaintenanceWindowsResponseBodyPlanMaintenanceWindowListTargetResource `json:"TargetResource,omitempty" xml:"TargetResource,omitempty" type:"Struct"`
-	// The recurrence cycle of the window.
+	// The recurrence period of the window.
 	TimePeriod *DescribePlanMaintenanceWindowsResponseBodyPlanMaintenanceWindowListTimePeriod `json:"TimePeriod,omitempty" xml:"TimePeriod,omitempty" type:"Struct"`
 }
 
@@ -274,7 +275,7 @@ type DescribePlanMaintenanceWindowsResponseBodyPlanMaintenanceWindowListTargetRe
 	//
 	// rg-aek2qxeteo7fr6y
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The type of resource for which the O&M window is configured.
+	// The type of the resource for which the O&M window is configured.
 	//
 	// example:
 	//
@@ -378,17 +379,13 @@ func (s *DescribePlanMaintenanceWindowsResponseBodyPlanMaintenanceWindowListTarg
 }
 
 type DescribePlanMaintenanceWindowsResponseBodyPlanMaintenanceWindowListTimePeriod struct {
-	// The type of the recurrence cycle. Valid values:
-	//
-	// - Daily: daily recurrence.
-	//
-	// - Weekly: weekly recurrence.
+	// The type of the recurrence period. Valid values: Daily and Weekly.
 	//
 	// example:
 	//
 	// Year
 	PeriodUnit *string `json:"PeriodUnit,omitempty" xml:"PeriodUnit,omitempty"`
-	// The time ranges within the recurrence cycle of the O&M window (in UTC).
+	// The time ranges of the recurrence period of the O&M window in UTC.
 	RangeList []*DescribePlanMaintenanceWindowsResponseBodyPlanMaintenanceWindowListTimePeriodRangeList `json:"RangeList,omitempty" xml:"RangeList,omitempty" type:"Repeated"`
 }
 
@@ -432,13 +429,13 @@ func (s *DescribePlanMaintenanceWindowsResponseBodyPlanMaintenanceWindowListTime
 }
 
 type DescribePlanMaintenanceWindowsResponseBodyPlanMaintenanceWindowListTimePeriodRangeList struct {
-	// The end time of the maintenance time window. Format: "Day of the week,HH:mm". Example: Monday,22:00.
+	// The end time of the maintenance time window. The format is DayOfWeek,HH:mm, such as Monday,22:00.
 	//
 	// example:
 	//
 	// Monday,22:00
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The start time of the maintenance time window. Format: "Day of the week,HH:mm". Example: Monday,22:00.
+	// The start time of the maintenance time window. The format is DayOfWeek,HH:mm, such as Monday,22:00.
 	//
 	// example:
 	//

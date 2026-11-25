@@ -31,7 +31,7 @@ type DescribeInvocationsResponseBody struct {
 	//
 	// AAAAAdDWBF2
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The page number of the query result.
+	// The page number of the returned results.
 	//
 	// example:
 	//
@@ -51,7 +51,7 @@ type DescribeInvocationsResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The total number of commands.
 	//
-	// > The TotalCount parameter is meaningless when you use the MaxResults and NextToken parameters for paging.
+	// > The returned TotalCount value is meaningless when you use the MaxResults and NextToken parameters for paging in a paged query.
 	//
 	// example:
 	//

@@ -133,7 +133,7 @@ func (s *EnableNetworkInterfaceQoSRequest) Validate() error {
 type EnableNetworkInterfaceQoSRequestQoS struct {
   // The maximum inbound internal bandwidth limit.
   // 
-  // Unit: Kbit/s. Step size: 1000 (1 Mbit/s). Valid values: [50000, +∞).
+  // Unit: Kbit/s. Step: 1000 (1 Mbit/s). Valid values: [50000, +∞).
   // 
   // example:
   // 
@@ -141,15 +141,15 @@ type EnableNetworkInterfaceQoSRequestQoS struct {
   BandwidthRx *int64 `json:"BandwidthRx,omitempty" xml:"BandwidthRx,omitempty"`
   // The maximum outbound internal bandwidth limit.
   // 
-  // Unit: Kbit/s. Step size: 1000 (1 Mbit/s). Valid values: [50000, +∞).
+  // Unit: Kbit/s. Step: 1000 (1 Mbit/s). Valid values: [50000, +∞).
   // 
   // example:
   // 
   // 50000
   BandwidthTx *int64 `json:"BandwidthTx,omitempty" xml:"BandwidthTx,omitempty"`
-  // The maximum number of sessions.
+  // The maximum number of concurrent connections.
   // 
-  // Step size: 10000. Valid values: [10000, +∞).
+  // Step: 10000. Valid values: [10000, +∞).
   // 
   // example:
   // 
@@ -157,7 +157,7 @@ type EnableNetworkInterfaceQoSRequestQoS struct {
   ConcurrentConnections *int64 `json:"ConcurrentConnections,omitempty" xml:"ConcurrentConnections,omitempty"`
   // The inbound internal packet forwarding rate.
   // 
-  // Unit: PPS. Step size: 10000. Valid values: [10000, +∞).
+  // Unit: PPS. Step: 10000. Valid values: [10000, +∞).
   // 
   // example:
   // 
@@ -165,7 +165,7 @@ type EnableNetworkInterfaceQoSRequestQoS struct {
   PpsRx *int64 `json:"PpsRx,omitempty" xml:"PpsRx,omitempty"`
   // The outbound internal packet forwarding rate.
   // 
-  // Unit: PPS. Step size: 10000. Valid values: [10000, +∞).
+  // Unit: PPS. Step: 10000. Valid values: [10000, +∞).
   // 
   // example:
   // 

@@ -90,33 +90,36 @@ type CreateNetworkInterfaceRequest struct {
 	//
 	// null
 	BusinessType *string `json:"BusinessType,omitempty" xml:"BusinessType,omitempty"`
-	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [Ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
 	//
 	// example:
 	//
 	// 123e4567-e89b-12d3-a456-426655440000
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// The network connectivity tracking configurations. Before you use this parameter, read [Connection timeout management](https://help.aliyun.com/document_detail/2865958.html).
+	// The network connectivity tracking configurations.
+	//
+	// Before you use this parameter, read [Connection timeout management](https://help.aliyun.com/document_detail/2865958.html).
 	ConnectionTrackingConfiguration *CreateNetworkInterfaceRequestConnectionTrackingConfiguration `json:"ConnectionTrackingConfiguration,omitempty" xml:"ConnectionTrackingConfiguration,omitempty" type:"Struct"`
 	// Specifies whether to retain the ENI when the instance is released. Valid values:
 	//
-	// - true: The ENI is not retained.
+	// - true: does not retain the ENI.
 	//
-	// - false: The ENI is retained.
+	// - false: retains the ENI.
 	//
 	// example:
 	//
 	// true
 	DeleteOnRelease *bool `json:"DeleteOnRelease,omitempty" xml:"DeleteOnRelease,omitempty"`
-	// The description of the Elastic Network Interface (ENI). The description must be 2 to 256 characters in length and cannot start with http:// or https://.
+	// The description of the Elastic Network Interface (ENI). The description must be 2 to 256 characters in length and cannot start with `http://` or `https://`.
 	//
 	// Default value: empty.
 	//
 	// example:
 	//
 	// testDescription
-	Description       *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	EnablePrimaryIPv6 *bool   `json:"EnablePrimaryIPv6,omitempty" xml:"EnablePrimaryIPv6,omitempty"`
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// Specifies whether the primary IPv6 address is enabled for the Elastic Network Interface (ENI).
+	EnablePrimaryIPv6 *bool `json:"EnablePrimaryIPv6,omitempty" xml:"EnablePrimaryIPv6,omitempty"`
 	// > This parameter is not available.
 	EnhancedNetwork *CreateNetworkInterfaceRequestEnhancedNetwork `json:"EnhancedNetwork,omitempty" xml:"EnhancedNetwork,omitempty" type:"Struct"`
 	// The type of the Elastic Network Interface (ENI). Valid values:
@@ -133,21 +136,21 @@ type CreateNetworkInterfaceRequest struct {
 	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
 	// One or more IPv4 prefixes that are allocated to the Elastic Network Interface (ENI). Valid values of N: 1 to 10.
 	//
-	// > If you want to allocate IPv4 prefixes to the Elastic Network Interface (ENI), you must configure Settings for either Ipv4Prefix.N or Ipv4PrefixCount. You cannot configure Settings for both parameters.
+	// > If you want to configure IPv4 prefixes for the Elastic Network Interface (ENI), you must specify either the Ipv4Prefix.N parameter or the Ipv4PrefixCount parameter, but you cannot specify both parameters.
 	Ipv4Prefix []*string `json:"Ipv4Prefix,omitempty" xml:"Ipv4Prefix,omitempty" type:"Repeated"`
 	// The number of IPv4 prefixes that are allocated to the Elastic Network Interface (ENI). Valid values: 1 to 10.
 	//
-	// > If you want to allocate IPv4 prefixes to the Elastic Network Interface (ENI), you must configure Settings for either Ipv4Prefix.N or Ipv4PrefixCount. You cannot configure Settings for both parameters.
+	// > If you want to configure IPv4 prefixes for the Elastic Network Interface (ENI), you must specify either the Ipv4Prefix.N parameter or the Ipv4PrefixCount parameter, but you cannot specify both parameters.
 	//
 	// example:
 	//
 	// 1
 	Ipv4PrefixCount *int32 `json:"Ipv4PrefixCount,omitempty" xml:"Ipv4PrefixCount,omitempty"`
-	// One or more IPv6 addresses that are allocated to the Elastic Network Interface (ENI). It supports Settings for up to 10 IPv6 addresses. Valid values of N: 1 to 10.
+	// One or more IPv6 addresses that are allocated to the Elastic Network Interface (ENI). You can specify up to 10 IPv6 addresses. Valid values of N: 1 to 10.
 	//
 	// Example: Ipv6Address.1=2001:db8:1234:1a00::\\*\\*\\*\\*
 	//
-	// > If you want to allocate IPv6 addresses to the Elastic Network Interface (ENI), you must configure Settings for either Ipv6Addresses.N or Ipv6AddressCount. You cannot configure Settings for both parameters.
+	// > If you want to configure IPv6 addresses for the Elastic Network Interface (ENI), you must specify either the Ipv6Addresses.N parameter or the Ipv6AddressCount parameter, but you cannot specify both parameters.
 	//
 	// example:
 	//
@@ -155,7 +158,7 @@ type CreateNetworkInterfaceRequest struct {
 	Ipv6Address []*string `json:"Ipv6Address,omitempty" xml:"Ipv6Address,omitempty" type:"Repeated"`
 	// The number of IPv6 addresses that are randomly generated for the Elastic Network Interface (ENI). Valid values: 1 to 10.
 	//
-	// > If you want to allocate IPv6 addresses to the Elastic Network Interface (ENI), you must configure Settings for either Ipv6Addresses.N or Ipv6AddressCount. You cannot configure Settings for both parameters.
+	// > If you want to configure IPv6 addresses for the Elastic Network Interface (ENI), you must specify either the Ipv6Addresses.N parameter or the Ipv6AddressCount parameter, but you cannot specify both parameters.
 	//
 	// example:
 	//
@@ -163,17 +166,17 @@ type CreateNetworkInterfaceRequest struct {
 	Ipv6AddressCount *int32 `json:"Ipv6AddressCount,omitempty" xml:"Ipv6AddressCount,omitempty"`
 	// One or more IPv6 prefixes that are allocated to the Elastic Network Interface (ENI). Valid values of N: 1 to 10.
 	//
-	// > If you want to allocate IPv6 prefixes to the Elastic Network Interface (ENI), you must configure Settings for either Ipv6Prefix.N or Ipv6PrefixCount. You cannot configure Settings for both parameters.
+	// > If you want to configure IPv6 prefixes for the Elastic Network Interface (ENI), you must specify either the Ipv6Prefix.N parameter or the Ipv6PrefixCount parameter, but you cannot specify both parameters.
 	Ipv6Prefix []*string `json:"Ipv6Prefix,omitempty" xml:"Ipv6Prefix,omitempty" type:"Repeated"`
 	// The number of IPv6 prefixes that are allocated to the Elastic Network Interface (ENI). Valid values: 1 to 10.
 	//
-	// > If you want to allocate IPv6 prefixes to the Elastic Network Interface (ENI), you must configure Settings for either Ipv6Prefix.N or Ipv6PrefixCount. You cannot configure Settings for both parameters.
+	// > If you want to configure IPv6 prefixes for the Elastic Network Interface (ENI), you must specify either the Ipv6Prefix.N parameter or the Ipv6PrefixCount parameter, but you cannot specify both parameters.
 	//
 	// example:
 	//
 	// 1
 	Ipv6PrefixCount *int32 `json:"Ipv6PrefixCount,omitempty" xml:"Ipv6PrefixCount,omitempty"`
-	// The name of the Elastic Network Interface (ENI). The name must be 2 to 128 characters in length. It can contain letters in the Unicode letter categorization (including English and Chinese characters) and ASCII digits (0-9). It can also contain colons (:), underscores (_), periods (.), and hyphens (-).
+	// The name of the Elastic Network Interface (ENI). The name must be 2 to 128 characters in length and can contain Unicode letters (including English and Chinese characters), ASCII digits (0-9), colons (:), underscores (_), periods (.), and hyphens (-).
 	//
 	// Default value: empty.
 	//
@@ -183,13 +186,13 @@ type CreateNetworkInterfaceRequest struct {
 	NetworkInterfaceName *string `json:"NetworkInterfaceName,omitempty" xml:"NetworkInterfaceName,omitempty"`
 	// The communication parameters of the Elastic Network Interface (ENI).
 	NetworkInterfaceTrafficConfig *CreateNetworkInterfaceRequestNetworkInterfaceTrafficConfig `json:"NetworkInterfaceTrafficConfig,omitempty" xml:"NetworkInterfaceTrafficConfig,omitempty" type:"Struct"`
-	// The communication pattern of the Elastic Network Interface (ENI). Valid values:
+	// The communication mode of the Elastic Network Interface (ENI). Valid values:
 	//
-	// - Standard: uses the TCP communication pattern.
+	// - Standard: uses the TCP communication mode.
 	//
-	// - HighPerformance: enables the Elastic RDMA Interface (ERI) and uses the RDMA communication pattern.
+	// - HighPerformance: enables the Elastic RDMA Interface (ERI) and uses the RDMA communication mode.
 	//
-	// > For an Elastic Network Interface (ENI) that uses the RDMA communication pattern, you can attach the Elastic Network Interface (ENI) only to an instance of an instance type that supports ERI. The number of Elastic Network Interfaces (ENIs) that use the RDMA pattern cannot exceed the limit for the instance family. For more information, see [Instance families](https://help.aliyun.com/document_detail/25378.html) and [Configure eRDMA on enterprise-level instances](https://help.aliyun.com/document_detail/336853.html)<props="china"> and [Configure eRDMA on GPU-accelerated instances](https://help.aliyun.com/document_detail/2248432.html).
+	// > An Elastic Network Interface (ENI) that uses the RDMA communication mode can be attached only to an instance of an instance type that supports ERI. The number of Elastic Network Interfaces (ENIs) that use the RDMA mode cannot exceed the limit of the instance family. For more information, see [Instance families](https://help.aliyun.com/document_detail/25378.html) and [Configure eRDMA on enterprise-level instances](https://help.aliyun.com/document_detail/336853.html)<props="china"> and [Configure eRDMA on GPU-accelerated instances](https://help.aliyun.com/document_detail/2248432.html).
 	//
 	// Default value: Standard.
 	//
@@ -201,7 +204,7 @@ type CreateNetworkInterfaceRequest struct {
 	OwnerId                     *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The primary private IP address of the Elastic Network Interface (ENI).
 	//
-	// The specified IP address must be an idle IP address in the CIDR block of the vSwitch to which the Elastic Network Interface (ENI) belongs. If you do not specify this parameter, an idle IP address in the vSwitch is randomly allocated by default.
+	// The specified IP address must be an idle IP address in the CIDR block of the vSwitch. If you do not specify this parameter, by default, an idle IP address in the vSwitch is randomly allocated.
 	//
 	// example:
 	//
@@ -217,9 +220,9 @@ type CreateNetworkInterfaceRequest struct {
 	PrivateIpAddress []*string `json:"PrivateIpAddress,omitempty" xml:"PrivateIpAddress,omitempty" type:"Repeated"`
 	// The number of queues for the Elastic Network Interface (ENI). Valid values: 1 to 2048.
 	//
-	// When you attach the Elastic Network Interface (ENI) to an instance, the value of this parameter must be less than the maximum number of queues per single network interface controller (NIC) supported by the instance type. You can invoke the [DescribeInstanceTypes](https://help.aliyun.com/document_detail/25620.html) operation to query the MaximumQueueNumberPerEni value for the instance type.
+	// When you attach the Elastic Network Interface (ENI), this value must be less than the maximum number of queues per network interface controller (NIC) supported by the instance type. You can invoke the [DescribeInstanceTypes](https://help.aliyun.com/document_detail/25620.html) operation to query the MaximumQueueNumberPerEni field for the maximum number of queues per network interface controller (NIC) supported by the instance type.
 	//
-	// Default value: empty. When you attach the Elastic Network Interface (ENI), the default number of queues per Elastic Network Interface (ENI) for the instance type is used. You can invoke the [DescribeInstanceTypes](https://help.aliyun.com/document_detail/25620.html) operation to query the SecondaryEniQueueNumber value for the instance type.
+	// Default value: empty. When you attach the Elastic Network Interface (ENI), the default number of queues for the Elastic Network Interface (ENI) supported by the instance type is used. You can invoke the [DescribeInstanceTypes](https://help.aliyun.com/document_detail/25620.html) operation to query the SecondaryEniQueueNumber field for the default number of queues for the Elastic Network Interface (ENI) supported by the instance type.
 	//
 	// example:
 	//
@@ -227,15 +230,15 @@ type CreateNetworkInterfaceRequest struct {
 	QueueNumber *int32 `json:"QueueNumber,omitempty" xml:"QueueNumber,omitempty"`
 	// The number of queues for the RDMA ENI.
 	//
-	// If you want to attach multiple RDMA ENIs to an instance, we recommend that you manually specify the QueuePairNumber value for each ENI based on the maximum QueuePairNumber value supported by the instance type and the number of ENIs that you plan to use. Make sure that the total number of queue pairs for all ENIs does not exceed the maximum value allowed for the instance type. You can call the [DescribeInstanceTypes](https://help.aliyun.com/document_detail/2679699.html) operation to query the maximum value for the instance type.
+	// If you want to attach multiple RDMA ENIs to an instance, we recommend that you manually specify the QueuePairNumber for each ENI based on the upper limit of QueuePairNumber for RDMA ENIs supported by the instance type and the number of ENIs that you plan to use. Make sure that the total number of QueuePairNumber for all ENIs does not exceed the maximum value allowed by the instance type. You can call the [DescribeInstanceTypes](https://help.aliyun.com/document_detail/2679699.html) operation to view the upper limit of the instance type.
 	//
-	// 	Notice: If you do not specify the QueuePairNumber value for an RDMA ENI, the maximum QueuePairNumber value supported by the instance type for all RDMA ENIs is used by default. Therefore, after you attach an RDMA ENI for which QueuePairNumber is not specified, you cannot attach more RDMA ENIs. This limit does not apply to standard ENIs.</notice>
+	// 	Notice: If you do not specify QueuePairNumber for an RDMA ENI, the upper limit of QueuePairNumber for all RDMA ENIs supported by the instance type is used by default. Therefore, after you attach an RDMA ENI for which QueuePairNumber is not specified, you cannot attach more RDMA ENIs. This limit does not apply to standard ENIs.</notice>
 	//
 	// example:
 	//
 	// 22
 	QueuePairNumber *int32 `json:"QueuePairNumber,omitempty" xml:"QueuePairNumber,omitempty"`
-	// The region ID of the Elastic Network Interface (ENI) to be created. You can invoke the [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) operation to query the most recent region list.
+	// The ID of the region where you want to create the Elastic Network Interface (ENI). You can invoke the [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) operation to query the most recent region list.
 	//
 	// This parameter is required.
 	//
@@ -243,7 +246,7 @@ type CreateNetworkInterfaceRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The resource group ID. You can call the [ListResourceGroups](https://help.aliyun.com/document_detail/158855.html) operation to query resource group information.
+	// The ID of the resource group. You can call the [ListResourceGroups](https://help.aliyun.com/document_detail/158855.html) operation to query resource group information.
 	//
 	// example:
 	//
@@ -265,7 +268,7 @@ type CreateNetworkInterfaceRequest struct {
 	//
 	// 8192
 	RxQueueSize *int32 `json:"RxQueueSize,omitempty" xml:"RxQueueSize,omitempty"`
-	// The number of private IP addresses that you want Elastic Compute Service (ECS) to allocate for automatic creation. Valid values: 1 to 49.
+	// The number of private IP addresses for automatic creation by ECS. Valid values: 1 to 49.
 	//
 	// example:
 	//
@@ -273,7 +276,7 @@ type CreateNetworkInterfaceRequest struct {
 	SecondaryPrivateIpAddressCount *int32 `json:"SecondaryPrivateIpAddressCount,omitempty" xml:"SecondaryPrivateIpAddressCount,omitempty"`
 	// The ID of the security group to which you want to add the Elastic Network Interface (ENI). The security group and the Elastic Network Interface (ENI) must belong to the same VPC.
 	//
-	// > When you invoke this operation, you must configure Settings for either SecurityGroupId or SecurityGroupIds.N. You cannot configure Settings for both.
+	// > When you invoke this operation, you must specify either SecurityGroupId or SecurityGroupIds.N, but you cannot specify both.
 	//
 	// example:
 	//
@@ -281,17 +284,17 @@ type CreateNetworkInterfaceRequest struct {
 	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
 	// The IDs of one or more security groups to which you want to add the Elastic Network Interface (ENI). The security groups and the Elastic Network Interface (ENI) must belong to the same VPC. The valid values of N depend on the quota of security groups to which an Elastic Network Interface (ENI) can be added. For more information, see [Limits](https://help.aliyun.com/document_detail/25412.html).
 	//
-	// > When you invoke this operation, you must configure Settings for either SecurityGroupId or SecurityGroupIds.N. You cannot configure Settings for both.
+	// > When you invoke this operation, you must specify either SecurityGroupId or SecurityGroupIds.N, but you cannot specify both.
 	//
 	// example:
 	//
 	// sg-bp1fg655nh68xyz9i****
 	SecurityGroupIds []*string `json:"SecurityGroupIds,omitempty" xml:"SecurityGroupIds,omitempty" type:"Repeated"`
-	// Specifies whether to enable source/destination checking. We recommend that you enable this feature to improve network security. Valid values:
+	// Specifies whether to enable the source/destination checking feature. We recommend that you enable this feature to improve network security. Valid values:
 	//
-	// - true: enables source/destination checking.
+	// - true: enables the feature.
 	//
-	// - false: disables source/destination checking.
+	// - false: disables the feature.
 	//
 	// Default value: false.
 	//
@@ -317,7 +320,7 @@ type CreateNetworkInterfaceRequest struct {
 	//
 	// 8192
 	TxQueueSize *int32 `json:"TxQueueSize,omitempty" xml:"TxQueueSize,omitempty"`
-	// The vSwitch ID of the Elastic Network Interface (ENI). The private IP address of the Elastic Network Interface (ENI) is selected from the idle IP addresses in the CIDR block of the vSwitch.
+	// The ID of the vSwitch to which the Elastic Network Interface (ENI) belongs. The private IP address of the Elastic Network Interface (ENI) is selected from the idle IP addresses in the CIDR block of the vSwitch.
 	//
 	// 	Notice: The Elastic Network Interface (ENI) and the instance to which you want to attach the Elastic Network Interface (ENI) must belong to the same zone, but they can belong to different vSwitches.</notice>
 	//
@@ -331,7 +334,7 @@ type CreateNetworkInterfaceRequest struct {
 	//
 	// example:
 	//
-	// null
+	// false
 	Visible *bool `json:"Visible,omitempty" xml:"Visible,omitempty"`
 }
 
@@ -696,7 +699,7 @@ func (s *CreateNetworkInterfaceRequest) Validate() error {
 }
 
 type CreateNetworkInterfaceRequestConnectionTrackingConfiguration struct {
-	// The timeout period for closed and TIME_WAIT TCP connections. Unit: seconds. Valid values: integers from 3 to 15.
+	// The timeout period for TCP connections in the TIME_WAIT and CLOSED states. Unit: seconds. Valid values: integers from 3 to 15.
 	//
 	// Default value: 3.
 	//
@@ -766,6 +769,7 @@ func (s *CreateNetworkInterfaceRequestConnectionTrackingConfiguration) Validate(
 }
 
 type CreateNetworkInterfaceRequestEnhancedNetwork struct {
+	// > This parameter is not available.
 	EnableExpress *bool `json:"EnableExpress,omitempty" xml:"EnableExpress,omitempty"`
 	// > This parameter is not available.
 	//
@@ -778,8 +782,18 @@ type CreateNetworkInterfaceRequestEnhancedNetwork struct {
 	// example:
 	//
 	// true
-	EnableSriov                     *bool  `json:"EnableSriov,omitempty" xml:"EnableSriov,omitempty"`
-	VirtualFunctionQuantity         *int32 `json:"VirtualFunctionQuantity,omitempty" xml:"VirtualFunctionQuantity,omitempty"`
+	EnableSriov *bool `json:"EnableSriov,omitempty" xml:"EnableSriov,omitempty"`
+	// The number of virtual functions when SR-IOV is enabled. Valid values: 1 to 256.
+	//
+	// example:
+	//
+	// 1
+	VirtualFunctionQuantity *int32 `json:"VirtualFunctionQuantity,omitempty" xml:"VirtualFunctionQuantity,omitempty"`
+	// The total number of queues for virtual functions when SR-IOV is enabled.
+	//
+	// example:
+	//
+	// 4
 	VirtualFunctionTotalQueueNumber *int32 `json:"VirtualFunctionTotalQueueNumber,omitempty" xml:"VirtualFunctionTotalQueueNumber,omitempty"`
 }
 
@@ -841,7 +855,7 @@ func (s *CreateNetworkInterfaceRequestEnhancedNetwork) Validate() error {
 }
 
 type CreateNetworkInterfaceRequestNetworkInterfaceTrafficConfig struct {
-	// The communication pattern of the Elastic Network Interface (ENI).
+	// The communication mode of the Elastic Network Interface (ENI).
 	//
 	// example:
 	//
@@ -879,7 +893,7 @@ type CreateNetworkInterfaceRequestNetworkInterfaceTrafficConfig struct {
 	//
 	// When you use this parameter, take note of the following items:
 	//
-	// - This parameter applies only to seventh-generation and later ECS instance families.
+	// - This parameter applies only to ECS instance families of Generation 7 and later.
 	//
 	// - This parameter applies only to Linux images.
 	//
@@ -909,7 +923,7 @@ type CreateNetworkInterfaceRequestNetworkInterfaceTrafficConfig struct {
 	//
 	// When you use this parameter, take note of the following items:
 	//
-	// - This parameter applies only to seventh-generation and later ECS instance families.
+	// - This parameter applies only to ECS instance families of Generation 7 and later.
 	//
 	// - This parameter applies only to Linux images.
 	//
@@ -979,13 +993,13 @@ func (s *CreateNetworkInterfaceRequestNetworkInterfaceTrafficConfig) Validate() 
 }
 
 type CreateNetworkInterfaceRequestTag struct {
-	// The tag key of the Elastic Network Interface (ENI). Valid values of N: 1 to 20. The tag key cannot be an empty string. The tag key can be up to 128 characters in length and cannot start with aliyun or acs:. The tag key cannot contain http:// or https://.
+	// The tag key of the Elastic Network Interface (ENI). Valid values of N: 1 to 20. The tag key cannot be an empty string. The tag key can be up to 128 characters in length, and cannot start with `aliyun` or `acs:`. The tag key cannot contain `http://` or `https://`.
 	//
 	// example:
 	//
 	// TestKey
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The tag value of the Elastic Network Interface (ENI). Valid values of N: 1 to 20. The tag value can be an empty string. The tag value can be up to 128 characters in length and cannot contain http:// or https://.
+	// The tag value of the Elastic Network Interface (ENI). Valid values of N: 1 to 20. The tag value can be an empty string. The tag value can be up to 128 characters in length, and cannot contain `http://` or `https://`.
 	//
 	// example:
 	//

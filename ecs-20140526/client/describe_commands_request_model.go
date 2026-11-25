@@ -56,9 +56,9 @@ type DescribeCommandsRequest struct {
 	CommandId *string `json:"CommandId,omitempty" xml:"CommandId,omitempty"`
 	// The encoding mode of the CommandContent and Output fields in the response. Valid values:
 	//
-	// - PlainText: Returns the original script content and output information.
+	// - PlainText: returns the original script content and output information.
 	//
-	// - Base64: Returns the Base64-encoded script content and output information.
+	// - Base64: returns the Base64-encoded script content and output information.
 	//
 	// Default value: Base64.
 	//
@@ -68,19 +68,19 @@ type DescribeCommandsRequest struct {
 	ContentEncoding *string `json:"ContentEncoding,omitempty" xml:"ContentEncoding,omitempty"`
 	// The description of the command.
 	//
-	// - When you specify the Provider parameter parameter query public commands, fuzzy search is supported by default.
+	// - When you specify the Provider parameter parameter query public commands, fuzzy match is supported by default.
 	//
-	// - When you do not specify the Provider parameter parameter query private commands, fuzzy search is supported. For example, if you enter test*, the system searches for all commands whose descriptions start with test. If you enter *test, the system searches for all commands whose descriptions end with test. If you enter *test*, the system searches for all commands whose descriptions contain test.
+	// - When you do not specify the Provider parameter parameter query private commands, fuzzy match is supported. For example, if you enter test*, the system searches for all commands whose descriptions start with test. If you enter *test, the system searches for all commands whose descriptions end with test. If you enter *test*, the system searches for all commands whose descriptions contain test.
 	//
 	// example:
 	//
 	// testDescription
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// Specifies whether to query only the latest version of public commands if the query result includes public commands. This parameter does not affect the query of private commands. Valid values:
+	// Specifies whether to query only the latest version of public commands if the query result includes public commands. This parameter does not affect the query of private commands.
 	//
-	// - true: Queries only the latest version of public commands.
+	// - true: queries only the latest version of public commands.
 	//
-	// - false: Queries all versions of public commands.
+	// - false: queries all versions of public commands.
 	//
 	// Default value: false.
 	//
@@ -88,7 +88,7 @@ type DescribeCommandsRequest struct {
 	//
 	// true
 	Latest *bool `json:"Latest,omitempty" xml:"Latest,omitempty"`
-	// The maximum number of entries per page for paging.
+	// The maximum number of entries per page for a paging query.
 	//
 	// Maximum value: 50.
 	//
@@ -100,9 +100,9 @@ type DescribeCommandsRequest struct {
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
 	// The name of the command.
 	//
-	// - When you specify the Provider parameter parameter query public commands, fuzzy search is supported by default.
+	// - When you specify the Provider parameter parameter query public commands, fuzzy match is supported by default.
 	//
-	// - When you do not specify the Provider parameter parameter query private commands, fuzzy search is supported. For example, if you enter command*, the system searches for all commands whose names start with command. If you enter *command, the system searches for all commands whose names end with command. If you enter *command*, the system searches for all commands whose names contain command.
+	// - When you do not specify the Provider parameter parameter query private commands, fuzzy match is supported. For example, if you enter command*, the system searches for all commands whose names start with command. If you enter *command, the system searches for all commands whose names end with command. If you enter *command*, the system searches for all commands whose names contain command.
 	//
 	// example:
 	//
@@ -116,13 +116,13 @@ type DescribeCommandsRequest struct {
 	NextToken    *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// > This parameter will be deprecated soon. Use the NextToken and MaxResults parameters for paging.
+	// > This parameter will be deprecated soon. We recommend that you use NextToken and MaxResults for paging.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// > This parameter will be deprecated soon. Use the NextToken and MaxResults parameters for paging.
+	// > This parameter will be deprecated soon. We recommend that you use NextToken and MaxResults for paging.
 	//
 	// example:
 	//
@@ -136,9 +136,9 @@ type DescribeCommandsRequest struct {
 	//
 	// - If you set this parameter to a specific public command provider, the system queries all public commands provided by the provider. Examples:
 	//
-	//     - If you set this parameter to AlibabaCloud.ECS.GuestOS, the system queries the public commands provided by AlibabaCloud.ECS.GuestOS.
+	//     - If you set Provider to AlibabaCloud.ECS.GuestOS, the system queries the public commands provided by AlibabaCloud.ECS.GuestOS.
 	//
-	//     - If you set this parameter to AlibabaCloud.ECS.GuestOSDiagnose, the system queries the public commands provided by AlibabaCloud.ECS.GuestOSDiagnose.
+	//     - If you set Provider to AlibabaCloud.ECS.GuestOSDiagnose, the system queries the public commands provided by AlibabaCloud.ECS.GuestOSDiagnose.
 	//
 	// example:
 	//
@@ -164,11 +164,11 @@ type DescribeCommandsRequest struct {
 	Tag []*DescribeCommandsRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 	// The type of the command. Valid values:
 	//
-	// - RunBatScript: a Bat script that runs on a Windows instance.
+	// - RunBatScript: The command is a batch script that runs on a Windows instance.
 	//
-	// - RunPowerShellScript: a PowerShell script that runs on a Windows instance.
+	// - RunPowerShellScript: The command is a PowerShell script that runs on a Windows instance.
 	//
-	// - RunShellScript: a shell script that runs on a Linux instance.
+	// - RunShellScript: The command is a shell script that runs on a Linux instance.
 	//
 	// example:
 	//
@@ -362,9 +362,9 @@ func (s *DescribeCommandsRequest) Validate() error {
 type DescribeCommandsRequestTag struct {
 	// The tag key of the command. Valid values of N: 1 to 20. The value cannot be an empty string.
 	//
-	// When you use a single tag to filter resources, the resource count for that tag cannot exceed 1,000. When you use multiple tags to filter resources, the resource count for resources attached to all the specified tags cannot exceed 1,000. If the resource count exceeds 1,000, call the [ListTagResources](https://help.aliyun.com/document_detail/110425.html) operation to query the resources.
+	// If you use a single tag to filter resources, the resource count returned for this tag cannot exceed 1,000. If you use multiple tags to filter resources, the resource count of resources that are attached to multiple tags at the same time cannot exceed 1,000. If the resource count exceeds 1,000, you must use the [ListTagResources](https://help.aliyun.com/document_detail/110425.html) operation to query the resources.
 	//
-	// The tag key can be up to 64 characters in length. It cannot start with aliyun or acs: and cannot contain http:// or https://.
+	// The tag key can be up to 64 characters in length. It cannot start with aliyun or acs:, and cannot contain http:// or https://.
 	//
 	// example:
 	//

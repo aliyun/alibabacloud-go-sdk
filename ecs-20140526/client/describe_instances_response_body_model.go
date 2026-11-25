@@ -25,7 +25,7 @@ type iDescribeInstancesResponseBody interface {
 
 type DescribeInstancesResponseBody struct {
 	Instances *DescribeInstancesResponseBodyInstances `json:"Instances,omitempty" xml:"Instances,omitempty" type:"Struct"`
-	// The pagination token returned in this call.
+	// The pagination token returned by this call.
 	//
 	// example:
 	//
@@ -37,7 +37,7 @@ type DescribeInstancesResponseBody struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page that was specified in the request.
+	// The number of entries per page specified in the request.
 	//
 	// example:
 	//
@@ -49,9 +49,9 @@ type DescribeInstancesResponseBody struct {
 	//
 	// 473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of queried instances.
+	// The total number of instances returned.
 	//
-	// > When you use the `MaxResults` and `NextToken` parameters for paging query, the returned `TotalCount` parameter value is meaningless.
+	// > When you use the `MaxResults` and `NextToken` parameters for paging in a paged query, the returned value of the `TotalCount` parameter is meaningless.
 	//
 	// example:
 	//

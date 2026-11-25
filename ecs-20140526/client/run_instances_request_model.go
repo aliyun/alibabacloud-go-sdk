@@ -176,11 +176,11 @@ type RunInstancesRequest struct {
 	SchedulerOptions   *RunInstancesRequestSchedulerOptions   `json:"SchedulerOptions,omitempty" xml:"SchedulerOptions,omitempty" type:"Struct"`
 	SecurityOptions    *RunInstancesRequestSecurityOptions    `json:"SecurityOptions,omitempty" xml:"SecurityOptions,omitempty" type:"Struct"`
 	SystemDisk         *RunInstancesRequestSystemDisk         `json:"SystemDisk,omitempty" xml:"SystemDisk,omitempty" type:"Struct"`
-	// Specifies whether the instance on a dedicated host is associated with the dedicated host. Valid values:
+	// Specifies whether the instance is associated with a dedicated host. Valid values:
 	//
-	// - default: The instance is not associated with the dedicated host. If an instance in economical mode is stopped and then started, and the available resources on the original dedicated host are insufficient, the instance is placed on another dedicated host in the automatic deployment resource pool.
+	// - default: The instance is not associated with a dedicated host. If an instance with economical mode enabled is stopped and then started, and the original dedicated host has insufficient available resources, the instance is placed on another dedicated host in the automatic deployment resource pool.
 	//
-	// - host: The instance is associated with the dedicated host. If an instance in economical mode is stopped and then started, it is still placed on the original dedicated host. If the available resources on the original dedicated host are insufficient, the instance fails to restart.
+	// - host: The instance is associated with a dedicated host. If an instance with economical mode enabled is stopped and then started, it remains on the original dedicated host. If the original dedicated host has insufficient available resources, the instance fails to start.
 	//
 	// Default value: default.
 	//
@@ -190,17 +190,17 @@ type RunInstancesRequest struct {
 	Affinity *string `json:"Affinity,omitempty" xml:"Affinity,omitempty"`
 	// The number of ECS instances to create. Valid values: 1 to 100.
 	//
-	// The number of successfully created ECS instances depends on the specified Amount and minAmount values:
+	// The number of successfully created ECS instances depends on the specified Amount and minAmount:
 	//
-	// - If minAmount is not specified: The system creates instances based on the Amount value. If the inventory is insufficient, the API returns a creation failure, and no instances are created.
+	// - When minAmount is not specified: Instances are created based on the Amount value. If the inventory is insufficient, the API returns a creation failure, and no instances are created.
 	//
-	// - If minAmount is specified:
+	// - When minAmount is specified:
 	//
-	//   - If the ECS inventory is less than minAmount: No ECS instances are created, and the API returns a creation failure.
+	//   - If the ECS inventory < minAmount: No ECS instances are created, and the API returns a creation failure.
 	//
-	//   - If minAmount is less than or equal to the ECS inventory and the ECS inventory is less than Amount: Instances are created based on the inventory, and the API returns a creation success.
+	//   - If minAmount ≤ ECS inventory < Amount: Instances are created based on the inventory, and the API returns a creation success.
 	//
-	//   - If the ECS inventory is greater than or equal to Amount: Instances are created based on the specified Amount, and the API returns a creation success.
+	//   - If the ECS inventory ≥ Amount: Instances are created based on the specified Amount, and the API returns a creation success.
 	//
 	// Default value: 1.
 	//
@@ -210,15 +210,15 @@ type RunInstancesRequest struct {
 	Amount *int32 `json:"Amount,omitempty" xml:"Amount,omitempty"`
 	// > This parameter is not available.
 	Arn []*RunInstancesRequestArn `json:"Arn,omitempty" xml:"Arn,omitempty" type:"Repeated"`
-	// Specifies whether to automatically pay for the instance when you create it. Valid values:
+	// Specifies whether to automatically pay for the instance when you create the instance. Valid values:
 	//
-	// - true: Automatic payment is enabled.
+	// - true: Automatically pays for the instance.
 	//
-	//     > If you enable automatic payment, make sure that your payment method has sufficient balance. Otherwise, an abnormal order is generated and can only be canceled. If your payment method has insufficient balance, you can set the `AutoPay` parameter to false. In this case, an unpaid order is generated, and you can log on to the ECS console to pay for the order.
+	//     > If you set this parameter to true, make sure that automatic payment method has sufficient balance. Otherwise, an abnormal order is generated and can only be canceled. If automatic payment method has insufficient balance, you can set AutoPay to false. In this case, an unpaid order is generated, and you can log on to the ECS console to pay for the order.
 	//
-	// - false: Only an order is generated, and no fee is deducted.
+	// - false: Generates an order without deducting fees.
 	//
-	//     > If `InstanceChargeType` is set to `PostPaid`, you cannot set `AutoPay` to false.
+	//     > If InstanceChargeType is set to PostPaid, you cannot set AutoPay to false.
 	//
 	// Default value: true.
 	//
@@ -228,11 +228,11 @@ type RunInstancesRequest struct {
 	AutoPay *bool `json:"AutoPay,omitempty" xml:"AutoPay,omitempty"`
 	// The automatic release time of the pay-as-you-go instance. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
 	//
-	// - If the seconds (ss) value is not 00, the release time is automatically rounded down to the current minute (mm).
+	// - If the seconds (ss) value is not 00, it is automatically set to the start of the current minute (mm).
 	//
-	// - The earliest release time is half an hour after the current time.
+	// - The minimum release time is half an hour after the current time.
 	//
-	// - The latest release time cannot be more than three years after the current time.
+	// - The maximum release time cannot exceed three years from the current time.
 	//
 	// [ISO 8601](https://help.aliyun.com/document_detail/25696.html)
 	//
@@ -240,11 +240,11 @@ type RunInstancesRequest struct {
 	//
 	// 2018-01-01T12:05:00Z
 	AutoReleaseTime *string `json:"AutoReleaseTime,omitempty" xml:"AutoReleaseTime,omitempty"`
-	// Specifies whether to enable auto-renewal. This parameter takes effect only when the InstanceChargeType parameter is set to PrePaid. Valid values:
+	// Specifies whether to enable auto-renewal. This parameter takes effect only when InstanceChargeType is set to PrePaid. Valid values:
 	//
-	// - true: Enables auto-renewal.
+	// - true: enables auto-renewal.
 	//
-	// - false: Disables auto-renewal.
+	// - false: disables auto-renewal.
 	//
 	// Default value: false.
 	//
@@ -252,7 +252,7 @@ type RunInstancesRequest struct {
 	//
 	// true
 	AutoRenew *bool `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
-	// The auto-renewal duration. Valid values:
+	// The auto-renewal period. Valid values:
 	//
 	//
 	//
@@ -272,53 +272,53 @@ type RunInstancesRequest struct {
 	//
 	// 1
 	AutoRenewPeriod *int32 `json:"AutoRenewPeriod,omitempty" xml:"AutoRenewPeriod,omitempty"`
-	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The **ClientToken*	- value can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [Ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must ensure that it is unique among different requests. The ClientToken value can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
 	//
 	// example:
 	//
 	// 123e4567-e89b-12d3-a456-426655440000
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// The clock attribute parameters of the instance.
+	// The clock configurations of the instance.
 	ClockOptions *RunInstancesRequestClockOptions `json:"ClockOptions,omitempty" xml:"ClockOptions,omitempty" type:"Struct"`
 	// The performance mode of the burstable instance. Valid values:
 	//
-	// - Standard: standard mode. For more information about the instance performance, see the "Standard mode" section in [Overview of burstable instances](https://help.aliyun.com/document_detail/59977.html).
+	// - Standard: standard mode. For more information about instance performance, see the "Standard mode" section in [Overview of burstable instances](https://help.aliyun.com/document_detail/59977.html).
 	//
-	// - Unlimited: unlimited mode. For more information about the instance performance, see the "Unlimited mode" section in [Overview of burstable instances](https://help.aliyun.com/document_detail/59977.html).
+	// - Unlimited: unlimited mode. For more information about instance performance, see the "Unlimited mode" section in [Overview of burstable instances](https://help.aliyun.com/document_detail/59977.html).
 	//
 	// example:
 	//
 	// Standard
 	CreditSpecification *string `json:"CreditSpecification,omitempty" xml:"CreditSpecification,omitempty"`
-	// The list of data cloud disk information.
+	// The data disk configurations.
 	DataDisk []*RunInstancesRequestDataDisk `json:"DataDisk,omitempty" xml:"DataDisk,omitempty" type:"Repeated"`
-	// The ID of the dedicated host.
+	// The dedicated host ID.
 	//
-	// <props="china">You can call [DescribeDedicatedHosts](https://help.aliyun.com/document_detail/134242.html) to query the list of dedicated host IDs.
+	// <props="china">You can invoke [DescribeDedicatedHosts](https://help.aliyun.com/document_detail/134242.html) to query the dedicated host ID list.
 	//
-	// <props="intl">You can call [DescribeDedicatedHosts](https://help.aliyun.com/document_detail/134242.html) to query the list of dedicated host IDs.
+	// <props="intl">You can invoke [DescribeDedicatedHosts](https://help.aliyun.com/document_detail/134242.html) to query the dedicated host ID list.
 	//
-	// 	Notice: Dedicated hosts do not support the creation of spot instances. After you specify the DedicatedHostId parameter, the SpotStrategy and SpotPriceLimit settings in the request are automatically ignored.</notice>
+	// 	Notice: Dedicated hosts do not support the creation of spot instance. After you specify the `DedicatedHostId` parameter, the `SpotStrategy` and `SpotPriceLimit` Settings in the request are automatically ignored.</notice>
 	//
 	// example:
 	//
 	// dh-bp67acfmxazb4p****
 	DedicatedHostId *string `json:"DedicatedHostId,omitempty" xml:"DedicatedHostId,omitempty"`
-	// The release protection attribute of the instance. It specifies whether the instance can be released through the console or API ([DeleteInstance](https://help.aliyun.com/document_detail/25507.html)). Valid values:
+	// The release protection property of the instance. It specifies whether the instance can be released through the console or API ([DeleteInstance](https://help.aliyun.com/document_detail/25507.html)). Valid values:
 	//
-	// - true: Enables release protection for the instance.
+	// -  true: enables release protection.
 	//
-	// - false: Disables release protection for the instance.
+	// -  false: disables release protection.
 	//
 	// Default value: false.
 	//
-	// > This attribute applies only to pay-as-you-go instances and restricts only manual release operations. It does not take effect on system release operations.
+	// > This property applies only to pay-as-you-go instances and can only restrict manual release operations. It does not take effect on system release operations.
 	//
 	// example:
 	//
 	// false
 	DeletionProtection *bool `json:"DeletionProtection,omitempty" xml:"DeletionProtection,omitempty"`
-	// The group number of the instance in the deployment set. You can specify this parameter if the deployment set uses the high availability group strategy (AvailabilityGroup). Valid values: 1 to 7.
+	// The group number of the instance in the deployment set. If the deployment set policy is set to AvailabilityGroup, you can use this parameter to specify the group number. Valid values: 1 to 7.
 	//
 	// example:
 	//
@@ -336,11 +336,11 @@ type RunInstancesRequest struct {
 	//
 	// Instance_Description
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// Specifies whether to pre-check the request. Valid values:
+	// Specifies whether to perform only a dry run on the request. Valid values:
 	//
-	// -  true: Sends a check request. No instances are created. The system checks whether required parameters are specified, the request format, service limits, and ECS inventory. If the check fails, the corresponding error is returned. If the check succeeds, the DryRunOperation error code is returned.
+	// -  true: performs a dry run and does not create the instance. Check items include whether required parameters are specified, the request format, service limits, and ECS inventory. If the check fails, the corresponding error is returned. If the check succeeds, the DryRunOperation error code is returned.
 	//
-	// -  false (default): Sends a normal request. Instances are created directly after the check succeeds.
+	// -  false (default): performs a normal request and creates the instance directly after the check succeeds.
 	//
 	// example:
 	//
@@ -348,21 +348,21 @@ type RunInstancesRequest struct {
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	// The hostname of the instance. Limits:
 	//
-	// - The hostname cannot start or end with a period (.) or a hyphen (-), and cannot contain consecutive periods (.) or hyphens (-).
+	// - Periods (.) and hyphens (-) cannot be used as the first or last character, and cannot be used consecutively.
 	//
-	// - For Windows instances: The hostname must be 2 to 15 characters in length. It cannot contain periods (.) and cannot contain only digits. It can contain uppercase and lowercase letters, digits, and hyphens (-).
+	// - Windows instances: The name must be 2 to 15 characters in length. It cannot contain periods (.) or contain only digits. It can contain uppercase and lowercase letters, digits, and hyphens (-).
 	//
-	// - For other operating systems such as Linux:
+	// - Other instances (such as Linux instances):
 	//
-	//     - The hostname must be 2 to 64 characters in length. It can contain multiple periods (.). The string between two consecutive periods is a segment, which can contain uppercase and lowercase letters, digits, and hyphens (-).
+	//     - The name must be 2 to 64 characters in length. It can contain multiple periods (.). The string between two periods is a segment, which can contain uppercase and lowercase letters, digits, and hyphens (-).
 	//
-	//     - You can use the ${instance_id} placeholder to write the instance ID into the HostName parameter. For example, if HostName is set to k8s-${instance_id} and the created ECS instance ID is i-123abc****, the hostname of the instance is k8s-i-123abc****.
+	//     - You can use the ${instance_id} placeholder to write the instance ID into the HostName parameter. For example, if HostName=k8s-${instance_id} and the created ECS instance ID is i-123abc****, the hostname of the instance is k8s-i-123abc****.
 	//
 	// When you create multiple ECS instances, you can:
 	//
 	// - Specify sequential hostnames in batches. For more information, see [Specify sequential instance names or hostnames](https://help.aliyun.com/document_detail/196048.html).
 	//
-	// - Use the HostNames.N parameter to specify hostnames for multiple instances separately. Note that you cannot specify both HostName and HostNames.N at the same time.
+	// - Specify hostnames for multiple instances separately by using the HostNames.N parameter. Note that you cannot specify both HostName and HostNames.N.
 	//
 	// example:
 	//
@@ -376,7 +376,7 @@ type RunInstancesRequest struct {
 	HostNames []*string `json:"HostNames,omitempty" xml:"HostNames,omitempty" type:"Repeated"`
 	// The ID of the HPC cluster to which the instance belongs.
 	//
-	// This parameter is required when you create an SCC instance. You can call the [CreateHpcCluster](https://help.aliyun.com/document_detail/109138.html) operation to create an HPC cluster.
+	// This parameter is required when you create an SCC instance. You can call [CreateHpcCluster](https://help.aliyun.com/document_detail/109138.html) to create an HPC cluster.
 	//
 	// example:
 	//
@@ -384,9 +384,9 @@ type RunInstancesRequest struct {
 	HpcClusterId *string `json:"HpcClusterId,omitempty" xml:"HpcClusterId,omitempty"`
 	// Specifies whether to enable the access channel for instance metadata. Valid values:
 	//
-	// - enabled: Enables the access channel.
+	// - enabled: enables the access channel.
 	//
-	// - disabled: Disables the access channel.
+	// - disabled: disables the access channel.
 	//
 	// Default value: enabled.
 	//
@@ -402,21 +402,21 @@ type RunInstancesRequest struct {
 	//
 	// 0
 	HttpPutResponseHopLimit *int32 `json:"HttpPutResponseHopLimit,omitempty" xml:"HttpPutResponseHopLimit,omitempty"`
-	// Specifies whether to forcibly use the security hardening mode (IMDSv2) when accessing instance metadata. Valid values:
+	// Specifies whether to forcibly use the security hardening mode (IMDSv2) when you access instance metadata. Valid values:
 	//
-	// - optional: Does not forcibly use the security hardening mode.
+	// - optional: does not forcibly use the security hardening mode.
 	//
-	// - required: Forcibly uses the security hardening mode. After this value is set, instance metadata cannot be accessed in normal mode.
+	// - required: forcibly uses the security hardening mode. After this value is set, instance metadata cannot be accessed in normal mode.
 	//
 	// Default value: optional.
 	//
-	// > For more information about the modes for accessing instance metadata, see [Instance metadata access modes](https://help.aliyun.com/document_detail/150575.html).
+	// > For more information about the modes for accessing instance metadata, see [Access modes of instance metadata](https://help.aliyun.com/document_detail/150575.html).
 	//
 	// example:
 	//
 	// optional
 	HttpTokens *string `json:"HttpTokens,omitempty" xml:"HttpTokens,omitempty"`
-	// The name of the image family. You can set this parameter to use the latest available image in the specified image family to create the instance.
+	// The image family name. Set this parameter to use the latest available image in the specified image family to create the instance.
 	//
 	// The name must be 2 to 128 characters in length. It cannot start with a special character, digit, http://, or https://. It can contain only the following special characters: periods (.), underscores (_), hyphens (-), and colons (:).
 	//
@@ -436,13 +436,13 @@ type RunInstancesRequest struct {
 	//
 	// hangzhou-daily-update
 	ImageFamily *string `json:"ImageFamily,omitempty" xml:"ImageFamily,omitempty"`
-	// The image ID. This parameter specifies the image resource used to start the instance. You can call the [DescribeImages](https://help.aliyun.com/document_detail/25534.html) operation to query available image resources. If you do not specify LaunchTemplateId or LaunchTemplateName to determine a launch template, and you do not specify ImageFamily to use the latest available image in an image family, ImageId is required.
+	// The image ID. The image resource selected when the instance is started. You can call [DescribeImages](https://help.aliyun.com/document_detail/25534.html) to query available image resources. If you do not specify LaunchTemplateId or LaunchTemplateName to determine a launch template, and do not specify ImageFamily to use the latest available image in an image family, ImageId is required.
 	//
 	// example:
 	//
 	// aliyun_2_1903_x64_20G_alibase_20200324.vhd
 	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
-	// The image attribute information.
+	// The image configurations.
 	ImageOptions *RunInstancesRequestImageOptions `json:"ImageOptions,omitempty" xml:"ImageOptions,omitempty" type:"Struct"`
 	// The billing method of the instance. Valid values:
 	//
@@ -452,9 +452,9 @@ type RunInstancesRequest struct {
 	//
 	// Default value: PostPaid.
 	//
-	// <props="china">If you select subscription, you must ensure that your account supports balance payment or credit payment. Otherwise, an InvalidPayMethod error is returned.
+	// <props="china">When you select subscription, you must ensure that your account supports balance payment or credit payment. Otherwise, an InvalidPayMethod error is returned.
 	//
-	// <props="intl">If you select subscription, you must ensure that your account supports credit payment. Otherwise, an InvalidPayMethod error is returned.
+	// <props="intl">When you select subscription, you must ensure that your account supports credit payment. Otherwise, an InvalidPayMethod error is returned.
 	//
 	// example:
 	//
@@ -462,17 +462,17 @@ type RunInstancesRequest struct {
 	InstanceChargeType *string `json:"InstanceChargeType,omitempty" xml:"InstanceChargeType,omitempty"`
 	// The instance name. The name must be 2 to 128 characters in length. It can contain letters and digits in Unicode, and can include colons (:), underscores (_), periods (.), and hyphens (-). The default value is the InstanceId of the instance.
 	//
-	// When you create multiple ECS instances, you can specify sequential instance names in batches. The names can contain square brackets ([]) and commas (,). For more information, see [Specify sequential instance names or hostnames](https://help.aliyun.com/document_detail/196048.html).
+	// When you create multiple ECS instances, you can specify sequential instance names in batches, which can include square brackets ([]) and commas (,). For more information, see [Specify sequential instance names or hostnames](https://help.aliyun.com/document_detail/196048.html).
 	//
 	// example:
 	//
 	// k8s-node-[1,4]-alibabacloud
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	// The instance type. If you do not specify LaunchTemplateId or LaunchTemplateName to determine a launch template, InstanceType is a required parameter.
+	// The instance type. If you do not specify `LaunchTemplateId` or `LaunchTemplateName` to determine a launch template, `InstanceType` is a required parameter.
 	//
-	// - Instance type selection: For more information about the performance data of the target instance type, see [instance family](https://help.aliyun.com/document_detail/25378.html) or call [DescribeInstanceTypes](https://help.aliyun.com/document_detail/25620.html). For more information about how to select an instance type, see [Best practices for instance type selection](https://help.aliyun.com/document_detail/58291.html).
+	// - Instance type selection: See [instance family](https://help.aliyun.com/document_detail/25378.html) or invoke [DescribeInstanceTypes](https://help.aliyun.com/document_detail/25620.html) to view the performance data of the target instance type, or see [Best practices for instance type selection](https://help.aliyun.com/document_detail/58291.html) to learn how to select an instance type.
 	//
-	// - Inventory query: Call [DescribeAvailableResource](https://help.aliyun.com/document_detail/66186.html) to view the active resources in a specified region or zone.
+	// - Inventory query: invoke [DescribeAvailableResource](https://help.aliyun.com/document_detail/66186.html) to view the active resource supply in a specific region or zone.
 	//
 	// example:
 	//
@@ -486,7 +486,7 @@ type RunInstancesRequest struct {
 	//
 	// Default value: PayByTraffic.
 	//
-	// > In **pay-by-traffic*	- mode, the peak inbound and outbound bandwidths are upper limits and are not guaranteed service level indicators. During resource contention, the peak bandwidths may be limited. If your business requires guaranteed bandwidth, use the **pay-by-bandwidth*	- mode.
+	// > In **pay-by-traffic*	- mode, the peak inbound and outbound bandwidths are bandwidth upper limits and are not guaranteed service level indicators. When resource contention occurs, the peak bandwidth may be limited. If your business requires guaranteed bandwidth, use the **pay-by-bandwidth*	- mode.
 	//
 	// example:
 	//
@@ -494,9 +494,9 @@ type RunInstancesRequest struct {
 	InternetChargeType *string `json:"InternetChargeType,omitempty" xml:"InternetChargeType,omitempty"`
 	// The maximum inbound public bandwidth. Unit: Mbit/s. Valid values:
 	//
-	// - If the purchased outbound public bandwidth is less than or equal to 10 Mbit/s: 1 to 10. Default value: 10.
+	// - When the purchased outbound public bandwidth is less than or equal to 10 Mbit/s: 1 to 10. Default value: 10.
 	//
-	// - If the purchased outbound public bandwidth is greater than 10 Mbit/s: 1 to the value of InternetMaxBandwidthOut. Default value: the value of InternetMaxBandwidthOut.
+	// - When the purchased outbound public bandwidth is greater than 10 Mbit/s: 1 to the value of InternetMaxBandwidthOut. Default value: the value of InternetMaxBandwidthOut.
 	//
 	// example:
 	//
@@ -510,25 +510,25 @@ type RunInstancesRequest struct {
 	//
 	// 10
 	InternetMaxBandwidthOut *int32 `json:"InternetMaxBandwidthOut,omitempty" xml:"InternetMaxBandwidthOut,omitempty"`
-	// Specifies whether the instance is an I/O optimized instance. The default value is none for [retired instance types](https://help.aliyun.com/document_detail/55263.html) and optimized for other instance types. Valid values:
+	// Specifies whether the instance is an I/O optimized instance. For [retired instance types](https://help.aliyun.com/document_detail/55263.html), the default value is none. For other instance types, the default value is optimization. Valid values:
 	//
-	// - none: The instance is not I/O optimized.
+	// - none: The instance is not I/O optimization.
 	//
-	// - optimized: The instance is I/O optimized.
+	// - optimized: The instance is I/O optimization.
 	//
 	// example:
 	//
 	// optimized
 	IoOptimized *string `json:"IoOptimized,omitempty" xml:"IoOptimized,omitempty"`
-	// Specifies one or more IPv6 addresses for the primary ENI. You can specify up to 10 IPv6 addresses. Valid values of N: 1 to 10.
+	// The IPv6 addresses that are assigned to the primary ENI. You can specify up to 10 IPv6 addresses. Valid values of N: 1 to 10.
 	//
-	// Example: `Ipv6Address.1=2001:db8:1234:1a00::***`.
+	// Example: Ipv6Address.1=2001:db8:1234:1a00::***.
 	//
 	// Note:
 	//
-	// - If you specify `Ipv6Address.N`, the value of the `Amount` parameter can only be 1, and you cannot specify `Ipv6AddressCount` at the same time.
+	// - If you specify Ipv6Address.N, the value of Amount can only be 1, and you cannot specify Ipv6AddressCount at the same time.
 	//
-	// - If `NetworkInterface.N.InstanceType` is set to `Primary`, you cannot specify `Ipv6Addresses.N` or `Ipv6AddressCount`. Instead, you must specify `NetworkInterface.N.Ipv6Addresses.N` or `NetworkInterface.N.Ipv6AddressCount`.
+	// - If NetworkInterface.N.InstanceType is set to Primary, you cannot specify Ipv6Addresses.N or Ipv6AddressCount. Instead, you must specify NetworkInterface.N.Ipv6Addresses.N or NetworkInterface.N.Ipv6AddressCount.
 	//
 	// example:
 	//
@@ -548,13 +548,13 @@ type RunInstancesRequest struct {
 	//
 	// 1
 	Ipv6AddressCount *int32 `json:"Ipv6AddressCount,omitempty" xml:"Ipv6AddressCount,omitempty"`
-	// > This parameter is in invitational preview and is not available for public use.
+	// >This parameter is in invitational preview and is not available for public use.
 	//
 	// example:
 	//
 	// null
 	Isp *string `json:"Isp,omitempty" xml:"Isp,omitempty"`
-	// The name of the key pair.
+	// The key pair name.
 	//
 	// >For Windows instances, this parameter is ignored. The default value is empty. Even if this parameter is specified, only the Password parameter takes effect.
 	//
@@ -562,7 +562,7 @@ type RunInstancesRequest struct {
 	//
 	// KeyPair_Name
 	KeyPairName *string `json:"KeyPairName,omitempty" xml:"KeyPairName,omitempty"`
-	// The ID of the launch template. For more information, call the [DescribeLaunchTemplates](https://help.aliyun.com/document_detail/73759.html) operation.
+	// The launch template ID. For more information, call [DescribeLaunchTemplates](https://help.aliyun.com/document_detail/73759.html).
 	//
 	// When you use a launch template to create an instance, you must specify LaunchTemplateId or LaunchTemplateName to determine the launch template.
 	//
@@ -570,7 +570,7 @@ type RunInstancesRequest struct {
 	//
 	// lt-bp1apo0bbbkuy0rj****
 	LaunchTemplateId *string `json:"LaunchTemplateId,omitempty" xml:"LaunchTemplateId,omitempty"`
-	// The name of the launch template.
+	// The launch template name.
 	//
 	// When you use a launch template to create an instance, you must specify LaunchTemplateId or LaunchTemplateName to determine the launch template.
 	//
@@ -578,7 +578,7 @@ type RunInstancesRequest struct {
 	//
 	// LaunchTemplate_Name
 	LaunchTemplateName *string `json:"LaunchTemplateName,omitempty" xml:"LaunchTemplateName,omitempty"`
-	// The version of the launch template. If you specify LaunchTemplateId or LaunchTemplateName but do not specify the launch template version, the default version is used.
+	// The launch template version. If you specify LaunchTemplateId or LaunchTemplateName but do not specify the launch template version, the default version is used.
 	//
 	// example:
 	//
@@ -590,25 +590,25 @@ type RunInstancesRequest struct {
 	//
 	// mh-f2d3647ca21****
 	ManagedHostId *string `json:"ManagedHostId,omitempty" xml:"ManagedHostId,omitempty"`
-	// The minimum quantity of ECS instances to create. Valid values: 1 to 100.
+	// The minimum Quantity of ECS instances to purchase. Valid values: 1 to 100.
 	//
-	// The number of created ECS instances depends on the specified Amount and MinAmount values:
+	// The number of successfully created ECS instances depends on the specified Amount and minAmount:
 	//
-	// - If MinAmount is not specified: Instances are created based on the Amount value. If the inventory is insufficient, the API returns a creation failure, and no instances are created.
+	// - When minAmount is not specified: Instances are created based on the Amount value. If the inventory is insufficient, the API returns a creation failed, and no instances are created.
 	//
-	// - If MinAmount is specified:
+	// - When minAmount is specified:
 	//
-	//   - If the ECS inventory is less than MinAmount: No ECS instances are created, and the API returns a creation failure.
+	//   - If the ECS inventory < minAmount: No ECS instances are created, and the API returns a creation failed.
 	//
-	//   - If MinAmount is less than or equal to the ECS inventory and the ECS inventory is less than Amount: Instances are created based on the inventory, and the API returns a creation success.
+	//   - If minAmount ≤ ECS inventory < Amount: Instances are created based on the inventory, and the API returns a creation success.
 	//
-	//   - If the ECS inventory is greater than or equal to Amount: Instances are created based on the specified Amount value, and the API returns a creation success.
+	//   - If the ECS inventory ≥ Amount: Instances are created based on the specified Amount, and the API returns a creation success.
 	//
 	// example:
 	//
 	// 2
 	MinAmount *int32 `json:"MinAmount,omitempty" xml:"MinAmount,omitempty"`
-	// The elastic network interface (ENI) information.
+	// The ENI information.
 	NetworkInterface []*RunInstancesRequestNetworkInterface `json:"NetworkInterface,omitempty" xml:"NetworkInterface,omitempty" type:"Repeated"`
 	// The number of queues for the primary ENI. Take note of the following items:
 	//
@@ -616,13 +616,13 @@ type RunInstancesRequest struct {
 	//
 	// - The total number of queues for all ENIs of the instance cannot exceed the total queue quota allowed by the instance type. You can call the [DescribeInstanceTypes](https://help.aliyun.com/document_detail/25620.html) operation to query the MaximumQueueNumberPerEni and TotalEniQueueQuantity fields for the maximum number of queues per ENI and the total quota of the instance type.
 	//
-	// - If NetworkInterface.N.InstanceType is set to Primary, you cannot set NetworkInterfaceQueueNumber. You can only set NetworkInterface.N.QueueNumber.
+	// - If NetworkInterface.N.InstanceType is set to Primary, you cannot specify NetworkInterfaceQueueNumber. You can only specify NetworkInterface.N.QueueNumber.
 	//
 	// example:
 	//
 	// 8
 	NetworkInterfaceQueueNumber *int32 `json:"NetworkInterfaceQueueNumber,omitempty" xml:"NetworkInterfaceQueueNumber,omitempty"`
-	// The network attribute parameters.
+	// The network configurations.
 	NetworkOptions *RunInstancesRequestNetworkOptions `json:"NetworkOptions,omitempty" xml:"NetworkOptions,omitempty" type:"Struct"`
 	OwnerAccount   *string                            `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId        *int64                             `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
@@ -636,7 +636,7 @@ type RunInstancesRequest struct {
 	//
 	// For Windows instances, the password cannot start with a forward slash (/).
 	//
-	// > If you specify the Password parameter, send the request over HTTPS to prevent password leaks.
+	// > If you specify the Password parameter, we recommend that you send the request over HTTPS to prevent password leaks.
 	//
 	// example:
 	//
@@ -650,13 +650,13 @@ type RunInstancesRequest struct {
 	//
 	// Default value: false.
 	//
-	// > If you specify this parameter, the Password parameter must be left empty. Make sure that the image you use has a preset password.
+	// > When you use this parameter, the Password parameter must be empty, and you must ensure that the image you use has a password configured.
 	//
 	// example:
 	//
 	// false
 	PasswordInherit *bool `json:"PasswordInherit,omitempty" xml:"PasswordInherit,omitempty"`
-	// The subscription duration of the resource. The unit is specified by PeriodUnit. This parameter takes effect and is required only when the InstanceChargeType parameter is set to PrePaid. If DedicatedHostId is specified, the subscription duration cannot exceed the subscription duration of the dedicated host. Valid values:
+	// The subscription period of the resource. The unit is specified by PeriodUnit. This parameter takes effect and is required only when InstanceChargeType is set to PrePaid. If DedicatedHostId is specified, the value cannot exceed the subscription period of the dedicated host. Valid values:
 	//
 	// <props="china">
 	//
@@ -672,7 +672,7 @@ type RunInstancesRequest struct {
 	//
 	// 1
 	Period *int32 `json:"Period,omitempty" xml:"Period,omitempty"`
-	// The time unit for the subscription billing method. Valid values:
+	// The billing unit of the subscription billing method. Valid values:
 	//
 	// <props="china">
 	//
@@ -688,10 +688,10 @@ type RunInstancesRequest struct {
 	//
 	// Month
 	PeriodUnit *string `json:"PeriodUnit,omitempty" xml:"PeriodUnit,omitempty"`
-	// The private domain name configuration information of the instance.
+	// The private DNS name configurations of the instance.
 	//
 	//
-	// For more information about private private domain resolution, see [Private private domain resolution for ECS](https://help.aliyun.com/document_detail/2844797.html).
+	// For more information about private Private domain resolution, see [Private Private domain resolution for ECS](https://help.aliyun.com/document_detail/2844797.html).
 	PrivateDnsNameOptions *RunInstancesRequestPrivateDnsNameOptions `json:"PrivateDnsNameOptions,omitempty" xml:"PrivateDnsNameOptions,omitempty" type:"Struct"`
 	// The private IP address of the instance. When you specify system reserved IP address for a VPC-type ECS instance, the IP address must be selected from the idle CIDR block of the vSwitch (VSwitchId).
 	//
@@ -699,21 +699,21 @@ type RunInstancesRequest struct {
 	//
 	// - After PrivateIpAddress is specified:
 	//
-	//     - If the Amount parameter is set to 1, system reserved IP address is assigned to the single ECS instance created.
+	//     - If the Amount parameter is set to 1, it indicates that system reserved IP address is assigned to the single ECS instance being created.
 	//
-	//     - If the Amount parameter is greater than 1, consecutive private IP addresses starting from the specified private IP address are assigned to the multiple ECS instances created in batches. Note that in this case, you cannot bind secondary ENIs to the instances (that is, you cannot specify parameters such as NetworkInterface.N.*).
+	//     - If the Amount parameter is set to a value greater than 1, it indicates that when multiple ECS instances are created in batches, consecutive private IP addresses starting from the specified private IP address are assigned to the instances. Note that in this case, you cannot bind secondary ENIs to the instances (that is, you cannot specify parameters like NetworkInterface.N.*).
 	//
 	// -  If NetworkInterface.N.InstanceType is set to Primary, you cannot specify PrivateIpAddress. You can only specify NetworkInterface.N.PrimaryIpAddress.
 	//
 	// >The first and the last three IP addresses of each vSwitch are reserved by the system and cannot be specified.
 	//
-	// For example, if the CIDR block of the vSwitch is 192.168.1.0/24, the four IP addresses 192.168.1.0, 192.168.1.253, 192.168.1.254, and 192.168.1.255 are reserved by the system.
+	// For example, if the vSwitch CIDR block is 192.168.1.0/24, the four IP addresses 192.168.1.0, 192.168.1.253, 192.168.1.254, and 192.168.1.255 are reserved by the system.
 	//
 	// example:
 	//
 	// ``10.1.**.**``
 	PrivateIpAddress *string `json:"PrivateIpAddress,omitempty" xml:"PrivateIpAddress,omitempty"`
-	// The name of the instance RAM role. You can use the RAM API operation [ListRoles](https://help.aliyun.com/document_detail/28713.html) to query the instance RAM roles that you have created.
+	// The instance RAM role name. You can use the RAM API [ListRoles](https://help.aliyun.com/document_detail/28713.html) to query the instance RAM roles you have created.
 	//
 	// example:
 	//
@@ -737,21 +737,21 @@ type RunInstancesRequest struct {
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	// Specifies whether to enable security hardening. Valid values:
 	//
-	// - Active: Enables security hardening. This value takes effect only for public images.
+	// - Active: enables security hardening. This value takes effect only for public images.
 	//
-	// - Deactive: Disables security hardening. This value takes effect for all image types.
+	// - Deactive: disables security hardening. This value takes effect for all image types.
 	//
 	// example:
 	//
 	// Active
 	SecurityEnhancementStrategy *string `json:"SecurityEnhancementStrategy,omitempty" xml:"SecurityEnhancementStrategy,omitempty"`
-	// The ID of the security group to which the new instance belongs. Instances in the same security group can communicate with each other. The maximum number of instances that a security group can contain depends on the security group type. For more information, see the "Security group limits" section in [Limits](~~25412#SecurityGroupQuota~~).
+	// The ID of the security group to which the new instance belongs. Instances in the same security group can access each other. The maximum number of instances that a security group can contain depends on the security group type. For more information, see the "Security group limits" section in [Limits](~~25412#SecurityGroupQuota~~).
 	//
-	// > SecurityGroupId determines the network type of the instance. For example, if the network type of the specified security group is VPC, the instance is a VPC-type instance, and you must also specify the VSwitchId parameter.
+	// > SecurityGroupId determines the network type of the instance. For example, if the network type of the specified security group is VPC, the instance is a VPC-type instance and the VSwitchId parameter must be specified.
 	//
 	// If you do not specify LaunchTemplateId or LaunchTemplateName to determine a launch template, the security group ID is required. Take note of the following items:
 	//
-	// - You can specify one security group by using SecurityGroupId, or specify one or more security groups by using SecurityGroupIds.N. However, you cannot specify both SecurityGroupId and SecurityGroupIds.N at the same time.
+	// - You can specify one security group by using SecurityGroupId, or specify one or more security groups by using SecurityGroupIds.N. However, you cannot specify both SecurityGroupId and SecurityGroupIds.N.
 	//
 	// - If NetworkInterface.N.InstanceType is set to Primary, you cannot specify SecurityGroupId or SecurityGroupIds.N. You can only specify NetworkInterface.N.SecurityGroupId or NetworkInterface.N.SecurityGroupIds.N.
 	//
@@ -773,31 +773,31 @@ type RunInstancesRequest struct {
 	SecurityGroupIds []*string `json:"SecurityGroupIds,omitempty" xml:"SecurityGroupIds,omitempty" type:"Repeated"`
 	// The protection period of the spot instance. Unit: hours. Valid values:
 	//
-	// - 1: Alibaba Cloud guarantees that the instance runs for 1 hour after creation and is not automatically released. After 1 hour, the system compares the bid price with the marketplace price and checks the resource inventory in real time to determine whether to retain or release the instance.
+	// - 1: After the spot instance is created, Alibaba Cloud guarantees that the spot instance will not be automatic release within 1 hour. After 1 hour, the system compares the bid price with the marketplace price and checks the resource inventory in real-time to determine whether to retain or revoke the spot instance.
 	//
-	// - 0: Alibaba Cloud does not guarantee the runtime of the instance after creation. The system compares the bid price with the marketplace price and checks the resource inventory in real time to determine whether to retain or release the instance.
+	// - 0: After the spot instance is created, Alibaba Cloud does not guarantee the runtime of the spot instance. The system compares the bid price with the marketplace price and checks the resource inventory in real-time to determine whether to retain or revoke the spot instance.
 	//
 	// Default value: 1.
 	//
 	// >
 	//
-	// > - This parameter can only be set to 0 or 1.
+	// > - This parameter currently only supports 0 or 1.
 	//
-	// > - Spot instances are billed by the second. We recommend that you select an appropriate protection period based on the execution duration of your specific task.
+	// > - Preemptible instances are billing by the second. We recommend that you select an appropriate protection period based on the execution duration of your specific node.
 	//
-	// > - Alibaba Cloud sends you a notification through an ECS system event 5 minutes before the instance is released.
+	// > - Alibaba Cloud sends a notification through an ECS system event 5 minutes before the spot instance is reclaimed.
 	//
 	// example:
 	//
 	// 1
 	SpotDuration *int32 `json:"SpotDuration,omitempty" xml:"SpotDuration,omitempty"`
-	// The break mode of the spot instance. Valid values:
+	// The break mode of the preemptible instance. Valid values:
 	//
-	// - Terminate: Releases the instance.
+	// - Terminate: releases the instance.
 	//
-	// - Stop: Puts the instance into economical mode.
+	// - Stop: puts the instance into economical mode.
 	//
-	//   For more information about economical mode, see [Economical mode for pay-as-you-go instances](https://help.aliyun.com/document_detail/63353.html).
+	//   For more information about economical mode, see [economical mode for pay-as-you-go instances](https://help.aliyun.com/document_detail/63353.html).
 	//
 	// Default value: Terminate.
 	//
@@ -805,19 +805,19 @@ type RunInstancesRequest struct {
 	//
 	// Terminate
 	SpotInterruptionBehavior *string `json:"SpotInterruptionBehavior,omitempty" xml:"SpotInterruptionBehavior,omitempty"`
-	// The maximum hourly price of the instance. The value can have up to three decimal places. This parameter takes effect only when the SpotStrategy parameter is set to SpotWithPriceLimit.
+	// The maximum hourly price for the instance. It supports up to three decimal places. This parameter takes effect only when SpotStrategy is set to SpotWithPriceLimit.
 	//
 	// example:
 	//
 	// 0.97
 	SpotPriceLimit *float32 `json:"SpotPriceLimit,omitempty" xml:"SpotPriceLimit,omitempty"`
-	// The bidding policy for the pay-as-you-go instance. This parameter takes effect only when the InstanceChargeType parameter is set to PostPaid. Valid values:
+	// The bidding policy for the pay-as-you-go instance. This parameter takes effect only when InstanceChargeType is set to PostPaid. Valid values:
 	//
 	// - NoSpot: regular pay-as-you-go instance.
 	//
-	// - SpotWithPriceLimit: spot instance with a maximum price limit.
+	// - SpotWithPriceLimit: spot instance with a maximum price.
 	//
-	// - SpotAsPriceGo: spot instance for which the system automatically places bids based on the current market price.
+	// - SpotAsPriceGo: spot instance for which the system automatically places bids based on the market price.
 	//
 	// Default value: NoSpot.
 	//
@@ -837,13 +837,13 @@ type RunInstancesRequest struct {
 	//
 	// 2
 	StorageSetPartitionNumber *int32 `json:"StorageSetPartitionNumber,omitempty" xml:"StorageSetPartitionNumber,omitempty"`
-	// The tag information of the instance, cloud disks, and primary ENI.
+	// The tag configurations of the instance, cloud disks, and primary ENI.
 	Tag []*RunInstancesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 	// Specifies whether to create the instance on a dedicated host. Valid values:
 	//
-	// - default: Creates the instance on a non-dedicated host.
+	// - default: creates the instance on a non-dedicated host.
 	//
-	// - host: Creates the instance on a dedicated host. If you do not specify DedicatedHostId, Alibaba Cloud automatically selects a dedicated host for the instance.
+	// - host: creates the instance on a dedicated host. If you do not specify DedicatedHostId, Alibaba Cloud automatically selects a dedicated host to place the instance.
 	//
 	// Default value: default.
 	//
@@ -867,17 +867,17 @@ type RunInstancesRequest struct {
 	//
 	// true
 	UniqueSuffix *bool `json:"UniqueSuffix,omitempty" xml:"UniqueSuffix,omitempty"`
-	// Instance user data of the instance. The data must be Base64-encoded. The size of instance user data cannot exceed 32 KB before Base64 encoding.
+	// The instance user data. The data must be Base64-encoded, and the size of the custom data before Base64 encoding cannot exceed 32 KB.
 	//
-	// For more information about the limits, format, and execution frequency of user data, see [User data](https://help.aliyun.com/document_detail/49121.html).
+	// For more information about the limits, format, and execution frequency of instance user data, see [Instance user data](https://help.aliyun.com/document_detail/49121.html).
 	//
-	// >To ensure the security of UserData during transmission, avoid sending sensitive data such as passwords and private keys in plaintext. If you need to transmit such information, we recommend that you encrypt the data first, encode it in Base64, and then decrypt it inside the instance to ensure information security.
+	// >To ensure the security of UserData during transmission, avoid transmitting sensitive data such as passwords and private keys in plaintext. If you need to transmit such information, we recommend that you encrypt the data first, encode it in Base64, and then decrypt it inside the instance to ensure information security.
 	//
 	// example:
 	//
 	// ZWNobyBoZWxsbyBlY3Mh
 	UserData *string `json:"UserData,omitempty" xml:"UserData,omitempty"`
-	// The vSwitch ID. If you create a VPC-type ECS instance, you must specify a vSwitch ID. The security group and the vSwitch must belong to the same VPC. You can call the [DescribeVSwitches](https://help.aliyun.com/document_detail/35748.html) operation to query information about existing vSwitches.
+	// The vSwitch ID. If you create a VPC-type ECS instance, you must specify a vSwitch ID, and the security group and the vSwitch must belong to the same VPC. You can call [DescribeVSwitches](https://help.aliyun.com/document_detail/35748.html) to query information about created vSwitches.
 	//
 	// Take note of the following items:
 	//
@@ -889,11 +889,11 @@ type RunInstancesRequest struct {
 	//
 	// vsw-bp1s5fnvk4gn2tws0****
 	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	// The zone ID of the instance. You can call the [DescribeZones](https://help.aliyun.com/document_detail/25610.html) operation to query the zone list.
+	// The zone ID of the instance. You can call [DescribeZones](https://help.aliyun.com/document_detail/25610.html) to obtain the zone list.
 	//
 	// > If you specify the VSwitchId parameter, the ZoneId parameter must be set to the zone where the vSwitch resides. You can also leave the ZoneId parameter unspecified, and the system automatically selects the zone where the specified vSwitch resides.
 	//
-	// Default value: The system automatically selects a zone.
+	// Default value: automatically selected by the system.
 	//
 	// example:
 	//
@@ -1713,25 +1713,25 @@ func (s *RunInstancesRequest) Validate() error {
 type RunInstancesRequestCpuOptions struct {
 	// The number of CPU cores.
 	//
-	// <props="china">Default value: For more information, see [Customize CPU options](https://help.aliyun.com/document_detail/145895.html).
+	// <props="china">Default value: see [Custom CPU options](https://help.aliyun.com/document_detail/145895.html).
 	//
 	// example:
 	//
 	// 2
 	Core *int32 `json:"Core,omitempty" xml:"Core,omitempty"`
-	// This parameter is deprecated.
+	// **[Deprecated]*	- This parameter is deprecated.
 	//
 	// example:
 	//
 	// 1
 	Numa *string `json:"Numa,omitempty" xml:"Numa,omitempty"`
-	// The number of CPU threads. The number of vCPUs of the ECS instance = CpuOptions.Core value × CpuOptions.ThreadsPerCore value.
+	// The number of threads per core. The number of vCPUs of the ECS instance = the value of CpuOptions.Core × the value of CpuOptions.ThreadsPerCore.
 	//
 	// - CpuOptions.ThreadsPerCore=1 indicates that CPU hyper-threading is disabled.
 	//
-	// - Only specific instance types support the configuration of the number of CPU threads.
+	// - Only specific instance types support configuring the number of CPU threads.
 	//
-	// <props="china">Valid values and default value: For more information, see [Customize CPU options](https://help.aliyun.com/document_detail/145895.html).
+	// <props="china">Valid values and default value: see [Custom CPU options](https://help.aliyun.com/document_detail/145895.html).
 	//
 	// example:
 	//
@@ -1739,9 +1739,9 @@ type RunInstancesRequestCpuOptions struct {
 	ThreadsPerCore *int32 `json:"ThreadsPerCore,omitempty" xml:"ThreadsPerCore,omitempty"`
 	// The CPU topology type of the instance. Valid values:
 	//
-	// - ContinuousCoreToHTMapping: The hyper-threads of the same core in the CPU topology are continuous.
+	// - ContinuousCoreToHTMapping: When this value is selected, the hyper-threads of the same core in the CPU topology of the instance are continuous.
 	//
-	// - DiscreteCoreToHTMapping: The hyper-threads of the same core in the CPU topology are discrete.
+	// - DiscreteCoreToHTMapping: When this value is selected, the hyper-threads of the same core in the instance are discrete.
 	//
 	// Default value: none.
 	//
@@ -1817,7 +1817,7 @@ func (s *RunInstancesRequestCpuOptions) Validate() error {
 }
 
 type RunInstancesRequestHibernationOptions struct {
-	// > This parameter is in invitational preview and is not available for public use.
+	// >This parameter is in invitational preview and is not available for public use.
 	//
 	// example:
 	//
@@ -1847,27 +1847,27 @@ func (s *RunInstancesRequestHibernationOptions) Validate() error {
 }
 
 type RunInstancesRequestPrivatePoolOptions struct {
-	// The ID of the private pool. It is the ID of the elasticity assurance or capacity reservation service.
+	// The ID of the private pool, which is the ID of the elasticity assurance or capacity reservation.
 	//
 	// example:
 	//
 	// eap-bp67acfmxazb4****
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The private pool options for instance startup. After the elasticity assurance or capacity reservation service takes effect, private pool capacity is generated for selection during instance startup. Valid values:
+	// The private pool matching criteria for instance startup. After an elasticity assurance or capacity reservation takes effect, a private pool is generated for you to select when you start an instance. Valid values:
 	//
-	// - Open: open mode. The system automatically matches open private pool capacity. If no eligible private pool capacity is available, public pool resources are used for startup. In this mode, you do not need to set the PrivatePoolOptions.Id parameter.
+	// - Open: open mode. The system automatically matches an open private pool. If no eligible private pool is available, the instance uses public pool resources to start. In this mode, you do not need to specify the PrivatePoolOptions.Id parameter.
 	//
-	// - Target: target mode. The system uses the specified private pool capacity to start the instance. If the specified private pool capacity is unavailable, the instance fails to start. In this mode, you must specify the private pool ID, which means the PrivatePoolOptions.Id parameter is required.
+	// - Target: specified mode. The instance uses the specified private pool to start. If the specified private pool is unavailable, the instance fails to start. In this mode, you must specify the private pool ID, which means the PrivatePoolOptions.Id parameter is required.
 	//
-	// - None: no private pool mode. The instance startup does not use private pool capacity.
+	// - None: no private pool mode. The instance does not use a private pool to start.
 	//
 	// Default value: None.
 	//
-	// In any of the following scenarios, the private pool option for instance startup can only be set to None or left empty.
+	// In any of the following scenarios, the private pool matching criteria for instance startup can only be set to None or left unspecified:
 	//
-	// - Creating spot instances.
+	// - Creating a spot instance.
 	//
-	// - Creating ECS instances on a dedicated host (DDH).
+	// - Creating an ECS instance on a dedicated host.
 	//
 	// example:
 	//
@@ -1916,11 +1916,11 @@ type RunInstancesRequestSchedulerOptions struct {
 	//
 	// - If the dedicated host does not belong to the dedicated host cluster, the ECS instance fails to be created.
 	//
-	// <props="china">You can call [DescribeDedicatedHostClusters](https://help.aliyun.com/document_detail/184145.html) to query the list of dedicated host cluster IDs.
+	// <props="china">You can call the [DescribeDedicatedHostClusters](https://help.aliyun.com/document_detail/184145.html) operation to query the list of dedicated host cluster IDs.
 	//
-	// <props="intl">You can call [DescribeDedicatedHostClusters](https://help.aliyun.com/document_detail/184145.html) to query the list of dedicated host cluster IDs.
+	// <props="intl">You can call the [DescribeDedicatedHostClusters](https://help.aliyun.com/document_detail/184145.html) operation to query the list of dedicated host cluster IDs.
 	//
-	// <props="partner">You can call [DescribeDedicatedHostClusters](https://help.aliyun.com/document_detail/184145.html) to query the list of dedicated host cluster IDs.
+	// <props="partner">You can call the [DescribeDedicatedHostClusters](https://help.aliyun.com/document_detail/184145.html) operation to query the list of dedicated host cluster IDs.
 	//
 	// example:
 	//
@@ -1952,13 +1952,13 @@ func (s *RunInstancesRequestSchedulerOptions) Validate() error {
 type RunInstancesRequestSecurityOptions struct {
 	// The confidential computing mode. Valid value: Enclave.
 	//
-	// If this parameter is set to Enclave, the ECS instance uses Enclave to build a confidential computing environment. Only the c7, g7, and r7 instance families support Enclave confidential computing when you call `RunInstances`. Take note of the following items:
+	// When this parameter is set to Enclave, the ECS instance uses Enclave to build a confidential computing environment. Currently, only the c7, g7, and r7 instance families support specifying this parameter when you call RunInstances to use Enclave confidential computing. Note the following:
 	//
 	// - The confidential computing feature is in invitational preview.
 	//
-	// - To create an ECS instance with Enclave confidential computing by calling API operations, you can only call `RunInstances`. `CreateInstance` does not support the `SecurityOptions.ConfidentialComputingMode` parameter.
+	// - To create an ECS instance with Enclave confidential computing by calling API operations, you can only call RunInstances. CreateInstance does not support the SecurityOptions.ConfidentialComputingMode parameter.
 	//
-	// - Enclave confidential computing relies on the trusted system (vTPM). When you specify that an ECS instance uses Enclave to build a confidential computing environment, the trusted system is also enabled for the instance. Therefore, if you set `SecurityOptions.ConfidentialComputingMode` to Enclave when you call this operation, the created ECS instance enables both the Enclave confidential computing mode and the trusted system, regardless of whether you set `SecurityOptions.TrustedSystemMode` to vTPM.
+	// - Enclave confidential computing relies on the trusted system (vTPM). When you specify that an ECS instance uses Enclave to build a confidential computing environment, the trusted system is also enabled for the instance. Therefore, when you call this operation, if you set SecurityOptions.ConfidentialComputingMode=Enclave, the created ECS instance will have both the Enclave confidential computing mode and the trusted system enabled, regardless of whether you set SecurityOptions.TrustedSystemMode=vTPM.
 	//
 	// For more information about confidential computing, see [Use Enclave to build a confidential computing environment](https://help.aliyun.com/document_detail/203433.html).
 	//
@@ -1968,7 +1968,7 @@ type RunInstancesRequestSecurityOptions struct {
 	ConfidentialComputingMode *string `json:"ConfidentialComputingMode,omitempty" xml:"ConfidentialComputingMode,omitempty"`
 	// The trusted system mode. Valid value: vTPM.
 	//
-	// Currently, the instance families that support the trusted system mode include:
+	// Currently, the trusted system mode supports the following instance families:
 	//
 	// - g7, c7, and r7.
 	//
@@ -1978,19 +1978,29 @@ type RunInstancesRequestSecurityOptions struct {
 	//
 	// - If you use the Alibaba Cloud trusted system, set this parameter to vTPM. This allows the instance to complete trusted verification through the Alibaba Cloud trusted system during startup.
 	//
-	// - If you do not use the Alibaba Cloud trusted system, you can leave this parameter empty. However, if the ECS instance uses the Enclave confidential computing mode (`SecurityOptions.ConfidentialComputingMode=Enclave`), the trusted system is also enabled for the instance.
+	// - If you do not use the Alibaba Cloud trusted system, you can leave this parameter unspecified. However, note that if the ECS instance you create uses the Enclave confidential computing mode (SecurityOptions.ConfidentialComputingMode=Enclave), the trusted system is also enabled for the instance.
 	//
-	// - To create a trusted ECS instance by calling API operations, you can only call `RunInstances`. `CreateInstance` does not support the `SecurityOptions.TrustedSystemMode` parameter.
+	// - To create a trusted ECS instance by calling API operations, you can only call RunInstances. CreateInstance does not support the SecurityOptions.TrustedSystemMode parameter.
 	//
-	// > If you specify an instance as a trusted instance during creation, you can only use images that support the trusted system when you replace the system disk.
+	// > If you specify an instance as a trusted instance when you create it, you can only use images that support the trusted system when you replace the system disk.
 	//
-	// For more information about the trusted system, see [Overview of the trusted feature for security-enhanced instance families](https://help.aliyun.com/document_detail/201394.html).
+	// For more information about the trusted system, see [Overview of the trusted feature for security-enhanced instances](https://help.aliyun.com/document_detail/201394.html).
 	//
 	// example:
 	//
 	// vTPM
 	TrustedSystemMode *string `json:"TrustedSystemMode,omitempty" xml:"TrustedSystemMode,omitempty"`
-	// Specifies whether to enable UEFI Secure Boot.
+	// Specifies whether to enable UEFI Secure Boot. Valid values:
+	//
+	// - true: Enabled.
+	//
+	// - false: Disabled.
+	//
+	// Default value: false.
+	//
+	// example:
+	//
+	// false
 	EnableSecureBoot *bool `json:"EnableSecureBoot,omitempty" xml:"EnableSecureBoot,omitempty"`
 }
 
@@ -2034,13 +2044,13 @@ func (s *RunInstancesRequestSecurityOptions) Validate() error {
 }
 
 type RunInstancesRequestSystemDisk struct {
-	// The ID of the automatic snapshot policy applied to the system cloud disk.
+	// The ID of the automatic snapshot policy applied to the system disk.
 	//
 	// example:
 	//
 	// sp-bp67acfmxazb4p****
 	AutoSnapshotPolicyId *string `json:"AutoSnapshotPolicyId,omitempty" xml:"AutoSnapshotPolicyId,omitempty"`
-	// The category of the system disk. Valid values:
+	// The system disk category. Valid values:
 	//
 	// - cloud_efficiency: ultra disk.
 	//
@@ -2054,51 +2064,51 @@ type RunInstancesRequestSystemDisk struct {
 	//
 	// - cloud_essd_entry: ESSD Entry disk.
 	//
-	// Default value:
+	// Default value description:
 	//
-	// - If the instance type specified by InstanceType is a retired and non-I/O optimized instance type, the default value is cloud.
+	// - If InstanceType is a retired and non-I/O optimization instance type, the default value is `cloud`.
 	//
-	// - In other cases, the default value is cloud_efficiency. <props="china">After January 30, 2026, for instance types that only support cloud_essd, the default value will be changed from cloud_efficiency to cloud_essd PL0. For more details, see [Announcement](https://www.aliyun.com/notice/117844).
+	// - In other cases, the default value is `cloud_efficiency`.<props="china">After January 30, 2026, for instance types that only support `cloud_essd`, the default value will be changed from `cloud_efficiency` to `cloud_essd` PL0. For more details, see [Announcement](https://www.aliyun.com/notice/117844).
 	//
-	// > This parameter can be set to cloud_essd_entry only when InstanceType is set to [u1, universal instance family](https://help.aliyun.com/document_detail/457079.html) (ecs.u1) or [e, economy instance family](https://help.aliyun.com/document_detail/108489.html) (ecs.e).
+	// >The value of this parameter can be `cloud_essd_entry` only when the value of `InstanceType` is [u1, universal instance family](https://help.aliyun.com/document_detail/457079.html) (`ecs.u1`) or [e, economy instance family](https://help.aliyun.com/document_detail/108489.html) (`ecs.e`).
 	//
 	// example:
 	//
 	// cloud_ssd
 	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
-	// The description of the system cloud disk. The description must be 2 to 256 characters in length and cannot start with http:// or https://.
+	// The system disk description. The description must be 2 to 256 characters in length and cannot start with http:// or https://.
 	//
 	// example:
 	//
 	// SystemDisk_Description
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The name of the system cloud disk. The name must be 2 to 128 characters in length. It can contain letters and digits in Unicode, and can include colons (:), underscores (_), periods (.), and hyphens (-).
+	// The system disk name. The name must be 2 to 128 characters in length. It can contain letters and digits in Unicode, and can include colons (:), underscores (_), periods (.), and hyphens (-).
 	//
 	// example:
 	//
 	// cloud_ssdSystem
 	DiskName *string `json:"DiskName,omitempty" xml:"DiskName,omitempty"`
-	// The performance level of the enterprise SSD used as the system disk. Valid values:
+	// When creating an enterprise SSD as the system disk, Settings the performance level of the disk. Valid values:
 	//
-	// - PL0: A single enterprise SSD can deliver up to 10,000 random read/write IOPS.
+	// - PL0: A single disk can deliver up to 10,000 random read/write IOPS.
 	//
-	// - PL1 (default): A single enterprise SSD can deliver up to 50,000 random read/write IOPS.
+	// - PL1 (default): A single disk can deliver up to 50,000 random read/write IOPS.
 	//
-	// - PL2: A single enterprise SSD can deliver up to 100,000 random read/write IOPS.
+	// - PL2: A single disk can deliver up to 100,000 random read/write IOPS.
 	//
-	// - PL3: A single enterprise SSD can deliver up to 1,000,000 random read/write IOPS.
+	// - PL3: A single disk can deliver up to 1,000,000 random read/write IOPS.
 	//
-	// For more information about how to select an enterprise SSD performance level, see [Enterprise SSDs](https://help.aliyun.com/document_detail/122389.html).
+	// For more information about how to select an enterprise SSD performance level, see [enterprise SSDs](https://help.aliyun.com/document_detail/122389.html).
 	//
 	// example:
 	//
 	// PL0
 	PerformanceLevel *string `json:"PerformanceLevel,omitempty" xml:"PerformanceLevel,omitempty"`
-	// The size of the system disk. Unit: GiB. Valid values:
+	// The system disk size. Unit: GiB. Valid values:
 	//
 	// - Basic disk: 20 to 500.
 	//
-	// - Enterprise SSD:
+	// - enterprise SSD:
 	//
 	//   - PL0: 1 to 2048.
 	//
@@ -2120,13 +2130,13 @@ type RunInstancesRequestSystemDisk struct {
 	//
 	// 40
 	Size *string `json:"Size,omitempty" xml:"Size,omitempty"`
-	// Specifies whether to enable performance burst. Valid values:
+	// Specifies whether to enable the performance burst feature. Valid values:
 	//
-	// - true: yes.
+	// - true: Enables the feature.
 	//
-	// - false: no.
+	// - false: Disables the feature.
 	//
-	// > This parameter is supported only when `SystemDisk.Category` is set to `cloud_auto`. For more information, see [ESSD AutoPL disks](https://help.aliyun.com/document_detail/368372.html).
+	// > This parameter is supported only when SystemDisk.Category is set to cloud_auto. For more information, see [ESSD AutoPL disks](https://help.aliyun.com/document_detail/368372.html).
 	//
 	// example:
 	//
@@ -2140,29 +2150,29 @@ type RunInstancesRequestSystemDisk struct {
 	EncryptAlgorithm *string `json:"EncryptAlgorithm,omitempty" xml:"EncryptAlgorithm,omitempty"`
 	// Specifies whether to encrypt the system disk. Valid values:
 	//
-	// - true: encrypts the disk.
+	// - true: Encrypts the system disk.
 	//
-	// - false: does not encrypt the disk.
+	// - false: Does not encrypt the system disk.
 	//
 	// Default value: false.
 	//
-	// > You cannot encrypt the system disk when you create an instance in Zone D of the China (Hong Kong) region or Zone A of the Singapore region.
+	// > You cannot encrypt the system disk when you create an instance in Hong Kong (China) Zone D or Singapore Zone A.
 	//
-	// 	Notice: When you use a shared encrypted image to create a disk based on an encrypted snapshot, you must set the Encrypted request parameter of the disk to true to ensure that the created disk uses the key of the user to whom the image is shared.</notice>
+	// 	Notice: When you use a shared encrypted image to create a cloud disk based on an encrypted snapshot, you must specify the request parameter Encrypted=true for the cloud disk. This ensures that the created cloud disk uses the key of the user to whom the image is shared.
 	//
 	// example:
 	//
 	// false
 	Encrypted *string `json:"Encrypted,omitempty" xml:"Encrypted,omitempty"`
-	// The ID of the KMS key used for the system cloud disk.
+	// The ID of the KMS key that is used to encrypt the system disk.
 	//
 	// > If Encrypted is set to true and KMSKeyId is not specified, the default key is used for encryption, and the KMSKeyId value is returned after the instance is created.
 	//
-	// > - - If the cloud disk is created from a non-shared encrypted snapshot, the encryption key used for the snapshot is used by default.
+	// > - - If the cloud disk is created from an unshared encrypted snapshot, the encryption key used by the snapshot is used by default.
 	//
 	// > - - If the cloud disk is created from a shared encrypted snapshot, the service key is used by default.
 	//
-	// > - - If the cloud disk is created in a region where account-level default encryption for EBS is enabled, the specified account-level key is used by default.
+	// > - - If the cloud disk is created in a region where account-level default encryption for block storage is enabled, the specified account-level key is used by default.
 	//
 	// > - - In other cases, the service key is used by default.
 	//
@@ -2174,13 +2184,13 @@ type RunInstancesRequestSystemDisk struct {
 	//
 	// Baseline performance = min{1,800 + 50 × Capacity, 50,000}.
 	//
-	// > This parameter is supported only when `SystemDisk.Category` is set to `cloud_auto`. For more information, see [ESSD AutoPL disks](https://help.aliyun.com/document_detail/368372.html).
+	// > This parameter is supported only when SystemDisk.Category is set to cloud_auto. For more information, see [ESSD AutoPL disks](https://help.aliyun.com/document_detail/368372.html).
 	//
 	// example:
 	//
 	// 40000
 	ProvisionedIops *int64 `json:"ProvisionedIops,omitempty" xml:"ProvisionedIops,omitempty"`
-	// The ID of the dedicated block storage cluster. If you want to use cloud disk resources in a dedicated block storage cluster as the system cloud disk when you create an ECS instance, specify this parameter.
+	// The ID of the dedicated block storage cluster. If you want to use cloud disk resources in a dedicated block storage cluster as the system disk when you create an ECS instance, specify this parameter.
 	//
 	// example:
 	//
@@ -2371,9 +2381,9 @@ func (s *RunInstancesRequestArn) Validate() error {
 type RunInstancesRequestClockOptions struct {
 	// The Precision Time Protocol (PTP) status. Valid values:
 	//
-	// - enabled: PTP is enabled.
+	// - enabled: Enables PTP.
 	//
-	// - disabled: PTP is disabled.
+	// - disabled: Disables PTP.
 	//
 	// Default value: disabled.
 	//
@@ -2405,17 +2415,17 @@ func (s *RunInstancesRequestClockOptions) Validate() error {
 }
 
 type RunInstancesRequestDataDisk struct {
-	// The ID of the automatic snapshot policy applied to the data cloud disk.
+	// The ID of the automatic snapshot policy that is applied to the data disk.
 	//
 	// example:
 	//
 	// sp-bp67acfmxazb4p****
 	AutoSnapshotPolicyId *string `json:"AutoSnapshotPolicyId,omitempty" xml:"AutoSnapshotPolicyId,omitempty"`
-	// Specifies whether to enable performance burst. Valid values:
+	// Specifies whether to enable the performance burst feature. Valid values:
 	//
-	// - true: yes.
+	// - true: Enables the feature.
 	//
-	// - false: no.
+	// - false: Disables the feature.
 	//
 	// > This parameter is supported only when DiskCategory is set to cloud_auto. For more information, see [ESSD AutoPL disks](https://help.aliyun.com/document_detail/368372.html).
 	//
@@ -2429,39 +2439,39 @@ type RunInstancesRequestDataDisk struct {
 	//
 	// - cloud_ssd: standard SSD.
 	//
-	// - cloud_essd: enterprise SSD.
+	// - cloud_essd: ESSD.
 	//
 	// - cloud: basic disk.
 	//
 	// - cloud_auto: ESSD AutoPL disk.
 	//
-	// - cloud_regional_disk_auto: regional enterprise SSD.
+	// - cloud_regional_disk_auto: regional ESSD.
 	//
 	// - cloud_essd_entry: ESSD Entry disk.
 	//
-	//   > This parameter supports `cloud_essd_entry` only when the `InstanceType` is set to an instance type in the `ecs.u1` or `ecs.e` instance family.
+	//   > This parameter supports cloud_essd_entry only when InstanceType is specified as an instance type in the ecs.u1 or ecs.e instance family.
 	//
-	// - elastic_ephemeral_disk_standard: standard elastic ephemeral disk.
+	// - elastic_ephemeral_disk_standard: elastic ephemeral disk - Standard Edition.
 	//
 	// - elastic_ephemeral_disk_premium: elastic ephemeral disk - Premium Edition.
 	//
-	// For I/O optimized instances, the default value is cloud_efficiency. For non-I/O optimized instances, the default value is cloud.
+	// For I/O optimized instances, the default Settings are cloud_efficiency. For non-I/O optimized instances, the default Settings are cloud.
 	//
-	// Default value descriptions:
+	// Default value description:
 	//
-	// - If InstanceType is set to a retired and non-I/O optimized instance type, the default value is `cloud`.
+	// - If InstanceType is configured as a retired and non-I/O optimized instance type, the default Settings are cloud.
 	//
-	// - In other cases, the default value is `cloud_efficiency`.<props="china">After January 30, 2026, if the I/O optimized instance type does not support cloud_auto, the default value is cloud_efficiency. Otherwise, the default value is cloud_auto, and performance burst is enabled by default (which incurs additional fees. For details, see [Billing examples](~~368372#p_75k_2hp_7gp~~)). For more information, see [Announcement on changes](https://www.aliyun.com/notice/117844).
+	// - In other cases, the default Settings are cloud_efficiency. <props="china">After January 30, 2026, if the I/O optimized instance type does not support cloud_auto, the default Settings are cloud_efficiency. Otherwise, the default Settings are cloud_auto, and the performance burst feature is enabled by default. This feature incurs additional fees. For details, see [Billing examples](~~368372#p_75k_2hp_7gp~~). For more information, see [Announcement](https://www.aliyun.com/notice/117844).
 	//
 	// example:
 	//
 	// cloud_ssd
 	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
-	// Specifies whether to release the data cloud disk when the instance is released. Valid values:
+	// Specifies whether to release the data disk when the instance is released. Valid values:
 	//
-	// - true: The data cloud disk is released when the instance is released.
+	// - true: Releases the data disk when the instance is released.
 	//
-	// - false: The data cloud disk is not released when the instance is released.
+	// - false: Retains the data disk when the instance is released.
 	//
 	// Default value: true.
 	//
@@ -2469,27 +2479,27 @@ type RunInstancesRequestDataDisk struct {
 	//
 	// true
 	DeleteWithInstance *bool `json:"DeleteWithInstance,omitempty" xml:"DeleteWithInstance,omitempty"`
-	// The description of the data cloud disk. The description must be 2 to 256 characters in length and cannot start with http:// or https://.
+	// The description of the data disk. The description must be 2 to 256 characters in length and cannot start with http:// or https://.
 	//
 	// example:
 	//
 	// DataDisk_Description
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The mount point of the data cloud disk. The naming convention for mount points varies based on the number of mounted data cloud disks:
+	// The mount point of the data disk. The naming convention for mount points varies based on the number of attached data disks:
 	//
-	// - 1 to 25 data cloud disks: /dev/xvd`[b-z]`
+	// - 1 to 25 data disks: /dev/xvd[b-z]
 	//
-	// - More than 25 data cloud disks: /dev/xvd`[aa-zz]`. For example, the 26th data cloud disk is named /dev/xvdaa, the 27th data cloud disk is named /dev/xvdab, and so on.
+	// - More than 25 data disks: /dev/xvd[aa-zz]. For example, the 26th data disk is named /dev/xvdaa, the 27th data disk is named /dev/xvdab, and so on.
 	//
-	// > - This parameter is applicable only to full images. You can set this parameter to the mount point of the data cloud disk in the full image and modify the DataDisk.N.Size and DataDisk.N.Category parameters to change the category and size of the data cloud disk in the full image.
+	// > - This parameter is applicable only to full images. You can set this parameter to the mount point of the data disk in the full image and modify the DataDisk.N.Size and DataDisk.N.Category parameters to change the category and size of the data disk in the full image.
 	//
-	// > - When you create an instance from a full image, the data cloud disks in the full image are created as the first N data cloud disks of the ECS instance.
+	// > - When you use a full image to create an instance, the data disks in the full image are created as the first n data disks of the ECS instance.
 	//
 	// example:
 	//
 	// /dev/xvdb
 	Device *string `json:"Device,omitempty" xml:"Device,omitempty"`
-	// The name of the data cloud disk. The name must be 2 to 128 characters in length and can contain letters and digits in Unicode. It can also contain colons (:), underscores (_), periods (.), and hyphens (-).
+	// The name of the data disk. The name must be 2 to 128 characters in length. It can contain characters that fall under the letter category in Unicode, such as letters, Chinese characters, and digits. It can also contain colons (:), underscores (_), periods (.), and hyphens (-).
 	//
 	// example:
 	//
@@ -2503,28 +2513,28 @@ type RunInstancesRequestDataDisk struct {
 	EncryptAlgorithm *string `json:"EncryptAlgorithm,omitempty" xml:"EncryptAlgorithm,omitempty"`
 	// Specifies whether to encrypt data disk N. Valid values:
 	//
-	// - true: encrypts the disk.
+	// - true: Encrypts the data disk.
 	//
-	// - false: does not encrypt the disk.
+	// - false: Does not encrypt the data disk.
 	//
 	// Default value: false.
 	//
 	//
-	// 	Notice: When you use a shared encrypted image to create a disk based on an encrypted snapshot, you must set the Encrypted request parameter of the disk to true to ensure that the created disk uses the key of the user to whom the image is shared.</notice>
+	// 	Notice: When you use a shared encrypted image to create a cloud disk based on an encrypted snapshot, you must specify the request parameter Encrypted=true for the cloud disk. This ensures that the created cloud disk uses the key of the user to whom the image is shared.
 	//
 	// example:
 	//
 	// false
 	Encrypted *string `json:"Encrypted,omitempty" xml:"Encrypted,omitempty"`
-	// The ID of the Key Management Service (KMS) key used for the data cloud disk.
+	// The ID of the KMS key that is used to encrypt the data disk.
 	//
 	// > If Encrypted is set to true and KMSKeyId is not specified, the default key is used for encryption, and the KMSKeyId value is returned after the instance is created.
 	//
-	// > - - If the cloud disk is created from a non-shared encrypted snapshot, the encryption key used for the snapshot is used by default.
+	// > - - If the cloud disk is created from an unshared encrypted snapshot, the encryption key used by the snapshot is used by default.
 	//
 	// > - - If the cloud disk is created from a shared encrypted snapshot, the service key is used by default.
 	//
-	// > - - If the cloud disk is created in a region where account-level default encryption for Elastic Block Storage (EBS) is enabled, the specified account-level key is used by default.
+	// > - - If the cloud disk is created in a region where account-level default encryption for block storage is enabled, the specified account-level key is used by default.
 	//
 	// > - - In other cases, the service key is used by default.
 	//
@@ -2532,17 +2542,17 @@ type RunInstancesRequestDataDisk struct {
 	//
 	// 0e478b7a-4262-4802-b8cb-00d3fb40****
 	KMSKeyId *string `json:"KMSKeyId,omitempty" xml:"KMSKeyId,omitempty"`
-	// When you create an ESSD as a data disk, specify the performance level of the disk. The value of N must be the same as the value of N in `DataDisk.N.Category=cloud_essd`. Valid values:
+	// When you create an ESSD as a data disk, configure the Settings for the performance level of the disk. The value of N must be the same as the value of N in DataDisk.N.Category=cloud_essd. Valid values:
 	//
-	// - PL0: A single disk can deliver up to 10,000 random read/write IOPS.
+	// - PL0: A single ESSD can deliver up to 10,000 random read/write IOPS.
 	//
-	// - PL1 (default): A single disk can deliver up to 50,000 random read/write IOPS.
+	// - PL1 (default): A single ESSD can deliver up to 50,000 random read/write IOPS.
 	//
-	// - PL2: A single disk can deliver up to 100,000 random read/write IOPS.
+	// - PL2: A single ESSD can deliver up to 100,000 random read/write IOPS.
 	//
-	// - PL3: A single disk can deliver up to 1,000,000 random read/write IOPS.
+	// - PL3: A single ESSD can deliver up to 1,000,000 random read/write IOPS.
 	//
-	// For more information about how to select the performance level of an ESSD, see [ESSDs](https://help.aliyun.com/document_detail/122389.html).
+	// For more information about how to select the performance level of an ESSD, see [ESSD](https://help.aliyun.com/document_detail/122389.html).
 	//
 	// example:
 	//
@@ -2558,13 +2568,13 @@ type RunInstancesRequestDataDisk struct {
 	//
 	// 40000
 	ProvisionedIops *int64 `json:"ProvisionedIops,omitempty" xml:"ProvisionedIops,omitempty"`
-	// The size of data cloud disk N. Valid values of N: 1 to 16. Unit: GiB. Valid values:
+	// The size of data disk N. Valid values of N: 1 to 16. Unit: GiB. Valid values:
 	//
 	// - cloud_efficiency: 20 to 32768.
 	//
 	// - cloud_ssd: 20 to 32768.
 	//
-	// - cloud_essd: The valid values vary based on the value of `DataDisk.N.PerformanceLevel`.
+	// - cloud_essd: The valid values depend on the value of DataDisk.N.PerformanceLevel.
 	//
 	//     - PL0: 1 to 65,536.
 	//
@@ -2586,15 +2596,15 @@ type RunInstancesRequestDataDisk struct {
 	//
 	// 2000
 	Size *int32 `json:"Size,omitempty" xml:"Size,omitempty"`
-	// The ID of the snapshot used to create data cloud disk N. Valid values of N: 1 to 16.
+	// The ID of the snapshot that is used to create data disk N. Valid values of N: 1 to 16.
 	//
-	// If the `DataDisk.N.SnapshotId` parameter is specified, the `DataDisk.N.Size` parameter is ignored, and the size of the created cloud disk is the same as the size of the specified snapshot. You cannot use snapshots created on or before July 15, 2013. Otherwise, the request is rejected with an error.
+	// If you specify the DataDisk.N.SnapshotId parameter, the DataDisk.N.Size parameter is ignored. The size of the created cloud disk is the same as the size of the specified snapshot. You cannot use snapshots that were created on or before July 15, 2013. Otherwise, the request is rejected and an error is reported.
 	//
 	// example:
 	//
 	// s-bp17441ohwka0yuh****
 	SnapshotId *string `json:"SnapshotId,omitempty" xml:"SnapshotId,omitempty"`
-	// The ID of the dedicated block storage cluster. If you want to use cloud disk resources in a dedicated block storage cluster as data cloud disks when you create an ECS instance, specify this parameter.
+	// The ID of the dedicated block storage cluster. If you want to use cloud disk resources in a dedicated block storage cluster as data disks when you create an ECS instance, specify this parameter.
 	//
 	// example:
 	//
@@ -2750,11 +2760,11 @@ func (s *RunInstancesRequestDataDisk) Validate() error {
 }
 
 type RunInstancesRequestImageOptions struct {
-	// Specifies whether the instance that uses the image supports logon as the ecs-user user. Valid values:
+	// Specifies whether the instance that uses the image supports logons by using the ecs-user username. Valid values:
 	//
-	// - true: Yes.
+	// - true: Supports logons by using the ecs-user username.
 	//
-	// - false: No.
+	// - false: Does not support logons by using the ecs-user username.
 	//
 	// example:
 	//
@@ -2786,9 +2796,9 @@ func (s *RunInstancesRequestImageOptions) Validate() error {
 type RunInstancesRequestNetworkInterface struct {
 	// Specifies whether to retain the ENI when the instance is released. Valid values:
 	//
-	// - true: The ENI is not retained.
+	// - true: Does not retain the ENI.
 	//
-	// - false: The ENI is retained.
+	// - false: Retains the ENI.
 	//
 	// Default value: true.
 	//
@@ -2798,23 +2808,23 @@ type RunInstancesRequestNetworkInterface struct {
 	//
 	// true
 	DeleteOnRelease *bool `json:"DeleteOnRelease,omitempty" xml:"DeleteOnRelease,omitempty"`
-	// The description of the Elastic Network Interface (ENI).
+	// The description of the ENI.
 	//
-	// Take note of the following items:
+	// Note:
 	//
-	// - The value of N cannot exceed the maximum number of network interface controllers (NICs) supported by the instance type. For more information about the number of network interface controllers (NICs) supported by an instance type, see [Instance families](https://help.aliyun.com/document_detail/25378.html) or call the [DescribeInstanceTypes](https://help.aliyun.com/document_detail/2679699.html) operation to query the number of network interface controllers (NICs) supported by the target instance type.
+	// - The valid values of N cannot exceed the maximum number of network interface controller (NIC) supported by the target instance type. For more information, see [instance family](https://help.aliyun.com/document_detail/25378.html) or invoke the [DescribeInstanceTypes](https://help.aliyun.com/document_detail/2679699.html) operation to query the maximum number of network interface controller (NIC) supported by the target instance type.
 	//
-	// - The description must be 2 to 256 characters in length and cannot start with `http://` or `https://`.
+	// - The description must be 2 to 256 characters in length and cannot start with http:// or https://.
 	//
-	// - If `NetworkInterface.N.InstanceType` is set to `Primary`, you do not need to specify this parameter.
+	// - If NetworkInterface.N.InstanceType is specified as Primary, you do not need to configure the Settings for this parameter.
 	//
 	// example:
 	//
 	// Network_Description
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The type of the Elastic Network Interface (ENI). The value of N cannot exceed the maximum number of network interface controllers (NICs) supported by the instance type. For more information about the number of network interface controllers (NICs) supported by an instance type, see [Instance families](https://help.aliyun.com/document_detail/25378.html) or call the [DescribeInstanceTypes](https://help.aliyun.com/document_detail/2679699.html) operation to query the number of network interface controllers (NICs) supported by the target instance type.
+	// The type of the ENI. The valid values of N cannot exceed the maximum number of network interface controller (NIC) supported by the target instance type. For more information, see [instance family](https://help.aliyun.com/document_detail/25378.html) or invoke the [DescribeInstanceTypes](https://help.aliyun.com/document_detail/2679699.html) operation to query the maximum number of network interface controller (NIC) supported by the target instance type.
 	//
-	// Valid values:
+	// Valid values of the parameter:
 	//
 	// - Primary: primary ENI.
 	//
@@ -2826,132 +2836,132 @@ type RunInstancesRequestNetworkInterface struct {
 	//
 	// Secondary
 	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
-	// Specifies one or more IPv6 addresses for the primary ENI. You can specify up to 10 IPv6 addresses. Valid values of the second N: 1 to 10.
+	// The IPv6 addresses that are assigned to the primary ENI. You can specify up to 10 IPv6 addresses. Valid values of the second N: 1 to 10.
 	//
-	// Example: `Ipv6Address.1=2001:db8:1234:1a00::***`
+	// Example: Ipv6Address.1=2001:db8:1234:1a00::***.
 	//
 	// Note:
 	//
-	// - This parameter takes effect only when `NetworkInterface.N.InstanceType` is set to `Primary`. If `NetworkInterface.N.InstanceType` is set to `Secondary` or left empty, you cannot specify this parameter.
+	// - This parameter takes effect only when NetworkInterface.N.InstanceType is set to Primary. If NetworkInterface.N.InstanceType is set to Secondary or left empty, you cannot specify this parameter.
 	//
-	// - After you specify this parameter, the value of `Amount` can only be 1, and you cannot specify `Ipv6AddressCount`, `Ipv6Address.N`, or `NetworkInterface.N.Ipv6AddressCount`.
+	// - After you specify this parameter, the value of Amount can only be 1, and you cannot specify Ipv6AddressCount, Ipv6Address.N, or NetworkInterface.N.Ipv6AddressCount.
 	Ipv6Address []*string `json:"Ipv6Address,omitempty" xml:"Ipv6Address,omitempty" type:"Repeated"`
-	// Specifies the number of randomly generated IPv6 addresses for the primary ENI. Valid values: 1 to 10.
+	// The number of IPv6 addresses that are randomly generated for the primary ENI. Valid values: 1 to 10.
 	//
 	// Note:
 	//
-	// - This parameter takes effect only when `NetworkInterface.N.InstanceType` is set to `Primary`. If `NetworkInterface.N.InstanceType` is set to `Secondary` or left empty, you cannot specify this parameter.
+	// - This parameter takes effect only when NetworkInterface.N.InstanceType is set to Primary. If NetworkInterface.N.InstanceType is set to Secondary or left empty, you cannot specify this parameter.
 	//
-	// - After you specify this parameter, you cannot specify `Ipv6AddressCount`, `Ipv6Address.N`, or `NetworkInterface.N.Ipv6Address.N`.
+	// - After you specify this parameter, you cannot specify Ipv6AddressCount, Ipv6Address.N, or NetworkInterface.N.Ipv6Address.N.
 	//
 	// example:
 	//
 	// 1
 	Ipv6AddressCount *int64 `json:"Ipv6AddressCount,omitempty" xml:"Ipv6AddressCount,omitempty"`
-	// The index of the physical network card to which the network interface controller (NIC) is bound.
+	// The index of the network card specified for the network interface controller (NIC).
 	//
-	// Take note of the following items:
+	// Note:
 	//
-	// - Only specific instance types support specifying the physical network card index.
+	// - Only specific instance types support specifying the network card index.
 	//
-	// - When NetworkInterface.N.InstanceType is set to Primary, if the instance type supports physical network cards and you specify this parameter, it can only be set to 0.
+	// - If NetworkInterface.N.InstanceType is specified as Primary and the instance type supports network card, you can only configure the Settings for this parameter to 0.
 	//
-	// - When NetworkInterface.N.InstanceType is set to Secondary or left empty, if the instance type supports physical network cards, this parameter can be configured based on the instance type. For more information, see [Instance families](https://help.aliyun.com/document_detail/25378.html).
+	// - If NetworkInterface.N.InstanceType is specified as Secondary or left empty and the instance type supports network card, you can configure the Settings for this parameter based on the instance family. For more information, see [instance family](https://help.aliyun.com/document_detail/25378.html).
 	//
 	// example:
 	//
 	// 0
 	NetworkCardIndex *int32 `json:"NetworkCardIndex,omitempty" xml:"NetworkCardIndex,omitempty"`
-	// The ID of the Elastic Network Interface (ENI) to be attached to the instance.
+	// The ID of the ENI that is attached to the instance.
 	//
-	// After this parameter is specified, `Amount` can only be set to 1.
+	// After you configure the Settings for this parameter, the value of Amount can only be 1.
 	//
-	// > This parameter takes effect only for secondary ENIs. After you specify an existing secondary ENI, you cannot configure other ENI creation parameters.
+	// > This parameter takes effect only for secondary ENIs. After you specify an existing secondary ENI, you cannot configure other network interface controller (NIC) creation parameters.
 	//
 	// example:
 	//
 	// eni-bp1gn106np8jhxhj****
 	NetworkInterfaceId *string `json:"NetworkInterfaceId,omitempty" xml:"NetworkInterfaceId,omitempty"`
-	// The name of the Elastic Network Interface (ENI). The name must be 2 to 128 characters in length and can contain letters and digits in the Unicode Letter categorization. It can also contain colons (:), underscores (_), periods (.), and hyphens (-).
+	// The name of the ENI. The name must be 2 to 128 characters in length. It can contain characters that fall under the letter categorization in Unicode, such as letters, Chinese characters, and digits. It can also contain colons (:), underscores (_), periods (.), and hyphens (-).
 	//
-	// Take note of the following items:
+	// Note:
 	//
-	// - The value of N cannot exceed the maximum number of network interface controllers (NICs) supported by the instance type. For more information about the number of network interface controllers (NICs) supported by an instance type, see [Instance families](https://help.aliyun.com/document_detail/25378.html) or call the [DescribeInstanceTypes](https://help.aliyun.com/document_detail/2679699.html) operation to query the number of network interface controllers (NICs) supported by the target instance type.
+	// - The valid values of N cannot exceed the maximum number of network interface controller (NIC) supported by the target instance type. For more information, see [instance family](https://help.aliyun.com/document_detail/25378.html) or invoke the [DescribeInstanceTypes](https://help.aliyun.com/document_detail/2679699.html) operation to query the maximum number of network interface controller (NIC) supported by the target instance family.
 	//
-	// - If `NetworkInterface.N.InstanceType` is set to `Primary`, you do not need to specify this parameter.
+	// - If NetworkInterface.N.InstanceType is specified as Primary, you do not need to configure the Settings for this parameter.
 	//
 	// example:
 	//
 	// Network_Name
 	NetworkInterfaceName *string `json:"NetworkInterfaceName,omitempty" xml:"NetworkInterfaceName,omitempty"`
-	// The communication mode of the network interface controller (NIC). Valid values:
+	// The communication pattern of the network interface controller (NIC). Valid values of the parameter:
 	//
-	// - Standard: uses the TCP communication mode.
+	// - Standard: Uses the TCP communication pattern.
 	//
-	// - HighPerformance: enables the Elastic RDMA Interface (ERI) and uses the RDMA communication mode.
+	// - HighPerformance: Enables the Elastic RDMA Interface (ERI) and uses the RDMA communication pattern.
 	//
 	// Default value: Standard.
 	//
-	// > The number of Elastic Network Interfaces (ENIs) in RDMA mode cannot exceed the limit of the instance family. For more information, see [Instance families](https://help.aliyun.com/document_detail/25378.html).
+	// > The number of Elastic Network Interface (ENI) in RDMA mode cannot exceed the limit of the instance type. For more information, see [instance family](https://help.aliyun.com/document_detail/25378.html).
 	//
 	// example:
 	//
 	// Standard
 	NetworkInterfaceTrafficMode *string `json:"NetworkInterfaceTrafficMode,omitempty" xml:"NetworkInterfaceTrafficMode,omitempty"`
-	// Adds an Elastic Network Interface (ENI) and specifies its primary IP address.
+	// Adds an ENI and configures the primary IP address.
 	//
-	// Take note of the following items:
+	// Note:
 	//
-	// - The value of N cannot exceed the maximum number of network interface controllers (NICs) supported by the instance type. For more information about the number of network interface controllers (NICs) supported by an instance type, see [Instance families](https://help.aliyun.com/document_detail/25378.html) or call the [DescribeInstanceTypes](https://help.aliyun.com/document_detail/2679699.html) operation to query the number of network interface controllers (NICs) supported by the target instance type.
+	// - The valid values of N cannot exceed the maximum number of network interface controller (NIC) supported by the target instance type. For more information, see [instance family](https://help.aliyun.com/document_detail/25378.html) or invoke the [DescribeInstanceTypes](https://help.aliyun.com/document_detail/2679699.html) operation to query the maximum number of network interface controller (NIC) supported by the target instance type.
 	//
-	//     - When you configure one network interface controller (NIC), you can configure one primary network interface controller (NIC) or one secondary ENI. If the `Amount` parameter is set to a value greater than 1, and a primary network interface controller (NIC) is configured along with this parameter, it indicates that when multiple ECS instances are created in a batch, consecutive primary IP addresses are allocated to the ECS instances starting from the specified primary IP address. Note that in this case, you cannot attach secondary ENIs to target instances.
+	//     - When you configure the Settings for one ENI, you can configure one primary ENI or one secondary ENI. If the value of the Amount parameter is greater than 1, and you configure a primary ENI and specify this parameter, consecutive primary IP addresses are allocated to multiple ECS instances starting from the specified primary IP address when you create target instances in batches. Note that you cannot attach secondary ENIs to target instances in this case.
 	//
-	//     - Note that if the `Amount` parameter is set to a value greater than 1 and this parameter is configured for the primary network interface controller (NIC), you cannot configure secondary ENIs (that is, you cannot set `NetworkInterface.2.InstanceType=Secondary`).
+	//     - Note that if the value of the Amount parameter is greater than 1 and you have configured the Settings for this parameter for the primary ENI, you cannot configure secondary ENIs. This means you cannot specify NetworkInterface.2.InstanceType as Secondary.
 	//
-	// - If `NetworkInterface.N.InstanceType` is set to `Primary`, this parameter functions the same as `PrivateIpAddress`. Note that you cannot configure both this parameter and the `PrivateIpAddress` parameter at the same time.
+	// - If NetworkInterface.N.InstanceType is specified as Primary, this parameter serves the same purpose as PrivateIpAddress. Note that you cannot specify both this parameter and PrivateIpAddress at the same time.
 	//
-	// - If `NetworkInterface.N.InstanceType` is set to `Secondary` or left empty, this parameter specifies the primary IP address for the secondary ENI. By default, an IP address is randomly selected from the vSwitch CIDR block of the vSwitch to which the network interface controller (NIC) belongs.
+	// - If NetworkInterface.N.InstanceType is specified as Secondary or left empty, this parameter specifies the primary IP address of the secondary ENI. By default, an IP address is randomly selected from the vSwitch CIDR block of the vSwitch to which the ENI belongs.
 	//
-	// >- The first and the last three IP addresses of each vSwitch are system reserved IP addresses and cannot be specified.
+	// >- The first and last three IP addresses of each vSwitch are system reserved IP addresses and cannot be specified.
 	//
-	// For example, if the vSwitch CIDR block is 192.168.1.0/24, the IP addresses 192.168.1.0, 192.168.1.253, 192.168.1.254, and 192.168.1.255 are system reserved IP addresses.
+	// For example, if the vSwitch CIDR block of the vSwitch is 192.168.1.0/24, the four IP addresses 192.168.1.0, 192.168.1.253, 192.168.1.254, and 192.168.1.255 are system reserved IP addresses.
 	//
 	// example:
 	//
 	// ``172.16.**.**``
 	PrimaryIpAddress *string `json:"PrimaryIpAddress,omitempty" xml:"PrimaryIpAddress,omitempty"`
-	// The number of queues for the Elastic Network Interface (ENI).
+	// The number of queues for the ENI.
 	//
-	// Take note of the following items:
+	// Note:
 	//
-	// - The value of N cannot exceed the maximum number of network interface controllers (NICs) supported by the instance type. For more information about the number of network interface controllers (NICs) supported by an instance type, see [Instance families](https://help.aliyun.com/document_detail/25378.html) or call the [DescribeInstanceTypes](https://help.aliyun.com/document_detail/2679699.html) operation to query the number of network interface controllers (NICs) supported by the target instance type.
+	// - The valid values of N cannot exceed the maximum number of network interface controller (NIC) supported by the target instance type. For more information, see [instance family](https://help.aliyun.com/document_detail/25378.html) or invoke the [DescribeInstanceTypes](https://help.aliyun.com/document_detail/2679699.html) operation to query the maximum number of network interface controller (NIC) supported by the target instance type.
 	//
-	// - The value cannot exceed the maximum number of queues per network interface controller (NIC) allowed by the target instance type.
+	// - The value cannot exceed the maximum number of queues per ENI allowed by the target instance type.
 	//
-	// - The total number of queues for all network interface controllers (NICs) of the target instance cannot exceed the total queue quota allowed by the target instance type. You can query the `MaximumQueueNumberPerEni` and `TotalEniQueueQuantity` fields by calling the [DescribeInstanceTypes](https://help.aliyun.com/document_detail/25620.html) operation to obtain the maximum number of queues per network interface controller (NIC) and the total queue quota for the target instance type.
+	// - The total number of queues for all ENIs of the target instance cannot exceed the total queue quota allowed by the target instance type. You can invoke the [DescribeInstanceTypes](https://help.aliyun.com/document_detail/25620.html) operation to query the MaximumQueueNumberPerEni and TotalEniQueueQuantity fields for the maximum number of queues per ENI and the total queue quota of the target instance type.
 	//
-	// - If `NetworkInterface.N.InstanceType` is set to `Primary` and this parameter is specified, you cannot specify the `NetworkInterfaceQueueNumber` parameter.
+	// - If NetworkInterface.N.InstanceType is specified as Primary and you specify this parameter, you cannot configure the Settings for the NetworkInterfaceQueueNumber parameter.
 	//
 	// example:
 	//
 	// 8
 	QueueNumber *int32 `json:"QueueNumber,omitempty" xml:"QueueNumber,omitempty"`
-	// The number of queue pairs for the RDMA ENI.
+	// The number of queues for the RDMA ENI.
 	//
-	// If you want to attach multiple RDMA ENIs to the instance, we recommend that you manually specify the `QueuePairNumber` for each ENI based on the maximum `QueuePairNumber` supported by the instance type and the number of ENIs you plan to use. Make sure that the total number of queue pairs for all ENIs does not exceed the maximum value allowed by the instance type. You can call the [DescribeInstanceTypes](https://help.aliyun.com/document_detail/2679699.html) operation to query the maximum value for the instance type.
+	// If you want to attach multiple RDMA ENIs to the instance, we recommend that you manually specify QueuePairNumber for each ENI based on the maximum QueuePairNumber supported by the instance type and the number of ENIs you plan to use. Make sure that the total QueuePairNumber of all ENIs does not exceed the maximum value allowed by the instance type. You can call the [DescribeInstanceTypes](https://help.aliyun.com/document_detail/2679699.html) operation to query the maximum value for the instance type.
 	//
-	// 	Notice: If `QueuePairNumber` is not specified for an RDMA ENI, the maximum `QueuePairNumber` supported by the instance type for all RDMA ENIs is used by default. Therefore, after you attach an RDMA ENI for which `QueuePairNumber` is not specified, you cannot attach more RDMA ENIs (regular ENIs are not subject to this limit).</notice>
+	// 	Notice: If QueuePairNumber is not specified for an RDMA ENI, the maximum QueuePairNumber supported by all RDMA ENIs of the instance type is used by default. Therefore, after you attach an RDMA ENI for which QueuePairNumber is not specified, you cannot attach more RDMA ENIs. Regular ENIs are not subject to this limit.</notice>
 	//
 	// example:
 	//
 	// 0
 	QueuePairNumber *int64 `json:"QueuePairNumber,omitempty" xml:"QueuePairNumber,omitempty"`
-	// The inbound queue depth of the Elastic Network Interface (ENI).
+	// The inbound queue depth of the ENI.
 	//
 	//
 	// <props="china">
 	//
-	// >This parameter is in invitational preview and is not yet available. If you need to use it, [submit a ticket](https://selfservice.console.aliyun.com/ticket/createIndex) to apply for whitelist access.
+	// > This parameter is in invitational preview and is not available. If you want to use this parameter, [submit a ticket](https://selfservice.console.aliyun.com/ticket/createIndex) to apply for the whitelist.
 	//
 	//
 	//
@@ -2960,15 +2970,15 @@ type RunInstancesRequestNetworkInterface struct {
 	//
 	// <props="intl">
 	//
-	// > This parameter is in invitational preview and is not yet available. If you need to use it, [submit a ticket](https://smartservice.console.aliyun.com/service/create-ticket-intl) to apply for whitelist access.
+	// > This parameter is in invitational preview and is not available. If you want to use this parameter, [submit a ticket](https://smartservice.console.aliyun.com/service/create-ticket-intl) to apply for the whitelist.
 	//
 	//
 	//
 	// When you use this parameter, take note of the following items:
 	//
-	// - It applies only to ECS instance types of Generation 7 and later.
+	// - This parameter is applicable only to seventh-generation and later ECS instance types.
 	//
-	// - It currently applies only to Linux images.
+	// - This parameter is applicable only to Linux images.
 	//
 	// - A larger inbound queue depth can improve inbound throughput and reduce the packet loss rate, but it consumes more memory.
 	//
@@ -2976,41 +2986,41 @@ type RunInstancesRequestNetworkInterface struct {
 	//
 	// 8192
 	RxQueueSize *int32 `json:"RxQueueSize,omitempty" xml:"RxQueueSize,omitempty"`
-	// The number of secondary private IPv4 addresses to allocate to the network interface controller (NIC). Valid values: 1 to 49.
+	// The number of secondary private IPv4 addresses that are allocated to the network interface controller (NIC). Valid values: 1 to 49.
 	//
-	// - The value cannot exceed the limit on the number of IP addresses for the instance type. For more information, see [Instance families](~~~25378~~).
+	// - The value cannot exceed the limit on the number of IP addresses for the instance type. For more information, see [instance family](~~~25378~~).
 	//
-	// - `NetworkInterface.N.SecondaryPrivateIpAddressCount` specifies the number of secondary private IPv4 addresses to allocate to the network interface controller (NIC) (excluding the primary private IP address of the network interface controller (NIC)). The system randomly allocates these addresses from the active CIDR block of the vSwitch (`NetworkInterface.N.VSwitchId`) to which the network interface controller (NIC) belongs.
+	// - NetworkInterface.N.SecondaryPrivateIpAddressCount specifies the number of secondary private IPv4 addresses that are allocated to the network interface controller (NIC), excluding the primary private IP address of the network interface controller (NIC). The system randomly allocates these addresses from the active CIDR block of the vSwitch (NetworkInterface.N.VSwitchId) to which the network interface controller (NIC) belongs.
 	//
 	// example:
 	//
 	// 10
 	SecondaryPrivateIpAddressCount *int32 `json:"SecondaryPrivateIpAddressCount,omitempty" xml:"SecondaryPrivateIpAddressCount,omitempty"`
-	// The ID of the security group to which the Elastic Network Interface (ENI) belongs.
+	// The ID of the security group to which the ENI belongs.
 	//
-	// Take note of the following items:
+	// Note:
 	//
-	// - The value of N cannot exceed the maximum number of network interface controllers (NICs) supported by the instance type. For more information about the number of network interface controllers (NICs) supported by an instance type, see [Instance families](https://help.aliyun.com/document_detail/25378.html) or call the [DescribeInstanceTypes](https://help.aliyun.com/document_detail/2679699.html) operation to query the number of network interface controllers (NICs) supported by the target instance type.
+	// - The valid values of N cannot exceed the maximum number of network interface controller (NIC) supported by the target instance type. For more information, see [instance family](https://help.aliyun.com/document_detail/25378.html) or invoke the [DescribeInstanceTypes](https://help.aliyun.com/document_detail/2679699.html) operation to query the maximum number of network interface controller (NIC) supported by the target instance type.
 	//
-	// - If `NetworkInterface.N.InstanceType` is set to `Primary`, you must specify this parameter. In this case, this parameter functions the same as `SecurityGroupId`. Note that you cannot specify `SecurityGroupId`, `SecurityGroupIds.N`, or `NetworkInterface.N.SecurityGroupIds.N` at the same time.
+	// - If NetworkInterface.N.InstanceType is specified as Primary, you must configure the Settings for this parameter. In this case, this parameter serves the same purpose as SecurityGroupId. Note that you cannot configure the Settings for SecurityGroupId, SecurityGroupIds.N, or NetworkInterface.N.SecurityGroupIds.N at the same time.
 	//
-	// - If `NetworkInterface.N.InstanceType` is set to `Secondary` or left empty, this parameter is optional. The default value is the security group to which the ECS instance belongs.
+	// - If NetworkInterface.N.InstanceType is specified as Secondary or left empty, this parameter is optional. The default value is the security group to which the ECS instance belongs.
 	//
 	// example:
 	//
 	// sg-bp67acfmxazb4p****
 	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
-	// The IDs of one or more security groups to which the Elastic Network Interface (ENI) belongs.
+	// The IDs of one or more security groups to which the ENI belongs.
 	//
-	// - The value of N cannot exceed the maximum number of network interface controllers (NICs) supported by the instance type. For more information about the number of network interface controllers (NICs) supported by an instance type, see [Instance families](https://help.aliyun.com/document_detail/25378.html) or call the [DescribeInstanceTypes](https://help.aliyun.com/document_detail/2679699.html) operation to query the number of network interface controllers (NICs) supported by the target instance type.
+	// - The valid values of N cannot exceed the maximum number of network interface controller (NIC) supported by the target instance type. For more information, see [instance family](https://help.aliyun.com/document_detail/25378.html) or invoke the [DescribeInstanceTypes](https://help.aliyun.com/document_detail/2679699.html) operation to query the maximum number of network interface controller (NIC) supported by the target instance type.
 	//
-	// - The second N indicates that you can specify one or more security group IDs. The valid values of N depend on the quota of security groups that the instance can join. For more information, see [Security group limits](~~25412#SecurityGroupQuota1~~).
+	// - The second N specifies the IDs of one or more security groups. The valid values of N depend on the quota of security groups that the target instance can join. For more information, see [Security group limits](~~25412#SecurityGroupQuota1~~).
 	//
-	// Take note of the following items:
+	// Note:
 	//
-	// - If `NetworkInterface.N.InstanceType` is set to `Primary`, you must specify this parameter or `NetworkInterface.N.SecurityGroupId`. In this case, this parameter functions the same as `SecurityGroupIds.N`. Note that you cannot specify `SecurityGroupId`, `SecurityGroupIds.N`, or `NetworkInterface.N.SecurityGroupId` at the same time.
+	// - If NetworkInterface.N.InstanceType is specified as Primary, you must configure the Settings for this parameter or NetworkInterface.N.SecurityGroupId. In this case, this parameter serves the same purpose as SecurityGroupIds.N. Note that you cannot configure the Settings for SecurityGroupId, SecurityGroupIds.N, or NetworkInterface.N.SecurityGroupId at the same time.
 	//
-	// - If `NetworkInterface.N.InstanceType` is set to `Secondary` or left empty, this parameter is optional. The default value is the security group to which the ECS instance belongs.
+	// - If NetworkInterface.N.InstanceType is specified as Secondary or left empty, this parameter is optional. The default value is the security group to which the ECS instance belongs.
 	//
 	// example:
 	//
@@ -3018,24 +3028,24 @@ type RunInstancesRequestNetworkInterface struct {
 	SecurityGroupIds []*string `json:"SecurityGroupIds,omitempty" xml:"SecurityGroupIds,omitempty" type:"Repeated"`
 	// Specifies whether to enable the source/destination checking feature. We recommend that you enable this feature to improve network security. Valid values:
 	//
-	// - true: Yes.
+	// - true: Enables the feature.
 	//
-	// - false: No.
+	// - false: Disables the feature.
 	//
 	// Default value: false.
 	//
-	// > This feature is supported only in specific regions. Before you use this feature, read [Source/destination checking](https://help.aliyun.com/document_detail/2863210.html) carefully.
+	// > This feature is supported only in specific regions. Before you use this feature, read [Source/destination checking](https://help.aliyun.com/document_detail/2863210.html).
 	//
 	// example:
 	//
 	// false
 	SourceDestCheck *bool `json:"SourceDestCheck,omitempty" xml:"SourceDestCheck,omitempty"`
-	// The outbound queue depth of the Elastic Network Interface (ENI).
+	// The outbound queue depth of the ENI.
 	//
 	//
 	// <props="china">
 	//
-	// >This parameter is in invitational preview and is not yet available. If you need to use it, [submit a ticket](https://selfservice.console.aliyun.com/ticket/createIndex) to apply for whitelist access.
+	// > This parameter is in invitational preview and is not available. If you want to use this parameter, [submit a ticket](https://selfservice.console.aliyun.com/ticket/createIndex) to apply for the whitelist.
 	//
 	//
 	//
@@ -3044,15 +3054,15 @@ type RunInstancesRequestNetworkInterface struct {
 	//
 	// <props="intl">
 	//
-	// > This parameter is in invitational preview and is not yet available. If you need to use it, [submit a ticket](https://smartservice.console.aliyun.com/service/create-ticket-intl) to apply for whitelist access.
+	// > This parameter is in invitational preview and is not available. If you want to use this parameter, [submit a ticket](https://smartservice.console.aliyun.com/service/create-ticket-intl) to apply for the whitelist.
 	//
 	//
 	//
 	// When you use this parameter, take note of the following items:
 	//
-	// - It applies only to ECS instance types of Generation 7 and later.
+	// - This parameter is applicable only to seventh-generation and later ECS instance types.
 	//
-	// - It currently applies only to Linux images.
+	// - This parameter is applicable only to Linux images.
 	//
 	// - A larger outbound queue depth can improve outbound throughput and reduce the packet loss rate, but it consumes more memory.
 	//
@@ -3060,15 +3070,15 @@ type RunInstancesRequestNetworkInterface struct {
 	//
 	// 8192
 	TxQueueSize *int32 `json:"TxQueueSize,omitempty" xml:"TxQueueSize,omitempty"`
-	// The ID of the vSwitch to which the Elastic Network Interface (ENI) belongs.
+	// The ID of the vSwitch to which the ENI belongs.
 	//
-	// Take note of the following items:
+	// Note:
 	//
-	// - The value of N cannot exceed the maximum number of network interface controllers (NICs) supported by the instance type. For more information about the number of network interface controllers (NICs) supported by an instance type, see [Instance families](https://help.aliyun.com/document_detail/25378.html) or call the [DescribeInstanceTypes](https://help.aliyun.com/document_detail/2679699.html) operation to query the number of network interface controllers (NICs) supported by the target instance type.
+	// - The valid values of N cannot exceed the maximum number of network interface controller (NIC) supported by the target instance type. For more information, see [instance family](https://help.aliyun.com/document_detail/25378.html) or invoke the [DescribeInstanceTypes](https://help.aliyun.com/document_detail/2679699.html) operation to query the maximum number of network interface controller (NIC) supported by the target instance type.
 	//
-	// - If `NetworkInterface.N.InstanceType` is set to `Primary`, you must specify this parameter. In this case, this parameter functions the same as `VSwitchId`. Note that you cannot specify both this parameter and the `VSwitchId` parameter at the same time.
+	// - If NetworkInterface.N.InstanceType is specified as Primary, you must configure the Settings for this parameter. In this case, this parameter serves the same purpose as VSwitchId. Note that you cannot configure the Settings for both this parameter and VSwitchId at the same time.
 	//
-	// - If `NetworkInterface.N.InstanceType` is set to `Secondary` or left empty, this parameter is optional. The default value is the vSwitch to which the ECS instance belongs.
+	// - If NetworkInterface.N.InstanceType is specified as Secondary or left empty, this parameter is optional. The default value is the vSwitch to which the ECS instance belongs.
 	//
 	// example:
 	//
@@ -3260,21 +3270,21 @@ func (s *RunInstancesRequestNetworkInterface) Validate() error {
 }
 
 type RunInstancesRequestNetworkOptions struct {
-	// The bandwidth weight of the instance. The valid values vary based on the instance type. You can call the DescribeInstanceTypes operation to query the valid values for a specific instance type. The BandwidthWeighting field in the response indicates the bandwidth weight levels supported by the instance type. You can use the name field in the response as the dictionary value, such as Vpc-L1 or Ebs-L1.
+	// The bandwidth weight of the instance. The valid values vary based on the instance type. You can call the DescribeInstanceTypes operation to query the valid values for a specific instance type. The BandwidthWeighting field in the response indicates the bandwidth weight levels supported by the instance type. You can use the name field in the response as the dictionary value, such as Vpc-L1 and Ebs-L1.
 	//
 	// example:
 	//
 	// Default
 	BandwidthWeighting *string `json:"BandwidthWeighting,omitempty" xml:"BandwidthWeighting,omitempty"`
-	// Specifies whether to enable the jumbo frame feature for the instance. Valid values:
+	// Specifies whether to enable the Jumbo Frame feature for the instance. Valid values:
 	//
-	// - false: The jumbo frame feature is disabled. The maximum transmission unit (MTU) of all ENIs (including the primary ENI and secondary ENIs) under the instance is set to 1500.
+	// - false: Disables the Jumbo Frame feature. The maximum transmission unit (MTU) of all ENIs, including the primary ENI and secondary ENIs, is set to 1500.
 	//
-	// - true: The jumbo frame feature is enabled. The MTU of all ENIs (including the primary ENI and secondary ENIs) under the instance is set to 8500.
+	// - true: Enables the Jumbo Frame feature. The MTU of all ENIs, including the primary ENI and secondary ENIs, is set to 8500.
 	//
 	// Default value: true.
 	//
-	// > The jumbo frame feature is supported only by specific eighth-generation and later instance types. For more information, see [MTU of ECS instances](https://help.aliyun.com/document_detail/200512.html).
+	// > Only specific eighth-generation and later instance types support the Jumbo Frame feature. For more information, see [MTU of ECS instances](https://help.aliyun.com/document_detail/200512.html).
 	//
 	// example:
 	//
@@ -3326,9 +3336,9 @@ func (s *RunInstancesRequestNetworkOptions) Validate() error {
 type RunInstancesRequestPrivateDnsNameOptions struct {
 	// Specifies whether to enable or disable the resolution of instance ID-based domain names to IPv6 addresses. Valid values:
 	//
-	// - true: Enabled.
+	// - true: Enables the resolution.
 	//
-	// - false: Disabled.
+	// - false: Disables the resolution.
 	//
 	// Default value: false.
 	//
@@ -3338,9 +3348,9 @@ type RunInstancesRequestPrivateDnsNameOptions struct {
 	EnableInstanceIdDnsAAAARecord *bool `json:"EnableInstanceIdDnsAAAARecord,omitempty" xml:"EnableInstanceIdDnsAAAARecord,omitempty"`
 	// Specifies whether to enable or disable the resolution of instance ID-based domain names to IPv4 addresses. Valid values:
 	//
-	// - true: Enabled.
+	// - true: Enables the resolution.
 	//
-	// - false: Disabled.
+	// - false: Disables the resolution.
 	//
 	// Default value: false.
 	//
@@ -3350,9 +3360,9 @@ type RunInstancesRequestPrivateDnsNameOptions struct {
 	EnableInstanceIdDnsARecord *bool `json:"EnableInstanceIdDnsARecord,omitempty" xml:"EnableInstanceIdDnsARecord,omitempty"`
 	// Specifies whether to enable or disable the resolution of IP-based domain names to IPv4 addresses. Valid values:
 	//
-	// - true: Enabled.
+	// - true: Enables the resolution.
 	//
-	// - false: Disabled.
+	// - false: Disables the resolution.
 	//
 	// Default value: false.
 	//
@@ -3362,9 +3372,9 @@ type RunInstancesRequestPrivateDnsNameOptions struct {
 	EnableIpDnsARecord *bool `json:"EnableIpDnsARecord,omitempty" xml:"EnableIpDnsARecord,omitempty"`
 	// Specifies whether to enable or disable the reverse resolution of IPv4 addresses to IP-based domain names. Valid values:
 	//
-	// - true: Enabled.
+	// - true: Enables the resolution.
 	//
-	// - false: Disabled.
+	// - false: Disables the resolution.
 	//
 	// Default value: false.
 	//
@@ -3374,11 +3384,11 @@ type RunInstancesRequestPrivateDnsNameOptions struct {
 	EnableIpDnsPtrRecord *bool `json:"EnableIpDnsPtrRecord,omitempty" xml:"EnableIpDnsPtrRecord,omitempty"`
 	// The hostname type. Valid values:
 	//
-	// - Custom: custom hostname.
+	// - Custom: Custom hostname.
 	//
 	// - IpBased: IP-based hostname.
 	//
-	// - InstanceIdBased: instance ID-based hostname.
+	// - InstanceIdBased: Instance ID-based hostname.
 	//
 	// Default value: Custom.
 	//

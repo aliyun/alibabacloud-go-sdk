@@ -36,7 +36,7 @@ type DescribeTerminalSessionsRequest struct {
 	//
 	// i-bp1i7gg30r52z2em****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The maximum number of entries per page for a paged query.
+	// The maximum number of entries to return per page in a paging query.
 	//
 	// Maximum value: 100.
 	//
@@ -46,7 +46,7 @@ type DescribeTerminalSessionsRequest struct {
 	//
 	// 10
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The pagination token. Set this parameter to the NextToken value returned in the previous API call.
+	// The query token. Set the value to the NextToken value returned by the previous API call.
 	//
 	// example:
 	//

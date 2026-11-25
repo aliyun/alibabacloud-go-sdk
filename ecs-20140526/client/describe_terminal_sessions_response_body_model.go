@@ -18,7 +18,7 @@ type iDescribeTerminalSessionsResponseBody interface {
 }
 
 type DescribeTerminalSessionsResponseBody struct {
-	// The pagination token returned in this call.
+	// The query token returned by the current call.
 	//
 	// example:
 	//

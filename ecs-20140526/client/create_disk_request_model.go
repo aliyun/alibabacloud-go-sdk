@@ -41,6 +41,8 @@ type iCreateDiskRequest interface {
 	GetPerformanceLevel() *string
 	SetProvisionedIops(v int64) *CreateDiskRequest
 	GetProvisionedIops() *int64
+	SetReadWriteMode(v string) *CreateDiskRequest
+	GetReadWriteMode() *string
 	SetRegionId(v string) *CreateDiskRequest
 	GetRegionId() *string
 	SetResourceGroupId(v string) *CreateDiskRequest
@@ -80,19 +82,19 @@ type CreateDiskRequest struct {
 	//
 	// - false: no.
 	//
-	// > This parameter is supported only when `DiskCategory` is set to `cloud_auto`. For more information, see [ESSD AutoPL cloud disks](https://help.aliyun.com/document_detail/368372.html).
+	// > This parameter is supported only when `DiskCategory` is set to `cloud_auto`. For more information, see [ESSD AutoPL disks](https://help.aliyun.com/document_detail/368372.html).
 	//
 	// example:
 	//
 	// false
 	BurstingEnabled *bool `json:"BurstingEnabled,omitempty" xml:"BurstingEnabled,omitempty"`
-	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [Ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must ensure that it is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [Ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
 	//
 	// example:
 	//
 	// 123e4567-e89b-12d3-a456-426655440000
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// The description of the cloud disk. The description must be 2 to 256 characters in length and cannot start with `http://` or `https://`.
+	// The disk description. The description must be 2 to 256 characters in length and cannot start with `http://` or `https://`.
 	//
 	// Default value: empty.
 	//
@@ -100,23 +102,23 @@ type CreateDiskRequest struct {
 	//
 	// testDescription
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The category of the data cloud disk. Valid values:
+	// The category of the data disk. Valid values:
 	//
-	// - cloud: basic cloud disk.
+	// - cloud: basic disk.
 	//
-	// - cloud_efficiency: ultra cloud disk.
+	// - cloud_efficiency: ultra disk.
 	//
 	// - cloud_ssd: standard SSD.
 	//
-	// - cloud_essd: ESSD cloud disk.
+	// - cloud_essd: enterprise SSD.
 	//
-	// - cloud_auto: ESSD AutoPL cloud disk.
+	// - cloud_auto: ESSD AutoPL disk.
 	//
 	// - cloud_essd_entry: ESSD Entry disk.
 	//
-	// - cloud_regional_disk_auto: regional ESSD cloud disk.
+	// - cloud_regional_disk_auto: regional Enterprise SSD (ESSD).
 	//
-	// - elastic_ephemeral_disk_standard: elastic ephemeral disk - Standard Edition.
+	// - elastic_ephemeral_disk_standard: elastic ephemeral disk - standard edition.
 	//
 	// - elastic_ephemeral_disk_premium: elastic ephemeral disk - Premium Edition.
 	//
@@ -126,7 +128,7 @@ type CreateDiskRequest struct {
 	//
 	// cloud_ssd
 	DiskCategory *string `json:"DiskCategory,omitempty" xml:"DiskCategory,omitempty"`
-	// The name of the cloud disk. The name must be 2 to 128 characters in length. It can contain letters and digits. It can also contain colons (:), underscores (_), periods (.), and hyphens (-). It must start with a letter.
+	// The disk name. The name must be 2 to 128 characters in length and can contain Unicode letters (including English and Chinese characters) and ASCII digits (0-9). It can contain colons (:), underscores (_), periods (.), and hyphens (-). It must start with a Unicode letter.
 	//
 	// Default value: empty.
 	//
@@ -140,7 +142,7 @@ type CreateDiskRequest struct {
 	//
 	// hide
 	EncryptAlgorithm *string `json:"EncryptAlgorithm,omitempty" xml:"EncryptAlgorithm,omitempty"`
-	// Specifies whether to encrypt the cloud disk. Valid values:
+	// Specifies whether to encrypt the disk. Valid values:
 	//
 	// - true: yes.
 	//
@@ -152,27 +154,27 @@ type CreateDiskRequest struct {
 	//
 	// false
 	Encrypted *bool `json:"Encrypted,omitempty" xml:"Encrypted,omitempty"`
-	// The ID of the subscription instance to which the subscription cloud disk is automatically attached.
+	// The ID of the subscription instance to which the disk is automatically attached. Specify this parameter to create a subscription disk and attach it to the specified subscription instance.
 	//
-	// - After you specify the instance ID, the ResourceGroupId, Tag.N.Key, Tag.N.Value, ClientToken, and KMSKeyId parameters are ignored.
+	// - After you specify the instance ID, the `ResourceGroupId`, `Tag.N.Key`, `Tag.N.Value`, `ClientToken`, and `KMSKeyId` parameters are ignored.
 	//
-	// - You cannot specify both ZoneId and InstanceId.
+	// - You cannot specify both `ZoneId` and `InstanceId`.
 	//
-	// Default value: empty. An empty value indicates that a pay-as-you-go cloud disk is created. The region and zone of the cloud disk are determined by RegionId and ZoneId.
+	// Default value: empty. An empty value indicates that a pay-as-you-go disk is created. The region and zone of the disk are determined by the `RegionId` and `ZoneId` parameters.
 	//
 	// example:
 	//
 	// i-bp18pnlg1ds9rky4****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The ID of the Key Management Service (KMS) key used by the cloud disk.
+	// The ID of the Key Management Service (KMS) key used to encrypt the disk.
 	//
-	// > If Encrypted is set to true and KMSKeyId is not specified, the default key is used for encryption, and the KMSKeyId value is returned after the instance is created.
+	// > If `Encrypted` is set to true and `KMSKeyId` is not specified, the default key is used for encryption, and the `KMSKeyId` value is returned after the disk is created.
 	//
-	// > - - If the cloud disk is created from an unshared encrypted snapshot, the encryption key used by the snapshot is used by default.
+	// > - - If the disk is created from an unshared encrypted snapshot, the encryption key used for the snapshot is used by default.
 	//
-	// > - - If the cloud disk is created from a shared encrypted snapshot, the service key is used by default.
+	// > - - If the disk is created from a shared encrypted snapshot, the service key is used by default.
 	//
-	// > - - If the cloud disk is created in a region where account-level default encryption for Elastic Block Storage (EBS) is enabled, the specified account-level key is used by default.
+	// > - - If the disk is created in a region where account-level default encryption for Block Storage is enabled, the specified account-level key is used by default.
 	//
 	// > - - In other cases, the service key is used by default.
 	//
@@ -180,15 +182,15 @@ type CreateDiskRequest struct {
 	//
 	// 0e478b7a-4262-4802-b8cb-00d3fb40826X
 	KMSKeyId *string `json:"KMSKeyId,omitempty" xml:"KMSKeyId,omitempty"`
-	// Specifies whether to enable the multi-mount feature. Valid values:
+	// Specifies whether to enable the multi-attach feature. Valid values:
 	//
-	// - Disabled: does not enable the feature.
+	// - Disabled: disables the feature.
 	//
-	// - Enabled: enables the feature. Only ESSD cloud disks support this value.
+	// - Enabled: enables the feature. Only enterprise SSDs support this feature (standard SSDs do not).
 	//
 	// Default value: Disabled.
 	//
-	// > Cloud disks for which the multi-mount feature is enabled support only the pay-as-you-go billing method. Therefore, when `MultiAttach` is set to `Enabled`, you cannot configure the settings for the `InstanceId` parameter. You can call the [AttachDisk](https://help.aliyun.com/document_detail/25515.html) operation to mount the cloud disk after it is created. Note that a cloud disk for which the multi-mount feature is enabled can be mounted only as a data cloud disk.
+	// > Disks with the multi-attach feature enabled support only the pay-as-you-go billing method. Therefore, when `MultiAttach` is set to `Enabled`, you cannot specify the `InstanceId` parameter. You can call [AttachDisk](https://help.aliyun.com/document_detail/25515.html) to attach the disk after it is created. Note that disks with the multi-attach feature enabled can only be attached as data disks.
 	//
 	// example:
 	//
@@ -196,41 +198,47 @@ type CreateDiskRequest struct {
 	MultiAttach  *string `json:"MultiAttach,omitempty" xml:"MultiAttach,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The performance level settings for the ESSD cloud disk. Valid values:
+	// The performance level of the enterprise SSD (standard SSDs do not support this parameter). Valid values:
 	//
-	// - PL0: A single ESSD cloud disk can deliver up to 10,000 random read/write IOPS.
+	// - PL0: A single disk can deliver up to 10,000 random read/write IOPS.
 	//
-	// - PL1: A single ESSD cloud disk can deliver up to 50,000 random read/write IOPS.
+	// - PL1: A single disk can deliver up to 50,000 random read/write IOPS.
 	//
-	// - PL2: A single ESSD cloud disk can deliver up to 100,000 random read/write IOPS.
+	// - PL2: A single disk can deliver up to 100,000 random read/write IOPS.
 	//
-	// - PL3: A single ESSD cloud disk can deliver up to 1,000,000 random read/write IOPS.
+	// - PL3: A single disk can deliver up to 1,000,000 random read/write IOPS.
 	//
 	// Default value: PL1.
 	//
-	// For more information about how to select a performance level for an ESSD cloud disk, see [ESSD cloud disk](https://help.aliyun.com/document_detail/122389.html).
+	// For more information about how to select an enterprise SSD performance level, see [enterprise SSDs](https://help.aliyun.com/document_detail/122389.html).
 	//
 	// example:
 	//
 	// PL1
 	PerformanceLevel *string `json:"PerformanceLevel,omitempty" xml:"PerformanceLevel,omitempty"`
-	// The read/write IOPS of the provisioned performance for a single ESSD AutoPL cloud disk. Valid values:
+	// The provisioned read and write IOPS for a single ESSD AutoPL disk. Valid values:
 	//
-	// - If the capacity is less than or equal to 3 GiB, you cannot configure the provisioned performance settings.
+	// - If the disk size is less than or equal to 3 GiB, you cannot configure provisioned performance.
 	//
-	// - If the capacity is greater than or equal to 4 GiB, the valid values are 0 to min{(1,000 IOPS/GiB × Capacity - Baseline IOPS), 50,000}.
-	//
-	//
-	// Baseline performance = max{min{1,800 + 50 × Capacity, 50,000}, 3,000}.
+	// - If the disk size is greater than or equal to 4 GiB: 0 to min{(1,000 IOPS/GiB × disk size - baseline IOPS), 50,000}.
 	//
 	//
-	// > This parameter is supported only when `DiskCategory` is set to `cloud_auto`. For more information, see [ESSD AutoPL cloud disks](https://help.aliyun.com/document_detail/368372.html).
+	// The baseline performance is calculated as follows: max{min{1,800 + 50 × disk size, 50,000}, 3,000}.
+	//
+	//
+	// > This parameter is supported only when `DiskCategory` is set to `cloud_auto`. For more information, see [ESSD AutoPL disks](https://help.aliyun.com/document_detail/368372.html).
 	//
 	// example:
 	//
 	// 40000
 	ProvisionedIops *int64 `json:"ProvisionedIops,omitempty" xml:"ProvisionedIops,omitempty"`
-	// The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) operation to query the most recent region list.
+	// The access mode of the disk.
+	//
+	// example:
+	//
+	// ReadOnly
+	ReadWriteMode *string `json:"ReadWriteMode,omitempty" xml:"ReadWriteMode,omitempty"`
+	// The region ID. You can call [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) to query the most recent region list.
 	//
 	// This parameter is required.
 	//
@@ -238,7 +246,7 @@ type CreateDiskRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the resource group to which the cloud disk belongs.
+	// The ID of the resource group to which the disk belongs.
 	//
 	// example:
 	//
@@ -246,7 +254,7 @@ type CreateDiskRequest struct {
 	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// Snapshot size of the cloud disk. Unit: GiB. You must specify this parameter. Valid values:
+	// The disk size. Unit: GiB. You must specify this parameter. Valid values:
 	//
 	// -   cloud: 5 to 2,000.
 	//
@@ -254,7 +262,7 @@ type CreateDiskRequest struct {
 	//
 	// -   cloud_ssd: 20 to 32,768.
 	//
-	// -   cloud_essd: The valid values vary based on the value of `PerformanceLevel`.
+	// -   cloud_essd: The valid values vary based on the `PerformanceLevel` parameter.
 	//
 	//     - PL0: 1 to 65,536.
 	//
@@ -276,31 +284,31 @@ type CreateDiskRequest struct {
 	//
 	// If you specify the `SnapshotId` parameter, the `SnapshotId` and `Size` parameters have the following limits:
 	//
-	// - If snapshot size of the snapshot specified by `SnapshotId` is greater than the value of `Size`, snapshot size of the created cloud disk is equal to snapshot size of the snapshot.
+	// - If the snapshot size is greater than the `Size` value, the created disk size is equal to the snapshot size.
 	//
-	// - If snapshot size of the snapshot specified by `SnapshotId` is less than the value of `Size`, snapshot size of the created cloud disk is equal to the value of `Size`.
+	// - If the snapshot size is less than the `Size` value, the created disk size is equal to the `Size` value.
 	//
 	// example:
 	//
 	// 2000
 	Size *int32 `json:"Size,omitempty" xml:"Size,omitempty"`
-	// The ID of the snapshot used to create the cloud disk. Snapshots created on or before July 15, 2013 cannot be used to create cloud disks.
+	// The ID of the snapshot used to create the disk. Snapshots created on or before July 15, 2013 cannot be used to create disks.
 	//
 	// The `SnapshotId` and `Size` parameters have the following limits:
 	//
-	// - If snapshot size of the snapshot specified by `SnapshotId` is greater than the value of `Size`, snapshot size of the created cloud disk is equal to snapshot size of the snapshot.
+	// - If the snapshot size is greater than the `Size` value, the created disk size is equal to the snapshot size.
 	//
-	// - If snapshot size of the snapshot specified by `SnapshotId` is less than the value of `Size`, snapshot size of the created cloud disk is equal to the value of `Size`.
+	// - If the snapshot size is less than the `Size` value, the created disk size is equal to the `Size` value.
 	//
-	// - You cannot use a snapshot to create an elastic ephemeral disk.
+	// - You cannot use snapshots to create elastic ephemeral disks.
 	//
 	// example:
 	//
 	// s-bp67acfmxazb4p****
 	SnapshotId *string `json:"SnapshotId,omitempty" xml:"SnapshotId,omitempty"`
-	// The ID of the dedicated block storage cluster. If you want to create a cloud disk in a specified dedicated block storage cluster, specify this parameter.
+	// The ID of the dedicated block storage cluster. Specify this parameter to create a disk in a specific dedicated block storage cluster.
 	//
-	// > You can specify only one of the storage set parameters (`StorageSetId` and `StorageSetPartitionNumber`) and the dedicated block storage cluster parameter (`StorageClusterId`). If you specify both, the call fails.
+	// > You can specify only one of the storage set parameters (`StorageSetId` and `StorageSetPartitionNumber`) and the dedicated block storage cluster parameter (`StorageClusterId`). If you specify both, the API call fails.
 	//
 	// example:
 	//
@@ -308,13 +316,13 @@ type CreateDiskRequest struct {
 	StorageClusterId *string `json:"StorageClusterId,omitempty" xml:"StorageClusterId,omitempty"`
 	// The ID of the storage set.
 	//
-	// > You can specify only one of the storage set parameters (`StorageSetId` and `StorageSetPartitionNumber`) and the dedicated block storage cluster parameter (`StorageClusterId`). If you specify both, the call fails.
+	// > You can specify only one of the storage set parameters (`StorageSetId` and `StorageSetPartitionNumber`) and the dedicated block storage cluster parameter (`StorageClusterId`). If you specify both, the API call fails.
 	//
 	// example:
 	//
 	// ss-bp67acfmxazb4p****
 	StorageSetId *string `json:"StorageSetId,omitempty" xml:"StorageSetId,omitempty"`
-	// The number of partitions in the storage set. Valid values: greater than or equal to 2. The maximum value cannot exceed the privilege quota limit displayed after you call the [DescribeAccountAttributes](https://help.aliyun.com/document_detail/73772.html) operation.
+	// The number of partitions in the storage set. Valid values: greater than or equal to 2. The maximum value cannot exceed the privilege quota limit displayed after you call [DescribeAccountAttributes](https://help.aliyun.com/document_detail/73772.html).
 	//
 	// Default value: 2.
 	//
@@ -322,16 +330,16 @@ type CreateDiskRequest struct {
 	//
 	// 3
 	StorageSetPartitionNumber *int32 `json:"StorageSetPartitionNumber,omitempty" xml:"StorageSetPartitionNumber,omitempty"`
-	// The tags of the cloud disk.
+	// The tags of the disk.
 	Tag []*CreateDiskRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
-	// The zone ID. This parameter is required when you create a pay-as-you-go cloud disk in a specified zone.
+	// The zone ID of the pay-as-you-go disk.
 	//
-	// - If you do not specify InstanceId, ZoneId is required.
+	// - If you do not specify `InstanceId`, `ZoneId` is required.
 	//
-	// - You cannot specify both ZoneId and InstanceId.
+	// - You cannot specify both `ZoneId` and `InstanceId`.
 	//
 	//
-	// > You do not need to specify ZoneId for a `cloud_regional_disk_auto` cloud disk.
+	// > You do not need to specify `ZoneId` for disks of the `cloud_regional_disk_auto` type.
 	//
 	// example:
 	//
@@ -409,6 +417,10 @@ func (s *CreateDiskRequest) GetPerformanceLevel() *string {
 
 func (s *CreateDiskRequest) GetProvisionedIops() *int64 {
 	return s.ProvisionedIops
+}
+
+func (s *CreateDiskRequest) GetReadWriteMode() *string {
+	return s.ReadWriteMode
 }
 
 func (s *CreateDiskRequest) GetRegionId() *string {
@@ -532,6 +544,11 @@ func (s *CreateDiskRequest) SetPerformanceLevel(v string) *CreateDiskRequest {
 
 func (s *CreateDiskRequest) SetProvisionedIops(v int64) *CreateDiskRequest {
 	s.ProvisionedIops = &v
+	return s
+}
+
+func (s *CreateDiskRequest) SetReadWriteMode(v string) *CreateDiskRequest {
+	s.ReadWriteMode = &v
 	return s
 }
 
@@ -673,13 +690,13 @@ func (s *CreateDiskRequestArn) Validate() error {
 }
 
 type CreateDiskRequestTag struct {
-	// The key of tag N of the cloud disk. Valid values of N: 1 to 20. The tag key cannot be an empty string. The tag key can be up to 128 characters in length and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
+	// The tag key of the disk. Valid values of N: 1 to 20. The tag key cannot be an empty string. It can be up to 128 characters in length and cannot start with `aliyun` or `acs:`. It cannot contain `http://` or `https://`.
 	//
 	// example:
 	//
 	// TestKey
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The value of tag N of the cloud disk. Valid values of N: 1 to 20. The tag value can be an empty string. The tag value can be up to 128 characters in length and cannot contain `http://` or `https://`.
+	// The tag value of the disk. Valid values of N: 1 to 20. The tag value can be an empty string. It can be up to 128 characters in length and cannot contain `http://` or `https://`.
 	//
 	// example:
 	//

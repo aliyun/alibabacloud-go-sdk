@@ -38,9 +38,9 @@ type DescribeCloudAssistantStatusRequest struct {
 	//
 	// example:
 	//
-	// i-bp1iudwa5b1tqa****
+	// ["i-bp1iudwa5b1tqa****"]
 	InstanceId []*string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty" type:"Repeated"`
-	// The maximum number of entries to return on each page during a paged query. This parameter is invalid if the **InstanceId*	- parameter Settings are configured.
+	// The maximum number of entries to return on each page during paging in a paged query. This parameter is invalid if the Settings of the **InstanceId*	- parameter are specified.
 	//
 	// Maximum value: 50.
 	//
@@ -70,13 +70,13 @@ type DescribeCloudAssistantStatusRequest struct {
 	OSType       *string `json:"OSType,omitempty" xml:"OSType,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// > This parameter will be taken offline soon. We recommend that you use NextToken and MaxResults to perform paged queries.
+	// > This parameter will be taken offline soon. We recommend that you use NextToken and MaxResults to complete paging for paged query operations.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// > This parameter will be taken offline soon. We recommend that you use NextToken and MaxResults to perform paged queries.
+	// > This parameter will be taken offline soon. We recommend that you use NextToken and MaxResults to complete paging for paged query operations.
 	//
 	// example:
 	//

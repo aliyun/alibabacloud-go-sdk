@@ -25,7 +25,7 @@ type iDescribeCloudAssistantStatusResponseBody interface {
 
 type DescribeCloudAssistantStatusResponseBody struct {
 	InstanceCloudAssistantStatusSet *DescribeCloudAssistantStatusResponseBodyInstanceCloudAssistantStatusSet `json:"InstanceCloudAssistantStatusSet,omitempty" xml:"InstanceCloudAssistantStatusSet,omitempty" type:"Struct"`
-	// The pagination token returned by this call.
+	// The pagination token returned by the current call.
 	//
 	// example:
 	//
@@ -51,7 +51,7 @@ type DescribeCloudAssistantStatusResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The total number of instances.
 	//
-	// > When you use the MaxResults and NextToken parameters for paged queries, the returned TotalCount value is meaningless.
+	// > The TotalCount value is meaningless when you use the MaxResults and NextToken parameters for paging in a paged query.
 	//
 	// example:
 	//

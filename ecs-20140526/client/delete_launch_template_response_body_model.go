@@ -25,7 +25,10 @@ type DeleteLaunchTemplateResponseBody struct {
 	// example:
 	//
 	// lt-bp1apo0bbbkuy0rj****
-	LaunchTemplateId             *string                                                       `json:"LaunchTemplateId,omitempty" xml:"LaunchTemplateId,omitempty"`
+	LaunchTemplateId *string `json:"LaunchTemplateId,omitempty" xml:"LaunchTemplateId,omitempty"`
+	// example:
+	//
+	// [3,2,1]
 	LaunchTemplateVersionNumbers *DeleteLaunchTemplateResponseBodyLaunchTemplateVersionNumbers `json:"LaunchTemplateVersionNumbers,omitempty" xml:"LaunchTemplateVersionNumbers,omitempty" type:"Struct"`
 	// The request ID.
 	//

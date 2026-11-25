@@ -25,7 +25,7 @@ type iDescribeDedicatedHostsResponseBody interface {
 
 type DescribeDedicatedHostsResponseBody struct {
 	DedicatedHosts *DescribeDedicatedHostsResponseBodyDedicatedHosts `json:"DedicatedHosts,omitempty" xml:"DedicatedHosts,omitempty" type:"Struct"`
-	// The paging token returned by this invoke. When you use MaxResults and NextToken for paged query, and this return value is empty, it indicates that no more data is returned.
+	// The pagination token returned by the current call. If you use MaxResults and NextToken for pagination and this value is empty, no more data is available.
 	//
 	// example:
 	//
@@ -37,7 +37,7 @@ type DescribeDedicatedHostsResponseBody struct {
 	//
 	// 5
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page.
+	// The number of entries per page specified in the request.
 	//
 	// example:
 	//

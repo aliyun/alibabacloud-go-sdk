@@ -34,7 +34,7 @@ type ResizeDiskRequest struct {
 	//
 	// 123e4567-e89b-12d3-a456-426655440000
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// The ID of the cloud disk. You can call the [DescribeDisks](https://help.aliyun.com/document_detail/25514.html) operation to query the ID of the cloud disk.
+	// The disk ID. You can call the [DescribeDisks](https://help.aliyun.com/document_detail/25514.html) operation to query the disk ID.
 	//
 	// This parameter is required.
 	//
@@ -42,13 +42,13 @@ type ResizeDiskRequest struct {
 	//
 	// d-bp67acfmxazb4p****
 	DiskId *string `json:"DiskId,omitempty" xml:"DiskId,omitempty"`
-	// The new capacity of the cloud disk. Unit: GiB. Valid values:
+	// The target capacity for the disk scale-out. Unit: GiB. Valid values:
 	//
-	// - System cloud disk:
+	// - System disks:
 	//
-	//   - Basic cloud disk: 20 to 500.
+	//   - Basic disks: 20 to 500.
 	//
-	//   - ESSD:
+	//   - Enterprise SSDs:
 	//
 	//     - PL0: 1 to 2048.
 	//
@@ -58,17 +58,17 @@ type ResizeDiskRequest struct {
 	//
 	//     - PL3: 1261 to 2048.
 	//
-	//   - ESSD AutoPL disk: 1 to 2048.
+	//   - ESSD AutoPL disks: 1 to 2048.
 	//
-	//   - Other cloud disk types: 20 to 2048.
+	//   - Other disk types: 20 to 2048.
 	//
-	// - Data cloud disk:
+	// - Data disks:
 	//
-	//     - Ultra cloud disk (cloud_efficiency): 20 to 32768.
+	//     - Ultra disks (cloud_efficiency): 20 to 32768.
 	//
-	//     - Standard SSD (cloud_ssd): 20 to 32768.
+	//     - Standard SSDs (cloud_ssd): 20 to 32768.
 	//
-	//     - ESSD (cloud_essd): The valid values vary based on the `PerformanceLevel` parameter. You can call the [DescribeDisks](https://help.aliyun.com/document_detail/25514.html) operation to query the cloud disk information and check the valid values based on the `PerformanceLevel` parameter in the response.
+	//     - Enterprise SSDs (cloud_essd): The valid values vary based on the `PerformanceLevel` parameter. You can invoke the [DescribeDisks](https://help.aliyun.com/document_detail/25514.html) operation to query disk information and check the valid values based on the `PerformanceLevel` parameter in the response.
 	//
 	//         - PL0: 1 to 65536.
 	//
@@ -78,19 +78,19 @@ type ResizeDiskRequest struct {
 	//
 	//         - PL3: 1261 to 65536.
 	//
-	//     - Basic cloud disk (cloud): 5 to 2000.
+	//     - Basic disks (cloud): 5 to 2000.
 	//
-	//     - ESSD AutoPL disk (cloud_auto): 1 to 65536.
+	//     - ESSD AutoPL disks (cloud_auto): 1 to 65536.
 	//
 	// <props="china">
 	//
-	//     - ESSD Entry disk (cloud_essd_entry): 10 to 32768.
+	//     - ESSD Entry disks (cloud_essd_entry): 10 to 32768.
 	//
-	//   - Standard elastic ephemeral disk (elastic_ephemeral_disk_standard): 64 to 8192.
+	//   - Standard Edition elastic ephemeral disks (elastic_ephemeral_disk_standard): 64 to 8192.
 	//
-	//   - Premium elastic ephemeral disk (elastic_ephemeral_disk_premium): 64 to 8192.
+	//   - Premium Edition elastic ephemeral disks (elastic_ephemeral_disk_premium): 64 to 8192.
 	//
-	// > The new capacity must be greater than the original capacity. Otherwise, an error is returned when you call this operation.
+	// > The specified new capacity must be greater than the original capacity. Otherwise, an error is returned when you invoke the API operation.
 	//
 	// This parameter is required.
 	//
@@ -102,13 +102,13 @@ type ResizeDiskRequest struct {
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The method used to resize the cloud disk. Valid values:
+	// The method for disk scale-out. Valid values:
 	//
-	// - offline: offline resizing. This is the default value. After the cloud disk is resized, you must [restart the instance](https://help.aliyun.com/document_detail/25440.html) in the console or call the [RebootInstance](https://help.aliyun.com/document_detail/25502.html) operation for the resize to take effect.
+	// - offline (default): offline scale-out. After the scale-out, you must [restart the instance](https://help.aliyun.com/document_detail/25440.html) in the console or invoke the [RebootInstance](https://help.aliyun.com/document_detail/25502.html) API operation for the scale-out to take effect.
 	//
 	//
 	//
-	// - online: online resizing. The cloud disk is resized without the need to restart the instance. This value supports ultra cloud disks, standard SSDs, ESSDs, and elastic ephemeral disks.
+	// - online: online scale-out. The scale-out is completed without the need to restart the instance. This value is supported for ultra disks, standard SSDs, enterprise SSDs, and elastic ephemeral disks.
 	//
 	// example:
 	//

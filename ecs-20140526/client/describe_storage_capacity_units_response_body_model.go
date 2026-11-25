@@ -28,7 +28,7 @@ type DescribeStorageCapacityUnitsResponseBody struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page in paging queries.
+	// The number of entries per page for paging in a paged query.
 	//
 	// example:
 	//

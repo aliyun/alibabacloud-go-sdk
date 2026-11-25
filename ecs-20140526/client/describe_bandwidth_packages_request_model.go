@@ -31,18 +31,38 @@ type iDescribeBandwidthPackagesRequest interface {
 
 type DescribeBandwidthPackagesRequest struct {
 	// The ID of the bandwidth package.
+	//
+	// example:
+	//
+	// bwp-bp1xea10o8qxwaswq****
 	BandwidthPackageId *string `json:"BandwidthPackageId,omitempty" xml:"BandwidthPackageId,omitempty"`
-	// The ID of the NAT gateway. If specified, only bandwidth packages associated with the NAT gateway are returned.
+	// The ID of the NAT gateway. If you specify this parameter, only bandwidth packages associated with the NAT gateway are returned.
+	//
+	// example:
+	//
+	// ngw-bp1uewa15k4iyaszaasza****
 	NatGatewayId *string `json:"NatGatewayId,omitempty" xml:"NatGatewayId,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The page number. Starting value: 1. Default value: 1.
+	//
+	// example:
+	//
+	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// The number of entries to return on each page. Valid values: 1 to 100.
+	//
+	// example:
+	//
+	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The region ID of the bandwidth package.
 	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`

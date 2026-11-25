@@ -48,7 +48,7 @@ type DescribeVscsRequest struct {
 	//
 	// 10
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The query token returned for the current request.
+	// The query token returned by this request.
 	//
 	// example:
 	//
@@ -64,7 +64,7 @@ type DescribeVscsRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the resource group to which the instance belongs. When you use this parameter to filter resources, the resource count cannot exceed 1,000. Note: Filtering by the default resource group is not supported.
+	// The ID of the resource group to which the instance belongs. If you use this parameter to filter resources, the resource count cannot exceed 1,000. Note: You cannot filter resources by the default resource group.
 	//
 	// example:
 	//
@@ -72,19 +72,19 @@ type DescribeVscsRequest struct {
 	ResourceGroupId      *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The status of the VSCs to be queried. If you do not specify this parameter, VSCs in all states are returned. Valid values:
+	// The status of the VSCs to query. If you do not specify this parameter, VSCs in all states are returned. Valid values:
 	//
 	// - In_use: In use.
 	//
-	// - Attaching: Attaching.
+	// - Attaching: Being attached.
 	//
-	// - Detaching: Detaching.
+	// - Detaching: Being detached.
 	//
 	// - AttachFailed: Attachment failed.
 	//
 	// - DetachFailed: Detachment failed.
 	//
-	// - All (default): All states.
+	// - All: All states.
 	//
 	// Default value: All.
 	//
@@ -92,11 +92,9 @@ type DescribeVscsRequest struct {
 	//
 	// Successful
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The list of tags.
+	// The tags.
 	Tag []*DescribeVscsRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
-	// The IDs of the VSCs to be queried.
-	//
-	// We recommend that you specify no more than 100 VSC IDs.
+	// The IDs of the VSCs to query. Specify up to 100 VSC IDs.
 	VscIds []*string `json:"VscIds,omitempty" xml:"VscIds,omitempty" type:"Repeated"`
 }
 
@@ -230,17 +228,13 @@ func (s *DescribeVscsRequest) Validate() error {
 }
 
 type DescribeVscsRequestTag struct {
-	// The tag key of the command. Valid values of N: 1 to 20. If you specify this parameter, it cannot be an empty string.
-	//
-	// If you use a single tag to filter resources, the resource count returned cannot exceed 1,000. If you use multiple tags to filter resources, the resource count of resources to which you attach multiple tags at the same time cannot exceed 1,000. If the resource count exceeds 1,000, you must call the [ListTagResources](https://help.aliyun.com/document_detail/110425.html) operation to query the resources.
-	//
-	// The tag key can be up to 64 characters in length. It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
+	// The tag key of the command. Valid values of N: 1 to 20. If you specify this parameter, it cannot be an empty string. If you use a single tag to filter resources, the resource count cannot exceed 1,000. If you use multiple tags to filter resources, the resource count of resources that have all the specified tags attached cannot exceed 1,000. If the resource count exceeds 1,000, you must call the [ListTagResources](https://help.aliyun.com/document_detail/110425.html) operation to query the resources. The tag key can be up to 64 characters in length. It cannot start with aliyun or acs:, and cannot contain http:// or https://.
 	//
 	// example:
 	//
 	// Environment
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The tag value. Valid values of N: 1 to 20. If you specify this parameter, it can be an empty string. The tag value can be up to 128 characters in length. It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
+	// The tag value. Valid values of N: 1 to 20. If you specify this parameter, it can be an empty string. The tag value can be up to 128 characters in length. It cannot start with aliyun or acs:, and cannot contain http:// or https://.
 	//
 	// example:
 	//

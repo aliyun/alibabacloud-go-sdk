@@ -16,7 +16,7 @@ type iDisableActivationResponseBody interface {
 }
 
 type DisableActivationResponseBody struct {
-	// The information about the activation code and its usage.
+	// The activation code and its usage information.
 	Activation *DisableActivationResponseBodyActivation `json:"Activation,omitempty" xml:"Activation,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -68,13 +68,13 @@ type DisableActivationResponseBodyActivation struct {
 	//
 	// 4ECEEE12-56F1-4FBC-9AB1-890F1234****
 	ActivationId *string `json:"ActivationId,omitempty" xml:"ActivationId,omitempty"`
-	// The time when the activation code was created. The time is displayed in ISO 8601 format in UTC.
+	// The creation time. The time is formatted in ISO 8601 and displayed in UTC.
 	//
 	// example:
 	//
 	// 2021-01-20T06:00:00Z
 	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
-	// The number of deregistered instances.
+	// The number of unregistered instances.
 	//
 	// example:
 	//
@@ -104,7 +104,7 @@ type DisableActivationResponseBodyActivation struct {
 	//
 	// test-InstanceName
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	// The IP addresses of hosts that are allowed to use the activation code.
+	// The IP addresses of the hosts that are allowed to use the activation code.
 	//
 	// example:
 	//

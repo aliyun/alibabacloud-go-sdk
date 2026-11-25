@@ -14,6 +14,11 @@ type iModifyEipAddressAttributeResponseBody interface {
 }
 
 type ModifyEipAddressAttributeResponseBody struct {
+	// The request ID.
+	//
+	// example:
+	//
+	// 0ED8D006-F706-4D23-88ED-E11ED28DCAC0
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 

@@ -46,7 +46,7 @@ type iCopySnapshotRequest interface {
 type CopySnapshotRequest struct {
 	// >This parameter is in invitational preview and is not supported.
 	Arn []*CopySnapshotRequestArn `json:"Arn,omitempty" xml:"Arn,omitempty" type:"Repeated"`
-	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must ensure that it is unique among different requests. The client token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
 	//
 	// example:
 	//
@@ -70,7 +70,7 @@ type CopySnapshotRequest struct {
 	//
 	// CopySnapshotDemo
 	DestinationSnapshotDescription *string `json:"DestinationSnapshotDescription,omitempty" xml:"DestinationSnapshotDescription,omitempty"`
-	// The name of the new snapshot. The name must be 2 to 128 characters in length, must start with a letter or a Chinese character, and cannot start with http:// or https://. It supports characters in the Letter category of Unicode, including English letters, Chinese characters, and digits. It can contain colons (:), underscores (_), periods (.), and hyphens (-).
+	// The name of the new snapshot. The name must be 2 to 128 characters in length. It must start with a letter or a Chinese character and cannot start with http:// or https://. It can contain letters, digits, and Chinese characters. It can also contain colons (:), underscores (_), periods (.), and hyphens (-).
 	//
 	// Default value: empty.
 	//
@@ -137,7 +137,7 @@ type CopySnapshotRequest struct {
 	//
 	// s-bp67acfmxazb4p****
 	SnapshotId *string `json:"SnapshotId,omitempty" xml:"SnapshotId,omitempty"`
-	// The tag information of the new snapshot.
+	// The tags of the new snapshot.
 	Tag []*CopySnapshotRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
@@ -376,13 +376,13 @@ func (s *CopySnapshotRequestArn) Validate() error {
 }
 
 type CopySnapshotRequestTag struct {
-	// The tag key of the new snapshot. If you specify this parameter, it cannot be an empty string. The tag key can be up to 128 characters in length, cannot start with aliyun or acs:, and cannot contain http:// or https://.
+	// The tag key of the new snapshot. If you specify this parameter, it cannot be an empty string. The tag key can be up to 128 characters in length. It cannot start with aliyun or acs:, and cannot contain http:// or https://.
 	//
 	// example:
 	//
 	// TestKey
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The tag value of the new snapshot. If you specify this parameter, it can be an empty string. The tag value can be up to 128 characters in length, cannot start with aliyun or acs:, and cannot contain http:// or https://.
+	// The tag value of the new snapshot. If you specify this parameter, it can be an empty string. The tag value can be up to 128 characters in length. It cannot start with aliyun or acs:, and cannot contain http:// or https://.
 	//
 	// example:
 	//

@@ -25,19 +25,19 @@ type iDescribeDisksResponseBody interface {
 
 type DescribeDisksResponseBody struct {
 	Disks *DescribeDisksResponseBodyDisks `json:"Disks,omitempty" xml:"Disks,omitempty" type:"Struct"`
-	// The pagination token returned by this request.
+	// The pagination token returned by this call.
 	//
 	// example:
 	//
 	// AAAAAdDWBF2****
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// > **[Deprecated]*	- This parameter will soon go offline. We recommend that you use the NextToken and MaxResults parameters for paging to complete the paged query.
+	// > This parameter will be deprecated soon. Use the `NextToken` and `MaxResults` parameters for pagination.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// > **[Deprecated]*	- This parameter will soon go offline. We recommend that you use the NextToken and MaxResults parameters for paging to complete the paged query.
+	// > This parameter will be deprecated soon. Use the `NextToken` and `MaxResults` parameters for pagination.
 	//
 	// example:
 	//
@@ -49,9 +49,9 @@ type DescribeDisksResponseBody struct {
 	//
 	// 473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of queried results.
+	// The total number of queried entries.
 	//
-	// > When you use the MaxResults and NextToken parameters for paging to perform a paged query, the returned value of TotalCount is invalid.
+	// > When you use the `MaxResults` and `NextToken` parameters for pagination, the returned value of the `TotalCount` parameter is invalid.
 	//
 	// example:
 	//
@@ -202,10 +202,14 @@ type DescribeDisksResponseBodyDisksDisk struct {
 	Portable                      *bool                                             `json:"Portable,omitempty" xml:"Portable,omitempty"`
 	ProductCode                   *string                                           `json:"ProductCode,omitempty" xml:"ProductCode,omitempty"`
 	ProvisionedIops               *int64                                            `json:"ProvisionedIops,omitempty" xml:"ProvisionedIops,omitempty"`
-	RegionId                      *string                                           `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	ResourceGroupId               *string                                           `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	SerialNumber                  *string                                           `json:"SerialNumber,omitempty" xml:"SerialNumber,omitempty"`
-	Size                          *int32                                            `json:"Size,omitempty" xml:"Size,omitempty"`
+	// example:
+	//
+	// ReadWrite
+	ReadWriteMode   *string `json:"ReadWriteMode,omitempty" xml:"ReadWriteMode,omitempty"`
+	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	SerialNumber    *string `json:"SerialNumber,omitempty" xml:"SerialNumber,omitempty"`
+	Size            *int32  `json:"Size,omitempty" xml:"Size,omitempty"`
 	// example:
 	//
 	// d-123*********
@@ -369,6 +373,10 @@ func (s *DescribeDisksResponseBodyDisksDisk) GetProductCode() *string {
 
 func (s *DescribeDisksResponseBodyDisksDisk) GetProvisionedIops() *int64 {
 	return s.ProvisionedIops
+}
+
+func (s *DescribeDisksResponseBodyDisksDisk) GetReadWriteMode() *string {
+	return s.ReadWriteMode
 }
 
 func (s *DescribeDisksResponseBodyDisksDisk) GetRegionId() *string {
@@ -607,6 +615,11 @@ func (s *DescribeDisksResponseBodyDisksDisk) SetProductCode(v string) *DescribeD
 
 func (s *DescribeDisksResponseBodyDisksDisk) SetProvisionedIops(v int64) *DescribeDisksResponseBodyDisksDisk {
 	s.ProvisionedIops = &v
+	return s
+}
+
+func (s *DescribeDisksResponseBodyDisksDisk) SetReadWriteMode(v string) *DescribeDisksResponseBodyDisksDisk {
+	s.ReadWriteMode = &v
 	return s
 }
 

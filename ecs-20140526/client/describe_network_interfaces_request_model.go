@@ -58,19 +58,19 @@ type iDescribeNetworkInterfacesRequest interface {
 }
 
 type DescribeNetworkInterfacesRequest struct {
-	// The instance ID to which the Elastic Network Interface (ENI) is currently attached.
+	// The ID of the instance to which the ENI is attached.
 	//
 	// example:
 	//
 	// i-bp1e2l6djkndyuli****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The IPv6 address of the Elastic Network Interface (ENI). N indicates that multiple IPv6 addresses can be configured. Valid values of N: 1 to 100.
+	// The IPv6 address of the ENI. N indicates that you can specify multiple IPv6 addresses. Valid values of N: 1 to 100.
 	//
 	// example:
 	//
 	// 2408:4321:180:1701:94c7:bc38:3bfa:****
 	Ipv6Address []*string `json:"Ipv6Address,omitempty" xml:"Ipv6Address,omitempty" type:"Repeated"`
-	// The maximum number of entries per page for a paging query. Valid values: 10 to 500.
+	// The maximum number of entries per page for a paged query. Valid values: 10 to 500.
 	//
 	// Default value:
 	//
@@ -82,13 +82,13 @@ type DescribeNetworkInterfacesRequest struct {
 	//
 	// 50
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The Elastic Network Interface (ENI) ID. Valid values of N: 1 to 100.
+	// The ENI ID. Valid values of N: 1 to 100.
 	//
 	// example:
 	//
 	// eni-bp125p95hhdhn3ot****
 	NetworkInterfaceId []*string `json:"NetworkInterfaceId,omitempty" xml:"NetworkInterfaceId,omitempty" type:"Repeated"`
-	// The name of the Elastic Network Interface (ENI). The name must be 2 to 128 characters in length, and can contain characters in the letter categorization of Unicode (including English, Chinese, and digits). It can also contain colons (:), underscores (_), periods (.), and hyphens (-).
+	// The name of the ENI. The name must be 2 to 128 characters in length and can contain Unicode letters, including English letters, Chinese characters, and digits. It can also contain colons (:), underscores (_), periods (.), and hyphens (-).
 	//
 	// example:
 	//
@@ -96,7 +96,7 @@ type DescribeNetworkInterfacesRequest struct {
 	NetworkInterfaceName *string `json:"NetworkInterfaceName,omitempty" xml:"NetworkInterfaceName,omitempty"`
 	// The pagination token. Set the value to the `NextToken` value returned from the previous API call.
 	//
-	// For more information about how to configure the pagination parameters, see the "Operation description" section.
+	// For more information about how to configure the pagination parameters for this operation, see the "Operation description" section above.
 	//
 	// example:
 	//
@@ -106,7 +106,7 @@ type DescribeNetworkInterfacesRequest struct {
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// Deprecated
 	//
-	// > **[Deprecated]*	- We recommend that you use the `MaxResults` and `NextToken` parameters for pagination.
+	// > **[Deprecated]*	- Use the `MaxResults` or `NextToken` parameter for paged queries.
 	//
 	// example:
 	//
@@ -114,19 +114,19 @@ type DescribeNetworkInterfacesRequest struct {
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// Deprecated
 	//
-	// > **[Deprecated]*	- We recommend that you use the `MaxResults` and `NextToken` parameters for pagination.
+	// > **[Deprecated]*	- Use the `MaxResults` or `NextToken` parameter for paged queries.
 	//
 	// example:
 	//
 	// 100
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The primary private network IPv4 address of the Elastic Network Interface (ENI).
+	// The primary private IPv4 address of the ENI.
 	//
 	// example:
 	//
 	// ``192.168.**.**``
 	PrimaryIpAddress *string `json:"PrimaryIpAddress,omitempty" xml:"PrimaryIpAddress,omitempty"`
-	// The secondary private IP IPv4 address of the Elastic Network Interface (ENI). Valid values of N: 1 to 100.
+	// The secondary private IPv4 address of the ENI. Valid values of N: 1 to 100.
 	//
 	// example:
 	//
@@ -140,7 +140,7 @@ type DescribeNetworkInterfacesRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The resource group ID. When you use this parameter to filter resources, the number of resources cannot exceed 1,000.
+	// The resource group ID. When you use this parameter to filter resources, the resource count cannot exceed 1,000.
 	//
 	// > Filtering by the default resource group is not supported.
 	//
@@ -160,51 +160,51 @@ type DescribeNetworkInterfacesRequest struct {
 	//
 	// sg-bp144yr32sx6ndw****
 	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
-	// Specifies whether the Elastic Network Interface (ENI) is used by an Alibaba Cloud service or a Virtual Network Operator (VNO).
+	// Specifies whether the ENI is managed by an Alibaba Cloud service or a Virtual Network Operator (VNO).
 	//
 	// example:
 	//
 	// true
 	ServiceManaged *bool `json:"ServiceManaged,omitempty" xml:"ServiceManaged,omitempty"`
-	// The status of the Elastic Network Interface (ENI). Valid values:
+	// The status of the ENI. Valid values:
 	//
-	// 	- Available: active.
+	// 	- Available: available.
 	//
-	// 	- Attaching: being attached.
+	// 	- Attaching: attaching.
 	//
-	// 	- InUse: attached.
+	// 	- InUse: in use.
 	//
-	// 	- Detaching: being detached.
+	// 	- Detaching: detaching.
 	//
-	// 	- Deleting: being deleted.
+	// 	- Deleting: deleting.
 	//
-	// Default value: empty, which indicates that Elastic Network Interfaces (ENIs) in all states are queried.
+	// Default value: empty. An empty value indicates that all statuses are queried.
 	//
 	// example:
 	//
 	// Available
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The tags.
+	// The list of tags.
 	Tag []*DescribeNetworkInterfacesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
-	// The Elastic Network Interface (ENI) type. Valid values:
+	// The ENI type. Valid values:
 	//
-	// - Primary: primary network interface controller (NIC).
+	// - Primary: primary ENI.
 	//
 	// - Secondary: secondary ENI.
 	//
-	// Default value: empty, which indicates that Elastic Network Interfaces (ENIs) of all types are queried.
+	// Default value: empty. An empty value indicates that all types are queried.
 	//
 	// example:
 	//
 	// Secondary
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// The vSwitch ID of the Elastic Network Interface (ENI).
+	// The vSwitch ID of the ENI.
 	//
 	// example:
 	//
 	// vsw-bp16usj2p27htro3****
 	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	// The VPC ID of the Elastic Network Interface (ENI).
+	// The VPC ID of the ENI.
 	//
 	// example:
 	//
@@ -441,15 +441,15 @@ func (s *DescribeNetworkInterfacesRequest) Validate() error {
 }
 
 type DescribeNetworkInterfacesRequestTag struct {
-	// The tag key of the Elastic Network Interface (ENI). Valid values of N: 1 to 20.
+	// The tag key of the ENI. Valid values of N: 1 to 20.
 	//
 	// example:
 	//
 	// TestKey
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The tag value of the Elastic Network Interface (ENI). Valid values of N: 1 to 20.
+	// The tag value of the ENI. Valid values of N: 1 to 20.
 	//
-	// If you use a single tag to filter resources, the number of resources that match the tag cannot exceed 1,000. If you use multiple tags to filter resources, the number of resources that are attached with multiple tags cannot exceed 1,000. If the number of resources exceeds 1,000, call the [ListTagResources](https://help.aliyun.com/document_detail/110425.html) operation to query the resources.
+	// If you use a single tag to filter resources, the resource count returned cannot exceed 1,000. If you use multiple tags to filter resources, the resource count of resources to which you attach multiple tags cannot exceed 1,000. If the resource count exceeds 1,000, call the [ListTagResources](https://help.aliyun.com/document_detail/110425.html) operation to query the resources.
 	//
 	// example:
 	//

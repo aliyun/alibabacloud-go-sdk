@@ -16,7 +16,7 @@ type iAssignPrivateIpAddressesResponseBody interface {
 }
 
 type AssignPrivateIpAddressesResponseBody struct {
-	// The information about the elastic network interfaces (ENIs) to which secondary private IP addresses are assigned.
+	// The set of information about the Elastic Network Interfaces (ENIs) to which secondary private IP addresses (private IP addresses or private IPs) are allocated.
 	AssignedPrivateIpAddressesSet *AssignPrivateIpAddressesResponseBodyAssignedPrivateIpAddressesSet `json:"AssignedPrivateIpAddressesSet,omitempty" xml:"AssignedPrivateIpAddressesSet,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -63,7 +63,7 @@ func (s *AssignPrivateIpAddressesResponseBody) Validate() error {
 
 type AssignPrivateIpAddressesResponseBodyAssignedPrivateIpAddressesSet struct {
 	Ipv4PrefixSet *AssignPrivateIpAddressesResponseBodyAssignedPrivateIpAddressesSetIpv4PrefixSet `json:"Ipv4PrefixSet,omitempty" xml:"Ipv4PrefixSet,omitempty" type:"Struct"`
-	// The elastic network interfaces (ENIs) ID.
+	// The ID of the Elastic Network Interface (ENI).
 	//
 	// example:
 	//

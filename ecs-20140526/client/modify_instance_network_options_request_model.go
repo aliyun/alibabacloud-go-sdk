@@ -24,13 +24,13 @@ type iModifyInstanceNetworkOptionsRequest interface {
 type ModifyInstanceNetworkOptionsRequest struct {
 	// The bandwidth weight.
 	//
-	// The supported values vary by instance type. You can call [DescribeInstanceTypes](https://help.aliyun.com/document_detail/2679699.html) to query the bandwidth weight values supported by the instance type.
+	// The supported values vary based on the instance type. You can call the [DescribeInstanceTypes](https://help.aliyun.com/document_detail/2679699.html) operation to query the bandwidth weight values supported by the instance type.
 	//
 	// example:
 	//
 	// Vpc-L1
 	BandwidthWeighting *string `json:"BandwidthWeighting,omitempty" xml:"BandwidthWeighting,omitempty"`
-	// The instance ID for which to modify the network bandwidth weight.
+	// The instance ID for which you want to modify the network bandwidth weight.
 	//
 	// example:
 	//

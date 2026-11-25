@@ -28,7 +28,7 @@ type DeletePortRangeListRequest struct {
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The ID of the port list.
 	//
-	// >If the port list is associated with other resources, it cannot be deleted. Dissociate the port list from the resources before you delete it.
+	// > If the port list is associated with other resources, it cannot be deleted. Dissociate the port list from the resources before you delete it.
 	//
 	// This parameter is required.
 	//

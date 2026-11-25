@@ -14,6 +14,9 @@ type iRemoveBandwidthPackageIpsResponseBody interface {
 }
 
 type RemoveBandwidthPackageIpsResponseBody struct {
+	// example:
+	//
+	// 123e4567-e89b-42d3-a456-426614174000
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 

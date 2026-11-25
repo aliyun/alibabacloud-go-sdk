@@ -16,7 +16,7 @@ type iDeleteDiagnosticMetricSetsRequest interface {
 }
 
 type DeleteDiagnosticMetricSetsRequest struct {
-	// The IDs of the diagnostic metric sets. You can specify up to 10 IDs.
+	// The IDs of the diagnostic metric sets. A maximum of 10 IDs are supported.
 	//
 	// This parameter is required.
 	MetricSetIds []*string `json:"MetricSetIds,omitempty" xml:"MetricSetIds,omitempty" type:"Repeated"`

@@ -22,7 +22,7 @@ type ModifyInstanceClockOptionsResponseBody struct {
 	//
 	// 473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The modification task ID.
+	// The ID of the modification task.
 	//
 	// You can call the [DescribeTasks](https://help.aliyun.com/document_detail/25622.html) operation to query the modification result.
 	//

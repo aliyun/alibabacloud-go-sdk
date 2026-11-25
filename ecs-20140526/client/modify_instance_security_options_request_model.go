@@ -26,7 +26,7 @@ type iModifyInstanceSecurityOptionsRequest interface {
 }
 
 type ModifyInstanceSecurityOptionsRequest struct {
-	// Ensures the idempotence of the request. You can generate the value from your client to ensure that the value is unique across different requests. The ClientToken parameter supports only ASCII characters and can be up to 64 characters in length. For more information, see [How to ensure idempotence](https://www.alibabacloud.com/help/en/ecs/developer-reference/how-to-ensure-idempotence).
+	// Ensures the idempotence of the request. You can generate the value on the client side and make sure that the value is unique across different requests. The ClientToken parameter supports only ASCII characters and can be up to 64 characters in length. For more information, see [How to ensure idempotence](https://www.alibabacloud.com/help/en/ecs/developer-reference/how-to-ensure-idempotence).
 	//
 	// example:
 	//
@@ -34,9 +34,9 @@ type ModifyInstanceSecurityOptionsRequest struct {
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// Specifies whether to perform only a dry run on the request. Valid values:
 	//
-	// - true: performs only a dry run. The secure boot option of the instance is not modified.
+	// - true: performs a dry run only. The secure boot options of the instance are not modified.
 	//
-	// - false: performs a dry run and sends the request. If the request passes the dry run, the secure boot option of the instance is modified.
+	// - false: performs a dry run and modifies the secure boot options of the instance if the dry run succeeds.
 	//
 	// Default value: false.
 	//
@@ -44,7 +44,7 @@ type ModifyInstanceSecurityOptionsRequest struct {
 	//
 	// false
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	// Specifies whether to enable or disable UEFI secure boot. If this parameter is set to true, the instance type must support secure boot. You can call the DescribeInstanceTypes operation and check whether the value of SecurityOptions.SecureBootSupport is supported. Valid values:
+	// Specifies whether to enable or disable Unified Extensible Firmware Interface (UEFI) secure boot. If you set this parameter to true, the instance type must support secure boot. You can call the DescribeInstanceTypes operation and check whether the value of SecurityOptions.SecureBootSupport is supported. Valid values:
 	//
 	// - true: enables UEFI secure boot.
 	//

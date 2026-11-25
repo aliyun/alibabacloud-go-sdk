@@ -86,45 +86,46 @@ type iDescribeNetworkInterfaceAttributeResponseBody interface {
 }
 
 type DescribeNetworkInterfaceAttributeResponseBody struct {
-	// The Elastic IP Address (EIP) associated with the secondary private IP address of the network interface controller (NIC).
+	// The Elastic IP Address (EIP) associated with the secondary private IP address of the Elastic Network Interface (ENI).
 	AssociatedPublicIp *DescribeNetworkInterfaceAttributeResponseBodyAssociatedPublicIp `json:"AssociatedPublicIp,omitempty" xml:"AssociatedPublicIp,omitempty" type:"Struct"`
-	// > This parameter is in invitational preview and is not publicly available.
+	// > This parameter is in invitational preview and is not available for public use.
 	Attachment *DescribeNetworkInterfaceAttributeResponseBodyAttachment `json:"Attachment,omitempty" xml:"Attachment,omitempty" type:"Struct"`
-	// > This parameter is in invitational preview and is not publicly available.
+	// > This parameter is in invitational preview and is not available for public use.
 	BondInterfaceSpecification *DescribeNetworkInterfaceAttributeResponseBodyBondInterfaceSpecification `json:"BondInterfaceSpecification,omitempty" xml:"BondInterfaceSpecification,omitempty" type:"Struct"`
-	// The collection of network connectivity tracking configuration information.
+	// The network connection tracking configuration information set.
 	//
-	// Before you use this parameter, read [Connection timeout management](https://help.aliyun.com/document_detail/2865958.html).
+	// Read [Connection timeout management](https://help.aliyun.com/document_detail/2865958.html) before using this parameter.
 	//
-	// > This parameter is returned only when the Attribute input parameter is set to connectionTrackingConfiguration.
+	//
+	// > This parameter is returned only when the input parameter `Attribute` is set to `connectionTrackingConfiguration`.
 	ConnectionTrackingConfiguration *DescribeNetworkInterfaceAttributeResponseBodyConnectionTrackingConfiguration `json:"ConnectionTrackingConfiguration,omitempty" xml:"ConnectionTrackingConfiguration,omitempty" type:"Struct"`
-	// The time when the network interface controller (NIC) was created. The time is in ISO 8601 format and displayed in UTC.
+	// The creation time of the elastic network interface (ENI). The time is displayed in ISO 8601 format in UTC.
 	//
 	// example:
 	//
 	// 2019-12-25T12:31:31Z
 	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
-	// Indicates whether the ENI is retained when the associated instance is released. Valid values:
+	// Indicates whether the ENI is retained when the instance is released. Valid values:
 	//
-	// - true: The ENI is not retained.
+	// - true: not retained
 	//
-	// - false: The ENI is retained.
+	// - false: retained
 	//
 	// example:
 	//
 	// true
 	DeleteOnRelease *bool `json:"DeleteOnRelease,omitempty" xml:"DeleteOnRelease,omitempty"`
-	// The description of the network interface controller (NIC).
+	// The description of the Elastic Network Interface (ENI).
 	//
 	// example:
 	//
 	// testDescription
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// This parameter is not publicly available.
+	// This parameter is not available for public use.
 	EnhancedNetwork *DescribeNetworkInterfaceAttributeResponseBodyEnhancedNetwork `json:"EnhancedNetwork,omitempty" xml:"EnhancedNetwork,omitempty" type:"Struct"`
-	// The ID of the instance to which the network interface controller (NIC) is attached.
+	// The ID of the instance to which the Elastic Network Interface (ENI) is attached.
 	//
-	// > Network interface controllers (NICs) that are managed and controlled by other Alibaba Cloud services do not return instance IDs.
+	// > The instance ID is not returned for Elastic Network Interfaces (ENIs) that are managed and controlled by other Alibaba Cloud services.
 	//
 	// example:
 	//
@@ -133,76 +134,76 @@ type DescribeNetworkInterfaceAttributeResponseBody struct {
 	Ipv4PrefixSets *DescribeNetworkInterfaceAttributeResponseBodyIpv4PrefixSets `json:"Ipv4PrefixSets,omitempty" xml:"Ipv4PrefixSets,omitempty" type:"Struct"`
 	Ipv6PrefixSets *DescribeNetworkInterfaceAttributeResponseBodyIpv6PrefixSets `json:"Ipv6PrefixSets,omitempty" xml:"Ipv6PrefixSets,omitempty" type:"Struct"`
 	Ipv6Sets       *DescribeNetworkInterfaceAttributeResponseBodyIpv6Sets       `json:"Ipv6Sets,omitempty" xml:"Ipv6Sets,omitempty" type:"Struct"`
-	// The MAC address of the network interface controller (NIC).
+	// The MAC address of the Elastic Network Interface (ENI).
 	//
 	// example:
 	//
 	// 00:16:3e:12:**:**
 	MacAddress *string `json:"MacAddress,omitempty" xml:"MacAddress,omitempty"`
-	// The ID of the network interface controller (NIC).
+	// The ID of the Elastic Network Interface (ENI).
 	//
 	// example:
 	//
 	// eni-bp125p95hhdhn3ot****
 	NetworkInterfaceId *string `json:"NetworkInterfaceId,omitempty" xml:"NetworkInterfaceId,omitempty"`
-	// The name of the network interface controller (NIC).
+	// The name of the Elastic Network Interface (ENI).
 	//
 	// example:
 	//
 	// my-eni-name
 	NetworkInterfaceName *string `json:"NetworkInterfaceName,omitempty" xml:"NetworkInterfaceName,omitempty"`
-	// The traffic parameters of the network interface controller (NIC).
+	// The communication parameters of the Elastic Network Interface (ENI).
 	NetworkInterfaceTrafficConfig *DescribeNetworkInterfaceAttributeResponseBodyNetworkInterfaceTrafficConfig `json:"NetworkInterfaceTrafficConfig,omitempty" xml:"NetworkInterfaceTrafficConfig,omitempty" type:"Struct"`
-	// The communication mode of the network interface controller (NIC). Valid values:
+	// The communication mode of the Elastic Network Interface (ENI). Valid values:
 	//
-	// - Standard: TCP communication mode is used.
+	// - Standard: TCP communication mode.
 	//
-	// - HighPerformance: Elastic RDMA Interface (ERI) is enabled and RDMA communication mode is used.
+	// - HighPerformance: Remote Direct Memory Access (RDMA) communication mode with Elastic RDMA Interface (ERI) enabled.
 	//
-	// > The HighPerformance parameter value is supported only by the c7re RDMA enhanced instance family.
+	// > The HighPerformance parameter value is supported only by the c7re RDMA-enhanced instance family.
 	//
 	// example:
 	//
 	// Standard
 	NetworkInterfaceTrafficMode *string `json:"NetworkInterfaceTrafficMode,omitempty" xml:"NetworkInterfaceTrafficMode,omitempty"`
-	// The ID of the account that owns the network interface controller (NIC).
+	// The ID of the account to which the Elastic Network Interface (ENI) belongs.
 	//
 	// example:
 	//
 	// 123456****
 	OwnerId *string `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The private IP address of the network interface controller (NIC).
+	// The private IP address of the Elastic Network Interface (ENI).
 	//
 	// example:
 	//
 	// ``10.1.**.**``
 	PrivateIpAddress *string                                                     `json:"PrivateIpAddress,omitempty" xml:"PrivateIpAddress,omitempty"`
 	PrivateIpSets    *DescribeNetworkInterfaceAttributeResponseBodyPrivateIpSets `json:"PrivateIpSets,omitempty" xml:"PrivateIpSets,omitempty" type:"Struct"`
-	// The QoS rate limit settings.
+	// The QoS throttling settings.
 	QoSConfig *DescribeNetworkInterfaceAttributeResponseBodyQoSConfig `json:"QoSConfig,omitempty" xml:"QoSConfig,omitempty" type:"Struct"`
-	// The number of queues for the Elastic Network Interface (ENI).
+	// The number of queues of the Elastic Network Interface (ENI).
 	//
-	// 	- If the ENI is a primary network interface controller (NIC): the default number of queues for the primary NIC that the instance type allows is returned.
+	// 	- If the Elastic Network Interface (ENI) is a primary ENI: returns the default number of queues for the primary ENI of the instance type.
 	//
-	// 	- If the ENI is a secondary ENI:
+	// 	- If the Elastic Network Interface (ENI) is a secondary ENI:
 	//
 	//     	- If the secondary ENI is in the InUse state:
 	//
-	//         	- If the number of queues for the secondary ENI has not been modified, the default number of queues for the secondary ENI that the instance type allows is returned.
+	//         	- If the number of queues of the secondary ENI has not been modified, the default number of queues for the secondary ENI of the instance type is returned.
 	//
-	//         	- If the number of queues for the secondary ENI has been modified, the modified number of queues is returned.
+	//         	- If the number of queues of the secondary ENI has been modified, the modified number of queues is returned.
 	//
-	//     	- If the secondary ENI is in the active (Available) state:
+	//     	- If the secondary ENI is in the Available state:
 	//
-	//         	- If the number of queues for the secondary ENI has not been modified, an empty value is returned.
+	//         	- If the number of queues of the secondary ENI has not been modified, an empty value is returned.
 	//
-	//         	- If the number of queues for the secondary ENI has been modified, the modified number of queues is returned.
+	//         	- If the number of queues of the secondary ENI has been modified, the modified number of queues is returned.
 	//
 	// example:
 	//
 	// 8
 	QueueNumber *int32 `json:"QueueNumber,omitempty" xml:"QueueNumber,omitempty"`
-	// > This parameter is in invitational preview and is not publicly available.
+	// > This parameter is in invitational preview and is not available for public use.
 	//
 	// example:
 	//
@@ -214,7 +215,7 @@ type DescribeNetworkInterfaceAttributeResponseBody struct {
 	//
 	// 473469C7-AA6F-4DC5-B3DB-A3DC0DE3****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The ID of the resource group to which the instance belongs. When you use this parameter to filter resources, the resource count cannot exceed 1000.
+	// The ID of the resource group to which the instance belongs. When you use this parameter to filter resources, the resource count cannot exceed 1,000.
 	//
 	// > Filtering by the default resource group is not supported.
 	//
@@ -223,68 +224,68 @@ type DescribeNetworkInterfaceAttributeResponseBody struct {
 	// rg-bp67acfmxazb4p****
 	ResourceGroupId  *string                                                        `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
 	SecurityGroupIds *DescribeNetworkInterfaceAttributeResponseBodySecurityGroupIds `json:"SecurityGroupIds,omitempty" xml:"SecurityGroupIds,omitempty" type:"Struct"`
-	// The Virtual Network Operator (VNO) ID associated with the network interface controller (NIC).
+	// The ID of the Virtual Network Operator (VNO) corresponding to the Elastic Network Interface (ENI).
 	//
 	// example:
 	//
 	// 12345678910
 	ServiceID *int64 `json:"ServiceID,omitempty" xml:"ServiceID,omitempty"`
-	// Indicates whether the user of the network interface controller (NIC) is an Alibaba Cloud service or a VNO.
+	// Indicates whether the user of the Elastic Network Interface (ENI) is a cloud service or a VNO.
 	//
 	// example:
 	//
 	// true
 	ServiceManaged *bool `json:"ServiceManaged,omitempty" xml:"ServiceManaged,omitempty"`
-	// > This parameter is in invitational preview and is not publicly available.
+	// > This parameter is in invitational preview and is not available for public use.
 	SlaveInterfaceSpecification *DescribeNetworkInterfaceAttributeResponseBodySlaveInterfaceSpecification `json:"SlaveInterfaceSpecification,omitempty" xml:"SlaveInterfaceSpecification,omitempty" type:"Struct"`
-	// This parameter is not publicly available.
+	// This parameter is not available for public use.
 	//
 	// example:
 	//
 	// false
 	SourceDestCheck *bool `json:"SourceDestCheck,omitempty" xml:"SourceDestCheck,omitempty"`
-	// The status of the network interface controller (NIC). Valid values:
+	// The status of the Elastic Network Interface (ENI). Valid values:
 	//
 	// 	- Available: active.
 	//
-	// 	- Attaching: being attached.
+	// 	- Attaching: attaching.
 	//
 	// 	- InUse: in use.
 	//
-	// 	- Detaching: being detached.
+	// 	- Detaching: detaching.
 	//
-	// 	- Deleting: being deleted.
+	// 	- Deleting: deleting.
 	//
-	// Default value: empty, which indicates that network interface controllers (NICs) in all states are queried.
+	// Default value: null, which indicates that all states are queried.
 	//
 	// example:
 	//
 	// Available
 	Status *string                                            `json:"Status,omitempty" xml:"Status,omitempty"`
 	Tags   *DescribeNetworkInterfaceAttributeResponseBodyTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Struct"`
-	// > This parameter is in invitational preview and is not publicly available.
+	// > This parameter is in invitational preview and is not available for public use.
 	//
 	// example:
 	//
 	// null
 	TcpOptionAddressEnabled *string `json:"TcpOptionAddressEnabled,omitempty" xml:"TcpOptionAddressEnabled,omitempty"`
-	// The type of the Elastic Network Interface (ENI). Valid values:
+	// The Elastic Network Interface (ENI) type. Valid values:
 	//
-	// 	- Primary: primary network interface controller (NIC).
+	// 	- Primary: primary ENI.
 	//
-	// 	- Secondary: secondary Elastic Network Interface (ENI).
+	// 	- Secondary: secondary ENI.
 	//
 	// example:
 	//
 	// Secondary
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// The ID of the vSwitch to which the network interface controller (NIC) belongs.
+	// The ID of the vSwitch to which the Elastic Network Interface (ENI) belongs.
 	//
 	// example:
 	//
 	// vsw-bp1s5fnvk4gn2tws0****
 	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	// The ID of the VPC to which the network interface controller (NIC) belongs.
+	// The ID of the virtual private cloud (VPC) to which the Elastic Network Interface (ENI) belongs.
 	//
 	// example:
 	//
@@ -720,7 +721,7 @@ type DescribeNetworkInterfaceAttributeResponseBodyAssociatedPublicIp struct {
 	//
 	// null
 	AllocationId *string `json:"AllocationId,omitempty" xml:"AllocationId,omitempty"`
-	// The EIP address.
+	// The EIP.
 	//
 	// example:
 	//
@@ -759,30 +760,30 @@ func (s *DescribeNetworkInterfaceAttributeResponseBodyAssociatedPublicIp) Valida
 }
 
 type DescribeNetworkInterfaceAttributeResponseBodyAttachment struct {
-	// > This parameter is in invitational preview and is not publicly available.
+	// > This parameter is in invitational preview and is not available for public use.
 	//
 	// example:
 	//
-	// hide
+	// 0
 	DeviceIndex *int32 `json:"DeviceIndex,omitempty" xml:"DeviceIndex,omitempty"`
-	// > This parameter is in invitational preview and is not publicly available.
+	// > This parameter is in invitational preview and is not available for public use.
 	//
 	// example:
 	//
 	// hide
 	InstanceId                *string                                                                           `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	MemberNetworkInterfaceIds *DescribeNetworkInterfaceAttributeResponseBodyAttachmentMemberNetworkInterfaceIds `json:"MemberNetworkInterfaceIds,omitempty" xml:"MemberNetworkInterfaceIds,omitempty" type:"Struct"`
-	// The index of the network card to which the ENI is attached.
+	// The index of the physical network card to which the ENI is attached.
 	//
-	// - If the ENI is in the Available state or the index was not specified during attachment, this value is not returned.
+	// - If the ENI is in the Available state or no index was specified during attachment, this value is not returned.
 	//
-	// - If the ENI is in the InUse state and the index was specified during attachment, this value indicates the index of the network card to which the ENI is attached.
+	// - If the ENI is in the InUse state and an index was specified during attachment, this value indicates the index of the physical network card to which the ENI is attached.
 	//
 	// example:
 	//
 	// 0
 	NetworkCardIndex *int32 `json:"NetworkCardIndex,omitempty" xml:"NetworkCardIndex,omitempty"`
-	// > This parameter is in invitational preview and is not publicly available.
+	// > This parameter is in invitational preview and is not available for public use.
 	//
 	// example:
 	//
@@ -878,7 +879,7 @@ func (s *DescribeNetworkInterfaceAttributeResponseBodyAttachmentMemberNetworkInt
 }
 
 type DescribeNetworkInterfaceAttributeResponseBodyBondInterfaceSpecification struct {
-	// > This parameter is in invitational preview and is not publicly available.
+	// > This parameter is in invitational preview and is not available for public use.
 	//
 	// example:
 	//
@@ -1002,23 +1003,27 @@ func (s *DescribeNetworkInterfaceAttributeResponseBodyBondInterfaceSpecification
 }
 
 type DescribeNetworkInterfaceAttributeResponseBodyConnectionTrackingConfiguration struct {
-	// The timeout period for TCP connections in the TIME_WAIT and CLOSED states. Unit: seconds. Valid values: an integer from 3 to 15.
+	// The timeout period for closed and TIME_WAIT TCP connections. Unit: seconds. Valid values: integers from 3 to 15.
 	//
-	// > If your ECS instance is used with NLB or CLB, the default timeout period for connections in the `TIME_WAIT` state is 15 seconds.
+	//
+	//
+	// > If your ECS instance is used together with NLB or CLB, the default timeout period for connections in the `TIME_WAIT` state is 15 seconds.
 	//
 	// example:
 	//
 	// 3
 	TcpClosedAndTimeWaitTimeout *int32 `json:"TcpClosedAndTimeWaitTimeout,omitempty" xml:"TcpClosedAndTimeWaitTimeout,omitempty"`
-	// The timeout period for TCP connections in the ESTABLISHED state. Unit: seconds. Valid values: [30, 60, 80, 100, 200, 300, 500, 700, 910].
+	// The timeout period for established TCP connections. Unit: seconds. Valid values: 30, 60, 80, 100, 200, 300, 500, 700, and 910.
 	//
 	// example:
 	//
 	// 910
 	TcpEstablishedTimeout *int32 `json:"TcpEstablishedTimeout,omitempty" xml:"TcpEstablishedTimeout,omitempty"`
-	// The timeout period for UDP flows. Unit: seconds. Valid values: [10, 20, 30, 60, 80, 100].
+	// The timeout period for UDP flows. Unit: seconds. Valid values: 10, 20, 30, 60, 80, and 100.
 	//
-	// > If your ECS instance is used with NLB or CLB, the default value is 100 seconds.
+	//
+	//
+	// > If your ECS instance is used together with NLB or CLB, the default value is 100 seconds.
 	//
 	// example:
 	//
@@ -1066,20 +1071,31 @@ func (s *DescribeNetworkInterfaceAttributeResponseBodyConnectionTrackingConfigur
 }
 
 type DescribeNetworkInterfaceAttributeResponseBodyEnhancedNetwork struct {
+	// Indicates whether the network enhancement feature for the elastic network interface controller (NIC) is enabled.
 	EnableExpress *bool `json:"EnableExpress,omitempty" xml:"EnableExpress,omitempty"`
-	// > This parameter is not available for use.
+	// > This parameter is not available.
 	//
 	// example:
 	//
 	// true
 	EnableRss *bool `json:"EnableRss,omitempty" xml:"EnableRss,omitempty"`
-	// This parameter is not publicly available.
+	// This parameter is not available for public use.
 	//
 	// example:
 	//
 	// false
-	EnableSriov                     *bool  `json:"EnableSriov,omitempty" xml:"EnableSriov,omitempty"`
-	VirtualFunctionQuantity         *int32 `json:"VirtualFunctionQuantity,omitempty" xml:"VirtualFunctionQuantity,omitempty"`
+	EnableSriov *bool `json:"EnableSriov,omitempty" xml:"EnableSriov,omitempty"`
+	// The number of virtual function features of the Elastic Network Interface (ENI).
+	//
+	// example:
+	//
+	// 1
+	VirtualFunctionQuantity *int32 `json:"VirtualFunctionQuantity,omitempty" xml:"VirtualFunctionQuantity,omitempty"`
+	// The total number of queues for the virtual function feature of the Elastic Network Interface (ENI).
+	//
+	// example:
+	//
+	// 4
 	VirtualFunctionTotalQueueNumber *int32 `json:"VirtualFunctionTotalQueueNumber,omitempty" xml:"VirtualFunctionTotalQueueNumber,omitempty"`
 }
 
@@ -1328,19 +1344,19 @@ func (s *DescribeNetworkInterfaceAttributeResponseBodyIpv6SetsIpv6Set) Validate(
 }
 
 type DescribeNetworkInterfaceAttributeResponseBodyNetworkInterfaceTrafficConfig struct {
-	// The communication mode of the network interface controller (NIC).
+	// The communication mode of the Elastic Network Interface (ENI).
 	//
 	// example:
 	//
 	// HighPerformance
 	NetworkInterfaceTrafficMode *string `json:"NetworkInterfaceTrafficMode,omitempty" xml:"NetworkInterfaceTrafficMode,omitempty"`
-	// The number of queues for the network interface controller (NIC).
+	// The number of queues of the Elastic Network Interface (ENI).
 	//
 	// example:
 	//
 	// 8
 	QueueNumber *int32 `json:"QueueNumber,omitempty" xml:"QueueNumber,omitempty"`
-	// The number of RDMA queue pairs.
+	// The number of queues of the RDMA network interface.
 	//
 	// example:
 	//
@@ -1507,9 +1523,9 @@ func (s *DescribeNetworkInterfaceAttributeResponseBodyPrivateIpSetsPrivateIpSetA
 }
 
 type DescribeNetworkInterfaceAttributeResponseBodyQoSConfig struct {
-	// Indicates whether QoS rate limiting is enabled.
+	// Indicates whether QoS throttling is enabled.
 	EnableQoS *bool `json:"EnableQoS,omitempty" xml:"EnableQoS,omitempty"`
-	// The QoS rate limit settings.
+	// The QoS throttling settings.
 	QoS *DescribeNetworkInterfaceAttributeResponseBodyQoSConfigQoS `json:"QoS,omitempty" xml:"QoS,omitempty" type:"Struct"`
 }
 
@@ -1567,13 +1583,13 @@ type DescribeNetworkInterfaceAttributeResponseBodyQoSConfigQoS struct {
 	//
 	// 50000
 	ConcurrentConnections *int64 `json:"ConcurrentConnections,omitempty" xml:"ConcurrentConnections,omitempty"`
-	// The inbound internal network packet forwarding rate.
+	// The inbound internal packet forwarding rate.
 	//
 	// example:
 	//
 	// 50000
 	PpsRx *int64 `json:"PpsRx,omitempty" xml:"PpsRx,omitempty"`
-	// The outbound internal network packet forwarding rate.
+	// The outbound internal packet forwarding rate.
 	//
 	// example:
 	//
@@ -1664,19 +1680,19 @@ func (s *DescribeNetworkInterfaceAttributeResponseBodySecurityGroupIds) Validate
 }
 
 type DescribeNetworkInterfaceAttributeResponseBodySlaveInterfaceSpecification struct {
-	// > This parameter is in invitational preview and is not publicly available.
+	// > This parameter is in invitational preview and is not available for public use.
 	//
 	// example:
 	//
 	// null
 	BondNetworkInterfaceId *string `json:"BondNetworkInterfaceId,omitempty" xml:"BondNetworkInterfaceId,omitempty"`
-	// > This parameter is in invitational preview and is not publicly available.
+	// > This parameter is in invitational preview and is not available for public use.
 	//
 	// example:
 	//
 	// null
 	SlaveNetworkInterfaceId *string `json:"SlaveNetworkInterfaceId,omitempty" xml:"SlaveNetworkInterfaceId,omitempty"`
-	// > This parameter is in invitational preview and is not publicly available.
+	// > This parameter is in invitational preview and is not available for public use.
 	//
 	// example:
 	//

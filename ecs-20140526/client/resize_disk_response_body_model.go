@@ -18,7 +18,7 @@ type iResizeDiskResponseBody interface {
 type ResizeDiskResponseBody struct {
 	// The ID of the generated order.
 	//
-	// > The order ID is returned only when you resize a subscription cloud disk.
+	// > The order ID is returned only when you resize a subscription disk.
 	//
 	// example:
 	//

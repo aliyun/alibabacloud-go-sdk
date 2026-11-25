@@ -24,12 +24,28 @@ type iDescribeBandwidthPackagesResponseBody interface {
 type DescribeBandwidthPackagesResponseBody struct {
 	BandwidthPackages *DescribeBandwidthPackagesResponseBodyBandwidthPackages `json:"BandwidthPackages,omitempty" xml:"BandwidthPackages,omitempty" type:"Struct"`
 	// The current page number.
+	//
+	// example:
+	//
+	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// The number of entries returned per page.
+	//
+	// example:
+	//
+	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The request ID.
+	//
+	// example:
+	//
+	// 8909013D-4A64-41A6-93E6-E3FD08A3EAFE
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The total number of entries that meet the query conditions.
+	//
+	// example:
+	//
+	// 1
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 

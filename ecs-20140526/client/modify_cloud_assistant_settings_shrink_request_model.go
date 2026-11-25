@@ -50,7 +50,7 @@ type ModifyCloudAssistantSettingsShrinkRequest struct {
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The Cloud Assistant resource usage configuration. This setting takes effect only when the Cloud Assistant Agent version is not earlier than the following versions:
+	// The Cloud Assistant resource usage configuration. This parameter takes effect only when the Cloud Assistant Agent version is not earlier than the following versions:
 	//
 	// - Windows: 2.1.4.1065
 	//
@@ -60,13 +60,13 @@ type ModifyCloudAssistantSettingsShrinkRequest struct {
 	SessionManagerConfigShrink *string `json:"SessionManagerConfig,omitempty" xml:"SessionManagerConfig,omitempty"`
 	// The service configuration type. Valid values:
 	//
-	// - SessionManagerDelivery: session operation log delivery.
+	// - SessionManagerDelivery: session operation record delivery
 	//
-	// - InvocationDelivery: task execution log delivery.
+	// - InvocationDelivery: task execution record delivery
 	//
-	// - AgentUpgradeConfig: Cloud Assistant Agent upgrade configuration.
+	// - AgentUpgradeConfig: Cloud Assistant Agent upgrade configuration
 	//
-	// - SessionManagerConfig: Cloud Assistant SessionManager configuration.
+	// - SessionManagerConfig: Cloud Assistant SessionManager configuration
 	//
 	// This parameter is required.
 	//
@@ -74,7 +74,7 @@ type ModifyCloudAssistantSettingsShrinkRequest struct {
 	//
 	// SessionManagerDelivery
 	SettingType *string `json:"SettingType,omitempty" xml:"SettingType,omitempty"`
-	// The Simple Log Service (SLS) delivery configuration.
+	// The SLS delivery configuration.
 	SlsDeliveryConfigShrink *string `json:"SlsDeliveryConfig,omitempty" xml:"SlsDeliveryConfig,omitempty"`
 }
 

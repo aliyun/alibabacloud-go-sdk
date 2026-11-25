@@ -19,7 +19,7 @@ type iDescribeDiskDefaultKMSKeyIdRequest interface {
 
 type DescribeDiskDefaultKMSKeyIdRequest struct {
 	OwnerId *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The region ID. You can call [DescribeRegions](https://help.aliyun.com/document_detail/2679950.html) to view the latest list of Alibaba Cloud regions.
+	// The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/2679950.html) operation to query the latest list of Alibaba Cloud regions.
 	//
 	// This parameter is required.
 	//

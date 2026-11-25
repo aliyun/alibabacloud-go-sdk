@@ -29,7 +29,7 @@ type DescribeAutoSnapshotPolicyExResponseBody struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page when the automatic snapshot policies are displayed in paging mode.
+	// The number of entries per page when the returned automatic snapshot policy list is displayed in a paging manner.
 	//
 	// example:
 	//
@@ -41,7 +41,7 @@ type DescribeAutoSnapshotPolicyExResponseBody struct {
 	//
 	// 473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of automatic snapshot policies.
+	// The total number of automatic snapshot policy records.
 	//
 	// example:
 	//

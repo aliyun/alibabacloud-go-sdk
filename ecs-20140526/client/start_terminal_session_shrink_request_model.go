@@ -40,31 +40,31 @@ type iStartTerminalSessionShrinkRequest interface {
 }
 
 type StartTerminalSessionShrinkRequest struct {
-	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but make sure that the token is unique among different requests. The **ClientToken*	- value can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must ensure that it is unique among different requests. The **ClientToken*	- value can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25693.html).
 	//
 	// example:
 	//
 	// 123e4567-e89b-12d3-a456-426655440000
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// The command to run after the session is initiated. The command can be up to 512 characters in length.
+	// The command to be executed after the session is initiated. The command cannot exceed 512 characters in length.
 	//
-	// > After you specify CommandLine, you cannot specify PortNumber or TargetServer.
+	// > After CommandLine is specified, you cannot specify PortNumber or TargetServer.
 	//
 	// example:
 	//
 	// ssh root@192.168.0.246
 	CommandLine *string `json:"CommandLine,omitempty" xml:"CommandLine,omitempty"`
-	// The network type of the WebSocket URL required for establishing a remote connection to the instance. Valid values:
+	// The network type of the WebSocket URL required for a remote connection to the instance. Valid values:
 	//
-	// - Internet: Internet. This is the default value.
+	// - Internet: the Internet. This is the default value.
 	//
-	// - Intranet: internal network.
+	// - Intranet: the internal network.
 	//
 	// example:
 	//
 	// Intranet
 	ConnectionType *string `json:"ConnectionType,omitempty" xml:"ConnectionType,omitempty"`
-	// The session encryption configuration.
+	// The session encryption configurations.
 	EncryptionOptionsShrink *string `json:"EncryptionOptions,omitempty" xml:"EncryptionOptions,omitempty"`
 	// The list of instance IDs.
 	//
@@ -72,23 +72,23 @@ type StartTerminalSessionShrinkRequest struct {
 	InstanceId   []*string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty" type:"Repeated"`
 	OwnerAccount *string   `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64    `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The name of the password for the user when using Session Manager on a Windows instance. The name can be up to 255 characters in length.
+	// The name of the user password used when Session Manager is used on a Windows instance. The name cannot exceed 255 characters in length.
 	//
-	// When you want to use Session Manager on a Windows instance as a non-default user (System), specify both Username and this parameter. To reduce the risk of password leaks, store the plaintext password in the parameter repository of operations management and specify only the password name here. For more information, see [Encryption parameters](https://help.aliyun.com/document_detail/186828.html).
+	// If you want to use Session Manager on a Windows instance as a non-default user (System), you must specify both the Username parameter and this parameter. To reduce the risk of password leakage, the plaintext password must be hosted in the operations management parameter repository, and only the password name is passed here. For more information, see [Encrypted parameters](https://help.aliyun.com/document_detail/186828.html).
 	//
 	// example:
 	//
 	// axtSecretPassword
 	PasswordName *string `json:"PasswordName,omitempty" xml:"PasswordName,omitempty"`
-	// The port number of the ECS instance for data forwarding. After this parameter is set, Cloud Assistant Agent forwards data to the specified port for port forwarding. For example, SSH uses port 22.
+	// The port number of the ECS instance, which is used for data forwarding. After this parameter is specified, data forwarding of Cloud Assistant Agent is directed to the specified port number for port forwarding. For example, SSH uses port 22.
 	//
-	// Default value: empty, which indicates that no port number is set for data forwarding.
+	// Default value: null, which indicates that the port number for data forwarding is not specified.
 	//
 	// example:
 	//
 	// 22
 	PortNumber *int32 `json:"PortNumber,omitempty" xml:"PortNumber,omitempty"`
-	// The region ID of the instance. You can call [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) to query the most recent region list.
+	// The region ID of the instance. You can call [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) to view the latest list of Alibaba Cloud regions.
 	//
 	// This parameter is required.
 	//
@@ -98,9 +98,9 @@ type StartTerminalSessionShrinkRequest struct {
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The address of the destination server in the VPC that you want to access through the instance.
+	// The destination service address in the VPC that is accessed through the instance.
 	//
-	// > When this parameter is not empty, PortNumber specifies the port number of the destination server in the VPC that you want to access through the managed instance.
+	// > When this parameter is not empty, PortNumber specifies the port number of the destination service in the VPC that is accessed through the managed instance.
 	//
 	// example:
 	//

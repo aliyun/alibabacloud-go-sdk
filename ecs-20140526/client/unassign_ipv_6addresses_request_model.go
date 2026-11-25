@@ -28,15 +28,15 @@ type iUnassignIpv6AddressesRequest interface {
 }
 
 type UnassignIpv6AddressesRequest struct {
-	// One or more IPv6 addresses to delete. Valid values of N: 1 to 10.
+	// The IPv6 addresses to be revoked. Valid values of N: 1 to 10.
 	//
 	// example:
 	//
 	// 2001:db8:1234:1a00::***
 	Ipv6Address []*string `json:"Ipv6Address,omitempty" xml:"Ipv6Address,omitempty" type:"Repeated"`
-	// One or more IPv6 prefixes to revoke. Valid values of N: 1 to 10.
+	// The IPv6 prefixes to be revoked. Valid values of N: 1 to 10.
 	Ipv6Prefix []*string `json:"Ipv6Prefix,omitempty" xml:"Ipv6Prefix,omitempty" type:"Repeated"`
-	// The network interface controller (NIC) ID.
+	// The ID of the elastic network interface controller (NIC).
 	//
 	// This parameter is required.
 	//
@@ -46,7 +46,7 @@ type UnassignIpv6AddressesRequest struct {
 	NetworkInterfaceId *string `json:"NetworkInterfaceId,omitempty" xml:"NetworkInterfaceId,omitempty"`
 	OwnerAccount       *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId            *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The region ID of the network interface controller (NIC). You can invoke [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) to query the most recent region list.
+	// The region ID of the elastic network interface controller (NIC). You can invoke the [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) operation to query the most recent region list.
 	//
 	// This parameter is required.
 	//

@@ -16,7 +16,7 @@ type iCreateNetworkInterfacePermissionResponseBody interface {
 }
 
 type CreateNetworkInterfacePermissionResponseBody struct {
-	// The collection of information composed of the Elastic network interface controller (NIC) permission list.
+	// The collection of elastic network interface controller (NIC) permissions.
 	NetworkInterfacePermission *CreateNetworkInterfacePermissionResponseBodyNetworkInterfacePermission `json:"NetworkInterfacePermission,omitempty" xml:"NetworkInterfacePermission,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -68,25 +68,25 @@ type CreateNetworkInterfacePermissionResponseBodyNetworkInterfacePermission stru
 	//
 	// 1234567890
 	AccountId *int64 `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
-	// The ID of the Elastic network interface controller (NIC).
+	// The ID of the Elastic Network Interface (ENI).
 	//
 	// example:
 	//
 	// eni-bp14v2sdd3v8htln****
 	NetworkInterfaceId *string `json:"NetworkInterfaceId,omitempty" xml:"NetworkInterfaceId,omitempty"`
-	// The ID of the Elastic network interface controller (NIC) permission.
+	// The ID of the elastic network interface controller (NIC) permission.
 	//
 	// example:
 	//
 	// eni-perm-bp1cs4lwn56lfb****
 	NetworkInterfacePermissionId *string `json:"NetworkInterfacePermissionId,omitempty" xml:"NetworkInterfacePermissionId,omitempty"`
-	// The Elastic network interface controller (NIC) permission.
+	// The elastic network interface controller (NIC) permission.
 	//
 	// example:
 	//
 	// InstanceAttach
 	Permission *string `json:"Permission,omitempty" xml:"Permission,omitempty"`
-	// The state of the Elastic network interface controller (NIC) permission. Valid values:
+	// The state of the elastic network interface controller (NIC) permission. Valid values:
 	//
 	// - Pending: The authorization is in progress.
 	//

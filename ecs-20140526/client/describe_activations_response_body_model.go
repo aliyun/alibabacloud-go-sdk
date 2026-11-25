@@ -24,9 +24,9 @@ type iDescribeActivationsResponseBody interface {
 }
 
 type DescribeActivationsResponseBody struct {
-	// The activation codes and their usage information.
+	// The collection of activation codes and their usage information.
 	ActivationList []*DescribeActivationsResponseBodyActivationList `json:"ActivationList,omitempty" xml:"ActivationList,omitempty" type:"Repeated"`
-	// The query token returned in the current response.
+	// The pagination token returned by the current call.
 	//
 	// example:
 	//
@@ -38,7 +38,7 @@ type DescribeActivationsResponseBody struct {
 	//
 	// 1
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The Settings for the number of entries returned per page during paging in a paged query.
+	// The number of entries returned per page.
 	//
 	// example:
 	//
@@ -50,9 +50,9 @@ type DescribeActivationsResponseBody struct {
 	//
 	// 4ECEEE12-56F1-4FBC-9AB1-890F74625134
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of records that meet the conditional query criteria.
+	// The total number of records that meet the query conditions.
 	//
-	// > When you perform paging in a paged query by using the MaxResults and NextToken parameters, the returned TotalCount value is meaningless.
+	// > When you use the MaxResults and NextToken parameters for pagination, the returned TotalCount value is meaningless.
 	//
 	// example:
 	//
@@ -142,7 +142,7 @@ type DescribeActivationsResponseBodyActivationList struct {
 	//
 	// 4ECEEE12-56F1-4FBC-9AB1-890F1234****
 	ActivationId *string `json:"ActivationId,omitempty" xml:"ActivationId,omitempty"`
-	// The creation time. The time follows the ISO 8601 standard and is displayed in UTC.
+	// The creation time. The time follows the ISO 8601 standard in the UTC time zone.
 	//
 	// example:
 	//
@@ -196,7 +196,7 @@ type DescribeActivationsResponseBodyActivationList struct {
 	//
 	// rg-123******
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The tag information of the managed instance activation code.
+	// The tag information of the activation code for the managed instance.
 	Tags []*DescribeActivationsResponseBodyActivationListTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 	// The validity period of the activation code. Unit: hours.
 	//
@@ -336,13 +336,13 @@ func (s *DescribeActivationsResponseBodyActivationList) Validate() error {
 }
 
 type DescribeActivationsResponseBodyActivationListTags struct {
-	// The tag key of the managed instance activation code.
+	// The tag key of the activation code for the managed instance.
 	//
 	// example:
 	//
 	// owner
 	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
-	// The tag value of the managed instance activation code.
+	// The tag value of the activation code for the managed instance.
 	//
 	// example:
 	//

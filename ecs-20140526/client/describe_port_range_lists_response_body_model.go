@@ -18,13 +18,13 @@ type iDescribePortRangeListsResponseBody interface {
 }
 
 type DescribePortRangeListsResponseBody struct {
-	// The pagination token returned in this call. If the return value is empty, no more data is available.
+	// The pagination token returned for the current call. If the value is empty, no more data is available.
 	//
 	// example:
 	//
 	// AAAAAdDWBF2
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The port range list information.
+	// The port lists.
 	PortRangeLists []*DescribePortRangeListsResponseBodyPortRangeLists `json:"PortRangeLists,omitempty" xml:"PortRangeLists,omitempty" type:"Repeated"`
 	// The request ID.
 	//
@@ -89,43 +89,43 @@ type DescribePortRangeListsResponseBodyPortRangeLists struct {
 	//
 	// 1
 	AssociationCount *int32 `json:"AssociationCount,omitempty" xml:"AssociationCount,omitempty"`
-	// The time when the port range list was created. The time is in ISO 8601 format and displayed in UTC.
+	// The creation time of the port list. The time follows the ISO 8601 standard in the UTC time zone.
 	//
 	// example:
 	//
 	// 2024-12-04T07:11Z
 	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
-	// The description of the port range list.
+	// The description of the port list.
 	//
 	// example:
 	//
 	// This is description.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The maximum number of entries supported by the port range list.
+	// The maximum number of entries that the port list supports.
 	//
 	// example:
 	//
 	// 20
 	MaxEntries *int32 `json:"MaxEntries,omitempty" xml:"MaxEntries,omitempty"`
-	// The ID of the port range list.
+	// The ID of the port list.
 	//
 	// example:
 	//
 	// prl-2ze9743****
 	PortRangeListId *string `json:"PortRangeListId,omitempty" xml:"PortRangeListId,omitempty"`
-	// The name of the port range list.
+	// The name of the port list.
 	//
 	// example:
 	//
 	// PortRangeListNameSample
 	PortRangeListName *string `json:"PortRangeListName,omitempty" xml:"PortRangeListName,omitempty"`
-	// The ID of the resource group to which the port range list belongs.
+	// The ID of the resource group to which the port list belongs.
 	//
 	// example:
 	//
 	// rg-2zeg82g****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The tags of the port range list.
+	// The tags of the port list.
 	Tags []*DescribePortRangeListsResponseBodyPortRangeListsTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 }
 
@@ -223,13 +223,13 @@ func (s *DescribePortRangeListsResponseBodyPortRangeLists) Validate() error {
 }
 
 type DescribePortRangeListsResponseBodyPortRangeListsTags struct {
-	// The tag key of the port range list.
+	// The key of the tag.
 	//
 	// example:
 	//
 	// TestKey
 	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
-	// The tag value of the port range list.
+	// The value of the tag.
 	//
 	// example:
 	//

@@ -26,33 +26,33 @@ type iDetachDiskRequest interface {
 }
 
 type DetachDiskRequest struct {
-	// Specifies whether to release the system cloud disk or data cloud disk when the ECS instance is released. This parameter sets the automatic release attribute when you unmount a system cloud disk or data cloud disk.
+	// The Settings for the automatic release property when uninstalling a system disk or data disk. Specifies whether the system disk or data disk is released when the ECS instance is released.
 	//
 	// - true: The disk is released.
 	//
-	// - false: The disk is not released. The cloud disk is converted to a pay-as-you-go data cloud disk and is retained.
+	// - false: The disk is not released. The disk is retained and transformed to a pay-as-you-go data disk.
 	//
 	// Default value: true.
 	//
 	// Take note of the following items:
 	//
-	// - This parameter cannot be set for cloud disks that have the multi-attach feature enabled.
+	// - This parameter cannot be configured for disks that have the multi-attach attribute enabled.
 	//
-	// - If you unmount a data cloud disk, the default value is `false`.
+	// - If you uninstall a data disk, the default value is `false`.
 	//
-	// - If the disk to be unmounted is an elastic ephemeral disk, you must set the `DeleteWithInstance` parameter to `true`.
+	// - If the disk to be uninstalled is an elastic ephemeral disk, you must set the `DeleteWithInstance` parameter to `true`.
 	//
 	// example:
 	//
 	// false
 	DeleteWithInstance *bool `json:"DeleteWithInstance,omitempty" xml:"DeleteWithInstance,omitempty"`
-	// The ID of the disk to be unmounted.
+	// The ID of the disk to be detached.
 	//
-	// - The disk must be mounted to an instance and be in the In Use (`In_use`) state.
+	// - The disk must be attached to an instance and be in the In Use (`In_use`) state.
 	//
-	// - When you unmount a data cloud disk, the instance to which the disk is mounted must be in the Running (`Running`) or Stopped (`Stopped`) state.
+	// - When you detach a data disk, the instance to which the disk is attached must be in the Running (`Running`) or Stopped (`Stopped`) state.
 	//
-	// - When you unmount a system cloud disk, the instance to which the disk is mounted must be in the Stopped (`Stopped`) state.
+	// - When you detach a system disk, the instance to which the disk is attached must be in the Stopped (`Stopped`) state.
 	//
 	// This parameter is required.
 	//
@@ -60,7 +60,7 @@ type DetachDiskRequest struct {
 	//
 	// d-bp67acfmxazb4p****
 	DiskId *string `json:"DiskId,omitempty" xml:"DiskId,omitempty"`
-	// The instance ID of the ECS instance to which the disk to be uninstalled is attached.
+	// The ECS instance ID to which the disk to be uninstalled is attached.
 	//
 	// This parameter is required.
 	//

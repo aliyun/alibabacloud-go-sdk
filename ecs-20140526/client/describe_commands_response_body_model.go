@@ -51,7 +51,7 @@ type DescribeCommandsResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The total number of commands.
 	//
-	// > When you use the MaxResults and NextToken parameters for paging, the returned TotalCount value is meaningless.
+	// > When you use the MaxResults and NextToken parameters for paging, the returned TotalCount parameter value is meaningless.
 	//
 	// example:
 	//

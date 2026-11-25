@@ -90,7 +90,7 @@ type DescribeInvocationsRequest struct {
 	//
 	// PlainText
 	ContentEncoding *string `json:"ContentEncoding,omitempty" xml:"ContentEncoding,omitempty"`
-	// Specifies whether to return the output of the command execution in the response. Valid values:
+	// Specifies whether to return the output of the command execution in the response.
 	//
 	// - true: The output is returned. In this case, you must specify at least the InvokeId or InstanceId parameter.
 	//
@@ -102,7 +102,7 @@ type DescribeInvocationsRequest struct {
 	//
 	// false
 	IncludeOutput *bool `json:"IncludeOutput,omitempty" xml:"IncludeOutput,omitempty"`
-	// The instance ID. If you specify this parameter, the system queries all command execution records of the instance.
+	// The instance ID. If you specify this parameter, all command execution records of the instance are queried.
 	//
 	// example:
 	//
@@ -132,9 +132,9 @@ type DescribeInvocationsRequest struct {
 	//
 	// - Success: The command execution status on each instance is Stopped or Success, and the command execution status on at least one instance is Success.
 	//
-	//     - Immediately run tasks: The command execution is completed, and the exit code is 0.
+	//     - Tasks that run immediately: The command execution is completed, and the exit code is 0.
 	//
-	//     - Scheduled tasks: The most recent execution is successful, the exit code is 0, and the specified schedule has ended.
+	//     - Scheduled tasks: The most recent execution is successful, the exit code is 0, and the specified time has elapsed.
 	//
 	// - Failed:
 	//
@@ -150,13 +150,13 @@ type DescribeInvocationsRequest struct {
 	//
 	// - Pending: The system is verifying or sending the command. The overall execution status is Pending if the command execution status on at least one instance is Pending.
 	//
-	// - Scheduled: The scheduled command has been sent and is waiting to be run. The overall execution status is Scheduled if the command execution status on at least one instance is Scheduled.
+	// - Scheduled: The scheduled command has been sent and is waiting to run. The overall execution status is Scheduled if the command execution status on at least one instance is Scheduled.
 	//
 	// example:
 	//
 	// Finished
 	InvokeStatus *string `json:"InvokeStatus,omitempty" xml:"InvokeStatus,omitempty"`
-	// The maximum number of entries per page for paging.
+	// The maximum number of entries per page during paging for a paged query.
 	//
 	// Maximum value: 50.
 	//
@@ -174,13 +174,13 @@ type DescribeInvocationsRequest struct {
 	NextToken    *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// > This parameter will soon be taken offline. We recommend that you use NextToken and MaxResults for paging and paged query operations.
+	// > This parameter will soon be taken offline. We recommend that you use NextToken and MaxResults for paging to complete paged query operations.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// > This parameter will soon be taken offline. We recommend that you use NextToken and MaxResults for paging and paged query operations.
+	// > This parameter will soon be taken offline. We recommend that you use NextToken and MaxResults for paging to complete paged query operations.
 	//
 	// example:
 	//
@@ -204,7 +204,7 @@ type DescribeInvocationsRequest struct {
 	//
 	// - EveryReboot: automatically runs the command every time the instance starts.
 	//
-	// Default value: empty. An empty value indicates that all execution modes are queried.
+	// Default value: empty, which indicates that all execution modes are queried.
 	//
 	// example:
 	//
@@ -224,7 +224,7 @@ type DescribeInvocationsRequest struct {
 	//
 	// - true: Queries commands for which the RepeatMode parameter is set to Period, NextRebootOnly, or EveryReboot when you call RunCommand or InvokeCommand to run the commands.
 	//
-	// - false: Queries commands in the following states:
+	// - false: Queries commands in the following two states:
 	//
 	//     - Commands for which the RepeatMode parameter is set to Once when you call RunCommand or InvokeCommand to run the commands.
 	//
@@ -449,19 +449,19 @@ func (s *DescribeInvocationsRequest) Validate() error {
 }
 
 type DescribeInvocationsRequestTag struct {
-	// The tag key of the command to execute. Valid values of N: 1 to 20. The tag key cannot be an empty string.
+	// The tag key of the command execute. Valid values of N: 1 to 20. The value cannot be an empty string.
 	//
-	// If you use a single tag to filter resources, the resource count returned cannot exceed 1,000. If you use multiple tags to filter resources, the resource count of resources that have all the specified tags attached cannot exceed 1,000. If the resource count exceeds 1,000, use the [ListTagResources](https://help.aliyun.com/document_detail/110425.html) operation to query the resources.
+	// If you use a single tag to filter resources, the resource count under this tag cannot exceed 1,000. If you use multiple tags to filter resources, the resource count of resources attached to all the specified tags cannot exceed 1,000. If the resource count exceeds 1,000, you must call the [ListTagResources](https://help.aliyun.com/document_detail/110425.html) operation to query the resources.
 	//
-	// The tag key can be up to 64 characters in length. It cannot start with aliyun or acs:, and cannot contain http:// or https://.
+	// The tag key can be up to 64 characters in length. It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
 	//
 	// example:
 	//
 	// TestKey
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The tag value of the command execution. Valid values of N: 1 to 20. The tag value can be an empty string.
+	// The tag value of the command execution. Valid values of N: 1 to 20. The value can be an empty string.
 	//
-	// The tag value can be up to 128 characters in length and cannot contain http:// or https://.
+	// The tag value can be up to 128 characters in length and cannot contain `http://` or `https://`.
 	//
 	// example:
 	//

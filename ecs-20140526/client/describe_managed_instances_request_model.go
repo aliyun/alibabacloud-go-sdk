@@ -54,11 +54,11 @@ type DescribeManagedInstancesRequest struct {
 	//
 	// 4ECEEE12-56F1-4FBC-9AB1-890F7494****
 	ActivationId *string `json:"ActivationId,omitempty" xml:"ActivationId,omitempty"`
-	// Specifies whether the managed instance is connected. Valid values:
+	// Indicates whether the managed instance is connected. Valid values:
 	//
-	// true: The managed instance is connected. You can use Cloud Assistant to manage the managed instance.
+	// - true: The managed instance is connected. You can use Cloud Assistant to manage the managed instance.
 	//
-	// false: The managed instance is not connected. The server may be stopped or the Cloud Assistant Agent is not properly installed.
+	// - false: The managed instance is not connected. The server may be stopped or the Cloud Assistant Agent is not properly installed.
 	//
 	// example:
 	//
@@ -68,7 +68,7 @@ type DescribeManagedInstancesRequest struct {
 	//
 	// example:
 	//
-	// mi-hz018jrc1o0****
+	// ["mi-hz018jrc1o0****"]
 	InstanceId []*string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty" type:"Repeated"`
 	// The internal IP address or public IP address of the managed instance.
 	//
@@ -106,13 +106,13 @@ type DescribeManagedInstancesRequest struct {
 	//
 	// - If the MachineId parameter is not explicitly specified, Cloud Assistant automatically generates a MachineId value based on the hardware information of the machine.
 	//
-	// - Recommended: Explicitly specify the MachineId and ForceResult parameters to mark the mapping between the managed instance and the on-premises machine.
+	// - Recommendation: Explicitly specify the MachineId and ForceResult parameters to mark the mapping between the managed instance and the on-premises machine.
 	//
 	// example:
 	//
 	// GOG4X8312A0188
 	MachineId *string `json:"MachineId,omitempty" xml:"MachineId,omitempty"`
-	// The maximum number of entries to return per page during paging.
+	// The maximum number of entries per page during paging.
 	//
 	// Maximum value: 50.
 	//
@@ -142,13 +142,13 @@ type DescribeManagedInstancesRequest struct {
 	OsType       *string `json:"OsType,omitempty" xml:"OsType,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// > This parameter will be deprecated soon. We recommend that you use NextToken and MaxResults to perform a paged query.
+	// > This parameter will be deprecated. Use NextToken and MaxResults to perform paged query operations.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// > This parameter will be deprecated soon. We recommend that you use NextToken and MaxResults to perform a paged query.
+	// > This parameter will be deprecated. Use NextToken and MaxResults to perform paged query operations.
 	//
 	// example:
 	//
@@ -156,7 +156,7 @@ type DescribeManagedInstancesRequest struct {
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The region ID. Supported regions: China (Qingdao), China (Beijing), China (Zhangjiakou), China (Hohhot), China (Ulanqab), China (Hangzhou), China (Shanghai), China (Shenzhen), China (Heyuan), China (Guangzhou), China (Chengdu), Hong Kong (China), Singapore, Japan (Tokyo), US (Silicon Valley), and US (Virginia).
 	//
-	// You can invoke the [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) operation to query region IDs and other information.
+	// You can call the [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) operation to view region IDs and other information.
 	//
 	// This parameter is required.
 	//
@@ -362,7 +362,7 @@ func (s *DescribeManagedInstancesRequest) Validate() error {
 type DescribeManagedInstancesRequestTag struct {
 	// The tag key of the managed instance. Valid values of N: 1 to 20. The tag key cannot be an empty string.
 	//
-	// If you use a single tag to filter resources, the resource count for that tag cannot exceed 1,000. If you use multiple tags to filter resources, the resource count for resources attached to multiple tags cannot exceed 1,000. If the resource count exceeds 1,000, you must call the [ListTagResources](https://help.aliyun.com/document_detail/110425.html) operation to query the resources.
+	// If you use a single tag to filter resources, the number of returned resources cannot exceed 1,000. If you use multiple tags to filter resources, the number of returned resources that have multiple tags attached cannot exceed 1,000. If the number of resources exceeds 1,000, use the [ListTagResources](https://help.aliyun.com/document_detail/110425.html) operation to query the resources.
 	//
 	// The tag key can be up to 64 characters in length. It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
 	//

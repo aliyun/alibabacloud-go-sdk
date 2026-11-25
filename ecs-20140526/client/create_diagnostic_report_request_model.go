@@ -24,7 +24,11 @@ type iCreateDiagnosticReportRequest interface {
 }
 
 type CreateDiagnosticReportRequest struct {
-	// The extension in JSON format.
+	// The extended parameters in JSON format.
+	//
+	// example:
+	//
+	// {"key":"value"}
 	AdditionalOptions map[string]*string `json:"AdditionalOptions,omitempty" xml:"AdditionalOptions,omitempty"`
 	// The end time. The time follows the ISO 8601 standard and is displayed in UTC. This parameter takes effect only for diagnostic metrics that do not require Cloud Assistant commands to be executed in the guest OS.
 	//
@@ -32,13 +36,13 @@ type CreateDiagnosticReportRequest struct {
 	//
 	// 2022-07-11T14:00Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The diagnostic metric set ID. If this parameter is left empty, the default diagnostic metric set dms-instancedefault for ECS instances is used.
+	// The metric set ID. If this parameter is left empty, the default metric set dms-instancedefault for ECS instances is used.
 	//
 	// example:
 	//
 	// dms-uf6i0tv2refv8wz*****
 	MetricSetId *string `json:"MetricSetId,omitempty" xml:"MetricSetId,omitempty"`
-	// The region ID. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) operation to query the latest Alibaba Cloud region list.
+	// The region ID. You can call [DescribeRegions](https://help.aliyun.com/document_detail/25609.html) to view the latest list of Alibaba Cloud regions.
 	//
 	// This parameter is required.
 	//

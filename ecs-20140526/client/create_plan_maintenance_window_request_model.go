@@ -26,7 +26,7 @@ type iCreatePlanMaintenanceWindowRequest interface {
 }
 
 type CreatePlanMaintenanceWindowRequest struct {
-	// Specifies whether to enable the window. Valid values:
+	// Specifies whether to enable or disable the window. Valid values:
 	//
 	// - **true**: Enabled.
 	//
@@ -52,7 +52,7 @@ type CreatePlanMaintenanceWindowRequest struct {
 	//
 	// WIndowName
 	PlanWindowName *string `json:"PlanWindowName,omitempty" xml:"PlanWindowName,omitempty"`
-	// The region ID. This parameter is required for Alibaba Cloud SDK routing. However, specifying any region ID for this operation yields the same result. The O&M window applies to all ECS instances across the network that meet the resource filtering conditions.
+	// The region ID. This parameter is required for Alibaba Cloud SDK routing. However, setting any region ID for this operation makes no difference. The O&M window takes effect on all ECS instances across the network that meet the resource filtering conditions.
 	//
 	// This parameter is required.
 	//
@@ -170,7 +170,7 @@ type CreatePlanMaintenanceWindowRequestTargetResource struct {
 	//
 	// rg-aekzhm7pmnvcbty
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The type of resources configured for the O&M window.
+	// The resource type configured for the O&M window.
 	//
 	// This parameter is required.
 	//
@@ -235,7 +235,7 @@ type CreatePlanMaintenanceWindowRequestTargetResourceTags struct {
 	//
 	// example:
 	//
-	// vms_qualification_Mr. Sun ID card_e5590864-1fef-4db2-b2a7-bd2d657fed43.png
+	// vms_qualification_Mr_Sun_ID_card_e5590864-1fef-4db2-b2a7-bd2d657fed43.png
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	// The value of the tag to which the window applies.
 	//
@@ -276,7 +276,7 @@ func (s *CreatePlanMaintenanceWindowRequestTargetResourceTags) Validate() error 
 }
 
 type CreatePlanMaintenanceWindowRequestTimePeriod struct {
-	// The type of the recurrence cycle. Valid values: Daily and Weekly.
+	// The type of the cycle. Valid values: Daily and Weekly.
 	//
 	// This parameter is required.
 	//
@@ -284,7 +284,7 @@ type CreatePlanMaintenanceWindowRequestTimePeriod struct {
 	//
 	// Weekly
 	PeriodUnit *string `json:"PeriodUnit,omitempty" xml:"PeriodUnit,omitempty"`
-	// The time ranges of the O&M window recurrence cycle in the UTC time zone.
+	// The time ranges of the recurrence cycle for the O&M window in UTC.
 	//
 	// This parameter is required.
 	RangeList []*CreatePlanMaintenanceWindowRequestTimePeriodRangeList `json:"RangeList,omitempty" xml:"RangeList,omitempty" type:"Repeated"`
@@ -336,7 +336,7 @@ type CreatePlanMaintenanceWindowRequestTimePeriodRangeList struct {
 	//
 	// - If PeriodUnit is set to Daily, the format is 22:00.
 	//
-	// - The comma (,) is used as a delimiter. The first part represents the hour, which ranges from 00 to 23. The second part represents the minute. Currently, only 00 is supported.
+	// - The comma (,) is used as a separator. The first part represents the hour, with valid values from 00 to 23. The second part represents the minute, and only 00 is supported.
 	//
 	// example:
 	//
@@ -348,7 +348,7 @@ type CreatePlanMaintenanceWindowRequestTimePeriodRangeList struct {
 	//
 	// - If PeriodUnit is set to Daily, the format is 22:00.
 	//
-	// - The comma (,) is used as a delimiter. The first part represents the hour, which ranges from 00 to 23. The second part represents the minute. Currently, only 00 is supported.
+	// - The comma (,) is used as a separator. The first part represents the hour, with valid values from 00 to 23. The second part represents the minute, and only 00 is supported.
 	//
 	// example:
 	//

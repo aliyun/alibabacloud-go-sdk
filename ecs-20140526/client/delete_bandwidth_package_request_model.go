@@ -27,12 +27,20 @@ type DeleteBandwidthPackageRequest struct {
 	// The ID of the bandwidth package to delete.
 	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// bwp-bp1xea10o8qxwaswq****
 	BandwidthPackageId *string `json:"BandwidthPackageId,omitempty" xml:"BandwidthPackageId,omitempty"`
 	OwnerAccount       *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId            *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The region ID of the bandwidth package. You can call the DescribeRegions operation to query the latest region list.
+	// The ID of the region where the bandwidth package is located. You can call the DescribeRegions operation to query the latest region list.
 	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
