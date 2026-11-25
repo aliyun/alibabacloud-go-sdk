@@ -11,6 +11,8 @@ type iDescribeUserBuyVersionResponseBody interface {
 	GoString() string
 	SetAckClusterConnectorQuota(v int64) *DescribeUserBuyVersionResponseBody
 	GetAckClusterConnectorQuota() *int64
+	SetAgentic(v int32) *DescribeUserBuyVersionResponseBody
+	GetAgentic() *int32
 	SetAliUid(v int64) *DescribeUserBuyVersionResponseBody
 	GetAliUid() *int64
 	SetDefaultBandwidth(v int64) *DescribeUserBuyVersionResponseBody
@@ -62,19 +64,25 @@ type iDescribeUserBuyVersionResponseBody interface {
 }
 
 type DescribeUserBuyVersionResponseBody struct {
-	// The ACK cluster connector quota.
+	// The quota for ACK cluster connectors.
 	//
 	// example:
 	//
 	// 5
 	AckClusterConnectorQuota *int64 `json:"AckClusterConnectorQuota,omitempty" xml:"AckClusterConnectorQuota,omitempty"`
+	// Specifies whether Agentic 2.0 is enabled.
+	//
+	// example:
+	//
+	// 1
+	Agentic *int32 `json:"Agentic,omitempty" xml:"Agentic,omitempty"`
 	// The AliUid of the Cloud Firewall account.
 	//
 	// example:
 	//
 	// 119898001566xxxx
 	AliUid *int64 `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
-	// The default bandwidth of the edition.
+	// The default bandwidth for the edition.
 	//
 	// example:
 	//
@@ -82,9 +90,9 @@ type DescribeUserBuyVersionResponseBody struct {
 	DefaultBandwidth *int64 `json:"DefaultBandwidth,omitempty" xml:"DefaultBandwidth,omitempty"`
 	// The expiration time of the Cloud Firewall instance.
 	//
-	// > The value is a millisecond-level UNIX timestamp.
+	// > The value is a UNIX timestamp in milliseconds.
 	//
-	// > This field is meaningless when you use the pay-as-you-go edition.
+	// > This field is not applicable to the pay-as-you-go edition.
 	//
 	// example:
 	//
@@ -96,7 +104,7 @@ type DescribeUserBuyVersionResponseBody struct {
 	//
 	// 1000
 	ExtensionBandwidth *int64 `json:"ExtensionBandwidth,omitempty" xml:"ExtensionBandwidth,omitempty"`
-	// The general-purpose instance quota.
+	// The quota for general-purpose instances.
 	//
 	// example:
 	//
@@ -104,13 +112,13 @@ type DescribeUserBuyVersionResponseBody struct {
 	GeneralInstance *int64 `json:"GeneralInstance,omitempty" xml:"GeneralInstance,omitempty"`
 	// The ID of the purchased Cloud Firewall instance.
 	//
-	// > This field is meaningless when you use the trial version.
+	// > This field is not applicable to the trial edition.
 	//
 	// example:
 	//
 	// vipcloudfw-cn-xxxxx
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The provisioning status of the Cloud Firewall instance. Valid values:
+	// The production status of the Cloud Firewall instance. Valid values:
 	//
 	// - **normal**: The instance is running normally.
 	//
@@ -132,9 +140,9 @@ type DescribeUserBuyVersionResponseBody struct {
 	//
 	// 3000
 	InternetBandwidth *int64 `json:"InternetBandwidth,omitempty" xml:"InternetBandwidth,omitempty"`
-	// The purchased quota for the Internet border protection.
+	// The purchased quota for the Internet Border protection.
 	//
-	// > This field takes effect only for subscription users.
+	// > This field is applicable only to subscription users.
 	//
 	// example:
 	//
@@ -152,7 +160,7 @@ type DescribeUserBuyVersionResponseBody struct {
 	LogStatus *bool `json:"LogStatus,omitempty" xml:"LogStatus,omitempty"`
 	// The purchased log storage capacity.
 	//
-	// > This field takes effect only for subscription users.
+	// > This field is applicable only to subscription users.
 	//
 	// example:
 	//
@@ -164,37 +172,37 @@ type DescribeUserBuyVersionResponseBody struct {
 	//
 	// 1
 	MajorVersion *int64 `json:"MajorVersion,omitempty" xml:"MajorVersion,omitempty"`
-	// Indicates whether burstable elastic billing is enabled. Valid values:
+	// Specifies whether burstable elastic billing is enabled. Valid values:
 	//
 	// - **1000000**: Enabled.
 	//
 	// - **0**: Disabled.
 	//
-	// > This field takes effect only for subscription users.
+	// > This field is applicable only to subscription users.
 	//
 	// example:
 	//
 	// 0
 	MaxOverflow *int64 `json:"MaxOverflow,omitempty" xml:"MaxOverflow,omitempty"`
-	// The purchased traffic processing capacity of NAT firewalls.
+	// The purchased traffic processing capacity of the NAT firewall.
 	//
 	// example:
 	//
 	// 3000
 	NatBandwidth *int64 `json:"NatBandwidth,omitempty" xml:"NatBandwidth,omitempty"`
-	// The private DNS connector quota.
+	// The quota for private DNS connectors.
 	//
 	// example:
 	//
 	// 5
 	PrivateDnsConnectorQuota *int64 `json:"PrivateDnsConnectorQuota,omitempty" xml:"PrivateDnsConnectorQuota,omitempty"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
 	// F71B03EE-xxxxx-91D79CC6AA1A
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The enabling status of sensitive data leak detection. In the Resource field, true indicates enabled and false indicates disabled. In the API response, 1 indicates enabled and 0 indicates disabled.
+	// The enabling status of sensitive data leak detection. In the Resource parameter, true indicates enabled and false indicates disabled. In the API response, 1 indicates enabled and 0 indicates disabled.
 	//
 	// example:
 	//
@@ -202,13 +210,13 @@ type DescribeUserBuyVersionResponseBody struct {
 	Sdl *int64 `json:"Sdl,omitempty" xml:"Sdl,omitempty"`
 	// The activation time of the Cloud Firewall instance.
 	//
-	// > The value is a millisecond-level UNIX timestamp.
+	// > The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
 	// 1692504764000
 	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The temporary upgrade bandwidth.
+	// The temporary bandwidth upgrade.
 	//
 	// example:
 	//
@@ -230,7 +238,7 @@ type DescribeUserBuyVersionResponseBody struct {
 	//
 	// true
 	UserStatus *bool `json:"UserStatus,omitempty" xml:"UserStatus,omitempty"`
-	// The version of the Cloud Firewall instance. Valid values:
+	// The edition of the Cloud Firewall instance. Valid values:
 	//
 	// - **2**: Premium Edition
 	//
@@ -238,13 +246,13 @@ type DescribeUserBuyVersionResponseBody struct {
 	//
 	// - **4**: Ultimate Edition
 	//
-	// - **10**: Pay-as-you-go Edition
+	// - **10**: Pay-as-you-go edition
 	//
 	// example:
 	//
 	// 2
 	Version *int32 `json:"Version,omitempty" xml:"Version,omitempty"`
-	// The purchased traffic processing capacity of VPC firewalls.
+	// The purchased traffic processing capacity of the VPC firewall.
 	//
 	// example:
 	//
@@ -252,7 +260,7 @@ type DescribeUserBuyVersionResponseBody struct {
 	VpcBandwidth *int64 `json:"VpcBandwidth,omitempty" xml:"VpcBandwidth,omitempty"`
 	// The purchased quota for VPC firewalls.
 	//
-	// > This field takes effect only for subscription users.
+	// > This field is applicable only to subscription users.
 	//
 	// example:
 	//
@@ -270,6 +278,10 @@ func (s DescribeUserBuyVersionResponseBody) GoString() string {
 
 func (s *DescribeUserBuyVersionResponseBody) GetAckClusterConnectorQuota() *int64 {
 	return s.AckClusterConnectorQuota
+}
+
+func (s *DescribeUserBuyVersionResponseBody) GetAgentic() *int32 {
+	return s.Agentic
 }
 
 func (s *DescribeUserBuyVersionResponseBody) GetAliUid() *int64 {
@@ -370,6 +382,11 @@ func (s *DescribeUserBuyVersionResponseBody) GetVpcNumber() *int64 {
 
 func (s *DescribeUserBuyVersionResponseBody) SetAckClusterConnectorQuota(v int64) *DescribeUserBuyVersionResponseBody {
 	s.AckClusterConnectorQuota = &v
+	return s
+}
+
+func (s *DescribeUserBuyVersionResponseBody) SetAgentic(v int32) *DescribeUserBuyVersionResponseBody {
+	s.Agentic = &v
 	return s
 }
 

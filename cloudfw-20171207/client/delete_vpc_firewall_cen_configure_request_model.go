@@ -28,13 +28,13 @@ type DeleteVpcFirewallCenConfigureRequest struct {
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The UID of a member account of the current Alibaba Cloud account.
+	// The UID of the member accounts that belong to the current Alibaba Cloud account.
 	//
 	// example:
 	//
 	// 258039427902****
 	MemberUid *string `json:"MemberUid,omitempty" xml:"MemberUid,omitempty"`
-	// The list of instance IDs of VPC border firewalls.
+	// The list of instance IDs of the VPC border firewalls.
 	//
 	// This parameter is required.
 	VpcFirewallIdList []*string `json:"VpcFirewallIdList,omitempty" xml:"VpcFirewallIdList,omitempty" type:"Repeated"`

@@ -26,7 +26,7 @@ type DescribeInternetTrafficTopResponseBody struct {
 	//
 	// 10
 	DataCount *int32 `json:"DataCount,omitempty" xml:"DataCount,omitempty"`
-	// The list of traffic data.
+	// The traffic data list.
 	DataList []*DescribeInternetTrafficTopResponseBodyDataList `json:"DataList,omitempty" xml:"DataList,omitempty" type:"Repeated"`
 	// The traffic data type.
 	//
@@ -34,7 +34,7 @@ type DescribeInternetTrafficTopResponseBody struct {
 	//
 	// in_src_ip
 	DataType *string `json:"DataType,omitempty" xml:"DataType,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -118,7 +118,7 @@ type DescribeInternetTrafficTopResponseBodyDataList struct {
 	//
 	// false
 	IsSubscribed *bool `json:"IsSubscribed,omitempty" xml:"IsSubscribed,omitempty"`
-	// The list of labels.
+	// The label list.
 	LabelList []*string `json:"LabelList,omitempty" xml:"LabelList,omitempty" type:"Repeated"`
 	// The number of sessions.
 	//

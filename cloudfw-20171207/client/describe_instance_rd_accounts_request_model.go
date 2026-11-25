@@ -26,7 +26,7 @@ type iDescribeInstanceRdAccountsRequest interface {
 }
 
 type DescribeInstanceRdAccountsRequest struct {
-	// The page number of the current page.
+	// The current page number.
 	//
 	// example:
 	//
@@ -38,19 +38,19 @@ type DescribeInstanceRdAccountsRequest struct {
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The description of the Cloud Firewall member accounts.
+	// The description of Cloud Firewall member accounts.
 	//
 	// example:
 	//
 	// renewal
 	MemberDesc *string `json:"MemberDesc,omitempty" xml:"MemberDesc,omitempty"`
-	// The name of the Cloud Firewall member accounts.
+	// The name of Cloud Firewall member accounts.
 	//
 	// example:
 	//
 	// cloudfirewall_2
 	MemberDisplayName *string `json:"MemberDisplayName,omitempty" xml:"MemberDisplayName,omitempty"`
-	// The UID of the member accounts.
+	// The UID of member accounts.
 	//
 	// example:
 	//

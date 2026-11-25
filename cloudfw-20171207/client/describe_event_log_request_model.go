@@ -46,9 +46,9 @@ type DescribeEventLogRequest struct {
 	//
 	// - **1**: Abnormal connection.
 	//
-	// - **2**: execute commands.
+	// - **2**: Command execution.
 	//
-	// - **3**: brute-force attacks.
+	// - **3**: Brute-force attack.
 	//
 	// - **4**: Scan.
 	//
@@ -64,19 +64,19 @@ type DescribeEventLogRequest struct {
 	//
 	// - **10**: Trojan backdoor.
 	//
-	// - **11**: Virus and worm.
+	// - **11**: Virus or worm.
 	//
 	// - **12**: Mining behavior.
 	//
 	// - **13**: Reverse shell.
 	//
-	// > If you do not specify the Settings for this parameter, events of all attack types are queried.
+	// > If you do not specify this parameter, all attack types are queried.
 	//
 	// example:
 	//
 	// 13
 	AttackType *int64 `json:"AttackType,omitempty" xml:"AttackType,omitempty"`
-	// The page number for paging in a paged query.
+	// The page number.
 	//
 	// example:
 	//
@@ -96,11 +96,11 @@ type DescribeEventLogRequest struct {
 	//
 	// 1731551104
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The type of Cloud Firewall. Valid values:
+	// The type of the Cloud Firewall. Valid values:
 	//
-	// - **VpcFirewall**: virtual private cloud (VPC) firewalls at the border.
+	// - **VpcFirewall**: VPC firewall.
 	//
-	// - **InternetFirewall*	- (default): the Internet Border firewall.
+	// - **InternetFirewall*	- (default): Internet Border firewall.
 	//
 	// example:
 	//
@@ -114,7 +114,7 @@ type DescribeEventLogRequest struct {
 	//
 	// ]
 	FirewallType *string `json:"FirewallType,omitempty" xml:"FirewallType,omitempty"`
-	// The language for receiving messages.
+	// The language of the response message.
 	//
 	// example:
 	//
@@ -126,15 +126,15 @@ type DescribeEventLogRequest struct {
 	//
 	// 1
 	LogType *string `json:"LogType,omitempty" xml:"LogType,omitempty"`
-	// Specifies the number of results per page for a paginated query.
+	// The number of entries to return on each page.
 	//
-	// Default value: **6**, which indicates that 6 results are returned per page. Maximum value: **10**.
+	// Default value: **6**, which indicates that 6 entries are returned on each page. Maximum value: **10**.
 	//
 	// example:
 	//
 	// 10
 	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// Filters event logs by rule hits. The value must be the same as the RuleId value in the response. If LogType is set to ips, pass the UUID of the IPS rule (the RuleUuid value returned by DescribeIPSRules) instead of the numeric format (font style) of the RuleId. If both RuleId and AttackType are specified, records that meet both conditions are returned. This parameter takes effect for ips, app_ctl, web_filter, and threat_intelligence. If LogType is set to tls and this parameter is specified, a parameter fault is returned. If no matching records are found, TotalCount is 0. If you do not specify this parameter, event logs are not filtered by rule hit.
+	// The rule ID.
 	//
 	// example:
 	//
@@ -146,7 +146,7 @@ type DescribeEventLogRequest struct {
 	//
 	// - **2**: Block.
 	//
-	// > If you do not specify this parameter, events of all defense statuses are queried.
+	// > If you do not specify this parameter, all defense statuses are queried.
 	//
 	// example:
 	//
@@ -172,7 +172,7 @@ type DescribeEventLogRequest struct {
 	//
 	// 47.92.x.x
 	SrcIP *string `json:"SrcIP,omitempty" xml:"SrcIP,omitempty"`
-	// Filters by the exact TLS handshake result. This parameter takes effect only when LogType is set to tls and is ignored for other types. Valid values: bypass, alert, and failed (handshake failure). If this parameter is not specified, records of the bypass, alert, and failed types are returned, and normal traffic with successful handshakes (success) is not returned.
+	// The TLS handshake result.
 	//
 	// example:
 	//

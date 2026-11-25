@@ -9,6 +9,8 @@ type iDescribePolicyAdvancedConfigResponseBody interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetEips(v []*string) *DescribePolicyAdvancedConfigResponseBody
+	GetEips() []*string
 	SetInternetSwitch(v string) *DescribePolicyAdvancedConfigResponseBody
 	GetInternetSwitch() *string
 	SetRequestId(v string) *DescribePolicyAdvancedConfigResponseBody
@@ -16,17 +18,23 @@ type iDescribePolicyAdvancedConfigResponseBody interface {
 }
 
 type DescribePolicyAdvancedConfigResponseBody struct {
-	// The enabling status of strict mode for access control policies. Valid values:
+	// The list of elastic IP addresses (EIPs) that take effect when strict mode is enabled. A maximum of 100 IP addresses can be returned.
 	//
-	// - **on**: Strict mode is enabled.
+	// example:
 	//
-	// - **off**: Strict mode is disabled.
+	// ["47.100.XX.XX","47.101.XX.XX"]
+	Eips []*string `json:"Eips,omitempty" xml:"Eips,omitempty" type:"Repeated"`
+	// The enabling status of the strict mode for access control policies. Valid values:
+	//
+	// - **on**: The strict mode is enabled.
+	//
+	// - **off**: The strict mode is disabled.
 	//
 	// example:
 	//
 	// off
 	InternetSwitch *string `json:"InternetSwitch,omitempty" xml:"InternetSwitch,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -42,12 +50,21 @@ func (s DescribePolicyAdvancedConfigResponseBody) GoString() string {
 	return s.String()
 }
 
+func (s *DescribePolicyAdvancedConfigResponseBody) GetEips() []*string {
+	return s.Eips
+}
+
 func (s *DescribePolicyAdvancedConfigResponseBody) GetInternetSwitch() *string {
 	return s.InternetSwitch
 }
 
 func (s *DescribePolicyAdvancedConfigResponseBody) GetRequestId() *string {
 	return s.RequestId
+}
+
+func (s *DescribePolicyAdvancedConfigResponseBody) SetEips(v []*string) *DescribePolicyAdvancedConfigResponseBody {
+	s.Eips = v
+	return s
 }
 
 func (s *DescribePolicyAdvancedConfigResponseBody) SetInternetSwitch(v string) *DescribePolicyAdvancedConfigResponseBody {

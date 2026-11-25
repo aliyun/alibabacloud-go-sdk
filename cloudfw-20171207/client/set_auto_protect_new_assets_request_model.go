@@ -13,14 +13,14 @@ type iSetAutoProtectNewAssetsRequest interface {
 	GetAutoProtect() *bool
 	SetLang(v string) *SetAutoProtectNewAssetsRequest
 	GetLang() *string
-	SetSourceIp(v string) *SetAutoProtectNewAssetsRequest
-	GetSourceIp() *string
 }
 
 type SetAutoProtectNewAssetsRequest struct {
 	// Specifies whether to enable automatic traffic redirection. Valid values:
 	//
-	// **true****false**
+	// - **true**: Enabled.
+	//
+	// - **false**: Disabled.
 	//
 	// This parameter is required.
 	//
@@ -28,18 +28,16 @@ type SetAutoProtectNewAssetsRequest struct {
 	//
 	// true
 	AutoProtect *bool `json:"AutoProtect,omitempty" xml:"AutoProtect,omitempty"`
-	// The language. Valid values are zh (Chinese) and **en*	- (English). The default value is **zh**.
+	// The language type. Valid values:
+	//
+	// - **zh**: Chinese. Default value.
+	//
+	// - **en**: English.
 	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The source IP address of the visitor.
-	//
-	// example:
-	//
-	// 60.182.79.XXX
-	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
 }
 
 func (s SetAutoProtectNewAssetsRequest) String() string {
@@ -58,10 +56,6 @@ func (s *SetAutoProtectNewAssetsRequest) GetLang() *string {
 	return s.Lang
 }
 
-func (s *SetAutoProtectNewAssetsRequest) GetSourceIp() *string {
-	return s.SourceIp
-}
-
 func (s *SetAutoProtectNewAssetsRequest) SetAutoProtect(v bool) *SetAutoProtectNewAssetsRequest {
 	s.AutoProtect = &v
 	return s
@@ -69,11 +63,6 @@ func (s *SetAutoProtectNewAssetsRequest) SetAutoProtect(v bool) *SetAutoProtectN
 
 func (s *SetAutoProtectNewAssetsRequest) SetLang(v string) *SetAutoProtectNewAssetsRequest {
 	s.Lang = &v
-	return s
-}
-
-func (s *SetAutoProtectNewAssetsRequest) SetSourceIp(v string) *SetAutoProtectNewAssetsRequest {
-	s.SourceIp = &v
 	return s
 }
 

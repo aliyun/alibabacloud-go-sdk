@@ -34,7 +34,7 @@ type CreateDownloadTaskRequest struct {
 	//
 	// example:
 	//
-	// {\\"SearchItem\\":\\"\\",\\"UserType\\":\\"buy\\",\\"IpVersion\\":\\"4\\"}
+	// {\"SearchItem\":\"\",\"UserType\":\"buy\",\"IpVersion\":\"4\"}
 	TaskData *string `json:"TaskData,omitempty" xml:"TaskData,omitempty"`
 	// The task type. For valid values, refer to the API operation that queries file download task types.
 	//

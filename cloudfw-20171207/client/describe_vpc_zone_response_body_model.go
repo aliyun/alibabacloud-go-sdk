@@ -78,7 +78,7 @@ type DescribeVpcZoneResponseBodyZoneList struct {
 	//
 	// cn-hangzhou-b
 	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
-	// The type of the zone. The default value is \\`AvailabilityZone\\`, which indicates a standard cloud zone.
+	// The type of the zone. The default value is \`AvailabilityZone\`, which indicates a standard cloud zone.
 	//
 	// example:
 	//

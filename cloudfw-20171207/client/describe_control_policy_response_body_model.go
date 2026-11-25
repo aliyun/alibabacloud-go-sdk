@@ -223,7 +223,7 @@ type DescribeControlPolicyResponseBodyPolicys struct {
 	//
 	// - If **DestinationType*	- is set to **group**, the destination address is the name of an address book. Example: db_group.
 	//
-	// - If **DestinationType*	- is set to **location**, the destination address is an area name. For more information about the area positional encoding, see AddControlPolicy. Example: ["BJ11", "ZB"\\].
+	// - If **DestinationType*	- is set to **location**, the destination address is an area name. For more information about the area positional encoding, see AddControlPolicy. Example: ["BJ11", "ZB"\].
 	//
 	// example:
 	//
@@ -425,7 +425,7 @@ type DescribeControlPolicyResponseBodyPolicys struct {
 	//
 	// - If **SourceType*	- is set to `group`, the source address is the name of a source address book. Example: db_group.
 	//
-	// - If **SourceType*	- is set to `location`, the source address is an area. For more information about the area positional encoding, see [AddControlPolicy](https://help.aliyun.com/document_detail/138867.html). Example: ["BJ11", "ZB"\\].
+	// - If **SourceType*	- is set to `location`, the source address is an area. For more information about the area positional encoding, see [AddControlPolicy](https://help.aliyun.com/document_detail/138867.html). Example: ["BJ11", "ZB"\].
 	//
 	// example:
 	//
@@ -463,7 +463,7 @@ type DescribeControlPolicyResponseBodyPolicys struct {
 	SourceType *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
 	// The quota consumed by the access control policy, which is the sum of the quota consumed by each policy.
 	//
-	// Quota consumed by a single policy = Number of source addresses (number of CIDR blocks or area) \\	- Number of destination addresses (number of CIDR blocks, area, or domain names) \\	- Number of port ranges \\	- Number of applications.
+	// Quota consumed by a single policy = Number of source addresses (number of CIDR blocks or area) \	- Number of destination addresses (number of CIDR blocks, area, or domain names) \	- Number of port ranges \	- Number of applications.
 	//
 	// example:
 	//

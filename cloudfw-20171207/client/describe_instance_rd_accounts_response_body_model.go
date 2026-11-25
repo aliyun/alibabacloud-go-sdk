@@ -66,13 +66,13 @@ func (s *DescribeInstanceRdAccountsResponseBody) Validate() error {
 }
 
 type DescribeInstanceRdAccountsResponseBodyAccounts struct {
-	// The ID of the member accounts.
+	// The ID of member accounts.
 	//
 	// example:
 	//
 	// 171054237268****
 	AccountId *string `json:"AccountId,omitempty" xml:"AccountId,omitempty"`
-	// The name of the member.
+	// The display name of the member.
 	//
 	// example:
 	//

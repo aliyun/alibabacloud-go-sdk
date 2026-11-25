@@ -24,13 +24,13 @@ type iDescribePostpayBillRequest interface {
 }
 
 type DescribePostpayBillRequest struct {
-	// The page number of the current page in a paging query.
+	// The Settings for the current page number in a paged query.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *int64 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The end time of the bill query. The time is a UNIX timestamp accurate to seconds and must be later than the start time.
+	// The end time of the bill query. The time is a UNIX timestamp in seconds and must be later than the start time.
 	//
 	// This parameter is required.
 	//
@@ -38,35 +38,29 @@ type DescribePostpayBillRequest struct {
 	//
 	// 1646063922
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The aggregation interval of the bill data. Unit: seconds. This parameter is required. If you do not specify this parameter, the ERR_PARAMS_INVALID error is returned. Valid values:
+	// The aggregation interval of the bill data. Unit: seconds. This parameter is required. If this parameter is not specified, ERR_PARAMS_INVALID is returned. Valid values:
 	//
-	// - 3600: Hourly aggregation.
+	// - 3600: hourly aggregation.
 	//
-	// - 86400: Daily aggregation.
+	// - 86400: daily aggregation.
 	//
 	// example:
 	//
 	// 3600
 	Interval *int32 `json:"Interval,omitempty" xml:"Interval,omitempty"`
-	// The language. Valid values:
-	//
-	// - en: English.
-	//
-	// - zh: Chinese.
-	//
-	// Default value: zh.
+	// The language. Default value: zh. Valid values: en.
 	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The maximum number of entries to return on each page in a paging query. Default value: 10.
+	// The maximum number of entries to return on each page in a paged query. Default value: 10.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The start time of the bill query. The time is a UNIX timestamp accurate to seconds.
+	// The start time of the bill query. The time is a UNIX timestamp in seconds.
 	//
 	// This parameter is required.
 	//

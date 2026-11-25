@@ -20,13 +20,13 @@ type iDescribeInternetTimeTopResponseBody interface {
 }
 
 type DescribeInternetTimeTopResponseBody struct {
-	// The number of returned entries.
+	// The number of results.
 	//
 	// example:
 	//
 	// 19
 	DataCount *int32 `json:"DataCount,omitempty" xml:"DataCount,omitempty"`
-	// The list of returned data.
+	// The returned data list.
 	DataList []*DescribeInternetTimeTopResponseBodyDataList `json:"DataList,omitempty" xml:"DataList,omitempty" type:"Repeated"`
 	// The ID of the request.
 	//
@@ -34,7 +34,7 @@ type DescribeInternetTimeTopResponseBody struct {
 	//
 	// 7F2D5C04-731F-50B0-ADE1-01637B3C****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The traffic time. The value is a UNIX timestamp in seconds.
+	// The time of the traffic. The value is a UNIX timestamp in seconds.
 	//
 	// example:
 	//
@@ -106,7 +106,7 @@ type DescribeInternetTimeTopResponseBodyDataList struct {
 	//
 	// 183.60.164.XXX
 	IP *string `json:"IP,omitempty" xml:"IP,omitempty"`
-	// The inbound bandwidth. Unit: bit/s.
+	// The inbound traffic bandwidth rate. Unit: bps.
 	//
 	// example:
 	//
@@ -142,7 +142,7 @@ type DescribeInternetTimeTopResponseBodyDataList struct {
 	//
 	// 27
 	NewConn *int64 `json:"NewConn,omitempty" xml:"NewConn,omitempty"`
-	// The outbound bandwidth. Unit: bit/s.
+	// The outbound traffic. Unit: bps.
 	//
 	// example:
 	//
@@ -190,7 +190,7 @@ type DescribeInternetTimeTopResponseBodyDataList struct {
 	//
 	// 27
 	SessionCount *int64 `json:"SessionCount,omitempty" xml:"SessionCount,omitempty"`
-	// The total bandwidth. Unit: bit/s.
+	// The total bandwidth. Unit: bps.
 	//
 	// example:
 	//

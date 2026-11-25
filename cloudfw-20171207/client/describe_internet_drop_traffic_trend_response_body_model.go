@@ -24,13 +24,17 @@ type iDescribeInternetDropTrafficTrendResponseBody interface {
 type DescribeInternetDropTrafficTrendResponseBody struct {
 	// The data list.
 	DataList []*DescribeInternetDropTrafficTrendResponseBodyDataList `json:"DataList,omitempty" xml:"DataList,omitempty" type:"Repeated"`
-	// The maximum number of dropped sessions in the corresponding period (peak value).
+	// The maximum number of dropped sessions in the specified period, which represents the peak value.
 	//
 	// example:
 	//
 	// 8090
 	DropSessionMax *int64 `json:"DropSessionMax,omitempty" xml:"DropSessionMax,omitempty"`
-	// The traffic multiplication mode. Valid values: - **0**: priority mode. - **1**: load balancing mode.
+	// The traffic multiplication mode. Valid values:
+	//
+	// - **0**: priority mode.
+	//
+	// - **1**: load balancing mode.
 	//
 	// example:
 	//
@@ -135,13 +139,13 @@ type DescribeInternetDropTrafficTrendResponseBodyDataList struct {
 	//
 	// 1
 	DropRatio *string `json:"DropRatio,omitempty" xml:"DropRatio,omitempty"`
-	// The value range of the object: **[0,10000\\]**.
+	// The value range of the object: **[0,10000]**.
 	//
 	// example:
 	//
 	// 0
 	DropRing *int64 `json:"DropRing,omitempty" xml:"DropRing,omitempty"`
-	// The rate of network traffic. Unit: kbit/s.
+	// The rate of network traffic. Unit: kbps.
 	//
 	// example:
 	//
@@ -165,7 +169,7 @@ type DescribeInternetDropTrafficTrendResponseBodyDataList struct {
 	//
 	// 2018-08-25 12:00:00
 	RingDataTime *string `json:"RingDataTime,omitempty" xml:"RingDataTime,omitempty"`
-	// The dynamic packet drop time. The value is a UNIX timestamp in seconds, which indicates the number of seconds that have elapsed since January 1, 1970 (UTC).
+	// The dynamic packet drop time. The value is a UNIX timestamp in seconds, which represents the number of seconds that have elapsed since January 1, 1970 (UTC).
 	//
 	// example:
 	//

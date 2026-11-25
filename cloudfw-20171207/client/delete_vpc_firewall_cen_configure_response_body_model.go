@@ -14,7 +14,7 @@ type iDeleteVpcFirewallCenConfigureResponseBody interface {
 }
 
 type DeleteVpcFirewallCenConfigureResponseBody struct {
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//

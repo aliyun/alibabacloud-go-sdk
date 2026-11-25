@@ -26,17 +26,17 @@ type iModifyObjectGroupOperationRequest interface {
 }
 
 type ModifyObjectGroupOperationRequest struct {
-	// The comment for the operation.
+	// The remark for the operation.
 	//
 	// example:
 	//
-	// Comment for batch whitelisting
+	// Remark for batch whitelisting
 	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
 	// The traffic direction controlled by the access control policy. Valid values:
 	//
-	// - **in**: inbound
+	// - **in**: Inbound traffic.
 	//
-	// - **out**: outbound
+	// - **out**: Outbound traffic.
 	//
 	// This parameter is required.
 	//
@@ -58,15 +58,15 @@ type ModifyObjectGroupOperationRequest struct {
 	//
 	// This parameter is required.
 	ObjectList []*string `json:"ObjectList,omitempty" xml:"ObjectList,omitempty" type:"Repeated"`
-	// The operation to whitelist, remove from the whitelist, follow, or unfollow an object. Valid values:
+	// Specifies the operation to perform on the object, such as adding to the whitelist, removing from the whitelist, following, or unfollowing. Valid values:
 	//
-	// - **subscribe**: follow
+	// - **subscribe**: Follow.
 	//
-	// - **unsubscribe**: unfollow
+	// - **unsubscribe**: Unfollow.
 	//
-	// - **ignore**: add to the whitelist
+	// - **ignore**: Add to the whitelist.
 	//
-	// - **cancelIgnore**: remove from the whitelist
+	// - **cancelIgnore**: Remove from the whitelist.
 	//
 	// This parameter is required.
 	//
@@ -74,15 +74,15 @@ type ModifyObjectGroupOperationRequest struct {
 	//
 	// ignore
 	ObjectOperation *string `json:"ObjectOperation,omitempty" xml:"ObjectOperation,omitempty"`
-	// The type of the object to whitelist or follow for outbound connections. Valid values:
+	// The type of the object to add to the outbound connections whitelist or follow. Valid values:
 	//
-	// - **assetsIp**: asset IP address
+	// - **assetsIp**: Asset IP address.
 	//
-	// - **destinationIp**: destination IP address
+	// - **destinationIp**: Destination IP address.
 	//
-	// - **destinationPort**: destination port
+	// - **destinationPort**: Destination port.
 	//
-	// - **destinationDomain**: destination domain name
+	// - **destinationDomain**: Destination domain name.
 	//
 	// This parameter is required.
 	//

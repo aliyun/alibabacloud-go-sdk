@@ -18,9 +18,9 @@ type iDescribeInternetOpenIpResponseBody interface {
 }
 
 type DescribeInternetOpenIpResponseBody struct {
-	// The data list.
+	// The list of returned data.
 	DataList []*DescribeInternetOpenIpResponseBodyDataList `json:"DataList,omitempty" xml:"DataList,omitempty" type:"Repeated"`
-	// The paging information for the paged query.
+	// The pagination information.
 	PageInfo *DescribeInternetOpenIpResponseBodyPageInfo `json:"PageInfo,omitempty" xml:"PageInfo,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -84,19 +84,19 @@ func (s *DescribeInternetOpenIpResponseBody) Validate() error {
 }
 
 type DescribeInternetOpenIpResponseBodyDataList struct {
-	// The reason why no intelligent policies recommendation is available. Valid values:
+	// The reason why no intelligent policy is recommended. Valid values:
 	//
-	// - No intelligent policies recommendation is available.
+	// - No intelligent policy is currently recommended.
 	//
-	// - This feature is currently available only to selected users.
+	// - This feature is currently available only to specific users.
 	//
-	// - The policy configuration has been modified. No intelligent policies recommendation is available.
+	// - The policy configuration has been modified, and no intelligent policy is currently recommended.
 	//
-	// - Intelligent policies have been configured. No new intelligent policies recommendation is available.
+	// - Intelligent policy has been configured, and no new intelligent policy is currently recommended.
 	//
 	// example:
 	//
-	// 当前无智能策略推荐
+	// No intelligent policy is currently recommended
 	AclRecommendDetail *string `json:"AclRecommendDetail,omitempty" xml:"AclRecommendDetail,omitempty"`
 	// The instance ID.
 	//
@@ -122,35 +122,35 @@ type DescribeInternetOpenIpResponseBodyDataList struct {
 	//
 	// 5
 	DetailNum *int32 `json:"DetailNum,omitempty" xml:"DetailNum,omitempty"`
-	// Indicates whether a recommended ACL exists. Valid values:
+	// Specifies whether an ACL is recommended. Valid values:
 	//
-	// - **true**: A recommended ACL exists.
+	// - **true**: Yes.
 	//
-	// - **false**: No recommended ACL exists.
+	// - **false**: No.
 	//
 	// example:
 	//
 	// true
 	HasAclRecommend *bool `json:"HasAclRecommend,omitempty" xml:"HasAclRecommend,omitempty"`
-	// The inbound network throughput (total bytes sent). Unit: bytes.
+	// The inbound network throughput. Unit: bytes.
 	//
 	// example:
 	//
 	// 235
 	InBytes *int64 `json:"InBytes,omitempty" xml:"InBytes,omitempty"`
-	// The UID of the Cloud Firewall member account. For more information about member accounts, see multi-account management.
+	// The UID of the Cloud Firewall member account.
 	//
 	// example:
 	//
 	// 14151892****7022
 	MemberUid *int64 `json:"MemberUid,omitempty" xml:"MemberUid,omitempty"`
-	// The outbound network throughput (total bytes sent). Unit: bytes.
+	// The outbound network throughput. Unit: bytes.
 	//
 	// example:
 	//
 	// 1123
 	OutBytes *int64 `json:"OutBytes,omitempty" xml:"OutBytes,omitempty"`
-	// The port list.
+	// The list of ports.
 	PortList []*string `json:"PortList,omitempty" xml:"PortList,omitempty" type:"Repeated"`
 	// The public IP address of the instance.
 	//
@@ -166,25 +166,25 @@ type DescribeInternetOpenIpResponseBodyDataList struct {
 	RegionNo *string `json:"RegionNo,omitempty" xml:"RegionNo,omitempty"`
 	// The risk level. Valid values:
 	//
-	// - **3**: high risk
+	// - **3**: High risk.
 	//
-	// - **2**: medium risk
+	// - **2**: Medium risk.
 	//
-	// - **1**: low risk
+	// - **1**: Low risk.
 	//
-	// - **0**: no risk.
+	// - **0**: No risk.
 	//
 	// example:
 	//
 	// 3
 	RiskLevel *int32 `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
-	// The risk reason.
+	// The reason for the risk.
 	//
 	// example:
 	//
-	// 历史流量均为黑流量
+	// All historical traffic is malicious traffic
 	RiskReason *string `json:"RiskReason,omitempty" xml:"RiskReason,omitempty"`
-	// The application list.
+	// The list of applications.
 	ServiceNameList []*string `json:"ServiceNameList,omitempty" xml:"ServiceNameList,omitempty" type:"Repeated"`
 	// The number of source IP addresses.
 	//
@@ -198,31 +198,31 @@ type DescribeInternetOpenIpResponseBodyDataList struct {
 	//
 	// 253023143
 	TotalBytes *int64 `json:"TotalBytes,omitempty" xml:"TotalBytes,omitempty"`
-	// The total reply traffic over the last 7 days.
+	// The total response traffic in the last 7 days.
 	//
 	// example:
 	//
 	// 100000
 	TotalReplyBytes *int64 `json:"TotalReplyBytes,omitempty" xml:"TotalReplyBytes,omitempty"`
-	// For specific traffic information, refer to the TotalBytes field.
+	// For specific traffic information, see the TotalBytes field.
 	//
 	// example:
 	//
 	// 0
 	TrafficPercent1Day *string `json:"TrafficPercent1Day,omitempty" xml:"TrafficPercent1Day,omitempty"`
-	// For specific traffic information, refer to the TotalBytes field.
+	// For specific traffic information, see the TotalBytes field.
 	//
 	// example:
 	//
 	// 0
 	TrafficPercent30Day *string `json:"TrafficPercent30Day,omitempty" xml:"TrafficPercent30Day,omitempty"`
-	// For specific traffic information, refer to the TotalBytes field.
+	// For specific traffic information, see the TotalBytes field.
 	//
 	// example:
 	//
 	// 0
 	TrafficPercent7Day *string `json:"TrafficPercent7Day,omitempty" xml:"TrafficPercent7Day,omitempty"`
-	// The reason why the protocol could not be identified when the identified protocol is Unknown.
+	// The reason why the protocol is not identified when the recognized protocol is Unknown.
 	UnknownReason []*string `json:"UnknownReason,omitempty" xml:"UnknownReason,omitempty" type:"Repeated"`
 }
 
@@ -437,13 +437,13 @@ func (s *DescribeInternetOpenIpResponseBodyDataList) Validate() error {
 }
 
 type DescribeInternetOpenIpResponseBodyPageInfo struct {
-	// The current page number in the paged query.
+	// The current page number.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The maximum number of entries per page in the paged query.
+	// The number of entries per page.
 	//
 	// example:
 	//

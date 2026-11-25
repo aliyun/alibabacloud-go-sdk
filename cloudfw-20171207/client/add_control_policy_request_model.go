@@ -66,11 +66,11 @@ type iAddControlPolicyRequest interface {
 }
 
 type AddControlPolicyRequest struct {
-	// The action that Cloud Firewall performs on traffic that matches the access control policy. Valid values:
+	// The action that Cloud Firewall performs on traffic based on the access control policy. Valid values:
 	//
 	// - **accept**: allows the traffic.
 	//
-	// - **drop**: blocks the traffic.
+	// - **drop**: denies the traffic.
 	//
 	// - **log**: monitors the traffic.
 	//
@@ -82,7 +82,7 @@ type AddControlPolicyRequest struct {
 	AclAction *string `json:"AclAction,omitempty" xml:"AclAction,omitempty"`
 	// Deprecated
 	//
-	// The Protocol Type supported by the access control policy. Valid values:
+	// The application type supported by the access control policy. Valid values:
 	//
 	// - **FTP**
 	//
@@ -114,9 +114,9 @@ type AddControlPolicyRequest struct {
 	//
 	// - **VNC**
 	//
-	// - **ANY**: all Protocol Types.
+	// - **ANY*	- (all application types)
 	//
-	// > The valid values of ApplicationName depend on the value of Proto. If Proto is set to TCP, ApplicationName can be set to any of the preceding Protocol Types. If Proto is set to UDP, ICMP, or ANY, ApplicationName can only be set to ANY. You must specify ApplicationNameList or ApplicationName. You cannot leave both parameters empty.
+	// > The supported application types depend on the protocol type specified by the Proto parameter. If Proto is set to TCP, ApplicationName can be set to any of the preceding application types. If Proto is set to UDP, ICMP, or ANY, ApplicationName can only be set to ANY. You must specify either ApplicationNameList or ApplicationName. You cannot leave both parameters empty.
 	//
 	// example:
 	//
@@ -124,7 +124,7 @@ type AddControlPolicyRequest struct {
 	ApplicationName *string `json:"ApplicationName,omitempty" xml:"ApplicationName,omitempty"`
 	// The list of application types supported by the access control policy.
 	ApplicationNameList []*string `json:"ApplicationNameList,omitempty" xml:"ApplicationNameList,omitempty" type:"Repeated"`
-	// The client token that is used to ensure idempotence.
+	// The client token that is used to ensure the idempotence of the request.
 	//
 	// example:
 	//
@@ -140,17 +140,15 @@ type AddControlPolicyRequest struct {
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The destination port for traffic in the access control policy. Valid values:
 	//
-	// - When the Protocol Type is ICMP, leave DestPort empty.
+	// - If the protocol type is ICMP, leave DestPort empty.
 	//
+	// > If the protocol type is ICMP, access control on destination ports is not supported.
 	//
+	// - If the protocol type is TCP, UDP, or ANY, and the destination port type (DestPortType) is group, leave DestPort empty.
 	//
-	// > When the protocol type is ICMP, access control on destination ports is not supported.
+	// > If you set the destination port type to group (destination port address book), you do not need to specify a destination port number. All ports managed by the access control policy are included in the destination port address book.
 	//
-	// - When the Protocol Type is TCP, UDP, or ANY, and DestPortType is set to group, leave DestPort empty.
-	//
-	// > When you select group (destination port address book) for the destination port type of the access control policy, you do not need to configure the Settings for specific destination port numbers. All ports that you want to manage by using this access control policy are included in the destination port address book.
-	//
-	// - When the Protocol Type is TCP, UDP, or ANY, and DestPortType is set to port, set DestPort to the destination port number.
+	// - If the protocol type is TCP, UDP, or ANY, and the destination port type (DestPortType) is port, set DestPort to the destination port number.
 	//
 	// example:
 	//
@@ -181,25 +179,25 @@ type AddControlPolicyRequest struct {
 	//
 	// Valid values:
 	//
-	// - If DestinationType is set to net, set Destination to the destination CIDR block.
+	// - If DestinationType is set to net, Destination specifies the destination CIDR block.
 	//
 	//
 	//
 	//   Example: 1.2.XX.XX/24
 	//
-	// - If DestinationType is set to group, set Destination to the name of the destination address book.
+	// - If DestinationType is set to group, Destination specifies the name of the destination address book.
 	//
 	//   Example: db_group
 	//
-	// - If DestinationType is set to domain, set Destination to the destination domain name.
+	// - If DestinationType is set to domain, Destination specifies the destination domain name.
 	//
 	//   Example: *.aliyuncs.com
 	//
-	// - If DestinationType is set to location, set Destination to the destination region.
+	// - If DestinationType is set to location, Destination specifies the destination location.
 	//
-	//   Example: ["BJ11", "ZB"\\]
+	//   Example: ["BJ11", "ZB"\]
 	//
-	// > For more information about destination regions, see [Region codes](https://help.aliyun.com/document_detail/2854161.html).
+	// > If Destination specifies a destination location, for more information, see [Location codes](https://help.aliyun.com/document_detail/2854161.html).
 	//
 	// This parameter is required.
 	//
@@ -207,7 +205,7 @@ type AddControlPolicyRequest struct {
 	//
 	// 192.0.XX.XX/24
 	Destination *string `json:"Destination,omitempty" xml:"Destination,omitempty"`
-	// The type of the destination address in the access control policy. Valid values:
+	// The destination address type in the access control policy. Valid values:
 	//
 	// - **net**: destination CIDR block
 	//
@@ -215,7 +213,7 @@ type AddControlPolicyRequest struct {
 	//
 	// - **domain**: destination domain name
 	//
-	// - **location**: destination area
+	// - **location**: destination region
 	//
 	// This parameter is required.
 	//
@@ -225,9 +223,9 @@ type AddControlPolicyRequest struct {
 	DestinationType *string `json:"DestinationType,omitempty" xml:"DestinationType,omitempty"`
 	// The traffic direction of the access control policy. Valid values:
 	//
-	// - **in**: inbound traffic
+	// - **in**: Inbound traffic.
 	//
-	// - **out**: outbound traffic
+	// - **out**: Outbound traffic.
 	//
 	// This parameter is required.
 	//
@@ -249,9 +247,9 @@ type AddControlPolicyRequest struct {
 	DomainResolveType *string `json:"DomainResolveType,omitempty" xml:"DomainResolveType,omitempty"`
 	// Specifies whether to perform a dry run.
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	// The end time of the Policy Validity Period for the access control policy. It is expressed in the format of a UNIX timestamp accurate to seconds. The time must be on the hour or half hour, and must be at least 30 minutes later than the start time.
+	// The end time of the Policy Validity Period for the access control policy. The time is expressed in the UNIX timestamp in seconds format. The time must be on the hour or half hour, and must be at least 30 minutes later than the start time.
 	//
-	// > If RepeatType is set to Permanent, leave EndTime empty. If RepeatType is set to None, Daily, Weekly, or Monthly, EndTime is required, and you must configure the Settings for the end time.
+	// > When RepeatType is set to `Permanent`, EndTime is empty. When RepeatType is set to `None`, `Daily`, `Weekly`, or `Monthly`, EndTime is required, and you must specify the end time.
 	//
 	// example:
 	//
@@ -297,7 +295,7 @@ type AddControlPolicyRequest struct {
 	//
 	// - **ICMP**
 	//
-	// > If the traffic direction is outbound and the destination address is a threat intelligence address book or a cloud service address book of the domain name type, you can only set Proto to TCP. In this case, you can set the application type to HTTP, HTTPS, SMTP, SMTPS, or SSL.
+	// > If the traffic direction is outbound and the destination address is a domain name in a threat intelligence address book or a cloud service address book, you can only set Proto to TCP. In this case, you can set the application type to HTTP, HTTPS, SMTP, SMTPS, or SSL.
 	//
 	// This parameter is required.
 	//
@@ -315,55 +313,49 @@ type AddControlPolicyRequest struct {
 	//
 	// true
 	Release *string `json:"Release,omitempty" xml:"Release,omitempty"`
-	// The set of recurrence days for the Policy Validity Period of the access control policy.
+	// The set of repeat days for the Policy Validity Period of the access control policy.
 	//
-	// - If RepeatType is set to `Permanent`, `None`, or `Daily`, leave RepeatDays empty.
+	// - When RepeatType is set to `Permanent`, `None`, or `Daily`, RepeatDays is an empty set. Example: []
 	//
-	//   Example: []
+	// - When RepeatType is set to `Weekly`, RepeatDays cannot be empty. Example: [0, 6]
 	//
-	// - If RepeatType is set to Weekly, RepeatDays cannot be empty.
+	// > When RepeatType is set to Weekly, the values in RepeatDays must be unique.
 	//
-	//   Example: [0, 6]
+	// - When RepeatType is set to `Monthly`, RepeatDays cannot be empty. Example: [1, 31]
 	//
-	// > When the RepeatType Settings is Weekly, the values in RepeatDays cannot be duplicate.
-	//
-	// - If RepeatType is set to `Monthly`, RepeatDays cannot be empty.
-	//
-	//   Example: [1, 31]
-	//
-	// > When the RepeatType Settings is Monthly, the values in RepeatDays cannot be duplicate.
+	// > When RepeatType is set to Monthly, the values in RepeatDays must be unique.
 	RepeatDays []*int64 `json:"RepeatDays,omitempty" xml:"RepeatDays,omitempty" type:"Repeated"`
-	// The recurrence end time of the Policy Validity Period for the access control policy. Example: 23:30. The time must be on the hour or half hour, and must be at least 30 minutes later than the recurrence start time.
+	// The repeat end time for the Policy Validity Period of the access control policy. Example: 23:30. The time must be on the hour or half hour, and must be at least 30 minutes later than the repeat start time.
 	//
-	// > If RepeatType is set to Permanent or None, leave RepeatEndTime empty. If RepeatType is set to Daily, Weekly, or Monthly, RepeatEndTime is required, and you must configure the Settings for the recurrence end time.
+	// > When RepeatType is set to `Permanent` or `None`, RepeatEndTime is empty. When RepeatType is set to `Daily`, `Weekly`, or `Monthly`, RepeatEndTime is required, and you must specify the repeat end time.
 	//
-	// > The time is in the HH:mm format (24-hour clock). Example: 08:00 or 23:30.
+	// > The time format is HH:mm (24-hour clock). Examples: 08:00 and 23:30.
 	//
 	// example:
 	//
 	// 23:30
 	RepeatEndTime *string `json:"RepeatEndTime,omitempty" xml:"RepeatEndTime,omitempty"`
-	// The recurrence start time of the Policy Validity Period for the access control policy. Example: 08:00. The time must be on the hour or half hour, and must be at least 30 minutes earlier than the recurrence end time.
+	// The repeat start time for the Policy Validity Period of the access control policy. Example: 08:00. The time must be on the hour or half hour, and must be at least 30 minutes earlier than the repeat end time.
 	//
-	// > If RepeatType is set to Permanent or None, leave RepeatStartTime empty. If RepeatType is set to Daily, Weekly, or Monthly, RepeatStartTime is required, and you must configure the Settings for the recurrence start time.
+	// > When RepeatType is set to `Permanent` or `None`, RepeatStartTime is empty. When RepeatType is set to `Daily`, `Weekly`, or `Monthly`, RepeatStartTime is required, and you must specify the repeat start time.
 	//
-	// > The time is in the HH:mm format (24-hour clock). Example: 08:00 or 23:30.
+	// > The time format is HH:mm (24-hour clock). Examples: 08:00 and 23:30.
 	//
 	// example:
 	//
 	// 08:00
 	RepeatStartTime *string `json:"RepeatStartTime,omitempty" xml:"RepeatStartTime,omitempty"`
-	// The recurrence type of the Policy Validity Period for the access control policy. Valid values:
+	// The repeat type of the Policy Validity Period for the access control policy. Valid values:
 	//
 	// - **Permanent*	- (default): always
 	//
-	// - **None**: specified single time
+	// - **None**: a single specified time
 	//
-	// - **Daily**: every day
+	// - **Daily**: daily
 	//
-	// - **Weekly**: every week
+	// - **Weekly**: weekly
 	//
-	// - **Monthly**: every month
+	// - **Monthly**: monthly
 	//
 	// example:
 	//
@@ -381,7 +373,7 @@ type AddControlPolicyRequest struct {
 	//
 	// - If SourceType is set to location, set Source to the source region.
 	//
-	//   Example: ["BJ11", "ZB"\\]
+	//   Example: ["BJ11", "ZB"\]
 	//
 	// > For more information about source regions, see [Region codes](https://help.aliyun.com/document_detail/2854161.html).
 	//
@@ -393,13 +385,13 @@ type AddControlPolicyRequest struct {
 	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
 	// Deprecated
 	//
-	// The source IP address of the requester.
+	// The source IP address of the request.
 	//
 	// example:
 	//
 	// 192.0.XX.XX
 	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
-	// The source address type in the access control policy. Valid values:
+	// The type of the source address in the access control policy. Valid values:
 	//
 	// - **net**: source CIDR block
 	//
@@ -413,9 +405,9 @@ type AddControlPolicyRequest struct {
 	//
 	// net
 	SourceType *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
-	// The start time of the Policy Validity Period for the access control policy. It is expressed in the format of a UNIX timestamp accurate to seconds. The time must be on the hour or half hour, and must be at least 30 minutes earlier than the end time.
+	// The start time of the Policy Validity Period for the access control policy. The time is expressed in the UNIX timestamp in seconds format. The time must be on the hour or half hour, and must be at least 30 minutes earlier than the end time.
 	//
-	// > If RepeatType is set to Permanent, leave StartTime empty. If RepeatType is set to None, Daily, Weekly, or Monthly, StartTime is required, and you must configure the Settings for the start time.
+	// > When RepeatType is set to `Permanent`, StartTime is empty. When RepeatType is set to `None`, `Daily`, `Weekly`, or `Monthly`, StartTime is required, and you must specify the start time.
 	//
 	// example:
 	//

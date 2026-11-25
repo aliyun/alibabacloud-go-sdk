@@ -30,17 +30,17 @@ type iDescribeInternetTrafficTrendRequest interface {
 }
 
 type DescribeInternetTrafficTrendRequest struct {
-	// The direction of the Internet traffic. Valid values:
+	// The traffic direction of the Internet. Valid values:
 	//
-	// - **in**: inbound
+	// - **in**: inbound traffic access control.
 	//
-	// - **out**: outbound
+	// - **out**: outbound traffic access control.
 	//
 	// example:
 	//
 	// in
 	Direction *string `json:"Direction,omitempty" xml:"Direction,omitempty"`
-	// The end of the time range to query. This value is a UNIX timestamp in seconds.
+	// The end time of the query. The value is a UNIX timestamp in seconds.
 	//
 	// This parameter is required.
 	//
@@ -48,17 +48,17 @@ type DescribeInternetTrafficTrendRequest struct {
 	//
 	// 1674958929
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The language of the request and response. Valid values:
+	// The language type of the request and response messages. Valid values:
 	//
-	// - **zh*	- (default): Chinese
+	// - **zh*	- (default): Chinese.
 	//
-	// - **en**: English
+	// - **en**: English.
 	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The source tracking code.
+	// The tracing code.
 	//
 	// This parameter is required.
 	//
@@ -86,7 +86,7 @@ type DescribeInternetTrafficTrendRequest struct {
 	//
 	// 47.112.210.136
 	SrcPublicIP *string `json:"SrcPublicIP,omitempty" xml:"SrcPublicIP,omitempty"`
-	// The start of the time range to query. This value is a UNIX timestamp in seconds.
+	// The start time of the query. The value is a UNIX timestamp in seconds.
 	//
 	// This parameter is required.
 	//
@@ -94,11 +94,15 @@ type DescribeInternetTrafficTrendRequest struct {
 	//
 	// 1670307484
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The type of traffic to query. Valid values:
+	// The collected traffic type. Valid values:
 	//
-	// - **max*	- (default): peak traffic
 	//
-	// - **avg**: average traffic
+	//
+	// - **max*	- (default): peak traffic.
+	//
+	//
+	//
+	// - **avg**: average traffic.
 	//
 	// example:
 	//

@@ -52,7 +52,7 @@ type DescribeInternetDropTrafficTrendRequest struct {
 	//
 	// yundun
 	SourceCode *string `json:"SourceCode,omitempty" xml:"SourceCode,omitempty"`
-	// The source IP address.
+	// The IP address of the access source.
 	//
 	// example:
 	//

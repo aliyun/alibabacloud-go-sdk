@@ -289,11 +289,11 @@ func (client *Client) AddAddressBook(request *AddAddressBookRequest) (_result *A
 //
 // Description:
 //
-// You can use this operation to create a policy that allows, blocks, or monitors traffic that passes through Cloud Firewall.
+// You can use this operation to create a policy that allows, denies, or monitors traffic passing through Cloud Firewall.
 //
 // ## QPS limits
 //
-// The QPS limit for a single user is 10 calls per second. If the limit is exceeded, API calls are throttled, which may affect your services. Call this operation at a reasonable rate.
+// The QPS limit for a single user is 10 calls per second. If the limit is exceeded, API calls are throttled, which may affect your services. Call this operation at a reasonable frequency.
 //
 // @param request - AddControlPolicyRequest
 //
@@ -445,11 +445,11 @@ func (client *Client) AddControlPolicyWithOptions(request *AddControlPolicyReque
 //
 // Description:
 //
-// You can use this operation to create a policy that allows, blocks, or monitors traffic that passes through Cloud Firewall.
+// You can use this operation to create a policy that allows, denies, or monitors traffic passing through Cloud Firewall.
 //
 // ## QPS limits
 //
-// The QPS limit for a single user is 10 calls per second. If the limit is exceeded, API calls are throttled, which may affect your services. Call this operation at a reasonable rate.
+// The QPS limit for a single user is 10 calls per second. If the limit is exceeded, API calls are throttled, which may affect your services. Call this operation at a reasonable frequency.
 //
 // @param request - AddControlPolicyRequest
 //
@@ -532,10 +532,6 @@ func (client *Client) AddDnsFirewallPolicyWithOptions(request *AddDnsFirewallPol
 		query["Source"] = request.Source
 	}
 
-	if !dara.IsNil(request.SourceIp) {
-		query["SourceIp"] = request.SourceIp
-	}
-
 	if !dara.IsNil(request.SourceType) {
 		query["SourceType"] = request.SourceType
 	}
@@ -597,13 +593,13 @@ func (client *Client) AddDnsFirewallPolicy(request *AddDnsFirewallPolicyRequest)
 //
 // Description:
 //
-// This operation creates a real-time domain name resolution task for a specified domain name.
+// Creates a real-time domain name resolution task for a specified domain name.
 //
 // ## Before you begin
 //
-// - Before you call this operation, you must activate Cloud Firewall. You can activate it on the Cloud Firewall buy page (China site: https://common-buy.aliyun.com/?commodityCode=cfw_sub_public_cn, International site: https://common-buy-intl.alibabacloud.com/?commodityCode=cfw_sub_public_intl).
+// - Before calling this operation, you must activate Cloud Firewall. You can activate it on the Cloud Firewall buy page (Chinese site: https://common-buy.aliyun.com/?commodityCode=cfw_sub_public_cn; International site: https://common-buy-intl.alibabacloud.com/?commodityCode=cfw_sub_public_intl).
 //
-// - You can call the DescribeUserBuyVersion operation to query the UserStatus parameter. If the returned value is false, the current account has not purchased or activated Cloud Firewall.
+// - You can call the DescribeUserBuyVersion operation to query the UserStatus parameter. If false is returned, the current account has not purchased or activated Cloud Firewall.
 //
 // @param request - AddDomainResolveRealtimeTaskRequest
 //
@@ -659,13 +655,13 @@ func (client *Client) AddDomainResolveRealtimeTaskWithOptions(request *AddDomain
 //
 // Description:
 //
-// This operation creates a real-time domain name resolution task for a specified domain name.
+// Creates a real-time domain name resolution task for a specified domain name.
 //
 // ## Before you begin
 //
-// - Before you call this operation, you must activate Cloud Firewall. You can activate it on the Cloud Firewall buy page (China site: https://common-buy.aliyun.com/?commodityCode=cfw_sub_public_cn, International site: https://common-buy-intl.alibabacloud.com/?commodityCode=cfw_sub_public_intl).
+// - Before calling this operation, you must activate Cloud Firewall. You can activate it on the Cloud Firewall buy page (Chinese site: https://common-buy.aliyun.com/?commodityCode=cfw_sub_public_cn; International site: https://common-buy-intl.alibabacloud.com/?commodityCode=cfw_sub_public_intl).
 //
-// - You can call the DescribeUserBuyVersion operation to query the UserStatus parameter. If the returned value is false, the current account has not purchased or activated Cloud Firewall.
+// - You can call the DescribeUserBuyVersion operation to query the UserStatus parameter. If false is returned, the current account has not purchased or activated Cloud Firewall.
 //
 // @param request - AddDomainResolveRealtimeTaskRequest
 //
@@ -1914,9 +1910,9 @@ func (client *Client) CreateNatFirewallPreCheck(request *CreateNatFirewallPreChe
 //
 // ## Before you begin
 //
-// - Before calling this operation, ensure that you have purchased and activated a Cloud Firewall instance. Both subscription and pay-as-you-go billing methods are supported.
+// - Before calling this operation, ensure that your account has purchased and activated a Cloud Firewall instance. Both subscription and pay-as-you-go billing methods are supported.
 //
-// - You can activate Cloud Firewall on the buy page (Chinese site: https://common-buy.aliyun.com/?commodityCode=cfw_sub_public_cn and International site: https://common-buy-intl.alibabacloud.com/?commodityCode=cfw_sub_public_intl). After activation, call the DescribeUserBuyVersion operation and check the UserStatus parameter to confirm the activation status.
+// - You can activate Cloud Firewall on the buy page (China site: https://common-buy.aliyun.com/?commodityCode=cfw_sub_public_cn; International site: https://common-buy-intl.alibabacloud.com/?commodityCode=cfw_sub_public_intl). After activation, call the DescribeUserBuyVersion operation and check the UserStatus parameter to confirm the activation status.
 //
 // @param request - CreateNatFirewallSyncTaskRequest
 //
@@ -1968,9 +1964,9 @@ func (client *Client) CreateNatFirewallSyncTaskWithOptions(request *CreateNatFir
 //
 // ## Before you begin
 //
-// - Before calling this operation, ensure that you have purchased and activated a Cloud Firewall instance. Both subscription and pay-as-you-go billing methods are supported.
+// - Before calling this operation, ensure that your account has purchased and activated a Cloud Firewall instance. Both subscription and pay-as-you-go billing methods are supported.
 //
-// - You can activate Cloud Firewall on the buy page (Chinese site: https://common-buy.aliyun.com/?commodityCode=cfw_sub_public_cn and International site: https://common-buy-intl.alibabacloud.com/?commodityCode=cfw_sub_public_intl). After activation, call the DescribeUserBuyVersion operation and check the UserStatus parameter to confirm the activation status.
+// - You can activate Cloud Firewall on the buy page (China site: https://common-buy.aliyun.com/?commodityCode=cfw_sub_public_cn; International site: https://common-buy-intl.alibabacloud.com/?commodityCode=cfw_sub_public_intl). After activation, call the DescribeUserBuyVersion operation and check the UserStatus parameter to confirm the activation status.
 //
 // @param request - CreateNatFirewallSyncTaskRequest
 //
@@ -2330,11 +2326,11 @@ func (client *Client) CreateSlsLogDispatch(request *CreateSlsLogDispatchRequest)
 
 // Summary:
 //
-// Creates a VPC firewall for a transit router. Prerequisites: (1) Cloud Firewall is purchased. (2) A CEN instance is created and an Enterprise Edition transit router is enabled. (3) The TR is synchronized to Cloud Firewall.
+// Creates a VPC firewall for a transit router. Before you begin: (1) Purchase Cloud Firewall. (2) A CEN instance is created and an Enterprise Edition forward routing transit router is enabled. (3) The synchronization of the TR to Cloud Firewall is complete.
 //
 // Description:
 //
-// Creates a virtual private cloud (VPC) firewall for an Enterprise Edition transit router (TR). Before you call this operation, you must create a CEN instance and an Enterprise Edition transit router in the CEN console, and synchronize the TR to Cloud Firewall. Then, call this operation by specifying the CEN ID, TransitRouterId, RegionNo, and RouteMode parameters.
+// Creates a virtual private cloud (VPC) firewall for an Enterprise Edition transit router (TR). Before calling this operation, you must create a CEN instance and an Enterprise Edition transit router in the CEN console, and synchronize the transit router to Cloud Firewall. Then, call this operation by using the CenId, TransitRouterId, RegionNo, and RouteMode parameters.
 //
 // @param request - CreateTrFirewallV2Request
 //
@@ -2450,11 +2446,11 @@ func (client *Client) CreateTrFirewallV2WithOptions(request *CreateTrFirewallV2R
 
 // Summary:
 //
-// Creates a VPC firewall for a transit router. Prerequisites: (1) Cloud Firewall is purchased. (2) A CEN instance is created and an Enterprise Edition transit router is enabled. (3) The TR is synchronized to Cloud Firewall.
+// Creates a VPC firewall for a transit router. Before you begin: (1) Purchase Cloud Firewall. (2) A CEN instance is created and an Enterprise Edition forward routing transit router is enabled. (3) The synchronization of the TR to Cloud Firewall is complete.
 //
 // Description:
 //
-// Creates a virtual private cloud (VPC) firewall for an Enterprise Edition transit router (TR). Before you call this operation, you must create a CEN instance and an Enterprise Edition transit router in the CEN console, and synchronize the TR to Cloud Firewall. Then, call this operation by specifying the CEN ID, TransitRouterId, RegionNo, and RouteMode parameters.
+// Creates a virtual private cloud (VPC) firewall for an Enterprise Edition transit router (TR). Before calling this operation, you must create a CEN instance and an Enterprise Edition transit router in the CEN console, and synchronize the transit router to Cloud Firewall. Then, call this operation by using the CenId, TransitRouterId, RegionNo, and RouteMode parameters.
 //
 // @param request - CreateTrFirewallV2Request
 //
@@ -4185,11 +4181,11 @@ func (client *Client) DeleteFirewallV2RoutePolicies(request *DeleteFirewallV2Rou
 //
 // Description:
 //
-// You can delete up to 20 Cloud Firewall member accounts in a single call. Separate the UIDs of multiple member accounts with commas (,). After a member account is deleted, Cloud Firewall can no longer access the cloud resources of that account. Use this operation with caution. Before deleting member accounts, call the [DescribeInstanceMembers](https://help.aliyun.com/document_detail/271704.html) operation to retrieve information about the member accounts.
+// You can call the DeleteInstanceMembers operation to delete up to 20 Cloud Firewall member accounts at a time. Separate multiple member account UIDs with commas (,). After a member account is deleted, Cloud Firewall cannot access the cloud resources of the deleted member account. Proceed with caution. Before deleting member accounts, call the [DescribeInstanceMembers](https://help.aliyun.com/document_detail/271704.html) operation to obtain the information about Cloud Firewall member accounts.
 //
-// ## QPS limit
+// ## QPS limits
 //
-// The queries per second (QPS) limit for this operation is 10 calls per second for each user. If you exceed the limit, API calls are throttled. This can affect your business operations. Plan your calls accordingly.
+// The QPS limit per user is 10 calls per second. If the limit is exceeded, API calls are throttled, which may affect your services. Call the operation at a reasonable frequency.
 //
 // @param request - DeleteInstanceMembersRequest
 //
@@ -4237,11 +4233,11 @@ func (client *Client) DeleteInstanceMembersWithOptions(request *DeleteInstanceMe
 //
 // Description:
 //
-// You can delete up to 20 Cloud Firewall member accounts in a single call. Separate the UIDs of multiple member accounts with commas (,). After a member account is deleted, Cloud Firewall can no longer access the cloud resources of that account. Use this operation with caution. Before deleting member accounts, call the [DescribeInstanceMembers](https://help.aliyun.com/document_detail/271704.html) operation to retrieve information about the member accounts.
+// You can call the DeleteInstanceMembers operation to delete up to 20 Cloud Firewall member accounts at a time. Separate multiple member account UIDs with commas (,). After a member account is deleted, Cloud Firewall cannot access the cloud resources of the deleted member account. Proceed with caution. Before deleting member accounts, call the [DescribeInstanceMembers](https://help.aliyun.com/document_detail/271704.html) operation to obtain the information about Cloud Firewall member accounts.
 //
-// ## QPS limit
+// ## QPS limits
 //
-// The queries per second (QPS) limit for this operation is 10 calls per second for each user. If you exceed the limit, API calls are throttled. This can affect your business operations. Plan your calls accordingly.
+// The QPS limit per user is 10 calls per second. If the limit is exceeded, API calls are throttled, which may affect your services. Call the operation at a reasonable frequency.
 //
 // @param request - DeleteInstanceMembersRequest
 //
@@ -4717,6 +4713,20 @@ func (client *Client) DeletePrivateDnsEndpoint(request *DeletePrivateDnsEndpoint
 //
 // Deletes a NAT firewall.
 //
+// Description:
+//
+// ## Before you begin
+//
+// - Before you call this API, make sure that your account has purchased Cloud Firewall. If you call this API without purchasing Cloud Firewall, error code `202` and error message `not buy user` are returned.
+//
+// - You can call [DescribeUserBuyVersion](~~DescribeUserBuyVersion~~) to query the purchase status. The `UserStatus` field in the response indicates whether the Cloud Firewall service is valid. A value of `false` indicates that the service is not activated or has expired.
+//
+// - Activate Cloud Firewall:
+//
+//   - China site: https://common-buy.aliyun.com/?commodityCode=cfw_sub_public_cn
+//
+//   - International site: https://common-buy-intl.alibabacloud.com/?commodityCode=cfw_sub_public_intl
+//
 // @param request - DeleteSecurityProxyRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -4764,6 +4774,20 @@ func (client *Client) DeleteSecurityProxyWithOptions(request *DeleteSecurityProx
 // Summary:
 //
 // Deletes a NAT firewall.
+//
+// Description:
+//
+// ## Before you begin
+//
+// - Before you call this API, make sure that your account has purchased Cloud Firewall. If you call this API without purchasing Cloud Firewall, error code `202` and error message `not buy user` are returned.
+//
+// - You can call [DescribeUserBuyVersion](~~DescribeUserBuyVersion~~) to query the purchase status. The `UserStatus` field in the response indicates whether the Cloud Firewall service is valid. A value of `false` indicates that the service is not activated or has expired.
+//
+// - Activate Cloud Firewall:
+//
+//   - China site: https://common-buy.aliyun.com/?commodityCode=cfw_sub_public_cn
+//
+//   - International site: https://common-buy-intl.alibabacloud.com/?commodityCode=cfw_sub_public_intl
 //
 // @param request - DeleteSecurityProxyRequest
 //
@@ -4847,17 +4871,17 @@ func (client *Client) DeleteTrFirewallV2(request *DeleteTrFirewallV2Request) (_r
 
 // Summary:
 //
-// Deletes a virtual private cloud (VPC) firewall that protects mutual access traffic between a network instance in a Cloud Enterprise Network (CEN) instance and a specified VPC.
+// Deletes VPC border firewalls that protect mutual access traffic between network instances in a Cloud Enterprise Network (CEN) and a specified VPC.
 //
 // Description:
 //
-// This operation is used to delete a virtual private cloud (VPC) firewall that protects mutual access traffic between network instances (including VPCs, virtual border routers (VBRs), and Cloud Connect Networks (CCNs)) in a CEN instance and a specified VPC.
+// This operation deletes VPC border firewalls. The VPC border firewalls protect mutual access traffic between network instances in a CEN and a specified VPC. Network instances include VPCs, virtual border routers (VBRs), and Cloud Connect Networks (CCNs).
 //
-// Before you invoke this operation, you must have already created a VPC border firewall by invoking the [CreateVpcFirewallCenConfigure](https://help.aliyun.com/document_detail/345772.html) operation.
+// Before you invoke this operation, make sure that you have invoked the [CreateVpcFirewallCenConfigure](https://help.aliyun.com/document_detail/345772.html) operation to create VPC border firewalls.
 //
-// ## QPS limit
+// ## Rate limit
 //
-// The single-user QPS limit for this operation is 10 calls per second. If the number of calls exceeds the limit, throttling is triggered, which may affect your business. Invoke this operation as needed.
+// You can invoke this operation up to 10 times per second per account. If the number of invocations per second exceeds the limit, throttling is triggered, which may affect your business. Invoke this operation at a reasonable frequency.
 //
 // @param request - DeleteVpcFirewallCenConfigureRequest
 //
@@ -4909,17 +4933,17 @@ func (client *Client) DeleteVpcFirewallCenConfigureWithOptions(request *DeleteVp
 
 // Summary:
 //
-// Deletes a virtual private cloud (VPC) firewall that protects mutual access traffic between a network instance in a Cloud Enterprise Network (CEN) instance and a specified VPC.
+// Deletes VPC border firewalls that protect mutual access traffic between network instances in a Cloud Enterprise Network (CEN) and a specified VPC.
 //
 // Description:
 //
-// This operation is used to delete a virtual private cloud (VPC) firewall that protects mutual access traffic between network instances (including VPCs, virtual border routers (VBRs), and Cloud Connect Networks (CCNs)) in a CEN instance and a specified VPC.
+// This operation deletes VPC border firewalls. The VPC border firewalls protect mutual access traffic between network instances in a CEN and a specified VPC. Network instances include VPCs, virtual border routers (VBRs), and Cloud Connect Networks (CCNs).
 //
-// Before you invoke this operation, you must have already created a VPC border firewall by invoking the [CreateVpcFirewallCenConfigure](https://help.aliyun.com/document_detail/345772.html) operation.
+// Before you invoke this operation, make sure that you have invoked the [CreateVpcFirewallCenConfigure](https://help.aliyun.com/document_detail/345772.html) operation to create VPC border firewalls.
 //
-// ## QPS limit
+// ## Rate limit
 //
-// The single-user QPS limit for this operation is 10 calls per second. If the number of calls exceeds the limit, throttling is triggered, which may affect your business. Invoke this operation as needed.
+// You can invoke this operation up to 10 times per second per account. If the number of invocations per second exceeds the limit, throttling is triggered, which may affect your business. Invoke this operation at a reasonable frequency.
 //
 // @param request - DeleteVpcFirewallCenConfigureRequest
 //
@@ -4937,19 +4961,19 @@ func (client *Client) DeleteVpcFirewallCenConfigure(request *DeleteVpcFirewallCe
 
 // Summary:
 //
-// Deletes a virtual private cloud (VPC) firewall that protects traffic between two VPCs connected through Express Connect.
+// Deletes virtual private cloud (VPC) firewalls at the border that protect traffic between two VPCs connected over Express Connect.
 //
 // Description:
 //
-// This operation is used to delete a virtual private cloud (VPC) firewall that protects traffic between two VPCs connected through Express Connect.
+// This operation is generally used to delete virtual private cloud (VPC) firewalls at the border. The virtual private cloud (VPC) firewalls protect traffic between two VPCs connected over Express Connect.
 //
-// Before you invoke this operation, you must have already created a VPC firewall by invoking the [CreateVpcFirewallConfigure](https://help.aliyun.com/document_detail/342893.html) operation.
+// Before you invoke this operation, you must invoke the [CreateVpcFirewallConfigure](https://help.aliyun.com/document_detail/342893.html) operation to create virtual private cloud (VPC) firewalls.
 //
-// This operation is asynchronous. After a successful invocation, the status changes to deleting. Poll DescribeVpcFirewallList until the target VpcFirewallId no longer appears. The firewall to be deleted must be in the opened or closed state. Firewalls in the notconfigured or deleting state cannot be deleted, and the ErrorFirewallStatus error is returned.
+// This operation is asynchronous. After you successfully invoke this operation, the status changes to deleting. You must perform polling on the DescribeVpcFirewallList operation until the target VpcFirewallId disappears. The virtual private cloud (VPC) firewalls to be deleted must be in the opened or closed state. Firewalls in states such as notconfigured or deleting cannot be deleted, and an ErrorFirewallStatus fault is returned.
 //
-// ## QPS limit
+// ## Rate limit
 //
-// The single-user QPS limit for this operation is 10 calls per second. If this limit is exceeded, API calls are throttled, which may affect your business. Invoke this operation appropriately.
+// The rate limit for this operation is 10 queries per second (QPS) per account. Exceeding this limit triggers throttling, which may affect your business. Plan your API invocations accordingly.
 //
 // @param request - DeleteVpcFirewallConfigureRequest
 //
@@ -5001,19 +5025,19 @@ func (client *Client) DeleteVpcFirewallConfigureWithOptions(request *DeleteVpcFi
 
 // Summary:
 //
-// Deletes a virtual private cloud (VPC) firewall that protects traffic between two VPCs connected through Express Connect.
+// Deletes virtual private cloud (VPC) firewalls at the border that protect traffic between two VPCs connected over Express Connect.
 //
 // Description:
 //
-// This operation is used to delete a virtual private cloud (VPC) firewall that protects traffic between two VPCs connected through Express Connect.
+// This operation is generally used to delete virtual private cloud (VPC) firewalls at the border. The virtual private cloud (VPC) firewalls protect traffic between two VPCs connected over Express Connect.
 //
-// Before you invoke this operation, you must have already created a VPC firewall by invoking the [CreateVpcFirewallConfigure](https://help.aliyun.com/document_detail/342893.html) operation.
+// Before you invoke this operation, you must invoke the [CreateVpcFirewallConfigure](https://help.aliyun.com/document_detail/342893.html) operation to create virtual private cloud (VPC) firewalls.
 //
-// This operation is asynchronous. After a successful invocation, the status changes to deleting. Poll DescribeVpcFirewallList until the target VpcFirewallId no longer appears. The firewall to be deleted must be in the opened or closed state. Firewalls in the notconfigured or deleting state cannot be deleted, and the ErrorFirewallStatus error is returned.
+// This operation is asynchronous. After you successfully invoke this operation, the status changes to deleting. You must perform polling on the DescribeVpcFirewallList operation until the target VpcFirewallId disappears. The virtual private cloud (VPC) firewalls to be deleted must be in the opened or closed state. Firewalls in states such as notconfigured or deleting cannot be deleted, and an ErrorFirewallStatus fault is returned.
 //
-// ## QPS limit
+// ## Rate limit
 //
-// The single-user QPS limit for this operation is 10 calls per second. If this limit is exceeded, API calls are throttled, which may affect your business. Invoke this operation appropriately.
+// The rate limit for this operation is 10 queries per second (QPS) per account. Exceeding this limit triggers throttling, which may affect your business. Plan your API invocations accordingly.
 //
 // @param request - DeleteVpcFirewallConfigureRequest
 //
@@ -5031,15 +5055,15 @@ func (client *Client) DeleteVpcFirewallConfigure(request *DeleteVpcFirewallConfi
 
 // Summary:
 //
-// Deletes an access control policy from a specified VPC firewall policy group.
+// Deletes the access control policy of a specified VPC firewall policy group.
 //
 // Description:
 //
-// This operation is used to delete an access control policy from a specified VPC firewall policy group. The VPC firewall instances that protect Cloud Enterprise Network (CEN) instances and the VPC firewall instances that protect Express Connect circuits use different access control policies.
+// This operation is typically used to delete the access control policy of a specified VPC firewall policy group. VPC firewall instances that protect Cloud Enterprise Network (CEN) instances and VPC firewall instances that protect Express Connect circuits use a different access control policy.
 //
 // ## QPS limit
 //
-// The single-user QPS limit for this operation is 10 calls per second. If the number of calls exceeds the limit, throttling is triggered, which may affect your business. Call this operation as appropriate.
+// The queries per second (QPS) limit for a single user is 10. If the limit is exceeded, API invocations are throttled, which may affect your services. Invoke the API at a reasonable frequency.
 //
 // @param request - DeleteVpcFirewallControlPolicyRequest
 //
@@ -5091,15 +5115,15 @@ func (client *Client) DeleteVpcFirewallControlPolicyWithOptions(request *DeleteV
 
 // Summary:
 //
-// Deletes an access control policy from a specified VPC firewall policy group.
+// Deletes the access control policy of a specified VPC firewall policy group.
 //
 // Description:
 //
-// This operation is used to delete an access control policy from a specified VPC firewall policy group. The VPC firewall instances that protect Cloud Enterprise Network (CEN) instances and the VPC firewall instances that protect Express Connect circuits use different access control policies.
+// This operation is typically used to delete the access control policy of a specified VPC firewall policy group. VPC firewall instances that protect Cloud Enterprise Network (CEN) instances and VPC firewall instances that protect Express Connect circuits use a different access control policy.
 //
 // ## QPS limit
 //
-// The single-user QPS limit for this operation is 10 calls per second. If the number of calls exceeds the limit, throttling is triggered, which may affect your business. Call this operation as appropriate.
+// The queries per second (QPS) limit for a single user is 10. If the limit is exceeded, API invocations are throttled, which may affect your services. Invoke the API at a reasonable frequency.
 //
 // @param request - DeleteVpcFirewallControlPolicyRequest
 //
@@ -8242,11 +8266,11 @@ func (client *Client) DescribeDownloadTaskType(request *DescribeDownloadTaskType
 //
 // Description:
 //
-// Queries the event logs of Cloud Firewall. This operation supports five types of logs: application access control (app_ctl), web filtering (web_filter), TLS inspection (tls), intrusion prevention (ips), and threat intelligence (threat_intelligence). You can filter logs by time range, source IP address, destination IP address, URL, action, rule result, and attack type. Log details are returned with paging. StartTime and EndTime are UNIX timestamps in seconds. The time span of a single query cannot exceed 8 days. If FirewallType is not specified, the Internet Border firewall (InternetFirewall) is queried by default. To query the virtual private cloud (VPC) firewalls at the border, set FirewallType to VpcFirewall.
+// Queries the event logs of Cloud Firewall. This operation supports five types of logs: application access control (app_ctl), web filtering (web_filter), TLS inspection (tls), intrusion prevention (ips), and threat intelligence (threat_intelligence). You can filter logs by time range, source IP address, destination IP address, URL, action, rule result, and attack type. The logs are returned with paging. StartTime and EndTime are UNIX timestamps in seconds. The time span for a single query cannot exceed 8 days. If FirewallType is not specified, the Internet Border firewall (InternetFirewall) is queried by default. To query the VPC firewall, set FirewallType to VpcFirewall.
 //
 // ## QPS limit
 //
-// The QPS limit for a single user is 10 requests per second. If the limit is exceeded, the API invoke is throttled, which may affect your business. Make API calls at a reasonable rate.
+// The QPS limit for a single user is 10 requests per second. If the limit is exceeded, API calls are throttled, which may affect your services. Make API calls at a reasonable rate.
 //
 // @param request - DescribeEventLogRequest
 //
@@ -8354,11 +8378,11 @@ func (client *Client) DescribeEventLogWithOptions(request *DescribeEventLogReque
 //
 // Description:
 //
-// Queries the event logs of Cloud Firewall. This operation supports five types of logs: application access control (app_ctl), web filtering (web_filter), TLS inspection (tls), intrusion prevention (ips), and threat intelligence (threat_intelligence). You can filter logs by time range, source IP address, destination IP address, URL, action, rule result, and attack type. Log details are returned with paging. StartTime and EndTime are UNIX timestamps in seconds. The time span of a single query cannot exceed 8 days. If FirewallType is not specified, the Internet Border firewall (InternetFirewall) is queried by default. To query the virtual private cloud (VPC) firewalls at the border, set FirewallType to VpcFirewall.
+// Queries the event logs of Cloud Firewall. This operation supports five types of logs: application access control (app_ctl), web filtering (web_filter), TLS inspection (tls), intrusion prevention (ips), and threat intelligence (threat_intelligence). You can filter logs by time range, source IP address, destination IP address, URL, action, rule result, and attack type. The logs are returned with paging. StartTime and EndTime are UNIX timestamps in seconds. The time span for a single query cannot exceed 8 days. If FirewallType is not specified, the Internet Border firewall (InternetFirewall) is queried by default. To query the VPC firewall, set FirewallType to VpcFirewall.
 //
 // ## QPS limit
 //
-// The QPS limit for a single user is 10 requests per second. If the limit is exceeded, the API invoke is throttled, which may affect your business. Make API calls at a reasonable rate.
+// The QPS limit for a single user is 10 requests per second. If the limit is exceeded, API calls are throttled, which may affect your services. Make API calls at a reasonable rate.
 //
 // @param request - DescribeEventLogRequest
 //
@@ -9253,13 +9277,13 @@ func (client *Client) DescribeInstanceRiskLevels(request *DescribeInstanceRiskLe
 
 // Summary:
 //
-// Queries Internet defense trends.
+// Queries the Internet defense trends.
 //
 // Description:
 //
-// ## QPS limit
+// ## QPS limits
 //
-// The queries per second (QPS) limit for a single user is 10. If the limit is exceeded, API calls are throttled, which may affect your services. Call this API at a reasonable rate.
+// The QPS limit per user for this API operation is 10. If you exceed the limit, API calls are throttled, which may affect your business. Call the API operation at a reasonable frequency.
 //
 // @param request - DescribeInternetDropTrafficTrendRequest
 //
@@ -9327,13 +9351,13 @@ func (client *Client) DescribeInternetDropTrafficTrendWithOptions(request *Descr
 
 // Summary:
 //
-// Queries Internet defense trends.
+// Queries the Internet defense trends.
 //
 // Description:
 //
-// ## QPS limit
+// ## QPS limits
 //
-// The queries per second (QPS) limit for a single user is 10. If the limit is exceeded, API calls are throttled, which may affect your services. Call this API at a reasonable rate.
+// The QPS limit per user for this API operation is 10. If you exceed the limit, API calls are throttled, which may affect your business. Call the API operation at a reasonable frequency.
 //
 // @param request - DescribeInternetDropTrafficTrendRequest
 //
@@ -9481,7 +9505,7 @@ func (client *Client) DescribeInternetOpenDetail(request *DescribeInternetOpenDe
 
 // Summary:
 //
-// Queries the details of an access control policy group in Cloud Firewall.
+// Queries the details of Cloud Firewall access control policy groups.
 //
 // @param request - DescribeInternetOpenIpRequest
 //
@@ -9573,7 +9597,7 @@ func (client *Client) DescribeInternetOpenIpWithOptions(request *DescribeInterne
 
 // Summary:
 //
-// Queries the details of an access control policy group in Cloud Firewall.
+// Queries the details of Cloud Firewall access control policy groups.
 //
 // @param request - DescribeInternetOpenIpRequest
 //
@@ -10203,7 +10227,7 @@ func (client *Client) DescribeInternetTimeTop(request *DescribeInternetTimeTopRe
 
 // Summary:
 //
-// Queries the top trend charts for Internet traffic.
+// Queries the top Internet traffic trend charts.
 //
 // @param request - DescribeInternetTrafficTopRequest
 //
@@ -10295,7 +10319,7 @@ func (client *Client) DescribeInternetTrafficTopWithOptions(request *DescribeInt
 
 // Summary:
 //
-// Queries the top trend charts for Internet traffic.
+// Queries the top Internet traffic trend charts.
 //
 // @param request - DescribeInternetTrafficTopRequest
 //
@@ -10313,7 +10337,7 @@ func (client *Client) DescribeInternetTrafficTop(request *DescribeInternetTraffi
 
 // Summary:
 //
-// Queries Internet traffic trends.
+// Retrieves Internet traffic trends.
 //
 // @param request - DescribeInternetTrafficTrendRequest
 //
@@ -10393,7 +10417,7 @@ func (client *Client) DescribeInternetTrafficTrendWithOptions(request *DescribeI
 
 // Summary:
 //
-// Queries Internet traffic trends.
+// Retrieves Internet traffic trends.
 //
 // @param request - DescribeInternetTrafficTrendRequest
 //
@@ -13681,19 +13705,19 @@ func (client *Client) DescribePageDocuments(request *DescribePageDocumentsReques
 
 // Summary:
 //
-// Queries the enabling status of strict mode for access control policies.
+// Queries the enabling status of the strict mode for access control policies.
 //
 // Description:
 //
-// This operation is typically used to query the enabling status of strict mode for access control policies.
+// This operation is generally used to query the enabling status of the strict mode for access control policies.
 //
 // ## Before you begin
 //
-// - Before calling this operation, you must purchase and activate Cloud Firewall. You can activate the service on the Cloud Firewall buy page (China site: https://common-buy.aliyun.com/?commodityCode=cfw_sub_public_cn; International site: https://common-buy-intl.alibabacloud.com/?commodityCode=cfw_sub_public_intl).
+// - Before you call this operation, you must purchase and activate Cloud Firewall. You can activate it on the Cloud Firewall buy page (China site: https://common-buy.aliyun.com/?commodityCode=cfw_sub_public_cn; International site: https://common-buy-intl.alibabacloud.com/?commodityCode=cfw_sub_public_intl).
 //
 // ## Rate limit
 //
-// The rate limit for this operation is 10 queries per second (QPS) per user. If the limit is exceeded, API calls are throttled, which may affect your services. Call this operation at a reasonable rate.
+// The rate limit for this operation is 10 queries per second (QPS) per user. If the limit is exceeded, API calls are throttled, which may affect your services. Call this operation as needed.
 //
 // @param request - DescribePolicyAdvancedConfigRequest
 //
@@ -13745,19 +13769,19 @@ func (client *Client) DescribePolicyAdvancedConfigWithOptions(request *DescribeP
 
 // Summary:
 //
-// Queries the enabling status of strict mode for access control policies.
+// Queries the enabling status of the strict mode for access control policies.
 //
 // Description:
 //
-// This operation is typically used to query the enabling status of strict mode for access control policies.
+// This operation is generally used to query the enabling status of the strict mode for access control policies.
 //
 // ## Before you begin
 //
-// - Before calling this operation, you must purchase and activate Cloud Firewall. You can activate the service on the Cloud Firewall buy page (China site: https://common-buy.aliyun.com/?commodityCode=cfw_sub_public_cn; International site: https://common-buy-intl.alibabacloud.com/?commodityCode=cfw_sub_public_intl).
+// - Before you call this operation, you must purchase and activate Cloud Firewall. You can activate it on the Cloud Firewall buy page (China site: https://common-buy.aliyun.com/?commodityCode=cfw_sub_public_cn; International site: https://common-buy-intl.alibabacloud.com/?commodityCode=cfw_sub_public_intl).
 //
 // ## Rate limit
 //
-// The rate limit for this operation is 10 queries per second (QPS) per user. If the limit is exceeded, API calls are throttled, which may affect your services. Call this operation at a reasonable rate.
+// The rate limit for this operation is 10 queries per second (QPS) per user. If the limit is exceeded, API calls are throttled, which may affect your services. Call this operation as needed.
 //
 // @param request - DescribePolicyAdvancedConfigRequest
 //
@@ -14417,11 +14441,11 @@ func (client *Client) DescribePrefixLists(request *DescribePrefixListsRequest) (
 
 // Summary:
 //
-// Queries the subscription 2.0 billing overview.
+// Queries the overview of subscription 2.0 bills.
 //
 // Description:
 //
-// The statistical scope covers the current Cloud Firewall instances of the user, including all data since the purchase date.
+// The statistical scope covers the current Cloud Firewall instances of the user and includes all data since the purchase date.
 //
 // @param request - DescribePrepayBillTotalRequest
 //
@@ -14485,11 +14509,11 @@ func (client *Client) DescribePrepayBillTotalWithOptions(request *DescribePrepay
 
 // Summary:
 //
-// Queries the subscription 2.0 billing overview.
+// Queries the overview of subscription 2.0 bills.
 //
 // Description:
 //
-// The statistical scope covers the current Cloud Firewall instances of the user, including all data since the purchase date.
+// The statistical scope covers the current Cloud Firewall instances of the user and includes all data since the purchase date.
 //
 // @param request - DescribePrepayBillTotalRequest
 //
@@ -17950,11 +17974,11 @@ func (client *Client) DescribeUserAssetIPTrafficInfo(request *DescribeUserAssetI
 //
 // Description:
 //
-// This operation is used to query and retrieve Cloud Firewall instance information for a user.
+// This operation is typically used to query and retrieve Cloud Firewall instance information for a user.
 //
-// ## QPS limit
+// ## QPS limits
 //
-// The single-user QPS limit for this operation is 10 calls per second. If this limit is exceeded, the API call is throttled, which may affect your business. Call this operation at an appropriate frequency.
+// The QPS limit per user is 10 calls per second. If you exceed this limit, API calls are throttled, which may affect your services. Make API calls at a reasonable rate.
 //
 // @param request - DescribeUserBuyVersionRequest
 //
@@ -18002,11 +18026,11 @@ func (client *Client) DescribeUserBuyVersionWithOptions(request *DescribeUserBuy
 //
 // Description:
 //
-// This operation is used to query and retrieve Cloud Firewall instance information for a user.
+// This operation is typically used to query and retrieve Cloud Firewall instance information for a user.
 //
-// ## QPS limit
+// ## QPS limits
 //
-// The single-user QPS limit for this operation is 10 calls per second. If this limit is exceeded, the API call is throttled, which may affect your business. Call this operation at an appropriate frequency.
+// The QPS limit per user is 10 calls per second. If you exceed this limit, API calls are throttled, which may affect your services. Make API calls at a reasonable rate.
 //
 // @param request - DescribeUserBuyVersionRequest
 //
@@ -21749,11 +21773,11 @@ func (client *Client) ModifyCfwInstance(request *ModifyCfwInstanceRequest) (_res
 //
 // Description:
 //
-// This operation is used to modify the configurations of an access control policy that allows, denies, or monitors traffic through Cloud Firewall.
+// This operation is generally used to modify the configurations of an access control policy that allows, denies, or monitors traffic passing through Cloud Firewall.
 //
 // ## QPS limit
 //
-// The single-user QPS limit for this operation is 10 calls per second. If the limit is exceeded, the API calls are throttled, which may affect your business. Call this operation at an appropriate frequency.
+// The queries per second (QPS) limit for a single user is 10. If the limit is exceeded, API calls are throttled, which may affect your services. Call this operation at a reasonable frequency.
 //
 // @param request - ModifyControlPolicyRequest
 //
@@ -21897,11 +21921,11 @@ func (client *Client) ModifyControlPolicyWithOptions(request *ModifyControlPolic
 //
 // Description:
 //
-// This operation is used to modify the configurations of an access control policy that allows, denies, or monitors traffic through Cloud Firewall.
+// This operation is generally used to modify the configurations of an access control policy that allows, denies, or monitors traffic passing through Cloud Firewall.
 //
 // ## QPS limit
 //
-// The single-user QPS limit for this operation is 10 calls per second. If the limit is exceeded, the API calls are throttled, which may affect your business. Call this operation at an appropriate frequency.
+// The queries per second (QPS) limit for a single user is 10. If the limit is exceeded, API calls are throttled, which may affect your services. Call this operation at a reasonable frequency.
 //
 // @param request - ModifyControlPolicyRequest
 //
@@ -22247,10 +22271,6 @@ func (client *Client) ModifyDnsFirewallPolicyWithOptions(request *ModifyDnsFirew
 
 	if !dara.IsNil(request.Source) {
 		query["Source"] = request.Source
-	}
-
-	if !dara.IsNil(request.SourceIp) {
-		query["SourceIp"] = request.SourceIp
 	}
 
 	if !dara.IsNil(request.SourceType) {
@@ -22668,11 +22688,11 @@ func (client *Client) ModifyIpsRulesToDefault(request *ModifyIpsRulesToDefaultRe
 
 // Summary:
 //
-// Modify a NAT Firewall security access control policy.
+// Modifies the configuration of an access control policy for a NAT firewall.
 //
 // Description:
 //
-// This API modifies the configuration of an access control policy that allows, denies, or observes traffic passing through a NAT Firewall.
+// This operation is typically used to modify the configuration of an access control policy that allows, denies, or monitors traffic passing through a NAT firewall.
 //
 // @param request - ModifyNatFirewallControlPolicyRequest
 //
@@ -22804,11 +22824,11 @@ func (client *Client) ModifyNatFirewallControlPolicyWithOptions(request *ModifyN
 
 // Summary:
 //
-// Modify a NAT Firewall security access control policy.
+// Modifies the configuration of an access control policy for a NAT firewall.
 //
 // Description:
 //
-// This API modifies the configuration of an access control policy that allows, denies, or observes traffic passing through a NAT Firewall.
+// This operation is typically used to modify the configuration of an access control policy that allows, denies, or monitors traffic passing through a NAT firewall.
 //
 // @param request - ModifyNatFirewallControlPolicyRequest
 //
@@ -22910,11 +22930,11 @@ func (client *Client) ModifyNatFirewallControlPolicyPosition(request *ModifyNatF
 //
 // ## Before you begin
 //
-// - Before you call this operation, you must activate a Cloud Firewall instance.
+// - Before you call this operation, you must activate Cloud Firewall.
 //
 // - You can call [DescribeUserBuyVersion](~~DescribeUserBuyVersion~~) to query the activation status. The UserStatus field in the response indicates whether the Cloud Firewall instance is valid. A value of false indicates that the instance is invalid or not activated.
 //
-// - Activate a Cloud Firewall instance:
+// - Activate Cloud Firewall:
 //
 //   - China site: https://common-buy.aliyun.com/?commodityCode=cfw_sub_public_cn
 //
@@ -22992,11 +23012,11 @@ func (client *Client) ModifyObjectGroupOperationWithOptions(request *ModifyObjec
 //
 // ## Before you begin
 //
-// - Before you call this operation, you must activate a Cloud Firewall instance.
+// - Before you call this operation, you must activate Cloud Firewall.
 //
 // - You can call [DescribeUserBuyVersion](~~DescribeUserBuyVersion~~) to query the activation status. The UserStatus field in the response indicates whether the Cloud Firewall instance is valid. A value of false indicates that the instance is invalid or not activated.
 //
-// - Activate a Cloud Firewall instance:
+// - Activate Cloud Firewall:
 //
 //   - China site: https://common-buy.aliyun.com/?commodityCode=cfw_sub_public_cn
 //
@@ -25682,11 +25702,11 @@ func (client *Client) ResetVpcFirewallRuleHitCount(request *ResetVpcFirewallRule
 
 // Summary:
 //
-// Enables automatic protection for new assets.
+// Enables automatic protection for newly added assets.
 //
 // Description:
 //
-// Each Cloud Firewall instance supports up to 100 associations with TLS inspection policies.
+// Each Cloud Firewall instance supports up to 100 associations for TLS inspection policies.
 //
 // @param request - SetAutoProtectNewAssetsRequest
 //
@@ -25707,10 +25727,6 @@ func (client *Client) SetAutoProtectNewAssetsWithOptions(request *SetAutoProtect
 
 	if !dara.IsNil(request.Lang) {
 		query["Lang"] = request.Lang
-	}
-
-	if !dara.IsNil(request.SourceIp) {
-		query["SourceIp"] = request.SourceIp
 	}
 
 	req := &openapiutil.OpenApiRequest{
@@ -25738,11 +25754,11 @@ func (client *Client) SetAutoProtectNewAssetsWithOptions(request *SetAutoProtect
 
 // Summary:
 //
-// Enables automatic protection for new assets.
+// Enables automatic protection for newly added assets.
 //
 // Description:
 //
-// Each Cloud Firewall instance supports up to 100 associations with TLS inspection policies.
+// Each Cloud Firewall instance supports up to 100 associations for TLS inspection policies.
 //
 // @param request - SetAutoProtectNewAssetsRequest
 //

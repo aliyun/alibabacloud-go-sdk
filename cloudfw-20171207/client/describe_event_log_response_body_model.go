@@ -83,7 +83,7 @@ func (s *DescribeEventLogResponseBody) Validate() error {
 }
 
 type DescribeEventLogResponseBodyDataList struct {
-	// The application type supported by the access control policy. We recommend that you use ApplicationNameList. Valid values:
+	// The application type supported by the access control policy. Use ApplicationNameList instead. Valid values:
 	//
 	// - **FTP**
 	//
@@ -113,7 +113,7 @@ type DescribeEventLogResponseBodyDataList struct {
 	//
 	// - **VNC**
 	//
-	// - **ANY**: All application types.
+	// - **ANY*	- (all application types)
 	//
 	// example:
 	//
@@ -129,9 +129,9 @@ type DescribeEventLogResponseBodyDataList struct {
 	//
 	// - **1**: Abnormal connection.
 	//
-	// - **2**: execute commands.
+	// - **2**: Command execution.
 	//
-	// - **3**: brute-force attacks.
+	// - **3**: Brute-force attack.
 	//
 	// - **4**: Scan.
 	//
@@ -147,7 +147,7 @@ type DescribeEventLogResponseBodyDataList struct {
 	//
 	// - **10**: Trojan backdoor.
 	//
-	// - **11**: Virus and worm.
+	// - **11**: Virus or worm.
 	//
 	// - **12**: Mining behavior.
 	//
@@ -167,7 +167,7 @@ type DescribeEventLogResponseBodyDataList struct {
 	//
 	// in
 	Direction *string `json:"Direction,omitempty" xml:"Direction,omitempty"`
-	// The destination IP address. This indicates that the intrusion prevention event involves this destination IP address.
+	// The queried destination IP address. This indicates that the intrusion prevention event involves this destination IP address.
 	//
 	// example:
 	//
@@ -197,7 +197,7 @@ type DescribeEventLogResponseBodyDataList struct {
 	//
 	// tcp
 	IpProtocol *string `json:"IpProtocol,omitempty" xml:"IpProtocol,omitempty"`
-	// The UID of the Cloud Firewall member accounts.
+	// The UID of the Cloud Firewall member account.
 	//
 	// example:
 	//
@@ -227,9 +227,9 @@ type DescribeEventLogResponseBodyDataList struct {
 	RuleResult *int32 `json:"RuleResult,omitempty" xml:"RuleResult,omitempty"`
 	// The source of the detection rule for the intrusion prevention event. Valid values:
 	//
-	// - **1**: Basic protection.
+	// - **1**: Basic defense.
 	//
-	// - **2**: Virtual Patches.
+	// - **2**: Virtual patches.
 	//
 	// - **4**: Threat intelligence.
 	//
@@ -237,13 +237,13 @@ type DescribeEventLogResponseBodyDataList struct {
 	//
 	// 0
 	RuleSource *int64 `json:"RuleSource,omitempty" xml:"RuleSource,omitempty"`
-	// The Server Name Indication (SNI) used when the TLS connection is established.
+	// The SNI used when the TLS connection is established.
 	//
 	// example:
 	//
 	// www.example.com
 	Sni *string `json:"Sni,omitempty" xml:"Sni,omitempty"`
-	// The source IP address. This indicates that the intrusion prevention event involves this source IP address.
+	// The queried source IP address. This indicates that the intrusion prevention event involves this source IP address.
 	//
 	// example:
 	//
@@ -267,13 +267,13 @@ type DescribeEventLogResponseBodyDataList struct {
 	//
 	// Certificate
 	SslErrorIndex *string `json:"SslErrorIndex,omitempty" xml:"SslErrorIndex,omitempty"`
-	// The reason for the TLS handshake failure, such as BAD_PACKET_LENGTH.
+	// The cause of the TLS handshake failure, such as BAD_PACKET_LENGTH.
 	//
 	// example:
 	//
 	// BAD_PACKET_LENGTH
 	SslErrorMsg *string `json:"SslErrorMsg,omitempty" xml:"SslErrorMsg,omitempty"`
-	// The TLS handshake result. For example, success indicates a successful handshake.
+	// The TLS handshake result. For example, success indicates that the handshake is successful.
 	//
 	// example:
 	//
@@ -295,7 +295,7 @@ type DescribeEventLogResponseBodyDataList struct {
 	//
 	// example:
 	//
-	// http://example.com/task3%DF\\"
+	// http://example.com/task3%DF\"
 	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
 	// The severity level of the intrusion prevention event. Valid values:
 	//

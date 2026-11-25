@@ -29,8 +29,6 @@ type iAddDnsFirewallPolicyRequest interface {
 	GetRelease() *string
 	SetSource(v string) *AddDnsFirewallPolicyRequest
 	GetSource() *string
-	SetSourceIp(v string) *AddDnsFirewallPolicyRequest
-	GetSourceIp() *string
 	SetSourceType(v string) *AddDnsFirewallPolicyRequest
 	GetSourceType() *string
 }
@@ -66,7 +64,7 @@ type AddDnsFirewallPolicyRequest struct {
 	//
 	// - If **DestinationType*	- is set to domain, **Destination*	- is the destination domain name. Example: *.aliyuncs.com.
 	//
-	// - If **DestinationType*	- is set to location, **Destination*	- is the destination area (for specific area positional encoding, see the following section). Example: ["BJ11", "ZB"].
+	// - If **DestinationType*	- is set to location, **Destination*	- is the destination area (for specific area positional encoding, see the following sections). Example: ["BJ11", "ZB"].
 	//
 	// This parameter is required.
 	//
@@ -84,7 +82,7 @@ type AddDnsFirewallPolicyRequest struct {
 	DestinationType *string `json:"DestinationType,omitempty" xml:"DestinationType,omitempty"`
 	// The traffic direction of the DNS firewall access control policy.
 	//
-	// > This parameter is not verified by the backend. When you create or modify a DNS firewall policy, the direction is always stored as **out*	- (outbound). If you pass **in**, no error is reported, but it does not take effect. DNS firewalls only support outbound policies.
+	// > This parameter is not verified by the backend. When you create or modify a DNS firewall policy, the direction is always saved as **out*	- (outbound) in the database. If you pass **in**, no error is reported, but it does not take effect. DNS firewalls only support outbound policies.
 	//
 	// example:
 	//
@@ -112,7 +110,7 @@ type AddDnsFirewallPolicyRequest struct {
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The policy priority of the new DNS firewall policy. Valid values: 1 to 20000. A smaller value indicates a higher policy priority.
+	// The priority of the new DNS firewall policy. Valid values: 1 to 20000. A smaller value indicates a higher policy priority.
 	//
 	// This parameter is required.
 	//
@@ -124,7 +122,7 @@ type AddDnsFirewallPolicyRequest struct {
 	//
 	// - **true**: enables the access control policy.
 	//
-	// - **false**: disables the access control policy.
+	// - **false**: does not enable the access control policy.
 	//
 	// This parameter is required.
 	//
@@ -144,12 +142,6 @@ type AddDnsFirewallPolicyRequest struct {
 	//
 	// 192.168.0.223/32
 	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
-	// The source IP address of the requester.
-	//
-	// example:
-	//
-	// 140.205.118.97
-	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
 	// The type of the source address in the access control policy. Valid values:
 	//
 	// - **net**: source CIDR block
@@ -212,10 +204,6 @@ func (s *AddDnsFirewallPolicyRequest) GetSource() *string {
 	return s.Source
 }
 
-func (s *AddDnsFirewallPolicyRequest) GetSourceIp() *string {
-	return s.SourceIp
-}
-
 func (s *AddDnsFirewallPolicyRequest) GetSourceType() *string {
 	return s.SourceType
 }
@@ -267,11 +255,6 @@ func (s *AddDnsFirewallPolicyRequest) SetRelease(v string) *AddDnsFirewallPolicy
 
 func (s *AddDnsFirewallPolicyRequest) SetSource(v string) *AddDnsFirewallPolicyRequest {
 	s.Source = &v
-	return s
-}
-
-func (s *AddDnsFirewallPolicyRequest) SetSourceIp(v string) *AddDnsFirewallPolicyRequest {
-	s.SourceIp = &v
 	return s
 }
 

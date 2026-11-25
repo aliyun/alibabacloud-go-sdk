@@ -46,13 +46,13 @@ type iDescribeInternetTrafficTrendResponseBody interface {
 }
 
 type DescribeInternetTrafficTrendResponseBody struct {
-	// The average inbound network throughput. Unit: bps.
+	// The average network throughput in the inbound direction. Unit: bps.
 	//
 	// example:
 	//
 	// 6114152
 	AvgInBps *int64 `json:"AvgInBps,omitempty" xml:"AvgInBps,omitempty"`
-	// The average outbound network throughput. Unit: bps.
+	// The average network throughput in the outbound direction. Unit: bps.
 	//
 	// example:
 	//
@@ -64,33 +64,33 @@ type DescribeInternetTrafficTrendResponseBody struct {
 	//
 	// 79013
 	AvgSession *int64 `json:"AvgSession,omitempty" xml:"AvgSession,omitempty"`
-	// The average total network throughput for inbound and outbound traffic. Unit: bps.
+	// The average network throughput in both outbound and inbound directions. Unit: bps.
 	//
 	// example:
 	//
 	// 2306
 	AvgTotalBps *int64 `json:"AvgTotalBps,omitempty" xml:"AvgTotalBps,omitempty"`
-	// A list of traffic statistics.
+	// The list of traffic statistics information.
 	DataList []*DescribeInternetTrafficTrendResponseBodyDataList `json:"DataList,omitempty" xml:"DataList,omitempty" type:"Repeated"`
-	// The UNIX timestamp when the peak bandwidth was reached. Unit: seconds.
+	// The timestamp when the peak bandwidth occurred. The value is a UNIX timestamp in seconds.
 	//
 	// example:
 	//
 	// 1672736400
 	MaxBandwidthTime *int64 `json:"MaxBandwidthTime,omitempty" xml:"MaxBandwidthTime,omitempty"`
-	// The peak daily excess traffic.
+	// The maximum daily excess traffic.
 	//
 	// example:
 	//
 	// 873
 	MaxDayExceedBytes *int64 `json:"MaxDayExceedBytes,omitempty" xml:"MaxDayExceedBytes,omitempty"`
-	// The peak inbound network throughput. Unit: bps.
+	// The peak network throughput in the inbound direction. Unit: bps.
 	//
 	// example:
 	//
 	// 10275643
 	MaxInBps *int64 `json:"MaxInBps,omitempty" xml:"MaxInBps,omitempty"`
-	// The peak outbound network throughput. Unit: bps.
+	// The peak network throughput in the outbound direction. Unit: bps.
 	//
 	// example:
 	//
@@ -102,7 +102,7 @@ type DescribeInternetTrafficTrendResponseBody struct {
 	//
 	// 931641
 	MaxSession *int64 `json:"MaxSession,omitempty" xml:"MaxSession,omitempty"`
-	// The peak total network throughput for inbound and outbound traffic. Unit: bps.
+	// The peak network throughput in both outbound and inbound directions. Unit: bps.
 	//
 	// example:
 	//
@@ -114,7 +114,7 @@ type DescribeInternetTrafficTrendResponseBody struct {
 	//
 	// C7E837BE-0379-565E-B7B4-DE595C8D337C
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total inbound and outbound traffic. Unit: bytes.
+	// The total network traffic in both outbound and inbound directions. Unit: bytes.
 	//
 	// example:
 	//
@@ -126,13 +126,13 @@ type DescribeInternetTrafficTrendResponseBody struct {
 	//
 	// 4243873
 	TotalExceedBytes *int64 `json:"TotalExceedBytes,omitempty" xml:"TotalExceedBytes,omitempty"`
-	// The total inbound traffic. Unit: bytes.
+	// The total network traffic in the inbound direction. Unit: bytes.
 	//
 	// example:
 	//
 	// 41536824243873
 	TotalInBytes *int64 `json:"TotalInBytes,omitempty" xml:"TotalInBytes,omitempty"`
-	// The total outbound traffic. Unit: bytes.
+	// The total network traffic in the outbound direction. Unit: bytes.
 	//
 	// example:
 	//
@@ -321,19 +321,19 @@ func (s *DescribeInternetTrafficTrendResponseBody) Validate() error {
 }
 
 type DescribeInternetTrafficTrendResponseBodyDataList struct {
-	// The inbound network throughput. Unit: bps.
+	// The network throughput in the inbound direction. Unit: bps.
 	//
 	// example:
 	//
 	// 187
 	InBps *int64 `json:"InBps,omitempty" xml:"InBps,omitempty"`
-	// The inbound traffic. Unit: bytes.
+	// The total network traffic in the inbound direction. Unit: bytes.
 	//
 	// example:
 	//
 	// 235
 	InBytes *int64 `json:"InBytes,omitempty" xml:"InBytes,omitempty"`
-	// The inbound packet rate. Unit: pps.
+	// The packet rate in the inbound direction. Unit: pps.
 	//
 	// example:
 	//
@@ -345,19 +345,19 @@ type DescribeInternetTrafficTrendResponseBodyDataList struct {
 	//
 	// 27
 	NewConn *int64 `json:"NewConn,omitempty" xml:"NewConn,omitempty"`
-	// The outbound network throughput. Unit: bps.
+	// The network throughput in the outbound direction. Unit: bps.
 	//
 	// example:
 	//
 	// 45
 	OutBps *int64 `json:"OutBps,omitempty" xml:"OutBps,omitempty"`
-	// The outbound traffic. Unit: bytes.
+	// The total network traffic in the outbound direction. Unit: bytes.
 	//
 	// example:
 	//
 	// 1123
 	OutBytes *int64 `json:"OutBytes,omitempty" xml:"OutBytes,omitempty"`
-	// The outbound packet rate. Unit: pps.
+	// The packet rate in the outbound direction. Unit: pps.
 	//
 	// example:
 	//
@@ -369,15 +369,15 @@ type DescribeInternetTrafficTrendResponseBodyDataList struct {
 	//
 	// 27
 	SessionCount *int64 `json:"SessionCount,omitempty" xml:"SessionCount,omitempty"`
-	// The time when the traffic was recorded. This value is a UNIX timestamp in seconds.
+	// The time when the traffic occurred. The value is a UNIX timestamp in seconds.
 	//
-	// If data for this time point has not been processed, the values of other fields are -1.
+	// If the data for this time point is not fully processed, the values of other fields are -1.
 	//
 	// example:
 	//
 	// 1659405600
 	Time *int32 `json:"Time,omitempty" xml:"Time,omitempty"`
-	// The total inbound and outbound network throughput. Unit: bps.
+	// The total network throughput in both outbound and inbound directions. Unit: bps.
 	//
 	// example:
 	//

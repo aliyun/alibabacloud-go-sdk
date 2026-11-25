@@ -58,7 +58,7 @@ type ModifyIpsRulesRequest struct {
 	//
 	// example:
 	//
-	// [\\"4664138c-4f81-4650-9c8d-2230ea0d****\\"]
+	// [\"4664138c-4f81-4650-9c8d-2230ea0d****\"]
 	Rules *string `json:"Rules,omitempty" xml:"Rules,omitempty"`
 	// The source IP address of the request.
 	//

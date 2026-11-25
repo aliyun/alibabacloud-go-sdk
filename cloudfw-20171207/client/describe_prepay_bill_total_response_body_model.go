@@ -131,7 +131,13 @@ type DescribePrepayBillTotalResponseBodyBillList struct {
 	//
 	// 10
 	InternetTrafficBandwidth *float32 `json:"InternetTrafficBandwidth,omitempty" xml:"InternetTrafficBandwidth,omitempty"`
-	// The monthly free quota for sensitive data detection. Unit: GB.
+	// Specifies whether Agentic billing is used on the date to which the bill belongs. A value of true indicates that Agentic billing is used. A value of false indicates that standard billing is used.
+	//
+	// example:
+	//
+	// false
+	IsAgenticBilling *bool `json:"IsAgenticBilling,omitempty" xml:"IsAgenticBilling,omitempty"`
+	// The monthly free quota for sensitive data detection traffic. Unit: GB.
 	//
 	// example:
 	//
@@ -143,7 +149,7 @@ type DescribePrepayBillTotalResponseBodyBillList struct {
 	//
 	// 10
 	NatTrafficBandwidth *float32 `json:"NatTrafficBandwidth,omitempty" xml:"NatTrafficBandwidth,omitempty"`
-	// The timestamp when the total bandwidth (Internet, VPC, and NAT) reaches the maximum value on the day.
+	// The timestamp when the total bandwidth (Internet + VPC + NAT) reaches the maximum value on the day.
 	//
 	// example:
 	//
@@ -209,6 +215,10 @@ func (s *DescribePrepayBillTotalResponseBodyBillList) GetInternetTrafficBandwidt
 	return s.InternetTrafficBandwidth
 }
 
+func (s *DescribePrepayBillTotalResponseBodyBillList) GetIsAgenticBilling() *bool {
+	return s.IsAgenticBilling
+}
+
 func (s *DescribePrepayBillTotalResponseBodyBillList) GetMonthlyRemainingFreeTraffic() *float32 {
 	return s.MonthlyRemainingFreeTraffic
 }
@@ -270,6 +280,11 @@ func (s *DescribePrepayBillTotalResponseBodyBillList) SetExtensionBandwidth(v in
 
 func (s *DescribePrepayBillTotalResponseBodyBillList) SetInternetTrafficBandwidth(v float32) *DescribePrepayBillTotalResponseBodyBillList {
 	s.InternetTrafficBandwidth = &v
+	return s
+}
+
+func (s *DescribePrepayBillTotalResponseBodyBillList) SetIsAgenticBilling(v bool) *DescribePrepayBillTotalResponseBodyBillList {
+	s.IsAgenticBilling = &v
 	return s
 }
 

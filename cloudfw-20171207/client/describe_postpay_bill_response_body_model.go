@@ -40,7 +40,7 @@ type DescribePostpayBillResponseBody struct {
 	//
 	// 10
 	AggregateNatTraffic *float32 `json:"AggregateNatTraffic,omitempty" xml:"AggregateNatTraffic,omitempty"`
-	// The aggregated sensitive data detection traffic. Unit: GB.
+	// The aggregated sensitive data leak detection traffic. Unit: GB.
 	//
 	// example:
 	//
@@ -58,7 +58,7 @@ type DescribePostpayBillResponseBody struct {
 	//
 	// 10
 	AggregateVpcTraffic *float32 `json:"AggregateVpcTraffic,omitempty" xml:"AggregateVpcTraffic,omitempty"`
-	// The list of bills.
+	// The bill list.
 	BillList []*DescribePostpayBillResponseBodyBillList `json:"BillList,omitempty" xml:"BillList,omitempty" type:"Repeated"`
 	// The ID of the request.
 	//
@@ -168,7 +168,7 @@ func (s *DescribePostpayBillResponseBody) Validate() error {
 }
 
 type DescribePostpayBillResponseBodyBillList struct {
-	// The end time. The time is a UNIX timestamp accurate to seconds, which represents an exact hour or day.
+	// The end time. The time is a UNIX timestamp in seconds and represents an exact hour or day.
 	//
 	// example:
 	//
@@ -186,7 +186,13 @@ type DescribePostpayBillResponseBodyBillList struct {
 	//
 	// 10
 	InternetTraffic *float32 `json:"InternetTraffic,omitempty" xml:"InternetTraffic,omitempty"`
-	// Indicates whether the fee is reduced. A value of 0 indicates that the fee is not reduced. A value greater than 0 indicates that the fee is reduced. If the fee is reduced, no bill is generated.
+	// Specifies whether the bill for the specified date is calculated based on the Agentic billing method. A value of true indicates the Agentic billing method. A value of false indicates the standard billing method.
+	//
+	// example:
+	//
+	// false
+	IsAgenticBilling *bool `json:"IsAgenticBilling,omitempty" xml:"IsAgenticBilling,omitempty"`
+	// Specifies whether the fee is reduced or waived. A value of 0 indicates that the fee is not reduced or waived. A value greater than 0 indicates that the fee is reduced or waived, and no bill is generated.
 	//
 	// > This parameter is valid only when you query hourly data.
 	//
@@ -194,7 +200,7 @@ type DescribePostpayBillResponseBodyBillList struct {
 	//
 	// 0
 	IsDerated *int32 `json:"IsDerated,omitempty" xml:"IsDerated,omitempty"`
-	// The usage duration of Simple Log Service. Unit: TB×h.
+	// The usage duration of Simple Log Service. Unit: TB × hours.
 	//
 	// example:
 	//
@@ -218,13 +224,13 @@ type DescribePostpayBillResponseBodyBillList struct {
 	//
 	// 0
 	Sdl *int64 `json:"Sdl,omitempty" xml:"Sdl,omitempty"`
-	// The sensitive data detection traffic. Unit: GB.
+	// The sensitive data leak detection traffic. Unit: GB.
 	//
 	// example:
 	//
 	// 1
 	SdlTraffic *float32 `json:"SdlTraffic,omitempty" xml:"SdlTraffic,omitempty"`
-	// The start time. The time is a UNIX timestamp accurate to seconds, which represents an exact hour or day.
+	// The start time. The time is a UNIX timestamp in seconds and represents an exact hour or day.
 	//
 	// example:
 	//
@@ -268,6 +274,10 @@ func (s *DescribePostpayBillResponseBodyBillList) GetInternetInstanceCnt() *int6
 
 func (s *DescribePostpayBillResponseBodyBillList) GetInternetTraffic() *float32 {
 	return s.InternetTraffic
+}
+
+func (s *DescribePostpayBillResponseBodyBillList) GetIsAgenticBilling() *bool {
+	return s.IsAgenticBilling
 }
 
 func (s *DescribePostpayBillResponseBodyBillList) GetIsDerated() *int32 {
@@ -322,6 +332,11 @@ func (s *DescribePostpayBillResponseBodyBillList) SetInternetInstanceCnt(v int64
 
 func (s *DescribePostpayBillResponseBodyBillList) SetInternetTraffic(v float32) *DescribePostpayBillResponseBodyBillList {
 	s.InternetTraffic = &v
+	return s
+}
+
+func (s *DescribePostpayBillResponseBodyBillList) SetIsAgenticBilling(v bool) *DescribePostpayBillResponseBodyBillList {
+	s.IsAgenticBilling = &v
 	return s
 }
 

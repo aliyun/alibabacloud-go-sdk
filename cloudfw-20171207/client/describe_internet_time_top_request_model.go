@@ -74,7 +74,7 @@ type DescribeInternetTimeTopRequest struct {
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The maximum number of top entries to return. Default value: 50. Valid values: 1 to 50.
+	// The maximum number of top entries. Default value: 50. Valid values: 1 to 50.
 	//
 	// example:
 	//
@@ -92,7 +92,7 @@ type DescribeInternetTimeTopRequest struct {
 	//
 	// desc
 	Order *string `json:"Order,omitempty" xml:"Order,omitempty"`
-	// The sorting method.
+	// The sort field.
 	//
 	// example:
 	//
@@ -124,7 +124,7 @@ type DescribeInternetTimeTopRequest struct {
 	//
 	// 1749434787
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The traffic time to query. The value is a UNIX timestamp in seconds.
+	// The time of the traffic to query. The value is a UNIX timestamp in seconds.
 	//
 	// example:
 	//

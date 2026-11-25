@@ -38,7 +38,7 @@ type ModifySlsDispatchStatusRequest struct {
 	//
 	// internet_log
 	DispatchValue *string `json:"DispatchValue,omitempty" xml:"DispatchValue,omitempty"`
-	// Specifies whether to deliver logs. A value of \\`true\\` enables delivery, and \\`false\\` disables it.
+	// Specifies whether to deliver logs. A value of \`true\` enables delivery, and \`false\` disables it.
 	//
 	// example:
 	//
@@ -62,7 +62,7 @@ type ModifySlsDispatchStatusRequest struct {
 	//
 	// cn-shanghai
 	NewRegionId *string `json:"NewRegionId,omitempty" xml:"NewRegionId,omitempty"`
-	// The site to modify. If the log version is 1, leave this parameter empty or set it to \\`global\\`. If the log version is 2, set this parameter to \\`cn\\` or \\`intl\\`.
+	// The site to modify. If the log version is 1, leave this parameter empty or set it to \`global\`. If the log version is 2, set this parameter to \`cn\` or \`intl\`.
 	//
 	// example:
 	//

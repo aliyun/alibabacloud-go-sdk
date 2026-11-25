@@ -100,7 +100,7 @@ func (s *DescribeConfiguredDomainNamesResponseBody) Validate() error {
 }
 
 type DescribeConfiguredDomainNamesResponseBodyDomainNames struct {
-	// The comment.
+	// The remarks.
 	//
 	// example:
 	//
@@ -112,7 +112,7 @@ type DescribeConfiguredDomainNamesResponseBodyDomainNames struct {
 	//
 	// example.com
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	// Specifies whether the domain name is malicious. Valid values: 0 (not malicious), 1 (malicious).
+	// Indicates whether the domain name is malicious. Valid values: 0 (not malicious), 1 (malicious).
 	//
 	// example:
 	//

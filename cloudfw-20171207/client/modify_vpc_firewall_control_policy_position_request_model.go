@@ -66,11 +66,11 @@ type ModifyVpcFirewallControlPolicyPositionRequest struct {
 	//
 	// - If the VPC firewall protects a Cloud Enterprise Network (CEN) instance, the ID of the policy group is the ID of the CEN instance.
 	//
-	//   Example: cen-ervw0g12b5jbw\\*\\*\\*\\*
+	//   Example: cen-ervw0g12b5jbw\*\*\*\*
 	//
 	// - If the VPC firewall protects an Express Connect circuit, the ID of the policy group is the ID of the VPC firewall instance.
 	//
-	//   Example: vfw-a42bbb7b887148c9\\*\\*\\*\\*
+	//   Example: vfw-a42bbb7b887148c9\*\*\*\*
 	//
 	// This parameter is required.
 	//

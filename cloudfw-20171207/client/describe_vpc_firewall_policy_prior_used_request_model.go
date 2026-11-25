@@ -34,11 +34,11 @@ type DescribeVpcFirewallPolicyPriorUsedRequest struct {
 	//
 	// - When a VPC border firewall protects a Cloud Enterprise Network (CEN) instance, the policy group ID is the instance ID of the CEN instance.
 	//
-	//   Example: cen-ervw0g12b5jbw*\\*\\*\\*
+	//   Example: cen-ervw0g12b5jbw*\*\*\*
 	//
 	// - When a VPC border firewall protects an Express Connect circuit, the policy group ID is the instance ID of the VPC border firewall.
 	//
-	//   Example: vfw-a42bbb7b887148c9*\\*\\*\\*
+	//   Example: vfw-a42bbb7b887148c9*\*\*\*
 	//
 	// This parameter is required.
 	//

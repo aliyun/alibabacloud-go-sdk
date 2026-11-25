@@ -62,11 +62,11 @@ type iCreateNatFirewallControlPolicyRequest interface {
 type CreateNatFirewallControlPolicyRequest struct {
 	// The action that Cloud Firewall performs on traffic in the access control policy. Valid values:
 	//
-	// - **accept**: allows the traffic
+	// - **accept**: Allows the traffic.
 	//
-	// - **drop**: denies the traffic
+	// - **drop**: Denies the traffic.
 	//
-	// - **log**: monitors the traffic
+	// - **log**: Monitors the traffic.
 	//
 	// This parameter is required.
 	//
@@ -90,15 +90,13 @@ type CreateNatFirewallControlPolicyRequest struct {
 	//
 	// - If the protocol is ICMP, leave this parameter empty.
 	//
+	// > When the protocol is ICMP, access control based on the destination port is not supported.
 	//
+	// - If the protocol is TCP, UDP, or ANY, and the destination Protocol Type (DestPortType) is group, leave this parameter empty.
 	//
-	// > Access control based on destination ports is not supported when the protocol is ICMP.
+	// > When the destination Protocol Type is set to group (destination port address book), you do not need to specify a destination port number. All ports managed by this access control policy are included in the destination port address book.
 	//
-	// - If the protocol is TCP, UDP, or ANY and the destination Protocol Type (DestPortType) is group, leave this parameter empty.
-	//
-	// > If you set DestPortType to group, you do not need to specify a destination port. All ports managed by this policy are included in the destination port address book.
-	//
-	// - If the protocol is TCP, UDP, or ANY and the destination Protocol Type (DestPortType) is port, set this parameter to the destination port number.
+	// - If the protocol is TCP, UDP, or ANY, and the destination Protocol Type (DestPortType) is port, set this parameter to the destination port number.
 	//
 	// example:
 	//
@@ -106,7 +104,7 @@ type CreateNatFirewallControlPolicyRequest struct {
 	DestPort *string `json:"DestPort,omitempty" xml:"DestPort,omitempty"`
 	// The name of the destination port address book in the access control policy.
 	//
-	// > If you set DestPortType to group, you must specify the name of the destination port address book.
+	// > If DestPortType is set to group, you must specify the name of the destination port address book.
 	//
 	// example:
 	//
@@ -114,9 +112,9 @@ type CreateNatFirewallControlPolicyRequest struct {
 	DestPortGroup *string `json:"DestPortGroup,omitempty" xml:"DestPortGroup,omitempty"`
 	// The type of the destination port in the access control policy. Valid values:
 	//
-	// - **port**: a port
+	// - **port**: port.
 	//
-	// - **group**: a port address book
+	// - **group**: port address book.
 	//
 	// example:
 	//
@@ -124,23 +122,13 @@ type CreateNatFirewallControlPolicyRequest struct {
 	DestPortType *string `json:"DestPortType,omitempty" xml:"DestPortType,omitempty"`
 	// The destination address in the access control policy. Valid values:
 	//
-	// - If DestinationType is set to net, set Destination to the destination CIDR block.
+	// - If DestinationType is set to net, Destination is the destination CIDR block. Example: 1.2.XX.XX/24.
 	//
+	// - If DestinationType is set to group, Destination is the name of the destination address book. Example: db_group.
 	//
+	// - If DestinationType is set to domain, Destination is the destination domain name. Example: *.aliyuncs.com.
 	//
-	//   Example: 1.2.XX.XX/24
-	//
-	// - If DestinationType is set to group, set Destination to the name of the destination address book.
-	//
-	//   Example: db_group
-	//
-	// - If DestinationType is set to domain, set Destination to the destination domain name.
-	//
-	//   Example: *.aliyuncs.com
-	//
-	// - If DestinationType is set to location, set Destination to the destination region.
-	//
-	//   Example: ["BJ11", "ZB"\\]
+	// - If DestinationType is set to location, Destination is the destination region. Example: ["BJ11", "ZB"\].
 	//
 	// This parameter is required.
 	//
@@ -150,11 +138,11 @@ type CreateNatFirewallControlPolicyRequest struct {
 	Destination *string `json:"Destination,omitempty" xml:"Destination,omitempty"`
 	// The type of the destination address in the access control policy. Valid values:
 	//
-	// - **net**: a destination CIDR block
+	// - **net**: destination CIDR block.
 	//
-	// - **group**: a destination address book
+	// - **group**: destination address book.
 	//
-	// - **domain**: a destination domain name
+	// - **domain**: destination domain name.
 	//
 	// This parameter is required.
 	//
@@ -164,7 +152,7 @@ type CreateNatFirewallControlPolicyRequest struct {
 	DestinationType *string `json:"DestinationType,omitempty" xml:"DestinationType,omitempty"`
 	// The traffic direction of the access control policy. Valid values:
 	//
-	// - **out**: outbound traffic
+	// - **out**: outbound traffic.
 	//
 	// This parameter is required.
 	//
@@ -172,23 +160,23 @@ type CreateNatFirewallControlPolicyRequest struct {
 	//
 	// out
 	Direction *string `json:"Direction,omitempty" xml:"Direction,omitempty"`
-	// The domain name parse method of the access control policy. Valid values:
+	// The domain name parse pattern of the access control policy. Valid values:
 	//
-	// - **0**: FQDN-based parse
+	// - **0**: FQDN-based resolution.
 	//
-	// - **1**: DNS-based dynamic parse
+	// - **1**: DNS-based dynamic resolution.
 	//
-	// - **2**: FQDN-based and DNS-based dynamic parse
+	// - **2**: FQDN- and DNS-based dynamic resolution.
 	//
-	// > If the domain name identification mode includes FQDN, you can only configure the TCP protocol. The supported applications are HTTP, HTTPS, SMTP, SMTPS, SSL, IMAPS, and POPS.
+	// > If the domain name identification mode includes FQDN, only the TCP protocol is allowed. The application can be HTTP, HTTPS, SMTP, SMTPS, SSL, IMAPS, or POPS.
 	//
 	// example:
 	//
 	// 0
 	DomainResolveType *int32 `json:"DomainResolveType,omitempty" xml:"DomainResolveType,omitempty"`
-	// The end time for the Policy Validity Period of the access control policy. The value is in the format of a UNIX timestamp in seconds. The time must be on the hour or half hour, and must be at least 30 minutes later than the start time.
+	// The end time of the Policy Validity Period of the access control policy. The value is in the UNIX timestamp format in seconds. The time must be on the hour or half-hour, and must be at least 30 minutes later than the start time.
 	//
-	// > If RepeatType is set to Permanent, leave EndTime empty. If RepeatType is set to None, Daily, Weekly, or Monthly, EndTime must have a value, and you must specify the Settings for the end time.
+	// > If RepeatType is set to Permanent, EndTime is empty. If RepeatType is set to None, Daily, Weekly, or Monthly, EndTime must be specified, and you must configure the Settings for the end time.
 	//
 	// example:
 	//
@@ -196,7 +184,7 @@ type CreateNatFirewallControlPolicyRequest struct {
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// The IP address version. Valid values:
 	//
-	// - **4**: IPv4 (default)
+	// - **4**: IPv4 (default).
 	//
 	// example:
 	//
@@ -204,9 +192,9 @@ type CreateNatFirewallControlPolicyRequest struct {
 	IpVersion *string `json:"IpVersion,omitempty" xml:"IpVersion,omitempty"`
 	// The language of the response message. Valid values:
 	//
-	// - **zh**: Chinese (default)
+	// - **zh**: Chinese (default).
 	//
-	// - **en**: English
+	// - **en**: English.
 	//
 	// example:
 	//
@@ -230,7 +218,7 @@ type CreateNatFirewallControlPolicyRequest struct {
 	NewOrder *string `json:"NewOrder,omitempty" xml:"NewOrder,omitempty"`
 	// The protocol type of the traffic in the access control policy. Valid values:
 	//
-	// - ANY: all protocols
+	// - ANY: all protocols.
 	//
 	// - TCP
 	//
@@ -238,7 +226,7 @@ type CreateNatFirewallControlPolicyRequest struct {
 	//
 	// - ICMP
 	//
-	// > If the destination address is a threat intelligence address book or a cloud service address book of the domain name type, you can only configure the TCP protocol. The supported applications are HTTP, HTTPS, SMTP, SMTPS, and SSL.
+	// > If the destination address is a threat intelligence address book or a cloud service address book of the domain name type, only the TCP protocol is allowed. The application can be HTTP, HTTPS, SMTP, SMTPS, or SSL.
 	//
 	// This parameter is required.
 	//
@@ -248,9 +236,9 @@ type CreateNatFirewallControlPolicyRequest struct {
 	Proto *string `json:"Proto,omitempty" xml:"Proto,omitempty"`
 	// Specifies whether to enable the access control policy. By default, the policy is enabled after it is created. Valid values:
 	//
-	// - **true**: enables the access control policy
+	// - **true**: Enables the access control policy.
 	//
-	// - **false**: does not enable the access control policy
+	// - **false**: Does not enable the access control policy.
 	//
 	// example:
 	//
@@ -258,53 +246,47 @@ type CreateNatFirewallControlPolicyRequest struct {
 	Release *string `json:"Release,omitempty" xml:"Release,omitempty"`
 	// The set of recurrence days for the Policy Validity Period of the access control policy.
 	//
-	// - If RepeatType is set to `Permanent`, `None`, or `Daily`, leave RepeatDays empty.
+	// - If RepeatType is set to `Permanent`, `None`, or `Daily`, RepeatDays is an empty set. Example: [].
 	//
-	//   Example: []
+	// - If RepeatType is set to Weekly, RepeatDays cannot be empty. Example: [0, 6].
 	//
-	// - If RepeatType is set to Weekly, RepeatDays cannot be empty.
+	// > When RepeatType is set to Weekly, the values in RepeatDays cannot be duplicated.
 	//
-	//   Example: [0, 6]
+	// - If RepeatType is set to `Monthly`, RepeatDays cannot be empty. Example: [1, 31].
 	//
-	// > When the RepeatType Settings are Weekly, the values in RepeatDays cannot be duplicate.
-	//
-	// - If RepeatType is set to `Monthly`, RepeatDays cannot be empty.
-	//
-	//   Example: [1, 31]
-	//
-	// > When the RepeatType Settings are Monthly, the values in RepeatDays cannot be duplicate.
+	// > When RepeatType is set to Monthly, the values in RepeatDays cannot be duplicated.
 	RepeatDays []*int64 `json:"RepeatDays,omitempty" xml:"RepeatDays,omitempty" type:"Repeated"`
-	// The recurrence end time for the Policy Validity Period of the access control policy. Example: 23:30. The time must be on the hour or half hour, and must be at least 30 minutes later than the recurrence start time.
+	// The recurrence end time of the Policy Validity Period of the access control policy. Example: 23:30. The time must be on the hour or half-hour, and must be at least 30 minutes later than the recurrence start time.
 	//
-	// > If RepeatType is set to Permanent or None, leave RepeatEndTime empty. If RepeatType is set to Daily, Weekly, or Monthly, RepeatEndTime must have a value, and you must specify the Settings for the recurrence end time.
+	// > If RepeatType is set to Permanent or None, RepeatEndTime is empty. If RepeatType is set to Daily, Weekly, or Monthly, RepeatEndTime must be specified, and you must configure the Settings for the recurrence end time.
 	//
-	// > The time format is HH:mm (24-hour clock), such as 08:00 and 23:30.
+	// > The time format is HH:mm (24-hour clock). Example: 08:00 or 23:30.
 	//
 	// example:
 	//
 	// 23:30
 	RepeatEndTime *string `json:"RepeatEndTime,omitempty" xml:"RepeatEndTime,omitempty"`
-	// The recurrence start time for the Policy Validity Period of the access control policy. Example: 08:00. The time must be on the hour or half hour, and must be at least 30 minutes earlier than the recurrence end time.
+	// The recurrence start time of the Policy Validity Period of the access control policy. Example: 08:00. The time must be on the hour or half-hour, and must be at least 30 minutes earlier than the recurrence end time.
 	//
-	// > If RepeatType is set to Permanent or None, leave RepeatStartTime empty. If RepeatType is set to Daily, Weekly, or Monthly, RepeatStartTime must have a value, and you must specify the Settings for the recurrence start time.
+	// > If RepeatType is set to Permanent or None, RepeatStartTime is empty. If RepeatType is set to Daily, Weekly, or Monthly, RepeatStartTime must be specified, and you must configure the Settings for the recurrence start time.
 	//
-	// > The time format is HH:mm (24-hour clock), such as 08:00 and 23:30.
+	// > The time format is HH:mm (24-hour clock). Example: 08:00 or 23:30.
 	//
 	// example:
 	//
 	// 08:00
 	RepeatStartTime *string `json:"RepeatStartTime,omitempty" xml:"RepeatStartTime,omitempty"`
-	// The recurrence type of the Policy Validity Period for the access control policy. Valid values:
+	// The recurrence type of the Policy Validity Period of the access control policy. Valid values:
 	//
-	// - **Permanent**: always (default)
+	// - **Permanent**: always (default).
 	//
-	// - **None**: a specific single time
+	// - **None**: specified single time.
 	//
-	// - **Daily**: every day
+	// - **Daily**: every day.
 	//
-	// - **Weekly**: every week
+	// - **Weekly**: every week.
 	//
-	// - **Monthly**: every month
+	// - **Monthly**: every month.
 	//
 	// example:
 	//
@@ -312,13 +294,9 @@ type CreateNatFirewallControlPolicyRequest struct {
 	RepeatType *string `json:"RepeatType,omitempty" xml:"RepeatType,omitempty"`
 	// The source address in the access control policy. Valid values:
 	//
-	// - If **SourceType*	- is set to `net`, set Source to the source CIDR block.
+	// - If **SourceType*	- is set to `net`, Source is the source CIDR block. Example: 10.2.4.0/24.
 	//
-	//   Example: 10.2.4.0/24
-	//
-	// - If **SourceType*	- is set to `group`, set Source to the name of the source address book.
-	//
-	//   Example: db_group
+	// - If **SourceType*	- is set to `group`, Source is the name of the source address book. Example: db_group.
 	//
 	// This parameter is required.
 	//
@@ -328,9 +306,9 @@ type CreateNatFirewallControlPolicyRequest struct {
 	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
 	// The type of the source address in the access control policy. Valid values:
 	//
-	// - **net**: a source CIDR block
+	// - **net**: source CIDR block.
 	//
-	// - **group**: a source address book
+	// - **group**: source address book.
 	//
 	// This parameter is required.
 	//
@@ -338,9 +316,9 @@ type CreateNatFirewallControlPolicyRequest struct {
 	//
 	// net
 	SourceType *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
-	// The start time for the Policy Validity Period of the access control policy. The value is in the format of a UNIX timestamp in seconds. The time must be on the hour or half hour, and must be at least 30 minutes earlier than the end time.
+	// The start time of the Policy Validity Period of the access control policy. The value is in the UNIX timestamp format in seconds. The time must be on the hour or half-hour, and must be at least 30 minutes earlier than the end time.
 	//
-	// > If RepeatType is set to Permanent, leave StartTime empty. If RepeatType is set to None, Daily, Weekly, or Monthly, StartTime must have a value, and you must specify the Settings for the start time.
+	// > If RepeatType is set to Permanent, StartTime is empty. If RepeatType is set to None, Daily, Weekly, or Monthly, StartTime must be specified, and you must configure the Settings for the start time.
 	//
 	// example:
 	//

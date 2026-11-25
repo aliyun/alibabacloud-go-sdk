@@ -27,8 +27,6 @@ type iModifyDnsFirewallPolicyRequest interface {
 	GetRelease() *string
 	SetSource(v string) *ModifyDnsFirewallPolicyRequest
 	GetSource() *string
-	SetSourceIp(v string) *ModifyDnsFirewallPolicyRequest
-	GetSourceIp() *string
 	SetSourceType(v string) *ModifyDnsFirewallPolicyRequest
 	GetSourceType() *string
 }
@@ -68,7 +66,7 @@ type ModifyDnsFirewallPolicyRequest struct {
 	//
 	// - If **DestinationType*	- is set to domain, **Destination*	- specifies the destination domain name. Example: *.aliyuncs.com.
 	//
-	// - If **DestinationType*	- is set to location, **Destination*	- specifies the destination area. For the positional encoding of specific areas, see the following section. Example: ["BJ11", "ZB"\\].
+	// - If **DestinationType*	- is set to location, **Destination*	- specifies the destination area (for specific area positional encoding, see below). Example: ["BJ11", "ZB"\].
 	//
 	// example:
 	//
@@ -76,11 +74,11 @@ type ModifyDnsFirewallPolicyRequest struct {
 	Destination *string `json:"Destination,omitempty" xml:"Destination,omitempty"`
 	// The type of the destination address in the access control policy. Valid values:
 	//
-	// - **net**: Destination CIDR block.
+	// - **net**: a destination CIDR block.
 	//
-	// - **group**: Destination address book.
+	// - **group**: a destination address book.
 	//
-	// - **domain**: Destination domain name.
+	// - **domain**: a destination domain name.
 	//
 	// example:
 	//
@@ -88,9 +86,9 @@ type ModifyDnsFirewallPolicyRequest struct {
 	DestinationType *string `json:"DestinationType,omitempty" xml:"DestinationType,omitempty"`
 	// The language of the request and response. Valid values:
 	//
-	// - **zh**: Chinese.
+	// - **zh**: Chinese
 	//
-	// - **en**: English.
+	// - **en**: English
 	//
 	// example:
 	//
@@ -102,28 +100,22 @@ type ModifyDnsFirewallPolicyRequest struct {
 	//
 	// 1
 	Priority *string `json:"Priority,omitempty" xml:"Priority,omitempty"`
-	// The status of the access control policy. By default, the policy is enabled after it is created. Valid values:
+	// Specifies whether the access control policy is enabled. By default, the policy is enabled after it is created. Valid values:
 	//
-	// - **true**: Enables the access control policy.
+	// - **true**: enables the access control policy.
 	//
-	// - **false**: Disables the access control policy.
+	// - **false**: disables the access control policy.
 	//
 	// example:
 	//
 	// true
 	Release *string `json:"Release,omitempty" xml:"Release,omitempty"`
 	Source  *string `json:"Source,omitempty" xml:"Source,omitempty"`
-	// The source IP address of the requester.
-	//
-	// example:
-	//
-	// 192.0.XX.XX
-	SourceIp *string `json:"SourceIp,omitempty" xml:"SourceIp,omitempty"`
 	// The type of the source address in the access control policy. Valid values:
 	//
-	// - **net**: Source CIDR block.
+	// - **net**: a source CIDR block.
 	//
-	// - **group**: Source address book.
+	// - **group**: a source address book.
 	//
 	// example:
 	//
@@ -175,10 +167,6 @@ func (s *ModifyDnsFirewallPolicyRequest) GetSource() *string {
 	return s.Source
 }
 
-func (s *ModifyDnsFirewallPolicyRequest) GetSourceIp() *string {
-	return s.SourceIp
-}
-
 func (s *ModifyDnsFirewallPolicyRequest) GetSourceType() *string {
 	return s.SourceType
 }
@@ -225,11 +213,6 @@ func (s *ModifyDnsFirewallPolicyRequest) SetRelease(v string) *ModifyDnsFirewall
 
 func (s *ModifyDnsFirewallPolicyRequest) SetSource(v string) *ModifyDnsFirewallPolicyRequest {
 	s.Source = &v
-	return s
-}
-
-func (s *ModifyDnsFirewallPolicyRequest) SetSourceIp(v string) *ModifyDnsFirewallPolicyRequest {
-	s.SourceIp = &v
 	return s
 }
 

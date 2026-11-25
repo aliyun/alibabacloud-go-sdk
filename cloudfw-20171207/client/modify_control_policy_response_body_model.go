@@ -16,7 +16,7 @@ type iModifyControlPolicyResponseBody interface {
 }
 
 type ModifyControlPolicyResponseBody struct {
-	// Indicates whether the request is a dry run. A value of true indicates that only a dry run was performed and no actual modification was made.
+	// Indicates whether the dry run is successful. A value of true indicates that only the dry run is performed and no actual modifications are made.
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	// The request ID.
 	//

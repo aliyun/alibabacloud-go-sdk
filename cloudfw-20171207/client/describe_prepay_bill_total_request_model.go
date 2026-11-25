@@ -24,7 +24,7 @@ type iDescribePrepayBillTotalRequest interface {
 }
 
 type DescribePrepayBillTotalRequest struct {
-	// The bill type. This parameter is required. If it is not specified, an error is returned. Valid values:
+	// The bill type. This parameter is required. If you do not specify this parameter, an error is returned. Valid values:
 	//
 	// - elastic_traffic: elastic traffic.
 	//
@@ -52,9 +52,9 @@ type DescribePrepayBillTotalRequest struct {
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// The language. Valid values:
 	//
-	// - zh
+	// - zh: Chinese.
 	//
-	// - en
+	// - en: English.
 	//
 	// Default value: zh.
 	//
