@@ -22,19 +22,19 @@ type iGetConversationsResponseBody interface {
 type GetConversationsResponseBody struct {
 	// The request result.
 	Data []*GetConversationsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	// Indicates whether there is a next page.
+	// Indicates whether more pages are available.
 	//
 	// example:
 	//
 	// true
 	HasMore *string `json:"HasMore,omitempty" xml:"HasMore,omitempty"`
-	// The number of entries per page for a paged query. Valid values: 1 to 100. Default value: 100.
+	// The paging Settings for the number of entries per page in a paged query. Valid values: 1 to 100. Default value: 100.
 	//
 	// example:
 	//
 	// 100
 	Limit *int64 `json:"Limit,omitempty" xml:"Limit,omitempty"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
@@ -106,7 +106,7 @@ type GetConversationsResponseBodyData struct {
 	//
 	// 1764055092
 	CreatedAt *string `json:"CreatedAt,omitempty" xml:"CreatedAt,omitempty"`
-	// The historical conversation ID.
+	// The ID of the historical conversation.
 	//
 	// example:
 	//
@@ -118,27 +118,29 @@ type GetConversationsResponseBodyData struct {
 	//
 	// Test searching for RDS resources
 	Introduction *string `json:"Introduction,omitempty" xml:"Introduction,omitempty"`
-	IsRunning    *bool   `json:"IsRunning,omitempty" xml:"IsRunning,omitempty"`
-	// The historical conversation name.
+	// Indicates whether the session is running.
+	//
+	// example:
+	//
+	// true
+	IsRunning *bool `json:"IsRunning,omitempty" xml:"IsRunning,omitempty"`
+	// The name of the historical conversation.
 	//
 	// example:
 	//
 	// Search for RDS resources
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The session status. Valid values:
-	//
-	// - idle: The session is idle.
-	//
-	// - running: The session is generating a response.
-	//
-	// - pending_approval: The session is waiting for approval or manual review.
-	//
-	// If both pending_approval and running conditions are met, pending_approval is returned.
+	// The session status.
 	//
 	// example:
 	//
 	// idle
-	Status    *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The update time.
+	//
+	// example:
+	//
+	// 1785919275
 	UpdatedAt *string `json:"UpdatedAt,omitempty" xml:"UpdatedAt,omitempty"`
 }
 

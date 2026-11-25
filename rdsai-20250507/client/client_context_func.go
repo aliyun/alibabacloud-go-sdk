@@ -4020,7 +4020,7 @@ func (client *Client) GetContextDatabaseUsageWithContext(ctx context.Context, re
 
 // Summary:
 //
-// Queries the historical conversations of a user.
+// Queries the conversation history of a user.
 //
 // @param request - GetConversationsRequest
 //
@@ -4035,6 +4035,10 @@ func (client *Client) GetConversationsWithContext(ctx context.Context, request *
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.FlowId) {
+		query["FlowId"] = request.FlowId
+	}
+
 	if !dara.IsNil(request.LastId) {
 		query["LastId"] = request.LastId
 	}
@@ -4176,7 +4180,7 @@ func (client *Client) GetInspectionReportWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// Queries the details of specific conversation messages.
+// Retrieves the details of a specific conversation message.
 //
 // @param request - GetMessagesRequest
 //
@@ -4201,6 +4205,10 @@ func (client *Client) GetMessagesWithContext(ctx context.Context, request *GetMe
 
 	if !dara.IsNil(request.FirstId) {
 		query["FirstId"] = request.FirstId
+	}
+
+	if !dara.IsNil(request.FlowId) {
+		query["FlowId"] = request.FlowId
 	}
 
 	if !dara.IsNil(request.Limit) {

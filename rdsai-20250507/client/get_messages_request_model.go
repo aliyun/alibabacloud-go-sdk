@@ -15,6 +15,8 @@ type iGetMessagesRequest interface {
 	GetEventMode() *string
 	SetFirstId(v string) *GetMessagesRequest
 	GetFirstId() *string
+	SetFlowId(v string) *GetMessagesRequest
+	GetFlowId() *string
 	SetLimit(v int64) *GetMessagesRequest
 	GetLimit() *int64
 	SetWorkspaceId(v string) *GetMessagesRequest
@@ -28,14 +30,25 @@ type GetMessagesRequest struct {
 	//
 	// 941c6f59-acf5-4e11-9adc-31e52e1f****
 	ConversationId *string `json:"ConversationId,omitempty" xml:"ConversationId,omitempty"`
-	EventMode      *string `json:"EventMode,omitempty" xml:"EventMode,omitempty"`
+	// The event output type. Valid values: inline and separate. Default value: inline. In inline mode, tool invocation events, child node events, and document events are unified into the answer field of the event where event = message. In separate mode, tool invocation events, child node events, and document events have their own respective events.
+	//
+	// example:
+	//
+	// inline
+	EventMode *string `json:"EventMode,omitempty" xml:"EventMode,omitempty"`
 	// The ID of the first message.
 	//
 	// example:
 	//
 	// 038866af-a050-4bc5-bfad-b7bfc838****
 	FirstId *string `json:"FirstId,omitempty" xml:"FirstId,omitempty"`
-	// The number of entries per page for a paged query. Valid values: 1 to 100. Default value: 100.
+	// The flow instance ID.
+	//
+	// example:
+	//
+	// flow-90ea18a8254645968325
+	FlowId *string `json:"FlowId,omitempty" xml:"FlowId,omitempty"`
+	// The number of rows per page for paging. Valid values: 1 to 100. Default value: 100.
 	//
 	// example:
 	//
@@ -69,6 +82,10 @@ func (s *GetMessagesRequest) GetFirstId() *string {
 	return s.FirstId
 }
 
+func (s *GetMessagesRequest) GetFlowId() *string {
+	return s.FlowId
+}
+
 func (s *GetMessagesRequest) GetLimit() *int64 {
 	return s.Limit
 }
@@ -89,6 +106,11 @@ func (s *GetMessagesRequest) SetEventMode(v string) *GetMessagesRequest {
 
 func (s *GetMessagesRequest) SetFirstId(v string) *GetMessagesRequest {
 	s.FirstId = &v
+	return s
+}
+
+func (s *GetMessagesRequest) SetFlowId(v string) *GetMessagesRequest {
+	s.FlowId = &v
 	return s
 }
 

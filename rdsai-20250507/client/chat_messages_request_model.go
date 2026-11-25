@@ -30,7 +30,7 @@ type ChatMessagesRequest struct {
 	//
 	// fea7bdca-e848-44dd-b1ae-852472b8****
 	ConversationId *string `json:"ConversationId,omitempty" xml:"ConversationId,omitempty"`
-	// The event output type. Valid values: inline and separate. Default value: inline. When set to inline, tool calling invoke events, child node events, and document events are unified into the answer field of the event = message. When set to separate, tool calling invoke events, child node events, and document events have their own respective events.
+	// The event output mode. Valid values: inline and separate. Default value: inline. When set to inline, tool invoke events, child node events, and document events are unified into the answer field of the event where event = message. When set to separate, tool invoke events, child node events, and document events have their own respective events.
 	//
 	// example:
 	//
@@ -50,7 +50,7 @@ type ChatMessagesRequest struct {
 	//
 	// example:
 	//
-	// Instance rm-bp14as9914vd3***	- disk usage, and whether capacity expansion is required
+	// Disk usage of instance rm-bp14as9914vd3****, and whether it needs to be scaled up
 	Query *string `json:"Query,omitempty" xml:"Query,omitempty"`
 }
 
@@ -135,7 +135,7 @@ func (s *ChatMessagesRequest) Validate() error {
 }
 
 type ChatMessagesRequestFiles struct {
-	// The file transfer method. Set this parameter to local_file when referencing an uploaded file, and provide the UploadFileId at the same time.
+	// The file transfer method. Set this parameter to local_file and provide the UploadFileId when referencing an uploaded file.
 	//
 	// example:
 	//
@@ -147,7 +147,7 @@ type ChatMessagesRequestFiles struct {
 	//
 	// image
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// The identifier of the uploaded file. The ContextDB management agent can use the UploadFileId returned by the current workspace knowledge base.
+	// The identifier of the uploaded file. The ContextDB management agent can use the UploadFileId returned by the knowledge base of the current workspace.
 	//
 	// example:
 	//
@@ -210,7 +210,7 @@ func (s *ChatMessagesRequestFiles) Validate() error {
 }
 
 type ChatMessagesRequestInputs struct {
-	// The custom agent ID for the user.
+	// The custom agent ID.
 	//
 	// example:
 	//
@@ -222,6 +222,12 @@ type ChatMessagesRequestInputs struct {
 	//
 	// true
 	EnableThinking *string `json:"EnableThinking,omitempty" xml:"EnableThinking,omitempty"`
+	// The IM flow ID. Used to bind messages to a registered IM channel when a conversation is initiated through an IM channel.
+	//
+	// example:
+	//
+	// flow-xxxxxxxxxx
+	FlowId *string `json:"FlowId,omitempty" xml:"FlowId,omitempty"`
 	// The conversation language.
 	//
 	// example:
@@ -240,7 +246,7 @@ type ChatMessagesRequestInputs struct {
 	//
 	// cn-beijing
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The tool approval call ID for resuming execution. Pass this parameter after the console completes all decisions for the current approval round to continue the interrupted ChatMessage loop. Do not pass this parameter for regular conversations.
+	// The tool approval call ID for resuming execution. Pass this parameter after the console completes all decisions for the current approval round to continue the interrupted ChatMessage loop. Do not pass this parameter for normal conversations.
 	//
 	// example:
 	//
@@ -258,7 +264,7 @@ type ChatMessagesRequestInputs struct {
 	//
 	// UTC
 	Timezone *string `json:"Timezone,omitempty" xml:"Timezone,omitempty"`
-	// The tool approval mode for the current conversation. Valid values: read_only (read-only, rejects write tools), manual (write tools require manual approval), and auto (automatically determined by the approval sub-agent; escalated to manual approval when needs_human is returned). Passing this parameter updates the approval mode for the current conversation.
+	// Specifies the tool approval mode for the current conversation. Valid values: read_only (read-only, rejects write tools), manual (write tools require manual approval), and auto (automatically determined by the approval sub-agent; escalated to manual approval when needs_human is returned). If specified, updates the approval mode of the current conversation.
 	//
 	// example:
 	//
@@ -286,6 +292,10 @@ func (s *ChatMessagesRequestInputs) GetCustomAgentId() *string {
 
 func (s *ChatMessagesRequestInputs) GetEnableThinking() *string {
 	return s.EnableThinking
+}
+
+func (s *ChatMessagesRequestInputs) GetFlowId() *string {
+	return s.FlowId
 }
 
 func (s *ChatMessagesRequestInputs) GetLanguage() *string {
@@ -327,6 +337,11 @@ func (s *ChatMessagesRequestInputs) SetCustomAgentId(v string) *ChatMessagesRequ
 
 func (s *ChatMessagesRequestInputs) SetEnableThinking(v string) *ChatMessagesRequestInputs {
 	s.EnableThinking = &v
+	return s
+}
+
+func (s *ChatMessagesRequestInputs) SetFlowId(v string) *ChatMessagesRequestInputs {
+	s.FlowId = &v
 	return s
 }
 

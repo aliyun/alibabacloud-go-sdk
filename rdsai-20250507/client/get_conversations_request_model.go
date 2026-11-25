@@ -9,6 +9,8 @@ type iGetConversationsRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetFlowId(v string) *GetConversationsRequest
+	GetFlowId() *string
 	SetLastId(v string) *GetConversationsRequest
 	GetLastId() *string
 	SetLimit(v string) *GetConversationsRequest
@@ -22,19 +24,25 @@ type iGetConversationsRequest interface {
 }
 
 type GetConversationsRequest struct {
+	// The ID of the flow.
+	//
+	// example:
+	//
+	// flow-c5007b4a03a2446cbe9d
+	FlowId *string `json:"FlowId,omitempty" xml:"FlowId,omitempty"`
 	// The ID of the last conversation record.
 	//
 	// example:
 	//
 	// 77be60cd-237b-4ca9-9c46-48b663cb****
 	LastId *string `json:"LastId,omitempty" xml:"LastId,omitempty"`
-	// The number of entries per page for a paged query. Valid values: 1 to 100.
+	// The paging Settings for the number of entries per page in a paged query. Valid values: 1 to 100.
 	//
 	// example:
 	//
 	// 10
 	Limit *string `json:"Limit,omitempty" xml:"Limit,omitempty"`
-	// The pinned bookmark flag for the application.
+	// The pin mark for application favorites.
 	//
 	// example:
 	//
@@ -46,7 +54,7 @@ type GetConversationsRequest struct {
 	//
 	// CreatedAt
 	SortBy *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
-	// The ContextDB workspace ID.
+	// The ID of the ContextDB workspace.
 	//
 	// example:
 	//
@@ -60,6 +68,10 @@ func (s GetConversationsRequest) String() string {
 
 func (s GetConversationsRequest) GoString() string {
 	return s.String()
+}
+
+func (s *GetConversationsRequest) GetFlowId() *string {
+	return s.FlowId
 }
 
 func (s *GetConversationsRequest) GetLastId() *string {
@@ -80,6 +92,11 @@ func (s *GetConversationsRequest) GetSortBy() *string {
 
 func (s *GetConversationsRequest) GetWorkspaceId() *string {
 	return s.WorkspaceId
+}
+
+func (s *GetConversationsRequest) SetFlowId(v string) *GetConversationsRequest {
+	s.FlowId = &v
+	return s
 }
 
 func (s *GetConversationsRequest) SetLastId(v string) *GetConversationsRequest {

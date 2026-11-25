@@ -20,7 +20,7 @@ type iGetMessagesResponseBody interface {
 }
 
 type GetMessagesResponseBody struct {
-	// The query result.
+	// The query results.
 	Data []*GetMessagesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
 	// Indicates whether there is a next page.
 	//
@@ -28,7 +28,7 @@ type GetMessagesResponseBody struct {
 	//
 	// true
 	HasMore *bool `json:"HasMore,omitempty" xml:"HasMore,omitempty"`
-	// The maximum number of entries returned.
+	// The maximum number of query results.
 	//
 	// example:
 	//
@@ -100,25 +100,26 @@ func (s *GetMessagesResponseBody) Validate() error {
 }
 
 type GetMessagesResponseBodyData struct {
-	// The answer.
+	// The reply.
 	//
 	// example:
 	//
-	// The disk usage of the instance rm-bp14as9914vd3***	- you queried is 23%, and no capacity expansion is needed at this time. If you need to view the detailed configurations or performance monitoring of a specific instance, or perform other operations, let me know your specific requirements!
+	// The instance rm-bp14as9914vd3***	- you inquired about has a disk usage of 23%, so no storage expansion is needed at the moment. If you need to view detailed configurations, check performance monitoring, or perform other operations on a specific instance, please let me know your specific requirements.
 	Answer *string `json:"Answer,omitempty" xml:"Answer,omitempty"`
-	// The session ID.
+	// The conversation ID.
 	//
 	// example:
 	//
 	// 9cbbe885-b240-4803-9d15-6781a3fd****
 	ConversationId *string `json:"ConversationId,omitempty" xml:"ConversationId,omitempty"`
-	// The creation time.
+	// The time when the message was created. The value is a UNIX timestamp in seconds.
 	//
 	// example:
 	//
 	// 1763986004
-	CreatedAt *string                              `json:"CreatedAt,omitempty" xml:"CreatedAt,omitempty"`
-	Events    []*GetMessagesResponseBodyDataEvents `json:"Events,omitempty" xml:"Events,omitempty" type:"Repeated"`
+	CreatedAt *string `json:"CreatedAt,omitempty" xml:"CreatedAt,omitempty"`
+	// The list of events.
+	Events []*GetMessagesResponseBodyDataEvents `json:"Events,omitempty" xml:"Events,omitempty" type:"Repeated"`
 	// The feedback.
 	//
 	// example:
@@ -140,9 +141,9 @@ type GetMessagesResponseBodyData struct {
 	//
 	// example:
 	//
-	// Disk usage of instance rm-bp14as9914vd3****, is capacity expansion needed
+	// Disk usage of instance rm-bp14as9914vd3***	- and whether capacity expansion is required
 	Query *string `json:"Query,omitempty" xml:"Query,omitempty"`
-	// The retrieval resources.
+	// The retrieved resources.
 	RetrieverResources []interface{} `json:"RetrieverResources,omitempty" xml:"RetrieverResources,omitempty" type:"Repeated"`
 	StreamKey          *string       `json:"StreamKey,omitempty" xml:"StreamKey,omitempty"`
 }
@@ -304,25 +305,25 @@ func (s *GetMessagesResponseBodyData) Validate() error {
 }
 
 type GetMessagesResponseBodyDataEvents struct {
-	// The approval status of the tool calling.
+	// The tool invocation approval status.
 	//
 	// example:
 	//
 	// pending
 	ApprovalStatus *string `json:"ApprovalStatus,omitempty" xml:"ApprovalStatus,omitempty"`
-	// The tool calling ID.
+	// The tool invocation ID.
 	//
 	// example:
 	//
 	// call-example
 	CallId *string `json:"CallId,omitempty" xml:"CallId,omitempty"`
-	// The session ID.
+	// The conversation ID.
 	//
 	// example:
 	//
 	// conversation-example
 	ConversationId *string `json:"ConversationId,omitempty" xml:"ConversationId,omitempty"`
-	// The description of the tool calling.
+	// The tool invocation description.
 	//
 	// example:
 	//
@@ -340,7 +341,7 @@ type GetMessagesResponseBodyDataEvents struct {
 	//
 	// round-example
 	RoundId *string `json:"RoundId,omitempty" xml:"RoundId,omitempty"`
-	// The parameters of the tool calling.
+	// The tool invocation parameters.
 	ToolArguments map[string]interface{} `json:"ToolArguments,omitempty" xml:"ToolArguments,omitempty"`
 	// The tool name.
 	//
@@ -458,7 +459,7 @@ type GetMessagesResponseBodyDataMessageFiles struct {
 	Id         *string `json:"Id,omitempty" xml:"Id,omitempty"`
 	PreviewUrl *string `json:"PreviewUrl,omitempty" xml:"PreviewUrl,omitempty"`
 	Type       *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// The upload file ID.
+	// The uploaded file ID.
 	//
 	// example:
 	//

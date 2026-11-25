@@ -5554,7 +5554,7 @@ func (client *Client) GetContextDatabaseUsage(request *GetContextDatabaseUsageRe
 
 // Summary:
 //
-// Queries the historical conversations of a user.
+// Queries the conversation history of a user.
 //
 // @param request - GetConversationsRequest
 //
@@ -5569,6 +5569,10 @@ func (client *Client) GetConversationsWithOptions(request *GetConversationsReque
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.FlowId) {
+		query["FlowId"] = request.FlowId
+	}
+
 	if !dara.IsNil(request.LastId) {
 		query["LastId"] = request.LastId
 	}
@@ -5614,7 +5618,7 @@ func (client *Client) GetConversationsWithOptions(request *GetConversationsReque
 
 // Summary:
 //
-// Queries the historical conversations of a user.
+// Queries the conversation history of a user.
 //
 // @param request - GetConversationsRequest
 //
@@ -5764,7 +5768,7 @@ func (client *Client) GetInspectionReport(request *GetInspectionReportRequest) (
 
 // Summary:
 //
-// Queries the details of specific conversation messages.
+// Retrieves the details of a specific conversation message.
 //
 // @param request - GetMessagesRequest
 //
@@ -5789,6 +5793,10 @@ func (client *Client) GetMessagesWithOptions(request *GetMessagesRequest, runtim
 
 	if !dara.IsNil(request.FirstId) {
 		query["FirstId"] = request.FirstId
+	}
+
+	if !dara.IsNil(request.FlowId) {
+		query["FlowId"] = request.FlowId
 	}
 
 	if !dara.IsNil(request.Limit) {
@@ -5824,7 +5832,7 @@ func (client *Client) GetMessagesWithOptions(request *GetMessagesRequest, runtim
 
 // Summary:
 //
-// Queries the details of specific conversation messages.
+// Retrieves the details of a specific conversation message.
 //
 // @param request - GetMessagesRequest
 //
