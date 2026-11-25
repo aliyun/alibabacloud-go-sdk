@@ -62,7 +62,7 @@ type iCreatePolarFsRequest interface {
 }
 
 type CreatePolarFsRequest struct {
-	// The acceleration space size. Unit: GB. The value must be no less than 5000 and must be a multiple of 1000. This parameter is required when acceleration is enabled for the basic edition.
+	// The acceleration space size. Unit: GB. The value must be no less than 5000 and must be a multiple of 1000. This parameter is required when acceleration is enabled for the Basic Edition.
 	//
 	// example:
 	//
@@ -88,7 +88,7 @@ type CreatePolarFsRequest struct {
 	//
 	// alluxio
 	AccelerateType *string `json:"AccelerateType,omitempty" xml:"AccelerateType,omitempty"`
-	// The list of authorized accounts for the cold storage edition instance. Separate multiple accounts with commas (`,`).
+	// The list of authorized accounts for the Cold Storage Edition instance. Separate multiple accounts with commas (,).
 	//
 	// example:
 	//
@@ -102,7 +102,7 @@ type CreatePolarFsRequest struct {
 	//
 	// Default value: **false**.
 	//
-	// > This parameter takes effect only when the **PayType*	- parameter is set to **Prepaid**.
+	// > This parameter takes effect only when **PayType*	- is set to **Prepaid**.
 	//
 	// example:
 	//
@@ -118,7 +118,7 @@ type CreatePolarFsRequest struct {
 	//
 	// true
 	AutoUseCoupon *bool `json:"AutoUseCoupon,omitempty" xml:"AutoUseCoupon,omitempty"`
-	// The edition. Valid values: basic (Basic Edition, default), high_performance (High-performance Edition), and cold (Cold Storage Edition). For the basic edition, you must specify the AccelerateSwitch and AccelerateStorageSize parameters. For the high_performance edition, you must specify the StorageType parameter (essdpl0 or essdpl1). For the cold edition, the StorageType parameter (local_redundancy or city_redundancy) is optional.
+	// The edition. Valid values: basic (Basic Edition, default), high_performance (High-performance Edition), and cold (Cold Storage Edition). For the Basic Edition, you must specify AccelerateSwitch and AccelerateStorageSize. For the High-performance Edition, you must specify StorageType (essdpl0 or essdpl1). For the Cold Storage Edition, StorageType (local_redundancy or city_redundancy) is optional.
 	//
 	// example:
 	//
@@ -142,7 +142,7 @@ type CreatePolarFsRequest struct {
 	CustomBucketPath *string `json:"CustomBucketPath,omitempty" xml:"CustomBucketPath,omitempty"`
 	// The bucket and corresponding path information.
 	//
-	// > This parameter is required for transparent acceleration scenarios.
+	// > This parameter is required for transparent acceleration.
 	CustomBucketPathList []*CreatePolarFsRequestCustomBucketPathList `json:"CustomBucketPathList,omitempty" xml:"CustomBucketPathList,omitempty" type:"Repeated"`
 	// The custom AccessKey ID.
 	//
@@ -178,11 +178,11 @@ type CreatePolarFsRequest struct {
 	//
 	// Postpaid
 	PayType *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
-	// If the billing method is **Prepaid**, this is a required pass parameter. Specifies whether the subscription cluster is billed by year or by month.
+	// The subscription period. This parameter is required when PayType is set to **Prepaid**. Specifies whether the subscription cluster is billed on a yearly or monthly basis.
 	//
-	// - **Year**: year. If you select subscription, the unit is year.
+	// - **Year**: yearly.
 	//
-	// - **Month**: month. If you select subscription, the unit is month.
+	// - **Month**: monthly.
 	//
 	// example:
 	//
@@ -216,17 +216,17 @@ type CreatePolarFsRequest struct {
 	//
 	// 50
 	StorageSpace *int64 `json:"StorageSpace,omitempty" xml:"StorageSpace,omitempty"`
-	// The storage type. For the high_performance edition, use lowercase essdpl0 or essdpl1. For the cold edition, use local_redundancy or city_redundancy. Select the value based on the edition. The value is case-sensitive.
+	// The storage type. For high_performance, use lowercase essdpl0 or essdpl1. For cold, use local_redundancy or city_redundancy. Select the value based on the edition. The value is case-sensitive.
 	//
 	// example:
 	//
 	// local_redundancy
 	StorageType *string `json:"StorageType,omitempty" xml:"StorageType,omitempty"`
-	// The subscription duration. This parameter is required when the **PayType*	- parameter is set to **Prepaid**.
+	// The subscription duration. This parameter is required when PayType is set to **Prepaid**.
 	//
-	// - If the **Period*	- parameter is set to **Month**, the value of **UsedTime*	- must be an integer in the range of `[1-9]`.
+	// - When **Period*	- is set to **Month**, **UsedTime*	- must be an integer in the range of `[1-9]`.
 	//
-	// - If the **Period*	- parameter is set to **Year**, the value of **UsedTime*	- must be an integer in the range of `[1-3]`.
+	// - When **Period*	- is set to **Year**, **UsedTime*	- must be an integer in the range of `[1-3]`.
 	//
 	// example:
 	//

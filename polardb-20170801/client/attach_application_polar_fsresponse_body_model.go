@@ -11,6 +11,8 @@ type iAttachApplicationPolarFSResponseBody interface {
 	GoString() string
 	SetApplicationId(v string) *AttachApplicationPolarFSResponseBody
 	GetApplicationId() *string
+	SetContainerMountPath(v string) *AttachApplicationPolarFSResponseBody
+	GetContainerMountPath() *string
 	SetPolarFSInstanceId(v string) *AttachApplicationPolarFSResponseBody
 	GetPolarFSInstanceId() *string
 	SetRequestId(v string) *AttachApplicationPolarFSResponseBody
@@ -24,7 +26,13 @@ type AttachApplicationPolarFSResponseBody struct {
 	//
 	// pa-**************
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
-	// The Polarlakebase instance ID.
+	// The actual container path to which the file system is mounted. If ContainerMountPath is not specified, the effective default value /mnt/<PolarFSInstanceId> is returned. If the file system is repeatedly mounted without changing the path, the original mount point of the instance is returned.
+	//
+	// example:
+	//
+	// /mnt/datasets
+	ContainerMountPath *string `json:"ContainerMountPath,omitempty" xml:"ContainerMountPath,omitempty"`
+	// The ID of the PolarLakebase instance.
 	//
 	// example:
 	//
@@ -50,6 +58,10 @@ func (s *AttachApplicationPolarFSResponseBody) GetApplicationId() *string {
 	return s.ApplicationId
 }
 
+func (s *AttachApplicationPolarFSResponseBody) GetContainerMountPath() *string {
+	return s.ContainerMountPath
+}
+
 func (s *AttachApplicationPolarFSResponseBody) GetPolarFSInstanceId() *string {
 	return s.PolarFSInstanceId
 }
@@ -60,6 +72,11 @@ func (s *AttachApplicationPolarFSResponseBody) GetRequestId() *string {
 
 func (s *AttachApplicationPolarFSResponseBody) SetApplicationId(v string) *AttachApplicationPolarFSResponseBody {
 	s.ApplicationId = &v
+	return s
+}
+
+func (s *AttachApplicationPolarFSResponseBody) SetContainerMountPath(v string) *AttachApplicationPolarFSResponseBody {
+	s.ContainerMountPath = &v
 	return s
 }
 

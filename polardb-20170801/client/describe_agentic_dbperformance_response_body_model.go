@@ -41,7 +41,7 @@ type DescribeAgenticDBPerformanceResponseBody struct {
 	//
 	// 2F029645-FED9-4FE8-A6D3-488954******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The start time of the query. The time is in the `yyyy-MM-ddTHH:mm:ssZ` format and in UTC.
+	// The start time of the query. Specify the time in the `yyyy-MM-ddTHH:mm:ssZ` format. The time must be in UTC.
 	//
 	// example:
 	//
@@ -147,6 +147,7 @@ func (s *DescribeAgenticDBPerformanceResponseBodyPerformanceKeys) Validate() err
 
 type DescribeAgenticDBPerformanceResponseBodyPerformanceKeysPerformanceKeys struct {
 	BranchId    *string                                                                       `json:"BranchId,omitempty" xml:"BranchId,omitempty"`
+	EndpointId  *string                                                                       `json:"EndpointId,omitempty" xml:"EndpointId,omitempty"`
 	Measurement *string                                                                       `json:"Measurement,omitempty" xml:"Measurement,omitempty"`
 	MetricName  *string                                                                       `json:"MetricName,omitempty" xml:"MetricName,omitempty"`
 	Points      *DescribeAgenticDBPerformanceResponseBodyPerformanceKeysPerformanceKeysPoints `json:"Points,omitempty" xml:"Points,omitempty" type:"Struct"`
@@ -164,6 +165,10 @@ func (s *DescribeAgenticDBPerformanceResponseBodyPerformanceKeysPerformanceKeys)
 	return s.BranchId
 }
 
+func (s *DescribeAgenticDBPerformanceResponseBodyPerformanceKeysPerformanceKeys) GetEndpointId() *string {
+	return s.EndpointId
+}
+
 func (s *DescribeAgenticDBPerformanceResponseBodyPerformanceKeysPerformanceKeys) GetMeasurement() *string {
 	return s.Measurement
 }
@@ -178,6 +183,11 @@ func (s *DescribeAgenticDBPerformanceResponseBodyPerformanceKeysPerformanceKeys)
 
 func (s *DescribeAgenticDBPerformanceResponseBodyPerformanceKeysPerformanceKeys) SetBranchId(v string) *DescribeAgenticDBPerformanceResponseBodyPerformanceKeysPerformanceKeys {
 	s.BranchId = &v
+	return s
+}
+
+func (s *DescribeAgenticDBPerformanceResponseBodyPerformanceKeysPerformanceKeys) SetEndpointId(v string) *DescribeAgenticDBPerformanceResponseBodyPerformanceKeysPerformanceKeys {
+	s.EndpointId = &v
 	return s
 }
 

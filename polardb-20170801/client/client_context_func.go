@@ -794,13 +794,13 @@ func (client *Client) ApprovePolarClawDevicePairWithContext(ctx context.Context,
 
 // Summary:
 //
-// Mounts a specified Polarlakebase instance to a PolarDB application.
+// Mounts a specified PolarLakebase instance to a PolarDB application.
 //
 // Description:
 //
 // ## Before you begin
 //
-// This section describes the prerequisites: (1) The application must be of the supabase type (ApplicationType=polardb_supabase). (2) PolarFS must be created by calling CreatePolarFs with CreationCategory set to cold. (3) PolarFS and the application must be in the same VPC, vSwitch, and zone. You can query this information by calling DescribeApplicationAttribute. A dependency chain example is provided: CreateApplication → DescribeApplicationAttribute → CreatePolarFs → AttachApplicationPolarFS.
+// The Before you begin section specifies the following: (1) The application must be of the supabase type (ApplicationType=polardb_supabase). (2) PolarFS must be created by calling CreatePolarFs with CreationCategory set to cold. (3) PolarFS and the application must be in the same VPC, vSwitch, and zone. You can query this information by calling DescribeApplicationAttribute. A dependency chain example is provided: CreateApplication → DescribeApplicationAttribute → CreatePolarFs → AttachApplicationPolarFS.
 //
 // @param request - AttachApplicationPolarFSRequest
 //
@@ -817,6 +817,10 @@ func (client *Client) AttachApplicationPolarFSWithContext(ctx context.Context, r
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ApplicationId) {
 		query["ApplicationId"] = request.ApplicationId
+	}
+
+	if !dara.IsNil(request.ContainerMountPath) {
+		query["ContainerMountPath"] = request.ContainerMountPath
 	}
 
 	if !dara.IsNil(request.PolarFSAccessKeyId) {
@@ -13268,6 +13272,10 @@ func (client *Client) DescribeAgenticDBPerformanceWithContext(ctx context.Contex
 		query["EndTime"] = request.EndTime
 	}
 
+	if !dara.IsNil(request.EndpointId) {
+		query["EndpointId"] = request.EndpointId
+	}
+
 	if !dara.IsNil(request.Interval) {
 		query["Interval"] = request.Interval
 	}
@@ -13609,11 +13617,11 @@ func (client *Client) DescribeApikeyAttributeWithContext(ctx context.Context, re
 
 // Summary:
 //
-// Retrieves the details of the specified PolarDB instance application.
+// Queries the details of a specified PolarDB application.
 //
 // Description:
 //
-// This API queries all relevant information about a specific PolarDB application, including but not limited to component details and connection endpoints.
+// This API operation queries all relevant information about a specific PolarDB application, including but not limited to component details and endpoints.
 //
 // @param request - DescribeApplicationAttributeRequest
 //
@@ -34958,6 +34966,14 @@ func (client *Client) OperateApplicationWithContext(ctx context.Context, request
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.ApplicationId) {
 		query["ApplicationId"] = request.ApplicationId
+	}
+
+	if !dara.IsNil(request.ComponentTypes) {
+		query["ComponentTypes"] = request.ComponentTypes
+	}
+
+	if !dara.IsNil(request.GroupNames) {
+		query["GroupNames"] = request.GroupNames
 	}
 
 	if !dara.IsNil(request.Operation) {

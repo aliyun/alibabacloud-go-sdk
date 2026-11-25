@@ -17,6 +17,8 @@ type iDescribeAgenticDBPerformanceRequest interface {
 	GetDBClusterId() *string
 	SetEndTime(v string) *DescribeAgenticDBPerformanceRequest
 	GetEndTime() *string
+	SetEndpointId(v string) *DescribeAgenticDBPerformanceRequest
+	GetEndpointId() *string
 	SetInterval(v string) *DescribeAgenticDBPerformanceRequest
 	GetInterval() *string
 	SetKey(v string) *DescribeAgenticDBPerformanceRequest
@@ -26,23 +28,23 @@ type iDescribeAgenticDBPerformanceRequest interface {
 }
 
 type DescribeAgenticDBPerformanceRequest struct {
-	// The statistical method for alerts. Valid values for different monitoring items:
+	// The alert aggregation method. Valid values vary by metric:
 	//
 	// - Value: The value of the HTTP status code.
 	//
 	// - Average: The average HTTP wait time.
 	//
-	// - Value: The value of the TELNET status code.
+	// - Value: The value of the Telnet status code.
 	//
-	// - TelnetLatency: The average TELNET wait time.
+	// - TelnetLatency: The average Telnet wait time.
 	//
-	// - Average: The average PING packet loss rate.
+	// - Average: The average ping packet loss rate.
 	//
 	// example:
 	//
 	// Average
 	Aggregate *bool `json:"Aggregate,omitempty" xml:"Aggregate,omitempty"`
-	// The anchor branch ID. If this parameter is not specified, the main branch of the project is used by default.
+	// The anchor branch ID. If you do not specify this parameter, the main branch of the project is used by default.
 	//
 	// example:
 	//
@@ -64,7 +66,13 @@ type DescribeAgenticDBPerformanceRequest struct {
 	//
 	// 2026-01-15T15:00:00Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The data granularity of performance data. Valid values:
+	// The endpoint ID.
+	//
+	// example:
+	//
+	// ep-3m4n5o6p7q8r
+	EndpointId *string `json:"EndpointId,omitempty" xml:"EndpointId,omitempty"`
+	// The granularity of performance data. Valid values:
 	//
 	// - 5
 	//
@@ -130,6 +138,10 @@ func (s *DescribeAgenticDBPerformanceRequest) GetEndTime() *string {
 	return s.EndTime
 }
 
+func (s *DescribeAgenticDBPerformanceRequest) GetEndpointId() *string {
+	return s.EndpointId
+}
+
 func (s *DescribeAgenticDBPerformanceRequest) GetInterval() *string {
 	return s.Interval
 }
@@ -159,6 +171,11 @@ func (s *DescribeAgenticDBPerformanceRequest) SetDBClusterId(v string) *Describe
 
 func (s *DescribeAgenticDBPerformanceRequest) SetEndTime(v string) *DescribeAgenticDBPerformanceRequest {
 	s.EndTime = &v
+	return s
+}
+
+func (s *DescribeAgenticDBPerformanceRequest) SetEndpointId(v string) *DescribeAgenticDBPerformanceRequest {
+	s.EndpointId = &v
 	return s
 }
 

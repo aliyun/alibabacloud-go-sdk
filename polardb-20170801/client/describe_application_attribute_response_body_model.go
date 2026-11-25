@@ -33,6 +33,8 @@ type iDescribeApplicationAttributeResponseBody interface {
 	GetExpireTime() *string
 	SetExpired(v bool) *DescribeApplicationAttributeResponseBody
 	GetExpired() *bool
+	SetHeadSchedulingMode(v string) *DescribeApplicationAttributeResponseBody
+	GetHeadSchedulingMode() *string
 	SetIsLatestVersion(v bool) *DescribeApplicationAttributeResponseBody
 	GetIsLatestVersion() *bool
 	SetLatestVersion(v string) *DescribeApplicationAttributeResponseBody
@@ -47,6 +49,10 @@ type iDescribeApplicationAttributeResponseBody interface {
 	GetMemApplicationAttribute() *DescribeApplicationAttributeResponseBodyMemApplicationAttribute
 	SetMinorVersion(v string) *DescribeApplicationAttributeResponseBody
 	GetMinorVersion() *string
+	SetMonitorCategory(v string) *DescribeApplicationAttributeResponseBody
+	GetMonitorCategory() *string
+	SetMonitorRegionId(v string) *DescribeApplicationAttributeResponseBody
+	GetMonitorRegionId() *string
 	SetNatGatewayId(v string) *DescribeApplicationAttributeResponseBody
 	GetNatGatewayId() *string
 	SetNatMappingSnatIpAddress(v string) *DescribeApplicationAttributeResponseBody
@@ -59,6 +65,8 @@ type iDescribeApplicationAttributeResponseBody interface {
 	GetPolarClawSaaSApplicationAttribute() *DescribeApplicationAttributeResponseBodyPolarClawSaaSApplicationAttribute
 	SetPolarFSInstanceId(v string) *DescribeApplicationAttributeResponseBody
 	GetPolarFSInstanceId() *string
+	SetPrometheusVirtualInstanceId(v string) *DescribeApplicationAttributeResponseBody
+	GetPrometheusVirtualInstanceId() *string
 	SetRegionId(v string) *DescribeApplicationAttributeResponseBody
 	GetRegionId() *string
 	SetRequestId(v string) *DescribeApplicationAttributeResponseBody
@@ -96,7 +104,7 @@ type DescribeApplicationAttributeResponseBody struct {
 	//
 	// pa-**************
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
-	// The application type.
+	// The type of the application.
 	//
 	// example:
 	//
@@ -104,25 +112,23 @@ type DescribeApplicationAttributeResponseBody struct {
 	ApplicationType *string `json:"ApplicationType,omitempty" xml:"ApplicationType,omitempty"`
 	// The CPU architecture. Valid values:
 	//
-	// - `x86`
+	// - x86
 	//
 	// example:
 	//
 	// x86
 	Architecture *string `json:"Architecture,omitempty" xml:"Architecture,omitempty"`
-	// Indicates whether SNAT can be disabled.
+	// Indicates whether disabling SNAT is supported.
 	CanDisableSnat *bool `json:"CanDisableSnat,omitempty" xml:"CanDisableSnat,omitempty"`
 	// The list of subcomponents.
 	Components []*DescribeApplicationAttributeResponseBodyComponents `json:"Components,omitempty" xml:"Components,omitempty" type:"Repeated"`
-	// The creation time.
-	//
-	// The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+	// The creation time. The time follows the ISO 8601 standard and is in UTC. Format: YYYY-MM-DDTHH:mm:ssZ.
 	//
 	// example:
 	//
 	// 2025-03-25T09:37:10Z
 	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
-	// The instance ID of the PolarDB instance that the application depends on.
+	// The PolarDB instance ID that the application depends on.
 	//
 	// example:
 	//
@@ -138,11 +144,7 @@ type DescribeApplicationAttributeResponseBody struct {
 	DnatMappings []*DescribeApplicationAttributeResponseBodyDnatMappings `json:"DnatMappings,omitempty" xml:"DnatMappings,omitempty" type:"Repeated"`
 	// The list of endpoints for the application.
 	Endpoints []*DescribeApplicationAttributeResponseBodyEndpoints `json:"Endpoints,omitempty" xml:"Endpoints,omitempty" type:"Repeated"`
-	// The expiration time.
-	//
-	// This parameter is empty when the billing method is pay-as-you-go.
-	//
-	// The time follows the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time is displayed in UTC.
+	// The expiration time. This field is empty if the billing method is Postpaid. The time follows the ISO 8601 standard and is in UTC. Format: YYYY-MM-DDTHH:mm:ssZ.
 	//
 	// example:
 	//
@@ -154,7 +156,13 @@ type DescribeApplicationAttributeResponseBody struct {
 	//
 	// false
 	Expired *bool `json:"Expired,omitempty" xml:"Expired,omitempty"`
-	// Indicates whether the application is of the latest version.
+	// The Ray head scheduling mode. enable: allows head scheduling; disable: disables head scheduling. Returned only for Ray instances. Defaults to enable if not configured. Not returned if head metadata is not ready. Indicates that the configuration is persisted, but does not indicate that the head rebuild is complete.
+	//
+	// example:
+	//
+	// enable
+	HeadSchedulingMode *string `json:"HeadSchedulingMode,omitempty" xml:"HeadSchedulingMode,omitempty"`
+	// Indicates whether the current version is the latest version.
 	//
 	// example:
 	//
@@ -168,25 +176,21 @@ type DescribeApplicationAttributeResponseBody struct {
 	LatestVersion *string `json:"LatestVersion,omitempty" xml:"LatestVersion,omitempty"`
 	// The lock mode. Valid values:
 	//
-	// - Unlock: Unlocked.
+	// - Unlock: The application is not locked.
 	//
-	// - Lock: Locked.
+	// - Lock: The application is locked.
 	//
 	// example:
 	//
 	// Unlock
 	LockMode *string `json:"LockMode,omitempty" xml:"LockMode,omitempty"`
-	// The end time of the maintenance window.
-	//
-	// The time is displayed in UTC in the HH:mmZ format.
+	// The end time of the maintenance window. The time is in UTC and follows the HH:mmZ format.
 	//
 	// example:
 	//
 	// 19:00Z
 	MaintainEndTime *string `json:"MaintainEndTime,omitempty" xml:"MaintainEndTime,omitempty"`
-	// The start time of the maintenance window.
-	//
-	// The time is displayed in UTC in the HH:mmZ format.
+	// The start time of the maintenance window. The time is in UTC and follows the HH:mmZ format.
 	//
 	// example:
 	//
@@ -200,13 +204,25 @@ type DescribeApplicationAttributeResponseBody struct {
 	//
 	// v2026.3.13-1#20260320
 	MinorVersion *string `json:"MinorVersion,omitempty" xml:"MinorVersion,omitempty"`
-	// The ID of the NAT gateway.
+	// The monitoring categorization used by CloudMonitor monitoring dashboard components, which is the namespace of the Prometheus virtual instance.
+	//
+	// example:
+	//
+	// cms_polardb_app
+	MonitorCategory *string `json:"MonitorCategory,omitempty" xml:"MonitorCategory,omitempty"`
+	// The region ID used by CloudMonitor monitoring dashboard components.
+	//
+	// example:
+	//
+	// cn-shanghai
+	MonitorRegionId *string `json:"MonitorRegionId,omitempty" xml:"MonitorRegionId,omitempty"`
+	// The NAT gateway ID.
 	//
 	// example:
 	//
 	// pc-xxx
 	NatGatewayId *string `json:"NatGatewayId,omitempty" xml:"NatGatewayId,omitempty"`
-	// The SNAT IP address bound to the vSwitch where the application resides. This address is from a customer-managed SNAT entry, which is discovered and returned in real time by the control plane. It is independent of the SNAT configuration of the Internet NAT gateway.
+	// The SNAT IP address bound to the vSwitch where the application resides for NAT mapping. This refers to customer-managed SNAT entries that are discovered and returned in real time by the control plane, and is independent of the Internet NAT gateway SNAT.
 	//
 	// example:
 	//
@@ -222,12 +238,18 @@ type DescribeApplicationAttributeResponseBody struct {
 	PolarClawApplicationAttribute *DescribeApplicationAttributeResponseBodyPolarClawApplicationAttribute `json:"PolarClawApplicationAttribute,omitempty" xml:"PolarClawApplicationAttribute,omitempty" type:"Struct"`
 	// The PolarClaw SaaS application attributes.
 	PolarClawSaaSApplicationAttribute *DescribeApplicationAttributeResponseBodyPolarClawSaaSApplicationAttribute `json:"PolarClawSaaSApplicationAttribute,omitempty" xml:"PolarClawSaaSApplicationAttribute,omitempty" type:"Struct"`
-	// The instance ID of the PolarFS Archive or High-performance Edition.
+	// The instance ID of the PolarFS cold storage or high-performance edition.
 	//
 	// example:
 	//
 	// pfs-**************
 	PolarFSInstanceId *string `json:"PolarFSInstanceId,omitempty" xml:"PolarFSInstanceId,omitempty"`
+	// The CloudMonitor Prometheus virtual instance ID, which the console uses to load CloudMonitor monitoring dashboard components. This field is not returned for applications without Grafana components.
+	//
+	// example:
+	//
+	// virtual-xxx
+	PrometheusVirtualInstanceId *string `json:"PrometheusVirtualInstanceId,omitempty" xml:"PrometheusVirtualInstanceId,omitempty"`
 	// The region ID.
 	//
 	// example:
@@ -240,13 +262,13 @@ type DescribeApplicationAttributeResponseBody struct {
 	//
 	// 3E5CD764-FCCA-5C9C-838E-20E0DE84B2AF
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The list of application-level security groups.
+	// The list of security groups at the application level.
 	SecurityGroups []*DescribeApplicationAttributeResponseBodySecurityGroups `json:"SecurityGroups,omitempty" xml:"SecurityGroups,omitempty" type:"Repeated"`
-	// The list of application-level whitelists.
+	// The list of whitelists at the application level.
 	SecurityIPArrays []*DescribeApplicationAttributeResponseBodySecurityIPArrays `json:"SecurityIPArrays,omitempty" xml:"SecurityIPArrays,omitempty" type:"Repeated"`
-	// The Serverless type. Valid values:
+	// The serverless type. Valid values:
 	//
-	// - 2: Dynamic.
+	// - 2: Agile.
 	//
 	// - 3: Stable.
 	//
@@ -260,7 +282,7 @@ type DescribeApplicationAttributeResponseBody struct {
 	//
 	// off
 	SnatStatus *string `json:"SnatStatus,omitempty" xml:"SnatStatus,omitempty"`
-	// The application status. Valid values:
+	// The status of the application. Valid values:
 	//
 	// - Creating: The application is being created.
 	//
@@ -294,7 +316,7 @@ type DescribeApplicationAttributeResponseBody struct {
 	//
 	// Activated
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The storage resources.
+	// The description of storage resources.
 	Storages []*DescribeApplicationAttributeResponseBodyStorages `json:"Storages,omitempty" xml:"Storages,omitempty" type:"Repeated"`
 	// Indicates whether an upgrade is available.
 	//
@@ -302,31 +324,31 @@ type DescribeApplicationAttributeResponseBody struct {
 	//
 	// false
 	UpgradeAvailable *string `json:"UpgradeAvailable,omitempty" xml:"UpgradeAvailable,omitempty"`
-	// The VPC ID.
+	// The ID of the virtual private cloud (VPC).
 	//
 	// example:
 	//
 	// vpc-*******************
 	VPCId *string `json:"VPCId,omitempty" xml:"VPCId,omitempty"`
-	// The vSwitch ID.
+	// The ID of the vSwitch.
 	//
 	// example:
 	//
 	// vsw-*******************
 	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	// The application version.
+	// The version of the application.
 	//
 	// example:
 	//
 	// 1.0.0
 	Version *string `json:"Version,omitempty" xml:"Version,omitempty"`
-	// The customer-managed VPC NAT gateway ID for NAT mapping.
+	// The VPC NAT gateway ID of the customer-managed VPC NAT gateway for NAT mapping.
 	//
 	// example:
 	//
 	// ngw-xxx
 	VpcNatGatewayId *string `json:"VpcNatGatewayId,omitempty" xml:"VpcNatGatewayId,omitempty"`
-	// The zone.
+	// The zone ID.
 	//
 	// example:
 	//
@@ -390,6 +412,10 @@ func (s *DescribeApplicationAttributeResponseBody) GetExpired() *bool {
 	return s.Expired
 }
 
+func (s *DescribeApplicationAttributeResponseBody) GetHeadSchedulingMode() *string {
+	return s.HeadSchedulingMode
+}
+
 func (s *DescribeApplicationAttributeResponseBody) GetIsLatestVersion() *bool {
 	return s.IsLatestVersion
 }
@@ -418,6 +444,14 @@ func (s *DescribeApplicationAttributeResponseBody) GetMinorVersion() *string {
 	return s.MinorVersion
 }
 
+func (s *DescribeApplicationAttributeResponseBody) GetMonitorCategory() *string {
+	return s.MonitorCategory
+}
+
+func (s *DescribeApplicationAttributeResponseBody) GetMonitorRegionId() *string {
+	return s.MonitorRegionId
+}
+
 func (s *DescribeApplicationAttributeResponseBody) GetNatGatewayId() *string {
 	return s.NatGatewayId
 }
@@ -440,6 +474,10 @@ func (s *DescribeApplicationAttributeResponseBody) GetPolarClawSaaSApplicationAt
 
 func (s *DescribeApplicationAttributeResponseBody) GetPolarFSInstanceId() *string {
 	return s.PolarFSInstanceId
+}
+
+func (s *DescribeApplicationAttributeResponseBody) GetPrometheusVirtualInstanceId() *string {
+	return s.PrometheusVirtualInstanceId
 }
 
 func (s *DescribeApplicationAttributeResponseBody) GetRegionId() *string {
@@ -558,6 +596,11 @@ func (s *DescribeApplicationAttributeResponseBody) SetExpired(v bool) *DescribeA
 	return s
 }
 
+func (s *DescribeApplicationAttributeResponseBody) SetHeadSchedulingMode(v string) *DescribeApplicationAttributeResponseBody {
+	s.HeadSchedulingMode = &v
+	return s
+}
+
 func (s *DescribeApplicationAttributeResponseBody) SetIsLatestVersion(v bool) *DescribeApplicationAttributeResponseBody {
 	s.IsLatestVersion = &v
 	return s
@@ -593,6 +636,16 @@ func (s *DescribeApplicationAttributeResponseBody) SetMinorVersion(v string) *De
 	return s
 }
 
+func (s *DescribeApplicationAttributeResponseBody) SetMonitorCategory(v string) *DescribeApplicationAttributeResponseBody {
+	s.MonitorCategory = &v
+	return s
+}
+
+func (s *DescribeApplicationAttributeResponseBody) SetMonitorRegionId(v string) *DescribeApplicationAttributeResponseBody {
+	s.MonitorRegionId = &v
+	return s
+}
+
 func (s *DescribeApplicationAttributeResponseBody) SetNatGatewayId(v string) *DescribeApplicationAttributeResponseBody {
 	s.NatGatewayId = &v
 	return s
@@ -620,6 +673,11 @@ func (s *DescribeApplicationAttributeResponseBody) SetPolarClawSaaSApplicationAt
 
 func (s *DescribeApplicationAttributeResponseBody) SetPolarFSInstanceId(v string) *DescribeApplicationAttributeResponseBody {
 	s.PolarFSInstanceId = &v
+	return s
+}
+
+func (s *DescribeApplicationAttributeResponseBody) SetPrometheusVirtualInstanceId(v string) *DescribeApplicationAttributeResponseBody {
+	s.PrometheusVirtualInstanceId = &v
 	return s
 }
 
@@ -767,19 +825,19 @@ func (s *DescribeApplicationAttributeResponseBody) Validate() error {
 }
 
 type DescribeApplicationAttributeResponseBodyComponents struct {
-	// The specifications of the application subcomponent.
+	// The specification of the application subcomponent.
 	//
 	// example:
 	//
 	// polar.app.g2.medium
 	ComponentClass *string `json:"ComponentClass,omitempty" xml:"ComponentClass,omitempty"`
-	// The description of the specifications for the application subcomponent.
+	// The specification description of the application subcomponent.
 	//
 	// example:
 	//
 	// 2C4GB
 	ComponentClassDescription *string `json:"ComponentClassDescription,omitempty" xml:"ComponentClassDescription,omitempty"`
-	// The subcomponent ID.
+	// The ID of the subcomponent.
 	//
 	// example:
 	//
@@ -797,7 +855,7 @@ type DescribeApplicationAttributeResponseBodyComponents struct {
 	//
 	// 1
 	ComponentReplica *int64 `json:"ComponentReplica,omitempty" xml:"ComponentReplica,omitempty"`
-	// The replica group name of the application subcomponent.
+	// The name of the replica group for the application subcomponent.
 	//
 	// example:
 	//
@@ -809,15 +867,11 @@ type DescribeApplicationAttributeResponseBodyComponents struct {
 	//
 	// gateway
 	ComponentType *string `json:"ComponentType,omitempty" xml:"ComponentType,omitempty"`
-	// The list of security groups at the subcomponent level.
-	//
-	// If the security groups at the subcomponent level are the same as those at the application level, this return value is omitted.
+	// The list of security groups at the subcomponent level. If the security groups at the subcomponent level are the same as those at the application level, this parameter is not returned.
 	SecurityGroups []*DescribeApplicationAttributeResponseBodyComponentsSecurityGroups `json:"SecurityGroups,omitempty" xml:"SecurityGroups,omitempty" type:"Repeated"`
-	// The list of whitelist IP addresses at the subcomponent level.
-	//
-	// If the whitelist at the subcomponent level is the same as that at the application level, this return value is omitted.
+	// The list of whitelist IP addresses at the subcomponent level. If the whitelist at the subcomponent level is the same as that at the application level, this parameter is not returned.
 	SecurityIPArrays []*DescribeApplicationAttributeResponseBodyComponentsSecurityIPArrays `json:"SecurityIPArrays,omitempty" xml:"SecurityIPArrays,omitempty" type:"Repeated"`
-	// The component status. The valid values are the same as the application status.
+	// The status of the component. The valid values are the same as those of the application status.
 	//
 	// example:
 	//
@@ -976,13 +1030,13 @@ type DescribeApplicationAttributeResponseBodyComponentsSecurityGroups struct {
 	//
 	// cn-beijing
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The security group ID.
+	// The ID of the security group.
 	//
 	// example:
 	//
 	// sg-*******************
 	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
-	// The security group name.
+	// The name of the security group.
 	//
 	// example:
 	//
@@ -1039,7 +1093,7 @@ func (s *DescribeApplicationAttributeResponseBodyComponentsSecurityGroups) Valid
 }
 
 type DescribeApplicationAttributeResponseBodyComponentsSecurityIPArrays struct {
-	// The name of the IP address group. Default value: `default`.
+	// The name of the IP address group. Default value: default.
 	//
 	// example:
 	//
@@ -1051,13 +1105,13 @@ type DescribeApplicationAttributeResponseBodyComponentsSecurityIPArrays struct {
 	//
 	// mytag
 	SecurityIPArrayTag *string `json:"SecurityIPArrayTag,omitempty" xml:"SecurityIPArrayTag,omitempty"`
-	// The whitelist IP addresses, separated by commas.
+	// The IP addresses in the whitelist, separated by commas.
 	//
 	// example:
 	//
 	// 127.0.0.1
 	SecurityIPList *string `json:"SecurityIPList,omitempty" xml:"SecurityIPList,omitempty"`
-	// The network type of the whitelist IP addresses. Default value: `mix`.
+	// The network type of the IP addresses in the whitelist. Default value: mix.
 	//
 	// example:
 	//
@@ -1129,7 +1183,7 @@ func (s *DescribeApplicationAttributeResponseBodyComponentsSecurityIPArrays) Val
 }
 
 type DescribeApplicationAttributeResponseBodyComponentsTopology struct {
-	// The list of topology child node IDs for the current application subcomponent, or the list of subcomponent types of the child nodes.
+	// The list of topology child node IDs or child node subcomponent types for the current application subcomponent.
 	Children []*string `json:"Children,omitempty" xml:"Children,omitempty" type:"Repeated"`
 	// The topology layer of the topology information for the current application subcomponent.
 	//
@@ -1137,7 +1191,7 @@ type DescribeApplicationAttributeResponseBodyComponentsTopology struct {
 	//
 	// 0
 	Layer *string `json:"Layer,omitempty" xml:"Layer,omitempty"`
-	// The list of topology parent node IDs for the current application subcomponent, or the list of subcomponent types of the parent nodes.
+	// The list of topology parent node IDs or parent node subcomponent types for the current application subcomponent.
 	Parents []*string `json:"Parents,omitempty" xml:"Parents,omitempty" type:"Repeated"`
 }
 
@@ -1181,7 +1235,7 @@ func (s *DescribeApplicationAttributeResponseBodyComponentsTopology) Validate() 
 }
 
 type DescribeApplicationAttributeResponseBodyDnatMappings struct {
-	// The access address in the NatIp:FrontPort format, which can be directly used in the office network.
+	// The access address in the format of NatIp:FrontPort. It can be directly used on the corporate network.
 	//
 	// example:
 	//
@@ -1298,7 +1352,7 @@ type DescribeApplicationAttributeResponseBodyEndpoints struct {
 	//
 	// app.example.com
 	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
-	// The endpoint ID.
+	// The ID of the endpoint.
 	//
 	// example:
 	//
@@ -1310,7 +1364,7 @@ type DescribeApplicationAttributeResponseBodyEndpoints struct {
 	//
 	// 172.31.95.252
 	IP *string `json:"IP,omitempty" xml:"IP,omitempty"`
-	// The endpoint type. Valid values:
+	// The type of the endpoint. Valid values:
 	//
 	// - Private: VPC address.
 	//
@@ -1326,7 +1380,7 @@ type DescribeApplicationAttributeResponseBodyEndpoints struct {
 	//
 	// 8080
 	Port *string `json:"Port,omitempty" xml:"Port,omitempty"`
-	// The port description.
+	// The description of the port.
 	//
 	// example:
 	//
@@ -1422,7 +1476,7 @@ type DescribeApplicationAttributeResponseBodyMemApplicationAttribute struct {
 	//
 	// text-embedding-v4
 	EmbedderModelName *string `json:"EmbedderModelName,omitempty" xml:"EmbedderModelName,omitempty"`
-	// The graph LLM model support.
+	// The graph LLM model.
 	//
 	// example:
 	//
@@ -1446,13 +1500,13 @@ type DescribeApplicationAttributeResponseBodyMemApplicationAttribute struct {
 	//
 	// true
 	MultimodalEnabled *bool `json:"MultimodalEnabled,omitempty" xml:"MultimodalEnabled,omitempty"`
-	// The project name, which corresponds to the schema where project data is stored in the database.
+	// The project name, which corresponds to the schema where the database stores project data.
 	//
 	// example:
 	//
 	// test-project-name
 	ProjectName *string `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
-	// The name of the reranker model.
+	// The reranker model name.
 	//
 	// example:
 	//
@@ -1466,7 +1520,7 @@ type DescribeApplicationAttributeResponseBodyMemApplicationAttribute struct {
 	//
 	// test-user
 	UserName *string `json:"UserName,omitempty" xml:"UserName,omitempty"`
-	// The current dimensions of the VisualEmbedder.
+	// The current VisualEmbedder dimensions.
 	//
 	// example:
 	//
@@ -1478,7 +1532,7 @@ type DescribeApplicationAttributeResponseBodyMemApplicationAttribute struct {
 	//
 	// qwen3.7-text-embedding
 	VisualEmbedderModelName *string `json:"VisualEmbedderModelName,omitempty" xml:"VisualEmbedderModelName,omitempty"`
-	// The currently enabled understanding modalities.
+	// The enabled understanding modalities.
 	VisualLlmModalities []*string `json:"VisualLlmModalities,omitempty" xml:"VisualLlmModalities,omitempty" type:"Repeated"`
 	// The current VisualLLM model.
 	//
@@ -1650,7 +1704,7 @@ type DescribeApplicationAttributeResponseBodyMemApplicationAttributeSessionStore
 	//
 	// contextdb_example
 	DBName *string `json:"DBName,omitempty" xml:"DBName,omitempty"`
-	// The status of the session store. Valid values: DISABLED, ENABLING, ENABLED, and DISABLING.
+	// The session storage status. Valid values: DISABLED, ENABLING, ENABLED, and DISABLING.
 	//
 	// example:
 	//
@@ -1738,7 +1792,7 @@ func (s *DescribeApplicationAttributeResponseBodyPolarClawApplicationAttribute) 
 }
 
 type DescribeApplicationAttributeResponseBodyPolarClawApplicationAttributeLangfuseBinding struct {
-	// The attachment effective period (UNIX timestamp).
+	// The effective period of the attachment (UNIX timestamp).
 	//
 	// example:
 	//
@@ -1750,25 +1804,25 @@ type DescribeApplicationAttributeResponseBodyPolarClawApplicationAttributeLangfu
 	//
 	// api-key-xxx
 	ApiKeyId *string `json:"ApiKeyId,omitempty" xml:"ApiKeyId,omitempty"`
-	// The ID of the binding task.
+	// The binding task ID.
 	//
 	// example:
 	//
 	// 387
 	BindingTaskId *int32 `json:"BindingTaskId,omitempty" xml:"BindingTaskId,omitempty"`
-	// The ID of the Langfuse application.
+	// The Langfuse application ID.
 	//
 	// example:
 	//
 	// pa-xxx
 	LangfuseApplicationId *string `json:"LangfuseApplicationId,omitempty" xml:"LangfuseApplicationId,omitempty"`
-	// The phase of the binding.
+	// The binding phase.
 	//
 	// example:
 	//
 	// ACTIVE
 	Phase *string `json:"Phase,omitempty" xml:"Phase,omitempty"`
-	// The ID of the Langfuse project.
+	// The Langfuse project ID.
 	//
 	// example:
 	//
@@ -1849,9 +1903,9 @@ type DescribeApplicationAttributeResponseBodyPolarClawSaaSApplicationAttribute s
 	//
 	// http://8.xxx.xxx.xxx.xxx/xxx
 	AuthCallbackURL *string `json:"AuthCallbackURL,omitempty" xml:"AuthCallbackURL,omitempty"`
-	// The list of authentication providers for the application.
+	// The list of application authentication providers.
 	AuthProviders []*string `json:"AuthProviders,omitempty" xml:"AuthProviders,omitempty" type:"Repeated"`
-	// The identifier of the Supabase cluster.
+	// The Supabase cluster identifier.
 	//
 	// example:
 	//
@@ -1913,13 +1967,13 @@ type DescribeApplicationAttributeResponseBodySecurityGroups struct {
 	//
 	// cn-beijing
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The security group ID.
+	// The ID of the security group.
 	//
 	// example:
 	//
 	// sg-**************
 	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
-	// The security group name.
+	// The name of the security group.
 	//
 	// example:
 	//
@@ -1976,7 +2030,7 @@ func (s *DescribeApplicationAttributeResponseBodySecurityGroups) Validate() erro
 }
 
 type DescribeApplicationAttributeResponseBodySecurityIPArrays struct {
-	// The name of the IP address group. Default value: `default`.
+	// The name of the IP address group. Default value: default.
 	//
 	// example:
 	//
@@ -1988,13 +2042,13 @@ type DescribeApplicationAttributeResponseBodySecurityIPArrays struct {
 	//
 	// mytag
 	SecurityIPArrayTag *string `json:"SecurityIPArrayTag,omitempty" xml:"SecurityIPArrayTag,omitempty"`
-	// The whitelist IP addresses, separated by commas.
+	// The IP addresses in the whitelist, separated by commas.
 	//
 	// example:
 	//
 	// 127.0.0.1
 	SecurityIPList *string `json:"SecurityIPList,omitempty" xml:"SecurityIPList,omitempty"`
-	// The network type of the whitelist IP addresses. Default value: `mix`.
+	// The network type of the IP addresses in the whitelist. Default value: mix.
 	//
 	// example:
 	//
@@ -2066,6 +2120,12 @@ func (s *DescribeApplicationAttributeResponseBodySecurityIPArrays) Validate() er
 }
 
 type DescribeApplicationAttributeResponseBodyStorages struct {
+	// The mount point of the file system in the application container. This field is returned only if ContainerMountPath is explicitly specified during mounting. If this field is not returned, the default value /mnt/<StorageInstanceId> is used. The default value is not stored in the database, so existing mount records do not include this field.
+	//
+	// example:
+	//
+	// /mnt/datasets
+	ContainerMountPath *string `json:"ContainerMountPath,omitempty" xml:"ContainerMountPath,omitempty"`
 	// The storage capacity.
 	//
 	// example:
@@ -2100,6 +2160,10 @@ func (s DescribeApplicationAttributeResponseBodyStorages) GoString() string {
 	return s.String()
 }
 
+func (s *DescribeApplicationAttributeResponseBodyStorages) GetContainerMountPath() *string {
+	return s.ContainerMountPath
+}
+
 func (s *DescribeApplicationAttributeResponseBodyStorages) GetStorageCapacity() *string {
 	return s.StorageCapacity
 }
@@ -2114,6 +2178,11 @@ func (s *DescribeApplicationAttributeResponseBodyStorages) GetStoragePerformance
 
 func (s *DescribeApplicationAttributeResponseBodyStorages) GetStorageType() *string {
 	return s.StorageType
+}
+
+func (s *DescribeApplicationAttributeResponseBodyStorages) SetContainerMountPath(v string) *DescribeApplicationAttributeResponseBodyStorages {
+	s.ContainerMountPath = &v
+	return s
 }
 
 func (s *DescribeApplicationAttributeResponseBodyStorages) SetStorageCapacity(v string) *DescribeApplicationAttributeResponseBodyStorages {
