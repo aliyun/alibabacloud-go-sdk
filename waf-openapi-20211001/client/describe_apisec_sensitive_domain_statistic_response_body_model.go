@@ -18,7 +18,7 @@ type iDescribeApisecSensitiveDomainStatisticResponseBody interface {
 }
 
 type DescribeApisecSensitiveDomainStatisticResponseBody struct {
-	// The returned data.
+	// The returned results.
 	Data []*DescribeApisecSensitiveDomainStatisticResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
 	// The request ID.
 	//
@@ -26,7 +26,7 @@ type DescribeApisecSensitiveDomainStatisticResponseBody struct {
 	//
 	// 56B40D30-4960-4F19-B7D5-2B1F***6CB70
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries returned.
+	// The total number of returned entries.
 	//
 	// example:
 	//
@@ -95,9 +95,9 @@ type DescribeApisecSensitiveDomainStatisticResponseBodyData struct {
 	//
 	// 10
 	DomainCount *int64 `json:"DomainCount,omitempty" xml:"DomainCount,omitempty"`
-	// The code of the sensitive data type.
+	// The code of the sensitive data.
 	//
-	// > You can call [DescribeApisecRules](https://help.aliyun.com/document_detail/2859155.html) to obtain the supported sensitive data types.
+	// > You can call the [DescribeApisecRules](https://help.aliyun.com/document_detail/2859155.html) operation to obtain the supported types of sensitive data.
 	//
 	// example:
 	//
@@ -115,11 +115,11 @@ type DescribeApisecSensitiveDomainStatisticResponseBodyData struct {
 	//
 	// S3
 	SensitiveLevel *string `json:"SensitiveLevel,omitempty" xml:"SensitiveLevel,omitempty"`
-	// The name of the sensitive data type.
+	// The name of the sensitive data.
 	//
 	// example:
 	//
-	// 自定义敏感类型。
+	// Custom sensitive data type
 	SensitiveName *string `json:"SensitiveName,omitempty" xml:"SensitiveName,omitempty"`
 }
 

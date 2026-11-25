@@ -44,11 +44,11 @@ type iCreateHybridCloudClusterRequest interface {
 }
 
 type CreateHybridCloudClusterRequest struct {
-	// The network access mode of the cluster. Valid values:
+	// The network access mode. Valid values:
 	//
-	// - **internet**: access over the Internet.
+	// - **internet**: Internet access.
 	//
-	// - **vpc**: access over an Express Connect circuit.
+	// - **vpc**: Private network access over Express Connect.
 	//
 	// This parameter is required.
 	//
@@ -56,11 +56,11 @@ type CreateHybridCloudClusterRequest struct {
 	//
 	// internet
 	AccessMode *string `json:"AccessMode,omitempty" xml:"AccessMode,omitempty"`
-	// The region for Express Connect circuit access. Valid values:
+	// The region for Express Connect access. Valid values:
 	//
 	// - **cn-hangzhou**: Hangzhou.
 	//
-	// - **cn-beijing**: Beijing.
+	// - **cn-beiijng**: Beijing.
 	//
 	// - **cn-shanghai**: Shanghai.
 	//
@@ -68,7 +68,7 @@ type CreateHybridCloudClusterRequest struct {
 	//
 	// cn-hangzhou
 	AccessRegion *string `json:"AccessRegion,omitempty" xml:"AccessRegion,omitempty"`
-	// The name of the hybrid cloud cluster.
+	// The name of the cluster.
 	//
 	// This parameter is required.
 	//
@@ -76,7 +76,7 @@ type CreateHybridCloudClusterRequest struct {
 	//
 	// test
 	ClusterName *string `json:"ClusterName,omitempty" xml:"ClusterName,omitempty"`
-	// The listening ports for the HTTP protocol. Separate multiple ports with commas (,), such as **port1,port2,port3**.
+	// The list of available ports for the HTTP protocol. The value is a string. If multiple ports are specified, use the **port1,port2,port3*	- format.
 	//
 	// This parameter is required.
 	//
@@ -84,7 +84,7 @@ type CreateHybridCloudClusterRequest struct {
 	//
 	// 80,8080
 	HttpPorts *string `json:"HttpPorts,omitempty" xml:"HttpPorts,omitempty"`
-	// The listening ports for the HTTPS protocol. Separate multiple ports with commas (,), such as **port1,port2,port3**.
+	// The list of available ports for the HTTPS protocol. The value is a string. If multiple ports are specified, use the **port1,port2,port3*	- format.
 	//
 	// This parameter is required.
 	//
@@ -94,7 +94,7 @@ type CreateHybridCloudClusterRequest struct {
 	HttpsPorts *string `json:"HttpsPorts,omitempty" xml:"HttpsPorts,omitempty"`
 	// The ID of the WAF instance.
 	//
-	// > Call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
+	// > You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the current WAF instance.
 	//
 	// This parameter is required.
 	//
@@ -104,13 +104,13 @@ type CreateHybridCloudClusterRequest struct {
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// Deprecated
 	//
-	// > This parameter is deprecated. It no longer returns meaningful data.
+	// > **[Deprecated]*	- This parameter is deprecated and no longer returns meaningful data.
 	//
 	// example:
 	//
 	// deprecated
 	LogFieldsNotReturned *string `json:"LogFieldsNotReturned,omitempty" xml:"LogFieldsNotReturned,omitempty"`
-	// The maximum number of protection nodes that can be added to the hybrid cloud cluster.
+	// The number of protection nodes that can be added to the cluster.
 	//
 	// This parameter is required.
 	//
@@ -118,21 +118,21 @@ type CreateHybridCloudClusterRequest struct {
 	//
 	// 1
 	ProtectionServerCount *int32 `json:"ProtectionServerCount,omitempty" xml:"ProtectionServerCount,omitempty"`
-	// Indicates whether the proxy gateway is enabled for the cluster. Valid values:
+	// The proxy gateway mode. Valid values:
 	//
-	// - **on**: The proxy gateway is enabled.
+	// - **on**: Enabled.
 	//
-	// - **off**: The proxy gateway is disabled.
+	// - **off**: Disabled.
 	//
 	// example:
 	//
 	// off
 	ProxyStatus *string `json:"ProxyStatus,omitempty" xml:"ProxyStatus,omitempty"`
-	// The type of the hybrid cloud cluster. Valid values:
+	// The cluster type. Valid values:
 	//
-	// - **cname**: reverse proxy cluster. Traffic is forwarded through CNAME resolution.
+	// - **cname**: Reverse proxy cluster.
 	//
-	// - **service**: transparent proxy cluster. Traffic is forwarded at the service level.
+	// - **service**: Service cluster.
 	//
 	// example:
 	//
@@ -140,15 +140,15 @@ type CreateHybridCloudClusterRequest struct {
 	ProxyType *string `json:"ProxyType,omitempty" xml:"ProxyType,omitempty"`
 	// The region where the WAF instance resides. Valid values:
 	//
-	// - **cn-hangzhou**: the Chinese mainland.
+	// - **cn-hangzhou**: The Chinese mainland.
 	//
-	// - **ap-southeast-1**: outside the Chinese mainland.
+	// - **ap-southeast-1**: Outside the Chinese mainland.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The description of the hybrid cloud cluster.
+	// The remark.
 	//
 	// example:
 	//
@@ -160,7 +160,7 @@ type CreateHybridCloudClusterRequest struct {
 	//
 	// rg-acfm***q
 	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
-	// The configuration of the bypass rule, in JSON format. This includes settings such as circuit breaker thresholds, request body size limits, and timeout values.
+	// The rule configuration.
 	//
 	// example:
 	//
@@ -190,19 +190,19 @@ type CreateHybridCloudClusterRequest struct {
 	//
 	// }
 	RuleConfig *string `json:"RuleConfig,omitempty" xml:"RuleConfig,omitempty"`
-	// Indicates whether manual bypass is enabled for the cluster. Valid values:
+	// The manual bypass status. Valid values:
 	//
-	// - **on**: Manual bypass is enabled.
+	// - **on**: Enabled.
 	//
-	// - **off**: Manual bypass is disabled.
+	// - **off**: Disabled.
 	//
 	// example:
 	//
 	// on
 	RuleStatus *string `json:"RuleStatus,omitempty" xml:"RuleStatus,omitempty"`
-	// The type of the bypass rule. Valid values:
+	// The rule type. Valid values:
 	//
-	// - **bypass**: skips WAF security checks and allows traffic to pass through directly.
+	// - **bypass**: Skips security checks and directly allows traffic.
 	//
 	// example:
 	//

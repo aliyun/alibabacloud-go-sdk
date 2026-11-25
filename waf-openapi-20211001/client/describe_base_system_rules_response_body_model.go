@@ -26,7 +26,7 @@ type DescribeBaseSystemRulesResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The list of system protection rules.
 	Rules []*DescribeBaseSystemRulesResponseBodyRules `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Repeated"`
-	// The total number of entries returned.
+	// The total number of returned entries.
 	//
 	// example:
 	//
@@ -129,17 +129,17 @@ type DescribeBaseSystemRulesResponseBodyRules struct {
 	//
 	// - **scanner_behavior**: scanner behavior.
 	//
-	// - **logic_flaw**: business logic bug.
+	// - **logic_flaw**: business logic flaw.
 	//
-	// - **arbitrary_file_reading**: arbitrary file read.
+	// - **arbitrary_file_reading**: arbitrary file reading.
 	//
 	// - **arbitrary_file_download**: arbitrary file download.
 	//
-	// - **xxe**: XML external entity injection.
+	// - **xxe**: external entity injection.
 	//
-	// - **csrf**: cross-site request forgery.
+	// - **csrf**: cross-site request forgery (CSRF).
 	//
-	// - **crlf**: CRLF injection.
+	// - **crlf**: CRLF.
 	//
 	// - **other**: other.
 	//
@@ -149,19 +149,19 @@ type DescribeBaseSystemRulesResponseBodyRules struct {
 	DetectType *string `json:"DetectType,omitempty" xml:"DetectType,omitempty"`
 	// The risk level. Valid values:
 	//
-	// - **super_strict**: super strict.
+	// - **super_strict**: Super strict.
 	//
-	// - **strict**: strict.
+	// - **strict**: Strict.
 	//
-	// - **medium**: medium.
+	// - **medium**: Medium.
 	//
-	// - **loose**: loose.
+	// - **loose**: Loose.
 	//
 	// example:
 	//
 	// super_strict
 	RiskLevel *string `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
-	// The rule action. Valid values:
+	// The action of the rule. Valid values:
 	//
 	// - **block**: Block.
 	//
@@ -171,7 +171,7 @@ type DescribeBaseSystemRulesResponseBodyRules struct {
 	//
 	// block
 	RuleAction *string `json:"RuleAction,omitempty" xml:"RuleAction,omitempty"`
-	// The rule ID.
+	// The ID of the rule.
 	//
 	// example:
 	//
@@ -183,17 +183,17 @@ type DescribeBaseSystemRulesResponseBodyRules struct {
 	//
 	// systemRuleTest
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
-	// The rule status. Valid values:
+	// The status of the rule. Valid values:
 	//
-	// - **1**: disabled.
+	// - **1**: Disabled.
 	//
-	// - **0**: enabled.
+	// - **0**: Enabled.
 	//
 	// example:
 	//
 	// 1
 	RuleStatus *int32 `json:"RuleStatus,omitempty" xml:"RuleStatus,omitempty"`
-	// The time when the rule was last updated. The value is a UNIX timestamp in milliseconds.
+	// The update time of the rule. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//

@@ -26,7 +26,7 @@ type DescribeSensitiveRequestsResponseBody struct {
 	//
 	// 26E46541-7AAB-5565-801D-F14DBDC5****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries returned.
+	// The total number of returned entries.
 	//
 	// example:
 	//
@@ -107,11 +107,11 @@ type DescribeSensitiveRequestsResponseBodyData struct {
 	//
 	// 103.118.55.**
 	ClientIP *string `json:"ClientIP,omitempty" xml:"ClientIP,omitempty"`
-	// The assessment result. Valid values:
+	// The evaluation result. Valid values:
 	//
-	// - **leak**: a leak risk exists.
+	// - **leak**: A leakage risk exists.
 	//
-	// - **none**: no leak risk exists.
+	// - **none**: No leakage risk exists.
 	//
 	// example:
 	//

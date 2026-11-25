@@ -32,7 +32,7 @@ type ModifyHybridCloudGroupExpansionServerRequest struct {
 	//
 	// 1
 	ClusterId *int64 `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// The ID of the node group in the hybrid cloud cluster.
+	// The ID of the node group.
 	//
 	// This parameter is required.
 	//
@@ -40,9 +40,7 @@ type ModifyHybridCloudGroupExpansionServerRequest struct {
 	//
 	// 1
 	GroupId *int64 `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	// The ID of the WAF instance.
-	//
-	// > Call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
+	// Instance ID of the WAF instance. You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query instance ID of the WAF instance.
 	//
 	// This parameter is required.
 	//
@@ -50,7 +48,7 @@ type ModifyHybridCloudGroupExpansionServerRequest struct {
 	//
 	// waf-cn-tl32ast****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The ID of the node that you want to add to the node group.
+	// The IDs of the nodes.
 	//
 	// This parameter is required.
 	//
@@ -68,7 +66,7 @@ type ModifyHybridCloudGroupExpansionServerRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the Resource Manager resource group.
+	// The ID of the Alibaba Cloud resource group.
 	//
 	// example:
 	//

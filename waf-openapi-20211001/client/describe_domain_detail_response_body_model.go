@@ -32,9 +32,9 @@ type iDescribeDomainDetailResponseBody interface {
 }
 
 type DescribeDomainDetailResponseBody struct {
-	// The SSL certificate details.
+	// The details of the SSL certificate.
 	CertDetail *DescribeDomainDetailResponseBodyCertDetail `json:"CertDetail,omitempty" xml:"CertDetail,omitempty" type:"Struct"`
-	// The CNAME assigned by WAF to the domain name.
+	// The CNAME address assigned by WAF to the domain name.
 	//
 	// example:
 	//
@@ -46,15 +46,15 @@ type DescribeDomainDetailResponseBody struct {
 	//
 	// www.aliyundoc.com
 	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
-	// The domain name ID.
+	// The ID of the domain name.
 	//
 	// example:
 	//
 	// www.aliyundoc.com-waf
 	DomainId *string `json:"DomainId,omitempty" xml:"DomainId,omitempty"`
-	// The listener configuration.
+	// The listener configuration information.
 	Listen *DescribeDomainDetailResponseBodyListen `json:"Listen,omitempty" xml:"Listen,omitempty" type:"Struct"`
-	// The forwarding configuration.
+	// The forwarding configuration information.
 	Redirect *DescribeDomainDetailResponseBodyRedirect `json:"Redirect,omitempty" xml:"Redirect,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -62,7 +62,7 @@ type DescribeDomainDetailResponseBody struct {
 	//
 	// BAEF9CA9-66A0-533E-BD09-5D5D7AA8****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The Alibaba Cloud resource group ID.
+	// The ID of the Alibaba Cloud resource group.
 	//
 	// example:
 	//
@@ -71,6 +71,16 @@ type DescribeDomainDetailResponseBody struct {
 	// The SM2 certificate information.
 	SM2CertDetail *DescribeDomainDetailResponseBodySM2CertDetail `json:"SM2CertDetail,omitempty" xml:"SM2CertDetail,omitempty" type:"Struct"`
 	// The domain name status. Valid values:
+	//
+	// - **1**: The domain name is in a normal state.
+	//
+	// - **2**: The domain name is being created.
+	//
+	// - **3**: The domain name is being modified.
+	//
+	// - **4**: The domain name is being released.
+	//
+	// - **5**: Traffic forwarding for the domain name is stopped.
 	//
 	// example:
 	//
@@ -207,27 +217,27 @@ type DescribeDomainDetailResponseBodyCertDetail struct {
 	//
 	// test.aliyundoc.com
 	CommonName *string `json:"CommonName,omitempty" xml:"CommonName,omitempty"`
-	// The time when the certificate expires. The value is a UNIX timestamp (UTC). Unit: milliseconds.
+	// The time when the certificate expires. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
 	// 1685590400000
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The SSL certificate ID.
+	// The ID of the SSL certificate.
 	//
 	// example:
 	//
 	// 123-cn-hangzhou
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The certificate name.
+	// The name of the certificate.
 	//
 	// example:
 	//
 	// test-cert-name
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// All domain names that are bound to the certificate.
+	// All domain names bound to the certificate.
 	Sans []*string `json:"Sans,omitempty" xml:"Sans,omitempty" type:"Repeated"`
-	// The effective period of the certificate. The value is in the format of a UNIX timestamp (UTC). Unit: milliseconds.
+	// The effective period of the certificate. The format is a UNIX timestamp (UTC time) in milliseconds.
 	//
 	// example:
 	//
@@ -308,7 +318,13 @@ type DescribeDomainDetailResponseBodyListen struct {
 	//
 	// 123
 	CertId *string `json:"CertId,omitempty" xml:"CertId,omitempty"`
-	// The type of the cipher suite. Valid values:
+	// The cipher suite type. Valid values:
+	//
+	// - **1**: All cipher suites are added.
+	//
+	// - **2**: Strong cipher suites are added. This value is available only when TLSVersion is set to tlsv1.2.
+	//
+	// - **99**: Custom cipher suites are added. This value is available only when TLSVersion is not set to tlsv1.3.
 	//
 	// example:
 	//
@@ -316,13 +332,19 @@ type DescribeDomainDetailResponseBodyListen struct {
 	CipherSuite *int64 `json:"CipherSuite,omitempty" xml:"CipherSuite,omitempty"`
 	// The custom cipher suites.
 	CustomCiphers []*string `json:"CustomCiphers,omitempty" xml:"CustomCiphers,omitempty" type:"Repeated"`
-	// Indicates whether TLS 1.3 is supported. Valid values:
+	// Specifies whether TLS 1.3 is supported. Valid values:
+	//
+	// - **true**: TLS 1.3 is supported.
+	//
+	// - **false**: TLS 1.3 is not supported.
+	//
+	// > This parameter is used only when the HttpsPorts parameter is not empty, which indicates that the domain name uses the HTTPS protocol. When TLSVersion is set to tlsv1.3, this value must be set to true.
 	//
 	// example:
 	//
 	// true
 	EnableTLSv3 *bool `json:"EnableTLSv3,omitempty" xml:"EnableTLSv3,omitempty"`
-	// Indicates whether an exclusive IP address is enabled. Valid values:
+	// Specifies whether an exclusive IP address is enabled. Valid values:
 	//
 	// - **true**: An exclusive IP address is enabled.
 	//
@@ -332,31 +354,39 @@ type DescribeDomainDetailResponseBodyListen struct {
 	//
 	// true
 	ExclusiveIp *bool `json:"ExclusiveIp,omitempty" xml:"ExclusiveIp,omitempty"`
-	// Indicates whether HTTPS forced redirect is enabled. Valid values:
+	// Specifies whether forcible HTTPS redirects are enabled. Valid values:
+	//
+	// - **true**: Forcible HTTPS redirects are enabled.
+	//
+	// - **false**: Forcible HTTPS redirects are not enabled.
 	//
 	// example:
 	//
 	// true
 	FocusHttps *bool `json:"FocusHttps,omitempty" xml:"FocusHttps,omitempty"`
-	// Indicates whether HSTS includes subdomains. Valid values:
+	// Specifies whether HTTP Strict Transport Security (HSTS) includes subdomains. Valid values:
 	//
-	// - **true**: Enabled.
+	// - **true**: HSTS includes subdomains.
 	//
-	// - **false**: Not enabled.
+	// - **false**: HSTS does not include subdomains.
 	HstsIncludeSubDomain *bool `json:"HstsIncludeSubDomain,omitempty" xml:"HstsIncludeSubDomain,omitempty"`
-	// The HSTS expiration time. Unit: seconds.
+	// The expiration time of HSTS, in seconds.
 	//
 	// example:
 	//
 	// 365000
 	HstsMaxAge *int64 `json:"HstsMaxAge,omitempty" xml:"HstsMaxAge,omitempty"`
-	// Indicates whether HSTS preloading is enabled. This feature is disabled by default. Valid values:
+	// Specifies whether HSTS preload is enabled. Default value: false. Valid values:
+	//
+	// - **true**: HSTS preload is enabled.
+	//
+	// - **false**: HSTS preload is disabled.
 	//
 	// example:
 	//
 	// false
 	HstsPreload *bool `json:"HstsPreload,omitempty" xml:"HstsPreload,omitempty"`
-	// Indicates whether HTTP/2 is enabled. Valid values:
+	// Specifies whether HTTP/2 is enabled. Valid values:
 	//
 	// - **true**: HTTP/2 is enabled.
 	//
@@ -366,11 +396,11 @@ type DescribeDomainDetailResponseBodyListen struct {
 	//
 	// true
 	Http2Enabled *bool `json:"Http2Enabled,omitempty" xml:"Http2Enabled,omitempty"`
-	// The listening port for the HTTP protocol.
+	// The listening ports for the HTTP protocol.
 	HttpPorts []*int64 `json:"HttpPorts,omitempty" xml:"HttpPorts,omitempty" type:"Repeated"`
-	// The listening port for the HTTPS protocol.
+	// The listening ports for the HTTPS protocol.
 	HttpsPorts []*int64 `json:"HttpsPorts,omitempty" xml:"HttpsPorts,omitempty" type:"Repeated"`
-	// Indicates whether IPv6 is enabled. Valid values:
+	// Specifies whether IPv6 is enabled. Valid values:
 	//
 	// - **true**: IPv6 is enabled.
 	//
@@ -380,25 +410,37 @@ type DescribeDomainDetailResponseBodyListen struct {
 	//
 	// true
 	IPv6Enabled *bool `json:"IPv6Enabled,omitempty" xml:"IPv6Enabled,omitempty"`
-	// The type of protection resource to use. Valid values:
+	// The type of protection resource to be used. Valid values:
+	//
+	// - **share**: shared cluster
+	//
+	// - **gslb**: shared cluster with intelligent load balancing
 	//
 	// example:
 	//
 	// share
 	ProtectionResource *string `json:"ProtectionResource,omitempty" xml:"ProtectionResource,omitempty"`
-	// Indicates whether only SM client access is allowed. This parameter is used only when SM2Enable is set to true.
+	// Specifies whether only SM clients are allowed to access the domain name. This parameter is used only when SM2Enabled is set to true. Valid values:
+	//
+	// - **true**: Only SM clients are allowed to access the domain name.
+	//
+	// - **false**: Both SM and non-SM clients are allowed to access the domain name.
 	//
 	// example:
 	//
 	// true
 	SM2AccessOnly *bool `json:"SM2AccessOnly,omitempty" xml:"SM2AccessOnly,omitempty"`
-	// The ID of the China Encryption Standard (SM) certificate to add. This parameter is used only when SM2Enable is set to true.
+	// The ID of the SM certificate to be added. This parameter is used only when SM2Enabled is set to true.
 	//
 	// example:
 	//
 	// 123-cn-hangzhou
 	SM2CertId *string `json:"SM2CertId,omitempty" xml:"SM2CertId,omitempty"`
-	// Indicates whether the China Encryption Standard (SM) certificate is enabled. Valid values:
+	// Specifies whether SM certificates are enabled. Valid values:
+	//
+	// - **true**: SM certificates are enabled.
+	//
+	// - **false**: SM certificates are not enabled.
 	//
 	// example:
 	//
@@ -406,33 +448,33 @@ type DescribeDomainDetailResponseBodyListen struct {
 	SM2Enabled *bool `json:"SM2Enabled,omitempty" xml:"SM2Enabled,omitempty"`
 	// The TLS version. Valid values:
 	//
-	// - **tlsv1**: Supports TLS 1.0 and later. Provides the highest compatibility and the lowest security.
+	// - **tlsv1**: Supports TLS 1.0 and later versions. This version provides the highest compatibility but lower security.
 	//
-	// - **tlsv1.1**: Supports TLS 1.1 and later. Provides good compatibility and good security.
+	// - **tlsv1.1**: Supports TLS 1.1 and later versions. This version provides good compatibility and better security.
 	//
-	// - **tlsv1.2**: Supports TLS 1.2 and later. Provides good compatibility and the highest security.
+	// - **tlsv1.2**: Supports TLS 1.2 and later versions. This version provides good compatibility and the highest security.
 	//
-	// - **tlsv1.3**: Supports only TLS 1.3. Provides the highest security and the lowest compatibility.
+	// - **tlsv1.3**: Supports only TLS 1.3. This version provides the highest security but lower compatibility.
 	//
 	// example:
 	//
 	// tlsv1.2
 	TLSVersion *string `json:"TLSVersion,omitempty" xml:"TLSVersion,omitempty"`
-	// The method that WAF uses to obtain the originating IP address of the client. Valid values:
+	// The method used by WAF to obtain the actual IP address of the client. Valid values:
 	//
-	// - **0**: The client access traffic is not forwarded by other Layer 7 proxies before reaching WAF.
+	// - **0**: The client access traffic is not forwarded by other Layer 7 proxies before it reaches WAF.
 	//
-	// - **1**: WAF reads the first value in the X-Forwarded-For (XFF) header field of the request as the client IP address.
+	// - **1**: WAF reads the first value of the X-Forwarded-For (XFF) field in the request header as the client IP address.
 	//
-	// - **2**: WAF reads the value of a custom header field that you specify in the request as the client IP address.
+	// - **2**: WAF reads the value of a custom field that you specified in the request header as the client IP address.
 	//
-	// - **3**: WAF reads the Client IP from the Proxy Protocol header as the client IP address.
+	// - **3**: WAF reads the Client IP address in the Proxy Protocol header as the client IP address.
 	//
 	// example:
 	//
 	// 2
 	XffHeaderMode *int64 `json:"XffHeaderMode,omitempty" xml:"XffHeaderMode,omitempty"`
-	// The custom header fields used to obtain the client IP address.
+	// The list of custom fields used to obtain the client IP address.
 	XffHeaders []*string `json:"XffHeaders,omitempty" xml:"XffHeaders,omitempty" type:"Repeated"`
 }
 
@@ -629,55 +671,59 @@ func (s *DescribeDomainDetailResponseBodyListen) Validate() error {
 }
 
 type DescribeDomainDetailResponseBodyRedirect struct {
-	// The list of backup origin server IP addresses or back-to-origin domain names for the domain name.
+	// The list of IP addresses of secondary origin servers or back-to-origin domain names for the domain name.
 	BackUpBackendList []*string `json:"BackUpBackendList,omitempty" xml:"BackUpBackendList,omitempty" type:"Repeated"`
-	// The list of origin server IP addresses or back-to-origin domain names for the domain name.
+	// The custom back-to-origin configurations.
+	BackendConfig []*DescribeDomainDetailResponseBodyRedirectBackendConfig `json:"BackendConfig,omitempty" xml:"BackendConfig,omitempty" type:"Repeated"`
+	// The list of IP addresses of the origin servers or back-to-origin domain names of the servers for the domain name.
 	BackendList []*string `json:"BackendList,omitempty" xml:"BackendList,omitempty" type:"Repeated"`
-	// The custom port configuration. By default, the port is the same as the listener port.
+	// The custom port configurations. By default, the configurations are the same as the listening ports.
 	BackendPorts []*DescribeDomainDetailResponseBodyRedirectBackendPorts `json:"BackendPorts,omitempty" xml:"BackendPorts,omitempty" type:"Repeated"`
 	// Deprecated
 	//
-	// The back-to-origin addresses of the domain name.
+	// The back-to-origin addresses for the domain name.
+	//
+	// > This parameter will be deprecated soon. We recommend that you use **BackendList*	- to obtain the relevant information.
 	Backends []*DescribeDomainDetailResponseBodyRedirectBackends `json:"Backends,omitempty" xml:"Backends,omitempty" type:"Repeated"`
 	// Deprecated
 	//
-	// The secondary origin addresses of the domain name.
+	// The secondary back-to-origin addresses for the domain name.
 	//
-	// > This parameter is about to be deprecated. Use **BackUpBackendList*	- to obtain the related information.
+	// > This parameter will be deprecated soon. We recommend that you use **BackUpBackendList*	- to obtain the relevant information.
 	BackupBackends []*DescribeDomainDetailResponseBodyRedirectBackupBackends `json:"BackupBackends,omitempty" xml:"BackupBackends,omitempty" type:"Repeated"`
-	// The connection timeout period. Unit: seconds.
+	// The connection timeout period, in seconds. Valid values: 5 to 120.
 	//
 	// example:
 	//
 	// 120
 	ConnectTimeout *int32 `json:"ConnectTimeout,omitempty" xml:"ConnectTimeout,omitempty"`
-	// Indicates whether forced HTTP back-to-origin is enabled. Valid values:
+	// Specifies whether forcible HTTP back-to-origin routing is enabled. Valid values:
 	//
-	// - **true**: Forced HTTP back-to-origin is enabled.
+	// - **true**: Forcible HTTP back-to-origin routing is enabled.
 	//
-	// - **false**: Forced HTTP back-to-origin is not enabled.
+	// - **false**: Forcible HTTP back-to-origin routing is not enabled.
 	//
 	// example:
 	//
 	// true
 	FocusHttpBackend *bool `json:"FocusHttpBackend,omitempty" xml:"FocusHttpBackend,omitempty"`
-	// Indicates whether HTTP/2 back-to-origin is enabled.
+	// The HTTP/2 back-to-origin configuration.
 	//
 	// example:
 	//
 	// true
 	Http2Origin *bool `json:"Http2Origin,omitempty" xml:"Http2Origin,omitempty"`
-	// The maximum number of concurrent connections for HTTP/2 back-to-origin.
+	// The maximum number of concurrent connections for HTTP/2 back-to-origin routing.
 	//
 	// example:
 	//
 	// 128
 	Http2OriginMaxConcurrency *int32 `json:"Http2OriginMaxConcurrency,omitempty" xml:"Http2OriginMaxConcurrency,omitempty"`
-	// Specifies whether to keep the connection alive. Valid values:
+	// Specifies whether persistent connections are maintained. Valid values:
 	//
-	// - **true*	- (default): The connection is kept alive.
+	// - **true**: Persistent connections are maintained. This is the default value.
 	//
-	// - **false**: The connection is not kept alive.
+	// - **false**: Persistent connections are not maintained.
 	//
 	// example:
 	//
@@ -685,67 +731,73 @@ type DescribeDomainDetailResponseBodyRedirect struct {
 	Keepalive *bool `json:"Keepalive,omitempty" xml:"Keepalive,omitempty"`
 	// The number of requests that reuse a persistent connection. Valid values: 60 to 1000.
 	//
+	// > This parameter specifies the number of persistent connections that can be reused after persistent connections are enabled.
+	//
 	// example:
 	//
 	// 1000
 	KeepaliveRequests *int32 `json:"KeepaliveRequests,omitempty" xml:"KeepaliveRequests,omitempty"`
-	// The idle timeout period for persistent connections. Valid values: 1 to 60. Default value: 15. Unit: seconds.
+	// The timeout period for idle persistent connections, in seconds. Valid values: 1 to 60. Default value: 15.
+	//
+	// > This parameter specifies the duration after which an idle reused persistent connection is released.
 	//
 	// example:
 	//
 	// 15
 	KeepaliveTimeout *int32 `json:"KeepaliveTimeout,omitempty" xml:"KeepaliveTimeout,omitempty"`
-	// The load balancing algorithm used for back-to-origin requests. Valid values:
+	// The load balancing algorithm used for back-to-origin routing. Valid values:
 	//
-	// - **iphash**: IP Hash algorithm.
+	// - **iphash**: IP hash algorithm
 	//
-	// - **roundRobin**: round-robin algorithm.
+	// - **roundRobin**: round-robin algorithm
 	//
-	// - **leastTime**: Least Time algorithm.
+	// - **leastTime**: least time algorithm
 	//
 	// example:
 	//
 	// iphash
 	Loadbalance *string `json:"Loadbalance,omitempty" xml:"Loadbalance,omitempty"`
-	// The maximum request body size. Valid values: 2 to 10. Default value: 2. Unit: GB.
+	// The maximum request body size, in GB. Valid values: 2 to 10. Default value: 2.
+	//
+	// > This feature is supported only by the Enterprise Edition.
 	//
 	// example:
 	//
 	// 2
 	MaxBodySize *int32 `json:"MaxBodySize,omitempty" xml:"MaxBodySize,omitempty"`
-	// Indicates whether the client source IP address preservation feature is enabled.
+	// Specifies whether the feature to preserve the originating IP address of the client is enabled. Valid values:
 	//
-	// - **true**: The client source IP address preservation feature is enabled. After this feature is enabled, backend services can view the original IP address of the client.
+	// - **true**: The feature is enabled. After this feature is enabled, backend services can view the original IP address of the client.
 	//
-	// - **false**: The client source IP address preservation feature is not enabled.
+	// - **false**: The feature is not enabled.
 	//
 	// example:
 	//
 	// false
 	ProxyProtocol *bool `json:"ProxyProtocol,omitempty" xml:"ProxyProtocol,omitempty"`
-	// The read timeout period. Unit: seconds.
+	// The read timeout period, in seconds. Valid values: 5 to 1800.
 	//
 	// example:
 	//
 	// 200
 	ReadTimeout *int32 `json:"ReadTimeout,omitempty" xml:"ReadTimeout,omitempty"`
-	// The traffic tag fields and values of the domain name, which are used to tag traffic processed by WAF.
+	// The traffic marking fields and values for the domain name, which are used to mark the traffic processed by WAF.
 	RequestHeaders []*DescribeDomainDetailResponseBodyRedirectRequestHeaders `json:"RequestHeaders,omitempty" xml:"RequestHeaders,omitempty" type:"Repeated"`
-	// Specifies whether to retry when WAF fails to forward requests to the origin server. Valid values:
+	// Specifies whether to retry when WAF fails to route traffic back to the origin server. Valid values:
 	//
-	// - **true*	- (default): Retry.
+	// - **true**: Retries are performed. This is the default value.
 	//
-	// - **false**: Do not retry.
+	// - **false**: Retries are not performed.
 	//
 	// example:
 	//
 	// true
 	Retry *bool `json:"Retry,omitempty" xml:"Retry,omitempty"`
-	// Indicates whether Server Name Indication (SNI) is enabled for back-to-origin requests. Valid values:
+	// Specifies whether back-to-origin Server Name Indication (SNI) is enabled. Valid values:
 	//
-	// - **true**: SNI is enabled for back-to-origin requests.
+	// - **true**: Back-to-origin SNI is enabled.
 	//
-	// - **false*	- (default): SNI is not enabled for back-to-origin requests.
+	// - **false**: Back-to-origin SNI is not enabled. This is the default value.
 	//
 	// example:
 	//
@@ -759,7 +811,7 @@ type DescribeDomainDetailResponseBodyRedirect struct {
 	SniHost *string `json:"SniHost,omitempty" xml:"SniHost,omitempty"`
 	// Specifies whether WAF is allowed to overwrite the WL-Proxy-Client-IP header. Valid values:
 	//
-	// - **true*	- (default): WAF is allowed to overwrite the header.
+	// - **true**: WAF is allowed to overwrite the header. This is the default value.
 	//
 	// - **false**: WAF is not allowed to overwrite the header.
 	//
@@ -769,7 +821,7 @@ type DescribeDomainDetailResponseBodyRedirect struct {
 	WLProxyClientIp *bool `json:"WLProxyClientIp,omitempty" xml:"WLProxyClientIp,omitempty"`
 	// Specifies whether WAF is allowed to overwrite the Web-Server-Type header. Valid values:
 	//
-	// - **true*	- (default): WAF is allowed to overwrite the header.
+	// - **true**: WAF is allowed to overwrite the header. This is the default value.
 	//
 	// - **false**: WAF is not allowed to overwrite the header.
 	//
@@ -777,15 +829,15 @@ type DescribeDomainDetailResponseBodyRedirect struct {
 	//
 	// true
 	WebServerType *bool `json:"WebServerType,omitempty" xml:"WebServerType,omitempty"`
-	// The write timeout period. Unit: seconds.
+	// The write timeout period, in seconds. Valid values: 5 to 1800.
 	//
 	// example:
 	//
 	// 200
 	WriteTimeout *int32 `json:"WriteTimeout,omitempty" xml:"WriteTimeout,omitempty"`
-	// Specifies whether WAF is allowed to overwrite X-Client-IP. Valid values:
+	// Specifies whether WAF is allowed to overwrite the X-Client-IP header. Valid values:
 	//
-	// - **true*	- (default): WAF is allowed to overwrite the header.
+	// - **true**: WAF is allowed to overwrite the header. This is the default value.
 	//
 	// - **false**: WAF is not allowed to overwrite the header.
 	//
@@ -795,7 +847,7 @@ type DescribeDomainDetailResponseBodyRedirect struct {
 	XClientIp *bool `json:"XClientIp,omitempty" xml:"XClientIp,omitempty"`
 	// Specifies whether WAF is allowed to overwrite the X-True-IP header. Valid values:
 	//
-	// - **true*	- (default): WAF is allowed to overwrite the header.
+	// - **true**: WAF is allowed to overwrite the header. This is the default value.
 	//
 	// - **false**: WAF is not allowed to overwrite the header.
 	//
@@ -803,7 +855,11 @@ type DescribeDomainDetailResponseBodyRedirect struct {
 	//
 	// true
 	XTrueIp *bool `json:"XTrueIp,omitempty" xml:"XTrueIp,omitempty"`
-	// Indicates whether X-Forward-For-Proto is used to pass the protocol used by WAF. Valid values:
+	// Specifies whether the X-Forwarded-Proto header is used to pass the protocol used by WAF. Valid values:
+	//
+	// - **true**: The protocol used by WAF is passed. This is the default value.
+	//
+	// - **false**: The protocol used by WAF is not passed.
 	//
 	// example:
 	//
@@ -821,6 +877,10 @@ func (s DescribeDomainDetailResponseBodyRedirect) GoString() string {
 
 func (s *DescribeDomainDetailResponseBodyRedirect) GetBackUpBackendList() []*string {
 	return s.BackUpBackendList
+}
+
+func (s *DescribeDomainDetailResponseBodyRedirect) GetBackendConfig() []*DescribeDomainDetailResponseBodyRedirectBackendConfig {
+	return s.BackendConfig
 }
 
 func (s *DescribeDomainDetailResponseBodyRedirect) GetBackendList() []*string {
@@ -925,6 +985,11 @@ func (s *DescribeDomainDetailResponseBodyRedirect) GetXffProto() *bool {
 
 func (s *DescribeDomainDetailResponseBodyRedirect) SetBackUpBackendList(v []*string) *DescribeDomainDetailResponseBodyRedirect {
 	s.BackUpBackendList = v
+	return s
+}
+
+func (s *DescribeDomainDetailResponseBodyRedirect) SetBackendConfig(v []*DescribeDomainDetailResponseBodyRedirectBackendConfig) *DescribeDomainDetailResponseBodyRedirect {
+	s.BackendConfig = v
 	return s
 }
 
@@ -1054,6 +1119,15 @@ func (s *DescribeDomainDetailResponseBodyRedirect) SetXffProto(v bool) *Describe
 }
 
 func (s *DescribeDomainDetailResponseBodyRedirect) Validate() error {
+	if s.BackendConfig != nil {
+		for _, item := range s.BackendConfig {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
 	if s.BackendPorts != nil {
 		for _, item := range s.BackendPorts {
 			if item != nil {
@@ -1093,6 +1167,51 @@ func (s *DescribeDomainDetailResponseBodyRedirect) Validate() error {
 	return nil
 }
 
+type DescribeDomainDetailResponseBodyRedirectBackendConfig struct {
+	// The origin server.
+	//
+	// example:
+	//
+	// 1.1.XX.XX
+	Backend *string `json:"Backend,omitempty" xml:"Backend,omitempty"`
+	// The weight.
+	//
+	// example:
+	//
+	// 1
+	Weight *int32 `json:"Weight,omitempty" xml:"Weight,omitempty"`
+}
+
+func (s DescribeDomainDetailResponseBodyRedirectBackendConfig) String() string {
+	return dara.Prettify(s)
+}
+
+func (s DescribeDomainDetailResponseBodyRedirectBackendConfig) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDomainDetailResponseBodyRedirectBackendConfig) GetBackend() *string {
+	return s.Backend
+}
+
+func (s *DescribeDomainDetailResponseBodyRedirectBackendConfig) GetWeight() *int32 {
+	return s.Weight
+}
+
+func (s *DescribeDomainDetailResponseBodyRedirectBackendConfig) SetBackend(v string) *DescribeDomainDetailResponseBodyRedirectBackendConfig {
+	s.Backend = &v
+	return s
+}
+
+func (s *DescribeDomainDetailResponseBodyRedirectBackendConfig) SetWeight(v int32) *DescribeDomainDetailResponseBodyRedirectBackendConfig {
+	s.Weight = &v
+	return s
+}
+
+func (s *DescribeDomainDetailResponseBodyRedirectBackendConfig) Validate() error {
+	return dara.Validate(s)
+}
+
 type DescribeDomainDetailResponseBodyRedirectBackendPorts struct {
 	// The back-to-origin port.
 	//
@@ -1100,17 +1219,17 @@ type DescribeDomainDetailResponseBodyRedirectBackendPorts struct {
 	//
 	// 80
 	BackendPort *int32 `json:"BackendPort,omitempty" xml:"BackendPort,omitempty"`
-	// The listener port.
+	// The listening port.
 	//
 	// example:
 	//
 	// 80
 	ListenPort *int32 `json:"ListenPort,omitempty" xml:"ListenPort,omitempty"`
-	// The protocol type of the listener port. Valid values:
+	// The protocol type of the listening port. Valid values:
 	//
-	// - **http**: HTTP protocol.
+	// - **http**: HTTP.
 	//
-	// - **https**: HTTPS protocol.
+	// - **https**: HTTPS.
 	//
 	// example:
 	//
@@ -1158,7 +1277,7 @@ func (s *DescribeDomainDetailResponseBodyRedirectBackendPorts) Validate() error 
 }
 
 type DescribeDomainDetailResponseBodyRedirectBackends struct {
-	// The IP address or domain name of the origin server for the domain name.
+	// The IP address of the origin server or the back-to-origin domain name of the server for the domain name.
 	//
 	// example:
 	//
@@ -1188,7 +1307,7 @@ func (s *DescribeDomainDetailResponseBodyRedirectBackends) Validate() error {
 }
 
 type DescribeDomainDetailResponseBodyRedirectBackupBackends struct {
-	// The IP address or domain name of the secondary origin server for the domain name.
+	// The IP address of the secondary origin server or the secondary back-to-origin domain name of the server for the domain name.
 	//
 	// example:
 	//
@@ -1224,13 +1343,13 @@ func (s *DescribeDomainDetailResponseBodyRedirectBackupBackends) Validate() erro
 }
 
 type DescribeDomainDetailResponseBodyRedirectRequestHeaders struct {
-	// The custom request header field.
+	// The specified custom request header field.
 	//
 	// example:
 	//
 	// aaa
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The value of the custom request header field.
+	// The value of the specified custom request header field.
 	//
 	// example:
 	//
@@ -1275,27 +1394,27 @@ type DescribeDomainDetailResponseBodySM2CertDetail struct {
 	//
 	// test.aliyundoc.com
 	CommonName *string `json:"CommonName,omitempty" xml:"CommonName,omitempty"`
-	// The time when the certificate expires. The value is a UNIX timestamp (UTC). Unit: milliseconds.
+	// The time when the certificate expires. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
 	// 1665590400000
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The SSL certificate ID.
+	// The ID of the SSL certificate.
 	//
 	// example:
 	//
 	// 123-cn-hangzhou
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The certificate name.
+	// The name of the certificate.
 	//
 	// example:
 	//
 	// test-sm2-cert-name
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// All domain names that are bound to the certificate.
+	// All domain names bound to the certificate.
 	Sans []*string `json:"Sans,omitempty" xml:"Sans,omitempty" type:"Repeated"`
-	// The effective period of the certificate. The value is in the format of a UNIX timestamp (UTC). Unit: milliseconds.
+	// The effective period of the certificate. The format is a UNIX timestamp (UTC time) in milliseconds.
 	//
 	// example:
 	//

@@ -26,9 +26,9 @@ type iModifyApisecStatusRequest interface {
 type ModifyApisecStatusRequest struct {
 	// The API security status. Valid values:
 	//
-	// - **1**: enabled.
+	// - **1**: Enabled.
 	//
-	// - **0**: disabled.
+	// - **0**: Disabled.
 	//
 	// This parameter is required.
 	//
@@ -62,7 +62,7 @@ type ModifyApisecStatusRequest struct {
 	//
 	// group
 	ResourceGroups *string `json:"ResourceGroups,omitempty" xml:"ResourceGroups,omitempty"`
-	// The Alibaba Cloud resource group ID.
+	// The ID of the Alibaba Cloud resource group.
 	//
 	// example:
 	//

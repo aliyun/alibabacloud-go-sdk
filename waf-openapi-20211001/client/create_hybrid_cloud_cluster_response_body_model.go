@@ -16,13 +16,13 @@ type iCreateHybridCloudClusterResponseBody interface {
 }
 
 type CreateHybridCloudClusterResponseBody struct {
-	// The ID of the hybrid cloud cluster.
+	// The cluster ID.
 	//
 	// example:
 	//
 	// 1
 	Data *int64 `json:"Data,omitempty" xml:"Data,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

@@ -98,7 +98,7 @@ type DescribeApisecApiResourcesRequest struct {
 	ApiMethod *string `json:"ApiMethod,omitempty" xml:"ApiMethod,omitempty"`
 	// The status of the API. Valid values:
 	//
-	// - **NewbornInterface**: New.
+	// - **NewbornInterface**: Newly added.
 	//
 	// - **OfflineInterface**: Inactive.
 	//
@@ -110,17 +110,17 @@ type DescribeApisecApiResourcesRequest struct {
 	ApiStatus *string `json:"ApiStatus,omitempty" xml:"ApiStatus,omitempty"`
 	// The business purpose of the API.
 	//
-	// > You can call [DescribeApisecRules](https://help.aliyun.com/document_detail/2859155.html) to obtain the supported business purposes.
+	// > You can call the [DescribeApisecRules](https://help.aliyun.com/document_detail/2859155.html) operation to query the supported business purposes.
 	//
 	// example:
 	//
 	// SendMail
 	ApiTag *string `json:"ApiTag,omitempty" xml:"ApiTag,omitempty"`
-	// The service object. Valid values:
+	// The service object of the API. Valid values:
 	//
 	// - **PublicAPI**: Public service.
 	//
-	// - **ThirdpartAPI**: Third-party collaboration.
+	// - **ThirdpartAPI**: Third-party cooperation.
 	//
 	// - **InternalAPI**: Internal office.
 	//
@@ -130,9 +130,9 @@ type DescribeApisecApiResourcesRequest struct {
 	ApiType *string `json:"ApiType,omitempty" xml:"ApiType,omitempty"`
 	// Specifies whether the API has an authentication field. Valid values:
 	//
-	// - **0**: Has authentication.
+	// - **0**: Has authentication field.
 	//
-	// - **1**: Does not have authentication.
+	// - **1**: No authentication field.
 	//
 	// example:
 	//
@@ -140,13 +140,13 @@ type DescribeApisecApiResourcesRequest struct {
 	AuthFlag *string `json:"AuthFlag,omitempty" xml:"AuthFlag,omitempty"`
 	// The ID of the hybrid cloud cluster.
 	//
-	// > This parameter applies only to hybrid cloud scenarios. You can call [DescribeHybridCloudClusters](https://help.aliyun.com/document_detail/2849376.html) to obtain hybrid cloud cluster information.
+	// > This parameter applies only to hybrid cloud scenarios. You can call the [DescribeHybridCloudClusters](https://help.aliyun.com/document_detail/2849376.html) operation to query hybrid cloud cluster information.
 	//
 	// example:
 	//
 	// 740
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// The end time of the query, in UNIX timestamp (UTC) format. Unit: seconds.
+	// The end time of the query. The time is a UNIX timestamp in UTC. Unit: seconds.
 	//
 	// example:
 	//
@@ -164,7 +164,7 @@ type DescribeApisecApiResourcesRequest struct {
 	Follow *int64 `json:"Follow,omitempty" xml:"Follow,omitempty"`
 	// The ID of the WAF instance.
 	//
-	// > You can call [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) to obtain the ID of the current WAF instance.
+	// > You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to obtain the ID of the WAF instance.
 	//
 	// This parameter is required.
 	//
@@ -178,27 +178,27 @@ type DescribeApisecApiResourcesRequest struct {
 	//
 	// a.aliyun.com
 	MatchedHost *string `json:"MatchedHost,omitempty" xml:"MatchedHost,omitempty"`
-	// The remarks.
+	// The note.
 	//
 	// example:
 	//
 	// loginApi
 	Note *string `json:"Note,omitempty" xml:"Note,omitempty"`
-	// The name of the field used for sorting. Valid values:
+	// The name of the field by which to sort the results. Valid values:
 	//
-	// - **allCnt**: total access volume in the last 30 days.
+	// - **allCnt**: Total number of visits in the last 30 days.
 	//
-	// - **botCnt**: bot access volume in the last 30 days.
+	// - **botCnt**: Number of bot visits in the last 30 days.
 	//
-	// - **crossBorderCnt**: cross-border access volume in the last 30 days.
+	// - **crossBorderCnt**: Number of cross-border visits in the last 30 days.
 	//
-	// - **abnormalNum**: number of risks associated with the API.
+	// - **abnormalNum**: Number of risks associated with the API.
 	//
-	// - **eventNum**: number of events associated with the API.
+	// - **eventNum**: Number of events associated with the API.
 	//
-	// - **farthestTs**: first discovery time.
+	// - **farthestTs**: Time when the API was first discovered.
 	//
-	// - **lastestTs**: most recent access time.
+	// - **lastestTs**: Time of the last visit.
 	//
 	// example:
 	//
@@ -206,7 +206,7 @@ type DescribeApisecApiResourcesRequest struct {
 	OrderKey *string `json:"OrderKey,omitempty" xml:"OrderKey,omitempty"`
 	// The sort order. Valid values:
 	//
-	// - **desc**: Descending order (default).
+	// - **desc**: Descending order. This is the default value.
 	//
 	// - **asc**: Ascending order.
 	//
@@ -214,13 +214,13 @@ type DescribeApisecApiResourcesRequest struct {
 	//
 	// desc
 	OrderWay *string `json:"OrderWay,omitempty" xml:"OrderWay,omitempty"`
-	// The page number of the page to return in a paged query. Default value: **1**, which indicates the first page.
+	// The number of the page to return in a paging query. Default value: **1**, which indicates the first page.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries to return on each page in a paged query. Default value: **10**, which indicates 10 entries per page.
+	// The number of entries to return on each page in a paging query. Default value: **10**, which indicates 10 entries per page.
 	//
 	// example:
 	//
@@ -228,23 +228,23 @@ type DescribeApisecApiResourcesRequest struct {
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The region where the WAF instance resides. Valid values:
 	//
-	// - **cn-hangzhou**: the Chinese mainland.
+	// - **cn-hangzhou**: The Chinese mainland.
 	//
-	// - **ap-southeast-1**: outside the Chinese mainland.
+	// - **ap-southeast-1**: Outside the Chinese mainland.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The type of sensitive information in the request.
+	// The type of sensitive information in requests.
 	//
-	// > You can call [DescribeApisecRules](https://help.aliyun.com/document_detail/2859155.html) to obtain the supported sensitive information types.
+	// > You can call the [DescribeApisecRules](https://help.aliyun.com/document_detail/2859155.html) operation to query the supported sensitive information types.
 	//
 	// example:
 	//
 	// 1004,1005
 	RequestSensitiveType *string `json:"RequestSensitiveType,omitempty" xml:"RequestSensitiveType,omitempty"`
-	// The Alibaba Cloud resource group ID.
+	// The ID of the Alibaba Cloud resource group.
 	//
 	// example:
 	//
@@ -258,21 +258,21 @@ type DescribeApisecApiResourcesRequest struct {
 	//
 	// - **L3**: Low sensitivity.
 	//
-	// - **N**: Not sensitive.
+	// - **N**: Non-sensitive.
 	//
 	// example:
 	//
 	// L3
 	SensitiveLevel *string `json:"SensitiveLevel,omitempty" xml:"SensitiveLevel,omitempty"`
-	// The type of sensitive data in the response.
+	// The type of sensitive data in responses.
 	//
-	// > You can call [DescribeApisecRules](https://help.aliyun.com/document_detail/2859155.html) to obtain the supported sensitive data types.
+	// > You can call the [DescribeApisecRules](https://help.aliyun.com/document_detail/2859155.html) operation to query the supported sensitive data types.
 	//
 	// example:
 	//
 	// 1004
 	SensitiveType *string `json:"SensitiveType,omitempty" xml:"SensitiveType,omitempty"`
-	// The start time of the query, in UNIX timestamp (UTC) format. Unit: seconds.
+	// The start time of the query. The time is a UNIX timestamp in UTC. Unit: seconds.
 	//
 	// example:
 	//

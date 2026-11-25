@@ -22,7 +22,7 @@ type iListTagResourcesRequest interface {
 }
 
 type ListTagResourcesRequest struct {
-	// The token that is used to start the next query.
+	// The token used to start the next query.
 	//
 	// example:
 	//
@@ -40,11 +40,11 @@ type ListTagResourcesRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The resource ID. You can specify up to 50 entries.
+	// The resource IDs. You can specify up to 50 resource IDs.
 	//
 	// > - This parameter is conditionally required. You must specify at least one ResourceId.N value. If ResourceType is set to ALIYUN::WAF::DEFENSERESOURCE, the value of ResourceId corresponds to the Resources[].Resource field returned by the [DescribeDefenseResources](https://help.aliyun.com/document_detail/461612.html) operation.
 	ResourceId []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
-	// The resource type. Set the value to ALIYUN::WAF::DEFENSERESOURCE.
+	// The resource type. Valid values: ALIYUN::WAF::DEFENSERESOURCE.
 	//
 	// This parameter is required.
 	//
@@ -52,7 +52,7 @@ type ListTagResourcesRequest struct {
 	//
 	// ALIYUN::WAF::DEFENSERESOURCE
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// The list of tags. You can specify up to 20 entries.
+	// The list of tags. You can specify up to 20 tags.
 	Tag []*ListTagResourcesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 

@@ -24,9 +24,9 @@ type DescribeDefenseTemplateValidResourcesResponseBody struct {
 	//
 	// C54DD36B-6380-57E5-89BA-2642757C4DB8
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The names of the protected objects that are valid for the protection template.
+	// The list of protected object names.
 	Resources []*string `json:"Resources,omitempty" xml:"Resources,omitempty" type:"Repeated"`
-	// The total number of protected objects that match the query criteria.
+	// The total number of returned entries.
 	//
 	// example:
 	//

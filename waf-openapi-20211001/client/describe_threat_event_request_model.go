@@ -28,13 +28,13 @@ type iDescribeThreatEventRequest interface {
 }
 
 type DescribeThreatEventRequest struct {
-	// The domain name that is protected by WAF. If you do not specify this parameter, security events for all domain names are queried.
+	// The domain name to query.
 	//
 	// example:
 	//
 	// www.abc.com
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	// The end of the time range to query. This value is a UNIX timestamp in milliseconds.
+	// The end time. The value is a UNIX timestamp in UTC. Unit: seconds.
 	//
 	// This parameter is required.
 	//
@@ -44,7 +44,7 @@ type DescribeThreatEventRequest struct {
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// The ID of the Web Application Firewall (WAF) instance.
 	//
-	// > You can call [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) to query the ID of the WAF instance.
+	// > You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
 	//
 	// This parameter is required.
 	//
@@ -52,13 +52,13 @@ type DescribeThreatEventRequest struct {
 	//
 	// waf_v2_public_cn-2bl4****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The page number of the page to return. Default value: 1.
+	// The page number to return when paging through results in a paged query. Default value: 1, which indicates that the first page is returned.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page. Default value: **5**. Valid values: 1 to 200.
+	// The number of entries to return on each page when paging through results in a paged query. Default value: **5**, which indicates that 5 entries are returned on each page. Valid values: 1 to 200.
 	//
 	// example:
 	//
@@ -68,19 +68,19 @@ type DescribeThreatEventRequest struct {
 	//
 	// - **cn-hangzhou**: the Chinese mainland.
 	//
-	// - **ap-southeast-1**: a region outside the Chinese mainland.
+	// - **ap-southeast-1**: outside the Chinese mainland.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the resource group.
+	// The ID of the Alibaba Cloud resource group.
 	//
 	// example:
 	//
 	// rg-aeky65ka*****
 	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
-	// The beginning of the time range to query. This value is a UNIX timestamp in milliseconds.
+	// The start time. The value is a UNIX timestamp in UTC. Unit: seconds.
 	//
 	// This parameter is required.
 	//

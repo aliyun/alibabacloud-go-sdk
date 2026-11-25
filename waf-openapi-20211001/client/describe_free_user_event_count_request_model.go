@@ -18,9 +18,7 @@ type iDescribeFreeUserEventCountRequest interface {
 }
 
 type DescribeFreeUserEventCountRequest struct {
-	// Instance ID of the WAF instance.
-	//
-	// > You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query instance ID of the WAF instance.
+	// Instance ID of the WAF instance. You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query instance ID of the WAF instance.
 	//
 	// This parameter is required.
 	//
@@ -28,7 +26,7 @@ type DescribeFreeUserEventCountRequest struct {
 	//
 	// waf_v3prepay_public_intl-sg-vf***
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The region where the WAF instance is deployed. Valid values:
+	// The region where the WAF instance resides. Valid values:
 	//
 	// - **cn-hangzhou**: the Chinese mainland.
 	//

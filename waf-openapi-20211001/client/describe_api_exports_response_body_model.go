@@ -20,7 +20,7 @@ type iDescribeApiExportsResponseBody interface {
 type DescribeApiExportsResponseBody struct {
 	// The list of export tasks.
 	ApiExports []*DescribeApiExportsResponseBodyApiExports `json:"ApiExports,omitempty" xml:"ApiExports,omitempty" type:"Repeated"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
@@ -83,13 +83,13 @@ func (s *DescribeApiExportsResponseBody) Validate() error {
 }
 
 type DescribeApiExportsResponseBodyApiExports struct {
-	// The time when the export task was created. The value is a UNIX timestamp (UTC). Unit: seconds.
+	// The time when the export task was created. The value is a UNIX timestamp in UTC. Unit: seconds.
 	//
 	// example:
 	//
 	// 1725604852
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The file name.
+	// The name of the file.
 	//
 	// example:
 	//
@@ -113,7 +113,7 @@ type DescribeApiExportsResponseBodyApiExports struct {
 	//
 	// - **exporting**: The export is in progress.
 	//
-	// - **completed**: The export is complete.
+	// - **completed**: The export succeeded.
 	//
 	// example:
 	//
@@ -121,11 +121,11 @@ type DescribeApiExportsResponseBodyApiExports struct {
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	// The type of the export task. Valid values:
 	//
-	// - **apisec_api**: API asset task.
+	// - **apisec_api**: API asset task
 	//
-	// - **apisec_abnormal**: API risk task.
+	// - **apisec_abnormal**: API risk task
 	//
-	// - **apisec_event**: API security event task.
+	// - **apisec_event**: API security event task
 	//
 	// example:
 	//

@@ -32,7 +32,7 @@ type DescribeApisecSuggestionsRequest struct {
 	ApiId *string `json:"ApiId,omitempty" xml:"ApiId,omitempty"`
 	// The ID of the hybrid cloud cluster.
 	//
-	// > This parameter applies only to hybrid cloud scenarios. You can call the [DescribeHybridCloudClusters](https://help.aliyun.com/document_detail/2849376.html) operation to obtain hybrid cloud cluster information.
+	// > This parameter is applicable only to hybrid cloud scenarios. You can call the [DescribeHybridCloudClusters](https://help.aliyun.com/document_detail/2849376.html) operation to obtain the hybrid cloud cluster information.
 	//
 	// example:
 	//
@@ -40,7 +40,7 @@ type DescribeApisecSuggestionsRequest struct {
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
 	// Instance ID of the WAF instance.
 	//
-	// > You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query instance ID of the WAF instance.
+	// > You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query instance ID of the current WAF instance.
 	//
 	// This parameter is required.
 	//
@@ -48,7 +48,7 @@ type DescribeApisecSuggestionsRequest struct {
 	//
 	// waf_v2_public_cn-pe336n43m04
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The region in which the WAF instance is deployed. Valid values:
+	// The region where the WAF instance resides. Valid values:
 	//
 	// - **cn-hangzhou**: the Chinese mainland.
 	//

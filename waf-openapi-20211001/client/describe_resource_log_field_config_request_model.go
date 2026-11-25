@@ -26,9 +26,9 @@ type DescribeResourceLogFieldConfigRequest struct {
 	//
 	// - **sls**: Simple Log Service.
 	//
-	// - **kafka**: Kafka.
+	// - **kafka**: External delivery to Kafka.
 	//
-	// - **syslog**: Syslog.
+	// - **syslog**: External delivery to Syslog.
 	//
 	// This parameter is required.
 	//
@@ -36,9 +36,9 @@ type DescribeResourceLogFieldConfigRequest struct {
 	//
 	// sls
 	DeliveryType *string `json:"DeliveryType,omitempty" xml:"DeliveryType,omitempty"`
-	// The ID of the Web Application Firewall (WAF) instance.
+	// Instance ID of the WAF instance.
 	//
-	// > Call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
+	// > You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query instance ID of the WAF instance.
 	//
 	// This parameter is required.
 	//
@@ -48,15 +48,15 @@ type DescribeResourceLogFieldConfigRequest struct {
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The region where the WAF instance resides. Valid values:
 	//
-	// - **cn-hangzhou**: the Chinese mainland.
+	// - **cn-hangzhou**: The Chinese mainland.
 	//
-	// - **ap-southeast-1**: outside the Chinese mainland.
+	// - **ap-southeast-1**: Outside the Chinese mainland.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The protected object whose log field configuration you want to query.
+	// The protected object to query.
 	//
 	// This parameter is required.
 	//
@@ -64,7 +64,7 @@ type DescribeResourceLogFieldConfigRequest struct {
 	//
 	// test.waf.com-waf
 	Resource *string `json:"Resource,omitempty" xml:"Resource,omitempty"`
-	// The ID of the resource group to which the WAF instance belongs.
+	// The ID of the Alibaba Cloud resource group.
 	//
 	// example:
 	//

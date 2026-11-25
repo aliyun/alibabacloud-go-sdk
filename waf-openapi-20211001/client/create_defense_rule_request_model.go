@@ -23,6 +23,8 @@ type iCreateDefenseRuleRequest interface {
 	GetResource() *string
 	SetResourceManagerResourceGroupId(v string) *CreateDefenseRuleRequest
 	GetResourceManagerResourceGroupId() *string
+	SetResourceType(v string) *CreateDefenseRuleRequest
+	GetResourceType() *string
 	SetRules(v string) *CreateDefenseRuleRequest
 	GetRules() *string
 	SetTemplateId(v int64) *CreateDefenseRuleRequest
@@ -30,56 +32,56 @@ type iCreateDefenseRuleRequest interface {
 }
 
 type CreateDefenseRuleRequest struct {
-	// The WAF protection scenario to create.
+	// The WAF protection scenario to be created.
 	//
-	// When the protection rule type **DefenseType*	- is set to **template**, valid values:
+	// Valid values when the protection rule type **DefenseType*	- is set to **template**:
 	//
 	// - **waf_group**: basic protection.
 	//
-	// - **waf_base**: new version of Web Core Protection.
+	// - **waf_base**: new version of web core protection.
 	//
-	// - **antiscan**: Scan Protection.
+	// - **antiscan**: scan protection.
 	//
-	// - **ip_blacklist**: IP Blacklist.
+	// - **ip_blacklist**: IP blacklist.
 	//
-	// - **custom_acl**: Custom Rule.
+	// - **custom_acl**: custom rules.
 	//
-	// - **whitelist**: Whitelist.
+	// - **whitelist**: whitelist.
 	//
-	// - **region_block**: Location Blacklist.
+	// - **region_block**: area blocking.
 	//
-	// - **custom_response**: legacy Custom Response.
+	// - **custom_response**: custom response of the old version.
 	//
-	// - **cc**: HTTP Flood Protection.
+	// - **cc**: HTTP flood protection.
 	//
-	// - **tamperproof**: web tamper proofing.
+	// - **tamperproof**: web tamper-proofing.
 	//
-	// - **dlp**: Information Leak Prevention.
+	// - **dlp**: data leak prevention.
 	//
 	// - **spike_throttle**: peak traffic throttling.
 	//
-	// - **bot_manager**: BOT Management.
+	// - **bot_manager**: bot management.
 	//
 	//
-	// When the protection rule type **DefenseType*	- is set to **resource**, valid values:
+	// Valid values when the protection rule type **DefenseType*	- is set to **resource**:
 	//
-	// - **account_identifier**: Account Extraction.
+	// -  **account_identifier**: account extraction.
 	//
-	// - **custom_response**: new version of Custom Response.
+	// - **custom_response**: custom response of the new version.
 	//
-	// - **waf_codec**: Decoding.
+	// - **waf_codec**: decoding.
 	//
-	// - **websdk**: WebSDK Integration.
+	// - **websdk**: WebSDK integration.
 	//
-	// When the protection rule type **DefenseType*	- is set to **global**, valid values:
+	// Valid values when the protection rule type **DefenseType*	- is set to **global**:
 	//
-	// - **regular_custom**: Custom Regex.
+	// -  **regular_custom**: custom regular expressions.
 	//
-	// - **address_book**: Address Book.
+	// - **address_book**: address book.
 	//
-	// - **custom_response**: new version of Custom Response.
+	// - **custom_response**: custom response of the new version.
 	//
-	// > For the custom response in global configuration, users can reference it at the protected object or rule level. When custom response rules are referenced at different dimensions, the actual effective logic is: rule level > protected object level > default page.
+	// > For globally configured custom responses, you can reference them under protected objects or rules. When custom response rules are referenced at different dimensions, the actual effective priority is: rule level > protected object level > default page.
 	//
 	// This parameter is required.
 	//
@@ -93,11 +95,11 @@ type CreateDefenseRuleRequest struct {
 	//
 	// template
 	DefenseType *string `json:"DefenseType,omitempty" xml:"DefenseType,omitempty"`
-	// Specifies whether to enable the dry run mode. If you do not specify this parameter, a normal request is sent. Valid values:
+	// Specifies whether to enable the dry run mode. If this parameter is not specified, a normal request is initiated. Valid values:
 	//
-	// - **true**: A dry run request is sent. The system only checks whether the request meets the execution conditions without performing the specified operation. If the dry run fails, the corresponding error code is returned. If the dry run succeeds, the error code Defense.Control.DryRunOperation is returned.
+	// - **true**: initiates a dry run request. The system only checks whether the request meets the execution conditions and does not perform the operations specified in the request. If the dry run fails, the corresponding error code is returned. If the dry run succeeds, the error code Defense.Control.DryRunOperation is returned.
 	//
-	// - **false**: A normal request is sent. The specified operation is performed after the request passes the check.
+	// - **false**: initiates a normal request. The system performs the operations specified in the request after the check succeeds.
 	//
 	// example:
 	//
@@ -105,7 +107,7 @@ type CreateDefenseRuleRequest struct {
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	// Instance ID of the WAF instance.
 	//
-	// > You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query instance ID of your current WAF instance.
+	// > You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query instance ID of your WAF instance.
 	//
 	// This parameter is required.
 	//
@@ -123,7 +125,7 @@ type CreateDefenseRuleRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The protected object associated with the rule to be created.
+	// The protected object corresponding to the created rule.
 	//
 	// > This parameter is required only when **DefenseType*	- is set to **resource**.
 	//
@@ -137,9 +139,19 @@ type CreateDefenseRuleRequest struct {
 	//
 	// rg-acfm***q
 	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
-	// The rule configuration content, which is a string converted from a JSON-formatted array of parameters.
+	// The type of the protected target. This parameter applies to rules where **DefenseType*	- is set to **resource**. Valid values:
 	//
-	// > The specific parameters vary depending on the specified **protection rule type*	- (**DefenseScene**). For more information, refer to **Protection rule parameter descriptions**.
+	// - **single*	- (default): a single protected object.
+	//
+	// - **group**: a protection group.
+	//
+	// example:
+	//
+	// single
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// The rule configuration content, which is converted into a string in JSON format constructed by a series of parameters.
+	//
+	// > The specific parameters involved vary depending on the specified **protection rule type*	- (**DefenseScene**). For more information, see **Protection rule parameter description**.
 	//
 	// This parameter is required.
 	//
@@ -151,7 +163,7 @@ type CreateDefenseRuleRequest struct {
 	//
 	// > This parameter is required only when **DefenseType*	- is set to **template**.
 	//
-	// > There is an upper limit on the number of rules that can be created within the same protection template. For specific limits, refer to **Rule quantity limits**. When the rule quantity has reached the upper limit, you can call the [CreateDefenseTemplate](https://help.aliyun.com/document_detail/461613.html) operation to create a new protection template. You can also call the [ModifyDefenseRule](https://help.aliyun.com/document_detail/461422.html) operation to modify an existing rule.
+	// > The number of rules that can be created in a single protection template is limited. For more information, see **Rule quantity limits**. If the limit is reached, you can call the [CreateDefenseTemplate](https://help.aliyun.com/document_detail/461613.html) operation to create a new protection template, or call the [ModifyDefenseRule](https://help.aliyun.com/document_detail/461422.html) operation to modify an existing rule.
 	//
 	// example:
 	//
@@ -195,6 +207,10 @@ func (s *CreateDefenseRuleRequest) GetResourceManagerResourceGroupId() *string {
 	return s.ResourceManagerResourceGroupId
 }
 
+func (s *CreateDefenseRuleRequest) GetResourceType() *string {
+	return s.ResourceType
+}
+
 func (s *CreateDefenseRuleRequest) GetRules() *string {
 	return s.Rules
 }
@@ -235,6 +251,11 @@ func (s *CreateDefenseRuleRequest) SetResource(v string) *CreateDefenseRuleReque
 
 func (s *CreateDefenseRuleRequest) SetResourceManagerResourceGroupId(v string) *CreateDefenseRuleRequest {
 	s.ResourceManagerResourceGroupId = &v
+	return s
+}
+
+func (s *CreateDefenseRuleRequest) SetResourceType(v string) *CreateDefenseRuleRequest {
+	s.ResourceType = &v
 	return s
 }
 

@@ -14,7 +14,7 @@ type iDeleteLogDeliveryConfigResponseBody interface {
 }
 
 type DeleteLogDeliveryConfigResponseBody struct {
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//

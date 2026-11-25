@@ -42,13 +42,17 @@ type DescribeInstanceResponseBody struct {
 	//
 	// default_version
 	Edition *string `json:"Edition,omitempty" xml:"Edition,omitempty"`
-	// The time when the instance expires. The value is a UNIX timestamp. Unit: milliseconds. Format: ms.
+	// The time when the instance expires. The value is a UNIX timestamp in the format of milliseconds.
 	//
 	// example:
 	//
 	// 4809859200000
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// Indicates whether the current instance has an overdue payment. Valid values:
+	// Specifies whether the instance has an overdue payment. Valid values:
+	//
+	// - **0**: Normal.
+	//
+	// - **1**: Overdue payment.
 	//
 	// example:
 	//
@@ -62,19 +66,23 @@ type DescribeInstanceResponseBody struct {
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The billing method of the instance. Valid values:
 	//
+	// - **POSTPAY**: Pay-as-you-go.
+	//
+	// - **PREPAY**: Subscription.
+	//
 	// example:
 	//
 	// POSTPAY
 	PayType *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
-	// The instance execution status. Valid values:
+	// The execution status of the instance. Valid values:
 	//
 	// - **commodity_converting**: The commodity is being converted.
 	//
-	// - **commodity_convert_check_failed**: The commodity conversion check failed.
+	// - **commodity_convert_check_failed**: The commodity conversion verification failed.
 	//
 	// - **commodity_convert_process_failed**: The commodity conversion failed.
 	//
-	// - **order_create_failed**: The order failed to be created.
+	// - **order_create_failed**: The order creation failed.
 	//
 	// - **order_pending_payment**: The order is pending payment.
 	//
@@ -235,19 +243,29 @@ func (s *DescribeInstanceResponseBody) Validate() error {
 }
 
 type DescribeInstanceResponseBodyDetails struct {
-	// The maximum number of IP addresses that can be added to the match content. For more information about match content, refer to [Match condition description](https://help.aliyun.com/document_detail/374354.html).
+	// The maximum number of IP addresses that can be added to the match content. For more information about match content, see [Match condition description](https://help.aliyun.com/document_detail/374354.html).
 	//
 	// example:
 	//
 	// 100
 	AclRuleMaxIpCount *int64 `json:"AclRuleMaxIpCount,omitempty" xml:"AclRuleMaxIpCount,omitempty"`
-	// Indicates whether Agentic API security is enabled.
+	// Specifies whether the Agentic API security feature is enabled.
 	//
 	// example:
 	//
 	// true
 	AgenticApisec *bool `json:"AgenticApisec,omitempty" xml:"AgenticApisec,omitempty"`
+	// Specifies whether the instance is an Agentic WAF edition.
+	//
+	// example:
+	//
+	// true
+	AgenticWaf *bool `json:"AgenticWaf,omitempty" xml:"AgenticWaf,omitempty"`
 	// Specifies whether scan protection is supported. Valid values:
+	//
+	// - **true**: Supported.
+	//
+	// - **false**: Not supported.
 	//
 	// example:
 	//
@@ -259,7 +277,7 @@ type DescribeInstanceResponseBodyDetails struct {
 	//
 	// 20
 	AntiScanTemplateMaxCount *int64 `json:"AntiScanTemplateMaxCount,omitempty" xml:"AntiScanTemplateMaxCount,omitempty"`
-	// Indicates whether API security is enabled.
+	// Specifies whether the API security feature is enabled.
 	//
 	// example:
 	//
@@ -295,11 +313,15 @@ type DescribeInstanceResponseBodyDetails struct {
 	BaseWafGroupRuleTemplateMaxCount *int64 `json:"BaseWafGroupRuleTemplateMaxCount,omitempty" xml:"BaseWafGroupRuleTemplateMaxCount,omitempty"`
 	// Specifies whether bot management is supported. Valid values:
 	//
+	// - **true**: Supported.
+	//
+	// - **false**: Not supported.
+	//
 	// example:
 	//
 	// true
 	Bot *bool `json:"Bot,omitempty" xml:"Bot,omitempty"`
-	// Indicates whether scenario-specific protection against app crawlers is supported. Valid values:
+	// Specifies whether scenario-specific anti-crawler protection for apps is supported. Valid values:
 	//
 	// - **true**: Supported.
 	//
@@ -315,7 +337,7 @@ type DescribeInstanceResponseBodyDetails struct {
 	//
 	// 50
 	BotTemplateMaxCount *int64 `json:"BotTemplateMaxCount,omitempty" xml:"BotTemplateMaxCount,omitempty"`
-	// Specifies whether scenario-specific protection against web crawlers is supported. Valid values:
+	// Specifies whether scenario-specific anti-crawler protection for websites is supported. Valid values:
 	//
 	// - **true**: Supported.
 	//
@@ -325,13 +347,13 @@ type DescribeInstanceResponseBodyDetails struct {
 	//
 	// true
 	BotWeb *string `json:"BotWeb,omitempty" xml:"BotWeb,omitempty"`
-	// The maximum number of CNAMEs that can be added.
+	// The maximum number of CNAME records that can be added.
 	//
 	// example:
 	//
 	// 1000
 	CnameResourceMaxCount *int64 `json:"CnameResourceMaxCount,omitempty" xml:"CnameResourceMaxCount,omitempty"`
-	// Indicates whether custom responses are supported. Valid values:
+	// Specifies whether custom responses are supported. Valid values:
 	//
 	// - **true**: Supported.
 	//
@@ -341,7 +363,7 @@ type DescribeInstanceResponseBodyDetails struct {
 	//
 	// true
 	CustomResponse *bool `json:"CustomResponse,omitempty" xml:"CustomResponse,omitempty"`
-	// The maximum number of protection rules that a single custom response template can contain.
+	// The maximum number of protection rules that can be included in a single custom response template.
 	//
 	// example:
 	//
@@ -369,19 +391,19 @@ type DescribeInstanceResponseBodyDetails struct {
 	//
 	// block
 	CustomRuleAction *string `json:"CustomRuleAction,omitempty" xml:"CustomRuleAction,omitempty"`
-	// The match conditions for custom rules. For more information, refer to the parameter description of **custom rule (custom_acl) conditions*	- in [CreateDefenseRule](https://help.aliyun.com/document_detail/461421.html).
+	// The match conditions for custom rules. For more information, see the parameter description of **conditions*	- for **custom rules (custom_acl)*	- in [CreateDefenseRule](https://help.aliyun.com/document_detail/461421.html).
 	//
 	// example:
 	//
 	// URL
 	CustomRuleCondition *string `json:"CustomRuleCondition,omitempty" xml:"CustomRuleCondition,omitempty"`
-	// The maximum number of protection rules that a single custom rule template can contain.
+	// The maximum number of protection rules that can be included in a single custom rule template.
 	//
 	// example:
 	//
 	// 100
 	CustomRuleInTemplateMaxCount *int64 `json:"CustomRuleInTemplateMaxCount,omitempty" xml:"CustomRuleInTemplateMaxCount,omitempty"`
-	// The rate limiting object for custom rules.
+	// The rate limiting objects for custom rules.
 	//
 	// example:
 	//
@@ -399,25 +421,25 @@ type DescribeInstanceResponseBodyDetails struct {
 	//
 	// 100
 	DefenseGroupMaxCount *int64 `json:"DefenseGroupMaxCount,omitempty" xml:"DefenseGroupMaxCount,omitempty"`
-	// The maximum number of protection objects that a protection group can contain.
+	// The maximum number of protected objects that can be included in a protection group.
 	//
 	// example:
 	//
 	// 100
 	DefenseObjectInGroupMaxCount *int64 `json:"DefenseObjectInGroupMaxCount,omitempty" xml:"DefenseObjectInGroupMaxCount,omitempty"`
-	// The maximum number of protection objects that can be associated with a single template.
+	// The maximum number of protected objects that can be associated with a single template.
 	//
 	// example:
 	//
 	// 100
 	DefenseObjectInTemplateMaxCount *int64 `json:"DefenseObjectInTemplateMaxCount,omitempty" xml:"DefenseObjectInTemplateMaxCount,omitempty"`
-	// The maximum number of protection objects that can be configured.
+	// The maximum number of protected objects that can be configured.
 	//
 	// example:
 	//
 	// 20000
 	DefenseObjectMaxCount *int64 `json:"DefenseObjectMaxCount,omitempty" xml:"DefenseObjectMaxCount,omitempty"`
-	// Specifies whether data leak prevention is supported. Valid values:
+	// Specifies whether information leak prevention is supported. Valid values:
 	//
 	// - **true**: Supported.
 	//
@@ -427,7 +449,7 @@ type DescribeInstanceResponseBodyDetails struct {
 	//
 	// true
 	Dlp *bool `json:"Dlp,omitempty" xml:"Dlp,omitempty"`
-	// The maximum number of protection rules that a single information leak prevention template can contain.
+	// The maximum number of protection rules that can be included in a single information leak prevention template.
 	//
 	// example:
 	//
@@ -439,9 +461,9 @@ type DescribeInstanceResponseBodyDetails struct {
 	//
 	// 50
 	DlpTemplateMaxCount *int64 `json:"DlpTemplateMaxCount,omitempty" xml:"DlpTemplateMaxCount,omitempty"`
-	// The burstable QPS value for the subscription instance with pay-as-you-go billing for burstable capacity. For more information, see [WAF 3.0 editions](https://help.aliyun.com/document_detail/441231.html).
+	// The burstable pay-as-you-go QPS value for subscription instances. For more information, see [WAF 3.0 editions](https://help.aliyun.com/document_detail/441231.html).
 	//
-	// > This parameter has no practical meaning for **pay-as-you-go*	- instances.
+	// > This parameter is not applicable to **pay-as-you-go*	- instances.
 	//
 	// example:
 	//
@@ -449,11 +471,15 @@ type DescribeInstanceResponseBodyDetails struct {
 	ElasticQps *int32 `json:"ElasticQps,omitempty" xml:"ElasticQps,omitempty"`
 	// Specifies whether exclusive IP addresses are supported. Valid values:
 	//
+	// - **true**: Supported.
+	//
+	// - **false**: Not supported.
+	//
 	// example:
 	//
 	// true
 	ExclusiveIp *bool `json:"ExclusiveIp,omitempty" xml:"ExclusiveIp,omitempty"`
-	// The extended QPS value of the subscription instance. For more information, see [WAF 3.0 editions](https://help.aliyun.com/document_detail/441231.html).
+	// The extended QPS value for subscription instances. For more information, see [WAF 3.0 editions](https://help.aliyun.com/document_detail/441231.html).
 	//
 	// > This parameter is not applicable to **pay-as-you-go*	- instances.
 	//
@@ -461,9 +487,9 @@ type DescribeInstanceResponseBodyDetails struct {
 	//
 	// 10000
 	ExtendQps *int32 `json:"ExtendQps,omitempty" xml:"ExtendQps,omitempty"`
-	// The free QPS value included in the subscription plan. For more information, see [WAF 3.0 editions](https://help.aliyun.com/document_detail/441231.html).
+	// The free QPS value for subscription instances. For more information, see [WAF 3.0 editions](https://help.aliyun.com/document_detail/441231.html).
 	//
-	// > This parameter has no practical meaning for **pay-as-you-go*	- instances.
+	// > This parameter is not applicable to **pay-as-you-go*	- instances.
 	//
 	// example:
 	//
@@ -471,35 +497,39 @@ type DescribeInstanceResponseBodyDetails struct {
 	FreeQps *int32 `json:"FreeQps,omitempty" xml:"FreeQps,omitempty"`
 	// Specifies whether Global Server Load Balancing (GSLB) is supported. Valid values:
 	//
+	// - **true**: Supported.
+	//
+	// - **false**: Not supported.
+	//
 	// example:
 	//
 	// true
 	Gslb *bool `json:"Gslb,omitempty" xml:"Gslb,omitempty"`
-	// The available HTTP port range. For more information, refer to [Ports supported by WAF](https://help.aliyun.com/document_detail/385578.html).
+	// The available HTTP port range. For more information, see [Port ranges supported by WAF](https://help.aliyun.com/document_detail/385578.html).
 	//
 	// example:
 	//
 	// 80
 	HttpPorts *string `json:"HttpPorts,omitempty" xml:"HttpPorts,omitempty"`
-	// The available HTTPS port range. For more information, refer to [Ports supported by WAF](https://help.aliyun.com/document_detail/385578.html).
+	// The available HTTPS port range. For more information, see [Port ranges supported by WAF](https://help.aliyun.com/document_detail/385578.html).
 	//
 	// example:
 	//
 	// 443
 	HttpsPorts *string `json:"HttpsPorts,omitempty" xml:"HttpsPorts,omitempty"`
-	// Indicates whether hybrid cloud is enabled.
+	// Specifies whether the hybrid cloud feature is enabled.
 	//
 	// example:
 	//
 	// true
 	HybridCloud *bool `json:"HybridCloud,omitempty" xml:"HybridCloud,omitempty"`
-	// The number of hybrid cloud extended nodes.
+	// The number of extended nodes for the hybrid cloud.
 	//
 	// example:
 	//
 	// 3
 	HybridCloudNodeExtend *int32 `json:"HybridCloudNodeExtend,omitempty" xml:"HybridCloudNodeExtend,omitempty"`
-	// Indicates whether the IP blacklist is supported. Valid values:
+	// Specifies whether IP blacklist is supported. Valid values:
 	//
 	// - **true**: Supported.
 	//
@@ -515,7 +545,7 @@ type DescribeInstanceResponseBodyDetails struct {
 	//
 	// 200
 	IpBlacklistIpInRuleMaxCount *int64 `json:"IpBlacklistIpInRuleMaxCount,omitempty" xml:"IpBlacklistIpInRuleMaxCount,omitempty"`
-	// The maximum number of protection rules that a single blacklist template can contain.
+	// The maximum number of protection rules that can be included in a single blacklist template.
 	//
 	// example:
 	//
@@ -529,11 +559,19 @@ type DescribeInstanceResponseBodyDetails struct {
 	IpBlacklistTemplateMaxCount *int64 `json:"IpBlacklistTemplateMaxCount,omitempty" xml:"IpBlacklistTemplateMaxCount,omitempty"`
 	// Specifies whether IPv6 is supported. Valid values:
 	//
+	// - **true**: Supported.
+	//
+	// - **false**: Not supported.
+	//
 	// example:
 	//
 	// true
 	Ipv6 *bool `json:"Ipv6,omitempty" xml:"Ipv6,omitempty"`
-	// Specifies whether the log service is supported. Valid values:
+	// Specifies whether Simple Log Service is supported. Valid values:
+	//
+	// - **true**: Supported.
+	//
+	// - **false**: Not supported.
 	//
 	// example:
 	//
@@ -555,15 +593,15 @@ type DescribeInstanceResponseBodyDetails struct {
 	//
 	// 20
 	MajorProtectionTemplateMaxCount *int64 `json:"MajorProtectionTemplateMaxCount,omitempty" xml:"MajorProtectionTemplateMaxCount,omitempty"`
-	// The QPS billing protection threshold for the pay-as-you-go edition. For more information, see [Traffic billing protection](https://help.aliyun.com/document_detail/2249021.html) for pay-as-you-go.
+	// The QPS traffic billing protection threshold for pay-as-you-go instances. For more information, see [Traffic billing protection](https://help.aliyun.com/document_detail/2249021.html) for pay-as-you-go instances.
 	//
-	// > This parameter has no practical meaning for **subscription*	- instances.
+	// > This parameter is not applicable to **subscription*	- instances.
 	//
 	// example:
 	//
 	// 2000
 	QpsBillingCap *int32 `json:"QpsBillingCap,omitempty" xml:"QpsBillingCap,omitempty"`
-	// Indicates whether the multi-account management feature is supported.
+	// Specifies whether the multi-account management feature is supported.
 	//
 	// example:
 	//
@@ -571,11 +609,15 @@ type DescribeInstanceResponseBodyDetails struct {
 	ResourceDirectory *bool `json:"ResourceDirectory,omitempty" xml:"ResourceDirectory,omitempty"`
 	// Specifies whether web tamper proofing is supported. Valid values:
 	//
+	// - **true**: Supported.
+	//
+	// - **false**: Not supported.
+	//
 	// example:
 	//
 	// true
 	Tamperproof *bool `json:"Tamperproof,omitempty" xml:"Tamperproof,omitempty"`
-	// The maximum number of protection rules that a single web tamper proofing template can contain.
+	// The maximum number of protection rules that can be included in a single web tamper proofing template.
 	//
 	// example:
 	//
@@ -587,25 +629,25 @@ type DescribeInstanceResponseBodyDetails struct {
 	//
 	// 50
 	TamperproofTemplateMaxCount *int64 `json:"TamperproofTemplateMaxCount,omitempty" xml:"TamperproofTemplateMaxCount,omitempty"`
-	// The maximum number of IP addresses that can be imported to the IP blacklist in a single bulk import.
+	// The maximum number of IP addresses that can be imported to an IP blacklist in a single batch.
 	//
 	// example:
 	//
 	// 2000
 	VastIpBlacklistInFileMaxCount *int64 `json:"VastIpBlacklistInFileMaxCount,omitempty" xml:"VastIpBlacklistInFileMaxCount,omitempty"`
-	// The maximum number of IP addresses that can be added to the IP blacklist in a single page operation.
+	// The maximum number of IP addresses that can be added to an IP blacklist in a single page operation.
 	//
 	// example:
 	//
 	// 500
 	VastIpBlacklistInOperationMaxCount *int64 `json:"VastIpBlacklistInOperationMaxCount,omitempty" xml:"VastIpBlacklistInOperationMaxCount,omitempty"`
-	// The maximum number of IP blacklist entries that a single user can configure.
+	// The maximum number of IP blacklists that can be configured per user.
 	//
 	// example:
 	//
 	// 50000
 	VastIpBlacklistMaxCount *int64 `json:"VastIpBlacklistMaxCount,omitempty" xml:"VastIpBlacklistMaxCount,omitempty"`
-	// Specifies whether the IP whitelist is supported. Valid values:
+	// Specifies whether IP address whitelists are supported. Valid values:
 	//
 	// - **true**: Supported.
 	//
@@ -615,19 +657,19 @@ type DescribeInstanceResponseBodyDetails struct {
 	//
 	// true
 	Whitelist *bool `json:"Whitelist,omitempty" xml:"Whitelist,omitempty"`
-	// The logical operators for whitelist rules. For more information, refer to the parameter description of **whitelist rule (whitelist) conditions*	- in [CreateDefenseRule](https://help.aliyun.com/document_detail/461421.html).
+	// The logical operators for whitelist rules. For more information, see the parameter description of **conditions*	- for **whitelist rules*	- in [CreateDefenseRule](https://help.aliyun.com/document_detail/461421.html).
 	//
 	// example:
 	//
 	// contain
 	WhitelistLogical *string `json:"WhitelistLogical,omitempty" xml:"WhitelistLogical,omitempty"`
-	// The match fields for whitelist rules. For more information, refer to the parameter description of **whitelist rule (whitelist) conditions*	- in [CreateDefenseRule](https://help.aliyun.com/document_detail/461421.html).
+	// The match fields for whitelist rules. For more information, see the parameter description of **conditions*	- for **whitelist rules*	- in [CreateDefenseRule](https://help.aliyun.com/document_detail/461421.html).
 	//
 	// example:
 	//
 	// URL
 	WhitelistRuleCondition *string `json:"WhitelistRuleCondition,omitempty" xml:"WhitelistRuleCondition,omitempty"`
-	// The maximum number of protection rules that a single whitelist template can contain.
+	// The maximum number of protection rules that can be included in a single whitelist template.
 	//
 	// example:
 	//
@@ -655,6 +697,10 @@ func (s *DescribeInstanceResponseBodyDetails) GetAclRuleMaxIpCount() *int64 {
 
 func (s *DescribeInstanceResponseBodyDetails) GetAgenticApisec() *bool {
 	return s.AgenticApisec
+}
+
+func (s *DescribeInstanceResponseBodyDetails) GetAgenticWaf() *bool {
+	return s.AgenticWaf
 }
 
 func (s *DescribeInstanceResponseBodyDetails) GetAntiScan() *bool {
@@ -896,6 +942,11 @@ func (s *DescribeInstanceResponseBodyDetails) SetAclRuleMaxIpCount(v int64) *Des
 
 func (s *DescribeInstanceResponseBodyDetails) SetAgenticApisec(v bool) *DescribeInstanceResponseBodyDetails {
 	s.AgenticApisec = &v
+	return s
+}
+
+func (s *DescribeInstanceResponseBodyDetails) SetAgenticWaf(v bool) *DescribeInstanceResponseBodyDetails {
+	s.AgenticWaf = &v
 	return s
 }
 

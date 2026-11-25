@@ -16,13 +16,13 @@ type iDescribeThreatEventTopMetricResponseBody interface {
 }
 
 type DescribeThreatEventTopMetricResponseBody struct {
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
 	// 12EF3845-CCEB-4B84-AE60-2B49B*****EE5
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The list of statistics.
+	// The list of statistical data.
 	TopMetrics []*DescribeThreatEventTopMetricResponseBodyTopMetrics `json:"TopMetrics,omitempty" xml:"TopMetrics,omitempty" type:"Repeated"`
 }
 
@@ -74,7 +74,7 @@ type DescribeThreatEventTopMetricResponseBodyTopMetrics struct {
 	Cnt *int64 `json:"Cnt,omitempty" xml:"Cnt,omitempty"`
 	// The country to which the source IP address of the attack belongs.
 	//
-	// > This field returns a meaningful value only when the statistical object (**Metric**) is set to source IP address (**src**).
+	// > This field is valid only when **Metric*	- is set to **src*	- (source IP address of the attack).
 	//
 	// example:
 	//
@@ -82,13 +82,13 @@ type DescribeThreatEventTopMetricResponseBodyTopMetrics struct {
 	Country *string `json:"Country,omitempty" xml:"Country,omitempty"`
 	// The region to which the source IP address of the attack belongs.
 	//
-	// > This field returns a meaningful value only when the statistical object (**Metric**) is set to source IP address (**src**).
+	// > This field is valid only when **Metric*	- is set to **src*	- (source IP address of the attack).
 	//
 	// example:
 	//
 	// cn-hangzhou
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	// The attack value. The meaning of this field varies depending on the value of **Metric**.
+	// The attack value. The meaning of this field varies based on the value of **Metric**.
 	//
 	// - If **Metric*	- is set to **time**, this field indicates the attack time.
 	//
@@ -96,7 +96,7 @@ type DescribeThreatEventTopMetricResponseBodyTopMetrics struct {
 	//
 	// - If **Metric*	- is set to **target**, this field indicates the URL of the attack request.
 	//
-	// - If **Metric*	- is set to **type**, this field indicates the attack type. **dirscan*	- indicates directory scanning, **webscan*	- indicates web scanning, and other attack types are described in the **detectType*	- (detection type) parameter of the **custom regular rule*	- (**regular_custom**) in the [**CreateDefenseRule**](https://help.aliyun.com/document_detail/461421.html) operation.
+	// - If **Metric*	- is set to **type**, this field indicates the attack type. **dirscan*	- indicates directory scanning, and **webscan*	- indicates web scanning. For other attack types, see the description of **detectType*	- in **regular_custom*	- (custom regular rules) in the [**CreateDefenseRule**](https://help.aliyun.com/document_detail/461421.html) operation.
 	//
 	// - If **Metric*	- is set to **tools**, this field indicates the attack tool.
 	//

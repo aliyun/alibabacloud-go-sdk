@@ -18,9 +18,9 @@ type iDescribeAbnormalCloudResourcesRequest interface {
 }
 
 type DescribeAbnormalCloudResourcesRequest struct {
-	// The ID of the WAF instance.
+	// The WAF instance ID.
 	//
-	// > You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to obtain the WAF instance ID.
+	// > You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the current WAF instance ID.
 	//
 	// This parameter is required.
 	//

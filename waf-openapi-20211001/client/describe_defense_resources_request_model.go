@@ -28,19 +28,19 @@ type iDescribeDefenseResourcesRequest interface {
 type DescribeDefenseResourcesRequest struct {
 	// Instance ID of the WAF instance.
 	//
-	// > You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query instance ID of the WAF instance.
+	// > You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query instance ID of the current WAF instance.
 	//
 	// example:
 	//
 	// waf_cdnsdf3****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The page number to return when paging is used. Default value: **1**, which indicates the first page.
+	// The number of the page to return for the paged query. Default value: **1**, which indicates the first page during paging.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page when paging is used. Default value: **10**, which indicates that 10 entries are returned on each page.
+	// The number of entries to return on each page for the paged query. Default value: **10**, which indicates 10 entries per page during paging.
 	//
 	// example:
 	//
@@ -48,13 +48,13 @@ type DescribeDefenseResourcesRequest struct {
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The query conditions. The value is a JSON string.
 	//
-	// > The query results vary based on the query conditions. For more information, see **Query parameter description**.
+	// > The returned protected objects vary based on the query conditions. For more information, see **Description of the Query parameter**.
 	//
 	// example:
 	//
 	// {\\"product\\":\\"waf\\"}
 	Query *string `json:"Query,omitempty" xml:"Query,omitempty"`
-	// The region where the WAF instance is deployed. Valid values:
+	// The region where the WAF instance resides. Valid values:
 	//
 	// - **cn-hangzhou**: the Chinese mainland.
 	//

@@ -22,13 +22,13 @@ type iDescribeSecurityEventTimeSeriesMetricRequest interface {
 }
 
 type DescribeSecurityEventTimeSeriesMetricRequest struct {
-	// The filter conditions for the query. Multiple filter conditions have a logical AND relationship.
+	// The query filter conditions. Multiple filter conditions are connected by the logical AND operator.
 	//
 	// This parameter is required.
 	Filter *DescribeSecurityEventTimeSeriesMetricRequestFilter `json:"Filter,omitempty" xml:"Filter,omitempty" type:"Struct"`
-	// The ID of the Web Application Firewall (WAF) instance.
+	// Instance ID of the WAF instance.
 	//
-	// > Call [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) to query the ID of the WAF instance.
+	// > You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query instance ID of the WAF instance.
 	//
 	// This parameter is required.
 	//
@@ -36,15 +36,15 @@ type DescribeSecurityEventTimeSeriesMetricRequest struct {
 	//
 	// waf-cn-tl32ast****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// Specifies the content of the returned data. Different metrics correspond to different data content. This operation supports the following metrics:
+	// The metric used to distinguish the returned data content. Different metrics correspond to different data content. This operation supports the following metrics:
 	//
-	// - mitigated_requests: Returns the time series statistics of blocked requests.
+	// - mitigated_requests: returns the time series statistics of blocked requests.
 	//
-	// - monitored_requests: Returns the time series statistics of requests that hit only observation-type rules.
+	// - monitored_requests: returns the time series statistics of requests that only hit monitor rules.
 	//
-	// - mitigated_requests_group_by_defense_scene: Returns data grouped by module. It records a time series graph of the hit count for each module. A single request may hit multiple modules. Therefore, the hit count returned by this metric may not be consistent with the number of requests.
+	// - mitigated_requests_group_by_defense_scene: returns data grouped by protection module, recording the time series statistics of hits for each module. A single request may hit multiple modules, so the number of module hits returned by this metric may not match the number of requests.
 	//
-	// - mitigated_requests_group_by_block_defense_scene: Returns data grouped by module. It records a time series graph of the number of blocked requests for each module. A single request is blocked by only one module. Therefore, the count returned by this metric is consistent with the number of requests.
+	// - mitigated_requests_group_by_block_defense_scene: returns data grouped by protection module, recording the time series statistics of blocked requests for each module. A single request is blocked by only one module, so the statistical count returned by this metric is consistent with the number of requests.
 	//
 	// This parameter is required.
 	//
@@ -133,9 +133,9 @@ func (s *DescribeSecurityEventTimeSeriesMetricRequest) Validate() error {
 }
 
 type DescribeSecurityEventTimeSeriesMetricRequestFilter struct {
-	// A list of filter conditions. Each node describes one filter condition.
+	// The list of filter conditions. Each node describes a filter condition.
 	Conditions []*DescribeSecurityEventTimeSeriesMetricRequestFilterConditions `json:"Conditions,omitempty" xml:"Conditions,omitempty" type:"Repeated"`
-	// The time range to query.
+	// The time range for the query.
 	//
 	// This parameter is required.
 	DateRange *DescribeSecurityEventTimeSeriesMetricRequestFilterDateRange `json:"DateRange,omitempty" xml:"DateRange,omitempty" type:"Struct"`
@@ -186,7 +186,7 @@ func (s *DescribeSecurityEventTimeSeriesMetricRequestFilter) Validate() error {
 }
 
 type DescribeSecurityEventTimeSeriesMetricRequestFilterConditions struct {
-	// The name of the field to filter. This operation supports all fields.
+	// The name of the field on which the filter operation is performed. This operation supports all fields.
 	//
 	// example:
 	//
@@ -246,7 +246,7 @@ func (s *DescribeSecurityEventTimeSeriesMetricRequestFilterConditions) Validate(
 }
 
 type DescribeSecurityEventTimeSeriesMetricRequestFilterDateRange struct {
-	// The end time of the query. This is a UNIX timestamp. Unit: seconds.
+	// The end time of the query. The end time is represented by a UNIX timestamp in seconds.
 	//
 	// This parameter is required.
 	//
@@ -254,9 +254,12 @@ type DescribeSecurityEventTimeSeriesMetricRequestFilterDateRange struct {
 	//
 	// 1713888600
 	EndDate *int64 `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
-	// You can query data from the last 30 days. The start time of the query. This is a UNIX timestamp. Unit: seconds.
+	// The start time of the query. The data query range cannot exceed the past 30 days. The start time is represented by a UNIX timestamp in seconds.
 	//
-	// > ## The start time must be within the last 30 days.
+	//
+	// > The start time must be later than the current time minus 30 days.
+	//
+	// > -
 	//
 	// This parameter is required.
 	//

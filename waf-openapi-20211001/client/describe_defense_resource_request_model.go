@@ -22,7 +22,7 @@ type iDescribeDefenseResourceRequest interface {
 type DescribeDefenseResourceRequest struct {
 	// The ID of the WAF instance.
 	//
-	// > You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) API operation to query the ID of the current WAF instance.
+	// > You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the current WAF instance ID.
 	//
 	// example:
 	//
@@ -30,7 +30,7 @@ type DescribeDefenseResourceRequest struct {
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The region where the WAF instance resides. Valid values:
 	//
-	// - **cn-hangzhou**: Chinese mainland.
+	// - **cn-hangzhou**: the Chinese mainland.
 	//
 	// - **ap-southeast-1**: outside the Chinese mainland.
 	//
@@ -38,7 +38,7 @@ type DescribeDefenseResourceRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The name of the protected object to query. You can set this parameter to precisely query a protected object that has been added to WAF.
+	// The name of the protected object to query. You can set this parameter to accurately query the protected objects that are added to WAF.
 	//
 	// This parameter is required.
 	//

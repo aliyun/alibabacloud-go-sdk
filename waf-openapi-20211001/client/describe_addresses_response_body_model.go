@@ -24,27 +24,27 @@ type iDescribeAddressesResponseBody interface {
 type DescribeAddressesResponseBody struct {
 	// The list of addresses.
 	AddressList []*DescribeAddressesResponseBodyAddressList `json:"AddressList,omitempty" xml:"AddressList,omitempty" type:"Repeated"`
-	// The number of entries per page for paging. Valid values: 1 to 500. Default value: 20.
+	// The number of entries to return per page in a paging query. Valid values: 1 to 500. Default value: 20.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The pagination token for the next page. If a next page exists, this field contains a value.
+	// The pagination token for the next page. This field is returned only when a next page exists.
 	//
-	// > If this parameter has a return value, a next page exists. You can pass the returned **NextToken*	- as a request parameter to retrieve the next page of data. Repeat this process until no value is returned, which indicates that all data has been retrieved.
+	// > If this parameter returns a value, a next page exists. You can use the returned **NextToken*	- value as a request parameter to obtain the data on the next page until no value is returned, which indicates that all data is obtained.
 	//
 	// example:
 	//
 	// AAAAAGBgV9tolsLfijC4wam2htS*****D/46H3X2wIS
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
 	// 8D8EBFB7-E1EB-5236-952A-092EDC72***
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries returned.
+	// The total number of returned entries.
 	//
 	// example:
 	//
@@ -125,13 +125,13 @@ type DescribeAddressesResponseBodyAddressList struct {
 	//
 	// 1.1.1.1
 	Address *string `json:"Address,omitempty" xml:"Address,omitempty"`
-	// The most recent modification time of the address. The value is a UNIX timestamp in milliseconds.
+	// The time when the address was last modified. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
 	// 1760408233000
 	GmtModified *int64 `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	// The address book ID.
+	// The ID of the address book.
 	//
 	// example:
 	//

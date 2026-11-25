@@ -23,6 +23,8 @@ type iModifyDefenseRuleRequest interface {
 	GetResource() *string
 	SetResourceManagerResourceGroupId(v string) *ModifyDefenseRuleRequest
 	GetResourceManagerResourceGroupId() *string
+	SetResourceType(v string) *ModifyDefenseRuleRequest
+	GetResourceType() *string
 	SetRules(v string) *ModifyDefenseRuleRequest
 	GetRules() *string
 	SetTemplateId(v int64) *ModifyDefenseRuleRequest
@@ -30,7 +32,7 @@ type iModifyDefenseRuleRequest interface {
 }
 
 type ModifyDefenseRuleRequest struct {
-	// The protection scenario to modify. For more information, see the **DefenseScene*	- parameter in [CreateDefenseRule](https://help.aliyun.com/document_detail/461421.html).
+	// The protection scenario to be modified. For more information, see the **DefenseScene*	- parameter in [CreateDefenseRule](https://help.aliyun.com/document_detail/461421.html).
 	//
 	// example:
 	//
@@ -42,11 +44,11 @@ type ModifyDefenseRuleRequest struct {
 	//
 	// template
 	DefenseType *string `json:"DefenseType,omitempty" xml:"DefenseType,omitempty"`
-	// Specifies whether to enable the dry run mode. If you do not specify this parameter, a normal request is sent. Valid values:
+	// Specifies whether to enable the dry run mode. If you do not specify this parameter, a normal request is initiated. Valid values:
 	//
-	// - **true**: A dry run request is sent. The system checks whether the request meets the execution conditions without performing the specified operation. If the dry run fails, the corresponding error code is returned. If the dry run succeeds, the error code Defense.Control.DryRunOperation is returned.
+	// - **true**: initiates a dry run request. The system only checks whether the request meets the execution conditions and does not perform the operations specified in the request. If the dry run fails, the corresponding error code is returned. If the dry run succeeds, the error code Defense.Control.DryRunOperation is returned.
 	//
-	// - **false**: A normal request is sent. The specified operation is performed after the request passes the check.
+	// - **false**: initiates a normal request. The system performs the operations specified in the request after the check succeeds.
 	//
 	// example:
 	//
@@ -54,7 +56,7 @@ type ModifyDefenseRuleRequest struct {
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	// Instance ID of the WAF instance.
 	//
-	// > You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query instance ID of the current WAF instance.
+	// > You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query instance ID of the WAF instance.
 	//
 	// This parameter is required.
 	//
@@ -62,7 +64,7 @@ type ModifyDefenseRuleRequest struct {
 	//
 	// waf_cdnsdf3****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The region where the WAF instance is deployed. Valid values:
+	// The region where the WAF instance resides. Valid values:
 	//
 	// - **cn-hangzhou**: the Chinese mainland.
 	//
@@ -72,7 +74,7 @@ type ModifyDefenseRuleRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The protected object associated with the rule to modify.
+	// The protected object to which the modified rule applies.
 	//
 	// > This parameter is required only when **DefenseType*	- is set to **resource**.
 	//
@@ -86,11 +88,21 @@ type ModifyDefenseRuleRequest struct {
 	//
 	// rg-acfm***q
 	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
-	// The details of the protection rule. The value is a string that is converted from a JSON object constructed by a series of parameters. When you configure this parameter, specify the rule ID and the protection rule configuration to modify. The following parameters are included:
+	// The protection target type. This applies to rules where **DefenseType*	- is set to **resource**. Valid values:
+	//
+	// - **single*	- (default): Single protected object.
+	//
+	// - **group**: Protected object group.
+	//
+	// example:
+	//
+	// single
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// The details of the protection rule. The value is a JSON string that consists of multiple parameters. When you configure this parameter, you must specify the rule ID and set the configuration of the protection rule to be modified. The details include:
 	//
 	// - **id**: Long | Required | The rule ID.
 	//
-	// - Protection rule configuration: Same as the **Rules*	- parameter of the **CreateDefenseRule*	- operation. For more information, see the **protection rule parameter description*	- in [CreateDefenseRule](https://help.aliyun.com/document_detail/461421.html).
+	// - Protection rule configuration: Same as the **Rules*	- parameter of the **CreateDefenseRule*	- operation. For more information, see the **Protection rule parameter description*	- in [CreateDefenseRule](https://help.aliyun.com/document_detail/461421.html).
 	//
 	// This parameter is required.
 	//
@@ -156,6 +168,10 @@ func (s *ModifyDefenseRuleRequest) GetResourceManagerResourceGroupId() *string {
 	return s.ResourceManagerResourceGroupId
 }
 
+func (s *ModifyDefenseRuleRequest) GetResourceType() *string {
+	return s.ResourceType
+}
+
 func (s *ModifyDefenseRuleRequest) GetRules() *string {
 	return s.Rules
 }
@@ -196,6 +212,11 @@ func (s *ModifyDefenseRuleRequest) SetResource(v string) *ModifyDefenseRuleReque
 
 func (s *ModifyDefenseRuleRequest) SetResourceManagerResourceGroupId(v string) *ModifyDefenseRuleRequest {
 	s.ResourceManagerResourceGroupId = &v
+	return s
+}
+
+func (s *ModifyDefenseRuleRequest) SetResourceType(v string) *ModifyDefenseRuleRequest {
+	s.ResourceType = &v
 	return s
 }
 

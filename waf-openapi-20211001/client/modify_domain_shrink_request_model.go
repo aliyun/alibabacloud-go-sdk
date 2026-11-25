@@ -26,19 +26,23 @@ type iModifyDomainShrinkRequest interface {
 }
 
 type ModifyDomainShrinkRequest struct {
-	// The access type of the WAF instance. Valid values:
+	// The access mode of the WAF instance. Valid values:
+	//
+	// - **share**: CNAME access. This is the default value.
+	//
+	// - **hybrid_cloud_cname**: Hybrid Cloud CNAME access.
 	//
 	// example:
 	//
 	// share
 	AccessType *string `json:"AccessType,omitempty" xml:"AccessType,omitempty"`
-	// The domain name to operate on.
+	// The domain name.
 	//
 	// example:
 	//
 	// www.aliyundoc.com
 	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
-	// The domain name ID.
+	// The ID of the domain name.
 	//
 	// example:
 	//
@@ -46,7 +50,7 @@ type ModifyDomainShrinkRequest struct {
 	DomainId *string `json:"DomainId,omitempty" xml:"DomainId,omitempty"`
 	// The ID of the WAF instance.
 	//
-	// > You can call [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) to query the ID of the current WAF instance.
+	// > You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
 	//
 	// This parameter is required.
 	//
@@ -54,15 +58,15 @@ type ModifyDomainShrinkRequest struct {
 	//
 	// waf_cdnsdf3****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The listening configuration.
+	// The listener configurations.
 	//
 	// This parameter is required.
 	ListenShrink *string `json:"Listen,omitempty" xml:"Listen,omitempty"`
-	// The forwarding configuration.
+	// The forwarding configurations.
 	//
 	// This parameter is required.
 	RedirectShrink *string `json:"Redirect,omitempty" xml:"Redirect,omitempty"`
-	// The region where the WAF instance is deployed. Valid values:
+	// The region where the WAF instance resides. Valid values:
 	//
 	// - **cn-hangzhou**: the Chinese mainland.
 	//

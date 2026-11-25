@@ -18,7 +18,7 @@ type iDescribeHybridCloudBasicMonitorResponseBody interface {
 }
 
 type DescribeHybridCloudBasicMonitorResponseBody struct {
-	// The list of basic monitoring items.
+	// The list of basic monitoring metrics.
 	BasicMonitors []*DescribeHybridCloudBasicMonitorResponseBodyBasicMonitors `json:"BasicMonitors,omitempty" xml:"BasicMonitors,omitempty" type:"Repeated"`
 	// The request ID.
 	//
@@ -28,7 +28,7 @@ type DescribeHybridCloudBasicMonitorResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Deprecated
 	//
-	// > This parameter is deprecated and no longer returns meaningful data.
+	// > **[Deprecated]*	- This parameter is deprecated and no longer returns meaningful data.
 	//
 	// example:
 	//
@@ -89,13 +89,13 @@ type DescribeHybridCloudBasicMonitorResponseBodyBasicMonitors struct {
 	//
 	// - **normal**: Normal.
 	//
-	// - `****`: abnormal (four asterisk characters are returned).
+	// - `****`: Abnormal. Four asterisks are returned.
 	//
 	// example:
 	//
 	// normal
 	Levle *string `json:"Levle,omitempty" xml:"Levle,omitempty"`
-	// The monitoring item. Valid values:
+	// The monitoring metric. Valid values:
 	//
 	// - **basic_monitor_cpu_usage**: CPU.
 	//

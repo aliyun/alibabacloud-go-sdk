@@ -76,7 +76,7 @@ type DescribeApisecEventsRequest struct {
 	ApiId *string `json:"ApiId,omitempty" xml:"ApiId,omitempty"`
 	// The business purpose of the API.
 	//
-	// > You can call [DescribeApisecRules](https://help.aliyun.com/document_detail/2859155.html) to obtain the supported business purposes.
+	// > You can call the [DescribeApisecRules](https://help.aliyun.com/document_detail/2859155.html) operation to query supported business purposes.
 	//
 	// example:
 	//
@@ -88,15 +88,15 @@ type DescribeApisecEventsRequest struct {
 	//
 	// 42.224.*.*
 	AttackIp *string `json:"AttackIp,omitempty" xml:"AttackIp,omitempty"`
-	// The hybrid cloud cluster ID.
+	// The ID of the hybrid cloud cluster.
 	//
-	// > This parameter applies only to hybrid cloud scenarios. You can call [DescribeHybridCloudClusters](https://help.aliyun.com/document_detail/2849376.html) to obtain hybrid cloud cluster information.
+	// > This parameter is applicable only to hybrid cloud scenarios. You can call the [DescribeHybridCloudClusters](https://help.aliyun.com/document_detail/2849376.html) operation to query hybrid cloud cluster information.
 	//
 	// example:
 	//
 	// 428
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// The end time of the query, in UNIX timestamp (UTC) format. Unit: seconds.
+	// The end time of the query. The value is a UNIX timestamp in UTC. Unit: seconds.
 	//
 	// example:
 	//
@@ -108,13 +108,13 @@ type DescribeApisecEventsRequest struct {
 	//
 	// 18ba94fea9***e66ba0557b7b91
 	EventId *string `json:"EventId,omitempty" xml:"EventId,omitempty"`
-	// The event level. Valid values:
+	// The severity level of the event. Valid values:
 	//
-	// - **high**: High-risk.
+	// - **high**: high risk.
 	//
-	// - **medium**: Medium-risk.
+	// - **medium**: medium risk.
 	//
-	// - **low**: Low-risk.
+	// - **low**: low risk.
 	//
 	// example:
 	//
@@ -128,7 +128,7 @@ type DescribeApisecEventsRequest struct {
 	EventScope *string `json:"EventScope,omitempty" xml:"EventScope,omitempty"`
 	// The event type.
 	//
-	// > You can call [DescribeApisecRules](https://help.aliyun.com/document_detail/2859155.html) to obtain the supported event types.
+	// > You can call the [DescribeApisecRules](https://help.aliyun.com/document_detail/2859155.html) operation to query supported event types.
 	//
 	// example:
 	//
@@ -136,7 +136,7 @@ type DescribeApisecEventsRequest struct {
 	EventTag *string `json:"EventTag,omitempty" xml:"EventTag,omitempty"`
 	// The ID of the WAF instance.
 	//
-	// > You can call [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) to obtain the ID of the current WAF instance.
+	// > You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to obtain the ID of the current WAF instance.
 	//
 	// This parameter is required.
 	//
@@ -150,13 +150,13 @@ type DescribeApisecEventsRequest struct {
 	//
 	// a.***.com
 	MatchedHost *string `json:"MatchedHost,omitempty" xml:"MatchedHost,omitempty"`
-	// The name of the field used for sorting. Valid values:
+	// The name of the field by which to sort. Valid values:
 	//
-	// - **allCnt**: attack count.
+	// - **allCnt**: the number of attacks.
 	//
-	// - **startTs**: event start time.
+	// - **startTs**: the start time of the event.
 	//
-	// - **endTs**: event end time.
+	// - **endTs**: the end time of the event.
 	//
 	// example:
 	//
@@ -164,37 +164,37 @@ type DescribeApisecEventsRequest struct {
 	OrderKey *string `json:"OrderKey,omitempty" xml:"OrderKey,omitempty"`
 	// The sort order. Valid values:
 	//
-	// - **desc**: Descending order (default).
+	// - **desc**: descending order (default).
 	//
-	// - **asc**: Ascending order.
+	// - **asc**: ascending order.
 	//
 	// example:
 	//
 	// desc
 	OrderWay *string `json:"OrderWay,omitempty" xml:"OrderWay,omitempty"`
-	// The source of the event type. Valid values:
+	// The origin of the event type. Valid values:
 	//
-	// - **custom**: Custom.
+	// - **custom**: custom.
 	//
-	// - **default**: Built-in.
+	// - **default**: built-in.
 	//
 	// example:
 	//
 	// default
 	Origin *string `json:"Origin,omitempty" xml:"Origin,omitempty"`
-	// The page number to return in a paged query. Default value: **1**, which indicates the first page.
+	// The page number to return for a paged query. Default value: **1**, which indicates that the first page is returned during paging.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page in a paged query. Default value: **10**, which indicates 10 entries per page.
+	// The number of entries to return on each page in a paged query. Default value: **10**, which indicates that 10 entries are returned on each page during paging.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The region where the WAF instance is deployed. Valid values:
+	// The region where the WAF instance resides. Valid values:
 	//
 	// - **cn-hangzhou**: the Chinese mainland.
 	//
@@ -204,27 +204,27 @@ type DescribeApisecEventsRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The Alibaba Cloud resource group ID.
+	// The ID of the Alibaba Cloud resource group.
 	//
 	// example:
 	//
 	// rg-acfm***q
 	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
-	// The start time of the query, in UNIX timestamp (UTC) format. Unit: seconds.
+	// The start time of the query. The value is a UNIX timestamp in UTC. Unit: seconds.
 	//
 	// example:
 	//
 	// 1683648000
 	StartTs *int64 `json:"StartTs,omitempty" xml:"StartTs,omitempty"`
-	// The event status. Valid values:
+	// The status of the event. Valid values:
 	//
-	// - **toBeConfirmed**: To be confirmed.
+	// - **toBeConfirmed**: pending confirmation.
 	//
-	// - **confirmed**: Confirmed.
+	// - **confirmed**: confirmed.
 	//
-	// - **actioned**: Handled.
+	// - **actioned**: handled.
 	//
-	// - **ignored**: Ignored.
+	// - **ignored**: ignored.
 	//
 	// example:
 	//

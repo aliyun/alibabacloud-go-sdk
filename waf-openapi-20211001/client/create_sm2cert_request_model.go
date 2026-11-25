@@ -34,7 +34,7 @@ type CreateSM2CertRequest struct {
 	//
 	// test-sm2
 	CertName *string `json:"CertName,omitempty" xml:"CertName,omitempty"`
-	// The content of the SM encryption certificate.
+	// The content of the ShangMi certificate.
 	//
 	// example:
 	//
@@ -44,7 +44,7 @@ type CreateSM2CertRequest struct {
 	//
 	// -----END CERTIFICATE-----
 	EncryptCertificate *string `json:"EncryptCertificate,omitempty" xml:"EncryptCertificate,omitempty"`
-	// The private key content of the SM encryption certificate.
+	// The content of the private key for the ShangMi certificate.
 	//
 	// example:
 	//
@@ -64,7 +64,7 @@ type CreateSM2CertRequest struct {
 	//
 	// waf_v2_public_cn-***
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The region where the WAF instance is deployed. Valid values:
+	// The region where the WAF instance resides. Valid values:
 	//
 	// - **cn-hangzhou**: the Chinese mainland.
 	//
@@ -74,13 +74,13 @@ type CreateSM2CertRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The Alibaba Cloud resource group ID.
+	// The ID of the Alibaba Cloud resource group.
 	//
 	// example:
 	//
 	// rg-acfm***q
 	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
-	// The signing certificate content of the SM certificate.
+	// The content of the signing certificate for the ShangMi certificate.
 	//
 	// example:
 	//
@@ -90,7 +90,7 @@ type CreateSM2CertRequest struct {
 	//
 	// -----END CERTIFICATE-----
 	SignCertificate *string `json:"SignCertificate,omitempty" xml:"SignCertificate,omitempty"`
-	// The private key content of the SM signing certificate.
+	// The content of the private key for the signing certificate of the ShangMi certificate.
 	//
 	// example:
 	//

@@ -16,13 +16,13 @@ type iDescribeBotAppKeyResponseBody interface {
 }
 
 type DescribeBotAppKeyResponseBody struct {
-	// The AppKey for bot management.
+	// The AppKey.
 	//
 	// example:
 	//
 	// N1Kiv3AGZm******
 	AppKey *string `json:"AppKey,omitempty" xml:"AppKey,omitempty"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//

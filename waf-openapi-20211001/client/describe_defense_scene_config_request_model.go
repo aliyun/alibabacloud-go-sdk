@@ -30,7 +30,7 @@ type DescribeDefenseSceneConfigRequest struct {
 	//
 	// autoEnableStatus
 	ConfigKey *string `json:"ConfigKey,omitempty" xml:"ConfigKey,omitempty"`
-	// The defense scenario whose configuration you want to query. For more information, see the **DefenseScene*	- parameter in [ModifyDefenseSceneConfig](https://help.aliyun.com/document_detail/2968435.html).
+	// The protection scenario for which you want to query the protection settings. For more information, see the **DefenseScene*	- parameter in [ModifyDefenseSceneConfig](https://help.aliyun.com/document_detail/2968435.html).
 	//
 	// This parameter is required.
 	//
@@ -38,9 +38,9 @@ type DescribeDefenseSceneConfigRequest struct {
 	//
 	// apisec
 	DefenseScene *string `json:"DefenseScene,omitempty" xml:"DefenseScene,omitempty"`
-	// The ID of the WAF instance.
+	// The WAF instance ID.
 	//
-	// > Call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of your WAF instance.
+	// > You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the current WAF instance ID.
 	//
 	// This parameter is required.
 	//
@@ -58,7 +58,7 @@ type DescribeDefenseSceneConfigRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the resource group.
+	// The ID of the Alibaba Cloud resource group.
 	//
 	// example:
 	//

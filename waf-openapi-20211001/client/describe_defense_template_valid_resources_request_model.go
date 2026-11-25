@@ -28,7 +28,7 @@ type iDescribeDefenseTemplateValidResourcesRequest interface {
 }
 
 type DescribeDefenseTemplateValidResourcesRequest struct {
-	// The protection scenario of the protection template. For more information, see the valid values for the **DefenseScene*	- parameter in [CreateDefenseRule](https://help.aliyun.com/document_detail/461421.html) when **DefenseType*	- is set to **template**.
+	// The protection scene to query. For more information, see the valid values of the **DefenseScene*	- parameter in [CreateDefenseRule](https://help.aliyun.com/document_detail/461421.html) when the protection rule type **DefenseType*	- is set to **template**.
 	//
 	// This parameter is required.
 	//
@@ -36,9 +36,9 @@ type DescribeDefenseTemplateValidResourcesRequest struct {
 	//
 	// whitelist
 	DefenseScene *string `json:"DefenseScene,omitempty" xml:"DefenseScene,omitempty"`
-	// The ID of the Web Application Firewall (WAF) instance.
+	// Instance ID of the WAF instance.
 	//
-	// > Call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of your WAF instance.
+	// > You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query instance ID of the current WAF instance.
 	//
 	// This parameter is required.
 	//
@@ -46,13 +46,13 @@ type DescribeDefenseTemplateValidResourcesRequest struct {
 	//
 	// waf_v3prepaid_public_cn-27a3jyw0v04
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The number of the page to return. Default value: **1**.
+	// The page number of the current paging in a paged query. Default value: **1**.
 	//
 	// example:
 	//
 	// 2
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries to return on each page. Default value: **20**.
+	// The Settings for the number of protected objects to return on each page of the paging in a paged query. Default value: **20**.
 	//
 	// example:
 	//
@@ -68,7 +68,7 @@ type DescribeDefenseTemplateValidResourcesRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The name of the protected object that you want to query. You can specify this parameter to filter the results.
+	// The protected object to query.
 	//
 	// example:
 	//
@@ -82,7 +82,8 @@ type DescribeDefenseTemplateValidResourcesRequest struct {
 	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
 	// The ID of the protection template.
 	//
-	// > If you do not specify this parameter, the protected objects that can be associated with a new protection template for the specified protection scenario (**DefenseScene**) are returned.
+	//
+	// > If you do not specify this parameter, you can query the list of protected objects to be associated when you create a template for the protection scene (**DefenseScene**).
 	//
 	// example:
 	//

@@ -38,7 +38,7 @@ type DescribeHybridCloudBasicMonitorRequest struct {
 	//
 	// f451e90fcb068905ab379468****db42
 	Mid *string `json:"Mid,omitempty" xml:"Mid,omitempty"`
-	// The region where the WAF instance is deployed. Valid values:
+	// The region where the WAF instance resides. Valid values:
 	//
 	// - **cn-hangzhou**: the Chinese mainland.
 	//

@@ -30,19 +30,19 @@ type iDescribeSensitiveStatisticRequest interface {
 }
 
 type DescribeSensitiveStatisticRequest struct {
-	// The hybrid cloud cluster ID.
+	// The ID of the hybrid cloud cluster.
 	//
-	// > This parameter applies only to hybrid cloud scenarios. You can call [DescribeHybridCloudClusters](https://help.aliyun.com/document_detail/2849376.html) to obtain hybrid cloud cluster information.
+	// > This parameter applies only to hybrid cloud scenarios. You can call [DescribeHybridCloudClusters](https://help.aliyun.com/document_detail/2849376.html) to query the information about hybrid cloud clusters.
 	//
 	// example:
 	//
 	// 428
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// The end of the time range to query, in UNIX timestamp (UTC) format. Unit: seconds.
+	// The end time of the query. The value is a UNIX timestamp in UTC. Unit: seconds.
 	//
-	// > Only data within the last month can be queried. **StartTime*	- cannot be earlier than one month before the current time. The query fails if the value is out of the supported range.
+	// > You can query only the data generated within the last month. The value of **StartTime*	- cannot be earlier than one month before the current time. If the value exceeds the supported range, the query fails.
 	//
-	// > This parameter is optional. Default value: the current time.
+	// > This parameter is not required. Default value: the current time.
 	//
 	// example:
 	//
@@ -50,7 +50,7 @@ type DescribeSensitiveStatisticRequest struct {
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// The ID of the WAF instance.
 	//
-	// > You can call [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) to query the ID of the current WAF instance.
+	// > You can call [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) to query the ID of the WAF instance.
 	//
 	// This parameter is required.
 	//
@@ -58,19 +58,19 @@ type DescribeSensitiveStatisticRequest struct {
 	//
 	// waf_elasticity-cn-0xldbq****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The page number to return in a paged query. Default value: **1**, which indicates the first page.
+	// The page number of the page to return in a paged query. Default value: **1**, which indicates the first page.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page in a paged query. Default value: **10**, which indicates 10 entries per page.
+	// The number of entries to return on each page in a paged query. Default value: **10**, which indicates 10 entries per page.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The region where the WAF instance is deployed. Valid values:
+	// The region where the WAF instance resides. Valid values:
 	//
 	// - **cn-hangzhou**: the Chinese mainland.
 	//
@@ -80,23 +80,23 @@ type DescribeSensitiveStatisticRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The Alibaba Cloud resource group ID.
+	// The ID of the Alibaba Cloud resource group.
 	//
 	// example:
 	//
 	// rg-acfm***q
 	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
-	// The beginning of the time range to query, in UNIX timestamp (UTC) format. Unit: seconds.
+	// The start time of the query. The value is a UNIX timestamp in UTC. Unit: seconds.
 	//
-	// > Only data within the last month can be queried. **StartTime*	- cannot be earlier than one month before the current time. The query fails if the value is out of the supported range.
+	// > You can query only the data generated within the last month. The value of **StartTime*	- cannot be earlier than one month before the current time. If the value exceeds the supported range, the query fails.
 	//
-	// > This parameter is optional. Default value: one month before the current time.
+	// > This parameter is not required. Default value: one month before the current time.
 	//
 	// example:
 	//
 	// 1672502400
 	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The type of data statistics. Valid values:
+	// The data statistics type. Valid values:
 	//
 	// - **ip**: IP address statistics.
 	//

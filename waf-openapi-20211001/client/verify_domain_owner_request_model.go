@@ -20,7 +20,9 @@ type iVerifyDomainOwnerRequest interface {
 }
 
 type VerifyDomainOwnerRequest struct {
-	// The domain name whose ownership you want to verify.
+	// The domain name to query.
+	//
+	// You can set this parameter to perform a fuzzy match to check whether a domain name is added to WAF.
 	//
 	// This parameter is required.
 	//
@@ -28,9 +30,9 @@ type VerifyDomainOwnerRequest struct {
 	//
 	// example.com
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	// The ID of the WAF instance.
+	// Instance ID of the WAF instance.
 	//
-	// > Call [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) to obtain the WAF instance ID.
+	// > You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query instance ID of the current WAF instance.
 	//
 	// This parameter is required.
 	//
@@ -38,11 +40,11 @@ type VerifyDomainOwnerRequest struct {
 	//
 	// waf_v2_public_cn-*****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The protocol type used for file verification. This parameter is required only when you set VerifyType to fileCheck. Valid values:
+	// The protocol type used for file verification. This parameter is required only when VerifyType is set to fileCheck. Valid values:
 	//
-	// - **HTTP**: the HTTP protocol.
+	// - **HTTP**: HTTP.
 	//
-	// - **HTTPS**: the HTTPS protocol.
+	// - **HTTPS**: HTTPS.
 	//
 	// example:
 	//

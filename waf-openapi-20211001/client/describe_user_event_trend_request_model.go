@@ -22,7 +22,7 @@ type iDescribeUserEventTrendRequest interface {
 }
 
 type DescribeUserEventTrendRequest struct {
-	// The ID of the hybrid cloud cluster.
+	// The hybrid cloud cluster ID.
 	//
 	// > This parameter applies only to hybrid cloud scenarios. You can call the [DescribeHybridCloudClusters](https://help.aliyun.com/document_detail/2849376.html) operation to obtain hybrid cloud cluster information.
 	//
@@ -36,9 +36,9 @@ type DescribeUserEventTrendRequest struct {
 	//
 	// ip
 	EventScope *string `json:"EventScope,omitempty" xml:"EventScope,omitempty"`
-	// Instance ID of the WAF instance.
+	// The WAF instance ID.
 	//
-	// > You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query instance ID of the WAF instance.
+	// > You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to view the current WAF instance ID.
 	//
 	// This parameter is required.
 	//
@@ -46,7 +46,7 @@ type DescribeUserEventTrendRequest struct {
 	//
 	// waf-cn-7mz2797x***
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The region where the WAF instance is deployed. Valid values:
+	// The region to which the WAF instance belongs. Valid values:
 	//
 	// - **cn-hangzhou**: the Chinese mainland.
 	//

@@ -24,13 +24,13 @@ type iDescribeSecurityEventLogsRequest interface {
 }
 
 type DescribeSecurityEventLogsRequest struct {
-	// The filter conditions. A logical AND relationship exists between multiple filter conditions.
+	// The query filter conditions. Multiple filter conditions are connected by the logical AND operator.
 	//
 	// This parameter is required.
 	Filter *DescribeSecurityEventLogsRequestFilter `json:"Filter,omitempty" xml:"Filter,omitempty" type:"Struct"`
-	// The ID of the Web Application Firewall (WAF) instance.
+	// The ID of the WAF instance.
 	//
-	// > Call [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) to query the ID of the WAF instance.
+	// > You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the current WAF instance.
 	//
 	// This parameter is required.
 	//
@@ -38,7 +38,7 @@ type DescribeSecurityEventLogsRequest struct {
 	//
 	// waf_cdnsdf3****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The page number to return for a paged query. The default value is **1**, which indicates the first page.
+	// The page number to return during paging in a paged query. Default value: **1**, which indicates the first page.
 	//
 	// This parameter is required.
 	//
@@ -46,7 +46,7 @@ type DescribeSecurityEventLogsRequest struct {
 	//
 	// 1
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries to return on each page for a paged query. The maximum value is **100**.
+	// The number of entries per page for paging in a paged query. Maximum value: **100**.
 	//
 	// This parameter is required.
 	//
@@ -54,7 +54,7 @@ type DescribeSecurityEventLogsRequest struct {
 	//
 	// 10
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The region of the WAF instance. Valid values:
+	// The region where the WAF instance resides. Valid values:
 	//
 	// - **cn-hangzhou**: the Chinese mainland.
 	//
@@ -144,9 +144,9 @@ func (s *DescribeSecurityEventLogsRequest) Validate() error {
 }
 
 type DescribeSecurityEventLogsRequestFilter struct {
-	// A list of filter conditions. Each node describes a filter condition.
+	// The list of filter conditions. Each node describes a filter condition.
 	Conditions []*DescribeSecurityEventLogsRequestFilterConditions `json:"Conditions,omitempty" xml:"Conditions,omitempty" type:"Repeated"`
-	// The time range to query.
+	// The time range for the query.
 	//
 	// This parameter is required.
 	DateRange *DescribeSecurityEventLogsRequestFilterDateRange `json:"DateRange,omitempty" xml:"DateRange,omitempty" type:"Struct"`
@@ -197,7 +197,7 @@ func (s *DescribeSecurityEventLogsRequestFilter) Validate() error {
 }
 
 type DescribeSecurityEventLogsRequestFilterConditions struct {
-	// The name of the field to filter. This operation supports all fields.
+	// The name of the field on which the filter operation is performed. This operation supports all fields.
 	//
 	// example:
 	//
@@ -209,7 +209,7 @@ type DescribeSecurityEventLogsRequestFilterConditions struct {
 	//
 	// eq
 	OpValue *string `json:"OpValue,omitempty" xml:"OpValue,omitempty"`
-	// The filter value.
+	// The filter values.
 	//
 	// example:
 	//
@@ -257,7 +257,7 @@ func (s *DescribeSecurityEventLogsRequestFilterConditions) Validate() error {
 }
 
 type DescribeSecurityEventLogsRequestFilterDateRange struct {
-	// The end of the time range to query. The value is a UNIX timestamp. Unit: seconds.
+	// The end time of the query. The end time is represented by a UNIX timestamp in seconds.
 	//
 	// This parameter is required.
 	//
@@ -265,9 +265,12 @@ type DescribeSecurityEventLogsRequestFilterDateRange struct {
 	//
 	// 1713888600
 	EndDate *int64 `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
-	// The start of the time range to query. The time range cannot exceed the last 30 days. The value is a UNIX timestamp. Unit: seconds.
+	// The start time of the query. The data query range cannot exceed the past 30 days. The start time is represented by a UNIX timestamp in seconds.
 	//
-	// > The start time must be within the last 30 days from the current time.
+	//
+	// > The start time must be later than the current time minus 30 days.
+	//
+	// > -
 	//
 	// This parameter is required.
 	//

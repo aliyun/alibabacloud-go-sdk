@@ -18,9 +18,9 @@ type iReleaseInstanceRequest interface {
 }
 
 type ReleaseInstanceRequest struct {
-	// The ID of the WAF instance.
+	// Instance ID of the WAF instance.
 	//
-	// > You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to view the current WAF instance ID.
+	// > You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query instance ID of the WAF instance.
 	//
 	// This parameter is required.
 	//
@@ -28,11 +28,11 @@ type ReleaseInstanceRequest struct {
 	//
 	// waf_v2_public_cn-***
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The region to which the WAF instance belongs. Valid values:
+	// The region where the WAF instance resides. Valid values:
 	//
-	// - **cn-hangzhou**: indicates the Chinese mainland.
+	// - **cn-hangzhou**: the Chinese mainland.
 	//
-	// - **ap-southeast-1**: indicates regions outside the Chinese mainland.
+	// - **ap-southeast-1**: outside the Chinese mainland.
 	//
 	// This parameter is required.
 	//
@@ -40,7 +40,7 @@ type ReleaseInstanceRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the resource group.
+	// The ID of the Alibaba Cloud resource group.
 	//
 	// example:
 	//

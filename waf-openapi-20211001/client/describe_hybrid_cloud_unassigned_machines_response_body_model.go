@@ -24,7 +24,7 @@ type DescribeHybridCloudUnassignedMachinesResponseBody struct {
 	//
 	// 3EBCFCE9-4A3C-5E01-915D-691B****510A
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries returned.
+	// The total number of returned entries.
 	//
 	// example:
 	//
@@ -89,7 +89,7 @@ type DescribeHybridCloudUnassignedMachinesResponseBodyUnassignedMachines struct 
 	//
 	// 16
 	Cpu *int64 `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
-	// The node name.
+	// The name of the node.
 	//
 	// example:
 	//

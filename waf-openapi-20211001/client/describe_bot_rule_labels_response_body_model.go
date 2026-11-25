@@ -22,15 +22,15 @@ type iDescribeBotRuleLabelsResponseBody interface {
 }
 
 type DescribeBotRuleLabelsResponseBody struct {
-	// The number of entries to return per paging in a paged query. Valid values: 1 to 200. Default value: 20.
+	// The number of entries to return per page in a paged query. This parameter is used for paging. Valid values: 1 to 200. Default value: 20.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The pagination token for the next page. This parameter is returned only if a next page exists.
+	// The pagination token for the next page. This parameter is returned only when a next page exists.
 	//
-	// > If this parameter is returned, it indicates that there is a next page. You can use the returned **NextToken*	- as a request parameter to obtain the data of the next page until no value is returned, which indicates that all data is obtained.
+	// > If this parameter is returned, a next page exists. You can use the returned **NextToken*	- as a request parameter to obtain the next page of data. Repeat this process until no value is returned, which indicates that all data is retrieved.
 	//
 	// example:
 	//
@@ -119,7 +119,7 @@ func (s *DescribeBotRuleLabelsResponseBody) Validate() error {
 }
 
 type DescribeBotRuleLabelsResponseBodyRuleLabels struct {
-	// The bot behavior corresponding to the rule label.
+	// The bot behavior corresponding to the rule label. Valid values:
 	//
 	// - **malicious**: malicious bots.
 	//
@@ -131,7 +131,7 @@ type DescribeBotRuleLabelsResponseBodyRuleLabels struct {
 	//
 	// malicious
 	BotBehavior *string `json:"BotBehavior,omitempty" xml:"BotBehavior,omitempty"`
-	// The default action.
+	// The default action. Valid values:
 	//
 	// - **block**: block.
 	//
@@ -155,7 +155,7 @@ type DescribeBotRuleLabelsResponseBodyRuleLabels struct {
 	//
 	// {"crawlerStatusMap":{"360":1,"bytedance":1}}
 	DefaultConfig *string `json:"DefaultConfig,omitempty" xml:"DefaultConfig,omitempty"`
-	// The default status of the label rule.
+	// The default status of the label rule. Valid values:
 	//
 	// - **1**: The rule is enabled.
 	//
@@ -171,7 +171,7 @@ type DescribeBotRuleLabelsResponseBodyRuleLabels struct {
 	//
 	// malicious_crawler_python
 	LabelKey *string `json:"LabelKey,omitempty" xml:"LabelKey,omitempty"`
-	// The status of the label.
+	// The status of the label. Valid values:
 	//
 	// - **online**: online.
 	//
@@ -189,7 +189,7 @@ type DescribeBotRuleLabelsResponseBodyRuleLabels struct {
 	LabelType *string `json:"LabelType,omitempty" xml:"LabelType,omitempty"`
 	// The bot management protection scenarios to which the rule belongs. Multiple scenarios are separated by commas (,). Valid values:
 	//
-	// - **web**: the web protection scenario.
+	// - **web**: the Web protection scenario.
 	//
 	// - **app**: the app protection scenario.
 	//

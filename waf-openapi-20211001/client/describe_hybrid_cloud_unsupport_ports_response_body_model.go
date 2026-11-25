@@ -18,13 +18,13 @@ type iDescribeHybridCloudUnsupportPortsResponseBody interface {
 }
 
 type DescribeHybridCloudUnsupportPortsResponseBody struct {
-	// The list of ports for the HTTP protocol. The value is a string. Multiple ports are returned in the **port1,port2,port3*	- format.
+	// The list of available HTTP ports. The value is a string. Multiple ports are returned in the **port1,port2,port3*	- format.
 	//
 	// example:
 	//
 	// 80,8080
 	HttpPorts *string `json:"HttpPorts,omitempty" xml:"HttpPorts,omitempty"`
-	// The list of ports for the HTTPS protocol. The value is a string. Multiple ports are returned in the **port1,port2,port3*	- format.
+	// The list of HTTPS ports. The value is a string. Multiple ports are returned in the **port1,port2,port3*	- format.
 	//
 	// example:
 	//

@@ -26,13 +26,13 @@ type iDescribeHybridCloudClusterRuleRequest interface {
 type DescribeHybridCloudClusterRuleRequest struct {
 	// Deprecated
 	//
-	// **[Deprecated]*	- The hybrid cloud cluster ID.
+	// **[Deprecated]*	- The ID of the hybrid cloud cluster.
 	//
 	// example:
 	//
 	// 1
 	ClusterId *int64 `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// The cluster rule resource ID.
+	// The ID of the cluster rule resource.
 	//
 	// example:
 	//
@@ -40,7 +40,7 @@ type DescribeHybridCloudClusterRuleRequest struct {
 	ClusterRuleResourceId *string `json:"ClusterRuleResourceId,omitempty" xml:"ClusterRuleResourceId,omitempty"`
 	// The ID of the WAF instance.
 	//
-	// > You can call [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) to obtain the ID of the current WAF instance.
+	// > You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to obtain the ID of the current WAF instance.
 	//
 	// This parameter is required.
 	//
@@ -48,17 +48,17 @@ type DescribeHybridCloudClusterRuleRequest struct {
 	//
 	// waf-cn-uqm33n***02
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The region where the WAF instance is deployed. Valid values:
+	// The region where the WAF instance resides. Valid values:
 	//
-	// - **cn-hangzhou**: the Chinese mainland.
+	// - **cn-hangzhou**: The Chinese mainland.
 	//
-	// - **ap-southeast-1**: outside the Chinese mainland.
+	// - **ap-southeast-1**: Outside the Chinese mainland.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The Alibaba Cloud resource group ID.
+	// The ID of the Alibaba Cloud resource group.
 	//
 	// example:
 	//
@@ -68,7 +68,7 @@ type DescribeHybridCloudClusterRuleRequest struct {
 	//
 	// **[Deprecated]*	- The rule type. Valid values:
 	//
-	// - **pullin**: cluster traffic redirection
+	// - **pullin**: cluster traffic diversion
 	//
 	// example:
 	//

@@ -26,7 +26,7 @@ type DescribeApisecApiResourcesResponseBody struct {
 	//
 	// 2EFCFE18-78F8-5079-B312-07***48B
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries returned.
+	// The total number of returned results.
 	//
 	// example:
 	//
@@ -113,7 +113,7 @@ type DescribeApisecApiResourcesResponseBodyData struct {
 	//
 	// 197b52abcd81d6a8bd4***e477
 	ApiId *string `json:"ApiId,omitempty" xml:"ApiId,omitempty"`
-	// API-related information, which is a JSON string constructed from a series of parameters. The parameters include:
+	// The information about the API. The information is converted into a JSON string constructed by a series of parameters. The parameters include:
 	//
 	// - **param_num**: the number of API parameters.
 	//
@@ -123,15 +123,15 @@ type DescribeApisecApiResourcesResponseBodyData struct {
 	//
 	// - **api_url**: the request URL.
 	//
-	// - **poc_payload**: the request.
+	// - **poc_payload**: the request payload.
 	//
-	// - **request**: the request example.
+	// - **request**: the request sample.
 	//
-	// - **response**: the response example.
+	// - **response**: the response sample.
 	//
 	// - **param**: the request parameters.
 	//
-	// > This value is returned only when the **ApiId*	- request parameter is specified.
+	// > This parameter is returned only if the **ApiId*	- request parameter is specified.
 	ApiInfo *string `json:"ApiInfo,omitempty" xml:"ApiInfo,omitempty"`
 	// The request method of the API. Valid values:
 	//
@@ -155,7 +155,7 @@ type DescribeApisecApiResourcesResponseBodyData struct {
 	//
 	// POST
 	ApiMethod *string `json:"ApiMethod,omitempty" xml:"ApiMethod,omitempty"`
-	// Sensitive information related to the API, which is a JSON string constructed from a series of parameters. The parameters include:
+	// The sensitive information involved in the API. The information is converted into a JSON string constructed by a series of parameters. The parameters include:
 	//
 	// - **request_sensitive_list**: the list of sensitive data types in requests.
 	//
@@ -193,7 +193,7 @@ type DescribeApisecApiResourcesResponseBodyData struct {
 	ApiSensitiveResponse *string `json:"ApiSensitiveResponse,omitempty" xml:"ApiSensitiveResponse,omitempty"`
 	// The status of the API. Valid values:
 	//
-	// - **NewbornInterface**: New.
+	// - **NewbornInterface**: Newly added.
 	//
 	// - **OfflineInterface**: Inactive.
 	//
@@ -205,17 +205,17 @@ type DescribeApisecApiResourcesResponseBodyData struct {
 	ApiStatus *string `json:"ApiStatus,omitempty" xml:"ApiStatus,omitempty"`
 	// The business purpose of the API.
 	//
-	// > Call [DescribeApisecRules](https://help.aliyun.com/document_detail/2859155.html) to obtain the supported business purposes.
+	// > You can call the [DescribeApisecRules](https://help.aliyun.com/document_detail/2859155.html) operation to query the supported business purposes.
 	//
 	// example:
 	//
 	// SendMail
 	ApiTag *string `json:"ApiTag,omitempty" xml:"ApiTag,omitempty"`
-	// The service object. Valid values:
+	// The service object of the API. Valid values:
 	//
 	// - **PublicAPI**: Public service.
 	//
-	// - **ThirdpartAPI**: Third-party collaboration.
+	// - **ThirdpartAPI**: Third-party cooperation.
 	//
 	// - **InternalAPI**: Internal office.
 	//
@@ -225,9 +225,9 @@ type DescribeApisecApiResourcesResponseBodyData struct {
 	ApiType *string `json:"ApiType,omitempty" xml:"ApiType,omitempty"`
 	// Specifies whether the API has an authentication field. Valid values:
 	//
-	// - **0**: Has authentication.
+	// - **0**: Has authentication field.
 	//
-	// - **1**: Does not have authentication.
+	// - **1**: No authentication field.
 	//
 	// example:
 	//
@@ -255,7 +255,7 @@ type DescribeApisecApiResourcesResponseBodyData struct {
 	//
 	// The list of API examples.
 	Examples []*string `json:"Examples,omitempty" xml:"Examples,omitempty" type:"Repeated"`
-	// The time when the API asset was first discovered. The value is a UNIX timestamp (UTC), in seconds.
+	// The time when the API asset was first discovered. The time is a UNIX timestamp in UTC. Unit: seconds.
 	//
 	// example:
 	//
@@ -271,7 +271,7 @@ type DescribeApisecApiResourcesResponseBodyData struct {
 	//
 	// 1
 	Follow *int32 `json:"Follow,omitempty" xml:"Follow,omitempty"`
-	// The most recent access time of the API asset. The value is a UNIX timestamp (UTC), in seconds.
+	// The time when the API asset was last accessed. The time is a UNIX timestamp in UTC. Unit: seconds.
 	//
 	// example:
 	//
@@ -283,13 +283,13 @@ type DescribeApisecApiResourcesResponseBodyData struct {
 	//
 	// a.aliyun.com
 	MatchedHost *string `json:"MatchedHost,omitempty" xml:"MatchedHost,omitempty"`
-	// The remarks.
+	// The note.
 	//
 	// example:
 	//
 	// loginApi
 	Note *string `json:"Note,omitempty" xml:"Note,omitempty"`
-	// The list of protected objects associated with the asset.
+	// The list of protected objects corresponding to the asset.
 	Resources []*string `json:"Resources,omitempty" xml:"Resources,omitempty" type:"Repeated"`
 }
 

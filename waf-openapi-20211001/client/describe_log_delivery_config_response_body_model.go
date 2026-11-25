@@ -62,9 +62,9 @@ func (s *DescribeLogDeliveryConfigResponseBody) Validate() error {
 }
 
 type DescribeLogDeliveryConfigResponseBodyDeliveryConfig struct {
-	// The details of the log delivery configuration, in JSON format.
+	// The details of the log delivery configuration, which are formatted as a JSON string constructed from a series of parameters.
 	//
-	// > This parameter is the same as the **DeliveryDetail*	- parameter of the **CreateLogDeliveryConfig*	- operation. For more information, see [CreateLogDeliveryConfig](~~CreateLogDeliveryConfig~~).
+	// > This parameter is the same as the **DeliveryDetail*	- parameter of the [CreateLogDeliveryConfig](~~CreateLogDeliveryConfig~~) operation. For more information, see the description of the log delivery configuration parameters in the [CreateLogDeliveryConfig](~~CreateLogDeliveryConfig~~) operation.
 	//
 	// example:
 	//
@@ -96,9 +96,9 @@ type DescribeLogDeliveryConfigResponseBodyDeliveryConfig struct {
 	DeliveryName *string `json:"DeliveryName,omitempty" xml:"DeliveryName,omitempty"`
 	// The type of the log delivery configuration. Valid values:
 	//
-	// - **syslog**: The logs are delivered to a syslog service.
+	// - **syslog**: delivers logs to a Syslog service.
 	//
-	// - **kafka**: The logs are delivered to a Kafka service.
+	// - **kafka**: delivers logs to a Kafka service.
 	//
 	// example:
 	//

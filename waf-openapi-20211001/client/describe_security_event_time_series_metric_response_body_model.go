@@ -24,7 +24,7 @@ type DescribeSecurityEventTimeSeriesMetricResponseBody struct {
 	//
 	// D827FCFE-90A7-4330-9326-*****4C7726
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The returned time series data. The operation can return time series data for multiple values.
+	// The returned time series data. Time series data for multiple values is supported.
 	SecurityEventTimeSeries []*DescribeSecurityEventTimeSeriesMetricResponseBodySecurityEventTimeSeries `json:"SecurityEventTimeSeries,omitempty" xml:"SecurityEventTimeSeries,omitempty" type:"Repeated"`
 	// The metadata of the returned data.
 	TimeSeriesMetaData *DescribeSecurityEventTimeSeriesMetricResponseBodyTimeSeriesMetaData `json:"TimeSeriesMetaData,omitempty" xml:"TimeSeriesMetaData,omitempty" type:"Struct"`
@@ -84,7 +84,7 @@ func (s *DescribeSecurityEventTimeSeriesMetricResponseBody) Validate() error {
 }
 
 type DescribeSecurityEventTimeSeriesMetricResponseBodySecurityEventTimeSeries struct {
-	// The content of the returned data. This is consistent with the \\`Metric\\` request parameter.
+	// The returned data content, which is consistent with the meaning of the Metric parameter in the request.
 	//
 	// example:
 	//
@@ -93,6 +93,10 @@ type DescribeSecurityEventTimeSeriesMetricResponseBodySecurityEventTimeSeries st
 	// The time series. Each point represents the start time of a time range.
 	Timestamps []*string `json:"Timestamps,omitempty" xml:"Timestamps,omitempty" type:"Repeated"`
 	// The data series. Each point represents the statistical count within a specific time range.
+	//
+	// example:
+	//
+	// []
 	Values []*int64 `json:"Values,omitempty" xml:"Values,omitempty" type:"Repeated"`
 }
 
@@ -136,7 +140,7 @@ func (s *DescribeSecurityEventTimeSeriesMetricResponseBodySecurityEventTimeSerie
 }
 
 type DescribeSecurityEventTimeSeriesMetricResponseBodyTimeSeriesMetaData struct {
-	// The time granularity of each data point in the returned time series data. For example, "15m" indicates that each returned data point represents statistics for a 15-minute interval. For more information about the time granularity of the returned data, see the Time granularity of time series data points section.
+	// The statistical time granularity of each data point in the returned time series data. For example, "15m" indicates that each returned data point is the statistical data for every 15 minutes. For the time granularity of the returned data, see **Time granularity description of time series data points**.
 	//
 	// example:
 	//
@@ -197,13 +201,13 @@ func (s *DescribeSecurityEventTimeSeriesMetricResponseBodyTimeSeriesMetaData) Va
 }
 
 type DescribeSecurityEventTimeSeriesMetricResponseBodyTimeSeriesMetaDataDateRange struct {
-	// The end time of the query. This is a UNIX timestamp. Unit: seconds. This value is the same as the \\`EndDate\\` request parameter.
+	// The end time used for the data query, represented by a UNIX timestamp in seconds. This value is the same as the EndDate parameter in the request.
 	//
 	// example:
 	//
 	// 1713888600
 	EndDate *int64 `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
-	// The start time of the query. This is a UNIX timestamp. Unit: seconds. This value is the same as the \\`StartDate\\` request parameter.
+	// The start time used for the data query, represented by a UNIX timestamp in seconds. This value is the same as the StartDate parameter in the request.
 	//
 	// example:
 	//

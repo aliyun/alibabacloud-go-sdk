@@ -26,13 +26,13 @@ type iDescribeResourceLogFieldConfigResponseBody interface {
 }
 
 type DescribeResourceLogFieldConfigResponseBody struct {
-	// The extra log fields that are configured in addition to the default log fields. The fields are specified as a string of comma-separated values.
+	// The list of additional log fields configured in addition to the default log fields. The value is in the "a,b,c,..." format.
 	//
 	// example:
 	//
 	// acl_test,acl_action,acl_rule_id,waf_test,acl_rule_type
 	AddList *string `json:"AddList,omitempty" xml:"AddList,omitempty"`
-	// The log fields that are removed from the default log fields. The fields are specified as a string of comma-separated values.
+	// The list of log fields that are not configured compared to the default log fields. The value is in the "a,b,c,..." format.
 	//
 	// example:
 	//
@@ -42,31 +42,31 @@ type DescribeResourceLogFieldConfigResponseBody struct {
 	//
 	// - **sls**: Simple Log Service.
 	//
-	// - **kafka**: Kafka.
+	// - **kafka**: External delivery to Kafka.
 	//
-	// - **syslog**: Syslog.
+	// - **syslog**: External delivery to Syslog.
 	//
 	// example:
 	//
 	// sls
 	DeliveryType *string `json:"DeliveryType,omitempty" xml:"DeliveryType,omitempty"`
-	// The extended configuration for log delivery. The value is a string that is converted from a JSON object of parameters.
+	// The extended configuration for log delivery. The value is a string converted from a JSON object constructed with a series of parameters.
 	//
-	// > For more information about the parameters, see the description of the **ExtendConfig*	- parameter in [ModifyResourceLogFieldConfig](~~ModifyResourceLogFieldConfig~~).
+	// > For detailed parameter information, see the description of the **ExtendConfig*	- parameter in the [ModifyResourceLogFieldConfig](~~ModifyResourceLogFieldConfig~~) operation.
 	//
 	// example:
 	//
 	// {\\"request_header\\":\\"Ali-Cdn-Real-Ip\\"}
 	ExtendConfig *string `json:"ExtendConfig,omitempty" xml:"ExtendConfig,omitempty"`
-	// The list of delivered log fields. The fields are specified as a string of comma-separated values.
+	// The list of delivered log fields. The value is in the "a,b,c,..." format.
 	//
 	// example:
 	//
 	// account,acl_action,acl_rule_id,acl_rule_type,acl_test,antiscan_action,antiscan_rule_id,antiscan_rule_type,antiscan_test,body_bytes_sent,bypass_matched_ids
 	FieldList *string `json:"FieldList,omitempty" xml:"FieldList,omitempty"`
-	// The log delivery policies. Multiple policies are supported. The value is a string that is converted from a JSON array of parameters.
+	// The log delivery policies. Multiple policies are supported. The value is a string converted from a JSON array constructed with a series of parameters.
 	//
-	// > For more information about the parameters, see the description of the **LogDeliveryStrategy*	- parameter in [ModifyResourceLogFieldConfig](~~ModifyResourceLogFieldConfig~~).
+	// > For detailed parameter information, see the description of the **LogDeliveryStrategy*	- parameter in the [ModifyResourceLogFieldConfig](~~ModifyResourceLogFieldConfig~~) operation.
 	//
 	// example:
 	//

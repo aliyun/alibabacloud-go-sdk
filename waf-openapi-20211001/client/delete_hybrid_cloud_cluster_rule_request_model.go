@@ -20,7 +20,7 @@ type iDeleteHybridCloudClusterRuleRequest interface {
 }
 
 type DeleteHybridCloudClusterRuleRequest struct {
-	// The resource ID of the cluster rule.
+	// The ID of the cluster rule resource.
 	//
 	// This parameter is required.
 	//
@@ -38,7 +38,7 @@ type DeleteHybridCloudClusterRuleRequest struct {
 	//
 	// waf_elasticity-cn-0xldbqt****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The region where the WAF instance is deployed. Valid values:
+	// The region where the WAF instance resides. Valid values:
 	//
 	// - **cn-hangzhou**: the Chinese mainland.
 	//

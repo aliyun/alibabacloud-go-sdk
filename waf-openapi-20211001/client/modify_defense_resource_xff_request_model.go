@@ -15,6 +15,8 @@ type iModifyDefenseResourceXffRequest interface {
 	GetAcwSecureStatus() *int32
 	SetAcwV3SecureStatus(v int32) *ModifyDefenseResourceXffRequest
 	GetAcwV3SecureStatus() *int32
+	SetCookieConfig(v *ModifyDefenseResourceXffRequestCookieConfig) *ModifyDefenseResourceXffRequest
+	GetCookieConfig() *ModifyDefenseResourceXffRequestCookieConfig
 	SetCustomHeaders(v []*string) *ModifyDefenseResourceXffRequest
 	GetCustomHeaders() []*string
 	SetInstanceId(v string) *ModifyDefenseResourceXffRequest
@@ -32,39 +34,41 @@ type iModifyDefenseResourceXffRequest interface {
 }
 
 type ModifyDefenseResourceXffRequest struct {
-	// The status of the tracking cookie switch.
+	// The status of the tracking cookie switch. Valid values:
 	//
-	// - **0**: disabled.
+	// - **0**: Disabled.
 	//
-	// - **1 (default)**: enabled.
+	// - **1*	- (default): Enabled.
 	//
 	// example:
 	//
 	// 0
 	AcwCookieStatus *int32 `json:"AcwCookieStatus,omitempty" xml:"AcwCookieStatus,omitempty"`
-	// The status of the secure attribute of the tracking cookie.
+	// The status of the Secure attribute for the tracking cookie. Valid values:
 	//
-	// - **0 (default)**: disabled.
+	// - **0*	- (default): Disabled.
 	//
-	// - **1**: enabled.
+	// - **1**: Enabled.
 	//
 	// example:
 	//
 	// 0
 	AcwSecureStatus *int32 `json:"AcwSecureStatus,omitempty" xml:"AcwSecureStatus,omitempty"`
-	// The status of the secure attribute of the slider cookie.
+	// The status of the Secure attribute for the slider cookie. Valid values:
 	//
-	// - **0 (default)**: disabled.
+	// - **0*	- (default): Disabled.
 	//
-	// - **1**: enabled.
+	// - **1**: Enabled.
 	//
 	// example:
 	//
 	// 0
 	AcwV3SecureStatus *int32 `json:"AcwV3SecureStatus,omitempty" xml:"AcwV3SecureStatus,omitempty"`
+	// The aggregated configuration of cookie attributes.
+	CookieConfig *ModifyDefenseResourceXffRequestCookieConfig `json:"CookieConfig,omitempty" xml:"CookieConfig,omitempty" type:"Struct"`
 	// The list of specified header fields.
 	//
-	// > The first IP address in the specified header field is used as the client source IP address to prevent XFF spoofing. If multiple headers are specified, the system attempts to obtain the source IP address from the headers in order. If the first header does not contain an IP address, the system tries the second header, and so on. If none of the specified headers contain an IP address, the first IP address in the X-Forwarded-For header is used.
+	// > The first IP address in the specified header field is used as the source IP address of the client to prevent X-Forwarded-For (XFF) spoofing. If multiple headers are specified, the system attempts to obtain the source IP address in sequence. If the first header does not contain an IP address, the system checks the second header, and so on. If no IP address is found in any of the specified headers, the first IP address in the X-Forwarded-For header is used.
 	CustomHeaders []*string `json:"CustomHeaders,omitempty" xml:"CustomHeaders,omitempty" type:"Repeated"`
 	// Instance ID of the WAF instance.
 	//
@@ -76,7 +80,7 @@ type ModifyDefenseResourceXffRequest struct {
 	//
 	// waf_v2_public_cn-wwo****ek07
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The region where the WAF instance is deployed. Valid values:
+	// The region where the WAF instance resides. Valid values:
 	//
 	// - **cn-hangzhou**: the Chinese mainland.
 	//
@@ -88,7 +92,7 @@ type ModifyDefenseResourceXffRequest struct {
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	// The name of the protected object.
 	//
-	// > The protected object must have been added to WAF. You can call the [DescribeDefenseResources](https://help.aliyun.com/document_detail/461612.html) operation to query the name of the protected object.
+	// > The protected object must be added to WAF. You can call the [DescribeDefenseResources](https://help.aliyun.com/document_detail/461612.html) operation to query the name of the protected object.
 	//
 	// This parameter is required.
 	//
@@ -104,11 +108,11 @@ type ModifyDefenseResourceXffRequest struct {
 	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
 	// The response header parameters.
 	ResponseHeaders []*ModifyDefenseResourceXffRequestResponseHeaders `json:"ResponseHeaders,omitempty" xml:"ResponseHeaders,omitempty" type:"Repeated"`
-	// Specifies whether a Layer 7 proxy (Anti-DDoS Pro, CDN, or similar) is deployed in front of WAF. Valid values:
+	// Specifies whether a Layer 7 proxy, such as Anti-DDoS or CDN, is enabled before WAF. Valid values:
 	//
-	// - **0 (default)**: No Layer 7 proxy is deployed.
+	// - **0*	- (default): The proxy is disabled.
 	//
-	// - **1**: A Layer 7 proxy is deployed.
+	// - **1**: The proxy is enabled.
 	//
 	// This parameter is required.
 	//
@@ -136,6 +140,10 @@ func (s *ModifyDefenseResourceXffRequest) GetAcwSecureStatus() *int32 {
 
 func (s *ModifyDefenseResourceXffRequest) GetAcwV3SecureStatus() *int32 {
 	return s.AcwV3SecureStatus
+}
+
+func (s *ModifyDefenseResourceXffRequest) GetCookieConfig() *ModifyDefenseResourceXffRequestCookieConfig {
+	return s.CookieConfig
 }
 
 func (s *ModifyDefenseResourceXffRequest) GetCustomHeaders() []*string {
@@ -181,6 +189,11 @@ func (s *ModifyDefenseResourceXffRequest) SetAcwV3SecureStatus(v int32) *ModifyD
 	return s
 }
 
+func (s *ModifyDefenseResourceXffRequest) SetCookieConfig(v *ModifyDefenseResourceXffRequestCookieConfig) *ModifyDefenseResourceXffRequest {
+	s.CookieConfig = v
+	return s
+}
+
 func (s *ModifyDefenseResourceXffRequest) SetCustomHeaders(v []*string) *ModifyDefenseResourceXffRequest {
 	s.CustomHeaders = v
 	return s
@@ -217,6 +230,11 @@ func (s *ModifyDefenseResourceXffRequest) SetXffStatus(v int32) *ModifyDefenseRe
 }
 
 func (s *ModifyDefenseResourceXffRequest) Validate() error {
+	if s.CookieConfig != nil {
+		if err := s.CookieConfig.Validate(); err != nil {
+			return err
+		}
+	}
 	if s.ResponseHeaders != nil {
 		for _, item := range s.ResponseHeaders {
 			if item != nil {
@@ -229,14 +247,79 @@ func (s *ModifyDefenseResourceXffRequest) Validate() error {
 	return nil
 }
 
+type ModifyDefenseResourceXffRequestCookieConfig struct {
+	// The SameSite policy of the slider cookie. Valid values:
+	//
+	// - **None**: None.
+	//
+	// - **Lax**: Lax.
+	//
+	// - **Strict**: Strict.
+	//
+	// > An empty string indicates that the SameSite attribute is not configured.
+	//
+	// If the SameSite policy is set to None, the Secure attribute must be enabled for the cookie.
+	//
+	// example:
+	//
+	// None
+	AcwScV3SameSite *string `json:"AcwScV3SameSite,omitempty" xml:"AcwScV3SameSite,omitempty"`
+	// The SameSite policy of the tracking cookie. Valid values:
+	//
+	// - **None**: None.
+	//
+	// - **Lax**: Lax.
+	//
+	// - **Strict**: Strict.
+	//
+	// > An empty string indicates that the SameSite attribute is not configured.
+	//
+	// If the SameSite policy is set to None, the Secure attribute must be enabled for the cookie.
+	//
+	// example:
+	//
+	// Lax
+	AcwTcSameSite *string `json:"AcwTcSameSite,omitempty" xml:"AcwTcSameSite,omitempty"`
+}
+
+func (s ModifyDefenseResourceXffRequestCookieConfig) String() string {
+	return dara.Prettify(s)
+}
+
+func (s ModifyDefenseResourceXffRequestCookieConfig) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyDefenseResourceXffRequestCookieConfig) GetAcwScV3SameSite() *string {
+	return s.AcwScV3SameSite
+}
+
+func (s *ModifyDefenseResourceXffRequestCookieConfig) GetAcwTcSameSite() *string {
+	return s.AcwTcSameSite
+}
+
+func (s *ModifyDefenseResourceXffRequestCookieConfig) SetAcwScV3SameSite(v string) *ModifyDefenseResourceXffRequestCookieConfig {
+	s.AcwScV3SameSite = &v
+	return s
+}
+
+func (s *ModifyDefenseResourceXffRequestCookieConfig) SetAcwTcSameSite(v string) *ModifyDefenseResourceXffRequestCookieConfig {
+	s.AcwTcSameSite = &v
+	return s
+}
+
+func (s *ModifyDefenseResourceXffRequestCookieConfig) Validate() error {
+	return dara.Validate(s)
+}
+
 type ModifyDefenseResourceXffRequestResponseHeaders struct {
-	// The key of the custom response header.
+	// The key of the specified custom response header.
 	//
 	// example:
 	//
 	// Header-Key
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The value of the custom response header.
+	// The value of the specified custom response header.
 	//
 	// example:
 	//

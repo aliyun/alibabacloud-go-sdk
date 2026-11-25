@@ -62,27 +62,27 @@ func (s *DescribeHybridCloudClusterRuleResponseBody) Validate() error {
 }
 
 type DescribeHybridCloudClusterRuleResponseBodyClusterRule struct {
-	// The cluster rule resource ID.
+	// The ID of the cluster rule resource.
 	//
 	// example:
 	//
 	// hdbc-clusterrule-2m*****m0w
 	ClusterRuleResourceId *string `json:"ClusterRuleResourceId,omitempty" xml:"ClusterRuleResourceId,omitempty"`
-	// The traffic redirection rule configuration:
+	// The traffic diversion rule configuration:
 	//
-	// - **check_mode**: the mode selection. Valid values:
+	// - **check_mode**: The mode selection. Valid values:
 	//
-	//   - **all**: full traffic redirection
+	//   - **all**: full traffic diversion
 	//
-	//   - **part**: partial traffic redirection
+	//   - **part**: specified partial traffic diversion
 	//
-	// - **type**: the rule matching type. Valid values:
+	// - **type**: The rule match type. Valid values:
 	//
 	//   - **exact**: exact match
 	//
 	//   - **regex**: regular expression
 	//
-	// - **substance**: the rule value
+	// - **substance**: The rule value.
 	//
 	// example:
 	//
@@ -90,9 +90,9 @@ type DescribeHybridCloudClusterRuleResponseBodyClusterRule struct {
 	RuleConfig *string `json:"RuleConfig,omitempty" xml:"RuleConfig,omitempty"`
 	// The rule status. Valid values:
 	//
-	// - **on**: enabled.
+	// - **on**: Enabled.
 	//
-	// - **off**: disabled.
+	// - **off**: Disabled.
 	//
 	// example:
 	//
@@ -100,7 +100,7 @@ type DescribeHybridCloudClusterRuleResponseBodyClusterRule struct {
 	RuleStatus *string `json:"RuleStatus,omitempty" xml:"RuleStatus,omitempty"`
 	// The rule type. Valid values:
 	//
-	// - pullin: traffic redirection rule
+	// - pullin: traffic diversion rule
 	//
 	// example:
 	//

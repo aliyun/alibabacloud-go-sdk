@@ -28,13 +28,13 @@ type iDescribeApisecEventDetailRequest interface {
 type DescribeApisecEventDetailRequest struct {
 	// The ID of the hybrid cloud cluster.
 	//
-	// > This parameter applies only to hybrid cloud scenarios. You can call the [DescribeHybridCloudClusters](https://help.aliyun.com/document_detail/2849376.html) operation to query hybrid cloud cluster information.
+	// > This parameter applies only to hybrid cloud scenarios. You can call the [DescribeHybridCloudClusters](https://help.aliyun.com/document_detail/2849376.html) operation to obtain hybrid cloud cluster information.
 	//
 	// example:
 	//
 	// 428
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// The type of detailed information about the security event.
+	// The type of details for the security event.
 	//
 	// example:
 	//
@@ -48,15 +48,19 @@ type DescribeApisecEventDetailRequest struct {
 	//
 	// 18ba94fea9***e66ba0557b7b91
 	EventId *string `json:"EventId,omitempty" xml:"EventId,omitempty"`
-	// The dimension of the security event.
+	// The scope of the security event. Valid values:
+	//
+	// - **ip**: IP security events. This is the default value.
+	//
+	// - **account**: account security events.
 	//
 	// example:
 	//
 	// ip
 	EventScope *string `json:"EventScope,omitempty" xml:"EventScope,omitempty"`
-	// Instance ID of the WAF instance.
+	// The WAF instance ID.
 	//
-	// > You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query instance ID of the WAF instance.
+	// > You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to view the current WAF instance ID.
 	//
 	// This parameter is required.
 	//
@@ -64,7 +68,7 @@ type DescribeApisecEventDetailRequest struct {
 	//
 	// waf_elasticity-cn-0xldbqtm005
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The region where the WAF instance is deployed. Valid values:
+	// The region where the WAF instance resides. Valid values:
 	//
 	// - **cn-hangzhou**: the Chinese mainland.
 	//

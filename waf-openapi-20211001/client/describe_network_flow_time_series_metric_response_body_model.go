@@ -18,7 +18,7 @@ type iDescribeNetworkFlowTimeSeriesMetricResponseBody interface {
 }
 
 type DescribeNetworkFlowTimeSeriesMetricResponseBody struct {
-	// The time series data. Multiple data series can be returned.
+	// The returned time sequence data. Time sequence data of multiple values can be returned.
 	NetworkFlowTimeSeries []*DescribeNetworkFlowTimeSeriesMetricResponseBodyNetworkFlowTimeSeries `json:"NetworkFlowTimeSeries,omitempty" xml:"NetworkFlowTimeSeries,omitempty" type:"Repeated"`
 	// The request ID.
 	//
@@ -84,15 +84,19 @@ func (s *DescribeNetworkFlowTimeSeriesMetricResponseBody) Validate() error {
 }
 
 type DescribeNetworkFlowTimeSeriesMetricResponseBodyNetworkFlowTimeSeries struct {
-	// The metric name. This value is the same as the Metric request parameter.
+	// The returned data content. The meaning is consistent with the Metric parameter in the request parameters.
 	//
 	// example:
 	//
 	// total_requests
 	Metric *string `json:"Metric,omitempty" xml:"Metric,omitempty"`
-	// The timestamps. Each value represents the start of a time interval.
+	// The time series. Each point represents the start time of a time range.
 	Timestamps []*string `json:"Timestamps,omitempty" xml:"Timestamps,omitempty" type:"Repeated"`
-	// The metric values. Each value represents the count within the corresponding time interval.
+	// The data series. Each point represents the statistical count within a specific time range.
+	//
+	// example:
+	//
+	// []
 	Values []*int64 `json:"Values,omitempty" xml:"Values,omitempty" type:"Repeated"`
 }
 
@@ -136,15 +140,15 @@ func (s *DescribeNetworkFlowTimeSeriesMetricResponseBodyNetworkFlowTimeSeries) V
 }
 
 type DescribeNetworkFlowTimeSeriesMetricResponseBodyTimeSeriesMetaData struct {
-	// The time granularity of each data point in the returned time series. For example, "15m" indicates that each data point represents statistics for a 15-minute interval. For more information about the time granularity, see the **Time granularity of data points*	- section.
+	// The statistical time granularity of each data point in the returned time sequence data. For example, "15m" indicates that each returned data point is the statistical data for every 15 minutes. For the time granularity of the returned data, see **Description of the time granularity of time sequence data points**.
 	//
 	// example:
 	//
 	// 1m
 	AggregateInterval *string `json:"AggregateInterval,omitempty" xml:"AggregateInterval,omitempty"`
-	// The time range that was queried.
+	// The time range used for the query.
 	DateRange *DescribeNetworkFlowTimeSeriesMetricResponseBodyTimeSeriesMetaDataDateRange `json:"DateRange,omitempty" xml:"DateRange,omitempty" type:"Struct"`
-	// The unit of the returned data. Default value: requests.
+	// The unit of the returned statistical data. Default value: requests.
 	//
 	// example:
 	//
@@ -197,13 +201,13 @@ func (s *DescribeNetworkFlowTimeSeriesMetricResponseBodyTimeSeriesMetaData) Vali
 }
 
 type DescribeNetworkFlowTimeSeriesMetricResponseBodyTimeSeriesMetaDataDateRange struct {
-	// The end of the time range that was queried. This value is a UNIX timestamp. Unit: seconds. This value is the same as the EndDate request parameter.
+	// The end time used for the query, represented as a UNIX timestamp in seconds. This value is the same as the EndDate parameter in the request.
 	//
 	// example:
 	//
 	// 1713888600
 	EndDate *int64 `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
-	// The start of the time range that was queried. This value is a UNIX timestamp. Unit: seconds. This value is the same as the StartDate request parameter.
+	// The start time used for the query, represented as a UNIX timestamp in seconds. This value is the same as the StartDate parameter in the request.
 	//
 	// example:
 	//

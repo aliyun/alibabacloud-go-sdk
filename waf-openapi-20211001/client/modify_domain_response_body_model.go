@@ -62,7 +62,7 @@ func (s *ModifyDomainResponseBody) Validate() error {
 }
 
 type ModifyDomainResponseBodyDomainInfo struct {
-	// The CNAME assigned by WAF to the domain name.
+	// The CNAME address assigned by WAF to the domain name.
 	//
 	// example:
 	//

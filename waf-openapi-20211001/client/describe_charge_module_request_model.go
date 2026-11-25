@@ -20,15 +20,15 @@ type iDescribeChargeModuleRequest interface {
 }
 
 type DescribeChargeModuleRequest struct {
-	// The pricing unit.
+	// The billing unit.
 	//
 	// example:
 	//
 	// SeCU
 	ChargeUnit *string `json:"ChargeUnit,omitempty" xml:"ChargeUnit,omitempty"`
-	// The billing type of the instance. Valid values:
+	// The billing method of the instance. Valid values:
 	//
-	// - **POSTPAY**: pay-as-you-go WAF instance.
+	// - **POSTPAY**: pay-as-you-go WAF instances.
 	//
 	// This parameter is required.
 	//
@@ -36,7 +36,7 @@ type DescribeChargeModuleRequest struct {
 	//
 	// POSTPAY
 	PayType *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
-	// The region where the WAF instance resides. Valid values:
+	// The region of the WAF instance. Valid values:
 	//
 	// - **cn-hangzhou**: the Chinese mainland.
 	//
@@ -46,7 +46,7 @@ type DescribeChargeModuleRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The Alibaba Cloud resource group ID.
+	// The ID of the Alibaba Cloud resource group.
 	//
 	// example:
 	//

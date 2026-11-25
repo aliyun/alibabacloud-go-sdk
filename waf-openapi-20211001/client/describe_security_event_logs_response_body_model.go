@@ -20,15 +20,15 @@ type iDescribeSecurityEventLogsResponseBody interface {
 }
 
 type DescribeSecurityEventLogsResponseBody struct {
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
 	// D827FCFE-90A7-4330-9326-******4C7726
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// A list of detailed attack logs.
+	// The list of returned attack log details.
 	SecurityEventLogs []interface{} `json:"SecurityEventLogs,omitempty" xml:"SecurityEventLogs,omitempty" type:"Repeated"`
-	// The total number of attack logs found.
+	// The total number of queried attack log entries.
 	//
 	// example:
 	//
@@ -138,13 +138,13 @@ func (s *DescribeSecurityEventLogsResponseBodySecurityEventMetaData) Validate() 
 }
 
 type DescribeSecurityEventLogsResponseBodySecurityEventMetaDataDateRange struct {
-	// The end of the time range used for the query. The value is a UNIX timestamp. Unit: seconds. This value is the same as the \\`EndDate\\` request parameter.
+	// The end time used for the data query. The end time is represented by a UNIX timestamp in seconds. This value is the same as the EndDate request parameter.
 	//
 	// example:
 	//
 	// 1713888600
 	EndDate *int64 `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
-	// The start of the time range used for the query. The value is a UNIX timestamp. Unit: seconds. This value is the same as the \\`StartDate\\` request parameter.
+	// The start time used for the data query. The start time is represented by a UNIX timestamp in seconds. This value is the same as the StartDate request parameter.
 	//
 	// example:
 	//

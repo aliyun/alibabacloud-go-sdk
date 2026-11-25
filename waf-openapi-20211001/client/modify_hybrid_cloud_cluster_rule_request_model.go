@@ -36,7 +36,7 @@ type ModifyHybridCloudClusterRuleRequest struct {
 	//
 	// 10*
 	ClusterId *int64 `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// The resource ID of the cluster rule.
+	// The ID of the cluster rule resource.
 	//
 	// example:
 	//
@@ -52,7 +52,7 @@ type ModifyHybridCloudClusterRuleRequest struct {
 	//
 	// waf-cn-n6w***x52m
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The region where the WAF instance is deployed. Valid values:
+	// The region where the WAF instance resides. Valid values:
 	//
 	// - **cn-hangzhou**: the Chinese mainland.
 	//
@@ -68,21 +68,21 @@ type ModifyHybridCloudClusterRuleRequest struct {
 	//
 	// rg-acfm***q
 	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
-	// The traffic redirection rule configuration.
+	// The traffic redirection rule configuration:
 	//
 	// <notice>The mode cannot be modified.</notice>
 	//
 	// - **check_mode**: the mode. Valid values:
 	//
-	//   - **all**: full traffic redirection.
+	//   - **all**: full traffic redirection
 	//
-	//   - **part**: partial traffic redirection.
+	//   - **part**: partial traffic redirection
 	//
-	// - **type**: the rule matching type. Valid values:
+	// - **type**: the rule match type. Valid values:
 	//
-	//   - **exact**: exact match.
+	//   - **exact**: exact match
 	//
-	//   - **regex**: regular expression.
+	//   - **regex**: regular expression
 	//
 	// - **substance**: the rule value.
 	//
@@ -90,11 +90,11 @@ type ModifyHybridCloudClusterRuleRequest struct {
 	//
 	// {\\"check_mode\\": \\"all\\", \\"type\\": \\"exact\\", \\"substance\\": \\"122\\"}
 	RuleConfig *string `json:"RuleConfig,omitempty" xml:"RuleConfig,omitempty"`
-	// The rule status. Valid values:
+	// The status of the rule. Valid values:
 	//
-	// - **on**: enabled.
+	// - **on**: enabled
 	//
-	// - **off**: disabled.
+	// - **off**: disabled
 	//
 	// example:
 	//
@@ -104,7 +104,7 @@ type ModifyHybridCloudClusterRuleRequest struct {
 	//
 	// **[Deprecated]*	- The rule type. Valid values:
 	//
-	// - **pullin**: traffic redirection configuration.
+	// - **pullin**: traffic redirection configuration
 	//
 	// example:
 	//

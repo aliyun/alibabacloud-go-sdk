@@ -18,7 +18,7 @@ type iDescribeFreeUserEventTypesResponseBody interface {
 type DescribeFreeUserEventTypesResponseBody struct {
 	// The list of security event types for basic detection.
 	Data []*DescribeFreeUserEventTypesResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//

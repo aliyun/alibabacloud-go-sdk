@@ -46,13 +46,13 @@ type DescribeApisecEventDetailResponseBody struct {
 	AttackCnt *string `json:"AttackCnt,omitempty" xml:"AttackCnt,omitempty"`
 	// The attacker list.
 	AttackerList []*string `json:"AttackerList,omitempty" xml:"AttackerList,omitempty" type:"Repeated"`
-	// The detailed information about the security event. The value is a string converted from a JSON object constructed by a series of parameters.
+	// The details of the security event, which are converted into a string in JSON format constructed from a series of parameters.
 	//
 	// example:
 	//
 	// {\\"location\\":[\\"FR\\",\\"CN\\"],\\"location_type\\":\\"country\\"}
 	DetailValue *string `json:"DetailValue,omitempty" xml:"DetailValue,omitempty"`
-	// The end time of the query. The value is a UNIX timestamp (UTC). Unit: seconds.
+	// The end time of the query. The time is a UNIX timestamp in UTC. Unit: seconds.
 	//
 	// example:
 	//
@@ -64,37 +64,37 @@ type DescribeApisecEventDetailResponseBody struct {
 	//
 	// 18ba94fea9***e66ba0557b7b91
 	EventId *string `json:"EventId,omitempty" xml:"EventId,omitempty"`
-	// The event level. Valid values:
+	// The level of the event. Valid values:
 	//
-	// - **high**: high risk.
+	// - **high**: high-risk.
 	//
-	// - **medium**: medium risk.
+	// - **medium**: medium-risk.
 	//
-	// - **low**: low risk.
+	// - **low**: low-risk.
 	//
 	// example:
 	//
 	// low
 	EventLevel *string `json:"EventLevel,omitempty" xml:"EventLevel,omitempty"`
-	// The dimension of the security event. Valid values:
+	// The scope of the security event. Valid values:
 	//
-	// - **ip*	- (default): IP security event.
+	// - **ip**: IP security events. This is the default value.
 	//
-	// - **account**: account security event.
+	// - **account**: account security events.
 	//
 	// example:
 	//
 	// ip
 	EventScope *string `json:"EventScope,omitempty" xml:"EventScope,omitempty"`
-	// The event type.
+	// The type of the event.
 	//
-	// > You can call the [DescribeApisecRules](https://help.aliyun.com/document_detail/2859155.html) operation to query the supported event types.
+	// > You can call the [DescribeApisecRules](https://help.aliyun.com/document_detail/2859155.html) operation to obtain the supported event types.
 	//
 	// example:
 	//
 	// ObtainSensitiveUnauthorized
 	EventTag *string `json:"EventTag,omitempty" xml:"EventTag,omitempty"`
-	// The remarks.
+	// The note.
 	//
 	// example:
 	//
@@ -110,19 +110,19 @@ type DescribeApisecEventDetailResponseBody struct {
 	//
 	// custom
 	Origin *string `json:"Origin,omitempty" xml:"Origin,omitempty"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
 	// D7861F61-5B61-46CE-A47C-6B19160D5EB0
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The start time of the query. The value is a UNIX timestamp (UTC). Unit: seconds.
+	// The start time of the query. The time is a UNIX timestamp in UTC. Unit: seconds.
 	//
 	// example:
 	//
 	// 1683648000
 	StartTs *string `json:"StartTs,omitempty" xml:"StartTs,omitempty"`
-	// The event status. Valid values:
+	// The status of the event. Valid values:
 	//
 	// - **toBeConfirmed**: to be confirmed.
 	//

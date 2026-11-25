@@ -26,17 +26,17 @@ type iDescribeDefenseGroupValidResourcesRequest interface {
 }
 
 type DescribeDefenseGroupValidResourcesRequest struct {
-	// The name of the defense group to query.
+	// The name of the protection group to query.
 	//
-	// > Leave this parameter empty to query for protected objects that can be associated with a new defense group.
+	// > If you do not specify this parameter, this operation queries the protection objects that can be associated with a protection group when you create the protection group.
 	//
 	// example:
 	//
 	// group221
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
-	// The ID of the Web Application Firewall (WAF) instance.
+	// The ID of the WAF instance.
 	//
-	// > Call [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) to query the ID of the WAF instance.
+	// > You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
 	//
 	// This parameter is required.
 	//
@@ -44,7 +44,7 @@ type DescribeDefenseGroupValidResourcesRequest struct {
 	//
 	// waf_v3prepaid_public_cn-zxu****jc01
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The number of the page to return. Default value: **1**.
+	// The page number of the current page returned by paging in a paged query. Default value: **1**.
 	//
 	// example:
 	//
@@ -66,7 +66,7 @@ type DescribeDefenseGroupValidResourcesRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The name of the protected object that you want to use as a filter for the query results.
+	// The protection object to query.
 	//
 	// example:
 	//

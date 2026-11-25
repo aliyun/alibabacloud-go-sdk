@@ -74,17 +74,17 @@ type DescribeBaseSystemRulesRequest struct {
 	//
 	// - **scanner_behavior**: scanner behavior.
 	//
-	// - **logic_flaw**: business logic bug.
+	// - **logic_flaw**: business logic flaw.
 	//
-	// - **arbitrary_file_reading**: arbitrary file read.
+	// - **arbitrary_file_reading**: arbitrary file reading.
 	//
 	// - **arbitrary_file_download**: arbitrary file download.
 	//
-	// - **xxe**: XML external entity injection.
+	// - **xxe**: external entity injection.
 	//
-	// - **csrf**: cross-site request forgery.
+	// - **csrf**: cross-site request forgery (CSRF).
 	//
-	// - **crlf**: CRLF injection.
+	// - **crlf**: CRLF.
 	//
 	// - **other**: other.
 	//
@@ -94,7 +94,7 @@ type DescribeBaseSystemRulesRequest struct {
 	DetectType *string `json:"DetectType,omitempty" xml:"DetectType,omitempty"`
 	// The ID of the WAF instance.
 	//
-	// > You can call [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) to query the ID of the current WAF instance.
+	// > You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the current WAF instance.
 	//
 	// This parameter is required.
 	//
@@ -112,19 +112,19 @@ type DescribeBaseSystemRulesRequest struct {
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The page number to return in a paged query. Default value: **1**, which indicates the first page. This parameter is used for paging.
+	// The page number to return in a paged query. Default value: **1**, which indicates the first page.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page in a paged query. Default value: 100. This parameter is used for paging.
+	// The number of entries to return on each page in a paged query. Default value: 100, which indicates 100 entries per page.
 	//
 	// example:
 	//
 	// 100
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The region where the WAF instance is deployed. Valid values:
+	// The region where the WAF instance resides. Valid values:
 	//
 	// - **cn-hangzhou**: the Chinese mainland.
 	//
@@ -142,19 +142,19 @@ type DescribeBaseSystemRulesRequest struct {
 	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
 	// The risk level. Valid values:
 	//
-	// - **super_strict**: super strict.
+	// - **super_strict**: Super strict.
 	//
-	// - **strict**: strict.
+	// - **strict**: Strict.
 	//
-	// - **medium**: medium.
+	// - **medium**: Medium.
 	//
-	// - **loose**: loose.
+	// - **loose**: Loose.
 	//
 	// example:
 	//
 	// loose
 	RiskLevel *string `json:"RiskLevel,omitempty" xml:"RiskLevel,omitempty"`
-	// The rule action. Valid values:
+	// The action of the rule. Valid values:
 	//
 	// - **block**: Block.
 	//
@@ -170,7 +170,7 @@ type DescribeBaseSystemRulesRequest struct {
 	//
 	// 113089
 	RuleId *int64 `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
-	// The list of system protection rule IDs to query.
+	// The IDs of the system protection rules to query.
 	RuleIds []*int64 `json:"RuleIds,omitempty" xml:"RuleIds,omitempty" type:"Repeated"`
 	// The name of the system protection rule.
 	//
@@ -178,11 +178,11 @@ type DescribeBaseSystemRulesRequest struct {
 	//
 	// systemRuleTest
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
-	// The rule status. Valid values:
+	// The status of the rule. Valid values:
 	//
-	// - **1**: disabled.
+	// - **1**: Disabled.
 	//
-	// - **0**: enabled.
+	// - **0**: Enabled.
 	//
 	// example:
 	//
@@ -192,9 +192,9 @@ type DescribeBaseSystemRulesRequest struct {
 	//
 	// >
 	//
-	// > - You can set this parameter to query the system protection rules in a specific Web core protection rule template. Settings apply to the specified template.
+	// > - You can set this parameter to query the system protection rules in a specific web core protection rule template.
 	//
-	// > - If this parameter is left empty, the default configurations of system protection rules are queried.
+	// > - If this parameter is left empty, the default configurations of the system protection rules are queried.
 	//
 	// example:
 	//

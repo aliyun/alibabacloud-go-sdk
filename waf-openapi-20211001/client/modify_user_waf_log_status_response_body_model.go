@@ -28,7 +28,7 @@ type ModifyUserWafLogStatusResponseBody struct {
 	//
 	// example:
 	//
-	// wafng-project-14316572********-cn-hangzhou
+	// false
 	ProjectName *bool `json:"ProjectName,omitempty" xml:"ProjectName,omitempty"`
 	// The request ID.
 	//

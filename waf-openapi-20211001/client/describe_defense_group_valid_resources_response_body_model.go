@@ -24,9 +24,9 @@ type DescribeDefenseGroupValidResourcesResponseBody struct {
 	//
 	// A57BA089-3B28-5C82-8331-7B94****4978
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The names of the protected objects.
+	// The names of the protection objects.
 	Resources []*string `json:"Resources,omitempty" xml:"Resources,omitempty" type:"Repeated"`
-	// The total number of entries returned.
+	// The total number of returned results.
 	//
 	// example:
 	//

@@ -21,6 +21,8 @@ type iDeleteDefenseRuleRequest interface {
 	GetResource() *string
 	SetResourceManagerResourceGroupId(v string) *DeleteDefenseRuleRequest
 	GetResourceManagerResourceGroupId() *string
+	SetResourceType(v string) *DeleteDefenseRuleRequest
+	GetResourceType() *string
 	SetRuleIds(v string) *DeleteDefenseRuleRequest
 	GetRuleIds() *string
 	SetTemplateId(v int64) *DeleteDefenseRuleRequest
@@ -34,11 +36,11 @@ type DeleteDefenseRuleRequest struct {
 	//
 	// template
 	DefenseType *string `json:"DefenseType,omitempty" xml:"DefenseType,omitempty"`
-	// Specifies whether to enable the DryRun dry run mode. If you do not specify this parameter, a normal request is sent. Valid values:
+	// Specifies whether to enable the dry run mode. If you do not specify this parameter, a normal request is initiated. Valid values:
 	//
-	// - **true**: A dry run request is sent. The system checks whether the request meets the execution conditions without performing the specified operation. If the dry run fails, the corresponding error code is returned. If the dry run succeeds, the error code Defense.Control.DryRunOperation is returned.
+	// - **true**: initiates a dry run request. The system only checks whether the request meets the execution conditions and does not perform the operations specified in the request. If the dry run fails, the system returns the corresponding error code. If the dry run succeeds, the system returns the Defense.Control.DryRunOperation error code.
 	//
-	// - **false**: A normal request is sent. The specified operation is performed after the request passes the check.
+	// - **false**: initiates a normal request. If the check succeeds, the system performs the operations specified in the request.
 	//
 	// example:
 	//
@@ -46,7 +48,7 @@ type DeleteDefenseRuleRequest struct {
 	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
 	// The ID of the WAF instance.
 	//
-	// > You can call [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) to query the ID of the current WAF instance.
+	// > You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the current WAF instance.
 	//
 	// This parameter is required.
 	//
@@ -54,7 +56,7 @@ type DeleteDefenseRuleRequest struct {
 	//
 	// waf_cdnsdf3****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The region where the WAF instance is deployed. Valid values:
+	// The region where the WAF instance resides. Valid values:
 	//
 	// - **cn-hangzhou**: the Chinese mainland.
 	//
@@ -64,7 +66,7 @@ type DeleteDefenseRuleRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The protected object associated with the rule to delete.
+	// The protected object to which the rules to be deleted apply.
 	//
 	// > This parameter is required only when **DefenseType*	- is set to **resource**.
 	//
@@ -78,7 +80,17 @@ type DeleteDefenseRuleRequest struct {
 	//
 	// rg-acfm***q
 	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
-	// The IDs of the protection rules to delete. Separate multiple IDs with commas (,).
+	// The type of the protection target. This parameter applies to rules whose **DefenseType*	- is **resource**. Valid values:
+	//
+	// - **single*	- (default): a single protected object.
+	//
+	// - **group**: a protection group.
+	//
+	// example:
+	//
+	// single
+	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
+	// The IDs of the protection rules to be deleted. Separate multiple rule IDs with commas (,).
 	//
 	// This parameter is required.
 	//
@@ -86,7 +98,7 @@ type DeleteDefenseRuleRequest struct {
 	//
 	// 2223455,23354,465565
 	RuleIds *string `json:"RuleIds,omitempty" xml:"RuleIds,omitempty"`
-	// The ID of the protection template to delete.
+	// The ID of the protection template to be deleted.
 	//
 	// > This parameter is required only when **DefenseType*	- is set to **template**.
 	//
@@ -128,6 +140,10 @@ func (s *DeleteDefenseRuleRequest) GetResourceManagerResourceGroupId() *string {
 	return s.ResourceManagerResourceGroupId
 }
 
+func (s *DeleteDefenseRuleRequest) GetResourceType() *string {
+	return s.ResourceType
+}
+
 func (s *DeleteDefenseRuleRequest) GetRuleIds() *string {
 	return s.RuleIds
 }
@@ -163,6 +179,11 @@ func (s *DeleteDefenseRuleRequest) SetResource(v string) *DeleteDefenseRuleReque
 
 func (s *DeleteDefenseRuleRequest) SetResourceManagerResourceGroupId(v string) *DeleteDefenseRuleRequest {
 	s.ResourceManagerResourceGroupId = &v
+	return s
+}
+
+func (s *DeleteDefenseRuleRequest) SetResourceType(v string) *DeleteDefenseRuleRequest {
+	s.ResourceType = &v
 	return s
 }
 

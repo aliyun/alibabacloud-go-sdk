@@ -26,7 +26,7 @@ type DescribeDefenseResourcesResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The list of protected objects.
 	Resources []*DescribeDefenseResourcesResponseBodyResources `json:"Resources,omitempty" xml:"Resources,omitempty" type:"Repeated"`
-	// The total number of entries returned.
+	// The total number of returned entries.
 	//
 	// example:
 	//
@@ -83,37 +83,39 @@ func (s *DescribeDefenseResourcesResponseBody) Validate() error {
 }
 
 type DescribeDefenseResourcesResponseBodyResources struct {
-	// The status of the tracking cookie.
+	// The status of the tracking cookie. Valid values:
 	//
-	// - **0**: Disabled.
+	// - **0**: disabled.
 	//
-	// - **1**: Enabled.
+	// - **1**: enabled.
 	//
 	// example:
 	//
 	// 1
 	AcwCookieStatus *int32 `json:"AcwCookieStatus,omitempty" xml:"AcwCookieStatus,omitempty"`
-	// The status of the secure attribute for the tracking cookie.
+	// The status of the Secure attribute for the tracking cookie. Valid values:
 	//
-	// - **0**: Disabled.
+	// - **0**: disabled.
 	//
-	// - **1**: Enabled.
+	// - **1**: enabled.
 	//
 	// example:
 	//
 	// 0
 	AcwSecureStatus *int32 `json:"AcwSecureStatus,omitempty" xml:"AcwSecureStatus,omitempty"`
-	// The status of the secure attribute for the slider cookie.
+	// The status of the Secure attribute for the slider cookie. Valid values:
 	//
-	// - **0**: Disabled.
+	// - **0**: disabled.
 	//
-	// - **1**: Enabled.
+	// - **1**: enabled.
 	//
 	// example:
 	//
 	// 0
 	AcwV3SecureStatus *int32 `json:"AcwV3SecureStatus,omitempty" xml:"AcwV3SecureStatus,omitempty"`
-	// The custom XFF headers used to obtain the originating IP address of the client. If XFF is set to 1 and this field is empty, the first IP address in the XFF header is used as the originating IP address of the client.
+	// The cookie attribute aggregation configuration.
+	CookieConfig *DescribeDefenseResourcesResponseBodyResourcesCookieConfig `json:"CookieConfig,omitempty" xml:"CookieConfig,omitempty" type:"Struct"`
+	// The custom X-Forwarded-For (XFF) header used to obtain the actual originating IP address of the client. If XFF is set to 1 and this field is empty, the first IP address in the XFF header is used as the originating IP address of the client.
 	CustomHeaders []*string `json:"CustomHeaders,omitempty" xml:"CustomHeaders,omitempty" type:"Repeated"`
 	// The description.
 	//
@@ -133,7 +135,7 @@ type DescribeDefenseResourcesResponseBodyResources struct {
 	//
 	// 1652149203187
 	GmtCreate *int64 `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	// The time when the protected object was last modified. Unit: milliseconds.
+	// The time when the protected object was modified. Unit: milliseconds.
 	//
 	// example:
 	//
@@ -145,7 +147,7 @@ type DescribeDefenseResourcesResponseBodyResources struct {
 	//
 	// waf_v2_public_cn-k*****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The Alibaba Cloud account to which the protected object asset belongs in a multi-account management feature scenario.
+	// The account to which the protected object Asset belongs when the multi-account management feature is used.
 	//
 	// example:
 	//
@@ -181,7 +183,7 @@ type DescribeDefenseResourcesResponseBodyResources struct {
 	//
 	// rg-acfm***q
 	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
-	// The origin of the protected object.
+	// The source of the protected object.
 	//
 	// example:
 	//
@@ -189,11 +191,11 @@ type DescribeDefenseResourcesResponseBodyResources struct {
 	ResourceOrigin *string `json:"ResourceOrigin,omitempty" xml:"ResourceOrigin,omitempty"`
 	// The status of the protected object. Valid values:
 	//
-	// - **initializing**: Default protection is being initialized.
+	// - **initializing**: The default protection is being initialized.
 	//
-	// - **active**: Running normally.
+	// - **active**: The protected object is running normally.
 	//
-	// - **init_failed**: Default protection initialization failed.
+	// - **init_failed**: The default protection initialization failed.
 	//
 	// example:
 	//
@@ -201,7 +203,7 @@ type DescribeDefenseResourcesResponseBodyResources struct {
 	ResourceStatus *string `json:"ResourceStatus,omitempty" xml:"ResourceStatus,omitempty"`
 	// The response header parameters.
 	ResponseHeaders []*DescribeDefenseResourcesResponseBodyResourcesResponseHeaders `json:"ResponseHeaders,omitempty" xml:"ResponseHeaders,omitempty" type:"Repeated"`
-	// Indicates whether XFF proxy is enabled for the protected object.
+	// Indicates whether the X-Forwarded-For (XFF) proxy feature is enabled for the protected object.
 	//
 	// example:
 	//
@@ -227,6 +229,10 @@ func (s *DescribeDefenseResourcesResponseBodyResources) GetAcwSecureStatus() *in
 
 func (s *DescribeDefenseResourcesResponseBodyResources) GetAcwV3SecureStatus() *int32 {
 	return s.AcwV3SecureStatus
+}
+
+func (s *DescribeDefenseResourcesResponseBodyResources) GetCookieConfig() *DescribeDefenseResourcesResponseBodyResourcesCookieConfig {
+	return s.CookieConfig
 }
 
 func (s *DescribeDefenseResourcesResponseBodyResources) GetCustomHeaders() []*string {
@@ -305,6 +311,11 @@ func (s *DescribeDefenseResourcesResponseBodyResources) SetAcwSecureStatus(v int
 
 func (s *DescribeDefenseResourcesResponseBodyResources) SetAcwV3SecureStatus(v int32) *DescribeDefenseResourcesResponseBodyResources {
 	s.AcwV3SecureStatus = &v
+	return s
+}
+
+func (s *DescribeDefenseResourcesResponseBodyResources) SetCookieConfig(v *DescribeDefenseResourcesResponseBodyResourcesCookieConfig) *DescribeDefenseResourcesResponseBodyResources {
+	s.CookieConfig = v
 	return s
 }
 
@@ -389,6 +400,11 @@ func (s *DescribeDefenseResourcesResponseBodyResources) SetXffStatus(v int32) *D
 }
 
 func (s *DescribeDefenseResourcesResponseBodyResources) Validate() error {
+	if s.CookieConfig != nil {
+		if err := s.CookieConfig.Validate(); err != nil {
+			return err
+		}
+	}
 	if s.ResponseHeaders != nil {
 		for _, item := range s.ResponseHeaders {
 			if item != nil {
@@ -401,14 +417,75 @@ func (s *DescribeDefenseResourcesResponseBodyResources) Validate() error {
 	return nil
 }
 
+type DescribeDefenseResourcesResponseBodyResourcesCookieConfig struct {
+	// The SameSite policy of the slider cookie. Valid values:
+	//
+	// - **None**: None.
+	//
+	// - **Lax**: Lax.
+	//
+	// - **Strict**: Strict.
+	//
+	// > An empty string indicates that the SameSite attribute is not configured.
+	//
+	// example:
+	//
+	// Lax
+	AcwScV3SameSite *string `json:"AcwScV3SameSite,omitempty" xml:"AcwScV3SameSite,omitempty"`
+	// The SameSite policy of the tracking cookie. Valid values:
+	//
+	// - **None**: None.
+	//
+	// - **Lax**: Lax.
+	//
+	// - **Strict**: Strict.
+	//
+	// > An empty string indicates that the SameSite attribute is not configured.
+	//
+	// example:
+	//
+	// None
+	AcwTcSameSite *string `json:"AcwTcSameSite,omitempty" xml:"AcwTcSameSite,omitempty"`
+}
+
+func (s DescribeDefenseResourcesResponseBodyResourcesCookieConfig) String() string {
+	return dara.Prettify(s)
+}
+
+func (s DescribeDefenseResourcesResponseBodyResourcesCookieConfig) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeDefenseResourcesResponseBodyResourcesCookieConfig) GetAcwScV3SameSite() *string {
+	return s.AcwScV3SameSite
+}
+
+func (s *DescribeDefenseResourcesResponseBodyResourcesCookieConfig) GetAcwTcSameSite() *string {
+	return s.AcwTcSameSite
+}
+
+func (s *DescribeDefenseResourcesResponseBodyResourcesCookieConfig) SetAcwScV3SameSite(v string) *DescribeDefenseResourcesResponseBodyResourcesCookieConfig {
+	s.AcwScV3SameSite = &v
+	return s
+}
+
+func (s *DescribeDefenseResourcesResponseBodyResourcesCookieConfig) SetAcwTcSameSite(v string) *DescribeDefenseResourcesResponseBodyResourcesCookieConfig {
+	s.AcwTcSameSite = &v
+	return s
+}
+
+func (s *DescribeDefenseResourcesResponseBodyResourcesCookieConfig) Validate() error {
+	return dara.Validate(s)
+}
+
 type DescribeDefenseResourcesResponseBodyResourcesResponseHeaders struct {
-	// The key of the custom response header.
+	// The key of the specified custom response header.
 	//
 	// example:
 	//
 	// Header-Key
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The value of the custom response header.
+	// The value of the specified custom response header.
 	//
 	// example:
 	//

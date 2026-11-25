@@ -28,15 +28,15 @@ type iModifyApisecEventsRequest interface {
 }
 
 type ModifyApisecEventsRequest struct {
-	// The hybrid cloud cluster ID.
+	// The ID of the hybrid cloud cluster.
 	//
-	// > This parameter applies only to hybrid cloud scenarios. You can call [DescribeHybridCloudClusters](https://help.aliyun.com/document_detail/2849376.html) to obtain hybrid cloud cluster information.
+	// > This parameter applies only to hybrid cloud scenarios. You can call the [DescribeHybridCloudClusters](https://help.aliyun.com/document_detail/2849376.html) operation to query hybrid cloud cluster information.
 	//
 	// example:
 	//
 	// 428
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// The list of API security event IDs.
+	// The IDs of the API security events.
 	//
 	// This parameter is required.
 	EventIds []*string `json:"EventIds,omitempty" xml:"EventIds,omitempty" type:"Repeated"`
@@ -48,7 +48,7 @@ type ModifyApisecEventsRequest struct {
 	EventScope *string `json:"EventScope,omitempty" xml:"EventScope,omitempty"`
 	// The ID of the WAF instance.
 	//
-	// > You can call [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) to obtain the ID of the current WAF instance.
+	// > You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to obtain the ID of the WAF instance.
 	//
 	// This parameter is required.
 	//
@@ -56,35 +56,35 @@ type ModifyApisecEventsRequest struct {
 	//
 	// waf_v3prepaid_***
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The remarks.
+	// The note.
 	//
 	// example:
 	//
 	// already confirmed.
 	Note *string `json:"Note,omitempty" xml:"Note,omitempty"`
-	// The region where the WAF instance is deployed. Valid values:
+	// The region where the WAF instance resides. Valid values:
 	//
-	// - **cn-hangzhou**: the Chinese mainland.
+	// - **cn-hangzhou**: the Chinese mainland
 	//
-	// - **ap-southeast-1**: outside the Chinese mainland.
+	// - **ap-southeast-1**: outside the Chinese mainland
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The Alibaba Cloud resource group ID.
+	// The ID of the Alibaba Cloud resource group.
 	//
 	// example:
 	//
 	// rg-acfm***q
 	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
-	// The event status. Valid values:
+	// The status of the event. Valid values:
 	//
-	// - **toBeConfirmed**: To be confirmed.
+	// - **toBeConfirmed**: to be confirmed
 	//
-	// - **confirmed**: Confirmed.
+	// - **confirmed**: confirmed
 	//
-	// - **ignored**: Ignored.
+	// - **ignored**: ignored
 	//
 	// This parameter is required.
 	//

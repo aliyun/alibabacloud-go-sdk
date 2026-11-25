@@ -34,13 +34,17 @@ type CreateDomainRequest struct {
 	//
 	// - **hybrid_cloud_cname**: hybrid cloud CNAME access.
 	//
-	// > If the value is **share**, or if the value is **hybrid_cloud_cname*	- and public cloud disaster recovery is enabled, call the [DescribeVerifyContent](https://help.aliyun.com/document_detail/2985193.html) and [VerifyDomainOwner](https://help.aliyun.com/document_detail/2985192.html) operations to verify domain name ownership first. If the domain name is connected to a region in the Chinese mainland, ICP filing must also be completed.
+	// > If the value is **share**, or the value is **hybrid_cloud_cname*	- and public cloud disaster recovery is enabled, you must first invoke the [DescribeVerifyContent](https://help.aliyun.com/document_detail/2985193.html) and [VerifyDomainOwner](https://help.aliyun.com/document_detail/2985192.html) operations to authenticate the domain name ownership. If the website config is added to a region in the Chinese mainland, it must also have an ICP filing.
+	//
+	// >
+	//
+	// > If the value is **hybrid_cloud_cname*	- and public cloud disaster recovery is disabled, you do not need to authenticate the domain name ownership and can directly invoke this operation.
 	//
 	// example:
 	//
 	// share
 	AccessType *string `json:"AccessType,omitempty" xml:"AccessType,omitempty"`
-	// The domain name to query.
+	// The name of the domain name.
 	//
 	// This parameter is required.
 	//
@@ -50,7 +54,7 @@ type CreateDomainRequest struct {
 	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
 	// The ID of the WAF instance.
 	//
-	// > You can call [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) to query the ID of the current WAF instance.
+	// > You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the current WAF instance.
 	//
 	// This parameter is required.
 	//
@@ -58,7 +62,7 @@ type CreateDomainRequest struct {
 	//
 	// waf_cdnsdf3****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The listening configuration.
+	// The listener configuration.
 	//
 	// This parameter is required.
 	Listen *CreateDomainRequestListen `json:"Listen,omitempty" xml:"Listen,omitempty" type:"Struct"`
@@ -67,6 +71,10 @@ type CreateDomainRequest struct {
 	// This parameter is required.
 	Redirect *CreateDomainRequestRedirect `json:"Redirect,omitempty" xml:"Redirect,omitempty" type:"Struct"`
 	// The region where the WAF instance resides. Valid values:
+	//
+	// - **cn-hangzhou**: the Chinese mainland.
+	//
+	// - **ap-southeast-1**: outside the Chinese mainland.
 	//
 	// This parameter is required.
 	//
@@ -80,7 +88,7 @@ type CreateDomainRequest struct {
 	//
 	// rg-acfm***q
 	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
-	// The list of tags. You can specify up to 20 tags.
+	// The list of tags. A maximum of 20 tags are supported.
 	Tag []*CreateDomainRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
@@ -188,7 +196,7 @@ func (s *CreateDomainRequest) Validate() error {
 }
 
 type CreateDomainRequestListen struct {
-	// The ID of the certificate to add. This parameter is used only when **HttpsPorts*	- is not empty, which indicates that the domain name uses HTTPS.
+	// The ID of the certificate to be added. This parameter is used only when **HttpsPorts*	- is not empty, which indicates that the domain name uses the HTTPS protocol.
 	//
 	// if can be null:
 	// true
@@ -197,15 +205,27 @@ type CreateDomainRequestListen struct {
 	//
 	// 123
 	CertId *string `json:"CertId,omitempty" xml:"CertId,omitempty"`
-	// The type of cipher suite to add. This parameter is used only when **HttpsPorts*	- is not empty, which indicates that the domain name uses HTTPS. Valid values:
+	// The type of cipher suite to be added. This parameter is used only when **HttpsPorts*	- is not empty, which indicates that the domain name uses the HTTPS protocol. Valid values:
+	//
+	// - **1**: adds all cipher suites.
+	//
+	// - **2**: adds strong cipher suites. This value is available only when **TLSVersion*	- is set to **tlsv1.2**.
+	//
+	// - **99**: adds custom cipher suites. This value is available only when **TLSVersion*	- is not set to **tlsv1.3**.
 	//
 	// example:
 	//
 	// 2
 	CipherSuite *int32 `json:"CipherSuite,omitempty" xml:"CipherSuite,omitempty"`
-	// The custom cipher suites to add.
+	// The custom cipher suites to be added.
 	CustomCiphers []*string `json:"CustomCiphers,omitempty" xml:"CustomCiphers,omitempty" type:"Repeated"`
 	// Specifies whether to support TLS 1.3. Valid values:
+	//
+	// - **true**: supports TLS 1.3.
+	//
+	// - **false**: does not support TLS 1.3.
+	//
+	// > This parameter is used only when HttpsPorts is not empty, which indicates that the domain name uses the HTTPS protocol. When TLSVersion is set to tlsv1.3, this value must be set to true.
 	//
 	// if can be null:
 	// true
@@ -214,19 +234,31 @@ type CreateDomainRequestListen struct {
 	//
 	// true
 	EnableTLSv3 *bool `json:"EnableTLSv3,omitempty" xml:"EnableTLSv3,omitempty"`
-	// Specifies whether to enable an exclusive IP address. This parameter is used only when **IPv6Enabled*	- is set to **false*	- (which indicates that IPv6 is disabled) and **ProtectionResource*	- is set to **share*	- (which indicates that a shared cluster is used). Valid values:
+	// Specifies whether to enable an exclusive IP address. This parameter is used only when **IPv6Enabled*	- is set to **false**, which indicates that IPv6 is disabled, and **ProtectionResource*	- is set to **share**, which indicates that a shared cluster is used. Valid values:
+	//
+	// - **true**: enables an exclusive IP address.
+	//
+	// - **false*	- (default): disables an exclusive IP address.
 	//
 	// example:
 	//
 	// true
 	ExclusiveIp *bool `json:"ExclusiveIp,omitempty" xml:"ExclusiveIp,omitempty"`
-	// Specifies whether to enable forced HTTPS redirect. This parameter is used only when HttpsPorts is not empty (which indicates that the domain name uses HTTPS) and HttpPorts is empty (which indicates that the domain name does not use HTTP). Valid values:
+	// Specifies whether to enable forced HTTPS redirection. This parameter is used only when HttpsPorts is not empty, which indicates that the domain name uses the HTTPS protocol, and HttpPorts is empty, which indicates that the domain name does not use the HTTP protocol. Valid values:
+	//
+	// - **true**: enables forced HTTPS redirection.
+	//
+	// - **false**: disables forced HTTPS redirection.
 	//
 	// example:
 	//
 	// true
 	FocusHttps *bool `json:"FocusHttps,omitempty" xml:"FocusHttps,omitempty"`
-	// Specifies whether HSTS includes subdomains. Valid values:
+	// Specifies whether HTTP Strict Transport Security (HSTS) includes subdomains. Valid values:
+	//
+	// - **true**: includes subdomains.
+	//
+	// - **false**: does not include subdomains.
 	//
 	// example:
 	//
@@ -238,35 +270,55 @@ type CreateDomainRequestListen struct {
 	//
 	// 365000
 	HstsMaxAge *int64 `json:"HstsMaxAge,omitempty" xml:"HstsMaxAge,omitempty"`
-	// Specifies whether to enable HSTS preloading. This feature is disabled by default. Valid values:
+	// Specifies whether to enable HSTS preload. Default value: false. Valid values:
+	//
+	// - true: enables HSTS preload.
+	//
+	// - false: disables HSTS preload.
 	//
 	// example:
 	//
 	// false
 	HstsPreload *bool `json:"HstsPreload,omitempty" xml:"HstsPreload,omitempty"`
-	// Specifies whether to enable HTTP/2. This parameter is used only when **HttpsPorts*	- is not empty, which indicates that the domain name uses HTTPS. Valid values:
+	// Specifies whether to enable HTTP/2. This parameter is used only when **HttpsPorts*	- is not empty, which indicates that the domain name uses the HTTPS protocol. Valid values:
+	//
+	// - **true**: enables HTTP/2.
+	//
+	// - **false*	- (default): disables HTTP/2.
 	//
 	// example:
 	//
 	// true
 	Http2Enabled *bool `json:"Http2Enabled,omitempty" xml:"Http2Enabled,omitempty"`
-	// The listening ports for HTTP.
+	// The listening ports for the HTTP protocol.
 	HttpPorts []*int32 `json:"HttpPorts,omitempty" xml:"HttpPorts,omitempty" type:"Repeated"`
-	// The listening ports for HTTPS.
+	// The listening ports for the HTTPS protocol.
 	HttpsPorts []*int32 `json:"HttpsPorts,omitempty" xml:"HttpsPorts,omitempty" type:"Repeated"`
 	// Specifies whether to enable IPv6. Valid values:
+	//
+	// - **true**: enables IPv6.
+	//
+	// - **false*	- (default): disables IPv6.
 	//
 	// example:
 	//
 	// true
 	IPv6Enabled *bool `json:"IPv6Enabled,omitempty" xml:"IPv6Enabled,omitempty"`
-	// The type of protection resource to use. Valid values:
+	// The type of protection resource to be used. Valid values:
+	//
+	// - **share*	- (default): uses a shared cluster.
+	//
+	// - **gslb**: uses intelligent load balancing of a shared cluster.
 	//
 	// example:
 	//
 	// share
 	ProtectionResource *string `json:"ProtectionResource,omitempty" xml:"ProtectionResource,omitempty"`
-	// Specifies whether to allow only SM2 client access. This parameter is used only when SM2Enabled is set to true.
+	// Specifies whether to allow access only from SM2 clients. This parameter is used only when SM2Enabled is set to true. Valid values:
+	//
+	// - true: allows access only from SM2 clients.
+	//
+	// - false: allows access from both SM2 and non-SM2 clients.
 	//
 	// if can be null:
 	// true
@@ -275,7 +327,7 @@ type CreateDomainRequestListen struct {
 	//
 	// true
 	SM2AccessOnly *bool `json:"SM2AccessOnly,omitempty" xml:"SM2AccessOnly,omitempty"`
-	// The ID of the SM2 certificate to add. This parameter is used only when SM2Enabled is set to true.
+	// The ID of the SM2 certificate to be added. This parameter is used only when SM2Enabled is set to true.
 	//
 	// if can be null:
 	// true
@@ -284,7 +336,7 @@ type CreateDomainRequestListen struct {
 	//
 	// 123-cn-hangzhou
 	SM2CertId *string `json:"SM2CertId,omitempty" xml:"SM2CertId,omitempty"`
-	// Specifies whether to enable SM2 certificates.
+	// Specifies whether to enable the SM2 certificate.
 	//
 	// if can be null:
 	// true
@@ -293,27 +345,35 @@ type CreateDomainRequestListen struct {
 	//
 	// true
 	SM2Enabled *bool `json:"SM2Enabled,omitempty" xml:"SM2Enabled,omitempty"`
-	// The TLS version to add. This parameter is used only when **HttpsPorts*	- is not empty, which indicates that the domain name uses the HTTPS protocol. Valid values:
+	// The TLS version to be added. This parameter is used only when **HttpsPorts*	- is not empty, which indicates that the domain name uses the HTTPS protocol. Valid values:
 	//
-	// - **tlsv1**: Supports TLS 1.0 and later. Highest compatibility and lowest security.
+	// - **tlsv1**: supports TLS 1.0 and later versions. This value provides the highest compatibility but lower security.
 	//
-	// - **tlsv1.1**: Supports TLS 1.1 and later. Good compatibility and good security.
+	// - **tlsv1.1**: supports TLS 1.1 and later versions. This value provides good compatibility and security.
 	//
-	// - **tlsv1.2**: Supports TLS 1.2 and later. Good compatibility and highest security.
+	// - **tlsv1.2**: supports TLS 1.2 and later versions. This value provides good compatibility and the highest security.
 	//
-	// - **tlsv1.3**: Supports only TLS 1.3. Highest security and lowest compatibility.
+	// - **tlsv1.3**: supports only TLS 1.3. This value provides the highest security but lower compatibility.
 	//
 	// example:
 	//
 	// tlsv1
 	TLSVersion *string `json:"TLSVersion,omitempty" xml:"TLSVersion,omitempty"`
-	// The method that WAF uses to obtain the originating IP address of the client. Valid values:
+	// The method used by WAF to obtain the actual IP address of the client. Valid values:
+	//
+	// - **0*	- (default): The client access traffic is not forwarded by other Layer 7 proxies before it reaches WAF.
+	//
+	// - **1**: WAF reads the first value of the X-Forwarded-For (XFF) field in the request header as the client IP address.
+	//
+	// - **2**: WAF reads the value of a custom field that you specified in the request header as the client IP address.
+	//
+	// - **3**: WAF reads the Client IP address in the Proxy Protocol header as the client IP address.
 	//
 	// example:
 	//
 	// 1
 	XffHeaderMode *int32 `json:"XffHeaderMode,omitempty" xml:"XffHeaderMode,omitempty"`
-	// The custom header fields used to obtain the client IP address.
+	// The list of custom fields used to obtain the client IP address.
 	XffHeaders []*string `json:"XffHeaders,omitempty" xml:"XffHeaders,omitempty" type:"Repeated"`
 }
 
@@ -510,17 +570,19 @@ func (s *CreateDomainRequestListen) Validate() error {
 }
 
 type CreateDomainRequestRedirect struct {
+	// The custom back-to-origin configuration.
+	BackendConfig []*CreateDomainRequestRedirectBackendConfig `json:"BackendConfig,omitempty" xml:"BackendConfig,omitempty" type:"Repeated"`
 	// The custom port configuration.
 	BackendPorts []*CreateDomainRequestRedirectBackendPorts `json:"BackendPorts,omitempty" xml:"BackendPorts,omitempty" type:"Repeated"`
-	// The IP addresses or domain names of the origin servers that correspond to the domain name.
+	// The IP addresses of the origin servers or the back-to-origin domain names for the domain name.
 	Backends []*string `json:"Backends,omitempty" xml:"Backends,omitempty" type:"Repeated"`
-	// The IP addresses or domain names of the secondary origin servers that correspond to the domain name.
+	// The IP addresses of the secondary origin servers or the secondary back-to-origin domain names for the domain name.
 	BackupBackends []*string `json:"BackupBackends,omitempty" xml:"BackupBackends,omitempty" type:"Repeated"`
 	// Specifies whether to enable public cloud disaster recovery. Valid values:
 	//
-	// - **true**: Public cloud disaster recovery is enabled.
+	// - **true**: enables public cloud disaster recovery.
 	//
-	// - **false*	- (default): Public cloud disaster recovery is not enabled.
+	// - **false*	- (default): disables public cloud disaster recovery.
 	//
 	// example:
 	//
@@ -528,17 +590,29 @@ type CreateDomainRequestRedirect struct {
 	CnameEnabled *bool `json:"CnameEnabled,omitempty" xml:"CnameEnabled,omitempty"`
 	// The connection timeout period. Unit: seconds.
 	//
+	// Valid values: 1 to 3600.
+	//
+	// Default value: 5.
+	//
 	// example:
 	//
 	// 120
 	ConnectTimeout *int32 `json:"ConnectTimeout,omitempty" xml:"ConnectTimeout,omitempty"`
-	// Specifies whether to enable forced HTTP back-to-origin. This parameter is used only when **HttpsPorts*	- is not empty, which indicates that the domain name uses HTTPS. Valid values:
+	// Specifies whether to enable forced HTTP back-to-origin. This parameter is used only when **HttpsPorts*	- is not empty, which indicates that the domain name uses the HTTPS protocol. Valid values:
+	//
+	// - **true**: enables forced HTTP back-to-origin.
+	//
+	// - **false**: disables forced HTTP back-to-origin.
 	//
 	// example:
 	//
 	// true
 	FocusHttpBackend *bool `json:"FocusHttpBackend,omitempty" xml:"FocusHttpBackend,omitempty"`
 	// Specifies whether to enable HTTP/2 back-to-origin. Valid values:
+	//
+	// - **true**: enables HTTP/2 back-to-origin.
+	//
+	// - **false**: disables HTTP/2 back-to-origin.
 	//
 	// example:
 	//
@@ -550,7 +624,11 @@ type CreateDomainRequestRedirect struct {
 	//
 	// 128
 	Http2OriginMaxConcurrency *int32 `json:"Http2OriginMaxConcurrency,omitempty" xml:"Http2OriginMaxConcurrency,omitempty"`
-	// Specifies whether to enable persistent connections. Valid values:
+	// Specifies whether to maintain persistent connections. Valid values:
+	//
+	// - **true*	- (default): maintains persistent connections.
+	//
+	// - **false**: does not maintain persistent connections.
 	//
 	// example:
 	//
@@ -558,11 +636,15 @@ type CreateDomainRequestRedirect struct {
 	Keepalive *bool `json:"Keepalive,omitempty" xml:"Keepalive,omitempty"`
 	// The number of requests that reuse a persistent connection. Valid values: 60 to 1000. Default value: 1000.
 	//
+	// > The number of requests that can reuse a persistent connection after persistent connections are enabled.
+	//
 	// example:
 	//
 	// 1000
 	KeepaliveRequests *int32 `json:"KeepaliveRequests,omitempty" xml:"KeepaliveRequests,omitempty"`
-	// The idle timeout period for persistent connections. Valid values: 1 to 60. Default value: 15. Unit: seconds.
+	// The timeout period for idle persistent connections. Valid values: 1 to 60. Default value: 15. Unit: seconds.
+	//
+	// > The duration after which an idle persistent connection is released.
 	//
 	// example:
 	//
@@ -570,11 +652,11 @@ type CreateDomainRequestRedirect struct {
 	KeepaliveTimeout *int32 `json:"KeepaliveTimeout,omitempty" xml:"KeepaliveTimeout,omitempty"`
 	// The load balancing algorithm used for back-to-origin requests. Valid values:
 	//
-	// - **iphash**: IP hash algorithm.
+	// - **iphash**: the IP hash algorithm.
 	//
-	// - **roundRobin**: round-robin algorithm.
+	// - **roundRobin**: the round-robin algorithm.
 	//
-	// - **leastTime**: Least Time algorithm. This value is available only when **ProtectionResource*	- is set to **gslb*	- (indicating that the protection resource type uses intelligent load balancing of the shared cluster).
+	// - **leastTime**: the least time algorithm. This value is available only when **ProtectionResource*	- is set to **gslb**, which indicates that intelligent load balancing of a shared cluster is used.
 	//
 	// This parameter is required.
 	//
@@ -584,15 +666,17 @@ type CreateDomainRequestRedirect struct {
 	Loadbalance *string `json:"Loadbalance,omitempty" xml:"Loadbalance,omitempty"`
 	// The maximum request body size. Valid values: 2 to 10. Default value: 2. Unit: GB.
 	//
+	// > This parameter is supported only by the Ultimate Edition.
+	//
 	// example:
 	//
 	// 2
 	MaxBodySize *int32 `json:"MaxBodySize,omitempty" xml:"MaxBodySize,omitempty"`
-	// Indicates whether the client source IP preservation feature is enabled.
+	// Specifies whether to enable the feature of preserving the client source IP address. Valid values:
 	//
-	// - **true**: The client source IP preservation feature is enabled. After this feature is enabled, backend services can view the originating IP address of the client.
+	// - **true**: enables the feature. After this feature is enabled, backend services can view the original IP address of the client.
 	//
-	// - **false**: The client source IP preservation feature is not enabled.
+	// - **false**: disables the feature.
 	//
 	// example:
 	//
@@ -600,19 +684,37 @@ type CreateDomainRequestRedirect struct {
 	ProxyProtocol *bool `json:"ProxyProtocol,omitempty" xml:"ProxyProtocol,omitempty"`
 	// The read timeout period. Unit: seconds.
 	//
+	// Valid values: 1 to 3600.
+	//
+	// Default value: 120.
+	//
 	// example:
 	//
 	// 200
 	ReadTimeout *int32 `json:"ReadTimeout,omitempty" xml:"ReadTimeout,omitempty"`
-	// The traffic mark header fields and values for the domain name, used to mark traffic processed by WAF.
+	// The traffic marking fields and values for the domain name, which are used to mark the traffic processed by WAF.
+	//
+	// By specifying custom request header fields and their corresponding values, WAF automatically adds the specified custom field values to the request headers as traffic marks when the access traffic of the domain name passes through WAF. This facilitates the collection of related information by backend services.
 	RequestHeaders []*CreateDomainRequestRedirectRequestHeaders `json:"RequestHeaders,omitempty" xml:"RequestHeaders,omitempty" type:"Repeated"`
 	// Specifies whether to retry when WAF fails to forward requests to the origin server. Valid values:
+	//
+	// - **true*	- (default): retries.
+	//
+	// - **false**: does not retry.
 	//
 	// example:
 	//
 	// true
 	Retry *bool `json:"Retry,omitempty" xml:"Retry,omitempty"`
-	// The hybrid cloud forwarding rules. The value is a string converted from a JSON array. Each element in the JSON array is a struct that contains the following fields:
+	// The hybrid cloud forwarding rules. The value is a string transformed from a JSON array. Each element in the JSON array is a struct that contains the following fields:
+	//
+	// - **rs**: Array | The list of back-to-origin IP addresses or back-to-origin CNAMEs.
+	//
+	// - **backupRs**: Array | The list of secondary back-to-origin IP addresses or back-to-origin CNAMEs. This field is required. An empty array [] indicates that no secondary back-to-origin addresses are configured.
+	//
+	// - **location**: String | The name of the protection node.
+	//
+	// - **locationId**: Long | The ID of the protection node.
 	//
 	// example:
 	//
@@ -644,17 +746,21 @@ type CreateDomainRequestRedirect struct {
 	//
 	// ]
 	RoutingRules *string `json:"RoutingRules,omitempty" xml:"RoutingRules,omitempty"`
-	// Specifies whether to enable back-to-origin Server Name Indication (SNI). This parameter is used only when **HttpsPorts*	- is not empty, which indicates that the domain name uses HTTPS. Valid values:
+	// Specifies whether to enable back-to-origin Server Name Indication (SNI). This parameter is used only when **HttpsPorts*	- is not empty, which indicates that the domain name uses the HTTPS protocol. Valid values:
+	//
+	// - **true**: enables back-to-origin SNI.
+	//
+	// - **false*	- (default): disables back-to-origin SNI.
 	//
 	// example:
 	//
 	// true
 	SniEnabled *bool `json:"SniEnabled,omitempty" xml:"SniEnabled,omitempty"`
-	// The value of the custom SNI extension field. If you do not set this parameter, the value of the **Host*	- field in the request header is used as the value of the SNI extension field by default.
+	// The value of the custom SNI extension field. If you do not specify this parameter, the value of the **Host*	- field in the request header is used as the value of the SNI extension field by default.
 	//
-	// In most cases, you do not need to customize SNI unless your business has special configuration requirements and you want WAF to use an SNI that is different from the actual request Host in back-to-origin requests (that is, the custom SNI set here).
+	// In most cases, you do not need to customize SNI unless your service has special configuration requirements and you want WAF to use an SNI that is different from the actual request Host in back-to-origin requests.
 	//
-	// > This parameter is required only when **SniEnabled*	- is set to **true*	- (indicating that back-to-origin SNI is enabled).
+	// > This parameter is required only when **SniEnabled*	- is set to **true**, which indicates that back-to-origin SNI is enabled.
 	//
 	// example:
 	//
@@ -662,11 +768,19 @@ type CreateDomainRequestRedirect struct {
 	SniHost *string `json:"SniHost,omitempty" xml:"SniHost,omitempty"`
 	// Specifies whether to allow WAF to overwrite WL-Proxy-Client-IP. Valid values:
 	//
+	// - **true*	- (default): allows WAF to overwrite WL-Proxy-Client-IP.
+	//
+	// - **false**: does not allow WAF to overwrite WL-Proxy-Client-IP.
+	//
 	// example:
 	//
 	// true
 	WLProxyClientIp *bool `json:"WLProxyClientIp,omitempty" xml:"WLProxyClientIp,omitempty"`
 	// Specifies whether to allow WAF to overwrite Web-Server-Type. Valid values:
+	//
+	// - **true*	- (default): allows WAF to overwrite Web-Server-Type.
+	//
+	// - **false**: does not allow WAF to overwrite Web-Server-Type.
 	//
 	// example:
 	//
@@ -674,11 +788,19 @@ type CreateDomainRequestRedirect struct {
 	WebServerType *bool `json:"WebServerType,omitempty" xml:"WebServerType,omitempty"`
 	// The write timeout period. Unit: seconds.
 	//
+	// Valid values: 1 to 3600.
+	//
+	// Default value: 120.
+	//
 	// example:
 	//
 	// 200
 	WriteTimeout *int32 `json:"WriteTimeout,omitempty" xml:"WriteTimeout,omitempty"`
 	// Specifies whether to allow WAF to overwrite X-Client-IP. Valid values:
+	//
+	// - **true*	- (default): allows WAF to overwrite X-Client-IP.
+	//
+	// - **false**: does not allow WAF to overwrite X-Client-IP.
 	//
 	// example:
 	//
@@ -686,11 +808,19 @@ type CreateDomainRequestRedirect struct {
 	XClientIp *bool `json:"XClientIp,omitempty" xml:"XClientIp,omitempty"`
 	// Specifies whether to allow WAF to overwrite X-True-IP. Valid values:
 	//
+	// - **true*	- (default): allows WAF to overwrite X-True-IP.
+	//
+	// - **false**: does not allow WAF to overwrite X-True-IP.
+	//
 	// example:
 	//
 	// true
 	XTrueIp *bool `json:"XTrueIp,omitempty" xml:"XTrueIp,omitempty"`
-	// Specifies whether to use X-Forward-For-Proto to pass the protocol used by WAF. Valid values:
+	// Specifies whether to pass the WAF protocol by using X-Forwarded-Proto. Valid values:
+	//
+	// - **true*	- (default): passes the WAF protocol.
+	//
+	// - **false**: does not pass the WAF protocol.
 	//
 	// example:
 	//
@@ -704,6 +834,10 @@ func (s CreateDomainRequestRedirect) String() string {
 
 func (s CreateDomainRequestRedirect) GoString() string {
 	return s.String()
+}
+
+func (s *CreateDomainRequestRedirect) GetBackendConfig() []*CreateDomainRequestRedirectBackendConfig {
+	return s.BackendConfig
 }
 
 func (s *CreateDomainRequestRedirect) GetBackendPorts() []*CreateDomainRequestRedirectBackendPorts {
@@ -808,6 +942,11 @@ func (s *CreateDomainRequestRedirect) GetXTrueIp() *bool {
 
 func (s *CreateDomainRequestRedirect) GetXffProto() *bool {
 	return s.XffProto
+}
+
+func (s *CreateDomainRequestRedirect) SetBackendConfig(v []*CreateDomainRequestRedirectBackendConfig) *CreateDomainRequestRedirect {
+	s.BackendConfig = v
+	return s
 }
 
 func (s *CreateDomainRequestRedirect) SetBackendPorts(v []*CreateDomainRequestRedirectBackendPorts) *CreateDomainRequestRedirect {
@@ -941,6 +1080,15 @@ func (s *CreateDomainRequestRedirect) SetXffProto(v bool) *CreateDomainRequestRe
 }
 
 func (s *CreateDomainRequestRedirect) Validate() error {
+	if s.BackendConfig != nil {
+		for _, item := range s.BackendConfig {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
 	if s.BackendPorts != nil {
 		for _, item := range s.BackendPorts {
 			if item != nil {
@@ -962,6 +1110,51 @@ func (s *CreateDomainRequestRedirect) Validate() error {
 	return nil
 }
 
+type CreateDomainRequestRedirectBackendConfig struct {
+	// The origin server.
+	//
+	// example:
+	//
+	// 1.1.XX.XX
+	Backend *string `json:"Backend,omitempty" xml:"Backend,omitempty"`
+	// The weight.
+	//
+	// example:
+	//
+	// 1
+	Weight *int32 `json:"Weight,omitempty" xml:"Weight,omitempty"`
+}
+
+func (s CreateDomainRequestRedirectBackendConfig) String() string {
+	return dara.Prettify(s)
+}
+
+func (s CreateDomainRequestRedirectBackendConfig) GoString() string {
+	return s.String()
+}
+
+func (s *CreateDomainRequestRedirectBackendConfig) GetBackend() *string {
+	return s.Backend
+}
+
+func (s *CreateDomainRequestRedirectBackendConfig) GetWeight() *int32 {
+	return s.Weight
+}
+
+func (s *CreateDomainRequestRedirectBackendConfig) SetBackend(v string) *CreateDomainRequestRedirectBackendConfig {
+	s.Backend = &v
+	return s
+}
+
+func (s *CreateDomainRequestRedirectBackendConfig) SetWeight(v int32) *CreateDomainRequestRedirectBackendConfig {
+	s.Weight = &v
+	return s
+}
+
+func (s *CreateDomainRequestRedirectBackendConfig) Validate() error {
+	return dara.Validate(s)
+}
+
 type CreateDomainRequestRedirectBackendPorts struct {
 	// The back-to-origin port.
 	//
@@ -976,6 +1169,10 @@ type CreateDomainRequestRedirectBackendPorts struct {
 	// 80
 	ListenPort *int32 `json:"ListenPort,omitempty" xml:"ListenPort,omitempty"`
 	// The protocol of the listening port. Valid values:
+	//
+	// - **http**: the HTTP protocol.
+	//
+	// - **https**: the HTTPS protocol.
 	//
 	// example:
 	//

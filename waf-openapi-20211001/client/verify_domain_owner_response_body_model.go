@@ -62,17 +62,17 @@ func (s *VerifyDomainOwnerResponseBody) Validate() error {
 }
 
 type VerifyDomainOwnerResponseBodyVerifyResult struct {
-	// The reason why the verification failed.
+	// The reason for verification failure.
 	//
-	// - DnsTxtVerifyFailed: The DNS TXT record does not match.
+	// 	- DnsTxtVerifyFailed: The DNS TXT record does not match.
 	//
-	// - DnsServerError: The DNS server is abnormal.
+	// 	- DnsServerError: A DNS server error occurred.
 	//
-	// - VerifyFileNotExist: The verification file does not exist.
+	// 	- VerifyFileNotExist: The verification file does not exist.
 	//
-	// - VerifyDomainNotAccess: Failed to access the domain name.
+	// 	- VerifyDomainNotAccess: Access to the domain name failed.
 	//
-	// - FileContentVerifyFailed: The file content does not match.
+	// 	- FileContentVerifyFailed: The file content does not match.
 	//
 	// example:
 	//
@@ -80,7 +80,7 @@ type VerifyDomainOwnerResponseBodyVerifyResult struct {
 	FailCode *string `json:"FailCode,omitempty" xml:"FailCode,omitempty"`
 	// The verification result. Valid values:
 	//
-	// - **true**: The verification is successful.
+	// - **true**: The verification passed.
 	//
 	// - **false**: The verification failed.
 	//

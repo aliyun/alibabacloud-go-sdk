@@ -34,13 +34,17 @@ type CreateDomainShrinkRequest struct {
 	//
 	// - **hybrid_cloud_cname**: hybrid cloud CNAME access.
 	//
-	// > If the value is **share**, or if the value is **hybrid_cloud_cname*	- and public cloud disaster recovery is enabled, call the [DescribeVerifyContent](https://help.aliyun.com/document_detail/2985193.html) and [VerifyDomainOwner](https://help.aliyun.com/document_detail/2985192.html) operations to verify domain name ownership first. If the domain name is connected to a region in the Chinese mainland, ICP filing must also be completed.
+	// > If the value is **share**, or the value is **hybrid_cloud_cname*	- and public cloud disaster recovery is enabled, you must first invoke the [DescribeVerifyContent](https://help.aliyun.com/document_detail/2985193.html) and [VerifyDomainOwner](https://help.aliyun.com/document_detail/2985192.html) operations to authenticate the domain name ownership. If the website config is added to a region in the Chinese mainland, it must also have an ICP filing.
+	//
+	// >
+	//
+	// > If the value is **hybrid_cloud_cname*	- and public cloud disaster recovery is disabled, you do not need to authenticate the domain name ownership and can directly invoke this operation.
 	//
 	// example:
 	//
 	// share
 	AccessType *string `json:"AccessType,omitempty" xml:"AccessType,omitempty"`
-	// The domain name to query.
+	// The name of the domain name.
 	//
 	// This parameter is required.
 	//
@@ -50,7 +54,7 @@ type CreateDomainShrinkRequest struct {
 	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
 	// The ID of the WAF instance.
 	//
-	// > You can call [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) to query the ID of the current WAF instance.
+	// > You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the current WAF instance.
 	//
 	// This parameter is required.
 	//
@@ -58,7 +62,7 @@ type CreateDomainShrinkRequest struct {
 	//
 	// waf_cdnsdf3****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The listening configuration.
+	// The listener configuration.
 	//
 	// This parameter is required.
 	ListenShrink *string `json:"Listen,omitempty" xml:"Listen,omitempty"`
@@ -67,6 +71,10 @@ type CreateDomainShrinkRequest struct {
 	// This parameter is required.
 	RedirectShrink *string `json:"Redirect,omitempty" xml:"Redirect,omitempty"`
 	// The region where the WAF instance resides. Valid values:
+	//
+	// - **cn-hangzhou**: the Chinese mainland.
+	//
+	// - **ap-southeast-1**: outside the Chinese mainland.
 	//
 	// This parameter is required.
 	//
@@ -80,7 +88,7 @@ type CreateDomainShrinkRequest struct {
 	//
 	// rg-acfm***q
 	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
-	// The list of tags. You can specify up to 20 tags.
+	// The list of tags. A maximum of 20 tags are supported.
 	Tag []*CreateDomainShrinkRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 

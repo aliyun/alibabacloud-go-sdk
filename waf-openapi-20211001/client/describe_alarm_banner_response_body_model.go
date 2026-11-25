@@ -16,9 +16,9 @@ type iDescribeAlarmBannerResponseBody interface {
 }
 
 type DescribeAlarmBannerResponseBody struct {
-	// The status information of the alert banner.
+	// The alert banner status information.
 	BannerStatus *DescribeAlarmBannerResponseBodyBannerStatus `json:"BannerStatus,omitempty" xml:"BannerStatus,omitempty" type:"Struct"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
@@ -62,13 +62,13 @@ func (s *DescribeAlarmBannerResponseBody) Validate() error {
 }
 
 type DescribeAlarmBannerResponseBodyBannerStatus struct {
-	// The cause of the alert. If **Type*	- is set to **sandbox**, valid values:
+	// The cause of the alerting. If the Alarm Metric is sandbox (**Type*	- is set to **sandbox**), valid values are:
 	//
-	// - **fivefold**: The queries per second (QPS) of your service exceeds five times the upper limit of your plan.
+	// - **fivefold**: The clean queries per second (QPS) exceeds the current specifications.
 	//
-	// - **4count**: The QPS of your service has exceeded the upper limit of your plan for four or more days.
+	// - **4count**: The accumulated actual clean QPS exceeds the current specifications.
 	//
-	// - **exceed10w**: The peak QPS of your service exceeds 100,000.
+	// - **exceed10w**: The actual peak clean QPS exceeds 100,000.
 	//
 	// - **costProtection**: Billing protection is triggered.
 	//
@@ -76,27 +76,27 @@ type DescribeAlarmBannerResponseBodyBannerStatus struct {
 	//
 	// 4count
 	Cause *string `json:"Cause,omitempty" xml:"Cause,omitempty"`
-	// The count associated with the alert at the time it was triggered.
+	// The usage when alerting is triggered.
 	//
-	// - If **Type*	- is set to **sandbox**, this parameter indicates the number of days that the QPS has exceeded the upper limit of your plan.
+	// - If the Alarm Metric is sandbox (**Type*	- is set to **sandbox**), this parameter indicates the number of days the quota is exceeded.
 	//
 	// example:
 	//
 	// 9008
 	Count *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
-	// Indicates whether an alert is triggered. Valid values:
+	// The alerting status. Valid values:
 	//
-	// - **true**: An alert is triggered. If **Type*	- is set to **sandbox**, the instance is in the sandbox.
+	// - **true**: Alerting is triggered. If the Alarm Metric is sandbox (**Type*	- is set to **sandbox**), the instance is in the sandbox.
 	//
-	// - **false**: No alert is triggered. If **Type*	- is set to **sandbox**, the instance is not in the sandbox.
+	// - **false**: No alerting is triggered. If the Alarm Metric is sandbox (**Type*	- is set to **sandbox**), the instance is not in the sandbox.
 	//
 	// example:
 	//
 	// true
 	Status *bool `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The alert type. Valid value:
+	// The Alarm Metric. Valid values:
 	//
-	// - **sandbox**: a sandbox alert.
+	// - **sandbox**: sandbox alerting.
 	//
 	// example:
 	//

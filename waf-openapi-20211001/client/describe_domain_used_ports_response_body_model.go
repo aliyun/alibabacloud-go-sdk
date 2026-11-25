@@ -16,7 +16,7 @@ type iDescribeDomainUsedPortsResponseBody interface {
 }
 
 type DescribeDomainUsedPortsResponseBody struct {
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//

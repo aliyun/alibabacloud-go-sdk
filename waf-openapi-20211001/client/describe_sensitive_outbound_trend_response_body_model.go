@@ -18,7 +18,7 @@ type iDescribeSensitiveOutboundTrendResponseBody interface {
 }
 
 type DescribeSensitiveOutboundTrendResponseBody struct {
-	// The list of cross-border data transfer information.
+	// The list of outbound data information.
 	Data []*DescribeSensitiveOutboundTrendResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
 	// The request ID.
 	//
@@ -26,7 +26,7 @@ type DescribeSensitiveOutboundTrendResponseBody struct {
 	//
 	// C1823E96-EF4B-5BD2-9E02-1D18****3ED8
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries returned.
+	// The total number of returned results.
 	//
 	// example:
 	//
@@ -89,19 +89,19 @@ type DescribeSensitiveOutboundTrendResponseBodyData struct {
 	//
 	// 672
 	InfoCount *int64 `json:"InfoCount,omitempty" xml:"InfoCount,omitempty"`
-	// The total number of personal information records transferred cross-border.
+	// The total number of outbound personal information records.
 	//
 	// example:
 	//
 	// 541
 	InfoOutboundCount *int64 `json:"InfoOutboundCount,omitempty" xml:"InfoOutboundCount,omitempty"`
-	// The total number of sensitive information records transferred cross-border.
+	// The total number of outbound sensitive information records.
 	//
 	// example:
 	//
 	// 378
 	SensitiveOutboundCount *int64 `json:"SensitiveOutboundCount,omitempty" xml:"SensitiveOutboundCount,omitempty"`
-	// The time of the cross-border data transfer. The value is a UNIX timestamp (UTC). Unit: seconds.
+	// The time when the data is transferred outbound. The time is in the UNIX timestamp format (UTC). Unit: seconds.
 	//
 	// example:
 	//

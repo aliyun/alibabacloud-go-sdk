@@ -16,7 +16,7 @@ type iDescribeChargeModuleResponseBody interface {
 }
 
 type DescribeChargeModuleResponseBody struct {
-	// The list of WAF pricing module information.
+	// The list of WAF billing modules.
 	ChargeModules []*DescribeChargeModuleResponseBodyChargeModules `json:"ChargeModules,omitempty" xml:"ChargeModules,omitempty" type:"Repeated"`
 	// The ID of the request.
 	//
@@ -66,9 +66,9 @@ func (s *DescribeChargeModuleResponseBody) Validate() error {
 }
 
 type DescribeChargeModuleResponseBodyChargeModules struct {
-	// The pricing mode of the pricing module. Valid values:
+	// The pricing mode of the billing module. Valid values:
 	//
-	// - **NORMAL_PRICE**: standard pricing.
+	// - **NORMAL_PRICE**: tiered pricing.
 	//
 	// - **STEP_ACCUMULATION**: tiered pricing.
 	//
@@ -76,17 +76,17 @@ type DescribeChargeModuleResponseBodyChargeModules struct {
 	//
 	// NORMAL_PRICE
 	ChargeMode *string `json:"ChargeMode,omitempty" xml:"ChargeMode,omitempty"`
-	// The pricing details of the pricing module.
+	// The pricing details of the billing module.
 	ChargeModeDetails []*string `json:"ChargeModeDetails,omitempty" xml:"ChargeModeDetails,omitempty" type:"Repeated"`
-	// The pricing unit.
+	// The billing unit.
 	//
 	// example:
 	//
 	// SeCU
 	ChargeUnit *string `json:"ChargeUnit,omitempty" xml:"ChargeUnit,omitempty"`
-	// The pricing module identity. Valid values:
+	// The identifier of the billing module. Valid values:
 	//
-	// - **domainCount**: the number of CNAME-connected domain names.
+	// - **domainCount**: the number of CNAME access domain names.
 	//
 	// - **qps**: the peak QPS.
 	//
@@ -94,13 +94,13 @@ type DescribeChargeModuleResponseBodyChargeModules struct {
 	//
 	// - **ipBlacklistRuleCount**: the number of IP blacklist rules.
 	//
-	// - **customAclBaseRuleCount**: the number of Basic Policies in custom rules.
+	// - **customAclBaseRuleCount**: the number of basic rules in custom rules.
 	//
 	// - **customAclAdvanceRuleCount**: the number of advanced rules in custom rules.
 	//
 	// - **antiScanRuleCount**: the number of scan protection rules.
 	//
-	// - **customResponseRuleCount**: the number of custom response rules.
+	// - **customResponseRuleCount**: the number of scan protection rules.
 	//
 	// - **ipv6**: IPv6.
 	//
@@ -110,47 +110,47 @@ type DescribeChargeModuleResponseBodyChargeModules struct {
 	//
 	// - **ccRuleCount**: the number of HTTP flood mitigation rules.
 	//
-	// - **regionBlockRuleCount**: the number of Location Blacklist rules.
+	// - **regionBlockRuleCount**: the number of area blocking rules.
 	//
-	// - **tamperproofRuleCount**: the number of web tamper proofing rules.
+	// - **tamperproofRuleCount**: the number of web tamper-proofing rules.
 	//
-	// - **dlpRuleCount**: the number of information leak prevention rules.
+	// - **dlpRuleCount**: the number of data leak prevention rules.
 	//
-	// - **botTraffic**: the Bot management traffic fee.
+	// - **botTraffic**: the bot management traffic fee.
 	//
 	// - **aiWhiteListTemplateCount**: the number of intelligent whitelist templates.
 	//
-	// - **apisecResourceCount**: the number of protected objects with API security enabled.
+	// - **apisecResourceCount**: the number of protected objects enabled for API security.
 	//
 	// - **apisecTraffic**: the API security traffic fee.
 	//
 	// - **compliance**: the number of protocol compliance templates.
 	//
-	// - **riskTraffic**: the number of risk identification hits in Bot management.
+	// - **riskTraffic**: the number of risk identification hits in bot management.
 	//
 	// - **assetStatus**: the asset center.
 	//
 	// - **nonPort**: non-standard ports.
 	//
-	// - **customAclCaptcha**: the number of custom rule slider verification attempts.
+	// - **customAclCaptcha**: the number of slider CAPTCHA requests in custom rules.
 	//
-	// - **wafBaseTemplateCount**: the number of web core protection rules.
+	// - **wafBaseTemplateCount**: the number of core web protection rules.
 	//
 	// - **instanceFee**: the WAF instance fee.
 	//
 	// - **spikeThrottleRuleCount**: the number of peak traffic throttling rules.
 	//
-	// - **botWebTemplateCount**: the number of web protection templates in Bot management.
+	// - **botWebTemplateCount**: the number of web protection templates in bot management.
 	//
-	// - **botAppTemplateCount**: the number of app protection templates in Bot management.
+	// - **botAppTemplateCount**: the number of app protection templates in bot management.
 	//
-	// - **customAclBotRuleCount**: the number of advanced custom rules in Bot management.
+	// - **customAclBotRuleCount**: the number of advanced custom rules in bot management.
 	//
 	// example:
 	//
 	// domainCount
 	ModuleCode *string `json:"ModuleCode,omitempty" xml:"ModuleCode,omitempty"`
-	// The billing period type of the pricing module. Valid values:
+	// The billing type of the billing module. Valid values:
 	//
 	// - **Hour**: hourly billing.
 	//
@@ -158,7 +158,7 @@ type DescribeChargeModuleResponseBodyChargeModules struct {
 	//
 	// Hour
 	PeriodType *string `json:"PeriodType,omitempty" xml:"PeriodType,omitempty"`
-	// The usage type of the pricing module. Valid values:
+	// The usage type of the billing module. Valid values:
 	//
 	// - **template**: template.
 	//
@@ -176,15 +176,15 @@ type DescribeChargeModuleResponseBodyChargeModules struct {
 	//
 	// - **function**: feature enablement.
 	//
-	// - **time**: number of times.
+	// - **time**: count.
 	//
 	// example:
 	//
 	// domain
 	UsageType *string `json:"UsageType,omitempty" xml:"UsageType,omitempty"`
-	// The billing unit factor of the pricing module.
+	// The billing unit factor of the billing module.
 	//
-	// > The billing unit factor **UsageUnitFactor*	- multiplied by the usage type **UsageType*	- forms the billing unit of the module.
+	// > The billing unit of the module is calculated by multiplying the billing unit factor **UsageUnitFactor*	- by the usage type **UsageType**.
 	//
 	// example:
 	//

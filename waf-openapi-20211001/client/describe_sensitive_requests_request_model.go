@@ -34,13 +34,13 @@ type iDescribeSensitiveRequestsRequest interface {
 type DescribeSensitiveRequestsRequest struct {
 	// The ID of the hybrid cloud cluster.
 	//
-	// > This parameter applies only to hybrid cloud scenarios. You can call [DescribeHybridCloudClusters](https://help.aliyun.com/document_detail/2849376.html) to obtain hybrid cloud cluster information.
+	// > This parameter is applicable only to hybrid cloud scenarios. You can call [DescribeHybridCloudClusters](https://help.aliyun.com/document_detail/2849376.html) to obtain the hybrid cloud cluster information.
 	//
 	// example:
 	//
 	// 269
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
-	// The end of the time range to query. The value is a UNIX timestamp (UTC). Unit: seconds.
+	// The end time of the query. The value is a UNIX timestamp in UTC. Unit: seconds.
 	//
 	// example:
 	//
@@ -48,7 +48,7 @@ type DescribeSensitiveRequestsRequest struct {
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// The ID of the WAF instance.
 	//
-	// > You can call [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) to query the ID of the current WAF instance.
+	// > You can call [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) to query the ID of the WAF instance.
 	//
 	// This parameter is required.
 	//
@@ -56,19 +56,19 @@ type DescribeSensitiveRequestsRequest struct {
 	//
 	// waf-cn-0xldbqt****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The page number when you use paged query. Default value: **1**, which indicates that the first page is returned in the paging result.
+	// The page number to return for a paged query. Default value: **1**, which indicates that the first page of paging is returned.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page when you use paged query. Default value: 10, which indicates that each page contains 10 entries in the paging result.
+	// The number of entries to return on each page for a paged query. Default value: 10, which indicates that 10 entries are returned on each page of paging.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The region in which the WAF instance is deployed. Valid values:
+	// The region where the WAF instance resides. Valid values:
 	//
 	// - **cn-hangzhou**: the Chinese mainland.
 	//
@@ -98,7 +98,7 @@ type DescribeSensitiveRequestsRequest struct {
 	//
 	// card
 	SensitiveData *string `json:"SensitiveData,omitempty" xml:"SensitiveData,omitempty"`
-	// The beginning of the time range to query. The value is a UNIX timestamp (UTC). Unit: seconds.
+	// The start time of the query. The value is a UNIX timestamp in UTC. Unit: seconds.
 	//
 	// example:
 	//

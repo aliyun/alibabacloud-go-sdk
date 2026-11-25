@@ -22,9 +22,9 @@ type iDescribeElasticBillsRequest interface {
 }
 
 type DescribeElasticBillsRequest struct {
-	// The WAF instance ID.
+	// Instance ID of the WAF instance.
 	//
-	// > You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the current WAF instance.
+	// > You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query instance ID of the current WAF instance.
 	//
 	// This parameter is required.
 	//
@@ -32,13 +32,13 @@ type DescribeElasticBillsRequest struct {
 	//
 	// waf_v2_public_cn-***
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The page number when using paging. Default value: **1**.
+	// The page number of the current page in paging. Default value: **1**.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page when using paging. Default value: **10**, which indicates that each page contains 10 entries.
+	// The number of entries to return on each page in paging. Default value: **10**, which indicates that each page contains 10 entries.
 	//
 	// example:
 	//
@@ -54,7 +54,7 @@ type DescribeElasticBillsRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The Alibaba Cloud resource group ID.
+	// The ID of the Alibaba Cloud resource group.
 	//
 	// example:
 	//

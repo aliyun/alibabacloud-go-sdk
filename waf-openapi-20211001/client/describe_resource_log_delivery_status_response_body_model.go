@@ -16,7 +16,7 @@ type iDescribeResourceLogDeliveryStatusResponseBody interface {
 }
 
 type DescribeResourceLogDeliveryStatusResponseBody struct {
-	// The list of log delivery configurations for protected objects.
+	// The log forwarding configurations for the protected objects.
 	LogConfigs []*DescribeResourceLogDeliveryStatusResponseBodyLogConfigs `json:"LogConfigs,omitempty" xml:"LogConfigs,omitempty" type:"Repeated"`
 	// The request ID.
 	//
@@ -66,17 +66,17 @@ func (s *DescribeResourceLogDeliveryStatusResponseBody) Validate() error {
 }
 
 type DescribeResourceLogDeliveryStatusResponseBodyLogConfigs struct {
-	// The name of the delivery configuration.
+	// The name of the log forwarding configuration.
 	//
 	// example:
 	//
 	// export-kafka
 	DeliveryName *string `json:"DeliveryName,omitempty" xml:"DeliveryName,omitempty"`
-	// The delivery type of the protected object. Valid values:
+	// The log forwarding type for the protected object. Valid values:
 	//
-	// - **syslog**: delivered to a syslog service.
+	// - **syslog**: syslog service.
 	//
-	// - **kafka**: delivered to a Kafka service.
+	// - **kafka**: Kafka service.
 	//
 	// example:
 	//
@@ -90,9 +90,9 @@ type DescribeResourceLogDeliveryStatusResponseBodyLogConfigs struct {
 	Resource *string `json:"Resource,omitempty" xml:"Resource,omitempty"`
 	// The log delivery status of the protected object. Valid values:
 	//
-	// - **true**: enabled.
+	// - **true**: Enabled.
 	//
-	// - **false**: disabled.
+	// - **false**: shutdown.
 	//
 	// example:
 	//

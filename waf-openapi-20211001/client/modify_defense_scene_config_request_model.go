@@ -24,11 +24,9 @@ type iModifyDefenseSceneConfigRequest interface {
 }
 
 type ModifyDefenseSceneConfigRequest struct {
-	// The name of the configuration item to modify.
+	// The name of the configuration item that you want to modify.
 	//
-	// If **DefenseScene*	- is set to **apisec**, the valid value is:
-	//
-	// - **autoEnabled**: indicates whether core API security detection is automatically enabled for new resources.
+	// > The supported configuration items vary based on the specified defense scene (**DefenseScene**). For more information, see **Protection settings parameters**.
 	//
 	// This parameter is required.
 	//
@@ -36,9 +34,9 @@ type ModifyDefenseSceneConfigRequest struct {
 	//
 	// autoEnableStatus
 	ConfigKey *string `json:"ConfigKey,omitempty" xml:"ConfigKey,omitempty"`
-	// The value to set for the configuration item.
+	// The value of the configuration item that you want to modify.
 	//
-	// > The value of this parameter depends on the value of **ConfigKey**. For more information, see **Description of mitigation setting parameters**.
+	// > The valid values vary based on the specified configuration item (**ConfigKey**). For more information, see **Protection settings parameters**.
 	//
 	// This parameter is required.
 	//
@@ -46,9 +44,11 @@ type ModifyDefenseSceneConfigRequest struct {
 	//
 	// true
 	ConfigValue *string `json:"ConfigValue,omitempty" xml:"ConfigValue,omitempty"`
-	// The protection scenario for which you want to modify the mitigation settings. Valid values:
+	// The defense scene for which you want to modify the protection settings. Valid values:
 	//
 	// - **apisec**: API security.
+	//
+	// - **ai_engine**: AI Engine.
 	//
 	// This parameter is required.
 	//
@@ -58,7 +58,7 @@ type ModifyDefenseSceneConfigRequest struct {
 	DefenseScene *string `json:"DefenseScene,omitempty" xml:"DefenseScene,omitempty"`
 	// The ID of the Web Application Firewall (WAF) instance.
 	//
-	// > Call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
+	// > You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
 	//
 	// This parameter is required.
 	//

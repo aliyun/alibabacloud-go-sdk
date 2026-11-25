@@ -16,7 +16,7 @@ type iDescribeSensitiveOutboundDistributionResponseBody interface {
 }
 
 type DescribeSensitiveOutboundDistributionResponseBody struct {
-	// The list of cross-border traffic distribution that contains personal information.
+	// The list of outbound traffic distribution for personal information.
 	Data []*DescribeSensitiveOutboundDistributionResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
 	// The request ID.
 	//
@@ -72,13 +72,13 @@ type DescribeSensitiveOutboundDistributionResponseBodyData struct {
 	//
 	// US
 	Country *string `json:"Country,omitempty" xml:"Country,omitempty"`
-	// The number of personal information items transferred cross-border.
+	// The number of outbound personal information records.
 	//
 	// example:
 	//
 	// 213
 	InfoOutboundCount *int64 `json:"InfoOutboundCount,omitempty" xml:"InfoOutboundCount,omitempty"`
-	// The number of sensitive information items transferred cross-border.
+	// The number of outbound sensitive information records.
 	//
 	// example:
 	//

@@ -16,7 +16,7 @@ type iDescribeThreatEventDetailResponseBody interface {
 }
 
 type DescribeThreatEventDetailResponseBody struct {
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
@@ -62,31 +62,31 @@ func (s *DescribeThreatEventDetailResponseBody) Validate() error {
 }
 
 type DescribeThreatEventDetailResponseBodyThreatEventDetail struct {
-	// The time of the most recent attack. This value is a UNIX timestamp. Unit: milliseconds.
+	// The most recent attack time. The value is a UNIX timestamp in UTC. Unit: seconds.
 	//
 	// example:
 	//
 	// 1749916800000
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The number of attacks that were blocked in the security event.
+	// The number of blocked attacks.
 	//
 	// example:
 	//
 	// 20
 	EventBlock *string `json:"EventBlock,omitempty" xml:"EventBlock,omitempty"`
-	// The total number of attacks in the security event.
+	// The total number of attacks.
 	//
 	// example:
 	//
 	// 20
 	EventCnt *string `json:"EventCnt,omitempty" xml:"EventCnt,omitempty"`
-	// The filter condition for viewing logs. The value is a JSON object in the string format.
+	// The filter condition for the log query feature. The value is a string converted from a **JSON*	- structure constructed with a series of parameters.
 	//
 	// example:
 	//
 	// {"end_ts": 1766637714, "start_ts": 1764096746, "condition": {"real_client_ip": ["78.153.140.179", "78.153.140.203", "78.153.140.177", "78.153.140.178", "78.153.140.151"]}}
 	EventCondition *string `json:"EventCondition,omitempty" xml:"EventCondition,omitempty"`
-	// The threat intelligence associated with the event. The value is a JSON array in the string format.
+	// The threat intelligence associated with the event. The value is a string converted from a **JSON*	- array.
 	//
 	// example:
 	//
@@ -94,33 +94,33 @@ type DescribeThreatEventDetailResponseBodyThreatEventDetail struct {
 	EventIntelligence *string `json:"EventIntelligence,omitempty" xml:"EventIntelligence,omitempty"`
 	// The severity level of the event. Valid values:
 	//
-	// - **critical**: Critical severity.
+	// - **critical**: critical.
 	//
-	// - **high**: High severity.
+	// - **high**: high.
 	//
-	// - **medium**: Medium severity.
+	// - **medium**: medium.
 	//
-	// - **low**: Low severity.
+	// - **low**: low.
 	//
 	// example:
 	//
 	// high
 	EventLevel *string `json:"EventLevel,omitempty" xml:"EventLevel,omitempty"`
-	// The source IP address of the attack.
+	// The attack source IP addresses.
 	//
-	// > A security event may have multiple source IP addresses. This operation returns only one of them.
+	// > A security event may have multiple attack source IP addresses. This operation returns only one.
 	//
 	// example:
 	//
 	// XX.XX.XX.XX
 	EventSrc *string `json:"EventSrc,omitempty" xml:"EventSrc,omitempty"`
-	// The country of the source IP address of the attack.
+	// The country to which the attack source IP addresses belong.
 	//
 	// example:
 	//
 	// GB
 	EventSrcCountry *string `json:"EventSrcCountry,omitempty" xml:"EventSrcCountry,omitempty"`
-	// The region of the source IP address of the attack.
+	// The region to which the attack source IP addresses belong.
 	//
 	// example:
 	//
@@ -128,21 +128,21 @@ type DescribeThreatEventDetailResponseBodyThreatEventDetail struct {
 	EventSrcRegion *string `json:"EventSrcRegion,omitempty" xml:"EventSrcRegion,omitempty"`
 	// The security suggestion. Valid values:
 	//
-	// - **ProtectInterface**: The attack target appears to be a backend management address. If the address has specific access patterns, configure custom rules in the access control module to restrict access.
+	// - **ProtectInterface**: The Attack Target is suspected to be a backend management address. If the address has fixed access characteristics, configure custom rules in the access control module to restrict access.
 	//
-	// - **BlockArea**: Monitor the attack source region. If the attack source region is different from your normal business regions, configure a location blacklist or an IP address blacklist in the access control module to restrict access.
+	// - **BlockArea**: Monitor the source region of the attack. If the attack source differs from the normal regional distribution of your service, configure Location Blacklist or IP blacklist rules in the access control module to restrict access.
 	//
-	// - **SwitchBlock**: The current protection rule is in Alert mode. To ensure business security, switch to Block mode. Before you switch, check for false positives.
+	// - **SwitchBlock**: The current rule protection is in alerting mode. To ensure service security, switch to block mode. Before switching, check for false positives.
 	//
-	// - **FixBug**: Check the attack target for security vulnerabilities. If any vulnerabilities exist, fix them promptly to prevent exploitation.
+	// - **FixBug**: Check whether the Attack Target has a security vulnerability. If the security vulnerability exists, fix it promptly to prevent exploitation by attackers.
 	//
-	// - **SwitchStrict**: If it does not affect your normal business, change the policies of modules, such as protection rules and scan protection, to a stricter mode. Before you change the policies, check for false positives.
+	// - **SwitchStrict**: If normal service is not affected, adjust the policy of modules such as rule protection and scan protection to a stricter pattern. Before adjusting the policy, check for false positives.
 	//
-	// - **ProtectFile**: Check the target domain name for sensitive files or paths to prevent them from being detected and exploited.
+	// - **ProtectFile**: Check whether sensitive files or paths exist under the target domain name to prevent detection and exploitation by attackers.
 	//
-	// - **BlockIP**: The source IP address has a high degree of maliciousness. Keep monitoring it. If it does not affect your normal business, use an IP address blacklist to block access from the malicious IP address.
+	// - **BlockIP**: The source IP address of the attack is highly malicious. Monitor the IP address. If normal service is not affected, block access from the malicious IP address by using an IP blacklist.
 	//
-	// - **KeepConcerned**: No threats are found. Continue to monitor the situation.
+	// - **KeepConcerned**: No risks are detected. Continue to monitor the event.
 	//
 	// example:
 	//
@@ -150,37 +150,37 @@ type DescribeThreatEventDetailResponseBodyThreatEventDetail struct {
 	EventSuggest *string `json:"EventSuggest,omitempty" xml:"EventSuggest,omitempty"`
 	// The name of the event. Valid values:
 	//
-	// - **MultipleDomainDirscan**: A directory and file scan for multiple domain names.
+	// - **MultipleDomainDirscan**: directory and file scanning targeting multiple domain names
 	//
-	// - **SingleDomainDirscan**: A directory and file scan for a single domain name.
+	// - **SingleDomainDirscan**: directory and file scanning targeting a single domain name
 	//
-	// - **MultipleDomainWebscan**: A web vulnerability scan for multiple domain names.
+	// - **MultipleDomainWebscan**: web vulnerability scanning targeting multiple domain names
 	//
-	// - **SingleDomainWebscan**: A web vulnerability scan for a single domain name.
+	// - **SingleDomainWebscan**: web vulnerability scanning targeting a single domain name
 	//
-	// - **MultipleDomainWebattack**: A web vulnerability attack on multiple domain names.
+	// - **MultipleDomainWebattack**: web vulnerability attacks targeting multiple domain names
 	//
-	// - **SingleDomainWebattack**: A web vulnerability attack on a single domain name.
+	// - **SingleDomainWebattack**: web vulnerability attacks targeting a single domain name
 	//
-	// - **SingleURLWebattack**: A web vulnerability attack on a specific URL.
+	// - **SingleURLWebattack**: web vulnerability attacks targeting a specific URL
 	//
-	// - **SingleURLSqlattack**: An SQL injection attack on a specific URL.
+	// - **SingleURLSqlattack**: SQL injection attacks targeting a specific URL
 	//
-	// - **SingleURLXssattack**: A cross-site scripting (XSS) attack on a specific URL.
+	// - **SingleURLXssattack**: XSS attacks targeting a specific URL
 	//
-	// - **WebshellUpload**: An attempt to upload backdoor trojans.
+	// - **WebshellUpload**: attack behavior attempting to upload backdoor trojans
 	//
-	// - **RandomVulnTest**: A random web vulnerability probe.
+	// - **RandomVulnTest**: random web vulnerability detection behavior
 	//
 	// example:
 	//
 	// MultipleDomainWebattack
 	EventTag *string `json:"EventTag,omitempty" xml:"EventTag,omitempty"`
-	// Indicates whether the event is a persistent attack. Valid values:
+	// Indicates whether the attack event is a targeted persistent attack event. Valid values:
 	//
-	// - **0**: The event is not a persistent attack.
+	// - **0**: non-persistent attack.
 	//
-	// - **1**: The event is a persistent attack.
+	// - **1**: persistent attack.
 	//
 	// example:
 	//

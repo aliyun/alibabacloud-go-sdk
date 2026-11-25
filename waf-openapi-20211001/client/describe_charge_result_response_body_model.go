@@ -22,7 +22,7 @@ type iDescribeChargeResultResponseBody interface {
 type DescribeChargeResultResponseBody struct {
 	// The calculation results.
 	ModuleDetails []*DescribeChargeResultResponseBodyModuleDetails `json:"ModuleDetails,omitempty" xml:"ModuleDetails,omitempty" type:"Repeated"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
@@ -106,7 +106,7 @@ type DescribeChargeResultResponseBodyModuleDetails struct {
 	//
 	// 0
 	Credit *float64 `json:"Credit,omitempty" xml:"Credit,omitempty"`
-	// The billing module code.
+	// The identifier of the billing module.
 	//
 	// example:
 	//

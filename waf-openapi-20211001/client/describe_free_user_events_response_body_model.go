@@ -16,9 +16,9 @@ type iDescribeFreeUserEventsResponseBody interface {
 }
 
 type DescribeFreeUserEventsResponseBody struct {
-	// The list of security events detected by basic detection.
+	// The list of security events for basic detection.
 	Event []*DescribeFreeUserEventsResponseBodyEvent `json:"Event,omitempty" xml:"Event,omitempty" type:"Repeated"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
@@ -78,7 +78,7 @@ type DescribeFreeUserEventsResponseBodyEvent struct {
 	//
 	// 104.234.140.**
 	AttackIP *string `json:"AttackIP,omitempty" xml:"AttackIP,omitempty"`
-	// The attack time. The value is a UNIX timestamp (UTC). Unit: seconds.
+	// The attack time, in the UNIX timestamp format (UTC). Unit: seconds.
 	//
 	// example:
 	//
@@ -92,11 +92,11 @@ type DescribeFreeUserEventsResponseBodyEvent struct {
 	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
 	// The event level. Valid values:
 	//
-	// - **high**: high risk.
+	// - **high**: high-risk.
 	//
-	// - **medium**: medium risk.
+	// - **medium**: medium-risk.
 	//
-	// - **low**: low risk.
+	// - **low**: low-risk.
 	//
 	// example:
 	//

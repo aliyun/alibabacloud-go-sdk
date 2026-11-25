@@ -84,13 +84,13 @@ type DescribeApisecSuggestionsResponseBodyData struct {
 	//
 	// 15060a1f8fed40130b7c4a7bf8d8733b
 	SuggestId *string `json:"SuggestId,omitempty" xml:"SuggestId,omitempty"`
-	// The content of the protection suggestion rule, which is a string converted from a JSON object constructed with a series of parameters. The parameters include:
+	// The content of the protection suggestion rule. The content is a JSON character string that consists of the following parameters:
 	//
 	// - **event_tags**: the event type.
 	//
 	// - **black_iplist**: the IP blacklist.
 	//
-	// - **ip_baseline**: the IP list.
+	// - **ip_baseline**: the IP address list.
 	//
 	// - **freq_baseline**: the throttling frequency information.
 	//
@@ -124,7 +124,7 @@ type DescribeApisecSuggestionsResponseBodyData struct {
 	//
 	// - **ClientRule**: client rule.
 	//
-	// - **GeoRule**: geo-blocking rule.
+	// - **GeoRule**: region rule.
 	//
 	// - **SensitiveRule**: sensitive information rule.
 	//

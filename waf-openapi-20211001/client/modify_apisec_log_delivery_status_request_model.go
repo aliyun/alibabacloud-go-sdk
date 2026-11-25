@@ -24,11 +24,11 @@ type iModifyApisecLogDeliveryStatusRequest interface {
 type ModifyApisecLogDeliveryStatusRequest struct {
 	// The log subscription type. Valid values:
 	//
-	// - **risk**: risk information.
+	// - **risk**: risk information
 	//
-	// - **event**: attack event information.
+	// - **event**: attack event information
 	//
-	// - **asset**: asset information.
+	// - **asset**: asset information
 	//
 	// This parameter is required.
 	//
@@ -38,7 +38,7 @@ type ModifyApisecLogDeliveryStatusRequest struct {
 	AssertKey *string `json:"AssertKey,omitempty" xml:"AssertKey,omitempty"`
 	// Instance ID of the WAF instance.
 	//
-	// > You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query instance ID of the WAF instance.
+	// > You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query instance ID of the current WAF instance.
 	//
 	// This parameter is required.
 	//
@@ -48,9 +48,9 @@ type ModifyApisecLogDeliveryStatusRequest struct {
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The region where the WAF instance resides. Valid values:
 	//
-	// - **cn-hangzhou**: the Chinese mainland.
+	// - **cn-hangzhou**: the Chinese mainland
 	//
-	// - **ap-southeast-1**: outside the Chinese mainland.
+	// - **ap-southeast-1**: outside the Chinese mainland
 	//
 	// example:
 	//
@@ -62,11 +62,11 @@ type ModifyApisecLogDeliveryStatusRequest struct {
 	//
 	// rg-acfm***q
 	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
-	// The enabling status of API security log subscribe. Valid values:
+	// The enabling status to subscribe to API security logs. Valid values:
 	//
-	// - **true**: subscribe is enabled.
+	// - **true**: enabled
 	//
-	// - **false**: subscribe is shutdown.
+	// - **false**: shutdown
 	//
 	// This parameter is required.
 	//

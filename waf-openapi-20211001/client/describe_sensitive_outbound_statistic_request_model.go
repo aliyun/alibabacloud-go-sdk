@@ -42,7 +42,7 @@ type iDescribeSensitiveOutboundStatisticRequest interface {
 type DescribeSensitiveOutboundStatisticRequest struct {
 	// The ID of the hybrid cloud cluster.
 	//
-	// > This parameter is available only for hybrid cloud scenarios. Call the [DescribeHybridCloudClusters](https://help.aliyun.com/document_detail/2849376.html) operation to query information about hybrid cloud clusters.
+	// > This parameter is only applicable to hybrid cloud scenarios. You can call the [DescribeHybridCloudClusters](https://help.aliyun.com/document_detail/2849376.html) operation to query the information about hybrid cloud clusters.
 	//
 	// example:
 	//
@@ -50,25 +50,25 @@ type DescribeSensitiveOutboundStatisticRequest struct {
 	ClusterId *string `json:"ClusterId,omitempty" xml:"ClusterId,omitempty"`
 	// The assessment result. Valid values:
 	//
-	// - **report**: a data outbound transfer threat exists.
+	// - **report**: Outbound data risks exist.
 	//
-	// - **none**: no data outbound transfer threat exists.
+	// - **none**: No outbound data risks exist.
 	//
 	// example:
 	//
 	// report
 	DetectionResult *string `json:"DetectionResult,omitempty" xml:"DetectionResult,omitempty"`
-	// The end of the time range to query. This value is a UNIX timestamp that is in UTC. Unit: seconds.
+	// The end time of the query. The value is a UNIX timestamp in UTC. Unit: seconds.
 	//
-	// > The compliance assessment feature supports querying data from the last month, the last 3 months, the last 6 months, the last 12 months, and from January 1 of the previous year to the present. Make sure that the time range is valid.
+	// > Compliance audit currently supports querying data for the last 1 month, last 3 months, last 6 months, last 12 months, and from January 1 of the previous year to the present. Make sure that the specified time range is valid.
 	//
 	// example:
 	//
 	// 1725966000
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The ID of the Web Application Firewall (WAF) instance.
+	// The ID of the WAF instance.
 	//
-	// > Call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
+	// > You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
 	//
 	// This parameter is required.
 	//
@@ -76,33 +76,33 @@ type DescribeSensitiveOutboundStatisticRequest struct {
 	//
 	// waf-cn-0xldbqt****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The field to use for sorting. Valid values:
+	// The name of the field used for sorting. Valid values:
 	//
-	// - **total_count**: sorts by the total number of personal information data entries. This is the default value.
+	// - **total_count**: the total number of data records (default)
 	//
-	// - **outbound_count**: sorts by the total number of outbound transfer data entries.
+	// - **outbound_count**: the total number of outbound data records
 	//
 	// example:
 	//
 	// total_count
 	OrderKey *string `json:"OrderKey,omitempty" xml:"OrderKey,omitempty"`
-	// The sorting order. Valid values:
+	// The sorting method. Valid values:
 	//
-	// - **desc**: descending order. This is the default value.
+	// - **desc**: descending order (default)
 	//
-	// - **asc**: ascending order.
+	// - **asc**: ascending order
 	//
 	// example:
 	//
 	// desc
 	OrderWay *string `json:"OrderWay,omitempty" xml:"OrderWay,omitempty"`
-	// The number of the page to return. Default value: **1**.
+	// The number of the page to return in a paging query. Default value: **1**, which indicates the first page.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries to return on each page. Default value: **10**.
+	// The number of entries to return on each page in a paging query. Default value: **10**, which indicates 10 entries per page.
 	//
 	// example:
 	//
@@ -110,9 +110,9 @@ type DescribeSensitiveOutboundStatisticRequest struct {
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The region where the WAF instance resides. Valid values:
 	//
-	// - **cn-hangzhou**: the Chinese mainland.
+	// - **cn-hangzhou**: the Chinese mainland
 	//
-	// - **ap-southeast-1**: outside the Chinese mainland.
+	// - **ap-southeast-1**: outside the Chinese mainland
 	//
 	// example:
 	//
@@ -124,9 +124,9 @@ type DescribeSensitiveOutboundStatisticRequest struct {
 	//
 	// rg-acfm***q
 	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
-	// The type of sensitive data. Separate multiple types with commas (,).
+	// The sensitive data types. Separate multiple sensitive data types with commas (,).
 	//
-	// > Call the [DescribeApisecRules](https://help.aliyun.com/document_detail/2859155.html) operation to obtain the supported sensitive data types. This parameter supports only built-in sensitive data types.
+	// > You can call the [DescribeApisecRules](https://help.aliyun.com/document_detail/2859155.html) operation to query the supported sensitive data types. This parameter only supports built-in sensitive data types.
 	//
 	// example:
 	//
@@ -134,11 +134,11 @@ type DescribeSensitiveOutboundStatisticRequest struct {
 	SensitiveCode *string `json:"SensitiveCode,omitempty" xml:"SensitiveCode,omitempty"`
 	// The sensitivity level. Valid values:
 	//
-	// - **high**: high.
+	// - **high**: high sensitivity
 	//
-	// - **medium**: medium.
+	// - **medium**: medium sensitivity
 	//
-	// - **low**: low.
+	// - **low**: low sensitivity
 	//
 	// example:
 	//
@@ -146,17 +146,17 @@ type DescribeSensitiveOutboundStatisticRequest struct {
 	SensitiveLevel *string `json:"SensitiveLevel,omitempty" xml:"SensitiveLevel,omitempty"`
 	// The type of information to query. Valid values:
 	//
-	// - **info**: all personal information. This is the default value.
+	// - **info**: all personal information (default)
 	//
-	// - **sensitive**: only sensitive personal information.
+	// - **sensitive**: only sensitive personal information
 	//
 	// example:
 	//
 	// info
 	SensitiveType *string `json:"SensitiveType,omitempty" xml:"SensitiveType,omitempty"`
-	// The beginning of the time range to query. This value is a UNIX timestamp that is in UTC. Unit: seconds.
+	// The start time of the query. The value is a UNIX timestamp in UTC. Unit: seconds.
 	//
-	// > The compliance assessment feature supports querying data from the last month, the last 3 months, the last 6 months, the last 12 months, and from January 1 of the previous year to the present. Make sure that the time range is valid.
+	// > Compliance audit currently supports querying data for the last 1 month, last 3 months, last 6 months, last 12 months, and from January 1 of the previous year to the present. Make sure that the specified time range is valid.
 	//
 	// example:
 	//

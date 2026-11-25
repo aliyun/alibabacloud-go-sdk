@@ -16,7 +16,7 @@ type iDescribeDefenseSceneConfigResponseBody interface {
 }
 
 type DescribeDefenseSceneConfigResponseBody struct {
-	// The value of the configuration item. For more information, see the **ConfigValue*	- parameter in [ModifyDefenseSceneConfig](https://help.aliyun.com/document_detail/2968435.html).
+	// The value of the queried configuration item. For more information, see the **ConfigValue*	- parameter in [ModifyDefenseSceneConfig](https://help.aliyun.com/document_detail/2968435.html).
 	//
 	// example:
 	//

@@ -22,7 +22,7 @@ type DescribeDefenseRuleStatisticsResponseBody struct {
 	//
 	// D7861F61-5B61-46CE-A47C-6B19160D5EB0
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The statistics results.
+	// The statistics.
 	StatisticsInfos []*DescribeDefenseRuleStatisticsResponseBodyStatisticsInfos `json:"StatisticsInfos,omitempty" xml:"StatisticsInfos,omitempty" type:"Repeated"`
 }
 
@@ -66,7 +66,7 @@ func (s *DescribeDefenseRuleStatisticsResponseBody) Validate() error {
 }
 
 type DescribeDefenseRuleStatisticsResponseBodyStatisticsInfos struct {
-	// The number of rules that meet all query conditions.
+	// The number of rules that meet all the query conditions.
 	//
 	// example:
 	//

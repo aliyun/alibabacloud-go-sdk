@@ -30,7 +30,7 @@ type iDescribeApisecMatchedHostsRequest interface {
 type DescribeApisecMatchedHostsRequest struct {
 	// The ID of the hybrid cloud cluster.
 	//
-	// > This parameter applies only to hybrid cloud scenarios. You can call the [DescribeHybridCloudClusters](https://help.aliyun.com/document_detail/2849376.html) operation to obtain the hybrid cloud cluster information.
+	// > This parameter applies only to hybrid cloud scenarios. You can call the [DescribeHybridCloudClusters](https://help.aliyun.com/document_detail/2849376.html) operation to obtain hybrid cloud cluster information.
 	//
 	// example:
 	//
@@ -52,13 +52,13 @@ type DescribeApisecMatchedHostsRequest struct {
 	//
 	// bc.aliyun.com
 	MatchedHost *string `json:"MatchedHost,omitempty" xml:"MatchedHost,omitempty"`
-	// The number of the page to return in a paged query. Default value: **1**, which indicates the first page of the paging result.
+	// The number of the page to return for a paged query. Default value: **1**, which indicates the first page of paging results.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries to return on each page in a paged query. Default value: **10**, which indicates that 10 entries are returned on each page during paging.
+	// The number of entries to return on each page for a paged query. Default value: **10**, which indicates 10 entries per page of paging results.
 	//
 	// example:
 	//
@@ -66,9 +66,9 @@ type DescribeApisecMatchedHostsRequest struct {
 	PageSize *string `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The region where the WAF instance resides. Valid values:
 	//
-	// - **cn-hangzhou**: the Chinese mainland
+	// - **cn-hangzhou**: the Chinese mainland.
 	//
-	// - **ap-southeast-1**: outside the Chinese mainland
+	// - **ap-southeast-1**: outside the Chinese mainland.
 	//
 	// example:
 	//
@@ -82,11 +82,11 @@ type DescribeApisecMatchedHostsRequest struct {
 	ResourceManagerResourceGroupId *string `json:"ResourceManagerResourceGroupId,omitempty" xml:"ResourceManagerResourceGroupId,omitempty"`
 	// The detection type. Valid values:
 	//
-	// - **api**: the list of domain names for API assets
+	// - **api**: the domain names of API assets.
 	//
-	// - **abnormal**: the list of domain names with risks
+	// - **abnormal**: the domain names associated with risks.
 	//
-	// - **event**: the list of domain names for security events
+	// - **event**: the domain names associated with security events.
 	//
 	// example:
 	//

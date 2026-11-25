@@ -18,15 +18,15 @@ type iDescribePrepayDailyBillsResponseBody interface {
 }
 
 type DescribePrepayDailyBillsResponseBody struct {
-	// The list of WAF burstable billing records.
+	// The list of elastic pay-as-you-go bills for the WAF instance.
 	Bills []*DescribePrepayDailyBillsResponseBodyBills `json:"Bills,omitempty" xml:"Bills,omitempty" type:"Repeated"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
 	// EC10C9EA-A367-52D5-***-***
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries returned.
+	// The total number of returned entries.
 	//
 	// example:
 	//
@@ -83,21 +83,27 @@ func (s *DescribePrepayDailyBillsResponseBody) Validate() error {
 }
 
 type DescribePrepayDailyBillsResponseBodyBills struct {
+	// Specifies whether Agentic WAF is activated.
+	//
+	// example:
+	//
+	// true
+	AgenticWaf *bool `json:"AgenticWaf,omitempty" xml:"AgenticWaf,omitempty"`
 	// The burstable QPS specification of the WAF instance.
 	//
 	// example:
 	//
 	// 100
 	ElasticQpsSetValue *int64 `json:"ElasticQpsSetValue,omitempty" xml:"ElasticQpsSetValue,omitempty"`
-	// The end time of the billing record. The value is a UNIX timestamp (UTC). Unit: seconds.
+	// The end time of the bill. The value is a UNIX timestamp in UTC. Unit: seconds.
 	//
 	// example:
 	//
 	// 1687591200
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The overuse status of the current period. Valid values:
+	// The overuse status for the current period. Valid values:
 	//
-	// - **0**: Normal.
+	// - **0**: normal.
 	//
 	// - **1**: overused.
 	//
@@ -107,35 +113,35 @@ type DescribePrepayDailyBillsResponseBodyBills struct {
 	//
 	// 0
 	ExceedStatus *int32 `json:"ExceedStatus,omitempty" xml:"ExceedStatus,omitempty"`
-	// Indicates whether the extension plug-in is enabled. Valid values:
+	// Specifies whether the extension plug-in is enabled. Valid values:
 	//
-	// - **true**: The extension plug-in is enabled.
+	// - **true**: enabled.
 	//
-	// - **false**: The extension plug-in is not enabled.
+	// - **false**: disabled.
 	//
 	// example:
 	//
 	// true
 	ExtensionPlugin *bool `json:"ExtensionPlugin,omitempty" xml:"ExtensionPlugin,omitempty"`
-	// The number of requests processed by the plug-in.
+	// The number of plug-in requests processed.
 	//
 	// example:
 	//
 	// 100
 	ExtensionPluginRequest *int64 `json:"ExtensionPluginRequest,omitempty" xml:"ExtensionPluginRequest,omitempty"`
-	// The maximum QPS during the current period.
+	// The maximum QPS for the current period.
 	//
 	// example:
 	//
 	// 600
 	MaxQps *int64 `json:"MaxQps,omitempty" xml:"MaxQps,omitempty"`
-	// The unit price for burstable billing. Unit: CNY for the China site and USD for the international site.
+	// The unit price of elastic billing. Unit: CNY on the Chinese site and USD on the international site.
 	//
 	// example:
 	//
 	// 0.25
 	Price *float32 `json:"Price,omitempty" xml:"Price,omitempty"`
-	// The QPS extension specification of the WAF instance.
+	// The extended QPS specification of the WAF instance.
 	//
 	// example:
 	//
@@ -147,11 +153,11 @@ type DescribePrepayDailyBillsResponseBodyBills struct {
 	//
 	// 10
 	QpsVersion *int64 `json:"QpsVersion,omitempty" xml:"QpsVersion,omitempty"`
-	// Indicates whether risk identification is enabled. Valid values:
+	// Specifies whether risk identification is enabled. Valid values:
 	//
-	// - **true**: Risk identification is enabled.
+	// - **true**: enabled.
 	//
-	// - **false**: Risk identification is not enabled.
+	// - **false**: disabled.
 	//
 	// example:
 	//
@@ -163,19 +169,19 @@ type DescribePrepayDailyBillsResponseBodyBills struct {
 	//
 	// 100
 	RiskTraffic *int64 `json:"RiskTraffic,omitempty" xml:"RiskTraffic,omitempty"`
-	// The start time of the billing record. The value is a UNIX timestamp (UTC). Unit: seconds.
+	// The start time of the bill. The value is a UNIX timestamp in UTC. Unit: seconds.
 	//
 	// example:
 	//
 	// 1687822980
 	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The total QPS that is billed.
+	// The total QPS to be billed.
 	//
 	// example:
 	//
 	// 0
 	Total *int64 `json:"Total,omitempty" xml:"Total,omitempty"`
-	// The burstable billing type.
+	// The elastic billing type.
 	Type []*string `json:"Type,omitempty" xml:"Type,omitempty" type:"Repeated"`
 }
 
@@ -185,6 +191,10 @@ func (s DescribePrepayDailyBillsResponseBodyBills) String() string {
 
 func (s DescribePrepayDailyBillsResponseBodyBills) GoString() string {
 	return s.String()
+}
+
+func (s *DescribePrepayDailyBillsResponseBodyBills) GetAgenticWaf() *bool {
+	return s.AgenticWaf
 }
 
 func (s *DescribePrepayDailyBillsResponseBodyBills) GetElasticQpsSetValue() *int64 {
@@ -241,6 +251,11 @@ func (s *DescribePrepayDailyBillsResponseBodyBills) GetTotal() *int64 {
 
 func (s *DescribePrepayDailyBillsResponseBodyBills) GetType() []*string {
 	return s.Type
+}
+
+func (s *DescribePrepayDailyBillsResponseBodyBills) SetAgenticWaf(v bool) *DescribePrepayDailyBillsResponseBodyBills {
+	s.AgenticWaf = &v
+	return s
 }
 
 func (s *DescribePrepayDailyBillsResponseBodyBills) SetElasticQpsSetValue(v int64) *DescribePrepayDailyBillsResponseBodyBills {

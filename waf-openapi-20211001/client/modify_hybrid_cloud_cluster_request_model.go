@@ -48,9 +48,9 @@ type iModifyHybridCloudClusterRequest interface {
 type ModifyHybridCloudClusterRequest struct {
 	// The network access mode. Valid values:
 	//
-	// - **internet**: public network access.
+	// - **internet**: Internet access.
 	//
-	// - **vpc**: Express Connect private network access.
+	// - **vpc**: Private network access over Express Connect.
 	//
 	// This parameter is required.
 	//
@@ -78,7 +78,7 @@ type ModifyHybridCloudClusterRequest struct {
 	//
 	// waf-example-***
 	ClusterName *string `json:"ClusterName,omitempty" xml:"ClusterName,omitempty"`
-	// The list of available ports for the HTTP protocol. The value is a string. If multiple ports are specified, they are returned in the format of **port1,port2,port3**.
+	// The list of available ports for the HTTP protocol. The value is a string. For multiple ports, use the **port1,port2,port3*	- format.
 	//
 	// This parameter is required.
 	//
@@ -86,7 +86,7 @@ type ModifyHybridCloudClusterRequest struct {
 	//
 	// 80,8080
 	HttpPorts *string `json:"HttpPorts,omitempty" xml:"HttpPorts,omitempty"`
-	// The list of available ports for the HTTPS protocol. The value is a string. If multiple ports are specified, they are returned in the format of **port1,port2,port3**.
+	// The list of available ports for the HTTPS protocol. The value is a string. For multiple ports, use the **port1,port2,port3*	- format.
 	//
 	// This parameter is required.
 	//
@@ -112,7 +112,7 @@ type ModifyHybridCloudClusterRequest struct {
 	//
 	// waf-cn-mp9153****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The log fields to be returned.
+	// The log fields that are not returned.
 	//
 	// example:
 	//
@@ -128,9 +128,9 @@ type ModifyHybridCloudClusterRequest struct {
 	ProtectionServerCount *int32 `json:"ProtectionServerCount,omitempty" xml:"ProtectionServerCount,omitempty"`
 	// The proxy gateway mode. Valid values:
 	//
-	// - on: enabled.
+	// - **on**: Enabled.
 	//
-	// - off: disabled.
+	// - **off**: Disabled.
 	//
 	// example:
 	//
@@ -138,9 +138,9 @@ type ModifyHybridCloudClusterRequest struct {
 	ProxyStatus *string `json:"ProxyStatus,omitempty" xml:"ProxyStatus,omitempty"`
 	// The cluster type. Valid values:
 	//
-	// - **cname**: reverse proxy cluster.
+	// - **cname**: Reverse proxy cluster.
 	//
-	// - **service**: service-based cluster.
+	// - **service**: Service cluster.
 	//
 	// example:
 	//
@@ -148,15 +148,15 @@ type ModifyHybridCloudClusterRequest struct {
 	ProxyType *string `json:"ProxyType,omitempty" xml:"ProxyType,omitempty"`
 	// The region where the WAF instance resides. Valid values:
 	//
-	// - **cn-hangzhou**: the Chinese mainland.
+	// - **cn-hangzhou**: The Chinese mainland.
 	//
-	// - **ap-southeast-1**: outside the Chinese mainland.
+	// - **ap-southeast-1**: Outside the Chinese mainland.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The remarks.
+	// The remark.
 	//
 	// example:
 	//
@@ -200,9 +200,9 @@ type ModifyHybridCloudClusterRequest struct {
 	RuleConfig *string `json:"RuleConfig,omitempty" xml:"RuleConfig,omitempty"`
 	// The rule status. Valid values:
 	//
-	// - **on**: enabled.
+	// - **on**: Enabled.
 	//
-	// - **off**: disabled.
+	// - **off**: Disabled.
 	//
 	// example:
 	//
@@ -210,7 +210,7 @@ type ModifyHybridCloudClusterRequest struct {
 	RuleStatus *string `json:"RuleStatus,omitempty" xml:"RuleStatus,omitempty"`
 	// The rule type. Valid values:
 	//
-	// bypass: bypasses security checks and directly allows the request.
+	// bypass: Skips security checks and directly allows traffic.
 	//
 	// example:
 	//

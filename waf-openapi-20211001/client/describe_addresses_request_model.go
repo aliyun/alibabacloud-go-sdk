@@ -34,7 +34,7 @@ type DescribeAddressesRequest struct {
 	AddressLike *string `json:"AddressLike,omitempty" xml:"AddressLike,omitempty"`
 	// The ID of the WAF instance.
 	//
-	// > You can call [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) to query the ID of the current WAF instance.
+	// > You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
 	//
 	// This parameter is required.
 	//
@@ -42,19 +42,19 @@ type DescribeAddressesRequest struct {
 	//
 	// waf_elasticity-cn-0xldbqt****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The number of entries per page for paging. Valid values: 1 to 500. Default value: 20.
+	// The number of entries to return per page in a paging query. Valid values: 1 to 500. Default value: 20.
 	//
 	// example:
 	//
 	// 20
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The pagination token for the next page. Set this parameter to the value of **NextToken*	- returned in the previous API call. Leave this parameter empty for the first page.
+	// The pagination token for the next page. Set the value to the **NextToken*	- value returned from the previous API call. This parameter is not required for the first query.
 	//
 	// example:
 	//
 	// AAAAAGBgV9tolsLfijC4wam2htS*****D/46H3X2wIS
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The region where the WAF instance is deployed. Valid values:
+	// The region where the WAF instance resides. Valid values:
 	//
 	// - **cn-hangzhou**: the Chinese mainland.
 	//
@@ -64,7 +64,7 @@ type DescribeAddressesRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The Alibaba Cloud resource group ID.
+	// The ID of the Alibaba Cloud resource group.
 	//
 	// example:
 	//

@@ -22,9 +22,9 @@ type iDescribeIpAbroadCountryInfosResponseBody interface {
 }
 
 type DescribeIpAbroadCountryInfosResponseBody struct {
-	// The list of overseas country information.
+	// The list of countries outside China.
 	AbroadInfos []*DescribeIpAbroadCountryInfosResponseBodyAbroadInfos `json:"AbroadInfos,omitempty" xml:"AbroadInfos,omitempty" type:"Repeated"`
-	// The number of entries to return on each page for a paging query. Valid values: 1 to 500. Default value: 20.
+	// The number of entries to return on each page in a paging query. Valid values: 1 to 500. Default value: 20.
 	//
 	// example:
 	//
@@ -135,7 +135,7 @@ type DescribeIpAbroadCountryInfosResponseBodyAbroadInfos struct {
 	//
 	// United States
 	CountryName *string `json:"CountryName,omitempty" xml:"CountryName,omitempty"`
-	// The list of overseas region information.
+	// The list of regions outside China.
 	Regions []*DescribeIpAbroadCountryInfosResponseBodyAbroadInfosRegions `json:"Regions,omitempty" xml:"Regions,omitempty" type:"Repeated"`
 }
 

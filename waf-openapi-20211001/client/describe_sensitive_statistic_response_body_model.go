@@ -26,7 +26,7 @@ type DescribeSensitiveStatisticResponseBody struct {
 	//
 	// D7861F61-5B61-46CE-A47C-6B19160D5EB0
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries returned.
+	// The total number of returned entries.
 	//
 	// example:
 	//
@@ -109,7 +109,7 @@ type DescribeSensitiveStatisticResponseBodyData struct {
 	MatchedHost *string `json:"MatchedHost,omitempty" xml:"MatchedHost,omitempty"`
 	// The sensitive data type.
 	//
-	// > You can call [DescribeApisecRules](https://help.aliyun.com/document_detail/2859155.html) to obtain the supported sensitive data types.
+	// > You can call [DescribeApisecRules](https://help.aliyun.com/document_detail/2859155.html) to query the supported sensitive data types.
 	//
 	// example:
 	//

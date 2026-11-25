@@ -26,7 +26,7 @@ type iDescribeApiExportsRequest interface {
 type DescribeApiExportsRequest struct {
 	// The ID of the WAF instance.
 	//
-	// > You can call [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) to query the ID of the current WAF instance.
+	// > You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the ID of the WAF instance.
 	//
 	// This parameter is required.
 	//
@@ -46,23 +46,23 @@ type DescribeApiExportsRequest struct {
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
-	// The page number to return in a paging query. Default value: **1**, which indicates the first page.
+	// The number of the page to return in a paged query. Default value: **1**, which indicates that the first page of paging data is returned.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page in a paging query. Default value: **10**, which indicates 10 entries per page.
+	// The number of entries to return on each page in a paged query. Default value: **10**, which indicates that each paging page contains 10 entries.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The region where the WAF instance is deployed. Valid values:
+	// The region where the WAF instance resides. Valid values:
 	//
-	// - **cn-hangzhou**: the Chinese mainland.
+	// - **cn-hangzhou**: the Chinese mainland
 	//
-	// - **ap-southeast-1**: outside the Chinese mainland.
+	// - **ap-southeast-1**: outside the Chinese mainland
 	//
 	// example:
 	//

@@ -26,7 +26,7 @@ type DescribeApisecEventsResponseBody struct {
 	//
 	// 12F4CC8F-7E9F-5E4D-BF7C-BD1EDDE0C282
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries returned.
+	// The total number of returned results.
 	//
 	// example:
 	//
@@ -101,7 +101,7 @@ type DescribeApisecEventsResponseBodyData struct {
 	//
 	// 2ecc1cf67b91853bc55545052ccf06a8
 	ApiId *string `json:"ApiId,omitempty" xml:"ApiId,omitempty"`
-	// The business purpose of the API.
+	// The API business purpose.
 	//
 	// > You can call [DescribeApisecRules](https://help.aliyun.com/document_detail/2859155.html) to obtain the supported business purposes.
 	//
@@ -117,7 +117,7 @@ type DescribeApisecEventsResponseBodyData struct {
 	AttackClient *string `json:"AttackClient,omitempty" xml:"AttackClient,omitempty"`
 	// Deprecated
 	//
-	// The attack count information, which is a string converted from a JSON object. The key is a timestamp in seconds, and the value is the number of attacks.
+	// The attack count information, converted to a string in JSON format constructed by a series of parameters. The key is a timestamp in seconds, and the value is the number of attacks.
 	//
 	// example:
 	//
@@ -133,9 +133,7 @@ type DescribeApisecEventsResponseBodyData struct {
 	AttackCntInfo *string `json:"AttackCntInfo,omitempty" xml:"AttackCntInfo,omitempty"`
 	// Deprecated
 	//
-	// The attack IP address.
-	//
-	// 	Notice: This parameter is deprecated. Use the AttackIps parameter instead.</notice>
+	// The attack IP address.<notice>This parameter is deprecated. Use the AttackIps parameter instead.</notice>
 	//
 	// example:
 	//
@@ -143,15 +141,15 @@ type DescribeApisecEventsResponseBodyData struct {
 	AttackIp *string `json:"AttackIp,omitempty" xml:"AttackIp,omitempty"`
 	// Deprecated
 	//
-	// The attack IP information, which is a string converted from a JSON object constructed with the following parameters:
+	// The attack IP address information, converted to a string in JSON format constructed by a series of parameters. Includes:
 	//
-	// - **ip**: the IP address.
+	// - **ip**: The IP address.
 	//
-	// - **country_id**: the country to which the IP address belongs.
+	// - **country_id**: The country.
 	//
-	// - **region_id**: the region to which the IP address belongs.
+	// - **region_id**: The region.
 	//
-	// - **cnt**: the number of attacks.
+	// - **cnt**: The number of attacks.
 	//
 	// example:
 	//
@@ -175,9 +173,9 @@ type DescribeApisecEventsResponseBodyData struct {
 	//
 	// The list of attack IP addresses.
 	AttackIps []*string `json:"AttackIps,omitempty" xml:"AttackIps,omitempty" type:"Repeated"`
-	// The Attacker list associated with the event.
+	// The attacker list corresponding to the event.
 	AttackerList []*string `json:"AttackerList,omitempty" xml:"AttackerList,omitempty" type:"Repeated"`
-	// The end time of the query, in UNIX timestamp (UTC) format. Unit: seconds.
+	// The end time of the query. The value is a UNIX timestamp in UTC. Unit: seconds.
 	//
 	// example:
 	//
@@ -191,13 +189,13 @@ type DescribeApisecEventsResponseBodyData struct {
 	EventId *string `json:"EventId,omitempty" xml:"EventId,omitempty"`
 	// Deprecated
 	//
-	// The event details, which is a string converted from a JSON object constructed with the following parameters:
+	// The detailed event information, converted to a string in JSON format constructed by a series of parameters. Includes:
 	//
-	// - **ip_info**: the attack IP information. Refer to the response parameter **AttackIpInfo*	- of this operation.
+	// - **ip_info**: The attack IP address information. You can refer to the **AttackIpInfo*	- response parameter of this operation.
 	//
-	// - **rule_id**: the rule ID associated with the event.
+	// - **rule_id**: The ID of the rule corresponding to the event.
 	//
-	// - **rule_tag**: the rule information associated with the event.
+	// - **rule_tag**: The rule information corresponding to the event.
 	//
 	// example:
 	//
@@ -225,13 +223,13 @@ type DescribeApisecEventsResponseBodyData struct {
 	//
 	// }
 	EventInfo *string `json:"EventInfo,omitempty" xml:"EventInfo,omitempty"`
-	// The event level. Valid values:
+	// The severity level of the event. Valid values:
 	//
-	// - **high**: High-risk.
+	// - **high**: high risk.
 	//
-	// - **medium**: Medium-risk.
+	// - **medium**: medium risk.
 	//
-	// - **low**: Low-risk.
+	// - **low**: low risk.
 	//
 	// example:
 	//
@@ -245,7 +243,7 @@ type DescribeApisecEventsResponseBodyData struct {
 	//
 	// ObtainSensitiveUnauthorized
 	EventTag *string `json:"EventTag,omitempty" xml:"EventTag,omitempty"`
-	// Indicates whether the event is followed. Valid values:
+	// Specifies whether the event is followed. Valid values:
 	//
 	// - **1**: Followed.
 	//
@@ -261,17 +259,17 @@ type DescribeApisecEventsResponseBodyData struct {
 	//
 	// a.***.com
 	MatchedHost *string `json:"MatchedHost,omitempty" xml:"MatchedHost,omitempty"`
-	// The remarks.
+	// The note.
 	//
 	// example:
 	//
 	// Notify
 	Note *string `json:"Note,omitempty" xml:"Note,omitempty"`
-	// The source of the event type. Valid values:
+	// The origin of the event type. Valid values:
 	//
-	// - **custom**: Custom.
+	// - **custom**: custom.
 	//
-	// - **default**: Built-in.
+	// - **default**: built-in.
 	//
 	// example:
 	//
@@ -291,7 +289,7 @@ type DescribeApisecEventsResponseBodyData struct {
 	RemoteRegion *string `json:"RemoteRegion,omitempty" xml:"RemoteRegion,omitempty"`
 	// Deprecated
 	//
-	// A sample API request data, which is a string converted from a JSON object constructed with a series of parameters.
+	// The API request data instance, converted to a string in JSON format constructed by a series of parameters.
 	//
 	// example:
 	//
@@ -299,27 +297,27 @@ type DescribeApisecEventsResponseBodyData struct {
 	RequestData *string `json:"RequestData,omitempty" xml:"RequestData,omitempty"`
 	// Deprecated
 	//
-	// A sample API response data, which is a string converted from a JSON object constructed with a series of parameters.
+	// The API response data example, converted to a string in JSON format constructed by a series of parameters.
 	//
 	// example:
 	//
 	// {}
 	ResponseData *string `json:"ResponseData,omitempty" xml:"ResponseData,omitempty"`
-	// The start time of the query, in UNIX timestamp (UTC) format. Unit: seconds.
+	// The start time of the query. The value is a UNIX timestamp in UTC. Unit: seconds.
 	//
 	// example:
 	//
 	// 1683648000
 	StartTs *int64 `json:"StartTs,omitempty" xml:"StartTs,omitempty"`
-	// The event status. Valid values:
+	// The status of the event. Valid values:
 	//
-	// - **toBeConfirmed**: To be confirmed.
+	// - **toBeConfirmed**: pending confirmation.
 	//
-	// - **confirmed**: Confirmed.
+	// - **confirmed**: confirmed.
 	//
-	// - **actioned**: Handled.
+	// - **actioned**: handled.
 	//
-	// - **ignored**: Ignored.
+	// - **ignored**: ignored.
 	//
 	// example:
 	//

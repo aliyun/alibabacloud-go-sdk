@@ -373,7 +373,7 @@ func (client *Client) CreateApiExportWithContext(ctx context.Context, request *C
 
 // Summary:
 //
-// Uploads an international certificate to WAF for CNAME-based access.
+// Uploads an international certificate for WAF CNAME access.
 //
 // @param request - CreateCertsRequest
 //
@@ -751,7 +751,7 @@ func (client *Client) CreateDefenseResourceGroupWithContext(ctx context.Context,
 
 // Summary:
 //
-// Creates a Web core protection rule.
+// Creates a web core protection rule.
 //
 // @param request - CreateDefenseRuleRequest
 //
@@ -792,6 +792,10 @@ func (client *Client) CreateDefenseRuleWithContext(ctx context.Context, request 
 
 	if !dara.IsNil(request.ResourceManagerResourceGroupId) {
 		query["ResourceManagerResourceGroupId"] = request.ResourceManagerResourceGroupId
+	}
+
+	if !dara.IsNil(request.ResourceType) {
+		query["ResourceType"] = request.ResourceType
 	}
 
 	if !dara.IsNil(request.TemplateId) {
@@ -925,15 +929,15 @@ func (client *Client) CreateDefenseTemplateWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// Adds a domain name to a WAF instance for Website Config protection.
+// Adds a website config to a WAF instance for protection.
 //
 // Description:
 //
 // Before you call this operation, the domain name (**Domain**) must meet the following requirements.
 //
-// - **Domain ownership authentication**: If **AccessType*	- is set to **share*	- (CNAME access) or **hybrid_cloud_cname*	- (hybrid cloud CNAME access) with public cloud disaster recovery enabled, you must first complete domain ownership authentication. Invoke the [DescribeVerifyContent](https://help.aliyun.com/document_detail/2985193.html) operation to obtain domain verification information, configure a DNS TXT record or upload an HTTP verification file based on the response, and then invoke the [VerifyDomainOwner](https://help.aliyun.com/document_detail/2985192.html) operation to complete domain ownership authentication. When you invoke the [DescribeVerifyContent](https://help.aliyun.com/document_detail/2985193.html) and [VerifyDomainOwner](https://help.aliyun.com/document_detail/2985192.html) operations, use the **DomainName*	- parameter to specify the domain name. The **DescribeVerifyContent*	- operation also requires the **AccessOrigin*	- parameter to specify the access source. For valid values, refer to the metric description of the DescribeVerifyContent operation.
+// - **Domain ownership authentication**: If **AccessType*	- is set to **share*	- (CNAME access) or **hybrid_cloud_cname*	- (hybrid cloud CNAME access) with public cloud disaster recovery enabled, you must authenticate the ownership of the domain name first. Invoke the [DescribeVerifyContent](https://help.aliyun.com/document_detail/2985193.html) operation to obtain the domain name authentication information, configure a DNS TXT record or upload an HTTP authentication file based on the returned content, and then invoke the [VerifyDomainOwner](https://help.aliyun.com/document_detail/2985192.html) operation to authenticate the domain name ownership. When you invoke the [DescribeVerifyContent](https://help.aliyun.com/document_detail/2985193.html) and [VerifyDomainOwner](https://help.aliyun.com/document_detail/2985192.html) operations, you must use the **DomainName*	- parameter to specify the domain name. For the **DescribeVerifyContent*	- operation, you must also use the **AccessOrigin*	- parameter to specify the access source. For more information about the valid values, see the metric description of the DescribeVerifyContent operation.
 //
-// - **ICP filing**: If **AccessType*	- is set to **share*	- (CNAME access) or **hybrid_cloud_cname*	- (hybrid cloud CNAME access) with public cloud disaster recovery enabled, and the domain name is added to Website Config in a region in the Chinese mainland, the domain name must have a valid ICP filing.
+// - **ICP filing**: If **AccessType*	- is set to **share*	- (CNAME access) or **hybrid_cloud_cname*	- (hybrid cloud CNAME access) with public cloud disaster recovery enabled, and the website config is added to a region in the Chinese mainland, the domain name must have an ICP filing.
 //
 // @param tmpReq - CreateDomainRequest
 //
@@ -1015,7 +1019,11 @@ func (client *Client) CreateDomainWithContext(ctx context.Context, tmpReq *Creat
 
 // Summary:
 //
-// Creates a hybrid cloud Web Application Firewall (WAF) cluster.
+// Creates a hybrid cloud cluster.
+//
+// Description:
+//
+// Before calling this operation, ensure that the hybrid cloud feature is enabled for the Web Application Firewall (WAF) instance. Specifically, when you call the DescribeInstance operation, the Details.HybridCloud parameter in the response must be true. If the feature is not enabled, upgrade the instance to a hybrid cloud-compatible version in the WAF console.
 //
 // @param request - CreateHybridCloudClusterRequest
 //
@@ -1123,7 +1131,7 @@ func (client *Client) CreateHybridCloudClusterWithContext(ctx context.Context, r
 //
 // Description:
 //
-// Before calling this operation, make sure that the hybrid cloud feature is enabled for the WAF instance. You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query instance details. If the Details.HybridCloud parameter in the response is true, the hybrid cloud feature is enabled. If the feature is not enabled, log on to the WAF console and upgrade the instance to enable the hybrid cloud feature.
+// Before you call this operation, make sure that the hybrid cloud feature is enabled for the WAF instance. You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the instance details. If the Details.HybridCloud response parameter is set to true, the hybrid cloud feature is enabled. If the feature is not enabled, log on to the WAF console and upgrade the instance to enable the hybrid cloud feature.
 //
 // @param request - CreateHybridCloudClusterRuleRequest
 //
@@ -1271,11 +1279,11 @@ func (client *Client) CreateHybridCloudGroupWithContext(ctx context.Context, req
 
 // Summary:
 //
-// Creates a log delivery configuration for hybrid cloud environments.
+// Creates a hybrid cloud log delivery configuration.
 //
 // Description:
 //
-// Before you call this operation, make sure that the WAF instance has hybrid cloud extension nodes purchased. You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query instance details. If the value of the Details.HybridCloudNodeExtend response parameter is greater than 0, hybrid cloud extension nodes have been purchased. If not, log on to the WAF console and upgrade the instance to purchase hybrid cloud extension nodes.
+// Before you call this operation, ensure that you have purchased hybrid cloud extension nodes for your WAF instance. You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the instance details. If the value of the Details.HybridCloudNodeExtend response parameter is greater than 0, hybrid cloud extension nodes are purchased. If no hybrid cloud extension nodes are purchased, you can log on to the WAF console and upgrade the instance to purchase hybrid cloud extension nodes.
 //
 // @param request - CreateLogDeliveryConfigRequest
 //
@@ -1479,7 +1487,7 @@ func (client *Client) CreateMemberAccountsWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// Starts a trial for a proof of concept (POC) feature.
+// Enables the POC feature trial.
 //
 // @param request - CreatePocFunctionRequest
 //
@@ -1587,7 +1595,7 @@ func (client *Client) CreatePostpaidInstanceWithContext(ctx context.Context, req
 
 // Summary:
 //
-// Uploads a China National Cryptographic Algorithm (SM) certificate for a domain that is added to WAF in CNAME mode.
+// Uploads a ShangMi certificate for WAF CNAME access.
 //
 // @param request - CreateSM2CertRequest
 //
@@ -1907,7 +1915,7 @@ func (client *Client) DeleteCloudResourceWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// Deletes the extended certificate for a resource onboarded in cloud native mode.
+// Deletes the extension certificate for cloud native mode.
 //
 // @param request - DeleteCloudResourceExtensionCertRequest
 //
@@ -2118,6 +2126,10 @@ func (client *Client) DeleteDefenseRuleWithContext(ctx context.Context, request 
 		query["ResourceManagerResourceGroupId"] = request.ResourceManagerResourceGroupId
 	}
 
+	if !dara.IsNil(request.ResourceType) {
+		query["ResourceType"] = request.ResourceType
+	}
+
 	if !dara.IsNil(request.RuleIds) {
 		query["RuleIds"] = request.RuleIds
 	}
@@ -2151,7 +2163,7 @@ func (client *Client) DeleteDefenseRuleWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// Unblocks an IP address that is blocked by the scan protection module.
+// Unblocks IP addresses blocked by scan protection.
 //
 // @param request - DeleteDefenseRuleBlockIpRequest
 //
@@ -2335,7 +2347,7 @@ func (client *Client) DeleteDomainWithContext(ctx context.Context, request *Dele
 //
 // Description:
 //
-// Before calling this operation, make sure that the hybrid cloud feature is enabled for the WAF instance. You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query instance details. If the returned parameter Details.HybridCloud is true, the hybrid cloud feature is enabled. If it is not enabled, log on to the WAF console and upgrade the instance to enable the hybrid cloud feature.
+// Before calling this operation, ensure that the hybrid cloud feature is enabled for the WAF instance. You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query instance details. If the Details.HybridCloud response parameter is set to true, the hybrid cloud feature is enabled. If the feature is not enabled, log on to the WAF console and upgrade the instance to enable the hybrid cloud feature.
 //
 // @param request - DeleteHybridCloudClusterRuleRequest
 //
@@ -2391,7 +2403,7 @@ func (client *Client) DeleteHybridCloudClusterRuleWithContext(ctx context.Contex
 
 // Summary:
 //
-// Deletes a group.
+// Deletes group information.
 //
 // @param request - DeleteHybridCloudGroupRequest
 //
@@ -2451,11 +2463,11 @@ func (client *Client) DeleteHybridCloudGroupWithContext(ctx context.Context, req
 
 // Summary:
 //
-// Deletes a hybrid cloud log forwarding delivery configuration.
+// Deletes the outbound log delivery configuration for Hybrid Cloud.
 //
 // Description:
 //
-// Before calling this operation, make sure that the WAF instance has purchased hybrid cloud extension nodes. You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query instance details. If the returned parameter Details.HybridCloudNodeExtend is greater than 0, hybrid cloud extension nodes have been purchased. If not, log on to the WAF console and purchase hybrid cloud extension nodes by upgrading the instance.
+// Before calling this operation, ensure that you have purchased hybrid cloud extension nodes for your WAF instance. You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query instance details. If the returned Details.HybridCloudNodeExtend parameter is greater than 0, hybrid cloud extension nodes are purchased. If not, log on to the WAF console and upgrade the instance to purchase hybrid cloud extension nodes.
 //
 // @param request - DeleteLogDeliveryConfigRequest
 //
@@ -2643,7 +2655,7 @@ func (client *Client) DeleteMemberAccountWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// Queries abnormal cloud native mode resources.
+// Queries abnormal resources in cloud native mode.
 //
 // @param request - DescribeAbnormalCloudResourcesRequest
 //
@@ -2685,6 +2697,62 @@ func (client *Client) DescribeAbnormalCloudResourcesWithContext(ctx context.Cont
 		BodyType:    dara.String("json"),
 	}
 	_result = &DescribeAbnormalCloudResourcesResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the access configuration.
+//
+// @param request - DescribeAccessConfigRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeAccessConfigResponse
+func (client *Client) DescribeAccessConfigWithContext(ctx context.Context, request *DescribeAccessConfigRequest, runtime *dara.RuntimeOptions) (_result *DescribeAccessConfigResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ConfigKey) {
+		query["ConfigKey"] = request.ConfigKey
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.ResourceManagerResourceGroupId) {
+		query["ResourceManagerResourceGroupId"] = request.ResourceManagerResourceGroupId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeAccessConfig"),
+		Version:     dara.String("2021-10-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeAccessConfigResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -2747,7 +2815,7 @@ func (client *Client) DescribeAccountDelegatedStatusWithContext(ctx context.Cont
 
 // Summary:
 //
-// Queries addresses in an address book by paging.
+// Queries the addresses in an address book by paging.
 //
 // @param request - DescribeAddressesRequest
 //
@@ -2815,7 +2883,615 @@ func (client *Client) DescribeAddressesWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// Queries the alert banner information of a Web Application Firewall (WAF) instance.
+// Queries the details of an AI Engine event.
+//
+// Description:
+//
+// Before calling this operation, ensure that the WAF instance is of the Agentic WAF edition. You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query instance details. If the returned Details.AgenticWaf parameter is true, the instance is of the Agentic WAF edition. If it is not supported, upgrade the instance to the Agentic WAF edition.
+//
+// @param request - DescribeAiEngineEventRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeAiEngineEventResponse
+func (client *Client) DescribeAiEngineEventWithContext(ctx context.Context, request *DescribeAiEngineEventRequest, runtime *dara.RuntimeOptions) (_result *DescribeAiEngineEventResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.EventId) {
+		query["EventId"] = request.EventId
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.Language) {
+		query["Language"] = request.Language
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.ResourceManagerResourceGroupId) {
+		query["ResourceManagerResourceGroupId"] = request.ResourceManagerResourceGroupId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeAiEngineEvent"),
+		Version:     dara.String("2021-10-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeAiEngineEventResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the list of AI Engine event nodes.
+//
+// Description:
+//
+// Before calling this operation, make sure that the WAF instance is of the Agentic WAF edition. You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the instance details. If the returned Details.AgenticWaf parameter is set to true, the instance is of the Agentic WAF edition. If the instance does not support this edition, you can upgrade the instance to the Agentic WAF edition.
+//
+// @param request - DescribeAiEngineEventNodesRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeAiEngineEventNodesResponse
+func (client *Client) DescribeAiEngineEventNodesWithContext(ctx context.Context, request *DescribeAiEngineEventNodesRequest, runtime *dara.RuntimeOptions) (_result *DescribeAiEngineEventNodesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.EventId) {
+		query["EventId"] = request.EventId
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.Language) {
+		query["Language"] = request.Language
+	}
+
+	if !dara.IsNil(request.MaxResults) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.ResourceManagerResourceGroupId) {
+		query["ResourceManagerResourceGroupId"] = request.ResourceManagerResourceGroupId
+	}
+
+	if !dara.IsNil(request.SortBy) {
+		query["SortBy"] = request.SortBy
+	}
+
+	if !dara.IsNil(request.SortOrder) {
+		query["SortOrder"] = request.SortOrder
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeAiEngineEventNodes"),
+		Version:     dara.String("2021-10-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeAiEngineEventNodesResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the operation records of AI Engine events.
+//
+// Description:
+//
+// Before you call this operation, make sure that the WAF instance is of the Agentic WAF edition. You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the instance details. If the returned Details.AgenticWaf parameter is set to true, the instance is of the Agentic WAF edition. If the instance does not support this edition, you can upgrade the instance to the Agentic WAF edition.
+//
+// @param request - DescribeAiEngineEventOperationsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeAiEngineEventOperationsResponse
+func (client *Client) DescribeAiEngineEventOperationsWithContext(ctx context.Context, request *DescribeAiEngineEventOperationsRequest, runtime *dara.RuntimeOptions) (_result *DescribeAiEngineEventOperationsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.EventId) {
+		query["EventId"] = request.EventId
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.MaxResults) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.ResourceManagerResourceGroupId) {
+		query["ResourceManagerResourceGroupId"] = request.ResourceManagerResourceGroupId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeAiEngineEventOperations"),
+		Version:     dara.String("2021-10-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeAiEngineEventOperationsResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the AI Engine event trends.
+//
+// Description:
+//
+// Before calling this operation, ensure that the WAF instance is of the Agentic WAF edition. You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query instance details. If the returned Details.AgenticWaf parameter is true, the instance is of the Agentic WAF edition. If not, upgrade the instance to the Agentic WAF edition.
+//
+// @param request - DescribeAiEngineEventTrendsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeAiEngineEventTrendsResponse
+func (client *Client) DescribeAiEngineEventTrendsWithContext(ctx context.Context, request *DescribeAiEngineEventTrendsRequest, runtime *dara.RuntimeOptions) (_result *DescribeAiEngineEventTrendsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.EndTime) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.ResourceManagerResourceGroupId) {
+		query["ResourceManagerResourceGroupId"] = request.ResourceManagerResourceGroupId
+	}
+
+	if !dara.IsNil(request.StartTime) {
+		query["StartTime"] = request.StartTime
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeAiEngineEventTrends"),
+		Version:     dara.String("2021-10-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeAiEngineEventTrendsResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the list of AI Engine events.
+//
+// Description:
+//
+// Before calling this operation, make sure that the WAF instance is of the Agentic WAF edition. You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the instance details. If the returned Details.AgenticWaf parameter is set to true, the instance is of the Agentic WAF edition. If the instance does not support this edition, upgrade the instance to the Agentic WAF edition.
+//
+// @param tmpReq - DescribeAiEngineEventsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeAiEngineEventsResponse
+func (client *Client) DescribeAiEngineEventsWithContext(ctx context.Context, tmpReq *DescribeAiEngineEventsRequest, runtime *dara.RuntimeOptions) (_result *DescribeAiEngineEventsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &DescribeAiEngineEventsShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.Filter) {
+		request.FilterShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Filter, dara.String("Filter"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.EndTime) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !dara.IsNil(request.FilterShrink) {
+		query["Filter"] = request.FilterShrink
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.Language) {
+		query["Language"] = request.Language
+	}
+
+	if !dara.IsNil(request.MaxResults) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.ResourceManagerResourceGroupId) {
+		query["ResourceManagerResourceGroupId"] = request.ResourceManagerResourceGroupId
+	}
+
+	if !dara.IsNil(request.SeachValue) {
+		query["SeachValue"] = request.SeachValue
+	}
+
+	if !dara.IsNil(request.SearchKey) {
+		query["SearchKey"] = request.SearchKey
+	}
+
+	if !dara.IsNil(request.SortBy) {
+		query["SortBy"] = request.SortBy
+	}
+
+	if !dara.IsNil(request.SortOrder) {
+		query["SortOrder"] = request.SortOrder
+	}
+
+	if !dara.IsNil(request.StartTime) {
+		query["StartTime"] = request.StartTime
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeAiEngineEvents"),
+		Version:     dara.String("2021-10-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeAiEngineEventsResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the details of an AI Engine evidence request.
+//
+// Description:
+//
+// Before calling this operation, make sure that the WAF instance is of the Agentic WAF edition. You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the instance details. If the returned Details.AgenticWaf parameter is set to true, the instance is of the Agentic WAF edition. If the instance is not of this edition, upgrade the instance to the Agentic WAF edition.
+//
+// @param request - DescribeAiEngineEvidenceRequestRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeAiEngineEvidenceRequestResponse
+func (client *Client) DescribeAiEngineEvidenceRequestWithContext(ctx context.Context, request *DescribeAiEngineEvidenceRequestRequest, runtime *dara.RuntimeOptions) (_result *DescribeAiEngineEvidenceRequestResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.EventId) {
+		query["EventId"] = request.EventId
+	}
+
+	if !dara.IsNil(request.EvidenceId) {
+		query["EvidenceId"] = request.EvidenceId
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.Language) {
+		query["Language"] = request.Language
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.ResourceManagerResourceGroupId) {
+		query["ResourceManagerResourceGroupId"] = request.ResourceManagerResourceGroupId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeAiEngineEvidenceRequest"),
+		Version:     dara.String("2021-10-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeAiEngineEvidenceRequestResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the list of AI Engine evidence requests.
+//
+// Description:
+//
+// Before you call this operation, make sure that the WAF instance is of the Agentic WAF edition. You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the instance details. If the returned Details.AgenticWaf parameter is set to true, the instance is of the Agentic WAF edition. If the instance does not support this edition, you can upgrade the instance to the Agentic WAF edition.
+//
+// @param tmpReq - DescribeAiEngineEvidenceRequestsRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeAiEngineEvidenceRequestsResponse
+func (client *Client) DescribeAiEngineEvidenceRequestsWithContext(ctx context.Context, tmpReq *DescribeAiEngineEvidenceRequestsRequest, runtime *dara.RuntimeOptions) (_result *DescribeAiEngineEvidenceRequestsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &DescribeAiEngineEvidenceRequestsShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.Filter) {
+		request.FilterShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.Filter, dara.String("Filter"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.EventId) {
+		query["EventId"] = request.EventId
+	}
+
+	if !dara.IsNil(request.FilterShrink) {
+		query["Filter"] = request.FilterShrink
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.Language) {
+		query["Language"] = request.Language
+	}
+
+	if !dara.IsNil(request.MaxResults) {
+		query["MaxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		query["NextToken"] = request.NextToken
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.ResourceManagerResourceGroupId) {
+		query["ResourceManagerResourceGroupId"] = request.ResourceManagerResourceGroupId
+	}
+
+	if !dara.IsNil(request.SeachValue) {
+		query["SeachValue"] = request.SeachValue
+	}
+
+	if !dara.IsNil(request.SearchKey) {
+		query["SearchKey"] = request.SearchKey
+	}
+
+	if !dara.IsNil(request.SortBy) {
+		query["SortBy"] = request.SortBy
+	}
+
+	if !dara.IsNil(request.SortOrder) {
+		query["SortOrder"] = request.SortOrder
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeAiEngineEvidenceRequests"),
+		Version:     dara.String("2021-10-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeAiEngineEvidenceRequestsResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the AI Engine overview data.
+//
+// Description:
+//
+// Before calling this operation, ensure that the WAF instance is of the Agentic WAF edition. You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query instance details. If the returned Details.AgenticWaf parameter is true, the instance is of the Agentic WAF edition. Otherwise, you can upgrade the instance to the Agentic WAF edition.
+//
+// @param request - DescribeAiEngineOverviewRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DescribeAiEngineOverviewResponse
+func (client *Client) DescribeAiEngineOverviewWithContext(ctx context.Context, request *DescribeAiEngineOverviewRequest, runtime *dara.RuntimeOptions) (_result *DescribeAiEngineOverviewResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.EndTime) {
+		query["EndTime"] = request.EndTime
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.ResourceManagerResourceGroupId) {
+		query["ResourceManagerResourceGroupId"] = request.ResourceManagerResourceGroupId
+	}
+
+	if !dara.IsNil(request.StartTime) {
+		query["StartTime"] = request.StartTime
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DescribeAiEngineOverview"),
+		Version:     dara.String("2021-10-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DescribeAiEngineOverviewResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries alert banner information.
 //
 // @param request - DescribeAlarmBannerRequest
 //
@@ -2867,7 +3543,7 @@ func (client *Client) DescribeAlarmBannerWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// Queries a list of alerts.
+// Queries the alert list.
 //
 // @param request - DescribeAlarmListRequest
 //
@@ -3175,7 +3851,7 @@ func (client *Client) DescribeApisecAbnormalsWithContext(ctx context.Context, re
 
 // Summary:
 //
-// Queries the list of API security assets.
+// Queries API security assets.
 //
 // @param request - DescribeApisecApiResourcesRequest
 //
@@ -3519,7 +4195,7 @@ func (client *Client) DescribeApisecEventDomainStatisticWithContext(ctx context.
 
 // Summary:
 //
-// Queries the list of API security events.
+// Queries API security events.
 //
 // @param request - DescribeApisecEventsRequest
 //
@@ -4075,7 +4751,7 @@ func (client *Client) DescribeApisecRulesWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// Queries statistics on data endpoints associated with API security sensitive data domains.
+// Queries the data domain statistics for API security sensitive data.
 //
 // @param request - DescribeApisecSensitiveDomainStatisticRequest
 //
@@ -4343,7 +5019,7 @@ func (client *Client) DescribeApisecStatisticsWithContext(ctx context.Context, r
 
 // Summary:
 //
-// Queries protection suggestions for API assets.
+// Queries the protection suggestions for API assets.
 //
 // @param request - DescribeApisecSuggestionsRequest
 //
@@ -4467,7 +5143,7 @@ func (client *Client) DescribeApisecUserOperationsWithContext(ctx context.Contex
 
 // Summary:
 //
-// Queries the change records of rule group rules by paging.
+// Queries the change records of rules in a rule library by using paging.
 //
 // @param request - DescribeBaseRuleChangeLogRequest
 //
@@ -4531,7 +5207,7 @@ func (client *Client) DescribeBaseRuleChangeLogWithContext(ctx context.Context, 
 
 // Summary:
 //
-// Queries the system rules of Web core protection.
+// Queries the system rules for web core protection.
 //
 // @param request - DescribeBaseSystemRulesRequest
 //
@@ -4683,7 +5359,7 @@ func (client *Client) DescribeBotAppKeyWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// Queries the bot management rule label information.
+// Queries the information about bot management rule labels.
 //
 // @param request - DescribeBotRuleLabelsRequest
 //
@@ -4875,7 +5551,7 @@ func (client *Client) DescribeCertsWithContext(ctx context.Context, request *Des
 
 // Summary:
 //
-// Queries the pricing module information of WAF.
+// Queries the billing module information of WAF.
 //
 // @param request - DescribeChargeModuleRequest
 //
@@ -4931,7 +5607,7 @@ func (client *Client) DescribeChargeModuleWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// Queries the billing results of WAF billing modules.
+// Queries the pricing results of WAF billing modules.
 //
 // @param request - DescribeChargeResultRequest
 //
@@ -5071,7 +5747,7 @@ func (client *Client) DescribeCloudResourceAccessPortDetailsWithContext(ctx cont
 
 // Summary:
 //
-// Queries the ports of cloud services added to Web Application Firewall (WAF). This operation is supported only for Elastic Compute Service (ECS) and Classic Load Balancer (CLB).
+// Queries the ports of cloud service instances that are added to WAF. Only ECS and CLB instances are supported.
 //
 // @param request - DescribeCloudResourceAccessedPortsRequest
 //
@@ -5127,7 +5803,7 @@ func (client *Client) DescribeCloudResourceAccessedPortsWithContext(ctx context.
 
 // Summary:
 //
-// Queries the list of resources connected to WAF in cloud native mode.
+// Queries the list of resources onboarded to WAF in cloud native mode.
 //
 // @param request - DescribeCloudResourceListRequest
 //
@@ -5585,7 +6261,7 @@ func (client *Client) DescribeDefaultHttpsWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// Queries a paginated list of protected objects that can be associated with a defense group.
+// Queries the protection objects to associate with a protection group by using a paged query with paging.
 //
 // @param request - DescribeDefenseGroupValidResourcesRequest
 //
@@ -5653,7 +6329,7 @@ func (client *Client) DescribeDefenseGroupValidResourcesWithContext(ctx context.
 
 // Summary:
 //
-// Query a single protected object.
+// Queries a single protected object.
 //
 // @param request - DescribeDefenseResourceRequest
 //
@@ -6097,7 +6773,7 @@ func (client *Client) DescribeDefenseResourceTemplatesWithContext(ctx context.Co
 
 // Summary:
 //
-// Queries protected objects by paging.
+// Performs a paged query of protected objects by using paging.
 //
 // @param request - DescribeDefenseResourcesRequest
 //
@@ -6233,11 +6909,11 @@ func (client *Client) DescribeDefenseRuleWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// Queries statistics of rules under a specified WAF protection module.
+// Queries the statistics of rules in a specified Web Application Firewall (WAF) protection module.
 //
 // Description:
 //
-// This operation supports querying rule statistics for protection templates under the new Bot Management (bot_manager) and new Web Core Protection (waf_base) scenarios.
+// This operation queries the statistics of rules in protection templates for the new Bot Management (bot_manager) and new Web Core Protection (waf_base) scenarios.
 //
 // @param request - DescribeDefenseRuleStatisticsRequest
 //
@@ -6381,7 +7057,7 @@ func (client *Client) DescribeDefenseRulesWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// Queries the protection configurations for a specific defense scenario.
+// Queries the protection settings for user protection scenarios.
 //
 // @param request - DescribeDefenseSceneConfigRequest
 //
@@ -6569,7 +7245,7 @@ func (client *Client) DescribeDefenseTemplateValidGroupsWithContext(ctx context.
 
 // Summary:
 //
-// Queries a paginated list of protected objects that are valid for a specified protection template.
+// Queries the list of protected objects pending to take effect for a protection template by using paging in a paged query.
 //
 // @param request - DescribeDefenseTemplateValidResourcesRequest
 //
@@ -6789,7 +7465,7 @@ func (client *Client) DescribeDomainDNSRecordWithContext(ctx context.Context, re
 
 // Summary:
 //
-// Queries the details of a Website Config.
+// Queries the details of a website configuration.
 //
 // @param request - DescribeDomainDetailRequest
 //
@@ -6845,7 +7521,7 @@ func (client *Client) DescribeDomainDetailWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// Queries all ports used by domain names of the current user. Only domain names with CNAME access and hybrid cloud CNAME domain names with public network disaster recovery enabled are included.
+// Queries the ports used by all domain names of a user, including only CNAME-accessed domain names and hybrid cloud CNAME domain names with public network disaster recovery enabled.
 //
 // @param request - DescribeDomainUsedPortsRequest
 //
@@ -6969,7 +7645,7 @@ func (client *Client) DescribeDomainsWithContext(ctx context.Context, request *D
 
 // Summary:
 //
-// Queries the daily bills of a pay-as-you-go WAF instance for the last 7 days.
+// Queries the daily bills of a pay-as-you-go Web Application Firewall (WAF) instance over the last seven days.
 //
 // @param request - DescribeElasticBillsRequest
 //
@@ -7221,7 +7897,7 @@ func (client *Client) DescribeFlowTopUrlWithContext(ctx context.Context, request
 
 // Summary:
 //
-// Queries the asset statistics information for basic API security detection.
+// Queries the asset statistics information for API security basic detection.
 //
 // @param request - DescribeFreeUserAssetCountRequest
 //
@@ -7273,7 +7949,7 @@ func (client *Client) DescribeFreeUserAssetCountWithContext(ctx context.Context,
 
 // Summary:
 //
-// Queries the security event statistics of API security basic detection.
+// Queries the statistics of security events for basic API security detection.
 //
 // @param request - DescribeFreeUserEventCountRequest
 //
@@ -7325,7 +8001,7 @@ func (client *Client) DescribeFreeUserEventCountWithContext(ctx context.Context,
 
 // Summary:
 //
-// Queries the security event types for basic API security detection.
+// Queries the security event types for API security basic detection.
 //
 // @param request - DescribeFreeUserEventTypesRequest
 //
@@ -7377,7 +8053,7 @@ func (client *Client) DescribeFreeUserEventTypesWithContext(ctx context.Context,
 
 // Summary:
 //
-// Queries the list of security events detected by API security basic detection.
+// Queries the list of security events for API security basic detection.
 //
 // @param request - DescribeFreeUserEventsRequest
 //
@@ -7429,11 +8105,11 @@ func (client *Client) DescribeFreeUserEventsWithContext(ctx context.Context, req
 
 // Summary:
 //
-// Queries the system status of hybrid cloud cluster nodes.
+// Queries the system status of nodes in a hybrid cloud cluster.
 //
 // Description:
 //
-// Before calling this operation, make sure that the hybrid cloud feature is enabled for your WAF instance. You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query instance details. If the Details.HybridCloud response parameter is true, the hybrid cloud feature is enabled. If the feature is not enabled, log on to the WAF console and upgrade the instance to enable the hybrid cloud feature.
+// Before you call this operation, make sure that the hybrid cloud feature is enabled for the WAF instance. You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the instance details. If the Details.HybridCloud parameter in the response is set to true, the hybrid cloud feature is enabled. If the feature is not enabled, log on to the WAF console and upgrade the instance to enable the hybrid cloud feature.
 //
 // @param request - DescribeHybridCloudBasicMonitorRequest
 //
@@ -7489,11 +8165,11 @@ func (client *Client) DescribeHybridCloudBasicMonitorWithContext(ctx context.Con
 
 // Summary:
 //
-// Retrieves the rule information of a hybrid cloud cluster.
+// Retrieves the hybrid cloud cluster rule information.
 //
 // Description:
 //
-// Before calling this operation, make sure that the hybrid cloud feature is enabled for the WAF instance. Call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query instance details. If the returned parameter Details.HybridCloud is true, the hybrid cloud feature is enabled. If it is not enabled, log on to the WAF console and upgrade the instance to enable the hybrid cloud feature.
+// Before you call this operation, make sure that the hybrid cloud feature is enabled for the WAF instance. You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the instance details. If the returned Details.HybridCloud parameter is set to true, the hybrid cloud feature is enabled. If the feature is not enabled, log on to the WAF console and upgrade the instance to enable the hybrid cloud feature.
 //
 // @param request - DescribeHybridCloudClusterRuleRequest
 //
@@ -7693,7 +8369,17 @@ func (client *Client) DescribeHybridCloudClusterServersWithContext(ctx context.C
 
 // Summary:
 //
-// Queries a list of hybrid cloud clusters.
+// Queries the hybrid cloud clusters.
+//
+// Description:
+//
+// Queries the hybrid cloud clusters of a specified Web Application Firewall (WAF) instance. The response includes information such as the cluster name, cluster type, network access mode, HTTP and HTTPS ports, proxy gateway mode, and the number of protection nodes that can be added.
+//
+// ## Before you begin
+//
+// Before calling this operation, make sure that the hybrid cloud feature is enabled for the WAF instance. You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the instance details. If the returned parameter Details.HybridCloud is true, the hybrid cloud feature is enabled. If the feature is not enabled, log on to the WAF console and upgrade the instance to enable the hybrid cloud feature.
+//
+// If you call this API operation when the hybrid cloud feature is not enabled, the error code Waf.HybridCloud.HybridCloudNotsupport is returned.
 //
 // @param request - DescribeHybridCloudClustersRequest
 //
@@ -7889,7 +8575,13 @@ func (client *Client) DescribeHybridCloudProcessMonitorWithContext(ctx context.C
 
 // Summary:
 //
-// Queries the count of protectable nodes that can be added to a hybrid cloud cluster.
+// Retrieves the number of protection nodes that can be added to a hybrid cloud cluster.
+//
+// Description:
+//
+// ## Before you begin
+//
+// Before you call this operation, make sure that the hybrid cloud feature is enabled for your WAF instance. You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the instance details. If the returned parameter Details.HybridCloud is true, the hybrid cloud feature is enabled. If the feature is not enabled, log on to the WAF console and upgrade the instance to enable the hybrid cloud feature.
 //
 // @param request - DescribeHybridCloudProtectableCountRequest
 //
@@ -8161,11 +8853,11 @@ func (client *Client) DescribeHybridCloudSdkServersWithContext(ctx context.Conte
 
 // Summary:
 //
-// Queries the dictionary of region information supported by hybrid cloud, including ISPs, continents, and cities.
+// Queries the region information dictionary for ISPs, continents, and cities supported by Hybrid Cloud.
 //
 // Description:
 //
-// Before calling this operation, make sure that the hybrid cloud feature is enabled for the WAF instance. Call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query instance details. If the returned parameter Details.HybridCloud is true, the hybrid cloud feature is enabled. If it is not enabled, log on to the WAF console and upgrade the instance to enable the hybrid cloud feature.
+// Before calling this operation, ensure that the Hybrid Cloud feature is enabled for the WAF instance. You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query instance details. If the returned Details.HybridCloud parameter is true, the Hybrid Cloud feature is enabled. If the feature is not enabled, log on to the WAF console and upgrade the instance to enable the Hybrid Cloud feature.
 //
 // @param request - DescribeHybridCloudServerRegionsRequest
 //
@@ -8229,7 +8921,7 @@ func (client *Client) DescribeHybridCloudServerRegionsWithContext(ctx context.Co
 //
 // Description:
 //
-// Before calling this operation, make sure that the hybrid cloud feature is enabled for the WAF instance. Call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query instance details. If the returned parameter Details.HybridCloud is true, the hybrid cloud feature is enabled. If the feature is not enabled, log on to the WAF console and upgrade the instance to enable the hybrid cloud feature.
+// Before you call this operation, make sure that the hybrid cloud feature is enabled for the WAF instance. You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the instance details. If the Details.HybridCloud response parameter is set to true, the hybrid cloud feature is enabled. If the feature is not enabled, log on to the WAF console and upgrade the instance to enable the hybrid cloud feature.
 //
 // @param request - DescribeHybridCloudSupportRegionsRequest
 //
@@ -8285,7 +8977,7 @@ func (client *Client) DescribeHybridCloudSupportRegionsWithContext(ctx context.C
 //
 // Description:
 //
-// Before calling this operation, make sure that the hybrid cloud feature is enabled for the WAF instance. Call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query instance details. If the Details.HybridCloud parameter in the response is true, the hybrid cloud feature is enabled. If the feature is not enabled, log on to the WAF console and upgrade the instance to enable the hybrid cloud feature.
+// Before calling this operation, make sure that the hybrid cloud feature is enabled for the WAF instance. You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the instance details. If the returned Details.HybridCloud parameter is set to true, the hybrid cloud feature is enabled. If the feature is not enabled, log on to the WAF console and upgrade the instance to enable the hybrid cloud feature.
 //
 // @param request - DescribeHybridCloudUnassignedMachinesRequest
 //
@@ -8357,7 +9049,7 @@ func (client *Client) DescribeHybridCloudUnassignedMachinesWithContext(ctx conte
 
 // Summary:
 //
-// Queries the list of unsupported ports for a hybrid cloud.
+// Queries the list of unavailable ports for hybrid cloud.
 //
 // @param request - DescribeHybridCloudUnsupportPortsRequest
 //
@@ -8465,7 +9157,7 @@ func (client *Client) DescribeHybridCloudUserWithContext(ctx context.Context, re
 
 // Summary:
 //
-// Retrieves the details of a WAF instance in the current Alibaba Cloud account.
+// Queries the details of the WAF instance in the current Alibaba Cloud account.
 //
 // @param request - DescribeInstanceRequest
 //
@@ -8513,7 +9205,7 @@ func (client *Client) DescribeInstanceWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// Queries the countries and areas outside China supported by the Location Blacklist.
+// Queries the countries and areas outside China supported by IP Location Blacklist.
 //
 // @param request - DescribeIpAbroadCountryInfosRequest
 //
@@ -8585,7 +9277,7 @@ func (client *Client) DescribeIpAbroadCountryInfosWithContext(ctx context.Contex
 
 // Summary:
 //
-// Queries a single log delivery configuration for a hybrid cloud.
+// Queries a single hybrid cloud log delivery configuration.
 //
 // @param request - DescribeLogDeliveryConfigRequest
 //
@@ -8641,7 +9333,7 @@ func (client *Client) DescribeLogDeliveryConfigWithContext(ctx context.Context, 
 
 // Summary:
 //
-// Queries all log delivery configurations of a Web Application Firewall (WAF) instance for hybrid cloud.
+// Queries all hybrid cloud log delivery configurations.
 //
 // @param request - DescribeLogDeliveryConfigsRequest
 //
@@ -8853,7 +9545,7 @@ func (client *Client) DescribeMemberAccountsWithContext(ctx context.Context, req
 
 // Summary:
 //
-// Queries the time series statistics of all traffic, including malicious requests and normal service requests.
+// Queries the time-series statistics of all traffic, including malicious requests and normal service requests.
 //
 // @param tmpReq - DescribeNetworkFlowTimeSeriesMetricRequest
 //
@@ -8919,7 +9611,7 @@ func (client *Client) DescribeNetworkFlowTimeSeriesMetricWithContext(ctx context
 
 // Summary:
 //
-// Queries the top N statistics for all traffic that passes through Web Application Firewall (WAF), including malicious and normal service requests. The results are aggregated by different dimensions and sorted in descending order.
+// Queries the top statistics of all traffic aggregated and sorted by various dimensions, including malicious requests and normal service traffic.
 //
 // @param tmpReq - DescribeNetworkFlowTopNMetricRequest
 //
@@ -9109,7 +9801,7 @@ func (client *Client) DescribePeakTrendWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// Retrieves the enabled proof of concept (POC) feature trials.
+// Queries the details of enabled POC feature trials.
 //
 // @param request - DescribePocFunctionsRequest
 //
@@ -9233,7 +9925,7 @@ func (client *Client) DescribePostpayBillsWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// Queries the burstable pay-as-you-go billing details of a subscription WAF instance, such as burstable QPS.
+// Queries the elastic pay-as-you-go bills for an upfront WAF instance, such as burstable QPS.
 //
 // @param request - DescribePrepayDailyBillsRequest
 //
@@ -9593,7 +10285,7 @@ func (client *Client) DescribeResourceInstanceCertsWithContext(ctx context.Conte
 //
 // Description:
 //
-// Before calling this operation, make sure that the WAF instance has hybrid cloud extension nodes purchased. You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query instance details. If the returned parameter Details.HybridCloudNodeExtend is greater than 0, hybrid cloud extension nodes have been purchased. If not, log on to the WAF console and upgrade the instance to purchase hybrid cloud extension nodes.
+// Before calling this operation, ensure that you have purchased hybrid cloud extension nodes for your Web Application Firewall (WAF) instance. You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query instance details. If the returned value of the Details.HybridCloudNodeExtend parameter is greater than 0, hybrid cloud extension nodes have been purchased. Otherwise, log on to the WAF console and upgrade the instance to purchase hybrid cloud extension nodes.
 //
 // @param request - DescribeResourceLogDeliveryStatusRequest
 //
@@ -9649,7 +10341,7 @@ func (client *Client) DescribeResourceLogDeliveryStatusWithContext(ctx context.C
 
 // Summary:
 //
-// Queries the log field configuration for a protected object.
+// Queries the log field configuration of a protected object.
 //
 // @param request - DescribeResourceLogFieldConfigRequest
 //
@@ -10517,17 +11209,17 @@ func (client *Client) DescribeRuleHitsTopUrlWithContext(ctx context.Context, req
 
 // Summary:
 //
-// Queries the detailed logs of attack traffic. Each log entry contains the details of a request that matched a protection rule.
+// Queries the detailed logs of attack traffic. Each log entry contains detailed information about a matched request.
 //
 // Description:
 //
-// Attack traffic refers to requests that hit a rule and are identified as threats. The following three types of requests are not included:
+// Attack traffic refers to requests with rule hits that are identified as risky. The following three types of data are not included:
 //
-// - Requests that hit a whitelist rule.
+// - Requests with rule hits on whitelist rules.
 //
-// - Requests that hit a bot rule whose action is set to Mark for Origin Fetch.
+// - Requests that match bot rules but the rule action is set to back-to-origin mark.
 //
-// - Requests that hit a rule whose action is set to Dynamic Token, Slider, Strict Slider, or JS Challenge, but are allowed because the user passed the verification.
+// - Requests with rule hits where the rule action is set to dynamic token, slider, strict slider, or JavaScript authenticate, but users authenticate successfully and are allowed.
 //
 // @param tmpReq - DescribeSecurityEventLogsRequest
 //
@@ -10597,17 +11289,17 @@ func (client *Client) DescribeSecurityEventLogsWithContext(ctx context.Context, 
 
 // Summary:
 //
-// Queries the time series data of attack traffic. Attack requests are requests that hit a rule and are identified as a threat.
+// Queries the time series data of attack traffic. Attack requests refer to requests that hit rules and are identified as risky.
 //
 // Description:
 //
-// Attack traffic refers to requests that hit a rule and are identified as a threat. The following data is excluded:
+// Attack traffic refers to requests that hit rules and are identified as risky. The following three types of data are not included:
 //
-// - Requests that hit a whitelist rule.
+// - Requests that hit whitelist rules.
 //
-// - Requests that hit a bot rule where the rule action is "Mark for origin fetch".
+// - Requests that hit bot rules, but the rule action is back-to-origin mark.
 //
-// - Requests that hit a rule with the action "Dynamic Token", "Slider", "Strict Slider", or "JS Challenge", but are allowed because the user passed the verification.
+// - Requests that hit rules and the rule action is set to dynamic token, slider CAPTCHA, strict slider CAPTCHA, or JavaScript authenticate, but the requests passed user verification and were allowed.
 //
 // @param tmpReq - DescribeSecurityEventTimeSeriesMetricRequest
 //
@@ -10897,7 +11589,7 @@ func (client *Client) DescribeSensitiveDetectionResultWithContext(ctx context.Co
 
 // Summary:
 //
-// Queries the distribution of cross-border traffic that contains personal information.
+// Queries the distribution of outbound traffic containing personal information.
 //
 // @param request - DescribeSensitiveOutboundDistributionRequest
 //
@@ -10961,7 +11653,7 @@ func (client *Client) DescribeSensitiveOutboundDistributionWithContext(ctx conte
 
 // Summary:
 //
-// Queries statistics about outbound transfers of personal information.
+// Queries the statistics on the types of outbound personal information.
 //
 // @param request - DescribeSensitiveOutboundStatisticRequest
 //
@@ -11057,7 +11749,7 @@ func (client *Client) DescribeSensitiveOutboundStatisticWithContext(ctx context.
 
 // Summary:
 //
-// Queries the trend of cross-border transfer of personal information data.
+// Queries the trend of outbound personal information.
 //
 // @param request - DescribeSensitiveOutboundTrendRequest
 //
@@ -11217,7 +11909,7 @@ func (client *Client) DescribeSensitiveRequestLogWithContext(ctx context.Context
 
 // Summary:
 //
-// Queries the results of sensitive data tracing.
+// Queries sensitive data tracing results.
 //
 // @param request - DescribeSensitiveRequestsRequest
 //
@@ -11297,7 +11989,7 @@ func (client *Client) DescribeSensitiveRequestsWithContext(ctx context.Context, 
 
 // Summary:
 //
-// Queries the sensitive data statistics of tracing watermark audits.
+// Queries the sensitive data statistics for tracing audit.
 //
 // @param request - DescribeSensitiveStatisticRequest
 //
@@ -11661,7 +12353,7 @@ func (client *Client) DescribeTemplateResourcesWithContext(ctx context.Context, 
 
 // Summary:
 //
-// Queries a paginated list of notable security events.
+// Queries the list of noteworthy security events by paging in a paged query.
 //
 // @param request - DescribeThreatEventRequest
 //
@@ -11733,7 +12425,7 @@ func (client *Client) DescribeThreatEventWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// Retrieves the details of a security event that requires attention.
+// Retrieves the details of noteworthy security events.
 //
 // @param request - DescribeThreatEventDetailRequest
 //
@@ -11789,7 +12481,7 @@ func (client *Client) DescribeThreatEventDetailWithContext(ctx context.Context, 
 
 // Summary:
 //
-// Queries the top 5 statistics of security events aggregated by different statistical objects and sorted in descending order.
+// Queries the top 5 statistics for security events, aggregated and sorted in descending order based on different metrics.
 //
 // @param request - DescribeThreatEventTopMetricRequest
 //
@@ -12109,7 +12801,7 @@ func (client *Client) DescribeUserAssetWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// Queries the attack trend of API security.
+// Queries the trend of API security attacks.
 //
 // @param request - DescribeUserEventTrendRequest
 //
@@ -12473,7 +13165,7 @@ func (client *Client) DescribeUserWafLogStatusWithContext(ctx context.Context, r
 
 // Summary:
 //
-// Queries the domain ownership verification content of a Web Application Firewall (WAF) instance.
+// Queries the ownership verification content.
 //
 // @param request - DescribeVerifyContentRequest
 //
@@ -12705,7 +13397,7 @@ func (client *Client) DescribeWafSourceIpSegmentWithContext(ctx context.Context,
 
 // Summary:
 //
-// Initializes a service-linked role for WAF.
+// Creates a service-linked role for WAF.
 //
 // @param request - InitializeWafOperationRoleRequest
 //
@@ -12813,7 +13505,7 @@ func (client *Client) ListTagKeysWithContext(ctx context.Context, request *ListT
 
 // Summary:
 //
-// Queries the tags that are attached to a resource.
+// Queries the tags bound to resources.
 //
 // @param request - ListTagResourcesRequest
 //
@@ -12927,6 +13619,134 @@ func (client *Client) ListTagValuesWithContext(ctx context.Context, request *Lis
 		BodyType:    dara.String("json"),
 	}
 	_result = &ListTagValuesResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Modifies the user provisioning configuration.
+//
+// @param request - ModifyAccessConfigRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyAccessConfigResponse
+func (client *Client) ModifyAccessConfigWithContext(ctx context.Context, request *ModifyAccessConfigRequest, runtime *dara.RuntimeOptions) (_result *ModifyAccessConfigResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ConfigKey) {
+		query["ConfigKey"] = request.ConfigKey
+	}
+
+	if !dara.IsNil(request.ConfigValue) {
+		query["ConfigValue"] = request.ConfigValue
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.ResourceManagerResourceGroupId) {
+		query["ResourceManagerResourceGroupId"] = request.ResourceManagerResourceGroupId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ModifyAccessConfig"),
+		Version:     dara.String("2021-10-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ModifyAccessConfigResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Modifies the status of an AI Engine event.
+//
+// Description:
+//
+// Before calling this operation, ensure that the WAF instance is of the Agentic WAF edition. You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query instance details. If the returned Details.AgenticWaf parameter is true, the instance is of the Agentic WAF edition. If not, upgrade the instance to the Agentic WAF edition.
+//
+// @param request - ModifyAiEngineEventStatusRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyAiEngineEventStatusResponse
+func (client *Client) ModifyAiEngineEventStatusWithContext(ctx context.Context, request *ModifyAiEngineEventStatusRequest, runtime *dara.RuntimeOptions) (_result *ModifyAiEngineEventStatusResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.Comment) {
+		query["Comment"] = request.Comment
+	}
+
+	if !dara.IsNil(request.EventId) {
+		query["EventId"] = request.EventId
+	}
+
+	if !dara.IsNil(request.InstanceId) {
+		query["InstanceId"] = request.InstanceId
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	if !dara.IsNil(request.ResourceManagerResourceGroupId) {
+		query["ResourceManagerResourceGroupId"] = request.ResourceManagerResourceGroupId
+	}
+
+	if !dara.IsNil(request.TargetStatus) {
+		query["TargetStatus"] = request.TargetStatus
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ModifyAiEngineEventStatus"),
+		Version:     dara.String("2021-10-01"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ModifyAiEngineEventStatusResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -13073,7 +13893,7 @@ func (client *Client) ModifyApisecApiResourceWithContext(ctx context.Context, re
 
 // Summary:
 //
-// Modifies the statuses of multiple API security events in a batch.
+// Updates the status of multiple API security events.
 //
 // @param request - ModifyApisecEventsRequest
 //
@@ -13229,15 +14049,15 @@ func (client *Client) ModifyApisecLogDeliveryWithContext(ctx context.Context, re
 //
 // Description:
 //
-// Before you invoke this operation, make sure that you have created an API security log delivery configuration by invoking the [ModifyApisecLogDelivery](https://help.aliyun.com/document_detail/2932937.html) operation. If you have not created a delivery configuration, complete the following prerequisites:
+// Before invoking this operation, ensure that you have created an API security log delivery configuration by invoking the [ModifyApisecLogDelivery](https://help.aliyun.com/document_detail/2932937.html) operation. If you have not created a delivery configuration, complete the following prerequisites:
 //
-// 1. Confirm that the API security feature is enabled. Invoke the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the instance details. If the Details.AgenticApisec or Details.Apisec parameter in the response is true, the API security feature is enabled.
+// 1. Confirm that the API security feature is enabled. You can invoke the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the instance details and check the relevant status. If the Details.AgenticApisec or Details.Apisec response parameter is set to true, the API security feature is enabled.
 //
-// 2. Confirm that WAF is authorized to access cloud resources. Invoke the [DescribeRoleAuthStatus](https://help.aliyun.com/document_detail/2990717.html) operation to query the authorization status. If WAF is not authorized, invoke the [InitializeWafOperationRole](https://help.aliyun.com/document_detail/2990727.html) operation to grant the authorization.
+// 2. Confirm that WAF is authorized to access cloud resources. You can invoke the [DescribeRoleAuthStatus](https://help.aliyun.com/document_detail/2990717.html) operation to query the authorization status. If WAF is not authorized, invoke the [InitializeWafOperationRole](https://help.aliyun.com/document_detail/2990727.html) operation to grant the required permissions.
 //
-// 3. Invoke the [DescribeApisecSlsProjects](https://help.aliyun.com/document_detail/2932936.html) and [DescribeApisecSlsLogStores](https://help.aliyun.com/document_detail/2932935.html) operations to query active SLS projects and Logstores, and then invoke the [ModifyApisecLogDelivery](https://help.aliyun.com/document_detail/2932937.html) operation to create a delivery configuration.
+// 3. Invoke the [DescribeApisecSlsProjects](https://help.aliyun.com/document_detail/2932936.html) and [DescribeApisecSlsLogStores](https://help.aliyun.com/document_detail/2932935.html) operations to query active Simple Log Service projects and Logstores, and then invoke the [ModifyApisecLogDelivery](https://help.aliyun.com/document_detail/2932937.html) operation to create a delivery configuration.
 //
-// After you complete the preceding steps, invoke this operation to enable or disable the delivery status of API security logs.
+// After completing these steps, invoke this operation to enable or disable the API security log delivery status.
 //
 // @param request - ModifyApisecLogDeliveryStatusRequest
 //
@@ -13301,7 +14121,7 @@ func (client *Client) ModifyApisecLogDeliveryStatusWithContext(ctx context.Conte
 //
 // Description:
 //
-// Before calling this operation, make sure that protected objects or protected object groups already exist. For protected objects that have been added to WAF, call the [DescribeDefenseResources](https://help.aliyun.com/document_detail/461612.html) operation to query their names. For created protected object groups, call the [DescribeDefenseResourceGroups](https://help.aliyun.com/document_detail/2773860.html) operation to query them. If no protected object group has been created, call the [CreateDefenseResourceGroup](https://help.aliyun.com/document_detail/461739.html) operation to create one first.
+// Before calling this operation, ensure that protected objects or protected object groups exist. For protected objects added to WAF, you can call the [DescribeDefenseResources](https://help.aliyun.com/document_detail/461612.html) operation to query their names. For existing protected object groups, you can call the [DescribeDefenseResourceGroups](https://help.aliyun.com/document_detail/2773860.html) operation to query them. If no protected object group exists, you must first call the [CreateDefenseResourceGroup](https://help.aliyun.com/document_detail/461739.html) operation to create one.
 //
 // @param request - ModifyApisecModuleStatusRequest
 //
@@ -13369,7 +14189,7 @@ func (client *Client) ModifyApisecModuleStatusWithContext(ctx context.Context, r
 
 // Summary:
 //
-// Modifies the status of protected objects or protected object groups for API security.
+// Modifies the status of API security protected objects or protected object groups.
 //
 // @param request - ModifyApisecStatusRequest
 //
@@ -13775,24 +14595,30 @@ func (client *Client) ModifyDefenseResourceGroupWithContext(ctx context.Context,
 
 // Summary:
 //
-// Modifies the client IP and cookie settings of a protected object.
+// Modifies the client IP address and cookie settings of a protected object.
 //
 // Description:
 //
-// Before you invoke this operation, make sure that a protected object has been added to WAF. You can invoke the [CreateDomain](https://help.aliyun.com/document_detail/461413.html) operation to create a CNAME-based resource, invoke the [CreateCloudResource](https://help.aliyun.com/document_detail/2839876.html) operation to create a cloud native mode resource, or invoke the [CreateDefenseResource](https://help.aliyun.com/document_detail/2930080.html) operation to create a custom protected object. You can invoke the [DescribeDefenseResources](https://help.aliyun.com/document_detail/461612.html) operation to query the protected objects that have been added to WAF.
+// Before invoking this operation, make sure that a protected object is added to WAF. You can invoke the [CreateDomain](https://help.aliyun.com/document_detail/461413.html) operation to create a CNAME access resource, invoke the [CreateCloudResource](https://help.aliyun.com/document_detail/2839876.html) operation to create a cloud native mode resource, or invoke the [CreateDefenseResource](https://help.aliyun.com/document_detail/2930080.html) operation to create a custom protected object. You can invoke the [DescribeDefenseResources](https://help.aliyun.com/document_detail/461612.html) operation to query the protected objects added to WAF.
 //
-// @param request - ModifyDefenseResourceXffRequest
+// @param tmpReq - ModifyDefenseResourceXffRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ModifyDefenseResourceXffResponse
-func (client *Client) ModifyDefenseResourceXffWithContext(ctx context.Context, request *ModifyDefenseResourceXffRequest, runtime *dara.RuntimeOptions) (_result *ModifyDefenseResourceXffResponse, _err error) {
+func (client *Client) ModifyDefenseResourceXffWithContext(ctx context.Context, tmpReq *ModifyDefenseResourceXffRequest, runtime *dara.RuntimeOptions) (_result *ModifyDefenseResourceXffResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
-		_err = request.Validate()
+		_err = tmpReq.Validate()
 		if _err != nil {
 			return _result, _err
 		}
 	}
+	request := &ModifyDefenseResourceXffShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.CookieConfig) {
+		request.CookieConfigShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.CookieConfig, dara.String("CookieConfig"), dara.String("json"))
+	}
+
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.AcwCookieStatus) {
 		query["AcwCookieStatus"] = request.AcwCookieStatus
@@ -13804,6 +14630,10 @@ func (client *Client) ModifyDefenseResourceXffWithContext(ctx context.Context, r
 
 	if !dara.IsNil(request.AcwV3SecureStatus) {
 		query["AcwV3SecureStatus"] = request.AcwV3SecureStatus
+	}
+
+	if !dara.IsNil(request.CookieConfigShrink) {
+		query["CookieConfig"] = request.CookieConfigShrink
 	}
 
 	if !dara.IsNil(request.CustomHeaders) {
@@ -13900,6 +14730,10 @@ func (client *Client) ModifyDefenseRuleWithContext(ctx context.Context, request 
 
 	if !dara.IsNil(request.ResourceManagerResourceGroupId) {
 		query["ResourceManagerResourceGroupId"] = request.ResourceManagerResourceGroupId
+	}
+
+	if !dara.IsNil(request.ResourceType) {
+		query["ResourceType"] = request.ResourceType
 	}
 
 	if !dara.IsNil(request.TemplateId) {
@@ -14032,8 +14866,16 @@ func (client *Client) ModifyDefenseRuleStatusWithContext(ctx context.Context, re
 		query["RegionId"] = request.RegionId
 	}
 
+	if !dara.IsNil(request.Resource) {
+		query["Resource"] = request.Resource
+	}
+
 	if !dara.IsNil(request.ResourceManagerResourceGroupId) {
 		query["ResourceManagerResourceGroupId"] = request.ResourceManagerResourceGroupId
+	}
+
+	if !dara.IsNil(request.ResourceType) {
+		query["ResourceType"] = request.ResourceType
 	}
 
 	if !dara.IsNil(request.RuleId) {
@@ -14073,7 +14915,7 @@ func (client *Client) ModifyDefenseRuleStatusWithContext(ctx context.Context, re
 
 // Summary:
 //
-// Modifies the mitigation settings for a protection scenario.
+// Modifies the protection settings for a defense scene.
 //
 // @param request - ModifyDefenseSceneConfigRequest
 //
@@ -14273,7 +15115,7 @@ func (client *Client) ModifyDefenseTemplateStatusWithContext(ctx context.Context
 
 // Summary:
 //
-// Modifies a CNAME-based domain name.
+// Modifies a domain name that is added to WAF in CNAME access mode.
 //
 // @param tmpReq - ModifyDomainRequest
 //
@@ -14487,7 +15329,7 @@ func (client *Client) ModifyDomainPunishStatusWithContext(ctx context.Context, r
 //
 // Description:
 //
-// Before calling this operation, make sure that the hybrid cloud feature is enabled for the Web Application Firewall (WAF) instance. Call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query instance details. If the Details.HybridCloud parameter in the response is true, the hybrid cloud feature is enabled. If the feature is not enabled, log on to the WAF console and upgrade the instance to enable the hybrid cloud feature.
+// Before calling this operation, ensure that the Hybrid Cloud feature is enabled for the WAF instance. You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query instance details. If the Details.HybridCloud response parameter is true, the Hybrid Cloud feature is enabled. If the feature is not enabled, log on to the WAF console and upgrade the instance to enable it.
 //
 // @param request - ModifyHybridCloudClusterRequest
 //
@@ -14659,11 +15501,11 @@ func (client *Client) ModifyHybridCloudClusterBypassStatusWithContext(ctx contex
 
 // Summary:
 //
-// Modifies the rule information of a hybrid cloud cluster.
+// Modifies the information about a hybrid cloud cluster rule.
 //
 // Description:
 //
-// Before calling this operation, make sure that the hybrid cloud feature is enabled for the WAF instance. You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query instance details. If the Details.HybridCloud parameter in the response is true, the hybrid cloud feature is enabled. If the feature is not enabled, log on to the WAF console and upgrade the instance to enable the hybrid cloud feature.
+// Before you call this operation, make sure that the hybrid cloud feature is enabled for the WAF instance. You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the instance details. If the returned Details.HybridCloud parameter is set to true, the hybrid cloud feature is enabled. If the feature is not enabled, log on to the WAF console and upgrade the instance to enable the hybrid cloud feature.
 //
 // @param request - ModifyHybridCloudClusterRuleRequest
 //
@@ -14807,7 +15649,7 @@ func (client *Client) ModifyHybridCloudGroupWithContext(ctx context.Context, req
 
 // Summary:
 //
-// Adds a node to a node group in a hybrid cloud cluster of a Web Application Firewall (WAF) instance.
+// Adds nodes to a cluster group.
 //
 // @param request - ModifyHybridCloudGroupExpansionServerRequest
 //
@@ -15139,11 +15981,11 @@ func (client *Client) ModifyLogDeliveryConfigWithContext(ctx context.Context, re
 
 // Summary:
 //
-// Modifies the IP blacklist for a critical event protection scenario.
+// Modifies the IP blacklist for critical event protection.
 //
 // Description:
 //
-// Before calling this operation, make sure that the WAF instance supports critical event protection. Critical event protection requires a separate upgrade purchase. Call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query instance details. If the returned parameter Details.MajorProtection is true, the instance supports critical event protection. If not, upgrade the instance to enable critical event protection.
+// Before you call this operation, make sure that the WAF instance supports critical event protection. Critical event protection must be purchased separately through an upgrade. You can call the [DescribeInstance](https://help.aliyun.com/document_detail/433756.html) operation to query the instance details. If the returned Details.MajorProtection parameter is set to true, the instance supports critical event protection. If the instance does not support critical event protection, you can upgrade the instance to enable this feature.
 //
 // @param request - ModifyMajorProtectionBlackIpRequest
 //
@@ -15779,7 +16621,7 @@ func (client *Client) ModifyUserWafLogStatusWithContext(ctx context.Context, req
 
 // Summary:
 //
-// Re-onboards a cloud service to WAF. This operation is used only when the protection status of the cloud service in cloud native mode is abnormal.
+// Reconnects a cloud service to WAF. This operation is applicable only when the protection status of the cloud service in cloud native mode is abnormal.
 //
 // @param request - ReCreateCloudResourceRequest
 //
@@ -15847,7 +16689,7 @@ func (client *Client) ReCreateCloudResourceWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// Releases a Web Application Firewall (WAF) 3.0 instance.
+// Releases a WAF 3.0 instance.
 //
 // @param request - ReleaseInstanceRequest
 //
@@ -16071,7 +16913,7 @@ func (client *Client) UntagResourcesWithContext(ctx context.Context, request *Un
 
 // Summary:
 //
-// Verifies that you own the specified domain name. Domain ownership must be verified before you can add a domain name to Web Application Firewall (WAF) by using CNAME access.
+// Verifies the ownership of a domain name.
 //
 // @param request - VerifyDomainOwnerRequest
 //
