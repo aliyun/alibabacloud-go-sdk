@@ -26,23 +26,23 @@ type iListScanMaliciousFileByTaskResponseBody interface {
 }
 
 type ListScanMaliciousFileByTaskResponseBody struct {
-	// The return value.
+	// The return code.
 	//
 	// example:
 	//
 	// success
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// Indicates whether the API request is successful. Valid values:
+	// Indicates whether the API call was successful. Valid values:
 	//
-	// 	- `true`: successful
+	// - `true`: The API call was successful.
 	//
-	// 	- `false`: failed
+	// - `false`: The API call failed.
 	//
 	// example:
 	//
 	// true
 	IsSuccess *bool `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
-	// The page number. Default value: 1.
+	// The current page number of the queried data. You can specify this parameter to determine the page from which the queried data is returned. Default value: 1.
 	//
 	// example:
 	//
@@ -60,9 +60,9 @@ type ListScanMaliciousFileByTaskResponseBody struct {
 	//
 	// 52AE49C8-B91A-5C1A-821F-C34324B42F7C
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The queried malicious files.
+	// The list of malicious files.
 	ScanMaliciousFiles []*ListScanMaliciousFileByTaskResponseBodyScanMaliciousFiles `json:"ScanMaliciousFiles,omitempty" xml:"ScanMaliciousFiles,omitempty" type:"Repeated"`
-	// The total number of entries returned.
+	// The total number of entries.
 	//
 	// example:
 	//
@@ -155,41 +155,41 @@ func (s *ListScanMaliciousFileByTaskResponseBody) Validate() error {
 }
 
 type ListScanMaliciousFileByTaskResponseBodyScanMaliciousFiles struct {
-	// The time when the image was created.
+	// The creation time.
 	//
 	// example:
 	//
 	// 2023-04-10 11:42:06
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The path of the file.
+	// The file path.
 	//
 	// example:
 	//
 	// tenant/0000000000000000/
 	FilePath *string `json:"FilePath,omitempty" xml:"FilePath,omitempty"`
-	// The time when the image was first scanned.
+	// The time of the first scan.
 	//
 	// example:
 	//
 	// 2023-04-10 11:42:06
 	FirstScanTime *int64 `json:"FirstScanTime,omitempty" xml:"FirstScanTime,omitempty"`
-	// The severity of the malicious file.
+	// The severity level.
 	//
 	// example:
 	//
 	// remind
 	Level *string `json:"Level,omitempty" xml:"Level,omitempty"`
-	// The MD5 hash value of the malicious file.
+	// The MD5 hash of the malicious file.
 	//
 	// example:
 	//
 	// e76c9759783cbbc9be0ff91ca3xxxxxx
 	MaliciousMd5 *string `json:"MaliciousMd5,omitempty" xml:"MaliciousMd5,omitempty"`
-	// The type of the malicious file.
+	// The type of the malicious sample.
 	//
 	// example:
 	//
-	// 疑似含有Webshell代码
+	// Suspected webshell code
 	MaliciousName *string `json:"MaliciousName,omitempty" xml:"MaliciousName,omitempty"`
 	// The ID of the image scan task.
 	//
@@ -197,7 +197,7 @@ type ListScanMaliciousFileByTaskResponseBodyScanMaliciousFiles struct {
 	//
 	// fe2d8980-de45-4f55-b57d-e438e6d2e972
 	ScanTaskId *string `json:"ScanTaskId,omitempty" xml:"ScanTaskId,omitempty"`
-	// The time when the image was updated.
+	// The update time.
 	//
 	// example:
 	//

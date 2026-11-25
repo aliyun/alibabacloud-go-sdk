@@ -44,109 +44,109 @@ type iGetRepositoryResponseBody interface {
 }
 
 type GetRepositoryResponseBody struct {
-	// The return value.
+	// The return code.
 	//
 	// example:
 	//
 	// success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The time when the repository was created.
+	// The creation time, represented as a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
 	// 1570759546000
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The details of the repository.
+	// The detailed information.
 	//
 	// example:
 	//
 	// test
 	Detail *string `json:"Detail,omitempty" xml:"Detail,omitempty"`
-	// The ID of the instance.
+	// The instance ID.
 	//
 	// example:
 	//
 	// cri-kmsiwlxxdcva****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// Indicates whether the request is successful.
+	// Indicates whether the request was successful.
 	//
 	// example:
 	//
 	// true
 	IsSuccess *bool `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
-	// The time when the repository was last modified.
+	// The last modification time, represented as a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
 	// 1570759546100
 	ModifiedTime *int64 `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
-	// Indicates how the repository was created. Valid values:
+	// The repository build type. Valid values:
 	//
-	// 	- `MANUAL`: The repository was manually created.
+	// - `MANUAL`: manually triggered build.
 	//
-	// 	- `AUTO`: The repository was automatically created.
+	// - `AUTO`: automatically triggered build.
 	//
 	// example:
 	//
 	// MANUAL
 	RepoBuildType *string `json:"RepoBuildType,omitempty" xml:"RepoBuildType,omitempty"`
-	// The ID of the repository.
+	// The repository ID.
 	//
 	// example:
 	//
 	// crr-l5eoubonp0l****
 	RepoId *string `json:"RepoId,omitempty" xml:"RepoId,omitempty"`
-	// The name of the repository.
+	// The repository name.
 	//
 	// example:
 	//
 	// test
 	RepoName *string `json:"RepoName,omitempty" xml:"RepoName,omitempty"`
-	// The name of the namespace.
+	// The namespace name.
 	//
 	// example:
 	//
 	// test
 	RepoNamespaceName *string `json:"RepoNamespaceName,omitempty" xml:"RepoNamespaceName,omitempty"`
-	// The status of the repository.
+	// The repository status.
 	//
 	// example:
 	//
 	// NORMAL
 	RepoStatus *string `json:"RepoStatus,omitempty" xml:"RepoStatus,omitempty"`
-	// The type of the repository. Valid values:
+	// The repository type. Valid values:
 	//
-	// 	- `PUBLIC`: public repository.
+	// - `PUBLIC`: public repository.
 	//
-	// 	- `PRIVATE`: private repository.
+	// - `PRIVATE`: private repository.
 	//
 	// example:
 	//
 	// PRIVATE
 	RepoType *string `json:"RepoType,omitempty" xml:"RepoType,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 915E6734-3E50-4640-8DBA-126D2D94DE29
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The ID of the resource group.
+	// The resource group ID.
 	//
 	// example:
 	//
 	// rg-acfmv36i4is****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The summary of the repository.
+	// The summary information.
 	//
 	// example:
 	//
 	// Automatically created repository
 	Summary *string `json:"Summary,omitempty" xml:"Summary,omitempty"`
-	// Indicates whether the feature of image tag immutability is enabled. Valid values:
+	// The image tag immutability setting. Valid values:
 	//
-	// 	- `true`: The feature of image tag immutability is enabled.
+	// - `true`: Enabled.
 	//
-	// 	- `false`: The feature of image tag immutability is disabled.
+	// - `false`: Disabled.
 	//
 	// example:
 	//

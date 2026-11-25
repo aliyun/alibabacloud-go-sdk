@@ -16,7 +16,7 @@ type iGetRepoBuildRecordRequest interface {
 }
 
 type GetRepoBuildRecordRequest struct {
-	// The ID of the image building record.
+	// The build record ID.
 	//
 	// This parameter is required.
 	//
@@ -24,7 +24,7 @@ type GetRepoBuildRecordRequest struct {
 	//
 	// a78ec6fb-16ea-4649-93b7-f52afba7d****
 	BuildRecordId *string `json:"BuildRecordId,omitempty" xml:"BuildRecordId,omitempty"`
-	// The ID of the instance.
+	// The instance ID.
 	//
 	// This parameter is required.
 	//

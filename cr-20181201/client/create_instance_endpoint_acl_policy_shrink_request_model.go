@@ -38,7 +38,7 @@ type CreateInstanceEndpointAclPolicyShrinkRequest struct {
 	//
 	// example:
 	//
-	// internet
+	// Internet
 	EndpointType  *string `json:"EndpointType,omitempty" xml:"EndpointType,omitempty"`
 	EntriesShrink *string `json:"Entries,omitempty" xml:"Entries,omitempty"`
 	// Deprecated

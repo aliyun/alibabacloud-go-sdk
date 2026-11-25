@@ -28,7 +28,7 @@ type iGetRepoBuildRecordResponseBody interface {
 }
 
 type GetRepoBuildRecordResponseBody struct {
-	// The ID of the image building record.
+	// The build record ID.
 	//
 	// example:
 	//
@@ -40,13 +40,13 @@ type GetRepoBuildRecordResponseBody struct {
 	//
 	// success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The time when the image building was completed.
+	// The end time, in UNIX timestamp format. Unit: milliseconds.
 	//
 	// example:
 	//
 	// 1568718698000
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The information about the image.
+	// The image information.
 	Image *GetRepoBuildRecordResponseBodyImage `json:"Image,omitempty" xml:"Image,omitempty" type:"Struct"`
 	// Indicates whether the request is successful.
 	//
@@ -54,19 +54,19 @@ type GetRepoBuildRecordResponseBody struct {
 	//
 	// true
 	IsSuccess *bool `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// a78ec6fb-16ea-4649-93b7-f52afba7d9de1
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The time when the image building started.
+	// The start time, in UNIX timestamp format. Unit: milliseconds.
 	//
 	// example:
 	//
 	// 1568718468000
 	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The status of the instance.
+	// The status.
 	//
 	// example:
 	//
@@ -164,19 +164,19 @@ func (s *GetRepoBuildRecordResponseBody) Validate() error {
 }
 
 type GetRepoBuildRecordResponseBodyImage struct {
-	// The tag of the image.
+	// The image tag.
 	//
 	// example:
 	//
 	// master
 	ImageTag *string `json:"ImageTag,omitempty" xml:"ImageTag,omitempty"`
-	// The name of the image repository.
+	// The image repository name.
 	//
 	// example:
 	//
 	// test
 	RepoName *string `json:"RepoName,omitempty" xml:"RepoName,omitempty"`
-	// The name of the namespace to which the image repository belongs.
+	// The namespace name of the image repository.
 	//
 	// example:
 	//

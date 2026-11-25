@@ -22,9 +22,9 @@ type iCreateArtifactBuildRuleRequest interface {
 }
 
 type CreateArtifactBuildRuleRequest struct {
-	// The type of the artifact.
+	// The type of the accelerated image. Valid values:
 	//
-	// 	- `ACCELERATED_IMAGE`: accelerated images.
+	// - `ACCELERATED_IMAGE`: accelerated image.
 	//
 	// This parameter is required.
 	//
@@ -40,15 +40,15 @@ type CreateArtifactBuildRuleRequest struct {
 	//
 	// cri-cxreylqvcyje****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// Additional parameters.
+	// The additional parameters.
 	//
 	// example:
 	//
 	// {}
 	Parameters map[string]interface{} `json:"Parameters,omitempty" xml:"Parameters,omitempty"`
-	// The ID of the effective range of the rule.
+	// The ID of the scope in which the rule takes effect. Valid values:
 	//
-	// 	- Set the value to the ID of the image repository.
+	// - The ID of the image repository.
 	//
 	// This parameter is required.
 	//
@@ -56,9 +56,9 @@ type CreateArtifactBuildRuleRequest struct {
 	//
 	// crr-pmajihou6cg0****
 	ScopeId *string `json:"ScopeId,omitempty" xml:"ScopeId,omitempty"`
-	// The effective range of the rule. Valid values:
+	// The scope in which the rule takes effect. Valid values:
 	//
-	// 	- `REPOSITORY`
+	// - `REPOSITORY`: repository level.
 	//
 	// This parameter is required.
 	//

@@ -18,7 +18,7 @@ type iUpdateRepositoryResponseBody interface {
 }
 
 type UpdateRepositoryResponseBody struct {
-	// The return code.
+	// The return value.
 	//
 	// example:
 	//

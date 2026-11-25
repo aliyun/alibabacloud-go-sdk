@@ -26,19 +26,19 @@ type iListRepoBuildRuleResponseBody interface {
 }
 
 type ListRepoBuildRuleResponseBody struct {
-	// The build rules.
+	// The list of build rules.
 	BuildRules []*ListRepoBuildRuleResponseBodyBuildRules `json:"BuildRules,omitempty" xml:"BuildRules,omitempty" type:"Repeated"`
-	// The response code. A value of `success` indicates that the request was successful.
+	// The return value.
 	//
 	// example:
 	//
 	// success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// Indicates whether the request was successful. Valid values:
+	// Indicates whether the API call was successful. Valid values:
 	//
-	// - `true`: The request was successful.
+	// - `true`: The API call was successful.
 	//
-	// - `false`: The request failed.
+	// - `false`: The API call failed.
 	//
 	// example:
 	//
@@ -50,7 +50,7 @@ type ListRepoBuildRuleResponseBody struct {
 	//
 	// 1
 	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
-	// The number of entries returned per page.
+	// The page size.
 	//
 	// example:
 	//
@@ -62,7 +62,7 @@ type ListRepoBuildRuleResponseBody struct {
 	//
 	// 42D782C8-E8F6-4A32-BEA0-6A6AC854C22A
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of build rules.
+	// The total number of entries.
 	//
 	// example:
 	//
@@ -155,45 +155,47 @@ func (s *ListRepoBuildRuleResponseBody) Validate() error {
 }
 
 type ListRepoBuildRuleResponseBodyBuildRules struct {
+	// The list of build arguments.
 	BuildArgs []*string `json:"BuildArgs,omitempty" xml:"BuildArgs,omitempty" type:"Repeated"`
-	// The ID of the build rule.
+	// The build rule ID.
 	//
 	// example:
 	//
 	// crbr-khys0nd3asbe****
-	BuildRuleId      *string `json:"BuildRuleId,omitempty" xml:"BuildRuleId,omitempty"`
+	BuildRuleId *string `json:"BuildRuleId,omitempty" xml:"BuildRuleId,omitempty"`
+	// The destination artifact type.
 	DestArtifactType *string `json:"DestArtifactType,omitempty" xml:"DestArtifactType,omitempty"`
-	// The directory of the Dockerfile.
+	// The directory where the Dockerfile is located.
 	//
 	// example:
 	//
 	// /
 	DockerfileLocation *string `json:"DockerfileLocation,omitempty" xml:"DockerfileLocation,omitempty"`
-	// Dockerfile name
+	// The name of the Dockerfile.
 	//
 	// example:
 	//
 	// Dockerfile
 	DockerfileName *string `json:"DockerfileName,omitempty" xml:"DockerfileName,omitempty"`
-	// Image Tag
+	// The image tag.
 	//
 	// example:
 	//
 	// v0.1
 	ImageTag *string `json:"ImageTag,omitempty" xml:"ImageTag,omitempty"`
-	// Image operating system and platform
+	// The operating system and platform of the image.
 	Platforms []*string `json:"Platforms,omitempty" xml:"Platforms,omitempty" type:"Repeated"`
-	// Code push-triggered build name
+	// The name of the code push that triggers the build.
 	//
 	// example:
 	//
 	// v0.1
 	PushName *string `json:"PushName,omitempty" xml:"PushName,omitempty"`
-	// The type of the event that triggers the build rule. Valid values:
+	// The type of source code push that triggers the build. Valid values:
 	//
-	// - `GIT_BRANCH`: A code branch is pushed.
+	// - GIT_BRANCH: Source code is pushed from a branch.
 	//
-	// - GIT_TAG: Push source code from a tag.
+	// - GIT_TAG: Source code is pushed from a tag.
 	//
 	// example:
 	//

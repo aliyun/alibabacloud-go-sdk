@@ -18,7 +18,7 @@ type iCreateBuildRecordByRuleRequest interface {
 }
 
 type CreateBuildRecordByRuleRequest struct {
-	// The ID of the image building rule.
+	// The build rule ID.
 	//
 	// This parameter is required.
 	//
@@ -26,7 +26,7 @@ type CreateBuildRecordByRuleRequest struct {
 	//
 	// crbr-1j95g4bu2s1i****
 	BuildRuleId *string `json:"BuildRuleId,omitempty" xml:"BuildRuleId,omitempty"`
-	// The ID of the instance.
+	// The instance ID.
 	//
 	// This parameter is required.
 	//
@@ -34,7 +34,7 @@ type CreateBuildRecordByRuleRequest struct {
 	//
 	// cri-asd6vujuhay0****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The ID of the image repository.
+	// The image repository ID.
 	//
 	// This parameter is required.
 	//

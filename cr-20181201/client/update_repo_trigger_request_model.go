@@ -26,7 +26,7 @@ type iUpdateRepoTriggerRequest interface {
 }
 
 type UpdateRepoTriggerRequest struct {
-	// The ID of the instance.
+	// The instance ID.
 	//
 	// This parameter is required.
 	//
@@ -34,7 +34,7 @@ type UpdateRepoTriggerRequest struct {
 	//
 	// cri-kmsiwlxxdcva****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The ID of the image repository.
+	// The image repository ID.
 	//
 	// This parameter is required.
 	//
@@ -42,7 +42,7 @@ type UpdateRepoTriggerRequest struct {
 	//
 	// crr-tquyps22md8p****
 	RepoId *string `json:"RepoId,omitempty" xml:"RepoId,omitempty"`
-	// The ID of the trigger.
+	// The trigger ID.
 	//
 	// This parameter is required.
 	//
@@ -50,33 +50,31 @@ type UpdateRepoTriggerRequest struct {
 	//
 	// crw-k7bdx4kt52ty****
 	TriggerId *string `json:"TriggerId,omitempty" xml:"TriggerId,omitempty"`
-	// The name of the trigger.
-	//
-	// You can specify the TriggerName or TriggerUrl parameter. The TriggerName parameter is optional.
+	// The trigger name. This parameter is optional. You must specify either TriggerName or TriggerUrl.
 	//
 	// example:
 	//
 	// test_trigger
 	TriggerName *string `json:"TriggerName,omitempty" xml:"TriggerName,omitempty"`
-	// The image tag based on which the trigger is set.
+	// The image version that triggers the trigger.
 	//
 	// example:
 	//
 	// master
 	TriggerTag *string `json:"TriggerTag,omitempty" xml:"TriggerTag,omitempty"`
-	// The type of the trigger. Valid values:
+	// The trigger type. Valid values:
 	//
-	// 	- `ALL`: a trigger that supports both tags and regular expressions.
+	// - `ALL`: all.
 	//
-	// 	- `TAG_LISTTAG`: a tag-based trigger.
+	// - `TAG_LISTTAG`: tag list.
 	//
-	// 	- `TAG_REG_EXP`: a regular expression-based trigger.
+	// - `TAG_REG_EXP`: regular expression.
 	//
 	// example:
 	//
 	// ALL
 	TriggerType *string `json:"TriggerType,omitempty" xml:"TriggerType,omitempty"`
-	// The URL of the trigger.
+	// The trigger URL.
 	//
 	// example:
 	//

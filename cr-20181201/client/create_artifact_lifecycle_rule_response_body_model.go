@@ -20,17 +20,17 @@ type iCreateArtifactLifecycleRuleResponseBody interface {
 }
 
 type CreateArtifactLifecycleRuleResponseBody struct {
-	// The return value.
+	// The return code.
 	//
 	// example:
 	//
 	// success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// Indicates whether the request is successful. Valid values:
+	// Indicates whether the call was successful. Valid values:
 	//
-	// 	- `true`: The request is successful.
+	// - `true`: The call was successful.
 	//
-	// 	- `false`: The request fails.
+	// - `false`: The call failed.
 	//
 	// example:
 	//

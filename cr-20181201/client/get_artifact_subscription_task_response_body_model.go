@@ -58,13 +58,13 @@ type GetArtifactSubscriptionTaskResponseBody struct {
 	//
 	// IMAGE
 	ArtifactType *string `json:"ArtifactType,omitempty" xml:"ArtifactType,omitempty"`
-	// The return value.
+	// The return code.
 	//
 	// example:
 	//
 	// success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The end time of the artifact subscription task.
+	// The end time. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
@@ -76,29 +76,29 @@ type GetArtifactSubscriptionTaskResponseBody struct {
 	//
 	// cri-xkx6vujuhay0****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// Indicates whether the API request is successful. Valid values:
+	// Indicates whether the API call was successful. Valid values:
 	//
-	// 	- `true`: The request is successful.
+	// - `true`: The API call was successful.
 	//
-	// 	- `false`: The request fails.
+	// - `false`: The API call failed.
 	//
 	// example:
 	//
 	// true
 	IsSuccess *bool `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
-	// The return message.
+	// The returned message.
 	//
 	// example:
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The name of the Container Registry namespace.
+	// The ACR namespace.
 	//
 	// example:
 	//
 	// test
 	NamespaceName *string `json:"NamespaceName,omitempty" xml:"NamespaceName,omitempty"`
-	// The name of the Container Registry repository.
+	// The ACR repository.
 	//
 	// example:
 	//
@@ -110,7 +110,7 @@ type GetArtifactSubscriptionTaskResponseBody struct {
 	//
 	// 12589EF7-96E2-4554-AAD7-F7209E88CAD3
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The name of the source namespace.
+	// The source namespace.
 	//
 	// example:
 	//
@@ -122,25 +122,25 @@ type GetArtifactSubscriptionTaskResponseBody struct {
 	//
 	// DOCKER_HUB
 	SourceProvider *string `json:"SourceProvider,omitempty" xml:"SourceProvider,omitempty"`
-	// The name of the source repository.
+	// The source repository.
 	//
 	// example:
 	//
 	// nginx
 	SourceRepoName *string `json:"SourceRepoName,omitempty" xml:"SourceRepoName,omitempty"`
-	// The type of the source repository.
+	// The source artifact type.
 	//
 	// example:
 	//
 	// PUBLIC
 	SourceRepoType *string `json:"SourceRepoType,omitempty" xml:"SourceRepoType,omitempty"`
-	// The start time of the artifact subscription task.
+	// The start time. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
 	// 1568718468000
 	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The total subscribed tags.
+	// The number of subscribed tags.
 	//
 	// example:
 	//
@@ -158,19 +158,19 @@ type GetArtifactSubscriptionTaskResponseBody struct {
 	//
 	// crast-40le4es9yh0p****
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	// The task results.
+	// The task result.
 	//
 	// example:
 	//
 	// SUCCESS
 	TaskResult *string `json:"TaskResult,omitempty" xml:"TaskResult,omitempty"`
-	// The status of the task.
+	// The task status.
 	//
 	// example:
 	//
 	// RUNNING
 	TaskStatus *string `json:"TaskStatus,omitempty" xml:"TaskStatus,omitempty"`
-	// The type of the task. Valid values:
+	// The task type.
 	//
 	// example:
 	//

@@ -34,19 +34,19 @@ type iListRepoTagScanResultRequest interface {
 }
 
 type ListRepoTagScanResultRequest struct {
-	// The digest of the image.
+	// The image digest.
 	//
 	// example:
 	//
 	// sha256:6b0b094f8a904f8fb6602427aed0d1fa
 	Digest *string `json:"Digest,omitempty" xml:"Digest,omitempty"`
-	// The parameter whose value that you want to query. Fox example, if the value is `FixCmd`, only the `FixCmd` parameter is returned.
+	// The query filter parameter. If the value is `FixCmd`, only the `FixCmd` result is returned, and other fields are not returned.
 	//
 	// example:
 	//
 	// FixCmd
 	FilterValue *string `json:"FilterValue,omitempty" xml:"FilterValue,omitempty"`
-	// The ID of the instance.
+	// The instance ID.
 	//
 	// This parameter is required.
 	//
@@ -54,61 +54,61 @@ type ListRepoTagScanResultRequest struct {
 	//
 	// cri-2j88dtld8yel****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The number of the page to return.
+	// The page number of the scan result list.
 	//
 	// example:
 	//
 	// 1
 	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
-	// The number of entries to return on each page.
+	// The number of entries per page in the scan result list.
 	//
 	// example:
 	//
 	// 30
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the image repository.
+	// The image repository ID.
 	//
 	// example:
 	//
 	// crr-uf082u9dg8do****
 	RepoId *string `json:"RepoId,omitempty" xml:"RepoId,omitempty"`
-	// The ID of the security scan task.
+	// The image scan task ID.
 	//
 	// example:
 	//
 	// 6b0b094f-8a90-4f8f-b660-2427aed0****
 	ScanTaskId *string `json:"ScanTaskId,omitempty" xml:"ScanTaskId,omitempty"`
-	// The type of the vulnerability. Valid values:
+	// The vulnerability type. Valid values:
 	//
-	// 	- `cve`: image system vulnerability
+	// - `cve`: Image system vulnerability
 	//
-	// 	- `sca`: image application vulnerability
+	// - `sca`: Image application vulnerability
 	//
 	// example:
 	//
 	// sca
 	ScanType *string `json:"ScanType,omitempty" xml:"ScanType,omitempty"`
-	// The severity of the vulnerability. Valid values:
+	// The severity level of the scanned vulnerability. Valid values:
 	//
-	// 	- `High`
+	// - `High`: High
 	//
-	// 	- `Medium`
+	// - `Medium`: Medium
 	//
-	// 	- `Low`
+	// - `Low`: Low
 	//
-	// 	- `Unknown`
+	// - `Unknown`: Unknown
 	//
 	// example:
 	//
 	// High
 	Severity *string `json:"Severity,omitempty" xml:"Severity,omitempty"`
-	// The name of the image tag.
+	// The image version name.
 	//
 	// example:
 	//
 	// 1
 	Tag *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
-	// The keyword for fuzzy search used in scanning. The value can be a CVE name.
+	// The fuzzy search keyword for scanning. Fuzzy match by CVE name is supported.
 	//
 	// example:
 	//

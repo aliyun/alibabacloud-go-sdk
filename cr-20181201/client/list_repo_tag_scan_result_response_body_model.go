@@ -34,39 +34,39 @@ type ListRepoTagScanResultResponseBody struct {
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// Indicates whether the request is successful. Valid values:
 	//
-	// 	- `true`: The request is successful.
+	// - `true`: Success
 	//
-	// 	- `false`: The request failed.
+	// - `false`: Failure
 	//
 	// example:
 	//
 	// true
 	IsSuccess *bool `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
-	// The number of the returned page.
+	// The page number of the scan result list.
 	//
 	// example:
 	//
 	// 1
 	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
-	// The number of entries returned per page.
+	// The number of entries per page in the scan result list.
 	//
 	// example:
 	//
 	// 30
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 56B5C92F-F5D9-46E0-823F-EC71D1892DAA
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of vulnerabilities detected on images.
+	// The total number of scanned vulnerabilities.
 	//
 	// example:
 	//
 	// 196
 	TotalCount *int32 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
-	// The details about the detected vulnerabilities.
+	// The array of scanned vulnerabilities.
 	Vulnerabilities []*ListRepoTagScanResultResponseBodyVulnerabilities `json:"Vulnerabilities,omitempty" xml:"Vulnerabilities,omitempty" type:"Repeated"`
 }
 
@@ -155,7 +155,7 @@ func (s *ListRepoTagScanResultResponseBody) Validate() error {
 }
 
 type ListRepoTagScanResultResponseBodyVulnerabilities struct {
-	// The ID of the image layer where the vulnerability was detected.
+	// The image layer that introduced the vulnerability.
 	//
 	// example:
 	//
@@ -163,77 +163,85 @@ type ListRepoTagScanResultResponseBodyVulnerabilities struct {
 	AddedBy *string `json:"AddedBy,omitempty" xml:"AddedBy,omitempty"`
 	// Deprecated
 	//
-	// The name of the vulnerability.
+	// The vulnerability name.
 	//
 	// example:
 	//
-	// 漏洞
+	// Vulnerability
 	AliasName *string `json:"AliasName,omitempty" xml:"AliasName,omitempty"`
-	// The URL of the vulnerability.
+	// The vulnerability link.
 	//
 	// example:
 	//
 	// https://security-tracker.debian.org/tracker/CVE-2009-5155
 	CveLink *string `json:"CveLink,omitempty" xml:"CveLink,omitempty"`
-	// The directory of the vulnerability.
+	// The vulnerability location.
 	//
 	// example:
 	//
 	// /test.txt
 	CveLocation *string `json:"CveLocation,omitempty" xml:"CveLocation,omitempty"`
-	// The name of the vulnerability.
+	// The vulnerability name.
 	//
 	// example:
 	//
 	// CVE-2009-5155
 	CveName *string `json:"CveName,omitempty" xml:"CveName,omitempty"`
-	// The description of the vulnerability.
+	// The vulnerability description.
 	//
 	// example:
 	//
 	// description.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The cause of the vulnerability.
+	// The feature that introduced the vulnerability.
 	//
 	// example:
 	//
 	// eglibc
 	Feature *string `json:"Feature,omitempty" xml:"Feature,omitempty"`
-	// The command used to fix the vulnerability.
+	// The vulnerability fix command.
 	//
 	// example:
 	//
 	// yum install -y xxx
 	FixCmd *string `json:"FixCmd,omitempty" xml:"FixCmd,omitempty"`
-	// The type of the vulnerability. Valid values:
+	// The vulnerability type. Valid values:
 	//
-	// 	- `cve`: image system vulnerability
+	// - `cve`: System vulnerability
 	//
-	// 	- `sca`: image application vulnerability
+	// - `sca`: Application vulnerability
 	//
 	// example:
 	//
 	// cve
 	ScanType *string `json:"ScanType,omitempty" xml:"ScanType,omitempty"`
-	// The severity of the vulnerability.
+	// The severity level of the scanned vulnerability. Valid values:
+	//
+	// - `High`: High
+	//
+	// - `Medium`: Medium
+	//
+	// - `Low`: Low
+	//
+	// - `Unknown`: Unknown
 	//
 	// example:
 	//
 	// Medium
 	Severity *string `json:"Severity,omitempty" xml:"Severity,omitempty"`
-	// The version of the vulnerability.
+	// The vulnerability version.
 	//
 	// example:
 	//
 	// 2.19-6.9
 	Version *string `json:"Version,omitempty" xml:"Version,omitempty"`
-	// The version where the vulnerability was fixed.
+	// The version that fixes the vulnerability.
 	//
 	// example:
 	//
 	// 2.19-18+deb8u5
 	VersionFixed *string `json:"VersionFixed,omitempty" xml:"VersionFixed,omitempty"`
-	// The format of the vulnerability.
+	// The version format.
 	//
 	// example:
 	//

@@ -26,13 +26,13 @@ type iCreateChainRequest interface {
 }
 
 type CreateChainRequest struct {
-	// The JSON-serialized entity object that describes the delivery chain.
+	// The entity object of the JSON-formatted delivery chain description.
 	//
 	// example:
 	//
 	// chainconfig
 	ChainConfig *string `json:"ChainConfig,omitempty" xml:"ChainConfig,omitempty"`
-	// The description of the delivery chain.
+	// The delivery chain description.
 	//
 	// example:
 	//
@@ -46,7 +46,7 @@ type CreateChainRequest struct {
 	//
 	// cri-4cdrlqmhn4gm****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The name of the delivery chain.
+	// The delivery chain name.
 	//
 	// This parameter is required.
 	//
@@ -66,7 +66,7 @@ type CreateChainRequest struct {
 	//
 	// ns1
 	RepoNamespaceName *string `json:"RepoNamespaceName,omitempty" xml:"RepoNamespaceName,omitempty"`
-	// The collection of repositories excluded from the delivery chain execution.
+	// The set of repositories excluded from execution by the delivery chain.
 	ScopeExclude []*string `json:"ScopeExclude,omitempty" xml:"ScopeExclude,omitempty" type:"Repeated"`
 }
 

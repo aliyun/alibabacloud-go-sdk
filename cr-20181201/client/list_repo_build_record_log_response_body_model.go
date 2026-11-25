@@ -26,7 +26,7 @@ type iListRepoBuildRecordLogResponseBody interface {
 }
 
 type ListRepoBuildRecordLogResponseBody struct {
-	// The log content of the image building record.
+	// The build log content.
 	BuildRecordLogs []*ListRepoBuildRecordLogResponseBodyBuildRecordLogs `json:"BuildRecordLogs,omitempty" xml:"BuildRecordLogs,omitempty" type:"Repeated"`
 	// The return value.
 	//
@@ -40,25 +40,25 @@ type ListRepoBuildRecordLogResponseBody struct {
 	//
 	// true
 	IsSuccess *bool `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
-	// The page number of the returned page.
+	// The page number.
 	//
 	// example:
 	//
 	// 1
 	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
-	// The number of entries returned per page.
+	// The number of log entries displayed per page.
 	//
 	// example:
 	//
 	// 100
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 4CE1F661-75DD-4EBD-A4AD-057B26834ABB
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of returned entries.
+	// The total number of entries.
 	//
 	// example:
 	//
@@ -151,7 +151,7 @@ func (s *ListRepoBuildRecordLogResponseBody) Validate() error {
 }
 
 type ListRepoBuildRecordLogResponseBodyBuildRecordLogs struct {
-	// The stage of the building that is recorded in the log entry.
+	// The build stage of the log entry.
 	//
 	// example:
 	//
@@ -163,7 +163,7 @@ type ListRepoBuildRecordLogResponseBodyBuildRecordLogs struct {
 	//
 	// 2
 	LineNumber *int32 `json:"LineNumber,omitempty" xml:"LineNumber,omitempty"`
-	// The content of the log.
+	// The log content.
 	//
 	// example:
 	//

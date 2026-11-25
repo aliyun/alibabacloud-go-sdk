@@ -38,7 +38,7 @@ type CreateInstanceEndpointAclPolicyRequest struct {
 	//
 	// example:
 	//
-	// internet
+	// Internet
 	EndpointType *string               `json:"EndpointType,omitempty" xml:"EndpointType,omitempty"`
 	Entries      []*AccessControlEntry `json:"Entries,omitempty" xml:"Entries,omitempty" type:"Repeated"`
 	// Deprecated

@@ -1,3 +1,6 @@
+2026-11-25 Version: v3.2.4
+- Generated golang 2018-12-01 for cr.
+
 2026-09-16 Version: v3.2.3
 - Update API CreateArtifactLifecycleRule: add request parameters DryRun.
 - Update API CreateArtifactLifecycleRule: add request parameters EnableDeleteUntaggedManifest.

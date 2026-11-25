@@ -20,11 +20,11 @@ type iCreateChartNamespaceRequest interface {
 }
 
 type CreateChartNamespaceRequest struct {
-	// Specifies whether to automatically create repositories in the namespace. Valid values:
+	// Specifies whether automatic creation of a repository is enabled. Valid values:
 	//
-	// \\-`  true `: automatically creates repositories in the namespace.
+	// - `true`: Automatic creation of a repository is enabled.
 	//
-	// \\-`  false `: does not automatically create repositories in the namespace.
+	// - `false`: Automatic creation of a repository is disabled.
 	//
 	// example:
 	//
@@ -32,15 +32,15 @@ type CreateChartNamespaceRequest struct {
 	AutoCreateRepo *bool `json:"AutoCreateRepo,omitempty" xml:"AutoCreateRepo,omitempty"`
 	// The default repository type. Valid values:
 	//
-	// 	- `PUBLIC`: a public repository
+	// - `PUBLIC`: Public repository.
 	//
-	// 	- `PRIVATE`: a private repository
+	// - `PRIVATE`: Private repository.
 	//
 	// example:
 	//
 	// PUBLIC
 	DefaultRepoType *string `json:"DefaultRepoType,omitempty" xml:"DefaultRepoType,omitempty"`
-	// The ID of the instance.
+	// The instance ID.
 	//
 	// This parameter is required.
 	//
@@ -48,7 +48,7 @@ type CreateChartNamespaceRequest struct {
 	//
 	// cri-xkx6vujuhay0****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The name of the namespace.
+	// The namespace name.
 	//
 	// This parameter is required.
 	//

@@ -26,7 +26,7 @@ type iDiagnosisTarget interface {
 }
 
 type DiagnosisTarget struct {
-	// The end of the diagnostic time window, in ISO 8601 format. Must be after `StartTime`.
+	// The end time of the diagnostic.
 	//
 	// Use the UTC time format: yyyy-MM-ddTHH:mm:ssZ
 	//
@@ -34,23 +34,23 @@ type DiagnosisTarget struct {
 	//
 	// 2026-01-01T00:30:00+08:00
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// A map of key-value pairs providing additional context for the diagnosis.
+	// The extra parameters.
 	Extra map[string]*string `json:"Extra,omitempty" xml:"Extra,omitempty"`
-	// The namespace that contains the repository.
+	// The namespace name.
 	//
 	// example:
 	//
 	// test_namespace
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
-	// The ID of a related operation, such as a previous diagnostic task.
+	// The ID of the diagnosed item.
 	RelatedId *string `json:"RelatedId,omitempty" xml:"RelatedId,omitempty"`
-	// The name of the repository.
+	// The repository name.
 	//
 	// example:
 	//
 	// test_repo
 	Repository *string `json:"Repository,omitempty" xml:"Repository,omitempty"`
-	// The start of the diagnostic time window, in ISO 8601 format.
+	// The start time of the diagnostic.
 	//
 	// Use the UTC time format: yyyy-MM-ddTHH:mm:ssZ
 	//
@@ -58,7 +58,7 @@ type DiagnosisTarget struct {
 	//
 	// 2026-01-01T00:00:00+08:00
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The container image tag.
+	// The image tag.
 	//
 	// example:
 	//

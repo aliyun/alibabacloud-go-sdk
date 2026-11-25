@@ -31,12 +31,14 @@ type iUpdateArtifactSubscriptionRuleRequest interface {
 	GetSourceRepoName() *string
 	SetTagCount(v int64) *UpdateArtifactSubscriptionRuleRequest
 	GetTagCount() *int64
+	SetTagList(v []*string) *UpdateArtifactSubscriptionRuleRequest
+	GetTagList() []*string
 	SetTagRegexp(v string) *UpdateArtifactSubscriptionRuleRequest
 	GetTagRegexp() *string
 }
 
 type UpdateArtifactSubscriptionRuleRequest struct {
-	// Specifies whether to enable an acceleration link for image subscription. The subscription acceleration feature is in public preview. The feature is optimized based on scheduling policies and network links to accelerate image subscription.
+	// Specifies whether to enable the acceleration link. The subscription acceleration feature is in public preview. It improves the image subscription speed based on scheduling policies and network link optimization.
 	//
 	// example:
 	//
@@ -50,21 +52,21 @@ type UpdateArtifactSubscriptionRuleRequest struct {
 	//
 	// cri-c0o11woew0k****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The name of the Container Registry namespace.
+	// The ACR namespace.
 	//
 	// example:
 	//
 	// test-ns
 	NamespaceName *string `json:"NamespaceName,omitempty" xml:"NamespaceName,omitempty"`
-	// Specifies whether to overwrite the original image.
+	// Specifies whether to overwrite images.
 	//
 	// example:
 	//
 	// true
 	Override *string `json:"Override,omitempty" xml:"Override,omitempty"`
-	// The operating system and architecture. If the source repository contains multi-arch images, only the images with the specified operating system and architecture are subscribed to the destination repository of the Enterprise Edition instance.
+	// The operating system and architecture. If the source repository contains multi-architecture images, only images with the specified operating system and architecture are subscribed to the destination repository of the Enterprise instance.
 	Platform []*string `json:"Platform,omitempty" xml:"Platform,omitempty" type:"Repeated"`
-	// The name of the Container Registry repository.
+	// The ACR repository.
 	//
 	// example:
 	//
@@ -78,21 +80,13 @@ type UpdateArtifactSubscriptionRuleRequest struct {
 	//
 	// crasr-mdbpung4i1rm****
 	RuleId *string `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
-	// The name of the source namespace.
+	// The source namespace.
 	//
 	// example:
 	//
 	// library
 	SourceNamespaceName *string `json:"SourceNamespaceName,omitempty" xml:"SourceNamespaceName,omitempty"`
-	// The source of the artifacts.
-	//
-	// Valid values:
-	//
-	// 	- DOCKER_HUB: Docker Hub
-	//
-	// 	- GCR: GCR
-	//
-	// 	- QUAY: Quay.io
+	// The artifact source.
 	//
 	// example:
 	//
@@ -104,7 +98,7 @@ type UpdateArtifactSubscriptionRuleRequest struct {
 	//
 	// nginx
 	SourceRepoName *string `json:"SourceRepoName,omitempty" xml:"SourceRepoName,omitempty"`
-	// The number of subscribed images.
+	// The number of images to subscribe to.
 	//
 	// if can be null:
 	// false
@@ -113,7 +107,17 @@ type UpdateArtifactSubscriptionRuleRequest struct {
 	//
 	// 1
 	TagCount *int64 `json:"TagCount,omitempty" xml:"TagCount,omitempty"`
-	// The image tags in the subscription source repository. Regular expressions are supported.
+	// - The image tags to subscribe to when matching by tag list. A maximum of 10 tags are supported.
+	//
+	// - This parameter is valid only when the rule is created by using tag list matching. It cannot be specified together with TagRegexp or TagCount.
+	//
+	// - If this parameter is not specified or an empty list is specified, the original tag list is retained and cannot be cleared. The matching method cannot be modified. To modify the matching method, delete the rule and create a new one.
+	//
+	// example:
+	//
+	// latest
+	TagList []*string `json:"TagList,omitempty" xml:"TagList,omitempty" type:"Repeated"`
+	// The image versions in the source repository to subscribe to. Regular expressions are supported.
 	//
 	// example:
 	//
@@ -173,6 +177,10 @@ func (s *UpdateArtifactSubscriptionRuleRequest) GetTagCount() *int64 {
 	return s.TagCount
 }
 
+func (s *UpdateArtifactSubscriptionRuleRequest) GetTagList() []*string {
+	return s.TagList
+}
+
 func (s *UpdateArtifactSubscriptionRuleRequest) GetTagRegexp() *string {
 	return s.TagRegexp
 }
@@ -229,6 +237,11 @@ func (s *UpdateArtifactSubscriptionRuleRequest) SetSourceRepoName(v string) *Upd
 
 func (s *UpdateArtifactSubscriptionRuleRequest) SetTagCount(v int64) *UpdateArtifactSubscriptionRuleRequest {
 	s.TagCount = &v
+	return s
+}
+
+func (s *UpdateArtifactSubscriptionRuleRequest) SetTagList(v []*string) *UpdateArtifactSubscriptionRuleRequest {
+	s.TagList = v
 	return s
 }
 

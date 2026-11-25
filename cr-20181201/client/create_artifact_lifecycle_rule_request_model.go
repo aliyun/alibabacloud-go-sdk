@@ -34,19 +34,33 @@ type iCreateArtifactLifecycleRuleRequest interface {
 }
 
 type CreateArtifactLifecycleRuleRequest struct {
-	// Specify whether to automatically execute the lifecycle management rule.
+	// Specifies whether to automatically execute the rule.
 	//
 	// example:
 	//
 	// false
-	Auto   *bool `json:"Auto,omitempty" xml:"Auto,omitempty"`
-	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
-	// Specify whether to enable lifecycle management for the artifact.
+	Auto *bool `json:"Auto,omitempty" xml:"Auto,omitempty"`
+	// Specifies whether to enable DryRun mode. If DryRun mode is enabled, only the lifecycle task scan is performed and no actual data cleanup is executed. This mode is disabled by default.
 	//
 	// example:
 	//
 	// true
-	EnableDeleteTag              *bool `json:"EnableDeleteTag,omitempty" xml:"EnableDeleteTag,omitempty"`
+	DryRun *bool `json:"DryRun,omitempty" xml:"DryRun,omitempty"`
+	// Specifies whether to enable lifecycle management.
+	//
+	// Only one of this parameter and EnableDeleteUntaggedManifest can be set to true.
+	//
+	// example:
+	//
+	// true
+	EnableDeleteTag *bool `json:"EnableDeleteTag,omitempty" xml:"EnableDeleteTag,omitempty"`
+	// Specifies whether to enable artifact cleanup.
+	//
+	// Only one of this parameter and EnableDeleteTag can be set to true.
+	//
+	// example:
+	//
+	// false
 	EnableDeleteUntaggedManifest *bool `json:"EnableDeleteUntaggedManifest,omitempty" xml:"EnableDeleteUntaggedManifest,omitempty"`
 	// The instance ID.
 	//
@@ -56,37 +70,37 @@ type CreateArtifactLifecycleRuleRequest struct {
 	//
 	// cri-gbwfk7qbgrxe****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The name of the namespace.
+	// The namespace name.
 	//
 	// example:
 	//
 	// dev-backend
 	NamespaceName *string `json:"NamespaceName,omitempty" xml:"NamespaceName,omitempty"`
-	// The name of the image repository.
+	// The image repository name.
 	//
 	// example:
 	//
 	// test_1
 	RepoName *string `json:"RepoName,omitempty" xml:"RepoName,omitempty"`
-	// The number of images that you want to retain.
+	// The number of images to retain.
 	//
 	// example:
 	//
 	// 30
 	RetentionTagCount *int64 `json:"RetentionTagCount,omitempty" xml:"RetentionTagCount,omitempty"`
-	// The execution cycle of the lifecycle management rule.
+	// The execution cycle.
 	//
 	// example:
 	//
 	// WEEK
 	ScheduleTime *string `json:"ScheduleTime,omitempty" xml:"ScheduleTime,omitempty"`
-	// The deletion scope.
+	// The cleanup scope.
 	//
 	// example:
 	//
 	// INSTANCE
 	Scope *string `json:"Scope,omitempty" xml:"Scope,omitempty"`
-	// The regular expression that is used to indicate which image tags are retained.
+	// The regular expression used to match image versions to retain.
 	//
 	// example:
 	//

@@ -18,7 +18,7 @@ type iDeleteInstanceEndpointAclPolicyResponseBody interface {
 }
 
 type DeleteInstanceEndpointAclPolicyResponseBody struct {
-	// The return value.
+	// The return code.
 	//
 	// example:
 	//

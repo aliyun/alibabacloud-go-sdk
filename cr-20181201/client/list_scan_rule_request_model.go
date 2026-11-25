@@ -32,19 +32,19 @@ type ListScanRuleRequest struct {
 	//
 	// 1
 	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
-	// The number of entries per page.
+	// The page size.
 	//
 	// example:
 	//
 	// 30
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The type of the vulnerability. Valid values:
+	// The vulnerability type. Valid values:
 	//
-	// 	- `VUL`: Products Cloud Security Scanner.
+	// - `VUL`: artifact vulnerability scanning.
 	//
-	// 	- `SBOM`: Product Content Analysis.
+	// - `SBOM`: artifact content analysis.
 	//
-	// Default value: `VUL`
+	// Default value: `VUL`.
 	//
 	// example:
 	//

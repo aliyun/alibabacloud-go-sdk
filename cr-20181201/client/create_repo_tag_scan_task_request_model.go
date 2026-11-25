@@ -46,18 +46,23 @@ type CreateRepoTagScanTaskRequest struct {
 	//
 	// crr-xwvi3osiy4ff****
 	RepoId *string `json:"RepoId,omitempty" xml:"RepoId,omitempty"`
-	// The scan engine type:
+	// The scan engine type. Valid values:
 	//
-	// - `SAS_SCAN_SERVICE`: The cloud security scan engine. This is a paid service.
+	// - `SAS_SCAN_SERVICE`: Security Center scan engine (requires paid activation).
 	//
-	// - `ACR_SCAN_SERVICE`: The ACR scan engine.
+	// - `ACR_SCAN_SERVICE`: ACR scan engine.
 	//
 	// example:
 	//
 	// ACR_SCAN_SERVICE
 	ScanService *string `json:"ScanService,omitempty" xml:"ScanService,omitempty"`
-	ScanType    *string `json:"ScanType,omitempty" xml:"ScanType,omitempty"`
-	// The image tag.
+	// The image security scan type.
+	//
+	// example:
+	//
+	// cve
+	ScanType *string `json:"ScanType,omitempty" xml:"ScanType,omitempty"`
+	// The image version.
 	//
 	// This parameter is required.
 	//

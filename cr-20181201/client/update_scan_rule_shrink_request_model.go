@@ -38,18 +38,18 @@ type UpdateScanRuleShrinkRequest struct {
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The collection of namespaces.
 	//
-	// - If the scan scope is set to NAMESPACE, this parameter is required.
+	// - When the scan scope is NAMESPACE, this parameter cannot be empty.
 	//
-	// - If the scan scope is set to REPO, specify exactly one namespace for this parameter.
+	// - When the scan scope is REPO, this parameter must contain exactly one namespace.
 	//
 	// if can be null:
 	// true
 	NamespacesShrink *string `json:"Namespaces,omitempty" xml:"Namespaces,omitempty"`
 	// The list of repositories.
 	//
-	// - If the scan scope is set to NAMESPACE, this parameter must be empty.
+	// - When the scan scope is NAMESPACE, this parameter must be empty.
 	//
-	// - If the scan scope is set to REPO, this parameter is required.
+	// - When the scan scope is REPO, this parameter cannot be empty.
 	//
 	// if can be null:
 	// true
@@ -78,11 +78,7 @@ type UpdateScanRuleShrinkRequest struct {
 	//
 	// crscnr-3qmkeiuggfpjkfrq
 	ScanRuleId *string `json:"ScanRuleId,omitempty" xml:"ScanRuleId,omitempty"`
-	// The scan scope. Valid values:
-	//
-	// - NAMESPACE: namespace
-	//
-	// - REPO: repository.
+	// The scan scope.
 	//
 	// This parameter is required.
 	//
@@ -90,11 +86,7 @@ type UpdateScanRuleShrinkRequest struct {
 	//
 	// REPO
 	ScanScope *string `json:"ScanScope,omitempty" xml:"ScanScope,omitempty"`
-	// The trigger type. Valid values:
-	//
-	// - AUTO: Automatically triggered upon push.
-	//
-	// - MANUAL: Manually triggered.
+	// The trigger type.
 	//
 	// This parameter is required.
 	//

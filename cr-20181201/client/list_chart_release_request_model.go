@@ -24,13 +24,13 @@ type iListChartReleaseRequest interface {
 }
 
 type ListChartReleaseRequest struct {
-	// The chart whose versions you want to query.
+	// The version prefix.
 	//
 	// example:
 	//
 	// null
 	Chart *string `json:"Chart,omitempty" xml:"Chart,omitempty"`
-	// The ID of the instance.
+	// The instance ID.
 	//
 	// This parameter is required.
 	//
@@ -38,19 +38,19 @@ type ListChartReleaseRequest struct {
 	//
 	// cri-xkx6vujuhay0****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The number of the page to return.
+	// The page number.
 	//
 	// example:
 	//
 	// 1
 	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
-	// The number of entries to return on each page.
+	// The number of entries per page.
 	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The name of the repository.
+	// The repository name.
 	//
 	// This parameter is required.
 	//
@@ -58,7 +58,7 @@ type ListChartReleaseRequest struct {
 	//
 	// repo1
 	RepoName *string `json:"RepoName,omitempty" xml:"RepoName,omitempty"`
-	// The name of the namespace.
+	// The namespace name.
 	//
 	// This parameter is required.
 	//

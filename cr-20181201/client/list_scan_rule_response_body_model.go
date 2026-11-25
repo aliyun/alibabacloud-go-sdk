@@ -26,13 +26,13 @@ type iListScanRuleResponseBody interface {
 }
 
 type ListScanRuleResponseBody struct {
-	// The HTTP status code
+	// The return code.
 	//
 	// example:
 	//
 	// success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// Indicates whether the request is successful.
+	// Indicates whether the request was successful.
 	//
 	// example:
 	//
@@ -44,7 +44,7 @@ type ListScanRuleResponseBody struct {
 	//
 	// 1
 	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
-	// The number of entries per page.
+	// The page size.
 	//
 	// example:
 	//
@@ -58,7 +58,7 @@ type ListScanRuleResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The list of scan rules.
 	ScanRules []*ListScanRuleResponseBodyScanRules `json:"ScanRules,omitempty" xml:"ScanRules,omitempty" type:"Repeated"`
-	// The total number of entries returned.
+	// The total number of entries.
 	//
 	// example:
 	//
@@ -151,7 +151,7 @@ func (s *ListScanRuleResponseBody) Validate() error {
 }
 
 type ListScanRuleResponseBodyScanRules struct {
-	// The creation time.
+	// The creation time. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
@@ -161,7 +161,7 @@ type ListScanRuleResponseBodyScanRules struct {
 	Namespaces []*string `json:"Namespaces,omitempty" xml:"Namespaces,omitempty" type:"Repeated"`
 	// The repository name.
 	RepoNames []*string `json:"RepoNames,omitempty" xml:"RepoNames,omitempty" type:"Repeated"`
-	// The tag that triggers the scan matches the regular expression.
+	// The regular expression used to match tags that trigger a scan.
 	//
 	// example:
 	//
@@ -173,7 +173,7 @@ type ListScanRuleResponseBodyScanRules struct {
 	//
 	// cicd-prod
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
-	// The scan rule id.
+	// The scan rule ID.
 	//
 	// example:
 	//
@@ -187,9 +187,9 @@ type ListScanRuleResponseBodyScanRules struct {
 	ScanScope *string `json:"ScanScope,omitempty" xml:"ScanScope,omitempty"`
 	// The scan type. Valid values:
 	//
-	// 	- `VUL`: Products Cloud Security Scanner
+	// - `VUL`: artifact vulnerability scanning.
 	//
-	// 	- `SBOM`: Product Content Analysis
+	// - `SBOM`: artifact content analysis.
 	//
 	// example:
 	//
@@ -201,7 +201,7 @@ type ListScanRuleResponseBodyScanRules struct {
 	//
 	// AUTO
 	TriggerType *string `json:"TriggerType,omitempty" xml:"TriggerType,omitempty"`
-	// The update time.
+	// The update time. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//

@@ -56,7 +56,7 @@ type ListRepoSyncRuleResponseBody struct {
 	//
 	// 838D1602-6D8F-47FB-B60A-656645D2****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The list of synchronization rules.
+	// The synchronization rules.
 	SyncRules []*ListRepoSyncRuleResponseBodySyncRules `json:"SyncRules,omitempty" xml:"SyncRules,omitempty" type:"Repeated"`
 	// The total number of entries.
 	//
@@ -151,19 +151,19 @@ func (s *ListRepoSyncRuleResponseBody) Validate() error {
 }
 
 type ListRepoSyncRuleResponseBodySyncRules struct {
-	// The creation time.
+	// The creation time. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
 	// 1572604642000
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// Indicates whether images are synchronized across accounts. Valid values:
+	// Specifies whether to synchronize images across accounts. Valid values:
 	//
-	// - `true`: Images are synchronized across accounts.
+	// - `true`: synchronizes images across accounts
 	//
-	// - `false`: Images are synchronized within the same account.
+	// - `false`: synchronizes images within the same account
 	//
-	// Default value: `false`
+	// Default value: `false`.
 	//
 	// example:
 	//
@@ -199,17 +199,21 @@ type ListRepoSyncRuleResponseBodySyncRules struct {
 	//
 	// test-repo-local
 	LocalRepoName *string `json:"LocalRepoName,omitempty" xml:"LocalRepoName,omitempty"`
-	// The modification time.
+	// The modification time. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
 	// 1572604642000
 	ModifiedTime *int64 `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
-	// The namespace regex at the instance level.
+	// The instance-level namespace regular expression.
 	//
-	// > This parameter is valid only when SyncScope is set to `INSTANCE`.
+	// > This parameter is valid only when the SyncScope parameter is set to `INSTANCE`.
+	//
+	// example:
+	//
+	// .*
 	NamespaceNameFilter *string `json:"NamespaceNameFilter,omitempty" xml:"NamespaceNameFilter,omitempty"`
-	// The execution priority of the synchronization task. Synchronization tasks are executed in descending order of priority. Tasks with the same priority are executed in random order.
+	// The execution priority of the synchronization task. Synchronization tasks are executed in descending order of priority. Synchronization tasks with the same priority are executed in random order.
 	//
 	// Valid values: 1 to 5.
 	//
@@ -221,7 +225,7 @@ type ListRepoSyncRuleResponseBodySyncRules struct {
 	Priority *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
 	// The repository filtering rule.
 	//
-	// > This parameter is valid only when SyncScope is set to `INSTANCE` or `NAMESPACE`.
+	// > This parameter is valid only when the SyncScope parameter is set to `INSTANCE` or `NAMESPACE`.
 	//
 	// example:
 	//
@@ -251,11 +255,11 @@ type ListRepoSyncRuleResponseBodySyncRules struct {
 	SyncRuleName *string `json:"SyncRuleName,omitempty" xml:"SyncRuleName,omitempty"`
 	// The synchronization scope. Valid values:
 	//
-	// - `INSTANCE`: synchronizes based on namespace regex and repository regex rules
+	// - `INSTANCE`: synchronizes based on namespace and repository regular expressions
 	//
-	// - `NAMESPACE`: synchronizes by namespace
+	// - `NAMESPACE`: synchronizes based on namespaces
 	//
-	// - `REPO`: synchronizes by image repository
+	// - `REPO`: synchronizes based on image repositories
 	//
 	// example:
 	//
@@ -263,7 +267,7 @@ type ListRepoSyncRuleResponseBodySyncRules struct {
 	SyncScope *string `json:"SyncScope,omitempty" xml:"SyncScope,omitempty"`
 	// The trigger policy. Valid values:
 	//
-	// - `INITIATIVE`: proactive trigger
+	// - `INITIATIVE`: active trigger
 	//
 	// - `PASSIVE`: passive trigger
 	//

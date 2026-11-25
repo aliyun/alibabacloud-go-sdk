@@ -16,7 +16,7 @@ type iGetChainRequest interface {
 }
 
 type GetChainRequest struct {
-	// Delivery chain ID
+	// The delivery chain ID.
 	//
 	// This parameter is required.
 	//
@@ -24,7 +24,7 @@ type GetChainRequest struct {
 	//
 	// chi-0ops0gsmw5x2****
 	ChainId *string `json:"ChainId,omitempty" xml:"ChainId,omitempty"`
-	// Instance ID
+	// The instance ID.
 	//
 	// This parameter is required.
 	//

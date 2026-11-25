@@ -32,33 +32,33 @@ type ListChartRepositoryResponseBody struct {
 	//
 	// success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// Indicates whether the request is successful.
+	// Indicates whether the request was successful.
 	//
 	// example:
 	//
 	// true
 	IsSuccess *bool `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
-	// The page number of the returned page.
+	// The page number.
 	//
 	// example:
 	//
 	// 1
 	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
-	// The number of entries returned per page.
+	// The page size.
 	//
 	// example:
 	//
 	// 30
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The queried repositories.
+	// The list of repositories.
 	Repositories []*ListChartRepositoryResponseBodyRepositories `json:"Repositories,omitempty" xml:"Repositories,omitempty" type:"Repeated"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 0AB62FB8-6873-4032-8515-4578D27523B7
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of returned entries.
+	// The total number of entries.
 	//
 	// example:
 	//
@@ -151,37 +151,37 @@ func (s *ListChartRepositoryResponseBody) Validate() error {
 }
 
 type ListChartRepositoryResponseBodyRepositories struct {
-	// The time when the repository was created.
+	// The time when the repository was created. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
 	// 1571926644000
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The ID of the instance.
+	// The instance ID.
 	//
 	// example:
 	//
 	// cri-xkx6vujuhay0****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The time when the repository was last modified.
+	// The time when the repository was last modified. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
 	// 1571930329000
 	ModifiedTime *int64 `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
-	// The ID of the repository.
+	// The repository ID.
 	//
 	// example:
 	//
 	// crcr-gpsu7b8chmxk****
 	RepoId *string `json:"RepoId,omitempty" xml:"RepoId,omitempty"`
-	// The name of the repository.
+	// The repository name.
 	//
 	// example:
 	//
 	// repo1
 	RepoName *string `json:"RepoName,omitempty" xml:"RepoName,omitempty"`
-	// The name of the namespace to which the repository belongs.
+	// The namespace of the repository.
 	//
 	// example:
 	//
@@ -189,9 +189,9 @@ type ListChartRepositoryResponseBodyRepositories struct {
 	RepoNamespaceName *string `json:"RepoNamespaceName,omitempty" xml:"RepoNamespaceName,omitempty"`
 	// The status of the repository. Valid values:
 	//
-	// 	- `NORMAL`: The repository is normal.
+	// - `NORMAL`: Normal.
 	//
-	// 	- `DELETING`: The repository is being deleted.
+	// - `DELETING`: The repository is being deleted.
 	//
 	// example:
 	//
@@ -199,21 +199,21 @@ type ListChartRepositoryResponseBodyRepositories struct {
 	RepoStatus *string `json:"RepoStatus,omitempty" xml:"RepoStatus,omitempty"`
 	// The type of the repository. Valid values:
 	//
-	// 	- `PRIVATE`: a private repository
+	// - `PRIVATE`: a private repository.
 	//
-	// 	- `PUBLIC`: a public repository
+	// - `PUBLIC`: a public repository.
 	//
 	// example:
 	//
 	// PUBLIC
 	RepoType *string `json:"RepoType,omitempty" xml:"RepoType,omitempty"`
-	// The ID of the resource group to which the repository belongs.
+	// The resource group ID.
 	//
 	// example:
 	//
 	// rg-aek2ikd5rxxxxxx
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The summary about the repository.
+	// The summary of the repository.
 	//
 	// example:
 	//

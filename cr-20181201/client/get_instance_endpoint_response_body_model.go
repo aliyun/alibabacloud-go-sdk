@@ -28,13 +28,13 @@ type iGetInstanceEndpointResponseBody interface {
 }
 
 type GetInstanceEndpointResponseBody struct {
-	// Indicates whether the access control list (ACL) feature is enabled.
+	// Indicates whether the access control list (ACL) is enabled.
 	//
 	// example:
 	//
 	// true
 	AclEnable *bool `json:"AclEnable,omitempty" xml:"AclEnable,omitempty"`
-	// The ACLs.
+	// The list of ACL entries.
 	AclEntries []*GetInstanceEndpointResponseBodyAclEntries `json:"AclEntries,omitempty" xml:"AclEntries,omitempty" type:"Repeated"`
 	// The return value.
 	//
@@ -42,9 +42,9 @@ type GetInstanceEndpointResponseBody struct {
 	//
 	// success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// Domain names.
+	// The list of domain names.
 	Domains []*GetInstanceEndpointResponseBodyDomains `json:"Domains,omitempty" xml:"Domains,omitempty" type:"Repeated"`
-	// Indicates whether the ACL feature is enabled.
+	// Indicates whether the access endpoint is enabled.
 	//
 	// example:
 	//
@@ -56,13 +56,19 @@ type GetInstanceEndpointResponseBody struct {
 	//
 	// true
 	IsSuccess *bool `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 8F3D5EC5-39D1-4C53-A198-48C54C658FA3
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The status of the instance.
+	// The running status. Valid values:
+	//
+	// `CREATING`: Creating.
+	//
+	// `RUNNING`: Running.
+	//
+	// `DELETING`: Deleting.
 	//
 	// example:
 	//
@@ -173,13 +179,13 @@ func (s *GetInstanceEndpointResponseBody) Validate() error {
 }
 
 type GetInstanceEndpointResponseBodyAclEntries struct {
-	// Remarks for public IP address whitelists.
+	// The comment for adding an Internet whitelist entry.
 	//
 	// example:
 	//
 	// 1
 	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
-	// The public IP address whitelist.
+	// The CIDR block added to the Internet whitelist.
 	//
 	// example:
 	//
@@ -218,17 +224,17 @@ func (s *GetInstanceEndpointResponseBodyAclEntries) Validate() error {
 }
 
 type GetInstanceEndpointResponseBodyDomains struct {
-	// The domain name that is used to access the Container Registry Enterprise Edition instance.
+	// The domain name used to access the Enterprise instance.
 	//
 	// example:
 	//
 	// shanghai-instance1-registry.cn-shanghai.cr.aliyuncs.com
 	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
-	// The type of the domain name. Valid values:
+	// The domain name type. Valid values:
 	//
-	// 	- `SYSTEM`: a system domain name.
+	// - `SYSTEM`: system domain name
 	//
-	// 	- `USER`: a user domain name.
+	// - `USER`: user domain name
 	//
 	// example:
 	//

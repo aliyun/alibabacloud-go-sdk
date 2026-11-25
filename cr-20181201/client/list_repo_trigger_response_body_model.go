@@ -20,29 +20,29 @@ type iListRepoTriggerResponseBody interface {
 }
 
 type ListRepoTriggerResponseBody struct {
-	// The return value.
+	// The return code.
 	//
 	// example:
 	//
 	// success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// Indicates whether the request is successful. Valid values:
+	// Indicates whether the API call was successful. Valid values:
 	//
-	// 	- `true`: The request is successful.
+	// - `true`: The API call was successful.
 	//
-	// 	- `false`: The request fails.
+	// - `false`: The API call failed.
 	//
 	// example:
 	//
 	// true
 	IsSuccess *bool `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 2CA76D52-A8F0-4D0B-854E-FBD9F6C99049
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The triggers of the repository.
+	// The list of triggers.
 	Triggers []*ListRepoTriggerResponseBodyTriggers `json:"Triggers,omitempty" xml:"Triggers,omitempty" type:"Repeated"`
 }
 
@@ -104,11 +104,11 @@ func (s *ListRepoTriggerResponseBody) Validate() error {
 }
 
 type ListRepoTriggerResponseBodyTriggers struct {
-	// The type of the event that activates the trigger. Valid values:
+	// The event type of the trigger. Valid values:
 	//
-	// 	- `BUILD_SUCCESS`: The trigger is activated when an image building task is successful.
+	// - `BUILD_SUCCESS`: The trigger was successful.
 	//
-	// 	- `BUILD_Fail`: The trigger is activated when an image building task fails.
+	// - `BUILD_Fail`: The trigger failed.
 	//
 	// example:
 	//
@@ -126,19 +126,19 @@ type ListRepoTriggerResponseBodyTriggers struct {
 	//
 	// test
 	TriggerName *string `json:"TriggerName,omitempty" xml:"TriggerName,omitempty"`
-	// The image tag based on which the trigger is set.
+	// The image version that triggers the trigger.
 	//
 	// example:
 	//
 	// *
 	TriggerTag *string `json:"TriggerTag,omitempty" xml:"TriggerTag,omitempty"`
-	// The type of the trigger. Valid values:
+	// The trigger type. Valid values:
 	//
-	// 	- `ALL`: a trigger that supports both tags and regular expressions.
+	// - `ALL`: All.
 	//
-	// 	- `TAG_LISTTAG`: a tag-based trigger.
+	// - `TAG_LISTTAG`: Tag list.
 	//
-	// 	- `TAG_REG_EXP`: a regular expression-based trigger.
+	// - `TAG_REG_EXP`: Regular expression.
 	//
 	// example:
 	//

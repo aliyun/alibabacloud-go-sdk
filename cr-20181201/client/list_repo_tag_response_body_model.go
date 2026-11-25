@@ -30,7 +30,7 @@ type iListRepoTagResponseBody interface {
 }
 
 type ListRepoTagResponseBody struct {
-	// The return value.
+	// The return code.
 	//
 	// example:
 	//
@@ -38,19 +38,19 @@ type ListRepoTagResponseBody struct {
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The list of images.
 	Images []*ListRepoTagResponseBodyImages `json:"Images,omitempty" xml:"Images,omitempty" type:"Repeated"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	//
 	// example:
 	//
 	// true
 	IsSuccess *bool `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
-	// The maximum number of entries returned.
+	// The maximum number of results returned.
 	//
 	// example:
 	//
 	// 30
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The pagination token for the next page. If a next page exists, the service returns a NextToken value. Pass this value in the next request.
+	// The pagination token. If a next page exists, the service returns a NextToken value, which you can include in the subsequent request.
 	//
 	// example:
 	//
@@ -62,7 +62,7 @@ type ListRepoTagResponseBody struct {
 	//
 	// 1
 	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
-	// The number of entries per page.
+	// The page size.
 	//
 	// example:
 	//
@@ -203,13 +203,13 @@ type ListRepoTagResponseBodyImages struct {
 	//
 	// 45023655bf39c382e26a8607d057c27871dee163c1ecf48cc1ebf2a1****
 	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
-	// The image size, in bytes.
+	// The size of the image. Unit: bytes.
 	//
 	// example:
 	//
 	// 27107966
 	ImageSize *int64 `json:"ImageSize,omitempty" xml:"ImageSize,omitempty"`
-	// The time when the image was last updated.
+	// The time when the image was updated. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//

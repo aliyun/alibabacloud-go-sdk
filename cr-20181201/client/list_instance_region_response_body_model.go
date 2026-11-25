@@ -26,11 +26,11 @@ type ListInstanceRegionResponseBody struct {
 	//
 	// success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// Indicates whether the request is successful. Valid values:
+	// Indicates whether the call is successful. Valid values:
 	//
-	// 	- `true`: The request is successful.
+	// - `true`: The call is successful.
 	//
-	// 	- `false`: The request fails.
+	// - `false`: The call failed.
 	//
 	// example:
 	//
@@ -38,7 +38,7 @@ type ListInstanceRegionResponseBody struct {
 	IsSuccess *bool `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
 	// The list of regions.
 	Regions []*ListInstanceRegionResponseBodyRegions `json:"Regions,omitempty" xml:"Regions,omitempty" type:"Repeated"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -104,13 +104,13 @@ func (s *ListInstanceRegionResponseBody) Validate() error {
 }
 
 type ListInstanceRegionResponseBodyRegions struct {
-	// The name of the region.
+	// The region name.
 	//
 	// example:
 	//
-	// 华南1（深圳）
+	// China South 1 (Shenzhen)
 	LocalName *string `json:"LocalName,omitempty" xml:"LocalName,omitempty"`
-	// The ID of the region.
+	// The region ID.
 	//
 	// example:
 	//

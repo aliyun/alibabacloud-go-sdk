@@ -29,7 +29,8 @@ type DeleteInstanceEndpointAclPolicyShrinkRequest struct {
 	// example:
 	//
 	// internet
-	EndpointType  *string `json:"EndpointType,omitempty" xml:"EndpointType,omitempty"`
+	EndpointType *string `json:"EndpointType,omitempty" xml:"EndpointType,omitempty"`
+	// The list of public access whitelist entries to delete for the instance.
 	EntriesShrink *string `json:"Entries,omitempty" xml:"Entries,omitempty"`
 	// Deprecated
 	//
@@ -47,11 +48,11 @@ type DeleteInstanceEndpointAclPolicyShrinkRequest struct {
 	//
 	// cri-xkx6vujuhay0****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The module for which the access policy is set. Valid values:
+	// The module for which the access policy is configured. Valid values:
 	//
-	// - `Registry`: access to the image repository
+	// - `Registry`: Access to the image repository.
 	//
-	// - `Chart`: access to Helm Chart
+	// - `Chart`: Access to Helm Chart.
 	//
 	// example:
 	//

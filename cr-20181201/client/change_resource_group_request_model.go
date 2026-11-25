@@ -18,7 +18,7 @@ type iChangeResourceGroupRequest interface {
 }
 
 type ChangeResourceGroupRequest struct {
-	// The ID of the resource group to which you want to move the resource.
+	// The ID of the destination resource group.
 	//
 	// This parameter is required.
 	//
@@ -26,7 +26,7 @@ type ChangeResourceGroupRequest struct {
 	//
 	// rg-aekz5nlvlaksnvi
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The ID of the resource.
+	// The resource ID.
 	//
 	// This parameter is required.
 	//
@@ -34,7 +34,7 @@ type ChangeResourceGroupRequest struct {
 	//
 	// cri-8qong6ve5p3mhlgt
 	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
-	// The ID of the region.
+	// The region ID.
 	//
 	// This parameter is required.
 	//

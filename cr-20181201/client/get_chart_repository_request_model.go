@@ -18,7 +18,7 @@ type iGetChartRepositoryRequest interface {
 }
 
 type GetChartRepositoryRequest struct {
-	// The ID of the Container Registry instance.
+	// The instance ID.
 	//
 	// This parameter is required.
 	//
@@ -26,7 +26,7 @@ type GetChartRepositoryRequest struct {
 	//
 	// cri-kmsiwlxxdcva****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The name of the repository.
+	// The repository name.
 	//
 	// This parameter is required.
 	//
@@ -34,7 +34,7 @@ type GetChartRepositoryRequest struct {
 	//
 	// test
 	RepoName *string `json:"RepoName,omitempty" xml:"RepoName,omitempty"`
-	// The name of the namespace.
+	// The namespace name.
 	//
 	// This parameter is required.
 	//

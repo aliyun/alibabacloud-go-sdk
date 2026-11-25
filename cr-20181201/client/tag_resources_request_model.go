@@ -20,7 +20,7 @@ type iTagResourcesRequest interface {
 }
 
 type TagResourcesRequest struct {
-	// The region ID of the resources.
+	// The region ID.
 	//
 	// This parameter is required.
 	//
@@ -28,11 +28,11 @@ type TagResourcesRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The resource IDs. You can specify a maximum of 20 resource IDs.
+	// The resource IDs. You can specify up to 20 resources.
 	//
 	// This parameter is required.
 	ResourceId []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
-	// The type of the resource. Instance resources are supported.
+	// The resource type. Currently supports Instance resources.
 	//
 	// This parameter is required.
 	//
@@ -40,7 +40,7 @@ type TagResourcesRequest struct {
 	//
 	// Instance
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// The tag list.
+	// The tags.
 	//
 	// This parameter is required.
 	Tag []*TagResourcesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
@@ -106,7 +106,7 @@ func (s *TagResourcesRequest) Validate() error {
 type TagResourcesRequestTag struct {
 	// The tag key of the resource. You can specify up to 20 tag keys. The tag key cannot be an empty string.
 	//
-	// A tag key can be up to 128 characters in length. It cannot start with acs: or aliyun, and cannot contain http:// or https://.
+	// A tag key can be up to 128 characters in length, and cannot start with aliyun or acs:, or contain http:// or https://.
 	//
 	// example:
 	//
@@ -114,7 +114,7 @@ type TagResourcesRequestTag struct {
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
 	// The tag value of the resource. You can specify up to 20 tag values. The tag value can be an empty string.
 	//
-	// A tag value can be up to 128 characters in length. It cannot start with acs: or aliyun, and cannot contain http:// or https://.
+	// A tag value can be up to 128 characters in length, and cannot start with aliyun or acs:, or contain http:// or https://.
 	//
 	// example:
 	//

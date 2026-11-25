@@ -32,7 +32,7 @@ type CreateChainResponseBody struct {
 	//
 	// success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// Indicates whether the operation is successful.
+	// Indicates whether the request is successful.
 	//
 	// example:
 	//

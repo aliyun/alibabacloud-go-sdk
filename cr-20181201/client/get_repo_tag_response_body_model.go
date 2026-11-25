@@ -32,65 +32,65 @@ type iGetRepoTagResponseBody interface {
 }
 
 type GetRepoTagResponseBody struct {
-	// The ID of the image.
+	// The return code.
 	//
 	// example:
 	//
 	// success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The size of the image. Unit: Bytes.
+	// The digest value.
 	//
 	// example:
 	//
 	// 67bfbcc12b67936ec7f867927817cbb071832b873dbcaed312a1930ba5f1****
 	Digest *string `json:"Digest,omitempty" xml:"Digest,omitempty"`
-	// crr-tquyps22md8p****
+	// The time when the image was created.
 	//
 	// example:
 	//
 	// 1572839125000
 	ImageCreate *int64 `json:"ImageCreate,omitempty" xml:"ImageCreate,omitempty"`
-	// Image ID
+	// The image ID.
 	//
 	// example:
 	//
 	// 45023655bf39c382e26a8607d057c27871dee163c1ecf48cc1ebf2a1****
 	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
-	// The number of milliseconds that have elapsed since the image was last updated.
+	// The size of the image.
 	//
 	// example:
 	//
 	// 27107966
 	ImageSize *int64 `json:"ImageSize,omitempty" xml:"ImageSize,omitempty"`
-	// The ID of the request.
+	// The time when the image was last updated. This value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
 	// 1572875608000
 	ImageUpdate *int64 `json:"ImageUpdate,omitempty" xml:"ImageUpdate,omitempty"`
-	// The status of the image. Valid values:
-	//
-	// 	- `NORMAL`: The image is normal.
-	//
-	// 	- `DELETING`: The image is being deleted.
+	// Indicates whether the request was successful.
 	//
 	// example:
 	//
 	// true
 	IsSuccess *bool `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
-	// 1.0
+	// The request ID.
 	//
 	// example:
 	//
 	// 031572FA-7D8F-4C05-B790-1071E0E05DE6
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The ID of the instance.
+	// The status of the image. Valid values:
+	//
+	// - `NORMAL`: Normal.
+	//
+	// - `DELETING`: The image is being deleted.
 	//
 	// example:
 	//
 	// NORMAL
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The version of the repository.
+	// The repository tag.
 	//
 	// example:
 	//

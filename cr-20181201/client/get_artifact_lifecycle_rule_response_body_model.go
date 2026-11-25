@@ -50,7 +50,7 @@ type iGetArtifactLifecycleRuleResponseBody interface {
 }
 
 type GetArtifactLifecycleRuleResponseBody struct {
-	// Indicates whether automatic execution is enabled.
+	// Indicates whether the rule is automatically executed.
 	//
 	// example:
 	//
@@ -62,12 +62,14 @@ type GetArtifactLifecycleRuleResponseBody struct {
 	//
 	// success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The creation time. This value is a UNIX timestamp in milliseconds.
+	// The creation time. The value is a UNIX timestamp. Unit: milliseconds.
 	//
 	// example:
 	//
 	// 1571926439000
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// Indicates whether DryRun mode is enabled. When DryRun mode is enabled, only lifecycle task scanning is performed, and actual data cleanup is not executed. This mode is disabled by default.
+	//
 	// example:
 	//
 	// false
@@ -80,6 +82,10 @@ type GetArtifactLifecycleRuleResponseBody struct {
 	//
 	// true
 	EnableDeleteTag *bool `json:"EnableDeleteTag,omitempty" xml:"EnableDeleteTag,omitempty"`
+	// Indicates whether artifact cleanup is enabled.
+	//
+	// Only one of this parameter and EnableDeleteTag can be set to true.
+	//
 	// example:
 	//
 	// False
@@ -100,7 +106,7 @@ type GetArtifactLifecycleRuleResponseBody struct {
 	//
 	// true
 	IsSuccess *bool `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
-	// The last modification time. This value is a UNIX timestamp in milliseconds.
+	// The last modification time. The value is a UNIX timestamp. Unit: milliseconds.
 	//
 	// example:
 	//
@@ -112,7 +118,7 @@ type GetArtifactLifecycleRuleResponseBody struct {
 	//
 	// test-namespace
 	NamespaceName *string `json:"NamespaceName,omitempty" xml:"NamespaceName,omitempty"`
-	// The next execution time. This value is a UNIX timestamp in milliseconds.
+	// The next execution time. The value is a UNIX timestamp. Unit: milliseconds.
 	//
 	// example:
 	//
@@ -132,7 +138,7 @@ type GetArtifactLifecycleRuleResponseBody struct {
 	//
 	// 724402D0-75CD-4794-BC20-7D37208****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The number of images to retain.
+	// The number of retained images.
 	//
 	// example:
 	//
@@ -156,7 +162,7 @@ type GetArtifactLifecycleRuleResponseBody struct {
 	//
 	// INSTANCE
 	Scope *string `json:"Scope,omitempty" xml:"Scope,omitempty"`
-	// The regular expression used to match image versions to retain.
+	// The regular expression used to retain image versions.
 	//
 	// example:
 	//

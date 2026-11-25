@@ -28,7 +28,7 @@ type iListRepositoryRequest interface {
 }
 
 type ListRepositoryRequest struct {
-	// The instance ID.
+	// The instance ID. You can call the ListInstance operation to query existing Enterprise instances.
 	//
 	// This parameter is required.
 	//
@@ -36,17 +36,17 @@ type ListRepositoryRequest struct {
 	//
 	// cri-kmsiwlxxdcva****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The maximum number of entries to return.
+	// The maximum number of returned results.
 	//
-	// Use this parameter together with NextToken. This parameter takes priority over PageNo and PageSize.
+	// Use this parameter together with the NextToken parameter. This parameter takes precedence over PageNo and PageSize.
 	//
 	// example:
 	//
 	// 30
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The pagination token. If a next page exists, the service returns a NextToken value. Pass this value in the next request.
+	// The token for the next page. If a next page exists, the service returns a NextToken value, which you can pass in the next request.
 	//
-	// Use this parameter together with MaxResults. This parameter takes priority over PageNo and PageSize.
+	// Use this parameter together with the MaxResults parameter. This parameter takes precedence over PageNo and PageSize.
 	//
 	// example:
 	//
@@ -62,7 +62,7 @@ type ListRepositoryRequest struct {
 	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
 	// Deprecated
 	//
-	// The number of entries per page. The maximum value is 100. If the specified value exceeds 100, the system returns a parameter error or uses 100 as the actual maximum number of entries returned.
+	// The number of entries per page. Maximum value: 100. If the specified value exceeds 100, the system returns a parameter error or uses 100 as the maximum number of returned entries.
 	//
 	// example:
 	//
@@ -74,7 +74,7 @@ type ListRepositoryRequest struct {
 	//
 	// repo-test
 	RepoName *string `json:"RepoName,omitempty" xml:"RepoName,omitempty"`
-	// The repository namespace name.
+	// The name of the repository namespace.
 	//
 	// example:
 	//
@@ -84,7 +84,7 @@ type ListRepositoryRequest struct {
 	//
 	// - `NORMAL`: Normal.
 	//
-	// - `DELETING`: Being deleted.
+	// - `DELETING`: Deleting.
 	//
 	// - `DELETED`: Deleted.
 	//

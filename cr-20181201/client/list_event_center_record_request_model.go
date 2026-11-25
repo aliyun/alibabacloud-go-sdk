@@ -26,23 +26,23 @@ type iListEventCenterRecordRequest interface {
 }
 
 type ListEventCenterRecordRequest struct {
-	// The type of the event. Valid values:
+	// The event type. Valid values:
 	//
-	// 	- `cr:Artifact:DeliveryChainCompleted`: The delivery chain is processed.
+	// - `cr:Artifact:DeliveryChainCompleted`: Delivery chain processing completed.
 	//
-	// 	- `cr:Artifact:SynchronizationCompleted`: The image is replicated.
+	// - `cr:Artifact:SynchronizationCompleted`: Image synchronization completed.
 	//
-	// 	- `cr:Artifact:BuildCompleted`: The image is built.
+	// - `cr:Artifact:BuildCompleted`: Image building completed.
 	//
-	// 	- `cr:Artifact:ScanCompleted`: The image is scanned.
+	// - `cr:Artifact:ScanCompleted`: Image scanning completed.
 	//
-	// 	- `cr:Artifact:SigningCompleted`: The image is signed.
+	// - `cr:Artifact:SigningCompleted`: Image signing completed.
 	//
 	// example:
 	//
 	// cr:Artifact:DeliveryChainCompleted
 	EventType *string `json:"EventType,omitempty" xml:"EventType,omitempty"`
-	// The ID of the instance.
+	// The instance ID.
 	//
 	// This parameter is required.
 	//
@@ -50,31 +50,31 @@ type ListEventCenterRecordRequest struct {
 	//
 	// cri-kmsiwlxxdcva****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The number of the page to return.
+	// The page number.
 	//
 	// example:
 	//
 	// 1
 	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
-	// The number of entries to return on each page.
+	// The page size.
 	//
 	// example:
 	//
 	// 30
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The name of the repository.
+	// The repository name.
 	//
 	// example:
 	//
 	// test
 	RepoName *string `json:"RepoName,omitempty" xml:"RepoName,omitempty"`
-	// The name of the namespace to which the repository belongs.
+	// The repository namespace name.
 	//
 	// example:
 	//
 	// test
 	RepoNamespaceName *string `json:"RepoNamespaceName,omitempty" xml:"RepoNamespaceName,omitempty"`
-	// The ID of the event notification rule.
+	// The event rule ID.
 	//
 	// example:
 	//

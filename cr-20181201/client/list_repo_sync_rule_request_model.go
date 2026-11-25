@@ -52,7 +52,7 @@ type ListRepoSyncRuleRequest struct {
 	//
 	// 30
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The image repository name.
+	// The repository name.
 	//
 	// example:
 	//

@@ -48,7 +48,7 @@ type GetInstanceCustomizedDomainResponseBody struct {
 	//
 	// success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The creation time.
+	// The creation time. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
@@ -84,7 +84,7 @@ type GetInstanceCustomizedDomainResponseBody struct {
 	//
 	// true
 	IsSuccess *bool `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
-	// The modification time.
+	// The modification time. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//

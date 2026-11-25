@@ -20,7 +20,7 @@ type iUpdateRepoBuildRuleResponseBody interface {
 }
 
 type UpdateRepoBuildRuleResponseBody struct {
-	// The ID of the building rule.
+	// The build rule ID.
 	//
 	// example:
 	//
@@ -32,17 +32,17 @@ type UpdateRepoBuildRuleResponseBody struct {
 	//
 	// success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// Indicates whether the request is successful. Valid values:
+	// Specifies whether the contact is updated. Valid values:
 	//
-	// 	- `true`: The request is successful.
+	// - `true`: The update is successful.
 	//
-	// 	- `false`: The request fails.
+	// - `false`: The update failed.
 	//
 	// example:
 	//
 	// true
 	IsSuccess *bool `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

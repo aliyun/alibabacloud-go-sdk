@@ -36,83 +36,89 @@ type iGetInstanceResponseBody interface {
 }
 
 type GetInstanceResponseBody struct {
-	// Return value
+	// The return code.
 	//
 	// example:
 	//
 	// success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The time when the instance was created.
+	// The creation time, in UNIX timestamp format. Unit: milliseconds.
 	//
 	// example:
 	//
 	// 1571926439000
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The ID of the Container Registry instance.
+	// The instance ID.
 	//
 	// example:
 	//
 	// cri-xkx6vujuhay0****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The issue occurs on the instance.
+	// The instance issue.
 	//
 	// example:
 	//
-	// 实例问题，取值：
+	// The instance issue. Valid values:
 	//
-	// OSS_TOO_MANY_BUCKETS：OSS Bucket 数量超限
+	// OSS_TOO_MANY_BUCKETS: The number of OSS buckets exceeds the limit.
 	//
-	// OSS_BUCKET_ALREADY_EXISTS：同名 OSS Bucket 已存在
+	// OSS_BUCKET_ALREADY_EXISTS: An OSS bucket with the same name already exists.
 	//
-	// OSS_SERVICE_ROLE_UNAUTHORIZED：OSS 权限未授权
+	// OSS_SERVICE_ROLE_UNAUTHORIZED: OSS permissions are not authorized.
 	//
-	// USER_NOT_REGISTERED_BY_REAL_NAME：国际站账号在购买中国站 OSS Bucket 时未进行实名认证
+	// USER_NOT_REGISTERED_BY_REAL_NAME: The China site account has not completed real-name verification when purchasing an OSS bucket on the China site
 	InstanceIssue *string `json:"InstanceIssue,omitempty" xml:"InstanceIssue,omitempty"`
-	// The name of the instance.
+	// The instance name.
 	//
 	// example:
 	//
 	// shanghai-instance1
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	// The edition of the instance. Valid values: Enterprise_Basic: Basic Edition instances Enterprise_Standard: Standard Edition instances Enterprise_Advanced: Advanced Edition instances
+	// The instance specification. Valid values:
+	//
+	// Enterprise_Basic: basic instance.
+	//
+	// Enterprise_Standard: standard instance.
+	//
+	// Enterprise_Advanced: advanced instance.
 	//
 	// example:
 	//
 	// Enterprise_Basic
 	InstanceSpecification *string `json:"InstanceSpecification,omitempty" xml:"InstanceSpecification,omitempty"`
-	// The status of the instance. Valid values:
+	// The instance status. Valid values:
 	//
-	// 	- `PENDING`: The instance is being initialized.
+	// - `PENDING`: Initializing.
 	//
-	// 	- `INIT_ERROR`: The instance failed to be initialized.
+	// - `INIT_ERROR`: Initialization failed.
 	//
-	// 	- `STARTING`: The instance is being started.
+	// - `STARTING`: Starting.
 	//
-	// 	- `RUNNING`: The instance is running.
+	// - `RUNNING`: Running.
 	//
-	// 	- `STOPPING`: The instance is being stopped.
+	// - `STOPPING`: Stopping.
 	//
-	// 	- `STOPPED`: The instance is stopped.
+	// - `STOPPED`: Stopped.
 	//
-	// 	- `DELETING`: The instance is being deleted.
+	// - `DELETING`: Deleting.
 	//
-	// 	- `DELETED`: The instance is deleted.
+	// - `DELETED`: Deleted.
 	//
 	// example:
 	//
 	// RUNNING
 	InstanceStatus *string `json:"InstanceStatus,omitempty" xml:"InstanceStatus,omitempty"`
-	// Indicates whether the request is successful. Valid values:
+	// Indicates whether the call was successful. Valid values:
 	//
-	// 	- `true`: The request is successful.
+	// - `true`: The call was successful.
 	//
-	// 	- `false`: The request fails.
+	// - `false`: The call failed.
 	//
 	// example:
 	//
 	// true
 	IsSuccess *bool `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
-	// The time when the instance was last modified.
+	// The modification time, in UNIX timestamp format. Unit: milliseconds.
 	//
 	// example:
 	//
@@ -124,13 +130,13 @@ type GetInstanceResponseBody struct {
 	//
 	// 6EF34B18-4228-470C-860C-D28597CF010E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The ID of the resource group to which the instance belongs.
+	// The resource group ID.
 	//
 	// example:
 	//
 	// rg-acfmv36i4isx****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The tags of the instance.
+	// The tag collection of the instance.
 	Tags []*GetInstanceResponseBodyTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 }
 

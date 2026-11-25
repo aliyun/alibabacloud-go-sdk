@@ -16,8 +16,18 @@ type iAccessControlEntry interface {
 }
 
 type AccessControlEntry struct {
+	// The description of the whitelist entry.
+	//
+	// example:
+	//
+	// test
 	Comment *string `json:"Comment,omitempty" xml:"Comment,omitempty"`
-	Entry   *string `json:"Entry,omitempty" xml:"Entry,omitempty"`
+	// The IP address or CIDR block that is allowed to access the public endpoint of the instance.
+	//
+	// example:
+	//
+	// 192.168.1.1/32
+	Entry *string `json:"Entry,omitempty" xml:"Entry,omitempty"`
 }
 
 func (s AccessControlEntry) String() string {

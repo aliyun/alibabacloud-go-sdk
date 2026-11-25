@@ -32,9 +32,9 @@ type iUpdateRepoBuildRuleRequest interface {
 }
 
 type UpdateRepoBuildRuleRequest struct {
-	// Building arguments.
+	// The build parameters.
 	BuildArgs []*string `json:"BuildArgs,omitempty" xml:"BuildArgs,omitempty" type:"Repeated"`
-	// The ID of the building rule.
+	// The build rule ID.
 	//
 	// This parameter is required.
 	//
@@ -42,7 +42,7 @@ type UpdateRepoBuildRuleRequest struct {
 	//
 	// crbr-ly77w5i3t31f****
 	BuildRuleId *string `json:"BuildRuleId,omitempty" xml:"BuildRuleId,omitempty"`
-	// The path of the Dockerfile.
+	// The path to the Dockerfile.
 	//
 	// example:
 	//
@@ -54,13 +54,13 @@ type UpdateRepoBuildRuleRequest struct {
 	//
 	// Dockerfile
 	DockerfileName *string `json:"DockerfileName,omitempty" xml:"DockerfileName,omitempty"`
-	// The tag of the image.
+	// The image tag version.
 	//
 	// example:
 	//
 	// v0.9.5
 	ImageTag *string `json:"ImageTag,omitempty" xml:"ImageTag,omitempty"`
-	// The ID of the instance.
+	// The instance ID.
 	//
 	// This parameter is required.
 	//
@@ -68,41 +68,41 @@ type UpdateRepoBuildRuleRequest struct {
 	//
 	// cri-kmsiwlxxdcva****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// Architecture for image building. Valid values:
+	// The architecture of the image to build. Valid values:
 	//
-	// 	- `linux/amd64`
+	// - `linux/amd64`
 	//
-	// 	- `linux/arm64`
+	// - `linux/arm64`
 	//
-	// 	- `linux/386`
+	// - `linux/386`
 	//
-	// 	- `linux/arm/v7`
+	// - `linux/arm/v7`
 	//
-	// 	- `linux/arm/v6`
+	// - `linux/arm/v6`
 	//
-	// Default value: `linux/amd64`
+	// Default value: `linux/amd64`.
 	//
 	// example:
 	//
 	// linux/amd64
 	Platforms []*string `json:"Platforms,omitempty" xml:"Platforms,omitempty" type:"Repeated"`
-	// The name of the push that triggers the building rule.
+	// The trigger name.
 	//
 	// example:
 	//
 	// master
 	PushName *string `json:"PushName,omitempty" xml:"PushName,omitempty"`
-	// The type of the push that triggers the building rule. Valid values:
+	// The push type. Valid values:
 	//
-	// 	- `GIT_TAG`: tag push
+	// - `GIT_TAG`: Triggered by a tag.
 	//
-	// 	- `GIT_BRANCH`: branch push
+	// - `GIT_BRANCH`: Triggered by a branch.
 	//
 	// example:
 	//
 	// GIT_BRANCH
 	PushType *string `json:"PushType,omitempty" xml:"PushType,omitempty"`
-	// The ID of the image repository.
+	// The image repository ID.
 	//
 	// This parameter is required.
 	//

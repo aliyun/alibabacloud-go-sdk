@@ -20,7 +20,7 @@ type iListEventCenterRuleNameResponseBody interface {
 }
 
 type ListEventCenterRuleNameResponseBody struct {
-	// The return value.
+	// The return code.
 	//
 	// example:
 	//
@@ -32,13 +32,13 @@ type ListEventCenterRuleNameResponseBody struct {
 	//
 	// true
 	IsSuccess *bool `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 031572FA-7D8F-4C05-B790-1071E0E05DE6
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The list of names of event notification rules.
+	// The list of event rule names.
 	//
 	// example:
 	//
@@ -104,13 +104,13 @@ func (s *ListEventCenterRuleNameResponseBody) Validate() error {
 }
 
 type ListEventCenterRuleNameResponseBodyRuleNames struct {
-	// The ID of the event notification rule.
+	// The event rule ID.
 	//
 	// example:
 	//
 	// crecr-n6pbhgjxtl*****
 	RuleId *string `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
-	// The name of the event notification rule.
+	// The event rule name.
 	//
 	// example:
 	//

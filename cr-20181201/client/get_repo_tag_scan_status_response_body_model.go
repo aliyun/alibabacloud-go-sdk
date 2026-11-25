@@ -22,17 +22,17 @@ type iGetRepoTagScanStatusResponseBody interface {
 }
 
 type GetRepoTagScanStatusResponseBody struct {
-	// The return code.
+	// The return value.
 	//
 	// example:
 	//
 	// success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// Specifies whether the request was successful. Valid values:
+	// Indicates whether the API call was successful. Valid values:
 	//
-	// - `true`: The request was successful.
+	// - `true`: The API call succeeded.
 	//
-	// - `false`: The request failed.
+	// - `false`: The API call failed.
 	//
 	// example:
 	//
@@ -46,23 +46,23 @@ type GetRepoTagScanStatusResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The scan engine type. Valid values:
 	//
-	// - `ACR_SCAN_SERVICE`: the ACR Trivy scan engine.
+	// - `ACR_SCAN_SERVICE`: The ACR Trivy scan engine.
 	//
-	// - `SAS_SCAN_SERVICE`: the Cloud Security scan engine.
+	// - `SAS_SCAN_SERVICE`: The cloud security scan engine.
 	//
 	// example:
 	//
 	// ACR_SCAN_SERVICE
 	ScanService *string `json:"ScanService,omitempty" xml:"ScanService,omitempty"`
-	// The scan status of the image. Valid values:
+	// The scan status of the image version. Valid values:
 	//
-	// - `SCANNING`: The image is being scanned.
+	// - `SCANNING`: Scanning.
 	//
-	// - `COMPLETE`: The scan is complete.
+	// - `COMPLETE`: Completed.
 	//
-	// - `FAILED`: The scan failed.
+	// - `FAILED`: Failed.
 	//
-	// - `RETRYING`: The scan is being retried.
+	// - `RETRYING`: Retrying.
 	//
 	// example:
 	//

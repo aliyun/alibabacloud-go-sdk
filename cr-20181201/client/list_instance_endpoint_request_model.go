@@ -34,7 +34,7 @@ type ListInstanceEndpointRequest struct {
 	//
 	// example:
 	//
-	// Registry
+	// Chart
 	ModuleName *string `json:"ModuleName,omitempty" xml:"ModuleName,omitempty"`
 	// Specify whether to return endpoints in simple mode. If yes, no access control information about the endpoint is returned.
 	//

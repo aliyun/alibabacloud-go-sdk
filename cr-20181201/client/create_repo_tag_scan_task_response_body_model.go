@@ -18,15 +18,15 @@ type iCreateRepoTagScanTaskResponseBody interface {
 }
 
 type CreateRepoTagScanTaskResponseBody struct {
-	// The return code.
+	// The return value.
 	//
 	// example:
 	//
 	// success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// Indicates whether the API call succeeded. Valid values:
+	// Indicates whether the API call was successful. Valid values:
 	//
-	// - `true`: The API call succeeded.
+	// - `true`: The API call was successful.
 	//
 	// - `false`: The API call failed.
 	//

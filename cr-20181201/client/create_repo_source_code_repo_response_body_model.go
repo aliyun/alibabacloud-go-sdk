@@ -18,7 +18,7 @@ type iCreateRepoSourceCodeRepoResponseBody interface {
 }
 
 type CreateRepoSourceCodeRepoResponseBody struct {
-	// The return value.
+	// The return code.
 	//
 	// example:
 	//
@@ -30,7 +30,7 @@ type CreateRepoSourceCodeRepoResponseBody struct {
 	//
 	// true
 	IsSuccess *bool `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

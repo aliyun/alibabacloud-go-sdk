@@ -38,53 +38,53 @@ type iGetChartRepositoryResponseBody interface {
 }
 
 type GetChartRepositoryResponseBody struct {
-	// The return value.
+	// The return code.
 	//
 	// example:
 	//
 	// success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The time when the chart repository was created.
+	// The time when the chart repository was created. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
 	// 1563767620000
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The ID of the instance.
+	// The instance ID.
 	//
 	// example:
 	//
 	// cri-kmsiwlxxdcva****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// Indicates whether the request is successful. Valid values:
+	// Indicates whether the API call is successful. Valid values:
 	//
-	// 	- `true`: The request is successful.
+	// - `true`: The API call is successful.
 	//
-	// 	- `false`: The request fails.
+	// - `false`: The API call failed.
 	//
 	// example:
 	//
 	// true
 	IsSuccess *bool `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
-	// The time when the chart repository was last modified.
+	// The time when the chart repository was last modified. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
 	// 1563767700000
 	ModifiedTime *int64 `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
-	// The ID of the chart repository.
+	// The chart repository ID.
 	//
 	// example:
 	//
 	// crcr-c7letfwev5oq****
 	RepoId *string `json:"RepoId,omitempty" xml:"RepoId,omitempty"`
-	// The name of the chart repository.
+	// The chart repository name.
 	//
 	// example:
 	//
 	// test
 	RepoName *string `json:"RepoName,omitempty" xml:"RepoName,omitempty"`
-	// The name of the namespace to which the chart repository belongs.
+	// The namespace to which the chart repository belongs.
 	//
 	// example:
 	//
@@ -92,9 +92,11 @@ type GetChartRepositoryResponseBody struct {
 	RepoNamespaceName *string `json:"RepoNamespaceName,omitempty" xml:"RepoNamespaceName,omitempty"`
 	// The status of the chart repository. Valid values:
 	//
-	// 	- `NORMAL`: The repository is normal.
+	// - `NORMAL`: Normal.
 	//
-	// 	- `DELETING`: The repository is being deleted.
+	//
+	//
+	// - `DELETING`: Being deleted.
 	//
 	// example:
 	//
@@ -102,9 +104,9 @@ type GetChartRepositoryResponseBody struct {
 	RepoStatus *string `json:"RepoStatus,omitempty" xml:"RepoStatus,omitempty"`
 	// The type of the chart repository. Valid values:
 	//
-	// 	- `PUBLIC`: a public repository
+	// - `PUBLIC`: public repository.
 	//
-	// 	- `PRIVATE`: a private repository
+	// - `PRIVATE`: private repository.
 	//
 	// example:
 	//
@@ -116,13 +118,13 @@ type GetChartRepositoryResponseBody struct {
 	//
 	// A3F6AB56-DEF4-4FF5-8DE4-680362C0E21F
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The ID of the resource group.
+	// The resource group ID.
 	//
 	// example:
 	//
 	// rg-acfmv36i4is****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The summary about the chart repository.
+	// The chart repository summary.
 	//
 	// example:
 	//

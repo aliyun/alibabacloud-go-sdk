@@ -32,13 +32,13 @@ type GetStorageDomainRoutingRuleResponseBody struct {
 	//
 	// success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The creation time.
+	// The creation time. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
 	// 1571926439000
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The modification time.
+	// The modification time. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
@@ -50,7 +50,7 @@ type GetStorageDomainRoutingRuleResponseBody struct {
 	//
 	// D4978DCC-ECBD-40B0-A714-EE695******
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The routing list.
+	// The list of routes.
 	Routes []*RouteItem `json:"Routes,omitempty" xml:"Routes,omitempty" type:"Repeated"`
 	// The rule ID.
 	//
@@ -58,7 +58,7 @@ type GetStorageDomainRoutingRuleResponseBody struct {
 	//
 	// crsdr-luq6qiegzvx****
 	RuleId *string `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
-	// The request status identifier.
+	// Indicates whether the request was successful.
 	//
 	// example:
 	//

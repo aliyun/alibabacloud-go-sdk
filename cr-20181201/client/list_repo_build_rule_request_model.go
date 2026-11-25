@@ -20,7 +20,7 @@ type iListRepoBuildRuleRequest interface {
 }
 
 type ListRepoBuildRuleRequest struct {
-	// The ID of the instance.
+	// The instance ID.
 	//
 	// This parameter is required.
 	//
@@ -34,13 +34,13 @@ type ListRepoBuildRuleRequest struct {
 	//
 	// 1
 	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
-	// The number of entries to return per page.
+	// The page size.
 	//
 	// example:
 	//
 	// 30
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the image repository.
+	// The image repository ID.
 	//
 	// This parameter is required.
 	//

@@ -26,17 +26,17 @@ type iGetArtifactSubscriptionTaskResultResponseBody interface {
 }
 
 type GetArtifactSubscriptionTaskResultResponseBody struct {
-	// The return value.
+	// The return code.
 	//
 	// example:
 	//
 	// success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// Indicates whether the request is successful. Valid values:
+	// Specifies whether the call was successful. Valid values:
 	//
-	// 	- `true`: The request is successful.
+	// - `true`: The call was successful.
 	//
-	// 	- `false`: The request fails.
+	// - `false`: The call failed.
 	//
 	// example:
 	//
@@ -60,9 +60,9 @@ type GetArtifactSubscriptionTaskResultResponseBody struct {
 	//
 	// 0A8768F6-9B47-5127-A075-9CFB9F79181F
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The result of the artifact subscription task.
+	// The image task results.
 	TaskResults []*GetArtifactSubscriptionTaskResultResponseBodyTaskResults `json:"TaskResults,omitempty" xml:"TaskResults,omitempty" type:"Repeated"`
-	// The total number of entries returned.
+	// The total number of entries.
 	//
 	// example:
 	//
@@ -155,7 +155,7 @@ func (s *GetArtifactSubscriptionTaskResultResponseBody) Validate() error {
 }
 
 type GetArtifactSubscriptionTaskResultResponseBodyTaskResults struct {
-	// The end time of the subscription task.
+	// The end time. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
@@ -167,31 +167,37 @@ type GetArtifactSubscriptionTaskResultResponseBodyTaskResults struct {
 	//
 	// cri-isj2wgaw4z9****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The name of the namespace.
+	// The error message returned when the task fails.
+	//
+	// example:
+	//
+	// Tag not found.
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The namespace.
 	//
 	// example:
 	//
 	// test-ns
 	NamespaceName *string `json:"NamespaceName,omitempty" xml:"NamespaceName,omitempty"`
-	// The name of the repository.
+	// The repository name.
 	//
 	// example:
 	//
 	// test-reop
 	RepoName *string `json:"RepoName,omitempty" xml:"RepoName,omitempty"`
-	// The result of the task.
+	// The result.
 	//
 	// example:
 	//
 	// SUCCESS
 	Result *string `json:"Result,omitempty" xml:"Result,omitempty"`
-	// The start time of the subscription task.
+	// The start time. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
 	// 1691719501000
 	StartTime *int64 `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The status of the task.
+	// The task status.
 	//
 	// example:
 	//
@@ -225,6 +231,10 @@ func (s *GetArtifactSubscriptionTaskResultResponseBodyTaskResults) GetEndTime() 
 
 func (s *GetArtifactSubscriptionTaskResultResponseBodyTaskResults) GetInstanceId() *string {
 	return s.InstanceId
+}
+
+func (s *GetArtifactSubscriptionTaskResultResponseBodyTaskResults) GetMessage() *string {
+	return s.Message
 }
 
 func (s *GetArtifactSubscriptionTaskResultResponseBodyTaskResults) GetNamespaceName() *string {
@@ -262,6 +272,11 @@ func (s *GetArtifactSubscriptionTaskResultResponseBodyTaskResults) SetEndTime(v 
 
 func (s *GetArtifactSubscriptionTaskResultResponseBodyTaskResults) SetInstanceId(v string) *GetArtifactSubscriptionTaskResultResponseBodyTaskResults {
 	s.InstanceId = &v
+	return s
+}
+
+func (s *GetArtifactSubscriptionTaskResultResponseBodyTaskResults) SetMessage(v string) *GetArtifactSubscriptionTaskResultResponseBodyTaskResults {
+	s.Message = &v
 	return s
 }
 

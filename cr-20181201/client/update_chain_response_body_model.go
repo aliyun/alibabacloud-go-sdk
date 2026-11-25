@@ -18,7 +18,7 @@ type iUpdateChainResponseBody interface {
 }
 
 type UpdateChainResponseBody struct {
-	// The return value.
+	// The return code.
 	//
 	// example:
 	//
@@ -30,7 +30,7 @@ type UpdateChainResponseBody struct {
 	//
 	// true
 	IsSuccess *bool `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

@@ -18,7 +18,7 @@ type iCreateInstanceCustomizedDomainResponseBody interface {
 }
 
 type CreateInstanceCustomizedDomainResponseBody struct {
-	// The return code.
+	// The return value.
 	//
 	// example:
 	//

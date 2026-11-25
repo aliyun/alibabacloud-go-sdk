@@ -22,21 +22,21 @@ type iUpdateNamespaceRequest interface {
 }
 
 type UpdateNamespaceRequest struct {
-	// Whether to automatically create a repository when an image is pushed.
+	// Specifies whether to allow automatic creation of a repository upon push.
 	//
 	// example:
 	//
 	// true
 	AutoCreateRepo *bool `json:"AutoCreateRepo,omitempty" xml:"AutoCreateRepo,omitempty"`
-	// The default configuration for automatically created repositories.
+	// The default repository configuration.
 	DefaultRepoConfiguration *RepoConfiguration `json:"DefaultRepoConfiguration,omitempty" xml:"DefaultRepoConfiguration,omitempty"`
 	// Deprecated
 	//
-	// The default type for automatically created repositories. This parameter applies only if `AutoCreateRepo` is set to `true`. Valid values:
+	// The default repository type. Valid values:
 	//
-	// - `PUBLIC`: a public repository
+	// - `PUBLIC`: public repository
 	//
-	// - `PRIVATE`: a private repository
+	// - `PRIVATE`: private repository
 	//
 	// example:
 	//
@@ -50,7 +50,7 @@ type UpdateNamespaceRequest struct {
 	//
 	// cri-kmsiwlxxdcva****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The name of the namespace.
+	// The namespace name.
 	//
 	// This parameter is required.
 	//

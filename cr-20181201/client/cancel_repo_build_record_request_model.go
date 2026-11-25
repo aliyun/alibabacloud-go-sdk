@@ -18,7 +18,7 @@ type iCancelRepoBuildRecordRequest interface {
 }
 
 type CancelRepoBuildRecordRequest struct {
-	// The ID of the image building record.
+	// The build record ID.
 	//
 	// This parameter is required.
 	//
@@ -26,7 +26,7 @@ type CancelRepoBuildRecordRequest struct {
 	//
 	// 74FDBA62-30C0-4F22-BE7B-F1D36FD1****
 	BuildRecordId *string `json:"BuildRecordId,omitempty" xml:"BuildRecordId,omitempty"`
-	// The ID of the instance.
+	// The instance ID.
 	//
 	// This parameter is required.
 	//
@@ -34,7 +34,7 @@ type CancelRepoBuildRecordRequest struct {
 	//
 	// cri-kmsiwlxxdcva****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The ID of the image repository.
+	// The image repository ID.
 	//
 	// This parameter is required.
 	//

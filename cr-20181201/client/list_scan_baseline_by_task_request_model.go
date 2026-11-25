@@ -28,19 +28,19 @@ type iListScanBaselineByTaskRequest interface {
 }
 
 type ListScanBaselineByTaskRequest struct {
-	// The digest value of the image.
+	// The image digest value.
 	//
 	// example:
 	//
 	// sha256:1c89806cfaf66d2990e2cf1131ebd56ff24b133745a33abf1228*************
 	Digest *string `json:"Digest,omitempty" xml:"Digest,omitempty"`
-	// The ID of the Container Registry instance.
+	// The instance ID.
 	//
 	// example:
 	//
 	// cri-***********
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The level of the baseline risk.
+	// The level.
 	//
 	// example:
 	//
@@ -52,19 +52,19 @@ type ListScanBaselineByTaskRequest struct {
 	//
 	// 1
 	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
-	// The number of entries per page.
+	// The page size.
 	//
 	// example:
 	//
 	// 30
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the image repository.
+	// The repository ID.
 	//
 	// example:
 	//
 	// crr-**************
 	RepoId *string `json:"RepoId,omitempty" xml:"RepoId,omitempty"`
-	// The ID of the image scan task.
+	// The image scan task ID.
 	//
 	// example:
 	//

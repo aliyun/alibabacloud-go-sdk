@@ -26,15 +26,15 @@ type iDiagnosisIssue interface {
 }
 
 type DiagnosisIssue struct {
-	// A unique code that identifies the issue type.
+	// The event code.
 	//
 	// example:
 	//
 	// RepoNumOverLimit
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// An object that contains additional, unstructured key-value information about the issue.
+	// The additional information.
 	Extra map[string]*string `json:"Extra,omitempty" xml:"Extra,omitempty"`
-	// The time, in ISO 8601 format, when the issue was first detected.
+	// The first occurrence time of the event.
 	//
 	// Use the UTC time format: yyyy-MM-ddTHH:mm:ssZ
 	//
@@ -42,7 +42,7 @@ type DiagnosisIssue struct {
 	//
 	// 2026-01-01T00:00:00+08:00
 	FirstOccurrence *string `json:"FirstOccurrence,omitempty" xml:"FirstOccurrence,omitempty"`
-	// The time, in ISO 8601 format, when the issue was last detected.
+	// The last occurrence time of the event.
 	//
 	// Use the UTC time format: yyyy-MM-ddTHH:mm:ssZ
 	//
@@ -50,19 +50,19 @@ type DiagnosisIssue struct {
 	//
 	// 2026-01-01T00:30:00+08:00
 	LastOccurrence *string `json:"LastOccurrence,omitempty" xml:"LastOccurrence,omitempty"`
-	// Specifies the severity of the issue. Valid values are `INFO`, `WARN`, and `ERROR`.
+	// The event level.
 	//
 	// example:
 	//
 	// INFO
 	Level *string `json:"Level,omitempty" xml:"Level,omitempty"`
-	// The total number of times the issue has occurred.
+	// The number of occurrences of the event.
 	//
 	// example:
 	//
 	// 10
 	OccurrenceCount *int64 `json:"OccurrenceCount,omitempty" xml:"OccurrenceCount,omitempty"`
-	// The recommended action to resolve the issue.
+	// The Solutions.
 	//
 	// example:
 	//

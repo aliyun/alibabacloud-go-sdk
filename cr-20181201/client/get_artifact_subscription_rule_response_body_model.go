@@ -43,12 +43,14 @@ type iGetArtifactSubscriptionRuleResponseBody interface {
 	GetSourceRepoName() *string
 	SetTagCount(v int64) *GetArtifactSubscriptionRuleResponseBody
 	GetTagCount() *int64
+	SetTagList(v []*string) *GetArtifactSubscriptionRuleResponseBody
+	GetTagList() []*string
 	SetTagRegexp(v string) *GetArtifactSubscriptionRuleResponseBody
 	GetTagRegexp() *string
 }
 
 type GetArtifactSubscriptionRuleResponseBody struct {
-	// Indicates whether to enable the accelerated data transfer feature. This feature is in public preview. It optimizes scheduling policies and network paths to improve the speed of artifact subscription.
+	// Specifies whether to enable link acceleration. The subscription acceleration feature is in public preview and can improve image subscription speed through scheduling policies and network link optimization.
 	//
 	// example:
 	//
@@ -60,7 +62,7 @@ type GetArtifactSubscriptionRuleResponseBody struct {
 	//
 	// success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The time when the rule was created.
+	// The creation time. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
@@ -72,37 +74,37 @@ type GetArtifactSubscriptionRuleResponseBody struct {
 	//
 	// cri-hpdfkc6utbaq****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// Indicates whether the request was successful. Valid values:
+	// Indicates whether the API call was successful. Valid values:
 	//
-	// - `true`: The request succeeded.
+	// - `true`: The API call was successful.
 	//
-	// - `false`: The request failed.
+	// - `false`: The API call failed.
 	//
 	// example:
 	//
 	// true
 	IsSuccess *bool `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
-	// The time when the rule was last modified.
+	// The modification time. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
 	// 1638259914000
 	ModifiedTime *int64 `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
-	// The destination ACR namespace.
+	// The ACR namespace.
 	//
 	// example:
 	//
 	// test-ns
 	NamespaceName *string `json:"NamespaceName,omitempty" xml:"NamespaceName,omitempty"`
-	// Indicates whether to overwrite the existing images that have the same tag in the destination repository.
+	// Specifies whether to overwrite images.
 	//
 	// example:
 	//
 	// true
 	Override *bool `json:"Override,omitempty" xml:"Override,omitempty"`
-	// The operating systems and architectures. If a source repository contains multi-architecture images, only images that match the specified platforms are synchronized to the destination repository of the Enterprise Edition instance.
+	// The operating system and architecture. If the source repository contains multi-architecture images, only images with the specified operating system and architecture are subscribed to the destination repository of the Enterprise instance.
 	Platform []*string `json:"Platform,omitempty" xml:"Platform,omitempty" type:"Repeated"`
-	// The destination ACR repository.
+	// The ACR repository.
 	//
 	// example:
 	//
@@ -120,7 +122,11 @@ type GetArtifactSubscriptionRuleResponseBody struct {
 	//
 	// crasr-mdbpung4i1rm****
 	RuleId *string `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
-	// The domain name of the artifact source.
+	// The domain name of the source image repository for the subscription rule.
+	//
+	// example:
+	//
+	// registry-1.docker.io
 	SourceDomain *string `json:"SourceDomain,omitempty" xml:"SourceDomain,omitempty"`
 	// The source namespace.
 	//
@@ -140,13 +146,19 @@ type GetArtifactSubscriptionRuleResponseBody struct {
 	//
 	// nginx
 	SourceRepoName *string `json:"SourceRepoName,omitempty" xml:"SourceRepoName,omitempty"`
-	// The number of images to subscribe to.
+	// The number of subscribed images.
 	//
 	// example:
 	//
 	// 1
 	TagCount *int64 `json:"TagCount,omitempty" xml:"TagCount,omitempty"`
-	// The regular expression that is used to match the tags of images in the source repository for subscription.
+	// The list of subscribed tags.
+	//
+	// example:
+	//
+	// latest
+	TagList []*string `json:"TagList,omitempty" xml:"TagList,omitempty" type:"Repeated"`
+	// The image versions in the source repository to subscribe to. Regular expressions are supported.
 	//
 	// example:
 	//
@@ -228,6 +240,10 @@ func (s *GetArtifactSubscriptionRuleResponseBody) GetSourceRepoName() *string {
 
 func (s *GetArtifactSubscriptionRuleResponseBody) GetTagCount() *int64 {
 	return s.TagCount
+}
+
+func (s *GetArtifactSubscriptionRuleResponseBody) GetTagList() []*string {
+	return s.TagList
 }
 
 func (s *GetArtifactSubscriptionRuleResponseBody) GetTagRegexp() *string {
@@ -316,6 +332,11 @@ func (s *GetArtifactSubscriptionRuleResponseBody) SetSourceRepoName(v string) *G
 
 func (s *GetArtifactSubscriptionRuleResponseBody) SetTagCount(v int64) *GetArtifactSubscriptionRuleResponseBody {
 	s.TagCount = &v
+	return s
+}
+
+func (s *GetArtifactSubscriptionRuleResponseBody) SetTagList(v []*string) *GetArtifactSubscriptionRuleResponseBody {
+	s.TagList = v
 	return s
 }
 

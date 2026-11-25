@@ -30,7 +30,7 @@ type GetRepoTagScanStatusRequest struct {
 	//
 	// 67bfbcc12b67936ec7f867927817cbb071832b873dbcaed312a1930ba5f1d529
 	Digest *string `json:"Digest,omitempty" xml:"Digest,omitempty"`
-	// The ID of the instance.
+	// The instance ID.
 	//
 	// This parameter is required.
 	//
@@ -38,19 +38,24 @@ type GetRepoTagScanStatusRequest struct {
 	//
 	// cri-2j88dtld8yel****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The ID of the repository.
+	// The image repository ID.
 	//
 	// example:
 	//
 	// crr-uf082u9dg8do****
 	RepoId *string `json:"RepoId,omitempty" xml:"RepoId,omitempty"`
-	// The ID of the image scan task.
+	// The image scan task ID.
 	//
 	// example:
 	//
 	// 838152F9-F725-5A52-A344-8972D65AC045
 	ScanTaskId *string `json:"ScanTaskId,omitempty" xml:"ScanTaskId,omitempty"`
-	ScanType   *string `json:"ScanType,omitempty" xml:"ScanType,omitempty"`
+	// The image security scan type.
+	//
+	// example:
+	//
+	// cve
+	ScanType *string `json:"ScanType,omitempty" xml:"ScanType,omitempty"`
 	// The image tag.
 	//
 	// example:

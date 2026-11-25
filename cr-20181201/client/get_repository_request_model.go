@@ -20,7 +20,7 @@ type iGetRepositoryRequest interface {
 }
 
 type GetRepositoryRequest struct {
-	// The ID of the instance.
+	// The instance ID.
 	//
 	// This parameter is required.
 	//
@@ -28,19 +28,19 @@ type GetRepositoryRequest struct {
 	//
 	// cri-kmsiwlxxdcva****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The ID of the repository.
+	// The repository ID. This API supports querying by RepoId, or by RepoNamespaceName and RepoName together.
 	//
 	// example:
 	//
 	// crr-03cuozrsqhkw****
 	RepoId *string `json:"RepoId,omitempty" xml:"RepoId,omitempty"`
-	// The name of the repository.
+	// The repository name. This API supports querying by RepoId, or by RepoNamespaceName and RepoName together.
 	//
 	// example:
 	//
 	// test
 	RepoName *string `json:"RepoName,omitempty" xml:"RepoName,omitempty"`
-	// The name of the namespace to which the repository belongs.
+	// The repository namespace name. This API supports querying by RepoId, or by RepoNamespaceName and RepoName together.
 	//
 	// example:
 	//

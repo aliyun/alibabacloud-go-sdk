@@ -20,7 +20,7 @@ type iCreateBuildRecordByRuleResponseBody interface {
 }
 
 type CreateBuildRecordByRuleResponseBody struct {
-	// The ID of the image building record.
+	// The build record ID.
 	//
 	// example:
 	//

@@ -28,7 +28,7 @@ type iListScanMaliciousFileByTaskRequest interface {
 }
 
 type ListScanMaliciousFileByTaskRequest struct {
-	// The image digest.
+	// The digest of the image.
 	//
 	// example:
 	//
@@ -40,7 +40,7 @@ type ListScanMaliciousFileByTaskRequest struct {
 	//
 	// cri-gu94qynvpwk*****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The severity of the malicious file.
+	// The severity level of the malicious file.
 	//
 	// example:
 	//
@@ -52,13 +52,13 @@ type ListScanMaliciousFileByTaskRequest struct {
 	//
 	// 1
 	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
-	// The number of entries per page. Maximum value: 100. If you specify a value greater than 100 for this parameter, the system reports a parameter error or uses 100 as the maximum value.
+	// The number of entries to return on each page. Maximum value: 100. If the value that you specify exceeds 100, the system returns a parameter error or uses 100 as the maximum number of entries to return.
 	//
 	// example:
 	//
 	// 30
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The image repository ID.
+	// The ID of the image repository.
 	//
 	// example:
 	//
@@ -70,7 +70,7 @@ type ListScanMaliciousFileByTaskRequest struct {
 	//
 	// 79ee6bc2-3288-4c56-b967-**********
 	ScanTaskId *string `json:"ScanTaskId,omitempty" xml:"ScanTaskId,omitempty"`
-	// The image tag.
+	// The image version.
 	//
 	// example:
 	//

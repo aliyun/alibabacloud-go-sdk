@@ -18,9 +18,12 @@ type iArtifactLifecyclePolicy interface {
 }
 
 type ArtifactLifecyclePolicy struct {
+	// The retention conditions for artifact versions.
 	Condition *ArtifactLifecyclePolicyCondition `json:"Condition,omitempty" xml:"Condition,omitempty" type:"Struct"`
-	Filter    *ArtifactLifecyclePolicyFilter    `json:"Filter,omitempty" xml:"Filter,omitempty" type:"Struct"`
-	Type      *string                           `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The filter conditions for artifact versions.
+	Filter *ArtifactLifecyclePolicyFilter `json:"Filter,omitempty" xml:"Filter,omitempty" type:"Struct"`
+	// The type of the artifact version data retention policy.
+	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
 func (s ArtifactLifecyclePolicy) String() string {
@@ -73,9 +76,24 @@ func (s *ArtifactLifecyclePolicy) Validate() error {
 }
 
 type ArtifactLifecyclePolicyCondition struct {
+	// Retains artifact versions whose most recent pull time is within the specified number of days.
+	//
+	// example:
+	//
+	// 0
 	LastPullOlderThanDays *int32 `json:"LastPullOlderThanDays,omitempty" xml:"LastPullOlderThanDays,omitempty"`
+	// Retains artifact versions whose most recent push time is within the specified number of days.
+	//
+	// example:
+	//
+	// 0
 	LastPushOlderThanDays *int32 `json:"LastPushOlderThanDays,omitempty" xml:"LastPushOlderThanDays,omitempty"`
-	LatestTagCount        *int32 `json:"LatestTagCount,omitempty" xml:"LatestTagCount,omitempty"`
+	// The number of most recently pushed artifact versions to retain.
+	//
+	// example:
+	//
+	// 0
+	LatestTagCount *int32 `json:"LatestTagCount,omitempty" xml:"LatestTagCount,omitempty"`
 }
 
 func (s ArtifactLifecyclePolicyCondition) String() string {
@@ -118,6 +136,7 @@ func (s *ArtifactLifecyclePolicyCondition) Validate() error {
 }
 
 type ArtifactLifecyclePolicyFilter struct {
+	// The matching expression for the names of additionally retained artifact versions.
 	TagWildcard *string `json:"TagWildcard,omitempty" xml:"TagWildcard,omitempty"`
 }
 

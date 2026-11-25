@@ -22,7 +22,7 @@ type iUpdateChartRepositoryRequest interface {
 }
 
 type UpdateChartRepositoryRequest struct {
-	// The ID of the instance.
+	// The instance ID.
 	//
 	// This parameter is required.
 	//
@@ -38,7 +38,7 @@ type UpdateChartRepositoryRequest struct {
 	//
 	// test
 	RepoName *string `json:"RepoName,omitempty" xml:"RepoName,omitempty"`
-	// The name of the namespace to which the repository belongs.
+	// The name of the repository namespace.
 	//
 	// This parameter is required.
 	//
@@ -46,17 +46,17 @@ type UpdateChartRepositoryRequest struct {
 	//
 	// test
 	RepoNamespaceName *string `json:"RepoNamespaceName,omitempty" xml:"RepoNamespaceName,omitempty"`
-	// The type of the repository. Valid values:
+	// The repository type. Valid values:
 	//
-	// 	- `PUBLIC`: a public repository.
+	// - `PUBLIC`: public repository
 	//
-	// 	- `PRIVATE`: a private repository.
+	// - `PRIVATE`: private repository
 	//
 	// example:
 	//
 	// PUBLIC
 	RepoType *string `json:"RepoType,omitempty" xml:"RepoType,omitempty"`
-	// The summary of the repository.
+	// The summary.
 	//
 	// example:
 	//

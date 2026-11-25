@@ -24,7 +24,7 @@ type CancelRepoSyncTaskRequest struct {
 	//
 	// cri-xkx6vujuhay0****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The ID of the replication task.
+	// The synchronization task ID.
 	//
 	// This parameter is required.
 	//

@@ -14,7 +14,7 @@ type iGetInstanceRequest interface {
 }
 
 type GetInstanceRequest struct {
-	// The ID of the Container Registry instance.
+	// The instance ID.
 	//
 	// This parameter is required.
 	//

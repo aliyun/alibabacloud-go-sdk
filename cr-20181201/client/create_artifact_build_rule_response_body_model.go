@@ -20,7 +20,7 @@ type iCreateArtifactBuildRuleResponseBody interface {
 }
 
 type CreateArtifactBuildRuleResponseBody struct {
-	// The ID of the accelerated image building rule.
+	// The ID of the build rule.
 	//
 	// example:
 	//
@@ -32,7 +32,7 @@ type CreateArtifactBuildRuleResponseBody struct {
 	//
 	// success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// Indicates whether the request is successful.
+	// Indicates whether the operation was successful.
 	//
 	// example:
 	//

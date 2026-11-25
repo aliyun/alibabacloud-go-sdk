@@ -26,7 +26,7 @@ type iListRepoBuildRecordResponseBody interface {
 }
 
 type ListRepoBuildRecordResponseBody struct {
-	// The list of image building records.
+	// The list of build records.
 	BuildRecords []*ListRepoBuildRecordResponseBodyBuildRecords `json:"BuildRecords,omitempty" xml:"BuildRecords,omitempty" type:"Repeated"`
 	// The return value.
 	//
@@ -34,35 +34,35 @@ type ListRepoBuildRecordResponseBody struct {
 	//
 	// success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// Indicates whether the request is successful. Valid values:
+	// Indicates whether the API call is successful. Valid values:
 	//
-	// 	- `true`: The request is successful.
+	// - `true`: The API call is successful.
 	//
-	// 	- `false`: The request fails.
+	// - `false`: The API call failed.
 	//
 	// example:
 	//
 	// true
 	IsSuccess *bool `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
-	// The page number of the returned page.
+	// The page number.
 	//
 	// example:
 	//
 	// 1
 	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
-	// The number of entries returned per page.
+	// The page size.
 	//
 	// example:
 	//
 	// 30
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 9D23DEDF-E91D-434B-B7D5-9D12C648D166
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of returned entries.
+	// The total number of records.
 	//
 	// example:
 	//
@@ -155,27 +155,27 @@ func (s *ListRepoBuildRecordResponseBody) Validate() error {
 }
 
 type ListRepoBuildRecordResponseBodyBuildRecords struct {
-	// The ID of the image building record.
+	// The build record ID.
 	//
 	// example:
 	//
 	// 537e08ab-735e-415f-b7c2-160eb87f8****
 	BuildRecordId *string `json:"BuildRecordId,omitempty" xml:"BuildRecordId,omitempty"`
-	// The status of the image building.
+	// The build status.
 	//
 	// example:
 	//
 	// SUCCESS
 	BuildStatus *string `json:"BuildStatus,omitempty" xml:"BuildStatus,omitempty"`
-	// The time when the image building ended.
+	// The end time. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
 	// 1572875610000
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The information about the image.
+	// The image information.
 	Image *ListRepoBuildRecordResponseBodyBuildRecordsImage `json:"Image,omitempty" xml:"Image,omitempty" type:"Struct"`
-	// The time when the image building started.
+	// The start time. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
@@ -246,25 +246,25 @@ func (s *ListRepoBuildRecordResponseBodyBuildRecords) Validate() error {
 }
 
 type ListRepoBuildRecordResponseBodyBuildRecordsImage struct {
-	// The tag of the image.
+	// The image tag.
 	//
 	// example:
 	//
 	// v0.1
 	ImageTag *string `json:"ImageTag,omitempty" xml:"ImageTag,omitempty"`
-	// The ID of the repository.
+	// The repository ID.
 	//
 	// example:
 	//
 	// crr-gzsrlevmvoaq****
 	RepoId *string `json:"RepoId,omitempty" xml:"RepoId,omitempty"`
-	// The name of the repository.
+	// The repository name.
 	//
 	// example:
 	//
 	// test
 	RepoName *string `json:"RepoName,omitempty" xml:"RepoName,omitempty"`
-	// The name of the namespace to which the repository belongs.
+	// The repository namespace name.
 	//
 	// example:
 	//

@@ -26,17 +26,17 @@ type iListScanBaselineByTaskResponseBody interface {
 }
 
 type ListScanBaselineByTaskResponseBody struct {
-	// The return value.
+	// The return code.
 	//
 	// example:
 	//
 	// success
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// Indicates whether the API request was successful. Valid values:
+	// Indicates whether the API call is successful. Valid values:
 	//
-	// 	- `true`: successful
+	// - `true`: The API call is successful.
 	//
-	// 	- `false`: failed
+	// - `false`: The API call failed.
 	//
 	// example:
 	//
@@ -60,9 +60,9 @@ type ListScanBaselineByTaskResponseBody struct {
 	//
 	// 5259118F-79E2-57E9-9AEA-551586F4FAED
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The scanned baseline risks.
+	// The baseline list.
 	ScanBaselines []*ListScanBaselineByTaskResponseBodyScanBaselines `json:"ScanBaselines,omitempty" xml:"ScanBaselines,omitempty" type:"Repeated"`
-	// The total number of entries returned.
+	// The total number of entries.
 	//
 	// example:
 	//
@@ -155,55 +155,55 @@ func (s *ListScanBaselineByTaskResponseBody) Validate() error {
 }
 
 type ListScanBaselineByTaskResponseBodyScanBaselines struct {
-	// The category to which the baseline risk belongs.
+	// The baseline check category.
 	//
 	// example:
 	//
-	// 服务配置
+	// Service Configuration
 	BaselineClassAlias *string `json:"BaselineClassAlias,omitempty" xml:"BaselineClassAlias,omitempty"`
-	// Suggestions about how to fix the baseline risk.
+	// The baseline check remediation suggestion.
 	//
 	// example:
 	//
-	// 建议对ak混淆加密，避免被利用
+	// Obfuscate and encrypt the AccessKey to prevent exploitation
 	BaselineDetailAdvice *string `json:"BaselineDetailAdvice,omitempty" xml:"BaselineDetailAdvice,omitempty"`
-	// The description of the baseline risk.
+	// The baseline description.
 	//
 	// example:
 	//
-	// Access Key明文存储
+	// Access Key stored in plaintext
 	BaselineDetailDescription *string `json:"BaselineDetailDescription,omitempty" xml:"BaselineDetailDescription,omitempty"`
-	// The path and content of the baseline risk.
+	// The baseline check path and content.
 	//
 	// example:
 	//
 	// usr/local/www/project/environments/dev/common/config/paramsxxx
 	BaselineDetailPrompt *string `json:"BaselineDetailPrompt,omitempty" xml:"BaselineDetailPrompt,omitempty"`
-	// The number of baseline risks.
+	// The number of baseline check items.
 	//
 	// example:
 	//
 	// 1
 	BaselineItemCount *int32 `json:"BaselineItemCount,omitempty" xml:"BaselineItemCount,omitempty"`
-	// The name of the baseline risk.
+	// The baseline check name.
 	//
 	// example:
 	//
-	// 服务配置
+	// Service Configuration
 	BaselineNameAlias *string `json:"BaselineNameAlias,omitempty" xml:"BaselineNameAlias,omitempty"`
-	// The key of the baseline name.
+	// The baseline name key.
 	//
 	// example:
 	//
 	// ak_leak
 	BaselineNameKey *string `json:"BaselineNameKey,omitempty" xml:"BaselineNameKey,omitempty"`
-	// The severity of the baseline risk.
+	// The baseline check risk level.
 	//
 	// example:
 	//
 	// high
 	BaselineNameLevel *string `json:"BaselineNameLevel,omitempty" xml:"BaselineNameLevel,omitempty"`
-	// The creation time.
+	// The creation time, in UNIX timestamp format. Unit: milliseconds.
 	//
 	// example:
 	//
@@ -215,31 +215,31 @@ type ListScanBaselineByTaskResponseBodyScanBaselines struct {
 	//
 	// 2024-04-10 15:33:26
 	FirstScanTime *int64 `json:"FirstScanTime,omitempty" xml:"FirstScanTime,omitempty"`
-	// High risk quantity.
+	// The number of high-risk items.
 	//
 	// example:
 	//
 	// 1
 	HighRiskItemCount *int32 `json:"HighRiskItemCount,omitempty" xml:"HighRiskItemCount,omitempty"`
-	// Low risk quantity.
+	// The number of low-risk items.
 	//
 	// example:
 	//
 	// 1
 	LowRiskItemCount *int32 `json:"LowRiskItemCount,omitempty" xml:"LowRiskItemCount,omitempty"`
-	// Medium risk quantity.
+	// The number of medium-risk items.
 	//
 	// example:
 	//
 	// 1
 	MiddleRiskItemCount *int32 `json:"MiddleRiskItemCount,omitempty" xml:"MiddleRiskItemCount,omitempty"`
-	// The ID of the image scan task.
+	// The image scan task ID.
 	//
 	// example:
 	//
 	// 2328fcaa-f28a-405d-a357-asdvfrew23
 	ScanTaskId *string `json:"ScanTaskId,omitempty" xml:"ScanTaskId,omitempty"`
-	// The update time.
+	// The update time, in UNIX timestamp format. Unit: milliseconds.
 	//
 	// example:
 	//

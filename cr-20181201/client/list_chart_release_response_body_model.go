@@ -28,7 +28,7 @@ type iListChartReleaseResponseBody interface {
 type ListChartReleaseResponseBody struct {
 	// The list of chart versions.
 	ChartReleases []*ListChartReleaseResponseBodyChartReleases `json:"ChartReleases,omitempty" xml:"ChartReleases,omitempty" type:"Repeated"`
-	// The return value.
+	// The return code.
 	//
 	// example:
 	//
@@ -40,25 +40,25 @@ type ListChartReleaseResponseBody struct {
 	//
 	// true
 	IsSuccess *bool `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
-	// The page number of the returned page.
+	// The page number.
 	//
 	// example:
 	//
 	// 1
 	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
-	// The number of entries returned per page.
+	// The page size.
 	//
 	// example:
 	//
 	// 30
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// F68823F6-F1B5-4A4E-8421-A83CAB8F2963
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of returned entries.
+	// The total number of entries.
 	//
 	// example:
 	//
@@ -151,43 +151,43 @@ func (s *ListChartReleaseResponseBody) Validate() error {
 }
 
 type ListChartReleaseResponseBodyChartReleases struct {
-	// The name of the chart version.
+	// The chart version name.
 	//
 	// example:
 	//
 	// chart1
 	Chart *string `json:"Chart,omitempty" xml:"Chart,omitempty"`
-	// The ID of the instance.
+	// The instance ID.
 	//
 	// example:
 	//
 	// cri-xkx6vujuhay0****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The time when the chart was last modified.
+	// The time when the chart was last modified. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
 	// 1571930323000
 	ModifiedTime *int64 `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
-	// The version number of the chart.
+	// The chart version number.
 	//
 	// example:
 	//
 	// 0.1.0
 	Release *string `json:"Release,omitempty" xml:"Release,omitempty"`
-	// The ID of the chart repository.
+	// The chart repository ID.
 	//
 	// example:
 	//
 	// crcr-gpsu7b8chmxk****
 	RepoId *string `json:"RepoId,omitempty" xml:"RepoId,omitempty"`
-	// The size of the chart of the version. Unit: bytes.
+	// The size of the chart version, in bytes.
 	//
 	// example:
 	//
 	// 2826
 	Size *string `json:"Size,omitempty" xml:"Size,omitempty"`
-	// The status of the chart.
+	// The status.
 	//
 	// example:
 	//

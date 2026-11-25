@@ -22,7 +22,7 @@ type iCreateChartRepositoryRequest interface {
 }
 
 type CreateChartRepositoryRequest struct {
-	// The ID of the instance.
+	// The instance ID.
 	//
 	// This parameter is required.
 	//
@@ -30,7 +30,7 @@ type CreateChartRepositoryRequest struct {
 	//
 	// cri-xkx6vujuhay0****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The name of the repository.
+	// The name of the image repository.
 	//
 	// This parameter is required.
 	//
@@ -38,7 +38,7 @@ type CreateChartRepositoryRequest struct {
 	//
 	// repo01
 	RepoName *string `json:"RepoName,omitempty" xml:"RepoName,omitempty"`
-	// The name of the namespace to which the repository belongs.
+	// The name of the namespace.
 	//
 	// This parameter is required.
 	//
@@ -46,13 +46,13 @@ type CreateChartRepositoryRequest struct {
 	//
 	// namespace01
 	RepoNamespaceName *string `json:"RepoNamespaceName,omitempty" xml:"RepoNamespaceName,omitempty"`
-	// The default repository type. Valid values:
+	// The default type of the repository. Valid values:
 	//
-	// 	- `PUBLIC`: a public repository.
+	// - `PUBLIC`: public repository
 	//
-	// 	- `PRIVATE`: a private repository.
+	// - `PRIVATE`: private repository
 	//
-	// You can specify the RepoType or Summary parameter. The RepoType parameter is optional.
+	// Specify either RepoType or Summary. This parameter is optional.
 	//
 	// example:
 	//

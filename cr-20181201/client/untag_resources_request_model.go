@@ -22,19 +22,19 @@ type iUntagResourcesRequest interface {
 }
 
 type UntagResourcesRequest struct {
-	// Specifies whether to remove all tags from the resource. Valid values:
+	// Specifies whether to unbind all tags from the resource. Valid values:
 	//
-	// 	- **true**
+	// - **true**: Unbinds all tags from the resource.
 	//
-	// 	- **false**
+	// - **false**: Does not unbind all tags.
 	//
-	// >If you specify both this parameter and the TagKey parameter, this parameter does not take effect.
+	// > If you set both **TagKey.n*	- and this parameter, this parameter does not take effect.
 	//
 	// example:
 	//
 	// true
 	All *bool `json:"All,omitempty" xml:"All,omitempty"`
-	// The ID of the region in which the resources are deployed.
+	// The region ID.
 	//
 	// This parameter is required.
 	//
@@ -42,9 +42,9 @@ type UntagResourcesRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The resource IDs. You can specify a maximum of 20 resource IDs.
+	// The resource ID. You can specify up to 20 resources.
 	ResourceId []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
-	// The type of the resources. Instance resources are supported.
+	// The resource type. Currently, Instance resources are supported.
 	//
 	// This parameter is required.
 	//
@@ -52,7 +52,7 @@ type UntagResourcesRequest struct {
 	//
 	// Instance
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// The key of tag N added to the resource. Valid values of N: 1 to 20.
+	// The tag key. Valid values of N: 1 to 20.
 	TagKey []*string `json:"TagKey,omitempty" xml:"TagKey,omitempty" type:"Repeated"`
 }
 

@@ -16,7 +16,7 @@ type iListRepoTriggerRequest interface {
 }
 
 type ListRepoTriggerRequest struct {
-	// The ID of the instance.
+	// The instance ID.
 	//
 	// This parameter is required.
 	//
@@ -24,7 +24,7 @@ type ListRepoTriggerRequest struct {
 	//
 	// cri-kmsiwlxxdcva****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The ID of the repository.
+	// The image repository ID.
 	//
 	// This parameter is required.
 	//

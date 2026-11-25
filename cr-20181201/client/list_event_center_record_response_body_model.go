@@ -38,31 +38,31 @@ type ListEventCenterRecordResponseBody struct {
 	//
 	// true
 	IsSuccess *bool `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
-	// The page number of the returned page.
+	// The page number.
 	//
 	// example:
 	//
 	// 1
 	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
-	// The number of entries returned per page.
+	// The page size.
 	//
 	// example:
 	//
 	// 30
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The list of historical events.
+	// The event history list.
 	//
 	// example:
 	//
 	// []
 	Records []*ListEventCenterRecordResponseBodyRecords `json:"Records,omitempty" xml:"Records,omitempty" type:"Repeated"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 665C7A5E-BAEC-5BCD-AF9F-5F9260D672BF
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total entries of historical events.
+	// The total number of event history records.
 	//
 	// example:
 	//
@@ -155,19 +155,19 @@ func (s *ListEventCenterRecordResponseBody) Validate() error {
 }
 
 type ListEventCenterRecordResponseBodyRecords struct {
-	// The time when the event was created.
+	// The creation time, in UNIX timestamp format. Unit: milliseconds.
 	//
 	// example:
 	//
 	// 1638188622000
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The event notification channel.
+	// The notification channel.
 	//
 	// example:
 	//
 	// EVENT_BRIDGE
 	EventChannel *string `json:"EventChannel,omitempty" xml:"EventChannel,omitempty"`
-	// The ID of the event notification.
+	// The event ID of the downstream notification.
 	//
 	// example:
 	//
@@ -175,23 +175,23 @@ type ListEventCenterRecordResponseBodyRecords struct {
 	EventNotifyId *string `json:"EventNotifyId,omitempty" xml:"EventNotifyId,omitempty"`
 	// The notification method. Valid values:
 	//
-	// 	- `http`: The notification is sent over HTTP.
+	// - `http`: HTTP notification.
 	//
-	// 	- `https`: The notification is sent over HTTPS.
+	// - `https`: HTTPS notification.
 	//
-	// 	- `dingding`: The notification is sent by using DingTalk.
+	// - `dingding`: DingTalk notification.
 	//
 	// example:
 	//
 	// http
 	EventNotifyMethod *string `json:"EventNotifyMethod,omitempty" xml:"EventNotifyMethod,omitempty"`
-	// The type of the event.
+	// The event type.
 	//
 	// example:
 	//
 	// cr:Artifact:DeliveryChainCompleted
 	EventType *string `json:"EventType,omitempty" xml:"EventType,omitempty"`
-	// The ID of the instance.
+	// The instance ID.
 	//
 	// example:
 	//
@@ -203,37 +203,37 @@ type ListEventCenterRecordResponseBodyRecords struct {
 	//
 	// mychain
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
-	// The ID of the event record.
+	// The event record ID.
 	//
 	// example:
 	//
 	// crecrr-ctdbzwtkpr*****
 	RecordId *string `json:"RecordId,omitempty" xml:"RecordId,omitempty"`
-	// The name of the image repository.
+	// The repository name.
 	//
 	// example:
 	//
 	// ruby-2.4.0
 	RepoName *string `json:"RepoName,omitempty" xml:"RepoName,omitempty"`
-	// The ID of the event notification rule.
+	// The event rule ID.
 	//
 	// example:
 	//
 	// crecr-n6pbhgjxtla*****
 	RuleId *string `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
-	// The name of the event notification rule.
+	// The event rule name.
 	//
 	// example:
 	//
 	// chain-demo
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
-	// The tags.
+	// The label.
 	//
 	// example:
 	//
 	// ruby-2.4.0
 	Tag *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
-	// The time when the event was last updated.
+	// The update time, in UNIX timestamp format. Unit: milliseconds.
 	//
 	// example:
 	//

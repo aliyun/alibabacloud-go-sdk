@@ -2,6 +2,7 @@
 package client
 
 import (
+	gatewayclient "github.com/alibabacloud-go/alibabacloud-gateway-pop/client"
 	openapi "github.com/alibabacloud-go/darabonba-openapi/v2/client"
 	openapiutil "github.com/alibabacloud-go/darabonba-openapi/v2/utils"
 	"github.com/alibabacloud-go/tea/dara"
@@ -24,6 +25,13 @@ func (client *Client) Init(config *openapiutil.Config) (_err error) {
 	if _err != nil {
 		return _err
 	}
+	client.ProductId = dara.String("cr")
+	gatewayClient, _err := gatewayclient.NewClient()
+	if _err != nil {
+		return _err
+	}
+
+	client.Spi = gatewayClient
 	client.EndpointRule = dara.String("regional")
 	_err = client.CheckConfig(config)
 	if _err != nil {
@@ -58,7 +66,7 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 
 // Summary:
 //
-// Cancels an artifact building task.
+// Cancels an artifact build task.
 //
 // @param request - CancelArtifactBuildTaskRequest
 //
@@ -106,7 +114,7 @@ func (client *Client) CancelArtifactBuildTaskWithOptions(request *CancelArtifact
 
 // Summary:
 //
-// Cancels an artifact building task.
+// Cancels an artifact build task.
 //
 // @param request - CancelArtifactBuildTaskRequest
 //
@@ -124,7 +132,7 @@ func (client *Client) CancelArtifactBuildTask(request *CancelArtifactBuildTaskRe
 
 // Summary:
 //
-// Cancels a repository building record.
+// Cancels a repository build.
 //
 // @param request - CancelRepoBuildRecordRequest
 //
@@ -176,7 +184,7 @@ func (client *Client) CancelRepoBuildRecordWithOptions(request *CancelRepoBuildR
 
 // Summary:
 //
-// Cancels a repository building record.
+// Cancels a repository build.
 //
 // @param request - CancelRepoBuildRecordRequest
 //
@@ -194,7 +202,7 @@ func (client *Client) CancelRepoBuildRecord(request *CancelRepoBuildRecordReques
 
 // Summary:
 //
-// Cancels a single replication task.
+// Cancels a single synchronization task.
 //
 // @param request - CancelRepoSyncTaskRequest
 //
@@ -242,7 +250,7 @@ func (client *Client) CancelRepoSyncTaskWithOptions(request *CancelRepoSyncTaskR
 
 // Summary:
 //
-// Cancels a single replication task.
+// Cancels a single synchronization task.
 //
 // @param request - CancelRepoSyncTaskRequest
 //
@@ -260,7 +268,7 @@ func (client *Client) CancelRepoSyncTask(request *CancelRepoSyncTaskRequest) (_r
 
 // Summary:
 //
-// Changes the resource group to which a resource belongs.
+// Modifies the resource group of a resource.
 //
 // @param request - ChangeResourceGroupRequest
 //
@@ -312,7 +320,7 @@ func (client *Client) ChangeResourceGroupWithOptions(request *ChangeResourceGrou
 
 // Summary:
 //
-// Changes the resource group to which a resource belongs.
+// Modifies the resource group of a resource.
 //
 // @param request - ChangeResourceGroupRequest
 //
@@ -330,13 +338,15 @@ func (client *Client) ChangeResourceGroup(request *ChangeResourceGroupRequest) (
 
 // Summary:
 //
-// Create image repository acceleration rules for image building.
+// Creates an accelerated image build rule for an image repository.
 //
 // Description:
 //
-// You can create building rules of accelerated images only for image repositories of Container Registry Advanced Edition instances. You cannot create building rules of accelerated images for image repositories of Container Registry Basic Edition instances. For more information, see [Specifications of different editions](https://www.alibabacloud.com/help/en/acr/product-overview/what-is-container-registry?spm=openapi-amp.newDocPublishment.0.0.bf82281fRj7rmV#section-n3q-ps7-x6k).
+// <props="intl">You can create accelerated image build rules only for Standard Edition and Advanced Edition instances. Basic Edition does not support accelerated image build rules. For more information about instance specifications, see [Specifications](https://www.alibabacloud.com/help/zh/container-registry/latest/what-is-container-registry#section-go7-lhg-qbc).
 //
-// Accelerated images are not supported in Alibaba Finance Cloud regions or Alibaba Gov Cloud regions.
+// <props="china">You can create accelerated image build rules only for Standard Edition and Advanced Edition instances. Basic Edition does not support accelerated image build rules. For more information about instance specifications, see [Specifications](https://help.aliyun.com/document_detail/257112.html#section-go7-lhg-qbc).
+//
+// Accelerated image conversion is not supported in Alibaba Finance Cloud and Alibaba Gov Cloud regions.
 //
 // @param tmpReq - CreateArtifactBuildRuleRequest
 //
@@ -402,13 +412,15 @@ func (client *Client) CreateArtifactBuildRuleWithOptions(tmpReq *CreateArtifactB
 
 // Summary:
 //
-// Create image repository acceleration rules for image building.
+// Creates an accelerated image build rule for an image repository.
 //
 // Description:
 //
-// You can create building rules of accelerated images only for image repositories of Container Registry Advanced Edition instances. You cannot create building rules of accelerated images for image repositories of Container Registry Basic Edition instances. For more information, see [Specifications of different editions](https://www.alibabacloud.com/help/en/acr/product-overview/what-is-container-registry?spm=openapi-amp.newDocPublishment.0.0.bf82281fRj7rmV#section-n3q-ps7-x6k).
+// <props="intl">You can create accelerated image build rules only for Standard Edition and Advanced Edition instances. Basic Edition does not support accelerated image build rules. For more information about instance specifications, see [Specifications](https://www.alibabacloud.com/help/zh/container-registry/latest/what-is-container-registry#section-go7-lhg-qbc).
 //
-// Accelerated images are not supported in Alibaba Finance Cloud regions or Alibaba Gov Cloud regions.
+// <props="china">You can create accelerated image build rules only for Standard Edition and Advanced Edition instances. Basic Edition does not support accelerated image build rules. For more information about instance specifications, see [Specifications](https://help.aliyun.com/document_detail/257112.html#section-go7-lhg-qbc).
+//
+// Accelerated image conversion is not supported in Alibaba Finance Cloud and Alibaba Gov Cloud regions.
 //
 // @param request - CreateArtifactBuildRuleRequest
 //
@@ -426,7 +438,7 @@ func (client *Client) CreateArtifactBuildRule(request *CreateArtifactBuildRuleRe
 
 // Summary:
 //
-// Creates a lifecycle management rule for an artifact.
+// Creates a lifecycle management rule for artifacts.
 //
 // @param request - CreateArtifactLifecycleRuleRequest
 //
@@ -510,7 +522,7 @@ func (client *Client) CreateArtifactLifecycleRuleWithOptions(request *CreateArti
 
 // Summary:
 //
-// Creates a lifecycle management rule for an artifact.
+// Creates a lifecycle management rule for artifacts.
 //
 // @param request - CreateArtifactLifecycleRuleRequest
 //
@@ -581,6 +593,10 @@ func (client *Client) CreateArtifactSubscriptionRuleWithOptions(request *CreateA
 
 	if !dara.IsNil(request.TagCount) {
 		query["TagCount"] = request.TagCount
+	}
+
+	if !dara.IsNil(request.TagList) {
+		query["TagList"] = request.TagList
 	}
 
 	if !dara.IsNil(request.TagRegexp) {
@@ -696,7 +712,7 @@ func (client *Client) CreateArtifactSubscriptionTask(request *CreateArtifactSubs
 
 // Summary:
 //
-// Creates an image building record based on an existing record.
+// Rebuilds a build record based on an existing build record.
 //
 // @param request - CreateBuildRecordByRecordRequest
 //
@@ -748,7 +764,7 @@ func (client *Client) CreateBuildRecordByRecordWithOptions(request *CreateBuildR
 
 // Summary:
 //
-// Creates an image building record based on an existing record.
+// Rebuilds a build record based on an existing build record.
 //
 // @param request - CreateBuildRecordByRecordRequest
 //
@@ -766,7 +782,7 @@ func (client *Client) CreateBuildRecordByRecord(request *CreateBuildRecordByReco
 
 // Summary:
 //
-// Creates an image building record based on a rule.
+// Creates a build record based on a build rule.
 //
 // @param request - CreateBuildRecordByRuleRequest
 //
@@ -818,7 +834,7 @@ func (client *Client) CreateBuildRecordByRuleWithOptions(request *CreateBuildRec
 
 // Summary:
 //
-// Creates an image building record based on a rule.
+// Creates a build record based on a build rule.
 //
 // @param request - CreateBuildRecordByRuleRequest
 //
@@ -922,7 +938,7 @@ func (client *Client) CreateChain(request *CreateChainRequest) (_result *CreateC
 
 // Summary:
 //
-// Creates a chart namespace in an instance.
+// Creates a chart namespace.
 //
 // @param request - CreateChartNamespaceRequest
 //
@@ -978,7 +994,7 @@ func (client *Client) CreateChartNamespaceWithOptions(request *CreateChartNamesp
 
 // Summary:
 //
-// Creates a chart namespace in an instance.
+// Creates a chart namespace.
 //
 // @param request - CreateChartNamespaceRequest
 //
@@ -1326,7 +1342,7 @@ func (client *Client) CreateInstanceVpcEndpointLinkedVpc(request *CreateInstance
 
 // Summary:
 //
-// Creates a repository namespace.
+// Creates a namespace for an image repository.
 //
 // @param tmpReq - CreateNamespaceRequest
 //
@@ -1392,7 +1408,7 @@ func (client *Client) CreateNamespaceWithOptions(tmpReq *CreateNamespaceRequest,
 
 // Summary:
 //
-// Creates a repository namespace.
+// Creates a namespace for an image repository.
 //
 // @param request - CreateNamespaceRequest
 //
@@ -1410,7 +1426,7 @@ func (client *Client) CreateNamespace(request *CreateNamespaceRequest) (_result 
 
 // Summary:
 //
-// Creates an image building rule for a repository.
+// Creates a build rule for an image repository.
 //
 // @param request - CreateRepoBuildRuleRequest
 //
@@ -1486,7 +1502,7 @@ func (client *Client) CreateRepoBuildRuleWithOptions(request *CreateRepoBuildRul
 
 // Summary:
 //
-// Creates an image building rule for a repository.
+// Creates a build rule for an image repository.
 //
 // @param request - CreateRepoBuildRuleRequest
 //
@@ -1504,7 +1520,7 @@ func (client *Client) CreateRepoBuildRule(request *CreateRepoBuildRuleRequest) (
 
 // Summary:
 //
-// Binds a source code repository to an image repository.
+// Associates a source code repository with an image repository.
 //
 // @param request - CreateRepoSourceCodeRepoRequest
 //
@@ -1576,7 +1592,7 @@ func (client *Client) CreateRepoSourceCodeRepoWithOptions(request *CreateRepoSou
 
 // Summary:
 //
-// Binds a source code repository to an image repository.
+// Associates a source code repository with an image repository.
 //
 // @param request - CreateRepoSourceCodeRepoRequest
 //
@@ -1974,7 +1990,7 @@ func (client *Client) CreateRepoTag(request *CreateRepoTagRequest) (_result *Cre
 
 // Summary:
 //
-// Creates a security scan task for an image.
+// Creates an image scan task.
 //
 // @param request - CreateRepoTagScanTaskRequest
 //
@@ -2038,7 +2054,7 @@ func (client *Client) CreateRepoTagScanTaskWithOptions(request *CreateRepoTagSca
 
 // Summary:
 //
-// Creates a security scan task for an image.
+// Creates an image scan task.
 //
 // @param request - CreateRepoTagScanTaskRequest
 //
@@ -2334,10 +2350,6 @@ func (client *Client) CreateScanRule(request *CreateScanRuleRequest) (_result *C
 //
 // Creates an instance store domain name routing rule.
 //
-// Description:
-//
-// 此API白名单开放，请[提交工单](https://smartservice.console.aliyun.com/service/create-ticket)获取支持。
-//
 // @param tmpReq - CreateStorageDomainRoutingRuleRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -2391,10 +2403,6 @@ func (client *Client) CreateStorageDomainRoutingRuleWithOptions(tmpReq *CreateSt
 // Summary:
 //
 // Creates an instance store domain name routing rule.
-//
-// Description:
-//
-// 此API白名单开放，请[提交工单](https://smartservice.console.aliyun.com/service/create-ticket)获取支持。
 //
 // @param request - CreateStorageDomainRoutingRuleRequest
 //
@@ -2968,7 +2976,7 @@ func (client *Client) DeleteInstanceCustomizedDomain(request *DeleteInstanceCust
 
 // Summary:
 //
-// Deletes a whitelist policy from the public access endpoint of an instance.
+// Deletes a whitelist policy from the public endpoint of an instance.
 //
 // @param tmpReq - DeleteInstanceEndpointAclPolicyRequest
 //
@@ -3034,7 +3042,7 @@ func (client *Client) DeleteInstanceEndpointAclPolicyWithOptions(tmpReq *DeleteI
 
 // Summary:
 //
-// Deletes a whitelist policy from the public access endpoint of an instance.
+// Deletes a whitelist policy from the public endpoint of an instance.
 //
 // @param request - DeleteInstanceEndpointAclPolicyRequest
 //
@@ -3560,10 +3568,6 @@ func (client *Client) DeleteRepository(request *DeleteRepositoryRequest) (_resul
 //
 // Deletes a scan rule.
 //
-// Description:
-//
-// 删除扫描规则。
-//
 // @param request - DeleteScanRuleRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -3612,10 +3616,6 @@ func (client *Client) DeleteScanRuleWithOptions(request *DeleteScanRuleRequest, 
 //
 // Deletes a scan rule.
 //
-// Description:
-//
-// 删除扫描规则。
-//
 // @param request - DeleteScanRuleRequest
 //
 // @return DeleteScanRuleResponse
@@ -3633,10 +3633,6 @@ func (client *Client) DeleteScanRule(request *DeleteScanRuleRequest) (_result *D
 // Summary:
 //
 // Deletes an instance store domain name routing rule.
-//
-// Description:
-//
-// 此API白名单开放，请[提交工单](https://smartservice.console.aliyun.com/service/create-ticket)获取支持。
 //
 // @param request - DeleteStorageDomainRoutingRuleRequest
 //
@@ -3685,10 +3681,6 @@ func (client *Client) DeleteStorageDomainRoutingRuleWithOptions(request *DeleteS
 // Summary:
 //
 // Deletes an instance store domain name routing rule.
-//
-// Description:
-//
-// 此API白名单开放，请[提交工单](https://smartservice.console.aliyun.com/service/create-ticket)获取支持。
 //
 // @param request - DeleteStorageDomainRoutingRuleRequest
 //
@@ -3764,7 +3756,7 @@ func (client *Client) GetArtifactBuildRule(request *GetArtifactBuildRuleRequest)
 
 // Summary:
 //
-// Retrieves the build task of an artifact.
+// Retrieves the build task of a cloud native artifact.
 //
 // @param request - GetArtifactBuildTaskRequest
 //
@@ -3804,7 +3796,7 @@ func (client *Client) GetArtifactBuildTaskWithOptions(request *GetArtifactBuildT
 
 // Summary:
 //
-// Retrieves the build task of an artifact.
+// Retrieves the build task of a cloud native artifact.
 //
 // @param request - GetArtifactBuildTaskRequest
 //
@@ -3822,7 +3814,7 @@ func (client *Client) GetArtifactBuildTask(request *GetArtifactBuildTaskRequest)
 
 // Summary:
 //
-// Queries the lifecycle management rules of artifacts.
+// Queries the lifecycle management rule of an artifact.
 //
 // @param request - GetArtifactLifecycleRuleRequest
 //
@@ -3862,7 +3854,7 @@ func (client *Client) GetArtifactLifecycleRuleWithOptions(request *GetArtifactLi
 
 // Summary:
 //
-// Queries the lifecycle management rules of artifacts.
+// Queries the lifecycle management rule of an artifact.
 //
 // @param request - GetArtifactLifecycleRuleRequest
 //
@@ -3880,7 +3872,7 @@ func (client *Client) GetArtifactLifecycleRule(request *GetArtifactLifecycleRule
 
 // Summary:
 //
-// Retrieves the details of an artifact subscription rule.
+// Queries artifact subscription rules.
 //
 // @param request - GetArtifactSubscriptionRuleRequest
 //
@@ -3920,7 +3912,7 @@ func (client *Client) GetArtifactSubscriptionRuleWithOptions(request *GetArtifac
 
 // Summary:
 //
-// Retrieves the details of an artifact subscription rule.
+// Queries artifact subscription rules.
 //
 // @param request - GetArtifactSubscriptionRuleRequest
 //
@@ -3938,7 +3930,7 @@ func (client *Client) GetArtifactSubscriptionRule(request *GetArtifactSubscripti
 
 // Summary:
 //
-// Queries an artifact subscription task.
+// Retrieves artifact subscription tasks.
 //
 // @param request - GetArtifactSubscriptionTaskRequest
 //
@@ -3978,7 +3970,7 @@ func (client *Client) GetArtifactSubscriptionTaskWithOptions(request *GetArtifac
 
 // Summary:
 //
-// Queries an artifact subscription task.
+// Retrieves artifact subscription tasks.
 //
 // @param request - GetArtifactSubscriptionTaskRequest
 //
@@ -3996,7 +3988,7 @@ func (client *Client) GetArtifactSubscriptionTask(request *GetArtifactSubscripti
 
 // Summary:
 //
-// Queries the details of an artifact subscription task.
+// Lists the details of subscription tasks.
 //
 // @param request - GetArtifactSubscriptionTaskResultRequest
 //
@@ -4036,7 +4028,7 @@ func (client *Client) GetArtifactSubscriptionTaskResultWithOptions(request *GetA
 
 // Summary:
 //
-// Queries the details of an artifact subscription task.
+// Lists the details of subscription tasks.
 //
 // @param request - GetArtifactSubscriptionTaskResultRequest
 //
@@ -4140,7 +4132,7 @@ func (client *Client) GetAuthorizationToken(request *GetAuthorizationTokenReques
 
 // Summary:
 //
-// Obtain the delivery chain definition to understand the execution order of edge zones in the delivery chain.
+// Retrieves the definition of a delivery chain to understand the node execution order.
 //
 // @param request - GetChainRequest
 //
@@ -4188,7 +4180,7 @@ func (client *Client) GetChainWithOptions(request *GetChainRequest, runtime *dar
 
 // Summary:
 //
-// Obtain the delivery chain definition to understand the execution order of edge zones in the delivery chain.
+// Retrieves the definition of a delivery chain to understand the node execution order.
 //
 // @param request - GetChainRequest
 //
@@ -4272,7 +4264,7 @@ func (client *Client) GetChartNamespace(request *GetChartNamespaceRequest) (_res
 
 // Summary:
 //
-// Queries the information about a chart repository.
+// Queries the repository information of a chart.
 //
 // @param request - GetChartRepositoryRequest
 //
@@ -4324,7 +4316,7 @@ func (client *Client) GetChartRepositoryWithOptions(request *GetChartRepositoryR
 
 // Summary:
 //
-// Queries the information about a chart repository.
+// Queries the repository information of a chart.
 //
 // @param request - GetChartRepositoryRequest
 //
@@ -4342,7 +4334,7 @@ func (client *Client) GetChartRepository(request *GetChartRepositoryRequest) (_r
 
 // Summary:
 //
-// Query instance information.
+// Queries instance information.
 //
 // @param request - GetInstanceRequest
 //
@@ -4386,7 +4378,7 @@ func (client *Client) GetInstanceWithOptions(request *GetInstanceRequest, runtim
 
 // Summary:
 //
-// Query instance information.
+// Queries instance information.
 //
 // @param request - GetInstanceRequest
 //
@@ -4519,7 +4511,7 @@ func (client *Client) GetInstanceCustomizedDomain(request *GetInstanceCustomized
 
 // Summary:
 //
-// Queries an endpoint of an instance.
+// Queries the access endpoints of an instance.
 //
 // @param request - GetInstanceEndpointRequest
 //
@@ -4571,7 +4563,7 @@ func (client *Client) GetInstanceEndpointWithOptions(request *GetInstanceEndpoin
 
 // Summary:
 //
-// Queries an endpoint of an instance.
+// Queries the access endpoints of an instance.
 //
 // @param request - GetInstanceEndpointRequest
 //
@@ -4787,7 +4779,7 @@ func (client *Client) GetNamespace(request *GetNamespaceRequest) (_result *GetNa
 
 // Summary:
 //
-// Queries the information about image building records of a repository.
+// Queries the build records of a repository.
 //
 // Description:
 //
@@ -4839,7 +4831,7 @@ func (client *Client) GetRepoBuildRecordWithOptions(request *GetRepoBuildRecordR
 
 // Summary:
 //
-// Queries the information about image building records of a repository.
+// Queries the build records of a repository.
 //
 // Description:
 //
@@ -5063,7 +5055,7 @@ func (client *Client) GetRepoSyncTask(request *GetRepoSyncTaskRequest) (_result 
 
 // Summary:
 //
-// Retrieve information about a single image tag.
+// Retrieves the tag information of a specific image.
 //
 // @param request - GetRepoTagRequest
 //
@@ -5103,7 +5095,7 @@ func (client *Client) GetRepoTagWithOptions(request *GetRepoTagRequest, runtime 
 
 // Summary:
 //
-// Retrieve information about a single image tag.
+// Retrieves the tag information of a specific image.
 //
 // @param request - GetRepoTagRequest
 //
@@ -5121,7 +5113,7 @@ func (client *Client) GetRepoTag(request *GetRepoTagRequest) (_result *GetRepoTa
 
 // Summary:
 //
-// Retrieves the scan status of a specific image tag.
+// Retrieves the scan status of an image version.
 //
 // @param request - GetRepoTagScanStatusRequest
 //
@@ -5185,7 +5177,7 @@ func (client *Client) GetRepoTagScanStatusWithOptions(request *GetRepoTagScanSta
 
 // Summary:
 //
-// Retrieves the scan status of a specific image tag.
+// Retrieves the scan status of an image version.
 //
 // @param request - GetRepoTagScanStatusRequest
 //
@@ -5281,7 +5273,7 @@ func (client *Client) GetRepoTagScanSummary(request *GetRepoTagScanSummaryReques
 
 // Summary:
 //
-// Queries details about an image repository.
+// Queries repository information.
 //
 // @param request - GetRepositoryRequest
 //
@@ -5337,7 +5329,7 @@ func (client *Client) GetRepositoryWithOptions(request *GetRepositoryRequest, ru
 
 // Summary:
 //
-// Queries details about an image repository.
+// Queries repository information.
 //
 // @param request - GetRepositoryRequest
 //
@@ -5429,11 +5421,11 @@ func (client *Client) GetScanRule(request *GetScanRuleRequest) (_result *GetScan
 
 // Summary:
 //
-// Retrieves the instance storage domain name routing list.
+// Retrieves the list of instance storage domain name routes.
 //
 // Description:
 //
-// This API is available through whitelist access. [Submit a ticket](https://smartservice.console.aliyun.com/service/create-ticket) to obtain support.
+// This API is available through a whitelist. [Submit a ticket](https://smartservice.console.aliyun.com/service/create-ticket) to request access.
 //
 // @param request - GetStorageDomainRoutingRuleRequest
 //
@@ -5481,11 +5473,11 @@ func (client *Client) GetStorageDomainRoutingRuleWithOptions(request *GetStorage
 
 // Summary:
 //
-// Retrieves the instance storage domain name routing list.
+// Retrieves the list of instance storage domain name routes.
 //
 // Description:
 //
-// This API is available through whitelist access. [Submit a ticket](https://smartservice.console.aliyun.com/service/create-ticket) to obtain support.
+// This API is available through a whitelist. [Submit a ticket](https://smartservice.console.aliyun.com/service/create-ticket) to request access.
 //
 // @param request - GetStorageDomainRoutingRuleRequest
 //
@@ -5619,7 +5611,7 @@ func (client *Client) ListArtifactLifecycleRule(request *ListArtifactLifecycleRu
 
 // Summary:
 //
-// List artifact subscription rules.
+// Lists artifact subscription rules.
 //
 // @param request - ListArtifactSubscriptionRuleRequest
 //
@@ -5659,7 +5651,7 @@ func (client *Client) ListArtifactSubscriptionRuleWithOptions(request *ListArtif
 
 // Summary:
 //
-// List artifact subscription rules.
+// Lists artifact subscription rules.
 //
 // @param request - ListArtifactSubscriptionRuleRequest
 //
@@ -5969,7 +5961,7 @@ func (client *Client) ListChartNamespace(request *ListChartNamespaceRequest) (_r
 
 // Summary:
 //
-// Queries the versions of a chart in a chart repository.
+// Queries the list of chart versions.
 //
 // @param request - ListChartReleaseRequest
 //
@@ -6033,7 +6025,7 @@ func (client *Client) ListChartReleaseWithOptions(request *ListChartReleaseReque
 
 // Summary:
 //
-// Queries the versions of a chart in a chart repository.
+// Queries the list of chart versions.
 //
 // @param request - ListChartReleaseRequest
 //
@@ -6051,7 +6043,7 @@ func (client *Client) ListChartRelease(request *ListChartReleaseRequest) (_resul
 
 // Summary:
 //
-// Queries the chart repositories of a Container Registry instance.
+// Queries a list of repositories.
 //
 // @param request - ListChartRepositoryRequest
 //
@@ -6115,7 +6107,7 @@ func (client *Client) ListChartRepositoryWithOptions(request *ListChartRepositor
 
 // Summary:
 //
-// Queries the chart repositories of a Container Registry instance.
+// Queries a list of repositories.
 //
 // @param request - ListChartRepositoryRequest
 //
@@ -6133,7 +6125,7 @@ func (client *Client) ListChartRepository(request *ListChartRepositoryRequest) (
 
 // Summary:
 //
-// Queries the historical events of an event rule.
+// Retrieves the event history of an event rule.
 //
 // @param request - ListEventCenterRecordRequest
 //
@@ -6173,7 +6165,7 @@ func (client *Client) ListEventCenterRecordWithOptions(request *ListEventCenterR
 
 // Summary:
 //
-// Queries the historical events of an event rule.
+// Retrieves the event history of an event rule.
 //
 // @param request - ListEventCenterRecordRequest
 //
@@ -6191,7 +6183,7 @@ func (client *Client) ListEventCenterRecord(request *ListEventCenterRecordReques
 
 // Summary:
 //
-// Queries the name of an event rule.
+// Retrieves event rule names.
 //
 // @param request - ListEventCenterRuleNameRequest
 //
@@ -6231,7 +6223,7 @@ func (client *Client) ListEventCenterRuleNameWithOptions(request *ListEventCente
 
 // Summary:
 //
-// Queries the name of an event rule.
+// Retrieves event rule names.
 //
 // @param request - ListEventCenterRuleNameRequest
 //
@@ -6249,7 +6241,7 @@ func (client *Client) ListEventCenterRuleName(request *ListEventCenterRuleNameRe
 
 // Summary:
 //
-// Queries a list of instances.
+// Queries the list of instances.
 //
 // @param request - ListInstanceRequest
 //
@@ -6309,7 +6301,7 @@ func (client *Client) ListInstanceWithOptions(request *ListInstanceRequest, runt
 
 // Summary:
 //
-// Queries a list of instances.
+// Queries the list of instances.
 //
 // @param request - ListInstanceRequest
 //
@@ -6397,7 +6389,7 @@ func (client *Client) ListInstanceEndpoint(request *ListInstanceEndpointRequest)
 
 // Summary:
 //
-// Queries regions in which you can create Container Registry instances.
+// Queries the list of instance regions.
 //
 // @param request - ListInstanceRegionRequest
 //
@@ -6441,7 +6433,7 @@ func (client *Client) ListInstanceRegionWithOptions(request *ListInstanceRegionR
 
 // Summary:
 //
-// Queries regions in which you can create Container Registry instances.
+// Queries the list of instance regions.
 //
 // @param request - ListInstanceRegionRequest
 //
@@ -6537,7 +6529,7 @@ func (client *Client) ListNamespace(request *ListNamespaceRequest) (_result *Lis
 
 // Summary:
 //
-// Queries image building records of an image repository.
+// Queries the list of build records for an image repository.
 //
 // @param request - ListRepoBuildRecordRequest
 //
@@ -6593,7 +6585,7 @@ func (client *Client) ListRepoBuildRecordWithOptions(request *ListRepoBuildRecor
 
 // Summary:
 //
-// Queries image building records of an image repository.
+// Queries the list of build records for an image repository.
 //
 // @param request - ListRepoBuildRecordRequest
 //
@@ -6611,7 +6603,7 @@ func (client *Client) ListRepoBuildRecord(request *ListRepoBuildRecordRequest) (
 
 // Summary:
 //
-// Queries the log of an image building record.
+// Retrieves the logs of a build record.
 //
 // @param request - ListRepoBuildRecordLogRequest
 //
@@ -6667,7 +6659,7 @@ func (client *Client) ListRepoBuildRecordLogWithOptions(request *ListRepoBuildRe
 
 // Summary:
 //
-// Queries the log of an image building record.
+// Retrieves the logs of a build record.
 //
 // @param request - ListRepoBuildRecordLogRequest
 //
@@ -6685,7 +6677,7 @@ func (client *Client) ListRepoBuildRecordLog(request *ListRepoBuildRecordLogRequ
 
 // Summary:
 //
-// Lists the build rules of an image repository.
+// Queries the build rules of an image repository.
 //
 // @param request - ListRepoBuildRuleRequest
 //
@@ -6741,7 +6733,7 @@ func (client *Client) ListRepoBuildRuleWithOptions(request *ListRepoBuildRuleReq
 
 // Summary:
 //
-// Lists the build rules of an image repository.
+// Queries the build rules of an image repository.
 //
 // @param request - ListRepoBuildRuleRequest
 //
@@ -6759,7 +6751,7 @@ func (client *Client) ListRepoBuildRule(request *ListRepoBuildRuleRequest) (_res
 
 // Summary:
 //
-// Queries the list of repository synchronization rules.
+// Queries the repository synchronization rules.
 //
 // @param request - ListRepoSyncRuleRequest
 //
@@ -6827,7 +6819,7 @@ func (client *Client) ListRepoSyncRuleWithOptions(request *ListRepoSyncRuleReque
 
 // Summary:
 //
-// Queries the list of repository synchronization rules.
+// Queries the repository synchronization rules.
 //
 // @param request - ListRepoSyncRuleRequest
 //
@@ -6933,6 +6925,10 @@ func (client *Client) ListRepoSyncTask(request *ListRepoSyncTaskRequest) (_resul
 //
 // Queries the list of image versions (tags).
 //
+// Description:
+//
+// Before you invoke this operation, prepare an Enterprise Edition instance and an image repository. You can invoke ListInstance to query the InstanceId and invoke ListRepository to query the RepoId.
+//
 // @param request - ListRepoTagRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -6997,6 +6993,10 @@ func (client *Client) ListRepoTagWithOptions(request *ListRepoTagRequest, runtim
 //
 // Queries the list of image versions (tags).
 //
+// Description:
+//
+// Before you invoke this operation, prepare an Enterprise Edition instance and an image repository. You can invoke ListInstance to query the InstanceId and invoke ListRepository to query the RepoId.
+//
 // @param request - ListRepoTagRequest
 //
 // @return ListRepoTagResponse
@@ -7013,7 +7013,7 @@ func (client *Client) ListRepoTag(request *ListRepoTagRequest) (_result *ListRep
 
 // Summary:
 //
-// Queries the results of a security scan that is created for an image tag.
+// Queries the list of scan results for an image version.
 //
 // @param request - ListRepoTagScanResultRequest
 //
@@ -7097,7 +7097,7 @@ func (client *Client) ListRepoTagScanResultWithOptions(request *ListRepoTagScanR
 
 // Summary:
 //
-// Queries the results of a security scan that is created for an image tag.
+// Queries the list of scan results for an image version.
 //
 // @param request - ListRepoTagScanResultRequest
 //
@@ -7115,7 +7115,7 @@ func (client *Client) ListRepoTagScanResult(request *ListRepoTagScanResultReques
 
 // Summary:
 //
-// Queries the triggers of a repository.
+// Queries the list of repository triggers.
 //
 // @param request - ListRepoTriggerRequest
 //
@@ -7163,7 +7163,7 @@ func (client *Client) ListRepoTriggerWithOptions(request *ListRepoTriggerRequest
 
 // Summary:
 //
-// Queries the triggers of a repository.
+// Queries the list of repository triggers.
 //
 // @param request - ListRepoTriggerRequest
 //
@@ -7181,7 +7181,7 @@ func (client *Client) ListRepoTrigger(request *ListRepoTriggerRequest) (_result 
 
 // Summary:
 //
-// Queries a list of image repositories.
+// Queries image repositories.
 //
 // @param request - ListRepositoryRequest
 //
@@ -7253,7 +7253,7 @@ func (client *Client) ListRepositoryWithOptions(request *ListRepositoryRequest, 
 
 // Summary:
 //
-// Queries a list of image repositories.
+// Queries image repositories.
 //
 // @param request - ListRepositoryRequest
 //
@@ -7271,11 +7271,11 @@ func (client *Client) ListRepository(request *ListRepositoryRequest) (_result *L
 
 // Summary:
 //
-// Queries the baseline risks of a scan task by page.
+// Queries baseline vulnerabilities of a cloud security scan task by paging.
 //
 // Description:
 //
-// Before you call this operation, use a Security Center scan engine to scan the image.
+// Before calling this operation, scan the image by using the cloud security engine.
 //
 // @param request - ListScanBaselineByTaskRequest
 //
@@ -7315,11 +7315,11 @@ func (client *Client) ListScanBaselineByTaskWithOptions(request *ListScanBaselin
 
 // Summary:
 //
-// Queries the baseline risks of a scan task by page.
+// Queries baseline vulnerabilities of a cloud security scan task by paging.
 //
 // Description:
 //
-// Before you call this operation, use a Security Center scan engine to scan the image.
+// Before calling this operation, scan the image by using the cloud security engine.
 //
 // @param request - ListScanBaselineByTaskRequest
 //
@@ -7337,11 +7337,11 @@ func (client *Client) ListScanBaselineByTask(request *ListScanBaselineByTaskRequ
 
 // Summary:
 //
-// Queries the malicious files of a scan task by page.
+// Performs a paged query for the malicious file vulnerabilities of a scan node by paging.
 //
 // Description:
 //
-// Before you call this operation, use a Security Center scan engine to scan the image.
+// Before calling this operation, scan the image by using the cloud security engine.
 //
 // @param request - ListScanMaliciousFileByTaskRequest
 //
@@ -7381,11 +7381,11 @@ func (client *Client) ListScanMaliciousFileByTaskWithOptions(request *ListScanMa
 
 // Summary:
 //
-// Queries the malicious files of a scan task by page.
+// Performs a paged query for the malicious file vulnerabilities of a scan node by paging.
 //
 // Description:
 //
-// Before you call this operation, use a Security Center scan engine to scan the image.
+// Before calling this operation, scan the image by using the cloud security engine.
 //
 // @param request - ListScanMaliciousFileByTaskRequest
 //
@@ -7403,11 +7403,11 @@ func (client *Client) ListScanMaliciousFileByTask(request *ListScanMaliciousFile
 
 // Summary:
 //
-// Lists the scan rules.
+// Lists scan rules.
 //
 // Description:
 //
-// 列举扫描规则。
+// Lists scan rules.
 //
 // @param request - ListScanRuleRequest
 //
@@ -7447,11 +7447,11 @@ func (client *Client) ListScanRuleWithOptions(request *ListScanRuleRequest, runt
 
 // Summary:
 //
-// Lists the scan rules.
+// Lists scan rules.
 //
 // Description:
 //
-// 列举扫描规则。
+// Lists scan rules.
 //
 // @param request - ListScanRuleRequest
 //
@@ -7469,15 +7469,15 @@ func (client *Client) ListScanRule(request *ListScanRuleRequest) (_result *ListS
 
 // Summary:
 //
-// Queries the tags that are added to cloud resources. Instance resources are supported.
+// Queries the list of tags that are bound to resources. Currently, Instance resources are supported.
 //
 // Description:
 //
-// - 请求中ResourceId.N 及 (Tag.N.Key,Tag.N.Value) 至少存在一个，以确定检索对象。
+// - At least one of ResourceId.N or (Tag.N.Key, Tag.N.Value) must be specified in the request to determine the objects to query.
 //
-// - Tag.N是资源的标签，由一个键值对组成。仅指定Tag.N.Key时，则返回该标签键关联的所有标签值。仅指定Tag.N.Value会报错。
+// - Tag.N is a tag of the resource, which consists of a key-value pair. If you specify only Tag.N.Key, all tag values associated with the specified tag key are returned. If you specify only Tag.N.Value, an error is returned.
 //
-// - ResourceId.N需满足所有输入的键值对。当输入多个键值对，查询结果为资源中包含指定多个键值对的资源。
+// - ResourceId.N must match all specified key-value pairs. If you specify multiple key-value pairs, the query results include only resources that contain all the specified key-value pairs.
 //
 // @param request - ListTagResourcesRequest
 //
@@ -7537,15 +7537,15 @@ func (client *Client) ListTagResourcesWithOptions(request *ListTagResourcesReque
 
 // Summary:
 //
-// Queries the tags that are added to cloud resources. Instance resources are supported.
+// Queries the list of tags that are bound to resources. Currently, Instance resources are supported.
 //
 // Description:
 //
-// - 请求中ResourceId.N 及 (Tag.N.Key,Tag.N.Value) 至少存在一个，以确定检索对象。
+// - At least one of ResourceId.N or (Tag.N.Key, Tag.N.Value) must be specified in the request to determine the objects to query.
 //
-// - Tag.N是资源的标签，由一个键值对组成。仅指定Tag.N.Key时，则返回该标签键关联的所有标签值。仅指定Tag.N.Value会报错。
+// - Tag.N is a tag of the resource, which consists of a key-value pair. If you specify only Tag.N.Key, all tag values associated with the specified tag key are returned. If you specify only Tag.N.Value, an error is returned.
 //
-// - ResourceId.N需满足所有输入的键值对。当输入多个键值对，查询结果为资源中包含指定多个键值对的资源。
+// - ResourceId.N must match all specified key-value pairs. If you specify multiple key-value pairs, the query results include only resources that contain all the specified key-value pairs.
 //
 // @param request - ListTagResourcesRequest
 //
@@ -7629,11 +7629,11 @@ func (client *Client) ResetLoginPassword(request *ResetLoginPasswordRequest) (_r
 
 // Summary:
 //
-// Adds tags to resources. Instance resources are supported.
+// Tags resources. Currently supports Instance resources.
 //
 // Description:
 //
-// 单个实例最多可绑定 20 条标签。绑定标签前，阿里云会校验资源已有标签数量，超过限制值会返回报错信息。
+// You can attach up to 20 tags to a single instance. Before attaching tags, Alibaba Cloud verifies the number of existing tags on the resource. If the limit is exceeded, an error message is returned.
 //
 // @param request - TagResourcesRequest
 //
@@ -7689,11 +7689,11 @@ func (client *Client) TagResourcesWithOptions(request *TagResourcesRequest, runt
 
 // Summary:
 //
-// Adds tags to resources. Instance resources are supported.
+// Tags resources. Currently supports Instance resources.
 //
 // Description:
 //
-// 单个实例最多可绑定 20 条标签。绑定标签前，阿里云会校验资源已有标签数量，超过限制值会返回报错信息。
+// You can attach up to 20 tags to a single instance. Before attaching tags, Alibaba Cloud verifies the number of existing tags on the resource. If the limit is exceeded, an error message is returned.
 //
 // @param request - TagResourcesRequest
 //
@@ -7711,7 +7711,7 @@ func (client *Client) TagResources(request *TagResourcesRequest) (_result *TagRe
 
 // Summary:
 //
-// Removes tags from resources. Instance resources are supported.
+// Deletes resource tags. Currently, Instance resources are supported.
 //
 // @param request - UntagResourcesRequest
 //
@@ -7771,7 +7771,7 @@ func (client *Client) UntagResourcesWithOptions(request *UntagResourcesRequest, 
 
 // Summary:
 //
-// Removes tags from resources. Instance resources are supported.
+// Deletes resource tags. Currently, Instance resources are supported.
 //
 // @param request - UntagResourcesRequest
 //
@@ -7897,6 +7897,14 @@ func (client *Client) UpdateArtifactLifecycleRule(request *UpdateArtifactLifecyc
 //
 // Updates an artifact subscription rule.
 //
+// Description:
+//
+// <props="intl">Accelerated image build rules can only be created for Standard and Advanced Edition instances. Basic Edition does not support the creation of accelerated image build rules. For differences in instance specifications, refer to [Specifications](https://www.alibabacloud.com/help/zh/container-registry/latest/what-is-container-registry#section-go7-lhg-qbc).
+//
+// <props="china">Accelerated image build rules can only be created for Standard and Advanced Edition instances. Basic Edition does not support the creation of accelerated image build rules. For differences in instance specifications, refer to [Specifications](https://help.aliyun.com/document_detail/257112.html#section-go7-lhg-qbc).
+//
+// Accelerated image conversion is currently not supported in Alibaba Finance Cloud and Alibaba Gov Cloud regions.
+//
 // @param request - UpdateArtifactSubscriptionRuleRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -7954,6 +7962,10 @@ func (client *Client) UpdateArtifactSubscriptionRuleWithOptions(request *UpdateA
 		query["TagCount"] = request.TagCount
 	}
 
+	if !dara.IsNil(request.TagList) {
+		query["TagList"] = request.TagList
+	}
+
 	if !dara.IsNil(request.TagRegexp) {
 		query["TagRegexp"] = request.TagRegexp
 	}
@@ -7985,6 +7997,14 @@ func (client *Client) UpdateArtifactSubscriptionRuleWithOptions(request *UpdateA
 //
 // Updates an artifact subscription rule.
 //
+// Description:
+//
+// <props="intl">Accelerated image build rules can only be created for Standard and Advanced Edition instances. Basic Edition does not support the creation of accelerated image build rules. For differences in instance specifications, refer to [Specifications](https://www.alibabacloud.com/help/zh/container-registry/latest/what-is-container-registry#section-go7-lhg-qbc).
+//
+// <props="china">Accelerated image build rules can only be created for Standard and Advanced Edition instances. Basic Edition does not support the creation of accelerated image build rules. For differences in instance specifications, refer to [Specifications](https://help.aliyun.com/document_detail/257112.html#section-go7-lhg-qbc).
+//
+// Accelerated image conversion is currently not supported in Alibaba Finance Cloud and Alibaba Gov Cloud regions.
+//
 // @param request - UpdateArtifactSubscriptionRuleRequest
 //
 // @return UpdateArtifactSubscriptionRuleResponse
@@ -8001,7 +8021,7 @@ func (client *Client) UpdateArtifactSubscriptionRule(request *UpdateArtifactSubs
 
 // Summary:
 //
-// Updates the information about a delivery chain, such as the node execution sequence of the delivery chain.
+// Modifies the definition of a delivery chain, such as the execution order of nodes in the delivery chain.
 //
 // @param request - UpdateChainRequest
 //
@@ -8065,7 +8085,7 @@ func (client *Client) UpdateChainWithOptions(request *UpdateChainRequest, runtim
 
 // Summary:
 //
-// Updates the information about a delivery chain, such as the node execution sequence of the delivery chain.
+// Modifies the definition of a delivery chain, such as the execution order of nodes in the delivery chain.
 //
 // @param request - UpdateChainRequest
 //
@@ -8157,7 +8177,7 @@ func (client *Client) UpdateChartNamespace(request *UpdateChartNamespaceRequest)
 
 // Summary:
 //
-// Updates a chart repository of a Container Registry instance.
+// Updates the repository information.
 //
 // @param request - UpdateChartRepositoryRequest
 //
@@ -8217,7 +8237,7 @@ func (client *Client) UpdateChartRepositoryWithOptions(request *UpdateChartRepos
 
 // Summary:
 //
-// Updates a chart repository of a Container Registry instance.
+// Updates the repository information.
 //
 // @param request - UpdateChartRepositoryRequest
 //
@@ -8579,7 +8599,7 @@ func (client *Client) UpdateNamespace(request *UpdateNamespaceRequest) (_result 
 
 // Summary:
 //
-// Updates an image building rule for a repository.
+// Updates a build rule for an image repository.
 //
 // @param request - UpdateRepoBuildRuleRequest
 //
@@ -8659,7 +8679,7 @@ func (client *Client) UpdateRepoBuildRuleWithOptions(request *UpdateRepoBuildRul
 
 // Summary:
 //
-// Updates an image building rule for a repository.
+// Updates a build rule for an image repository.
 //
 // @param request - UpdateRepoBuildRuleRequest
 //
@@ -8771,7 +8791,7 @@ func (client *Client) UpdateRepoSourceCodeRepo(request *UpdateRepoSourceCodeRepo
 
 // Summary:
 //
-// Updates a trigger of an image repository.
+// Updates a trigger for an image repository.
 //
 // @param request - UpdateRepoTriggerRequest
 //
@@ -8839,7 +8859,7 @@ func (client *Client) UpdateRepoTriggerWithOptions(request *UpdateRepoTriggerReq
 
 // Summary:
 //
-// Updates a trigger of an image repository.
+// Updates a trigger for an image repository.
 //
 // @param request - UpdateRepoTriggerRequest
 //
@@ -8857,7 +8877,7 @@ func (client *Client) UpdateRepoTrigger(request *UpdateRepoTriggerRequest) (_res
 
 // Summary:
 //
-// Updates repository information.
+// Updates the repository information.
 //
 // @param request - UpdateRepositoryRequest
 //
@@ -8929,7 +8949,7 @@ func (client *Client) UpdateRepositoryWithOptions(request *UpdateRepositoryReque
 
 // Summary:
 //
-// Updates repository information.
+// Updates the repository information.
 //
 // @param request - UpdateRepositoryRequest
 //
@@ -8951,7 +8971,7 @@ func (client *Client) UpdateRepository(request *UpdateRepositoryRequest) (_resul
 //
 // Description:
 //
-// This API is available through whitelist access. [Submit a ticket](https://smartservice.console.aliyun.com/service/create-ticket) to request access.
+// This API is available through a whitelist. [Submit a ticket](https://smartservice.console.aliyun.com/service/create-ticket) to request access.
 //
 // @param tmpReq - UpdateScanRuleRequest
 //
@@ -9037,7 +9057,7 @@ func (client *Client) UpdateScanRuleWithOptions(tmpReq *UpdateScanRuleRequest, r
 //
 // Description:
 //
-// This API is available through whitelist access. [Submit a ticket](https://smartservice.console.aliyun.com/service/create-ticket) to request access.
+// This API is available through a whitelist. [Submit a ticket](https://smartservice.console.aliyun.com/service/create-ticket) to request access.
 //
 // @param request - UpdateScanRuleRequest
 //
@@ -9056,10 +9076,6 @@ func (client *Client) UpdateScanRule(request *UpdateScanRuleRequest) (_result *U
 // Summary:
 //
 // Updates a routing rule for an instance store domain name.
-//
-// Description:
-//
-// 此API白名单开放，请[提交工单](https://smartservice.console.aliyun.com/service/create-ticket)获取支持。
 //
 // @param tmpReq - UpdateStorageDomainRoutingRuleRequest
 //
@@ -9118,10 +9134,6 @@ func (client *Client) UpdateStorageDomainRoutingRuleWithOptions(tmpReq *UpdateSt
 // Summary:
 //
 // Updates a routing rule for an instance store domain name.
-//
-// Description:
-//
-// 此API白名单开放，请[提交工单](https://smartservice.console.aliyun.com/service/create-ticket)获取支持。
 //
 // @param request - UpdateStorageDomainRoutingRuleRequest
 //

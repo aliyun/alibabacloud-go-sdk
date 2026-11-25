@@ -26,17 +26,17 @@ type iListArtifactSubscriptionTaskResponseBody interface {
 }
 
 type ListArtifactSubscriptionTaskResponseBody struct {
-	// The return value.
+	// The return code.
 	//
 	// example:
 	//
 	// success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// Indicates whether the API request is successful. Valid values:
+	// Indicates whether the API call is successful. Valid values:
 	//
-	// 	- `true`: The request is successful.
+	// - `true`: The API call is successful.
 	//
-	// 	- `false`: The request fails.
+	// - `false`: The API call failed.
 	//
 	// example:
 	//
@@ -60,9 +60,9 @@ type ListArtifactSubscriptionTaskResponseBody struct {
 	//
 	// 81E7A039-A4EF-57D9-A100-88E5DCEF9D56
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The queried artifact subscription tasks.
+	// The task list.
 	Tasks []*ListArtifactSubscriptionTaskResponseBodyTasks `json:"Tasks,omitempty" xml:"Tasks,omitempty" type:"Repeated"`
-	// The total number of entries returned.
+	// The total number of entries.
 	//
 	// example:
 	//
@@ -155,13 +155,13 @@ func (s *ListArtifactSubscriptionTaskResponseBody) Validate() error {
 }
 
 type ListArtifactSubscriptionTaskResponseBodyTasks struct {
-	// The type of the artifact.
+	// The artifact type.
 	//
 	// example:
 	//
 	// IMAGE
 	ArtifactType *string `json:"ArtifactType,omitempty" xml:"ArtifactType,omitempty"`
-	// The end time of the artifact subscription task.
+	// The end time, in UNIX timestamp format. Unit: milliseconds.
 	//
 	// example:
 	//
@@ -179,19 +179,19 @@ type ListArtifactSubscriptionTaskResponseBodyTasks struct {
 	//
 	// success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The name of the namespace.
+	// The namespace name.
 	//
 	// example:
 	//
 	// test-ns
 	NamespaceName *string `json:"NamespaceName,omitempty" xml:"NamespaceName,omitempty"`
-	// The name of the repository.
+	// The repository name.
 	//
 	// example:
 	//
 	// test-repo
 	RepoName *string `json:"RepoName,omitempty" xml:"RepoName,omitempty"`
-	// The name of the source namespace.
+	// The source namespace.
 	//
 	// example:
 	//
@@ -203,25 +203,25 @@ type ListArtifactSubscriptionTaskResponseBodyTasks struct {
 	//
 	// DOCKER_HUB
 	SourceProvider *string `json:"SourceProvider,omitempty" xml:"SourceProvider,omitempty"`
-	// The name of the source repository.
+	// The source repository.
 	//
 	// example:
 	//
 	// nginx
 	SourceRepoName *string `json:"SourceRepoName,omitempty" xml:"SourceRepoName,omitempty"`
-	// The type of the source artifact.
+	// The source artifact type.
 	//
 	// example:
 	//
 	// PUBLIC
 	SourceRepoType *string `json:"SourceRepoType,omitempty" xml:"SourceRepoType,omitempty"`
-	// The start time of the artifact subscription task.
+	// The start time, in UNIX timestamp format. Unit: milliseconds.
 	//
 	// example:
 	//
 	// 1695348301000
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The total number of subscribed tags.
+	// The number of subscribed tags.
 	//
 	// example:
 	//
@@ -245,13 +245,13 @@ type ListArtifactSubscriptionTaskResponseBodyTasks struct {
 	//
 	// SUCCESS
 	TaskResult *string `json:"TaskResult,omitempty" xml:"TaskResult,omitempty"`
-	// The status of the task.
+	// The task status.
 	//
 	// example:
 	//
 	// RUNNING
 	TaskStatus *string `json:"TaskStatus,omitempty" xml:"TaskStatus,omitempty"`
-	// The type of the task.
+	// The task type.
 	//
 	// example:
 	//

@@ -29,8 +29,9 @@ type DeleteInstanceEndpointAclPolicyRequest struct {
 	// example:
 	//
 	// internet
-	EndpointType *string               `json:"EndpointType,omitempty" xml:"EndpointType,omitempty"`
-	Entries      []*AccessControlEntry `json:"Entries,omitempty" xml:"Entries,omitempty" type:"Repeated"`
+	EndpointType *string `json:"EndpointType,omitempty" xml:"EndpointType,omitempty"`
+	// The list of public access whitelist entries to delete for the instance.
+	Entries []*AccessControlEntry `json:"Entries,omitempty" xml:"Entries,omitempty" type:"Repeated"`
 	// Deprecated
 	//
 	// The IP CIDR block.
@@ -47,11 +48,11 @@ type DeleteInstanceEndpointAclPolicyRequest struct {
 	//
 	// cri-xkx6vujuhay0****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The module for which the access policy is set. Valid values:
+	// The module for which the access policy is configured. Valid values:
 	//
-	// - `Registry`: access to the image repository
+	// - `Registry`: Access to the image repository.
 	//
-	// - `Chart`: access to Helm Chart
+	// - `Chart`: Access to Helm Chart.
 	//
 	// example:
 	//

@@ -18,13 +18,13 @@ type iUpdateNamespaceResponseBody interface {
 }
 
 type UpdateNamespaceResponseBody struct {
-	// The response code. The value `success` indicates a successful request.
+	// The return value.
 	//
 	// example:
 	//
 	// success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// Indicates whether the request succeeded.
+	// Indicates whether the request is successful.
 	//
 	// example:
 	//

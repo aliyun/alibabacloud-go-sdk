@@ -18,7 +18,7 @@ type iCreateBuildRecordByRecordRequest interface {
 }
 
 type CreateBuildRecordByRecordRequest struct {
-	// The ID of the image building record.
+	// The build record ID.
 	//
 	// This parameter is required.
 	//
@@ -34,7 +34,7 @@ type CreateBuildRecordByRecordRequest struct {
 	//
 	// cri-hpdfkc6utbaq****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The ID of the image repository.
+	// The image repository ID.
 	//
 	// This parameter is required.
 	//

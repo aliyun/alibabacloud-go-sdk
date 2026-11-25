@@ -18,9 +18,18 @@ type iRepoConfiguration interface {
 }
 
 type RepoConfiguration struct {
+	// The default parameters for the image build rule.
 	ArtifactBuildRuleParameters *RepoConfigurationArtifactBuildRuleParameters `json:"ArtifactBuildRuleParameters,omitempty" xml:"ArtifactBuildRuleParameters,omitempty" type:"Struct"`
+	// The type of the image repository for automatic creation. Valid values: PRIVATE (private repository) and PUBLIC (public repository).
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// PRIVATE
 	RepoType *string `json:"RepoType,omitempty" xml:"RepoType,omitempty"`
+	// Specifies whether image version immutability is enabled. After it is enabled, you cannot overwrite image versions other than latest.
+	//
 	// This parameter is required.
 	TagImmutability *bool `json:"TagImmutability,omitempty" xml:"TagImmutability,omitempty"`
 }
@@ -70,6 +79,8 @@ func (s *RepoConfiguration) Validate() error {
 }
 
 type RepoConfigurationArtifactBuildRuleParameters struct {
+	// Specifies whether to build only the image index.
+	//
 	// This parameter is required.
 	ImageIndexOnly *bool `json:"ImageIndexOnly,omitempty" xml:"ImageIndexOnly,omitempty"`
 }

@@ -64,7 +64,7 @@ type UpdateRepositoryRequest struct {
 	//
 	// - `PUBLIC`: public repository
 	//
-	// - `PRIVATE`: private repository.
+	// - `PRIVATE`: private repository
 	//
 	// This parameter is required.
 	//
@@ -84,7 +84,7 @@ type UpdateRepositoryRequest struct {
 	//
 	// - `true`: enabled
 	//
-	// - `false`: disabled.
+	// - `false`: disabled
 	//
 	// example:
 	//

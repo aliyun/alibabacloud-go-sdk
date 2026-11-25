@@ -18,17 +18,17 @@ type iCancelRepoSyncTaskResponseBody interface {
 }
 
 type CancelRepoSyncTaskResponseBody struct {
-	// The response code.
+	// The return code.
 	//
 	// example:
 	//
 	// success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// Indicates whether the CancelRepoSyncTask request is successful. Valid values:
+	// Indicates whether the API call was successful. Valid values:
 	//
-	// 	- `true`: successful
+	// - `true`: The API call was successful.
 	//
-	// 	- `false`: failed
+	// - `false`: The API call failed.
 	//
 	// example:
 	//

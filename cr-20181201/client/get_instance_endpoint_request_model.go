@@ -18,7 +18,7 @@ type iGetInstanceEndpointRequest interface {
 }
 
 type GetInstanceEndpointRequest struct {
-	// The type of the endpoint. Set the value to Internet.
+	// The endpoint type. Only Internet is supported.
 	//
 	// This parameter is required.
 	//
@@ -26,7 +26,7 @@ type GetInstanceEndpointRequest struct {
 	//
 	// internet
 	EndpointType *string `json:"EndpointType,omitempty" xml:"EndpointType,omitempty"`
-	// The ID of the instance.
+	// The instance ID.
 	//
 	// This parameter is required.
 	//
@@ -34,11 +34,11 @@ type GetInstanceEndpointRequest struct {
 	//
 	// cri-xkx6vujuhay0****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The name of the module that you want to access. Valid values:
+	// The access module. Valid values:
 	//
-	// 	- `Registry`: the image repository.
+	// - `Registry`: image repository
 	//
-	// 	- `Chart`: a Helm chart.
+	// - `Chart`: Helm chart
 	//
 	// example:
 	//

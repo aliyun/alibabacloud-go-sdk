@@ -24,7 +24,7 @@ type iListChartRepositoryRequest interface {
 }
 
 type ListChartRepositoryRequest struct {
-	// The ID of the instance.
+	// The instance ID.
 	//
 	// This parameter is required.
 	//
@@ -32,37 +32,37 @@ type ListChartRepositoryRequest struct {
 	//
 	// cri-xkx6vujuhay0****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The number of the page to return.
+	// The page number.
 	//
 	// example:
 	//
 	// 1
 	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
-	// The number of entries to return on each page.
+	// The number of entries per page.
 	//
 	// example:
 	//
 	// 30
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The name of the repository.
+	// The repository name.
 	//
 	// example:
 	//
 	// ns1
 	RepoName *string `json:"RepoName,omitempty" xml:"RepoName,omitempty"`
-	// The name of the namespace to which the repository belongs.
+	// The namespace.
 	//
 	// example:
 	//
 	// repo1
 	RepoNamespaceName *string `json:"RepoNamespaceName,omitempty" xml:"RepoNamespaceName,omitempty"`
-	// The status of the chart repositories that you want to query. Valid values:
+	// The status of the chart repository. Valid values:
 	//
-	// 	- `ALL`: query repositories of all status.
+	// - `NORMAL`: The chart repository is in the Normal state.
 	//
-	// 	- `NORMAL`: query normal repositories.
 	//
-	// 	- `DELETING`: query repositories that are being deleted.
+	//
+	// - `DELETING`: The chart repository is being deleted.
 	//
 	// example:
 	//

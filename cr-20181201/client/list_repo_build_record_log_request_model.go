@@ -20,7 +20,7 @@ type iListRepoBuildRecordLogRequest interface {
 }
 
 type ListRepoBuildRecordLogRequest struct {
-	// The ID of the image building record.
+	// The build record ID.
 	//
 	// This parameter is required.
 	//
@@ -28,7 +28,7 @@ type ListRepoBuildRecordLogRequest struct {
 	//
 	// C5B4D5D7-A1C6-4E9B-ABD2-401361C4****
 	BuildRecordId *string `json:"BuildRecordId,omitempty" xml:"BuildRecordId,omitempty"`
-	// The ID of the instance.
+	// The instance ID.
 	//
 	// This parameter is required.
 	//
@@ -36,13 +36,13 @@ type ListRepoBuildRecordLogRequest struct {
 	//
 	// cri-nmbv37dlv5d3****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The offset of log lines.
+	// The log line offset.
 	//
 	// example:
 	//
 	// 0
 	Offset *int32 `json:"Offset,omitempty" xml:"Offset,omitempty"`
-	// The ID of the image repository.
+	// The image repository ID.
 	//
 	// example:
 	//

@@ -30,25 +30,25 @@ type iListRepositoryResponseBody interface {
 }
 
 type ListRepositoryResponseBody struct {
-	// The return value.
+	// The return code.
 	//
 	// example:
 	//
 	// success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	//
 	// example:
 	//
 	// true
 	IsSuccess *bool `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
-	// The maximum number of entries returned.
+	// The maximum number of returned results.
 	//
 	// example:
 	//
 	// 30
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The pagination token. If a next page exists, the service returns a NextToken value. Pass this value in the next request.
+	// The token for the next page. If a next page exists, the service returns a NextToken value, which you can pass in the next request.
 	//
 	// example:
 	//
@@ -60,7 +60,7 @@ type ListRepositoryResponseBody struct {
 	//
 	// 1
 	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
-	// The page size.
+	// The number of entries per page.
 	//
 	// example:
 	//
@@ -185,7 +185,7 @@ func (s *ListRepositoryResponseBody) Validate() error {
 }
 
 type ListRepositoryResponseBodyRepositories struct {
-	// The time when the repository was created.
+	// The time when the repository was created. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
@@ -197,7 +197,7 @@ type ListRepositoryResponseBodyRepositories struct {
 	//
 	// cri-kmsiwlxxdcv****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The time when the repository was last modified.
+	// The time when the repository was last modified. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
@@ -205,9 +205,9 @@ type ListRepositoryResponseBodyRepositories struct {
 	ModifiedTime *int64 `json:"ModifiedTime,omitempty" xml:"ModifiedTime,omitempty"`
 	// The repository build type. Valid values:
 	//
-	// - `AUTO`: Automatically triggered build.
+	// - `AUTO`: Automatically triggered.
 	//
-	// - `MANUAL`: Manually triggered build.
+	// - `MANUAL`: Manually triggered.
 	//
 	// example:
 	//
@@ -253,13 +253,13 @@ type ListRepositoryResponseBodyRepositories struct {
 	//
 	// rg-acfm4n5kzyfxxxx
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The summary.
+	// The summary information.
 	//
 	// example:
 	//
 	// test OK
 	Summary *string `json:"Summary,omitempty" xml:"Summary,omitempty"`
-	// The tag immutability of the image.
+	// The immutability of image tags.
 	//
 	// example:
 	//

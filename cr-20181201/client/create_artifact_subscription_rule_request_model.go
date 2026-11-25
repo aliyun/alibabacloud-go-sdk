@@ -29,12 +29,14 @@ type iCreateArtifactSubscriptionRuleRequest interface {
 	GetSourceRepoName() *string
 	SetTagCount(v int64) *CreateArtifactSubscriptionRuleRequest
 	GetTagCount() *int64
+	SetTagList(v []*string) *CreateArtifactSubscriptionRuleRequest
+	GetTagList() []*string
 	SetTagRegexp(v string) *CreateArtifactSubscriptionRuleRequest
 	GetTagRegexp() *string
 }
 
 type CreateArtifactSubscriptionRuleRequest struct {
-	// Indicates whether an acceleration link is enabled for image subscription. The subscription acceleration feature is in public preview. The feature is optimized based on scheduling policies and network links to accelerate image subscription.
+	// Specifies whether to enable the acceleration link. The subscription acceleration feature is in public preview. Based on scheduling policies and network link optimization, it can improve the image subscription speed.
 	//
 	// example:
 	//
@@ -48,7 +50,7 @@ type CreateArtifactSubscriptionRuleRequest struct {
 	//
 	// cri-c0o11woew0k****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The name of the Container Registry namespace.
+	// The ACR namespace.
 	//
 	// This parameter is required.
 	//
@@ -56,17 +58,17 @@ type CreateArtifactSubscriptionRuleRequest struct {
 	//
 	// test-ns
 	NamespaceName *string `json:"NamespaceName,omitempty" xml:"NamespaceName,omitempty"`
-	// Indicates whether the original image is overwritten.
+	// Specifies whether to overwrite images.
 	//
 	// example:
 	//
 	// true
 	Override *bool `json:"Override,omitempty" xml:"Override,omitempty"`
-	// The operating system and architecture. If the source repository contains a multi-arch image, only the specified operating system and architecture are subscribed to the destination repository of the Enterprise Edition instance. Subscribe to the destination repository of an Enterprise Edition instance
+	// The operating system or architecture. If the source repository contains multi-architecture images, only images with the specified operating system or architecture are subscribed to the destination repository of the Enterprise instance.
 	//
 	// This parameter is required.
 	Platform []*string `json:"Platform,omitempty" xml:"Platform,omitempty" type:"Repeated"`
-	// The name of the Container Registry repository.
+	// The ACR repository.
 	//
 	// This parameter is required.
 	//
@@ -74,21 +76,13 @@ type CreateArtifactSubscriptionRuleRequest struct {
 	//
 	// test-repo
 	RepoName *string `json:"RepoName,omitempty" xml:"RepoName,omitempty"`
-	// The source namespace.
+	// The source namespace. If `SourceProvider` is set to `DOCKER_HUB`, the default value is `library`. This parameter is required in other scenarios.
 	//
 	// example:
 	//
 	// library
 	SourceNamespaceName *string `json:"SourceNamespaceName,omitempty" xml:"SourceNamespaceName,omitempty"`
-	// The source of the artifact.
-	//
-	// Valid values:
-	//
-	// 	- DOCKER_HUB: Docker Hub
-	//
-	// 	- GCR: GCR
-	//
-	// 	- QUAY: Quay.io
+	// The artifact source.
 	//
 	// This parameter is required.
 	//
@@ -104,17 +98,23 @@ type CreateArtifactSubscriptionRuleRequest struct {
 	//
 	// nginx
 	SourceRepoName *string `json:"SourceRepoName,omitempty" xml:"SourceRepoName,omitempty"`
-	// The number of subscribed images.
-	//
-	// This parameter is required.
+	// The number of images to subscribe to.
 	//
 	// example:
 	//
 	// 1
 	TagCount *int64 `json:"TagCount,omitempty" xml:"TagCount,omitempty"`
-	// The image tag in the subscription source repository. Regular expressions are supported.
+	// - The image tags to subscribe to when matching by tag list. A maximum of 10 tags are supported.
 	//
-	// This parameter is required.
+	// - If TagList is specified, these tags are queried one by one. TagRegexp and TagCount cannot be specified at the same time. If TagList is not specified, TagRegexp and TagCount are used for matching, and both must be specified.
+	//
+	// - The matching method cannot be changed after the rule is created. To change the matching method, delete the rule and create a new one.
+	//
+	// example:
+	//
+	// latest
+	TagList []*string `json:"TagList,omitempty" xml:"TagList,omitempty" type:"Repeated"`
+	// The image versions to subscribe to from the source repository. Regular expressions are supported.
 	//
 	// example:
 	//
@@ -170,6 +170,10 @@ func (s *CreateArtifactSubscriptionRuleRequest) GetTagCount() *int64 {
 	return s.TagCount
 }
 
+func (s *CreateArtifactSubscriptionRuleRequest) GetTagList() []*string {
+	return s.TagList
+}
+
 func (s *CreateArtifactSubscriptionRuleRequest) GetTagRegexp() *string {
 	return s.TagRegexp
 }
@@ -221,6 +225,11 @@ func (s *CreateArtifactSubscriptionRuleRequest) SetSourceRepoName(v string) *Cre
 
 func (s *CreateArtifactSubscriptionRuleRequest) SetTagCount(v int64) *CreateArtifactSubscriptionRuleRequest {
 	s.TagCount = &v
+	return s
+}
+
+func (s *CreateArtifactSubscriptionRuleRequest) SetTagList(v []*string) *CreateArtifactSubscriptionRuleRequest {
+	s.TagList = v
 	return s
 }
 

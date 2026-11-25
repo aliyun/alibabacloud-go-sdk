@@ -30,21 +30,21 @@ type iCreateRepoBuildRuleRequest interface {
 }
 
 type CreateRepoBuildRuleRequest struct {
-	// Building arguments.
+	// The build arguments.
 	BuildArgs []*string `json:"BuildArgs,omitempty" xml:"BuildArgs,omitempty" type:"Repeated"`
-	// The path of the Dockerfile.
+	// The Dockerfile path.
 	//
 	// example:
 	//
 	// /
 	DockerfileLocation *string `json:"DockerfileLocation,omitempty" xml:"DockerfileLocation,omitempty"`
-	// The name of the Dockerfile.
+	// The Dockerfile name.
 	//
 	// example:
 	//
 	// Dockerfile
 	DockerfileName *string `json:"DockerfileName,omitempty" xml:"DockerfileName,omitempty"`
-	// The tag of the image.
+	// The image version.
 	//
 	// This parameter is required.
 	//
@@ -52,7 +52,7 @@ type CreateRepoBuildRuleRequest struct {
 	//
 	// v0.9.5
 	ImageTag *string `json:"ImageTag,omitempty" xml:"ImageTag,omitempty"`
-	// The ID of the instance.
+	// The instance ID.
 	//
 	// This parameter is required.
 	//
@@ -60,21 +60,21 @@ type CreateRepoBuildRuleRequest struct {
 	//
 	// cri-xkx6vujuhay0****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// Architecture for image building. Valid values:
+	// The image architecture. Valid values:
 	//
-	// 	- `linux/amd64`
+	// - `linux/amd64`
 	//
-	// 	- `linux/arm64`
+	// - `linux/arm64`
 	//
-	// 	- `linux/386`
+	// - `linux/386`
 	//
-	// 	- `linux/arm/v7`
+	// - `linux/arm/v7`
 	//
-	// 	- `inux/arm/v6`
+	// - `linux/arm/v6`
 	//
-	// Default value: `linux/amd64`
+	// Default value: `linux/amd64`.
 	Platforms []*string `json:"Platforms,omitempty" xml:"Platforms,omitempty" type:"Repeated"`
-	// The name of the push that triggers the building rule.
+	// The trigger name.
 	//
 	// This parameter is required.
 	//
@@ -82,11 +82,11 @@ type CreateRepoBuildRuleRequest struct {
 	//
 	// master
 	PushName *string `json:"PushName,omitempty" xml:"PushName,omitempty"`
-	// The type of the push that triggers the building rule. Valid values:
+	// The push type. Valid values:
 	//
-	// 	- `GIT_TAG`: tag push
+	// - `GIT_TAG`: Triggered by tag.
 	//
-	// 	- `GIT_BRANCH`: branch push
+	// - `GIT_BRANCH`: Triggered by branch.
 	//
 	// This parameter is required.
 	//
@@ -94,7 +94,7 @@ type CreateRepoBuildRuleRequest struct {
 	//
 	// GIT_BRANCH
 	PushType *string `json:"PushType,omitempty" xml:"PushType,omitempty"`
-	// The ID of the image repository.
+	// The image repository ID.
 	//
 	// This parameter is required.
 	//

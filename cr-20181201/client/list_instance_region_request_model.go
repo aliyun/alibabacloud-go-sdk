@@ -14,7 +14,7 @@ type iListInstanceRegionRequest interface {
 }
 
 type ListInstanceRegionRequest struct {
-	// The language used for response parameters. Set this parameter to `zh-CN`.
+	// The language of the response parameters. Valid values: `zh_CN` and `en_US`.
 	//
 	// example:
 	//

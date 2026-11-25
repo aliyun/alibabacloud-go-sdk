@@ -24,7 +24,7 @@ type iUpdateChainRequest interface {
 }
 
 type UpdateChainRequest struct {
-	// The configuration of the delivery chain in the JSON format.
+	// The JSON-formatted entity object that describes the delivery chain.
 	//
 	// This parameter is required.
 	//
@@ -32,7 +32,7 @@ type UpdateChainRequest struct {
 	//
 	// chainconfig
 	ChainConfig *string `json:"ChainConfig,omitempty" xml:"ChainConfig,omitempty"`
-	// The ID of the delivery chain.
+	// The delivery chain ID.
 	//
 	// This parameter is required.
 	//
@@ -46,7 +46,7 @@ type UpdateChainRequest struct {
 	//
 	// description
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The ID of the instance.
+	// The instance ID.
 	//
 	// This parameter is required.
 	//
@@ -62,7 +62,7 @@ type UpdateChainRequest struct {
 	//
 	// test
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// Repositories in which the delivery chain does not take effect.
+	// The set of repositories excluded from delivery chain execution.
 	ScopeExclude []*string `json:"ScopeExclude,omitempty" xml:"ScopeExclude,omitempty" type:"Repeated"`
 }
 

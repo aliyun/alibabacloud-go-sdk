@@ -40,9 +40,9 @@ type iGetArtifactBuildTaskResponseBody interface {
 type GetArtifactBuildTaskResponseBody struct {
 	// The artifact build type. Valid values:
 	//
-	// - `IMAGE_TO_ACCELERATED_IMAGE`: Accelerated image creation optimized for ACK scenarios.
+	// - `IMAGE_TO_ACCELERATED_IMAGE`: accelerated image optimized for ACK scenarios.
 	//
-	// - `IMAGE_TO_ECI_ACCELERATED_IMAGE`: Accelerated image artifact optimized for ECI scenarios.
+	// - `IMAGE_TO_ECI_ACCELERATED_IMAGE`: accelerated image artifact optimized for Elastic Container Instance (ECI) scenarios.
 	//
 	// example:
 	//
@@ -70,12 +70,14 @@ type GetArtifactBuildTaskResponseBody struct {
 	EndTime *int32 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
 	// The reserved field list of the artifact build task. The list elements should be empty.
 	Instructions []*string `json:"Instructions,omitempty" xml:"Instructions,omitempty" type:"Repeated"`
-	// Indicates whether the request is successful.
+	// Indicates whether the request was successful.
 	//
 	// example:
 	//
 	// true
 	IsSuccess *bool `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
+	// The task priority.
+	//
 	// example:
 	//
 	// 3
@@ -98,9 +100,9 @@ type GetArtifactBuildTaskResponseBody struct {
 	TargetArtifact *GetArtifactBuildTaskResponseBodyTargetArtifact `json:"TargetArtifact,omitempty" xml:"TargetArtifact,omitempty" type:"Struct"`
 	// The artifact build status. Valid values:
 	//
-	// - `PENDING`: Scheduling in progress.
+	// - `PENDING`: Scheduling.
 	//
-	// - `BUILDING`: Building in progress.
+	// - `BUILDING`: Building.
 	//
 	// - `SUCCESS`: Build succeeded.
 	//
@@ -257,13 +259,13 @@ func (s *GetArtifactBuildTaskResponseBody) Validate() error {
 }
 
 type GetArtifactBuildTaskResponseBodyArtifactCompression struct {
-	// The operating system and architecture.
+	// The operating system/architecture.
 	//
 	// example:
 	//
 	// linux/arm64
 	Platform *string `json:"Platform,omitempty" xml:"Platform,omitempty"`
-	// The number of layers to retain after compression.
+	// The number of layers retained after compression.
 	//
 	// example:
 	//
@@ -317,7 +319,7 @@ func (s *GetArtifactBuildTaskResponseBodyArtifactCompression) Validate() error {
 }
 
 type GetArtifactBuildTaskResponseBodySourceArtifact struct {
-	// The artifact type. Only IMAGE is supported.
+	// The artifact type. Currently, only IMAGE is supported.
 	//
 	// example:
 	//
@@ -329,7 +331,7 @@ type GetArtifactBuildTaskResponseBodySourceArtifact struct {
 	//
 	// 10
 	LayerCount *int32 `json:"LayerCount,omitempty" xml:"LayerCount,omitempty"`
-	// The repository ID. Only image repositories are supported.
+	// The repository ID. Currently, only image repositories are supported.
 	//
 	// example:
 	//
@@ -341,7 +343,7 @@ type GetArtifactBuildTaskResponseBodySourceArtifact struct {
 	//
 	// 5
 	Size *int64 `json:"Size,omitempty" xml:"Size,omitempty"`
-	// The artifact version. Only image versions are supported.
+	// The artifact version. Currently, only image versions are supported.
 	//
 	// example:
 	//
@@ -407,7 +409,7 @@ func (s *GetArtifactBuildTaskResponseBodySourceArtifact) Validate() error {
 }
 
 type GetArtifactBuildTaskResponseBodyTargetArtifact struct {
-	// The artifact type. Only IMAGE is supported.
+	// The artifact type. Currently, only IMAGE is supported.
 	//
 	// example:
 	//
@@ -419,7 +421,7 @@ type GetArtifactBuildTaskResponseBodyTargetArtifact struct {
 	//
 	// 5
 	LayerCount *int32 `json:"LayerCount,omitempty" xml:"LayerCount,omitempty"`
-	// The repository ID. Only image repositories are supported. The repository ID of the target artifact must be the same as that of the source artifact.
+	// The repository ID. Currently, only image repositories are supported. The repository ID of the target artifact must be the same as that of the source artifact.
 	//
 	// example:
 	//
@@ -431,7 +433,7 @@ type GetArtifactBuildTaskResponseBodyTargetArtifact struct {
 	//
 	// 10
 	Size *int64 `json:"Size,omitempty" xml:"Size,omitempty"`
-	// The artifact version. Only images are supported.
+	// The artifact version. Currently, only images are supported.
 	//
 	// example:
 	//

@@ -20,29 +20,29 @@ type iCreateRepoBuildRuleResponseBody interface {
 }
 
 type CreateRepoBuildRuleResponseBody struct {
-	// The ID of the building rule.
+	// The build rule ID.
 	//
 	// example:
 	//
 	// crbr-ly77w5i3t31f****
 	BuildRuleId *string `json:"BuildRuleId,omitempty" xml:"BuildRuleId,omitempty"`
-	// The return value.
+	// The return code.
 	//
 	// example:
 	//
 	// success
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// Indicates whether the request is successful. Valid values:
+	// Indicates whether the call is successful. Valid values:
 	//
-	// 	- `true`: The request is successful.
+	// - `true`: The call is successful.
 	//
-	// 	- `false`: The request fails.
+	// - `false`: The call failed.
 	//
 	// example:
 	//
 	// true
 	IsSuccess *bool `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

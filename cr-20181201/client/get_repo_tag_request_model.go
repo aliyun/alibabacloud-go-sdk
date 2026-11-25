@@ -18,7 +18,7 @@ type iGetRepoTagRequest interface {
 }
 
 type GetRepoTagRequest struct {
-	// The return value of status code.
+	// The instance ID.
 	//
 	// This parameter is required.
 	//
@@ -26,7 +26,7 @@ type GetRepoTagRequest struct {
 	//
 	// cri-kmsiwlxxdcva****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The operation that you want to perform. Set the value to **GetRepoTag**.
+	// The repository ID.
 	//
 	// This parameter is required.
 	//
@@ -34,7 +34,7 @@ type GetRepoTagRequest struct {
 	//
 	// crr-tquyps22md8p****
 	RepoId *string `json:"RepoId,omitempty" xml:"RepoId,omitempty"`
-	// The number of milliseconds that have elapsed since the image was created.
+	// The repository tag.
 	//
 	// This parameter is required.
 	//

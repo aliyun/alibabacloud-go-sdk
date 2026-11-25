@@ -16,7 +16,7 @@ type iCancelArtifactBuildTaskRequest interface {
 }
 
 type CancelArtifactBuildTaskRequest struct {
-	// The ID of the artifact building task.
+	// The artifact build task ID.
 	//
 	// This parameter is required.
 	//
@@ -24,7 +24,7 @@ type CancelArtifactBuildTaskRequest struct {
 	//
 	// i2ei-12****
 	BuildTaskId *string `json:"BuildTaskId,omitempty" xml:"BuildTaskId,omitempty"`
-	// The ID of the instance.
+	// The instance ID.
 	//
 	// This parameter is required.
 	//

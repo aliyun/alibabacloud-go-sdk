@@ -151,7 +151,7 @@ func (s *ListRepoSyncTaskResponseBody) Validate() error {
 }
 
 type ListRepoSyncTaskResponseBodySyncTasks struct {
-	// The creation time.
+	// The creation time. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
@@ -187,13 +187,13 @@ type ListRepoSyncTaskResponseBodySyncTasks struct {
 	LinkId *string `json:"LinkId,omitempty" xml:"LinkId,omitempty"`
 	// Deprecated
 	//
-	// The modification time.
+	// The modification time. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
 	// 1572839133000
 	ModifedTime *int64 `json:"ModifedTime,omitempty" xml:"ModifedTime,omitempty"`
-	// The modification time.
+	// The modification time. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
@@ -251,9 +251,9 @@ type ListRepoSyncTaskResponseBodySyncTasks struct {
 	TaskStatus *string `json:"TaskStatus,omitempty" xml:"TaskStatus,omitempty"`
 	// The trigger policy. Valid values:
 	//
-	// - `PASSIVE`: Synchronization is automatically triggered.
+	// - `PASSIVE`: Automatically triggered synchronization.
 	//
-	// - `INITIATIVE`: Synchronization is manually triggered.
+	// - `INITIATIVE`: Manually triggered synchronization.
 	//
 	// Default value: `PASSIVE`
 	//
