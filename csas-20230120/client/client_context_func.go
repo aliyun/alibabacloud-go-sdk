@@ -9,6 +9,53 @@ import (
 
 // Summary:
 //
+// 批量添加设备归属标识
+//
+// @param request - AddDeviceBelongIdentifiersRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AddDeviceBelongIdentifiersResponse
+func (client *Client) AddDeviceBelongIdentifiersWithContext(ctx context.Context, request *AddDeviceBelongIdentifiersRequest, runtime *dara.RuntimeOptions) (_result *AddDeviceBelongIdentifiersResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	bodyFlat := map[string]interface{}{}
+	if !dara.IsNil(request.Identifiers) {
+		bodyFlat["Identifiers"] = request.Identifiers
+	}
+
+	body = dara.ToMap(body,
+		openapiutil.Query(bodyFlat))
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("AddDeviceBelongIdentifiers"),
+		Version:     dara.String("2023-01-20"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &AddDeviceBelongIdentifiersResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Adds associated terminal devices to a static device tag in batches.
 //
 // @param request - AddDeviceGroupMatchDevicesRequest
@@ -6409,6 +6456,73 @@ func (client *Client) ListConnectorsWithContext(ctx context.Context, request *Li
 
 // Summary:
 //
+// 查询设备归属标识
+//
+// @param request - ListDeviceBelongIdentifiersRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ListDeviceBelongIdentifiersResponse
+func (client *Client) ListDeviceBelongIdentifiersWithContext(ctx context.Context, request *ListDeviceBelongIdentifiersRequest, runtime *dara.RuntimeOptions) (_result *ListDeviceBelongIdentifiersResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.CurrentPage) {
+		body["CurrentPage"] = request.CurrentPage
+	}
+
+	bodyFlat := map[string]interface{}{}
+	if !dara.IsNil(request.IdentifierIds) {
+		bodyFlat["IdentifierIds"] = request.IdentifierIds
+	}
+
+	if !dara.IsNil(request.IdentifierType) {
+		body["IdentifierType"] = request.IdentifierType
+	}
+
+	if !dara.IsNil(request.MaxResults) {
+		body["MaxResults"] = request.MaxResults
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		body["NextToken"] = request.NextToken
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		body["PageSize"] = request.PageSize
+	}
+
+	body = dara.ToMap(body,
+		openapiutil.Query(bodyFlat))
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ListDeviceBelongIdentifiers"),
+		Version:     dara.String("2023-01-20"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ListDeviceBelongIdentifiersResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Queries the list of device groups under the current Alibaba Cloud account by using paging in a paged query.
 //
 // @param request - ListDeviceGroupsRequest
@@ -9441,6 +9555,53 @@ func (client *Client) ModifyForwardStrategyBindingItemsWithContext(ctx context.C
 		BodyType:    dara.String("json"),
 	}
 	_result = &ModifyForwardStrategyBindingItemsResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 批量移除设备归属标识
+//
+// @param request - RemoveDeviceBelongIdentifiersRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RemoveDeviceBelongIdentifiersResponse
+func (client *Client) RemoveDeviceBelongIdentifiersWithContext(ctx context.Context, request *RemoveDeviceBelongIdentifiersRequest, runtime *dara.RuntimeOptions) (_result *RemoveDeviceBelongIdentifiersResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	bodyFlat := map[string]interface{}{}
+	if !dara.IsNil(request.IdentifierIds) {
+		bodyFlat["IdentifierIds"] = request.IdentifierIds
+	}
+
+	body = dara.ToMap(body,
+		openapiutil.Query(bodyFlat))
+	req := &openapiutil.OpenApiRequest{
+		Body: openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("RemoveDeviceBelongIdentifiers"),
+		Version:     dara.String("2023-01-20"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &RemoveDeviceBelongIdentifiersResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err

@@ -682,7 +682,7 @@ type ListApprovalProcessesResponseBodyProcessesProcessNodes struct {
 	//
 	// example:
 	//
-	// 王先生
+	// Mr. Wang
 	Username *string `json:"Username,omitempty" xml:"Username,omitempty"`
 }
 
