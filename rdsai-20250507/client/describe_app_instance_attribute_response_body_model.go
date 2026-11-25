@@ -148,13 +148,13 @@ type DescribeAppInstanceAttributeResponseBody struct {
 	//
 	// example:
 	//
-	// {\\"studio\\":\\"20260602r1\\",\\"storage\\":\\"v1.48.9\\",\\"auth\\":\\"v2.188.1\\",\\"kong\\":\\"3.9.0\\",\\"rest\\":\\"v12.2.12\\",\\"meta\\":\\"v0.89.3\\",\\"realtime-dev\\":\\"v2.34.47\\",\\"postgres\\":\\"rds_postgres_1700_20260830\\"}
+	// {\"studio\":\"20260602r1\",\"storage\":\"v1.48.9\",\"auth\":\"v2.188.1\",\"kong\":\"3.9.0\",\"rest\":\"v12.2.12\",\"meta\":\"v0.89.3\",\"realtime-dev\":\"v2.34.47\",\"postgres\":\"rds_postgres_1700_20260830\"}
 	MinorVersionDetail *string `json:"MinorVersionDetail,omitempty" xml:"MinorVersionDetail,omitempty"`
 	// The release notes for the minor version of the RDS AI application instance.
 	//
 	// example:
 	//
-	// {\\"20260915\\":\\"realtime：1xxx；auth：2xxx；storage：3xxx\\",\\"20260917\\":\\"studio：4xxx；auth：5xxx\\"}
+	// {\"20260915\":\"realtime：1xxx；auth：2xxx；storage：3xxx\",\"20260917\":\"studio：4xxx；auth：5xxx\"}
 	MinorVersionReleaseNotes *string `json:"MinorVersionReleaseNotes,omitempty" xml:"MinorVersionReleaseNotes,omitempty"`
 	// The creator of the NAT gateway.
 	//

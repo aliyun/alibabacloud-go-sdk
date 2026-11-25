@@ -30,7 +30,7 @@ type GetInspectionReportResponseBody struct {
 	//
 	// example:
 	//
-	// # RDS Batch Inspection Summary Report\\n\\n> This batch inspection checked **1*	- instance; **1*	- instance was found with warnings (1 warning in total)..
+	// # RDS Batch Inspection Summary Report\n\n> This batch inspection checked **1*	- instance; **1*	- instance was found with warnings (1 warning in total)..
 	MarkdownText *string `json:"MarkdownText,omitempty" xml:"MarkdownText,omitempty"`
 	// The request ID.
 	//
@@ -160,7 +160,7 @@ type GetInspectionReportResponseBodyData struct {
 	//
 	// example:
 	//
-	// # RDS Instance Inspection Report\\n\\n**Instance ID**: `rm-2zep6e5u6l2yu****`\\n\\n**Engine Type**: MySQL\\n\\n**Region**: cn-beijing\\n\\n**Time Range (UTC)**: 2026-02-04T03:31:00Z ~ 2026-02-05T03:31:00Z\\n\\n> This inspection includes **60*	- checks, of which 1 warning, 57 normal, and 2 failed to retrieve data..
+	// # RDS Instance Inspection Report\n\n**Instance ID**: `rm-2zep6e5u6l2yu****`\n\n**Engine Type**: MySQL\n\n**Region**: cn-beijing\n\n**Time Range (UTC)**: 2026-02-04T03:31:00Z ~ 2026-02-05T03:31:00Z\n\n> This inspection includes **60*	- checks, of which 1 warning, 57 normal, and 2 failed to retrieve data..
 	MarkdownText *string `json:"MarkdownText,omitempty" xml:"MarkdownText,omitempty"`
 	// The region information.
 	//

@@ -142,7 +142,7 @@ type ListContextDatabaseSyncSourcesResponseBodyData struct {
 	//
 	// example:
 	//
-	// [{"Id":"src-as1llqmkol****", "ConnectionId":"conn-as1llqmkol****", "Name":"R&D team document scope", "SourceConfig":"{\\"folderIds\\":[\\"https://alidocs.dingtalk.com/i/p/p2N9kLmQxYz****\\"],\\"pageSize\\":50,\\"maxDepth\\":5}"}]
+	// [{"Id":"src-as1llqmkol****", "ConnectionId":"conn-as1llqmkol****", "Name":"R&D team document scope", "SourceConfig":"{\"folderIds\":[\"https://alidocs.dingtalk.com/i/p/p2N9kLmQxYz****\"],\"pageSize\":50,\"maxDepth\":5}"}]
 	Sources []*ListContextDatabaseSyncSourcesResponseBodyDataSources `json:"Sources,omitempty" xml:"Sources,omitempty" type:"Repeated"`
 	// The total number of entries.
 	//

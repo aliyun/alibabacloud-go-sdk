@@ -24,7 +24,11 @@ type iGetContextDatabaseUsageResponseBody interface {
 }
 
 type GetContextDatabaseUsageResponseBody struct {
-	// The query dimension. A value of Workspace indicates a single workspace. A value of Account indicates all workspaces under the caller account.
+	// The query dimension. Valid values:
+	//
+	// - `Workspace`: A single workspace.
+	//
+	// - `Account`: All workspaces under the caller account.
 	//
 	// example:
 	//
@@ -36,9 +40,9 @@ type GetContextDatabaseUsageResponseBody struct {
 	//
 	// 2026-08-01T00:00:00Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The usage list. Returns all 7 metering items in a fixed order. If an item has no data within the query range, its usage is 0.
+	// The usage list. It returns all seven metering items in a fixed order. If an item has no data within the query range, its usage is 0.
 	Items []*GetContextDatabaseUsageResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
-	// The ID of the API request, which is used to troubleshoot invocation issues.
+	// The ID of the API request. You can use the ID to troubleshoot issues.
 	//
 	// example:
 	//
@@ -50,7 +54,7 @@ type GetContextDatabaseUsageResponseBody struct {
 	//
 	// 2026-07-01T00:00:00Z
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The ID of the queried workspace. This parameter has a value only when Dimension is Workspace. It is empty for the account dimension.
+	// The ID of the queried workspace. This field has a value only when `Dimension` is set to `Workspace`. It is empty for the account dimension.
 	//
 	// example:
 	//
@@ -140,13 +144,21 @@ type GetContextDatabaseUsageResponseBodyItems struct {
 	//
 	// KnowledgeBaseRead
 	Item *string `json:"Item,omitempty" xml:"Item,omitempty"`
-	// The usage of the item within the query range. The unit is specified by Unit. Invocations, tokens, and context evolution are accumulated over the range. Storage is calculated by averaging the usage snapshots of each workspace within the range and rounding to the nearest whole byte. For the account dimension, the average values of all workspaces are summed.
+	// The usage of the item within the query range. The unit is specified by `Unit`. The number of calls, tokens, and context evolutions are accumulated over the range. Storage is calculated by averaging the occupancy snapshots of each workspace within the range and rounding to the nearest integer byte. For the account dimension, the average values of all workspaces are summed.
 	//
 	// example:
 	//
 	// 15
 	Quantity *int64 `json:"Quantity,omitempty" xml:"Quantity,omitempty"`
-	// The metering unit. A value of Count indicates the number of invocations. A value of Token indicates the number of tokens. A value of MicroCredit indicates one millionth of a credit. A value of Byte indicates bytes.
+	// The metering unit. Valid values:
+	//
+	// - `Count`: The number of calls.
+	//
+	// - `Token`: The number of tokens.
+	//
+	// - `MicroCredit`: One millionth of a credit.
+	//
+	// - `Byte`: Bytes.
 	//
 	// example:
 	//

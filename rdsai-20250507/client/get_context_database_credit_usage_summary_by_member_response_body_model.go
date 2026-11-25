@@ -28,33 +28,33 @@ type iGetContextDatabaseCreditUsageSummaryByMemberResponseBody interface {
 }
 
 type GetContextDatabaseCreditUsageSummaryByMemberResponseBody struct {
-	// The end time of the query range passed in the request, exclusive.
+	// The end time of the query interval passed in the request, exclusive.
 	//
 	// example:
 	//
 	// 2026-10-08T00:00:00Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The member summaries on the current page, sorted in descending order of total credit consumption. Each record covers the entire query range.
+	// The member summaries on the current page, sorted by total credit consumption in descending order. Each record covers the entire query interval.
 	Items []*GetContextDatabaseCreditUsageSummaryByMemberResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
-	// The actual page number used for the query.
+	// The actual page number used in this query.
 	//
 	// example:
 	//
 	// 1
 	Page *int32 `json:"Page,omitempty" xml:"Page,omitempty"`
-	// The actual number of items per page used for the query.
+	// The actual number of items per page used in this query.
 	//
 	// example:
 	//
 	// 50
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the request.
+	// The ID of the OpenAPI request, used to troubleshoot call issues.
 	//
 	// example:
 	//
 	// 00000000-0000-4000-8000-000000000001
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The start time of the query range passed in the request, inclusive.
+	// The start time of the query interval passed in the request, inclusive.
 	//
 	// example:
 	//
@@ -66,7 +66,7 @@ type GetContextDatabaseCreditUsageSummaryByMemberResponseBody struct {
 	//
 	// 1
 	Total *int64 `json:"Total,omitempty" xml:"Total,omitempty"`
-	// The ID of the workspace queried.
+	// The ID of the workspace queried in this request.
 	//
 	// example:
 	//
@@ -168,7 +168,7 @@ func (s *GetContextDatabaseCreditUsageSummaryByMemberResponseBody) Validate() er
 }
 
 type GetContextDatabaseCreditUsageSummaryByMemberResponseBodyItems struct {
-	// The total credit consumption of priced records for the member. Returned as a decimal string with up to 6 decimal places. 1 credit equals 1 CNY. The value is null if there are no priced records.
+	// The total credit consumption of priced records for this member. Returned as a decimal string with up to 6 decimal places, where 1 credit = 1 CNY. The value is `null` if there are no priced records.
 	//
 	// example:
 	//
@@ -180,13 +180,13 @@ type GetContextDatabaseCreditUsageSummaryByMemberResponseBodyItems struct {
 	//
 	// mb-abcdefghijklmno
 	MemberId *string `json:"MemberId,omitempty" xml:"MemberId,omitempty"`
-	// The total metered quantity of records that match the filter criteria for the member, including unpriced records. To view the usage of a specific billable item, specify Item in the request.
+	// The total metered quantity of records that match the filter criteria for this member, including unpriced records. To view the usage of a specific billing item, specify `Item` in the request.
 	//
 	// example:
 	//
 	// 12
 	Quantity *int64 `json:"Quantity,omitempty" xml:"Quantity,omitempty"`
-	// The number of metering records that match the filter criteria for the member, including unpriced records.
+	// The number of metering records that match the filter criteria for this member, including unpriced records.
 	//
 	// example:
 	//

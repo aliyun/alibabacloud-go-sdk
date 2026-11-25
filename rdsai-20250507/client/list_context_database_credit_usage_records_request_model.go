@@ -46,7 +46,7 @@ type ListContextDatabaseCreditUsageRecordsRequest struct {
 	//
 	// ContextGrowth
 	Item *string `json:"Item,omitempty" xml:"Item,omitempty"`
-	// The member ID used to filter records. If specified, WorkspaceId must also be provided. Otherwise, InvalidParameter is returned. A member ID is unique only within the workspace to which it belongs. This parameter only filters data and does not change the caller identity. Records without a member ID are not matched.
+	// The member ID used to filter records. If specified, WorkspaceId must also be provided. Otherwise, InvalidParameter is returned. A member ID is unique only within its workspace. This parameter only filters data and does not change the caller identity. Records without a member ID are not matched.
 	//
 	// example:
 	//
@@ -58,19 +58,19 @@ type ListContextDatabaseCreditUsageRecordsRequest struct {
 	//
 	// 1
 	Page *int32 `json:"Page,omitempty" xml:"Page,omitempty"`
-	// The maximum number of records to return per page. Valid values: 1 to 200. Default value: 50. The pagination offset, calculated as (Page - 1) × PageSize, must not exceed 10,000.
+	// The maximum number of records to return per page. Valid values: 1 to 200. Default value: 50. The pagination offset (Page - 1) × PageSize must not exceed 10,000.
 	//
 	// example:
 	//
 	// 50
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The field by which to sort the records. Only credits is supported. If omitted, the records are sorted in descending order of request time. Specifying a sort field does not change the total number of filtered records.
+	// The field by which to sort. Only credits is supported. If omitted, results are sorted in descending order of request time. Specifying a sort field does not change the total number of filtered records.
 	//
 	// example:
 	//
 	// credits
 	SortBy *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
-	// The sort order. Valid values: asc (ascending order) and desc (descending order). The values are case-insensitive. If SortBy is specified, the default value is desc. If only SortOrder is provided, InvalidParameter is returned. When sorting by credit, unpriced records are always placed at the end, and records with the same amount are sorted in descending order of request time.
+	// The sort order. Valid values: asc for ascending order and desc for descending order. The values are case-insensitive. The default value is desc when SortBy is specified. If only SortOrder is provided, InvalidParameter is returned. When sorting by credits, unpriced records are always placed at the end, and records with the same amount are sorted in descending order of request time.
 	//
 	// example:
 	//
