@@ -1,3 +1,6 @@
+2026-11-25 Version: v2.8.2
+- Generated golang 2026-07-07 for Yike.
+
 2026-11-18 Version: v2.8.1
 - Generated golang 2026-07-07 for Yike.
 

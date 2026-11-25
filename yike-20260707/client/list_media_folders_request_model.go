@@ -30,7 +30,7 @@ type ListMediaFoldersRequest struct {
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The project ID. If this parameter is not specified, the default project of the current account is used. The value is in the `pd_{uid}` format.
+	// The project ID. If this parameter is not specified, the default project of the current account is used. The value format is `pd_{uid}`.
 	//
 	// example:
 	//

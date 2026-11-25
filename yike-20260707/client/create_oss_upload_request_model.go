@@ -34,7 +34,7 @@ type CreateOssUploadRequest struct {
 	//
 	// STS
 	CredentialType *string `json:"CredentialType,omitempty" xml:"CredentialType,omitempty"`
-	// The file name extension, such as mp4, wav, or png. Do not include the dot. If this parameter is not specified, `MissingParameter` is returned.
+	// The file name extension, such as mp4, wav, or png. Do not include the dot. If this parameter is missing, `MissingParameter` is returned.
 	//
 	// This parameter is required.
 	//
@@ -48,7 +48,7 @@ type CreateOssUploadRequest struct {
 	//
 	// Media
 	FileType *string `json:"FileType,omitempty" xml:"FileType,omitempty"`
-	// The explicitly specified destination bucket.
+	// The explicitly specified target bucket.
 	//
 	// example:
 	//

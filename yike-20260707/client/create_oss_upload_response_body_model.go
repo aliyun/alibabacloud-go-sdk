@@ -22,7 +22,7 @@ type iCreateOssUploadResponseBody interface {
 type CreateOssUploadResponseBody struct {
 	// OSS ObjectKey
 	ObjectKey *string `json:"ObjectKey,omitempty" xml:"ObjectKey,omitempty"`
-	// The **OSS presigned GET URL**, which is valid for 24 hours and uses the public endpoint. If signature generation fails, null is returned, which does not affect direct upload with the credentials.
+	// The **OSS pre-signed GET URL**, which is valid for 24 hours and uses the public endpoint. If the signature generation fails, null is returned, which does not affect direct upload using the credentials.
 	//
 	// example:
 	//
@@ -110,25 +110,25 @@ type CreateOssUploadResponseBodyUploadCredentials struct {
 	//
 	// yike-shared-cn-shanghai-1
 	Bucket *string `json:"Bucket,omitempty" xml:"Bucket,omitempty"`
-	// The expiration time of the credentials. The time is in UTC and follows the ISO 8601 standard. The actual return value prevails.
+	// The expiration time of the credential in UTC and ISO 8601 format. The actual return value prevails.
 	//
 	// example:
 	//
 	// 2026-11-20T01:32:40Z
 	Expiration *string `json:"Expiration,omitempty" xml:"Expiration,omitempty"`
-	// The PostObject policy, which is Base64-encoded. This field is returned when POST_POLICY is used.
+	// The PostObject policy, which is Base64-encoded. This is returned when POST_POLICY is used.
 	//
 	// example:
 	//
 	// -
 	Policy *string `json:"Policy,omitempty" xml:"Policy,omitempty"`
-	// The AccessKey ID used for signing. This field is returned when POST_POLICY is used.
+	// The AccessKey ID used for the signature. This is returned when POST_POLICY is used.
 	//
 	// example:
 	//
 	// -
 	PostAccessKeyId *string `json:"PostAccessKeyId,omitempty" xml:"PostAccessKeyId,omitempty"`
-	// The destination endpoint for POST requests. This field is returned when POST_POLICY is used.
+	// The target endpoint for the POST request. This is returned when POST_POLICY is used.
 	//
 	// example:
 	//
@@ -146,13 +146,13 @@ type CreateOssUploadResponseBodyUploadCredentials struct {
 	//
 	// xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
 	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
-	// The PostObject signature. This field is returned when POST_POLICY is used.
+	// The PostObject signature. This is returned when POST_POLICY is used.
 	//
 	// example:
 	//
 	// -
 	Signature *string `json:"Signature,omitempty" xml:"Signature,omitempty"`
-	// The presigned PUT URL. This field is returned when PRESIGNED_URL is used.
+	// The pre-signed PUT URL. This is returned when PRESIGNED_URL is used.
 	//
 	// example:
 	//

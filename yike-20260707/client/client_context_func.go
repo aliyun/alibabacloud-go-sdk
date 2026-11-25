@@ -339,11 +339,11 @@ func (client *Client) CreateInfiniteCanvasWithContext(ctx context.Context, reque
 //
 // ## Request description
 //
-// - This API operation generates temporary OSS upload credentials so that clients can directly upload files to a specified OSS bucket.
+// - This API operation generates a temporary OSS upload credential so that the client can directly upload files to a specified OSS bucket.
 //
 // - The `FileExt` parameter is required and specifies the file name extension of the file to be uploaded, such as mp4 or wav. Do not include the dot.
 //
-// - The `FileType` parameter is optional and defaults to `Media`. It affects the path segment in the returned `ObjectKey`.
+// - The `FileType` parameter is optional. The default value is `Media`. This parameter affects the path segment in the returned `ObjectKey`.
 //
 // @param request - CreateOssUploadRequest
 //
@@ -461,7 +461,7 @@ func (client *Client) CreateProjectWithContext(ctx context.Context, request *Cre
 //
 // ## Request description
 //
-// - This operation supports two modes: creating a new media asset and overwriting an existing media asset.
+// - This operation supports two modes: creating a new media asset and overwriting an existing one.
 //
 // - When creating a new media asset, the `FileInfo` and `MediaMetaData` parameters are required.
 //
@@ -865,6 +865,54 @@ func (client *Client) GenerateYikeLoginTokenWithContext(ctx context.Context, req
 		BodyType:    dara.String("json"),
 	}
 	_result = &GenerateYikeLoginTokenResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Retrieves an intelligent workflow task.
+//
+// @param request - GetAIAppJobRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetAIAppJobResponse
+func (client *Client) GetAIAppJobWithContext(ctx context.Context, request *GetAIAppJobRequest, runtime *dara.RuntimeOptions) (_result *GetAIAppJobResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.JobId) {
+		query["JobId"] = request.JobId
+	}
+
+	if !dara.IsNil(request.OnlyOutputs) {
+		query["OnlyOutputs"] = request.OnlyOutputs
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetAIAppJob"),
+		Version:     dara.String("2026-07-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetAIAppJobResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -1403,7 +1451,7 @@ func (client *Client) GetVideoDetextJobWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// Queries a video generation job.
+// Queries a video generation task.
 //
 // @param request - GetVideoGenerationJobRequest
 //
@@ -1910,7 +1958,7 @@ func (client *Client) ListInfiniteCanvasesWithContext(ctx context.Context, reque
 //
 // ## Request description
 //
-// - This operation retrieves a list of all media folders in a specified project (`ProductionId`). Pagination is supported by using the `PageNo` and `PageSize` parameters.
+// - This operation retrieves all media folders in a specified project (`ProductionId`). Pagination is supported by using the `PageNo` and `PageSize` parameters.
 //
 // - If `ProductionId` is not provided, the default project of the current account is used.
 //
@@ -2188,6 +2236,64 @@ func (client *Client) SearchMediaWithContext(ctx context.Context, request *Searc
 		BodyType:    dara.String("json"),
 	}
 	_result = &SearchMediaResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Starts an intelligent workflow.
+//
+// @param request - SubmitAIAppJobRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SubmitAIAppJobResponse
+func (client *Client) SubmitAIAppJobWithContext(ctx context.Context, request *SubmitAIAppJobRequest, runtime *dara.RuntimeOptions) (_result *SubmitAIAppJobResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AppId) {
+		query["AppId"] = request.AppId
+	}
+
+	if !dara.IsNil(request.ClientToken) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !dara.IsNil(request.UserData) {
+		query["UserData"] = request.UserData
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Inputs) {
+		body["Inputs"] = request.Inputs
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("SubmitAIAppJob"),
+		Version:     dara.String("2026-07-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &SubmitAIAppJobResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err

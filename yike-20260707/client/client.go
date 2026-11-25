@@ -528,11 +528,11 @@ func (client *Client) CreateInfiniteCanvas(request *CreateInfiniteCanvasRequest)
 //
 // ## Request description
 //
-// - This API operation generates temporary OSS upload credentials so that clients can directly upload files to a specified OSS bucket.
+// - This API operation generates a temporary OSS upload credential so that the client can directly upload files to a specified OSS bucket.
 //
 // - The `FileExt` parameter is required and specifies the file name extension of the file to be uploaded, such as mp4 or wav. Do not include the dot.
 //
-// - The `FileType` parameter is optional and defaults to `Media`. It affects the path segment in the returned `ObjectKey`.
+// - The `FileType` parameter is optional. The default value is `Media`. This parameter affects the path segment in the returned `ObjectKey`.
 //
 // @param request - CreateOssUploadRequest
 //
@@ -598,11 +598,11 @@ func (client *Client) CreateOssUploadWithOptions(request *CreateOssUploadRequest
 //
 // ## Request description
 //
-// - This API operation generates temporary OSS upload credentials so that clients can directly upload files to a specified OSS bucket.
+// - This API operation generates a temporary OSS upload credential so that the client can directly upload files to a specified OSS bucket.
 //
 // - The `FileExt` parameter is required and specifies the file name extension of the file to be uploaded, such as mp4 or wav. Do not include the dot.
 //
-// - The `FileType` parameter is optional and defaults to `Media`. It affects the path segment in the returned `ObjectKey`.
+// - The `FileType` parameter is optional. The default value is `Media`. This parameter affects the path segment in the returned `ObjectKey`.
 //
 // @param request - CreateOssUploadRequest
 //
@@ -700,7 +700,7 @@ func (client *Client) CreateProject(request *CreateProjectRequest) (_result *Cre
 //
 // ## Request description
 //
-// - This operation supports two modes: creating a new media asset and overwriting an existing media asset.
+// - This operation supports two modes: creating a new media asset and overwriting an existing one.
 //
 // - When creating a new media asset, the `FileInfo` and `MediaMetaData` parameters are required.
 //
@@ -788,7 +788,7 @@ func (client *Client) CreateUploadMediaWithOptions(request *CreateUploadMediaReq
 //
 // ## Request description
 //
-// - This operation supports two modes: creating a new media asset and overwriting an existing media asset.
+// - This operation supports two modes: creating a new media asset and overwriting an existing one.
 //
 // - When creating a new media asset, the `FileInfo` and `MediaMetaData` parameters are required.
 //
@@ -1267,6 +1267,72 @@ func (client *Client) GenerateYikeLoginToken(request *GenerateYikeLoginTokenRequ
 	runtime := &dara.RuntimeOptions{}
 	_result = &GenerateYikeLoginTokenResponse{}
 	_body, _err := client.GenerateYikeLoginTokenWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Retrieves an intelligent workflow task.
+//
+// @param request - GetAIAppJobRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetAIAppJobResponse
+func (client *Client) GetAIAppJobWithOptions(request *GetAIAppJobRequest, runtime *dara.RuntimeOptions) (_result *GetAIAppJobResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.JobId) {
+		query["JobId"] = request.JobId
+	}
+
+	if !dara.IsNil(request.OnlyOutputs) {
+		query["OnlyOutputs"] = request.OnlyOutputs
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetAIAppJob"),
+		Version:     dara.String("2026-07-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetAIAppJobResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Retrieves an intelligent workflow task.
+//
+// @param request - GetAIAppJobRequest
+//
+// @return GetAIAppJobResponse
+func (client *Client) GetAIAppJob(request *GetAIAppJobRequest) (_result *GetAIAppJobResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &GetAIAppJobResponse{}
+	_body, _err := client.GetAIAppJobWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -2034,7 +2100,7 @@ func (client *Client) GetVideoDetextJob(request *GetVideoDetextJobRequest) (_res
 
 // Summary:
 //
-// Queries a video generation job.
+// Queries a video generation task.
 //
 // @param request - GetVideoGenerationJobRequest
 //
@@ -2082,7 +2148,7 @@ func (client *Client) GetVideoGenerationJobWithOptions(request *GetVideoGenerati
 
 // Summary:
 //
-// Queries a video generation job.
+// Queries a video generation task.
 //
 // @param request - GetVideoGenerationJobRequest
 //
@@ -2723,7 +2789,7 @@ func (client *Client) ListInfiniteCanvases(request *ListInfiniteCanvasesRequest)
 //
 // ## Request description
 //
-// - This operation retrieves a list of all media folders in a specified project (`ProductionId`). Pagination is supported by using the `PageNo` and `PageSize` parameters.
+// - This operation retrieves all media folders in a specified project (`ProductionId`). Pagination is supported by using the `PageNo` and `PageSize` parameters.
 //
 // - If `ProductionId` is not provided, the default project of the current account is used.
 //
@@ -2783,7 +2849,7 @@ func (client *Client) ListMediaFoldersWithOptions(request *ListMediaFoldersReque
 //
 // ## Request description
 //
-// - This operation retrieves a list of all media folders in a specified project (`ProductionId`). Pagination is supported by using the `PageNo` and `PageSize` parameters.
+// - This operation retrieves all media folders in a specified project (`ProductionId`). Pagination is supported by using the `PageNo` and `PageSize` parameters.
 //
 // - If `ProductionId` is not provided, the default project of the current account is used.
 //
@@ -3114,6 +3180,82 @@ func (client *Client) SearchMedia(request *SearchMediaRequest) (_result *SearchM
 	runtime := &dara.RuntimeOptions{}
 	_result = &SearchMediaResponse{}
 	_body, _err := client.SearchMediaWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Starts an intelligent workflow.
+//
+// @param request - SubmitAIAppJobRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SubmitAIAppJobResponse
+func (client *Client) SubmitAIAppJobWithOptions(request *SubmitAIAppJobRequest, runtime *dara.RuntimeOptions) (_result *SubmitAIAppJobResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AppId) {
+		query["AppId"] = request.AppId
+	}
+
+	if !dara.IsNil(request.ClientToken) {
+		query["ClientToken"] = request.ClientToken
+	}
+
+	if !dara.IsNil(request.UserData) {
+		query["UserData"] = request.UserData
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Inputs) {
+		body["Inputs"] = request.Inputs
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+		Body:  openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("SubmitAIAppJob"),
+		Version:     dara.String("2026-07-07"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &SubmitAIAppJobResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Starts an intelligent workflow.
+//
+// @param request - SubmitAIAppJobRequest
+//
+// @return SubmitAIAppJobResponse
+func (client *Client) SubmitAIAppJob(request *SubmitAIAppJobRequest) (_result *SubmitAIAppJobResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &SubmitAIAppJobResponse{}
+	_body, _err := client.SubmitAIAppJobWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}

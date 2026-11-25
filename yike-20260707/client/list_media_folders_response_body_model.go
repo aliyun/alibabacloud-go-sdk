@@ -84,7 +84,7 @@ type ListMediaFoldersResponseBodyFolderList struct {
 	//
 	// Default folder
 	FolderName *string `json:"FolderName,omitempty" xml:"FolderName,omitempty"`
-	// Indicates whether the folder is the default folder. Each project has exactly one default folder.
+	// Indicates whether the folder is the default folder. Each project has one and only one default folder.
 	//
 	// example:
 	//

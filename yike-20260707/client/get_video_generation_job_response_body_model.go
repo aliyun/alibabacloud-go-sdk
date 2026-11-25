@@ -22,7 +22,7 @@ type GetVideoGenerationJobResponseBody struct {
 	//
 	// ****63E8B7C7-4812-46AD-0FA56029AC86****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The video generation job.
+	// The video generation task.
 	VideoGenerationJob *GetVideoGenerationJobResponseBodyVideoGenerationJob `json:"VideoGenerationJob,omitempty" xml:"VideoGenerationJob,omitempty" type:"Struct"`
 }
 
@@ -68,31 +68,31 @@ type GetVideoGenerationJobResponseBodyVideoGenerationJob struct {
 	//
 	// 16:9
 	AspectRatio *string `json:"AspectRatio,omitempty" xml:"AspectRatio,omitempty"`
-	// The video duration, in seconds.
+	// The video duration. Unit: seconds.
 	//
 	// example:
 	//
 	// 5
 	Duration *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	// The error message. The value is a string. This parameter is returned only when the job status is Failed.
+	// The error message. The value is a string and is returned when the task status is Failed.
 	//
 	// example:
 	//
 	// Input file not found.
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	// The job input.
+	// The task input.
 	//
 	// example:
 	//
-	// {"Prompt":"Image 1 is on the basketball court, performing a slam dunk with Image 2","Medias":[{"Type":"image","Url":"https://xxx/xxx.jpg"},{"Type":"image","Url":"https://xxx/xxx.jpg"}]}
+	// {"Prompt":"Image 1 is on the basketball court, performing a slam dunk using Image 2","Medias":[{"Type":"image","Url":"https://xxx/xxx.jpg"},{"Type":"image","Url":"https://xxx/xxx.jpg"}]}
 	Input *string `json:"Input,omitempty" xml:"Input,omitempty"`
 	// The job ID.
 	//
 	// example:
 	//
-	// fdc7f121056249c2b64e04bba27bcc8c
+	// ag_68ca759b4903b255*******
 	JobId *string `json:"JobId,omitempty" xml:"JobId,omitempty"`
-	// The job feature configurations. This parameter does not require configuration at this time.
+	// The task feature configuration. Currently, no configuration is required.
 	//
 	// example:
 	//
@@ -118,7 +118,7 @@ type GetVideoGenerationJobResponseBodyVideoGenerationJob struct {
 	N *int32 `json:"N,omitempty" xml:"N,omitempty"`
 	// The generation result. The value is a JSON string that contains the following fields:
 	//
-	// Medias: the list of media information (Media objects). Fields of a Media object:
+	// Medias: the list of media information (Media objects). The Media object includes the following fields:
 	//
 	// MediaId: String. The media asset ID.
 	//
@@ -140,17 +140,17 @@ type GetVideoGenerationJobResponseBodyVideoGenerationJob struct {
 	//
 	// general
 	Scene *string `json:"Scene,omitempty" xml:"Scene,omitempty"`
-	// The job status. Valid values:
+	// The task status. Valid values:
 	//
-	// - Created: The job is created.
+	// - Created: The task is created.
 	//
-	// - Queuing: The job is queued.
+	// - Queuing: The task is queuing.
 	//
-	// - Executing: The job is executing.
+	// - Executing: The task is executing.
 	//
-	// - Finished: The job succeeded.
+	// - Finished: The task ran successfully.
 	//
-	// - Failed: The job failed.
+	// - Failed: The task failed.
 	//
 	// example:
 	//

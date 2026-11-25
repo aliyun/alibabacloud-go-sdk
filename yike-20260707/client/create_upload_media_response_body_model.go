@@ -28,7 +28,7 @@ type iCreateUploadMediaResponseBody interface {
 }
 
 type CreateUploadMediaResponseBody struct {
-	// The unsigned OSS URL of the file. The format is `oss://bucket/objectKey`.
+	// The unsigned OSS URL of the file in the `oss://bucket/objectKey` format.
 	//
 	// example:
 	//
@@ -40,7 +40,7 @@ type CreateUploadMediaResponseBody struct {
 	//
 	// b7e94fc0e*****6e7c5486601
 	MediaId *string `json:"MediaId,omitempty" xml:"MediaId,omitempty"`
-	// The OSS object key. The format is `yike-v1/uid segment-ws segment/date/hour/type/mediaId+random string+source suffix.file name extension`.
+	// The OSS object key in the `yike-v1/uid segment-ws segment/date/hour/type/mediaId+random string+source suffix.file name extension` format.
 	//
 	// example:
 	//
@@ -52,13 +52,13 @@ type CreateUploadMediaResponseBody struct {
 	//
 	// 9B4C2E10-3F5A-4D6B-8C7D-1E2F3A4B5C6D
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The storage location identifier. The format is `bucket.endpoint`.
+	// The storage location identifier in the `bucket.endpoint` format.
 	//
 	// example:
 	//
 	// yike-shared-ap-southeast-1-1.oss-ap-southeast-1.aliyuncs.com
 	StorageLocation *string `json:"StorageLocation,omitempty" xml:"StorageLocation,omitempty"`
-	// The expiration time of the ticket. The time is in UTC and follows the ISO 8601 standard. This field is returned when UPLOAD_TICKET is used.
+	// The expiration time of the ticket in UTC and ISO 8601 format. This field is returned when `UPLOAD_TICKET` is used.
 	//
 	// example:
 	//
@@ -66,7 +66,7 @@ type CreateUploadMediaResponseBody struct {
 	TicketExpiration *string `json:"TicketExpiration,omitempty" xml:"TicketExpiration,omitempty"`
 	// The upload credentials. Some fields may be empty depending on the `CredentialType`.
 	UploadCredentials *CreateUploadMediaResponseBodyUploadCredentials `json:"UploadCredentials,omitempty" xml:"UploadCredentials,omitempty" type:"Struct"`
-	// The upload ticket. This field is returned when UPLOAD_TICKET is used. The ticket is a 27-character string in the format of UT1+region code+random string+check digit. A real credential is issued based on this ticket during a ticket exchange.
+	// The upload ticket. This field is returned when `UPLOAD_TICKET` is used. It is a 27-character string in the UT1+region code+random string+check digit format. A real credential is issued based on this ticket during a ticket exchange.
 	//
 	// example:
 	//
@@ -164,43 +164,43 @@ func (s *CreateUploadMediaResponseBody) Validate() error {
 }
 
 type CreateUploadMediaResponseBodyUploadCredentials struct {
-	// The temporary STS `AccessKey ID`. This field is returned when `STS_TOKEN` is used.
+	// The temporary STS AccessKey ID. This field is returned when `STS_TOKEN` is used.
 	//
 	// example:
 	//
 	// STS.NUgYrLnoC63mLqWeRtYuIoPaSdF
 	AccessKeyId *string `json:"AccessKeyId,omitempty" xml:"AccessKeyId,omitempty"`
-	// The temporary STS AccessKey secret. This field is returned when STS_TOKEN is used.
+	// The temporary STS AccessKey secret. This field is returned when `STS_TOKEN` is used.
 	//
 	// example:
 	//
 	// CVwjCkNzTMupZ8nRtYeXwQaBcDfGhIjK
 	AccessKeySecret *string `json:"AccessKeySecret,omitempty" xml:"AccessKeySecret,omitempty"`
-	// The OSS bucket. This field is returned when STS_TOKEN, POST_POLICY, or PRESIGNED_URL is used.
+	// The OSS bucket. This field is returned when `STS_TOKEN`, `POST_POLICY`, or `PRESIGNED_URL` is used.
 	//
 	// example:
 	//
 	// yike-shared-ap-southeast-1-1
 	Bucket *string `json:"Bucket,omitempty" xml:"Bucket,omitempty"`
-	// The expiration time of the credential. The time is in UTC and follows the ISO 8601 standard.
+	// The expiration time of the credential in UTC and ISO 8601 format.
 	//
 	// example:
 	//
 	// 2026-11-18T12:00:00Z
 	Expiration *string `json:"Expiration,omitempty" xml:"Expiration,omitempty"`
-	// The Base64-encoded PostObject policy. This field is returned when POST_POLICY is used.
+	// The Base64-encoded PostObject policy. This field is returned when `POST_POLICY` is used.
 	//
 	// example:
 	//
 	// eyJleHBpcmF0aW9uIjoiMjAyNi0xMS0xOFQxMjowMDowMFoiLCJjb25kaXRpb25zIjpbXX0=
 	Policy *string `json:"Policy,omitempty" xml:"Policy,omitempty"`
-	// The AccessKey ID used for the signature. This field is returned when POST_POLICY is used.
+	// The AccessKey ID used for the signature. This field is returned when `POST_POLICY` is used.
 	//
 	// example:
 	//
 	// LTAI5tG8XkQmP2vR9wYzAbCd
 	PostAccessKeyId *string `json:"PostAccessKeyId,omitempty" xml:"PostAccessKeyId,omitempty"`
-	// The target endpoint for the POST request. This field is returned when POST_POLICY is used.
+	// The destination endpoint for the POST request. This field is returned when `POST_POLICY` is used.
 	//
 	// example:
 	//
@@ -212,19 +212,19 @@ type CreateUploadMediaResponseBodyUploadCredentials struct {
 	//
 	// ap-southeast-1
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	// The STS security token. This field is returned when STS_TOKEN is used.
+	// The STS security token. This field is returned when `STS_TOKEN` is used.
 	//
 	// example:
 	//
 	// CAISjgJ1q6Ft5B2yfSjIr5DDEOTM2pZ6g7oIExampleToken
 	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
-	// The PostObject signature. This field is returned when POST_POLICY is used.
+	// The PostObject signature. This field is returned when `POST_POLICY` is used.
 	//
 	// example:
 	//
 	// vXkQ9dRt2mLpN8sYwZaBcDfEgHj=
 	Signature *string `json:"Signature,omitempty" xml:"Signature,omitempty"`
-	// The pre-signed PUT URL. This field is returned when PRESIGNED_URL is used.
+	// The pre-signed PUT URL. This field is returned when `PRESIGNED_URL` is used.
 	//
 	// example:
 	//
