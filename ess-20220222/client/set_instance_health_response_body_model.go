@@ -14,7 +14,7 @@ type iSetInstanceHealthResponseBody interface {
 }
 
 type SetInstanceHealthResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

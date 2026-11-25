@@ -22,19 +22,19 @@ type iDescribeEciScalingConfigurationsResponseBody interface {
 }
 
 type DescribeEciScalingConfigurationsResponseBody struct {
-	// The page number of the returned page.
+	// The current page number.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries returned per page.
+	// The number of entries per page.
 	//
 	// example:
 	//
 	// 50
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -117,161 +117,163 @@ func (s *DescribeEciScalingConfigurationsResponseBody) Validate() error {
 }
 
 type DescribeEciScalingConfigurationsResponseBodyScalingConfigurations struct {
-	// The Container Registry Enterprise Edition instances.
+	// The information about the ACR Enterprise instance.
 	AcrRegistryInfos []*DescribeEciScalingConfigurationsResponseBodyScalingConfigurationsAcrRegistryInfos `json:"AcrRegistryInfos,omitempty" xml:"AcrRegistryInfos,omitempty" type:"Repeated"`
-	// The validity period of the scaling configuration. Unit: seconds.
+	// The validity period. Unit: seconds.
 	//
 	// example:
 	//
 	// 1000
 	ActiveDeadlineSeconds *int32 `json:"ActiveDeadlineSeconds,omitempty" xml:"ActiveDeadlineSeconds,omitempty"`
-	// Indicates whether elastic IP addresses (EIPs) are automatically created and bound to elastic container instances.
+	// Specifies whether the automatic creation of an elastic IP address (EIP) and attaching it to the ECI instance is enabled.
 	//
 	// example:
 	//
 	// true
 	AutoCreateEip *bool `json:"AutoCreateEip,omitempty" xml:"AutoCreateEip,omitempty"`
-	// Indicates whether the image cache is automatically matched. Default value: false.
+	// Specifies whether to automatically match an image cache.
+	//
+	// Default value: false.
 	//
 	// example:
 	//
 	// false
 	AutoMatchImageCache *bool `json:"AutoMatchImageCache,omitempty" xml:"AutoMatchImageCache,omitempty"`
-	// The name series of elastic container instances.
+	// The name of the ECI instance, which is also the name of the pod.
 	//
 	// example:
 	//
 	// test
 	ContainerGroupName *string `json:"ContainerGroupName,omitempty" xml:"ContainerGroupName,omitempty"`
-	// The containers in an elastic container instance.
+	// The list of containers included in the ECI instance.
 	Containers []*DescribeEciScalingConfigurationsResponseBodyScalingConfigurationsContainers `json:"Containers,omitempty" xml:"Containers,omitempty" type:"Repeated"`
-	// Indicates whether the Cost Optimization feature is enabled. Valid values:
+	// Specifies whether to enable cost optimization. Valid values:
 	//
-	// 	- true
+	// - true: Enabled.
 	//
-	// 	- false
+	// - false: Disabled.
 	//
 	// example:
 	//
 	// false
 	CostOptimization *bool `json:"CostOptimization,omitempty" xml:"CostOptimization,omitempty"`
-	// The number of vCPUs per elastic container instance.
+	// The number of vCPUs for the instance.
 	//
 	// example:
 	//
 	// 2.0
 	Cpu *float32 `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
-	// The number of physical CPU cores. This parameter can be specified for only specific instance types. For more information, see [Specify CPU options](https://help.aliyun.com/document_detail/197781.html).
+	// The number of physical CPU cores. Only specific instance types support custom settings. For more information, see [Customize CPU options](https://help.aliyun.com/document_detail/197781.html).
 	//
 	// example:
 	//
 	// 2
 	CpuOptionsCore *int32 `json:"CpuOptionsCore,omitempty" xml:"CpuOptionsCore,omitempty"`
-	// The number of threads per core. This parameter can be specified for only specific instance types. A value of 1 indicates that Hyper-Threading is disabled. For more information, see [Specify CPU options](https://help.aliyun.com/document_detail/197781.html).
+	// The number of threads per core. Only specific instance types support custom settings. A value of 1 indicates that hyper-threading is disabled. For more information, see [Customize CPU options](https://help.aliyun.com/document_detail/197781.html).
 	//
 	// example:
 	//
 	// 2
 	CpuOptionsThreadsPerCore *int32 `json:"CpuOptionsThreadsPerCore,omitempty" xml:"CpuOptionsThreadsPerCore,omitempty"`
-	// The time at which the scaling configuration was created.
+	// The time when the scaling configuration was created. The time is displayed in UTC and follows the ISO 8601 standard in the YYYY-MM-DDTHH:mmZ format.
 	//
 	// example:
 	//
 	// 2014-08-14T10:58Z
 	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
-	// The bucket that stores the data cache.
+	// The bucket for data caching.
 	//
 	// example:
 	//
 	// default
 	DataCacheBucket *string `json:"DataCacheBucket,omitempty" xml:"DataCacheBucket,omitempty"`
-	// Indicates whether the Performance Burst feature is enabled for the ESSD AutoPL disk that stores the data cache. Valid values:
+	// Specifies whether to enable the burst feature for the ESSD AutoPL cloud disk used for data caching. Valid values:
 	//
-	// 	- true
+	// - true: Enabled.
 	//
-	// 	- false
+	// - false: Disabled.
 	//
-	// >  For more information about ESSD AutoPL disks, see [ESSD AutoPL disks](https://help.aliyun.com/document_detail/368372.html).
+	// > For more information about ESSD AutoPL cloud disks, see [ESSD AutoPL cloud disks](https://help.aliyun.com/document_detail/368372.html).
 	//
 	// example:
 	//
 	// false
 	DataCacheBurstingEnabled *bool `json:"DataCacheBurstingEnabled,omitempty" xml:"DataCacheBurstingEnabled,omitempty"`
-	// The performance level (PL) of the cloud disk that stores the data cache. We recommend that you use enterprise SSDs (ESSDs). Valid values:
+	// The performance level of the cloud disk used for data caching. We recommend using ESSD (standard SSD). Valid values for the performance level of an ESSD (standard SSD):
 	//
-	// 	- PL0: An ESSD can provide up to 10,000 random read/write IOPS.
+	// - PL0: A single ESSD (standard SSD) can deliver up to 10,000 random read/write IOPS.
 	//
-	// 	- PL1: An ESSD can provide up to 50,000 random read/write IOPS.
+	// - PL1: A single ESSD (standard SSD) can deliver up to 50,000 random read/write IOPS.
 	//
-	// 	- PL2: An ESSD can provide up to 100,000 random read/write IOPS.
+	// - PL2: A single ESSD (standard SSD) can deliver up to 100,000 random read/write IOPS.
 	//
-	// 	- PL3: An ESSD can provide up to 1,000,000 random read/write IOPS.
+	// - PL3: A single ESSD (standard SSD) can deliver up to 1,000,000 random read/write IOPS.
 	//
-	// >  For more information about ESSDs, see [ESSDs](https://help.aliyun.com/document_detail/122389.html).
+	// > For more information about ESSD (standard SSD), see [ESSD (standard SSD)](https://help.aliyun.com/document_detail/122389.html).
 	//
 	// example:
 	//
 	// PL1
 	DataCachePL *string `json:"DataCachePL,omitempty" xml:"DataCachePL,omitempty"`
-	// The provisioned read/write IOPS of the ESSD AutoPL disk that stores the data cache. Valid values: 0 to min{50,000, 1000 x *Capacity - Baseline IOPS}. Baseline IOPS = min{1,800 + 50	- x Capacity, 50,000}.
+	// The provisioned read/write IOPS of the ESSD AutoPL cloud disk used for data caching. Valid values: 0 to min{50000, 1000 × capacity - baseline performance}. The baseline performance is calculated by using the following formula: min{1800 + 50 × capacity, 50000}.
 	//
-	// >  For more information about ESSD AutoPL disks, see [ESSD AutoPL disks](https://help.aliyun.com/document_detail/368372.html).
+	// > For more information about ESSD AutoPL cloud disks, see [ESSD AutoPL cloud disks](https://help.aliyun.com/document_detail/368372.html).
 	//
 	// example:
 	//
 	// 40000
 	DataCacheProvisionedIops *int32 `json:"DataCacheProvisionedIops,omitempty" xml:"DataCacheProvisionedIops,omitempty"`
-	// >  This parameter is not available for use.
+	// This parameter is unavailable.
 	//
 	// example:
 	//
 	// This is an example.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The IP addresses of the Domain Name Service (DNS) server.
+	// The list of IP addresses of the DNS servers.
 	DnsConfigNameServers []*string `json:"DnsConfigNameServers,omitempty" xml:"DnsConfigNameServers,omitempty" type:"Repeated"`
-	// The options. Each option is a name-value pair. The value in the name-value pair is optional.
+	// The list of DNS configuration options. Each option consists of a name and an optional value.
 	DnsConfigOptions []*DescribeEciScalingConfigurationsResponseBodyScalingConfigurationsDnsConfigOptions `json:"DnsConfigOptions,omitempty" xml:"DnsConfigOptions,omitempty" type:"Repeated"`
-	// The search domains of the DNS servers.
+	// The list of DNS search domains.
 	DnsConfigSearches []*string `json:"DnsConfigSearches,omitempty" xml:"DnsConfigSearches,omitempty" type:"Repeated"`
-	// The Domain Name System (DNS) policy.
+	// The DNS policy.
 	//
 	// example:
 	//
 	// Default
 	DnsPolicy *string `json:"DnsPolicy,omitempty" xml:"DnsPolicy,omitempty"`
-	// The maximum outbound public bandwidth. Unit: bit/s.
+	// The outbound bandwidth limit. Unit: bytes.
 	//
 	// example:
 	//
 	// 1024000
 	EgressBandwidth *int64 `json:"EgressBandwidth,omitempty" xml:"EgressBandwidth,omitempty"`
-	// The EIP bandwidth. Default value: 5. Unit: Mbit/s.
+	// The bandwidth of the EIP. Default value: 5 Mbit/s.
 	//
 	// example:
 	//
 	// 5
 	EipBandwidth *int32 `json:"EipBandwidth,omitempty" xml:"EipBandwidth,omitempty"`
-	// The capacity of the ephemeral storage. Unit: GiB.
+	// The size of the ephemeral storage space. Unit: GiB.
 	//
 	// example:
 	//
 	// 20
 	EphemeralStorage *int32 `json:"EphemeralStorage,omitempty" xml:"EphemeralStorage,omitempty"`
-	// The version of the GPU driver.
+	// The specified GPU driver version.
 	//
 	// example:
 	//
 	// tesla=470.82.01
 	GpuDriverVersion *string `json:"GpuDriverVersion,omitempty" xml:"GpuDriverVersion,omitempty"`
-	// The hostnames and IP addresses for a container that are added to the hosts file of the elastic container instance.
+	// The custom hostname mappings for a container in the instance.
 	HostAliases []*DescribeEciScalingConfigurationsResponseBodyScalingConfigurationsHostAliases `json:"HostAliases,omitempty" xml:"HostAliases,omitempty" type:"Repeated"`
-	// The hostname series.
+	// The hostname.
 	//
 	// example:
 	//
 	// [\\"hehe.com\\", \\"haha.com\\"]
 	HostName *string `json:"HostName,omitempty" xml:"HostName,omitempty"`
-	// The information about the image repository.
+	// The image registry information.
 	ImageRegistryCredentials []*DescribeEciScalingConfigurationsResponseBodyScalingConfigurationsImageRegistryCredentials `json:"ImageRegistryCredentials,omitempty" xml:"ImageRegistryCredentials,omitempty" type:"Repeated"`
 	// The ID of the image cache.
 	//
@@ -279,21 +281,21 @@ type DescribeEciScalingConfigurationsResponseBodyScalingConfigurations struct {
 	//
 	// imc-2zebxkiifuyzzlhl****
 	ImageSnapshotId *string `json:"ImageSnapshotId,omitempty" xml:"ImageSnapshotId,omitempty"`
-	// The maximum inbound public bandwidth. Unit: bit/s.
+	// The inbound bandwidth limit. Unit: bytes.
 	//
 	// example:
 	//
 	// 1024000
 	IngressBandwidth *int64 `json:"IngressBandwidth,omitempty" xml:"IngressBandwidth,omitempty"`
-	// The init containers.
+	// The list of init containers.
 	InitContainers []*DescribeEciScalingConfigurationsResponseBodyScalingConfigurationsInitContainers `json:"InitContainers,omitempty" xml:"InitContainers,omitempty" type:"Repeated"`
-	// The level of the instance family, which is used to filter the available instance types that meet the specified requirements. This parameter takes effect only if `CostOptimization` is set to true. Valid values:
+	// The level of the instance family. This parameter is used to filter instance types that meet the requirements and takes effect only when `CostOptimization` is enabled. Valid values:
 	//
-	// 	- EntryLevel: entry level (shared instance types). Instance types of this level are the most cost-effective but may not provide stable computing performance. Instance types of this level are suitable for scenarios in which the CPU utilization is low. For more information, see [Shared instance families](https://help.aliyun.com/document_detail/108489.html).
+	// - EntryLevel: shared instance types. These instance types are more cost-effective but cannot guarantee stable computing performance. They are suitable for workloads with low CPU utilization. For more information, see [Shared instance families](https://help.aliyun.com/document_detail/108489.html).
 	//
-	// 	- EnterpriseLevel: enterprise level. Instance types of this level provide stable performance and dedicated resources, and are suitable for business scenarios that require high stability. For more information, see [Overview of instance families](https://help.aliyun.com/document_detail/25378.html).
+	// - EnterpriseLevel: enterprise-level instance types. These instance types provide stable performance and dedicated resources, and are suitable for workloads that require high stability. For more information, see [Instance families](https://help.aliyun.com/document_detail/25378.html).
 	//
-	// 	- CreditEntryLevel: credit-based entry level (burstable instance types). CPU credits are used to ensure computing performance. Instance types of this level are suitable for scenarios in which the CPU utilization is low but may fluctuate in specific cases. For more information, see [Overview of burstable instances](https://help.aliyun.com/document_detail/59977.html).
+	// - CreditEntryLevel: burstable instance types. These instance types use CPU credits to ensure computing performance and are suitable for workloads that have low CPU utilization but occasionally experience CPU usage spikes. For more information, see [Overview of burstable instances](https://help.aliyun.com/document_detail/59977.html).
 	//
 	// example:
 	//
@@ -307,17 +309,17 @@ type DescribeEciScalingConfigurationsResponseBodyScalingConfigurations struct {
 	//
 	// 1
 	Ipv6AddressCount *int32 `json:"Ipv6AddressCount,omitempty" xml:"Ipv6AddressCount,omitempty"`
-	// The status of the scaling configuration in the scaling group. Valid values:
+	// The state of the scaling configuration in the scaling group. Valid values:
 	//
-	// 	- Active: The scaling configuration is active in the scaling group. Auto Scaling uses the scaling configuration that is in the Active state to create instances during scale-out events.
+	// - Active: The scaling configuration is active. The scaling group uses active scaling configurations for the automatic creation of ECS instances.
 	//
-	// 	- Inactive: The scaling configuration is inactive in the scaling group. Scaling configurations that are in the Inactive state are still contained in the scaling group, but Auto Scaling does not use the inactive scaling configurations to create instances during scale-out events.
+	// - Inacitve: The scaling configuration is inactive. Inactive scaling configurations exist in the scaling group, but the scaling group does not use them for the automatic creation of ECS instances.
 	//
 	// example:
 	//
 	// Active
 	LifecycleState *string `json:"LifecycleState,omitempty" xml:"LifecycleState,omitempty"`
-	// The load balancing weight of each elastic container instance as a backend server. Valid values: 1 to 100.
+	// The weight of the ECI instance when it serves as a backend server. Valid values: 1 to 100.
 	//
 	// example:
 	//
@@ -325,23 +327,23 @@ type DescribeEciScalingConfigurationsResponseBodyScalingConfigurations struct {
 	LoadBalancerWeight *int32 `json:"LoadBalancerWeight,omitempty" xml:"LoadBalancerWeight,omitempty"`
 	// The memory size.
 	//
-	// You can specify CPU and Memory to define the range of instance types. For example, if you set CPU to 2 and Memory to 16, the instance types that have 2 vCPUs and 16 GiB are returned. After you specify CPU and Memory, Auto Scaling determines the available instance types based on factors such as I/O optimization requirements and zones and preferentially creates instances by using the lowest-priced instance type.
+	// You can specify both CPU and Memory to define a range of instance types. For example, if you set CPU to 2 and Memory to 16, all instance types that have 2 vCPUs and 16 GiB of memory are matched. Auto Scaling determines the available instance types based on factors such as I/O optimization and zone, and creates the instance type that has the lowest price.
 	//
-	// >  You can specify CPU and Memory to define instance types only if you set Scaling Policy to Cost Optimization and no instance type is specified in the scaling configuration.
+	// > This configuration takes effect only when the cost optimization mode is used and no instance types are specified in the scaling configuration.
 	//
 	// example:
 	//
 	// 16
 	Memory *float32 `json:"Memory,omitempty" xml:"Memory,omitempty"`
-	// The endpoints of the Network Time Protocol (NTP) server.
+	// The NTP servers.
 	NtpServers []*string `json:"NtpServers,omitempty" xml:"NtpServers,omitempty" type:"Repeated"`
-	// The Resource Access Management (RAM) role of elastic container instances. Elastic container instances and Elastic Compute Service (ECS) instances can share the same RAM role. For more information, see [Use an instance RAM role by calling API operations](https://help.aliyun.com/document_detail/61178.html).
+	// The name of the instance RAM role. ECI and ECS share the same instance RAM role. For more information, see [Use an instance RAM role by calling API operations](https://help.aliyun.com/document_detail/61178.html).
 	//
 	// example:
 	//
 	// ram:PassRole
 	RamRoleName *string `json:"RamRoleName,omitempty" xml:"RamRoleName,omitempty"`
-	// The region ID of elastic container instances.
+	// The region ID of the ECI instance.
 	//
 	// example:
 	//
@@ -353,13 +355,13 @@ type DescribeEciScalingConfigurationsResponseBodyScalingConfigurations struct {
 	//
 	// rg-8db03793gfrz****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The restart policy of elastic container instances. Valid values:
+	// The restart policy for the pod. Valid values:
 	//
-	// 	- Never: Elastic container instances are never restarted.
+	// - Never: The pod is not restarted.
 	//
-	// 	- Always: Elastic container instances are always restarted.
+	// - Always: The pod is always restarted.
 	//
-	// 	- OnFailure: Elastic container instances are restarted upon failures.
+	// - OnFailure: The pod is restarted upon failure.
 	//
 	// example:
 	//
@@ -383,49 +385,49 @@ type DescribeEciScalingConfigurationsResponseBodyScalingConfigurations struct {
 	//
 	// asg-bp17pelvl720x3v7****
 	ScalingGroupId *string `json:"ScalingGroupId,omitempty" xml:"ScalingGroupId,omitempty"`
-	// The system information of the security context in which the elastic container instance runs.
+	// The system info of the contextual security for the running instance.
 	SecurityContextSysCtls []*DescribeEciScalingConfigurationsResponseBodyScalingConfigurationsSecurityContextSysCtls `json:"SecurityContextSysCtls,omitempty" xml:"SecurityContextSysCtls,omitempty" type:"Repeated"`
-	// The ID of the security group with which elastic container instances are associated. Elastic container instances that are associated with the same security group can communicate with each other.
+	// The ID of the security group to which the Elastic Container Instance (ECI) belongs. ECI instances in the same security group can access each other.
 	//
 	// example:
 	//
 	// sg-bp18kz60mefs****
 	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
-	// >  This parameter is not available for use.
+	// This parameter is unavailable.
 	//
 	// example:
 	//
 	// False
 	SlsEnable *bool `json:"SlsEnable,omitempty" xml:"SlsEnable,omitempty"`
-	// The maximum hourly price for preemptible elastic container instances.
+	// The maximum hourly price for the spot instance.
 	//
-	// This parameter is returned only if you set SpotStrategy to SpotWithPriceLimit.
+	// This parameter is returned only when SpotStrategy is set to SpotWithPriceLimit.
 	//
 	// example:
 	//
 	// 0.025
 	SpotPriceLimit *float32 `json:"SpotPriceLimit,omitempty" xml:"SpotPriceLimit,omitempty"`
-	// The bidding policy for elastic container instances. Valid values:
+	// The preemption policy for the instance. Valid values:
 	//
-	// 	- NoSpot: The instances are created as regular pay-as-you-go instances.
+	// - NoSpot: regular pay-as-you-go instance
 	//
-	// 	- SpotWithPriceLimit: The instances are created as preemptible instances with a user-defined maximum hourly price.
+	// - SpotWithPriceLimit: spot instance with a maximum price
 	//
-	// 	- SpotAsPriceGo: The instances are created as preemptible instances for which the market price at the time of purchase is automatically used as the bid price.
+	// - SpotAsPriceGo: spot instance with a price automatically offered by the system based on the current market price
 	//
 	// example:
 	//
 	// NoSpot
 	SpotStrategy *string `json:"SpotStrategy,omitempty" xml:"SpotStrategy,omitempty"`
-	// The tags of elastic container instances. Tags are specified in the key-value format.
+	// The tag key-value pairs of the instance.
 	Tags []*DescribeEciScalingConfigurationsResponseBodyScalingConfigurationsTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
-	// The buffer time during which a program handles operations before the program stops.
+	// The grace period for the program to handle operations before termination.
 	//
 	// example:
 	//
 	// 60
 	TerminationGracePeriodSeconds *int32 `json:"TerminationGracePeriodSeconds,omitempty" xml:"TerminationGracePeriodSeconds,omitempty"`
-	// The volumes.
+	// The data volume information.
 	Volumes []*DescribeEciScalingConfigurationsResponseBodyScalingConfigurationsVolumes `json:"Volumes,omitempty" xml:"Volumes,omitempty" type:"Repeated"`
 }
 
@@ -991,21 +993,21 @@ func (s *DescribeEciScalingConfigurationsResponseBodyScalingConfigurations) Vali
 }
 
 type DescribeEciScalingConfigurationsResponseBodyScalingConfigurationsAcrRegistryInfos struct {
-	// The domain names of the Container Registry Enterprise Edition instance. By default, all domain names of the instance are displayed. Multiple domain names are separated by commas (,).
+	// The domain names of the ACR Enterprise instance. By default, all domain names of the instance are used. You can specify one or more domain names. Separate multiple domain names with commas (,).
 	Domains []*string `json:"Domains,omitempty" xml:"Domains,omitempty" type:"Repeated"`
-	// The ID of the Container Registry Enterprise Edition instance.
+	// The instance ID of the ACR Enterprise instance.
 	//
 	// example:
 	//
 	// cri-nwj395hgf6f3****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The name of the Container Registry Enterprise Edition instance.
+	// The name of the ACR Enterprise instance.
 	//
 	// example:
 	//
 	// acr-test
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	// The region ID of the Container Registry Enterprise Edition instance.
+	// The region where the ACR Enterprise instance resides.
 	//
 	// example:
 	//
@@ -1062,17 +1064,17 @@ func (s *DescribeEciScalingConfigurationsResponseBodyScalingConfigurationsAcrReg
 }
 
 type DescribeEciScalingConfigurationsResponseBodyScalingConfigurationsContainers struct {
-	// The container startup arguments. You can specify up to 10 arguments.
+	// The list of arguments for the container startup commands. A maximum of 10 arguments can be specified.
 	Args []*string `json:"Args,omitempty" xml:"Args,omitempty" type:"Repeated"`
-	// The container startup commands. You can specify up to 20 commands. Each command can contain up to 256 characters.
+	// The list of startup commands for the container. A maximum of 20 commands can be specified. Each command can contain up to 256 characters.
 	Commands []*string `json:"Commands,omitempty" xml:"Commands,omitempty" type:"Repeated"`
-	// The number of vCPUs per container.
+	// The number of vCPUs for the container.
 	//
 	// example:
 	//
 	// 2.0
 	Cpu *float32 `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
-	// The environment variables.
+	// The list of environment variables.
 	EnvironmentVars []*DescribeEciScalingConfigurationsResponseBodyScalingConfigurationsContainersEnvironmentVars `json:"EnvironmentVars,omitempty" xml:"EnvironmentVars,omitempty" type:"Repeated"`
 	// The number of GPUs.
 	//
@@ -1086,97 +1088,97 @@ type DescribeEciScalingConfigurationsResponseBodyScalingConfigurationsContainers
 	//
 	// mysql
 	Image *string `json:"Image,omitempty" xml:"Image,omitempty"`
-	// The image pulling policy. Valid values:
+	// The image pull policy. Valid values:
 	//
-	// 	- Always: Each time image pulling is performed.
+	// - Alway: The image is always pulled.
 	//
-	// 	- IfNotPresent: Image pulling is performed as needed. On-premises images are preferentially used. If no on-premises images are available, image pulling is performed.
+	// - IfNotPresent: The image is pulled on demand. The local image is used first. If no local image is available, the image is pulled.
 	//
-	// 	- Never: On-premises images are always used. Image pulling is not performed.
+	// - Never: The image is never pulled. The local image is used.
 	//
 	// example:
 	//
 	// Always
 	ImagePullPolicy *string `json:"ImagePullPolicy,omitempty" xml:"ImagePullPolicy,omitempty"`
-	// The commands that are run for configuring the postStart callback function by using the CLI within the container.
+	// The command executed in the container when the postStart callback function is configured by using the command line.
 	LifecyclePostStartHandlerExecs []*string `json:"LifecyclePostStartHandlerExecs,omitempty" xml:"LifecyclePostStartHandlerExecs,omitempty" type:"Repeated"`
-	// The IP address of the host to which HTTP GET requests for configuring the postStart callback function are sent.
+	// The host address that receives the HTTP GET request when the postStart callback function is configured by using an HTTP request.
 	//
 	// example:
 	//
 	// 10.0.XX.XX
 	LifecyclePostStartHandlerHttpGetHost *string `json:"LifecyclePostStartHandlerHttpGetHost,omitempty" xml:"LifecyclePostStartHandlerHttpGetHost,omitempty"`
-	// The path to which HTTP GET requests for configuring the postStart callback function are sent.
+	// The path checked by the HTTP GET request when the postStart callback function is configured by using an HTTP request.
 	//
 	// example:
 	//
 	// /healthyz
 	LifecyclePostStartHandlerHttpGetPath *string `json:"LifecyclePostStartHandlerHttpGetPath,omitempty" xml:"LifecyclePostStartHandlerHttpGetPath,omitempty"`
-	// The port over which HTTP GET requests for configuring the postStart callback function are sent.
+	// The port number checked by the HTTP GET request when the postStart callback function is configured by using an HTTP request.
 	//
 	// example:
 	//
 	// 80
 	LifecyclePostStartHandlerHttpGetPort *int32 `json:"LifecyclePostStartHandlerHttpGetPort,omitempty" xml:"LifecyclePostStartHandlerHttpGetPort,omitempty"`
-	// The protocol type of the HTTP GET requests that are sent for configuring the postStart callback function.
+	// The protocol type used for the HTTP GET request when the postStart callback function is configured by using an HTTP request.
 	//
 	// example:
 	//
 	// HTTP
 	LifecyclePostStartHandlerHttpGetScheme *string `json:"LifecyclePostStartHandlerHttpGetScheme,omitempty" xml:"LifecyclePostStartHandlerHttpGetScheme,omitempty"`
-	// The IP address of the host detected by the TCP sockets used for configuring the postStart callback function.
+	// The host address checked by the TCP socket when the postStart callback function is configured by using a TCP socket.
 	//
 	// example:
 	//
 	// 10.0.XX.XX
 	LifecyclePostStartHandlerTcpSocketHost *string `json:"LifecyclePostStartHandlerTcpSocketHost,omitempty" xml:"LifecyclePostStartHandlerTcpSocketHost,omitempty"`
-	// The port detected by the TCP sockets used for configuring the postStart callback function.
+	// The port checked by the TCP socket when the postStart callback function is configured by using a TCP socket.
 	//
 	// example:
 	//
 	// 80
 	LifecyclePostStartHandlerTcpSocketPort *int32 `json:"LifecyclePostStartHandlerTcpSocketPort,omitempty" xml:"LifecyclePostStartHandlerTcpSocketPort,omitempty"`
-	// The commands that are run for configuring the preStop callback function by using the CLI within the container.
+	// The command executed in the container when the preStop callback function is configured by using the command line.
 	LifecyclePreStopHandlerExecs []*string `json:"LifecyclePreStopHandlerExecs,omitempty" xml:"LifecyclePreStopHandlerExecs,omitempty" type:"Repeated"`
-	// The IP address of the host to which HTTP GET requests for configuring the preStop callback function are sent.
+	// The host address that receives the HTTP GET request when the preStop callback function is configured by using an HTTP request.
 	//
 	// example:
 	//
 	// 10.0.XX.XX
 	LifecyclePreStopHandlerHttpGetHost *string `json:"LifecyclePreStopHandlerHttpGetHost,omitempty" xml:"LifecyclePreStopHandlerHttpGetHost,omitempty"`
-	// The path to which HTTP GET requests for configuring the preStop callback function are sent.
+	// The path checked by the HTTP GET request when the preStop callback function is configured by using an HTTP request.
 	//
 	// example:
 	//
 	// /healthyz
 	LifecyclePreStopHandlerHttpGetPath *string `json:"LifecyclePreStopHandlerHttpGetPath,omitempty" xml:"LifecyclePreStopHandlerHttpGetPath,omitempty"`
-	// The port over which HTTP GET requests for configuring the preStop callback function are sent.
+	// The port number checked by the HTTP GET request when the preStop callback function is configured by using an HTTP request.
 	//
 	// example:
 	//
 	// 80
 	LifecyclePreStopHandlerHttpGetPort *int32 `json:"LifecyclePreStopHandlerHttpGetPort,omitempty" xml:"LifecyclePreStopHandlerHttpGetPort,omitempty"`
-	// The protocol type of the HTTP Get requests that are sent for configuring the preStop callback function.
+	// The protocol type used for the HTTP GET request when the preStop callback function is configured by using an HTTP request.
 	//
 	// example:
 	//
 	// HTTP
 	LifecyclePreStopHandlerHttpGetScheme *string `json:"LifecyclePreStopHandlerHttpGetScheme,omitempty" xml:"LifecyclePreStopHandlerHttpGetScheme,omitempty"`
-	// The IP address of the host detected by the TCP sockets used for configuring the preStop callback function.
+	// The host address checked by the TCP socket when the preStop callback function is configured by using a TCP socket.
 	//
 	// example:
 	//
 	// 10.0.XX.XX
 	LifecyclePreStopHandlerTcpSocketHost *string `json:"LifecyclePreStopHandlerTcpSocketHost,omitempty" xml:"LifecyclePreStopHandlerTcpSocketHost,omitempty"`
-	// The port detected by the TCP sockets used for configuring the preStop callback function.
+	// The port checked by the TCP socket when the preStop callback function is configured by using a TCP socket.
 	//
 	// example:
 	//
 	// 80
 	LifecyclePreStopHandlerTcpSocketPort *int32 `json:"LifecyclePreStopHandlerTcpSocketPort,omitempty" xml:"LifecyclePreStopHandlerTcpSocketPort,omitempty"`
-	// The commands that are run in the container when you use the CLI to perform liveness probes.
+	// The list of commands executed in the container for command-line-based health checks.
 	LivenessProbeExecCommands []*string `json:"LivenessProbeExecCommands,omitempty" xml:"LivenessProbeExecCommands,omitempty" type:"Repeated"`
-	// The minimum number of consecutive failures before a successful liveness probe is considered failed.
+	// The minimum consecutive failures for the readiness probe to be considered failed after having succeeded.
 	//
 	// Default value: 3.
 	//
@@ -1184,59 +1186,59 @@ type DescribeEciScalingConfigurationsResponseBodyScalingConfigurationsContainers
 	//
 	// 3
 	LivenessProbeFailureThreshold *int32 `json:"LivenessProbeFailureThreshold,omitempty" xml:"LivenessProbeFailureThreshold,omitempty"`
-	// The path to which HTTP GET requests are sent when you use the HTTP GET requests to perform liveness probes.
+	// The path for the HTTP GET readiness probe.
 	//
 	// example:
 	//
 	// /usr/nginx/
 	LivenessProbeHttpGetPath *string `json:"LivenessProbeHttpGetPath,omitempty" xml:"LivenessProbeHttpGetPath,omitempty"`
-	// The port to which HTTP GET requests are sent to perform liveness probes.
+	// The port for the HTTP GET liveness probe.
 	//
 	// example:
 	//
 	// 80
 	LivenessProbeHttpGetPort *int32 `json:"LivenessProbeHttpGetPort,omitempty" xml:"LivenessProbeHttpGetPort,omitempty"`
-	// The protocol type of HTTP GET requests when you use the HTTP GET requests to perform liveness probes. Valid values:
+	// The protocol type for the HTTP GET request when HTTP requests are used for health checks. Valid values:
 	//
-	// 	- HTTP
+	// - HTTP
 	//
-	// 	- HTTPS
+	// - HTTPS
 	//
 	// example:
 	//
 	// HTTP
 	LivenessProbeHttpGetScheme *string `json:"LivenessProbeHttpGetScheme,omitempty" xml:"LivenessProbeHttpGetScheme,omitempty"`
-	// The number of seconds that elapses from the startup of the container to the start time of a liveness probe.
+	// The delay before the readiness probe is initiated after the container starts.
 	//
 	// example:
 	//
 	// 10
 	LivenessProbeInitialDelaySeconds *int32 `json:"LivenessProbeInitialDelaySeconds,omitempty" xml:"LivenessProbeInitialDelaySeconds,omitempty"`
-	// The interval at which liveness probes are performed. Unit: seconds. Default value: 10. Minimum value: 1.
+	// The execution period of the liveness probe. Default value: 10 seconds. Minimum value: 1 second.
 	//
 	// example:
 	//
 	// 5
 	LivenessProbePeriodSeconds *int32 `json:"LivenessProbePeriodSeconds,omitempty" xml:"LivenessProbePeriodSeconds,omitempty"`
-	// The minimum number of consecutive successes before a failed liveness probe is considered successful. Default value: 1. Valid value: 1.
+	// The minimum consecutive successes for the readiness probe to be considered successful after having failed. Default value: 1. The current value must be 1.
 	//
 	// example:
 	//
 	// 1
 	LivenessProbeSuccessThreshold *int32 `json:"LivenessProbeSuccessThreshold,omitempty" xml:"LivenessProbeSuccessThreshold,omitempty"`
-	// The port detected by TCP sockets when you use the TCP sockets to perform liveness probes.
+	// The port number for the TCP socket liveness probe.
 	//
 	// example:
 	//
 	// 80
 	LivenessProbeTcpSocketPort *int32 `json:"LivenessProbeTcpSocketPort,omitempty" xml:"LivenessProbeTcpSocketPort,omitempty"`
-	// The timeout period of a liveness probe. Default value: 1. Minimum value: 1. Unit: seconds.
+	// The timeout period for the liveness probe. Default value: 1 second. Minimum value: 1 second.
 	//
 	// example:
 	//
 	// 10
 	LivenessProbeTimeoutSeconds *int32 `json:"LivenessProbeTimeoutSeconds,omitempty" xml:"LivenessProbeTimeoutSeconds,omitempty"`
-	// The memory size per container.
+	// The memory size of the container.
 	//
 	// example:
 	//
@@ -1248,11 +1250,11 @@ type DescribeEciScalingConfigurationsResponseBodyScalingConfigurationsContainers
 	//
 	// nginx
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The exposed ports and protocols.
+	// The list of exposed ports and protocols.
 	Ports []*DescribeEciScalingConfigurationsResponseBodyScalingConfigurationsContainersPorts `json:"Ports,omitempty" xml:"Ports,omitempty" type:"Repeated"`
-	// The commands that are run in the container when you use the CLI to perform readiness probes.
+	// The list of commands executed in the container for command-line-based health checks.
 	ReadinessProbeExecCommands []*string `json:"ReadinessProbeExecCommands,omitempty" xml:"ReadinessProbeExecCommands,omitempty" type:"Repeated"`
-	// The minimum number of consecutive failures before a successful readiness probe is considered failed.
+	// The minimum consecutive failures for the readiness probe to be considered failed after having succeeded.
 	//
 	// Default value: 3.
 	//
@@ -1260,95 +1262,95 @@ type DescribeEciScalingConfigurationsResponseBodyScalingConfigurationsContainers
 	//
 	// 3
 	ReadinessProbeFailureThreshold *int32 `json:"ReadinessProbeFailureThreshold,omitempty" xml:"ReadinessProbeFailureThreshold,omitempty"`
-	// The path to which HTTP GET requests are sent when you use the HTTP GET requests to perform readiness probes.
+	// The path for the HTTP GET readiness probe.
 	//
 	// example:
 	//
 	// /usr/local
 	ReadinessProbeHttpGetPath *string `json:"ReadinessProbeHttpGetPath,omitempty" xml:"ReadinessProbeHttpGetPath,omitempty"`
-	// The path to which HTTP GET requests are sent when you use the HTTP GET requests to perform readiness probes.
+	// The path for the HTTP GET readiness probe.
 	//
 	// example:
 	//
 	// /usr/nginx/
 	ReadinessProbeHttpGetPort *int32 `json:"ReadinessProbeHttpGetPort,omitempty" xml:"ReadinessProbeHttpGetPort,omitempty"`
-	// The protocol type of HTTP GET requests when you use the HTTP requests to perform readiness probes. Valid values:
+	// The protocol type for the HTTP GET request when HTTP requests are used for health checks. Valid values:
 	//
-	// 	- HTTP
+	// - HTTP
 	//
-	// 	- HTTPS
+	// - HTTPS
 	//
 	// example:
 	//
 	// HTTP
 	ReadinessProbeHttpGetScheme *string `json:"ReadinessProbeHttpGetScheme,omitempty" xml:"ReadinessProbeHttpGetScheme,omitempty"`
-	// The number of seconds that elapses from the startup of the container to the start time of a readiness probe.
+	// The delay before the readiness probe is initiated after the container starts.
 	//
 	// example:
 	//
 	// 5
 	ReadinessProbeInitialDelaySeconds *int32 `json:"ReadinessProbeInitialDelaySeconds,omitempty" xml:"ReadinessProbeInitialDelaySeconds,omitempty"`
-	// The interval at which readiness probes are performed. Unit: seconds. Default value: 10. Minimum value: 1.
+	// The execution period of the readiness probe. Default value: 10 seconds. Minimum value: 1 second.
 	//
 	// example:
 	//
 	// 1
 	ReadinessProbePeriodSeconds *int32 `json:"ReadinessProbePeriodSeconds,omitempty" xml:"ReadinessProbePeriodSeconds,omitempty"`
-	// The minimum number of consecutive successes before a failed readiness probe is considered successful. Default value: 1. Valid value: 1.
+	// The minimum consecutive successes for the readiness probe to be considered successful after having failed. Default value: 1. The current value must be 1.
 	//
 	// example:
 	//
 	// 1
 	ReadinessProbeSuccessThreshold *int32 `json:"ReadinessProbeSuccessThreshold,omitempty" xml:"ReadinessProbeSuccessThreshold,omitempty"`
-	// The port detected by TCP sockets when you use the TCP sockets to perform readiness probes.
+	// The port number for the TCP socket liveness probe.
 	//
 	// example:
 	//
 	// 8888
 	ReadinessProbeTcpSocketPort *int32 `json:"ReadinessProbeTcpSocketPort,omitempty" xml:"ReadinessProbeTcpSocketPort,omitempty"`
-	// The timeout period of a readiness probe. Default value: 1. Minimum value: 1. Unit: seconds.
+	// The timeout period for the readiness probe. Default value: 1 second. Minimum value: 1 second.
 	//
 	// example:
 	//
 	// 5
 	ReadinessProbeTimeoutSeconds *int32 `json:"ReadinessProbeTimeoutSeconds,omitempty" xml:"ReadinessProbeTimeoutSeconds,omitempty"`
-	// The permissions that are granted to the processes in the container. Valid values: NET_ADMIN and NET_RAW.
+	// The specific permissions granted to processes in the container. Currently, only NET_ADMIN and NET_RAW are supported.
 	//
-	// >  To use NET_RAW, you must submit a ticket.
+	// > By default, NET_RAW is not supported. To use NET_RAW, submit a ticket.
 	SecurityContextCapabilityAdds []*string `json:"SecurityContextCapabilityAdds,omitempty" xml:"SecurityContextCapabilityAdds,omitempty" type:"Repeated"`
-	// Indicates whether the root file system on which the container runs is read-only. Valid value: true.
+	// Specifies whether the root file system is read-only. Only true is supported.
 	//
 	// example:
 	//
 	// true
 	SecurityContextReadOnlyRootFilesystem *bool `json:"SecurityContextReadOnlyRootFilesystem,omitempty" xml:"SecurityContextReadOnlyRootFilesystem,omitempty"`
-	// The ID of the user that runs the entry point of the container process.
+	// The UID used to run the entrypoint of the container process.
 	//
 	// example:
 	//
 	// 1000
 	SecurityContextRunAsUser *int64 `json:"SecurityContextRunAsUser,omitempty" xml:"SecurityContextRunAsUser,omitempty"`
-	// Indicates whether the container allocates buffer resources to standard input streams when the container is running. If this parameter is not specified, an end-of-file (EOF) error may occur when standard input streams in the container are read. Default value: false.
+	// Specifies whether to allocate a buffer for standard input during container runtime. If this parameter is not set, reading from standard input in the container results in an EOF. Default value: false.
 	//
 	// example:
 	//
 	// true
 	Stdin *bool `json:"Stdin,omitempty" xml:"Stdin,omitempty"`
-	// Indicates whether standard input streams are disconnected after a client is disconnected. If Stdin is set to true, standard input streams remain connected among multiple sessions.
+	// Specifies whether the standard input stream remains in the enabling status across multiple attached sessions when standard input is set to true.
 	//
-	// If StdinOnce is set to true, standard input streams are connected after the container is started, and remain idle until a client is connected to receive data. After the client is disconnected, streams are also disconnected, and remain disconnected until the container restarts.
+	// If StdinOnce is set to true, standard input is opened when the container starts, remains empty until the first client attaches to it, and then stays in the enabling status to accept data until the client connection is disconnected. At this point, standard input is shutdown and remains shutdown until the container is restarted.
 	//
 	// example:
 	//
 	// true
 	StdinOnce *bool `json:"StdinOnce,omitempty" xml:"StdinOnce,omitempty"`
-	// Indicates whether the Interaction feature is enabled. Valid values:
+	// Specifies whether to enable interaction. Valid values:
 	//
-	// 	- true
+	// - true: enabled
 	//
-	// 	- false
+	// - false: disabled
 	//
-	// If the command is a /bin/bash command, the value of this parameter is true.
+	// For example, if Command is set to /bin/bash, you must set this parameter to true.
 	//
 	// Default value: false.
 	//
@@ -1356,9 +1358,9 @@ type DescribeEciScalingConfigurationsResponseBodyScalingConfigurationsContainers
 	//
 	// false
 	Tty *bool `json:"Tty,omitempty" xml:"Tty,omitempty"`
-	// The mounted volumes.
+	// The list of volume mounts.
 	VolumeMounts []*DescribeEciScalingConfigurationsResponseBodyScalingConfigurationsContainersVolumeMounts `json:"VolumeMounts,omitempty" xml:"VolumeMounts,omitempty" type:"Repeated"`
-	// The working directory.
+	// The working directory in the container.
 	//
 	// example:
 	//
@@ -1874,7 +1876,7 @@ func (s *DescribeEciScalingConfigurationsResponseBodyScalingConfigurationsContai
 }
 
 type DescribeEciScalingConfigurationsResponseBodyScalingConfigurationsContainersEnvironmentVars struct {
-	// >  This parameter is not available for use.
+	// This parameter is unavailable.
 	//
 	// example:
 	//
@@ -1942,9 +1944,9 @@ type DescribeEciScalingConfigurationsResponseBodyScalingConfigurationsContainers
 	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
 	// The protocol type. Valid values:
 	//
-	// 	- TCP
+	// - TCP
 	//
-	// 	- UDP
+	// - UDP
 	//
 	// example:
 	//
@@ -1983,21 +1985,21 @@ func (s *DescribeEciScalingConfigurationsResponseBodyScalingConfigurationsContai
 }
 
 type DescribeEciScalingConfigurationsResponseBodyScalingConfigurationsContainersVolumeMounts struct {
-	// The directory to which the volume is mounted.
+	// The directory where the container mounts the data volume.
 	//
-	// >  Data in this directory is overwritten by the data on the volume. Proceed with caution if you specify this parameter.
+	// 	Notice: The content in the mount directory of the container is directly overwritten by the content of the volume. Use this parameter with caution.
 	//
 	// example:
 	//
 	// /pod/data
 	MountPath *string `json:"MountPath,omitempty" xml:"MountPath,omitempty"`
-	// The mount propagation settings. Mount propagation enables volumes mounted on one container to be shared among other containers within the same pod or across distinct pods residing on the same node. Valid values:
+	// The mount propagation settings for the data volume. Mount propagation allows volumes mounted by a container to be shared with other containers in the same pod, or even with other pods on the same node. Valid values:
 	//
-	// 	- None: Subsequent mounts executed either on the volume itself or its subdirectories do not propagate to the already established volume mount.
+	// - None: The volume is not aware of any subsequent mount operations performed on the volume or its subdirectories.
 	//
-	// 	- HostToCotainer: Subsequent mounts executed either on the volume itself or its subdirectories propagate to the already established volume mount.
+	// - HostToCotainer: The volume is aware of subsequent mount operations performed on the volume or its subdirectories.
 	//
-	// 	- Bidirectional: This value is similar to HostToCotainer. Subsequent mounts executed either on the volume itself or its subdirectories propagate to the already established volume mount. In addition, any volume mounts executed on a container not only propagate back to the underlying host but also to all containers across every pod that uses the same volume.
+	// - Bidirectional: Similar to HostToCotainer, the volume is aware of mount operations. In addition, the volume is propagated back to the host and to all containers of all pods that use the same volume.
 	//
 	// Default value: None.
 	//
@@ -2005,13 +2007,13 @@ type DescribeEciScalingConfigurationsResponseBodyScalingConfigurationsContainers
 	//
 	// None
 	MountPropagation *string `json:"MountPropagation,omitempty" xml:"MountPropagation,omitempty"`
-	// The volume name. The value of this parameter is the same as the name of the volume that is mounted to containers.
+	// The name of the data volume. This name must be the same as the Name parameter in Volume.
 	//
 	// example:
 	//
 	// default-volume1
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// Indicates whether the volume is read-only.
+	// Specifies whether the data volume is read-only.
 	//
 	// Default value: false.
 	//
@@ -2019,7 +2021,7 @@ type DescribeEciScalingConfigurationsResponseBodyScalingConfigurationsContainers
 	//
 	// false
 	ReadOnly *bool `json:"ReadOnly,omitempty" xml:"ReadOnly,omitempty"`
-	// The volume subdirectory.
+	// The subpath of the data volume.
 	//
 	// example:
 	//
@@ -2085,13 +2087,13 @@ func (s *DescribeEciScalingConfigurationsResponseBodyScalingConfigurationsContai
 }
 
 type DescribeEciScalingConfigurationsResponseBodyScalingConfigurationsDnsConfigOptions struct {
-	// The variable name of the option.
+	// The name of the option.
 	//
 	// example:
 	//
 	// name
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The variable value of the option.
+	// The value of the option.
 	//
 	// example:
 	//
@@ -2130,9 +2132,9 @@ func (s *DescribeEciScalingConfigurationsResponseBodyScalingConfigurationsDnsCon
 }
 
 type DescribeEciScalingConfigurationsResponseBodyScalingConfigurationsHostAliases struct {
-	// The added hostnames.
+	// The hostnames to add.
 	Hostnames []*string `json:"Hostnames,omitempty" xml:"Hostnames,omitempty" type:"Repeated"`
-	// The added IP address.
+	// The IP address to add.
 	//
 	// example:
 	//
@@ -2171,19 +2173,19 @@ func (s *DescribeEciScalingConfigurationsResponseBodyScalingConfigurationsHostAl
 }
 
 type DescribeEciScalingConfigurationsResponseBodyScalingConfigurationsImageRegistryCredentials struct {
-	// The password of the image repository.
+	// The password for the image registry.
 	//
 	// example:
 	//
 	// yourpaasword
 	Password *string `json:"Password,omitempty" xml:"Password,omitempty"`
-	// The domain name of the image repository.
+	// The address of the image registry.
 	//
 	// example:
 	//
 	// registry-vpc.cn-shanghai.aliyuncs.com
 	Server *string `json:"Server,omitempty" xml:"Server,omitempty"`
-	// The username of the image repository.
+	// The username for the image registry.
 	//
 	// example:
 	//
@@ -2231,63 +2233,63 @@ func (s *DescribeEciScalingConfigurationsResponseBodyScalingConfigurationsImageR
 }
 
 type DescribeEciScalingConfigurationsResponseBodyScalingConfigurationsInitContainers struct {
-	// The number of vCPUs per init container.
+	// The CPU size.
 	//
 	// example:
 	//
 	// 0.5
 	Cpu *float32 `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
-	// The number of GPUs per init container.
+	// The number of GPUs used by the container.
 	//
 	// example:
 	//
 	// 1
 	Gpu *int32 `json:"Gpu,omitempty" xml:"Gpu,omitempty"`
-	// The image of the init container.
+	// The image used by the container.
 	//
 	// example:
 	//
 	// nginx
 	Image *string `json:"Image,omitempty" xml:"Image,omitempty"`
-	// The image pulling policy.
+	// The image pull policy.
 	//
 	// example:
 	//
 	// Always
 	ImagePullPolicy *string `json:"ImagePullPolicy,omitempty" xml:"ImagePullPolicy,omitempty"`
-	// The container startup arguments.
+	// The startup arguments for the container.
 	InitContainerArgs []*string `json:"InitContainerArgs,omitempty" xml:"InitContainerArgs,omitempty" type:"Repeated"`
-	// The container startup commands.
+	// The startup commands for the container.
 	InitContainerCommands []*string `json:"InitContainerCommands,omitempty" xml:"InitContainerCommands,omitempty" type:"Repeated"`
-	// The environment variables.
+	// The information about the environment variable.
 	InitContainerEnvironmentVars []*DescribeEciScalingConfigurationsResponseBodyScalingConfigurationsInitContainersInitContainerEnvironmentVars `json:"InitContainerEnvironmentVars,omitempty" xml:"InitContainerEnvironmentVars,omitempty" type:"Repeated"`
-	// The ports of the init container.
+	// The collection of port information for the init container.
 	InitContainerPorts []*DescribeEciScalingConfigurationsResponseBodyScalingConfigurationsInitContainersInitContainerPorts `json:"InitContainerPorts,omitempty" xml:"InitContainerPorts,omitempty" type:"Repeated"`
-	// The volumes that are mounted to the init container.
+	// The data volume mounts.
 	InitContainerVolumeMounts []*DescribeEciScalingConfigurationsResponseBodyScalingConfigurationsInitContainersInitContainerVolumeMounts `json:"InitContainerVolumeMounts,omitempty" xml:"InitContainerVolumeMounts,omitempty" type:"Repeated"`
-	// The memory size per init container.
+	// The memory size.
 	//
 	// example:
 	//
 	// 1.0
 	Memory *float32 `json:"Memory,omitempty" xml:"Memory,omitempty"`
-	// The name of the init container.
+	// The name of the container.
 	//
 	// example:
 	//
 	// test-init
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The permissions that are granted to the processes in the init container. Valid values: NET_ADMIN and NET_RAW.
+	// The specific permissions granted to processes in the container. Currently, only NET_ADMIN and NET_RAW are supported.
 	//
-	// >  To use NET_RAW, you must submit a ticket.
+	// > By default, NET_RAW is not supported. To use NET_RAW, submit a ticket.
 	SecurityContextCapabilityAdds []*string `json:"SecurityContextCapabilityAdds,omitempty" xml:"SecurityContextCapabilityAdds,omitempty" type:"Repeated"`
-	// Indicates whether the root file system is read-only. Valid value: true.
+	// Specifies whether the root file system where the container runs is read-only. Currently, only true is supported.
 	//
 	// example:
 	//
 	// true
 	SecurityContextReadOnlyRootFilesystem *bool `json:"SecurityContextReadOnlyRootFilesystem,omitempty" xml:"SecurityContextReadOnlyRootFilesystem,omitempty"`
-	// The ID of the user that runs the init container.
+	// The user ID used to run the container.
 	//
 	// example:
 	//
@@ -2476,7 +2478,7 @@ func (s *DescribeEciScalingConfigurationsResponseBodyScalingConfigurationsInitCo
 }
 
 type DescribeEciScalingConfigurationsResponseBodyScalingConfigurationsInitContainersInitContainerEnvironmentVars struct {
-	// >  This parameter is not available for use.
+	// This parameter is unavailable.
 	//
 	// example:
 	//
@@ -2544,9 +2546,9 @@ type DescribeEciScalingConfigurationsResponseBodyScalingConfigurationsInitContai
 	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
 	// The protocol type. Valid values:
 	//
-	// 	- TCP
+	// - TCP.
 	//
-	// 	- UDP
+	// - UDP.
 	//
 	// example:
 	//
@@ -2585,19 +2587,19 @@ func (s *DescribeEciScalingConfigurationsResponseBodyScalingConfigurationsInitCo
 }
 
 type DescribeEciScalingConfigurationsResponseBodyScalingConfigurationsInitContainersInitContainerVolumeMounts struct {
-	// The directory to which the volume is mounted. Data under this directory is overwritten by the data on the volume.
+	// The mount directory. The content in the mount directory of the container is directly overwritten by the content of the volume. Use this parameter with caution.
 	//
 	// example:
 	//
 	// /usr/share/
 	MountPath *string `json:"MountPath,omitempty" xml:"MountPath,omitempty"`
-	// The mount propagation setting. Mount propagation enables volumes mounted on one container to be shared among other containers within the same pod or across distinct pods residing on the same node. Valid values:
+	// The mount propagation settings for the data volume. Mount propagation allows volumes mounted by a container to be shared with other containers in the same pod, or even with other pods on the same node. Valid values:
 	//
-	// 	- None: Subsequent mounts executed either on the volume itself or its subdirectories do not propagate to the already established volume mount.
+	// - None: The volume is not aware of any subsequent mount operations performed on the volume or its subdirectories.
 	//
-	// 	- HostToCotainer: Subsequent mounts executed either on the volume itself or its subdirectories propagate to the already established volume mount.
+	// - HostToCotainer: The volume is aware of subsequent mount operations performed on the volume or its subdirectories.
 	//
-	// 	- Bidirectional: This value is similar to HostToCotainer. Subsequent mounts executed either on the volume itself or its subdirectories propagate to the already established volume mount. In addition, any volume mounts executed on a container not only propagate back to the underlying host but also to all containers across every pod that uses the same volume.
+	// - Bidirectional: Similar to HostToCotainer, the volume is aware of mount operations. In addition, the volume is propagated back to the host and to all containers of all pods that use the same volume.
 	//
 	// Default value: None.
 	//
@@ -2605,13 +2607,13 @@ type DescribeEciScalingConfigurationsResponseBodyScalingConfigurationsInitContai
 	//
 	// None
 	MountPropagation *string `json:"MountPropagation,omitempty" xml:"MountPropagation,omitempty"`
-	// The volume name.
+	// The name of the mounted data volume.
 	//
 	// example:
 	//
 	// test-empty
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// Indicates whether the mount directory is read-only.
+	// Specifies whether the mount path is read-only.
 	//
 	// Default value: false.
 	//
@@ -2619,7 +2621,7 @@ type DescribeEciScalingConfigurationsResponseBodyScalingConfigurationsInitContai
 	//
 	// false
 	ReadOnly *bool `json:"ReadOnly,omitempty" xml:"ReadOnly,omitempty"`
-	// The volume subdirectory. A pod can mount different directories of the same volume to different directories of the init container.
+	// The subdirectory in the data volume. This allows a pod to mount different directories in the same volume to different directories in the container.
 	//
 	// example:
 	//
@@ -2685,13 +2687,13 @@ func (s *DescribeEciScalingConfigurationsResponseBodyScalingConfigurationsInitCo
 }
 
 type DescribeEciScalingConfigurationsResponseBodyScalingConfigurationsSecurityContextSysCtls struct {
-	// The system name of the security context in which the elastic container instance runs.
+	// The name of the system control parameter.
 	//
 	// example:
 	//
 	// kernel.msgmax
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The variable value of the security context in which the elastic container instance runs.
+	// The variable value of the contextual security for the running instance.
 	//
 	// example:
 	//
@@ -2775,9 +2777,9 @@ func (s *DescribeEciScalingConfigurationsResponseBodyScalingConfigurationsTags) 
 }
 
 type DescribeEciScalingConfigurationsResponseBodyScalingConfigurationsVolumes struct {
-	// The paths to configuration files.
+	// The list of configuration file paths.
 	ConfigFileVolumeConfigFileToPaths []*DescribeEciScalingConfigurationsResponseBodyScalingConfigurationsVolumesConfigFileVolumeConfigFileToPaths `json:"ConfigFileVolumeConfigFileToPaths,omitempty" xml:"ConfigFileVolumeConfigFileToPaths,omitempty" type:"Repeated"`
-	// The default permissions on the ConfigFile volume.
+	// The default permissions of the ConfigFileVolume.
 	//
 	// example:
 	//
@@ -2795,45 +2797,45 @@ type DescribeEciScalingConfigurationsResponseBodyScalingConfigurationsVolumes st
 	//
 	// 15
 	DiskVolumeDiskSize *int32 `json:"DiskVolumeDiskSize,omitempty" xml:"DiskVolumeDiskSize,omitempty"`
-	// The system type of the disk volume.
+	// The file system type of the disk volume.
 	//
 	// example:
 	//
 	// xfs
 	DiskVolumeFsType *string `json:"DiskVolumeFsType,omitempty" xml:"DiskVolumeFsType,omitempty"`
-	// The storage medium of the emptyDir volume. If you do not specify a storage medium for the emptyDir volume, the volume stores data in the file system of a node by default. We recommend that you set this parameter to memory. In this case, the emptyDir volume stores data in the specified memory.
+	// The storage medium of the EmptyDirVolume. The default value is empty, which indicates that the node file system is used. A value of memory indicates that memory is used.
 	//
 	// example:
 	//
 	// memory
 	EmptyDirVolumeMedium *string `json:"EmptyDirVolumeMedium,omitempty" xml:"EmptyDirVolumeMedium,omitempty"`
-	// The storage size of the emptyDir volume.
+	// The size of the EmptyDir data volume.
 	//
 	// example:
 	//
 	// 256Mi
 	EmptyDirVolumeSizeLimit *string `json:"EmptyDirVolumeSizeLimit,omitempty" xml:"EmptyDirVolumeSizeLimit,omitempty"`
-	// The name of the FlexVolume driver.
+	// The name of the driver used for FlexVolume.
 	//
 	// example:
 	//
 	// flexvolume
 	FlexVolumeDriver *string `json:"FlexVolumeDriver,omitempty" xml:"FlexVolumeDriver,omitempty"`
-	// The type of the mounted file system. The default value is determined by the script of FlexVolume.
+	// The file system type to be mounted. The default value depends on the script of the FlexVolume.
 	//
 	// example:
 	//
 	// ext4
 	FlexVolumeFsType *string `json:"FlexVolumeFsType,omitempty" xml:"FlexVolumeFsType,omitempty"`
-	// The FlexVolume options. Each option is a key-value pair in a JSON string.
+	// The list of options for the FlexVolume object. The options are passed in JSON format as key-value pairs.
 	//
-	// For example, if you use FlexVolume to mount a disk, the format of Options is `{"volumeId":"d-2zehdahrwoa7srg****","performanceLevel": "PL2"}`.
+	// For example, when you mount a cloud disk by using FlexVolume, the options are in the following format: `{"volumeId":"d-2zehdahrwoa7srg****","performanceLevel": "PL2"}`.
 	//
 	// example:
 	//
 	// {"volumeId":"d-2zehdahrwoa7srg****","performanceLevel": "PL2"}
 	FlexVolumeOptions *string `json:"FlexVolumeOptions,omitempty" xml:"FlexVolumeOptions,omitempty"`
-	// The path to the HostPath volume on the host.
+	// The directory path of the HostPath volume on the host.
 	//
 	// example:
 	//
@@ -2845,13 +2847,13 @@ type DescribeEciScalingConfigurationsResponseBodyScalingConfigurationsVolumes st
 	//
 	// Directory
 	HostPathVolumeType *string `json:"HostPathVolumeType,omitempty" xml:"HostPathVolumeType,omitempty"`
-	// The path to the Network File System (NFS) volume.
+	// The path of the NFS volume.
 	//
 	// example:
 	//
 	// /share
 	NFSVolumePath *string `json:"NFSVolumePath,omitempty" xml:"NFSVolumePath,omitempty"`
-	// Indicates whether the NFS volume is read-only.
+	// Specifies whether the NFS volume is read-only.
 	//
 	// Default value: false.
 	//
@@ -2859,27 +2861,27 @@ type DescribeEciScalingConfigurationsResponseBodyScalingConfigurationsVolumes st
 	//
 	// false
 	NFSVolumeReadOnly *bool `json:"NFSVolumeReadOnly,omitempty" xml:"NFSVolumeReadOnly,omitempty"`
-	// The endpoint of the NFS server.
+	// The address of the NFS server.
 	//
 	// example:
 	//
 	// 3f9cd4a596-naw76.cn-shanghai.nas.aliyuncs.com
 	NFSVolumeServer *string `json:"NFSVolumeServer,omitempty" xml:"NFSVolumeServer,omitempty"`
-	// The volume name.
+	// The name of the data volume.
 	//
 	// example:
 	//
 	// default-volume1
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The volume type. Valid values:
+	// The data volume type. Valid values:
 	//
-	// 	- EmptyDirVolume
+	// - EmptyDirVolume.
 	//
-	// 	- NFSVolume
+	// - NFSVolume.
 	//
-	// 	- ConfigFileVolume
+	// - ConfigFileVolume.
 	//
-	// 	- FlexVolume
+	// - FlexVolume.
 	//
 	// example:
 	//
@@ -3068,13 +3070,13 @@ type DescribeEciScalingConfigurationsResponseBodyScalingConfigurationsVolumesCon
 	//
 	// bGl1bWk=
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
-	// The permissions on the ConfigFile volume.
+	// The directory permissions of the ConfigFileVolume.
 	//
 	// example:
 	//
 	// 0644
 	Mode *int32 `json:"Mode,omitempty" xml:"Mode,omitempty"`
-	// The relative path to the configuration file.
+	// The relative file path.
 	//
 	// example:
 	//

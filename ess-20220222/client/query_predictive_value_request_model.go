@@ -30,7 +30,7 @@ type iQueryPredictiveValueRequest interface {
 }
 
 type QueryPredictiveValueRequest struct {
-	// The end time of the predicted number of instances in the scaling group. The time follows the ISO8601 standard and uses UTC time.
+	// The end time to query the predicted number of instances in the scaling group. The time must be in UTC and follow the ISO 8601 standard.
 	//
 	// Format: yyyy-MM-ddTHH:mmZ.
 	//
@@ -40,13 +40,13 @@ type QueryPredictiveValueRequest struct {
 	//
 	// 2025-12-18T08:00Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The name of the monitoring metric of the prediction rule. Valid values:
+	// The name of the monitoring metrics for the predictive scaling rule. Valid values:
 	//
-	// 	- CpuUtilization: the average CPU utilization.
+	// - CpuUtilization: the average CPU utilization of ECS instances.
 	//
-	// 	- IntranetRx: the inbound traffic over an internal network.
+	// - IntranetRx: the average inbound internal network traffic of ECS instances.
 	//
-	// 	- IntranetTx: the outbound traffic over an internal network.
+	// - IntranetTx: the average outbound internal network traffic of ECS instances.
 	//
 	// This parameter is required.
 	//
@@ -55,7 +55,7 @@ type QueryPredictiveValueRequest struct {
 	// CpuUtilization
 	MetricName *string `json:"MetricName,omitempty" xml:"MetricName,omitempty"`
 	OwnerId    *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The region ID
+	// The region ID.
 	//
 	// This parameter is required.
 	//
@@ -73,7 +73,7 @@ type QueryPredictiveValueRequest struct {
 	//
 	// asg-2zee0wsy0zkdxxxxx
 	ScalingGroupId *string `json:"ScalingGroupId,omitempty" xml:"ScalingGroupId,omitempty"`
-	// The start time of the predicted number of instances in the scaling group. The time follows the ISO8601 standard and uses UTC time.
+	// The start time to query the predicted number of instances in the scaling group. The time must be in UTC and follow the ISO 8601 standard.
 	//
 	// Format: yyyy-MM-ddTHH:mmZ.
 	//
@@ -83,7 +83,7 @@ type QueryPredictiveValueRequest struct {
 	//
 	// 2025-12-17T08:00Z
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The current value of the monitoring metric of the prediction rule.
+	// The current value of the monitoring metrics for the predictive scaling rule.
 	//
 	// This parameter is required.
 	//

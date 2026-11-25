@@ -16,13 +16,13 @@ type iCreateDiagnoseReportResponseBody interface {
 }
 
 type CreateDiagnoseReportResponseBody struct {
-	// The unique ID of the diagnostic report.
+	// The diagnostic report ID, which is the unique identifier of the resource diagnostic report.
 	//
 	// example:
 	//
 	// dr-uf6enpbnri1xhcy9qc7s
 	ReportId *string `json:"ReportId,omitempty" xml:"ReportId,omitempty"`
-	// The ID of the request.
+	// Id of the request
 	//
 	// example:
 	//

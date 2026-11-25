@@ -14,7 +14,7 @@ type iDetachDBInstancesResponseBody interface {
 }
 
 type DetachDBInstancesResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

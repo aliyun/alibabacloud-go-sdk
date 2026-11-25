@@ -24,16 +24,16 @@ type iResumeProcessesRequest interface {
 }
 
 type ResumeProcessesRequest struct {
-	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the value, but you must ensure that the value is unique among different requests.
+	// Ensures the idempotence of the request. You can generate the value on your client to ensure that the value is unique across different requests.
 	//
-	// The token can only contain ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25965.html).
+	// The value can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [How to ensure idempotence](https://help.aliyun.com/document_detail/25965.html).
 	//
 	// example:
 	//
 	// 123e4567-e89b-12d3-a456-42665544****
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	OwnerId     *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// Details of the processes that you want to resume.
+	// The collection of processes to resume.
 	//
 	// This parameter is required.
 	Processes []*string `json:"Processes,omitempty" xml:"Processes,omitempty" type:"Repeated"`

@@ -22,7 +22,7 @@ type iDescribeLifecycleHooksResponseBody interface {
 }
 
 type DescribeLifecycleHooksResponseBody struct {
-	// Details about the lifecycle hooks.
+	// The list of lifecycle hooks.
 	LifecycleHooks []*DescribeLifecycleHooksResponseBodyLifecycleHooks `json:"LifecycleHooks,omitempty" xml:"LifecycleHooks,omitempty" type:"Repeated"`
 	// The page number of the returned page.
 	//
@@ -117,18 +117,20 @@ func (s *DescribeLifecycleHooksResponseBody) Validate() error {
 }
 
 type DescribeLifecycleHooksResponseBodyLifecycleHooks struct {
-	// The next action that is performed after the lifecycle hook times out.
+	// The action to perform after the wait state of the instance ends.
 	//
 	// example:
 	//
 	// CONTINUE
 	DefaultResult *string `json:"DefaultResult,omitempty" xml:"DefaultResult,omitempty"`
-	// The period of time before the lifecycle hook times out. When the lifecycle hook times out, Auto Scaling performs the action that is specified by DefaultResult.
+	// The wait time configured in the lifecycle hook for the scaling activity. The next action is performed after the wait time expires.
 	//
 	// example:
 	//
 	// 60
 	HeartbeatTimeout *int32 `json:"HeartbeatTimeout,omitempty" xml:"HeartbeatTimeout,omitempty"`
+	// The specific scenarios in which the lifecycle hook is triggered.
+	LifecycleActionSources []*string `json:"LifecycleActionSources,omitempty" xml:"LifecycleActionSources,omitempty" type:"Repeated"`
 	// The ID of the lifecycle hook.
 	//
 	// example:
@@ -143,49 +145,49 @@ type DescribeLifecycleHooksResponseBodyLifecycleHooks struct {
 	LifecycleHookName *string `json:"LifecycleHookName,omitempty" xml:"LifecycleHookName,omitempty"`
 	// The status of the lifecycle hook. Valid values:
 	//
-	// 	- Active: The lifecycle hook is enabled.
+	// - Active: The lifecycle hook is active.
 	//
-	// 	- InActive: The lifecycle hook is disabled.
+	// - InActive: The lifecycle hook is inactive.
 	//
 	// example:
 	//
 	// Active
 	LifecycleHookStatus *string `json:"LifecycleHookStatus,omitempty" xml:"LifecycleHookStatus,omitempty"`
-	// The type of the scaling activity to which the lifecycle hook applies.
+	// The scaling activity type associated with the lifecycle hook.
 	//
 	// example:
 	//
 	// SCALE_OUT
 	LifecycleTransition *string `json:"LifecycleTransition,omitempty" xml:"LifecycleTransition,omitempty"`
-	// The ARN of the notification recipient when the lifecycle hook takes effect. The value of this parameter must be in one of the following formats:
+	// The identifier of the notification recipient for the lifecycle hook. The parameter format is as follows:
 	//
-	// 	- If you do not create a notification rule, specify the value in the `acs:ess:{region-id}:{account-id}:null/null` format.
+	// - Notifications not configured: `acs:ess:{region-id}:{account-id}:null/null`.
 	//
-	// 	- If you specify a Simple Message Queue (SMQ, formerly MNS) queue as the notification recipient, specify the value in the `acs:mns:{region-id}:{account-id}:queue/{queuename}` format.
+	// - MNS queue: `acs:mns:{region-id}:{account-id}:queue/{queuename}`.
 	//
-	// 	- If you specify an SMQ as the notification recipient, specify the value in the `acs:mns:{region-id}:{account-id}:topic/{topicname}` format.
+	// - MNS topic: `acs:mns:{region-id}:{account-id}:topic/{topicname}`.
 	//
-	// 	- If you specify a CloudOps Orchestration Service (OOS) template as the notification recipient, specify the value in the `acs:oos:{region-id}:{account-id}:template/{templatename}` format.
+	// - OOS template: `acs:oos:{region-id}:{account-id}:template/{templatename}`.
 	//
-	// 	- If you specify an event bus as the notification recipient, specify the value in the `acs:eventbridge:{region-id}:{account-id}:eventbus/default` format.
+	// - EventBridge: `acs:eventbridge:{region-id}:{account-id}:eventbus/default`.
 	//
-	// The variables in the preceding value formats have the following meanings:
+	// The variables in the parameter format have the following meanings:
 	//
-	// 	- region-id: the region ID of your scaling group.
+	// - region-id: The ID of the region where the scaling group resides.
 	//
-	// 	- account-id: the ID of your Alibaba Cloud account.
+	// - account-id: The Alibaba Cloud account ID.
 	//
-	// 	- queuename: the name of the SMQ queue.
+	// - queuename: The name of the MNS queue.
 	//
-	// 	- topicname: the name of the SMQ topic.
+	// - topicname: The name of the MNS topic.
 	//
-	// 	- templatename: the name of the OOS template.
+	// - templatename: The name of the OOS template.
 	//
 	// example:
 	//
 	// acs:ess:cn-beijing:161456884340****:null/null
 	NotificationArn *string `json:"NotificationArn,omitempty" xml:"NotificationArn,omitempty"`
-	// The fixed string that is included in a notification that Auto Scaling sends when the lifecycle hook takes effect.
+	// The fixed string information for the wait state of the scaling activity.
 	//
 	// example:
 	//
@@ -213,6 +215,10 @@ func (s *DescribeLifecycleHooksResponseBodyLifecycleHooks) GetDefaultResult() *s
 
 func (s *DescribeLifecycleHooksResponseBodyLifecycleHooks) GetHeartbeatTimeout() *int32 {
 	return s.HeartbeatTimeout
+}
+
+func (s *DescribeLifecycleHooksResponseBodyLifecycleHooks) GetLifecycleActionSources() []*string {
+	return s.LifecycleActionSources
 }
 
 func (s *DescribeLifecycleHooksResponseBodyLifecycleHooks) GetLifecycleHookId() *string {
@@ -250,6 +256,11 @@ func (s *DescribeLifecycleHooksResponseBodyLifecycleHooks) SetDefaultResult(v st
 
 func (s *DescribeLifecycleHooksResponseBodyLifecycleHooks) SetHeartbeatTimeout(v int32) *DescribeLifecycleHooksResponseBodyLifecycleHooks {
 	s.HeartbeatTimeout = &v
+	return s
+}
+
+func (s *DescribeLifecycleHooksResponseBodyLifecycleHooks) SetLifecycleActionSources(v []*string) *DescribeLifecycleHooksResponseBodyLifecycleHooks {
+	s.LifecycleActionSources = v
 	return s
 }
 

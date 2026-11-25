@@ -14,7 +14,7 @@ type iModifyLifecycleHookResponseBody interface {
 }
 
 type ModifyLifecycleHookResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

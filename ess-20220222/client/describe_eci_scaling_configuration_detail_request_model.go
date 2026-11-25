@@ -20,13 +20,13 @@ type iDescribeEciScalingConfigurationDetailRequest interface {
 }
 
 type DescribeEciScalingConfigurationDetailRequest struct {
-	// The output format. Set the value to YAML.
+	// The output format. Only YAML is supported.
 	//
 	// example:
 	//
-	// yaml
+	// YAML
 	OutputFormat *string `json:"OutputFormat,omitempty" xml:"OutputFormat,omitempty"`
-	// The region ID of the scaling group to which the scaling configuration belongs.
+	// The region ID of the scaling group to which the scaling rule belongs.
 	//
 	// This parameter is required.
 	//
@@ -34,7 +34,7 @@ type DescribeEciScalingConfigurationDetailRequest struct {
 	//
 	// cn-beijing
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the scaling configuration based on which elastic container instances are created.
+	// The ID of the scaling configuration for the ECI scaling group.
 	//
 	// This parameter is required.
 	//

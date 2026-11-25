@@ -13,6 +13,8 @@ type iModifyLifecycleHookRequest interface {
 	GetDefaultResult() *string
 	SetHeartbeatTimeout(v int32) *ModifyLifecycleHookRequest
 	GetHeartbeatTimeout() *int32
+	SetLifecycleActionSources(v []*string) *ModifyLifecycleHookRequest
+	GetLifecycleActionSources() []*string
 	SetLifecycleHookId(v string) *ModifyLifecycleHookRequest
 	GetLifecycleHookId() *string
 	SetLifecycleHookName(v string) *ModifyLifecycleHookRequest
@@ -38,47 +40,51 @@ type iModifyLifecycleHookRequest interface {
 }
 
 type ModifyLifecycleHookRequest struct {
-	// The action that you want Auto Scaling to perform after the lifecycle hook ends. Valid values:
+	// The subsequent action to perform after the wait state ends. Valid values:
 	//
-	// 	- CONTINUE: Auto Scaling continues to respond to scaling requests.
+	// - CONTINUE: Continues the response to the scale-out or scale-down activity.
 	//
-	// 	- ABANDON: Auto Scaling releases Elastic Compute Service (ECS) instances that are created during scale-out activities, or removes ECS instances from the scaling group during scale-in activities.
+	// - ABANDON: Releases the ECS instances created during the scale-out activity or removes the ECS instances from the scaling group during the scale-down activity.
 	//
-	// If multiple lifecycle hooks in a scaling group are triggered during scale-in activities and you set the DefaultResult parameter to ABANDON for the lifecycle hook that you want to modify, Auto Scaling immediately performs the action after the lifecycle hook that you want to modify ends. As a result, other lifecycle hooks end ahead of schedule. In other cases, Auto Scaling performs the action only after all lifecycle hooks end.
+	// - ROLLBACK: Rejects the release of ECS instances and rolls back the scale-down activity. For a scale-out activity, releases the created ECS instances, which has the same effect as ABANDON.
+	//
+	// If a scale-down activity is triggered and multiple lifecycle hooks are invoked, and the DefaultResult of one lifecycle hook is set to ABANDON or ROLLBACK, the wait states of other lifecycle hooks are ended in advance when the wait state of this hook ends. In other cases, the subsequent action is determined by the last lifecycle hook that ends its wait state.
 	//
 	// example:
 	//
 	// CONTINUE
 	DefaultResult *string `json:"DefaultResult,omitempty" xml:"DefaultResult,omitempty"`
-	// The period of time before the lifecycle hook ends. Auto Scaling performs the specified action after the lifecycle hook ends. Valid values: 30 to 21600. Unit: seconds.
+	// The wait time set by the lifecycle hook for the scaling activity. The subsequent action is performed after the wait state times out. Valid values: 30 to 21600. Unit: seconds.
 	//
-	// You can call the RecordLifecycleActionHeartbeat operation to prolong the length of a lifecycle hook. You can also call the CompleteLifecycleAction operation to end a lifecycle hook ahead of schedule.
+	// You can call the RecordLifecycleActionHeartbeat operation to extend the wait time of the ECS instance, or call the CompleteLifecycleAction operation to end the wait state of the scaling activity in advance.
 	//
 	// example:
 	//
 	// 600
 	HeartbeatTimeout *int32 `json:"HeartbeatTimeout,omitempty" xml:"HeartbeatTimeout,omitempty"`
-	// The ID of the lifecycle hook that you want to modify.
+	// The specific scenarios that trigger the lifecycle hook.
+	LifecycleActionSources []*string `json:"LifecycleActionSources,omitempty" xml:"LifecycleActionSources,omitempty" type:"Repeated"`
+	// The ID of the lifecycle hook to be modified.
 	//
 	// example:
 	//
 	// ash-bp1fxuqyi98w0aib****
 	LifecycleHookId *string `json:"LifecycleHookId,omitempty" xml:"LifecycleHookId,omitempty"`
-	// The name of the lifecycle hook that you want to modify.
+	// The name of the lifecycle hook to be modified.
 	//
 	// example:
 	//
-	// test_SCALE_IN
+	// test_SCAL****
 	LifecycleHookName *string `json:"LifecycleHookName,omitempty" xml:"LifecycleHookName,omitempty"`
-	// The status into which you want to put the lifecycle hook. Valid values:
+	// The status of the lifecycle hook. Valid values:
 	//
-	// 	- Active
+	// - Active: Enables the lifecycle hook.
 	//
-	// 	- InActive
+	// - InActive: Disables the lifecycle hook.
 	//
-	// If you do not specify this parameter, the status of the lifecycle hook remains unchanged after you call this operation.
+	// If you do not specify this parameter, the status of the lifecycle hook remains unchanged.
 	//
-	// > By default, a lifecycle hook is in the Active state after you create it.
+	// > After a lifecycle hook is created, it is enabled by default.
 	//
 	// example:
 	//
@@ -86,43 +92,43 @@ type ModifyLifecycleHookRequest struct {
 	LifecycleHookStatus *string `json:"LifecycleHookStatus,omitempty" xml:"LifecycleHookStatus,omitempty"`
 	// The type of scaling activity to which the lifecycle hook applies. Valid values:
 	//
-	// 	- SCALE_OUT
+	// - SCALE_OUT: Scale-out activity of the scaling group.
 	//
-	// 	- SCALE_IN
+	// - SCALE_IN: Scale-in activity of the scaling group.
 	//
 	// example:
 	//
 	// SCALE_IN
 	LifecycleTransition *string `json:"LifecycleTransition,omitempty" xml:"LifecycleTransition,omitempty"`
-	// The Alibaba Cloud Resource Name (ARN) of the notification recipient. Specify the value in one of the following formats:
+	// The identifier of the notification recipient for the lifecycle hook. The following notification methods are supported:
 	//
-	// 	- If you specify a Simple Message Queue (SMQ, formerly MNS) as the notification recipient, specify the value in the acs:mns:{region-id}:{account-id}:queue/{queuename} format.
+	// - Message Service (MNS) queue. Format: acs:mns:{region-id}:{account-id}:queue/{queuename}.
 	//
-	// 	- If you specify an SMQ topic as the notification recipient, specify the value in the acs:mns:{region-id}:{account-id}:topic/{topicname} format.
+	// - MNS topic. Format: acs:mns:{region-id}:{account-id}:topic/{topicname}.
 	//
-	// 	- If you specify a CloudOps Orchestration Service (OOS) template as the notification recipient, specify the value in the acs:oos:{region-id}:{account-id}:template/{templatename} format.
+	// - Operation Orchestration Service (OOS) template. Format: acs:oos:{region-id}:{account-id}:template/{templatename}.
 	//
-	// 	- If you specify an event bus as the notification recipient, specify the value in the acs:eventbridge:{region-id}:{account-id}:eventbus/default format.
+	// - EventBridge. Format: acs:eventbridge:{region-id}:{account-id}:eventbus/default.
 	//
-	// The variables in the preceding value formats have the following meanings:
+	// Variables in the formats:
 	//
-	// 	- region-id: the region ID of your scaling group.
+	// - region-id: The ID of the region where the scaling group resides.
 	//
-	// 	- account-id: the ID of your Alibaba Cloud account.
+	// - account-id: The Alibaba Cloud account ID.
 	//
-	// 	- queuename: the name of the SMQ queue.
+	// - queuename: The name of the MNS queue.
 	//
-	// 	- topicname: the name of the SMQ topic.
+	// - topicname: The name of the MNS topic.
 	//
-	// 	- templatename: the name of the OOS template.
+	// - templatename: The name of the OOS template.
 	//
 	// example:
 	//
 	// acs:mns:cn-beijing:161456884340****:queue/modifyLifecycleHo****
 	NotificationArn *string `json:"NotificationArn,omitempty" xml:"NotificationArn,omitempty"`
-	// The fixed string that is included in a notification. Auto Scaling sends the notification when the lifecycle hook takes effect. The value of this parameter cannot exceed 4,096 characters in length.
+	// The fixed string information for the wait state of the scaling activity. The value can be up to 4,096 characters in length.
 	//
-	// Auto Scaling sends the value specified for the NotificationMetadata parameter together with the notification. This helps you categorize your notifications. The NotificationMetadata parameter takes effect only after you specify the NotificationArn parameter.
+	// When Auto Scaling pushes a message to the notification recipient, it also sends the predefined NotificationMetadata value to help you manage and tag different types of notifications. This parameter takes effect only when the NotificationArn parameter is specified.
 	//
 	// example:
 	//
@@ -159,6 +165,10 @@ func (s *ModifyLifecycleHookRequest) GetDefaultResult() *string {
 
 func (s *ModifyLifecycleHookRequest) GetHeartbeatTimeout() *int32 {
 	return s.HeartbeatTimeout
+}
+
+func (s *ModifyLifecycleHookRequest) GetLifecycleActionSources() []*string {
+	return s.LifecycleActionSources
 }
 
 func (s *ModifyLifecycleHookRequest) GetLifecycleHookId() *string {
@@ -212,6 +222,11 @@ func (s *ModifyLifecycleHookRequest) SetDefaultResult(v string) *ModifyLifecycle
 
 func (s *ModifyLifecycleHookRequest) SetHeartbeatTimeout(v int32) *ModifyLifecycleHookRequest {
 	s.HeartbeatTimeout = &v
+	return s
+}
+
+func (s *ModifyLifecycleHookRequest) SetLifecycleActionSources(v []*string) *ModifyLifecycleHookRequest {
+	s.LifecycleActionSources = v
 	return s
 }
 

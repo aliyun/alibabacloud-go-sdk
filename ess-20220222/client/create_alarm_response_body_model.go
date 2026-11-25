@@ -22,7 +22,7 @@ type CreateAlarmResponseBody struct {
 	//
 	// asg-bp1hvbnmkl10vll5****_f95ce797-dc2e-4bad-9618-14fee7d1****
 	AlarmTaskId *string `json:"AlarmTaskId,omitempty" xml:"AlarmTaskId,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

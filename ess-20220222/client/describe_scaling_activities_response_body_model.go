@@ -22,27 +22,27 @@ type iDescribeScalingActivitiesResponseBody interface {
 }
 
 type DescribeScalingActivitiesResponseBody struct {
-	// The page number of the returned page.
+	// The current page number.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries returned per page.
+	// The number of entries per page.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
-	// CC107349-57B7-4405-B1BF-9BF5AF7F2A46
+	// CC107349-57B7-4405-B1BF-9BF5AF7F****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The scaling activities.
+	// The collection of scaling activity information.
 	ScalingActivities []*DescribeScalingActivitiesResponseBodyScalingActivities `json:"ScalingActivities,omitempty" xml:"ScalingActivities,omitempty" type:"Repeated"`
-	// The total number of scaling activities.
+	// The total number of scaling activity records.
 	//
 	// example:
 	//
@@ -123,31 +123,31 @@ type DescribeScalingActivitiesResponseBodyScalingActivities struct {
 	//
 	// {\\"goatscaler.io/managed\\":\\"true\\"}
 	ActivityMetadata *string `json:"ActivityMetadata,omitempty" xml:"ActivityMetadata,omitempty"`
-	// The total number of instances that are manually added to the scaling group after the scaling activity is complete.
+	// The total number of manually added instances in the scaling group after the scaling activity is completed.
 	//
 	// example:
 	//
 	// 0
 	AttachedCapacity *string `json:"AttachedCapacity,omitempty" xml:"AttachedCapacity,omitempty"`
-	// The total number of instances that are created by Auto Scaling after the scaling activity was complete.
+	// The total number of instances in the scaling group that are generated through automatic creation after you execute the scaling activity.
 	//
 	// example:
 	//
 	// 2
 	AutoCreatedCapacity *string `json:"AutoCreatedCapacity,omitempty" xml:"AutoCreatedCapacity,omitempty"`
-	// The reason why the scaling activity was triggered.
+	// The cause that triggered the scaling activity.
 	//
 	// example:
 	//
 	// A user requests to execute scaling rule \\"asr-bp12tcnol686y1ik****\\", changing the Total Capacity from \\"1\\" to \\"2\\".
 	Cause *string `json:"Cause,omitempty" xml:"Cause,omitempty"`
-	// The number of instances that are created during the scale-out event.
+	// The number of instances created during the current scaling activity.
 	//
 	// example:
 	//
 	// 1
 	CreatedCapacity *int32 `json:"CreatedCapacity,omitempty" xml:"CreatedCapacity,omitempty"`
-	// The instances that are created during the scale-out event.
+	// The list of instances created during the current scaling activity.
 	CreatedInstances []*string `json:"CreatedInstances,omitempty" xml:"CreatedInstances,omitempty" type:"Repeated"`
 	// The description of the scaling activity.
 	//
@@ -155,39 +155,39 @@ type DescribeScalingActivitiesResponseBodyScalingActivities struct {
 	//
 	// Add \\"1\\" ECS instance
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The number of instances that are released during the scale-in event.
+	// The number of instances released during the current scaling activity.
 	//
 	// example:
 	//
 	// 1
 	DestroyedCapacity *int32 `json:"DestroyedCapacity,omitempty" xml:"DestroyedCapacity,omitempty"`
-	// The instances that are released during the scale-in event.
+	// The list of instances released during the current scaling activity.
 	DestroyedInstances []*string `json:"DestroyedInstances,omitempty" xml:"DestroyedInstances,omitempty" type:"Repeated"`
-	// Details of the scaling activity.
+	// The details of the scaling activity.
 	//
 	// example:
 	//
 	// "new ECS instances "i-j6c8ilerw, i-j6c8iler4mx" are created."
 	Detail *string `json:"Detail,omitempty" xml:"Detail,omitempty"`
-	// The time when the scaling activity was complete.
+	// The end time of the scaling activity. The time is displayed in UTC and follows the ISO 8601 standard in the YYYY-MM-DDTHH:mmZ format.
 	//
 	// example:
 	//
 	// 2020-09-10T09:54Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The error code that is returned when the scaling activity failed.
+	// The error code returned when the scaling activity fails.
 	//
 	// example:
 	//
 	// OperationDenied.NoStock
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The error message that is returned when the scaling activity failed.
+	// The error message returned when the scaling activity fails.
 	//
 	// example:
 	//
 	// The specified ECS resource is out of stock in this region. Please try again later.
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	// The error messages that are returned when the scaling activities failed or are partially successful.
+	// The error messages returned when the scaling activity fails or is partially successful.
 	ErrorMessages []*DescribeScalingActivitiesResponseBodyScalingActivitiesErrorMessages `json:"ErrorMessages,omitempty" xml:"ErrorMessages,omitempty" type:"Repeated"`
 	// The ID of the instance refresh task.
 	//
@@ -195,9 +195,9 @@ type DescribeScalingActivitiesResponseBodyScalingActivities struct {
 	//
 	// ir-asdf12adsxg*****
 	InstanceRefreshTaskId *string `json:"InstanceRefreshTaskId,omitempty" xml:"InstanceRefreshTaskId,omitempty"`
-	// The context of the lifecycle hook.
+	// The context information of the lifecycle hook.
 	LifecycleHookContext *DescribeScalingActivitiesResponseBodyScalingActivitiesLifecycleHookContext `json:"LifecycleHookContext,omitempty" xml:"LifecycleHookContext,omitempty" type:"Struct"`
-	// The execution progress of the scaling activity.
+	// The progress of the scaling activity.
 	//
 	// example:
 	//
@@ -215,39 +215,41 @@ type DescribeScalingActivitiesResponseBodyScalingActivities struct {
 	//
 	// asg-bp18p2yfxow2dloq****
 	ScalingGroupId *string `json:"ScalingGroupId,omitempty" xml:"ScalingGroupId,omitempty"`
-	// 	- If you query a scale-out activity, the value of this parameter indicates the number of instances that are created or the number of instances that are started from Economical Mode.
+	// - If the scaling activity is a scale-out activity, this parameter indicates the number of instances that are created or started from the stopped and reclaimed state during the scaling activity.
 	//
-	// 	- If you query a scale-in activity, the value of this parameter indicates the number of instances that are deleted or the number of instances that are stopped in Economical Mode.
+	// - If the scaling activity is a scale-in activity, this parameter indicates the number of instances that are deleted or enter the stopped and reclaimed state during the scaling activity.
 	//
 	// example:
 	//
 	// 1
 	ScalingInstanceNumber *int32 `json:"ScalingInstanceNumber,omitempty" xml:"ScalingInstanceNumber,omitempty"`
-	// The time when the scaling activity was started.
+	// The start time of the scaling activity. The time is displayed in UTC and follows the ISO 8601 standard in the YYYY-MM-DDTHH:mmZ format.
 	//
 	// example:
 	//
 	// 2020-09-10T09:54Z
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The number of instances that are started from the Economical Mode during the scale-out event.
+	// The number of instances started from the economical mode during the current scaling activity.
 	//
 	// example:
 	//
 	// 1
 	StartedCapacity *int32 `json:"StartedCapacity,omitempty" xml:"StartedCapacity,omitempty"`
-	// The instances that are started from the Economical Mode during the scale-out event.
+	// The list of instances started from the economical mode during the current scaling activity.
 	StartedInstances []*string `json:"StartedInstances,omitempty" xml:"StartedInstances,omitempty" type:"Repeated"`
 	// The status of the scaling activity. Valid values:
 	//
-	// 	- Successful: The scaling activity is successful.
 	//
-	// 	- Warning: The scaling activity is partially successful.
 	//
-	// 	- Failed: The scaling activity failed.
+	// - Successful: The scaling activity is successful.
 	//
-	// 	- InProgress: The scaling activity is in progress.
+	// - Warning: The scaling activity is partially successful.
 	//
-	// 	- Rejected: The request to trigger the scaling activity is rejected.
+	// - Failed: The scaling activity failed.
+	//
+	// - InProgress: The scaling activity is in progress.
+	//
+	// - Rejected: The request to execute the scaling activity is rejected.
 	//
 	// example:
 	//
@@ -259,39 +261,39 @@ type DescribeScalingActivitiesResponseBodyScalingActivities struct {
 	//
 	// \\"1\\" ECS instances are added
 	StatusMessage *string `json:"StatusMessage,omitempty" xml:"StatusMessage,omitempty"`
-	// The number of instances that are stopped in the Economical Mode during the scale-in event.
+	// The number of instances that entered the economical mode during the current scaling activity.
 	//
 	// example:
 	//
 	// 1
 	StoppedCapacity *int32 `json:"StoppedCapacity,omitempty" xml:"StoppedCapacity,omitempty"`
-	// The instances that are stopped in the Economical Mode during the scale-in event.
+	// The list of instances that entered the economical mode during the current scaling activity.
 	StoppedInstances []*string `json:"StoppedInstances,omitempty" xml:"StoppedInstances,omitempty" type:"Repeated"`
-	// The total number of instances in the scaling group after the scaling activity was complete.
+	// The total number of instances in the scaling group after the scaling activity is completed.
 	//
 	// example:
 	//
 	// 2
 	TotalCapacity *string `json:"TotalCapacity,omitempty" xml:"TotalCapacity,omitempty"`
-	// The ID of the trigger source of the scaling activity. Valid values:
+	// The ID of the trigger source for the scaling activity. Valid values:
 	//
-	// 	- If the scaling activity is triggered by an event-triggered task, the ID of the trigger source is the ID of the event-triggered task.
+	// - Cms trigger source ID: displayed as the event-triggered task ID.
 	//
-	// 	- If the scaling activity is triggered by calling an API operation, the ID of the trigger source is the ID of the Alibaba Cloud account or Resource Access Management (RAM) user that you use to call the API operation.
+	// - Api trigger source ID: displayed as the Alibaba Cloud account ID or RAM user ID.
 	//
-	// 	- If the scaling activity is triggered by Auto Scaling, the ID of the trigger source is null.
+	// - Ess trigger source ID: displayed as empty.
 	//
 	// example:
 	//
 	// 2346366580*****
 	TriggerSourceId *string `json:"TriggerSourceId,omitempty" xml:"TriggerSourceId,omitempty"`
-	// The type of the trigger source of the scaling activity. Valid values:
+	// The type of the trigger source for the scaling activity. Valid values:
 	//
-	// 	- Cms: The scaling activity is triggered by an event-triggered task.
+	// - Cms: The scaling activity is triggered by an event-triggered task.
 	//
-	// 	- APIs: The scaling activity is triggered by calling an API operation.
+	// - Api: The scaling activity is triggered by a user through an API call.
 	//
-	// 	- Ess: The scaling activity is triggered by Auto Scaling.
+	// - Ess: The scaling activity is triggered by a system task.
 	//
 	// example:
 	//
@@ -596,21 +598,21 @@ func (s *DescribeScalingActivitiesResponseBodyScalingActivities) Validate() erro
 }
 
 type DescribeScalingActivitiesResponseBodyScalingActivitiesErrorMessages struct {
-	// The error code that is returned when the scaling activity failed.
+	// The error code returned when the scaling activity fails or is partially successful.
 	//
 	// example:
 	//
 	// OperationDenied.NoStock
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The description of the scaling activity exception.
+	// The exception description of the scaling activity.
 	//
 	// example:
 	//
 	// Fail to create instances into scaling group.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The IDs of the instances included in the failed scaling activities.
+	// The list of failed instance ID.
 	FailedInstanceIds []*string `json:"FailedInstanceIds,omitempty" xml:"FailedInstanceIds,omitempty" type:"Repeated"`
-	// The error message that is returned when the scaling activity failed or is partially successful.
+	// The error messages returned when the scaling activity fails or is partially successful.
 	//
 	// example:
 	//
@@ -667,17 +669,17 @@ func (s *DescribeScalingActivitiesResponseBodyScalingActivitiesErrorMessages) Va
 }
 
 type DescribeScalingActivitiesResponseBodyScalingActivitiesLifecycleHookContext struct {
-	// Indicates whether all lifecycle hooks are disabled when the scaling activity is triggered. Valid values:
+	// Specifies whether all lifecycle hooks are disabled for the scaling activity. Valid values:
 	//
-	// 	- true
+	// - true: Disabled.
 	//
-	// 	- false
+	// - false: Not disabled.
 	//
 	// example:
 	//
 	// false
 	DisableLifecycleHook *bool `json:"DisableLifecycleHook,omitempty" xml:"DisableLifecycleHook,omitempty"`
-	// The IDs of the lifecycle hooks that are disabled.
+	// The list of IDs of the lifecycle hooks disabled for the scaling activity.
 	IgnoredLifecycleHookIds []*string `json:"IgnoredLifecycleHookIds,omitempty" xml:"IgnoredLifecycleHookIds,omitempty" type:"Repeated"`
 }
 

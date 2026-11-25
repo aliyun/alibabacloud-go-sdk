@@ -22,11 +22,13 @@ type iVerifyAuthenticationRequest interface {
 }
 
 type VerifyAuthenticationRequest struct {
-	// Specifies whether to check only the authorization status. Valid values:
+	// Specifies whether to only check the authorization status. Valid values:
 	//
-	// 	- true: checks only the authorization status. The service-linked role is not created.
+	// - true: Only checks the authorization status and does not create the service-linked role.
 	//
-	// 	- false (default): checks the authorization status and resource usage.
+	// - false: Checks the authorization status and resource usage.
+	//
+	// Default value: false.
 	//
 	// example:
 	//
@@ -35,7 +37,7 @@ type VerifyAuthenticationRequest struct {
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The ID of your Alibaba Cloud account.
+	// The ID of the Alibaba Cloud account.
 	//
 	// example:
 	//

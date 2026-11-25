@@ -22,9 +22,9 @@ type AttachAlbServerGroupsResponseBody struct {
 	//
 	// 473469C7-AA6F-4DC5-B3DB-A3DC0DE3****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The ID of the scaling activity. During the scaling activity, the ALB server group is attached to the scaling group and the existing ECS instances or elastic container instances in the scaling group are added to the ALB server group.
+	// The ID of the scaling activity that is triggered when the ALB server group is added and the ECS instances or elastic container instances in the scaling group are added to the ALB server group.
 	//
-	// >  This parameter is returned only if you set `ForceAttach` to `true`.
+	// > This parameter is returned only when `ForceAttach` is set to `true`.
 	//
 	// example:
 	//

@@ -47,6 +47,8 @@ type iModifyScheduledTaskRequest interface {
 	GetScheduledTaskName() *string
 	SetTaskEnabled(v bool) *ModifyScheduledTaskRequest
 	GetTaskEnabled() *bool
+	SetWarmPoolCapacityOptions(v *ModifyScheduledTaskRequestWarmPoolCapacityOptions) *ModifyScheduledTaskRequest
+	GetWarmPoolCapacityOptions() *ModifyScheduledTaskRequestWarmPoolCapacityOptions
 }
 
 type ModifyScheduledTaskRequest struct {
@@ -56,15 +58,15 @@ type ModifyScheduledTaskRequest struct {
 	//
 	// Test scheduled task.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The expected number of instances in the scaling group if you specify the ScalingGroupId parameter.
+	// The expected number of instances in the scaling group. This parameter is required when the scaling method of the scheduled task is set to specify the number of instances in the scaling group.
 	//
-	// > You must specify the `DesiredCapacity` parameter when you create a scaling group.
+	// > The scaling group must support the expected number of instances. This means that DesiredCapacity must be specified when the scaling group is created.
 	//
 	// example:
 	//
 	// 10
 	DesiredCapacity *int32 `json:"DesiredCapacity,omitempty" xml:"DesiredCapacity,omitempty"`
-	// The time period during which the failed scheduled task is retried. Unit: seconds. Valid values: 0 to 1800.
+	// The retry period during which Auto Scaling continues to attempt to execute the scheduled task after the triggered operation fails. Unit: seconds. Valid values: 0 to 1800.
 	//
 	// Default value: 600.
 	//
@@ -72,23 +74,23 @@ type ModifyScheduledTaskRequest struct {
 	//
 	// 600
 	LaunchExpirationTime *int32 `json:"LaunchExpirationTime,omitempty" xml:"LaunchExpirationTime,omitempty"`
-	// The point in time at which the scheduled task is triggered. The time follows the ISO 8601 standard in the YYYY-MM-DDThh:mmZ format. The time must be in UTC. You cannot enter a time point later than 90 days from the point in time at which the scheduled task is modified.
+	// The time at which the scheduled task is executed. Specify the time in the ISO 8601 standard in the YYYY-MM-DDThh:mmZ format. The time must be in UTC. You cannot specify a time that is later than 90 days from the date of modification.
 	//
-	// 	- If you specify the `RecurrenceType` parameter, the task is repeatedly executed at the time point that is specified by the LaunchTime parameter.
+	// - If RecurrenceType is specified, the time specified by this parameter is the default time for recurring execution.
 	//
-	// 	- If you do not specify the `RecurrenceType` parameter, the task is executed only once at the point in time that is specified by the LaunchTime parameter.
+	// - If RecurrenceType is not specified, the task is executed only once at the specified date and time.
 	//
 	// example:
 	//
 	// 2014-08-18T10:52Z
 	LaunchTime *string `json:"LaunchTime,omitempty" xml:"LaunchTime,omitempty"`
-	// The maximum number of instances in the scaling group if you specify the ScalingGroupId parameter.
+	// The maximum number of instances in the scaling group. This parameter is required when the scaling method of the scheduled task is set to specify the number of instances in the scaling group.
 	//
 	// example:
 	//
 	// 10
 	MaxValue *int32 `json:"MaxValue,omitempty" xml:"MaxValue,omitempty"`
-	// The minimum number of instances in the scaling group if you specify the ScalingGroupId parameter.
+	// The minimum number of instances in the scaling group. This parameter is required when the scaling method of the scheduled task is set to specify the number of instances in the scaling group.
 	//
 	// example:
 	//
@@ -96,39 +98,41 @@ type ModifyScheduledTaskRequest struct {
 	MinValue     *int32  `json:"MinValue,omitempty" xml:"MinValue,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The end time of the scheduled task. Specify the time in the ISO 8601 standard in the YYYY-MM-DDThh:mmZ format. The time must be in UTC. You cannot enter a point in time that is later than 365 days from the point in time at which the scheduled task is modified.
+	// The end time of the scheduled task that is executed repeatedly. Specify the time in the ISO 8601 standard in the YYYY-MM-DDThh:mmZ format. The time must be in UTC. You cannot specify a time that is later than 365 days from the date of modification.
 	//
 	// example:
 	//
 	// 2014-08-20T16:55Z
 	RecurrenceEndTime *string `json:"RecurrenceEndTime,omitempty" xml:"RecurrenceEndTime,omitempty"`
-	// The interval at which the scheduled task is repeated. Valid values:
+	// The recurrence type of the scheduled task. Valid values:
 	//
-	// 	- Daily: The scheduled task is executed once every specified number of days.
 	//
-	// 	- Weekly: The scheduled task is executed on each specified day of the week.
 	//
-	// 	- Monthly: The scheduled task is executed on each specified day of the month.
+	// - Daily: The scheduled task is executed once every specified number of days.
 	//
-	// 	- Cron: The scheduled task is executed based on the specified cron expression.
+	// - Weekly: The scheduled task is executed on specified days of each week.
 	//
-	// After you modify the scheduled task, the values that you specify for the `RecurrenceType` and `RecurrenceValue` parameters must be valid at the same time.
+	// - Monthly: The scheduled task is executed on specified days of each month.
+	//
+	// - Cron: The scheduled task is executed based on the specified cron expression.
+	//
+	// After modification, both RecurrenceType and RecurrenceValue must be valid.
 	//
 	// example:
 	//
 	// Daily
 	RecurrenceType *string `json:"RecurrenceType,omitempty" xml:"RecurrenceType,omitempty"`
-	// The number of recurrences of the scheduled task.
+	// The recurrence value of the scheduled task.
 	//
-	// 	- If you set the `RecurrenceType` parameter to `Daily`, you can specify only one value for this parameter. Valid values: 1 to 31.
+	// - If RecurrenceType is set to Daily, you can specify only one value. Valid values: 1 to 31.
 	//
-	// 	- If you set the `RecurrenceType` parameter to `Weekly`, you can specify multiple values for this parameter. Separate the values with commas (,). The values that correspond to Sunday, Monday, Tuesday, Wednesday, Thursday, Friday, and Saturday are 0, 1, 2, 3, 4, 5, and 6.``
+	// - If RecurrenceType is set to Weekly, you can specify multiple values separated by commas (,). For example, the values for Sunday, Monday, Tuesday, Wednesday, Thursday, Friday, and Saturday are 0,1,2,3,4,5,6.
 	//
-	// 	- If you set the `RecurrenceType` parameter to `Monthly`, you can specify two values in the `A-B` format for this parameter. Valid values of A and B: 1 to 31. B must be greater than or equal to A.
+	// - If RecurrenceType is set to Monthly, the format is A-B. Valid values of A and B: 1 to 31. B must be greater than or equal to A.
 	//
-	// 	- If you set the `RecurrenceType` parameter to `Cron`, you can specify a cron expression. A cron expression is written in UTC time and consists of the following fields: minute, hour, day, month, and week. The expression can contain the letters L and W and the following wildcard characters: commas (,), question marks (?), hyphens (-), asterisks (\\*), number signs (#), and forward slashes (/).
+	// - If RecurrenceType is set to Cron, the value specifies a cron expression in UTC. The expression supports five fields: minute, hour, day, month, and week. It supports wildcards such as commas (,), question marks (?), hyphens (-), asterisks (*), number signs (#), forward slashes (/), L, and W.
 	//
-	// After you modify the scheduled task, the values that you specify for the `RecurrenceType` and `RecurrenceValue` parameters must be valid at the same time.
+	// After modification, both RecurrenceType and RecurrenceValue must be valid.
 	//
 	// example:
 	//
@@ -142,17 +146,23 @@ type ModifyScheduledTaskRequest struct {
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The ID of the scaling group whose number of instances must be modified when the scheduled task is triggered. If you specify the `ScalingGroupId` parameter for a scheduled task, you must specify the minimum, maximum, or expected numbers of instances for a scaling group in the scheduled task. That is, you must specify at least one of the `MinValue`, `MaxValue`, and `DesiredCapacity` parameters.
+	// The ID of the scaling group in which you want to modify the number of instances or adjust the warm pool capacity when the scheduled task is triggered.
 	//
-	// > You cannot specify the `ScheduledAction` and `ScalingGroupId` parameters at the same time.
+	// After you specify ScalingGroupId, the scaling method of the scheduled task is set to specify the number of instances in the scaling group or adjust the warm pool capacity.
+	//
+	// - Specify the number of instances in the scaling group: You must specify at least one of the MinValue, MaxValue, and DesiredCapacity parameters.
+	//
+	// - Adjust the warm pool capacity: You must specify WarmPoolCapacityOptions.
+	//
+	// > You cannot specify both ScheduledAction and ScalingGroupId at the same time.
 	//
 	// example:
 	//
 	// asg-bp18p2yfxow2dloq****
 	ScalingGroupId *string `json:"ScalingGroupId,omitempty" xml:"ScalingGroupId,omitempty"`
-	// The scaling rule that you want to execute when the scheduled task is triggered. Enter the ID of the scaling rule. To obtain the ID of a scaling rule, go to the scaling rule details page. If you specify `ScheduledAction`, you must select an existing scaling rule for the scheduled task.
+	// The ID of the scaling rule to execute. This parameter is available only when the scaling method is set to execute an existing scaling rule. You can view the ID on the details page of the scaling rule.
 	//
-	// >  You can specify only one of `ScheduledAction` and `ScalingGroupId`.
+	// > You cannot specify both ScheduledAction and ScalingGroupId at the same time.
 	//
 	// example:
 	//
@@ -166,7 +176,7 @@ type ModifyScheduledTaskRequest struct {
 	//
 	// edRtShc57WGXdt8TlPbr****
 	ScheduledTaskId *string `json:"ScheduledTaskId,omitempty" xml:"ScheduledTaskId,omitempty"`
-	// The name of the scheduled task. The name must be 2 to 64 characters in length, and can contain letters, digits, underscores (_), hyphens (-), and periods (.). It must start with a letter or a digit. The name of the scheduled task must be unique in the region and within the Alibaba Cloud account.
+	// The name of the scheduled task. The name must be 2 to 64 characters in length and can contain periods (.), underscores (_), and hyphens (-). It must start with a letter, digit, or Chinese character. The name must be unique within the same region and Alibaba Cloud account.
 	//
 	// example:
 	//
@@ -174,9 +184,9 @@ type ModifyScheduledTaskRequest struct {
 	ScheduledTaskName *string `json:"ScheduledTaskName,omitempty" xml:"ScheduledTaskName,omitempty"`
 	// Specifies whether to enable the scheduled task. Valid values:
 	//
-	// 	- true
+	// - true: enables the scheduled task.
 	//
-	// 	- false
+	// - false: disables the scheduled task.
 	//
 	// Default value: true.
 	//
@@ -184,6 +194,10 @@ type ModifyScheduledTaskRequest struct {
 	//
 	// true
 	TaskEnabled *bool `json:"TaskEnabled,omitempty" xml:"TaskEnabled,omitempty"`
+	// The warm pool capacity configuration of the scaling group. This parameter is valid only when a warm pool is configured for the scaling group.
+	//
+	// > You must specify ScalingGroupId when you specify this parameter.
+	WarmPoolCapacityOptions *ModifyScheduledTaskRequestWarmPoolCapacityOptions `json:"WarmPoolCapacityOptions,omitempty" xml:"WarmPoolCapacityOptions,omitempty" type:"Struct"`
 }
 
 func (s ModifyScheduledTaskRequest) String() string {
@@ -268,6 +282,10 @@ func (s *ModifyScheduledTaskRequest) GetScheduledTaskName() *string {
 
 func (s *ModifyScheduledTaskRequest) GetTaskEnabled() *bool {
 	return s.TaskEnabled
+}
+
+func (s *ModifyScheduledTaskRequest) GetWarmPoolCapacityOptions() *ModifyScheduledTaskRequestWarmPoolCapacityOptions {
+	return s.WarmPoolCapacityOptions
 }
 
 func (s *ModifyScheduledTaskRequest) SetDescription(v string) *ModifyScheduledTaskRequest {
@@ -365,6 +383,61 @@ func (s *ModifyScheduledTaskRequest) SetTaskEnabled(v bool) *ModifyScheduledTask
 	return s
 }
 
+func (s *ModifyScheduledTaskRequest) SetWarmPoolCapacityOptions(v *ModifyScheduledTaskRequestWarmPoolCapacityOptions) *ModifyScheduledTaskRequest {
+	s.WarmPoolCapacityOptions = v
+	return s
+}
+
 func (s *ModifyScheduledTaskRequest) Validate() error {
+	if s.WarmPoolCapacityOptions != nil {
+		if err := s.WarmPoolCapacityOptions.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
+}
+
+type ModifyScheduledTaskRequestWarmPoolCapacityOptions struct {
+	// The expected number of prepared instances. The system maintains the sum of the current number of instances in the scaling group and the number of instances in the warm pool at this value. Default value: the maximum number of instances in the scaling group, which is specified by MaxSize.
+	//
+	// example:
+	//
+	// 5
+	DesiredGroupPreparedCapacity *int32 `json:"DesiredGroupPreparedCapacity,omitempty" xml:"DesiredGroupPreparedCapacity,omitempty"`
+	// The minimum number of instances in the warm pool. The system always retains at least this number of prepared instances in the warm pool to ensure that instances can be quickly added from the warm pool during scale-out. Default value: 0.
+	//
+	// example:
+	//
+	// 0
+	MinCapacity *int32 `json:"MinCapacity,omitempty" xml:"MinCapacity,omitempty"`
+}
+
+func (s ModifyScheduledTaskRequestWarmPoolCapacityOptions) String() string {
+	return dara.Prettify(s)
+}
+
+func (s ModifyScheduledTaskRequestWarmPoolCapacityOptions) GoString() string {
+	return s.String()
+}
+
+func (s *ModifyScheduledTaskRequestWarmPoolCapacityOptions) GetDesiredGroupPreparedCapacity() *int32 {
+	return s.DesiredGroupPreparedCapacity
+}
+
+func (s *ModifyScheduledTaskRequestWarmPoolCapacityOptions) GetMinCapacity() *int32 {
+	return s.MinCapacity
+}
+
+func (s *ModifyScheduledTaskRequestWarmPoolCapacityOptions) SetDesiredGroupPreparedCapacity(v int32) *ModifyScheduledTaskRequestWarmPoolCapacityOptions {
+	s.DesiredGroupPreparedCapacity = &v
+	return s
+}
+
+func (s *ModifyScheduledTaskRequestWarmPoolCapacityOptions) SetMinCapacity(v int32) *ModifyScheduledTaskRequestWarmPoolCapacityOptions {
+	s.MinCapacity = &v
+	return s
+}
+
+func (s *ModifyScheduledTaskRequestWarmPoolCapacityOptions) Validate() error {
 	return dara.Validate(s)
 }

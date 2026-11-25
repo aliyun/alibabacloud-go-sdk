@@ -17,7 +17,7 @@ type iQueryPredictiveMetricResponseBody interface {
 
 type QueryPredictiveMetricResponseBody struct {
 	PredictiveMetrics *QueryPredictiveMetricResponseBodyPredictiveMetrics `json:"PredictiveMetrics,omitempty" xml:"PredictiveMetrics,omitempty" type:"Struct"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//

@@ -20,19 +20,15 @@ type iScaleWithAdjustmentResponseBody interface {
 }
 
 type ScaleWithAdjustmentResponseBody struct {
-	// The type of the scaling activity.
-	//
-	// If this parameter is set to `CapacityChange`, the scaling activity only adjusts the desired capacity of the scaling group without immediately adding or removing instances.
-	//
-	// This setting only affects scaling groups with a configured desired capacity.
+	// The type of the scaling activity. If `ActivityType` is `CapacityChange`, the scaling activity corresponding to the returned `ScalingActivityId` only modifies the expected number of instances in the scaling group and does not immediately execute scale-out or scale-in. Applicable scope: scaling groups with the expected number of instances configured.
 	//
 	// example:
 	//
 	// CapacityChange
 	ActivityType *string `json:"ActivityType,omitempty" xml:"ActivityType,omitempty"`
-	// The scaling plan result returned when ExecutionMode is set to PlanOnly.
+	// The elastic planning results returned when ExecutionMode is set to PlanOnly.
 	PlanResult *ScaleWithAdjustmentResponseBodyPlanResult `json:"PlanResult,omitempty" xml:"PlanResult,omitempty" type:"Struct"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
@@ -100,7 +96,7 @@ func (s *ScaleWithAdjustmentResponseBody) Validate() error {
 }
 
 type ScaleWithAdjustmentResponseBodyPlanResult struct {
-	// The resource allocation details in the scaling plan result.
+	// The resource allocation information in the elastic planning results.
 	ResourceAllocations []*ScaleWithAdjustmentResponseBodyPlanResultResourceAllocations `json:"ResourceAllocations,omitempty" xml:"ResourceAllocations,omitempty" type:"Repeated"`
 }
 
@@ -141,11 +137,11 @@ type ScaleWithAdjustmentResponseBodyPlanResultResourceAllocations struct {
 	//
 	// 1
 	Amount *int32 `json:"Amount,omitempty" xml:"Amount,omitempty"`
-	// The billing method of the instance. Valid values:
+	// The billing method. Valid values:
 	//
-	// - **Prepaid**: subscription
+	// 	- **Prepaid**: subscription.
 	//
-	// - **PostPaid**: pay-as-you-go
+	// 	- **Postpaid**: pay-as-you-go.
 	//
 	// example:
 	//
@@ -157,19 +153,19 @@ type ScaleWithAdjustmentResponseBodyPlanResultResourceAllocations struct {
 	//
 	// ecs.u1-c1m8.large
 	InstanceType *string `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
-	// The spot strategy of the instance. Valid values:
+	// The preemption policy for the instance. Valid values:
 	//
-	// - NoSpot: A pay-as-you-go instance.
+	// - NoSpot: regular pay-as-you-go instance.
 	//
-	// - SpotWithPriceLimit: A spot instance with a user-specified price limit.
+	// - SpotWithPriceLimit: spot instance with a maximum price limit.
 	//
-	// - SpotAsPriceGo: A spot instance where the system automatically bids based on the current market price.
+	// - SpotAsPriceGo: spot instance whose price is automatically set by the system based on the current market price.
 	//
 	// example:
 	//
 	// NoSpot
 	SpotStrategy *string `json:"SpotStrategy,omitempty" xml:"SpotStrategy,omitempty"`
-	// The availability zone ID.
+	// The zone ID.
 	//
 	// example:
 	//

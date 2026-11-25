@@ -14,7 +14,7 @@ type iModifyScalingGroupResponseBody interface {
 }
 
 type ModifyScalingGroupResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

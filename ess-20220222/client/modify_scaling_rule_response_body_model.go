@@ -14,7 +14,7 @@ type iModifyScalingRuleResponseBody interface {
 }
 
 type ModifyScalingRuleResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

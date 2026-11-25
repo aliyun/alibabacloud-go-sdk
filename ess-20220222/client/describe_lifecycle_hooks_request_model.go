@@ -30,7 +30,9 @@ type iDescribeLifecycleHooksRequest interface {
 }
 
 type DescribeLifecycleHooksRequest struct {
-	// The IDs of the lifecycle hooks that you want to query.
+	// The IDs of the lifecycle hooks.
+	//
+	// > Conditionally required: You must specify at least one of LifecycleHookIds or ScalingGroupId when you query lifecycle hooks. If you specify both parameters, LifecycleHookIds takes precedence. If you specify only RegionId without specifying either of the two parameters, a 400 InvalidParameter error is returned.
 	LifecycleHookIds []*string `json:"LifecycleHookIds,omitempty" xml:"LifecycleHookIds,omitempty" type:"Repeated"`
 	// The name of the lifecycle hook.
 	//
@@ -40,7 +42,7 @@ type DescribeLifecycleHooksRequest struct {
 	LifecycleHookName *string `json:"LifecycleHookName,omitempty" xml:"LifecycleHookName,omitempty"`
 	OwnerAccount      *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId           *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The number of the page to return. Pages start from page 1.
+	// The page number of the instance status list. Pages start from 1.
 	//
 	// Default value: 1.
 	//
@@ -64,6 +66,8 @@ type DescribeLifecycleHooksRequest struct {
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	// The ID of the scaling group.
+	//
+	// > Conditionally required: You must specify at least one of LifecycleHookIds or ScalingGroupId when you query lifecycle hooks. If you specify only RegionId without specifying either of the two parameters, a 400 InvalidParameter error is returned.
 	//
 	// example:
 	//

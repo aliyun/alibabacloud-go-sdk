@@ -34,9 +34,9 @@ type DescribeDiagnoseReportsResponseBody struct {
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The diagnostic reports.
+	// The list of diagnostic reports.
 	Reports []*DescribeDiagnoseReportsResponseBodyReports `json:"Reports,omitempty" xml:"Reports,omitempty" type:"Repeated"`
-	// The ID of the request.
+	// Id of the request
 	//
 	// example:
 	//
@@ -117,7 +117,7 @@ func (s *DescribeDiagnoseReportsResponseBody) Validate() error {
 }
 
 type DescribeDiagnoseReportsResponseBodyReports struct {
-	// The time when the diagnostic report was created.
+	// The time when the diagnostic report was created. The time is displayed in UTC and follows the ISO 8601 standard in the YYYY-MM-DDTHH:mm:ssZ format.
 	//
 	// example:
 	//
@@ -125,13 +125,13 @@ type DescribeDiagnoseReportsResponseBodyReports struct {
 	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
 	// The details of the diagnostic report.
 	Details []*DescribeDiagnoseReportsResponseBodyReportsDetails `json:"Details,omitempty" xml:"Details,omitempty" type:"Repeated"`
-	// The status of the diagnostic item. Only the severe status is displayed in the diagnostic report. Valid values:
+	// The diagnostic status. The value is the most severe status among the diagnostic details. Valid values:
 	//
-	// 	- Normal: The diagnostic result is normal.
+	// - Normal: the diagnostic result is normal.
 	//
-	// 	- Warn: The diagnostic result is warning.
+	// - Warn: the diagnostic result is a warning.
 	//
-	// 	- Critical: The diagnostic result is critical.
+	// - Critical: the diagnostic result is critical.
 	//
 	// example:
 	//
@@ -139,15 +139,15 @@ type DescribeDiagnoseReportsResponseBodyReports struct {
 	DiagnoseStatus *string `json:"DiagnoseStatus,omitempty" xml:"DiagnoseStatus,omitempty"`
 	// The status of the diagnostic report. Valid values:
 	//
-	// 	- processing: The diagnosis is in progress.
+	// - Processing: in progress.
 	//
-	// 	- Finished: The diagnosis is complete.
+	// - Finished: completed.
 	//
 	// example:
 	//
 	// Finished
 	ProcessStatus *string `json:"ProcessStatus,omitempty" xml:"ProcessStatus,omitempty"`
-	// The ID of the region.
+	// The region ID.
 	//
 	// example:
 	//
@@ -269,23 +269,23 @@ func (s *DescribeDiagnoseReportsResponseBodyReports) Validate() error {
 type DescribeDiagnoseReportsResponseBodyReportsDetails struct {
 	// The type of the diagnostic item. Valid values:
 	//
-	// 	- AccountArrearage: Checks whether your Alibaba Cloud account has overdue payments.
+	// - AccountArrearage: account overdue payment. Checks whether the user account has overdue payments.
 	//
-	// 	- AccountNotEnoughBalance: Checks whether the balance of your Alibaba Cloud account at the China site (aliyun.com) is greater than or equal to CNY 100.
+	// - AccountNotEnoughBalance: insufficient account balance. Checks whether the balance of a user account on the China site is greater than or equal to CNY 100.
 	//
-	// 	- ElasticStrength: Checks whether the instance types that are specified in the scaling configuration are sufficient.
+	// - ElasticStrength: inventory health. Checks the inventory health of the instance type configured for the scaling group.
 	//
-	// 	- VSwitch: Checks whether a specific vSwitch can work as expected. For example, if a vSwitch is deleted, the vSwitch cannot provide services and an exception occurs.
+	// - VSwitch: vSwitch status. Checks whether the vSwitch is active, such as whether it is deleted.
 	//
-	// 	- SecurityGroup: Checks whether a specific security group can work as expected. For example, if a security group is deleted, the security group cannot provide services and an exception occurs.
+	// - SecurityGroup: security group status. Checks whether the security group is active, such as whether it is deleted.
 	//
-	// 	- KeyPair: Checks whether the key pair is available. If the specified key pair is deleted, specify another key pair for the scaling group.
+	// - KeyPair: key pair status. Checks whether the key pair is active, such as whether it is deleted.
 	//
-	// 	- SlbBackendServerQuota: Checks whether the number of ECS instances that are added to the default server group and the vServer groups of the SLB instances associated with the scaling group has reached the upper limit.
+	// - SlbBackendServerQuota: number of instances mounted to the SLB instance in the scaling group. Checks whether the number of ECS instances mounted to the default server group and virtual service groups of the SLB instance exceeds the quota.
 	//
-	// 	- AlbBackendServerQuota: Checks whether the number of ECS instances that are added to the backend server groups of the ALB instances associated with the scaling group has reached the upper limit.
+	// - AlbBackendServerQuota: number of instances mounted to the ALB instance in the scaling group. Checks whether the number of ECS instances mounted to the server groups of the ALB instance exceeds the quota.
 	//
-	// 	- NlbBackendServerQuota: Checks whether the number of ECS instances that are added to the backend server groups of the NLB instances associated with the scaling group has reached the upper limit.
+	// - NlbBackendServerQuota: number of instances mounted to the NLB instance in the scaling group. Checks whether the number of ECS instances mounted to the server groups of the NLB instance exceeds the quota.
 	//
 	// example:
 	//
@@ -293,41 +293,41 @@ type DescribeDiagnoseReportsResponseBodyReportsDetails struct {
 	DiagnoseType *string `json:"DiagnoseType,omitempty" xml:"DiagnoseType,omitempty"`
 	// The error code of the diagnostic item. Valid values:
 	//
-	// 	- VSwitchIdNotFound: The vSwitch does not exist.
+	// - VSwitchIdNotFound: the vSwitch does not exist.
 	//
-	// 	- SecurityGroupNotFound: The security group does not exist.
+	// - SecurityGroupNotFound: the security group does not exist.
 	//
-	// 	- KeyPairNotFound: The key pair does not exist.
+	// - KeyPairNotFound: the key pair does not exist.
 	//
-	// 	- SlbBackendServerQuotaExceeded: The number of ECS instances that are added to the default server group and the vServer groups of the SLB instances associated with the scaling group has reached the upper limit.
+	// - SlbBackendServerQuotaExceeded: the number of ECS instances mounted to the default server group and virtual service groups of the SLB instance exceeds the quota.
 	//
-	// 	- AlbBackendServerQuotaExceeded: The number of ECS instances that are attached to the ALB instances of the scaling group has reached the upper limit.
+	// - AlbBackendServerQuotaExceeded: the number of ECS instances mounted to the server groups of the ALB instance exceeds the quota.
 	//
-	// 	- NlbBackendServerQuotaExceeded: The number of ECS instances that are attached to the NLB instances of the scaling group has reached the upper limit.
+	// - NlbBackendServerQuotaExceeded: the number of ECS instances mounted to the server groups of the NLB instance exceeds the quota.
 	//
-	// 	- AccountArrearage: Your account has overdue payments.
+	// - AccountArrearage: the account has overdue payments.
 	//
-	// 	- AccountNotEnoughBalance: The balance of your Alibaba Cloud account is less than CNY 100.
+	// - AccountNotEnoughBalance: the account balance is insufficient (less than CNY 100).
 	//
-	// 	- ElasticStrengthAlert: The inventory levels are lower than expected.
+	// - ElasticStrengthAlert: the inventory health is poor.
 	//
 	// example:
 	//
 	// VSwitchIdNotFound
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The ID of the resource.
+	// The resource ID.
 	//
 	// example:
 	//
 	// sg-280ih****
 	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
-	// The status of the diagnostic item. Valid values:
+	// The diagnostic status of the diagnostic item. Valid values:
 	//
-	// 	- Normal: The diagnostic result is normal.
+	// - Normal: the diagnostic result is normal.
 	//
-	// 	- Warn: The diagnostic result is warning.
+	// - Warn: the diagnostic result is a warning.
 	//
-	// 	- Critical: The diagnostic result is critical.
+	// - Critical: the diagnostic result is critical.
 	//
 	// example:
 	//

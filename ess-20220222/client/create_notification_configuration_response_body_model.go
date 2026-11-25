@@ -14,7 +14,7 @@ type iCreateNotificationConfigurationResponseBody interface {
 }
 
 type CreateNotificationConfigurationResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

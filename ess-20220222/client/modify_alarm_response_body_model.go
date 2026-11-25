@@ -22,7 +22,7 @@ type ModifyAlarmResponseBody struct {
 	//
 	// asg-bp1hvbnmkl10vll5****_83948190-acdd-483f-98f7-b77f4778****
 	AlarmTaskId *string `json:"AlarmTaskId,omitempty" xml:"AlarmTaskId,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

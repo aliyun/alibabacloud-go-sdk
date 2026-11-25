@@ -16,13 +16,13 @@ type iCreateEciScalingConfigurationResponseBody interface {
 }
 
 type CreateEciScalingConfigurationResponseBody struct {
-	// The request ID.
+	// The request ID, which uniquely identifies the request.
 	//
 	// example:
 	//
 	// 89945DD3-9072-47D0-A318-353284CF****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The ID of the elastic container instance (container group).
+	// The instance ID, which is the container group ID.
 	//
 	// example:
 	//

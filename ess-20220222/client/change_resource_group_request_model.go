@@ -24,7 +24,7 @@ type iChangeResourceGroupRequest interface {
 }
 
 type ChangeResourceGroupRequest struct {
-	// The ID of the resource group to which you want to move the scaling group.
+	// The ID of the new resource group to which you want to move the scaling group.
 	//
 	// This parameter is required.
 	//
@@ -41,7 +41,7 @@ type ChangeResourceGroupRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the scaling group that you want to move from the current resource group to another resource group.
+	// The ID of the scaling group whose resource group you want to change.
 	//
 	// This parameter is required.
 	//
@@ -50,7 +50,7 @@ type ChangeResourceGroupRequest struct {
 	// asg-bp17xb4x1vr29lgt****
 	ResourceId           *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	// The resource type. Set the value to scalinggroup.
+	// The resource type. Currently, only scaling groups are supported. Valid value: scalinggroup.
 	//
 	// example:
 	//

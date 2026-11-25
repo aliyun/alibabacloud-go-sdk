@@ -38,19 +38,19 @@ type iScaleWithAdjustmentRequest interface {
 }
 
 type ScaleWithAdjustmentRequest struct {
-	// The metadata for the scaling activity.
+	// The metadata of the scaling activity.
 	//
 	// example:
 	//
 	// {"key":"value"}
 	ActivityMetadata *string `json:"ActivityMetadata,omitempty" xml:"ActivityMetadata,omitempty"`
-	// The method used to adjust the number of instances in a scaling activity. Valid values:
+	// The adjustment method for the scaling activity. Valid values:
 	//
-	// - `QuantityChangeInCapacity`: Adds or removes a specified number of ECS instances.
+	// - QuantityChangeInCapacity: Increases or decreases a specified number of ECS instances.
 	//
-	// - `PercentChangeInCapacity`: Adds or removes a specified percentage of ECS instances.
+	// - PercentChangeInCapacity: Increases or decreases a specified percentage of ECS instances.
 	//
-	// - `TotalCapacity`: Adjusts the number of ECS instances in the scaling group to a specified number.
+	// - TotalCapacity: Adjusts the number of ECS instances in the current scaling group to a specified number.
 	//
 	// This parameter is required.
 	//
@@ -58,13 +58,13 @@ type ScaleWithAdjustmentRequest struct {
 	//
 	// QuantityChangeInCapacity
 	AdjustmentType *string `json:"AdjustmentType,omitempty" xml:"AdjustmentType,omitempty"`
-	// The adjustment value for the scaling activity. A single adjustment cannot add or remove more than 1,000 ECS instances. The valid range depends on `AdjustmentType`:
+	// The adjustment value for the scaling activity. In all cases, the number of ECS instances adjusted in a single operation cannot exceed 1,000. Otherwise, the adjustment fails. Valid values vary based on the adjustment method:
 	//
-	// - `QuantityChangeInCapacity`: -1000 to 1000.
+	// - QuantityChangeInCapacity: -1,000 to 1,000.
 	//
-	// - `PercentChangeInCapacity`: -100 to 10000.
+	// - PercentChangeInCapacity: -100 to 10,000.
 	//
-	// - `TotalCapacity`: 0 to 2000.
+	// - TotalCapacity: 0 to 2,000.
 	//
 	// This parameter is required.
 	//
@@ -72,7 +72,7 @@ type ScaleWithAdjustmentRequest struct {
 	//
 	// 100
 	AdjustmentValue *int32 `json:"AdjustmentValue,omitempty" xml:"AdjustmentValue,omitempty"`
-	// A client-generated token to ensure the idempotence of the request. This token must be a unique string of up to 64 ASCII characters.
+	// The client token that is used to ensure the idempotence of the request and prevent duplicate submissions. You can generate the value of this parameter on the client side. The value must be unique across different requests and can be up to 64 ASCII characters in length. The value cannot contain non-ASCII characters.
 	//
 	// example:
 	//
@@ -80,9 +80,9 @@ type ScaleWithAdjustmentRequest struct {
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
 	// The execution mode. Valid values:
 	//
-	// - `None`: Executes a standard scaling activity.
+	// - None: Not specified. Normal scaling is performed.
 	//
-	// - `PlanOnly`: Only performs elastic planning and returns the results in `PlanResult` without triggering the scaling activity. The results include details such as instance types, availability zones, billing methods, and the number of new instances.
+	// - PlanOnly: Does not trigger scaling. Only elastic planning is executed. The planning results, including instance types, zone IDs, billing methods, and the number of instances to be created, are returned in PlanResult.
 	//
 	// Default value: None.
 	//
@@ -90,18 +90,18 @@ type ScaleWithAdjustmentRequest struct {
 	//
 	// PlanOnly
 	ExecutionMode *string `json:"ExecutionMode,omitempty" xml:"ExecutionMode,omitempty"`
-	// The lifecycle hook context.
+	// The context information of the lifecycle hook.
 	LifecycleHookContext *ScaleWithAdjustmentRequestLifecycleHookContext `json:"LifecycleHookContext,omitempty" xml:"LifecycleHookContext,omitempty" type:"Struct"`
-	// The minimum number of instances to adjust in a scaling activity. This parameter takes effect only when `AdjustmentType` is set to `PercentChangeInCapacity`.
+	// The minimum number of instances to be adjusted in the scaling activity. This parameter takes effect only when `AdjustmentType` is set to `PercentChangeInCapacity`.
 	//
 	// example:
 	//
 	// 1
 	MinAdjustmentMagnitude *int32 `json:"MinAdjustmentMagnitude,omitempty" xml:"MinAdjustmentMagnitude,omitempty"`
-	// The parameters to override when scaling out an ECI scaling group.
+	// The override parameters specified for scaling out an Elastic Container Instance (ECI) scaling group.
 	Overrides *ScaleWithAdjustmentRequestOverrides `json:"Overrides,omitempty" xml:"Overrides,omitempty" type:"Struct"`
 	OwnerId   *int64                               `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// Specifies whether the current scaling activity supports concurrency.
+	// Specifies whether the current scaling task supports concurrent execution.
 	//
 	// example:
 	//
@@ -116,11 +116,11 @@ type ScaleWithAdjustmentRequest struct {
 	//
 	// asg-j6c1o397427hyjdc****
 	ScalingGroupId *string `json:"ScalingGroupId,omitempty" xml:"ScalingGroupId,omitempty"`
-	// Specifies whether to execute the scaling activity synchronously. This parameter applies only to scaling groups that are configured with an expected number of instances. Valid values:
+	// Specifies whether to synchronously execute the scaling activity. This parameter is valid only for scaling groups that have the expected number of instances configured. Valid values:
 	//
-	// - `true`: Synchronous execution. The scaling activity is triggered immediately.
+	// - true: Synchronous process. When the scaling rule is executed, the scale-out or scale-in activity of the scaling group is directly triggered.
 	//
-	// - `false`: Asynchronous execution. The call updates the expected number of instances without immediately triggering the scaling activity. The activity occurs when the system detects a discrepancy between the new expected number and the current number of instances.
+	// - false: Asynchronous process. When the expected number of instances in the scaling group is modified, the actual scale-out or scale-in activity of the scaling group is not immediately triggered. The system automatically detects the difference between the expected number of instances and the current number of instances in the scaling group, and then triggers the scale-out or scale-in activity.
 	//
 	// > For more information about the expected number of instances, see [Expected number of instances](https://help.aliyun.com/document_detail/146231.html).
 	//
@@ -274,17 +274,22 @@ func (s *ScaleWithAdjustmentRequest) Validate() error {
 type ScaleWithAdjustmentRequestLifecycleHookContext struct {
 	// Specifies whether to disable all lifecycle hooks for the scaling activity. Valid values:
 	//
-	// - `true`: Disables all lifecycle hooks.
+	// - true: Disables all lifecycle hooks.
 	//
-	// - `false`: Does not disable lifecycle hooks.
+	// - false: Does not disable lifecycle hooks.
 	//
 	// example:
 	//
 	// false
 	DisableLifecycleHook *bool `json:"DisableLifecycleHook,omitempty" xml:"DisableLifecycleHook,omitempty"`
-	// A list of lifecycle hook IDs to ignore during the scaling activity.
+	// The list of IDs of the lifecycle hooks that are disabled for the scaling activity.
 	IgnoredLifecycleHookIds []*string `json:"IgnoredLifecycleHookIds,omitempty" xml:"IgnoredLifecycleHookIds,omitempty" type:"Repeated"`
-	LifecycleHookResult     *string   `json:"LifecycleHookResult,omitempty" xml:"LifecycleHookResult,omitempty"`
+	// The default execution result of the lifecycle hook in this scaling activity. If specified, this value overrides the original default execution result of the hook.
+	//
+	// example:
+	//
+	// CONTINUE
+	LifecycleHookResult *string `json:"LifecycleHookResult,omitempty" xml:"LifecycleHookResult,omitempty"`
 }
 
 func (s ScaleWithAdjustmentRequestLifecycleHookContext) String() string {
@@ -327,21 +332,21 @@ func (s *ScaleWithAdjustmentRequestLifecycleHookContext) Validate() error {
 }
 
 type ScaleWithAdjustmentRequestOverrides struct {
-	// A list of container-specific overrides.
+	// The override parameters for the container list.
 	ContainerOverrides []*ScaleWithAdjustmentRequestOverridesContainerOverrides `json:"ContainerOverrides,omitempty" xml:"ContainerOverrides,omitempty" type:"Repeated"`
-	// The number of vCPUs for the instance. Unit: cores.
+	// The number of vCPUs at the instance level. Unit: cores.
 	//
 	// example:
 	//
 	// 2
 	Cpu *float32 `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
-	// The memory size for the instance. Unit: GiB.
+	// The memory size at the instance level. Unit: GiB.
 	//
 	// example:
 	//
 	// 4
 	Memory *float32 `json:"Memory,omitempty" xml:"Memory,omitempty"`
-	// The user data for the ECS instance. It must be Base64-encoded, and the raw data cannot exceed 32 KB.
+	// The user data of the ECS instance. The user data must be encoded in Base64. The maximum size of the raw data before encoding is 32 KB.
 	//
 	// example:
 	//
@@ -407,9 +412,9 @@ func (s *ScaleWithAdjustmentRequestOverrides) Validate() error {
 }
 
 type ScaleWithAdjustmentRequestOverridesContainerOverrides struct {
-	// The arguments for the container\\"s startup command. You can specify up to 10 arguments.
+	// The arguments for the container startup command. A maximum of 10 arguments can be specified.
 	Args []*string `json:"Args,omitempty" xml:"Args,omitempty" type:"Repeated"`
-	// The container\\"s startup command, specified as an array of strings. You can specify up to 20 strings, and each can be up to 256 characters long.
+	// The startup commands for the container. A maximum of 20 commands can be specified. Each command can contain up to 256 characters.
 	Commands []*string `json:"Commands,omitempty" xml:"Commands,omitempty" type:"Repeated"`
 	// The number of vCPUs for the container. Unit: cores.
 	//
@@ -417,15 +422,15 @@ type ScaleWithAdjustmentRequestOverridesContainerOverrides struct {
 	//
 	// 2
 	Cpu *float32 `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
-	// Environment variables to set in the container.
+	// The list of environment variables.
 	EnvironmentVars []*ScaleWithAdjustmentRequestOverridesContainerOverridesEnvironmentVars `json:"EnvironmentVars,omitempty" xml:"EnvironmentVars,omitempty" type:"Repeated"`
-	// The memory size for the container. Unit: GiB.
+	// The memory size of the container. Unit: GiB.
 	//
 	// example:
 	//
 	// 4
 	Memory *float32 `json:"Memory,omitempty" xml:"Memory,omitempty"`
-	// The name of the container to override. The override takes effect only if this name matches a container name in the scaling configuration.
+	// The name of the container. When you need to override container parameters, you must specify the container name. The container parameters can be overridden only when the container name matches the container name in the scaling configuration.
 	//
 	// example:
 	//
@@ -509,13 +514,13 @@ func (s *ScaleWithAdjustmentRequestOverridesContainerOverrides) Validate() error
 }
 
 type ScaleWithAdjustmentRequestOverridesContainerOverridesEnvironmentVars struct {
-	// The name of the environment variable. It must be 1 to 128 characters long, cannot start with a digit, and can contain only letters (a-z, A-Z), digits (0-9), and underscores (_).
+	// The name of the environment variable. The name must be 1 to 128 characters in length. It can contain letters, digits, and underscores (_), and cannot start with a digit.
 	//
 	// example:
 	//
 	// PATH
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The value of the environment variable, up to 256 characters long.
+	// The value of the environment variable. The value can be 0 to 256 characters in length.
 	//
 	// example:
 	//

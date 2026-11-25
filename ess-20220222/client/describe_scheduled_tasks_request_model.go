@@ -44,7 +44,7 @@ type iDescribeScheduledTasksRequest interface {
 type DescribeScheduledTasksRequest struct {
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The page number. Pages start from page 1.
+	// The page number of the scheduled task list. Pages start from page 1.
 	//
 	// Default value: 1.
 	//
@@ -52,7 +52,7 @@ type DescribeScheduledTasksRequest struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page. Maximum value: 50.
+	// The number of entries per page in a paged query. Maximum value: 50.
 	//
 	// Default value: 10.
 	//
@@ -60,23 +60,23 @@ type DescribeScheduledTasksRequest struct {
 	//
 	// 50
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The interval at which scheduled task N is repeatedly executed. Valid values:
+	// The recurrence type of the scheduled task. Valid values:
 	//
-	// 	- Daily: Scheduled task N is executed once every specified number of days.
+	// - Daily: The scheduled task is executed once every specified number of days.
 	//
-	// 	- Weekly: Scheduled task N is executed on each specified day of a week.
+	// - Weekly: The scheduled task is executed on specified days of each week.
 	//
-	// 	- Monthly: Scheduled task N is executed on each specified day of a month.
+	// - Monthly: The scheduled task is executed on specified days of each month.
 	//
-	// 	- Cron: Scheduled task N is executed based on the specified Cron expression.
+	// - Cron: The scheduled task is executed based on a specified cron expression.
 	//
 	// example:
 	//
 	// Weekly
 	RecurrenceType *string `json:"RecurrenceType,omitempty" xml:"RecurrenceType,omitempty"`
-	// The number of times scheduled task N is repeatedly executed.
+	// The recurrence value of the scheduled task.
 	//
-	// You can specify this parameter only if you set RecurrenceType to Weekly. Separate multiple values with commas (,). The values that correspond to Sunday, Monday, Tuesday, Wednesday, Thursday, Friday, and Saturday are 0, 1, 2, 3, 4, 5, and 6.
+	// This parameter is supported only when RecurrenceType is set to Weekly. You can specify multiple values separated by commas (,). For example, the values for Sunday, Monday, Tuesday, Wednesday, Thursday, Friday, and Saturday are 0, 1, 2, 3, 4, 5, and 6.
 	//
 	// example:
 	//
@@ -92,29 +92,29 @@ type DescribeScheduledTasksRequest struct {
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The ID of the scaling group to which the scheduled task belongs.
+	// The ID of the scaling group that executes the scheduled task.
 	//
 	// example:
 	//
 	// asg-bp1bo5tca4m56nap****
 	ScalingGroupId *string `json:"ScalingGroupId,omitempty" xml:"ScalingGroupId,omitempty"`
-	// The scaling rules of the scheduled tasks. Once the scheduled tasks are triggered, the scaling rules are executed.
+	// The scaling rules that are used when the scheduled tasks are triggered. This parameter is valid only when a scaling rule is specified for the scheduled task.
 	ScheduledActions []*string `json:"ScheduledActions,omitempty" xml:"ScheduledActions,omitempty" type:"Repeated"`
-	// The IDs of the scheduled tasks that you want to query.
+	// The IDs of the scheduled tasks to be queried.
 	ScheduledTaskIds []*string `json:"ScheduledTaskIds,omitempty" xml:"ScheduledTaskIds,omitempty" type:"Repeated"`
-	// The names of the scheduled tasks that you want to query.
+	// The names of the scheduled tasks to be queried.
 	ScheduledTaskNames []*string `json:"ScheduledTaskNames,omitempty" xml:"ScheduledTaskNames,omitempty" type:"Repeated"`
-	// Specifies whether scheduled task N is enabled.
+	// Specifies whether the scheduled task is started. Valid values:
 	//
-	// 	- true
+	// - true: The task is started.
 	//
-	// 	- false
+	// - false: The task is stopped.
 	//
 	// example:
 	//
 	// true
 	TaskEnabled *bool `json:"TaskEnabled,omitempty" xml:"TaskEnabled,omitempty"`
-	// The name of scheduled task N. Fuzzy search based on keywords is supported.
+	// The name of the task. Fuzzy match by keyword is supported.
 	//
 	// example:
 	//

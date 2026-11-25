@@ -40,7 +40,7 @@ type iDescribeScalingRulesRequest interface {
 type DescribeScalingRulesRequest struct {
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The page number. Pages start from page 1.
+	// The page number of the scaling rule list. Pages start from 1.
 	//
 	// Default value: 1.
 	//
@@ -48,7 +48,7 @@ type DescribeScalingRulesRequest struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page. Maximum value: 50.
+	// The Settings for the number of entries per page during a paged query. Maximum value: 50.
 	//
 	// Default value: 10.
 	//
@@ -56,7 +56,7 @@ type DescribeScalingRulesRequest struct {
 	//
 	// 50
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The region ID of the scaling group to which the scaling rules that you want to query belong.
+	// The region ID of the scaling group to which the scaling rules belong.
 	//
 	// This parameter is required.
 	//
@@ -72,31 +72,31 @@ type DescribeScalingRulesRequest struct {
 	//
 	// asg-bp1ffogfdauy0jw0****
 	ScalingGroupId *string `json:"ScalingGroupId,omitempty" xml:"ScalingGroupId,omitempty"`
-	// The unique identifiers of the scaling rules that you want to query.
+	// The unique identifiers of the scaling rules to be queried.
 	ScalingRuleAris []*string `json:"ScalingRuleAris,omitempty" xml:"ScalingRuleAris,omitempty" type:"Repeated"`
-	// The IDs of the scaling rules that you want to query.
+	// The IDs of the scaling rules to be queried.
 	ScalingRuleIds []*string `json:"ScalingRuleIds,omitempty" xml:"ScalingRuleIds,omitempty" type:"Repeated"`
-	// The names of the scaling rules that you want to query.
+	// The names of the scaling rules to be queried.
 	ScalingRuleNames []*string `json:"ScalingRuleNames,omitempty" xml:"ScalingRuleNames,omitempty" type:"Repeated"`
 	// The type of the scaling rule. Valid values:
 	//
-	// 	- SimpleScalingRule: adjusts the number of ECS instances based on the values of the AdjustmentType and AdjustmentValue parameters.
+	// - SimpleScalingRule: simple scaling rule. Adjusts the number of ECS instances based on the adjustment type (AdjustmentType) and adjustment value (AdjustmentValue).
 	//
-	// 	- TargetTrackingScalingRule: calculates the number of ECS instances that need to be scaled in a dynamic manner and maintains the value of a predefined metric close to the value of the TargetValue parameter.
+	// - TargetTrackingScalingRule: target tracking scaling rule. Dynamically calculates the number of ECS instances to scale out or scale-in based on a predefined metric (MetricName) and attempts to maintain the metric value near the target value (TargetValue).
 	//
-	// 	- StepScalingRule: scales ECS instances in steps based on the specified thresholds and metric values.
+	// - StepScalingRule: step scaling rule. Provides a step-by-step extension method based on thresholds and metric values.
 	//
-	// 	- PredictiveScalingRule: uses machine learning to analyze historical monitoring data of the scaling group and predicts the future values of metrics. In addition, Auto Scaling automatically creates scheduled tasks to adjust the boundary values for the scaling group.
+	// - PredictiveScalingRule: predictive scaling rule. Analyzes the historical monitoring data of the scaling group based on machine learning capabilities to predict future monitoring metrics, and supports the automatic creation of scheduled tasks to set the boundaries of the scaling group.
 	//
 	// example:
 	//
 	// SimpleScalingRule
 	ScalingRuleType *string `json:"ScalingRuleType,omitempty" xml:"ScalingRuleType,omitempty"`
-	// Specifies whether to return the event-triggered tasks that are associated with the scaling rule. Valid values:
+	// Specifies whether to return the CloudMonitor event-triggered tasks associated with the scaling rules. Valid values:
 	//
-	// 	- true
+	// - true: returns the CloudMonitor event-triggered tasks associated with the scaling rules.
 	//
-	// 	- false
+	// - false: does not return the CloudMonitor event-triggered tasks associated with the scaling rules.
 	//
 	// Default value: false.
 	//

@@ -31,7 +31,7 @@ type CancelInstanceRefreshRequest struct {
 	// ir-aca123sf****
 	InstanceRefreshTaskId *string `json:"InstanceRefreshTaskId,omitempty" xml:"InstanceRefreshTaskId,omitempty"`
 	OwnerId               *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The region ID of the scaling group.
+	// The ID of the region to which the scaling group belongs.
 	//
 	// This parameter is required.
 	//

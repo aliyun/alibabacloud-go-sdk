@@ -22,7 +22,7 @@ type iDescribeScheduledTasksResponseBody interface {
 }
 
 type DescribeScheduledTasksResponseBody struct {
-	// The page number of the returned page.
+	// The current page number.
 	//
 	// example:
 	//
@@ -38,9 +38,9 @@ type DescribeScheduledTasksResponseBody struct {
 	//
 	// example:
 	//
-	// 473469C7-AA6F-4DC5-B3DB-A3DC0DE3C83E
+	// 473469C7-AA6F-4DC5-B3DB-A3DC0DE3****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The information collection of the scheduled tasks.
+	// The information about the scheduled tasks.
 	ScheduledTasks []*DescribeScheduledTasksResponseBodyScheduledTasks `json:"ScheduledTasks,omitempty" xml:"ScheduledTasks,omitempty" type:"Repeated"`
 	// The total number of scheduled tasks.
 	//
@@ -123,61 +123,61 @@ type DescribeScheduledTasksResponseBodyScheduledTasks struct {
 	//
 	// Test scheduled task.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The expected number of instances in the scaling group. If you set `Scaling Method` to `Configure Number of Instances in Scaling Group`, you can specify this parameter.
+	// The expected number of instances in the scaling group. This parameter takes effect when the scaling method of the scheduled task is set to adjust the number of instances in the scaling group.
 	//
 	// example:
 	//
 	// 10
 	DesiredCapacity *int32 `json:"DesiredCapacity,omitempty" xml:"DesiredCapacity,omitempty"`
-	// The time window during which the scheduled task can be retried. Unit: seconds. Valid values: 0 to 21600.
+	// The time period during which a retry is performed after the scheduled task fails to be triggered. Unit: seconds. Valid values: 0 to 21600.
 	//
 	// example:
 	//
 	// 600
 	LaunchExpirationTime *int32 `json:"LaunchExpirationTime,omitempty" xml:"LaunchExpirationTime,omitempty"`
-	// The point in time at which the scheduled task is triggered.
+	// The time at which the scheduled task is triggered. The time follows the ISO 8601 standard in the YYYY-MM-DDTHH:mmZ format. The time is displayed in UTC.
 	//
 	// example:
 	//
 	// 2014-08-18T10:52Z
 	LaunchTime *string `json:"LaunchTime,omitempty" xml:"LaunchTime,omitempty"`
-	// The maximum number of instances that must be contained in the scaling group. If you set `Scaling Method` to `Configure Number of Instances in Scaling Group`, you can specify this parameter.
+	// The maximum number of instances in the scaling group. This parameter takes effect when the scaling method of the scheduled task is set to adjust the number of instances in the scaling group.
 	//
 	// example:
 	//
 	// 10
 	MaxValue *int32 `json:"MaxValue,omitempty" xml:"MaxValue,omitempty"`
-	// The minimum number of instances that must be contained in the scaling group. If you set `Scaling Method` to `Configure Number of Instances in Scaling Group`, you can specify this parameter.
+	// The minimum number of instances in the scaling group. This parameter takes effect when the scaling method of the scheduled task is set to adjust the number of instances in the scaling group.
 	//
 	// example:
 	//
 	// 0
 	MinValue *int32 `json:"MinValue,omitempty" xml:"MinValue,omitempty"`
-	// The end time of the recurrence of the scheduled task.
+	// The end time of the recurring scheduled task. The time follows the ISO 8601 standard in the YYYY-MM-DDTHH:mmZ format. The time is displayed in UTC.
 	//
 	// example:
 	//
 	// 2014-08-20T16:55Z
 	RecurrenceEndTime *string `json:"RecurrenceEndTime,omitempty" xml:"RecurrenceEndTime,omitempty"`
-	// The recurring interval of the scheduled task.
+	// The recurrence type of the scheduled task.
 	//
 	// example:
 	//
 	// Daily
 	RecurrenceType *string `json:"RecurrenceType,omitempty" xml:"RecurrenceType,omitempty"`
-	// The frequency of recurrence of the scheduled task.
+	// The recurrence value of the scheduled task.
 	//
 	// example:
 	//
 	// 1
 	RecurrenceValue *string `json:"RecurrenceValue,omitempty" xml:"RecurrenceValue,omitempty"`
-	// The ID of the scaling group to which the scheduled task belongs.
+	// The ID of the scaling group that executes the scheduled task.
 	//
 	// example:
 	//
 	// asg-bp1bo5tca4m56nap****
 	ScalingGroupId *string `json:"ScalingGroupId,omitempty" xml:"ScalingGroupId,omitempty"`
-	// The scaling rule of the scheduled task. A value is returned for this parameter only after you specify ScheduledActions.
+	// The scaling rule used when the scheduled task is executed. This parameter is returned only when a scaling rule is specified for the scheduled task.
 	//
 	// example:
 	//
@@ -195,11 +195,11 @@ type DescribeScheduledTasksResponseBodyScheduledTasks struct {
 	//
 	// scheduled****
 	ScheduledTaskName *string `json:"ScheduledTaskName,omitempty" xml:"ScheduledTaskName,omitempty"`
-	// Indicates whether the scheduled task is enabled.
+	// Indicates whether the scheduled task is started. Valid values:
 	//
-	// 	- true
+	// - true: The task is started.
 	//
-	// 	- false
+	// - false: The task is stopped.
 	//
 	// Default value: true.
 	//
@@ -207,6 +207,8 @@ type DescribeScheduledTasksResponseBodyScheduledTasks struct {
 	//
 	// true
 	TaskEnabled *bool `json:"TaskEnabled,omitempty" xml:"TaskEnabled,omitempty"`
+	// The warm pool capacity configurations of the scaling group.
+	WarmPoolCapacityOptions *DescribeScheduledTasksResponseBodyScheduledTasksWarmPoolCapacityOptions `json:"WarmPoolCapacityOptions,omitempty" xml:"WarmPoolCapacityOptions,omitempty" type:"Struct"`
 }
 
 func (s DescribeScheduledTasksResponseBodyScheduledTasks) String() string {
@@ -271,6 +273,10 @@ func (s *DescribeScheduledTasksResponseBodyScheduledTasks) GetScheduledTaskName(
 
 func (s *DescribeScheduledTasksResponseBodyScheduledTasks) GetTaskEnabled() *bool {
 	return s.TaskEnabled
+}
+
+func (s *DescribeScheduledTasksResponseBodyScheduledTasks) GetWarmPoolCapacityOptions() *DescribeScheduledTasksResponseBodyScheduledTasksWarmPoolCapacityOptions {
+	return s.WarmPoolCapacityOptions
 }
 
 func (s *DescribeScheduledTasksResponseBodyScheduledTasks) SetDescription(v string) *DescribeScheduledTasksResponseBodyScheduledTasks {
@@ -343,6 +349,61 @@ func (s *DescribeScheduledTasksResponseBodyScheduledTasks) SetTaskEnabled(v bool
 	return s
 }
 
+func (s *DescribeScheduledTasksResponseBodyScheduledTasks) SetWarmPoolCapacityOptions(v *DescribeScheduledTasksResponseBodyScheduledTasksWarmPoolCapacityOptions) *DescribeScheduledTasksResponseBodyScheduledTasks {
+	s.WarmPoolCapacityOptions = v
+	return s
+}
+
 func (s *DescribeScheduledTasksResponseBodyScheduledTasks) Validate() error {
+	if s.WarmPoolCapacityOptions != nil {
+		if err := s.WarmPoolCapacityOptions.Validate(); err != nil {
+			return err
+		}
+	}
+	return nil
+}
+
+type DescribeScheduledTasksResponseBodyScheduledTasksWarmPoolCapacityOptions struct {
+	// The expected number of instances covered by the warm pool. The system maintains the sum of the current number of instances in the scaling group and the number of instances in the warm pool at this value.
+	//
+	// example:
+	//
+	// 5
+	DesiredGroupPreparedCapacity *int32 `json:"DesiredGroupPreparedCapacity,omitempty" xml:"DesiredGroupPreparedCapacity,omitempty"`
+	// The minimum number of instances in the warm pool.
+	//
+	// example:
+	//
+	// 0
+	MinCapacity *int32 `json:"MinCapacity,omitempty" xml:"MinCapacity,omitempty"`
+}
+
+func (s DescribeScheduledTasksResponseBodyScheduledTasksWarmPoolCapacityOptions) String() string {
+	return dara.Prettify(s)
+}
+
+func (s DescribeScheduledTasksResponseBodyScheduledTasksWarmPoolCapacityOptions) GoString() string {
+	return s.String()
+}
+
+func (s *DescribeScheduledTasksResponseBodyScheduledTasksWarmPoolCapacityOptions) GetDesiredGroupPreparedCapacity() *int32 {
+	return s.DesiredGroupPreparedCapacity
+}
+
+func (s *DescribeScheduledTasksResponseBodyScheduledTasksWarmPoolCapacityOptions) GetMinCapacity() *int32 {
+	return s.MinCapacity
+}
+
+func (s *DescribeScheduledTasksResponseBodyScheduledTasksWarmPoolCapacityOptions) SetDesiredGroupPreparedCapacity(v int32) *DescribeScheduledTasksResponseBodyScheduledTasksWarmPoolCapacityOptions {
+	s.DesiredGroupPreparedCapacity = &v
+	return s
+}
+
+func (s *DescribeScheduledTasksResponseBodyScheduledTasksWarmPoolCapacityOptions) SetMinCapacity(v int32) *DescribeScheduledTasksResponseBodyScheduledTasksWarmPoolCapacityOptions {
+	s.MinCapacity = &v
+	return s
+}
+
+func (s *DescribeScheduledTasksResponseBodyScheduledTasksWarmPoolCapacityOptions) Validate() error {
 	return dara.Validate(s)
 }

@@ -22,7 +22,7 @@ type ApplyScalingGroupResponseBody struct {
 	//
 	// CC107349-57B7-4405-B1BF-9BF5AF7F****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The ID of the enabled scaling group.
+	// The ID of the applied scaling group.
 	//
 	// example:
 	//

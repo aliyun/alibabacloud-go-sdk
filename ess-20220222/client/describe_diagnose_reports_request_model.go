@@ -34,7 +34,7 @@ type DescribeDiagnoseReportsRequest struct {
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The region ID of the scaling group.
+	// The ID of the region to which the scaling group belongs.
 	//
 	// This parameter is required.
 	//
@@ -42,7 +42,7 @@ type DescribeDiagnoseReportsRequest struct {
 	//
 	// cn-shenzhen
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The IDs of the diagnostic reports. You can specify at most 20 IDs.
+	// The IDs of the diagnostic reports. You can specify up to 20 IDs.
 	ReportIds []*string `json:"ReportIds,omitempty" xml:"ReportIds,omitempty" type:"Repeated"`
 	// The ID of the scaling group.
 	//

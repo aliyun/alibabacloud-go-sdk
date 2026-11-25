@@ -28,37 +28,37 @@ type iCreateNotificationConfigurationRequest interface {
 }
 
 type CreateNotificationConfigurationRequest struct {
-	// The codec for the content of message notifications. Valid values:
+	// The encoding method for the notification content. Valid values:
 	//
-	// - PlainText: No encoding; messages are transmitted in plaintext.
+	// - PlainText: no encoding. The content is transmitted in plaintext.
 	//
-	// - Base64: Messages are encoded in Base64.
+	// - Base64: Base64 encoding.
 	//
 	// Default value: Base64.
 	//
-	// > This parameter applies only to MNS notification objects.
+	// > The Settings for this parameter are supported only for MNS notification recipients.
 	//
 	// example:
 	//
 	// PlainText
 	MessageEncoding *string `json:"MessageEncoding,omitempty" xml:"MessageEncoding,omitempty"`
-	// The Alibaba Cloud Resource Name (ARN) of the notification recipient. The following list describes the value formats of this parameter:
+	// The identifier of the notification recipient. The following notification methods are supported when you configure the Settings for this parameter:
 	//
-	// 	- If you specify CloudMonitor as the notification recipient, specify the value in the `acs:ess:{region-id}:{account-id}:cloudmonitor` format.
+	// - Cloud monitoring. Format: `acs:ess:{region-id}:{account-id}:cloudmonitor`.
 	//
-	// 	- If you specify an SMQ queue as the notification recipient, specify the value in the `acs:mns:{region-id}:{account-id}:queue/{queuename}` format.
+	// - MNS queue. Format: `acs:mns:{region-id}:{account-id}:queue/{queuename}`.
 	//
-	// 	- If you specify an SMQ topic as the notification recipient, specify the value in the `acs:mns:{region-id}:{account-id}:topic/{topicname}` format.
+	// - MNS topic. Format: `acs:mns:{region-id}:{account-id}:topic/{topicname}`.
 	//
-	// The variables in the preceding formats have the following meanings:
+	// Variables in the formats:
 	//
-	// 	- `region-id`: the region ID of the scaling group.
+	// - `region-id`: the ID of the region where the scaling group resides.
 	//
-	// 	- `account-id`: the ID of the Alibaba Cloud account.
+	// - `account-id`: the Alibaba Cloud account ID. You can invoke the STS GetCallerIdentity operation to obtain the AccountId response parameter, or view it by clicking your profile picture in the upper-right corner of the Alibaba Cloud Management Console.
 	//
-	// 	- `queuename`: the name of the SMQ queue.
+	// - `queuename`: the name of the MNS queue.
 	//
-	// 	- `topicname`: the name of the SMQ topic.
+	// - `topicname`: the name of the MNS topic.
 	//
 	// This parameter is required.
 	//
@@ -66,14 +66,14 @@ type CreateNotificationConfigurationRequest struct {
 	//
 	// acs:mns:cn-beijing:161456884340****:queue/modifyLifecycleHo****
 	NotificationArn *string `json:"NotificationArn,omitempty" xml:"NotificationArn,omitempty"`
-	// The notification types. Specify multiple IDs in the repeated list form.
+	// The types of Auto Scaling events and resource changes for which you want to receive notifications. You can specify multiple values by using a repeated list.
 	//
-	// You can call the DescribeNotificationTypes operation to query the values of this parameter.
+	// You can invoke the DescribeNotificationTypes operation to query parameter values.
 	//
 	// This parameter is required.
 	NotificationTypes []*string `json:"NotificationTypes,omitempty" xml:"NotificationTypes,omitempty" type:"Repeated"`
 	OwnerId           *int64    `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The region ID of the scaling group.
+	// The ID of the region to which the scaling group belongs.
 	//
 	// example:
 	//
@@ -88,7 +88,9 @@ type CreateNotificationConfigurationRequest struct {
 	//
 	// asg-bp1igpak5ft1flyp****
 	ScalingGroupId *string `json:"ScalingGroupId,omitempty" xml:"ScalingGroupId,omitempty"`
-	// The time zone of the notification. Specify the value in UTC. For example, a value of UTC+8 specifies that the time is 8 hours ahead of Coordinated Universal Time, and a value of UTC-7 specifies that the time is 7 hours behind Coordinated Universal Time.
+	// The time zone for notifications.
+	//
+	// Specify the time zone offset from Coordinated Universal Time (UTC), such as UTC+8 or UTC-7.
 	//
 	// example:
 	//

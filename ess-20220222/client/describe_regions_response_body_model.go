@@ -80,7 +80,7 @@ type DescribeRegionsResponseBodyRegions struct {
 	//
 	// example:
 	//
-	// 华北2（北京）
+	// China (Beijing)
 	LocalName *string `json:"LocalName,omitempty" xml:"LocalName,omitempty"`
 	// The region endpoint.
 	//

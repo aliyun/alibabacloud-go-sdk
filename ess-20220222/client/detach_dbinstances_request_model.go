@@ -28,23 +28,21 @@ type iDetachDBInstancesRequest interface {
 }
 
 type DetachDBInstancesRequest struct {
-	// The client token that is used to ensure the idempotence of the request.
-	//
-	// You can use the client to generate the token, but you must make sure that the token is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [Ensure idempotence](https://help.aliyun.com/document_detail/25965.html).
+	// The client token that is used to ensure the idempotence of the request. You can use the client to generate the token, but you must ensure that it is unique among different requests. The token can contain only ASCII characters and cannot exceed 64 characters in length. For more information, see [Ensure idempotence](https://help.aliyun.com/document_detail/25965.html).
 	//
 	// example:
 	//
 	// 123e4567-e89b-12d3-a456-42665544****
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// The IDs of the ApsaraDB RDS instances. You can specify up to five ApsaraDB RDS instances.
+	// The IDs of the ApsaraDB RDS instances. You can remove up to five ApsaraDB RDS instances at a time.
 	//
 	// This parameter is required.
 	DBInstances []*string `json:"DBInstances,omitempty" xml:"DBInstances,omitempty" type:"Repeated"`
-	// Specifies whether to remove the private IP addresses of the existing instances in the scaling group from the IP address whitelist of the ApsaraDB RDS instance. Valid values:
+	// Specifies whether to remove the private IP addresses of the instances in the scaling group from the IP whitelist of the RDS instance. Valid values:
 	//
-	// 	- true
+	// - true: removes the private IP addresses of the instances.
 	//
-	// 	- false
+	// - false: does not remove the private IP addresses of the instances.
 	//
 	// Default value: false.
 	//
@@ -59,11 +57,11 @@ type DetachDBInstancesRequest struct {
 	//
 	// cn-qingdao
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// Specifies whether to remove the security group. This parameter takes effect only if you set `AttachMode` to `SecurityGroup`. Valid values:
+	// This parameter is valid only for databases whose `AttachMode` is set to `SecurityGroup`. Valid values:
 	//
-	// 	- true
+	// - true: removes the security group ID that was added when the scaling group was associated with the database.
 	//
-	// 	- false
+	// - false: retains the security group ID that was added when the scaling group was associated with the database.
 	//
 	// Default value: false.
 	//

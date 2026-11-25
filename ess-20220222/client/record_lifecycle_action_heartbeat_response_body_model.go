@@ -14,7 +14,7 @@ type iRecordLifecycleActionHeartbeatResponseBody interface {
 }
 
 type RecordLifecycleActionHeartbeatResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

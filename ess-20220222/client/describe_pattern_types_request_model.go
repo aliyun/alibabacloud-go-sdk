@@ -72,25 +72,25 @@ type iDescribePatternTypesRequest interface {
 }
 
 type DescribePatternTypesRequest struct {
-	// The architecture types of the instance types. Valid values:
+	// The architecture type of the instance type. Valid values:
 	//
-	// 	- X86: x86 architecture.
+	// - X86: x86 computing
 	//
-	// 	- Heterogeneous: heterogeneous computing, such as GPU-accelerated or FPGA-accelerated.
+	// - Heterogeneous: heterogeneous computing, such as GPU or FPGA
 	//
-	// 	- BareMetal: ECS Bare Metal Instance.
+	// - BareMental: Elastic Compute Service Bare Metal Server
 	//
-	// 	- Arm: Arm.
+	// - Arm: Arm computing
 	//
-	// By default, all values are selected.
+	// Default value: all architecture types.
 	Architecture []*string `json:"Architecture,omitempty" xml:"Architecture,omitempty" type:"Repeated"`
-	// Specifies whether to include burstable instance types. Valid values:
+	// Specifies whether the instance type is a burstable instance type. Valid values:
 	//
-	// 	- Exclude: does not include burstable instance types.
+	// - Exclude: Burstable instance types are excluded.
 	//
-	// 	- Include: includes burstable instance types.
+	// - Include: Burstable instance types are included.
 	//
-	// 	- Required: includes only burstable instance types.
+	// - Required: Only burstable instance types are included.
 	//
 	// Default value: Include.
 	//
@@ -98,158 +98,158 @@ type DescribePatternTypesRequest struct {
 	//
 	// Include
 	BurstablePerformance *string `json:"BurstablePerformance,omitempty" xml:"BurstablePerformance,omitempty"`
-	// The channel ID. This parameter is not for public use.
+	// The channel ID. This parameter is reserved for internal use.
 	//
 	// example:
 	//
 	// 79425074
 	ChannelId *int64 `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
-	// The number of vCPUs that you want to assign to the instance type.
+	// The number of vCPUs for the instance type.
 	//
 	// example:
 	//
 	// 2
 	Cores *int32 `json:"Cores,omitempty" xml:"Cores,omitempty"`
-	// The number of vCPUs that you want to assign to the instance type. You can specify multiple vCPUs.
+	// The number of vCPUs for the instance type. You can specify multiple values.
 	CoresList []*int32 `json:"CoresList,omitempty" xml:"CoresList,omitempty" type:"Repeated"`
-	// The CPU architectures of the instance types. Valid values:
+	// The CPU architecture of the instance type. Valid values:
 	//
-	// >  You can specify 1 to 2 CPU architectures.
+	// > N specifies the number of CPU architectures that you can set. Valid values of N: 1 to 2.
 	//
-	// 	- x86
+	// - X86
 	//
-	// 	- Arm
+	// - ARM
 	CpuArchitectures     []*string `json:"CpuArchitectures,omitempty" xml:"CpuArchitectures,omitempty" type:"Repeated"`
 	ExcludedInstanceType []*string `json:"ExcludedInstanceType,omitempty" xml:"ExcludedInstanceType,omitempty" type:"Repeated"`
-	// The GPU models.
+	// The GPU type.
 	GpuSpecs []*string `json:"GpuSpecs,omitempty" xml:"GpuSpecs,omitempty" type:"Repeated"`
-	// The classifications of the instance types. Valid values:
+	// The categorization of the instance type. Valid values:
 	//
-	// 	- General-purpose: general-purpose instance type.
+	// - General-purpose: general-purpose
 	//
-	// 	- Compute-optimized: compute-optimized instance type.
+	// - Compute-optimized: compute-optimized
 	//
-	// 	- Memory-optimized: memory-optimized instance type.
+	// - Memory-optimized: memory-optimized
 	//
-	// 	- Big data: big data instance type.
+	// - Big data: big data
 	//
-	// 	- Local SSDs: instance type with local SSDs.
+	// - Local SSDs: local SSD
 	//
-	// 	- High Clock Speed: instance type with high clock speeds.
+	// - High Clock Speed: high frequency
 	//
-	// 	- Enhanced: enhanced instance type.
+	// - Enhanced: enhanced
 	//
-	// 	- Shared: shared instance type.
+	// - Shared: shared
 	//
-	// 	- Compute-optimized with GPU: GPU-accelerated compute-optimized instance type.
+	// - Compute-optimized with GPU: GPU-accelerated compute-optimized
 	//
-	// 	- Visual Compute-optimized: visual compute-optimized instance type.
+	// - Visual Compute-optimized: visual compute-optimized
 	//
-	// 	- Heterogeneous Service: heterogeneous service instance type.
+	// - Heterogeneous Service: heterogeneous service
 	//
-	// 	- Compute-optimized with FPGA: FPGA-accelerated compute-optimized instance type.
+	// - Compute-optimized with FPGA: FPGA-accelerated compute-optimized
 	//
-	// 	- Compute-optimized with NPU: NPU-accelerated compute-optimized instance type.
+	// - Compute-optimized with NPU: NPU-accelerated compute-optimized
 	//
-	// 	- ECS Bare Metal: ECS Bare Metal Instance type.
+	// - ECS Bare Metal: Elastic Compute Service Bare Metal Server
 	//
-	// 	- High Performance Compute: HPC-optimized instance type.
+	// - High Performance Compute: high-performance computing (HPC)
 	InstanceCategories []*string `json:"InstanceCategories,omitempty" xml:"InstanceCategories,omitempty" type:"Repeated"`
 	// The level of the instance family. Valid values:
 	//
-	// 	- EntryLevel: entry level
+	// - EntryLevel: Entry-level instance family.
 	//
-	// 	- EnterpriseLevel: enterprise level
+	// - EnterpriseLevel: Enterprise-level instance family.
 	//
-	// 	- CreditEntryLevel: credit-based entry level For more information, see [Burstable instance families](https://help.aliyun.com/document_detail/59977.html).
+	// - CreditEntryLevel: Credit entry-level instance family. For more information, see [Burstable instances](https://help.aliyun.com/document_detail/59977.html).
 	//
 	// example:
 	//
 	// EnterpriseLevel
 	InstanceFamilyLevel *string `json:"InstanceFamilyLevel,omitempty" xml:"InstanceFamilyLevel,omitempty"`
-	// The instance families that you want to query. You can query 1 to 10 instance families in each call.
+	// The instance families to be queried. N specifies the number of instance families that you can set. Valid values of N: 1 to 10.
 	InstanceTypeFamilies []*string `json:"InstanceTypeFamilies,omitempty" xml:"InstanceTypeFamilies,omitempty" type:"Repeated"`
-	// The maximum hourly price for pay-as-you-go or preemptible instances.
+	// The maximum acceptable hourly price for the pay-as-you-go or spot instance.
 	//
 	// example:
 	//
 	// 2
 	MaxPrice *float32 `json:"MaxPrice,omitempty" xml:"MaxPrice,omitempty"`
-	// The maximum number of vCPUs per instance type.
+	// The maximum number of vCPUs for the instance type.
 	//
 	// example:
 	//
 	// 4
 	MaximumCpuCoreCount *int32 `json:"MaximumCpuCoreCount,omitempty" xml:"MaximumCpuCoreCount,omitempty"`
-	// The maximum number of GPUs per instance. The value must be a positive integer.
+	// The maximum number of GPUs for the instance. Valid values: positive integers.
 	//
 	// example:
 	//
 	// 2
 	MaximumGpuAmount *int32 `json:"MaximumGpuAmount,omitempty" xml:"MaximumGpuAmount,omitempty"`
-	// The maximum memory size per instance. Unit: GiB.
+	// The maximum memory size of the instance. Unit: GiB.
 	//
 	// example:
 	//
 	// 4
 	MaximumMemorySize *float32 `json:"MaximumMemorySize,omitempty" xml:"MaximumMemorySize,omitempty"`
-	// The memory size that you want to assign to the instance type. Unit: GiB.
+	// The memory size of the instance type. Unit: GiB.
 	//
 	// example:
 	//
 	// 4
 	Memory *float32 `json:"Memory,omitempty" xml:"Memory,omitempty"`
-	// The memory size that you want to assign to the instance type. Unit: GiB. You can specify multiple memory sizes.
+	// The memory size of the instance type. Unit: GiB. You can specify multiple values.
 	MemoryList []*float32 `json:"MemoryList,omitempty" xml:"MemoryList,omitempty" type:"Repeated"`
-	// The baseline vCPU computing performance (overall baseline performance of all vCPUs) per t5 or t6 burstable instance.
+	// The minimum baseline vCPU computing performance (sum of all vCPUs) for burstable instances of the t5 and t6 instance types.
 	//
 	// example:
 	//
 	// 12
 	MinimumBaselineCredit *int32 `json:"MinimumBaselineCredit,omitempty" xml:"MinimumBaselineCredit,omitempty"`
-	// The minimum number of vCPUs per instance type.
+	// The minimum number of vCPUs for the instance type.
 	//
 	// example:
 	//
 	// 2
 	MinimumCpuCoreCount *int32 `json:"MinimumCpuCoreCount,omitempty" xml:"MinimumCpuCoreCount,omitempty"`
-	// The minimum number of IPv6 addresses per ENI.
+	// The minimum upper limit on the number of IPv6 addresses per elastic network interface controller (NIC) for the instance.
 	//
 	// example:
 	//
 	// 1
 	MinimumEniIpv6AddressQuantity *int32 `json:"MinimumEniIpv6AddressQuantity,omitempty" xml:"MinimumEniIpv6AddressQuantity,omitempty"`
-	// The minimum number of IPv4 addresses per ENI.
+	// The minimum upper limit on the number of IPv4 addresses per elastic network interface controller (NIC) for the instance.
 	//
 	// example:
 	//
 	// 2
 	MinimumEniPrivateIpAddressQuantity *int32 `json:"MinimumEniPrivateIpAddressQuantity,omitempty" xml:"MinimumEniPrivateIpAddressQuantity,omitempty"`
-	// The minimum number of elastic network interfaces (ENIs) per instance.
+	// The minimum upper limit on the number of elastic network interfaces (ENIs) that can be bound to the instance.
 	//
 	// example:
 	//
 	// 2
 	MinimumEniQuantity *int32 `json:"MinimumEniQuantity,omitempty" xml:"MinimumEniQuantity,omitempty"`
-	// The minimum number of GPUs per instance. The value must be a positive integer.
+	// The minimum number of GPUs for the instance. Valid values: positive integers.
 	//
 	// example:
 	//
 	// 2
 	MinimumGpuAmount *int32 `json:"MinimumGpuAmount,omitempty" xml:"MinimumGpuAmount,omitempty"`
-	// The initial vCPU credits per t5 or t6 burstable instance.
+	// The minimum initial vCPU credit for burstable instances of the t5 and t6 instance types.
 	//
 	// example:
 	//
 	// 12
 	MinimumInitialCredit *int32 `json:"MinimumInitialCredit,omitempty" xml:"MinimumInitialCredit,omitempty"`
-	// The minimum memory size per instance. Unit: GiB.
+	// The minimum memory size of the instance. Unit: GiB.
 	//
 	// example:
 	//
 	// 4
 	MinimumMemorySize *float32 `json:"MinimumMemorySize,omitempty" xml:"MinimumMemorySize,omitempty"`
-	// The processor models of the instance types. You can specify 1 to 10 processor models.
+	// The processor model of the instance. N specifies the number of processor models that you can set. Valid values of N: 1 to 10.
 	PhysicalProcessorModels []*string `json:"PhysicalProcessorModels,omitempty" xml:"PhysicalProcessorModels,omitempty" type:"Repeated"`
 	// The region ID.
 	//
@@ -259,13 +259,15 @@ type DescribePatternTypesRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The preemption policy that you want to apply to pay-as-you-go instances. Valid values:
+	// The preemption policy for the pay-as-you-go instance. Valid values:
 	//
-	// 	- NoSpot: The instances are created as regular pay-as-you-go instances.
 	//
-	// 	- SpotWithPriceLimit: The instances are created as preemptible instances that have a user-defined maximum hourly price.
 	//
-	// 	- SpotAsPriceGo: The instances are created as preemptible instances for which the market price at the time of purchase is automatically used as the bidding price.
+	// - NoSpot: regular pay-as-you-go instance
+	//
+	// - SpotWithPriceLimit: spot instance with a maximum price limit
+	//
+	// - SpotAsPriceGo: spot instance whose price is automatically offered by the system based on the current market price
 	//
 	// Default value: NoSpot.
 	//
@@ -273,9 +275,9 @@ type DescribePatternTypesRequest struct {
 	//
 	// NoSpot
 	SpotStrategy *string `json:"SpotStrategy,omitempty" xml:"SpotStrategy,omitempty"`
-	// The IDs of the vSwitches.
+	// The list of vSwitch IDs. You must specify at least one of VSwitchId and ZoneId.
 	VSwitchId []*string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty" type:"Repeated"`
-	// The zone IDs. If you pass vSwitch IDs to the system, this parameter does not take effect.
+	// The list of zone IDs. This parameter is invalid if a vSwitch ID is specified. You must specify at least one of VSwitchId and ZoneId.
 	ZoneId []*string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty" type:"Repeated"`
 }
 

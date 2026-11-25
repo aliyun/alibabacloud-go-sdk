@@ -34,7 +34,7 @@ type iDescribeScalingConfigurationsRequest interface {
 type DescribeScalingConfigurationsRequest struct {
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The page number of the scaling configuration list. Pages start from 1.
+	// The page number of the scaling configuration list. The starting value is 1.
 	//
 	// Default value: 1.
 	//
@@ -42,7 +42,7 @@ type DescribeScalingConfigurationsRequest struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page in paged queries. Maximum value: 50.
+	// The number of entries per page set in the paging Settings for a paged query. Maximum value: 50.
 	//
 	// Default value: 10.
 	//
@@ -60,15 +60,15 @@ type DescribeScalingConfigurationsRequest struct {
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The IDs of the scaling configurations to query.
+	// The ID of the scaling configuration to be queried.
 	//
-	// The query results include both active and inactive scaling configurations, identified by the response parameter `LifecycleState`.
+	// The query results include both active and inactive scaling configurations. The response parameter LifecycleState identifies the state.
 	ScalingConfigurationIds []*string `json:"ScalingConfigurationIds,omitempty" xml:"ScalingConfigurationIds,omitempty" type:"Repeated"`
-	// The names of the scaling configurations to query.
+	// The name of the scaling configuration to be queried.
 	//
-	// The query ignores invalid scaling configuration names without returning an error.
+	// The query results ignore invalid scaling configuration names and do not return an error.
 	ScalingConfigurationNames []*string `json:"ScalingConfigurationNames,omitempty" xml:"ScalingConfigurationNames,omitempty" type:"Repeated"`
-	// The ID of the scaling group. You can query all scaling configurations under this scaling group.
+	// The ID of the scaling group. You can query all scaling configurations in the scaling group.
 	//
 	// example:
 	//

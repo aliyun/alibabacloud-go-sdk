@@ -50,7 +50,7 @@ type iModifyAlarmRequest interface {
 }
 
 type ModifyAlarmRequest struct {
-	// The list of unique identifiers of the scaling rules that are associated with the event-triggered task.
+	// The list of unique identifiers of the scaling rules associated with the event-triggered task.
 	AlarmActions []*string `json:"AlarmActions,omitempty" xml:"AlarmActions,omitempty" type:"Repeated"`
 	// The ID of the event-triggered task.
 	//
@@ -60,15 +60,15 @@ type ModifyAlarmRequest struct {
 	//
 	// asg-bp1hvbnmkl10vll5****_f95ce797-dc2e-4bad-9618-14fee7d1****
 	AlarmTaskId *string `json:"AlarmTaskId,omitempty" xml:"AlarmTaskId,omitempty"`
-	// The operator that is used to compare the metric value and the threshold. Valid values:
+	// The comparison operator between the statistical value and the threshold of the metric. The comparison operator indicates the relationship in which the statistical value and the threshold can satisfy the condition. Valid values:
 	//
-	// 	- If the metric value is greater than or equal to the threshold, set the value to `>=`.
+	// - The statistical value is greater than or equal to the threshold. Value: `>=`.
 	//
-	// 	- If the metric value is less than or equal to the threshold, set the value to `<=`.
+	// - The statistical value is less than or equal to the threshold. Value: `<=`.
 	//
-	// 	- If the metric value is greater than the threshold, set the value to `>`.
+	// - The statistical value is greater than the threshold. Value: `>`.
 	//
-	// 	- If the metric value is less than the threshold, set the value to `<`.
+	// - The statistical value is less than the threshold. Value: `<`.
 	//
 	// example:
 	//
@@ -80,43 +80,43 @@ type ModifyAlarmRequest struct {
 	//
 	// Test alarm task.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The metric dimensions.
+	// The dimension information associated with the metric.
 	Dimensions []*ModifyAlarmRequestDimensions `json:"Dimensions,omitempty" xml:"Dimensions,omitempty" type:"Repeated"`
-	// The effective period of the event-triggered task.
+	// Specifies the effective period of the event-triggered task.
 	//
-	// This parameter follows the cron expression format. The default format is `X X X X X ?`, in which:
+	// This parameter follows cron expressions. The default format is `X X X X X ?`, where:
 	//
-	// 	- X: a placeholder for a field, which represents seconds, minutes, hours, days, and months in sequence. X can be a definite value or a special character that has logical meaning. For information about the valid values of X, see [Cron expression](https://help.aliyun.com/document_detail/25907.html).
+	// - X: a placeholder for a field, which sequentially represents seconds, minutes, hours, day, and month. X can be a specific value or a special character with logical meaning. For more information about the valid values of X, see [Cron expression](https://help.aliyun.com/document_detail/25907.html).
 	//
-	// 	- ?: No value is specified.
+	// - ?: specifies no value.
 	//
-	// > By default, the value of this parameter is specified in **UTC+8**. You can specify the time zone in the `TZ=+yy` format before a cron expression. y indicates the time zone. For example, `TZ=+00 	- 	- 1-2 	- 	- ?` specifies that the event-triggered task is in effect between 01:00 and 02:59 (UTC+0) every day.
+	// > The value of this parameter is **in the UTC+8 time zone by default**. You can add time zone information `TZ=+yy` before the cron expression to specify a time zone, where y represents the numeric value of the time zone. For example, `TZ=+00 	- 	- 1-2 	- 	- ?` indicates that the event-triggered task takes effect between 01:00 and 02:59 every day in the UTC+0 time zone.
 	//
-	// Examples:
+	// Examples and descriptions:
 	//
-	// 	- ` 	- 	- 	- 	- 	- ?  `: The event-triggered task is in effect all the time.
+	// -  `	- 	- 	- 	- 	- ?  `: takes effect at all times.
 	//
-	// 	- ` 	- 	- 17-18 	- 	- ?  `: The event-triggered task is in effect between 17:00 and 18:59 (UTC+8) every day.
+	// -  `	- 	- 17-18 	- 	- ? `: takes effect between 17:00 and 18:59 every day in the UTC+8 time zone.
 	//
-	// 	- `TZ=+00 	- 	- 1-2 	- 	- ?`: The event-triggered task is in effect between 01:00 and 02:59 (UTC+0) every day.
+	// - `TZ=+00 	- 	- 1-2 	- 	- ?`: takes effect between 01:00 and 02:59 every day in the UTC+0 time zone.
 	//
 	// example:
 	//
 	// TZ=+00 	- 	- 1-2 	- 	- ?
 	Effective *string `json:"Effective,omitempty" xml:"Effective,omitempty"`
-	// The number of times that the threshold must be reached before a scaling rule can be executed. For example, if you set this parameter to 3, the average CPU utilization must reach or exceed 80% three times in a row before a scaling rule is triggered.
+	// The number of times that the threshold expression must be met before the scaling rule is triggered. For example, the average CPU utilization must be greater than or equal to 80% in three consecutive statistical results.
 	//
 	// example:
 	//
 	// 3
 	EvaluationCount *int32 `json:"EvaluationCount,omitempty" xml:"EvaluationCount,omitempty"`
-	// The expressions that are specified in the multi-metric alert rule.
+	// The monitoring metrics of the multi-metric event-triggered task.
 	Expressions []*ModifyAlarmRequestExpressions `json:"Expressions,omitempty" xml:"Expressions,omitempty" type:"Repeated"`
-	// The relationship between the trigger conditions in the multi-metric alert rule. Valid values:
+	// The relationship between multiple monitoring metrics conditions. Valid values:
 	//
-	// 	- `&&`: An alert is triggered only if all metrics in the multi-metric alert rule meet the trigger conditions. In this case, an alert is triggered only if the results of all trigger conditions that are specified in the multi-metric alert rule are `true`.
+	// - `&&`: An alert is triggered only when all monitoring metrics meet the alert conditions. An alert is triggered only when all expressions in the multi-metric event-triggered task evaluate to `true`.
 	//
-	// 	- `||`: An alert is triggered if one of the metrics in the multi-metric alert rule meets the trigger condition.
+	// - `||`: An alert is triggered when any monitoring metric meets the alert condition.
 	//
 	// Default value: `&&`.
 	//
@@ -124,69 +124,69 @@ type ModifyAlarmRequest struct {
 	//
 	// &&
 	ExpressionsLogicOperator *string `json:"ExpressionsLogicOperator,omitempty" xml:"ExpressionsLogicOperator,omitempty"`
-	// The ID of the application group to which the custom metric belongs. If you set the MetricType parameter to custom, you must specify this parameter.
+	// The ID of the CloudMonitor application group to which the custom metric belongs. This parameter is required only when MetricType is set to custom.
 	//
 	// example:
 	//
 	// 4055401
 	GroupId *int32 `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	// The name of the metric. The valid values vary based on the metric type.
+	// The name of the metric. Valid values vary based on the monitoring type of the event-triggered task:
 	//
-	// 	- If you set the MetricType parameter to custom, the valid values are your custom metrics.
+	// - If the event-triggered task is of the custom monitoring type (MetricType=custom), valid values are your custom metrics.
 	//
-	// 	- If you set the MetricType parameter to system, the MetricName parameter has the following valid values:
+	// - If the event-triggered task is of the system monitoring type (MetricType=system), valid values:
 	//
-	//     	- CpuUtilization: the CPU utilization of an ECS instance. Unit: %.
+	//     - CpuUtilization: (ECS) CPU utilization (%).
 	//
-	//     	- IntranetTx: the outbound traffic over the internal network from an ECS instance. Unit: KB/min.
+	//     - IntranetTx: (ECS) outbound traffic over the internal network (KByte/min).
 	//
-	//     	- IntranetRx: the inbound traffic over the Internet to an ECS instance that resides in a virtual private cloud (VPC). Unit: KB/min.
+	//     - IntranetRx: (ECS) inbound traffic over the internal network (KByte/min).
 	//
-	//     	- VpcInternetTx: the outbound traffic over the Internet from an ECS instance that resides in a VPC. Unit: KB/min.
+	//     - VpcInternetTx: (ECS) outbound traffic over the Internet (KByte/min).
 	//
-	//     	- VpcInternetRx: the inbound traffic over the Internet to an ECS instance that resides in a VPC. Unit: KB/min.
+	//     - VpcInternetRx: (ECS) inbound traffic over the Internet (KByte/min).
 	//
-	//     	- SystemDiskReadBps: the number of bytes read from the system disk used by an ECS instance per second.
+	//     - SystemDiskReadBps: (ECS) system cloud disk read BPS (Byte/s).
 	//
-	//     	- SystemDiskWriteBps: the number of bytes written to the system disk used by an ECS instance per second.
+	//     - SystemDiskWriteBps: (ECS) system cloud disk write BPS (Byte/s).
 	//
-	//     	- SystemDiskReadOps: the number of read operations on the system disk used by an ECS instance per second.
+	//     - SystemDiskReadOps: (ECS) system cloud disk read IOPS (count/s).
 	//
-	//     	- SystemDiskWriteOps: the number of write operations on the system disk used by an ECS instance per second.
+	//     - SystemDiskWriteOps: (ECS) system cloud disk write IOPS (count/s).
 	//
-	//     	- CpuUtilizationAgent: the CPU utilization of an agent. Unit: %.
+	//     - CpuUtilizationAgent: (Agent) CPU utilization (%).
 	//
-	//     	- GpuMemoryFreeUtilizationAgent: the percentage of idle GPU memory of an agent.
+	//     - GpuMemoryFreeUtilizationAgent: (Agent) GPU memory idle rate (%).
 	//
-	//     	- GpuMemoryUtilizationAgent: the GPU memory usage of an agent. Unit: %.
+	//     - GpuMemoryUtilizationAgent: (Agent) GPU memory utilization (%).
 	//
-	//     	- MemoryUtilization: the memory usage of an agent. Unit: %.
+	//     - MemoryUtilization: (Agent) memory utilization (%).
 	//
-	//     	- LoadAverage: the average system load of an agent.
+	//     - LoadAverage: (Agent) average system load.
 	//
-	//     	- TcpConnection: the total number of TCP connections of an agent.
+	//     - TcpConnection: (Agent) total number of TCP connections.
 	//
-	//     	- TcpConnection: the number of established TCP connections of an agent.
+	//     - TcpConnection: (Agent) number of established TCP connections.
 	//
-	//     	- PackagesNetOut: the number of packets that are sent by the internal network interface controller (NIC) used by an agent.
+	//     - PackagesNetOut: (Agent) number of packets sent by the NIC.
 	//
-	//     	- PackagesNetIn: the number of packets that are received by the internal NIC used by an agent.
+	//     - PackagesNetIn: (Agent) number of packets received by the NIC.
 	//
-	//     	- EciPodCpuUtilization: the CPU utilization of an elastic container instance. Unit: %.
+	//     - EciPodCpuUtilization: CPU utilization (%).
 	//
-	//     	- EciPodMemoryUtilization: the memory usage of an elastic container instance. Unit: %.
+	//     - EciPodMemoryUtilization: memory utilization (%).
 	//
-	// For more information, see [Event-triggered task for system monitoring](https://help.aliyun.com/document_detail/74854.html).
+	// For more information, see [Event-triggered tasks for system monitoring](https://help.aliyun.com/document_detail/74854.html).
 	//
 	// example:
 	//
 	// MemoryUtilization
 	MetricName *string `json:"MetricName,omitempty" xml:"MetricName,omitempty"`
-	// The metric type. Valid Values:
+	// The type of the metric. Valid values:
 	//
-	// 	- system: a system metric of CloudMonitor.
+	// - system: uses CloudMonitor system metrics.
 	//
-	// 	- custom: a custom metric that is reported to CloudMonitor.
+	// - custom: uses custom metrics reported to CloudMonitor.
 	//
 	// example:
 	//
@@ -199,19 +199,19 @@ type ModifyAlarmRequest struct {
 	// alarmtask****
 	Name    *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The period of time during which statistics about the metric is collected. Unit: seconds. Valid values:
+	// The statistical period for the metric data, in seconds. Valid values:
 	//
-	// 	- 15
+	// - 15.
 	//
-	// 	- 60
+	// - 60.
 	//
-	// 	- 120
+	// - 120.
 	//
-	// 	- 300
+	// - 300.
 	//
-	// 	- 900
+	// - 900.
 	//
-	// > If your scaling group is of the ECS type and uses CloudMonitor metrics, you can set the Period parameter to 15. In other cases, you can set the Period parameter to 60, 120, 300, or 900. In most cases, the name of a CloudMonitor metric contains Agent.
+	// > A statistical period of 15 seconds is applicable only to metrics collected by the CloudMonitor agent (metrics that start with Agent) when monitoring ECS-type scaling groups. For all other metrics, the statistical period can be set to 60, 120, 300, or 900 seconds.
 	//
 	// example:
 	//
@@ -226,19 +226,19 @@ type ModifyAlarmRequest struct {
 	// cn-qingdao
 	RegionId             *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	// The method that is used to aggregate statistics for the metric. Valid values:
+	// The method used to aggregate the metric data. Valid values:
 	//
-	// 	- Average
+	// - Average: average value.
 	//
-	// 	- Minimum
+	// - Minimum: minimum value.
 	//
-	// 	- Maximum
+	// - Maximum: maximum value.
 	//
 	// example:
 	//
 	// Average
 	Statistics *string `json:"Statistics,omitempty" xml:"Statistics,omitempty"`
-	// The thresholds of the metric values in the multi-metric alert rule. If the thresholds are reached the specified number of times within the specified period, a scaling rule is executed.
+	// The threshold of the monitoring metrics in a multi-metric event-triggered task. The scaling rule is executed when the threshold expression is met the specified number of times.
 	//
 	// example:
 	//
@@ -448,47 +448,48 @@ func (s *ModifyAlarmRequest) Validate() error {
 }
 
 type ModifyAlarmRequestDimensions struct {
-	// The key of dimension N that you want to associate with the metric. The valid values of Dimension.N.DimensionKey vary based on the value of MetricType.
+	// The key of the dimension information associated with the metric. Valid values vary based on the monitoring type of the event-triggered node:
 	//
-	// 	- If you set MetricType to custom, you can specify this parameter based on your business requirements.
+	// - If the event-triggered task is of the custom monitoring type (MetricType=custom), valid values are not restricted. You can specify custom values.
 	//
-	// 	- If you set MetricType to system, this parameter has the following valid values:
 	//
-	//     	- user_id: the ID of your Alibaba Cloud account.
+	// - If the event-triggered task is of the system monitoring type (MetricType=system), valid values:
 	//
-	//     	- scaling_group: the scaling group that is monitored by the event-triggered task.
+	//     - user_id: your account ID.
 	//
-	//     	- device: the NIC type.
+	//     - scaling_group: the scaling group to be monitored.
 	//
-	//     	- state: the status of the TCP connection.
+	//     - device: the type of the network interface controller (NIC) device.
 	//
-	//     	- rulePool: the specified server group for the ALB qps metric.
+	//     - state: the state of the TCP connection.
+	//
+	//     - rulePool: the server group specified for the ALB QPS monitoring metrics.
 	//
 	// example:
 	//
 	// device
 	DimensionKey *string `json:"DimensionKey,omitempty" xml:"DimensionKey,omitempty"`
-	// The dimension value of the metric. The valid values of this parameter vary based on the value of Dimensions.DimensionKey.
+	// The value of the dimension information associated with the metric. Valid values are determined by Dimension.N.DimensionKey:
 	//
-	// 	- If you set MetricType to custom, you can specify this parameter based on your business requirements.
+	// - If Dimension.N.DimensionKey is set to a custom value, which means the event-triggered task is of the custom monitoring type (MetricType=custom), valid values are not restricted. You can specify custom values.
 	//
-	// 	- If you set MetricType to system, Dimension.N.DimensionValue has the following valid values:
+	// - If Dimension.N.DimensionKey is set to a system-specified value, which means the event-triggered task is of the system monitoring type (MetricType=system), valid values:
 	//
-	//     	- user_id: The system specifies the value.
+	//     - user_id: automatically populated by the system.
 	//
-	//     	- scaling_group: The system specifies the value.
+	//     - scaling_group: automatically populated by the system.
 	//
-	//     	- device:
+	//     - device:
 	//
-	//         	- eth0: For classic network instances, eth0 indicates the internal network network interface controller. Only one eth0 NIC exists on each instance that resides in VPCs.
+	//         - eth0: for classic network instances, eth0 represents the internal NIC. For VPC-connected instances, only the eth0 NIC exists.
 	//
-	//         	- eth1: For classic network instances, eth1 represents the Internet network interface controller.
+	//         - eth1: for classic network instances, eth1 represents the public NIC.
 	//
-	//     	- state:
+	//     - state:
 	//
-	//         	- TCP_TOTAL specifies the total number of TCP connections.
+	//         - TCP_TOTAL: the total number of TCP connections.
 	//
-	//         	- ESTABLISHED specifies the number of TCP connections that are established.
+	//         - ESTABLISHED: the number of established TCP connections.
 	//
 	// example:
 	//
@@ -527,15 +528,15 @@ func (s *ModifyAlarmRequestDimensions) Validate() error {
 }
 
 type ModifyAlarmRequestExpressions struct {
-	// The operator that is used to compare the metric value and the threshold. Valid values:
+	// The comparison operator between the statistical value and the threshold of the metric. The comparison operator indicates the relationship in which the statistical value and the threshold can satisfy the condition. Valid values:
 	//
-	// 	- If the metric value is greater than or equal to the threshold, set the value to `>=`.
+	// - The statistical value is greater than or equal to the threshold. Value: `>=`.
 	//
-	// 	- If the metric value is less than or equal to the threshold, set the value to `<=`.
+	// - The statistical value is less than or equal to the threshold. Value: `<=`.
 	//
-	// 	- If the metric value is greater than the threshold, set the value to `>`.
+	// - The statistical value is greater than the threshold. Value: `>`.
 	//
-	// 	- If the metric value is less than the threshold, set the value to `<`.
+	// - The statistical value is less than the threshold. Value: `<`.
 	//
 	// Default value: >=.
 	//
@@ -543,73 +544,73 @@ type ModifyAlarmRequestExpressions struct {
 	//
 	// >=
 	ComparisonOperator *string `json:"ComparisonOperator,omitempty" xml:"ComparisonOperator,omitempty"`
-	// The name of the metric that is specified in the multi-metric alert rule. The valid values vary based on the metric type.
+	// The name of the monitoring metric in the multi-metric event-triggered node. Valid values vary based on the monitoring type of the event-triggered task:
 	//
-	// 	- If you set the MetricType parameter to custom, the valid values are your custom metrics.
+	// - If the event-triggered task is of the custom monitoring type (MetricType=custom), valid values are your custom monitoring metrics.
 	//
-	// 	- If you set the MetricType parameter to system, the MetricName parameter has the following valid values:
+	// - If the event-triggered task is of the system monitoring type (MetricType=system), valid values:
 	//
-	//     	- CpuUtilization: the CPU utilization of an ECS instance. Unit: %.
+	//     - CpuUtilization: (ECS) CPU utilization (%).
 	//
-	//     	- IntranetTx: the outbound traffic over the internal network from an ECS instance. Unit: KB/min.
+	//     - IntranetTx: (ECS) outbound traffic over the internal network (KByte/min).
 	//
-	//     	- IntranetRx: the inbound traffic over the Internet to an ECS instance that resides in a VPC. Unit: KB/min.
+	//     - IntranetRx: (ECS) inbound traffic over the internal network (KByte/min).
 	//
-	//     	- VpcInternetTx: the outbound traffic over the Internet from an ECS instance that resides in a VPC. Unit: KB/min.
+	//     - VpcInternetTx: (ECS) outbound traffic over the Internet (KByte/min).
 	//
-	//     	- VpcInternetRx: the inbound traffic over the Internet to an ECS instance that resides in a VPC. Unit: KB/min.
+	//     - VpcInternetRx: (ECS) inbound traffic over the Internet (KByte/min).
 	//
-	//     	- SystemDiskReadBps: the number of bytes read from the system disk used by an ECS instance per second.
+	//     - SystemDiskReadBps: (ECS) system cloud disk read BPS (Byte/s).
 	//
-	//     	- SystemDiskWriteBps: the number of bytes written to the system disk used by an ECS instance per second.
+	//     - SystemDiskWriteBps: (ECS) system cloud disk write BPS (Byte/s).
 	//
-	//     	- SystemDiskReadOps: the number of read operations on the system disk used by an ECS instance per second.
+	//     - SystemDiskReadOps: (ECS) system cloud disk read IOPS (count/s).
 	//
-	//     	- SystemDiskWriteOps: the number of write operations on the system disk used by an ECS instance per second.
+	//     - SystemDiskWriteOps: (ECS) system cloud disk write IOPS (count/s).
 	//
-	//     	- CpuUtilizationAgent: the CPU utilization of an agent. Unit: %.
+	//     - CpuUtilizationAgent: (Agent) CPU utilization (%).
 	//
-	//     	- GpuUtilizationAgent: the GPU utilization of an agent. Unit: %.
+	//     - GpuUtilizationAgent: (Agent) GPU utilization (%).
 	//
-	//     	- GpuMemoryFreeUtilizationAgent: the percentage of idle GPU memory of an agent.
+	//     - GpuMemoryFreeUtilizationAgent: (Agent) GPU memory idle rate (%).
 	//
-	//     	- GpuMemoryUtilizationAgent: the GPU memory usage of an agent. Unit: %.
+	//     - GpuMemoryUtilizationAgent: (Agent) GPU memory utilization (%).
 	//
-	//     	- MemoryUtilization: the memory usage of an agent. Unit: %.
+	//     - MemoryUtilization: (Agent) memory utilization (%).
 	//
-	//     	- LoadAverage: the average system load of an agent.
+	//     - LoadAverage: (Agent) average system load.
 	//
-	//     	- TcpConnection: the total number of TCP connections of an agent.
+	//     - TcpConnection: (Agent) total number of TCP connections.
 	//
-	//     	- TcpConnection: the number of established TCP connections of an agent.
+	//     - TcpConnection: (Agent) number of established TCP connections.
 	//
-	//     	- PackagesNetOut: the number of packets that are sent by the internal NIC used by an agent.
+	//     - PackagesNetOut: (Agent) number of packets sent by the network interface controller (NIC).
 	//
-	//     	- PackagesNetIn: the number of packets that are received by the internal NIC used by an agent.
+	//     - PackagesNetIn: (Agent) number of packets received by the network interface controller (NIC).
 	//
-	//     	- EciPodCpuUtilization: the CPU utilization of an elastic container instance. Unit: %.
+	//     - EciPodCpuUtilization: CPU utilization (%).
 	//
-	//     	- EciPodMemoryUtilization: the memory usage of an elastic container instance. Unit: %.
+	//     - EciPodMemoryUtilization: memory utilization (%).
 	//
-	// For more information, see [Event-triggered task for system monitoring](https://help.aliyun.com/document_detail/74854.html).
+	// For more information, see [Event-triggered tasks for system monitoring](https://help.aliyun.com/document_detail/74854.html).
 	//
 	// example:
 	//
 	// CpuUtilization
 	MetricName *string `json:"MetricName,omitempty" xml:"MetricName,omitempty"`
-	// The period of time during which statistics about the metrics in the multi-metric alert rule is collected. Unit: seconds. Valid values:
+	// The statistical period for the metric data in the multi-metric event-triggered task, in seconds. Valid values:
 	//
-	// 	- 15
+	// - 15.
 	//
-	// 	- 60
+	// - 60.
 	//
-	// 	- 120
+	// - 120.
 	//
-	// 	- 300
+	// - 300.
 	//
-	// 	- 900
+	// - 900.
 	//
-	// > If your scaling group is of the ECS type and the event-triggered task associated with your scaling group monitors CloudMonitor metrics, you can set the Period parameter to 15. In other cases, you can set the Period parameter to 60, 120, 300, or 900. In most cases, the name of a CloudMonitor metric contains Agent.
+	// > A statistical period of 15 seconds is applicable only to metrics collected by the CloudMonitor agent (metrics that start with Agent) when monitoring ECS-type scaling groups. For all other metrics, the statistical period can be set to 60, 120, 300, or 900 seconds.
 	//
 	// Default value: 300.
 	//
@@ -617,19 +618,19 @@ type ModifyAlarmRequestExpressions struct {
 	//
 	// 300
 	Period *int32 `json:"Period,omitempty" xml:"Period,omitempty"`
-	// The method that is used to aggregate statistics about the metrics that are specified in the multi-metric alert rule. Valid values:
+	// The method used to aggregate the metric data in the multi-metric event-triggered task. Valid values:
 	//
-	// 	- Average
+	// - Average: average value.
 	//
-	// 	- Minimum
+	// - Minimum: minimum value.
 	//
-	// 	- Maximum
+	// - Maximum: maximum value.
 	//
 	// example:
 	//
 	// Average
 	Statistics *string `json:"Statistics,omitempty" xml:"Statistics,omitempty"`
-	// The thresholds of the metric values in the multi-metric alert rule. If the thresholds are reached the specified number of times within the specified period, a scaling rule is executed.
+	// The threshold of the monitoring metrics in a multi-metric event-triggered task. The scaling rule is executed when the threshold expression is met the specified number of times.
 	//
 	// example:
 	//

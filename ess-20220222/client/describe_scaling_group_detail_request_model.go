@@ -20,7 +20,7 @@ type iDescribeScalingGroupDetailRequest interface {
 }
 
 type DescribeScalingGroupDetailRequest struct {
-	// The output format. Set the value to yaml.
+	// The output format. Only the YAML format is supported.
 	//
 	// example:
 	//

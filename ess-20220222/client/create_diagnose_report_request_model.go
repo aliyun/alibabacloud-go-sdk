@@ -16,7 +16,7 @@ type iCreateDiagnoseReportRequest interface {
 }
 
 type CreateDiagnoseReportRequest struct {
-	// The region ID of the scaling group.
+	// The ID of the region to which the scaling group belongs.
 	//
 	// This parameter is required.
 	//
@@ -24,7 +24,7 @@ type CreateDiagnoseReportRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the scaling group.
+	// The ID of the target scaling group.
 	//
 	// This parameter is required.
 	//

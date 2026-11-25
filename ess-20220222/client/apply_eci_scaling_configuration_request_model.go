@@ -76,21 +76,14 @@ type ApplyEciScalingConfigurationRequest struct {
 	//
 	//             - containerPort: 80
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
-	// Optional. Set the value to YAML.
-	//
-	// example:
-	//
-	// YAML
-	Format *string `json:"Format,omitempty" xml:"Format,omitempty"`
+	Format  *string `json:"Format,omitempty" xml:"Format,omitempty"`
 	// The region ID.
 	//
 	// example:
 	//
 	// cn-qingdao
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the scaling configuration.
-	//
-	// If you want the system to update a scaling configuration of the Elastic Container Instance type based on a YAML configuration file, you must specify `ScalingConfigurationId`. If you do not specify `ScalingConfigurationId`, the system creates a new scaling configuration based on the YAML configuration file.
+	// The ID of the scaling configuration to be updated. Specify ScalingConfigurationId when you update an ECI scaling configuration based on the Content parameter. If you do not specify ScalingConfigurationId, an ECI scaling configuration is created based on the Content parameter.
 	//
 	// example:
 	//

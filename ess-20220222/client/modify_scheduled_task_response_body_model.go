@@ -14,7 +14,7 @@ type iModifyScheduledTaskResponseBody interface {
 }
 
 type ModifyScheduledTaskResponseBody struct {
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

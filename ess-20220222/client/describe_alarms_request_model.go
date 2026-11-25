@@ -40,36 +40,36 @@ type DescribeAlarmsRequest struct {
 	//
 	// asg-bp1hvbnmkl10vll5****_f95ce797-dc2e-4bad-9618-14fee7d1****
 	AlarmTaskId *string `json:"AlarmTaskId,omitempty" xml:"AlarmTaskId,omitempty"`
-	// Specifies whether to enable the event-triggered task. Valid values:
+	// Specifies whether the event-triggered task is enabled. Valid values:
 	//
-	// 	- true: enables the event-triggered task.
+	// - true: Enabled.
 	//
-	// 	- false: disables the event-triggered task.
+	// - false: Disabled.
 	//
 	// example:
 	//
 	// true
 	IsEnable *bool `json:"IsEnable,omitempty" xml:"IsEnable,omitempty"`
-	// The metric name.
+	// The name of the metric.
 	//
 	// example:
 	//
 	// CpuUtilization
 	MetricName *string `json:"MetricName,omitempty" xml:"MetricName,omitempty"`
-	// The metric type. Valid values:
+	// The type of the metric. Valid values:
 	//
-	// 	- system: a system metric of CloudMonitor
+	// - system: system metrics of CloudMonitor.
 	//
-	// 	- custom: a custom metric that is reported to CloudMonitor.
+	// - custom: custom metrics reported to CloudMonitor.
 	//
-	// 	- hybrid: a metric of Hybrid Cloud Monitoring.
+	// - hybrid: metrics of Hybrid Cloud Monitoring.
 	//
 	// example:
 	//
-	// true
+	// system
 	MetricType *string `json:"MetricType,omitempty" xml:"MetricType,omitempty"`
 	OwnerId    *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The page number. Pages start from page 1.
+	// The page number of the scaling rule list. Pages start from page 1.
 	//
 	// Default value: 1.
 	//
@@ -77,7 +77,7 @@ type DescribeAlarmsRequest struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page. Valid values: 1 to 50.
+	// The Settings for the number of entries per page in a paged query. Maximum value: 50.
 	//
 	// Default value: 10.
 	//
@@ -85,7 +85,7 @@ type DescribeAlarmsRequest struct {
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The region ID of the event-triggered task.
+	// The ID of the region to which the event-triggered task belongs.
 	//
 	// This parameter is required.
 	//
@@ -100,13 +100,13 @@ type DescribeAlarmsRequest struct {
 	//
 	// asg-bp18p2yfxow2dloq****
 	ScalingGroupId *string `json:"ScalingGroupId,omitempty" xml:"ScalingGroupId,omitempty"`
-	// The status of the event-triggered task. Valid values:
+	// The state of the event-triggered task. Valid values:
 	//
-	// 	- ALARM: The alert condition is met and an alert is triggered.
+	// - ALARM: Alerting. The alert condition is met.
 	//
-	// 	- OK: The alert condition is not met.
+	// - OK: Normal. The alert condition is not met.
 	//
-	// 	- INSUFFICIENT_DATA: Auto Scaling cannot determine whether the alert condition is met due to insufficient data.
+	// - INSUFFICIENT_DATA: Insufficient data. The data is insufficient to determine whether the alert condition is met.
 	//
 	// example:
 	//

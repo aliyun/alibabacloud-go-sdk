@@ -16,7 +16,7 @@ type iCreateScalingConfigurationResponseBody interface {
 }
 
 type CreateScalingConfigurationResponseBody struct {
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//

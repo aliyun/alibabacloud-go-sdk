@@ -20,11 +20,11 @@ type iSetInstanceHealthRequest interface {
 }
 
 type SetInstanceHealthRequest struct {
-	// The health status of the instance. Valid values:
+	// The health status to set for the instance. Valid values:
 	//
-	// 	- Healthy: sets the instance as healthy.
+	// - Healthy: Sets the instance to the healthy state.
 	//
-	// 	- Unhealthy: sets the instance as unhealthy.
+	// - Unhealthy: Sets the instance to the unhealthy state.
 	//
 	// This parameter is required.
 	//
@@ -32,7 +32,7 @@ type SetInstanceHealthRequest struct {
 	//
 	// Healthy
 	HealthStatus *string `json:"HealthStatus,omitempty" xml:"HealthStatus,omitempty"`
-	// The ID of the instance.
+	// The ID of the instance in the scaling group.
 	//
 	// This parameter is required.
 	//

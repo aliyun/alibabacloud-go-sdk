@@ -18,9 +18,9 @@ type iRemoveInstancesResponseBody interface {
 }
 
 type RemoveInstancesResponseBody struct {
-	// The instances that were not removed and the reasons why they were not removed.
+	// The list of ignored invalid instance information in the request.
 	IgnoredInstances []*RemoveInstancesResponseBodyIgnoredInstances `json:"IgnoredInstances,omitempty" xml:"IgnoredInstances,omitempty" type:"Repeated"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -83,11 +83,23 @@ func (s *RemoveInstancesResponseBody) Validate() error {
 }
 
 type RemoveInstancesResponseBodyIgnoredInstances struct {
-	// The error code that indicates the reason why the instance was not removed.
+	// The code of the reason why the instance is ignored.
+	//
+	// example:
+	//
+	// IncorrectInstanceStatus
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The ID of the instance that was not removed.
+	// The instance ID of the ignored instance.
+	//
+	// example:
+	//
+	// i-28wt4****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The error message that indicates the reason why the instance was not removed.
+	// The description of the reason why the instance is ignored.
+	//
+	// example:
+	//
+	// The current status of instance "i-28wt4****" does not support this action.
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 }
 

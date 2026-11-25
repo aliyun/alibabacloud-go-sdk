@@ -27,11 +27,11 @@ type SetInstancesProtectionRequest struct {
 	// This parameter is required.
 	InstanceIds []*string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
 	OwnerId     *int64    `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// Specifies whether to protect ECS instances from being stopped or removed from the scaling group during scale-ins. Valid values:
+	// Specifies whether to protect the ECS instance from being terminated or removed from the scaling group during automatic scale-in. Valid values:
 	//
-	// 	- true
+	// - true: Protects the ECS instance.
 	//
-	// 	- false
+	// - false: Does not protect the ECS instance.
 	//
 	// This parameter is required.
 	//
