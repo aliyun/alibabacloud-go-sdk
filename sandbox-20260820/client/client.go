@@ -1901,7 +1901,7 @@ func (client *Client) ListCustomDomains(request *ListCustomDomainsRequest) (_res
 
 // Summary:
 //
-// Queries the quota configuration list for the current account by using paging.
+// Performs a paged query to retrieve the quota configurations for the current account.
 //
 // @param request - ListQuotaRequest
 //
@@ -1952,7 +1952,7 @@ func (client *Client) ListQuotaWithOptions(request *ListQuotaRequest, headers ma
 
 // Summary:
 //
-// Queries the quota configuration list for the current account by using paging.
+// Performs a paged query to retrieve the quota configurations for the current account.
 //
 // @param request - ListQuotaRequest
 //

@@ -1319,7 +1319,7 @@ func (client *Client) ListCustomDomainsWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// Queries the quota configuration list for the current account by using paging.
+// Performs a paged query to retrieve the quota configurations for the current account.
 //
 // @param request - ListQuotaRequest
 //

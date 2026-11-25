@@ -17,21 +17,41 @@ type iE2BNetwork interface {
   GetDenyOut() []*string 
   SetMaskRequestHost(v string) *E2BNetwork
   GetMaskRequestHost() *string 
+  SetRules(v map[string][]map[string]interface{}) *E2BNetwork
+  GetRules() map[string][]map[string]interface{} 
 }
 
 type E2BNetwork struct {
-  // The allowlist for outbound access from the sandbox. After configuration, the sandbox can access only the destinations in the list.
+  // The allowlist for outbound access from the sandbox. After configuration, the sandbox can only access the destinations in the list.
+  // 
+  // example:
+  // 
+  // ["api.example.com","10.0.0.0/8"]
   AllowOut []*string `json:"allowOut" xml:"allowOut" type:"Repeated"`
-  // Specifies whether to allow Direct Internet Access to the sandbox.
+  // Specifies whether Direct Internet Access to the sandbox is allowed.
+  // 
+  // example:
+  // 
+  // false
   AllowPublicTraffic *bool `json:"allowPublicTraffic,omitempty" xml:"allowPublicTraffic,omitempty"`
   // The denylist for outbound access from the sandbox. After configuration, the sandbox cannot access the destinations in the list.
+  // 
+  // example:
+  // 
+  // ["blocked.example.com","192.168.0.0/16"]
   DenyOut []*string `json:"denyOut" xml:"denyOut" type:"Repeated"`
-  // The domain name used to rewrite the request Host header when accessing the sandbox. If this parameter is not specified, the original Host is retained.
+  // The domain name used to rewrite the request Host header when accessing the sandbox. If not configured, the original Host header remains unchanged.
   // 
   // example:
   // 
   // sandbox.example.com
   MaskRequestHost *string `json:"maskRequestHost,omitempty" xml:"maskRequestHost,omitempty"`
+  // The key is the exact destination hostname or the E2B reserved key @fc.sandbox.identity, and the value is a list of rule objects. The number of hostnames and replacement entries is subject to account quota limits. GetSandboxInner echoes the current hostname rules and configured OAuth options in the same format. User tokens are only used during writes.
+  // 
+  // example:
+  // 
+  // {"api.example.com":[{"transform":{"headers":{"X-Example":"demo"}}}]}
+  Rules map[string][]map[string]interface{} `json:"rules" xml:"rules"`
 }
 
 func (s E2BNetwork) String() string {
@@ -58,6 +78,10 @@ func (s *E2BNetwork) GetMaskRequestHost() *string  {
   return s.MaskRequestHost
 }
 
+func (s *E2BNetwork) GetRules() map[string][]map[string]interface{}  {
+  return s.Rules
+}
+
 func (s *E2BNetwork) SetAllowOut(v []*string) *E2BNetwork {
   s.AllowOut = v
   return s
@@ -75,6 +99,11 @@ func (s *E2BNetwork) SetDenyOut(v []*string) *E2BNetwork {
 
 func (s *E2BNetwork) SetMaskRequestHost(v string) *E2BNetwork {
   s.MaskRequestHost = &v
+  return s
+}
+
+func (s *E2BNetwork) SetRules(v map[string][]map[string]interface{}) *E2BNetwork {
+  s.Rules = v
   return s
 }
 

@@ -20,7 +20,7 @@ type IPConfig struct {
 	//
 	// example:
 	//
-	// 办公网出口地址
+	// The egress address of the office network.
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
 	// The IPv4 address or CIDR block. IPv6 is not supported.
 	//

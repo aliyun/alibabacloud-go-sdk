@@ -24,25 +24,25 @@ type iListQuotaResponseBody interface {
 }
 
 type ListQuotaResponseBody struct {
-	// The response code. A value of 200 indicates success.
+	// The response code. The value is 200 if the request is successful.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// The maximum number of entries to return per page. This field is returned only if a positive integer is specified for maxResults in the request.
+	// The value of the maxResults parameter specified in the request if a positive integer is specified. Otherwise, this field is not returned.
 	//
 	// example:
 	//
 	// 10
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
-	// The response message. A value of success indicates success.
+	// The response message. The value is success if the request is successful.
 	//
 	// example:
 	//
 	// success
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// The pagination token for the next page.
+	// The pagination token for the next page, which is used for subsequent queries.
 	//
 	// example:
 	//
