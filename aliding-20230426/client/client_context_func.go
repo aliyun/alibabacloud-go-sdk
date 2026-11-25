@@ -586,6 +586,72 @@ func (client *Client) AddRecordPermissionWithContext(ctx context.Context, tmpReq
 
 // Summary:
 //
+// 添加机器人到场景群
+//
+// @param request - AddRobotToScenegroupRequest
+//
+// @param tmpHeader - AddRobotToScenegroupHeaders
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AddRobotToScenegroupResponse
+func (client *Client) AddRobotToScenegroupWithContext(ctx context.Context, request *AddRobotToScenegroupRequest, tmpHeader *AddRobotToScenegroupHeaders, runtime *dara.RuntimeOptions) (_result *AddRobotToScenegroupResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	headers := &AddRobotToScenegroupShrinkHeaders{}
+	openapiutil.Convert(tmpHeader, headers)
+	if !dara.IsNil(tmpHeader.AccountContext) {
+		headers.AccountContextShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpHeader.AccountContext, dara.String("AccountContext"), dara.String("json"))
+	}
+
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.OpenConversationId) {
+		body["OpenConversationId"] = request.OpenConversationId
+	}
+
+	if !dara.IsNil(request.RobotCode) {
+		body["RobotCode"] = request.RobotCode
+	}
+
+	realHeaders := make(map[string]*string)
+	if !dara.IsNil(headers.CommonHeaders) {
+		realHeaders = headers.CommonHeaders
+	}
+
+	if !dara.IsNil(headers.AccountContextShrink) {
+		realHeaders["AccountContext"] = dara.String(dara.Stringify(dara.StringValue(headers.AccountContextShrink)))
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: realHeaders,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("AddRobotToScenegroup"),
+		Version:     dara.String("2023-04-26"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/dingtalk/v1/im/addRobotToScenegroup"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &AddRobotToScenegroupResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // 新增群成员
 //
 // @param request - AddScenegroupMemberRequest
