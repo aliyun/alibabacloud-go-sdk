@@ -16,7 +16,7 @@ type iListClusterChecksRequest interface {
 }
 
 type ListClusterChecksRequest struct {
-	// Filters specific check objects.
+	// Filters the specified check objects.
 	//
 	// example:
 	//

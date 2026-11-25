@@ -28,7 +28,7 @@ type GetUpgradeStatusResponseBody struct {
 	//
 	// subject to actual return
 	ErrorMessage *string `json:"error_message,omitempty" xml:"error_message,omitempty"`
-	// The ID of the precheck report.
+	// The precheck report ID.
 	//
 	// example:
 	//
@@ -36,13 +36,13 @@ type GetUpgradeStatusResponseBody struct {
 	PrecheckReportId *string `json:"precheck_report_id,omitempty" xml:"precheck_report_id,omitempty"`
 	// The current upgrade status of the cluster. Valid values:
 	//
-	// - `success`: Upgrade succeeded.
+	// - `success`: The upgrade succeeded.
 	//
-	// - `fail`: Upgrade failed.
+	// - `fail`: The upgrade failed.
 	//
-	// - `pause`: Upgrade paused.
+	// - `pause`: The upgrade is paused.
 	//
-	// - `running`: Upgrade in progress.
+	// - `running`: The upgrade is in progress.
 	//
 	// example:
 	//
@@ -58,7 +58,7 @@ type GetUpgradeStatusResponseBody struct {
 	//
 	// - `pause`: Paused.
 	//
-	// - `success`: Upgrade succeeded.
+	// - `success`: The upgrade succeeded.
 	//
 	// example:
 	//

@@ -16,7 +16,7 @@ type iRunNodeOperationRequest interface {
 }
 
 type RunNodeOperationRequest struct {
-	// The name of the O&M action to execute.
+	// The name of the O&M action to perform.
 	//
 	// This parameter is required.
 	//
@@ -24,7 +24,7 @@ type RunNodeOperationRequest struct {
 	//
 	// restart.kubelet
 	OperationAction *string `json:"operationAction,omitempty" xml:"operationAction,omitempty"`
-	// The list of parameters for the O&M action.
+	// The list of parameters accepted by the O&M action.
 	OperationArgs []*string `json:"operationArgs,omitempty" xml:"operationArgs,omitempty" type:"Repeated"`
 }
 

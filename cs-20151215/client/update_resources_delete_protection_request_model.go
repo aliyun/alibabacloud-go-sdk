@@ -45,9 +45,9 @@ type UpdateResourcesDeleteProtectionRequest struct {
 	Namespace *string `json:"namespace,omitempty" xml:"namespace,omitempty"`
 	// The type of the resource to update. Valid values:
 	//
-	// - namespaces: namespace.
+	// - namespaces: namespace
 	//
-	// - services: service.
+	// - services: service
 	//
 	// example:
 	//

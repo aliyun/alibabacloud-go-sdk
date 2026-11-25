@@ -16,7 +16,7 @@ type iListClusterAddonInstanceResourcesResponseBody interface {
 }
 
 type ListClusterAddonInstanceResourcesResponseBody struct {
-	// The Helm release instance information corresponding to the component.
+	// The information about the Helm release instance corresponding to the component.
 	HelmRelease *ListClusterAddonInstanceResourcesResponseBodyHelmRelease `json:"helm_release,omitempty" xml:"helm_release,omitempty" type:"Struct"`
 	// The list of Kubernetes objects contained in the component.
 	KubernetesObjects []*ListClusterAddonInstanceResourcesResponseBodyKubernetesObjects `json:"kubernetes_objects,omitempty" xml:"kubernetes_objects,omitempty" type:"Repeated"`
@@ -160,7 +160,7 @@ type ListClusterAddonInstanceResourcesResponseBodyKubernetesObjects struct {
 	//
 	// terway-pod-reader
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The namespace to which the object belongs.
+	// The namespace of the object.
 	//
 	// example:
 	//

@@ -55,13 +55,13 @@ type ListOperationPlansResponseBodyPlans struct {
 	//
 	// c29ced64b3dfe4f33b57ca0aa9f68****
 	ClusterId *string `json:"cluster_id,omitempty" xml:"cluster_id,omitempty"`
-	// The creation time of the execution plan.
+	// The time when the execution plan was created.
 	//
 	// example:
 	//
 	// 2023-11-21T20:01:22+08:00
 	Created *string `json:"created,omitempty" xml:"created,omitempty"`
-	// The expected end time in ISO 8601 format, including time zone information.
+	// The expected end time in ISO 8601 format, including the time zone information.
 	//
 	// example:
 	//
@@ -73,7 +73,7 @@ type ListOperationPlansResponseBodyPlans struct {
 	//
 	// P-655c9c127e0e6603ef00****
 	PlanId *string `json:"plan_id,omitempty" xml:"plan_id,omitempty"`
-	// The expected start time in ISO 8601 format, including time zone information.
+	// The expected start time in ISO 8601 format, including the time zone information.
 	//
 	// example:
 	//

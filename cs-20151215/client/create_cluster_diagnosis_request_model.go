@@ -16,7 +16,7 @@ type iCreateClusterDiagnosisRequest interface {
 }
 
 type CreateClusterDiagnosisRequest struct {
-	// The parameters used to specify the diagnosis target. Examples of parameters for different diagnosis types:
+	// The parameters used to specify the diagnostic target. Examples of parameters for different diagnosis types:
 	//
 	// node:
 	//

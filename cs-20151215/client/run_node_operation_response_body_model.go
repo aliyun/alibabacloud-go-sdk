@@ -28,7 +28,7 @@ type RunNodeOperationResponseBody struct {
 	//
 	// example:
 	//
-	// xxxx
+	// 123e4567-e89b-12d3-a456-426614174000
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
 	// The task ID.
 	//

@@ -22,11 +22,11 @@ type iDiskInit interface {
 }
 
 type DiskInit struct {
-	// The unique identifier for a disk in the node pool.
+	// The name of the disk, which uniquely identifies a disk in the node pool.
 	//
-	// - When local_disk is set to false, the value must match one of the disk_name values in scaling_group.data_disks.
+	// - If local_disk is set to false, the value must match a disk_name in scaling_group.data_disks.
 	//
-	// - When local_disk is set to true, the value must be different from all disk_name values in scaling_group.data_disks.
+	// - If local_disk is set to true, the value must be different from any disk_name in scaling_group.data_disks.
 	//
 	// This parameter is required.
 	//
@@ -34,25 +34,25 @@ type DiskInit struct {
 	//
 	// disk0
 	DiskName *string `json:"disk_name,omitempty" xml:"disk_name,omitempty"`
-	// Specifies whether this configuration applies to a local disk. When this parameter is set to true:
+	// The configuration for the local disk. If this parameter is set to true:
 	//
-	// - If the disk cannot be matched by using the ECS DiskName and symbolic links, the local disk can be matched.
+	// - If the disk cannot be matched by using the ECS DiskName and symbolic links, the local disk is matched.
 	//
 	// - If the disk is detected as uninitialized during boot, it is reinitialized.
 	//
-	// - Both mount_target and mkfs_type must be set or left empty at the same time.
+	// - Both mount_target and mkfs_type must be specified or left empty at the same time.
 	//
-	// - When used in combination with mount_for_runtime, if the local disk is reinitialized, the node must be removed from and then re-added to the node pool.
+	// - If this parameter is used in combination with mount_for_runtime and the local disk is reinitialized, the node must be removed from and then re-imported to the node pool.
 	LocalDisk *bool `json:"local_disk,omitempty" xml:"local_disk,omitempty"`
-	// The type of the file system for automatic formatting. An empty value indicates that the disk is not formatted.
+	// The type of the file system for automatic formatting. If this parameter is left empty, the disk is not formatted.
 	//
 	// example:
 	//
 	// ext4
 	MkfsType *string `json:"mkfs_type,omitempty" xml:"mkfs_type,omitempty"`
-	// Specifies whether container runtime data is stored on the disk.
+	// The disk used to store container runtime data.
 	MountForRuntime *bool `json:"mount_for_runtime,omitempty" xml:"mount_for_runtime,omitempty"`
-	// The mount directory. An empty value indicates that the disk is not mounted.
+	// The mount directory. If this parameter is left empty, the disk is not mounted.
 	//
 	// example:
 	//

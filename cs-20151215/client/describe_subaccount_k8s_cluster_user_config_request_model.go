@@ -16,11 +16,11 @@ type iDescribeSubaccountK8sClusterUserConfigRequest interface {
 }
 
 type DescribeSubaccountK8sClusterUserConfigRequest struct {
-	// Specifies whether the internal network connection configuration is obtained. Valid values:
+	// Specifies whether to obtain the internal network connection configuration. Valid values:
 	//
-	// - `true`: Obtains only the KubeConfig credentials for the internal network connection.
+	// - `true`: obtains only the KubeConfig credentials for internal network connections
 	//
-	// - `false`: Obtains only the KubeConfig credentials for the public network connection.
+	// - `false`: obtains only the KubeConfig credentials for public network connections
 	//
 	// Default value: `false`.
 	//
@@ -28,11 +28,11 @@ type DescribeSubaccountK8sClusterUserConfigRequest struct {
 	//
 	// false
 	PrivateIpAddress *bool `json:"PrivateIpAddress,omitempty" xml:"PrivateIpAddress,omitempty"`
-	// The validity period of the temporary KubeConfig. Unit: minutes.
+	// The validity period of the temporary KubeConfig, in minutes.
 	//
 	// Valid values: 15 to 4320, which indicates a maximum of 3 days.
 	//
-	// > If you do not specify this parameter, the system automatically determines a longer validity period. The specific expiration time is determined by the value of the returned expiration field.
+	// > If you do not specify this parameter, the system automatically determines a longer validity period. The specific expiration time is determined by the value of the expiration field in the response.
 	//
 	// example:
 	//

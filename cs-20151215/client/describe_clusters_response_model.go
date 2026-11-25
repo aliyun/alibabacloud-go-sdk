@@ -98,7 +98,7 @@ type DescribeClustersResponseBody struct {
 	CurrentVersion *string `json:"current_version,omitempty" xml:"current_version,omitempty"`
 	// The data disk category of the node.
 	DataDiskCategory *string `json:"data_disk_category,omitempty" xml:"data_disk_category,omitempty"`
-	// The data disk size of the node.
+	// The size of the data disk for the node.
 	DataDiskSize *int64 `json:"data_disk_size,omitempty" xml:"data_disk_size,omitempty"`
 	// Indicates whether deletion protection is enabled for the cluster.
 	DeletionProtection *bool `json:"deletion_protection,omitempty" xml:"deletion_protection,omitempty"`
@@ -120,7 +120,7 @@ type DescribeClustersResponseBody struct {
 	//
 	// 1.32.1-aliyun.1
 	InitVersion *string `json:"init_version,omitempty" xml:"init_version,omitempty"`
-	// The access address of the cluster API server, including the internal network access address and the public network access address.
+	// The access endpoint of the cluster API server, including the internal network access endpoint and the public network access endpoint.
 	//
 	// example:
 	//
@@ -144,7 +144,7 @@ type DescribeClustersResponseBody struct {
 	//
 	// vpc
 	NetworkMode *string `json:"network_mode,omitempty" xml:"network_mode,omitempty"`
-	// Indicates whether Private Zone is enabled for the cluster. Default value: false.
+	// Indicates whether PrivateZone is enabled for the cluster. Default value: false.
 	PrivateZone *bool `json:"private_zone,omitempty" xml:"private_zone,omitempty"`
 	// The subtype of the cluster.
 	//
@@ -170,19 +170,19 @@ type DescribeClustersResponseBody struct {
 	//
 	// sg-a1b2c3d4e5f6g7h8i9j0
 	SecurityGroupId *string `json:"security_group_id,omitempty" xml:"security_group_id,omitempty"`
-	// The current number of nodes in the cluster, including master and worker nodes.
+	// The current number of nodes in the cluster, including master nodes and worker nodes.
 	//
 	// example:
 	//
 	// 3
 	Size *int64 `json:"size,omitempty" xml:"size,omitempty"`
-	// The state of the cluster.
+	// The running state of the cluster.
 	//
 	// example:
 	//
 	// running
 	State *string `json:"state,omitempty" xml:"state,omitempty"`
-	// The subnet CIDR of the cluster.
+	// The subnet CIDR block of the cluster.
 	//
 	// example:
 	//
@@ -196,13 +196,13 @@ type DescribeClustersResponseBody struct {
 	//
 	// 2026-10-02T08:00:00+08:00
 	Updated *string `json:"updated,omitempty" xml:"updated,omitempty"`
-	// The VPC ID of the cluster.
+	// The virtual private cloud (VPC) ID of the cluster.
 	//
 	// example:
 	//
 	// vpc-a1b2c3d4e5f6g7h8i9j0k
 	VpcId *string `json:"vpc_id,omitempty" xml:"vpc_id,omitempty"`
-	// The vSwitch CIDR.
+	// The CIDR block of the vSwitch.
 	VswitchCidr *string `json:"vswitch_cidr,omitempty" xml:"vswitch_cidr,omitempty"`
 	// The ID of the vSwitch where the cluster is deployed.
 	//
@@ -210,7 +210,7 @@ type DescribeClustersResponseBody struct {
 	//
 	// vsw-a1b2c3d4e5f6g7h8i9j0k
 	VswitchId *string `json:"vswitch_id,omitempty" xml:"vswitch_id,omitempty"`
-	// The name of the RAM role used by the worker nodes.
+	// The name of the Resource Access Management (RAM) role used by the worker nodes.
 	//
 	// example:
 	//

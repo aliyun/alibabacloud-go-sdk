@@ -16,13 +16,13 @@ type iDescribeClusterUserKubeconfigResponseBody interface {
 }
 
 type DescribeClusterUserKubeconfigResponseBody struct {
-	// The kubeconfig file of the cluster.
+	// The kubeconfig of the cluster.
 	//
 	// example:
 	//
 	// apiVersion: v1\\nclusters:\\n- cluster:\\n    server: https://114.55.xx.xx:6443\\n    certificate-authority-data: LS0tLS****
 	Config *string `json:"config,omitempty" xml:"config,omitempty"`
-	// The expiration time of the kubeconfig file. The time is displayed in UTC and follows the RFC 3339 standard.
+	// The expiration time of the kubeconfig. The time is in UTC and follows the RFC 3339 format.
 	//
 	// example:
 	//

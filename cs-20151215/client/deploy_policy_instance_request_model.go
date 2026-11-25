@@ -30,7 +30,7 @@ type DeployPolicyInstanceRequest struct {
 	Action *string `json:"action,omitempty" xml:"action,omitempty"`
 	// The namespaces where the policy is enforced. If this parameter is left empty, the policy is enforced in all namespaces.
 	Namespaces []*string `json:"namespaces,omitempty" xml:"namespaces,omitempty" type:"Repeated"`
-	// The parameter settings of the current rule instance. For more information about the parameters supported by each policy governance rule and the corresponding metric description, see [Container security policy rule library](https://www.alibabacloud.com/help/doc-detail/359819.html).
+	// The parameter settings of the current rule instance. For more information about the parameters supported by each policy governance rule and the corresponding metric descriptions, see [Container security policy rule library](https://www.alibabacloud.com/help/doc-detail/359819.html).
 	//
 	// example:
 	//

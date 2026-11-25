@@ -34,19 +34,19 @@ type DescribeClustersForRegionRequest struct {
 	ClusterId *string `json:"cluster_id,omitempty" xml:"cluster_id,omitempty"`
 	// The cluster specification. Valid values:
 	//
-	// - `ack.standard`: Basic
+	// - `ack.standard`: Basic Edition
 	//
-	// - `ack.pro.small`: Pro
+	// - `ack.pro.small`: Pro Edition
 	//
 	// - `ack.pro.xlarge`: Pro XL
 	//
 	// - `ack.pro.2xlarge`: Pro 2XL
 	//
-	// - `ack.pro.4xlarge`: Pro 4XL (requires contacting customer service to apply for whitelist access)
+	// - `ack.pro.4xlarge`: Pro 4XL (contact customer service to apply for whitelist access)
 	//
-	// Pro XL, Pro 2XL, and Pro 4XL are the three tiers provided by the <props="china">[ACK Pro provisioned control plane](https://help.aliyun.com/ack/ack-managed-and-ack-dedicated/user-guide/ack-pro-provisioned-control-plane)<props="intl">[ACK Pro provisioned control plane](https://www.alibabacloud.com/help/ack/ack-managed-and-ack-dedicated/user-guide/ack-pro-provisioned-control-plane). By pre-allocating and dedicating control plane resources, these tiers ensure that API concurrency and pod scheduling capabilities remain at a consistently high level. They are suitable for AI training and inference, ultra-large-scale clusters, and mission-critical workloads.
+	// Pro XL, Pro 2XL, and Pro 4XL are the three tiers provided by the <props="china">[ACK Pro provisioned control plane](https://help.aliyun.com/ack/ack-managed-and-ack-dedicated/user-guide/ack-pro-provisioned-control-plane)<props="intl">[ACK Pro provisioned control plane](https://www.alibabacloud.com/help/ack/ack-managed-and-ack-dedicated/user-guide/ack-pro-provisioned-control-plane). By pre-allocating and dedicating control plane resources, these tiers ensure consistently high levels of API concurrency and pod scheduling capabilities. They are suitable for AI training and inference, ultra-large-scale clusters, and mission-critical workloads.
 	//
-	// For the cluster management fees of the Pro edition and provisioned control plane editions, see <props="china">[Cluster management fees](https://help.aliyun.com/ack/ack-managed-and-ack-dedicated/product-overview/cluster-management-fee)<props="intl">[Cluster management fees](https://www.alibabacloud.com/help/ack/ack-managed-and-ack-dedicated/product-overview/cluster-management-fee).
+	// For the cluster management fees of the Pro Edition and provisioned control plane editions, see <props="china">[Cluster management fees](https://help.aliyun.com/ack/ack-managed-and-ack-dedicated/product-overview/cluster-management-fee)<props="intl">[Cluster management fees](https://www.alibabacloud.com/help/ack/ack-managed-and-ack-dedicated/product-overview/cluster-management-fee).
 	//
 	// example:
 	//
@@ -54,17 +54,17 @@ type DescribeClustersForRegionRequest struct {
 	ClusterSpec *string `json:"cluster_spec,omitempty" xml:"cluster_spec,omitempty"`
 	// The cluster type. Valid values:
 	//
-	// - Kubernetes: ACK dedicated cluster.
+	// - Kubernetes: ACK dedicated clusters.
 	//
 	// - ManagedKubernetes: ACK managed clusters, including ACK managed clusters (ACK Pro and ACK Basic), ACK Serverless clusters (Pro and Basic), ACK Edge clusters (Pro and Basic), and ACK Lingjun clusters (Pro).
 	//
-	// - ExternalKubernetes: registered cluster.
+	// - ExternalKubernetes: registered clusters.
 	//
 	// example:
 	//
 	// Kubernetes
 	ClusterType *string `json:"cluster_type,omitempty" xml:"cluster_type,omitempty"`
-	// The cluster name for fuzzy match.
+	// Specifies the cluster name for fuzzy matching.
 	//
 	// example:
 	//
@@ -82,7 +82,7 @@ type DescribeClustersForRegionRequest struct {
 	//
 	// 3
 	PageSize *int64 `json:"page_size,omitempty" xml:"page_size,omitempty"`
-	// The cluster profile used to query clusters of a specified subtype. Valid values:
+	// The cluster profile. Valid values:
 	//
 	// - Default: ACK managed clusters, including ACK Pro and ACK Basic.
 	//
@@ -90,7 +90,7 @@ type DescribeClustersForRegionRequest struct {
 	//
 	// - Serverless: ACK Serverless clusters, including ACK Serverless Pro and ACK Serverless Basic.
 	//
-	// - LingJun: ACK Lingjun clusters, available in the Pro edition.
+	// - LingJun: ACK Lingjun clusters, which provide the Pro edition.
 	//
 	// example:
 	//

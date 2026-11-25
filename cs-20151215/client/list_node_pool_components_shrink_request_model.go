@@ -26,13 +26,13 @@ type iListNodePoolComponentsShrinkRequest interface {
 }
 
 type ListNodePoolComponentsShrinkRequest struct {
-	// The image ID of the node pool. This parameter is required if nodepool_id is not specified. You must specify either this parameter or image_type.
+	// The image ID of the node pool. If nodepool_id is not specified, this parameter is required and mutually exclusive with image_type.
 	//
 	// example:
 	//
 	// aliyun_3_x64_20G_container_optimized_alibase_20250629.vhd
 	ImageId *string `json:"image_id,omitempty" xml:"image_id,omitempty"`
-	// The image type of the node pool. This parameter is required if nodepool_id is not specified. You must specify either this parameter or image_id.
+	// The image type of the node pool. If nodepool_id is not specified, this parameter is required and mutually exclusive with image_id.
 	//
 	// example:
 	//
@@ -44,19 +44,19 @@ type ListNodePoolComponentsShrinkRequest struct {
 	//
 	// ["ecs.c6.xlarge"]
 	InstanceTypesShrink *string `json:"instance_types,omitempty" xml:"instance_types,omitempty"`
-	// The maximum number of results per page. Default value: 200.
+	// The maximum number of results to return. Default value: 200.
 	//
 	// example:
 	//
 	// 10
 	MaxResults *int32 `json:"max_results,omitempty" xml:"max_results,omitempty"`
-	// The pagination token.
+	// The next token for pagination.
 	//
 	// example:
 	//
 	// 5c0a1c0f91c14c6****
 	NextToken *string `json:"next_token,omitempty" xml:"next_token,omitempty"`
-	// The node pool ID. If you specify a node pool ID, the system queries the components available for the node pool and ignores other parameters.
+	// The node pool ID. If you specify a node pool ID, the system queries the list of components available for the node pool and ignores other parameters.
 	//
 	// example:
 	//

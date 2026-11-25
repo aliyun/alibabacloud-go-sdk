@@ -18,15 +18,15 @@ type iListNodePoolComponentsResponseBody interface {
 }
 
 type ListNodePoolComponentsResponseBody struct {
-	// The node components.
+	// The list of node components.
 	Components []*ListNodePoolComponentsResponseBodyComponents `json:"components,omitempty" xml:"components,omitempty" type:"Repeated"`
-	// The maximum number of results per page. Default value: 200.
+	// The maximum number of results to return. Default value: 200.
 	//
 	// example:
 	//
 	// 10
 	MaxResults *int32 `json:"max_results,omitempty" xml:"max_results,omitempty"`
-	// The pagination token.
+	// The next token for pagination.
 	//
 	// example:
 	//
@@ -83,7 +83,7 @@ func (s *ListNodePoolComponentsResponseBody) Validate() error {
 }
 
 type ListNodePoolComponentsResponseBodyComponents struct {
-	// The parameter schema of the node component, including custom parameters and system parameters.
+	// The configuration schema of the node component, including custom parameters and system parameters.
 	//
 	// example:
 	//

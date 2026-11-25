@@ -48,7 +48,7 @@ type GetClusterInspectReportDetailRequest struct {
 	//
 	// true
 	EnableFilter *bool `json:"enableFilter,omitempty" xml:"enableFilter,omitempty"`
-	// The query language. Valid values:
+	// The query language.
 	//
 	// - zh_CN
 	//
@@ -84,7 +84,7 @@ type GetClusterInspectReportDetailRequest struct {
 	//
 	// bb41e2bcb47b747389dce6c0d2
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
-	// The object type. Only check items that match the object type are returned.
+	// The inspection object type. Only inspection items that match the specified object type are returned.
 	//
 	// example:
 	//

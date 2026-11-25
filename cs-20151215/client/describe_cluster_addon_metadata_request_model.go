@@ -14,7 +14,7 @@ type iDescribeClusterAddonMetadataRequest interface {
 }
 
 type DescribeClusterAddonMetadataRequest struct {
-	// The component version.
+	// The version of the add-on.
 	//
 	// example:
 	//

@@ -185,9 +185,9 @@ type DescribeAddonResponseBodyNewerVersions struct {
 	MinimumClusterVersion *string `json:"minimum_cluster_version,omitempty" xml:"minimum_cluster_version,omitempty"`
 	// Indicates whether the component can be upgraded to this version. Valid values:
 	//
-	// - true: Supported.
+	// - true: The component can be upgraded to this version.
 	//
-	// - false: Not supported.
+	// - false: The component cannot be upgraded to this version.
 	//
 	// example:
 	//

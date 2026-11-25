@@ -34,19 +34,19 @@ type DescribeClusterNodesRequest struct {
 	//
 	// "i-bp11xjhwkj8k966u****,i-bp1dmhc2bu5igkyq****"
 	InstanceIds *string `json:"instanceIds,omitempty" xml:"instanceIds,omitempty"`
-	// The list of node IP addresses used for filtering. Separate multiple values with commas (,).
+	// The list of node IP addresses. Separate multiple values with commas (,). This parameter is used to filter nodes by IP address.
 	//
 	// example:
 	//
 	// 192.168.0.1
 	NodeIps *string `json:"nodeIps,omitempty" xml:"nodeIps,omitempty"`
-	// The node labels used for filtering. Specify the labels as key=value pairs separated by commas (,). Multiple labels are evaluated with the AND operator. Only nodes that match all specified labels are returned.
+	// The labels used to filter nodes. Specify the labels as key=value pairs separated by commas (,). Multiple labels are evaluated by using the logical AND operator. Only nodes that match all specified labels are returned.
 	//
 	// example:
 	//
 	// nodeLabels=app=nginx,env=prod
 	NodeLabels *string `json:"nodeLabels,omitempty" xml:"nodeLabels,omitempty"`
-	// The list of node names used for filtering. Separate multiple values with commas (,).
+	// The list of node names. Separate multiple values with commas (,). This parameter is used to filter nodes by name.
 	//
 	// example:
 	//
@@ -66,7 +66,7 @@ type DescribeClusterNodesRequest struct {
 	//
 	// 1
 	PageNumber *string `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
-	// The maximum number of records to return per page. Valid values: 1 to 100.
+	// The maximum number of entries to return on each page. Valid values: 1 to 100.
 	//
 	// Default value: 10.
 	//
@@ -74,17 +74,17 @@ type DescribeClusterNodesRequest struct {
 	//
 	// 10
 	PageSize *string `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	// The running states of the cluster nodes used for filtering. Valid values:
+	// The state of the cluster nodes. This parameter is used to filter nodes by their running state. Valid values:
 	//
-	// - `all`: does not filter nodes by running state and queries nodes in all states.
+	// - `all`: all nodes.
 	//
-	// - `running`: the cluster nodes that are running.
+	// - `running`: running nodes.
 	//
-	// - `removing`: the cluster nodes that are being removed.
+	// - `removing`: nodes that are being removed.
 	//
-	// - `initial`: the cluster nodes that are being initialized.
+	// - `initial`: nodes that are being initialized.
 	//
-	// - `failed`: the cluster nodes that failed to be created.
+	// - `failed`: nodes that failed to be created.
 	//
 	// Default value: `all`.
 	//

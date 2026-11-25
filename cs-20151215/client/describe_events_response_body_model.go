@@ -20,7 +20,7 @@ type iDescribeEventsResponseBody interface {
 type DescribeEventsResponseBody struct {
 	// The event details.
 	Events []*DescribeEventsResponseBodyEvents `json:"events,omitempty" xml:"events,omitempty" type:"Repeated"`
-	// The pagination token. Set this parameter to the next_token value returned from the previous API call.
+	// The query token, which is the value of the next_token parameter returned by the previous API call.
 	//
 	// example:
 	//
@@ -118,37 +118,37 @@ type DescribeEventsResponseBodyEvents struct {
 	Time *string `json:"time,omitempty" xml:"time,omitempty"`
 	// The event type. Valid values:
 	//
-	// - `cluster_create`: Cluster creation.
+	// - `cluster_create`: cluster creation
 	//
-	// - `cluster_scaleout`: Cluster scale-out.
+	// - `cluster_scaleout`: cluster scale-out
 	//
-	// - `cluster_attach`: Addition of existing nodes.
+	// - `cluster_attach`: adding existing nodes
 	//
-	// - `cluster_delete`: Cluster deletion.
+	// - `cluster_delete`: cluster deletion
 	//
-	// - `cluster_upgrade`: Cluster upgrade.
+	// - `cluster_upgrade`: cluster upgrade
 	//
-	// - `cluster_migrate`: Cluster migration.
+	// - `cluster_migrate`: cluster migration
 	//
-	// - `cluster_node_delete`: Node removal.
+	// - `cluster_node_delete`: node removal
 	//
-	// - `cluster_node_drain`: Node draining.
+	// - `cluster_node_drain`: node draining
 	//
-	// - `cluster_modify`: Cluster modification.
+	// - `cluster_modify`: cluster modification
 	//
-	// - `cluster_configuration_modify`: Cluster control configuration modification.
+	// - `cluster_configuration_modify`: cluster management configuration modification
 	//
-	// - `cluster_addon_install`: Add-on installation.
+	// - `cluster_addon_install`: add-on installation
 	//
-	// - `cluster_addon_upgrade`: Add-on upgrade.
+	// - `cluster_addon_upgrade`: add-on upgrade
 	//
-	// - `cluster_addon_uninstall`: Add-on uninstallation.
+	// - `cluster_addon_uninstall`: add-on uninstallation
 	//
-	// - `runtime_upgrade`: Runtime upgrade.
+	// - `runtime_upgrade`: runtime upgrade
 	//
-	// - `nodepool_upgrade`: Node pool upgrade.
+	// - `nodepool_upgrade`: node pool upgrade
 	//
-	// - `nodepool_update`: Node pool update.
+	// - `nodepool_update`: node pool update
 	//
 	// example:
 	//
@@ -239,11 +239,11 @@ func (s *DescribeEventsResponseBodyEvents) Validate() error {
 type DescribeEventsResponseBodyEventsData struct {
 	// The event level. Valid values:
 	//
-	// - info: Information.
+	// - info: informational
 	//
-	// - warning: Warning.
+	// - warning: warning
 	//
-	// - error: Error.
+	// - error: error
 	//
 	// example:
 	//
@@ -303,7 +303,7 @@ func (s *DescribeEventsResponseBodyEventsData) Validate() error {
 }
 
 type DescribeEventsResponseBodyPageInfo struct {
-	// The page number for paging in the paged query.
+	// The page number for paging.
 	//
 	// example:
 	//

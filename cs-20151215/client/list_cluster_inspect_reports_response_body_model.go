@@ -107,7 +107,7 @@ type ListClusterInspectReportsResponseBodyReports struct {
 	//
 	// completed
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
-	// The inspection report summary.
+	// The summary of the inspection report.
 	Summary *ListClusterInspectReportsResponseBodyReportsSummary `json:"summary,omitempty" xml:"summary,omitempty" type:"Struct"`
 }
 

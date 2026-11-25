@@ -22,7 +22,7 @@ type DescribePolicyGovernanceInClusterResponseBody struct {
 	Violation *DescribePolicyGovernanceInClusterResponseBodyViolation `json:"Violation,omitempty" xml:"Violation,omitempty" type:"Struct"`
 	// The current policy governance audit logs of the cluster.
 	AdmitLog *DescribePolicyGovernanceInClusterResponseBodyAdmitLog `json:"admit_log,omitempty" xml:"admit_log,omitempty" type:"Struct"`
-	// The counts of enabled policies at different severity levels in the cluster.
+	// The counts of enabled policies at different severity levels in the current cluster.
 	OnState []*DescribePolicyGovernanceInClusterResponseBodyOnState `json:"on_state,omitempty" xml:"on_state,omitempty" type:"Repeated"`
 }
 
@@ -338,7 +338,7 @@ type DescribePolicyGovernanceInClusterResponseBodyViolationViolationsDeny struct
 	//
 	// Prevent specific namespaces from being deleted.
 	PolicyDescription *string `json:"policyDescription,omitempty" xml:"policyDescription,omitempty"`
-	// The Policy Name.
+	// The policy name.
 	//
 	// example:
 	//
@@ -413,7 +413,7 @@ type DescribePolicyGovernanceInClusterResponseBodyViolationViolationsWarn struct
 	//
 	// Restricts the creation of Application Load Balancer (ALB) instances.
 	PolicyDescription *string `json:"policyDescription,omitempty" xml:"policyDescription,omitempty"`
-	// The Policy Name.
+	// The policy name.
 	//
 	// example:
 	//
@@ -494,19 +494,19 @@ type DescribePolicyGovernanceInClusterResponseBodyAdmitLog struct {
 	//
 	// k8s-log-clusterid
 	LogProject *string `json:"log_project,omitempty" xml:"log_project,omitempty"`
-	// The Logstore that stores the policy action information.
+	// The log store that stores the policy action information.
 	//
 	// example:
 	//
 	// policyadmit-clusterid
 	LogStore *string `json:"log_store,omitempty" xml:"log_store,omitempty"`
-	// The log information about policy violations.
+	// The log information of policy violations.
 	Logs []*DescribePolicyGovernanceInClusterResponseBodyAdmitLogLogs `json:"logs,omitempty" xml:"logs,omitempty" type:"Repeated"`
 	// The status of the query result. Valid values:
 	//
-	// 	- `Complete`: The query is complete and the returned result is complete.
+	// 	- `Complete`: The query is complete, and the returned result is complete.
 	//
-	// 	- `Incomplete`: The query is complete but the returned result is incomplete. You must repeat the request to obtain the complete result.
+	// 	- `Incomplete`: The query is complete, but the returned result is incomplete. You must repeat the request to obtain the complete result.
 	//
 	// example:
 	//
@@ -589,9 +589,9 @@ type DescribePolicyGovernanceInClusterResponseBodyAdmitLogLogs struct {
 	ClusterId *string `json:"cluster_id,omitempty" xml:"cluster_id,omitempty"`
 	// The action taken by the policy. Valid values:
 	//
-	// - warn: Generates an alert for the policy violation but does not intercept the request.
+	// - warn: Alerts on policy violations but does not intercept the requests.
 	//
-	// - deny: Intercepts the request that violates the policy.
+	// - deny: Intercepts requests that violate the policy.
 	//
 	// example:
 	//
@@ -615,7 +615,7 @@ type DescribePolicyGovernanceInClusterResponseBodyAdmitLogLogs struct {
 	//
 	// constraints.gatekeeper.sh
 	ConstraintGroup *string `json:"constraint_group,omitempty" xml:"constraint_group,omitempty"`
-	// The corresponding Policy Name in policy management.
+	// The policy name in policy management.
 	//
 	// example:
 	//
@@ -825,13 +825,13 @@ func (s *DescribePolicyGovernanceInClusterResponseBodyAdmitLogLogs) Validate() e
 }
 
 type DescribePolicyGovernanceInClusterResponseBodyOnState struct {
-	// The number of enabled policy types.
+	// The count of currently enabled policy types.
 	//
 	// example:
 	//
 	// 3
 	EnabledCount *int32 `json:"enabled_count,omitempty" xml:"enabled_count,omitempty"`
-	// The severity level of the policy governance.
+	// The policy governance severity level.
 	//
 	// example:
 	//

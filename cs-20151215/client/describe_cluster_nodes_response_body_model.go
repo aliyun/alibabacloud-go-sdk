@@ -67,7 +67,7 @@ func (s *DescribeClusterNodesResponseBody) Validate() error {
 }
 
 type DescribeClusterNodesResponseBodyNodes struct {
-	// The time when the node was created. The time follows the ISO 8601 standard and includes the time zone.
+	// The time when the node was created. The time is displayed in ISO 8601 format and includes the time zone.
 	//
 	// example:
 	//
@@ -79,7 +79,7 @@ type DescribeClusterNodesResponseBodyNodes struct {
 	//
 	// error***
 	ErrorMessage *string `json:"error_message,omitempty" xml:"error_message,omitempty"`
-	// The time when the node expires. The time follows the ISO 8601 standard and includes the time zone.
+	// The time when the node expires. The time is displayed in ISO 8601 format and includes the time zone.
 	//
 	// example:
 	//
@@ -121,9 +121,9 @@ type DescribeClusterNodesResponseBodyNodes struct {
 	InstanceName *string `json:"instance_name,omitempty" xml:"instance_name,omitempty"`
 	// The role of the node. Valid values:
 	//
-	// - Master: the master node of the cluster.
+	// - Master: master node in the cluster.
 	//
-	// - Worker: the worker node of the cluster.
+	// - Worker: worker node in the cluster.
 	//
 	// example:
 	//
@@ -131,15 +131,15 @@ type DescribeClusterNodesResponseBodyNodes struct {
 	InstanceRole *string `json:"instance_role,omitempty" xml:"instance_role,omitempty"`
 	// The ECS instance status of the node. Valid values:
 	//
-	// - `Pending`: the instance is being created.
+	// - `Pending`: being created.
 	//
-	// - `Running`: the instance is running.
+	// - `Running`: running.
 	//
-	// - `Starting`: the instance is starting.
+	// - `Starting`: starting.
 	//
-	// - `Stopping`: the instance is stopping.
+	// - `Stopping`: stopping.
 	//
-	// - `Stopped`: the instance is stopped.
+	// - `Stopped`: stopped.
 	//
 	// example:
 	//
@@ -159,31 +159,31 @@ type DescribeClusterNodesResponseBodyNodes struct {
 	InstanceTypeFamily *string `json:"instance_type_family,omitempty" xml:"instance_type_family,omitempty"`
 	// The IP addresses of the node.
 	IpAddress []*string `json:"ip_address,omitempty" xml:"ip_address,omitempty" type:"Repeated"`
-	// Specifies whether the node is an Alibaba Cloud instance. Valid values:
+	// Indicates whether the node is an Alibaba Cloud instance. Valid values:
 	//
-	// - `true`: the node is an Alibaba Cloud instance.
+	// - `true`: yes.
 	//
-	// - `false`: the node is not an Alibaba Cloud instance.
+	// - `false`: no.
 	//
 	// example:
 	//
 	// true
 	IsAliyunNode *bool `json:"is_aliyun_node,omitempty" xml:"is_aliyun_node,omitempty"`
-	// The name of the node, which is the node identifier in the cluster.
+	// The name of the node. This name is used as the node identifier in the cluster.
 	//
 	// example:
 	//
 	// cn-chengdu.192.168xx.xx
 	NodeName *string `json:"node_name,omitempty" xml:"node_name,omitempty"`
-	// Specifies whether the node is ready. Valid values:
+	// Indicates whether the node is ready. Valid values:
 	//
-	// - `Ready`: the node is ready.
+	// - `Ready`: ready.
 	//
-	// - `NotReady`: the node is not ready.
+	// - `NotReady`: not ready.
 	//
-	// - `Unknown`: the status is unknown.
+	// - `Unknown`: unknown.
 	//
-	// - `Offline`: the node is offline.
+	// - `Offline`: offline.
 	//
 	// example:
 	//
@@ -195,7 +195,7 @@ type DescribeClusterNodesResponseBodyNodes struct {
 	//
 	// np0794239424a84eb7a95327369d56****
 	NodepoolId *string `json:"nodepool_id,omitempty" xml:"nodepool_id,omitempty"`
-	// The method used to initialize the node, such as manual creation or creation by Resource Orchestration Service (ROS).
+	// The method used to initialize the node, such as manual creation or creation by using Resource Orchestration Service (ROS).
 	//
 	// example:
 	//
@@ -203,11 +203,11 @@ type DescribeClusterNodesResponseBodyNodes struct {
 	Source *string `json:"source,omitempty" xml:"source,omitempty"`
 	// The type of the spot instance. Valid values:
 	//
-	// - NoSpot: the instance is not a spot instance.
+	// - NoSpot: non-spot instance.
 	//
-	// - SpotWithPriceLimit: the instance is a spot instance with a maximum price limit.
+	// - SpotWithPriceLimit: spot instance with a maximum price limit.
 	//
-	// - SpotAsPriceGo: the instance is a spot instance whose price is automatically set based on the current market price.
+	// - SpotAsPriceGo: spot instance whose price is automatically set based on the current market price.
 	//
 	// example:
 	//
@@ -215,15 +215,15 @@ type DescribeClusterNodesResponseBodyNodes struct {
 	SpotStrategy *string `json:"spot_strategy,omitempty" xml:"spot_strategy,omitempty"`
 	// The running state of the node. Valid values:
 	//
-	// - `pending`: the node is being created.
+	// - `pending`: being created.
 	//
-	// - `running`: the node is running.
+	// - `running`: running.
 	//
-	// - `starting`: the node is starting.
+	// - `starting`: starting.
 	//
-	// - `stopping`: the node is stopping.
+	// - `stopping`: stopping.
 	//
-	// - `stopped`: the node is stopped.
+	// - `stopped`: stopped.
 	//
 	// example:
 	//
@@ -430,7 +430,7 @@ type DescribeClusterNodesResponseBodyPage struct {
 	//
 	// 1
 	PageNumber *int32 `json:"page_number,omitempty" xml:"page_number,omitempty"`
-	// The maximum number of records to return per page.
+	// The maximum number of entries that can be displayed on each page.
 	//
 	// example:
 	//

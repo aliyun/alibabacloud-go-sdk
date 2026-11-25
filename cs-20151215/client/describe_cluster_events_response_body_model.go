@@ -100,13 +100,13 @@ type DescribeClusterEventsResponseBodyEvents struct {
 	//
 	// task
 	Source *string `json:"source,omitempty" xml:"source,omitempty"`
-	// The object associated with the event.
+	// The operation object associated with the event.
 	//
 	// example:
 	//
 	// npdd89dc2b76c04f14b06774883b******
 	Subject *string `json:"subject,omitempty" xml:"subject,omitempty"`
-	// The start time of the event. The time is in ISO 8601 format and includes time zone information.
+	// The start time of the event in ISO 8601 format, including the time zone.
 	//
 	// example:
 	//
@@ -114,37 +114,37 @@ type DescribeClusterEventsResponseBodyEvents struct {
 	Time *string `json:"time,omitempty" xml:"time,omitempty"`
 	// The event type. Valid values:
 	//
-	// - cluster_create: cluster creation
+	// - cluster_create: Cluster creation.
 	//
-	// - cluster_scaleout: cluster scale-out
+	// - cluster_scaleout: Cluster scale-out.
 	//
-	// - cluster_attach: addition of existing nodes
+	// - cluster_attach: Addition of existing nodes.
 	//
-	// - cluster_delete: cluster deletion
+	// - cluster_delete: Cluster deletion.
 	//
-	// - cluster_upgrade: cluster upgrade
+	// - cluster_upgrade: Cluster upgrade.
 	//
-	// - cluster_migrate: cluster migration
+	// - cluster_migrate: Cluster migration.
 	//
-	// - cluster_node_delete: node removal
+	// - cluster_node_delete: Node removal.
 	//
-	// - cluster_node_drain: node draining
+	// - cluster_node_drain: Node draining.
 	//
-	// - cluster_modify: cluster modification
+	// - cluster_modify: Cluster modification.
 	//
-	// - cluster_configuration_modify: cluster management configuration modification
+	// - cluster_configuration_modify: Cluster management configuration modification.
 	//
-	// - cluster_addon_install: add-on installation
+	// - cluster_addon_install: Add-on installation.
 	//
-	// - cluster_addon_upgrade: add-on upgrade
+	// - cluster_addon_upgrade: Add-on upgrade.
 	//
-	// - cluster_addon_uninstall: add-on uninstallation
+	// - cluster_addon_uninstall: Add-on uninstallation.
 	//
-	// - runtime_upgrade: runtime upgrade
+	// - runtime_upgrade: Runtime upgrade.
 	//
-	// - nodepool_upgrade: node pool upgrade
+	// - nodepool_upgrade: Node pool upgrade.
 	//
-	// - nodepool_update: node pool update
+	// - nodepool_update: Node pool update.
 	//
 	// example:
 	//
@@ -299,7 +299,7 @@ type DescribeClusterEventsResponseBodyPageInfo struct {
 	//
 	// 1
 	PageNumber *int64 `json:"page_number,omitempty" xml:"page_number,omitempty"`
-	// The maximum number of results to display on each page.
+	// The maximum number of results to return per page.
 	//
 	// example:
 	//

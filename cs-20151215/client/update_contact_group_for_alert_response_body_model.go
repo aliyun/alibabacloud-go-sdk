@@ -22,11 +22,11 @@ type UpdateContactGroupForAlertResponseBody struct {
 	//
 	// contact group illegal.
 	Msg *string `json:"msg,omitempty" xml:"msg,omitempty"`
-	// The status of the update result. Valid values:
+	// Indicates whether the update was successful. Valid values:
 	//
-	// - true: The operation succeeded.
+	// - true: The update was successful.
 	//
-	// - false: The operation failed.
+	// - false: The update failed.
 	//
 	// example:
 	//

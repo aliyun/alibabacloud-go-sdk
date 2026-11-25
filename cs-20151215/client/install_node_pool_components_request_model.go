@@ -149,7 +149,7 @@ type InstallNodePoolComponentsRequestComponentsConfig struct {
 	//
 	// {"cpuManagerPolicy":"static"}
 	CustomConfig map[string]interface{} `json:"customConfig,omitempty" xml:"customConfig,omitempty"`
-	// The environment variables for the node component.
+	// The environment variables of the node component.
 	Envs []*InstallNodePoolComponentsRequestComponentsConfigEnvs `json:"envs,omitempty" xml:"envs,omitempty" type:"Repeated"`
 }
 

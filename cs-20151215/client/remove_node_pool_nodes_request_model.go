@@ -26,9 +26,9 @@ type iRemoveNodePoolNodesRequest interface {
 type RemoveNodePoolNodesRequest struct {
 	// Specifies whether to remove nodes concurrently. Valid values:
 	//
-	// - true: Nodes are removed from the scaling group concurrently.
+	// - true: Nodes are concurrently removed from the scaling group.
 	//
-	// - false: Nodes are removed from the scaling group sequentially.
+	// - false: Nodes are sequentially removed from the scaling group.
 	//
 	// Default value: false.
 	//
@@ -38,9 +38,9 @@ type RemoveNodePoolNodesRequest struct {
 	Concurrency *bool `json:"concurrency,omitempty" xml:"concurrency,omitempty"`
 	// Specifies whether to drain the nodes. Valid values:
 	//
-	// - true: Drain the nodes.
+	// - true: Drains the nodes.
 	//
-	// - false: Do not drain the nodes.
+	// - false: Does not drain the nodes.
 	//
 	// example:
 	//
@@ -56,19 +56,17 @@ type RemoveNodePoolNodesRequest struct {
 	InstanceIds []*string `json:"instance_ids,omitempty" xml:"instance_ids,omitempty" type:"Repeated"`
 	// Deprecated
 	//
-	// **[Deprecated]**
+	// **[Deprecated]*	- The list of removed nodes.
 	//
-	// The list of nodes to be removed.
-	//
-	// 	Danger: This parameter is deprecated. Use `instance_ids` instead.</danger>
+	// 	Danger: This parameter is deprecated. Use instance_ids instead.</danger>
 	Nodes []*string `json:"nodes,omitempty" xml:"nodes,omitempty" type:"Repeated"`
 	// Specifies whether automatic release the nodes. Valid values:
 	//
-	// - true: Release the nodes.
+	// - true: Releases the nodes.
 	//
-	// - false: Do not release the nodes.
+	// - false: Does not release the nodes.
 	//
-	// Removing nodes does not automatically release subscription nodes. Automatic release subscription nodes, [change the billing method of the nodes from subscription to pay-as-you-go](https://www.alibabacloud.com/help/en/ecs/change-the-billing-method-of-an-instance-from-subscription-to-pay-as-you-go-1), and then log on to the ECS console automatic release them.
+	// Removing nodes does not automatically release subscription nodes. Automatic release subscription nodes, [change the billing method of the nodes from subscription to pay-as-you-go](https://www.alibabacloud.com/help/en/ecs/change-the-billing-method-of-an-instance-from-subscription-to-pay-as-you-go-1) and then log on to the ECS console automatic release them.
 	//
 	// example:
 	//

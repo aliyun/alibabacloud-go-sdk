@@ -22,7 +22,7 @@ type StopAlertResponseBody struct {
 	//
 	// Success
 	Msg *string `json:"msg,omitempty" xml:"msg,omitempty"`
-	// The execution status.
+	// The execution status. Valid values:
 	//
 	// - True: The execution succeeded.
 	//

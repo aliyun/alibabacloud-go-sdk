@@ -16,10 +16,14 @@ type iHibernateClusterResponseBody interface {
 }
 
 type HibernateClusterResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 49511F2D-D56A-5C24-B9AE-C8491E09B***
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
+	// The task ID.
+	//
 	// example:
 	//
 	// T-67d7ec016ce37c0106000***

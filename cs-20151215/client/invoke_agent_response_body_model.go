@@ -50,7 +50,7 @@ type InvokeAgentResponseBody struct {
 	//
 	// InternalError
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// The tool output text for the TOOL_CALL_RESULT event. The text may be truncated.
+	// The tool output text for the TOOL_CALL_RESULT event, which may be truncated.
 	//
 	// example:
 	//
@@ -104,13 +104,13 @@ type InvokeAgentResponseBody struct {
 	//
 	// r-1
 	RunId *string `json:"runId,omitempty" xml:"runId,omitempty"`
-	// The thread snapshot for the STATE_SNAPSHOT event, including sessionId and requestId.
+	// The session snapshot for the STATE_SNAPSHOT event, which includes sessionId and requestId.
 	//
 	// example:
 	//
 	// {"sessionId":"abcdef0123456789abcdef0123456789","requestId":"req-1"}
 	Snapshot interface{} `json:"snapshot,omitempty" xml:"snapshot,omitempty"`
-	// The thread ID for RUN_STARTED and RUN_FINISHED events. It is consistent with the request and the thread snapshot.
+	// The thread ID for RUN_STARTED and RUN_FINISHED events. It is consistent with the request and the session snapshot.
 	//
 	// example:
 	//
@@ -136,7 +136,7 @@ type InvokeAgentResponseBody struct {
 	//
 	// RUN_STARTED
 	Type *string `json:"type,omitempty" xml:"type,omitempty"`
-	// The extension value of the CUSTOM event. It can be any JSON object or null.
+	// The extension value of the CUSTOM event, which can be any JSON object or null.
 	//
 	// example:
 	//
@@ -312,7 +312,7 @@ type InvokeAgentResponseBodyOutcome struct {
 	//
 	// [{"id":"i-1","reason":"tool_call_approve","toolCallId":"call-1"}]
 	Interrupts []*InvokeAgentResponseBodyOutcomeInterrupts `json:"interrupts,omitempty" xml:"interrupts,omitempty" type:"Repeated"`
-	// The outcome type. A value of success indicates normal completion. A value of interrupt indicates waiting for a response, in which case the interrupts array contains at least one item.
+	// The outcome type. A value of success indicates normal completion, and interrupt indicates waiting for a response. When the value is interrupt, the interrupts array contains at least one item.
 	//
 	// This parameter is required.
 	//
@@ -368,7 +368,7 @@ type InvokeAgentResponseBodyOutcomeInterrupts struct {
 	//
 	// 2026-11-04T00:00:00Z
 	ExpiresAt *string `json:"expiresAt,omitempty" xml:"expiresAt,omitempty"`
-	// The ID of the interrupt. It is used as resume[].interruptId when resuming the run.
+	// The interrupt ID, which is used as resume[].interruptId when resuming the run.
 	//
 	// This parameter is required.
 	//
@@ -380,9 +380,9 @@ type InvokeAgentResponseBodyOutcomeInterrupts struct {
 	//
 	// example:
 	//
-	// Proceed with execution?
+	// Do you want to proceed?
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// The optional extension information of the interrupt. It cannot replace tool events.
+	// The optional extension information of the interrupt, which cannot replace tool events.
 	//
 	// example:
 	//
@@ -402,7 +402,7 @@ type InvokeAgentResponseBodyOutcomeInterrupts struct {
 	//
 	// {"type":"object","properties":{"decision":{"type":"string","enum":["yes","no"]}},"required":["decision"]}
 	ResponseSchema map[string]interface{} `json:"responseSchema,omitempty" xml:"responseSchema,omitempty"`
-	// The optional associated tool invoke ID. It is the same as the toolCallId of the preceding TOOL_CALL_START event.
+	// The optional associated tool invoke ID, which is the same as the toolCallId of the preceding TOOL_CALL_START event.
 	//
 	// example:
 	//

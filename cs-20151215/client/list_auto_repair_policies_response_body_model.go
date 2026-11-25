@@ -63,13 +63,13 @@ type ListAutoRepairPoliciesResponseBodyItems struct {
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
 	// The list of resources bound to the self-healing rule.
 	ResourceIds []*string `json:"resource_ids,omitempty" xml:"resource_ids,omitempty" type:"Repeated"`
-	// The resource subtype bound to the self-healing rule.
+	// The subtype of the resource bound to the self-healing rule.
 	//
 	// example:
 	//
 	// ess
 	ResourceSubType *string `json:"resource_sub_type,omitempty" xml:"resource_sub_type,omitempty"`
-	// The resource type bound to the self-healing rule.
+	// The type of the resource bound to the self-healing rule.
 	//
 	// example:
 	//
@@ -79,9 +79,9 @@ type ListAutoRepairPoliciesResponseBodyItems struct {
 	Rules []*ListAutoRepairPoliciesResponseBodyItemsRules `json:"rules,omitempty" xml:"rules,omitempty" type:"Repeated"`
 	// The rule type. The value is case-sensitive. Valid values:
 	//
-	// - custom: user-defined rules that support modification and deletion
+	// - custom: User-defined rules. You can modify and delete these rules.
 	//
-	// - builtin: built-in system rules that are read-only and do not support creation, modification, or deletion
+	// - builtin: Built-in system rules. These rules are read-only and cannot be created, modified, or deleted.
 	//
 	// example:
 	//
@@ -235,7 +235,7 @@ type ListAutoRepairPoliciesResponseBodyItemsRulesIncidents struct {
 	//
 	// Node.FaultNeedReboot.HOST
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The diagnostic type.
+	// The diagnosis type.
 	//
 	// example:
 	//
@@ -276,7 +276,7 @@ func (s *ListAutoRepairPoliciesResponseBodyItemsRulesIncidents) Validate() error
 type ListAutoRepairPoliciesResponseBodyItemsRulesRepairProcedure struct {
 	// The configuration parameters of the procedure.
 	Config map[string]interface{} `json:"config,omitempty" xml:"config,omitempty"`
-	// The manual intervention configuration for the procedure.
+	// The configuration for the manual intervention procedure.
 	Intervention *ListAutoRepairPoliciesResponseBodyItemsRulesRepairProcedureIntervention `json:"intervention,omitempty" xml:"intervention,omitempty" type:"Struct"`
 	// The name of the procedure.
 	//
@@ -331,15 +331,15 @@ func (s *ListAutoRepairPoliciesResponseBodyItemsRulesRepairProcedure) Validate()
 }
 
 type ListAutoRepairPoliciesResponseBodyItemsRulesRepairProcedureIntervention struct {
-	// The label configuration for authorization confirmation. When you add the following labels to a node, you authorize ACK to perform operations in this phase. After completing the operations in this phase, ACK automatically removes the inquiry and confirmation labels for this phase. If you do not add the following labels in time, ACK will not perform the actions in this phase and subsequent phases, and the node may remain in a damaged state.
+	// The label configuration for authorization confirmation. When you add the following labels to the node, you authorize ACK to execute the operations in this stage. After completing the operations in this stage, ACK automatically removes the authorization inquiry and confirmation labels for this stage. If you do not add the following labels in time, ACK will not execute the actions in this stage and subsequent stages, and the node may remain in a damaged state.
 	ApprovedLabel *ListAutoRepairPoliciesResponseBodyItemsRulesRepairProcedureInterventionApprovedLabel `json:"approved_label,omitempty" xml:"approved_label,omitempty" type:"Struct"`
-	// Specifies whether manual approval is enabled.
+	// Specifies whether to enable manual approval.
 	//
 	// example:
 	//
 	// true
 	Enable *bool `json:"enable,omitempty" xml:"enable,omitempty"`
-	// The label configuration for authorization inquiry. When this phase is entered, ACK adds the following labels to your node and waits for your authorization to perform the actions in this phase.
+	// The label configuration for authorization inquiry. When this stage is reached, ACK adds the following labels to your node and waits for your authorization to execute the actions in this stage.
 	InquiringLabel *ListAutoRepairPoliciesResponseBodyItemsRulesRepairProcedureInterventionInquiringLabel `json:"inquiring_label,omitempty" xml:"inquiring_label,omitempty" type:"Struct"`
 	// The type of manual approval.
 	//

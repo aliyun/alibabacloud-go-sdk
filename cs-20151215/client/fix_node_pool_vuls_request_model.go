@@ -30,7 +30,7 @@ type FixNodePoolVulsRequest struct {
 	//
 	// true
 	AutoRestart *bool `json:"auto_restart,omitempty" xml:"auto_restart,omitempty"`
-	// The list of node names to fix. If not specified, all nodes in the node pool are fixed by default.
+	// The list of node names to fix. If this parameter is not specified, all nodes in the node pool are fixed by default.
 	Nodes []*string `json:"nodes,omitempty" xml:"nodes,omitempty" type:"Repeated"`
 	// The rolling fix policy.
 	RolloutPolicy *FixNodePoolVulsRequestRolloutPolicy `json:"rollout_policy,omitempty" xml:"rollout_policy,omitempty" type:"Struct"`
@@ -92,7 +92,7 @@ func (s *FixNodePoolVulsRequest) Validate() error {
 }
 
 type FixNodePoolVulsRequestRolloutPolicy struct {
-	// CVE fixes for nodes in the node pool are performed in batches. This parameter specifies the maximum number of nodes that can be fixed in parallel per batch.
+	// CVE fixes for nodes in the node pool are executed in batches. This parameter specifies the maximum number of nodes that can be fixed in parallel in each batch.
 	//
 	// Valid values: 1 to the total number of nodes in the node pool.
 	//

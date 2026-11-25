@@ -13,6 +13,8 @@ type iAttachInstancesRequest interface {
 	GetCpuPolicy() *string
 	SetFormatDisk(v bool) *AttachInstancesRequest
 	GetFormatDisk() *bool
+	SetFormatDiskOption(v string) *AttachInstancesRequest
+	GetFormatDiskOption() *string
 	SetImageId(v string) *AttachInstancesRequest
 	GetImageId() *string
 	SetInstances(v []*string) *AttachInstancesRequest
@@ -38,13 +40,13 @@ type iAttachInstancesRequest interface {
 }
 
 type AttachInstancesRequest struct {
-	// The CPU management policy for the node. The following two policies are supported when the cluster version is 1.12.6 or later:
+	// The CPU management policy for the node. The following policies are supported if the cluster version is 1.12.6 or later. Valid values:
 	//
-	// - `static`: allows you to enhance CPU affinity and exclusivity for pods with specific resource characteristics on the node.
+	// - static: allows you to enhance CPU affinity and exclusivity for pods with specific resource characteristics on the node.
 	//
-	// - `none`: uses the existing default CPU affinity policy.
+	// - none: uses the existing default CPU affinity policy.
 	//
-	// Default value: `none`.
+	// Default value: none.
 	//
 	// > This parameter is not supported if nodepool_id is specified.
 	//
@@ -52,13 +54,15 @@ type AttachInstancesRequest struct {
 	//
 	// none
 	CpuPolicy *string `json:"cpu_policy,omitempty" xml:"cpu_policy,omitempty"`
+	// Deprecated
+	//
 	// Specifies whether to store container data and images on a data cloud disk. Valid values:
 	//
-	// - `true`: stores container data and images on a data cloud disk.
+	// - true: stores container data and images on a data cloud disk.
 	//
-	// - `false`: does not store container data and images on a data cloud disk.
+	// - false: does not store container data and images on a data cloud disk.
 	//
-	// Default value: `false`.
+	// Default value: false.
 	//
 	// Data cloud disk mounting rules:
 	//
@@ -66,12 +70,18 @@ type AttachInstancesRequest struct {
 	//
 	// - If the ECS instance does not have data cloud disks attached, no new data cloud disk is attached.
 	//
-	// > If you choose to store data on a data cloud disk and the ECS instance already has data cloud disks attached, the existing data on the data cloud disks will be lost. Back up your data first.
+	// > If you choose to store data on a data cloud disk and the ECS instance already has data cloud disks attached, the existing data on the data cloud disks will be lost. Back up your data in advance.
 	//
 	// example:
 	//
 	// false
 	FormatDisk *bool `json:"format_disk,omitempty" xml:"format_disk,omitempty"`
+	// The disk formatting method. This parameter is mutually exclusive with format_disk.
+	//
+	// example:
+	//
+	// NodePoolDiskConfig
+	FormatDiskOption *string `json:"format_disk_option,omitempty" xml:"format_disk_option,omitempty"`
 	// The custom image ID.
 	//
 	// - If you specify a custom image ID, the system cloud disk image of the instance is replaced with the custom image.
@@ -90,13 +100,13 @@ type AttachInstancesRequest struct {
 	Instances []*string `json:"instances,omitempty" xml:"instances,omitempty" type:"Repeated"`
 	// Specifies whether the node to be added is an edge node, namely an ENS node. Valid values:
 	//
-	// - `true`: The node to be added is an edge node.
+	// - true: The node to be added is an edge node.
 	//
-	// - `false`: The node to be added is not an edge node.
+	// - false: The node to be added is not an edge node.
 	//
-	// Default value: `false`.
+	// Default value: false.
 	//
-	// > If the node is an edge node, you must set this parameter to `true` to identify the node type as an ENS node.
+	// > If the node is an edge node, you must set this parameter to true to identify the node type as an ENS node.
 	//
 	// example:
 	//
@@ -104,17 +114,17 @@ type AttachInstancesRequest struct {
 	IsEdgeWorker *bool `json:"is_edge_worker,omitempty" xml:"is_edge_worker,omitempty"`
 	// Specifies whether to retain the original instance name. Valid values:
 	//
-	// - `true`: retains the instance name.
+	// - true: retains the instance name.
 	//
-	// - `false`: does not retain the instance name.
+	// - false: does not retain the instance name.
 	//
-	// Default value: `false`.
+	// Default value: false.
 	//
 	// example:
 	//
 	// false
 	KeepInstanceName *bool `json:"keep_instance_name,omitempty" xml:"keep_instance_name,omitempty"`
-	// The name of the key pair for the instances to be added. You can specify either the key_pair or password parameter, or leave both empty.
+	// The name of the key pair for the instances to be added. You can specify either key_pair or password, or leave both empty.
 	//
 	// > This parameter is not supported if nodepool_id is specified.
 	//
@@ -128,13 +138,13 @@ type AttachInstancesRequest struct {
 	//
 	// np615c0e0966124216a0412e10afe0****
 	NodepoolId *string `json:"nodepool_id,omitempty" xml:"nodepool_id,omitempty"`
-	// The SSH logon password for the instances to be added. You can specify either the key_pair or password parameter, or leave both empty.
+	// The SSH logon password for the instances to be added. You can specify either key_pair or password, or leave both empty.
 	//
 	// The password must meet the following requirements:
 	//
-	// - The password must be 8 to 30 characters in length.
+	// - The password is 8 to 30 characters in length.
 	//
-	// - The password must contain uppercase letters, lowercase letters, digits, and special characters.
+	// - The password contains uppercase letters, lowercase letters, digits, and special characters.
 	//
 	// - The password cannot contain backslashes (\\) or double quotation marks (").
 	//
@@ -172,7 +182,7 @@ type AttachInstancesRequest struct {
 	//
 	// - Label values can be empty and can be up to 128 characters in length.
 	//
-	// - Label keys and values cannot start with `aliyun`, `acs:`, `https://`, or `http://`.
+	// - Label keys and values cannot start with aliyun, acs:, https://, or http://.
 	//
 	// For more information, see [Labels and Selectors](https://kubernetes.io/docs/concepts/overview/working-with-objects/labels/#syntax-and-character-set).
 	//
@@ -202,6 +212,10 @@ func (s *AttachInstancesRequest) GetCpuPolicy() *string {
 
 func (s *AttachInstancesRequest) GetFormatDisk() *bool {
 	return s.FormatDisk
+}
+
+func (s *AttachInstancesRequest) GetFormatDiskOption() *string {
+	return s.FormatDiskOption
 }
 
 func (s *AttachInstancesRequest) GetImageId() *string {
@@ -255,6 +269,11 @@ func (s *AttachInstancesRequest) SetCpuPolicy(v string) *AttachInstancesRequest 
 
 func (s *AttachInstancesRequest) SetFormatDisk(v bool) *AttachInstancesRequest {
 	s.FormatDisk = &v
+	return s
+}
+
+func (s *AttachInstancesRequest) SetFormatDiskOption(v string) *AttachInstancesRequest {
+	s.FormatDiskOption = &v
 	return s
 }
 

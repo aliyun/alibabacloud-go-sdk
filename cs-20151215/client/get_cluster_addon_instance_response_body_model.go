@@ -22,21 +22,21 @@ type iGetClusterAddonInstanceResponseBody interface {
 }
 
 type GetClusterAddonInstanceResponseBody struct {
-	// The custom parameter settings of the add-on.
+	// The custom parameter settings of the component.
 	//
 	// example:
 	//
 	// {"sls_project_name":""}
 	Config *string `json:"config,omitempty" xml:"config,omitempty"`
-	// The log feature status of the add-on.
+	// The logging status of the component.
 	Logging *GetClusterAddonInstanceResponseBodyLogging `json:"logging,omitempty" xml:"logging,omitempty" type:"Struct"`
-	// The name of the add-on instance.
+	// The name of the component instance.
 	//
 	// example:
 	//
 	// ack-node-problem-detector
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The state of the add-on. Valid values:
+	// The component state. Valid values:
 	//
 	// - active: Installed.
 	//
@@ -50,7 +50,7 @@ type GetClusterAddonInstanceResponseBody struct {
 	//
 	// active
 	State *string `json:"state,omitempty" xml:"state,omitempty"`
-	// The version of the add-on instance.
+	// The version of the component instance.
 	//
 	// example:
 	//
@@ -121,7 +121,7 @@ func (s *GetClusterAddonInstanceResponseBody) Validate() error {
 }
 
 type GetClusterAddonInstanceResponseBodyLogging struct {
-	// Specifies whether the add-on supports the log feature. Valid values:
+	// Indicates whether the component supports the logging feature. Valid values:
 	//
 	// - true: Supported.
 	//
@@ -131,7 +131,7 @@ type GetClusterAddonInstanceResponseBodyLogging struct {
 	//
 	// false
 	Capable *bool `json:"capable,omitempty" xml:"capable,omitempty"`
-	// Specifies whether the log feature is enabled. Valid values:
+	// Indicates whether the logging feature is enabled. Valid values:
 	//
 	// - true: Enabled.
 	//
@@ -141,13 +141,13 @@ type GetClusterAddonInstanceResponseBodyLogging struct {
 	//
 	// false
 	Enabled *bool `json:"enabled,omitempty" xml:"enabled,omitempty"`
-	// The Log Service project used by the add-on log feature.
+	// The log project used by the component logging feature.
 	//
 	// example:
 	//
 	// k8s-log-c02b3e03be10643e8a644a843ffcb****
 	LogProject *string `json:"log_project,omitempty" xml:"log_project,omitempty"`
-	// The Logstore used by the add-on log feature.
+	// The Logstore used by the component logging feature.
 	//
 	// example:
 	//

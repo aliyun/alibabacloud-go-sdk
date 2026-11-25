@@ -32,7 +32,7 @@ type DescribePolicyDetailsResponseBody struct {
 	//
 	// - `enforce`: Blocks non-compliant deployments.
 	//
-	// - `inform`: Triggers alerts.
+	// - `inform`: Generates alerts.
 	//
 	// example:
 	//
@@ -50,11 +50,11 @@ type DescribePolicyDetailsResponseBody struct {
 	//
 	// Requires container images to begin with a repo string from a specified list
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// Indicates whether the rule is deleted. Valid values:
+	// Specifies whether the rule is deleted. Valid values:
 	//
-	// - 0: Not deleted.
+	// - 0: The rule is not deleted.
 	//
-	// - 1: Deleted.
+	// - 1: The rule is deleted.
 	//
 	// example:
 	//
@@ -78,11 +78,11 @@ type DescribePolicyDetailsResponseBody struct {
 	NoConfig *int32 `json:"no_config,omitempty" xml:"no_config,omitempty"`
 	// The governance severity of the rule. Valid values:
 	//
-	// 	- `high`: High-risk.
+	// 	- `high`: High risk.
 	//
-	// 	- `medium`: Medium-risk.
+	// 	- `medium`: Medium risk.
 	//
-	// 	- `low`: Low-risk.
+	// 	- `low`: Low risk.
 	//
 	// example:
 	//

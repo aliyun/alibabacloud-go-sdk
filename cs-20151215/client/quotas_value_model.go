@@ -32,7 +32,7 @@ type QuotasValue struct {
 	//
 	// q_Kubernetes_Cluster
 	OperationCode *string `json:"operation_code,omitempty" xml:"operation_code,omitempty"`
-	// Indicates whether the quota can be adjusted.
+	// Specifies whether the quota can be adjusted.
 	//
 	// example:
 	//

@@ -90,7 +90,7 @@ type DescribeClusterResourcesResponseBody struct {
 	//
 	// ngw-wz9sphwk42sdtjixo****
 	InstanceId *string `json:"instance_id,omitempty" xml:"instance_id,omitempty"`
-	// The resource information. For more information about the source information of resources, see [ListStackResources](https://help.aliyun.com/document_detail/133836.html).
+	// The resource metadata. For more information about the source information of resources, see [ListStackResources](https://help.aliyun.com/document_detail/133836.html).
 	//
 	// example:
 	//
@@ -106,17 +106,17 @@ type DescribeClusterResourcesResponseBody struct {
 	//
 	// - `CREATE_COMPLETE`: The resource is created.
 	//
-	// - `CREATE_FAILED`: The resource fails to be created.
+	// - `CREATE_FAILED`: The resource failed to be created.
 	//
 	// - `CREATE_IN_PROGRESS`: The resource is being created.
 	//
-	// - `DELETE_FAILED`: The resource fails to be deleted.
+	// - `DELETE_FAILED`: The resource failed to be deleted.
 	//
 	// - `DELETE_IN_PROGRESS`: The resource is being deleted.
 	//
 	// - `ROLLBACK_COMPLETE`: The rollback is successful.
 	//
-	// - `ROLLBACK_FAILED`: The rollback fails.
+	// - `ROLLBACK_FAILED`: The rollback failed.
 	//
 	// - `ROLLBACK_IN_PROGRESS`: The rollback is in progress.
 	//
@@ -124,7 +124,7 @@ type DescribeClusterResourcesResponseBody struct {
 	//
 	// CREATE_COMPLETE
 	State *string `json:"state,omitempty" xml:"state,omitempty"`
-	// Specifies whether the resource is created by ACK. Valid values:
+	// Specifies whether the resource is created by ACK:
 	//
 	// - 1: The resource is created by ACK.
 	//
@@ -140,7 +140,7 @@ type DescribeClusterResourcesResponseBody struct {
 	AssociatedObject *DescribeClusterResourcesResponseBodyAssociatedObject `json:"associated_object,omitempty" xml:"associated_object,omitempty" type:"Struct"`
 	// The deletion behavior of the resource when the cluster is deleted.
 	DeleteBehavior *DescribeClusterResourcesResponseBodyDeleteBehavior `json:"delete_behavior,omitempty" xml:"delete_behavior,omitempty" type:"Struct"`
-	// The type of the creator of the resource. Valid values:
+	// The type of the resource creator. Valid values:
 	//
 	// - user: The resource is created by the user.
 	//
@@ -420,7 +420,7 @@ func (s *DescribeClusterResourcesResponseBodyAssociatedObject) Validate() error 
 }
 
 type DescribeClusterResourcesResponseBodyDeleteBehavior struct {
-	// Specifies whether the resource is deleted by default when the cluster is deleted. Valid values:
+	// Specifies whether the resource is deleted by default when the cluster is deleted.
 	//
 	// - true: The resource is deleted by default.
 	//
@@ -430,7 +430,7 @@ type DescribeClusterResourcesResponseBodyDeleteBehavior struct {
 	//
 	// false
 	DeleteByDefault *bool `json:"delete_by_default,omitempty" xml:"delete_by_default,omitempty"`
-	// Specifies whether the default behavior returned in `delete_by_default` can be changed. Valid values:
+	// Specifies whether the default behavior returned in `delete_by_default` can be changed.
 	//
 	// - true: The default behavior can be changed.
 	//

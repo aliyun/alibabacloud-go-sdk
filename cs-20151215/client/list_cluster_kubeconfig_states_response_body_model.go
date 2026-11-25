@@ -79,7 +79,7 @@ type ListClusterKubeconfigStatesResponseBodyPage struct {
 	//
 	// 10
 	PageSize *int32 `json:"page_size,omitempty" xml:"page_size,omitempty"`
-	// The total number of entries.
+	// The total number of results.
 	//
 	// example:
 	//
@@ -145,7 +145,7 @@ type ListClusterKubeconfigStatesResponseBodyStates struct {
 	//
 	// tom
 	AccountName *string `json:"account_name,omitempty" xml:"account_name,omitempty"`
-	// The account state.
+	// The account status.
 	//
 	// Valid values:
 	//
@@ -173,21 +173,21 @@ type ListClusterKubeconfigStatesResponseBodyStates struct {
 	//
 	// RamUser
 	AccountType *string `json:"account_type,omitempty" xml:"account_type,omitempty"`
-	// The expiration time of the KubeConfig client certificate. The time is displayed in ISO 8601 format and includes time zone information.
+	// The expiration time of the KubeConfig client certificate. The time is in ISO 8601 format and includes time zone information.
 	//
 	// example:
 	//
 	// 2027-07-15T01:32:20Z
 	CertExpireTime *string `json:"cert_expire_time,omitempty" xml:"cert_expire_time,omitempty"`
-	// The state of the KubeConfig client certificate.
+	// The status of the KubeConfig client certificate.
 	//
 	// Valid values:
 	//
-	// - Unexpired: The certificate is not expired.
+	// - Unexpired: The certificate has not expired.
 	//
-	// - Expired: The certificate is expired.
+	// - Expired: The certificate has expired.
 	//
-	// - Unknown: The certificate state is unknown (abnormal state).
+	// - Unknown: The status is unknown, which indicates an exception.
 	//
 	// example:
 	//
@@ -325,9 +325,9 @@ type ListClusterKubeconfigStatesResponseBodyStatesCloudServiceRoles struct {
 	//
 	// Valid values:
 	//
-	// - true: The content is consistent with the default cluster role template.
+	// - true: Consistent.
 	//
-	// - false: The content is inconsistent with the default cluster role template.
+	// - false: Inconsistent.
 	IsDefaultTemplate *bool `json:"is_default_template,omitempty" xml:"is_default_template,omitempty"`
 	// The name of the cluster role associated with the cloud service role in the cluster.
 	//

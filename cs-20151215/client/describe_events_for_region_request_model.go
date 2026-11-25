@@ -29,8 +29,12 @@ type DescribeEventsForRegionRequest struct {
 	// cf62854ac2130470897be7a27ed1f****
 	ClusterId *string `json:"cluster_id,omitempty" xml:"cluster_id,omitempty"`
 	// The maximum number of results to return for a single request.
+	//
+	// example:
+	//
+	// 50
 	MaxResults *int32 `json:"max_results,omitempty" xml:"max_results,omitempty"`
-	// The query token. The value is the next_token parameter value returned by the previous API call.
+	// The pagination token. Set the value to the next_token value returned by the previous API call.
 	NextToken *string `json:"next_token,omitempty" xml:"next_token,omitempty"`
 	// The page number.
 	//
@@ -38,7 +42,7 @@ type DescribeEventsForRegionRequest struct {
 	//
 	// 1
 	PageNumber *int64 `json:"page_number,omitempty" xml:"page_number,omitempty"`
-	// The maximum number of results to return per page.
+	// The maximum number of results to display per page.
 	//
 	// Valid values: 1 to 100.
 	//

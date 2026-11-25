@@ -120,11 +120,7 @@ type DescribePolicyInstancesResponseBody struct {
 	//
 	// low
 	PolicySeverity *string `json:"policy_severity,omitempty" xml:"policy_severity,omitempty"`
-	// The enforcement scope of the policy instance.
-	//
-	// A value of "*" indicates all namespaces in the cluster.
-	//
-	// Otherwise, the names of the target namespaces are returned, separated by commas (,).
+	// The enforcement scope of the policy instance. A value of "*" indicates all namespaces in the cluster. Otherwise, the names of the target namespaces are returned, separated by commas (,).
 	//
 	// example:
 	//
@@ -166,7 +162,7 @@ type DescribePolicyInstancesResponseBody struct {
 	ResourceId *string `json:"resource_id,omitempty" xml:"resource_id,omitempty"`
 	// Deprecated
 	//
-	// **[Deprecated]*	- The number of processed violations in the cluster. Do not use this parameter.
+	// **[Deprecated]*	- The count of processed violations in the cluster. Do not use this parameter.
 	//
 	// example:
 	//

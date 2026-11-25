@@ -14,6 +14,8 @@ type iHibernateClusterRequest interface {
 }
 
 type HibernateClusterRequest struct {
+	// The client token.
+	//
 	// example:
 	//
 	// c82e6987e2961451182edacd74faf

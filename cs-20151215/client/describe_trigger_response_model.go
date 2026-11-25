@@ -92,7 +92,7 @@ type DescribeTriggerResponseBody struct {
 	ClusterId *string `json:"cluster_id,omitempty" xml:"cluster_id,omitempty"`
 	// The trigger project name.
 	//
-	// It consists of the namespace and application name in the `${namespace}/${name}` format. Example: default/test-app.
+	// It consists of the namespace and application name, in the `${namespace}/${name}` format. Example: default/test-app.
 	//
 	// example:
 	//
@@ -102,9 +102,9 @@ type DescribeTriggerResponseBody struct {
 	//
 	// Valid values:
 	//
-	// - `deployment`: the trigger for stateless applications.
+	// - `deployment`: trigger for stateless applications.
 	//
-	// - `application`: the trigger for Hybrid Cloud Application Center applications.
+	// - `application`: trigger for Hybrid Cloud Application Center applications.
 	//
 	// example:
 	//
@@ -112,7 +112,7 @@ type DescribeTriggerResponseBody struct {
 	Type *string `json:"type,omitempty" xml:"type,omitempty"`
 	// The trigger action. Valid values:
 	//
-	// `redeploy`: redeploys the application.
+	// `redeploy`: Redeploys the application.
 	//
 	// example:
 	//

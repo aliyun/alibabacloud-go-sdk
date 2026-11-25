@@ -18,7 +18,7 @@ type iDescribeNodePoolVulsResponseBody interface {
 type DescribeNodePoolVulsResponseBody struct {
 	// The list of vulnerabilities in the node pool.
 	VulRecords []*DescribeNodePoolVulsResponseBodyVulRecords `json:"vul_records,omitempty" xml:"vul_records,omitempty" type:"Repeated"`
-	// Indicates whether the Security Center CVE fix service is purchased. Valid values:
+	// Specifies whether the Security Center CVE fix service is purchased.
 	//
 	// - true: Purchased.
 	//
@@ -76,7 +76,7 @@ type DescribeNodePoolVulsResponseBodyVulRecords struct {
 	//
 	// i-t4n2qolb0wtzt0pz****
 	InstanceId *string `json:"instance_id,omitempty" xml:"instance_id,omitempty"`
-	// The name of the node, which identifies the node in the cluster.
+	// The node name, which identifies the node in the cluster.
 	//
 	// example:
 	//
@@ -143,7 +143,7 @@ type DescribeNodePoolVulsResponseBodyVulRecordsVulList struct {
 	AliasName *string `json:"alias_name,omitempty" xml:"alias_name,omitempty"`
 	// The list of CVEs corresponding to the vulnerability.
 	CveList []*string `json:"cve_list,omitempty" xml:"cve_list,omitempty" type:"Repeated"`
-	// The name of the vulnerability.
+	// The vulnerability name.
 	//
 	// example:
 	//
@@ -155,7 +155,7 @@ type DescribeNodePoolVulsResponseBodyVulRecordsVulList struct {
 	//
 	// asap
 	Necessity *string `json:"necessity,omitempty" xml:"necessity,omitempty"`
-	// Indicates whether a restart is required.
+	// Specifies whether a restart is required.
 	//
 	// example:
 	//
@@ -241,7 +241,7 @@ func (s *DescribeNodePoolVulsResponseBodyVulRecordsVulList) Validate() error {
 }
 
 type DescribeNodePoolVulsResponseBodyVulRecordsVulListPackageList struct {
-	// The name of the package.
+	// The package name.
 	//
 	// example:
 	//

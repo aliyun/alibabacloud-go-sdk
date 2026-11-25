@@ -84,7 +84,7 @@ type DescribeKubernetesVersionMetadataResponseBody struct {
 	//
 	// }
 	Capabilities map[string]interface{} `json:"capabilities,omitempty" xml:"capabilities,omitempty"`
-	// Indicates whether the Kubernetes version can be created.
+	// Specifies whether the Kubernetes version is available for cluster creation.
 	//
 	// example:
 	//
@@ -104,7 +104,7 @@ type DescribeKubernetesVersionMetadataResponseBody struct {
 	ExtendedExpirationDate *string `json:"extended_expiration_date,omitempty" xml:"extended_expiration_date,omitempty"`
 	// The list of system images.
 	Images []*DescribeKubernetesVersionMetadataResponseBodyImages `json:"images,omitempty" xml:"images,omitempty" type:"Repeated"`
-	// The metadata information of the Kubernetes version.
+	// The metadata of the Kubernetes version.
 	//
 	// example:
 	//
@@ -126,11 +126,11 @@ type DescribeKubernetesVersionMetadataResponseBody struct {
 	ReleaseDate *string `json:"release_date,omitempty" xml:"release_date,omitempty"`
 	// The container runtime configurations.
 	Runtimes []*Runtime `json:"runtimes,omitempty" xml:"runtimes,omitempty" type:"Repeated"`
-	// The support policy required to obtain this patch version. The value is case-sensitive. Valid values:
+	// The support policy required to obtain the patch version. The values are case-sensitive. Valid values:
 	//
-	// - Standard: regular patch versions
+	// - Standard: regular patch version
 	//
-	// - Extended: patch versions exclusive to the extended support period, which include backported CVE and critical bug fixes. Only clusters with extended support enabled can be upgraded to these versions.
+	// - Extended: patch version exclusive to the extended support period, which includes backported CVE and critical bug fixes, and is only available for clusters with extended support enabled
 	//
 	// This field always has a value. It shares the same name and value range as the support_policy of the cluster. You can directly compare the policy enabled for the cluster with the policy required for this version.
 	//
@@ -140,7 +140,7 @@ type DescribeKubernetesVersionMetadataResponseBody struct {
 	SupportPolicy *string `json:"support_policy,omitempty" xml:"support_policy,omitempty"`
 	// The list of upgradable versions.
 	UpgradableVersions []*string `json:"upgradable_versions,omitempty" xml:"upgradable_versions,omitempty" type:"Repeated"`
-	// The Kubernetes version released by ACK. For more version information, see [Kubernetes version release overview](https://help.aliyun.com/document_detail/185269.html).
+	// The Kubernetes version released by ACK. For more information about versions, see [Kubernetes version release overview](https://help.aliyun.com/document_detail/185269.html).
 	//
 	// example:
 	//
@@ -286,13 +286,13 @@ type DescribeKubernetesVersionMetadataResponseBodyImages struct {
 	Architecture *string `json:"architecture,omitempty" xml:"architecture,omitempty"`
 	// The category of the image. Valid values:
 	//
-	// - `system`: public images
+	// - `system`: public image
 	//
-	// - `self`: custom images
+	// - `self`: custom image
 	//
-	// - `others`: public images from other users
+	// - `others`: shared image
 	//
-	// - `marketplace`: marketplace images
+	// - `marketplace`: Alibaba Cloud Marketplace image
 	//
 	// example:
 	//
@@ -310,7 +310,7 @@ type DescribeKubernetesVersionMetadataResponseBodyImages struct {
 	//
 	// Alibaba Cloud Linux 3.2104
 	ImageName *string `json:"image_name,omitempty" xml:"image_name,omitempty"`
-	// The operating system distribution type. Use this field to specify the node operating system. Valid values:
+	// The type of the operating system distribution. Use this field to specify the operating system for nodes. Valid values:
 	//
 	// - `CentOS`
 	//
@@ -334,7 +334,7 @@ type DescribeKubernetesVersionMetadataResponseBodyImages struct {
 	//
 	// AliyunLinux3
 	ImageType *string `json:"image_type,omitempty" xml:"image_type,omitempty"`
-	// The operating system type. Valid values:
+	// The type of the operating system. Examples:
 	//
 	// - `Windows`
 	//

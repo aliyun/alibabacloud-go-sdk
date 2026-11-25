@@ -52,11 +52,11 @@ type iInstancePatterns interface {
 type InstancePatterns struct {
 	// Deprecated
 	//
-	// [This parameter is deprecated and replaced by cpu_architectures] The architectures of instance types.
+	// **[Deprecated]*	- Use the cpu_architectures parameter instead. The architecture type of the instance type.
 	Architectures []*string `json:"architectures,omitempty" xml:"architectures,omitempty" type:"Repeated"`
 	// Deprecated
 	//
-	// [This parameter is deprecated] Specifies whether to include burstable instance types.
+	// **[Deprecated]*	- Do not use this parameter. Specifies whether the instance type is a burstable instance type.
 	//
 	// example:
 	//
@@ -64,23 +64,23 @@ type InstancePatterns struct {
 	BurstPerformanceOption *string `json:"burst_performance_option,omitempty" xml:"burst_performance_option,omitempty"`
 	// Deprecated
 	//
-	// [This parameter is deprecated and replaced by cores] The number of vCores provided by the instance type.
+	// **[Deprecated]*	- Use the cores parameter instead. The number of vCPU cores of the instance type.
 	//
 	// example:
 	//
 	// 4
 	Core *int64 `json:"core,omitempty" xml:"core,omitempty"`
-	// The number of vCPU cores for the instance type.
+	// The number of vCPU cores of the instance type.
 	//
 	// example:
 	//
 	// 4
 	Cores *int64 `json:"cores,omitempty" xml:"cores,omitempty"`
-	// The CPU architecture of the instance type.
+	// The CPU architecture of the instance.
 	CpuArchitectures []*string `json:"cpu_architectures,omitempty" xml:"cpu_architectures,omitempty" type:"Repeated"`
-	// The instance type that you want to exclude.
+	// The instance types to exclude.
 	ExcludedInstanceTypes []*string `json:"excluded_instance_types,omitempty" xml:"excluded_instance_types,omitempty" type:"Repeated"`
-	// The type of the instance.
+	// The instance categories.
 	InstanceCategories []*string `json:"instance_categories,omitempty" xml:"instance_categories,omitempty" type:"Repeated"`
 	// The instance family level.
 	//
@@ -88,15 +88,15 @@ type InstancePatterns struct {
 	//
 	// EnterpriseLevel
 	InstanceFamilyLevel *string `json:"instance_family_level,omitempty" xml:"instance_family_level,omitempty"`
-	// The specified instance family.
+	// The specified instance families.
 	InstanceTypeFamilies []*string `json:"instance_type_families,omitempty" xml:"instance_type_families,omitempty" type:"Repeated"`
-	// The maximum vCPU cores allowed for the instance type.
+	// The maximum number of vCPU cores of the instance type.
 	//
 	// example:
 	//
 	// 8
 	MaxCpuCores *int64 `json:"max_cpu_cores,omitempty" xml:"max_cpu_cores,omitempty"`
-	// The maximum allowed memory size. Unit: GiB.
+	// The maximum memory of the instance type. Unit: GiB.
 	//
 	// example:
 	//
@@ -104,13 +104,13 @@ type InstancePatterns struct {
 	MaxMemorySize *float32 `json:"max_memory_size,omitempty" xml:"max_memory_size,omitempty"`
 	// Deprecated
 	//
-	// [This parameter is deprecated] The maximum hourly price of the instance.
+	// **[Deprecated]*	- Do not use this parameter. The maximum hourly price of the instance.
 	//
 	// example:
 	//
 	// 2
 	MaxPrice *float32 `json:"max_price,omitempty" xml:"max_price,omitempty"`
-	// The maximum allowed number of GPUs per instance.
+	// The expected maximum number of GPUs.
 	//
 	// example:
 	//
@@ -122,31 +122,31 @@ type InstancePatterns struct {
 	//
 	// 8
 	Memory *float32 `json:"memory,omitempty" xml:"memory,omitempty"`
-	// The minimum vCPU cores required for the instance type.
+	// The minimum number of vCPU cores of the instance type.
 	//
 	// example:
 	//
 	// 4
 	MinCpuCores *int64 `json:"min_cpu_cores,omitempty" xml:"min_cpu_cores,omitempty"`
-	// The minimum required memory size. Unit: GiB.
+	// The minimum memory of the instance type. Unit: GiB.
 	//
 	// example:
 	//
 	// 8
 	MinMemorySize *float32 `json:"min_memory_size,omitempty" xml:"min_memory_size,omitempty"`
-	// The minimum required number of IPv6 addresses per ENI.
+	// The expected minimum number of IPv6 addresses per elastic network interface controller (NIC).
 	//
 	// example:
 	//
 	// 1
 	MinimumEniIpv6AddressQuantity *int64 `json:"minimum_eni_ipv6_address_quantity,omitempty" xml:"minimum_eni_ipv6_address_quantity,omitempty"`
-	// The minimum required number of IPv4 addresses per ENI.
+	// The expected minimum number of IPv4 addresses per elastic network interface controller (NIC).
 	//
 	// example:
 	//
 	// 10
 	MinimumEniPrivateIpAddressQuantity *int64 `json:"minimum_eni_private_ip_address_quantity,omitempty" xml:"minimum_eni_private_ip_address_quantity,omitempty"`
-	// The minimum required number of elastic network interfaces (ENIs) per instance.
+	// The expected minimum number of elastic network interfaces (ENIs) that can be mounted.
 	//
 	// example:
 	//

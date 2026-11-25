@@ -82,9 +82,9 @@ func (s *CreateNodePoolComponentInstancesRequest) Validate() error {
 }
 
 type CreateNodePoolComponentInstancesRequestComponents struct {
-	// The configuration of the component.
+	// The component configuration.
 	Config *CreateNodePoolComponentInstancesRequestComponentsConfig `json:"config,omitempty" xml:"config,omitempty" type:"Struct"`
-	// The name of the component.
+	// The component name.
 	//
 	// This parameter is required.
 	//
@@ -92,7 +92,7 @@ type CreateNodePoolComponentInstancesRequestComponents struct {
 	//
 	// kubelet
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The version of the component.
+	// The component version.
 	//
 	// This parameter is required.
 	//
@@ -197,13 +197,13 @@ func (s *CreateNodePoolComponentInstancesRequestComponentsConfig) Validate() err
 }
 
 type CreateNodePoolComponentInstancesRequestComponentsConfigEnvs struct {
-	// The name of the environment variable.
+	// The environment variable name.
 	//
 	// example:
 	//
 	// LOG_LEVEL
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The value of the environment variable.
+	// The environment variable value.
 	//
 	// example:
 	//
@@ -254,13 +254,13 @@ type CreateNodePoolComponentInstancesRequestRollingPolicy struct {
 	//
 	// 0
 	MaxFailedNodes *int64 `json:"max_failed_nodes,omitempty" xml:"max_failed_nodes,omitempty"`
-	// The maximum number of parallel updates per batch. Default value: 1.
+	// The maximum number of parallel operations per batch. Default value: 1.
 	//
 	// example:
 	//
 	// 1
 	MaxParallelism *int64 `json:"max_parallelism,omitempty" xml:"max_parallelism,omitempty"`
-	// The auto-pause policy during the node upgrade process. Valid values: NotPause, FirstBatch, and EveryBatch. Default value: NotPause.
+	// The automatic pause policy during the node upgrade. Valid values: NotPause, FirstBatch, and EveryBatch. Default value: NotPause.
 	//
 	// example:
 	//

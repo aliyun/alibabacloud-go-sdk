@@ -79,7 +79,7 @@ type DescribeClustersForRegionResponseBodyClusters struct {
 	//
 	// c905d1364c2dd4b6284a3f41790c4****
 	ClusterId *string `json:"cluster_id,omitempty" xml:"cluster_id,omitempty"`
-	// The specification of the cluster. Valid values:
+	// The specifications of the cluster. Valid values:
 	//
 	// - `ack.standard`: Basic Edition.
 	//
@@ -89,17 +89,17 @@ type DescribeClustersForRegionResponseBodyClusters struct {
 	//
 	// - `ack.pro.2xlarge`: Pro 2XL.
 	//
-	// - `ack.pro.4xlarge`: Pro 4XL. To use this specification, you must contact customer service to apply for whitelist access.
+	// - `ack.pro.4xlarge`: Pro 4XL (contact customer service to apply for whitelist access).
 	//
-	// Pro XL, Pro 2XL, and Pro 4XL are the three tiers provided by the <props="china">[ACK Pro provisioned control plane](https://help.aliyun.com/ack/ack-managed-and-ack-dedicated/user-guide/ack-pro-provisioned-control-plane)<props="intl">[ACK Pro provisioned control plane](https://www.alibabacloud.com/help/ack/ack-managed-and-ack-dedicated/user-guide/ack-pro-provisioned-control-plane). These tiers pre-allocate and reserve control plane resources to ensure that API concurrency and pod scheduling capabilities remain consistently high. They are suitable for AI training and inference, ultra-large-scale clusters, and mission-critical workloads.
+	// Pro XL, Pro 2XL, and Pro 4XL are the three tiers provided by the <props="china">[ACK Pro provisioned control plane](https://help.aliyun.com/ack/ack-managed-and-ack-dedicated/user-guide/ack-pro-provisioned-control-plane)<props="intl">[ACK Pro provisioned control plane](https://www.alibabacloud.com/help/ack/ack-managed-and-ack-dedicated/user-guide/ack-pro-provisioned-control-plane). By pre-allocating and dedicating control plane resources, these tiers ensure that API concurrency and pod scheduling capabilities remain consistently high. They are suitable for AI training and inference, ultra-large-scale clusters, and mission-critical workloads.
 	//
-	// For more information about the cluster management fees for the Pro Edition and provisioned control plane editions, see <props="china">[Cluster management fees](https://help.aliyun.com/ack/ack-managed-and-ack-dedicated/product-overview/cluster-management-fee)<props="intl">[Cluster management fees](https://www.alibabacloud.com/help/ack/ack-managed-and-ack-dedicated/product-overview/cluster-management-fee).
+	// For more information about the cluster management fees for Pro Edition and provisioned control plane editions, see <props="china">[Cluster management fees](https://help.aliyun.com/ack/ack-managed-and-ack-dedicated/product-overview/cluster-management-fee)<props="intl">[Cluster management fees](https://www.alibabacloud.com/help/ack/ack-managed-and-ack-dedicated/product-overview/cluster-management-fee).
 	//
 	// example:
 	//
 	// ack.standard
 	ClusterSpec *string `json:"cluster_spec,omitempty" xml:"cluster_spec,omitempty"`
-	// The type of the cluster. Valid values:
+	// The cluster type. Valid values:
 	//
 	// - Kubernetes: ACK dedicated cluster.
 	//
@@ -129,7 +129,7 @@ type DescribeClustersForRegionResponseBodyClusters struct {
 	//
 	// 1.16.6-aliyun.1
 	CurrentVersion *string `json:"current_version,omitempty" xml:"current_version,omitempty"`
-	// Indicates whether deletion protection is enabled for the cluster to prevent accidental deletion through the console or API. Valid values:
+	// Specifies whether deletion protection is enabled for the cluster to prevent accidental deletion through the console or API. Valid values:
 	//
 	// - true: Deletion protection is enabled. The cluster cannot be deleted through the console or API.
 	//
@@ -145,7 +145,11 @@ type DescribeClustersForRegionResponseBodyClusters struct {
 	//
 	// 1.16.6-aliyun.1
 	InitVersion *string `json:"init_version,omitempty" xml:"init_version,omitempty"`
-	// The IP stack of the cluster.
+	// The IP stack of the cluster. Valid values:
+	//
+	// - ipv4: The cluster supports only the IPv4 protocol stack.
+	//
+	// - dual: The cluster supports both IPv4 and IPv6 protocol stacks.
 	//
 	// example:
 	//
@@ -201,7 +205,7 @@ type DescribeClustersForRegionResponseBodyClusters struct {
 	//
 	// sg-2zeihch86ooz9io4****
 	SecurityGroupId *string `json:"security_group_id,omitempty" xml:"security_group_id,omitempty"`
-	// The CIDR block for services in the cluster.
+	// The CIDR block for services.
 	//
 	// This parameter is required.
 	//
@@ -243,7 +247,7 @@ type DescribeClustersForRegionResponseBodyClusters struct {
 	//
 	// - `delete_failed`: The cluster failed to be deleted.
 	//
-	// - `waiting`: The cluster is waiting for the accessed state.
+	// - `waiting`: Waiting for the accessed state.
 	//
 	// - `disconnected`: The cluster is disconnected.
 	//
@@ -271,7 +275,7 @@ type DescribeClustersForRegionResponseBodyClusters struct {
 	//
 	// Asia/Shanghai
 	Timezone *string `json:"timezone,omitempty" xml:"timezone,omitempty"`
-	// The time when the cluster was last updated.
+	// The time when the cluster was updated.
 	//
 	// example:
 	//

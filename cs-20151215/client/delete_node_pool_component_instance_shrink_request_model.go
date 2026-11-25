@@ -28,25 +28,25 @@ type DeleteNodePoolComponentInstanceShrinkRequest struct {
 	//
 	// 10
 	BatchInterval *int64 `json:"batch_interval,omitempty" xml:"batch_interval,omitempty"`
-	// The maximum number of nodes that are allowed to fail during the rolling process. Default value: 0. A value of 0 indicates that the task fails if any node fails. A value greater than 0 indicates that the task fails and stops if the cumulative number of failed nodes exceeds this value.
+	// The maximum number of nodes that can fail during the rolling process. Default value: 0. A value of 0 indicates that the task fails if any node fails. A value greater than 0 indicates that the task fails and stops if the cumulative number of failed nodes exceeds this value.
 	//
 	// example:
 	//
 	// 0
 	MaxFailedNodes *int64 `json:"max_failed_nodes,omitempty" xml:"max_failed_nodes,omitempty"`
-	// The maximum number of parallel nodes per batch. Default value: 1.
+	// The maximum number of parallel operations per batch. Default value: 1.
 	//
 	// example:
 	//
 	// 1
 	MaxParallelism *int64 `json:"max_parallelism,omitempty" xml:"max_parallelism,omitempty"`
-	// The list of nodes to rotate. Default value: all nodes.
+	// The list of nodes to be rotated. Default value: all nodes.
 	//
 	// example:
 	//
 	// ["cn-hangzhou.10.91.xx.xx"]
 	NodeNamesShrink *string `json:"node_names,omitempty" xml:"node_names,omitempty"`
-	// The auto-pause policy during the node upgrade process. Valid values:
+	// The automatic pause policy during node upgrades. Valid values:
 	//
 	// - NotPause
 	//

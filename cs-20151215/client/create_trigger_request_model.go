@@ -22,7 +22,7 @@ type iCreateTriggerRequest interface {
 type CreateTriggerRequest struct {
 	// The action of the trigger. Valid values:
 	//
-	// - `redeploy`: Redeploys the resources defined in `project_id`.
+	// `redeploy`: Redeploys the resources defined in `project_id`.
 	//
 	// This parameter is required.
 	//
@@ -38,11 +38,7 @@ type CreateTriggerRequest struct {
 	//
 	// c5cdf7e3938bc4f8eb0e44b21a80f****
 	ClusterId *string `json:"cluster_id,omitempty" xml:"cluster_id,omitempty"`
-	// The project name of the trigger.
-	//
-	// It consists of the namespace and the name of the application, in the format of `${namespace}/${name}`.
-	//
-	// Example: `default/test-app`.
+	// The project name of the trigger. It consists of the namespace and the application name in the `${namespace}/${name}` format. Example: `default/test-app`.
 	//
 	// This parameter is required.
 	//
@@ -52,9 +48,9 @@ type CreateTriggerRequest struct {
 	ProjectId *string `json:"project_id,omitempty" xml:"project_id,omitempty"`
 	// The type of the trigger. Valid values:
 	//
-	// - `deployment`: The trigger for stateless applications.
+	// - `deployment`: the trigger for stateless applications.
 	//
-	// - `application`: The trigger for Application Center applications.
+	// - `application`: the trigger for Application Center applications.
 	//
 	// Default value: `deployment`.
 	//

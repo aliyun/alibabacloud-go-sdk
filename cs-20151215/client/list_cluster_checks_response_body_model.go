@@ -14,7 +14,7 @@ type iListClusterChecksResponseBody interface {
 }
 
 type ListClusterChecksResponseBody struct {
-	// The list of checks.
+	// The check list.
 	Checks []*ListClusterChecksResponseBodyChecks `json:"checks,omitempty" xml:"checks,omitempty" type:"Repeated"`
 }
 

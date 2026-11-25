@@ -73,7 +73,7 @@ type DescribeClustersV1ResponseBodyClusters struct {
 	//
 	// cluster.local
 	ClusterDomain *string `json:"cluster_domain,omitempty" xml:"cluster_domain,omitempty"`
-	// The cluster ID.
+	// The ID of the cluster.
 	//
 	// example:
 	//
@@ -97,7 +97,7 @@ type DescribeClustersV1ResponseBodyClusters struct {
 	//
 	// 172.20.xx.xx/16
 	ContainerCidr *string `json:"container_cidr,omitempty" xml:"container_cidr,omitempty"`
-	// The time when the cluster was created.
+	// The cluster creation time.
 	//
 	// example:
 	//
@@ -109,11 +109,11 @@ type DescribeClustersV1ResponseBodyClusters struct {
 	//
 	// 1.32.1-aliyun.1
 	CurrentVersion *string `json:"current_version,omitempty" xml:"current_version,omitempty"`
-	// Specifies whether deletion protection is enabled for the cluster to prevent accidental deletion through the console or API. Valid values:
+	// Indicates whether deletion protection is enabled for the cluster to prevent accidental deletion through the console or API operations. Valid values:
 	//
-	// - true: Deletion protection is enabled. The cluster cannot be deleted through the console or API.
+	// - `true`: Deletion protection is enabled. The cluster cannot be deleted through the console or API operations.
 	//
-	// - false: Deletion protection is disabled. The cluster can be deleted through the console or API.
+	// - `false`: Deletion protection is disabled. The cluster can be deleted through the console or API operations.
 	//
 	// example:
 	//
@@ -121,7 +121,7 @@ type DescribeClustersV1ResponseBodyClusters struct {
 	DeletionProtection *bool `json:"deletion_protection,omitempty" xml:"deletion_protection,omitempty"`
 	// Deprecated
 	//
-	// The Docker version used by the cluster.
+	// The Docker version of the cluster.
 	//
 	// example:
 	//
@@ -129,15 +129,13 @@ type DescribeClustersV1ResponseBodyClusters struct {
 	DockerVersion *string `json:"docker_version,omitempty" xml:"docker_version,omitempty"`
 	// Deprecated
 	//
-	// The ID of the Server Load Balancer (SLB) instance for the Ingress in the cluster.
-	//
-	// Default instance type: guaranteed-performance instance (slb.s1.small).
+	// The Ingress Server Load Balancer (SLB) instance in the cluster. Default instance type: guaranteed-performance (slb.s1.small).
 	//
 	// example:
 	//
 	// lb-2vcrbmlevo6kjpgch****
 	ExternalLoadbalancerId *string `json:"external_loadbalancer_id,omitempty" xml:"external_loadbalancer_id,omitempty"`
-	// The initial version of the cluster. For the Kubernetes versions supported by ACK, refer to [Overview of Kubernetes versions](https://help.aliyun.com/document_detail/185269.html).
+	// The cluster version. For the Kubernetes versions supported by ACK, see [Kubernetes version overview](https://help.aliyun.com/document_detail/185269.html).
 	//
 	// example:
 	//
@@ -145,23 +143,23 @@ type DescribeClustersV1ResponseBodyClusters struct {
 	InitVersion *string `json:"init_version,omitempty" xml:"init_version,omitempty"`
 	// The IP protocol stack of the cluster. Valid values:
 	//
-	// - ipv4: Creates a cluster that supports only the IPv4 protocol stack.
+	// - `ipv4`: Creates a cluster that supports only the IPv4 protocol stack.
 	//
-	// - dual: Creates a cluster that supports both IPv4 and IPv6 protocol stacks.
+	// - `dual`: Creates a cluster that supports the dual-stack IPv4/IPv6 protocol stack.
 	//
 	// example:
 	//
 	// ipv4
 	IpStack *string `json:"ip_stack,omitempty" xml:"ip_stack,omitempty"`
-	// The maintenance window of the cluster. This feature takes effect only in ACK managed clusters and ACK Serverless clusters.
+	// The cluster maintenance window. This feature takes effect only in ACK managed clusters and ACK Serverless clusters.
 	MaintenanceWindow *MaintenanceWindow `json:"maintenance_window,omitempty" xml:"maintenance_window,omitempty"`
-	// The access endpoints of the cluster API server, including the internal network access address and the public network access address.
+	// The access addresses of the cluster API server, including the internal network access address and the public network access address.
 	//
 	// example:
 	//
 	// {\\"api_server_endpoint\\":\\"\\",\\"intranet_api_server_endpoint\\":\\"https://192.168.xx.xx:6443\\"}
 	MasterUrl *string `json:"master_url,omitempty" xml:"master_url,omitempty"`
-	// The metadata of the cluster.
+	// The metadata information of the cluster.
 	//
 	// example:
 	//
@@ -177,13 +175,13 @@ type DescribeClustersV1ResponseBodyClusters struct {
 	//
 	// The network mode of the cluster. Valid values:
 	//
-	// - classic: classic network
+	// - `classic`: Classic network.
 	//
-	// - vpc: VPC
+	// - `vpc`: Virtual private cloud (VPC).
 	//
-	// - overlay: overlay network
+	// - `overlay`: Overlay network.
 	//
-	// - calico: Calico network
+	// - `calico`: Calico network.
 	//
 	// example:
 	//
@@ -201,15 +199,15 @@ type DescribeClustersV1ResponseBodyClusters struct {
 	//
 	// The Private Zone configuration of the cluster. Valid values:
 	//
-	// - true: Private Zone is enabled.
+	// - `true`: Private Zone is enabled.
 	//
-	// - false: Private Zone is disabled.
+	// - `false`: Private Zone is disabled.
 	//
 	// example:
 	//
 	// false
 	PrivateZone *bool `json:"private_zone,omitempty" xml:"private_zone,omitempty"`
-	// The subtype of the cluster.
+	// The cluster subtype.
 	//
 	// example:
 	//
@@ -217,9 +215,9 @@ type DescribeClustersV1ResponseBodyClusters struct {
 	Profile *string `json:"profile,omitempty" xml:"profile,omitempty"`
 	// The kube-proxy mode. Valid values:
 	//
-	// - iptables: The mature and stable kube-proxy mode. Service discovery and load balancing for Kubernetes services are configured by using iptables rules. This mode provides average performance and is affected by the cluster scale. It is suitable for clusters with a small number of services.
+	// - `iptables`: The mature and stable kube-proxy mode. Service discovery and load balancing for Kubernetes services are configured by using iptables rules. However, the performance is average and heavily affected by the scale. This mode is suitable for clusters with a small number of services.
 	//
-	// - ipvs: The high-performance kube-proxy mode. Service discovery and load balancing for Kubernetes services are configured by using the Linux IPVS module. This mode is suitable for clusters with a large number of services and scenarios that require high-performance load balancing.
+	// - `ipvs`: The high-performance kube-proxy mode. Service discovery and load balancing for Kubernetes services are configured by using the Linux IPVS module. This mode is suitable for clusters with a large number of services and scenarios that require high-performance load balancing.
 	//
 	// example:
 	//
@@ -243,7 +241,7 @@ type DescribeClustersV1ResponseBodyClusters struct {
 	//
 	// sg-2vcgwsrwgt5mp0yi****
 	SecurityGroupId *string `json:"security_group_id,omitempty" xml:"security_group_id,omitempty"`
-	// The CIDR block of the service network.
+	// The service network CIDR block.
 	//
 	// This parameter is required.
 	//
@@ -251,7 +249,7 @@ type DescribeClustersV1ResponseBodyClusters struct {
 	//
 	// 172.21.xx.xx/20
 	ServiceCidr *string `json:"service_cidr,omitempty" xml:"service_cidr,omitempty"`
-	// The current number of nodes in the cluster, including the master node and worker nodes.
+	// The current number of nodes in the cluster, including master nodes and worker nodes.
 	//
 	// example:
 	//
@@ -259,35 +257,35 @@ type DescribeClustersV1ResponseBodyClusters struct {
 	Size *int64 `json:"size,omitempty" xml:"size,omitempty"`
 	// The running status of the cluster. Valid values:
 	//
-	// - initial: The cluster is being created.
+	// - `initial`: The cluster is being created.
 	//
-	// - failed: The cluster failed to be created.
+	// - `failed`: The cluster failed to be created.
 	//
-	// - running: The cluster is running.
+	// - `running`: The cluster is running.
 	//
-	// - updating: The cluster is being updated.
+	// - `updating`: The cluster is being updated.
 	//
-	// - upgrading: The cluster is being upgraded.
+	// - `upgrading`: The cluster is being upgraded.
 	//
-	// - removing: Nodes are being removed.
+	// - `removing`: Nodes are being removed.
 	//
-	// - draining: Nodes are being drained.
+	// - `draining`: Nodes are being drained.
 	//
-	// - scaling: The cluster is being scaled.
+	// - `scaling`: The cluster is being scaled.
 	//
-	// - inactive: The cluster is inactive.
+	// - `inactive`: The cluster is inactive.
 	//
-	// - unavailable: The cluster is unavailable.
+	// - `unavailable`: The cluster is unavailable.
 	//
-	// - deleting: The cluster is being deleted.
+	// - `deleting`: The cluster is being deleted.
 	//
-	// - deleted: The cluster is deleted.
+	// - `deleted`: The cluster is deleted.
 	//
-	// - delete_failed: The cluster failed to be deleted.
+	// - `delete_failed`: The cluster failed to be deleted.
 	//
-	// - waiting: The cluster is waiting for the accessed state.
+	// - `waiting`: The cluster is waiting to be connected.
 	//
-	// - disconnected: The cluster is disconnected.
+	// - `disconnected`: The cluster is disconnected.
 	//
 	// example:
 	//
@@ -309,7 +307,7 @@ type DescribeClustersV1ResponseBodyClusters struct {
 	//
 	// Asia/Shanghai
 	Timezone *string `json:"timezone,omitempty" xml:"timezone,omitempty"`
-	// The time when the cluster was last updated.
+	// The time when the cluster was updated.
 	//
 	// example:
 	//
@@ -329,11 +327,11 @@ type DescribeClustersV1ResponseBodyClusters struct {
 	//
 	// vsw-2vc41xuumx5z2rdma****,vsw-2vc41xuumx5z2rdma****
 	VswitchId *string `json:"vswitch_id,omitempty" xml:"vswitch_id,omitempty"`
-	// The vSwitches of the cluster control plane.
+	// The vSwitches for the cluster control plane.
 	VswitchIds []*string `json:"vswitch_ids,omitempty" xml:"vswitch_ids,omitempty" type:"Repeated"`
 	// Deprecated
 	//
-	// The name of the worker RAM role, which authorizes ECS instances to serve as worker nodes in the cluster.
+	// The name of the worker RAM role, which is used to authorize ECS instances as worker nodes of the cluster.
 	//
 	// example:
 	//
@@ -341,7 +339,7 @@ type DescribeClustersV1ResponseBodyClusters struct {
 	WorkerRamRoleName *string `json:"worker_ram_role_name,omitempty" xml:"worker_ram_role_name,omitempty"`
 	// Deprecated
 	//
-	// The ID of the zone to which the cluster belongs.
+	// The ID of the zone where the cluster is deployed.
 	//
 	// example:
 	//
@@ -714,7 +712,7 @@ func (s *DescribeClustersV1ResponseBodyClusters) Validate() error {
 }
 
 type DescribeClustersV1ResponseBodyClustersOperationPolicy struct {
-	// The auto-upgrade settings for the cluster.
+	// The cluster auto-upgrade.
 	ClusterAutoUpgrade *DescribeClustersV1ResponseBodyClustersOperationPolicyClusterAutoUpgrade `json:"cluster_auto_upgrade,omitempty" xml:"cluster_auto_upgrade,omitempty" type:"Struct"`
 }
 
@@ -745,7 +743,9 @@ func (s *DescribeClustersV1ResponseBodyClustersOperationPolicy) Validate() error
 }
 
 type DescribeClustersV1ResponseBodyClustersOperationPolicyClusterAutoUpgrade struct {
-	// The auto-upgrade channel for the cluster. For more information, refer to [Upgrade channels](https://help.aliyun.com/document_detail/2712866.html). Valid values:
+	// The cluster auto-upgrade channel. For more information, see [Upgrade channels](https://help.aliyun.com/document_detail/2712866.html).
+	//
+	// Valid values:
 	//
 	// - patch: The latest patch version.
 	//
@@ -757,7 +757,7 @@ type DescribeClustersV1ResponseBodyClustersOperationPolicyClusterAutoUpgrade str
 	//
 	// patch
 	Channel *string `json:"channel,omitempty" xml:"channel,omitempty"`
-	// Specifies whether auto-upgrade is enabled for the cluster.
+	// Indicates whether cluster auto-upgrade is enabled.
 	//
 	// example:
 	//
@@ -808,7 +808,7 @@ type DescribeClustersV1ResponseBodyPageInfo struct {
 	//
 	// 20
 	PageSize *int32 `json:"page_size,omitempty" xml:"page_size,omitempty"`
-	// The total number of results.
+	// The total number of entries.
 	//
 	// example:
 	//

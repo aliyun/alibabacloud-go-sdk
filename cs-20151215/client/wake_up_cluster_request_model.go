@@ -14,6 +14,8 @@ type iWakeUpClusterRequest interface {
 }
 
 type WakeUpClusterRequest struct {
+	// The client token.
+	//
 	// example:
 	//
 	// c82e6987e2961451182edacd74faf

@@ -92,7 +92,7 @@ type DescribeResourcesDeleteProtectionResponseBody struct {
 	//
 	// namespaces
 	Resource *string `json:"resource,omitempty" xml:"resource,omitempty"`
-	// Indicates whether deletion protection is enabled. Valid values:
+	// Specifies whether deletion protection is enabled. Valid values:
 	//
 	// - true: Enabled.
 	//

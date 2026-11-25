@@ -72,13 +72,13 @@ func (s *DescribeUserPermissionResponse) Validate() error {
 }
 
 type DescribeUserPermissionResponseBody struct {
-	// The cluster access configuration. The format varies based on the authorization scope:
+	// The cluster access configuration. The format is as follows:
 	//
-	// - Cluster-level authorization: `{cluster_id}`.
+	// - For cluster-level authorization, the format is `{cluster_id}`.
 	//
-	// - Namespace-level authorization: `{cluster_id}/{namespace}`.
+	// - For namespace-level authorization, the format is `{cluster_id}/{namespace}`.
 	//
-	// - All-cluster authorization: `all-clusters`.
+	// - For authorization across all clusters, the value is fixed as `all-clusters`.
 	//
 	// example:
 	//
@@ -86,17 +86,17 @@ type DescribeUserPermissionResponseBody struct {
 	ResourceId *string `json:"resource_id,omitempty" xml:"resource_id,omitempty"`
 	// The authorization type. Valid values:
 	//
-	// - `cluster`: cluster-level.
+	// - `cluster`: cluster level.
 	//
-	// - `namespace`: namespace-level.
+	// - `namespace`: namespace level.
 	//
-	// - `console`: all-cluster-level authorization.
+	// - `console`: authorization across all clusters.
 	//
 	// example:
 	//
 	// cluster
 	ResourceType *string `json:"resource_type,omitempty" xml:"resource_type,omitempty"`
-	// The custom role name. When a custom role is authorized, this field specifies the name of the custom cluster management role.
+	// The name of the custom role. When a custom role is authorized, this field specifies the name of the custom cluster management role.
 	//
 	// example:
 	//
@@ -104,35 +104,35 @@ type DescribeUserPermissionResponseBody struct {
 	RoleName *string `json:"role_name,omitempty" xml:"role_name,omitempty"`
 	// The preset role type. Valid values:
 	//
-	// - `admin`: Administrator.
+	// - `admin`: administrator.
 	//
 	// - `ops`: O&M engineer.
 	//
-	// - `dev`: Developer.
+	// - `dev`: developer.
 	//
-	// - `restricted`: Restricted user.
+	// - `restricted`: restricted user.
 	//
-	// - `custom`: Custom cluster management role.
+	// - `custom`: custom cluster management role.
 	//
 	// example:
 	//
 	// admin
 	RoleType *string `json:"role_type,omitempty" xml:"role_type,omitempty"`
-	// Indicates whether the authorization belongs to the cluster creator. Valid values:
+	// Indicates whether the authorization is granted to the cluster creator. Valid values:
 	//
 	// - `0`: The authorization record does not belong to the cluster creator.
 	//
-	// - `1`: The authorization record represents the administrator permissions of the cluster creator.
+	// - `1`: The authorization record grants administrator permissions to the cluster creator.
 	//
 	// example:
 	//
 	// 1
 	IsOwner *int64 `json:"is_owner,omitempty" xml:"is_owner,omitempty"`
-	// Indicates whether the authorization is for a RAM role. Valid values:
+	// Indicates whether the authorization is granted to a RAM role. Valid values:
 	//
-	// - `0`: The record is not a RAM role authorization.
+	// - `0`: The current record is not a RAM role authorization.
 	//
-	// - `1`: The record is a RAM role authorization.
+	// - `1`: The current record is a RAM role authorization.
 	//
 	// example:
 	//

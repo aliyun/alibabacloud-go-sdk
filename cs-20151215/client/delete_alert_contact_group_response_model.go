@@ -72,11 +72,11 @@ func (s *DeleteAlertContactGroupResponse) Validate() error {
 }
 
 type DeleteAlertContactGroupResponseBody struct {
-	// The deletion status.
+	// The deletion status. Valid values:
 	//
-	// 	- true: Deletion succeeded.
+	// 	- true: The deletion succeeded.
 	//
-	// 	- false: Deletion failed.
+	// 	- false: The deletion failed.
 	//
 	// example:
 	//

@@ -26,19 +26,35 @@ type iContainerdConfig interface {
 }
 
 type ContainerdConfig struct {
-	// Whether to ignore volumes defined in the image.
+	// The configuration to ignore volumes defined in the image.
 	IgnoreImageDefinedVolume *bool `json:"ignoreImageDefinedVolume,omitempty" xml:"ignoreImageDefinedVolume,omitempty"`
-	// A list of insecure registries that skip TLS certificate verification.
+	// The registries that skip certificate verification.
 	InsecureRegistries []*string `json:"insecureRegistries,omitempty" xml:"insecureRegistries,omitempty" type:"Repeated"`
-	// Maximum core dump size in bytes.
+	// The core dump size.
+	//
+	// example:
+	//
+	// 100
 	LimitCore *int64 `json:"limitCore,omitempty" xml:"limitCore,omitempty"`
-	// Maximum locked memory in bytes.
+	// The maximum memory lock limit.
+	//
+	// example:
+	//
+	// 65536
 	LimitMemLock *int64 `json:"limitMemLock,omitempty" xml:"limitMemLock,omitempty"`
-	// Maximum number of open file handles.
+	// The maximum number of file handles.
+	//
+	// example:
+	//
+	// 1048576
 	LimitNoFile *int64 `json:"limitNoFile,omitempty" xml:"limitNoFile,omitempty"`
-	// The maximum number of concurrent image layer downloads.
+	// The maximum number of concurrent downloads.
+	//
+	// example:
+	//
+	// 10
 	MaxConcurrentDownloads *int64 `json:"maxConcurrentDownloads,omitempty" xml:"maxConcurrentDownloads,omitempty"`
-	// A list of registry mirrors to accelerate image pulls.
+	// The registry mirror configuration.
 	RegistryMirrors []*string `json:"registryMirrors,omitempty" xml:"registryMirrors,omitempty" type:"Repeated"`
 }
 

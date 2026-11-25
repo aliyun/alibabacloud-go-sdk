@@ -18,7 +18,7 @@ type iDescribeTemplatesRequest interface {
 }
 
 type DescribeTemplatesRequest struct {
-	// The page number of the returned results.
+	// The page number of the returned page.
 	//
 	// Default value: 1.
 	//
@@ -34,13 +34,13 @@ type DescribeTemplatesRequest struct {
 	//
 	// 10
 	PageSize *int64 `json:"page_size,omitempty" xml:"page_size,omitempty"`
-	// The templatetype. Valid values:
+	// The templatetype.
 	//
 	// - `kubernetes`: The template is displayed on the Orchestration Templates page in the console.
 	//
-	// - If this parameter is left empty or set to other values: The template is not displayed on the Orchestration Templates page in the console.
+	// - If this parameter is left empty or set to other values, the template is not displayed on the Orchestration Templates page in the console.
 	//
-	// Recommended settings: `kubernetes`.
+	// Recommended Settings: `kubernetes`.
 	//
 	// example:
 	//

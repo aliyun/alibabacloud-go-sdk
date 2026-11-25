@@ -14,7 +14,7 @@ type iListAddonsResponseBody interface {
 }
 
 type ListAddonsResponseBody struct {
-	// The list of available components.
+	// The list of available add-ons.
 	Addons []*ListAddonsResponseBodyAddons `json:"addons,omitempty" xml:"addons,omitempty" type:"Repeated"`
 }
 
@@ -49,63 +49,63 @@ func (s *ListAddonsResponseBody) Validate() error {
 }
 
 type ListAddonsResponseBodyAddons struct {
-	// The CPU architectures supported by the component.
+	// The CPU architectures supported by the add-on.
 	Architecture []*string `json:"architecture,omitempty" xml:"architecture,omitempty" type:"Repeated"`
-	// The category of the component. Valid values:
+	// The category of the add-on. Valid values:
 	//
-	// - core: core component
+	// - core: Core add-on.
 	//
-	// - network: network component
+	// - network: Network add-on.
 	//
-	// - security: security component
+	// - security: Security add-on.
 	//
-	// - storage: storage component
+	// - storage: Storage add-on.
 	//
-	// - monitor: logging and monitoring component
+	// - monitor: Logging and monitoring add-on.
 	//
-	// - application: application component
+	// - application: Application add-on.
 	//
-	// An empty value indicates that the component belongs to another category.
+	// An empty value indicates that the add-on type is other.
 	//
 	// example:
 	//
 	// monitor
 	Category *string `json:"category,omitempty" xml:"category,omitempty"`
-	// The schema of custom parameters for the component.
+	// The schema of custom parameters for the add-on.
 	//
 	// example:
 	//
 	// {}
 	ConfigSchema *string `json:"config_schema,omitempty" xml:"config_schema,omitempty"`
-	// Indicates whether the component is installed by default. Valid values:
+	// Indicates whether the add-on is installed by default. Valid values:
 	//
-	// - true: The component is installed by default when the cluster is created.
+	// - true: The add-on is installed by default when the cluster is created.
 	//
-	// - false: The component is not installed by default.
+	// - false: The add-on is not installed by default.
 	//
 	// example:
 	//
 	// false
 	InstallByDefault *bool `json:"install_by_default,omitempty" xml:"install_by_default,omitempty"`
-	// Indicates whether the component is managed. Valid values:
+	// Indicates whether the add-on is managed. Valid values:
 	//
-	// - true: The component is managed.
+	// - true: The add-on is managed.
 	//
-	// - false: The component is not managed.
+	// - false: The add-on is not managed.
 	//
 	// example:
 	//
 	// false
 	Managed *bool `json:"managed,omitempty" xml:"managed,omitempty"`
-	// The name of the component.
+	// The name of the add-on.
 	//
 	// example:
 	//
 	// arms-prometheus
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The operations supported by the component.
+	// The operations supported by the add-on.
 	SupportedActions []*string `json:"supported_actions,omitempty" xml:"supported_actions,omitempty" type:"Repeated"`
-	// The version of the component.
+	// The version of the add-on.
 	//
 	// example:
 	//

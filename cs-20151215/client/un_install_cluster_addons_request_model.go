@@ -14,7 +14,7 @@ type iUnInstallClusterAddonsRequest interface {
 }
 
 type UnInstallClusterAddonsRequest struct {
-	// The list of components.
+	// The list of add-ons.
 	Addons []*UnInstallClusterAddonsRequestAddons `json:"addons,omitempty" xml:"addons,omitempty" type:"Repeated"`
 }
 
@@ -49,17 +49,17 @@ func (s *UnInstallClusterAddonsRequest) Validate() error {
 }
 
 type UnInstallClusterAddonsRequestAddons struct {
-	// Specifies whether to clean up the associated cloud resources when uninstalling the component. Valid values:
+	// Specifies whether to delete the associated cloud resources when uninstalling the add-on. Valid values:
 	//
-	// - true: Clean up.
+	// - true: Deletes the resources.
 	//
-	// - false: Retain.
+	// - false: Retains the resources.
 	//
 	// example:
 	//
 	// true
 	CleanupCloudResources *bool `json:"cleanup_cloud_resources,omitempty" xml:"cleanup_cloud_resources,omitempty"`
-	// The name of the component to uninstall. You can call the [ListClusterAddonInstances](https://help.aliyun.com/document_detail/2667940.html) operation to query the components installed in the cluster.
+	// The name of the add-on to uninstall. You can call the [ListClusterAddonInstances](https://help.aliyun.com/document_detail/2667940.html) operation to query the add-ons installed in the cluster.
 	//
 	// example:
 	//

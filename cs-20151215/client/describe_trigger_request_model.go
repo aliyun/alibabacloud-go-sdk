@@ -38,9 +38,9 @@ type DescribeTriggerRequest struct {
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
 	// The trigger type. Valid values:
 	//
-	// - `deployment`: Triggers for stateless applications.
+	// - `deployment`: The trigger for stateless applications.
 	//
-	// - `application`: Triggers for Application Center applications.
+	// - `application`: The trigger for Hybrid Cloud Application Center applications.
 	//
 	// Default value: `deployment`.
 	//

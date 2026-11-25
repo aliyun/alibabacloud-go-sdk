@@ -14,7 +14,7 @@ type iCheckServiceRoleRequest interface {
 }
 
 type CheckServiceRoleRequest struct {
-	// The list of service roles to check.
+	// The list of service roles to be checked.
 	//
 	// This parameter is required.
 	Roles []*CheckServiceRoleRequestRoles `json:"roles,omitempty" xml:"roles,omitempty" type:"Repeated"`
@@ -51,7 +51,7 @@ func (s *CheckServiceRoleRequest) Validate() error {
 }
 
 type CheckServiceRoleRequestRoles struct {
-	// The name of the service role. For more information about the service roles and permission scopes in Container Service for Kubernetes (ACK), see [Service roles for ACK](https://help.aliyun.com/document_detail/86483.html).
+	// The name of the service role. For more information about the service roles and their permission scopes in Container Service for Kubernetes (ACK), see [Service roles for ACK](https://help.aliyun.com/document_detail/86483.html).
 	//
 	// This parameter is required.
 	//

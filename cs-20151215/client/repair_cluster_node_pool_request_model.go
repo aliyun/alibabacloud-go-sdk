@@ -20,7 +20,7 @@ type iRepairClusterNodePoolRequest interface {
 type RepairClusterNodePoolRequest struct {
 	// Deprecated
 	//
-	// **[Deprecated]*	- Specifies whether to restart the instance.
+	// **[Deprecated]*	- Specifies whether to allow restarting instances.
 	//
 	// example:
 	//

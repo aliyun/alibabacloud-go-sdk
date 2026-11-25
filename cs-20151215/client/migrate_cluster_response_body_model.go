@@ -18,19 +18,19 @@ type iMigrateClusterResponseBody interface {
 }
 
 type MigrateClusterResponseBody struct {
-	// The cluster ID.
+	// The ID of the cluster.
 	//
 	// example:
 	//
 	// c21e0591548ba4c10bdb535d657******
 	ClusterId *string `json:"cluster_id,omitempty" xml:"cluster_id,omitempty"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
 	// 687C5BAA-D103-4993-884B-C35E43******
 	RequestId *string `json:"request_id,omitempty" xml:"request_id,omitempty"`
-	// The task ID.
+	// The ID of the task.
 	//
 	// example:
 	//

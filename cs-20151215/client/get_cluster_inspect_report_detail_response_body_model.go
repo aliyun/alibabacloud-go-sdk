@@ -30,7 +30,7 @@ type iGetClusterInspectReportDetailResponseBody interface {
 type GetClusterInspectReportDetailResponseBody struct {
 	// The list of results.
 	CheckItemResults []*GetClusterInspectReportDetailResponseBodyCheckItemResults `json:"checkItemResults,omitempty" xml:"checkItemResults,omitempty" type:"Repeated"`
-	// The completion time of the inspection report in ISO 8601 format with time zone information.
+	// The end time of the inspection report in ISO 8601 format, including the time zone.
 	//
 	// example:
 	//
@@ -54,7 +54,7 @@ type GetClusterInspectReportDetailResponseBody struct {
 	//
 	// 49511F2D-D56A-5C24-B9AE-C8491E09B***
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// The start time of the inspection report in ISO 8601 format with time zone information.
+	// The start time of the inspection report in ISO 8601 format, including the time zone.
 	//
 	// example:
 	//
@@ -62,9 +62,9 @@ type GetClusterInspectReportDetailResponseBody struct {
 	StartTime *string `json:"startTime,omitempty" xml:"startTime,omitempty"`
 	// The generation status of the inspection report. Valid values:
 	//
-	// - completed: The generation is completed.
+	// - completed: Completed.
 	//
-	// - running: The generation is in progress.
+	// - running: In progress.
 	//
 	// example:
 	//
@@ -195,11 +195,11 @@ type GetClusterInspectReportDetailResponseBodyCheckItemResults struct {
 	//
 	// APIServerClbInstanceStatus
 	CheckItemUid *string `json:"checkItemUid,omitempty" xml:"checkItemUid,omitempty"`
-	// The description of the check item.
+	// The description of the inspection item.
 	//
 	// example:
 	//
-	// Cluster API Server load balancer instance failures affect cluster availability. Check whether the load balancer instance status is normal.
+	// API server load balancer instance failures in the cluster affect cluster availability. Check whether the load balancer instance status is normal.
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
 	// The remediation suggestion.
 	//
@@ -221,31 +221,31 @@ type GetClusterInspectReportDetailResponseBodyCheckItemResults struct {
 	//
 	// critical
 	Level *string `json:"level,omitempty" xml:"level,omitempty"`
-	// The name of the check item.
+	// The name of the inspection item.
 	//
 	// example:
 	//
 	// Abnormal API server CLB instance status
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The check result. Valid values:
+	// The inspection result. Valid values:
 	//
-	// - true: The check item is abnormal.
+	// - true: the inspection item is abnormal
 	//
-	// - false: The check item is normal.
+	// - false: the inspection item is normal
 	//
-	// - disable: The check item is disabled.
+	// - disable: the inspection item is disabled
 	//
 	// example:
 	//
 	// false
 	Result *string `json:"result,omitempty" xml:"result,omitempty"`
-	// The resource type of the check target.
+	// The resource type of the inspection target.
 	//
 	// example:
 	//
 	// CLB
 	TargetType *string `json:"targetType,omitempty" xml:"targetType,omitempty"`
-	// The list of check targets.
+	// The list of inspection targets.
 	Targets []*string `json:"targets,omitempty" xml:"targets,omitempty" type:"Repeated"`
 }
 
@@ -343,31 +343,31 @@ func (s *GetClusterInspectReportDetailResponseBodyCheckItemResults) Validate() e
 }
 
 type GetClusterInspectReportDetailResponseBodySummary struct {
-	// The number of check items whose result is advice.
+	// The number of inspection items whose result is advice.
 	//
 	// example:
 	//
 	// 0
 	AdviceCount *int32 `json:"adviceCount,omitempty" xml:"adviceCount,omitempty"`
-	// The status code of the check task result.
+	// The status code of the inspection task result.
 	//
 	// example:
 	//
 	// warning
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// The number of check items whose result is error.
+	// The number of inspection items whose result is error.
 	//
 	// example:
 	//
 	// 0
 	ErrorCount *int32 `json:"errorCount,omitempty" xml:"errorCount,omitempty"`
-	// The number of check items whose result is normal.
+	// The number of inspection items whose result is normal.
 	//
 	// example:
 	//
 	// 10
 	NormalCount *int32 `json:"normalCount,omitempty" xml:"normalCount,omitempty"`
-	// The number of check items whose result is warning.
+	// The number of inspection items whose result is warning.
 	//
 	// example:
 	//

@@ -24,9 +24,9 @@ type iUntagResourcesShrinkRequest interface {
 type UntagResourcesShrinkRequest struct {
 	// Specifies whether to delete all custom tags. This parameter takes effect only when `tag_keys` is empty. Valid values:
 	//
-	// - `true`: deletes all tags.
+	// - `true`: Deletes all tags.
 	//
-	// - `false`: does not delete all tags.
+	// - `false`: Does not delete all tags.
 	//
 	// example:
 	//
@@ -40,11 +40,11 @@ type UntagResourcesShrinkRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"region_id,omitempty" xml:"region_id,omitempty"`
-	// The list of resource IDs. Up to 50 resource IDs can be specified.
+	// The list of resource IDs. You can specify up to 50 resource IDs.
 	//
 	// This parameter is required.
 	ResourceIdsShrink *string `json:"resource_ids,omitempty" xml:"resource_ids,omitempty"`
-	// The resource type. Valid values:
+	// The resource type. Valid value:
 	//
 	// - CLUSTER: cluster.
 	//
@@ -54,7 +54,7 @@ type UntagResourcesShrinkRequest struct {
 	//
 	// CLUSTER
 	ResourceType *string `json:"resource_type,omitempty" xml:"resource_type,omitempty"`
-	// The list of tag keys for the resources. Up to 20 tag keys can be specified.
+	// The list of tag keys of the resources. You can specify up to 20 tag keys.
 	//
 	// This parameter is required.
 	TagKeysShrink *string `json:"tag_keys,omitempty" xml:"tag_keys,omitempty"`

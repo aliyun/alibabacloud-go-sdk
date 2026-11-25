@@ -28,7 +28,7 @@ type CreateNodePoolComponentInstancesResponseBody struct {
 	//
 	// example:
 	//
-	// xxxx
+	// 123e4567-e89b-12d3-a456-426614174000
 	RequestId *string `json:"request_id,omitempty" xml:"request_id,omitempty"`
 	// The task ID.
 	//

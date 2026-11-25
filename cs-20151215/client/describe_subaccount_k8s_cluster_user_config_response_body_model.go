@@ -24,7 +24,7 @@ type DescribeSubaccountK8sClusterUserConfigResponseBody struct {
 	//
 	// apiVersion: v1\\nclusters:\\n- cluster:\\n    server: https://114.55.xx.xx:6443\\n    certificate-authority-data: LS0tLS****
 	Config *string `json:"config,omitempty" xml:"config,omitempty"`
-	// The expiration time of the KubeConfig. Format: UTC time in RFC 3339 format.
+	// The expiration time of the KubeConfig. The time is displayed in UTC and follows the RFC 3339 standard.
 	//
 	// example:
 	//
