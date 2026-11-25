@@ -30,15 +30,15 @@ type iUntagResourcesRequest interface {
 }
 
 type UntagResourcesRequest struct {
-	// Specifies whether to detach all tags from the instances. Valid values:
+	// Specifies whether to remove all tags from the instance. Valid values:
 	//
-	// - **true**: Detach all tags from the instances.
+	// - **true**: Removes all tags from the instance.
 	//
-	// - **false**: Do not detach all tags from the instances.
+	// - **false**: Does not remove all tags from the instance.
 	//
-	// > 	- The default value is false.
+	// > - Default value: false.
 	//
-	// - If TagKey is specified, this parameter is ignored.
+	// - If you specify both TagKey and this parameter, this parameter does not take effect.
 	//
 	// example:
 	//
@@ -46,13 +46,13 @@ type UntagResourcesRequest struct {
 	All          *bool   `json:"All,omitempty" xml:"All,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// A list of instance IDs.
+	// The list of instance IDs.
 	//
 	// This parameter is required.
 	ResourceId           []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
 	ResourceOwnerAccount *string   `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64    `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The resource type. The value is fixed to **INSTANCE**.
+	// The resource type. Set the value to **INSTANCE**.
 	//
 	// This parameter is required.
 	//
@@ -61,7 +61,7 @@ type UntagResourcesRequest struct {
 	// INSTANCE
 	ResourceType  *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
-	// A list of tag keys.
+	// The list of tag keys.
 	TagKey []*string `json:"TagKey,omitempty" xml:"TagKey,omitempty" type:"Repeated"`
 }
 

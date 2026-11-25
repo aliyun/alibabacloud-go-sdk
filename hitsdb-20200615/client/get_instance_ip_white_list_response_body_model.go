@@ -22,13 +22,13 @@ type iGetInstanceIpWhiteListResponseBody interface {
 }
 
 type GetInstanceIpWhiteListResponseBody struct {
-	// The details about why the access was denied.
+	// The details of the access denial.
 	//
 	// example:
 	//
 	// {"AuthAction":"xxx","AuthPrincipalDisplayName":"222","AuthPrincipalOwnerId":"111","AuthPrincipalType":"SubUser",,"NoPermissionType":"ImplicitDeny","PolicyType":"AccountLevelIdentityBasedPolicy","EncodedDiagnosticMessage":"xxxxxx"}
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	// A list of whitelist groups.
+	// The list of whitelist groups.
 	GroupList []*GetInstanceIpWhiteListResponseBodyGroupList `json:"GroupList,omitempty" xml:"GroupList,omitempty" type:"Repeated"`
 	// The instance ID.
 	//
@@ -36,9 +36,9 @@ type GetInstanceIpWhiteListResponseBody struct {
 	//
 	// ld-bp1z3506imz2f****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// A list of IP addresses in the whitelist.
+	// The list of IP addresses in the whitelist.
 	IpList []*string `json:"IpList,omitempty" xml:"IpList,omitempty" type:"Repeated"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
@@ -119,7 +119,7 @@ type GetInstanceIpWhiteListResponseBodyGroupList struct {
 	//
 	// test
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
-	// The IP address whitelist.
+	// The list of IP addresses in the whitelist.
 	//
 	// example:
 	//

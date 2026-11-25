@@ -16,9 +16,9 @@ type iDescribeRegionsResponseBody interface {
 }
 
 type DescribeRegionsResponseBody struct {
-	// The list of regions.
+	// The region list information.
 	Regions []*DescribeRegionsResponseBodyRegions `json:"Regions,omitempty" xml:"Regions,omitempty" type:"Repeated"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -66,7 +66,7 @@ func (s *DescribeRegionsResponseBody) Validate() error {
 }
 
 type DescribeRegionsResponseBodyRegions struct {
-	// The name of the region.
+	// The region name.
 	//
 	// example:
 	//
@@ -78,7 +78,7 @@ type DescribeRegionsResponseBodyRegions struct {
 	//
 	// hitsdb.cn-hangzhou.aliyuncs.com
 	RegionEndpoint *string `json:"RegionEndpoint,omitempty" xml:"RegionEndpoint,omitempty"`
-	// The ID of the region.
+	// The region ID.
 	//
 	// example:
 	//

@@ -28,7 +28,7 @@ type GetInstanceSummaryResponseBody struct {
 	//
 	// 1
 	LockingCount *int32 `json:"LockingCount,omitempty" xml:"LockingCount,omitempty"`
-	// An array of region summaries.
+	// The collection of region information.
 	RegionalSummary []*GetInstanceSummaryResponseBodyRegionalSummary `json:"RegionalSummary,omitempty" xml:"RegionalSummary,omitempty" type:"Repeated"`
 	// The request ID.
 	//
@@ -42,7 +42,7 @@ type GetInstanceSummaryResponseBody struct {
 	//
 	// 9
 	RunningCount *int32 `json:"RunningCount,omitempty" xml:"RunningCount,omitempty"`
-	// The total number of instances that are running or about to expire.
+	// The total number of running instances and instances that are about to expire.
 	//
 	// example:
 	//
@@ -117,7 +117,7 @@ func (s *GetInstanceSummaryResponseBody) Validate() error {
 }
 
 type GetInstanceSummaryResponseBodyRegionalSummary struct {
-	// The number of instances in `{RegionId}` that are about to expire.
+	// The number of instances that are about to expire in {RegionId}.
 	//
 	// example:
 	//
@@ -129,13 +129,13 @@ type GetInstanceSummaryResponseBodyRegionalSummary struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The number of running instances in `{RegionId}`.
+	// The number of running instances in {RegionId}.
 	//
 	// example:
 	//
 	// 5
 	RunningCount *int32 `json:"RunningCount,omitempty" xml:"RunningCount,omitempty"`
-	// The total number of instances in `{RegionId}` that are running or about to expire.
+	// The total number of running instances and instances that are about to expire in {RegionId}.
 	//
 	// example:
 	//

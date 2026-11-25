@@ -20,7 +20,7 @@ type iGetLindormInstanceEngineListResponseBody interface {
 }
 
 type GetLindormInstanceEngineListResponseBody struct {
-	// The detailed reason why the access was denied.
+	// The detailed reason for the access denial.
 	//
 	// example:
 	//
@@ -106,9 +106,9 @@ type GetLindormInstanceEngineListResponseBodyEngineList struct {
 	//
 	// - **tsdb**: LindormTSDB.
 	//
-	// - **solr**: Search engine.
+	// - **solr**: search engine.
 	//
-	// - **store**: File engine.
+	// - **store**: file engine.
 	//
 	// example:
 	//
@@ -160,19 +160,19 @@ func (s *GetLindormInstanceEngineListResponseBodyEngineList) Validate() error {
 type GetLindormInstanceEngineListResponseBodyEngineListNetInfoList struct {
 	// The connection method for LindormTable. Valid values:
 	//
-	// - **0**: This is the default value and can be ignored.
+	// - **0**: Default value. You can ignore this value.
 	//
-	// - **1**: Use the HBase Java API to access LindormTable.
+	// - **1**: Use the HBase Java API to access the LindormTable endpoint.
 	//
-	// - **2**: Use a non-Java HBase API to access LindormTable.
+	// - **2**: Use a non-Java HBase API to access the LindormTable endpoint.
 	//
-	// - **3**: Use CQL to access LindormTable.
+	// - **3**: Use CQL to access the LindormTable endpoint.
 	//
 	// - **4**: Use the LindormTable SQL endpoint.
 	//
-	// - **5**: Use the S3-compatible endpoint for LindormTable.
+	// - **5**: Use the LindormTable S3-compatible endpoint.
 	//
-	// - **6**: Use the MySQL-compatible endpoint for LindormTable.
+	// - **6**: Use the LindormTable MySQL-compatible endpoint.
 	//
 	// example:
 	//
@@ -188,7 +188,7 @@ type GetLindormInstanceEngineListResponseBodyEngineListNetInfoList struct {
 	//
 	// - **0**: Internet.
 	//
-	// - **2**: Virtual private cloud (VPC).
+	// - **2**: VPC.
 	//
 	// example:
 	//

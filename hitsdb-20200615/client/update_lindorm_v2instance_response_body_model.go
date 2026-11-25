@@ -20,7 +20,7 @@ type iUpdateLindormV2InstanceResponseBody interface {
 }
 
 type UpdateLindormV2InstanceResponseBody struct {
-	// The details of the access denied error.
+	// The details of the permission check failure.
 	//
 	// example:
 	//

@@ -28,7 +28,7 @@ type iUpdateLindormV2WhiteIpListRequest interface {
 }
 
 type UpdateLindormV2WhiteIpListRequest struct {
-	// The ID of the instance. You can call the GetLindormV2InstanceList operation to obtain the instance ID.
+	// The instance ID. You can call the GetLindormV2InstanceList operation to query the instance ID.
 	//
 	// This parameter is required.
 	//
@@ -38,7 +38,7 @@ type UpdateLindormV2WhiteIpListRequest struct {
 	InstanceId   *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The ID of the region where the instance is located. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/426062.html) operation to obtain this ID.
+	// The ID of the region where the instance resides. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/426062.html) operation to query the region ID.
 	//
 	// example:
 	//
@@ -47,7 +47,7 @@ type UpdateLindormV2WhiteIpListRequest struct {
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	SecurityToken        *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
-	// The list of IP whitelist groups.
+	// The list of whitelist groups.
 	//
 	// This parameter is required.
 	WhiteIpGroupList []*UpdateLindormV2WhiteIpListRequestWhiteIpGroupList `json:"WhiteIpGroupList,omitempty" xml:"WhiteIpGroupList,omitempty" type:"Repeated"`
@@ -147,7 +147,7 @@ func (s *UpdateLindormV2WhiteIpListRequest) Validate() error {
 }
 
 type UpdateLindormV2WhiteIpListRequestWhiteIpGroupList struct {
-	// The name of the IP whitelist group.
+	// The name of the whitelist group.
 	//
 	// This parameter is required.
 	//
@@ -155,9 +155,9 @@ type UpdateLindormV2WhiteIpListRequestWhiteIpGroupList struct {
 	//
 	// user001
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
-	// The IP addresses to add to the IP whitelist.
+	// The IP addresses to be added to the whitelist.
 	//
-	// > The value 127.0.0.1 denies access from all IP addresses. For example, 192.168.0.0/24 allows all IP addresses in that range to access the Lindorm instance. Use a comma (,) to separate multiple IP addresses or CIDR blocks.
+	// > 127.0.0.1 indicates that access from all IP addresses is denied. For example, 192.168.0.0/24 indicates that access from all IP addresses in the 192.168.0.X CIDR block is allowed to the Lindorm instance. Separate multiple IP addresses with commas (,).
 	//
 	// This parameter is required.
 	//

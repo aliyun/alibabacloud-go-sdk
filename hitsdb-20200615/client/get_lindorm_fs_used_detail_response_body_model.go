@@ -52,117 +52,117 @@ type iGetLindormFsUsedDetailResponseBody interface {
 }
 
 type GetLindormFsUsedDetailResponseBody struct {
-	// Details on why access was denied.
+	// The detailed reason why access was denied.
 	//
 	// example:
 	//
 	// {}
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	// The total storage capacity of the cluster, in bytes.
+	// The total storage capacity of the cluster. Unit: bytes.
 	//
 	// example:
 	//
 	// 85899345920
 	FsCapacity *string `json:"FsCapacity,omitempty" xml:"FsCapacity,omitempty"`
-	// The cold storage capacity of the cluster, in bytes.
+	// The cold storage capacity of the cluster. Unit: bytes.
 	//
 	// example:
 	//
 	// 85899345920
 	FsCapacityCold *string `json:"FsCapacityCold,omitempty" xml:"FsCapacityCold,omitempty"`
-	// The hot storage capacity of the cluster, in bytes.
+	// The hot storage capacity of the cluster. Unit: bytes.
 	//
 	// example:
 	//
 	// 85899345920
 	FsCapacityHot *string `json:"FsCapacityHot,omitempty" xml:"FsCapacityHot,omitempty"`
-	// The cold storage used by the cluster, in bytes.
+	// The cold storage usage of the cluster. Unit: bytes.
 	//
 	// example:
 	//
 	// 33269
 	FsUsedCold *string `json:"FsUsedCold,omitempty" xml:"FsUsedCold,omitempty"`
-	// The cold storage space used by table data of the search engine, in bytes.
+	// The cold storage usage of table data in the search index DPI engine. Unit: bytes.
 	//
 	// example:
 	//
 	// 33269
 	FsUsedColdOnLindormSearch *string `json:"FsUsedColdOnLindormSearch,omitempty" xml:"FsUsedColdOnLindormSearch,omitempty"`
-	// The cold storage space used by table data of the time series engine, in bytes.
+	// The cold storage usage of table data in the LindormTSDB engine. Unit: bytes.
 	//
 	// example:
 	//
 	// 33269
 	FsUsedColdOnLindormTSDB *string `json:"FsUsedColdOnLindormTSDB,omitempty" xml:"FsUsedColdOnLindormTSDB,omitempty"`
-	// The cold storage space used by table data of the wide-column engine, in bytes.
+	// The cold storage usage of table data in the LindormTable engine. Unit: bytes.
 	//
 	// example:
 	//
 	// 33269
 	FsUsedColdOnLindormTable *string `json:"FsUsedColdOnLindormTable,omitempty" xml:"FsUsedColdOnLindormTable,omitempty"`
-	// The hot storage used by the cluster, in bytes.
+	// The hot storage usage of the cluster. Unit: bytes.
 	//
 	// example:
 	//
 	// 33269
 	FsUsedHot *string `json:"FsUsedHot,omitempty" xml:"FsUsedHot,omitempty"`
-	// The hot storage space used by table data of the search engine, in bytes.
+	// The hot storage usage of table data in the search index DPI engine. Unit: bytes.
 	//
 	// example:
 	//
 	// 33269
 	FsUsedHotOnLindormSearch *string `json:"FsUsedHotOnLindormSearch,omitempty" xml:"FsUsedHotOnLindormSearch,omitempty"`
-	// The hot storage space used by table data of the time series engine, in bytes.
+	// The hot storage usage of table data in the LindormTSDB engine. Unit: bytes.
 	//
 	// example:
 	//
 	// 33269
 	FsUsedHotOnLindormTSDB *string `json:"FsUsedHotOnLindormTSDB,omitempty" xml:"FsUsedHotOnLindormTSDB,omitempty"`
-	// The hot storage space used by table data of the wide-column engine, in bytes.
+	// The hot storage usage of table data in the LindormTable engine. Unit: bytes.
 	//
 	// example:
 	//
 	// 33269
 	FsUsedHotOnLindormTable *string `json:"FsUsedHotOnLindormTable,omitempty" xml:"FsUsedHotOnLindormTable,omitempty"`
-	// The storage space used by the search engine in the cluster, in bytes.
+	// The storage usage of the search index DPI engine in the cluster. Unit: bytes.
 	//
 	// example:
 	//
 	// 33269
 	FsUsedOnLindormSearch *string `json:"FsUsedOnLindormSearch,omitempty" xml:"FsUsedOnLindormSearch,omitempty"`
-	// The storage space used by the time series engine in the cluster, in bytes.
+	// The storage usage of the LindormTSDB engine in the cluster. Unit: bytes.
 	//
 	// example:
 	//
 	// 33269
 	FsUsedOnLindormTSDB *string `json:"FsUsedOnLindormTSDB,omitempty" xml:"FsUsedOnLindormTSDB,omitempty"`
-	// The storage space used by the wide-column engine in the cluster, in bytes.
+	// The storage usage of the LindormTable engine in the cluster. Unit: bytes.
 	//
 	// example:
 	//
 	// 33269
 	FsUsedOnLindormTable *string `json:"FsUsedOnLindormTable,omitempty" xml:"FsUsedOnLindormTable,omitempty"`
-	// The storage space used by table data of the wide-column engine, in bytes.
+	// The storage usage of table data in the LindormTable engine. Unit: bytes.
 	//
 	// example:
 	//
 	// 33269
 	FsUsedOnLindormTableData *string `json:"FsUsedOnLindormTableData,omitempty" xml:"FsUsedOnLindormTableData,omitempty"`
-	// The storage space used by log data of the wide-column engine, in bytes.
+	// The storage usage of write-ahead log (wal) data in the LindormTable engine. Unit: bytes.
 	//
 	// example:
 	//
 	// 33269
 	FsUsedOnLindormTableWAL *string `json:"FsUsedOnLindormTableWAL,omitempty" xml:"FsUsedOnLindormTableWAL,omitempty"`
-	// For clusters that run storage engine v4.1.9 or later, this parameter provides authoritative storage details categorized by storage medium.
+	// For clusters with an underlying storage DPI engine version of 4.1.9 or later, this field is the authoritative source for storage details, categorized by storage medium categorization.
 	LStorageUsageList []*GetLindormFsUsedDetailResponseBodyLStorageUsageList `json:"LStorageUsageList,omitempty" xml:"LStorageUsageList,omitempty" type:"Repeated"`
-	// The ID of the request. This unique identifier is generated by Alibaba Cloud for each request and is used for troubleshooting.
+	// The request ID. It is a unique identifier generated by Alibaba Cloud for the request and can be used to troubleshoot and locate issues.
 	//
 	// example:
 	//
 	// 4F23D50C-400C-592C-9486-9D1E10179065
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the response is valid. A value of `false` indicates that an error occurred, and you must provide the request ID for troubleshooting.
+	// Indicates whether the return value is valid. true indicates that the value is valid. false indicates that an exception occurred. Provide the request ID to troubleshoot the issue.
 	//
 	// example:
 	//
@@ -372,7 +372,7 @@ func (s *GetLindormFsUsedDetailResponseBody) Validate() error {
 }
 
 type GetLindormFsUsedDetailResponseBodyLStorageUsageList struct {
-	// The total storage capacity for this storage medium, in bytes.
+	// The total storage capacity for the storage medium type. Unit: bytes.
 	//
 	// example:
 	//
@@ -380,56 +380,71 @@ type GetLindormFsUsedDetailResponseBodyLStorageUsageList struct {
 	Capacity *string `json:"Capacity,omitempty" xml:"Capacity,omitempty"`
 	// The storage type of the cluster. Valid values:
 	//
-	// - `StandardCloudStorage`: standard cloud storage.
+	// - StandardCloudStorage: standard cloud storage.
 	//
-	// - `PerformanceCloudStorage`: performance cloud storage.
+	// - PerformanceCloudStorage: performance cloud storage.
 	//
-	// - `CapacityCloudStorage`: capacity cloud storage.
+	// - CapacityCloudStorage: capacity cloud storage.
 	//
-	// - `LocalSsdStorage`: local SSD.
+	// - LocalSsdStorage: local SSD.
 	//
-	// - `LocalHddStorage`: local HDD.
+	// - LocalHddStorage: local HDD.
 	//
-	// - `LocalEbsStorage`: local block storage.
+	// - LocalEbsStorage: local cloud storage.
 	//
 	// example:
 	//
 	// StandardCloudStorage
 	DiskType *string `json:"DiskType,omitempty" xml:"DiskType,omitempty"`
-	// The storage used on this storage medium, in bytes.
+	// The storage usage for the storage medium type. Unit: bytes.
 	//
 	// example:
 	//
 	// 33269
-	Used                *string `json:"Used,omitempty" xml:"Used,omitempty"`
-	UsedLindormColumn3  *string `json:"UsedLindormColumn3,omitempty" xml:"UsedLindormColumn3,omitempty"`
+	Used *string `json:"Used,omitempty" xml:"Used,omitempty"`
+	// The column store engine storage usage for the storage medium type. Unit: bytes.
+	//
+	// example:
+	//
+	// 688935
+	UsedLindormColumn3 *string `json:"UsedLindormColumn3,omitempty" xml:"UsedLindormColumn3,omitempty"`
+	// The message engine storage usage for the storage medium type. Unit: bytes.
+	//
+	// example:
+	//
+	// 0
 	UsedLindormMessage3 *string `json:"UsedLindormMessage3,omitempty" xml:"UsedLindormMessage3,omitempty"`
-	// The storage used by the search engine on this storage medium, in bytes.
+	// The search index DPI engine storage usage for the storage medium type. Unit: bytes.
 	//
 	// example:
 	//
 	// 33269
 	UsedLindormSearch *string `json:"UsedLindormSearch,omitempty" xml:"UsedLindormSearch,omitempty"`
-	// The storage used by the compute engine on this storage medium, in bytes.
+	// The compute engine storage usage for the storage medium type. Unit: bytes.
 	//
 	// example:
 	//
 	// 33269
 	UsedLindormSpark *string `json:"UsedLindormSpark,omitempty" xml:"UsedLindormSpark,omitempty"`
-	// The storage used by the wide-column engine on this storage medium, in bytes.
+	// The LindormTable engine storage usage for the storage medium type. Unit: bytes.
 	//
 	// example:
 	//
 	// 33269
 	UsedLindormTable *string `json:"UsedLindormTable,omitempty" xml:"UsedLindormTable,omitempty"`
-	// The storage used by the time series engine on this storage medium, in bytes.
+	// The LindormTSDB engine storage usage for the storage medium type. Unit: bytes.
 	//
 	// example:
 	//
 	// 33269
-	UsedLindormTsdb    *string `json:"UsedLindormTsdb,omitempty" xml:"UsedLindormTsdb,omitempty"`
+	UsedLindormTsdb *string `json:"UsedLindormTsdb,omitempty" xml:"UsedLindormTsdb,omitempty"`
+	// The vector engine storage usage for the storage medium type. Unit: bytes.
+	//
+	// example:
+	//
+	// 595054865855
 	UsedLindormVector3 *string `json:"UsedLindormVector3,omitempty" xml:"UsedLindormVector3,omitempty"`
-	// The storage used by other components, such as logs and trash, on this storage medium, in bytes.
+	// The storage usage for other purposes under the storage medium type, such as logs and the recycle bin. Unit: bytes.
 	//
 	// example:
 	//

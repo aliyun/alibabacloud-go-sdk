@@ -32,15 +32,15 @@ type iModifyInstancePayTypeRequest interface {
 type ModifyInstancePayTypeRequest struct {
 	// The subscription duration. This parameter is required when you change the billing method to subscription.
 	//
-	// - If \\`PricingCycle\\` is \\`Month\\`, the valid values are 1 to 9.
+	// - If PricingCycle is set to Month, valid values are [1, 9].
 	//
-	// - If \\`PricingCycle\\` is \\`Year\\`, the valid values are 1 to 3.
+	// - If PricingCycle is set to Year, valid values are [1, 3].
 	//
 	// example:
 	//
 	// 1
 	Duration *int32 `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	// The ID of the instance.
+	// The instance ID.
 	//
 	// This parameter is required.
 	//
@@ -52,9 +52,9 @@ type ModifyInstancePayTypeRequest struct {
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The billing method of the instance. Valid values:
 	//
-	// - **PREPAY**: subscription.
+	// - **PREPAY**: subscription
 	//
-	// - **POSTPAY**: pay-as-you-go.
+	// - **POSTPAY**: pay-as-you-go
 	//
 	// This parameter is required.
 	//
@@ -62,11 +62,11 @@ type ModifyInstancePayTypeRequest struct {
 	//
 	// POSTPAY
 	PayType *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
-	// The unit of the subscription duration. This parameter is required when you change the billing method to subscription.
+	// The unit of the subscription duration. This parameter is required when you change the billing method to subscription. Valid values:
 	//
-	// - Month: The unit is month.
+	// - Month: month
 	//
-	// - Year: The unit is year.
+	// - Year: year
 	//
 	// example:
 	//

@@ -71,6 +71,8 @@ type iGetLindormV2InstanceResponseBody interface {
 	GetResourceGroupId() *string
 	SetServiceType(v string) *GetLindormV2InstanceResponseBody
 	GetServiceType() *string
+	SetSingleZoneRiskAlert(v *GetLindormV2InstanceResponseBodySingleZoneRiskAlert) *GetLindormV2InstanceResponseBody
+	GetSingleZoneRiskAlert() *GetLindormV2InstanceResponseBodySingleZoneRiskAlert
 	SetStandbyVSwitchId(v string) *GetLindormV2InstanceResponseBody
 	GetStandbyVSwitchId() *string
 	SetStandbyZoneId(v string) *GetLindormV2InstanceResponseBody
@@ -90,45 +92,46 @@ type iGetLindormV2InstanceResponseBody interface {
 }
 
 type GetLindormV2InstanceResponseBody struct {
-	AliUid              *int64                                         `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
-	ArbiterVSwitchId    *string                                        `json:"ArbiterVSwitchId,omitempty" xml:"ArbiterVSwitchId,omitempty"`
-	ArbiterZoneId       *string                                        `json:"ArbiterZoneId,omitempty" xml:"ArbiterZoneId,omitempty"`
-	AutoRenew           *bool                                          `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
-	CloudStorageSize    *int64                                         `json:"CloudStorageSize,omitempty" xml:"CloudStorageSize,omitempty"`
-	ColdStorage         *int32                                         `json:"ColdStorage,omitempty" xml:"ColdStorage,omitempty"`
-	CreateMilliseconds  *int64                                         `json:"CreateMilliseconds,omitempty" xml:"CreateMilliseconds,omitempty"`
-	DeletionProtection  *string                                        `json:"DeletionProtection,omitempty" xml:"DeletionProtection,omitempty"`
-	DiskCategory        *string                                        `json:"DiskCategory,omitempty" xml:"DiskCategory,omitempty"`
-	DiskThreshold       *string                                        `json:"DiskThreshold,omitempty" xml:"DiskThreshold,omitempty"`
-	DiskUsage           *string                                        `json:"DiskUsage,omitempty" xml:"DiskUsage,omitempty"`
-	EnableCompute       *bool                                          `json:"EnableCompute,omitempty" xml:"EnableCompute,omitempty"`
-	EnableFS            *bool                                          `json:"EnableFS,omitempty" xml:"EnableFS,omitempty"`
-	EnableStoreTDE      *bool                                          `json:"EnableStoreTDE,omitempty" xml:"EnableStoreTDE,omitempty"`
-	EngineList          []*GetLindormV2InstanceResponseBodyEngineList  `json:"EngineList,omitempty" xml:"EngineList,omitempty" type:"Repeated"`
-	ExpiredMilliseconds *int64                                         `json:"ExpiredMilliseconds,omitempty" xml:"ExpiredMilliseconds,omitempty"`
-	InitialRootPassword *string                                        `json:"InitialRootPassword,omitempty" xml:"InitialRootPassword,omitempty"`
-	InstanceAlias       *string                                        `json:"InstanceAlias,omitempty" xml:"InstanceAlias,omitempty"`
-	InstanceId          *string                                        `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	InstanceStatus      *string                                        `json:"InstanceStatus,omitempty" xml:"InstanceStatus,omitempty"`
-	InstanceType        *string                                        `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
-	MaintainEndTime     *string                                        `json:"MaintainEndTime,omitempty" xml:"MaintainEndTime,omitempty"`
-	MaintainStartTime   *string                                        `json:"MaintainStartTime,omitempty" xml:"MaintainStartTime,omitempty"`
-	NetworkType         *string                                        `json:"NetworkType,omitempty" xml:"NetworkType,omitempty"`
-	PayType             *string                                        `json:"PayType,omitempty" xml:"PayType,omitempty"`
-	PrimaryVSwitchId    *string                                        `json:"PrimaryVSwitchId,omitempty" xml:"PrimaryVSwitchId,omitempty"`
-	PrimaryZoneId       *string                                        `json:"PrimaryZoneId,omitempty" xml:"PrimaryZoneId,omitempty"`
-	RegionId            *string                                        `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	RequestId           *string                                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	ResourceGroupId     *string                                        `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	ServiceType         *string                                        `json:"ServiceType,omitempty" xml:"ServiceType,omitempty"`
-	StandbyVSwitchId    *string                                        `json:"StandbyVSwitchId,omitempty" xml:"StandbyVSwitchId,omitempty"`
-	StandbyZoneId       *string                                        `json:"StandbyZoneId,omitempty" xml:"StandbyZoneId,omitempty"`
-	StorageUsage        *GetLindormV2InstanceResponseBodyStorageUsage  `json:"StorageUsage,omitempty" xml:"StorageUsage,omitempty" type:"Struct"`
-	VpcId               *string                                        `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
-	VswitchId           *string                                        `json:"VswitchId,omitempty" xml:"VswitchId,omitempty"`
-	WhiteIpList         []*GetLindormV2InstanceResponseBodyWhiteIpList `json:"WhiteIpList,omitempty" xml:"WhiteIpList,omitempty" type:"Repeated"`
-	ZoneEngineInfoMap   map[string]interface{}                         `json:"ZoneEngineInfoMap,omitempty" xml:"ZoneEngineInfoMap,omitempty"`
-	ZoneId              *string                                        `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	AliUid              *int64                                               `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
+	ArbiterVSwitchId    *string                                              `json:"ArbiterVSwitchId,omitempty" xml:"ArbiterVSwitchId,omitempty"`
+	ArbiterZoneId       *string                                              `json:"ArbiterZoneId,omitempty" xml:"ArbiterZoneId,omitempty"`
+	AutoRenew           *bool                                                `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
+	CloudStorageSize    *int64                                               `json:"CloudStorageSize,omitempty" xml:"CloudStorageSize,omitempty"`
+	ColdStorage         *int32                                               `json:"ColdStorage,omitempty" xml:"ColdStorage,omitempty"`
+	CreateMilliseconds  *int64                                               `json:"CreateMilliseconds,omitempty" xml:"CreateMilliseconds,omitempty"`
+	DeletionProtection  *string                                              `json:"DeletionProtection,omitempty" xml:"DeletionProtection,omitempty"`
+	DiskCategory        *string                                              `json:"DiskCategory,omitempty" xml:"DiskCategory,omitempty"`
+	DiskThreshold       *string                                              `json:"DiskThreshold,omitempty" xml:"DiskThreshold,omitempty"`
+	DiskUsage           *string                                              `json:"DiskUsage,omitempty" xml:"DiskUsage,omitempty"`
+	EnableCompute       *bool                                                `json:"EnableCompute,omitempty" xml:"EnableCompute,omitempty"`
+	EnableFS            *bool                                                `json:"EnableFS,omitempty" xml:"EnableFS,omitempty"`
+	EnableStoreTDE      *bool                                                `json:"EnableStoreTDE,omitempty" xml:"EnableStoreTDE,omitempty"`
+	EngineList          []*GetLindormV2InstanceResponseBodyEngineList        `json:"EngineList,omitempty" xml:"EngineList,omitempty" type:"Repeated"`
+	ExpiredMilliseconds *int64                                               `json:"ExpiredMilliseconds,omitempty" xml:"ExpiredMilliseconds,omitempty"`
+	InitialRootPassword *string                                              `json:"InitialRootPassword,omitempty" xml:"InitialRootPassword,omitempty"`
+	InstanceAlias       *string                                              `json:"InstanceAlias,omitempty" xml:"InstanceAlias,omitempty"`
+	InstanceId          *string                                              `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	InstanceStatus      *string                                              `json:"InstanceStatus,omitempty" xml:"InstanceStatus,omitempty"`
+	InstanceType        *string                                              `json:"InstanceType,omitempty" xml:"InstanceType,omitempty"`
+	MaintainEndTime     *string                                              `json:"MaintainEndTime,omitempty" xml:"MaintainEndTime,omitempty"`
+	MaintainStartTime   *string                                              `json:"MaintainStartTime,omitempty" xml:"MaintainStartTime,omitempty"`
+	NetworkType         *string                                              `json:"NetworkType,omitempty" xml:"NetworkType,omitempty"`
+	PayType             *string                                              `json:"PayType,omitempty" xml:"PayType,omitempty"`
+	PrimaryVSwitchId    *string                                              `json:"PrimaryVSwitchId,omitempty" xml:"PrimaryVSwitchId,omitempty"`
+	PrimaryZoneId       *string                                              `json:"PrimaryZoneId,omitempty" xml:"PrimaryZoneId,omitempty"`
+	RegionId            *string                                              `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
+	RequestId           *string                                              `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	ResourceGroupId     *string                                              `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
+	ServiceType         *string                                              `json:"ServiceType,omitempty" xml:"ServiceType,omitempty"`
+	SingleZoneRiskAlert *GetLindormV2InstanceResponseBodySingleZoneRiskAlert `json:"SingleZoneRiskAlert,omitempty" xml:"SingleZoneRiskAlert,omitempty" type:"Struct"`
+	StandbyVSwitchId    *string                                              `json:"StandbyVSwitchId,omitempty" xml:"StandbyVSwitchId,omitempty"`
+	StandbyZoneId       *string                                              `json:"StandbyZoneId,omitempty" xml:"StandbyZoneId,omitempty"`
+	StorageUsage        *GetLindormV2InstanceResponseBodyStorageUsage        `json:"StorageUsage,omitempty" xml:"StorageUsage,omitempty" type:"Struct"`
+	VpcId               *string                                              `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	VswitchId           *string                                              `json:"VswitchId,omitempty" xml:"VswitchId,omitempty"`
+	WhiteIpList         []*GetLindormV2InstanceResponseBodyWhiteIpList       `json:"WhiteIpList,omitempty" xml:"WhiteIpList,omitempty" type:"Repeated"`
+	ZoneEngineInfoMap   map[string]interface{}                               `json:"ZoneEngineInfoMap,omitempty" xml:"ZoneEngineInfoMap,omitempty"`
+	ZoneId              *string                                              `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
 func (s GetLindormV2InstanceResponseBody) String() string {
@@ -261,6 +264,10 @@ func (s *GetLindormV2InstanceResponseBody) GetResourceGroupId() *string {
 
 func (s *GetLindormV2InstanceResponseBody) GetServiceType() *string {
 	return s.ServiceType
+}
+
+func (s *GetLindormV2InstanceResponseBody) GetSingleZoneRiskAlert() *GetLindormV2InstanceResponseBodySingleZoneRiskAlert {
+	return s.SingleZoneRiskAlert
 }
 
 func (s *GetLindormV2InstanceResponseBody) GetStandbyVSwitchId() *string {
@@ -450,6 +457,11 @@ func (s *GetLindormV2InstanceResponseBody) SetServiceType(v string) *GetLindormV
 	return s
 }
 
+func (s *GetLindormV2InstanceResponseBody) SetSingleZoneRiskAlert(v *GetLindormV2InstanceResponseBodySingleZoneRiskAlert) *GetLindormV2InstanceResponseBody {
+	s.SingleZoneRiskAlert = v
+	return s
+}
+
 func (s *GetLindormV2InstanceResponseBody) SetStandbyVSwitchId(v string) *GetLindormV2InstanceResponseBody {
 	s.StandbyVSwitchId = &v
 	return s
@@ -498,6 +510,11 @@ func (s *GetLindormV2InstanceResponseBody) Validate() error {
 					return err
 				}
 			}
+		}
+	}
+	if s.SingleZoneRiskAlert != nil {
+		if err := s.SingleZoneRiskAlert.Validate(); err != nil {
+			return err
 		}
 	}
 	if s.StorageUsage != nil {
@@ -817,6 +834,61 @@ func (s *GetLindormV2InstanceResponseBodyEngineListNodeGroup) SetStatus(v string
 }
 
 func (s *GetLindormV2InstanceResponseBodyEngineListNodeGroup) Validate() error {
+	return dara.Validate(s)
+}
+
+type GetLindormV2InstanceResponseBodySingleZoneRiskAlert struct {
+	ConfirmDate           *string `json:"ConfirmDate,omitempty" xml:"ConfirmDate,omitempty"`
+	DispositionType       *string `json:"DispositionType,omitempty" xml:"DispositionType,omitempty"`
+	NeedAlert             *string `json:"NeedAlert,omitempty" xml:"NeedAlert,omitempty"`
+	PlannedCompletionDate *string `json:"PlannedCompletionDate,omitempty" xml:"PlannedCompletionDate,omitempty"`
+}
+
+func (s GetLindormV2InstanceResponseBodySingleZoneRiskAlert) String() string {
+	return dara.Prettify(s)
+}
+
+func (s GetLindormV2InstanceResponseBodySingleZoneRiskAlert) GoString() string {
+	return s.String()
+}
+
+func (s *GetLindormV2InstanceResponseBodySingleZoneRiskAlert) GetConfirmDate() *string {
+	return s.ConfirmDate
+}
+
+func (s *GetLindormV2InstanceResponseBodySingleZoneRiskAlert) GetDispositionType() *string {
+	return s.DispositionType
+}
+
+func (s *GetLindormV2InstanceResponseBodySingleZoneRiskAlert) GetNeedAlert() *string {
+	return s.NeedAlert
+}
+
+func (s *GetLindormV2InstanceResponseBodySingleZoneRiskAlert) GetPlannedCompletionDate() *string {
+	return s.PlannedCompletionDate
+}
+
+func (s *GetLindormV2InstanceResponseBodySingleZoneRiskAlert) SetConfirmDate(v string) *GetLindormV2InstanceResponseBodySingleZoneRiskAlert {
+	s.ConfirmDate = &v
+	return s
+}
+
+func (s *GetLindormV2InstanceResponseBodySingleZoneRiskAlert) SetDispositionType(v string) *GetLindormV2InstanceResponseBodySingleZoneRiskAlert {
+	s.DispositionType = &v
+	return s
+}
+
+func (s *GetLindormV2InstanceResponseBodySingleZoneRiskAlert) SetNeedAlert(v string) *GetLindormV2InstanceResponseBodySingleZoneRiskAlert {
+	s.NeedAlert = &v
+	return s
+}
+
+func (s *GetLindormV2InstanceResponseBodySingleZoneRiskAlert) SetPlannedCompletionDate(v string) *GetLindormV2InstanceResponseBodySingleZoneRiskAlert {
+	s.PlannedCompletionDate = &v
+	return s
+}
+
+func (s *GetLindormV2InstanceResponseBodySingleZoneRiskAlert) Validate() error {
 	return dara.Validate(s)
 }
 

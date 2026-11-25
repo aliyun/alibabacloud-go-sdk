@@ -32,9 +32,9 @@ type iListTagResourcesRequest interface {
 }
 
 type ListTagResourcesRequest struct {
-	// The token to retrieve the next page of results.
+	// The token that is used to start the next query to return more results.
 	//
-	// > Do not specify this parameter for your first request. If the response returns a **NextToken**, more results are available. To retrieve the next page, include the returned **NextToken*	- value in your next request.
+	// > You do not need to specify this parameter for the first query. If a query does not return all results, you can pass the **NextToken*	- value returned in the previous query to continue the query.
 	//
 	// example:
 	//
@@ -42,7 +42,7 @@ type ListTagResourcesRequest struct {
 	NextToken    *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The ID of the region where the instance is located. Call the [DescribeRegions](https://help.aliyun.com/document_detail/426062.html) operation to get a list of available regions.
+	// The ID of the region where the instance resides. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/426062.html) operation to query the region ID.
 	//
 	// This parameter is required.
 	//
@@ -50,7 +50,7 @@ type ListTagResourcesRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// A list of resource IDs.
+	// The list of resource IDs.
 	ResourceId           []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
 	ResourceOwnerAccount *string   `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64    `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
@@ -63,7 +63,7 @@ type ListTagResourcesRequest struct {
 	// INSTANCE
 	ResourceType  *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
 	SecurityToken *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
-	// A list of tags.
+	// The list of tags.
 	Tag []*ListTagResourcesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
@@ -179,17 +179,17 @@ func (s *ListTagResourcesRequest) Validate() error {
 }
 
 type ListTagResourcesRequestTag struct {
-	// The key of the tag.
+	// The tag key.
 	//
-	// > Each tag is a key-value pair. This parameter specifies the key.
+	// > You can specify multiple tag keys. For example, the Key in the first pair specifies the first tag key, and the Key in the second pair specifies the second tag key.
 	//
 	// example:
 	//
 	// test
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The value of the tag.
+	// The tag value.
 	//
-	// > Each tag is a key-value pair. This parameter specifies the value.
+	// > You can specify multiple tag values. For example, the Value in the first pair specifies the first tag value, and the Value in the second pair specifies the second tag value.
 	//
 	// example:
 	//

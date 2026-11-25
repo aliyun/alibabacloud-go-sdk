@@ -16,7 +16,7 @@ type iUpdateInstanceIpWhiteListResponseBody interface {
 }
 
 type UpdateInstanceIpWhiteListResponseBody struct {
-	// The detailed reason why the access is denied.
+	// The details of the access denial.
 	//
 	// example:
 	//

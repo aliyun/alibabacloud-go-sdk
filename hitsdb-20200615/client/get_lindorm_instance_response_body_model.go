@@ -115,6 +115,8 @@ type iGetLindormInstanceResponseBody interface {
 	GetResourceGroupId() *string
 	SetServiceType(v string) *GetLindormInstanceResponseBody
 	GetServiceType() *string
+	SetSingleZoneRiskAlert(v *GetLindormInstanceResponseBodySingleZoneRiskAlert) *GetLindormInstanceResponseBody
+	GetSingleZoneRiskAlert() *GetLindormInstanceResponseBodySingleZoneRiskAlert
 	SetStandbyVSwitchId(v string) *GetLindormInstanceResponseBody
 	GetStandbyVSwitchId() *string
 	SetStandbyZoneId(v string) *GetLindormInstanceResponseBody
@@ -128,19 +130,19 @@ type iGetLindormInstanceResponseBody interface {
 }
 
 type GetLindormInstanceResponseBody struct {
-	// The UID of the Alibaba Cloud account.
+	// The 16-character AliUid of the Alibaba Cloud account.
 	//
 	// example:
 	//
 	// 164901546557****
 	AliUid *int64 `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
-	// The ID of the vSwitch in the arbiter zone for the multi-zone instance. The vSwitch must be deployed in the zone that is specified by `ArbiterZoneId`.
+	// The ID of the vSwitch in the arbiter zone for a multi-zone instance. The vSwitch must belong to the zone specified by ArbiterZoneId.
 	//
 	// example:
 	//
 	// vsw-uf6664pqjawb87k36****
 	ArbiterVSwitchId *string `json:"ArbiterVSwitchId,omitempty" xml:"ArbiterVSwitchId,omitempty"`
-	// The arbiter zone ID of the multi-zone instance.
+	// The ID of the arbiter zone for a multi-zone instance.
 	//
 	// example:
 	//
@@ -148,93 +150,93 @@ type GetLindormInstanceResponseBody struct {
 	ArbiterZoneId *string `json:"ArbiterZoneId,omitempty" xml:"ArbiterZoneId,omitempty"`
 	// The deployment architecture. Valid values:
 	//
-	// - **1.0**: single-zone deployment.
+	// - **1.0**: single-zone.
 	//
-	// - **2.0**: multi-zone deployment.
+	// - **2.0**: multi-zone.
 	//
 	// example:
 	//
 	// 1.0
 	ArchVersion *string `json:"ArchVersion,omitempty" xml:"ArchVersion,omitempty"`
-	// The billable storage capacity of the archive storage. Unit: GB.
+	// The billable storage capacity of the archive storage type. Unit: GB.
 	//
 	// example:
 	//
-	// 0GB
+	// 0
 	ArchiveStorage *int32 `json:"ArchiveStorage,omitempty" xml:"ArchiveStorage,omitempty"`
-	// Indicates whether auto-renewal is enabled for the instance. Valid values:
+	// Indicates whether auto-renewal is enabled. Valid values:
 	//
-	// - **true**: Enabled.
+	// - **true**: enabled.
 	//
-	// - **false**: Disabled.
+	// - **false**: disabled.
 	//
-	// > This parameter is returned only for subscription instances.
+	// > This parameter is returned only when the billing method of the instance is subscription.
 	//
 	// example:
 	//
 	// false
 	AutoRenew *bool `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
-	// The ID of the backup instance.
+	// The backup instance.
 	//
 	// example:
 	//
 	// ld-xxxx
 	BackupInstance *string `json:"BackupInstance,omitempty" xml:"BackupInstance,omitempty"`
-	// The capacity of the cold storage.
+	// Storage capacity of storage capacity cloud storage.
 	//
 	// example:
 	//
-	// 0GB
+	// 0
 	ColdStorage *int32 `json:"ColdStorage,omitempty" xml:"ColdStorage,omitempty"`
-	// The disk type of the core nodes in a multi-zone instance. Valid values:
+	// The disk type of the core node for a multi-zone instance. Valid values:
 	//
-	// - **cloud_efficiency**: Standard.
+	// - **cloud_efficiency**: standard cloud storage.
 	//
-	// - **cloud_ssd**: Performance.
+	// - **cloud_ssd**: performance cloud storage.
 	//
-	// - **cloud_essd**: ESSD.
+	// - **cloud_essd**: enhanced performance cloud storage.
 	//
-	// - **cloud_essd_pl0**: ESSD PL0.
+	// - **cloud_essd_pl0**: performance cloud storage PL0.
 	//
 	// example:
 	//
 	// cloud_efficiency
 	CoreDiskCategory *string `json:"CoreDiskCategory,omitempty" xml:"CoreDiskCategory,omitempty"`
-	// The number of core nodes in the multi-zone instance.
+	// The number of core nodes for a multi-zone instance.
 	//
 	// example:
 	//
 	// 4
 	CoreNum *int32 `json:"CoreNum,omitempty" xml:"CoreNum,omitempty"`
-	// The storage capacity of a single core node in the multi-zone instance.
+	// The disk capacity of a single core node for a multi-zone instance.
 	//
 	// example:
 	//
 	// 400
 	CoreSingleStorage *int32 `json:"CoreSingleStorage,omitempty" xml:"CoreSingleStorage,omitempty"`
-	// The specification of the core nodes in the multi-zone instance.
+	// The core node specifications for a multi-zone instance.
 	//
 	// example:
 	//
 	// lindorm.g.xlarge
 	CoreSpec *string `json:"CoreSpec,omitempty" xml:"CoreSpec,omitempty"`
-	// The time at which the instance was created. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	// The creation time of the instance, represented as the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
 	//
 	// example:
 	//
 	// 1627290664000
 	CreateMilliseconds *int64 `json:"CreateMilliseconds,omitempty" xml:"CreateMilliseconds,omitempty"`
-	// The time at which the instance was created. The time is displayed in the **yyyy-MM-dd HH:mm:ss*	- format.
+	// The time when the instance was created. The time is displayed in the **yyyy-MM-dd HH:mm:ss*	- format.
 	//
 	// example:
 	//
 	// 2021-07-26 17:10:26
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// Indicates whether release protection is enabled for the instance. Valid values:
+	// Indicates whether deletion protection is enabled. Valid values:
 	//
-	// - **true**: Enabled.
+	// - **true**: enabled.
 	//
-	// - **false**: Disabled.
+	// - **false**: disabled.
 	//
 	// example:
 	//
@@ -242,15 +244,15 @@ type GetLindormInstanceResponseBody struct {
 	DeletionProtection *string `json:"DeletionProtection,omitempty" xml:"DeletionProtection,omitempty"`
 	// The storage type. Valid values:
 	//
-	// - **cloud_efficiency**: Standard.
+	// - **cloud_efficiency**: standard cloud storage.
 	//
-	// - **cloud_ssd**: Performance.
+	// - **cloud_ssd**: performance cloud storage.
 	//
-	// - **cloud_essd**: Enhanced SSD (ESSD).
+	// - **cloud_essd**: enhanced performance cloud storage.
 	//
-	// - **cloud_essd_pl0**: ESSD PL0.
+	// - **cloud_essd_pl0**: performance cloud storage PL0.
 	//
-	// - **capacity_cloud_storage**: Capacity.
+	// - **capacity_cloud_storage**: capacity cloud storage.
 	//
 	// - **local_ssd_pro**: local SSD.
 	//
@@ -266,25 +268,27 @@ type GetLindormInstanceResponseBody struct {
 	//
 	// 80%
 	DiskThreshold *string `json:"DiskThreshold,omitempty" xml:"DiskThreshold,omitempty"`
-	// The disk usage.
+	// The disk space usage.
 	//
 	// example:
 	//
 	// 0.0%
 	DiskUsage *string `json:"DiskUsage,omitempty" xml:"DiskUsage,omitempty"`
-	// Indicates whether LBlob is enabled. Valid values:
+	// Indicates whether LBlob is enabled for the instance. Valid values:
 	//
-	// true: Enabled. false: Disabled.
+	// - true: enabled.
+	//
+	// - false: disabled.
 	//
 	// example:
 	//
 	// true
 	EnableBlob *bool `json:"EnableBlob,omitempty" xml:"EnableBlob,omitempty"`
-	// Indicates whether Change Data Capture (CDC) is enabled for the instance. Valid values:
+	// Indicates whether the data subscription feature is enabled for the instance. Valid values:
 	//
-	// - **true**: Enabled.
+	// - **true**: enabled.
 	//
-	// - **false**: Disabled.
+	// - **false**: disabled.
 	//
 	// example:
 	//
@@ -292,9 +296,9 @@ type GetLindormInstanceResponseBody struct {
 	EnableCdc *bool `json:"EnableCdc,omitempty" xml:"EnableCdc,omitempty"`
 	// Indicates whether the compute engine is enabled for the instance. Valid values:
 	//
-	// - **true**: Enabled.
+	// - **true**: enabled.
 	//
-	// - **false**: Disabled.
+	// - **false**: disabled.
 	//
 	// example:
 	//
@@ -302,51 +306,49 @@ type GetLindormInstanceResponseBody struct {
 	EnableCompute *bool `json:"EnableCompute,omitempty" xml:"EnableCompute,omitempty"`
 	// Indicates whether Key Management Service (KMS) is enabled. Valid values:
 	//
-	// - **true**: Enabled.
+	// - **true**: enabled.
 	//
-	// - **false**: Disabled.
+	// - **false**: disabled.
 	//
 	// example:
 	//
 	// false
 	EnableKms *bool `json:"EnableKms,omitempty" xml:"EnableKms,omitempty"`
-	// Specifies whether the wide table engine supports the Thrift and CQL protocols. If this feature is disabled, you can call the SwitchLProxyService operation to enable it.
+	// Indicates whether LindormTable supports the Thrift and CQL protocols. If not supported, you can call the SwitchLProxyService operation to enable or disable the support. Valid values:
 	//
-	// true: Supported.
+	// - True: supported.
 	//
-	// false: Not supported.
+	// - False: not supported.
 	//
 	// example:
 	//
 	// False
 	EnableLProxy *bool `json:"EnableLProxy,omitempty" xml:"EnableLProxy,omitempty"`
-	// Indicates whether the LTS engine is enabled for the instance. Valid values:
+	// Indicates whether Lindorm Tunnel Service is enabled for the instance. Valid values:
 	//
-	// - **true**: Enabled.
+	// - **true**: enabled.
 	//
-	// - **false**: Disabled.
+	// - **false**: disabled.
 	//
 	// example:
 	//
 	// true
 	EnableLTS *bool `json:"EnableLTS,omitempty" xml:"EnableLTS,omitempty"`
-	// Indicates whether LindormSQL V3.0, which is compatible with the MySQL protocol, is supported by the wide table engine.
+	// Indicates whether LindormTable supports LindormSQL-V3, which is compatible with the MySQL protocol. Instances purchased after October 24, 2023 support this feature by default. For existing instances, contact technical support for evaluation before enabling this feature. Valid values:
 	//
-	// This feature is supported by default on instances created after October 24, 2023. For existing instances, contact technical support to enable this feature.
+	// - True: supported.
 	//
-	// - true: Supported.
-	//
-	// - false: Not supported.
+	// - False: not supported.
 	//
 	// example:
 	//
 	// True
 	EnableLsqlVersionV3 *bool `json:"EnableLsqlVersionV3,omitempty" xml:"EnableLsqlVersionV3,omitempty"`
-	// Indicates whether the ML node is enabled. Valid values:
+	// Indicates whether the AI control node is enabled. Valid values:
 	//
-	// - true: Enabled.
+	// - True: enabled.
 	//
-	// - false: Disabled.
+	// - False: disabled.
 	//
 	// example:
 	//
@@ -354,53 +356,53 @@ type GetLindormInstanceResponseBody struct {
 	EnableMLCtrl *bool `json:"EnableMLCtrl,omitempty" xml:"EnableMLCtrl,omitempty"`
 	// Indicates whether SSL encryption is enabled. Valid values:
 	//
-	// - **true**: Enabled.
+	// - **true**: enabled.
 	//
-	// - **false**: Disabled.
+	// - **false**: disabled.
 	//
 	// example:
 	//
 	// false
 	EnableSSL *bool `json:"EnableSSL,omitempty" xml:"EnableSSL,omitempty"`
-	// Indicates whether the History Server is enabled for the compute engine.
+	// Indicates whether History Server for the compute engine is enabled.
 	//
 	// example:
 	//
 	// true
 	EnableShs *bool `json:"EnableShs,omitempty" xml:"EnableShs,omitempty"`
-	// Indicates whether Transparent Data Encryption (TDE) is enabled. Valid values:
+	// Indicates whether storage encryption is enabled. Valid values:
 	//
-	// - true: Enabled.
+	// - true: enabled.
 	//
-	// - false: Disabled.
+	// - false: disabled.
 	//
 	// example:
 	//
 	// false
 	EnableStoreTDE *bool `json:"EnableStoreTDE,omitempty" xml:"EnableStoreTDE,omitempty"`
-	// Indicates whether the stream engine is enabled for the instance. Valid values:
+	// Indicates whether the streaming engine is enabled for the instance. Valid values:
 	//
-	// - **true**: Enabled.
+	// - **true**: enabled.
 	//
-	// - **false**: Disabled.
+	// - **false**: disabled.
 	//
 	// example:
 	//
 	// true
 	EnableStream *bool `json:"EnableStream,omitempty" xml:"EnableStream,omitempty"`
-	// The information about the engines.
+	// The list of engine information.
 	EngineList []*GetLindormInstanceResponseBodyEngineList `json:"EngineList,omitempty" xml:"EngineList,omitempty" type:"Repeated"`
-	// The types of the engines that are supported by the instance. The value of this parameter is the sum of the values of all supported engine types.
+	// The supported engine types. The return value is the sum of the values of the following engine types:
 	//
 	// - 1: search engine
 	//
-	// - 2: time series engine
+	// - 2: LindormTSDB
 	//
-	// - 4: wide table engine
+	// - 4: LindormTable
 	//
 	// - 8: file engine
 	//
-	// > For example, if the value of this parameter is 15, it indicates that the instance supports the search, time series, wide table, and file engines because 1 + 2 + 4 + 8 = 15. If the value of this parameter is 6, it indicates that the instance supports the time series and wide table engines because 2 + 4 = 6.
+	// > For example, if the value of EngineType is 15 (15 = 8 + 4 + 2 + 1), the instance supports the search engine, LindormTSDB, LindormTable, and file engine. If the value of EngineType is 6 (6 = 4 + 2), the instance supports LindormTSDB and LindormTable.
 	//
 	// example:
 	//
@@ -408,13 +410,13 @@ type GetLindormInstanceResponseBody struct {
 	EngineType *int32 `json:"EngineType,omitempty" xml:"EngineType,omitempty"`
 	// The expiration time of the instance. The time is displayed in the **yyyy-MM-dd HH:mm:ss*	- format.
 	//
-	// > This parameter is returned only for subscription instances.
+	// > This parameter is returned only when the billing method is subscription.
 	//
 	// example:
 	//
 	// 2021-08-27 00:00:00
 	ExpireTime *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
-	// The expiration time of the instance. This value is a UNIX timestamp representing the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	// The time when the instance expires, represented as the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
 	//
 	// example:
 	//
@@ -426,45 +428,45 @@ type GetLindormInstanceResponseBody struct {
 	//
 	// test0726
 	InstanceAlias *string `json:"InstanceAlias,omitempty" xml:"InstanceAlias,omitempty"`
-	// The ID of the instance.
+	// The instance ID.
 	//
 	// example:
 	//
 	// ld-bp1o3y0yme2i2****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The status of the instance. Valid values:
+	// The instance status. Valid values:
 	//
 	// - **CREATING**: The instance is being created.
 	//
 	// - **ACTIVATION**: The instance is running.
 	//
-	// - **COLD_EXPANDING**: The capacity of the cold storage is being expanded.
+	// - **COLD_EXPANDING**: Capacity cloud storage expansion in progress.
 	//
-	// - **MINOR_VERSION_TRANSITIONING**: The minor version of the instance is being changed.
+	// - **MINOR_VERSION_TRANSING**: The minor version is being upgraded.
 	//
-	// - **RESIZING**: The number of nodes is being changed.
+	// - **RESIZING**: The nodes are being scaled up.
 	//
-	// - **SHRINKING**: The number of nodes is being changed.
+	// - **SHRINKING**: The nodes are being scaled down.
 	//
-	// - **CLASS_CHANGING**: The specification of the instance is being changed.
+	// - **CLASS_CHANGING**: Instance specification upgrade or downgrade in progress.
 	//
-	// - **SSL_SWITCHING**: SSL is being enabled or disabled.
+	// - **SSL_SWITCHING**: The SSL certificate is being changed.
 	//
-	// - **CDC_OPENING**: The CDC feature is being enabled.
+	// - **CDC_OPENING**: The data subscription feature is being enabled.
 	//
-	// - **TRANSFER**: Data is being migrated.
+	// - **TRANSFER**: Data migration in progress.
 	//
-	// - **DATABASE_TRANSFER**: Data is being migrated.
+	// - **DATABASE_TRANSFER**: Data is being migrated to the database.
 	//
 	// - **GUARD_CREATING**: A disaster recovery instance is being created.
 	//
-	// - **BACKUP_RECOVERING**: Data is being restored from a backup.
+	// - **BACKUP_RECOVERING**: The backup is being restored.
 	//
-	// - **DATABASE_IMPORTING**: Data is being imported.
+	// - **DATABASE_IMPORTING**: Data import in progress.
 	//
-	// - **NET_MODIFYING**: The network type is being changed.
+	// - **NET_MODIFYING**: The network is being modified.
 	//
-	// - **NET_SWITCHING**: The network is being switched.
+	// - **NET_SWITCHING**: The network is being switched between the internal network and the Internet.
 	//
 	// - **NET_CREATING**: A network connection is being created.
 	//
@@ -474,7 +476,7 @@ type GetLindormInstanceResponseBody struct {
 	//
 	// - **RESTARTING**: The instance is being restarted.
 	//
-	// - **LOCKED**: The instance is locked.
+	// - **LOCKED**: The instance has expired and is locked.
 	//
 	// example:
 	//
@@ -486,69 +488,69 @@ type GetLindormInstanceResponseBody struct {
 	//
 	// 480
 	InstanceStorage *string `json:"InstanceStorage,omitempty" xml:"InstanceStorage,omitempty"`
-	// The disk type of the log nodes in the multi-zone instance. Valid values:
+	// The disk type of the log node for a multi-zone instance. Valid values:
 	//
-	// - **cloud_efficiency**: Standard.
+	// - **cloud_efficiency**: standard cloud storage.
 	//
-	// - **cloud_ssd**: Performance.
+	// - **cloud_ssd**: performance cloud storage.
 	//
 	// example:
 	//
 	// cloud_ssd
 	LogDiskCategory *string `json:"LogDiskCategory,omitempty" xml:"LogDiskCategory,omitempty"`
-	// The number of log nodes in the multi-zone instance.
+	// The number of log nodes for a multi-zone instance.
 	//
 	// example:
 	//
 	// 4
 	LogNum *int32 `json:"LogNum,omitempty" xml:"LogNum,omitempty"`
-	// The storage capacity of a single log node in the multi-zone instance.
+	// The disk capacity of a single log node for a multi-zone instance.
 	//
 	// example:
 	//
 	// 400GB
 	LogSingleStorage *int32 `json:"LogSingleStorage,omitempty" xml:"LogSingleStorage,omitempty"`
-	// The specification of the log nodes in the multi-zone instance.
+	// The log node specifications for a multi-zone instance.
 	//
 	// example:
 	//
 	// lindorm.sn1.large
 	LogSpec *string `json:"LogSpec,omitempty" xml:"LogSpec,omitempty"`
-	// The end time of the maintenance window.
+	// The end time of the maintenance window. The time is displayed in the HH:mmZ format. UTC time is used.
 	//
 	// example:
 	//
 	// 20:00Z
 	MaintainEndTime *string `json:"MaintainEndTime,omitempty" xml:"MaintainEndTime,omitempty"`
-	// The start time of the maintenance window.
+	// The start time of the maintenance window. The time is displayed in the HH:mmZ format. UTC time is used.
 	//
 	// example:
 	//
 	// 00:00Z
 	MaintainStartTime *string `json:"MaintainStartTime,omitempty" xml:"MaintainStartTime,omitempty"`
-	// The combination of zones. For more information about the supported zone combinations, see the instance buy page.
+	// The multi-zone combination. You can go to the buy page to view the supported zone combinations. Valid values:
 	//
-	// - **ap-southeast-5abc-aliyun**: Indonesia (Jakarta) Zone A, B, and C.
+	// - **ap-southeast-5abc-aliyun**: Indonesia (Jakarta) Zones A, B, and C.
 	//
-	// - **cn-hangzhou-ehi-aliyun**: China (Hangzhou) Zone E, H, and I.
+	// - **cn-hangzhou-ehi-aliyun**: China (Hangzhou) Zones E, H, and I.
 	//
-	// - **cn-beijing-acd-aliyun**: China (Beijing) Zone A, C, and D.
+	// - **cn-beijing-acd-aliyun**: China (Beijing) Zones A, C, and D.
 	//
-	// - **ap-southeast-1-abc-aliyun**: Singapore Zone A, B, and C.
+	// - **ap-southeast-1-abc-aliyun**: Singapore Zones A, B, and C.
 	//
-	// - **cn-zhangjiakou-abc-aliyun**: China (Zhangjiakou) Zone A, B, and C.
+	// - **cn-zhangjiakou-abc-aliyun**: China (Zhangjiakou) Zones A, B, and C.
 	//
-	// - **cn-shanghai-efg-aliyun**: China (Shanghai) Zone E, F, and G.
+	// - **cn-shanghai-efg-aliyun**: China (Shanghai) Zones E, F, and G.
 	//
-	// - **cn-shanghai-abd-aliyun**: China (Shanghai) Zone A, B, and D.
+	// - **cn-shanghai-abd-aliyun**: China (Shanghai) Zones A, B, and D.
 	//
-	// - **cn-hangzhou-bef-aliyun**: China (Hangzhou) Zone B, E, and F.
+	// - **cn-hangzhou-bef-aliyun**: China (Hangzhou) Zones B, E, and F.
 	//
-	// - **cn-hangzhou-bce-aliyun**: China (Hangzhou) Zone B, C, and E.
+	// - **cn-hangzhou-bce-aliyun**: China (Hangzhou) Zones B, C, and E.
 	//
-	// - **cn-beijing-fgh-aliyun**: China (Beijing) Zone F, G, and H.
+	// - **cn-beijing-fgh-aliyun**: China (Beijing) Zones F, G, and H.
 	//
-	// - **cn-shenzhen-abc-aliyun**: China (Shenzhen) Zone A, B, and C.
+	// - **cn-shenzhen-abc-aliyun**: China (Shenzhen) Zones A, B, and C.
 	//
 	// example:
 	//
@@ -562,27 +564,27 @@ type GetLindormInstanceResponseBody struct {
 	NetworkType *string `json:"NetworkType,omitempty" xml:"NetworkType,omitempty"`
 	// The billing method of the instance. Valid values:
 	//
-	// - **PREPAY**: subscription
+	// - **PREPAY**: subscription.
 	//
-	// - **POSTPAY**: pay-as-you-go
+	// - **POSTPAY**: pay-as-you-go.
 	//
 	// example:
 	//
 	// POSTPAY
 	PayType *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
-	// The ID of the vSwitch in the primary zone for the multi-zone instance. The vSwitch must be deployed in the zone that is specified by `PrimaryZoneId`.
+	// The ID of the vSwitch in the primary zone for a multi-zone instance. The vSwitch must belong to the zone specified by PrimaryZoneId.
 	//
 	// example:
 	//
 	// vsw-uf6fdqa7c0pipnqzq****
 	PrimaryVSwitchId *string `json:"PrimaryVSwitchId,omitempty" xml:"PrimaryVSwitchId,omitempty"`
-	// The primary zone ID of the multi-zone instance.
+	// The ID of the primary zone for a multi-zone instance.
 	//
 	// example:
 	//
 	// cn-shanghai-e
 	PrimaryZoneId *string `json:"PrimaryZoneId,omitempty" xml:"PrimaryZoneId,omitempty"`
-	// The ID of the region.
+	// The region ID.
 	//
 	// example:
 	//
@@ -600,29 +602,31 @@ type GetLindormInstanceResponseBody struct {
 	//
 	// rg-aek2wvd6oia****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The type of the instance. Valid values:
+	// The instance type. Valid values:
 	//
-	// - **lindorm**: a single-zone instance.
+	// - **lindorm**: Lindorm single-zone instance.
 	//
-	// - **lindorm_multizone**: a multi-zone instance.
+	// - **lindorm_multizone**: Lindorm multi-zone instance.
 	//
-	// - **serverless_lindorm**: a serverless instance.
+	// - **serverless_lindorm**: Lindorm Serverless instance.
 	//
-	// - **lindorm_standalone**: a single-node instance.
+	// - **lindorm_standalone**: Lindorm single-node instance.
 	//
-	// - **lts**: a Lindorm Tunnel Service (LTS) instance.
+	// - **lts**: Lindorm Tunnel Service.
 	//
 	// example:
 	//
 	// lindorm
 	ServiceType *string `json:"ServiceType,omitempty" xml:"ServiceType,omitempty"`
-	// The ID of the vSwitch in the secondary zone for the multi-zone instance. The vSwitch must be deployed in the zone that is specified by `StandbyZoneId`.
+	// The risk alert information for the single-zone deployment.
+	SingleZoneRiskAlert *GetLindormInstanceResponseBodySingleZoneRiskAlert `json:"SingleZoneRiskAlert,omitempty" xml:"SingleZoneRiskAlert,omitempty" type:"Struct"`
+	// The ID of the vSwitch in the secondary zone for a multi-zone instance. The vSwitch must belong to the zone specified by StandbyZoneId.
 	//
 	// example:
 	//
 	// vsw-2zec0kcn08cgdtr6****
 	StandbyVSwitchId *string `json:"StandbyVSwitchId,omitempty" xml:"StandbyVSwitchId,omitempty"`
-	// The secondary zone ID of the multi-zone instance.
+	// The ID of the secondary zone for a multi-zone instance.
 	//
 	// example:
 	//
@@ -640,7 +644,7 @@ type GetLindormInstanceResponseBody struct {
 	//
 	// vsw-bp1vbjzmod9q3l9eo****
 	VswitchId *string `json:"VswitchId,omitempty" xml:"VswitchId,omitempty"`
-	// The ID of the zone.
+	// The zone ID.
 	//
 	// example:
 	//
@@ -866,6 +870,10 @@ func (s *GetLindormInstanceResponseBody) GetResourceGroupId() *string {
 
 func (s *GetLindormInstanceResponseBody) GetServiceType() *string {
 	return s.ServiceType
+}
+
+func (s *GetLindormInstanceResponseBody) GetSingleZoneRiskAlert() *GetLindormInstanceResponseBodySingleZoneRiskAlert {
+	return s.SingleZoneRiskAlert
 }
 
 func (s *GetLindormInstanceResponseBody) GetStandbyVSwitchId() *string {
@@ -1153,6 +1161,11 @@ func (s *GetLindormInstanceResponseBody) SetServiceType(v string) *GetLindormIns
 	return s
 }
 
+func (s *GetLindormInstanceResponseBody) SetSingleZoneRiskAlert(v *GetLindormInstanceResponseBodySingleZoneRiskAlert) *GetLindormInstanceResponseBody {
+	s.SingleZoneRiskAlert = v
+	return s
+}
+
 func (s *GetLindormInstanceResponseBody) SetStandbyVSwitchId(v string) *GetLindormInstanceResponseBody {
 	s.StandbyVSwitchId = &v
 	return s
@@ -1188,6 +1201,11 @@ func (s *GetLindormInstanceResponseBody) Validate() error {
 			}
 		}
 	}
+	if s.SingleZoneRiskAlert != nil {
+		if err := s.SingleZoneRiskAlert.Validate(); err != nil {
+			return err
+		}
+	}
 	return nil
 }
 
@@ -1204,25 +1222,25 @@ type GetLindormInstanceResponseBodyEngineList struct {
 	//
 	// 2
 	CoreCount *string `json:"CoreCount,omitempty" xml:"CoreCount,omitempty"`
-	// The number of vCPUs for the engine node.
+	// The number of CPUs for the engine node.
 	//
 	// example:
 	//
 	// 4
 	CpuCount *string `json:"CpuCount,omitempty" xml:"CpuCount,omitempty"`
-	// The type of the engine. Valid values:
+	// The engine type. Valid values:
 	//
-	// - **lindorm**: the wide table engine.
+	// - **lindorm**: LindormTable.
 	//
-	// - **tsdb**: the time series engine.
+	// - **tsdb**: LindormTSDB.
 	//
-	// - **solr**: the search engine.
+	// - **solr**: search engine.
 	//
-	// - **store**: the file engine.
+	// - **store**: file engine.
 	//
-	// - **bds**: the LTS engine.
+	// - **bds**: Lindorm Tunnel Service engine.
 	//
-	// - **compute**: the compute engine.
+	// - **compute**: compute engine.
 	//
 	// example:
 	//
@@ -1230,15 +1248,15 @@ type GetLindormInstanceResponseBodyEngineList struct {
 	Engine *string `json:"Engine,omitempty" xml:"Engine,omitempty"`
 	// Indicates whether the engine is of the latest version. Valid values:
 	//
-	// - **true**: The engine is of the latest version.
+	// - **true**: latest version.
 	//
-	// - **false**: The engine is not of the latest version.
+	// - **false**: not the latest version.
 	//
 	// example:
 	//
 	// false
 	IsLastVersion *bool `json:"IsLastVersion,omitempty" xml:"IsLastVersion,omitempty"`
-	// The latest version of the engine.
+	// The latest version number of the engine.
 	//
 	// example:
 	//
@@ -1256,7 +1274,7 @@ type GetLindormInstanceResponseBodyEngineList struct {
 	//
 	// 2
 	PrimaryCoreCount *string `json:"PrimaryCoreCount,omitempty" xml:"PrimaryCoreCount,omitempty"`
-	// The specification of the engine nodes.
+	// The engine node specifications.
 	//
 	// example:
 	//
@@ -1268,7 +1286,7 @@ type GetLindormInstanceResponseBodyEngineList struct {
 	//
 	// 2
 	StandbyCoreCount *string `json:"StandbyCoreCount,omitempty" xml:"StandbyCoreCount,omitempty"`
-	// The version of the engine.
+	// The version number of the engine.
 	//
 	// example:
 	//
@@ -1384,5 +1402,80 @@ func (s *GetLindormInstanceResponseBodyEngineList) SetVersion(v string) *GetLind
 }
 
 func (s *GetLindormInstanceResponseBodyEngineList) Validate() error {
+	return dara.Validate(s)
+}
+
+type GetLindormInstanceResponseBodySingleZoneRiskAlert struct {
+	// The confirmation date for risk handling. The date is displayed in the yyyy-MM-dd format.
+	//
+	// example:
+	//
+	// 2026-09-24
+	ConfirmDate *string `json:"ConfirmDate,omitempty" xml:"ConfirmDate,omitempty"`
+	// The risk handling type for the single-zone deployment.
+	//
+	// example:
+	//
+	// NO_SET
+	DispositionType *string `json:"DispositionType,omitempty" xml:"DispositionType,omitempty"`
+	// Indicates whether a risk alert for the single-zone deployment is required.
+	//
+	// example:
+	//
+	// true
+	NeedAlert *bool `json:"NeedAlert,omitempty" xml:"NeedAlert,omitempty"`
+	// The planned completion date for risk handling. The date is displayed in the yyyy-MM-dd format.
+	//
+	// example:
+	//
+	// 2026-09-30
+	PlannedCompletionDate *string `json:"PlannedCompletionDate,omitempty" xml:"PlannedCompletionDate,omitempty"`
+}
+
+func (s GetLindormInstanceResponseBodySingleZoneRiskAlert) String() string {
+	return dara.Prettify(s)
+}
+
+func (s GetLindormInstanceResponseBodySingleZoneRiskAlert) GoString() string {
+	return s.String()
+}
+
+func (s *GetLindormInstanceResponseBodySingleZoneRiskAlert) GetConfirmDate() *string {
+	return s.ConfirmDate
+}
+
+func (s *GetLindormInstanceResponseBodySingleZoneRiskAlert) GetDispositionType() *string {
+	return s.DispositionType
+}
+
+func (s *GetLindormInstanceResponseBodySingleZoneRiskAlert) GetNeedAlert() *bool {
+	return s.NeedAlert
+}
+
+func (s *GetLindormInstanceResponseBodySingleZoneRiskAlert) GetPlannedCompletionDate() *string {
+	return s.PlannedCompletionDate
+}
+
+func (s *GetLindormInstanceResponseBodySingleZoneRiskAlert) SetConfirmDate(v string) *GetLindormInstanceResponseBodySingleZoneRiskAlert {
+	s.ConfirmDate = &v
+	return s
+}
+
+func (s *GetLindormInstanceResponseBodySingleZoneRiskAlert) SetDispositionType(v string) *GetLindormInstanceResponseBodySingleZoneRiskAlert {
+	s.DispositionType = &v
+	return s
+}
+
+func (s *GetLindormInstanceResponseBodySingleZoneRiskAlert) SetNeedAlert(v bool) *GetLindormInstanceResponseBodySingleZoneRiskAlert {
+	s.NeedAlert = &v
+	return s
+}
+
+func (s *GetLindormInstanceResponseBodySingleZoneRiskAlert) SetPlannedCompletionDate(v string) *GetLindormInstanceResponseBodySingleZoneRiskAlert {
+	s.PlannedCompletionDate = &v
+	return s
+}
+
+func (s *GetLindormInstanceResponseBodySingleZoneRiskAlert) Validate() error {
 	return dara.Validate(s)
 }

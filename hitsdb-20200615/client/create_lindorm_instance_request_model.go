@@ -104,33 +104,33 @@ type iCreateLindormInstanceRequest interface {
 }
 
 type CreateLindormInstanceRequest struct {
-	// The ID of the VSwitch for the arbiter zone of the multi-zone instance. The VSwitch must be in the zone specified by `ArbiterZoneId`. **This parameter is required for multi-zone instances.**
+	// The vSwitch ID of the arbiter zone for a multi-zone instance. The vSwitch must be in the zone specified by ArbiterZoneId. **To create a multi-zone instance, this parameter is required.**
 	//
 	// example:
 	//
 	// vsw-uf6664pqjawb87k36****
 	ArbiterVSwitchId *string `json:"ArbiterVSwitchId,omitempty" xml:"ArbiterVSwitchId,omitempty"`
-	// The ID of the arbiter zone for the multi-zone instance. **This parameter is required for multi-zone instances.**
+	// The zone ID of the arbiter zone for a multi-zone instance. **To create a multi-zone instance, this parameter is required.**
 	//
 	// example:
 	//
 	// cn-shanghai-g
 	ArbiterZoneId *string `json:"ArbiterZoneId,omitempty" xml:"ArbiterZoneId,omitempty"`
-	// The deployment architecture of the instance. Valid values:
+	// The deployment architecture. Valid values:
 	//
-	// - **1.0**: Single-zone deployment.
+	// - **1.0**: single-zone.
 	//
-	// - **2.0**: Multi-zone deployment.
+	// - **2.0**: multi-zone.
 	//
-	// The default value is 1.0. To create a multi-zone instance, set this parameter to 2.0. **This parameter is required for multi-zone instances.**
+	// If this parameter is not specified, the default value is 1.0. To create a multi-zone instance, set this parameter to 2.0. **To create a multi-zone instance, this parameter is required.**
 	//
 	// example:
 	//
 	// 2.0
 	ArchVersion *string `json:"ArchVersion,omitempty" xml:"ArchVersion,omitempty"`
-	// The auto-renewal duration, in months.
+	// The auto-renewal duration. Unit: months.
 	//
-	// The value of this parameter ranges from **1*	- to **12**.
+	// Valid values: **1*	- to **12**.
 	//
 	// > This parameter takes effect only when **AutoRenewal*	- is set to **true**.
 	//
@@ -138,7 +138,7 @@ type CreateLindormInstanceRequest struct {
 	//
 	// 1
 	AutoRenewDuration *string `json:"AutoRenewDuration,omitempty" xml:"AutoRenewDuration,omitempty"`
-	// Specifies whether to enable auto-renewal for the Subscription instance. Valid values:
+	// Specifies whether to enable auto-renewal for the instance. Valid values:
 	//
 	// - **true**: Auto-renewal is enabled.
 	//
@@ -146,75 +146,75 @@ type CreateLindormInstanceRequest struct {
 	//
 	// Default value: false.
 	//
-	// > This parameter takes effect only when the **PayType*	- parameter is set to **PREPAY**.
+	// > This parameter takes effect only when **PayType*	- is set to **PREPAY*	- (subscription).
 	//
 	// example:
 	//
 	// false
 	AutoRenewal *bool `json:"AutoRenewal,omitempty" xml:"AutoRenewal,omitempty"`
-	// The cold storage capacity of the instance, in GB. The value of this parameter ranges from **800*	- to **1,000,000**. If you do not specify this parameter, cold storage is not enabled.
+	// The capacity cloud storage capacity of the instance. Unit: GB. If this parameter is not specified, capacity cloud storage is not enabled. Valid values: **800*	- to **1000000**.
 	//
 	// example:
 	//
 	// 800
 	ColdStorage *int32 `json:"ColdStorage,omitempty" xml:"ColdStorage,omitempty"`
-	// The storage capacity of a single core node in the multi-zone instance. Unit: GB. The value of this parameter ranges from 400 to 64,000. **This parameter is required for multi-zone instances.**
+	// The storage capacity per core node for a multi-zone instance. Valid values: 400 to 64000. Unit: GB. **To create a multi-zone instance, this parameter is required.**
 	//
 	// example:
 	//
 	// 400
 	CoreSingleStorage *int32 `json:"CoreSingleStorage,omitempty" xml:"CoreSingleStorage,omitempty"`
-	// The node specification for an instance that uses local disks.
+	// The node specifications for local disk type of the instance.
 	//
-	// If the storage type is **local_ssd_pro**, valid values include the following: Note that I3-family specifications are available only for Subscription instances.
+	// When the local storage type is local_ssd_pro, valid values are as follows. I3 instance types currently support only subscription:
 	//
-	// - **lindorm.i4.xlarge**: 4 cores, 32 GB memory (I4).
+	// - **lindorm.i4.xlarge**: 4 cores, 32 GB (I4).
 	//
-	// - **lindorm.i4.2xlarge**: 8 cores, 64 GB memory (I4).
+	// - **lindorm.i4.2xlarge**: 8 cores, 64 GB (I4).
 	//
-	// - **lindorm.i4.4xlarge**: 16 cores, 128 GB memory (I4).
+	// - **lindorm.i4.4xlarge**: 16 cores, 128 GB (I4).
 	//
-	// - **lindorm.i4.8xlarge**: 32 cores, 256 GB memory (I4).
+	// - **lindorm.i4.8xlarge**: 32 cores, 256 GB (I4).
 	//
-	// - **lindorm.i3.xlarge**: 4 cores, 32 GB memory (I3).
+	// - **lindorm.i3.xlarge**: 4 cores, 32 GB (I3).
 	//
-	// - **lindorm.i3.2xlarge**: 8 cores, 64 GB memory (I3).
+	// - **lindorm.i3.2xlarge**: 8 cores, 64 GB (I3).
 	//
-	// - **lindorm.i3.4xlarge**: 16 cores, 128 GB memory (I3).
+	// - **lindorm.i3.4xlarge**: 16 cores, 128 GB (I3).
 	//
-	// - **lindorm.i3.8xlarge**: 32 cores, 256 GB memory (I3).
+	// - **lindorm.i3.8xlarge**: 32 cores, 256 GB (I3).
 	//
-	// - **lindorm.i2.xlarge**: 4 cores, 32 GB memory (I2).
+	// - **lindorm.i2.xlarge**: 4 cores, 32 GB (I2).
 	//
-	// - **lindorm.i2.2xlarge**: 8 cores, 64 GB memory (I2).
+	// - **lindorm.i2.2xlarge**: 8 cores, 64 GB (I2).
 	//
-	// - **lindorm.i2.4xlarge**: 16 cores, 128 GB memory (I2).
+	// - **lindorm.i2.4xlarge**: 16 cores, 128 GB (I2).
 	//
-	// - **lindorm.i2.8xlarge**: 32 cores, 256 GB memory (I2).
+	// - **lindorm.i2.8xlarge**: 32 cores, 256 GB (I2).
 	//
-	// If the storage type is **local_hdd_pro**, valid values include:
+	// When the local storage type is local_hdd_pro, valid values are as follows:
 	//
-	// - **lindorm.sd3c.3xlarge**: 14 cores, 56 GB memory (D3C PRO).
+	// - **lindorm.sd3c.3xlarge**: 14 cores, 56 GB (D3C PRO).
 	//
-	// - **lindorm.sd3c.7xlarge**: 28 cores, 112 GB memory (D3C PRO).
+	// - **lindorm.sd3c.7xlarge**: 28 cores, 112 GB (D3C PRO).
 	//
-	// - **lindorm.sd3c.14xlarge**: 56 cores, 224 GB memory (D3C PRO).
+	// - **lindorm.sd3c.14xlarge**: 56 cores, 224 GB (D3C PRO).
 	//
-	// - **lindorm.d2c.6xlarge**: 24 cores, 88 GB memory (D2C).
+	// - **lindorm.d2c.6xlarge**: 24 cores, 88 GB (D2C).
 	//
-	// - **lindorm.d2c.12xlarge**: 48 cores, 176 GB memory (D2C).
+	// - **lindorm.d2c.12xlarge**: 48 cores, 176 GB (D2C).
 	//
-	// - **lindorm.d2c.24xlarge**: 96 cores, 352 GB memory (D2C).
+	// - **lindorm.d2c.24xlarge**: 96 cores, 352 GB (D2C).
 	//
-	// - **lindorm.d2s.5xlarge**: 20 cores, 88 GB memory (D2S).
+	// - **lindorm.d2s.5xlarge**: 20 cores, 88 GB (D2S).
 	//
-	// - **lindorm.d2s.10xlarge**: 40 cores, 176 GB memory (D2S).
+	// - **lindorm.d2s.10xlarge**: 40 cores, 176 GB (D2S).
 	//
-	// - **lindorm.d1.2xlarge**: 8 cores, 32 GB memory (D1NE).
+	// - **lindorm.d1.2xlarge**: 8 cores, 32 GB (D1NE).
 	//
-	// - **lindorm.d1.4xlarge**: 16 cores, 64 GB memory (D1NE).
+	// - **lindorm.d1.4xlarge**: 16 cores, 64 GB (D1NE).
 	//
-	// - **lindorm.d1.6xlarge**: 24 cores, 96 GB memory (D1NE).
+	// - **lindorm.d1.6xlarge**: 24 cores, 96 GB (D1NE).
 	//
 	// example:
 	//
@@ -222,19 +222,19 @@ type CreateLindormInstanceRequest struct {
 	CoreSpec *string `json:"CoreSpec,omitempty" xml:"CoreSpec,omitempty"`
 	// The storage type of the instance. Valid values:
 	//
-	// - **cloud_efficiency**: Efficiency cloud disk.
+	// - **cloud_efficiency**: standard cloud storage.
 	//
-	// - **cloud_ssd**: Performance cloud disk.
+	// - **cloud_ssd**: performance cloud storage.
 	//
-	// - **cloud_essd**: Enhanced SSD (ESSD).
+	// - **cloud_essd**: enhanced performance cloud storage.
 	//
-	// - **cloud_essd_pl0**: ESSD PL0.
+	// - **cloud_essd_pl0**: performance cloud storage PL0.
 	//
-	// - **capacity_cloud_storage**: Capacity-optimized cloud storage. (Not available for multi-zone instances.)
+	// - **capacity_cloud_storage**: capacity cloud storage (not supported for multi-zone instances).
 	//
-	// - **local_ssd_pro**: Local SSD. (Not available for multi-zone instances.)
+	// - **local_ssd_pro**: local SSD (not supported for multi-zone instances).
 	//
-	// - **local_hdd_pro**: Local HDD. (Not available for multi-zone instances.)
+	// - **local_hdd_pro**: local HDD (not supported for multi-zone instances).
 	//
 	// This parameter is required.
 	//
@@ -242,31 +242,31 @@ type CreateLindormInstanceRequest struct {
 	//
 	// cloud_efficiency
 	DiskCategory *string `json:"DiskCategory,omitempty" xml:"DiskCategory,omitempty"`
-	// The subscription duration for the instance. Valid values:
+	// The subscription duration of the instance. Valid values:
 	//
-	// - If **PricingCycle*	- is set to **Month**, the value can range from **1*	- to **9**.
+	// - If PricingCycle is set to **Month**, valid values are **1*	- to **9**.
 	//
-	// - If **PricingCycle*	- is set to **Year**, the value can range from **1*	- to **3**.
+	// - If PricingCycle is set to **Year**, valid values are **1*	- to **3**.
 	//
-	// > This parameter is required if you set **PayType*	- to **PREPAY**.
+	// > This parameter is available and required when PayType is set to **PREPAY**.
 	//
 	// example:
 	//
 	// 1
 	Duration *string `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	// The number of nodes in the file engine. Valid values:
+	// The number of file engine nodes of the instance. Valid values:
 	//
-	// - For a Subscription instance, the value of this parameter ranges from **0*	- to **60**.
+	// - If the billing method of the instance is **PREPAY**, valid values are **0*	- to **60**.
 	//
-	// - For a Pay-As-You-Go instance, the value of this parameter ranges from **0*	- to **8**.
+	// - If the billing method of the instance is **POSTPAY**, valid values are **0*	- to **8**.
 	//
 	// example:
 	//
 	// 2
 	FilestoreNum *int32 `json:"FilestoreNum,omitempty" xml:"FilestoreNum,omitempty"`
-	// The specification of the file engine nodes. Valid values:
+	// The file engine node specifications of the instance. Valid values:
 	//
-	// - **lindorm.c.xlarge**: 4 cores, 8 GB memory (standard).
+	// - **lindorm.c.xlarge**: 4 cores, 8 GB (standard).
 	//
 	// example:
 	//
@@ -278,107 +278,107 @@ type CreateLindormInstanceRequest struct {
 	//
 	// lindorm_test
 	InstanceAlias *string `json:"InstanceAlias,omitempty" xml:"InstanceAlias,omitempty"`
-	// The storage capacity of the instance, in GB.
+	// The storage capacity of the instance. Unit: GB.
 	//
 	// example:
 	//
 	// 480
 	InstanceStorage *string `json:"InstanceStorage,omitempty" xml:"InstanceStorage,omitempty"`
-	// The number of nodes in the wide table engine.
+	// The number of LindormTable engine nodes of the instance.
 	//
-	// For a single-zone instance, the value of this parameter ranges from **0*	- to **90**.
+	// To create a single-zone instance, valid values are **0*	- to **90**.
 	//
-	// **This parameter is required for multi-zone instances.*	- For an instance that uses cloud disks, the value ranges from **4*	- to **400**. For an instance that uses local disks, the value ranges from **6*	- to **400**.
+	// **To create a multi-zone instance, this parameter is required.*	- For instances with non-local disk storage types, valid values are **4*	- to **400**. For instances with local disk storage types, valid values are **6*	- to **400**.
 	//
 	// example:
 	//
 	// 2
 	LindormNum *int32 `json:"LindormNum,omitempty" xml:"LindormNum,omitempty"`
-	// The specification of the wide table engine nodes. Valid values:
+	// The LindormTable engine node specifications of the instance. Valid values:
 	//
-	// - **lindorm.g.xlarge**: 4 cores, 16 GB memory (dedicated).
+	// - **lindorm.g.xlarge**: 4 cores, 16 GB (dedicated).
 	//
-	// - **lindorm.c.2xlarge**: 8 cores, 16 GB memory (dedicated).
+	// - **lindorm.c.2xlarge**: 8 cores, 16 GB (dedicated).
 	//
-	// - **lindorm.g.2xlarge**: 8 cores, 32 GB memory (dedicated).
+	// - **lindorm.g.2xlarge**: 8 cores, 32 GB (dedicated).
 	//
-	// - **lindorm.c.4xlarge**: 16 cores, 32 GB memory (dedicated).
+	// - **lindorm.c.4xlarge**: 16 cores, 32 GB (dedicated).
 	//
-	// - **lindorm.g.4xlarge**: 16 cores, 64 GB memory (dedicated).
+	// - **lindorm.g.4xlarge**: 16 cores, 64 GB (dedicated).
 	//
-	// - **lindorm.c.8xlarge**: 32 cores, 64 GB memory (dedicated).
+	// - **lindorm.c.8xlarge**: 32 cores, 64 GB (dedicated).
 	//
-	// - **lindorm.g.8xlarge**: 32 cores, 128 GB memory (dedicated).
+	// - **lindorm.g.8xlarge**: 32 cores, 128 GB (dedicated).
 	//
 	// example:
 	//
-	// lindorm.c.xlarge
+	// lindorm.g.4xlarge
 	LindormSpec *string `json:"LindormSpec,omitempty" xml:"LindormSpec,omitempty"`
-	// The storage type of the log nodes for the multi-zone instance. Valid values:
+	// The disk type of log nodes for a multi-zone instance. Valid values:
 	//
-	// - **cloud_efficiency**: Efficiency cloud disk.
+	// - **cloud_efficiency**: standard cloud storage.
 	//
-	// - **cloud_ssd**: Performance cloud disk.
+	// - **cloud_ssd**: performance cloud storage.
 	//
-	// **This parameter is required for multi-zone instances.**
+	// **To create a multi-zone instance, this parameter is required.**
 	//
 	// example:
 	//
 	// cloud_ssd
 	LogDiskCategory *string `json:"LogDiskCategory,omitempty" xml:"LogDiskCategory,omitempty"`
-	// The number of log nodes for the multi-zone instance. The value of this parameter ranges from 4 to 400. **This parameter is required for multi-zone instances.**
+	// The number of log nodes for a multi-zone instance. Valid values: 4 to 400. **To create a multi-zone instance, this parameter is required.**
 	//
 	// example:
 	//
 	// 4
 	LogNum *int32 `json:"LogNum,omitempty" xml:"LogNum,omitempty"`
-	// The storage capacity of a single log node in the multi-zone instance. Unit: GB. The value of this parameter ranges from 400 to 64,000. **This parameter is required for multi-zone instances.**
+	// The storage capacity per log node for a multi-zone instance. Valid values: 400 to 64000. Unit: GB. **To create a multi-zone instance, this parameter is required.**
 	//
 	// example:
 	//
 	// 400
 	LogSingleStorage *int32 `json:"LogSingleStorage,omitempty" xml:"LogSingleStorage,omitempty"`
-	// The specification of the log nodes for the multi-zone instance. Valid values:
+	// The log node specifications for a multi-zone instance. Valid values:
 	//
-	// - **lindorm.sn1.large**: 4 cores, 8 GB memory (dedicated).
+	// - **lindorm.sn1.large**: 4 cores, 8 GB (dedicated).
 	//
-	// - **lindorm.sn1.2xlarge**: 8 cores, 16 GB memory (dedicated).
+	// - **lindorm.sn1.2xlarge**: 8 cores, 16 GB (dedicated).
 	//
-	// **This parameter is required for multi-zone instances.**
+	// **To create a multi-zone instance, this parameter is required and active.**
 	//
 	// example:
 	//
 	// lindorm.sn1.large
 	LogSpec *string `json:"LogSpec,omitempty" xml:"LogSpec,omitempty"`
-	// The number of nodes in the LTS engine. The value of this parameter ranges from **0*	- to **60**.
+	// The number of LTS engine nodes of the instance. Valid values: **0*	- to **60**.
 	//
 	// example:
 	//
 	// 2
 	LtsNum *string `json:"LtsNum,omitempty" xml:"LtsNum,omitempty"`
-	// The specification of the LTS engine nodes. Valid values:
+	// The LTS engine node specifications of the instance. Valid values:
 	//
-	// - **lindorm.c.xlarge**: 4 cores, 8 GB memory (dedicated).
+	// - **lindorm.c.xlarge**: 4 cores, 8 GB (dedicated).
 	//
-	// - **lindorm.g.xlarge**: 4 cores, 16 GB memory (dedicated).
+	// - **lindorm.g.xlarge**: 4 cores, 16 GB (dedicated).
 	//
-	// - **lindorm.c.2xlarge**: 8 cores, 16 GB memory (dedicated).
+	// - **lindorm.c.2xlarge**: 8 cores, 16 GB (dedicated).
 	//
-	// - **lindorm.g.2xlarge**: 8 cores, 32 GB memory (dedicated).
+	// - **lindorm.g.2xlarge**: 8 cores, 32 GB (dedicated).
 	//
-	// - **lindorm.c.4xlarge**: 16 cores, 32 GB memory (dedicated).
+	// - **lindorm.c.4xlarge**: 16 cores, 32 GB (dedicated).
 	//
-	// - **lindorm.g.4xlarge**: 16 cores, 64 GB memory (dedicated).
+	// - **lindorm.g.4xlarge**: 16 cores, 64 GB (dedicated).
 	//
-	// - **lindorm.c.8xlarge**: 32 cores, 64 GB memory (dedicated).
+	// - **lindorm.c.8xlarge**: 32 cores, 64 GB (dedicated).
 	//
-	// - **lindorm.g.8xlarge**: 32 cores, 128 GB memory (dedicated).
+	// - **lindorm.g.8xlarge**: 32 cores, 128 GB (dedicated).
 	//
 	// example:
 	//
 	// lindorm.g.xlarge
 	LtsSpec *string `json:"LtsSpec,omitempty" xml:"LtsSpec,omitempty"`
-	// The combination of zones for the multi-zone instance. For a list of supported combinations, refer to the instance purchase page.
+	// The multi-zone combination. You can check the supported zone combinations on the buy page.
 	//
 	// - **ap-southeast-5abc-aliyun**: Indonesia (Jakarta) A+B+C.
 	//
@@ -402,7 +402,7 @@ type CreateLindormInstanceRequest struct {
 	//
 	// - **cn-shenzhen-abc-aliyun**: China (Shenzhen) A+B+C.
 	//
-	// **This parameter is required for multi-zone instances.**
+	// **To create a multi-zone instance, this parameter is required.**
 	//
 	// example:
 	//
@@ -412,9 +412,9 @@ type CreateLindormInstanceRequest struct {
 	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The billing method of the instance. Valid values:
 	//
-	// - **PREPAY**: Subscription.
+	// - **PREPAY**: subscription.
 	//
-	// - **POSTPAY**: Pay-As-You-Go.
+	// - **POSTPAY**: pay-as-you-go.
 	//
 	// This parameter is required.
 	//
@@ -422,31 +422,31 @@ type CreateLindormInstanceRequest struct {
 	//
 	// POSTPAY
 	PayType *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
-	// The billing cycle for the Subscription instance. Valid values:
+	// The billing cycle of the instance. Valid values:
 	//
-	// - **Month**
+	// - **Month**: monthly billing.
 	//
-	// - **Year**
+	// - **Year**: yearly billing.
 	//
-	// > This parameter is required if you set **PayType*	- to **PREPAY**.
+	// > This parameter is available and required when PayType is set to **PREPAY**.
 	//
 	// example:
 	//
 	// Month
 	PricingCycle *string `json:"PricingCycle,omitempty" xml:"PricingCycle,omitempty"`
-	// The ID of the VSwitch for the primary zone of the multi-zone instance. The VSwitch must be in the zone specified by `PrimaryZoneId`. **This parameter is required for multi-zone instances.**
+	// The vSwitch ID of the primary zone for a multi-zone instance. The vSwitch must be in the zone specified by PrimaryZoneId. **To create a multi-zone instance, this parameter is required.**
 	//
 	// example:
 	//
 	// vsw-uf6fdqa7c0pipnqzq****
 	PrimaryVSwitchId *string `json:"PrimaryVSwitchId,omitempty" xml:"PrimaryVSwitchId,omitempty"`
-	// The ID of the primary zone for the multi-zone instance. **This parameter is required for multi-zone instances.**
+	// The zone ID of the primary zone for a multi-zone instance. **To create a multi-zone instance, this parameter is required.**
 	//
 	// example:
 	//
 	// cn-shanghai-e
 	PrimaryZoneId *string `json:"PrimaryZoneId,omitempty" xml:"PrimaryZoneId,omitempty"`
-	// The ID of the region in which to create the instance. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/426062.html) operation to query the latest region list.
+	// The region ID of the instance. You can call [DescribeRegions](https://help.aliyun.com/document_detail/426062.html) to query available regions. Use this parameter to specify the region in which to create the instance.
 	//
 	// This parameter is required.
 	//
@@ -454,7 +454,7 @@ type CreateLindormInstanceRequest struct {
 	//
 	// cn-shanghai
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the resource group.
+	// The resource group ID.
 	//
 	// example:
 	//
@@ -463,97 +463,97 @@ type CreateLindormInstanceRequest struct {
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	SecurityToken        *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
-	// The number of search engine nodes. The value of this parameter ranges from **0*	- to **60**.
+	// The number of search index engine nodes of the instance. Valid values: **0*	- to **60**.
 	//
 	// example:
 	//
 	// 2
 	SolrNum *int32 `json:"SolrNum,omitempty" xml:"SolrNum,omitempty"`
-	// The specification of the search engine nodes. Valid values:
+	// The search index engine node specifications of the instance. Valid values:
 	//
-	// - **lindorm.g.xlarge**: 4 cores, 16 GB memory (dedicated).
+	// - **lindorm.g.xlarge**: 4 cores, 16 GB (dedicated).
 	//
-	// - **lindorm.c.2xlarge**: 8 cores, 16 GB memory (dedicated).
+	// - **lindorm.c.2xlarge**: 8 cores, 16 GB (dedicated).
 	//
-	// - **lindorm.g.2xlarge**: 8 cores, 32 GB memory (dedicated).
+	// - **lindorm.g.2xlarge**: 8 cores, 32 GB (dedicated).
 	//
-	// - **lindorm.c.4xlarge**: 16 cores, 32 GB memory (dedicated).
+	// - **lindorm.c.4xlarge**: 16 cores, 32 GB (dedicated).
 	//
-	// - **lindorm.g.4xlarge**: 16 cores, 64 GB memory (dedicated).
+	// - **lindorm.g.4xlarge**: 16 cores, 64 GB (dedicated).
 	//
-	// - **lindorm.c.8xlarge**: 32 cores, 64 GB memory (dedicated).
+	// - **lindorm.c.8xlarge**: 32 cores, 64 GB (dedicated).
 	//
-	// - **lindorm.g.8xlarge**: 32 cores, 128 GB memory (dedicated).
+	// - **lindorm.g.8xlarge**: 32 cores, 128 GB (dedicated).
 	//
 	// example:
 	//
 	// lindorm.g.xlarge
 	SolrSpec *string `json:"SolrSpec,omitempty" xml:"SolrSpec,omitempty"`
-	// The ID of the VSwitch for the standby zone of the multi-zone instance. The VSwitch must be in the zone specified by `StandbyZoneId`. **This parameter is required for multi-zone instances.**
+	// The vSwitch ID of the secondary zone for a multi-zone instance. The vSwitch must be in the zone specified by StandbyZoneId. **To create a multi-zone instance, this parameter is required.**
 	//
 	// example:
 	//
 	// vsw-2zec0kcn08cgdtr6****
 	StandbyVSwitchId *string `json:"StandbyVSwitchId,omitempty" xml:"StandbyVSwitchId,omitempty"`
-	// The ID of the standby zone for the multi-zone instance. **This parameter is required for multi-zone instances.**
+	// The zone ID of the secondary zone for a multi-zone instance. **To create a multi-zone instance, this parameter is required.**
 	//
 	// example:
 	//
 	// cn-shanghai-f
 	StandbyZoneId *string `json:"StandbyZoneId,omitempty" xml:"StandbyZoneId,omitempty"`
-	// The number of nodes in the stream engine. The value of this parameter ranges from **0*	- to **60**.
+	// The number of stream engine nodes of the instance. Valid values: **0*	- to **60**.
 	//
 	// example:
 	//
 	// 2
 	StreamNum *int32 `json:"StreamNum,omitempty" xml:"StreamNum,omitempty"`
-	// The specification of the stream engine nodes. Valid values:
+	// The stream engine node specifications of the instance. Valid values:
 	//
-	// - **lindorm.g.xlarge**: 4 cores, 16 GB memory (dedicated).
+	// - **lindorm.g.xlarge**: 4 cores, 16 GB (dedicated).
 	//
-	// - **lindorm.c.2xlarge**: 8 cores, 16 GB memory (dedicated).
+	// - **lindorm.c.2xlarge**: 8 cores, 16 GB (dedicated).
 	//
-	// - **lindorm.g.2xlarge**: 8 cores, 32 GB memory (dedicated).
+	// - **lindorm.g.2xlarge**: 8 cores, 32 GB (dedicated).
 	//
-	// - **lindorm.c.4xlarge**: 16 cores, 32 GB memory (dedicated).
+	// - **lindorm.c.4xlarge**: 16 cores, 32 GB (dedicated).
 	//
-	// - **lindorm.g.4xlarge**: 16 cores, 64 GB memory (dedicated).
+	// - **lindorm.g.4xlarge**: 16 cores, 64 GB (dedicated).
 	//
-	// - **lindorm.c.8xlarge**: 32 cores, 64 GB memory (dedicated).
+	// - **lindorm.c.8xlarge**: 32 cores, 64 GB (dedicated).
 	//
-	// - **lindorm.g.8xlarge**: 32 cores, 128 GB memory (dedicated).
+	// - **lindorm.g.8xlarge**: 32 cores, 128 GB (dedicated).
 	//
 	// example:
 	//
 	// lindorm.g.xlarge
 	StreamSpec *string `json:"StreamSpec,omitempty" xml:"StreamSpec,omitempty"`
-	// The tags to add to the instance. You can add up to 20 tags.
+	// The list of tags.
 	Tag []*CreateLindormInstanceRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
-	// The number of nodes in the time series engine. Valid values:
+	// The number of LindormTSDB engine nodes of the instance. Valid values:
 	//
-	// - For a Subscription instance, the value of this parameter ranges from **0*	- to **24**.
+	// - If the billing method of the instance is **PREPAY**, valid values are **0*	- to **24**.
 	//
-	// - For a Pay-As-You-Go instance, the value of this parameter ranges from **0*	- to **32**.
+	// - If the billing method of the instance is **POSTPAY**, valid values are **0*	- to **32**.
 	//
 	// example:
 	//
 	// 2
 	TsdbNum *int32 `json:"TsdbNum,omitempty" xml:"TsdbNum,omitempty"`
-	// The specification of the time series engine nodes. Valid values:
+	// The LindormTSDB engine node specifications of the instance. Valid values:
 	//
-	// - **lindorm.g.xlarge**: 4 cores, 16 GB memory (dedicated).
+	// - **lindorm.g.xlarge**: 4 cores, 16 GB (dedicated).
 	//
-	// - **lindorm.g.2xlarge**: 8 cores, 32 GB memory (dedicated).
+	// - **lindorm.g.2xlarge**: 8 cores, 32 GB (dedicated).
 	//
-	// - **lindorm.g.4xlarge**: 16 cores, 64 GB memory (dedicated).
+	// - **lindorm.g.4xlarge**: 16 cores, 64 GB (dedicated).
 	//
-	// - **lindorm.g.8xlarge**: 32 cores, 128 GB memory (dedicated).
+	// - **lindorm.g.8xlarge**: 32 cores, 128 GB (dedicated).
 	//
 	// example:
 	//
 	// lindorm.g.xlarge
 	TsdbSpec *string `json:"TsdbSpec,omitempty" xml:"TsdbSpec,omitempty"`
-	// The ID of the VPC where you want to create the instance.
+	// The VPC ID of the instance.
 	//
 	// This parameter is required.
 	//
@@ -561,7 +561,7 @@ type CreateLindormInstanceRequest struct {
 	//
 	// vpc-bp1nme44gek34slfc****
 	VPCId *string `json:"VPCId,omitempty" xml:"VPCId,omitempty"`
-	// The ID of the VSwitch.
+	// The vSwitch ID.
 	//
 	// This parameter is required.
 	//
@@ -569,7 +569,7 @@ type CreateLindormInstanceRequest struct {
 	//
 	// vsw-bp1e7clcw529l773d****
 	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	// The ID of the zone where you want to create the instance.
+	// The zone ID of the instance.
 	//
 	// This parameter is required.
 	//
@@ -1015,17 +1015,17 @@ func (s *CreateLindormInstanceRequest) Validate() error {
 }
 
 type CreateLindormInstanceRequestTag struct {
-	// The key of a tag.
+	// The tag key. Valid values of N: 1 to 20.
 	//
-	// > You can specify the keys of multiple tags. For example, `Tag.1.Key` specifies the key of the first tag and `Tag.2.Key` specifies the key of the second tag.
+	// > You can specify multiple tag keys. For example, the Key in the first pair specifies the first tag key, and the Key in the second pair specifies the second tag key.
 	//
 	// example:
 	//
 	// test
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The value of a tag.
+	// The tag value. Valid values of N: 1 to 20.
 	//
-	// > You can specify the values of multiple tags. For example, `Tag.1.Value` specifies the value of the first tag and `Tag.2.Value` specifies the value of the second tag.
+	// > You can specify multiple tag values. For example, the Value in the first pair specifies the first tag value, and the Value in the second pair specifies the second tag value.
 	//
 	// example:
 	//

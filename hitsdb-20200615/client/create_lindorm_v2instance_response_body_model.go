@@ -20,7 +20,7 @@ type iCreateLindormV2InstanceResponseBody interface {
 }
 
 type CreateLindormV2InstanceResponseBody struct {
-	// The detailed reason why the access was denied.
+	// The detailed reasons for access denial.
 	//
 	// example:
 	//

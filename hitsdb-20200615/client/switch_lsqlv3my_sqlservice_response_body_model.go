@@ -16,13 +16,13 @@ type iSwitchLSQLV3MySQLServiceResponseBody interface {
 }
 
 type SwitchLSQLV3MySQLServiceResponseBody struct {
-	// The details about the access denial.
+	// The detailed reason why access was denied.
 	//
 	// example:
 	//
 	// {"AuthAction":"xxx","AuthPrincipalDisplayName":"222","AuthPrincipalOwnerId":"111","AuthPrincipalType":"SubUser",,"NoPermissionType":"ImplicitDeny","PolicyType":"AccountLevelIdentityBasedPolicy","EncodedDiagnosticMessage":"xxxxxx"}
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//

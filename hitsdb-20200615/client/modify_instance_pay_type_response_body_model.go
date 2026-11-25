@@ -20,7 +20,7 @@ type iModifyInstancePayTypeResponseBody interface {
 }
 
 type ModifyInstancePayTypeResponseBody struct {
-	// The detailed reason why the access is denied.
+	// The details of the access denial.
 	//
 	// example:
 	//

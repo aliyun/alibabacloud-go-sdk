@@ -26,7 +26,7 @@ type iGetLindormInstanceEngineListRequest interface {
 }
 
 type GetLindormInstanceEngineListRequest struct {
-	// The ID of the instance. To obtain the instance ID, call the [GetLindormInstanceList](https://help.aliyun.com/document_detail/426069.html) operation.
+	// The instance ID. You can call the [GetLindormInstanceList](https://help.aliyun.com/document_detail/426069.html) operation to obtain the instance ID.
 	//
 	// This parameter is required.
 	//

@@ -40,31 +40,31 @@ type iGetLindormInstanceListRequest interface {
 type GetLindormInstanceListRequest struct {
 	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
 	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The page number to return.
+	// The page number.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries to return on each page for a paged query.
+	// The number of entries to return per page for paging in a paged query.
 	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// A keyword for a fuzzy search on instance names.
+	// The keyword used to perform a fuzzy search by instance name.
 	//
 	// example:
 	//
 	// test
 	QueryStr *string `json:"QueryStr,omitempty" xml:"QueryStr,omitempty"`
-	// The ID of the region where the instance is located. Call [DescribeRegions](https://help.aliyun.com/document_detail/426062.html) to obtain the region ID.
+	// The region ID of the instance. You can call the [DescribeRegions](https://help.aliyun.com/document_detail/426062.html) operation to query the region ID.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the resource group.
+	// The resource group ID.
 	//
 	// example:
 	//
@@ -73,39 +73,39 @@ type GetLindormInstanceListRequest struct {
 	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
 	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
 	SecurityToken        *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
-	// The type of the instance. Valid values:
+	// The instance type. Valid values:
 	//
-	// - **lindorm**: a single-zone Lindorm instance.
+	// - **lindorm**: Lindorm single-zone instance
 	//
-	// - **lindorm_multizone**: a multi-zone Lindorm instance.
+	// - **lindorm_multizone**: Lindorm multi-zone instance
 	//
-	// - **serverless_lindorm**: a Lindorm Serverless instance.
+	// - **serverless_lindorm**: Lindorm Serverless instance
 	//
-	// - **lindorm_standalone**: a Lindorm standalone instance.
+	// - **lindorm_standalone**: Lindorm single-node instance
 	//
-	// - **lts**: the Lindorm Tunnel Service (LTS) type.
+	// - **lts**: Lindorm Tunnel Service
 	//
 	// example:
 	//
 	// lindorm
 	ServiceType *string `json:"ServiceType,omitempty" xml:"ServiceType,omitempty"`
-	// The type of the engine supported by the instance that you want to query. Valid values:
+	// The data engine types supported by the instance. Valid values:
 	//
-	// - **1**: search engine.
+	// - **1**: Search engine
 	//
-	// - **2**: LindormTSDB.
+	// - **2**: LindormTSDB
 	//
-	// - **4**: LindormTable.
+	// - **4**: LindormTable
 	//
-	// - **8**: file engine.
+	// - **8**: File engine
 	//
-	// > For example, a value of 15 (8 + 4 + 2 + 1) indicates that the instance supports the file engine, LindormTable, LindormTSDB, and the search engine. A value of 6 (4 + 2) indicates that the instance supports LindormTSDB and LindormTable.
+	// > For example, if the value is 15 (15 = 8 + 4 + 2 + 1), the instance supports the search engine, LindormTSDB, LindormTable, and file engine. If the value is 6 (6 = 4 + 2), the instance supports LindormTSDB and LindormTable.
 	//
 	// example:
 	//
-	// 15
+	// 6
 	SupportEngine *int32 `json:"SupportEngine,omitempty" xml:"SupportEngine,omitempty"`
-	// A list of tags. You can specify up to 20 tags.
+	// The list of tags.
 	Tag []*GetLindormInstanceListRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 
@@ -248,17 +248,17 @@ func (s *GetLindormInstanceListRequest) Validate() error {
 }
 
 type GetLindormInstanceListRequestTag struct {
-	// The key of the tag.
+	// The tag key. Valid values of N: 1 to 20.
 	//
-	// > You can pass in keys for multiple tags. For example, the Key in the first pair represents the key for the first tag. The Key in the second pair represents the key for the second tag.
+	// > You can specify multiple tag keys. For example, the first Key specifies the first tag key, and the second Key specifies the second tag key.
 	//
 	// example:
 	//
 	// test
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The value of the tag.
+	// The tag value. Valid values of N: 1 to 20.
 	//
-	// > You can provide values for multiple tags. For example, the Value in the first pair is the value for the first tag. The Value in the second pair is the value for the second tag.
+	// > You can specify multiple tag values. For example, the first Value specifies the first tag value, and the second Value specifies the second tag value.
 	//
 	// example:
 	//

@@ -20,7 +20,7 @@ type iListTagResourcesResponseBody interface {
 type ListTagResourcesResponseBody struct {
 	// The token that is used to start the next query.
 	//
-	// > If not all results are returned in a query, the response includes this parameter. You can use the value of this parameter to start the next query.
+	// > This parameter is returned if a query does not return all results. You can pass the value of this parameter in a subsequent query to continue the query.
 	//
 	// example:
 	//
@@ -91,19 +91,19 @@ type ListTagResourcesResponseBodyTagResources struct {
 	//
 	// ld-bp17j28j2y7pm****
 	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
-	// The resource type. The value is fixed to **ALIYUN::HITSDB::INSTANCE**.
+	// The resource type. The value is fixed as **ALIYUN::HITSDB::INSTANCE**.
 	//
 	// example:
 	//
 	// ALIYUN::HITSDB::INSTANCE
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// The key of the tag.
+	// The tag key.
 	//
 	// example:
 	//
 	// test
 	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
-	// The value of the tag.
+	// The tag value.
 	//
 	// example:
 	//

@@ -24,25 +24,25 @@ type iGetLindormInstanceListResponseBody interface {
 type GetLindormInstanceListResponseBody struct {
 	// The list of instances.
 	InstanceList []*GetLindormInstanceListResponseBodyInstanceList `json:"InstanceList,omitempty" xml:"InstanceList,omitempty" type:"Repeated"`
-	// The page number of the returned page.
+	// The page number.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries returned on the page.
+	// The number of entries returned per page.
 	//
 	// example:
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
 	// 1CA1FAFD-E8DC-51C2-AA7E-CA6E2D049BA0
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of instances found.
+	// The total number of instances returned.
 	//
 	// example:
 	//
@@ -117,25 +117,25 @@ func (s *GetLindormInstanceListResponseBody) Validate() error {
 }
 
 type GetLindormInstanceListResponseBodyInstanceList struct {
-	// The 16-digit ID of the Alibaba Cloud account.
+	// The 16-character AliUid of the Alibaba Cloud account.
 	//
 	// example:
 	//
 	// 164901546557****
 	AliUid *int64 `json:"AliUid,omitempty" xml:"AliUid,omitempty"`
-	// The reason why the instance failed to be created.
+	// The cause of the creation failure.
 	//
 	// example:
 	//
 	// Resource is not enough
 	CreateErrorCode *string `json:"CreateErrorCode,omitempty" xml:"CreateErrorCode,omitempty"`
-	// The timestamp of when the instance was created. The value is the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	// The number of milliseconds between the instance creation time and 00:00:00 on January 1, 1970.
 	//
 	// example:
 	//
 	// 1631772842000
 	CreateMilliseconds *int64 `json:"CreateMilliseconds,omitempty" xml:"CreateMilliseconds,omitempty"`
-	// The time when the instance was created.
+	// The creation time of the instance. The time is in the yyyy-MM-dd HH:mm:ss format.
 	//
 	// example:
 	//
@@ -161,7 +161,7 @@ type GetLindormInstanceListResponseBodyInstanceList struct {
 	//
 	// true
 	EnableCompute *bool `json:"EnableCompute,omitempty" xml:"EnableCompute,omitempty"`
-	// Indicates whether the LTS engine is enabled. Valid values:
+	// Indicates whether Lindorm Tunnel Service (LTS) is enabled. Valid values:
 	//
 	// - **true**: Enabled.
 	//
@@ -171,7 +171,7 @@ type GetLindormInstanceListResponseBodyInstanceList struct {
 	//
 	// true
 	EnableLts *bool `json:"EnableLts,omitempty" xml:"EnableLts,omitempty"`
-	// Indicates whether the messaging engine is enabled. Valid values:
+	// Indicates whether the message engine is enabled. Valid values:
 	//
 	// - **true**: Enabled.
 	//
@@ -181,21 +181,21 @@ type GetLindormInstanceListResponseBodyInstanceList struct {
 	//
 	// true
 	EnableMessage *bool `json:"EnableMessage,omitempty" xml:"EnableMessage,omitempty"`
-	// Indicates whether the LindormTable 3.0 engine is enabled. Valid values:
+	// Indicates whether LindormTable 3.0 is enabled. Valid values:
 	//
-	// true: Enabled.
+	// - **true**: Enabled.
 	//
-	// false: Not enabled.
+	// - **false**: Not enabled.
 	//
 	// example:
 	//
 	// true
 	EnableRow *bool `json:"EnableRow,omitempty" xml:"EnableRow,omitempty"`
-	// Indicates whether the stream engine is enabled for the instance. Valid values:
+	// Indicates whether the streaming engine is enabled for the instance. Valid values:
 	//
-	// - **true**: The stream engine is enabled.
+	// - **true**: The streaming engine is enabled.
 	//
-	// - **false**: The stream engine is not enabled.
+	// - **false**: The streaming engine is not enabled.
 	//
 	// example:
 	//
@@ -211,91 +211,91 @@ type GetLindormInstanceListResponseBodyInstanceList struct {
 	//
 	// true
 	EnableVector *bool `json:"EnableVector,omitempty" xml:"EnableVector,omitempty"`
-	// The types of engines supported by the instance. The value of this parameter is the sum of the values of the supported engines.
+	// The engine types supported by the instance. The return value is the sum of the following engine type values:
 	//
-	// - **1**: search engine.
+	// - **1**: Search engine
 	//
-	// - **2**: LindormTSDB.
+	// - **2**: LindormTSDB
 	//
-	// - **4**: LindormTable.
+	// - **4**: LindormTable
 	//
-	// - **8**: file engine.
+	// - **8**: File engine
 	//
-	// > For example, a value of 15 (8 + 4 + 2 + 1) indicates that the instance supports the file engine, LindormTable, LindormTSDB, and the search engine. A value of 6 (4 + 2) indicates that the instance supports LindormTSDB and LindormTable.
+	// > For example, if the value is 15 (15 = 8 + 4 + 2 + 1), the instance supports the search engine, LindormTSDB, LindormTable, and file engine. If the value is 6 (6 = 4 + 2), the instance supports LindormTSDB and LindormTable.
 	//
 	// example:
 	//
 	// 15
 	EngineType *string `json:"EngineType,omitempty" xml:"EngineType,omitempty"`
-	// The expiration time of the instance.
+	// The expiration time of the instance. The time is in the yyyy-MM-dd HH:mm:ss format.
 	//
-	// > This parameter is returned only for subscription instances.
+	// > This parameter is returned only when the billing method of the instance is subscription.
 	//
 	// example:
 	//
 	// 2022-04-26 00:00:00
 	ExpireTime *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
-	// The timestamp of when the instance expires. The value is the number of milliseconds that have elapsed since January 1, 1970, 00:00:00 UTC.
+	// The number of milliseconds between the time when the instance expires and 00:00:00 on January 1, 1970.
 	//
 	// example:
 	//
 	// 1650902400000
 	ExpiredMilliseconds *int64 `json:"ExpiredMilliseconds,omitempty" xml:"ExpiredMilliseconds,omitempty"`
-	// The name of the instance.
+	// The instance name.
 	//
 	// example:
 	//
 	// test
 	InstanceAlias *string `json:"InstanceAlias,omitempty" xml:"InstanceAlias,omitempty"`
-	// The ID of the instance.
+	// The instance ID.
 	//
 	// example:
 	//
 	// ld-bp17pwu1541ia****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The status of the instance. Valid values:
+	// The instance status. Valid values:
 	//
-	// - **CREATING**: The instance is being created.
+	// - **CREATING**: Creating.
 	//
-	// - **ACTIVATION**: The instance is running.
+	// - **ACTIVATION**: Running.
 	//
-	// - **COLD_EXPANDING**: The capacity of the storage-optimized instance is being expanded.
+	// - **COLD_EXPANDING**: Performing storage expansion for storage-optimized cloud storage.
 	//
-	// - **MINOR_VERSION_TRANSING**: The minor version of the instance is being upgraded.
+	// - **MINOR_VERSION_TRANSING**: Upgrading the minor version.
 	//
-	// - **RESIZING**: The instance is scaling up.
+	// - **RESIZING**: Scaling out nodes.
 	//
-	// - **SHRINKING**: The instance is scaling down.
+	// - **SHRINKING**: Scaling in nodes.
 	//
-	// - **CLASS_CHANGING**: The instance class is being changed.
+	// - **CLASS_CHANGING**: Upgrading or downgrading specifications.
 	//
-	// - **SSL_SWITCHING**: The SSL certificate is being changed.
+	// - **SSL_SWITCHING**: Modifying SSL configurations.
 	//
-	// - **CDC_OPENING**: The data subscription feature is being enabled.
+	// - **CDC_OPENING**: Enabling the data subscription feature.
 	//
-	// - **TRANSFER**: Data migration is in progress.
+	// - **TRANSFER**: Migrating data.
 	//
-	// - **DATABASE_TRANSFER**: Data is being migrated to the database.
+	// - **DATABASE_TRANSFER**: Migrating data to the database.
 	//
-	// - **GUARD_CREATING**: A disaster recovery instance is being created.
+	// - **GUARD_CREATING**: Creating a disaster recovery instance.
 	//
-	// - **BACKUP_RECOVERING**: A backup is being restored.
+	// - **BACKUP_RECOVERING**: Restoring from a backup.
 	//
-	// - **DATABASE_IMPORTING**: Data is being imported.
+	// - **DATABASE_IMPORTING**: Importing data.
 	//
-	// - **NET_MODIFYING**: The network settings are being modified.
+	// - **NET_MODIFYING**: Modifying network configurations.
 	//
-	// - **NET_SWITCHING**: The network type is being switched.
+	// - **NET_SWITCHING**: Switching between the internal network and the Internet.
 	//
-	// - **NET_CREATING**: A network connection is being created.
+	// - **NET_CREATING**: Creating a network connection.
 	//
-	// - **NET_DELETING**: A network connection is being deleted.
+	// - **NET_DELETING**: Performing a delete operation on the network connection.
 	//
-	// - **DELETING**: The instance is being deleted.
+	// - **DELETING**: Performing a delete operation.
 	//
-	// - **RESTARTING**: The instance is being restarted.
+	// - **RESTARTING**: Restarting.
 	//
-	// - **LOCKED**: The instance has expired and is locked.
+	// - **LOCKED**: Locked because the instance has expired.
 	//
 	// example:
 	//
@@ -315,35 +315,35 @@ type GetLindormInstanceListResponseBodyInstanceList struct {
 	NetworkType *string `json:"NetworkType,omitempty" xml:"NetworkType,omitempty"`
 	// The billing method of the instance. Valid values:
 	//
-	// - **PREPAY**: subscription.
+	// - **PREPAY**: Subscription
 	//
-	// - **POSTPAY**: pay-as-you-go.
+	// - **POSTPAY**: Pay-as-you-go
 	//
 	// example:
 	//
 	// PREPAY
 	PayType *string `json:"PayType,omitempty" xml:"PayType,omitempty"`
-	// The ID of the region.
+	// The region ID.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The ID of the resource group.
+	// The resource group ID.
 	//
 	// example:
 	//
 	// rg-aekzledqeat****
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The type of the instance. Valid values:
+	// The instance type. Valid values:
 	//
-	// - **lindorm**: a Lindorm instance.
+	// - **lindorm**: Lindorm instance
 	//
-	// - **serverless_lindorm**: a Lindorm Serverless instance.
+	// - **serverless_lindorm**: Lindorm Serverless instance
 	//
-	// - **lindorm_standalone**: a Lindorm standalone instance.
+	// - **lindorm_standalone**: Lindorm single-node instance
 	//
-	// - **lts**: the Lindorm Tunnel Service type.
+	// - **lts**: Lindorm Tunnel Service
 	//
 	// example:
 	//
@@ -351,13 +351,13 @@ type GetLindormInstanceListResponseBodyInstanceList struct {
 	ServiceType *string `json:"ServiceType,omitempty" xml:"ServiceType,omitempty"`
 	// The list of tags.
 	Tags []*GetLindormInstanceListResponseBodyInstanceListTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
-	// The ID of the virtual private cloud (VPC) in which the instance is deployed.
+	// The VPC ID of the instance.
 	//
 	// example:
 	//
 	// vpc-bp1n3i15v90el48nx****
 	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
-	// The ID of the zone.
+	// The zone ID.
 	//
 	// example:
 	//
@@ -621,13 +621,13 @@ func (s *GetLindormInstanceListResponseBodyInstanceList) Validate() error {
 }
 
 type GetLindormInstanceListResponseBodyInstanceListTags struct {
-	// The key of the tag.
+	// The tag key.
 	//
 	// example:
 	//
 	// test
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The value of the tag.
+	// The tag value.
 	//
 	// example:
 	//

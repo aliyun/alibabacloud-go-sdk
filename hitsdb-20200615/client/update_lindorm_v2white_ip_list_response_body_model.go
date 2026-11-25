@@ -16,7 +16,7 @@ type iUpdateLindormV2WhiteIpListResponseBody interface {
 }
 
 type UpdateLindormV2WhiteIpListResponseBody struct {
-	// Details about a failed permission check.
+	// The details of the failed permission check.
 	//
 	// example:
 	//

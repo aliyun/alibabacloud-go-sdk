@@ -24,7 +24,7 @@ type iDescribeRegionsRequest interface {
 }
 
 type DescribeRegionsRequest struct {
-	// The language to use for the region name (LocalName) in the response. Valid values:
+	// The display language of the region name (LocalName) in the response. Valid values:
 	//
 	// - **zh-CN**: Chinese. This is the default value.
 	//

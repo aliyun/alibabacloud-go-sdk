@@ -26,11 +26,13 @@ type iSwitchLSQLV3MySQLServiceRequest interface {
 }
 
 type SwitchLSQLV3MySQLServiceRequest struct {
-	// The type of the operation. Valid values:
+	// The operation type.
 	//
-	// - 1: Enable
+	// Valid values:
 	//
-	// - 0: Disable
+	// - 1: Enable.
+	//
+	// - 0: Disable.
 	//
 	// This parameter is required.
 	//
@@ -38,7 +40,7 @@ type SwitchLSQLV3MySQLServiceRequest struct {
 	//
 	// 1
 	ActionType *int32 `json:"ActionType,omitempty" xml:"ActionType,omitempty"`
-	// The ID of the instance.
+	// The instance ID.
 	//
 	// This parameter is required.
 	//

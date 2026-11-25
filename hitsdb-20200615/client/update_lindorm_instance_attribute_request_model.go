@@ -11,6 +11,8 @@ type iUpdateLindormInstanceAttributeRequest interface {
 	GoString() string
 	SetDeletionProtection(v bool) *UpdateLindormInstanceAttributeRequest
 	GetDeletionProtection() *bool
+	SetDispositionType(v string) *UpdateLindormInstanceAttributeRequest
+	GetDispositionType() *string
 	SetInstanceAlias(v string) *UpdateLindormInstanceAttributeRequest
 	GetInstanceAlias() *string
 	SetInstanceId(v string) *UpdateLindormInstanceAttributeRequest
@@ -19,6 +21,8 @@ type iUpdateLindormInstanceAttributeRequest interface {
 	GetOwnerAccount() *string
 	SetOwnerId(v int64) *UpdateLindormInstanceAttributeRequest
 	GetOwnerId() *int64
+	SetPlannedCompletionDate(v string) *UpdateLindormInstanceAttributeRequest
+	GetPlannedCompletionDate() *string
 	SetResourceOwnerAccount(v string) *UpdateLindormInstanceAttributeRequest
 	GetResourceOwnerAccount() *string
 	SetResourceOwnerId(v int64) *UpdateLindormInstanceAttributeRequest
@@ -38,25 +42,37 @@ type UpdateLindormInstanceAttributeRequest struct {
 	//
 	// true
 	DeletionProtection *bool `json:"DeletionProtection,omitempty" xml:"DeletionProtection,omitempty"`
-	// The name of the instance.
+	// The risk disposition type for a single zone.
+	//
+	// example:
+	//
+	// PLAN_MIGRATION
+	DispositionType *string `json:"DispositionType,omitempty" xml:"DispositionType,omitempty"`
+	// The instance name.
 	//
 	// example:
 	//
 	// lindorm-test
 	InstanceAlias *string `json:"InstanceAlias,omitempty" xml:"InstanceAlias,omitempty"`
-	// The ID of the instance.
+	// The instance ID.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ld-bp1z3506imz2f****
-	InstanceId           *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	OwnerAccount         *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
-	OwnerId              *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	ResourceOwnerAccount *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
-	ResourceOwnerId      *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	SecurityToken        *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
+	InstanceId   *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	OwnerAccount *string `json:"OwnerAccount,omitempty" xml:"OwnerAccount,omitempty"`
+	OwnerId      *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The planned completion date for risk disposition, in the yyyy-MM-dd format.
+	//
+	// example:
+	//
+	// 2026-10-01
+	PlannedCompletionDate *string `json:"PlannedCompletionDate,omitempty" xml:"PlannedCompletionDate,omitempty"`
+	ResourceOwnerAccount  *string `json:"ResourceOwnerAccount,omitempty" xml:"ResourceOwnerAccount,omitempty"`
+	ResourceOwnerId       *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
+	SecurityToken         *string `json:"SecurityToken,omitempty" xml:"SecurityToken,omitempty"`
 }
 
 func (s UpdateLindormInstanceAttributeRequest) String() string {
@@ -69,6 +85,10 @@ func (s UpdateLindormInstanceAttributeRequest) GoString() string {
 
 func (s *UpdateLindormInstanceAttributeRequest) GetDeletionProtection() *bool {
 	return s.DeletionProtection
+}
+
+func (s *UpdateLindormInstanceAttributeRequest) GetDispositionType() *string {
+	return s.DispositionType
 }
 
 func (s *UpdateLindormInstanceAttributeRequest) GetInstanceAlias() *string {
@@ -87,6 +107,10 @@ func (s *UpdateLindormInstanceAttributeRequest) GetOwnerId() *int64 {
 	return s.OwnerId
 }
 
+func (s *UpdateLindormInstanceAttributeRequest) GetPlannedCompletionDate() *string {
+	return s.PlannedCompletionDate
+}
+
 func (s *UpdateLindormInstanceAttributeRequest) GetResourceOwnerAccount() *string {
 	return s.ResourceOwnerAccount
 }
@@ -101,6 +125,11 @@ func (s *UpdateLindormInstanceAttributeRequest) GetSecurityToken() *string {
 
 func (s *UpdateLindormInstanceAttributeRequest) SetDeletionProtection(v bool) *UpdateLindormInstanceAttributeRequest {
 	s.DeletionProtection = &v
+	return s
+}
+
+func (s *UpdateLindormInstanceAttributeRequest) SetDispositionType(v string) *UpdateLindormInstanceAttributeRequest {
+	s.DispositionType = &v
 	return s
 }
 
@@ -121,6 +150,11 @@ func (s *UpdateLindormInstanceAttributeRequest) SetOwnerAccount(v string) *Updat
 
 func (s *UpdateLindormInstanceAttributeRequest) SetOwnerId(v int64) *UpdateLindormInstanceAttributeRequest {
 	s.OwnerId = &v
+	return s
+}
+
+func (s *UpdateLindormInstanceAttributeRequest) SetPlannedCompletionDate(v string) *UpdateLindormInstanceAttributeRequest {
+	s.PlannedCompletionDate = &v
 	return s
 }
 

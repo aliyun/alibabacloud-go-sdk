@@ -20,19 +20,19 @@ type iRenewLindormInstanceResponseBody interface {
 }
 
 type RenewLindormInstanceResponseBody struct {
-	// The details about the access denial.
+	// The details of the access denial.
 	//
 	// example:
 	//
 	// {"AuthAction":"xxx","AuthPrincipalDisplayName":"222","AuthPrincipalOwnerId":"111","AuthPrincipalType":"SubUser",,"NoPermissionType":"ImplicitDeny","PolicyType":"AccountLevelIdentityBasedPolicy","EncodedDiagnosticMessage":"xxxxxx"}
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	// The ID of the instance.
+	// The instance ID. This field may not be returned in a partially successful response.
 	//
 	// example:
 	//
 	// ld-bp1z3506imz2f****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The ID of the order. You can find the order ID in the Order Management section of Expenses and Costs.
+	// The ID of the order. You can obtain the order ID in the Orders section of the Expenses and Costs console.
 	//
 	// example:
 	//

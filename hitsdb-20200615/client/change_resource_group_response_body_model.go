@@ -16,7 +16,7 @@ type iChangeResourceGroupResponseBody interface {
 }
 
 type ChangeResourceGroupResponseBody struct {
-	// The details about the access denial.
+	// The detailed reason for the access denial.
 	//
 	// example:
 	//
