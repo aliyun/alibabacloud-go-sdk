@@ -3831,7 +3831,7 @@ func (client *Client) ResetLangfuseUserPasswordWithContext(ctx context.Context, 
 
 // Summary:
 //
-// Restarts an ApsaraDB for ClickHouse cluster.
+// Restarts an ApsaraDB for ClickHouse Enterprise Edition cluster.
 //
 // @param request - RestartDBInstanceRequest
 //
@@ -3846,8 +3846,16 @@ func (client *Client) RestartDBInstanceWithContext(ctx context.Context, request 
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.ComputingGroupId) {
+		query["ComputingGroupId"] = request.ComputingGroupId
+	}
+
 	if !dara.IsNil(request.DBInstanceId) {
 		query["DBInstanceId"] = request.DBInstanceId
+	}
+
+	if !dara.IsNil(request.NodeList) {
+		query["NodeList"] = request.NodeList
 	}
 
 	if !dara.IsNil(request.RegionId) {

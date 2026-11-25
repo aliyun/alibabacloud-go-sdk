@@ -66,13 +66,13 @@ type RestartDBInstanceResponseBodyData struct {
 	//
 	// example:
 	//
-	// cc-bp100p4q1g9z3****
+	// 100001
 	DBInstanceID *int64 `json:"DBInstanceID,omitempty" xml:"DBInstanceID,omitempty"`
 	// The cluster name.
 	//
 	// example:
 	//
-	// Enterprise edition cluster test
+	// Enterprise Edition cluster test
 	DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
 	// The task ID.
 	//
