@@ -18,7 +18,7 @@ type iListApprovalProcessesResponseBody interface {
 }
 
 type ListApprovalProcessesResponseBody struct {
-	// The list of approval processes.
+	// The approval processes.
 	Processes []*ListApprovalProcessesResponseBodyProcesses `json:"Processes,omitempty" xml:"Processes,omitempty" type:"Repeated"`
 	// The ID of the request.
 	//
@@ -83,9 +83,14 @@ func (s *ListApprovalProcessesResponseBody) Validate() error {
 }
 
 type ListApprovalProcessesResponseBodyProcesses struct {
-	// The list of policies associated with endpoint uninstallation.
+	// The policies associated with endpoint uninstallation.
 	AppUninstallPolicies *ListApprovalProcessesResponseBodyProcessesAppUninstallPolicies `json:"AppUninstallPolicies,omitempty" xml:"AppUninstallPolicies,omitempty" type:"Struct"`
-	ApprovalType         *int32                                                          `json:"ApprovalType,omitempty" xml:"ApprovalType,omitempty"`
+	// The type of the approval process. Valid values: 0 (built-in approval), 1 (DingTalk approval), 2 (WeCom approval), and 3 (Lark approval).
+	//
+	// example:
+	//
+	// 0
+	ApprovalType *int32 `json:"ApprovalType,omitempty" xml:"ApprovalType,omitempty"`
 	// The time when the approval process was created. The time is in the YYYY-MM-DD HH:mm:ss format.
 	//
 	// example:
@@ -96,19 +101,21 @@ type ListApprovalProcessesResponseBodyProcesses struct {
 	//
 	// example:
 	//
-	// This is an approval process
+	// Approval process for file sending scenarios
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The list of policies associated with device registration.
+	// The policies associated with device registration.
 	DeviceRegistrationPolicies *ListApprovalProcessesResponseBodyProcessesDeviceRegistrationPolicies `json:"DeviceRegistrationPolicies,omitempty" xml:"DeviceRegistrationPolicies,omitempty" type:"Struct"`
-	// The list of policies associated with file sending.
+	// The policies associated with file sending.
 	DlpSendPolicies *ListApprovalProcessesResponseBodyProcessesDlpSendPolicies `json:"DlpSendPolicies,omitempty" xml:"DlpSendPolicies,omitempty" type:"Struct"`
-	// The list of policies associated with the domain name blacklist.
+	// The policies associated with the domain name blacklist.
 	DomainBlacklistPolicies *ListApprovalProcessesResponseBodyProcessesDomainBlacklistPolicies `json:"DomainBlacklistPolicies,omitempty" xml:"DomainBlacklistPolicies,omitempty" type:"Struct"`
-	// The list of policies associated with the domain name whitelist.
-	DomainWhitelistPolicies   *ListApprovalProcessesResponseBodyProcessesDomainWhitelistPolicies   `json:"DomainWhitelistPolicies,omitempty" xml:"DomainWhitelistPolicies,omitempty" type:"Struct"`
+	// The policies associated with the domain name whitelist.
+	DomainWhitelistPolicies *ListApprovalProcessesResponseBodyProcessesDomainWhitelistPolicies `json:"DomainWhitelistPolicies,omitempty" xml:"DomainWhitelistPolicies,omitempty" type:"Struct"`
+	// The policies associated with endpoint hardening. If the approval process is not configured with an approval template of this type, SchemaId and PolicyIds are empty.
 	EndpointHardeningPolicies *ListApprovalProcessesResponseBodyProcessesEndpointHardeningPolicies `json:"EndpointHardeningPolicies,omitempty" xml:"EndpointHardeningPolicies,omitempty" type:"Struct"`
-	// The list of policies associated with peripheral control.
-	PeripheralBlockPolicies    *ListApprovalProcessesResponseBodyProcessesPeripheralBlockPolicies    `json:"PeripheralBlockPolicies,omitempty" xml:"PeripheralBlockPolicies,omitempty" type:"Struct"`
+	// The policies associated with peripheral control.
+	PeripheralBlockPolicies *ListApprovalProcessesResponseBodyProcessesPeripheralBlockPolicies `json:"PeripheralBlockPolicies,omitempty" xml:"PeripheralBlockPolicies,omitempty" type:"Struct"`
+	// The policies associated with internal network access control. If the approval process is not configured with an approval template of this type, SchemaId and PolicyIds are empty.
 	PrivateAccessBlockPolicies *ListApprovalProcessesResponseBodyProcessesPrivateAccessBlockPolicies `json:"PrivateAccessBlockPolicies,omitempty" xml:"PrivateAccessBlockPolicies,omitempty" type:"Struct"`
 	// The ID of the approval process.
 	//
@@ -120,12 +127,13 @@ type ListApprovalProcessesResponseBodyProcesses struct {
 	//
 	// example:
 	//
-	// Test
+	// File sending approval
 	ProcessName *string `json:"ProcessName,omitempty" xml:"ProcessName,omitempty"`
-	// The list of approval nodes.
+	// The approval nodes.
 	ProcessNodes [][]*ListApprovalProcessesResponseBodyProcessesProcessNodes `json:"ProcessNodes,omitempty" xml:"ProcessNodes,omitempty" type:"Repeated"`
-	// The list of policies associated with software blocking.
-	SoftwareBlockPolicies     *ListApprovalProcessesResponseBodyProcessesSoftwareBlockPolicies     `json:"SoftwareBlockPolicies,omitempty" xml:"SoftwareBlockPolicies,omitempty" type:"Struct"`
+	// The policies associated with the software block.
+	SoftwareBlockPolicies *ListApprovalProcessesResponseBodyProcessesSoftwareBlockPolicies `json:"SoftwareBlockPolicies,omitempty" xml:"SoftwareBlockPolicies,omitempty" type:"Struct"`
+	// The policies associated with software hardening. If the approval process is not configured with an approval template of this type, SchemaId and PolicyIds are empty.
 	SoftwareHardeningPolicies *ListApprovalProcessesResponseBodyProcessesSoftwareHardeningPolicies `json:"SoftwareHardeningPolicies,omitempty" xml:"SoftwareHardeningPolicies,omitempty" type:"Struct"`
 }
 
@@ -541,8 +549,14 @@ func (s *ListApprovalProcessesResponseBodyProcessesDomainWhitelistPolicies) Vali
 }
 
 type ListApprovalProcessesResponseBodyProcessesEndpointHardeningPolicies struct {
+	// The IDs of the endpoint hardening policies.
 	PolicyIds []*string `json:"PolicyIds,omitempty" xml:"PolicyIds,omitempty" type:"Repeated"`
-	SchemaId  *string   `json:"SchemaId,omitempty" xml:"SchemaId,omitempty"`
+	// The ID of the approval template.
+	//
+	// example:
+	//
+	// approval-schema-090134f1ebff****
+	SchemaId *string `json:"SchemaId,omitempty" xml:"SchemaId,omitempty"`
 }
 
 func (s ListApprovalProcessesResponseBodyProcessesEndpointHardeningPolicies) String() string {
@@ -576,7 +590,7 @@ func (s *ListApprovalProcessesResponseBodyProcessesEndpointHardeningPolicies) Va
 }
 
 type ListApprovalProcessesResponseBodyProcessesPeripheralBlockPolicies struct {
-	// The IDs of the peripheral control policy.
+	// The IDs of the peripheral control policies.
 	PolicyIds []*string `json:"PolicyIds,omitempty" xml:"PolicyIds,omitempty" type:"Repeated"`
 	// The ID of the approval template.
 	//
@@ -617,8 +631,14 @@ func (s *ListApprovalProcessesResponseBodyProcessesPeripheralBlockPolicies) Vali
 }
 
 type ListApprovalProcessesResponseBodyProcessesPrivateAccessBlockPolicies struct {
+	// The IDs of the internal network access control applications.
 	PolicyIds []*string `json:"PolicyIds,omitempty" xml:"PolicyIds,omitempty" type:"Repeated"`
-	SchemaId  *string   `json:"SchemaId,omitempty" xml:"SchemaId,omitempty"`
+	// The ID of the approval template.
+	//
+	// example:
+	//
+	// approval-schema-090134f1ebff****
+	SchemaId *string `json:"SchemaId,omitempty" xml:"SchemaId,omitempty"`
 }
 
 func (s ListApprovalProcessesResponseBodyProcessesPrivateAccessBlockPolicies) String() string {
@@ -697,7 +717,7 @@ func (s *ListApprovalProcessesResponseBodyProcessesProcessNodes) Validate() erro
 }
 
 type ListApprovalProcessesResponseBodyProcessesSoftwareBlockPolicies struct {
-	// The IDs of the software blocking policies.
+	// The IDs of the software block policies.
 	PolicyIds []*string `json:"PolicyIds,omitempty" xml:"PolicyIds,omitempty" type:"Repeated"`
 	// The ID of the approval template.
 	//
@@ -738,8 +758,14 @@ func (s *ListApprovalProcessesResponseBodyProcessesSoftwareBlockPolicies) Valida
 }
 
 type ListApprovalProcessesResponseBodyProcessesSoftwareHardeningPolicies struct {
+	// The IDs of the software hardening policies.
 	PolicyIds []*string `json:"PolicyIds,omitempty" xml:"PolicyIds,omitempty" type:"Repeated"`
-	SchemaId  *string   `json:"SchemaId,omitempty" xml:"SchemaId,omitempty"`
+	// The ID of the approval template.
+	//
+	// example:
+	//
+	// approval-schema-090134f1ebff****
+	SchemaId *string `json:"SchemaId,omitempty" xml:"SchemaId,omitempty"`
 }
 
 func (s ListApprovalProcessesResponseBodyProcessesSoftwareHardeningPolicies) String() string {

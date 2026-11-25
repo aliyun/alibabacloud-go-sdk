@@ -28,25 +28,25 @@ type GetVirusScanGlobalConfigResponseBody struct {
 	//
 	// 3D7EC0AF-DB2A-5D9C-90EC-F090A6BAAEA7
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The maximum size of a single virus file that can be uploaded, in KB. A value of 0 indicates no size limit.
+	// The maximum allowed upload size for a single virus file, in KB. A value of 0 indicates that the size is not limited.
 	//
 	// example:
 	//
 	// 10240
 	UploadFileMaxSize *int64 `json:"UploadFileMaxSize,omitempty" xml:"UploadFileMaxSize,omitempty"`
-	// The maximum upload rate for virus files, in KB/s. A value of 0 indicates no rate limit.
+	// The maximum upload speed for virus files, in KB/s. A value of 0 indicates that the speed is not limited.
 	//
 	// example:
 	//
 	// 1024
 	UploadFileMaxSpeed *int64 `json:"UploadFileMaxSpeed,omitempty" xml:"UploadFileMaxSpeed,omitempty"`
-	// The collection of file types that are prohibited from being uploaded. Files that match these types are not uploaded even if the upload feature is enabled. An empty list is returned if no file types are configured.
+	// The set of file types that are prohibited from upload. Matched files are not uploaded even if the upload feature is enabled. An empty list is returned if this parameter is not configured.
 	UploadFileSuffixBlacklist []*string `json:"UploadFileSuffixBlacklist,omitempty" xml:"UploadFileSuffixBlacklist,omitempty" type:"Repeated"`
-	// Indicates whether user terminal devices are allowed to upload detected virus files to the cloud for further analysis. Valid values:
+	// Specifies whether user terminal devices are allowed to upload detected virus files to the cloud for further analysis. Valid values:
 	//
-	// - **true**: Upload is allowed.
+	// - **true**: Allowed.
 	//
-	// - **false**: Upload is not allowed.
+	// - **false**: Not allowed.
 	//
 	// example:
 	//

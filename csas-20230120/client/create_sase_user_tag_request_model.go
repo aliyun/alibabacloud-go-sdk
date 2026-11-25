@@ -16,7 +16,7 @@ type iCreateSaseUserTagRequest interface {
 }
 
 type CreateSaseUserTagRequest struct {
-	// The description of the employee tag.
+	// The description of the user tag.
 	//
 	// example:
 	//

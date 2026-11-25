@@ -16,9 +16,9 @@ type iUpdateConnectorClientResponseBody interface {
 }
 
 type UpdateConnectorClientResponseBody struct {
-	// ConnectorClient。
+	// The ConnectorClient.
 	ConnectorClient *UpdateConnectorClientResponseBodyConnectorClient `json:"ConnectorClient,omitempty" xml:"ConnectorClient,omitempty" type:"Struct"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
@@ -70,21 +70,21 @@ type UpdateConnectorClientResponseBodyConnectorClient struct {
 	CPUSize *string `json:"CPUSize,omitempty" xml:"CPUSize,omitempty"`
 	// The connection status of the ConnectorClient. Valid values:
 	//
-	// - **Connected**: connected.
+	// - **Connected**: Connected.
 	//
-	// - **Disconnected**: disconnected.
+	// - **Disconnected**: Disconnected.
 	//
 	// example:
 	//
 	// Connected
 	ConnectionStatus *string `json:"ConnectionStatus,omitempty" xml:"ConnectionStatus,omitempty"`
-	// ConnectorID。
+	// The connector ID.
 	//
 	// example:
 	//
 	// connector-94db94e06b98****
 	ConnectorId *string `json:"ConnectorId,omitempty" xml:"ConnectorId,omitempty"`
-	// The time when the connector was created.
+	// The time when the connector was created. The time is in the YYYY-MM-DD HH:mm:ss format.
 	//
 	// example:
 	//
@@ -120,7 +120,7 @@ type UpdateConnectorClientResponseBodyConnectorClient struct {
 	//
 	// - **Failed**: O&M failed.
 	//
-	// - (empty string): not in O&M status.
+	// - **(Empty string)**: Not in an O&M state.
 	//
 	// example:
 	//
@@ -132,7 +132,7 @@ type UpdateConnectorClientResponseBodyConnectorClient struct {
 	//
 	// 192.168.0.1
 	PrivateIp *string `json:"PrivateIp,omitempty" xml:"PrivateIp,omitempty"`
-	// The program runtime. Unit: seconds.
+	// The runtime of the program. Unit: seconds.
 	//
 	// example:
 	//
@@ -146,21 +146,21 @@ type UpdateConnectorClientResponseBodyConnectorClient struct {
 	PublicIp *string `json:"PublicIp,omitempty" xml:"PublicIp,omitempty"`
 	// The version number.
 	ReleaseNotes []*string `json:"ReleaseNotes,omitempty" xml:"ReleaseNotes,omitempty" type:"Repeated"`
-	// The enabled status of the ConnectorClient, which can be used to force the client offline. Valid values:
+	// The enabled status of the ConnectorClient, which controls whether the client is forced offline. Valid values:
 	//
-	// - **Enabled**: enabled.
+	// - **Enabled**: Enabled.
 	//
-	// - **Disabled**: disabled.
+	// - **Disabled**: Disabled.
 	//
 	// example:
 	//
 	// Enabled
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The version status of the connector. Valid values:
+	// The upgrade status of the connector. Valid values:
 	//
-	// - **Latest**: the current version is the latest version.
+	// - **Latest**: The connector is updated to the latest version.
 	//
-	// - **NewVersionAvailable**: a newer version is available for upgrade.
+	// - **NewVersionAvailable**: A new version is available for upgrade.
 	//
 	// example:
 	//
@@ -172,7 +172,7 @@ type UpdateConnectorClientResponseBodyConnectorClient struct {
 	//
 	// 2019-04-02
 	Version *string `json:"Version,omitempty" xml:"Version,omitempty"`
-	// The version to roll back to.
+	// The version to be rolled back.
 	//
 	// example:
 	//

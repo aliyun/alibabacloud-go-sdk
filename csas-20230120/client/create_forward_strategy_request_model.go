@@ -24,13 +24,13 @@ type iCreateForwardStrategyRequest interface {
 }
 
 type CreateForwardStrategyRequest struct {
-	// The description. The description must be 1 to 128 characters in length and can contain letters, digits, periods (.), underscores (_), hyphens (-), and spaces. The description can also contain Chinese characters.
+	// The description. The description must be 1 to 128 characters in length and can contain Chinese characters, letters, digits, periods (.), underscores (_), hyphens (-), and spaces.
 	//
 	// example:
 	//
-	// This is an internal access policy
+	// This is an internal network access policy
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The target instance ID.
+	// The instance ID of the target instance.
 	//
 	// This parameter is required.
 	//
@@ -48,7 +48,7 @@ type CreateForwardStrategyRequest struct {
 	//
 	// Connector
 	DestinationType *string `json:"DestinationType,omitempty" xml:"DestinationType,omitempty"`
-	// The name. The name must be 1 to 128 characters in length and can contain letters, digits, periods (.), underscores (_), and hyphens (-). The name can also contain Chinese characters.
+	// The name. The name must be 1 to 128 characters in length and can contain Chinese characters, letters, digits, periods (.), underscores (_), and hyphens (-).
 	//
 	// This parameter is required.
 	//
@@ -66,9 +66,9 @@ type CreateForwardStrategyRequest struct {
 	Priority *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
 	// The policy status. Valid values:
 	//
-	// - **Enabled**: enabled.
+	// - **Enabled**: The policy is enabled.
 	//
-	// - **Disabled**: disabled.
+	// - **Disabled**: The policy is disabled.
 	//
 	// This parameter is required.
 	//

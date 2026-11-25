@@ -56,17 +56,17 @@ type iUpdateProhibitedPolicyRequest interface {
 }
 
 type UpdateProhibitedPolicyRequest struct {
-	// Specifies whether endpoint users are allowed to submit a filing request for this policy. Valid values:
+	// Specifies whether to allow endpoint users to submit exemption requests for the policy. Valid values:
 	//
-	// - **true**: Filing is allowed. A filing entry is provided in the pop-up notification on the endpoint.
+	// - **true**: Exemption requests are allowed. The endpoint pop-up window provides an entry for submitting requests.
 	//
-	// - **false**: Filing is not allowed.
+	// - **false**: Exemption requests are not allowed.
 	//
 	// example:
 	//
 	// false
 	AllowReport *string `json:"AllowReport,omitempty" xml:"AllowReport,omitempty"`
-	// The description of the software prohibition policy. The description can contain Chinese characters, uppercase and lowercase letters, digits, spaces, periods (.), underscores (_), and hyphens (-). The description can be up to 128 characters in length and can be left empty.
+	// The description of the software prohibition policy. The description can contain Chinese characters, uppercase and lowercase letters, digits, spaces, periods (.), underscores (_), and hyphens (-). It can be up to 128 characters in length and can be empty.
 	//
 	// example:
 	//
@@ -74,9 +74,9 @@ type UpdateProhibitedPolicyRequest struct {
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// Specifies whether the policy is enabled. Valid values:
 	//
-	// - **true**: Enabled. The policy is delivered to endpoints and takes effect.
+	// - **true**: The policy is enabled and delivered to endpoints to take effect.
 	//
-	// - **false**: Disabled. The policy configuration is retained but not delivered to endpoints.
+	// - **false**: The policy is disabled. The configuration is retained but not delivered to endpoints.
 	//
 	// example:
 	//
@@ -84,59 +84,59 @@ type UpdateProhibitedPolicyRequest struct {
 	Enabled *bool `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
 	// Specifies whether to forcibly terminate running software processes. Valid values:
 	//
-	// - **true**: The endpoint immediately terminates the running processes of the software when the policy is triggered.
+	// - **true**: The endpoint immediately terminates the running processes of the software when the policy is matched.
 	//
-	// - **false**: Running processes are not terminated. Only subsequent launches are blocked.
+	// - **false**: Running processes are not terminated. Only subsequent startups are blocked.
 	//
 	// example:
 	//
 	// false
 	ForceKill *bool `json:"ForceKill,omitempty" xml:"ForceKill,omitempty"`
-	// The Chinese text of the primary button in the pop-up notification on the endpoint.
+	// The Chinese text of the primary button in the endpoint pop-up window.
 	//
 	// example:
 	//
-	// Submit Filing
+	// Submit request
 	MainButtonTextCh *string `json:"MainButtonTextCh,omitempty" xml:"MainButtonTextCh,omitempty"`
-	// The English text of the primary button in the pop-up notification on the endpoint.
+	// The English text of the primary button in the endpoint pop-up window.
 	//
 	// example:
 	//
 	// Report
 	MainButtonTextEn *string `json:"MainButtonTextEn,omitempty" xml:"MainButtonTextEn,omitempty"`
-	// The scope in which the policy takes effect. Valid values:
+	// The effective scope. Valid values:
 	//
-	// - **UserGroupAll**: Takes effect for all users under the current Alibaba Cloud account. No user group needs to be specified.
+	// - **UserGroupAll**: applies to all users under the current Alibaba Cloud account. You do not need to specify user groups.
 	//
-	// - **UserGroupNormal**: Takes effect only for users in the user groups specified by UserGroupIds.
+	// - **UserGroupNormal**: applies only to users in the user groups specified by UserGroupIds.
 	//
 	// example:
 	//
 	// UserGroupNormal
 	MatchMode *string `json:"MatchMode,omitempty" xml:"MatchMode,omitempty"`
-	// The Chinese text of the secondary button in the pop-up notification on the endpoint.
+	// The Chinese text of the secondary button in the endpoint pop-up window.
 	//
 	// example:
 	//
-	// Got It
+	// Got it
 	MinorButtonTextCh *string `json:"MinorButtonTextCh,omitempty" xml:"MinorButtonTextCh,omitempty"`
-	// The English text of the secondary button in the pop-up notification on the endpoint.
+	// The English text of the secondary button in the endpoint pop-up window.
 	//
 	// example:
 	//
 	// I know
 	MinorButtonTextEn *string `json:"MinorButtonTextEn,omitempty" xml:"MinorButtonTextEn,omitempty"`
-	// Policy Name of the software prohibition policy. Policy Name must be 1 to 128 characters in length and can contain Chinese characters, uppercase and lowercase letters, digits, periods (.), underscores (_), and hyphens (-). Spaces are not supported.
+	// Policy Name of the software prohibition policy. Policy Name must be 1 to 128 characters in length, and can contain Chinese characters, uppercase and lowercase letters, digits, periods (.), underscores (_), and hyphens (-). Spaces are not supported.
 	//
 	// example:
 	//
-	// ProhibitionPolicy
+	// Prohibition policy
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The object type. Valid values:
 	//
-	// - **App**: Controls by prohibited software. The controlled objects are specified by SoftwareIds.
+	// - **App**: manages prohibited software. The managed objects are specified by SoftwareIds.
 	//
-	// - **Tag**: Controls by prohibited software tag. The controlled objects are specified by TagIds. All prohibited software under the specified tags is controlled.
+	// - **Tag**: manages prohibited software tags. The managed objects are specified by TagIds. All prohibited software under the tags are managed.
 	//
 	// example:
 	//
@@ -152,11 +152,11 @@ type UpdateProhibitedPolicyRequest struct {
 	PolicyId *string `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
 	// The action to take. If this parameter is not specified, the original value is retained. Valid values:
 	//
-	// - **Ban**: Blocks the software from running and displays a pop-up notification on the endpoint to alert the user.
+	// - **Ban**: blocks the software from running and displays a pop-up window on the endpoint to notify the user.
 	//
-	// - **BanSilent**: Blocks the software from running without notifying the user (silent blocking).
+	// - **BanSilent**: blocks the software from running without notifying the user.
 	//
-	// - **Warn**: Displays a pop-up notification on the endpoint to alert the user without blocking the software from running.
+	// - **Warn**: displays a pop-up window on the endpoint to notify the user without blocking the software from running.
 	//
 	// example:
 	//
@@ -168,37 +168,37 @@ type UpdateProhibitedPolicyRequest struct {
 	//
 	// 99
 	Priority *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
-	// The Chinese prompt content displayed in the pop-up notification on the endpoint.
+	// The Chinese prompt content in the endpoint pop-up window.
 	//
 	// example:
 	//
 	// test
 	PromptCh *string `json:"PromptCh,omitempty" xml:"PromptCh,omitempty"`
-	// The English prompt content displayed in the pop-up notification on the endpoint.
+	// The English prompt content in the endpoint pop-up window.
 	//
 	// example:
 	//
 	// test
 	PromptEn *string `json:"PromptEn,omitempty" xml:"PromptEn,omitempty"`
-	// The collection of prohibited software directly controlled by this policy.
+	// The collection of prohibited software directly managed by the policy.
 	SoftwareIds []*UpdateProhibitedPolicyRequestSoftwareIds `json:"SoftwareIds,omitempty" xml:"SoftwareIds,omitempty" type:"Repeated"`
-	// The collection of prohibited software tag IDs controlled by this policy.
+	// The collection of prohibited software tag IDs managed by the policy.
 	TagIds []*string `json:"TagIds,omitempty" xml:"TagIds,omitempty" type:"Repeated"`
-	// The Chinese title of the pop-up notification on the endpoint.
+	// The Chinese title of the endpoint pop-up window.
 	//
 	// example:
 	//
-	// Software Prohibition Reminder
+	// Software prohibition reminder
 	TitleCh *string `json:"TitleCh,omitempty" xml:"TitleCh,omitempty"`
-	// The English title of the pop-up notification on the endpoint.
+	// The English title of the endpoint pop-up window.
 	//
 	// example:
 	//
 	// Software Blocked
 	TitleEn *string `json:"TitleEn,omitempty" xml:"TitleEn,omitempty"`
-	// The collection of user group IDs for which the policy takes effect. Duplicate values are not allowed.
+	// The collection of user group IDs to which the policy applies. Duplicates are not allowed.
 	UserGroupIds []*string `json:"UserGroupIds,omitempty" xml:"UserGroupIds,omitempty" type:"Repeated"`
-	// The list of exempted usernames. Duplicate values are not allowed.
+	// The list of exempted usernames. Duplicates are not allowed.
 	Whitelist []*string `json:"Whitelist,omitempty" xml:"Whitelist,omitempty" type:"Repeated"`
 }
 
@@ -422,11 +422,11 @@ func (s *UpdateProhibitedPolicyRequest) Validate() error {
 }
 
 type UpdateProhibitedPolicyRequestSoftwareIds struct {
-	// Indicates whether the prohibited software is a system built-in entry. Valid values:
+	// Specifies whether the prohibited software is built-in. Valid values:
 	//
-	// - **true**: A system built-in prohibited software entry shared across all Alibaba Cloud accounts. It cannot be modified or deleted.
+	// - **true**: The software is built-in, shared by all Alibaba Cloud accounts, and cannot be modified or deleted.
 	//
-	// - **false**: A custom prohibited software entry under the current Alibaba Cloud account.
+	// - **false**: The software is custom prohibited software under the current Alibaba Cloud account.
 	//
 	// example:
 	//
@@ -434,9 +434,9 @@ type UpdateProhibitedPolicyRequestSoftwareIds struct {
 	IsDefault *bool `json:"IsDefault,omitempty" xml:"IsDefault,omitempty"`
 	// The ID of the prohibited software. You can obtain the value from the following operations:
 	//
-	// - [ListProhibitedSoftware](~~ListProhibitedSoftware~~): Lists prohibited software.
+	// - [ListProhibitedSoftware](~~ListProhibitedSoftware~~): queries prohibited software in batches.
 	//
-	// - [CreateProhibitedSoftware](~~CreateProhibitedSoftware~~): Creates custom prohibited software.
+	// - [CreateProhibitedSoftware](~~CreateProhibitedSoftware~~): creates custom prohibited software.
 	//
 	// example:
 	//

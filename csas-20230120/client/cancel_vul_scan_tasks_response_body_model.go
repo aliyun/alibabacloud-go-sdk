@@ -14,7 +14,7 @@ type iCancelVulScanTasksResponseBody interface {
 }
 
 type CancelVulScanTasksResponseBody struct {
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//

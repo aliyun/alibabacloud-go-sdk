@@ -30,15 +30,31 @@ type iUpdateApprovalProcessRequest interface {
 }
 
 type UpdateApprovalProcessRequest struct {
-	ApprovalType *int32 `json:"ApprovalType,omitempty" xml:"ApprovalType,omitempty"`
-	// The description of the approval process. The description must be 1 to 128 characters in length and can contain letters, digits, periods (.), underscores (_), hyphens (-), and spaces. Chinese characters are supported.
+	// The approval type. Valid values: 0 (built-in approval), 1 (DingTalk approval), 2 (WeCom approval), and 3 (Lark approval). Default value: 0.
 	//
 	// example:
 	//
-	// This is a test
-	Description        *string                                         `json:"Description,omitempty" xml:"Description,omitempty"`
-	EventLabel         *string                                         `json:"EventLabel,omitempty" xml:"EventLabel,omitempty"`
-	ExternalConfig     *string                                         `json:"ExternalConfig,omitempty" xml:"ExternalConfig,omitempty"`
+	// 1
+	ApprovalType *int32 `json:"ApprovalType,omitempty" xml:"ApprovalType,omitempty"`
+	// The description of the approval process. The description must be 1 to 128 characters in length and can contain Chinese characters, uppercase and lowercase letters, digits, periods (.), underscores (_), hyphens (-), and spaces.
+	//
+	// example:
+	//
+	// Office endpoint software installation and uninstallation approval process
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The event callback identifier. When the approval type is 1 (DingTalk approval) or 3 (Lark approval), this parameter is used to generate the event callback URL for the external platform. You can pass a complete callback URL, and the server retains only the part after the callback path prefix.
+	//
+	// example:
+	//
+	// https://callback.example.com/sase/api/v1/approval/dingtalk/callback/9m4e2mr0ui3e8a21****
+	EventLabel *string `json:"EventLabel,omitempty" xml:"EventLabel,omitempty"`
+	// The integration configuration for the external approval platform. This parameter is required when the approval type is 1 (DingTalk approval) or 3 (Lark approval). It includes integration parameters such as appKey and appSecret, and must be passed as a JSON string.
+	//
+	// example:
+	//
+	// {"appKey":"dingn1a2b3c4d5e6f****","appSecret":"f9c8e7d6a5b4c3d2e1f0a9b8c7d6e5f4a3b2c1d0e9f8a7b6c5d4e3f2a1b0****","eventVerifyToken":"7a8b9c0d1e2f3a4b5c6d7e8f9a0b****","eventAesKey":"1a2b3c4d5e6f7g8h9i0j1k2l3m4n5o6p7q8r9s0t****"}
+	ExternalConfig *string `json:"ExternalConfig,omitempty" xml:"ExternalConfig,omitempty"`
+	// The external approval template configurations. Configure the approval template ID, external approval process ID, and field mappings based on the policy type. This parameter is used only when ApprovalType is set to 1 (DingTalk approval), 2 (WeCom approval), or 3 (Lark approval). If this parameter is not passed, the existing template associations of the approval process are cleared. The approval templates associated with business policies cannot be cleared.
 	MatchSchemaConfigs *UpdateApprovalProcessRequestMatchSchemaConfigs `json:"MatchSchemaConfigs,omitempty" xml:"MatchSchemaConfigs,omitempty" type:"Struct"`
 	// The matched approval templates.
 	MatchSchemas *UpdateApprovalProcessRequestMatchSchemas `json:"MatchSchemas,omitempty" xml:"MatchSchemas,omitempty" type:"Struct"`
@@ -50,11 +66,11 @@ type UpdateApprovalProcessRequest struct {
 	//
 	// approval-process-f16bf74b2b29****
 	ProcessId *string `json:"ProcessId,omitempty" xml:"ProcessId,omitempty"`
-	// The name of the approval process. The name must be 1 to 128 characters in length and can contain letters, digits, periods (.), underscores (_), and hyphens (-). Chinese characters are supported.
+	// The name of the approval process. The name must be 1 to 128 characters in length and can contain Chinese characters, uppercase and lowercase letters, digits, periods (.), underscores (_), and hyphens (-).
 	//
 	// example:
 	//
-	// Test
+	// Endpoint software installation approval process
 	ProcessName *string `json:"ProcessName,omitempty" xml:"ProcessName,omitempty"`
 	// The list of approval nodes. You can define up to 5 approval nodes.
 	ProcessNodes [][]*string `json:"ProcessNodes,omitempty" xml:"ProcessNodes,omitempty" type:"Repeated"`
@@ -164,16 +180,26 @@ func (s *UpdateApprovalProcessRequest) Validate() error {
 }
 
 type UpdateApprovalProcessRequestMatchSchemaConfigs struct {
-	AppUninstallSchemaConfig       *UpdateApprovalProcessRequestMatchSchemaConfigsAppUninstallSchemaConfig       `json:"AppUninstallSchemaConfig,omitempty" xml:"AppUninstallSchemaConfig,omitempty" type:"Struct"`
+	// The approval template configuration for the application uninstallation policy.
+	AppUninstallSchemaConfig *UpdateApprovalProcessRequestMatchSchemaConfigsAppUninstallSchemaConfig `json:"AppUninstallSchemaConfig,omitempty" xml:"AppUninstallSchemaConfig,omitempty" type:"Struct"`
+	// The approval template configuration for the device registration policy.
 	DeviceRegistrationSchemaConfig *UpdateApprovalProcessRequestMatchSchemaConfigsDeviceRegistrationSchemaConfig `json:"DeviceRegistrationSchemaConfig,omitempty" xml:"DeviceRegistrationSchemaConfig,omitempty" type:"Struct"`
-	DlpSendSchemaConfig            *UpdateApprovalProcessRequestMatchSchemaConfigsDlpSendSchemaConfig            `json:"DlpSendSchemaConfig,omitempty" xml:"DlpSendSchemaConfig,omitempty" type:"Struct"`
-	DomainBlacklistSchemaConfig    *UpdateApprovalProcessRequestMatchSchemaConfigsDomainBlacklistSchemaConfig    `json:"DomainBlacklistSchemaConfig,omitempty" xml:"DomainBlacklistSchemaConfig,omitempty" type:"Struct"`
-	DomainWhitelistSchemaConfig    *UpdateApprovalProcessRequestMatchSchemaConfigsDomainWhitelistSchemaConfig    `json:"DomainWhitelistSchemaConfig,omitempty" xml:"DomainWhitelistSchemaConfig,omitempty" type:"Struct"`
-	EndpointHardeningSchemaConfig  *UpdateApprovalProcessRequestMatchSchemaConfigsEndpointHardeningSchemaConfig  `json:"EndpointHardeningSchemaConfig,omitempty" xml:"EndpointHardeningSchemaConfig,omitempty" type:"Struct"`
-	PeripheralBlockSchemaConfig    *UpdateApprovalProcessRequestMatchSchemaConfigsPeripheralBlockSchemaConfig    `json:"PeripheralBlockSchemaConfig,omitempty" xml:"PeripheralBlockSchemaConfig,omitempty" type:"Struct"`
+	// The approval template configuration for the file outbound sending policy.
+	DlpSendSchemaConfig *UpdateApprovalProcessRequestMatchSchemaConfigsDlpSendSchemaConfig `json:"DlpSendSchemaConfig,omitempty" xml:"DlpSendSchemaConfig,omitempty" type:"Struct"`
+	// The approval template configuration for the domain name blacklist policy.
+	DomainBlacklistSchemaConfig *UpdateApprovalProcessRequestMatchSchemaConfigsDomainBlacklistSchemaConfig `json:"DomainBlacklistSchemaConfig,omitempty" xml:"DomainBlacklistSchemaConfig,omitempty" type:"Struct"`
+	// The approval template configuration for the domain name whitelist policy.
+	DomainWhitelistSchemaConfig *UpdateApprovalProcessRequestMatchSchemaConfigsDomainWhitelistSchemaConfig `json:"DomainWhitelistSchemaConfig,omitempty" xml:"DomainWhitelistSchemaConfig,omitempty" type:"Struct"`
+	// The approval template configuration for the endpoint hardening policy.
+	EndpointHardeningSchemaConfig *UpdateApprovalProcessRequestMatchSchemaConfigsEndpointHardeningSchemaConfig `json:"EndpointHardeningSchemaConfig,omitempty" xml:"EndpointHardeningSchemaConfig,omitempty" type:"Struct"`
+	// The approval template configuration for the peripheral control policy.
+	PeripheralBlockSchemaConfig *UpdateApprovalProcessRequestMatchSchemaConfigsPeripheralBlockSchemaConfig `json:"PeripheralBlockSchemaConfig,omitempty" xml:"PeripheralBlockSchemaConfig,omitempty" type:"Struct"`
+	// The approval template configuration for the internal network access control policy.
 	PrivateAccessBlockSchemaConfig *UpdateApprovalProcessRequestMatchSchemaConfigsPrivateAccessBlockSchemaConfig `json:"PrivateAccessBlockSchemaConfig,omitempty" xml:"PrivateAccessBlockSchemaConfig,omitempty" type:"Struct"`
-	SoftwareBlockSchemaConfig      *UpdateApprovalProcessRequestMatchSchemaConfigsSoftwareBlockSchemaConfig      `json:"SoftwareBlockSchemaConfig,omitempty" xml:"SoftwareBlockSchemaConfig,omitempty" type:"Struct"`
-	SoftwareHardeningSchemaConfig  *UpdateApprovalProcessRequestMatchSchemaConfigsSoftwareHardeningSchemaConfig  `json:"SoftwareHardeningSchemaConfig,omitempty" xml:"SoftwareHardeningSchemaConfig,omitempty" type:"Struct"`
+	// The approval template configuration for the software blocking policy.
+	SoftwareBlockSchemaConfig *UpdateApprovalProcessRequestMatchSchemaConfigsSoftwareBlockSchemaConfig `json:"SoftwareBlockSchemaConfig,omitempty" xml:"SoftwareBlockSchemaConfig,omitempty" type:"Struct"`
+	// The approval template configuration for the software hardening policy.
+	SoftwareHardeningSchemaConfig *UpdateApprovalProcessRequestMatchSchemaConfigsSoftwareHardeningSchemaConfig `json:"SoftwareHardeningSchemaConfig,omitempty" xml:"SoftwareHardeningSchemaConfig,omitempty" type:"Struct"`
 }
 
 func (s UpdateApprovalProcessRequestMatchSchemaConfigs) String() string {
@@ -329,9 +355,20 @@ func (s *UpdateApprovalProcessRequestMatchSchemaConfigs) Validate() error {
 }
 
 type UpdateApprovalProcessRequestMatchSchemaConfigsAppUninstallSchemaConfig struct {
-	ExternalProcessId *string                                                                           `json:"ExternalProcessId,omitempty" xml:"ExternalProcessId,omitempty"`
-	FieldMap          []*UpdateApprovalProcessRequestMatchSchemaConfigsAppUninstallSchemaConfigFieldMap `json:"FieldMap,omitempty" xml:"FieldMap,omitempty" type:"Repeated"`
-	SchemaId          *string                                                                           `json:"SchemaId,omitempty" xml:"SchemaId,omitempty"`
+	// The ID of the external approval process. When the approval type is 1 (DingTalk approval) or 3 (Lark approval), this parameter specifies the process code (processCode) of the external platform.
+	//
+	// example:
+	//
+	// PROC-1a2b3c4d5e6f****
+	ExternalProcessId *string `json:"ExternalProcessId,omitempty" xml:"ExternalProcessId,omitempty"`
+	// The mapping list between system fields and external approval form controls.
+	FieldMap []*UpdateApprovalProcessRequestMatchSchemaConfigsAppUninstallSchemaConfigFieldMap `json:"FieldMap,omitempty" xml:"FieldMap,omitempty" type:"Repeated"`
+	// The ID of the approval template. The ID must be consistent with the template ID of the corresponding policy type in MatchSchemas. If this parameter is left empty, the approval template association is not saved for this policy type.
+	//
+	// example:
+	//
+	// approval-schema-090134f1ebff****
+	SchemaId *string `json:"SchemaId,omitempty" xml:"SchemaId,omitempty"`
 }
 
 func (s UpdateApprovalProcessRequestMatchSchemaConfigsAppUninstallSchemaConfig) String() string {
@@ -383,9 +420,24 @@ func (s *UpdateApprovalProcessRequestMatchSchemaConfigsAppUninstallSchemaConfig)
 }
 
 type UpdateApprovalProcessRequestMatchSchemaConfigsAppUninstallSchemaConfigFieldMap struct {
-	DisplayField      *string `json:"DisplayField,omitempty" xml:"DisplayField,omitempty"`
+	// The name of the control in the external approval form. This parameter is used to locate the form control when the approval type is 1 (DingTalk approval).
+	//
+	// example:
+	//
+	// Reason for reporting
+	DisplayField *string `json:"DisplayField,omitempty" xml:"DisplayField,omitempty"`
+	// The type and identifier of the external approval form control, in the format of Type%%%ControlID. This parameter is used to locate the form control when the approval type is 2 (WeCom approval) or 3 (Lark approval).
+	//
+	// example:
+	//
+	// Textarea%%%widget-1a2b****
 	DisplayFieldValue *string `json:"DisplayFieldValue,omitempty" xml:"DisplayFieldValue,omitempty"`
-	SystemField       *string `json:"SystemField,omitempty" xml:"SystemField,omitempty"`
+	// The identifier of the system field, such as approvalReason.
+	//
+	// example:
+	//
+	// approvalReason
+	SystemField *string `json:"SystemField,omitempty" xml:"SystemField,omitempty"`
 }
 
 func (s UpdateApprovalProcessRequestMatchSchemaConfigsAppUninstallSchemaConfigFieldMap) String() string {
@@ -428,9 +480,20 @@ func (s *UpdateApprovalProcessRequestMatchSchemaConfigsAppUninstallSchemaConfigF
 }
 
 type UpdateApprovalProcessRequestMatchSchemaConfigsDeviceRegistrationSchemaConfig struct {
-	ExternalProcessId *string                                                                                 `json:"ExternalProcessId,omitempty" xml:"ExternalProcessId,omitempty"`
-	FieldMap          []*UpdateApprovalProcessRequestMatchSchemaConfigsDeviceRegistrationSchemaConfigFieldMap `json:"FieldMap,omitempty" xml:"FieldMap,omitempty" type:"Repeated"`
-	SchemaId          *string                                                                                 `json:"SchemaId,omitempty" xml:"SchemaId,omitempty"`
+	// The ID of the external approval process. When the approval type is 1 (DingTalk approval) or 3 (Lark approval), this parameter specifies the process code (processCode) of the external platform.
+	//
+	// example:
+	//
+	// PROC-1a2b3c4d5e6f****
+	ExternalProcessId *string `json:"ExternalProcessId,omitempty" xml:"ExternalProcessId,omitempty"`
+	// The mapping list between system fields and external approval form controls.
+	FieldMap []*UpdateApprovalProcessRequestMatchSchemaConfigsDeviceRegistrationSchemaConfigFieldMap `json:"FieldMap,omitempty" xml:"FieldMap,omitempty" type:"Repeated"`
+	// The ID of the approval template. The ID must be consistent with the template ID of the corresponding policy type in MatchSchemas. If this parameter is left empty, the approval template association is not saved for this policy type.
+	//
+	// example:
+	//
+	// approval-schema-090134f1ebff****
+	SchemaId *string `json:"SchemaId,omitempty" xml:"SchemaId,omitempty"`
 }
 
 func (s UpdateApprovalProcessRequestMatchSchemaConfigsDeviceRegistrationSchemaConfig) String() string {
@@ -482,9 +545,24 @@ func (s *UpdateApprovalProcessRequestMatchSchemaConfigsDeviceRegistrationSchemaC
 }
 
 type UpdateApprovalProcessRequestMatchSchemaConfigsDeviceRegistrationSchemaConfigFieldMap struct {
-	DisplayField      *string `json:"DisplayField,omitempty" xml:"DisplayField,omitempty"`
+	// The name of the control in the external approval form. This parameter is used to locate the form control when the approval type is 1 (DingTalk approval).
+	//
+	// example:
+	//
+	// Report domain name
+	DisplayField *string `json:"DisplayField,omitempty" xml:"DisplayField,omitempty"`
+	// The type and identifier of the external approval form control, in the format of Type%%%ControlID. This parameter is used to locate the form control when the approval type is 2 (WeCom approval) or 3 (Lark approval).
+	//
+	// example:
+	//
+	// Textarea%%%widget-1a2b****
 	DisplayFieldValue *string `json:"DisplayFieldValue,omitempty" xml:"DisplayFieldValue,omitempty"`
-	SystemField       *string `json:"SystemField,omitempty" xml:"SystemField,omitempty"`
+	// The identifier of the system field, such as report_domain.
+	//
+	// example:
+	//
+	// report_domain
+	SystemField *string `json:"SystemField,omitempty" xml:"SystemField,omitempty"`
 }
 
 func (s UpdateApprovalProcessRequestMatchSchemaConfigsDeviceRegistrationSchemaConfigFieldMap) String() string {
@@ -527,9 +605,20 @@ func (s *UpdateApprovalProcessRequestMatchSchemaConfigsDeviceRegistrationSchemaC
 }
 
 type UpdateApprovalProcessRequestMatchSchemaConfigsDlpSendSchemaConfig struct {
-	ExternalProcessId *string                                                                      `json:"ExternalProcessId,omitempty" xml:"ExternalProcessId,omitempty"`
-	FieldMap          []*UpdateApprovalProcessRequestMatchSchemaConfigsDlpSendSchemaConfigFieldMap `json:"FieldMap,omitempty" xml:"FieldMap,omitempty" type:"Repeated"`
-	SchemaId          *string                                                                      `json:"SchemaId,omitempty" xml:"SchemaId,omitempty"`
+	// The ID of the external approval process. When the approval type is 1 (DingTalk approval) or 3 (Lark approval), this parameter specifies the process code (processCode) of the external platform.
+	//
+	// example:
+	//
+	// PROC-1a2b3c4d5e6f****
+	ExternalProcessId *string `json:"ExternalProcessId,omitempty" xml:"ExternalProcessId,omitempty"`
+	// The mapping list between system fields and external approval form controls.
+	FieldMap []*UpdateApprovalProcessRequestMatchSchemaConfigsDlpSendSchemaConfigFieldMap `json:"FieldMap,omitempty" xml:"FieldMap,omitempty" type:"Repeated"`
+	// The ID of the approval template. The ID must be consistent with the template ID of the corresponding policy type in MatchSchemas. If this parameter is left empty, the approval template association is not saved for this policy type.
+	//
+	// example:
+	//
+	// approval-schema-090134f1ebff****
+	SchemaId *string `json:"SchemaId,omitempty" xml:"SchemaId,omitempty"`
 }
 
 func (s UpdateApprovalProcessRequestMatchSchemaConfigsDlpSendSchemaConfig) String() string {
@@ -581,9 +670,24 @@ func (s *UpdateApprovalProcessRequestMatchSchemaConfigsDlpSendSchemaConfig) Vali
 }
 
 type UpdateApprovalProcessRequestMatchSchemaConfigsDlpSendSchemaConfigFieldMap struct {
-	DisplayField      *string `json:"DisplayField,omitempty" xml:"DisplayField,omitempty"`
+	// The name of the control in the external approval form. This parameter is used to locate the form control when the approval type is 1 (DingTalk approval).
+	//
+	// example:
+	//
+	// File name
+	DisplayField *string `json:"DisplayField,omitempty" xml:"DisplayField,omitempty"`
+	// The type and identifier of the external approval form control, in the format of Type%%%ControlID. This parameter is used to locate the form control when the approval type is 2 (WeCom approval) or 3 (Lark approval).
+	//
+	// example:
+	//
+	// Textarea%%%widget-1a2b****
 	DisplayFieldValue *string `json:"DisplayFieldValue,omitempty" xml:"DisplayFieldValue,omitempty"`
-	SystemField       *string `json:"SystemField,omitempty" xml:"SystemField,omitempty"`
+	// The identifier of the system field, such as fileName.
+	//
+	// example:
+	//
+	// fileName
+	SystemField *string `json:"SystemField,omitempty" xml:"SystemField,omitempty"`
 }
 
 func (s UpdateApprovalProcessRequestMatchSchemaConfigsDlpSendSchemaConfigFieldMap) String() string {
@@ -626,9 +730,20 @@ func (s *UpdateApprovalProcessRequestMatchSchemaConfigsDlpSendSchemaConfigFieldM
 }
 
 type UpdateApprovalProcessRequestMatchSchemaConfigsDomainBlacklistSchemaConfig struct {
-	ExternalProcessId *string                                                                              `json:"ExternalProcessId,omitempty" xml:"ExternalProcessId,omitempty"`
-	FieldMap          []*UpdateApprovalProcessRequestMatchSchemaConfigsDomainBlacklistSchemaConfigFieldMap `json:"FieldMap,omitempty" xml:"FieldMap,omitempty" type:"Repeated"`
-	SchemaId          *string                                                                              `json:"SchemaId,omitempty" xml:"SchemaId,omitempty"`
+	// The ID of the external approval process. When the approval type is 1 (DingTalk approval) or 3 (Lark approval), this parameter specifies the process code (processCode) of the external platform.
+	//
+	// example:
+	//
+	// PROC-1a2b3c4d5e6f****
+	ExternalProcessId *string `json:"ExternalProcessId,omitempty" xml:"ExternalProcessId,omitempty"`
+	// The mapping list between system fields and external approval form controls.
+	FieldMap []*UpdateApprovalProcessRequestMatchSchemaConfigsDomainBlacklistSchemaConfigFieldMap `json:"FieldMap,omitempty" xml:"FieldMap,omitempty" type:"Repeated"`
+	// The ID of the approval template. The ID must be consistent with the template ID of the corresponding policy type in MatchSchemas. If this parameter is left empty, the approval template association is not saved for this policy type.
+	//
+	// example:
+	//
+	// approval-schema-090134f1ebff****
+	SchemaId *string `json:"SchemaId,omitempty" xml:"SchemaId,omitempty"`
 }
 
 func (s UpdateApprovalProcessRequestMatchSchemaConfigsDomainBlacklistSchemaConfig) String() string {
@@ -680,9 +795,24 @@ func (s *UpdateApprovalProcessRequestMatchSchemaConfigsDomainBlacklistSchemaConf
 }
 
 type UpdateApprovalProcessRequestMatchSchemaConfigsDomainBlacklistSchemaConfigFieldMap struct {
-	DisplayField      *string `json:"DisplayField,omitempty" xml:"DisplayField,omitempty"`
+	// The name of the control in the external approval form. This parameter is used to locate the form control when the approval type is 1 (DingTalk approval).
+	//
+	// example:
+	//
+	// Report website access
+	DisplayField *string `json:"DisplayField,omitempty" xml:"DisplayField,omitempty"`
+	// The type and identifier of the external approval form control, in the format of Type%%%ControlID. This parameter is used to locate the form control when the approval type is 2 (WeCom approval) or 3 (Lark approval).
+	//
+	// example:
+	//
+	// Textarea%%%widget-1a2b****
 	DisplayFieldValue *string `json:"DisplayFieldValue,omitempty" xml:"DisplayFieldValue,omitempty"`
-	SystemField       *string `json:"SystemField,omitempty" xml:"SystemField,omitempty"`
+	// The identifier of the system field, such as reportDomain.
+	//
+	// example:
+	//
+	// reportDomain
+	SystemField *string `json:"SystemField,omitempty" xml:"SystemField,omitempty"`
 }
 
 func (s UpdateApprovalProcessRequestMatchSchemaConfigsDomainBlacklistSchemaConfigFieldMap) String() string {
@@ -725,9 +855,20 @@ func (s *UpdateApprovalProcessRequestMatchSchemaConfigsDomainBlacklistSchemaConf
 }
 
 type UpdateApprovalProcessRequestMatchSchemaConfigsDomainWhitelistSchemaConfig struct {
-	ExternalProcessId *string                                                                              `json:"ExternalProcessId,omitempty" xml:"ExternalProcessId,omitempty"`
-	FieldMap          []*UpdateApprovalProcessRequestMatchSchemaConfigsDomainWhitelistSchemaConfigFieldMap `json:"FieldMap,omitempty" xml:"FieldMap,omitempty" type:"Repeated"`
-	SchemaId          *string                                                                              `json:"SchemaId,omitempty" xml:"SchemaId,omitempty"`
+	// The ID of the external approval process. When the approval type is 1 (DingTalk approval) or 3 (Lark approval), this parameter specifies the process code (processCode) of the external platform.
+	//
+	// example:
+	//
+	// PROC-1a2b3c4d5e6f****
+	ExternalProcessId *string `json:"ExternalProcessId,omitempty" xml:"ExternalProcessId,omitempty"`
+	// The mapping list between system fields and external approval form controls.
+	FieldMap []*UpdateApprovalProcessRequestMatchSchemaConfigsDomainWhitelistSchemaConfigFieldMap `json:"FieldMap,omitempty" xml:"FieldMap,omitempty" type:"Repeated"`
+	// The ID of the approval template. The ID must be consistent with the template ID of the corresponding policy type in MatchSchemas. If this parameter is left empty, the approval template association is not saved for this policy type.
+	//
+	// example:
+	//
+	// approval-schema-090134f1ebff****
+	SchemaId *string `json:"SchemaId,omitempty" xml:"SchemaId,omitempty"`
 }
 
 func (s UpdateApprovalProcessRequestMatchSchemaConfigsDomainWhitelistSchemaConfig) String() string {
@@ -779,9 +920,24 @@ func (s *UpdateApprovalProcessRequestMatchSchemaConfigsDomainWhitelistSchemaConf
 }
 
 type UpdateApprovalProcessRequestMatchSchemaConfigsDomainWhitelistSchemaConfigFieldMap struct {
-	DisplayField      *string `json:"DisplayField,omitempty" xml:"DisplayField,omitempty"`
+	// The name of the control in the external approval form. This parameter is used to locate the form control when the approval type is 1 (DingTalk approval).
+	//
+	// example:
+	//
+	// Report website access
+	DisplayField *string `json:"DisplayField,omitempty" xml:"DisplayField,omitempty"`
+	// The type and identifier of the external approval form control, in the format of Type%%%ControlID. This parameter is used to locate the form control when the approval type is 2 (WeCom approval) or 3 (Lark approval).
+	//
+	// example:
+	//
+	// Textarea%%%widget-1a2b****
 	DisplayFieldValue *string `json:"DisplayFieldValue,omitempty" xml:"DisplayFieldValue,omitempty"`
-	SystemField       *string `json:"SystemField,omitempty" xml:"SystemField,omitempty"`
+	// The identifier of the system field, such as reportDomain.
+	//
+	// example:
+	//
+	// reportDomain
+	SystemField *string `json:"SystemField,omitempty" xml:"SystemField,omitempty"`
 }
 
 func (s UpdateApprovalProcessRequestMatchSchemaConfigsDomainWhitelistSchemaConfigFieldMap) String() string {
@@ -824,9 +980,20 @@ func (s *UpdateApprovalProcessRequestMatchSchemaConfigsDomainWhitelistSchemaConf
 }
 
 type UpdateApprovalProcessRequestMatchSchemaConfigsEndpointHardeningSchemaConfig struct {
-	ExternalProcessId *string                                                                                `json:"ExternalProcessId,omitempty" xml:"ExternalProcessId,omitempty"`
-	FieldMap          []*UpdateApprovalProcessRequestMatchSchemaConfigsEndpointHardeningSchemaConfigFieldMap `json:"FieldMap,omitempty" xml:"FieldMap,omitempty" type:"Repeated"`
-	SchemaId          *string                                                                                `json:"SchemaId,omitempty" xml:"SchemaId,omitempty"`
+	// The ID of the external approval process. When the approval type is 1 (DingTalk approval) or 3 (Lark approval), this parameter specifies the process code (processCode) of the external platform.
+	//
+	// example:
+	//
+	// PROC-1a2b3c4d5e6f****
+	ExternalProcessId *string `json:"ExternalProcessId,omitempty" xml:"ExternalProcessId,omitempty"`
+	// The mapping list between system fields and external approval form controls.
+	FieldMap []*UpdateApprovalProcessRequestMatchSchemaConfigsEndpointHardeningSchemaConfigFieldMap `json:"FieldMap,omitempty" xml:"FieldMap,omitempty" type:"Repeated"`
+	// The ID of the approval template. The ID must be consistent with the template ID of the corresponding policy type in MatchSchemas. If this parameter is left empty, the approval template association is not saved for this policy type.
+	//
+	// example:
+	//
+	// approval-schema-090134f1ebff****
+	SchemaId *string `json:"SchemaId,omitempty" xml:"SchemaId,omitempty"`
 }
 
 func (s UpdateApprovalProcessRequestMatchSchemaConfigsEndpointHardeningSchemaConfig) String() string {
@@ -878,9 +1045,24 @@ func (s *UpdateApprovalProcessRequestMatchSchemaConfigsEndpointHardeningSchemaCo
 }
 
 type UpdateApprovalProcessRequestMatchSchemaConfigsEndpointHardeningSchemaConfigFieldMap struct {
-	DisplayField      *string `json:"DisplayField,omitempty" xml:"DisplayField,omitempty"`
+	// The name of the control in the external approval form. This parameter is used to locate the form control when the approval type is 1 (DingTalk approval).
+	//
+	// example:
+	//
+	// Process name
+	DisplayField *string `json:"DisplayField,omitempty" xml:"DisplayField,omitempty"`
+	// The type and identifier of the external approval form control, in the format of Type%%%ControlID. This parameter is used to locate the form control when the approval type is 2 (WeCom approval) or 3 (Lark approval).
+	//
+	// example:
+	//
+	// Textarea%%%widget-1a2b****
 	DisplayFieldValue *string `json:"DisplayFieldValue,omitempty" xml:"DisplayFieldValue,omitempty"`
-	SystemField       *string `json:"SystemField,omitempty" xml:"SystemField,omitempty"`
+	// The system field identifier, such as processName.
+	//
+	// example:
+	//
+	// processName
+	SystemField *string `json:"SystemField,omitempty" xml:"SystemField,omitempty"`
 }
 
 func (s UpdateApprovalProcessRequestMatchSchemaConfigsEndpointHardeningSchemaConfigFieldMap) String() string {
@@ -923,9 +1105,20 @@ func (s *UpdateApprovalProcessRequestMatchSchemaConfigsEndpointHardeningSchemaCo
 }
 
 type UpdateApprovalProcessRequestMatchSchemaConfigsPeripheralBlockSchemaConfig struct {
-	ExternalProcessId *string                                                                              `json:"ExternalProcessId,omitempty" xml:"ExternalProcessId,omitempty"`
-	FieldMap          []*UpdateApprovalProcessRequestMatchSchemaConfigsPeripheralBlockSchemaConfigFieldMap `json:"FieldMap,omitempty" xml:"FieldMap,omitempty" type:"Repeated"`
-	SchemaId          *string                                                                              `json:"SchemaId,omitempty" xml:"SchemaId,omitempty"`
+	// The ID of the external approval process. When the approval type is 1 (DingTalk approval) or 3 (Lark approval), this parameter specifies the process code (processCode) of the external platform.
+	//
+	// example:
+	//
+	// PROC-1a2b3c4d5e6f****
+	ExternalProcessId *string `json:"ExternalProcessId,omitempty" xml:"ExternalProcessId,omitempty"`
+	// The mapping list between system fields and external approval form controls.
+	FieldMap []*UpdateApprovalProcessRequestMatchSchemaConfigsPeripheralBlockSchemaConfigFieldMap `json:"FieldMap,omitempty" xml:"FieldMap,omitempty" type:"Repeated"`
+	// The ID of the approval template. The ID must be consistent with the template ID of the corresponding policy type in MatchSchemas. If this parameter is left empty, the approval template association is not saved for this policy type.
+	//
+	// example:
+	//
+	// approval-schema-090134f1ebff****
+	SchemaId *string `json:"SchemaId,omitempty" xml:"SchemaId,omitempty"`
 }
 
 func (s UpdateApprovalProcessRequestMatchSchemaConfigsPeripheralBlockSchemaConfig) String() string {
@@ -977,9 +1170,24 @@ func (s *UpdateApprovalProcessRequestMatchSchemaConfigsPeripheralBlockSchemaConf
 }
 
 type UpdateApprovalProcessRequestMatchSchemaConfigsPeripheralBlockSchemaConfigFieldMap struct {
-	DisplayField      *string `json:"DisplayField,omitempty" xml:"DisplayField,omitempty"`
+	// The name of the control in the external approval form. This parameter is used to locate the form control when the approval type is 1 (DingTalk approval).
+	//
+	// example:
+	//
+	// Operating system
+	DisplayField *string `json:"DisplayField,omitempty" xml:"DisplayField,omitempty"`
+	// The type and identifier of the external approval form control, in the format of Type%%%ControlID. This parameter is used to locate the form control when the approval type is 2 (WeCom approval) or 3 (Lark approval).
+	//
+	// example:
+	//
+	// Textarea%%%widget-1a2b****
 	DisplayFieldValue *string `json:"DisplayFieldValue,omitempty" xml:"DisplayFieldValue,omitempty"`
-	SystemField       *string `json:"SystemField,omitempty" xml:"SystemField,omitempty"`
+	// The identifier of the system field, such as devType.
+	//
+	// example:
+	//
+	// devType
+	SystemField *string `json:"SystemField,omitempty" xml:"SystemField,omitempty"`
 }
 
 func (s UpdateApprovalProcessRequestMatchSchemaConfigsPeripheralBlockSchemaConfigFieldMap) String() string {
@@ -1022,9 +1230,20 @@ func (s *UpdateApprovalProcessRequestMatchSchemaConfigsPeripheralBlockSchemaConf
 }
 
 type UpdateApprovalProcessRequestMatchSchemaConfigsPrivateAccessBlockSchemaConfig struct {
-	ExternalProcessId *string                                                                                 `json:"ExternalProcessId,omitempty" xml:"ExternalProcessId,omitempty"`
-	FieldMap          []*UpdateApprovalProcessRequestMatchSchemaConfigsPrivateAccessBlockSchemaConfigFieldMap `json:"FieldMap,omitempty" xml:"FieldMap,omitempty" type:"Repeated"`
-	SchemaId          *string                                                                                 `json:"SchemaId,omitempty" xml:"SchemaId,omitempty"`
+	// The ID of the external approval process. When the approval type is 1 (DingTalk approval) or 3 (Lark approval), this parameter specifies the process code (processCode) of the external platform.
+	//
+	// example:
+	//
+	// PROC-1a2b3c4d5e6f****
+	ExternalProcessId *string `json:"ExternalProcessId,omitempty" xml:"ExternalProcessId,omitempty"`
+	// The mapping list between system fields and external approval form controls.
+	FieldMap []*UpdateApprovalProcessRequestMatchSchemaConfigsPrivateAccessBlockSchemaConfigFieldMap `json:"FieldMap,omitempty" xml:"FieldMap,omitempty" type:"Repeated"`
+	// The ID of the approval template. The ID must be consistent with the template ID of the corresponding policy type in MatchSchemas. If this parameter is left empty, the approval template association is not saved for this policy type.
+	//
+	// example:
+	//
+	// approval-schema-090134f1ebff****
+	SchemaId *string `json:"SchemaId,omitempty" xml:"SchemaId,omitempty"`
 }
 
 func (s UpdateApprovalProcessRequestMatchSchemaConfigsPrivateAccessBlockSchemaConfig) String() string {
@@ -1076,9 +1295,24 @@ func (s *UpdateApprovalProcessRequestMatchSchemaConfigsPrivateAccessBlockSchemaC
 }
 
 type UpdateApprovalProcessRequestMatchSchemaConfigsPrivateAccessBlockSchemaConfigFieldMap struct {
-	DisplayField      *string `json:"DisplayField,omitempty" xml:"DisplayField,omitempty"`
+	// The name of the control in the external approval form. This parameter is used to locate the form control when the approval type is 1 (DingTalk approval).
+	//
+	// example:
+	//
+	// Reported application
+	DisplayField *string `json:"DisplayField,omitempty" xml:"DisplayField,omitempty"`
+	// The type and identifier of the external approval form control, in the format of Type%%%ControlID. This parameter is used to locate the form control when the approval type is 2 (WeCom approval) or 3 (Lark approval).
+	//
+	// example:
+	//
+	// Textarea%%%widget-1a2b****
 	DisplayFieldValue *string `json:"DisplayFieldValue,omitempty" xml:"DisplayFieldValue,omitempty"`
-	SystemField       *string `json:"SystemField,omitempty" xml:"SystemField,omitempty"`
+	// The system field identifier, such as applicationId.
+	//
+	// example:
+	//
+	// applicationId
+	SystemField *string `json:"SystemField,omitempty" xml:"SystemField,omitempty"`
 }
 
 func (s UpdateApprovalProcessRequestMatchSchemaConfigsPrivateAccessBlockSchemaConfigFieldMap) String() string {
@@ -1121,9 +1355,20 @@ func (s *UpdateApprovalProcessRequestMatchSchemaConfigsPrivateAccessBlockSchemaC
 }
 
 type UpdateApprovalProcessRequestMatchSchemaConfigsSoftwareBlockSchemaConfig struct {
-	ExternalProcessId *string                                                                            `json:"ExternalProcessId,omitempty" xml:"ExternalProcessId,omitempty"`
-	FieldMap          []*UpdateApprovalProcessRequestMatchSchemaConfigsSoftwareBlockSchemaConfigFieldMap `json:"FieldMap,omitempty" xml:"FieldMap,omitempty" type:"Repeated"`
-	SchemaId          *string                                                                            `json:"SchemaId,omitempty" xml:"SchemaId,omitempty"`
+	// The ID of the external approval process. When the approval type is 1 (DingTalk approval) or 3 (Lark approval), this parameter specifies the process code (processCode) of the external platform.
+	//
+	// example:
+	//
+	// PROC-1a2b3c4d5e6f****
+	ExternalProcessId *string `json:"ExternalProcessId,omitempty" xml:"ExternalProcessId,omitempty"`
+	// The mapping list between system fields and external approval form controls.
+	FieldMap []*UpdateApprovalProcessRequestMatchSchemaConfigsSoftwareBlockSchemaConfigFieldMap `json:"FieldMap,omitempty" xml:"FieldMap,omitempty" type:"Repeated"`
+	// The ID of the approval template. The ID must be consistent with the template ID of the corresponding policy type in MatchSchemas. If this parameter is left empty, the approval template association is not saved for this policy type.
+	//
+	// example:
+	//
+	// approval-schema-090134f1ebff****
+	SchemaId *string `json:"SchemaId,omitempty" xml:"SchemaId,omitempty"`
 }
 
 func (s UpdateApprovalProcessRequestMatchSchemaConfigsSoftwareBlockSchemaConfig) String() string {
@@ -1175,9 +1420,24 @@ func (s *UpdateApprovalProcessRequestMatchSchemaConfigsSoftwareBlockSchemaConfig
 }
 
 type UpdateApprovalProcessRequestMatchSchemaConfigsSoftwareBlockSchemaConfigFieldMap struct {
-	DisplayField      *string `json:"DisplayField,omitempty" xml:"DisplayField,omitempty"`
+	// The name of the control in the external approval form. This parameter is used to locate the form control when the approval type is 1 (DingTalk approval).
+	//
+	// example:
+	//
+	// Report software
+	DisplayField *string `json:"DisplayField,omitempty" xml:"DisplayField,omitempty"`
+	// The type and identifier of the external approval form control, in the format of Type%%%ControlID. This parameter is used to locate the form control when the approval type is 2 (WeCom approval) or 3 (Lark approval).
+	//
+	// example:
+	//
+	// Textarea%%%widget-1a2b****
 	DisplayFieldValue *string `json:"DisplayFieldValue,omitempty" xml:"DisplayFieldValue,omitempty"`
-	SystemField       *string `json:"SystemField,omitempty" xml:"SystemField,omitempty"`
+	// The identifier of the system field, such as softwareName.
+	//
+	// example:
+	//
+	// softwareName
+	SystemField *string `json:"SystemField,omitempty" xml:"SystemField,omitempty"`
 }
 
 func (s UpdateApprovalProcessRequestMatchSchemaConfigsSoftwareBlockSchemaConfigFieldMap) String() string {
@@ -1220,9 +1480,20 @@ func (s *UpdateApprovalProcessRequestMatchSchemaConfigsSoftwareBlockSchemaConfig
 }
 
 type UpdateApprovalProcessRequestMatchSchemaConfigsSoftwareHardeningSchemaConfig struct {
-	ExternalProcessId *string                                                                                `json:"ExternalProcessId,omitempty" xml:"ExternalProcessId,omitempty"`
-	FieldMap          []*UpdateApprovalProcessRequestMatchSchemaConfigsSoftwareHardeningSchemaConfigFieldMap `json:"FieldMap,omitempty" xml:"FieldMap,omitempty" type:"Repeated"`
-	SchemaId          *string                                                                                `json:"SchemaId,omitempty" xml:"SchemaId,omitempty"`
+	// The ID of the external approval process. When the approval type is 1 (DingTalk approval) or 3 (Lark approval), this parameter specifies the process code (processCode) of the external platform.
+	//
+	// example:
+	//
+	// PROC-1a2b3c4d5e6f****
+	ExternalProcessId *string `json:"ExternalProcessId,omitempty" xml:"ExternalProcessId,omitempty"`
+	// The mapping list between system fields and external approval form controls.
+	FieldMap []*UpdateApprovalProcessRequestMatchSchemaConfigsSoftwareHardeningSchemaConfigFieldMap `json:"FieldMap,omitempty" xml:"FieldMap,omitempty" type:"Repeated"`
+	// The ID of the approval template. The ID must be consistent with the template ID of the corresponding policy type in MatchSchemas. If this parameter is left empty, the approval template association is not saved for this policy type.
+	//
+	// example:
+	//
+	// approval-schema-090134f1ebff****
+	SchemaId *string `json:"SchemaId,omitempty" xml:"SchemaId,omitempty"`
 }
 
 func (s UpdateApprovalProcessRequestMatchSchemaConfigsSoftwareHardeningSchemaConfig) String() string {
@@ -1274,9 +1545,24 @@ func (s *UpdateApprovalProcessRequestMatchSchemaConfigsSoftwareHardeningSchemaCo
 }
 
 type UpdateApprovalProcessRequestMatchSchemaConfigsSoftwareHardeningSchemaConfigFieldMap struct {
-	DisplayField      *string `json:"DisplayField,omitempty" xml:"DisplayField,omitempty"`
+	// The name of the control in the external approval form. This parameter is used to locate the form control when the approval type is 1 (DingTalk approval).
+	//
+	// example:
+	//
+	// Process name
+	DisplayField *string `json:"DisplayField,omitempty" xml:"DisplayField,omitempty"`
+	// The type and identifier of the external approval form control, in the format of Type%%%ControlID. This parameter is used to locate the form control when the approval type is 2 (WeCom approval) or 3 (Lark approval).
+	//
+	// example:
+	//
+	// Textarea%%%widget-1a2b****
 	DisplayFieldValue *string `json:"DisplayFieldValue,omitempty" xml:"DisplayFieldValue,omitempty"`
-	SystemField       *string `json:"SystemField,omitempty" xml:"SystemField,omitempty"`
+	// The system field identifier, such as processName.
+	//
+	// example:
+	//
+	// processName
+	SystemField *string `json:"SystemField,omitempty" xml:"SystemField,omitempty"`
 }
 
 func (s UpdateApprovalProcessRequestMatchSchemaConfigsSoftwareHardeningSchemaConfigFieldMap) String() string {
@@ -1319,7 +1605,7 @@ func (s *UpdateApprovalProcessRequestMatchSchemaConfigsSoftwareHardeningSchemaCo
 }
 
 type UpdateApprovalProcessRequestMatchSchemas struct {
-	// The ID of the device uninstall approval template.
+	// The ID of the application uninstallation approval template.
 	//
 	// example:
 	//
@@ -1331,7 +1617,7 @@ type UpdateApprovalProcessRequestMatchSchemas struct {
 	//
 	// approval-schema-090134f1ebff****
 	DeviceRegistrationSchemaId *string `json:"DeviceRegistrationSchemaId,omitempty" xml:"DeviceRegistrationSchemaId,omitempty"`
-	// The ID of the file outgoing approval template.
+	// The ID of the file outbound sending approval template.
 	//
 	// example:
 	//
@@ -1348,21 +1634,36 @@ type UpdateApprovalProcessRequestMatchSchemas struct {
 	// example:
 	//
 	// approval-schema-090134f1ebff****
-	DomainWhitelistSchemaId   *string `json:"DomainWhitelistSchemaId,omitempty" xml:"DomainWhitelistSchemaId,omitempty"`
+	DomainWhitelistSchemaId *string `json:"DomainWhitelistSchemaId,omitempty" xml:"DomainWhitelistSchemaId,omitempty"`
+	// The ID of the endpoint hardening approval template.
+	//
+	// example:
+	//
+	// approval-schema-090134f1ebff****
 	EndpointHardeningSchemaId *string `json:"EndpointHardeningSchemaId,omitempty" xml:"EndpointHardeningSchemaId,omitempty"`
 	// The ID of the peripheral control approval template.
 	//
 	// example:
 	//
 	// approval-schema-090134f1ebff****
-	PeripheralBlockSchemaId    *string `json:"PeripheralBlockSchemaId,omitempty" xml:"PeripheralBlockSchemaId,omitempty"`
+	PeripheralBlockSchemaId *string `json:"PeripheralBlockSchemaId,omitempty" xml:"PeripheralBlockSchemaId,omitempty"`
+	// The ID of the internal network access control approval template.
+	//
+	// example:
+	//
+	// approval-schema-090134f1ebff****
 	PrivateAccessBlockSchemaId *string `json:"PrivateAccessBlockSchemaId,omitempty" xml:"PrivateAccessBlockSchemaId,omitempty"`
 	// The ID of the software blocking approval template.
 	//
 	// example:
 	//
 	// approval-schema-090134f1ebff****
-	SoftwareBlockSchemaId     *string `json:"SoftwareBlockSchemaId,omitempty" xml:"SoftwareBlockSchemaId,omitempty"`
+	SoftwareBlockSchemaId *string `json:"SoftwareBlockSchemaId,omitempty" xml:"SoftwareBlockSchemaId,omitempty"`
+	// The ID of the software hardening approval template.
+	//
+	// example:
+	//
+	// approval-schema-090134f1ebff****
 	SoftwareHardeningSchemaId *string `json:"SoftwareHardeningSchemaId,omitempty" xml:"SoftwareHardeningSchemaId,omitempty"`
 }
 

@@ -16,11 +16,11 @@ type iAddDeviceGroupMatchDevicesRequest interface {
 }
 
 type AddDeviceGroupMatchDevicesRequest struct {
-	// The collection of terminal device IDs to add. At least one ID must be specified, and duplicate values are not allowed.
+	// The IDs of the terminal devices to add. You must specify at least one ID, and the IDs must be unique.
 	//
 	// This parameter is required.
 	DevTags []*string `json:"DevTags,omitempty" xml:"DevTags,omitempty" type:"Repeated"`
-	// The device label ID.
+	// The ID of the device tag.
 	//
 	// This parameter is required.
 	//

@@ -33,7 +33,7 @@ type ListNetBandwidthRequest struct {
 	// if can be null:
 	// true
 	InstanceIds []*string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
-	// The network type. If this parameter is left empty, both VPC and Connector instances are queried.
+	// The network type. If this parameter is left empty, both VPC and Connector network instances are queried.
 	//
 	// if can be null:
 	// true

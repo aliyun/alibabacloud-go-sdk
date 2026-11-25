@@ -26,7 +26,7 @@ type ListUserDevicesResponseBody struct {
 	//
 	// 5FEF5CFA-14CC-5DE5-BD1F-AFFE0996E71D
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of endpoint devices.
+	// The total number of terminal devices.
 	//
 	// example:
 	//
@@ -99,7 +99,7 @@ type ListUserDevicesResponseBodyDevices struct {
 	//
 	// 2.2.0
 	AppVersion *string `json:"AppVersion,omitempty" xml:"AppVersion,omitempty"`
-	// The auto-logon status of the client.
+	// The auto-login status of the client.
 	//
 	// example:
 	//
@@ -111,7 +111,7 @@ type ListUserDevicesResponseBodyDevices struct {
 	//
 	// Apple M1
 	CPU *string `json:"CPU,omitempty" xml:"CPU,omitempty"`
-	// The city of the public IP address.
+	// The city to which the public IP address belongs.
 	//
 	// example:
 	//
@@ -129,7 +129,7 @@ type ListUserDevicesResponseBodyDevices struct {
 	//
 	// 北京市
 	CityZh *string `json:"CityZh,omitempty" xml:"CityZh,omitempty"`
-	// The continent of the public IP address.
+	// The continent to which the public IP address belongs.
 	//
 	// example:
 	//
@@ -147,7 +147,7 @@ type ListUserDevicesResponseBodyDevices struct {
 	//
 	// 亚洲
 	ContinentZh *string `json:"ContinentZh,omitempty" xml:"ContinentZh,omitempty"`
-	// The country of the public IP address.
+	// The country to which the public IP address belongs.
 	//
 	// example:
 	//
@@ -165,7 +165,7 @@ type ListUserDevicesResponseBodyDevices struct {
 	//
 	// 中国
 	CountryZh *string `json:"CountryZh,omitempty" xml:"CountryZh,omitempty"`
-	// The registration time of the endpoint device.
+	// The registration time of the endpoint device. Format: YYYY-MM-DD HH:mm:ss.
 	//
 	// example:
 	//
@@ -177,11 +177,11 @@ type ListUserDevicesResponseBodyDevices struct {
 	//
 	// Test Department
 	Department *string `json:"Department,omitempty" xml:"Department,omitempty"`
-	// The ownership of the endpoint device. Valid values:
+	// The ownership of the terminal device. Valid values:
 	//
 	// - **Personal**: Personal device.
 	//
-	// - **Company**: Company device.
+	// - **Company**: Corporate device.
 	//
 	// example:
 	//
@@ -203,7 +203,7 @@ type ListUserDevicesResponseBodyDevices struct {
 	//
 	// - **Locked**: Locked.
 	//
-	// - **Lost**: Reported lost.
+	// - **Lost**: Reported as lost.
 	//
 	// - **Unbound**: Unbound.
 	//
@@ -217,7 +217,7 @@ type ListUserDevicesResponseBodyDevices struct {
 	//
 	// 36efa42d-2c32-c4dc-e3fc-8541e33a****
 	DeviceTag *string `json:"DeviceTag,omitempty" xml:"DeviceTag,omitempty"`
-	// The operating system type of the endpoint device. Valid values:
+	// The terminal device operating system type. Valid values:
 	//
 	// - **Windows**: Windows.
 	//
@@ -229,7 +229,7 @@ type ListUserDevicesResponseBodyDevices struct {
 	//
 	// - **iOS**: iOS.
 	//
-	// - **Windows_Wuying**: WUYING Workspace.
+	// - **Windows_Wuying**: Wuying cloud desktop.
 	//
 	// example:
 	//
@@ -247,6 +247,18 @@ type ListUserDevicesResponseBodyDevices struct {
 	//
 	// APPLE SSD AP0512Q Media
 	Disk *string `json:"Disk,omitempty" xml:"Disk,omitempty"`
+	// The disk encryption status of the user endpoint device. Valid values: Unsupported (encryption is not supported), Unencrypted (not encrypted), Encrypting (encrypting), Encrypted (encrypted), and EncryptFailed (encryption failed). If the status is not reported, null, or unknown, Unencrypted is returned.
+	//
+	// example:
+	//
+	// Unsupported
+	DiskEncryptStatus *string `json:"DiskEncryptStatus,omitempty" xml:"DiskEncryptStatus,omitempty"`
+	// The reason why disk encryption failed or is not supported on the user endpoint device. This reason is returned only when DiskEncryptStatus is Unsupported or EncryptFailed. For other statuses, an empty string is returned. Maximum length: 512 characters.
+	//
+	// example:
+	//
+	// The current operating system version does not support BitLocker.
+	DiskEncryptStatusReason *string `json:"DiskEncryptStatusReason,omitempty" xml:"DiskEncryptStatusReason,omitempty"`
 	// The office data protection status. Valid values:
 	//
 	// - **Enabled**: Enabled.
@@ -291,19 +303,19 @@ type ListUserDevicesResponseBodyDevices struct {
 	//
 	// Enabled
 	IaStatus *string `json:"IaStatus,omitempty" xml:"IaStatus,omitempty"`
-	// The internal IP address of the endpoint device.
+	// The internal IP address of the terminal device.
 	//
 	// example:
 	//
 	// 192.168.XX.XX
 	InnerIP *string `json:"InnerIP,omitempty" xml:"InnerIP,omitempty"`
-	// Indicates whether the endpoint device is added to an Active Directory (AD) domain.
+	// Indicates whether the device is joined to an AD domain.
 	//
 	// example:
 	//
 	// true
 	JoinAdDomain *bool `json:"JoinAdDomain,omitempty" xml:"JoinAdDomain,omitempty"`
-	// The MAC address of the endpoint device.
+	// The MAC address of the terminal device.
 	//
 	// example:
 	//
@@ -329,7 +341,7 @@ type ListUserDevicesResponseBodyDevices struct {
 	//
 	// Enabled
 	NacStatus *string `json:"NacStatus,omitempty" xml:"NacStatus,omitempty"`
-	// The list of network interface controllers (NICs) of the endpoint device.
+	// The list of network interfaces.
 	NetInterfaceInfo []*ListUserDevicesResponseBodyDevicesNetInterfaceInfo `json:"NetInterfaceInfo,omitempty" xml:"NetInterfaceInfo,omitempty" type:"Repeated"`
 	// The internal network access status. Valid values:
 	//
@@ -343,7 +355,7 @@ type ListUserDevicesResponseBodyDevices struct {
 	//
 	// Enabled
 	PaStatus *string `json:"PaStatus,omitempty" xml:"PaStatus,omitempty"`
-	// The province of the public IP address.
+	// The province to which the public IP address belongs.
 	//
 	// example:
 	//
@@ -361,7 +373,7 @@ type ListUserDevicesResponseBodyDevices struct {
 	//
 	// 北京市
 	ProvinceZh *string `json:"ProvinceZh,omitempty" xml:"ProvinceZh,omitempty"`
-	// The ID of the user.
+	// The user ID.
 	//
 	// example:
 	//
@@ -389,7 +401,7 @@ type ListUserDevicesResponseBodyDevices struct {
 	//
 	// 5CG003****
 	SnBios *string `json:"SnBios,omitempty" xml:"SnBios,omitempty"`
-	// The serial number of the hard disk.
+	// The serial number of the disk drive.
 	//
 	// example:
 	//
@@ -401,19 +413,19 @@ type ListUserDevicesResponseBodyDevices struct {
 	//
 	// BFEBFBFF0008****
 	SnProcessor *string `json:"SnProcessor,omitempty" xml:"SnProcessor,omitempty"`
-	// The system serial number (SN).
+	// The system serial number.
 	//
 	// example:
 	//
 	// KVN9C9****
 	SnSystem *string `json:"SnSystem,omitempty" xml:"SnSystem,omitempty"`
-	// The logon IP address of the endpoint device.
+	// The logon IP address of the terminal device.
 	//
 	// example:
 	//
 	// 11.49.XX.XX
 	SrcIP *string `json:"SrcIP,omitempty" xml:"SrcIP,omitempty"`
-	// The last online time of the endpoint device.
+	// The last online time of the terminal device, in the YYYY-MM-DD HH:mm:ss format.
 	//
 	// example:
 	//
@@ -527,6 +539,14 @@ func (s *ListUserDevicesResponseBodyDevices) GetDeviceVersion() *string {
 
 func (s *ListUserDevicesResponseBodyDevices) GetDisk() *string {
 	return s.Disk
+}
+
+func (s *ListUserDevicesResponseBodyDevices) GetDiskEncryptStatus() *string {
+	return s.DiskEncryptStatus
+}
+
+func (s *ListUserDevicesResponseBodyDevices) GetDiskEncryptStatusReason() *string {
+	return s.DiskEncryptStatusReason
 }
 
 func (s *ListUserDevicesResponseBodyDevices) GetDlpStatus() *string {
@@ -747,6 +767,16 @@ func (s *ListUserDevicesResponseBodyDevices) SetDisk(v string) *ListUserDevicesR
 	return s
 }
 
+func (s *ListUserDevicesResponseBodyDevices) SetDiskEncryptStatus(v string) *ListUserDevicesResponseBodyDevices {
+	s.DiskEncryptStatus = &v
+	return s
+}
+
+func (s *ListUserDevicesResponseBodyDevices) SetDiskEncryptStatusReason(v string) *ListUserDevicesResponseBodyDevices {
+	s.DiskEncryptStatusReason = &v
+	return s
+}
+
 func (s *ListUserDevicesResponseBodyDevices) SetDlpStatus(v string) *ListUserDevicesResponseBodyDevices {
 	s.DlpStatus = &v
 	return s
@@ -896,13 +926,13 @@ func (s *ListUserDevicesResponseBodyDevices) Validate() error {
 }
 
 type ListUserDevicesResponseBodyDevicesNetInterfaceInfo struct {
-	// The MAC address of the NIC.
+	// The MAC address of the network interface.
 	//
 	// example:
 	//
 	// 00:16:XX:XX:7c:46
 	Mac *string `json:"Mac,omitempty" xml:"Mac,omitempty"`
-	// The name of the NIC.
+	// The name of the network interface.
 	//
 	// example:
 	//

@@ -44,31 +44,31 @@ type iGetVulScanScheduledStrategyResponseBody interface {
 }
 
 type GetVulScanScheduledStrategyResponseBody struct {
-	// The time when the policy was created, in seconds-level UNIX timestamp.
+	// The time when the policy was created. The value is a UNIX timestamp accurate to seconds.
 	//
 	// example:
 	//
 	// 1786291200
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The effective scope specified by organizational structure. An empty list is returned if the scope is not configured by organizational structure.
+	// The effective scope specified by organizational structure. If no organizational structure is configured, an empty list is returned.
 	CustomMatchGroup []*GetVulScanScheduledStrategyResponseBodyCustomMatchGroup `json:"CustomMatchGroup,omitempty" xml:"CustomMatchGroup,omitempty" type:"Repeated"`
-	// The time when the policy last triggered a scan, in seconds-level UNIX timestamp. The value 0 is returned if the policy has never been triggered.
+	// The time when the policy last triggered a scan. The value is a UNIX timestamp accurate to seconds. If the policy has never been triggered, 0 is returned.
 	//
 	// example:
 	//
 	// 1786291200
 	LastTriggerTime *int64 `json:"LastTriggerTime,omitempty" xml:"LastTriggerTime,omitempty"`
-	// The matching mode of the effective scope. Valid values:
+	// The matching mode for the effective scope. Valid values:
 	//
-	// - **UserGroupAll**: The policy takes effect on all users under the current Alibaba Cloud account.
+	// - **UserGroupAll**: Applies to all users under the current Alibaba Cloud account.
 	//
-	// - **UserGroupNormal**: The policy takes effect only on users in specified user groups.
+	// - **UserGroupNormal**: Applies only to users in the specified user groups.
 	//
 	// example:
 	//
 	// UserGroupNormal
 	MatchMode *string `json:"MatchMode,omitempty" xml:"MatchMode,omitempty"`
-	// The collection of user group IDs that the policy takes effect on. An empty list is returned when MatchMode is set to UserGroupAll.
+	// The collection of effective user group IDs. If MatchMode is set to UserGroupAll, an empty list is returned.
 	MatchTargetIds []*string `json:"MatchTargetIds,omitempty" xml:"MatchTargetIds,omitempty" type:"Repeated"`
 	// The policy priority. A smaller value indicates a higher priority. Valid values: 1 to 100.
 	//
@@ -76,19 +76,19 @@ type GetVulScanScheduledStrategyResponseBody struct {
 	//
 	// 1
 	Priority *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
 	// 3D7EC0AF-DB2A-5D9C-90EC-F090A6BAAEA7
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The start hour during which the scan can be triggered. The value is a whole hour number. Valid values: 0 to 23, inclusive. This field is not a timestamp.
+	// The start hour when a scan is allowed to be triggered. The value must be an integer on the hour. Valid values: 0 to 23. The specified hour is included. This field is not a timestamp.
 	//
 	// example:
 	//
 	// 1
 	ScanBeginTime *int32 `json:"ScanBeginTime,omitempty" xml:"ScanBeginTime,omitempty"`
-	// The end hour during which the scan can be triggered. The value is a whole hour number. Valid values: 1 to 24, exclusive of the specified hour, and must be greater than ScanBeginTime. This field is not a timestamp.
+	// The end hour when a scan is allowed to be triggered. The value must be an integer on the hour. Valid values: 1 to 24. The specified hour is excluded and must be greater than the value of ScanBeginTime. This field is not a timestamp.
 	//
 	// example:
 	//
@@ -96,15 +96,15 @@ type GetVulScanScheduledStrategyResponseBody struct {
 	ScanEndTime *int32 `json:"ScanEndTime,omitempty" xml:"ScanEndTime,omitempty"`
 	// The unit of the trigger cycle. Valid values:
 	//
-	// - **day**: by day.
+	// - **day**: Day.
 	//
-	// - **week**: by week.
+	// - **week**: Week.
 	//
 	// example:
 	//
 	// week
 	ScanFrequency *string `json:"ScanFrequency,omitempty" xml:"ScanFrequency,omitempty"`
-	// The interval number of the trigger cycle, which together with ScanFrequency determines the trigger cycle. Valid values: 1 to 30. For example, if ScanFrequency is set to week and ScanInterval is set to 1, the scan is triggered once a week.
+	// The interval of the trigger cycle. This parameter and ScanFrequency determine the trigger cycle. Valid values: 1 to 30. For example, if ScanFrequency is set to week and ScanInterval is set to 1, a scan is performed once a week.
 	//
 	// example:
 	//
@@ -120,13 +120,13 @@ type GetVulScanScheduledStrategyResponseBody struct {
 	//
 	// Enabled
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The policy description.
+	// The description of the policy.
 	//
 	// example:
 	//
-	// Execute vulnerability scanning on R&D department endpoints every Sunday at midnight
+	// Execute vulnerability scanning for R&D department endpoints every Sunday morning
 	StrategyDescription *string `json:"StrategyDescription,omitempty" xml:"StrategyDescription,omitempty"`
-	// The vulnerability scheduled scan policy ID.
+	// The ID of the scheduled vulnerability scanning policy.
 	//
 	// example:
 	//
@@ -136,9 +136,9 @@ type GetVulScanScheduledStrategyResponseBody struct {
 	//
 	// example:
 	//
-	// Weekly vulnerability scanning for R&D Department
+	// Weekly vulnerability scanning for the R&D department
 	StrategyName *string `json:"StrategyName,omitempty" xml:"StrategyName,omitempty"`
-	// The list of exempted users. Users in this list are excluded from the scan of this policy. An empty list is returned if no exemption is configured.
+	// The whitelist of users. Scans based on this policy are not performed on the users in the whitelist. If no whitelist is configured, an empty list is returned.
 	Whitelist []*string `json:"Whitelist,omitempty" xml:"Whitelist,omitempty" type:"Repeated"`
 }
 
@@ -310,7 +310,7 @@ func (s *GetVulScanScheduledStrategyResponseBody) Validate() error {
 type GetVulScanScheduledStrategyResponseBodyCustomMatchGroup struct {
 	// The collection of organizational structure nodes.
 	Group []*string `json:"Group,omitempty" xml:"Group,omitempty" type:"Repeated"`
-	// The identity provider ID.
+	// The ID of the identity source.
 	//
 	// example:
 	//

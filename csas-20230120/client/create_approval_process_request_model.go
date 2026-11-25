@@ -24,7 +24,7 @@ type CreateApprovalProcessRequest struct {
 	//
 	// example:
 	//
-	// This is an approval process
+	// Process for approving employees\\" temporary access to internal network applications
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The matched approval templates.
 	MatchSchemas *CreateApprovalProcessRequestMatchSchemas `json:"MatchSchemas,omitempty" xml:"MatchSchemas,omitempty" type:"Struct"`
@@ -34,7 +34,7 @@ type CreateApprovalProcessRequest struct {
 	//
 	// example:
 	//
-	// test_process
+	// Internal network access approval process
 	ProcessName *string `json:"ProcessName,omitempty" xml:"ProcessName,omitempty"`
 	// The list of approval nodes. You can define up to five approval nodes.
 	//
@@ -125,21 +125,36 @@ type CreateApprovalProcessRequestMatchSchemas struct {
 	// example:
 	//
 	// approval-schema-090134f1ebff****
-	DomainWhitelistSchemaId   *string `json:"DomainWhitelistSchemaId,omitempty" xml:"DomainWhitelistSchemaId,omitempty"`
+	DomainWhitelistSchemaId *string `json:"DomainWhitelistSchemaId,omitempty" xml:"DomainWhitelistSchemaId,omitempty"`
+	// The ID of the endpoint hardening approval template.
+	//
+	// example:
+	//
+	// approval-schema-090134f1ebff****
 	EndpointHardeningSchemaId *string `json:"EndpointHardeningSchemaId,omitempty" xml:"EndpointHardeningSchemaId,omitempty"`
 	// The ID of the peripheral control approval template.
 	//
 	// example:
 	//
 	// approval-schema-090134f1ebff****
-	PeripheralBlockSchemaId    *string `json:"PeripheralBlockSchemaId,omitempty" xml:"PeripheralBlockSchemaId,omitempty"`
+	PeripheralBlockSchemaId *string `json:"PeripheralBlockSchemaId,omitempty" xml:"PeripheralBlockSchemaId,omitempty"`
+	// The ID of the internal network access control approval template.
+	//
+	// example:
+	//
+	// approval-schema-090134f1ebff****
 	PrivateAccessBlockSchemaId *string `json:"PrivateAccessBlockSchemaId,omitempty" xml:"PrivateAccessBlockSchemaId,omitempty"`
 	// The ID of the software blocking approval template.
 	//
 	// example:
 	//
 	// approval-schema-090134f1ebff****
-	SoftwareBlockSchemaId     *string `json:"SoftwareBlockSchemaId,omitempty" xml:"SoftwareBlockSchemaId,omitempty"`
+	SoftwareBlockSchemaId *string `json:"SoftwareBlockSchemaId,omitempty" xml:"SoftwareBlockSchemaId,omitempty"`
+	// The ID of the software hardening approval template.
+	//
+	// example:
+	//
+	// approval-schema-090134f1ebff****
 	SoftwareHardeningSchemaId *string `json:"SoftwareHardeningSchemaId,omitempty" xml:"SoftwareHardeningSchemaId,omitempty"`
 }
 

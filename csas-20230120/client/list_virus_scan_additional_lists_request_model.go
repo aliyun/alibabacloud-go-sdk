@@ -22,7 +22,7 @@ type iListVirusScanAdditionalListsRequest interface {
 }
 
 type ListVirusScanAdditionalListsRequest struct {
-	// Filters by matching dimension. Duplicate values are not allowed. If this parameter is not specified, all matching dimensions are returned.
+	// Filters by match dimension. Duplicate values are not allowed. If this parameter is not specified, all match dimensions are returned.
 	AdditionalTypes []*string `json:"AdditionalTypes,omitempty" xml:"AdditionalTypes,omitempty" type:"Repeated"`
 	// The operating system type for which the list takes effect. Valid values:
 	//
@@ -36,19 +36,19 @@ type ListVirusScanAdditionalListsRequest struct {
 	//
 	// windows
 	DevType *string `json:"DevType,omitempty" xml:"DevType,omitempty"`
-	// The content of the list entry, using exact match. This parameter is used to locate a specific list entry by content and does not support fuzzy match.
+	// The content of the list entry. Exact match is used. This parameter is used to locate a specific list by content. Fuzzy match is not supported.
 	//
 	// example:
 	//
 	// .tmp
 	ListDetail *string `json:"ListDetail,omitempty" xml:"ListDetail,omitempty"`
-	// Filters by list entry ID. Duplicate values are not allowed. If this parameter is not specified, no filtering by list entry ID is applied.
+	// Filters by list entry ID. Duplicate values are not allowed. If this parameter is not specified, no filtering by list entry ID is performed.
 	ListIds []*string `json:"ListIds,omitempty" xml:"ListIds,omitempty" type:"Repeated"`
 	// Filters by list type. If this parameter is not specified, both blacklists and whitelists are returned. Valid values:
 	//
-	// - **Blacklist**: Blacklist. Files that match are directly identified as virus files.
+	// - **Blacklist**: Blacklist. Matched files are directly identified as virus files.
 	//
-	// - **Whitelist**: Whitelist. Files that match are excluded from virus detection.
+	// - **Whitelist**: Whitelist. Matched files are excluded from virus detection.
 	//
 	// example:
 	//

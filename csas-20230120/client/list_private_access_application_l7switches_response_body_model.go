@@ -18,7 +18,7 @@ type iListPrivateAccessApplicationL7SwitchesResponseBody interface {
 type ListPrivateAccessApplicationL7SwitchesResponseBody struct {
 	// The Layer 7 application configurations.
 	L7Switches []*ListPrivateAccessApplicationL7SwitchesResponseBodyL7Switches `json:"L7Switches,omitempty" xml:"L7Switches,omitempty" type:"Repeated"`
-	// Id of the request
+	// The request ID.
 	//
 	// example:
 	//
@@ -72,7 +72,7 @@ type ListPrivateAccessApplicationL7SwitchesResponseBodyL7Switches struct {
 	//
 	// pa-application-bbbc550d7c6e4db6
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
-	// The device tag mark switch. Valid values:
+	// The device tag marking switch. Valid values:
 	//
 	// - **Enabled**: Enabled.
 	//
@@ -82,7 +82,7 @@ type ListPrivateAccessApplicationL7SwitchesResponseBodyL7Switches struct {
 	//
 	// Disabled
 	DevTagMarkStatus *string `json:"DevTagMarkStatus,omitempty" xml:"DevTagMarkStatus,omitempty"`
-	// The download audit switch for sensitive applications. Valid values:
+	// The sensitive application download audit switch. Valid values:
 	//
 	// - **Enabled**: Enabled.
 	//
@@ -92,9 +92,9 @@ type ListPrivateAccessApplicationL7SwitchesResponseBodyL7Switches struct {
 	//
 	// Disabled
 	DownloadAuditStatus *string `json:"DownloadAuditStatus,omitempty" xml:"DownloadAuditStatus,omitempty"`
-	// The port ranges.
+	// The end port.
 	PortRanges []*ListPrivateAccessApplicationL7SwitchesResponseBodyL7SwitchesPortRanges `json:"PortRanges,omitempty" xml:"PortRanges,omitempty" type:"Repeated"`
-	// The source IP mark switch. Valid values:
+	// The source IP marking switch. Valid values:
 	//
 	// - **Enabled**: Enabled.
 	//
@@ -119,8 +119,9 @@ type ListPrivateAccessApplicationL7SwitchesResponseBodyL7Switches struct {
 	// example:
 	//
 	// 60
-	TimeoutSec *int32 `json:"TimeoutSec,omitempty" xml:"TimeoutSec,omitempty"`
-	// The user mark switch. Valid values:
+	TimeoutSec     *int32                                                                        `json:"TimeoutSec,omitempty" xml:"TimeoutSec,omitempty"`
+	UrlAccessPaths []*ListPrivateAccessApplicationL7SwitchesResponseBodyL7SwitchesUrlAccessPaths `json:"UrlAccessPaths,omitempty" xml:"UrlAccessPaths,omitempty" type:"Repeated"`
+	// The user marking switch. Valid values:
 	//
 	// - **Enabled**: Enabled.
 	//
@@ -178,6 +179,10 @@ func (s *ListPrivateAccessApplicationL7SwitchesResponseBodyL7Switches) GetTimeou
 	return s.TimeoutSec
 }
 
+func (s *ListPrivateAccessApplicationL7SwitchesResponseBodyL7Switches) GetUrlAccessPaths() []*ListPrivateAccessApplicationL7SwitchesResponseBodyL7SwitchesUrlAccessPaths {
+	return s.UrlAccessPaths
+}
+
 func (s *ListPrivateAccessApplicationL7SwitchesResponseBodyL7Switches) GetUserMarkStatus() *string {
 	return s.UserMarkStatus
 }
@@ -221,6 +226,11 @@ func (s *ListPrivateAccessApplicationL7SwitchesResponseBodyL7Switches) SetTimeou
 	return s
 }
 
+func (s *ListPrivateAccessApplicationL7SwitchesResponseBodyL7Switches) SetUrlAccessPaths(v []*ListPrivateAccessApplicationL7SwitchesResponseBodyL7SwitchesUrlAccessPaths) *ListPrivateAccessApplicationL7SwitchesResponseBodyL7Switches {
+	s.UrlAccessPaths = v
+	return s
+}
+
 func (s *ListPrivateAccessApplicationL7SwitchesResponseBodyL7Switches) SetUserMarkStatus(v string) *ListPrivateAccessApplicationL7SwitchesResponseBodyL7Switches {
 	s.UserMarkStatus = &v
 	return s
@@ -234,6 +244,15 @@ func (s *ListPrivateAccessApplicationL7SwitchesResponseBodyL7Switches) SetZeroTr
 func (s *ListPrivateAccessApplicationL7SwitchesResponseBodyL7Switches) Validate() error {
 	if s.PortRanges != nil {
 		for _, item := range s.PortRanges {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.UrlAccessPaths != nil {
+		for _, item := range s.UrlAccessPaths {
 			if item != nil {
 				if err := item.Validate(); err != nil {
 					return err
@@ -286,5 +305,40 @@ func (s *ListPrivateAccessApplicationL7SwitchesResponseBodyL7SwitchesPortRanges)
 }
 
 func (s *ListPrivateAccessApplicationL7SwitchesResponseBodyL7SwitchesPortRanges) Validate() error {
+	return dara.Validate(s)
+}
+
+type ListPrivateAccessApplicationL7SwitchesResponseBodyL7SwitchesUrlAccessPaths struct {
+	AllowMethods []*string `json:"AllowMethods,omitempty" xml:"AllowMethods,omitempty" type:"Repeated"`
+	Urls         []*string `json:"Urls,omitempty" xml:"Urls,omitempty" type:"Repeated"`
+}
+
+func (s ListPrivateAccessApplicationL7SwitchesResponseBodyL7SwitchesUrlAccessPaths) String() string {
+	return dara.Prettify(s)
+}
+
+func (s ListPrivateAccessApplicationL7SwitchesResponseBodyL7SwitchesUrlAccessPaths) GoString() string {
+	return s.String()
+}
+
+func (s *ListPrivateAccessApplicationL7SwitchesResponseBodyL7SwitchesUrlAccessPaths) GetAllowMethods() []*string {
+	return s.AllowMethods
+}
+
+func (s *ListPrivateAccessApplicationL7SwitchesResponseBodyL7SwitchesUrlAccessPaths) GetUrls() []*string {
+	return s.Urls
+}
+
+func (s *ListPrivateAccessApplicationL7SwitchesResponseBodyL7SwitchesUrlAccessPaths) SetAllowMethods(v []*string) *ListPrivateAccessApplicationL7SwitchesResponseBodyL7SwitchesUrlAccessPaths {
+	s.AllowMethods = v
+	return s
+}
+
+func (s *ListPrivateAccessApplicationL7SwitchesResponseBodyL7SwitchesUrlAccessPaths) SetUrls(v []*string) *ListPrivateAccessApplicationL7SwitchesResponseBodyL7SwitchesUrlAccessPaths {
+	s.Urls = v
+	return s
+}
+
+func (s *ListPrivateAccessApplicationL7SwitchesResponseBodyL7SwitchesUrlAccessPaths) Validate() error {
 	return dara.Validate(s)
 }

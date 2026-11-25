@@ -62,7 +62,7 @@ func (s *CreateApprovalProcessResponseBody) Validate() error {
 }
 
 type CreateApprovalProcessResponseBodyProcess struct {
-	// The list of policies associated with endpoint uninstallation.
+	// The list of policies associated with application uninstallation.
 	AppUninstallPolicies *CreateApprovalProcessResponseBodyProcessAppUninstallPolicies `json:"AppUninstallPolicies,omitempty" xml:"AppUninstallPolicies,omitempty" type:"Struct"`
 	// The time when the approval process was created. The time is in the YYYY-MM-DD HH:mm:ss format.
 	//
@@ -74,7 +74,7 @@ type CreateApprovalProcessResponseBodyProcess struct {
 	//
 	// example:
 	//
-	// This is an approval process
+	// Process for approving employees\\" temporary access to internal network applications
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The list of policies associated with device registration.
 	DeviceRegistrationPolicies *CreateApprovalProcessResponseBodyProcessDeviceRegistrationPolicies `json:"DeviceRegistrationPolicies,omitempty" xml:"DeviceRegistrationPolicies,omitempty" type:"Struct"`
@@ -83,10 +83,12 @@ type CreateApprovalProcessResponseBodyProcess struct {
 	// The list of policies associated with the domain name blacklist.
 	DomainBlacklistPolicies *CreateApprovalProcessResponseBodyProcessDomainBlacklistPolicies `json:"DomainBlacklistPolicies,omitempty" xml:"DomainBlacklistPolicies,omitempty" type:"Struct"`
 	// The list of policies associated with the domain name whitelist.
-	DomainWhitelistPolicies   *CreateApprovalProcessResponseBodyProcessDomainWhitelistPolicies   `json:"DomainWhitelistPolicies,omitempty" xml:"DomainWhitelistPolicies,omitempty" type:"Struct"`
+	DomainWhitelistPolicies *CreateApprovalProcessResponseBodyProcessDomainWhitelistPolicies `json:"DomainWhitelistPolicies,omitempty" xml:"DomainWhitelistPolicies,omitempty" type:"Struct"`
+	// The list of policies associated with endpoint hardening.
 	EndpointHardeningPolicies *CreateApprovalProcessResponseBodyProcessEndpointHardeningPolicies `json:"EndpointHardeningPolicies,omitempty" xml:"EndpointHardeningPolicies,omitempty" type:"Struct"`
 	// The list of policies associated with peripheral control.
-	PeripheralBlockPolicies    *CreateApprovalProcessResponseBodyProcessPeripheralBlockPolicies    `json:"PeripheralBlockPolicies,omitempty" xml:"PeripheralBlockPolicies,omitempty" type:"Struct"`
+	PeripheralBlockPolicies *CreateApprovalProcessResponseBodyProcessPeripheralBlockPolicies `json:"PeripheralBlockPolicies,omitempty" xml:"PeripheralBlockPolicies,omitempty" type:"Struct"`
+	// The list of policies associated with internal network access control.
 	PrivateAccessBlockPolicies *CreateApprovalProcessResponseBodyProcessPrivateAccessBlockPolicies `json:"PrivateAccessBlockPolicies,omitempty" xml:"PrivateAccessBlockPolicies,omitempty" type:"Struct"`
 	// The ID of the approval process.
 	//
@@ -98,12 +100,13 @@ type CreateApprovalProcessResponseBodyProcess struct {
 	//
 	// example:
 	//
-	// Test
+	// Internal network access approval process
 	ProcessName *string `json:"ProcessName,omitempty" xml:"ProcessName,omitempty"`
 	// The list of approval nodes.
 	ProcessNodes [][]*CreateApprovalProcessResponseBodyProcessProcessNodes `json:"ProcessNodes,omitempty" xml:"ProcessNodes,omitempty" type:"Repeated"`
 	// The list of policies associated with software blocking.
-	SoftwareBlockPolicies     *CreateApprovalProcessResponseBodyProcessSoftwareBlockPolicies     `json:"SoftwareBlockPolicies,omitempty" xml:"SoftwareBlockPolicies,omitempty" type:"Struct"`
+	SoftwareBlockPolicies *CreateApprovalProcessResponseBodyProcessSoftwareBlockPolicies `json:"SoftwareBlockPolicies,omitempty" xml:"SoftwareBlockPolicies,omitempty" type:"Struct"`
+	// The list of policies associated with software hardening.
 	SoftwareHardeningPolicies *CreateApprovalProcessResponseBodyProcessSoftwareHardeningPolicies `json:"SoftwareHardeningPolicies,omitempty" xml:"SoftwareHardeningPolicies,omitempty" type:"Struct"`
 }
 
@@ -305,7 +308,7 @@ func (s *CreateApprovalProcessResponseBodyProcess) Validate() error {
 }
 
 type CreateApprovalProcessResponseBodyProcessAppUninstallPolicies struct {
-	// The list of endpoint uninstallation policy IDs.
+	// The list of application uninstallation policy IDs.
 	PolicyIds []*string `json:"PolicyIds,omitempty" xml:"PolicyIds,omitempty" type:"Repeated"`
 	// The ID of the approval template.
 	//
@@ -510,8 +513,14 @@ func (s *CreateApprovalProcessResponseBodyProcessDomainWhitelistPolicies) Valida
 }
 
 type CreateApprovalProcessResponseBodyProcessEndpointHardeningPolicies struct {
+	// The list of endpoint hardening policy IDs.
 	PolicyIds []*string `json:"PolicyIds,omitempty" xml:"PolicyIds,omitempty" type:"Repeated"`
-	SchemaId  *string   `json:"SchemaId,omitempty" xml:"SchemaId,omitempty"`
+	// The ID of the approval template.
+	//
+	// example:
+	//
+	// approval-schema-090134f1ebff****
+	SchemaId *string `json:"SchemaId,omitempty" xml:"SchemaId,omitempty"`
 }
 
 func (s CreateApprovalProcessResponseBodyProcessEndpointHardeningPolicies) String() string {
@@ -586,8 +595,14 @@ func (s *CreateApprovalProcessResponseBodyProcessPeripheralBlockPolicies) Valida
 }
 
 type CreateApprovalProcessResponseBodyProcessPrivateAccessBlockPolicies struct {
+	// The list of internal network access application IDs.
 	PolicyIds []*string `json:"PolicyIds,omitempty" xml:"PolicyIds,omitempty" type:"Repeated"`
-	SchemaId  *string   `json:"SchemaId,omitempty" xml:"SchemaId,omitempty"`
+	// The ID of the approval template.
+	//
+	// example:
+	//
+	// approval-schema-090134f1ebff****
+	SchemaId *string `json:"SchemaId,omitempty" xml:"SchemaId,omitempty"`
 }
 
 func (s CreateApprovalProcessResponseBodyProcessPrivateAccessBlockPolicies) String() string {
@@ -621,7 +636,7 @@ func (s *CreateApprovalProcessResponseBodyProcessPrivateAccessBlockPolicies) Val
 }
 
 type CreateApprovalProcessResponseBodyProcessProcessNodes struct {
-	// The approver ID.
+	// The ID of the approver.
 	//
 	// example:
 	//
@@ -707,8 +722,14 @@ func (s *CreateApprovalProcessResponseBodyProcessSoftwareBlockPolicies) Validate
 }
 
 type CreateApprovalProcessResponseBodyProcessSoftwareHardeningPolicies struct {
+	// The list of software hardening policy IDs.
 	PolicyIds []*string `json:"PolicyIds,omitempty" xml:"PolicyIds,omitempty" type:"Repeated"`
-	SchemaId  *string   `json:"SchemaId,omitempty" xml:"SchemaId,omitempty"`
+	// The ID of the approval template.
+	//
+	// example:
+	//
+	// approval-schema-090134f1ebff****
+	SchemaId *string `json:"SchemaId,omitempty" xml:"SchemaId,omitempty"`
 }
 
 func (s CreateApprovalProcessResponseBodyProcessSoftwareHardeningPolicies) String() string {

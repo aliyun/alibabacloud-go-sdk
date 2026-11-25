@@ -62,11 +62,11 @@ func (s *GetUserDeviceResponseBody) Validate() error {
 }
 
 type GetUserDeviceResponseBodyDevice struct {
-	// The status of the client. Valid values:
+	// The client status. Valid values:
 	//
-	// - **Online**: Online.
+	// - **Online**: online
 	//
-	// - **Offline**: Offline.
+	// - **Offline**: offline
 	//
 	// example:
 	//
@@ -78,19 +78,19 @@ type GetUserDeviceResponseBodyDevice struct {
 	//
 	// 2.2.0
 	AppVersion *string `json:"AppVersion,omitempty" xml:"AppVersion,omitempty"`
-	// The password-free logon status of the device. Valid values:
+	// The passwordless login status of the device. Valid values:
 	//
-	// - **Enabled**: Enabled.
+	// - **Enabled**: enabled
 	//
-	// - **Disabled**: Disabled.
+	// - **Disabled**: disabled
 	//
-	// - **Unprovisioned**: Unprovisioned.
+	// - **Unprovisioned**: unprovisioned
 	//
 	// example:
 	//
 	// Enabled
 	AutoLoginStatus *string `json:"AutoLoginStatus,omitempty" xml:"AutoLoginStatus,omitempty"`
-	// The battery health percentage.
+	// The battery health.
 	//
 	// example:
 	//
@@ -162,7 +162,7 @@ type GetUserDeviceResponseBodyDevice struct {
 	//
 	// 中国
 	CountryZh *string `json:"CountryZh,omitempty" xml:"CountryZh,omitempty"`
-	// The registration time of the endpoint device. Format: YYYY-MM-DD HH:mm:ss.
+	// The registration time of the endpoint device. The format is YYYY-MM-DD HH:mm:ss.
 	//
 	// example:
 	//
@@ -176,9 +176,9 @@ type GetUserDeviceResponseBodyDevice struct {
 	Department *string `json:"Department,omitempty" xml:"Department,omitempty"`
 	// The ownership of the endpoint device. Valid values:
 	//
-	// - **Personal**: Personal device.
+	// - **Personal**: personal device
 	//
-	// - **Company**: Company device.
+	// - **Company**: company device
 	//
 	// example:
 	//
@@ -192,17 +192,17 @@ type GetUserDeviceResponseBodyDevice struct {
 	DeviceModel *string `json:"DeviceModel,omitempty" xml:"DeviceModel,omitempty"`
 	// The status of the endpoint device. Valid values:
 	//
-	// - **Online**: Online.
+	// - **Online**: online
 	//
-	// - **Offline**: Offline.
+	// - **Offline**: offline
 	//
-	// - **LongTermOffline**: Long-term offline.
+	// - **LongTermOffline**: long-term offline
 	//
-	// - **Locked**: Locked.
+	// - **Locked**: locked
 	//
-	// - **Lost**: Reported as lost.
+	// - **Lost**: lost
 	//
-	// - **Unbound**: Unbound.
+	// - **Unbound**: unbound
 	//
 	// example:
 	//
@@ -216,17 +216,17 @@ type GetUserDeviceResponseBodyDevice struct {
 	DeviceTag *string `json:"DeviceTag,omitempty" xml:"DeviceTag,omitempty"`
 	// The operating system type of the endpoint device. Valid values:
 	//
-	// - **Windows**: Windows.
+	// - **Windows**: Windows
 	//
-	// - **macOS**: macOS.
+	// - **macOS**: macOS
 	//
-	// - **Linux**: Linux.
+	// - **Linux**: Linux
 	//
-	// - **Android**: Android.
+	// - **Android**: Android
 	//
-	// - **iOS**: iOS.
+	// - **iOS**: iOS
 	//
-	// - **Windows_Wuying**: WUYING Workspace.
+	// - **Windows_Wuying**: WUYING Workspace
 	//
 	// example:
 	//
@@ -244,13 +244,25 @@ type GetUserDeviceResponseBodyDevice struct {
 	//
 	// APPLE SSD AP0512Q Media
 	Disk *string `json:"Disk,omitempty" xml:"Disk,omitempty"`
-	// The available disk space, in GB.
+	// The available disk space. Unit: GB.
 	//
 	// example:
 	//
 	// 200
 	DiskAvailable *int32 `json:"DiskAvailable,omitempty" xml:"DiskAvailable,omitempty"`
-	// The used disk space, in GB.
+	// The disk encryption status of the user endpoint device. Valid values: Unsupported (encryption not supported), Unencrypted (not encrypted), Encrypting (encrypting), Encrypted (encrypted), and EncryptFailed (encryption failed). If the status is not reported, is null, or is unknown, Unencrypted is returned.
+	//
+	// example:
+	//
+	// Unsupported
+	DiskEncryptStatus *string `json:"DiskEncryptStatus,omitempty" xml:"DiskEncryptStatus,omitempty"`
+	// The reason why disk encryption failed or is not supported on the user endpoint device. This reason is returned only when DiskEncryptStatus is Unsupported or EncryptFailed. For other statuses, an empty string is returned. Maximum length: 512 characters.
+	//
+	// example:
+	//
+	// The current operating system version does not support BitLocker
+	DiskEncryptStatusReason *string `json:"DiskEncryptStatusReason,omitempty" xml:"DiskEncryptStatusReason,omitempty"`
+	// The used disk space. Unit: GB.
 	//
 	// example:
 	//
@@ -258,13 +270,13 @@ type GetUserDeviceResponseBodyDevice struct {
 	DiskUsed *int32 `json:"DiskUsed,omitempty" xml:"DiskUsed,omitempty"`
 	// The office data protection status. Valid values:
 	//
-	// - **Enabled**: Enabled.
+	// - **Enabled**: enabled
 	//
-	// - **Disabled**: Disabled.
+	// - **Disabled**: disabled
 	//
-	// - **Unprovisioned**: Unprovisioned.
+	// - **Unprovisioned**: unprovisioned
 	//
-	// - **Unauthorized**: Unauthorized.
+	// - **Unauthorized**: unauthorized
 	//
 	// example:
 	//
@@ -272,9 +284,9 @@ type GetUserDeviceResponseBodyDevice struct {
 	DlpStatus *string `json:"DlpStatus,omitempty" xml:"DlpStatus,omitempty"`
 	// The anti-intrusion status. Valid values:
 	//
-	// - **Enabled**: Enabled.
+	// - **Enabled**: enabled
 	//
-	// - **Disabled**: Disabled.
+	// - **Disabled**: disabled
 	//
 	// example:
 	//
@@ -290,11 +302,11 @@ type GetUserDeviceResponseBodyDevice struct {
 	Hostname *string `json:"Hostname,omitempty" xml:"Hostname,omitempty"`
 	// The Internet access status. Valid values:
 	//
-	// - **Enabled**: Enabled.
+	// - **Enabled**: enabled
 	//
-	// - **Disabled**: Disabled.
+	// - **Disabled**: disabled
 	//
-	// - **Unprovisioned**: Unprovisioned.
+	// - **Unprovisioned**: unprovisioned
 	//
 	// example:
 	//
@@ -306,7 +318,7 @@ type GetUserDeviceResponseBodyDevice struct {
 	//
 	// 172.16.XX.XX
 	InnerIP *string `json:"InnerIP,omitempty" xml:"InnerIP,omitempty"`
-	// Indicates whether the terminal is joined to an Active Directory (AD) domain.
+	// Indicates whether the endpoint has joined an Active Directory (AD) domain.
 	//
 	// example:
 	//
@@ -320,7 +332,7 @@ type GetUserDeviceResponseBodyDevice struct {
 	Mac *string `json:"Mac,omitempty" xml:"Mac,omitempty"`
 	// The collection of matched device group IDs.
 	MatchDeviceGroupIds []*string `json:"MatchDeviceGroupIds,omitempty" xml:"MatchDeviceGroupIds,omitempty" type:"Repeated"`
-	// The memory capacity of the endpoint device. Unit: GB.
+	// The memory capacity of the terminal device. Unit: GB.
 	//
 	// example:
 	//
@@ -338,7 +350,7 @@ type GetUserDeviceResponseBodyDevice struct {
 	//
 	// Unprovisioned
 	NacStatus *string `json:"NacStatus,omitempty" xml:"NacStatus,omitempty"`
-	// The list of network interface controllers (NICs) of the endpoint device.
+	// The list of network interface controllers (NICs) of the terminal device.
 	NetInterfaceInfo []*GetUserDeviceResponseBodyDeviceNetInterfaceInfo `json:"NetInterfaceInfo,omitempty" xml:"NetInterfaceInfo,omitempty" type:"Repeated"`
 	// The internal network access status. Valid values:
 	//
@@ -352,7 +364,7 @@ type GetUserDeviceResponseBodyDevice struct {
 	//
 	// Enabled
 	PaStatus *string `json:"PaStatus,omitempty" xml:"PaStatus,omitempty"`
-	// The list of running processes on the terminal.
+	// The list of running processes on the terminal device.
 	Processes []*GetUserDeviceResponseBodyDeviceProcesses `json:"Processes,omitempty" xml:"Processes,omitempty" type:"Repeated"`
 	// The province to which the public IP address belongs.
 	//
@@ -372,23 +384,23 @@ type GetUserDeviceResponseBodyDevice struct {
 	//
 	// 北京市
 	ProvinceZh *string `json:"ProvinceZh,omitempty" xml:"ProvinceZh,omitempty"`
-	// The ID of the user.
+	// The user ID.
 	//
 	// example:
 	//
 	// su_e8f218fb171edd167c2ad917d21f53148bdefc510ca1f3c3cc0249d3643d****
 	SaseUserId *string `json:"SaseUserId,omitempty" xml:"SaseUserId,omitempty"`
-	// Specifies whether sharing is enabled for the device. Valid values:
+	// Indicates whether sharing is enabled for the device. Valid values:
 	//
-	// - **true**: Enabled.
+	// - **true**: Sharing is enabled.
 	//
-	// - **false**: Disabled.
+	// - **false**: Sharing is disabled.
 	//
 	// example:
 	//
 	// true
 	SharingStatus *bool `json:"SharingStatus,omitempty" xml:"SharingStatus,omitempty"`
-	// The motherboard serial number.
+	// The serial number of the baseboard.
 	//
 	// example:
 	//
@@ -400,7 +412,7 @@ type GetUserDeviceResponseBodyDevice struct {
 	//
 	// 5CG003****
 	SnBios *string `json:"SnBios,omitempty" xml:"SnBios,omitempty"`
-	// The hard disk serial number.
+	// The serial number of the disk drive.
 	//
 	// example:
 	//
@@ -412,13 +424,13 @@ type GetUserDeviceResponseBodyDevice struct {
 	//
 	// BFEBFBFF0008****
 	SnProcessor *string `json:"SnProcessor,omitempty" xml:"SnProcessor,omitempty"`
-	// The system serial number.
+	// The serial number of the system.
 	//
 	// example:
 	//
 	// KVN9C9****
 	SnSystem *string `json:"SnSystem,omitempty" xml:"SnSystem,omitempty"`
-	// The logon IP address of the endpoint device.
+	// The logon IP address of the terminal device.
 	//
 	// example:
 	//
@@ -430,7 +442,7 @@ type GetUserDeviceResponseBodyDevice struct {
 	//
 	// 1775096714
 	TerminalInfoCollectTime *int64 `json:"TerminalInfoCollectTime,omitempty" xml:"TerminalInfoCollectTime,omitempty"`
-	// The last online time of the endpoint device. Format: YYYY-MM-DD HH:mm:ss.
+	// The last online time of the terminal device. Format: YYYY-MM-DD HH:mm:ss.
 	//
 	// example:
 	//
@@ -446,7 +458,7 @@ type GetUserDeviceResponseBodyDevice struct {
 	//
 	// example:
 	//
-	// Test Office Area
+	// Test office area
 	Workshop *string `json:"Workshop,omitempty" xml:"Workshop,omitempty"`
 }
 
@@ -556,6 +568,14 @@ func (s *GetUserDeviceResponseBodyDevice) GetDisk() *string {
 
 func (s *GetUserDeviceResponseBodyDevice) GetDiskAvailable() *int32 {
 	return s.DiskAvailable
+}
+
+func (s *GetUserDeviceResponseBodyDevice) GetDiskEncryptStatus() *string {
+	return s.DiskEncryptStatus
+}
+
+func (s *GetUserDeviceResponseBodyDevice) GetDiskEncryptStatusReason() *string {
+	return s.DiskEncryptStatusReason
 }
 
 func (s *GetUserDeviceResponseBodyDevice) GetDiskUsed() *int32 {
@@ -803,6 +823,16 @@ func (s *GetUserDeviceResponseBodyDevice) SetDiskAvailable(v int32) *GetUserDevi
 	return s
 }
 
+func (s *GetUserDeviceResponseBodyDevice) SetDiskEncryptStatus(v string) *GetUserDeviceResponseBodyDevice {
+	s.DiskEncryptStatus = &v
+	return s
+}
+
+func (s *GetUserDeviceResponseBodyDevice) SetDiskEncryptStatusReason(v string) *GetUserDeviceResponseBodyDevice {
+	s.DiskEncryptStatusReason = &v
+	return s
+}
+
 func (s *GetUserDeviceResponseBodyDevice) SetDiskUsed(v int32) *GetUserDeviceResponseBodyDevice {
 	s.DiskUsed = &v
 	return s
@@ -985,7 +1015,7 @@ func (s *GetUserDeviceResponseBodyDevice) Validate() error {
 }
 
 type GetUserDeviceResponseBodyDeviceHistoryUsers struct {
-	// The ID of the user.
+	// The user ID.
 	//
 	// example:
 	//
@@ -1075,7 +1105,7 @@ func (s *GetUserDeviceResponseBodyDeviceNetInterfaceInfo) Validate() error {
 }
 
 type GetUserDeviceResponseBodyDeviceProcesses struct {
-	// The CPU usage percentage of the process.
+	// The percentage of CPU usage by the process.
 	//
 	// example:
 	//
@@ -1087,7 +1117,7 @@ type GetUserDeviceResponseBodyDeviceProcesses struct {
 	//
 	// C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The memory usage of the process, in MB.
+	// The memory usage of the process. Unit: MB.
 	//
 	// example:
 	//

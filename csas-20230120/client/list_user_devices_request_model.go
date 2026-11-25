@@ -29,6 +29,8 @@ type iListUserDevicesRequest interface {
 	GetDeviceTags() []*string
 	SetDeviceTypes(v []*string) *ListUserDevicesRequest
 	GetDeviceTypes() []*string
+	SetDiskEncryptStatuses(v []*string) *ListUserDevicesRequest
+	GetDiskEncryptStatuses() []*string
 	SetDlpStatuses(v []*string) *ListUserDevicesRequest
 	GetDlpStatuses() []*string
 	SetHostname(v string) *ListUserDevicesRequest
@@ -66,9 +68,9 @@ type ListUserDevicesRequest struct {
 	AppStatuses []*string `json:"AppStatuses,omitempty" xml:"AppStatuses,omitempty" type:"Repeated"`
 	// The client versions.
 	AppVersions []*string `json:"AppVersions,omitempty" xml:"AppVersions,omitempty" type:"Repeated"`
-	// The automatic logon statuses used to filter user endpoint devices.
+	// Filters the results by the automatic logon status of the user terminal devices.
 	AutoLoginStatuses []*string `json:"AutoLoginStatuses,omitempty" xml:"AutoLoginStatuses,omitempty" type:"Repeated"`
-	// The current page number for paging queries. Valid values: 1 to 10000.
+	// The page number of the current page for paging in a paged query. Valid values: 1 to 10000.
 	//
 	// This parameter is required.
 	//
@@ -76,37 +78,39 @@ type ListUserDevicesRequest struct {
 	//
 	// 1
 	CurrentPage *int64 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The department to which the user belongs. The name must be 1 to 128 characters in length, and can contain Chinese characters, uppercase and lowercase letters, digits, periods (.), commas (,), semicolons (;), hyphens (-), underscores (_), forward slashes (/), at signs (@), and spaces.
+	// The department to which the user belongs. The value must be 1 to 128 characters in length, and can contain Chinese characters, uppercase and lowercase letters, digits, periods (.), commas (,), semicolons (;), hyphens (-), underscores (_), forward slashes (/), at signs (@), and spaces.
 	//
 	// example:
 	//
 	// Test Department
 	Department *string `json:"Department,omitempty" xml:"Department,omitempty"`
-	// The ownership of the endpoint device. Valid values:
+	// The ownership of the terminal device. Valid values:
 	//
 	// - **Personal**: Personal device.
 	//
-	// - **Company**: Company device.
+	// - **Company**: Corporate device.
 	//
 	// example:
 	//
 	// Company
 	DeviceBelong *string `json:"DeviceBelong,omitempty" xml:"DeviceBelong,omitempty"`
-	// The ID of the device group.
+	// The device group ID.
 	//
 	// example:
 	//
 	// device-group-5191cf830a5e****
 	DeviceGroupId *string `json:"DeviceGroupId,omitempty" xml:"DeviceGroupId,omitempty"`
-	// The endpoint device statuses.
+	// The terminal device statuses.
 	DeviceStatuses []*string `json:"DeviceStatuses,omitempty" xml:"DeviceStatuses,omitempty" type:"Repeated"`
-	// The IDs of the endpoint devices.
+	// The terminal device IDs.
 	DeviceTags []*string `json:"DeviceTags,omitempty" xml:"DeviceTags,omitempty" type:"Repeated"`
-	// The operating system types of the endpoint devices.
+	// The terminal device operating system types.
 	DeviceTypes []*string `json:"DeviceTypes,omitempty" xml:"DeviceTypes,omitempty" type:"Repeated"`
+	// Filters the results by the disk encryption status of the user terminal devices. You can select multiple statuses, which are evaluated with an OR logical operator. If you select Unencrypted, the result includes user terminal devices that have not reported their disk encryption status.
+	DiskEncryptStatuses []*string `json:"DiskEncryptStatuses,omitempty" xml:"DiskEncryptStatuses,omitempty" type:"Repeated"`
 	// The office data protection statuses.
 	DlpStatuses []*string `json:"DlpStatuses,omitempty" xml:"DlpStatuses,omitempty" type:"Repeated"`
-	// The name of the endpoint device. The name must be 1 to 128 characters in length, and can contain Chinese characters, uppercase and lowercase letters, digits, periods (.), commas (,), semicolons (;), hyphens (-), underscores (_), forward slashes (/), at signs (@), and spaces. If you enter only an underscore (_), the system also queries all endpoint devices whose names contain 4-byte UTF-8 characters.
+	// The name of the terminal device. The value must be 1 to 128 characters in length, and can contain Chinese characters, uppercase and lowercase letters, digits, periods (.), commas (,), semicolons (;), hyphens (-), underscores (_), forward slashes (/), at signs (@), and spaces. If you enter only an underscore (_), the system also queries all terminal devices whose names contain 4-byte UTF-8 characters.
 	//
 	// example:
 	//
@@ -114,13 +118,13 @@ type ListUserDevicesRequest struct {
 	Hostname *string `json:"Hostname,omitempty" xml:"Hostname,omitempty"`
 	// The Internet access statuses.
 	IaStatuses []*string `json:"IaStatuses,omitempty" xml:"IaStatuses,omitempty" type:"Repeated"`
-	// The internal IP address of the endpoint device.
+	// The internal IP address of the terminal device.
 	//
 	// example:
 	//
 	// 192.168.XX.XX
 	InnerIp *string `json:"InnerIp,omitempty" xml:"InnerIp,omitempty"`
-	// The MAC address of the endpoint device.
+	// The MAC address of the terminal device.
 	//
 	// example:
 	//
@@ -130,7 +134,7 @@ type ListUserDevicesRequest struct {
 	NacStatuses []*string `json:"NacStatuses,omitempty" xml:"NacStatuses,omitempty" type:"Repeated"`
 	// The internal network access statuses.
 	PaStatuses []*string `json:"PaStatuses,omitempty" xml:"PaStatuses,omitempty" type:"Repeated"`
-	// The number of entries per page for paging queries. Valid values: 1 to 500.
+	// The number of entries per page in a paged query. Valid values: 1 to 500.
 	//
 	// This parameter is required.
 	//
@@ -140,9 +144,9 @@ type ListUserDevicesRequest struct {
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The user ID. You can obtain the value from the following operations:
 	//
-	// - [GetUserDevice](~~GetUserDevice~~): Queries the details of a user endpoint device.
+	// - [GetUserDevice](~~GetUserDevice~~): Queries the details of a user terminal device.
 	//
-	// - [ListUserDevices](~~ListUserDevices~~): Queries a list of user endpoint devices.
+	// - [ListUserDevices](~~ListUserDevices~~): Lists user terminal devices.
 	//
 	// example:
 	//
@@ -158,13 +162,13 @@ type ListUserDevicesRequest struct {
 	//
 	// true
 	SharingStatus *bool `json:"SharingStatus,omitempty" xml:"SharingStatus,omitempty"`
-	// The BIOS system SN.
+	// The BIOS system serial number.
 	//
 	// example:
 	//
 	// 5CG003****
 	SnBios *string `json:"SnBios,omitempty" xml:"SnBios,omitempty"`
-	// The system serial number (SN).
+	// The system serial number.
 	//
 	// example:
 	//
@@ -184,7 +188,7 @@ type ListUserDevicesRequest struct {
 	//
 	// UpdateTime
 	SortBy *string `json:"SortBy,omitempty" xml:"SortBy,omitempty"`
-	// The username. The name must be 1 to 128 characters in length, and can contain Chinese characters, uppercase and lowercase letters, digits, periods (.), underscores (_), hyphens (-), asterisks (*), at signs (@), and spaces.
+	// The username. The value must be 1 to 128 characters in length, and can contain Chinese characters, uppercase and lowercase letters, digits, periods (.), underscores (_), hyphens (-), asterisks (*), at signs (@), and spaces.
 	//
 	// example:
 	//
@@ -244,6 +248,10 @@ func (s *ListUserDevicesRequest) GetDeviceTags() []*string {
 
 func (s *ListUserDevicesRequest) GetDeviceTypes() []*string {
 	return s.DeviceTypes
+}
+
+func (s *ListUserDevicesRequest) GetDiskEncryptStatuses() []*string {
+	return s.DiskEncryptStatuses
 }
 
 func (s *ListUserDevicesRequest) GetDlpStatuses() []*string {
@@ -353,6 +361,11 @@ func (s *ListUserDevicesRequest) SetDeviceTags(v []*string) *ListUserDevicesRequ
 
 func (s *ListUserDevicesRequest) SetDeviceTypes(v []*string) *ListUserDevicesRequest {
 	s.DeviceTypes = v
+	return s
+}
+
+func (s *ListUserDevicesRequest) SetDiskEncryptStatuses(v []*string) *ListUserDevicesRequest {
+	s.DiskEncryptStatuses = v
 	return s
 }
 

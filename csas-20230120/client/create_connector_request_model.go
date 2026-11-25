@@ -20,13 +20,13 @@ type iCreateConnectorRequest interface {
 }
 
 type CreateConnectorRequest struct {
-	// The bandwidth value in Mbit/s.
+	// The bandwidth value (Mbps).
 	//
 	// example:
 	//
 	// 1
 	Bandwidth *int32 `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
-	// The name of the connector. The name must be 1 to 128 characters in length, and can contain Chinese characters, uppercase and lowercase letters, digits, periods (.), underscores (_), and hyphens (-).
+	// The name of the connector. The name must be 1 to 128 characters in length, and can contain Chinese characters, uppercase and lowercase English letters, digits, periods (.), underscores (_), and hyphens (-).
 	//
 	// This parameter is required.
 	//

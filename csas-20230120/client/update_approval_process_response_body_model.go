@@ -62,10 +62,23 @@ func (s *UpdateApprovalProcessResponseBody) Validate() error {
 }
 
 type UpdateApprovalProcessResponseBodyProcess struct {
-	// The list of policies associated with terminal uninstall.
+	// The list of policies associated with endpoint uninstallation.
 	AppUninstallPolicies *UpdateApprovalProcessResponseBodyProcessAppUninstallPolicies `json:"AppUninstallPolicies,omitempty" xml:"AppUninstallPolicies,omitempty" type:"Struct"`
-	ApprovalType         *int32                                                        `json:"ApprovalType,omitempty" xml:"ApprovalType,omitempty"`
-	// The time when the approval process was created.
+	// The approval type. Valid values:
+	//
+	// - 0: Built-in approval.
+	//
+	// - 1: DingTalk approval.
+	//
+	// - 2: WeCom approval.
+	//
+	// - 3: Lark approval.
+	//
+	// example:
+	//
+	// 1
+	ApprovalType *int32 `json:"ApprovalType,omitempty" xml:"ApprovalType,omitempty"`
+	// The time when the approval process was created. The time is in the YYYY-MM-DD HH:mm:ss format.
 	//
 	// example:
 	//
@@ -75,21 +88,33 @@ type UpdateApprovalProcessResponseBodyProcess struct {
 	//
 	// example:
 	//
-	// This is a test
+	// Office endpoint software installation and uninstallation approval process
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The list of policies associated with device registration.
 	DeviceRegistrationPolicies *UpdateApprovalProcessResponseBodyProcessDeviceRegistrationPolicies `json:"DeviceRegistrationPolicies,omitempty" xml:"DeviceRegistrationPolicies,omitempty" type:"Struct"`
-	// The list of policies associated with file outgoing.
+	// The list of policies associated with outbound file transfer.
 	DlpSendPolicies *UpdateApprovalProcessResponseBodyProcessDlpSendPolicies `json:"DlpSendPolicies,omitempty" xml:"DlpSendPolicies,omitempty" type:"Struct"`
 	// The list of policies associated with the domain name blacklist.
 	DomainBlacklistPolicies *UpdateApprovalProcessResponseBodyProcessDomainBlacklistPolicies `json:"DomainBlacklistPolicies,omitempty" xml:"DomainBlacklistPolicies,omitempty" type:"Struct"`
 	// The list of policies associated with the domain name whitelist.
-	DomainWhitelistPolicies   *UpdateApprovalProcessResponseBodyProcessDomainWhitelistPolicies   `json:"DomainWhitelistPolicies,omitempty" xml:"DomainWhitelistPolicies,omitempty" type:"Struct"`
+	DomainWhitelistPolicies *UpdateApprovalProcessResponseBodyProcessDomainWhitelistPolicies `json:"DomainWhitelistPolicies,omitempty" xml:"DomainWhitelistPolicies,omitempty" type:"Struct"`
+	// The list of associated endpoint hardening policies.
 	EndpointHardeningPolicies *UpdateApprovalProcessResponseBodyProcessEndpointHardeningPolicies `json:"EndpointHardeningPolicies,omitempty" xml:"EndpointHardeningPolicies,omitempty" type:"Struct"`
-	EventLabel                *string                                                            `json:"EventLabel,omitempty" xml:"EventLabel,omitempty"`
-	ExternalConfig            *string                                                            `json:"ExternalConfig,omitempty" xml:"ExternalConfig,omitempty"`
+	// The event callback URL. This field returns the complete event callback URL of the external platform when the approval type is 1 (DingTalk approval) or 3 (Lark approval). For other approval types, this field is empty.
+	//
+	// example:
+	//
+	// https://callback.example.com/sase/api/v1/approval/dingtalk/callback/9m4e2mr0ui3e8a21****
+	EventLabel *string `json:"EventLabel,omitempty" xml:"EventLabel,omitempty"`
+	// The external approval configuration. This field contains the integration information for the external approval platform when the approval type is 1 (DingTalk approval) or 3 (Lark approval). For other approval types, this field is empty.
+	//
+	// example:
+	//
+	// {"appKey":"dingn1a2b3c4d5e6f****","appSecret":"f9c8e7d6a5b4c3d2e1f0a9b8c7d6e5f4a3b2c1d0e9f8a7b6c5d4e3f2a1b0****","eventVerifyToken":"7a8b9c0d1e2f3a4b5c6d7e8f9a0b****","eventAesKey":"1a2b3c4d5e6f7g8h9i0j1k2l3m4n5o6p7q8r9s0t****"}
+	ExternalConfig *string `json:"ExternalConfig,omitempty" xml:"ExternalConfig,omitempty"`
 	// The list of policies associated with peripheral control.
-	PeripheraBlockPolicies     *UpdateApprovalProcessResponseBodyProcessPeripheraBlockPolicies     `json:"PeripheraBlockPolicies,omitempty" xml:"PeripheraBlockPolicies,omitempty" type:"Struct"`
+	PeripheraBlockPolicies *UpdateApprovalProcessResponseBodyProcessPeripheraBlockPolicies `json:"PeripheraBlockPolicies,omitempty" xml:"PeripheraBlockPolicies,omitempty" type:"Struct"`
+	// The list of associated internal network access control policies.
 	PrivateAccessBlockPolicies *UpdateApprovalProcessResponseBodyProcessPrivateAccessBlockPolicies `json:"PrivateAccessBlockPolicies,omitempty" xml:"PrivateAccessBlockPolicies,omitempty" type:"Struct"`
 	// The ID of the approval process.
 	//
@@ -101,12 +126,13 @@ type UpdateApprovalProcessResponseBodyProcess struct {
 	//
 	// example:
 	//
-	// Test
+	// Endpoint software installation approval process
 	ProcessName *string `json:"ProcessName,omitempty" xml:"ProcessName,omitempty"`
 	// The list of approval nodes.
 	ProcessNodes [][]*UpdateApprovalProcessResponseBodyProcessProcessNodes `json:"ProcessNodes,omitempty" xml:"ProcessNodes,omitempty" type:"Repeated"`
 	// The list of policies associated with software blocking.
-	SoftwareBlockPolicies     *UpdateApprovalProcessResponseBodyProcessSoftwareBlockPolicies     `json:"SoftwareBlockPolicies,omitempty" xml:"SoftwareBlockPolicies,omitempty" type:"Struct"`
+	SoftwareBlockPolicies *UpdateApprovalProcessResponseBodyProcessSoftwareBlockPolicies `json:"SoftwareBlockPolicies,omitempty" xml:"SoftwareBlockPolicies,omitempty" type:"Struct"`
+	// The list of associated software hardening policies.
 	SoftwareHardeningPolicies *UpdateApprovalProcessResponseBodyProcessSoftwareHardeningPolicies `json:"SoftwareHardeningPolicies,omitempty" xml:"SoftwareHardeningPolicies,omitempty" type:"Struct"`
 }
 
@@ -335,9 +361,15 @@ func (s *UpdateApprovalProcessResponseBodyProcess) Validate() error {
 }
 
 type UpdateApprovalProcessResponseBodyProcessAppUninstallPolicies struct {
-	ExternalProcessId *string                                                                 `json:"ExternalProcessId,omitempty" xml:"ExternalProcessId,omitempty"`
-	FieldMap          []*UpdateApprovalProcessResponseBodyProcessAppUninstallPoliciesFieldMap `json:"FieldMap,omitempty" xml:"FieldMap,omitempty" type:"Repeated"`
-	// The list of terminal uninstall policy IDs.
+	// The ID of the external approval process. If the approval type is 1 (DingTalk) or 3 (Lark), the process code from the external approval platform is returned. For other approval types, an empty value is returned.
+	//
+	// example:
+	//
+	// PROC-1a2b3c4d5e6f****
+	ExternalProcessId *string `json:"ExternalProcessId,omitempty" xml:"ExternalProcessId,omitempty"`
+	// The mapping list between system fields and external approval form controls.
+	FieldMap []*UpdateApprovalProcessResponseBodyProcessAppUninstallPoliciesFieldMap `json:"FieldMap,omitempty" xml:"FieldMap,omitempty" type:"Repeated"`
+	// The list of endpoint uninstallation policy IDs.
 	PolicyIds []*string `json:"PolicyIds,omitempty" xml:"PolicyIds,omitempty" type:"Repeated"`
 	// The ID of the approval template.
 	//
@@ -405,9 +437,24 @@ func (s *UpdateApprovalProcessResponseBodyProcessAppUninstallPolicies) Validate(
 }
 
 type UpdateApprovalProcessResponseBodyProcessAppUninstallPoliciesFieldMap struct {
-	DisplayField      *string `json:"DisplayField,omitempty" xml:"DisplayField,omitempty"`
+	// The name of the control in the external approval form.
+	//
+	// example:
+	//
+	// Reason for reporting
+	DisplayField *string `json:"DisplayField,omitempty" xml:"DisplayField,omitempty"`
+	// The type and identifier of the control in the external approval form. The value is in the Type%%%Control ID format.
+	//
+	// example:
+	//
+	// Textarea%%%widget-1a2b****
 	DisplayFieldValue *string `json:"DisplayFieldValue,omitempty" xml:"DisplayFieldValue,omitempty"`
-	SystemField       *string `json:"SystemField,omitempty" xml:"SystemField,omitempty"`
+	// The identifier of the system field, such as approvalReason.
+	//
+	// example:
+	//
+	// approvalReason
+	SystemField *string `json:"SystemField,omitempty" xml:"SystemField,omitempty"`
 }
 
 func (s UpdateApprovalProcessResponseBodyProcessAppUninstallPoliciesFieldMap) String() string {
@@ -450,8 +497,14 @@ func (s *UpdateApprovalProcessResponseBodyProcessAppUninstallPoliciesFieldMap) V
 }
 
 type UpdateApprovalProcessResponseBodyProcessDeviceRegistrationPolicies struct {
-	ExternalProcessId *string                                                                       `json:"ExternalProcessId,omitempty" xml:"ExternalProcessId,omitempty"`
-	FieldMap          []*UpdateApprovalProcessResponseBodyProcessDeviceRegistrationPoliciesFieldMap `json:"FieldMap,omitempty" xml:"FieldMap,omitempty" type:"Repeated"`
+	// The ID of the external approval process. If the approval type is 1 (DingTalk) or 3 (Lark), the process code from the external approval platform is returned. For other approval types, an empty value is returned.
+	//
+	// example:
+	//
+	// PROC-1a2b3c4d5e6f****
+	ExternalProcessId *string `json:"ExternalProcessId,omitempty" xml:"ExternalProcessId,omitempty"`
+	// The mapping list between system fields and external approval form controls.
+	FieldMap []*UpdateApprovalProcessResponseBodyProcessDeviceRegistrationPoliciesFieldMap `json:"FieldMap,omitempty" xml:"FieldMap,omitempty" type:"Repeated"`
 	// The list of device registration policy IDs.
 	PolicyIds []*string `json:"PolicyIds,omitempty" xml:"PolicyIds,omitempty" type:"Repeated"`
 	// The ID of the approval template.
@@ -520,9 +573,24 @@ func (s *UpdateApprovalProcessResponseBodyProcessDeviceRegistrationPolicies) Val
 }
 
 type UpdateApprovalProcessResponseBodyProcessDeviceRegistrationPoliciesFieldMap struct {
-	DisplayField      *string `json:"DisplayField,omitempty" xml:"DisplayField,omitempty"`
+	// The name of the control in the external approval form.
+	//
+	// example:
+	//
+	// Report domain name
+	DisplayField *string `json:"DisplayField,omitempty" xml:"DisplayField,omitempty"`
+	// The type and identifier of the control in the external approval form. The value is in the Type%%%Control ID format.
+	//
+	// example:
+	//
+	// Textarea%%%widget-1a2b****
 	DisplayFieldValue *string `json:"DisplayFieldValue,omitempty" xml:"DisplayFieldValue,omitempty"`
-	SystemField       *string `json:"SystemField,omitempty" xml:"SystemField,omitempty"`
+	// The identifier of the system field, such as report_domain.
+	//
+	// example:
+	//
+	// report_domain
+	SystemField *string `json:"SystemField,omitempty" xml:"SystemField,omitempty"`
 }
 
 func (s UpdateApprovalProcessResponseBodyProcessDeviceRegistrationPoliciesFieldMap) String() string {
@@ -565,9 +633,15 @@ func (s *UpdateApprovalProcessResponseBodyProcessDeviceRegistrationPoliciesField
 }
 
 type UpdateApprovalProcessResponseBodyProcessDlpSendPolicies struct {
-	ExternalProcessId *string                                                            `json:"ExternalProcessId,omitempty" xml:"ExternalProcessId,omitempty"`
-	FieldMap          []*UpdateApprovalProcessResponseBodyProcessDlpSendPoliciesFieldMap `json:"FieldMap,omitempty" xml:"FieldMap,omitempty" type:"Repeated"`
-	// The list of file outgoing policy IDs.
+	// The ID of the external approval process. If the approval type is 1 (DingTalk) or 3 (Lark), the process code from the external approval platform is returned. For other approval types, an empty value is returned.
+	//
+	// example:
+	//
+	// PROC-1a2b3c4d5e6f****
+	ExternalProcessId *string `json:"ExternalProcessId,omitempty" xml:"ExternalProcessId,omitempty"`
+	// The mapping list between system fields and external approval form controls.
+	FieldMap []*UpdateApprovalProcessResponseBodyProcessDlpSendPoliciesFieldMap `json:"FieldMap,omitempty" xml:"FieldMap,omitempty" type:"Repeated"`
+	// The list of outbound file transfer policy IDs.
 	PolicyIds []*string `json:"PolicyIds,omitempty" xml:"PolicyIds,omitempty" type:"Repeated"`
 	// The ID of the approval template.
 	//
@@ -635,9 +709,24 @@ func (s *UpdateApprovalProcessResponseBodyProcessDlpSendPolicies) Validate() err
 }
 
 type UpdateApprovalProcessResponseBodyProcessDlpSendPoliciesFieldMap struct {
-	DisplayField      *string `json:"DisplayField,omitempty" xml:"DisplayField,omitempty"`
+	// The name of the control in the external approval form.
+	//
+	// example:
+	//
+	// File name
+	DisplayField *string `json:"DisplayField,omitempty" xml:"DisplayField,omitempty"`
+	// The type and identifier of the control in the external approval form. The value is in the Type%%%Control ID format.
+	//
+	// example:
+	//
+	// Textarea%%%widget-1a2b****
 	DisplayFieldValue *string `json:"DisplayFieldValue,omitempty" xml:"DisplayFieldValue,omitempty"`
-	SystemField       *string `json:"SystemField,omitempty" xml:"SystemField,omitempty"`
+	// The identifier of the system field, such as fileName.
+	//
+	// example:
+	//
+	// fileName
+	SystemField *string `json:"SystemField,omitempty" xml:"SystemField,omitempty"`
 }
 
 func (s UpdateApprovalProcessResponseBodyProcessDlpSendPoliciesFieldMap) String() string {
@@ -680,8 +769,14 @@ func (s *UpdateApprovalProcessResponseBodyProcessDlpSendPoliciesFieldMap) Valida
 }
 
 type UpdateApprovalProcessResponseBodyProcessDomainBlacklistPolicies struct {
-	ExternalProcessId *string                                                                    `json:"ExternalProcessId,omitempty" xml:"ExternalProcessId,omitempty"`
-	FieldMap          []*UpdateApprovalProcessResponseBodyProcessDomainBlacklistPoliciesFieldMap `json:"FieldMap,omitempty" xml:"FieldMap,omitempty" type:"Repeated"`
+	// The ID of the external approval process. If the approval type is 1 (DingTalk) or 3 (Lark), the process code from the external approval platform is returned. For other approval types, an empty value is returned.
+	//
+	// example:
+	//
+	// PROC-1a2b3c4d5e6f****
+	ExternalProcessId *string `json:"ExternalProcessId,omitempty" xml:"ExternalProcessId,omitempty"`
+	// The mapping list between system fields and external approval form controls.
+	FieldMap []*UpdateApprovalProcessResponseBodyProcessDomainBlacklistPoliciesFieldMap `json:"FieldMap,omitempty" xml:"FieldMap,omitempty" type:"Repeated"`
 	// The list of domain name blacklist policy IDs.
 	PolicyIds []*string `json:"PolicyIds,omitempty" xml:"PolicyIds,omitempty" type:"Repeated"`
 	// The ID of the approval template.
@@ -750,9 +845,24 @@ func (s *UpdateApprovalProcessResponseBodyProcessDomainBlacklistPolicies) Valida
 }
 
 type UpdateApprovalProcessResponseBodyProcessDomainBlacklistPoliciesFieldMap struct {
-	DisplayField      *string `json:"DisplayField,omitempty" xml:"DisplayField,omitempty"`
+	// The name of the control in the external approval form.
+	//
+	// example:
+	//
+	// Report website access
+	DisplayField *string `json:"DisplayField,omitempty" xml:"DisplayField,omitempty"`
+	// The type and identifier of the control in the external approval form. The value is in the Type%%%Control ID format.
+	//
+	// example:
+	//
+	// Textarea%%%widget-1a2b****
 	DisplayFieldValue *string `json:"DisplayFieldValue,omitempty" xml:"DisplayFieldValue,omitempty"`
-	SystemField       *string `json:"SystemField,omitempty" xml:"SystemField,omitempty"`
+	// The identifier of the system field, such as reportDomain.
+	//
+	// example:
+	//
+	// reportDomain
+	SystemField *string `json:"SystemField,omitempty" xml:"SystemField,omitempty"`
 }
 
 func (s UpdateApprovalProcessResponseBodyProcessDomainBlacklistPoliciesFieldMap) String() string {
@@ -795,8 +905,14 @@ func (s *UpdateApprovalProcessResponseBodyProcessDomainBlacklistPoliciesFieldMap
 }
 
 type UpdateApprovalProcessResponseBodyProcessDomainWhitelistPolicies struct {
-	ExternalProcessId *string                                                                    `json:"ExternalProcessId,omitempty" xml:"ExternalProcessId,omitempty"`
-	FieldMap          []*UpdateApprovalProcessResponseBodyProcessDomainWhitelistPoliciesFieldMap `json:"FieldMap,omitempty" xml:"FieldMap,omitempty" type:"Repeated"`
+	// The ID of the external approval process. If the approval type is 1 (DingTalk) or 3 (Lark), the process code from the external approval platform is returned. For other approval types, an empty value is returned.
+	//
+	// example:
+	//
+	// PROC-1a2b3c4d5e6f****
+	ExternalProcessId *string `json:"ExternalProcessId,omitempty" xml:"ExternalProcessId,omitempty"`
+	// The mapping list between system fields and external approval form controls.
+	FieldMap []*UpdateApprovalProcessResponseBodyProcessDomainWhitelistPoliciesFieldMap `json:"FieldMap,omitempty" xml:"FieldMap,omitempty" type:"Repeated"`
 	// The list of domain name whitelist policy IDs.
 	PolicyIds []*string `json:"PolicyIds,omitempty" xml:"PolicyIds,omitempty" type:"Repeated"`
 	// The ID of the approval template.
@@ -865,9 +981,24 @@ func (s *UpdateApprovalProcessResponseBodyProcessDomainWhitelistPolicies) Valida
 }
 
 type UpdateApprovalProcessResponseBodyProcessDomainWhitelistPoliciesFieldMap struct {
-	DisplayField      *string `json:"DisplayField,omitempty" xml:"DisplayField,omitempty"`
+	// The name of the control in the external approval form.
+	//
+	// example:
+	//
+	// Report website access
+	DisplayField *string `json:"DisplayField,omitempty" xml:"DisplayField,omitempty"`
+	// The type and identifier of the control in the external approval form. The value is in the Type%%%Control ID format.
+	//
+	// example:
+	//
+	// Textarea%%%widget-1a2b****
 	DisplayFieldValue *string `json:"DisplayFieldValue,omitempty" xml:"DisplayFieldValue,omitempty"`
-	SystemField       *string `json:"SystemField,omitempty" xml:"SystemField,omitempty"`
+	// The identifier of the system field, such as reportDomain.
+	//
+	// example:
+	//
+	// reportDomain
+	SystemField *string `json:"SystemField,omitempty" xml:"SystemField,omitempty"`
 }
 
 func (s UpdateApprovalProcessResponseBodyProcessDomainWhitelistPoliciesFieldMap) String() string {
@@ -910,10 +1041,22 @@ func (s *UpdateApprovalProcessResponseBodyProcessDomainWhitelistPoliciesFieldMap
 }
 
 type UpdateApprovalProcessResponseBodyProcessEndpointHardeningPolicies struct {
-	ExternalProcessId *string                                                                      `json:"ExternalProcessId,omitempty" xml:"ExternalProcessId,omitempty"`
-	FieldMap          []*UpdateApprovalProcessResponseBodyProcessEndpointHardeningPoliciesFieldMap `json:"FieldMap,omitempty" xml:"FieldMap,omitempty" type:"Repeated"`
-	PolicyIds         []*string                                                                    `json:"PolicyIds,omitempty" xml:"PolicyIds,omitempty" type:"Repeated"`
-	SchemaId          *string                                                                      `json:"SchemaId,omitempty" xml:"SchemaId,omitempty"`
+	// The ID of the external approval process. If the approval type is 1 (DingTalk) or 3 (Lark), the process code from the external approval platform is returned. For other approval types, an empty value is returned.
+	//
+	// example:
+	//
+	// PROC-1a2b3c4d5e6f****
+	ExternalProcessId *string `json:"ExternalProcessId,omitempty" xml:"ExternalProcessId,omitempty"`
+	// The mapping list between system fields and external approval form controls.
+	FieldMap []*UpdateApprovalProcessResponseBodyProcessEndpointHardeningPoliciesFieldMap `json:"FieldMap,omitempty" xml:"FieldMap,omitempty" type:"Repeated"`
+	// The list of endpoint hardening policy IDs.
+	PolicyIds []*string `json:"PolicyIds,omitempty" xml:"PolicyIds,omitempty" type:"Repeated"`
+	// The ID of the approval template.
+	//
+	// example:
+	//
+	// approval-schema-090134f1ebff****
+	SchemaId *string `json:"SchemaId,omitempty" xml:"SchemaId,omitempty"`
 }
 
 func (s UpdateApprovalProcessResponseBodyProcessEndpointHardeningPolicies) String() string {
@@ -974,9 +1117,24 @@ func (s *UpdateApprovalProcessResponseBodyProcessEndpointHardeningPolicies) Vali
 }
 
 type UpdateApprovalProcessResponseBodyProcessEndpointHardeningPoliciesFieldMap struct {
-	DisplayField      *string `json:"DisplayField,omitempty" xml:"DisplayField,omitempty"`
+	// The name of the control in the external approval form.
+	//
+	// example:
+	//
+	// Process name
+	DisplayField *string `json:"DisplayField,omitempty" xml:"DisplayField,omitempty"`
+	// The type and identifier of the control in the external approval form. The value is in the Type%%%Control ID format.
+	//
+	// example:
+	//
+	// Textarea%%%widget-1a2b****
 	DisplayFieldValue *string `json:"DisplayFieldValue,omitempty" xml:"DisplayFieldValue,omitempty"`
-	SystemField       *string `json:"SystemField,omitempty" xml:"SystemField,omitempty"`
+	// The system field identifier, such as processName.
+	//
+	// example:
+	//
+	// processName
+	SystemField *string `json:"SystemField,omitempty" xml:"SystemField,omitempty"`
 }
 
 func (s UpdateApprovalProcessResponseBodyProcessEndpointHardeningPoliciesFieldMap) String() string {
@@ -1019,8 +1177,14 @@ func (s *UpdateApprovalProcessResponseBodyProcessEndpointHardeningPoliciesFieldM
 }
 
 type UpdateApprovalProcessResponseBodyProcessPeripheraBlockPolicies struct {
-	ExternalProcessId *string                                                                   `json:"ExternalProcessId,omitempty" xml:"ExternalProcessId,omitempty"`
-	FieldMap          []*UpdateApprovalProcessResponseBodyProcessPeripheraBlockPoliciesFieldMap `json:"FieldMap,omitempty" xml:"FieldMap,omitempty" type:"Repeated"`
+	// The ID of the external approval process. If the approval type is 1 (DingTalk) or 3 (Lark), the process code from the external approval platform is returned. For other approval types, an empty value is returned.
+	//
+	// example:
+	//
+	// PROC-1a2b3c4d5e6f****
+	ExternalProcessId *string `json:"ExternalProcessId,omitempty" xml:"ExternalProcessId,omitempty"`
+	// The mapping list between system fields and external approval form controls.
+	FieldMap []*UpdateApprovalProcessResponseBodyProcessPeripheraBlockPoliciesFieldMap `json:"FieldMap,omitempty" xml:"FieldMap,omitempty" type:"Repeated"`
 	// The list of peripheral control policy IDs.
 	PolicyIds []*string `json:"PolicyIds,omitempty" xml:"PolicyIds,omitempty" type:"Repeated"`
 	// The ID of the approval template.
@@ -1089,9 +1253,24 @@ func (s *UpdateApprovalProcessResponseBodyProcessPeripheraBlockPolicies) Validat
 }
 
 type UpdateApprovalProcessResponseBodyProcessPeripheraBlockPoliciesFieldMap struct {
-	DisplayField      *string `json:"DisplayField,omitempty" xml:"DisplayField,omitempty"`
+	// The name of the control in the external approval form.
+	//
+	// example:
+	//
+	// Operating system
+	DisplayField *string `json:"DisplayField,omitempty" xml:"DisplayField,omitempty"`
+	// The type and identifier of the control in the external approval form. The value is in the Type%%%Control ID format.
+	//
+	// example:
+	//
+	// Textarea%%%widget-1a2b****
 	DisplayFieldValue *string `json:"DisplayFieldValue,omitempty" xml:"DisplayFieldValue,omitempty"`
-	SystemField       *string `json:"SystemField,omitempty" xml:"SystemField,omitempty"`
+	// The identifier of the system field, such as devType.
+	//
+	// example:
+	//
+	// devType
+	SystemField *string `json:"SystemField,omitempty" xml:"SystemField,omitempty"`
 }
 
 func (s UpdateApprovalProcessResponseBodyProcessPeripheraBlockPoliciesFieldMap) String() string {
@@ -1134,10 +1313,22 @@ func (s *UpdateApprovalProcessResponseBodyProcessPeripheraBlockPoliciesFieldMap)
 }
 
 type UpdateApprovalProcessResponseBodyProcessPrivateAccessBlockPolicies struct {
-	ExternalProcessId *string                                                                       `json:"ExternalProcessId,omitempty" xml:"ExternalProcessId,omitempty"`
-	FieldMap          []*UpdateApprovalProcessResponseBodyProcessPrivateAccessBlockPoliciesFieldMap `json:"FieldMap,omitempty" xml:"FieldMap,omitempty" type:"Repeated"`
-	PolicyIds         []*string                                                                     `json:"PolicyIds,omitempty" xml:"PolicyIds,omitempty" type:"Repeated"`
-	SchemaId          *string                                                                       `json:"SchemaId,omitempty" xml:"SchemaId,omitempty"`
+	// The ID of the external approval process. If the approval type is 1 (DingTalk) or 3 (Lark), the process code from the external approval platform is returned. For other approval types, an empty value is returned.
+	//
+	// example:
+	//
+	// PROC-1a2b3c4d5e6f****
+	ExternalProcessId *string `json:"ExternalProcessId,omitempty" xml:"ExternalProcessId,omitempty"`
+	// The mapping list between system fields and external approval form controls.
+	FieldMap []*UpdateApprovalProcessResponseBodyProcessPrivateAccessBlockPoliciesFieldMap `json:"FieldMap,omitempty" xml:"FieldMap,omitempty" type:"Repeated"`
+	// The list of internal network access control policy IDs.
+	PolicyIds []*string `json:"PolicyIds,omitempty" xml:"PolicyIds,omitempty" type:"Repeated"`
+	// The ID of the approval template.
+	//
+	// example:
+	//
+	// approval-schema-090134f1ebff****
+	SchemaId *string `json:"SchemaId,omitempty" xml:"SchemaId,omitempty"`
 }
 
 func (s UpdateApprovalProcessResponseBodyProcessPrivateAccessBlockPolicies) String() string {
@@ -1198,9 +1389,24 @@ func (s *UpdateApprovalProcessResponseBodyProcessPrivateAccessBlockPolicies) Val
 }
 
 type UpdateApprovalProcessResponseBodyProcessPrivateAccessBlockPoliciesFieldMap struct {
-	DisplayField      *string `json:"DisplayField,omitempty" xml:"DisplayField,omitempty"`
+	// The name of the control in the external approval form.
+	//
+	// example:
+	//
+	// Reported application
+	DisplayField *string `json:"DisplayField,omitempty" xml:"DisplayField,omitempty"`
+	// The type and identifier of the control in the external approval form. The value is in the Type%%%Control ID format.
+	//
+	// example:
+	//
+	// Textarea%%%widget-1a2b****
 	DisplayFieldValue *string `json:"DisplayFieldValue,omitempty" xml:"DisplayFieldValue,omitempty"`
-	SystemField       *string `json:"SystemField,omitempty" xml:"SystemField,omitempty"`
+	// The system field identifier, such as applicationId.
+	//
+	// example:
+	//
+	// applicationId
+	SystemField *string `json:"SystemField,omitempty" xml:"SystemField,omitempty"`
 }
 
 func (s UpdateApprovalProcessResponseBodyProcessPrivateAccessBlockPoliciesFieldMap) String() string {
@@ -1243,17 +1449,17 @@ func (s *UpdateApprovalProcessResponseBodyProcessPrivateAccessBlockPoliciesField
 }
 
 type UpdateApprovalProcessResponseBodyProcessProcessNodes struct {
-	// The approver ID.
+	// The ID of the approver.
 	//
 	// example:
 	//
 	// su_e8f218fb171edd167c2ad917d21f53148bdefc510ca1f3c3cc0249d3643d****
 	SaseUserId *string `json:"SaseUserId,omitempty" xml:"SaseUserId,omitempty"`
-	// The approver username.
+	// The username of the approver.
 	//
 	// example:
 	//
-	// Mr. Wang
+	// 王先生
 	Username *string `json:"Username,omitempty" xml:"Username,omitempty"`
 }
 
@@ -1288,9 +1494,15 @@ func (s *UpdateApprovalProcessResponseBodyProcessProcessNodes) Validate() error 
 }
 
 type UpdateApprovalProcessResponseBodyProcessSoftwareBlockPolicies struct {
-	ExternalProcessId *string                                                                  `json:"ExternalProcessId,omitempty" xml:"ExternalProcessId,omitempty"`
-	FieldMap          []*UpdateApprovalProcessResponseBodyProcessSoftwareBlockPoliciesFieldMap `json:"FieldMap,omitempty" xml:"FieldMap,omitempty" type:"Repeated"`
-	// The list of software blocking policy IDs.
+	// The ID of the external approval process. If the approval type is 1 (DingTalk) or 3 (Lark), the process code from the external approval platform is returned. For other approval types, an empty value is returned.
+	//
+	// example:
+	//
+	// PROC-1a2b3c4d5e6f****
+	ExternalProcessId *string `json:"ExternalProcessId,omitempty" xml:"ExternalProcessId,omitempty"`
+	// The mapping list between system fields and external approval form controls.
+	FieldMap []*UpdateApprovalProcessResponseBodyProcessSoftwareBlockPoliciesFieldMap `json:"FieldMap,omitempty" xml:"FieldMap,omitempty" type:"Repeated"`
+	// The list of software block policy IDs.
 	PolicyIds []*string `json:"PolicyIds,omitempty" xml:"PolicyIds,omitempty" type:"Repeated"`
 	// The ID of the approval template.
 	//
@@ -1358,9 +1570,24 @@ func (s *UpdateApprovalProcessResponseBodyProcessSoftwareBlockPolicies) Validate
 }
 
 type UpdateApprovalProcessResponseBodyProcessSoftwareBlockPoliciesFieldMap struct {
-	DisplayField      *string `json:"DisplayField,omitempty" xml:"DisplayField,omitempty"`
+	// The name of the control in the external approval form.
+	//
+	// example:
+	//
+	// Report software
+	DisplayField *string `json:"DisplayField,omitempty" xml:"DisplayField,omitempty"`
+	// The type and identifier of the control in the external approval form. The value is in the Type%%%Control ID format.
+	//
+	// example:
+	//
+	// Textarea%%%widget-1a2b****
 	DisplayFieldValue *string `json:"DisplayFieldValue,omitempty" xml:"DisplayFieldValue,omitempty"`
-	SystemField       *string `json:"SystemField,omitempty" xml:"SystemField,omitempty"`
+	// The identifier of the system field, such as softwareName.
+	//
+	// example:
+	//
+	// softwareName
+	SystemField *string `json:"SystemField,omitempty" xml:"SystemField,omitempty"`
 }
 
 func (s UpdateApprovalProcessResponseBodyProcessSoftwareBlockPoliciesFieldMap) String() string {
@@ -1403,10 +1630,22 @@ func (s *UpdateApprovalProcessResponseBodyProcessSoftwareBlockPoliciesFieldMap) 
 }
 
 type UpdateApprovalProcessResponseBodyProcessSoftwareHardeningPolicies struct {
-	ExternalProcessId *string                                                                      `json:"ExternalProcessId,omitempty" xml:"ExternalProcessId,omitempty"`
-	FieldMap          []*UpdateApprovalProcessResponseBodyProcessSoftwareHardeningPoliciesFieldMap `json:"FieldMap,omitempty" xml:"FieldMap,omitempty" type:"Repeated"`
-	PolicyIds         []*string                                                                    `json:"PolicyIds,omitempty" xml:"PolicyIds,omitempty" type:"Repeated"`
-	SchemaId          *string                                                                      `json:"SchemaId,omitempty" xml:"SchemaId,omitempty"`
+	// The ID of the external approval process. If the approval type is 1 (DingTalk) or 3 (Lark), the process code from the external approval platform is returned. For other approval types, an empty value is returned.
+	//
+	// example:
+	//
+	// PROC-1a2b3c4d5e6f****
+	ExternalProcessId *string `json:"ExternalProcessId,omitempty" xml:"ExternalProcessId,omitempty"`
+	// The mapping list between system fields and external approval form controls.
+	FieldMap []*UpdateApprovalProcessResponseBodyProcessSoftwareHardeningPoliciesFieldMap `json:"FieldMap,omitempty" xml:"FieldMap,omitempty" type:"Repeated"`
+	// The list of software hardening policy IDs.
+	PolicyIds []*string `json:"PolicyIds,omitempty" xml:"PolicyIds,omitempty" type:"Repeated"`
+	// The ID of the approval template.
+	//
+	// example:
+	//
+	// approval-schema-090134f1ebff****
+	SchemaId *string `json:"SchemaId,omitempty" xml:"SchemaId,omitempty"`
 }
 
 func (s UpdateApprovalProcessResponseBodyProcessSoftwareHardeningPolicies) String() string {
@@ -1467,9 +1706,24 @@ func (s *UpdateApprovalProcessResponseBodyProcessSoftwareHardeningPolicies) Vali
 }
 
 type UpdateApprovalProcessResponseBodyProcessSoftwareHardeningPoliciesFieldMap struct {
-	DisplayField      *string `json:"DisplayField,omitempty" xml:"DisplayField,omitempty"`
+	// The name of the control in the external approval form.
+	//
+	// example:
+	//
+	// Process name
+	DisplayField *string `json:"DisplayField,omitempty" xml:"DisplayField,omitempty"`
+	// The type and identifier of the control in the external approval form. The value is in the Type%%%Control ID format.
+	//
+	// example:
+	//
+	// Textarea%%%widget-1a2b****
 	DisplayFieldValue *string `json:"DisplayFieldValue,omitempty" xml:"DisplayFieldValue,omitempty"`
-	SystemField       *string `json:"SystemField,omitempty" xml:"SystemField,omitempty"`
+	// The system field identifier, such as processName.
+	//
+	// example:
+	//
+	// processName
+	SystemField *string `json:"SystemField,omitempty" xml:"SystemField,omitempty"`
 }
 
 func (s UpdateApprovalProcessResponseBodyProcessSoftwareHardeningPoliciesFieldMap) String() string {

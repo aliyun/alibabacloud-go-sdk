@@ -22,21 +22,21 @@ type iListSoftwarelibSoftwareResponseBody interface {
 }
 
 type ListSoftwarelibSoftwareResponseBody struct {
-	// The software list.
+	// The list of software packages.
 	DataList []*ListSoftwarelibSoftwareResponseBodyDataList `json:"DataList,omitempty" xml:"DataList,omitempty" type:"Repeated"`
-	// The maximum number of entries per page. This parameter is not returned by the current operation.
+	// The maximum number of entries returned on each page. This parameter is not returned by the current API operation.
 	//
 	// example:
 	//
 	// 100
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The query token. This parameter is not returned by the current operation.
+	// The query token. This parameter is not returned by the current API operation.
 	//
 	// example:
 	//
 	// FFM+3L1WZbKngBeLWcDmQrzLuGDDwAw7JA5q2AjvTSJm9WyhQ0MwJoOWpky9ZhgcWfIgtGpZ+4NQX97+EIwsqUNQ==
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// Id of the request
+	// The ID of the request.
 	//
 	// example:
 	//
@@ -135,7 +135,7 @@ type ListSoftwarelibSoftwareResponseBodyDataList struct {
 	//
 	// test software
 	CheckSoftwareName *string `json:"CheckSoftwareName,omitempty" xml:"CheckSoftwareName,omitempty"`
-	// The software category ID.
+	// The ID of the software category.
 	//
 	// example:
 	//
@@ -147,13 +147,13 @@ type ListSoftwarelibSoftwareResponseBodyDataList struct {
 	//
 	// 1781748302
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The software description.
+	// The description of the software.
 	//
 	// example:
 	//
 	// This is a demo software.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The list of associated endpoint device IDs.
+	// The list of associated terminal device IDs.
 	DevTags []*string `json:"DevTags,omitempty" xml:"DevTags,omitempty" type:"Repeated"`
 	// The list of associated device group IDs.
 	DeviceGroupIds []*string `json:"DeviceGroupIds,omitempty" xml:"DeviceGroupIds,omitempty" type:"Repeated"`
@@ -181,25 +181,25 @@ type ListSoftwarelibSoftwareResponseBodyDataList struct {
 	//
 	// 1.0.0
 	MacAppleVersion *string `json:"MacAppleVersion,omitempty" xml:"MacAppleVersion,omitempty"`
-	// The maximum software version number for macOS with Intel chips.
+	// The maximum software version number for macOS with Intel processors.
 	//
 	// example:
 	//
 	// 1.0.0
 	MacIntelVersion *string `json:"MacIntelVersion,omitempty" xml:"MacIntelVersion,omitempty"`
-	// The policy match target type. Valid values:
+	// The target type for policy matching. Valid values:
 	//
-	// - **UserGroupAll**: all users.
+	// - **UserGroupAll**: All users.
 	//
-	// - **UserGroupNormal**: specified user groups.
+	// - **UserGroupNormal**: Specified user groups.
 	//
-	// - **DevTagNormal**: specified devices.
+	// - **DevTagNormal**: Specified devices.
 	//
-	// - **DeviceGroupNormal**: specified device groups.
+	// - **DeviceGroupNormal**: Specified device groups.
 	//
-	// - **DevTagAll**: all devices.
+	// - **DevTagAll**: All devices.
 	//
-	// - **None**: not configured.
+	// - **None**: Not configured.
 	//
 	// example:
 	//
@@ -217,29 +217,29 @@ type ListSoftwarelibSoftwareResponseBodyDataList struct {
 	//
 	// admin
 	RunAsAccount *string `json:"RunAsAccount,omitempty" xml:"RunAsAccount,omitempty"`
-	// The software ID.
+	// The ID of the software.
 	//
 	// example:
 	//
 	// softwarelib-software-1da844a39729****
 	SoftwareId *string `json:"SoftwareId,omitempty" xml:"SoftwareId,omitempty"`
-	// The software name.
+	// The name of the software.
 	//
 	// example:
 	//
 	// Thunder
 	SoftwareName *string `json:"SoftwareName,omitempty" xml:"SoftwareName,omitempty"`
-	// Indicates whether the built-in library source is deleted.
+	// Indicates whether the source in the built-in library is deleted.
 	//
 	// example:
 	//
 	// false
 	SourceRemoved *bool `json:"SourceRemoved,omitempty" xml:"SourceRemoved,omitempty"`
-	// The software source. Valid values:
+	// The source of the software. Valid values:
 	//
-	// - **custom**: custom software.
+	// - **custom**: Custom software.
 	//
-	// - **builtin**: built-in software library.
+	// - **builtin**: Built-in software library.
 	//
 	// example:
 	//
@@ -247,7 +247,7 @@ type ListSoftwarelibSoftwareResponseBodyDataList struct {
 	SourceType *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
 	// The list of associated user group IDs.
 	UserGroupIds []*string `json:"UserGroupIds,omitempty" xml:"UserGroupIds,omitempty" type:"Repeated"`
-	// The software version list. This field is not returned by the current operation. Call [ListSoftwarelibVersion](~~ListSoftwarelibVersion~~) to query software versions.
+	// The list of software versions. This field is not returned by the current API operation. For more information about how to view and manage software versions, see [Software management](https://www.alibabacloud.com/help/en/sase/user-guide/software-management).
 	Versions []*ListSoftwarelibSoftwareResponseBodyDataListVersions `json:"Versions,omitempty" xml:"Versions,omitempty" type:"Repeated"`
 	// The maximum software version number for Windows.
 	//
@@ -516,17 +516,17 @@ type ListSoftwarelibSoftwareResponseBodyDataListVersions struct {
 	//
 	// - **Mac(Apple)**: macOS with Apple silicon.
 	//
-	// - **Mac(Intel)**: macOS with Intel chips.
+	// - **Mac(Intel)**: macOS with Intel processors.
 	//
 	// example:
 	//
 	// Windows
 	Os *string `json:"Os,omitempty" xml:"Os,omitempty"`
-	// The software publisher type. Valid values:
+	// The type of the software publisher. Valid values:
 	//
-	// - **local**: local upload.
+	// - **local**: Local upload.
 	//
-	// - **thirdparty**: third-party link.
+	// - **thirdparty**: Third-party link.
 	//
 	// example:
 	//
@@ -558,9 +558,9 @@ type ListSoftwarelibSoftwareResponseBodyDataListVersions struct {
 	SoftwareUrl *string `json:"SoftwareUrl,omitempty" xml:"SoftwareUrl,omitempty"`
 	// The release status of the version. Valid values:
 	//
-	// - **published**: published.
+	// - **published**: Published.
 	//
-	// - **unpublished**: unpublished.
+	// - **unpublished**: Unpublished.
 	//
 	// example:
 	//
@@ -572,7 +572,7 @@ type ListSoftwarelibSoftwareResponseBodyDataListVersions struct {
 	//
 	// 1.0.0
 	Version *string `json:"Version,omitempty" xml:"Version,omitempty"`
-	// The software version ID.
+	// The ID of the software version.
 	//
 	// example:
 	//

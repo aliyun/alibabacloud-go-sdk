@@ -62,13 +62,13 @@ func (s *GetPADiagnosisTaskResponseBody) Validate() error {
 }
 
 type GetPADiagnosisTaskResponseBodyDiagnosisTask struct {
-	// The time when the task was created.
+	// The task creation time.
 	//
 	// example:
 	//
 	// 2023-08-17 09:49:03
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The ID of the device.
+	// The ID of the terminal device.
 	//
 	// example:
 	//
@@ -80,11 +80,11 @@ type GetPADiagnosisTaskResponseBodyDiagnosisTask struct {
 	//
 	// diag-3e0d36d6c15a0502
 	DiagnoseId *string `json:"DiagnoseId,omitempty" xml:"DiagnoseId,omitempty"`
-	// The diagnostic type. Valid values:
+	// The diagnosis type. Valid values:
 	//
-	// - **FullLink**: full-link diagnostics
+	// - **FullLink**: end-to-end diagnosis.
 	//
-	// - **Application**: application diagnostics
+	// - **Application**: application diagnosis.
 	//
 	// example:
 	//
@@ -96,17 +96,17 @@ type GetPADiagnosisTaskResponseBodyDiagnosisTask struct {
 	//
 	// mtools-admin.redotpay.com
 	Host *string `json:"Host,omitempty" xml:"Host,omitempty"`
-	// The ID of the POP.
+	// The ID of the PoP.
 	//
 	// example:
 	//
 	// pop-2504cd067e094750
 	PopId *string `json:"PopId,omitempty" xml:"PopId,omitempty"`
-	// The point of presence (POP) selection mode:
+	// The PoP selection mode. Valid values:
 	//
-	// - **AutoSelect**: automatic selection
+	// - **AutoSelect**: automatic selection.
 	//
-	// - **ManualSelect**: manual selection
+	// - **ManualSelect**: manual selection.
 	//
 	// example:
 	//
@@ -118,7 +118,7 @@ type GetPADiagnosisTaskResponseBodyDiagnosisTask struct {
 	//
 	// 80
 	Port *string `json:"Port,omitempty" xml:"Port,omitempty"`
-	// The private access application protocol. Valid values:
+	// The protocol used to access the application over the internal network. Valid values:
 	//
 	// - **TCP**
 	//
@@ -128,13 +128,13 @@ type GetPADiagnosisTaskResponseBodyDiagnosisTask struct {
 	//
 	// All
 	Protocol *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
-	// The diagnostic result.
+	// The diagnosis result.
 	Result *GetPADiagnosisTaskResponseBodyDiagnosisTaskResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
-	// The status of the task. Valid values:
+	// The running status of the task. Valid values:
 	//
 	// - **Running**: The task is running.
 	//
-	// - **Finished**: The task is complete.
+	// - **Finished**: The task is completed.
 	//
 	// - **Failed**: The task failed.
 	//
@@ -142,7 +142,7 @@ type GetPADiagnosisTaskResponseBodyDiagnosisTask struct {
 	//
 	// Running
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// Additional UDP configurations.
+	// The additional UDP configurations.
 	UdpExtraConfigs *GetPADiagnosisTaskResponseBodyDiagnosisTaskUdpExtraConfigs `json:"UdpExtraConfigs,omitempty" xml:"UdpExtraConfigs,omitempty" type:"Struct"`
 	// The user group.
 	UserGroup *GetPADiagnosisTaskResponseBodyDiagnosisTaskUserGroup `json:"UserGroup,omitempty" xml:"UserGroup,omitempty" type:"Struct"`
@@ -314,7 +314,7 @@ type GetPADiagnosisTaskResponseBodyDiagnosisTaskResult struct {
 	//
 	// device offline
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	// The ID of the request stream.
+	// The ID of the request flow.
 	//
 	// example:
 	//
@@ -324,7 +324,7 @@ type GetPADiagnosisTaskResponseBodyDiagnosisTaskResult struct {
 	NetworkLinkInfo *GetPADiagnosisTaskResponseBodyDiagnosisTaskResultNetworkLinkInfo `json:"NetworkLinkInfo,omitempty" xml:"NetworkLinkInfo,omitempty" type:"Struct"`
 	// The policy information.
 	PolicyInfo *GetPADiagnosisTaskResponseBodyDiagnosisTaskResultPolicyInfo `json:"PolicyInfo,omitempty" xml:"PolicyInfo,omitempty" type:"Struct"`
-	// Indicates whether the operation was successful.
+	// Indicates whether the request is successful.
 	//
 	// example:
 	//
@@ -400,7 +400,7 @@ func (s *GetPADiagnosisTaskResponseBodyDiagnosisTaskResult) Validate() error {
 }
 
 type GetPADiagnosisTaskResponseBodyDiagnosisTaskResultNetworkLinkInfo struct {
-	// The Domain Name System (DNS) information.
+	// The DNS information.
 	Dns *GetPADiagnosisTaskResponseBodyDiagnosisTaskResultNetworkLinkInfoDns `json:"Dns,omitempty" xml:"Dns,omitempty" type:"Struct"`
 	// The time to first byte.
 	//
@@ -524,7 +524,7 @@ type GetPADiagnosisTaskResponseBodyDiagnosisTaskResultNetworkLinkInfoDns struct 
 	//
 	// 10.0.0.1
 	Result *string `json:"Result,omitempty" xml:"Result,omitempty"`
-	// Indicates whether the operation was successful.
+	// Indicates whether the request is successful.
 	//
 	// example:
 	//
@@ -632,13 +632,13 @@ func (s *GetPADiagnosisTaskResponseBodyDiagnosisTaskResultNetworkLinkInfoDns) Va
 }
 
 type GetPADiagnosisTaskResponseBodyDiagnosisTaskResultNetworkLinkInfoDnsHops struct {
-	// The private access application address. The address can be 1 to 128 characters long and can be an IPv4 address, a CIDR block, a domain name, or a wildcard domain name.
+	// The application address for internal network access. The value must be 1 to 128 characters in length and can be an IPv4 address, a CIDR block, a domain name, or a wildcard domain name.
 	//
 	// example:
 	//
-	// *******************************************
+	// 198.51.100.1
 	Address *string `json:"Address,omitempty" xml:"Address,omitempty"`
-	// The TTL.
+	// The time to live (TTL).
 	//
 	// example:
 	//
@@ -726,7 +726,7 @@ type GetPADiagnosisTaskResponseBodyDiagnosisTaskResultNetworkLinkInfoDnsHopsGeoD
 	//
 	// hangzhou
 	City *string `json:"City,omitempty" xml:"City,omitempty"`
-	// The ISP.
+	// The Internet service provider (ISP).
 	//
 	// example:
 	//
@@ -803,7 +803,7 @@ type GetPADiagnosisTaskResponseBodyDiagnosisTaskResultNetworkLinkInfoLinks struc
 	//
 	// 10
 	Latency *string `json:"Latency,omitempty" xml:"Latency,omitempty"`
-	// Indicates whether the operation was successful.
+	// Indicates whether the request is successful.
 	//
 	// example:
 	//
@@ -897,9 +897,9 @@ type GetPADiagnosisTaskResponseBodyDiagnosisTaskResultNetworkLinkInfoLinksHops s
 	//
 	// example:
 	//
-	// **********************
+	// 192.0.2.1
 	Address *string `json:"Address,omitempty" xml:"Address,omitempty"`
-	// The geographic location.
+	// The geographical location.
 	GeoData *GetPADiagnosisTaskResponseBodyDiagnosisTaskResultNetworkLinkInfoLinksHopsGeoData `json:"GeoData,omitempty" xml:"GeoData,omitempty" type:"Struct"`
 	// The latency.
 	//
@@ -907,7 +907,7 @@ type GetPADiagnosisTaskResponseBodyDiagnosisTaskResultNetworkLinkInfoLinksHops s
 	//
 	// 10
 	Latency *string `json:"Latency,omitempty" xml:"Latency,omitempty"`
-	// The Time to Live (TTL).
+	// The time to live (TTL).
 	//
 	// example:
 	//
@@ -1044,13 +1044,13 @@ func (s *GetPADiagnosisTaskResponseBodyDiagnosisTaskResultNetworkLinkInfoLinksHo
 }
 
 type GetPADiagnosisTaskResponseBodyDiagnosisTaskResultNetworkLinkInfoNodes struct {
-	// The private access application address. The address can be 1 to 128 characters long and can be an IPv4 address, a CIDR block, a domain name, or a wildcard domain name.
+	// The address used to access the application over the internal network. The address must be 1 to 128 characters in length and can be an IPv4 address, a CIDR block, a domain name, or a wildcard domain name.
 	//
 	// example:
 	//
 	// 172.27.228.132
 	Address *string `json:"Address,omitempty" xml:"Address,omitempty"`
-	// The ID of the cloud network instance.
+	// The instance ID of the cloud network.
 	//
 	// example:
 	//
@@ -1062,21 +1062,21 @@ type GetPADiagnosisTaskResponseBodyDiagnosisTaskResultNetworkLinkInfoNodes struc
 	//
 	// 1
 	Error *string `json:"Error,omitempty" xml:"Error,omitempty"`
-	// The geographic location information.
+	// The geographical location information.
 	GeoData *GetPADiagnosisTaskResponseBodyDiagnosisTaskResultNetworkLinkInfoNodesGeoData `json:"GeoData,omitempty" xml:"GeoData,omitempty" type:"Struct"`
-	// The node ID.
+	// The ID of the node.
 	//
 	// example:
 	//
 	// 1237
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The node name.
+	// The name of the node.
 	//
 	// example:
 	//
-	// 全局加速
+	// Global acceleration
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The English name of the node.
+	// The name of the node in English.
 	//
 	// example:
 	//
@@ -1088,13 +1088,13 @@ type GetPADiagnosisTaskResponseBodyDiagnosisTaskResultNetworkLinkInfoNodes struc
 	//
 	// stunnel
 	NodeType *string `json:"NodeType,omitempty" xml:"NodeType,omitempty"`
-	// The resource ID.
+	// The ID of the resource.
 	//
 	// example:
 	//
 	// pop-xxxxxx
 	ResourceId *string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty"`
-	// Indicates whether the operation was successful.
+	// Indicates whether the request is successful.
 	//
 	// example:
 	//
@@ -1222,7 +1222,7 @@ type GetPADiagnosisTaskResponseBodyDiagnosisTaskResultNetworkLinkInfoNodesGeoDat
 	//
 	// CN
 	Country *string `json:"Country,omitempty" xml:"Country,omitempty"`
-	// The Internet Service Provider (ISP).
+	// The ISP.
 	//
 	// example:
 	//
@@ -1293,11 +1293,11 @@ type GetPADiagnosisTaskResponseBodyDiagnosisTaskResultPolicyInfo struct {
 	//
 	// 1000
 	ProcessTime *int64 `json:"ProcessTime,omitempty" xml:"ProcessTime,omitempty"`
-	// The name of the routing policy.
+	// The routing policy name.
 	RouteStrategyInfo *GetPADiagnosisTaskResponseBodyDiagnosisTaskResultPolicyInfoRouteStrategyInfo `json:"RouteStrategyInfo,omitempty" xml:"RouteStrategyInfo,omitempty" type:"Struct"`
 	// The user group information.
 	UserGroupInfo *GetPADiagnosisTaskResponseBodyDiagnosisTaskResultPolicyInfoUserGroupInfo `json:"UserGroupInfo,omitempty" xml:"UserGroupInfo,omitempty" type:"Struct"`
-	// The zero-trust policy information.
+	// The zero trust policy information.
 	ZeroTrustPolicyInfo *GetPADiagnosisTaskResponseBodyDiagnosisTaskResultPolicyInfoZeroTrustPolicyInfo `json:"ZeroTrustPolicyInfo,omitempty" xml:"ZeroTrustPolicyInfo,omitempty" type:"Struct"`
 }
 
@@ -1379,31 +1379,31 @@ func (s *GetPADiagnosisTaskResponseBodyDiagnosisTaskResultPolicyInfo) Validate()
 }
 
 type GetPADiagnosisTaskResponseBodyDiagnosisTaskResultPolicyInfoDeviceAttributeInfo struct {
-	// The ID of the device.
+	// The ID of the terminal device.
 	//
 	// example:
 	//
 	// E9EE1CE7-4AA0-521D-B8E1-E13E47F05E94
 	DevTag *string `json:"DevTag,omitempty" xml:"DevTag,omitempty"`
-	// The operating system of the device. Valid values:
+	// The operating system type of the terminal device. Valid values:
 	//
-	// - **Windows**: Windows
+	// - **Windows**: Windows.
 	//
-	// - **macOS**: macOS
+	// - **macOS**: macOS.
 	//
-	// - **Linux**: Linux
+	// - **Linux**: Linux.
 	//
-	// - **Android**: Android
+	// - **Android**: Android.
 	//
-	// - **iOS**: iOS
+	// - **iOS**: iOS.
 	//
-	// - **Windows_Wuying**: Cloud Desktop
+	// - **Windows_Wuying**: WUYING Workspace.
 	//
 	// example:
 	//
 	// macos
 	DeviceType *string `json:"DeviceType,omitempty" xml:"DeviceType,omitempty"`
-	// The name of the file.
+	// The file name.
 	File []*string `json:"File,omitempty" xml:"File,omitempty" type:"Repeated"`
 	// The firewall.
 	//
@@ -1411,13 +1411,13 @@ type GetPADiagnosisTaskResponseBodyDiagnosisTaskResultPolicyInfoDeviceAttributeI
 	//
 	// [{\\"Platform\\":\\"windows\\",\\"Status\\":\\"disabled\\"},{\\"Platform\\":\\"macos\\",\\"Status\\":\\"disabled\\"},{\\"Platform\\":\\"linux\\",\\"Status\\":\\"disabled\\"}]
 	Firewall *string `json:"Firewall,omitempty" xml:"Firewall,omitempty"`
-	// The name of the device. The name can be 1 to 128 characters long and can include letters, numbers, and the following special characters: . , ; - _ / @ and spaces. To query for all devices with names containing 4-byte UTF-8 characters, enter only an underscore (_).
+	// The name of the terminal device. The name must be 1 to 128 characters in length and can contain Chinese characters, uppercase and lowercase letters, digits, periods (.), commas (,), semicolons (;), hyphens (-), underscores (_), forward slashes (/), at signs (@), and spaces. If you enter only an underscore (_), the system additionally queries all terminal devices whose names contain 4-byte UTF-8 characters.
 	//
 	// example:
 	//
 	// DESKTOP-CVTB5KT.CXISHD01.CATHAY_INS.CHN
 	Hostname *string `json:"Hostname,omitempty" xml:"Hostname,omitempty"`
-	// The private IP address of the device.
+	// The internal IP address of the terminal device.
 	//
 	// example:
 	//
@@ -1429,7 +1429,7 @@ type GetPADiagnosisTaskResponseBodyDiagnosisTaskResultPolicyInfoDeviceAttributeI
 	//
 	// 47.98.146.136
 	InternetIp *string `json:"InternetIp,omitempty" xml:"InternetIp,omitempty"`
-	// The MAC address of the device.
+	// The MAC address of the terminal device.
 	//
 	// example:
 	//
@@ -1443,7 +1443,7 @@ type GetPADiagnosisTaskResponseBodyDiagnosisTaskResultPolicyInfoDeviceAttributeI
 	MatchedSecurityBaseline *string `json:"MatchedSecurityBaseline,omitempty" xml:"MatchedSecurityBaseline,omitempty"`
 	// The list of security baseline processes.
 	Process []*string `json:"Process,omitempty" xml:"Process,omitempty" type:"Repeated"`
-	// The SSID.
+	// The service set identifier (SSID) of the wireless network.
 	//
 	// example:
 	//
@@ -1569,7 +1569,7 @@ type GetPADiagnosisTaskResponseBodyDiagnosisTaskResultPolicyInfoRouteStrategyInf
 	//
 	// connector
 	RouteType *string `json:"RouteType,omitempty" xml:"RouteType,omitempty"`
-	// The policy ID.
+	// The ID of the policy.
 	//
 	// example:
 	//
@@ -1631,7 +1631,7 @@ type GetPADiagnosisTaskResponseBodyDiagnosisTaskResultPolicyInfoUserGroupInfo st
 	Email *string `json:"Email,omitempty" xml:"Email,omitempty"`
 	// The list of department names.
 	Group []*string `json:"Group,omitempty" xml:"Group,omitempty" type:"Repeated"`
-	// The matched user group.
+	// The matched user groups.
 	//
 	// example:
 	//
@@ -1709,13 +1709,13 @@ func (s *GetPADiagnosisTaskResponseBodyDiagnosisTaskResultPolicyInfoUserGroupInf
 }
 
 type GetPADiagnosisTaskResponseBodyDiagnosisTaskResultPolicyInfoZeroTrustPolicyInfo struct {
-	// The policy action:
+	// The policy action. Valid values:
 	//
-	// - **Allow**: allow
+	// - **Allow**: allows the traffic.
 	//
-	// - **Block**: block
+	// - **Block**: blocks the traffic.
 	//
-	// - **Observe**: monitor mode
+	// - **Observe**: monitor mode.
 	//
 	// example:
 	//
@@ -1727,17 +1727,17 @@ type GetPADiagnosisTaskResponseBodyDiagnosisTaskResultPolicyInfoZeroTrustPolicyI
 	//
 	// MyApp2
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	// The block information.
+	// The blocking information.
 	//
 	// example:
 	//
 	// access denied
 	BlockInfo *string `json:"BlockInfo,omitempty" xml:"BlockInfo,omitempty"`
-	// The name of the zero-trust policy.
+	// The name of the zero trust policy.
 	//
 	// example:
 	//
-	// 保密测试
+	// Confidentiality test
 	PolicyName *string `json:"PolicyName,omitempty" xml:"PolicyName,omitempty"`
 }
 
@@ -1796,7 +1796,7 @@ type GetPADiagnosisTaskResponseBodyDiagnosisTaskUdpExtraConfigs struct {
 	//
 	// hello
 	ExpectedResponse *string `json:"ExpectedResponse,omitempty" xml:"ExpectedResponse,omitempty"`
-	// The content of the UDP request.
+	// The UDP request content.
 	//
 	// example:
 	//

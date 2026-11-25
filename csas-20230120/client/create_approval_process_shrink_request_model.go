@@ -24,7 +24,7 @@ type CreateApprovalProcessShrinkRequest struct {
 	//
 	// example:
 	//
-	// This is an approval process
+	// Process for approving employees\\" temporary access to internal network applications
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The matched approval templates.
 	MatchSchemasShrink *string `json:"MatchSchemas,omitempty" xml:"MatchSchemas,omitempty"`
@@ -34,7 +34,7 @@ type CreateApprovalProcessShrinkRequest struct {
 	//
 	// example:
 	//
-	// test_process
+	// Internal network access approval process
 	ProcessName *string `json:"ProcessName,omitempty" xml:"ProcessName,omitempty"`
 	// The list of approval nodes. You can define up to five approval nodes.
 	//

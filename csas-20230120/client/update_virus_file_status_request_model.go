@@ -22,9 +22,9 @@ type iUpdateVirusFileStatusRequest interface {
 }
 
 type UpdateVirusFileStatusRequest struct {
-	// The unique identifier of the user terminal device where the virus file is located. The value can be up to 64 characters in length. You can obtain the value from the following operation:
+	// The unique identifier of the user terminal device where the virus file is located. The value can be up to 64 characters in length. You can obtain the value from the following source:
 	//
-	// - [ListVirusFileStatuses](~~ListVirusFileStatuses~~): lists virus file statuses.
+	// - [ListVirusFileStatuses](~~ListVirusFileStatuses~~): Queries the statuses of virus files in batches.
 	//
 	// This parameter is required.
 	//
@@ -32,9 +32,9 @@ type UpdateVirusFileStatusRequest struct {
 	//
 	// 36efa42d-2c32-c4dc-e3fc-8541e33a****
 	DevTag *string `json:"DevTag,omitempty" xml:"DevTag,omitempty"`
-	// The MD5 value of the virus file. The value must be a 32-character hexadecimal string. You can obtain the value from the following operation:
+	// The MD5 hash value of the virus file. The value must be a 32-character hexadecimal string. You can obtain the value from the following source:
 	//
-	// - [ListVirusFileStatuses](~~ListVirusFileStatuses~~): lists virus file statuses.
+	// - [ListVirusFileStatuses](~~ListVirusFileStatuses~~): Queries the statuses of virus files in batches.
 	//
 	// This parameter is required.
 	//
@@ -42,9 +42,9 @@ type UpdateVirusFileStatusRequest struct {
 	//
 	// d41d8cd98f00b204e9800998ecf8427e
 	FileMd5 *string `json:"FileMd5,omitempty" xml:"FileMd5,omitempty"`
-	// The absolute path of the virus file on the user terminal device. You can obtain the value from the following operation:
+	// The absolute path of the virus file on the user terminal device. You can obtain the value from the following source:
 	//
-	// - [ListVirusFileStatuses](~~ListVirusFileStatuses~~): lists virus file statuses.
+	// - [ListVirusFileStatuses](~~ListVirusFileStatuses~~): Queries the statuses of virus files in batches.
 	//
 	// This parameter is required.
 	//
@@ -52,11 +52,11 @@ type UpdateVirusFileStatusRequest struct {
 	//
 	// C:\\Users\\Public\\Downloads\\setup.exe
 	FilePath *string `json:"FilePath,omitempty" xml:"FilePath,omitempty"`
-	// The disposal action. Valid values:
+	// The processing action. Valid values:
 	//
-	// - **AdminQuarantine**: quarantines the virus file. The server creates a disposal task and returns a TaskId. The user terminal device pulls and executes the quarantine.
+	// - **AdminQuarantine**: Quarantines the virus file. The server creates a processing task and returns a TaskId. The user terminal device pulls and executes the quarantine task.
 	//
-	// - **AdminTrust**: trusts the virus file. Only the disposal status is updated. No disposal task is created, and TaskId returns an empty string.
+	// - **AdminTrust**: Marks the virus file as trusted. This action only updates the processing status and does not create a processing task. An empty string is returned for TaskId.
 	//
 	// This parameter is required.
 	//
@@ -66,57 +66,57 @@ type UpdateVirusFileStatusRequest struct {
 	Operation *string `json:"Operation,omitempty" xml:"Operation,omitempty"`
 	// The virus type. This parameter is used for synchronization to update the virus type of the file. Valid values:
 	//
-	// - **Backdoor**: backdoor program.
+	// - **Backdoor**: Backdoor program.
 	//
-	// - **DDoS**: DDoS Trojan.
+	// - **DDoS**: DDoS trojan.
 	//
-	// - **Downloader**: downloader Trojan.
+	// - **Downloader**: Downloader trojan.
 	//
 	// - **Engtest**: DPI engine test program.
 	//
-	// - **Hacktool**: hacker tool.
+	// - **Hacktool**: Hacker tool.
 	//
-	// - **Trojan**: self-mutating Trojan.
+	// - **Trojan**: Self-mutating trojan.
 	//
-	// - **Malbaseware**: contaminated base software.
+	// - **Malbaseware**: Contaminated basic software.
 	//
-	// - **MalScript**: malicious script.
+	// - **MalScript**: Malicious script.
 	//
-	// - **Malware**: malicious program.
+	// - **Malware**: Malicious program.
 	//
-	// - **Miner**: mining programs.
+	// - **Miner**: Mining programs.
 	//
-	// - **Proxytool**: proxy tool.
+	// - **Proxytool**: Proxy tool.
 	//
-	// - **RansomWare**: ransomware.
+	// - **RansomWare**: Ransomware.
 	//
-	// - **RiskWare**: riskware.
+	// - **RiskWare**: Riskware.
 	//
-	// - **Rootkit**: kernel-hidden program.
+	// - **Rootkit**: Kernel hiding program.
 	//
-	// - **Stealer**: credential stealer.
+	// - **Stealer**: Stealer tool.
 	//
-	// - **Scanner**: scanner.
+	// - **Scanner**: Scanner.
 	//
-	// - **Suspicious**: suspicious program.
+	// - **Suspicious**: Suspicious program.
 	//
-	// - **Virus**: file-infecting virus.
+	// - **Virus**: Infectious virus.
 	//
-	// - **WebShell**: webshell.
+	// - **WebShell**: Web shell.
 	//
-	// - **Worm**: worms.
+	// - **Worm**: Worms.
 	//
-	// - **BlackList**: file that hit a blacklist entry.
+	// - **BlackList**: Files that hit the blacklist.
 	//
-	// - **Exp**: vulnerability exploits program.
+	// - **Exp**: Vulnerability exploits program.
 	//
-	// - **Patcher**: cracking program.
+	// - **Patcher**: Cracking program.
 	//
-	// - **Gametool**: private server tool.
+	// - **Gametool**: Private server tool.
 	//
-	// - **AdWare**: adware.
+	// - **AdWare**: Adware.
 	//
-	// - **Maldoc**: malicious document.
+	// - **Maldoc**: Malicious document.
 	//
 	// example:
 	//

@@ -42,7 +42,7 @@ type ListNetBandwidthResponseBody struct {
 	//
 	// D6707286-A50E-57B1-B2CF-EFAC59E850D8
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries returned.
+	// The total number of entries.
 	//
 	// example:
 	//
@@ -117,19 +117,19 @@ func (s *ListNetBandwidthResponseBody) Validate() error {
 }
 
 type ListNetBandwidthResponseBodyNetBandwidthList struct {
-	// The bandwidth value, in Mbps.
+	// The bandwidth value (Mbps).
 	//
 	// example:
 	//
 	// 5
 	Bandwidth *int32 `json:"Bandwidth,omitempty" xml:"Bandwidth,omitempty"`
-	// The time when the instance was created.
+	// The creation time.
 	//
 	// example:
 	//
 	// 2026-08-01 10:20:30
 	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	// The time when the instance was last modified.
+	// The update time.
 	//
 	// example:
 	//

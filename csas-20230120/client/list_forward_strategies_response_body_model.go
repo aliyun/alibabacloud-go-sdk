@@ -18,7 +18,7 @@ type iListForwardStrategiesResponseBody interface {
 }
 
 type ListForwardStrategiesResponseBody struct {
-	// The list of forwarding rules.
+	// The forwarding rules.
 	ForwardStrategies []*ListForwardStrategiesResponseBodyForwardStrategies `json:"ForwardStrategies,omitempty" xml:"ForwardStrategies,omitempty" type:"Repeated"`
 	// Id of the request
 	//
@@ -26,7 +26,7 @@ type ListForwardStrategiesResponseBody struct {
 	//
 	// D6707286-A50E-57B1-B2CF-EFAC59E850D8
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of policies.
+	// The total number of forwarding rules.
 	//
 	// example:
 	//
@@ -95,9 +95,9 @@ type ListForwardStrategiesResponseBodyForwardStrategies struct {
 	//
 	// connector-4178bc59bec56df1
 	DestinationId *string `json:"DestinationId,omitempty" xml:"DestinationId,omitempty"`
-	// The type of the access destination. Valid values:
+	// The destination type. Valid values:
 	//
-	// - **Connector**: connector.
+	// - **Connector**: Connector.
 	//
 	// example:
 	//
@@ -113,7 +113,7 @@ type ListForwardStrategiesResponseBodyForwardStrategies struct {
 	//
 	// example:
 	//
-	// 白名单加速
+	// Whitelist acceleration
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The policy priority.
 	//
@@ -121,7 +121,7 @@ type ListForwardStrategiesResponseBodyForwardStrategies struct {
 	//
 	// 100
 	Priority *string `json:"Priority,omitempty" xml:"Priority,omitempty"`
-	// The status of the policy. Valid values:
+	// The status of the forwarding rule. Valid values:
 	//
 	// - **Enabled**: Enabled.
 	//

@@ -14,7 +14,7 @@ type iCancelVulScanTasksRequest interface {
 }
 
 type CancelVulScanTasksRequest struct {
-	// The IDs of the vulnerability scanning tasks to cancel. The collection must contain at least 1 and at most 100 IDs. Duplicate IDs are not allowed.
+	// The IDs of the vulnerability scanning nodes to cancel. You can specify 1 to 100 unique node IDs.
 	//
 	// This parameter is required.
 	TaskIds []*string `json:"TaskIds,omitempty" xml:"TaskIds,omitempty" type:"Repeated"`

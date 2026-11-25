@@ -20,19 +20,19 @@ type iUnbindSaseUserTagResponseBody interface {
 type UnbindSaseUserTagResponseBody struct {
 	// The API status code or POP error code. Valid values:
 	//
-	// - **2xx**: Success.
+	// - **2xx**: success
 	//
-	// - **3xx**: Redirection.
+	// - **3xx**: redirection
 	//
-	// - **4xx**: Request error.
+	// - **4xx**: request error
 	//
-	// - **5xx**: Server error.
+	// - **5xx**: server error
 	//
 	// example:
 	//
 	// 200
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//

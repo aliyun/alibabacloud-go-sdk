@@ -16,9 +16,9 @@ type iUpdatePrivateAccessApplicationL7SwitchResponseBody interface {
 }
 
 type UpdatePrivateAccessApplicationL7SwitchResponseBody struct {
-	// The Layer 7 access switch configuration of the internal-facing application after this update.
+	// The Layer 7 access switch configurations of the internal access application after the update.
 	L7Switch *UpdatePrivateAccessApplicationL7SwitchResponseBodyL7Switch `json:"L7Switch,omitempty" xml:"L7Switch,omitempty" type:"Struct"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
@@ -62,13 +62,13 @@ func (s *UpdatePrivateAccessApplicationL7SwitchResponseBody) Validate() error {
 }
 
 type UpdatePrivateAccessApplicationL7SwitchResponseBodyL7Switch struct {
-	// The ID of the internal-facing application.
+	// The ID of the internal access application.
 	//
 	// example:
 	//
 	// pa-application-e12860ef6c48****
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
-	// The device tag mark switch. Valid values:
+	// The device tag marking switch. Valid values:
 	//
 	// - **Enabled**: Enabled.
 	//
@@ -78,7 +78,7 @@ type UpdatePrivateAccessApplicationL7SwitchResponseBodyL7Switch struct {
 	//
 	// Disabled
 	DevTagMarkStatus *string `json:"DevTagMarkStatus,omitempty" xml:"DevTagMarkStatus,omitempty"`
-	// The sensitive application download audit switch. Valid values:
+	// The download audit switch for sensitive applications. Valid values:
 	//
 	// - **Enabled**: Enabled.
 	//
@@ -88,9 +88,9 @@ type UpdatePrivateAccessApplicationL7SwitchResponseBodyL7Switch struct {
 	//
 	// Disabled
 	DownloadAuditStatus *string `json:"DownloadAuditStatus,omitempty" xml:"DownloadAuditStatus,omitempty"`
-	// The collection of port ranges that are effective for Layer 7 access. This is the intersection of the ports specified in this request and the port ranges already configured for the internal-facing application. An empty collection is returned when Status is set to **Disabled**.
+	// The effective port ranges for Layer 7 access, which are the intersection of the ports specified in this request and the configured port ranges of the internal access application. If Status is set to **Disabled**, an empty set is returned.
 	PortRanges []*UpdatePrivateAccessApplicationL7SwitchResponseBodyL7SwitchPortRanges `json:"PortRanges,omitempty" xml:"PortRanges,omitempty" type:"Repeated"`
-	// The source IP mark switch. Valid values:
+	// The source IP marking switch. Valid values:
 	//
 	// - **Enabled**: Enabled.
 	//
@@ -100,7 +100,7 @@ type UpdatePrivateAccessApplicationL7SwitchResponseBodyL7Switch struct {
 	//
 	// Disabled
 	SrcIpMarkStatus *string `json:"SrcIpMarkStatus,omitempty" xml:"SrcIpMarkStatus,omitempty"`
-	// The master switch for Layer 7 access of the internal-facing application. Valid values:
+	// The master switch for the Layer 7 access switch of the internal access application. Valid values:
 	//
 	// - **Enabled**: Enabled.
 	//
@@ -115,8 +115,9 @@ type UpdatePrivateAccessApplicationL7SwitchResponseBodyL7Switch struct {
 	// example:
 	//
 	// 60
-	TimeoutSec *int32 `json:"TimeoutSec,omitempty" xml:"TimeoutSec,omitempty"`
-	// The user mark switch. Valid values:
+	TimeoutSec     *int32                                                                      `json:"TimeoutSec,omitempty" xml:"TimeoutSec,omitempty"`
+	UrlAccessPaths []*UpdatePrivateAccessApplicationL7SwitchResponseBodyL7SwitchUrlAccessPaths `json:"UrlAccessPaths,omitempty" xml:"UrlAccessPaths,omitempty" type:"Repeated"`
+	// The user marking switch. Valid values:
 	//
 	// - **Enabled**: Enabled.
 	//
@@ -126,7 +127,7 @@ type UpdatePrivateAccessApplicationL7SwitchResponseBodyL7Switch struct {
 	//
 	// Enabled
 	UserMarkStatus *string `json:"UserMarkStatus,omitempty" xml:"UserMarkStatus,omitempty"`
-	// The host bypass prevention switch. Valid values:
+	// The Host bypass prevention switch. Valid values:
 	//
 	// - **Enabled**: Enabled.
 	//
@@ -174,6 +175,10 @@ func (s *UpdatePrivateAccessApplicationL7SwitchResponseBodyL7Switch) GetTimeoutS
 	return s.TimeoutSec
 }
 
+func (s *UpdatePrivateAccessApplicationL7SwitchResponseBodyL7Switch) GetUrlAccessPaths() []*UpdatePrivateAccessApplicationL7SwitchResponseBodyL7SwitchUrlAccessPaths {
+	return s.UrlAccessPaths
+}
+
 func (s *UpdatePrivateAccessApplicationL7SwitchResponseBodyL7Switch) GetUserMarkStatus() *string {
 	return s.UserMarkStatus
 }
@@ -217,6 +222,11 @@ func (s *UpdatePrivateAccessApplicationL7SwitchResponseBodyL7Switch) SetTimeoutS
 	return s
 }
 
+func (s *UpdatePrivateAccessApplicationL7SwitchResponseBodyL7Switch) SetUrlAccessPaths(v []*UpdatePrivateAccessApplicationL7SwitchResponseBodyL7SwitchUrlAccessPaths) *UpdatePrivateAccessApplicationL7SwitchResponseBodyL7Switch {
+	s.UrlAccessPaths = v
+	return s
+}
+
 func (s *UpdatePrivateAccessApplicationL7SwitchResponseBodyL7Switch) SetUserMarkStatus(v string) *UpdatePrivateAccessApplicationL7SwitchResponseBodyL7Switch {
 	s.UserMarkStatus = &v
 	return s
@@ -230,6 +240,15 @@ func (s *UpdatePrivateAccessApplicationL7SwitchResponseBodyL7Switch) SetZeroTrus
 func (s *UpdatePrivateAccessApplicationL7SwitchResponseBodyL7Switch) Validate() error {
 	if s.PortRanges != nil {
 		for _, item := range s.PortRanges {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.UrlAccessPaths != nil {
+		for _, item := range s.UrlAccessPaths {
 			if item != nil {
 				if err := item.Validate(); err != nil {
 					return err
@@ -282,5 +301,40 @@ func (s *UpdatePrivateAccessApplicationL7SwitchResponseBodyL7SwitchPortRanges) S
 }
 
 func (s *UpdatePrivateAccessApplicationL7SwitchResponseBodyL7SwitchPortRanges) Validate() error {
+	return dara.Validate(s)
+}
+
+type UpdatePrivateAccessApplicationL7SwitchResponseBodyL7SwitchUrlAccessPaths struct {
+	AllowMethods []*string `json:"AllowMethods,omitempty" xml:"AllowMethods,omitempty" type:"Repeated"`
+	Urls         []*string `json:"Urls,omitempty" xml:"Urls,omitempty" type:"Repeated"`
+}
+
+func (s UpdatePrivateAccessApplicationL7SwitchResponseBodyL7SwitchUrlAccessPaths) String() string {
+	return dara.Prettify(s)
+}
+
+func (s UpdatePrivateAccessApplicationL7SwitchResponseBodyL7SwitchUrlAccessPaths) GoString() string {
+	return s.String()
+}
+
+func (s *UpdatePrivateAccessApplicationL7SwitchResponseBodyL7SwitchUrlAccessPaths) GetAllowMethods() []*string {
+	return s.AllowMethods
+}
+
+func (s *UpdatePrivateAccessApplicationL7SwitchResponseBodyL7SwitchUrlAccessPaths) GetUrls() []*string {
+	return s.Urls
+}
+
+func (s *UpdatePrivateAccessApplicationL7SwitchResponseBodyL7SwitchUrlAccessPaths) SetAllowMethods(v []*string) *UpdatePrivateAccessApplicationL7SwitchResponseBodyL7SwitchUrlAccessPaths {
+	s.AllowMethods = v
+	return s
+}
+
+func (s *UpdatePrivateAccessApplicationL7SwitchResponseBodyL7SwitchUrlAccessPaths) SetUrls(v []*string) *UpdatePrivateAccessApplicationL7SwitchResponseBodyL7SwitchUrlAccessPaths {
+	s.Urls = v
+	return s
+}
+
+func (s *UpdatePrivateAccessApplicationL7SwitchResponseBodyL7SwitchUrlAccessPaths) Validate() error {
 	return dara.Validate(s)
 }

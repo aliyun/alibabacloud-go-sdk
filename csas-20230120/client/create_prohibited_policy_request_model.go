@@ -54,17 +54,17 @@ type iCreateProhibitedPolicyRequest interface {
 }
 
 type CreateProhibitedPolicyRequest struct {
-	// Specifies whether end users are allowed to submit a report request for this policy. Valid values:
+	// Specifies whether to allow terminal users to submit an exception request for the policy. Valid values:
 	//
-	// - **true**: Reporting is allowed. The pop-up window on the endpoint provides a reporting entry.
+	// - **true**: Exception requests are allowed. The terminal pop-up window provides an entry for the request.
 	//
-	// - **false**: Reporting is not allowed.
+	// - **false**: Exception requests are not allowed.
 	//
 	// example:
 	//
 	// false
 	AllowReport *string `json:"AllowReport,omitempty" xml:"AllowReport,omitempty"`
-	// The description of the software ban policy. The description can be up to 128 characters in length and can be left empty.
+	// The description of the prohibited software policy. The description can be up to 128 characters in length and can be empty.
 	//
 	// example:
 	//
@@ -72,9 +72,9 @@ type CreateProhibitedPolicyRequest struct {
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// Specifies whether the policy is enabled. Valid values:
 	//
-	// - **true**: Enabled. The policy is delivered to the endpoint and takes effect.
+	// - **true**: The policy is enabled, delivered to terminals, and takes effect.
 	//
-	// - **false**: Disabled. The policy configuration is retained but not delivered to the endpoint.
+	// - **false**: The policy is disabled. The configuration is retained but not delivered to terminals.
 	//
 	// This parameter is required.
 	//
@@ -82,25 +82,33 @@ type CreateProhibitedPolicyRequest struct {
 	//
 	// true
 	Enabled *bool `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
-	// Specifies whether to forcefully terminate running software processes. Valid values:
+	// Specifies whether to forcibly terminate running processes of the software. Valid values:
+	//
+	// - **true**: The terminal immediately terminates the running processes of the software when the policy is matched.
+	//
+	// - **false**: The terminal does not terminate running processes but only prevents subsequent startups.
 	//
 	// example:
 	//
 	// false
 	ForceKill *bool `json:"ForceKill,omitempty" xml:"ForceKill,omitempty"`
-	// The Chinese text of the primary button in the pop-up window on the endpoint.
+	// The Chinese text of the primary button in the terminal pop-up window.
 	//
 	// example:
 	//
-	// Submit Filing
+	// Apply for exemption
 	MainButtonTextCh *string `json:"MainButtonTextCh,omitempty" xml:"MainButtonTextCh,omitempty"`
-	// The English text of the primary button in the pop-up window on the endpoint.
+	// The English text of the primary button in the terminal pop-up window.
 	//
 	// example:
 	//
 	// Report
 	MainButtonTextEn *string `json:"MainButtonTextEn,omitempty" xml:"MainButtonTextEn,omitempty"`
-	// The scope in which the policy takes effect. Valid values:
+	// The effective scope. Valid values:
+	//
+	// - **UserGroupAll**: The policy takes effect for all users under the current Alibaba Cloud account. You do not need to specify user groups.
+	//
+	// - **UserGroupNormal**: The policy takes effect only for users in the user groups specified by UserGroupIds.
 	//
 	// This parameter is required.
 	//
@@ -108,19 +116,19 @@ type CreateProhibitedPolicyRequest struct {
 	//
 	// UserGroupAll
 	MatchMode *string `json:"MatchMode,omitempty" xml:"MatchMode,omitempty"`
-	// The Chinese text of the secondary button in the pop-up window on the endpoint.
+	// The Chinese text of the secondary button in the terminal pop-up window.
 	//
 	// example:
 	//
-	// Got It
+	// Got it
 	MinorButtonTextCh *string `json:"MinorButtonTextCh,omitempty" xml:"MinorButtonTextCh,omitempty"`
-	// The English text of the secondary button in the pop-up window on the endpoint.
+	// The English text of the secondary button in the terminal pop-up window.
 	//
 	// example:
 	//
 	// I know
 	MinorButtonTextEn *string `json:"MinorButtonTextEn,omitempty" xml:"MinorButtonTextEn,omitempty"`
-	// Policy Name of the software ban policy. Policy Name must be 1 to 128 characters in length and can contain Chinese characters, uppercase and lowercase letters, digits, periods (.), underscores (_), and hyphens (-). Spaces are not supported.
+	// Policy Name of the prohibited software policy. Policy Name must be 1 to 128 characters in length and can contain Chinese characters, uppercase and lowercase letters, digits, periods (.), underscores (_), and hyphens (-). Spaces are not supported.
 	//
 	// This parameter is required.
 	//
@@ -130,6 +138,10 @@ type CreateProhibitedPolicyRequest struct {
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The object type. Valid values:
 	//
+	// - **App**: controls disable software. The managed objects are specified by SoftwareIds.
+	//
+	// - **Tag**: controls disable software labels. The managed objects are specified by TagIds. All disable software within the labels is managed.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -138,11 +150,11 @@ type CreateProhibitedPolicyRequest struct {
 	ObjectType *string `json:"ObjectType,omitempty" xml:"ObjectType,omitempty"`
 	// The action to take. Valid values:
 	//
-	// - **Ban**: Blocks the software from running and displays a pop-up notification to the end user.
+	// - **Ban**: blocks the software from running and displays a pop-up window on the terminal to notify the user.
 	//
-	// - **BanSilent**: Blocks the software from running without notifying the end user (silent blocking).
+	// - **BanSilent**: blocks the software from running without notifying the user.
 	//
-	// - **Warn**: Displays a pop-up notification to the end user without blocking the software from running.
+	// - **Warn**: displays a pop-up window on the terminal to notify the user without blocking the software from running.
 	//
 	// This parameter is required.
 	//
@@ -158,7 +170,7 @@ type CreateProhibitedPolicyRequest struct {
 	//
 	// 99
 	Priority *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
-	// The Chinese prompt content displayed in the pop-up window on the endpoint.
+	// The Chinese prompt content in the terminal pop-up window.
 	//
 	// This parameter is required.
 	//
@@ -166,7 +178,7 @@ type CreateProhibitedPolicyRequest struct {
 	//
 	// test
 	PromptCh *string `json:"PromptCh,omitempty" xml:"PromptCh,omitempty"`
-	// The English prompt content displayed in the pop-up window on the endpoint.
+	// The English prompt content in the terminal pop-up window.
 	//
 	// This parameter is required.
 	//
@@ -174,17 +186,17 @@ type CreateProhibitedPolicyRequest struct {
 	//
 	// Auto test prohibition prompt
 	PromptEn *string `json:"PromptEn,omitempty" xml:"PromptEn,omitempty"`
-	// The collection of banned software directly controlled by this policy.
+	// The collection of prohibited software directly managed by the policy.
 	SoftwareIds []*CreateProhibitedPolicyRequestSoftwareIds `json:"SoftwareIds,omitempty" xml:"SoftwareIds,omitempty" type:"Repeated"`
-	// The collection of banned software tag IDs controlled by this policy.
+	// The collection of prohibited software tag IDs managed by the policy.
 	TagIds []*string `json:"TagIds,omitempty" xml:"TagIds,omitempty" type:"Repeated"`
-	// The Chinese title of the pop-up window on the endpoint.
+	// The Chinese title of the terminal pop-up window.
 	//
 	// example:
 	//
-	// Software Ban Reminder
+	// Prohibited software reminder
 	TitleCh *string `json:"TitleCh,omitempty" xml:"TitleCh,omitempty"`
-	// The English title of the pop-up window on the endpoint.
+	// The English title of the terminal pop-up window.
 	//
 	// example:
 	//
@@ -407,21 +419,21 @@ func (s *CreateProhibitedPolicyRequest) Validate() error {
 }
 
 type CreateProhibitedPolicyRequestSoftwareIds struct {
-	// Specifies whether the blocked software is a built-in blocked software entry. Valid values:
+	// Specifies whether the prohibited software is built-in. Valid values:
 	//
-	// - **true**: A built-in blocked software entry that is shared across all Alibaba Cloud accounts. Built-in entries cannot be modified or deleted.
+	// - **true**: The software is built-in, shared by all Alibaba Cloud accounts, and cannot be modified or deleted.
 	//
-	// - **false**: A custom blocked software entry under the current Alibaba Cloud account.
+	// - **false**: The software is custom prohibited software under the current Alibaba Cloud account.
 	//
 	// example:
 	//
 	// true
 	IsDefault *bool `json:"IsDefault,omitempty" xml:"IsDefault,omitempty"`
-	// The ID of the prohibited software. You can obtain the value from the following operations:
+	// The ID of the prohibited software. You can obtain the value from the following sources:
 	//
-	// - [ListProhibitedSoftware](~~ListProhibitedSoftware~~): Lists prohibited software.
+	// - [ListProhibitedSoftware](~~ListProhibitedSoftware~~): queries prohibited software in batches.
 	//
-	// - [CreateProhibitedSoftware](~~CreateProhibitedSoftware~~): Creates custom prohibited software.
+	// - [CreateProhibitedSoftware](~~CreateProhibitedSoftware~~): creates custom prohibited software.
 	//
 	// example:
 	//

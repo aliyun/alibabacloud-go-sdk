@@ -62,7 +62,7 @@ func (s *GetForwardStrategyResponseBody) Validate() error {
 }
 
 type GetForwardStrategyResponseBodyForwardStrategy struct {
-	// The policy description.
+	// The description of the policy.
 	//
 	// example:
 	//
@@ -76,13 +76,13 @@ type GetForwardStrategyResponseBodyForwardStrategy struct {
 	DestinationId *string `json:"DestinationId,omitempty" xml:"DestinationId,omitempty"`
 	// The destination type. Valid values:
 	//
-	// - **Connector**: connector.
+	// - **Connector**: Connector.
 	//
 	// example:
 	//
 	// Connector
 	DestinationType *string `json:"DestinationType,omitempty" xml:"DestinationType,omitempty"`
-	// The forwarding rule ID.
+	// The ID of the forwarding rule.
 	//
 	// example:
 	//
@@ -94,13 +94,13 @@ type GetForwardStrategyResponseBodyForwardStrategy struct {
 	//
 	// dynamic_route_name_eb55d3a3
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The policy priority. The value 1 indicates the highest priority, and the value 100 indicates the lowest priority.
+	// The policy priority. A value of 1 indicates the highest priority, and a value of 100 indicates the lowest priority.
 	//
 	// example:
 	//
 	// 1
 	Priority *int64 `json:"Priority,omitempty" xml:"Priority,omitempty"`
-	// The policy status. Valid values:
+	// The status of the policy. Valid values:
 	//
 	// - **Enabled**: Enabled.
 	//

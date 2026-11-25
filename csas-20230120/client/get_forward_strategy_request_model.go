@@ -14,7 +14,7 @@ type iGetForwardStrategyRequest interface {
 }
 
 type GetForwardStrategyRequest struct {
-	// The forwarding rule ID.
+	// The ID of the forwarding rule.
 	//
 	// This parameter is required.
 	//

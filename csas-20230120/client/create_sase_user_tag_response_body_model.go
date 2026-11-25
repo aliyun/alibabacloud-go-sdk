@@ -22,7 +22,7 @@ type CreateSaseUserTagResponseBody struct {
 	//
 	// FEF1144C-95D1-5F7C-81EF-9DB70EA49FCE
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The user tag ID.
+	// The ID of the user tag.
 	//
 	// example:
 	//

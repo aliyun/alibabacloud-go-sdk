@@ -16,7 +16,7 @@ type iCreateForwardStrategyResponseBody interface {
 }
 
 type CreateForwardStrategyResponseBody struct {
-	// The traffic forwarding rule.
+	// The forwarding rule.
 	ForwardStrategy *CreateForwardStrategyResponseBodyForwardStrategy `json:"ForwardStrategy,omitempty" xml:"ForwardStrategy,omitempty" type:"Struct"`
 	// Id of the request
 	//
@@ -62,13 +62,13 @@ func (s *CreateForwardStrategyResponseBody) Validate() error {
 }
 
 type CreateForwardStrategyResponseBodyForwardStrategy struct {
-	// The description of the traffic forwarding rule.
+	// The description of the forwarding rule.
 	//
 	// example:
 	//
 	// test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The target instance ID.
+	// The instance ID of the target instance.
 	//
 	// example:
 	//
@@ -82,7 +82,7 @@ type CreateForwardStrategyResponseBodyForwardStrategy struct {
 	//
 	// Connector
 	DestinationType *string `json:"DestinationType,omitempty" xml:"DestinationType,omitempty"`
-	// The ID of the traffic forwarding rule.
+	// The ID of the forwarding rule.
 	//
 	// example:
 	//
@@ -100,11 +100,11 @@ type CreateForwardStrategyResponseBodyForwardStrategy struct {
 	//
 	// 1
 	Priority *int64 `json:"Priority,omitempty" xml:"Priority,omitempty"`
-	// The status of the internal-facing access application. Valid values:
+	// The status of the internal network access application. Valid values:
 	//
-	// - **Enabled**: enabled.
+	// - **Enabled**: The application is enabled.
 	//
-	// - **Disabled**: disabled.
+	// - **Disabled**: The application is disabled.
 	//
 	// example:
 	//

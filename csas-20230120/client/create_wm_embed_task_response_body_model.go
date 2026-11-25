@@ -18,7 +18,7 @@ type iCreateWmEmbedTaskResponseBody interface {
 type CreateWmEmbedTaskResponseBody struct {
 	// The task information.
 	Data *CreateWmEmbedTaskResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
@@ -62,7 +62,7 @@ func (s *CreateWmEmbedTaskResponseBody) Validate() error {
 }
 
 type CreateWmEmbedTaskResponseBodyData struct {
-	// The task ID, which is used to query the task execution result.
+	// The ID of the task. You can use the task ID to query the task execution result later.
 	//
 	// example:
 	//

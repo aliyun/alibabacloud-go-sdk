@@ -14,7 +14,7 @@ type iListPrivateAccessApplicationL7SwitchesRequest interface {
 }
 
 type ListPrivateAccessApplicationL7SwitchesRequest struct {
-	// The IDs of internal-facing applications. You can specify up to 100 internal-facing application IDs.
+	// The IDs of the internal-facing applications. You can specify up to 100 internal-facing application IDs.
 	ApplicationIds []*string `json:"ApplicationIds,omitempty" xml:"ApplicationIds,omitempty" type:"Repeated"`
 }
 

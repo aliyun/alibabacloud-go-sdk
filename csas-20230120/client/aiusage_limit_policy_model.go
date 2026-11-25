@@ -36,30 +36,18 @@ type iAIUsageLimitPolicy interface {
 }
 
 type AIUsageLimitPolicy struct {
-	// A brief description of the policy\\"s purpose or scope.
-	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The timestamp (in UTC) when the policy was created, formatted as `YYYY-MM-DDThh:mm:ssZ`. This is a system-generated, read-only property.
-	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	// The timestamp (in UTC) when the policy was last modified, formatted as `YYYY-MM-DDThh:mm:ssZ`. This is a system-generated, read-only property.
-	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	// The unique identifier for the usage limit policy. This is a system-generated, read-only value.
-	LimitPolicyId *string `json:"LimitPolicyId,omitempty" xml:"LimitPolicyId,omitempty"`
-	// The maximum value for the specified `MetricType` allowed within the `ResetPeriod`. Once this limit is reached, further requests are throttled or rejected.
-	LimitValue *int64 `json:"LimitValue,omitempty" xml:"LimitValue,omitempty"`
-	// The type of metric the limit applies to, such as the number of API requests, tokens processed, or compute units consumed.
-	MetricType *string `json:"MetricType,omitempty" xml:"MetricType,omitempty"`
-	// A user-friendly name for the policy. This helps you identify the policy in a list.
-	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The priority of the policy, used to determine the evaluation order when multiple policies apply to the same request. A lower number indicates a higher priority.
-	Priority *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
-	// The time window during which the usage count is accumulated before it resets. For example: `Hour`, `Day`, or `Month`.
-	ResetPeriod *string `json:"ResetPeriod,omitempty" xml:"ResetPeriod,omitempty"`
-	// A list of service IDs that this policy applies to. The policy is enforced only for requests made to these services.
-	ServiceIds []*string `json:"ServiceIds,omitempty" xml:"ServiceIds,omitempty" type:"Repeated"`
-	// The status of the policy. Valid values are `Enabled` and `Disabled`. A disabled policy is not enforced.
-	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// A list of user group IDs that this policy applies to. The policy is enforced only for users who belong to these groups.
-	UserGroupIds []*string `json:"UserGroupIds,omitempty" xml:"UserGroupIds,omitempty" type:"Repeated"`
+	Description   *string   `json:"Description,omitempty" xml:"Description,omitempty"`
+	GmtCreate     *string   `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
+	GmtModified   *string   `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
+	LimitPolicyId *string   `json:"LimitPolicyId,omitempty" xml:"LimitPolicyId,omitempty"`
+	LimitValue    *int64    `json:"LimitValue,omitempty" xml:"LimitValue,omitempty"`
+	MetricType    *string   `json:"MetricType,omitempty" xml:"MetricType,omitempty"`
+	Name          *string   `json:"Name,omitempty" xml:"Name,omitempty"`
+	Priority      *int32    `json:"Priority,omitempty" xml:"Priority,omitempty"`
+	ResetPeriod   *string   `json:"ResetPeriod,omitempty" xml:"ResetPeriod,omitempty"`
+	ServiceIds    []*string `json:"ServiceIds,omitempty" xml:"ServiceIds,omitempty" type:"Repeated"`
+	Status        *string   `json:"Status,omitempty" xml:"Status,omitempty"`
+	UserGroupIds  []*string `json:"UserGroupIds,omitempty" xml:"UserGroupIds,omitempty" type:"Repeated"`
 }
 
 func (s AIUsageLimitPolicy) String() string {

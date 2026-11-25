@@ -16,9 +16,9 @@ type iAddVirusScanAdditionalListsResponseBody interface {
 }
 
 type AddVirusScanAdditionalListsResponseBody struct {
-	// The list of IDs for the newly added entries. The order is consistent with AdditionalLists in the request.
+	// The IDs of the added list entries. The order of the IDs is the same as the order of the entries in the AdditionalLists parameter of the request.
 	ListIds []*string `json:"ListIds,omitempty" xml:"ListIds,omitempty" type:"Repeated"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//

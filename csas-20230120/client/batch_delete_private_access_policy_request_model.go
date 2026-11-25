@@ -14,7 +14,7 @@ type iBatchDeletePrivateAccessPolicyRequest interface {
 }
 
 type BatchDeletePrivateAccessPolicyRequest struct {
-	// The IDs of internal network access policies. You can specify up to 100 internal network access policy IDs.
+	// The IDs of the internal network access policies. You can specify up to 100 internal network access policy IDs.
 	PolicyIds []*string `json:"PolicyIds,omitempty" xml:"PolicyIds,omitempty" type:"Repeated"`
 }
 

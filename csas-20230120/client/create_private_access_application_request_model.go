@@ -48,11 +48,11 @@ type CreatePrivateAccessApplicationRequest struct {
 	AddressGroups []*AddressGroup `json:"AddressGroups,omitempty" xml:"AddressGroups,omitempty" type:"Repeated"`
 	// The collection of private access application addresses. You can enter up to 1,000 private access application addresses.
 	Addresses []*string `json:"Addresses,omitempty" xml:"Addresses,omitempty" type:"Repeated"`
-	// The browser access status of the private access application. After you enable this feature, you can access private access applications without a client. Default value: **Disabled**. Valid values:
+	// The browser access status of the private access application. After you enable this feature, you can access private access applications in clientless mode. Default value: **Disabled**. Valid values:
 	//
-	// - **Enabled**: Enabled.
+	// - **Enabled**: enabled.
 	//
-	// - **Disabled**: Disabled.
+	// - **Disabled**: disabled.
 	//
 	// example:
 	//
@@ -60,9 +60,9 @@ type CreatePrivateAccessApplicationRequest struct {
 	BrowserAccessStatus *string `json:"BrowserAccessStatus,omitempty" xml:"BrowserAccessStatus,omitempty"`
 	// The configuration mode. Valid values:
 	//
-	// 	- Empty string: Default mode.
+	// 	- Empty string: default mode.
 	//
-	// 	- Precise: Precise mode.
+	// 	- Precise: precise mode.
 	//
 	// example:
 	//
@@ -78,9 +78,9 @@ type CreatePrivateAccessApplicationRequest struct {
 	HealthCheckConfig *HealthCheckConfig `json:"HealthCheckConfig,omitempty" xml:"HealthCheckConfig,omitempty"`
 	// The health check mode. Valid values:
 	//
-	// 	- OnAccess: Checks upon access without proactive probing.
+	// 	- OnAccess: checks upon access without proactive probing.
 	//
-	// 	- Continuous: Performs continuous checks and proactive probing based on the configurations in HealthCheckConfig.
+	// 	- Continuous: performs continuous checks and proactive probing based on the configurations in HealthCheckConfig.
 	//
 	// If this parameter is not specified, the default value is OnAccess. When the application addresses include wildcard domain names or CIDR blocks, or when the number of application addresses exceeds 10, only OnAccess is supported.
 	//
@@ -114,7 +114,7 @@ type CreatePrivateAccessApplicationRequest struct {
 	PortRanges []*CreatePrivateAccessApplicationRequestPortRanges `json:"PortRanges,omitempty" xml:"PortRanges,omitempty" type:"Repeated"`
 	// The protocol of the private access application. Valid values:
 	//
-	// - **All**: All protocols.
+	// - **All**: all protocols.
 	//
 	// - **TCP**
 	//
@@ -128,9 +128,9 @@ type CreatePrivateAccessApplicationRequest struct {
 	Protocol *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
 	// The status of the private access application. Valid values:
 	//
-	// - **Enabled**: Enabled.
+	// - **Enabled**: enabled.
 	//
-	// - **Disabled**: Disabled.
+	// - **Disabled**: disabled.
 	//
 	// This parameter is required.
 	//

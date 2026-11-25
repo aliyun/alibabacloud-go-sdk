@@ -68,7 +68,7 @@ type CreatePADiagnosisTaskResponseBodyDiagnosisTask struct {
 	//
 	// E9EE1CE7-4AA0-521D-B8E1-E13E47F05E94
 	DevTag *string `json:"DevTag,omitempty" xml:"DevTag,omitempty"`
-	// The diagnostic task ID.
+	// The ID of the diagnostic task.
 	//
 	// example:
 	//
@@ -76,9 +76,9 @@ type CreatePADiagnosisTaskResponseBodyDiagnosisTask struct {
 	DiagnoseId *string `json:"DiagnoseId,omitempty" xml:"DiagnoseId,omitempty"`
 	// The diagnosis type. Valid values:
 	//
-	// - FullLink: full-link diagnosis.
+	// - FullLink: End-to-end diagnosis.
 	//
-	// - Application: application diagnosis.
+	// - Application: Application diagnosis.
 	//
 	// example:
 	//
@@ -90,17 +90,17 @@ type CreatePADiagnosisTaskResponseBodyDiagnosisTask struct {
 	//
 	// 172.16.6.1
 	Host *string `json:"Host,omitempty" xml:"Host,omitempty"`
-	// The POP point ID. This parameter is required when manual selection is used.
+	// The ID of the PoP. This parameter is required when manual selection is used.
 	//
 	// example:
 	//
 	// pop-8ded63ce9d3d317e
 	PopId *string `json:"PopId,omitempty" xml:"PopId,omitempty"`
-	// The POP point selection mode. Valid values:
+	// The PoP selection mode. Valid values:
 	//
-	// - **AutoSelect**: automatic selection.
+	// - **AutoSelect**: Automatic selection.
 	//
-	// - **ManualSelect**: manual selection.
+	// - **ManualSelect**: Manual selection.
 	//
 	// example:
 	//
@@ -112,21 +112,21 @@ type CreatePADiagnosisTaskResponseBodyDiagnosisTask struct {
 	//
 	// 443
 	Port *string `json:"Port,omitempty" xml:"Port,omitempty"`
-	// The protocol used by the internal network access application. Valid values:
+	// The application protocol for internal network access. Valid values:
 	//
 	// - **TCP**
 	//
-	// - **UDP**.
+	// - **UDP**
 	//
 	// example:
 	//
 	// TCP
 	Protocol *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
-	// The task running status. Valid values:
+	// The running status of the task. Valid values:
 	//
 	// - **Running**: The task is running.
 	//
-	// - **Finished**: The task is complete.
+	// - **Finished**: The task is completed.
 	//
 	// - **Failed**: The task failed.
 	//
@@ -134,7 +134,7 @@ type CreatePADiagnosisTaskResponseBodyDiagnosisTask struct {
 	//
 	// Disabled
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The extra information for UDP diagnosis.
+	// The additional information for UDP diagnosis.
 	UdpExtraConfigs *CreatePADiagnosisTaskResponseBodyDiagnosisTaskUdpExtraConfigs `json:"UdpExtraConfigs,omitempty" xml:"UdpExtraConfigs,omitempty" type:"Struct"`
 	// The user group.
 	UserGroup *CreatePADiagnosisTaskResponseBodyDiagnosisTaskUserGroup `json:"UserGroup,omitempty" xml:"UserGroup,omitempty" type:"Struct"`
@@ -322,13 +322,13 @@ func (s *CreatePADiagnosisTaskResponseBodyDiagnosisTaskUdpExtraConfigs) Validate
 }
 
 type CreatePADiagnosisTaskResponseBodyDiagnosisTaskUserGroup struct {
-	// The user group ID.
+	// The ID of the user group.
 	//
 	// example:
 	//
 	// ug-xxxxxxxx
 	UserGroupId *string `json:"UserGroupId,omitempty" xml:"UserGroupId,omitempty"`
-	// The user group name.
+	// The name of the user group.
 	//
 	// example:
 	//

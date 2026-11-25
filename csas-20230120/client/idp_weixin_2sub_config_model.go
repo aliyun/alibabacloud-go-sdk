@@ -28,34 +28,50 @@ type iIdpWeixin2SubConfig interface {
 }
 
 type IdpWeixin2SubConfig struct {
+	// The agent ID of the WeCom application.
+	//
 	// example:
 	//
 	// 1000002
 	AgentId *string `json:"AgentId,omitempty" xml:"AgentId,omitempty"`
+	// The schema used to launch the application from the WeCom Android client.
+	//
 	// example:
 	//
 	// wwautha1b2c3****
 	AppSchema *string `json:"AppSchema,omitempty" xml:"AppSchema,omitempty"`
+	// The secret of the WeCom application.
+	//
 	// example:
 	//
 	// s1e2c3r4e5****
 	AppSecret *string `json:"AppSecret,omitempty" xml:"AppSecret,omitempty"`
+	// The WeCom enterprise ID (CorpId).
+	//
 	// example:
 	//
 	// wwa1b2c3d4****
 	CorpId *string `json:"CorpId,omitempty" xml:"CorpId,omitempty"`
+	// The AES encryption key for WeCom event callbacks.
+	//
 	// example:
 	//
 	// a1e2s3k4e5****
 	EventAesKey *string `json:"EventAesKey,omitempty" xml:"EventAesKey,omitempty"`
+	// The label (callback URL) for WeCom event callbacks.
+	//
 	// example:
 	//
 	// https://auth.example.com/callback/wework/a1b2****
 	EventLabel *string `json:"EventLabel,omitempty" xml:"EventLabel,omitempty"`
+	// The verification token for WeCom event callbacks.
+	//
 	// example:
 	//
 	// v1t2o3k4e5****
 	EventVerifyToken *string `json:"EventVerifyToken,omitempty" xml:"EventVerifyToken,omitempty"`
+	// The callback URL for WeCom logon authorization.
+	//
 	// example:
 	//
 	// https://auth.example.com/callback

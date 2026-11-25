@@ -18,15 +18,15 @@ type iBatchDeleteDomainItemsRequest interface {
 }
 
 type BatchDeleteDomainItemsRequest struct {
-	// The IDs of domain name list entries.
+	// The IDs of the domain name list entries.
 	ItemIds []*int64 `json:"ItemIds,omitempty" xml:"ItemIds,omitempty" type:"Repeated"`
-	// The list ID. This is the unique business identifier used for policy references and CRUD operations.
+	// The ID of the list, which is a unique business identifier used for policy references and add, delete, and modify operations.
 	//
 	// example:
 	//
 	// ladl-61aae0c0ba715e3b
 	ListId *string `json:"ListId,omitempty" xml:"ListId,omitempty"`
-	// The list type (Blacklist/Whitelist).
+	// The type of the list (Blacklist/Whitelist).
 	//
 	// example:
 	//

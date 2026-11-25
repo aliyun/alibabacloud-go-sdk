@@ -62,7 +62,7 @@ func (s *UpdateProhibitedSoftwareResponseBody) Validate() error {
 }
 
 type UpdateProhibitedSoftwareResponseBodySoftware struct {
-	// The time when the prohibited software was created, in the yyyy-MM-dd HH:mm:ss format. The time is displayed in UTC+8.
+	// The time when the prohibited software was created. The time is in the yyyy-MM-dd HH:mm:ss format and displayed in the UTC+8 time zone.
 	//
 	// example:
 	//
@@ -84,7 +84,7 @@ type UpdateProhibitedSoftwareResponseBodySoftware struct {
 	//
 	// xshell
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The IDs of the software prohibition policies that directly reference this prohibited software.
+	// The IDs of the software prohibition policies that directly reference the prohibited software.
 	PolicyIds []*string `json:"PolicyIds,omitempty" xml:"PolicyIds,omitempty" type:"Repeated"`
 	// The ID of the prohibited software.
 	//
@@ -92,7 +92,7 @@ type UpdateProhibitedSoftwareResponseBodySoftware struct {
 	//
 	// swb-c64076fa7afd****
 	SoftwareId *string `json:"SoftwareId,omitempty" xml:"SoftwareId,omitempty"`
-	// The IDs of the prohibited software tags associated with this prohibited software.
+	// The IDs of the prohibited software tags associated with the prohibited software.
 	TagIds []*string `json:"TagIds,omitempty" xml:"TagIds,omitempty" type:"Repeated"`
 	// The list of process configurations for the Windows operating system.
 	WindowsProcesses []*UpdateProhibitedSoftwareResponseBodySoftwareWindowsProcesses `json:"WindowsProcesses,omitempty" xml:"WindowsProcesses,omitempty" type:"Repeated"`
@@ -219,13 +219,13 @@ func (s *UpdateProhibitedSoftwareResponseBodySoftware) Validate() error {
 }
 
 type UpdateProhibitedSoftwareResponseBodySoftwareLinuxProcesses struct {
-	// The bundle ID of the application. This parameter is required only for macOS processes.
+	// The bundle ID of the application. This field is applicable only to macOS processes.
 	//
 	// example:
 	//
 	// com.aliyun.security.sase
 	BundleId *string `json:"BundleId,omitempty" xml:"BundleId,omitempty"`
-	// The command line parameters for starting the process.
+	// The command-line arguments used to start the process.
 	//
 	// example:
 	//
@@ -237,7 +237,7 @@ type UpdateProhibitedSoftwareResponseBodySoftwareLinuxProcesses struct {
 	//
 	// C:\\\\autotest
 	Directory *string `json:"Directory,omitempty" xml:"Directory,omitempty"`
-	// The process name.
+	// The name of the process.
 	//
 	// example:
 	//
@@ -294,13 +294,13 @@ func (s *UpdateProhibitedSoftwareResponseBodySoftwareLinuxProcesses) Validate() 
 }
 
 type UpdateProhibitedSoftwareResponseBodySoftwareMacOSProcesses struct {
-	// The bundle ID of the application. This parameter is required only for macOS processes.
+	// The bundle ID of the application. This field is applicable only to macOS processes.
 	//
 	// example:
 	//
 	// com.autotest.app
 	BundleId *string `json:"BundleId,omitempty" xml:"BundleId,omitempty"`
-	// The command line parameters for starting the process.
+	// The command-line arguments used to start the process.
 	//
 	// example:
 	//
@@ -312,7 +312,7 @@ type UpdateProhibitedSoftwareResponseBodySoftwareMacOSProcesses struct {
 	//
 	// C:\\\\autotest
 	Directory *string `json:"Directory,omitempty" xml:"Directory,omitempty"`
-	// The process name.
+	// The name of the process.
 	//
 	// example:
 	//
@@ -369,13 +369,13 @@ func (s *UpdateProhibitedSoftwareResponseBodySoftwareMacOSProcesses) Validate() 
 }
 
 type UpdateProhibitedSoftwareResponseBodySoftwareWindowsProcesses struct {
-	// The bundle ID of the application. This parameter is required only for macOS processes.
+	// The bundle ID of the application. This field is applicable only to macOS processes.
 	//
 	// example:
 	//
 	// com.aliyun.security.sase
 	BundleId *string `json:"BundleId,omitempty" xml:"BundleId,omitempty"`
-	// The command line parameters for starting the process.
+	// The command-line arguments used to start the process.
 	//
 	// example:
 	//
@@ -387,7 +387,7 @@ type UpdateProhibitedSoftwareResponseBodySoftwareWindowsProcesses struct {
 	//
 	// C:\\\\autotest
 	Directory *string `json:"Directory,omitempty" xml:"Directory,omitempty"`
-	// The process name.
+	// The name of the process.
 	//
 	// example:
 	//

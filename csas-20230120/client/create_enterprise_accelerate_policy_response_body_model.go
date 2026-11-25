@@ -16,8 +16,13 @@ type iCreateEnterpriseAcceleratePolicyResponseBody interface {
 }
 
 type CreateEnterpriseAcceleratePolicyResponseBody struct {
+	// The ID of the enterprise acceleration policy.
+	//
+	// example:
+	//
+	// eap-0123456789abcdef
 	EapId *string `json:"EapId,omitempty" xml:"EapId,omitempty"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//

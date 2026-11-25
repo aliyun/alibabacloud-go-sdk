@@ -14,7 +14,7 @@ type iCancelVirusScanTasksResponseBody interface {
 }
 
 type CancelVirusScanTasksResponseBody struct {
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//

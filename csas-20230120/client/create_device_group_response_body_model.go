@@ -16,7 +16,7 @@ type iCreateDeviceGroupResponseBody interface {
 }
 
 type CreateDeviceGroupResponseBody struct {
-	// The device label ID.
+	// The ID of the device tag.
 	//
 	// example:
 	//

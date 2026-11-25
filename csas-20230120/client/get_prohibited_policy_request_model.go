@@ -14,11 +14,11 @@ type iGetProhibitedPolicyRequest interface {
 }
 
 type GetProhibitedPolicyRequest struct {
-	// The software prohibition policy ID. You can obtain this value from the following operations:
+	// The ID of the prohibited software policy. You can obtain the value from the following operations:
 	//
-	// - [ListProhibitedPolicies](~~ListProhibitedPolicies~~): Lists software prohibition policies.
+	// - [ListProhibitedPolicies](~~ListProhibitedPolicies~~): Lists prohibited software policies.
 	//
-	// - [CreateProhibitedPolicy](~~CreateProhibitedPolicy~~): Creates a software prohibition policy.
+	// - [CreateProhibitedPolicy](~~CreateProhibitedPolicy~~): Creates a prohibited software policy.
 	//
 	// This parameter is required.
 	//

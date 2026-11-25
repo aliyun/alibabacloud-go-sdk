@@ -44,15 +44,15 @@ type iUpdateVulScanScheduledStrategyResponseBody interface {
 }
 
 type UpdateVulScanScheduledStrategyResponseBody struct {
-	// The time when the policy was created, in seconds-level UNIX timestamp.
+	// The time when the policy was created. The value is a UNIX timestamp in seconds.
 	//
 	// example:
 	//
 	// 1786291200
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The effective scope specified by organizational structure. An empty list is returned if the scope is not configured by organizational structure.
+	// The effective scope specified by organizational structure. If no organizational structure is configured, an empty list is returned.
 	CustomMatchGroup []*UpdateVulScanScheduledStrategyResponseBodyCustomMatchGroup `json:"CustomMatchGroup,omitempty" xml:"CustomMatchGroup,omitempty" type:"Repeated"`
-	// The time when the policy last triggered a scan, in seconds-level UNIX timestamp. The value 0 is returned if the policy has never been triggered.
+	// The time when the policy last triggered a scan. The value is a UNIX timestamp in seconds. If the policy has never triggered a scan, 0 is returned.
 	//
 	// example:
 	//
@@ -60,15 +60,15 @@ type UpdateVulScanScheduledStrategyResponseBody struct {
 	LastTriggerTime *int64 `json:"LastTriggerTime,omitempty" xml:"LastTriggerTime,omitempty"`
 	// The matching mode for the effective scope. Valid values:
 	//
-	// - **UserGroupAll**: The policy takes effect on all users under the current Alibaba Cloud account.
+	// - **UserGroupAll**: Applies to all users under the current Alibaba Cloud account.
 	//
-	// - **UserGroupNormal**: The policy takes effect only on users in specified user groups.
+	// - **UserGroupNormal**: Applies only to users in specified user groups.
 	//
 	// example:
 	//
 	// UserGroupNormal
 	MatchMode *string `json:"MatchMode,omitempty" xml:"MatchMode,omitempty"`
-	// The collection of user group IDs for the effective scope. An empty list is returned when MatchMode is set to UserGroupAll.
+	// The IDs of the user groups to which the policy applies. If MatchMode is set to UserGroupAll, an empty list is returned.
 	MatchTargetIds []*string `json:"MatchTargetIds,omitempty" xml:"MatchTargetIds,omitempty" type:"Repeated"`
 	// The policy priority. A smaller value indicates a higher priority. Valid values: 1 to 100.
 	//
@@ -76,19 +76,19 @@ type UpdateVulScanScheduledStrategyResponseBody struct {
 	//
 	// 1
 	Priority *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
 	// 3D7EC0AF-DB2A-5D9C-90EC-F090A6BAAEA7
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The start hour during which the scan can be triggered. The value is an integer hour. Valid values: 0 to 23, inclusive. This field is not a timestamp.
+	// The start hour when a scan can be triggered. The value must be an integer on the hour. Valid values: 0 to 23, inclusive. This field is not a timestamp.
 	//
 	// example:
 	//
 	// 1
 	ScanBeginTime *int32 `json:"ScanBeginTime,omitempty" xml:"ScanBeginTime,omitempty"`
-	// The end hour during which the scan can be triggered. The value is an integer hour. Valid values: 1 to 24, exclusive. The value must be greater than ScanBeginTime. This field is not a timestamp.
+	// The end hour when a scan can be triggered. The value must be an integer on the hour. Valid values: 1 to 24, exclusive. The value must be greater than the value of ScanBeginTime. This field is not a timestamp.
 	//
 	// example:
 	//
@@ -96,15 +96,15 @@ type UpdateVulScanScheduledStrategyResponseBody struct {
 	ScanEndTime *int32 `json:"ScanEndTime,omitempty" xml:"ScanEndTime,omitempty"`
 	// The unit of the trigger cycle. Valid values:
 	//
-	// - **day**: by day.
+	// - **day**: Day.
 	//
-	// - **week**: by week.
+	// - **week**: Week.
 	//
 	// example:
 	//
 	// week
 	ScanFrequency *string `json:"ScanFrequency,omitempty" xml:"ScanFrequency,omitempty"`
-	// The interval number of the trigger cycle. This parameter works together with ScanFrequency to determine the trigger cycle. Valid values: 1 to 30. For example, if ScanFrequency is set to week and ScanInterval is set to 1, the scan is triggered once a week.
+	// The interval of the trigger cycle. This parameter and ScanFrequency determine the trigger cycle. Valid values: 1 to 30. For example, if ScanFrequency is set to week and ScanInterval is set to 1, a scan is performed once a week.
 	//
 	// example:
 	//
@@ -124,9 +124,9 @@ type UpdateVulScanScheduledStrategyResponseBody struct {
 	//
 	// example:
 	//
-	// Execute vulnerability scanning on R&D department endpoints every Sunday at midnight
+	// Execute vulnerability scanning on R&D department endpoints every Sunday morning
 	StrategyDescription *string `json:"StrategyDescription,omitempty" xml:"StrategyDescription,omitempty"`
-	// The vulnerability scheduled scan policy ID.
+	// The ID of the scheduled vulnerability scan policy.
 	//
 	// example:
 	//
@@ -136,9 +136,9 @@ type UpdateVulScanScheduledStrategyResponseBody struct {
 	//
 	// example:
 	//
-	// Weekly vulnerability scanning for R&D department
+	// Weekly vulnerability scanning for the R&D department
 	StrategyName *string `json:"StrategyName,omitempty" xml:"StrategyName,omitempty"`
-	// The list of exempted users. Users in this list are not scanned by this policy. An empty list is returned if no exemption is configured.
+	// The user whitelist. Users in the whitelist are excluded from the scan of this policy. If no whitelist is configured, an empty list is returned.
 	Whitelist []*string `json:"Whitelist,omitempty" xml:"Whitelist,omitempty" type:"Repeated"`
 }
 
@@ -308,9 +308,9 @@ func (s *UpdateVulScanScheduledStrategyResponseBody) Validate() error {
 }
 
 type UpdateVulScanScheduledStrategyResponseBodyCustomMatchGroup struct {
-	// The collection of organizational structure nodes.
+	// The organizational structure nodes.
 	Group []*string `json:"Group,omitempty" xml:"Group,omitempty" type:"Repeated"`
-	// The identity provider ID.
+	// The ID of the identity source.
 	//
 	// example:
 	//

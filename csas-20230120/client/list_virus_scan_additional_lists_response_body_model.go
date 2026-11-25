@@ -16,9 +16,9 @@ type iListVirusScanAdditionalListsResponseBody interface {
 }
 
 type ListVirusScanAdditionalListsResponseBody struct {
-	// The blacklists and whitelists grouped by matching dimension. If a matching dimension contains no list entries, that dimension does not appear in the list.
+	// The list of blacklists and whitelists grouped by match dimension. If a match dimension does not contain any list entries, the dimension is not included in the list.
 	AdditionalLists []*ListVirusScanAdditionalListsResponseBodyAdditionalLists `json:"AdditionalLists,omitempty" xml:"AdditionalLists,omitempty" type:"Repeated"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
@@ -66,7 +66,7 @@ func (s *ListVirusScanAdditionalListsResponseBody) Validate() error {
 }
 
 type ListVirusScanAdditionalListsResponseBodyAdditionalLists struct {
-	// The matching dimension of the list entry. Valid values:
+	// The match dimension of the list entry. Valid values:
 	//
 	// - **FileSuffix**: Matches by file name extension.
 	//
@@ -76,13 +76,13 @@ type ListVirusScanAdditionalListsResponseBodyAdditionalLists struct {
 	//
 	// - **FilePath**: Matches by file path.
 	//
-	// - **FileMd5**: Matches by file MD5 hash.
+	// - **FileMd5**: Matches by file MD5 value.
 	//
 	// example:
 	//
 	// FileSuffix
 	AdditionalType *string `json:"AdditionalType,omitempty" xml:"AdditionalType,omitempty"`
-	// The lists grouped by list type under this matching dimension.
+	// The lists grouped by list type under the match dimension.
 	Lists []*ListVirusScanAdditionalListsResponseBodyAdditionalListsLists `json:"Lists,omitempty" xml:"Lists,omitempty" type:"Repeated"`
 }
 
@@ -126,13 +126,13 @@ func (s *ListVirusScanAdditionalListsResponseBodyAdditionalLists) Validate() err
 }
 
 type ListVirusScanAdditionalListsResponseBodyAdditionalListsLists struct {
-	// The list of entries.
+	// The list of list entries.
 	ListDetail []*ListVirusScanAdditionalListsResponseBodyAdditionalListsListsListDetail `json:"ListDetail,omitempty" xml:"ListDetail,omitempty" type:"Repeated"`
 	// The list type. Valid values:
 	//
-	// - **Blacklist**: Blacklist. Files that match are directly identified as virus files.
+	// - **Blacklist**: Blacklist. Matched files are directly identified as virus files.
 	//
-	// - **Whitelist**: Whitelist. Files that match are excluded from virus detection.
+	// - **Whitelist**: Whitelist. Matched files are excluded from virus detection.
 	//
 	// example:
 	//
@@ -180,7 +180,7 @@ func (s *ListVirusScanAdditionalListsResponseBodyAdditionalListsLists) Validate(
 }
 
 type ListVirusScanAdditionalListsResponseBodyAdditionalListsListsListDetail struct {
-	// The creation time of the list entry, in the yyyy-MM-dd HH:mm:ss format. The time is in the UTC+8 time zone.
+	// The creation time of the list entry. The time is in the yyyy-MM-dd HH:mm:ss format and uses the UTC+8 time zone.
 	//
 	// example:
 	//
@@ -192,7 +192,7 @@ type ListVirusScanAdditionalListsResponseBodyAdditionalListsListsListDetail stru
 	//
 	// .tmp
 	Detail *string `json:"Detail,omitempty" xml:"Detail,omitempty"`
-	// The list entry ID.
+	// The ID of the list entry.
 	//
 	// example:
 	//

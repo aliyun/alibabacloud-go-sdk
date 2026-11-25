@@ -18,7 +18,7 @@ type iUpdateConnectorClientRequest interface {
 }
 
 type UpdateConnectorClientRequest struct {
-	// The connector ID. You can call [ListConnectors](~~ListConnectors~~) to query connector IDs.
+	// The connector ID. You can obtain the value by calling the [ListConnectors](~~ListConnectors~~) operation.
 	//
 	// This parameter is required.
 	//
@@ -26,7 +26,7 @@ type UpdateConnectorClientRequest struct {
 	//
 	// connector-94db94e06b98****
 	ConnectorId *string `json:"ConnectorId,omitempty" xml:"ConnectorId,omitempty"`
-	// The unique identifier of the ConnectorClient device. You can call [ListConnectors](~~ListConnectors~~) to query connector information.
+	// The unique identifier of the ConnectorClient device. You can obtain the value by calling the [ListConnectors](~~ListConnectors~~) operation.
 	//
 	// This parameter is required.
 	//
@@ -36,9 +36,9 @@ type UpdateConnectorClientRequest struct {
 	DevTag *string `json:"DevTag,omitempty" xml:"DevTag,omitempty"`
 	// The connection status of the ConnectorClient. Valid values:
 	//
-	// - **Enabled**: connected.
+	// - **Enabled**: Connected.
 	//
-	// - **Disabled**: disconnected.
+	// - **Disabled**: Disconnected.
 	//
 	// example:
 	//

@@ -26,15 +26,15 @@ type iCreateBackendReportResponseBody interface {
 }
 
 type CreateBackendReportResponseBody struct {
-	// The number of user-object combinations that failed to be created.
+	// The number of failed combinations.
 	//
 	// example:
 	//
 	// 0
 	FailedCount *int32 `json:"FailedCount,omitempty" xml:"FailedCount,omitempty"`
-	// The processing results for each user-object combination. If some combinations fail, the operation still returns results for all combinations.
+	// The processing results of each combination of user and report object. If some combinations fail, the operation still returns the results of all combinations.
 	Items []*CreateBackendReportResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
-	// The number of deduplicated filing objects.
+	// The number of deduplicated report objects.
 	//
 	// example:
 	//
@@ -46,19 +46,19 @@ type CreateBackendReportResponseBody struct {
 	//
 	// D6707286-A50E-57B1-B2CF-EFAC59E8****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The number of user-object combinations that are created.
+	// The number of successfully created combinations.
 	//
 	// example:
 	//
 	// 1
 	SuccessCount *int32 `json:"SuccessCount,omitempty" xml:"SuccessCount,omitempty"`
-	// The number of deduplicated filing users.
+	// The number of deduplicated target users.
 	//
 	// example:
 	//
 	// 1
 	TargetCount *int32 `json:"TargetCount,omitempty" xml:"TargetCount,omitempty"`
-	// The total number of expanded user-object combinations.
+	// The total number of combinations of users and report objects after expansion.
 	//
 	// example:
 	//
@@ -151,55 +151,55 @@ func (s *CreateBackendReportResponseBody) Validate() error {
 }
 
 type CreateBackendReportResponseBodyItems struct {
-	// The approval instance ID generated after a successful creation. This parameter is not returned if the creation fails.
+	// The ID of the approval instance generated after the combination is successfully created. This parameter is not returned if the creation fails.
 	//
 	// example:
 	//
 	// approval-6b5188a28634****
 	ApprovalId *string `json:"ApprovalId,omitempty" xml:"ApprovalId,omitempty"`
-	// The error code returned when the current combination fails to be created. This parameter is not returned if the creation succeeds.
+	// The error code returned when the current combination fails to be created. This parameter is not returned if the creation is successful.
 	//
 	// example:
 	//
 	// TargetNotFound
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The filing effective status. Enabled is returned when the creation succeeds, which indicates that the filing is valid.
+	// The effective status of the report. If the creation is successful, Enabled is returned, which indicates that the report is valid.
 	//
 	// example:
 	//
 	// Enabled
 	EffectStatus *string `json:"EffectStatus,omitempty" xml:"EffectStatus,omitempty"`
-	// The error message returned when the current combination fails to be created. This parameter is not returned if the creation succeeds.
+	// The error message returned when the current combination fails to be created. This parameter is not returned if the creation is successful.
 	//
 	// example:
 	//
 	// target user is not found
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The filing object corresponding to the current combination. The fields vary based on the PolicyType value.
+	// The report object corresponding to the current combination. The fields vary based on the policy type.
 	//
 	// example:
 	//
 	// [{"ApplicationId":"pa-application-92b60359213a****"}]
 	ReportObject interface{} `json:"ReportObject,omitempty" xml:"ReportObject,omitempty"`
-	// The filing type. BackendReport is always returned when the creation succeeds, which indicates a backend filing.
+	// The report type. If the creation is successful, BackendReport is returned, which indicates a backend report.
 	//
 	// example:
 	//
 	// BackendReport
 	ReportType *string `json:"ReportType,omitempty" xml:"ReportType,omitempty"`
-	// The approval status. Approved is returned when the creation succeeds, which indicates that the filing is approved.
+	// The approval status. If the creation is successful, Approved is returned, which indicates that the request is approved.
 	//
 	// example:
 	//
 	// Approved
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// Indicates whether the current combination is created.
+	// Indicates whether the current combination is successfully created.
 	//
 	// example:
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// The filing user corresponding to the current combination.
+	// The target user corresponding to the current combination.
 	Target *CreateBackendReportResponseBodyItemsTarget `json:"Target,omitempty" xml:"Target,omitempty" type:"Struct"`
 }
 

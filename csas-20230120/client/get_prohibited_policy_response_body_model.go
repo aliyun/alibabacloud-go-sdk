@@ -16,7 +16,7 @@ type iGetProhibitedPolicyResponseBody interface {
 }
 
 type GetProhibitedPolicyResponseBody struct {
-	// The details of the software prohibition policy.
+	// The details of the prohibited software policy.
 	Policy *GetProhibitedPolicyResponseBodyPolicy `json:"Policy,omitempty" xml:"Policy,omitempty" type:"Struct"`
 	// Id of the request
 	//
@@ -62,23 +62,23 @@ func (s *GetProhibitedPolicyResponseBody) Validate() error {
 }
 
 type GetProhibitedPolicyResponseBodyPolicy struct {
-	// Indicates whether end users are allowed to submit a filing request for this policy. Valid values:
+	// Indicates whether terminal users are allowed to submit applications for this policy. Valid values:
 	//
-	// - **true**: Filing is allowed. The terminal pop-up window provides a filing entry.
+	// - **true**: Applications are allowed. The terminal pop-up window provides an entry for submitting applications.
 	//
-	// - **false**: Filing is not allowed.
+	// - **false**: Applications are not allowed.
 	//
 	// example:
 	//
 	// false
 	AllowReport *bool `json:"AllowReport,omitempty" xml:"AllowReport,omitempty"`
-	// The creation time of the software prohibition policy, in the yyyy-MM-dd HH:mm:ss format using the UTC+8 time zone.
+	// The time when the prohibited software policy was created. The time is displayed in the yyyy-MM-dd HH:mm:ss format and uses the UTC+8 time zone.
 	//
 	// example:
 	//
 	// 2021-07-29 11:26:02
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The description of the software prohibition policy.
+	// The description of the prohibited software policy.
 	//
 	// example:
 	//
@@ -86,9 +86,9 @@ type GetProhibitedPolicyResponseBodyPolicy struct {
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// Indicates whether the policy is enabled. Valid values:
 	//
-	// - **true**: Enabled. The policy is delivered to terminals and takes effect.
+	// - **true**: The policy is enabled, delivered to terminals, and takes effect.
 	//
-	// - **false**: Disabled. The policy configuration is retained but not delivered to terminals.
+	// - **false**: The policy is disabled. The configuration is retained but not delivered to terminals.
 	//
 	// example:
 	//
@@ -96,9 +96,9 @@ type GetProhibitedPolicyResponseBodyPolicy struct {
 	Enabled *bool `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
 	// Indicates whether to forcibly terminate running software processes. Valid values:
 	//
-	// - **true**: The terminal immediately terminates the running processes of the software when the policy is triggered.
+	// - **true**: The terminal immediately terminates the running processes of the software when the policy is matched.
 	//
-	// - **false**: Running processes are not terminated. Only subsequent launches are blocked.
+	// - **false**: The terminal does not terminate running processes but only prevents subsequent startups.
 	//
 	// example:
 	//
@@ -116,11 +116,11 @@ type GetProhibitedPolicyResponseBodyPolicy struct {
 	//
 	// Report
 	MainButtonTextEn *string `json:"MainButtonTextEn,omitempty" xml:"MainButtonTextEn,omitempty"`
-	// The policy matching target type. Valid values:
+	// The target matching mode of the policy. Valid values:
 	//
-	// - **UserGroupAll**: Associates with all users.
+	// - **UserGroupAll**: Applies to all users.
 	//
-	// - **UserGroupNormal**: Associates with specific user groups.
+	// - **UserGroupNormal**: Applies to specific user groups.
 	//
 	// example:
 	//
@@ -138,35 +138,35 @@ type GetProhibitedPolicyResponseBodyPolicy struct {
 	//
 	// I know
 	MinorButtonTextEn *string `json:"MinorButtonTextEn,omitempty" xml:"MinorButtonTextEn,omitempty"`
-	// The name of the software prohibition policy.
+	// The name of the prohibited software policy.
 	//
 	// example:
 	//
 	// PolicyC
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The object type of the controlled target. Valid values:
+	// The managed object type. Valid values:
 	//
-	// - **App**: Controls by prohibited software. The controlled objects are specified by SoftwareIds.
+	// - **App**: Managed by prohibited software. The managed objects are specified by SoftwareIds.
 	//
-	// - **Tag**: Controls by prohibited software labels. The controlled objects are specified by TagIds. All prohibited software under the labels is controlled.
+	// - **Tag**: Managed by prohibited software tag. The managed objects are specified by TagIds, and all prohibited software under the tag is managed.
 	//
 	// example:
 	//
 	// App
 	ObjectType *string `json:"ObjectType,omitempty" xml:"ObjectType,omitempty"`
-	// The software prohibition policy ID.
+	// The ID of the prohibited software policy.
 	//
 	// example:
 	//
 	// pid-36ee4a5869f3****
 	PolicyId *string `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
-	// The action type. Valid values:
+	// The enforcement action. Valid values:
 	//
-	// - **Ban**: Blocks the software from running and displays a pop-up notification to the end user.
+	// - **Ban**: Blocks the software from running and displays a pop-up window to notify the terminal user.
 	//
-	// - **BanSilent**: Blocks the software from running without notifying the end user (silent blocking).
+	// - **BanSilent**: Blocks the software from running silently without notifying the terminal user.
 	//
-	// - **Warn**: Displays a pop-up notification to the end user without blocking the software from running.
+	// - **Warn**: Displays a pop-up window to notify the terminal user without blocking the software from running.
 	//
 	// example:
 	//
@@ -178,19 +178,19 @@ type GetProhibitedPolicyResponseBodyPolicy struct {
 	//
 	// 1
 	Priority *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
-	// The Chinese prompt content displayed in the terminal pop-up window.
+	// The Chinese prompt content in the terminal pop-up window.
 	//
 	// example:
 	//
-	// This software has been blocked by the enterprise security policy. To use it, submit an approval request
+	// 该软件已被企业安全策略禁止运行，如需使用请提交报备申请
 	PromptCh *string `json:"PromptCh,omitempty" xml:"PromptCh,omitempty"`
-	// The English prompt content displayed in the terminal pop-up window.
+	// The English prompt content in the terminal pop-up window.
 	//
 	// example:
 	//
 	// This software is blocked by your enterprise security policy.
 	PromptEn *string `json:"PromptEn,omitempty" xml:"PromptEn,omitempty"`
-	// The approval process ID bound to this policy. An empty string is returned if no approval process is bound. In this case, filing requests submitted by end users are approved by the IT administrator as a fallback. Approval processes are bound by using [AttachPolicy2ApprovalProcess](~~AttachPolicy2ApprovalProcess~~) and unbound by using [DetachPolicy2ApprovalProcess](~~DetachPolicy2ApprovalProcess~~). You can obtain this value from the following operation:
+	// The ID of the approval process bound to the policy. If no approval process is bound, an empty string is returned, and applications submitted by terminal users are approved by the IT administrator. You can bind an approval process by calling [AttachPolicy2ApprovalProcess](~~AttachPolicy2ApprovalProcess~~) and unbind it by calling [DetachPolicy2ApprovalProcess](~~DetachPolicy2ApprovalProcess~~). You can obtain the value from the following operations:
 	//
 	// - [ListApprovalProcesses](~~ListApprovalProcesses~~): Lists approval processes.
 	//
@@ -198,9 +198,9 @@ type GetProhibitedPolicyResponseBodyPolicy struct {
 	//
 	// approval-process-6c2f8a1b7d3e****
 	ReportProcessId *string `json:"ReportProcessId,omitempty" xml:"ReportProcessId,omitempty"`
-	// The collection of prohibited software directly controlled by this policy.
+	// The list of prohibited software directly managed by the policy.
 	SoftwareIds []*GetProhibitedPolicyResponseBodyPolicySoftwareIds `json:"SoftwareIds,omitempty" xml:"SoftwareIds,omitempty" type:"Repeated"`
-	// The collection of prohibited software label IDs controlled by this policy.
+	// The list of prohibited software tag IDs managed by the policy.
 	TagIds []*string `json:"TagIds,omitempty" xml:"TagIds,omitempty" type:"Repeated"`
 	// The Chinese title of the terminal pop-up window.
 	//
@@ -214,7 +214,7 @@ type GetProhibitedPolicyResponseBodyPolicy struct {
 	//
 	// Software Blocked
 	TitleEn *string `json:"TitleEn,omitempty" xml:"TitleEn,omitempty"`
-	// The collection of user group IDs to which this policy applies.
+	// The list of user group IDs to which the policy applies.
 	UserGroupIds []*string `json:"UserGroupIds,omitempty" xml:"UserGroupIds,omitempty" type:"Repeated"`
 	// The list of exempted usernames.
 	Whitelist []*string `json:"Whitelist,omitempty" xml:"Whitelist,omitempty" type:"Repeated"`
@@ -458,17 +458,17 @@ func (s *GetProhibitedPolicyResponseBodyPolicy) Validate() error {
 }
 
 type GetProhibitedPolicyResponseBodyPolicySoftwareIds struct {
-	// Indicates whether the prohibited software is a system built-in entry. Valid values:
+	// Indicates whether the prohibited software is a built-in prohibited software. Valid values:
 	//
-	// - **true**: A system built-in prohibited software entry shared by all Alibaba Cloud accounts. Modification and deletion are not supported.
+	// - **true**: The software is a built-in prohibited software that is shared by all Alibaba Cloud accounts and cannot be modified or deleted.
 	//
-	// - **false**: A custom prohibited software entry under the current Alibaba Cloud account.
+	// - **false**: The software is a custom prohibited software under the current Alibaba Cloud account.
 	//
 	// example:
 	//
 	// false
 	IsDefault *bool `json:"IsDefault,omitempty" xml:"IsDefault,omitempty"`
-	// The prohibited software ID.
+	// The ID of the prohibited software.
 	//
 	// example:
 	//

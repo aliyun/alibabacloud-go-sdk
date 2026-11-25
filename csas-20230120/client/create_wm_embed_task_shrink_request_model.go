@@ -50,7 +50,7 @@ type CreateWmEmbedTaskShrinkRequest struct {
 	CsvControlShrink *string `json:"CsvControl,omitempty" xml:"CsvControl,omitempty"`
 	// The document watermark control parameters.
 	DocumentControlShrink *string `json:"DocumentControl,omitempty" xml:"DocumentControl,omitempty"`
-	// The URL for downloading the file to be embedded. The URL must be active for public network access.
+	// The active URL for downloading the file to be embedded. The URL must support public network access.
 	//
 	// This parameter is required.
 	//
@@ -58,7 +58,7 @@ type CreateWmEmbedTaskShrinkRequest struct {
 	//
 	// https://example.com/abc****.pdf
 	FileUrl *string `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
-	// The name of the file to be embedded. The backend validates the file type based on the file name extension.
+	// The file name of the file to be embedded. The backend determines and verifies the file type based on the file name extension.
 	//
 	// This parameter is required.
 	//
@@ -74,15 +74,19 @@ type CreateWmEmbedTaskShrinkRequest struct {
 	//
 	// 95
 	ImageEmbedJpegQuality *int64 `json:"ImageEmbedJpegQuality,omitempty" xml:"ImageEmbedJpegQuality,omitempty"`
-	// The image watermark parameter. A larger value indicates higher robustness but lower visual quality. Default value: 2. Valid values: 0 to 4.
+	// The image watermark parameter that specifies the embedding level. A larger value indicates higher robustness but lower visual quality. Default value: 2. Valid values: 0 to 4.
 	//
 	// example:
 	//
 	// 2
 	ImageEmbedLevel *int64 `json:"ImageEmbedLevel,omitempty" xml:"ImageEmbedLevel,omitempty"`
-	// Specifies whether to enable invisible watermark embedding. Default value: true.
+	// Specifies whether to enable invisible watermark embedding. Default value: true. Valid values:
+	//
+	// - **true**: Yes.
+	//
+	// - **false**: No.
 	InvisibleEnable *bool `json:"InvisibleEnable,omitempty" xml:"InvisibleEnable,omitempty"`
-	// The short video watermark parameter that specifies the video bitrate. By default, the video bitrate is automatically obtained. You can use this parameter to forcibly specify the bitrate used during extraction. Typically, you do not need to set this parameter.
+	// The short video watermark parameter that specifies the video bitrate. By default, the system automatically obtains the video bitrate. You can use this parameter to force the bitrate used during extraction. Typically, you do not need to set this parameter.
 	//
 	// example:
 	//
@@ -90,31 +94,37 @@ type CreateWmEmbedTaskShrinkRequest struct {
 	VideoBitrate *string `json:"VideoBitrate,omitempty" xml:"VideoBitrate,omitempty"`
 	// The video control parameters.
 	VideoControlShrink *string `json:"VideoControl,omitempty" xml:"VideoControl,omitempty"`
-	// Video watermark parameter. Specifies whether to use the long video watermark SDK. Valid values:
+	// The video watermark parameter that specifies whether to use the long video watermark SDK. Default value: false. Valid values:
 	//
-	// - **true**: The long video watermark SDK is used.
+	// - **true**: Yes.
 	//
-	// - **false**: The long video watermark SDK is not used.
-	//
-	// Default value: false.
+	// - **false**: No.
 	//
 	// example:
 	//
 	// false
 	VideoIsLong *bool `json:"VideoIsLong,omitempty" xml:"VideoIsLong,omitempty"`
-	// The watermark information in Base64-encoded string format. If this parameter is set, WmInfoUint cannot be set.
+	// The watermark information in Base64-encoded string format. If you set this parameter, you cannot set WmInfoUint.
 	//
 	// example:
 	//
 	// aGVsbG8gc2F*****
 	WmInfoBytesB64 *string `json:"WmInfoBytesB64,omitempty" xml:"WmInfoBytesB64,omitempty"`
-	// The bit width of the watermark information capacity. Default value: 32. This parameter must be consistent between embedding and extraction. For example, if the 40-bit SDK is used for embedding, set this parameter to 40 during extraction as well.
+	// The capacity bit width of the watermark information. Default value: 32. This parameter must be consistent during embedding and extraction. For example, if a 40-bit SDK is used for embedding, you must also set this value to 40 for extraction.
 	//
 	// example:
 	//
 	// 32
 	WmInfoSize *int64 `json:"WmInfoSize,omitempty" xml:"WmInfoSize,omitempty"`
-	// The watermark information in decimal number format. If this parameter is set, WmInfoBytesB64 cannot be set.
+	// The watermark information in decimal numeric format. If you set this parameter, you cannot set WmInfoBytesB64.
+	//
+	// The valid value range depends on the WmInfoSize parameter:
+	//
+	// - When WmInfoSize is 32, the valid values are 1 to 4294967295.
+	//
+	// - When WmInfoSize is 40, the valid values are 1 to 1099511627775.
+	//
+	// - When WmInfoSize is 64, the valid values are 1 to 18446744073709551615.
 	//
 	// example:
 	//
@@ -122,13 +132,13 @@ type CreateWmEmbedTaskShrinkRequest struct {
 	WmInfoUint *string `json:"WmInfoUint,omitempty" xml:"WmInfoUint,omitempty"`
 	// The watermark type. Valid values:
 	//
-	// - **PureDocument**: document watermark.
+	// - **PureDocument**: Document watermark.
 	//
-	// - **PureImage**: image watermark.
+	// - **PureImage**: Image watermark.
 	//
-	// - **PureAudio**: audio watermark.
+	// - **PureAudio**: Audio watermark.
 	//
-	// - **PureVideo**: video watermark.
+	// - **PureVideo**: Video watermark.
 	//
 	// - **AigcDocument**: AIGC document watermark.
 	//

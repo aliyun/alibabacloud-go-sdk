@@ -36,9 +36,9 @@ type iListPrivateAccessApplicationsRequest interface {
 type ListPrivateAccessApplicationsRequest struct {
 	// The access mode. Valid values:
 	//
-	// - **app**: application access. Filters applications that support application access.
+	// - **app**: Application access. Filters applications that support application access.
 	//
-	// - **browser**: browser access. Filters applications that support browser access.
+	// - **browser**: Browser access. Filters applications that support browser access.
 	//
 	// example:
 	//
@@ -50,15 +50,15 @@ type ListPrivateAccessApplicationsRequest struct {
 	//
 	// 192.168.0.0/16
 	Address *string `json:"Address,omitempty" xml:"Address,omitempty"`
-	// The IDs of the private access applications. You can specify up to 100 IDs.
+	// The IDs of the private access applications. You can enter up to 100 private access application IDs.
 	ApplicationIds []*string `json:"ApplicationIds,omitempty" xml:"ApplicationIds,omitempty" type:"Repeated"`
-	// The ID of the connector. You can obtain the ID from the following operation: [ListConnectors](~~ListConnectors~~): List connectors.
+	// The ID of the connector. You can obtain the value from the following operation: [ListConnectors](~~ListConnectors~~): List connectors.
 	//
 	// example:
 	//
 	// connector-94db94e06b98****
 	ConnectorId *string `json:"ConnectorId,omitempty" xml:"ConnectorId,omitempty"`
-	// The page number of the current page in a paging query. Valid values: 1 to 10000.
+	// The page number of the current page in a paged query. Valid values: 1 to 10000.
 	//
 	// This parameter is required.
 	//
@@ -66,7 +66,7 @@ type ListPrivateAccessApplicationsRequest struct {
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// Filters applications by health check status. Valid values:
+	// Filters by health check status. Valid values:
 	//
 	// 	- normal: The success rate of the last check is greater than or equal to 95%.
 	//
@@ -86,7 +86,7 @@ type ListPrivateAccessApplicationsRequest struct {
 	//
 	// private_access_application_name
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The Settings for the number of entries per page in a paging query. Valid values: 1 to 1000.
+	// The number of entries per page in a paged query. Valid values: 1 to 1000.
 	//
 	// This parameter is required.
 	//
@@ -94,7 +94,7 @@ type ListPrivateAccessApplicationsRequest struct {
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the private access policy. You can obtain the ID from the following operations:
+	// The ID of the private access policy. You can obtain the value from the following operations:
 	//
 	// - [ListPrivateAccessPolices](~~ListPrivateAccessPolices~~): List private access policies.
 	//
@@ -106,15 +106,15 @@ type ListPrivateAccessApplicationsRequest struct {
 	PolicyId *string `json:"PolicyId,omitempty" xml:"PolicyId,omitempty"`
 	// The status of the private access application. Valid values:
 	//
-	// - **Enabled**: enabled.
+	// - **Enabled**: Enabled.
 	//
-	// - **Disabled**: disabled.
+	// - **Disabled**: Disabled.
 	//
 	// example:
 	//
 	// Enabled
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The ID of the private access tag. You can obtain the ID from the following operations:
+	// The ID of the private access tag. You can obtain the value from the following operations:
 	//
 	// - [ListPrivateAccessTags](~~ListPrivateAccessTags~~): List private access tags.
 	//

@@ -40,9 +40,9 @@ type CreatePADiagnosisTaskShrinkRequest struct {
 	DevTag *string `json:"DevTag,omitempty" xml:"DevTag,omitempty"`
 	// The diagnosis type. Valid values:
 	//
-	// - **FullLink**: full-link diagnosis.
+	// - **FullLink**: End-to-end diagnosis.
 	//
-	// - **Application**: application diagnosis.
+	// - **Application**: Application diagnosis.
 	//
 	// This parameter is required.
 	//
@@ -58,17 +58,17 @@ type CreatePADiagnosisTaskShrinkRequest struct {
 	//
 	// socialapp-gateway.client9.me
 	Host *string `json:"Host,omitempty" xml:"Host,omitempty"`
-	// The POP point ID.
+	// The ID of the PoP.
 	//
 	// example:
 	//
 	// pop-3e244b62357dcafc
 	PopId *string `json:"PopId,omitempty" xml:"PopId,omitempty"`
-	// The POP point selection mode. Valid values:
+	// The PoP selection mode. Valid values:
 	//
-	// - **AutoSelect**: automatic selection.
+	// - **AutoSelect**: Automatic selection.
 	//
-	// - **ManualSelect**: manual selection.
+	// - **ManualSelect**: Manual selection.
 	//
 	// This parameter is required.
 	//
@@ -84,11 +84,11 @@ type CreatePADiagnosisTaskShrinkRequest struct {
 	//
 	// 80
 	Port *string `json:"Port,omitempty" xml:"Port,omitempty"`
-	// The protocol used by the internal network access application. Valid values:
+	// The application protocol for internal network access. Valid values:
 	//
 	// - **TCP**
 	//
-	// - **UDP**.
+	// - **UDP**
 	//
 	// This parameter is required.
 	//
@@ -96,13 +96,13 @@ type CreatePADiagnosisTaskShrinkRequest struct {
 	//
 	// TCP
 	Protocol *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
-	// The extra configurations for UDP diagnosis. If this parameter is not specified, any response received is considered a success.
+	// The additional configurations for UDP diagnosis. If this parameter is not configured, receiving any response content is considered a success.
 	UdpExtraConfigsShrink *string `json:"UdpExtraConfigs,omitempty" xml:"UdpExtraConfigs,omitempty"`
-	// The user group ID.
+	// The ID of the user group.
 	//
 	// example:
 	//
-	// 用户组ID。
+	// User group ID
 	UserGroupId *string `json:"UserGroupId,omitempty" xml:"UserGroupId,omitempty"`
 	// The username.
 	//

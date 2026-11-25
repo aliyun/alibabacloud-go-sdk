@@ -16,7 +16,7 @@ type iCreateVirusScanScheduledStrategyResponseBody interface {
 }
 
 type CreateVirusScanScheduledStrategyResponseBody struct {
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//

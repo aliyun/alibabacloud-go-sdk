@@ -24,23 +24,23 @@ type iListForwardStrategiesRequest interface {
 }
 
 type ListForwardStrategiesRequest struct {
-	// The page number of the current page in paging query. Valid values: 1 to 10000.
+	// The page number of the current page in a paged query. Valid values: 1 to 10000.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *string `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The list of access destination instance IDs.
+	// The IDs of the access destination instances.
 	DestinationIds []*string `json:"DestinationIds,omitempty" xml:"DestinationIds,omitempty" type:"Repeated"`
-	// The type of the access destination. Valid values:
+	// The destination type. Valid values:
 	//
-	// - **Connector**: connector.
+	// - **Connector**: Connector.
 	//
 	// example:
 	//
 	// Connector
 	DestinationType *string `json:"DestinationType,omitempty" xml:"DestinationType,omitempty"`
-	// The list of forwarding rule IDs.
+	// The IDs of the forwarding rules.
 	ForwardIds []*string `json:"ForwardIds,omitempty" xml:"ForwardIds,omitempty" type:"Repeated"`
 	// The name of the forwarding rule.
 	//
@@ -48,7 +48,7 @@ type ListForwardStrategiesRequest struct {
 	//
 	// acs_rand_str_acs
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The number of entries per page in paging query. Valid values: 1 to 1000.
+	// The number of entries per page in a paged query. Valid values: 1 to 1000.
 	//
 	// example:
 	//

@@ -20,25 +20,25 @@ type iProcessItem interface {
 }
 
 type ProcessItem struct {
-	// The bundle identity (Bundle ID) of the application to which the process belongs. The example value com.apple.Terminal is the Bundle ID of the macOS terminal application.
+	// The bundle ID of the application to which the process belongs. The example value com.apple.Terminal is the bundle ID of the macOS Terminal application.
 	//
 	// example:
 	//
 	// com.apple.Terminal
 	BundleId *string `json:"BundleId,omitempty" xml:"BundleId,omitempty"`
-	// The operating system type of the user terminal device to which the process belongs. Valid values:
+	// The operating system type of the user endpoint device to which the process belongs. Valid values:
 	//
-	// - windows: Windows operating system
+	// - windows: Windows.
 	//
-	// - macOS: macOS operating system
+	// - macOS: macOS.
 	//
-	// - linux: Linux operating system
+	// - linux: Linux.
 	//
 	// example:
 	//
 	// macOS
 	DevType *string `json:"DevType,omitempty" xml:"DevType,omitempty"`
-	// The process folder path.
+	// The process directory path.
 	//
 	// example:
 	//

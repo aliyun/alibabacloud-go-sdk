@@ -50,7 +50,7 @@ type iListApprovalsRequest interface {
 }
 
 type ListApprovalsRequest struct {
-	// The IDs of the approval instances.
+	// The instance IDs of the approval instances.
 	ApprovalIds []*string `json:"ApprovalIds,omitempty" xml:"ApprovalIds,omitempty" type:"Repeated"`
 	// The end time when the approval instance was created. The value is a UNIX timestamp in seconds.
 	//
@@ -68,7 +68,7 @@ type ListApprovalsRequest struct {
 	//
 	// example:
 	//
-	// Test Department
+	// Testing Department
 	CreatorDepartment *string `json:"CreatorDepartment,omitempty" xml:"CreatorDepartment,omitempty"`
 	// The ID of the endpoint device on which the approval instance was created.
 	//
@@ -88,7 +88,7 @@ type ListApprovalsRequest struct {
 	//
 	// Mr. Wang
 	CreatorUsername *string `json:"CreatorUsername,omitempty" xml:"CreatorUsername,omitempty"`
-	// The page number of the current page for a paging query. Valid values: 1 to 10000.
+	// The page number of the current page for paging in a paged query. Valid values: 1 to 10000.
 	//
 	// This parameter is required.
 	//
@@ -96,11 +96,15 @@ type ListApprovalsRequest struct {
 	//
 	// 1
 	CurrentPage *int64 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The list of effective statuses of reports. The list uses the flat serialization format and cannot contain duplicate values. Only records with the Approved approval status are matched. Valid values:
+	// The list of effect statuses for the report. The list uses the flat serialization format and cannot contain duplicate values. Only records with the Approved approval status are matched. Valid values:
 	//
 	// 	- Enabled: Valid.
 	//
 	// 	- Expired: Invalid or expired.
+	//
+	// example:
+	//
+	// ["Enabled"]
 	EffectStatuses []*string `json:"EffectStatuses,omitempty" xml:"EffectStatuses,omitempty" type:"Repeated"`
 	// The ID of the user who operated the approval instance.
 	//
@@ -114,7 +118,7 @@ type ListApprovalsRequest struct {
 	//
 	// Ms. Li
 	OperatorUsername *string `json:"OperatorUsername,omitempty" xml:"OperatorUsername,omitempty"`
-	// The number of entries per page for a paging query. Valid values: 1 to 500.
+	// The Settings for the number of entries to return on each page for paging in a paged query. Valid values: 1 to 500.
 	//
 	// This parameter is required.
 	//
@@ -159,6 +163,10 @@ type ListApprovalsRequest struct {
 	// 	- BackendReport: Backend report.
 	//
 	// If you do not specify this parameter, only ApprovalReport is queried by default.
+	//
+	// example:
+	//
+	// ["BackendReport"]
 	ReportTypes []*string `json:"ReportTypes,omitempty" xml:"ReportTypes,omitempty" type:"Repeated"`
 	// The ID of the associated approval template.
 	//
@@ -172,7 +180,7 @@ type ListApprovalsRequest struct {
 	//
 	// test
 	SchemaName *string `json:"SchemaName,omitempty" xml:"SchemaName,omitempty"`
-	// The statuses of the approval instances.
+	// The instance statuses of the approval instances.
 	Statuses []*string `json:"Statuses,omitempty" xml:"Statuses,omitempty" type:"Repeated"`
 }
 

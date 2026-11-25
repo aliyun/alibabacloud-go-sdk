@@ -26,19 +26,19 @@ type PAApplicationUnauthorizedAccessConfig struct {
 	//
 	// true
 	AllowReport *bool `json:"AllowReport,omitempty" xml:"AllowReport,omitempty"`
-	// The content displayed in the client interception pop-up window.
+	// The content displayed in the client block pop-up window.
 	BlockContent *PAApplicationUnauthorizedAccessConfigBlockContent `json:"BlockContent,omitempty" xml:"BlockContent,omitempty" type:"Struct"`
 	// Specifies whether the feature is enabled. Valid values:
 	//
-	// - **true**: Enabled. Users are redirected to an interception page when they access an unauthorized application.
+	// - **true**: Enabled. If an application is unauthorized, the user is redirected to the block page.
 	//
-	// - **false**: Disabled. An error message is returned by default when users access an unauthorized application.
+	// - **false**: Disabled. If an application is unauthorized, an error message is returned by default.
 	//
 	// example:
 	//
 	// true
 	Enabled *bool `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
-	// The ID of the approval flow associated with the policy.
+	// The ID of the approval process associated with the policy.
 	//
 	// example:
 	//
@@ -147,25 +147,25 @@ func (s *PAApplicationUnauthorizedAccessConfigBlockContent) Validate() error {
 }
 
 type PAApplicationUnauthorizedAccessConfigBlockContentBlockTextEn struct {
-	// The prompt content of the English block page.
+	// The English prompt message on the block page.
 	//
 	// example:
 	//
 	// You do not have permission to access this system. If you need to do so, please submit a permission request.
 	BrowserAlertContent *string `json:"BrowserAlertContent,omitempty" xml:"BrowserAlertContent,omitempty"`
-	// The background pattern of the English block page.
+	// The English background pattern of the block page.
 	//
 	// example:
 	//
 	// https://img.alicdn.com/xxx.png
 	BrowserAlertStyle *string `json:"BrowserAlertStyle,omitempty" xml:"BrowserAlertStyle,omitempty"`
-	// The title of the English block page.
+	// The English title of the block page.
 	//
 	// example:
 	//
 	// No Permission Access
 	BrowserAlertTitle *string `json:"BrowserAlertTitle,omitempty" xml:"BrowserAlertTitle,omitempty"`
-	// The text of the English report approval button.
+	// The English text on the approval request button.
 	//
 	// example:
 	//
@@ -222,11 +222,11 @@ func (s *PAApplicationUnauthorizedAccessConfigBlockContentBlockTextEn) Validate(
 }
 
 type PAApplicationUnauthorizedAccessConfigBlockContentBlockTextZh struct {
-	// The prompt content of the block page.
+	// The prompt message on the block page.
 	//
 	// example:
 	//
-	// 您暂无权限访问该系统。如有工作需要，请提交权限申请。
+	// You do not have permission to access this system. If you need access for work purposes, submit an access request
 	BrowserAlertContent *string `json:"BrowserAlertContent,omitempty" xml:"BrowserAlertContent,omitempty"`
 	// The background pattern of the block page.
 	//
@@ -238,13 +238,13 @@ type PAApplicationUnauthorizedAccessConfigBlockContentBlockTextZh struct {
 	//
 	// example:
 	//
-	// 无权限访问
+	// Access Denied
 	BrowserAlertTitle *string `json:"BrowserAlertTitle,omitempty" xml:"BrowserAlertTitle,omitempty"`
-	// The text of the report approval button.
+	// The text on the approval request button.
 	//
 	// example:
 	//
-	// 前往报备
+	// Request Access
 	ReportButtonText *string `json:"ReportButtonText,omitempty" xml:"ReportButtonText,omitempty"`
 }
 

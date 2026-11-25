@@ -18,15 +18,15 @@ type iBatchCreateDomainItemsRequest interface {
 }
 
 type BatchCreateDomainItemsRequest struct {
-	// The domain name list.
+	// The list of domain names.
 	DomainItems []*string `json:"DomainItems,omitempty" xml:"DomainItems,omitempty" type:"Repeated"`
-	// The list ID. This is a unique business identifier used for policy references and add, delete, and modify operations.
+	// The ID of the list. This is a unique business identifier used for policy reference and addition, deletion, and modification operations.
 	//
 	// example:
 	//
 	// ladl-61aae0c0ba715e3b
 	ListId *string `json:"ListId,omitempty" xml:"ListId,omitempty"`
-	// The list type (Blacklist/Whitelist).
+	// The type of the list (Blacklist/Whitelist).
 	//
 	// example:
 	//

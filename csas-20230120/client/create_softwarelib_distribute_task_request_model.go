@@ -48,21 +48,21 @@ type iCreateSoftwarelibDistributeTaskRequest interface {
 }
 
 type CreateSoftwarelibDistributeTaskRequest struct {
-	// The collection of terminal device IDs. Duplicate values are not allowed. Each ID must not exceed 1000 characters in length. This parameter is required when MatchMode is set to DevTagNormal. This parameter is not allowed when MatchMode is set to other values. Otherwise, the request is rejected.
+	// The IDs of the terminal devices. Duplicate IDs are not allowed. A single ID can be up to 1,000 characters in length. This parameter is required when MatchMode is set to DevTagNormal. If MatchMode is set to other values, this parameter must not be specified. Otherwise, the request is rejected.
 	DevTags []*string `json:"DevTags,omitempty" xml:"DevTags,omitempty" type:"Repeated"`
-	// The collection of device group IDs. Duplicate values are not allowed. This parameter is required when MatchMode is set to DeviceGroupNormal. This parameter is not allowed when MatchMode is set to other values. Otherwise, the request is rejected. You can call [ListDeviceGroups](~~ListDeviceGroups~~) to obtain the values.
+	// The IDs of the device groups. Duplicate IDs are not allowed. This parameter is required when MatchMode is set to DeviceGroupNormal. If MatchMode is set to other values, this parameter must not be specified. Otherwise, the request is rejected. You can obtain the values by calling the [ListDeviceGroups](~~ListDeviceGroups~~) operation.
 	DeviceGroupIds []*string `json:"DeviceGroupIds,omitempty" xml:"DeviceGroupIds,omitempty" type:"Repeated"`
 	// The execution mode. Valid values:
 	//
-	// - **Once**: immediate execution.
+	// - **Once**: Immediate execution.
 	//
-	// - **Schedule**: scheduled execution.
+	// - **Schedule**: Scheduled execution.
 	//
 	// example:
 	//
 	// Once
 	ExecuteMode *string `json:"ExecuteMode,omitempty" xml:"ExecuteMode,omitempty"`
-	// The scheduling execution parameters in JSON format.
+	// The scheduled execution parameters. The value is a JSON-formatted string.
 	//
 	// example:
 	//
@@ -86,13 +86,13 @@ type CreateSoftwarelibDistributeTaskRequest struct {
 	//
 	// }
 	ExecuteParameters *string `json:"ExecuteParameters,omitempty" xml:"ExecuteParameters,omitempty"`
-	// The task execution cycle in JSON format. The validType field specifies the cycle type. Valid values:
+	// The execution cycle of the task. The value is a JSON-formatted string. The validType field specifies the cycle type. Valid values:
 	//
-	// - **Once**: one-time execution.
+	// - **Once**: Single execution.
 	//
-	// - **Interval**: execution at intervals.
+	// - **Interval**: Interval-based execution.
 	//
-	// - **Weekly**: weekly execution.
+	// - **Weekly**: Weekly execution.
 	//
 	// example:
 	//
@@ -100,39 +100,39 @@ type CreateSoftwarelibDistributeTaskRequest struct {
 	ExecutePeriod *string `json:"ExecutePeriod,omitempty" xml:"ExecutePeriod,omitempty"`
 	// The expiration type. Valid values:
 	//
-	// - **Expire**: expires at the time specified by GmtExpired.
+	// - **Expire**: The task expires at the time specified by GmtExpired.
 	//
-	// - **Never**: never expires.
+	// - **Never**: The task never expires.
 	//
 	// example:
 	//
 	// Expire
 	ExpireMode *string `json:"ExpireMode,omitempty" xml:"ExpireMode,omitempty"`
-	// The task expiration time as a millisecond-level UNIX timestamp. This parameter takes effect only when ExpireMode is set to Expire.
+	// The expiration time of the task. The value is a UNIX timestamp in milliseconds. This parameter takes effect only when ExpireMode is set to Expire.
 	//
 	// example:
 	//
 	// 1786945543000
 	GmtExpired *string `json:"GmtExpired,omitempty" xml:"GmtExpired,omitempty"`
-	// The policy matching target type. Valid values:
+	// The target type for policy matching. Valid values:
 	//
-	// - **UserGroupAll**: all users.
+	// - **UserGroupAll**: All users.
 	//
-	// - **UserGroupNormal**: specified user groups.
+	// - **UserGroupNormal**: Specified user groups.
 	//
-	// - **DevTagNormal**: specified devices.
+	// - **DevTagNormal**: Specified devices.
 	//
-	// - **DeviceGroupNormal**: specified device groups.
+	// - **DeviceGroupNormal**: Specified device groups.
 	//
-	// - **DevTagAll**: all devices.
+	// - **DevTagAll**: All devices.
 	//
-	// - **None**: not configured.
+	// - **None**: Not configured.
 	//
 	// example:
 	//
 	// UserGroupAll
 	MatchMode *string `json:"MatchMode,omitempty" xml:"MatchMode,omitempty"`
-	// The task name. The name must be 1 to 64 characters in length.
+	// The name of the task. The name must be 1 to 64 characters in length.
 	//
 	// This parameter is required.
 	//
@@ -140,25 +140,25 @@ type CreateSoftwarelibDistributeTaskRequest struct {
 	//
 	// test_task
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The number of retries after a task failure.
+	// The number of retries after the task fails.
 	//
 	// example:
 	//
 	// 5
 	RetryTimes *string `json:"RetryTimes,omitempty" xml:"RetryTimes,omitempty"`
-	// The administrator account name used to run the task on Windows. The name must not exceed 128 characters in length.
+	// The name of the administrator account used to execute the task in Windows. The name can be up to 128 characters in length.
 	//
 	// example:
 	//
 	// admin
 	RunAsAccount *string `json:"RunAsAccount,omitempty" xml:"RunAsAccount,omitempty"`
-	// The software ID in the software library. You can call [ListSoftwarelibSoftware](~~ListSoftwarelibSoftware~~) to obtain the value.
+	// The ID of the software in the software library. You can obtain the value by calling the [ListSoftwarelibSoftware](~~ListSoftwarelibSoftware~~) operation.
 	//
 	// example:
 	//
 	// softwarelib-software-9f9de7b5a16f****
 	SoftwareId *string `json:"SoftwareId,omitempty" xml:"SoftwareId,omitempty"`
-	// The software name. The name must not exceed 128 characters in length.
+	// The name of the software. The name can be up to 128 characters in length.
 	//
 	// example:
 	//
@@ -168,33 +168,33 @@ type CreateSoftwarelibDistributeTaskRequest struct {
 	//
 	// - **Windows**: Windows.
 	//
-	// - **Mac(Apple)**: macOS with Apple silicon.
+	// - **Mac(Apple)**: macOS on Apple silicon.
 	//
-	// - **Mac(Intel)**: macOS with Intel processors.
+	// - **Mac(Intel)**: macOS on Intel processors.
 	//
 	// example:
 	//
 	// Mac(Apple)
 	SupportOs *string `json:"SupportOs,omitempty" xml:"SupportOs,omitempty"`
-	// The task type. Valid values:
+	// The type of the task. Valid values:
 	//
-	// - **server**: a task delivered from the console.
+	// - **server**: Tasks delivered from the console.
 	//
-	// - **client**: a task initiated from the client.
+	// - **client**: Tasks initiated by the client.
 	//
 	// example:
 	//
 	// server
 	TaskType *string `json:"TaskType,omitempty" xml:"TaskType,omitempty"`
-	// The task execution timeout period. Unit: seconds. For example, a value of 3600 indicates 1 hour.
+	// The timeout period for task execution. Unit: seconds. For example, a value of 3600 indicates 1 hour.
 	//
 	// example:
 	//
 	// 3600
 	Timeout *string `json:"Timeout,omitempty" xml:"Timeout,omitempty"`
-	// The collection of user group IDs. Duplicate values are not allowed. This parameter is required and must contain at least one value when MatchMode is set to UserGroupNormal. This parameter is not allowed when MatchMode is set to other values. Otherwise, the request is rejected. You can call [ListUserGroups](~~ListUserGroups~~) to obtain the values.
+	// The IDs of the user groups. Duplicate IDs are not allowed. This parameter is required and must contain at least one ID when MatchMode is set to UserGroupNormal. If MatchMode is set to other values, this parameter must not be specified. Otherwise, the request is rejected. You can obtain the values by calling the [ListUserGroups](~~ListUserGroups~~) operation.
 	UserGroupIds []*string `json:"UserGroupIds,omitempty" xml:"UserGroupIds,omitempty" type:"Repeated"`
-	// The ID of the software version to distribute. You can call [ListSoftwarelibVersion](~~ListSoftwarelibVersion~~) to obtain the value.
+	// The ID of the software version to be distributed. When you create a software version, you can obtain the value from the VersionId response parameter of the [CreateSoftwarelibVersion](~~CreateSoftwarelibVersion~~) operation. For more information about how to view and manage software versions, see [Software management](https://www.alibabacloud.com/help/en/sase/user-guide/software-management).
 	//
 	// example:
 	//

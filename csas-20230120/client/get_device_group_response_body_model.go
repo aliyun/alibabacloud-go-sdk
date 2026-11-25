@@ -16,7 +16,7 @@ type iGetDeviceGroupResponseBody interface {
 }
 
 type GetDeviceGroupResponseBody struct {
-	// The device label details.
+	// The device group details.
 	DeviceGroup *GetDeviceGroupResponseBodyDeviceGroup `json:"DeviceGroup,omitempty" xml:"DeviceGroup,omitempty" type:"Struct"`
 	// Id of the request
 	//
@@ -62,13 +62,13 @@ func (s *GetDeviceGroupResponseBody) Validate() error {
 }
 
 type GetDeviceGroupResponseBodyDeviceGroup struct {
-	// The device label description.
+	// The description of the device group.
 	//
 	// example:
 	//
 	// Test device group description
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The device label ID.
+	// The ID of the device group.
 	//
 	// example:
 	//
@@ -76,37 +76,37 @@ type GetDeviceGroupResponseBodyDeviceGroup struct {
 	DeviceGroupId *string `json:"DeviceGroupId,omitempty" xml:"DeviceGroupId,omitempty"`
 	// Deprecated
 	//
-	// The dynamic device group rule operator.
+	// The operator for the dynamic device group rule.
 	//
 	// example:
 	//
 	// AND
 	DynamicOperator *string `json:"DynamicOperator,omitempty" xml:"DynamicOperator,omitempty"`
-	// The matching rule of the dynamic device label.
+	// The matching rule for the dynamic device group.
 	DynamicRule *Rule `json:"DynamicRule,omitempty" xml:"DynamicRule,omitempty"`
-	// The device label type. Valid values:
+	// The type of the device group. Valid values:
 	//
-	// - **static**: Static device label. Members consist of manually added terminal devices.
+	// - **static**: A static device group. Members are terminal devices that are manually added.
 	//
-	// - **dynamic**: Dynamic device label.
+	// - **dynamic**: A dynamic device group.
 	//
 	// example:
 	//
 	// static
 	GroupType *string `json:"GroupType,omitempty" xml:"GroupType,omitempty"`
-	// Indicates whether the device label is a system built-in device label. Valid values:
+	// Indicates whether the device group is a built-in system device group. Valid values:
 	//
-	// - **true**: System built-in device label.
+	// - **true**: The device group is a built-in system device group.
 	//
-	// - **false**: User-defined device label.
+	// - **false**: The device group is a custom device group.
 	//
 	// example:
 	//
 	// true
 	IsDefault *string `json:"IsDefault,omitempty" xml:"IsDefault,omitempty"`
-	// The collection of terminal device IDs associated with the device label.
+	// The IDs of the devices associated with the device group.
 	MatchDevTags []*string `json:"MatchDevTags,omitempty" xml:"MatchDevTags,omitempty" type:"Repeated"`
-	// The device label name.
+	// The name of the device group.
 	//
 	// example:
 	//

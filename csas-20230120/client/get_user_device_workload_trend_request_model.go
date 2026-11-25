@@ -20,11 +20,11 @@ type iGetUserDeviceWorkloadTrendRequest interface {
 }
 
 type GetUserDeviceWorkloadTrendRequest struct {
-	// The endpoint device ID. You can obtain this value from the following operations:
+	// The ID of the endpoint device. You can obtain the value by calling the following operations:
 	//
 	// - [GetUserDevice](~~GetUserDevice~~): Queries the details of a user endpoint device.
 	//
-	// - [ListUserDevices](~~ListUserDevices~~): Queries user endpoint devices in batches.
+	// - [ListUserDevices](~~ListUserDevices~~): Queries multiple user endpoint devices.
 	//
 	// This parameter is required.
 	//
@@ -32,7 +32,7 @@ type GetUserDeviceWorkloadTrendRequest struct {
 	//
 	// 36efa42d-2c32-c4dc-e3fc-8541e33a****
 	DeviceTag *string `json:"DeviceTag,omitempty" xml:"DeviceTag,omitempty"`
-	// The start time of the query time range. This value is a UNIX timestamp in seconds. The value must be greater than or equal to 0 and less than the value of To.
+	// The start time of the query time range, which is a UNIX timestamp in seconds. Valid values: greater than or equal to 0 and less than the value of To.
 	//
 	// This parameter is required.
 	//
@@ -40,7 +40,7 @@ type GetUserDeviceWorkloadTrendRequest struct {
 	//
 	// 1769998785
 	From *int64 `json:"From,omitempty" xml:"From,omitempty"`
-	// The end time of the query time range. This value is a UNIX timestamp in seconds. The value must be greater than the value of From.
+	// The end time of the query time range, which is a UNIX timestamp in seconds. Valid values: greater than the value of From.
 	//
 	// This parameter is required.
 	//
@@ -52,7 +52,7 @@ type GetUserDeviceWorkloadTrendRequest struct {
 	//
 	// - **cpu**: CPU usage.
 	//
-	// - **mem**: memory usage.
+	// - **mem**: Memory usage.
 	//
 	// This parameter is required.
 	//

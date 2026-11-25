@@ -14,7 +14,7 @@ type iGetProhibitedSoftwareShrinkRequest interface {
 }
 
 type GetProhibitedSoftwareShrinkRequest struct {
-	// The prohibited software ID.
+	// The ID of the prohibited software.
 	SoftwareIdShrink *string `json:"SoftwareId,omitempty" xml:"SoftwareId,omitempty"`
 }
 

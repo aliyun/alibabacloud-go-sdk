@@ -22,7 +22,7 @@ type CreateProhibitedTagResponseBody struct {
 	//
 	// C7F30ABA-67BD-537D-A516-8DA20DA1F28C
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The disabled software tag.
+	// The prohibited software tag.
 	Tag *CreateProhibitedTagResponseBodyTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Struct"`
 }
 
@@ -62,25 +62,25 @@ func (s *CreateProhibitedTagResponseBody) Validate() error {
 }
 
 type CreateProhibitedTagResponseBodyTag struct {
-	// The time when the disabled software tag was created, in the yyyy-MM-dd HH:mm:ss format. The time is displayed in UTC+8.
+	// The time when the prohibited software tag was created. The time is in the yyyy-MM-dd HH:mm:ss format and uses the UTC+8 time zone.
 	//
 	// example:
 	//
 	// 2026-08-19 10:24:31
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The description of the disabled software tag.
+	// The description of the prohibited software tag.
 	//
 	// example:
 	//
 	// test template create get delete
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The name of the disabled software tag.
+	// The name of the prohibited software tag.
 	//
 	// example:
 	//
 	// autotest_37bf6a18
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The ID of the disabled software tag.
+	// The ID of the prohibited software tag.
 	//
 	// example:
 	//

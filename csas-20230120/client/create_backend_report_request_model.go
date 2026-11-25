@@ -24,25 +24,25 @@ type iCreateBackendReportRequest interface {
 }
 
 type CreateBackendReportRequest struct {
-	// The filing expiration time as a UNIX timestamp in seconds. This parameter is required when ValidityType is set to FixedTime or ValidityType is not specified, and the value must be later than the current time. When ValidityType is set to Permanent, do not specify this parameter or set it to 0.
+	// The expiration time of the report, which is a UNIX timestamp in seconds. This parameter is required when ValidityType is set to FixedTime or is not specified, and the value must be later than the current time. When ValidityType is set to Permanent, do not specify this parameter or set it to 0.
 	//
 	// example:
 	//
 	// 1788192000
 	EndTimestamp *int64 `json:"EndTimestamp,omitempty" xml:"EndTimestamp,omitempty"`
-	// The filing policy type. Valid values:
+	// The policy type. Valid values:
 	//
-	// 	- PrivateAccessBlock: private access.
+	// 	- PrivateAccessBlock: private network access
 	//
-	// 	- DomainWhitelist: domain name whitelist.
+	// 	- DomainWhitelist: domain name whitelist
 	//
-	// 	- DomainBlacklist: domain name blacklist.
+	// 	- DomainBlacklist: domain name blacklist
 	//
-	// 	- SoftwareBlock: software blocking.
+	// 	- SoftwareBlock: software blocking
 	//
-	// 	- DlpSend: file outbound transfer.
+	// 	- DlpSend: outbound file transfer
 	//
-	// 	- PeripheralBlock: peripheral control.
+	// 	- PeripheralBlock: peripheral control
 	//
 	// This parameter is required.
 	//
@@ -50,27 +50,27 @@ type CreateBackendReportRequest struct {
 	//
 	// PrivateAccessBlock
 	PolicyType *string `json:"PolicyType,omitempty" xml:"PolicyType,omitempty"`
-	// The filing reason. The value must be 1 to 1024 characters in length.
+	// The reason for the report. The value must be 1 to 1,024 characters in length.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// Temporary project access
+	// Temporary access for a project
 	Reason *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
-	// The list of filing objects, serialized in Flat format. You can specify 1 to 100 filing objects of the same policy type. The object fields must match the PolicyType value.
+	// The list of report objects in flat serialization format. You can specify 1 to 100 report objects of the same policy type. The object fields must match the policy type.
 	//
 	// This parameter is required.
 	ReportObjects []*CreateBackendReportRequestReportObjects `json:"ReportObjects,omitempty" xml:"ReportObjects,omitempty" type:"Repeated"`
-	// The list of filing users, serialized in Flat format. You can specify 1 to 100 users. Only specific SASE users under the current Alibaba Cloud account are supported. The product of the number of deduplicated users and the number of filing objects cannot exceed 100.
+	// The list of target users in flat serialization format. You can specify 1 to 100 users. Only specific SASE users under the current Alibaba Cloud account are supported. The product of the number of deduplicated users and the number of report objects cannot exceed 100.
 	//
 	// This parameter is required.
 	Targets []*CreateBackendReportRequestTargets `json:"Targets,omitempty" xml:"Targets,omitempty" type:"Repeated"`
-	// The validity duration type. Default value: FixedTime. Valid values:
+	// The validity type. If you do not specify this parameter, the default value is FixedTime. Valid values:
 	//
-	// 	- FixedTime: Expires at the specified time.
+	// 	- FixedTime: The exemption expires at the specified time.
 	//
-	// 	- Permanent: Permanently valid.
+	// 	- Permanent: The exemption is permanently valid.
 	//
 	// example:
 	//
@@ -163,17 +163,17 @@ func (s *CreateBackendReportRequest) Validate() error {
 }
 
 type CreateBackendReportRequestReportObjects struct {
-	// The private access application ID. This parameter is required when PolicyType is set to PrivateAccessBlock. You can call ListPrivateAccessApplications to query the ID.
+	// The ID of the private access application. This parameter is required when PolicyType is set to PrivateAccessBlock. You can call ListPrivateAccessApplications to query the application ID.
 	//
 	// example:
 	//
 	// pa-app-****************1234
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
-	// The endpoint operating system. This parameter is required when PolicyType is set to PeripheralBlock. Valid values:
+	// The operating system of the endpoint. This parameter is required when PolicyType is set to PeripheralBlock. Valid values:
 	//
-	// 	- windows: Windows.
+	// 	- windows: Windows
 	//
-	// 	- macOS: macOS.
+	// 	- macOS: macOS
 	//
 	// example:
 	//
@@ -185,25 +185,25 @@ type CreateBackendReportRequestReportObjects struct {
 	//
 	// usbStorage
 	DeviceType *string `json:"DeviceType,omitempty" xml:"DeviceType,omitempty"`
-	// The file MD5 hash. This parameter is required when PolicyType is set to DlpSend. The value must be a 32-character hexadecimal string and is case-insensitive.
+	// The MD5 hash of the file. This parameter is required when PolicyType is set to DlpSend. The value must be a 32-character hexadecimal string and is not case-sensitive.
 	//
 	// example:
 	//
 	// c936226c4745125b5786527d205a****
 	FileMd5 *string `json:"FileMd5,omitempty" xml:"FileMd5,omitempty"`
-	// The filing domain name. This parameter is required when PolicyType is set to DomainWhitelist or DomainBlacklist. Regular domain names and wildcard domain names that start with *. are supported. Protocols, ports, and paths are not supported.
+	// The domain name to be reported. This parameter is required when PolicyType is set to DomainWhitelist or DomainBlacklist. Regular domain names and wildcard domain names starting with *. are supported. Protocols, ports, and paths are not supported.
 	//
 	// example:
 	//
 	// *.example.com
 	ReportDomain *string `json:"ReportDomain,omitempty" xml:"ReportDomain,omitempty"`
-	// The peripheral filing granularity. This parameter is required when PolicyType is set to PeripheralBlock. Currently, only Channel is supported, which indicates filing by peripheral channel.
+	// The reporting granularity for peripherals. This parameter is required when PolicyType is set to PeripheralBlock. Only Channel is supported, which indicates reporting by peripheral channel.
 	//
 	// example:
 	//
 	// Channel
 	Scope *string `json:"Scope,omitempty" xml:"Scope,omitempty"`
-	// The blocked software ID. This parameter is required when PolicyType is set to SoftwareBlock.
+	// The ID of the blocked software. This parameter is required when PolicyType is set to SoftwareBlock.
 	//
 	// example:
 	//
@@ -287,7 +287,7 @@ func (s *CreateBackendReportRequestReportObjects) Validate() error {
 }
 
 type CreateBackendReportRequestTargets struct {
-	// The SASE user ID. You can call ListUsers to query the ID.
+	// The SASE user ID. You can call ListUsers to query the user ID.
 	//
 	// This parameter is required.
 	//

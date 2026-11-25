@@ -48,9 +48,9 @@ type iUpdatePrivateAccessApplicationShrinkRequest interface {
 }
 
 type UpdatePrivateAccessApplicationShrinkRequest struct {
-	// The application address groups. You can specify this parameter when ConfigMode is Precise. You cannot specify this parameter when ConfigMode is an empty string.
+	// The application address groups. You can specify this parameter when ConfigMode is set to Precise. You cannot specify this parameter when ConfigMode is an empty string.
 	AddressGroups []*AddressGroup `json:"AddressGroups,omitempty" xml:"AddressGroups,omitempty" type:"Repeated"`
-	// The collection of private access application addresses. You can enter up to 1,000 private access application addresses.
+	// The addresses of the private access application. You can specify up to 1,000 addresses.
 	Addresses []*string `json:"Addresses,omitempty" xml:"Addresses,omitempty" type:"Repeated"`
 	// The ID of the private access application. You can obtain the value from the following operations:
 	//
@@ -66,9 +66,9 @@ type UpdatePrivateAccessApplicationShrinkRequest struct {
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
 	// The configuration mode. Valid values:
 	//
-	// 	- Empty string: the default mode.
+	// 	- Empty string: Default mode.
 	//
-	// 	- Precise: the precise mode.
+	// 	- Precise: Precise mode.
 	//
 	// example:
 	//
@@ -83,13 +83,13 @@ type UpdatePrivateAccessApplicationShrinkRequest struct {
 	//
 	// This is a private access application
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The health check configuration. This parameter is valid only when HealthCheckMode is set to Continuous. You cannot specify this parameter when HealthCheckMode is set to OnAccess.
+	// The health check configuration. This parameter takes effect only when HealthCheckMode is set to Continuous. You cannot specify this parameter when HealthCheckMode is set to OnAccess.
 	HealthCheckConfigShrink *string `json:"HealthCheckConfig,omitempty" xml:"HealthCheckConfig,omitempty"`
 	// The health check mode. Valid values:
 	//
-	// 	- OnAccess: Checks upon access without active probing.
+	// 	- OnAccess: Checks health upon access without active probing.
 	//
-	// 	- Continuous: Performs continuous checks and periodically probes based on the configurations in HealthCheckConfig.
+	// 	- Continuous: Performs continuous health checks and periodically probes based on the configuration in HealthCheckConfig.
 	//
 	// If this parameter is not specified, the default value is OnAccess. When the application addresses include wildcard domain names or CIDR blocks, or when the number of application addresses exceeds 10, only OnAccess is supported.
 	//
@@ -123,7 +123,7 @@ type UpdatePrivateAccessApplicationShrinkRequest struct {
 	//
 	// - **Cover*	- (default): Overwrites the original addresses, port ranges, and tag IDs with the values of the **Addresses**, **PortRanges**, and **TagIds*	- parameters.
 	//
-	// - **Append**: Appends the values specified in the **Addresses**, **PortRanges**, and **TagIds*	- parameters to the original addresses, port ranges, and tag IDs.
+	// - **Append**: Appends the values of the **Addresses**, **PortRanges**, and **TagIds*	- parameters to the original addresses, port ranges, and tag IDs.
 	//
 	// example:
 	//
@@ -135,7 +135,7 @@ type UpdatePrivateAccessApplicationShrinkRequest struct {
 	//
 	// private_access_application_name
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The collection of port ranges for the private access application. You can enter up to 65,535 port ranges. Multiple port ranges cannot be duplicate or overlap.
+	// The port ranges of the private access application. You can specify up to 65,535 port ranges. Multiple port ranges cannot be duplicate or overlap.
 	PortRanges []*UpdatePrivateAccessApplicationShrinkRequestPortRanges `json:"PortRanges,omitempty" xml:"PortRanges,omitempty" type:"Repeated"`
 	// The protocol of the private access application. Valid values:
 	//
@@ -159,7 +159,7 @@ type UpdatePrivateAccessApplicationShrinkRequest struct {
 	//
 	// Enabled
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The collection of private access tag IDs. You can associate up to six custom private access tags with a single private access application.
+	// The IDs of the private access tags. You can associate up to six custom private access tags with a private access application.
 	//
 	// if can be null:
 	// true

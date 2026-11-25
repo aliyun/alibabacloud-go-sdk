@@ -14,11 +14,11 @@ type iGetDeviceGroupRequest interface {
 }
 
 type GetDeviceGroupRequest struct {
-	// The device label ID. You can obtain this value from:
+	// The device group ID. You can obtain the value from the following operations:
 	//
-	// - [ListDeviceGroups](~~ListDeviceGroups~~): Lists device labels.
+	// - [ListDeviceGroups](~~ListDeviceGroups~~): Lists device groups.
 	//
-	// - [CreateDeviceGroup](~~CreateDeviceGroup~~): Creates a device label.
+	// - [CreateDeviceGroup](~~CreateDeviceGroup~~): Creates a device group.
 	//
 	// This parameter is required.
 	//

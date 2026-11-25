@@ -32,9 +32,9 @@ type iCreateWmExtractTaskShrinkRequest interface {
 }
 
 type CreateWmExtractTaskShrinkRequest struct {
-	// The CSV watermark control parameters. These must be consistent with the parameters used during embedding. Otherwise, extraction fails.
+	// CSV watermark control parameters. These parameters must be consistent with those used during embedding. Otherwise, the extraction fails.
 	CsvControlShrink *string `json:"CsvControl,omitempty" xml:"CsvControl,omitempty"`
-	// The document watermark parameter that specifies whether the file to be extracted is a screenshot of a document with a background watermark. The service determines whether to use the document background watermark extraction logic based on whether the file is an image file. Therefore, this parameter does not need to be set by default. Valid values:
+	// Document watermark parameter. Specifies whether the file from which the watermark is to be extracted is a screenshot of a document with a background watermark. The service determines whether to use the document background watermark extraction logic based on whether the file is an image file. Therefore, you do not need to set this parameter by default. Valid values:
 	//
 	// - **true**: Yes.
 	//
@@ -44,7 +44,7 @@ type CreateWmExtractTaskShrinkRequest struct {
 	//
 	// false
 	DocumentIsCapture *bool `json:"DocumentIsCapture,omitempty" xml:"DocumentIsCapture,omitempty"`
-	// The URL used to download the file from which the watermark is to be fetched. The URL must be accessible over the public network access.
+	// The URL used to download the file to be fetched. The URL must support public network access.
 	//
 	// This parameter is required.
 	//
@@ -52,7 +52,7 @@ type CreateWmExtractTaskShrinkRequest struct {
 	//
 	// https://example.com/test-****.pdf
 	FileUrl *string `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
-	// The name of the file from which the watermark is to be extracted. The backend determines and validates the file type based on the file name extension.
+	// The name of the file from which the watermark is to be extracted. The backend determines and verifies the file type based on the file name extension.
 	//
 	// This parameter is required.
 	//
@@ -60,9 +60,9 @@ type CreateWmExtractTaskShrinkRequest struct {
 	//
 	// test-****.pdf
 	Filename *string `json:"Filename,omitempty" xml:"Filename,omitempty"`
-	// The image extraction parameters.
+	// Image extraction parameters.
 	ImageExtractParamsOpenApiShrink *string `json:"ImageExtractParamsOpenApi,omitempty" xml:"ImageExtractParamsOpenApi,omitempty"`
-	// The audio watermark parameter that specifies whether the watermark was embedded by the client SDK. Default value: false. Valid values:
+	// Audio watermark parameter. Specifies whether the watermark is embedded by using the client SDK. Default value: false. Valid values:
 	//
 	// - **true**: Yes.
 	//
@@ -72,7 +72,7 @@ type CreateWmExtractTaskShrinkRequest struct {
 	//
 	// false
 	IsClientEmbed *bool `json:"IsClientEmbed,omitempty" xml:"IsClientEmbed,omitempty"`
-	// The video watermark parameter that specifies whether to use the long video watermark SDK. Default value: false. Valid values:
+	// Video watermark parameter. Specifies whether to use the long video watermark SDK. Default value: false. Valid values:
 	//
 	// - **true**: Yes.
 	//
@@ -82,13 +82,13 @@ type CreateWmExtractTaskShrinkRequest struct {
 	//
 	// false
 	VideoIsLong *bool `json:"VideoIsLong,omitempty" xml:"VideoIsLong,omitempty"`
-	// The long video watermark parameter that specifies the video playback speed as a floating-point string. Default value: 1, which indicates the playback speed used when the watermark was added, or the speed at which the video timeline was stretched after the watermark was added.
+	// Long video watermark parameter. The video playback speed, represented as a floating-point string. Default value: 1. This value represents the playback speed used when adding the watermark, or the timeline stretching speed after the watermark is added.
 	//
 	// example:
 	//
 	// 1
 	VideoSpeed *string `json:"VideoSpeed,omitempty" xml:"VideoSpeed,omitempty"`
-	// The bit width of the watermark information capacity. Default value: 32. This parameter must be consistent between embedding and extraction. For example, if the 40-bit SDK was used for embedding, set this value to 40 for extraction.
+	// The bit width of the watermark information capacity. Default value: 32. This parameter must be consistent during embedding and extraction. For example, if a 40-bit SDK is used for embedding, you must also set this value to 40 for extraction.
 	//
 	// example:
 	//
@@ -96,19 +96,19 @@ type CreateWmExtractTaskShrinkRequest struct {
 	WmInfoSize *int64 `json:"WmInfoSize,omitempty" xml:"WmInfoSize,omitempty"`
 	// The watermark type. Valid values:
 	//
-	// - **PureWebappInvisible**: web page watermark.
+	// - **PureWebappInvisible**: Web page watermark.
 	//
-	// - **PureAppInvisible**: app watermark.
+	// - **PureAppInvisible**: App watermark.
 	//
-	// - **PureScreenInvisible**: screen watermark.
+	// - **PureScreenInvisible**: Screen watermark.
 	//
-	// - **PureDocument**: document watermark.
+	// - **PureDocument**: Document watermark.
 	//
-	// - **PureImage**: image watermark.
+	// - **PureImage**: Image watermark.
 	//
-	// - **PureAudio**: audio watermark.
+	// - **PureAudio**: Audio watermark.
 	//
-	// - **PureVideo**: video watermark.
+	// - **PureVideo**: Video watermark.
 	//
 	// - **AigcWebappInvisible**: AIGC web page watermark.
 	//

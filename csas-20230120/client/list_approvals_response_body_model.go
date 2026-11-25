@@ -89,7 +89,7 @@ type ListApprovalsResponseBodyApprovals struct {
 	//
 	// {"initiatorName":"Mr. Wang","initiatorDept":"Testing Department","devType":"windows","deviceType":"usbStorage","deviceId":"FC216E9E3****","approvalEndTimestamp":1736524799,"approvalReason":"This is a test"}
 	ApprovalDetail *string `json:"ApprovalDetail,omitempty" xml:"ApprovalDetail,omitempty"`
-	// The ID of the approval instance.
+	// The approval instance ID.
 	//
 	// example:
 	//
@@ -99,13 +99,13 @@ type ListApprovalsResponseBodyApprovals struct {
 	ApprovalProgresses []*ListApprovalsResponseBodyApprovalsApprovalProgresses `json:"ApprovalProgresses,omitempty" xml:"ApprovalProgresses,omitempty" type:"Repeated"`
 	// The approval type. Valid values:
 	//
-	// - 0: Built-in approval.
+	// 	- 0: Built-in approval.
 	//
-	// - 1: DingTalk approval.
+	// 	- 1: DingTalk approval.
 	//
-	// - 2: WeCom approval.
+	// 	- 2: WeCom approval.
 	//
-	// - 3: Lark approval.
+	// 	- 3: Lark approval.
 	//
 	// example:
 	//
@@ -141,11 +141,11 @@ type ListApprovalsResponseBodyApprovals struct {
 	//
 	// Wang***
 	CreatorUsername *string `json:"CreatorUsername,omitempty" xml:"CreatorUsername,omitempty"`
-	// The effective status of the report. If the approval status is not Approved, an empty string is returned. Valid values:
+	// The validity status of the report. If the approval status is not Approved, an empty string is returned. Valid values:
 	//
-	// - Enabled: Valid.
+	// 	- Enabled: Valid.
 	//
-	// - Expired: Invalid or expired.
+	// 	- Expired: Invalid or expired.
 	//
 	// example:
 	//
@@ -159,9 +159,9 @@ type ListApprovalsResponseBodyApprovals struct {
 	EndTimestamp *int64 `json:"EndTimestamp,omitempty" xml:"EndTimestamp,omitempty"`
 	// The type of the policy associated with the approval instance. Valid values:
 	//
-	// - **DomainBlacklist**: Domain name blacklist.
+	// - **DomainBlacklist**: Domain blacklist.
 	//
-	// - **DomainWhitelist**: Domain name whitelist.
+	// - **DomainWhitelist**: Domain whitelist.
 	//
 	// - **SoftwareBlock**: Software blocking.
 	//
@@ -205,39 +205,39 @@ type ListApprovalsResponseBodyApprovals struct {
 	Reason *string `json:"Reason,omitempty" xml:"Reason,omitempty"`
 	// The report type. Valid values:
 	//
-	// - ApprovalReport: Approval report.
+	// 	- ApprovalReport: Approval report.
 	//
-	// - BackendReport: Backend report.
+	// 	- BackendReport: Backend report.
 	//
 	// example:
 	//
 	// BackendReport
 	ReportType *string `json:"ReportType,omitempty" xml:"ReportType,omitempty"`
-	// The content of the template associated with the approval instance.
+	// The content of the schema associated with the approval instance.
 	//
 	// example:
 	//
 	// {"form": {"labelCol": 6,"wrapperCol": 12}}
 	SchemaContent *string `json:"SchemaContent,omitempty" xml:"SchemaContent,omitempty"`
-	// The ID of the template associated with the approval instance.
+	// The ID of the schema associated with the approval instance.
 	//
 	// example:
 	//
 	// approval-schema-090134f1ebff****
 	SchemaId *string `json:"SchemaId,omitempty" xml:"SchemaId,omitempty"`
-	// The name of the template associated with the approval instance.
+	// The name of the schema associated with the approval instance.
 	//
 	// example:
 	//
 	// Template***
 	SchemaName *string `json:"SchemaName,omitempty" xml:"SchemaName,omitempty"`
-	// The status of the approval instance. Valid values:
+	// The approval instance status. Valid values:
 	//
-	// - **Pending**: Pending approval.
+	// - **Pending**: Pending.
 	//
 	// - **Approved**: Approved.
 	//
-	// - **Rejected**: Denied.
+	// - **Rejected**: Deny.
 	//
 	// - **Revoked**: Revoked.
 	//
@@ -498,7 +498,7 @@ type ListApprovalsResponseBodyApprovalsApprovalProgresses struct {
 	Operators []*ListApprovalsResponseBodyApprovalsApprovalProgressesOperators `json:"Operators,omitempty" xml:"Operators,omitempty" type:"Repeated"`
 	// The status of the approval progress node. Valid values:
 	//
-	// - **Pending**: Pending approval.
+	// - **Pending**: Pending.
 	//
 	// - **Approved**: Approved.
 	//

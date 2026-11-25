@@ -18,7 +18,7 @@ type iListDeviceGroupsResponseBody interface {
 }
 
 type ListDeviceGroupsResponseBody struct {
-	// The list of device labels.
+	// The list of device tags.
 	DeviceGroups []*ListDeviceGroupsResponseBodyDeviceGroups `json:"DeviceGroups,omitempty" xml:"DeviceGroups,omitempty" type:"Repeated"`
 	// Id of the request
 	//
@@ -26,7 +26,7 @@ type ListDeviceGroupsResponseBody struct {
 	//
 	// FD724DBC-CD76-5235-BF76-59C51B73296D
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of device labels.
+	// The total number of device tags.
 	//
 	// example:
 	//
@@ -83,13 +83,13 @@ func (s *ListDeviceGroupsResponseBody) Validate() error {
 }
 
 type ListDeviceGroupsResponseBodyDeviceGroups struct {
-	// The device label description.
+	// The description of the device tag.
 	//
 	// example:
 	//
 	// description
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The device label ID.
+	// The ID of the device tag.
 	//
 	// example:
 	//
@@ -97,37 +97,37 @@ type ListDeviceGroupsResponseBodyDeviceGroups struct {
 	DeviceGroupId *string `json:"DeviceGroupId,omitempty" xml:"DeviceGroupId,omitempty"`
 	// Deprecated
 	//
-	// The rule operator of the dynamic device group.
+	// The operator for the dynamic device group rule.
 	//
 	// example:
 	//
 	// AND
 	DynamicOperator *string `json:"DynamicOperator,omitempty" xml:"DynamicOperator,omitempty"`
-	// The matching rule of the dynamic device label.
+	// The matching rule for the dynamic device tag.
 	DynamicRule *Rule `json:"DynamicRule,omitempty" xml:"DynamicRule,omitempty"`
-	// The device label type. Valid values:
+	// The type of the device tag. Valid values:
 	//
-	// - **static**: A static device label. Members consist of manually added terminal devices.
+	// - **static**: Static device tag. Members consist of manually added terminal devices.
 	//
-	// - **dynamic**: A dynamic device label. Members are automatically calculated by matching rules when terminal devices report heartbeats.
+	// - **dynamic**: Dynamic device tag. Members are automatically calculated based on matching rules when terminal devices report heartbeats.
 	//
 	// example:
 	//
 	// static
 	GroupType *string `json:"GroupType,omitempty" xml:"GroupType,omitempty"`
-	// Indicates whether the device label is a system built-in device label. Valid values:
+	// Specifies whether the device tag is a built-in system device tag. Valid values:
 	//
-	// - **true**: A system built-in device label.
+	// - **true**: Built-in system device tag.
 	//
-	// - **false**: A user-defined device label.
+	// - **false**: Custom device tag.
 	//
 	// example:
 	//
 	// false
 	IsDefault *string `json:"IsDefault,omitempty" xml:"IsDefault,omitempty"`
-	// The collection of terminal device IDs associated with the device label.
+	// The IDs of the terminal devices that are associated with the device tag.
 	MatchDevTags []*string `json:"MatchDevTags,omitempty" xml:"MatchDevTags,omitempty" type:"Repeated"`
-	// The device label name.
+	// The name of the device tag.
 	//
 	// example:
 	//

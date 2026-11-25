@@ -22,7 +22,7 @@ type GetProhibitedSoftwareResponseBody struct {
 	//
 	// 019F6DE3-3079-52DE-ABD1-39FB76B74FC9
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The prohibited software details.
+	// The details of the prohibited software.
 	Software *GetProhibitedSoftwareResponseBodySoftware `json:"Software,omitempty" xml:"Software,omitempty" type:"Struct"`
 }
 
@@ -62,7 +62,7 @@ func (s *GetProhibitedSoftwareResponseBody) Validate() error {
 }
 
 type GetProhibitedSoftwareResponseBodySoftware struct {
-	// The creation time of the prohibited software, in the yyyy-MM-dd HH:mm:ss format. The time is displayed in UTC+8.
+	// The time when the prohibited software was created. The time is in the yyyy-MM-dd HH:mm:ss format and follows the UTC+8 time zone.
 	//
 	// example:
 	//
@@ -74,19 +74,19 @@ type GetProhibitedSoftwareResponseBodySoftware struct {
 	//
 	// P2P download tool
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// Indicates whether the prohibited software is a system built-in prohibited software. Valid values:
+	// Specifies whether the prohibited software is a built-in prohibited software. Valid values:
 	//
-	// - **true**: A system built-in prohibited software that is shared across all Alibaba Cloud accounts and cannot be modified or deleted.
+	// - **true**: The software is a built-in prohibited software. It is shared by all Alibaba Cloud accounts and cannot be modified or deleted.
 	//
-	// - **false**: A custom prohibited software under the current Alibaba Cloud account.
+	// - **false**: The software is a custom prohibited software within the current Alibaba Cloud account.
 	//
 	// example:
 	//
 	// true
 	IsDefault *bool `json:"IsDefault,omitempty" xml:"IsDefault,omitempty"`
-	// The list of process configurations for the Linux operating system.
+	// The list of process configurations in the Linux operating system.
 	LinuxProcesses []*GetProhibitedSoftwareResponseBodySoftwareLinuxProcesses `json:"LinuxProcesses,omitempty" xml:"LinuxProcesses,omitempty" type:"Repeated"`
-	// The list of process configurations for the macOS operating system.
+	// The list of process configurations in the macOS operating system.
 	MacOSProcesses []*GetProhibitedSoftwareResponseBodySoftwareMacOSProcesses `json:"MacOSProcesses,omitempty" xml:"MacOSProcesses,omitempty" type:"Repeated"`
 	// The name of the prohibited software.
 	//
@@ -96,15 +96,15 @@ type GetProhibitedSoftwareResponseBodySoftware struct {
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The IDs of the software prohibition policies that directly reference the prohibited software.
 	PolicyIds []*string `json:"PolicyIds,omitempty" xml:"PolicyIds,omitempty" type:"Repeated"`
-	// The prohibited software ID.
+	// The ID of the prohibited software.
 	//
 	// example:
 	//
 	// swb-3e6a1f9c4b28****
 	SoftwareId *string `json:"SoftwareId,omitempty" xml:"SoftwareId,omitempty"`
-	// The IDs of the prohibited software tags associated with the prohibited software.
+	// The IDs of the prohibited software tags that are associated with the prohibited software.
 	TagIds []*string `json:"TagIds,omitempty" xml:"TagIds,omitempty" type:"Repeated"`
-	// The list of process configurations for the Windows operating system.
+	// The list of process configurations in the Windows operating system.
 	WindowsProcesses []*GetProhibitedSoftwareResponseBodySoftwareWindowsProcesses `json:"WindowsProcesses,omitempty" xml:"WindowsProcesses,omitempty" type:"Repeated"`
 }
 
@@ -238,13 +238,13 @@ func (s *GetProhibitedSoftwareResponseBodySoftware) Validate() error {
 }
 
 type GetProhibitedSoftwareResponseBodySoftwareLinuxProcesses struct {
-	// The application bundle identifier (Bundle ID). This parameter is required only for macOS processes.
+	// The bundle ID of the application. This parameter is required only for macOS processes.
 	//
 	// example:
 	//
 	// com.xunlei.Thunder
 	BundleId *string `json:"BundleId,omitempty" xml:"BundleId,omitempty"`
-	// The command-line arguments for starting the process.
+	// The command-line arguments used to start the process.
 	//
 	// example:
 	//
@@ -256,7 +256,7 @@ type GetProhibitedSoftwareResponseBodySoftwareLinuxProcesses struct {
 	//
 	// C:\\Program Files\\Thunder Network\\Thunder
 	Directory *string `json:"Directory,omitempty" xml:"Directory,omitempty"`
-	// The process name.
+	// The name of the process.
 	//
 	// example:
 	//
@@ -313,13 +313,13 @@ func (s *GetProhibitedSoftwareResponseBodySoftwareLinuxProcesses) Validate() err
 }
 
 type GetProhibitedSoftwareResponseBodySoftwareMacOSProcesses struct {
-	// The application bundle identifier (Bundle ID). This parameter is required only for macOS processes.
+	// The bundle ID of the application. This parameter is required only for macOS processes.
 	//
 	// example:
 	//
 	// com.xunlei.Thunder
 	BundleId *string `json:"BundleId,omitempty" xml:"BundleId,omitempty"`
-	// The command-line arguments for starting the process.
+	// The command-line arguments used to start the process.
 	//
 	// example:
 	//
@@ -331,7 +331,7 @@ type GetProhibitedSoftwareResponseBodySoftwareMacOSProcesses struct {
 	//
 	// C:\\Program Files\\Thunder Network\\Thunder
 	Directory *string `json:"Directory,omitempty" xml:"Directory,omitempty"`
-	// The process name.
+	// The name of the process.
 	//
 	// example:
 	//
@@ -388,13 +388,13 @@ func (s *GetProhibitedSoftwareResponseBodySoftwareMacOSProcesses) Validate() err
 }
 
 type GetProhibitedSoftwareResponseBodySoftwareWindowsProcesses struct {
-	// The application bundle identifier (Bundle ID). This parameter is required only for macOS processes.
+	// The bundle ID of the application. This parameter is required only for macOS processes.
 	//
 	// example:
 	//
 	// com.xunlei.Thunder
 	BundleId *string `json:"BundleId,omitempty" xml:"BundleId,omitempty"`
-	// The command-line arguments for starting the process.
+	// The command-line arguments used to start the process.
 	//
 	// example:
 	//
@@ -406,7 +406,7 @@ type GetProhibitedSoftwareResponseBodySoftwareWindowsProcesses struct {
 	//
 	// C:\\Program Files\\Thunder Network\\Thunder
 	Directory *string `json:"Directory,omitempty" xml:"Directory,omitempty"`
-	// The process name.
+	// The name of the process.
 	//
 	// example:
 	//

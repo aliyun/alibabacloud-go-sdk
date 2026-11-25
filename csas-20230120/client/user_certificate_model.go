@@ -30,38 +30,63 @@ type iUserCertificate interface {
 }
 
 type UserCertificate struct {
+	// The certificate ID.
+	//
 	// example:
 	//
 	// cert-aabbccdd
 	CertId *string `json:"CertId,omitempty" xml:"CertId,omitempty"`
+	// The certificate content in PEM format.
+	//
 	// example:
 	//
-	// 用于测试
+	// -----BEGIN CERTIFICATE-----
+	//
+	// MIID...****
+	//
+	// -----END CERTIFICATE-----
 	Certificate *string `json:"Certificate,omitempty" xml:"Certificate,omitempty"`
+	// The certificate description.
+	//
 	// example:
 	//
-	// xxxx
-	Description *string   `json:"Description,omitempty" xml:"Description,omitempty"`
-	DnsNames    []*string `json:"DnsNames,omitempty" xml:"DnsNames,omitempty" type:"Repeated"`
+	// Internal network application access certificate
+	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The domain names for which the certificate is valid.
+	DnsNames []*string `json:"DnsNames,omitempty" xml:"DnsNames,omitempty" type:"Repeated"`
+	// The expiration time.
+	//
 	// example:
 	//
 	// 1734492686
 	ExpTimeUnix *int64 `json:"ExpTimeUnix,omitempty" xml:"ExpTimeUnix,omitempty"`
+	// The creation timestamp.
+	//
 	// example:
 	//
 	// 1734523812
 	GmtCreateUnix *int64 `json:"GmtCreateUnix,omitempty" xml:"GmtCreateUnix,omitempty"`
+	// The update timestamp.
+	//
 	// example:
 	//
 	// 1734523812
 	GmtModifiedUnix *int64 `json:"GmtModifiedUnix,omitempty" xml:"GmtModifiedUnix,omitempty"`
+	// The certificate name.
+	//
 	// example:
 	//
-	// 证书1
+	// Certificate 1
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The PEM private key.
+	//
 	// example:
 	//
-	// xxxx
+	// -----BEGIN PRIVATE KEY-----
+	//
+	// MIIE...****
+	//
+	// -----END PRIVATE KEY-----
 	PrivateKey *string `json:"PrivateKey,omitempty" xml:"PrivateKey,omitempty"`
 }
 

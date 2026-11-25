@@ -18,19 +18,19 @@ type iGetVulScanGlobalConfigResponseBody interface {
 }
 
 type GetVulScanGlobalConfigResponseBody struct {
-	// The maximum download speed for vulnerability patches on a single user terminal device. Unit: bytes per second. A value of 0 indicates no speed limit.
+	// The maximum download rate of vulnerability patches for a single user terminal device. Unit: Byte/s. A value of 0 indicates no rate limit.
 	//
 	// example:
 	//
 	// 1048576
 	MaxDownloadSpeed *int32 `json:"MaxDownloadSpeed,omitempty" xml:"MaxDownloadSpeed,omitempty"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
 	// 3D7EC0AF-DB2A-5D9C-90EC-F090A6BAAEA7
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The vulnerability fix configuration for WUYING Workspace. This configuration takes effect only on user terminal devices of the Cloud Desktop type.
+	// The vulnerability fix configuration for WUYING Cloud Desktop. This configuration takes effect only for user terminal devices of the WUYING Cloud Desktop type.
 	WuyingVulFixConfig *GetVulScanGlobalConfigResponseBodyWuyingVulFixConfig `json:"WuyingVulFixConfig,omitempty" xml:"WuyingVulFixConfig,omitempty" type:"Struct"`
 }
 
@@ -79,7 +79,7 @@ func (s *GetVulScanGlobalConfigResponseBody) Validate() error {
 }
 
 type GetVulScanGlobalConfigResponseBodyWuyingVulFixConfig struct {
-	// Specifies whether to prohibit shutdown during the fix process to prevent system exceptions caused by shutting down during patch installation. Valid values:
+	// Specifies whether to prohibit shutdown during the fix process to prevent system exceptions caused by shutdown during patch installation. Valid values:
 	//
 	// - **true**: Shutdown is prohibited.
 	//
@@ -89,7 +89,7 @@ type GetVulScanGlobalConfigResponseBodyWuyingVulFixConfig struct {
 	//
 	// true
 	AntiShutdownSwitch *bool `json:"AntiShutdownSwitch,omitempty" xml:"AntiShutdownSwitch,omitempty"`
-	// Specifies whether to create a snapshot for the cloud desktop before the fix, which can be used for rollback if the fix fails. Valid values:
+	// Specifies whether to create a snapshot for the Cloud Desktop before the fix process to allow rollback if the fix fails. Valid values:
 	//
 	// - **true**: A snapshot is created.
 	//

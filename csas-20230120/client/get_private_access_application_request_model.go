@@ -16,9 +16,9 @@ type iGetPrivateAccessApplicationRequest interface {
 type GetPrivateAccessApplicationRequest struct {
 	// The ID of the private access application. You can obtain the value from the following operations:
 	//
-	// - [ListPrivateAccessApplications](~~ListPrivateAccessApplications~~): Lists private access applications.
+	// - [ListPrivateAccessApplications](~~ListPrivateAccessApplications~~): List private access applications.
 	//
-	// - [CreatePrivateAccessApplication](~~CreatePrivateAccessApplication~~): Creates a private access application.
+	// - [CreatePrivateAccessApplication](~~CreatePrivateAccessApplication~~): Create a private access application.
 	//
 	// This parameter is required.
 	//

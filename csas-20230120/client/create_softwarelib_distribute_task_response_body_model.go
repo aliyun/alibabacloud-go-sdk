@@ -16,7 +16,7 @@ type iCreateSoftwarelibDistributeTaskResponseBody interface {
 }
 
 type CreateSoftwarelibDistributeTaskResponseBody struct {
-	// Id of the request
+	// The ID of the request.
 	//
 	// example:
 	//
@@ -62,31 +62,31 @@ func (s *CreateSoftwarelibDistributeTaskResponseBody) Validate() error {
 }
 
 type CreateSoftwarelibDistributeTaskResponseBodyTask struct {
-	// The task creation time as a second-level UNIX timestamp.
+	// The time when the task was created. The value is a UNIX timestamp in seconds.
 	//
 	// example:
 	//
 	// 1782268092
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The task name.
+	// The name of the task.
 	//
 	// example:
 	//
 	// test_task
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The software name.
+	// The name of the software.
 	//
 	// example:
 	//
 	// test software
 	SoftwareName *string `json:"SoftwareName,omitempty" xml:"SoftwareName,omitempty"`
-	// The task status. Valid values:
+	// The status of the task. Valid values:
 	//
-	// - **enabled**: enabled.
+	// - **enabled**: Enabled.
 	//
-	// - **disabled**: disabled.
+	// - **disabled**: Disabled.
 	//
-	// The initial status of a task after creation is disabled.
+	// After a task is created, its initial status is disabled.
 	//
 	// example:
 	//
@@ -96,15 +96,15 @@ type CreateSoftwarelibDistributeTaskResponseBodyTask struct {
 	//
 	// - **Windows**: Windows.
 	//
-	// - **Mac(Apple)**: macOS with Apple silicon.
+	// - **Mac(Apple)**: macOS on Apple silicon.
 	//
-	// - **Mac(Intel)**: macOS with Intel processors.
+	// - **Mac(Intel)**: macOS on Intel processors.
 	//
 	// example:
 	//
 	// Windows
 	SupportOs *string `json:"SupportOs,omitempty" xml:"SupportOs,omitempty"`
-	// The task ID, which is used to query the task execution result.
+	// The ID of the task. You can use the ID to query the task execution result.
 	//
 	// example:
 	//

@@ -16,9 +16,9 @@ type iBindSaseUserTagRequest interface {
 }
 
 type BindSaseUserTagRequest struct {
-	// The collection of user IDs.
+	// The IDs of the users.
 	SaseUserIds []*string `json:"SaseUserIds,omitempty" xml:"SaseUserIds,omitempty" type:"Repeated"`
-	// The collection of user label IDs.
+	// The IDs of the user tags.
 	TagIds []*string `json:"TagIds,omitempty" xml:"TagIds,omitempty" type:"Repeated"`
 }
 

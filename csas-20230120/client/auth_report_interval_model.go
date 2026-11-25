@@ -16,8 +16,24 @@ type iAuthReportInterval interface {
 }
 
 type AuthReportInterval struct {
+	// The unit of the effective recovery duration. Valid values:
+	//
+	// - **Minute**: Minutes.
+	//
+	// - **Hour**: Hours.
+	//
+	// - **Day**: Days.
+	//
+	// example:
+	//
+	// Minute
 	TimeUnit *string `json:"TimeUnit,omitempty" xml:"TimeUnit,omitempty"`
-	Value    *int64  `json:"Value,omitempty" xml:"Value,omitempty"`
+	// The numeric value of the effective recovery duration. The unit is specified by TimeUnit. A non-zero value must be at least 1.
+	//
+	// example:
+	//
+	// 60
+	Value *int64 `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
 func (s AuthReportInterval) String() string {

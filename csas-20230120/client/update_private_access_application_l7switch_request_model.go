@@ -23,6 +23,8 @@ type iUpdatePrivateAccessApplicationL7SwitchRequest interface {
 	GetStatus() *string
 	SetTimeoutSec(v int32) *UpdatePrivateAccessApplicationL7SwitchRequest
 	GetTimeoutSec() *int32
+	SetUrlAccessPaths(v []*UpdatePrivateAccessApplicationL7SwitchRequestUrlAccessPaths) *UpdatePrivateAccessApplicationL7SwitchRequest
+	GetUrlAccessPaths() []*UpdatePrivateAccessApplicationL7SwitchRequestUrlAccessPaths
 	SetUserMarkStatus(v string) *UpdatePrivateAccessApplicationL7SwitchRequest
 	GetUserMarkStatus() *string
 	SetZeroTrustStatus(v string) *UpdatePrivateAccessApplicationL7SwitchRequest
@@ -30,13 +32,13 @@ type iUpdatePrivateAccessApplicationL7SwitchRequest interface {
 }
 
 type UpdatePrivateAccessApplicationL7SwitchRequest struct {
-	// The ID of the internal-facing application. Required.
+	// The ID of the internal access application. Required.
 	//
 	// example:
 	//
 	// pa-application-e12860ef6c48****
 	ApplicationId *string `json:"ApplicationId,omitempty" xml:"ApplicationId,omitempty"`
-	// The device tag mark switch. Required. Valid values:
+	// The device tag marking switch. Required. Valid values:
 	//
 	// - **Enabled**: Enabled.
 	//
@@ -46,7 +48,7 @@ type UpdatePrivateAccessApplicationL7SwitchRequest struct {
 	//
 	// Disabled
 	DevTagMarkStatus *string `json:"DevTagMarkStatus,omitempty" xml:"DevTagMarkStatus,omitempty"`
-	// The sensitive application download audit switch. Optional. Valid values:
+	// The download audit switch for sensitive applications. Optional. Valid values:
 	//
 	// - **Enabled**: Enabled.
 	//
@@ -56,9 +58,9 @@ type UpdatePrivateAccessApplicationL7SwitchRequest struct {
 	//
 	// Disabled
 	DownloadAuditStatus *string `json:"DownloadAuditStatus,omitempty" xml:"DownloadAuditStatus,omitempty"`
-	// The collection of port ranges for the internal-facing application. Multiple port ranges cannot be duplicated or overlap. You can specify up to 50 port ranges. This parameter takes effect and is validated only when Status is set to **Enabled**. If this parameter is not specified or an empty collection is passed in, the default ports 80, 443, 8080, and 465 are used. The effective ports are the intersection of the ports specified in this request and the port ranges already configured for the internal-facing application.
+	// The port ranges for the internal access application. Multiple port ranges cannot overlap or be duplicated. You can specify up to 50 port ranges. This parameter takes effect and is verified only when Status is set to **Enabled**. If this parameter is not specified or an empty set is specified, the default ports 80, 443, 8080, and 465 are used. The effective ports are the intersection of the ports specified in this request and the configured port ranges of the internal access application.
 	PortRanges []*UpdatePrivateAccessApplicationL7SwitchRequestPortRanges `json:"PortRanges,omitempty" xml:"PortRanges,omitempty" type:"Repeated"`
-	// The source IP mark switch. Required. Valid values:
+	// The source IP marking switch. Required. Valid values:
 	//
 	// - **Enabled**: Enabled.
 	//
@@ -68,25 +70,26 @@ type UpdatePrivateAccessApplicationL7SwitchRequest struct {
 	//
 	// Disabled
 	SrcIpMarkStatus *string `json:"SrcIpMarkStatus,omitempty" xml:"SrcIpMarkStatus,omitempty"`
-	// The master switch for Layer 7 access of the internal-facing application. Required. Valid values:
+	// The master switch for the Layer 7 access switch of the internal access application. Required. Valid values:
 	//
 	// - **Enabled**: Enabled.
 	//
 	// - **Disabled**: Disabled.
 	//
-	// When the value is **Disabled**, PortRanges is neither validated nor saved.
+	// When the value is set to **Disabled**, PortRanges is neither verified nor saved.
 	//
 	// example:
 	//
 	// Enabled
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The request timeout period, in seconds. Valid values: 1 to 3600. Default value: 60. If this parameter is not specified or an invalid value is specified, the value 60 is used.
+	// The request timeout period, in seconds. Valid values: 1 to 3600. Default value: 60. If this parameter is not specified or an invalid value is specified, the default value 60 is used.
 	//
 	// example:
 	//
 	// 60
-	TimeoutSec *int32 `json:"TimeoutSec,omitempty" xml:"TimeoutSec,omitempty"`
-	// The user mark switch. Required. Valid values:
+	TimeoutSec     *int32                                                         `json:"TimeoutSec,omitempty" xml:"TimeoutSec,omitempty"`
+	UrlAccessPaths []*UpdatePrivateAccessApplicationL7SwitchRequestUrlAccessPaths `json:"UrlAccessPaths,omitempty" xml:"UrlAccessPaths,omitempty" type:"Repeated"`
+	// The user marking switch. Required. Valid values:
 	//
 	// - **Enabled**: Enabled.
 	//
@@ -96,7 +99,7 @@ type UpdatePrivateAccessApplicationL7SwitchRequest struct {
 	//
 	// Enabled
 	UserMarkStatus *string `json:"UserMarkStatus,omitempty" xml:"UserMarkStatus,omitempty"`
-	// The host bypass prevention switch. Required. Valid values:
+	// The Host bypass prevention switch. Required. Valid values:
 	//
 	// - **Enabled**: Enabled.
 	//
@@ -144,6 +147,10 @@ func (s *UpdatePrivateAccessApplicationL7SwitchRequest) GetTimeoutSec() *int32 {
 	return s.TimeoutSec
 }
 
+func (s *UpdatePrivateAccessApplicationL7SwitchRequest) GetUrlAccessPaths() []*UpdatePrivateAccessApplicationL7SwitchRequestUrlAccessPaths {
+	return s.UrlAccessPaths
+}
+
 func (s *UpdatePrivateAccessApplicationL7SwitchRequest) GetUserMarkStatus() *string {
 	return s.UserMarkStatus
 }
@@ -187,6 +194,11 @@ func (s *UpdatePrivateAccessApplicationL7SwitchRequest) SetTimeoutSec(v int32) *
 	return s
 }
 
+func (s *UpdatePrivateAccessApplicationL7SwitchRequest) SetUrlAccessPaths(v []*UpdatePrivateAccessApplicationL7SwitchRequestUrlAccessPaths) *UpdatePrivateAccessApplicationL7SwitchRequest {
+	s.UrlAccessPaths = v
+	return s
+}
+
 func (s *UpdatePrivateAccessApplicationL7SwitchRequest) SetUserMarkStatus(v string) *UpdatePrivateAccessApplicationL7SwitchRequest {
 	s.UserMarkStatus = &v
 	return s
@@ -200,6 +212,15 @@ func (s *UpdatePrivateAccessApplicationL7SwitchRequest) SetZeroTrustStatus(v str
 func (s *UpdatePrivateAccessApplicationL7SwitchRequest) Validate() error {
 	if s.PortRanges != nil {
 		for _, item := range s.PortRanges {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	if s.UrlAccessPaths != nil {
+		for _, item := range s.UrlAccessPaths {
 			if item != nil {
 				if err := item.Validate(); err != nil {
 					return err
@@ -252,5 +273,40 @@ func (s *UpdatePrivateAccessApplicationL7SwitchRequestPortRanges) SetEnd(v int32
 }
 
 func (s *UpdatePrivateAccessApplicationL7SwitchRequestPortRanges) Validate() error {
+	return dara.Validate(s)
+}
+
+type UpdatePrivateAccessApplicationL7SwitchRequestUrlAccessPaths struct {
+	AllowMethods []*string `json:"AllowMethods,omitempty" xml:"AllowMethods,omitempty" type:"Repeated"`
+	Urls         []*string `json:"Urls,omitempty" xml:"Urls,omitempty" type:"Repeated"`
+}
+
+func (s UpdatePrivateAccessApplicationL7SwitchRequestUrlAccessPaths) String() string {
+	return dara.Prettify(s)
+}
+
+func (s UpdatePrivateAccessApplicationL7SwitchRequestUrlAccessPaths) GoString() string {
+	return s.String()
+}
+
+func (s *UpdatePrivateAccessApplicationL7SwitchRequestUrlAccessPaths) GetAllowMethods() []*string {
+	return s.AllowMethods
+}
+
+func (s *UpdatePrivateAccessApplicationL7SwitchRequestUrlAccessPaths) GetUrls() []*string {
+	return s.Urls
+}
+
+func (s *UpdatePrivateAccessApplicationL7SwitchRequestUrlAccessPaths) SetAllowMethods(v []*string) *UpdatePrivateAccessApplicationL7SwitchRequestUrlAccessPaths {
+	s.AllowMethods = v
+	return s
+}
+
+func (s *UpdatePrivateAccessApplicationL7SwitchRequestUrlAccessPaths) SetUrls(v []*string) *UpdatePrivateAccessApplicationL7SwitchRequestUrlAccessPaths {
+	s.Urls = v
+	return s
+}
+
+func (s *UpdatePrivateAccessApplicationL7SwitchRequestUrlAccessPaths) Validate() error {
 	return dara.Validate(s)
 }

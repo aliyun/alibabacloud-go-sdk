@@ -22,7 +22,7 @@ type CreateProhibitedSoftwareResponseBody struct {
 	//
 	// B9AC7B08-80F5-5EDD-8E6B-033F2FE5D4E2
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The details of the disabled software.
+	// The details of the blocked software.
 	Software *CreateProhibitedSoftwareResponseBodySoftware `json:"Software,omitempty" xml:"Software,omitempty" type:"Struct"`
 }
 
@@ -62,13 +62,13 @@ func (s *CreateProhibitedSoftwareResponseBody) Validate() error {
 }
 
 type CreateProhibitedSoftwareResponseBodySoftware struct {
-	// The creation time of the disabled software, in the yyyy-MM-dd HH:mm:ss format. The time is in the UTC+8 time zone.
+	// The time when the blocked software was created. The time is displayed in the yyyy-MM-dd HH:mm:ss format and uses the UTC+8 time zone.
 	//
 	// example:
 	//
 	// 2025-09-05 10:20:46
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The description of the disabled software.
+	// The description of the blocked software.
 	//
 	// example:
 	//
@@ -78,19 +78,19 @@ type CreateProhibitedSoftwareResponseBodySoftware struct {
 	LinuxProcesses []*CreateProhibitedSoftwareResponseBodySoftwareLinuxProcesses `json:"LinuxProcesses,omitempty" xml:"LinuxProcesses,omitempty" type:"Repeated"`
 	// The list of process configurations for the macOS operating system.
 	MacOSProcesses []*CreateProhibitedSoftwareResponseBodySoftwareMacOSProcesses `json:"MacOSProcesses,omitempty" xml:"MacOSProcesses,omitempty" type:"Repeated"`
-	// The software name.
+	// The name of the software.
 	//
 	// example:
 	//
 	// shell
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The ID of the disabled software.
+	// The ID of the blocked software.
 	//
 	// example:
 	//
 	// swb-83995ff2ae38****
 	SoftwareId *string `json:"SoftwareId,omitempty" xml:"SoftwareId,omitempty"`
-	// The IDs of disabled software tags associated with this disabled software.
+	// The IDs of the blocked software tags associated with the blocked software.
 	TagIds []*string `json:"TagIds,omitempty" xml:"TagIds,omitempty" type:"Repeated"`
 	// The list of process configurations for the Windows operating system.
 	WindowsProcesses []*CreateProhibitedSoftwareResponseBodySoftwareWindowsProcesses `json:"WindowsProcesses,omitempty" xml:"WindowsProcesses,omitempty" type:"Repeated"`
@@ -208,13 +208,13 @@ func (s *CreateProhibitedSoftwareResponseBodySoftware) Validate() error {
 }
 
 type CreateProhibitedSoftwareResponseBodySoftwareLinuxProcesses struct {
-	// The bundle ID of the application. This parameter is required only for macOS processes.
+	// The bundle ID. This field is applicable only to macOS processes.
 	//
 	// example:
 	//
 	// com.aliyun.security.sase
 	BundleId *string `json:"BundleId,omitempty" xml:"BundleId,omitempty"`
-	// The command line parameters for starting the process.
+	// The command-line arguments used to start the process.
 	//
 	// example:
 	//
@@ -283,13 +283,13 @@ func (s *CreateProhibitedSoftwareResponseBodySoftwareLinuxProcesses) Validate() 
 }
 
 type CreateProhibitedSoftwareResponseBodySoftwareMacOSProcesses struct {
-	// The bundle ID of the application. This parameter is required only for macOS processes.
+	// The bundle ID. This field is applicable only to macOS processes.
 	//
 	// example:
 	//
 	// com.aliyun.security.sase
 	BundleId *string `json:"BundleId,omitempty" xml:"BundleId,omitempty"`
-	// The command line parameters for starting the process.
+	// The command-line arguments used to start the process.
 	//
 	// example:
 	//
@@ -358,13 +358,13 @@ func (s *CreateProhibitedSoftwareResponseBodySoftwareMacOSProcesses) Validate() 
 }
 
 type CreateProhibitedSoftwareResponseBodySoftwareWindowsProcesses struct {
-	// The bundle ID of the application. This parameter is required only for macOS processes.
+	// The bundle ID. This field is applicable only to macOS processes.
 	//
 	// example:
 	//
 	// com.aliyun.security.sase
 	BundleId *string `json:"BundleId,omitempty" xml:"BundleId,omitempty"`
-	// The command line parameters for starting the process.
+	// The command-line arguments used to start the process.
 	//
 	// example:
 	//

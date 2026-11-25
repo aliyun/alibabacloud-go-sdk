@@ -16,9 +16,9 @@ type iGetIdpConfigResponseBody interface {
 }
 
 type GetIdpConfigResponseBody struct {
-	// Identity provider configuration.
+	// The identity source configuration.
 	Data *GetIdpConfigResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// ID of this request.
+	// The ID of the request.
 	//
 	// example:
 	//
@@ -62,79 +62,79 @@ func (s *GetIdpConfigResponseBody) Validate() error {
 }
 
 type GetIdpConfigResponseBodyData struct {
-	// AccessKey ID for the IDaaS identity provider.
+	// The AccessKey ID of the IDaaS identity source.
 	//
 	// example:
 	//
-	// *******
+	// ExampleAccessKeyId****
 	AccessKey *string `json:"AccessKey,omitempty" xml:"AccessKey,omitempty"`
-	// AccessKey for the IDaaS identity provider.
+	// The AccessKey secret of the IDaaS identity source.
 	//
 	// example:
 	//
-	// *******
+	// ExampleAccessKeySecret****
 	AccessKeySecret *string `json:"AccessKeySecret,omitempty" xml:"AccessKeySecret,omitempty"`
-	// Description of the identity provider configuration.
+	// The description of the identity source configuration.
 	//
 	// example:
 	//
-	// 示例身份源
+	// Sample identity source
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// URL to query the organizational structure from a custom identity provider.
+	// The URL used to query the organizational structure of a self-managed identity source.
 	//
 	// example:
 	//
 	// https://172.10.XX.XX:4321/getGroup?name=%s&pass=%s
 	GetGroupUrl *string `json:"GetGroupUrl,omitempty" xml:"GetGroupUrl,omitempty"`
-	// ID of the identity provider configuration.
+	// The ID of the identity source configuration.
 	//
 	// example:
 	//
 	// idp-cfg68956d86e********
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// Metadata of the identity provider (IdP).
+	// The metadata of the identity provider (IdP).
 	//
 	// example:
 	//
 	// <?xml version="1.0" encoding="utf-8"?>***
 	IdpMetadata *string `json:"IdpMetadata,omitempty" xml:"IdpMetadata,omitempty"`
-	// Type of multi-factor authentication (MFA) configuration.
+	// The configuration type of secondary authentication.
 	//
 	// example:
 	//
 	// totp
 	MfaConfigType *string `json:"MfaConfigType,omitempty" xml:"MfaConfigType,omitempty"`
-	// Login type for mobile clients.
+	// The logon type for mobile devices.
 	//
 	// example:
 	//
 	// password
 	MobileLoginType *string `json:"MobileLoginType,omitempty" xml:"MobileLoginType,omitempty"`
-	// Type of MFA configuration for mobile clients.
+	// The configuration type of secondary authentication for mobile devices.
 	//
 	// example:
 	//
 	// totp
 	MobileMfaConfigType *string `json:"MobileMfaConfigType,omitempty" xml:"MobileMfaConfigType,omitempty"`
-	// List of IDs for multiple identity providers.
+	// The IDs of multiple identity source configurations.
 	//
 	// example:
 	//
 	// 1482,1355
 	MultiIdpInfo *string `json:"MultiIdpInfo,omitempty" xml:"MultiIdpInfo,omitempty"`
-	// Name of the identity provider configuration.
+	// The name of the identity source configuration.
 	//
 	// example:
 	//
-	// 示例身份源
+	// Sample identity source
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// Login type for PC clients.
+	// The logon type for PCs.
 	//
 	// example:
 	//
 	// password
 	PcLoginType *string `json:"PcLoginType,omitempty" xml:"PcLoginType,omitempty"`
-	// Status of the identity provider configuration. Valid values:
+	// The enabling status of the identity source configuration. Valid values:
 	//
 	// - **Enabled**: Enabled.
 	//
@@ -144,31 +144,31 @@ type GetIdpConfigResponseBodyData struct {
 	//
 	// Enabled
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// Type of the identity provider configuration.
+	// The type of the identity source configuration.
 	//
 	// example:
 	//
 	// CSAS
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// Time when the configuration was last updated.
+	// The update time.
 	//
 	// example:
 	//
 	// 2024-02-26T02:02:42Z
 	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
-	// AES key used to encrypt requests to a custom MFA service.
+	// The encryption key used for requests to a self-managed secondary authentication service.
 	//
 	// example:
 	//
 	// QVhaU0RDR0JIWV****
 	VerifyAesKey *string `json:"VerifyAesKey,omitempty" xml:"VerifyAesKey,omitempty"`
-	// Token used to verify signatures in requests to a custom MFA service.
+	// The token used to verify the request signature of a self-managed secondary authentication service.
 	//
 	// example:
 	//
 	// 7JAr3fYtn****
 	VerifyToken *string `json:"VerifyToken,omitempty" xml:"VerifyToken,omitempty"`
-	// URL used to verify one-time passwords with a custom MFA service.
+	// The verification URL of a self-managed secondary authentication service.
 	//
 	// example:
 	//

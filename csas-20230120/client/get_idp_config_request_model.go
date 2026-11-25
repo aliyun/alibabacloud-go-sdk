@@ -14,7 +14,7 @@ type iGetIdpConfigRequest interface {
 }
 
 type GetIdpConfigRequest struct {
-	// ID of the identity provider configuration.
+	// The ID of the identity source configuration.
 	//
 	// This parameter is required.
 	//

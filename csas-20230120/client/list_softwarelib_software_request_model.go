@@ -28,13 +28,13 @@ type iListSoftwarelibSoftwareRequest interface {
 }
 
 type ListSoftwarelibSoftwareRequest struct {
-	// The software category ID. You can call [ListSoftwarelibClassify](~~ListSoftwarelibClassify~~) to obtain the value.
+	// The ID of the software category. For more information about how to configure software categories, see [Software management](https://www.alibabacloud.com/help/en/sase/user-guide/software-management).
 	//
 	// example:
 	//
 	// softwarelib-classify-61b7ccc63cae****
 	ClassifyId *string `json:"ClassifyId,omitempty" xml:"ClassifyId,omitempty"`
-	// The page number of the current page displayed during paging in a paged query. Valid values: 1 to 10000.
+	// The page number of the current page for a paged query. Valid values: 1 to 10000.
 	//
 	// This parameter is required.
 	//
@@ -42,13 +42,13 @@ type ListSoftwarelibSoftwareRequest struct {
 	//
 	// 1
 	CurrentPage *int64 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The maximum number of entries per page. This parameter is not supported by the current operation. Use CurrentPage and PageSize for pagination.
+	// The maximum number of entries to return on each page. This parameter is not supported by the current API operation. Use CurrentPage and PageSize for pagination.
 	//
 	// example:
 	//
 	// 0
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The query token. This parameter is not supported by the current operation. Use CurrentPage and PageSize for pagination.
+	// The query token. This parameter is not supported by the current API operation. Use CurrentPage and PageSize for pagination.
 	//
 	// example:
 	//
@@ -60,13 +60,13 @@ type ListSoftwarelibSoftwareRequest struct {
 	//
 	// - **Mac(Apple)**: macOS with Apple silicon.
 	//
-	// - **Mac(Intel)**: macOS with Intel chips.
+	// - **Mac(Intel)**: macOS with Intel processors.
 	//
 	// example:
 	//
 	// Windows
 	Os *string `json:"Os,omitempty" xml:"Os,omitempty"`
-	// The Settings for the number of entries per page during paging in a paged query. Valid values: 1 to 500.
+	// The number of entries to return on each page for a paged query. Valid values: 1 to 500.
 	//
 	// This parameter is required.
 	//
@@ -74,17 +74,17 @@ type ListSoftwarelibSoftwareRequest struct {
 	//
 	// 10
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The software name. Fuzzy match is supported.
+	// The name of the software. Fuzzy match is supported.
 	//
 	// example:
 	//
 	// Thunder
 	SoftwareName *string `json:"SoftwareName,omitempty" xml:"SoftwareName,omitempty"`
-	// The software source. Valid values:
+	// The source of the software. Valid values:
 	//
-	// - **custom**: custom software.
+	// - **custom**: Custom software.
 	//
-	// - **builtin**: built-in software library.
+	// - **builtin**: Built-in software library.
 	//
 	// example:
 	//

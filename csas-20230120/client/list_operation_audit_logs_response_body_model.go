@@ -18,7 +18,7 @@ type iListOperationAuditLogsResponseBody interface {
 }
 
 type ListOperationAuditLogsResponseBody struct {
-	// The list of administrator operation audit logs, sorted by operation time in descending order.
+	// The list of administrator operation audit logs. The logs are sorted in descending order of operation time.
 	Logs []*ListOperationAuditLogsResponseBodyLogs `json:"Logs,omitempty" xml:"Logs,omitempty" type:"Repeated"`
 	// Id of the request
 	//
@@ -26,7 +26,7 @@ type ListOperationAuditLogsResponseBody struct {
 	//
 	// E9D4B681-0E79-57B7-AF0D-4A675D40141C
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of logs that match the query conditions.
+	// The total number of logs that meet the query conditions.
 	//
 	// example:
 	//
@@ -83,51 +83,51 @@ func (s *ListOperationAuditLogsResponseBody) Validate() error {
 }
 
 type ListOperationAuditLogsResponseBodyLogs struct {
-	// The post-operation snapshot. This value is recorded as-is by the audit framework without localization. This field is empty for historical logs that are not integrated with the audit framework.
+	// The snapshot after the operation. It is recorded as-is by the audit framework and is not localized. This field is empty for historical logs that are not connected to the audit framework.
 	//
 	// example:
 	//
 	// {"RequestId":"01A03244-5BAD-5FAA-93D6-E4F4A1A2****"}
 	AfterAction *string `json:"AfterAction,omitempty" xml:"AfterAction,omitempty"`
-	// The pre-operation snapshot. This value is recorded as-is by the audit framework without localization. This field is empty for historical logs that are not integrated with the audit framework.
+	// The snapshot before the operation. It is recorded as-is by the audit framework and is not localized. This field is empty for historical logs that are not connected to the audit framework.
 	//
 	// example:
 	//
 	// "pa-application-ea73352b4b75****"
 	BeforeAction *string `json:"BeforeAction,omitempty" xml:"BeforeAction,omitempty"`
-	// The error code when the operation failed. This field is empty when the operation succeeded.
+	// The error code returned when the operation fails. This field is empty when the operation is successful.
 	//
 	// example:
 	//
 	// ResourceNotFound
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The error message when the operation failed. This field is empty when the operation succeeded.
+	// The error message returned when the operation fails. This field is empty when the operation is successful.
 	//
 	// example:
 	//
 	// the specified resource is not found
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	// The event source type. Valid values:
+	// The source type of the event. Valid values:
 	//
-	// - **console**: console call.
+	// - **console**: The event is triggered by a console call.
 	//
-	// - **sdk**: SDK call.
+	// - **sdk**: The event is triggered by an SDK call.
 	//
 	// example:
 	//
 	// console
 	EventType *string `json:"EventType,omitempty" xml:"EventType,omitempty"`
-	// The operation function module. The return value is localized based on the request language.
+	// The operation feature module. The return value is localized based on the request language.
 	//
 	// example:
 	//
-	// Office Data Protection
+	// Office data protection
 	OperationFunc *string `json:"OperationFunc,omitempty" xml:"OperationFunc,omitempty"`
 	// The operation page. The return value is localized based on the request language.
 	//
 	// example:
 	//
-	// Peripheral Management
+	// Peripheral management
 	OperationPage *string `json:"OperationPage,omitempty" xml:"OperationPage,omitempty"`
 	// The operation time.
 	//
@@ -147,7 +147,7 @@ type ListOperationAuditLogsResponseBodyLogs struct {
 	//
 	// 1234****
 	OperatorId *string `json:"OperatorId,omitempty" xml:"OperatorId,omitempty"`
-	// Indicates whether the operation succeeded.
+	// Indicates whether the operation was successful.
 	//
 	// example:
 	//

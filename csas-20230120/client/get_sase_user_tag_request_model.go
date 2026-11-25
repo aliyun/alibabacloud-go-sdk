@@ -14,7 +14,7 @@ type iGetSaseUserTagRequest interface {
 }
 
 type GetSaseUserTagRequest struct {
-	// The user tag ID. You can obtain this value from the following operations:
+	// The ID of the user tag. Related operations:
 	//
 	// - [ListSaseUserTags](~~ListSaseUserTags~~): Lists user tags.
 	//

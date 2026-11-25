@@ -68,19 +68,19 @@ type GetSaseUserTagResponseBodySaseUserTag struct {
 	//
 	// 141681795035****
 	Aliuid *string `json:"Aliuid,omitempty" xml:"Aliuid,omitempty"`
-	// The user tag description.
+	// The description of the user tag.
 	//
 	// example:
 	//
 	// These are the company\\"s employees
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The user tag name.
+	// The name of the user tag.
 	//
 	// example:
 	//
 	// boss
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The user tag ID.
+	// The ID of the user tag.
 	//
 	// example:
 	//

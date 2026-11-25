@@ -26,17 +26,17 @@ type InvalidateApprovalResponseBody struct {
 	//
 	// approval-6b5188a28634****
 	ApprovalId *string `json:"ApprovalId,omitempty" xml:"ApprovalId,omitempty"`
-	// The effective status of the approval. When the invalidation succeeds, the value is fixed as Expired, which indicates that the approval has been invalidated.
+	// The effective status of the report. If the invalidation succeeds, Expired is returned to indicate that the report is invalidated.
 	//
 	// example:
 	//
 	// Expired
 	EffectStatus *string `json:"EffectStatus,omitempty" xml:"EffectStatus,omitempty"`
-	// The approval type. Valid values:
+	// The report type. Valid values:
 	//
-	// 	- ApprovalReport: approval.
+	// 	- ApprovalReport: approval report.
 	//
-	// 	- BackendReport: backend approval.
+	// 	- BackendReport: backend report.
 	//
 	// example:
 	//

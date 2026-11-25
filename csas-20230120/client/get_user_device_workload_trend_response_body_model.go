@@ -28,9 +28,9 @@ type GetUserDeviceWorkloadTrendResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The English name of the workload type. Valid values:
 	//
-	// - **CPU Usage**: returned when WorkloadType is set to cpu.
+	// - **CPU Usage**: Returned when WorkloadType is set to cpu.
 	//
-	// - **Memory Usage**: returned when WorkloadType is set to mem.
+	// - **Memory Usage**: Returned when WorkloadType is set to mem.
 	//
 	// example:
 	//
@@ -38,15 +38,15 @@ type GetUserDeviceWorkloadTrendResponseBody struct {
 	TitleEn *string `json:"TitleEn,omitempty" xml:"TitleEn,omitempty"`
 	// The Chinese name of the workload type. Valid values:
 	//
-	// - **CPU使用率**: returned when WorkloadType is set to cpu.
+	// - **CPU使用率**: Returned when WorkloadType is set to cpu.
 	//
-	// - **内存使用率**: returned when WorkloadType is set to mem.
+	// - **内存使用率**: Returned when WorkloadType is set to mem.
 	//
 	// example:
 	//
 	// CPU 使用率
 	TitleZh *string `json:"TitleZh,omitempty" xml:"TitleZh,omitempty"`
-	// The list of workload trend data points, sorted by time in ascending order.
+	// The list of workload trend data points, sorted in ascending order by time.
 	WorkloadList []*GetUserDeviceWorkloadTrendResponseBodyWorkloadList `json:"WorkloadList,omitempty" xml:"WorkloadList,omitempty" type:"Repeated"`
 }
 
@@ -108,13 +108,13 @@ func (s *GetUserDeviceWorkloadTrendResponseBody) Validate() error {
 }
 
 type GetUserDeviceWorkloadTrendResponseBodyWorkloadList struct {
-	// The collection time of the data point. This value is a UNIX timestamp in seconds.
+	// The collection time of the data point, which is a UNIX timestamp in seconds.
 	//
 	// example:
 	//
 	// 1755360600
 	Timestamp *int64 `json:"Timestamp,omitempty" xml:"Timestamp,omitempty"`
-	// The workload usage percentage. Valid values: 0 to 100, with two decimal places.
+	// The workload usage percentage. Valid values: 0 to 100, rounded to two decimal places.
 	//
 	// example:
 	//

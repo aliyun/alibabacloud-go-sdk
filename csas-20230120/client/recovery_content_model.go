@@ -16,7 +16,16 @@ type iRecoveryContent interface {
 }
 
 type RecoveryContent struct {
+	// The validity period configuration after authentication-based recovery. This parameter is used when RecoveryActions includes auth.
 	AuthReportInterval *AuthReportInterval `json:"AuthReportInterval,omitempty" xml:"AuthReportInterval,omitempty"`
+	// The set of recovery methods after mitigation. Valid values:
+	//
+	// - **auto**: Automatic recovery.
+	//
+	// - **auth**: Recovery after the user completes authentication.
+	//
+	// - **console**: Manual recovery by an administrator in the console.
+	//
 	// This parameter is required.
 	RecoveryActions []*string `json:"RecoveryActions,omitempty" xml:"RecoveryActions,omitempty" type:"Repeated"`
 }

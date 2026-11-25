@@ -62,11 +62,23 @@ func (s *GetApprovalProcessResponseBody) Validate() error {
 }
 
 type GetApprovalProcessResponseBodyProcess struct {
-	// The list of policies associated with endpoint uninstallation.
+	// The list of associated endpoint uninstall policies.
 	AppUninstallPolicies *GetApprovalProcessResponseBodyProcessAppUninstallPolicies `json:"AppUninstallPolicies,omitempty" xml:"AppUninstallPolicies,omitempty" type:"Struct"`
-	// The approval type.
+	// The approval type. Valid values:
+	//
+	// - 0: Built-in approval.
+	//
+	// - 1: DingTalk approval.
+	//
+	// - 2: WeCom approval.
+	//
+	// - 3: Lark approval.
+	//
+	// example:
+	//
+	// 1
 	ApprovalType *int32 `json:"ApprovalType,omitempty" xml:"ApprovalType,omitempty"`
-	// The creation time of the approval process. The time is in the YYYY-MM-DD HH:mm:ss format.
+	// The time when the approval process was created. The time is in the YYYY-MM-DD HH:mm:ss format.
 	//
 	// example:
 	//
@@ -76,25 +88,33 @@ type GetApprovalProcessResponseBodyProcess struct {
 	//
 	// example:
 	//
-	// This is an approval process
+	// Approval flow for office network public domain name whitelist reporting.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The list of policies associated with device registration.
 	DeviceRegistrationPolicies *GetApprovalProcessResponseBodyProcessDeviceRegistrationPolicies `json:"DeviceRegistrationPolicies,omitempty" xml:"DeviceRegistrationPolicies,omitempty" type:"Struct"`
-	// The list of associated outbound file policies.
+	// The list of associated outbound file transfer policies.
 	DlpSendPolicies *GetApprovalProcessResponseBodyProcessDlpSendPolicies `json:"DlpSendPolicies,omitempty" xml:"DlpSendPolicies,omitempty" type:"Struct"`
 	// The list of policies associated with the domain name blacklist.
 	DomainBlacklistPolicies *GetApprovalProcessResponseBodyProcessDomainBlacklistPolicies `json:"DomainBlacklistPolicies,omitempty" xml:"DomainBlacklistPolicies,omitempty" type:"Struct"`
 	// The list of policies associated with the domain name whitelist.
 	DomainWhitelistPolicies *GetApprovalProcessResponseBodyProcessDomainWhitelistPolicies `json:"DomainWhitelistPolicies,omitempty" xml:"DomainWhitelistPolicies,omitempty" type:"Struct"`
-	// The endpoint hardening policies.
+	// The list of associated endpoint hardening policies.
 	EndpointHardeningPolicies *GetApprovalProcessResponseBodyProcessEndpointHardeningPolicies `json:"EndpointHardeningPolicies,omitempty" xml:"EndpointHardeningPolicies,omitempty" type:"Struct"`
-	// The label.
+	// The event callback URL. When the approval type is 1 (DingTalk approval) or 3 (Lark approval), this parameter returns the complete event callback URL of the external platform. For other approval types, this parameter is empty.
+	//
+	// example:
+	//
+	// https://callback.example.com/sase/api/v1/approval/dingtalk/callback/approval-event-1a2b****
 	EventLabel *string `json:"EventLabel,omitempty" xml:"EventLabel,omitempty"`
-	// The external configuration.
+	// The external approval configuration. When the approval type is 1 (DingTalk approval) or 3 (Lark approval), this parameter includes the integration configuration for the external approval platform, including appKey, appSecret, eventVerifyToken, and eventAesKey. For other approval types, this parameter is empty.
+	//
+	// example:
+	//
+	// {"appKey":"dingabc1234****","appSecret":"a1b2c3d4****","eventVerifyToken":"e5f6a7b8****","eventAesKey":"c9d0e1f2****"}
 	ExternalConfig *string `json:"ExternalConfig,omitempty" xml:"ExternalConfig,omitempty"`
 	// The list of associated peripheral control policies.
 	PeripheralBlockPolicies *GetApprovalProcessResponseBodyProcessPeripheralBlockPolicies `json:"PeripheralBlockPolicies,omitempty" xml:"PeripheralBlockPolicies,omitempty" type:"Struct"`
-	// The software hardening policy.
+	// The list of policies associated with internal network access control.
 	PrivateAccessBlockPolicies *GetApprovalProcessResponseBodyProcessPrivateAccessBlockPolicies `json:"PrivateAccessBlockPolicies,omitempty" xml:"PrivateAccessBlockPolicies,omitempty" type:"Struct"`
 	// The ID of the approval process.
 	//
@@ -106,13 +126,13 @@ type GetApprovalProcessResponseBodyProcess struct {
 	//
 	// example:
 	//
-	// Test
+	// Office network public domain name whitelist approval
 	ProcessName *string `json:"ProcessName,omitempty" xml:"ProcessName,omitempty"`
 	// The list of approval nodes.
 	ProcessNodes [][]*GetApprovalProcessResponseBodyProcessProcessNodes `json:"ProcessNodes,omitempty" xml:"ProcessNodes,omitempty" type:"Repeated"`
 	// The list of policies associated with software blocking.
 	SoftwareBlockPolicies *GetApprovalProcessResponseBodyProcessSoftwareBlockPolicies `json:"SoftwareBlockPolicies,omitempty" xml:"SoftwareBlockPolicies,omitempty" type:"Struct"`
-	// The software hardening policy.
+	// The list of associated software hardening policies.
 	SoftwareHardeningPolicies *GetApprovalProcessResponseBodyProcessSoftwareHardeningPolicies `json:"SoftwareHardeningPolicies,omitempty" xml:"SoftwareHardeningPolicies,omitempty" type:"Struct"`
 }
 
@@ -341,11 +361,15 @@ func (s *GetApprovalProcessResponseBodyProcess) Validate() error {
 }
 
 type GetApprovalProcessResponseBodyProcessAppUninstallPolicies struct {
-	// The ID of the external process.
+	// The ID of the external approval process. If the approval type is 1 (DingTalk approval), this parameter corresponds to the DingTalk process code. If the approval type is 2 (WeCom approval), this parameter corresponds to the template ID. If the approval type is 3 (Lark approval), this parameter corresponds to the approval definition code. If the approval type is 0 (built-in approval), this parameter is empty.
+	//
+	// example:
+	//
+	// PROC-1a2b3c4d5e6f****
 	ExternalProcessId *string `json:"ExternalProcessId,omitempty" xml:"ExternalProcessId,omitempty"`
-	// The field mapping.
+	// The list of mappings between system fields and external approval form controls.
 	FieldMap []*GetApprovalProcessResponseBodyProcessAppUninstallPoliciesFieldMap `json:"FieldMap,omitempty" xml:"FieldMap,omitempty" type:"Repeated"`
-	// The list of endpoint uninstallation policy IDs.
+	// The list of endpoint uninstall policy IDs.
 	PolicyIds []*string `json:"PolicyIds,omitempty" xml:"PolicyIds,omitempty" type:"Repeated"`
 	// The ID of the approval template.
 	//
@@ -413,18 +437,23 @@ func (s *GetApprovalProcessResponseBodyProcessAppUninstallPolicies) Validate() e
 }
 
 type GetApprovalProcessResponseBodyProcessAppUninstallPoliciesFieldMap struct {
-	// The display field.
+	// The name of the control in the external approval form.
 	//
 	// example:
 	//
-	// Name
-	DisplayField      *string `json:"DisplayField,omitempty" xml:"DisplayField,omitempty"`
+	// Registration reason
+	DisplayField *string `json:"DisplayField,omitempty" xml:"DisplayField,omitempty"`
+	// The identifier of the control in the external approval form. DingTalk approval returns the control label. WeCom and Lark approvals return the value in the "Control type%%%Control ID" format.
+	//
+	// example:
+	//
+	// Textarea%%%widget-1a2b****
 	DisplayFieldValue *string `json:"DisplayFieldValue,omitempty" xml:"DisplayFieldValue,omitempty"`
-	// The system field.
+	// The system field identifier, such as approvalReason.
 	//
 	// example:
 	//
-	// Name
+	// approvalReason
 	SystemField *string `json:"SystemField,omitempty" xml:"SystemField,omitempty"`
 }
 
@@ -468,9 +497,13 @@ func (s *GetApprovalProcessResponseBodyProcessAppUninstallPoliciesFieldMap) Vali
 }
 
 type GetApprovalProcessResponseBodyProcessDeviceRegistrationPolicies struct {
-	// The ID of the external process.
+	// The ID of the external approval process. If the approval type is 1 (DingTalk approval), this parameter corresponds to the DingTalk process code. If the approval type is 2 (WeCom approval), this parameter corresponds to the template ID. If the approval type is 3 (Lark approval), this parameter corresponds to the approval definition code. If the approval type is 0 (built-in approval), this parameter is empty.
+	//
+	// example:
+	//
+	// PROC-1a2b3c4d5e6f****
 	ExternalProcessId *string `json:"ExternalProcessId,omitempty" xml:"ExternalProcessId,omitempty"`
-	// The field mapping.
+	// The list of mappings between system fields and external approval form controls.
 	FieldMap []*GetApprovalProcessResponseBodyProcessDeviceRegistrationPoliciesFieldMap `json:"FieldMap,omitempty" xml:"FieldMap,omitempty" type:"Repeated"`
 	// The list of device registration policy IDs.
 	PolicyIds []*string `json:"PolicyIds,omitempty" xml:"PolicyIds,omitempty" type:"Repeated"`
@@ -540,10 +573,23 @@ func (s *GetApprovalProcessResponseBodyProcessDeviceRegistrationPolicies) Valida
 }
 
 type GetApprovalProcessResponseBodyProcessDeviceRegistrationPoliciesFieldMap struct {
-	// The display field.
-	DisplayField      *string `json:"DisplayField,omitempty" xml:"DisplayField,omitempty"`
+	// The name of the control in the external approval form.
+	//
+	// example:
+	//
+	// Registered domain name
+	DisplayField *string `json:"DisplayField,omitempty" xml:"DisplayField,omitempty"`
+	// The identifier of the control in the external approval form. DingTalk approval returns the control label. WeCom and Lark approvals return the value in the "Control type%%%Control ID" format.
+	//
+	// example:
+	//
+	// Textarea%%%widget-1a2b****
 	DisplayFieldValue *string `json:"DisplayFieldValue,omitempty" xml:"DisplayFieldValue,omitempty"`
-	// The system field.
+	// The identifier of the system field, such as report_domain.
+	//
+	// example:
+	//
+	// report_domain
 	SystemField *string `json:"SystemField,omitempty" xml:"SystemField,omitempty"`
 }
 
@@ -587,11 +633,15 @@ func (s *GetApprovalProcessResponseBodyProcessDeviceRegistrationPoliciesFieldMap
 }
 
 type GetApprovalProcessResponseBodyProcessDlpSendPolicies struct {
-	// The ID of the external process.
+	// The ID of the external approval process. If the approval type is 1 (DingTalk approval), this parameter corresponds to the DingTalk process code. If the approval type is 2 (WeCom approval), this parameter corresponds to the template ID. If the approval type is 3 (Lark approval), this parameter corresponds to the approval definition code. If the approval type is 0 (built-in approval), this parameter is empty.
+	//
+	// example:
+	//
+	// PROC-1a2b3c4d5e6f****
 	ExternalProcessId *string `json:"ExternalProcessId,omitempty" xml:"ExternalProcessId,omitempty"`
-	// The field mapping.
+	// The list of mappings between system fields and external approval form controls.
 	FieldMap []*GetApprovalProcessResponseBodyProcessDlpSendPoliciesFieldMap `json:"FieldMap,omitempty" xml:"FieldMap,omitempty" type:"Repeated"`
-	// The list of outbound file policy IDs.
+	// The list of outbound file transfer policy IDs.
 	PolicyIds []*string `json:"PolicyIds,omitempty" xml:"PolicyIds,omitempty" type:"Repeated"`
 	// The ID of the approval template.
 	//
@@ -659,10 +709,23 @@ func (s *GetApprovalProcessResponseBodyProcessDlpSendPolicies) Validate() error 
 }
 
 type GetApprovalProcessResponseBodyProcessDlpSendPoliciesFieldMap struct {
-	// The display field.
-	DisplayField      *string `json:"DisplayField,omitempty" xml:"DisplayField,omitempty"`
+	// The name of the control in the external approval form.
+	//
+	// example:
+	//
+	// File name
+	DisplayField *string `json:"DisplayField,omitempty" xml:"DisplayField,omitempty"`
+	// The identifier of the control in the external approval form. DingTalk approval returns the control label. WeCom and Lark approvals return the value in the "Control type%%%Control ID" format.
+	//
+	// example:
+	//
+	// Textarea%%%widget-1a2b****
 	DisplayFieldValue *string `json:"DisplayFieldValue,omitempty" xml:"DisplayFieldValue,omitempty"`
-	// The system field.
+	// The system field identifier, such as fileName.
+	//
+	// example:
+	//
+	// fileName
 	SystemField *string `json:"SystemField,omitempty" xml:"SystemField,omitempty"`
 }
 
@@ -706,9 +769,13 @@ func (s *GetApprovalProcessResponseBodyProcessDlpSendPoliciesFieldMap) Validate(
 }
 
 type GetApprovalProcessResponseBodyProcessDomainBlacklistPolicies struct {
-	// The ID of the external process.
+	// The ID of the external approval process. If the approval type is 1 (DingTalk approval), this parameter corresponds to the DingTalk process code. If the approval type is 2 (WeCom approval), this parameter corresponds to the template ID. If the approval type is 3 (Lark approval), this parameter corresponds to the approval definition code. If the approval type is 0 (built-in approval), this parameter is empty.
+	//
+	// example:
+	//
+	// PROC-1a2b3c4d5e6f****
 	ExternalProcessId *string `json:"ExternalProcessId,omitempty" xml:"ExternalProcessId,omitempty"`
-	// The field mapping.
+	// The list of mappings between system fields and external approval form controls.
 	FieldMap []*GetApprovalProcessResponseBodyProcessDomainBlacklistPoliciesFieldMap `json:"FieldMap,omitempty" xml:"FieldMap,omitempty" type:"Repeated"`
 	// The list of domain name blacklist policy IDs.
 	PolicyIds []*string `json:"PolicyIds,omitempty" xml:"PolicyIds,omitempty" type:"Repeated"`
@@ -778,10 +845,23 @@ func (s *GetApprovalProcessResponseBodyProcessDomainBlacklistPolicies) Validate(
 }
 
 type GetApprovalProcessResponseBodyProcessDomainBlacklistPoliciesFieldMap struct {
-	// The display field.
-	DisplayField      *string `json:"DisplayField,omitempty" xml:"DisplayField,omitempty"`
+	// The name of the control in the external approval form.
+	//
+	// example:
+	//
+	// Reported access website
+	DisplayField *string `json:"DisplayField,omitempty" xml:"DisplayField,omitempty"`
+	// The identifier of the control in the external approval form. DingTalk approval returns the control label. WeCom and Lark approvals return the value in the "Control type%%%Control ID" format.
+	//
+	// example:
+	//
+	// Textarea%%%widget-1a2b****
 	DisplayFieldValue *string `json:"DisplayFieldValue,omitempty" xml:"DisplayFieldValue,omitempty"`
-	// The system field.
+	// The identifier of the system field, such as reportDomain.
+	//
+	// example:
+	//
+	// reportDomain
 	SystemField *string `json:"SystemField,omitempty" xml:"SystemField,omitempty"`
 }
 
@@ -825,9 +905,13 @@ func (s *GetApprovalProcessResponseBodyProcessDomainBlacklistPoliciesFieldMap) V
 }
 
 type GetApprovalProcessResponseBodyProcessDomainWhitelistPolicies struct {
-	// The ID of the external process.
+	// The ID of the external approval process. If the approval type is 1 (DingTalk approval), this parameter corresponds to the DingTalk process code. If the approval type is 2 (WeCom approval), this parameter corresponds to the template ID. If the approval type is 3 (Lark approval), this parameter corresponds to the approval definition code. If the approval type is 0 (built-in approval), this parameter is empty.
+	//
+	// example:
+	//
+	// PROC-1a2b3c4d5e6f****
 	ExternalProcessId *string `json:"ExternalProcessId,omitempty" xml:"ExternalProcessId,omitempty"`
-	// The field mapping table.
+	// The list of mappings between system fields and external approval form controls.
 	FieldMap []*GetApprovalProcessResponseBodyProcessDomainWhitelistPoliciesFieldMap `json:"FieldMap,omitempty" xml:"FieldMap,omitempty" type:"Repeated"`
 	// The list of domain name whitelist policy IDs.
 	PolicyIds []*string `json:"PolicyIds,omitempty" xml:"PolicyIds,omitempty" type:"Repeated"`
@@ -897,10 +981,23 @@ func (s *GetApprovalProcessResponseBodyProcessDomainWhitelistPolicies) Validate(
 }
 
 type GetApprovalProcessResponseBodyProcessDomainWhitelistPoliciesFieldMap struct {
-	// The display field.
-	DisplayField      *string `json:"DisplayField,omitempty" xml:"DisplayField,omitempty"`
+	// The name of the control in the external approval form.
+	//
+	// example:
+	//
+	// Reported access website
+	DisplayField *string `json:"DisplayField,omitempty" xml:"DisplayField,omitempty"`
+	// The identifier of the control in the external approval form. DingTalk approval returns the control label. WeCom and Lark approvals return the value in the "Control type%%%Control ID" format.
+	//
+	// example:
+	//
+	// Textarea%%%widget-1a2b****
 	DisplayFieldValue *string `json:"DisplayFieldValue,omitempty" xml:"DisplayFieldValue,omitempty"`
-	// The system field.
+	// The identifier of the system field, such as reportDomain.
+	//
+	// example:
+	//
+	// reportDomain
 	SystemField *string `json:"SystemField,omitempty" xml:"SystemField,omitempty"`
 }
 
@@ -944,13 +1041,21 @@ func (s *GetApprovalProcessResponseBodyProcessDomainWhitelistPoliciesFieldMap) V
 }
 
 type GetApprovalProcessResponseBodyProcessEndpointHardeningPolicies struct {
-	// The ID of the external process.
+	// The ID of the external approval process. If the approval type is 1 (DingTalk approval), this parameter corresponds to the DingTalk process code. If the approval type is 2 (WeCom approval), this parameter corresponds to the template ID. If the approval type is 3 (Lark approval), this parameter corresponds to the approval definition code. If the approval type is 0 (built-in approval), this parameter is empty.
+	//
+	// example:
+	//
+	// PROC-1a2b3c4d5e6f****
 	ExternalProcessId *string `json:"ExternalProcessId,omitempty" xml:"ExternalProcessId,omitempty"`
-	// The field mapping.
+	// The list of mappings between system fields and external approval form controls.
 	FieldMap []*GetApprovalProcessResponseBodyProcessEndpointHardeningPoliciesFieldMap `json:"FieldMap,omitempty" xml:"FieldMap,omitempty" type:"Repeated"`
-	// The policy ID.
+	// The list of endpoint hardening policy IDs.
 	PolicyIds []*string `json:"PolicyIds,omitempty" xml:"PolicyIds,omitempty" type:"Repeated"`
-	// The template ID.
+	// The ID of the approval template.
+	//
+	// example:
+	//
+	// approval-schema-090134f1ebff****
 	SchemaId *string `json:"SchemaId,omitempty" xml:"SchemaId,omitempty"`
 }
 
@@ -1012,10 +1117,23 @@ func (s *GetApprovalProcessResponseBodyProcessEndpointHardeningPolicies) Validat
 }
 
 type GetApprovalProcessResponseBodyProcessEndpointHardeningPoliciesFieldMap struct {
-	// The display field.
-	DisplayField      *string `json:"DisplayField,omitempty" xml:"DisplayField,omitempty"`
+	// The name of the control in the external approval form.
+	//
+	// example:
+	//
+	// Process name
+	DisplayField *string `json:"DisplayField,omitempty" xml:"DisplayField,omitempty"`
+	// The identifier of the control in the external approval form. DingTalk approval returns the control label. WeCom and Lark approvals return the value in the "Control type%%%Control ID" format.
+	//
+	// example:
+	//
+	// Textarea%%%widget-1a2b****
 	DisplayFieldValue *string `json:"DisplayFieldValue,omitempty" xml:"DisplayFieldValue,omitempty"`
-	// The system field.
+	// The system field identifier, such as processName.
+	//
+	// example:
+	//
+	// processName
 	SystemField *string `json:"SystemField,omitempty" xml:"SystemField,omitempty"`
 }
 
@@ -1059,9 +1177,13 @@ func (s *GetApprovalProcessResponseBodyProcessEndpointHardeningPoliciesFieldMap)
 }
 
 type GetApprovalProcessResponseBodyProcessPeripheralBlockPolicies struct {
-	// The ID of the external process.
+	// The ID of the external approval process. If the approval type is 1 (DingTalk approval), this parameter corresponds to the DingTalk process code. If the approval type is 2 (WeCom approval), this parameter corresponds to the template ID. If the approval type is 3 (Lark approval), this parameter corresponds to the approval definition code. If the approval type is 0 (built-in approval), this parameter is empty.
+	//
+	// example:
+	//
+	// PROC-1a2b3c4d5e6f****
 	ExternalProcessId *string `json:"ExternalProcessId,omitempty" xml:"ExternalProcessId,omitempty"`
-	// The field mapping.
+	// The list of mappings between system fields and external approval form controls.
 	FieldMap []*GetApprovalProcessResponseBodyProcessPeripheralBlockPoliciesFieldMap `json:"FieldMap,omitempty" xml:"FieldMap,omitempty" type:"Repeated"`
 	// The list of peripheral control policy IDs.
 	PolicyIds []*string `json:"PolicyIds,omitempty" xml:"PolicyIds,omitempty" type:"Repeated"`
@@ -1131,10 +1253,23 @@ func (s *GetApprovalProcessResponseBodyProcessPeripheralBlockPolicies) Validate(
 }
 
 type GetApprovalProcessResponseBodyProcessPeripheralBlockPoliciesFieldMap struct {
-	// The display field.
-	DisplayField      *string `json:"DisplayField,omitempty" xml:"DisplayField,omitempty"`
+	// The name of the control in the external approval form.
+	//
+	// example:
+	//
+	// Operating system
+	DisplayField *string `json:"DisplayField,omitempty" xml:"DisplayField,omitempty"`
+	// The identifier of the control in the external approval form. DingTalk approval returns the control label. WeCom and Lark approvals return the value in the "Control type%%%Control ID" format.
+	//
+	// example:
+	//
+	// Textarea%%%widget-1a2b****
 	DisplayFieldValue *string `json:"DisplayFieldValue,omitempty" xml:"DisplayFieldValue,omitempty"`
-	// The system field.
+	// The system field identifier, such as devType.
+	//
+	// example:
+	//
+	// devType
 	SystemField *string `json:"SystemField,omitempty" xml:"SystemField,omitempty"`
 }
 
@@ -1178,13 +1313,21 @@ func (s *GetApprovalProcessResponseBodyProcessPeripheralBlockPoliciesFieldMap) V
 }
 
 type GetApprovalProcessResponseBodyProcessPrivateAccessBlockPolicies struct {
-	// The ID of the external process.
+	// The ID of the external approval process. If the approval type is 1 (DingTalk approval), this parameter corresponds to the DingTalk process code. If the approval type is 2 (WeCom approval), this parameter corresponds to the template ID. If the approval type is 3 (Lark approval), this parameter corresponds to the approval definition code. If the approval type is 0 (built-in approval), this parameter is empty.
+	//
+	// example:
+	//
+	// PROC-1a2b3c4d5e6f****
 	ExternalProcessId *string `json:"ExternalProcessId,omitempty" xml:"ExternalProcessId,omitempty"`
-	// The field mapping.
+	// The list of mappings between system fields and external approval form controls.
 	FieldMap []*GetApprovalProcessResponseBodyProcessPrivateAccessBlockPoliciesFieldMap `json:"FieldMap,omitempty" xml:"FieldMap,omitempty" type:"Repeated"`
-	// The policy ID.
+	// The list of internal network access control policy IDs.
 	PolicyIds []*string `json:"PolicyIds,omitempty" xml:"PolicyIds,omitempty" type:"Repeated"`
-	// The template ID.
+	// The ID of the approval template.
+	//
+	// example:
+	//
+	// approval-schema-090134f1ebff****
 	SchemaId *string `json:"SchemaId,omitempty" xml:"SchemaId,omitempty"`
 }
 
@@ -1246,10 +1389,23 @@ func (s *GetApprovalProcessResponseBodyProcessPrivateAccessBlockPolicies) Valida
 }
 
 type GetApprovalProcessResponseBodyProcessPrivateAccessBlockPoliciesFieldMap struct {
-	// The display field.
-	DisplayField      *string `json:"DisplayField,omitempty" xml:"DisplayField,omitempty"`
+	// The name of the control in the external approval form.
+	//
+	// example:
+	//
+	// Application ID
+	DisplayField *string `json:"DisplayField,omitempty" xml:"DisplayField,omitempty"`
+	// The identifier of the control in the external approval form. DingTalk approval returns the control label. WeCom and Lark approvals return the value in the "Control type%%%Control ID" format.
+	//
+	// example:
+	//
+	// Textarea%%%widget-1a2b****
 	DisplayFieldValue *string `json:"DisplayFieldValue,omitempty" xml:"DisplayFieldValue,omitempty"`
-	// The system field.
+	// The system field identifier, such as applicationId.
+	//
+	// example:
+	//
+	// applicationId
 	SystemField *string `json:"SystemField,omitempty" xml:"SystemField,omitempty"`
 }
 
@@ -1293,17 +1449,17 @@ func (s *GetApprovalProcessResponseBodyProcessPrivateAccessBlockPoliciesFieldMap
 }
 
 type GetApprovalProcessResponseBodyProcessProcessNodes struct {
-	// The approver ID.
+	// The ID of the approver.
 	//
 	// example:
 	//
 	// su_e8f218fb171edd167c2ad917d21f53148bdefc510ca1f3c3cc0249d3643d****
 	SaseUserId *string `json:"SaseUserId,omitempty" xml:"SaseUserId,omitempty"`
-	// The approver username.
+	// The username of the approver.
 	//
 	// example:
 	//
-	// 王先生
+	// 张三
 	Username *string `json:"Username,omitempty" xml:"Username,omitempty"`
 }
 
@@ -1338,9 +1494,13 @@ func (s *GetApprovalProcessResponseBodyProcessProcessNodes) Validate() error {
 }
 
 type GetApprovalProcessResponseBodyProcessSoftwareBlockPolicies struct {
-	// The ID of the external process.
+	// The ID of the external approval process. If the approval type is 1 (DingTalk approval), this parameter corresponds to the DingTalk process code. If the approval type is 2 (WeCom approval), this parameter corresponds to the template ID. If the approval type is 3 (Lark approval), this parameter corresponds to the approval definition code. If the approval type is 0 (built-in approval), this parameter is empty.
+	//
+	// example:
+	//
+	// PROC-1a2b3c4d5e6f****
 	ExternalProcessId *string `json:"ExternalProcessId,omitempty" xml:"ExternalProcessId,omitempty"`
-	// The field mapping.
+	// The list of mappings between system fields and external approval form controls.
 	FieldMap []*GetApprovalProcessResponseBodyProcessSoftwareBlockPoliciesFieldMap `json:"FieldMap,omitempty" xml:"FieldMap,omitempty" type:"Repeated"`
 	// The list of software blocking policy IDs.
 	PolicyIds []*string `json:"PolicyIds,omitempty" xml:"PolicyIds,omitempty" type:"Repeated"`
@@ -1410,10 +1570,23 @@ func (s *GetApprovalProcessResponseBodyProcessSoftwareBlockPolicies) Validate() 
 }
 
 type GetApprovalProcessResponseBodyProcessSoftwareBlockPoliciesFieldMap struct {
-	// The display field.
-	DisplayField      *string `json:"DisplayField,omitempty" xml:"DisplayField,omitempty"`
+	// The name of the control in the external approval form.
+	//
+	// example:
+	//
+	// Reported software
+	DisplayField *string `json:"DisplayField,omitempty" xml:"DisplayField,omitempty"`
+	// The identifier of the control in the external approval form. DingTalk approval returns the control label. WeCom and Lark approvals return the value in the "Control type%%%Control ID" format.
+	//
+	// example:
+	//
+	// Textarea%%%widget-1a2b****
 	DisplayFieldValue *string `json:"DisplayFieldValue,omitempty" xml:"DisplayFieldValue,omitempty"`
-	// The system field.
+	// The identifier of the system field, such as softwareName.
+	//
+	// example:
+	//
+	// softwareName
 	SystemField *string `json:"SystemField,omitempty" xml:"SystemField,omitempty"`
 }
 
@@ -1457,13 +1630,21 @@ func (s *GetApprovalProcessResponseBodyProcessSoftwareBlockPoliciesFieldMap) Val
 }
 
 type GetApprovalProcessResponseBodyProcessSoftwareHardeningPolicies struct {
-	// The ID of the external process.
+	// The ID of the external approval process. If the approval type is 1 (DingTalk approval), this parameter corresponds to the DingTalk process code. If the approval type is 2 (WeCom approval), this parameter corresponds to the template ID. If the approval type is 3 (Lark approval), this parameter corresponds to the approval definition code. If the approval type is 0 (built-in approval), this parameter is empty.
+	//
+	// example:
+	//
+	// PROC-1a2b3c4d5e6f****
 	ExternalProcessId *string `json:"ExternalProcessId,omitempty" xml:"ExternalProcessId,omitempty"`
-	// The field mapping.
+	// The list of mappings between system fields and external approval form controls.
 	FieldMap []*GetApprovalProcessResponseBodyProcessSoftwareHardeningPoliciesFieldMap `json:"FieldMap,omitempty" xml:"FieldMap,omitempty" type:"Repeated"`
-	// The policy ID.
+	// The list of software hardening policy IDs.
 	PolicyIds []*string `json:"PolicyIds,omitempty" xml:"PolicyIds,omitempty" type:"Repeated"`
-	// The template ID.
+	// The ID of the approval template.
+	//
+	// example:
+	//
+	// approval-schema-090134f1ebff****
 	SchemaId *string `json:"SchemaId,omitempty" xml:"SchemaId,omitempty"`
 }
 
@@ -1525,10 +1706,23 @@ func (s *GetApprovalProcessResponseBodyProcessSoftwareHardeningPolicies) Validat
 }
 
 type GetApprovalProcessResponseBodyProcessSoftwareHardeningPoliciesFieldMap struct {
-	// The display field.
-	DisplayField      *string `json:"DisplayField,omitempty" xml:"DisplayField,omitempty"`
+	// The name of the control in the external approval form.
+	//
+	// example:
+	//
+	// Process name
+	DisplayField *string `json:"DisplayField,omitempty" xml:"DisplayField,omitempty"`
+	// The identifier of the control in the external approval form. DingTalk approval returns the control label. WeCom and Lark approvals return the value in the "Control type%%%Control ID" format.
+	//
+	// example:
+	//
+	// Textarea%%%widget-1a2b****
 	DisplayFieldValue *string `json:"DisplayFieldValue,omitempty" xml:"DisplayFieldValue,omitempty"`
-	// The system field.
+	// The system field identifier, such as processName.
+	//
+	// example:
+	//
+	// processName
 	SystemField *string `json:"SystemField,omitempty" xml:"SystemField,omitempty"`
 }
 

@@ -20,13 +20,10 @@ type iIdpSyncConfig interface {
 }
 
 type IdpSyncConfig struct {
-	// Specifies whether automatic synchronization is enabled.
-	AutoSyncEnabled *bool `json:"AutoSyncEnabled,omitempty" xml:"AutoSyncEnabled,omitempty"`
-	// The names of the departments selected for synchronization. The names have a one-to-one relationship with IdpDepartmentIds.
-	IdpDepartmentInfos []*IdpSyncConfigIdpDepartmentInfos `json:"IdpDepartmentInfos,omitempty" xml:"IdpDepartmentInfos,omitempty" type:"Repeated"`
-	// The scheduled synchronization interval, in seconds.
-	ScheduleSyncIntervalSecond *int64 `json:"ScheduleSyncIntervalSecond,omitempty" xml:"ScheduleSyncIntervalSecond,omitempty"`
-	UserSyncEnabled            *bool  `json:"UserSyncEnabled,omitempty" xml:"UserSyncEnabled,omitempty"`
+	AutoSyncEnabled            *bool                              `json:"AutoSyncEnabled,omitempty" xml:"AutoSyncEnabled,omitempty"`
+	IdpDepartmentInfos         []*IdpSyncConfigIdpDepartmentInfos `json:"IdpDepartmentInfos,omitempty" xml:"IdpDepartmentInfos,omitempty" type:"Repeated"`
+	ScheduleSyncIntervalSecond *int64                             `json:"ScheduleSyncIntervalSecond,omitempty" xml:"ScheduleSyncIntervalSecond,omitempty"`
+	UserSyncEnabled            *bool                              `json:"UserSyncEnabled,omitempty" xml:"UserSyncEnabled,omitempty"`
 }
 
 func (s IdpSyncConfig) String() string {

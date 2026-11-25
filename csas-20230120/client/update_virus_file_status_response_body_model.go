@@ -16,13 +16,13 @@ type iUpdateVirusFileStatusResponseBody interface {
 }
 
 type UpdateVirusFileStatusResponseBody struct {
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
 	// 3D7EC0AF-DB2A-5D9C-90EC-F090A6BAAEA7
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The disposal task ID. This parameter is returned when Operation is set to AdminQuarantine. An empty string is returned when Operation is set to AdminTrust. You can check the execution result on the user terminal device by using the TaskExecutionInfo field of ListVirusFileStatuses.
+	// The ID of the processing task. This parameter is returned when Operation is set to AdminQuarantine. An empty string is returned when Operation is set to AdminTrust. You can view the execution result on the user terminal device by using the TaskExecutionInfo parameter in the ListVirusFileStatuses operation.
 	//
 	// example:
 	//

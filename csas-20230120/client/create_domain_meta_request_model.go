@@ -22,7 +22,7 @@ type CreateDomainMetaRequest struct {
 	//
 	// la_domain_black_list
 	ListType *string `json:"ListType,omitempty" xml:"ListType,omitempty"`
-	// The list name. Maximum length: 32 characters.
+	// The name of the list. The name can be up to 32 characters in length.
 	//
 	// example:
 	//
