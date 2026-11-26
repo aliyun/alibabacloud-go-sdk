@@ -1,3 +1,6 @@
+2026-11-26 Version: v2.16.3
+- Generated golang 2024-03-13 for IntelligentCreation.
+
 2026-09-02 Version: v2.16.2
 - Update API ListAgents: add response parameters Body.list.$.characterGender.
 
