@@ -9,6 +9,10 @@ type iUpdateScheduledTaskRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAppToken(v string) *UpdateScheduledTaskRequest
+	GetAppToken() *string
+	SetAutoPreference(v string) *UpdateScheduledTaskRequest
+	GetAutoPreference() *string
 	SetDescription(v []*UpdateScheduledTaskRequestDescription) *UpdateScheduledTaskRequest
 	GetDescription() []*UpdateScheduledTaskRequestDescription
 	SetDigitalEmployeeName(v []*string) *UpdateScheduledTaskRequest
@@ -19,6 +23,10 @@ type iUpdateScheduledTaskRequest interface {
 	GetModel() *string
 	SetName(v string) *UpdateScheduledTaskRequest
 	GetName() *string
+	SetOpsUserCode(v string) *UpdateScheduledTaskRequest
+	GetOpsUserCode() *string
+	SetOpsUserId(v string) *UpdateScheduledTaskRequest
+	GetOpsUserId() *string
 	SetOutputMode(v string) *UpdateScheduledTaskRequest
 	GetOutputMode() *string
 	SetSegments(v []*UpdateScheduledTaskRequestSegments) *UpdateScheduledTaskRequest
@@ -38,6 +46,18 @@ type iUpdateScheduledTaskRequest interface {
 }
 
 type UpdateScheduledTaskRequest struct {
+	// The platform application token issued by the console. If specified, the task is executed as the user specified by opsUserId or opsUserCode.
+	//
+	// example:
+	//
+	// wn_app_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+	AppToken *string `json:"appToken,omitempty" xml:"appToken,omitempty"`
+	// The AUTO preference. Valid values: none (default), performance (performance first), and credit (cost first). If omitted or set to null, the current value is retained. If set to an empty string, the value is reset to none. For fixed models, this parameter can be saved but does not take effect.
+	//
+	// example:
+	//
+	// credit
+	AutoPreference *string `json:"autoPreference,omitempty" xml:"autoPreference,omitempty"`
 	// The description.
 	Description []*UpdateScheduledTaskRequestDescription `json:"description,omitempty" xml:"description,omitempty" type:"Repeated"`
 	// The list of digital employee names.
@@ -52,7 +72,7 @@ type UpdateScheduledTaskRequest struct {
 	//
 	// true
 	IsOpen *bool `json:"isOpen,omitempty" xml:"isOpen,omitempty"`
-	// The execution model tier. If this parameter is not specified, the model tier is not updated.
+	// The execution model tier. If not specified, the model tier is not updated.
 	//
 	// example:
 	//
@@ -64,7 +84,19 @@ type UpdateScheduledTaskRequest struct {
 	//
 	// SampleName.pdf
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The output conversation mode. If this parameter is omitted, the current configuration is retained.
+	// The proxy user code, which is unique within the tenant. This parameter is used only when the application credential is configured as source_uid.
+	//
+	// example:
+	//
+	// alice
+	OpsUserCode *string `json:"opsUserCode,omitempty" xml:"opsUserCode,omitempty"`
+	// The proxy user ID, which is the WINNEXO platform user ID. This parameter is used only when the application credential is configured as winnexo_uid.
+	//
+	// example:
+	//
+	// 10001
+	OpsUserId *string `json:"opsUserId,omitempty" xml:"opsUserId,omitempty"`
+	// The output conversation mode. If not specified, the current configuration is retained.
 	//
 	// example:
 	//
@@ -82,7 +114,7 @@ type UpdateScheduledTaskRequest struct {
 	//
 	// exampleTaskId
 	TaskId *string `json:"taskId,omitempty" xml:"taskId,omitempty"`
-	// The tenant ID. This is a common parameter. If this parameter is not specified, the default tenant of the caller is used.
+	// The tenant ID. This is a common parameter. If not specified, the default tenant of the caller is used.
 	//
 	// example:
 	//
@@ -90,13 +122,13 @@ type UpdateScheduledTaskRequest struct {
 	TenantId *string `json:"tenantId,omitempty" xml:"tenantId,omitempty"`
 	// The trigger configuration. The configuration varies based on the trigger type.
 	TriggerConfig *UpdateScheduledTaskRequestTriggerConfig `json:"triggerConfig,omitempty" xml:"triggerConfig,omitempty" type:"Struct"`
-	// The visibility scope adjustment for group tasks. Valid values: PRIVATE (visible only to the creator and group owner), COLLABORATIVE (visible to specified collaborators), and PUBLIC (visible to all group members). If this parameter is not specified, the visibility scope is not updated. This field is ignored for personal tasks.
+	// The visibility scope for group tasks. Valid values: PRIVATE (visible only to the creator and group owner), COLLABORATIVE (visible to specified collaborators), and PUBLIC (visible to all group members). If not specified, the visibility scope is not updated. This parameter is ignored for personal tasks.
 	//
 	// example:
 	//
 	// COLLABORATIVE
 	Visibility *string `json:"visibility,omitempty" xml:"visibility,omitempty"`
-	// The full replacement list of collaborators. This parameter takes effect only when visibility is set to COLLABORATIVE. When the visibility is changed from COLLABORATIVE to another value, the list is cleared. A maximum of 1,000 members are supported. If this parameter is not specified, the members are not updated. You do not need to specify the task creator and group creator because they are covered by the authentication layer. This field is ignored for personal tasks.
+	// The full replacement list of collaborators. This parameter takes effect only when visibility is set to COLLABORATIVE. A maximum of 1,000 members can be specified. If the visibility is changed from COLLABORATIVE to another value, the list is cleared. If not specified, the members are not updated. The task creator and group creator do not need to be specified because they are covered by the authentication layer. This parameter is ignored for personal tasks.
 	//
 	// example:
 	//
@@ -110,6 +142,14 @@ func (s UpdateScheduledTaskRequest) String() string {
 
 func (s UpdateScheduledTaskRequest) GoString() string {
 	return s.String()
+}
+
+func (s *UpdateScheduledTaskRequest) GetAppToken() *string {
+	return s.AppToken
+}
+
+func (s *UpdateScheduledTaskRequest) GetAutoPreference() *string {
+	return s.AutoPreference
 }
 
 func (s *UpdateScheduledTaskRequest) GetDescription() []*UpdateScheduledTaskRequestDescription {
@@ -130,6 +170,14 @@ func (s *UpdateScheduledTaskRequest) GetModel() *string {
 
 func (s *UpdateScheduledTaskRequest) GetName() *string {
 	return s.Name
+}
+
+func (s *UpdateScheduledTaskRequest) GetOpsUserCode() *string {
+	return s.OpsUserCode
+}
+
+func (s *UpdateScheduledTaskRequest) GetOpsUserId() *string {
+	return s.OpsUserId
 }
 
 func (s *UpdateScheduledTaskRequest) GetOutputMode() *string {
@@ -164,6 +212,16 @@ func (s *UpdateScheduledTaskRequest) GetVisibleMemberUserIds() []*string {
 	return s.VisibleMemberUserIds
 }
 
+func (s *UpdateScheduledTaskRequest) SetAppToken(v string) *UpdateScheduledTaskRequest {
+	s.AppToken = &v
+	return s
+}
+
+func (s *UpdateScheduledTaskRequest) SetAutoPreference(v string) *UpdateScheduledTaskRequest {
+	s.AutoPreference = &v
+	return s
+}
+
 func (s *UpdateScheduledTaskRequest) SetDescription(v []*UpdateScheduledTaskRequestDescription) *UpdateScheduledTaskRequest {
 	s.Description = v
 	return s
@@ -186,6 +244,16 @@ func (s *UpdateScheduledTaskRequest) SetModel(v string) *UpdateScheduledTaskRequ
 
 func (s *UpdateScheduledTaskRequest) SetName(v string) *UpdateScheduledTaskRequest {
 	s.Name = &v
+	return s
+}
+
+func (s *UpdateScheduledTaskRequest) SetOpsUserCode(v string) *UpdateScheduledTaskRequest {
+	s.OpsUserCode = &v
+	return s
+}
+
+func (s *UpdateScheduledTaskRequest) SetOpsUserId(v string) *UpdateScheduledTaskRequest {
+	s.OpsUserId = &v
 	return s
 }
 
@@ -512,7 +580,7 @@ type UpdateScheduledTaskRequestTaskDetail struct {
 	RelatedSemantics []*UpdateScheduledTaskRequestTaskDetailRelatedSemantics `json:"relatedSemantics,omitempty" xml:"relatedSemantics,omitempty" type:"Repeated"`
 	// The related skills.
 	RelatedSkills []*UpdateScheduledTaskRequestTaskDetailRelatedSkills `json:"relatedSkills,omitempty" xml:"relatedSkills,omitempty" type:"Repeated"`
-	// The task understanding description refined by the large language model (LLM).
+	// The task understanding description refined by the LLM.
 	//
 	// example:
 	//
@@ -608,7 +676,7 @@ type UpdateScheduledTaskRequestTaskDetailRelatedObjects struct {
 	//
 	// SampleName.pdf
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The object ID. This parameter has a value when the object is specified by using the @ symbol.
+	// The object ID. This parameter has a value when the object is specified by using @.
 	//
 	// example:
 	//
@@ -791,7 +859,7 @@ func (s *UpdateScheduledTaskRequestTaskDetailRelatedSkills) Validate() error {
 }
 
 type UpdateScheduledTaskRequestTriggerConfig struct {
-	// The cron expression. This parameter is required when trigger_mode is set to scheduled. Example: 00 09 	- 	- *.
+	// The cron expression. This parameter is required when trigger_mode is set to scheduled. Example: \"00 09 	- 	- *\".
 	//
 	// example:
 	//
@@ -803,7 +871,7 @@ type UpdateScheduledTaskRequestTriggerConfig struct {
 	//
 	// zh-CN
 	Language *string `json:"language,omitempty" xml:"language,omitempty"`
-	// The list of task push channels. If the list is empty or no channel is enabled, no push notification is sent.
+	// The list of task push channels. If this list is empty or no channel is enabled, no push notification is sent.
 	PushConfig []*UpdateScheduledTaskRequestTriggerConfigPushConfig `json:"pushConfig,omitempty" xml:"pushConfig,omitempty" type:"Repeated"`
 	// The time zone, such as Asia/Shanghai. This parameter is automatically injected by the server.
 	//
@@ -906,7 +974,7 @@ type UpdateScheduledTaskRequestTriggerConfigPushConfig struct {
 	//
 	// channel_bot
 	DeliveryMethod *string `json:"deliveryMethod,omitempty" xml:"deliveryMethod,omitempty"`
-	// Specifies whether to push notifications to the channel. Default value: false.
+	// Specifies whether to push notifications to this channel. Default value: false.
 	//
 	// example:
 	//
@@ -924,7 +992,7 @@ type UpdateScheduledTaskRequestTriggerConfigPushConfig struct {
 	//
 	// string_value
 	OperatingObjectName *string `json:"operatingObjectName,omitempty" xml:"operatingObjectName,omitempty"`
-	// The recipient. Only self is supported.
+	// The receiver type. Currently, only self is supported.
 	//
 	// example:
 	//

@@ -9,6 +9,8 @@ type iCreatePersonalVoiceMeetingRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAppToken(v string) *CreatePersonalVoiceMeetingRequest
+	GetAppToken() *string
 	SetDescription(v string) *CreatePersonalVoiceMeetingRequest
 	GetDescription() *string
 	SetDirectoryId(v string) *CreatePersonalVoiceMeetingRequest
@@ -19,6 +21,10 @@ type iCreatePersonalVoiceMeetingRequest interface {
 	GetName() *string
 	SetOperatingObjectName(v string) *CreatePersonalVoiceMeetingRequest
 	GetOperatingObjectName() *string
+	SetOpsUserCode(v string) *CreatePersonalVoiceMeetingRequest
+	GetOpsUserCode() *string
+	SetOpsUserId(v string) *CreatePersonalVoiceMeetingRequest
+	GetOpsUserId() *string
 	SetSourceTags(v string) *CreatePersonalVoiceMeetingRequest
 	GetSourceTags() *string
 	SetTenantId(v string) *CreatePersonalVoiceMeetingRequest
@@ -26,6 +32,12 @@ type iCreatePersonalVoiceMeetingRequest interface {
 }
 
 type CreatePersonalVoiceMeetingRequest struct {
+	// The platform application token issued by the console. If this parameter is passed, the operation is performed as the user specified by opsUserId or opsUserCode.
+	//
+	// example:
+	//
+	// wn_app_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+	AppToken *string `json:"appToken,omitempty" xml:"appToken,omitempty"`
 	// The pipeline description.
 	//
 	// example:
@@ -54,17 +66,29 @@ type CreatePersonalVoiceMeetingRequest struct {
 	//
 	// p-toolset-2a1461ff-59c1-4baa-9e19-966ec7c00004
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The name of the digital employee (operating object name, optional).
+	// The name of the digital employee, which is the name of the operating object. This parameter is optional.
 	//
 	// example:
 	//
 	// string_value
 	OperatingObjectName *string `json:"operatingObjectName,omitempty" xml:"operatingObjectName,omitempty"`
-	// The list of resource tag JSON strings.
+	// The proxy user code, which is unique within the tenant. This parameter is used only when the application credential is configured as source_uid.
 	//
 	// example:
 	//
-	// ["Key","Meeting"]
+	// alice
+	OpsUserCode *string `json:"opsUserCode,omitempty" xml:"opsUserCode,omitempty"`
+	// The proxy user ID, which is the WINNEXO platform user ID. This parameter is used only when the application credential is configured as winnexo_uid.
+	//
+	// example:
+	//
+	// 10001
+	OpsUserId *string `json:"opsUserId,omitempty" xml:"opsUserId,omitempty"`
+	// The list of resource tags in JSON string format.
+	//
+	// example:
+	//
+	// ["Important", "Meeting"]
 	SourceTags *string `json:"sourceTags,omitempty" xml:"sourceTags,omitempty"`
 	// The tenant ID.
 	//
@@ -80,6 +104,10 @@ func (s CreatePersonalVoiceMeetingRequest) String() string {
 
 func (s CreatePersonalVoiceMeetingRequest) GoString() string {
 	return s.String()
+}
+
+func (s *CreatePersonalVoiceMeetingRequest) GetAppToken() *string {
+	return s.AppToken
 }
 
 func (s *CreatePersonalVoiceMeetingRequest) GetDescription() *string {
@@ -102,12 +130,25 @@ func (s *CreatePersonalVoiceMeetingRequest) GetOperatingObjectName() *string {
 	return s.OperatingObjectName
 }
 
+func (s *CreatePersonalVoiceMeetingRequest) GetOpsUserCode() *string {
+	return s.OpsUserCode
+}
+
+func (s *CreatePersonalVoiceMeetingRequest) GetOpsUserId() *string {
+	return s.OpsUserId
+}
+
 func (s *CreatePersonalVoiceMeetingRequest) GetSourceTags() *string {
 	return s.SourceTags
 }
 
 func (s *CreatePersonalVoiceMeetingRequest) GetTenantId() *string {
 	return s.TenantId
+}
+
+func (s *CreatePersonalVoiceMeetingRequest) SetAppToken(v string) *CreatePersonalVoiceMeetingRequest {
+	s.AppToken = &v
+	return s
 }
 
 func (s *CreatePersonalVoiceMeetingRequest) SetDescription(v string) *CreatePersonalVoiceMeetingRequest {
@@ -132,6 +173,16 @@ func (s *CreatePersonalVoiceMeetingRequest) SetName(v string) *CreatePersonalVoi
 
 func (s *CreatePersonalVoiceMeetingRequest) SetOperatingObjectName(v string) *CreatePersonalVoiceMeetingRequest {
 	s.OperatingObjectName = &v
+	return s
+}
+
+func (s *CreatePersonalVoiceMeetingRequest) SetOpsUserCode(v string) *CreatePersonalVoiceMeetingRequest {
+	s.OpsUserCode = &v
+	return s
+}
+
+func (s *CreatePersonalVoiceMeetingRequest) SetOpsUserId(v string) *CreatePersonalVoiceMeetingRequest {
+	s.OpsUserId = &v
 	return s
 }
 

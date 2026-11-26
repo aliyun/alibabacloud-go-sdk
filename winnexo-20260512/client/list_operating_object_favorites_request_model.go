@@ -9,6 +9,8 @@ type iListOperatingObjectFavoritesRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAppToken(v string) *ListOperatingObjectFavoritesRequest
+	GetAppToken() *string
 	SetGraphName(v string) *ListOperatingObjectFavoritesRequest
 	GetGraphName() *string
 	SetNextToken(v string) *ListOperatingObjectFavoritesRequest
@@ -17,6 +19,10 @@ type iListOperatingObjectFavoritesRequest interface {
 	GetObjectType() *string
 	SetOperatingObjectName(v string) *ListOperatingObjectFavoritesRequest
 	GetOperatingObjectName() *string
+	SetOpsUserCode(v string) *ListOperatingObjectFavoritesRequest
+	GetOpsUserCode() *string
+	SetOpsUserId(v string) *ListOperatingObjectFavoritesRequest
+	GetOpsUserId() *string
 	SetPageSize(v int64) *ListOperatingObjectFavoritesRequest
 	GetPageSize() *int64
 	SetTenantId(v string) *ListOperatingObjectFavoritesRequest
@@ -24,7 +30,13 @@ type iListOperatingObjectFavoritesRequest interface {
 }
 
 type ListOperatingObjectFavoritesRequest struct {
-	// The graph name. Call listGraphs to retrieve available graphs.
+	// The platform application token issued by the console. If specified, the operation is executed as the user identified by opsUserId or opsUserCode.
+	//
+	// example:
+	//
+	// wn_app_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+	AppToken *string `json:"appToken,omitempty" xml:"appToken,omitempty"`
+	// The name of the graph. You can call the listGraphs operation to obtain the graph name.
 	//
 	// This parameter is required.
 	//
@@ -46,7 +58,7 @@ type ListOperatingObjectFavoritesRequest struct {
 	//
 	// contract
 	ObjectType *string `json:"objectType,omitempty" xml:"objectType,omitempty"`
-	// The digital employee name (operating object name). Optional.
+	// The name of the digital worker, which is the name of the operating object. This parameter is optional.
 	//
 	// This parameter is required.
 	//
@@ -54,13 +66,25 @@ type ListOperatingObjectFavoritesRequest struct {
 	//
 	// customer_assistant
 	OperatingObjectName *string `json:"operatingObjectName,omitempty" xml:"operatingObjectName,omitempty"`
-	// The page size.
+	// The proxy user code, which is unique within the tenant. This parameter is used only when the application credential is configured as source_uid.
+	//
+	// example:
+	//
+	// alice
+	OpsUserCode *string `json:"opsUserCode,omitempty" xml:"opsUserCode,omitempty"`
+	// The proxy user ID, which is the WINNEXO platform user ID. This parameter is used only when the application credential is configured as winnexo_uid.
+	//
+	// example:
+	//
+	// 10001
+	OpsUserId *string `json:"opsUserId,omitempty" xml:"opsUserId,omitempty"`
+	// The number of entries per page.
 	//
 	// example:
 	//
 	// 100
 	PageSize *int64 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	// The tenant ID to take effect.
+	// The ID of the effective tenant.
 	//
 	// example:
 	//
@@ -74,6 +98,10 @@ func (s ListOperatingObjectFavoritesRequest) String() string {
 
 func (s ListOperatingObjectFavoritesRequest) GoString() string {
 	return s.String()
+}
+
+func (s *ListOperatingObjectFavoritesRequest) GetAppToken() *string {
+	return s.AppToken
 }
 
 func (s *ListOperatingObjectFavoritesRequest) GetGraphName() *string {
@@ -92,12 +120,25 @@ func (s *ListOperatingObjectFavoritesRequest) GetOperatingObjectName() *string {
 	return s.OperatingObjectName
 }
 
+func (s *ListOperatingObjectFavoritesRequest) GetOpsUserCode() *string {
+	return s.OpsUserCode
+}
+
+func (s *ListOperatingObjectFavoritesRequest) GetOpsUserId() *string {
+	return s.OpsUserId
+}
+
 func (s *ListOperatingObjectFavoritesRequest) GetPageSize() *int64 {
 	return s.PageSize
 }
 
 func (s *ListOperatingObjectFavoritesRequest) GetTenantId() *string {
 	return s.TenantId
+}
+
+func (s *ListOperatingObjectFavoritesRequest) SetAppToken(v string) *ListOperatingObjectFavoritesRequest {
+	s.AppToken = &v
+	return s
 }
 
 func (s *ListOperatingObjectFavoritesRequest) SetGraphName(v string) *ListOperatingObjectFavoritesRequest {
@@ -117,6 +158,16 @@ func (s *ListOperatingObjectFavoritesRequest) SetObjectType(v string) *ListOpera
 
 func (s *ListOperatingObjectFavoritesRequest) SetOperatingObjectName(v string) *ListOperatingObjectFavoritesRequest {
 	s.OperatingObjectName = &v
+	return s
+}
+
+func (s *ListOperatingObjectFavoritesRequest) SetOpsUserCode(v string) *ListOperatingObjectFavoritesRequest {
+	s.OpsUserCode = &v
+	return s
+}
+
+func (s *ListOperatingObjectFavoritesRequest) SetOpsUserId(v string) *ListOperatingObjectFavoritesRequest {
+	s.OpsUserId = &v
 	return s
 }
 

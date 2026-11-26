@@ -9,18 +9,30 @@ type iCreateConversationRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAppToken(v string) *CreateConversationRequest
+	GetAppToken() *string
 	SetMetadata(v string) *CreateConversationRequest
 	GetMetadata() *string
 	SetObjectId(v string) *CreateConversationRequest
 	GetObjectId() *string
 	SetOperatingObjectName(v []interface{}) *CreateConversationRequest
 	GetOperatingObjectName() []interface{}
+	SetOpsUserCode(v string) *CreateConversationRequest
+	GetOpsUserCode() *string
+	SetOpsUserId(v string) *CreateConversationRequest
+	GetOpsUserId() *string
 	SetTenantId(v string) *CreateConversationRequest
 	GetTenantId() *string
 }
 
 type CreateConversationRequest struct {
-	// A reserved field.
+	// The platform application token issued by the console. If specified, the operation is executed as the user specified by opsUserId or opsUserCode.
+	//
+	// example:
+	//
+	// wn_app_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+	AppToken *string `json:"appToken,omitempty" xml:"appToken,omitempty"`
+	// The reserved field.
 	//
 	// example:
 	//
@@ -32,12 +44,24 @@ type CreateConversationRequest struct {
 	//
 	// 2676
 	ObjectId *string `json:"objectId,omitempty" xml:"objectId,omitempty"`
-	// The operating object name.
+	// The name of the operation object.
 	//
 	// example:
 	//
-	// string_value
+	// ["item name"]
 	OperatingObjectName []interface{} `json:"operatingObjectName,omitempty" xml:"operatingObjectName,omitempty" type:"Repeated"`
+	// The proxy user code, which is unique within the tenant. This parameter is used only when the application credential is configured as source_uid.
+	//
+	// example:
+	//
+	// alice
+	OpsUserCode *string `json:"opsUserCode,omitempty" xml:"opsUserCode,omitempty"`
+	// The proxy user ID, which is the WINNEXO platform user ID. This parameter is used only when the application credential is configured as winnexo_uid.
+	//
+	// example:
+	//
+	// 10001
+	OpsUserId *string `json:"opsUserId,omitempty" xml:"opsUserId,omitempty"`
 	// The tenant ID.
 	//
 	// example:
@@ -54,6 +78,10 @@ func (s CreateConversationRequest) GoString() string {
 	return s.String()
 }
 
+func (s *CreateConversationRequest) GetAppToken() *string {
+	return s.AppToken
+}
+
 func (s *CreateConversationRequest) GetMetadata() *string {
 	return s.Metadata
 }
@@ -66,8 +94,21 @@ func (s *CreateConversationRequest) GetOperatingObjectName() []interface{} {
 	return s.OperatingObjectName
 }
 
+func (s *CreateConversationRequest) GetOpsUserCode() *string {
+	return s.OpsUserCode
+}
+
+func (s *CreateConversationRequest) GetOpsUserId() *string {
+	return s.OpsUserId
+}
+
 func (s *CreateConversationRequest) GetTenantId() *string {
 	return s.TenantId
+}
+
+func (s *CreateConversationRequest) SetAppToken(v string) *CreateConversationRequest {
+	s.AppToken = &v
+	return s
 }
 
 func (s *CreateConversationRequest) SetMetadata(v string) *CreateConversationRequest {
@@ -82,6 +123,16 @@ func (s *CreateConversationRequest) SetObjectId(v string) *CreateConversationReq
 
 func (s *CreateConversationRequest) SetOperatingObjectName(v []interface{}) *CreateConversationRequest {
 	s.OperatingObjectName = v
+	return s
+}
+
+func (s *CreateConversationRequest) SetOpsUserCode(v string) *CreateConversationRequest {
+	s.OpsUserCode = &v
+	return s
+}
+
+func (s *CreateConversationRequest) SetOpsUserId(v string) *CreateConversationRequest {
+	s.OpsUserId = &v
 	return s
 }
 

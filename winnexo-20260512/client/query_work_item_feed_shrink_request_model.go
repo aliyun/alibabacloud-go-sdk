@@ -9,6 +9,8 @@ type iQueryWorkItemFeedShrinkRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAppToken(v string) *QueryWorkItemFeedShrinkRequest
+	GetAppToken() *string
 	SetBusinessStatusesShrink(v string) *QueryWorkItemFeedShrinkRequest
 	GetBusinessStatusesShrink() *string
 	SetCollaborationGroupId(v string) *QueryWorkItemFeedShrinkRequest
@@ -19,6 +21,10 @@ type iQueryWorkItemFeedShrinkRequest interface {
 	GetItemTypesShrink() *string
 	SetKeyword(v string) *QueryWorkItemFeedShrinkRequest
 	GetKeyword() *string
+	SetOpsUserCode(v string) *QueryWorkItemFeedShrinkRequest
+	GetOpsUserCode() *string
+	SetOpsUserId(v string) *QueryWorkItemFeedShrinkRequest
+	GetOpsUserId() *string
 	SetPageSize(v int64) *QueryWorkItemFeedShrinkRequest
 	GetPageSize() *int64
 	SetPrioritiesShrink(v string) *QueryWorkItemFeedShrinkRequest
@@ -34,6 +40,12 @@ type iQueryWorkItemFeedShrinkRequest interface {
 }
 
 type QueryWorkItemFeedShrinkRequest struct {
+	// 平台应用 Token（控制台签发）。传入后将以 opsUserId 或 opsUserCode 指定的用户身份执行
+	//
+	// example:
+	//
+	// wn_app_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+	AppToken *string `json:"appToken,omitempty" xml:"appToken,omitempty"`
 	// The business status filter (seven states).
 	//
 	// example:
@@ -66,6 +78,18 @@ type QueryWorkItemFeedShrinkRequest struct {
 	//
 	// example
 	Keyword *string `json:"keyword,omitempty" xml:"keyword,omitempty"`
+	// 代理用户编码（租户内唯一），仅当应用凭证配置为 source_uid 时使用
+	//
+	// example:
+	//
+	// alice
+	OpsUserCode *string `json:"opsUserCode,omitempty" xml:"opsUserCode,omitempty"`
+	// 代理用户ID（WINNEXO 平台用户ID），仅当应用凭证配置为 winnexo_uid 时使用
+	//
+	// example:
+	//
+	// 10001
+	OpsUserId *string `json:"opsUserId,omitempty" xml:"opsUserId,omitempty"`
 	// The number of entries per page. Valid values: 1 to 100.
 	//
 	// example:
@@ -112,6 +136,10 @@ func (s QueryWorkItemFeedShrinkRequest) GoString() string {
 	return s.String()
 }
 
+func (s *QueryWorkItemFeedShrinkRequest) GetAppToken() *string {
+	return s.AppToken
+}
+
 func (s *QueryWorkItemFeedShrinkRequest) GetBusinessStatusesShrink() *string {
 	return s.BusinessStatusesShrink
 }
@@ -130,6 +158,14 @@ func (s *QueryWorkItemFeedShrinkRequest) GetItemTypesShrink() *string {
 
 func (s *QueryWorkItemFeedShrinkRequest) GetKeyword() *string {
 	return s.Keyword
+}
+
+func (s *QueryWorkItemFeedShrinkRequest) GetOpsUserCode() *string {
+	return s.OpsUserCode
+}
+
+func (s *QueryWorkItemFeedShrinkRequest) GetOpsUserId() *string {
+	return s.OpsUserId
 }
 
 func (s *QueryWorkItemFeedShrinkRequest) GetPageSize() *int64 {
@@ -156,6 +192,11 @@ func (s *QueryWorkItemFeedShrinkRequest) GetView() *string {
 	return s.View
 }
 
+func (s *QueryWorkItemFeedShrinkRequest) SetAppToken(v string) *QueryWorkItemFeedShrinkRequest {
+	s.AppToken = &v
+	return s
+}
+
 func (s *QueryWorkItemFeedShrinkRequest) SetBusinessStatusesShrink(v string) *QueryWorkItemFeedShrinkRequest {
 	s.BusinessStatusesShrink = &v
 	return s
@@ -178,6 +219,16 @@ func (s *QueryWorkItemFeedShrinkRequest) SetItemTypesShrink(v string) *QueryWork
 
 func (s *QueryWorkItemFeedShrinkRequest) SetKeyword(v string) *QueryWorkItemFeedShrinkRequest {
 	s.Keyword = &v
+	return s
+}
+
+func (s *QueryWorkItemFeedShrinkRequest) SetOpsUserCode(v string) *QueryWorkItemFeedShrinkRequest {
+	s.OpsUserCode = &v
+	return s
+}
+
+func (s *QueryWorkItemFeedShrinkRequest) SetOpsUserId(v string) *QueryWorkItemFeedShrinkRequest {
+	s.OpsUserId = &v
 	return s
 }
 

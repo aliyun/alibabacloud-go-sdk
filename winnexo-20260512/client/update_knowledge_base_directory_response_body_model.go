@@ -26,7 +26,7 @@ type UpdateKnowledgeBaseDirectoryResponseBody struct {
 	//
 	// 200
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// The category ID (echoed from the input parameter).
+	// The category ID, which is echoed from the request parameter.
 	//
 	// example:
 	//

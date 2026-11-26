@@ -11,12 +11,18 @@ type iCreateWorkflowInstanceRequest interface {
 	GoString() string
 	SetAcceptanceCriteria(v string) *CreateWorkflowInstanceRequest
 	GetAcceptanceCriteria() *string
+	SetAppToken(v string) *CreateWorkflowInstanceRequest
+	GetAppToken() *string
 	SetBusinessId(v string) *CreateWorkflowInstanceRequest
 	GetBusinessId() *string
 	SetCollaborationGroupId(v string) *CreateWorkflowInstanceRequest
 	GetCollaborationGroupId() *string
 	SetInitiator(v string) *CreateWorkflowInstanceRequest
 	GetInitiator() *string
+	SetOpsUserCode(v string) *CreateWorkflowInstanceRequest
+	GetOpsUserCode() *string
+	SetOpsUserId(v string) *CreateWorkflowInstanceRequest
+	GetOpsUserId() *string
 	SetPriority(v string) *CreateWorkflowInstanceRequest
 	GetPriority() *string
 	SetTemplateId(v string) *CreateWorkflowInstanceRequest
@@ -38,6 +44,12 @@ type CreateWorkflowInstanceRequest struct {
 	//
 	// Complete all approval nodes and generate the report
 	AcceptanceCriteria *string `json:"acceptanceCriteria,omitempty" xml:"acceptanceCriteria,omitempty"`
+	// 平台应用 Token（控制台签发）。传入后将以 opsUserId 或 opsUserCode 指定的用户身份执行
+	//
+	// example:
+	//
+	// wn_app_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+	AppToken *string `json:"appToken,omitempty" xml:"appToken,omitempty"`
 	// The unique requirement ID in the workspace. Repeated requests are idempotent.
 	//
 	// This parameter is required.
@@ -60,6 +72,18 @@ type CreateWorkflowInstanceRequest struct {
 	//
 	// External Initiator Zhang San
 	Initiator *string `json:"initiator,omitempty" xml:"initiator,omitempty"`
+	// 代理用户编码（租户内唯一），仅当应用凭证配置为 source_uid 时使用
+	//
+	// example:
+	//
+	// alice
+	OpsUserCode *string `json:"opsUserCode,omitempty" xml:"opsUserCode,omitempty"`
+	// 代理用户ID（WINNEXO 平台用户ID），仅当应用凭证配置为 winnexo_uid 时使用
+	//
+	// example:
+	//
+	// 10001
+	OpsUserId *string `json:"opsUserId,omitempty" xml:"opsUserId,omitempty"`
 	// The work item priority.
 	//
 	// example:
@@ -108,6 +132,10 @@ func (s *CreateWorkflowInstanceRequest) GetAcceptanceCriteria() *string {
 	return s.AcceptanceCriteria
 }
 
+func (s *CreateWorkflowInstanceRequest) GetAppToken() *string {
+	return s.AppToken
+}
+
 func (s *CreateWorkflowInstanceRequest) GetBusinessId() *string {
 	return s.BusinessId
 }
@@ -118,6 +146,14 @@ func (s *CreateWorkflowInstanceRequest) GetCollaborationGroupId() *string {
 
 func (s *CreateWorkflowInstanceRequest) GetInitiator() *string {
 	return s.Initiator
+}
+
+func (s *CreateWorkflowInstanceRequest) GetOpsUserCode() *string {
+	return s.OpsUserCode
+}
+
+func (s *CreateWorkflowInstanceRequest) GetOpsUserId() *string {
+	return s.OpsUserId
 }
 
 func (s *CreateWorkflowInstanceRequest) GetPriority() *string {
@@ -145,6 +181,11 @@ func (s *CreateWorkflowInstanceRequest) SetAcceptanceCriteria(v string) *CreateW
 	return s
 }
 
+func (s *CreateWorkflowInstanceRequest) SetAppToken(v string) *CreateWorkflowInstanceRequest {
+	s.AppToken = &v
+	return s
+}
+
 func (s *CreateWorkflowInstanceRequest) SetBusinessId(v string) *CreateWorkflowInstanceRequest {
 	s.BusinessId = &v
 	return s
@@ -157,6 +198,16 @@ func (s *CreateWorkflowInstanceRequest) SetCollaborationGroupId(v string) *Creat
 
 func (s *CreateWorkflowInstanceRequest) SetInitiator(v string) *CreateWorkflowInstanceRequest {
 	s.Initiator = &v
+	return s
+}
+
+func (s *CreateWorkflowInstanceRequest) SetOpsUserCode(v string) *CreateWorkflowInstanceRequest {
+	s.OpsUserCode = &v
+	return s
+}
+
+func (s *CreateWorkflowInstanceRequest) SetOpsUserId(v string) *CreateWorkflowInstanceRequest {
+	s.OpsUserId = &v
 	return s
 }
 

@@ -17,6 +17,10 @@ type iGetNodeDetailResponseBody interface {
 	GetAttemptSeq() *int64
 	SetCode(v string) *GetNodeDetailResponseBody
 	GetCode() *string
+	SetConversationArchiveStatus(v string) *GetNodeDetailResponseBody
+	GetConversationArchiveStatus() *string
+	SetConversationArchivedTime(v int64) *GetNodeDetailResponseBody
+	GetConversationArchivedTime() *int64
 	SetConversationId(v string) *GetNodeDetailResponseBody
 	GetConversationId() *string
 	SetConversationWritable(v bool) *GetNodeDetailResponseBody
@@ -76,6 +80,18 @@ type GetNodeDetailResponseBody struct {
 	//
 	// 200
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
+	// 会话归档状态 ACTIVE/ARCHIVING/ARCHIVED
+	//
+	// example:
+	//
+	// ACTIVE
+	ConversationArchiveStatus *string `json:"conversationArchiveStatus,omitempty" xml:"conversationArchiveStatus,omitempty"`
+	// 会话归档完成时间戳（秒）
+	//
+	// example:
+	//
+	// 1735689600
+	ConversationArchivedTime *int64 `json:"conversationArchivedTime,omitempty" xml:"conversationArchivedTime,omitempty"`
 	// The node conversation ID. This parameter is empty if no conversation is created.
 	//
 	// example:
@@ -198,6 +214,14 @@ func (s *GetNodeDetailResponseBody) GetCode() *string {
 	return s.Code
 }
 
+func (s *GetNodeDetailResponseBody) GetConversationArchiveStatus() *string {
+	return s.ConversationArchiveStatus
+}
+
+func (s *GetNodeDetailResponseBody) GetConversationArchivedTime() *int64 {
+	return s.ConversationArchivedTime
+}
+
 func (s *GetNodeDetailResponseBody) GetConversationId() *string {
 	return s.ConversationId
 }
@@ -279,6 +303,16 @@ func (s *GetNodeDetailResponseBody) SetAttemptSeq(v int64) *GetNodeDetailRespons
 
 func (s *GetNodeDetailResponseBody) SetCode(v string) *GetNodeDetailResponseBody {
 	s.Code = &v
+	return s
+}
+
+func (s *GetNodeDetailResponseBody) SetConversationArchiveStatus(v string) *GetNodeDetailResponseBody {
+	s.ConversationArchiveStatus = &v
+	return s
+}
+
+func (s *GetNodeDetailResponseBody) SetConversationArchivedTime(v int64) *GetNodeDetailResponseBody {
+	s.ConversationArchivedTime = &v
 	return s
 }
 

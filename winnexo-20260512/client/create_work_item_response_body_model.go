@@ -124,9 +124,9 @@ type CreateWorkItemResponseBody struct {
 	//
 	// example:
 	//
-	// example
+	// [{"resourceKind":"FILE","resourceId":"file_9401","refUrl":"https://files.winnexo.aliyun.com/report.md","title":"Sales Report","contentType":"text/markdown","sizeBytes":2048}]
 	Attachments []*CreateWorkItemResponseBodyAttachments `json:"attachments,omitempty" xml:"attachments,omitempty" type:"Repeated"`
-	// The business status.
+	// The business status in the seven-state model.
 	//
 	// example:
 	//
@@ -144,7 +144,7 @@ type CreateWorkItemResponseBody struct {
 	//
 	// false
 	CanManage *bool `json:"canManage,omitempty" xml:"canManage,omitempty"`
-	// Indicates whether the visibility scope can be adjusted independently.
+	// Indicates whether the caller can independently adjust the visibility scope.
 	//
 	// example:
 	//
@@ -162,7 +162,7 @@ type CreateWorkItemResponseBody struct {
 	//
 	// 200
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// The collaboration workspace ID.
+	// The collaboration space ID.
 	//
 	// example:
 	//
@@ -172,7 +172,7 @@ type CreateWorkItemResponseBody struct {
 	//
 	// example:
 	//
-	// example
+	// [10001,10002]
 	CollaboratorUserIds []*int64 `json:"collaboratorUserIds,omitempty" xml:"collaboratorUserIds,omitempty" type:"Repeated"`
 	// The ID of the associated conversation.
 	//
@@ -180,7 +180,7 @@ type CreateWorkItemResponseBody struct {
 	//
 	// example
 	ConversationId *string `json:"conversationId,omitempty" xml:"conversationId,omitempty"`
-	// The creation time, in ISO 8601 format.
+	// The time when the item was created (ISO 8601).
 	//
 	// example:
 	//
@@ -246,7 +246,7 @@ type CreateWorkItemResponseBody struct {
 	//
 	// WORKFLOW
 	ItemType *string `json:"itemType,omitempty" xml:"itemType,omitempty"`
-	// The time when the item last entered the processing state, in ISO 8601 format.
+	// The time when the item last entered the processing state (ISO 8601).
 	//
 	// example:
 	//
@@ -258,11 +258,11 @@ type CreateWorkItemResponseBody struct {
 	//
 	// false
 	LegacyTopic *bool `json:"legacyTopic,omitempty" xml:"legacyTopic,omitempty"`
-	// The list of user IDs for visible members.
+	// The list of user IDs of members who can view the item.
 	//
 	// example:
 	//
-	// example
+	// [10001,10002]
 	MemberUserIds []*int64 `json:"memberUserIds,omitempty" xml:"memberUserIds,omitempty" type:"Repeated"`
 	// The error message.
 	//
@@ -270,7 +270,7 @@ type CreateWorkItemResponseBody struct {
 	//
 	// The requested resource does not exist
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// The modification time, in ISO 8601 format.
+	// The time when the item was last modified (ISO 8601).
 	//
 	// example:
 	//
@@ -282,7 +282,7 @@ type CreateWorkItemResponseBody struct {
 	//
 	// 1
 	OwnerUserId *int64 `json:"ownerUserId,omitempty" xml:"ownerUserId,omitempty"`
-	// Indicates whether the item is pinned by the caller.
+	// Indicates whether the item is pinned to the top by the caller.
 	//
 	// example:
 	//
@@ -306,37 +306,37 @@ type CreateWorkItemResponseBody struct {
 	//
 	// 1
 	ProgressTotal *int64 `json:"progressTotal,omitempty" xml:"progressTotal,omitempty"`
-	// The request ID.
+	// The request tracking ID.
 	//
 	// example:
 	//
 	// 019FF406-1B10-0065-A97D-2D1920C2A03D
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// The execution ID of the task.
+	// The task execution ID.
 	//
 	// example:
 	//
 	// example
 	SourceExecutionId *string `json:"sourceExecutionId,omitempty" xml:"sourceExecutionId,omitempty"`
-	// The source ID of the task.
+	// The task source ID.
 	//
 	// example:
 	//
 	// example
 	SourceTaskId *string `json:"sourceTaskId,omitempty" xml:"sourceTaskId,omitempty"`
-	// The source name of the task.
+	// The task source name.
 	//
 	// example:
 	//
 	// example
 	SourceTaskName *string `json:"sourceTaskName,omitempty" xml:"sourceTaskName,omitempty"`
-	// The trigger key of the task.
+	// The task trigger key.
 	//
 	// example:
 	//
 	// example
 	SourceTriggerKey *string `json:"sourceTriggerKey,omitempty" xml:"sourceTriggerKey,omitempty"`
-	// The source type of the task.
+	// The task source type.
 	//
 	// example:
 	//
@@ -348,19 +348,19 @@ type CreateWorkItemResponseBody struct {
 	//
 	// example
 	Title *string `json:"title,omitempty" xml:"title,omitempty"`
-	// The time zone when the task is triggered.
+	// The task trigger time zone.
 	//
 	// example:
 	//
 	// example
 	TriggerTimezone *string `json:"triggerTimezone,omitempty" xml:"triggerTimezone,omitempty"`
-	// The trigger time of the task, in ISO 8601 format.
+	// The time when the task was triggered (ISO 8601).
 	//
 	// example:
 	//
 	// example
 	TriggeredAt *string `json:"triggeredAt,omitempty" xml:"triggeredAt,omitempty"`
-	// The optimistic version number.
+	// The optimistic locking version number.
 	//
 	// example:
 	//
@@ -384,7 +384,7 @@ type CreateWorkItemResponseBody struct {
 	//
 	// example
 	WorkItemId *string `json:"workItemId,omitempty" xml:"workItemId,omitempty"`
-	// The four-state workflow status projection.
+	// The workflow status projection in the four-state model.
 	//
 	// example:
 	//
@@ -394,7 +394,7 @@ type CreateWorkItemResponseBody struct {
 	//
 	// example:
 	//
-	// example
+	// ["tpl_9401","tpl_9402"]
 	WorkflowTemplateIds []*string `json:"workflowTemplateIds,omitempty" xml:"workflowTemplateIds,omitempty" type:"Repeated"`
 }
 
@@ -864,7 +864,7 @@ type CreateWorkItemResponseBodyAttachments struct {
 	//
 	// example
 	ContentType *string `json:"contentType,omitempty" xml:"contentType,omitempty"`
-	// The access URL of the attachment, prefixed with an OpenAPI 302 redirect.
+	// The access URL of the attachment (OpenAPI 302 front end).
 	//
 	// example:
 	//
@@ -882,7 +882,7 @@ type CreateWorkItemResponseBodyAttachments struct {
 	//
 	// example
 	ResourceKind *string `json:"resourceKind,omitempty" xml:"resourceKind,omitempty"`
-	// The size of the attachment in bytes.
+	// The attachment size in bytes.
 	//
 	// example:
 	//

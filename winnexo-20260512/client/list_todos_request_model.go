@@ -9,6 +9,8 @@ type iListTodosRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAppToken(v string) *ListTodosRequest
+	GetAppToken() *string
 	SetCollaborationGroupId(v string) *ListTodosRequest
 	GetCollaborationGroupId() *string
 	SetKeyword(v string) *ListTodosRequest
@@ -17,6 +19,10 @@ type iListTodosRequest interface {
 	GetMaxResults() *int64
 	SetNextToken(v string) *ListTodosRequest
 	GetNextToken() *string
+	SetOpsUserCode(v string) *ListTodosRequest
+	GetOpsUserCode() *string
+	SetOpsUserId(v string) *ListTodosRequest
+	GetOpsUserId() *string
 	SetPage(v int64) *ListTodosRequest
 	GetPage() *int64
 	SetPageSize(v int64) *ListTodosRequest
@@ -36,7 +42,13 @@ type iListTodosRequest interface {
 }
 
 type ListTodosRequest struct {
-	// The collaboration workspace ID. This is an optional filter. If not specified, items from all workspaces are returned.
+	// The platform application token issued by the console. If specified, the operation is performed as the user identified by opsUserId or opsUserCode.
+	//
+	// example:
+	//
+	// wn_app_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+	AppToken *string `json:"appToken,omitempty" xml:"appToken,omitempty"`
+	// The collaboration workspace ID. This is an optional filter. If not specified, all workspaces are included.
 	//
 	// example:
 	//
@@ -60,6 +72,18 @@ type ListTodosRequest struct {
 	//
 	// example
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
+	// The proxy user code, which is unique within the tenant. This parameter is used only when the application credential is configured as source_uid.
+	//
+	// example:
+	//
+	// alice
+	OpsUserCode *string `json:"opsUserCode,omitempty" xml:"opsUserCode,omitempty"`
+	// The proxy user ID, which is the WINNEXO platform user ID. This parameter is used only when the application credential is configured as winnexo_uid.
+	//
+	// example:
+	//
+	// 10001
+	OpsUserId *string `json:"opsUserId,omitempty" xml:"opsUserId,omitempty"`
 	// The page number. This parameter is ignored if nextToken is specified.
 	//
 	// example:
@@ -72,17 +96,17 @@ type ListTodosRequest struct {
 	//
 	// 20
 	PageSize *int64 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	// The priority filter. Valid values: HIGH, MEDIUM, and LOW.
+	// The priority filter. Valid values: HIGH, MEDIUM, LOW.
 	//
 	// example:
 	//
-	// HIGH
+	// ["HIGH","MEDIUM"]
 	Priorities []*string `json:"priorities,omitempty" xml:"priorities,omitempty" type:"Repeated"`
-	// The read status filter. Valid values: UNREAD and READ. The status is determined by the readAt field of the assignee.
+	// The read status filter. Valid values: UNREAD, READ. The status is determined by the readAt time of the assignee.
 	//
 	// example:
 	//
-	// UNREAD
+	// ["UNREAD","READ"]
 	ReadStatus []*string `json:"readStatus,omitempty" xml:"readStatus,omitempty" type:"Repeated"`
 	// The sorting method.
 	//
@@ -90,17 +114,17 @@ type ListTodosRequest struct {
 	//
 	// DEFAULT
 	SortBy *string `json:"sortBy,omitempty" xml:"sortBy,omitempty"`
-	// The to-do type filter. Valid values: WORKFLOW and OPEN_API.
+	// The to-do type filter. Valid values: WORKFLOW, OPEN_API.
 	//
 	// example:
 	//
-	// WORKFLOW
+	// ["WORKFLOW","OPEN_API"]
 	SourceTypes []*string `json:"sourceTypes,omitempty" xml:"sourceTypes,omitempty" type:"Repeated"`
-	// The to-do status filter. Valid values: PENDING, COMPLETED, and CANCELLED.
+	// The to-do status filter. Valid values: PENDING, COMPLETED, CANCELLED.
 	//
 	// example:
 	//
-	// PENDING
+	// ["PENDING","COMPLETED"]
 	Statuses []*string `json:"statuses,omitempty" xml:"statuses,omitempty" type:"Repeated"`
 	// The tenant ID. This is a common parameter. If not specified, the default tenant of the caller is used.
 	//
@@ -118,6 +142,10 @@ func (s ListTodosRequest) GoString() string {
 	return s.String()
 }
 
+func (s *ListTodosRequest) GetAppToken() *string {
+	return s.AppToken
+}
+
 func (s *ListTodosRequest) GetCollaborationGroupId() *string {
 	return s.CollaborationGroupId
 }
@@ -132,6 +160,14 @@ func (s *ListTodosRequest) GetMaxResults() *int64 {
 
 func (s *ListTodosRequest) GetNextToken() *string {
 	return s.NextToken
+}
+
+func (s *ListTodosRequest) GetOpsUserCode() *string {
+	return s.OpsUserCode
+}
+
+func (s *ListTodosRequest) GetOpsUserId() *string {
+	return s.OpsUserId
 }
 
 func (s *ListTodosRequest) GetPage() *int64 {
@@ -166,6 +202,11 @@ func (s *ListTodosRequest) GetTenantId() *string {
 	return s.TenantId
 }
 
+func (s *ListTodosRequest) SetAppToken(v string) *ListTodosRequest {
+	s.AppToken = &v
+	return s
+}
+
 func (s *ListTodosRequest) SetCollaborationGroupId(v string) *ListTodosRequest {
 	s.CollaborationGroupId = &v
 	return s
@@ -183,6 +224,16 @@ func (s *ListTodosRequest) SetMaxResults(v int64) *ListTodosRequest {
 
 func (s *ListTodosRequest) SetNextToken(v string) *ListTodosRequest {
 	s.NextToken = &v
+	return s
+}
+
+func (s *ListTodosRequest) SetOpsUserCode(v string) *ListTodosRequest {
+	s.OpsUserCode = &v
+	return s
+}
+
+func (s *ListTodosRequest) SetOpsUserId(v string) *ListTodosRequest {
+	s.OpsUserId = &v
 	return s
 }
 

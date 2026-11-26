@@ -98,7 +98,7 @@ type CreatePersonalAlidingDocResponseBody struct {
 	//
 	// example:
 	//
-	// {\\"servicesInstances\\": {}, \\"servicesWithPendingChanges\\": []}
+	// {\"servicesInstances\": {}, \"servicesWithPendingChanges\": []}
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
 }
 

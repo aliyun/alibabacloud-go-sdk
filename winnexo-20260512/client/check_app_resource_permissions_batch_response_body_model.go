@@ -32,7 +32,7 @@ type CheckAppResourcePermissionsBatchResponseBody struct {
 	//
 	// The requested resource does not exist
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// The request ID.
+	// The request tracking ID.
 	//
 	// example:
 	//
@@ -100,7 +100,7 @@ func (s *CheckAppResourcePermissionsBatchResponseBody) Validate() error {
 }
 
 type CheckAppResourcePermissionsBatchResponseBodyResults struct {
-	// Indicates whether the user has the required permissions.
+	// Indicates whether the user has the permission.
 	//
 	// example:
 	//
@@ -110,9 +110,9 @@ type CheckAppResourcePermissionsBatchResponseBodyResults struct {
 	//
 	// example:
 	//
-	// APP/VIEW
+	// VIEW
 	Permission *string `json:"permission,omitempty" xml:"permission,omitempty"`
-	// The dot-separated resource key whose first segment is the application key.
+	// The dot-separated resource key. The first segment is the APP application key.
 	//
 	// example:
 	//

@@ -40,7 +40,7 @@ type CreateGroupPublicUrlResponseBody struct {
 	//
 	// 200
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// The folder ID.
+	// The ID of the folder.
 	//
 	// example:
 	//
@@ -52,7 +52,7 @@ type CreateGroupPublicUrlResponseBody struct {
 	//
 	// 2025-11-12T03:08:56Z
 	GmtCreate *string `json:"gmtCreate,omitempty" xml:"gmtCreate,omitempty"`
-	// The project group ID.
+	// The ID of the project group.
 	//
 	// example:
 	//
@@ -64,7 +64,7 @@ type CreateGroupPublicUrlResponseBody struct {
 	//
 	// success
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// The knowledge base name.
+	// The name of the knowledge base.
 	//
 	// example:
 	//
@@ -76,27 +76,27 @@ type CreateGroupPublicUrlResponseBody struct {
 	//
 	// https://mp.weixin.qq.com/s/iHqLKhkJcOyHNCOGejO32A
 	OriginalUrl *string `json:"originalUrl,omitempty" xml:"originalUrl,omitempty"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
 	// 019FF406-1B10-0065-A97D-2D1920C2A03D
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// The permission scope.
+	// The scope of permissions.
 	//
 	// example:
 	//
 	// PERSONAL
 	Scope *string `json:"scope,omitempty" xml:"scope,omitempty"`
-	// The source ID.
+	// The ID of the source.
 	//
 	// example:
 	//
 	// exampleSourceId
 	SourceId *string `json:"sourceId,omitempty" xml:"sourceId,omitempty"`
-	// The refund status. If a refund is in progress, query to confirm the refund status. Valid values:
+	// The refund status. If a refund is in progress, you must query and confirm the refund status. Valid values:
 	//
-	// - SUCCESS: All succeeded.
+	// - SUCCESS: All operations succeeded.
 	//
 	// - FAIL: Failed.
 	//
@@ -104,7 +104,7 @@ type CreateGroupPublicUrlResponseBody struct {
 	//
 	// - EXPIRE: Expired.
 	//
-	// - PAYING: Refund in progress.
+	// - PAYING: Refunding.
 	//
 	// - TERMINATE: Refund terminated.
 	//

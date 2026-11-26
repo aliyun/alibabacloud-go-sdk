@@ -34,7 +34,7 @@ type CountTodosResponseBody struct {
 	//
 	// The requested resource does not exist
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// The number of pending items with the primary status of PENDING.
+	// The number of pending items with the PENDING primary status.
 	//
 	// example:
 	//

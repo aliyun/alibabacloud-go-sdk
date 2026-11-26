@@ -9,10 +9,16 @@ type iListCollaborationGroupMembersRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAppToken(v string) *ListCollaborationGroupMembersRequest
+	GetAppToken() *string
 	SetCollaborationGroupId(v string) *ListCollaborationGroupMembersRequest
 	GetCollaborationGroupId() *string
 	SetKeyword(v string) *ListCollaborationGroupMembersRequest
 	GetKeyword() *string
+	SetOpsUserCode(v string) *ListCollaborationGroupMembersRequest
+	GetOpsUserCode() *string
+	SetOpsUserId(v string) *ListCollaborationGroupMembersRequest
+	GetOpsUserId() *string
 	SetPage(v int64) *ListCollaborationGroupMembersRequest
 	GetPage() *int64
 	SetPageSize(v int64) *ListCollaborationGroupMembersRequest
@@ -22,6 +28,12 @@ type iListCollaborationGroupMembersRequest interface {
 }
 
 type ListCollaborationGroupMembersRequest struct {
+	// The platform application token issued by the console. If specified, the operation is executed as the user specified by opsUserId or opsUserCode.
+	//
+	// example:
+	//
+	// wn_app_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+	AppToken *string `json:"appToken,omitempty" xml:"appToken,omitempty"`
 	// The collaboration workspace ID.
 	//
 	// This parameter is required.
@@ -36,7 +48,19 @@ type ListCollaborationGroupMembersRequest struct {
 	//
 	// Sales
 	Keyword *string `json:"keyword,omitempty" xml:"keyword,omitempty"`
-	// The page number. Pages start from 1.
+	// The proxy user code, which is unique within the tenant. This parameter is used only when the application credential is configured as source_uid.
+	//
+	// example:
+	//
+	// alice
+	OpsUserCode *string `json:"opsUserCode,omitempty" xml:"opsUserCode,omitempty"`
+	// The proxy user ID, which is the WINNEXO platform user ID. This parameter is used only when the application credential is configured as winnexo_uid.
+	//
+	// example:
+	//
+	// 10001
+	OpsUserId *string `json:"opsUserId,omitempty" xml:"opsUserId,omitempty"`
+	// The page number, starting from 1.
 	//
 	// example:
 	//
@@ -64,12 +88,24 @@ func (s ListCollaborationGroupMembersRequest) GoString() string {
 	return s.String()
 }
 
+func (s *ListCollaborationGroupMembersRequest) GetAppToken() *string {
+	return s.AppToken
+}
+
 func (s *ListCollaborationGroupMembersRequest) GetCollaborationGroupId() *string {
 	return s.CollaborationGroupId
 }
 
 func (s *ListCollaborationGroupMembersRequest) GetKeyword() *string {
 	return s.Keyword
+}
+
+func (s *ListCollaborationGroupMembersRequest) GetOpsUserCode() *string {
+	return s.OpsUserCode
+}
+
+func (s *ListCollaborationGroupMembersRequest) GetOpsUserId() *string {
+	return s.OpsUserId
 }
 
 func (s *ListCollaborationGroupMembersRequest) GetPage() *int64 {
@@ -84,6 +120,11 @@ func (s *ListCollaborationGroupMembersRequest) GetTenantId() *string {
 	return s.TenantId
 }
 
+func (s *ListCollaborationGroupMembersRequest) SetAppToken(v string) *ListCollaborationGroupMembersRequest {
+	s.AppToken = &v
+	return s
+}
+
 func (s *ListCollaborationGroupMembersRequest) SetCollaborationGroupId(v string) *ListCollaborationGroupMembersRequest {
 	s.CollaborationGroupId = &v
 	return s
@@ -91,6 +132,16 @@ func (s *ListCollaborationGroupMembersRequest) SetCollaborationGroupId(v string)
 
 func (s *ListCollaborationGroupMembersRequest) SetKeyword(v string) *ListCollaborationGroupMembersRequest {
 	s.Keyword = &v
+	return s
+}
+
+func (s *ListCollaborationGroupMembersRequest) SetOpsUserCode(v string) *ListCollaborationGroupMembersRequest {
+	s.OpsUserCode = &v
+	return s
+}
+
+func (s *ListCollaborationGroupMembersRequest) SetOpsUserId(v string) *ListCollaborationGroupMembersRequest {
+	s.OpsUserId = &v
 	return s
 }
 

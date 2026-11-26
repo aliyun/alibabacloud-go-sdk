@@ -9,6 +9,10 @@ type iCreateScheduledTaskRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAppToken(v string) *CreateScheduledTaskRequest
+	GetAppToken() *string
+	SetAutoPreference(v string) *CreateScheduledTaskRequest
+	GetAutoPreference() *string
 	SetCollaborationGroupId(v string) *CreateScheduledTaskRequest
 	GetCollaborationGroupId() *string
 	SetDescription(v []*CreateScheduledTaskRequestDescription) *CreateScheduledTaskRequest
@@ -21,6 +25,10 @@ type iCreateScheduledTaskRequest interface {
 	GetModel() *string
 	SetName(v string) *CreateScheduledTaskRequest
 	GetName() *string
+	SetOpsUserCode(v string) *CreateScheduledTaskRequest
+	GetOpsUserCode() *string
+	SetOpsUserId(v string) *CreateScheduledTaskRequest
+	GetOpsUserId() *string
 	SetOutputMode(v string) *CreateScheduledTaskRequest
 	GetOutputMode() *string
 	SetSegments(v []*CreateScheduledTaskRequestSegments) *CreateScheduledTaskRequest
@@ -38,6 +46,18 @@ type iCreateScheduledTaskRequest interface {
 }
 
 type CreateScheduledTaskRequest struct {
+	// 平台应用 Token（控制台签发）。传入后将以 opsUserId 或 opsUserCode 指定的用户身份执行
+	//
+	// example:
+	//
+	// wn_app_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+	AppToken *string `json:"appToken,omitempty" xml:"appToken,omitempty"`
+	// AUTO 偏好：none=默认、performance=效果优先、credit=成本优先；创建缺省为 none，固定模型可保存但不生效
+	//
+	// example:
+	//
+	// performance
+	AutoPreference *string `json:"autoPreference,omitempty" xml:"autoPreference,omitempty"`
 	// The ID of the associated collaboration group (such as cg_101). If this parameter is passed, a group space task is created, and the caller must be a valid group member. If this parameter is empty, a personal task is created.
 	//
 	// example:
@@ -72,6 +92,18 @@ type CreateScheduledTaskRequest struct {
 	//
 	// Sample name.pdf
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// 代理用户编码（租户内唯一），仅当应用凭证配置为 source_uid 时使用
+	//
+	// example:
+	//
+	// alice
+	OpsUserCode *string `json:"opsUserCode,omitempty" xml:"opsUserCode,omitempty"`
+	// 代理用户ID（WINNEXO 平台用户ID），仅当应用凭证配置为 winnexo_uid 时使用
+	//
+	// example:
+	//
+	// 10001
+	OpsUserId *string `json:"opsUserId,omitempty" xml:"opsUserId,omitempty"`
 	// The output conversation mode. Default value: NEW_CONVERSATION.
 	//
 	// example:
@@ -112,6 +144,14 @@ func (s CreateScheduledTaskRequest) GoString() string {
 	return s.String()
 }
 
+func (s *CreateScheduledTaskRequest) GetAppToken() *string {
+	return s.AppToken
+}
+
+func (s *CreateScheduledTaskRequest) GetAutoPreference() *string {
+	return s.AutoPreference
+}
+
 func (s *CreateScheduledTaskRequest) GetCollaborationGroupId() *string {
 	return s.CollaborationGroupId
 }
@@ -134,6 +174,14 @@ func (s *CreateScheduledTaskRequest) GetModel() *string {
 
 func (s *CreateScheduledTaskRequest) GetName() *string {
 	return s.Name
+}
+
+func (s *CreateScheduledTaskRequest) GetOpsUserCode() *string {
+	return s.OpsUserCode
+}
+
+func (s *CreateScheduledTaskRequest) GetOpsUserId() *string {
+	return s.OpsUserId
 }
 
 func (s *CreateScheduledTaskRequest) GetOutputMode() *string {
@@ -164,6 +212,16 @@ func (s *CreateScheduledTaskRequest) GetVisibleMemberUserIds() []*string {
 	return s.VisibleMemberUserIds
 }
 
+func (s *CreateScheduledTaskRequest) SetAppToken(v string) *CreateScheduledTaskRequest {
+	s.AppToken = &v
+	return s
+}
+
+func (s *CreateScheduledTaskRequest) SetAutoPreference(v string) *CreateScheduledTaskRequest {
+	s.AutoPreference = &v
+	return s
+}
+
 func (s *CreateScheduledTaskRequest) SetCollaborationGroupId(v string) *CreateScheduledTaskRequest {
 	s.CollaborationGroupId = &v
 	return s
@@ -191,6 +249,16 @@ func (s *CreateScheduledTaskRequest) SetModel(v string) *CreateScheduledTaskRequ
 
 func (s *CreateScheduledTaskRequest) SetName(v string) *CreateScheduledTaskRequest {
 	s.Name = &v
+	return s
+}
+
+func (s *CreateScheduledTaskRequest) SetOpsUserCode(v string) *CreateScheduledTaskRequest {
+	s.OpsUserCode = &v
+	return s
+}
+
+func (s *CreateScheduledTaskRequest) SetOpsUserId(v string) *CreateScheduledTaskRequest {
+	s.OpsUserId = &v
 	return s
 }
 

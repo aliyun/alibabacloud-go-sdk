@@ -9,6 +9,8 @@ type iRunSkillShrinkRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAppToken(v string) *RunSkillShrinkRequest
+	GetAppToken() *string
 	SetArgumentsShrink(v string) *RunSkillShrinkRequest
 	GetArgumentsShrink() *string
 	SetClientToken(v string) *RunSkillShrinkRequest
@@ -17,6 +19,10 @@ type iRunSkillShrinkRequest interface {
 	GetModel() *string
 	SetOperatingObjectName(v string) *RunSkillShrinkRequest
 	GetOperatingObjectName() *string
+	SetOpsUserCode(v string) *RunSkillShrinkRequest
+	GetOpsUserCode() *string
+	SetOpsUserId(v string) *RunSkillShrinkRequest
+	GetOpsUserId() *string
 	SetSkillCode(v string) *RunSkillShrinkRequest
 	GetSkillCode() *string
 	SetSkillName(v string) *RunSkillShrinkRequest
@@ -26,6 +32,12 @@ type iRunSkillShrinkRequest interface {
 }
 
 type RunSkillShrinkRequest struct {
+	// 平台应用 Token（控制台签发）。传入后将以 opsUserId 或 opsUserCode 指定的用户身份执行
+	//
+	// example:
+	//
+	// wn_app_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+	AppToken *string `json:"appToken,omitempty" xml:"appToken,omitempty"`
 	// The placeholder variable value that stores the error message for a fault.
 	//
 	// example:
@@ -50,6 +62,18 @@ type RunSkillShrinkRequest struct {
 	//
 	// string_value
 	OperatingObjectName *string `json:"operatingObjectName,omitempty" xml:"operatingObjectName,omitempty"`
+	// 代理用户编码（租户内唯一），仅当应用凭证配置为 source_uid 时使用
+	//
+	// example:
+	//
+	// alice
+	OpsUserCode *string `json:"opsUserCode,omitempty" xml:"opsUserCode,omitempty"`
+	// 代理用户ID（WINNEXO 平台用户ID），仅当应用凭证配置为 winnexo_uid 时使用
+	//
+	// example:
+	//
+	// 10001
+	OpsUserId *string `json:"opsUserId,omitempty" xml:"opsUserId,omitempty"`
 	// The skill code (globally unique). This parameter takes priority over skillName.
 	//
 	// example:
@@ -78,6 +102,10 @@ func (s RunSkillShrinkRequest) GoString() string {
 	return s.String()
 }
 
+func (s *RunSkillShrinkRequest) GetAppToken() *string {
+	return s.AppToken
+}
+
 func (s *RunSkillShrinkRequest) GetArgumentsShrink() *string {
 	return s.ArgumentsShrink
 }
@@ -94,6 +122,14 @@ func (s *RunSkillShrinkRequest) GetOperatingObjectName() *string {
 	return s.OperatingObjectName
 }
 
+func (s *RunSkillShrinkRequest) GetOpsUserCode() *string {
+	return s.OpsUserCode
+}
+
+func (s *RunSkillShrinkRequest) GetOpsUserId() *string {
+	return s.OpsUserId
+}
+
 func (s *RunSkillShrinkRequest) GetSkillCode() *string {
 	return s.SkillCode
 }
@@ -104,6 +140,11 @@ func (s *RunSkillShrinkRequest) GetSkillName() *string {
 
 func (s *RunSkillShrinkRequest) GetTenantId() *string {
 	return s.TenantId
+}
+
+func (s *RunSkillShrinkRequest) SetAppToken(v string) *RunSkillShrinkRequest {
+	s.AppToken = &v
+	return s
 }
 
 func (s *RunSkillShrinkRequest) SetArgumentsShrink(v string) *RunSkillShrinkRequest {
@@ -123,6 +164,16 @@ func (s *RunSkillShrinkRequest) SetModel(v string) *RunSkillShrinkRequest {
 
 func (s *RunSkillShrinkRequest) SetOperatingObjectName(v string) *RunSkillShrinkRequest {
 	s.OperatingObjectName = &v
+	return s
+}
+
+func (s *RunSkillShrinkRequest) SetOpsUserCode(v string) *RunSkillShrinkRequest {
+	s.OpsUserCode = &v
+	return s
+}
+
+func (s *RunSkillShrinkRequest) SetOpsUserId(v string) *RunSkillShrinkRequest {
+	s.OpsUserId = &v
 	return s
 }
 

@@ -9,8 +9,14 @@ type iDeleteAppResourcePermissionsRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAppToken(v string) *DeleteAppResourcePermissionsRequest
+	GetAppToken() *string
 	SetItems(v []*DeleteAppResourcePermissionsRequestItems) *DeleteAppResourcePermissionsRequest
 	GetItems() []*DeleteAppResourcePermissionsRequestItems
+	SetOpsUserCode(v string) *DeleteAppResourcePermissionsRequest
+	GetOpsUserCode() *string
+	SetOpsUserId(v string) *DeleteAppResourcePermissionsRequest
+	GetOpsUserId() *string
 	SetResourceTenantId(v string) *DeleteAppResourcePermissionsRequest
 	GetResourceTenantId() *string
 	SetTenantId(v string) *DeleteAppResourcePermissionsRequest
@@ -18,10 +24,28 @@ type iDeleteAppResourcePermissionsRequest interface {
 }
 
 type DeleteAppResourcePermissionsRequest struct {
+	// 平台应用 Token（控制台签发）。传入后将以 opsUserId 或 opsUserCode 指定的用户身份执行
+	//
+	// example:
+	//
+	// wn_app_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+	AppToken *string `json:"appToken,omitempty" xml:"appToken,omitempty"`
 	// The scope of permission revocation.
 	//
 	// This parameter is required.
 	Items []*DeleteAppResourcePermissionsRequestItems `json:"items,omitempty" xml:"items,omitempty" type:"Repeated"`
+	// 代理用户编码（租户内唯一），仅当应用凭证配置为 source_uid 时使用
+	//
+	// example:
+	//
+	// alice
+	OpsUserCode *string `json:"opsUserCode,omitempty" xml:"opsUserCode,omitempty"`
+	// 代理用户ID（WINNEXO 平台用户ID），仅当应用凭证配置为 winnexo_uid 时使用
+	//
+	// example:
+	//
+	// 10001
+	OpsUserId *string `json:"opsUserId,omitempty" xml:"opsUserId,omitempty"`
 	// The scope of permission revocation.
 	//
 	// example:
@@ -44,8 +68,20 @@ func (s DeleteAppResourcePermissionsRequest) GoString() string {
 	return s.String()
 }
 
+func (s *DeleteAppResourcePermissionsRequest) GetAppToken() *string {
+	return s.AppToken
+}
+
 func (s *DeleteAppResourcePermissionsRequest) GetItems() []*DeleteAppResourcePermissionsRequestItems {
 	return s.Items
+}
+
+func (s *DeleteAppResourcePermissionsRequest) GetOpsUserCode() *string {
+	return s.OpsUserCode
+}
+
+func (s *DeleteAppResourcePermissionsRequest) GetOpsUserId() *string {
+	return s.OpsUserId
 }
 
 func (s *DeleteAppResourcePermissionsRequest) GetResourceTenantId() *string {
@@ -56,8 +92,23 @@ func (s *DeleteAppResourcePermissionsRequest) GetTenantId() *string {
 	return s.TenantId
 }
 
+func (s *DeleteAppResourcePermissionsRequest) SetAppToken(v string) *DeleteAppResourcePermissionsRequest {
+	s.AppToken = &v
+	return s
+}
+
 func (s *DeleteAppResourcePermissionsRequest) SetItems(v []*DeleteAppResourcePermissionsRequestItems) *DeleteAppResourcePermissionsRequest {
 	s.Items = v
+	return s
+}
+
+func (s *DeleteAppResourcePermissionsRequest) SetOpsUserCode(v string) *DeleteAppResourcePermissionsRequest {
+	s.OpsUserCode = &v
+	return s
+}
+
+func (s *DeleteAppResourcePermissionsRequest) SetOpsUserId(v string) *DeleteAppResourcePermissionsRequest {
+	s.OpsUserId = &v
 	return s
 }
 

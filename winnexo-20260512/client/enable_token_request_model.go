@@ -22,7 +22,7 @@ type EnableTokenRequest struct {
   // 
   // 10000
   TenantId *string `json:"tenantId,omitempty" xml:"tenantId,omitempty"`
-  // The ID of the target user (WINNEXO platform user ID). If this parameter is left empty, the operation is performed on the caller. Administrators can specify another user\\"s ID to perform the operation on behalf of that user.
+  // The ID of the target user (WINNEXO platform user ID). If this parameter is left empty, the operation is performed on the caller. Administrators can specify another user\"s ID to perform the operation on behalf of that user.
   // 
   // example:
   // 

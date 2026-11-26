@@ -11,12 +11,18 @@ type iCreateWorkflowInstanceShrinkRequest interface {
 	GoString() string
 	SetAcceptanceCriteria(v string) *CreateWorkflowInstanceShrinkRequest
 	GetAcceptanceCriteria() *string
+	SetAppToken(v string) *CreateWorkflowInstanceShrinkRequest
+	GetAppToken() *string
 	SetBusinessId(v string) *CreateWorkflowInstanceShrinkRequest
 	GetBusinessId() *string
 	SetCollaborationGroupId(v string) *CreateWorkflowInstanceShrinkRequest
 	GetCollaborationGroupId() *string
 	SetInitiator(v string) *CreateWorkflowInstanceShrinkRequest
 	GetInitiator() *string
+	SetOpsUserCode(v string) *CreateWorkflowInstanceShrinkRequest
+	GetOpsUserCode() *string
+	SetOpsUserId(v string) *CreateWorkflowInstanceShrinkRequest
+	GetOpsUserId() *string
 	SetPriority(v string) *CreateWorkflowInstanceShrinkRequest
 	GetPriority() *string
 	SetTemplateId(v string) *CreateWorkflowInstanceShrinkRequest
@@ -38,6 +44,12 @@ type CreateWorkflowInstanceShrinkRequest struct {
 	//
 	// Complete all approval nodes and generate the report
 	AcceptanceCriteria *string `json:"acceptanceCriteria,omitempty" xml:"acceptanceCriteria,omitempty"`
+	// 平台应用 Token（控制台签发）。传入后将以 opsUserId 或 opsUserCode 指定的用户身份执行
+	//
+	// example:
+	//
+	// wn_app_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+	AppToken *string `json:"appToken,omitempty" xml:"appToken,omitempty"`
 	// The unique requirement ID in the workspace. Repeated requests are idempotent.
 	//
 	// This parameter is required.
@@ -60,6 +72,18 @@ type CreateWorkflowInstanceShrinkRequest struct {
 	//
 	// External Initiator Zhang San
 	Initiator *string `json:"initiator,omitempty" xml:"initiator,omitempty"`
+	// 代理用户编码（租户内唯一），仅当应用凭证配置为 source_uid 时使用
+	//
+	// example:
+	//
+	// alice
+	OpsUserCode *string `json:"opsUserCode,omitempty" xml:"opsUserCode,omitempty"`
+	// 代理用户ID（WINNEXO 平台用户ID），仅当应用凭证配置为 winnexo_uid 时使用
+	//
+	// example:
+	//
+	// 10001
+	OpsUserId *string `json:"opsUserId,omitempty" xml:"opsUserId,omitempty"`
 	// The work item priority.
 	//
 	// example:
@@ -108,6 +132,10 @@ func (s *CreateWorkflowInstanceShrinkRequest) GetAcceptanceCriteria() *string {
 	return s.AcceptanceCriteria
 }
 
+func (s *CreateWorkflowInstanceShrinkRequest) GetAppToken() *string {
+	return s.AppToken
+}
+
 func (s *CreateWorkflowInstanceShrinkRequest) GetBusinessId() *string {
 	return s.BusinessId
 }
@@ -118,6 +146,14 @@ func (s *CreateWorkflowInstanceShrinkRequest) GetCollaborationGroupId() *string 
 
 func (s *CreateWorkflowInstanceShrinkRequest) GetInitiator() *string {
 	return s.Initiator
+}
+
+func (s *CreateWorkflowInstanceShrinkRequest) GetOpsUserCode() *string {
+	return s.OpsUserCode
+}
+
+func (s *CreateWorkflowInstanceShrinkRequest) GetOpsUserId() *string {
+	return s.OpsUserId
 }
 
 func (s *CreateWorkflowInstanceShrinkRequest) GetPriority() *string {
@@ -145,6 +181,11 @@ func (s *CreateWorkflowInstanceShrinkRequest) SetAcceptanceCriteria(v string) *C
 	return s
 }
 
+func (s *CreateWorkflowInstanceShrinkRequest) SetAppToken(v string) *CreateWorkflowInstanceShrinkRequest {
+	s.AppToken = &v
+	return s
+}
+
 func (s *CreateWorkflowInstanceShrinkRequest) SetBusinessId(v string) *CreateWorkflowInstanceShrinkRequest {
 	s.BusinessId = &v
 	return s
@@ -157,6 +198,16 @@ func (s *CreateWorkflowInstanceShrinkRequest) SetCollaborationGroupId(v string) 
 
 func (s *CreateWorkflowInstanceShrinkRequest) SetInitiator(v string) *CreateWorkflowInstanceShrinkRequest {
 	s.Initiator = &v
+	return s
+}
+
+func (s *CreateWorkflowInstanceShrinkRequest) SetOpsUserCode(v string) *CreateWorkflowInstanceShrinkRequest {
+	s.OpsUserCode = &v
+	return s
+}
+
+func (s *CreateWorkflowInstanceShrinkRequest) SetOpsUserId(v string) *CreateWorkflowInstanceShrinkRequest {
+	s.OpsUserId = &v
 	return s
 }
 

@@ -9,10 +9,16 @@ type iGetScheduledTaskExecutionRecordsRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAppToken(v string) *GetScheduledTaskExecutionRecordsRequest
+	GetAppToken() *string
 	SetCollaborationGroupId(v string) *GetScheduledTaskExecutionRecordsRequest
 	GetCollaborationGroupId() *string
 	SetInitiatorUserId(v string) *GetScheduledTaskExecutionRecordsRequest
 	GetInitiatorUserId() *string
+	SetOpsUserCode(v string) *GetScheduledTaskExecutionRecordsRequest
+	GetOpsUserCode() *string
+	SetOpsUserId(v string) *GetScheduledTaskExecutionRecordsRequest
+	GetOpsUserId() *string
 	SetPage(v int32) *GetScheduledTaskExecutionRecordsRequest
 	GetPage() *int32
 	SetPageSize(v int32) *GetScheduledTaskExecutionRecordsRequest
@@ -26,18 +32,36 @@ type iGetScheduledTaskExecutionRecordsRequest interface {
 }
 
 type GetScheduledTaskExecutionRecordsRequest struct {
-	// The ID of the collaboration group to which the task belongs, such as cg_101. If you specify this parameter, a group workspace task is created, and the caller must be a valid group member. If you leave this parameter empty, a personal task is created.
+	// The platform application token issued by the console. If this parameter is passed, the operation is executed as the user specified by opsUserId or opsUserCode.
+	//
+	// example:
+	//
+	// wn_app_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+	AppToken *string `json:"appToken,omitempty" xml:"appToken,omitempty"`
+	// The ID of the collaboration group to which the task belongs, such as cg_101. If this parameter is passed, a group space task is created, and the caller must be a valid group member. If this parameter is left empty, a personal task is created.
 	//
 	// example:
 	//
 	// 1112
 	CollaborationGroupId *string `json:"collaborationGroupId,omitempty" xml:"collaborationGroupId,omitempty"`
-	// The business status code. A value of 200 indicates success. A failure returns a backend error code, such as ERR.	- or InvalidParameter.*.
+	// The business status code. A value of 200 indicates success. A failure is indicated by a backend error code such as ERR.	- or InvalidParameter.*.
 	//
 	// example:
 	//
 	// 5
 	InitiatorUserId *string `json:"initiatorUserId,omitempty" xml:"initiatorUserId,omitempty"`
+	// The proxy user code, which is unique within the tenant. This parameter is used only when the application credential is configured as source_uid.
+	//
+	// example:
+	//
+	// alice
+	OpsUserCode *string `json:"opsUserCode,omitempty" xml:"opsUserCode,omitempty"`
+	// The proxy user ID, which is the WINNEXO platform user ID. This parameter is used only when the application credential is configured as winnexo_uid.
+	//
+	// example:
+	//
+	// 10001
+	OpsUserId *string `json:"opsUserId,omitempty" xml:"opsUserId,omitempty"`
 	// The page number. Default value: 1. Minimum value: 1. Maximum value: 200.
 	//
 	// example:
@@ -50,19 +74,19 @@ type GetScheduledTaskExecutionRecordsRequest struct {
 	//
 	// 10
 	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	// The initiator filter based on the platform user ID. The caliber is the executor of the record. For manual execution, it is the trigger user. For automatic execution, it is the task creator. To view only the tasks initiated by yourself, pass the current user ID.
+	// Filters records by the initiator platform user ID. The scope is the executor of the record. For manual execution, the executor is the trigger user. For automatic execution, the executor is the task creator. To view only the tasks that you initiated, pass the current user ID.
 	//
 	// example:
 	//
 	// failed
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
-	// The execution status filter in lowercase. Valid values: pending (queued), running (running), success (successful), failed (failed), timeout (timed out), and cancelled (cancelled). If you do not specify this parameter, no filtering is applied. If you specify this parameter, future planned items are no longer generated.
+	// The execution status filter in lowercase. Valid values: pending (queued), running (executing), success (succeeded), failed (failed), timeout (timed out), and cancelled (cancelled). If this parameter is not passed, no filtering is applied. If this parameter is passed, future plan items are not generated.
 	//
 	// example:
 	//
 	// exampleTaskId
 	TaskId *string `json:"taskId,omitempty" xml:"taskId,omitempty"`
-	// The effective tenant ID.
+	// The ID of the effective tenant.
 	//
 	// example:
 	//
@@ -78,12 +102,24 @@ func (s GetScheduledTaskExecutionRecordsRequest) GoString() string {
 	return s.String()
 }
 
+func (s *GetScheduledTaskExecutionRecordsRequest) GetAppToken() *string {
+	return s.AppToken
+}
+
 func (s *GetScheduledTaskExecutionRecordsRequest) GetCollaborationGroupId() *string {
 	return s.CollaborationGroupId
 }
 
 func (s *GetScheduledTaskExecutionRecordsRequest) GetInitiatorUserId() *string {
 	return s.InitiatorUserId
+}
+
+func (s *GetScheduledTaskExecutionRecordsRequest) GetOpsUserCode() *string {
+	return s.OpsUserCode
+}
+
+func (s *GetScheduledTaskExecutionRecordsRequest) GetOpsUserId() *string {
+	return s.OpsUserId
 }
 
 func (s *GetScheduledTaskExecutionRecordsRequest) GetPage() *int32 {
@@ -106,6 +142,11 @@ func (s *GetScheduledTaskExecutionRecordsRequest) GetTenantId() *string {
 	return s.TenantId
 }
 
+func (s *GetScheduledTaskExecutionRecordsRequest) SetAppToken(v string) *GetScheduledTaskExecutionRecordsRequest {
+	s.AppToken = &v
+	return s
+}
+
 func (s *GetScheduledTaskExecutionRecordsRequest) SetCollaborationGroupId(v string) *GetScheduledTaskExecutionRecordsRequest {
 	s.CollaborationGroupId = &v
 	return s
@@ -113,6 +154,16 @@ func (s *GetScheduledTaskExecutionRecordsRequest) SetCollaborationGroupId(v stri
 
 func (s *GetScheduledTaskExecutionRecordsRequest) SetInitiatorUserId(v string) *GetScheduledTaskExecutionRecordsRequest {
 	s.InitiatorUserId = &v
+	return s
+}
+
+func (s *GetScheduledTaskExecutionRecordsRequest) SetOpsUserCode(v string) *GetScheduledTaskExecutionRecordsRequest {
+	s.OpsUserCode = &v
+	return s
+}
+
+func (s *GetScheduledTaskExecutionRecordsRequest) SetOpsUserId(v string) *GetScheduledTaskExecutionRecordsRequest {
+	s.OpsUserId = &v
 	return s
 }
 

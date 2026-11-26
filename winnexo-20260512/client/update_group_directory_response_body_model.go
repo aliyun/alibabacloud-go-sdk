@@ -38,31 +38,31 @@ type UpdateGroupDirectoryResponseBody struct {
 	//
 	// 200
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// The folder description.
+	// The directory description.
 	//
 	// example:
 	//
-	// Project description
+	// Project Description
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// The folder ID.
+	// The directory ID.
 	//
 	// example:
 	//
 	// dir_example
 	DirectoryId *string `json:"directoryId,omitempty" xml:"directoryId,omitempty"`
-	// The folder type. The value is fixed as GROUP.
+	// The directory type. The value is fixed as GROUP.
 	//
 	// example:
 	//
 	// GROUP
 	DirectoryType *string `json:"directoryType,omitempty" xml:"directoryType,omitempty"`
-	// The ID of the collaborative share.
+	// The ID of the collaboration workspace.
 	//
 	// example:
 	//
 	// group_example
 	GroupId *string `json:"groupId,omitempty" xml:"groupId,omitempty"`
-	// The ID of the internal root folder in the collaborative share. This folder cannot be modified.
+	// The ID of the internal root directory in the collaboration workspace. This directory cannot be modified.
 	//
 	// example:
 	//
@@ -74,19 +74,19 @@ type UpdateGroupDirectoryResponseBody struct {
 	//
 	// The requested resource does not exist
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// The folder name.
+	// The directory name.
 	//
 	// example:
 	//
 	// Project Materials
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The parent folder ID.
+	// The ID of the parent directory.
 	//
 	// example:
 	//
 	// dir_parent
 	ParentDirectoryId *string `json:"parentDirectoryId,omitempty" xml:"parentDirectoryId,omitempty"`
-	// The request trace ID.
+	// The request ID.
 	//
 	// example:
 	//

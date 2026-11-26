@@ -40,21 +40,21 @@ type ListOperatingObjectFavoritesResponseBody struct {
 	//
 	// 200
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// The graph name. Call listGraphs to retrieve available graphs.
+	// The name of the graph. You can call the listGraphs operation to obtain the graph name.
 	//
 	// example:
 	//
 	// crm
 	GraphName *string `json:"graphName,omitempty" xml:"graphName,omitempty"`
-	// Indicates whether more pages are available.
+	// Indicates whether more pages exist.
 	//
 	// example:
 	//
 	// true
 	HasMore *bool `json:"hasMore,omitempty" xml:"hasMore,omitempty"`
-	// The MCP card list.
+	// The list of MCP cards.
 	Items []*ListOperatingObjectFavoritesResponseBodyItems `json:"items,omitempty" xml:"items,omitempty" type:"Repeated"`
-	// The status code description.
+	// The description of the status code.
 	//
 	// example:
 	//
@@ -72,25 +72,25 @@ type ListOperatingObjectFavoritesResponseBody struct {
 	//
 	// contract
 	ObjectType *string `json:"objectType,omitempty" xml:"objectType,omitempty"`
-	// The digital employee name (operating object name).
+	// The name of the digital worker, which is the name of the operating object.
 	//
 	// example:
 	//
 	// customer_assistant
 	OperatingObjectName *string `json:"operatingObjectName,omitempty" xml:"operatingObjectName,omitempty"`
-	// The page size.
+	// The number of entries per page.
 	//
 	// example:
 	//
 	// 100
 	PageSize *int64 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	// The request trace ID.
+	// The request tracking ID.
 	//
 	// example:
 	//
 	// 019FF406-1B10-0065-A97D-2D1920C2A03D
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// The total number of results.
+	// The total number of Logtail pipeline configurations in the current project.
 	//
 	// example:
 	//
@@ -219,37 +219,37 @@ func (s *ListOperatingObjectFavoritesResponseBody) Validate() error {
 }
 
 type ListOperatingObjectFavoritesResponseBodyItems struct {
-	// The to-do card type description.
+	// The description of the to-do card type.
 	//
 	// example:
 	//
 	// Sample description
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// The follow time. The value is a Unix timestamp in seconds.
+	// The subscription time, which is a UNIX timestamp in seconds.
 	//
 	// example:
 	//
 	// 1787822400
 	FollowedAt *int64 `json:"followedAt,omitempty" xml:"followedAt,omitempty"`
-	// The graph name.
+	// The name of the graph.
 	//
 	// example:
 	//
 	// string_value
 	GraphName *string `json:"graphName,omitempty" xml:"graphName,omitempty"`
-	// The ID of the recommended item. The value can be a **feedId*	- or a micro-application ID.
+	// The ID of the recommended item, which can be a **feedId*	- or a mini-app ID.
 	//
 	// example:
 	//
 	// 2676
 	ObjectId *string `json:"objectId,omitempty" xml:"objectId,omitempty"`
-	// The object name.
+	// The name of the object.
 	//
 	// example:
 	//
 	// 469ac312-403c-41fb-aae3-de5260e30906
 	ObjectName *string `json:"objectName,omitempty" xml:"objectName,omitempty"`
-	// The bound object type, such as customer or project.
+	// The object type of the attached object, such as customer or project.
 	//
 	// example:
 	//

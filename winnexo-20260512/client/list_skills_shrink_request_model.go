@@ -9,6 +9,8 @@ type iListSkillsShrinkRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAppToken(v string) *ListSkillsShrinkRequest
+	GetAppToken() *string
 	SetBindStatus(v string) *ListSkillsShrinkRequest
 	GetBindStatus() *string
 	SetFilterType(v string) *ListSkillsShrinkRequest
@@ -17,6 +19,10 @@ type iListSkillsShrinkRequest interface {
 	GetKeyword() *string
 	SetOperatingObjectName(v string) *ListSkillsShrinkRequest
 	GetOperatingObjectName() *string
+	SetOpsUserCode(v string) *ListSkillsShrinkRequest
+	GetOpsUserCode() *string
+	SetOpsUserId(v string) *ListSkillsShrinkRequest
+	GetOpsUserId() *string
 	SetPage(v int32) *ListSkillsShrinkRequest
 	GetPage() *int32
 	SetPageSize(v int32) *ListSkillsShrinkRequest
@@ -28,17 +34,23 @@ type iListSkillsShrinkRequest interface {
 }
 
 type ListSkillsShrinkRequest struct {
+	// The platform application token issued by the console. If specified, the operation is executed as the user specified by opsUserId or opsUserCode.
+	//
+	// example:
+	//
+	// wn_app_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+	AppToken *string `json:"appToken,omitempty" xml:"appToken,omitempty"`
 	// The binding status. Valid values: BOUND (bound) and UNBOUND (unbound global skills). Must be specified together with operatingObjectName.
 	//
 	// example:
 	//
 	// BOUND
 	BindStatus *string `json:"bindStatus,omitempty" xml:"bindStatus,omitempty"`
-	// The filter expression type.
+	// The filter expression type. Valid values:
 	//
-	// - SQL: SQL-based filtering.
+	// - SQL: SQL filtering.
 	//
-	// - TAG: Tag-based filtering.
+	// - TAG: Tag filtering.
 	//
 	// example:
 	//
@@ -48,7 +60,7 @@ type ListSkillsShrinkRequest struct {
 	//
 	// example:
 	//
-	// SampleKeyword
+	// Sample keyword
 	Keyword *string `json:"keyword,omitempty" xml:"keyword,omitempty"`
 	// The name of the digital employee. Used to calculate the CodeAgent allowedSkills whitelist based on binding relationships.
 	//
@@ -56,6 +68,18 @@ type ListSkillsShrinkRequest struct {
 	//
 	// 11111
 	OperatingObjectName *string `json:"operatingObjectName,omitempty" xml:"operatingObjectName,omitempty"`
+	// The proxy user code, which is unique within the tenant. Used only when the application credential is configured as source_uid.
+	//
+	// example:
+	//
+	// alice
+	OpsUserCode *string `json:"opsUserCode,omitempty" xml:"opsUserCode,omitempty"`
+	// The proxy user ID, which is the WINNEXO platform user ID. Used only when the application credential is configured as winnexo_uid.
+	//
+	// example:
+	//
+	// 10001
+	OpsUserId *string `json:"opsUserId,omitempty" xml:"opsUserId,omitempty"`
 	// The current page number.
 	//
 	// example:
@@ -72,7 +96,7 @@ type ListSkillsShrinkRequest struct {
 	//
 	// example:
 	//
-	// string_value
+	// ["[{\\\"value\\\":\\\"dataworks#0#1#34167#432313#T3_23030136354#86969667366\\\",\\\"key\\\":\\\"dataworksTag\\\"}]"]
 	TagsShrink *string `json:"tags,omitempty" xml:"tags,omitempty"`
 	// The tenant ID. This is a common parameter. If not specified, the default tenant of the caller is used.
 	//
@@ -88,6 +112,10 @@ func (s ListSkillsShrinkRequest) String() string {
 
 func (s ListSkillsShrinkRequest) GoString() string {
 	return s.String()
+}
+
+func (s *ListSkillsShrinkRequest) GetAppToken() *string {
+	return s.AppToken
 }
 
 func (s *ListSkillsShrinkRequest) GetBindStatus() *string {
@@ -106,6 +134,14 @@ func (s *ListSkillsShrinkRequest) GetOperatingObjectName() *string {
 	return s.OperatingObjectName
 }
 
+func (s *ListSkillsShrinkRequest) GetOpsUserCode() *string {
+	return s.OpsUserCode
+}
+
+func (s *ListSkillsShrinkRequest) GetOpsUserId() *string {
+	return s.OpsUserId
+}
+
 func (s *ListSkillsShrinkRequest) GetPage() *int32 {
 	return s.Page
 }
@@ -120,6 +156,11 @@ func (s *ListSkillsShrinkRequest) GetTagsShrink() *string {
 
 func (s *ListSkillsShrinkRequest) GetTenantId() *string {
 	return s.TenantId
+}
+
+func (s *ListSkillsShrinkRequest) SetAppToken(v string) *ListSkillsShrinkRequest {
+	s.AppToken = &v
+	return s
 }
 
 func (s *ListSkillsShrinkRequest) SetBindStatus(v string) *ListSkillsShrinkRequest {
@@ -139,6 +180,16 @@ func (s *ListSkillsShrinkRequest) SetKeyword(v string) *ListSkillsShrinkRequest 
 
 func (s *ListSkillsShrinkRequest) SetOperatingObjectName(v string) *ListSkillsShrinkRequest {
 	s.OperatingObjectName = &v
+	return s
+}
+
+func (s *ListSkillsShrinkRequest) SetOpsUserCode(v string) *ListSkillsShrinkRequest {
+	s.OpsUserCode = &v
+	return s
+}
+
+func (s *ListSkillsShrinkRequest) SetOpsUserId(v string) *ListSkillsShrinkRequest {
+	s.OpsUserId = &v
 	return s
 }
 

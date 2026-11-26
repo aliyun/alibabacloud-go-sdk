@@ -9,10 +9,16 @@ type iGrantAgentUsersRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAppToken(v string) *GrantAgentUsersRequest
+	GetAppToken() *string
 	SetExpireDate(v int64) *GrantAgentUsersRequest
 	GetExpireDate() *int64
 	SetOperatingObjectName(v string) *GrantAgentUsersRequest
 	GetOperatingObjectName() *string
+	SetOpsUserCode(v string) *GrantAgentUsersRequest
+	GetOpsUserCode() *string
+	SetOpsUserId(v string) *GrantAgentUsersRequest
+	GetOpsUserId() *string
 	SetPermissions(v []*string) *GrantAgentUsersRequest
 	GetPermissions() []*string
 	SetTenantId(v string) *GrantAgentUsersRequest
@@ -24,6 +30,12 @@ type iGrantAgentUsersRequest interface {
 }
 
 type GrantAgentUsersRequest struct {
+	// 平台应用 Token（控制台签发）。传入后将以 opsUserId 或 opsUserCode 指定的用户身份执行
+	//
+	// example:
+	//
+	// wn_app_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+	AppToken *string `json:"appToken,omitempty" xml:"appToken,omitempty"`
 	// The authorization expiration timestamp in milliseconds. If this parameter is not specified, the authorization never expires.
 	//
 	// example:
@@ -38,6 +50,18 @@ type GrantAgentUsersRequest struct {
 	//
 	// string_value
 	OperatingObjectName *string `json:"operatingObjectName,omitempty" xml:"operatingObjectName,omitempty"`
+	// 代理用户编码（租户内唯一），仅当应用凭证配置为 source_uid 时使用
+	//
+	// example:
+	//
+	// alice
+	OpsUserCode *string `json:"opsUserCode,omitempty" xml:"opsUserCode,omitempty"`
+	// 代理用户ID（WINNEXO 平台用户ID），仅当应用凭证配置为 winnexo_uid 时使用
+	//
+	// example:
+	//
+	// 10001
+	OpsUserId *string `json:"opsUserId,omitempty" xml:"opsUserId,omitempty"`
 	// The permission items.
 	//
 	// example:
@@ -72,12 +96,24 @@ func (s GrantAgentUsersRequest) GoString() string {
 	return s.String()
 }
 
+func (s *GrantAgentUsersRequest) GetAppToken() *string {
+	return s.AppToken
+}
+
 func (s *GrantAgentUsersRequest) GetExpireDate() *int64 {
 	return s.ExpireDate
 }
 
 func (s *GrantAgentUsersRequest) GetOperatingObjectName() *string {
 	return s.OperatingObjectName
+}
+
+func (s *GrantAgentUsersRequest) GetOpsUserCode() *string {
+	return s.OpsUserCode
+}
+
+func (s *GrantAgentUsersRequest) GetOpsUserId() *string {
+	return s.OpsUserId
 }
 
 func (s *GrantAgentUsersRequest) GetPermissions() []*string {
@@ -96,6 +132,11 @@ func (s *GrantAgentUsersRequest) GetUserIds() []*string {
 	return s.UserIds
 }
 
+func (s *GrantAgentUsersRequest) SetAppToken(v string) *GrantAgentUsersRequest {
+	s.AppToken = &v
+	return s
+}
+
 func (s *GrantAgentUsersRequest) SetExpireDate(v int64) *GrantAgentUsersRequest {
 	s.ExpireDate = &v
 	return s
@@ -103,6 +144,16 @@ func (s *GrantAgentUsersRequest) SetExpireDate(v int64) *GrantAgentUsersRequest 
 
 func (s *GrantAgentUsersRequest) SetOperatingObjectName(v string) *GrantAgentUsersRequest {
 	s.OperatingObjectName = &v
+	return s
+}
+
+func (s *GrantAgentUsersRequest) SetOpsUserCode(v string) *GrantAgentUsersRequest {
+	s.OpsUserCode = &v
+	return s
+}
+
+func (s *GrantAgentUsersRequest) SetOpsUserId(v string) *GrantAgentUsersRequest {
+	s.OpsUserId = &v
 	return s
 }
 

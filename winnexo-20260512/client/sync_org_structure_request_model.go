@@ -9,12 +9,18 @@ type iSyncOrgStructureRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAppToken(v string) *SyncOrgStructureRequest
+	GetAppToken() *string
 	SetCorpId(v string) *SyncOrgStructureRequest
 	GetCorpId() *string
 	SetDepartments(v []*SyncOrgStructureRequestDepartments) *SyncOrgStructureRequest
 	GetDepartments() []*SyncOrgStructureRequestDepartments
 	SetMembers(v []*SyncOrgStructureRequestMembers) *SyncOrgStructureRequest
 	GetMembers() []*SyncOrgStructureRequestMembers
+	SetOpsUserCode(v string) *SyncOrgStructureRequest
+	GetOpsUserCode() *string
+	SetOpsUserId(v string) *SyncOrgStructureRequest
+	GetOpsUserId() *string
 	SetPlatformType(v string) *SyncOrgStructureRequest
 	GetPlatformType() *string
 	SetSsoSettingsId(v string) *SyncOrgStructureRequest
@@ -26,6 +32,12 @@ type iSyncOrgStructureRequest interface {
 }
 
 type SyncOrgStructureRequest struct {
+	// 平台应用 Token（控制台签发）。传入后将以 opsUserId 或 opsUserCode 指定的用户身份执行
+	//
+	// example:
+	//
+	// wn_app_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+	AppToken *string `json:"appToken,omitempty" xml:"appToken,omitempty"`
 	// The enterprise identifier. This value must match the corpId returned by listAvailableConfigs.
 	//
 	// This parameter is required.
@@ -40,6 +52,18 @@ type SyncOrgStructureRequest struct {
 	Departments []*SyncOrgStructureRequestDepartments `json:"departments,omitempty" xml:"departments,omitempty" type:"Repeated"`
 	// The member list. This parameter is required when syncMembers is set to true.
 	Members []*SyncOrgStructureRequestMembers `json:"members,omitempty" xml:"members,omitempty" type:"Repeated"`
+	// 代理用户编码（租户内唯一），仅当应用凭证配置为 source_uid 时使用
+	//
+	// example:
+	//
+	// alice
+	OpsUserCode *string `json:"opsUserCode,omitempty" xml:"opsUserCode,omitempty"`
+	// 代理用户ID（WINNEXO 平台用户ID），仅当应用凭证配置为 winnexo_uid 时使用
+	//
+	// example:
+	//
+	// 10001
+	OpsUserId *string `json:"opsUserId,omitempty" xml:"opsUserId,omitempty"`
 	// The platform type. Valid values: saml, oauth2, or custom.
 	//
 	// This parameter is required.
@@ -76,6 +100,10 @@ func (s SyncOrgStructureRequest) GoString() string {
 	return s.String()
 }
 
+func (s *SyncOrgStructureRequest) GetAppToken() *string {
+	return s.AppToken
+}
+
 func (s *SyncOrgStructureRequest) GetCorpId() *string {
 	return s.CorpId
 }
@@ -86,6 +114,14 @@ func (s *SyncOrgStructureRequest) GetDepartments() []*SyncOrgStructureRequestDep
 
 func (s *SyncOrgStructureRequest) GetMembers() []*SyncOrgStructureRequestMembers {
 	return s.Members
+}
+
+func (s *SyncOrgStructureRequest) GetOpsUserCode() *string {
+	return s.OpsUserCode
+}
+
+func (s *SyncOrgStructureRequest) GetOpsUserId() *string {
+	return s.OpsUserId
 }
 
 func (s *SyncOrgStructureRequest) GetPlatformType() *string {
@@ -104,6 +140,11 @@ func (s *SyncOrgStructureRequest) GetTenantId() *string {
 	return s.TenantId
 }
 
+func (s *SyncOrgStructureRequest) SetAppToken(v string) *SyncOrgStructureRequest {
+	s.AppToken = &v
+	return s
+}
+
 func (s *SyncOrgStructureRequest) SetCorpId(v string) *SyncOrgStructureRequest {
 	s.CorpId = &v
 	return s
@@ -116,6 +157,16 @@ func (s *SyncOrgStructureRequest) SetDepartments(v []*SyncOrgStructureRequestDep
 
 func (s *SyncOrgStructureRequest) SetMembers(v []*SyncOrgStructureRequestMembers) *SyncOrgStructureRequest {
 	s.Members = v
+	return s
+}
+
+func (s *SyncOrgStructureRequest) SetOpsUserCode(v string) *SyncOrgStructureRequest {
+	s.OpsUserCode = &v
+	return s
+}
+
+func (s *SyncOrgStructureRequest) SetOpsUserId(v string) *SyncOrgStructureRequest {
+	s.OpsUserId = &v
 	return s
 }
 

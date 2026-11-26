@@ -9,6 +9,8 @@ type iCreatePersonalFeishuDocRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAppToken(v string) *CreatePersonalFeishuDocRequest
+	GetAppToken() *string
 	SetDescription(v string) *CreatePersonalFeishuDocRequest
 	GetDescription() *string
 	SetDirectoryId(v string) *CreatePersonalFeishuDocRequest
@@ -23,6 +25,10 @@ type iCreatePersonalFeishuDocRequest interface {
 	GetObjectBindings() []*CreatePersonalFeishuDocRequestObjectBindings
 	SetOperatingObjectName(v string) *CreatePersonalFeishuDocRequest
 	GetOperatingObjectName() *string
+	SetOpsUserCode(v string) *CreatePersonalFeishuDocRequest
+	GetOpsUserCode() *string
+	SetOpsUserId(v string) *CreatePersonalFeishuDocRequest
+	GetOpsUserId() *string
 	SetSourceTags(v string) *CreatePersonalFeishuDocRequest
 	GetSourceTags() *string
 	SetSyncConfig(v *CreatePersonalFeishuDocRequestSyncConfig) *CreatePersonalFeishuDocRequest
@@ -32,6 +38,12 @@ type iCreatePersonalFeishuDocRequest interface {
 }
 
 type CreatePersonalFeishuDocRequest struct {
+	// 平台应用 Token（控制台签发）。传入后将以 opsUserId 或 opsUserCode 指定的用户身份执行
+	//
+	// example:
+	//
+	// wn_app_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+	AppToken *string `json:"appToken,omitempty" xml:"appToken,omitempty"`
 	// The pipeline description.
 	//
 	// example:
@@ -72,6 +84,18 @@ type CreatePersonalFeishuDocRequest struct {
 	//
 	// R&D Assistant
 	OperatingObjectName *string `json:"operatingObjectName,omitempty" xml:"operatingObjectName,omitempty"`
+	// 代理用户编码（租户内唯一），仅当应用凭证配置为 source_uid 时使用
+	//
+	// example:
+	//
+	// alice
+	OpsUserCode *string `json:"opsUserCode,omitempty" xml:"opsUserCode,omitempty"`
+	// 代理用户ID（WINNEXO 平台用户ID），仅当应用凭证配置为 winnexo_uid 时使用
+	//
+	// example:
+	//
+	// 10001
+	OpsUserId *string `json:"opsUserId,omitempty" xml:"opsUserId,omitempty"`
 	// The resource tags (optional, a JSON string list, such as ["tagA","tagB"]).
 	//
 	// example:
@@ -94,6 +118,10 @@ func (s CreatePersonalFeishuDocRequest) String() string {
 
 func (s CreatePersonalFeishuDocRequest) GoString() string {
 	return s.String()
+}
+
+func (s *CreatePersonalFeishuDocRequest) GetAppToken() *string {
+	return s.AppToken
 }
 
 func (s *CreatePersonalFeishuDocRequest) GetDescription() *string {
@@ -124,6 +152,14 @@ func (s *CreatePersonalFeishuDocRequest) GetOperatingObjectName() *string {
 	return s.OperatingObjectName
 }
 
+func (s *CreatePersonalFeishuDocRequest) GetOpsUserCode() *string {
+	return s.OpsUserCode
+}
+
+func (s *CreatePersonalFeishuDocRequest) GetOpsUserId() *string {
+	return s.OpsUserId
+}
+
 func (s *CreatePersonalFeishuDocRequest) GetSourceTags() *string {
 	return s.SourceTags
 }
@@ -134,6 +170,11 @@ func (s *CreatePersonalFeishuDocRequest) GetSyncConfig() *CreatePersonalFeishuDo
 
 func (s *CreatePersonalFeishuDocRequest) GetTenantId() *string {
 	return s.TenantId
+}
+
+func (s *CreatePersonalFeishuDocRequest) SetAppToken(v string) *CreatePersonalFeishuDocRequest {
+	s.AppToken = &v
+	return s
 }
 
 func (s *CreatePersonalFeishuDocRequest) SetDescription(v string) *CreatePersonalFeishuDocRequest {
@@ -168,6 +209,16 @@ func (s *CreatePersonalFeishuDocRequest) SetObjectBindings(v []*CreatePersonalFe
 
 func (s *CreatePersonalFeishuDocRequest) SetOperatingObjectName(v string) *CreatePersonalFeishuDocRequest {
 	s.OperatingObjectName = &v
+	return s
+}
+
+func (s *CreatePersonalFeishuDocRequest) SetOpsUserCode(v string) *CreatePersonalFeishuDocRequest {
+	s.OpsUserCode = &v
+	return s
+}
+
+func (s *CreatePersonalFeishuDocRequest) SetOpsUserId(v string) *CreatePersonalFeishuDocRequest {
+	s.OpsUserId = &v
 	return s
 }
 

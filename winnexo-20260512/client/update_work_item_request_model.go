@@ -11,6 +11,8 @@ type iUpdateWorkItemRequest interface {
 	GoString() string
 	SetAcceptanceCriteria(v string) *UpdateWorkItemRequest
 	GetAcceptanceCriteria() *string
+	SetAppToken(v string) *UpdateWorkItemRequest
+	GetAppToken() *string
 	SetAttachments(v []*UpdateWorkItemRequestAttachments) *UpdateWorkItemRequest
 	GetAttachments() []*UpdateWorkItemRequestAttachments
 	SetCollaborationGroupId(v string) *UpdateWorkItemRequest
@@ -23,6 +25,10 @@ type iUpdateWorkItemRequest interface {
 	GetDescription() *string
 	SetExpectedVersion(v int64) *UpdateWorkItemRequest
 	GetExpectedVersion() *int64
+	SetOpsUserCode(v string) *UpdateWorkItemRequest
+	GetOpsUserCode() *string
+	SetOpsUserId(v string) *UpdateWorkItemRequest
+	GetOpsUserId() *string
 	SetOwnerUserId(v int64) *UpdateWorkItemRequest
 	GetOwnerUserId() *int64
 	SetPriority(v string) *UpdateWorkItemRequest
@@ -44,6 +50,12 @@ type UpdateWorkItemRequest struct {
 	//
 	// example
 	AcceptanceCriteria *string `json:"acceptanceCriteria,omitempty" xml:"acceptanceCriteria,omitempty"`
+	// 平台应用 Token（控制台签发）。传入后将以 opsUserId 或 opsUserCode 指定的用户身份执行
+	//
+	// example:
+	//
+	// wn_app_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+	AppToken *string `json:"appToken,omitempty" xml:"appToken,omitempty"`
 	// The stable references for the attachments.
 	//
 	// example:
@@ -84,6 +96,18 @@ type UpdateWorkItemRequest struct {
 	//
 	// 3
 	ExpectedVersion *int64 `json:"expectedVersion,omitempty" xml:"expectedVersion,omitempty"`
+	// 代理用户编码（租户内唯一），仅当应用凭证配置为 source_uid 时使用
+	//
+	// example:
+	//
+	// alice
+	OpsUserCode *string `json:"opsUserCode,omitempty" xml:"opsUserCode,omitempty"`
+	// 代理用户ID（WINNEXO 平台用户ID），仅当应用凭证配置为 winnexo_uid 时使用
+	//
+	// example:
+	//
+	// 10001
+	OpsUserId *string `json:"opsUserId,omitempty" xml:"opsUserId,omitempty"`
 	// The user ID of the owner. If not specified, the user ID of the caller is used.
 	//
 	// example:
@@ -138,6 +162,10 @@ func (s *UpdateWorkItemRequest) GetAcceptanceCriteria() *string {
 	return s.AcceptanceCriteria
 }
 
+func (s *UpdateWorkItemRequest) GetAppToken() *string {
+	return s.AppToken
+}
+
 func (s *UpdateWorkItemRequest) GetAttachments() []*UpdateWorkItemRequestAttachments {
 	return s.Attachments
 }
@@ -160,6 +188,14 @@ func (s *UpdateWorkItemRequest) GetDescription() *string {
 
 func (s *UpdateWorkItemRequest) GetExpectedVersion() *int64 {
 	return s.ExpectedVersion
+}
+
+func (s *UpdateWorkItemRequest) GetOpsUserCode() *string {
+	return s.OpsUserCode
+}
+
+func (s *UpdateWorkItemRequest) GetOpsUserId() *string {
+	return s.OpsUserId
 }
 
 func (s *UpdateWorkItemRequest) GetOwnerUserId() *int64 {
@@ -191,6 +227,11 @@ func (s *UpdateWorkItemRequest) SetAcceptanceCriteria(v string) *UpdateWorkItemR
 	return s
 }
 
+func (s *UpdateWorkItemRequest) SetAppToken(v string) *UpdateWorkItemRequest {
+	s.AppToken = &v
+	return s
+}
+
 func (s *UpdateWorkItemRequest) SetAttachments(v []*UpdateWorkItemRequestAttachments) *UpdateWorkItemRequest {
 	s.Attachments = v
 	return s
@@ -218,6 +259,16 @@ func (s *UpdateWorkItemRequest) SetDescription(v string) *UpdateWorkItemRequest 
 
 func (s *UpdateWorkItemRequest) SetExpectedVersion(v int64) *UpdateWorkItemRequest {
 	s.ExpectedVersion = &v
+	return s
+}
+
+func (s *UpdateWorkItemRequest) SetOpsUserCode(v string) *UpdateWorkItemRequest {
+	s.OpsUserCode = &v
+	return s
+}
+
+func (s *UpdateWorkItemRequest) SetOpsUserId(v string) *UpdateWorkItemRequest {
+	s.OpsUserId = &v
 	return s
 }
 

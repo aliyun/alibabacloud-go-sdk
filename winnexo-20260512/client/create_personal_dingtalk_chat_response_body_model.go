@@ -44,7 +44,7 @@ type CreatePersonalDingtalkChatResponseBody struct {
 	//
 	// 200
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// The directory ID.
+	// The folder ID.
 	//
 	// example:
 	//
@@ -66,7 +66,7 @@ type CreatePersonalDingtalkChatResponseBody struct {
 	//
 	// example:
 	//
-	// CustomerProjectGroup
+	// Customer Project Group
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
 	// The request ID.
 	//
@@ -80,13 +80,13 @@ type CreatePersonalDingtalkChatResponseBody struct {
 	//
 	// PERSONAL
 	Scope *string `json:"scope,omitempty" xml:"scope,omitempty"`
-	// The source ID.
+	// The source project ID.
 	//
 	// example:
 	//
 	// exampleSourceId
 	SourceId *string `json:"sourceId,omitempty" xml:"sourceId,omitempty"`
-	// The task running status.
+	// The running status of the task.
 	//
 	// example:
 	//

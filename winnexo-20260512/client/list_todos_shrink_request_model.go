@@ -9,6 +9,8 @@ type iListTodosShrinkRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAppToken(v string) *ListTodosShrinkRequest
+	GetAppToken() *string
 	SetCollaborationGroupId(v string) *ListTodosShrinkRequest
 	GetCollaborationGroupId() *string
 	SetKeyword(v string) *ListTodosShrinkRequest
@@ -17,6 +19,10 @@ type iListTodosShrinkRequest interface {
 	GetMaxResults() *int64
 	SetNextToken(v string) *ListTodosShrinkRequest
 	GetNextToken() *string
+	SetOpsUserCode(v string) *ListTodosShrinkRequest
+	GetOpsUserCode() *string
+	SetOpsUserId(v string) *ListTodosShrinkRequest
+	GetOpsUserId() *string
 	SetPage(v int64) *ListTodosShrinkRequest
 	GetPage() *int64
 	SetPageSize(v int64) *ListTodosShrinkRequest
@@ -36,7 +42,13 @@ type iListTodosShrinkRequest interface {
 }
 
 type ListTodosShrinkRequest struct {
-	// The collaboration workspace ID. This is an optional filter. If not specified, items from all workspaces are returned.
+	// The platform application token issued by the console. If specified, the operation is performed as the user identified by opsUserId or opsUserCode.
+	//
+	// example:
+	//
+	// wn_app_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+	AppToken *string `json:"appToken,omitempty" xml:"appToken,omitempty"`
+	// The collaboration workspace ID. This is an optional filter. If not specified, all workspaces are included.
 	//
 	// example:
 	//
@@ -60,6 +72,18 @@ type ListTodosShrinkRequest struct {
 	//
 	// example
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
+	// The proxy user code, which is unique within the tenant. This parameter is used only when the application credential is configured as source_uid.
+	//
+	// example:
+	//
+	// alice
+	OpsUserCode *string `json:"opsUserCode,omitempty" xml:"opsUserCode,omitempty"`
+	// The proxy user ID, which is the WINNEXO platform user ID. This parameter is used only when the application credential is configured as winnexo_uid.
+	//
+	// example:
+	//
+	// 10001
+	OpsUserId *string `json:"opsUserId,omitempty" xml:"opsUserId,omitempty"`
 	// The page number. This parameter is ignored if nextToken is specified.
 	//
 	// example:
@@ -72,17 +96,17 @@ type ListTodosShrinkRequest struct {
 	//
 	// 20
 	PageSize *int64 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	// The priority filter. Valid values: HIGH, MEDIUM, and LOW.
+	// The priority filter. Valid values: HIGH, MEDIUM, LOW.
 	//
 	// example:
 	//
-	// HIGH
+	// ["HIGH","MEDIUM"]
 	PrioritiesShrink *string `json:"priorities,omitempty" xml:"priorities,omitempty"`
-	// The read status filter. Valid values: UNREAD and READ. The status is determined by the readAt field of the assignee.
+	// The read status filter. Valid values: UNREAD, READ. The status is determined by the readAt time of the assignee.
 	//
 	// example:
 	//
-	// UNREAD
+	// ["UNREAD","READ"]
 	ReadStatusShrink *string `json:"readStatus,omitempty" xml:"readStatus,omitempty"`
 	// The sorting method.
 	//
@@ -90,17 +114,17 @@ type ListTodosShrinkRequest struct {
 	//
 	// DEFAULT
 	SortBy *string `json:"sortBy,omitempty" xml:"sortBy,omitempty"`
-	// The to-do type filter. Valid values: WORKFLOW and OPEN_API.
+	// The to-do type filter. Valid values: WORKFLOW, OPEN_API.
 	//
 	// example:
 	//
-	// WORKFLOW
+	// ["WORKFLOW","OPEN_API"]
 	SourceTypesShrink *string `json:"sourceTypes,omitempty" xml:"sourceTypes,omitempty"`
-	// The to-do status filter. Valid values: PENDING, COMPLETED, and CANCELLED.
+	// The to-do status filter. Valid values: PENDING, COMPLETED, CANCELLED.
 	//
 	// example:
 	//
-	// PENDING
+	// ["PENDING","COMPLETED"]
 	StatusesShrink *string `json:"statuses,omitempty" xml:"statuses,omitempty"`
 	// The tenant ID. This is a common parameter. If not specified, the default tenant of the caller is used.
 	//
@@ -118,6 +142,10 @@ func (s ListTodosShrinkRequest) GoString() string {
 	return s.String()
 }
 
+func (s *ListTodosShrinkRequest) GetAppToken() *string {
+	return s.AppToken
+}
+
 func (s *ListTodosShrinkRequest) GetCollaborationGroupId() *string {
 	return s.CollaborationGroupId
 }
@@ -132,6 +160,14 @@ func (s *ListTodosShrinkRequest) GetMaxResults() *int64 {
 
 func (s *ListTodosShrinkRequest) GetNextToken() *string {
 	return s.NextToken
+}
+
+func (s *ListTodosShrinkRequest) GetOpsUserCode() *string {
+	return s.OpsUserCode
+}
+
+func (s *ListTodosShrinkRequest) GetOpsUserId() *string {
+	return s.OpsUserId
 }
 
 func (s *ListTodosShrinkRequest) GetPage() *int64 {
@@ -166,6 +202,11 @@ func (s *ListTodosShrinkRequest) GetTenantId() *string {
 	return s.TenantId
 }
 
+func (s *ListTodosShrinkRequest) SetAppToken(v string) *ListTodosShrinkRequest {
+	s.AppToken = &v
+	return s
+}
+
 func (s *ListTodosShrinkRequest) SetCollaborationGroupId(v string) *ListTodosShrinkRequest {
 	s.CollaborationGroupId = &v
 	return s
@@ -183,6 +224,16 @@ func (s *ListTodosShrinkRequest) SetMaxResults(v int64) *ListTodosShrinkRequest 
 
 func (s *ListTodosShrinkRequest) SetNextToken(v string) *ListTodosShrinkRequest {
 	s.NextToken = &v
+	return s
+}
+
+func (s *ListTodosShrinkRequest) SetOpsUserCode(v string) *ListTodosShrinkRequest {
+	s.OpsUserCode = &v
+	return s
+}
+
+func (s *ListTodosShrinkRequest) SetOpsUserId(v string) *ListTodosShrinkRequest {
+	s.OpsUserId = &v
 	return s
 }
 

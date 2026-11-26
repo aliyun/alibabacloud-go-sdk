@@ -391,7 +391,7 @@ type CreateWorkflowTemplateResponseBodySteps struct {
 	//
 	// example:
 	//
-	// [{\\"type\\":\\"text\\",\\"text\\":\\"Collect customer information\\"}]
+	// [{\"type\":\"text\",\"text\":\"Collect customer information\"}]
 	SpecificationJson []map[string]interface{} `json:"specificationJson,omitempty" xml:"specificationJson,omitempty" type:"Repeated"`
 	// The step ID.
 	//

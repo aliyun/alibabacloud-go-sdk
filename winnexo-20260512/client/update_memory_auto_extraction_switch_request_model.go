@@ -9,12 +9,18 @@ type iUpdateMemoryAutoExtractionSwitchRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAppToken(v string) *UpdateMemoryAutoExtractionSwitchRequest
+	GetAppToken() *string
 	SetClearExisting(v bool) *UpdateMemoryAutoExtractionSwitchRequest
 	GetClearExisting() *bool
 	SetEnabled(v bool) *UpdateMemoryAutoExtractionSwitchRequest
 	GetEnabled() *bool
 	SetGroupId(v string) *UpdateMemoryAutoExtractionSwitchRequest
 	GetGroupId() *string
+	SetOpsUserCode(v string) *UpdateMemoryAutoExtractionSwitchRequest
+	GetOpsUserCode() *string
+	SetOpsUserId(v string) *UpdateMemoryAutoExtractionSwitchRequest
+	GetOpsUserId() *string
 	SetOwnerType(v string) *UpdateMemoryAutoExtractionSwitchRequest
 	GetOwnerType() *string
 	SetTenantId(v string) *UpdateMemoryAutoExtractionSwitchRequest
@@ -22,6 +28,12 @@ type iUpdateMemoryAutoExtractionSwitchRequest interface {
 }
 
 type UpdateMemoryAutoExtractionSwitchRequest struct {
+	// 平台应用 Token（控制台签发）。传入后将以 opsUserId 或 opsUserCode 指定的用户身份执行
+	//
+	// example:
+	//
+	// wn_app_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+	AppToken *string `json:"appToken,omitempty" xml:"appToken,omitempty"`
 	// Specifies whether to synchronously clear the automatically collected memory. This parameter can be used when enabling or disabling the feature.
 	//
 	// example:
@@ -42,6 +54,18 @@ type UpdateMemoryAutoExtractionSwitchRequest struct {
 	//
 	// cg_12345
 	GroupId *string `json:"groupId,omitempty" xml:"groupId,omitempty"`
+	// 代理用户编码（租户内唯一），仅当应用凭证配置为 source_uid 时使用
+	//
+	// example:
+	//
+	// alice
+	OpsUserCode *string `json:"opsUserCode,omitempty" xml:"opsUserCode,omitempty"`
+	// 代理用户ID（WINNEXO 平台用户ID），仅当应用凭证配置为 winnexo_uid 时使用
+	//
+	// example:
+	//
+	// 10001
+	OpsUserId *string `json:"opsUserId,omitempty" xml:"opsUserId,omitempty"`
 	// The owner type. Valid values:
 	//
 	// - user: the personal memory of the authenticated user
@@ -68,6 +92,10 @@ func (s UpdateMemoryAutoExtractionSwitchRequest) GoString() string {
 	return s.String()
 }
 
+func (s *UpdateMemoryAutoExtractionSwitchRequest) GetAppToken() *string {
+	return s.AppToken
+}
+
 func (s *UpdateMemoryAutoExtractionSwitchRequest) GetClearExisting() *bool {
 	return s.ClearExisting
 }
@@ -80,12 +108,25 @@ func (s *UpdateMemoryAutoExtractionSwitchRequest) GetGroupId() *string {
 	return s.GroupId
 }
 
+func (s *UpdateMemoryAutoExtractionSwitchRequest) GetOpsUserCode() *string {
+	return s.OpsUserCode
+}
+
+func (s *UpdateMemoryAutoExtractionSwitchRequest) GetOpsUserId() *string {
+	return s.OpsUserId
+}
+
 func (s *UpdateMemoryAutoExtractionSwitchRequest) GetOwnerType() *string {
 	return s.OwnerType
 }
 
 func (s *UpdateMemoryAutoExtractionSwitchRequest) GetTenantId() *string {
 	return s.TenantId
+}
+
+func (s *UpdateMemoryAutoExtractionSwitchRequest) SetAppToken(v string) *UpdateMemoryAutoExtractionSwitchRequest {
+	s.AppToken = &v
+	return s
 }
 
 func (s *UpdateMemoryAutoExtractionSwitchRequest) SetClearExisting(v bool) *UpdateMemoryAutoExtractionSwitchRequest {
@@ -100,6 +141,16 @@ func (s *UpdateMemoryAutoExtractionSwitchRequest) SetEnabled(v bool) *UpdateMemo
 
 func (s *UpdateMemoryAutoExtractionSwitchRequest) SetGroupId(v string) *UpdateMemoryAutoExtractionSwitchRequest {
 	s.GroupId = &v
+	return s
+}
+
+func (s *UpdateMemoryAutoExtractionSwitchRequest) SetOpsUserCode(v string) *UpdateMemoryAutoExtractionSwitchRequest {
+	s.OpsUserCode = &v
+	return s
+}
+
+func (s *UpdateMemoryAutoExtractionSwitchRequest) SetOpsUserId(v string) *UpdateMemoryAutoExtractionSwitchRequest {
+	s.OpsUserId = &v
 	return s
 }
 

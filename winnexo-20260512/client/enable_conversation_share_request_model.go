@@ -9,6 +9,12 @@ type iEnableConversationShareRequest interface {
   dara.Model
   String() string
   GoString() string
+  SetAppToken(v string) *EnableConversationShareRequest
+  GetAppToken() *string 
+  SetOpsUserCode(v string) *EnableConversationShareRequest
+  GetOpsUserCode() *string 
+  SetOpsUserId(v string) *EnableConversationShareRequest
+  GetOpsUserId() *string 
   SetSessionId(v string) *EnableConversationShareRequest
   GetSessionId() *string 
   SetShareAccessType(v string) *EnableConversationShareRequest
@@ -22,6 +28,24 @@ type iEnableConversationShareRequest interface {
 }
 
 type EnableConversationShareRequest struct {
+  // 平台应用 Token（控制台签发）。传入后将以 opsUserId 或 opsUserCode 指定的用户身份执行
+  // 
+  // example:
+  // 
+  // wn_app_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+  AppToken *string `json:"appToken,omitempty" xml:"appToken,omitempty"`
+  // 代理用户编码（租户内唯一），仅当应用凭证配置为 source_uid 时使用
+  // 
+  // example:
+  // 
+  // alice
+  OpsUserCode *string `json:"opsUserCode,omitempty" xml:"opsUserCode,omitempty"`
+  // 代理用户ID（WINNEXO 平台用户ID），仅当应用凭证配置为 winnexo_uid 时使用
+  // 
+  // example:
+  // 
+  // 10001
+  OpsUserId *string `json:"opsUserId,omitempty" xml:"opsUserId,omitempty"`
   // The unique identifier of the function session.
   // 
   // This parameter is required.
@@ -68,6 +92,18 @@ func (s EnableConversationShareRequest) GoString() string {
   return s.String()
 }
 
+func (s *EnableConversationShareRequest) GetAppToken() *string  {
+  return s.AppToken
+}
+
+func (s *EnableConversationShareRequest) GetOpsUserCode() *string  {
+  return s.OpsUserCode
+}
+
+func (s *EnableConversationShareRequest) GetOpsUserId() *string  {
+  return s.OpsUserId
+}
+
 func (s *EnableConversationShareRequest) GetSessionId() *string  {
   return s.SessionId
 }
@@ -86,6 +122,21 @@ func (s *EnableConversationShareRequest) GetShareUserIds() []*int64  {
 
 func (s *EnableConversationShareRequest) GetTenantId() *string  {
   return s.TenantId
+}
+
+func (s *EnableConversationShareRequest) SetAppToken(v string) *EnableConversationShareRequest {
+  s.AppToken = &v
+  return s
+}
+
+func (s *EnableConversationShareRequest) SetOpsUserCode(v string) *EnableConversationShareRequest {
+  s.OpsUserCode = &v
+  return s
+}
+
+func (s *EnableConversationShareRequest) SetOpsUserId(v string) *EnableConversationShareRequest {
+  s.OpsUserId = &v
+  return s
 }
 
 func (s *EnableConversationShareRequest) SetSessionId(v string) *EnableConversationShareRequest {

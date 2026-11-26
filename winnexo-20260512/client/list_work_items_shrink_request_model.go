@@ -9,6 +9,8 @@ type iListWorkItemsShrinkRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAppToken(v string) *ListWorkItemsShrinkRequest
+	GetAppToken() *string
 	SetBusinessStatusesShrink(v string) *ListWorkItemsShrinkRequest
 	GetBusinessStatusesShrink() *string
 	SetCollaborationGroupId(v string) *ListWorkItemsShrinkRequest
@@ -21,6 +23,10 @@ type iListWorkItemsShrinkRequest interface {
 	GetMaxResults() *int64
 	SetNextToken(v string) *ListWorkItemsShrinkRequest
 	GetNextToken() *string
+	SetOpsUserCode(v string) *ListWorkItemsShrinkRequest
+	GetOpsUserCode() *string
+	SetOpsUserId(v string) *ListWorkItemsShrinkRequest
+	GetOpsUserId() *string
 	SetPage(v int64) *ListWorkItemsShrinkRequest
 	GetPage() *int64
 	SetPageSize(v int64) *ListWorkItemsShrinkRequest
@@ -34,13 +40,19 @@ type iListWorkItemsShrinkRequest interface {
 }
 
 type ListWorkItemsShrinkRequest struct {
-	// The business statuses used for filtering.
+	// The platform application token issued by the console. If specified, the operation is executed as the user specified by opsUserId or opsUserCode.
 	//
 	// example:
 	//
-	// example
+	// wn_app_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+	AppToken *string `json:"appToken,omitempty" xml:"appToken,omitempty"`
+	// The business status filter, which supports seven states.
+	//
+	// example:
+	//
+	// ["PROCESSING"]
 	BusinessStatusesShrink *string `json:"businessStatuses,omitempty" xml:"businessStatuses,omitempty"`
-	// The ID of the collaboration workspace.
+	// The collaboration workspace ID.
 	//
 	// This parameter is required.
 	//
@@ -48,11 +60,11 @@ type ListWorkItemsShrinkRequest struct {
 	//
 	// group_example
 	CollaborationGroupId *string `json:"collaborationGroupId,omitempty" xml:"collaborationGroupId,omitempty"`
-	// The work item types used for filtering.
+	// The work item type filter.
 	//
 	// example:
 	//
-	// example
+	// ["WORKFLOW"]
 	ItemTypesShrink *string `json:"itemTypes,omitempty" xml:"itemTypes,omitempty"`
 	// The keyword for fuzzy search in the title or description.
 	//
@@ -66,12 +78,24 @@ type ListWorkItemsShrinkRequest struct {
 	//
 	// 1
 	MaxResults *int64 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
-	// The pagination token. Obtain the token from the nextToken parameter in the previous response. This parameter takes precedence over page if both are specified.
+	// The pagination token, which is obtained from the nextToken value returned in the previous response. This parameter takes precedence over page if both are specified.
 	//
 	// example:
 	//
 	// example
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
+	// The proxy user code, which is unique within the tenant. This parameter is used only when the application credential is configured as source_uid.
+	//
+	// example:
+	//
+	// alice
+	OpsUserCode *string `json:"opsUserCode,omitempty" xml:"opsUserCode,omitempty"`
+	// The proxy user ID, which is the WINNEXO platform user ID. This parameter is used only when the application credential is configured as winnexo_uid.
+	//
+	// example:
+	//
+	// 10001
+	OpsUserId *string `json:"opsUserId,omitempty" xml:"opsUserId,omitempty"`
 	// The page number. This parameter is ignored if nextToken is specified.
 	//
 	// example:
@@ -84,13 +108,13 @@ type ListWorkItemsShrinkRequest struct {
 	//
 	// 10
 	PageSize *int64 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	// The priorities used for filtering.
+	// The priority filter.
 	//
 	// example:
 	//
-	// example
+	// ["HIGH"]
 	PrioritiesShrink *string `json:"priorities,omitempty" xml:"priorities,omitempty"`
-	// The personal scope used for filtering.
+	// The personal scope filter.
 	//
 	// example:
 	//
@@ -110,6 +134,10 @@ func (s ListWorkItemsShrinkRequest) String() string {
 
 func (s ListWorkItemsShrinkRequest) GoString() string {
 	return s.String()
+}
+
+func (s *ListWorkItemsShrinkRequest) GetAppToken() *string {
+	return s.AppToken
 }
 
 func (s *ListWorkItemsShrinkRequest) GetBusinessStatusesShrink() *string {
@@ -136,6 +164,14 @@ func (s *ListWorkItemsShrinkRequest) GetNextToken() *string {
 	return s.NextToken
 }
 
+func (s *ListWorkItemsShrinkRequest) GetOpsUserCode() *string {
+	return s.OpsUserCode
+}
+
+func (s *ListWorkItemsShrinkRequest) GetOpsUserId() *string {
+	return s.OpsUserId
+}
+
 func (s *ListWorkItemsShrinkRequest) GetPage() *int64 {
 	return s.Page
 }
@@ -154,6 +190,11 @@ func (s *ListWorkItemsShrinkRequest) GetScope() *string {
 
 func (s *ListWorkItemsShrinkRequest) GetTenantId() *string {
 	return s.TenantId
+}
+
+func (s *ListWorkItemsShrinkRequest) SetAppToken(v string) *ListWorkItemsShrinkRequest {
+	s.AppToken = &v
+	return s
 }
 
 func (s *ListWorkItemsShrinkRequest) SetBusinessStatusesShrink(v string) *ListWorkItemsShrinkRequest {
@@ -183,6 +224,16 @@ func (s *ListWorkItemsShrinkRequest) SetMaxResults(v int64) *ListWorkItemsShrink
 
 func (s *ListWorkItemsShrinkRequest) SetNextToken(v string) *ListWorkItemsShrinkRequest {
 	s.NextToken = &v
+	return s
+}
+
+func (s *ListWorkItemsShrinkRequest) SetOpsUserCode(v string) *ListWorkItemsShrinkRequest {
+	s.OpsUserCode = &v
+	return s
+}
+
+func (s *ListWorkItemsShrinkRequest) SetOpsUserId(v string) *ListWorkItemsShrinkRequest {
+	s.OpsUserId = &v
 	return s
 }
 

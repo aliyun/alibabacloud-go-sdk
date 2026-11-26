@@ -9,8 +9,14 @@ type iCreateUserShrinkRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAppToken(v string) *CreateUserShrinkRequest
+	GetAppToken() *string
 	SetDisplayName(v string) *CreateUserShrinkRequest
 	GetDisplayName() *string
+	SetOpsUserCode(v string) *CreateUserShrinkRequest
+	GetOpsUserCode() *string
+	SetOpsUserId(v string) *CreateUserShrinkRequest
+	GetOpsUserId() *string
 	SetPasswordEncrypted(v string) *CreateUserShrinkRequest
 	GetPasswordEncrypted() *string
 	SetRoleCodesShrink(v string) *CreateUserShrinkRequest
@@ -24,6 +30,12 @@ type iCreateUserShrinkRequest interface {
 }
 
 type CreateUserShrinkRequest struct {
+	// 平台应用 Token（控制台签发）。传入后将以 opsUserId 或 opsUserCode 指定的用户身份执行
+	//
+	// example:
+	//
+	// wn_app_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+	AppToken *string `json:"appToken,omitempty" xml:"appToken,omitempty"`
 	// The display name.
 	//
 	// This parameter is required.
@@ -32,6 +44,18 @@ type CreateUserShrinkRequest struct {
 	//
 	// string_value
 	DisplayName *string `json:"displayName,omitempty" xml:"displayName,omitempty"`
+	// 代理用户编码（租户内唯一），仅当应用凭证配置为 source_uid 时使用
+	//
+	// example:
+	//
+	// alice
+	OpsUserCode *string `json:"opsUserCode,omitempty" xml:"opsUserCode,omitempty"`
+	// 代理用户ID（WINNEXO 平台用户ID），仅当应用凭证配置为 winnexo_uid 时使用
+	//
+	// example:
+	//
+	// 10001
+	OpsUserId *string `json:"opsUserId,omitempty" xml:"opsUserId,omitempty"`
 	// The Base64-encoded password ciphertext encrypted by using RSA-OAEP-SHA256. This parameter is required and cannot be empty.
 	//
 	// This parameter is required.
@@ -76,8 +100,20 @@ func (s CreateUserShrinkRequest) GoString() string {
 	return s.String()
 }
 
+func (s *CreateUserShrinkRequest) GetAppToken() *string {
+	return s.AppToken
+}
+
 func (s *CreateUserShrinkRequest) GetDisplayName() *string {
 	return s.DisplayName
+}
+
+func (s *CreateUserShrinkRequest) GetOpsUserCode() *string {
+	return s.OpsUserCode
+}
+
+func (s *CreateUserShrinkRequest) GetOpsUserId() *string {
+	return s.OpsUserId
 }
 
 func (s *CreateUserShrinkRequest) GetPasswordEncrypted() *string {
@@ -100,8 +136,23 @@ func (s *CreateUserShrinkRequest) GetWnAccountId() *string {
 	return s.WnAccountId
 }
 
+func (s *CreateUserShrinkRequest) SetAppToken(v string) *CreateUserShrinkRequest {
+	s.AppToken = &v
+	return s
+}
+
 func (s *CreateUserShrinkRequest) SetDisplayName(v string) *CreateUserShrinkRequest {
 	s.DisplayName = &v
+	return s
+}
+
+func (s *CreateUserShrinkRequest) SetOpsUserCode(v string) *CreateUserShrinkRequest {
+	s.OpsUserCode = &v
+	return s
+}
+
+func (s *CreateUserShrinkRequest) SetOpsUserId(v string) *CreateUserShrinkRequest {
+	s.OpsUserId = &v
 	return s
 }
 

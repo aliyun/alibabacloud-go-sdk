@@ -38,7 +38,7 @@ type ListTodosResponseBody struct {
 	//
 	// 200
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// Indicates whether more data is available.
+	// Specifies whether more data is available.
 	//
 	// example:
 	//
@@ -46,7 +46,7 @@ type ListTodosResponseBody struct {
 	HasMore *bool `json:"hasMore,omitempty" xml:"hasMore,omitempty"`
 	// The list of to-do items on the current page.
 	Items []*ListTodosResponseBodyItems `json:"items,omitempty" xml:"items,omitempty" type:"Repeated"`
-	// The effective maximum number of entries to return per page for the current request.
+	// The effective maximum number of entries returned per page for this request.
 	//
 	// example:
 	//
@@ -58,7 +58,7 @@ type ListTodosResponseBody struct {
 	//
 	// The requested resource does not exist
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// The pagination token for the next page. This field is an empty string if no more data is available.
+	// The pagination token for the next page. This is an empty string if no more data is available.
 	//
 	// example:
 	//
@@ -208,7 +208,7 @@ type ListTodosResponseBodyItems struct {
 	//
 	// 2
 	AssigneeCount *int64 `json:"assigneeCount,omitempty" xml:"assigneeCount,omitempty"`
-	// The completion time in the YYYY-MM-DD HH:mm:ss format (UTC+8).
+	// The completion time in UTC+8. Format: YYYY-MM-DD HH:mm:ss.
 	//
 	// example:
 	//
@@ -224,27 +224,27 @@ type ListTodosResponseBodyItems struct {
 	//
 	// example:
 	//
-	// John Doe
+	// Zhang San
 	CompletedByUserName *string `json:"completedByUserName,omitempty" xml:"completedByUserName,omitempty"`
-	// The creation time in the YYYY-MM-DD HH:mm:ss format (UTC+8).
+	// The creation time in UTC+8. Format: YYYY-MM-DD HH:mm:ss.
 	//
 	// example:
 	//
 	// 2026-10-12 10:00:00
 	GmtCreate *string `json:"gmtCreate,omitempty" xml:"gmtCreate,omitempty"`
-	// The last modification time in the YYYY-MM-DD HH:mm:ss format (UTC+8).
+	// The last modification time in UTC+8. Format: YYYY-MM-DD HH:mm:ss.
 	//
 	// example:
 	//
 	// 2026-10-12 10:00:00
 	GmtModified *string `json:"gmtModified,omitempty" xml:"gmtModified,omitempty"`
-	// Indicates whether the caller has read the item.
+	// Specifies whether the caller has read the item.
 	//
 	// example:
 	//
 	// false
 	IsRead *bool `json:"isRead,omitempty" xml:"isRead,omitempty"`
-	// The message ID of the assistant that sent the to-do item. This field is empty if there is no conversation source.
+	// The ID of the assistant message that generated the to-do item. This field is empty if there is no conversation source.
 	//
 	// example:
 	//
@@ -260,7 +260,7 @@ type ListTodosResponseBodyItems struct {
 	//
 	// example:
 	//
-	// TODO
+	// DONE
 	MyDisplayState *string `json:"myDisplayState,omitempty" xml:"myDisplayState,omitempty"`
 	// The priority.
 	//
@@ -276,11 +276,11 @@ type ListTodosResponseBodyItems struct {
 	QuestionCount *int64 `json:"questionCount,omitempty" xml:"questionCount,omitempty"`
 	// The list of question summaries.
 	QuestionSummaries []*string `json:"questionSummaries,omitempty" xml:"questionSummaries,omitempty" type:"Repeated"`
-	// The source context. This context is passed through as-is during creation.
+	// The source context. This is passed through as-is during creation.
 	//
 	// example:
 	//
-	// source=openapi
+	// {"source":"openapi"}
 	SourceContext map[string]interface{} `json:"sourceContext,omitempty" xml:"sourceContext,omitempty"`
 	// The source type of the to-do item.
 	//

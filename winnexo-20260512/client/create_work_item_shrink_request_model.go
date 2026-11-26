@@ -11,6 +11,8 @@ type iCreateWorkItemShrinkRequest interface {
 	GoString() string
 	SetAcceptanceCriteria(v string) *CreateWorkItemShrinkRequest
 	GetAcceptanceCriteria() *string
+	SetAppToken(v string) *CreateWorkItemShrinkRequest
+	GetAppToken() *string
 	SetAttachmentsShrink(v string) *CreateWorkItemShrinkRequest
 	GetAttachmentsShrink() *string
 	SetCollaborationGroupId(v string) *CreateWorkItemShrinkRequest
@@ -23,6 +25,10 @@ type iCreateWorkItemShrinkRequest interface {
 	GetDescription() *string
 	SetItemType(v string) *CreateWorkItemShrinkRequest
 	GetItemType() *string
+	SetOpsUserCode(v string) *CreateWorkItemShrinkRequest
+	GetOpsUserCode() *string
+	SetOpsUserId(v string) *CreateWorkItemShrinkRequest
+	GetOpsUserId() *string
 	SetOwnerUserId(v int64) *CreateWorkItemShrinkRequest
 	GetOwnerUserId() *int64
 	SetPriority(v string) *CreateWorkItemShrinkRequest
@@ -42,13 +48,19 @@ type CreateWorkItemShrinkRequest struct {
 	//
 	// example
 	AcceptanceCriteria *string `json:"acceptanceCriteria,omitempty" xml:"acceptanceCriteria,omitempty"`
+	// The platform application token issued by the console. If specified, the operation is performed as the user specified by opsUserId or opsUserCode.
+	//
+	// example:
+	//
+	// wn_app_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+	AppToken *string `json:"appToken,omitempty" xml:"appToken,omitempty"`
 	// The stable references of the input attachments.
 	//
 	// example:
 	//
-	// example
+	// [{"resourceKind":"FILE","resourceId":"file_9401","refUrl":"https://files.winnexo.aliyun.com/report.md","title":"Sales Report","contentType":"text/markdown","sizeBytes":2048}]
 	AttachmentsShrink *string `json:"attachments,omitempty" xml:"attachments,omitempty"`
-	// The ID of the collaboration workspace.
+	// The ID of the collaboration space.
 	//
 	// This parameter is required.
 	//
@@ -60,7 +72,7 @@ type CreateWorkItemShrinkRequest struct {
 	//
 	// example:
 	//
-	// example
+	// [10001,10002]
 	CollaboratorUserIdsShrink *string `json:"collaboratorUserIds,omitempty" xml:"collaboratorUserIds,omitempty"`
 	// The ID of the associated conversation.
 	//
@@ -74,7 +86,7 @@ type CreateWorkItemShrinkRequest struct {
 	//
 	// example
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// The type of the work item. Only WORKFLOW is supported.
+	// The type of the work item. Only WORKFLOW is accepted.
 	//
 	// This parameter is required.
 	//
@@ -82,7 +94,19 @@ type CreateWorkItemShrinkRequest struct {
 	//
 	// WORKFLOW
 	ItemType *string `json:"itemType,omitempty" xml:"itemType,omitempty"`
-	// The user ID of the owner. If this parameter is not specified, the ID of the caller is used.
+	// The proxy user code, which is unique within the tenant. This parameter is used only when the application credential is configured as source_uid.
+	//
+	// example:
+	//
+	// alice
+	OpsUserCode *string `json:"opsUserCode,omitempty" xml:"opsUserCode,omitempty"`
+	// The proxy user ID, which is the WINNEXO platform user ID. This parameter is used only when the application credential is configured as winnexo_uid.
+	//
+	// example:
+	//
+	// 10001
+	OpsUserId *string `json:"opsUserId,omitempty" xml:"opsUserId,omitempty"`
+	// The user ID of the owner. If not specified, the caller is used as the owner.
 	//
 	// example:
 	//
@@ -94,7 +118,7 @@ type CreateWorkItemShrinkRequest struct {
 	//
 	// HIGH
 	Priority *string `json:"priority,omitempty" xml:"priority,omitempty"`
-	// The tenant ID. This is a common parameter. If this parameter is not specified, the default tenant of the caller is used.
+	// The tenant ID. This is a common parameter. If not specified, the default tenant of the caller is used.
 	//
 	// example:
 	//
@@ -112,7 +136,7 @@ type CreateWorkItemShrinkRequest struct {
 	//
 	// example:
 	//
-	// example
+	// ["tpl_9401","tpl_9402"]
 	WorkflowTemplateIdsShrink *string `json:"workflowTemplateIds,omitempty" xml:"workflowTemplateIds,omitempty"`
 }
 
@@ -126,6 +150,10 @@ func (s CreateWorkItemShrinkRequest) GoString() string {
 
 func (s *CreateWorkItemShrinkRequest) GetAcceptanceCriteria() *string {
 	return s.AcceptanceCriteria
+}
+
+func (s *CreateWorkItemShrinkRequest) GetAppToken() *string {
+	return s.AppToken
 }
 
 func (s *CreateWorkItemShrinkRequest) GetAttachmentsShrink() *string {
@@ -152,6 +180,14 @@ func (s *CreateWorkItemShrinkRequest) GetItemType() *string {
 	return s.ItemType
 }
 
+func (s *CreateWorkItemShrinkRequest) GetOpsUserCode() *string {
+	return s.OpsUserCode
+}
+
+func (s *CreateWorkItemShrinkRequest) GetOpsUserId() *string {
+	return s.OpsUserId
+}
+
 func (s *CreateWorkItemShrinkRequest) GetOwnerUserId() *int64 {
 	return s.OwnerUserId
 }
@@ -174,6 +210,11 @@ func (s *CreateWorkItemShrinkRequest) GetWorkflowTemplateIdsShrink() *string {
 
 func (s *CreateWorkItemShrinkRequest) SetAcceptanceCriteria(v string) *CreateWorkItemShrinkRequest {
 	s.AcceptanceCriteria = &v
+	return s
+}
+
+func (s *CreateWorkItemShrinkRequest) SetAppToken(v string) *CreateWorkItemShrinkRequest {
+	s.AppToken = &v
 	return s
 }
 
@@ -204,6 +245,16 @@ func (s *CreateWorkItemShrinkRequest) SetDescription(v string) *CreateWorkItemSh
 
 func (s *CreateWorkItemShrinkRequest) SetItemType(v string) *CreateWorkItemShrinkRequest {
 	s.ItemType = &v
+	return s
+}
+
+func (s *CreateWorkItemShrinkRequest) SetOpsUserCode(v string) *CreateWorkItemShrinkRequest {
+	s.OpsUserCode = &v
+	return s
+}
+
+func (s *CreateWorkItemShrinkRequest) SetOpsUserId(v string) *CreateWorkItemShrinkRequest {
+	s.OpsUserId = &v
 	return s
 }
 

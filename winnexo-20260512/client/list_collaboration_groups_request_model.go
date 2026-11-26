@@ -9,8 +9,14 @@ type iListCollaborationGroupsRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAppToken(v string) *ListCollaborationGroupsRequest
+	GetAppToken() *string
 	SetKeyword(v string) *ListCollaborationGroupsRequest
 	GetKeyword() *string
+	SetOpsUserCode(v string) *ListCollaborationGroupsRequest
+	GetOpsUserCode() *string
+	SetOpsUserId(v string) *ListCollaborationGroupsRequest
+	GetOpsUserId() *string
 	SetPage(v int64) *ListCollaborationGroupsRequest
 	GetPage() *int64
 	SetPageSize(v int64) *ListCollaborationGroupsRequest
@@ -20,13 +26,31 @@ type iListCollaborationGroupsRequest interface {
 }
 
 type ListCollaborationGroupsRequest struct {
-	// The search keyword. This parameter is optional and can contain up to 256 characters.
+	// The platform application token issued by the console. If specified, the operation is executed with the user identity specified by opsUserId or opsUserCode.
+	//
+	// example:
+	//
+	// wn_app_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+	AppToken *string `json:"appToken,omitempty" xml:"appToken,omitempty"`
+	// The search keyword. This parameter is optional and can be up to 256 characters in length.
 	//
 	// example:
 	//
 	// Workflow
 	Keyword *string `json:"keyword,omitempty" xml:"keyword,omitempty"`
-	// The page number. Pages start from 1.
+	// The proxy user code, which is unique within the tenant. This parameter is used only when the application credential is configured as source_uid.
+	//
+	// example:
+	//
+	// alice
+	OpsUserCode *string `json:"opsUserCode,omitempty" xml:"opsUserCode,omitempty"`
+	// The proxy user ID, which is the WINNEXO platform user ID. This parameter is used only when the application credential is configured as winnexo_uid.
+	//
+	// example:
+	//
+	// 10001
+	OpsUserId *string `json:"opsUserId,omitempty" xml:"opsUserId,omitempty"`
+	// The page number, starting from 1.
 	//
 	// example:
 	//
@@ -38,7 +62,7 @@ type ListCollaborationGroupsRequest struct {
 	//
 	// 20
 	PageSize *int64 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	// The tenant ID. If you do not specify this parameter, the default tenant of the caller is used.
+	// The tenant ID. If not specified, the default tenant of the caller is used.
 	//
 	// example:
 	//
@@ -54,8 +78,20 @@ func (s ListCollaborationGroupsRequest) GoString() string {
 	return s.String()
 }
 
+func (s *ListCollaborationGroupsRequest) GetAppToken() *string {
+	return s.AppToken
+}
+
 func (s *ListCollaborationGroupsRequest) GetKeyword() *string {
 	return s.Keyword
+}
+
+func (s *ListCollaborationGroupsRequest) GetOpsUserCode() *string {
+	return s.OpsUserCode
+}
+
+func (s *ListCollaborationGroupsRequest) GetOpsUserId() *string {
+	return s.OpsUserId
 }
 
 func (s *ListCollaborationGroupsRequest) GetPage() *int64 {
@@ -70,8 +106,23 @@ func (s *ListCollaborationGroupsRequest) GetTenantId() *string {
 	return s.TenantId
 }
 
+func (s *ListCollaborationGroupsRequest) SetAppToken(v string) *ListCollaborationGroupsRequest {
+	s.AppToken = &v
+	return s
+}
+
 func (s *ListCollaborationGroupsRequest) SetKeyword(v string) *ListCollaborationGroupsRequest {
 	s.Keyword = &v
+	return s
+}
+
+func (s *ListCollaborationGroupsRequest) SetOpsUserCode(v string) *ListCollaborationGroupsRequest {
+	s.OpsUserCode = &v
+	return s
+}
+
+func (s *ListCollaborationGroupsRequest) SetOpsUserId(v string) *ListCollaborationGroupsRequest {
+	s.OpsUserId = &v
 	return s
 }
 

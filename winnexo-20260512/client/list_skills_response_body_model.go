@@ -46,7 +46,7 @@ type ListSkillsResponseBody struct {
 	//
 	// 1
 	Page *int32 `json:"page,omitempty" xml:"page,omitempty"`
-	// The number of entries per page. Default value: 20. Minimum value: 1. Maximum value: 50.
+	// The number of entries per page in the returned results. Default value: 20. Minimum value: 1. Maximum value: 50.
 	//
 	// example:
 	//
@@ -58,7 +58,7 @@ type ListSkillsResponseBody struct {
 	//
 	// 019FF406-1B10-0065-A97D-2D1920C2A03D
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// The total number of entries.
+	// The total count.
 	//
 	// example:
 	//
@@ -169,13 +169,13 @@ type ListSkillsResponseBodyItems struct {
 	//
 	// string_value
 	ExecuteMode *string `json:"executeMode,omitempty" xml:"executeMode,omitempty"`
-	// Indicates whether the skill is globally accessible.
+	// Specifies whether global access is allowed.
 	//
 	// example:
 	//
 	// true
 	GlobalAccess *bool `json:"globalAccess,omitempty" xml:"globalAccess,omitempty"`
-	// Indicates whether unpublished draft modifications exist.
+	// Specifies whether unpublished draft modifications exist.
 	//
 	// example:
 	//
@@ -185,9 +185,9 @@ type ListSkillsResponseBodyItems struct {
 	//
 	// example:
 	//
-	// SampleName.pdf
+	// Sample name.pdf
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The skill code that is actually executed.
+	// The code of the skill that is actually executed.
 	//
 	// example:
 	//
@@ -205,17 +205,17 @@ type ListSkillsResponseBodyItems struct {
 	//
 	// BUILTIN
 	SourceType *string `json:"sourceType,omitempty" xml:"sourceType,omitempty"`
-	// The task status. Running is returned upon submission.
+	// The task status. Running is returned immediately after submission.
 	//
 	// example:
 	//
 	// READY
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
-	// The keys.
+	// The key.
 	//
 	// example:
 	//
-	// string_value
+	// ["None"]
 	Tags []*string `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
 	// The update timestamp, in milliseconds.
 	//

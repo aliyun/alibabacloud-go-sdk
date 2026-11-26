@@ -32,7 +32,7 @@ type iCreateGroupDirectoryResponseBody interface {
 }
 
 type CreateGroupDirectoryResponseBody struct {
-	// SUCCESS indicates success. In failure cases, the corresponding error type is returned, such as ERR_BAD_REQUEST, ERR_VALIDATION_FAILED, or ERR_INTERNAL_SERVER_ERROR.
+	// SUCCESS indicates success. For failures, the corresponding error type is returned, such as ERR_BAD_REQUEST, ERR_VALIDATION_FAILED, or ERR_INTERNAL_SERVER_ERROR.
 	//
 	// example:
 	//
@@ -42,15 +42,15 @@ type CreateGroupDirectoryResponseBody struct {
 	//
 	// example:
 	//
-	// ProjectDescription
+	// Project Description
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// The folder ID.
+	// The directory ID.
 	//
 	// example:
 	//
 	// dir_example
 	DirectoryId *string `json:"directoryId,omitempty" xml:"directoryId,omitempty"`
-	// The folder type.
+	// The directory type.
 	//
 	// example:
 	//
@@ -62,13 +62,13 @@ type CreateGroupDirectoryResponseBody struct {
 	//
 	// group_example
 	GroupId *string `json:"groupId,omitempty" xml:"groupId,omitempty"`
-	// The root folder ID of the knowledge base.
+	// The knowledge base root directory ID.
 	//
 	// example:
 	//
 	// dir_root
 	KbRootDirectoryId *string `json:"kbRootDirectoryId,omitempty" xml:"kbRootDirectoryId,omitempty"`
-	// The response message.
+	// The returned message.
 	//
 	// example:
 	//
@@ -78,9 +78,9 @@ type CreateGroupDirectoryResponseBody struct {
 	//
 	// example:
 	//
-	// ProjectFiles
+	// Project Materials
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The folder ID.
+	// The directory ID.
 	//
 	// example:
 	//

@@ -44,7 +44,7 @@ type CreateKnowledgeBaseAliDingDocResponseBody struct {
 	//
 	// exampleDirectoryId
 	DirectoryId *string `json:"directoryId,omitempty" xml:"directoryId,omitempty"`
-	// The public URL of the document (echoes the input parameter).
+	// The public URL of the document. This value is echoed from the request parameter.
 	//
 	// example:
 	//
@@ -62,7 +62,7 @@ type CreateKnowledgeBaseAliDingDocResponseBody struct {
 	//
 	// success
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// The name.
+	// The image name.
 	//
 	// example:
 	//
@@ -86,23 +86,23 @@ type CreateKnowledgeBaseAliDingDocResponseBody struct {
 	//
 	// 8
 	SourceId *string `json:"sourceId,omitempty" xml:"sourceId,omitempty"`
-	// The refund status. Query this field to confirm the refund status during processing. Valid values:
+	// The refund status. If the refund is in progress, you must query and confirm the refund status. Valid values:
 	//
-	// - SUCCESS: All refunds are successful.
+	// - SUCCESS: Succeeded.
 	//
-	// - FAIL: The refund failed.
+	// - FAIL: Failed.
 	//
 	// - WAIT_PAY: Waiting for refund.
 	//
-	// - EXPIRE: The refund has expired.
+	// - EXPIRE: Expired.
 	//
-	// - PAYING: The refund is being processed.
+	// - PAYING: Refunding.
 	//
-	// - TERMINATE: The refund is terminated.
+	// - TERMINATE: Terminated.
 	//
 	// example:
 	//
-	// {\\"observedGeneration\\": 7, \\"servicesInstances\\": {}, \\"observedTime\\": \\"2025-12-17T11:57:07Z\\", \\"servicesWithPendingChanges\\": [], \\"latestEnvironmentDeploymentName\\": \\"manual-1765972627273-k7GZvr\\"}
+	// {\"observedGeneration\": 7, \"servicesInstances\": {}, \"observedTime\": \"2025-12-17T11:57:07Z\", \"servicesWithPendingChanges\": [], \"latestEnvironmentDeploymentName\": \"manual-1765972627273-k7GZvr\"}
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
 }
 

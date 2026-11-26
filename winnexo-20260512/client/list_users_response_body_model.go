@@ -34,7 +34,7 @@ type ListUsersResponseBody struct {
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
 	// The user information.
 	Items []*ListUsersResponseBodyItems `json:"items,omitempty" xml:"items,omitempty" type:"Repeated"`
-	// The status code description.
+	// The description of the status code.
 	//
 	// example:
 	//
@@ -185,7 +185,7 @@ type ListUsersResponseBodyItems struct {
 	//
 	// 2023-10-01T12:00:00Z
 	LastLoginTime *string `json:"lastLoginTime,omitempty" xml:"lastLoginTime,omitempty"`
-	// The list of new system role codes. This is a full replacement and must contain at least one role. Valid values: SUPER_ADMIN, SYSTEM_ADMIN, SEMANTIC_ADMIN, SKILL_ADMIN, KB_ADMIN, AGENT_ADMIN, and APPLICATION_USER.
+	// The list of new system role codes. This list fully replaces the existing roles and must contain at least one role. Valid values: SUPER_ADMIN, SYSTEM_ADMIN, SEMANTIC_ADMIN, SKILL_ADMIN, KB_ADMIN, AGENT_ADMIN, and APPLICATION_USER.
 	//
 	// example:
 	//

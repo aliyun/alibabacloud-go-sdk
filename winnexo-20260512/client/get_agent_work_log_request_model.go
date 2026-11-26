@@ -9,8 +9,14 @@ type iGetAgentWorkLogRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAppToken(v string) *GetAgentWorkLogRequest
+	GetAppToken() *string
 	SetNodeId(v string) *GetAgentWorkLogRequest
 	GetNodeId() *string
+	SetOpsUserCode(v string) *GetAgentWorkLogRequest
+	GetOpsUserCode() *string
+	SetOpsUserId(v string) *GetAgentWorkLogRequest
+	GetOpsUserId() *string
 	SetPage(v int64) *GetAgentWorkLogRequest
 	GetPage() *int64
 	SetPageSize(v int64) *GetAgentWorkLogRequest
@@ -22,12 +28,30 @@ type iGetAgentWorkLogRequest interface {
 }
 
 type GetAgentWorkLogRequest struct {
+	// 平台应用 Token（控制台签发）。传入后将以 opsUserId 或 opsUserCode 指定的用户身份执行
+	//
+	// example:
+	//
+	// wn_app_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+	AppToken *string `json:"appToken,omitempty" xml:"appToken,omitempty"`
 	// The optional node key.
 	//
 	// example:
 	//
 	// step_1
 	NodeId *string `json:"nodeId,omitempty" xml:"nodeId,omitempty"`
+	// 代理用户编码（租户内唯一），仅当应用凭证配置为 source_uid 时使用
+	//
+	// example:
+	//
+	// alice
+	OpsUserCode *string `json:"opsUserCode,omitempty" xml:"opsUserCode,omitempty"`
+	// 代理用户ID（WINNEXO 平台用户ID），仅当应用凭证配置为 winnexo_uid 时使用
+	//
+	// example:
+	//
+	// 10001
+	OpsUserId *string `json:"opsUserId,omitempty" xml:"opsUserId,omitempty"`
 	// The page number, starting from 1.
 	//
 	// example:
@@ -64,8 +88,20 @@ func (s GetAgentWorkLogRequest) GoString() string {
 	return s.String()
 }
 
+func (s *GetAgentWorkLogRequest) GetAppToken() *string {
+	return s.AppToken
+}
+
 func (s *GetAgentWorkLogRequest) GetNodeId() *string {
 	return s.NodeId
+}
+
+func (s *GetAgentWorkLogRequest) GetOpsUserCode() *string {
+	return s.OpsUserCode
+}
+
+func (s *GetAgentWorkLogRequest) GetOpsUserId() *string {
+	return s.OpsUserId
 }
 
 func (s *GetAgentWorkLogRequest) GetPage() *int64 {
@@ -84,8 +120,23 @@ func (s *GetAgentWorkLogRequest) GetWorkItemId() *string {
 	return s.WorkItemId
 }
 
+func (s *GetAgentWorkLogRequest) SetAppToken(v string) *GetAgentWorkLogRequest {
+	s.AppToken = &v
+	return s
+}
+
 func (s *GetAgentWorkLogRequest) SetNodeId(v string) *GetAgentWorkLogRequest {
 	s.NodeId = &v
+	return s
+}
+
+func (s *GetAgentWorkLogRequest) SetOpsUserCode(v string) *GetAgentWorkLogRequest {
+	s.OpsUserCode = &v
+	return s
+}
+
+func (s *GetAgentWorkLogRequest) SetOpsUserId(v string) *GetAgentWorkLogRequest {
+	s.OpsUserId = &v
 	return s
 }
 

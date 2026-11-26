@@ -9,10 +9,16 @@ type iListGroupDirectoryRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAppToken(v string) *ListGroupDirectoryRequest
+	GetAppToken() *string
 	SetDirectoryId(v string) *ListGroupDirectoryRequest
 	GetDirectoryId() *string
 	SetGroupId(v string) *ListGroupDirectoryRequest
 	GetGroupId() *string
+	SetOpsUserCode(v string) *ListGroupDirectoryRequest
+	GetOpsUserCode() *string
+	SetOpsUserId(v string) *ListGroupDirectoryRequest
+	GetOpsUserId() *string
 	SetPage(v int64) *ListGroupDirectoryRequest
 	GetPage() *int64
 	SetPageSize(v int64) *ListGroupDirectoryRequest
@@ -30,6 +36,12 @@ type iListGroupDirectoryRequest interface {
 }
 
 type ListGroupDirectoryRequest struct {
+	// 平台应用 Token（控制台签发）。传入后将以 opsUserId 或 opsUserCode 指定的用户身份执行
+	//
+	// example:
+	//
+	// wn_app_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+	AppToken *string `json:"appToken,omitempty" xml:"appToken,omitempty"`
 	// The ID of a visible directory within the space. If omitted or set to root, the internal root is queried. On the first query, the existing service initialization for the root directory is used.
 	//
 	// example:
@@ -44,6 +56,18 @@ type ListGroupDirectoryRequest struct {
 	//
 	// group_example
 	GroupId *string `json:"groupId,omitempty" xml:"groupId,omitempty"`
+	// 代理用户编码（租户内唯一），仅当应用凭证配置为 source_uid 时使用
+	//
+	// example:
+	//
+	// alice
+	OpsUserCode *string `json:"opsUserCode,omitempty" xml:"opsUserCode,omitempty"`
+	// 代理用户ID（WINNEXO 平台用户ID），仅当应用凭证配置为 winnexo_uid 时使用
+	//
+	// example:
+	//
+	// 10001
+	OpsUserId *string `json:"opsUserId,omitempty" xml:"opsUserId,omitempty"`
 	// The page number, starting from 1.
 	//
 	// example:
@@ -96,12 +120,24 @@ func (s ListGroupDirectoryRequest) GoString() string {
 	return s.String()
 }
 
+func (s *ListGroupDirectoryRequest) GetAppToken() *string {
+	return s.AppToken
+}
+
 func (s *ListGroupDirectoryRequest) GetDirectoryId() *string {
 	return s.DirectoryId
 }
 
 func (s *ListGroupDirectoryRequest) GetGroupId() *string {
 	return s.GroupId
+}
+
+func (s *ListGroupDirectoryRequest) GetOpsUserCode() *string {
+	return s.OpsUserCode
+}
+
+func (s *ListGroupDirectoryRequest) GetOpsUserId() *string {
+	return s.OpsUserId
 }
 
 func (s *ListGroupDirectoryRequest) GetPage() *int64 {
@@ -132,6 +168,11 @@ func (s *ListGroupDirectoryRequest) GetTenantId() *string {
 	return s.TenantId
 }
 
+func (s *ListGroupDirectoryRequest) SetAppToken(v string) *ListGroupDirectoryRequest {
+	s.AppToken = &v
+	return s
+}
+
 func (s *ListGroupDirectoryRequest) SetDirectoryId(v string) *ListGroupDirectoryRequest {
 	s.DirectoryId = &v
 	return s
@@ -139,6 +180,16 @@ func (s *ListGroupDirectoryRequest) SetDirectoryId(v string) *ListGroupDirectory
 
 func (s *ListGroupDirectoryRequest) SetGroupId(v string) *ListGroupDirectoryRequest {
 	s.GroupId = &v
+	return s
+}
+
+func (s *ListGroupDirectoryRequest) SetOpsUserCode(v string) *ListGroupDirectoryRequest {
+	s.OpsUserCode = &v
+	return s
+}
+
+func (s *ListGroupDirectoryRequest) SetOpsUserId(v string) *ListGroupDirectoryRequest {
+	s.OpsUserId = &v
 	return s
 }
 

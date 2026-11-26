@@ -9,6 +9,8 @@ type iCreateAnnouncementShrinkRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAppToken(v string) *CreateAnnouncementShrinkRequest
+	GetAppToken() *string
 	SetContent(v string) *CreateAnnouncementShrinkRequest
 	GetContent() *string
 	SetDisplayPage(v string) *CreateAnnouncementShrinkRequest
@@ -19,6 +21,10 @@ type iCreateAnnouncementShrinkRequest interface {
 	GetEffectiveEnd() *string
 	SetEffectiveStart(v string) *CreateAnnouncementShrinkRequest
 	GetEffectiveStart() *string
+	SetOpsUserCode(v string) *CreateAnnouncementShrinkRequest
+	GetOpsUserCode() *string
+	SetOpsUserId(v string) *CreateAnnouncementShrinkRequest
+	GetOpsUserId() *string
 	SetPriority(v string) *CreateAnnouncementShrinkRequest
 	GetPriority() *string
 	SetPublishNow(v bool) *CreateAnnouncementShrinkRequest
@@ -38,6 +44,12 @@ type iCreateAnnouncementShrinkRequest interface {
 }
 
 type CreateAnnouncementShrinkRequest struct {
+	// 平台应用 Token（控制台签发）。传入后将以 opsUserId 或 opsUserCode 指定的用户身份执行
+	//
+	// example:
+	//
+	// wn_app_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+	AppToken *string `json:"appToken,omitempty" xml:"appToken,omitempty"`
 	// The content of the notice.
 	//
 	// This parameter is required.
@@ -70,6 +82,18 @@ type CreateAnnouncementShrinkRequest struct {
 	//
 	// 2026-08-20T14:00:00+08:00
 	EffectiveStart *string `json:"effectiveStart,omitempty" xml:"effectiveStart,omitempty"`
+	// 代理用户编码（租户内唯一），仅当应用凭证配置为 source_uid 时使用
+	//
+	// example:
+	//
+	// alice
+	OpsUserCode *string `json:"opsUserCode,omitempty" xml:"opsUserCode,omitempty"`
+	// 代理用户ID（WINNEXO 平台用户ID），仅当应用凭证配置为 winnexo_uid 时使用
+	//
+	// example:
+	//
+	// 10001
+	OpsUserId *string `json:"opsUserId,omitempty" xml:"opsUserId,omitempty"`
 	// The priority. Valid values:
 	//
 	// This parameter is required.
@@ -132,6 +156,10 @@ func (s CreateAnnouncementShrinkRequest) GoString() string {
 	return s.String()
 }
 
+func (s *CreateAnnouncementShrinkRequest) GetAppToken() *string {
+	return s.AppToken
+}
+
 func (s *CreateAnnouncementShrinkRequest) GetContent() *string {
 	return s.Content
 }
@@ -150,6 +178,14 @@ func (s *CreateAnnouncementShrinkRequest) GetEffectiveEnd() *string {
 
 func (s *CreateAnnouncementShrinkRequest) GetEffectiveStart() *string {
 	return s.EffectiveStart
+}
+
+func (s *CreateAnnouncementShrinkRequest) GetOpsUserCode() *string {
+	return s.OpsUserCode
+}
+
+func (s *CreateAnnouncementShrinkRequest) GetOpsUserId() *string {
+	return s.OpsUserId
 }
 
 func (s *CreateAnnouncementShrinkRequest) GetPriority() *string {
@@ -184,6 +220,11 @@ func (s *CreateAnnouncementShrinkRequest) GetTitle() *string {
 	return s.Title
 }
 
+func (s *CreateAnnouncementShrinkRequest) SetAppToken(v string) *CreateAnnouncementShrinkRequest {
+	s.AppToken = &v
+	return s
+}
+
 func (s *CreateAnnouncementShrinkRequest) SetContent(v string) *CreateAnnouncementShrinkRequest {
 	s.Content = &v
 	return s
@@ -206,6 +247,16 @@ func (s *CreateAnnouncementShrinkRequest) SetEffectiveEnd(v string) *CreateAnnou
 
 func (s *CreateAnnouncementShrinkRequest) SetEffectiveStart(v string) *CreateAnnouncementShrinkRequest {
 	s.EffectiveStart = &v
+	return s
+}
+
+func (s *CreateAnnouncementShrinkRequest) SetOpsUserCode(v string) *CreateAnnouncementShrinkRequest {
+	s.OpsUserCode = &v
+	return s
+}
+
+func (s *CreateAnnouncementShrinkRequest) SetOpsUserId(v string) *CreateAnnouncementShrinkRequest {
+	s.OpsUserId = &v
 	return s
 }
 

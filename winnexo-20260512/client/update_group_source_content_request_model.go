@@ -9,12 +9,18 @@ type iUpdateGroupSourceContentRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAppToken(v string) *UpdateGroupSourceContentRequest
+	GetAppToken() *string
 	SetContent(v string) *UpdateGroupSourceContentRequest
 	GetContent() *string
 	SetForceSync(v bool) *UpdateGroupSourceContentRequest
 	GetForceSync() *bool
 	SetGroupId(v string) *UpdateGroupSourceContentRequest
 	GetGroupId() *string
+	SetOpsUserCode(v string) *UpdateGroupSourceContentRequest
+	GetOpsUserCode() *string
+	SetOpsUserId(v string) *UpdateGroupSourceContentRequest
+	GetOpsUserId() *string
 	SetSourceId(v string) *UpdateGroupSourceContentRequest
 	GetSourceId() *string
 	SetTenantId(v string) *UpdateGroupSourceContentRequest
@@ -22,13 +28,19 @@ type iUpdateGroupSourceContentRequest interface {
 }
 
 type UpdateGroupSourceContentRequest struct {
-	// The returned content.
+	// The platform application token issued by the console. If specified, the operation is executed as the user identified by opsUserId or opsUserCode.
+	//
+	// example:
+	//
+	// wn_app_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+	AppToken *string `json:"appToken,omitempty" xml:"appToken,omitempty"`
+	// The content.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// Updated body content
+	// Updated content
 	Content *string `json:"content,omitempty" xml:"content,omitempty"`
 	// Specifies whether to force synchronization.
 	//
@@ -44,7 +56,19 @@ type UpdateGroupSourceContentRequest struct {
 	//
 	// group_example
 	GroupId *string `json:"groupId,omitempty" xml:"groupId,omitempty"`
-	// The original project ID.
+	// The proxy user code, which is unique within the tenant. This parameter is used only when the application credential is configured as source_uid.
+	//
+	// example:
+	//
+	// alice
+	OpsUserCode *string `json:"opsUserCode,omitempty" xml:"opsUserCode,omitempty"`
+	// The proxy user ID, which is the WINNEXO platform user ID. This parameter is used only when the application credential is configured as winnexo_uid.
+	//
+	// example:
+	//
+	// 10001
+	OpsUserId *string `json:"opsUserId,omitempty" xml:"opsUserId,omitempty"`
+	// The source project ID.
 	//
 	// This parameter is required.
 	//
@@ -68,6 +92,10 @@ func (s UpdateGroupSourceContentRequest) GoString() string {
 	return s.String()
 }
 
+func (s *UpdateGroupSourceContentRequest) GetAppToken() *string {
+	return s.AppToken
+}
+
 func (s *UpdateGroupSourceContentRequest) GetContent() *string {
 	return s.Content
 }
@@ -80,12 +108,25 @@ func (s *UpdateGroupSourceContentRequest) GetGroupId() *string {
 	return s.GroupId
 }
 
+func (s *UpdateGroupSourceContentRequest) GetOpsUserCode() *string {
+	return s.OpsUserCode
+}
+
+func (s *UpdateGroupSourceContentRequest) GetOpsUserId() *string {
+	return s.OpsUserId
+}
+
 func (s *UpdateGroupSourceContentRequest) GetSourceId() *string {
 	return s.SourceId
 }
 
 func (s *UpdateGroupSourceContentRequest) GetTenantId() *string {
 	return s.TenantId
+}
+
+func (s *UpdateGroupSourceContentRequest) SetAppToken(v string) *UpdateGroupSourceContentRequest {
+	s.AppToken = &v
+	return s
 }
 
 func (s *UpdateGroupSourceContentRequest) SetContent(v string) *UpdateGroupSourceContentRequest {
@@ -100,6 +141,16 @@ func (s *UpdateGroupSourceContentRequest) SetForceSync(v bool) *UpdateGroupSourc
 
 func (s *UpdateGroupSourceContentRequest) SetGroupId(v string) *UpdateGroupSourceContentRequest {
 	s.GroupId = &v
+	return s
+}
+
+func (s *UpdateGroupSourceContentRequest) SetOpsUserCode(v string) *UpdateGroupSourceContentRequest {
+	s.OpsUserCode = &v
+	return s
+}
+
+func (s *UpdateGroupSourceContentRequest) SetOpsUserId(v string) *UpdateGroupSourceContentRequest {
+	s.OpsUserId = &v
 	return s
 }
 

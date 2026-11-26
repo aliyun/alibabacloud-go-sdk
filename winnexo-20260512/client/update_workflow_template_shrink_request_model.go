@@ -11,10 +11,16 @@ type iUpdateWorkflowTemplateShrinkRequest interface {
 	GoString() string
 	SetAction(v string) *UpdateWorkflowTemplateShrinkRequest
 	GetAction() *string
+	SetAppToken(v string) *UpdateWorkflowTemplateShrinkRequest
+	GetAppToken() *string
 	SetCollaborationGroupId(v string) *UpdateWorkflowTemplateShrinkRequest
 	GetCollaborationGroupId() *string
 	SetDefinitionShrink(v string) *UpdateWorkflowTemplateShrinkRequest
 	GetDefinitionShrink() *string
+	SetOpsUserCode(v string) *UpdateWorkflowTemplateShrinkRequest
+	GetOpsUserCode() *string
+	SetOpsUserId(v string) *UpdateWorkflowTemplateShrinkRequest
+	GetOpsUserId() *string
 	SetSourceVersion(v string) *UpdateWorkflowTemplateShrinkRequest
 	GetSourceVersion() *string
 	SetTemplateId(v string) *UpdateWorkflowTemplateShrinkRequest
@@ -28,18 +34,18 @@ type iUpdateWorkflowTemplateShrinkRequest interface {
 }
 
 type UpdateWorkflowTemplateShrinkRequest struct {
-	// The write action. Valid values:
-	//
-	// - SAVE: Saves the template as a draft without taking effect, allowing node names and executors to be left empty.
-	//
-	// - SUBMIT: Requires complete nodes, and saves and submits the template as the only effective version.
-	//
-	// Default value: SUBMIT.
+	// The write action. Valid values: SAVE (saves the template as a draft without taking effect, and allows node names and executors to be left empty) and SUBMIT (requires complete nodes, and saves and submits the template as the only effective version). Default value: SUBMIT.
 	//
 	// example:
 	//
 	// SUBMIT
 	Action *string `json:"action,omitempty" xml:"action,omitempty"`
+	// The platform application token issued by the console. If specified, the operation is executed as the user specified by opsUserId or opsUserCode.
+	//
+	// example:
+	//
+	// wn_app_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+	AppToken *string `json:"appToken,omitempty" xml:"appToken,omitempty"`
 	// The collaboration workspace ID.
 	//
 	// This parameter is required.
@@ -54,9 +60,21 @@ type UpdateWorkflowTemplateShrinkRequest struct {
 	//
 	// example:
 	//
-	// {"name":"Customer Complaint Handling Process","schemaVersion":2,"steps":[{"stepId":"collect","sortOrder":1,"name":"Collect Customer Information"}]}
+	// {"name":"Customer Complaint Handling Process","schemaVersion":2,"steps":[{"stepId":"collect","sortOrder":1,"name":"Collect Customer Information","specification":[{"type":"text","content":"Collect Customer Information"}],"executorType":"MEMBER","executorUserId":10086}],"edges":[]}
 	DefinitionShrink *string `json:"definition,omitempty" xml:"definition,omitempty"`
-	// The submitted version number on which the new version is based. This parameter is mutually exclusive with version. If not specified, the system falls back to the current effective version.
+	// The proxy user code, which is unique within the tenant. This parameter is used only when the application credential is configured as source_uid.
+	//
+	// example:
+	//
+	// alice
+	OpsUserCode *string `json:"opsUserCode,omitempty" xml:"opsUserCode,omitempty"`
+	// The proxy user ID, which is the WINNEXO platform user ID. This parameter is used only when the application credential is configured as winnexo_uid.
+	//
+	// example:
+	//
+	// 10001
+	OpsUserId *string `json:"opsUserId,omitempty" xml:"opsUserId,omitempty"`
+	// The submitted version number on which the new version is based. This parameter is mutually exclusive with version. If not specified, the current effective version is used as the fallback.
 	//
 	// example:
 	//
@@ -102,12 +120,24 @@ func (s *UpdateWorkflowTemplateShrinkRequest) GetAction() *string {
 	return s.Action
 }
 
+func (s *UpdateWorkflowTemplateShrinkRequest) GetAppToken() *string {
+	return s.AppToken
+}
+
 func (s *UpdateWorkflowTemplateShrinkRequest) GetCollaborationGroupId() *string {
 	return s.CollaborationGroupId
 }
 
 func (s *UpdateWorkflowTemplateShrinkRequest) GetDefinitionShrink() *string {
 	return s.DefinitionShrink
+}
+
+func (s *UpdateWorkflowTemplateShrinkRequest) GetOpsUserCode() *string {
+	return s.OpsUserCode
+}
+
+func (s *UpdateWorkflowTemplateShrinkRequest) GetOpsUserId() *string {
+	return s.OpsUserId
 }
 
 func (s *UpdateWorkflowTemplateShrinkRequest) GetSourceVersion() *string {
@@ -135,6 +165,11 @@ func (s *UpdateWorkflowTemplateShrinkRequest) SetAction(v string) *UpdateWorkflo
 	return s
 }
 
+func (s *UpdateWorkflowTemplateShrinkRequest) SetAppToken(v string) *UpdateWorkflowTemplateShrinkRequest {
+	s.AppToken = &v
+	return s
+}
+
 func (s *UpdateWorkflowTemplateShrinkRequest) SetCollaborationGroupId(v string) *UpdateWorkflowTemplateShrinkRequest {
 	s.CollaborationGroupId = &v
 	return s
@@ -142,6 +177,16 @@ func (s *UpdateWorkflowTemplateShrinkRequest) SetCollaborationGroupId(v string) 
 
 func (s *UpdateWorkflowTemplateShrinkRequest) SetDefinitionShrink(v string) *UpdateWorkflowTemplateShrinkRequest {
 	s.DefinitionShrink = &v
+	return s
+}
+
+func (s *UpdateWorkflowTemplateShrinkRequest) SetOpsUserCode(v string) *UpdateWorkflowTemplateShrinkRequest {
+	s.OpsUserCode = &v
+	return s
+}
+
+func (s *UpdateWorkflowTemplateShrinkRequest) SetOpsUserId(v string) *UpdateWorkflowTemplateShrinkRequest {
+	s.OpsUserId = &v
 	return s
 }
 

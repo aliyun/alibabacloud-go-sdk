@@ -11,6 +11,8 @@ type iCreateWorkItemRequest interface {
 	GoString() string
 	SetAcceptanceCriteria(v string) *CreateWorkItemRequest
 	GetAcceptanceCriteria() *string
+	SetAppToken(v string) *CreateWorkItemRequest
+	GetAppToken() *string
 	SetAttachments(v []*CreateWorkItemRequestAttachments) *CreateWorkItemRequest
 	GetAttachments() []*CreateWorkItemRequestAttachments
 	SetCollaborationGroupId(v string) *CreateWorkItemRequest
@@ -23,6 +25,10 @@ type iCreateWorkItemRequest interface {
 	GetDescription() *string
 	SetItemType(v string) *CreateWorkItemRequest
 	GetItemType() *string
+	SetOpsUserCode(v string) *CreateWorkItemRequest
+	GetOpsUserCode() *string
+	SetOpsUserId(v string) *CreateWorkItemRequest
+	GetOpsUserId() *string
 	SetOwnerUserId(v int64) *CreateWorkItemRequest
 	GetOwnerUserId() *int64
 	SetPriority(v string) *CreateWorkItemRequest
@@ -42,13 +48,19 @@ type CreateWorkItemRequest struct {
 	//
 	// example
 	AcceptanceCriteria *string `json:"acceptanceCriteria,omitempty" xml:"acceptanceCriteria,omitempty"`
+	// The platform application token issued by the console. If specified, the operation is performed as the user specified by opsUserId or opsUserCode.
+	//
+	// example:
+	//
+	// wn_app_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+	AppToken *string `json:"appToken,omitempty" xml:"appToken,omitempty"`
 	// The stable references of the input attachments.
 	//
 	// example:
 	//
-	// example
+	// [{"resourceKind":"FILE","resourceId":"file_9401","refUrl":"https://files.winnexo.aliyun.com/report.md","title":"Sales Report","contentType":"text/markdown","sizeBytes":2048}]
 	Attachments []*CreateWorkItemRequestAttachments `json:"attachments,omitempty" xml:"attachments,omitempty" type:"Repeated"`
-	// The ID of the collaboration workspace.
+	// The ID of the collaboration space.
 	//
 	// This parameter is required.
 	//
@@ -60,7 +72,7 @@ type CreateWorkItemRequest struct {
 	//
 	// example:
 	//
-	// example
+	// [10001,10002]
 	CollaboratorUserIds []*int64 `json:"collaboratorUserIds,omitempty" xml:"collaboratorUserIds,omitempty" type:"Repeated"`
 	// The ID of the associated conversation.
 	//
@@ -74,7 +86,7 @@ type CreateWorkItemRequest struct {
 	//
 	// example
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// The type of the work item. Only WORKFLOW is supported.
+	// The type of the work item. Only WORKFLOW is accepted.
 	//
 	// This parameter is required.
 	//
@@ -82,7 +94,19 @@ type CreateWorkItemRequest struct {
 	//
 	// WORKFLOW
 	ItemType *string `json:"itemType,omitempty" xml:"itemType,omitempty"`
-	// The user ID of the owner. If this parameter is not specified, the ID of the caller is used.
+	// The proxy user code, which is unique within the tenant. This parameter is used only when the application credential is configured as source_uid.
+	//
+	// example:
+	//
+	// alice
+	OpsUserCode *string `json:"opsUserCode,omitempty" xml:"opsUserCode,omitempty"`
+	// The proxy user ID, which is the WINNEXO platform user ID. This parameter is used only when the application credential is configured as winnexo_uid.
+	//
+	// example:
+	//
+	// 10001
+	OpsUserId *string `json:"opsUserId,omitempty" xml:"opsUserId,omitempty"`
+	// The user ID of the owner. If not specified, the caller is used as the owner.
 	//
 	// example:
 	//
@@ -94,7 +118,7 @@ type CreateWorkItemRequest struct {
 	//
 	// HIGH
 	Priority *string `json:"priority,omitempty" xml:"priority,omitempty"`
-	// The tenant ID. This is a common parameter. If this parameter is not specified, the default tenant of the caller is used.
+	// The tenant ID. This is a common parameter. If not specified, the default tenant of the caller is used.
 	//
 	// example:
 	//
@@ -112,7 +136,7 @@ type CreateWorkItemRequest struct {
 	//
 	// example:
 	//
-	// example
+	// ["tpl_9401","tpl_9402"]
 	WorkflowTemplateIds []*string `json:"workflowTemplateIds,omitempty" xml:"workflowTemplateIds,omitempty" type:"Repeated"`
 }
 
@@ -126,6 +150,10 @@ func (s CreateWorkItemRequest) GoString() string {
 
 func (s *CreateWorkItemRequest) GetAcceptanceCriteria() *string {
 	return s.AcceptanceCriteria
+}
+
+func (s *CreateWorkItemRequest) GetAppToken() *string {
+	return s.AppToken
 }
 
 func (s *CreateWorkItemRequest) GetAttachments() []*CreateWorkItemRequestAttachments {
@@ -152,6 +180,14 @@ func (s *CreateWorkItemRequest) GetItemType() *string {
 	return s.ItemType
 }
 
+func (s *CreateWorkItemRequest) GetOpsUserCode() *string {
+	return s.OpsUserCode
+}
+
+func (s *CreateWorkItemRequest) GetOpsUserId() *string {
+	return s.OpsUserId
+}
+
 func (s *CreateWorkItemRequest) GetOwnerUserId() *int64 {
 	return s.OwnerUserId
 }
@@ -174,6 +210,11 @@ func (s *CreateWorkItemRequest) GetWorkflowTemplateIds() []*string {
 
 func (s *CreateWorkItemRequest) SetAcceptanceCriteria(v string) *CreateWorkItemRequest {
 	s.AcceptanceCriteria = &v
+	return s
+}
+
+func (s *CreateWorkItemRequest) SetAppToken(v string) *CreateWorkItemRequest {
+	s.AppToken = &v
 	return s
 }
 
@@ -204,6 +245,16 @@ func (s *CreateWorkItemRequest) SetDescription(v string) *CreateWorkItemRequest 
 
 func (s *CreateWorkItemRequest) SetItemType(v string) *CreateWorkItemRequest {
 	s.ItemType = &v
+	return s
+}
+
+func (s *CreateWorkItemRequest) SetOpsUserCode(v string) *CreateWorkItemRequest {
+	s.OpsUserCode = &v
+	return s
+}
+
+func (s *CreateWorkItemRequest) SetOpsUserId(v string) *CreateWorkItemRequest {
+	s.OpsUserId = &v
 	return s
 }
 

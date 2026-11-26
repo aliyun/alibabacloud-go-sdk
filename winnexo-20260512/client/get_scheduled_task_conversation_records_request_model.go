@@ -9,8 +9,14 @@ type iGetScheduledTaskConversationRecordsRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAppToken(v string) *GetScheduledTaskConversationRecordsRequest
+	GetAppToken() *string
 	SetInitiatorUserId(v string) *GetScheduledTaskConversationRecordsRequest
 	GetInitiatorUserId() *string
+	SetOpsUserCode(v string) *GetScheduledTaskConversationRecordsRequest
+	GetOpsUserCode() *string
+	SetOpsUserId(v string) *GetScheduledTaskConversationRecordsRequest
+	GetOpsUserId() *string
 	SetPage(v int32) *GetScheduledTaskConversationRecordsRequest
 	GetPage() *int32
 	SetPageSize(v int32) *GetScheduledTaskConversationRecordsRequest
@@ -24,12 +30,30 @@ type iGetScheduledTaskConversationRecordsRequest interface {
 }
 
 type GetScheduledTaskConversationRecordsRequest struct {
+	// 平台应用 Token（控制台签发）。传入后将以 opsUserId 或 opsUserCode 指定的用户身份执行
+	//
+	// example:
+	//
+	// wn_app_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+	AppToken *string `json:"appToken,omitempty" xml:"appToken,omitempty"`
 	// The user ID of the task initiator.
 	//
 	// example:
 	//
 	// 5
 	InitiatorUserId *string `json:"initiatorUserId,omitempty" xml:"initiatorUserId,omitempty"`
+	// 代理用户编码（租户内唯一），仅当应用凭证配置为 source_uid 时使用
+	//
+	// example:
+	//
+	// alice
+	OpsUserCode *string `json:"opsUserCode,omitempty" xml:"opsUserCode,omitempty"`
+	// 代理用户ID（WINNEXO 平台用户ID），仅当应用凭证配置为 winnexo_uid 时使用
+	//
+	// example:
+	//
+	// 10001
+	OpsUserId *string `json:"opsUserId,omitempty" xml:"opsUserId,omitempty"`
 	// The page number. Default value: 1.
 	//
 	// example:
@@ -70,8 +94,20 @@ func (s GetScheduledTaskConversationRecordsRequest) GoString() string {
 	return s.String()
 }
 
+func (s *GetScheduledTaskConversationRecordsRequest) GetAppToken() *string {
+	return s.AppToken
+}
+
 func (s *GetScheduledTaskConversationRecordsRequest) GetInitiatorUserId() *string {
 	return s.InitiatorUserId
+}
+
+func (s *GetScheduledTaskConversationRecordsRequest) GetOpsUserCode() *string {
+	return s.OpsUserCode
+}
+
+func (s *GetScheduledTaskConversationRecordsRequest) GetOpsUserId() *string {
+	return s.OpsUserId
 }
 
 func (s *GetScheduledTaskConversationRecordsRequest) GetPage() *int32 {
@@ -94,8 +130,23 @@ func (s *GetScheduledTaskConversationRecordsRequest) GetTenantId() *string {
 	return s.TenantId
 }
 
+func (s *GetScheduledTaskConversationRecordsRequest) SetAppToken(v string) *GetScheduledTaskConversationRecordsRequest {
+	s.AppToken = &v
+	return s
+}
+
 func (s *GetScheduledTaskConversationRecordsRequest) SetInitiatorUserId(v string) *GetScheduledTaskConversationRecordsRequest {
 	s.InitiatorUserId = &v
+	return s
+}
+
+func (s *GetScheduledTaskConversationRecordsRequest) SetOpsUserCode(v string) *GetScheduledTaskConversationRecordsRequest {
+	s.OpsUserCode = &v
+	return s
+}
+
+func (s *GetScheduledTaskConversationRecordsRequest) SetOpsUserId(v string) *GetScheduledTaskConversationRecordsRequest {
+	s.OpsUserId = &v
 	return s
 }
 

@@ -9,8 +9,14 @@ type iCheckAppResourcePermissionsBatchRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAppToken(v string) *CheckAppResourcePermissionsBatchRequest
+	GetAppToken() *string
 	SetChecks(v []*CheckAppResourcePermissionsBatchRequestChecks) *CheckAppResourcePermissionsBatchRequest
 	GetChecks() []*CheckAppResourcePermissionsBatchRequestChecks
+	SetOpsUserCode(v string) *CheckAppResourcePermissionsBatchRequest
+	GetOpsUserCode() *string
+	SetOpsUserId(v string) *CheckAppResourcePermissionsBatchRequest
+	GetOpsUserId() *string
 	SetResourceTenantId(v string) *CheckAppResourcePermissionsBatchRequest
 	GetResourceTenantId() *string
 	SetTargetUserId(v int64) *CheckAppResourcePermissionsBatchRequest
@@ -22,10 +28,28 @@ type iCheckAppResourcePermissionsBatchRequest interface {
 }
 
 type CheckAppResourcePermissionsBatchRequest struct {
+	// The platform application token issued by the console. If specified, the operation is performed as the user specified by opsUserId or opsUserCode.
+	//
+	// example:
+	//
+	// wn_app_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+	AppToken *string `json:"appToken,omitempty" xml:"appToken,omitempty"`
 	// The check item.
 	//
 	// This parameter is required.
 	Checks []*CheckAppResourcePermissionsBatchRequestChecks `json:"checks,omitempty" xml:"checks,omitempty" type:"Repeated"`
+	// The proxy user code, which is unique within the tenant. This parameter is used only when the application credential is configured as source_uid.
+	//
+	// example:
+	//
+	// alice
+	OpsUserCode *string `json:"opsUserCode,omitempty" xml:"opsUserCode,omitempty"`
+	// The proxy user ID, which is the WINNEXO platform user ID. This parameter is used only when the application credential is configured as winnexo_uid.
+	//
+	// example:
+	//
+	// 10001
+	OpsUserId *string `json:"opsUserId,omitempty" xml:"opsUserId,omitempty"`
 	// The ID of the target platform user.
 	//
 	// example:
@@ -44,7 +68,7 @@ type CheckAppResourcePermissionsBatchRequest struct {
 	//
 	// 10000
 	TargetUserTenantId *string `json:"targetUserTenantId,omitempty" xml:"targetUserTenantId,omitempty"`
-	// The ID of the tenant to which the resource belongs. If this parameter is not specified, the current tenant of the caller is used.
+	// The ID of the tenant to which the resource belongs. If not specified, the current tenant of the caller is used.
 	//
 	// example:
 	//
@@ -60,8 +84,20 @@ func (s CheckAppResourcePermissionsBatchRequest) GoString() string {
 	return s.String()
 }
 
+func (s *CheckAppResourcePermissionsBatchRequest) GetAppToken() *string {
+	return s.AppToken
+}
+
 func (s *CheckAppResourcePermissionsBatchRequest) GetChecks() []*CheckAppResourcePermissionsBatchRequestChecks {
 	return s.Checks
+}
+
+func (s *CheckAppResourcePermissionsBatchRequest) GetOpsUserCode() *string {
+	return s.OpsUserCode
+}
+
+func (s *CheckAppResourcePermissionsBatchRequest) GetOpsUserId() *string {
+	return s.OpsUserId
 }
 
 func (s *CheckAppResourcePermissionsBatchRequest) GetResourceTenantId() *string {
@@ -80,8 +116,23 @@ func (s *CheckAppResourcePermissionsBatchRequest) GetTenantId() *string {
 	return s.TenantId
 }
 
+func (s *CheckAppResourcePermissionsBatchRequest) SetAppToken(v string) *CheckAppResourcePermissionsBatchRequest {
+	s.AppToken = &v
+	return s
+}
+
 func (s *CheckAppResourcePermissionsBatchRequest) SetChecks(v []*CheckAppResourcePermissionsBatchRequestChecks) *CheckAppResourcePermissionsBatchRequest {
 	s.Checks = v
+	return s
+}
+
+func (s *CheckAppResourcePermissionsBatchRequest) SetOpsUserCode(v string) *CheckAppResourcePermissionsBatchRequest {
+	s.OpsUserCode = &v
+	return s
+}
+
+func (s *CheckAppResourcePermissionsBatchRequest) SetOpsUserId(v string) *CheckAppResourcePermissionsBatchRequest {
+	s.OpsUserId = &v
 	return s
 }
 
@@ -125,9 +176,9 @@ type CheckAppResourcePermissionsBatchRequestChecks struct {
 	//
 	// example:
 	//
-	// APP/VIEW
+	// VIEW
 	Permission *string `json:"permission,omitempty" xml:"permission,omitempty"`
-	// The dot-separated resource key whose first segment is the application key.
+	// The dot-separated resource key. The first segment is the APP application key.
 	//
 	// This parameter is required.
 	//

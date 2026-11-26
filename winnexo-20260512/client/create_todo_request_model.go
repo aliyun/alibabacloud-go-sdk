@@ -9,10 +9,16 @@ type iCreateTodoRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAppToken(v string) *CreateTodoRequest
+	GetAppToken() *string
 	SetAssigneeUserIds(v []*string) *CreateTodoRequest
 	GetAssigneeUserIds() []*string
 	SetCollaborationGroupId(v string) *CreateTodoRequest
 	GetCollaborationGroupId() *string
+	SetOpsUserCode(v string) *CreateTodoRequest
+	GetOpsUserCode() *string
+	SetOpsUserId(v string) *CreateTodoRequest
+	GetOpsUserId() *string
 	SetPriority(v string) *CreateTodoRequest
 	GetPriority() *string
 	SetQuestions(v []*CreateTodoRequestQuestions) *CreateTodoRequest
@@ -28,6 +34,12 @@ type iCreateTodoRequest interface {
 }
 
 type CreateTodoRequest struct {
+	// 平台应用 Token（控制台签发）。传入后将以 opsUserId 或 opsUserCode 指定的用户身份执行
+	//
+	// example:
+	//
+	// wn_app_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+	AppToken *string `json:"appToken,omitempty" xml:"appToken,omitempty"`
 	// The list of platform user IDs of the assignees. You can specify 1 to 100 IDs. Duplicate IDs are automatically removed.
 	//
 	// This parameter is required.
@@ -42,6 +54,18 @@ type CreateTodoRequest struct {
 	//
 	// cg_123
 	CollaborationGroupId *string `json:"collaborationGroupId,omitempty" xml:"collaborationGroupId,omitempty"`
+	// 代理用户编码（租户内唯一），仅当应用凭证配置为 source_uid 时使用
+	//
+	// example:
+	//
+	// alice
+	OpsUserCode *string `json:"opsUserCode,omitempty" xml:"opsUserCode,omitempty"`
+	// 代理用户ID（WINNEXO 平台用户ID），仅当应用凭证配置为 winnexo_uid 时使用
+	//
+	// example:
+	//
+	// 10001
+	OpsUserId *string `json:"opsUserId,omitempty" xml:"opsUserId,omitempty"`
 	// The priority.
 	//
 	// example:
@@ -96,12 +120,24 @@ func (s CreateTodoRequest) GoString() string {
 	return s.String()
 }
 
+func (s *CreateTodoRequest) GetAppToken() *string {
+	return s.AppToken
+}
+
 func (s *CreateTodoRequest) GetAssigneeUserIds() []*string {
 	return s.AssigneeUserIds
 }
 
 func (s *CreateTodoRequest) GetCollaborationGroupId() *string {
 	return s.CollaborationGroupId
+}
+
+func (s *CreateTodoRequest) GetOpsUserCode() *string {
+	return s.OpsUserCode
+}
+
+func (s *CreateTodoRequest) GetOpsUserId() *string {
+	return s.OpsUserId
 }
 
 func (s *CreateTodoRequest) GetPriority() *string {
@@ -128,6 +164,11 @@ func (s *CreateTodoRequest) GetTitle() *string {
 	return s.Title
 }
 
+func (s *CreateTodoRequest) SetAppToken(v string) *CreateTodoRequest {
+	s.AppToken = &v
+	return s
+}
+
 func (s *CreateTodoRequest) SetAssigneeUserIds(v []*string) *CreateTodoRequest {
 	s.AssigneeUserIds = v
 	return s
@@ -135,6 +176,16 @@ func (s *CreateTodoRequest) SetAssigneeUserIds(v []*string) *CreateTodoRequest {
 
 func (s *CreateTodoRequest) SetCollaborationGroupId(v string) *CreateTodoRequest {
 	s.CollaborationGroupId = &v
+	return s
+}
+
+func (s *CreateTodoRequest) SetOpsUserCode(v string) *CreateTodoRequest {
+	s.OpsUserCode = &v
+	return s
+}
+
+func (s *CreateTodoRequest) SetOpsUserId(v string) *CreateTodoRequest {
+	s.OpsUserId = &v
 	return s
 }
 

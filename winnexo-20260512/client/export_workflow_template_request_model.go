@@ -9,8 +9,14 @@ type iExportWorkflowTemplateRequest interface {
   dara.Model
   String() string
   GoString() string
+  SetAppToken(v string) *ExportWorkflowTemplateRequest
+  GetAppToken() *string 
   SetCollaborationGroupId(v string) *ExportWorkflowTemplateRequest
   GetCollaborationGroupId() *string 
+  SetOpsUserCode(v string) *ExportWorkflowTemplateRequest
+  GetOpsUserCode() *string 
+  SetOpsUserId(v string) *ExportWorkflowTemplateRequest
+  GetOpsUserId() *string 
   SetTemplateId(v string) *ExportWorkflowTemplateRequest
   GetTemplateId() *string 
   SetTenantId(v string) *ExportWorkflowTemplateRequest
@@ -20,6 +26,12 @@ type iExportWorkflowTemplateRequest interface {
 }
 
 type ExportWorkflowTemplateRequest struct {
+  // 平台应用 Token（控制台签发）。传入后将以 opsUserId 或 opsUserCode 指定的用户身份执行
+  // 
+  // example:
+  // 
+  // wn_app_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+  AppToken *string `json:"appToken,omitempty" xml:"appToken,omitempty"`
   // The ID of the collaboration workspace.
   // 
   // This parameter is required.
@@ -28,6 +40,18 @@ type ExportWorkflowTemplateRequest struct {
   // 
   // cg_9401
   CollaborationGroupId *string `json:"collaborationGroupId,omitempty" xml:"collaborationGroupId,omitempty"`
+  // 代理用户编码（租户内唯一），仅当应用凭证配置为 source_uid 时使用
+  // 
+  // example:
+  // 
+  // alice
+  OpsUserCode *string `json:"opsUserCode,omitempty" xml:"opsUserCode,omitempty"`
+  // 代理用户ID（WINNEXO 平台用户ID），仅当应用凭证配置为 winnexo_uid 时使用
+  // 
+  // example:
+  // 
+  // 10001
+  OpsUserId *string `json:"opsUserId,omitempty" xml:"opsUserId,omitempty"`
   // The template ID.
   // 
   // This parameter is required.
@@ -58,8 +82,20 @@ func (s ExportWorkflowTemplateRequest) GoString() string {
   return s.String()
 }
 
+func (s *ExportWorkflowTemplateRequest) GetAppToken() *string  {
+  return s.AppToken
+}
+
 func (s *ExportWorkflowTemplateRequest) GetCollaborationGroupId() *string  {
   return s.CollaborationGroupId
+}
+
+func (s *ExportWorkflowTemplateRequest) GetOpsUserCode() *string  {
+  return s.OpsUserCode
+}
+
+func (s *ExportWorkflowTemplateRequest) GetOpsUserId() *string  {
+  return s.OpsUserId
 }
 
 func (s *ExportWorkflowTemplateRequest) GetTemplateId() *string  {
@@ -74,8 +110,23 @@ func (s *ExportWorkflowTemplateRequest) GetVersion() *string  {
   return s.Version
 }
 
+func (s *ExportWorkflowTemplateRequest) SetAppToken(v string) *ExportWorkflowTemplateRequest {
+  s.AppToken = &v
+  return s
+}
+
 func (s *ExportWorkflowTemplateRequest) SetCollaborationGroupId(v string) *ExportWorkflowTemplateRequest {
   s.CollaborationGroupId = &v
+  return s
+}
+
+func (s *ExportWorkflowTemplateRequest) SetOpsUserCode(v string) *ExportWorkflowTemplateRequest {
+  s.OpsUserCode = &v
+  return s
+}
+
+func (s *ExportWorkflowTemplateRequest) SetOpsUserId(v string) *ExportWorkflowTemplateRequest {
+  s.OpsUserId = &v
   return s
 }
 

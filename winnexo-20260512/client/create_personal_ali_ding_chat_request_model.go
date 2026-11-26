@@ -9,6 +9,8 @@ type iCreatePersonalAliDingChatRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAppToken(v string) *CreatePersonalAliDingChatRequest
+	GetAppToken() *string
 	SetChatId(v string) *CreatePersonalAliDingChatRequest
 	GetChatId() *string
 	SetChatName(v string) *CreatePersonalAliDingChatRequest
@@ -23,6 +25,10 @@ type iCreatePersonalAliDingChatRequest interface {
 	GetNotes() *string
 	SetOperatingObjectName(v string) *CreatePersonalAliDingChatRequest
 	GetOperatingObjectName() *string
+	SetOpsUserCode(v string) *CreatePersonalAliDingChatRequest
+	GetOpsUserCode() *string
+	SetOpsUserId(v string) *CreatePersonalAliDingChatRequest
+	GetOpsUserId() *string
 	SetSourceTags(v string) *CreatePersonalAliDingChatRequest
 	GetSourceTags() *string
 	SetTenantId(v string) *CreatePersonalAliDingChatRequest
@@ -32,7 +38,13 @@ type iCreatePersonalAliDingChatRequest interface {
 }
 
 type CreatePersonalAliDingChatRequest struct {
-	// The DingTalk group chat session ID.
+	// The platform application token issued by the console. If provided, the operation is executed as the user specified by opsUserId or opsUserCode.
+	//
+	// example:
+	//
+	// wn_app_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+	AppToken *string `json:"appToken,omitempty" xml:"appToken,omitempty"`
+	// The ID of the DingTalk group chat session.
 	//
 	// This parameter is required.
 	//
@@ -40,11 +52,11 @@ type CreatePersonalAliDingChatRequest struct {
 	//
 	// cidxxxxxxxx
 	ChatId *string `json:"chatId,omitempty" xml:"chatId,omitempty"`
-	// The group chat name.
+	// The name of the group chat.
 	//
 	// example:
 	//
-	// CustomerProjectGroup
+	// Customer project group
 	ChatName *string `json:"chatName,omitempty" xml:"chatName,omitempty"`
 	// The pipeline description.
 	//
@@ -66,25 +78,37 @@ type CreatePersonalAliDingChatRequest struct {
 	//
 	// 2026-08-01
 	HistoryStartTime *string `json:"historyStartTime,omitempty" xml:"historyStartTime,omitempty"`
-	// The meeting notes content (optional). This participates in auxiliary analysis.
+	// The content of meeting notes (optional), which is used for auxiliary analysis.
 	//
 	// example:
 	//
-	// Focus on identifying customer demands and to-do items
+	// Focus on identifying customer requirements and to-do items
 	Notes *string `json:"notes,omitempty" xml:"notes,omitempty"`
-	// The digital employee name (operating object name, optional).
+	// The name of the digital employee (the name of the operating object, optional).
 	//
 	// example:
 	//
 	// my-agent
 	OperatingObjectName *string `json:"operatingObjectName,omitempty" xml:"operatingObjectName,omitempty"`
-	// The resource tags (optional, a JSON string list such as ["tagA","tagB"]).
+	// The proxy user code, which is unique within the tenant. This parameter is used only when the application credential is configured as source_uid.
 	//
 	// example:
 	//
-	// ["Customer","GroupChat"]
+	// alice
+	OpsUserCode *string `json:"opsUserCode,omitempty" xml:"opsUserCode,omitempty"`
+	// The proxy user ID, which is the WINNEXO platform user ID. This parameter is used only when the application credential is configured as winnexo_uid.
+	//
+	// example:
+	//
+	// 10001
+	OpsUserId *string `json:"opsUserId,omitempty" xml:"opsUserId,omitempty"`
+	// The resource tags (optional). The value is a JSON string list, such as ["tagA","tagB"].
+	//
+	// example:
+	//
+	// ["Customer","Group chat"]
 	SourceTags *string `json:"sourceTags,omitempty" xml:"sourceTags,omitempty"`
-	// The tenant ID. This is a common parameter. The winnexo-cli passes this value explicitly by using --tenant-id.
+	// The tenant ID. This is a common parameter and is explicitly passed by using the --tenant-id option in winnexo-cli.
 	//
 	// example:
 	//
@@ -100,6 +124,10 @@ func (s CreatePersonalAliDingChatRequest) String() string {
 
 func (s CreatePersonalAliDingChatRequest) GoString() string {
 	return s.String()
+}
+
+func (s *CreatePersonalAliDingChatRequest) GetAppToken() *string {
+	return s.AppToken
 }
 
 func (s *CreatePersonalAliDingChatRequest) GetChatId() *string {
@@ -130,6 +158,14 @@ func (s *CreatePersonalAliDingChatRequest) GetOperatingObjectName() *string {
 	return s.OperatingObjectName
 }
 
+func (s *CreatePersonalAliDingChatRequest) GetOpsUserCode() *string {
+	return s.OpsUserCode
+}
+
+func (s *CreatePersonalAliDingChatRequest) GetOpsUserId() *string {
+	return s.OpsUserId
+}
+
 func (s *CreatePersonalAliDingChatRequest) GetSourceTags() *string {
 	return s.SourceTags
 }
@@ -140,6 +176,11 @@ func (s *CreatePersonalAliDingChatRequest) GetTenantId() *string {
 
 func (s *CreatePersonalAliDingChatRequest) GetUpdateFrequency() *CreatePersonalAliDingChatRequestUpdateFrequency {
 	return s.UpdateFrequency
+}
+
+func (s *CreatePersonalAliDingChatRequest) SetAppToken(v string) *CreatePersonalAliDingChatRequest {
+	s.AppToken = &v
+	return s
 }
 
 func (s *CreatePersonalAliDingChatRequest) SetChatId(v string) *CreatePersonalAliDingChatRequest {
@@ -177,6 +218,16 @@ func (s *CreatePersonalAliDingChatRequest) SetOperatingObjectName(v string) *Cre
 	return s
 }
 
+func (s *CreatePersonalAliDingChatRequest) SetOpsUserCode(v string) *CreatePersonalAliDingChatRequest {
+	s.OpsUserCode = &v
+	return s
+}
+
+func (s *CreatePersonalAliDingChatRequest) SetOpsUserId(v string) *CreatePersonalAliDingChatRequest {
+	s.OpsUserId = &v
+	return s
+}
+
 func (s *CreatePersonalAliDingChatRequest) SetSourceTags(v string) *CreatePersonalAliDingChatRequest {
 	s.SourceTags = &v
 	return s
@@ -202,19 +253,19 @@ func (s *CreatePersonalAliDingChatRequest) Validate() error {
 }
 
 type CreatePersonalAliDingChatRequestUpdateFrequency struct {
-	// The cron expression for timed scheduling.
+	// The cron expression for the timed scheduling node.
 	//
 	// example:
 	//
 	// 0 2 	- 	- *
 	Cron *string `json:"cron,omitempty" xml:"cron,omitempty"`
-	// Specifies whether to enable or disable the feature.
+	// **Enable or disable**
 	//
 	// example:
 	//
 	// true
 	Enabled *bool `json:"enabled,omitempty" xml:"enabled,omitempty"`
-	// The preset mode (can be ignored).
+	// The preset mode, which can be ignored.
 	//
 	// example:
 	//

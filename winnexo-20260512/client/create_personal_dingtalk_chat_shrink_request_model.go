@@ -9,6 +9,8 @@ type iCreatePersonalDingtalkChatShrinkRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAppToken(v string) *CreatePersonalDingtalkChatShrinkRequest
+	GetAppToken() *string
 	SetChatId(v string) *CreatePersonalDingtalkChatShrinkRequest
 	GetChatId() *string
 	SetChatName(v string) *CreatePersonalDingtalkChatShrinkRequest
@@ -23,6 +25,10 @@ type iCreatePersonalDingtalkChatShrinkRequest interface {
 	GetNotes() *string
 	SetOperatingObjectName(v string) *CreatePersonalDingtalkChatShrinkRequest
 	GetOperatingObjectName() *string
+	SetOpsUserCode(v string) *CreatePersonalDingtalkChatShrinkRequest
+	GetOpsUserCode() *string
+	SetOpsUserId(v string) *CreatePersonalDingtalkChatShrinkRequest
+	GetOpsUserId() *string
 	SetSourceTags(v string) *CreatePersonalDingtalkChatShrinkRequest
 	GetSourceTags() *string
 	SetTenantId(v string) *CreatePersonalDingtalkChatShrinkRequest
@@ -32,6 +38,12 @@ type iCreatePersonalDingtalkChatShrinkRequest interface {
 }
 
 type CreatePersonalDingtalkChatShrinkRequest struct {
+	// The platform application token issued by the console. If specified, the operation is performed as the user specified by opsUserId or opsUserCode.
+	//
+	// example:
+	//
+	// wn_app_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+	AppToken *string `json:"appToken,omitempty" xml:"appToken,omitempty"`
 	// The DingTalk group chat session ID.
 	//
 	// This parameter is required.
@@ -40,11 +52,11 @@ type CreatePersonalDingtalkChatShrinkRequest struct {
 	//
 	// cidxxxxxxxx
 	ChatId *string `json:"chatId,omitempty" xml:"chatId,omitempty"`
-	// The group chat name.
+	// The name of the group chat.
 	//
 	// example:
 	//
-	// CustomerProjectGroup
+	// Customer Project Group
 	ChatName *string `json:"chatName,omitempty" xml:"chatName,omitempty"`
 	// The pipeline description.
 	//
@@ -52,13 +64,13 @@ type CreatePersonalDingtalkChatShrinkRequest struct {
 	//
 	// Customer group chat history
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// The directory ID.
+	// The folder ID.
 	//
 	// example:
 	//
 	// exampleDirectoryId
 	DirectoryId *string `json:"directoryId,omitempty" xml:"directoryId,omitempty"`
-	// The start time for collecting chat history.
+	// The start time for chat record collection.
 	//
 	// This parameter is required.
 	//
@@ -66,25 +78,37 @@ type CreatePersonalDingtalkChatShrinkRequest struct {
 	//
 	// 2026-08-01
 	HistoryStartTime *string `json:"historyStartTime,omitempty" xml:"historyStartTime,omitempty"`
-	// The meeting notes content (optional). The notes are used for auxiliary analysis.
+	// The content of the meeting notes (optional), which is used for auxiliary analysis.
 	//
 	// example:
 	//
 	// Focus on identifying customer demands and to-do items
 	Notes *string `json:"notes,omitempty" xml:"notes,omitempty"`
-	// The digital employee name (operating object name, optional).
+	// The name of the digital employee (the name of the operating object, optional).
 	//
 	// example:
 	//
 	// my-agent
 	OperatingObjectName *string `json:"operatingObjectName,omitempty" xml:"operatingObjectName,omitempty"`
-	// The resource tags (optional, a JSON string list, such as ["tagA","tagB"]).
+	// The proxy user code, which is unique within the tenant. This parameter is used only when the application credential is configured as source_uid.
 	//
 	// example:
 	//
-	// ["Customer","GroupChat"]
+	// alice
+	OpsUserCode *string `json:"opsUserCode,omitempty" xml:"opsUserCode,omitempty"`
+	// The proxy user ID, which is the WINNEXO platform user ID. This parameter is used only when the application credential is configured as winnexo_uid.
+	//
+	// example:
+	//
+	// 10001
+	OpsUserId *string `json:"opsUserId,omitempty" xml:"opsUserId,omitempty"`
+	// The resource tags (optional). The value is a JSON string list, such as ["tagA","tagB"].
+	//
+	// example:
+	//
+	// ["Customer","Group chat"]
 	SourceTags *string `json:"sourceTags,omitempty" xml:"sourceTags,omitempty"`
-	// The tenant ID.
+	// The ID of the tenant.
 	//
 	// example:
 	//
@@ -100,6 +124,10 @@ func (s CreatePersonalDingtalkChatShrinkRequest) String() string {
 
 func (s CreatePersonalDingtalkChatShrinkRequest) GoString() string {
 	return s.String()
+}
+
+func (s *CreatePersonalDingtalkChatShrinkRequest) GetAppToken() *string {
+	return s.AppToken
 }
 
 func (s *CreatePersonalDingtalkChatShrinkRequest) GetChatId() *string {
@@ -130,6 +158,14 @@ func (s *CreatePersonalDingtalkChatShrinkRequest) GetOperatingObjectName() *stri
 	return s.OperatingObjectName
 }
 
+func (s *CreatePersonalDingtalkChatShrinkRequest) GetOpsUserCode() *string {
+	return s.OpsUserCode
+}
+
+func (s *CreatePersonalDingtalkChatShrinkRequest) GetOpsUserId() *string {
+	return s.OpsUserId
+}
+
 func (s *CreatePersonalDingtalkChatShrinkRequest) GetSourceTags() *string {
 	return s.SourceTags
 }
@@ -140,6 +176,11 @@ func (s *CreatePersonalDingtalkChatShrinkRequest) GetTenantId() *string {
 
 func (s *CreatePersonalDingtalkChatShrinkRequest) GetUpdateFrequencyShrink() *string {
 	return s.UpdateFrequencyShrink
+}
+
+func (s *CreatePersonalDingtalkChatShrinkRequest) SetAppToken(v string) *CreatePersonalDingtalkChatShrinkRequest {
+	s.AppToken = &v
+	return s
 }
 
 func (s *CreatePersonalDingtalkChatShrinkRequest) SetChatId(v string) *CreatePersonalDingtalkChatShrinkRequest {
@@ -174,6 +215,16 @@ func (s *CreatePersonalDingtalkChatShrinkRequest) SetNotes(v string) *CreatePers
 
 func (s *CreatePersonalDingtalkChatShrinkRequest) SetOperatingObjectName(v string) *CreatePersonalDingtalkChatShrinkRequest {
 	s.OperatingObjectName = &v
+	return s
+}
+
+func (s *CreatePersonalDingtalkChatShrinkRequest) SetOpsUserCode(v string) *CreatePersonalDingtalkChatShrinkRequest {
+	s.OpsUserCode = &v
+	return s
+}
+
+func (s *CreatePersonalDingtalkChatShrinkRequest) SetOpsUserId(v string) *CreatePersonalDingtalkChatShrinkRequest {
+	s.OpsUserId = &v
 	return s
 }
 

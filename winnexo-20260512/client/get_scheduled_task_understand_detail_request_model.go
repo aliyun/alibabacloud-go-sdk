@@ -9,10 +9,16 @@ type iGetScheduledTaskUnderstandDetailRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAppToken(v string) *GetScheduledTaskUnderstandDetailRequest
+	GetAppToken() *string
 	SetCollaborationGroupId(v string) *GetScheduledTaskUnderstandDetailRequest
 	GetCollaborationGroupId() *string
 	SetDigitalEmployeeName(v []*string) *GetScheduledTaskUnderstandDetailRequest
 	GetDigitalEmployeeName() []*string
+	SetOpsUserCode(v string) *GetScheduledTaskUnderstandDetailRequest
+	GetOpsUserCode() *string
+	SetOpsUserId(v string) *GetScheduledTaskUnderstandDetailRequest
+	GetOpsUserId() *string
 	SetSegments(v []*GetScheduledTaskUnderstandDetailRequestSegments) *GetScheduledTaskUnderstandDetailRequest
 	GetSegments() []*GetScheduledTaskUnderstandDetailRequestSegments
 	SetTenantId(v string) *GetScheduledTaskUnderstandDetailRequest
@@ -22,6 +28,12 @@ type iGetScheduledTaskUnderstandDetailRequest interface {
 }
 
 type GetScheduledTaskUnderstandDetailRequest struct {
+	// 平台应用 Token（控制台签发）。传入后将以 opsUserId 或 opsUserCode 指定的用户身份执行
+	//
+	// example:
+	//
+	// wn_app_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+	AppToken *string `json:"appToken,omitempty" xml:"appToken,omitempty"`
 	// The ID of the collaboration group to which the task belongs, such as cg_101. If this parameter is specified, a group space task is created and the caller must be a valid group member. If this parameter is left empty, a personal task is created.
 	//
 	// example:
@@ -36,6 +48,18 @@ type GetScheduledTaskUnderstandDetailRequest struct {
 	//
 	// string_value
 	DigitalEmployeeName []*string `json:"digitalEmployeeName,omitempty" xml:"digitalEmployeeName,omitempty" type:"Repeated"`
+	// 代理用户编码（租户内唯一），仅当应用凭证配置为 source_uid 时使用
+	//
+	// example:
+	//
+	// alice
+	OpsUserCode *string `json:"opsUserCode,omitempty" xml:"opsUserCode,omitempty"`
+	// 代理用户ID（WINNEXO 平台用户ID），仅当应用凭证配置为 winnexo_uid 时使用
+	//
+	// example:
+	//
+	// 10001
+	OpsUserId *string `json:"opsUserId,omitempty" xml:"opsUserId,omitempty"`
 	// The segments.
 	Segments []*GetScheduledTaskUnderstandDetailRequestSegments `json:"segments,omitempty" xml:"segments,omitempty" type:"Repeated"`
 	// The ID of the effective tenant.
@@ -60,12 +84,24 @@ func (s GetScheduledTaskUnderstandDetailRequest) GoString() string {
 	return s.String()
 }
 
+func (s *GetScheduledTaskUnderstandDetailRequest) GetAppToken() *string {
+	return s.AppToken
+}
+
 func (s *GetScheduledTaskUnderstandDetailRequest) GetCollaborationGroupId() *string {
 	return s.CollaborationGroupId
 }
 
 func (s *GetScheduledTaskUnderstandDetailRequest) GetDigitalEmployeeName() []*string {
 	return s.DigitalEmployeeName
+}
+
+func (s *GetScheduledTaskUnderstandDetailRequest) GetOpsUserCode() *string {
+	return s.OpsUserCode
+}
+
+func (s *GetScheduledTaskUnderstandDetailRequest) GetOpsUserId() *string {
+	return s.OpsUserId
 }
 
 func (s *GetScheduledTaskUnderstandDetailRequest) GetSegments() []*GetScheduledTaskUnderstandDetailRequestSegments {
@@ -80,6 +116,11 @@ func (s *GetScheduledTaskUnderstandDetailRequest) GetUserInput() *string {
 	return s.UserInput
 }
 
+func (s *GetScheduledTaskUnderstandDetailRequest) SetAppToken(v string) *GetScheduledTaskUnderstandDetailRequest {
+	s.AppToken = &v
+	return s
+}
+
 func (s *GetScheduledTaskUnderstandDetailRequest) SetCollaborationGroupId(v string) *GetScheduledTaskUnderstandDetailRequest {
 	s.CollaborationGroupId = &v
 	return s
@@ -87,6 +128,16 @@ func (s *GetScheduledTaskUnderstandDetailRequest) SetCollaborationGroupId(v stri
 
 func (s *GetScheduledTaskUnderstandDetailRequest) SetDigitalEmployeeName(v []*string) *GetScheduledTaskUnderstandDetailRequest {
 	s.DigitalEmployeeName = v
+	return s
+}
+
+func (s *GetScheduledTaskUnderstandDetailRequest) SetOpsUserCode(v string) *GetScheduledTaskUnderstandDetailRequest {
+	s.OpsUserCode = &v
+	return s
+}
+
+func (s *GetScheduledTaskUnderstandDetailRequest) SetOpsUserId(v string) *GetScheduledTaskUnderstandDetailRequest {
+	s.OpsUserId = &v
 	return s
 }
 

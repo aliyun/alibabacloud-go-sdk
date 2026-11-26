@@ -9,8 +9,14 @@ type iGetWorkflowTemplateRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAppToken(v string) *GetWorkflowTemplateRequest
+	GetAppToken() *string
 	SetCollaborationGroupId(v string) *GetWorkflowTemplateRequest
 	GetCollaborationGroupId() *string
+	SetOpsUserCode(v string) *GetWorkflowTemplateRequest
+	GetOpsUserCode() *string
+	SetOpsUserId(v string) *GetWorkflowTemplateRequest
+	GetOpsUserId() *string
 	SetTemplateId(v string) *GetWorkflowTemplateRequest
 	GetTemplateId() *string
 	SetTenantId(v string) *GetWorkflowTemplateRequest
@@ -20,6 +26,12 @@ type iGetWorkflowTemplateRequest interface {
 }
 
 type GetWorkflowTemplateRequest struct {
+	// 平台应用 Token（控制台签发）。传入后将以 opsUserId 或 opsUserCode 指定的用户身份执行
+	//
+	// example:
+	//
+	// wn_app_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+	AppToken *string `json:"appToken,omitempty" xml:"appToken,omitempty"`
 	// The ID of the collaboration workspace.
 	//
 	// This parameter is required.
@@ -28,6 +40,18 @@ type GetWorkflowTemplateRequest struct {
 	//
 	// cg_9401
 	CollaborationGroupId *string `json:"collaborationGroupId,omitempty" xml:"collaborationGroupId,omitempty"`
+	// 代理用户编码（租户内唯一），仅当应用凭证配置为 source_uid 时使用
+	//
+	// example:
+	//
+	// alice
+	OpsUserCode *string `json:"opsUserCode,omitempty" xml:"opsUserCode,omitempty"`
+	// 代理用户ID（WINNEXO 平台用户ID），仅当应用凭证配置为 winnexo_uid 时使用
+	//
+	// example:
+	//
+	// 10001
+	OpsUserId *string `json:"opsUserId,omitempty" xml:"opsUserId,omitempty"`
 	// The ID of the template.
 	//
 	// This parameter is required.
@@ -58,8 +82,20 @@ func (s GetWorkflowTemplateRequest) GoString() string {
 	return s.String()
 }
 
+func (s *GetWorkflowTemplateRequest) GetAppToken() *string {
+	return s.AppToken
+}
+
 func (s *GetWorkflowTemplateRequest) GetCollaborationGroupId() *string {
 	return s.CollaborationGroupId
+}
+
+func (s *GetWorkflowTemplateRequest) GetOpsUserCode() *string {
+	return s.OpsUserCode
+}
+
+func (s *GetWorkflowTemplateRequest) GetOpsUserId() *string {
+	return s.OpsUserId
 }
 
 func (s *GetWorkflowTemplateRequest) GetTemplateId() *string {
@@ -74,8 +110,23 @@ func (s *GetWorkflowTemplateRequest) GetVersion() *string {
 	return s.Version
 }
 
+func (s *GetWorkflowTemplateRequest) SetAppToken(v string) *GetWorkflowTemplateRequest {
+	s.AppToken = &v
+	return s
+}
+
 func (s *GetWorkflowTemplateRequest) SetCollaborationGroupId(v string) *GetWorkflowTemplateRequest {
 	s.CollaborationGroupId = &v
+	return s
+}
+
+func (s *GetWorkflowTemplateRequest) SetOpsUserCode(v string) *GetWorkflowTemplateRequest {
+	s.OpsUserCode = &v
+	return s
+}
+
+func (s *GetWorkflowTemplateRequest) SetOpsUserId(v string) *GetWorkflowTemplateRequest {
+	s.OpsUserId = &v
 	return s
 }
 

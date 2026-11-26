@@ -20,25 +20,25 @@ type iUpdateTenantDirectoryResponseBody interface {
 }
 
 type UpdateTenantDirectoryResponseBody struct {
-	// The status code.
+	// The business status code. A value of 200 indicates success. If the request fails, a specific business error code is returned.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// The folder ID.
+	// The business ID of the updated directory. You can refresh the configuration content by calling the corresponding configuration read API operation.
 	//
 	// example:
 	//
-	// exampleDirectoryId
+	// kb-example
 	DirectoryId *string `json:"directoryId,omitempty" xml:"directoryId,omitempty"`
-	// The description of the status code.
+	// The response message. The value is success if the request is successful. If the request fails, the message describes the cause of the error.
 	//
 	// example:
 	//
-	// ok
+	// success
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// The request ID.
+	// The request tracking ID. You can use this ID to troubleshoot issues related to this call.
 	//
 	// example:
 	//

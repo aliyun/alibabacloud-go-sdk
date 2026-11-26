@@ -36,7 +36,7 @@ type CreatePersonalVoiceMeetingResponseBody struct {
 	//
 	// 200
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// The bound directory ID. This value is echoed back if provided in the request body. The value is null if the default root directory is used.
+	// The bound directory ID. If this parameter is passed in the request body, the value is echoed back. If the default root directory is used, the value is null.
 	//
 	// example:
 	//
@@ -48,7 +48,7 @@ type CreatePersonalVoiceMeetingResponseBody struct {
 	//
 	// 2026-04-22T08:15:28.000+00:00
 	GmtCreate *string `json:"gmtCreate,omitempty" xml:"gmtCreate,omitempty"`
-	// The description of the status code.
+	// The status code description.
 	//
 	// example:
 	//
@@ -66,23 +66,23 @@ type CreatePersonalVoiceMeetingResponseBody struct {
 	//
 	// A5241B90-8FF4-565C-977A-0CE1842AED72
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// The resource scope. The value is fixed to PERSONAL.
+	// The resource scope. This value is fixed to PERSONAL.
 	//
 	// example:
 	//
 	// user_info projects pull_requests hook gists emails
 	Scope *string `json:"scope,omitempty" xml:"scope,omitempty"`
-	// The unique ID on the business system side, which is the business ID.
+	// The unique identifier on the business system side, which is the business ID.
 	//
 	// example:
 	//
 	// 8
 	SourceId *string `json:"sourceId,omitempty" xml:"sourceId,omitempty"`
-	// The resource status. The initial status during the creation process is typically PENDING. If the on_create process fails, the status is FAILED.
+	// The resource status. The initial status in the creation pipeline is mostly PENDING. If the on_create operation fails, the status is FAILED.
 	//
 	// example:
 	//
-	// {\\"observedGeneration\\": 4, \\"servicesInstances\\": {}, \\"observedTime\\": \\"2025-10-31T03:48:27Z\\", \\"servicesWithPendingChanges\\": [], \\"latestEnvironmentDeploymentName\\": \\"manual-1761882507097-Eu1vIP\\"}
+	// {\"observedGeneration\": 4, \"servicesInstances\": {}, \"observedTime\": \"2025-10-31T03:48:27Z\", \"servicesWithPendingChanges\": [], \"latestEnvironmentDeploymentName\": \"manual-1761882507097-Eu1vIP\"}
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
 }
 

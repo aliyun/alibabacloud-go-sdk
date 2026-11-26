@@ -9,6 +9,8 @@ type iCreateGroupFeishuDocShrinkRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAppToken(v string) *CreateGroupFeishuDocShrinkRequest
+	GetAppToken() *string
 	SetDescription(v string) *CreateGroupFeishuDocShrinkRequest
 	GetDescription() *string
 	SetDirectoryId(v string) *CreateGroupFeishuDocShrinkRequest
@@ -25,6 +27,10 @@ type iCreateGroupFeishuDocShrinkRequest interface {
 	GetObjectBindingsShrink() *string
 	SetOperatingObjectName(v string) *CreateGroupFeishuDocShrinkRequest
 	GetOperatingObjectName() *string
+	SetOpsUserCode(v string) *CreateGroupFeishuDocShrinkRequest
+	GetOpsUserCode() *string
+	SetOpsUserId(v string) *CreateGroupFeishuDocShrinkRequest
+	GetOpsUserId() *string
 	SetSourceTags(v string) *CreateGroupFeishuDocShrinkRequest
 	GetSourceTags() *string
 	SetSyncConfigShrink(v string) *CreateGroupFeishuDocShrinkRequest
@@ -34,6 +40,12 @@ type iCreateGroupFeishuDocShrinkRequest interface {
 }
 
 type CreateGroupFeishuDocShrinkRequest struct {
+	// The platform application token issued by the console. If specified, the operation is performed as the user identified by opsUserId or opsUserCode.
+	//
+	// example:
+	//
+	// wn_app_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+	AppToken *string `json:"appToken,omitempty" xml:"appToken,omitempty"`
 	// The description of the AI assistant.
 	//
 	// example:
@@ -62,27 +74,39 @@ type CreateGroupFeishuDocShrinkRequest struct {
 	//
 	// group_delivery
 	GroupId *string `json:"groupId,omitempty" xml:"groupId,omitempty"`
-	// The image name.
+	// The mirror name.
 	//
 	// example:
 	//
-	// ProjectPlan
+	// Project plan
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The meeting notes content (optional). The notes are used for auxiliary analysis.
+	// The meeting notes content. This parameter is optional and is used for auxiliary analysis.
 	//
 	// example:
 	//
-	// Extract decisions and to-do items
+	// Extract decisions and to-dos
 	Notes *string `json:"notes,omitempty" xml:"notes,omitempty"`
 	// The object bindings.
 	ObjectBindingsShrink *string `json:"objectBindings,omitempty" xml:"objectBindings,omitempty"`
-	// The name of the operating object.
+	// The name of the operation object.
 	//
 	// example:
 	//
-	// R&D Assistant
+	// R&D assistant
 	OperatingObjectName *string `json:"operatingObjectName,omitempty" xml:"operatingObjectName,omitempty"`
-	// The resource tags (optional, a JSON string list, such as ["tagA","tagB"]).
+	// The proxy user code, which is unique within the tenant. This parameter is used only when the application credential is configured as source_uid.
+	//
+	// example:
+	//
+	// alice
+	OpsUserCode *string `json:"opsUserCode,omitempty" xml:"opsUserCode,omitempty"`
+	// The proxy user ID, which is the WINNEXO platform user ID. This parameter is used only when the application credential is configured as winnexo_uid.
+	//
+	// example:
+	//
+	// 10001
+	OpsUserId *string `json:"opsUserId,omitempty" xml:"opsUserId,omitempty"`
+	// The resource tags. This parameter is optional and accepts a JSON string list, such as ["tagA","tagB"].
 	//
 	// example:
 	//
@@ -90,7 +114,7 @@ type CreateGroupFeishuDocShrinkRequest struct {
 	SourceTags *string `json:"sourceTags,omitempty" xml:"sourceTags,omitempty"`
 	// The synchronization settings.
 	SyncConfigShrink *string `json:"syncConfig,omitempty" xml:"syncConfig,omitempty"`
-	// The tenant ID. This is a common parameter. In winnexo-cli, pass it explicitly with --tenant-id.
+	// The tenant ID. This is a common parameter. For winnexo-cli, this parameter is explicitly passed by using the --tenant-id option.
 	//
 	// example:
 	//
@@ -104,6 +128,10 @@ func (s CreateGroupFeishuDocShrinkRequest) String() string {
 
 func (s CreateGroupFeishuDocShrinkRequest) GoString() string {
 	return s.String()
+}
+
+func (s *CreateGroupFeishuDocShrinkRequest) GetAppToken() *string {
+	return s.AppToken
 }
 
 func (s *CreateGroupFeishuDocShrinkRequest) GetDescription() *string {
@@ -138,6 +166,14 @@ func (s *CreateGroupFeishuDocShrinkRequest) GetOperatingObjectName() *string {
 	return s.OperatingObjectName
 }
 
+func (s *CreateGroupFeishuDocShrinkRequest) GetOpsUserCode() *string {
+	return s.OpsUserCode
+}
+
+func (s *CreateGroupFeishuDocShrinkRequest) GetOpsUserId() *string {
+	return s.OpsUserId
+}
+
 func (s *CreateGroupFeishuDocShrinkRequest) GetSourceTags() *string {
 	return s.SourceTags
 }
@@ -148,6 +184,11 @@ func (s *CreateGroupFeishuDocShrinkRequest) GetSyncConfigShrink() *string {
 
 func (s *CreateGroupFeishuDocShrinkRequest) GetTenantId() *string {
 	return s.TenantId
+}
+
+func (s *CreateGroupFeishuDocShrinkRequest) SetAppToken(v string) *CreateGroupFeishuDocShrinkRequest {
+	s.AppToken = &v
+	return s
 }
 
 func (s *CreateGroupFeishuDocShrinkRequest) SetDescription(v string) *CreateGroupFeishuDocShrinkRequest {
@@ -187,6 +228,16 @@ func (s *CreateGroupFeishuDocShrinkRequest) SetObjectBindingsShrink(v string) *C
 
 func (s *CreateGroupFeishuDocShrinkRequest) SetOperatingObjectName(v string) *CreateGroupFeishuDocShrinkRequest {
 	s.OperatingObjectName = &v
+	return s
+}
+
+func (s *CreateGroupFeishuDocShrinkRequest) SetOpsUserCode(v string) *CreateGroupFeishuDocShrinkRequest {
+	s.OpsUserCode = &v
+	return s
+}
+
+func (s *CreateGroupFeishuDocShrinkRequest) SetOpsUserId(v string) *CreateGroupFeishuDocShrinkRequest {
+	s.OpsUserId = &v
 	return s
 }
 

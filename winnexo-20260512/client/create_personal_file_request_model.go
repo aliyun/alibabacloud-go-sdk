@@ -9,6 +9,8 @@ type iCreatePersonalFileRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAppToken(v string) *CreatePersonalFileRequest
+	GetAppToken() *string
 	SetDescription(v string) *CreatePersonalFileRequest
 	GetDescription() *string
 	SetDirectoryId(v string) *CreatePersonalFileRequest
@@ -27,6 +29,10 @@ type iCreatePersonalFileRequest interface {
 	GetName() *string
 	SetOperatingObjectName(v string) *CreatePersonalFileRequest
 	GetOperatingObjectName() *string
+	SetOpsUserCode(v string) *CreatePersonalFileRequest
+	GetOpsUserCode() *string
+	SetOpsUserId(v string) *CreatePersonalFileRequest
+	GetOpsUserId() *string
 	SetSourceTags(v string) *CreatePersonalFileRequest
 	GetSourceTags() *string
 	SetTenantId(v string) *CreatePersonalFileRequest
@@ -34,19 +40,25 @@ type iCreatePersonalFileRequest interface {
 }
 
 type CreatePersonalFileRequest struct {
+	// The platform application token issued by the console. If this parameter is passed, the operation is executed as the user specified by opsUserId or opsUserCode.
+	//
+	// example:
+	//
+	// wn_app_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+	AppToken *string `json:"appToken,omitempty" xml:"appToken,omitempty"`
 	// The pipeline description.
 	//
 	// example:
 	//
 	// created by eventbridge
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// The folder ID.
+	// The directory ID.
 	//
 	// example:
 	//
 	// exampleDirectoryId
 	DirectoryId *string `json:"directoryId,omitempty" xml:"directoryId,omitempty"`
-	// The file name extension (optional, such as pdf or docx).
+	// The file name extension, such as pdf or docx. This parameter is optional.
 	//
 	// example:
 	//
@@ -72,7 +84,7 @@ type CreatePersonalFileRequest struct {
 	//
 	// https://example.com/winnexo/resource
 	FilePublicUrl *string `json:"filePublicUrl,omitempty" xml:"filePublicUrl,omitempty"`
-	// The file record ID (optional, corresponding to settings.file_record_id).
+	// The file record ID, which corresponds to settings.file_record_id. This parameter is optional.
 	//
 	// example:
 	//
@@ -86,17 +98,29 @@ type CreatePersonalFileRequest struct {
 	//
 	// sys_first_new_v3_b
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The name of the digital employee (operating object name, optional).
+	// The name of the digital employee, which is the name of the operating object. This parameter is optional.
 	//
 	// example:
 	//
 	// string_value
 	OperatingObjectName *string `json:"operatingObjectName,omitempty" xml:"operatingObjectName,omitempty"`
+	// The proxy user code, which is unique within the tenant. This parameter is used only when the application credential is configured as source_uid.
+	//
+	// example:
+	//
+	// alice
+	OpsUserCode *string `json:"opsUserCode,omitempty" xml:"opsUserCode,omitempty"`
+	// The proxy user ID, which is the WINNEXO platform user ID. This parameter is used only when the application credential is configured as winnexo_uid.
+	//
+	// example:
+	//
+	// 10001
+	OpsUserId *string `json:"opsUserId,omitempty" xml:"opsUserId,omitempty"`
 	// The list of resource tag JSON strings.
 	//
 	// example:
 	//
-	// ["Important","File"]
+	// ["Important", "File"]
 	SourceTags *string `json:"sourceTags,omitempty" xml:"sourceTags,omitempty"`
 	// The tenant ID.
 	//
@@ -112,6 +136,10 @@ func (s CreatePersonalFileRequest) String() string {
 
 func (s CreatePersonalFileRequest) GoString() string {
 	return s.String()
+}
+
+func (s *CreatePersonalFileRequest) GetAppToken() *string {
+	return s.AppToken
 }
 
 func (s *CreatePersonalFileRequest) GetDescription() *string {
@@ -150,12 +178,25 @@ func (s *CreatePersonalFileRequest) GetOperatingObjectName() *string {
 	return s.OperatingObjectName
 }
 
+func (s *CreatePersonalFileRequest) GetOpsUserCode() *string {
+	return s.OpsUserCode
+}
+
+func (s *CreatePersonalFileRequest) GetOpsUserId() *string {
+	return s.OpsUserId
+}
+
 func (s *CreatePersonalFileRequest) GetSourceTags() *string {
 	return s.SourceTags
 }
 
 func (s *CreatePersonalFileRequest) GetTenantId() *string {
 	return s.TenantId
+}
+
+func (s *CreatePersonalFileRequest) SetAppToken(v string) *CreatePersonalFileRequest {
+	s.AppToken = &v
+	return s
 }
 
 func (s *CreatePersonalFileRequest) SetDescription(v string) *CreatePersonalFileRequest {
@@ -200,6 +241,16 @@ func (s *CreatePersonalFileRequest) SetName(v string) *CreatePersonalFileRequest
 
 func (s *CreatePersonalFileRequest) SetOperatingObjectName(v string) *CreatePersonalFileRequest {
 	s.OperatingObjectName = &v
+	return s
+}
+
+func (s *CreatePersonalFileRequest) SetOpsUserCode(v string) *CreatePersonalFileRequest {
+	s.OpsUserCode = &v
+	return s
+}
+
+func (s *CreatePersonalFileRequest) SetOpsUserId(v string) *CreatePersonalFileRequest {
+	s.OpsUserId = &v
 	return s
 }
 

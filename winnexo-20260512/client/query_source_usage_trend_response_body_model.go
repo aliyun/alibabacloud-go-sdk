@@ -32,7 +32,7 @@ type QuerySourceUsageTrendResponseBody struct {
 	//
 	// ok
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// The request ID.
+	// The request tracking ID.
 	//
 	// example:
 	//
@@ -108,7 +108,7 @@ type QuerySourceUsageTrendResponseBodyTrend struct {
 	//
 	// example:
 	//
-	// The start time of the natural bucket with the selected time zone. The first bucket may start earlier than the startTime
+	// Start time of the natural bucket with the selected time zone. The first bucket may start earlier than the startTime
 	BucketStart *string `json:"bucketStart,omitempty" xml:"bucketStart,omitempty"`
 	// The number of retrieval recalls.
 	//
@@ -128,7 +128,7 @@ type QuerySourceUsageTrendResponseBodyTrend struct {
 	//
 	// 4
 	SourceCount *int64 `json:"sourceCount,omitempty" xml:"sourceCount,omitempty"`
-	// The number of times used in agents.
+	// The number of times used by the agent.
 	//
 	// example:
 	//

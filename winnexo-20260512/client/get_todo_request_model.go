@@ -9,8 +9,14 @@ type iGetTodoRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAppToken(v string) *GetTodoRequest
+	GetAppToken() *string
 	SetMessageId(v string) *GetTodoRequest
 	GetMessageId() *string
+	SetOpsUserCode(v string) *GetTodoRequest
+	GetOpsUserCode() *string
+	SetOpsUserId(v string) *GetTodoRequest
+	GetOpsUserId() *string
 	SetTenantId(v string) *GetTodoRequest
 	GetTenantId() *string
 	SetTodoId(v string) *GetTodoRequest
@@ -20,12 +26,30 @@ type iGetTodoRequest interface {
 }
 
 type GetTodoRequest struct {
+	// 平台应用 Token（控制台签发）。传入后将以 opsUserId 或 opsUserCode 指定的用户身份执行
+	//
+	// example:
+	//
+	// wn_app_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+	AppToken *string `json:"appToken,omitempty" xml:"appToken,omitempty"`
 	// The ID of the assistant message. This parameter is used to query multiple to-do items by message.
 	//
 	// example:
 	//
 	// msg-1
 	MessageId *string `json:"messageId,omitempty" xml:"messageId,omitempty"`
+	// 代理用户编码（租户内唯一），仅当应用凭证配置为 source_uid 时使用
+	//
+	// example:
+	//
+	// alice
+	OpsUserCode *string `json:"opsUserCode,omitempty" xml:"opsUserCode,omitempty"`
+	// 代理用户ID（WINNEXO 平台用户ID），仅当应用凭证配置为 winnexo_uid 时使用
+	//
+	// example:
+	//
+	// 10001
+	OpsUserId *string `json:"opsUserId,omitempty" xml:"opsUserId,omitempty"`
 	// The tenant ID. This is a common parameter. If this parameter is not specified, the default tenant of the caller is used.
 	//
 	// example:
@@ -54,8 +78,20 @@ func (s GetTodoRequest) GoString() string {
 	return s.String()
 }
 
+func (s *GetTodoRequest) GetAppToken() *string {
+	return s.AppToken
+}
+
 func (s *GetTodoRequest) GetMessageId() *string {
 	return s.MessageId
+}
+
+func (s *GetTodoRequest) GetOpsUserCode() *string {
+	return s.OpsUserCode
+}
+
+func (s *GetTodoRequest) GetOpsUserId() *string {
+	return s.OpsUserId
 }
 
 func (s *GetTodoRequest) GetTenantId() *string {
@@ -70,8 +106,23 @@ func (s *GetTodoRequest) GetWorkItemId() *string {
 	return s.WorkItemId
 }
 
+func (s *GetTodoRequest) SetAppToken(v string) *GetTodoRequest {
+	s.AppToken = &v
+	return s
+}
+
 func (s *GetTodoRequest) SetMessageId(v string) *GetTodoRequest {
 	s.MessageId = &v
+	return s
+}
+
+func (s *GetTodoRequest) SetOpsUserCode(v string) *GetTodoRequest {
+	s.OpsUserCode = &v
+	return s
+}
+
+func (s *GetTodoRequest) SetOpsUserId(v string) *GetTodoRequest {
+	s.OpsUserId = &v
 	return s
 }
 

@@ -62,15 +62,15 @@ type CreateKnowledgeBaseDirectoryResponseBody struct {
 	//
 	// example:
 	//
-	// 2025-11-14T02:18:27Z
+	// 1763086707
 	GmtCreate *int64 `json:"gmtCreate,omitempty" xml:"gmtCreate,omitempty"`
-	// The last modification time.
+	// The last update time.
 	//
 	// example:
 	//
-	// 2026-01-19T01:48:56Z
+	// 1768787336
 	GmtModified *int64 `json:"gmtModified,omitempty" xml:"gmtModified,omitempty"`
-	// The description of the status code.
+	// The status code description.
 	//
 	// example:
 	//

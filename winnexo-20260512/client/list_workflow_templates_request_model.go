@@ -9,6 +9,8 @@ type iListWorkflowTemplatesRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAppToken(v string) *ListWorkflowTemplatesRequest
+	GetAppToken() *string
 	SetCollaborationGroupId(v string) *ListWorkflowTemplatesRequest
 	GetCollaborationGroupId() *string
 	SetKeyword(v string) *ListWorkflowTemplatesRequest
@@ -17,6 +19,10 @@ type iListWorkflowTemplatesRequest interface {
 	GetMaxResults() *int64
 	SetNextToken(v string) *ListWorkflowTemplatesRequest
 	GetNextToken() *string
+	SetOpsUserCode(v string) *ListWorkflowTemplatesRequest
+	GetOpsUserCode() *string
+	SetOpsUserId(v string) *ListWorkflowTemplatesRequest
+	GetOpsUserId() *string
 	SetPage(v int64) *ListWorkflowTemplatesRequest
 	GetPage() *int64
 	SetPageSize(v int64) *ListWorkflowTemplatesRequest
@@ -26,6 +32,12 @@ type iListWorkflowTemplatesRequest interface {
 }
 
 type ListWorkflowTemplatesRequest struct {
+	// The platform application token issued by the console. If specified, the operation is performed as the user identified by opsUserId or opsUserCode.
+	//
+	// example:
+	//
+	// wn_app_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+	AppToken *string `json:"appToken,omitempty" xml:"appToken,omitempty"`
 	// The ID of the collaboration space.
 	//
 	// This parameter is required.
@@ -46,12 +58,24 @@ type ListWorkflowTemplatesRequest struct {
 	//
 	// 1
 	MaxResults *int64 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
-	// The pagination token. Obtain the token from the nextToken value in the previous response. This parameter takes precedence over page if both are specified.
+	// The pagination token. Use the nextToken value returned in the previous response. This parameter takes precedence over page if both are specified.
 	//
 	// example:
 	//
 	// tok_9401
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
+	// The proxy user code, which is unique within the tenant. This parameter is used only when the application credential is configured as source_uid.
+	//
+	// example:
+	//
+	// alice
+	OpsUserCode *string `json:"opsUserCode,omitempty" xml:"opsUserCode,omitempty"`
+	// The proxy user ID, which is the WINNEXO platform user ID. This parameter is used only when the application credential is configured as winnexo_uid.
+	//
+	// example:
+	//
+	// 10001
+	OpsUserId *string `json:"opsUserId,omitempty" xml:"opsUserId,omitempty"`
 	// The page number. This parameter is ignored if nextToken is specified.
 	//
 	// example:
@@ -80,6 +104,10 @@ func (s ListWorkflowTemplatesRequest) GoString() string {
 	return s.String()
 }
 
+func (s *ListWorkflowTemplatesRequest) GetAppToken() *string {
+	return s.AppToken
+}
+
 func (s *ListWorkflowTemplatesRequest) GetCollaborationGroupId() *string {
 	return s.CollaborationGroupId
 }
@@ -96,6 +124,14 @@ func (s *ListWorkflowTemplatesRequest) GetNextToken() *string {
 	return s.NextToken
 }
 
+func (s *ListWorkflowTemplatesRequest) GetOpsUserCode() *string {
+	return s.OpsUserCode
+}
+
+func (s *ListWorkflowTemplatesRequest) GetOpsUserId() *string {
+	return s.OpsUserId
+}
+
 func (s *ListWorkflowTemplatesRequest) GetPage() *int64 {
 	return s.Page
 }
@@ -106,6 +142,11 @@ func (s *ListWorkflowTemplatesRequest) GetPageSize() *int64 {
 
 func (s *ListWorkflowTemplatesRequest) GetTenantId() *string {
 	return s.TenantId
+}
+
+func (s *ListWorkflowTemplatesRequest) SetAppToken(v string) *ListWorkflowTemplatesRequest {
+	s.AppToken = &v
+	return s
 }
 
 func (s *ListWorkflowTemplatesRequest) SetCollaborationGroupId(v string) *ListWorkflowTemplatesRequest {
@@ -125,6 +166,16 @@ func (s *ListWorkflowTemplatesRequest) SetMaxResults(v int64) *ListWorkflowTempl
 
 func (s *ListWorkflowTemplatesRequest) SetNextToken(v string) *ListWorkflowTemplatesRequest {
 	s.NextToken = &v
+	return s
+}
+
+func (s *ListWorkflowTemplatesRequest) SetOpsUserCode(v string) *ListWorkflowTemplatesRequest {
+	s.OpsUserCode = &v
+	return s
+}
+
+func (s *ListWorkflowTemplatesRequest) SetOpsUserId(v string) *ListWorkflowTemplatesRequest {
+	s.OpsUserId = &v
 	return s
 }
 

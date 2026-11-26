@@ -9,10 +9,16 @@ type iListVisibleKnowledgeBaseContentsRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAppToken(v string) *ListVisibleKnowledgeBaseContentsRequest
+	GetAppToken() *string
 	SetDirectoryId(v string) *ListVisibleKnowledgeBaseContentsRequest
 	GetDirectoryId() *string
 	SetOperatingObjectName(v string) *ListVisibleKnowledgeBaseContentsRequest
 	GetOperatingObjectName() *string
+	SetOpsUserCode(v string) *ListVisibleKnowledgeBaseContentsRequest
+	GetOpsUserCode() *string
+	SetOpsUserId(v string) *ListVisibleKnowledgeBaseContentsRequest
+	GetOpsUserId() *string
 	SetPage(v int64) *ListVisibleKnowledgeBaseContentsRequest
 	GetPage() *int64
 	SetPageSize(v int64) *ListVisibleKnowledgeBaseContentsRequest
@@ -28,6 +34,12 @@ type iListVisibleKnowledgeBaseContentsRequest interface {
 }
 
 type ListVisibleKnowledgeBaseContentsRequest struct {
+	// 平台应用 Token（控制台签发）。传入后将以 opsUserId 或 opsUserCode 指定的用户身份执行
+	//
+	// example:
+	//
+	// wn_app_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+	AppToken *string `json:"appToken,omitempty" xml:"appToken,omitempty"`
 	// The directory ID.
 	//
 	// This parameter is required.
@@ -44,6 +56,18 @@ type ListVisibleKnowledgeBaseContentsRequest struct {
 	//
 	// string_value
 	OperatingObjectName *string `json:"operatingObjectName,omitempty" xml:"operatingObjectName,omitempty"`
+	// 代理用户编码（租户内唯一），仅当应用凭证配置为 source_uid 时使用
+	//
+	// example:
+	//
+	// alice
+	OpsUserCode *string `json:"opsUserCode,omitempty" xml:"opsUserCode,omitempty"`
+	// 代理用户ID（WINNEXO 平台用户ID），仅当应用凭证配置为 winnexo_uid 时使用
+	//
+	// example:
+	//
+	// 10001
+	OpsUserId *string `json:"opsUserId,omitempty" xml:"opsUserId,omitempty"`
 	// The page number of the results to return. Default value: 1. Minimum value: 1. Maximum value: 200.
 	//
 	// example:
@@ -96,12 +120,24 @@ func (s ListVisibleKnowledgeBaseContentsRequest) GoString() string {
 	return s.String()
 }
 
+func (s *ListVisibleKnowledgeBaseContentsRequest) GetAppToken() *string {
+	return s.AppToken
+}
+
 func (s *ListVisibleKnowledgeBaseContentsRequest) GetDirectoryId() *string {
 	return s.DirectoryId
 }
 
 func (s *ListVisibleKnowledgeBaseContentsRequest) GetOperatingObjectName() *string {
 	return s.OperatingObjectName
+}
+
+func (s *ListVisibleKnowledgeBaseContentsRequest) GetOpsUserCode() *string {
+	return s.OpsUserCode
+}
+
+func (s *ListVisibleKnowledgeBaseContentsRequest) GetOpsUserId() *string {
+	return s.OpsUserId
 }
 
 func (s *ListVisibleKnowledgeBaseContentsRequest) GetPage() *int64 {
@@ -128,6 +164,11 @@ func (s *ListVisibleKnowledgeBaseContentsRequest) GetTenantId() *string {
 	return s.TenantId
 }
 
+func (s *ListVisibleKnowledgeBaseContentsRequest) SetAppToken(v string) *ListVisibleKnowledgeBaseContentsRequest {
+	s.AppToken = &v
+	return s
+}
+
 func (s *ListVisibleKnowledgeBaseContentsRequest) SetDirectoryId(v string) *ListVisibleKnowledgeBaseContentsRequest {
 	s.DirectoryId = &v
 	return s
@@ -135,6 +176,16 @@ func (s *ListVisibleKnowledgeBaseContentsRequest) SetDirectoryId(v string) *List
 
 func (s *ListVisibleKnowledgeBaseContentsRequest) SetOperatingObjectName(v string) *ListVisibleKnowledgeBaseContentsRequest {
 	s.OperatingObjectName = &v
+	return s
+}
+
+func (s *ListVisibleKnowledgeBaseContentsRequest) SetOpsUserCode(v string) *ListVisibleKnowledgeBaseContentsRequest {
+	s.OpsUserCode = &v
+	return s
+}
+
+func (s *ListVisibleKnowledgeBaseContentsRequest) SetOpsUserId(v string) *ListVisibleKnowledgeBaseContentsRequest {
+	s.OpsUserId = &v
 	return s
 }
 

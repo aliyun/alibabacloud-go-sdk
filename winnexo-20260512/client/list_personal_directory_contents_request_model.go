@@ -9,10 +9,16 @@ type iListPersonalDirectoryContentsRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAppToken(v string) *ListPersonalDirectoryContentsRequest
+	GetAppToken() *string
 	SetDirectoryId(v string) *ListPersonalDirectoryContentsRequest
 	GetDirectoryId() *string
 	SetOperatingObjectName(v string) *ListPersonalDirectoryContentsRequest
 	GetOperatingObjectName() *string
+	SetOpsUserCode(v string) *ListPersonalDirectoryContentsRequest
+	GetOpsUserCode() *string
+	SetOpsUserId(v string) *ListPersonalDirectoryContentsRequest
+	GetOpsUserId() *string
 	SetPage(v int64) *ListPersonalDirectoryContentsRequest
 	GetPage() *int64
 	SetPageSize(v int64) *ListPersonalDirectoryContentsRequest
@@ -28,6 +34,12 @@ type iListPersonalDirectoryContentsRequest interface {
 }
 
 type ListPersonalDirectoryContentsRequest struct {
+	// 平台应用 Token（控制台签发）。传入后将以 opsUserId 或 opsUserCode 指定的用户身份执行
+	//
+	// example:
+	//
+	// wn_app_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+	AppToken *string `json:"appToken,omitempty" xml:"appToken,omitempty"`
 	// The directory ID.
 	//
 	// This parameter is required.
@@ -42,6 +54,18 @@ type ListPersonalDirectoryContentsRequest struct {
 	//
 	// string_value
 	OperatingObjectName *string `json:"operatingObjectName,omitempty" xml:"operatingObjectName,omitempty"`
+	// 代理用户编码（租户内唯一），仅当应用凭证配置为 source_uid 时使用
+	//
+	// example:
+	//
+	// alice
+	OpsUserCode *string `json:"opsUserCode,omitempty" xml:"opsUserCode,omitempty"`
+	// 代理用户ID（WINNEXO 平台用户ID），仅当应用凭证配置为 winnexo_uid 时使用
+	//
+	// example:
+	//
+	// 10001
+	OpsUserId *string `json:"opsUserId,omitempty" xml:"opsUserId,omitempty"`
 	// The page number. Default value: 1. Pages start from page 1.
 	//
 	// example:
@@ -94,12 +118,24 @@ func (s ListPersonalDirectoryContentsRequest) GoString() string {
 	return s.String()
 }
 
+func (s *ListPersonalDirectoryContentsRequest) GetAppToken() *string {
+	return s.AppToken
+}
+
 func (s *ListPersonalDirectoryContentsRequest) GetDirectoryId() *string {
 	return s.DirectoryId
 }
 
 func (s *ListPersonalDirectoryContentsRequest) GetOperatingObjectName() *string {
 	return s.OperatingObjectName
+}
+
+func (s *ListPersonalDirectoryContentsRequest) GetOpsUserCode() *string {
+	return s.OpsUserCode
+}
+
+func (s *ListPersonalDirectoryContentsRequest) GetOpsUserId() *string {
+	return s.OpsUserId
 }
 
 func (s *ListPersonalDirectoryContentsRequest) GetPage() *int64 {
@@ -126,6 +162,11 @@ func (s *ListPersonalDirectoryContentsRequest) GetTenantId() *string {
 	return s.TenantId
 }
 
+func (s *ListPersonalDirectoryContentsRequest) SetAppToken(v string) *ListPersonalDirectoryContentsRequest {
+	s.AppToken = &v
+	return s
+}
+
 func (s *ListPersonalDirectoryContentsRequest) SetDirectoryId(v string) *ListPersonalDirectoryContentsRequest {
 	s.DirectoryId = &v
 	return s
@@ -133,6 +174,16 @@ func (s *ListPersonalDirectoryContentsRequest) SetDirectoryId(v string) *ListPer
 
 func (s *ListPersonalDirectoryContentsRequest) SetOperatingObjectName(v string) *ListPersonalDirectoryContentsRequest {
 	s.OperatingObjectName = &v
+	return s
+}
+
+func (s *ListPersonalDirectoryContentsRequest) SetOpsUserCode(v string) *ListPersonalDirectoryContentsRequest {
+	s.OpsUserCode = &v
+	return s
+}
+
+func (s *ListPersonalDirectoryContentsRequest) SetOpsUserId(v string) *ListPersonalDirectoryContentsRequest {
+	s.OpsUserId = &v
 	return s
 }
 

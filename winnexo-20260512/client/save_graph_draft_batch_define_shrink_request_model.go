@@ -9,10 +9,16 @@ type iSaveGraphDraftBatchDefineShrinkRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAppToken(v string) *SaveGraphDraftBatchDefineShrinkRequest
+	GetAppToken() *string
 	SetDraftChangeIdsShrink(v string) *SaveGraphDraftBatchDefineShrinkRequest
 	GetDraftChangeIdsShrink() *string
 	SetGraphName(v string) *SaveGraphDraftBatchDefineShrinkRequest
 	GetGraphName() *string
+	SetOpsUserCode(v string) *SaveGraphDraftBatchDefineShrinkRequest
+	GetOpsUserCode() *string
+	SetOpsUserId(v string) *SaveGraphDraftBatchDefineShrinkRequest
+	GetOpsUserId() *string
 	SetSaveMode(v string) *SaveGraphDraftBatchDefineShrinkRequest
 	GetSaveMode() *string
 	SetTenantId(v string) *SaveGraphDraftBatchDefineShrinkRequest
@@ -22,6 +28,12 @@ type iSaveGraphDraftBatchDefineShrinkRequest interface {
 }
 
 type SaveGraphDraftBatchDefineShrinkRequest struct {
+	// 平台应用 Token（控制台签发）。传入后将以 opsUserId 或 opsUserCode 指定的用户身份执行
+	//
+	// example:
+	//
+	// wn_app_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+	AppToken *string `json:"appToken,omitempty" xml:"appToken,omitempty"`
 	// The list of draft change IDs.
 	//
 	// example:
@@ -36,6 +48,18 @@ type SaveGraphDraftBatchDefineShrinkRequest struct {
 	//
 	// crm_graph
 	GraphName *string `json:"graphName,omitempty" xml:"graphName,omitempty"`
+	// 代理用户编码（租户内唯一），仅当应用凭证配置为 source_uid 时使用
+	//
+	// example:
+	//
+	// alice
+	OpsUserCode *string `json:"opsUserCode,omitempty" xml:"opsUserCode,omitempty"`
+	// 代理用户ID（WINNEXO 平台用户ID），仅当应用凭证配置为 winnexo_uid 时使用
+	//
+	// example:
+	//
+	// 10001
+	OpsUserId *string `json:"opsUserId,omitempty" xml:"opsUserId,omitempty"`
 	// The save mode.
 	//
 	// example:
@@ -66,12 +90,24 @@ func (s SaveGraphDraftBatchDefineShrinkRequest) GoString() string {
 	return s.String()
 }
 
+func (s *SaveGraphDraftBatchDefineShrinkRequest) GetAppToken() *string {
+	return s.AppToken
+}
+
 func (s *SaveGraphDraftBatchDefineShrinkRequest) GetDraftChangeIdsShrink() *string {
 	return s.DraftChangeIdsShrink
 }
 
 func (s *SaveGraphDraftBatchDefineShrinkRequest) GetGraphName() *string {
 	return s.GraphName
+}
+
+func (s *SaveGraphDraftBatchDefineShrinkRequest) GetOpsUserCode() *string {
+	return s.OpsUserCode
+}
+
+func (s *SaveGraphDraftBatchDefineShrinkRequest) GetOpsUserId() *string {
+	return s.OpsUserId
 }
 
 func (s *SaveGraphDraftBatchDefineShrinkRequest) GetSaveMode() *string {
@@ -86,6 +122,11 @@ func (s *SaveGraphDraftBatchDefineShrinkRequest) GetYamlEdit() *string {
 	return s.YamlEdit
 }
 
+func (s *SaveGraphDraftBatchDefineShrinkRequest) SetAppToken(v string) *SaveGraphDraftBatchDefineShrinkRequest {
+	s.AppToken = &v
+	return s
+}
+
 func (s *SaveGraphDraftBatchDefineShrinkRequest) SetDraftChangeIdsShrink(v string) *SaveGraphDraftBatchDefineShrinkRequest {
 	s.DraftChangeIdsShrink = &v
 	return s
@@ -93,6 +134,16 @@ func (s *SaveGraphDraftBatchDefineShrinkRequest) SetDraftChangeIdsShrink(v strin
 
 func (s *SaveGraphDraftBatchDefineShrinkRequest) SetGraphName(v string) *SaveGraphDraftBatchDefineShrinkRequest {
 	s.GraphName = &v
+	return s
+}
+
+func (s *SaveGraphDraftBatchDefineShrinkRequest) SetOpsUserCode(v string) *SaveGraphDraftBatchDefineShrinkRequest {
+	s.OpsUserCode = &v
+	return s
+}
+
+func (s *SaveGraphDraftBatchDefineShrinkRequest) SetOpsUserId(v string) *SaveGraphDraftBatchDefineShrinkRequest {
+	s.OpsUserId = &v
 	return s
 }
 

@@ -36,7 +36,7 @@ type CreatePersonalFileResponseBody struct {
 	//
 	// 200
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// The folder ID.
+	// The directory ID.
 	//
 	// example:
 	//
@@ -54,7 +54,7 @@ type CreatePersonalFileResponseBody struct {
 	//
 	// success
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// The updated filter view name.
+	// The updated name of the filtered view.
 	//
 	// example:
 	//
@@ -66,11 +66,7 @@ type CreatePersonalFileResponseBody struct {
 	//
 	// 3DAC4165-2401-543B-B5E7-A86AA151E517
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// The export scope. Valid values:
-	//
-	// - ALL: all.
-	//
-	// - SELECT: selected rows.
+	// The export scope. Valid values: ALL: all data. SELECT: selected rows.
 	//
 	// example:
 	//

@@ -20,7 +20,7 @@ type iBatchCancelTodosResponseBody interface {
 }
 
 type BatchCancelTodosResponseBody struct {
-	// The actual number of canceled items. The value is 0 for idempotent repeated calls.
+	// The actual number of invalidated items. For idempotent repeated calls, the value is 0.
 	//
 	// example:
 	//
@@ -32,7 +32,7 @@ type BatchCancelTodosResponseBody struct {
 	//
 	// 200
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// The error message.
+	// The error description.
 	//
 	// example:
 	//

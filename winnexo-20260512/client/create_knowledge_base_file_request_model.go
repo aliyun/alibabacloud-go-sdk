@@ -9,6 +9,8 @@ type iCreateKnowledgeBaseFileRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAppToken(v string) *CreateKnowledgeBaseFileRequest
+	GetAppToken() *string
 	SetDescription(v string) *CreateKnowledgeBaseFileRequest
 	GetDescription() *string
 	SetDirectoryId(v string) *CreateKnowledgeBaseFileRequest
@@ -29,6 +31,10 @@ type iCreateKnowledgeBaseFileRequest interface {
 	GetName() *string
 	SetOperatingObjectName(v string) *CreateKnowledgeBaseFileRequest
 	GetOperatingObjectName() *string
+	SetOpsUserCode(v string) *CreateKnowledgeBaseFileRequest
+	GetOpsUserCode() *string
+	SetOpsUserId(v string) *CreateKnowledgeBaseFileRequest
+	GetOpsUserId() *string
 	SetSourceTags(v string) *CreateKnowledgeBaseFileRequest
 	GetSourceTags() *string
 	SetTenantId(v string) *CreateKnowledgeBaseFileRequest
@@ -36,6 +42,12 @@ type iCreateKnowledgeBaseFileRequest interface {
 }
 
 type CreateKnowledgeBaseFileRequest struct {
+	// 平台应用 Token（控制台签发）。传入后将以 opsUserId 或 opsUserCode 指定的用户身份执行
+	//
+	// example:
+	//
+	// wn_app_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+	AppToken *string `json:"appToken,omitempty" xml:"appToken,omitempty"`
 	// The description of the alias.
 	//
 	// example:
@@ -100,6 +112,18 @@ type CreateKnowledgeBaseFileRequest struct {
 	//
 	// string_value
 	OperatingObjectName *string `json:"operatingObjectName,omitempty" xml:"operatingObjectName,omitempty"`
+	// 代理用户编码（租户内唯一），仅当应用凭证配置为 source_uid 时使用
+	//
+	// example:
+	//
+	// alice
+	OpsUserCode *string `json:"opsUserCode,omitempty" xml:"opsUserCode,omitempty"`
+	// 代理用户ID（WINNEXO 平台用户ID），仅当应用凭证配置为 winnexo_uid 时使用
+	//
+	// example:
+	//
+	// 10001
+	OpsUserId *string `json:"opsUserId,omitempty" xml:"opsUserId,omitempty"`
 	// The resource labels. This parameter is optional. Specify a JSON string list, such as ["tagA","tagB"].
 	//
 	// example:
@@ -120,6 +144,10 @@ func (s CreateKnowledgeBaseFileRequest) String() string {
 
 func (s CreateKnowledgeBaseFileRequest) GoString() string {
 	return s.String()
+}
+
+func (s *CreateKnowledgeBaseFileRequest) GetAppToken() *string {
+	return s.AppToken
 }
 
 func (s *CreateKnowledgeBaseFileRequest) GetDescription() *string {
@@ -162,12 +190,25 @@ func (s *CreateKnowledgeBaseFileRequest) GetOperatingObjectName() *string {
 	return s.OperatingObjectName
 }
 
+func (s *CreateKnowledgeBaseFileRequest) GetOpsUserCode() *string {
+	return s.OpsUserCode
+}
+
+func (s *CreateKnowledgeBaseFileRequest) GetOpsUserId() *string {
+	return s.OpsUserId
+}
+
 func (s *CreateKnowledgeBaseFileRequest) GetSourceTags() *string {
 	return s.SourceTags
 }
 
 func (s *CreateKnowledgeBaseFileRequest) GetTenantId() *string {
 	return s.TenantId
+}
+
+func (s *CreateKnowledgeBaseFileRequest) SetAppToken(v string) *CreateKnowledgeBaseFileRequest {
+	s.AppToken = &v
+	return s
 }
 
 func (s *CreateKnowledgeBaseFileRequest) SetDescription(v string) *CreateKnowledgeBaseFileRequest {
@@ -217,6 +258,16 @@ func (s *CreateKnowledgeBaseFileRequest) SetName(v string) *CreateKnowledgeBaseF
 
 func (s *CreateKnowledgeBaseFileRequest) SetOperatingObjectName(v string) *CreateKnowledgeBaseFileRequest {
 	s.OperatingObjectName = &v
+	return s
+}
+
+func (s *CreateKnowledgeBaseFileRequest) SetOpsUserCode(v string) *CreateKnowledgeBaseFileRequest {
+	s.OpsUserCode = &v
+	return s
+}
+
+func (s *CreateKnowledgeBaseFileRequest) SetOpsUserId(v string) *CreateKnowledgeBaseFileRequest {
+	s.OpsUserId = &v
 	return s
 }
 

@@ -9,6 +9,12 @@ type iRemoveUserGroupMembersShrinkRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAppToken(v string) *RemoveUserGroupMembersShrinkRequest
+	GetAppToken() *string
+	SetOpsUserCode(v string) *RemoveUserGroupMembersShrinkRequest
+	GetOpsUserCode() *string
+	SetOpsUserId(v string) *RemoveUserGroupMembersShrinkRequest
+	GetOpsUserId() *string
 	SetTenantId(v string) *RemoveUserGroupMembersShrinkRequest
 	GetTenantId() *string
 	SetUserGroupId(v string) *RemoveUserGroupMembersShrinkRequest
@@ -18,6 +24,24 @@ type iRemoveUserGroupMembersShrinkRequest interface {
 }
 
 type RemoveUserGroupMembersShrinkRequest struct {
+	// 平台应用 Token（控制台签发）。传入后将以 opsUserId 或 opsUserCode 指定的用户身份执行
+	//
+	// example:
+	//
+	// wn_app_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+	AppToken *string `json:"appToken,omitempty" xml:"appToken,omitempty"`
+	// 代理用户编码（租户内唯一），仅当应用凭证配置为 source_uid 时使用
+	//
+	// example:
+	//
+	// alice
+	OpsUserCode *string `json:"opsUserCode,omitempty" xml:"opsUserCode,omitempty"`
+	// 代理用户ID（WINNEXO 平台用户ID），仅当应用凭证配置为 winnexo_uid 时使用
+	//
+	// example:
+	//
+	// 10001
+	OpsUserId *string `json:"opsUserId,omitempty" xml:"opsUserId,omitempty"`
 	// The tenant ID. This is a common parameter. You can explicitly pass this parameter in winnexo-cli by using `--tenant-id`.
 	//
 	// example:
@@ -50,6 +74,18 @@ func (s RemoveUserGroupMembersShrinkRequest) GoString() string {
 	return s.String()
 }
 
+func (s *RemoveUserGroupMembersShrinkRequest) GetAppToken() *string {
+	return s.AppToken
+}
+
+func (s *RemoveUserGroupMembersShrinkRequest) GetOpsUserCode() *string {
+	return s.OpsUserCode
+}
+
+func (s *RemoveUserGroupMembersShrinkRequest) GetOpsUserId() *string {
+	return s.OpsUserId
+}
+
 func (s *RemoveUserGroupMembersShrinkRequest) GetTenantId() *string {
 	return s.TenantId
 }
@@ -60,6 +96,21 @@ func (s *RemoveUserGroupMembersShrinkRequest) GetUserGroupId() *string {
 
 func (s *RemoveUserGroupMembersShrinkRequest) GetUserIdsShrink() *string {
 	return s.UserIdsShrink
+}
+
+func (s *RemoveUserGroupMembersShrinkRequest) SetAppToken(v string) *RemoveUserGroupMembersShrinkRequest {
+	s.AppToken = &v
+	return s
+}
+
+func (s *RemoveUserGroupMembersShrinkRequest) SetOpsUserCode(v string) *RemoveUserGroupMembersShrinkRequest {
+	s.OpsUserCode = &v
+	return s
+}
+
+func (s *RemoveUserGroupMembersShrinkRequest) SetOpsUserId(v string) *RemoveUserGroupMembersShrinkRequest {
+	s.OpsUserId = &v
+	return s
 }
 
 func (s *RemoveUserGroupMembersShrinkRequest) SetTenantId(v string) *RemoveUserGroupMembersShrinkRequest {

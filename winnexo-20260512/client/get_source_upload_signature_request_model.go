@@ -9,6 +9,8 @@ type iGetSourceUploadSignatureRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAppToken(v string) *GetSourceUploadSignatureRequest
+	GetAppToken() *string
 	SetContentType(v string) *GetSourceUploadSignatureRequest
 	GetContentType() *string
 	SetExpires(v int64) *GetSourceUploadSignatureRequest
@@ -19,6 +21,10 @@ type iGetSourceUploadSignatureRequest interface {
 	GetGroupId() *string
 	SetOperatingObjectName(v string) *GetSourceUploadSignatureRequest
 	GetOperatingObjectName() *string
+	SetOpsUserCode(v string) *GetSourceUploadSignatureRequest
+	GetOpsUserCode() *string
+	SetOpsUserId(v string) *GetSourceUploadSignatureRequest
+	GetOpsUserId() *string
 	SetScope(v string) *GetSourceUploadSignatureRequest
 	GetScope() *string
 	SetTenantId(v string) *GetSourceUploadSignatureRequest
@@ -26,6 +32,12 @@ type iGetSourceUploadSignatureRequest interface {
 }
 
 type GetSourceUploadSignatureRequest struct {
+	// 平台应用 Token（控制台签发）。传入后将以 opsUserId 或 opsUserCode 指定的用户身份执行
+	//
+	// example:
+	//
+	// wn_app_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+	AppToken *string `json:"appToken,omitempty" xml:"appToken,omitempty"`
 	// The content type. Valid values:
 	//
 	// - Text
@@ -62,6 +74,18 @@ type GetSourceUploadSignatureRequest struct {
 	//
 	// string_value
 	OperatingObjectName *string `json:"operatingObjectName,omitempty" xml:"operatingObjectName,omitempty"`
+	// 代理用户编码（租户内唯一），仅当应用凭证配置为 source_uid 时使用
+	//
+	// example:
+	//
+	// alice
+	OpsUserCode *string `json:"opsUserCode,omitempty" xml:"opsUserCode,omitempty"`
+	// 代理用户ID（WINNEXO 平台用户ID），仅当应用凭证配置为 winnexo_uid 时使用
+	//
+	// example:
+	//
+	// 10001
+	OpsUserId *string `json:"opsUserId,omitempty" xml:"opsUserId,omitempty"`
 	// The permission scope.
 	//
 	// example:
@@ -84,6 +108,10 @@ func (s GetSourceUploadSignatureRequest) GoString() string {
 	return s.String()
 }
 
+func (s *GetSourceUploadSignatureRequest) GetAppToken() *string {
+	return s.AppToken
+}
+
 func (s *GetSourceUploadSignatureRequest) GetContentType() *string {
 	return s.ContentType
 }
@@ -104,12 +132,25 @@ func (s *GetSourceUploadSignatureRequest) GetOperatingObjectName() *string {
 	return s.OperatingObjectName
 }
 
+func (s *GetSourceUploadSignatureRequest) GetOpsUserCode() *string {
+	return s.OpsUserCode
+}
+
+func (s *GetSourceUploadSignatureRequest) GetOpsUserId() *string {
+	return s.OpsUserId
+}
+
 func (s *GetSourceUploadSignatureRequest) GetScope() *string {
 	return s.Scope
 }
 
 func (s *GetSourceUploadSignatureRequest) GetTenantId() *string {
 	return s.TenantId
+}
+
+func (s *GetSourceUploadSignatureRequest) SetAppToken(v string) *GetSourceUploadSignatureRequest {
+	s.AppToken = &v
+	return s
 }
 
 func (s *GetSourceUploadSignatureRequest) SetContentType(v string) *GetSourceUploadSignatureRequest {
@@ -134,6 +175,16 @@ func (s *GetSourceUploadSignatureRequest) SetGroupId(v string) *GetSourceUploadS
 
 func (s *GetSourceUploadSignatureRequest) SetOperatingObjectName(v string) *GetSourceUploadSignatureRequest {
 	s.OperatingObjectName = &v
+	return s
+}
+
+func (s *GetSourceUploadSignatureRequest) SetOpsUserCode(v string) *GetSourceUploadSignatureRequest {
+	s.OpsUserCode = &v
+	return s
+}
+
+func (s *GetSourceUploadSignatureRequest) SetOpsUserId(v string) *GetSourceUploadSignatureRequest {
+	s.OpsUserId = &v
 	return s
 }
 

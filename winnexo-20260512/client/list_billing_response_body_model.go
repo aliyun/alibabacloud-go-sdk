@@ -32,9 +32,9 @@ type ListBillingResponseBody struct {
 	//
 	// 200
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// The details of the bills.
+	// The details of the link enhancement rule.
 	List []*ListBillingResponseBodyList `json:"list,omitempty" xml:"list,omitempty" type:"Repeated"`
-	// The prompt message.
+	// The message.
 	//
 	// example:
 	//
@@ -58,7 +58,7 @@ type ListBillingResponseBody struct {
 	//
 	// 019FF406-1B10-0065-A97D-2D1920C2A03D
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// The total number of entries.
+	// The total number of Logtail pipeline configurations in the current project.
 	//
 	// example:
 	//
@@ -169,25 +169,25 @@ type ListBillingResponseBodyList struct {
 	//
 	// string_value
 	BizType *string `json:"bizType,omitempty" xml:"bizType,omitempty"`
-	// The cost source type.
+	// The type of the cost source.
 	//
 	// example:
 	//
-	// string_value
+	// ["STANDARD"]
 	CostSource []*string `json:"costSource,omitempty" xml:"costSource,omitempty" type:"Repeated"`
 	// The display name of the cost source.
 	//
 	// example:
 	//
-	// string_value
+	// ["Standard Edition"]
 	CostSourceDisplayName []*string `json:"costSourceDisplayName,omitempty" xml:"costSourceDisplayName,omitempty" type:"Repeated"`
-	// The end timestamp, in milliseconds.
+	// The end timestamp in milliseconds.
 	//
 	// example:
 	//
 	// 2023-10-01T12:00:00Z
 	EndTime *string `json:"endTime,omitempty" xml:"endTime,omitempty"`
-	// The entry object ID.
+	// The ID of the entry object.
 	//
 	// example:
 	//
@@ -199,31 +199,31 @@ type ListBillingResponseBodyList struct {
 	//
 	// string_value
 	EntryObjectType *string `json:"entryObjectType,omitempty" xml:"entryObjectType,omitempty"`
-	// Indicates whether the bill is a shadow bill.
+	// Specifies whether the bill is a shadow bill.
 	//
 	// example:
 	//
 	// true
 	IsShadow *bool `json:"isShadow,omitempty" xml:"isShadow,omitempty"`
-	// The operation type.
+	// The search term rewrite configuration.
 	//
 	// example:
 	//
 	// string_value
 	Operation *string `json:"operation,omitempty" xml:"operation,omitempty"`
-	// The display name of the operation.
+	// The display name of the action.
 	//
 	// example:
 	//
 	// string_value
 	OperationDisplayName *string `json:"operationDisplayName,omitempty" xml:"operationDisplayName,omitempty"`
-	// The start timestamp, in milliseconds.
+	// The start timestamp in milliseconds.
 	//
 	// example:
 	//
 	// 2023-10-01T12:00:00Z
 	StartTime *string `json:"startTime,omitempty" xml:"startTime,omitempty"`
-	// The node status. Running is returned upon submission.
+	// The task status. A status of Running is returned immediately after the task is submitted.
 	//
 	// example:
 	//
@@ -235,7 +235,7 @@ type ListBillingResponseBodyList struct {
 	//
 	// string_value
 	StatusDisplayName *string `json:"statusDisplayName,omitempty" xml:"statusDisplayName,omitempty"`
-	// The tenant ID. This is a common parameter. If not specified, the default tenant of the caller is used.
+	// The tenant ID. This is a common parameter. If this parameter is not specified, the default tenant of the caller is used.
 	//
 	// example:
 	//

@@ -72,11 +72,11 @@ type GetTodoDetailResponseBody struct {
 	AssigneeCount *int64 `json:"assigneeCount,omitempty" xml:"assigneeCount,omitempty"`
 	// All assignees.
 	Assignees []*GetTodoDetailResponseBodyAssignees `json:"assignees,omitempty" xml:"assignees,omitempty" type:"Repeated"`
-	// The attachment policy. Attachments are not stored in the database in the current version.
+	// The attachment policy. In the current version, attachments are not stored in the database.
 	//
 	// example:
 	//
-	// allowUpload=true
+	// {"allowAttachments":"true","maxFilesPerQuestion":"20","maxFilesTotal":"50","maxFileSizeBytes":"52428800","acceptTypes":[]}
 	AttachmentPolicy map[string]interface{} `json:"attachmentPolicy,omitempty" xml:"attachmentPolicy,omitempty"`
 	// The business status code. A value of 200 indicates success.
 	//
@@ -84,7 +84,7 @@ type GetTodoDetailResponseBody struct {
 	//
 	// 200
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// The completion time in UTC+8 (YYYY-MM-DD HH:mm:ss).
+	// The completion time in the YYYY-MM-DD HH:mm:ss format (UTC+8).
 	//
 	// example:
 	//
@@ -102,13 +102,13 @@ type GetTodoDetailResponseBody struct {
 	//
 	// Zhang San
 	CompletedByUserName *string `json:"completedByUserName,omitempty" xml:"completedByUserName,omitempty"`
-	// The creation time in UTC+8 (YYYY-MM-DD HH:mm:ss).
+	// The creation time in the YYYY-MM-DD HH:mm:ss format (UTC+8).
 	//
 	// example:
 	//
 	// 2026-10-12 10:00:00
 	GmtCreate *string `json:"gmtCreate,omitempty" xml:"gmtCreate,omitempty"`
-	// The last modification time in UTC+8 (YYYY-MM-DD HH:mm:ss).
+	// The last modification time in the YYYY-MM-DD HH:mm:ss format (UTC+8).
 	//
 	// example:
 	//
@@ -132,7 +132,7 @@ type GetTodoDetailResponseBody struct {
 	//
 	// msg-1
 	MessageId *string `json:"messageId,omitempty" xml:"messageId,omitempty"`
-	// The action status of the caller as the assignee.
+	// The action status of the caller as an assignee.
 	//
 	// example:
 	//
@@ -142,13 +142,13 @@ type GetTodoDetailResponseBody struct {
 	//
 	// example:
 	//
-	// TODO
+	// DONE
 	MyDisplayState *string `json:"myDisplayState,omitempty" xml:"myDisplayState,omitempty"`
-	// The permissions of the caller, such as canSubmit and canTransfer.
+	// The permissions of the caller. Valid values: canSubmit and canTransfer.
 	//
 	// example:
 	//
-	// APP/VIEW=true
+	// {"canSubmit":"true","canTransfer":"false"}
 	MyPermissions map[string]interface{} `json:"myPermissions,omitempty" xml:"myPermissions,omitempty"`
 	// The priority.
 	//
@@ -156,7 +156,7 @@ type GetTodoDetailResponseBody struct {
 	//
 	// HIGH
 	Priority *string `json:"priority,omitempty" xml:"priority,omitempty"`
-	// The list of questions (structured projection).
+	// The structured list of questions.
 	Questions []*GetTodoDetailResponseBodyQuestions `json:"questions,omitempty" xml:"questions,omitempty" type:"Repeated"`
 	// The request tracking ID.
 	//
@@ -164,17 +164,17 @@ type GetTodoDetailResponseBody struct {
 	//
 	// 019FF406-1B10-0065-A97D-2D1920C2A03D
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// The response content in JSONB format as-is. Defaults to an empty object if not submitted.
+	// The response content in JSONB format, passed through as-is. Defaults to an empty object if not submitted.
 	//
 	// example:
 	//
-	// result=Approved
+	// {"answers":[{"question":"Whether to approve","answer":["Approve"]}]}
 	ResultPayload map[string]interface{} `json:"resultPayload,omitempty" xml:"resultPayload,omitempty"`
-	// The source context. This context is passed through as-is during creation.
+	// The source context, which is passed through as-is during creation.
 	//
 	// example:
 	//
-	// source=openapi
+	// {"source":"openapi"}
 	SourceContext map[string]interface{} `json:"sourceContext,omitempty" xml:"sourceContext,omitempty"`
 	// The source type of the to-do item.
 	//
@@ -479,7 +479,7 @@ func (s *GetTodoDetailResponseBody) Validate() error {
 }
 
 type GetTodoDetailResponseBodyAssignees struct {
-	// The action time in UTC+8. This field is empty if the item is not processed.
+	// The time when the item was processed (UTC+8). This field is empty if the item is unprocessed.
 	//
 	// example:
 	//
@@ -497,7 +497,7 @@ type GetTodoDetailResponseBodyAssignees struct {
 	//
 	// 42
 	AssigneeUserId *string `json:"assigneeUserId,omitempty" xml:"assigneeUserId,omitempty"`
-	// The read time in UTC+8. This field is empty if the item is unread.
+	// The time when the item was read (UTC+8). This field is empty if the item is unread.
 	//
 	// example:
 	//
@@ -590,7 +590,7 @@ type GetTodoDetailResponseBodyQuestions struct {
 	//
 	// false
 	AllowCustom *bool `json:"allowCustom,omitempty" xml:"allowCustom,omitempty"`
-	// The text for the custom input field.
+	// The text for the custom input item.
 	//
 	// example:
 	//
@@ -620,7 +620,7 @@ type GetTodoDetailResponseBodyQuestions struct {
 	//
 	// SINGLE_CHOICE
 	Mode *string `json:"mode,omitempty" xml:"mode,omitempty"`
-	// The options. This field is required for choice questions.
+	// The options, which are required for choice questions.
 	Options []*GetTodoDetailResponseBodyQuestionsOptions `json:"options,omitempty" xml:"options,omitempty" type:"Repeated"`
 	// The placeholder for text questions.
 	//
@@ -628,7 +628,7 @@ type GetTodoDetailResponseBodyQuestions struct {
 	//
 	// Please enter
 	Placeholder *string `json:"placeholder,omitempty" xml:"placeholder,omitempty"`
-	// The question text (reference key).
+	// The question text, which serves as a reference key.
 	//
 	// example:
 	//
@@ -754,13 +754,13 @@ func (s *GetTodoDetailResponseBodyQuestions) Validate() error {
 }
 
 type GetTodoDetailResponseBodyQuestionsOptions struct {
-	// The supplementary description of the option.
+	// The additional description for the option.
 	//
 	// example:
 	//
-	// Supplementary description of the option
+	// Additional description for the option
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// The option text (reference key).
+	// The option text, which serves as a reference key.
 	//
 	// example:
 	//

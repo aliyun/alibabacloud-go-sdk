@@ -172,7 +172,7 @@ type GetSkillResponseBody struct {
 	//
 	// example:
 	//
-	// ["[{\\\\\\"value\\\\\\":\\\\\\"dataworks#0#1#33935#176145#T3_26059405665#94046932754\\\\\\",\\\\\\"key\\\\\\":\\\\\\"dataworksTag\\\\\\"}]"]
+	// ["[{\\\"value\\\":\\\"dataworks#0#1#33935#176145#T3_26059405665#94046932754\\\",\\\"key\\\":\\\"dataworksTag\\\"}]"]
 	Tags []*string `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
 	// The update time in ISO8601 format.
 	//

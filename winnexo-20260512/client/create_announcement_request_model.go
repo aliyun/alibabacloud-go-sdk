@@ -9,6 +9,8 @@ type iCreateAnnouncementRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAppToken(v string) *CreateAnnouncementRequest
+	GetAppToken() *string
 	SetContent(v string) *CreateAnnouncementRequest
 	GetContent() *string
 	SetDisplayPage(v string) *CreateAnnouncementRequest
@@ -19,6 +21,10 @@ type iCreateAnnouncementRequest interface {
 	GetEffectiveEnd() *string
 	SetEffectiveStart(v string) *CreateAnnouncementRequest
 	GetEffectiveStart() *string
+	SetOpsUserCode(v string) *CreateAnnouncementRequest
+	GetOpsUserCode() *string
+	SetOpsUserId(v string) *CreateAnnouncementRequest
+	GetOpsUserId() *string
 	SetPriority(v string) *CreateAnnouncementRequest
 	GetPriority() *string
 	SetPublishNow(v bool) *CreateAnnouncementRequest
@@ -38,6 +44,12 @@ type iCreateAnnouncementRequest interface {
 }
 
 type CreateAnnouncementRequest struct {
+	// 平台应用 Token（控制台签发）。传入后将以 opsUserId 或 opsUserCode 指定的用户身份执行
+	//
+	// example:
+	//
+	// wn_app_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+	AppToken *string `json:"appToken,omitempty" xml:"appToken,omitempty"`
 	// The content of the notice.
 	//
 	// This parameter is required.
@@ -70,6 +82,18 @@ type CreateAnnouncementRequest struct {
 	//
 	// 2026-08-20T14:00:00+08:00
 	EffectiveStart *string `json:"effectiveStart,omitempty" xml:"effectiveStart,omitempty"`
+	// 代理用户编码（租户内唯一），仅当应用凭证配置为 source_uid 时使用
+	//
+	// example:
+	//
+	// alice
+	OpsUserCode *string `json:"opsUserCode,omitempty" xml:"opsUserCode,omitempty"`
+	// 代理用户ID（WINNEXO 平台用户ID），仅当应用凭证配置为 winnexo_uid 时使用
+	//
+	// example:
+	//
+	// 10001
+	OpsUserId *string `json:"opsUserId,omitempty" xml:"opsUserId,omitempty"`
 	// The priority. Valid values:
 	//
 	// This parameter is required.
@@ -132,6 +156,10 @@ func (s CreateAnnouncementRequest) GoString() string {
 	return s.String()
 }
 
+func (s *CreateAnnouncementRequest) GetAppToken() *string {
+	return s.AppToken
+}
+
 func (s *CreateAnnouncementRequest) GetContent() *string {
 	return s.Content
 }
@@ -150,6 +178,14 @@ func (s *CreateAnnouncementRequest) GetEffectiveEnd() *string {
 
 func (s *CreateAnnouncementRequest) GetEffectiveStart() *string {
 	return s.EffectiveStart
+}
+
+func (s *CreateAnnouncementRequest) GetOpsUserCode() *string {
+	return s.OpsUserCode
+}
+
+func (s *CreateAnnouncementRequest) GetOpsUserId() *string {
+	return s.OpsUserId
 }
 
 func (s *CreateAnnouncementRequest) GetPriority() *string {
@@ -184,6 +220,11 @@ func (s *CreateAnnouncementRequest) GetTitle() *string {
 	return s.Title
 }
 
+func (s *CreateAnnouncementRequest) SetAppToken(v string) *CreateAnnouncementRequest {
+	s.AppToken = &v
+	return s
+}
+
 func (s *CreateAnnouncementRequest) SetContent(v string) *CreateAnnouncementRequest {
 	s.Content = &v
 	return s
@@ -206,6 +247,16 @@ func (s *CreateAnnouncementRequest) SetEffectiveEnd(v string) *CreateAnnouncemen
 
 func (s *CreateAnnouncementRequest) SetEffectiveStart(v string) *CreateAnnouncementRequest {
 	s.EffectiveStart = &v
+	return s
+}
+
+func (s *CreateAnnouncementRequest) SetOpsUserCode(v string) *CreateAnnouncementRequest {
+	s.OpsUserCode = &v
+	return s
+}
+
+func (s *CreateAnnouncementRequest) SetOpsUserId(v string) *CreateAnnouncementRequest {
+	s.OpsUserId = &v
 	return s
 }
 

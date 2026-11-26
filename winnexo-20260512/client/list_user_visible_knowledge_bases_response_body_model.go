@@ -28,7 +28,7 @@ type ListUserVisibleKnowledgeBasesResponseBody struct {
 	//
 	// 200
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// The result list.
+	// The list of results.
 	//
 	// Maximum size:
 	//
@@ -40,7 +40,7 @@ type ListUserVisibleKnowledgeBasesResponseBody struct {
 	//
 	// The current zone list is illegal.
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// The request trace ID.
+	// The request tracking ID.
 	//
 	// example:
 	//
@@ -127,17 +127,17 @@ type ListUserVisibleKnowledgeBasesResponseBodyItems struct {
 	//
 	// 1
 	CreatorId *int64 `json:"creatorId,omitempty" xml:"creatorId,omitempty"`
-	// The creator name.
+	// The creator.
 	//
 	// example:
 	//
-	// John Doe
+	// Zhang San
 	CreatorName *string `json:"creatorName,omitempty" xml:"creatorName,omitempty"`
 	// The description of the to-do card type.
 	//
 	// example:
 	//
-	// Product materials and user guides
+	// Product materials and instructions
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
 	// The directory ID of the enterprise knowledge base.
 	//
@@ -163,7 +163,7 @@ type ListUserVisibleKnowledgeBasesResponseBodyItems struct {
 	//
 	// 1
 	GmtCreate *int64 `json:"gmtCreate,omitempty" xml:"gmtCreate,omitempty"`
-	// The last modification time.
+	// The last update time.
 	//
 	// example:
 	//
@@ -173,7 +173,7 @@ type ListUserVisibleKnowledgeBasesResponseBodyItems struct {
 	//
 	// example:
 	//
-	// ProductKnowledgeBase
+	// Product knowledge base
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
 }
 

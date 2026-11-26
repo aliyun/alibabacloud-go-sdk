@@ -9,6 +9,8 @@ type iBatchRemoveOperatingObjectFavoritesRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAppToken(v string) *BatchRemoveOperatingObjectFavoritesRequest
+	GetAppToken() *string
 	SetGraphName(v string) *BatchRemoveOperatingObjectFavoritesRequest
 	GetGraphName() *string
 	SetObjectIds(v []*string) *BatchRemoveOperatingObjectFavoritesRequest
@@ -17,11 +19,21 @@ type iBatchRemoveOperatingObjectFavoritesRequest interface {
 	GetObjectType() *string
 	SetOperatingObjectName(v string) *BatchRemoveOperatingObjectFavoritesRequest
 	GetOperatingObjectName() *string
+	SetOpsUserCode(v string) *BatchRemoveOperatingObjectFavoritesRequest
+	GetOpsUserCode() *string
+	SetOpsUserId(v string) *BatchRemoveOperatingObjectFavoritesRequest
+	GetOpsUserId() *string
 	SetTenantId(v string) *BatchRemoveOperatingObjectFavoritesRequest
 	GetTenantId() *string
 }
 
 type BatchRemoveOperatingObjectFavoritesRequest struct {
+	// The platform application token issued by the console. If provided, the operation is executed as the user specified by opsUserId or opsUserCode.
+	//
+	// example:
+	//
+	// wn_app_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+	AppToken *string `json:"appToken,omitempty" xml:"appToken,omitempty"`
 	// The graph name.
 	//
 	// This parameter is required.
@@ -30,7 +42,7 @@ type BatchRemoveOperatingObjectFavoritesRequest struct {
 	//
 	// crm
 	GraphName *string `json:"graphName,omitempty" xml:"graphName,omitempty"`
-	// The list of primary object business IDs.
+	// The list of business IDs for the primary objects.
 	//
 	// This parameter is required.
 	//
@@ -54,7 +66,19 @@ type BatchRemoveOperatingObjectFavoritesRequest struct {
 	//
 	// customer_assistant
 	OperatingObjectName *string `json:"operatingObjectName,omitempty" xml:"operatingObjectName,omitempty"`
-	// The tenant ID. This is a common parameter. In winnexo-cli, pass this value explicitly by using --tenant-id.
+	// The proxy user code, which is unique within the tenant. This parameter is used only when the application credential is configured as source_uid.
+	//
+	// example:
+	//
+	// alice
+	OpsUserCode *string `json:"opsUserCode,omitempty" xml:"opsUserCode,omitempty"`
+	// The proxy user ID, which is the WINNEXO platform user ID. This parameter is used only when the application credential is configured as winnexo_uid.
+	//
+	// example:
+	//
+	// 10001
+	OpsUserId *string `json:"opsUserId,omitempty" xml:"opsUserId,omitempty"`
+	// The tenant ID. This is a common parameter. For winnexo-cli, it is explicitly passed by using the --tenant-id option.
 	//
 	// example:
 	//
@@ -68,6 +92,10 @@ func (s BatchRemoveOperatingObjectFavoritesRequest) String() string {
 
 func (s BatchRemoveOperatingObjectFavoritesRequest) GoString() string {
 	return s.String()
+}
+
+func (s *BatchRemoveOperatingObjectFavoritesRequest) GetAppToken() *string {
+	return s.AppToken
 }
 
 func (s *BatchRemoveOperatingObjectFavoritesRequest) GetGraphName() *string {
@@ -86,8 +114,21 @@ func (s *BatchRemoveOperatingObjectFavoritesRequest) GetOperatingObjectName() *s
 	return s.OperatingObjectName
 }
 
+func (s *BatchRemoveOperatingObjectFavoritesRequest) GetOpsUserCode() *string {
+	return s.OpsUserCode
+}
+
+func (s *BatchRemoveOperatingObjectFavoritesRequest) GetOpsUserId() *string {
+	return s.OpsUserId
+}
+
 func (s *BatchRemoveOperatingObjectFavoritesRequest) GetTenantId() *string {
 	return s.TenantId
+}
+
+func (s *BatchRemoveOperatingObjectFavoritesRequest) SetAppToken(v string) *BatchRemoveOperatingObjectFavoritesRequest {
+	s.AppToken = &v
+	return s
 }
 
 func (s *BatchRemoveOperatingObjectFavoritesRequest) SetGraphName(v string) *BatchRemoveOperatingObjectFavoritesRequest {
@@ -107,6 +148,16 @@ func (s *BatchRemoveOperatingObjectFavoritesRequest) SetObjectType(v string) *Ba
 
 func (s *BatchRemoveOperatingObjectFavoritesRequest) SetOperatingObjectName(v string) *BatchRemoveOperatingObjectFavoritesRequest {
 	s.OperatingObjectName = &v
+	return s
+}
+
+func (s *BatchRemoveOperatingObjectFavoritesRequest) SetOpsUserCode(v string) *BatchRemoveOperatingObjectFavoritesRequest {
+	s.OpsUserCode = &v
+	return s
+}
+
+func (s *BatchRemoveOperatingObjectFavoritesRequest) SetOpsUserId(v string) *BatchRemoveOperatingObjectFavoritesRequest {
+	s.OpsUserId = &v
 	return s
 }
 

@@ -32,7 +32,7 @@ type UpdateGroupSourceContentResponseBody struct {
 	//
 	// 200
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// The description of the status code.
+	// The status code description.
 	//
 	// example:
 	//
@@ -42,9 +42,9 @@ type UpdateGroupSourceContentResponseBody struct {
 	//
 	// example:
 	//
-	// Project resource
+	// Project material
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The request trace ID.
+	// The request ID.
 	//
 	// example:
 	//
@@ -62,7 +62,7 @@ type UpdateGroupSourceContentResponseBody struct {
 	//
 	// example
 	SourceType *string `json:"sourceType,omitempty" xml:"sourceType,omitempty"`
-	// The task running status.
+	// The task execution status.
 	//
 	// example:
 	//

@@ -9,6 +9,8 @@ type iReplaceKnowledgeBaseSourceFileRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAppToken(v string) *ReplaceKnowledgeBaseSourceFileRequest
+	GetAppToken() *string
 	SetFileName(v string) *ReplaceKnowledgeBaseSourceFileRequest
 	GetFileName() *string
 	SetFilePath(v string) *ReplaceKnowledgeBaseSourceFileRequest
@@ -19,6 +21,10 @@ type iReplaceKnowledgeBaseSourceFileRequest interface {
 	GetFileRecordId() *string
 	SetForceSync(v bool) *ReplaceKnowledgeBaseSourceFileRequest
 	GetForceSync() *bool
+	SetOpsUserCode(v string) *ReplaceKnowledgeBaseSourceFileRequest
+	GetOpsUserCode() *string
+	SetOpsUserId(v string) *ReplaceKnowledgeBaseSourceFileRequest
+	GetOpsUserId() *string
 	SetSourceId(v string) *ReplaceKnowledgeBaseSourceFileRequest
 	GetSourceId() *string
 	SetTenantId(v string) *ReplaceKnowledgeBaseSourceFileRequest
@@ -26,6 +32,12 @@ type iReplaceKnowledgeBaseSourceFileRequest interface {
 }
 
 type ReplaceKnowledgeBaseSourceFileRequest struct {
+	// 平台应用 Token（控制台签发）。传入后将以 opsUserId 或 opsUserCode 指定的用户身份执行
+	//
+	// example:
+	//
+	// wn_app_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+	AppToken *string `json:"appToken,omitempty" xml:"appToken,omitempty"`
 	// The new file name. This parameter is optional. If this parameter is not provided or set to an empty string, the original file name is retained.
 	//
 	// example:
@@ -62,6 +74,18 @@ type ReplaceKnowledgeBaseSourceFileRequest struct {
 	//
 	// false
 	ForceSync *bool `json:"forceSync,omitempty" xml:"forceSync,omitempty"`
+	// 代理用户编码（租户内唯一），仅当应用凭证配置为 source_uid 时使用
+	//
+	// example:
+	//
+	// alice
+	OpsUserCode *string `json:"opsUserCode,omitempty" xml:"opsUserCode,omitempty"`
+	// 代理用户ID（WINNEXO 平台用户ID），仅当应用凭证配置为 winnexo_uid 时使用
+	//
+	// example:
+	//
+	// 10001
+	OpsUserId *string `json:"opsUserId,omitempty" xml:"opsUserId,omitempty"`
 	// The ID of the FILE data source in the enterprise knowledge base to be replaced.
 	//
 	// This parameter is required.
@@ -86,6 +110,10 @@ func (s ReplaceKnowledgeBaseSourceFileRequest) GoString() string {
 	return s.String()
 }
 
+func (s *ReplaceKnowledgeBaseSourceFileRequest) GetAppToken() *string {
+	return s.AppToken
+}
+
 func (s *ReplaceKnowledgeBaseSourceFileRequest) GetFileName() *string {
 	return s.FileName
 }
@@ -106,12 +134,25 @@ func (s *ReplaceKnowledgeBaseSourceFileRequest) GetForceSync() *bool {
 	return s.ForceSync
 }
 
+func (s *ReplaceKnowledgeBaseSourceFileRequest) GetOpsUserCode() *string {
+	return s.OpsUserCode
+}
+
+func (s *ReplaceKnowledgeBaseSourceFileRequest) GetOpsUserId() *string {
+	return s.OpsUserId
+}
+
 func (s *ReplaceKnowledgeBaseSourceFileRequest) GetSourceId() *string {
 	return s.SourceId
 }
 
 func (s *ReplaceKnowledgeBaseSourceFileRequest) GetTenantId() *string {
 	return s.TenantId
+}
+
+func (s *ReplaceKnowledgeBaseSourceFileRequest) SetAppToken(v string) *ReplaceKnowledgeBaseSourceFileRequest {
+	s.AppToken = &v
+	return s
 }
 
 func (s *ReplaceKnowledgeBaseSourceFileRequest) SetFileName(v string) *ReplaceKnowledgeBaseSourceFileRequest {
@@ -136,6 +177,16 @@ func (s *ReplaceKnowledgeBaseSourceFileRequest) SetFileRecordId(v string) *Repla
 
 func (s *ReplaceKnowledgeBaseSourceFileRequest) SetForceSync(v bool) *ReplaceKnowledgeBaseSourceFileRequest {
 	s.ForceSync = &v
+	return s
+}
+
+func (s *ReplaceKnowledgeBaseSourceFileRequest) SetOpsUserCode(v string) *ReplaceKnowledgeBaseSourceFileRequest {
+	s.OpsUserCode = &v
+	return s
+}
+
+func (s *ReplaceKnowledgeBaseSourceFileRequest) SetOpsUserId(v string) *ReplaceKnowledgeBaseSourceFileRequest {
+	s.OpsUserId = &v
 	return s
 }
 

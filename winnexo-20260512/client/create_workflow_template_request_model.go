@@ -11,10 +11,16 @@ type iCreateWorkflowTemplateRequest interface {
 	GoString() string
 	SetAction(v string) *CreateWorkflowTemplateRequest
 	GetAction() *string
+	SetAppToken(v string) *CreateWorkflowTemplateRequest
+	GetAppToken() *string
 	SetCollaborationGroupId(v string) *CreateWorkflowTemplateRequest
 	GetCollaborationGroupId() *string
 	SetDefinition(v map[string]interface{}) *CreateWorkflowTemplateRequest
 	GetDefinition() map[string]interface{}
+	SetOpsUserCode(v string) *CreateWorkflowTemplateRequest
+	GetOpsUserCode() *string
+	SetOpsUserId(v string) *CreateWorkflowTemplateRequest
+	GetOpsUserId() *string
 	SetTenantId(v string) *CreateWorkflowTemplateRequest
 	GetTenantId() *string
 }
@@ -32,6 +38,12 @@ type CreateWorkflowTemplateRequest struct {
 	//
 	// SUBMIT
 	Action *string `json:"action,omitempty" xml:"action,omitempty"`
+	// 平台应用 Token（控制台签发）。传入后将以 opsUserId 或 opsUserCode 指定的用户身份执行
+	//
+	// example:
+	//
+	// wn_app_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+	AppToken *string `json:"appToken,omitempty" xml:"appToken,omitempty"`
 	// The ID of the collaboration workspace.
 	//
 	// This parameter is required.
@@ -48,6 +60,18 @@ type CreateWorkflowTemplateRequest struct {
 	//
 	// {"name":"Customer Complaint Handling Process","schemaVersion":2,"steps":[{"stepId":"collect","sortOrder":1,"name":"Collect Customer Information"}]}
 	Definition map[string]interface{} `json:"definition,omitempty" xml:"definition,omitempty"`
+	// 代理用户编码（租户内唯一），仅当应用凭证配置为 source_uid 时使用
+	//
+	// example:
+	//
+	// alice
+	OpsUserCode *string `json:"opsUserCode,omitempty" xml:"opsUserCode,omitempty"`
+	// 代理用户ID（WINNEXO 平台用户ID），仅当应用凭证配置为 winnexo_uid 时使用
+	//
+	// example:
+	//
+	// 10001
+	OpsUserId *string `json:"opsUserId,omitempty" xml:"opsUserId,omitempty"`
 	// The tenant ID. This is a common parameter. If not specified, the default tenant of the caller is used.
 	//
 	// example:
@@ -68,12 +92,24 @@ func (s *CreateWorkflowTemplateRequest) GetAction() *string {
 	return s.Action
 }
 
+func (s *CreateWorkflowTemplateRequest) GetAppToken() *string {
+	return s.AppToken
+}
+
 func (s *CreateWorkflowTemplateRequest) GetCollaborationGroupId() *string {
 	return s.CollaborationGroupId
 }
 
 func (s *CreateWorkflowTemplateRequest) GetDefinition() map[string]interface{} {
 	return s.Definition
+}
+
+func (s *CreateWorkflowTemplateRequest) GetOpsUserCode() *string {
+	return s.OpsUserCode
+}
+
+func (s *CreateWorkflowTemplateRequest) GetOpsUserId() *string {
+	return s.OpsUserId
 }
 
 func (s *CreateWorkflowTemplateRequest) GetTenantId() *string {
@@ -85,6 +121,11 @@ func (s *CreateWorkflowTemplateRequest) SetAction(v string) *CreateWorkflowTempl
 	return s
 }
 
+func (s *CreateWorkflowTemplateRequest) SetAppToken(v string) *CreateWorkflowTemplateRequest {
+	s.AppToken = &v
+	return s
+}
+
 func (s *CreateWorkflowTemplateRequest) SetCollaborationGroupId(v string) *CreateWorkflowTemplateRequest {
 	s.CollaborationGroupId = &v
 	return s
@@ -92,6 +133,16 @@ func (s *CreateWorkflowTemplateRequest) SetCollaborationGroupId(v string) *Creat
 
 func (s *CreateWorkflowTemplateRequest) SetDefinition(v map[string]interface{}) *CreateWorkflowTemplateRequest {
 	s.Definition = v
+	return s
+}
+
+func (s *CreateWorkflowTemplateRequest) SetOpsUserCode(v string) *CreateWorkflowTemplateRequest {
+	s.OpsUserCode = &v
+	return s
+}
+
+func (s *CreateWorkflowTemplateRequest) SetOpsUserId(v string) *CreateWorkflowTemplateRequest {
+	s.OpsUserId = &v
 	return s
 }
 

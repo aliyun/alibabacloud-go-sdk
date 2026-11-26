@@ -9,6 +9,8 @@ type iCreatePersonalAliDingChatShrinkRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAppToken(v string) *CreatePersonalAliDingChatShrinkRequest
+	GetAppToken() *string
 	SetChatId(v string) *CreatePersonalAliDingChatShrinkRequest
 	GetChatId() *string
 	SetChatName(v string) *CreatePersonalAliDingChatShrinkRequest
@@ -23,6 +25,10 @@ type iCreatePersonalAliDingChatShrinkRequest interface {
 	GetNotes() *string
 	SetOperatingObjectName(v string) *CreatePersonalAliDingChatShrinkRequest
 	GetOperatingObjectName() *string
+	SetOpsUserCode(v string) *CreatePersonalAliDingChatShrinkRequest
+	GetOpsUserCode() *string
+	SetOpsUserId(v string) *CreatePersonalAliDingChatShrinkRequest
+	GetOpsUserId() *string
 	SetSourceTags(v string) *CreatePersonalAliDingChatShrinkRequest
 	GetSourceTags() *string
 	SetTenantId(v string) *CreatePersonalAliDingChatShrinkRequest
@@ -32,7 +38,13 @@ type iCreatePersonalAliDingChatShrinkRequest interface {
 }
 
 type CreatePersonalAliDingChatShrinkRequest struct {
-	// The DingTalk group chat session ID.
+	// The platform application token issued by the console. If provided, the operation is executed as the user specified by opsUserId or opsUserCode.
+	//
+	// example:
+	//
+	// wn_app_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+	AppToken *string `json:"appToken,omitempty" xml:"appToken,omitempty"`
+	// The ID of the DingTalk group chat session.
 	//
 	// This parameter is required.
 	//
@@ -40,11 +52,11 @@ type CreatePersonalAliDingChatShrinkRequest struct {
 	//
 	// cidxxxxxxxx
 	ChatId *string `json:"chatId,omitempty" xml:"chatId,omitempty"`
-	// The group chat name.
+	// The name of the group chat.
 	//
 	// example:
 	//
-	// CustomerProjectGroup
+	// Customer project group
 	ChatName *string `json:"chatName,omitempty" xml:"chatName,omitempty"`
 	// The pipeline description.
 	//
@@ -66,25 +78,37 @@ type CreatePersonalAliDingChatShrinkRequest struct {
 	//
 	// 2026-08-01
 	HistoryStartTime *string `json:"historyStartTime,omitempty" xml:"historyStartTime,omitempty"`
-	// The meeting notes content (optional). This participates in auxiliary analysis.
+	// The content of meeting notes (optional), which is used for auxiliary analysis.
 	//
 	// example:
 	//
-	// Focus on identifying customer demands and to-do items
+	// Focus on identifying customer requirements and to-do items
 	Notes *string `json:"notes,omitempty" xml:"notes,omitempty"`
-	// The digital employee name (operating object name, optional).
+	// The name of the digital employee (the name of the operating object, optional).
 	//
 	// example:
 	//
 	// my-agent
 	OperatingObjectName *string `json:"operatingObjectName,omitempty" xml:"operatingObjectName,omitempty"`
-	// The resource tags (optional, a JSON string list such as ["tagA","tagB"]).
+	// The proxy user code, which is unique within the tenant. This parameter is used only when the application credential is configured as source_uid.
 	//
 	// example:
 	//
-	// ["Customer","GroupChat"]
+	// alice
+	OpsUserCode *string `json:"opsUserCode,omitempty" xml:"opsUserCode,omitempty"`
+	// The proxy user ID, which is the WINNEXO platform user ID. This parameter is used only when the application credential is configured as winnexo_uid.
+	//
+	// example:
+	//
+	// 10001
+	OpsUserId *string `json:"opsUserId,omitempty" xml:"opsUserId,omitempty"`
+	// The resource tags (optional). The value is a JSON string list, such as ["tagA","tagB"].
+	//
+	// example:
+	//
+	// ["Customer","Group chat"]
 	SourceTags *string `json:"sourceTags,omitempty" xml:"sourceTags,omitempty"`
-	// The tenant ID. This is a common parameter. The winnexo-cli passes this value explicitly by using --tenant-id.
+	// The tenant ID. This is a common parameter and is explicitly passed by using the --tenant-id option in winnexo-cli.
 	//
 	// example:
 	//
@@ -100,6 +124,10 @@ func (s CreatePersonalAliDingChatShrinkRequest) String() string {
 
 func (s CreatePersonalAliDingChatShrinkRequest) GoString() string {
 	return s.String()
+}
+
+func (s *CreatePersonalAliDingChatShrinkRequest) GetAppToken() *string {
+	return s.AppToken
 }
 
 func (s *CreatePersonalAliDingChatShrinkRequest) GetChatId() *string {
@@ -130,6 +158,14 @@ func (s *CreatePersonalAliDingChatShrinkRequest) GetOperatingObjectName() *strin
 	return s.OperatingObjectName
 }
 
+func (s *CreatePersonalAliDingChatShrinkRequest) GetOpsUserCode() *string {
+	return s.OpsUserCode
+}
+
+func (s *CreatePersonalAliDingChatShrinkRequest) GetOpsUserId() *string {
+	return s.OpsUserId
+}
+
 func (s *CreatePersonalAliDingChatShrinkRequest) GetSourceTags() *string {
 	return s.SourceTags
 }
@@ -140,6 +176,11 @@ func (s *CreatePersonalAliDingChatShrinkRequest) GetTenantId() *string {
 
 func (s *CreatePersonalAliDingChatShrinkRequest) GetUpdateFrequencyShrink() *string {
 	return s.UpdateFrequencyShrink
+}
+
+func (s *CreatePersonalAliDingChatShrinkRequest) SetAppToken(v string) *CreatePersonalAliDingChatShrinkRequest {
+	s.AppToken = &v
+	return s
 }
 
 func (s *CreatePersonalAliDingChatShrinkRequest) SetChatId(v string) *CreatePersonalAliDingChatShrinkRequest {
@@ -174,6 +215,16 @@ func (s *CreatePersonalAliDingChatShrinkRequest) SetNotes(v string) *CreatePerso
 
 func (s *CreatePersonalAliDingChatShrinkRequest) SetOperatingObjectName(v string) *CreatePersonalAliDingChatShrinkRequest {
 	s.OperatingObjectName = &v
+	return s
+}
+
+func (s *CreatePersonalAliDingChatShrinkRequest) SetOpsUserCode(v string) *CreatePersonalAliDingChatShrinkRequest {
+	s.OpsUserCode = &v
+	return s
+}
+
+func (s *CreatePersonalAliDingChatShrinkRequest) SetOpsUserId(v string) *CreatePersonalAliDingChatShrinkRequest {
+	s.OpsUserId = &v
 	return s
 }
 

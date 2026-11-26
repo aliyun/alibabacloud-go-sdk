@@ -9,6 +9,8 @@ type iRunSkillRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAppToken(v string) *RunSkillRequest
+	GetAppToken() *string
 	SetArguments(v map[string]interface{}) *RunSkillRequest
 	GetArguments() map[string]interface{}
 	SetClientToken(v string) *RunSkillRequest
@@ -17,6 +19,10 @@ type iRunSkillRequest interface {
 	GetModel() *string
 	SetOperatingObjectName(v string) *RunSkillRequest
 	GetOperatingObjectName() *string
+	SetOpsUserCode(v string) *RunSkillRequest
+	GetOpsUserCode() *string
+	SetOpsUserId(v string) *RunSkillRequest
+	GetOpsUserId() *string
 	SetSkillCode(v string) *RunSkillRequest
 	GetSkillCode() *string
 	SetSkillName(v string) *RunSkillRequest
@@ -26,6 +32,12 @@ type iRunSkillRequest interface {
 }
 
 type RunSkillRequest struct {
+	// 平台应用 Token（控制台签发）。传入后将以 opsUserId 或 opsUserCode 指定的用户身份执行
+	//
+	// example:
+	//
+	// wn_app_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+	AppToken *string `json:"appToken,omitempty" xml:"appToken,omitempty"`
 	// The placeholder variable value that stores the error message for a fault.
 	//
 	// example:
@@ -50,6 +62,18 @@ type RunSkillRequest struct {
 	//
 	// string_value
 	OperatingObjectName *string `json:"operatingObjectName,omitempty" xml:"operatingObjectName,omitempty"`
+	// 代理用户编码（租户内唯一），仅当应用凭证配置为 source_uid 时使用
+	//
+	// example:
+	//
+	// alice
+	OpsUserCode *string `json:"opsUserCode,omitempty" xml:"opsUserCode,omitempty"`
+	// 代理用户ID（WINNEXO 平台用户ID），仅当应用凭证配置为 winnexo_uid 时使用
+	//
+	// example:
+	//
+	// 10001
+	OpsUserId *string `json:"opsUserId,omitempty" xml:"opsUserId,omitempty"`
 	// The skill code (globally unique). This parameter takes priority over skillName.
 	//
 	// example:
@@ -78,6 +102,10 @@ func (s RunSkillRequest) GoString() string {
 	return s.String()
 }
 
+func (s *RunSkillRequest) GetAppToken() *string {
+	return s.AppToken
+}
+
 func (s *RunSkillRequest) GetArguments() map[string]interface{} {
 	return s.Arguments
 }
@@ -94,6 +122,14 @@ func (s *RunSkillRequest) GetOperatingObjectName() *string {
 	return s.OperatingObjectName
 }
 
+func (s *RunSkillRequest) GetOpsUserCode() *string {
+	return s.OpsUserCode
+}
+
+func (s *RunSkillRequest) GetOpsUserId() *string {
+	return s.OpsUserId
+}
+
 func (s *RunSkillRequest) GetSkillCode() *string {
 	return s.SkillCode
 }
@@ -104,6 +140,11 @@ func (s *RunSkillRequest) GetSkillName() *string {
 
 func (s *RunSkillRequest) GetTenantId() *string {
 	return s.TenantId
+}
+
+func (s *RunSkillRequest) SetAppToken(v string) *RunSkillRequest {
+	s.AppToken = &v
+	return s
 }
 
 func (s *RunSkillRequest) SetArguments(v map[string]interface{}) *RunSkillRequest {
@@ -123,6 +164,16 @@ func (s *RunSkillRequest) SetModel(v string) *RunSkillRequest {
 
 func (s *RunSkillRequest) SetOperatingObjectName(v string) *RunSkillRequest {
 	s.OperatingObjectName = &v
+	return s
+}
+
+func (s *RunSkillRequest) SetOpsUserCode(v string) *RunSkillRequest {
+	s.OpsUserCode = &v
+	return s
+}
+
+func (s *RunSkillRequest) SetOpsUserId(v string) *RunSkillRequest {
+	s.OpsUserId = &v
 	return s
 }
 

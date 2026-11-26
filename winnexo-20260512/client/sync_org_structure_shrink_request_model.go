@@ -9,12 +9,18 @@ type iSyncOrgStructureShrinkRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAppToken(v string) *SyncOrgStructureShrinkRequest
+	GetAppToken() *string
 	SetCorpId(v string) *SyncOrgStructureShrinkRequest
 	GetCorpId() *string
 	SetDepartmentsShrink(v string) *SyncOrgStructureShrinkRequest
 	GetDepartmentsShrink() *string
 	SetMembersShrink(v string) *SyncOrgStructureShrinkRequest
 	GetMembersShrink() *string
+	SetOpsUserCode(v string) *SyncOrgStructureShrinkRequest
+	GetOpsUserCode() *string
+	SetOpsUserId(v string) *SyncOrgStructureShrinkRequest
+	GetOpsUserId() *string
 	SetPlatformType(v string) *SyncOrgStructureShrinkRequest
 	GetPlatformType() *string
 	SetSsoSettingsId(v string) *SyncOrgStructureShrinkRequest
@@ -26,6 +32,12 @@ type iSyncOrgStructureShrinkRequest interface {
 }
 
 type SyncOrgStructureShrinkRequest struct {
+	// 平台应用 Token（控制台签发）。传入后将以 opsUserId 或 opsUserCode 指定的用户身份执行
+	//
+	// example:
+	//
+	// wn_app_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+	AppToken *string `json:"appToken,omitempty" xml:"appToken,omitempty"`
 	// The enterprise identifier. This value must match the corpId returned by listAvailableConfigs.
 	//
 	// This parameter is required.
@@ -40,6 +52,18 @@ type SyncOrgStructureShrinkRequest struct {
 	DepartmentsShrink *string `json:"departments,omitempty" xml:"departments,omitempty"`
 	// The member list. This parameter is required when syncMembers is set to true.
 	MembersShrink *string `json:"members,omitempty" xml:"members,omitempty"`
+	// 代理用户编码（租户内唯一），仅当应用凭证配置为 source_uid 时使用
+	//
+	// example:
+	//
+	// alice
+	OpsUserCode *string `json:"opsUserCode,omitempty" xml:"opsUserCode,omitempty"`
+	// 代理用户ID（WINNEXO 平台用户ID），仅当应用凭证配置为 winnexo_uid 时使用
+	//
+	// example:
+	//
+	// 10001
+	OpsUserId *string `json:"opsUserId,omitempty" xml:"opsUserId,omitempty"`
 	// The platform type. Valid values: saml, oauth2, or custom.
 	//
 	// This parameter is required.
@@ -76,6 +100,10 @@ func (s SyncOrgStructureShrinkRequest) GoString() string {
 	return s.String()
 }
 
+func (s *SyncOrgStructureShrinkRequest) GetAppToken() *string {
+	return s.AppToken
+}
+
 func (s *SyncOrgStructureShrinkRequest) GetCorpId() *string {
 	return s.CorpId
 }
@@ -86,6 +114,14 @@ func (s *SyncOrgStructureShrinkRequest) GetDepartmentsShrink() *string {
 
 func (s *SyncOrgStructureShrinkRequest) GetMembersShrink() *string {
 	return s.MembersShrink
+}
+
+func (s *SyncOrgStructureShrinkRequest) GetOpsUserCode() *string {
+	return s.OpsUserCode
+}
+
+func (s *SyncOrgStructureShrinkRequest) GetOpsUserId() *string {
+	return s.OpsUserId
 }
 
 func (s *SyncOrgStructureShrinkRequest) GetPlatformType() *string {
@@ -104,6 +140,11 @@ func (s *SyncOrgStructureShrinkRequest) GetTenantId() *string {
 	return s.TenantId
 }
 
+func (s *SyncOrgStructureShrinkRequest) SetAppToken(v string) *SyncOrgStructureShrinkRequest {
+	s.AppToken = &v
+	return s
+}
+
 func (s *SyncOrgStructureShrinkRequest) SetCorpId(v string) *SyncOrgStructureShrinkRequest {
 	s.CorpId = &v
 	return s
@@ -116,6 +157,16 @@ func (s *SyncOrgStructureShrinkRequest) SetDepartmentsShrink(v string) *SyncOrgS
 
 func (s *SyncOrgStructureShrinkRequest) SetMembersShrink(v string) *SyncOrgStructureShrinkRequest {
 	s.MembersShrink = &v
+	return s
+}
+
+func (s *SyncOrgStructureShrinkRequest) SetOpsUserCode(v string) *SyncOrgStructureShrinkRequest {
+	s.OpsUserCode = &v
+	return s
+}
+
+func (s *SyncOrgStructureShrinkRequest) SetOpsUserId(v string) *SyncOrgStructureShrinkRequest {
+	s.OpsUserId = &v
 	return s
 }
 

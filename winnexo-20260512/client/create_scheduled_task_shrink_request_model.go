@@ -9,6 +9,10 @@ type iCreateScheduledTaskShrinkRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAppToken(v string) *CreateScheduledTaskShrinkRequest
+	GetAppToken() *string
+	SetAutoPreference(v string) *CreateScheduledTaskShrinkRequest
+	GetAutoPreference() *string
 	SetCollaborationGroupId(v string) *CreateScheduledTaskShrinkRequest
 	GetCollaborationGroupId() *string
 	SetDescriptionShrink(v string) *CreateScheduledTaskShrinkRequest
@@ -21,6 +25,10 @@ type iCreateScheduledTaskShrinkRequest interface {
 	GetModel() *string
 	SetName(v string) *CreateScheduledTaskShrinkRequest
 	GetName() *string
+	SetOpsUserCode(v string) *CreateScheduledTaskShrinkRequest
+	GetOpsUserCode() *string
+	SetOpsUserId(v string) *CreateScheduledTaskShrinkRequest
+	GetOpsUserId() *string
 	SetOutputMode(v string) *CreateScheduledTaskShrinkRequest
 	GetOutputMode() *string
 	SetSegmentsShrink(v string) *CreateScheduledTaskShrinkRequest
@@ -38,6 +46,18 @@ type iCreateScheduledTaskShrinkRequest interface {
 }
 
 type CreateScheduledTaskShrinkRequest struct {
+	// 平台应用 Token（控制台签发）。传入后将以 opsUserId 或 opsUserCode 指定的用户身份执行
+	//
+	// example:
+	//
+	// wn_app_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+	AppToken *string `json:"appToken,omitempty" xml:"appToken,omitempty"`
+	// AUTO 偏好：none=默认、performance=效果优先、credit=成本优先；创建缺省为 none，固定模型可保存但不生效
+	//
+	// example:
+	//
+	// performance
+	AutoPreference *string `json:"autoPreference,omitempty" xml:"autoPreference,omitempty"`
 	// The ID of the associated collaboration group (such as cg_101). If this parameter is passed, a group space task is created, and the caller must be a valid group member. If this parameter is empty, a personal task is created.
 	//
 	// example:
@@ -72,6 +92,18 @@ type CreateScheduledTaskShrinkRequest struct {
 	//
 	// Sample name.pdf
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// 代理用户编码（租户内唯一），仅当应用凭证配置为 source_uid 时使用
+	//
+	// example:
+	//
+	// alice
+	OpsUserCode *string `json:"opsUserCode,omitempty" xml:"opsUserCode,omitempty"`
+	// 代理用户ID（WINNEXO 平台用户ID），仅当应用凭证配置为 winnexo_uid 时使用
+	//
+	// example:
+	//
+	// 10001
+	OpsUserId *string `json:"opsUserId,omitempty" xml:"opsUserId,omitempty"`
 	// The output conversation mode. Default value: NEW_CONVERSATION.
 	//
 	// example:
@@ -112,6 +144,14 @@ func (s CreateScheduledTaskShrinkRequest) GoString() string {
 	return s.String()
 }
 
+func (s *CreateScheduledTaskShrinkRequest) GetAppToken() *string {
+	return s.AppToken
+}
+
+func (s *CreateScheduledTaskShrinkRequest) GetAutoPreference() *string {
+	return s.AutoPreference
+}
+
 func (s *CreateScheduledTaskShrinkRequest) GetCollaborationGroupId() *string {
 	return s.CollaborationGroupId
 }
@@ -134,6 +174,14 @@ func (s *CreateScheduledTaskShrinkRequest) GetModel() *string {
 
 func (s *CreateScheduledTaskShrinkRequest) GetName() *string {
 	return s.Name
+}
+
+func (s *CreateScheduledTaskShrinkRequest) GetOpsUserCode() *string {
+	return s.OpsUserCode
+}
+
+func (s *CreateScheduledTaskShrinkRequest) GetOpsUserId() *string {
+	return s.OpsUserId
 }
 
 func (s *CreateScheduledTaskShrinkRequest) GetOutputMode() *string {
@@ -164,6 +212,16 @@ func (s *CreateScheduledTaskShrinkRequest) GetVisibleMemberUserIdsShrink() *stri
 	return s.VisibleMemberUserIdsShrink
 }
 
+func (s *CreateScheduledTaskShrinkRequest) SetAppToken(v string) *CreateScheduledTaskShrinkRequest {
+	s.AppToken = &v
+	return s
+}
+
+func (s *CreateScheduledTaskShrinkRequest) SetAutoPreference(v string) *CreateScheduledTaskShrinkRequest {
+	s.AutoPreference = &v
+	return s
+}
+
 func (s *CreateScheduledTaskShrinkRequest) SetCollaborationGroupId(v string) *CreateScheduledTaskShrinkRequest {
 	s.CollaborationGroupId = &v
 	return s
@@ -191,6 +249,16 @@ func (s *CreateScheduledTaskShrinkRequest) SetModel(v string) *CreateScheduledTa
 
 func (s *CreateScheduledTaskShrinkRequest) SetName(v string) *CreateScheduledTaskShrinkRequest {
 	s.Name = &v
+	return s
+}
+
+func (s *CreateScheduledTaskShrinkRequest) SetOpsUserCode(v string) *CreateScheduledTaskShrinkRequest {
+	s.OpsUserCode = &v
+	return s
+}
+
+func (s *CreateScheduledTaskShrinkRequest) SetOpsUserId(v string) *CreateScheduledTaskShrinkRequest {
+	s.OpsUserId = &v
 	return s
 }
 

@@ -9,6 +9,8 @@ type iCreatePersonalDingtalkMinutesRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAppToken(v string) *CreatePersonalDingtalkMinutesRequest
+	GetAppToken() *string
 	SetDescription(v string) *CreatePersonalDingtalkMinutesRequest
 	GetDescription() *string
 	SetDirectoryId(v string) *CreatePersonalDingtalkMinutesRequest
@@ -19,6 +21,10 @@ type iCreatePersonalDingtalkMinutesRequest interface {
 	GetNotes() *string
 	SetOperatingObjectName(v string) *CreatePersonalDingtalkMinutesRequest
 	GetOperatingObjectName() *string
+	SetOpsUserCode(v string) *CreatePersonalDingtalkMinutesRequest
+	GetOpsUserCode() *string
+	SetOpsUserId(v string) *CreatePersonalDingtalkMinutesRequest
+	GetOpsUserId() *string
 	SetShanjiUrl(v string) *CreatePersonalDingtalkMinutesRequest
 	GetShanjiUrl() *string
 	SetSourceTags(v string) *CreatePersonalDingtalkMinutesRequest
@@ -28,6 +34,12 @@ type iCreatePersonalDingtalkMinutesRequest interface {
 }
 
 type CreatePersonalDingtalkMinutesRequest struct {
+	// 平台应用 Token（控制台签发）。传入后将以 opsUserId 或 opsUserCode 指定的用户身份执行
+	//
+	// example:
+	//
+	// wn_app_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+	AppToken *string `json:"appToken,omitempty" xml:"appToken,omitempty"`
 	// The pipeline description.
 	//
 	// example:
@@ -60,6 +72,18 @@ type CreatePersonalDingtalkMinutesRequest struct {
 	//
 	// string_value
 	OperatingObjectName *string `json:"operatingObjectName,omitempty" xml:"operatingObjectName,omitempty"`
+	// 代理用户编码（租户内唯一），仅当应用凭证配置为 source_uid 时使用
+	//
+	// example:
+	//
+	// alice
+	OpsUserCode *string `json:"opsUserCode,omitempty" xml:"opsUserCode,omitempty"`
+	// 代理用户ID（WINNEXO 平台用户ID），仅当应用凭证配置为 winnexo_uid 时使用
+	//
+	// example:
+	//
+	// 10001
+	OpsUserId *string `json:"opsUserId,omitempty" xml:"opsUserId,omitempty"`
 	// The original Shanji note link (required).
 	//
 	// This parameter is required.
@@ -90,6 +114,10 @@ func (s CreatePersonalDingtalkMinutesRequest) GoString() string {
 	return s.String()
 }
 
+func (s *CreatePersonalDingtalkMinutesRequest) GetAppToken() *string {
+	return s.AppToken
+}
+
 func (s *CreatePersonalDingtalkMinutesRequest) GetDescription() *string {
 	return s.Description
 }
@@ -110,6 +138,14 @@ func (s *CreatePersonalDingtalkMinutesRequest) GetOperatingObjectName() *string 
 	return s.OperatingObjectName
 }
 
+func (s *CreatePersonalDingtalkMinutesRequest) GetOpsUserCode() *string {
+	return s.OpsUserCode
+}
+
+func (s *CreatePersonalDingtalkMinutesRequest) GetOpsUserId() *string {
+	return s.OpsUserId
+}
+
 func (s *CreatePersonalDingtalkMinutesRequest) GetShanjiUrl() *string {
 	return s.ShanjiUrl
 }
@@ -120,6 +156,11 @@ func (s *CreatePersonalDingtalkMinutesRequest) GetSourceTags() *string {
 
 func (s *CreatePersonalDingtalkMinutesRequest) GetTenantId() *string {
 	return s.TenantId
+}
+
+func (s *CreatePersonalDingtalkMinutesRequest) SetAppToken(v string) *CreatePersonalDingtalkMinutesRequest {
+	s.AppToken = &v
+	return s
 }
 
 func (s *CreatePersonalDingtalkMinutesRequest) SetDescription(v string) *CreatePersonalDingtalkMinutesRequest {
@@ -144,6 +185,16 @@ func (s *CreatePersonalDingtalkMinutesRequest) SetNotes(v string) *CreatePersona
 
 func (s *CreatePersonalDingtalkMinutesRequest) SetOperatingObjectName(v string) *CreatePersonalDingtalkMinutesRequest {
 	s.OperatingObjectName = &v
+	return s
+}
+
+func (s *CreatePersonalDingtalkMinutesRequest) SetOpsUserCode(v string) *CreatePersonalDingtalkMinutesRequest {
+	s.OpsUserCode = &v
+	return s
+}
+
+func (s *CreatePersonalDingtalkMinutesRequest) SetOpsUserId(v string) *CreatePersonalDingtalkMinutesRequest {
+	s.OpsUserId = &v
 	return s
 }
 

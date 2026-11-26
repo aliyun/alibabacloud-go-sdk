@@ -11,6 +11,8 @@ type iUpdateWorkItemShrinkRequest interface {
 	GoString() string
 	SetAcceptanceCriteria(v string) *UpdateWorkItemShrinkRequest
 	GetAcceptanceCriteria() *string
+	SetAppToken(v string) *UpdateWorkItemShrinkRequest
+	GetAppToken() *string
 	SetAttachmentsShrink(v string) *UpdateWorkItemShrinkRequest
 	GetAttachmentsShrink() *string
 	SetCollaborationGroupId(v string) *UpdateWorkItemShrinkRequest
@@ -23,6 +25,10 @@ type iUpdateWorkItemShrinkRequest interface {
 	GetDescription() *string
 	SetExpectedVersion(v int64) *UpdateWorkItemShrinkRequest
 	GetExpectedVersion() *int64
+	SetOpsUserCode(v string) *UpdateWorkItemShrinkRequest
+	GetOpsUserCode() *string
+	SetOpsUserId(v string) *UpdateWorkItemShrinkRequest
+	GetOpsUserId() *string
 	SetOwnerUserId(v int64) *UpdateWorkItemShrinkRequest
 	GetOwnerUserId() *int64
 	SetPriority(v string) *UpdateWorkItemShrinkRequest
@@ -44,6 +50,12 @@ type UpdateWorkItemShrinkRequest struct {
 	//
 	// example
 	AcceptanceCriteria *string `json:"acceptanceCriteria,omitempty" xml:"acceptanceCriteria,omitempty"`
+	// 平台应用 Token（控制台签发）。传入后将以 opsUserId 或 opsUserCode 指定的用户身份执行
+	//
+	// example:
+	//
+	// wn_app_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+	AppToken *string `json:"appToken,omitempty" xml:"appToken,omitempty"`
 	// The stable references for the attachments.
 	//
 	// example:
@@ -84,6 +96,18 @@ type UpdateWorkItemShrinkRequest struct {
 	//
 	// 3
 	ExpectedVersion *int64 `json:"expectedVersion,omitempty" xml:"expectedVersion,omitempty"`
+	// 代理用户编码（租户内唯一），仅当应用凭证配置为 source_uid 时使用
+	//
+	// example:
+	//
+	// alice
+	OpsUserCode *string `json:"opsUserCode,omitempty" xml:"opsUserCode,omitempty"`
+	// 代理用户ID（WINNEXO 平台用户ID），仅当应用凭证配置为 winnexo_uid 时使用
+	//
+	// example:
+	//
+	// 10001
+	OpsUserId *string `json:"opsUserId,omitempty" xml:"opsUserId,omitempty"`
 	// The user ID of the owner. If not specified, the user ID of the caller is used.
 	//
 	// example:
@@ -138,6 +162,10 @@ func (s *UpdateWorkItemShrinkRequest) GetAcceptanceCriteria() *string {
 	return s.AcceptanceCriteria
 }
 
+func (s *UpdateWorkItemShrinkRequest) GetAppToken() *string {
+	return s.AppToken
+}
+
 func (s *UpdateWorkItemShrinkRequest) GetAttachmentsShrink() *string {
 	return s.AttachmentsShrink
 }
@@ -160,6 +188,14 @@ func (s *UpdateWorkItemShrinkRequest) GetDescription() *string {
 
 func (s *UpdateWorkItemShrinkRequest) GetExpectedVersion() *int64 {
 	return s.ExpectedVersion
+}
+
+func (s *UpdateWorkItemShrinkRequest) GetOpsUserCode() *string {
+	return s.OpsUserCode
+}
+
+func (s *UpdateWorkItemShrinkRequest) GetOpsUserId() *string {
+	return s.OpsUserId
 }
 
 func (s *UpdateWorkItemShrinkRequest) GetOwnerUserId() *int64 {
@@ -191,6 +227,11 @@ func (s *UpdateWorkItemShrinkRequest) SetAcceptanceCriteria(v string) *UpdateWor
 	return s
 }
 
+func (s *UpdateWorkItemShrinkRequest) SetAppToken(v string) *UpdateWorkItemShrinkRequest {
+	s.AppToken = &v
+	return s
+}
+
 func (s *UpdateWorkItemShrinkRequest) SetAttachmentsShrink(v string) *UpdateWorkItemShrinkRequest {
 	s.AttachmentsShrink = &v
 	return s
@@ -218,6 +259,16 @@ func (s *UpdateWorkItemShrinkRequest) SetDescription(v string) *UpdateWorkItemSh
 
 func (s *UpdateWorkItemShrinkRequest) SetExpectedVersion(v int64) *UpdateWorkItemShrinkRequest {
 	s.ExpectedVersion = &v
+	return s
+}
+
+func (s *UpdateWorkItemShrinkRequest) SetOpsUserCode(v string) *UpdateWorkItemShrinkRequest {
+	s.OpsUserCode = &v
+	return s
+}
+
+func (s *UpdateWorkItemShrinkRequest) SetOpsUserId(v string) *UpdateWorkItemShrinkRequest {
+	s.OpsUserId = &v
 	return s
 }
 

@@ -9,6 +9,8 @@ type iCreatePersonalAliDingMeetingRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAppToken(v string) *CreatePersonalAliDingMeetingRequest
+	GetAppToken() *string
 	SetDescription(v string) *CreatePersonalAliDingMeetingRequest
 	GetDescription() *string
 	SetDirectoryId(v string) *CreatePersonalAliDingMeetingRequest
@@ -19,6 +21,10 @@ type iCreatePersonalAliDingMeetingRequest interface {
 	GetNotes() *string
 	SetOperatingObjectName(v string) *CreatePersonalAliDingMeetingRequest
 	GetOperatingObjectName() *string
+	SetOpsUserCode(v string) *CreatePersonalAliDingMeetingRequest
+	GetOpsUserCode() *string
+	SetOpsUserId(v string) *CreatePersonalAliDingMeetingRequest
+	GetOpsUserId() *string
 	SetShanjiUrl(v string) *CreatePersonalAliDingMeetingRequest
 	GetShanjiUrl() *string
 	SetSourceTags(v string) *CreatePersonalAliDingMeetingRequest
@@ -28,6 +34,12 @@ type iCreatePersonalAliDingMeetingRequest interface {
 }
 
 type CreatePersonalAliDingMeetingRequest struct {
+	// 平台应用 Token（控制台签发）。传入后将以 opsUserId 或 opsUserCode 指定的用户身份执行
+	//
+	// example:
+	//
+	// wn_app_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+	AppToken *string `json:"appToken,omitempty" xml:"appToken,omitempty"`
 	// The description of the AI assistant.
 	//
 	// example:
@@ -60,6 +72,18 @@ type CreatePersonalAliDingMeetingRequest struct {
 	//
 	// string_value
 	OperatingObjectName *string `json:"operatingObjectName,omitempty" xml:"operatingObjectName,omitempty"`
+	// 代理用户编码（租户内唯一），仅当应用凭证配置为 source_uid 时使用
+	//
+	// example:
+	//
+	// alice
+	OpsUserCode *string `json:"opsUserCode,omitempty" xml:"opsUserCode,omitempty"`
+	// 代理用户ID（WINNEXO 平台用户ID），仅当应用凭证配置为 winnexo_uid 时使用
+	//
+	// example:
+	//
+	// 10001
+	OpsUserId *string `json:"opsUserId,omitempty" xml:"opsUserId,omitempty"`
 	// The original Shanji link (required).
 	//
 	// This parameter is required.
@@ -90,6 +114,10 @@ func (s CreatePersonalAliDingMeetingRequest) GoString() string {
 	return s.String()
 }
 
+func (s *CreatePersonalAliDingMeetingRequest) GetAppToken() *string {
+	return s.AppToken
+}
+
 func (s *CreatePersonalAliDingMeetingRequest) GetDescription() *string {
 	return s.Description
 }
@@ -110,6 +138,14 @@ func (s *CreatePersonalAliDingMeetingRequest) GetOperatingObjectName() *string {
 	return s.OperatingObjectName
 }
 
+func (s *CreatePersonalAliDingMeetingRequest) GetOpsUserCode() *string {
+	return s.OpsUserCode
+}
+
+func (s *CreatePersonalAliDingMeetingRequest) GetOpsUserId() *string {
+	return s.OpsUserId
+}
+
 func (s *CreatePersonalAliDingMeetingRequest) GetShanjiUrl() *string {
 	return s.ShanjiUrl
 }
@@ -120,6 +156,11 @@ func (s *CreatePersonalAliDingMeetingRequest) GetSourceTags() *string {
 
 func (s *CreatePersonalAliDingMeetingRequest) GetTenantId() *string {
 	return s.TenantId
+}
+
+func (s *CreatePersonalAliDingMeetingRequest) SetAppToken(v string) *CreatePersonalAliDingMeetingRequest {
+	s.AppToken = &v
+	return s
 }
 
 func (s *CreatePersonalAliDingMeetingRequest) SetDescription(v string) *CreatePersonalAliDingMeetingRequest {
@@ -144,6 +185,16 @@ func (s *CreatePersonalAliDingMeetingRequest) SetNotes(v string) *CreatePersonal
 
 func (s *CreatePersonalAliDingMeetingRequest) SetOperatingObjectName(v string) *CreatePersonalAliDingMeetingRequest {
 	s.OperatingObjectName = &v
+	return s
+}
+
+func (s *CreatePersonalAliDingMeetingRequest) SetOpsUserCode(v string) *CreatePersonalAliDingMeetingRequest {
+	s.OpsUserCode = &v
+	return s
+}
+
+func (s *CreatePersonalAliDingMeetingRequest) SetOpsUserId(v string) *CreatePersonalAliDingMeetingRequest {
+	s.OpsUserId = &v
 	return s
 }
 

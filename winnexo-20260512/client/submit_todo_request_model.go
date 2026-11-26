@@ -11,6 +11,12 @@ type iSubmitTodoRequest interface {
 	GoString() string
 	SetAnswers(v []*SubmitTodoRequestAnswers) *SubmitTodoRequest
 	GetAnswers() []*SubmitTodoRequestAnswers
+	SetAppToken(v string) *SubmitTodoRequest
+	GetAppToken() *string
+	SetOpsUserCode(v string) *SubmitTodoRequest
+	GetOpsUserCode() *string
+	SetOpsUserId(v string) *SubmitTodoRequest
+	GetOpsUserId() *string
 	SetTenantId(v string) *SubmitTodoRequest
 	GetTenantId() *string
 	SetTodoId(v string) *SubmitTodoRequest
@@ -26,6 +32,24 @@ type SubmitTodoRequest struct {
 	//
 	// example
 	Answers []*SubmitTodoRequestAnswers `json:"answers,omitempty" xml:"answers,omitempty" type:"Repeated"`
+	// 平台应用 Token（控制台签发）。传入后将以 opsUserId 或 opsUserCode 指定的用户身份执行
+	//
+	// example:
+	//
+	// wn_app_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+	AppToken *string `json:"appToken,omitempty" xml:"appToken,omitempty"`
+	// 代理用户编码（租户内唯一），仅当应用凭证配置为 source_uid 时使用
+	//
+	// example:
+	//
+	// alice
+	OpsUserCode *string `json:"opsUserCode,omitempty" xml:"opsUserCode,omitempty"`
+	// 代理用户ID（WINNEXO 平台用户ID），仅当应用凭证配置为 winnexo_uid 时使用
+	//
+	// example:
+	//
+	// 10001
+	OpsUserId *string `json:"opsUserId,omitempty" xml:"opsUserId,omitempty"`
 	// The to-do task ID.
 	//
 	// example:
@@ -54,6 +78,18 @@ func (s *SubmitTodoRequest) GetAnswers() []*SubmitTodoRequestAnswers {
 	return s.Answers
 }
 
+func (s *SubmitTodoRequest) GetAppToken() *string {
+	return s.AppToken
+}
+
+func (s *SubmitTodoRequest) GetOpsUserCode() *string {
+	return s.OpsUserCode
+}
+
+func (s *SubmitTodoRequest) GetOpsUserId() *string {
+	return s.OpsUserId
+}
+
 func (s *SubmitTodoRequest) GetTenantId() *string {
 	return s.TenantId
 }
@@ -64,6 +100,21 @@ func (s *SubmitTodoRequest) GetTodoId() *string {
 
 func (s *SubmitTodoRequest) SetAnswers(v []*SubmitTodoRequestAnswers) *SubmitTodoRequest {
 	s.Answers = v
+	return s
+}
+
+func (s *SubmitTodoRequest) SetAppToken(v string) *SubmitTodoRequest {
+	s.AppToken = &v
+	return s
+}
+
+func (s *SubmitTodoRequest) SetOpsUserCode(v string) *SubmitTodoRequest {
+	s.OpsUserCode = &v
+	return s
+}
+
+func (s *SubmitTodoRequest) SetOpsUserId(v string) *SubmitTodoRequest {
+	s.OpsUserId = &v
 	return s
 }
 

@@ -9,12 +9,18 @@ type iListAppResourcePermissionRecordsShrinkRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAppToken(v string) *ListAppResourcePermissionRecordsShrinkRequest
+	GetAppToken() *string
 	SetGranteeId(v string) *ListAppResourcePermissionRecordsShrinkRequest
 	GetGranteeId() *string
 	SetGranteeTenantId(v string) *ListAppResourcePermissionRecordsShrinkRequest
 	GetGranteeTenantId() *string
 	SetGranteeType(v string) *ListAppResourcePermissionRecordsShrinkRequest
 	GetGranteeType() *string
+	SetOpsUserCode(v string) *ListAppResourcePermissionRecordsShrinkRequest
+	GetOpsUserCode() *string
+	SetOpsUserId(v string) *ListAppResourcePermissionRecordsShrinkRequest
+	GetOpsUserId() *string
 	SetPage(v int64) *ListAppResourcePermissionRecordsShrinkRequest
 	GetPage() *int64
 	SetPageSize(v int64) *ListAppResourcePermissionRecordsShrinkRequest
@@ -32,6 +38,12 @@ type iListAppResourcePermissionRecordsShrinkRequest interface {
 }
 
 type ListAppResourcePermissionRecordsShrinkRequest struct {
+	// 平台应用 Token（控制台签发）。传入后将以 opsUserId 或 opsUserCode 指定的用户身份执行
+	//
+	// example:
+	//
+	// wn_app_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+	AppToken *string `json:"appToken,omitempty" xml:"appToken,omitempty"`
 	// The tenant filter for cross-tenant users.
 	//
 	// example:
@@ -50,6 +62,18 @@ type ListAppResourcePermissionRecordsShrinkRequest struct {
 	//
 	// USER
 	GranteeType *string `json:"granteeType,omitempty" xml:"granteeType,omitempty"`
+	// 代理用户编码（租户内唯一），仅当应用凭证配置为 source_uid 时使用
+	//
+	// example:
+	//
+	// alice
+	OpsUserCode *string `json:"opsUserCode,omitempty" xml:"opsUserCode,omitempty"`
+	// 代理用户ID（WINNEXO 平台用户ID），仅当应用凭证配置为 winnexo_uid 时使用
+	//
+	// example:
+	//
+	// 10001
+	OpsUserId *string `json:"opsUserId,omitempty" xml:"opsUserId,omitempty"`
 	// The number of items per page.
 	//
 	// example:
@@ -102,6 +126,10 @@ func (s ListAppResourcePermissionRecordsShrinkRequest) GoString() string {
 	return s.String()
 }
 
+func (s *ListAppResourcePermissionRecordsShrinkRequest) GetAppToken() *string {
+	return s.AppToken
+}
+
 func (s *ListAppResourcePermissionRecordsShrinkRequest) GetGranteeId() *string {
 	return s.GranteeId
 }
@@ -112,6 +140,14 @@ func (s *ListAppResourcePermissionRecordsShrinkRequest) GetGranteeTenantId() *st
 
 func (s *ListAppResourcePermissionRecordsShrinkRequest) GetGranteeType() *string {
 	return s.GranteeType
+}
+
+func (s *ListAppResourcePermissionRecordsShrinkRequest) GetOpsUserCode() *string {
+	return s.OpsUserCode
+}
+
+func (s *ListAppResourcePermissionRecordsShrinkRequest) GetOpsUserId() *string {
+	return s.OpsUserId
 }
 
 func (s *ListAppResourcePermissionRecordsShrinkRequest) GetPage() *int64 {
@@ -142,6 +178,11 @@ func (s *ListAppResourcePermissionRecordsShrinkRequest) GetTenantId() *string {
 	return s.TenantId
 }
 
+func (s *ListAppResourcePermissionRecordsShrinkRequest) SetAppToken(v string) *ListAppResourcePermissionRecordsShrinkRequest {
+	s.AppToken = &v
+	return s
+}
+
 func (s *ListAppResourcePermissionRecordsShrinkRequest) SetGranteeId(v string) *ListAppResourcePermissionRecordsShrinkRequest {
 	s.GranteeId = &v
 	return s
@@ -154,6 +195,16 @@ func (s *ListAppResourcePermissionRecordsShrinkRequest) SetGranteeTenantId(v str
 
 func (s *ListAppResourcePermissionRecordsShrinkRequest) SetGranteeType(v string) *ListAppResourcePermissionRecordsShrinkRequest {
 	s.GranteeType = &v
+	return s
+}
+
+func (s *ListAppResourcePermissionRecordsShrinkRequest) SetOpsUserCode(v string) *ListAppResourcePermissionRecordsShrinkRequest {
+	s.OpsUserCode = &v
+	return s
+}
+
+func (s *ListAppResourcePermissionRecordsShrinkRequest) SetOpsUserId(v string) *ListAppResourcePermissionRecordsShrinkRequest {
+	s.OpsUserId = &v
 	return s
 }
 

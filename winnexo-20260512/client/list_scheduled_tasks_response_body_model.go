@@ -208,6 +208,12 @@ type ListScheduledTasksResponseBodyItems struct {
 	//
 	// string_value
 	AbnormalReason *string `json:"abnormalReason,omitempty" xml:"abnormalReason,omitempty"`
+	// 任务 AUTO 偏好：none=默认、performance=效果优先、credit=成本优先
+	//
+	// example:
+	//
+	// none
+	AutoPreference *string `json:"autoPreference,omitempty" xml:"autoPreference,omitempty"`
 	// Indicates whether the current caller can delete the task. This is valid only for the task creator and group owner. For personal tasks, the value is always true.
 	//
 	// example:
@@ -354,6 +360,10 @@ func (s *ListScheduledTasksResponseBodyItems) GetAbnormalReason() *string {
 	return s.AbnormalReason
 }
 
+func (s *ListScheduledTasksResponseBodyItems) GetAutoPreference() *string {
+	return s.AutoPreference
+}
+
 func (s *ListScheduledTasksResponseBodyItems) GetCanDelete() *bool {
 	return s.CanDelete
 }
@@ -444,6 +454,11 @@ func (s *ListScheduledTasksResponseBodyItems) GetVisibleMemberUserIds() []*strin
 
 func (s *ListScheduledTasksResponseBodyItems) SetAbnormalReason(v string) *ListScheduledTasksResponseBodyItems {
 	s.AbnormalReason = &v
+	return s
+}
+
+func (s *ListScheduledTasksResponseBodyItems) SetAutoPreference(v string) *ListScheduledTasksResponseBodyItems {
+	s.AutoPreference = &v
 	return s
 }
 

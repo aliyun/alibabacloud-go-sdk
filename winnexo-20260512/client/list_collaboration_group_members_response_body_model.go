@@ -42,7 +42,7 @@ type ListCollaborationGroupMembersResponseBody struct {
 	//
 	// example:
 	//
-	// You do not have permissions to access tenant 2147483647 because the user does not belong to the tenant
+	// No permission to access tenant 2147483647. The user does not belong to this tenant
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
 	// The current page number.
 	//
@@ -56,7 +56,7 @@ type ListCollaborationGroupMembersResponseBody struct {
 	//
 	// 20
 	PageSize *int64 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	// The request ID.
+	// The request tracking ID.
 	//
 	// example:
 	//
@@ -155,13 +155,13 @@ func (s *ListCollaborationGroupMembersResponseBody) Validate() error {
 }
 
 type ListCollaborationGroupMembersResponseBodyItems struct {
-	// The display name. This field is empty if the display name is not set.
+	// The display name. This field is empty if not set.
 	//
 	// example:
 	//
 	// TEST001
 	DisplayName *string `json:"displayName,omitempty" xml:"displayName,omitempty"`
-	// The enabling status of the tenant account. Only active members are returned, so this value is always true. This field does not indicate the HR employment status.
+	// The enabling status of the tenant account. Only active members are returned, so this value is always true. It does not represent the employment status.
 	//
 	// example:
 	//

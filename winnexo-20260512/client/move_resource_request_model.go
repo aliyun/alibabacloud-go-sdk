@@ -9,6 +9,12 @@ type iMoveResourceRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAppToken(v string) *MoveResourceRequest
+	GetAppToken() *string
+	SetOpsUserCode(v string) *MoveResourceRequest
+	GetOpsUserCode() *string
+	SetOpsUserId(v string) *MoveResourceRequest
+	GetOpsUserId() *string
 	SetSourceDirectoryId(v string) *MoveResourceRequest
 	GetSourceDirectoryId() *string
 	SetSourceId(v string) *MoveResourceRequest
@@ -20,6 +26,24 @@ type iMoveResourceRequest interface {
 }
 
 type MoveResourceRequest struct {
+	// 平台应用 Token（控制台签发）。传入后将以 opsUserId 或 opsUserCode 指定的用户身份执行
+	//
+	// example:
+	//
+	// wn_app_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+	AppToken *string `json:"appToken,omitempty" xml:"appToken,omitempty"`
+	// 代理用户编码（租户内唯一），仅当应用凭证配置为 source_uid 时使用
+	//
+	// example:
+	//
+	// alice
+	OpsUserCode *string `json:"opsUserCode,omitempty" xml:"opsUserCode,omitempty"`
+	// 代理用户ID（WINNEXO 平台用户ID），仅当应用凭证配置为 winnexo_uid 时使用
+	//
+	// example:
+	//
+	// 10001
+	OpsUserId *string `json:"opsUserId,omitempty" xml:"opsUserId,omitempty"`
 	// The source directory ID, which is the personal directory where the resource currently resides.
 	//
 	// This parameter is required.
@@ -60,6 +84,18 @@ func (s MoveResourceRequest) GoString() string {
 	return s.String()
 }
 
+func (s *MoveResourceRequest) GetAppToken() *string {
+	return s.AppToken
+}
+
+func (s *MoveResourceRequest) GetOpsUserCode() *string {
+	return s.OpsUserCode
+}
+
+func (s *MoveResourceRequest) GetOpsUserId() *string {
+	return s.OpsUserId
+}
+
 func (s *MoveResourceRequest) GetSourceDirectoryId() *string {
 	return s.SourceDirectoryId
 }
@@ -74,6 +110,21 @@ func (s *MoveResourceRequest) GetTargetDirectoryId() *string {
 
 func (s *MoveResourceRequest) GetTenantId() *string {
 	return s.TenantId
+}
+
+func (s *MoveResourceRequest) SetAppToken(v string) *MoveResourceRequest {
+	s.AppToken = &v
+	return s
+}
+
+func (s *MoveResourceRequest) SetOpsUserCode(v string) *MoveResourceRequest {
+	s.OpsUserCode = &v
+	return s
+}
+
+func (s *MoveResourceRequest) SetOpsUserId(v string) *MoveResourceRequest {
+	s.OpsUserId = &v
+	return s
 }
 
 func (s *MoveResourceRequest) SetSourceDirectoryId(v string) *MoveResourceRequest {

@@ -9,6 +9,12 @@ type iListAuthorizedAgentsRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAppToken(v string) *ListAuthorizedAgentsRequest
+	GetAppToken() *string
+	SetOpsUserCode(v string) *ListAuthorizedAgentsRequest
+	GetOpsUserCode() *string
+	SetOpsUserId(v string) *ListAuthorizedAgentsRequest
+	GetOpsUserId() *string
 	SetPermission(v string) *ListAuthorizedAgentsRequest
 	GetPermission() *string
 	SetTargetUserId(v int64) *ListAuthorizedAgentsRequest
@@ -18,6 +24,24 @@ type iListAuthorizedAgentsRequest interface {
 }
 
 type ListAuthorizedAgentsRequest struct {
+	// 平台应用 Token（控制台签发）。传入后将以 opsUserId 或 opsUserCode 指定的用户身份执行
+	//
+	// example:
+	//
+	// wn_app_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+	AppToken *string `json:"appToken,omitempty" xml:"appToken,omitempty"`
+	// 代理用户编码（租户内唯一），仅当应用凭证配置为 source_uid 时使用
+	//
+	// example:
+	//
+	// alice
+	OpsUserCode *string `json:"opsUserCode,omitempty" xml:"opsUserCode,omitempty"`
+	// 代理用户ID（WINNEXO 平台用户ID），仅当应用凭证配置为 winnexo_uid 时使用
+	//
+	// example:
+	//
+	// 10001
+	OpsUserId *string `json:"opsUserId,omitempty" xml:"opsUserId,omitempty"`
 	// The userId of the responsible user.
 	//
 	// example:
@@ -46,6 +70,18 @@ func (s ListAuthorizedAgentsRequest) GoString() string {
 	return s.String()
 }
 
+func (s *ListAuthorizedAgentsRequest) GetAppToken() *string {
+	return s.AppToken
+}
+
+func (s *ListAuthorizedAgentsRequest) GetOpsUserCode() *string {
+	return s.OpsUserCode
+}
+
+func (s *ListAuthorizedAgentsRequest) GetOpsUserId() *string {
+	return s.OpsUserId
+}
+
 func (s *ListAuthorizedAgentsRequest) GetPermission() *string {
 	return s.Permission
 }
@@ -56,6 +92,21 @@ func (s *ListAuthorizedAgentsRequest) GetTargetUserId() *int64 {
 
 func (s *ListAuthorizedAgentsRequest) GetTenantId() *string {
 	return s.TenantId
+}
+
+func (s *ListAuthorizedAgentsRequest) SetAppToken(v string) *ListAuthorizedAgentsRequest {
+	s.AppToken = &v
+	return s
+}
+
+func (s *ListAuthorizedAgentsRequest) SetOpsUserCode(v string) *ListAuthorizedAgentsRequest {
+	s.OpsUserCode = &v
+	return s
+}
+
+func (s *ListAuthorizedAgentsRequest) SetOpsUserId(v string) *ListAuthorizedAgentsRequest {
+	s.OpsUserId = &v
+	return s
 }
 
 func (s *ListAuthorizedAgentsRequest) SetPermission(v string) *ListAuthorizedAgentsRequest {

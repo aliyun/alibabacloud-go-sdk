@@ -11,10 +11,16 @@ type iCreateWorkflowTemplateShrinkRequest interface {
 	GoString() string
 	SetAction(v string) *CreateWorkflowTemplateShrinkRequest
 	GetAction() *string
+	SetAppToken(v string) *CreateWorkflowTemplateShrinkRequest
+	GetAppToken() *string
 	SetCollaborationGroupId(v string) *CreateWorkflowTemplateShrinkRequest
 	GetCollaborationGroupId() *string
 	SetDefinitionShrink(v string) *CreateWorkflowTemplateShrinkRequest
 	GetDefinitionShrink() *string
+	SetOpsUserCode(v string) *CreateWorkflowTemplateShrinkRequest
+	GetOpsUserCode() *string
+	SetOpsUserId(v string) *CreateWorkflowTemplateShrinkRequest
+	GetOpsUserId() *string
 	SetTenantId(v string) *CreateWorkflowTemplateShrinkRequest
 	GetTenantId() *string
 }
@@ -32,6 +38,12 @@ type CreateWorkflowTemplateShrinkRequest struct {
 	//
 	// SUBMIT
 	Action *string `json:"action,omitempty" xml:"action,omitempty"`
+	// 平台应用 Token（控制台签发）。传入后将以 opsUserId 或 opsUserCode 指定的用户身份执行
+	//
+	// example:
+	//
+	// wn_app_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+	AppToken *string `json:"appToken,omitempty" xml:"appToken,omitempty"`
 	// The ID of the collaboration workspace.
 	//
 	// This parameter is required.
@@ -48,6 +60,18 @@ type CreateWorkflowTemplateShrinkRequest struct {
 	//
 	// {"name":"Customer Complaint Handling Process","schemaVersion":2,"steps":[{"stepId":"collect","sortOrder":1,"name":"Collect Customer Information"}]}
 	DefinitionShrink *string `json:"definition,omitempty" xml:"definition,omitempty"`
+	// 代理用户编码（租户内唯一），仅当应用凭证配置为 source_uid 时使用
+	//
+	// example:
+	//
+	// alice
+	OpsUserCode *string `json:"opsUserCode,omitempty" xml:"opsUserCode,omitempty"`
+	// 代理用户ID（WINNEXO 平台用户ID），仅当应用凭证配置为 winnexo_uid 时使用
+	//
+	// example:
+	//
+	// 10001
+	OpsUserId *string `json:"opsUserId,omitempty" xml:"opsUserId,omitempty"`
 	// The tenant ID. This is a common parameter. If not specified, the default tenant of the caller is used.
 	//
 	// example:
@@ -68,12 +92,24 @@ func (s *CreateWorkflowTemplateShrinkRequest) GetAction() *string {
 	return s.Action
 }
 
+func (s *CreateWorkflowTemplateShrinkRequest) GetAppToken() *string {
+	return s.AppToken
+}
+
 func (s *CreateWorkflowTemplateShrinkRequest) GetCollaborationGroupId() *string {
 	return s.CollaborationGroupId
 }
 
 func (s *CreateWorkflowTemplateShrinkRequest) GetDefinitionShrink() *string {
 	return s.DefinitionShrink
+}
+
+func (s *CreateWorkflowTemplateShrinkRequest) GetOpsUserCode() *string {
+	return s.OpsUserCode
+}
+
+func (s *CreateWorkflowTemplateShrinkRequest) GetOpsUserId() *string {
+	return s.OpsUserId
 }
 
 func (s *CreateWorkflowTemplateShrinkRequest) GetTenantId() *string {
@@ -85,6 +121,11 @@ func (s *CreateWorkflowTemplateShrinkRequest) SetAction(v string) *CreateWorkflo
 	return s
 }
 
+func (s *CreateWorkflowTemplateShrinkRequest) SetAppToken(v string) *CreateWorkflowTemplateShrinkRequest {
+	s.AppToken = &v
+	return s
+}
+
 func (s *CreateWorkflowTemplateShrinkRequest) SetCollaborationGroupId(v string) *CreateWorkflowTemplateShrinkRequest {
 	s.CollaborationGroupId = &v
 	return s
@@ -92,6 +133,16 @@ func (s *CreateWorkflowTemplateShrinkRequest) SetCollaborationGroupId(v string) 
 
 func (s *CreateWorkflowTemplateShrinkRequest) SetDefinitionShrink(v string) *CreateWorkflowTemplateShrinkRequest {
 	s.DefinitionShrink = &v
+	return s
+}
+
+func (s *CreateWorkflowTemplateShrinkRequest) SetOpsUserCode(v string) *CreateWorkflowTemplateShrinkRequest {
+	s.OpsUserCode = &v
+	return s
+}
+
+func (s *CreateWorkflowTemplateShrinkRequest) SetOpsUserId(v string) *CreateWorkflowTemplateShrinkRequest {
+	s.OpsUserId = &v
 	return s
 }
 

@@ -38,11 +38,11 @@ type ListCollaborationGroupsResponseBody struct {
 	//
 	// [{"collaborationGroupId":"cg_9401","name":"Product Collaboration Space","status":"ACTIVE","currentUserRole":"OWNER"}]
 	Items []*ListCollaborationGroupsResponseBodyItems `json:"items,omitempty" xml:"items,omitempty" type:"Repeated"`
-	// The common error message.
+	// The common error description.
 	//
 	// example:
 	//
-	// You do not have permissions to access tenant 2147483647 because the user does not belong to the tenant
+	// Access denied to tenant 2147483647. The user does not belong to this tenant
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
 	// The current page number.
 	//
@@ -50,13 +50,13 @@ type ListCollaborationGroupsResponseBody struct {
 	//
 	// 1
 	Page *int64 `json:"page,omitempty" xml:"page,omitempty"`
-	// The page size.
+	// The number of entries on the current page.
 	//
 	// example:
 	//
 	// 20
 	PageSize *int64 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	// The request ID.
+	// The request tracking ID.
 	//
 	// example:
 	//
@@ -155,7 +155,7 @@ func (s *ListCollaborationGroupsResponseBody) Validate() error {
 }
 
 type ListCollaborationGroupsResponseBodyItems struct {
-	// The ID of the collaboration space.
+	// The collaboration space ID.
 	//
 	// example:
 	//
@@ -171,9 +171,9 @@ type ListCollaborationGroupsResponseBodyItems struct {
 	//
 	// example:
 	//
-	// Workflow To-Do Test
+	// Workflow To-do Test
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The status of the space. Currently, only ACTIVE is returned.
+	// The space status. Currently, only ACTIVE is returned.
 	//
 	// example:
 	//

@@ -60,7 +60,7 @@ type GetGraphDraftAssembledResponseBody struct {
 	//
 	// example:
 	//
-	// objects:\\n  - name: customer\\n
+	// objects:\n  - name: customer\n
 	YamlEdit *string `json:"yamlEdit,omitempty" xml:"yamlEdit,omitempty"`
 }
 

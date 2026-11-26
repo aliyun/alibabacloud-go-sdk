@@ -34,7 +34,7 @@ type iCreateGroupDingtalkChatResponseBody interface {
 }
 
 type CreateGroupDingtalkChatResponseBody struct {
-	// The session ID, typically used for JSSDK.
+	// The chat ID, which is generally used for JSSDK.
 	//
 	// example:
 	//
@@ -74,7 +74,7 @@ type CreateGroupDingtalkChatResponseBody struct {
 	//
 	// example:
 	//
-	// CustomerProjectGroup
+	// Customer project group
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
 	// The request ID.
 	//
@@ -88,7 +88,7 @@ type CreateGroupDingtalkChatResponseBody struct {
 	//
 	// GROUP
 	Scope *string `json:"scope,omitempty" xml:"scope,omitempty"`
-	// The data source ID (unique within the tenant).
+	// The data source ID, which is unique within the tenant.
 	//
 	// example:
 	//

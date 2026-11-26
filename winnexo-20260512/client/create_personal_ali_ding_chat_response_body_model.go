@@ -32,7 +32,7 @@ type iCreatePersonalAliDingChatResponseBody interface {
 }
 
 type CreatePersonalAliDingChatResponseBody struct {
-	// The DingTalk group chat session ID.
+	// The ID of the DingTalk group chat session.
 	//
 	// example:
 	//
@@ -66,9 +66,9 @@ type CreatePersonalAliDingChatResponseBody struct {
 	//
 	// example:
 	//
-	// CustomerProjectGroup
+	// Customer project group
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The request trace ID.
+	// The request tracking ID.
 	//
 	// example:
 	//
@@ -80,7 +80,7 @@ type CreatePersonalAliDingChatResponseBody struct {
 	//
 	// PERSONAL
 	Scope *string `json:"scope,omitempty" xml:"scope,omitempty"`
-	// The original project ID.
+	// The source project ID.
 	//
 	// example:
 	//
@@ -88,13 +88,13 @@ type CreatePersonalAliDingChatResponseBody struct {
 	SourceId *string `json:"sourceId,omitempty" xml:"sourceId,omitempty"`
 	// The call status. Valid values:
 	//
-	// - **PENDING**: Waiting for acknowledgment.
+	// - **PENDING**: Awaiting acknowledgment.
 	//
-	// - **SUCCESS**: Succeeded.
+	// - **SUCCESS**: Success.
 	//
 	// - **FAILED**: Failed.
 	//
-	// - **TIMEOUT**: Timed out.
+	// - **TIMEOUT**: Timeout.
 	//
 	// example:
 	//

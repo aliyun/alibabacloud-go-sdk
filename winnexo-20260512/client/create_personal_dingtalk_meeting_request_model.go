@@ -9,6 +9,8 @@ type iCreatePersonalDingtalkMeetingRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAppToken(v string) *CreatePersonalDingtalkMeetingRequest
+	GetAppToken() *string
 	SetCredentialId(v string) *CreatePersonalDingtalkMeetingRequest
 	GetCredentialId() *string
 	SetDescription(v string) *CreatePersonalDingtalkMeetingRequest
@@ -21,6 +23,10 @@ type iCreatePersonalDingtalkMeetingRequest interface {
 	GetNotes() *string
 	SetOperatingObjectName(v string) *CreatePersonalDingtalkMeetingRequest
 	GetOperatingObjectName() *string
+	SetOpsUserCode(v string) *CreatePersonalDingtalkMeetingRequest
+	GetOpsUserCode() *string
+	SetOpsUserId(v string) *CreatePersonalDingtalkMeetingRequest
+	GetOpsUserId() *string
 	SetRoomCode(v string) *CreatePersonalDingtalkMeetingRequest
 	GetRoomCode() *string
 	SetTenantId(v string) *CreatePersonalDingtalkMeetingRequest
@@ -28,6 +34,12 @@ type iCreatePersonalDingtalkMeetingRequest interface {
 }
 
 type CreatePersonalDingtalkMeetingRequest struct {
+	// 平台应用 Token（控制台签发）。传入后将以 opsUserId 或 opsUserCode 指定的用户身份执行
+	//
+	// example:
+	//
+	// wn_app_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+	AppToken *string `json:"appToken,omitempty" xml:"appToken,omitempty"`
 	// The credential ID.
 	//
 	// example:
@@ -66,6 +78,18 @@ type CreatePersonalDingtalkMeetingRequest struct {
 	//
 	// string_value
 	OperatingObjectName *string `json:"operatingObjectName,omitempty" xml:"operatingObjectName,omitempty"`
+	// 代理用户编码（租户内唯一），仅当应用凭证配置为 source_uid 时使用
+	//
+	// example:
+	//
+	// alice
+	OpsUserCode *string `json:"opsUserCode,omitempty" xml:"opsUserCode,omitempty"`
+	// 代理用户ID（WINNEXO 平台用户ID），仅当应用凭证配置为 winnexo_uid 时使用
+	//
+	// example:
+	//
+	// 10001
+	OpsUserId *string `json:"opsUserId,omitempty" xml:"opsUserId,omitempty"`
 	// The meeting code.
 	//
 	// This parameter is required.
@@ -88,6 +112,10 @@ func (s CreatePersonalDingtalkMeetingRequest) String() string {
 
 func (s CreatePersonalDingtalkMeetingRequest) GoString() string {
 	return s.String()
+}
+
+func (s *CreatePersonalDingtalkMeetingRequest) GetAppToken() *string {
+	return s.AppToken
 }
 
 func (s *CreatePersonalDingtalkMeetingRequest) GetCredentialId() *string {
@@ -114,12 +142,25 @@ func (s *CreatePersonalDingtalkMeetingRequest) GetOperatingObjectName() *string 
 	return s.OperatingObjectName
 }
 
+func (s *CreatePersonalDingtalkMeetingRequest) GetOpsUserCode() *string {
+	return s.OpsUserCode
+}
+
+func (s *CreatePersonalDingtalkMeetingRequest) GetOpsUserId() *string {
+	return s.OpsUserId
+}
+
 func (s *CreatePersonalDingtalkMeetingRequest) GetRoomCode() *string {
 	return s.RoomCode
 }
 
 func (s *CreatePersonalDingtalkMeetingRequest) GetTenantId() *string {
 	return s.TenantId
+}
+
+func (s *CreatePersonalDingtalkMeetingRequest) SetAppToken(v string) *CreatePersonalDingtalkMeetingRequest {
+	s.AppToken = &v
+	return s
 }
 
 func (s *CreatePersonalDingtalkMeetingRequest) SetCredentialId(v string) *CreatePersonalDingtalkMeetingRequest {
@@ -149,6 +190,16 @@ func (s *CreatePersonalDingtalkMeetingRequest) SetNotes(v string) *CreatePersona
 
 func (s *CreatePersonalDingtalkMeetingRequest) SetOperatingObjectName(v string) *CreatePersonalDingtalkMeetingRequest {
 	s.OperatingObjectName = &v
+	return s
+}
+
+func (s *CreatePersonalDingtalkMeetingRequest) SetOpsUserCode(v string) *CreatePersonalDingtalkMeetingRequest {
+	s.OpsUserCode = &v
+	return s
+}
+
+func (s *CreatePersonalDingtalkMeetingRequest) SetOpsUserId(v string) *CreatePersonalDingtalkMeetingRequest {
+	s.OpsUserId = &v
 	return s
 }
 

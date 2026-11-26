@@ -32,9 +32,9 @@ type ListKnowledgeBaseDirectoriesResponseBody struct {
 	//
 	// example:
 	//
-	// string_value
+	// ["Directory 1"]
 	Directories []interface{} `json:"directories,omitempty" xml:"directories,omitempty" type:"Repeated"`
-	// The description of the status code.
+	// The status code description.
 	//
 	// example:
 	//

@@ -11,10 +11,16 @@ type iUpdateWorkflowTemplateRequest interface {
 	GoString() string
 	SetAction(v string) *UpdateWorkflowTemplateRequest
 	GetAction() *string
+	SetAppToken(v string) *UpdateWorkflowTemplateRequest
+	GetAppToken() *string
 	SetCollaborationGroupId(v string) *UpdateWorkflowTemplateRequest
 	GetCollaborationGroupId() *string
 	SetDefinition(v map[string]interface{}) *UpdateWorkflowTemplateRequest
 	GetDefinition() map[string]interface{}
+	SetOpsUserCode(v string) *UpdateWorkflowTemplateRequest
+	GetOpsUserCode() *string
+	SetOpsUserId(v string) *UpdateWorkflowTemplateRequest
+	GetOpsUserId() *string
 	SetSourceVersion(v string) *UpdateWorkflowTemplateRequest
 	GetSourceVersion() *string
 	SetTemplateId(v string) *UpdateWorkflowTemplateRequest
@@ -28,18 +34,18 @@ type iUpdateWorkflowTemplateRequest interface {
 }
 
 type UpdateWorkflowTemplateRequest struct {
-	// The write action. Valid values:
-	//
-	// - SAVE: Saves the template as a draft without taking effect, allowing node names and executors to be left empty.
-	//
-	// - SUBMIT: Requires complete nodes, and saves and submits the template as the only effective version.
-	//
-	// Default value: SUBMIT.
+	// The write action. Valid values: SAVE (saves the template as a draft without taking effect, and allows node names and executors to be left empty) and SUBMIT (requires complete nodes, and saves and submits the template as the only effective version). Default value: SUBMIT.
 	//
 	// example:
 	//
 	// SUBMIT
 	Action *string `json:"action,omitempty" xml:"action,omitempty"`
+	// The platform application token issued by the console. If specified, the operation is executed as the user specified by opsUserId or opsUserCode.
+	//
+	// example:
+	//
+	// wn_app_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+	AppToken *string `json:"appToken,omitempty" xml:"appToken,omitempty"`
 	// The collaboration workspace ID.
 	//
 	// This parameter is required.
@@ -54,9 +60,21 @@ type UpdateWorkflowTemplateRequest struct {
 	//
 	// example:
 	//
-	// {"name":"Customer Complaint Handling Process","schemaVersion":2,"steps":[{"stepId":"collect","sortOrder":1,"name":"Collect Customer Information"}]}
+	// {"name":"Customer Complaint Handling Process","schemaVersion":2,"steps":[{"stepId":"collect","sortOrder":1,"name":"Collect Customer Information","specification":[{"type":"text","content":"Collect Customer Information"}],"executorType":"MEMBER","executorUserId":10086}],"edges":[]}
 	Definition map[string]interface{} `json:"definition,omitempty" xml:"definition,omitempty"`
-	// The submitted version number on which the new version is based. This parameter is mutually exclusive with version. If not specified, the system falls back to the current effective version.
+	// The proxy user code, which is unique within the tenant. This parameter is used only when the application credential is configured as source_uid.
+	//
+	// example:
+	//
+	// alice
+	OpsUserCode *string `json:"opsUserCode,omitempty" xml:"opsUserCode,omitempty"`
+	// The proxy user ID, which is the WINNEXO platform user ID. This parameter is used only when the application credential is configured as winnexo_uid.
+	//
+	// example:
+	//
+	// 10001
+	OpsUserId *string `json:"opsUserId,omitempty" xml:"opsUserId,omitempty"`
+	// The submitted version number on which the new version is based. This parameter is mutually exclusive with version. If not specified, the current effective version is used as the fallback.
 	//
 	// example:
 	//
@@ -102,12 +120,24 @@ func (s *UpdateWorkflowTemplateRequest) GetAction() *string {
 	return s.Action
 }
 
+func (s *UpdateWorkflowTemplateRequest) GetAppToken() *string {
+	return s.AppToken
+}
+
 func (s *UpdateWorkflowTemplateRequest) GetCollaborationGroupId() *string {
 	return s.CollaborationGroupId
 }
 
 func (s *UpdateWorkflowTemplateRequest) GetDefinition() map[string]interface{} {
 	return s.Definition
+}
+
+func (s *UpdateWorkflowTemplateRequest) GetOpsUserCode() *string {
+	return s.OpsUserCode
+}
+
+func (s *UpdateWorkflowTemplateRequest) GetOpsUserId() *string {
+	return s.OpsUserId
 }
 
 func (s *UpdateWorkflowTemplateRequest) GetSourceVersion() *string {
@@ -135,6 +165,11 @@ func (s *UpdateWorkflowTemplateRequest) SetAction(v string) *UpdateWorkflowTempl
 	return s
 }
 
+func (s *UpdateWorkflowTemplateRequest) SetAppToken(v string) *UpdateWorkflowTemplateRequest {
+	s.AppToken = &v
+	return s
+}
+
 func (s *UpdateWorkflowTemplateRequest) SetCollaborationGroupId(v string) *UpdateWorkflowTemplateRequest {
 	s.CollaborationGroupId = &v
 	return s
@@ -142,6 +177,16 @@ func (s *UpdateWorkflowTemplateRequest) SetCollaborationGroupId(v string) *Updat
 
 func (s *UpdateWorkflowTemplateRequest) SetDefinition(v map[string]interface{}) *UpdateWorkflowTemplateRequest {
 	s.Definition = v
+	return s
+}
+
+func (s *UpdateWorkflowTemplateRequest) SetOpsUserCode(v string) *UpdateWorkflowTemplateRequest {
+	s.OpsUserCode = &v
+	return s
+}
+
+func (s *UpdateWorkflowTemplateRequest) SetOpsUserId(v string) *UpdateWorkflowTemplateRequest {
+	s.OpsUserId = &v
 	return s
 }
 

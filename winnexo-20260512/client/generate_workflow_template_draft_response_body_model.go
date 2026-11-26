@@ -30,7 +30,7 @@ type GenerateWorkflowTemplateDraftResponseBody struct {
 	//
 	// example:
 	//
-	// {\\"schemaVersion\\":2,\\"steps\\":[]}
+	// {\"schemaVersion\":2,\"steps\":[]}
 	Draft *GenerateWorkflowTemplateDraftResponseBodyDraft `json:"draft,omitempty" xml:"draft,omitempty" type:"Struct"`
 	// The error message.
 	//

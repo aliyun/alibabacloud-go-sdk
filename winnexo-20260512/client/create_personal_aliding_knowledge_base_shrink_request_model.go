@@ -9,6 +9,8 @@ type iCreatePersonalAlidingKnowledgeBaseShrinkRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAppToken(v string) *CreatePersonalAlidingKnowledgeBaseShrinkRequest
+	GetAppToken() *string
 	SetDirectoryId(v string) *CreatePersonalAlidingKnowledgeBaseShrinkRequest
 	GetDirectoryId() *string
 	SetKbName(v string) *CreatePersonalAlidingKnowledgeBaseShrinkRequest
@@ -19,6 +21,10 @@ type iCreatePersonalAlidingKnowledgeBaseShrinkRequest interface {
 	GetObjectBindingsShrink() *string
 	SetOperatingObjectName(v string) *CreatePersonalAlidingKnowledgeBaseShrinkRequest
 	GetOperatingObjectName() *string
+	SetOpsUserCode(v string) *CreatePersonalAlidingKnowledgeBaseShrinkRequest
+	GetOpsUserCode() *string
+	SetOpsUserId(v string) *CreatePersonalAlidingKnowledgeBaseShrinkRequest
+	GetOpsUserId() *string
 	SetSourceTags(v string) *CreatePersonalAlidingKnowledgeBaseShrinkRequest
 	GetSourceTags() *string
 	SetSyncConfigShrink(v string) *CreatePersonalAlidingKnowledgeBaseShrinkRequest
@@ -28,6 +34,12 @@ type iCreatePersonalAlidingKnowledgeBaseShrinkRequest interface {
 }
 
 type CreatePersonalAlidingKnowledgeBaseShrinkRequest struct {
+	// 平台应用 Token（控制台签发）。传入后将以 opsUserId 或 opsUserCode 指定的用户身份执行
+	//
+	// example:
+	//
+	// wn_app_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+	AppToken *string `json:"appToken,omitempty" xml:"appToken,omitempty"`
 	// The directory ID.
 	//
 	// example:
@@ -56,6 +68,18 @@ type CreatePersonalAlidingKnowledgeBaseShrinkRequest struct {
 	//
 	// string_value
 	OperatingObjectName *string `json:"operatingObjectName,omitempty" xml:"operatingObjectName,omitempty"`
+	// 代理用户编码（租户内唯一），仅当应用凭证配置为 source_uid 时使用
+	//
+	// example:
+	//
+	// alice
+	OpsUserCode *string `json:"opsUserCode,omitempty" xml:"opsUserCode,omitempty"`
+	// 代理用户ID（WINNEXO 平台用户ID），仅当应用凭证配置为 winnexo_uid 时使用
+	//
+	// example:
+	//
+	// 10001
+	OpsUserId *string `json:"opsUserId,omitempty" xml:"opsUserId,omitempty"`
 	// The list of resource tag JSON strings applied to all child sources created during knowledge base synchronization.
 	//
 	// example:
@@ -80,6 +104,10 @@ func (s CreatePersonalAlidingKnowledgeBaseShrinkRequest) GoString() string {
 	return s.String()
 }
 
+func (s *CreatePersonalAlidingKnowledgeBaseShrinkRequest) GetAppToken() *string {
+	return s.AppToken
+}
+
 func (s *CreatePersonalAlidingKnowledgeBaseShrinkRequest) GetDirectoryId() *string {
 	return s.DirectoryId
 }
@@ -100,6 +128,14 @@ func (s *CreatePersonalAlidingKnowledgeBaseShrinkRequest) GetOperatingObjectName
 	return s.OperatingObjectName
 }
 
+func (s *CreatePersonalAlidingKnowledgeBaseShrinkRequest) GetOpsUserCode() *string {
+	return s.OpsUserCode
+}
+
+func (s *CreatePersonalAlidingKnowledgeBaseShrinkRequest) GetOpsUserId() *string {
+	return s.OpsUserId
+}
+
 func (s *CreatePersonalAlidingKnowledgeBaseShrinkRequest) GetSourceTags() *string {
 	return s.SourceTags
 }
@@ -110,6 +146,11 @@ func (s *CreatePersonalAlidingKnowledgeBaseShrinkRequest) GetSyncConfigShrink() 
 
 func (s *CreatePersonalAlidingKnowledgeBaseShrinkRequest) GetTenantId() *string {
 	return s.TenantId
+}
+
+func (s *CreatePersonalAlidingKnowledgeBaseShrinkRequest) SetAppToken(v string) *CreatePersonalAlidingKnowledgeBaseShrinkRequest {
+	s.AppToken = &v
+	return s
 }
 
 func (s *CreatePersonalAlidingKnowledgeBaseShrinkRequest) SetDirectoryId(v string) *CreatePersonalAlidingKnowledgeBaseShrinkRequest {
@@ -134,6 +175,16 @@ func (s *CreatePersonalAlidingKnowledgeBaseShrinkRequest) SetObjectBindingsShrin
 
 func (s *CreatePersonalAlidingKnowledgeBaseShrinkRequest) SetOperatingObjectName(v string) *CreatePersonalAlidingKnowledgeBaseShrinkRequest {
 	s.OperatingObjectName = &v
+	return s
+}
+
+func (s *CreatePersonalAlidingKnowledgeBaseShrinkRequest) SetOpsUserCode(v string) *CreatePersonalAlidingKnowledgeBaseShrinkRequest {
+	s.OpsUserCode = &v
+	return s
+}
+
+func (s *CreatePersonalAlidingKnowledgeBaseShrinkRequest) SetOpsUserId(v string) *CreatePersonalAlidingKnowledgeBaseShrinkRequest {
+	s.OpsUserId = &v
 	return s
 }
 

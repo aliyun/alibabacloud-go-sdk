@@ -44,13 +44,13 @@ type CreateConversationResponseBody struct {
 	//
 	// 1784513941206
 	CreatedAt *string `json:"createdAt,omitempty" xml:"createdAt,omitempty"`
-	// The description of the status code.
+	// The status code description.
 	//
 	// example:
 	//
 	// The current zone list is illegal.
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// A reserved field for extension purposes.
+	// The reserved field for extension purposes.
 	//
 	// example:
 	//
@@ -62,7 +62,7 @@ type CreateConversationResponseBody struct {
 	//
 	// A5241B90-8FF4-565C-977A-0CE1842AED72
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// The appointment title.
+	// The title of the scheduled meeting.
 	//
 	// example:
 	//

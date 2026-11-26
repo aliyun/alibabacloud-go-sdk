@@ -11,10 +11,16 @@ type iCreateFreeExplorationWorkItemRequest interface {
 	GoString() string
 	SetAgentNames(v []*string) *CreateFreeExplorationWorkItemRequest
 	GetAgentNames() []*string
+	SetAppToken(v string) *CreateFreeExplorationWorkItemRequest
+	GetAppToken() *string
 	SetCollaborationGroupId(v string) *CreateFreeExplorationWorkItemRequest
 	GetCollaborationGroupId() *string
 	SetMemberUserIds(v []*int64) *CreateFreeExplorationWorkItemRequest
 	GetMemberUserIds() []*int64
+	SetOpsUserCode(v string) *CreateFreeExplorationWorkItemRequest
+	GetOpsUserCode() *string
+	SetOpsUserId(v string) *CreateFreeExplorationWorkItemRequest
+	GetOpsUserId() *string
 	SetTenantId(v string) *CreateFreeExplorationWorkItemRequest
 	GetTenantId() *string
 	SetTitle(v string) *CreateFreeExplorationWorkItemRequest
@@ -32,6 +38,12 @@ type CreateFreeExplorationWorkItemRequest struct {
 	//
 	// ["sales-agent"]
 	AgentNames []*string `json:"agentNames,omitempty" xml:"agentNames,omitempty" type:"Repeated"`
+	// 平台应用 Token（控制台签发）。传入后将以 opsUserId 或 opsUserCode 指定的用户身份执行
+	//
+	// example:
+	//
+	// wn_app_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+	AppToken *string `json:"appToken,omitempty" xml:"appToken,omitempty"`
 	// The ID of the collaboration workspace to which the work item belongs.
 	//
 	// This parameter is required.
@@ -46,6 +58,18 @@ type CreateFreeExplorationWorkItemRequest struct {
 	//
 	// [43]
 	MemberUserIds []*int64 `json:"memberUserIds,omitempty" xml:"memberUserIds,omitempty" type:"Repeated"`
+	// 代理用户编码（租户内唯一），仅当应用凭证配置为 source_uid 时使用
+	//
+	// example:
+	//
+	// alice
+	OpsUserCode *string `json:"opsUserCode,omitempty" xml:"opsUserCode,omitempty"`
+	// 代理用户ID（WINNEXO 平台用户ID），仅当应用凭证配置为 winnexo_uid 时使用
+	//
+	// example:
+	//
+	// 10001
+	OpsUserId *string `json:"opsUserId,omitempty" xml:"opsUserId,omitempty"`
 	// The tenant ID. This is a common parameter. If this parameter is not specified, the default tenant of the caller is used.
 	//
 	// example:
@@ -80,12 +104,24 @@ func (s *CreateFreeExplorationWorkItemRequest) GetAgentNames() []*string {
 	return s.AgentNames
 }
 
+func (s *CreateFreeExplorationWorkItemRequest) GetAppToken() *string {
+	return s.AppToken
+}
+
 func (s *CreateFreeExplorationWorkItemRequest) GetCollaborationGroupId() *string {
 	return s.CollaborationGroupId
 }
 
 func (s *CreateFreeExplorationWorkItemRequest) GetMemberUserIds() []*int64 {
 	return s.MemberUserIds
+}
+
+func (s *CreateFreeExplorationWorkItemRequest) GetOpsUserCode() *string {
+	return s.OpsUserCode
+}
+
+func (s *CreateFreeExplorationWorkItemRequest) GetOpsUserId() *string {
+	return s.OpsUserId
 }
 
 func (s *CreateFreeExplorationWorkItemRequest) GetTenantId() *string {
@@ -105,6 +141,11 @@ func (s *CreateFreeExplorationWorkItemRequest) SetAgentNames(v []*string) *Creat
 	return s
 }
 
+func (s *CreateFreeExplorationWorkItemRequest) SetAppToken(v string) *CreateFreeExplorationWorkItemRequest {
+	s.AppToken = &v
+	return s
+}
+
 func (s *CreateFreeExplorationWorkItemRequest) SetCollaborationGroupId(v string) *CreateFreeExplorationWorkItemRequest {
 	s.CollaborationGroupId = &v
 	return s
@@ -112,6 +153,16 @@ func (s *CreateFreeExplorationWorkItemRequest) SetCollaborationGroupId(v string)
 
 func (s *CreateFreeExplorationWorkItemRequest) SetMemberUserIds(v []*int64) *CreateFreeExplorationWorkItemRequest {
 	s.MemberUserIds = v
+	return s
+}
+
+func (s *CreateFreeExplorationWorkItemRequest) SetOpsUserCode(v string) *CreateFreeExplorationWorkItemRequest {
+	s.OpsUserCode = &v
+	return s
+}
+
+func (s *CreateFreeExplorationWorkItemRequest) SetOpsUserId(v string) *CreateFreeExplorationWorkItemRequest {
+	s.OpsUserId = &v
 	return s
 }
 

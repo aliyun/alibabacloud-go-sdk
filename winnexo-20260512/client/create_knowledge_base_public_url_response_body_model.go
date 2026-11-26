@@ -38,7 +38,7 @@ type CreateKnowledgeBasePublicUrlResponseBody struct {
 	//
 	// 200
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// The ID of the destination folder in the enterprise knowledge base that was specified in the request.
+	// The ID of the requested target directory in the enterprise knowledge base.
 	//
 	// example:
 	//
@@ -50,31 +50,31 @@ type CreateKnowledgeBasePublicUrlResponseBody struct {
 	//
 	// 2026-09-14T10:00:00+08:00
 	GmtCreate *string `json:"gmtCreate,omitempty" xml:"gmtCreate,omitempty"`
-	// The error description. This value is empty if the request is successful.
+	// The error message. This parameter is empty if the request is successful.
 	//
 	// example:
 	//
 	// The requested resource does not exist
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// The resource name.
+	// The name of the resource.
 	//
 	// example:
 	//
-	// Project Plan
+	// Project plan
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The submitted public web page URL.
+	// The URL of the submitted public web page.
 	//
 	// example:
 	//
 	// https://example.com
 	OriginalUrl *string `json:"originalUrl,omitempty" xml:"originalUrl,omitempty"`
-	// The request trace ID.
+	// The request ID.
 	//
 	// example:
 	//
 	// 019FF406-1B10-0065-A97D-2D1920C2A03D
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// The resource scope. The value is fixed to TENANT.
+	// The scope of the resource. The value is fixed to TENANT.
 	//
 	// example:
 	//
@@ -86,7 +86,7 @@ type CreateKnowledgeBasePublicUrlResponseBody struct {
 	//
 	// src_public_url_1
 	SourceId *string `json:"sourceId,omitempty" xml:"sourceId,omitempty"`
-	// The resource status. A value of RUNNING indicates that the request has been accepted but the crawling and parsing are not yet complete.
+	// The status of the resource. A value of RUNNING indicates that the request is accepted but the crawling and parsing are not completed.
 	//
 	// example:
 	//

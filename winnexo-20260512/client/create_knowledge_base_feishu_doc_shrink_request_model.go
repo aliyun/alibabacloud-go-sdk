@@ -9,6 +9,8 @@ type iCreateKnowledgeBaseFeishuDocShrinkRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAppToken(v string) *CreateKnowledgeBaseFeishuDocShrinkRequest
+	GetAppToken() *string
 	SetDescription(v string) *CreateKnowledgeBaseFeishuDocShrinkRequest
 	GetDescription() *string
 	SetDirectoryId(v string) *CreateKnowledgeBaseFeishuDocShrinkRequest
@@ -23,6 +25,10 @@ type iCreateKnowledgeBaseFeishuDocShrinkRequest interface {
 	GetObjectBindingsShrink() *string
 	SetOperatingObjectName(v string) *CreateKnowledgeBaseFeishuDocShrinkRequest
 	GetOperatingObjectName() *string
+	SetOpsUserCode(v string) *CreateKnowledgeBaseFeishuDocShrinkRequest
+	GetOpsUserCode() *string
+	SetOpsUserId(v string) *CreateKnowledgeBaseFeishuDocShrinkRequest
+	GetOpsUserId() *string
 	SetSourceTags(v string) *CreateKnowledgeBaseFeishuDocShrinkRequest
 	GetSourceTags() *string
 	SetSyncConfigShrink(v string) *CreateKnowledgeBaseFeishuDocShrinkRequest
@@ -32,6 +38,12 @@ type iCreateKnowledgeBaseFeishuDocShrinkRequest interface {
 }
 
 type CreateKnowledgeBaseFeishuDocShrinkRequest struct {
+	// 平台应用 Token（控制台签发）。传入后将以 opsUserId 或 opsUserCode 指定的用户身份执行
+	//
+	// example:
+	//
+	// wn_app_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+	AppToken *string `json:"appToken,omitempty" xml:"appToken,omitempty"`
 	// The description of the alias.
 	//
 	// example:
@@ -74,6 +86,18 @@ type CreateKnowledgeBaseFeishuDocShrinkRequest struct {
 	//
 	// Enterprise Knowledge Assistant
 	OperatingObjectName *string `json:"operatingObjectName,omitempty" xml:"operatingObjectName,omitempty"`
+	// 代理用户编码（租户内唯一），仅当应用凭证配置为 source_uid 时使用
+	//
+	// example:
+	//
+	// alice
+	OpsUserCode *string `json:"opsUserCode,omitempty" xml:"opsUserCode,omitempty"`
+	// 代理用户ID（WINNEXO 平台用户ID），仅当应用凭证配置为 winnexo_uid 时使用
+	//
+	// example:
+	//
+	// 10001
+	OpsUserId *string `json:"opsUserId,omitempty" xml:"opsUserId,omitempty"`
 	// The resource tags (optional, a JSON string list such as ["tagA","tagB"]).
 	//
 	// example:
@@ -96,6 +120,10 @@ func (s CreateKnowledgeBaseFeishuDocShrinkRequest) String() string {
 
 func (s CreateKnowledgeBaseFeishuDocShrinkRequest) GoString() string {
 	return s.String()
+}
+
+func (s *CreateKnowledgeBaseFeishuDocShrinkRequest) GetAppToken() *string {
+	return s.AppToken
 }
 
 func (s *CreateKnowledgeBaseFeishuDocShrinkRequest) GetDescription() *string {
@@ -126,6 +154,14 @@ func (s *CreateKnowledgeBaseFeishuDocShrinkRequest) GetOperatingObjectName() *st
 	return s.OperatingObjectName
 }
 
+func (s *CreateKnowledgeBaseFeishuDocShrinkRequest) GetOpsUserCode() *string {
+	return s.OpsUserCode
+}
+
+func (s *CreateKnowledgeBaseFeishuDocShrinkRequest) GetOpsUserId() *string {
+	return s.OpsUserId
+}
+
 func (s *CreateKnowledgeBaseFeishuDocShrinkRequest) GetSourceTags() *string {
 	return s.SourceTags
 }
@@ -136,6 +172,11 @@ func (s *CreateKnowledgeBaseFeishuDocShrinkRequest) GetSyncConfigShrink() *strin
 
 func (s *CreateKnowledgeBaseFeishuDocShrinkRequest) GetTenantId() *string {
 	return s.TenantId
+}
+
+func (s *CreateKnowledgeBaseFeishuDocShrinkRequest) SetAppToken(v string) *CreateKnowledgeBaseFeishuDocShrinkRequest {
+	s.AppToken = &v
+	return s
 }
 
 func (s *CreateKnowledgeBaseFeishuDocShrinkRequest) SetDescription(v string) *CreateKnowledgeBaseFeishuDocShrinkRequest {
@@ -170,6 +211,16 @@ func (s *CreateKnowledgeBaseFeishuDocShrinkRequest) SetObjectBindingsShrink(v st
 
 func (s *CreateKnowledgeBaseFeishuDocShrinkRequest) SetOperatingObjectName(v string) *CreateKnowledgeBaseFeishuDocShrinkRequest {
 	s.OperatingObjectName = &v
+	return s
+}
+
+func (s *CreateKnowledgeBaseFeishuDocShrinkRequest) SetOpsUserCode(v string) *CreateKnowledgeBaseFeishuDocShrinkRequest {
+	s.OpsUserCode = &v
+	return s
+}
+
+func (s *CreateKnowledgeBaseFeishuDocShrinkRequest) SetOpsUserId(v string) *CreateKnowledgeBaseFeishuDocShrinkRequest {
+	s.OpsUserId = &v
 	return s
 }
 

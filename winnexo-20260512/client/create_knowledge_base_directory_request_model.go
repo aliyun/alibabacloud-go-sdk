@@ -9,10 +9,16 @@ type iCreateKnowledgeBaseDirectoryRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAppToken(v string) *CreateKnowledgeBaseDirectoryRequest
+	GetAppToken() *string
 	SetDescription(v string) *CreateKnowledgeBaseDirectoryRequest
 	GetDescription() *string
 	SetName(v string) *CreateKnowledgeBaseDirectoryRequest
 	GetName() *string
+	SetOpsUserCode(v string) *CreateKnowledgeBaseDirectoryRequest
+	GetOpsUserCode() *string
+	SetOpsUserId(v string) *CreateKnowledgeBaseDirectoryRequest
+	GetOpsUserId() *string
 	SetParentDirectoryId(v string) *CreateKnowledgeBaseDirectoryRequest
 	GetParentDirectoryId() *string
 	SetTenantId(v string) *CreateKnowledgeBaseDirectoryRequest
@@ -20,6 +26,12 @@ type iCreateKnowledgeBaseDirectoryRequest interface {
 }
 
 type CreateKnowledgeBaseDirectoryRequest struct {
+	// The platform application token issued by the console. If specified, the operation is executed as the user specified by opsUserId or opsUserCode.
+	//
+	// example:
+	//
+	// wn_app_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+	AppToken *string `json:"appToken,omitempty" xml:"appToken,omitempty"`
 	// The description of the AI assistant.
 	//
 	// example:
@@ -34,6 +46,18 @@ type CreateKnowledgeBaseDirectoryRequest struct {
 	//
 	// oklabs_tongyici
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// The proxy user code, which is unique within the tenant. This parameter is used only when the application credential is configured as source_uid.
+	//
+	// example:
+	//
+	// alice
+	OpsUserCode *string `json:"opsUserCode,omitempty" xml:"opsUserCode,omitempty"`
+	// The proxy user ID, which is the WINNEXO platform user ID. This parameter is used only when the application credential is configured as winnexo_uid.
+	//
+	// example:
+	//
+	// 10001
+	OpsUserId *string `json:"opsUserId,omitempty" xml:"opsUserId,omitempty"`
 	// The directory ID.
 	//
 	// example:
@@ -56,12 +80,24 @@ func (s CreateKnowledgeBaseDirectoryRequest) GoString() string {
 	return s.String()
 }
 
+func (s *CreateKnowledgeBaseDirectoryRequest) GetAppToken() *string {
+	return s.AppToken
+}
+
 func (s *CreateKnowledgeBaseDirectoryRequest) GetDescription() *string {
 	return s.Description
 }
 
 func (s *CreateKnowledgeBaseDirectoryRequest) GetName() *string {
 	return s.Name
+}
+
+func (s *CreateKnowledgeBaseDirectoryRequest) GetOpsUserCode() *string {
+	return s.OpsUserCode
+}
+
+func (s *CreateKnowledgeBaseDirectoryRequest) GetOpsUserId() *string {
+	return s.OpsUserId
 }
 
 func (s *CreateKnowledgeBaseDirectoryRequest) GetParentDirectoryId() *string {
@@ -72,6 +108,11 @@ func (s *CreateKnowledgeBaseDirectoryRequest) GetTenantId() *string {
 	return s.TenantId
 }
 
+func (s *CreateKnowledgeBaseDirectoryRequest) SetAppToken(v string) *CreateKnowledgeBaseDirectoryRequest {
+	s.AppToken = &v
+	return s
+}
+
 func (s *CreateKnowledgeBaseDirectoryRequest) SetDescription(v string) *CreateKnowledgeBaseDirectoryRequest {
 	s.Description = &v
 	return s
@@ -79,6 +120,16 @@ func (s *CreateKnowledgeBaseDirectoryRequest) SetDescription(v string) *CreateKn
 
 func (s *CreateKnowledgeBaseDirectoryRequest) SetName(v string) *CreateKnowledgeBaseDirectoryRequest {
 	s.Name = &v
+	return s
+}
+
+func (s *CreateKnowledgeBaseDirectoryRequest) SetOpsUserCode(v string) *CreateKnowledgeBaseDirectoryRequest {
+	s.OpsUserCode = &v
+	return s
+}
+
+func (s *CreateKnowledgeBaseDirectoryRequest) SetOpsUserId(v string) *CreateKnowledgeBaseDirectoryRequest {
+	s.OpsUserId = &v
 	return s
 }
 

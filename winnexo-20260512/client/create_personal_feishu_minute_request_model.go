@@ -9,6 +9,8 @@ type iCreatePersonalFeishuMinuteRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAppToken(v string) *CreatePersonalFeishuMinuteRequest
+	GetAppToken() *string
 	SetCredentialId(v string) *CreatePersonalFeishuMinuteRequest
 	GetCredentialId() *string
 	SetDescription(v string) *CreatePersonalFeishuMinuteRequest
@@ -21,6 +23,10 @@ type iCreatePersonalFeishuMinuteRequest interface {
 	GetName() *string
 	SetOperatingObjectName(v string) *CreatePersonalFeishuMinuteRequest
 	GetOperatingObjectName() *string
+	SetOpsUserCode(v string) *CreatePersonalFeishuMinuteRequest
+	GetOpsUserCode() *string
+	SetOpsUserId(v string) *CreatePersonalFeishuMinuteRequest
+	GetOpsUserId() *string
 	SetSourceTags(v string) *CreatePersonalFeishuMinuteRequest
 	GetSourceTags() *string
 	SetTenantId(v string) *CreatePersonalFeishuMinuteRequest
@@ -28,6 +34,12 @@ type iCreatePersonalFeishuMinuteRequest interface {
 }
 
 type CreatePersonalFeishuMinuteRequest struct {
+	// 平台应用 Token（控制台签发）。传入后将以 opsUserId 或 opsUserCode 指定的用户身份执行
+	//
+	// example:
+	//
+	// wn_app_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+	AppToken *string `json:"appToken,omitempty" xml:"appToken,omitempty"`
 	// The credential ID.
 	//
 	// This parameter is required.
@@ -70,6 +82,18 @@ type CreatePersonalFeishuMinuteRequest struct {
 	//
 	// string_value
 	OperatingObjectName *string `json:"operatingObjectName,omitempty" xml:"operatingObjectName,omitempty"`
+	// 代理用户编码（租户内唯一），仅当应用凭证配置为 source_uid 时使用
+	//
+	// example:
+	//
+	// alice
+	OpsUserCode *string `json:"opsUserCode,omitempty" xml:"opsUserCode,omitempty"`
+	// 代理用户ID（WINNEXO 平台用户ID），仅当应用凭证配置为 winnexo_uid 时使用
+	//
+	// example:
+	//
+	// 10001
+	OpsUserId *string `json:"opsUserId,omitempty" xml:"opsUserId,omitempty"`
 	// The list of resource tag JSON strings.
 	//
 	// example:
@@ -90,6 +114,10 @@ func (s CreatePersonalFeishuMinuteRequest) String() string {
 
 func (s CreatePersonalFeishuMinuteRequest) GoString() string {
 	return s.String()
+}
+
+func (s *CreatePersonalFeishuMinuteRequest) GetAppToken() *string {
+	return s.AppToken
 }
 
 func (s *CreatePersonalFeishuMinuteRequest) GetCredentialId() *string {
@@ -116,12 +144,25 @@ func (s *CreatePersonalFeishuMinuteRequest) GetOperatingObjectName() *string {
 	return s.OperatingObjectName
 }
 
+func (s *CreatePersonalFeishuMinuteRequest) GetOpsUserCode() *string {
+	return s.OpsUserCode
+}
+
+func (s *CreatePersonalFeishuMinuteRequest) GetOpsUserId() *string {
+	return s.OpsUserId
+}
+
 func (s *CreatePersonalFeishuMinuteRequest) GetSourceTags() *string {
 	return s.SourceTags
 }
 
 func (s *CreatePersonalFeishuMinuteRequest) GetTenantId() *string {
 	return s.TenantId
+}
+
+func (s *CreatePersonalFeishuMinuteRequest) SetAppToken(v string) *CreatePersonalFeishuMinuteRequest {
+	s.AppToken = &v
+	return s
 }
 
 func (s *CreatePersonalFeishuMinuteRequest) SetCredentialId(v string) *CreatePersonalFeishuMinuteRequest {
@@ -151,6 +192,16 @@ func (s *CreatePersonalFeishuMinuteRequest) SetName(v string) *CreatePersonalFei
 
 func (s *CreatePersonalFeishuMinuteRequest) SetOperatingObjectName(v string) *CreatePersonalFeishuMinuteRequest {
 	s.OperatingObjectName = &v
+	return s
+}
+
+func (s *CreatePersonalFeishuMinuteRequest) SetOpsUserCode(v string) *CreatePersonalFeishuMinuteRequest {
+	s.OpsUserCode = &v
+	return s
+}
+
+func (s *CreatePersonalFeishuMinuteRequest) SetOpsUserId(v string) *CreatePersonalFeishuMinuteRequest {
+	s.OpsUserId = &v
 	return s
 }
 

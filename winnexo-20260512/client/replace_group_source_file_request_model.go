@@ -9,6 +9,8 @@ type iReplaceGroupSourceFileRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAppToken(v string) *ReplaceGroupSourceFileRequest
+	GetAppToken() *string
 	SetFileName(v string) *ReplaceGroupSourceFileRequest
 	GetFileName() *string
 	SetFilePath(v string) *ReplaceGroupSourceFileRequest
@@ -21,6 +23,10 @@ type iReplaceGroupSourceFileRequest interface {
 	GetForceSync() *bool
 	SetGroupId(v string) *ReplaceGroupSourceFileRequest
 	GetGroupId() *string
+	SetOpsUserCode(v string) *ReplaceGroupSourceFileRequest
+	GetOpsUserCode() *string
+	SetOpsUserId(v string) *ReplaceGroupSourceFileRequest
+	GetOpsUserId() *string
 	SetSourceId(v string) *ReplaceGroupSourceFileRequest
 	GetSourceId() *string
 	SetTenantId(v string) *ReplaceGroupSourceFileRequest
@@ -28,6 +34,12 @@ type iReplaceGroupSourceFileRequest interface {
 }
 
 type ReplaceGroupSourceFileRequest struct {
+	// 平台应用 Token（控制台签发）。传入后将以 opsUserId 或 opsUserCode 指定的用户身份执行
+	//
+	// example:
+	//
+	// wn_app_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+	AppToken *string `json:"appToken,omitempty" xml:"appToken,omitempty"`
 	// The new file name. This parameter is optional. If you do not specify this parameter or set it to an empty string, the original file name is retained.
 	//
 	// example:
@@ -72,6 +84,18 @@ type ReplaceGroupSourceFileRequest struct {
 	//
 	// group_example
 	GroupId *string `json:"groupId,omitempty" xml:"groupId,omitempty"`
+	// 代理用户编码（租户内唯一），仅当应用凭证配置为 source_uid 时使用
+	//
+	// example:
+	//
+	// alice
+	OpsUserCode *string `json:"opsUserCode,omitempty" xml:"opsUserCode,omitempty"`
+	// 代理用户ID（WINNEXO 平台用户ID），仅当应用凭证配置为 winnexo_uid 时使用
+	//
+	// example:
+	//
+	// 10001
+	OpsUserId *string `json:"opsUserId,omitempty" xml:"opsUserId,omitempty"`
 	// The data source ID.
 	//
 	// This parameter is required.
@@ -94,6 +118,10 @@ func (s ReplaceGroupSourceFileRequest) String() string {
 
 func (s ReplaceGroupSourceFileRequest) GoString() string {
 	return s.String()
+}
+
+func (s *ReplaceGroupSourceFileRequest) GetAppToken() *string {
+	return s.AppToken
 }
 
 func (s *ReplaceGroupSourceFileRequest) GetFileName() *string {
@@ -120,12 +148,25 @@ func (s *ReplaceGroupSourceFileRequest) GetGroupId() *string {
 	return s.GroupId
 }
 
+func (s *ReplaceGroupSourceFileRequest) GetOpsUserCode() *string {
+	return s.OpsUserCode
+}
+
+func (s *ReplaceGroupSourceFileRequest) GetOpsUserId() *string {
+	return s.OpsUserId
+}
+
 func (s *ReplaceGroupSourceFileRequest) GetSourceId() *string {
 	return s.SourceId
 }
 
 func (s *ReplaceGroupSourceFileRequest) GetTenantId() *string {
 	return s.TenantId
+}
+
+func (s *ReplaceGroupSourceFileRequest) SetAppToken(v string) *ReplaceGroupSourceFileRequest {
+	s.AppToken = &v
+	return s
 }
 
 func (s *ReplaceGroupSourceFileRequest) SetFileName(v string) *ReplaceGroupSourceFileRequest {
@@ -155,6 +196,16 @@ func (s *ReplaceGroupSourceFileRequest) SetForceSync(v bool) *ReplaceGroupSource
 
 func (s *ReplaceGroupSourceFileRequest) SetGroupId(v string) *ReplaceGroupSourceFileRequest {
 	s.GroupId = &v
+	return s
+}
+
+func (s *ReplaceGroupSourceFileRequest) SetOpsUserCode(v string) *ReplaceGroupSourceFileRequest {
+	s.OpsUserCode = &v
+	return s
+}
+
+func (s *ReplaceGroupSourceFileRequest) SetOpsUserId(v string) *ReplaceGroupSourceFileRequest {
+	s.OpsUserId = &v
 	return s
 }
 

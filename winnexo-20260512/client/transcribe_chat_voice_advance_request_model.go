@@ -10,6 +10,8 @@ type iTranscribeChatVoiceAdvanceRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAppToken(v string) *TranscribeChatVoiceAdvanceRequest
+	GetAppToken() *string
 	SetContentType(v string) *TranscribeChatVoiceAdvanceRequest
 	GetContentType() *string
 	SetFileContentBase64(v string) *TranscribeChatVoiceAdvanceRequest
@@ -18,11 +20,21 @@ type iTranscribeChatVoiceAdvanceRequest interface {
 	GetFileName() *string
 	SetFileUrlObject(v io.Reader) *TranscribeChatVoiceAdvanceRequest
 	GetFileUrlObject() io.Reader
+	SetOpsUserCode(v string) *TranscribeChatVoiceAdvanceRequest
+	GetOpsUserCode() *string
+	SetOpsUserId(v string) *TranscribeChatVoiceAdvanceRequest
+	GetOpsUserId() *string
 	SetTenantId(v string) *TranscribeChatVoiceAdvanceRequest
 	GetTenantId() *string
 }
 
 type TranscribeChatVoiceAdvanceRequest struct {
+	// 平台应用 Token（控制台签发）。传入后将以 opsUserId 或 opsUserCode 指定的用户身份执行
+	//
+	// example:
+	//
+	// wn_app_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+	AppToken *string `json:"appToken,omitempty" xml:"appToken,omitempty"`
 	// The content type of the file. Valid values:
 	//
 	// - **image**: Image.
@@ -69,6 +81,18 @@ type TranscribeChatVoiceAdvanceRequest struct {
 	//
 	// http://winnexo-file-transfer.oss-cn-hangzhou.aliyuncs.com/openapi/2026-09-08/9f8c2a1b
 	FileUrlObject io.Reader `json:"fileUrl,omitempty" xml:"fileUrl,omitempty"`
+	// 代理用户编码（租户内唯一），仅当应用凭证配置为 source_uid 时使用
+	//
+	// example:
+	//
+	// alice
+	OpsUserCode *string `json:"opsUserCode,omitempty" xml:"opsUserCode,omitempty"`
+	// 代理用户ID（WINNEXO 平台用户ID），仅当应用凭证配置为 winnexo_uid 时使用
+	//
+	// example:
+	//
+	// 10001
+	OpsUserId *string `json:"opsUserId,omitempty" xml:"opsUserId,omitempty"`
 	// The ID of the tenant.
 	//
 	// example:
@@ -83,6 +107,10 @@ func (s TranscribeChatVoiceAdvanceRequest) String() string {
 
 func (s TranscribeChatVoiceAdvanceRequest) GoString() string {
 	return s.String()
+}
+
+func (s *TranscribeChatVoiceAdvanceRequest) GetAppToken() *string {
+	return s.AppToken
 }
 
 func (s *TranscribeChatVoiceAdvanceRequest) GetContentType() *string {
@@ -101,8 +129,21 @@ func (s *TranscribeChatVoiceAdvanceRequest) GetFileUrlObject() io.Reader {
 	return s.FileUrlObject
 }
 
+func (s *TranscribeChatVoiceAdvanceRequest) GetOpsUserCode() *string {
+	return s.OpsUserCode
+}
+
+func (s *TranscribeChatVoiceAdvanceRequest) GetOpsUserId() *string {
+	return s.OpsUserId
+}
+
 func (s *TranscribeChatVoiceAdvanceRequest) GetTenantId() *string {
 	return s.TenantId
+}
+
+func (s *TranscribeChatVoiceAdvanceRequest) SetAppToken(v string) *TranscribeChatVoiceAdvanceRequest {
+	s.AppToken = &v
+	return s
 }
 
 func (s *TranscribeChatVoiceAdvanceRequest) SetContentType(v string) *TranscribeChatVoiceAdvanceRequest {
@@ -122,6 +163,16 @@ func (s *TranscribeChatVoiceAdvanceRequest) SetFileName(v string) *TranscribeCha
 
 func (s *TranscribeChatVoiceAdvanceRequest) SetFileUrlObject(v io.Reader) *TranscribeChatVoiceAdvanceRequest {
 	s.FileUrlObject = v
+	return s
+}
+
+func (s *TranscribeChatVoiceAdvanceRequest) SetOpsUserCode(v string) *TranscribeChatVoiceAdvanceRequest {
+	s.OpsUserCode = &v
+	return s
+}
+
+func (s *TranscribeChatVoiceAdvanceRequest) SetOpsUserId(v string) *TranscribeChatVoiceAdvanceRequest {
+	s.OpsUserId = &v
 	return s
 }
 

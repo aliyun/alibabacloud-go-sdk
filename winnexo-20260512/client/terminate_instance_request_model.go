@@ -9,10 +9,16 @@ type iTerminateInstanceRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAppToken(v string) *TerminateInstanceRequest
+	GetAppToken() *string
 	SetCollaborationGroupId(v string) *TerminateInstanceRequest
 	GetCollaborationGroupId() *string
 	SetInstanceId(v string) *TerminateInstanceRequest
 	GetInstanceId() *string
+	SetOpsUserCode(v string) *TerminateInstanceRequest
+	GetOpsUserCode() *string
+	SetOpsUserId(v string) *TerminateInstanceRequest
+	GetOpsUserId() *string
 	SetReason(v string) *TerminateInstanceRequest
 	GetReason() *string
 	SetTenantId(v string) *TerminateInstanceRequest
@@ -20,6 +26,12 @@ type iTerminateInstanceRequest interface {
 }
 
 type TerminateInstanceRequest struct {
+	// 平台应用 Token（控制台签发）。传入后将以 opsUserId 或 opsUserCode 指定的用户身份执行
+	//
+	// example:
+	//
+	// wn_app_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+	AppToken *string `json:"appToken,omitempty" xml:"appToken,omitempty"`
 	// The ID of the collaboration workspace.
 	//
 	// This parameter is required.
@@ -36,6 +48,18 @@ type TerminateInstanceRequest struct {
 	//
 	// plan_example
 	InstanceId *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
+	// 代理用户编码（租户内唯一），仅当应用凭证配置为 source_uid 时使用
+	//
+	// example:
+	//
+	// alice
+	OpsUserCode *string `json:"opsUserCode,omitempty" xml:"opsUserCode,omitempty"`
+	// 代理用户ID（WINNEXO 平台用户ID），仅当应用凭证配置为 winnexo_uid 时使用
+	//
+	// example:
+	//
+	// 10001
+	OpsUserId *string `json:"opsUserId,omitempty" xml:"opsUserId,omitempty"`
 	// The reason for termination.
 	//
 	// This parameter is required.
@@ -60,12 +84,24 @@ func (s TerminateInstanceRequest) GoString() string {
 	return s.String()
 }
 
+func (s *TerminateInstanceRequest) GetAppToken() *string {
+	return s.AppToken
+}
+
 func (s *TerminateInstanceRequest) GetCollaborationGroupId() *string {
 	return s.CollaborationGroupId
 }
 
 func (s *TerminateInstanceRequest) GetInstanceId() *string {
 	return s.InstanceId
+}
+
+func (s *TerminateInstanceRequest) GetOpsUserCode() *string {
+	return s.OpsUserCode
+}
+
+func (s *TerminateInstanceRequest) GetOpsUserId() *string {
+	return s.OpsUserId
 }
 
 func (s *TerminateInstanceRequest) GetReason() *string {
@@ -76,6 +112,11 @@ func (s *TerminateInstanceRequest) GetTenantId() *string {
 	return s.TenantId
 }
 
+func (s *TerminateInstanceRequest) SetAppToken(v string) *TerminateInstanceRequest {
+	s.AppToken = &v
+	return s
+}
+
 func (s *TerminateInstanceRequest) SetCollaborationGroupId(v string) *TerminateInstanceRequest {
 	s.CollaborationGroupId = &v
 	return s
@@ -83,6 +124,16 @@ func (s *TerminateInstanceRequest) SetCollaborationGroupId(v string) *TerminateI
 
 func (s *TerminateInstanceRequest) SetInstanceId(v string) *TerminateInstanceRequest {
 	s.InstanceId = &v
+	return s
+}
+
+func (s *TerminateInstanceRequest) SetOpsUserCode(v string) *TerminateInstanceRequest {
+	s.OpsUserCode = &v
+	return s
+}
+
+func (s *TerminateInstanceRequest) SetOpsUserId(v string) *TerminateInstanceRequest {
+	s.OpsUserId = &v
 	return s
 }
 

@@ -9,6 +9,8 @@ type iCreateGraphRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAppToken(v string) *CreateGraphRequest
+	GetAppToken() *string
 	SetBusinessProfile(v string) *CreateGraphRequest
 	GetBusinessProfile() *string
 	SetDataSourceId(v int64) *CreateGraphRequest
@@ -17,11 +19,21 @@ type iCreateGraphRequest interface {
 	GetDisplayName() *string
 	SetGraphName(v string) *CreateGraphRequest
 	GetGraphName() *string
+	SetOpsUserCode(v string) *CreateGraphRequest
+	GetOpsUserCode() *string
+	SetOpsUserId(v string) *CreateGraphRequest
+	GetOpsUserId() *string
 	SetTenantId(v string) *CreateGraphRequest
 	GetTenantId() *string
 }
 
 type CreateGraphRequest struct {
+	// 平台应用 Token（控制台签发）。传入后将以 opsUserId 或 opsUserCode 指定的用户身份执行
+	//
+	// example:
+	//
+	// wn_app_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+	AppToken *string `json:"appToken,omitempty" xml:"appToken,omitempty"`
 	// The business description of the graph. If not configured, it is an empty string.
 	//
 	// example:
@@ -50,6 +62,18 @@ type CreateGraphRequest struct {
 	//
 	// crm_graph
 	GraphName *string `json:"graphName,omitempty" xml:"graphName,omitempty"`
+	// 代理用户编码（租户内唯一），仅当应用凭证配置为 source_uid 时使用
+	//
+	// example:
+	//
+	// alice
+	OpsUserCode *string `json:"opsUserCode,omitempty" xml:"opsUserCode,omitempty"`
+	// 代理用户ID（WINNEXO 平台用户ID），仅当应用凭证配置为 winnexo_uid 时使用
+	//
+	// example:
+	//
+	// 10001
+	OpsUserId *string `json:"opsUserId,omitempty" xml:"opsUserId,omitempty"`
 	// The tenant ID.
 	//
 	// example:
@@ -64,6 +88,10 @@ func (s CreateGraphRequest) String() string {
 
 func (s CreateGraphRequest) GoString() string {
 	return s.String()
+}
+
+func (s *CreateGraphRequest) GetAppToken() *string {
+	return s.AppToken
 }
 
 func (s *CreateGraphRequest) GetBusinessProfile() *string {
@@ -82,8 +110,21 @@ func (s *CreateGraphRequest) GetGraphName() *string {
 	return s.GraphName
 }
 
+func (s *CreateGraphRequest) GetOpsUserCode() *string {
+	return s.OpsUserCode
+}
+
+func (s *CreateGraphRequest) GetOpsUserId() *string {
+	return s.OpsUserId
+}
+
 func (s *CreateGraphRequest) GetTenantId() *string {
 	return s.TenantId
+}
+
+func (s *CreateGraphRequest) SetAppToken(v string) *CreateGraphRequest {
+	s.AppToken = &v
+	return s
 }
 
 func (s *CreateGraphRequest) SetBusinessProfile(v string) *CreateGraphRequest {
@@ -103,6 +144,16 @@ func (s *CreateGraphRequest) SetDisplayName(v string) *CreateGraphRequest {
 
 func (s *CreateGraphRequest) SetGraphName(v string) *CreateGraphRequest {
 	s.GraphName = &v
+	return s
+}
+
+func (s *CreateGraphRequest) SetOpsUserCode(v string) *CreateGraphRequest {
+	s.OpsUserCode = &v
+	return s
+}
+
+func (s *CreateGraphRequest) SetOpsUserId(v string) *CreateGraphRequest {
+	s.OpsUserId = &v
 	return s
 }
 

@@ -9,10 +9,16 @@ type iListGroupDirectoryShrinkRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAppToken(v string) *ListGroupDirectoryShrinkRequest
+	GetAppToken() *string
 	SetDirectoryId(v string) *ListGroupDirectoryShrinkRequest
 	GetDirectoryId() *string
 	SetGroupId(v string) *ListGroupDirectoryShrinkRequest
 	GetGroupId() *string
+	SetOpsUserCode(v string) *ListGroupDirectoryShrinkRequest
+	GetOpsUserCode() *string
+	SetOpsUserId(v string) *ListGroupDirectoryShrinkRequest
+	GetOpsUserId() *string
 	SetPage(v int64) *ListGroupDirectoryShrinkRequest
 	GetPage() *int64
 	SetPageSize(v int64) *ListGroupDirectoryShrinkRequest
@@ -30,6 +36,12 @@ type iListGroupDirectoryShrinkRequest interface {
 }
 
 type ListGroupDirectoryShrinkRequest struct {
+	// 平台应用 Token（控制台签发）。传入后将以 opsUserId 或 opsUserCode 指定的用户身份执行
+	//
+	// example:
+	//
+	// wn_app_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+	AppToken *string `json:"appToken,omitempty" xml:"appToken,omitempty"`
 	// The ID of a visible directory within the space. If omitted or set to root, the internal root is queried. On the first query, the existing service initialization for the root directory is used.
 	//
 	// example:
@@ -44,6 +56,18 @@ type ListGroupDirectoryShrinkRequest struct {
 	//
 	// group_example
 	GroupId *string `json:"groupId,omitempty" xml:"groupId,omitempty"`
+	// 代理用户编码（租户内唯一），仅当应用凭证配置为 source_uid 时使用
+	//
+	// example:
+	//
+	// alice
+	OpsUserCode *string `json:"opsUserCode,omitempty" xml:"opsUserCode,omitempty"`
+	// 代理用户ID（WINNEXO 平台用户ID），仅当应用凭证配置为 winnexo_uid 时使用
+	//
+	// example:
+	//
+	// 10001
+	OpsUserId *string `json:"opsUserId,omitempty" xml:"opsUserId,omitempty"`
 	// The page number, starting from 1.
 	//
 	// example:
@@ -96,12 +120,24 @@ func (s ListGroupDirectoryShrinkRequest) GoString() string {
 	return s.String()
 }
 
+func (s *ListGroupDirectoryShrinkRequest) GetAppToken() *string {
+	return s.AppToken
+}
+
 func (s *ListGroupDirectoryShrinkRequest) GetDirectoryId() *string {
 	return s.DirectoryId
 }
 
 func (s *ListGroupDirectoryShrinkRequest) GetGroupId() *string {
 	return s.GroupId
+}
+
+func (s *ListGroupDirectoryShrinkRequest) GetOpsUserCode() *string {
+	return s.OpsUserCode
+}
+
+func (s *ListGroupDirectoryShrinkRequest) GetOpsUserId() *string {
+	return s.OpsUserId
 }
 
 func (s *ListGroupDirectoryShrinkRequest) GetPage() *int64 {
@@ -132,6 +168,11 @@ func (s *ListGroupDirectoryShrinkRequest) GetTenantId() *string {
 	return s.TenantId
 }
 
+func (s *ListGroupDirectoryShrinkRequest) SetAppToken(v string) *ListGroupDirectoryShrinkRequest {
+	s.AppToken = &v
+	return s
+}
+
 func (s *ListGroupDirectoryShrinkRequest) SetDirectoryId(v string) *ListGroupDirectoryShrinkRequest {
 	s.DirectoryId = &v
 	return s
@@ -139,6 +180,16 @@ func (s *ListGroupDirectoryShrinkRequest) SetDirectoryId(v string) *ListGroupDir
 
 func (s *ListGroupDirectoryShrinkRequest) SetGroupId(v string) *ListGroupDirectoryShrinkRequest {
 	s.GroupId = &v
+	return s
+}
+
+func (s *ListGroupDirectoryShrinkRequest) SetOpsUserCode(v string) *ListGroupDirectoryShrinkRequest {
+	s.OpsUserCode = &v
+	return s
+}
+
+func (s *ListGroupDirectoryShrinkRequest) SetOpsUserId(v string) *ListGroupDirectoryShrinkRequest {
+	s.OpsUserId = &v
 	return s
 }
 

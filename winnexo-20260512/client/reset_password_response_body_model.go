@@ -32,7 +32,7 @@ type ResetPasswordResponseBody struct {
 	//
 	// ok
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// The request trace ID.
+	// The request tracking ID.
 	//
 	// example:
 	//

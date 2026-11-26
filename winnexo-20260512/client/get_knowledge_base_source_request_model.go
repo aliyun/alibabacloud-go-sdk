@@ -9,6 +9,12 @@ type iGetKnowledgeBaseSourceRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAppToken(v string) *GetKnowledgeBaseSourceRequest
+	GetAppToken() *string
+	SetOpsUserCode(v string) *GetKnowledgeBaseSourceRequest
+	GetOpsUserCode() *string
+	SetOpsUserId(v string) *GetKnowledgeBaseSourceRequest
+	GetOpsUserId() *string
 	SetSourceId(v string) *GetKnowledgeBaseSourceRequest
 	GetSourceId() *string
 	SetTenantId(v string) *GetKnowledgeBaseSourceRequest
@@ -16,6 +22,24 @@ type iGetKnowledgeBaseSourceRequest interface {
 }
 
 type GetKnowledgeBaseSourceRequest struct {
+	// 平台应用 Token（控制台签发）。传入后将以 opsUserId 或 opsUserCode 指定的用户身份执行
+	//
+	// example:
+	//
+	// wn_app_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+	AppToken *string `json:"appToken,omitempty" xml:"appToken,omitempty"`
+	// 代理用户编码（租户内唯一），仅当应用凭证配置为 source_uid 时使用
+	//
+	// example:
+	//
+	// alice
+	OpsUserCode *string `json:"opsUserCode,omitempty" xml:"opsUserCode,omitempty"`
+	// 代理用户ID（WINNEXO 平台用户ID），仅当应用凭证配置为 winnexo_uid 时使用
+	//
+	// example:
+	//
+	// 10001
+	OpsUserId *string `json:"opsUserId,omitempty" xml:"opsUserId,omitempty"`
 	// The unique identifier on the business system side, that is, the business ID.
 	//
 	// This parameter is required.
@@ -40,12 +64,39 @@ func (s GetKnowledgeBaseSourceRequest) GoString() string {
 	return s.String()
 }
 
+func (s *GetKnowledgeBaseSourceRequest) GetAppToken() *string {
+	return s.AppToken
+}
+
+func (s *GetKnowledgeBaseSourceRequest) GetOpsUserCode() *string {
+	return s.OpsUserCode
+}
+
+func (s *GetKnowledgeBaseSourceRequest) GetOpsUserId() *string {
+	return s.OpsUserId
+}
+
 func (s *GetKnowledgeBaseSourceRequest) GetSourceId() *string {
 	return s.SourceId
 }
 
 func (s *GetKnowledgeBaseSourceRequest) GetTenantId() *string {
 	return s.TenantId
+}
+
+func (s *GetKnowledgeBaseSourceRequest) SetAppToken(v string) *GetKnowledgeBaseSourceRequest {
+	s.AppToken = &v
+	return s
+}
+
+func (s *GetKnowledgeBaseSourceRequest) SetOpsUserCode(v string) *GetKnowledgeBaseSourceRequest {
+	s.OpsUserCode = &v
+	return s
+}
+
+func (s *GetKnowledgeBaseSourceRequest) SetOpsUserId(v string) *GetKnowledgeBaseSourceRequest {
+	s.OpsUserId = &v
+	return s
 }
 
 func (s *GetKnowledgeBaseSourceRequest) SetSourceId(v string) *GetKnowledgeBaseSourceRequest {

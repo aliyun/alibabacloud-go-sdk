@@ -9,6 +9,10 @@ type iSendAsyncChatMessageRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAppToken(v string) *SendAsyncChatMessageRequest
+	GetAppToken() *string
+	SetAutoPreference(v string) *SendAsyncChatMessageRequest
+	GetAutoPreference() *string
 	SetContent(v string) *SendAsyncChatMessageRequest
 	GetContent() *string
 	SetContentType(v string) *SendAsyncChatMessageRequest
@@ -29,6 +33,10 @@ type iSendAsyncChatMessageRequest interface {
 	GetLocale() *string
 	SetModel(v string) *SendAsyncChatMessageRequest
 	GetModel() *string
+	SetOpsUserCode(v string) *SendAsyncChatMessageRequest
+	GetOpsUserCode() *string
+	SetOpsUserId(v string) *SendAsyncChatMessageRequest
+	GetOpsUserId() *string
 	SetReuseLastSession(v bool) *SendAsyncChatMessageRequest
 	GetReuseLastSession() *bool
 	SetSegments(v []*SendAsyncChatMessageRequestSegments) *SendAsyncChatMessageRequest
@@ -41,11 +49,27 @@ type iSendAsyncChatMessageRequest interface {
 	GetTaskExecution() *SendAsyncChatMessageRequestTaskExecution
 	SetTenantId(v string) *SendAsyncChatMessageRequest
 	GetTenantId() *string
+	SetThinkingEnabled(v bool) *SendAsyncChatMessageRequest
+	GetThinkingEnabled() *bool
+	SetThinkingLevel(v string) *SendAsyncChatMessageRequest
+	GetThinkingLevel() *string
 	SetWorkMode(v string) *SendAsyncChatMessageRequest
 	GetWorkMode() *string
 }
 
 type SendAsyncChatMessageRequest struct {
+	// 平台应用 Token（控制台签发）。传入后将以 opsUserId 或 opsUserCode 指定的用户身份执行
+	//
+	// example:
+	//
+	// wn_app_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+	AppToken *string `json:"appToken,omitempty" xml:"appToken,omitempty"`
+	// AUTO 偏好：none=默认、performance=效果优先、credit=成本优先；缺省或 null 继承会话，空白重置为 none
+	//
+	// example:
+	//
+	// credit
+	AutoPreference *string `json:"autoPreference,omitempty" xml:"autoPreference,omitempty"`
 	// The body of the user message.
 	//
 	// This parameter is required.
@@ -60,37 +84,37 @@ type SendAsyncChatMessageRequest struct {
 	//
 	// Text
 	ContentType *string `json:"contentType,omitempty" xml:"contentType,omitempty"`
-	// The message or file entries referenced as context for the current turn.
+	// The references and annotations for the current turn.
 	//
 	// example:
 	//
 	// []
 	ContextItems []*SendAsyncChatMessageRequestContextItems `json:"contextItems,omitempty" xml:"contextItems,omitempty" type:"Repeated"`
-	// The list of digital employee names. For backward compatibility, a single string can also be passed.
+	// The list of digital employee names. For compatibility with the old format, a single string can also be passed.
 	//
 	// example:
 	//
 	// ["pcitc-magent"]
 	DigitalEmployeeName []*string `json:"digitalEmployeeName,omitempty" xml:"digitalEmployeeName,omitempty" type:"Repeated"`
-	// Specifies whether to enable direct connection mode. If set to true, regular scenario routing is skipped and the direct conversation scenario is entered directly.
+	// **[Deprecated]*	- Use workMode=direct instead. If set to true, winnexo_chat is retained and processed in request-level direct mode.
 	//
 	// example:
 	//
 	// false
 	DirectChat *bool `json:"directChat,omitempty" xml:"directChat,omitempty"`
-	// The number of recent complete direct Q&A rounds carried in the current turn, excluding the current input. This parameter takes effect only when workMode is set to direct or directChat is set to true. Valid values are JSON integers from 0 to 100. If omitted, the backend processes it as 0, carrying no history but still saving the current round. Null, Boolean, string, decimal, and out-of-bounds values are processed through the original direct path, and the gateway retains the original values for backend determination. This field is ignored in work and ask modes. This parameter does not limit the history range when switching to the work mode.
+	// The maximum number of history rounds referenced in the current turn for the direct mode. Valid values: integers from 0 to 100. Default value: 0. Invalid values fall back to the original single-turn path. This parameter is ignored in non-direct modes.
 	//
 	// example:
 	//
 	// 1
 	DirectMaxHistoryRounds interface{} `json:"directMaxHistoryRounds,omitempty" xml:"directMaxHistoryRounds,omitempty"`
-	// Specifies whether to enable web search. Default value: false. In task execution scenarios where taskExecution is passed, the task configuration prevails.
+	// Specifies whether to enable web search. Default value: false. In the task execution scenario (when taskExecution is passed), the task configuration prevails.
 	//
 	// example:
 	//
 	// false
 	EnableWebSearch *bool `json:"enableWebSearch,omitempty" xml:"enableWebSearch,omitempty"`
-	// The list of file references. Each item is an object, and fileId is required, which is returned by uploadChatFile.
+	// The list of file references. Each item is an object, and fileId is required (returned by uploadChatFile).
 	Files []*SendAsyncChatMessageRequestFiles `json:"files,omitempty" xml:"files,omitempty" type:"Repeated"`
 	// The language for the current turn. Valid values: zh-CN and en-US. This parameter is used for API error messages and passed through to CodeAgent. If omitted, the current language behavior is retained and user settings are not modified.
 	//
@@ -98,13 +122,25 @@ type SendAsyncChatMessageRequest struct {
 	//
 	// en-US
 	Locale *string `json:"locale,omitempty" xml:"locale,omitempty"`
-	// The abstract model tier. Valid values: quick, standard, and flagship. If not specified, standard is used for new sessions, and the current tier is retained for existing sessions.
+	// The model tier. Valid values: quick, standard, flagship, auto, or other currently available model names (case-insensitive). If not specified, the model tier of the session is inherited. For a new session, the default value is standard.
 	//
 	// example:
 	//
 	// quick
 	Model *string `json:"model,omitempty" xml:"model,omitempty"`
-	// Specifies whether to reuse the most recent session under the digital employee when sessionId is not provided, which applies to CLI scenarios. Default value: false, which means a new session is created.
+	// 代理用户编码（租户内唯一），仅当应用凭证配置为 source_uid 时使用
+	//
+	// example:
+	//
+	// alice
+	OpsUserCode *string `json:"opsUserCode,omitempty" xml:"opsUserCode,omitempty"`
+	// 代理用户ID（WINNEXO 平台用户ID），仅当应用凭证配置为 winnexo_uid 时使用
+	//
+	// example:
+	//
+	// 10001
+	OpsUserId *string `json:"opsUserId,omitempty" xml:"opsUserId,omitempty"`
+	// Specifies whether to reuse the most recent session under the digital employee when sessionId is not provided (CLI scenario). Default value: false, which means a new session is created.
 	//
 	// example:
 	//
@@ -122,7 +158,7 @@ type SendAsyncChatMessageRequest struct {
 	//
 	// exampleSessionId
 	SessionId *string `json:"sessionId,omitempty" xml:"sessionId,omitempty"`
-	// Specifies whether to use streaming generation. This API always generates background content in streaming mode and writes it to the message stream. The value does not change the response structure.
+	// Specifies whether to use streaming generation. This API always generates background content in streaming mode and writes it to the message stream. The value of this parameter does not change the response structure.
 	//
 	// example:
 	//
@@ -136,15 +172,19 @@ type SendAsyncChatMessageRequest struct {
 	//
 	// 10000
 	TenantId *string `json:"tenantId,omitempty" xml:"tenantId,omitempty"`
-	// The session work mode. Valid values:
+	// 本轮显式覆盖是否思考；AUTO 未传时由决策模型判断，固定档未传时沿用个人设置，最终遵守模型能力与租户开关
 	//
-	// - ask: Quick Q&A mode. Trims tools, skills, and connectors for single-turn direct answers.
+	// example:
 	//
-	// - work: Deep work mode. This is the default value.
+	// true
+	ThinkingEnabled *bool `json:"thinkingEnabled,omitempty" xml:"thinkingEnabled,omitempty"`
+	// 本轮显式覆盖思考强度；AUTO 未传时由决策模型判断，固定档未传时沿用个人设置，最终遵守模型能力与租户开关
 	//
-	// - direct: Direct connection mode at the request level. Does not start a sandbox and prevents context pollution. Equivalent to setting directChat to true.
+	// example:
 	//
-	// The ask and work modes are session-level. Once selected during session creation, the mode is fixed and inherited by default in subsequent chats. If the explicitly passed value conflicts with the session mode, a parameter error is returned. To switch modes, create a new session or fork the current one. In scenarios with multiple digital employees or task execution, passing ask takes effect as work. This parameter is ignored when directChat is set to true.
+	// high
+	ThinkingLevel *string `json:"thinkingLevel,omitempty" xml:"thinkingLevel,omitempty"`
+	// The session work mode. Valid values: ask (quick Q&A), work (deep work, default), and direct (direct connection mode, which does not start the sandbox, uses independent direct history controlled by directMaxHistoryRounds, and is equivalent to directChat=true). The ask and work modes are session-level. For continued chats, the session mode is inherited by default. To switch modes, create a new session or fork. In multi-digital employee or task execution scenarios, if ask is passed, it takes effect as work. If directChat is set to true, this parameter is ignored.
 	//
 	// example:
 	//
@@ -158,6 +198,14 @@ func (s SendAsyncChatMessageRequest) String() string {
 
 func (s SendAsyncChatMessageRequest) GoString() string {
 	return s.String()
+}
+
+func (s *SendAsyncChatMessageRequest) GetAppToken() *string {
+	return s.AppToken
+}
+
+func (s *SendAsyncChatMessageRequest) GetAutoPreference() *string {
+	return s.AutoPreference
 }
 
 func (s *SendAsyncChatMessageRequest) GetContent() *string {
@@ -200,6 +248,14 @@ func (s *SendAsyncChatMessageRequest) GetModel() *string {
 	return s.Model
 }
 
+func (s *SendAsyncChatMessageRequest) GetOpsUserCode() *string {
+	return s.OpsUserCode
+}
+
+func (s *SendAsyncChatMessageRequest) GetOpsUserId() *string {
+	return s.OpsUserId
+}
+
 func (s *SendAsyncChatMessageRequest) GetReuseLastSession() *bool {
 	return s.ReuseLastSession
 }
@@ -224,8 +280,26 @@ func (s *SendAsyncChatMessageRequest) GetTenantId() *string {
 	return s.TenantId
 }
 
+func (s *SendAsyncChatMessageRequest) GetThinkingEnabled() *bool {
+	return s.ThinkingEnabled
+}
+
+func (s *SendAsyncChatMessageRequest) GetThinkingLevel() *string {
+	return s.ThinkingLevel
+}
+
 func (s *SendAsyncChatMessageRequest) GetWorkMode() *string {
 	return s.WorkMode
+}
+
+func (s *SendAsyncChatMessageRequest) SetAppToken(v string) *SendAsyncChatMessageRequest {
+	s.AppToken = &v
+	return s
+}
+
+func (s *SendAsyncChatMessageRequest) SetAutoPreference(v string) *SendAsyncChatMessageRequest {
+	s.AutoPreference = &v
+	return s
 }
 
 func (s *SendAsyncChatMessageRequest) SetContent(v string) *SendAsyncChatMessageRequest {
@@ -278,6 +352,16 @@ func (s *SendAsyncChatMessageRequest) SetModel(v string) *SendAsyncChatMessageRe
 	return s
 }
 
+func (s *SendAsyncChatMessageRequest) SetOpsUserCode(v string) *SendAsyncChatMessageRequest {
+	s.OpsUserCode = &v
+	return s
+}
+
+func (s *SendAsyncChatMessageRequest) SetOpsUserId(v string) *SendAsyncChatMessageRequest {
+	s.OpsUserId = &v
+	return s
+}
+
 func (s *SendAsyncChatMessageRequest) SetReuseLastSession(v bool) *SendAsyncChatMessageRequest {
 	s.ReuseLastSession = &v
 	return s
@@ -305,6 +389,16 @@ func (s *SendAsyncChatMessageRequest) SetTaskExecution(v *SendAsyncChatMessageRe
 
 func (s *SendAsyncChatMessageRequest) SetTenantId(v string) *SendAsyncChatMessageRequest {
 	s.TenantId = &v
+	return s
+}
+
+func (s *SendAsyncChatMessageRequest) SetThinkingEnabled(v bool) *SendAsyncChatMessageRequest {
+	s.ThinkingEnabled = &v
+	return s
+}
+
+func (s *SendAsyncChatMessageRequest) SetThinkingLevel(v string) *SendAsyncChatMessageRequest {
+	s.ThinkingLevel = &v
 	return s
 }
 
@@ -350,55 +444,55 @@ func (s *SendAsyncChatMessageRequest) Validate() error {
 }
 
 type SendAsyncChatMessageRequestContextItems struct {
-	// The user\\"s annotation on the referenced content.
+	// The annotation content entered by the user.
 	//
 	// example:
 	//
 	// Please verify the data for the East China region
 	Annotation *string `json:"annotation,omitempty" xml:"annotation,omitempty"`
-	// The list of files associated with the annotation.
+	// The list of attachments associated with the output annotation. This parameter is only applicable when type is set to output_annotation.
 	//
 	// example:
 	//
 	// []
 	AnnotationFiles []*SendAsyncChatMessageRequestContextItemsAnnotationFiles `json:"annotationFiles,omitempty" xml:"annotationFiles,omitempty" type:"Repeated"`
-	// The body of the referenced content.
+	// The content corresponding to the reference or annotation. For output_annotation, this parameter is optional, but annotationFiles must be provided.
 	//
 	// example:
 	//
 	// Sales revenue for this month
 	Content *string `json:"content,omitempty" xml:"content,omitempty"`
-	// The ID of the referenced file.
+	// The ID of the referenced or annotated output file.
 	//
 	// example:
 	//
 	// exampleFileId
 	FileId *string `json:"fileId,omitempty" xml:"fileId,omitempty"`
-	// The name of the referenced file.
+	// The name of the referenced or annotated output file.
 	//
 	// example:
 	//
-	// SalesData.xlsx
+	// Sales data.xlsx
 	FileName *string `json:"fileName,omitempty" xml:"fileName,omitempty"`
-	// The type of the referenced file.
+	// The type of the referenced or annotated output file.
 	//
 	// example:
 	//
 	// xlsx
 	FileType *string `json:"fileType,omitempty" xml:"fileType,omitempty"`
-	// The ID of the referenced message.
+	// The ID of the referenced or annotated message.
 	//
 	// example:
 	//
 	// exampleMessageId
 	MessageId *string `json:"messageId,omitempty" xml:"messageId,omitempty"`
-	// The name of the message sender.
+	// The name of the sender of the referenced or annotated message.
 	//
 	// example:
 	//
 	// Sales Assistant
 	SenderName *string `json:"senderName,omitempty" xml:"senderName,omitempty"`
-	// The context entry type.
+	// The context type. Valid values: message_reference, message_selection, message_annotation, output_selection, and output_annotation.
 	//
 	// example:
 	//
@@ -509,25 +603,25 @@ func (s *SendAsyncChatMessageRequestContextItems) Validate() error {
 }
 
 type SendAsyncChatMessageRequestContextItemsAnnotationFiles struct {
-	// The file name.
+	// The file name of the attachment.
 	//
 	// example:
 	//
-	// SupplementaryNotes.pdf
+	// Supplementary notes.pdf
 	FileName *string `json:"fileName,omitempty" xml:"fileName,omitempty"`
-	// The public access URL of the file.
+	// The public access URL of the attachment. This parameter is optional.
 	//
 	// example:
 	//
 	// https://example.com/public/file
 	FilePublicUrl *string `json:"filePublicUrl,omitempty" xml:"filePublicUrl,omitempty"`
-	// The file record ID.
+	// The file record ID of the attachment. This parameter is required. It is used to verify the ownership of the attachment and provide it for session processing.
 	//
 	// example:
 	//
 	// exampleFileRecordId
 	FileRecordId *string `json:"fileRecordId,omitempty" xml:"fileRecordId,omitempty"`
-	// The internal access URL of the file.
+	// The internal access URL of the attachment. This parameter is optional.
 	//
 	// example:
 	//
@@ -584,7 +678,7 @@ func (s *SendAsyncChatMessageRequestContextItemsAnnotationFiles) Validate() erro
 }
 
 type SendAsyncChatMessageRequestFiles struct {
-	// The file ID, which is returned by uploadChatFile.
+	// The file ID, returned by uploadChatFile.
 	//
 	// This parameter is required.
 	//
@@ -635,7 +729,7 @@ type SendAsyncChatMessageRequestSegments struct {
 	//
 	// example:
 	//
-	// Old session
+	// Previous session
 	Content *string `json:"content,omitempty" xml:"content,omitempty"`
 	// The category of the mentioned object.
 	//
@@ -647,7 +741,7 @@ type SendAsyncChatMessageRequestSegments struct {
 	//
 	// example:
 	//
-	// Old session
+	// Previous session
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
 	// The ID of the referenced object.
 	//
@@ -655,7 +749,7 @@ type SendAsyncChatMessageRequestSegments struct {
 	//
 	// exampleObjectId
 	ObjectId *string `json:"objectId,omitempty" xml:"objectId,omitempty"`
-	// The referenced object type.
+	// The object type of the referenced object.
 	//
 	// example:
 	//
@@ -771,7 +865,7 @@ type SendAsyncChatMessageRequestTaskExecution struct {
 	//
 	// exampleExecutionId
 	ExecutionId *string `json:"executionId,omitempty" xml:"executionId,omitempty"`
-	// The digital employee name.
+	// The name of the digital employee.
 	//
 	// example:
 	//

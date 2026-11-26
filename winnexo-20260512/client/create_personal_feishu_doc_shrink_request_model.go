@@ -9,6 +9,8 @@ type iCreatePersonalFeishuDocShrinkRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAppToken(v string) *CreatePersonalFeishuDocShrinkRequest
+	GetAppToken() *string
 	SetDescription(v string) *CreatePersonalFeishuDocShrinkRequest
 	GetDescription() *string
 	SetDirectoryId(v string) *CreatePersonalFeishuDocShrinkRequest
@@ -23,6 +25,10 @@ type iCreatePersonalFeishuDocShrinkRequest interface {
 	GetObjectBindingsShrink() *string
 	SetOperatingObjectName(v string) *CreatePersonalFeishuDocShrinkRequest
 	GetOperatingObjectName() *string
+	SetOpsUserCode(v string) *CreatePersonalFeishuDocShrinkRequest
+	GetOpsUserCode() *string
+	SetOpsUserId(v string) *CreatePersonalFeishuDocShrinkRequest
+	GetOpsUserId() *string
 	SetSourceTags(v string) *CreatePersonalFeishuDocShrinkRequest
 	GetSourceTags() *string
 	SetSyncConfigShrink(v string) *CreatePersonalFeishuDocShrinkRequest
@@ -32,6 +38,12 @@ type iCreatePersonalFeishuDocShrinkRequest interface {
 }
 
 type CreatePersonalFeishuDocShrinkRequest struct {
+	// 平台应用 Token（控制台签发）。传入后将以 opsUserId 或 opsUserCode 指定的用户身份执行
+	//
+	// example:
+	//
+	// wn_app_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+	AppToken *string `json:"appToken,omitempty" xml:"appToken,omitempty"`
 	// The pipeline description.
 	//
 	// example:
@@ -72,6 +84,18 @@ type CreatePersonalFeishuDocShrinkRequest struct {
 	//
 	// R&D Assistant
 	OperatingObjectName *string `json:"operatingObjectName,omitempty" xml:"operatingObjectName,omitempty"`
+	// 代理用户编码（租户内唯一），仅当应用凭证配置为 source_uid 时使用
+	//
+	// example:
+	//
+	// alice
+	OpsUserCode *string `json:"opsUserCode,omitempty" xml:"opsUserCode,omitempty"`
+	// 代理用户ID（WINNEXO 平台用户ID），仅当应用凭证配置为 winnexo_uid 时使用
+	//
+	// example:
+	//
+	// 10001
+	OpsUserId *string `json:"opsUserId,omitempty" xml:"opsUserId,omitempty"`
 	// The resource tags (optional, a JSON string list, such as ["tagA","tagB"]).
 	//
 	// example:
@@ -94,6 +118,10 @@ func (s CreatePersonalFeishuDocShrinkRequest) String() string {
 
 func (s CreatePersonalFeishuDocShrinkRequest) GoString() string {
 	return s.String()
+}
+
+func (s *CreatePersonalFeishuDocShrinkRequest) GetAppToken() *string {
+	return s.AppToken
 }
 
 func (s *CreatePersonalFeishuDocShrinkRequest) GetDescription() *string {
@@ -124,6 +152,14 @@ func (s *CreatePersonalFeishuDocShrinkRequest) GetOperatingObjectName() *string 
 	return s.OperatingObjectName
 }
 
+func (s *CreatePersonalFeishuDocShrinkRequest) GetOpsUserCode() *string {
+	return s.OpsUserCode
+}
+
+func (s *CreatePersonalFeishuDocShrinkRequest) GetOpsUserId() *string {
+	return s.OpsUserId
+}
+
 func (s *CreatePersonalFeishuDocShrinkRequest) GetSourceTags() *string {
 	return s.SourceTags
 }
@@ -134,6 +170,11 @@ func (s *CreatePersonalFeishuDocShrinkRequest) GetSyncConfigShrink() *string {
 
 func (s *CreatePersonalFeishuDocShrinkRequest) GetTenantId() *string {
 	return s.TenantId
+}
+
+func (s *CreatePersonalFeishuDocShrinkRequest) SetAppToken(v string) *CreatePersonalFeishuDocShrinkRequest {
+	s.AppToken = &v
+	return s
 }
 
 func (s *CreatePersonalFeishuDocShrinkRequest) SetDescription(v string) *CreatePersonalFeishuDocShrinkRequest {
@@ -168,6 +209,16 @@ func (s *CreatePersonalFeishuDocShrinkRequest) SetObjectBindingsShrink(v string)
 
 func (s *CreatePersonalFeishuDocShrinkRequest) SetOperatingObjectName(v string) *CreatePersonalFeishuDocShrinkRequest {
 	s.OperatingObjectName = &v
+	return s
+}
+
+func (s *CreatePersonalFeishuDocShrinkRequest) SetOpsUserCode(v string) *CreatePersonalFeishuDocShrinkRequest {
+	s.OpsUserCode = &v
+	return s
+}
+
+func (s *CreatePersonalFeishuDocShrinkRequest) SetOpsUserId(v string) *CreatePersonalFeishuDocShrinkRequest {
+	s.OpsUserId = &v
 	return s
 }
 

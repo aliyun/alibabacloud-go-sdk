@@ -9,6 +9,8 @@ type iCreateGroupFileRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAppToken(v string) *CreateGroupFileRequest
+	GetAppToken() *string
 	SetDescription(v string) *CreateGroupFileRequest
 	GetDescription() *string
 	SetDirectoryId(v string) *CreateGroupFileRequest
@@ -19,6 +21,10 @@ type iCreateGroupFileRequest interface {
 	GetGroupId() *string
 	SetName(v string) *CreateGroupFileRequest
 	GetName() *string
+	SetOpsUserCode(v string) *CreateGroupFileRequest
+	GetOpsUserCode() *string
+	SetOpsUserId(v string) *CreateGroupFileRequest
+	GetOpsUserId() *string
 	SetSourceTags(v string) *CreateGroupFileRequest
 	GetSourceTags() *string
 	SetTenantId(v string) *CreateGroupFileRequest
@@ -26,6 +32,12 @@ type iCreateGroupFileRequest interface {
 }
 
 type CreateGroupFileRequest struct {
+	// 平台应用 Token（控制台签发）。传入后将以 opsUserId 或 opsUserCode 指定的用户身份执行
+	//
+	// example:
+	//
+	// wn_app_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+	AppToken *string `json:"appToken,omitempty" xml:"appToken,omitempty"`
 	// The description of the AI assistant.
 	//
 	// example:
@@ -62,6 +74,18 @@ type CreateGroupFileRequest struct {
 	//
 	// Project Files
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
+	// 代理用户编码（租户内唯一），仅当应用凭证配置为 source_uid 时使用
+	//
+	// example:
+	//
+	// alice
+	OpsUserCode *string `json:"opsUserCode,omitempty" xml:"opsUserCode,omitempty"`
+	// 代理用户ID（WINNEXO 平台用户ID），仅当应用凭证配置为 winnexo_uid 时使用
+	//
+	// example:
+	//
+	// 10001
+	OpsUserId *string `json:"opsUserId,omitempty" xml:"opsUserId,omitempty"`
 	// The source tags.
 	//
 	// example:
@@ -84,6 +108,10 @@ func (s CreateGroupFileRequest) GoString() string {
 	return s.String()
 }
 
+func (s *CreateGroupFileRequest) GetAppToken() *string {
+	return s.AppToken
+}
+
 func (s *CreateGroupFileRequest) GetDescription() *string {
 	return s.Description
 }
@@ -104,12 +132,25 @@ func (s *CreateGroupFileRequest) GetName() *string {
 	return s.Name
 }
 
+func (s *CreateGroupFileRequest) GetOpsUserCode() *string {
+	return s.OpsUserCode
+}
+
+func (s *CreateGroupFileRequest) GetOpsUserId() *string {
+	return s.OpsUserId
+}
+
 func (s *CreateGroupFileRequest) GetSourceTags() *string {
 	return s.SourceTags
 }
 
 func (s *CreateGroupFileRequest) GetTenantId() *string {
 	return s.TenantId
+}
+
+func (s *CreateGroupFileRequest) SetAppToken(v string) *CreateGroupFileRequest {
+	s.AppToken = &v
+	return s
 }
 
 func (s *CreateGroupFileRequest) SetDescription(v string) *CreateGroupFileRequest {
@@ -134,6 +175,16 @@ func (s *CreateGroupFileRequest) SetGroupId(v string) *CreateGroupFileRequest {
 
 func (s *CreateGroupFileRequest) SetName(v string) *CreateGroupFileRequest {
 	s.Name = &v
+	return s
+}
+
+func (s *CreateGroupFileRequest) SetOpsUserCode(v string) *CreateGroupFileRequest {
+	s.OpsUserCode = &v
+	return s
+}
+
+func (s *CreateGroupFileRequest) SetOpsUserId(v string) *CreateGroupFileRequest {
+	s.OpsUserId = &v
 	return s
 }
 

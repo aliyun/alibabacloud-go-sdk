@@ -9,8 +9,14 @@ type iCreateUserRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAppToken(v string) *CreateUserRequest
+	GetAppToken() *string
 	SetDisplayName(v string) *CreateUserRequest
 	GetDisplayName() *string
+	SetOpsUserCode(v string) *CreateUserRequest
+	GetOpsUserCode() *string
+	SetOpsUserId(v string) *CreateUserRequest
+	GetOpsUserId() *string
 	SetPasswordEncrypted(v string) *CreateUserRequest
 	GetPasswordEncrypted() *string
 	SetRoleCodes(v []*string) *CreateUserRequest
@@ -24,6 +30,12 @@ type iCreateUserRequest interface {
 }
 
 type CreateUserRequest struct {
+	// 平台应用 Token（控制台签发）。传入后将以 opsUserId 或 opsUserCode 指定的用户身份执行
+	//
+	// example:
+	//
+	// wn_app_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+	AppToken *string `json:"appToken,omitempty" xml:"appToken,omitempty"`
 	// The display name.
 	//
 	// This parameter is required.
@@ -32,6 +44,18 @@ type CreateUserRequest struct {
 	//
 	// string_value
 	DisplayName *string `json:"displayName,omitempty" xml:"displayName,omitempty"`
+	// 代理用户编码（租户内唯一），仅当应用凭证配置为 source_uid 时使用
+	//
+	// example:
+	//
+	// alice
+	OpsUserCode *string `json:"opsUserCode,omitempty" xml:"opsUserCode,omitempty"`
+	// 代理用户ID（WINNEXO 平台用户ID），仅当应用凭证配置为 winnexo_uid 时使用
+	//
+	// example:
+	//
+	// 10001
+	OpsUserId *string `json:"opsUserId,omitempty" xml:"opsUserId,omitempty"`
 	// The Base64-encoded password ciphertext encrypted by using RSA-OAEP-SHA256. This parameter is required and cannot be empty.
 	//
 	// This parameter is required.
@@ -76,8 +100,20 @@ func (s CreateUserRequest) GoString() string {
 	return s.String()
 }
 
+func (s *CreateUserRequest) GetAppToken() *string {
+	return s.AppToken
+}
+
 func (s *CreateUserRequest) GetDisplayName() *string {
 	return s.DisplayName
+}
+
+func (s *CreateUserRequest) GetOpsUserCode() *string {
+	return s.OpsUserCode
+}
+
+func (s *CreateUserRequest) GetOpsUserId() *string {
+	return s.OpsUserId
 }
 
 func (s *CreateUserRequest) GetPasswordEncrypted() *string {
@@ -100,8 +136,23 @@ func (s *CreateUserRequest) GetWnAccountId() *string {
 	return s.WnAccountId
 }
 
+func (s *CreateUserRequest) SetAppToken(v string) *CreateUserRequest {
+	s.AppToken = &v
+	return s
+}
+
 func (s *CreateUserRequest) SetDisplayName(v string) *CreateUserRequest {
 	s.DisplayName = &v
+	return s
+}
+
+func (s *CreateUserRequest) SetOpsUserCode(v string) *CreateUserRequest {
+	s.OpsUserCode = &v
+	return s
+}
+
+func (s *CreateUserRequest) SetOpsUserId(v string) *CreateUserRequest {
+	s.OpsUserId = &v
 	return s
 }
 

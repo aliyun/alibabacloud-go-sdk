@@ -9,6 +9,8 @@ type iQuerySourceUsageTrendRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAppToken(v string) *QuerySourceUsageTrendRequest
+	GetAppToken() *string
 	SetCollaborationGroupId(v string) *QuerySourceUsageTrendRequest
 	GetCollaborationGroupId() *string
 	SetEndTime(v string) *QuerySourceUsageTrendRequest
@@ -19,6 +21,10 @@ type iQuerySourceUsageTrendRequest interface {
 	GetGranularity() *string
 	SetKnowledgeBaseIds(v []*string) *QuerySourceUsageTrendRequest
 	GetKnowledgeBaseIds() []*string
+	SetOpsUserCode(v string) *QuerySourceUsageTrendRequest
+	GetOpsUserCode() *string
+	SetOpsUserId(v string) *QuerySourceUsageTrendRequest
+	GetOpsUserId() *string
 	SetScopeType(v string) *QuerySourceUsageTrendRequest
 	GetScopeType() *string
 	SetSourceIds(v []*string) *QuerySourceUsageTrendRequest
@@ -34,7 +40,13 @@ type iQuerySourceUsageTrendRequest interface {
 }
 
 type QuerySourceUsageTrendRequest struct {
-	// The ID of the collaboration group to which the resource belongs, such as cg_101. If this parameter is specified, a group workspace task is created, and the caller must be a valid group member. If this parameter is left empty, a personal task is created.
+	// 平台应用 Token（控制台签发）。传入后将以 opsUserId 或 opsUserCode 指定的用户身份执行
+	//
+	// example:
+	//
+	// wn_app_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+	AppToken *string `json:"appToken,omitempty" xml:"appToken,omitempty"`
+	// The ID of the associated collaboration group, such as cg_101. If you specify this parameter, a group workspace task is created, and the caller must be a valid group member. If you leave this parameter empty, a personal task is created.
 	//
 	// example:
 	//
@@ -52,13 +64,13 @@ type QuerySourceUsageTrendRequest struct {
 	//
 	// example:
 	//
-	// MAIN
+	// ALL
 	EventType *string `json:"eventType,omitempty" xml:"eventType,omitempty"`
-	// The aggregation granularity. Valid values: hourly and daily.
+	// The trend aggregation granularity. Valid values: DAY (daily), WEEK (weekly), and MONTH (monthly).
 	//
 	// example:
 	//
-	// daily
+	// DAY
 	Granularity *string `json:"granularity,omitempty" xml:"granularity,omitempty"`
 	// The IDs of the knowledge base folders.
 	//
@@ -66,6 +78,18 @@ type QuerySourceUsageTrendRequest struct {
 	//
 	// ["kb_9401"]
 	KnowledgeBaseIds []*string `json:"knowledgeBaseIds,omitempty" xml:"knowledgeBaseIds,omitempty" type:"Repeated"`
+	// 代理用户编码（租户内唯一），仅当应用凭证配置为 source_uid 时使用
+	//
+	// example:
+	//
+	// alice
+	OpsUserCode *string `json:"opsUserCode,omitempty" xml:"opsUserCode,omitempty"`
+	// 代理用户ID（WINNEXO 平台用户ID），仅当应用凭证配置为 winnexo_uid 时使用
+	//
+	// example:
+	//
+	// 10001
+	OpsUserId *string `json:"opsUserId,omitempty" xml:"opsUserId,omitempty"`
 	// The role scope type. Valid values:
 	//
 	// - **ALL_VISIBLE**: All members.
@@ -76,7 +100,7 @@ type QuerySourceUsageTrendRequest struct {
 	//
 	// example:
 	//
-	// Report perspective: TENANT for enterprise knowledge, GROUP for a single workspace, ALL_GROUPS for all workspaces of the current tenant (platform super administrator only). Valid values: TENANT, GROUP, and ALL_GROUPS
+	// TENANT
 	ScopeType *string `json:"scopeType,omitempty" xml:"scopeType,omitempty"`
 	// The IDs of the resource sources.
 	//
@@ -88,7 +112,7 @@ type QuerySourceUsageTrendRequest struct {
 	//
 	// example:
 	//
-	// The naming content of the source
+	// Naming content of the source
 	SourceName *string `json:"sourceName,omitempty" xml:"sourceName,omitempty"`
 	// The start time of the query. The value is a UNIX timestamp in seconds.
 	//
@@ -120,6 +144,10 @@ func (s QuerySourceUsageTrendRequest) GoString() string {
 	return s.String()
 }
 
+func (s *QuerySourceUsageTrendRequest) GetAppToken() *string {
+	return s.AppToken
+}
+
 func (s *QuerySourceUsageTrendRequest) GetCollaborationGroupId() *string {
 	return s.CollaborationGroupId
 }
@@ -138,6 +166,14 @@ func (s *QuerySourceUsageTrendRequest) GetGranularity() *string {
 
 func (s *QuerySourceUsageTrendRequest) GetKnowledgeBaseIds() []*string {
 	return s.KnowledgeBaseIds
+}
+
+func (s *QuerySourceUsageTrendRequest) GetOpsUserCode() *string {
+	return s.OpsUserCode
+}
+
+func (s *QuerySourceUsageTrendRequest) GetOpsUserId() *string {
+	return s.OpsUserId
 }
 
 func (s *QuerySourceUsageTrendRequest) GetScopeType() *string {
@@ -164,6 +200,11 @@ func (s *QuerySourceUsageTrendRequest) GetTimeZone() *string {
 	return s.TimeZone
 }
 
+func (s *QuerySourceUsageTrendRequest) SetAppToken(v string) *QuerySourceUsageTrendRequest {
+	s.AppToken = &v
+	return s
+}
+
 func (s *QuerySourceUsageTrendRequest) SetCollaborationGroupId(v string) *QuerySourceUsageTrendRequest {
 	s.CollaborationGroupId = &v
 	return s
@@ -186,6 +227,16 @@ func (s *QuerySourceUsageTrendRequest) SetGranularity(v string) *QuerySourceUsag
 
 func (s *QuerySourceUsageTrendRequest) SetKnowledgeBaseIds(v []*string) *QuerySourceUsageTrendRequest {
 	s.KnowledgeBaseIds = v
+	return s
+}
+
+func (s *QuerySourceUsageTrendRequest) SetOpsUserCode(v string) *QuerySourceUsageTrendRequest {
+	s.OpsUserCode = &v
+	return s
+}
+
+func (s *QuerySourceUsageTrendRequest) SetOpsUserId(v string) *QuerySourceUsageTrendRequest {
+	s.OpsUserId = &v
 	return s
 }
 

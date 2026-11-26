@@ -9,6 +9,8 @@ type iCreateKnowledgeBaseTextRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAppToken(v string) *CreateKnowledgeBaseTextRequest
+	GetAppToken() *string
 	SetDescription(v string) *CreateKnowledgeBaseTextRequest
 	GetDescription() *string
 	SetDirectoryId(v string) *CreateKnowledgeBaseTextRequest
@@ -19,6 +21,10 @@ type iCreateKnowledgeBaseTextRequest interface {
 	GetName() *string
 	SetOperatingObjectName(v string) *CreateKnowledgeBaseTextRequest
 	GetOperatingObjectName() *string
+	SetOpsUserCode(v string) *CreateKnowledgeBaseTextRequest
+	GetOpsUserCode() *string
+	SetOpsUserId(v string) *CreateKnowledgeBaseTextRequest
+	GetOpsUserId() *string
 	SetSourceTags(v string) *CreateKnowledgeBaseTextRequest
 	GetSourceTags() *string
 	SetTenantId(v string) *CreateKnowledgeBaseTextRequest
@@ -28,6 +34,12 @@ type iCreateKnowledgeBaseTextRequest interface {
 }
 
 type CreateKnowledgeBaseTextRequest struct {
+	// 平台应用 Token（控制台签发）。传入后将以 opsUserId 或 opsUserCode 指定的用户身份执行
+	//
+	// example:
+	//
+	// wn_app_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+	AppToken *string `json:"appToken,omitempty" xml:"appToken,omitempty"`
 	// The description of the alias.
 	//
 	// example:
@@ -60,6 +72,18 @@ type CreateKnowledgeBaseTextRequest struct {
 	//
 	// string_value
 	OperatingObjectName *string `json:"operatingObjectName,omitempty" xml:"operatingObjectName,omitempty"`
+	// 代理用户编码（租户内唯一），仅当应用凭证配置为 source_uid 时使用
+	//
+	// example:
+	//
+	// alice
+	OpsUserCode *string `json:"opsUserCode,omitempty" xml:"opsUserCode,omitempty"`
+	// 代理用户ID（WINNEXO 平台用户ID），仅当应用凭证配置为 winnexo_uid 时使用
+	//
+	// example:
+	//
+	// 10001
+	OpsUserId *string `json:"opsUserId,omitempty" xml:"opsUserId,omitempty"`
 	// The source tags.
 	//
 	// example:
@@ -90,6 +114,10 @@ func (s CreateKnowledgeBaseTextRequest) GoString() string {
 	return s.String()
 }
 
+func (s *CreateKnowledgeBaseTextRequest) GetAppToken() *string {
+	return s.AppToken
+}
+
 func (s *CreateKnowledgeBaseTextRequest) GetDescription() *string {
 	return s.Description
 }
@@ -110,6 +138,14 @@ func (s *CreateKnowledgeBaseTextRequest) GetOperatingObjectName() *string {
 	return s.OperatingObjectName
 }
 
+func (s *CreateKnowledgeBaseTextRequest) GetOpsUserCode() *string {
+	return s.OpsUserCode
+}
+
+func (s *CreateKnowledgeBaseTextRequest) GetOpsUserId() *string {
+	return s.OpsUserId
+}
+
 func (s *CreateKnowledgeBaseTextRequest) GetSourceTags() *string {
 	return s.SourceTags
 }
@@ -120,6 +156,11 @@ func (s *CreateKnowledgeBaseTextRequest) GetTenantId() *string {
 
 func (s *CreateKnowledgeBaseTextRequest) GetTextContent() *string {
 	return s.TextContent
+}
+
+func (s *CreateKnowledgeBaseTextRequest) SetAppToken(v string) *CreateKnowledgeBaseTextRequest {
+	s.AppToken = &v
+	return s
 }
 
 func (s *CreateKnowledgeBaseTextRequest) SetDescription(v string) *CreateKnowledgeBaseTextRequest {
@@ -144,6 +185,16 @@ func (s *CreateKnowledgeBaseTextRequest) SetName(v string) *CreateKnowledgeBaseT
 
 func (s *CreateKnowledgeBaseTextRequest) SetOperatingObjectName(v string) *CreateKnowledgeBaseTextRequest {
 	s.OperatingObjectName = &v
+	return s
+}
+
+func (s *CreateKnowledgeBaseTextRequest) SetOpsUserCode(v string) *CreateKnowledgeBaseTextRequest {
+	s.OpsUserCode = &v
+	return s
+}
+
+func (s *CreateKnowledgeBaseTextRequest) SetOpsUserId(v string) *CreateKnowledgeBaseTextRequest {
+	s.OpsUserId = &v
 	return s
 }
 

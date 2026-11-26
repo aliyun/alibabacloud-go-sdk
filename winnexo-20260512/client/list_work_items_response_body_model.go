@@ -48,15 +48,15 @@ type ListWorkItemsResponseBody struct {
 	//
 	// example:
 	//
-	// example
+	// [{"acceptanceCriteria":"example","appliedStatusVersion":1,"attachments":[{"attachmentId":"example","contentType":"example","refUrl":"example","resourceId":"example","resourceKind":"example","sizeBytes":1,"title":"example"}],"businessStatus":"PROCESSING","canDelete":false,"canManage":false,"canManageVisibility":false,"canRename":false,"collaborationGroupId":"example","collaboratorUserIds":[10001],"conversationId":"example","createdAt":"example","createdByUserId":1,"creationType":"DEFAULT","currentPlanId":"example","currentRevision":1,"currentRunId":"example","currentRunSeq":1,"currentStepName":"example","description":"example","inputVersion":1,"itemType":"WORKFLOW","lastProcessingAt":"example","legacyTopic":false,"memberUserIds":[10001],"modifiedAt":"example","ownerUserId":1,"pinned":false,"priority":"HIGH","progressCompleted":1,"progressTotal":1,"sourceExecutionId":"example","sourceTaskId":"example","sourceTaskName":"example","sourceTriggerKey":"example","sourceType":"example","title":"example","triggerTimezone":"example","triggeredAt":"example","version":1,"visibility":"example","visibilitySource":"SELF","workItemId":"example","workflowStatus":"example","workflowTemplateIds":["tpl_example"]}]
 	Items []*ListWorkItemsResponseBodyItems `json:"items,omitempty" xml:"items,omitempty" type:"Repeated"`
-	// The maximum number of items returned per page in the current request.
+	// The maximum number of items returned per page for this request.
 	//
 	// example:
 	//
 	// 1
 	MaxResults *int64 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
-	// The error message.
+	// The error description.
 	//
 	// example:
 	//
@@ -80,7 +80,7 @@ type ListWorkItemsResponseBody struct {
 	//
 	// 1
 	PageSize *int64 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	// The request ID.
+	// The request tracking ID.
 	//
 	// example:
 	//
@@ -222,9 +222,9 @@ type ListWorkItemsResponseBodyItems struct {
 	//
 	// example:
 	//
-	// example
+	// [{"attachmentId":"example","contentType":"example","refUrl":"example","resourceId":"example","resourceKind":"example","sizeBytes":1,"title":"example"}]
 	Attachments []*ListWorkItemsResponseBodyItemsAttachments `json:"attachments,omitempty" xml:"attachments,omitempty" type:"Repeated"`
-	// The business status.
+	// The business status (seven states).
 	//
 	// example:
 	//
@@ -254,7 +254,7 @@ type ListWorkItemsResponseBodyItems struct {
 	//
 	// false
 	CanRename *bool `json:"canRename,omitempty" xml:"canRename,omitempty"`
-	// The ID of the collaboration workspace.
+	// The collaboration space ID.
 	//
 	// example:
 	//
@@ -264,7 +264,7 @@ type ListWorkItemsResponseBodyItems struct {
 	//
 	// example:
 	//
-	// example
+	// [10001]
 	CollaboratorUserIds []*int64 `json:"collaboratorUserIds,omitempty" xml:"collaboratorUserIds,omitempty" type:"Repeated"`
 	// The ID of the associated conversation.
 	//
@@ -272,7 +272,7 @@ type ListWorkItemsResponseBodyItems struct {
 	//
 	// example
 	ConversationId *string `json:"conversationId,omitempty" xml:"conversationId,omitempty"`
-	// The creation time in ISO 8601 format.
+	// The creation time (ISO 8601).
 	//
 	// example:
 	//
@@ -290,7 +290,7 @@ type ListWorkItemsResponseBodyItems struct {
 	//
 	// DEFAULT
 	CreationType *string `json:"creationType,omitempty" xml:"creationType,omitempty"`
-	// The ID of the current physical plan.
+	// The current physical plan ID.
 	//
 	// example:
 	//
@@ -302,19 +302,19 @@ type ListWorkItemsResponseBodyItems struct {
 	//
 	// 1
 	CurrentRevision *int64 `json:"currentRevision,omitempty" xml:"currentRevision,omitempty"`
-	// The ID of the current run.
+	// The current run ID.
 	//
 	// example:
 	//
 	// example
 	CurrentRunId *string `json:"currentRunId,omitempty" xml:"currentRunId,omitempty"`
-	// The sequence number of the current run.
+	// The current run sequence number.
 	//
 	// example:
 	//
 	// 1
 	CurrentRunSeq *int64 `json:"currentRunSeq,omitempty" xml:"currentRunSeq,omitempty"`
-	// The name of the current step.
+	// The current step name.
 	//
 	// example:
 	//
@@ -326,19 +326,19 @@ type ListWorkItemsResponseBodyItems struct {
 	//
 	// example
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// The version of the input snapshot.
+	// The input snapshot version.
 	//
 	// example:
 	//
 	// 1
 	InputVersion *int64 `json:"inputVersion,omitempty" xml:"inputVersion,omitempty"`
-	// The type of the work item.
+	// The work item type.
 	//
 	// example:
 	//
 	// WORKFLOW
 	ItemType *string `json:"itemType,omitempty" xml:"itemType,omitempty"`
-	// The time when the item last entered the processing state in ISO 8601 format.
+	// The time when the item last entered the processing state (ISO 8601).
 	//
 	// example:
 	//
@@ -354,9 +354,9 @@ type ListWorkItemsResponseBodyItems struct {
 	//
 	// example:
 	//
-	// example
+	// [10001]
 	MemberUserIds []*int64 `json:"memberUserIds,omitempty" xml:"memberUserIds,omitempty" type:"Repeated"`
-	// The modification time in ISO 8601 format.
+	// The modification time (ISO 8601).
 	//
 	// example:
 	//
@@ -368,7 +368,7 @@ type ListWorkItemsResponseBodyItems struct {
 	//
 	// 1
 	OwnerUserId *int64 `json:"ownerUserId,omitempty" xml:"ownerUserId,omitempty"`
-	// Indicates whether the item is pinned by the caller.
+	// The personal pin status for the caller.
 	//
 	// example:
 	//
@@ -428,13 +428,13 @@ type ListWorkItemsResponseBodyItems struct {
 	//
 	// example
 	Title *string `json:"title,omitempty" xml:"title,omitempty"`
-	// The time zone when the task is triggered.
+	// The trigger time zone of the task.
 	//
 	// example:
 	//
 	// example
 	TriggerTimezone *string `json:"triggerTimezone,omitempty" xml:"triggerTimezone,omitempty"`
-	// The trigger time of the task in ISO 8601 format.
+	// The trigger time of the task (ISO 8601).
 	//
 	// example:
 	//
@@ -458,13 +458,13 @@ type ListWorkItemsResponseBodyItems struct {
 	//
 	// SELF
 	VisibilitySource *string `json:"visibilitySource,omitempty" xml:"visibilitySource,omitempty"`
-	// The ID of the work item.
+	// The work item ID.
 	//
 	// example:
 	//
 	// example
 	WorkItemId *string `json:"workItemId,omitempty" xml:"workItemId,omitempty"`
-	// The workflow status projection.
+	// The workflow status projection (four states).
 	//
 	// example:
 	//
@@ -474,7 +474,7 @@ type ListWorkItemsResponseBodyItems struct {
 	//
 	// example:
 	//
-	// example
+	// ["tpl_example"]
 	WorkflowTemplateIds []*string `json:"workflowTemplateIds,omitempty" xml:"workflowTemplateIds,omitempty" type:"Repeated"`
 }
 
@@ -905,7 +905,7 @@ func (s *ListWorkItemsResponseBodyItems) Validate() error {
 }
 
 type ListWorkItemsResponseBodyItemsAttachments struct {
-	// The ID of the attachment.
+	// The attachment ID.
 	//
 	// example:
 	//
@@ -917,7 +917,7 @@ type ListWorkItemsResponseBodyItemsAttachments struct {
 	//
 	// example
 	ContentType *string `json:"contentType,omitempty" xml:"contentType,omitempty"`
-	// The access URL of the attachment.
+	// The access endpoint of the attachment (prefixed with an OpenAPI 302 redirect).
 	//
 	// example:
 	//
@@ -941,7 +941,7 @@ type ListWorkItemsResponseBodyItemsAttachments struct {
 	//
 	// 1
 	SizeBytes *int64 `json:"sizeBytes,omitempty" xml:"sizeBytes,omitempty"`
-	// The title of the attachment.
+	// The attachment title.
 	//
 	// example:
 	//

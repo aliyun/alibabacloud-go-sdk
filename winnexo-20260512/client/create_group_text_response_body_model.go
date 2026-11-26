@@ -38,7 +38,7 @@ type CreateGroupTextResponseBody struct {
 	//
 	// 200
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// The folder ID.
+	// The directory ID.
 	//
 	// example:
 	//
@@ -56,17 +56,17 @@ type CreateGroupTextResponseBody struct {
 	//
 	// group_example
 	GroupId *string `json:"groupId,omitempty" xml:"groupId,omitempty"`
-	// The prompt message.
+	// The message.
 	//
 	// example:
 	//
 	// The current zone list is illegal.
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// The image name.
+	// The mirror name.
 	//
 	// example:
 	//
-	// ProjectResources
+	// Project materials
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
 	// The request ID.
 	//
@@ -80,7 +80,7 @@ type CreateGroupTextResponseBody struct {
 	//
 	// example
 	Scope *string `json:"scope,omitempty" xml:"scope,omitempty"`
-	// The unique identifier on the business system side, that is, the business ID.
+	// The unique identifier on the business system side, which is the business ID.
 	//
 	// example:
 	//

@@ -46,7 +46,7 @@ type ListSourceUsageStatisticsResponseBody struct {
 	//
 	// [{"sourceId":"src_9401","sourceName":"Product documentation","sourceType":"KNOWLEDGE_BASE","retrievalCount":12,"usageCount":5,"lastEventTime":"2026-11-05T08:00:00Z"}]
 	Items []*ListSourceUsageStatisticsResponseBodyItems `json:"items,omitempty" xml:"items,omitempty" type:"Repeated"`
-	// The description of the status code.
+	// The status code description.
 	//
 	// example:
 	//
@@ -172,7 +172,7 @@ func (s *ListSourceUsageStatisticsResponseBody) Validate() error {
 }
 
 type ListSourceUsageStatisticsResponseBodyItems struct {
-	// The time of the most recent reporting and ingestion within the filtered range.
+	// The most recent reporting and ingestion time within the filtered range.
 	//
 	// example:
 	//
@@ -184,13 +184,13 @@ type ListSourceUsageStatisticsResponseBodyItems struct {
 	//
 	// 10
 	RetrievalCount *int64 `json:"retrievalCount,omitempty" xml:"retrievalCount,omitempty"`
-	// The ID of the data source, which is unique within the tenant.
+	// The data source ID, which is unique within the tenant.
 	//
 	// example:
 	//
 	// 8
 	SourceId *string `json:"sourceId,omitempty" xml:"sourceId,omitempty"`
-	// The name of the data source.
+	// The data source name.
 	//
 	// example:
 	//

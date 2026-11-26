@@ -9,8 +9,14 @@ type iCreateUserWithGroupsRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAppToken(v string) *CreateUserWithGroupsRequest
+	GetAppToken() *string
 	SetDisplayName(v string) *CreateUserWithGroupsRequest
 	GetDisplayName() *string
+	SetOpsUserCode(v string) *CreateUserWithGroupsRequest
+	GetOpsUserCode() *string
+	SetOpsUserId(v string) *CreateUserWithGroupsRequest
+	GetOpsUserId() *string
 	SetPasswordEncrypted(v string) *CreateUserWithGroupsRequest
 	GetPasswordEncrypted() *string
 	SetRoleCodes(v []*string) *CreateUserWithGroupsRequest
@@ -24,6 +30,12 @@ type iCreateUserWithGroupsRequest interface {
 }
 
 type CreateUserWithGroupsRequest struct {
+	// 平台应用 Token（控制台签发）。传入后将以 opsUserId 或 opsUserCode 指定的用户身份执行
+	//
+	// example:
+	//
+	// wn_app_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+	AppToken *string `json:"appToken,omitempty" xml:"appToken,omitempty"`
 	// The display name of the user. The name must be unique within the tenant and cannot exceed 100 characters in length.
 	//
 	// This parameter is required.
@@ -32,6 +44,18 @@ type CreateUserWithGroupsRequest struct {
 	//
 	// string_value
 	DisplayName *string `json:"displayName,omitempty" xml:"displayName,omitempty"`
+	// 代理用户编码（租户内唯一），仅当应用凭证配置为 source_uid 时使用
+	//
+	// example:
+	//
+	// alice
+	OpsUserCode *string `json:"opsUserCode,omitempty" xml:"opsUserCode,omitempty"`
+	// 代理用户ID（WINNEXO 平台用户ID），仅当应用凭证配置为 winnexo_uid 时使用
+	//
+	// example:
+	//
+	// 10001
+	OpsUserId *string `json:"opsUserId,omitempty" xml:"opsUserId,omitempty"`
 	// The Base64-encoded password ciphertext encrypted by using the RSA-OAEP-SHA256 algorithm.
 	//
 	// This parameter is required.
@@ -76,8 +100,20 @@ func (s CreateUserWithGroupsRequest) GoString() string {
 	return s.String()
 }
 
+func (s *CreateUserWithGroupsRequest) GetAppToken() *string {
+	return s.AppToken
+}
+
 func (s *CreateUserWithGroupsRequest) GetDisplayName() *string {
 	return s.DisplayName
+}
+
+func (s *CreateUserWithGroupsRequest) GetOpsUserCode() *string {
+	return s.OpsUserCode
+}
+
+func (s *CreateUserWithGroupsRequest) GetOpsUserId() *string {
+	return s.OpsUserId
 }
 
 func (s *CreateUserWithGroupsRequest) GetPasswordEncrypted() *string {
@@ -100,8 +136,23 @@ func (s *CreateUserWithGroupsRequest) GetWnAccountId() *string {
 	return s.WnAccountId
 }
 
+func (s *CreateUserWithGroupsRequest) SetAppToken(v string) *CreateUserWithGroupsRequest {
+	s.AppToken = &v
+	return s
+}
+
 func (s *CreateUserWithGroupsRequest) SetDisplayName(v string) *CreateUserWithGroupsRequest {
 	s.DisplayName = &v
+	return s
+}
+
+func (s *CreateUserWithGroupsRequest) SetOpsUserCode(v string) *CreateUserWithGroupsRequest {
+	s.OpsUserCode = &v
+	return s
+}
+
+func (s *CreateUserWithGroupsRequest) SetOpsUserId(v string) *CreateUserWithGroupsRequest {
+	s.OpsUserId = &v
 	return s
 }
 

@@ -11,8 +11,14 @@ type iQuerySemanticKnowledgeRequest interface {
 	GoString() string
 	SetAgentName(v string) *QuerySemanticKnowledgeRequest
 	GetAgentName() *string
+	SetAppToken(v string) *QuerySemanticKnowledgeRequest
+	GetAppToken() *string
 	SetGraphName(v string) *QuerySemanticKnowledgeRequest
 	GetGraphName() *string
+	SetOpsUserCode(v string) *QuerySemanticKnowledgeRequest
+	GetOpsUserCode() *string
+	SetOpsUserId(v string) *QuerySemanticKnowledgeRequest
+	GetOpsUserId() *string
 	SetQuery(v string) *QuerySemanticKnowledgeRequest
 	GetQuery() *string
 	SetTenantId(v string) *QuerySemanticKnowledgeRequest
@@ -28,6 +34,12 @@ type QuerySemanticKnowledgeRequest struct {
 	//
 	// SampleDigitalHuman
 	AgentName *string `json:"agentName,omitempty" xml:"agentName,omitempty"`
+	// 平台应用 Token（控制台签发）。传入后将以 opsUserId 或 opsUserCode 指定的用户身份执行
+	//
+	// example:
+	//
+	// wn_app_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+	AppToken *string `json:"appToken,omitempty" xml:"appToken,omitempty"`
 	// The knowledge graph name. Call listGraphs first to retrieve available graphs.
 	//
 	// This parameter is required.
@@ -36,6 +48,18 @@ type QuerySemanticKnowledgeRequest struct {
 	//
 	// string_value
 	GraphName *string `json:"graphName,omitempty" xml:"graphName,omitempty"`
+	// 代理用户编码（租户内唯一），仅当应用凭证配置为 source_uid 时使用
+	//
+	// example:
+	//
+	// alice
+	OpsUserCode *string `json:"opsUserCode,omitempty" xml:"opsUserCode,omitempty"`
+	// 代理用户ID（WINNEXO 平台用户ID），仅当应用凭证配置为 winnexo_uid 时使用
+	//
+	// example:
+	//
+	// 10001
+	OpsUserId *string `json:"opsUserId,omitempty" xml:"opsUserId,omitempty"`
 	// The natural language query question.
 	//
 	// This parameter is required.
@@ -66,8 +90,20 @@ func (s *QuerySemanticKnowledgeRequest) GetAgentName() *string {
 	return s.AgentName
 }
 
+func (s *QuerySemanticKnowledgeRequest) GetAppToken() *string {
+	return s.AppToken
+}
+
 func (s *QuerySemanticKnowledgeRequest) GetGraphName() *string {
 	return s.GraphName
+}
+
+func (s *QuerySemanticKnowledgeRequest) GetOpsUserCode() *string {
+	return s.OpsUserCode
+}
+
+func (s *QuerySemanticKnowledgeRequest) GetOpsUserId() *string {
+	return s.OpsUserId
 }
 
 func (s *QuerySemanticKnowledgeRequest) GetQuery() *string {
@@ -83,8 +119,23 @@ func (s *QuerySemanticKnowledgeRequest) SetAgentName(v string) *QuerySemanticKno
 	return s
 }
 
+func (s *QuerySemanticKnowledgeRequest) SetAppToken(v string) *QuerySemanticKnowledgeRequest {
+	s.AppToken = &v
+	return s
+}
+
 func (s *QuerySemanticKnowledgeRequest) SetGraphName(v string) *QuerySemanticKnowledgeRequest {
 	s.GraphName = &v
+	return s
+}
+
+func (s *QuerySemanticKnowledgeRequest) SetOpsUserCode(v string) *QuerySemanticKnowledgeRequest {
+	s.OpsUserCode = &v
+	return s
+}
+
+func (s *QuerySemanticKnowledgeRequest) SetOpsUserId(v string) *QuerySemanticKnowledgeRequest {
+	s.OpsUserId = &v
 	return s
 }
 

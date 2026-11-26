@@ -9,8 +9,14 @@ type iRegisterAppResourcePermissionsShrinkRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAppToken(v string) *RegisterAppResourcePermissionsShrinkRequest
+	GetAppToken() *string
 	SetItemsShrink(v string) *RegisterAppResourcePermissionsShrinkRequest
 	GetItemsShrink() *string
+	SetOpsUserCode(v string) *RegisterAppResourcePermissionsShrinkRequest
+	GetOpsUserCode() *string
+	SetOpsUserId(v string) *RegisterAppResourcePermissionsShrinkRequest
+	GetOpsUserId() *string
 	SetResourceTenantId(v string) *RegisterAppResourcePermissionsShrinkRequest
 	GetResourceTenantId() *string
 	SetTenantId(v string) *RegisterAppResourcePermissionsShrinkRequest
@@ -18,10 +24,28 @@ type iRegisterAppResourcePermissionsShrinkRequest interface {
 }
 
 type RegisterAppResourcePermissionsShrinkRequest struct {
+	// 平台应用 Token（控制台签发）。传入后将以 opsUserId 或 opsUserCode 指定的用户身份执行
+	//
+	// example:
+	//
+	// wn_app_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+	AppToken *string `json:"appToken,omitempty" xml:"appToken,omitempty"`
 	// The batch authorization item.
 	//
 	// This parameter is required.
 	ItemsShrink *string `json:"items,omitempty" xml:"items,omitempty"`
+	// 代理用户编码（租户内唯一），仅当应用凭证配置为 source_uid 时使用
+	//
+	// example:
+	//
+	// alice
+	OpsUserCode *string `json:"opsUserCode,omitempty" xml:"opsUserCode,omitempty"`
+	// 代理用户ID（WINNEXO 平台用户ID），仅当应用凭证配置为 winnexo_uid 时使用
+	//
+	// example:
+	//
+	// 10001
+	OpsUserId *string `json:"opsUserId,omitempty" xml:"opsUserId,omitempty"`
 	// The batch authorization item.
 	//
 	// example:
@@ -44,8 +68,20 @@ func (s RegisterAppResourcePermissionsShrinkRequest) GoString() string {
 	return s.String()
 }
 
+func (s *RegisterAppResourcePermissionsShrinkRequest) GetAppToken() *string {
+	return s.AppToken
+}
+
 func (s *RegisterAppResourcePermissionsShrinkRequest) GetItemsShrink() *string {
 	return s.ItemsShrink
+}
+
+func (s *RegisterAppResourcePermissionsShrinkRequest) GetOpsUserCode() *string {
+	return s.OpsUserCode
+}
+
+func (s *RegisterAppResourcePermissionsShrinkRequest) GetOpsUserId() *string {
+	return s.OpsUserId
 }
 
 func (s *RegisterAppResourcePermissionsShrinkRequest) GetResourceTenantId() *string {
@@ -56,8 +92,23 @@ func (s *RegisterAppResourcePermissionsShrinkRequest) GetTenantId() *string {
 	return s.TenantId
 }
 
+func (s *RegisterAppResourcePermissionsShrinkRequest) SetAppToken(v string) *RegisterAppResourcePermissionsShrinkRequest {
+	s.AppToken = &v
+	return s
+}
+
 func (s *RegisterAppResourcePermissionsShrinkRequest) SetItemsShrink(v string) *RegisterAppResourcePermissionsShrinkRequest {
 	s.ItemsShrink = &v
+	return s
+}
+
+func (s *RegisterAppResourcePermissionsShrinkRequest) SetOpsUserCode(v string) *RegisterAppResourcePermissionsShrinkRequest {
+	s.OpsUserCode = &v
+	return s
+}
+
+func (s *RegisterAppResourcePermissionsShrinkRequest) SetOpsUserId(v string) *RegisterAppResourcePermissionsShrinkRequest {
+	s.OpsUserId = &v
 	return s
 }
 

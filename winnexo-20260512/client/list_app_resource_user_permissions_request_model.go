@@ -9,6 +9,12 @@ type iListAppResourceUserPermissionsRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAppToken(v string) *ListAppResourceUserPermissionsRequest
+	GetAppToken() *string
+	SetOpsUserCode(v string) *ListAppResourceUserPermissionsRequest
+	GetOpsUserCode() *string
+	SetOpsUserId(v string) *ListAppResourceUserPermissionsRequest
+	GetOpsUserId() *string
 	SetPage(v int64) *ListAppResourceUserPermissionsRequest
 	GetPage() *int64
 	SetPageSize(v int64) *ListAppResourceUserPermissionsRequest
@@ -30,6 +36,24 @@ type iListAppResourceUserPermissionsRequest interface {
 }
 
 type ListAppResourceUserPermissionsRequest struct {
+	// 平台应用 Token（控制台签发）。传入后将以 opsUserId 或 opsUserCode 指定的用户身份执行
+	//
+	// example:
+	//
+	// wn_app_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+	AppToken *string `json:"appToken,omitempty" xml:"appToken,omitempty"`
+	// 代理用户编码（租户内唯一），仅当应用凭证配置为 source_uid 时使用
+	//
+	// example:
+	//
+	// alice
+	OpsUserCode *string `json:"opsUserCode,omitempty" xml:"opsUserCode,omitempty"`
+	// 代理用户ID（WINNEXO 平台用户ID），仅当应用凭证配置为 winnexo_uid 时使用
+	//
+	// example:
+	//
+	// 10001
+	OpsUserId *string `json:"opsUserId,omitempty" xml:"opsUserId,omitempty"`
 	// The number of entries per page.
 	//
 	// example:
@@ -94,6 +118,18 @@ func (s ListAppResourceUserPermissionsRequest) GoString() string {
 	return s.String()
 }
 
+func (s *ListAppResourceUserPermissionsRequest) GetAppToken() *string {
+	return s.AppToken
+}
+
+func (s *ListAppResourceUserPermissionsRequest) GetOpsUserCode() *string {
+	return s.OpsUserCode
+}
+
+func (s *ListAppResourceUserPermissionsRequest) GetOpsUserId() *string {
+	return s.OpsUserId
+}
+
 func (s *ListAppResourceUserPermissionsRequest) GetPage() *int64 {
 	return s.Page
 }
@@ -128,6 +164,21 @@ func (s *ListAppResourceUserPermissionsRequest) GetTargetUserTenantId() *string 
 
 func (s *ListAppResourceUserPermissionsRequest) GetTenantId() *string {
 	return s.TenantId
+}
+
+func (s *ListAppResourceUserPermissionsRequest) SetAppToken(v string) *ListAppResourceUserPermissionsRequest {
+	s.AppToken = &v
+	return s
+}
+
+func (s *ListAppResourceUserPermissionsRequest) SetOpsUserCode(v string) *ListAppResourceUserPermissionsRequest {
+	s.OpsUserCode = &v
+	return s
+}
+
+func (s *ListAppResourceUserPermissionsRequest) SetOpsUserId(v string) *ListAppResourceUserPermissionsRequest {
+	s.OpsUserId = &v
+	return s
 }
 
 func (s *ListAppResourceUserPermissionsRequest) SetPage(v int64) *ListAppResourceUserPermissionsRequest {

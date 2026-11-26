@@ -30,7 +30,7 @@ type ListGraphsResponseBody struct {
 	//
 	// This parameter is required.
 	Items []*ListGraphsResponseBodyItems `json:"items,omitempty" xml:"items,omitempty" type:"Repeated"`
-	// The prompt message.
+	// The message.
 	//
 	// example:
 	//
@@ -102,7 +102,7 @@ func (s *ListGraphsResponseBody) Validate() error {
 }
 
 type ListGraphsResponseBodyItems struct {
-	// The business description of the knowledge graph. An empty string is returned if not configured.
+	// The business description of the graph. This is an empty string if not configured.
 	//
 	// This parameter is required.
 	//
@@ -118,7 +118,7 @@ type ListGraphsResponseBodyItems struct {
 	//
 	// string_value
 	DisplayName *string `json:"displayName,omitempty" xml:"displayName,omitempty"`
-	// The knowledge graph name.
+	// The graph name.
 	//
 	// This parameter is required.
 	//
@@ -126,7 +126,7 @@ type ListGraphsResponseBodyItems struct {
 	//
 	// string_value
 	GraphName *string `json:"graphName,omitempty" xml:"graphName,omitempty"`
-	// Indicates whether this is the default group.
+	// Specifies whether it is the default group.
 	//
 	// This parameter is required.
 	//

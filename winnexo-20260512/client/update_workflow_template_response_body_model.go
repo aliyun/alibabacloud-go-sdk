@@ -112,7 +112,7 @@ type UpdateWorkflowTemplateResponseBody struct {
 	//
 	// 019FF406-1B10-0065-A97D-2D1920C2A03D
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// The template structure version. The current value is 2, which is independent of the business version vN.
+	// The schema version of the template. The current value is 2, which is independent of the business version vN.
 	//
 	// example:
 	//
@@ -142,11 +142,7 @@ type UpdateWorkflowTemplateResponseBody struct {
 	//
 	// Added review step
 	VersionDescription *string `json:"versionDescription,omitempty" xml:"versionDescription,omitempty"`
-	// The version status. Valid values:
-	//
-	// - DRAFT: Draft.
-	//
-	// - SUBMITTED: Submitted.
+	// The version status. Valid values: DRAFT and SUBMITTED.
 	//
 	// example:
 	//
@@ -347,11 +343,7 @@ type UpdateWorkflowTemplateResponseBodySteps struct {
 	//
 	// example
 	OwnerAgentName *string `json:"ownerAgentName,omitempty" xml:"ownerAgentName,omitempty"`
-	// The owner type. Valid values:
-	//
-	// - MEMBER: Human.
-	//
-	// - AGENT: Agent.
+	// The owner type. Valid values: MEMBER (human) and AGENT (agent).
 	//
 	// example:
 	//
@@ -363,7 +355,7 @@ type UpdateWorkflowTemplateResponseBodySteps struct {
 	//
 	// 1
 	OwnerUserId *int64 `json:"ownerUserId,omitempty" xml:"ownerUserId,omitempty"`
-	// Specifies whether to manually review the output. Default value: false. This feature can only be enabled for digital workers, and review to-do items are automatically sent to the owner.
+	// Specifies whether to manually review the deliverables. Default value: false. This can be enabled only for digital workers. Review tasks are automatically sent to the owner.
 	//
 	// example:
 	//
@@ -373,7 +365,7 @@ type UpdateWorkflowTemplateResponseBodySteps struct {
 	//
 	// example:
 	//
-	// example
+	// [10001]
 	ReviewerUserIds []*int64 `json:"reviewerUserIds,omitempty" xml:"reviewerUserIds,omitempty" type:"Repeated"`
 	// The step order.
 	//
@@ -385,13 +377,13 @@ type UpdateWorkflowTemplateResponseBodySteps struct {
 	//
 	// example:
 	//
-	// Collect customer information and submit it to the owner for review
+	// Collect customer information and submit it to the person in charge for review
 	Specification *string `json:"specification,omitempty" xml:"specification,omitempty"`
-	// The ordered fragment array. Supports text, mention, skill, app, files, and web_search. Preserves reference identities and order.
+	// The ordered array of segments. Supports text, mention, skill, app, files, and web_search. Preserves reference identities and order.
 	//
 	// example:
 	//
-	// [{"type":"text","text":"Collect customer information"}]
+	// [{"type":"text","content":"Collect Customer Information"}]
 	SpecificationJson []map[string]interface{} `json:"specificationJson,omitempty" xml:"specificationJson,omitempty" type:"Repeated"`
 	// The step ID.
 	//

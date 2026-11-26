@@ -9,18 +9,30 @@ type iSaveOutputFileToResourceShrinkRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAppToken(v string) *SaveOutputFileToResourceShrinkRequest
+	GetAppToken() *string
 	SetDirectoryId(v string) *SaveOutputFileToResourceShrinkRequest
 	GetDirectoryId() *string
 	SetItemIdsShrink(v string) *SaveOutputFileToResourceShrinkRequest
 	GetItemIdsShrink() *string
 	SetMode(v string) *SaveOutputFileToResourceShrinkRequest
 	GetMode() *string
+	SetOpsUserCode(v string) *SaveOutputFileToResourceShrinkRequest
+	GetOpsUserCode() *string
+	SetOpsUserId(v string) *SaveOutputFileToResourceShrinkRequest
+	GetOpsUserId() *string
 	SetTenantId(v string) *SaveOutputFileToResourceShrinkRequest
 	GetTenantId() *string
 }
 
 type SaveOutputFileToResourceShrinkRequest struct {
-	// The ID of the target personal folder. If not specified, the user\\"s default folder is automatically resolved.
+	// 平台应用 Token（控制台签发）。传入后将以 opsUserId 或 opsUserCode 指定的用户身份执行
+	//
+	// example:
+	//
+	// wn_app_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+	AppToken *string `json:"appToken,omitempty" xml:"appToken,omitempty"`
+	// The ID of the target personal folder. If not specified, the user\"s default folder is automatically resolved.
 	//
 	// example:
 	//
@@ -44,6 +56,18 @@ type SaveOutputFileToResourceShrinkRequest struct {
 	//
 	// link
 	Mode *string `json:"mode,omitempty" xml:"mode,omitempty"`
+	// 代理用户编码（租户内唯一），仅当应用凭证配置为 source_uid 时使用
+	//
+	// example:
+	//
+	// alice
+	OpsUserCode *string `json:"opsUserCode,omitempty" xml:"opsUserCode,omitempty"`
+	// 代理用户ID（WINNEXO 平台用户ID），仅当应用凭证配置为 winnexo_uid 时使用
+	//
+	// example:
+	//
+	// 10001
+	OpsUserId *string `json:"opsUserId,omitempty" xml:"opsUserId,omitempty"`
 	// The tenant ID. This is a common parameter. In winnexo-cli, pass it explicitly with --tenant-id.
 	//
 	// example:
@@ -60,6 +84,10 @@ func (s SaveOutputFileToResourceShrinkRequest) GoString() string {
 	return s.String()
 }
 
+func (s *SaveOutputFileToResourceShrinkRequest) GetAppToken() *string {
+	return s.AppToken
+}
+
 func (s *SaveOutputFileToResourceShrinkRequest) GetDirectoryId() *string {
 	return s.DirectoryId
 }
@@ -72,8 +100,21 @@ func (s *SaveOutputFileToResourceShrinkRequest) GetMode() *string {
 	return s.Mode
 }
 
+func (s *SaveOutputFileToResourceShrinkRequest) GetOpsUserCode() *string {
+	return s.OpsUserCode
+}
+
+func (s *SaveOutputFileToResourceShrinkRequest) GetOpsUserId() *string {
+	return s.OpsUserId
+}
+
 func (s *SaveOutputFileToResourceShrinkRequest) GetTenantId() *string {
 	return s.TenantId
+}
+
+func (s *SaveOutputFileToResourceShrinkRequest) SetAppToken(v string) *SaveOutputFileToResourceShrinkRequest {
+	s.AppToken = &v
+	return s
 }
 
 func (s *SaveOutputFileToResourceShrinkRequest) SetDirectoryId(v string) *SaveOutputFileToResourceShrinkRequest {
@@ -88,6 +129,16 @@ func (s *SaveOutputFileToResourceShrinkRequest) SetItemIdsShrink(v string) *Save
 
 func (s *SaveOutputFileToResourceShrinkRequest) SetMode(v string) *SaveOutputFileToResourceShrinkRequest {
 	s.Mode = &v
+	return s
+}
+
+func (s *SaveOutputFileToResourceShrinkRequest) SetOpsUserCode(v string) *SaveOutputFileToResourceShrinkRequest {
+	s.OpsUserCode = &v
+	return s
+}
+
+func (s *SaveOutputFileToResourceShrinkRequest) SetOpsUserId(v string) *SaveOutputFileToResourceShrinkRequest {
+	s.OpsUserId = &v
 	return s
 }
 

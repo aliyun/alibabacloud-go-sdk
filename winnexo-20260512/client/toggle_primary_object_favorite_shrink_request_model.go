@@ -11,12 +11,18 @@ type iTogglePrimaryObjectFavoriteShrinkRequest interface {
 	GoString() string
 	SetAction(v string) *TogglePrimaryObjectFavoriteShrinkRequest
 	GetAction() *string
+	SetAppToken(v string) *TogglePrimaryObjectFavoriteShrinkRequest
+	GetAppToken() *string
 	SetObjectIdsShrink(v string) *TogglePrimaryObjectFavoriteShrinkRequest
 	GetObjectIdsShrink() *string
 	SetObjectType(v string) *TogglePrimaryObjectFavoriteShrinkRequest
 	GetObjectType() *string
 	SetOperatingObjectName(v string) *TogglePrimaryObjectFavoriteShrinkRequest
 	GetOperatingObjectName() *string
+	SetOpsUserCode(v string) *TogglePrimaryObjectFavoriteShrinkRequest
+	GetOpsUserCode() *string
+	SetOpsUserId(v string) *TogglePrimaryObjectFavoriteShrinkRequest
+	GetOpsUserId() *string
 	SetTenantId(v string) *TogglePrimaryObjectFavoriteShrinkRequest
 	GetTenantId() *string
 }
@@ -34,6 +40,12 @@ type TogglePrimaryObjectFavoriteShrinkRequest struct {
 	//
 	// add
 	Action *string `json:"action,omitempty" xml:"action,omitempty"`
+	// 平台应用 Token（控制台签发）。传入后将以 opsUserId 或 opsUserCode 指定的用户身份执行
+	//
+	// example:
+	//
+	// wn_app_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+	AppToken *string `json:"appToken,omitempty" xml:"appToken,omitempty"`
 	// The list of primary object business IDs.
 	//
 	// This parameter is required.
@@ -58,6 +70,18 @@ type TogglePrimaryObjectFavoriteShrinkRequest struct {
 	//
 	// string_value
 	OperatingObjectName *string `json:"operatingObjectName,omitempty" xml:"operatingObjectName,omitempty"`
+	// 代理用户编码（租户内唯一），仅当应用凭证配置为 source_uid 时使用
+	//
+	// example:
+	//
+	// alice
+	OpsUserCode *string `json:"opsUserCode,omitempty" xml:"opsUserCode,omitempty"`
+	// 代理用户ID（WINNEXO 平台用户ID），仅当应用凭证配置为 winnexo_uid 时使用
+	//
+	// example:
+	//
+	// 10001
+	OpsUserId *string `json:"opsUserId,omitempty" xml:"opsUserId,omitempty"`
 	// The ID of the effective tenant.
 	//
 	// example:
@@ -78,6 +102,10 @@ func (s *TogglePrimaryObjectFavoriteShrinkRequest) GetAction() *string {
 	return s.Action
 }
 
+func (s *TogglePrimaryObjectFavoriteShrinkRequest) GetAppToken() *string {
+	return s.AppToken
+}
+
 func (s *TogglePrimaryObjectFavoriteShrinkRequest) GetObjectIdsShrink() *string {
 	return s.ObjectIdsShrink
 }
@@ -90,12 +118,25 @@ func (s *TogglePrimaryObjectFavoriteShrinkRequest) GetOperatingObjectName() *str
 	return s.OperatingObjectName
 }
 
+func (s *TogglePrimaryObjectFavoriteShrinkRequest) GetOpsUserCode() *string {
+	return s.OpsUserCode
+}
+
+func (s *TogglePrimaryObjectFavoriteShrinkRequest) GetOpsUserId() *string {
+	return s.OpsUserId
+}
+
 func (s *TogglePrimaryObjectFavoriteShrinkRequest) GetTenantId() *string {
 	return s.TenantId
 }
 
 func (s *TogglePrimaryObjectFavoriteShrinkRequest) SetAction(v string) *TogglePrimaryObjectFavoriteShrinkRequest {
 	s.Action = &v
+	return s
+}
+
+func (s *TogglePrimaryObjectFavoriteShrinkRequest) SetAppToken(v string) *TogglePrimaryObjectFavoriteShrinkRequest {
+	s.AppToken = &v
 	return s
 }
 
@@ -111,6 +152,16 @@ func (s *TogglePrimaryObjectFavoriteShrinkRequest) SetObjectType(v string) *Togg
 
 func (s *TogglePrimaryObjectFavoriteShrinkRequest) SetOperatingObjectName(v string) *TogglePrimaryObjectFavoriteShrinkRequest {
 	s.OperatingObjectName = &v
+	return s
+}
+
+func (s *TogglePrimaryObjectFavoriteShrinkRequest) SetOpsUserCode(v string) *TogglePrimaryObjectFavoriteShrinkRequest {
+	s.OpsUserCode = &v
+	return s
+}
+
+func (s *TogglePrimaryObjectFavoriteShrinkRequest) SetOpsUserId(v string) *TogglePrimaryObjectFavoriteShrinkRequest {
+	s.OpsUserId = &v
 	return s
 }
 

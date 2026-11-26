@@ -9,6 +9,8 @@ type iUpdateWorkflowNodeConfigurationShrinkRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAppToken(v string) *UpdateWorkflowNodeConfigurationShrinkRequest
+	GetAppToken() *string
 	SetCollaborationGroupId(v string) *UpdateWorkflowNodeConfigurationShrinkRequest
 	GetCollaborationGroupId() *string
 	SetExecutorShrink(v string) *UpdateWorkflowNodeConfigurationShrinkRequest
@@ -21,6 +23,10 @@ type iUpdateWorkflowNodeConfigurationShrinkRequest interface {
 	GetModel() *string
 	SetNodeId(v string) *UpdateWorkflowNodeConfigurationShrinkRequest
 	GetNodeId() *string
+	SetOpsUserCode(v string) *UpdateWorkflowNodeConfigurationShrinkRequest
+	GetOpsUserCode() *string
+	SetOpsUserId(v string) *UpdateWorkflowNodeConfigurationShrinkRequest
+	GetOpsUserId() *string
 	SetResponsibleUserIdsShrink(v string) *UpdateWorkflowNodeConfigurationShrinkRequest
 	GetResponsibleUserIdsShrink() *string
 	SetTenantId(v string) *UpdateWorkflowNodeConfigurationShrinkRequest
@@ -28,6 +34,12 @@ type iUpdateWorkflowNodeConfigurationShrinkRequest interface {
 }
 
 type UpdateWorkflowNodeConfigurationShrinkRequest struct {
+	// 平台应用 Token（控制台签发）。传入后将以 opsUserId 或 opsUserCode 指定的用户身份执行
+	//
+	// example:
+	//
+	// wn_app_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+	AppToken *string `json:"appToken,omitempty" xml:"appToken,omitempty"`
 	// The ID of the collaboration workspace.
 	//
 	// This parameter is required.
@@ -72,6 +84,18 @@ type UpdateWorkflowNodeConfigurationShrinkRequest struct {
 	//
 	// node_7f3a2c
 	NodeId *string `json:"nodeId,omitempty" xml:"nodeId,omitempty"`
+	// 代理用户编码（租户内唯一），仅当应用凭证配置为 source_uid 时使用
+	//
+	// example:
+	//
+	// alice
+	OpsUserCode *string `json:"opsUserCode,omitempty" xml:"opsUserCode,omitempty"`
+	// 代理用户ID（WINNEXO 平台用户ID），仅当应用凭证配置为 winnexo_uid 时使用
+	//
+	// example:
+	//
+	// 10001
+	OpsUserId *string `json:"opsUserId,omitempty" xml:"opsUserId,omitempty"`
 	// The list of user IDs for the node owners. The value must be a non-empty array of positive integers. If this parameter is omitted, the current value is retained. If this parameter is set to null, the default value is restored.
 	//
 	// example:
@@ -92,6 +116,10 @@ func (s UpdateWorkflowNodeConfigurationShrinkRequest) String() string {
 
 func (s UpdateWorkflowNodeConfigurationShrinkRequest) GoString() string {
 	return s.String()
+}
+
+func (s *UpdateWorkflowNodeConfigurationShrinkRequest) GetAppToken() *string {
+	return s.AppToken
 }
 
 func (s *UpdateWorkflowNodeConfigurationShrinkRequest) GetCollaborationGroupId() *string {
@@ -118,12 +146,25 @@ func (s *UpdateWorkflowNodeConfigurationShrinkRequest) GetNodeId() *string {
 	return s.NodeId
 }
 
+func (s *UpdateWorkflowNodeConfigurationShrinkRequest) GetOpsUserCode() *string {
+	return s.OpsUserCode
+}
+
+func (s *UpdateWorkflowNodeConfigurationShrinkRequest) GetOpsUserId() *string {
+	return s.OpsUserId
+}
+
 func (s *UpdateWorkflowNodeConfigurationShrinkRequest) GetResponsibleUserIdsShrink() *string {
 	return s.ResponsibleUserIdsShrink
 }
 
 func (s *UpdateWorkflowNodeConfigurationShrinkRequest) GetTenantId() *string {
 	return s.TenantId
+}
+
+func (s *UpdateWorkflowNodeConfigurationShrinkRequest) SetAppToken(v string) *UpdateWorkflowNodeConfigurationShrinkRequest {
+	s.AppToken = &v
+	return s
 }
 
 func (s *UpdateWorkflowNodeConfigurationShrinkRequest) SetCollaborationGroupId(v string) *UpdateWorkflowNodeConfigurationShrinkRequest {
@@ -153,6 +194,16 @@ func (s *UpdateWorkflowNodeConfigurationShrinkRequest) SetModel(v string) *Updat
 
 func (s *UpdateWorkflowNodeConfigurationShrinkRequest) SetNodeId(v string) *UpdateWorkflowNodeConfigurationShrinkRequest {
 	s.NodeId = &v
+	return s
+}
+
+func (s *UpdateWorkflowNodeConfigurationShrinkRequest) SetOpsUserCode(v string) *UpdateWorkflowNodeConfigurationShrinkRequest {
+	s.OpsUserCode = &v
+	return s
+}
+
+func (s *UpdateWorkflowNodeConfigurationShrinkRequest) SetOpsUserId(v string) *UpdateWorkflowNodeConfigurationShrinkRequest {
+	s.OpsUserId = &v
 	return s
 }
 

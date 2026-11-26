@@ -52,7 +52,7 @@ type QuerySourceUsageSummaryResponseBody struct {
 	//
 	// 10
 	RetrievalCount *int64 `json:"retrievalCount,omitempty" xml:"retrievalCount,omitempty"`
-	// The deduplicated count of sources that have retrieval events.
+	// The deduplicated number of sources with retrieval events.
 	//
 	// example:
 	//
@@ -70,7 +70,7 @@ type QuerySourceUsageSummaryResponseBody struct {
 	//
 	// 8
 	UsageCount *int64 `json:"usageCount,omitempty" xml:"usageCount,omitempty"`
-	// The deduplicated count of sources that have usage events.
+	// The deduplicated number of sources with usage events.
 	//
 	// example:
 	//

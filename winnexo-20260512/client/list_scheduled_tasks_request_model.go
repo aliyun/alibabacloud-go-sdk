@@ -9,6 +9,8 @@ type iListScheduledTasksRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAppToken(v string) *ListScheduledTasksRequest
+	GetAppToken() *string
 	SetCollaborationGroupId(v string) *ListScheduledTasksRequest
 	GetCollaborationGroupId() *string
 	SetCreatorOnly(v bool) *ListScheduledTasksRequest
@@ -19,6 +21,10 @@ type iListScheduledTasksRequest interface {
 	GetMaxResults() *int32
 	SetNextToken(v string) *ListScheduledTasksRequest
 	GetNextToken() *string
+	SetOpsUserCode(v string) *ListScheduledTasksRequest
+	GetOpsUserCode() *string
+	SetOpsUserId(v string) *ListScheduledTasksRequest
+	GetOpsUserId() *string
 	SetPage(v int64) *ListScheduledTasksRequest
 	GetPage() *int64
 	SetPageSize(v int64) *ListScheduledTasksRequest
@@ -30,6 +36,12 @@ type iListScheduledTasksRequest interface {
 }
 
 type ListScheduledTasksRequest struct {
+	// 平台应用 Token（控制台签发）。传入后将以 opsUserId 或 opsUserCode 指定的用户身份执行
+	//
+	// example:
+	//
+	// wn_app_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+	AppToken *string `json:"appToken,omitempty" xml:"appToken,omitempty"`
 	// The ID of the collaboration group to which the task belongs, such as cg_101. If this parameter is specified, a group space task is created, and the caller must be a valid group member. If this parameter is left empty, a personal task is created.
 	//
 	// example:
@@ -60,6 +72,18 @@ type ListScheduledTasksRequest struct {
 	//
 	// eHiB8vca1XDyBT0cNAmThA==
 	NextToken *string `json:"nextToken,omitempty" xml:"nextToken,omitempty"`
+	// 代理用户编码（租户内唯一），仅当应用凭证配置为 source_uid 时使用
+	//
+	// example:
+	//
+	// alice
+	OpsUserCode *string `json:"opsUserCode,omitempty" xml:"opsUserCode,omitempty"`
+	// 代理用户ID（WINNEXO 平台用户ID），仅当应用凭证配置为 winnexo_uid 时使用
+	//
+	// example:
+	//
+	// 10001
+	OpsUserId *string `json:"opsUserId,omitempty" xml:"opsUserId,omitempty"`
 	// The page number for pagination. Default value: 1.
 	//
 	// example:
@@ -96,6 +120,10 @@ func (s ListScheduledTasksRequest) GoString() string {
 	return s.String()
 }
 
+func (s *ListScheduledTasksRequest) GetAppToken() *string {
+	return s.AppToken
+}
+
 func (s *ListScheduledTasksRequest) GetCollaborationGroupId() *string {
 	return s.CollaborationGroupId
 }
@@ -116,6 +144,14 @@ func (s *ListScheduledTasksRequest) GetNextToken() *string {
 	return s.NextToken
 }
 
+func (s *ListScheduledTasksRequest) GetOpsUserCode() *string {
+	return s.OpsUserCode
+}
+
+func (s *ListScheduledTasksRequest) GetOpsUserId() *string {
+	return s.OpsUserId
+}
+
 func (s *ListScheduledTasksRequest) GetPage() *int64 {
 	return s.Page
 }
@@ -130,6 +166,11 @@ func (s *ListScheduledTasksRequest) GetTenantId() *string {
 
 func (s *ListScheduledTasksRequest) GetVisibilities() []*string {
 	return s.Visibilities
+}
+
+func (s *ListScheduledTasksRequest) SetAppToken(v string) *ListScheduledTasksRequest {
+	s.AppToken = &v
+	return s
 }
 
 func (s *ListScheduledTasksRequest) SetCollaborationGroupId(v string) *ListScheduledTasksRequest {
@@ -154,6 +195,16 @@ func (s *ListScheduledTasksRequest) SetMaxResults(v int32) *ListScheduledTasksRe
 
 func (s *ListScheduledTasksRequest) SetNextToken(v string) *ListScheduledTasksRequest {
 	s.NextToken = &v
+	return s
+}
+
+func (s *ListScheduledTasksRequest) SetOpsUserCode(v string) *ListScheduledTasksRequest {
+	s.OpsUserCode = &v
+	return s
+}
+
+func (s *ListScheduledTasksRequest) SetOpsUserId(v string) *ListScheduledTasksRequest {
+	s.OpsUserId = &v
 	return s
 }
 

@@ -9,6 +9,10 @@ type iSendChatMessageShrinkRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAppToken(v string) *SendChatMessageShrinkRequest
+	GetAppToken() *string
+	SetAutoPreference(v string) *SendChatMessageShrinkRequest
+	GetAutoPreference() *string
 	SetContent(v string) *SendChatMessageShrinkRequest
 	GetContent() *string
 	SetContentType(v string) *SendChatMessageShrinkRequest
@@ -29,6 +33,10 @@ type iSendChatMessageShrinkRequest interface {
 	GetLocale() *string
 	SetModel(v string) *SendChatMessageShrinkRequest
 	GetModel() *string
+	SetOpsUserCode(v string) *SendChatMessageShrinkRequest
+	GetOpsUserCode() *string
+	SetOpsUserId(v string) *SendChatMessageShrinkRequest
+	GetOpsUserId() *string
 	SetReuseLastSession(v bool) *SendChatMessageShrinkRequest
 	GetReuseLastSession() *bool
 	SetSegmentsShrink(v string) *SendChatMessageShrinkRequest
@@ -41,11 +49,27 @@ type iSendChatMessageShrinkRequest interface {
 	GetTaskExecutionShrink() *string
 	SetTenantId(v string) *SendChatMessageShrinkRequest
 	GetTenantId() *string
+	SetThinkingEnabled(v bool) *SendChatMessageShrinkRequest
+	GetThinkingEnabled() *bool
+	SetThinkingLevel(v string) *SendChatMessageShrinkRequest
+	GetThinkingLevel() *string
 	SetWorkMode(v string) *SendChatMessageShrinkRequest
 	GetWorkMode() *string
 }
 
 type SendChatMessageShrinkRequest struct {
+	// The platform application token issued by the console. If this parameter is passed, the operation is executed as the user specified by opsUserId or opsUserCode.
+	//
+	// example:
+	//
+	// wn_app_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+	AppToken *string `json:"appToken,omitempty" xml:"appToken,omitempty"`
+	// The AUTO preference. Valid values: none (default), performance (effect first), and credit (cost first). If this parameter is omitted or set to null, the session preference is inherited. If it is left blank, it is reset to none.
+	//
+	// example:
+	//
+	// performance
+	AutoPreference *string `json:"autoPreference,omitempty" xml:"autoPreference,omitempty"`
 	// The body of the user message.
 	//
 	// This parameter is required.
@@ -66,19 +90,19 @@ type SendChatMessageShrinkRequest struct {
 	//
 	// []
 	ContextItemsShrink *string `json:"contextItems,omitempty" xml:"contextItems,omitempty"`
-	// The list of digital employee names. For compatibility with the legacy format, a single string can be passed.
+	// The list of digital employee names. For compatibility with the old format, a single string can also be passed.
 	//
 	// example:
 	//
 	// string_value
 	DigitalEmployeeNameShrink *string `json:"digitalEmployeeName,omitempty" xml:"digitalEmployeeName,omitempty"`
-	// Specifies whether to enable direct connection mode. If set to true, regular scenario routing is skipped and the direct conversation scenario is entered directly.
+	// Specifies whether to enable direct connection mode. If this parameter is set to true, regular scenario routing is skipped and the direct conversation scenario is entered directly.
 	//
 	// example:
 	//
 	// false
 	DirectChat *bool `json:"directChat,omitempty" xml:"directChat,omitempty"`
-	// The number of recent complete direct Q&A rounds carried in the current turn, excluding the input of the current turn. This parameter takes effect only when workMode is set to direct or directChat is set to true. Valid values: JSON integers from 0 to 100. If omitted, the backend processes it as 0, carrying no history but still saving the current turn. Null, Boolean, string, decimal, and out-of-bounds values are processed through the original direct path, and the gateway retains the original values for backend determination. This field is ignored in work and ask modes. This parameter does not limit the history range when converted to the work mode.
+	// The number of recent complete direct Q&A rounds carried in the current turn, excluding the input of the current turn. This parameter takes effect only when workMode is set to direct or directChat is set to true. Valid values: JSON integers from 0 to 100. If this parameter is omitted, the backend processes it as 0, carrying no history but still saving the current turn. Null, Boolean values, strings, decimals, and out-of-bounds values are processed through the original direct path, and the gateway retains the original values for backend determination. This field is ignored in work and ask modes. This parameter does not limit the history range when switching to the work mode.
 	//
 	// example:
 	//
@@ -90,21 +114,33 @@ type SendChatMessageShrinkRequest struct {
 	//
 	// false
 	EnableWebSearch *bool `json:"enableWebSearch,omitempty" xml:"enableWebSearch,omitempty"`
-	// The list of file references. Each item is an object, and the fileId parameter is required, which is returned by uploadChatFile.
+	// The list of file references. Each item is an object, and fileId is required, which is returned by uploadChatFile.
 	FilesShrink *string `json:"files,omitempty" xml:"files,omitempty"`
-	// The language for the current turn. Valid values: zh-CN and en-US. This parameter is used for API error messages and passed through to CodeAgent. If omitted, the current language behavior is retained and user settings are not modified.
+	// The language for the current turn. Valid values: zh-CN and en-US. This parameter is used for API error messages and passed through to CodeAgent. If this parameter is omitted, the current language behavior is retained and the user settings are not modified.
 	//
 	// example:
 	//
 	// en-US
 	Locale *string `json:"locale,omitempty" xml:"locale,omitempty"`
-	// The abstract model tier. Valid values: quick, standard, and flagship. If omitted, standard is used for new sessions, and the current tier is retained for existing sessions.
+	// The abstract model tier. Valid values: quick, standard, and flagship. If this parameter is omitted, standard is used for new sessions, and the current tier is retained for existing sessions.
 	//
 	// example:
 	//
 	// quick
 	Model *string `json:"model,omitempty" xml:"model,omitempty"`
-	// Specifies whether to reuse the most recent session under the digital employee when sessionId is not passed, which applies to CLI scenarios. Default value: false, which indicates that a new session is created.
+	// The proxy user code, which is unique within the tenant. This parameter is used only when the application credential is configured as source_uid.
+	//
+	// example:
+	//
+	// alice
+	OpsUserCode *string `json:"opsUserCode,omitempty" xml:"opsUserCode,omitempty"`
+	// The proxy user ID, which is the WINNEXO platform user ID. This parameter is used only when the application credential is configured as winnexo_uid.
+	//
+	// example:
+	//
+	// 10001
+	OpsUserId *string `json:"opsUserId,omitempty" xml:"opsUserId,omitempty"`
+	// Specifies whether to reuse the most recent session under the digital employee when sessionId is not passed, which applies to CLI scenarios. Default value: false, which means a new session is created.
 	//
 	// example:
 	//
@@ -122,13 +158,13 @@ type SendChatMessageShrinkRequest struct {
 	//
 	// exampleSessionId
 	SessionId *string `json:"sessionId,omitempty" xml:"sessionId,omitempty"`
-	// Specifies whether streaming output is enabled.
+	// Specifies whether to use streaming output.
 	//
 	// example:
 	//
 	// true
 	Stream *bool `json:"stream,omitempty" xml:"stream,omitempty"`
-	// The task execution metadata returned by executeScheduledTask. If passed, the request is processed through the task execution pipeline.
+	// The task execution metadata returned by executeScheduledTask. If this parameter is passed, the request is processed through the task execution pipeline.
 	TaskExecutionShrink *string `json:"taskExecution,omitempty" xml:"taskExecution,omitempty"`
 	// The effective tenant ID.
 	//
@@ -136,7 +172,19 @@ type SendChatMessageShrinkRequest struct {
 	//
 	// 10000
 	TenantId *string `json:"tenantId,omitempty" xml:"tenantId,omitempty"`
-	// The session work mode. Valid values: ask (quick Q&A, which trims tools, skills, and connectors for single-turn direct answers), work (deep work, which is the default), and direct (direct connection mode at the request level, which does not start a sandbox and prevents context pollution, equivalent to directChat=true). The ask and work modes are session-level. The mode is fixed when a new session is created. Subsequent chats inherit the session mode by default. If the explicitly passed value is inconsistent with the session mode, a parameter error is returned. To switch modes, create a new session or fork the session. If ask is passed in multi-digital employee or task execution scenarios, it takes effect as work. This parameter is ignored when directChat is set to true.
+	// Specifies whether to explicitly override the thinking mode for the current turn. If this parameter is not passed in AUTO mode, the decision model determines the behavior. If it is not passed in fixed tier mode, the personal settings are retained. The final behavior complies with the model capabilities and tenant switches.
+	//
+	// example:
+	//
+	// true
+	ThinkingEnabled *bool `json:"thinkingEnabled,omitempty" xml:"thinkingEnabled,omitempty"`
+	// The explicit override for the thinking intensity in the current turn. If this parameter is not passed in AUTO mode, the decision model determines the behavior. If it is not passed in fixed tier mode, the personal settings are retained. The final behavior complies with the model capabilities and tenant switches.
+	//
+	// example:
+	//
+	// medium
+	ThinkingLevel *string `json:"thinkingLevel,omitempty" xml:"thinkingLevel,omitempty"`
+	// The session work mode. Valid values: ask (quick Q&A, which trims tools, skills, and connectors for single-turn direct answers), work (deep work, which is the default), and direct (direct connection mode at the request level, which does not start the sandbox and prevents context pollution, equivalent to directChat=true). The ask and work modes are session-level. The mode is fixed when a new session is created. Subsequent chats inherit the session mode by default. If the explicitly passed value is inconsistent with the session mode, a parameter error is returned. To switch modes, create a new session or fork the current one. If ask is passed in multi-digital employee or task execution scenarios, it takes effect as work. If directChat is set to true, this parameter is ignored.
 	//
 	// example:
 	//
@@ -150,6 +198,14 @@ func (s SendChatMessageShrinkRequest) String() string {
 
 func (s SendChatMessageShrinkRequest) GoString() string {
 	return s.String()
+}
+
+func (s *SendChatMessageShrinkRequest) GetAppToken() *string {
+	return s.AppToken
+}
+
+func (s *SendChatMessageShrinkRequest) GetAutoPreference() *string {
+	return s.AutoPreference
 }
 
 func (s *SendChatMessageShrinkRequest) GetContent() *string {
@@ -192,6 +248,14 @@ func (s *SendChatMessageShrinkRequest) GetModel() *string {
 	return s.Model
 }
 
+func (s *SendChatMessageShrinkRequest) GetOpsUserCode() *string {
+	return s.OpsUserCode
+}
+
+func (s *SendChatMessageShrinkRequest) GetOpsUserId() *string {
+	return s.OpsUserId
+}
+
 func (s *SendChatMessageShrinkRequest) GetReuseLastSession() *bool {
 	return s.ReuseLastSession
 }
@@ -216,8 +280,26 @@ func (s *SendChatMessageShrinkRequest) GetTenantId() *string {
 	return s.TenantId
 }
 
+func (s *SendChatMessageShrinkRequest) GetThinkingEnabled() *bool {
+	return s.ThinkingEnabled
+}
+
+func (s *SendChatMessageShrinkRequest) GetThinkingLevel() *string {
+	return s.ThinkingLevel
+}
+
 func (s *SendChatMessageShrinkRequest) GetWorkMode() *string {
 	return s.WorkMode
+}
+
+func (s *SendChatMessageShrinkRequest) SetAppToken(v string) *SendChatMessageShrinkRequest {
+	s.AppToken = &v
+	return s
+}
+
+func (s *SendChatMessageShrinkRequest) SetAutoPreference(v string) *SendChatMessageShrinkRequest {
+	s.AutoPreference = &v
+	return s
 }
 
 func (s *SendChatMessageShrinkRequest) SetContent(v string) *SendChatMessageShrinkRequest {
@@ -270,6 +352,16 @@ func (s *SendChatMessageShrinkRequest) SetModel(v string) *SendChatMessageShrink
 	return s
 }
 
+func (s *SendChatMessageShrinkRequest) SetOpsUserCode(v string) *SendChatMessageShrinkRequest {
+	s.OpsUserCode = &v
+	return s
+}
+
+func (s *SendChatMessageShrinkRequest) SetOpsUserId(v string) *SendChatMessageShrinkRequest {
+	s.OpsUserId = &v
+	return s
+}
+
 func (s *SendChatMessageShrinkRequest) SetReuseLastSession(v bool) *SendChatMessageShrinkRequest {
 	s.ReuseLastSession = &v
 	return s
@@ -297,6 +389,16 @@ func (s *SendChatMessageShrinkRequest) SetTaskExecutionShrink(v string) *SendCha
 
 func (s *SendChatMessageShrinkRequest) SetTenantId(v string) *SendChatMessageShrinkRequest {
 	s.TenantId = &v
+	return s
+}
+
+func (s *SendChatMessageShrinkRequest) SetThinkingEnabled(v bool) *SendChatMessageShrinkRequest {
+	s.ThinkingEnabled = &v
+	return s
+}
+
+func (s *SendChatMessageShrinkRequest) SetThinkingLevel(v string) *SendChatMessageShrinkRequest {
+	s.ThinkingLevel = &v
 	return s
 }
 

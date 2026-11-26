@@ -9,6 +9,8 @@ type iCreateKnowledgeBaseAliDingDocRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAppToken(v string) *CreateKnowledgeBaseAliDingDocRequest
+	GetAppToken() *string
 	SetDescription(v string) *CreateKnowledgeBaseAliDingDocRequest
 	GetDescription() *string
 	SetDirectoryId(v string) *CreateKnowledgeBaseAliDingDocRequest
@@ -21,6 +23,10 @@ type iCreateKnowledgeBaseAliDingDocRequest interface {
 	GetName() *string
 	SetOperatingObjectName(v string) *CreateKnowledgeBaseAliDingDocRequest
 	GetOperatingObjectName() *string
+	SetOpsUserCode(v string) *CreateKnowledgeBaseAliDingDocRequest
+	GetOpsUserCode() *string
+	SetOpsUserId(v string) *CreateKnowledgeBaseAliDingDocRequest
+	GetOpsUserId() *string
 	SetSourceTags(v string) *CreateKnowledgeBaseAliDingDocRequest
 	GetSourceTags() *string
 	SetTenantId(v string) *CreateKnowledgeBaseAliDingDocRequest
@@ -28,6 +34,12 @@ type iCreateKnowledgeBaseAliDingDocRequest interface {
 }
 
 type CreateKnowledgeBaseAliDingDocRequest struct {
+	// The platform application token issued by the console. If specified, the operation is performed as the user specified by `opsUserId` or `opsUserCode`.
+	//
+	// example:
+	//
+	// wn_app_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+	AppToken *string `json:"appToken,omitempty" xml:"appToken,omitempty"`
 	// The description of the alias.
 	//
 	// example:
@@ -40,7 +52,7 @@ type CreateKnowledgeBaseAliDingDocRequest struct {
 	//
 	// exampleDirectoryId
 	DirectoryId *string `json:"directoryId,omitempty" xml:"directoryId,omitempty"`
-	// The publicly accessible URL of the AliDing online document.
+	// The public access URL of the AliDing online document.
 	//
 	// This parameter is required.
 	//
@@ -48,7 +60,7 @@ type CreateKnowledgeBaseAliDingDocRequest struct {
 	//
 	// https://example.com/winnexo/resource
 	FilePublicUrl *string `json:"filePublicUrl,omitempty" xml:"filePublicUrl,omitempty"`
-	// Not supported. This parameter is ignored.
+	// This parameter is not supported and is ignored.
 	//
 	// example:
 	//
@@ -62,13 +74,25 @@ type CreateKnowledgeBaseAliDingDocRequest struct {
 	//
 	// p-toolset-4dd55d81-f98f-4806-8596-43f1c95f1ff0
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The digital employee name (operating object name, optional).
+	// The name of the digital employee, which is the name of the operating object. This parameter is optional.
 	//
 	// example:
 	//
 	// string_value
 	OperatingObjectName *string `json:"operatingObjectName,omitempty" xml:"operatingObjectName,omitempty"`
-	// The resource tags (optional, a JSON string list, such as ["tagA","tagB"]).
+	// The proxy user code, which is unique within the tenant. This parameter is used only when the application credential is configured as `source_uid`.
+	//
+	// example:
+	//
+	// alice
+	OpsUserCode *string `json:"opsUserCode,omitempty" xml:"opsUserCode,omitempty"`
+	// The proxy user ID, which is the WINNEXO platform user ID. This parameter is used only when the application credential is configured as `winnexo_uid`.
+	//
+	// example:
+	//
+	// 10001
+	OpsUserId *string `json:"opsUserId,omitempty" xml:"opsUserId,omitempty"`
+	// The resource tags. This parameter is optional and accepts a JSON string array, such as `["tagA","tagB"]`.
 	//
 	// example:
 	//
@@ -88,6 +112,10 @@ func (s CreateKnowledgeBaseAliDingDocRequest) String() string {
 
 func (s CreateKnowledgeBaseAliDingDocRequest) GoString() string {
 	return s.String()
+}
+
+func (s *CreateKnowledgeBaseAliDingDocRequest) GetAppToken() *string {
+	return s.AppToken
 }
 
 func (s *CreateKnowledgeBaseAliDingDocRequest) GetDescription() *string {
@@ -114,12 +142,25 @@ func (s *CreateKnowledgeBaseAliDingDocRequest) GetOperatingObjectName() *string 
 	return s.OperatingObjectName
 }
 
+func (s *CreateKnowledgeBaseAliDingDocRequest) GetOpsUserCode() *string {
+	return s.OpsUserCode
+}
+
+func (s *CreateKnowledgeBaseAliDingDocRequest) GetOpsUserId() *string {
+	return s.OpsUserId
+}
+
 func (s *CreateKnowledgeBaseAliDingDocRequest) GetSourceTags() *string {
 	return s.SourceTags
 }
 
 func (s *CreateKnowledgeBaseAliDingDocRequest) GetTenantId() *string {
 	return s.TenantId
+}
+
+func (s *CreateKnowledgeBaseAliDingDocRequest) SetAppToken(v string) *CreateKnowledgeBaseAliDingDocRequest {
+	s.AppToken = &v
+	return s
 }
 
 func (s *CreateKnowledgeBaseAliDingDocRequest) SetDescription(v string) *CreateKnowledgeBaseAliDingDocRequest {
@@ -149,6 +190,16 @@ func (s *CreateKnowledgeBaseAliDingDocRequest) SetName(v string) *CreateKnowledg
 
 func (s *CreateKnowledgeBaseAliDingDocRequest) SetOperatingObjectName(v string) *CreateKnowledgeBaseAliDingDocRequest {
 	s.OperatingObjectName = &v
+	return s
+}
+
+func (s *CreateKnowledgeBaseAliDingDocRequest) SetOpsUserCode(v string) *CreateKnowledgeBaseAliDingDocRequest {
+	s.OpsUserCode = &v
+	return s
+}
+
+func (s *CreateKnowledgeBaseAliDingDocRequest) SetOpsUserId(v string) *CreateKnowledgeBaseAliDingDocRequest {
+	s.OpsUserId = &v
 	return s
 }
 

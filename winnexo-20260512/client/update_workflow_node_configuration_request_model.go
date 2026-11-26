@@ -9,6 +9,8 @@ type iUpdateWorkflowNodeConfigurationRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAppToken(v string) *UpdateWorkflowNodeConfigurationRequest
+	GetAppToken() *string
 	SetCollaborationGroupId(v string) *UpdateWorkflowNodeConfigurationRequest
 	GetCollaborationGroupId() *string
 	SetExecutor(v *UpdateWorkflowNodeConfigurationRequestExecutor) *UpdateWorkflowNodeConfigurationRequest
@@ -21,6 +23,10 @@ type iUpdateWorkflowNodeConfigurationRequest interface {
 	GetModel() *string
 	SetNodeId(v string) *UpdateWorkflowNodeConfigurationRequest
 	GetNodeId() *string
+	SetOpsUserCode(v string) *UpdateWorkflowNodeConfigurationRequest
+	GetOpsUserCode() *string
+	SetOpsUserId(v string) *UpdateWorkflowNodeConfigurationRequest
+	GetOpsUserId() *string
 	SetResponsibleUserIds(v []*int64) *UpdateWorkflowNodeConfigurationRequest
 	GetResponsibleUserIds() []*int64
 	SetTenantId(v string) *UpdateWorkflowNodeConfigurationRequest
@@ -28,6 +34,12 @@ type iUpdateWorkflowNodeConfigurationRequest interface {
 }
 
 type UpdateWorkflowNodeConfigurationRequest struct {
+	// 平台应用 Token（控制台签发）。传入后将以 opsUserId 或 opsUserCode 指定的用户身份执行
+	//
+	// example:
+	//
+	// wn_app_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+	AppToken *string `json:"appToken,omitempty" xml:"appToken,omitempty"`
 	// The ID of the collaboration workspace.
 	//
 	// This parameter is required.
@@ -72,6 +84,18 @@ type UpdateWorkflowNodeConfigurationRequest struct {
 	//
 	// node_7f3a2c
 	NodeId *string `json:"nodeId,omitempty" xml:"nodeId,omitempty"`
+	// 代理用户编码（租户内唯一），仅当应用凭证配置为 source_uid 时使用
+	//
+	// example:
+	//
+	// alice
+	OpsUserCode *string `json:"opsUserCode,omitempty" xml:"opsUserCode,omitempty"`
+	// 代理用户ID（WINNEXO 平台用户ID），仅当应用凭证配置为 winnexo_uid 时使用
+	//
+	// example:
+	//
+	// 10001
+	OpsUserId *string `json:"opsUserId,omitempty" xml:"opsUserId,omitempty"`
 	// The list of user IDs for the node owners. The value must be a non-empty array of positive integers. If this parameter is omitted, the current value is retained. If this parameter is set to null, the default value is restored.
 	//
 	// example:
@@ -92,6 +116,10 @@ func (s UpdateWorkflowNodeConfigurationRequest) String() string {
 
 func (s UpdateWorkflowNodeConfigurationRequest) GoString() string {
 	return s.String()
+}
+
+func (s *UpdateWorkflowNodeConfigurationRequest) GetAppToken() *string {
+	return s.AppToken
 }
 
 func (s *UpdateWorkflowNodeConfigurationRequest) GetCollaborationGroupId() *string {
@@ -118,12 +146,25 @@ func (s *UpdateWorkflowNodeConfigurationRequest) GetNodeId() *string {
 	return s.NodeId
 }
 
+func (s *UpdateWorkflowNodeConfigurationRequest) GetOpsUserCode() *string {
+	return s.OpsUserCode
+}
+
+func (s *UpdateWorkflowNodeConfigurationRequest) GetOpsUserId() *string {
+	return s.OpsUserId
+}
+
 func (s *UpdateWorkflowNodeConfigurationRequest) GetResponsibleUserIds() []*int64 {
 	return s.ResponsibleUserIds
 }
 
 func (s *UpdateWorkflowNodeConfigurationRequest) GetTenantId() *string {
 	return s.TenantId
+}
+
+func (s *UpdateWorkflowNodeConfigurationRequest) SetAppToken(v string) *UpdateWorkflowNodeConfigurationRequest {
+	s.AppToken = &v
+	return s
 }
 
 func (s *UpdateWorkflowNodeConfigurationRequest) SetCollaborationGroupId(v string) *UpdateWorkflowNodeConfigurationRequest {
@@ -153,6 +194,16 @@ func (s *UpdateWorkflowNodeConfigurationRequest) SetModel(v string) *UpdateWorkf
 
 func (s *UpdateWorkflowNodeConfigurationRequest) SetNodeId(v string) *UpdateWorkflowNodeConfigurationRequest {
 	s.NodeId = &v
+	return s
+}
+
+func (s *UpdateWorkflowNodeConfigurationRequest) SetOpsUserCode(v string) *UpdateWorkflowNodeConfigurationRequest {
+	s.OpsUserCode = &v
+	return s
+}
+
+func (s *UpdateWorkflowNodeConfigurationRequest) SetOpsUserId(v string) *UpdateWorkflowNodeConfigurationRequest {
+	s.OpsUserId = &v
 	return s
 }
 

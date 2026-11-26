@@ -9,8 +9,14 @@ type iCheckAppResourcePermissionsBatchShrinkRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAppToken(v string) *CheckAppResourcePermissionsBatchShrinkRequest
+	GetAppToken() *string
 	SetChecksShrink(v string) *CheckAppResourcePermissionsBatchShrinkRequest
 	GetChecksShrink() *string
+	SetOpsUserCode(v string) *CheckAppResourcePermissionsBatchShrinkRequest
+	GetOpsUserCode() *string
+	SetOpsUserId(v string) *CheckAppResourcePermissionsBatchShrinkRequest
+	GetOpsUserId() *string
 	SetResourceTenantId(v string) *CheckAppResourcePermissionsBatchShrinkRequest
 	GetResourceTenantId() *string
 	SetTargetUserId(v int64) *CheckAppResourcePermissionsBatchShrinkRequest
@@ -22,10 +28,28 @@ type iCheckAppResourcePermissionsBatchShrinkRequest interface {
 }
 
 type CheckAppResourcePermissionsBatchShrinkRequest struct {
+	// The platform application token issued by the console. If specified, the operation is performed as the user specified by opsUserId or opsUserCode.
+	//
+	// example:
+	//
+	// wn_app_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+	AppToken *string `json:"appToken,omitempty" xml:"appToken,omitempty"`
 	// The check item.
 	//
 	// This parameter is required.
 	ChecksShrink *string `json:"checks,omitempty" xml:"checks,omitempty"`
+	// The proxy user code, which is unique within the tenant. This parameter is used only when the application credential is configured as source_uid.
+	//
+	// example:
+	//
+	// alice
+	OpsUserCode *string `json:"opsUserCode,omitempty" xml:"opsUserCode,omitempty"`
+	// The proxy user ID, which is the WINNEXO platform user ID. This parameter is used only when the application credential is configured as winnexo_uid.
+	//
+	// example:
+	//
+	// 10001
+	OpsUserId *string `json:"opsUserId,omitempty" xml:"opsUserId,omitempty"`
 	// The ID of the target platform user.
 	//
 	// example:
@@ -44,7 +68,7 @@ type CheckAppResourcePermissionsBatchShrinkRequest struct {
 	//
 	// 10000
 	TargetUserTenantId *string `json:"targetUserTenantId,omitempty" xml:"targetUserTenantId,omitempty"`
-	// The ID of the tenant to which the resource belongs. If this parameter is not specified, the current tenant of the caller is used.
+	// The ID of the tenant to which the resource belongs. If not specified, the current tenant of the caller is used.
 	//
 	// example:
 	//
@@ -60,8 +84,20 @@ func (s CheckAppResourcePermissionsBatchShrinkRequest) GoString() string {
 	return s.String()
 }
 
+func (s *CheckAppResourcePermissionsBatchShrinkRequest) GetAppToken() *string {
+	return s.AppToken
+}
+
 func (s *CheckAppResourcePermissionsBatchShrinkRequest) GetChecksShrink() *string {
 	return s.ChecksShrink
+}
+
+func (s *CheckAppResourcePermissionsBatchShrinkRequest) GetOpsUserCode() *string {
+	return s.OpsUserCode
+}
+
+func (s *CheckAppResourcePermissionsBatchShrinkRequest) GetOpsUserId() *string {
+	return s.OpsUserId
 }
 
 func (s *CheckAppResourcePermissionsBatchShrinkRequest) GetResourceTenantId() *string {
@@ -80,8 +116,23 @@ func (s *CheckAppResourcePermissionsBatchShrinkRequest) GetTenantId() *string {
 	return s.TenantId
 }
 
+func (s *CheckAppResourcePermissionsBatchShrinkRequest) SetAppToken(v string) *CheckAppResourcePermissionsBatchShrinkRequest {
+	s.AppToken = &v
+	return s
+}
+
 func (s *CheckAppResourcePermissionsBatchShrinkRequest) SetChecksShrink(v string) *CheckAppResourcePermissionsBatchShrinkRequest {
 	s.ChecksShrink = &v
+	return s
+}
+
+func (s *CheckAppResourcePermissionsBatchShrinkRequest) SetOpsUserCode(v string) *CheckAppResourcePermissionsBatchShrinkRequest {
+	s.OpsUserCode = &v
+	return s
+}
+
+func (s *CheckAppResourcePermissionsBatchShrinkRequest) SetOpsUserId(v string) *CheckAppResourcePermissionsBatchShrinkRequest {
+	s.OpsUserId = &v
 	return s
 }
 

@@ -9,6 +9,8 @@ type iCreatePersonalDingtalkChatRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAppToken(v string) *CreatePersonalDingtalkChatRequest
+	GetAppToken() *string
 	SetChatId(v string) *CreatePersonalDingtalkChatRequest
 	GetChatId() *string
 	SetChatName(v string) *CreatePersonalDingtalkChatRequest
@@ -23,6 +25,10 @@ type iCreatePersonalDingtalkChatRequest interface {
 	GetNotes() *string
 	SetOperatingObjectName(v string) *CreatePersonalDingtalkChatRequest
 	GetOperatingObjectName() *string
+	SetOpsUserCode(v string) *CreatePersonalDingtalkChatRequest
+	GetOpsUserCode() *string
+	SetOpsUserId(v string) *CreatePersonalDingtalkChatRequest
+	GetOpsUserId() *string
 	SetSourceTags(v string) *CreatePersonalDingtalkChatRequest
 	GetSourceTags() *string
 	SetTenantId(v string) *CreatePersonalDingtalkChatRequest
@@ -32,6 +38,12 @@ type iCreatePersonalDingtalkChatRequest interface {
 }
 
 type CreatePersonalDingtalkChatRequest struct {
+	// The platform application token issued by the console. If specified, the operation is performed as the user specified by opsUserId or opsUserCode.
+	//
+	// example:
+	//
+	// wn_app_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+	AppToken *string `json:"appToken,omitempty" xml:"appToken,omitempty"`
 	// The DingTalk group chat session ID.
 	//
 	// This parameter is required.
@@ -40,11 +52,11 @@ type CreatePersonalDingtalkChatRequest struct {
 	//
 	// cidxxxxxxxx
 	ChatId *string `json:"chatId,omitempty" xml:"chatId,omitempty"`
-	// The group chat name.
+	// The name of the group chat.
 	//
 	// example:
 	//
-	// CustomerProjectGroup
+	// Customer Project Group
 	ChatName *string `json:"chatName,omitempty" xml:"chatName,omitempty"`
 	// The pipeline description.
 	//
@@ -52,13 +64,13 @@ type CreatePersonalDingtalkChatRequest struct {
 	//
 	// Customer group chat history
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// The directory ID.
+	// The folder ID.
 	//
 	// example:
 	//
 	// exampleDirectoryId
 	DirectoryId *string `json:"directoryId,omitempty" xml:"directoryId,omitempty"`
-	// The start time for collecting chat history.
+	// The start time for chat record collection.
 	//
 	// This parameter is required.
 	//
@@ -66,25 +78,37 @@ type CreatePersonalDingtalkChatRequest struct {
 	//
 	// 2026-08-01
 	HistoryStartTime *string `json:"historyStartTime,omitempty" xml:"historyStartTime,omitempty"`
-	// The meeting notes content (optional). The notes are used for auxiliary analysis.
+	// The content of the meeting notes (optional), which is used for auxiliary analysis.
 	//
 	// example:
 	//
 	// Focus on identifying customer demands and to-do items
 	Notes *string `json:"notes,omitempty" xml:"notes,omitempty"`
-	// The digital employee name (operating object name, optional).
+	// The name of the digital employee (the name of the operating object, optional).
 	//
 	// example:
 	//
 	// my-agent
 	OperatingObjectName *string `json:"operatingObjectName,omitempty" xml:"operatingObjectName,omitempty"`
-	// The resource tags (optional, a JSON string list, such as ["tagA","tagB"]).
+	// The proxy user code, which is unique within the tenant. This parameter is used only when the application credential is configured as source_uid.
 	//
 	// example:
 	//
-	// ["Customer","GroupChat"]
+	// alice
+	OpsUserCode *string `json:"opsUserCode,omitempty" xml:"opsUserCode,omitempty"`
+	// The proxy user ID, which is the WINNEXO platform user ID. This parameter is used only when the application credential is configured as winnexo_uid.
+	//
+	// example:
+	//
+	// 10001
+	OpsUserId *string `json:"opsUserId,omitempty" xml:"opsUserId,omitempty"`
+	// The resource tags (optional). The value is a JSON string list, such as ["tagA","tagB"].
+	//
+	// example:
+	//
+	// ["Customer","Group chat"]
 	SourceTags *string `json:"sourceTags,omitempty" xml:"sourceTags,omitempty"`
-	// The tenant ID.
+	// The ID of the tenant.
 	//
 	// example:
 	//
@@ -100,6 +124,10 @@ func (s CreatePersonalDingtalkChatRequest) String() string {
 
 func (s CreatePersonalDingtalkChatRequest) GoString() string {
 	return s.String()
+}
+
+func (s *CreatePersonalDingtalkChatRequest) GetAppToken() *string {
+	return s.AppToken
 }
 
 func (s *CreatePersonalDingtalkChatRequest) GetChatId() *string {
@@ -130,6 +158,14 @@ func (s *CreatePersonalDingtalkChatRequest) GetOperatingObjectName() *string {
 	return s.OperatingObjectName
 }
 
+func (s *CreatePersonalDingtalkChatRequest) GetOpsUserCode() *string {
+	return s.OpsUserCode
+}
+
+func (s *CreatePersonalDingtalkChatRequest) GetOpsUserId() *string {
+	return s.OpsUserId
+}
+
 func (s *CreatePersonalDingtalkChatRequest) GetSourceTags() *string {
 	return s.SourceTags
 }
@@ -140,6 +176,11 @@ func (s *CreatePersonalDingtalkChatRequest) GetTenantId() *string {
 
 func (s *CreatePersonalDingtalkChatRequest) GetUpdateFrequency() *CreatePersonalDingtalkChatRequestUpdateFrequency {
 	return s.UpdateFrequency
+}
+
+func (s *CreatePersonalDingtalkChatRequest) SetAppToken(v string) *CreatePersonalDingtalkChatRequest {
+	s.AppToken = &v
+	return s
 }
 
 func (s *CreatePersonalDingtalkChatRequest) SetChatId(v string) *CreatePersonalDingtalkChatRequest {
@@ -177,6 +218,16 @@ func (s *CreatePersonalDingtalkChatRequest) SetOperatingObjectName(v string) *Cr
 	return s
 }
 
+func (s *CreatePersonalDingtalkChatRequest) SetOpsUserCode(v string) *CreatePersonalDingtalkChatRequest {
+	s.OpsUserCode = &v
+	return s
+}
+
+func (s *CreatePersonalDingtalkChatRequest) SetOpsUserId(v string) *CreatePersonalDingtalkChatRequest {
+	s.OpsUserId = &v
+	return s
+}
+
 func (s *CreatePersonalDingtalkChatRequest) SetSourceTags(v string) *CreatePersonalDingtalkChatRequest {
 	s.SourceTags = &v
 	return s
@@ -202,19 +253,19 @@ func (s *CreatePersonalDingtalkChatRequest) Validate() error {
 }
 
 type CreatePersonalDingtalkChatRequestUpdateFrequency struct {
-	// The cron expression for timed scheduling.
+	// The cron expression for the timed scheduling task.
 	//
 	// example:
 	//
 	// 0 2 	- 	- *
 	Cron *string `json:"cron,omitempty" xml:"cron,omitempty"`
-	// Specifies whether to enable or disable the feature.
+	// **Specifies whether to enable the feature.**
 	//
 	// example:
 	//
 	// true
 	Enabled *bool `json:"enabled,omitempty" xml:"enabled,omitempty"`
-	// The preset mode (can be ignored).
+	// The preset mode, which can be ignored.
 	//
 	// example:
 	//

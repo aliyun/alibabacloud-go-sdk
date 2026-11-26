@@ -9,10 +9,16 @@ type iSaveGraphDraftBatchDefineRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAppToken(v string) *SaveGraphDraftBatchDefineRequest
+	GetAppToken() *string
 	SetDraftChangeIds(v []*int64) *SaveGraphDraftBatchDefineRequest
 	GetDraftChangeIds() []*int64
 	SetGraphName(v string) *SaveGraphDraftBatchDefineRequest
 	GetGraphName() *string
+	SetOpsUserCode(v string) *SaveGraphDraftBatchDefineRequest
+	GetOpsUserCode() *string
+	SetOpsUserId(v string) *SaveGraphDraftBatchDefineRequest
+	GetOpsUserId() *string
 	SetSaveMode(v string) *SaveGraphDraftBatchDefineRequest
 	GetSaveMode() *string
 	SetTenantId(v string) *SaveGraphDraftBatchDefineRequest
@@ -22,6 +28,12 @@ type iSaveGraphDraftBatchDefineRequest interface {
 }
 
 type SaveGraphDraftBatchDefineRequest struct {
+	// 平台应用 Token（控制台签发）。传入后将以 opsUserId 或 opsUserCode 指定的用户身份执行
+	//
+	// example:
+	//
+	// wn_app_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+	AppToken *string `json:"appToken,omitempty" xml:"appToken,omitempty"`
 	// The list of draft change IDs.
 	//
 	// example:
@@ -36,6 +48,18 @@ type SaveGraphDraftBatchDefineRequest struct {
 	//
 	// crm_graph
 	GraphName *string `json:"graphName,omitempty" xml:"graphName,omitempty"`
+	// 代理用户编码（租户内唯一），仅当应用凭证配置为 source_uid 时使用
+	//
+	// example:
+	//
+	// alice
+	OpsUserCode *string `json:"opsUserCode,omitempty" xml:"opsUserCode,omitempty"`
+	// 代理用户ID（WINNEXO 平台用户ID），仅当应用凭证配置为 winnexo_uid 时使用
+	//
+	// example:
+	//
+	// 10001
+	OpsUserId *string `json:"opsUserId,omitempty" xml:"opsUserId,omitempty"`
 	// The save mode.
 	//
 	// example:
@@ -66,12 +90,24 @@ func (s SaveGraphDraftBatchDefineRequest) GoString() string {
 	return s.String()
 }
 
+func (s *SaveGraphDraftBatchDefineRequest) GetAppToken() *string {
+	return s.AppToken
+}
+
 func (s *SaveGraphDraftBatchDefineRequest) GetDraftChangeIds() []*int64 {
 	return s.DraftChangeIds
 }
 
 func (s *SaveGraphDraftBatchDefineRequest) GetGraphName() *string {
 	return s.GraphName
+}
+
+func (s *SaveGraphDraftBatchDefineRequest) GetOpsUserCode() *string {
+	return s.OpsUserCode
+}
+
+func (s *SaveGraphDraftBatchDefineRequest) GetOpsUserId() *string {
+	return s.OpsUserId
 }
 
 func (s *SaveGraphDraftBatchDefineRequest) GetSaveMode() *string {
@@ -86,6 +122,11 @@ func (s *SaveGraphDraftBatchDefineRequest) GetYamlEdit() *string {
 	return s.YamlEdit
 }
 
+func (s *SaveGraphDraftBatchDefineRequest) SetAppToken(v string) *SaveGraphDraftBatchDefineRequest {
+	s.AppToken = &v
+	return s
+}
+
 func (s *SaveGraphDraftBatchDefineRequest) SetDraftChangeIds(v []*int64) *SaveGraphDraftBatchDefineRequest {
 	s.DraftChangeIds = v
 	return s
@@ -93,6 +134,16 @@ func (s *SaveGraphDraftBatchDefineRequest) SetDraftChangeIds(v []*int64) *SaveGr
 
 func (s *SaveGraphDraftBatchDefineRequest) SetGraphName(v string) *SaveGraphDraftBatchDefineRequest {
 	s.GraphName = &v
+	return s
+}
+
+func (s *SaveGraphDraftBatchDefineRequest) SetOpsUserCode(v string) *SaveGraphDraftBatchDefineRequest {
+	s.OpsUserCode = &v
+	return s
+}
+
+func (s *SaveGraphDraftBatchDefineRequest) SetOpsUserId(v string) *SaveGraphDraftBatchDefineRequest {
+	s.OpsUserId = &v
 	return s
 }
 

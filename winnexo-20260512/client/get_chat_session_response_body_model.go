@@ -313,6 +313,18 @@ func (s *GetChatSessionResponseBodyMessages) Validate() error {
 }
 
 type GetChatSessionResponseBodySession struct {
+	// 会话归档状态 ACTIVE/ARCHIVING/ARCHIVED
+	//
+	// example:
+	//
+	// ACTIVE
+	ConversationArchiveStatus *string `json:"conversationArchiveStatus,omitempty" xml:"conversationArchiveStatus,omitempty"`
+	// 会话归档完成时间戳（秒）
+	//
+	// example:
+	//
+	// 1735689600
+	ConversationArchivedTime *int64 `json:"conversationArchivedTime,omitempty" xml:"conversationArchivedTime,omitempty"`
 	// The creation time.
 	//
 	// example:
@@ -383,6 +395,14 @@ func (s GetChatSessionResponseBodySession) GoString() string {
 	return s.String()
 }
 
+func (s *GetChatSessionResponseBodySession) GetConversationArchiveStatus() *string {
+	return s.ConversationArchiveStatus
+}
+
+func (s *GetChatSessionResponseBodySession) GetConversationArchivedTime() *int64 {
+	return s.ConversationArchivedTime
+}
+
 func (s *GetChatSessionResponseBodySession) GetCreatedAt() *int64 {
 	return s.CreatedAt
 }
@@ -421,6 +441,16 @@ func (s *GetChatSessionResponseBodySession) GetTitle() *string {
 
 func (s *GetChatSessionResponseBodySession) GetUpdatedAt() *int64 {
 	return s.UpdatedAt
+}
+
+func (s *GetChatSessionResponseBodySession) SetConversationArchiveStatus(v string) *GetChatSessionResponseBodySession {
+	s.ConversationArchiveStatus = &v
+	return s
+}
+
+func (s *GetChatSessionResponseBodySession) SetConversationArchivedTime(v int64) *GetChatSessionResponseBodySession {
+	s.ConversationArchivedTime = &v
+	return s
 }
 
 func (s *GetChatSessionResponseBodySession) SetCreatedAt(v int64) *GetChatSessionResponseBodySession {

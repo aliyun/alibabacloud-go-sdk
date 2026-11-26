@@ -9,6 +9,8 @@ type iCreatePersonalAlidingKnowledgeBaseRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAppToken(v string) *CreatePersonalAlidingKnowledgeBaseRequest
+	GetAppToken() *string
 	SetDirectoryId(v string) *CreatePersonalAlidingKnowledgeBaseRequest
 	GetDirectoryId() *string
 	SetKbName(v string) *CreatePersonalAlidingKnowledgeBaseRequest
@@ -19,6 +21,10 @@ type iCreatePersonalAlidingKnowledgeBaseRequest interface {
 	GetObjectBindings() []*CreatePersonalAlidingKnowledgeBaseRequestObjectBindings
 	SetOperatingObjectName(v string) *CreatePersonalAlidingKnowledgeBaseRequest
 	GetOperatingObjectName() *string
+	SetOpsUserCode(v string) *CreatePersonalAlidingKnowledgeBaseRequest
+	GetOpsUserCode() *string
+	SetOpsUserId(v string) *CreatePersonalAlidingKnowledgeBaseRequest
+	GetOpsUserId() *string
 	SetSourceTags(v string) *CreatePersonalAlidingKnowledgeBaseRequest
 	GetSourceTags() *string
 	SetSyncConfig(v *CreatePersonalAlidingKnowledgeBaseRequestSyncConfig) *CreatePersonalAlidingKnowledgeBaseRequest
@@ -28,6 +34,12 @@ type iCreatePersonalAlidingKnowledgeBaseRequest interface {
 }
 
 type CreatePersonalAlidingKnowledgeBaseRequest struct {
+	// 平台应用 Token（控制台签发）。传入后将以 opsUserId 或 opsUserCode 指定的用户身份执行
+	//
+	// example:
+	//
+	// wn_app_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+	AppToken *string `json:"appToken,omitempty" xml:"appToken,omitempty"`
 	// The directory ID.
 	//
 	// example:
@@ -56,6 +68,18 @@ type CreatePersonalAlidingKnowledgeBaseRequest struct {
 	//
 	// string_value
 	OperatingObjectName *string `json:"operatingObjectName,omitempty" xml:"operatingObjectName,omitempty"`
+	// 代理用户编码（租户内唯一），仅当应用凭证配置为 source_uid 时使用
+	//
+	// example:
+	//
+	// alice
+	OpsUserCode *string `json:"opsUserCode,omitempty" xml:"opsUserCode,omitempty"`
+	// 代理用户ID（WINNEXO 平台用户ID），仅当应用凭证配置为 winnexo_uid 时使用
+	//
+	// example:
+	//
+	// 10001
+	OpsUserId *string `json:"opsUserId,omitempty" xml:"opsUserId,omitempty"`
 	// The list of resource tag JSON strings applied to all child sources created during knowledge base synchronization.
 	//
 	// example:
@@ -80,6 +104,10 @@ func (s CreatePersonalAlidingKnowledgeBaseRequest) GoString() string {
 	return s.String()
 }
 
+func (s *CreatePersonalAlidingKnowledgeBaseRequest) GetAppToken() *string {
+	return s.AppToken
+}
+
 func (s *CreatePersonalAlidingKnowledgeBaseRequest) GetDirectoryId() *string {
 	return s.DirectoryId
 }
@@ -100,6 +128,14 @@ func (s *CreatePersonalAlidingKnowledgeBaseRequest) GetOperatingObjectName() *st
 	return s.OperatingObjectName
 }
 
+func (s *CreatePersonalAlidingKnowledgeBaseRequest) GetOpsUserCode() *string {
+	return s.OpsUserCode
+}
+
+func (s *CreatePersonalAlidingKnowledgeBaseRequest) GetOpsUserId() *string {
+	return s.OpsUserId
+}
+
 func (s *CreatePersonalAlidingKnowledgeBaseRequest) GetSourceTags() *string {
 	return s.SourceTags
 }
@@ -110,6 +146,11 @@ func (s *CreatePersonalAlidingKnowledgeBaseRequest) GetSyncConfig() *CreatePerso
 
 func (s *CreatePersonalAlidingKnowledgeBaseRequest) GetTenantId() *string {
 	return s.TenantId
+}
+
+func (s *CreatePersonalAlidingKnowledgeBaseRequest) SetAppToken(v string) *CreatePersonalAlidingKnowledgeBaseRequest {
+	s.AppToken = &v
+	return s
 }
 
 func (s *CreatePersonalAlidingKnowledgeBaseRequest) SetDirectoryId(v string) *CreatePersonalAlidingKnowledgeBaseRequest {
@@ -134,6 +175,16 @@ func (s *CreatePersonalAlidingKnowledgeBaseRequest) SetObjectBindings(v []*Creat
 
 func (s *CreatePersonalAlidingKnowledgeBaseRequest) SetOperatingObjectName(v string) *CreatePersonalAlidingKnowledgeBaseRequest {
 	s.OperatingObjectName = &v
+	return s
+}
+
+func (s *CreatePersonalAlidingKnowledgeBaseRequest) SetOpsUserCode(v string) *CreatePersonalAlidingKnowledgeBaseRequest {
+	s.OpsUserCode = &v
+	return s
+}
+
+func (s *CreatePersonalAlidingKnowledgeBaseRequest) SetOpsUserId(v string) *CreatePersonalAlidingKnowledgeBaseRequest {
+	s.OpsUserId = &v
 	return s
 }
 

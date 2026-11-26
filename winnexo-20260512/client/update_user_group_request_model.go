@@ -9,10 +9,16 @@ type iUpdateUserGroupRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAppToken(v string) *UpdateUserGroupRequest
+	GetAppToken() *string
 	SetDescription(v string) *UpdateUserGroupRequest
 	GetDescription() *string
 	SetMoveToRoot(v bool) *UpdateUserGroupRequest
 	GetMoveToRoot() *bool
+	SetOpsUserCode(v string) *UpdateUserGroupRequest
+	GetOpsUserCode() *string
+	SetOpsUserId(v string) *UpdateUserGroupRequest
+	GetOpsUserId() *string
 	SetParentId(v string) *UpdateUserGroupRequest
 	GetParentId() *string
 	SetTenantId(v string) *UpdateUserGroupRequest
@@ -24,6 +30,12 @@ type iUpdateUserGroupRequest interface {
 }
 
 type UpdateUserGroupRequest struct {
+	// The platform application token issued by the console. If specified, the operation is executed as the user identified by opsUserId or opsUserCode.
+	//
+	// example:
+	//
+	// wn_app_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+	AppToken *string `json:"appToken,omitempty" xml:"appToken,omitempty"`
 	// The new description of the user group. If this parameter is not specified, the description is not modified.
 	//
 	// example:
@@ -36,13 +48,25 @@ type UpdateUserGroupRequest struct {
 	//
 	// false
 	MoveToRoot *bool `json:"moveToRoot,omitempty" xml:"moveToRoot,omitempty"`
-	// The ID of the new parent user group. If this parameter is not specified, the user group is not moved. If it is explicitly set to null, the user group is moved to the root node.
+	// The proxy user code, which is unique within the tenant. This parameter is used only when the application credential is configured as source_uid.
+	//
+	// example:
+	//
+	// alice
+	OpsUserCode *string `json:"opsUserCode,omitempty" xml:"opsUserCode,omitempty"`
+	// The proxy user ID, which is the WINNEXO platform user ID. This parameter is used only when the application credential is configured as winnexo_uid.
+	//
+	// example:
+	//
+	// 10001
+	OpsUserId *string `json:"opsUserId,omitempty" xml:"opsUserId,omitempty"`
+	// The ID of the new parent user group. If this parameter is not specified, the user group is not moved. If this parameter is explicitly set to null, the user group is moved to the root node.
 	//
 	// example:
 	//
 	// string_value
 	ParentId *string `json:"parentId,omitempty" xml:"parentId,omitempty"`
-	// The tenant ID. This is a common parameter. In winnexo-cli, it is explicitly passed by using --tenant-id.
+	// The tenant ID. This is a common parameter. For winnexo-cli, explicitly pass this parameter by using `--tenant-id`.
 	//
 	// example:
 	//
@@ -72,12 +96,24 @@ func (s UpdateUserGroupRequest) GoString() string {
 	return s.String()
 }
 
+func (s *UpdateUserGroupRequest) GetAppToken() *string {
+	return s.AppToken
+}
+
 func (s *UpdateUserGroupRequest) GetDescription() *string {
 	return s.Description
 }
 
 func (s *UpdateUserGroupRequest) GetMoveToRoot() *bool {
 	return s.MoveToRoot
+}
+
+func (s *UpdateUserGroupRequest) GetOpsUserCode() *string {
+	return s.OpsUserCode
+}
+
+func (s *UpdateUserGroupRequest) GetOpsUserId() *string {
+	return s.OpsUserId
 }
 
 func (s *UpdateUserGroupRequest) GetParentId() *string {
@@ -96,6 +132,11 @@ func (s *UpdateUserGroupRequest) GetUserGroupName() *string {
 	return s.UserGroupName
 }
 
+func (s *UpdateUserGroupRequest) SetAppToken(v string) *UpdateUserGroupRequest {
+	s.AppToken = &v
+	return s
+}
+
 func (s *UpdateUserGroupRequest) SetDescription(v string) *UpdateUserGroupRequest {
 	s.Description = &v
 	return s
@@ -103,6 +144,16 @@ func (s *UpdateUserGroupRequest) SetDescription(v string) *UpdateUserGroupReques
 
 func (s *UpdateUserGroupRequest) SetMoveToRoot(v bool) *UpdateUserGroupRequest {
 	s.MoveToRoot = &v
+	return s
+}
+
+func (s *UpdateUserGroupRequest) SetOpsUserCode(v string) *UpdateUserGroupRequest {
+	s.OpsUserCode = &v
+	return s
+}
+
+func (s *UpdateUserGroupRequest) SetOpsUserId(v string) *UpdateUserGroupRequest {
+	s.OpsUserId = &v
 	return s
 }
 

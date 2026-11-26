@@ -9,6 +9,8 @@ type iCreateGroupFeishuChatShrinkRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAppToken(v string) *CreateGroupFeishuChatShrinkRequest
+	GetAppToken() *string
 	SetChatId(v string) *CreateGroupFeishuChatShrinkRequest
 	GetChatId() *string
 	SetDescription(v string) *CreateGroupFeishuChatShrinkRequest
@@ -23,6 +25,10 @@ type iCreateGroupFeishuChatShrinkRequest interface {
 	GetNotes() *string
 	SetOperatingObjectName(v string) *CreateGroupFeishuChatShrinkRequest
 	GetOperatingObjectName() *string
+	SetOpsUserCode(v string) *CreateGroupFeishuChatShrinkRequest
+	GetOpsUserCode() *string
+	SetOpsUserId(v string) *CreateGroupFeishuChatShrinkRequest
+	GetOpsUserId() *string
 	SetSourceTags(v string) *CreateGroupFeishuChatShrinkRequest
 	GetSourceTags() *string
 	SetTenantId(v string) *CreateGroupFeishuChatShrinkRequest
@@ -32,6 +38,12 @@ type iCreateGroupFeishuChatShrinkRequest interface {
 }
 
 type CreateGroupFeishuChatShrinkRequest struct {
+	// 平台应用 Token（控制台签发）。传入后将以 opsUserId 或 opsUserCode 指定的用户身份执行
+	//
+	// example:
+	//
+	// wn_app_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+	AppToken *string `json:"appToken,omitempty" xml:"appToken,omitempty"`
 	// The DingTalk group chat session ID.
 	//
 	// This parameter is required.
@@ -78,6 +90,18 @@ type CreateGroupFeishuChatShrinkRequest struct {
 	//
 	// string_value
 	OperatingObjectName *string `json:"operatingObjectName,omitempty" xml:"operatingObjectName,omitempty"`
+	// 代理用户编码（租户内唯一），仅当应用凭证配置为 source_uid 时使用
+	//
+	// example:
+	//
+	// alice
+	OpsUserCode *string `json:"opsUserCode,omitempty" xml:"opsUserCode,omitempty"`
+	// 代理用户ID（WINNEXO 平台用户ID），仅当应用凭证配置为 winnexo_uid 时使用
+	//
+	// example:
+	//
+	// 10001
+	OpsUserId *string `json:"opsUserId,omitempty" xml:"opsUserId,omitempty"`
 	// The source tags.
 	//
 	// example:
@@ -100,6 +124,10 @@ func (s CreateGroupFeishuChatShrinkRequest) String() string {
 
 func (s CreateGroupFeishuChatShrinkRequest) GoString() string {
 	return s.String()
+}
+
+func (s *CreateGroupFeishuChatShrinkRequest) GetAppToken() *string {
+	return s.AppToken
 }
 
 func (s *CreateGroupFeishuChatShrinkRequest) GetChatId() *string {
@@ -130,6 +158,14 @@ func (s *CreateGroupFeishuChatShrinkRequest) GetOperatingObjectName() *string {
 	return s.OperatingObjectName
 }
 
+func (s *CreateGroupFeishuChatShrinkRequest) GetOpsUserCode() *string {
+	return s.OpsUserCode
+}
+
+func (s *CreateGroupFeishuChatShrinkRequest) GetOpsUserId() *string {
+	return s.OpsUserId
+}
+
 func (s *CreateGroupFeishuChatShrinkRequest) GetSourceTags() *string {
 	return s.SourceTags
 }
@@ -140,6 +176,11 @@ func (s *CreateGroupFeishuChatShrinkRequest) GetTenantId() *string {
 
 func (s *CreateGroupFeishuChatShrinkRequest) GetUpdateFrequencyShrink() *string {
 	return s.UpdateFrequencyShrink
+}
+
+func (s *CreateGroupFeishuChatShrinkRequest) SetAppToken(v string) *CreateGroupFeishuChatShrinkRequest {
+	s.AppToken = &v
+	return s
 }
 
 func (s *CreateGroupFeishuChatShrinkRequest) SetChatId(v string) *CreateGroupFeishuChatShrinkRequest {
@@ -174,6 +215,16 @@ func (s *CreateGroupFeishuChatShrinkRequest) SetNotes(v string) *CreateGroupFeis
 
 func (s *CreateGroupFeishuChatShrinkRequest) SetOperatingObjectName(v string) *CreateGroupFeishuChatShrinkRequest {
 	s.OperatingObjectName = &v
+	return s
+}
+
+func (s *CreateGroupFeishuChatShrinkRequest) SetOpsUserCode(v string) *CreateGroupFeishuChatShrinkRequest {
+	s.OpsUserCode = &v
+	return s
+}
+
+func (s *CreateGroupFeishuChatShrinkRequest) SetOpsUserId(v string) *CreateGroupFeishuChatShrinkRequest {
+	s.OpsUserId = &v
 	return s
 }
 

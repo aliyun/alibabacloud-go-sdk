@@ -10,6 +10,8 @@ type iUploadChatFileAdvanceRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAppToken(v string) *UploadChatFileAdvanceRequest
+	GetAppToken() *string
 	SetContentType(v string) *UploadChatFileAdvanceRequest
 	GetContentType() *string
 	SetFileName(v string) *UploadChatFileAdvanceRequest
@@ -18,11 +20,21 @@ type iUploadChatFileAdvanceRequest interface {
 	GetFileUrlObject() io.Reader
 	SetOperatingObjectName(v string) *UploadChatFileAdvanceRequest
 	GetOperatingObjectName() *string
+	SetOpsUserCode(v string) *UploadChatFileAdvanceRequest
+	GetOpsUserCode() *string
+	SetOpsUserId(v string) *UploadChatFileAdvanceRequest
+	GetOpsUserId() *string
 	SetTenantId(v string) *UploadChatFileAdvanceRequest
 	GetTenantId() *string
 }
 
 type UploadChatFileAdvanceRequest struct {
+	// 平台应用 Token（控制台签发）。传入后将以 opsUserId 或 opsUserCode 指定的用户身份执行
+	//
+	// example:
+	//
+	// wn_app_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+	AppToken *string `json:"appToken,omitempty" xml:"appToken,omitempty"`
 	// The content type of the file. Valid values:
 	//
 	// - **image**: Image.
@@ -71,6 +83,18 @@ type UploadChatFileAdvanceRequest struct {
 	//
 	// string_value
 	OperatingObjectName *string `json:"operatingObjectName,omitempty" xml:"operatingObjectName,omitempty"`
+	// 代理用户编码（租户内唯一），仅当应用凭证配置为 source_uid 时使用
+	//
+	// example:
+	//
+	// alice
+	OpsUserCode *string `json:"opsUserCode,omitempty" xml:"opsUserCode,omitempty"`
+	// 代理用户ID（WINNEXO 平台用户ID），仅当应用凭证配置为 winnexo_uid 时使用
+	//
+	// example:
+	//
+	// 10001
+	OpsUserId *string `json:"opsUserId,omitempty" xml:"opsUserId,omitempty"`
 	// The tenant ID that takes effect.
 	//
 	// example:
@@ -85,6 +109,10 @@ func (s UploadChatFileAdvanceRequest) String() string {
 
 func (s UploadChatFileAdvanceRequest) GoString() string {
 	return s.String()
+}
+
+func (s *UploadChatFileAdvanceRequest) GetAppToken() *string {
+	return s.AppToken
 }
 
 func (s *UploadChatFileAdvanceRequest) GetContentType() *string {
@@ -103,8 +131,21 @@ func (s *UploadChatFileAdvanceRequest) GetOperatingObjectName() *string {
 	return s.OperatingObjectName
 }
 
+func (s *UploadChatFileAdvanceRequest) GetOpsUserCode() *string {
+	return s.OpsUserCode
+}
+
+func (s *UploadChatFileAdvanceRequest) GetOpsUserId() *string {
+	return s.OpsUserId
+}
+
 func (s *UploadChatFileAdvanceRequest) GetTenantId() *string {
 	return s.TenantId
+}
+
+func (s *UploadChatFileAdvanceRequest) SetAppToken(v string) *UploadChatFileAdvanceRequest {
+	s.AppToken = &v
+	return s
 }
 
 func (s *UploadChatFileAdvanceRequest) SetContentType(v string) *UploadChatFileAdvanceRequest {
@@ -124,6 +165,16 @@ func (s *UploadChatFileAdvanceRequest) SetFileUrlObject(v io.Reader) *UploadChat
 
 func (s *UploadChatFileAdvanceRequest) SetOperatingObjectName(v string) *UploadChatFileAdvanceRequest {
 	s.OperatingObjectName = &v
+	return s
+}
+
+func (s *UploadChatFileAdvanceRequest) SetOpsUserCode(v string) *UploadChatFileAdvanceRequest {
+	s.OpsUserCode = &v
+	return s
+}
+
+func (s *UploadChatFileAdvanceRequest) SetOpsUserId(v string) *UploadChatFileAdvanceRequest {
+	s.OpsUserId = &v
 	return s
 }
 

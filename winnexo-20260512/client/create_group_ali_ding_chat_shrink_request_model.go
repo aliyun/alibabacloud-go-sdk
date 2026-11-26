@@ -9,6 +9,8 @@ type iCreateGroupAliDingChatShrinkRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAppToken(v string) *CreateGroupAliDingChatShrinkRequest
+	GetAppToken() *string
 	SetChatId(v string) *CreateGroupAliDingChatShrinkRequest
 	GetChatId() *string
 	SetChatName(v string) *CreateGroupAliDingChatShrinkRequest
@@ -25,6 +27,10 @@ type iCreateGroupAliDingChatShrinkRequest interface {
 	GetNotes() *string
 	SetOperatingObjectName(v string) *CreateGroupAliDingChatShrinkRequest
 	GetOperatingObjectName() *string
+	SetOpsUserCode(v string) *CreateGroupAliDingChatShrinkRequest
+	GetOpsUserCode() *string
+	SetOpsUserId(v string) *CreateGroupAliDingChatShrinkRequest
+	GetOpsUserId() *string
 	SetSourceTags(v string) *CreateGroupAliDingChatShrinkRequest
 	GetSourceTags() *string
 	SetTenantId(v string) *CreateGroupAliDingChatShrinkRequest
@@ -34,6 +40,12 @@ type iCreateGroupAliDingChatShrinkRequest interface {
 }
 
 type CreateGroupAliDingChatShrinkRequest struct {
+	// 平台应用 Token（控制台签发）。传入后将以 opsUserId 或 opsUserCode 指定的用户身份执行
+	//
+	// example:
+	//
+	// wn_app_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+	AppToken *string `json:"appToken,omitempty" xml:"appToken,omitempty"`
 	// The session ID, typically used for JSSDK.
 	//
 	// This parameter is required.
@@ -88,6 +100,18 @@ type CreateGroupAliDingChatShrinkRequest struct {
 	//
 	// my-agent
 	OperatingObjectName *string `json:"operatingObjectName,omitempty" xml:"operatingObjectName,omitempty"`
+	// 代理用户编码（租户内唯一），仅当应用凭证配置为 source_uid 时使用
+	//
+	// example:
+	//
+	// alice
+	OpsUserCode *string `json:"opsUserCode,omitempty" xml:"opsUserCode,omitempty"`
+	// 代理用户ID（WINNEXO 平台用户ID），仅当应用凭证配置为 winnexo_uid 时使用
+	//
+	// example:
+	//
+	// 10001
+	OpsUserId *string `json:"opsUserId,omitempty" xml:"opsUserId,omitempty"`
 	// The resource tags (optional, a JSON string list, such as ["tagA","tagB"]).
 	//
 	// example:
@@ -110,6 +134,10 @@ func (s CreateGroupAliDingChatShrinkRequest) String() string {
 
 func (s CreateGroupAliDingChatShrinkRequest) GoString() string {
 	return s.String()
+}
+
+func (s *CreateGroupAliDingChatShrinkRequest) GetAppToken() *string {
+	return s.AppToken
 }
 
 func (s *CreateGroupAliDingChatShrinkRequest) GetChatId() *string {
@@ -144,6 +172,14 @@ func (s *CreateGroupAliDingChatShrinkRequest) GetOperatingObjectName() *string {
 	return s.OperatingObjectName
 }
 
+func (s *CreateGroupAliDingChatShrinkRequest) GetOpsUserCode() *string {
+	return s.OpsUserCode
+}
+
+func (s *CreateGroupAliDingChatShrinkRequest) GetOpsUserId() *string {
+	return s.OpsUserId
+}
+
 func (s *CreateGroupAliDingChatShrinkRequest) GetSourceTags() *string {
 	return s.SourceTags
 }
@@ -154,6 +190,11 @@ func (s *CreateGroupAliDingChatShrinkRequest) GetTenantId() *string {
 
 func (s *CreateGroupAliDingChatShrinkRequest) GetUpdateFrequencyShrink() *string {
 	return s.UpdateFrequencyShrink
+}
+
+func (s *CreateGroupAliDingChatShrinkRequest) SetAppToken(v string) *CreateGroupAliDingChatShrinkRequest {
+	s.AppToken = &v
+	return s
 }
 
 func (s *CreateGroupAliDingChatShrinkRequest) SetChatId(v string) *CreateGroupAliDingChatShrinkRequest {
@@ -193,6 +234,16 @@ func (s *CreateGroupAliDingChatShrinkRequest) SetNotes(v string) *CreateGroupAli
 
 func (s *CreateGroupAliDingChatShrinkRequest) SetOperatingObjectName(v string) *CreateGroupAliDingChatShrinkRequest {
 	s.OperatingObjectName = &v
+	return s
+}
+
+func (s *CreateGroupAliDingChatShrinkRequest) SetOpsUserCode(v string) *CreateGroupAliDingChatShrinkRequest {
+	s.OpsUserCode = &v
+	return s
+}
+
+func (s *CreateGroupAliDingChatShrinkRequest) SetOpsUserId(v string) *CreateGroupAliDingChatShrinkRequest {
+	s.OpsUserId = &v
 	return s
 }
 

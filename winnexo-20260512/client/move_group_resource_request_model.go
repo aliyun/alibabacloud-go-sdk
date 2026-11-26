@@ -9,8 +9,14 @@ type iMoveGroupResourceRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAppToken(v string) *MoveGroupResourceRequest
+	GetAppToken() *string
 	SetGroupId(v string) *MoveGroupResourceRequest
 	GetGroupId() *string
+	SetOpsUserCode(v string) *MoveGroupResourceRequest
+	GetOpsUserCode() *string
+	SetOpsUserId(v string) *MoveGroupResourceRequest
+	GetOpsUserId() *string
 	SetSourceDirectoryId(v string) *MoveGroupResourceRequest
 	GetSourceDirectoryId() *string
 	SetSourceId(v string) *MoveGroupResourceRequest
@@ -22,6 +28,12 @@ type iMoveGroupResourceRequest interface {
 }
 
 type MoveGroupResourceRequest struct {
+	// 平台应用 Token（控制台签发）。传入后将以 opsUserId 或 opsUserCode 指定的用户身份执行
+	//
+	// example:
+	//
+	// wn_app_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+	AppToken *string `json:"appToken,omitempty" xml:"appToken,omitempty"`
 	// The collaboration space ID.
 	//
 	// This parameter is required.
@@ -30,6 +42,18 @@ type MoveGroupResourceRequest struct {
 	//
 	// group_example
 	GroupId *string `json:"groupId,omitempty" xml:"groupId,omitempty"`
+	// 代理用户编码（租户内唯一），仅当应用凭证配置为 source_uid 时使用
+	//
+	// example:
+	//
+	// alice
+	OpsUserCode *string `json:"opsUserCode,omitempty" xml:"opsUserCode,omitempty"`
+	// 代理用户ID（WINNEXO 平台用户ID），仅当应用凭证配置为 winnexo_uid 时使用
+	//
+	// example:
+	//
+	// 10001
+	OpsUserId *string `json:"opsUserId,omitempty" xml:"opsUserId,omitempty"`
 	// The real ID of the physical directory in the space where the resource currently resides. The root sentinel is not supported.
 	//
 	// This parameter is required.
@@ -70,8 +94,20 @@ func (s MoveGroupResourceRequest) GoString() string {
 	return s.String()
 }
 
+func (s *MoveGroupResourceRequest) GetAppToken() *string {
+	return s.AppToken
+}
+
 func (s *MoveGroupResourceRequest) GetGroupId() *string {
 	return s.GroupId
+}
+
+func (s *MoveGroupResourceRequest) GetOpsUserCode() *string {
+	return s.OpsUserCode
+}
+
+func (s *MoveGroupResourceRequest) GetOpsUserId() *string {
+	return s.OpsUserId
 }
 
 func (s *MoveGroupResourceRequest) GetSourceDirectoryId() *string {
@@ -90,8 +126,23 @@ func (s *MoveGroupResourceRequest) GetTenantId() *string {
 	return s.TenantId
 }
 
+func (s *MoveGroupResourceRequest) SetAppToken(v string) *MoveGroupResourceRequest {
+	s.AppToken = &v
+	return s
+}
+
 func (s *MoveGroupResourceRequest) SetGroupId(v string) *MoveGroupResourceRequest {
 	s.GroupId = &v
+	return s
+}
+
+func (s *MoveGroupResourceRequest) SetOpsUserCode(v string) *MoveGroupResourceRequest {
+	s.OpsUserCode = &v
+	return s
+}
+
+func (s *MoveGroupResourceRequest) SetOpsUserId(v string) *MoveGroupResourceRequest {
+	s.OpsUserId = &v
 	return s
 }
 

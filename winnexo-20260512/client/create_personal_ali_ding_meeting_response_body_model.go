@@ -88,7 +88,7 @@ type CreatePersonalAliDingMeetingResponseBody struct {
 	//
 	// example:
 	//
-	// {\\"observedGeneration\\": 2, \\"servicesInstances\\": {}, \\"observedTime\\": \\"2026-03-05T16:00:09Z\\", \\"servicesWithPendingChanges\\": [], \\"latestEnvironmentDeploymentName\\": \\"manual-1772726409137-lmvsqr\\"}
+	// {\"observedGeneration\": 2, \"servicesInstances\": {}, \"observedTime\": \"2026-03-05T16:00:09Z\", \"servicesWithPendingChanges\": [], \"latestEnvironmentDeploymentName\": \"manual-1772726409137-lmvsqr\"}
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
 }
 

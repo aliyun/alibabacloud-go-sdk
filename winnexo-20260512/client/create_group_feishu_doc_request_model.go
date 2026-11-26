@@ -9,6 +9,8 @@ type iCreateGroupFeishuDocRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAppToken(v string) *CreateGroupFeishuDocRequest
+	GetAppToken() *string
 	SetDescription(v string) *CreateGroupFeishuDocRequest
 	GetDescription() *string
 	SetDirectoryId(v string) *CreateGroupFeishuDocRequest
@@ -25,6 +27,10 @@ type iCreateGroupFeishuDocRequest interface {
 	GetObjectBindings() []*CreateGroupFeishuDocRequestObjectBindings
 	SetOperatingObjectName(v string) *CreateGroupFeishuDocRequest
 	GetOperatingObjectName() *string
+	SetOpsUserCode(v string) *CreateGroupFeishuDocRequest
+	GetOpsUserCode() *string
+	SetOpsUserId(v string) *CreateGroupFeishuDocRequest
+	GetOpsUserId() *string
 	SetSourceTags(v string) *CreateGroupFeishuDocRequest
 	GetSourceTags() *string
 	SetSyncConfig(v *CreateGroupFeishuDocRequestSyncConfig) *CreateGroupFeishuDocRequest
@@ -34,6 +40,12 @@ type iCreateGroupFeishuDocRequest interface {
 }
 
 type CreateGroupFeishuDocRequest struct {
+	// The platform application token issued by the console. If specified, the operation is performed as the user identified by opsUserId or opsUserCode.
+	//
+	// example:
+	//
+	// wn_app_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+	AppToken *string `json:"appToken,omitempty" xml:"appToken,omitempty"`
 	// The description of the AI assistant.
 	//
 	// example:
@@ -62,27 +74,39 @@ type CreateGroupFeishuDocRequest struct {
 	//
 	// group_delivery
 	GroupId *string `json:"groupId,omitempty" xml:"groupId,omitempty"`
-	// The image name.
+	// The mirror name.
 	//
 	// example:
 	//
-	// ProjectPlan
+	// Project plan
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The meeting notes content (optional). The notes are used for auxiliary analysis.
+	// The meeting notes content. This parameter is optional and is used for auxiliary analysis.
 	//
 	// example:
 	//
-	// Extract decisions and to-do items
+	// Extract decisions and to-dos
 	Notes *string `json:"notes,omitempty" xml:"notes,omitempty"`
 	// The object bindings.
 	ObjectBindings []*CreateGroupFeishuDocRequestObjectBindings `json:"objectBindings,omitempty" xml:"objectBindings,omitempty" type:"Repeated"`
-	// The name of the operating object.
+	// The name of the operation object.
 	//
 	// example:
 	//
-	// R&D Assistant
+	// R&D assistant
 	OperatingObjectName *string `json:"operatingObjectName,omitempty" xml:"operatingObjectName,omitempty"`
-	// The resource tags (optional, a JSON string list, such as ["tagA","tagB"]).
+	// The proxy user code, which is unique within the tenant. This parameter is used only when the application credential is configured as source_uid.
+	//
+	// example:
+	//
+	// alice
+	OpsUserCode *string `json:"opsUserCode,omitempty" xml:"opsUserCode,omitempty"`
+	// The proxy user ID, which is the WINNEXO platform user ID. This parameter is used only when the application credential is configured as winnexo_uid.
+	//
+	// example:
+	//
+	// 10001
+	OpsUserId *string `json:"opsUserId,omitempty" xml:"opsUserId,omitempty"`
+	// The resource tags. This parameter is optional and accepts a JSON string list, such as ["tagA","tagB"].
 	//
 	// example:
 	//
@@ -90,7 +114,7 @@ type CreateGroupFeishuDocRequest struct {
 	SourceTags *string `json:"sourceTags,omitempty" xml:"sourceTags,omitempty"`
 	// The synchronization settings.
 	SyncConfig *CreateGroupFeishuDocRequestSyncConfig `json:"syncConfig,omitempty" xml:"syncConfig,omitempty" type:"Struct"`
-	// The tenant ID. This is a common parameter. In winnexo-cli, pass it explicitly with --tenant-id.
+	// The tenant ID. This is a common parameter. For winnexo-cli, this parameter is explicitly passed by using the --tenant-id option.
 	//
 	// example:
 	//
@@ -104,6 +128,10 @@ func (s CreateGroupFeishuDocRequest) String() string {
 
 func (s CreateGroupFeishuDocRequest) GoString() string {
 	return s.String()
+}
+
+func (s *CreateGroupFeishuDocRequest) GetAppToken() *string {
+	return s.AppToken
 }
 
 func (s *CreateGroupFeishuDocRequest) GetDescription() *string {
@@ -138,6 +166,14 @@ func (s *CreateGroupFeishuDocRequest) GetOperatingObjectName() *string {
 	return s.OperatingObjectName
 }
 
+func (s *CreateGroupFeishuDocRequest) GetOpsUserCode() *string {
+	return s.OpsUserCode
+}
+
+func (s *CreateGroupFeishuDocRequest) GetOpsUserId() *string {
+	return s.OpsUserId
+}
+
 func (s *CreateGroupFeishuDocRequest) GetSourceTags() *string {
 	return s.SourceTags
 }
@@ -148,6 +184,11 @@ func (s *CreateGroupFeishuDocRequest) GetSyncConfig() *CreateGroupFeishuDocReque
 
 func (s *CreateGroupFeishuDocRequest) GetTenantId() *string {
 	return s.TenantId
+}
+
+func (s *CreateGroupFeishuDocRequest) SetAppToken(v string) *CreateGroupFeishuDocRequest {
+	s.AppToken = &v
+	return s
 }
 
 func (s *CreateGroupFeishuDocRequest) SetDescription(v string) *CreateGroupFeishuDocRequest {
@@ -187,6 +228,16 @@ func (s *CreateGroupFeishuDocRequest) SetObjectBindings(v []*CreateGroupFeishuDo
 
 func (s *CreateGroupFeishuDocRequest) SetOperatingObjectName(v string) *CreateGroupFeishuDocRequest {
 	s.OperatingObjectName = &v
+	return s
+}
+
+func (s *CreateGroupFeishuDocRequest) SetOpsUserCode(v string) *CreateGroupFeishuDocRequest {
+	s.OpsUserCode = &v
+	return s
+}
+
+func (s *CreateGroupFeishuDocRequest) SetOpsUserId(v string) *CreateGroupFeishuDocRequest {
+	s.OpsUserId = &v
 	return s
 }
 
@@ -288,13 +339,13 @@ func (s *CreateGroupFeishuDocRequestObjectBindings) Validate() error {
 }
 
 type CreateGroupFeishuDocRequestSyncConfig struct {
-	// The cron expression for the timed scheduling task.
+	// The cron expression for the timed scheduling node.
 	//
 	// example:
 	//
 	// 0 	- 	- 	- *
 	Cron *string `json:"cron,omitempty" xml:"cron,omitempty"`
-	// Specifies whether to enable or disable synchronization.
+	// **Enable/Disable**
 	//
 	// This parameter is required.
 	//
@@ -302,7 +353,7 @@ type CreateGroupFeishuDocRequestSyncConfig struct {
 	//
 	// true
 	Enabled *bool `json:"enabled,omitempty" xml:"enabled,omitempty"`
-	// The preset mode (can be ignored).
+	// The preset mode. You can ignore this parameter.
 	//
 	// example:
 	//

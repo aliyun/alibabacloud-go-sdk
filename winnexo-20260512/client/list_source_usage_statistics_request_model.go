@@ -9,6 +9,8 @@ type iListSourceUsageStatisticsRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAppToken(v string) *ListSourceUsageStatisticsRequest
+	GetAppToken() *string
 	SetCollaborationGroupId(v string) *ListSourceUsageStatisticsRequest
 	GetCollaborationGroupId() *string
 	SetEndTime(v string) *ListSourceUsageStatisticsRequest
@@ -17,6 +19,10 @@ type iListSourceUsageStatisticsRequest interface {
 	GetEventType() *string
 	SetKnowledgeBaseIds(v []*string) *ListSourceUsageStatisticsRequest
 	GetKnowledgeBaseIds() []*string
+	SetOpsUserCode(v string) *ListSourceUsageStatisticsRequest
+	GetOpsUserCode() *string
+	SetOpsUserId(v string) *ListSourceUsageStatisticsRequest
+	GetOpsUserId() *string
 	SetPage(v int64) *ListSourceUsageStatisticsRequest
 	GetPage() *int64
 	SetPageSize(v int64) *ListSourceUsageStatisticsRequest
@@ -38,7 +44,13 @@ type iListSourceUsageStatisticsRequest interface {
 }
 
 type ListSourceUsageStatisticsRequest struct {
-	// The ID of the collaboration group to which the resource belongs, such as cg_101. If you specify this parameter, a group workspace task is created, and the caller must be a valid group member. If you leave this parameter empty, a personal task is created.
+	// The platform application token issued by the console. If specified, the operation is executed as the user specified by opsUserId or opsUserCode.
+	//
+	// example:
+	//
+	// wn_app_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+	AppToken *string `json:"appToken,omitempty" xml:"appToken,omitempty"`
+	// The ID of the collaboration group to which the resource belongs, such as cg_101. If specified, a group workspace task is created, and the caller must be a valid group member. If left empty, a personal task is created.
 	//
 	// example:
 	//
@@ -56,14 +68,26 @@ type ListSourceUsageStatisticsRequest struct {
 	//
 	// example:
 	//
-	// HealthCheck
+	// ALL
 	EventType *string `json:"eventType,omitempty" xml:"eventType,omitempty"`
-	// The root IDs of the enterprise knowledge bases, which are available only for TENANT. The knowledge bases are filtered based on current directory bindings, not historical ownership. Maximum number of items: 100.
+	// The root IDs of enterprise knowledge bases, available only for TENANT. The IDs are filtered based on current directory bindings rather than historical ownership. A maximum of 100 items are supported.
 	//
 	// example:
 	//
 	// ["kb_9401"]
 	KnowledgeBaseIds []*string `json:"knowledgeBaseIds,omitempty" xml:"knowledgeBaseIds,omitempty" type:"Repeated"`
+	// The proxy user code, which is unique within the tenant. This parameter is used only when the application credential is configured as source_uid.
+	//
+	// example:
+	//
+	// alice
+	OpsUserCode *string `json:"opsUserCode,omitempty" xml:"opsUserCode,omitempty"`
+	// The proxy user ID, which is the WINNEXO platform user ID. This parameter is used only when the application credential is configured as winnexo_uid.
+	//
+	// example:
+	//
+	// 10001
+	OpsUserId *string `json:"opsUserId,omitempty" xml:"opsUserId,omitempty"`
 	// The current page number.
 	//
 	// example:
@@ -76,27 +100,27 @@ type ListSourceUsageStatisticsRequest struct {
 	//
 	// 100
 	PageSize *int64 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	// The report perspective. Valid values: TENANT (enterprise knowledge), GROUP (a single workspace), and ALL_GROUPS (all workspaces of the current tenant, only for platform super administrators).
+	// The report perspective. Valid values: TENANT for enterprise knowledge, GROUP for a single workspace, and ALL_GROUPS for all workspaces of the current tenant (available only to platform super administrators).
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// Report perspective: TENANT for enterprise knowledge, GROUP for a single workspace, ALL_GROUPS for all workspaces of the current tenant (platform super administrator only). Valid values: TENANT, GROUP, ALL_GROUPS
+	// TENANT
 	ScopeType *string `json:"scopeType,omitempty" xml:"scopeType,omitempty"`
 	// The content of the sort clause.
 	//
 	// example:
 	//
-	// 1
+	// retrievalCount
 	SortBy *string `json:"sortBy,omitempty" xml:"sortBy,omitempty"`
-	// The sort order. This parameter takes effect only when sortBy is specified. Valid values: ASC and DESC. The values are case-insensitive.
+	// Specifies the sort order. This parameter takes effect only when sortBy is specified. Valid values: ASC and DESC. The values are case-insensitive.
 	//
 	// example:
 	//
-	// asc
+	// ASC
 	SortOrder *string `json:"sortOrder,omitempty" xml:"sortOrder,omitempty"`
-	// The IDs of the associated sources.
+	// The associated source IDs.
 	//
 	// example:
 	//
@@ -132,6 +156,10 @@ func (s ListSourceUsageStatisticsRequest) GoString() string {
 	return s.String()
 }
 
+func (s *ListSourceUsageStatisticsRequest) GetAppToken() *string {
+	return s.AppToken
+}
+
 func (s *ListSourceUsageStatisticsRequest) GetCollaborationGroupId() *string {
 	return s.CollaborationGroupId
 }
@@ -146,6 +174,14 @@ func (s *ListSourceUsageStatisticsRequest) GetEventType() *string {
 
 func (s *ListSourceUsageStatisticsRequest) GetKnowledgeBaseIds() []*string {
 	return s.KnowledgeBaseIds
+}
+
+func (s *ListSourceUsageStatisticsRequest) GetOpsUserCode() *string {
+	return s.OpsUserCode
+}
+
+func (s *ListSourceUsageStatisticsRequest) GetOpsUserId() *string {
+	return s.OpsUserId
 }
 
 func (s *ListSourceUsageStatisticsRequest) GetPage() *int64 {
@@ -184,6 +220,11 @@ func (s *ListSourceUsageStatisticsRequest) GetTenantId() *string {
 	return s.TenantId
 }
 
+func (s *ListSourceUsageStatisticsRequest) SetAppToken(v string) *ListSourceUsageStatisticsRequest {
+	s.AppToken = &v
+	return s
+}
+
 func (s *ListSourceUsageStatisticsRequest) SetCollaborationGroupId(v string) *ListSourceUsageStatisticsRequest {
 	s.CollaborationGroupId = &v
 	return s
@@ -201,6 +242,16 @@ func (s *ListSourceUsageStatisticsRequest) SetEventType(v string) *ListSourceUsa
 
 func (s *ListSourceUsageStatisticsRequest) SetKnowledgeBaseIds(v []*string) *ListSourceUsageStatisticsRequest {
 	s.KnowledgeBaseIds = v
+	return s
+}
+
+func (s *ListSourceUsageStatisticsRequest) SetOpsUserCode(v string) *ListSourceUsageStatisticsRequest {
+	s.OpsUserCode = &v
+	return s
+}
+
+func (s *ListSourceUsageStatisticsRequest) SetOpsUserId(v string) *ListSourceUsageStatisticsRequest {
+	s.OpsUserId = &v
 	return s
 }
 

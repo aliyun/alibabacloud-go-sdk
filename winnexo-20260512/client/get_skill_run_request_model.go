@@ -9,8 +9,14 @@ type iGetSkillRunRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAppToken(v string) *GetSkillRunRequest
+	GetAppToken() *string
 	SetIncludeLogs(v bool) *GetSkillRunRequest
 	GetIncludeLogs() *bool
+	SetOpsUserCode(v string) *GetSkillRunRequest
+	GetOpsUserCode() *string
+	SetOpsUserId(v string) *GetSkillRunRequest
+	GetOpsUserId() *string
 	SetRunId(v string) *GetSkillRunRequest
 	GetRunId() *string
 	SetTenantId(v string) *GetSkillRunRequest
@@ -18,12 +24,30 @@ type iGetSkillRunRequest interface {
 }
 
 type GetSkillRunRequest struct {
+	// 平台应用 Token（控制台签发）。传入后将以 opsUserId 或 opsUserCode 指定的用户身份执行
+	//
+	// example:
+	//
+	// wn_app_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+	AppToken *string `json:"appToken,omitempty" xml:"appToken,omitempty"`
 	// Specifies whether to include execution logs. Default value: false. Enable this only when troubleshooting issues.
 	//
 	// example:
 	//
 	// false
 	IncludeLogs *bool `json:"includeLogs,omitempty" xml:"includeLogs,omitempty"`
+	// 代理用户编码（租户内唯一），仅当应用凭证配置为 source_uid 时使用
+	//
+	// example:
+	//
+	// alice
+	OpsUserCode *string `json:"opsUserCode,omitempty" xml:"opsUserCode,omitempty"`
+	// 代理用户ID（WINNEXO 平台用户ID），仅当应用凭证配置为 winnexo_uid 时使用
+	//
+	// example:
+	//
+	// 10001
+	OpsUserId *string `json:"opsUserId,omitempty" xml:"opsUserId,omitempty"`
 	// The evaluation run ID.
 	//
 	// This parameter is required.
@@ -48,8 +72,20 @@ func (s GetSkillRunRequest) GoString() string {
 	return s.String()
 }
 
+func (s *GetSkillRunRequest) GetAppToken() *string {
+	return s.AppToken
+}
+
 func (s *GetSkillRunRequest) GetIncludeLogs() *bool {
 	return s.IncludeLogs
+}
+
+func (s *GetSkillRunRequest) GetOpsUserCode() *string {
+	return s.OpsUserCode
+}
+
+func (s *GetSkillRunRequest) GetOpsUserId() *string {
+	return s.OpsUserId
 }
 
 func (s *GetSkillRunRequest) GetRunId() *string {
@@ -60,8 +96,23 @@ func (s *GetSkillRunRequest) GetTenantId() *string {
 	return s.TenantId
 }
 
+func (s *GetSkillRunRequest) SetAppToken(v string) *GetSkillRunRequest {
+	s.AppToken = &v
+	return s
+}
+
 func (s *GetSkillRunRequest) SetIncludeLogs(v bool) *GetSkillRunRequest {
 	s.IncludeLogs = &v
+	return s
+}
+
+func (s *GetSkillRunRequest) SetOpsUserCode(v string) *GetSkillRunRequest {
+	s.OpsUserCode = &v
+	return s
+}
+
+func (s *GetSkillRunRequest) SetOpsUserId(v string) *GetSkillRunRequest {
+	s.OpsUserId = &v
 	return s
 }
 

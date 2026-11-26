@@ -9,6 +9,12 @@ type iListAppResourceUserPermissionsShrinkRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAppToken(v string) *ListAppResourceUserPermissionsShrinkRequest
+	GetAppToken() *string
+	SetOpsUserCode(v string) *ListAppResourceUserPermissionsShrinkRequest
+	GetOpsUserCode() *string
+	SetOpsUserId(v string) *ListAppResourceUserPermissionsShrinkRequest
+	GetOpsUserId() *string
 	SetPage(v int64) *ListAppResourceUserPermissionsShrinkRequest
 	GetPage() *int64
 	SetPageSize(v int64) *ListAppResourceUserPermissionsShrinkRequest
@@ -30,6 +36,24 @@ type iListAppResourceUserPermissionsShrinkRequest interface {
 }
 
 type ListAppResourceUserPermissionsShrinkRequest struct {
+	// 平台应用 Token（控制台签发）。传入后将以 opsUserId 或 opsUserCode 指定的用户身份执行
+	//
+	// example:
+	//
+	// wn_app_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+	AppToken *string `json:"appToken,omitempty" xml:"appToken,omitempty"`
+	// 代理用户编码（租户内唯一），仅当应用凭证配置为 source_uid 时使用
+	//
+	// example:
+	//
+	// alice
+	OpsUserCode *string `json:"opsUserCode,omitempty" xml:"opsUserCode,omitempty"`
+	// 代理用户ID（WINNEXO 平台用户ID），仅当应用凭证配置为 winnexo_uid 时使用
+	//
+	// example:
+	//
+	// 10001
+	OpsUserId *string `json:"opsUserId,omitempty" xml:"opsUserId,omitempty"`
 	// The number of entries per page.
 	//
 	// example:
@@ -94,6 +118,18 @@ func (s ListAppResourceUserPermissionsShrinkRequest) GoString() string {
 	return s.String()
 }
 
+func (s *ListAppResourceUserPermissionsShrinkRequest) GetAppToken() *string {
+	return s.AppToken
+}
+
+func (s *ListAppResourceUserPermissionsShrinkRequest) GetOpsUserCode() *string {
+	return s.OpsUserCode
+}
+
+func (s *ListAppResourceUserPermissionsShrinkRequest) GetOpsUserId() *string {
+	return s.OpsUserId
+}
+
 func (s *ListAppResourceUserPermissionsShrinkRequest) GetPage() *int64 {
 	return s.Page
 }
@@ -128,6 +164,21 @@ func (s *ListAppResourceUserPermissionsShrinkRequest) GetTargetUserTenantId() *s
 
 func (s *ListAppResourceUserPermissionsShrinkRequest) GetTenantId() *string {
 	return s.TenantId
+}
+
+func (s *ListAppResourceUserPermissionsShrinkRequest) SetAppToken(v string) *ListAppResourceUserPermissionsShrinkRequest {
+	s.AppToken = &v
+	return s
+}
+
+func (s *ListAppResourceUserPermissionsShrinkRequest) SetOpsUserCode(v string) *ListAppResourceUserPermissionsShrinkRequest {
+	s.OpsUserCode = &v
+	return s
+}
+
+func (s *ListAppResourceUserPermissionsShrinkRequest) SetOpsUserId(v string) *ListAppResourceUserPermissionsShrinkRequest {
+	s.OpsUserId = &v
+	return s
 }
 
 func (s *ListAppResourceUserPermissionsShrinkRequest) SetPage(v int64) *ListAppResourceUserPermissionsShrinkRequest {

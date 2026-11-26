@@ -11,10 +11,16 @@ type iCreateFreeExplorationWorkItemShrinkRequest interface {
 	GoString() string
 	SetAgentNamesShrink(v string) *CreateFreeExplorationWorkItemShrinkRequest
 	GetAgentNamesShrink() *string
+	SetAppToken(v string) *CreateFreeExplorationWorkItemShrinkRequest
+	GetAppToken() *string
 	SetCollaborationGroupId(v string) *CreateFreeExplorationWorkItemShrinkRequest
 	GetCollaborationGroupId() *string
 	SetMemberUserIdsShrink(v string) *CreateFreeExplorationWorkItemShrinkRequest
 	GetMemberUserIdsShrink() *string
+	SetOpsUserCode(v string) *CreateFreeExplorationWorkItemShrinkRequest
+	GetOpsUserCode() *string
+	SetOpsUserId(v string) *CreateFreeExplorationWorkItemShrinkRequest
+	GetOpsUserId() *string
 	SetTenantId(v string) *CreateFreeExplorationWorkItemShrinkRequest
 	GetTenantId() *string
 	SetTitle(v string) *CreateFreeExplorationWorkItemShrinkRequest
@@ -32,6 +38,12 @@ type CreateFreeExplorationWorkItemShrinkRequest struct {
 	//
 	// ["sales-agent"]
 	AgentNamesShrink *string `json:"agentNames,omitempty" xml:"agentNames,omitempty"`
+	// 平台应用 Token（控制台签发）。传入后将以 opsUserId 或 opsUserCode 指定的用户身份执行
+	//
+	// example:
+	//
+	// wn_app_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+	AppToken *string `json:"appToken,omitempty" xml:"appToken,omitempty"`
 	// The ID of the collaboration workspace to which the work item belongs.
 	//
 	// This parameter is required.
@@ -46,6 +58,18 @@ type CreateFreeExplorationWorkItemShrinkRequest struct {
 	//
 	// [43]
 	MemberUserIdsShrink *string `json:"memberUserIds,omitempty" xml:"memberUserIds,omitempty"`
+	// 代理用户编码（租户内唯一），仅当应用凭证配置为 source_uid 时使用
+	//
+	// example:
+	//
+	// alice
+	OpsUserCode *string `json:"opsUserCode,omitempty" xml:"opsUserCode,omitempty"`
+	// 代理用户ID（WINNEXO 平台用户ID），仅当应用凭证配置为 winnexo_uid 时使用
+	//
+	// example:
+	//
+	// 10001
+	OpsUserId *string `json:"opsUserId,omitempty" xml:"opsUserId,omitempty"`
 	// The tenant ID. This is a common parameter. If this parameter is not specified, the default tenant of the caller is used.
 	//
 	// example:
@@ -80,12 +104,24 @@ func (s *CreateFreeExplorationWorkItemShrinkRequest) GetAgentNamesShrink() *stri
 	return s.AgentNamesShrink
 }
 
+func (s *CreateFreeExplorationWorkItemShrinkRequest) GetAppToken() *string {
+	return s.AppToken
+}
+
 func (s *CreateFreeExplorationWorkItemShrinkRequest) GetCollaborationGroupId() *string {
 	return s.CollaborationGroupId
 }
 
 func (s *CreateFreeExplorationWorkItemShrinkRequest) GetMemberUserIdsShrink() *string {
 	return s.MemberUserIdsShrink
+}
+
+func (s *CreateFreeExplorationWorkItemShrinkRequest) GetOpsUserCode() *string {
+	return s.OpsUserCode
+}
+
+func (s *CreateFreeExplorationWorkItemShrinkRequest) GetOpsUserId() *string {
+	return s.OpsUserId
 }
 
 func (s *CreateFreeExplorationWorkItemShrinkRequest) GetTenantId() *string {
@@ -105,6 +141,11 @@ func (s *CreateFreeExplorationWorkItemShrinkRequest) SetAgentNamesShrink(v strin
 	return s
 }
 
+func (s *CreateFreeExplorationWorkItemShrinkRequest) SetAppToken(v string) *CreateFreeExplorationWorkItemShrinkRequest {
+	s.AppToken = &v
+	return s
+}
+
 func (s *CreateFreeExplorationWorkItemShrinkRequest) SetCollaborationGroupId(v string) *CreateFreeExplorationWorkItemShrinkRequest {
 	s.CollaborationGroupId = &v
 	return s
@@ -112,6 +153,16 @@ func (s *CreateFreeExplorationWorkItemShrinkRequest) SetCollaborationGroupId(v s
 
 func (s *CreateFreeExplorationWorkItemShrinkRequest) SetMemberUserIdsShrink(v string) *CreateFreeExplorationWorkItemShrinkRequest {
 	s.MemberUserIdsShrink = &v
+	return s
+}
+
+func (s *CreateFreeExplorationWorkItemShrinkRequest) SetOpsUserCode(v string) *CreateFreeExplorationWorkItemShrinkRequest {
+	s.OpsUserCode = &v
+	return s
+}
+
+func (s *CreateFreeExplorationWorkItemShrinkRequest) SetOpsUserId(v string) *CreateFreeExplorationWorkItemShrinkRequest {
+	s.OpsUserId = &v
 	return s
 }
 

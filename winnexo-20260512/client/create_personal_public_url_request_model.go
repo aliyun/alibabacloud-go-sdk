@@ -9,6 +9,8 @@ type iCreatePersonalPublicUrlRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAppToken(v string) *CreatePersonalPublicUrlRequest
+	GetAppToken() *string
 	SetDescription(v string) *CreatePersonalPublicUrlRequest
 	GetDescription() *string
 	SetDirectoryId(v string) *CreatePersonalPublicUrlRequest
@@ -19,6 +21,10 @@ type iCreatePersonalPublicUrlRequest interface {
 	GetNotes() *string
 	SetOperatingObjectName(v string) *CreatePersonalPublicUrlRequest
 	GetOperatingObjectName() *string
+	SetOpsUserCode(v string) *CreatePersonalPublicUrlRequest
+	GetOpsUserCode() *string
+	SetOpsUserId(v string) *CreatePersonalPublicUrlRequest
+	GetOpsUserId() *string
 	SetOriginalUrl(v string) *CreatePersonalPublicUrlRequest
 	GetOriginalUrl() *string
 	SetSourceTags(v string) *CreatePersonalPublicUrlRequest
@@ -28,13 +34,19 @@ type iCreatePersonalPublicUrlRequest interface {
 }
 
 type CreatePersonalPublicUrlRequest struct {
+	// 平台应用 Token（控制台签发）。传入后将以 opsUserId 或 opsUserCode 指定的用户身份执行
+	//
+	// example:
+	//
+	// wn_app_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+	AppToken *string `json:"appToken,omitempty" xml:"appToken,omitempty"`
 	// The resource description.
 	//
 	// example:
 	//
 	// Project design document
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// The ID of the target personal directory. If not specified, the current user\\"s default personal root directory is used.
+	// The ID of the target personal directory. If not specified, the current user\"s default personal root directory is used.
 	//
 	// example:
 	//
@@ -58,6 +70,18 @@ type CreatePersonalPublicUrlRequest struct {
 	//
 	// R&D Assistant
 	OperatingObjectName *string `json:"operatingObjectName,omitempty" xml:"operatingObjectName,omitempty"`
+	// 代理用户编码（租户内唯一），仅当应用凭证配置为 source_uid 时使用
+	//
+	// example:
+	//
+	// alice
+	OpsUserCode *string `json:"opsUserCode,omitempty" xml:"opsUserCode,omitempty"`
+	// 代理用户ID（WINNEXO 平台用户ID），仅当应用凭证配置为 winnexo_uid 时使用
+	//
+	// example:
+	//
+	// 10001
+	OpsUserId *string `json:"opsUserId,omitempty" xml:"opsUserId,omitempty"`
 	// The URL of the public HTTP/HTTPS web page.
 	//
 	// This parameter is required.
@@ -88,6 +112,10 @@ func (s CreatePersonalPublicUrlRequest) GoString() string {
 	return s.String()
 }
 
+func (s *CreatePersonalPublicUrlRequest) GetAppToken() *string {
+	return s.AppToken
+}
+
 func (s *CreatePersonalPublicUrlRequest) GetDescription() *string {
 	return s.Description
 }
@@ -108,6 +136,14 @@ func (s *CreatePersonalPublicUrlRequest) GetOperatingObjectName() *string {
 	return s.OperatingObjectName
 }
 
+func (s *CreatePersonalPublicUrlRequest) GetOpsUserCode() *string {
+	return s.OpsUserCode
+}
+
+func (s *CreatePersonalPublicUrlRequest) GetOpsUserId() *string {
+	return s.OpsUserId
+}
+
 func (s *CreatePersonalPublicUrlRequest) GetOriginalUrl() *string {
 	return s.OriginalUrl
 }
@@ -118,6 +154,11 @@ func (s *CreatePersonalPublicUrlRequest) GetSourceTags() *string {
 
 func (s *CreatePersonalPublicUrlRequest) GetTenantId() *string {
 	return s.TenantId
+}
+
+func (s *CreatePersonalPublicUrlRequest) SetAppToken(v string) *CreatePersonalPublicUrlRequest {
+	s.AppToken = &v
+	return s
 }
 
 func (s *CreatePersonalPublicUrlRequest) SetDescription(v string) *CreatePersonalPublicUrlRequest {
@@ -142,6 +183,16 @@ func (s *CreatePersonalPublicUrlRequest) SetNotes(v string) *CreatePersonalPubli
 
 func (s *CreatePersonalPublicUrlRequest) SetOperatingObjectName(v string) *CreatePersonalPublicUrlRequest {
 	s.OperatingObjectName = &v
+	return s
+}
+
+func (s *CreatePersonalPublicUrlRequest) SetOpsUserCode(v string) *CreatePersonalPublicUrlRequest {
+	s.OpsUserCode = &v
+	return s
+}
+
+func (s *CreatePersonalPublicUrlRequest) SetOpsUserId(v string) *CreatePersonalPublicUrlRequest {
+	s.OpsUserId = &v
 	return s
 }
 

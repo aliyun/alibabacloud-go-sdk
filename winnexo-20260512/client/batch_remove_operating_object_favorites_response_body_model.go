@@ -44,7 +44,7 @@ type BatchRemoveOperatingObjectFavoritesResponseBody struct {
 	//
 	// string_value
 	GraphName *string `json:"graphName,omitempty" xml:"graphName,omitempty"`
-	// The description of the status code.
+	// The status code description.
 	//
 	// example:
 	//
@@ -56,19 +56,19 @@ type BatchRemoveOperatingObjectFavoritesResponseBody struct {
 	//
 	// string_value
 	ObjectType *string `json:"objectType,omitempty" xml:"objectType,omitempty"`
-	// The digital employee name (operating object name, optional).
+	// The digital worker name, which is the name of the operating object. This parameter is optional.
 	//
 	// example:
 	//
 	// string_value
 	OperatingObjectName *string `json:"operatingObjectName,omitempty" xml:"operatingObjectName,omitempty"`
-	// The number of remaining subscribed objects within the precise scope.
+	// The number of remaining favorited objects within the exact scope.
 	//
 	// example:
 	//
 	// 0
 	RemainingCount *int64 `json:"remainingCount,omitempty" xml:"remainingCount,omitempty"`
-	// The number of physical subscription records that are actually deleted.
+	// The number of physical favorite records that are actually deleted.
 	//
 	// example:
 	//
@@ -86,7 +86,7 @@ type BatchRemoveOperatingObjectFavoritesResponseBody struct {
 	//
 	// 2
 	RequestedCount *int64 `json:"requestedCount,omitempty" xml:"requestedCount,omitempty"`
-	// The relationships between internal and external DingTalk users that failed to be created.
+	// The internal and external DingTalk user relationships that failed to be created.
 	Results []*BatchRemoveOperatingObjectFavoritesResponseBodyResults `json:"results,omitempty" xml:"results,omitempty" type:"Repeated"`
 }
 
@@ -202,19 +202,19 @@ func (s *BatchRemoveOperatingObjectFavoritesResponseBody) Validate() error {
 }
 
 type BatchRemoveOperatingObjectFavoritesResponseBodyResults struct {
-	// Indicates whether the object is subscribed after the operation.
+	// Indicates whether the object is favorited after the operation.
 	//
 	// example:
 	//
 	// true
 	IsFavorited *bool `json:"isFavorited,omitempty" xml:"isFavorited,omitempty"`
-	// The aligned object ID: target ID or KR ID.
+	// The ID of the aligned object, which is the target ID or KR ID.
 	//
 	// example:
 	//
 	// exampleObjectId
 	ObjectId *string `json:"objectId,omitempty" xml:"objectId,omitempty"`
-	// Indicates whether the request is processed.
+	// Indicates whether the request has been processed.
 	//
 	// example:
 	//

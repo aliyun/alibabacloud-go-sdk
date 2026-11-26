@@ -9,10 +9,16 @@ type iListVisibleKnowledgeBaseContentsShrinkRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAppToken(v string) *ListVisibleKnowledgeBaseContentsShrinkRequest
+	GetAppToken() *string
 	SetDirectoryId(v string) *ListVisibleKnowledgeBaseContentsShrinkRequest
 	GetDirectoryId() *string
 	SetOperatingObjectName(v string) *ListVisibleKnowledgeBaseContentsShrinkRequest
 	GetOperatingObjectName() *string
+	SetOpsUserCode(v string) *ListVisibleKnowledgeBaseContentsShrinkRequest
+	GetOpsUserCode() *string
+	SetOpsUserId(v string) *ListVisibleKnowledgeBaseContentsShrinkRequest
+	GetOpsUserId() *string
 	SetPage(v int64) *ListVisibleKnowledgeBaseContentsShrinkRequest
 	GetPage() *int64
 	SetPageSize(v int64) *ListVisibleKnowledgeBaseContentsShrinkRequest
@@ -28,6 +34,12 @@ type iListVisibleKnowledgeBaseContentsShrinkRequest interface {
 }
 
 type ListVisibleKnowledgeBaseContentsShrinkRequest struct {
+	// 平台应用 Token（控制台签发）。传入后将以 opsUserId 或 opsUserCode 指定的用户身份执行
+	//
+	// example:
+	//
+	// wn_app_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+	AppToken *string `json:"appToken,omitempty" xml:"appToken,omitempty"`
 	// The directory ID.
 	//
 	// This parameter is required.
@@ -44,6 +56,18 @@ type ListVisibleKnowledgeBaseContentsShrinkRequest struct {
 	//
 	// string_value
 	OperatingObjectName *string `json:"operatingObjectName,omitempty" xml:"operatingObjectName,omitempty"`
+	// 代理用户编码（租户内唯一），仅当应用凭证配置为 source_uid 时使用
+	//
+	// example:
+	//
+	// alice
+	OpsUserCode *string `json:"opsUserCode,omitempty" xml:"opsUserCode,omitempty"`
+	// 代理用户ID（WINNEXO 平台用户ID），仅当应用凭证配置为 winnexo_uid 时使用
+	//
+	// example:
+	//
+	// 10001
+	OpsUserId *string `json:"opsUserId,omitempty" xml:"opsUserId,omitempty"`
 	// The page number of the results to return. Default value: 1. Minimum value: 1. Maximum value: 200.
 	//
 	// example:
@@ -96,12 +120,24 @@ func (s ListVisibleKnowledgeBaseContentsShrinkRequest) GoString() string {
 	return s.String()
 }
 
+func (s *ListVisibleKnowledgeBaseContentsShrinkRequest) GetAppToken() *string {
+	return s.AppToken
+}
+
 func (s *ListVisibleKnowledgeBaseContentsShrinkRequest) GetDirectoryId() *string {
 	return s.DirectoryId
 }
 
 func (s *ListVisibleKnowledgeBaseContentsShrinkRequest) GetOperatingObjectName() *string {
 	return s.OperatingObjectName
+}
+
+func (s *ListVisibleKnowledgeBaseContentsShrinkRequest) GetOpsUserCode() *string {
+	return s.OpsUserCode
+}
+
+func (s *ListVisibleKnowledgeBaseContentsShrinkRequest) GetOpsUserId() *string {
+	return s.OpsUserId
 }
 
 func (s *ListVisibleKnowledgeBaseContentsShrinkRequest) GetPage() *int64 {
@@ -128,6 +164,11 @@ func (s *ListVisibleKnowledgeBaseContentsShrinkRequest) GetTenantId() *string {
 	return s.TenantId
 }
 
+func (s *ListVisibleKnowledgeBaseContentsShrinkRequest) SetAppToken(v string) *ListVisibleKnowledgeBaseContentsShrinkRequest {
+	s.AppToken = &v
+	return s
+}
+
 func (s *ListVisibleKnowledgeBaseContentsShrinkRequest) SetDirectoryId(v string) *ListVisibleKnowledgeBaseContentsShrinkRequest {
 	s.DirectoryId = &v
 	return s
@@ -135,6 +176,16 @@ func (s *ListVisibleKnowledgeBaseContentsShrinkRequest) SetDirectoryId(v string)
 
 func (s *ListVisibleKnowledgeBaseContentsShrinkRequest) SetOperatingObjectName(v string) *ListVisibleKnowledgeBaseContentsShrinkRequest {
 	s.OperatingObjectName = &v
+	return s
+}
+
+func (s *ListVisibleKnowledgeBaseContentsShrinkRequest) SetOpsUserCode(v string) *ListVisibleKnowledgeBaseContentsShrinkRequest {
+	s.OpsUserCode = &v
+	return s
+}
+
+func (s *ListVisibleKnowledgeBaseContentsShrinkRequest) SetOpsUserId(v string) *ListVisibleKnowledgeBaseContentsShrinkRequest {
+	s.OpsUserId = &v
 	return s
 }
 

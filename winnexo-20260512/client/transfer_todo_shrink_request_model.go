@@ -9,8 +9,14 @@ type iTransferTodoShrinkRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAppToken(v string) *TransferTodoShrinkRequest
+	GetAppToken() *string
 	SetComment(v string) *TransferTodoShrinkRequest
 	GetComment() *string
+	SetOpsUserCode(v string) *TransferTodoShrinkRequest
+	GetOpsUserCode() *string
+	SetOpsUserId(v string) *TransferTodoShrinkRequest
+	GetOpsUserId() *string
 	SetTargetUserIdsShrink(v string) *TransferTodoShrinkRequest
 	GetTargetUserIdsShrink() *string
 	SetTenantId(v string) *TransferTodoShrinkRequest
@@ -20,12 +26,30 @@ type iTransferTodoShrinkRequest interface {
 }
 
 type TransferTodoShrinkRequest struct {
+	// 平台应用 Token（控制台签发）。传入后将以 opsUserId 或 opsUserCode 指定的用户身份执行
+	//
+	// example:
+	//
+	// wn_app_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+	AppToken *string `json:"appToken,omitempty" xml:"appToken,omitempty"`
 	// The handover note.
 	//
 	// example:
 	//
 	// Please continue processing
 	Comment *string `json:"comment,omitempty" xml:"comment,omitempty"`
+	// 代理用户编码（租户内唯一），仅当应用凭证配置为 source_uid 时使用
+	//
+	// example:
+	//
+	// alice
+	OpsUserCode *string `json:"opsUserCode,omitempty" xml:"opsUserCode,omitempty"`
+	// 代理用户ID（WINNEXO 平台用户ID），仅当应用凭证配置为 winnexo_uid 时使用
+	//
+	// example:
+	//
+	// 10001
+	OpsUserId *string `json:"opsUserId,omitempty" xml:"opsUserId,omitempty"`
 	// The list of target user IDs for the transfer (1 to 100).
 	//
 	// This parameter is required.
@@ -58,8 +82,20 @@ func (s TransferTodoShrinkRequest) GoString() string {
 	return s.String()
 }
 
+func (s *TransferTodoShrinkRequest) GetAppToken() *string {
+	return s.AppToken
+}
+
 func (s *TransferTodoShrinkRequest) GetComment() *string {
 	return s.Comment
+}
+
+func (s *TransferTodoShrinkRequest) GetOpsUserCode() *string {
+	return s.OpsUserCode
+}
+
+func (s *TransferTodoShrinkRequest) GetOpsUserId() *string {
+	return s.OpsUserId
 }
 
 func (s *TransferTodoShrinkRequest) GetTargetUserIdsShrink() *string {
@@ -74,8 +110,23 @@ func (s *TransferTodoShrinkRequest) GetTodoId() *string {
 	return s.TodoId
 }
 
+func (s *TransferTodoShrinkRequest) SetAppToken(v string) *TransferTodoShrinkRequest {
+	s.AppToken = &v
+	return s
+}
+
 func (s *TransferTodoShrinkRequest) SetComment(v string) *TransferTodoShrinkRequest {
 	s.Comment = &v
+	return s
+}
+
+func (s *TransferTodoShrinkRequest) SetOpsUserCode(v string) *TransferTodoShrinkRequest {
+	s.OpsUserCode = &v
+	return s
+}
+
+func (s *TransferTodoShrinkRequest) SetOpsUserId(v string) *TransferTodoShrinkRequest {
+	s.OpsUserId = &v
 	return s
 }
 

@@ -9,6 +9,8 @@ type iQuerySourceUsageSummaryRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAppToken(v string) *QuerySourceUsageSummaryRequest
+	GetAppToken() *string
 	SetCollaborationGroupId(v string) *QuerySourceUsageSummaryRequest
 	GetCollaborationGroupId() *string
 	SetEndTime(v string) *QuerySourceUsageSummaryRequest
@@ -17,6 +19,10 @@ type iQuerySourceUsageSummaryRequest interface {
 	GetEventType() *string
 	SetKnowledgeBaseIds(v []*string) *QuerySourceUsageSummaryRequest
 	GetKnowledgeBaseIds() []*string
+	SetOpsUserCode(v string) *QuerySourceUsageSummaryRequest
+	GetOpsUserCode() *string
+	SetOpsUserId(v string) *QuerySourceUsageSummaryRequest
+	GetOpsUserId() *string
 	SetScopeType(v string) *QuerySourceUsageSummaryRequest
 	GetScopeType() *string
 	SetSourceIds(v []*string) *QuerySourceUsageSummaryRequest
@@ -30,7 +36,13 @@ type iQuerySourceUsageSummaryRequest interface {
 }
 
 type QuerySourceUsageSummaryRequest struct {
-	// The ID of the collaboration group to which the resource belongs, such as cg_101. If you specify this parameter, a group workspace task is created, and the caller must be a valid group member. If you leave this parameter empty, a personal task is created.
+	// The platform application token issued by the console. If specified, the request is executed as the user identified by opsUserId or opsUserCode.
+	//
+	// example:
+	//
+	// wn_app_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+	AppToken *string `json:"appToken,omitempty" xml:"appToken,omitempty"`
+	// The ID of the collaboration group to which the resource belongs, such as cg_101. If specified, a group workspace task is created, and the caller must be a valid group member. If left empty, a personal task is created.
 	//
 	// example:
 	//
@@ -48,10 +60,22 @@ type QuerySourceUsageSummaryRequest struct {
 	//
 	// example:
 	//
-	// UserOperator
+	// ALL
 	EventType *string `json:"eventType,omitempty" xml:"eventType,omitempty"`
-	// The ID of the knowledge base folder.
+	// The IDs of the knowledge base folders.
 	KnowledgeBaseIds []*string `json:"knowledgeBaseIds,omitempty" xml:"knowledgeBaseIds,omitempty" type:"Repeated"`
+	// The proxy user code, which is unique within the tenant. This parameter is used only when the application credential is configured as source_uid.
+	//
+	// example:
+	//
+	// alice
+	OpsUserCode *string `json:"opsUserCode,omitempty" xml:"opsUserCode,omitempty"`
+	// The proxy user ID, which is the WINNEXO platform user ID. This parameter is used only when the application credential is configured as winnexo_uid.
+	//
+	// example:
+	//
+	// 10001
+	OpsUserId *string `json:"opsUserId,omitempty" xml:"opsUserId,omitempty"`
 	// The role scope type. Valid values:
 	//
 	// - **ALL_VISIBLE**: All members.
@@ -62,15 +86,15 @@ type QuerySourceUsageSummaryRequest struct {
 	//
 	// example:
 	//
-	// Report perspective: TENANT for enterprise knowledge, GROUP for a single workspace, and ALL_GROUPS for all workspaces of the current tenant (platform super administrator only). Valid values: TENANT, GROUP, and ALL_GROUPS
+	// TENANT
 	ScopeType *string `json:"scopeType,omitempty" xml:"scopeType,omitempty"`
-	// The source ID.
+	// The source IDs.
 	SourceIds []*string `json:"sourceIds,omitempty" xml:"sourceIds,omitempty" type:"Repeated"`
 	// The resume channel source.
 	//
 	// example:
 	//
-	// The name of the source
+	// Source name content
 	SourceName *string `json:"sourceName,omitempty" xml:"sourceName,omitempty"`
 	// The start time of the query. The value is a UNIX timestamp in seconds.
 	//
@@ -80,7 +104,7 @@ type QuerySourceUsageSummaryRequest struct {
 	//
 	// 2026-09-01T00:00:00+08:00
 	StartTime *string `json:"startTime,omitempty" xml:"startTime,omitempty"`
-	// The tenant ID, which is a common parameter. If you use winnexo-cli, pass this parameter explicitly by using --tenant-id.
+	// The tenant ID. This is a common parameter. For winnexo-cli, this parameter is explicitly passed by using --tenant-id.
 	//
 	// example:
 	//
@@ -94,6 +118,10 @@ func (s QuerySourceUsageSummaryRequest) String() string {
 
 func (s QuerySourceUsageSummaryRequest) GoString() string {
 	return s.String()
+}
+
+func (s *QuerySourceUsageSummaryRequest) GetAppToken() *string {
+	return s.AppToken
 }
 
 func (s *QuerySourceUsageSummaryRequest) GetCollaborationGroupId() *string {
@@ -110,6 +138,14 @@ func (s *QuerySourceUsageSummaryRequest) GetEventType() *string {
 
 func (s *QuerySourceUsageSummaryRequest) GetKnowledgeBaseIds() []*string {
 	return s.KnowledgeBaseIds
+}
+
+func (s *QuerySourceUsageSummaryRequest) GetOpsUserCode() *string {
+	return s.OpsUserCode
+}
+
+func (s *QuerySourceUsageSummaryRequest) GetOpsUserId() *string {
+	return s.OpsUserId
 }
 
 func (s *QuerySourceUsageSummaryRequest) GetScopeType() *string {
@@ -132,6 +168,11 @@ func (s *QuerySourceUsageSummaryRequest) GetTenantId() *string {
 	return s.TenantId
 }
 
+func (s *QuerySourceUsageSummaryRequest) SetAppToken(v string) *QuerySourceUsageSummaryRequest {
+	s.AppToken = &v
+	return s
+}
+
 func (s *QuerySourceUsageSummaryRequest) SetCollaborationGroupId(v string) *QuerySourceUsageSummaryRequest {
 	s.CollaborationGroupId = &v
 	return s
@@ -149,6 +190,16 @@ func (s *QuerySourceUsageSummaryRequest) SetEventType(v string) *QuerySourceUsag
 
 func (s *QuerySourceUsageSummaryRequest) SetKnowledgeBaseIds(v []*string) *QuerySourceUsageSummaryRequest {
 	s.KnowledgeBaseIds = v
+	return s
+}
+
+func (s *QuerySourceUsageSummaryRequest) SetOpsUserCode(v string) *QuerySourceUsageSummaryRequest {
+	s.OpsUserCode = &v
+	return s
+}
+
+func (s *QuerySourceUsageSummaryRequest) SetOpsUserId(v string) *QuerySourceUsageSummaryRequest {
+	s.OpsUserId = &v
 	return s
 }
 

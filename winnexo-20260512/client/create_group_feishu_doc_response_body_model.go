@@ -64,17 +64,17 @@ type CreateGroupFeishuDocResponseBody struct {
 	//
 	// group_delivery
 	GroupId *string `json:"groupId,omitempty" xml:"groupId,omitempty"`
-	// The description of the status code.
+	// The status code description.
 	//
 	// example:
 	//
 	// The current zone list is illegal.
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// The image name.
+	// The mirror name.
 	//
 	// example:
 	//
-	// ProjectPlan
+	// Project plan
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
 	// The request ID.
 	//
@@ -96,11 +96,11 @@ type CreateGroupFeishuDocResponseBody struct {
 	SourceId *string `json:"sourceId,omitempty" xml:"sourceId,omitempty"`
 	// The signing status. Valid values:
 	//
-	// - CREATED: Created but not signed.
+	// - CREATED: created but not signed
 	//
-	// - SUCCESS: Signed successfully.
+	// - SUCCESS: signed successfully
 	//
-	// - STOP: Terminated.
+	// - STOP: terminated
 	//
 	// example:
 	//

@@ -90,7 +90,7 @@ type CreatePersonalTextResponseBody struct {
 	//
 	// example:
 	//
-	// {\\"observedGeneration\\": 4, \\"servicesInstances\\": {}, \\"observedTime\\": \\"2025-10-31T03:48:27Z\\", \\"servicesWithPendingChanges\\": [], \\"latestEnvironmentDeploymentName\\": \\"manual-1761882507097-Eu1vIP\\"}
+	// {\"observedGeneration\": 4, \"servicesInstances\": {}, \"observedTime\": \"2025-10-31T03:48:27Z\", \"servicesWithPendingChanges\": [], \"latestEnvironmentDeploymentName\": \"manual-1761882507097-Eu1vIP\"}
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
 }
 

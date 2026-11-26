@@ -62,13 +62,13 @@ type ImportWorkflowTemplateResponseBody struct {
 	//
 	// Standard process for handling customer complaints
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// The node dependency edges. Each item contains from and to fields that reference stable step IDs. An explicit empty array indicates no dependencies.
+	// A node dependency edge, where from is the stepId of the predecessor node and to is the stepId of the successor node.
 	//
 	// example:
 	//
 	// [{"from":"collect","to":"deliver"}]
 	Edges []map[string]interface{} `json:"edges,omitempty" xml:"edges,omitempty" type:"Repeated"`
-	// The current effective version number of the template. An empty value indicates that only a draft exists and the template cannot be used for work items. This field is empty because an import always creates a v1 draft.
+	// The current effective version number of the template. An empty value indicates that only a draft exists and it cannot be used for work items. The value is empty for imported templates because a v1 draft is created by default.
 	//
 	// example:
 	//
@@ -86,7 +86,7 @@ type ImportWorkflowTemplateResponseBody struct {
 	//
 	// 2026-11-05T08:00:00Z
 	GmtModified *string `json:"gmtModified,omitempty" xml:"gmtModified,omitempty"`
-	// The optional canvas layout, indexed by step ID. This field only affects the display and does not determine dependencies.
+	// The optional canvas layout, indexed by stepId. This parameter only affects the display and does not determine dependencies.
 	//
 	// example:
 	//
@@ -102,15 +102,15 @@ type ImportWorkflowTemplateResponseBody struct {
 	//
 	// example:
 	//
-	// Customer Complaint Handling Process
+	// Customer complaint handling process
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The request ID.
+	// The request tracking ID.
 	//
 	// example:
 	//
 	// 019FF406-1B10-0065-A97D-2D1920C2A03D
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// The schema version of the template. The current value is 2, which is independent of the business version vN.
+	// The template structure version. The current value is 2, which is independent of the business version vN.
 	//
 	// example:
 	//
@@ -120,7 +120,7 @@ type ImportWorkflowTemplateResponseBody struct {
 	//
 	// example:
 	//
-	// [{\\"stepId\\":\\"collect\\",\\"sortOrder\\":1,\\"name\\":\\"Collect customer information\\"}]
+	// [{"stepId":"collect","sortOrder":1,"name":"Collect customer information"}]
 	Steps []*ImportWorkflowTemplateResponseBodySteps `json:"steps,omitempty" xml:"steps,omitempty" type:"Repeated"`
 	// The template ID.
 	//
@@ -318,7 +318,7 @@ type ImportWorkflowTemplateResponseBodySteps struct {
 	//
 	// example:
 	//
-	// Customer Complaint Handling Process
+	// Customer complaint handling process
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
 	// The name of the agent owner.
 	//
@@ -328,9 +328,9 @@ type ImportWorkflowTemplateResponseBodySteps struct {
 	OwnerAgentName *string `json:"ownerAgentName,omitempty" xml:"ownerAgentName,omitempty"`
 	// The owner type. Valid values:
 	//
-	// - **USER**: User. This is the default value.
+	// - **USER**: User type. This is the default value.
 	//
-	// - **APP**: App.
+	// - **APP**: Application type.
 	//
 	// example:
 	//
@@ -342,17 +342,17 @@ type ImportWorkflowTemplateResponseBodySteps struct {
 	//
 	// 1
 	OwnerUserId *int64 `json:"ownerUserId,omitempty" xml:"ownerUserId,omitempty"`
-	// Specifies whether to manually review the output. By default, this feature is disabled. It can be enabled only for digital employees. Review to-do items are automatically sent to the person in charge.
+	// Specifies whether to manually review the deliverables. By default, this feature is disabled. It can be enabled only for digital employees. Review tasks are automatically sent to the person in charge.
 	//
 	// example:
 	//
 	// false
 	ReviewOutput *bool `json:"reviewOutput,omitempty" xml:"reviewOutput,omitempty"`
-	// The list of user IDs for the reviewers. This field is valid only for digital employee executor steps and is always empty for member executor steps.
+	// The list of user IDs of the persons in charge. This parameter is valid only for digital employee executor steps and is always empty for member executor steps.
 	//
 	// example:
 	//
-	// example
+	// [10001]
 	ReviewerUserIds []*int64 `json:"reviewerUserIds,omitempty" xml:"reviewerUserIds,omitempty" type:"Repeated"`
 	// The step order.
 	//
@@ -360,17 +360,17 @@ type ImportWorkflowTemplateResponseBodySteps struct {
 	//
 	// 1
 	SortOrder *int64 `json:"sortOrder,omitempty" xml:"sortOrder,omitempty"`
-	// The processing instructions for the step.
+	// The step processing instructions.
 	//
 	// example:
 	//
 	// Collect customer information and submit it to the person in charge for review
 	Specification *string `json:"specification,omitempty" xml:"specification,omitempty"`
-	// The ordered array of segments. Supported types include text, mention, skill, app, files, and web_search. The reference identities and order are preserved.
+	// The ordered array of fragments, which supports text, mention, skill, app, files, and web_search. The referenced identities and order are preserved.
 	//
 	// example:
 	//
-	// [{\\"type\\":\\"text\\",\\"text\\":\\"Collect customer information\\"}]
+	// [{"type":"text","content":"Collect customer information"}]
 	SpecificationJson []map[string]interface{} `json:"specificationJson,omitempty" xml:"specificationJson,omitempty" type:"Repeated"`
 	// The step ID.
 	//

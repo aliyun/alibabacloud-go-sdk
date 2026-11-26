@@ -9,8 +9,14 @@ type iListTenantDirectoryRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAppToken(v string) *ListTenantDirectoryRequest
+	GetAppToken() *string
 	SetDirectoryId(v string) *ListTenantDirectoryRequest
 	GetDirectoryId() *string
+	SetOpsUserCode(v string) *ListTenantDirectoryRequest
+	GetOpsUserCode() *string
+	SetOpsUserId(v string) *ListTenantDirectoryRequest
+	GetOpsUserId() *string
 	SetPage(v int64) *ListTenantDirectoryRequest
 	GetPage() *int64
 	SetPageSize(v int64) *ListTenantDirectoryRequest
@@ -26,12 +32,30 @@ type iListTenantDirectoryRequest interface {
 }
 
 type ListTenantDirectoryRequest struct {
+	// 平台应用 Token（控制台签发）。传入后将以 opsUserId 或 opsUserCode 指定的用户身份执行
+	//
+	// example:
+	//
+	// wn_app_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+	AppToken *string `json:"appToken,omitempty" xml:"appToken,omitempty"`
 	// The directory ID.
 	//
 	// example:
 	//
 	// exampleDirectoryId
 	DirectoryId *string `json:"directoryId,omitempty" xml:"directoryId,omitempty"`
+	// 代理用户编码（租户内唯一），仅当应用凭证配置为 source_uid 时使用
+	//
+	// example:
+	//
+	// alice
+	OpsUserCode *string `json:"opsUserCode,omitempty" xml:"opsUserCode,omitempty"`
+	// 代理用户ID（WINNEXO 平台用户ID），仅当应用凭证配置为 winnexo_uid 时使用
+	//
+	// example:
+	//
+	// 10001
+	OpsUserId *string `json:"opsUserId,omitempty" xml:"opsUserId,omitempty"`
 	// The current page number.
 	//
 	// example:
@@ -84,8 +108,20 @@ func (s ListTenantDirectoryRequest) GoString() string {
 	return s.String()
 }
 
+func (s *ListTenantDirectoryRequest) GetAppToken() *string {
+	return s.AppToken
+}
+
 func (s *ListTenantDirectoryRequest) GetDirectoryId() *string {
 	return s.DirectoryId
+}
+
+func (s *ListTenantDirectoryRequest) GetOpsUserCode() *string {
+	return s.OpsUserCode
+}
+
+func (s *ListTenantDirectoryRequest) GetOpsUserId() *string {
+	return s.OpsUserId
 }
 
 func (s *ListTenantDirectoryRequest) GetPage() *int64 {
@@ -112,8 +148,23 @@ func (s *ListTenantDirectoryRequest) GetTenantId() *string {
 	return s.TenantId
 }
 
+func (s *ListTenantDirectoryRequest) SetAppToken(v string) *ListTenantDirectoryRequest {
+	s.AppToken = &v
+	return s
+}
+
 func (s *ListTenantDirectoryRequest) SetDirectoryId(v string) *ListTenantDirectoryRequest {
 	s.DirectoryId = &v
+	return s
+}
+
+func (s *ListTenantDirectoryRequest) SetOpsUserCode(v string) *ListTenantDirectoryRequest {
+	s.OpsUserCode = &v
+	return s
+}
+
+func (s *ListTenantDirectoryRequest) SetOpsUserId(v string) *ListTenantDirectoryRequest {
+	s.OpsUserId = &v
 	return s
 }
 

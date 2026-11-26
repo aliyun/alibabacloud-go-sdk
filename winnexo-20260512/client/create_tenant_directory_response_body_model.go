@@ -40,87 +40,87 @@ type iCreateTenantDirectoryResponseBody interface {
 }
 
 type CreateTenantDirectoryResponseBody struct {
-	// The status code.
+	// The business status code. A value of 200 indicates success. If the request fails, a specific business error code is returned.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// The description of the to-do card type.
+	// The description of the created directory. If no description is set, the value is empty.
 	//
 	// example:
 	//
-	// Sample description
+	// Team product materials and operation guides
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// The folder ID.
+	// The business ID of the newly created directory. You can use this ID to read or update the knowledge base configuration for standard enterprise root directories.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// exampleDirectoryId
+	// kb-example
 	DirectoryId *string `json:"directoryId,omitempty" xml:"directoryId,omitempty"`
-	// The creation time.
+	// The time when the directory was created. The value is a UNIX timestamp in seconds.
 	//
 	// example:
 	//
-	// 1
+	// 1699000000
 	GmtCreate *int64 `json:"gmtCreate,omitempty" xml:"gmtCreate,omitempty"`
-	// The last modification time.
+	// The time when the directory was last modified. The value is a UNIX timestamp in seconds.
 	//
 	// example:
 	//
-	// 1
+	// 1699000010
 	GmtModified *int64 `json:"gmtModified,omitempty" xml:"gmtModified,omitempty"`
-	// The tenant folder ID.
+	// The internal primary key of the directory. You can use this key as the parentId when you create a subdirectory. This key is different from the business ID directoryId.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 1
+	// 1001
 	Id *int64 `json:"id,omitempty" xml:"id,omitempty"`
-	// The description of the status code.
+	// The response message. The value is success if the request is successful. If the request fails, this parameter describes the cause of the error.
 	//
 	// example:
 	//
-	// successful
+	// success
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// The name.
+	// The name of the created directory.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// SampleName.pdf
+	// Product knowledge base
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The name of the digital employee (the operating object name, optional).
+	// The legacy single digital employee association field. You cannot use this field to replace the mode and association list returned by GetKnowledgeBaseConfiguration.
 	//
 	// example:
 	//
-	// string_value
+	// opt_1
 	OperatingObjectName *string `json:"operatingObjectName,omitempty" xml:"operatingObjectName,omitempty"`
-	// The ID of the parent node.
+	// The internal primary key of the parent directory. This value is empty for enterprise root directories.
 	//
 	// example:
 	//
-	// 1
+	// 1001
 	ParentId *int64 `json:"parentId,omitempty" xml:"parentId,omitempty"`
-	// The path of the node.
+	// The path of the created directory.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// https://example.com/oss/file.pdf
+	// /Product knowledge base
 	Path *string `json:"path,omitempty" xml:"path,omitempty"`
-	// The request ID.
+	// The request tracking ID. You can use this ID to troubleshoot issues related to this call.
 	//
 	// example:
 	//
 	// 019FF406-1B10-0065-A97D-2D1920C2A03D
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// The ID of the tenant for which the operation takes effect.
+	// The ID of the tenant to which the directory belongs.
 	//
 	// This parameter is required.
 	//
@@ -128,13 +128,13 @@ type CreateTenantDirectoryResponseBody struct {
 	//
 	// 10000
 	TenantId *int64 `json:"tenantId,omitempty" xml:"tenantId,omitempty"`
-	// The user ID of the creator.
+	// The ID of the platform user who created the directory.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 1
+	// 10001
 	UserId *int64 `json:"userId,omitempty" xml:"userId,omitempty"`
 }
 

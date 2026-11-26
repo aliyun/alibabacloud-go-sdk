@@ -9,6 +9,10 @@ type iUpdateScheduledTaskShrinkRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAppToken(v string) *UpdateScheduledTaskShrinkRequest
+	GetAppToken() *string
+	SetAutoPreference(v string) *UpdateScheduledTaskShrinkRequest
+	GetAutoPreference() *string
 	SetDescriptionShrink(v string) *UpdateScheduledTaskShrinkRequest
 	GetDescriptionShrink() *string
 	SetDigitalEmployeeNameShrink(v string) *UpdateScheduledTaskShrinkRequest
@@ -19,6 +23,10 @@ type iUpdateScheduledTaskShrinkRequest interface {
 	GetModel() *string
 	SetName(v string) *UpdateScheduledTaskShrinkRequest
 	GetName() *string
+	SetOpsUserCode(v string) *UpdateScheduledTaskShrinkRequest
+	GetOpsUserCode() *string
+	SetOpsUserId(v string) *UpdateScheduledTaskShrinkRequest
+	GetOpsUserId() *string
 	SetOutputMode(v string) *UpdateScheduledTaskShrinkRequest
 	GetOutputMode() *string
 	SetSegmentsShrink(v string) *UpdateScheduledTaskShrinkRequest
@@ -38,6 +46,18 @@ type iUpdateScheduledTaskShrinkRequest interface {
 }
 
 type UpdateScheduledTaskShrinkRequest struct {
+	// The platform application token issued by the console. If specified, the task is executed as the user specified by opsUserId or opsUserCode.
+	//
+	// example:
+	//
+	// wn_app_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+	AppToken *string `json:"appToken,omitempty" xml:"appToken,omitempty"`
+	// The AUTO preference. Valid values: none (default), performance (performance first), and credit (cost first). If omitted or set to null, the current value is retained. If set to an empty string, the value is reset to none. For fixed models, this parameter can be saved but does not take effect.
+	//
+	// example:
+	//
+	// credit
+	AutoPreference *string `json:"autoPreference,omitempty" xml:"autoPreference,omitempty"`
 	// The description.
 	DescriptionShrink *string `json:"description,omitempty" xml:"description,omitempty"`
 	// The list of digital employee names.
@@ -52,7 +72,7 @@ type UpdateScheduledTaskShrinkRequest struct {
 	//
 	// true
 	IsOpen *bool `json:"isOpen,omitempty" xml:"isOpen,omitempty"`
-	// The execution model tier. If this parameter is not specified, the model tier is not updated.
+	// The execution model tier. If not specified, the model tier is not updated.
 	//
 	// example:
 	//
@@ -64,7 +84,19 @@ type UpdateScheduledTaskShrinkRequest struct {
 	//
 	// SampleName.pdf
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The output conversation mode. If this parameter is omitted, the current configuration is retained.
+	// The proxy user code, which is unique within the tenant. This parameter is used only when the application credential is configured as source_uid.
+	//
+	// example:
+	//
+	// alice
+	OpsUserCode *string `json:"opsUserCode,omitempty" xml:"opsUserCode,omitempty"`
+	// The proxy user ID, which is the WINNEXO platform user ID. This parameter is used only when the application credential is configured as winnexo_uid.
+	//
+	// example:
+	//
+	// 10001
+	OpsUserId *string `json:"opsUserId,omitempty" xml:"opsUserId,omitempty"`
+	// The output conversation mode. If not specified, the current configuration is retained.
 	//
 	// example:
 	//
@@ -82,7 +114,7 @@ type UpdateScheduledTaskShrinkRequest struct {
 	//
 	// exampleTaskId
 	TaskId *string `json:"taskId,omitempty" xml:"taskId,omitempty"`
-	// The tenant ID. This is a common parameter. If this parameter is not specified, the default tenant of the caller is used.
+	// The tenant ID. This is a common parameter. If not specified, the default tenant of the caller is used.
 	//
 	// example:
 	//
@@ -90,13 +122,13 @@ type UpdateScheduledTaskShrinkRequest struct {
 	TenantId *string `json:"tenantId,omitempty" xml:"tenantId,omitempty"`
 	// The trigger configuration. The configuration varies based on the trigger type.
 	TriggerConfigShrink *string `json:"triggerConfig,omitempty" xml:"triggerConfig,omitempty"`
-	// The visibility scope adjustment for group tasks. Valid values: PRIVATE (visible only to the creator and group owner), COLLABORATIVE (visible to specified collaborators), and PUBLIC (visible to all group members). If this parameter is not specified, the visibility scope is not updated. This field is ignored for personal tasks.
+	// The visibility scope for group tasks. Valid values: PRIVATE (visible only to the creator and group owner), COLLABORATIVE (visible to specified collaborators), and PUBLIC (visible to all group members). If not specified, the visibility scope is not updated. This parameter is ignored for personal tasks.
 	//
 	// example:
 	//
 	// COLLABORATIVE
 	Visibility *string `json:"visibility,omitempty" xml:"visibility,omitempty"`
-	// The full replacement list of collaborators. This parameter takes effect only when visibility is set to COLLABORATIVE. When the visibility is changed from COLLABORATIVE to another value, the list is cleared. A maximum of 1,000 members are supported. If this parameter is not specified, the members are not updated. You do not need to specify the task creator and group creator because they are covered by the authentication layer. This field is ignored for personal tasks.
+	// The full replacement list of collaborators. This parameter takes effect only when visibility is set to COLLABORATIVE. A maximum of 1,000 members can be specified. If the visibility is changed from COLLABORATIVE to another value, the list is cleared. If not specified, the members are not updated. The task creator and group creator do not need to be specified because they are covered by the authentication layer. This parameter is ignored for personal tasks.
 	//
 	// example:
 	//
@@ -110,6 +142,14 @@ func (s UpdateScheduledTaskShrinkRequest) String() string {
 
 func (s UpdateScheduledTaskShrinkRequest) GoString() string {
 	return s.String()
+}
+
+func (s *UpdateScheduledTaskShrinkRequest) GetAppToken() *string {
+	return s.AppToken
+}
+
+func (s *UpdateScheduledTaskShrinkRequest) GetAutoPreference() *string {
+	return s.AutoPreference
 }
 
 func (s *UpdateScheduledTaskShrinkRequest) GetDescriptionShrink() *string {
@@ -130,6 +170,14 @@ func (s *UpdateScheduledTaskShrinkRequest) GetModel() *string {
 
 func (s *UpdateScheduledTaskShrinkRequest) GetName() *string {
 	return s.Name
+}
+
+func (s *UpdateScheduledTaskShrinkRequest) GetOpsUserCode() *string {
+	return s.OpsUserCode
+}
+
+func (s *UpdateScheduledTaskShrinkRequest) GetOpsUserId() *string {
+	return s.OpsUserId
 }
 
 func (s *UpdateScheduledTaskShrinkRequest) GetOutputMode() *string {
@@ -164,6 +212,16 @@ func (s *UpdateScheduledTaskShrinkRequest) GetVisibleMemberUserIdsShrink() *stri
 	return s.VisibleMemberUserIdsShrink
 }
 
+func (s *UpdateScheduledTaskShrinkRequest) SetAppToken(v string) *UpdateScheduledTaskShrinkRequest {
+	s.AppToken = &v
+	return s
+}
+
+func (s *UpdateScheduledTaskShrinkRequest) SetAutoPreference(v string) *UpdateScheduledTaskShrinkRequest {
+	s.AutoPreference = &v
+	return s
+}
+
 func (s *UpdateScheduledTaskShrinkRequest) SetDescriptionShrink(v string) *UpdateScheduledTaskShrinkRequest {
 	s.DescriptionShrink = &v
 	return s
@@ -186,6 +244,16 @@ func (s *UpdateScheduledTaskShrinkRequest) SetModel(v string) *UpdateScheduledTa
 
 func (s *UpdateScheduledTaskShrinkRequest) SetName(v string) *UpdateScheduledTaskShrinkRequest {
 	s.Name = &v
+	return s
+}
+
+func (s *UpdateScheduledTaskShrinkRequest) SetOpsUserCode(v string) *UpdateScheduledTaskShrinkRequest {
+	s.OpsUserCode = &v
+	return s
+}
+
+func (s *UpdateScheduledTaskShrinkRequest) SetOpsUserId(v string) *UpdateScheduledTaskShrinkRequest {
+	s.OpsUserId = &v
 	return s
 }
 

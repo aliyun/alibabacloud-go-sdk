@@ -9,8 +9,14 @@ type iMoveKnowledgeBaseResourceRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAppToken(v string) *MoveKnowledgeBaseResourceRequest
+	GetAppToken() *string
 	SetKnowledgeId(v string) *MoveKnowledgeBaseResourceRequest
 	GetKnowledgeId() *string
+	SetOpsUserCode(v string) *MoveKnowledgeBaseResourceRequest
+	GetOpsUserCode() *string
+	SetOpsUserId(v string) *MoveKnowledgeBaseResourceRequest
+	GetOpsUserId() *string
 	SetSourceDirectoryId(v string) *MoveKnowledgeBaseResourceRequest
 	GetSourceDirectoryId() *string
 	SetSourceId(v string) *MoveKnowledgeBaseResourceRequest
@@ -22,6 +28,12 @@ type iMoveKnowledgeBaseResourceRequest interface {
 }
 
 type MoveKnowledgeBaseResourceRequest struct {
+	// 平台应用 Token（控制台签发）。传入后将以 opsUserId 或 opsUserCode 指定的用户身份执行
+	//
+	// example:
+	//
+	// wn_app_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+	AppToken *string `json:"appToken,omitempty" xml:"appToken,omitempty"`
 	// Not supported. This parameter is ignored.
 	//
 	// This parameter is required.
@@ -30,6 +42,18 @@ type MoveKnowledgeBaseResourceRequest struct {
 	//
 	// exampleKnowledgeId
 	KnowledgeId *string `json:"knowledgeId,omitempty" xml:"knowledgeId,omitempty"`
+	// 代理用户编码（租户内唯一），仅当应用凭证配置为 source_uid 时使用
+	//
+	// example:
+	//
+	// alice
+	OpsUserCode *string `json:"opsUserCode,omitempty" xml:"opsUserCode,omitempty"`
+	// 代理用户ID（WINNEXO 平台用户ID），仅当应用凭证配置为 winnexo_uid 时使用
+	//
+	// example:
+	//
+	// 10001
+	OpsUserId *string `json:"opsUserId,omitempty" xml:"opsUserId,omitempty"`
 	// The source directory ID. This is the enterprise knowledge base directory where the resource currently resides.
 	//
 	// This parameter is required.
@@ -70,8 +94,20 @@ func (s MoveKnowledgeBaseResourceRequest) GoString() string {
 	return s.String()
 }
 
+func (s *MoveKnowledgeBaseResourceRequest) GetAppToken() *string {
+	return s.AppToken
+}
+
 func (s *MoveKnowledgeBaseResourceRequest) GetKnowledgeId() *string {
 	return s.KnowledgeId
+}
+
+func (s *MoveKnowledgeBaseResourceRequest) GetOpsUserCode() *string {
+	return s.OpsUserCode
+}
+
+func (s *MoveKnowledgeBaseResourceRequest) GetOpsUserId() *string {
+	return s.OpsUserId
 }
 
 func (s *MoveKnowledgeBaseResourceRequest) GetSourceDirectoryId() *string {
@@ -90,8 +126,23 @@ func (s *MoveKnowledgeBaseResourceRequest) GetTenantId() *string {
 	return s.TenantId
 }
 
+func (s *MoveKnowledgeBaseResourceRequest) SetAppToken(v string) *MoveKnowledgeBaseResourceRequest {
+	s.AppToken = &v
+	return s
+}
+
 func (s *MoveKnowledgeBaseResourceRequest) SetKnowledgeId(v string) *MoveKnowledgeBaseResourceRequest {
 	s.KnowledgeId = &v
+	return s
+}
+
+func (s *MoveKnowledgeBaseResourceRequest) SetOpsUserCode(v string) *MoveKnowledgeBaseResourceRequest {
+	s.OpsUserCode = &v
+	return s
+}
+
+func (s *MoveKnowledgeBaseResourceRequest) SetOpsUserId(v string) *MoveKnowledgeBaseResourceRequest {
+	s.OpsUserId = &v
 	return s
 }
 

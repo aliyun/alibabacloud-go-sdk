@@ -9,8 +9,14 @@ type iCreateUserGroupRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAppToken(v string) *CreateUserGroupRequest
+	GetAppToken() *string
 	SetDescription(v string) *CreateUserGroupRequest
 	GetDescription() *string
+	SetOpsUserCode(v string) *CreateUserGroupRequest
+	GetOpsUserCode() *string
+	SetOpsUserId(v string) *CreateUserGroupRequest
+	GetOpsUserId() *string
 	SetParentId(v string) *CreateUserGroupRequest
 	GetParentId() *string
 	SetTenantId(v string) *CreateUserGroupRequest
@@ -20,12 +26,30 @@ type iCreateUserGroupRequest interface {
 }
 
 type CreateUserGroupRequest struct {
+	// 平台应用 Token（控制台签发）。传入后将以 opsUserId 或 opsUserCode 指定的用户身份执行
+	//
+	// example:
+	//
+	// wn_app_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+	AppToken *string `json:"appToken,omitempty" xml:"appToken,omitempty"`
 	// The description of the user group.
 	//
 	// example:
 	//
 	// Sales organization
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
+	// 代理用户编码（租户内唯一），仅当应用凭证配置为 source_uid 时使用
+	//
+	// example:
+	//
+	// alice
+	OpsUserCode *string `json:"opsUserCode,omitempty" xml:"opsUserCode,omitempty"`
+	// 代理用户ID（WINNEXO 平台用户ID），仅当应用凭证配置为 winnexo_uid 时使用
+	//
+	// example:
+	//
+	// 10001
+	OpsUserId *string `json:"opsUserId,omitempty" xml:"opsUserId,omitempty"`
 	// The ID of the parent user group. If this parameter is not specified, the user group is created under the root node.
 	//
 	// example:
@@ -56,8 +80,20 @@ func (s CreateUserGroupRequest) GoString() string {
 	return s.String()
 }
 
+func (s *CreateUserGroupRequest) GetAppToken() *string {
+	return s.AppToken
+}
+
 func (s *CreateUserGroupRequest) GetDescription() *string {
 	return s.Description
+}
+
+func (s *CreateUserGroupRequest) GetOpsUserCode() *string {
+	return s.OpsUserCode
+}
+
+func (s *CreateUserGroupRequest) GetOpsUserId() *string {
+	return s.OpsUserId
 }
 
 func (s *CreateUserGroupRequest) GetParentId() *string {
@@ -72,8 +108,23 @@ func (s *CreateUserGroupRequest) GetUserGroupName() *string {
 	return s.UserGroupName
 }
 
+func (s *CreateUserGroupRequest) SetAppToken(v string) *CreateUserGroupRequest {
+	s.AppToken = &v
+	return s
+}
+
 func (s *CreateUserGroupRequest) SetDescription(v string) *CreateUserGroupRequest {
 	s.Description = &v
+	return s
+}
+
+func (s *CreateUserGroupRequest) SetOpsUserCode(v string) *CreateUserGroupRequest {
+	s.OpsUserCode = &v
+	return s
+}
+
+func (s *CreateUserGroupRequest) SetOpsUserId(v string) *CreateUserGroupRequest {
+	s.OpsUserId = &v
 	return s
 }
 

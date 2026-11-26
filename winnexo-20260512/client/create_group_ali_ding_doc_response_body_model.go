@@ -90,7 +90,7 @@ type CreateGroupAliDingDocResponseBody struct {
 	//
 	// example:
 	//
-	// {\\"observedGeneration\\": 7, \\"servicesInstances\\": {}, \\"observedTime\\": \\"2025-12-17T11:57:07Z\\", \\"servicesWithPendingChanges\\": [], \\"latestEnvironmentDeploymentName\\": \\"manual-1765972627273-k7GZvr\\"}
+	// {\"observedGeneration\": 7, \"servicesInstances\": {}, \"observedTime\": \"2025-12-17T11:57:07Z\", \"servicesWithPendingChanges\": [], \"latestEnvironmentDeploymentName\": \"manual-1765972627273-k7GZvr\"}
 	Status *string `json:"status,omitempty" xml:"status,omitempty"`
 }
 

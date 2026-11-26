@@ -9,10 +9,16 @@ type iCreateTodoShrinkRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAppToken(v string) *CreateTodoShrinkRequest
+	GetAppToken() *string
 	SetAssigneeUserIdsShrink(v string) *CreateTodoShrinkRequest
 	GetAssigneeUserIdsShrink() *string
 	SetCollaborationGroupId(v string) *CreateTodoShrinkRequest
 	GetCollaborationGroupId() *string
+	SetOpsUserCode(v string) *CreateTodoShrinkRequest
+	GetOpsUserCode() *string
+	SetOpsUserId(v string) *CreateTodoShrinkRequest
+	GetOpsUserId() *string
 	SetPriority(v string) *CreateTodoShrinkRequest
 	GetPriority() *string
 	SetQuestionsShrink(v string) *CreateTodoShrinkRequest
@@ -28,6 +34,12 @@ type iCreateTodoShrinkRequest interface {
 }
 
 type CreateTodoShrinkRequest struct {
+	// 平台应用 Token（控制台签发）。传入后将以 opsUserId 或 opsUserCode 指定的用户身份执行
+	//
+	// example:
+	//
+	// wn_app_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+	AppToken *string `json:"appToken,omitempty" xml:"appToken,omitempty"`
 	// The list of platform user IDs of the assignees. You can specify 1 to 100 IDs. Duplicate IDs are automatically removed.
 	//
 	// This parameter is required.
@@ -42,6 +54,18 @@ type CreateTodoShrinkRequest struct {
 	//
 	// cg_123
 	CollaborationGroupId *string `json:"collaborationGroupId,omitempty" xml:"collaborationGroupId,omitempty"`
+	// 代理用户编码（租户内唯一），仅当应用凭证配置为 source_uid 时使用
+	//
+	// example:
+	//
+	// alice
+	OpsUserCode *string `json:"opsUserCode,omitempty" xml:"opsUserCode,omitempty"`
+	// 代理用户ID（WINNEXO 平台用户ID），仅当应用凭证配置为 winnexo_uid 时使用
+	//
+	// example:
+	//
+	// 10001
+	OpsUserId *string `json:"opsUserId,omitempty" xml:"opsUserId,omitempty"`
 	// The priority.
 	//
 	// example:
@@ -96,12 +120,24 @@ func (s CreateTodoShrinkRequest) GoString() string {
 	return s.String()
 }
 
+func (s *CreateTodoShrinkRequest) GetAppToken() *string {
+	return s.AppToken
+}
+
 func (s *CreateTodoShrinkRequest) GetAssigneeUserIdsShrink() *string {
 	return s.AssigneeUserIdsShrink
 }
 
 func (s *CreateTodoShrinkRequest) GetCollaborationGroupId() *string {
 	return s.CollaborationGroupId
+}
+
+func (s *CreateTodoShrinkRequest) GetOpsUserCode() *string {
+	return s.OpsUserCode
+}
+
+func (s *CreateTodoShrinkRequest) GetOpsUserId() *string {
+	return s.OpsUserId
 }
 
 func (s *CreateTodoShrinkRequest) GetPriority() *string {
@@ -128,6 +164,11 @@ func (s *CreateTodoShrinkRequest) GetTitle() *string {
 	return s.Title
 }
 
+func (s *CreateTodoShrinkRequest) SetAppToken(v string) *CreateTodoShrinkRequest {
+	s.AppToken = &v
+	return s
+}
+
 func (s *CreateTodoShrinkRequest) SetAssigneeUserIdsShrink(v string) *CreateTodoShrinkRequest {
 	s.AssigneeUserIdsShrink = &v
 	return s
@@ -135,6 +176,16 @@ func (s *CreateTodoShrinkRequest) SetAssigneeUserIdsShrink(v string) *CreateTodo
 
 func (s *CreateTodoShrinkRequest) SetCollaborationGroupId(v string) *CreateTodoShrinkRequest {
 	s.CollaborationGroupId = &v
+	return s
+}
+
+func (s *CreateTodoShrinkRequest) SetOpsUserCode(v string) *CreateTodoShrinkRequest {
+	s.OpsUserCode = &v
+	return s
+}
+
+func (s *CreateTodoShrinkRequest) SetOpsUserId(v string) *CreateTodoShrinkRequest {
+	s.OpsUserId = &v
 	return s
 }
 

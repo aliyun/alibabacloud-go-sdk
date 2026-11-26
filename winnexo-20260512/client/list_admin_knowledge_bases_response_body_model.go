@@ -46,7 +46,7 @@ type ListAdminKnowledgeBasesResponseBody struct {
 	//
 	// 1
 	Page *int64 `json:"page,omitempty" xml:"page,omitempty"`
-	// The page size.
+	// The number of entries per page.
 	//
 	// example:
 	//
@@ -58,7 +58,7 @@ type ListAdminKnowledgeBasesResponseBody struct {
 	//
 	// 019FF406-1B10-0065-A97D-2D1920C2A03D
 	RequestId *string `json:"requestId,omitempty" xml:"requestId,omitempty"`
-	// The maximum number of entries returned in this request.
+	// The maximum number of records returned in this request.
 	//
 	// example:
 	//
@@ -175,19 +175,19 @@ type ListAdminKnowledgeBasesResponseBodyItems struct {
 	//
 	// 1
 	GmtCreate *int64 `json:"gmtCreate,omitempty" xml:"gmtCreate,omitempty"`
-	// The last modification time.
+	// The last update time.
 	//
 	// example:
 	//
 	// 1
 	GmtModified *int64 `json:"gmtModified,omitempty" xml:"gmtModified,omitempty"`
-	// The ID of the data item. When tabId and orgId are the same, itemId uniquely identifies a data item. The maximum length is 128 characters.
+	// The ID of the data item. When tabId and orgId are the same, itemId uniquely identifies a data item. The length cannot exceed 128 characters.
 	//
 	// example:
 	//
 	// exampleItemId
 	ItemId *string `json:"itemId,omitempty" xml:"itemId,omitempty"`
-	// The data type (group, user, or role).
+	// The data type, such as group, user, or role.
 	//
 	// example:
 	//
@@ -201,31 +201,31 @@ type ListAdminKnowledgeBasesResponseBodyItems struct {
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
 	// The object bindings.
 	ObjectBindings []*ListAdminKnowledgeBasesResponseBodyItemsObjectBindings `json:"objectBindings,omitempty" xml:"objectBindings,omitempty" type:"Repeated"`
-	// The number of resources with the FAILED status. This field is returned only in the top-level knowledge base directory list.
+	// The number of resources in the FAILED state. This parameter is returned only when the top-level directory list of the knowledge base is queried.
 	//
 	// example:
 	//
 	// 1
 	SourceFailedCount *int64 `json:"sourceFailedCount,omitempty" xml:"sourceFailedCount,omitempty"`
-	// The knowledge base source type. Valid values: aliding_kb_doc (DingTalk knowledge base document) and normal (common knowledge).
+	// The ownership type of the knowledge base. Valid values: aliding_kb_doc (DingTalk knowledge base document) and normal (common knowledge).
 	//
 	// example:
 	//
 	// string_value
 	SourceKind *string `json:"sourceKind,omitempty" xml:"sourceKind,omitempty"`
-	// The number of resources with the READY status. This field is returned only in the top-level knowledge base directory list.
+	// The number of resources in the READY state. This parameter is returned only when the top-level directory list of the knowledge base is queried.
 	//
 	// example:
 	//
 	// 1
 	SourceReadyCount *int64 `json:"sourceReadyCount,omitempty" xml:"sourceReadyCount,omitempty"`
-	// The resource status. This field has a value when itemType is set to resource.
+	// The resource status. This parameter has a value only when itemType is set to resource.
 	//
 	// example:
 	//
 	// string_value
 	SourceStatus *string `json:"sourceStatus,omitempty" xml:"sourceStatus,omitempty"`
-	// The total number of resources in the directory and its subdirectories. This field is returned only in the top-level knowledge base directory list.
+	// The total number of resources in the directory and its subdirectories. This parameter is returned only when the top-level directory list of the knowledge base is queried.
 	//
 	// example:
 	//
@@ -414,13 +414,13 @@ type ListAdminKnowledgeBasesResponseBodyItemsObjectBindings struct {
 	//
 	// string_value
 	ObjectName *string `json:"objectName,omitempty" xml:"objectName,omitempty"`
-	// The object type, such as customer. This field has a value when type is set to mention.
+	// The object type, such as customer. This parameter has a value only when type is set to mention.
 	//
 	// example:
 	//
 	// string_value
 	ObjectType *string `json:"objectType,omitempty" xml:"objectType,omitempty"`
-	// The display name of the object type (such as "Customer"), parsed from the graph schema. The value is null when the cache is missed.
+	// The display name of the object type, such as Customer. This name is parsed from the graph schema. If the cache is missing, the value is null.
 	//
 	// example:
 	//

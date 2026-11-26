@@ -9,6 +9,8 @@ type iCreatePersonalTextRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAppToken(v string) *CreatePersonalTextRequest
+	GetAppToken() *string
 	SetDescription(v string) *CreatePersonalTextRequest
 	GetDescription() *string
 	SetDirectoryId(v string) *CreatePersonalTextRequest
@@ -17,6 +19,10 @@ type iCreatePersonalTextRequest interface {
 	GetName() *string
 	SetOperatingObjectName(v string) *CreatePersonalTextRequest
 	GetOperatingObjectName() *string
+	SetOpsUserCode(v string) *CreatePersonalTextRequest
+	GetOpsUserCode() *string
+	SetOpsUserId(v string) *CreatePersonalTextRequest
+	GetOpsUserId() *string
 	SetSourceTags(v string) *CreatePersonalTextRequest
 	GetSourceTags() *string
 	SetTenantId(v string) *CreatePersonalTextRequest
@@ -26,6 +32,12 @@ type iCreatePersonalTextRequest interface {
 }
 
 type CreatePersonalTextRequest struct {
+	// 平台应用 Token（控制台签发）。传入后将以 opsUserId 或 opsUserCode 指定的用户身份执行
+	//
+	// example:
+	//
+	// wn_app_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+	AppToken *string `json:"appToken,omitempty" xml:"appToken,omitempty"`
 	// The pipeline description.
 	//
 	// example:
@@ -52,6 +64,18 @@ type CreatePersonalTextRequest struct {
 	//
 	// string_value
 	OperatingObjectName *string `json:"operatingObjectName,omitempty" xml:"operatingObjectName,omitempty"`
+	// 代理用户编码（租户内唯一），仅当应用凭证配置为 source_uid 时使用
+	//
+	// example:
+	//
+	// alice
+	OpsUserCode *string `json:"opsUserCode,omitempty" xml:"opsUserCode,omitempty"`
+	// 代理用户ID（WINNEXO 平台用户ID），仅当应用凭证配置为 winnexo_uid 时使用
+	//
+	// example:
+	//
+	// 10001
+	OpsUserId *string `json:"opsUserId,omitempty" xml:"opsUserId,omitempty"`
 	// The list of resource tag JSON strings.
 	//
 	// example:
@@ -82,6 +106,10 @@ func (s CreatePersonalTextRequest) GoString() string {
 	return s.String()
 }
 
+func (s *CreatePersonalTextRequest) GetAppToken() *string {
+	return s.AppToken
+}
+
 func (s *CreatePersonalTextRequest) GetDescription() *string {
 	return s.Description
 }
@@ -98,6 +126,14 @@ func (s *CreatePersonalTextRequest) GetOperatingObjectName() *string {
 	return s.OperatingObjectName
 }
 
+func (s *CreatePersonalTextRequest) GetOpsUserCode() *string {
+	return s.OpsUserCode
+}
+
+func (s *CreatePersonalTextRequest) GetOpsUserId() *string {
+	return s.OpsUserId
+}
+
 func (s *CreatePersonalTextRequest) GetSourceTags() *string {
 	return s.SourceTags
 }
@@ -108,6 +144,11 @@ func (s *CreatePersonalTextRequest) GetTenantId() *string {
 
 func (s *CreatePersonalTextRequest) GetTextContent() *string {
 	return s.TextContent
+}
+
+func (s *CreatePersonalTextRequest) SetAppToken(v string) *CreatePersonalTextRequest {
+	s.AppToken = &v
+	return s
 }
 
 func (s *CreatePersonalTextRequest) SetDescription(v string) *CreatePersonalTextRequest {
@@ -127,6 +168,16 @@ func (s *CreatePersonalTextRequest) SetName(v string) *CreatePersonalTextRequest
 
 func (s *CreatePersonalTextRequest) SetOperatingObjectName(v string) *CreatePersonalTextRequest {
 	s.OperatingObjectName = &v
+	return s
+}
+
+func (s *CreatePersonalTextRequest) SetOpsUserCode(v string) *CreatePersonalTextRequest {
+	s.OpsUserCode = &v
+	return s
+}
+
+func (s *CreatePersonalTextRequest) SetOpsUserId(v string) *CreatePersonalTextRequest {
+	s.OpsUserId = &v
 	return s
 }
 

@@ -9,6 +9,8 @@ type iUpdateUserInfoRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetAppToken(v string) *UpdateUserInfoRequest
+	GetAppToken() *string
 	SetAvatar(v string) *UpdateUserInfoRequest
 	GetAvatar() *string
 	SetLanguagePreference(v string) *UpdateUserInfoRequest
@@ -17,6 +19,10 @@ type iUpdateUserInfoRequest interface {
 	GetName() *string
 	SetOffering(v string) *UpdateUserInfoRequest
 	GetOffering() *string
+	SetOpsUserCode(v string) *UpdateUserInfoRequest
+	GetOpsUserCode() *string
+	SetOpsUserId(v string) *UpdateUserInfoRequest
+	GetOpsUserId() *string
 	SetProfileRoleInfo(v string) *UpdateUserInfoRequest
 	GetProfileRoleInfo() *string
 	SetSelfIntroduction(v string) *UpdateUserInfoRequest
@@ -26,6 +32,12 @@ type iUpdateUserInfoRequest interface {
 }
 
 type UpdateUserInfoRequest struct {
+	// 平台应用 Token（控制台签发）。传入后将以 opsUserId 或 opsUserCode 指定的用户身份执行
+	//
+	// example:
+	//
+	// wn_app_xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx
+	AppToken *string `json:"appToken,omitempty" xml:"appToken,omitempty"`
 	// The profile picture URL.
 	//
 	// example:
@@ -50,6 +62,18 @@ type UpdateUserInfoRequest struct {
 	//
 	// string_value
 	Offering *string `json:"offering,omitempty" xml:"offering,omitempty"`
+	// 代理用户编码（租户内唯一），仅当应用凭证配置为 source_uid 时使用
+	//
+	// example:
+	//
+	// alice
+	OpsUserCode *string `json:"opsUserCode,omitempty" xml:"opsUserCode,omitempty"`
+	// 代理用户ID（WINNEXO 平台用户ID），仅当应用凭证配置为 winnexo_uid 时使用
+	//
+	// example:
+	//
+	// 10001
+	OpsUserId *string `json:"opsUserId,omitempty" xml:"opsUserId,omitempty"`
 	// The user role description. This parameter is used when profileRole is set to Others. Maximum length: 100 characters.
 	//
 	// example:
@@ -78,6 +102,10 @@ func (s UpdateUserInfoRequest) GoString() string {
 	return s.String()
 }
 
+func (s *UpdateUserInfoRequest) GetAppToken() *string {
+	return s.AppToken
+}
+
 func (s *UpdateUserInfoRequest) GetAvatar() *string {
 	return s.Avatar
 }
@@ -94,6 +122,14 @@ func (s *UpdateUserInfoRequest) GetOffering() *string {
 	return s.Offering
 }
 
+func (s *UpdateUserInfoRequest) GetOpsUserCode() *string {
+	return s.OpsUserCode
+}
+
+func (s *UpdateUserInfoRequest) GetOpsUserId() *string {
+	return s.OpsUserId
+}
+
 func (s *UpdateUserInfoRequest) GetProfileRoleInfo() *string {
 	return s.ProfileRoleInfo
 }
@@ -104,6 +140,11 @@ func (s *UpdateUserInfoRequest) GetSelfIntroduction() *string {
 
 func (s *UpdateUserInfoRequest) GetTenantId() *string {
 	return s.TenantId
+}
+
+func (s *UpdateUserInfoRequest) SetAppToken(v string) *UpdateUserInfoRequest {
+	s.AppToken = &v
+	return s
 }
 
 func (s *UpdateUserInfoRequest) SetAvatar(v string) *UpdateUserInfoRequest {
@@ -123,6 +164,16 @@ func (s *UpdateUserInfoRequest) SetName(v string) *UpdateUserInfoRequest {
 
 func (s *UpdateUserInfoRequest) SetOffering(v string) *UpdateUserInfoRequest {
 	s.Offering = &v
+	return s
+}
+
+func (s *UpdateUserInfoRequest) SetOpsUserCode(v string) *UpdateUserInfoRequest {
+	s.OpsUserCode = &v
+	return s
+}
+
+func (s *UpdateUserInfoRequest) SetOpsUserId(v string) *UpdateUserInfoRequest {
+	s.OpsUserId = &v
 	return s
 }
 
