@@ -24,7 +24,7 @@ type AddUserToGroupRequest struct {
 	//
 	// d-00fc2p61****
 	DirectoryId *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
-	// The ID of the group.
+	// The ID of the user group.
 	//
 	// example:
 	//

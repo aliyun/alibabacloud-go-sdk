@@ -2,6 +2,7 @@
 package client
 
 import (
+	gatewayclient "github.com/alibabacloud-go/alibabacloud-gateway-pop/client"
 	openapi "github.com/alibabacloud-go/darabonba-openapi/v2/client"
 	openapiutil "github.com/alibabacloud-go/darabonba-openapi/v2/utils"
 	"github.com/alibabacloud-go/tea/dara"
@@ -24,6 +25,13 @@ func (client *Client) Init(config *openapiutil.Config) (_err error) {
 	if _err != nil {
 		return _err
 	}
+	client.ProductId = dara.String("cloudsso")
+	gatewayClient, _err := gatewayclient.NewClient()
+	if _err != nil {
+		return _err
+	}
+
+	client.Spi = gatewayClient
 	client.EndpointRule = dara.String("regional")
 	_err = client.CheckConfig(config)
 	if _err != nil {
@@ -140,7 +148,7 @@ func (client *Client) AddExternalSAMLIdPCertificate(request *AddExternalSAMLIdPC
 //
 // Description:
 //
-// This topic provides an example of adding a system policy named `AliyunECSFullAccess` to the access configuration `ac-00jhtfl8thteu6uj****`.
+// This topic provides an example of adding the system policy AliyunECSFullAccess to the access configuration ac-00jhtfl8thteu6uj****.
 //
 // @param request - AddPermissionPolicyToAccessConfigurationRequest
 //
@@ -204,7 +212,7 @@ func (client *Client) AddPermissionPolicyToAccessConfigurationWithOptions(reques
 //
 // Description:
 //
-// This topic provides an example of adding a system policy named `AliyunECSFullAccess` to the access configuration `ac-00jhtfl8thteu6uj****`.
+// This topic provides an example of adding the system policy AliyunECSFullAccess to the access configuration ac-00jhtfl8thteu6uj****.
 //
 // @param request - AddPermissionPolicyToAccessConfigurationRequest
 //
@@ -222,13 +230,13 @@ func (client *Client) AddPermissionPolicyToAccessConfiguration(request *AddPermi
 
 // Summary:
 //
-// Adds a user to a group.
+// Adds a user to a user group.
 //
 // Description:
 //
-// After SCIM synchronization is enabled, you cannot add users to SCIM-synchronized groups.
+// When SCIM synchronization is enabled, you cannot add users to SCIM-synchronized user groups.
 //
-// This topic provides an example of adding the user `u-00q8wbq42wiltcrk****` to the group `g-00jqzghi2n3o5hkh****`.
+// This topic provides an example of adding the user `u-00q8wbq42wiltcrk****` to the user group `g-00jqzghi2n3o5hkh****`.
 //
 // @param request - AddUserToGroupRequest
 //
@@ -280,13 +288,13 @@ func (client *Client) AddUserToGroupWithOptions(request *AddUserToGroupRequest, 
 
 // Summary:
 //
-// Adds a user to a group.
+// Adds a user to a user group.
 //
 // Description:
 //
-// After SCIM synchronization is enabled, you cannot add users to SCIM-synchronized groups.
+// When SCIM synchronization is enabled, you cannot add users to SCIM-synchronized user groups.
 //
-// This topic provides an example of adding the user `u-00q8wbq42wiltcrk****` to the group `g-00jqzghi2n3o5hkh****`.
+// This topic provides an example of adding the user `u-00q8wbq42wiltcrk****` to the user group `g-00jqzghi2n3o5hkh****`.
 //
 // @param request - AddUserToGroupRequest
 //
@@ -310,7 +318,7 @@ func (client *Client) AddUserToGroup(request *AddUserToGroupRequest) (_result *A
 //
 // You can clear the SAML IdP information only when SSO logon is disabled. Otherwise, you cannot perform this operation.
 //
-// This topic provides an example of clearing the configuration of the SAML IdP for the `d-00fc2p61****` directory.
+// This topic provides an example to clear the configuration of the SAML IdP in the `d-00fc2p61****` directory.
 //
 // @param request - ClearExternalSAMLIdentityProviderRequest
 //
@@ -360,7 +368,7 @@ func (client *Client) ClearExternalSAMLIdentityProviderWithOptions(request *Clea
 //
 // You can clear the SAML IdP information only when SSO logon is disabled. Otherwise, you cannot perform this operation.
 //
-// This topic provides an example of clearing the configuration of the SAML IdP for the `d-00fc2p61****` directory.
+// This topic provides an example to clear the configuration of the SAML IdP in the `d-00fc2p61****` directory.
 //
 // @param request - ClearExternalSAMLIdentityProviderRequest
 //
@@ -378,15 +386,15 @@ func (client *Client) ClearExternalSAMLIdentityProvider(request *ClearExternalSA
 
 // Summary:
 //
-// Configures the settings for the users or groups allowed to access an account in a resource directory, and the corresponding access permissions (access configurations).
+// Configures the Settings for the users or user groups allowed to access an account in a resource directory, along with their corresponding access permissions (access configurations).
 //
 // Description:
 //
-// This API operation is asynchronous. You can use the TaskId returned in the response to call [GetTask](https://help.aliyun.com/document_detail/340670.html) to query the task execution status.
+// This API operation is asynchronous. You can use the TaskId in the response parameter to invoke [GetTask](https://help.aliyun.com/document_detail/340670.html) and execute a query for the node status.
 //
 // For more information about granting access to an account in a resource directory, see [Multi-account authorization overview](https://help.aliyun.com/document_detail/266726.html).
 //
-// This topic provides an example on how to assign the access configuration `ac-00jhtfl8thteu6uj****` to the CloudSSO user `u-00q8wbq42wiltcrk****` for the account `114240524784****` in a resource directory. This allows the CloudSSO user to access authorized resources in the account.
+// This topic provides an example on how to configure permissions for the CloudSSO user `u-00q8wbq42wiltcrk****` on the account in a resource directory `114240524784****` by using the access configuration `ac-00jhtfl8thteu6uj****`, so that the CloudSSO user can access the authorized resources in the account in a resource directory.
 //
 // @param request - CreateAccessAssignmentRequest
 //
@@ -454,15 +462,15 @@ func (client *Client) CreateAccessAssignmentWithOptions(request *CreateAccessAss
 
 // Summary:
 //
-// Configures the settings for the users or groups allowed to access an account in a resource directory, and the corresponding access permissions (access configurations).
+// Configures the Settings for the users or user groups allowed to access an account in a resource directory, along with their corresponding access permissions (access configurations).
 //
 // Description:
 //
-// This API operation is asynchronous. You can use the TaskId returned in the response to call [GetTask](https://help.aliyun.com/document_detail/340670.html) to query the task execution status.
+// This API operation is asynchronous. You can use the TaskId in the response parameter to invoke [GetTask](https://help.aliyun.com/document_detail/340670.html) and execute a query for the node status.
 //
 // For more information about granting access to an account in a resource directory, see [Multi-account authorization overview](https://help.aliyun.com/document_detail/266726.html).
 //
-// This topic provides an example on how to assign the access configuration `ac-00jhtfl8thteu6uj****` to the CloudSSO user `u-00q8wbq42wiltcrk****` for the account `114240524784****` in a resource directory. This allows the CloudSSO user to access authorized resources in the account.
+// This topic provides an example on how to configure permissions for the CloudSSO user `u-00q8wbq42wiltcrk****` on the account in a resource directory `114240524784****` by using the access configuration `ac-00jhtfl8thteu6uj****`, so that the CloudSSO user can access the authorized resources in the account in a resource directory.
 //
 // @param request - CreateAccessAssignmentRequest
 //
@@ -486,7 +494,7 @@ func (client *Client) CreateAccessAssignment(request *CreateAccessAssignmentRequ
 //
 // For more information about access configurations, see [Access configuration overview](https://help.aliyun.com/document_detail/266737.html).
 //
-// This topic provides an example on how to create an access configuration named `ECS-Admin`.
+// This topic provides an example of creating an access configuration named `ECS-Admin`.
 //
 // @param request - CreateAccessConfigurationRequest
 //
@@ -556,7 +564,7 @@ func (client *Client) CreateAccessConfigurationWithOptions(request *CreateAccess
 //
 // For more information about access configurations, see [Access configuration overview](https://help.aliyun.com/document_detail/266737.html).
 //
-// This topic provides an example on how to create an access configuration named `ECS-Admin`.
+// This topic provides an example of creating an access configuration named `ECS-Admin`.
 //
 // @param request - CreateAccessConfigurationRequest
 //
@@ -582,13 +590,13 @@ func (client *Client) CreateAccessConfiguration(request *CreateAccessConfigurati
 //
 // A directory is an instance in CloudSSO. You must create a directory before you use CloudSSO. All CloudSSO resources must be maintained in the directory.
 //
-// You must select a region for the CloudSSO directory. Alibaba Cloud ensures that all CloudSSO-related data is stored only in this region. This is independent of where you deploy cloud resources such as ECS and ApsaraDB RDS. You can log on to and access cloud resources in any region from anywhere in the world. You can select a region based on your security and compliance requirements and the geographic location of your target users. If you do not have special security and compliance requirements, select the region closest to your target users to improve access speed. Currently, you can create directories in the following four regions: China (Shanghai), China (Hong Kong), US (Silicon Valley), and Germany (Frankfurt).
+// You must select a region for the CloudSSO directory. Alibaba Cloud ensures that all CloudSSO-related data is stored only in this region. This is independent of where you deploy cloud resources such as ECS and ApsaraDB RDS. You can log on to and access cloud resources in any region from anywhere in the world. You can select a region based on your security and compliance requirements and the geographic location of your target users. If you do not have special security and compliance requirements, we recommend that you select the region closest to your target users to improve access speed. Currently, you can create directories in the following four regions: China (Shanghai), China (Hong Kong), US (Silicon Valley), and Germany (Frankfurt).
 //
 // This topic provides an example on how to create a directory named `example` in the China (Shanghai) region.
 //
 // ### Limits
 //
-// - A management account can create only one directory.
+// - You can create only one directory for each management account.
 //
 // - To change the region of the directory, you must delete the existing directory and create a new one in another region.
 //
@@ -642,13 +650,13 @@ func (client *Client) CreateDirectoryWithOptions(request *CreateDirectoryRequest
 //
 // A directory is an instance in CloudSSO. You must create a directory before you use CloudSSO. All CloudSSO resources must be maintained in the directory.
 //
-// You must select a region for the CloudSSO directory. Alibaba Cloud ensures that all CloudSSO-related data is stored only in this region. This is independent of where you deploy cloud resources such as ECS and ApsaraDB RDS. You can log on to and access cloud resources in any region from anywhere in the world. You can select a region based on your security and compliance requirements and the geographic location of your target users. If you do not have special security and compliance requirements, select the region closest to your target users to improve access speed. Currently, you can create directories in the following four regions: China (Shanghai), China (Hong Kong), US (Silicon Valley), and Germany (Frankfurt).
+// You must select a region for the CloudSSO directory. Alibaba Cloud ensures that all CloudSSO-related data is stored only in this region. This is independent of where you deploy cloud resources such as ECS and ApsaraDB RDS. You can log on to and access cloud resources in any region from anywhere in the world. You can select a region based on your security and compliance requirements and the geographic location of your target users. If you do not have special security and compliance requirements, we recommend that you select the region closest to your target users to improve access speed. Currently, you can create directories in the following four regions: China (Shanghai), China (Hong Kong), US (Silicon Valley), and Germany (Frankfurt).
 //
 // This topic provides an example on how to create a directory named `example` in the China (Shanghai) region.
 //
 // ### Limits
 //
-// - A management account can create only one directory.
+// - You can create only one directory for each management account.
 //
 // - To change the region of the directory, you must delete the existing directory and create a new one in another region.
 //
@@ -672,7 +680,7 @@ func (client *Client) CreateDirectory(request *CreateDirectoryRequest) (_result 
 //
 // Description:
 //
-// This topic provides an example of creating a user group named `TestGroup`.
+// This topic provides an example of creating a group named `TestGroup`.
 //
 // @param request - CreateGroupRequest
 //
@@ -728,7 +736,7 @@ func (client *Client) CreateGroupWithOptions(request *CreateGroupRequest, runtim
 //
 // Description:
 //
-// This topic provides an example of creating a user group named `TestGroup`.
+// This topic provides an example of creating a group named `TestGroup`.
 //
 // @param request - CreateGroupRequest
 //
@@ -746,13 +754,13 @@ func (client *Client) CreateGroup(request *CreateGroupRequest) (_result *CreateG
 
 // Summary:
 //
-// Creates a SCIM credential.
+// Creates a SCIM server credential.
 //
 // Description:
 //
-// A SCIM credential is required for SCIM synchronization. You can create up to two SCIM credentials.
+// SCIM credentials are required for SCIM synchronization. You can create up to two SCIM credentials.
 //
-// This topic provides an example on how to create a SCIM credential in the directory `d-00fc2p61****`.
+// This topic provides an example of creating a SCIM server credential in the `d-00fc2p61****` directory.
 //
 // @param request - CreateSCIMServerCredentialRequest
 //
@@ -796,13 +804,13 @@ func (client *Client) CreateSCIMServerCredentialWithOptions(request *CreateSCIMS
 
 // Summary:
 //
-// Creates a SCIM credential.
+// Creates a SCIM server credential.
 //
 // Description:
 //
-// A SCIM credential is required for SCIM synchronization. You can create up to two SCIM credentials.
+// SCIM credentials are required for SCIM synchronization. You can create up to two SCIM credentials.
 //
-// This topic provides an example on how to create a SCIM credential in the directory `d-00fc2p61****`.
+// This topic provides an example of creating a SCIM server credential in the `d-00fc2p61****` directory.
 //
 // @param request - CreateSCIMServerCredentialRequest
 //
@@ -820,7 +828,7 @@ func (client *Client) CreateSCIMServerCredential(request *CreateSCIMServerCreden
 
 // Summary:
 //
-// Creates a user by calling CreateUser.
+// Creates a user.
 //
 // @param request - CreateUserRequest
 //
@@ -896,7 +904,7 @@ func (client *Client) CreateUserWithOptions(request *CreateUserRequest, runtime 
 
 // Summary:
 //
-// Creates a user by calling CreateUser.
+// Creates a user.
 //
 // @param request - CreateUserRequest
 //
@@ -918,7 +926,7 @@ func (client *Client) CreateUser(request *CreateUserRequest) (_result *CreateUse
 //
 // Description:
 //
-// You can create a Resource Access Management (RAM) user synchronization to synchronously create a Resource Access Management (RAM) user that has the same name as a CloudSSO user in a destination account in a resource directory. You can then use the Resource Access Management (RAM) user to access resources in the account.
+// You can create a Resource Access Management (RAM) user synchronization to synchronously create a Resource Access Management (RAM) user that has the same name as a CloudSSO user in the destination account in a resource directory, and then use the Resource Access Management (RAM) user to access resources in the account.
 //
 // @param request - CreateUserProvisioningRequest
 //
@@ -994,7 +1002,7 @@ func (client *Client) CreateUserProvisioningWithOptions(request *CreateUserProvi
 //
 // Description:
 //
-// You can create a Resource Access Management (RAM) user synchronization to synchronously create a Resource Access Management (RAM) user that has the same name as a CloudSSO user in a destination account in a resource directory. You can then use the Resource Access Management (RAM) user to access resources in the account.
+// You can create a Resource Access Management (RAM) user synchronization to synchronously create a Resource Access Management (RAM) user that has the same name as a CloudSSO user in the destination account in a resource directory, and then use the Resource Access Management (RAM) user to access resources in the account.
 //
 // @param request - CreateUserProvisioningRequest
 //
@@ -1016,9 +1024,9 @@ func (client *Client) CreateUserProvisioning(request *CreateUserProvisioningRequ
 //
 // Description:
 //
-// This API operation is asynchronous. You can use the `TaskId` returned in the response to call [GetTask](https://help.aliyun.com/document_detail/340670.html) to query the task execution status.
+// This API operation is asynchronous. You can use the `TaskId` parameter in the response to invoke [GetTask](https://help.aliyun.com/document_detail/340670.html) to query the node execute status.
 //
-// This topic provides an example of removing the authorization for the CloudSSO user `u-00q8wbq42wiltcrk****` to use the access configuration `ac-00jhtfl8thteu6uj****` on the account in a resource directory `114240524784****`.
+// This topic provides an example on how to remove the authorization that allows the CloudSSO user u-00q8wbq42wiltcrk***	- to use the access configuration ac-00jhtfl8thteu6uj***	- on the account in a resource directory 114240524784****.
 //
 // @param request - DeleteAccessAssignmentRequest
 //
@@ -1094,9 +1102,9 @@ func (client *Client) DeleteAccessAssignmentWithOptions(request *DeleteAccessAss
 //
 // Description:
 //
-// This API operation is asynchronous. You can use the `TaskId` returned in the response to call [GetTask](https://help.aliyun.com/document_detail/340670.html) to query the task execution status.
+// This API operation is asynchronous. You can use the `TaskId` parameter in the response to invoke [GetTask](https://help.aliyun.com/document_detail/340670.html) to query the node execute status.
 //
-// This topic provides an example of removing the authorization for the CloudSSO user `u-00q8wbq42wiltcrk****` to use the access configuration `ac-00jhtfl8thteu6uj****` on the account in a resource directory `114240524784****`.
+// This topic provides an example on how to remove the authorization that allows the CloudSSO user u-00q8wbq42wiltcrk***	- to use the access configuration ac-00jhtfl8thteu6uj***	- on the account in a resource directory 114240524784****.
 //
 // @param request - DeleteAccessAssignmentRequest
 //
@@ -1316,11 +1324,11 @@ func (client *Client) DeleteDirectory(request *DeleteDirectoryRequest) (_result 
 //
 // ### Before you begin
 //
-// Before you delete a user group, make sure that the user group is not associated with the following resources. Otherwise, the deletion failed.
+// Before you delete a user group, ensure that the user group is not associated with the following resources. Otherwise, the deletion will be failed.
 //
 // - Users: You must remove users from the user group. For more information, see [RemoveUserFromGroup](https://help.aliyun.com/document_detail/335116.html).
 //
-// - Authorization: You must remove the authorization of the user group on the account in a resource directory. For more information, see [DeleteAccessAssignment](https://help.aliyun.com/document_detail/338350.html).
+// - Authorization: You must remove the authorization of the user group on an account in a resource directory. For more information, see [DeleteAccessAssignment](https://help.aliyun.com/document_detail/338350.html).
 //
 // ### Usage notes
 //
@@ -1380,11 +1388,11 @@ func (client *Client) DeleteGroupWithOptions(request *DeleteGroupRequest, runtim
 //
 // ### Before you begin
 //
-// Before you delete a user group, make sure that the user group is not associated with the following resources. Otherwise, the deletion failed.
+// Before you delete a user group, ensure that the user group is not associated with the following resources. Otherwise, the deletion will be failed.
 //
 // - Users: You must remove users from the user group. For more information, see [RemoveUserFromGroup](https://help.aliyun.com/document_detail/335116.html).
 //
-// - Authorization: You must remove the authorization of the user group on the account in a resource directory. For more information, see [DeleteAccessAssignment](https://help.aliyun.com/document_detail/338350.html).
+// - Authorization: You must remove the authorization of the user group on an account in a resource directory. For more information, see [DeleteAccessAssignment](https://help.aliyun.com/document_detail/338350.html).
 //
 // ### Usage notes
 //
@@ -1559,6 +1567,96 @@ func (client *Client) DeleteSCIMServerCredential(request *DeleteSCIMServerCreden
 	runtime := &dara.RuntimeOptions{}
 	_result = &DeleteSCIMServerCredentialResponse{}
 	_body, _err := client.DeleteSCIMServerCredentialWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Deletes the security information of a CloudSSO user.
+//
+// Description:
+//
+// CloudSSO administrators can call this operation to delete the security information bound to a specified CloudSSO user. Currently, only security email addresses are supported.
+//
+// > - After the deletion, the user is no longer associated with the original security email address, and any previously unconsumed verification links and password reset links also become invalid.
+//
+// > - If the user is not currently bound to a security email address, calling this operation directly returns a success response.
+//
+// This topic provides an example of deleting the security email address of the user `u-00q8wbq42wiltcrk****` in the directory `d-00fc2p61****`.
+//
+// @param request - DeleteSecurityInfoRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteSecurityInfoResponse
+func (client *Client) DeleteSecurityInfoWithOptions(request *DeleteSecurityInfoRequest, runtime *dara.RuntimeOptions) (_result *DeleteSecurityInfoResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DirectoryId) {
+		query["DirectoryId"] = request.DirectoryId
+	}
+
+	if !dara.IsNil(request.UserId) {
+		query["UserId"] = request.UserId
+	}
+
+	if !dara.IsNil(request.VerifyType) {
+		query["VerifyType"] = request.VerifyType
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteSecurityInfo"),
+		Version:     dara.String("2021-05-15"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteSecurityInfoResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Deletes the security information of a CloudSSO user.
+//
+// Description:
+//
+// CloudSSO administrators can call this operation to delete the security information bound to a specified CloudSSO user. Currently, only security email addresses are supported.
+//
+// > - After the deletion, the user is no longer associated with the original security email address, and any previously unconsumed verification links and password reset links also become invalid.
+//
+// > - If the user is not currently bound to a security email address, calling this operation directly returns a success response.
+//
+// This topic provides an example of deleting the security email address of the user `u-00q8wbq42wiltcrk****` in the directory `d-00fc2p61****`.
+//
+// @param request - DeleteSecurityInfoRequest
+//
+// @return DeleteSecurityInfoResponse
+func (client *Client) DeleteSecurityInfo(request *DeleteSecurityInfoRequest) (_result *DeleteSecurityInfoResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &DeleteSecurityInfoResponse{}
+	_body, _err := client.DeleteSecurityInfoWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -1902,6 +2000,16 @@ func (client *Client) DeprovisionAccessConfiguration(request *DeprovisionAccessC
 //
 // Disables the delegated administrator account of CloudSSO.
 //
+// Description:
+//
+// 禁用云SSO委派管理员账号。禁用后，该账号不能再管理云SSO；您可以随时重新启用。
+//
+// ## 前提条件
+//
+// - 目标账号必须是资源目录的成员账号，管理账号本身不能作为委派管理员账号。
+//
+// - 该成员账号已由资源目录管理账号注册为云SSO委派管理员（可信服务标识为`cloudsso.aliyuncs.com`），并已通过EnableDelegateAccount启用。
+//
 // @param request - DisableDelegateAccountRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -1945,6 +2053,16 @@ func (client *Client) DisableDelegateAccountWithOptions(request *DisableDelegate
 // Summary:
 //
 // Disables the delegated administrator account of CloudSSO.
+//
+// Description:
+//
+// 禁用云SSO委派管理员账号。禁用后，该账号不能再管理云SSO；您可以随时重新启用。
+//
+// ## 前提条件
+//
+// - 目标账号必须是资源目录的成员账号，管理账号本身不能作为委派管理员账号。
+//
+// - 该成员账号已由资源目录管理账号注册为云SSO委派管理员（可信服务标识为`cloudsso.aliyuncs.com`），并已通过EnableDelegateAccount启用。
 //
 // @param request - DisableDelegateAccountRequest
 //
@@ -3051,6 +3169,158 @@ func (client *Client) GetSCIMSynchronizationStatus(request *GetSCIMSynchronizati
 	runtime := &dara.RuntimeOptions{}
 	_result = &GetSCIMSynchronizationStatusResponse{}
 	_body, _err := client.GetSCIMSynchronizationStatusWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the security information of a specified CloudSSO user.
+//
+// Description:
+//
+// CloudSSO administrators can call this operation to query the security information (currently only security email addresses are supported) bound to a specified CloudSSO user and its verification status.
+//
+// > If the user has not configured a security email address, the response does not include the `SecurityEmail` field.
+//
+// This topic provides an example to query the security information of the user `u-00q8wbq42wiltcrk****` in the `d-00fc2p61****` directory.
+//
+// @param request - GetSecurityInfoRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetSecurityInfoResponse
+func (client *Client) GetSecurityInfoWithOptions(request *GetSecurityInfoRequest, runtime *dara.RuntimeOptions) (_result *GetSecurityInfoResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DirectoryId) {
+		query["DirectoryId"] = request.DirectoryId
+	}
+
+	if !dara.IsNil(request.UserId) {
+		query["UserId"] = request.UserId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetSecurityInfo"),
+		Version:     dara.String("2021-05-15"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetSecurityInfoResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the security information of a specified CloudSSO user.
+//
+// Description:
+//
+// CloudSSO administrators can call this operation to query the security information (currently only security email addresses are supported) bound to a specified CloudSSO user and its verification status.
+//
+// > If the user has not configured a security email address, the response does not include the `SecurityEmail` field.
+//
+// This topic provides an example to query the security information of the user `u-00q8wbq42wiltcrk****` in the `d-00fc2p61****` directory.
+//
+// @param request - GetSecurityInfoRequest
+//
+// @return GetSecurityInfoResponse
+func (client *Client) GetSecurityInfo(request *GetSecurityInfoRequest) (_result *GetSecurityInfoResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &GetSecurityInfoResponse{}
+	_body, _err := client.GetSecurityInfoWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the security information management preferences of a CloudSSO directory.
+//
+// Description:
+//
+// CloudSSO administrators can call this operation to query the security information management preferences of a specified CloudSSO directory and check whether CloudSSO users in the directory are allowed to manage their security email addresses in the CloudSSO user portal. This topic provides an example to query the security information management preferences of the `d-00fc2p61****` directory.
+//
+// @param request - GetSecurityInfoPreferenceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetSecurityInfoPreferenceResponse
+func (client *Client) GetSecurityInfoPreferenceWithOptions(request *GetSecurityInfoPreferenceRequest, runtime *dara.RuntimeOptions) (_result *GetSecurityInfoPreferenceResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DirectoryId) {
+		query["DirectoryId"] = request.DirectoryId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetSecurityInfoPreference"),
+		Version:     dara.String("2021-05-15"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetSecurityInfoPreferenceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the security information management preferences of a CloudSSO directory.
+//
+// Description:
+//
+// CloudSSO administrators can call this operation to query the security information management preferences of a specified CloudSSO directory and check whether CloudSSO users in the directory are allowed to manage their security email addresses in the CloudSSO user portal. This topic provides an example to query the security information management preferences of the `d-00fc2p61****` directory.
+//
+// @param request - GetSecurityInfoPreferenceRequest
+//
+// @return GetSecurityInfoPreferenceResponse
+func (client *Client) GetSecurityInfoPreference(request *GetSecurityInfoPreferenceRequest) (_result *GetSecurityInfoPreferenceResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &GetSecurityInfoPreferenceResponse{}
+	_body, _err := client.GetSecurityInfoPreferenceWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -4680,7 +4950,7 @@ func (client *Client) ListSCIMServerCredentials(request *ListSCIMServerCredentia
 
 // Summary:
 //
-// Queries the relationships between resources and tags.
+// Queries the associations between resources and tags.
 //
 // @param request - ListTagResourcesRequest
 //
@@ -4740,7 +5010,7 @@ func (client *Client) ListTagResourcesWithOptions(request *ListTagResourcesReque
 
 // Summary:
 //
-// Queries the relationships between resources and tags.
+// Queries the associations between resources and tags.
 //
 // @param request - ListTagResourcesRequest
 //
@@ -5450,11 +5720,11 @@ func (client *Client) RemoveUserFromGroup(request *RemoveUserFromGroupRequest) (
 //
 // Description:
 //
-// A CloudSSO administrator can reset the password of a user when the user forgets the password, the password expires, or the password poses a security risk.
+// When a user forgets their password, the password expires, or the password poses a security risk, a CloudSSO administrator can reset the password for the user.
 //
 // > You cannot reset user passwords after single sign-on (SSO) is enabled.
 //
-// This topic provides an example of resetting the password of the user u-00q8wbq42wiltcrk***	- by using a system-generated password.
+// This topic provides an example of resetting the password of the user `u-00q8wbq42wiltcrk****` by using a system-generated password.
 //
 // @param request - ResetUserPasswordRequest
 //
@@ -5483,6 +5753,10 @@ func (client *Client) ResetUserPasswordWithOptions(request *ResetUserPasswordReq
 
 	if !dara.IsNil(request.RequirePasswordResetForNextLogin) {
 		query["RequirePasswordResetForNextLogin"] = request.RequirePasswordResetForNextLogin
+	}
+
+	if !dara.IsNil(request.ResetMethod) {
+		query["ResetMethod"] = request.ResetMethod
 	}
 
 	if !dara.IsNil(request.UserId) {
@@ -5518,11 +5792,11 @@ func (client *Client) ResetUserPasswordWithOptions(request *ResetUserPasswordReq
 //
 // Description:
 //
-// A CloudSSO administrator can reset the password of a user when the user forgets the password, the password expires, or the password poses a security risk.
+// When a user forgets their password, the password expires, or the password poses a security risk, a CloudSSO administrator can reset the password for the user.
 //
 // > You cannot reset user passwords after single sign-on (SSO) is enabled.
 //
-// This topic provides an example of resetting the password of the user u-00q8wbq42wiltcrk***	- by using a system-generated password.
+// This topic provides an example of resetting the password of the user `u-00q8wbq42wiltcrk****` by using a system-generated password.
 //
 // @param request - ResetUserPasswordRequest
 //
@@ -5601,6 +5875,100 @@ func (client *Client) RetryUserProvisioningEvent(request *RetryUserProvisioningE
 	runtime := &dara.RuntimeOptions{}
 	_result = &RetryUserProvisioningEventResponse{}
 	_body, _err := client.RetryUserProvisioningEventWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Sends a verification message to the unverified security information of a CloudSSO user.
+//
+// Description:
+//
+// CloudSSO administrators can call this operation to send a verification email to the currently unverified security information of a specified CloudSSO user. Currently, only security email addresses are supported. After the user completes verification by using the verification link in the email, the status of the security email address changes to verified (`active`).
+//
+// > - Before you call this operation, you must call `SetSecurityInfo` to set a security email address for the user, and the security email address must be in the pending verification state (`pending`). If the user does not have a security email address configured or the security email address is already verified, calling this operation returns an error.
+//
+// > - The verification link is valid for 72 hours. Resending the verification email generates a new verification link, and the previous link automatically becomes invalid.
+//
+// > - This operation is subject to rate limits. By default, you can send a maximum of one verification email per minute and five verification emails per hour for a single user.
+//
+// This topic provides an example on how to send a verification email to the unverified security email address of the user `u-00q8wbq42wiltcrk****` in the `d-00fc2p61****` directory.
+//
+// @param request - SendVerificationMessageRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SendVerificationMessageResponse
+func (client *Client) SendVerificationMessageWithOptions(request *SendVerificationMessageRequest, runtime *dara.RuntimeOptions) (_result *SendVerificationMessageResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DirectoryId) {
+		query["DirectoryId"] = request.DirectoryId
+	}
+
+	if !dara.IsNil(request.UserId) {
+		query["UserId"] = request.UserId
+	}
+
+	if !dara.IsNil(request.VerifyType) {
+		query["VerifyType"] = request.VerifyType
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("SendVerificationMessage"),
+		Version:     dara.String("2021-05-15"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &SendVerificationMessageResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Sends a verification message to the unverified security information of a CloudSSO user.
+//
+// Description:
+//
+// CloudSSO administrators can call this operation to send a verification email to the currently unverified security information of a specified CloudSSO user. Currently, only security email addresses are supported. After the user completes verification by using the verification link in the email, the status of the security email address changes to verified (`active`).
+//
+// > - Before you call this operation, you must call `SetSecurityInfo` to set a security email address for the user, and the security email address must be in the pending verification state (`pending`). If the user does not have a security email address configured or the security email address is already verified, calling this operation returns an error.
+//
+// > - The verification link is valid for 72 hours. Resending the verification email generates a new verification link, and the previous link automatically becomes invalid.
+//
+// > - This operation is subject to rate limits. By default, you can send a maximum of one verification email per minute and five verification emails per hour for a single user.
+//
+// This topic provides an example on how to send a verification email to the unverified security email address of the user `u-00q8wbq42wiltcrk****` in the `d-00fc2p61****` directory.
+//
+// @param request - SendVerificationMessageRequest
+//
+// @return SendVerificationMessageResponse
+func (client *Client) SendVerificationMessage(request *SendVerificationMessageRequest) (_result *SendVerificationMessageResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &SendVerificationMessageResponse{}
+	_body, _err := client.SendVerificationMessageWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -6060,6 +6428,182 @@ func (client *Client) SetSCIMSynchronizationStatus(request *SetSCIMSynchronizati
 
 // Summary:
 //
+// Sets the security information for a CloudSSO user.
+//
+// Description:
+//
+// CloudSSO administrators can call this operation to set or modify the security information for a specified CloudSSO user. Currently, only security email addresses are supported.
+//
+// > - Each user can be bound to only one security email address. If the user is already bound to another security email address, calling this operation replaces it with the new email address, resets the verification status to pending (`pending`), and invalidates any previously unconsumed verification and password reset links. If the provided email address is the same as the currently bound one (case-insensitive), the operation rejects the duplicate binding.
+//
+// > - Calling this operation does not automatically send a verification email. After the security email address is set, it remains in the pending verification state (`pending`). You must call `SendVerificationMessage` to send a verification email, and the email address takes effect (`active`) only after the user completes the verification.
+//
+// This topic provides an example on how to set the security email address `Alice@example.com` for the user `u-00q8wbq42wiltcrk****` in the directory `d-00fc2p61****`.
+//
+// @param request - SetSecurityInfoRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SetSecurityInfoResponse
+func (client *Client) SetSecurityInfoWithOptions(request *SetSecurityInfoRequest, runtime *dara.RuntimeOptions) (_result *SetSecurityInfoResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DirectoryId) {
+		query["DirectoryId"] = request.DirectoryId
+	}
+
+	if !dara.IsNil(request.SecurityEmail) {
+		query["SecurityEmail"] = request.SecurityEmail
+	}
+
+	if !dara.IsNil(request.UserId) {
+		query["UserId"] = request.UserId
+	}
+
+	if !dara.IsNil(request.VerifyType) {
+		query["VerifyType"] = request.VerifyType
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("SetSecurityInfo"),
+		Version:     dara.String("2021-05-15"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &SetSecurityInfoResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Sets the security information for a CloudSSO user.
+//
+// Description:
+//
+// CloudSSO administrators can call this operation to set or modify the security information for a specified CloudSSO user. Currently, only security email addresses are supported.
+//
+// > - Each user can be bound to only one security email address. If the user is already bound to another security email address, calling this operation replaces it with the new email address, resets the verification status to pending (`pending`), and invalidates any previously unconsumed verification and password reset links. If the provided email address is the same as the currently bound one (case-insensitive), the operation rejects the duplicate binding.
+//
+// > - Calling this operation does not automatically send a verification email. After the security email address is set, it remains in the pending verification state (`pending`). You must call `SendVerificationMessage` to send a verification email, and the email address takes effect (`active`) only after the user completes the verification.
+//
+// This topic provides an example on how to set the security email address `Alice@example.com` for the user `u-00q8wbq42wiltcrk****` in the directory `d-00fc2p61****`.
+//
+// @param request - SetSecurityInfoRequest
+//
+// @return SetSecurityInfoResponse
+func (client *Client) SetSecurityInfo(request *SetSecurityInfoRequest) (_result *SetSecurityInfoResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &SetSecurityInfoResponse{}
+	_body, _err := client.SetSecurityInfoWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Sets the security information management preferences for a directory.
+//
+// Description:
+//
+// CloudSSO administrators can call this operation to set the security information management preferences for a specified directory. This controls whether CloudSSO users in the directory are allowed to manage their security email addresses in the CloudSSO user portal.
+//
+// > This configuration only controls the self-service management permissions of users in the CloudSSO user portal. It does not affect the ability of CloudSSO administrators to manage user security email addresses by using API operations.
+//
+// This topic provides an example to show how to disable the permission for users to manage their security email addresses in the `d-00fc2p61****` directory.
+//
+// @param request - SetSecurityInfoPreferenceRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return SetSecurityInfoPreferenceResponse
+func (client *Client) SetSecurityInfoPreferenceWithOptions(request *SetSecurityInfoPreferenceRequest, runtime *dara.RuntimeOptions) (_result *SetSecurityInfoPreferenceResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AllowUserManageSecurityEmail) {
+		query["AllowUserManageSecurityEmail"] = request.AllowUserManageSecurityEmail
+	}
+
+	if !dara.IsNil(request.DirectoryId) {
+		query["DirectoryId"] = request.DirectoryId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("SetSecurityInfoPreference"),
+		Version:     dara.String("2021-05-15"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &SetSecurityInfoPreferenceResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Sets the security information management preferences for a directory.
+//
+// Description:
+//
+// CloudSSO administrators can call this operation to set the security information management preferences for a specified directory. This controls whether CloudSSO users in the directory are allowed to manage their security email addresses in the CloudSSO user portal.
+//
+// > This configuration only controls the self-service management permissions of users in the CloudSSO user portal. It does not affect the ability of CloudSSO administrators to manage user security email addresses by using API operations.
+//
+// This topic provides an example to show how to disable the permission for users to manage their security email addresses in the `d-00fc2p61****` directory.
+//
+// @param request - SetSecurityInfoPreferenceRequest
+//
+// @return SetSecurityInfoPreferenceResponse
+func (client *Client) SetSecurityInfoPreference(request *SetSecurityInfoPreferenceRequest) (_result *SetSecurityInfoPreferenceResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &SetSecurityInfoPreferenceResponse{}
+	_body, _err := client.SetSecurityInfoPreferenceWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Tags resources.
 //
 // @param request - TagResourcesRequest
@@ -6134,7 +6678,7 @@ func (client *Client) TagResources(request *TagResourcesRequest) (_result *TagRe
 
 // Summary:
 //
-// Untags resources.
+// Removes tags from resources.
 //
 // @param request - UntagResourcesRequest
 //
@@ -6194,7 +6738,7 @@ func (client *Client) UntagResourcesWithOptions(request *UntagResourcesRequest, 
 
 // Summary:
 //
-// Untags resources.
+// Removes tags from resources.
 //
 // @param request - UntagResourcesRequest
 //
@@ -6796,13 +7340,13 @@ func (client *Client) UpdateSCIMServerCredentialStatus(request *UpdateSCIMServer
 
 // Summary:
 //
-// Modifies information about a user.
+// Updates user information.
 //
 // Description:
 //
-// You can modify `FirstName`, `LastName`, `DisplayName`, `Email`, and `Description` for a user. You cannot modify `UserName` for a user.
+// You can modify the `FirstName`, `LastName`, `DisplayName`, `Email`, and `Description` of a user as needed. You cannot modify the `UserName` of a user.
 //
-// > If System for Cross-domain Identity Management (SCIM) synchronization is enabled, you cannot modify information about a user that is synchronized by using SCIM.
+// > When SCIM synchronization is enabled, you cannot modify the information of SCIM-synchronized users.
 //
 // @param request - UpdateUserRequest
 //
@@ -6870,13 +7414,13 @@ func (client *Client) UpdateUserWithOptions(request *UpdateUserRequest, runtime 
 
 // Summary:
 //
-// Modifies information about a user.
+// Updates user information.
 //
 // Description:
 //
-// You can modify `FirstName`, `LastName`, `DisplayName`, `Email`, and `Description` for a user. You cannot modify `UserName` for a user.
+// You can modify the `FirstName`, `LastName`, `DisplayName`, `Email`, and `Description` of a user as needed. You cannot modify the `UserName` of a user.
 //
-// > If System for Cross-domain Identity Management (SCIM) synchronization is enabled, you cannot modify information about a user that is synchronized by using SCIM.
+// > When SCIM synchronization is enabled, you cannot modify the information of SCIM-synchronized users.
 //
 // @param request - UpdateUserRequest
 //
@@ -6980,7 +7524,7 @@ func (client *Client) UpdateUserMFAAuthenticationSettings(request *UpdateUserMFA
 
 // Summary:
 //
-// Modifies a Resource Access Management (RAM) user provisioning.
+// Invokes UpdateUserProvisioning to modify a Resource Access Management (RAM) user synchronization.
 //
 // @param request - UpdateUserProvisioningRequest
 //
@@ -7040,7 +7584,7 @@ func (client *Client) UpdateUserProvisioningWithOptions(request *UpdateUserProvi
 
 // Summary:
 //
-// Modifies a Resource Access Management (RAM) user provisioning.
+// Invokes UpdateUserProvisioning to modify a Resource Access Management (RAM) user synchronization.
 //
 // @param request - UpdateUserProvisioningRequest
 //

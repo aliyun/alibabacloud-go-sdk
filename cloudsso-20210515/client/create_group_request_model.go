@@ -18,7 +18,7 @@ type iCreateGroupRequest interface {
 }
 
 type CreateGroupRequest struct {
-	// The description of the user group.
+	// The description of the group.
 	//
 	// Length: The description can be up to 1024 characters in length.
 	//
@@ -32,7 +32,7 @@ type CreateGroupRequest struct {
 	//
 	// d-00fc2p61****
 	DirectoryId *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
-	// The name of the user group.
+	// The name of the group.
 	//
 	// Format: The name can contain letters, digits, and the special characters `_-.`.
 	//

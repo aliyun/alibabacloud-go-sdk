@@ -36,19 +36,19 @@ type AddPermissionPolicyToAccessConfigurationRequest struct {
 	DirectoryId *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
 	// The content of the inline policy.
 	//
-	// The maximum length is 4,096 characters.
+	// Length: up to 4,096 characters.
 	//
-	// If PermissionPolicyType is set to Inline, this parameter is required. For more information about the syntax and structure of access policies, see [Access policy syntax and structure](https://help.aliyun.com/document_detail/93739.html).
+	// This parameter is required when PermissionPolicyType is set to Inline. For more information about the syntax and structure of an access policy, see [Access policy syntax and structure](https://help.aliyun.com/document_detail/93739.html).
 	//
 	// example:
 	//
 	// {"Statement": [{"Action": "*","Effect": "Allow","Resource": "*"}],"Version": "1"}
 	InlinePolicyDocument *string `json:"InlinePolicyDocument,omitempty" xml:"InlinePolicyDocument,omitempty"`
-	// The name of the access policy.
+	// The name of the access policy. Details:
 	//
-	// - If PermissionPolicyType is set to System, this parameter specifies the name of the system policy. Because RAM system policies are reused, you must obtain the system policy name from RAM.
+	// - If PermissionPolicyType is set to System, this parameter specifies the name of the system policy. Because RAM system policies are reused, obtain the system policy name from RAM.
 	//
-	// - If PermissionPolicyType is set to Inline, this parameter specifies the name of the inline policy. You can customize the name. The name can be up to 32 characters in length.
+	// - If PermissionPolicyType is set to Inline, this parameter specifies the name of the inline policy. You can customize this parameter. The name can be up to 32 characters in length.
 	//
 	// example:
 	//
@@ -56,9 +56,9 @@ type AddPermissionPolicyToAccessConfigurationRequest struct {
 	PermissionPolicyName *string `json:"PermissionPolicyName,omitempty" xml:"PermissionPolicyName,omitempty"`
 	// The type of the access policy. Valid values:
 	//
-	// - System: system policy. Reuses the system policies of Resource Access Management (RAM).
+	// - System: system policy. System policies from Resource Access Management (RAM) are reused.
 	//
-	// - Inline: inline policy. A custom policy written based on the syntax and structure of RAM policies.
+	// - Inline: inline policy. A custom policy written based on the syntax and structure of RAM access policies.
 	//
 	// example:
 	//

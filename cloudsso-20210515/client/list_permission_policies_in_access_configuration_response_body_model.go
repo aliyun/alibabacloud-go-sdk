@@ -95,7 +95,7 @@ type ListPermissionPoliciesInAccessConfigurationResponseBodyPermissionPolicies s
 	//
 	// example:
 	//
-	// {\\"Statement\\": [{\\"Action\\": \\"*\\",\\"Effect\\": \\"Allow\\",\\"Resource\\": \\"*\\"}],\\"Version\\": \\"1\\"}
+	// {\"Statement\": [{\"Action\": \"*\",\"Effect\": \"Allow\",\"Resource\": \"*\"}],\"Version\": \"1\"}
 	PermissionPolicyDocument *string `json:"PermissionPolicyDocument,omitempty" xml:"PermissionPolicyDocument,omitempty"`
 	// The name of the policy.
 	//

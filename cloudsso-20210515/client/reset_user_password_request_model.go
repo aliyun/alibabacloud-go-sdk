@@ -17,6 +17,8 @@ type iResetUserPasswordRequest interface {
 	GetPassword() *string
 	SetRequirePasswordResetForNextLogin(v bool) *ResetUserPasswordRequest
 	GetRequirePasswordResetForNextLogin() *bool
+	SetResetMethod(v string) *ResetUserPasswordRequest
+	GetResetMethod() *string
 	SetUserId(v string) *ResetUserPasswordRequest
 	GetUserId() *string
 }
@@ -28,11 +30,11 @@ type ResetUserPasswordRequest struct {
 	//
 	// d-00fc2p61****
 	DirectoryId *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
-	// Specifies whether to automatically generate a password. Valid values:
+	// Specifies whether to automatically generate a password. This parameter is valid only when the reset method is DirectPassword. Valid values:
 	//
-	// - True: The password is automatically generated.
+	// - True: Automatically generates a password.
 	//
-	// - False (default): The password is manually specified.
+	// - False (default): Manually sets a password.
 	//
 	// example:
 	//
@@ -44,13 +46,13 @@ type ResetUserPasswordRequest struct {
 	//
 	// Length: 8 to 32 characters.
 	//
-	// > If GenerateRandomPassword is set to False, you must specify Password.
+	// > If `GenerateRandomPassword` is set to `False`, you must specify `Password`.
 	//
 	// example:
 	//
 	// uc)XK$?ictf72CKFDy9vtWaFmISl****
 	Password *string `json:"Password,omitempty" xml:"Password,omitempty"`
-	// Specifies whether the user must reset the password upon the next logon. Valid values:
+	// Specifies whether the user must reset the password upon next logon. Valid values:
 	//
 	// - True: The user must reset the password.
 	//
@@ -60,6 +62,16 @@ type ResetUserPasswordRequest struct {
 	//
 	// False
 	RequirePasswordResetForNextLogin *bool `json:"RequirePasswordResetForNextLogin,omitempty" xml:"RequirePasswordResetForNextLogin,omitempty"`
+	// The reset method. Valid values:
+	//
+	// - DirectPassword (default): Sets the password directly.
+	//
+	// - Email: Sends a password reset email.
+	//
+	// example:
+	//
+	// DirectPassword
+	ResetMethod *string `json:"ResetMethod,omitempty" xml:"ResetMethod,omitempty"`
 	// The user ID.
 	//
 	// example:
@@ -92,6 +104,10 @@ func (s *ResetUserPasswordRequest) GetRequirePasswordResetForNextLogin() *bool {
 	return s.RequirePasswordResetForNextLogin
 }
 
+func (s *ResetUserPasswordRequest) GetResetMethod() *string {
+	return s.ResetMethod
+}
+
 func (s *ResetUserPasswordRequest) GetUserId() *string {
 	return s.UserId
 }
@@ -113,6 +129,11 @@ func (s *ResetUserPasswordRequest) SetPassword(v string) *ResetUserPasswordReque
 
 func (s *ResetUserPasswordRequest) SetRequirePasswordResetForNextLogin(v bool) *ResetUserPasswordRequest {
 	s.RequirePasswordResetForNextLogin = &v
+	return s
+}
+
+func (s *ResetUserPasswordRequest) SetResetMethod(v string) *ResetUserPasswordRequest {
+	s.ResetMethod = &v
 	return s
 }
 

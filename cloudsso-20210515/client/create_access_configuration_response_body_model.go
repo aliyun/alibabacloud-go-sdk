@@ -88,7 +88,7 @@ type CreateAccessConfigurationResponseBodyAccessConfiguration struct {
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The initial access page.
 	//
-	// The page address that a CloudSSO user initially accesses when using the access configuration to access an account in a resource directory.
+	// The URL of the initial page that is accessed when a CloudSSO user accesses an account in a resource directory by using the access configuration.
 	//
 	// example:
 	//
@@ -96,7 +96,7 @@ type CreateAccessConfigurationResponseBodyAccessConfiguration struct {
 	RelayState *string `json:"RelayState,omitempty" xml:"RelayState,omitempty"`
 	// The session duration.
 	//
-	// The maximum duration of a session when a CloudSSO user uses the access configuration to access an account in a resource directory.
+	// The maximum duration of a session when a CloudSSO user accesses an account in a resource directory by using the access configuration.
 	//
 	// Unit: seconds.
 	//
@@ -104,11 +104,11 @@ type CreateAccessConfigurationResponseBodyAccessConfiguration struct {
 	//
 	// 3600
 	SessionDuration *int32 `json:"SessionDuration,omitempty" xml:"SessionDuration,omitempty"`
-	// The status notification information.
+	// The status notifications.
 	StatusNotifications []*string `json:"StatusNotifications,omitempty" xml:"StatusNotifications,omitempty" type:"Repeated"`
-	// The list of tags.
+	// The tags.
 	Tags []*CreateAccessConfigurationResponseBodyAccessConfigurationTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
-	// The time when the access configuration was last modified.
+	// The time when the access configuration was updated.
 	//
 	// example:
 	//

@@ -94,9 +94,9 @@ type CreateAccessAssignmentResponseBodyTask struct {
 	PrincipalName *string `json:"PrincipalName,omitempty" xml:"PrincipalName,omitempty"`
 	// The CloudSSO identity type. Valid values:
 	//
-	// - User: user
+	// - User: A user.
 	//
-	// - Group: group
+	// - Group: A group.
 	//
 	// example:
 	//
@@ -106,7 +106,7 @@ type CreateAccessAssignmentResponseBodyTask struct {
 	//
 	// - InProgress: The task is in progress.
 	//
-	// - Success: The task succeeded.
+	// - Success: The task is successful.
 	//
 	// - Failed: The task failed.
 	//
@@ -130,7 +130,7 @@ type CreateAccessAssignmentResponseBodyTask struct {
 	TargetPath *string `json:"TargetPath,omitempty" xml:"TargetPath,omitempty"`
 	// The path name of the task target in the resource directory.
 	TargetPathName *string `json:"TargetPathName,omitempty" xml:"TargetPathName,omitempty"`
-	// The target type of the task. Valid value: RD-Account, which indicates that the task target is an account in a resource directory.
+	// The target type of the task. Valid values: RD-Account: The task target is an account in a resource directory.
 	//
 	// example:
 	//
@@ -142,7 +142,7 @@ type CreateAccessAssignmentResponseBodyTask struct {
 	//
 	// t-sh6tceylhvgejpip****
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	// The task type. Valid value: CreateAccessAssignment, which indicates an authorization task for an account in a resource directory.
+	// The task type. Valid values: CreateAccessAssignment: The task is an authorization task for an account in a resource directory.
 	//
 	// example:
 	//

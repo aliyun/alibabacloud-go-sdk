@@ -23,6 +23,10 @@ type CreateUserResponseBody struct {
 	// F6F90F3D-4502-5877-B80B-97476F6AE2CC
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The user information.
+	//
+	// example:
+	//
+	// {"UserId":"u-00bikzkuzbb58luh****","UserName":"AliceLee@example.onmicrosoft.com","Status":"Enabled"}
 	User *CreateUserResponseBodyUser `json:"User,omitempty" xml:"User,omitempty" type:"Struct"`
 }
 
@@ -62,7 +66,7 @@ func (s *CreateUserResponseBody) Validate() error {
 }
 
 type CreateUserResponseBodyUser struct {
-	// The time when the user was created (UTC).
+	// The time when the user was created. The time is displayed in UTC.
 	//
 	// example:
 	//
@@ -98,7 +102,7 @@ type CreateUserResponseBodyUser struct {
 	//
 	// Lee
 	LastName *string `json:"LastName,omitempty" xml:"LastName,omitempty"`
-	// The type of the user. Valid values:
+	// The provisioning type of the user. Valid values:
 	//
 	// - Manual: Manually created.
 	//
@@ -119,8 +123,12 @@ type CreateUserResponseBodyUser struct {
 	// Enabled
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	// The list of tags.
+	//
+	// example:
+	//
+	// [{"Key":"Project","Value":"Test"}]
 	Tags []*CreateUserResponseBodyUserTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
-	// The time when the user was last modified (UTC).
+	// The time when the user was updated. The time is displayed in UTC.
 	//
 	// example:
 	//

@@ -22,7 +22,7 @@ type UpdateUserResponseBody struct {
 	//
 	// F44F02EC-70D1-5E51-8E8E-FA9AC4EF952A
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The information about the user.
+	// The user information.
 	User *UpdateUserResponseBodyUser `json:"User,omitempty" xml:"User,omitempty" type:"Struct"`
 }
 
@@ -62,7 +62,7 @@ func (s *UpdateUserResponseBody) Validate() error {
 }
 
 type UpdateUserResponseBodyUser struct {
-	// The time when the user was created. The value is displayed in UTC.
+	// The time when the user was created (UTC).
 	//
 	// example:
 	//
@@ -98,11 +98,11 @@ type UpdateUserResponseBodyUser struct {
 	//
 	// Lee
 	LastName *string `json:"LastName,omitempty" xml:"LastName,omitempty"`
-	// The type of the user. Valid values:
+	// The provisioning type of the user. Valid values:
 	//
-	// - Manual: The user is manually created.
+	// - Manual: Manually created.
 	//
-	// - Synchronized: The user is synchronized from an external identity provider (IdP).
+	// - Synchronized: Synchronized from an external source.
 	//
 	// example:
 	//
@@ -110,27 +110,27 @@ type UpdateUserResponseBodyUser struct {
 	ProvisionType *string `json:"ProvisionType,omitempty" xml:"ProvisionType,omitempty"`
 	// The status of the user. Valid values:
 	//
-	// - Enabled: The logon of the user is enabled.
+	// - Enabled: Enabled.
 	//
-	// - Disabled: The logon of the user is disabled.
+	// - Disabled: Disabled.
 	//
 	// example:
 	//
 	// Enabled
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The time when the information about the user was modified. The value is displayed in UTC.
+	// The time when the user was updated (UTC).
 	//
 	// example:
 	//
 	// 2021-10-26T07:32:32Z
 	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
-	// The ID of the user.
+	// The user ID.
 	//
 	// example:
 	//
 	// u-00q8wbq42wiltcrk****
 	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
-	// The username of the user.
+	// The username.
 	//
 	// example:
 	//

@@ -38,19 +38,19 @@ type ListTagResourcesRequest struct {
 	//
 	// >
 	//
-	// > - Supported resource types include users and access configurations:
+	// > - The resource type supports users and access configurations:
 	//
-	// > - - If the resource type is user, specify the user ID.
+	// > - - If the resource type is user, enter the user ID.
 	//
-	// > - - If the resource type is access configuration, specify the access configuration ID.
+	// > - - If the resource type is access configuration, enter the access configuration ID.
 	//
 	// <notice>If the DirectoryId parameter is not specified, you must add the prefix "${DirectoryId}_" to the resource ID.</notice>
 	ResourceId []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
-	// The resource type. Valid values:
+	// The resource type. Users and access configurations are supported.
 	//
-	// - user: The resource is a user.
+	// - Set the value to user for users.
 	//
-	// - accessConfiguration: The resource is an access configuration.
+	// - Set the value to accessConfiguration for access configurations.
 	//
 	// This parameter is required.
 	//
@@ -131,7 +131,7 @@ func (s *ListTagResourcesRequest) Validate() error {
 type ListTagResourcesRequestTag struct {
 	// The tag key.
 	//
-	// > - - The tag key cannot be an empty string.
+	// > - - The value cannot be an empty string.
 	//
 	// example:
 	//

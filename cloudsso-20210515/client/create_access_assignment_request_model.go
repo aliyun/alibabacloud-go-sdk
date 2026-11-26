@@ -46,9 +46,9 @@ type CreateAccessAssignmentRequest struct {
 	OriginTargetId *string `json:"OriginTargetId,omitempty" xml:"OriginTargetId,omitempty"`
 	// The CloudSSO identity ID. Details:
 	//
-	// - If PrincipalType is set to User, PrincipalId is the CloudSSO user ID.
+	// - If `PrincipalType` is set to `User`, `PrincipalId` is the CloudSSO user ID.
 	//
-	// - If PrincipalType is set to Group, PrincipalId is the CloudSSO group ID.
+	// - If `PrincipalType` is set to `Group`, `PrincipalId` is the CloudSSO group ID.
 	//
 	// example:
 	//
@@ -56,9 +56,9 @@ type CreateAccessAssignmentRequest struct {
 	PrincipalId *string `json:"PrincipalId,omitempty" xml:"PrincipalId,omitempty"`
 	// The CloudSSO identity type. Valid values:
 	//
-	// - User: user
+	// - User: A user.
 	//
-	// - Group: group
+	// - Group: A group.
 	//
 	// example:
 	//
@@ -70,7 +70,7 @@ type CreateAccessAssignmentRequest struct {
 	//
 	// 114240524784****
 	TargetId *string `json:"TargetId,omitempty" xml:"TargetId,omitempty"`
-	// The target type of the task. Valid value: RD-Account, which indicates that the task target is an account in a resource directory.
+	// The target type of the task. Valid values: RD-Account: The task target is an account in a resource directory.
 	//
 	// example:
 	//

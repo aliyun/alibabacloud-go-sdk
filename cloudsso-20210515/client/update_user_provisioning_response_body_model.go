@@ -22,7 +22,7 @@ type UpdateUserProvisioningResponseBody struct {
 	//
 	// F6F90F3D-4502-5877-B80B-97476F6AE2CC
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The information about the RAM user provisioning.
+	// The Resource Access Management (RAM) user synchronization information.
 	UserProvisioning *UpdateUserProvisioningResponseBodyUserProvisioning `json:"UserProvisioning,omitempty" xml:"UserProvisioning,omitempty" type:"Struct"`
 }
 
@@ -62,117 +62,117 @@ func (s *UpdateUserProvisioningResponseBody) Validate() error {
 }
 
 type UpdateUserProvisioningResponseBodyUserProvisioning struct {
-	// The creation time.
+	// The creation time. The time is displayed in UTC and follows the RFC 3339 standard in the YYYY-MM-DDTHH:mm:ssZ format.
 	//
 	// example:
 	//
 	// 2022-11-28T03:55:42Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The deletion policy. The policy is used to manage synchronized users when you delete the RAM user provisioning. Valid values:
+	// The deletion policy. This policy specifies how to handle synchronized Resource Access Management (RAM) users when the Resource Access Management (RAM) user synchronization is deleted. Valid values:
 	//
-	// - Delete: When you delete the RAM user provisioning, the system deletes the synchronized users.
+	// - Delete: Delete the users. When the Resource Access Management (RAM) user synchronization is deleted, the system deletes the Resource Access Management (RAM) users that have been synchronized from CloudSSO to Resource Access Management (RAM).
 	//
-	// - Keep: When you delete the RAM user provisioning, the system retains the synchronized users.
+	// - Keep: Keep the users. When the Resource Access Management (RAM) user synchronization is deleted, the system retains the Resource Access Management (RAM) users that have been synchronized from CloudSSO to Resource Access Management (RAM).
 	//
 	// example:
 	//
 	// Delete
 	DeletionStrategy *string `json:"DeletionStrategy,omitempty" xml:"DeletionStrategy,omitempty"`
-	// The description for the RAM user provisioning.
+	// The description of the Resource Access Management (RAM) user synchronization.
 	//
 	// example:
 	//
 	// This is a user provisioning.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The ID of the resource directory.
+	// The directory ID.
 	//
 	// example:
 	//
 	// d-003qew84****
 	DirectoryId *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
-	// The conflict handling policy. The policy is used when a RAM user has the same username as the CloudSSO user who is synchronized to RAM. Valid values:
+	// The duplication strategy. This strategy specifies how to handle name conflicts when a CloudSSO user is synchronized to Resource Access Management (RAM) user with the same name already exists. Valid values:
 	//
-	// - KeepBoth: When a CloudSSO user is synchronized to RAM, if a RAM user who has the same username as the CloudSSO user exists, the system creates a RAM user whose username is the username of the CloudSSO user plus the suffix `_sso`.
+	// - KeepBoth: Keep both users. When a CloudSSO user is synchronized to Resource Access Management (RAM) user with the same name already exists, the system appends the `_sso` suffix to the CloudSSO username and attempts to create a RAM user with the new username.
 	//
-	// - TakeOver: When a CloudSSO user is synchronized to RAM, if a RAM user who has the same username as the CloudSSO user exists, the system replaces the RAM user with the CloudSSO user.
+	// - TakeOver: Replace the existing user. When a CloudSSO user is synchronized to Resource Access Management (RAM) user with the same name already exists, the system directly replaces the existing RAM user with the synchronized CloudSSO user.
 	//
 	// example:
 	//
 	// KeepBoth
 	DuplicationStrategy *string `json:"DuplicationStrategy,omitempty" xml:"DuplicationStrategy,omitempty"`
-	// The ID of the Alibaba Cloud account to which the resource directory belongs.
+	// The ID of the Alibaba Cloud account to which the directory belongs.
 	//
 	// example:
 	//
 	// 164987310*****
 	OwnerPk *string `json:"OwnerPk,omitempty" xml:"OwnerPk,omitempty"`
-	// The identity ID of the RAM user provisioning. Valid values:
+	// The ID of the principal for the Resource Access Management (RAM) user synchronization. Valid values:
 	//
-	// - If `Group` is returned for the `PrincipalType` parameter, the value of this parameter is the ID of a CloudSSO user group (g-\\*\\*\\*\\*\\*\\*\\*\\*).
+	// - If `PrincipalType` is set to `Group`, the value is the ID of the CloudSSO group (g-********).
 	//
-	// - If `User` is returned for the `PrincipalType` parameter, the value of this parameter is the ID of a CloudSSO user (u-\\*\\*\\*\\*\\*\\*\\*\\*).
+	// - If `PrincipalType` is set to `User`, the value is the ID of the CloudSSO user (u-********).
 	//
 	// example:
 	//
 	// g-02ha881d*****
 	PrincipalId *string `json:"PrincipalId,omitempty" xml:"PrincipalId,omitempty"`
-	// The identity name of the RAM user provisioning. Valid values:
+	// The name of the principal for the Resource Access Management (RAM) user synchronization. Valid values:
 	//
-	// - If `Group` is returned for the `PrincipalType` parameter, the value of this parameter is the name of a CloudSSO user group.
+	// - If `PrincipalType` is set to `Group`, the value is the name of the CloudSSO group.
 	//
-	// - If `User` is returned for the `PrincipalType` parameter, the value of this parameter is the name of a CloudSSO user.
+	// - If `PrincipalType` is set to `User`, the value is the CloudSSO username.
 	//
 	// example:
 	//
 	// testUserName
 	PrincipalName *string `json:"PrincipalName,omitempty" xml:"PrincipalName,omitempty"`
-	// The identity type of the RAM user provisioning. Valid values:
+	// The type of the principal for the Resource Access Management (RAM) user synchronization. Valid values:
 	//
-	// - User: indicates that the identity of the RAM user provisioning is a CloudSSO user.
+	// - User: The principal is a CloudSSO user.
 	//
-	// - Group: indicates that the identity of the RAM user provisioning is a CloudSSO user group.
+	// - Group: The principal is a CloudSSO group.
 	//
 	// example:
 	//
 	// User
 	PrincipalType *string `json:"PrincipalType,omitempty" xml:"PrincipalType,omitempty"`
-	// The status of the RAM user provisioning. Valid values:
+	// The status of the Resource Access Management (RAM) user synchronization. Valid values:
 	//
-	// - Enabled
+	// - Enabled: The Resource Access Management (RAM) user synchronization is enabled.
 	//
-	// - Disabled
+	// - Disabled: The Resource Access Management (RAM) user synchronization is disabled.
 	//
 	// example:
 	//
 	// Enabled
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The ID of the object for which you create the RAM user provisioning. The value is fixed as the ID of the account in the resource directory.
+	// The ID of the target for the Resource Access Management (RAM) user synchronization. Currently, the value is the ID of the account in a resource directory.
 	//
 	// example:
 	//
 	// u-02ha881d*****
 	TargetId *string `json:"TargetId,omitempty" xml:"TargetId,omitempty"`
-	// The name of the object for which you create the RAM user provisioning. The value is fixed as the name of the resource directory.
+	// The name of the target for the Resource Access Management (RAM) user synchronization. Currently, the value is the name of the account in a resource directory.
 	//
 	// example:
 	//
 	// testMemberName
 	TargetName *string `json:"TargetName,omitempty" xml:"TargetName,omitempty"`
-	// The path of the resource directory in which you create the RAM user provisioning for the object.
+	// The resource directory path of the target for the Resource Access Management (RAM) user synchronization.
 	TargetPath *string `json:"TargetPath,omitempty" xml:"TargetPath,omitempty"`
-	// The object for which you create the RAM user provisioning. The value is fixed as `RD-Account`.
+	// The type of the target for the Resource Access Management (RAM) user synchronization. Currently, the value is `RD-Account`.
 	//
 	// example:
 	//
 	// RD-Account
 	TargetType *string `json:"TargetType,omitempty" xml:"TargetType,omitempty"`
-	// The modification time.
+	// The update time. The time is displayed in UTC and follows the RFC 3339 standard in the YYYY-MM-DDTHH:mm:ssZ format.
 	//
 	// example:
 	//
 	// 2022-11-28T03:55:42Z
 	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
-	// The ID of the RAM user provisioning.
+	// The ID of the Resource Access Management (RAM) user synchronization.
 	//
 	// example:
 	//

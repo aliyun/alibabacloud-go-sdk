@@ -22,7 +22,7 @@ type CreateSCIMServerCredentialResponseBody struct {
 	//
 	// 2D2E5180-7ACF-57FF-A56C-26A49ABEBFF7
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The SCIM credential information.
+	// The SCIM server credential information.
 	SCIMServerCredential *CreateSCIMServerCredentialResponseBodySCIMServerCredential `json:"SCIMServerCredential,omitempty" xml:"SCIMServerCredential,omitempty" type:"Struct"`
 }
 
@@ -62,27 +62,27 @@ func (s *CreateSCIMServerCredentialResponseBody) Validate() error {
 }
 
 type CreateSCIMServerCredentialResponseBodySCIMServerCredential struct {
-	// The time when the SCIM credential was created. The time is displayed in UTC and follows the RFC 3339 standard in the YYYY-MM-DDTHH:mm:ssZ format.
+	// The time when the SCIM server credential was created. The time is in UTC and follows the RFC 3339 standard in the YYYY-MM-DDTHH:mm:ssZ format.
 	//
 	// example:
 	//
 	// 2021-11-09T08:12:52Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The ID of the SCIM credential.
+	// The ID of the SCIM server credential.
 	//
 	// example:
 	//
 	// scimcred-004whl0kvfwcypbi****
 	CredentialId *string `json:"CredentialId,omitempty" xml:"CredentialId,omitempty"`
-	// The SCIM credential secret.
+	// The SCIM server credential secret.
 	//
-	// > The SCIM credential secret is returned only when the credential is created and cannot be queried later. Keep it secure.
+	// > The SCIM server credential secret is returned only when the credential is created and cannot be queried later. Store it securely.
 	//
 	// example:
 	//
 	// 8aAJCtpbyPJ8saXeYDgyw****
 	CredentialSecret *string `json:"CredentialSecret,omitempty" xml:"CredentialSecret,omitempty"`
-	// The type of the SCIM credential.
+	// The type of the SCIM server credential.
 	//
 	// example:
 	//
@@ -94,15 +94,15 @@ type CreateSCIMServerCredentialResponseBodySCIMServerCredential struct {
 	//
 	// d-00fc2p61****
 	DirectoryId *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
-	// The time when the SCIM credential expires. The time is displayed in UTC and follows the RFC 3339 standard in the YYYY-MM-DDTHH:mm:ssZ format.
+	// The time when the SCIM server credential expires. The time is in UTC and follows the RFC 3339 standard in the YYYY-MM-DDTHH:mm:ssZ format.
 	//
 	// example:
 	//
 	// 2022-11-09T08:12:52Z
 	ExpireTime *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
-	// The status of the SCIM credential. Valid values:
+	// The status of the SCIM server credential. Valid values:
 	//
-	// - Enabled: The SCIM credential is enabled.
+	// - Enabled: The credential is enabled.
 	//
 	// example:
 	//

@@ -26,9 +26,9 @@ type iCreateAccessConfigurationRequest interface {
 type CreateAccessConfigurationRequest struct {
 	// The name of the access configuration.
 	//
-	// Format: contains letters, digits, or hyphens (-).
+	// Format: The name can contain letters, digits, and hyphens (-).
 	//
-	// Length: up to 32 characters.
+	// Length: The name can be up to 32 characters in length.
 	//
 	// example:
 	//
@@ -36,7 +36,7 @@ type CreateAccessConfigurationRequest struct {
 	AccessConfigurationName *string `json:"AccessConfigurationName,omitempty" xml:"AccessConfigurationName,omitempty"`
 	// The description of the access configuration.
 	//
-	// Length: up to 1024 characters.
+	// Length: The description can be up to 1,024 characters in length.
 	//
 	// example:
 	//
@@ -50,9 +50,9 @@ type CreateAccessConfigurationRequest struct {
 	DirectoryId *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
 	// The initial access page.
 	//
-	// The page address that a CloudSSO user initially accesses when using the access configuration to access an account in a resource directory.
+	// The URL of the initial page that is accessed when a CloudSSO user accesses an account in a resource directory by using the access configuration.
 	//
-	// The page must be an Alibaba Cloud Management Console page. Default value: empty, which indicates that the user is redirected to the homepage of the Alibaba Cloud Management Console.
+	// The page must be an Alibaba Cloud Management Console page. By default, this parameter is empty, which indicates that the user is redirected to the homepage of the Alibaba Cloud Management Console.
 	//
 	// example:
 	//
@@ -60,7 +60,7 @@ type CreateAccessConfigurationRequest struct {
 	RelayState *string `json:"RelayState,omitempty" xml:"RelayState,omitempty"`
 	// The session duration.
 	//
-	// The maximum duration of a session when a CloudSSO user uses the access configuration to access an account in a resource directory.
+	// The maximum duration of a session when a CloudSSO user accesses an account in a resource directory by using the access configuration.
 	//
 	// Unit: seconds.
 	//
@@ -72,7 +72,7 @@ type CreateAccessConfigurationRequest struct {
 	//
 	// 3600
 	SessionDuration *int32 `json:"SessionDuration,omitempty" xml:"SessionDuration,omitempty"`
-	// The list of tags.
+	// The tags.
 	Tags []*CreateAccessConfigurationRequestTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
 }
 

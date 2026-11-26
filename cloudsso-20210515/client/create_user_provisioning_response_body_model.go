@@ -68,11 +68,11 @@ type CreateUserProvisioningResponseBodyUserProvisioning struct {
 	//
 	// 2022-11-28T03:55:42Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The deletion policy. Specifies the action to take for synchronized Resource Access Management (RAM) users when a Resource Access Management (RAM) user synchronization is deleted. Valid values:
+	// The deletion policy. This policy specifies how to handle the synchronized Resource Access Management (RAM) users when the Resource Access Management (RAM) user synchronization is deleted. Valid values:
 	//
-	// - Delete: Delete. When a Resource Access Management (RAM) user synchronization is deleted, the system deletes the Resource Access Management (RAM) users that have been synchronized from CloudSSO to RAM.
+	// - Delete: Delete. When the Resource Access Management (RAM) user synchronization is deleted, the Resource Access Management (RAM) users that have been synchronized from CloudSSO to RAM are deleted.
 	//
-	// - Keep: Keep. When a Resource Access Management (RAM) user synchronization is deleted, the system retains the Resource Access Management (RAM) users that have been synchronized from CloudSSO to RAM.
+	// - Keep: Keep. When the Resource Access Management (RAM) user synchronization is deleted, the Resource Access Management (RAM) users that have been synchronized from CloudSSO to RAM are retained.
 	//
 	// example:
 	//
@@ -84,23 +84,23 @@ type CreateUserProvisioningResponseBodyUserProvisioning struct {
 	//
 	// This is a user provisioning.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The ID of the directory.
+	// The ID of the CloudSSO directory.
 	//
 	// example:
 	//
 	// d-003qew84****
 	DirectoryId *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
-	// The conflict resolution policy. Specifies the action to take when a CloudSSO user is synchronized to Resource Access Management (RAM) user with the same name already exists. Valid values:
+	// The conflict resolution policy. This policy specifies how to handle conflicts when a CloudSSO user is synchronized to Resource Access Management (RAM) user with the same name already exists. Valid values:
 	//
-	// - KeepBoth: Keep both. When a CloudSSO user is synchronized to Resource Access Management (RAM) user with the same name already exists, the system adds the `_sso` suffix to the username of the CloudSSO user and attempts to create a RAM user with the suffixed username.
+	// - KeepBoth: Keep both. When a CloudSSO user is synchronized to Resource Access Management (RAM) user with the same name already exists, the system appends the _sso suffix to the username of the CloudSSO user and attempts to create a RAM user with the new username.
 	//
-	// - TakeOver: Take over. When a CloudSSO user is synchronized to Resource Access Management (RAM) user with the same name already exists, the system replaces the existing RAM user with the synchronized CloudSSO user.
+	// - TakeOver: Take over. When a CloudSSO user is synchronized to Resource Access Management (RAM) user with the same name already exists, the system directly replaces the existing RAM user with the synchronized CloudSSO user.
 	//
 	// example:
 	//
 	// KeepBoth
 	DuplicationStrategy *string `json:"DuplicationStrategy,omitempty" xml:"DuplicationStrategy,omitempty"`
-	// The ID of the Alibaba Cloud account to which the directory belongs.
+	// The ID of the Alibaba Cloud account to which the CloudSSO directory belongs.
 	//
 	// example:
 	//
@@ -108,9 +108,9 @@ type CreateUserProvisioningResponseBodyUserProvisioning struct {
 	OwnerPk *string `json:"OwnerPk,omitempty" xml:"OwnerPk,omitempty"`
 	// The ID of the identity for the Resource Access Management (RAM) user synchronization. Valid values:
 	//
-	// - When `PrincipalType` is set to `Group`, the value is the ID of the CloudSSO group (g-********).
+	// - If `PrincipalType` is set to `Group`, the value is the ID of the CloudSSO group (g-********).
 	//
-	// - When `PrincipalType` is set to `User`, the value is the ID of the CloudSSO user (u-********).
+	// - If `PrincipalType` is set to `User`, the value is the ID of the CloudSSO user (u-********).
 	//
 	// example:
 	//
@@ -118,9 +118,9 @@ type CreateUserProvisioningResponseBodyUserProvisioning struct {
 	PrincipalId *string `json:"PrincipalId,omitempty" xml:"PrincipalId,omitempty"`
 	// The name of the identity for the Resource Access Management (RAM) user synchronization. Valid values:
 	//
-	// - When `PrincipalType` is set to `Group`, the value is the name of the CloudSSO group.
+	// - If `PrincipalType` is set to `Group`, the value is the name of the CloudSSO group.
 	//
-	// - When `PrincipalType` is set to `User`, the value is the CloudSSO username.
+	// - If `PrincipalType` is set to `User`, the value is the CloudSSO username.
 	//
 	// example:
 	//
@@ -160,7 +160,7 @@ type CreateUserProvisioningResponseBodyUserProvisioning struct {
 	TargetName *string `json:"TargetName,omitempty" xml:"TargetName,omitempty"`
 	// The path of the destination account in a resource directory for the Resource Access Management (RAM) user synchronization.
 	TargetPath *string `json:"TargetPath,omitempty" xml:"TargetPath,omitempty"`
-	// The type of the destination for the Resource Access Management (RAM) user synchronization. Currently, the only valid value is `RD-Account`.
+	// The type of the destination for the Resource Access Management (RAM) user synchronization. Currently, the value is `RD-Account`.
 	//
 	// example:
 	//

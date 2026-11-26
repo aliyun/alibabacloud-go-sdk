@@ -26,43 +26,43 @@ type iUpdateUserRequest interface {
 }
 
 type UpdateUserRequest struct {
-	// The ID of the directory.
+	// The directory ID.
 	//
 	// example:
 	//
 	// d-00fc2p61****
 	DirectoryId *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
-	// The new description of the user.
+	// The description of the user.
 	//
 	// example:
 	//
 	// This is a user.
 	NewDescription *string `json:"NewDescription,omitempty" xml:"NewDescription,omitempty"`
-	// The new display name of the user.
+	// The display name of the user.
 	//
 	// example:
 	//
 	// AliceLee
 	NewDisplayName *string `json:"NewDisplayName,omitempty" xml:"NewDisplayName,omitempty"`
-	// The new email address of the user.
+	// The email address of the user.
 	//
 	// example:
 	//
 	// AliceLee@example.com
 	NewEmail *string `json:"NewEmail,omitempty" xml:"NewEmail,omitempty"`
-	// The new first name of the user.
+	// The first name of the user.
 	//
 	// example:
 	//
 	// Alice
 	NewFirstName *string `json:"NewFirstName,omitempty" xml:"NewFirstName,omitempty"`
-	// The new last name of the user.
+	// The last name of the user.
 	//
 	// example:
 	//
 	// Lee
 	NewLastName *string `json:"NewLastName,omitempty" xml:"NewLastName,omitempty"`
-	// The ID of the user.
+	// The user ID.
 	//
 	// example:
 	//

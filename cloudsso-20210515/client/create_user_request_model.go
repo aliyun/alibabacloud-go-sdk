@@ -32,7 +32,7 @@ type iCreateUserRequest interface {
 type CreateUserRequest struct {
 	// The description of the user.
 	//
-	// Maximum length: 1024 characters.
+	// Length: up to 1024 characters.
 	//
 	// example:
 	//
@@ -46,7 +46,7 @@ type CreateUserRequest struct {
 	DirectoryId *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
 	// The display name of the user.
 	//
-	// Maximum length: 256 characters.
+	// Length: up to 256 characters.
 	//
 	// example:
 	//
@@ -54,7 +54,7 @@ type CreateUserRequest struct {
 	DisplayName *string `json:"DisplayName,omitempty" xml:"DisplayName,omitempty"`
 	// The email address of the user. The email address must be unique within the directory.
 	//
-	// Maximum length: 128 characters.
+	// Length: up to 128 characters.
 	//
 	// example:
 	//
@@ -62,7 +62,7 @@ type CreateUserRequest struct {
 	Email *string `json:"Email,omitempty" xml:"Email,omitempty"`
 	// The first name of the user.
 	//
-	// Maximum length: 64 characters.
+	// Length: up to 64 characters.
 	//
 	// example:
 	//
@@ -70,7 +70,7 @@ type CreateUserRequest struct {
 	FirstName *string `json:"FirstName,omitempty" xml:"FirstName,omitempty"`
 	// The last name of the user.
 	//
-	// Maximum length: 64 characters.
+	// Length: up to 64 characters.
 	//
 	// example:
 	//
@@ -87,12 +87,16 @@ type CreateUserRequest struct {
 	// Enabled
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	// The list of tags.
+	//
+	// example:
+	//
+	// [{"Key":"Project","Value":"Test"}]
 	Tags []*CreateUserRequestTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
-	// The username. The username must be unique within the directory and cannot be modified.
+	// The username. It must be unique within the directory and cannot be modified.
 	//
-	// Format: Can contain digits, letters, and the following special characters: `@_-.`
+	// Format: The username can contain digits, letters, and the special characters `@_-.`.
 	//
-	// Maximum length: 64 characters.
+	// Length: up to 64 characters.
 	//
 	// example:
 	//

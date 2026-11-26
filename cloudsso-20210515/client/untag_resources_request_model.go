@@ -48,11 +48,11 @@ type UntagResourcesRequest struct {
 	//
 	// This parameter is required.
 	ResourceId []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
-	// The resource type. Users and access configurations are supported. Valid values:
+	// The resource type. Users and access configurations are supported.
 	//
-	// - user: user
+	// - Set the value to user for users.
 	//
-	// - accessConfiguration: access configuration
+	// - Set the value to accessConfiguration for access configurations.
 	//
 	// This parameter is required.
 	//

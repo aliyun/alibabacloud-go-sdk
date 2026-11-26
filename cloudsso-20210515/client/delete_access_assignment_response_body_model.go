@@ -74,7 +74,7 @@ type DeleteAccessAssignmentResponseBodyTask struct {
 	//
 	// ECS-Admin
 	AccessConfigurationName *string `json:"AccessConfigurationName,omitempty" xml:"AccessConfigurationName,omitempty"`
-	// The Alibaba Cloud account ID of the authorization target.
+	// The ID of the Alibaba Cloud account to which the authorization target belongs.
 	//
 	// example:
 	//
@@ -94,9 +94,9 @@ type DeleteAccessAssignmentResponseBodyTask struct {
 	PrincipalName *string `json:"PrincipalName,omitempty" xml:"PrincipalName,omitempty"`
 	// The CloudSSO identity type. Valid values:
 	//
-	// - User: user
+	// - User: user.
 	//
-	// - Group: group
+	// - Group: group.
 	//
 	// example:
 	//
@@ -114,7 +114,7 @@ type DeleteAccessAssignmentResponseBodyTask struct {
 	//
 	// InProgress
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The target ID of the task.
+	// The ID of the task target.
 	//
 	// example:
 	//
@@ -130,9 +130,9 @@ type DeleteAccessAssignmentResponseBodyTask struct {
 	TargetPath *string `json:"TargetPath,omitempty" xml:"TargetPath,omitempty"`
 	// The path name of the task target in the resource directory.
 	TargetPathName *string `json:"TargetPathName,omitempty" xml:"TargetPathName,omitempty"`
-	// The target type of the task. Valid values:
+	// The type of the task target. Valid values:
 	//
-	// - RD-Account: The task target is an account in a resource directory.
+	// - RD-Account: an account in a resource directory.
 	//
 	// example:
 	//
@@ -146,7 +146,7 @@ type DeleteAccessAssignmentResponseBodyTask struct {
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
 	// The task type. Valid values:
 	//
-	// - DeleteAccessAssignment: The task removes an authorization from an account in a resource directory.
+	// - DeleteAccessAssignment: the task of removing authorization from an account in a resource directory.
 	//
 	// example:
 	//

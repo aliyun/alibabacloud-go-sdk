@@ -18,9 +18,7 @@ type iListTagResourcesResponseBody interface {
 }
 
 type ListTagResourcesResponseBody struct {
-	// The token that is used to retrieve the next page of query results.
-	//
-	// If NextToken is empty, it indicates that the results are not truncated.
+	// The token for the next page of results. If NextToken is empty, the results are not truncated.
 	//
 	// example:
 	//
@@ -32,7 +30,7 @@ type ListTagResourcesResponseBody struct {
 	//
 	// 20E9650E-EC23-593E-933F-EA0D280D040C
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The list of tag-resource relationships.
+	// The list of resource-tag associations.
 	TagResources []*ListTagResourcesResponseBodyTagResources `json:"TagResources,omitempty" xml:"TagResources,omitempty" type:"Repeated"`
 }
 
