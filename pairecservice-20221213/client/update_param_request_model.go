@@ -22,7 +22,7 @@ type UpdateParamRequest struct {
 	//
 	// pairec-cn-abcdefg1234
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The parameter\\"s value.
+	// The parameter\"s value.
 	//
 	// example:
 	//

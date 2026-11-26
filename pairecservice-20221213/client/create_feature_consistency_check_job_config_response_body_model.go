@@ -16,7 +16,7 @@ type iCreateFeatureConsistencyCheckJobConfigResponseBody interface {
 }
 
 type CreateFeatureConsistencyCheckJobConfigResponseBody struct {
-	// The feature consistency check job configuration ID.
+	// The ID of the feature consistency check job configuration.
 	//
 	// example:
 	//

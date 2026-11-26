@@ -364,13 +364,13 @@ func (client *Client) CheckInstanceResourcesWithContext(ctx context.Context, Ins
 
 // Summary:
 //
-// Checks whether a specified recall management service is working properly.
+// Checks whether the specified recall management service is working properly.
 //
 // Description:
 //
 // ## Request description
 //
-// This operation checks the status or performance of a specific recall management service by using the recall management service ID and related parameters. Ensure that the InstanceId field is correct to target the right instance. To test a specific version of the service, provide the RecallManagementServiceVersionId. You can also customize the request by using parameters such as Recalls, ContextParams, ExposureList, and RetainFields to accurately simulate real-world scenarios.
+// This operation allows you to check the status or performance of a specific recall management service by providing the recall management service ID and related parameters. Ensure that the `InstanceId` field is correct to point to the right instance. To test a specific version of the service, provide `RecallManagementServiceVersionId`. Additionally, you can further customize the request by using parameters such as `Recalls`, `ContextParams`, `ExposureList`, and `RetainFields` to more accurately simulate real-world scenarios.
 //
 // @param request - CheckRecallManagementServiceRequest
 //
@@ -1659,7 +1659,7 @@ func (client *Client) CreateFeatureConsistencyCheckJobWithContext(ctx context.Co
 
 // Summary:
 //
-// Configure a feature consistency check task.
+// Creates a feature consistency check job configuration.
 //
 // @param request - CreateFeatureConsistencyCheckJobConfigRequest
 //
@@ -6095,15 +6095,15 @@ func (client *Client) GetTrafficControlTargetWithContext(ctx context.Context, Tr
 //
 // Description:
 //
-// ## Description
+// ## Request description
 //
 // - This operation retrieves the details of a specific traffic control task, including but not limited to the task name, description, and status.
 //
-// - TrafficControlTaskId and InstanceId are required parameters that specify the task ID and instance ID to query.
+// - `TrafficControlTaskId` and `InstanceId` are required parameters used to specify the task ID and instance ID to query, respectively.
 //
-// - Optional parameters such as Environment, Version, and ControlTargetFilter help refine the request to retrieve more specific task data or version information.
+// - Optional parameters such as `Environment`, `Version`, and `ControlTargetFilter` can help further refine the request to retrieve more specific task data or version information.
 //
-// - Check the returned data structure, especially the TrafficControlTargets section, which contains multiple control targets and their related properties.
+// - Check the returned data structure, especially the `TrafficControlTargets` section, which contains multiple control targets and their related attributes.
 //
 // @param request - GetTrafficControlTaskRequest
 //
@@ -6771,7 +6771,7 @@ func (client *Client) ListDataDiagnosisReportsWithContext(ctx context.Context, D
 
 // Summary:
 //
-// Retrieves a list of engine configurations.
+// Retrieves the engine configurations.
 //
 // @param request - ListEngineConfigsRequest
 //
@@ -7271,13 +7271,13 @@ func (client *Client) ListInstanceResourceSchemasWithContext(ctx context.Context
 
 // Summary:
 //
-// Queries all tables in a specified instance and data source.
+// Queries all data tables under a specified instance and data source.
 //
 // Description:
 //
 // ## Request description
 //
-// Provide the instance ID (InstanceId) and data source ID (ResourceId) to retrieve a list of all tables in the data source. You can use the optional `MaxcomputeSchema` parameter to specify a MaxCompute schema to further filter the results.
+// By providing the instance ID (InstanceId) and the data source ID (ResourceId), you can retrieve a list of all data tables under the data source. The optional `MaxcomputeSchema` parameter allows you to specify the MaxCompute schema to further filter the results.
 //
 // @param request - ListInstanceResourceTablesRequest
 //
@@ -7296,6 +7296,10 @@ func (client *Client) ListInstanceResourceTablesWithContext(ctx context.Context,
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.MaxcomputeSchema) {
 		query["MaxcomputeSchema"] = request.MaxcomputeSchema
+	}
+
+	if !dara.IsNil(request.TableType) {
+		query["TableType"] = request.TableType
 	}
 
 	req := &openapiutil.OpenApiRequest{
@@ -8448,19 +8452,19 @@ func (client *Client) ListTrafficControlTargetTrafficHistoryWithContext(ctx cont
 
 // Summary:
 //
-// Queries traffic control tasks that meet specified conditions.
+// Queries the traffic control tasks that meet the specified conditions.
 //
 // Description:
 //
 // ## Request description
 //
-// - This operation retrieves a list of traffic control nodes that meet specific conditional requirements.
+// - This operation retrieves a list of traffic control nodes that meet specific conditional criteria.
 //
-// - You can filter the returned nodes and apply sorting by specifying different query parameters.
+// - You can use different query parameters for filtering and sorting the returned list of nodes.
 //
-// - Paged query is supported. You can also choose to return all data at once without paging.
+// - Paged query is supported. You can also retrieve all data at once without paging.
 //
-// - Note: InstanceId is required, and other parameters are options. Specify other parameters as needed to obtain more precise results.
+// - Note: `InstanceId` is required. All other parameters are options. Specify them as needed to obtain more accurate results.
 //
 // @param request - ListTrafficControlTasksRequest
 //
@@ -9900,13 +9904,13 @@ func (client *Client) SplitTrafficControlTargetWithContext(ctx context.Context, 
 
 // Summary:
 //
-// Starts a traffic control task for a specific traffic control target.
+// Starts a traffic shaping task with the specified ID.
 //
 // Description:
 //
-// ## Request
+// ## Request description
 //
-// Call this operation to start a traffic control task by providing the `TrafficControlTargetId` and `InstanceId`.
+// You can call this operation to start a specific traffic shaping task by specifying the `TrafficControlTargetId` and `InstanceId` parameters. Ensure that you correctly specify the values of these two parameters in the request to prevent operation failures.
 //
 // @param request - StartTrafficControlTargetRequest
 //
@@ -9923,6 +9927,10 @@ func (client *Client) StartTrafficControlTargetWithContext(ctx context.Context, 
 		}
 	}
 	body := map[string]interface{}{}
+	if !dara.IsNil(request.Environment) {
+		body["Environment"] = request.Environment
+	}
+
 	if !dara.IsNil(request.InstanceId) {
 		body["InstanceId"] = request.InstanceId
 	}
@@ -10120,13 +10128,13 @@ func (client *Client) StopTrafficControlFlinkTaskWithContext(ctx context.Context
 
 // Summary:
 //
-// Stops a specific traffic control target.
+// Stops a specified traffic control target.
 //
 // Description:
 //
-// ## Request
+// ## Request description
 //
-// This operation stops a traffic control task using the provided `TrafficControlTargetId` and `InstanceId`. Ensure that the parameter values are accurate to avoid stopping the wrong target or instance.
+// Call this operation to stop an ongoing traffic control task by specifying the `TrafficControlTargetId` and `InstanceId`. Ensure that the parameter values are accurate to avoid operating on the wrong target or instance.
 //
 // @param request - StopTrafficControlTargetRequest
 //
@@ -10143,6 +10151,10 @@ func (client *Client) StopTrafficControlTargetWithContext(ctx context.Context, T
 		}
 	}
 	body := map[string]interface{}{}
+	if !dara.IsNil(request.Environment) {
+		body["Environment"] = request.Environment
+	}
+
 	if !dara.IsNil(request.InstanceId) {
 		body["InstanceId"] = request.InstanceId
 	}
@@ -10240,7 +10252,7 @@ func (client *Client) StopTrafficControlTaskWithContext(ctx context.Context, Tra
 
 // Summary:
 //
-// Syncs the replay log for a feature consistency check job.
+// Synchronizes the replay logs of a feature consistency check job.
 //
 // @param request - SyncFeatureConsistencyCheckJobReplayLogRequest
 //

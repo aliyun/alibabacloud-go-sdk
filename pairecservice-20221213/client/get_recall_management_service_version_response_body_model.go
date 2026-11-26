@@ -649,7 +649,7 @@ type GetRecallManagementServiceVersionResponseBodyConfigsRecallConfigsOperatorsF
 	//
 	// example:
 	//
-	// city = \\"hangzhou\\"
+	// city = \"hangzhou\"
 	Expression *string `json:"Expression,omitempty" xml:"Expression,omitempty"`
 	// The feature name.
 	//

@@ -38,7 +38,7 @@ type ShoppingAssistantResponseBody struct {
 	//
 	// example:
 	//
-	// Here are some light-colored long-sleeve shirts for you:\\n
+	// Here are some light-colored long-sleeve shirts for you:\n
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
 	// The session ID.
 	//
@@ -246,7 +246,7 @@ type ShoppingAssistantResponseBodyResult struct {
 	//
 	// example:
 	//
-	// Here are some light-colored long-sleeve shirts for you:\\\\n
+	// Here are some light-colored long-sleeve shirts for you:\\n
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
 	// The error message.
 	//

@@ -29,6 +29,10 @@ type iGetTrafficControlTaskResponseBody interface {
 	GetEverPublished() *bool
 	SetExecutionTime(v string) *GetTrafficControlTaskResponseBody
 	GetExecutionTime() *string
+	SetFlinkJobOutdated(v string) *GetTrafficControlTaskResponseBody
+	GetFlinkJobOutdated() *string
+	SetFlinkJobs(v string) *GetTrafficControlTaskResponseBody
+	GetFlinkJobs() *string
 	SetFlinkResourceId(v string) *GetTrafficControlTaskResponseBody
 	GetFlinkResourceId() *string
 	SetFlinkResourceName(v string) *GetTrafficControlTaskResponseBody
@@ -88,7 +92,7 @@ type iGetTrafficControlTaskResponseBody interface {
 }
 
 type GetTrafficControlTaskResponseBody struct {
-	// The behavior table ID.
+	// The ID of the behavior table.
 	//
 	// example:
 	//
@@ -122,13 +126,13 @@ type GetTrafficControlTaskResponseBody struct {
 	EffectiveSceneIds []*int32 `json:"EffectiveSceneIds,omitempty" xml:"EffectiveSceneIds,omitempty" type:"Repeated"`
 	// The list of effective scene names.
 	EffectiveSceneNames []*string `json:"EffectiveSceneNames,omitempty" xml:"EffectiveSceneNames,omitempty" type:"Repeated"`
-	// The end time.
+	// The end time. The format is YYYY-MM-DD.
 	//
 	// example:
 	//
 	// 2024-04-25
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// Indicates whether the task has ever been published.
+	// Specifies whether it has ever been published.
 	//
 	// example:
 	//
@@ -140,6 +144,18 @@ type GetTrafficControlTaskResponseBody struct {
 	//
 	// Permanent
 	ExecutionTime *string `json:"ExecutionTime,omitempty" xml:"ExecutionTime,omitempty"`
+	// The information about whether Flink jobs have expired in each environment.
+	//
+	// example:
+	//
+	// {""}
+	FlinkJobOutdated *string `json:"FlinkJobOutdated,omitempty" xml:"FlinkJobOutdated,omitempty"`
+	// The information about Flink jobs.
+	//
+	// example:
+	//
+	// {""}
+	FlinkJobs *string `json:"FlinkJobs,omitempty" xml:"FlinkJobs,omitempty"`
 	// The Flink resource ID.
 	//
 	// example:
@@ -152,25 +168,25 @@ type GetTrafficControlTaskResponseBody struct {
 	//
 	// flink_test
 	FlinkResourceName *string `json:"FlinkResourceName,omitempty" xml:"FlinkResourceName,omitempty"`
-	// The creation time.
+	// The creation time. The format is ISO 8601, with Z representing the UTC time zone.
 	//
 	// example:
 	//
 	// 2024-01-11T02:27:38.208Z
 	GmtCreateTime *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
-	// The last modification time.
+	// The update time. The format is ISO 8601, with Z representing the UTC time zone.
 	//
 	// example:
 	//
 	// 2024-01-11T02:27:38.208Z
 	GmtModifiedTime *string `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
-	// The item conditions in array format.
+	// The item condition, set in array format.
 	//
 	// example:
 	//
 	// [{"field":"status","option":"=","value":"1"}]
 	ItemConditionArray *string `json:"ItemConditionArray,omitempty" xml:"ItemConditionArray,omitempty"`
-	// The item conditions in expression format.
+	// The item condition, set in expression format.
 	//
 	// example:
 	//
@@ -182,7 +198,7 @@ type GetTrafficControlTaskResponseBody struct {
 	//
 	// Array
 	ItemConditionType *string `json:"ItemConditionType,omitempty" xml:"ItemConditionType,omitempty"`
-	// The item table ID.
+	// The ID of the item table.
 	//
 	// example:
 	//
@@ -200,7 +216,7 @@ type GetTrafficControlTaskResponseBody struct {
 	//
 	// 1,2,3
 	PreExperimentIds *string `json:"PreExperimentIds,omitempty" xml:"PreExperimentIds,omitempty"`
-	// The staging environment status.
+	// The status in the staging environment.
 	//
 	// example:
 	//
@@ -212,7 +228,7 @@ type GetTrafficControlTaskResponseBody struct {
 	//
 	// 4,5,6
 	ProdExperimentIds *string `json:"ProdExperimentIds,omitempty" xml:"ProdExperimentIds,omitempty"`
-	// The production environment status.
+	// The status in the production environment.
 	//
 	// example:
 	//
@@ -244,25 +260,25 @@ type GetTrafficControlTaskResponseBody struct {
 	ServiceId *string `json:"ServiceId,omitempty" xml:"ServiceId,omitempty"`
 	// The list of service IDs.
 	ServiceIds []*int32 `json:"ServiceIds,omitempty" xml:"ServiceIds,omitempty" type:"Repeated"`
-	// The start time.
+	// The start time. The format is YYYY-MM-DD.
 	//
 	// example:
 	//
 	// 2024-03-25
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The behavior statistics conditions in array format.
+	// The array-format condition for behavior statistics.
 	//
 	// example:
 	//
 	// [{"field":"click","option":"<=","value":"30"}]
 	StatisBehaviorConditionArray *string `json:"StatisBehaviorConditionArray,omitempty" xml:"StatisBehaviorConditionArray,omitempty"`
-	// The behavior statistics conditions in expression format.
+	// The expression-format condition for behavior statistics.
 	//
 	// example:
 	//
 	// click=30
 	StatisBehaviorConditionExpress *string `json:"StatisBehaviorConditionExpress,omitempty" xml:"StatisBehaviorConditionExpress,omitempty"`
-	// The behavior statistics condition type.
+	// The condition type for behavior statistics.
 	//
 	// example:
 	//
@@ -276,25 +292,25 @@ type GetTrafficControlTaskResponseBody struct {
 	//
 	// 1
 	TrafficControlTaskId *string `json:"TrafficControlTaskId,omitempty" xml:"TrafficControlTaskId,omitempty"`
-	// The target user group conditions in array format.
+	// The array-format condition of the target user group.
 	//
 	// example:
 	//
 	// [{"field":"gender","option":"=","value":"male"}]
 	UserConditionArray *string `json:"UserConditionArray,omitempty" xml:"UserConditionArray,omitempty"`
-	// The target user group conditions in expression format.
+	// The expression-format condition of the target user group.
 	//
 	// example:
 	//
 	// age<=30&&(3<=level<=6)&&gender=male
 	UserConditionExpress *string `json:"UserConditionExpress,omitempty" xml:"UserConditionExpress,omitempty"`
-	// The condition type for the target user group.
+	// The condition type of the target user group.
 	//
 	// example:
 	//
 	// Array
 	UserConditionType *string `json:"UserConditionType,omitempty" xml:"UserConditionType,omitempty"`
-	// The user table ID.
+	// The ID of the user table.
 	//
 	// example:
 	//
@@ -348,6 +364,14 @@ func (s *GetTrafficControlTaskResponseBody) GetEverPublished() *bool {
 
 func (s *GetTrafficControlTaskResponseBody) GetExecutionTime() *string {
 	return s.ExecutionTime
+}
+
+func (s *GetTrafficControlTaskResponseBody) GetFlinkJobOutdated() *string {
+	return s.FlinkJobOutdated
+}
+
+func (s *GetTrafficControlTaskResponseBody) GetFlinkJobs() *string {
+	return s.FlinkJobs
 }
 
 func (s *GetTrafficControlTaskResponseBody) GetFlinkResourceId() *string {
@@ -512,6 +536,16 @@ func (s *GetTrafficControlTaskResponseBody) SetExecutionTime(v string) *GetTraff
 	return s
 }
 
+func (s *GetTrafficControlTaskResponseBody) SetFlinkJobOutdated(v string) *GetTrafficControlTaskResponseBody {
+	s.FlinkJobOutdated = &v
+	return s
+}
+
+func (s *GetTrafficControlTaskResponseBody) SetFlinkJobs(v string) *GetTrafficControlTaskResponseBody {
+	s.FlinkJobs = &v
+	return s
+}
+
 func (s *GetTrafficControlTaskResponseBody) SetFlinkResourceId(v string) *GetTrafficControlTaskResponseBody {
 	s.FlinkResourceId = &v
 	return s
@@ -666,7 +700,7 @@ func (s *GetTrafficControlTaskResponseBody) Validate() error {
 }
 
 type GetTrafficControlTaskResponseBodyTrafficControlTargets struct {
-	// The end time.
+	// The end time. The format is YYYY-MM-DD.
 	//
 	// example:
 	//
@@ -678,25 +712,25 @@ type GetTrafficControlTaskResponseBodyTrafficControlTargets struct {
 	//
 	// click
 	Event *string `json:"Event,omitempty" xml:"Event,omitempty"`
-	// The creation time.
+	// The creation time. The format is ISO 8601, with Z representing the UTC time zone.
 	//
 	// example:
 	//
 	// 2024-03-25T06:04:28.441Z
 	GmtCreateTime *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
-	// The last modification time.
+	// The update time. The format is ISO 8601, with Z representing the UTC time zone.
 	//
 	// example:
 	//
 	// 2024-03-25T06:04:28.441Z
 	GmtModifiedTime *string `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
-	// The item conditions in array format.
+	// The item condition, set in array format.
 	//
 	// example:
 	//
 	// [{"field":"status","option":"=","value":"1"}]
 	ItemConditionArray *string `json:"ItemConditionArray,omitempty" xml:"ItemConditionArray,omitempty"`
-	// The item conditions in expression format.
+	// The item condition, set in expression format.
 	//
 	// example:
 	//
@@ -708,27 +742,27 @@ type GetTrafficControlTaskResponseBodyTrafficControlTargets struct {
 	//
 	// Array
 	ItemConditionType *string `json:"ItemConditionType,omitempty" xml:"ItemConditionType,omitempty"`
-	// The name of the control target.
+	// The control target.
 	//
 	// example:
 	//
 	// target-1
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// Indicates whether this is a new product regulation.
+	// Specifies whether the control applies to new products.
 	//
 	// example:
 	//
 	// false
 	NewProductRegulation *bool `json:"NewProductRegulation,omitempty" xml:"NewProductRegulation,omitempty"`
-	// The recall Policy Name.
+	// The recall policy name.
 	//
 	// example:
 	//
 	// recall-1
 	RecallName *string `json:"RecallName,omitempty" xml:"RecallName,omitempty"`
-	// The split configuration of the control target.
+	// The split parts of the control target.
 	SplitParts *GetTrafficControlTaskResponseBodyTrafficControlTargetsSplitParts `json:"SplitParts,omitempty" xml:"SplitParts,omitempty" type:"Struct"`
-	// The start time.
+	// The start time. The format is YYYY-MM-DD.
 	//
 	// example:
 	//
@@ -954,7 +988,7 @@ func (s *GetTrafficControlTaskResponseBodyTrafficControlTargets) Validate() erro
 type GetTrafficControlTaskResponseBodyTrafficControlTargetsSplitParts struct {
 	// The list of target value split points.
 	SetPoints []*int32 `json:"SetPoints,omitempty" xml:"SetPoints,omitempty" type:"Repeated"`
-	// The list of control target set values.
+	// The list of set values for the control target.
 	SetValues []*int64 `json:"SetValues,omitempty" xml:"SetValues,omitempty" type:"Repeated"`
 	// The time points for splitting the control target.
 	TimePoints []*int32 `json:"TimePoints,omitempty" xml:"TimePoints,omitempty" type:"Repeated"`

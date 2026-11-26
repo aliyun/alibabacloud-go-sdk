@@ -119,65 +119,77 @@ type ListTrafficControlTasksResponseBodyTrafficControlTasks struct {
 	EffectiveSceneNameList []*string `json:"EffectiveSceneNameList,omitempty" xml:"EffectiveSceneNameList,omitempty" type:"Repeated"`
 	// The list of effective scene names.
 	EffectiveSceneNames []*int32 `json:"EffectiveSceneNames,omitempty" xml:"EffectiveSceneNames,omitempty" type:"Repeated"`
-	// The end time. The time is in the YYYY-MM-DD format.
+	// The end time. The format is YYYY-MM-DD.
 	//
 	// example:
 	//
 	// 2024-04-25
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// Specifies whether the task has been published.
+	// Indicates whether it has been published.
 	//
 	// example:
 	//
 	// false
 	EverPublished *bool `json:"EverPublished,omitempty" xml:"EverPublished,omitempty"`
-	// The execution time. Valid values:
+	// The execution time.
 	//
 	// - Permanent: Executes permanently.
 	//
-	// - TimeRange: Executes within a specified time range. If you select this value, you must specify the StartTime and EndTime parameters.
+	// - TimeRange: Specifies a time range. If you select this value, you must specify StartTime and EndTime.
 	//
 	// example:
 	//
 	// Permanent
 	ExecutionTime *string `json:"ExecutionTime,omitempty" xml:"ExecutionTime,omitempty"`
+	// The expiration information of the Flink job in each environment.
+	//
+	// example:
+	//
+	// {""}
+	FlinkJobOutdated *string `json:"FlinkJobOutdated,omitempty" xml:"FlinkJobOutdated,omitempty"`
+	// The Flink job information.
+	//
+	// example:
+	//
+	// {""}
+	FlinkJobs *string `json:"FlinkJobs,omitempty" xml:"FlinkJobs,omitempty"`
 	// The Flink resource ID.
 	//
 	// example:
 	//
 	// resource-xxx
 	FlinkResourceId *string `json:"FlinkResourceId,omitempty" xml:"FlinkResourceId,omitempty"`
-	// The Flink resource name.
+	// The name of the Flink resource.
 	//
 	// example:
 	//
 	// flink_test
 	FlinkResourceName *string `json:"FlinkResourceName,omitempty" xml:"FlinkResourceName,omitempty"`
-	// The creation time. The time is in the ISO 8601 format and uses Z to indicate the UTC time zone.
+	// The creation time. The format is ISO 8601, where Z indicates the UTC time zone.
 	//
 	// example:
 	//
 	// 2024-03-25T06:04:28.441Z
 	GmtCreateTime *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
-	// The update time. The time is in the ISO 8601 format and uses Z to indicate the UTC time zone.
+	// The update time. The format is ISO 8601, where Z indicates the UTC time zone.
 	//
 	// example:
 	//
 	// 2024-03-25T06:04:28.441Z
 	GmtModifiedTime *string `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
-	// The array-formatted conditions for items.
+	// The item conditions in array format.
 	//
 	// example:
 	//
 	// [{"field":"status","option":"=","value":"1"}]
 	ItemConditionArray *string `json:"ItemConditionArray,omitempty" xml:"ItemConditionArray,omitempty"`
-	// The expression-formatted conditions for items.
+	// The item conditions in expression format.
 	//
 	// example:
 	//
 	// status=1
 	ItemConditionExpress *string `json:"ItemConditionExpress,omitempty" xml:"ItemConditionExpress,omitempty"`
-	// The condition type for items.
+	// The condition type of the item.
 	//
 	// example:
 	//
@@ -195,13 +207,13 @@ type ListTrafficControlTasksResponseBodyTrafficControlTasks struct {
 	//
 	// task_1
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The list of pre-release experiment IDs.
+	// The list of staging experiment IDs.
 	//
 	// example:
 	//
 	// 1,2
 	PreExperimentIds *string `json:"PreExperimentIds,omitempty" xml:"PreExperimentIds,omitempty"`
-	// The status in the pre-release environment.
+	// The status in the staging environment.
 	//
 	// example:
 	//
@@ -219,13 +231,13 @@ type ListTrafficControlTasksResponseBodyTrafficControlTasks struct {
 	//
 	// Runnning
 	ProductStatus *string `json:"ProductStatus,omitempty" xml:"ProductStatus,omitempty"`
-	// The scene ID. You can obtain this ID by calling the ListScenes operation.
+	// The scene ID. You can call the ListScenes operation to obtain the scene ID.
 	//
 	// example:
 	//
 	// 4
 	SceneId *string `json:"SceneId,omitempty" xml:"SceneId,omitempty"`
-	// The scene name.
+	// The name of the scene.
 	//
 	// example:
 	//
@@ -241,19 +253,19 @@ type ListTrafficControlTasksResponseBodyTrafficControlTasks struct {
 	ServiceIdList []*int32 `json:"ServiceIdList,omitempty" xml:"ServiceIdList,omitempty" type:"Repeated"`
 	// The list of bound engine service IDs.
 	ServiceIds []*string `json:"ServiceIds,omitempty" xml:"ServiceIds,omitempty" type:"Repeated"`
-	// The start time. The time is in the YYYY-MM-DD format.
+	// The start time. The format is YYYY-MM-DD.
 	//
 	// example:
 	//
 	// 2024-03-25
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The expression-formatted conditions for behavior statistics.
+	// The expression format for behavior statistics.
 	//
 	// example:
 	//
 	// event=click
 	StatisBahaviorConditionExpress *string `json:"StatisBahaviorConditionExpress,omitempty" xml:"StatisBahaviorConditionExpress,omitempty"`
-	// The array-formatted conditions for behavior statistics.
+	// The array-format conditions for behavior statistics.
 	//
 	// example:
 	//
@@ -279,19 +291,19 @@ type ListTrafficControlTasksResponseBodyTrafficControlTasks struct {
 	//
 	// 1
 	TrafficControlTaskId *string `json:"TrafficControlTaskId,omitempty" xml:"TrafficControlTaskId,omitempty"`
-	// The array-formatted conditions for the target user group.
+	// The array-format conditions for the intervened user group.
 	//
 	// example:
 	//
 	// [{"field":"gender","option":"=","value":"male"}]
 	UserConditionArray *string `json:"UserConditionArray,omitempty" xml:"UserConditionArray,omitempty"`
-	// The expression-formatted conditions for the target user group.
+	// The expression-format conditions for the intervened user group.
 	//
 	// example:
 	//
 	// age<=30&&(3<=level<=6)&&gender=male
 	UserConditionExpress *string `json:"UserConditionExpress,omitempty" xml:"UserConditionExpress,omitempty"`
-	// The condition type for the target user group.
+	// The condition type of the intervened user group.
 	//
 	// example:
 	//
@@ -355,6 +367,14 @@ func (s *ListTrafficControlTasksResponseBodyTrafficControlTasks) GetEverPublishe
 
 func (s *ListTrafficControlTasksResponseBodyTrafficControlTasks) GetExecutionTime() *string {
 	return s.ExecutionTime
+}
+
+func (s *ListTrafficControlTasksResponseBodyTrafficControlTasks) GetFlinkJobOutdated() *string {
+	return s.FlinkJobOutdated
+}
+
+func (s *ListTrafficControlTasksResponseBodyTrafficControlTasks) GetFlinkJobs() *string {
+	return s.FlinkJobs
 }
 
 func (s *ListTrafficControlTasksResponseBodyTrafficControlTasks) GetFlinkResourceId() *string {
@@ -528,6 +548,16 @@ func (s *ListTrafficControlTasksResponseBodyTrafficControlTasks) SetExecutionTim
 	return s
 }
 
+func (s *ListTrafficControlTasksResponseBodyTrafficControlTasks) SetFlinkJobOutdated(v string) *ListTrafficControlTasksResponseBodyTrafficControlTasks {
+	s.FlinkJobOutdated = &v
+	return s
+}
+
+func (s *ListTrafficControlTasksResponseBodyTrafficControlTasks) SetFlinkJobs(v string) *ListTrafficControlTasksResponseBodyTrafficControlTasks {
+	s.FlinkJobs = &v
+	return s
+}
+
 func (s *ListTrafficControlTasksResponseBodyTrafficControlTasks) SetFlinkResourceId(v string) *ListTrafficControlTasksResponseBodyTrafficControlTasks {
 	s.FlinkResourceId = &v
 	return s
@@ -687,55 +717,55 @@ func (s *ListTrafficControlTasksResponseBodyTrafficControlTasks) Validate() erro
 }
 
 type ListTrafficControlTasksResponseBodyTrafficControlTasksTrafficControlTargets struct {
-	// The end time. The time is in the YYYY-MM-DD format.
+	// The end time. The format is YYYY-MM-DD.
 	//
 	// example:
 	//
 	// 2024-04-25
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The event for the traffic control target.
+	// The event of the control target.
 	//
 	// example:
 	//
 	// click
 	Event *string `json:"Event,omitempty" xml:"Event,omitempty"`
-	// The creation time. The time is in the ISO 8601 format and includes the time zone offset.
+	// The creation time. The format is ISO 8601 and includes the time zone offset.
 	//
 	// example:
 	//
 	// 2025-06-03T15:08:10.58+08:00
 	GmtCreateTime *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
-	// The update time. The time is in the ISO 8601 format and includes the time zone offset.
+	// The update time. The format is ISO 8601 and includes the time zone offset.
 	//
 	// example:
 	//
 	// 2025-11-21T16:26:58.57+08:00
 	GmtModifiedTime *string `json:"GmtModifiedTime,omitempty" xml:"GmtModifiedTime,omitempty"`
-	// The array-formatted conditions for items.
+	// The item conditions in array format.
 	//
 	// example:
 	//
 	// [{"field":"status","option":"=","value":"1"}]
 	ItemConditionArray *string `json:"ItemConditionArray,omitempty" xml:"ItemConditionArray,omitempty"`
-	// The expression-formatted conditions for items.
+	// The item conditions in expression format.
 	//
 	// example:
 	//
 	// status=1
 	ItemConditionExpress *string `json:"ItemConditionExpress,omitempty" xml:"ItemConditionExpress,omitempty"`
-	// The condition type for items.
+	// The condition type of the item.
 	//
 	// example:
 	//
 	// Array
 	ItemConditionType *string `json:"ItemConditionType,omitempty" xml:"ItemConditionType,omitempty"`
-	// The traffic control target.
+	// The control target.
 	//
 	// example:
 	//
 	// target-1
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// Specifies whether the recall applies to new items.
+	// Indicates whether it is a new item recall.
 	//
 	// example:
 	//
@@ -749,7 +779,7 @@ type ListTrafficControlTasksResponseBodyTrafficControlTasksTrafficControlTargets
 	RecallName *string `json:"RecallName,omitempty" xml:"RecallName,omitempty"`
 	// The details of the split points.
 	SplitParts *ListTrafficControlTasksResponseBodyTrafficControlTasksTrafficControlTargetsSplitParts `json:"SplitParts,omitempty" xml:"SplitParts,omitempty" type:"Struct"`
-	// The start time. The time is in the YYYY-MM-DD format.
+	// The start time. The format is YYYY-MM-DD.
 	//
 	// example:
 	//
@@ -767,7 +797,7 @@ type ListTrafficControlTasksResponseBodyTrafficControlTasksTrafficControlTargets
 	//
 	// Opened
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The tolerance range of the traffic control target.
+	// The tolerance range of the control target.
 	//
 	// example:
 	//
@@ -785,7 +815,7 @@ type ListTrafficControlTasksResponseBodyTrafficControlTasksTrafficControlTargets
 	//
 	// 1
 	TrafficControlTaskId *string `json:"TrafficControlTaskId,omitempty" xml:"TrafficControlTaskId,omitempty"`
-	// The target value for traffic control.
+	// The value of the control target.
 	//
 	// example:
 	//

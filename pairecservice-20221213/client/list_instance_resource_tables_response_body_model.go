@@ -24,7 +24,7 @@ type ListInstanceResourceTablesResponseBody struct {
 	//
 	// 01D22D08-BA20-5F35-8302-99115F288220
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The list of tables.
+	// The list of data tables.
 	Tables []*ListInstanceResourceTablesResponseBodyTables `json:"Tables,omitempty" xml:"Tables,omitempty" type:"Repeated"`
 	// The total count.
 	//

@@ -417,13 +417,13 @@ type ListDataDiagnosisReportsResponseBodyReportsOfBaseStatistics struct {
 	//
 	// example:
 	//
-	// \\\\N
+	// \\N
 	DefaultNullCount *string `json:"DefaultNullCount,omitempty" xml:"DefaultNullCount,omitempty"`
 	// The equivalent null value rate.
 	//
 	// example:
 	//
-	// \\\\N
+	// \\N
 	DefaultNullRate *string `json:"DefaultNullRate,omitempty" xml:"DefaultNullRate,omitempty"`
 	// The date.
 	//

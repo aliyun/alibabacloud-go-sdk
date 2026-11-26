@@ -38,9 +38,9 @@ type SyncFeatureConsistencyCheckJobReplayLogRequest struct {
 	//
 	// example:
 	//
-	// [{\\"Value\\":{\\"FloatFeature\\":0.1}}]
+	// [{\"Value\":{\"FloatFeature\":0.1}}]
 	ContextFeatures *string `json:"ContextFeatures,omitempty" xml:"ContextFeatures,omitempty"`
-	// The feature consistency check job configuration ID. To obtain this ID, see [ListFeatureConsistencyCheckJobConfigs](https://help.aliyun.com/document_detail/2557567.html).
+	// The ID of the feature consistency check job configuration. For information about how to obtain the configuration ID, see [ListFeatureConsistencyCheckJobConfigs](https://help.aliyun.com/document_detail/2557567.html).
 	//
 	// This parameter is required.
 	//
@@ -56,7 +56,7 @@ type SyncFeatureConsistencyCheckJobReplayLogRequest struct {
 	//
 	// week_day:1 | userid:3 | itemid:9001 | cate:cat1 | click_5_seq__cate:cat1
 	GeneratedFeatures *string `json:"GeneratedFeatures,omitempty" xml:"GeneratedFeatures,omitempty"`
-	// The instance ID. To obtain this ID, see [ListInstances](https://help.aliyun.com/document_detail/2411819.html).
+	// The ID of the instance. For information about how to obtain the instance ID, see [ListInstances](https://help.aliyun.com/document_detail/2411819.html).
 	//
 	// This parameter is required.
 	//
@@ -64,7 +64,7 @@ type SyncFeatureConsistencyCheckJobReplayLogRequest struct {
 	//
 	// pairec-cn-********
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The item ID from the log.
+	// The item ID in the log.
 	//
 	// This parameter is required.
 	//
@@ -72,7 +72,7 @@ type SyncFeatureConsistencyCheckJobReplayLogRequest struct {
 	//
 	// 9010
 	LogItemId *string `json:"LogItemId,omitempty" xml:"LogItemId,omitempty"`
-	// The request ID from the log.
+	// The request ID in the log.
 	//
 	// This parameter is required.
 	//
@@ -80,7 +80,7 @@ type SyncFeatureConsistencyCheckJobReplayLogRequest struct {
 	//
 	// 728C5E01-ABF6-5AA8-B9FC-B3BA05DECC77
 	LogRequestId *string `json:"LogRequestId,omitempty" xml:"LogRequestId,omitempty"`
-	// The request time from the log, provided as a UNIX epoch timestamp.
+	// The request time in the log (UNIX epoch timestamp).
 	//
 	// This parameter is required.
 	//
@@ -88,7 +88,7 @@ type SyncFeatureConsistencyCheckJobReplayLogRequest struct {
 	//
 	// 1693900981465
 	LogRequestTime *int64 `json:"LogRequestTime,omitempty" xml:"LogRequestTime,omitempty"`
-	// The user ID from the log.
+	// The user ID in the log.
 	//
 	// This parameter is required.
 	//
@@ -102,9 +102,9 @@ type SyncFeatureConsistencyCheckJobReplayLogRequest struct {
 	//
 	// example:
 	//
-	// author__kv_city_expr_cnt_15d：北京市 | tem__min_age_15d:28
+	// author__kv_city_expr_cnt_15d:Beijing | tem__min_age_15d:28
 	RawFeatures *string `json:"RawFeatures,omitempty" xml:"RawFeatures,omitempty"`
-	// The scene name.
+	// The name of the scene.
 	//
 	// This parameter is required.
 	//

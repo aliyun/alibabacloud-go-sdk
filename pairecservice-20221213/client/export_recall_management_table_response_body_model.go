@@ -16,7 +16,7 @@ type iExportRecallManagementTableResponseBody interface {
 }
 
 type ExportRecallManagementTableResponseBody struct {
-  // The export job ID. Use this ID to track the job\\"s status.
+  // The export job ID. Use this ID to track the job\"s status.
   // 
   // example:
   // 

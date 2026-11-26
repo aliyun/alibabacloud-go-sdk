@@ -146,7 +146,7 @@ type CreateTrafficControlTaskRequest struct {
 	//
 	// example:
 	//
-	// [{\\"field\\":\\"status\\",\\"option\\":\\"=\\",\\"value\\":\\"1\\"}]
+	// [{\"field\":\"status\",\"option\":\"=\",\"value\":\"1\"}]
 	ItemConditionArray *string `json:"ItemConditionArray,omitempty" xml:"ItemConditionArray,omitempty"`
 	// The conditions for items in expression format.
 	//
@@ -214,7 +214,7 @@ type CreateTrafficControlTaskRequest struct {
 	//
 	// example:
 	//
-	// [{\\"field\\":\\"click\\",\\"option\\":\\"<=\\",\\"value\\":\\"30\\"}]
+	// [{\"field\":\"click\",\"option\":\"<=\",\"value\":\"30\"}]
 	StatisBehaviorConditionArray *string `json:"StatisBehaviorConditionArray,omitempty" xml:"StatisBehaviorConditionArray,omitempty"`
 	// The conditions for statistical behaviors in expression format.
 	//
@@ -238,7 +238,7 @@ type CreateTrafficControlTaskRequest struct {
 	//
 	// example:
 	//
-	// [{\\"field\\":\\"gender\\",\\"option\\":\\"=\\",\\"value\\":\\"male\\"}]
+	// [{\"field\":\"gender\",\"option\":\"=\",\"value\":\"male\"}]
 	UserConditionArray *string `json:"UserConditionArray,omitempty" xml:"UserConditionArray,omitempty"`
 	// The conditions for the target users in expression format.
 	//
@@ -563,7 +563,7 @@ type CreateTrafficControlTaskRequestTrafficControlTargets struct {
 	//
 	// example:
 	//
-	// [{\\"field\\":\\"status\\",\\"option\\":\\"=\\",\\"value\\":\\"1\\"}]
+	// [{\"field\":\"status\",\"option\":\"=\",\"value\":\"1\"}]
 	ItemConditionArray *string `json:"ItemConditionArray,omitempty" xml:"ItemConditionArray,omitempty"`
 	// The conditions for items in expression format.
 	//

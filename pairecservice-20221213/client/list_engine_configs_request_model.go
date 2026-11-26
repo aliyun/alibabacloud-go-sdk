@@ -32,7 +32,7 @@ type ListEngineConfigsRequest struct {
 	//
 	// - Daily: Daily environment.
 	//
-	// - Pre: Pre-release environment.
+	// - Pre: Staging environment.
 	//
 	// - Prod: Production environment.
 	//
@@ -40,7 +40,7 @@ type ListEngineConfigsRequest struct {
 	//
 	// Pre
 	Environment *string `json:"Environment,omitempty" xml:"Environment,omitempty"`
-	// The instance ID. You can obtain the instance ID by calling the [ListInstances](https://help.aliyun.com/document_detail/2411819.html) operation.
+	// The ID of the instance. You can call the [ListInstances](https://help.aliyun.com/document_detail/2411819.html) operation to query instance IDs.
 	//
 	// This parameter is required.
 	//
@@ -48,7 +48,7 @@ type ListEngineConfigsRequest struct {
 	//
 	// pairec-cn-***test
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The engine configuration name.
+	// The name of the engine configuration.
 	//
 	// example:
 	//
@@ -66,7 +66,7 @@ type ListEngineConfigsRequest struct {
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The scene ID.
+	// The scenario.
 	//
 	// example:
 	//
@@ -76,15 +76,15 @@ type ListEngineConfigsRequest struct {
 	//
 	// - Released: Released.
 	//
-	// - Unreleased: Not released.
+	// - Unreleased: Unreleased.
 	//
 	// example:
 	//
 	// Released
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The version filter. Valid values:
+	// The version filter. Valid value:
 	//
-	// latest: the most recently updated version.
+	// - latest: The most recently updated version.
 	//
 	// example:
 	//

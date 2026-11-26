@@ -2,6 +2,7 @@
 package client
 
 import (
+	gatewayclient "github.com/alibabacloud-go/alibabacloud-gateway-pop/client"
 	openapi "github.com/alibabacloud-go/darabonba-openapi/v2/client"
 	openapiutil "github.com/alibabacloud-go/darabonba-openapi/v2/utils"
 	"github.com/alibabacloud-go/tea/dara"
@@ -24,6 +25,13 @@ func (client *Client) Init(config *openapiutil.Config) (_err error) {
 	if _err != nil {
 		return _err
 	}
+	client.ProductId = dara.String("PaiRecService")
+	gatewayClient, _err := gatewayclient.NewClient()
+	if _err != nil {
+		return _err
+	}
+
+	client.Spi = gatewayClient
 	client.EndpointRule = dara.String("regional")
 	_err = client.CheckConfig(config)
 	if _err != nil {
@@ -533,13 +541,13 @@ func (client *Client) CheckInstanceResources(InstanceId *string, request *CheckI
 
 // Summary:
 //
-// Checks whether a specified recall management service is working properly.
+// Checks whether the specified recall management service is working properly.
 //
 // Description:
 //
 // ## Request description
 //
-// This operation checks the status or performance of a specific recall management service by using the recall management service ID and related parameters. Ensure that the InstanceId field is correct to target the right instance. To test a specific version of the service, provide the RecallManagementServiceVersionId. You can also customize the request by using parameters such as Recalls, ContextParams, ExposureList, and RetainFields to accurately simulate real-world scenarios.
+// This operation allows you to check the status or performance of a specific recall management service by providing the recall management service ID and related parameters. Ensure that the `InstanceId` field is correct to point to the right instance. To test a specific version of the service, provide `RecallManagementServiceVersionId`. Additionally, you can further customize the request by using parameters such as `Recalls`, `ContextParams`, `ExposureList`, and `RetainFields` to more accurately simulate real-world scenarios.
 //
 // @param request - CheckRecallManagementServiceRequest
 //
@@ -610,13 +618,13 @@ func (client *Client) CheckRecallManagementServiceWithOptions(RecallManagementSe
 
 // Summary:
 //
-// Checks whether a specified recall management service is working properly.
+// Checks whether the specified recall management service is working properly.
 //
 // Description:
 //
 // ## Request description
 //
-// This operation checks the status or performance of a specific recall management service by using the recall management service ID and related parameters. Ensure that the InstanceId field is correct to target the right instance. To test a specific version of the service, provide the RecallManagementServiceVersionId. You can also customize the request by using parameters such as Recalls, ContextParams, ExposureList, and RetainFields to accurately simulate real-world scenarios.
+// This operation allows you to check the status or performance of a specific recall management service by providing the recall management service ID and related parameters. Ensure that the `InstanceId` field is correct to point to the right instance. To test a specific version of the service, provide `RecallManagementServiceVersionId`. Additionally, you can further customize the request by using parameters such as `Recalls`, `ContextParams`, `ExposureList`, and `RetainFields` to more accurately simulate real-world scenarios.
 //
 // @param request - CheckRecallManagementServiceRequest
 //
@@ -2227,7 +2235,7 @@ func (client *Client) CreateFeatureConsistencyCheckJob(request *CreateFeatureCon
 
 // Summary:
 //
-// Configure a feature consistency check task.
+// Creates a feature consistency check job configuration.
 //
 // @param request - CreateFeatureConsistencyCheckJobConfigRequest
 //
@@ -2458,7 +2466,7 @@ func (client *Client) CreateFeatureConsistencyCheckJobConfigWithOptions(request 
 
 // Summary:
 //
-// Configure a feature consistency check task.
+// Creates a feature consistency check job configuration.
 //
 // @param request - CreateFeatureConsistencyCheckJobConfigRequest
 //
@@ -8309,15 +8317,15 @@ func (client *Client) GetTrafficControlTarget(TrafficControlTargetId *string, re
 //
 // Description:
 //
-// ## Description
+// ## Request description
 //
 // - This operation retrieves the details of a specific traffic control task, including but not limited to the task name, description, and status.
 //
-// - TrafficControlTaskId and InstanceId are required parameters that specify the task ID and instance ID to query.
+// - `TrafficControlTaskId` and `InstanceId` are required parameters used to specify the task ID and instance ID to query, respectively.
 //
-// - Optional parameters such as Environment, Version, and ControlTargetFilter help refine the request to retrieve more specific task data or version information.
+// - Optional parameters such as `Environment`, `Version`, and `ControlTargetFilter` can help further refine the request to retrieve more specific task data or version information.
 //
-// - Check the returned data structure, especially the TrafficControlTargets section, which contains multiple control targets and their related properties.
+// - Check the returned data structure, especially the `TrafficControlTargets` section, which contains multiple control targets and their related attributes.
 //
 // @param request - GetTrafficControlTaskRequest
 //
@@ -8384,15 +8392,15 @@ func (client *Client) GetTrafficControlTaskWithOptions(TrafficControlTaskId *str
 //
 // Description:
 //
-// ## Description
+// ## Request description
 //
 // - This operation retrieves the details of a specific traffic control task, including but not limited to the task name, description, and status.
 //
-// - TrafficControlTaskId and InstanceId are required parameters that specify the task ID and instance ID to query.
+// - `TrafficControlTaskId` and `InstanceId` are required parameters used to specify the task ID and instance ID to query, respectively.
 //
-// - Optional parameters such as Environment, Version, and ControlTargetFilter help refine the request to retrieve more specific task data or version information.
+// - Optional parameters such as `Environment`, `Version`, and `ControlTargetFilter` can help further refine the request to retrieve more specific task data or version information.
 //
-// - Check the returned data structure, especially the TrafficControlTargets section, which contains multiple control targets and their related properties.
+// - Check the returned data structure, especially the `TrafficControlTargets` section, which contains multiple control targets and their related attributes.
 //
 // @param request - GetTrafficControlTaskRequest
 //
@@ -9237,7 +9245,7 @@ func (client *Client) ListDataDiagnosisReports(DataDiagnosisId *string, request 
 
 // Summary:
 //
-// Retrieves a list of engine configurations.
+// Retrieves the engine configurations.
 //
 // @param request - ListEngineConfigsRequest
 //
@@ -9312,7 +9320,7 @@ func (client *Client) ListEngineConfigsWithOptions(request *ListEngineConfigsReq
 
 // Summary:
 //
-// Retrieves a list of engine configurations.
+// Retrieves the engine configurations.
 //
 // @param request - ListEngineConfigsRequest
 //
@@ -9895,13 +9903,13 @@ func (client *Client) ListInstanceResourceSchemas(InstanceId *string, ResourceId
 
 // Summary:
 //
-// Queries all tables in a specified instance and data source.
+// Queries all data tables under a specified instance and data source.
 //
 // Description:
 //
 // ## Request description
 //
-// Provide the instance ID (InstanceId) and data source ID (ResourceId) to retrieve a list of all tables in the data source. You can use the optional `MaxcomputeSchema` parameter to specify a MaxCompute schema to further filter the results.
+// By providing the instance ID (InstanceId) and the data source ID (ResourceId), you can retrieve a list of all data tables under the data source. The optional `MaxcomputeSchema` parameter allows you to specify the MaxCompute schema to further filter the results.
 //
 // @param request - ListInstanceResourceTablesRequest
 //
@@ -9920,6 +9928,10 @@ func (client *Client) ListInstanceResourceTablesWithOptions(InstanceId *string, 
 	query := map[string]interface{}{}
 	if !dara.IsNil(request.MaxcomputeSchema) {
 		query["MaxcomputeSchema"] = request.MaxcomputeSchema
+	}
+
+	if !dara.IsNil(request.TableType) {
+		query["TableType"] = request.TableType
 	}
 
 	req := &openapiutil.OpenApiRequest{
@@ -9948,13 +9960,13 @@ func (client *Client) ListInstanceResourceTablesWithOptions(InstanceId *string, 
 
 // Summary:
 //
-// Queries all tables in a specified instance and data source.
+// Queries all data tables under a specified instance and data source.
 //
 // Description:
 //
 // ## Request description
 //
-// Provide the instance ID (InstanceId) and data source ID (ResourceId) to retrieve a list of all tables in the data source. You can use the optional `MaxcomputeSchema` parameter to specify a MaxCompute schema to further filter the results.
+// By providing the instance ID (InstanceId) and the data source ID (ResourceId), you can retrieve a list of all data tables under the data source. The optional `MaxcomputeSchema` parameter allows you to specify the MaxCompute schema to further filter the results.
 //
 // @param request - ListInstanceResourceTablesRequest
 //
@@ -11481,19 +11493,19 @@ func (client *Client) ListTrafficControlTargetTrafficHistory(TrafficControlTarge
 
 // Summary:
 //
-// Queries traffic control tasks that meet specified conditions.
+// Queries the traffic control tasks that meet the specified conditions.
 //
 // Description:
 //
 // ## Request description
 //
-// - This operation retrieves a list of traffic control nodes that meet specific conditional requirements.
+// - This operation retrieves a list of traffic control nodes that meet specific conditional criteria.
 //
-// - You can filter the returned nodes and apply sorting by specifying different query parameters.
+// - You can use different query parameters for filtering and sorting the returned list of nodes.
 //
-// - Paged query is supported. You can also choose to return all data at once without paging.
+// - Paged query is supported. You can also retrieve all data at once without paging.
 //
-// - Note: InstanceId is required, and other parameters are options. Specify other parameters as needed to obtain more precise results.
+// - Note: `InstanceId` is required. All other parameters are options. Specify them as needed to obtain more accurate results.
 //
 // @param request - ListTrafficControlTasksRequest
 //
@@ -11588,19 +11600,19 @@ func (client *Client) ListTrafficControlTasksWithOptions(request *ListTrafficCon
 
 // Summary:
 //
-// Queries traffic control tasks that meet specified conditions.
+// Queries the traffic control tasks that meet the specified conditions.
 //
 // Description:
 //
 // ## Request description
 //
-// - This operation retrieves a list of traffic control nodes that meet specific conditional requirements.
+// - This operation retrieves a list of traffic control nodes that meet specific conditional criteria.
 //
-// - You can filter the returned nodes and apply sorting by specifying different query parameters.
+// - You can use different query parameters for filtering and sorting the returned list of nodes.
 //
-// - Paged query is supported. You can also choose to return all data at once without paging.
+// - Paged query is supported. You can also retrieve all data at once without paging.
 //
-// - Note: InstanceId is required, and other parameters are options. Specify other parameters as needed to obtain more precise results.
+// - Note: `InstanceId` is required. All other parameters are options. Specify them as needed to obtain more accurate results.
 //
 // @param request - ListTrafficControlTasksRequest
 //
@@ -13484,13 +13496,13 @@ func (client *Client) SplitTrafficControlTarget(TrafficControlTargetId *string, 
 
 // Summary:
 //
-// Starts a traffic control task for a specific traffic control target.
+// Starts a traffic shaping task with the specified ID.
 //
 // Description:
 //
-// ## Request
+// ## Request description
 //
-// Call this operation to start a traffic control task by providing the `TrafficControlTargetId` and `InstanceId`.
+// You can call this operation to start a specific traffic shaping task by specifying the `TrafficControlTargetId` and `InstanceId` parameters. Ensure that you correctly specify the values of these two parameters in the request to prevent operation failures.
 //
 // @param request - StartTrafficControlTargetRequest
 //
@@ -13507,6 +13519,10 @@ func (client *Client) StartTrafficControlTargetWithOptions(TrafficControlTargetI
 		}
 	}
 	body := map[string]interface{}{}
+	if !dara.IsNil(request.Environment) {
+		body["Environment"] = request.Environment
+	}
+
 	if !dara.IsNil(request.InstanceId) {
 		body["InstanceId"] = request.InstanceId
 	}
@@ -13537,13 +13553,13 @@ func (client *Client) StartTrafficControlTargetWithOptions(TrafficControlTargetI
 
 // Summary:
 //
-// Starts a traffic control task for a specific traffic control target.
+// Starts a traffic shaping task with the specified ID.
 //
 // Description:
 //
-// ## Request
+// ## Request description
 //
-// Call this operation to start a traffic control task by providing the `TrafficControlTargetId` and `InstanceId`.
+// You can call this operation to start a specific traffic shaping task by specifying the `TrafficControlTargetId` and `InstanceId` parameters. Ensure that you correctly specify the values of these two parameters in the request to prevent operation failures.
 //
 // @param request - StartTrafficControlTargetRequest
 //
@@ -13804,13 +13820,13 @@ func (client *Client) StopTrafficControlFlinkTask(TrafficControlTaskId *string, 
 
 // Summary:
 //
-// Stops a specific traffic control target.
+// Stops a specified traffic control target.
 //
 // Description:
 //
-// ## Request
+// ## Request description
 //
-// This operation stops a traffic control task using the provided `TrafficControlTargetId` and `InstanceId`. Ensure that the parameter values are accurate to avoid stopping the wrong target or instance.
+// Call this operation to stop an ongoing traffic control task by specifying the `TrafficControlTargetId` and `InstanceId`. Ensure that the parameter values are accurate to avoid operating on the wrong target or instance.
 //
 // @param request - StopTrafficControlTargetRequest
 //
@@ -13827,6 +13843,10 @@ func (client *Client) StopTrafficControlTargetWithOptions(TrafficControlTargetId
 		}
 	}
 	body := map[string]interface{}{}
+	if !dara.IsNil(request.Environment) {
+		body["Environment"] = request.Environment
+	}
+
 	if !dara.IsNil(request.InstanceId) {
 		body["InstanceId"] = request.InstanceId
 	}
@@ -13857,13 +13877,13 @@ func (client *Client) StopTrafficControlTargetWithOptions(TrafficControlTargetId
 
 // Summary:
 //
-// Stops a specific traffic control target.
+// Stops a specified traffic control target.
 //
 // Description:
 //
-// ## Request
+// ## Request description
 //
-// This operation stops a traffic control task using the provided `TrafficControlTargetId` and `InstanceId`. Ensure that the parameter values are accurate to avoid stopping the wrong target or instance.
+// Call this operation to stop an ongoing traffic control task by specifying the `TrafficControlTargetId` and `InstanceId`. Ensure that the parameter values are accurate to avoid operating on the wrong target or instance.
 //
 // @param request - StopTrafficControlTargetRequest
 //
@@ -13978,7 +13998,7 @@ func (client *Client) StopTrafficControlTask(TrafficControlTaskId *string, reque
 
 // Summary:
 //
-// Syncs the replay log for a feature consistency check job.
+// Synchronizes the replay logs of a feature consistency check job.
 //
 // @param request - SyncFeatureConsistencyCheckJobReplayLogRequest
 //
@@ -14061,7 +14081,7 @@ func (client *Client) SyncFeatureConsistencyCheckJobReplayLogWithOptions(request
 
 // Summary:
 //
-// Syncs the replay log for a feature consistency check job.
+// Synchronizes the replay logs of a feature consistency check job.
 //
 // @param request - SyncFeatureConsistencyCheckJobReplayLogRequest
 //

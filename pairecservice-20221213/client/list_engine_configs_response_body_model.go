@@ -18,7 +18,7 @@ type iListEngineConfigsResponseBody interface {
 }
 
 type ListEngineConfigsResponseBody struct {
-	// The list of engine configurations.
+	// The engine configurations.
 	EngineConfigs []*ListEngineConfigsResponseBodyEngineConfigs `json:"EngineConfigs,omitempty" xml:"EngineConfigs,omitempty" type:"Repeated"`
 	// The request ID.
 	//
@@ -26,7 +26,7 @@ type ListEngineConfigsResponseBody struct {
 	//
 	// 74D958EF-3598-56FA-8296-FF1575CE43DF
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries in the list.
+	// The total number of entries.
 	//
 	// example:
 	//
@@ -95,7 +95,7 @@ type ListEngineConfigsResponseBodyEngineConfigs struct {
 	//
 	// what
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The engine configuration ID.
+	// The ID of the engine configuration.
 	//
 	// example:
 	//
@@ -105,7 +105,7 @@ type ListEngineConfigsResponseBodyEngineConfigs struct {
 	//
 	// - Daily: Daily environment.
 	//
-	// - Pre: Pre-release environment.
+	// - Pre: Staging environment.
 	//
 	// - Prod: Production environment.
 	//
@@ -131,13 +131,13 @@ type ListEngineConfigsResponseBodyEngineConfigs struct {
 	//
 	// 2023-08-29 12:00:00
 	GmtReleasedTime *string `json:"GmtReleasedTime,omitempty" xml:"GmtReleasedTime,omitempty"`
-	// The engine configuration name.
+	// The name of the engine configuration.
 	//
 	// example:
 	//
 	// engine_config_v1
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The scene ID.
+	// The scenario.
 	//
 	// example:
 	//
@@ -147,13 +147,13 @@ type ListEngineConfigsResponseBodyEngineConfigs struct {
 	//
 	// - Released: Released.
 	//
-	// - UnReleased: Not released.
+	// - UnReleased: Unreleased.
 	//
 	// example:
 	//
 	// Released
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The engine configuration type.
+	// The type of the engine configuration.
 	//
 	// example:
 	//

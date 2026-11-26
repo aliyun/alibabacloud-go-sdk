@@ -9,11 +9,19 @@ type iStopTrafficControlTargetRequest interface {
 	dara.Model
 	String() string
 	GoString() string
+	SetEnvironment(v string) *StopTrafficControlTargetRequest
+	GetEnvironment() *string
 	SetInstanceId(v string) *StopTrafficControlTargetRequest
 	GetInstanceId() *string
 }
 
 type StopTrafficControlTargetRequest struct {
+	// The environment.
+	//
+	// example:
+	//
+	// Pre
+	Environment *string `json:"Environment,omitempty" xml:"Environment,omitempty"`
 	// The instance ID.
 	//
 	// example:
@@ -30,8 +38,17 @@ func (s StopTrafficControlTargetRequest) GoString() string {
 	return s.String()
 }
 
+func (s *StopTrafficControlTargetRequest) GetEnvironment() *string {
+	return s.Environment
+}
+
 func (s *StopTrafficControlTargetRequest) GetInstanceId() *string {
 	return s.InstanceId
+}
+
+func (s *StopTrafficControlTargetRequest) SetEnvironment(v string) *StopTrafficControlTargetRequest {
+	s.Environment = &v
+	return s
 }
 
 func (s *StopTrafficControlTargetRequest) SetInstanceId(v string) *StopTrafficControlTargetRequest {

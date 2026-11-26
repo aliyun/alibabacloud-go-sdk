@@ -1,3 +1,6 @@
+2026-11-26 Version: v7.3.1
+- Generated golang 2022-12-13 for PaiRecService.
+
 2026-10-28 Version: v7.3.0
 - Support API CheckRecallManagementService.
 
