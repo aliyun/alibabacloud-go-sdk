@@ -86,7 +86,7 @@ type DescribeDBInstanceConfigResponseBodyData struct {
 	//
 	// example:
 	//
-	// {\\"attendHtapList\\":[\\"pxc-hzruyzes08****\\"],\\"autoAttendHtap\\":\\"true\\",\\"delayExecutionStrategy\\":1,\\"enableConsistentReplicaRead\\":true,\\"enableHtap\\":\\"true\\",\\"masterReadWeight\\":100,\\"storageDelayThreshold\\":3}
+	// {\"attendHtapList\":[\"pxc-hzruyzes08****\"],\"autoAttendHtap\":\"true\",\"delayExecutionStrategy\":1,\"enableConsistentReplicaRead\":true,\"enableHtap\":\"true\",\"masterReadWeight\":100,\"storageDelayThreshold\":3}
 	ConfigValue *string `json:"ConfigValue,omitempty" xml:"ConfigValue,omitempty"`
 	// The instance ID.
 	//

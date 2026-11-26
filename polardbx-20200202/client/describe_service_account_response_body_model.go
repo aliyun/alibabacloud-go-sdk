@@ -26,7 +26,7 @@ type DescribeServiceAccountResponseBody struct {
 	AccessDeniedDetail *DescribeServiceAccountResponseBodyAccessDeniedDetail `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty" type:"Struct"`
 	// The instance details.
 	Data *DescribeServiceAccountResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The message returned. If the request is successful, \\"success\\" is returned. If the request fails, the corresponding error code is returned.
+	// The message returned. If the request is successful, \"success\" is returned. If the request fails, the corresponding error code is returned.
 	//
 	// example:
 	//

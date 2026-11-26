@@ -117,7 +117,7 @@ func (s *DescribeTasksResponseBody) Validate() error {
 }
 
 type DescribeTasksResponseBodyItems struct {
-	// The start time of the task. The format is yyyy-MM-dd\\"T\\"HH:mm:ss\\"Z\\".
+	// The start time of the task. The format is yyyy-MM-dd\"T\"HH:mm:ss\"Z\".
 	//
 	// example:
 	//
@@ -129,7 +129,7 @@ type DescribeTasksResponseBodyItems struct {
 	//
 	// DBName
 	DBName *string `json:"DBName,omitempty" xml:"DBName,omitempty"`
-	// The end time of the task. The format is yyyy-MM-dd\\"T\\"HH:mm:ss\\"Z\\".
+	// The end time of the task. The format is yyyy-MM-dd\"T\"HH:mm:ss\"Z\".
 	//
 	// example:
 	//

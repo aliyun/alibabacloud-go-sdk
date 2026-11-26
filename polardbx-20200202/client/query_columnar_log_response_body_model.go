@@ -62,7 +62,7 @@ type QueryColumnarLogResponseBody struct {
 	//
 	// example:
 	//
-	// {\\"NodeId\\":\\"n_7844571364614995969\\"}
+	// {\"NodeId\":\"n_7844571364614995969\"}
 	QueryId *string `json:"QueryId,omitempty" xml:"QueryId,omitempty"`
 	// The list of query results. Each row is a JSON key-value object that maps column names to text values. All scalars are returned as strings. SQL NULL is encoded as the string null, and empty strings remain as empty strings.
 	Records []map[string]*string `json:"Records,omitempty" xml:"Records,omitempty" type:"Repeated"`

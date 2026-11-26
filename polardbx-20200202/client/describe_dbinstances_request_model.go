@@ -102,7 +102,7 @@ type DescribeDBInstancesRequest struct {
 	//
 	// example:
 	//
-	// [{\\"TagKey\\":\\"test\\",\\"TagValue\\":\\"test-value\\"}]
+	// [{\"TagKey\":\"test\",\"TagValue\":\"test-value\"}]
 	Tags *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
 }
 

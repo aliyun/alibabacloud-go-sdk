@@ -1,3 +1,6 @@
+2026-11-26 Version: v4.13.1
+- Generated golang 2020-02-02 for polardbx.
+
 2026-11-24 Version: v4.13.0
 - Support API ListPxfsTenants.
 - Support API ModifyPxfsTenantQuota.

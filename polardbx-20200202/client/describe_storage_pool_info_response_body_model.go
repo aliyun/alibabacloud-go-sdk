@@ -136,7 +136,7 @@ type DescribeStoragePoolInfoResponseBodyDataStoragePools struct {
 	//
 	// example:
 	//
-	// {\\"appId\\":\\"APP_ETLUP1E5FMI5ND5IFO8W\\"}
+	// {\"appId\":\"APP_ETLUP1E5FMI5ND5IFO8W\"}
 	Extra *string `json:"Extra,omitempty" xml:"Extra,omitempty"`
 	// The time when the account was created.
 	//

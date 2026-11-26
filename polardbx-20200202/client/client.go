@@ -10989,7 +10989,7 @@ func (client *Client) DescribeShowStorageInfo(request *DescribeShowStorageInfoRe
 
 // Summary:
 //
-// Queries the details of slow SQL statements on compute nodes and storage nodes of a PolarDB-X instance.
+// Queries the details of slow SQL statements on the compute nodes and storage nodes of a PolarDB-X instance.
 //
 // @param request - DescribeSlowLogRecordsRequest
 //
@@ -11065,7 +11065,7 @@ func (client *Client) DescribeSlowLogRecordsWithOptions(request *DescribeSlowLog
 
 // Summary:
 //
-// Queries the details of slow SQL statements on compute nodes and storage nodes of a PolarDB-X instance.
+// Queries the details of slow SQL statements on the compute nodes and storage nodes of a PolarDB-X instance.
 //
 // @param request - DescribeSlowLogRecordsRequest
 //

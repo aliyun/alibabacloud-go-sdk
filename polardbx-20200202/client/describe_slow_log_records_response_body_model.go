@@ -30,15 +30,15 @@ type DescribeSlowLogRecordsResponseBody struct {
 	//
 	// pxc-********
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// The list of slow log details.
+	// The details of the slow query logs.
 	Items []*DescribeSlowLogRecordsResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
-	// The page number of the current query.
+	// The page number of the returned page.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *string `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page.
+	// The number of entries returned per page.
 	//
 	// example:
 	//
@@ -134,113 +134,113 @@ func (s *DescribeSlowLogRecordsResponseBody) Validate() error {
 }
 
 type DescribeSlowLogRecordsResponseBodyItems struct {
-	// The compute node name. This field is available only for CN.
+	// The name of the compute node. This field is available only for compute nodes (CN).
 	//
 	// example:
 	//
 	// pxc-i-xxxx
 	CNname *string `json:"CNname,omitempty" xml:"CNname,omitempty"`
-	// The database name.
+	// The name of the database.
 	//
 	// example:
 	//
 	// dcdev
 	DBName *string `json:"DBName,omitempty" xml:"DBName,omitempty"`
-	// The extension field. This field is available only for CN.
+	// The extended field. This field is available only for compute nodes (CN).
 	//
 	// example:
 	//
 	// tddl:5.4.19-20240927
 	Extension *string `json:"Extension,omitempty" xml:"Extension,omitempty"`
-	// Indicates whether the execution failed. This field is available only for CN.
+	// Indicates whether the execution failed. This field is available only for compute nodes (CN).
 	//
 	// example:
 	//
 	// 0
 	Fail *string `json:"Fail,omitempty" xml:"Fail,omitempty"`
-	// The number of rows fetched. This field is available only for CN.
+	// The number of fetched rows. This field is available only for compute nodes (CN).
 	//
 	// example:
 	//
 	// 1
 	Frows *string `json:"Frows,omitempty" xml:"Frows,omitempty"`
-	// The client name and address that connects to the database.
+	// The name and address of the client that connects to the database.
 	//
 	// example:
 	//
 	// ****[****] @ [1XX.XX.XX.XX]
 	HostAddress *string `json:"HostAddress,omitempty" xml:"HostAddress,omitempty"`
-	// The instance name. This field is available only for DN.
+	// The name of the instance. This field is available only for storage nodes (DN).
 	//
 	// example:
 	//
 	// pxc-xdb-s-xxxx
 	InsName *string `json:"InsName,omitempty" xml:"InsName,omitempty"`
-	// Indicates whether the Prepare mode is used. This field is available only for CN.
+	// Indicates whether the Prepare mode is used. This field is available only for compute nodes (CN).
 	//
 	// example:
 	//
 	// 0
 	IsBind *string `json:"IsBind,omitempty" xml:"IsBind,omitempty"`
-	// The lock duration. Unit: milliseconds (ms). This field is available only for DN.
+	// The lock duration. Unit: milliseconds. This field is available only for storage nodes (DN).
 	//
 	// example:
 	//
 	// 1
 	LockTimeMS *string `json:"LockTimeMS,omitempty" xml:"LockTimeMS,omitempty"`
-	// The parameters in Prepare mode. This field is available only for CN.
+	// The parameters in the Prepare mode. This field is available only for compute nodes (CN).
 	//
 	// example:
 	//
 	// ["1"]
 	Params *string `json:"Params,omitempty" xml:"Params,omitempty"`
-	// The number of rows scanned. This field is available only for DN.
+	// The number of scanned rows. This field is available only for storage nodes (DN).
 	//
 	// example:
 	//
 	// 10
 	ParseRowCounts *string `json:"ParseRowCounts,omitempty" xml:"ParseRowCounts,omitempty"`
-	// The timestamp. Format: YYYY-MM-ddTHH:mm.ss.SSSZ (UTC).
+	// The timestamp. Specify the time in the YYYY-MM-ddTHH:mm.ss.SSSZ format. The time must be in UTC.
 	//
-	// - In CN slow logs, this field indicates the execution start time.
+	// - In the slow query logs of compute nodes (CN), this field indicates the start time of the execution.
 	//
-	// - In DN slow logs, this field indicates the execution end time.
+	// - In the slow query logs of storage nodes (DN), this field indicates the completion time of the execution.
 	//
 	// example:
 	//
 	// 2024-11-22T02:22:22.444Z
 	QueryStartTime *string `json:"QueryStartTime,omitempty" xml:"QueryStartTime,omitempty"`
-	// The execution duration of the SQL statement. Unit: seconds (s).
+	// The execution duration of the SQL statement. Unit: seconds.
 	//
 	// example:
 	//
 	// 3.000
 	QueryTime *string `json:"QueryTime,omitempty" xml:"QueryTime,omitempty"`
-	// The execution duration of the SQL statement. Unit: milliseconds (ms).
+	// The execution duration of the SQL statement. Unit: milliseconds.
 	//
 	// example:
 	//
 	// 3000.000
 	QueryTimeMS *string `json:"QueryTimeMS,omitempty" xml:"QueryTimeMS,omitempty"`
-	// The number of rows returned. This field is available only for DN.
+	// The number of returned rows. This field is available only for storage nodes (DN).
 	//
 	// example:
 	//
 	// 20
 	ReturnRowCounts *string `json:"ReturnRowCounts,omitempty" xml:"ReturnRowCounts,omitempty"`
-	// The number of rows affected or returned. This field is available only for CN.
+	// The number of affected or returned rows. This field is available only for compute nodes (CN).
 	//
 	// example:
 	//
 	// 1
 	Rows *string `json:"Rows,omitempty" xml:"Rows,omitempty"`
-	// The number of physical SQL statements. This field is available only for CN.
+	// The number of physical SQL statements. This field is available only for compute nodes (CN).
 	//
 	// example:
 	//
 	// 1
 	SCNT *string `json:"SCNT,omitempty" xml:"SCNT,omitempty"`
-	// The unique identity of the SQL statement in slow query log statistics.
+	// The unique identifier of the SQL statement in the slow query log statistics.
 	//
 	// example:
 	//
@@ -252,43 +252,43 @@ type DescribeSlowLogRecordsResponseBodyItems struct {
 	//
 	// select 	- from test
 	SQLText *string `json:"SQLText,omitempty" xml:"SQLText,omitempty"`
-	// The SQL type. This field is available only for CN.
+	// The type of the SQL statement. This field is available only for compute nodes (CN).
 	//
 	// example:
 	//
 	// select
 	SqlType *string `json:"SqlType,omitempty" xml:"SqlType,omitempty"`
-	// The kernel template ID. This field is available only for CN.
+	// The kernel template ID. This field is available only for compute nodes (CN).
 	//
 	// example:
 	//
 	// af33ffee
 	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
-	// Indicates whether the SQL statement is too long. This field is available only for CN.
+	// Indicates whether the SQL statement is too long. This field is available only for compute nodes (CN).
 	//
 	// example:
 	//
 	// 0
 	TooLong *string `json:"TooLong,omitempty" xml:"TooLong,omitempty"`
-	// The trace ID. This field is available only for CN.
+	// The trace ID. This field is available only for compute nodes (CN).
 	//
 	// example:
 	//
 	// 17a5c5c840006000
 	TraceId *string `json:"TraceId,omitempty" xml:"TraceId,omitempty"`
-	// The transaction policy. This field is available only for CN.
+	// The transaction policy. This field is available only for compute nodes (CN).
 	//
 	// example:
 	//
 	// XA
 	TransactionPolicy *string `json:"TransactionPolicy,omitempty" xml:"TransactionPolicy,omitempty"`
-	// The transaction ID. This field is available only for CN.
+	// The transaction ID. This field is available only for compute nodes (CN).
 	//
 	// example:
 	//
 	// 17a5c5c840006000
 	TrxId *string `json:"TrxId,omitempty" xml:"TrxId,omitempty"`
-	// The workload type. This field is available only for CN.
+	// The workload type. This field is available only for compute nodes (CN).
 	//
 	// example:
 	//

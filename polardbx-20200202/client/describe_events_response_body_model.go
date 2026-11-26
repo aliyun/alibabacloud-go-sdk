@@ -133,7 +133,7 @@ type DescribeEventsResponseBodyEventItems struct {
 	//
 	// example:
 	//
-	// {\\"Domain\\": \\"rds-cn-hangzhou.aliyuncs.com\\"}
+	// {\"Domain\": \"rds-cn-hangzhou.aliyuncs.com\"}
 	EventPayload *string `json:"EventPayload,omitempty" xml:"EventPayload,omitempty"`
 	// The reason.
 	//

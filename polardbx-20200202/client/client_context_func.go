@@ -8021,7 +8021,7 @@ func (client *Client) DescribeShowStorageInfoWithContext(ctx context.Context, re
 
 // Summary:
 //
-// Queries the details of slow SQL statements on compute nodes and storage nodes of a PolarDB-X instance.
+// Queries the details of slow SQL statements on the compute nodes and storage nodes of a PolarDB-X instance.
 //
 // @param request - DescribeSlowLogRecordsRequest
 //

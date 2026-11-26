@@ -86,7 +86,7 @@ type DescribeSupabaseInstanceAttributeResponseBodyAccessDeniedDetail struct {
 	//
 	// xxx
 	AuthAction *string `json:"AuthAction,omitempty" xml:"AuthAction,omitempty"`
-	// The name of the authentication principal.
+	// The display name of the authentication principal.
 	//
 	// example:
 	//
@@ -104,13 +104,13 @@ type DescribeSupabaseInstanceAttributeResponseBodyAccessDeniedDetail struct {
 	//
 	// 222
 	AuthPrincipalType *string `json:"AuthPrincipalType,omitempty" xml:"AuthPrincipalType,omitempty"`
-	// The diagnostic message.
+	// The encoded diagnostic message.
 	//
 	// example:
 	//
 	// AQEAAAAAaKPfwjY0MzMyODRGLUZCQkQtNTA1RS04MUUxLTc5NTkzODk2MUIzMg==
 	EncodedDiagnosticMessage *string `json:"EncodedDiagnosticMessage,omitempty" xml:"EncodedDiagnosticMessage,omitempty"`
-	// The no permission type.
+	// The type of missing permissions.
 	//
 	// example:
 	//
@@ -200,7 +200,7 @@ func (s *DescribeSupabaseInstanceAttributeResponseBodyAccessDeniedDetail) Valida
 }
 
 type DescribeSupabaseInstanceAttributeResponseBodyData struct {
-	// The endpoints.
+	// The connection endpoints.
 	ConnAddrs []*DescribeSupabaseInstanceAttributeResponseBodyDataConnAddrs `json:"ConnAddrs,omitempty" xml:"ConnAddrs,omitempty" type:"Repeated"`
 	// The creation time.
 	//
@@ -226,13 +226,19 @@ type DescribeSupabaseInstanceAttributeResponseBodyData struct {
 	//
 	// false
 	Expired *bool `json:"Expired,omitempty" xml:"Expired,omitempty"`
+	// The latest minor engine version.
+	//
+	// example:
+	//
+	// polardb-2.6.0_xcluster8.4.21-20260716_pxbaas-20260915
+	LatestMinorVersion *string `json:"LatestMinorVersion,omitempty" xml:"LatestMinorVersion,omitempty"`
 	// The lock mode.
 	//
 	// example:
 	//
 	// Unlock
 	LockMode *string `json:"LockMode,omitempty" xml:"LockMode,omitempty"`
-	// The minor version.
+	// The minor engine version.
 	//
 	// example:
 	//
@@ -270,7 +276,7 @@ type DescribeSupabaseInstanceAttributeResponseBodyData struct {
 	//
 	// Running
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The Supabase specification code.
+	// The Supabase class code.
 	//
 	// example:
 	//
@@ -300,6 +306,18 @@ type DescribeSupabaseInstanceAttributeResponseBodyData struct {
 	//
 	// vpc-********
 	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
+	// The complete HTTP access URL for WebApps. This parameter is not returned if WebApps is not enabled.
+	//
+	// example:
+	//
+	// http://example.com:8000/apps/
+	WebAppsHttpUrl *string `json:"WebAppsHttpUrl,omitempty" xml:"WebAppsHttpUrl,omitempty"`
+	// The complete HTTPS access URL for WebApps. This parameter is not returned if WebApps is not enabled.
+	//
+	// example:
+	//
+	// https://example.com:8443/apps/
+	WebAppsUrl *string `json:"WebAppsUrl,omitempty" xml:"WebAppsUrl,omitempty"`
 	// The zone ID.
 	//
 	// example:
@@ -334,6 +352,10 @@ func (s *DescribeSupabaseInstanceAttributeResponseBodyData) GetEngineVersion() *
 
 func (s *DescribeSupabaseInstanceAttributeResponseBodyData) GetExpired() *bool {
 	return s.Expired
+}
+
+func (s *DescribeSupabaseInstanceAttributeResponseBodyData) GetLatestMinorVersion() *string {
+	return s.LatestMinorVersion
 }
 
 func (s *DescribeSupabaseInstanceAttributeResponseBodyData) GetLockMode() *string {
@@ -388,6 +410,14 @@ func (s *DescribeSupabaseInstanceAttributeResponseBodyData) GetVpcId() *string {
 	return s.VpcId
 }
 
+func (s *DescribeSupabaseInstanceAttributeResponseBodyData) GetWebAppsHttpUrl() *string {
+	return s.WebAppsHttpUrl
+}
+
+func (s *DescribeSupabaseInstanceAttributeResponseBodyData) GetWebAppsUrl() *string {
+	return s.WebAppsUrl
+}
+
 func (s *DescribeSupabaseInstanceAttributeResponseBodyData) GetZoneId() *string {
 	return s.ZoneId
 }
@@ -414,6 +444,11 @@ func (s *DescribeSupabaseInstanceAttributeResponseBodyData) SetEngineVersion(v s
 
 func (s *DescribeSupabaseInstanceAttributeResponseBodyData) SetExpired(v bool) *DescribeSupabaseInstanceAttributeResponseBodyData {
 	s.Expired = &v
+	return s
+}
+
+func (s *DescribeSupabaseInstanceAttributeResponseBodyData) SetLatestMinorVersion(v string) *DescribeSupabaseInstanceAttributeResponseBodyData {
+	s.LatestMinorVersion = &v
 	return s
 }
 
@@ -479,6 +514,16 @@ func (s *DescribeSupabaseInstanceAttributeResponseBodyData) SetVSwitchId(v strin
 
 func (s *DescribeSupabaseInstanceAttributeResponseBodyData) SetVpcId(v string) *DescribeSupabaseInstanceAttributeResponseBodyData {
 	s.VpcId = &v
+	return s
+}
+
+func (s *DescribeSupabaseInstanceAttributeResponseBodyData) SetWebAppsHttpUrl(v string) *DescribeSupabaseInstanceAttributeResponseBodyData {
+	s.WebAppsHttpUrl = &v
+	return s
+}
+
+func (s *DescribeSupabaseInstanceAttributeResponseBodyData) SetWebAppsUrl(v string) *DescribeSupabaseInstanceAttributeResponseBodyData {
+	s.WebAppsUrl = &v
 	return s
 }
 
@@ -585,7 +630,7 @@ func (s *DescribeSupabaseInstanceAttributeResponseBodyDataConnAddrs) Validate() 
 }
 
 type DescribeSupabaseInstanceAttributeResponseBodyDataNodes struct {
-	// The specification code.
+	// The class code.
 	//
 	// example:
 	//

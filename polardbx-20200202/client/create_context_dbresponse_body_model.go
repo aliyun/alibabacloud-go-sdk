@@ -80,7 +80,7 @@ func (s *CreateContextDBResponseBody) Validate() error {
 }
 
 type CreateContextDBResponseBodyAccessDeniedDetail struct {
-	// The description as above.
+	// The description is as stated above.
 	//
 	// example:
 	//
@@ -200,7 +200,7 @@ func (s *CreateContextDBResponseBodyAccessDeniedDetail) Validate() error {
 }
 
 type CreateContextDBResponseBodyData struct {
-	// The administrator key of the context service.
+	// The administrator key for the context service.
 	//
 	// example:
 	//
@@ -218,7 +218,7 @@ type CreateContextDBResponseBodyData struct {
 	//
 	// pxc-*********
 	DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
-	// The name of the context service dashboard replica set.
+	// The name of the dashboard replica set for the context service.
 	//
 	// example:
 	//
@@ -230,7 +230,7 @@ type CreateContextDBResponseBodyData struct {
 	//
 	// pxs-*********
 	OpenSearchInstanceName *string `json:"OpenSearchInstanceName,omitempty" xml:"OpenSearchInstanceName,omitempty"`
-	// The name of the context service replica set.
+	// The name of the service replica set for the context service.
 	//
 	// example:
 	//

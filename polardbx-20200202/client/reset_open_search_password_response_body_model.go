@@ -204,7 +204,7 @@ type ResetOpenSearchPasswordResponseBodyData struct {
 	//
 	// example:
 	//
-	// [Environment: huanghe]\\nhuanghe 503_UC_OUTBOUND alert exceeds the threshold!\\n\\nFor details, see: https://grafana-cn-lbj34sreu03.grafana.aliyuncs.com/d/_rOiq2lNk/asm-status-code-monitor?var-datasource=DataSource-HUANGHE\\n
+	// [Environment: huanghe]\nhuanghe 503_UC_OUTBOUND alert exceeds the threshold!\n\nFor details, see: https://grafana-cn-lbj34sreu03.grafana.aliyuncs.com/d/_rOiq2lNk/asm-status-code-monitor?var-datasource=DataSource-HUANGHE\n
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The time when the password was last modified.
 	//

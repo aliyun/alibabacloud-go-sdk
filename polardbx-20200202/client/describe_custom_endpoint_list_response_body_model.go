@@ -112,7 +112,7 @@ func (s *DescribeCustomEndpointListResponseBodyData) Validate() error {
 }
 
 type DescribeCustomEndpointListResponseBodyDataEndpoints struct {
-	// [\\"pxc-i-vb1sqa7llp\\",\\"pxc-i-bemprx50ad\\"]
+	// [\"pxc-i-vb1sqa7llp\",\"pxc-i-bemprx50ad\"]
 	CnNames []*string `json:"CnNames,omitempty" xml:"CnNames,omitempty" type:"Repeated"`
 	// The endpoint of the instance.
 	//

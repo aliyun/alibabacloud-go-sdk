@@ -24,7 +24,7 @@ type CreateStructureImportTaskRequest struct {
 	//
 	// example:
 	//
-	// [{\\"schemaName\\":\\"transfer_test\\",\\"tableList\\":[]}]
+	// [{\"schemaName\":\"transfer_test\",\"tableList\":[]}]
 	Config *string `json:"Config,omitempty" xml:"Config,omitempty"`
 	// The instance ID. > You can call the [DescribeDBInstances](https://help.aliyun.com/document_detail/196830.html) operation to query the details of all instances in the specified region, including instance IDs.
 	//

@@ -30,7 +30,7 @@ type iDescribeSlowLogRecordsRequest interface {
 }
 
 type DescribeSlowLogRecordsRequest struct {
-	// The node type.
+	// The type of the node.
 	//
 	// This parameter is required.
 	//
@@ -38,7 +38,7 @@ type DescribeSlowLogRecordsRequest struct {
 	//
 	// polarx_cn
 	CharacterType *string `json:"CharacterType,omitempty" xml:"CharacterType,omitempty"`
-	// The instance name.
+	// The name of the instance.
 	//
 	// This parameter is required.
 	//
@@ -46,19 +46,19 @@ type DescribeSlowLogRecordsRequest struct {
 	//
 	// pxc-bjxxxxxxxx
 	DBInstanceName *string `json:"DBInstanceName,omitempty" xml:"DBInstanceName,omitempty"`
-	// The database name.
+	// The name of the database.
 	//
 	// example:
 	//
 	// testdb
 	DBName *string `json:"DBName,omitempty" xml:"DBName,omitempty"`
-	// The node IDs. You can specify multiple node IDs separated by commas (`,`). This parameter is required when you query storage nodes.
+	// The IDs of the nodes. You can specify multiple node IDs and separate them with commas (`,`). This parameter is required when you query storage nodes.
 	//
 	// example:
 	//
 	// pxc-i-mezcj4ejdz
 	DBNodeIds *string `json:"DBNodeIds,omitempty" xml:"DBNodeIds,omitempty"`
-	// The start time of the query. Format: YYYY-MM-ddTHH:mmZ (UTC).
+	// The start time of the query. Specify the time in the YYYY-MM-ddTHH:mmZ format. The time must be in UTC.
 	//
 	// This parameter is required.
 	//
@@ -72,7 +72,7 @@ type DescribeSlowLogRecordsRequest struct {
 	//
 	// 1
 	Page *int32 `json:"Page,omitempty" xml:"Page,omitempty"`
-	// The number of entries per page. Default value: 100.
+	// The number of entries to return on each page. Default value: 100.
 	//
 	// Limit: A maximum of 100 entries can be returned at a time.
 	//
@@ -88,13 +88,13 @@ type DescribeSlowLogRecordsRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The start time of the query. Format: YYYY-MM-ddTHH:mmZ (UTC).
+	// The start time of the query. Specify the time in the YYYY-MM-ddTHH:mmZ format. The time must be in UTC.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 2024-10-09T02:26
+	// 2024-10-09T02:26Z
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
