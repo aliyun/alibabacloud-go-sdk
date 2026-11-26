@@ -9,19 +9,19 @@ import (
 
 // Summary:
 //
-// Adds one or more instances to a specified cluster.
+// Binds one or more workload instances to a specified cluster.
 //
 // Description:
 //
-// ## Usage notes
+// ## Request description
 //
-// - **HiveId*	- is a required parameter that specifies the ID of the target cluster.
+// - **HiveId*	- is a required parameter that specifies the ID of the target cluster to which the workloads are bound.
 //
-// - **InstanceIds*	- is a required parameter that specifies a list of instance IDs to add.
+// - **InstanceIds*	- is a required parameter that specifies the list of workload IDs to bind to the cluster.
 //
-// - Adding an instance that already exists in the target cluster returns an error message.
+// - If you attempt to bind a workload ID that already exists in the target cluster, an error message is returned.
 //
-// - The response includes lists of successful and failed instances. This allows you to verify which instances were added and review the reasons for any failures.
+// - After the binding operation succeeds, the returned lists of successful and failed workload instances help you identify which workloads were successfully bound and which were not, along with the reasons for failure.
 //
 // @param tmpReq - AddHiveEdgeWorkersRequest
 //
@@ -505,11 +505,11 @@ func (client *Client) BatchBindTemplatesWithContext(ctx context.Context, request
 //
 // ## Request description
 //
-// - **Authentication**: The request must include the `AliUid` parameter to authenticate and perform identity verification.
+// - **Authenticate**: The request must include the AliUid parameter for identity verification.
 //
-// - **Instance specification**: You can specify the instances to capture screenshots of by using `RenderingInstanceIds`.
+// - **Instance specification**: You can use the RenderingInstanceIds parameter to specify the instances for which you want to capture screenshots.
 //
-// - **Screenshot quality**: You can configure the Settings for the screenshot image quality by using the `Quality` parameter. The default value is 75 if not configured, and the valid values range from 1 to 100.
+// - **Screenshot quality**: The Quality parameter specifies the screenshot quality settings. The default value is 75 if not configured. Valid values: 1 to 100.
 //
 // - **Response processing**: The response includes lists of successful and failed instances along with their related information, such as download URLs and screenshot completion times.
 //
@@ -1717,7 +1717,7 @@ func (client *Client) ContinuousMoveWithContext(ctx context.Context, request *Co
 //
 // Description:
 //
-// > Enable the on-demand screenshot feature in the associated screenshot template.
+// > Enable the on-demand screenshot feature in the associated screenshot template in advance.
 //
 // @param request - CreateComfyTaskRequest
 //
@@ -1821,7 +1821,7 @@ func (client *Client) CreateComfyUserDataDirWithContext(ctx context.Context, req
 //
 // Description:
 //
-// > You must first enable the on-demand snapshot feature in the associated snapshot template.
+// > You must enable the on-demand screenshot feature in the associated screenshot template in advance.
 //
 // @param request - CreateComfyWorkflowRequest
 //
@@ -1873,7 +1873,15 @@ func (client *Client) CreateComfyWorkflowWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// Add a new device.
+// Adds a new device.
+//
+// Description:
+//
+// >
+//
+// > - This operation is applicable only to workspaces whose access type is **GB28181 pull streaming*	- or **ODCAP**.
+//
+// > - Workspaces whose access type is **RTMP push streaming*	- **do not support*	- adding devices.
 //
 // @param request - CreateDeviceRequest
 //
@@ -2229,7 +2237,7 @@ func (client *Client) CreateGroupWithContext(ctx context.Context, request *Creat
 //
 // Description:
 //
-// ## Description
+// ## Request description
 //
 // - This operation creates an empty cluster to manage workloads.
 //
@@ -2419,7 +2427,7 @@ func (client *Client) CreateRenderingDataPackageWithContext(ctx context.Context,
 
 // Summary:
 //
-// Applies for a cloud rendering resource instance.
+// Creates a cloud application service instance.
 //
 // @param tmpReq - CreateRenderingInstanceRequest
 //
@@ -3841,11 +3849,11 @@ func (client *Client) DescribeAccountStatWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// Retrieves the download URL for user-generated results.
+// Retrieves the download link for user-generated results.
 //
 // Description:
 //
-// > Screenshot queries do not support pagination and only support iteration. To request the next page, use the value of the extStartTime parameter in the response as the StartTime parameter in the new request.
+// > Screenshot queries currently do not support pagination and only support iteration. To request the next page, use the value of the extStartTime parameter in the response as the StartTime parameter in the new request.
 //
 // @param request - DescribeComfyProductionDownloadUrlRequest
 //
@@ -3945,7 +3953,7 @@ func (client *Client) DescribeComfyProductionsWithContext(ctx context.Context, r
 
 // Summary:
 //
-// Queries the waiting queue information of Comfy tasks. The default maximum length of a single Hive waiting queue is 100.
+// Queries the waiting queue information for Comfy tasks. The default maximum length of a single Hive waiting queue is 100.
 //
 // @param request - DescribeComfyTaskWaitingQueueRequest
 //
@@ -3993,7 +4001,7 @@ func (client *Client) DescribeComfyTaskWaitingQueueWithContext(ctx context.Conte
 //
 // Description:
 //
-// > Screenshot queries currently do not support pagination and only support iteration. To request the next page, use the value of the extStartTime parameter in the response as the StartTime parameter in a new request.
+// > Screenshot queries currently do not support pagination and only support iteration. To request the next page, use the value of the extStartTime parameter in the response as the StartTime parameter in the new request.
 //
 // @param request - DescribeComfyTasksRequest
 //
@@ -7365,7 +7373,7 @@ func (client *Client) DescribeVsUserResourcePackageWithContext(ctx context.Conte
 
 // Summary:
 //
-// Queries the verification content.
+// Queries the check content.
 //
 // @param request - DescribeVsVerifyContentRequest
 //
@@ -7467,7 +7475,7 @@ func (client *Client) DisassociateRenderingProjectInstancesWithContext(ctx conte
 
 // Summary:
 //
-// Forbids pushing a specific stream. You can schedule a time to resume the stream.
+// Disables the push of a specific stream and allows you to schedule a time to resume the stream.
 //
 // @param request - ForbidVsStreamRequest
 //
@@ -7803,20 +7811,26 @@ func (client *Client) InstallCloudAppWithContext(ctx context.Context, tmpReq *In
 
 // Summary:
 //
-// Queries the installation information list of cloud applications. The returned information includes the installation status of cloud application service instances. Paging is supported for paged query.
+// Queries the installation information list of cloud applications. The returned information includes the installation status of cloud application service instances, and supports paging for a paged query.
 //
-// @param request - ListCloudAppInstallationsRequest
+// @param tmpReq - ListCloudAppInstallationsRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListCloudAppInstallationsResponse
-func (client *Client) ListCloudAppInstallationsWithContext(ctx context.Context, request *ListCloudAppInstallationsRequest, runtime *dara.RuntimeOptions) (_result *ListCloudAppInstallationsResponse, _err error) {
+func (client *Client) ListCloudAppInstallationsWithContext(ctx context.Context, tmpReq *ListCloudAppInstallationsRequest, runtime *dara.RuntimeOptions) (_result *ListCloudAppInstallationsResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
-		_err = request.Validate()
+		_err = tmpReq.Validate()
 		if _err != nil {
 			return _result, _err
 		}
 	}
+	request := &ListCloudAppInstallationsShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.RenderingInstanceIds) {
+		request.RenderingInstanceIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.RenderingInstanceIds, dara.String("RenderingInstanceIds"), dara.String("json"))
+	}
+
 	query := openapiutil.Query(dara.ToMap(request))
 	req := &openapiutil.OpenApiRequest{
 		Query: openapiutil.Query(query),
@@ -7843,11 +7857,11 @@ func (client *Client) ListCloudAppInstallationsWithContext(ctx context.Context, 
 
 // Summary:
 //
-// Queries the patch list of a cloud application.
+// Queries the list of patches for a cloud application.
 //
 // Description:
 //
-// >Specify at least one of the template ID and the templatetype.
+// > Specify at least one of the template ID and templatetype.
 //
 // @param request - ListCloudAppPatchesRequest
 //
@@ -7915,7 +7929,7 @@ func (client *Client) ListCloudAppPatchesWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// Queries the list of cloud applications and supports paging and paged query.
+// Queries a list of cloud applications and supports paging in a paged query.
 //
 // @param request - ListCloudAppsRequest
 //
@@ -8061,7 +8075,7 @@ func (client *Client) ListEdgeWorkersWithContext(ctx context.Context, tmpReq *Li
 
 // Summary:
 //
-// Queries the push status list of cloud application service instances for a file. Paging is supported for paged query.
+// Queries the push status list for a file on cloud application service instances, and supports paging and paged query.
 //
 // @param request - ListFilePushStatusesRequest
 //
@@ -8101,7 +8115,7 @@ func (client *Client) ListFilePushStatusesWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// Queries a list of uploaded files. The response includes the upload status of the files and supports paging for a paged query.
+// Queries a list of uploaded files. The response includes the upload status of the files and supports paging and paged query.
 //
 // @param request - ListFilesRequest
 //
@@ -10363,7 +10377,7 @@ func (client *Client) ResetRenderingInstanceWithContext(ctx context.Context, req
 
 // Summary:
 //
-// Resumes pushing for a stream.
+// Resumes the push of a specific stream.
 //
 // @param request - ResumeVsStreamRequest
 //
@@ -12315,6 +12329,64 @@ func (client *Client) UpgradeRenderingInstanceImageWithContext(ctx context.Conte
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpgradeRenderingInstanceImageResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 升级云应用服务主机镜像
+//
+// @param tmpReq - UpgradeRenderingServerImageRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpgradeRenderingServerImageResponse
+func (client *Client) UpgradeRenderingServerImageWithContext(ctx context.Context, tmpReq *UpgradeRenderingServerImageRequest, runtime *dara.RuntimeOptions) (_result *UpgradeRenderingServerImageResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &UpgradeRenderingServerImageShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.RenderingInstanceIds) {
+		request.RenderingInstanceIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.RenderingInstanceIds, dara.String("RenderingInstanceIds"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ImageId) {
+		query["ImageId"] = request.ImageId
+	}
+
+	if !dara.IsNil(request.Precheck) {
+		query["Precheck"] = request.Precheck
+	}
+
+	if !dara.IsNil(request.RenderingInstanceIdsShrink) {
+		query["RenderingInstanceIds"] = request.RenderingInstanceIdsShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpgradeRenderingServerImage"),
+		Version:     dara.String("2018-12-12"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpgradeRenderingServerImageResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err

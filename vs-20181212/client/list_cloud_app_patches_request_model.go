@@ -34,19 +34,19 @@ type ListCloudAppPatchesRequest struct {
 	//
 	// cap-b06b26edfhytbn b94a75ae1a79efc90eb
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	// The start time of the time range filter. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
+	// The start time of the time range filter. The time must be in UTC and follow the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format.
 	//
 	// example:
 	//
 	// 2017-12-10T21:00:00Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The page number of the list to query. Pages start from 1. Default value: 1.
+	// The page number of the list to query. The starting value is 1. Default value: 1.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page for a paged query. Maximum value: 100. Default value: 10.
+	// The paging Settings for the number of entries per page in a paged query. Maximum value: 100. Default value: 10.
 	//
 	// example:
 	//
@@ -64,7 +64,7 @@ type ListCloudAppPatchesRequest struct {
 	//
 	// patch-1
 	PatchName *string `json:"PatchName,omitempty" xml:"PatchName,omitempty"`
-	// The start time of the time range filter. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
+	// The start time of the time range filter. The time must be in UTC and follow the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format.
 	//
 	// example:
 	//

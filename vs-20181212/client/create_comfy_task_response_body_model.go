@@ -20,7 +20,7 @@ type iCreateComfyTaskResponseBody interface {
 }
 
 type CreateComfyTaskResponseBody struct {
-	// The error code returned if the call fails. For more information, see Error codes.
+	// The error code returned when the call fails. For more information, see Error codes.
 	//
 	// example:
 	//

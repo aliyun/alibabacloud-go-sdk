@@ -121,7 +121,7 @@ type ListSpecificationsResponseBodyItems struct {
 	//
 	// example:
 	//
-	// G49\\G59
+	// G49\G59
 	Class *string `json:"Class,omitempty" xml:"Class,omitempty"`
 	// The number of cores.
 	//

@@ -22,7 +22,7 @@ type CreateComfyWorkflowRequest struct {
 	//
 	// example:
 	//
-	// This is a workflow for image-to-video
+	// This is an image-to-video workflow
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The name of the workflow.
 	//
@@ -30,7 +30,7 @@ type CreateComfyWorkflowRequest struct {
 	//
 	// example:
 	//
-	// Sample workflow for image-to-video
+	// Sample image-to-video workflow
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The workflow JSON.
 	//

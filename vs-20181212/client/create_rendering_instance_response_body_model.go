@@ -18,13 +18,13 @@ type iCreateRenderingInstanceResponseBody interface {
 }
 
 type CreateRenderingInstanceResponseBody struct {
-	// The instance ID of the cloud application service.
+	// The cloud application service instance ID.
 	//
 	// example:
 	//
 	// render-9f8c57355d224ad7beaf95e145f22111
 	RenderingInstanceId *string `json:"RenderingInstanceId,omitempty" xml:"RenderingInstanceId,omitempty"`
-	// The instance ID list of the cloud application service.
+	// The cloud application service instance ID list.
 	RenderingInstanceIds []*string `json:"RenderingInstanceIds,omitempty" xml:"RenderingInstanceIds,omitempty" type:"Repeated"`
 	// Id of the request
 	//

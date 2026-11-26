@@ -54,7 +54,7 @@ type SetVsStreamsNotifyUrlConfigRequest struct {
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
 	// The URL to which live stream information is pushed.
 	//
-	// > This URL must start with http\\:// or https\\://.
+	// > This URL must start with http\:// or https\://.
 	//
 	// This parameter is required.
 	//

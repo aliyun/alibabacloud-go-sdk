@@ -31,9 +31,16 @@ type ResumeVsStreamRequest struct {
 	// example:
 	//
 	// xxxxApp
-	AppName             *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	// Controls the stream behavior. Valid values:
+	//
+	// - **resume**: Resumes the stream.
+	//
+	// example:
+	//
+	// resume
 	ControlStreamAction *string `json:"ControlStreamAction,omitempty" xml:"ControlStreamAction,omitempty"`
-	// Your accelerated domain name.
+	// The accelerated domain name.
 	//
 	// This parameter is required.
 	//
@@ -43,7 +50,7 @@ type ResumeVsStreamRequest struct {
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
 	// The stream type.
 	//
-	// > Only publisher is supported.
+	// > Currently, only publisher is supported.
 	//
 	// This parameter is required.
 	//

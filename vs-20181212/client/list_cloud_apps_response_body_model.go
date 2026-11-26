@@ -30,7 +30,7 @@ type ListCloudAppsResponseBody struct {
 	//
 	// 1
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The Settings for the number of entries returned on each page during paging for a paged query.
+	// Settings for the number of entries returned per page during paging for a paged query.
 	//
 	// example:
 	//
@@ -42,7 +42,7 @@ type ListCloudAppsResponseBody struct {
 	//
 	// BEA5625F-8FCF-48F4-851B-CA63946DA664
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of cloud applications that match the query conditions.
+	// The total number of matched cloud applications.
 	//
 	// example:
 	//
@@ -177,9 +177,9 @@ type ListCloudAppsResponseBodyCloudApps struct {
 	//
 	// - Doing
 	//
-	// - Success: This is a final state.
+	// - Success: final state
 	//
-	// - Failed: This is a final state.
+	// - Failed: final state
 	//
 	// example:
 	//
@@ -191,13 +191,13 @@ type ListCloudAppsResponseBodyCloudApps struct {
 	//
 	// upload success
 	StatusDescription *string `json:"StatusDescription,omitempty" xml:"StatusDescription,omitempty"`
-	// The time when the status was last updated. The time is displayed in the ISO 8601 standard with a time zone offset, in the YYYY-MM-DDTHH:mm:ss+HH:mm format.
+	// The time when the status was last updated. The time is displayed in the ISO 8601 standard with time zone offset in the YYYY-MM-DDTHH:mm:ss+HH:mm format.
 	//
 	// example:
 	//
 	// 2024-05-28T14:48:34+08:00
 	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
-	// The time when the application was uploaded. The time is displayed in the ISO 8601 standard with a time zone offset, in the YYYY-MM-DDTHH:mm:ss+HH:mm format.
+	// The time when the application was uploaded. The time is displayed in the ISO 8601 standard with time zone offset in the YYYY-MM-DDTHH:mm:ss+HH:mm format.
 	//
 	// example:
 	//

@@ -46,7 +46,7 @@ type DescribeComfyTasksResponseBody struct {
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// The page size.
 	//
-	// > Only for recording queries.
+	// > Only applicable to recording queries.
 	//
 	// example:
 	//
@@ -153,13 +153,13 @@ func (s *DescribeComfyTasksResponseBody) Validate() error {
 }
 
 type DescribeComfyTasksResponseBodyTasks struct {
-	// The creation time, represented as a UNIX timestamp in milliseconds.
+	// The creation time. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
 	// 1780387493000
 	CreationTime *string `json:"CreationTime,omitempty" xml:"CreationTime,omitempty"`
-	// The end time of the task, represented as a UNIX timestamp in milliseconds.
+	// The end time of the task. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
@@ -171,27 +171,27 @@ type DescribeComfyTasksResponseBodyTasks struct {
 	//
 	// hive-26cd567b35c04a0a90f017388207b2
 	HiveId *string `json:"HiveId,omitempty" xml:"HiveId,omitempty"`
-	// The task error message.
+	// The error message of the task.
 	TaskErrorMessage *string `json:"TaskErrorMessage,omitempty" xml:"TaskErrorMessage,omitempty"`
-	// The task ID.
+	// The ID of the task.
 	//
 	// example:
 	//
 	// 6c8234f4-d1e1-4cea-b08b-7926fbdea144
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	// The task state.
+	// The state of the task.
 	//
 	// example:
 	//
 	// RUNNING
 	TaskState *string `json:"TaskState,omitempty" xml:"TaskState,omitempty"`
-	// The task state message.
+	// The state message of the task.
 	//
 	// example:
 	//
-	// 任务执行成功
+	// Task executed successfully
 	TaskStateMessage *string `json:"TaskStateMessage,omitempty" xml:"TaskStateMessage,omitempty"`
-	// The last modified time, represented as a UNIX timestamp in milliseconds.
+	// The last modified time. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//

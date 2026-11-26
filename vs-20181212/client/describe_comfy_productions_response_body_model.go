@@ -151,13 +151,13 @@ func (s *DescribeComfyProductionsResponseBody) Validate() error {
 }
 
 type DescribeComfyProductionsResponseBodyProductions struct {
-	// The ComfyTask ID.
+	// The ID of the ComfyTask.
 	//
 	// example:
 	//
 	// 6c8234f4-d1e1-4cea-b08b-7926fbdea144
 	ComfyTaskId *string `json:"ComfyTaskId,omitempty" xml:"ComfyTaskId,omitempty"`
-	// The creation time. The time follows the ISO 8601 standard and includes a time zone offset. The format is YYYY-MM-DDTHH:mm:ss+HH:mm.
+	// The creation time. The time follows the ISO 8601 standard and includes the time zone offset. The format is YYYY-MM-DDTHH:mm:ss+HH:mm.
 	//
 	// example:
 	//
@@ -169,13 +169,13 @@ type DescribeComfyProductionsResponseBodyProductions struct {
 	//
 	// 1755051607877.mp4
 	FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
-	// The production ID.
+	// The ID of the production.
 	//
 	// example:
 	//
 	// 3e5bda20-5cd4-4d55-8d23-88d624a18caa
 	ProductionId *string `json:"ProductionId,omitempty" xml:"ProductionId,omitempty"`
-	// The production status.
+	// The status of the production.
 	//
 	// example:
 	//

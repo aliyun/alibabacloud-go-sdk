@@ -16,7 +16,7 @@ type iDescribeVsVerifyContentResponseBody interface {
 }
 
 type DescribeVsVerifyContentResponseBody struct {
-	// The verification content.
+	// The check content.
 	//
 	// example:
 	//

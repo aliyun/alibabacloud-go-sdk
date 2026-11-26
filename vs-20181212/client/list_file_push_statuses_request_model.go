@@ -26,13 +26,13 @@ type iListFilePushStatusesRequest interface {
 }
 
 type ListFilePushStatusesRequest struct {
-	// The start time for the time range filter. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
+	// The start time of the time range filter. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
 	//
 	// example:
 	//
 	// 2025-06-23T02:13:00Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The ID of the file, which uniquely identifies the file.
+	// The file ID, which uniquely identifies a file.
 	//
 	// example:
 	//
@@ -50,19 +50,19 @@ type ListFilePushStatusesRequest struct {
 	//
 	// 1
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The Settings for the number of entries per page during paging in a paged query. Valid values: 1 to 100. Default value: 10.
+	// The Settings for the number of entries to return on each page during paging in a paged query. Valid values: 1 to 100. Default value: 10.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The instance ID of the cloud application service, which is used to query the files installed on the specified instance.
+	// The cloud application service instance ID, which is used to query the files installed on the specified instance.
 	//
 	// example:
 	//
 	// render-9f8c57355d224ad7beaf95e145f22111
 	RenderingInstanceId *string `json:"RenderingInstanceId,omitempty" xml:"RenderingInstanceId,omitempty"`
-	// The start time for the time range filter. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
+	// The start time of the time range filter. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
 	//
 	// example:
 	//

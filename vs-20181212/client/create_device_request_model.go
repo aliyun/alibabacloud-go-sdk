@@ -58,64 +58,74 @@ type iCreateDeviceRequest interface {
 }
 
 type CreateDeviceRequest struct {
-	// GB-compliant alarm method to subscribe to. Valid values:
+	// The subscribed national standard alarm methods. Valid values:
 	//
-	// - 0 (all)
+	// - 0: All.
 	//
-	// - 5 (video alarm)
+	// - 5: Video alarm.
 	//
-	// - 7 (other alarms)
+	// - 7: Other alarms.
 	//
-	// > 	- An empty value means no subscription.
+	// > - An empty value indicates no subscription.
 	//
-	// >
-	//
-	// > 	- You can specify multiple values, separated by commas (,).
+	// > - Multiple values are supported and must be separated by commas (,).
 	//
 	// example:
 	//
 	// 0
 	AlarmMethod   *string `json:"AlarmMethod,omitempty" xml:"AlarmMethod,omitempty"`
 	AutoDirectory *bool   `json:"AutoDirectory,omitempty" xml:"AutoDirectory,omitempty"`
-	// Whether to enable location subscription for the device. Default value: false.
+	// Specifies whether to enable device location subscription. Valid values:
+	//
+	// - true: Yes.
+	//
+	// - false: No.
+	//
+	// Default value: false.
 	//
 	// example:
 	//
 	// false
 	AutoPos *bool `json:"AutoPos,omitempty" xml:"AutoPos,omitempty"`
-	// Whether to automatically start the stream. Default value: false.
+	// Specifies whether to automatically start the stream. Valid values:
+	//
+	// - true: Yes.
+	//
+	// - false: No.
+	//
+	// Default value: false.
 	//
 	// example:
 	//
 	// false
 	AutoStart *bool `json:"AutoStart,omitempty" xml:"AutoStart,omitempty"`
-	// Device description.
+	// The description of the device.
 	//
 	// example:
 	//
-	// xxx路口摄像头
+	// xxx intersection camera
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// ID of the folder that contains the device.
+	// The ID of the folder to which the device belongs.
 	//
 	// example:
 	//
 	// 399*****488-cn-qingdao
 	DirectoryId *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
-	// Device serial number.
+	// The serial number of the device.
 	//
 	// example:
 	//
 	// 7D0*****4C0
 	Dsn *string `json:"Dsn,omitempty" xml:"Dsn,omitempty"`
-	// GB-compliant device ID.
+	// The national standard ID of the device.
 	//
-	// > This parameter applies only to GB-compliant protocols.
+	// > This parameter is applicable only to the national standard protocol.
 	//
 	// example:
 	//
 	// 31000000****00000002
 	GbId *string `json:"GbId,omitempty" xml:"GbId,omitempty"`
-	// ID of the space that contains the device.
+	// The ID of the workspace to which the device belongs.
 	//
 	// This parameter is required.
 	//
@@ -123,68 +133,68 @@ type CreateDeviceRequest struct {
 	//
 	// 348*****174-cn-qingdao
 	GroupId *string `json:"GroupId,omitempty" xml:"GroupId,omitempty"`
-	// Device IP address.
+	// The IP address of the device.
 	//
 	// example:
 	//
 	// 10.10.10.10
 	Ip *string `json:"Ip,omitempty" xml:"Ip,omitempty"`
-	// The dimension of the device.
+	// The latitude of the device.
 	//
 	// example:
 	//
 	// 119.20
 	Latitude *string `json:"Latitude,omitempty" xml:"Latitude,omitempty"`
-	// Device longitude.
+	// The longitude of the device.
 	//
 	// example:
 	//
 	// 45.00
 	Longitude *string `json:"Longitude,omitempty" xml:"Longitude,omitempty"`
-	// Device name.
+	// The name of the device.
 	//
 	// example:
 	//
-	// xxx路口摄像头
+	// xxx intersection camera
 	Name    *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// Additional device parameters, formatted as a JSON string.
+	// The other parameters of the device, in the format of a JSON serialized string.
 	//
 	// example:
 	//
 	// {}
 	Params *string `json:"Params,omitempty" xml:"Params,omitempty"`
-	// ID of the parent device. For example, the ID of the platform that hosts the camera.
+	// The ID of the parent device, such as the ID of the platform to which a camera belongs.
 	//
 	// example:
 	//
 	// 399*****774-cn-qingdao
 	ParentId *string `json:"ParentId,omitempty" xml:"ParentId,omitempty"`
-	// Device password.
+	// The password of the device.
 	//
 	// example:
 	//
 	// admin
 	Password *string `json:"Password,omitempty" xml:"Password,omitempty"`
-	// Device port.
+	// The port of the device.
 	//
 	// example:
 	//
 	// 8080
 	Port *int64 `json:"Port,omitempty" xml:"Port,omitempty"`
-	// Location subscription interval, in seconds.
+	// The location subscription interval, in seconds.
 	//
 	// example:
 	//
 	// 300
 	PosInterval *int64 `json:"PosInterval,omitempty" xml:"PosInterval,omitempty"`
-	// Device type. Valid values:
+	// The type of the device. Valid values:
 	//
-	// - ipc (camera)
+	// - ipc: IP camera.
 	//
-	// - platform (platform)
+	// - platform: Platform.
 	//
-	// - ied (intelligent device)
+	// - ied: Intelligent device.
 	//
 	// This parameter is required.
 	//
@@ -192,23 +202,23 @@ type CreateDeviceRequest struct {
 	//
 	// ipc
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
-	// Stream URL on the device.
+	// The URL of the stream on the device.
 	//
 	// example:
 	//
 	// rtmp://xxx/xxx
 	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
-	// Device username.
+	// The username of the device.
 	//
 	// example:
 	//
 	// admin
 	Username *string `json:"Username,omitempty" xml:"Username,omitempty"`
-	// Device vendor.
+	// The vendor of the device.
 	//
 	// example:
 	//
-	// 公司A
+	// Company A
 	Vendor *string `json:"Vendor,omitempty" xml:"Vendor,omitempty"`
 }
 

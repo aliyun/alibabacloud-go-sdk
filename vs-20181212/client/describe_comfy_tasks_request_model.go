@@ -24,7 +24,7 @@ type iDescribeComfyTasksRequest interface {
 }
 
 type DescribeComfyTasksRequest struct {
-	// The Hive ID, used as a filter to query tasks executed under the specified Hive.
+	// The Hive ID used as a filter to query tasks executed under the specified Hive.
 	//
 	// example:
 	//
@@ -36,7 +36,7 @@ type DescribeComfyTasksRequest struct {
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of records to display on each page.
+	// The number of entries per page.
 	//
 	// example:
 	//

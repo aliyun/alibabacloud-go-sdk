@@ -48,7 +48,7 @@ type ListFilesRequest struct {
 	//
 	// 1
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The Settings for the number of entries per page during paging in a paged query. Valid values: 1 to 100. Default value: 10.
+	// The Settings for the number of entries to return on each page during paging in a paged query. Valid values: 1 to 100. Default value: 10.
 	//
 	// example:
 	//

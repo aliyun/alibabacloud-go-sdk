@@ -16,13 +16,13 @@ type iBatchCaptureRenderingInstanceScreenshotRequest interface {
 }
 
 type BatchCaptureRenderingInstanceScreenshotRequest struct {
-	// The image quality. Valid values: 1 to 100.
+	// The quality of the image. Valid values: 1 to 100.
 	//
 	// example:
 	//
 	// 60
 	Quality *int32 `json:"Quality,omitempty" xml:"Quality,omitempty"`
-	// The list of instance IDs. A maximum of 100 instance IDs can be specified.
+	// The list of instance IDs. You can specify up to 100 IDs.
 	//
 	// This parameter is required.
 	RenderingInstanceIds []*string `json:"RenderingInstanceIds,omitempty" xml:"RenderingInstanceIds,omitempty" type:"Repeated"`

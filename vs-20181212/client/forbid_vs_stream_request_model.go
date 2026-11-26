@@ -35,7 +35,14 @@ type ForbidVsStreamRequest struct {
 	// example:
 	//
 	// xxxApp
-	AppName             *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
+	// The stream control action. Valid values:
+	//
+	// - **forbid**: Disables the stream.
+	//
+	// example:
+	//
+	// forbid
 	ControlStreamAction *string `json:"ControlStreamAction,omitempty" xml:"ControlStreamAction,omitempty"`
 	// The accelerated domain name.
 	//
@@ -45,7 +52,7 @@ type ForbidVsStreamRequest struct {
 	//
 	// example.aliyundoc.com
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	// Only "publisher" is supported.
+	// The live stream type. Valid values: publisher.
 	//
 	// This parameter is required.
 	//
@@ -53,14 +60,14 @@ type ForbidVsStreamRequest struct {
 	//
 	// publisher
 	LiveStreamType *string `json:"LiveStreamType,omitempty" xml:"LiveStreamType,omitempty"`
-	// Specifies whether to only interrupt the stream without adding it to the blacklist. A value of \\`yes\\` indicates that the stream is only interrupted.
+	// Specifies whether to only interrupt the stream without adding it to the blacklist. Valid values: yes: Interrupts the stream without adding it to the blacklist.
 	//
 	// example:
 	//
 	// yes
 	Oneshot *string `json:"Oneshot,omitempty" xml:"Oneshot,omitempty"`
 	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The time to resume the stream. The time is in UTC format.
+	// The time to resume the stream in UTC format.
 	//
 	// example:
 	//

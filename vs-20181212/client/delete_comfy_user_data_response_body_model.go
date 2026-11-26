@@ -24,7 +24,7 @@ type DeleteComfyUserDataResponseBody struct {
 	//
 	// 0
 	Code *int64 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The description.
+	// The message.
 	//
 	// example:
 	//

@@ -32,7 +32,7 @@ type iCreateRenderingInstanceRequest interface {
 }
 
 type CreateRenderingInstanceRequest struct {
-	// > Keep the default value unless you have special requirements. If you have special requirements, contact technical support to confirm and then specify the relevant parameters.
+	// > Unless you have special requirements, keep the default value. If you have special requirements, contact technical support to confirm and then specify this parameter.
 	//
 	// The attribute information.
 	Attributes *CreateRenderingInstanceRequestAttributes `json:"Attributes,omitempty" xml:"Attributes,omitempty" type:"Struct"`
@@ -40,9 +40,9 @@ type CreateRenderingInstanceRequest struct {
 	//
 	// Specifies whether to enable auto-renewal. Valid values:
 	//
-	// 	- **true**: enables auto-renewal.
+	// 	- **true**: Enabled.
 	//
-	// 	- **false**: disables auto-renewal.
+	// 	- **false**: Disabled.
 	//
 	// example:
 	//
@@ -70,9 +70,9 @@ type CreateRenderingInstanceRequest struct {
 	//
 	// PrePaid
 	InstanceChargeType *string `json:"InstanceChargeType,omitempty" xml:"InstanceChargeType,omitempty"`
-	// > Only one billing method is supported. If a billing method already exists, the new value is invalid by default, and the existing billing method prevails. Note that this parameter is required when you purchase the instance for the first time.
+	// > Only one Billable methods is supported. If a Billable methods already exists, the new value is invalid by default, and the existing one prevails. Note that this parameter is required when you purchase the instance for the first time.
 	//
-	// The network billing type. Valid values:
+	// The network billing method. Valid values:
 	//
 	// - 95BandwidthByMonth: monthly 95th percentile bandwidth.
 	//
@@ -88,7 +88,7 @@ type CreateRenderingInstanceRequest struct {
 	InternetMaxBandwidth *int64 `json:"InternetMaxBandwidth,omitempty" xml:"InternetMaxBandwidth,omitempty"`
 	// > This parameter takes effect only when `InstanceChargeType` is set to `PrePaid` (subscription).
 	//
-	// The subscription duration. Valid values (Note: If you select 12, the duration is calculated as one year. For other values, the unit is months):
+	// The subscription duration. Valid values (Note: If you select 12, it is calculated as one year. Other values are calculated in months.):
 	//
 	// - 1 (default)
 	//
@@ -128,7 +128,7 @@ type CreateRenderingInstanceRequest struct {
 	//
 	// crs.cp.l1
 	RenderingSpec *string `json:"RenderingSpec,omitempty" xml:"RenderingSpec,omitempty"`
-	// The cloud storage capacity used by the cloud application service instance. Note: This is not local storage.
+	// The cloud storage capacity used by the cloud application service instance. Note: This does not include local storage.
 	//
 	// example:
 	//

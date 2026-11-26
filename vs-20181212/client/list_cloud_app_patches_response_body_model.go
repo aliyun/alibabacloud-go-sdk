@@ -28,13 +28,13 @@ type ListCloudAppPatchesResponseBody struct {
 	//
 	// 1
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// Settings for the number of entries per page when paging in a paged query.
+	// The paging Settings for the number of entries returned on each page in a paged query.
 	//
 	// example:
 	//
 	// 20
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The patch list of the cloud application.
+	// The list of patches for the cloud application.
 	Patches []*ListCloudAppPatchesResponseBodyPatches `json:"Patches,omitempty" xml:"Patches,omitempty" type:"Repeated"`
 	// Id of the request
 	//
@@ -147,13 +147,13 @@ type ListCloudAppPatchesResponseBodyPatches struct {
 	//
 	// - Doing
 	//
-	// - Success: desired state
+	// - Success: final state
 	//
-	// - Failed: desired state
+	// - Failed: final state
 	//
 	// - Deleting
 	//
-	// - DeleteFailed: desired state
+	// - DeleteFailed: final state
 	//
 	// example:
 	//
@@ -165,13 +165,13 @@ type ListCloudAppPatchesResponseBodyPatches struct {
 	//
 	// Uploading
 	StatusDescription *string `json:"StatusDescription,omitempty" xml:"StatusDescription,omitempty"`
-	// The latest time when the status was updated. The time is in the YYYY-MM-DDTHH:mm:ss format.
+	// The time when the status was last updated. The time is in the YYYY-MM-DDTHH:mm:ss format.
 	//
 	// example:
 	//
 	// 2024-09-23T02:12:28
 	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
-	// The time when the application was uploaded. The time is in the ISO 8601 standard and includes the time zone offset, in the YYYY-MM-DDTHH:mm:ss+HH:mm format.
+	// The time when the patch was uploaded. The time follows the ISO 8601 standard and includes a time zone offset in the YYYY-MM-DDTHH:mm:ss+HH:mm format.
 	//
 	// example:
 	//

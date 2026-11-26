@@ -74,7 +74,7 @@ type DescribeVsStreamsPublishListRequest struct {
 	//
 	// example:
 	//
-	// publish_time_asc
+	// stream_name_desc
 	OrderBy *string `json:"OrderBy,omitempty" xml:"OrderBy,omitempty"`
 	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The page number. Default value: 1.

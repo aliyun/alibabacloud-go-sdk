@@ -40,7 +40,7 @@ type UploadFileRequest struct {
 	//
 	// example:
 	//
-	// mytest
+	// mytest01
 	FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
 	// The MD5 hash of the file. This is used to verify the integrity of the file.
 	//

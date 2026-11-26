@@ -2,6 +2,7 @@
 package client
 
 import (
+	gatewayclient "github.com/alibabacloud-go/alibabacloud-gateway-pop/client"
 	openapi "github.com/alibabacloud-go/darabonba-openapi/v2/client"
 	openapiutil "github.com/alibabacloud-go/darabonba-openapi/v2/utils"
 	"github.com/alibabacloud-go/tea/dara"
@@ -24,6 +25,13 @@ func (client *Client) Init(config *openapiutil.Config) (_err error) {
 	if _err != nil {
 		return _err
 	}
+	client.ProductId = dara.String("vs")
+	gatewayClient, _err := gatewayclient.NewClient()
+	if _err != nil {
+		return _err
+	}
+
+	client.Spi = gatewayClient
 	client.EndpointRule = dara.String("regional")
 	_err = client.CheckConfig(config)
 	if _err != nil {
@@ -58,19 +66,19 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 
 // Summary:
 //
-// Adds one or more instances to a specified cluster.
+// Binds one or more workload instances to a specified cluster.
 //
 // Description:
 //
-// ## Usage notes
+// ## Request description
 //
-// - **HiveId*	- is a required parameter that specifies the ID of the target cluster.
+// - **HiveId*	- is a required parameter that specifies the ID of the target cluster to which the workloads are bound.
 //
-// - **InstanceIds*	- is a required parameter that specifies a list of instance IDs to add.
+// - **InstanceIds*	- is a required parameter that specifies the list of workload IDs to bind to the cluster.
 //
-// - Adding an instance that already exists in the target cluster returns an error message.
+// - If you attempt to bind a workload ID that already exists in the target cluster, an error message is returned.
 //
-// - The response includes lists of successful and failed instances. This allows you to verify which instances were added and review the reasons for any failures.
+// - After the binding operation succeeds, the returned lists of successful and failed workload instances help you identify which workloads were successfully bound and which were not, along with the reasons for failure.
 //
 // @param tmpReq - AddHiveEdgeWorkersRequest
 //
@@ -124,19 +132,19 @@ func (client *Client) AddHiveEdgeWorkersWithOptions(tmpReq *AddHiveEdgeWorkersRe
 
 // Summary:
 //
-// Adds one or more instances to a specified cluster.
+// Binds one or more workload instances to a specified cluster.
 //
 // Description:
 //
-// ## Usage notes
+// ## Request description
 //
-// - **HiveId*	- is a required parameter that specifies the ID of the target cluster.
+// - **HiveId*	- is a required parameter that specifies the ID of the target cluster to which the workloads are bound.
 //
-// - **InstanceIds*	- is a required parameter that specifies a list of instance IDs to add.
+// - **InstanceIds*	- is a required parameter that specifies the list of workload IDs to bind to the cluster.
 //
-// - Adding an instance that already exists in the target cluster returns an error message.
+// - If you attempt to bind a workload ID that already exists in the target cluster, an error message is returned.
 //
-// - The response includes lists of successful and failed instances. This allows you to verify which instances were added and review the reasons for any failures.
+// - After the binding operation succeeds, the returned lists of successful and failed workload instances help you identify which workloads were successfully bound and which were not, along with the reasons for failure.
 //
 // @param request - AddHiveEdgeWorkersRequest
 //
@@ -716,11 +724,11 @@ func (client *Client) BatchBindTemplates(request *BatchBindTemplatesRequest) (_r
 //
 // ## Request description
 //
-// - **Authentication**: The request must include the `AliUid` parameter to authenticate and perform identity verification.
+// - **Authenticate**: The request must include the AliUid parameter for identity verification.
 //
-// - **Instance specification**: You can specify the instances to capture screenshots of by using `RenderingInstanceIds`.
+// - **Instance specification**: You can use the RenderingInstanceIds parameter to specify the instances for which you want to capture screenshots.
 //
-// - **Screenshot quality**: You can configure the Settings for the screenshot image quality by using the `Quality` parameter. The default value is 75 if not configured, and the valid values range from 1 to 100.
+// - **Screenshot quality**: The Quality parameter specifies the screenshot quality settings. The default value is 75 if not configured. Valid values: 1 to 100.
 //
 // - **Response processing**: The response includes lists of successful and failed instances along with their related information, such as download URLs and screenshot completion times.
 //
@@ -782,11 +790,11 @@ func (client *Client) BatchCaptureRenderingInstanceScreenshotWithOptions(tmpReq 
 //
 // ## Request description
 //
-// - **Authentication**: The request must include the `AliUid` parameter to authenticate and perform identity verification.
+// - **Authenticate**: The request must include the AliUid parameter for identity verification.
 //
-// - **Instance specification**: You can specify the instances to capture screenshots of by using `RenderingInstanceIds`.
+// - **Instance specification**: You can use the RenderingInstanceIds parameter to specify the instances for which you want to capture screenshots.
 //
-// - **Screenshot quality**: You can configure the Settings for the screenshot image quality by using the `Quality` parameter. The default value is 75 if not configured, and the valid values range from 1 to 100.
+// - **Screenshot quality**: The Quality parameter specifies the screenshot quality settings. The default value is 75 if not configured. Valid values: 1 to 100.
 //
 // - **Response processing**: The response includes lists of successful and failed instances along with their related information, such as download URLs and screenshot completion times.
 //
@@ -2344,7 +2352,7 @@ func (client *Client) ContinuousMove(request *ContinuousMoveRequest) (_result *C
 //
 // Description:
 //
-// > Enable the on-demand screenshot feature in the associated screenshot template.
+// > Enable the on-demand screenshot feature in the associated screenshot template in advance.
 //
 // @param request - CreateComfyTaskRequest
 //
@@ -2400,7 +2408,7 @@ func (client *Client) CreateComfyTaskWithOptions(request *CreateComfyTaskRequest
 //
 // Description:
 //
-// > Enable the on-demand screenshot feature in the associated screenshot template.
+// > Enable the on-demand screenshot feature in the associated screenshot template in advance.
 //
 // @param request - CreateComfyTaskRequest
 //
@@ -2492,7 +2500,7 @@ func (client *Client) CreateComfyUserDataDir(request *CreateComfyUserDataDirRequ
 //
 // Description:
 //
-// > You must first enable the on-demand snapshot feature in the associated snapshot template.
+// > You must enable the on-demand screenshot feature in the associated screenshot template in advance.
 //
 // @param request - CreateComfyWorkflowRequest
 //
@@ -2548,7 +2556,7 @@ func (client *Client) CreateComfyWorkflowWithOptions(request *CreateComfyWorkflo
 //
 // Description:
 //
-// > You must first enable the on-demand snapshot feature in the associated snapshot template.
+// > You must enable the on-demand screenshot feature in the associated screenshot template in advance.
 //
 // @param request - CreateComfyWorkflowRequest
 //
@@ -2566,7 +2574,15 @@ func (client *Client) CreateComfyWorkflow(request *CreateComfyWorkflowRequest) (
 
 // Summary:
 //
-// Add a new device.
+// Adds a new device.
+//
+// Description:
+//
+// >
+//
+// > - This operation is applicable only to workspaces whose access type is **GB28181 pull streaming*	- or **ODCAP**.
+//
+// > - Workspaces whose access type is **RTMP push streaming*	- **do not support*	- adding devices.
 //
 // @param request - CreateDeviceRequest
 //
@@ -2698,7 +2714,15 @@ func (client *Client) CreateDeviceWithOptions(request *CreateDeviceRequest, runt
 
 // Summary:
 //
-// Add a new device.
+// Adds a new device.
+//
+// Description:
+//
+// >
+//
+// > - This operation is applicable only to workspaces whose access type is **GB28181 pull streaming*	- or **ODCAP**.
+//
+// > - Workspaces whose access type is **RTMP push streaming*	- **do not support*	- adding devices.
 //
 // @param request - CreateDeviceRequest
 //
@@ -2994,7 +3018,7 @@ func (client *Client) CreateGroup(request *CreateGroupRequest) (_result *CreateG
 //
 // Description:
 //
-// ## Description
+// ## Request description
 //
 // - This operation creates an empty cluster to manage workloads.
 //
@@ -3048,7 +3072,7 @@ func (client *Client) CreateHiveWithOptions(request *CreateHiveRequest, runtime 
 //
 // Description:
 //
-// ## Description
+// ## Request description
 //
 // - This operation creates an empty cluster to manage workloads.
 //
@@ -3244,7 +3268,7 @@ func (client *Client) CreateRenderingDataPackage(request *CreateRenderingDataPac
 
 // Summary:
 //
-// Applies for a cloud rendering resource instance.
+// Creates a cloud application service instance.
 //
 // @param tmpReq - CreateRenderingInstanceRequest
 //
@@ -3334,7 +3358,7 @@ func (client *Client) CreateRenderingInstanceWithOptions(tmpReq *CreateRendering
 
 // Summary:
 //
-// Applies for a cloud rendering resource instance.
+// Creates a cloud application service instance.
 //
 // @param request - CreateRenderingInstanceRequest
 //
@@ -5180,11 +5204,11 @@ func (client *Client) DescribeAccountStat(request *DescribeAccountStatRequest) (
 
 // Summary:
 //
-// Retrieves the download URL for user-generated results.
+// Retrieves the download link for user-generated results.
 //
 // Description:
 //
-// > Screenshot queries do not support pagination and only support iteration. To request the next page, use the value of the extStartTime parameter in the response as the StartTime parameter in the new request.
+// > Screenshot queries currently do not support pagination and only support iteration. To request the next page, use the value of the extStartTime parameter in the response as the StartTime parameter in the new request.
 //
 // @param request - DescribeComfyProductionDownloadUrlRequest
 //
@@ -5228,11 +5252,11 @@ func (client *Client) DescribeComfyProductionDownloadUrlWithOptions(request *Des
 
 // Summary:
 //
-// Retrieves the download URL for user-generated results.
+// Retrieves the download link for user-generated results.
 //
 // Description:
 //
-// > Screenshot queries do not support pagination and only support iteration. To request the next page, use the value of the extStartTime parameter in the response as the StartTime parameter in the new request.
+// > Screenshot queries currently do not support pagination and only support iteration. To request the next page, use the value of the extStartTime parameter in the response as the StartTime parameter in the new request.
 //
 // @param request - DescribeComfyProductionDownloadUrlRequest
 //
@@ -5328,7 +5352,7 @@ func (client *Client) DescribeComfyProductions(request *DescribeComfyProductions
 
 // Summary:
 //
-// Queries the waiting queue information of Comfy tasks. The default maximum length of a single Hive waiting queue is 100.
+// Queries the waiting queue information for Comfy tasks. The default maximum length of a single Hive waiting queue is 100.
 //
 // @param request - DescribeComfyTaskWaitingQueueRequest
 //
@@ -5372,7 +5396,7 @@ func (client *Client) DescribeComfyTaskWaitingQueueWithOptions(request *Describe
 
 // Summary:
 //
-// Queries the waiting queue information of Comfy tasks. The default maximum length of a single Hive waiting queue is 100.
+// Queries the waiting queue information for Comfy tasks. The default maximum length of a single Hive waiting queue is 100.
 //
 // @param request - DescribeComfyTaskWaitingQueueRequest
 //
@@ -5394,7 +5418,7 @@ func (client *Client) DescribeComfyTaskWaitingQueue(request *DescribeComfyTaskWa
 //
 // Description:
 //
-// > Screenshot queries currently do not support pagination and only support iteration. To request the next page, use the value of the extStartTime parameter in the response as the StartTime parameter in a new request.
+// > Screenshot queries currently do not support pagination and only support iteration. To request the next page, use the value of the extStartTime parameter in the response as the StartTime parameter in the new request.
 //
 // @param request - DescribeComfyTasksRequest
 //
@@ -5462,7 +5486,7 @@ func (client *Client) DescribeComfyTasksWithOptions(request *DescribeComfyTasksR
 //
 // Description:
 //
-// > Screenshot queries currently do not support pagination and only support iteration. To request the next page, use the value of the extStartTime parameter in the response as the StartTime parameter in a new request.
+// > Screenshot queries currently do not support pagination and only support iteration. To request the next page, use the value of the extStartTime parameter in the response as the StartTime parameter in the new request.
 //
 // @param request - DescribeComfyTasksRequest
 //
@@ -9814,7 +9838,7 @@ func (client *Client) DescribeVsUserResourcePackage(request *DescribeVsUserResou
 
 // Summary:
 //
-// Queries the verification content.
+// Queries the check content.
 //
 // @param request - DescribeVsVerifyContentRequest
 //
@@ -9862,7 +9886,7 @@ func (client *Client) DescribeVsVerifyContentWithOptions(request *DescribeVsVeri
 
 // Summary:
 //
-// Queries the verification content.
+// Queries the check content.
 //
 // @param request - DescribeVsVerifyContentRequest
 //
@@ -9952,7 +9976,7 @@ func (client *Client) DisassociateRenderingProjectInstances(request *Disassociat
 
 // Summary:
 //
-// Forbids pushing a specific stream. You can schedule a time to resume the stream.
+// Disables the push of a specific stream and allows you to schedule a time to resume the stream.
 //
 // @param request - ForbidVsStreamRequest
 //
@@ -10024,7 +10048,7 @@ func (client *Client) ForbidVsStreamWithOptions(request *ForbidVsStreamRequest, 
 
 // Summary:
 //
-// Forbids pushing a specific stream. You can schedule a time to resume the stream.
+// Disables the push of a specific stream and allows you to schedule a time to resume the stream.
 //
 // @param request - ForbidVsStreamRequest
 //
@@ -10398,20 +10422,26 @@ func (client *Client) InstallCloudApp(request *InstallCloudAppRequest) (_result 
 
 // Summary:
 //
-// Queries the installation information list of cloud applications. The returned information includes the installation status of cloud application service instances. Paging is supported for paged query.
+// Queries the installation information list of cloud applications. The returned information includes the installation status of cloud application service instances, and supports paging for a paged query.
 //
-// @param request - ListCloudAppInstallationsRequest
+// @param tmpReq - ListCloudAppInstallationsRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
 // @return ListCloudAppInstallationsResponse
-func (client *Client) ListCloudAppInstallationsWithOptions(request *ListCloudAppInstallationsRequest, runtime *dara.RuntimeOptions) (_result *ListCloudAppInstallationsResponse, _err error) {
+func (client *Client) ListCloudAppInstallationsWithOptions(tmpReq *ListCloudAppInstallationsRequest, runtime *dara.RuntimeOptions) (_result *ListCloudAppInstallationsResponse, _err error) {
 	if dara.BoolValue(client.EnableValidate) == true {
-		_err = request.Validate()
+		_err = tmpReq.Validate()
 		if _err != nil {
 			return _result, _err
 		}
 	}
+	request := &ListCloudAppInstallationsShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.RenderingInstanceIds) {
+		request.RenderingInstanceIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.RenderingInstanceIds, dara.String("RenderingInstanceIds"), dara.String("json"))
+	}
+
 	query := openapiutil.Query(dara.ToMap(request))
 	req := &openapiutil.OpenApiRequest{
 		Query: openapiutil.Query(query),
@@ -10438,7 +10468,7 @@ func (client *Client) ListCloudAppInstallationsWithOptions(request *ListCloudApp
 
 // Summary:
 //
-// Queries the installation information list of cloud applications. The returned information includes the installation status of cloud application service instances. Paging is supported for paged query.
+// Queries the installation information list of cloud applications. The returned information includes the installation status of cloud application service instances, and supports paging for a paged query.
 //
 // @param request - ListCloudAppInstallationsRequest
 //
@@ -10456,11 +10486,11 @@ func (client *Client) ListCloudAppInstallations(request *ListCloudAppInstallatio
 
 // Summary:
 //
-// Queries the patch list of a cloud application.
+// Queries the list of patches for a cloud application.
 //
 // Description:
 //
-// >Specify at least one of the template ID and the templatetype.
+// > Specify at least one of the template ID and templatetype.
 //
 // @param request - ListCloudAppPatchesRequest
 //
@@ -10528,11 +10558,11 @@ func (client *Client) ListCloudAppPatchesWithOptions(request *ListCloudAppPatche
 
 // Summary:
 //
-// Queries the patch list of a cloud application.
+// Queries the list of patches for a cloud application.
 //
 // Description:
 //
-// >Specify at least one of the template ID and the templatetype.
+// > Specify at least one of the template ID and templatetype.
 //
 // @param request - ListCloudAppPatchesRequest
 //
@@ -10550,7 +10580,7 @@ func (client *Client) ListCloudAppPatches(request *ListCloudAppPatchesRequest) (
 
 // Summary:
 //
-// Queries the list of cloud applications and supports paging and paged query.
+// Queries a list of cloud applications and supports paging in a paged query.
 //
 // @param request - ListCloudAppsRequest
 //
@@ -10590,7 +10620,7 @@ func (client *Client) ListCloudAppsWithOptions(request *ListCloudAppsRequest, ru
 
 // Summary:
 //
-// Queries the list of cloud applications and supports paging and paged query.
+// Queries a list of cloud applications and supports paging in a paged query.
 //
 // @param request - ListCloudAppsRequest
 //
@@ -10744,7 +10774,7 @@ func (client *Client) ListEdgeWorkers(request *ListEdgeWorkersRequest) (_result 
 
 // Summary:
 //
-// Queries the push status list of cloud application service instances for a file. Paging is supported for paged query.
+// Queries the push status list for a file on cloud application service instances, and supports paging and paged query.
 //
 // @param request - ListFilePushStatusesRequest
 //
@@ -10784,7 +10814,7 @@ func (client *Client) ListFilePushStatusesWithOptions(request *ListFilePushStatu
 
 // Summary:
 //
-// Queries the push status list of cloud application service instances for a file. Paging is supported for paged query.
+// Queries the push status list for a file on cloud application service instances, and supports paging and paged query.
 //
 // @param request - ListFilePushStatusesRequest
 //
@@ -10802,7 +10832,7 @@ func (client *Client) ListFilePushStatuses(request *ListFilePushStatusesRequest)
 
 // Summary:
 //
-// Queries a list of uploaded files. The response includes the upload status of the files and supports paging for a paged query.
+// Queries a list of uploaded files. The response includes the upload status of the files and supports paging and paged query.
 //
 // @param request - ListFilesRequest
 //
@@ -10842,7 +10872,7 @@ func (client *Client) ListFilesWithOptions(request *ListFilesRequest, runtime *d
 
 // Summary:
 //
-// Queries a list of uploaded files. The response includes the upload status of the files and supports paging for a paged query.
+// Queries a list of uploaded files. The response includes the upload status of the files and supports paging and paged query.
 //
 // @param request - ListFilesRequest
 //
@@ -13845,7 +13875,7 @@ func (client *Client) ResetRenderingInstance(request *ResetRenderingInstanceRequ
 
 // Summary:
 //
-// Resumes pushing for a stream.
+// Resumes the push of a specific stream.
 //
 // @param request - ResumeVsStreamRequest
 //
@@ -13909,7 +13939,7 @@ func (client *Client) ResumeVsStreamWithOptions(request *ResumeVsStreamRequest, 
 
 // Summary:
 //
-// Resumes pushing for a stream.
+// Resumes the push of a specific stream.
 //
 // @param request - ResumeVsStreamRequest
 //
@@ -16440,6 +16470,82 @@ func (client *Client) UpgradeRenderingInstanceImage(request *UpgradeRenderingIns
 	runtime := &dara.RuntimeOptions{}
 	_result = &UpgradeRenderingInstanceImageResponse{}
 	_body, _err := client.UpgradeRenderingInstanceImageWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 升级云应用服务主机镜像
+//
+// @param tmpReq - UpgradeRenderingServerImageRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpgradeRenderingServerImageResponse
+func (client *Client) UpgradeRenderingServerImageWithOptions(tmpReq *UpgradeRenderingServerImageRequest, runtime *dara.RuntimeOptions) (_result *UpgradeRenderingServerImageResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = tmpReq.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	request := &UpgradeRenderingServerImageShrinkRequest{}
+	openapiutil.Convert(tmpReq, request)
+	if !dara.IsNil(tmpReq.RenderingInstanceIds) {
+		request.RenderingInstanceIdsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.RenderingInstanceIds, dara.String("RenderingInstanceIds"), dara.String("json"))
+	}
+
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.ImageId) {
+		query["ImageId"] = request.ImageId
+	}
+
+	if !dara.IsNil(request.Precheck) {
+		query["Precheck"] = request.Precheck
+	}
+
+	if !dara.IsNil(request.RenderingInstanceIdsShrink) {
+		query["RenderingInstanceIds"] = request.RenderingInstanceIdsShrink
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpgradeRenderingServerImage"),
+		Version:     dara.String("2018-12-12"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpgradeRenderingServerImageResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 升级云应用服务主机镜像
+//
+// @param request - UpgradeRenderingServerImageRequest
+//
+// @return UpgradeRenderingServerImageResponse
+func (client *Client) UpgradeRenderingServerImage(request *UpgradeRenderingServerImageRequest) (_result *UpgradeRenderingServerImageResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &UpgradeRenderingServerImageResponse{}
+	_body, _err := client.UpgradeRenderingServerImageWithOptions(request, runtime)
 	if _err != nil {
 		return _result, _err
 	}

@@ -16,13 +16,13 @@ type iCreateDeviceResponseBody interface {
 }
 
 type CreateDeviceResponseBody struct {
-	// Device ID.
+	// The ID of the device.
 	//
 	// example:
 	//
 	// 348*****380-cn-qingdao
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// Request ID.
+	// The ID of the request.
 	//
 	// example:
 	//

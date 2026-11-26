@@ -22,27 +22,27 @@ type iAddHiveEdgeWorkersResponseBody interface {
 }
 
 type AddHiveEdgeWorkersResponseBody struct {
-	// The number of instances that failed to be added.
+	// The number of failed instances.
 	//
 	// example:
 	//
 	// 0
 	FailedInstanceCount *int32 `json:"FailedInstanceCount,omitempty" xml:"FailedInstanceCount,omitempty"`
-	// A list of instances that failed to be added.
+	// The list of failed instances.
 	FailedInstances []*AddHiveEdgeWorkersResponseBodyFailedInstances `json:"FailedInstances,omitempty" xml:"FailedInstances,omitempty" type:"Repeated"`
-	// The request ID.
+	// **The request ID.**
 	//
 	// example:
 	//
 	// xxxx-xxx-xxx
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The number of instances that were successfully added.
+	// The number of successful instances.
 	//
 	// example:
 	//
 	// 5
 	SuccessInstanceCount *int32 `json:"SuccessInstanceCount,omitempty" xml:"SuccessInstanceCount,omitempty"`
-	// A list of successfully added instances.
+	// The list of successful instances.
 	SuccessInstances []*AddHiveEdgeWorkersResponseBodySuccessInstances `json:"SuccessInstances,omitempty" xml:"SuccessInstances,omitempty" type:"Repeated"`
 }
 
@@ -122,7 +122,7 @@ func (s *AddHiveEdgeWorkersResponseBody) Validate() error {
 }
 
 type AddHiveEdgeWorkersResponseBodyFailedInstances struct {
-	// The instance ID.
+	// The workload ID.
 	//
 	// example:
 	//
@@ -132,7 +132,7 @@ type AddHiveEdgeWorkersResponseBodyFailedInstances struct {
 	//
 	// example:
 	//
-	// Error 1062 (23000): Duplicate entry \\"hive-4fbf3928d40e43948b98acdb4fb5aaed-ew-1226d588c69449209ee9631\\" for key \\"PRIMARY\\"
+	// Error 1062 (23000): Duplicate entry \"hive-4fbf3928d40e43948b98acdb4fb5aaed-ew-1226d588c69449209ee9631\" for key \"PRIMARY\"
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 }
 
@@ -173,7 +173,7 @@ type AddHiveEdgeWorkersResponseBodySuccessInstances struct {
 	//
 	// ew-1226d588c69449209ee963161c067b04
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// A message indicating the result of the operation.
+	// The message.
 	//
 	// example:
 	//

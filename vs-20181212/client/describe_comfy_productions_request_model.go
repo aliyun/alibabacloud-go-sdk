@@ -30,7 +30,7 @@ type DescribeComfyProductionsRequest struct {
 	//
 	// 20
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the specified ComfyTask.
+	// The ID of the ComfyTask.
 	//
 	// This parameter is required.
 	//

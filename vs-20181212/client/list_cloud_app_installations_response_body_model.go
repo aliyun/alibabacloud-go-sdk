@@ -24,13 +24,13 @@ type iListCloudAppInstallationsResponseBody interface {
 type ListCloudAppInstallationsResponseBody struct {
 	// The list of installation information.
 	InstallationInfos []*ListCloudAppInstallationsResponseBodyInstallationInfos `json:"InstallationInfos,omitempty" xml:"InstallationInfos,omitempty" type:"Repeated"`
-	// The page number of the returned list.
+	// The page number of the list to query.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries returned per page for a paged query.
+	// The Settings for the number of entries per page during paging in a paged query.
 	//
 	// example:
 	//
@@ -135,7 +135,7 @@ type ListCloudAppInstallationsResponseBodyInstallationInfos struct {
 	//
 	// 1.5.0
 	AppVersion *string `json:"AppVersion,omitempty" xml:"AppVersion,omitempty"`
-	// The installation time. The time is displayed in the ISO 8601 standard with a time zone offset in the YYYY-MM-DDTHH:mm:ss+HH:mm format.
+	// The installation time. The time is displayed in the ISO 8601 standard and includes the time zone offset in the YYYY-MM-DDTHH:mm:ss+HH:mm format.
 	//
 	// example:
 	//
@@ -147,13 +147,17 @@ type ListCloudAppInstallationsResponseBodyInstallationInfos struct {
 	//
 	// patch-7bdf679812484df08a956b73e0b3bdf6
 	PatchId *string `json:"PatchId,omitempty" xml:"PatchId,omitempty"`
-	// The cloud application service instance ID.
+	// The instance ID of the cloud application service.
 	//
 	// example:
 	//
 	// render-9f8c57355d224ad7beaf95e145f22111
 	RenderingInstanceId *string `json:"RenderingInstanceId,omitempty" xml:"RenderingInstanceId,omitempty"`
-	// The installation status of the cloud application. Valid values: install-init and installing (intermediate states), and installed and install-failed (final states).
+	// The installation status of the cloud application. Valid values:
+	//
+	// - Intermediate states: install-init and installing.
+	//
+	// - Final states: installed and install-failed.
 	//
 	// example:
 	//
@@ -165,7 +169,7 @@ type ListCloudAppInstallationsResponseBodyInstallationInfos struct {
 	//
 	// install success
 	StatusDescription *string `json:"StatusDescription,omitempty" xml:"StatusDescription,omitempty"`
-	// The time when the status was last updated. The time is displayed in the ISO 8601 standard with a time zone offset in the YYYY-MM-DDTHH:mm:ss+HH:mm format.
+	// The latest update time of the status. The time is displayed in the ISO 8601 standard and includes the time zone offset in the YYYY-MM-DDTHH:mm:ss+HH:mm format.
 	//
 	// example:
 	//

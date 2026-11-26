@@ -24,7 +24,7 @@ type iBatchCaptureRenderingInstanceScreenshotResponseBody interface {
 }
 
 type BatchCaptureRenderingInstanceScreenshotResponseBody struct {
-	// The data pre-check result.
+	// The data precheck result.
 	Datatest *BatchCaptureRenderingInstanceScreenshotResponseBodyDatatest `json:"Datatest,omitempty" xml:"Datatest,omitempty" type:"Struct"`
 	// The number of failed instances.
 	//
@@ -140,7 +140,7 @@ func (s *BatchCaptureRenderingInstanceScreenshotResponseBody) Validate() error {
 }
 
 type BatchCaptureRenderingInstanceScreenshotResponseBodyDatatest struct {
-	// The pre-check result.
+	// The precheck result.
 	Result *BatchCaptureRenderingInstanceScreenshotResponseBodyDatatestResult `json:"Result,omitempty" xml:"Result,omitempty" type:"Struct"`
 }
 
@@ -207,7 +207,7 @@ type BatchCaptureRenderingInstanceScreenshotResponseBodyFailedItems struct {
 	//
 	// Success
 	ErrCode *string `json:"ErrCode,omitempty" xml:"ErrCode,omitempty"`
-	// The reason for the failure.
+	// The error message for the failure.
 	//
 	// example:
 	//
@@ -261,7 +261,7 @@ func (s *BatchCaptureRenderingInstanceScreenshotResponseBodyFailedItems) Validat
 }
 
 type BatchCaptureRenderingInstanceScreenshotResponseBodySuccessItems struct {
-	// The time when the screenshot was created. The time is displayed in the ISO 8601 standard with a time zone offset in the YYYY-MM-DDTHH:mm:ss+HH:mm format.
+	// The time when the screenshot was created. The time follows the ISO 8601 standard and includes a time zone offset. The format is YYYY-MM-DDTHH:mm:ss+HH:mm.
 	//
 	// example:
 	//

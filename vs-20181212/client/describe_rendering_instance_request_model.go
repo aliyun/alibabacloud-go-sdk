@@ -14,7 +14,7 @@ type iDescribeRenderingInstanceRequest interface {
 }
 
 type DescribeRenderingInstanceRequest struct {
-	// The instance ID of the cloud application service.
+	// The cloud application service instance ID.
 	//
 	// This parameter is required.
 	//

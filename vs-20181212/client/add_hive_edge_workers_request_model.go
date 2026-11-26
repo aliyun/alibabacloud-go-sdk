@@ -16,7 +16,7 @@ type iAddHiveEdgeWorkersRequest interface {
 }
 
 type AddHiveEdgeWorkersRequest struct {
-	// The cluster ID.
+	// **The cluster ID.**
 	//
 	// This parameter is required.
 	//
@@ -24,13 +24,13 @@ type AddHiveEdgeWorkersRequest struct {
 	//
 	// hive-xxxx-xxx-xxx
 	HiveId *string `json:"HiveId,omitempty" xml:"HiveId,omitempty"`
-	// A list of instance IDs.
+	// **The list of workload IDs.**
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// [\\"acp-c4b9pbj4fzkagfexv\\", \\"acp-c4b9pbj4fzkagfexw\\"]
+	// [\"acp-c4b9pbj4fzkagfexv\", \"acp-c4b9pbj4fzkagfexw\"]
 	InstanceIds []*string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty" type:"Repeated"`
 }
 

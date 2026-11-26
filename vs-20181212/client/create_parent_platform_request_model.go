@@ -70,7 +70,7 @@ type CreateParentPlatformRequest struct {
 	//
 	// example:
 	//
-	// 级联平台测试
+	// Cascade platform test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The national standard ID of the parent platform.
 	//
@@ -94,7 +94,7 @@ type CreateParentPlatformRequest struct {
 	//
 	// example:
 	//
-	// 级联平台测试
+	// Cascade platform test
 	Name    *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
 	// The SIP service port of the parent platform.

@@ -70,7 +70,7 @@ type ListCloudAppsRequest struct {
 	//
 	// 1
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries to return on each page during paging for a paged query. Settings: 1 to 100. Default value: 10.
+	// Settings for the number of entries to return on each page during paging for a paged query. Valid values: 1 to 100. Default value: 10.
 	//
 	// example:
 	//
@@ -84,7 +84,7 @@ type ListCloudAppsRequest struct {
 	//
 	// - app
 	//
-	// To query cloud applications without labels, set this parameter to NULL.
+	// To query applications without labels, set the value to NULL.
 	//
 	// example:
 	//
@@ -110,9 +110,9 @@ type ListCloudAppsRequest struct {
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 	// The upload status of the application. Valid values:
 	//
-	// - Success: The upload is successful. This is a final state.
+	// - Success: successful. This is a final state.
 	//
-	// - Failed: The upload failed. This is a final state.
+	// - Failed: failed. This is a final state.
 	//
 	// - Created
 	//

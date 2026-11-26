@@ -44,13 +44,13 @@ type DescribeStreamURLRequest struct {
 	Auth *bool `json:"Auth,omitempty" xml:"Auth,omitempty"`
 	// The primary key associated with the playback domain name. This key is used to generate the authentication URL.
 	//
-	// > Call the [DescribeVsDomainConfigs](https://next.api.aliyun.com/document/vs/2018-12-12/DescribeVsDomainConfigs) operation to query the \\`AuthKey\\` information.
+	// > Call the [DescribeVsDomainConfigs](https://next.api.aliyun.com/document/vs/2018-12-12/DescribeVsDomainConfigs) operation to query the \`AuthKey\` information.
 	//
 	// example:
 	//
 	// ocs*****ace
 	AuthKey *string `json:"AuthKey,omitempty" xml:"AuthKey,omitempty"`
-	// The end time. This parameter applies to \\`vod\\` streams.<br>
+	// The end time. This parameter applies to \`vod\` streams.<br>
 	//
 	// A UNIX timestamp. Unit: seconds.<br>
 	//
@@ -87,7 +87,7 @@ type DescribeStreamURLRequest struct {
 	// rtmp
 	OutProtocol *string `json:"OutProtocol,omitempty" xml:"OutProtocol,omitempty"`
 	OwnerId     *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	// The start time. This parameter applies to \\`vod\\` streams.<br>
+	// The start time. This parameter applies to \`vod\` streams.<br>
 	//
 	// A UNIX timestamp. Unit: seconds.<br>
 	//
@@ -101,11 +101,11 @@ type DescribeStreamURLRequest struct {
 	//
 	// sd
 	Transcode *string `json:"Transcode,omitempty" xml:"Transcode,omitempty"`
-	// The type of the stream. The default value is \\`live\\`. Valid values:
+	// The type of the stream. The default value is \`live\`. Valid values:
 	//
-	// - \\`live\\`: a live stream.
+	// - \`live\`: a live stream.
 	//
-	// - \\`vod\\`: a video-on-demand (VOD) stream, such as a historical stream from a Network Video Recorder (NVR).
+	// - \`vod\`: a video-on-demand (VOD) stream, such as a historical stream from a Network Video Recorder (NVR).
 	//
 	// example:
 	//

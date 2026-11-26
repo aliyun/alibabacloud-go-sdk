@@ -16,7 +16,7 @@ type iDescribeVsVerifyContentRequest interface {
 }
 
 type DescribeVsVerifyContentRequest struct {
-	// The domain name of Visual Edge Computing Service.
+	// The Visual Edge Computing Service domain name.
 	//
 	// This parameter is required.
 	//

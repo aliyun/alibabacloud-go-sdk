@@ -21,6 +21,8 @@ type iDescribeRenderingInstanceResponseBody interface {
 	GetExpiredTime() *string
 	SetHostname(v string) *DescribeRenderingInstanceResponseBody
 	GetHostname() *string
+	SetImageId(v string) *DescribeRenderingInstanceResponseBody
+	GetImageId() *string
 	SetInstanceChargeType(v string) *DescribeRenderingInstanceResponseBody
 	GetInstanceChargeType() *string
 	SetInstanceName(v string) *DescribeRenderingInstanceResponseBody
@@ -52,9 +54,9 @@ type iDescribeRenderingInstanceResponseBody interface {
 type DescribeRenderingInstanceResponseBody struct {
 	// The additional optional ingress network information.
 	AdditionalIngresses []*DescribeRenderingInstanceResponseBodyAdditionalIngresses `json:"AdditionalIngresses,omitempty" xml:"AdditionalIngresses,omitempty" type:"Repeated"`
-	// The instance configuration.
+	// The instance configuration information.
 	ConfigInfo *DescribeRenderingInstanceResponseBodyConfigInfo `json:"ConfigInfo,omitempty" xml:"ConfigInfo,omitempty" type:"Struct"`
-	// The instance creation time. The time is displayed in UTC and follows the ISO 8601 standard in the YYYY-MM-DDTHH:mm:ssZ format.
+	// The time when the instance was created. The time is displayed in UTC and follows the ISO 8601 standard in the YYYY-MM-DDTHH:mm:ssZ format.
 	//
 	// example:
 	//
@@ -78,6 +80,12 @@ type DescribeRenderingInstanceResponseBody struct {
 	//
 	// cn-xxx.ecr.aliyuncs.com
 	Hostname *string `json:"Hostname,omitempty" xml:"Hostname,omitempty"`
+	// The instance image ID.
+	//
+	// example:
+	//
+	// m-9timxhrrgopkec8ju
+	ImageId *string `json:"ImageId,omitempty" xml:"ImageId,omitempty"`
 	// The instance billing method.
 	//
 	// example:
@@ -108,7 +116,7 @@ type DescribeRenderingInstanceResponseBody struct {
 	//
 	// telecom
 	Isp *string `json:"Isp,omitempty" xml:"Isp,omitempty"`
-	// The port mappings.
+	// The list of port mapping information.
 	PortMappings []*DescribeRenderingInstanceResponseBodyPortMappings `json:"PortMappings,omitempty" xml:"PortMappings,omitempty" type:"Repeated"`
 	// The cloud application service instance ID.
 	//
@@ -116,7 +124,7 @@ type DescribeRenderingInstanceResponseBody struct {
 	//
 	// render-9f8c57355d224ad7beaf95e145f22111
 	RenderingInstanceId *string `json:"RenderingInstanceId,omitempty" xml:"RenderingInstanceId,omitempty"`
-	// The instance type of the cloud application service instance.
+	// The instance specifications of the cloud application service.
 	//
 	// example:
 	//
@@ -130,17 +138,17 @@ type DescribeRenderingInstanceResponseBody struct {
 	//
 	// BEA5625F-8FCF-48F4-851B-CA63946DA664
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The resource attributes of the cloud application service instance.
+	// The attribute information of the cloud application service instance.
 	ResourceAttributes *DescribeRenderingInstanceResponseBodyResourceAttributes `json:"ResourceAttributes,omitempty" xml:"ResourceAttributes,omitempty" type:"Struct"`
 	// The compute resource status information.
 	ResourceStatus *DescribeRenderingInstanceResponseBodyResourceStatus `json:"ResourceStatus,omitempty" xml:"ResourceStatus,omitempty" type:"Struct"`
-	// The storage capacity of the cloud application service instance.
+	// The instance storage capacity of the cloud application service.
 	//
 	// example:
 	//
 	// 20
 	StorageSize *int32 `json:"StorageSize,omitempty" xml:"StorageSize,omitempty"`
-	// The system information, including the resolution.
+	// The system information, such as the resolution.
 	SystemInfo *DescribeRenderingInstanceResponseBodySystemInfo `json:"SystemInfo,omitempty" xml:"SystemInfo,omitempty" type:"Struct"`
 }
 
@@ -174,6 +182,10 @@ func (s *DescribeRenderingInstanceResponseBody) GetExpiredTime() *string {
 
 func (s *DescribeRenderingInstanceResponseBody) GetHostname() *string {
 	return s.Hostname
+}
+
+func (s *DescribeRenderingInstanceResponseBody) GetImageId() *string {
+	return s.ImageId
 }
 
 func (s *DescribeRenderingInstanceResponseBody) GetInstanceChargeType() *string {
@@ -255,6 +267,11 @@ func (s *DescribeRenderingInstanceResponseBody) SetExpiredTime(v string) *Descri
 
 func (s *DescribeRenderingInstanceResponseBody) SetHostname(v string) *DescribeRenderingInstanceResponseBody {
 	s.Hostname = &v
+	return s
+}
+
+func (s *DescribeRenderingInstanceResponseBody) SetImageId(v string) *DescribeRenderingInstanceResponseBody {
+	s.ImageId = &v
 	return s
 }
 
@@ -389,7 +406,7 @@ type DescribeRenderingInstanceResponseBodyAdditionalIngresses struct {
 	//
 	// cmcc
 	Isp *string `json:"Isp,omitempty" xml:"Isp,omitempty"`
-	// The port mappings.
+	// The port mapping list.
 	PortMappings []*DescribeRenderingInstanceResponseBodyAdditionalIngressesPortMappings `json:"PortMappings,omitempty" xml:"PortMappings,omitempty" type:"Repeated"`
 }
 
@@ -442,13 +459,13 @@ func (s *DescribeRenderingInstanceResponseBodyAdditionalIngresses) Validate() er
 }
 
 type DescribeRenderingInstanceResponseBodyAdditionalIngressesPortMappings struct {
-	// The external port or port range, such as 22. If a port range is specified, separate the start and end ports with a forward slash (/), such as 10/20.
+	// The public port or port range, such as 22. If a port range is specified, separate the start and end ports with a forward slash (/), such as 10/20.
 	//
 	// example:
 	//
 	// 12500/12519
 	ExternalPort *string `json:"ExternalPort,omitempty" xml:"ExternalPort,omitempty"`
-	// The internal port or port range. The internal ports correspond to the external ports one by one. If a port range is specified, separate the start and end ports with a forward slash (/), such as 10/20.
+	// The internal port or port range. The internal ports correspond to the public ports one by one. If a port range is specified, separate the start and end ports with a forward slash (/), such as 10/20.
 	//
 	// example:
 	//
@@ -538,27 +555,27 @@ func (s *DescribeRenderingInstanceResponseBodyConfigInfo) Validate() error {
 }
 
 type DescribeRenderingInstanceResponseBodyConfigInfoConfiguration struct {
-	// The attributes.
+	// The attribute list.
 	Attributes []*DescribeRenderingInstanceResponseBodyConfigInfoConfigurationAttributes `json:"Attributes,omitempty" xml:"Attributes,omitempty" type:"Repeated"`
 	// The name of the physical device simulation module. Valid values:
 	//
-	// - ctl: control module
+	// - ctl: The control module.
 	//
-	// - prop: property module
+	// - prop: The property module.
 	//
-	// - location: location module
+	// - location: The location module.
 	//
-	// - battery: battery module
+	// - battery: The battery module.
 	//
-	// - network: network module
+	// - network: The network module.
 	//
-	// - bluetooth: Bluetooth module
+	// - bluetooth: The Bluetooth module.
 	//
-	// - sim: SIM card module
+	// - sim: The SIM card module.
 	//
-	// - display: display module
+	// - display: The device module.
 	//
-	// - system: basic module
+	// - system: The basic module.
 	//
 	// example:
 	//
@@ -651,13 +668,13 @@ func (s *DescribeRenderingInstanceResponseBodyConfigInfoConfigurationAttributes)
 }
 
 type DescribeRenderingInstanceResponseBodyConfigInfoNetworkConfig struct {
-	// The bandwidth application status. Valid values:
+	// The effective status of the bandwidth. Valid values:
 	//
-	// - waiting: taking effect
+	// - waiting: Taking effect.
 	//
-	// - success: taken effect
+	// - success: Effective.
 	//
-	// - failed: failed to take effect
+	// - failed: Failed to take effect.
 	//
 	// example:
 	//
@@ -732,13 +749,13 @@ func (s *DescribeRenderingInstanceResponseBodyConfigInfoNetworkConfig) Validate(
 }
 
 type DescribeRenderingInstanceResponseBodyPortMappings struct {
-	// The external port or port range, such as 22. If a port range is specified, separate the start and end ports with a forward slash (/), such as 10/20.
+	// The public port or port range, such as 22. If a port range is specified, separate the start and end ports with a forward slash (/), such as 10/20.
 	//
 	// example:
 	//
 	// 10013/10020
 	ExternalPort *string `json:"ExternalPort,omitempty" xml:"ExternalPort,omitempty"`
-	// The internal port or port range. The internal ports correspond to the external ports one by one. If a port range is specified, separate the start and end ports with a forward slash (/), such as 10/20.
+	// The internal port or port range. The internal ports correspond to the public ports one by one. If a port range is specified, separate the start and end ports with a forward slash (/), such as 10/20.
 	//
 	// example:
 	//
@@ -783,7 +800,7 @@ type DescribeRenderingInstanceResponseBodyRenderingStatus struct {
 	//
 	// Working
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The name of the latest instance operation.
+	// The name of the latest operation performed on the instance.
 	//
 	// example:
 	//
@@ -791,15 +808,15 @@ type DescribeRenderingInstanceResponseBodyRenderingStatus struct {
 	LatestAction *string `json:"LatestAction,omitempty" xml:"LatestAction,omitempty"`
 	// The instance operation status. Valid values:
 	//
-	// - Preparing: initializing
+	// - Preparing: The instance is being initialized.
 	//
-	// - Rebooting: restarting
+	// - Rebooting: The instance is being restarted.
 	//
-	// - Resetting: resetting
+	// - Resetting: The instance is being reset.
 	//
-	// - Working: working. This is a final state.
+	// - Working: The instance is working. This is a final state.
 	//
-	// - Failure: operation failed. This is a final state.
+	// - Failure: The operation failed. This is a final state.
 	//
 	// example:
 	//
@@ -847,11 +864,11 @@ func (s *DescribeRenderingInstanceResponseBodyRenderingStatus) Validate() error 
 }
 
 type DescribeRenderingInstanceResponseBodyResourceAttributes struct {
-	// The streaming service. Valid values:
+	// The streaming service configuration. Valid values:
 	//
-	// - ON: enabled
+	// - ON: Enabled.
 	//
-	// - OFF: disabled
+	// - OFF: Disabled.
 	//
 	// example:
 	//
@@ -859,9 +876,9 @@ type DescribeRenderingInstanceResponseBodyResourceAttributes struct {
 	EdgeMediaService *string `json:"EdgeMediaService,omitempty" xml:"EdgeMediaService,omitempty"`
 	// The inbound access configuration. Valid values:
 	//
-	// - ON: enabled. The resource can be accessed from external networks.
+	// - ON: Enabled. The resource can be accessed from external networks.
 	//
-	// - OFF: disabled.
+	// - OFF: Disabled.
 	//
 	// example:
 	//
@@ -869,19 +886,15 @@ type DescribeRenderingInstanceResponseBodyResourceAttributes struct {
 	InAccess *string `json:"InAccess,omitempty" xml:"InAccess,omitempty"`
 	// The outbound access configuration. Valid values:
 	//
-	// - ON: enabled. The resource can access the Internet.
+	// - ON: Enabled. The resource can access the Internet.
 	//
-	// - OFF: disabled.
+	// - OFF: Disabled.
 	//
 	// example:
 	//
 	// ON
 	OutAccess *string `json:"OutAccess,omitempty" xml:"OutAccess,omitempty"`
-	// The resource zone. Valid values:
-	//
-	// - Private
-	//
-	// - Public
+	// The resource zone. Valid values: Private and Public.
 	//
 	// example:
 	//
@@ -938,13 +951,13 @@ func (s *DescribeRenderingInstanceResponseBodyResourceAttributes) Validate() err
 }
 
 type DescribeRenderingInstanceResponseBodyResourceStatus struct {
-	// The running state of the compute resource. Valid values:
+	// The running status of the compute resource. Valid values:
 	//
-	// 1. running: The edge instance status is normal.
+	// - running: The edge instance status is normal.
 	//
-	// 2. operating: The edge instance is under maintenance.
+	// - operating: The edge instance is under maintenance.
 	//
-	// 3. error: An edge anomaly is detected.
+	// - error: An edge anomaly is detected.
 	//
 	// example:
 	//
@@ -974,7 +987,7 @@ func (s *DescribeRenderingInstanceResponseBodyResourceStatus) Validate() error {
 }
 
 type DescribeRenderingInstanceResponseBodySystemInfo struct {
-	// The refresh rate of the instance, in Hz.
+	// The refresh rate of the instance. Unit: Hz.
 	//
 	// example:
 	//
@@ -982,21 +995,21 @@ type DescribeRenderingInstanceResponseBodySystemInfo struct {
 	Frequency *int32 `json:"Frequency,omitempty" xml:"Frequency,omitempty"`
 	// The resolution. Valid values:
 	//
-	// - 1920*864
+	// - 1920×864
 	//
-	// - 1080*1920
+	// - 1080×1920
 	//
-	// - 1920*1080
+	// - 1920×1080
 	//
-	// - 720*1280
+	// - 720×1280
 	//
-	// - 2400*1080
+	// - 2400×1080
 	//
-	// - 1080*2400
+	// - 1080×2400
 	//
-	// - 1280*720
+	// - 1280×720
 	//
-	// - 864*1920
+	// - 864×1920
 	//
 	// example:
 	//

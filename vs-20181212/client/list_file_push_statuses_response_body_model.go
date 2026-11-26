@@ -28,7 +28,7 @@ type ListFilePushStatusesResponseBody struct {
 	//
 	// 1
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The Settings for the number of entries per page during paging in a paged query.
+	// The Settings for the number of entries returned per page during paging in a paged query.
 	//
 	// example:
 	//
@@ -36,7 +36,7 @@ type ListFilePushStatusesResponseBody struct {
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The list of file push statuses.
 	PushStatuses []*ListFilePushStatusesResponseBodyPushStatuses `json:"PushStatuses,omitempty" xml:"PushStatuses,omitempty" type:"Repeated"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -129,13 +129,13 @@ type ListFilePushStatusesResponseBodyPushStatuses struct {
 	//
 	// myfile
 	FileName *string `json:"FileName,omitempty" xml:"FileName,omitempty"`
-	// The start time of the push. The time is displayed in the ISO 8601 standard with time zone offset in the YYYY-MM-DDTHH:mm:ss+HH:mm format.
+	// The start time of the push. The time is displayed in the ISO 8601 standard with a time zone offset in the YYYY-MM-DDTHH:mm:ss+HH:mm format.
 	//
 	// example:
 	//
 	// 2024-03-26T16:32:20+08:00
 	PushTime *string `json:"PushTime,omitempty" xml:"PushTime,omitempty"`
-	// The instance ID of the cloud application service.
+	// The cloud application service instance ID.
 	//
 	// example:
 	//
@@ -147,9 +147,9 @@ type ListFilePushStatusesResponseBodyPushStatuses struct {
 	//
 	// - Doing
 	//
-	// - Success: final state.
+	// - Success: terminal state
 	//
-	// - Failed: final state.
+	// - Failed: terminal state
 	//
 	// example:
 	//
@@ -161,7 +161,7 @@ type ListFilePushStatusesResponseBodyPushStatuses struct {
 	//
 	// push success
 	StatusDescription *string `json:"StatusDescription,omitempty" xml:"StatusDescription,omitempty"`
-	// The latest update time of the status. The time is displayed in the ISO 8601 standard with time zone offset in the YYYY-MM-DDTHH:mm:ss+HH:mm format.
+	// The latest update time of the status. The time is displayed in the ISO 8601 standard with a time zone offset in the YYYY-MM-DDTHH:mm:ss+HH:mm format.
 	//
 	// example:
 	//

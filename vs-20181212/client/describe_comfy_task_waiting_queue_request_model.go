@@ -14,7 +14,7 @@ type iDescribeComfyTaskWaitingQueueRequest interface {
 }
 
 type DescribeComfyTaskWaitingQueueRequest struct {
-	// The ID of the specified Hive.
+	// The ID of the Hive.
 	//
 	// example:
 	//

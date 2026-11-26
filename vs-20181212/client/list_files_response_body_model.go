@@ -22,7 +22,7 @@ type iListFilesResponseBody interface {
 }
 
 type ListFilesResponseBody struct {
-	// The list of file information.
+	// The list of files.
 	Files []*ListFilesResponseBodyFiles `json:"Files,omitempty" xml:"Files,omitempty" type:"Repeated"`
 	// The page number of the returned list.
 	//
@@ -30,7 +30,7 @@ type ListFilesResponseBody struct {
 	//
 	// 1
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The Settings for the number of entries per page during paging in a paged query.
+	// The Settings for the number of entries returned per page during paging in a paged query.
 	//
 	// example:
 	//
@@ -42,7 +42,7 @@ type ListFilesResponseBody struct {
 	//
 	// BEA5625F-8FCF-48F4-851B-CA63946DA664
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of matched file records.
+	// The total number of matched files.
 	//
 	// example:
 	//
@@ -141,9 +141,9 @@ type ListFilesResponseBodyFiles struct {
 	//
 	// - Doing
 	//
-	// - Success: final state
+	// - Success: final state.
 	//
-	// - Failed: final state
+	// - Failed: final state.
 	//
 	// example:
 	//
@@ -155,19 +155,19 @@ type ListFilesResponseBodyFiles struct {
 	//
 	// upload success
 	StatusDescription *string `json:"StatusDescription,omitempty" xml:"StatusDescription,omitempty"`
-	// The target path for pushing the file to the cloud application service instance.
+	// The destination path for pushing the file to the cloud application service instance.
 	//
 	// example:
 	//
 	// /data/tmp/test/xxx.tar
 	TargetPath *string `json:"TargetPath,omitempty" xml:"TargetPath,omitempty"`
-	// The time when the status was last updated. The time follows the ISO 8601 standard and includes the time zone offset in the YYYY-MM-DDTHH:mm:ss+HH:mm format.
+	// The time when the status was last updated. The time is displayed in the ISO 8601 standard with a time zone offset in the YYYY-MM-DDTHH:mm:ss+HH:mm format.
 	//
 	// example:
 	//
 	// 2024-03-28T14:15:08+08:00
 	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
-	// The time when the upload started. The time follows the ISO 8601 standard and includes the time zone offset in the YYYY-MM-DDTHH:mm:ss+HH:mm format.
+	// The time when the upload started. The time is displayed in the ISO 8601 standard with a time zone offset in the YYYY-MM-DDTHH:mm:ss+HH:mm format.
 	//
 	// example:
 	//

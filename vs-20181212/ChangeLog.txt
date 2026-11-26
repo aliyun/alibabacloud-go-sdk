@@ -1,3 +1,6 @@
+2026-11-26 Version: v4.10.3
+- Generated golang 2018-12-12 for vs.
+
 2026-10-30 Version: v4.10.2
 - Update API CreateRenderingInstance: add response parameters Body.RenderingInstanceIds.
 

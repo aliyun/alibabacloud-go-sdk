@@ -38,7 +38,7 @@ type DescribeComfyTaskWaitingQueueResponseBody struct {
 	//
 	// BEA5625F-8FCF-48F4-851B-CA63946DA664
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The task waiting queue information.
+	// The waiting queue information.
 	TaskWaitingQueue *DescribeComfyTaskWaitingQueueResponseBodyTaskWaitingQueue `json:"TaskWaitingQueue,omitempty" xml:"TaskWaitingQueue,omitempty" type:"Struct"`
 }
 

@@ -24,7 +24,7 @@ type CreateComfyUserDataDirResponseBody struct {
 	//
 	// 0
 	Code *int64 `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The description. If Status is Failed, this field contains the cause of the failure.
+	// The description. If Status is Failed, it includes the cause of the failure.
 	//
 	// example:
 	//

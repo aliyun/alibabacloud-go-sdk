@@ -27,6 +27,8 @@ type iListCloudAppInstallationsRequest interface {
 	GetProjectId() *string
 	SetRenderingInstanceId(v string) *ListCloudAppInstallationsRequest
 	GetRenderingInstanceId() *string
+	SetRenderingInstanceIds(v []*string) *ListCloudAppInstallationsRequest
+	GetRenderingInstanceIds() []*string
 	SetStartTime(v string) *ListCloudAppInstallationsRequest
 	GetStartTime() *string
 }
@@ -62,13 +64,15 @@ type ListCloudAppInstallationsRequest struct {
 	//
 	// 1
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries to return on each page for a paged query. Valid values: 1 to 100. Default value: 10.
+	// The Settings for the number of entries per page during paging in a paged query. Valid values: 1 to 100. Default value: 10.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The ID of the patch package. This parameter is supported only in Windows scenarios. If you enter origin, only the original version is filtered.
+	// The ID of the patch package. This parameter is only supported in Windows scenarios. Valid values:
+	//
+	// - origin: Only the original version is filtered.
 	//
 	// example:
 	//
@@ -80,12 +84,18 @@ type ListCloudAppInstallationsRequest struct {
 	//
 	// project-b93ea81de76f48609eed3cd420f0399f
 	ProjectId *string `json:"ProjectId,omitempty" xml:"ProjectId,omitempty"`
-	// The cloud application service instance ID, which is used to query the cloud applications installed on the specified instance.
+	// The instance ID of the cloud application service. This parameter is used to query the cloud applications installed on the specified instance.
 	//
 	// example:
 	//
 	// render-9f8c57355d224ad7beaf95e145f22111
 	RenderingInstanceId *string `json:"RenderingInstanceId,omitempty" xml:"RenderingInstanceId,omitempty"`
+	// The list of cloud application service instance IDs.
+	//
+	// example:
+	//
+	// [\"render-eb01436f39ac459a96ac566c418ca926\"]
+	RenderingInstanceIds []*string `json:"RenderingInstanceIds,omitempty" xml:"RenderingInstanceIds,omitempty" type:"Repeated"`
 	// The start time of the time range filter. Specify the time in the ISO 8601 standard in the yyyy-MM-ddTHH:mm:ssZ format. The time must be in UTC.
 	//
 	// example:
@@ -138,6 +148,10 @@ func (s *ListCloudAppInstallationsRequest) GetRenderingInstanceId() *string {
 	return s.RenderingInstanceId
 }
 
+func (s *ListCloudAppInstallationsRequest) GetRenderingInstanceIds() []*string {
+	return s.RenderingInstanceIds
+}
+
 func (s *ListCloudAppInstallationsRequest) GetStartTime() *string {
 	return s.StartTime
 }
@@ -184,6 +198,11 @@ func (s *ListCloudAppInstallationsRequest) SetProjectId(v string) *ListCloudAppI
 
 func (s *ListCloudAppInstallationsRequest) SetRenderingInstanceId(v string) *ListCloudAppInstallationsRequest {
 	s.RenderingInstanceId = &v
+	return s
+}
+
+func (s *ListCloudAppInstallationsRequest) SetRenderingInstanceIds(v []*string) *ListCloudAppInstallationsRequest {
+	s.RenderingInstanceIds = v
 	return s
 }
 
