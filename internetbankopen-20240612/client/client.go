@@ -33,9 +33,6 @@ func (client *Client) Init(config *openapiutil.Config) (_err error) {
 
 	client.Spi = gatewayClient
 	client.EndpointRule = dara.String("regional")
-	client.EndpointMap = map[string]*string{
-		"cn-beijing": dara.String("internetbankopen.aliyuncs.com"),
-	}
 	_err = client.CheckConfig(config)
 	if _err != nil {
 		return _err
