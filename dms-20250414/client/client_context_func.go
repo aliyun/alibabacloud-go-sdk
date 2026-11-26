@@ -270,86 +270,6 @@ func (client *Client) AddUserToDataAgentWorkspaceWithContext(ctx context.Context
 
 // Summary:
 //
-// 批量新建湖仓表分区
-//
-// @param tmpReq - BatchCreateDataLakePartitionsRequest
-//
-// @param runtime - runtime options for this request RuntimeOptions
-//
-// @return BatchCreateDataLakePartitionsResponse
-func (client *Client) BatchCreateDataLakePartitionsWithContext(ctx context.Context, tmpReq *BatchCreateDataLakePartitionsRequest, runtime *dara.RuntimeOptions) (_result *BatchCreateDataLakePartitionsResponse, _err error) {
-	if dara.BoolValue(client.EnableValidate) == true {
-		_err = tmpReq.Validate()
-		if _err != nil {
-			return _result, _err
-		}
-	}
-	request := &BatchCreateDataLakePartitionsShrinkRequest{}
-	openapiutil.Convert(tmpReq, request)
-	if !dara.IsNil(tmpReq.PartitionInputs) {
-		request.PartitionInputsShrink = openapiutil.ArrayToStringWithSpecifiedStyle(tmpReq.PartitionInputs, dara.String("PartitionInputs"), dara.String("json"))
-	}
-
-	query := map[string]interface{}{}
-	if !dara.IsNil(request.CatalogName) {
-		query["CatalogName"] = request.CatalogName
-	}
-
-	if !dara.IsNil(request.DbName) {
-		query["DbName"] = request.DbName
-	}
-
-	if !dara.IsNil(request.IfNotExists) {
-		query["IfNotExists"] = request.IfNotExists
-	}
-
-	if !dara.IsNil(request.NeedResult) {
-		query["NeedResult"] = request.NeedResult
-	}
-
-	if !dara.IsNil(request.TableName) {
-		query["TableName"] = request.TableName
-	}
-
-	if !dara.IsNil(request.Tid) {
-		query["Tid"] = request.Tid
-	}
-
-	if !dara.IsNil(request.WorkspaceId) {
-		query["WorkspaceId"] = request.WorkspaceId
-	}
-
-	body := map[string]interface{}{}
-	if !dara.IsNil(request.PartitionInputsShrink) {
-		body["PartitionInputs"] = request.PartitionInputsShrink
-	}
-
-	req := &openapiutil.OpenApiRequest{
-		Query: openapiutil.Query(query),
-		Body:  openapiutil.ParseToMap(body),
-	}
-	params := &openapiutil.Params{
-		Action:      dara.String("BatchCreateDataLakePartitions"),
-		Version:     dara.String("2025-04-14"),
-		Protocol:    dara.String("HTTPS"),
-		Pathname:    dara.String("/"),
-		Method:      dara.String("POST"),
-		AuthType:    dara.String("AK"),
-		Style:       dara.String("RPC"),
-		ReqBodyType: dara.String("formData"),
-		BodyType:    dara.String("json"),
-	}
-	_result = &BatchCreateDataLakePartitionsResponse{}
-	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
-	if _err != nil {
-		return _result, _err
-	}
-	_err = dara.Convert(_body, &_result)
-	return _result, _err
-}
-
-// Summary:
-//
 // CheckDataAgentMemoryConfig - Queries the memory generation and usage configuration of a DataAgent.
 //
 // @param request - CheckDataAgentMemoryConfigRequest
@@ -683,12 +603,24 @@ func (client *Client) CreateAirflowWithContext(ctx context.Context, tmpReq *Crea
 		query["Description"] = request.Description
 	}
 
+	if !dara.IsNil(request.EnableLineage) {
+		query["EnableLineage"] = request.EnableLineage
+	}
+
 	if !dara.IsNil(request.EnableServerless) {
 		query["EnableServerless"] = request.EnableServerless
 	}
 
 	if !dara.IsNil(request.GracefulShutdownTimeout) {
 		query["GracefulShutdownTimeout"] = request.GracefulShutdownTimeout
+	}
+
+	if !dara.IsNil(request.LineageReplicas) {
+		query["LineageReplicas"] = request.LineageReplicas
+	}
+
+	if !dara.IsNil(request.LineageSpec) {
+		query["LineageSpec"] = request.LineageSpec
 	}
 
 	if !dara.IsNil(request.OssBucketName) {
@@ -1560,7 +1492,7 @@ func (client *Client) DeleteAgenticDataSourceWithContext(ctx context.Context, re
 //
 // Description:
 //
-// After the reverse endpoint is deleted, the data source can no longer establish connections and cannot be restored by calling the enable API.
+// After deletion, no new connections can be established for this data source, and it cannot be recovered by calling the enable operation.
 //
 // @param request - DeleteAgenticVpcEndpointRequest
 //
@@ -2364,7 +2296,7 @@ func (client *Client) DeleteWorkspaceCodeWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// Retrieves the detailed description of a custom agent based on the custom agent ID.
+// Queries the details of a custom agent by custom agent ID.
 //
 // @param request - DescribeCustomAgentRequest
 //
@@ -3256,7 +3188,7 @@ func (client *Client) GetAgenticTableIndexWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// Queries the configuration and status of an Airflow instance.
+// Queries the details of an Airflow instance.
 //
 // @param request - GetAirflowRequest
 //
@@ -3491,7 +3423,7 @@ func (client *Client) GetDataAgentSubAccountInfoWithContext(ctx context.Context,
 //
 // Description:
 //
-// Queries the model usage summary of DataAgent analysis tasks within a specified time range, including the number of models used, total number of model calls, total tokens consumed, and peak TPM. This data is used to analyze and monitor the model resource consumption of DataAgent analysis tasks.
+// Queries the model usage summary data of DataAgent analysis tasks within a specified time range, including the number of models used, total number of model calls, total tokens consumed, and peak TPM. This data is used to analyze and monitor the model resource consumption of DataAgent analysis tasks.
 //
 // @param tmpReq - GetDataAgentTaskModelUsageRequest
 //
@@ -3561,11 +3493,11 @@ func (client *Client) GetDataAgentTaskModelUsageWithContext(ctx context.Context,
 
 // Summary:
 //
-// Queries the time-series metrics of tokens per minute (TPM) for DataAgent analysis task model usage within a specified time range, returning token consumption at each time point at a minute-level granularity.
+// Queries the time-series metrics of tokens per minute (TPM) for DataAgent analytical task model usage within a specified time range, and returns the token consumption at each time point at a minute-level granularity.
 //
 // Description:
 //
-// Queries the time-series metrics of tokens per minute (TPM) for DataAgent analysis task model usage within a specified time range. It returns the number of tokens consumed in each statistical interval at a minute-level granularity to help you analyze the trend of model usage over time.
+// Queries the time-series metrics of tokens per minute (TPM) for DataAgent analytical task model usage within a specified time range, and returns the number of tokens consumed in each statistical interval at a minute-level granularity to analyze the trend of model usage over time.
 //
 // @param tmpReq - GetDataAgentTaskModelUsageMetricsRequest
 //
@@ -7559,11 +7491,11 @@ func (client *Client) SetWorkspaceCodePublishSettingWithContext(ctx context.Cont
 
 // Summary:
 //
-// Sets the quota for a workspace.
+// Sets the workspace quota.
 //
 // Description:
 //
-// Sets the quota for a specific workspace.
+// Sets the workspace quota.
 //
 // @param request - SetWorkspaceQuotaRequest
 //
@@ -8124,12 +8056,24 @@ func (client *Client) UpdateAirflowWithContext(ctx context.Context, tmpReq *Upda
 		query["Description"] = request.Description
 	}
 
+	if !dara.IsNil(request.EnableLineage) {
+		query["EnableLineage"] = request.EnableLineage
+	}
+
 	if !dara.IsNil(request.EnableServerless) {
 		query["EnableServerless"] = request.EnableServerless
 	}
 
 	if !dara.IsNil(request.GracefulShutdownTimeout) {
 		query["GracefulShutdownTimeout"] = request.GracefulShutdownTimeout
+	}
+
+	if !dara.IsNil(request.LineageReplicas) {
+		query["LineageReplicas"] = request.LineageReplicas
+	}
+
+	if !dara.IsNil(request.LineageSpec) {
+		query["LineageSpec"] = request.LineageSpec
 	}
 
 	if !dara.IsNil(request.PluginsDir) {
@@ -8181,7 +8125,7 @@ func (client *Client) UpdateAirflowWithContext(ctx context.Context, tmpReq *Upda
 //
 // Description:
 //
-// Updates the accuracy test item.
+// Updates an accuracy test item.
 //
 // @param request - UpdateDataAgentAccuracyTestRequest
 //

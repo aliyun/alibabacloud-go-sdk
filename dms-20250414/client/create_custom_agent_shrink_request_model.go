@@ -54,9 +54,9 @@ type iCreateCustomAgentShrinkRequest interface {
 type CreateCustomAgentShrinkRequest struct {
 	// The type of the custom agent. Valid values:
 	//
-	// - Default: The system-built-in custom agent. Each workspace can have at most one Default agent, and it cannot be deleted.
+	// - Default: the system-built-in custom agent. Each workspace can have at most one Default agent, which cannot be deleted.
 	//
-	// - Common: A common custom agent.
+	// - Common: a common custom agent.
 	//
 	// example:
 	//
@@ -66,9 +66,9 @@ type CreateCustomAgentShrinkRequest struct {
 	CallbackConfigShrink *string `json:"CallbackConfig,omitempty" xml:"CallbackConfig,omitempty"`
 	// The creation source. Valid values:
 	//
-	// - Empty (default): Create the agent by using a form.
+	// - Default (leave empty): created by using a form.
 	//
-	// - SmartNew: Create the agent by using intelligent development.
+	// - SmartNew: intelligent development.
 	//
 	// example:
 	//
@@ -80,29 +80,29 @@ type CreateCustomAgentShrinkRequest struct {
 	//
 	// cn-hangzhou
 	DMSUnit *string `json:"DMSUnit,omitempty" xml:"DMSUnit,omitempty"`
-	// The specified data scope in **JSON character string format**.
+	// The specified data scope in **JSON string format**.
 	//
 	// - General parameter description:
 	//
-	//   - tableFlag: Set to true to specify the data scope.
+	//   - tableFlag: true indicates that the data scope is specified.
 	//
-	//   - scope: Set to personal as a fixed value.
+	//   - scope: personal is a fixed value.
 	//
-	//   - personal: The parameters for file and database types.
+	//   - personal: the parameters passed for file and database types.
 	//
 	// **File type**. Pass parameters in the following format:
 	//
-	// - DataSourceType: Set to remote_data_center as a fixed value.
+	// - DataSourceType: remote_data_center is a fixed value.
 	//
-	// - FileId: The file ID.
+	// - FileId: the file ID.
 	//
-	// - Database: The database name returned by the ListDataCenterTable operation, which is usually the file name.
+	// - Database: the database name returned by the ListDataCenterTable operation, which is usually the file name.
 	//
-	// - Tables: The table names returned by the ListDataCenterTable operation.
+	// - Tables: the table names returned by the ListDataCenterTable operation.
 	//
-	// - TableIds: The table IDs returned by the ListDataCenterTable operation.
+	// - TableIds: the table IDs returned by the ListDataCenterTable operation.
 	//
-	// - RegionId: The current region.
+	// - RegionId: the current region.
 	//
 	// ```
 	//
@@ -142,25 +142,25 @@ type CreateCustomAgentShrinkRequest struct {
 	//
 	// **Database type**. Pass parameters in the following format:
 	//
-	// - DataSourceType: Set to database as a fixed value.
+	// - DataSourceType: database is a fixed value.
 	//
-	// - DmsInstanceId: The DMS instance ID returned by the data center operation.
+	// - DmsInstanceId: the DMS instance ID returned by the data center operation.
 	//
-	// - DmsDatabaseId: The DMS database ID returned by the data center operation.
+	// - DmsDatabaseId: the DMS database ID returned by the data center operation.
 	//
-	// - FileId: The instance name. **[Deprecated]**
+	// - FileId: the instance name. (Deprecated)
 	//
-	// - DbName: The database name returned by the data center operation.
+	// - DbName: the database name returned by the data center operation.
 	//
-	// - Database: The database name returned by the data center operation.
+	// - Database: the database name returned by the data center operation.
 	//
-	// - Tables: The table names returned by the data center operation.
+	// - Tables: the table names returned by the data center operation.
 	//
-	// - TableIds: The table IDs returned by the data center operation.
+	// - TableIds: the table IDs returned by the data center operation.
 	//
-	// - Engine: The database engine type, such as mysql or postgresql.
+	// - Engine: the engine type (mysql or postgresql).
 	//
-	// - RegionId: The current region.
+	// - RegionId: the current region.
 	//
 	// ```
 	//
@@ -242,7 +242,7 @@ type CreateCustomAgentShrinkRequest struct {
 	ExecutionConfigShrink *string `json:"ExecutionConfig,omitempty" xml:"ExecutionConfig,omitempty"`
 	// The instruction.
 	//
-	// - Input limit: Up to 10,000 characters.
+	// - Input limit: up to 10,000 characters.
 	//
 	// example:
 	//
@@ -250,15 +250,15 @@ type CreateCustomAgentShrinkRequest struct {
 	//
 	// 1. GMV (Gross Merchandise Volume) refers to the total order amount, including both paid and unpaid orders.
 	//
-	// 2. Order volume refers to the number of valid orders placed per day.
+	// 2. Order volume is the number of valid orders placed per day.
 	//
 	// 3. UV (Unique Visitors) refers to the number of deduplicated users who visit the website or app.
 	//
-	// 4. Conversion rate = Number of paid orders / UV, reflecting the traffic conversion efficiency
+	// 4. Conversion rate = Number of paid orders / UV, which reflects the traffic conversion efficiency
 	Instruction *string `json:"Instruction,omitempty" xml:"Instruction,omitempty"`
 	// The knowledge.
 	//
-	// - Input limit: Up to 10,000 characters.
+	// - Input limit: up to 10,000 characters.
 	//
 	// example:
 	//
@@ -266,11 +266,11 @@ type CreateCustomAgentShrinkRequest struct {
 	//
 	// 1. GMV (Gross Merchandise Volume) refers to the total order amount, including both paid and unpaid orders.
 	//
-	// 2. Order volume refers to the number of valid orders placed per day.
+	// 2. Order volume is the number of valid orders placed per day.
 	//
 	// 3. UV (Unique Visitors) refers to the number of deduplicated users who visit the website or app.
 	//
-	// 4. Conversion rate = Number of paid orders / UV, reflecting the traffic conversion efficiency
+	// 4. Conversion rate = Number of paid orders / UV, which reflects the traffic conversion efficiency
 	Knowledge *string `json:"Knowledge,omitempty" xml:"Knowledge,omitempty"`
 	// The external knowledge bases.
 	KnowledgeConfigListShrink *string `json:"KnowledgeConfigList,omitempty" xml:"KnowledgeConfigList,omitempty"`

@@ -23,10 +23,16 @@ type iCreateAirflowRequest interface {
 	GetDataMountInfoList() []*DataMountInfo
 	SetDescription(v string) *CreateAirflowRequest
 	GetDescription() *string
+	SetEnableLineage(v bool) *CreateAirflowRequest
+	GetEnableLineage() *bool
 	SetEnableServerless(v bool) *CreateAirflowRequest
 	GetEnableServerless() *bool
 	SetGracefulShutdownTimeout(v int32) *CreateAirflowRequest
 	GetGracefulShutdownTimeout() *int32
+	SetLineageReplicas(v int32) *CreateAirflowRequest
+	GetLineageReplicas() *int32
+	SetLineageSpec(v string) *CreateAirflowRequest
+	GetLineageSpec() *string
 	SetOssBucketName(v string) *CreateAirflowRequest
 	GetOssBucketName() *string
 	SetOssPath(v string) *CreateAirflowRequest
@@ -80,7 +86,7 @@ type CreateAirflowRequest struct {
 	//
 	// token-****
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// The DAG directory scanned by Airflow.
+	// The directory scanned by Airflow for DAGs.
 	//
 	// example:
 	//
@@ -94,14 +100,28 @@ type CreateAirflowRequest struct {
 	//
 	// order scheduler
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// Specifies whether to enable Worker elasticity.
+	// Specifies whether to enable data lineage. For Airflow 2.x, this feature is always disabled, and the lineage specification and number of replicas are ignored.
+	EnableLineage *bool `json:"EnableLineage,omitempty" xml:"EnableLineage,omitempty"`
+	// Specifies whether to enable elasticity for workers.
 	EnableServerless *bool `json:"EnableServerless,omitempty" xml:"EnableServerless,omitempty"`
-	// The timeout period for the Worker to gracefully shut down.
+	// The timeout period for a worker to gracefully shut down.
 	//
 	// example:
 	//
 	// 60
 	GracefulShutdownTimeout *int32 `json:"GracefulShutdownTimeout,omitempty" xml:"GracefulShutdownTimeout,omitempty"`
+	// The number of replicas for the lineage service. The default value is 1 when enabled. If omitted during an update, the original value is retained.
+	//
+	// example:
+	//
+	// 1
+	LineageReplicas *int32 `json:"LineageReplicas,omitempty" xml:"LineageReplicas,omitempty"`
+	// The specification of the lineage service. It uses the same tier as the Airflow instance specification.
+	//
+	// example:
+	//
+	// SMALL
+	LineageSpec *string `json:"LineageSpec,omitempty" xml:"LineageSpec,omitempty"`
 	// The name of the OSS bucket.
 	//
 	// This parameter is required.
@@ -118,13 +138,13 @@ type CreateAirflowRequest struct {
 	//
 	// /airflow
 	OssPath *string `json:"OssPath,omitempty" xml:"OssPath,omitempty"`
-	// The plugin directory scanned by the Airflow instance.
+	// The directory scanned by the Airflow instance for plugins.
 	//
 	// example:
 	//
 	// default/plugins
 	PluginsDir *string `json:"PluginsDir,omitempty" xml:"PluginsDir,omitempty"`
-	// The path of the package installation file.
+	// The path to the installation package.
 	//
 	// example:
 	//
@@ -138,7 +158,7 @@ type CreateAirflowRequest struct {
 	//
 	// sg-bp108t8ldzeyk1****
 	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
-	// The startup script of the Airflow container.
+	// The startup script for the Airflow container.
 	//
 	// example:
 	//
@@ -152,7 +172,7 @@ type CreateAirflowRequest struct {
 	//
 	// vsw-8vbaf073jawozfp****
 	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	// VPC ID。
+	// The VPC ID.
 	//
 	// This parameter is required.
 	//
@@ -160,7 +180,7 @@ type CreateAirflowRequest struct {
 	//
 	// vpc-uf63r6coyiw9o5****
 	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
-	// The number of extended Worker node replicas.
+	// The number of worker node extensions.
 	//
 	// This parameter is required.
 	//
@@ -168,7 +188,7 @@ type CreateAirflowRequest struct {
 	//
 	// 0
 	WorkerServerlessReplicas *int32 `json:"WorkerServerlessReplicas,omitempty" xml:"WorkerServerlessReplicas,omitempty"`
-	// The ID of the Data Management workspace.
+	// The DMS workspace ID.
 	//
 	// This parameter is required.
 	//
@@ -176,7 +196,7 @@ type CreateAirflowRequest struct {
 	//
 	// 8630242382****
 	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
-	// The zone ID within the region.
+	// The zone ID in the region.
 	//
 	// example:
 	//
@@ -220,12 +240,24 @@ func (s *CreateAirflowRequest) GetDescription() *string {
 	return s.Description
 }
 
+func (s *CreateAirflowRequest) GetEnableLineage() *bool {
+	return s.EnableLineage
+}
+
 func (s *CreateAirflowRequest) GetEnableServerless() *bool {
 	return s.EnableServerless
 }
 
 func (s *CreateAirflowRequest) GetGracefulShutdownTimeout() *int32 {
 	return s.GracefulShutdownTimeout
+}
+
+func (s *CreateAirflowRequest) GetLineageReplicas() *int32 {
+	return s.LineageReplicas
+}
+
+func (s *CreateAirflowRequest) GetLineageSpec() *string {
+	return s.LineageSpec
 }
 
 func (s *CreateAirflowRequest) GetOssBucketName() *string {
@@ -307,6 +339,11 @@ func (s *CreateAirflowRequest) SetDescription(v string) *CreateAirflowRequest {
 	return s
 }
 
+func (s *CreateAirflowRequest) SetEnableLineage(v bool) *CreateAirflowRequest {
+	s.EnableLineage = &v
+	return s
+}
+
 func (s *CreateAirflowRequest) SetEnableServerless(v bool) *CreateAirflowRequest {
 	s.EnableServerless = &v
 	return s
@@ -314,6 +351,16 @@ func (s *CreateAirflowRequest) SetEnableServerless(v bool) *CreateAirflowRequest
 
 func (s *CreateAirflowRequest) SetGracefulShutdownTimeout(v int32) *CreateAirflowRequest {
 	s.GracefulShutdownTimeout = &v
+	return s
+}
+
+func (s *CreateAirflowRequest) SetLineageReplicas(v int32) *CreateAirflowRequest {
+	s.LineageReplicas = &v
+	return s
+}
+
+func (s *CreateAirflowRequest) SetLineageSpec(v string) *CreateAirflowRequest {
+	s.LineageSpec = &v
 	return s
 }
 

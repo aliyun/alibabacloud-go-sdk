@@ -22,7 +22,7 @@ type iGetDataAgentTaskModelUsageMetricsResponseBody interface {
 }
 
 type GetDataAgentTaskModelUsageMetricsResponseBody struct {
-	// The list of time-series TPM metrics for model usage. The usage at each time point is returned in chronological order.
+	// The list of time-series metrics of TPM for model usage, which returns the usage at each time point in chronological order.
 	Data []*GetDataAgentTaskModelUsageMetricsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
 	// The error code, which is returned when a request exception occurs.
 	//
@@ -127,13 +127,19 @@ type GetDataAgentTaskModelUsageMetricsResponseBodyData struct {
 	//
 	// 1735660800
 	BeginTime *int64 `json:"BeginTime,omitempty" xml:"BeginTime,omitempty"`
+	// The concurrency value.
+	//
+	// example:
+	//
+	// 10
+	Concurrency *float64 `json:"Concurrency,omitempty" xml:"Concurrency,omitempty"`
 	// The end time of the statistical interval for the time-series point. The value is a UNIX timestamp in seconds.
 	//
 	// example:
 	//
 	// 1735660860
 	EndTime *int64 `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The TPM at the time-series point, which represents the number of tokens consumed in the statistical interval.
+	// The TPM of the time-series point, which is the number of tokens consumed in the statistical interval.
 	//
 	// example:
 	//
@@ -153,6 +159,10 @@ func (s *GetDataAgentTaskModelUsageMetricsResponseBodyData) GetBeginTime() *int6
 	return s.BeginTime
 }
 
+func (s *GetDataAgentTaskModelUsageMetricsResponseBodyData) GetConcurrency() *float64 {
+	return s.Concurrency
+}
+
 func (s *GetDataAgentTaskModelUsageMetricsResponseBodyData) GetEndTime() *int64 {
 	return s.EndTime
 }
@@ -163,6 +173,11 @@ func (s *GetDataAgentTaskModelUsageMetricsResponseBodyData) GetTpm() *int64 {
 
 func (s *GetDataAgentTaskModelUsageMetricsResponseBodyData) SetBeginTime(v int64) *GetDataAgentTaskModelUsageMetricsResponseBodyData {
 	s.BeginTime = &v
+	return s
+}
+
+func (s *GetDataAgentTaskModelUsageMetricsResponseBodyData) SetConcurrency(v float64) *GetDataAgentTaskModelUsageMetricsResponseBodyData {
+	s.Concurrency = &v
 	return s
 }
 

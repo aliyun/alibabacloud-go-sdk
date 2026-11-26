@@ -125,7 +125,7 @@ type ResetAgenticApiKeyResponseBodyData struct {
 	//
 	// - HUMAN_BOUND: fully inherits the permissions of the associated user.
 	//
-	// - PERMISSION_NARROW: narrows the permissions based on the associated user\\"s permission baseline.
+	// - PERMISSION_NARROW: narrows the permissions based on the associated user\"s permission baseline.
 	//
 	// - AGENT_BOUND: inherits the permissions of the parent Agent.
 	//

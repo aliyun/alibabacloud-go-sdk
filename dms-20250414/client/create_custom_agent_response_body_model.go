@@ -117,7 +117,7 @@ func (s *CreateCustomAgentResponseBody) Validate() error {
 }
 
 type CreateCustomAgentResponseBodyData struct {
-	// The custom agent type. Valid values:
+	// The type of the custom agent. Valid values:
 	//
 	// - Default: The system-built-in custom agent.
 	//
@@ -127,7 +127,7 @@ type CreateCustomAgentResponseBodyData struct {
 	//
 	// Common
 	AgentType *string `json:"AgentType,omitempty" xml:"AgentType,omitempty"`
-	// The ID of the Alibaba Cloud main account.
+	// The parent Alibaba Cloud account ID.
 	//
 	// example:
 	//
@@ -219,13 +219,13 @@ type CreateCustomAgentResponseBodyData struct {
 	//
 	// Analysis framework:
 	//
-	// 1. Monitor core metrics (GMV, order volume, UV, and conversion rate) on a daily, weekly, and monthly basis, and analyze trend changes and year-over-year or month-over-month fluctuations.
+	// 1. Monitor core metrics (GMV, order volume, UV, and conversion rate) on a daily, weekly, and monthly basis to analyze trend changes and year-over-year or month-over-month fluctuations.
 	//
-	// 2. Segment data by new and returning customers, channels, and regions to identify growth sources and shortcomings.
+	// 2. Segment data by new and existing customers, channels, and regions to identify growth sources and shortcomings.
 	//
-	// 3. Conduct funnel analysis based on user behavior paths (browse -> add to cart -> pay) to identify drop-off stages
+	// 3. Conduct funnel analysis based on the user behavior path (browse -> add to cart -> pay) to locate churn points
 	Instruction *string `json:"Instruction,omitempty" xml:"Instruction,omitempty"`
-	// Indicates whether a periodic task is configured.
+	// Indicates whether a scheduled task is configured.
 	//
 	// example:
 	//
@@ -239,11 +239,11 @@ type CreateCustomAgentResponseBodyData struct {
 	//
 	// 1. GMV (Gross Merchandise Volume) refers to the total order amount, including both paid and unpaid orders.
 	//
-	// 2. Order volume refers to the number of valid orders placed per day.
+	// 2. Order volume is the number of valid orders placed per day.
 	//
 	// 3. UV (Unique Visitors) refers to the number of deduplicated users who visit the website or app.
 	//
-	// 4. Conversion rate = Number of paid orders / UV, reflecting the traffic conversion efficiency
+	// 4. Conversion rate = Number of paid orders / UV, which reflects the traffic conversion efficiency
 	Knowledge *string `json:"Knowledge,omitempty" xml:"Knowledge,omitempty"`
 	// The external knowledge bases.
 	KnowledgeConfigList []*CreateCustomAgentResponseBodyDataKnowledgeConfigList `json:"KnowledgeConfigList,omitempty" xml:"KnowledgeConfigList,omitempty" type:"Repeated"`
@@ -267,7 +267,7 @@ type CreateCustomAgentResponseBodyData struct {
 	//
 	// Agent test name
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The next execution time of the periodic task.
+	// The next run time of the scheduled task.
 	//
 	// - Timestamp format.
 	//
@@ -303,9 +303,9 @@ type CreateCustomAgentResponseBodyData struct {
 	//
 	// 2025-12-11T14:04:32.000+00:00
 	ReleaseTime *string `json:"ReleaseTime,omitempty" xml:"ReleaseTime,omitempty"`
-	// The periodic task configuration.
+	// The scheduled task configuration.
 	ScheduleTaskConfig *CreateCustomAgentResponseBodyDataScheduleTaskConfig `json:"ScheduleTaskConfig,omitempty" xml:"ScheduleTaskConfig,omitempty" type:"Struct"`
-	// The custom agent status.
+	// The status of the custom agent.
 	//
 	// example:
 	//
@@ -701,13 +701,13 @@ func (s *CreateCustomAgentResponseBodyData) Validate() error {
 }
 
 type CreateCustomAgentResponseBodyDataCallbackConfig struct {
-	// The parameters to invoke the callback tool.
+	// The parameters used to invoke the callback tool.
 	//
 	// example:
 	//
 	// {"ID":"test"}
 	CallbackArgs *string `json:"CallbackArgs,omitempty" xml:"CallbackArgs,omitempty"`
-	// The prompt for generating parameters to invoke the callback tool.
+	// The prompt used to generate parameters to invoke the callback tool.
 	//
 	// example:
 	//
@@ -791,13 +791,13 @@ func (s *CreateCustomAgentResponseBodyDataCallbackConfig) Validate() error {
 }
 
 type CreateCustomAgentResponseBodyDataExecutionConfig struct {
-	// Specifies whether to prohibit appending data sources in a session.
+	// Specifies whether to prohibit appending data sources in the session.
 	//
 	// example:
 	//
 	// true
 	ForbiddenAppendDataSource *bool `json:"ForbiddenAppendDataSource,omitempty" xml:"ForbiddenAppendDataSource,omitempty"`
-	// Specifies whether to prohibit user inquiries during the process.
+	// Specifies whether to disable user inquiries during the process.
 	//
 	// example:
 	//
@@ -815,7 +815,7 @@ type CreateCustomAgentResponseBodyDataExecutionConfig struct {
 	//
 	// true
 	SkipSqlConfirm *bool `json:"SkipSqlConfirm,omitempty" xml:"SkipSqlConfirm,omitempty"`
-	// Specifies whether to skip the confirmation for generating a web report.
+	// Specifies whether to skip the web report drawing confirmation.
 	//
 	// example:
 	//
@@ -1024,13 +1024,13 @@ func (s *CreateCustomAgentResponseBodyDataKnowledgeSemanticConfigList) Validate(
 }
 
 type CreateCustomAgentResponseBodyDataScheduleTaskConfig struct {
-	// The cron expression for time-based scheduling.
+	// The cron expression for periodic scheduling.
 	//
 	// example:
 	//
 	// 0 0 0 ? 	- 1-7
 	CronExpression *string `json:"CronExpression,omitempty" xml:"CronExpression,omitempty"`
-	// The question for the scheduled task.
+	// The query for the periodic task.
 	//
 	// example:
 	//

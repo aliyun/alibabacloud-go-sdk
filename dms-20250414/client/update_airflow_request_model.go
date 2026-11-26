@@ -23,10 +23,16 @@ type iUpdateAirflowRequest interface {
 	GetDataMountInfoList() []*DataMountInfo
 	SetDescription(v string) *UpdateAirflowRequest
 	GetDescription() *string
+	SetEnableLineage(v bool) *UpdateAirflowRequest
+	GetEnableLineage() *bool
 	SetEnableServerless(v bool) *UpdateAirflowRequest
 	GetEnableServerless() *bool
 	SetGracefulShutdownTimeout(v int32) *UpdateAirflowRequest
 	GetGracefulShutdownTimeout() *int32
+	SetLineageReplicas(v int32) *UpdateAirflowRequest
+	GetLineageReplicas() *int32
+	SetLineageSpec(v string) *UpdateAirflowRequest
+	GetLineageSpec() *string
 	SetPluginsDir(v string) *UpdateAirflowRequest
 	GetPluginsDir() *string
 	SetRequirementFile(v string) *UpdateAirflowRequest
@@ -40,7 +46,7 @@ type iUpdateAirflowRequest interface {
 }
 
 type UpdateAirflowRequest struct {
-	// The unique key ID of the Airflow instance.
+	// The unique key ID of Airflow.
 	//
 	// This parameter is required.
 	//
@@ -54,7 +60,7 @@ type UpdateAirflowRequest struct {
 	//
 	// testairflow
 	AirflowName *string `json:"AirflowName,omitempty" xml:"AirflowName,omitempty"`
-	// The specification description of the Airflow instance.
+	// The specification description of Airflow.
 	//
 	// example:
 	//
@@ -74,20 +80,34 @@ type UpdateAirflowRequest struct {
 	DagsDir *string `json:"DagsDir,omitempty" xml:"DagsDir,omitempty"`
 	// The list of data mount information.
 	DataMountInfoList []*DataMountInfo `json:"DataMountInfoList,omitempty" xml:"DataMountInfoList,omitempty" type:"Repeated"`
-	// The description of the Airflow instance.
+	// The description of Airflow.
 	//
 	// example:
 	//
 	// test airflow
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// Specifies whether to enable data lineage. For Airflow 2.x, this feature is always disabled, and the lineage specifications and number of replicas are ignored.
+	EnableLineage *bool `json:"EnableLineage,omitempty" xml:"EnableLineage,omitempty"`
 	// Specifies whether to enable serverless workers.
 	EnableServerless *bool `json:"EnableServerless,omitempty" xml:"EnableServerless,omitempty"`
-	// The timeout period for a worker to exit.
+	// The timeout period for worker exit.
 	//
 	// example:
 	//
 	// 60
 	GracefulShutdownTimeout *int32 `json:"GracefulShutdownTimeout,omitempty" xml:"GracefulShutdownTimeout,omitempty"`
+	// The number of replicas for the lineage service. The default value is 1 when enabled. If omitted during an update, the original value is retained.
+	//
+	// example:
+	//
+	// 1
+	LineageReplicas *int32 `json:"LineageReplicas,omitempty" xml:"LineageReplicas,omitempty"`
+	// The merged lineage service specification, which uses the same tier as AppSpec.
+	//
+	// example:
+	//
+	// SMALL
+	LineageSpec *string `json:"LineageSpec,omitempty" xml:"LineageSpec,omitempty"`
 	// The plugin directory scanned by Airflow.
 	//
 	// example:
@@ -100,7 +120,7 @@ type UpdateAirflowRequest struct {
 	//
 	// default/requirements.txt
 	RequirementFile *string `json:"RequirementFile,omitempty" xml:"RequirementFile,omitempty"`
-	// The script loaded at startup of the Airflow instance.
+	// The script loaded when the Airflow instance starts.
 	//
 	// example:
 	//
@@ -158,12 +178,24 @@ func (s *UpdateAirflowRequest) GetDescription() *string {
 	return s.Description
 }
 
+func (s *UpdateAirflowRequest) GetEnableLineage() *bool {
+	return s.EnableLineage
+}
+
 func (s *UpdateAirflowRequest) GetEnableServerless() *bool {
 	return s.EnableServerless
 }
 
 func (s *UpdateAirflowRequest) GetGracefulShutdownTimeout() *int32 {
 	return s.GracefulShutdownTimeout
+}
+
+func (s *UpdateAirflowRequest) GetLineageReplicas() *int32 {
+	return s.LineageReplicas
+}
+
+func (s *UpdateAirflowRequest) GetLineageSpec() *string {
+	return s.LineageSpec
 }
 
 func (s *UpdateAirflowRequest) GetPluginsDir() *string {
@@ -221,6 +253,11 @@ func (s *UpdateAirflowRequest) SetDescription(v string) *UpdateAirflowRequest {
 	return s
 }
 
+func (s *UpdateAirflowRequest) SetEnableLineage(v bool) *UpdateAirflowRequest {
+	s.EnableLineage = &v
+	return s
+}
+
 func (s *UpdateAirflowRequest) SetEnableServerless(v bool) *UpdateAirflowRequest {
 	s.EnableServerless = &v
 	return s
@@ -228,6 +265,16 @@ func (s *UpdateAirflowRequest) SetEnableServerless(v bool) *UpdateAirflowRequest
 
 func (s *UpdateAirflowRequest) SetGracefulShutdownTimeout(v int32) *UpdateAirflowRequest {
 	s.GracefulShutdownTimeout = &v
+	return s
+}
+
+func (s *UpdateAirflowRequest) SetLineageReplicas(v int32) *UpdateAirflowRequest {
+	s.LineageReplicas = &v
+	return s
+}
+
+func (s *UpdateAirflowRequest) SetLineageSpec(v string) *UpdateAirflowRequest {
+	s.LineageSpec = &v
 	return s
 }
 

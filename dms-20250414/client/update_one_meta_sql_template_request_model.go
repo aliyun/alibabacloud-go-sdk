@@ -50,7 +50,7 @@ type UpdateOneMetaSqlTemplateRequest struct {
 	//
 	// example:
 	//
-	// select count(1) from sales where dt = \\"2026-08-01\\"
+	// select count(1) from sales where dt = \"2026-08-01\"
 	Expr *string `json:"Expr,omitempty" xml:"Expr,omitempty"`
 	// The UUID of the knowledge base.
 	//

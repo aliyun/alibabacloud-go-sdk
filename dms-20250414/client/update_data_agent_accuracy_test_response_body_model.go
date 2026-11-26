@@ -24,13 +24,13 @@ type iUpdateDataAgentAccuracyTestResponseBody interface {
 type UpdateDataAgentAccuracyTestResponseBody struct {
 	// The response struct.
 	Data *UpdateDataAgentAccuracyTestResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The error code returned when an exception occurs.
+	// The error code returned when an error occurs.
 	//
 	// example:
 	//
 	// UnknownError
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The error message returned when the call fails.
+	// The error message returned when the request fails.
 	//
 	// example:
 	//
@@ -42,7 +42,7 @@ type UpdateDataAgentAccuracyTestResponseBody struct {
 	//
 	// E0D21075-xxx-FD8AD04A63B6
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request is successful. Valid values:
+	// Specifies whether the request is successful. Valid values:
 	//
 	// - **true**: The request is successful.
 	//
@@ -145,7 +145,7 @@ type UpdateDataAgentAccuracyTestResponseBodyData struct {
 	//
 	// example:
 	//
-	// Customer Agent\\"s Evaluation
+	// Customer Agent\"s Evaluation
 	Desc *string `json:"Desc,omitempty" xml:"Desc,omitempty"`
 	// The accuracy evaluation criteria. An empty value indicates the default criteria.
 	//

@@ -26,7 +26,7 @@ type iCreateAirflowResponseBody interface {
 }
 
 type CreateAirflowResponseBody struct {
-	// The details of the access denial.
+	// The access denial details.
 	//
 	// example:
 	//
@@ -44,7 +44,7 @@ type CreateAirflowResponseBody struct {
 	//
 	// 200
 	HttpStatusCode *int64 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The log information.
+	// The log message.
 	//
 	// example:
 	//
@@ -58,11 +58,11 @@ type CreateAirflowResponseBody struct {
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// The Airflow data dictionary.
 	Root *CreateAirflowResponseBodyRoot `json:"Root,omitempty" xml:"Root,omitempty" type:"Struct"`
-	// Indicates whether the request was successful. Valid values:
+	// Indicates whether the request is successful. Valid values:
 	//
-	// - **true**: The request was successful.
+	// - **true**: The request is successful.
 	//
-	// - **false**: The request failed.
+	// - **false**: The request fails.
 	//
 	// example:
 	//
@@ -151,7 +151,7 @@ func (s *CreateAirflowResponseBody) Validate() error {
 }
 
 type CreateAirflowResponseBodyRoot struct {
-	// The instance ID of the Airflow instance.
+	// The instance ID.
 	//
 	// example:
 	//
@@ -181,7 +181,7 @@ type CreateAirflowResponseBodyRoot struct {
 	//
 	// airflow
 	AppType *string `json:"AppType,omitempty" xml:"AppType,omitempty"`
-	// The custom Airflow configuration.
+	// The custom Airflow configurations.
 	CustomAirflowCfg []*string `json:"CustomAirflowCfg,omitempty" xml:"CustomAirflowCfg,omitempty" type:"Repeated"`
 	// The directory that Airflow scans for DAGs.
 	//
@@ -191,19 +191,21 @@ type CreateAirflowResponseBodyRoot struct {
 	DagsDir *string `json:"DagsDir,omitempty" xml:"DagsDir,omitempty"`
 	// The list of data mount information.
 	DataMountInfoList []*DataMountInfo `json:"DataMountInfoList,omitempty" xml:"DataMountInfoList,omitempty" type:"Repeated"`
-	// The error log information.
+	// The error log message.
 	//
 	// example:
 	//
 	// vpc not found
 	DeployErrorMsg *string `json:"DeployErrorMsg,omitempty" xml:"DeployErrorMsg,omitempty"`
-	// The description of the Airflow instance.
+	// The description of Airflow.
 	//
 	// example:
 	//
 	// order scheduler
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// Specifies whether to enable Worker elasticity.
+	// Specifies whether data lineage is enabled.
+	EnableLineage *bool `json:"EnableLineage,omitempty" xml:"EnableLineage,omitempty"`
+	// Specifies whether to enable elasticity for workers.
 	EnableServerless *bool `json:"EnableServerless,omitempty" xml:"EnableServerless,omitempty"`
 	// The creation time.
 	//
@@ -211,12 +213,24 @@ type CreateAirflowResponseBodyRoot struct {
 	//
 	// 2025-08-12T05:46:01.000+0000
 	GmtCreated *string `json:"GmtCreated,omitempty" xml:"GmtCreated,omitempty"`
-	// The timeout period for the Worker to gracefully shut down.
+	// The timeout period for a worker to gracefully shut down.
 	//
 	// example:
 	//
 	// 60
 	GracefulShutdownTimeout *int32 `json:"GracefulShutdownTimeout,omitempty" xml:"GracefulShutdownTimeout,omitempty"`
+	// The number of replicas for the lineage service. The default value is 1 when enabled. If omitted during an update, the original value is retained.
+	//
+	// example:
+	//
+	// 1
+	LineageReplicas *int32 `json:"LineageReplicas,omitempty" xml:"LineageReplicas,omitempty"`
+	// The specification of the lineage service. It uses the same tier as the Airflow instance specification.
+	//
+	// example:
+	//
+	// SMALL
+	LineageSpec *string `json:"LineageSpec,omitempty" xml:"LineageSpec,omitempty"`
 	// The name of the OSS bucket.
 	//
 	// example:
@@ -235,7 +249,7 @@ type CreateAirflowResponseBodyRoot struct {
 	//
 	// default/plugins
 	PluginsDir *string `json:"PluginsDir,omitempty" xml:"PluginsDir,omitempty"`
-	// The path of the installable package.
+	// The path of the installable packages.
 	//
 	// example:
 	//
@@ -247,13 +261,13 @@ type CreateAirflowResponseBodyRoot struct {
 	//
 	// sg-2ze1nak7h0alg1xxx
 	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
-	// The file loaded when the Airflow instance starts. You can use this file to set environment variables and other configurations.
+	// The file loaded when the Airflow instance starts, which can be used to set environment variables.
 	//
 	// example:
 	//
 	// default/startup.sh
 	StartupFile *string `json:"StartupFile,omitempty" xml:"StartupFile,omitempty"`
-	// The instance status of the Airflow instance.
+	// The instance status.
 	//
 	// example:
 	//
@@ -265,7 +279,7 @@ type CreateAirflowResponseBodyRoot struct {
 	//
 	// vsw-8vbaf073jawozfpbg****
 	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	// VPC ID。
+	// The VPC ID.
 	//
 	// example:
 	//
@@ -339,6 +353,10 @@ func (s *CreateAirflowResponseBodyRoot) GetDescription() *string {
 	return s.Description
 }
 
+func (s *CreateAirflowResponseBodyRoot) GetEnableLineage() *bool {
+	return s.EnableLineage
+}
+
 func (s *CreateAirflowResponseBodyRoot) GetEnableServerless() *bool {
 	return s.EnableServerless
 }
@@ -349,6 +367,14 @@ func (s *CreateAirflowResponseBodyRoot) GetGmtCreated() *string {
 
 func (s *CreateAirflowResponseBodyRoot) GetGracefulShutdownTimeout() *int32 {
 	return s.GracefulShutdownTimeout
+}
+
+func (s *CreateAirflowResponseBodyRoot) GetLineageReplicas() *int32 {
+	return s.LineageReplicas
+}
+
+func (s *CreateAirflowResponseBodyRoot) GetLineageSpec() *string {
+	return s.LineageSpec
 }
 
 func (s *CreateAirflowResponseBodyRoot) GetOssBucketName() *string {
@@ -449,6 +475,11 @@ func (s *CreateAirflowResponseBodyRoot) SetDescription(v string) *CreateAirflowR
 	return s
 }
 
+func (s *CreateAirflowResponseBodyRoot) SetEnableLineage(v bool) *CreateAirflowResponseBodyRoot {
+	s.EnableLineage = &v
+	return s
+}
+
 func (s *CreateAirflowResponseBodyRoot) SetEnableServerless(v bool) *CreateAirflowResponseBodyRoot {
 	s.EnableServerless = &v
 	return s
@@ -461,6 +492,16 @@ func (s *CreateAirflowResponseBodyRoot) SetGmtCreated(v string) *CreateAirflowRe
 
 func (s *CreateAirflowResponseBodyRoot) SetGracefulShutdownTimeout(v int32) *CreateAirflowResponseBodyRoot {
 	s.GracefulShutdownTimeout = &v
+	return s
+}
+
+func (s *CreateAirflowResponseBodyRoot) SetLineageReplicas(v int32) *CreateAirflowResponseBodyRoot {
+	s.LineageReplicas = &v
+	return s
+}
+
+func (s *CreateAirflowResponseBodyRoot) SetLineageSpec(v string) *CreateAirflowResponseBodyRoot {
+	s.LineageSpec = &v
 	return s
 }
 

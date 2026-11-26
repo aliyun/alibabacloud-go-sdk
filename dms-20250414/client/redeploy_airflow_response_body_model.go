@@ -60,7 +60,7 @@ type RedeployAirflowResponseBody struct {
 	//
 	// example:
 	//
-	// {\\"Responses\\": {\\"responses\\": [{\\"Uuid\\": \\"af-63ly5o1yuf076ifrpbxpka396\\", \\"Success\\": True}]}}
+	// true
 	Root *bool `json:"Root,omitempty" xml:"Root,omitempty"`
 	// Indicates whether the request was successful. Valid values:
 	//

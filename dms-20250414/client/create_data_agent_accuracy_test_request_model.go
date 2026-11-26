@@ -40,19 +40,19 @@ type iCreateDataAgentAccuracyTestRequest interface {
 }
 
 type CreateDataAgentAccuracyTestRequest struct {
-	// The ID of the custom agent to be tested for accuracy.
+	// The ID of the custom agent that requires accuracy testing.
 	//
 	// example:
 	//
 	// ca-xxxxxxxxxxxxxxxxxxxx
 	CustomAgentId *string `json:"CustomAgentId,omitempty" xml:"CustomAgentId,omitempty"`
-	// Deprecated.
+	// **[Deprecated]**.
 	//
 	// example:
 	//
 	// null
 	Dataset *string `json:"Dataset,omitempty" xml:"Dataset,omitempty"`
-	// The data source. We recommend that you configure this in the custom agent.
+	// The data source. Configure it in the custom agent.
 	//
 	// example:
 	//
@@ -108,11 +108,11 @@ type CreateDataAgentAccuracyTestRequest struct {
 	//
 	// Test01
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// Specifies whether sessions are displayed after analysis. This parameter is not supported.
+	// Specifies whether to display sessions after analysis. This feature is not supported.
 	//
 	// example:
 	//
-	// null
+	// false
 	NeedDelete *bool `json:"NeedDelete,omitempty" xml:"NeedDelete,omitempty"`
 	// The region ID.
 	//
@@ -124,7 +124,7 @@ type CreateDataAgentAccuracyTestRequest struct {
 	//
 	// example:
 	//
-	// xxxxxxxxxxxxxxxxxxxx
+	// 1abc2de34fg56hijk7l8mnopq
 	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
 }
 

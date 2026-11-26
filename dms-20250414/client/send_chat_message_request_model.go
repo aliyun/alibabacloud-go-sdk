@@ -571,7 +571,7 @@ type SendChatMessageRequestDataSourcePermissionTables struct {
 	//
 	// example:
 	//
-	// region = \\"east\\"
+	// region = \"east\"
 	RequiredRowFilter *string `json:"RequiredRowFilter,omitempty" xml:"RequiredRowFilter,omitempty"`
 	// The name of the table to which the permission constraint rules apply.
 	//
@@ -888,7 +888,7 @@ type SendChatMessageRequestDataSourcesPermissionTables struct {
 	//
 	// example:
 	//
-	// region = \\"east\\"
+	// region = \"east\"
 	RequiredRowFilter *string `json:"RequiredRowFilter,omitempty" xml:"RequiredRowFilter,omitempty"`
 	// The name of the table to which the permission constraint rules apply.
 	//

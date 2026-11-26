@@ -26,7 +26,7 @@ type iGetAirflowResponseBody interface {
 }
 
 type GetAirflowResponseBody struct {
-	// The details about the access denial.
+	// The access denial details.
 	//
 	// example:
 	//
@@ -56,13 +56,13 @@ type GetAirflowResponseBody struct {
 	//
 	// E0D21075-CD3E-4D98-8264-****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The returned data.
+	// The data details.
 	Root *GetAirflowResponseBodyRoot `json:"Root,omitempty" xml:"Root,omitempty" type:"Struct"`
-	// Indicates whether the request was successful. The following values are returned:
+	// Indicates whether the request is successful. Valid values:
 	//
-	// - **true**: The request was successful.
+	// - **true**: The request is successful.
 	//
-	// - **false**: The request failed.
+	// - **false**: The request fails.
 	//
 	// example:
 	//
@@ -177,7 +177,7 @@ type GetAirflowResponseBodyRoot struct {
 	AppType *string `json:"AppType,omitempty" xml:"AppType,omitempty"`
 	// The custom configurations.
 	CustomAirflowCfg []*string `json:"CustomAirflowCfg,omitempty" xml:"CustomAirflowCfg,omitempty" type:"Repeated"`
-	// The DAG directory that Airflow scans.
+	// The DAG directory scanned by Airflow.
 	//
 	// example:
 	//
@@ -195,12 +195,26 @@ type GetAirflowResponseBodyRoot struct {
 	//
 	// test airflow
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The time when the instance was created.
+	// Specifies whether data lineage is enabled.
+	EnableLineage *bool `json:"EnableLineage,omitempty" xml:"EnableLineage,omitempty"`
+	// The creation time.
 	//
 	// example:
 	//
 	// 2025-08-12T05:46:01.000+0000
 	GmtCreated *string `json:"GmtCreated,omitempty" xml:"GmtCreated,omitempty"`
+	// The number of replicas for the lineage service. The default value is 1 when enabled. If omitted during an update, the original value is retained.
+	//
+	// example:
+	//
+	// 1
+	LineageReplicas *int32 `json:"LineageReplicas,omitempty" xml:"LineageReplicas,omitempty"`
+	// The merged lineage service specifications, which use the same tier as the application specifications.
+	//
+	// example:
+	//
+	// SMALL
+	LineageSpec *string `json:"LineageSpec,omitempty" xml:"LineageSpec,omitempty"`
 	// The name of the OSS bucket.
 	//
 	// example:
@@ -213,7 +227,7 @@ type GetAirflowResponseBodyRoot struct {
 	//
 	// /airflow
 	OssPath *string `json:"OssPath,omitempty" xml:"OssPath,omitempty"`
-	// The plugin directory that Airflow scans.
+	// The plugin directory scanned by Airflow.
 	//
 	// example:
 	//
@@ -225,37 +239,37 @@ type GetAirflowResponseBodyRoot struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The path to the Python dependencies file (requirements.txt).
+	// The configuration file for dependency packages.
 	//
 	// example:
 	//
 	// default/requirements.txt
 	RequirementFile *string `json:"RequirementFile,omitempty" xml:"RequirementFile,omitempty"`
-	// The ID of the security group.
+	// The security group ID.
 	//
 	// example:
 	//
 	// sg-2ze9gj646bkv****
 	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
-	// The startup script that runs before Airflow starts.
+	// The script loaded before Airflow starts.
 	//
 	// example:
 	//
 	// default/startup.sh
 	StartupFile *string `json:"StartupFile,omitempty" xml:"StartupFile,omitempty"`
-	// The status of the Airflow instance.
+	// The Airflow instance status.
 	//
 	// example:
 	//
 	// DEPLOYED
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The ID of the vSwitch.
+	// The vSwitch ID.
 	//
 	// example:
 	//
 	// vsw-bp1931trfxkvf74v****
 	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	// The ID of the VPC.
+	// The VPC ID.
 	//
 	// example:
 	//
@@ -267,13 +281,13 @@ type GetAirflowResponseBodyRoot struct {
 	//
 	// 0
 	WorkerServerlessReplicas *int32 `json:"WorkerServerlessReplicas,omitempty" xml:"WorkerServerlessReplicas,omitempty"`
-	// The ID of the DMS workspace.
+	// The Data Management (DMS) workspace ID.
 	//
 	// example:
 	//
 	// 8630242382****
 	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
-	// The zone ID.
+	// The zone ID in the region.
 	//
 	// example:
 	//
@@ -321,8 +335,20 @@ func (s *GetAirflowResponseBodyRoot) GetDescription() *string {
 	return s.Description
 }
 
+func (s *GetAirflowResponseBodyRoot) GetEnableLineage() *bool {
+	return s.EnableLineage
+}
+
 func (s *GetAirflowResponseBodyRoot) GetGmtCreated() *string {
 	return s.GmtCreated
+}
+
+func (s *GetAirflowResponseBodyRoot) GetLineageReplicas() *int32 {
+	return s.LineageReplicas
+}
+
+func (s *GetAirflowResponseBodyRoot) GetLineageSpec() *string {
+	return s.LineageSpec
 }
 
 func (s *GetAirflowResponseBodyRoot) GetOssBucketName() *string {
@@ -417,8 +443,23 @@ func (s *GetAirflowResponseBodyRoot) SetDescription(v string) *GetAirflowRespons
 	return s
 }
 
+func (s *GetAirflowResponseBodyRoot) SetEnableLineage(v bool) *GetAirflowResponseBodyRoot {
+	s.EnableLineage = &v
+	return s
+}
+
 func (s *GetAirflowResponseBodyRoot) SetGmtCreated(v string) *GetAirflowResponseBodyRoot {
 	s.GmtCreated = &v
+	return s
+}
+
+func (s *GetAirflowResponseBodyRoot) SetLineageReplicas(v int32) *GetAirflowResponseBodyRoot {
+	s.LineageReplicas = &v
+	return s
+}
+
+func (s *GetAirflowResponseBodyRoot) SetLineageSpec(v string) *GetAirflowResponseBodyRoot {
+	s.LineageSpec = &v
 	return s
 }
 

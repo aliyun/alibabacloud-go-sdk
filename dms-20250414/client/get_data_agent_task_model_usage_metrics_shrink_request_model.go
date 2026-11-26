@@ -24,7 +24,7 @@ type iGetDataAgentTaskModelUsageMetricsShrinkRequest interface {
 }
 
 type GetDataAgentTaskModelUsageMetricsShrinkRequest struct {
-	// The start time of the query time range. The value is a UNIX timestamp in seconds. The recommended time range is up to one month.
+	// The start time of the query time range. The value is a UNIX timestamp in seconds. The recommended interval length is up to one month.
 	//
 	// example:
 	//
@@ -36,13 +36,13 @@ type GetDataAgentTaskModelUsageMetricsShrinkRequest struct {
 	//
 	// cn-hangzhou
 	DMSUnit *string `json:"DMSUnit,omitempty" xml:"DMSUnit,omitempty"`
-	// The end time of the query time range. The value is a UNIX timestamp in seconds. The recommended time range is up to one month.
+	// The end time of the query time range. The value is a UNIX timestamp in seconds. The recommended interval length is up to one month.
 	//
 	// example:
 	//
 	// 1735747200
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// The list of billing instance IDs to query.
+	// The list of billing instance IDs to be queried.
 	InstanceIdsShrink *string `json:"InstanceIds,omitempty" xml:"InstanceIds,omitempty"`
 	// The billing level.
 	//

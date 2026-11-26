@@ -119,7 +119,7 @@ type GetMyAgenticNotificationChannelAuthorizeUrlResponseBodyData struct {
 	//
 	// https://open.feishu.cn/open-apis/authen/v1/authorize?app_id=cli_a5f8e2d9c3b1****&redirect_uri=https%3A%2F%2Faig-dms-cn-hangzhou.aliyuncs.com%2Foauth%2Fmobile%2Ffeishu%2Fbind&state=eyJhbGciOiJIUzI1NiJ9****
 	AuthorizeUrl *string `json:"AuthorizeUrl,omitempty" xml:"AuthorizeUrl,omitempty"`
-	// The callback URL after the authorization is completed. You must add this URL to the redirect URL whitelist of the tenant\\"s Lark application. Otherwise, the authorization fails.
+	// The callback URL after the authorization is completed. You must add this URL to the redirect URL whitelist of the tenant\"s Lark application. Otherwise, the authorization fails.
 	//
 	// example:
 	//

@@ -52,9 +52,9 @@ type FileUploadCallbackRequest struct {
 	//
 	// conversion_metrics.csv
 	Filename *string `json:"Filename,omitempty" xml:"Filename,omitempty"`
-	// The name of the user\\"s OSS bucket.
+	// The name of the user\"s OSS bucket.
 	//
-	// - Specify this parameter to use a file in the user\\"s OSS bucket and register the file as a data center file through the callback.
+	// - Specify this parameter to use a file in the user\"s OSS bucket and register the file as a data center file through the callback.
 	//
 	// example:
 	//

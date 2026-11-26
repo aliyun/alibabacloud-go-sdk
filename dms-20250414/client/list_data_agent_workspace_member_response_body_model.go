@@ -143,13 +143,13 @@ type ListDataAgentWorkspaceMemberResponseBodyData struct {
 	//
 	// example:
 	//
-	// no use
+	// 10
 	TotalElements *int64 `json:"TotalElements,omitempty" xml:"TotalElements,omitempty"`
 	// The total number of pages.
 	//
 	// example:
 	//
-	// no use
+	// 1
 	TotalPages *int64 `json:"TotalPages,omitempty" xml:"TotalPages,omitempty"`
 }
 
@@ -250,7 +250,7 @@ type ListDataAgentWorkspaceMemberResponseBodyDataContent struct {
 	//
 	// 20282*****7591
 	MemberId *string `json:"MemberId,omitempty" xml:"MemberId,omitempty"`
-	// The name of the user\\"s role in the workspace.
+	// The name of the user\"s role in the workspace.
 	//
 	// example:
 	//

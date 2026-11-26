@@ -24,13 +24,13 @@ type iCreateDataAgentAccuracyTestResponseBody interface {
 type CreateDataAgentAccuracyTestResponseBody struct {
 	// The returned result.
 	Data *CreateDataAgentAccuracyTestResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The error code returned if the request failed.
+	// The error code returned when an exception occurs.
 	//
 	// example:
 	//
 	// UnknownError
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The error message returned if the call failed.
+	// The error message returned when the call fails.
 	//
 	// example:
 	//
@@ -42,11 +42,11 @@ type CreateDataAgentAccuracyTestResponseBody struct {
 	//
 	// A61C2009-xxx-BE7E95CEDF2F
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. Valid values:
+	// Indicates whether the request is successful. Valid values:
 	//
-	// - **true**: The request was successful.
+	// - **true**: The request is successful.
 	//
-	// - **false**: The request failed.
+	// - **false**: The request fails.
 	//
 	// example:
 	//

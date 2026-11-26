@@ -26,13 +26,13 @@ type iSetWorkspaceQuotaResponseBody interface {
 }
 
 type SetWorkspaceQuotaResponseBody struct {
-	// Details of the access denial.
+	// The access denied details.
 	//
 	// example:
 	//
 	// NOT_FOUND
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	// The returned data.
+	// The response data.
 	Data *SetWorkspaceQuotaResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The error code.
 	//
@@ -46,7 +46,7 @@ type SetWorkspaceQuotaResponseBody struct {
 	//
 	// 200
 	HttpStatusCode *int64 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// A human-readable message about the request\\"s outcome.
+	// The log information.
 	//
 	// example:
 	//
@@ -147,19 +147,19 @@ func (s *SetWorkspaceQuotaResponseBody) Validate() error {
 }
 
 type SetWorkspaceQuotaResponseBodyData struct {
-	// The compute unit (CU) quota.
+	// The CU quota.
 	//
 	// example:
 	//
 	// 200
 	CuQuota *int64 `json:"CuQuota,omitempty" xml:"CuQuota,omitempty"`
-	// The amount of compute unit (CU) quota used.
+	// The CU quota usage.
 	//
 	// example:
 	//
 	// 20
 	CuQuotaUsage *int64 `json:"CuQuotaUsage,omitempty" xml:"CuQuotaUsage,omitempty"`
-	// The ID of the billing instance.
+	// The billing instance ID.
 	//
 	// example:
 	//
@@ -171,19 +171,19 @@ type SetWorkspaceQuotaResponseBodyData struct {
 	//
 	// 263013787210103
 	OrderId *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
-	// The status of the order.
+	// The order status.
 	//
 	// example:
 	//
 	// Catched
 	State *string `json:"State,omitempty" xml:"State,omitempty"`
-	// The status of the instance.
+	// The instance status.
 	//
 	// example:
 	//
 	// Success
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The ID of the workspace.
+	// The workspace ID.
 	//
 	// example:
 	//

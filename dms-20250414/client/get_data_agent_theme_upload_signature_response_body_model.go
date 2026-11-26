@@ -123,7 +123,7 @@ type GetDataAgentThemeUploadSignatureResponseBodyData struct {
 	ObjectKey *string `json:"ObjectKey,omitempty" xml:"ObjectKey,omitempty"`
 	// The parameter set that specifies the derived key.
 	OssCredential *string `json:"OssCredential,omitempty" xml:"OssCredential,omitempty"`
-	// The signature time in the format of yyyyMMdd\\"T\\"HHmmss\\"Z\\".
+	// The signature time in the format of yyyyMMdd\"T\"HHmmss\"Z\".
 	//
 	// example:
 	//

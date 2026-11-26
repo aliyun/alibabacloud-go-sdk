@@ -177,7 +177,7 @@ type UpdateAirflowResponseBodyRoot struct {
 	AppType *string `json:"AppType,omitempty" xml:"AppType,omitempty"`
 	// The list of custom configuration items.
 	CustomAirflowCfg []*string `json:"CustomAirflowCfg,omitempty" xml:"CustomAirflowCfg,omitempty" type:"Repeated"`
-	// The directory scanned for DAGs.
+	// The directory for scanning DAGs.
 	//
 	// example:
 	//
@@ -191,12 +191,14 @@ type UpdateAirflowResponseBodyRoot struct {
 	//
 	// quota exists
 	DeployErrorMsg *string `json:"DeployErrorMsg,omitempty" xml:"DeployErrorMsg,omitempty"`
-	// The description of the Airflow instance.
+	// The Airflow description.
 	//
 	// example:
 	//
 	// order schedule
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// Indicates whether data lineage is enabled.
+	EnableLineage *bool `json:"EnableLineage,omitempty" xml:"EnableLineage,omitempty"`
 	// Specifies whether to enable serverless workers.
 	EnableServerless *bool `json:"EnableServerless,omitempty" xml:"EnableServerless,omitempty"`
 	// The environment configurations.
@@ -211,13 +213,25 @@ type UpdateAirflowResponseBodyRoot struct {
 	//
 	// 2025-01-07T15:10:32+08:00
 	GmtCreated *string `json:"GmtCreated,omitempty" xml:"GmtCreated,omitempty"`
-	// The timeout period for a worker to exit.
+	// The timeout period for worker exit.
 	//
 	// example:
 	//
 	// 60
 	GracefulShutdownTimeout *int32 `json:"GracefulShutdownTimeout,omitempty" xml:"GracefulShutdownTimeout,omitempty"`
-	// The name of the Object Storage Service (OSS) bucket.
+	// The number of replicas for the lineage service. The default value is 1 when enabled. If omitted during an update, the original value is retained.
+	//
+	// example:
+	//
+	// 1
+	LineageReplicas *int32 `json:"LineageReplicas,omitempty" xml:"LineageReplicas,omitempty"`
+	// The merged lineage service specification, which uses the same tier as AppSpec.
+	//
+	// example:
+	//
+	// SMALL
+	LineageSpec *string `json:"LineageSpec,omitempty" xml:"LineageSpec,omitempty"`
+	// The name of the OSS bucket.
 	//
 	// example:
 	//
@@ -229,7 +243,7 @@ type UpdateAirflowResponseBodyRoot struct {
 	//
 	// /airflow
 	OssPath *string `json:"OssPath,omitempty" xml:"OssPath,omitempty"`
-	// The directory scanned for Airflow plugins.
+	// The directory for scanning Airflow plugins.
 	//
 	// example:
 	//
@@ -241,7 +255,7 @@ type UpdateAirflowResponseBodyRoot struct {
 	//
 	// default/requirements.txt
 	RequirementFile *string `json:"RequirementFile,omitempty" xml:"RequirementFile,omitempty"`
-	// The configurations of the installation package.
+	// The configuration of the installation package.
 	//
 	// example:
 	//
@@ -295,7 +309,7 @@ type UpdateAirflowResponseBodyRoot struct {
 	//
 	// 86302423828****
 	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
-	// The zone ID.
+	// The zone.
 	//
 	// example:
 	//
@@ -347,6 +361,10 @@ func (s *UpdateAirflowResponseBodyRoot) GetDescription() *string {
 	return s.Description
 }
 
+func (s *UpdateAirflowResponseBodyRoot) GetEnableLineage() *bool {
+	return s.EnableLineage
+}
+
 func (s *UpdateAirflowResponseBodyRoot) GetEnableServerless() *bool {
 	return s.EnableServerless
 }
@@ -361,6 +379,14 @@ func (s *UpdateAirflowResponseBodyRoot) GetGmtCreated() *string {
 
 func (s *UpdateAirflowResponseBodyRoot) GetGracefulShutdownTimeout() *int32 {
 	return s.GracefulShutdownTimeout
+}
+
+func (s *UpdateAirflowResponseBodyRoot) GetLineageReplicas() *int32 {
+	return s.LineageReplicas
+}
+
+func (s *UpdateAirflowResponseBodyRoot) GetLineageSpec() *string {
+	return s.LineageSpec
 }
 
 func (s *UpdateAirflowResponseBodyRoot) GetOssBucketName() *string {
@@ -464,6 +490,11 @@ func (s *UpdateAirflowResponseBodyRoot) SetDescription(v string) *UpdateAirflowR
 	return s
 }
 
+func (s *UpdateAirflowResponseBodyRoot) SetEnableLineage(v bool) *UpdateAirflowResponseBodyRoot {
+	s.EnableLineage = &v
+	return s
+}
+
 func (s *UpdateAirflowResponseBodyRoot) SetEnableServerless(v bool) *UpdateAirflowResponseBodyRoot {
 	s.EnableServerless = &v
 	return s
@@ -481,6 +512,16 @@ func (s *UpdateAirflowResponseBodyRoot) SetGmtCreated(v string) *UpdateAirflowRe
 
 func (s *UpdateAirflowResponseBodyRoot) SetGracefulShutdownTimeout(v int32) *UpdateAirflowResponseBodyRoot {
 	s.GracefulShutdownTimeout = &v
+	return s
+}
+
+func (s *UpdateAirflowResponseBodyRoot) SetLineageReplicas(v int32) *UpdateAirflowResponseBodyRoot {
+	s.LineageReplicas = &v
+	return s
+}
+
+func (s *UpdateAirflowResponseBodyRoot) SetLineageSpec(v string) *UpdateAirflowResponseBodyRoot {
+	s.LineageSpec = &v
 	return s
 }
 

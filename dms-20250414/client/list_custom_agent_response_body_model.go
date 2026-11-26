@@ -30,7 +30,7 @@ type ListCustomAgentResponseBody struct {
 	//
 	// success
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The error message returned if the call fails.
+	// The error message returned when the call fails.
 	//
 	// example:
 	//
@@ -212,29 +212,29 @@ func (s *ListCustomAgentResponseBodyData) Validate() error {
 }
 
 type ListCustomAgentResponseBodyDataContent struct {
-	// The custom agent type. Valid values:
+	// The type of the custom agent. Valid values:
 	//
-	// - Default: The system built-in custom agent.
+	// - Default: System-built-in custom agent.
 	//
-	// - Common: The common custom agent.
+	// - Common: Regular custom agent.
 	//
 	// example:
 	//
 	// Common
 	AgentType *string `json:"AgentType,omitempty" xml:"AgentType,omitempty"`
-	// The ID of the Alibaba Cloud main account.
+	// The Alibaba Cloud parent account ID.
 	//
 	// example:
 	//
 	// 16738266********
 	AliyunParentId *string `json:"AliyunParentId,omitempty" xml:"AliyunParentId,omitempty"`
-	// The ID of the Alibaba Cloud account.
+	// The Alibaba Cloud account ID.
 	//
 	// example:
 	//
 	// 20372822********
 	AliyunUid *string `json:"AliyunUid,omitempty" xml:"AliyunUid,omitempty"`
-	// The callback feature configuration.
+	// The callback configuration.
 	CallbackConfig *ListCustomAgentResponseBodyDataContentCallbackConfig `json:"CallbackConfig,omitempty" xml:"CallbackConfig,omitempty" type:"Struct"`
 	// The name of the creator.
 	//
@@ -242,7 +242,7 @@ type ListCustomAgentResponseBodyDataContent struct {
 	//
 	// HaoY*****
 	CreatorUserName *string `json:"CreatorUserName,omitempty" xml:"CreatorUserName,omitempty"`
-	// The custom agent ID.
+	// The ID of the custom agent.
 	//
 	// example:
 	//
@@ -270,7 +270,7 @@ type ListCustomAgentResponseBodyDataContent struct {
 	//
 	//     "FileId" : "f-5qlrwaw10********s3gpw1z",
 	//
-	//     "Database" : "Test table******.xlsx",
+	//     "Database" : "test******.xlsx",
 	//
 	//     "Tables" : [ "Sheet1" ],
 	//
@@ -288,11 +288,11 @@ type ListCustomAgentResponseBodyDataContent struct {
 	//
 	// 1
 	DefaultAgent *int32 `json:"DefaultAgent,omitempty" xml:"DefaultAgent,omitempty"`
-	// The custom agent description.
+	// The description of the custom agent.
 	//
 	// example:
 	//
-	// Agent test description
+	// Agent description
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The current DMS unit.
 	//
@@ -322,9 +322,9 @@ type ListCustomAgentResponseBodyDataContent struct {
 	//
 	// 1. Monitor core metrics (GMV, order volume, UV, conversion rate) on a daily, weekly, and monthly basis, and analyze trend changes and year-over-year or month-over-month fluctuations.
 	//
-	// 2. Segment by new and existing customers, channels, and regions to identify growth sources and shortcomings.
+	// 2. Segment data by new and returning customers, channels, and regions to identify growth drivers and weaknesses.
 	//
-	// 3. Conduct funnel analysis based on user behavior paths (browse -> add to cart -> pay) to locate churn points
+	// 3. Conduct funnel analysis based on the user behavior path (browse -> add to cart -> pay) to locate churn points
 	Instruction *string `json:"Instruction,omitempty" xml:"Instruction,omitempty"`
 	// Specifies whether a scheduled task is configured.
 	//
@@ -338,17 +338,17 @@ type ListCustomAgentResponseBodyDataContent struct {
 	//
 	// Core metric definitions:
 	//
-	// 1. GMV (Gross Merchandise Volume) refers to the total order amount, including both successfully paid and unpaid orders.
+	// 1. GMV (Gross Merchandise Volume) refers to the total order amount, including both paid and unpaid orders.
 	//
-	// 2. Order volume is the number of valid daily orders.
+	// 2. Order volume refers to the number of valid orders placed per day.
 	//
-	// 3. UV (Unique Visitors) refers to the number of deduplicated users visiting the website or app.
+	// 3. UV (Unique Visitors) refers to the number of deduplicated users who visit the website or app.
 	//
-	// 4. Conversion rate = Number of paid orders / UV, reflecting the traffic conversion efficiency
+	// 4. Conversion rate = Number of paid orders / UV, which reflects the traffic conversion efficiency
 	Knowledge *string `json:"Knowledge,omitempty" xml:"Knowledge,omitempty"`
 	// The external knowledge bases.
 	KnowledgeConfigList []*ListCustomAgentResponseBodyDataContentKnowledgeConfigList `json:"KnowledgeConfigList,omitempty" xml:"KnowledgeConfigList,omitempty" type:"Repeated"`
-	// The knowledge semantic configuration list.
+	// The list of knowledge semantic configurations.
 	KnowledgeSemanticConfigList []*ListCustomAgentResponseBodyDataContentKnowledgeSemanticConfigList `json:"KnowledgeSemanticConfigList,omitempty" xml:"KnowledgeSemanticConfigList,omitempty" type:"Repeated"`
 	// The modifier.
 	//
@@ -362,11 +362,11 @@ type ListCustomAgentResponseBodyDataContent struct {
 	//
 	// HaoY*****
 	ModifierUserName *string `json:"ModifierUserName,omitempty" xml:"ModifierUserName,omitempty"`
-	// The custom agent name.
+	// The name of the custom agent.
 	//
 	// example:
 	//
-	// Agent test name
+	// Sample agent name
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The next run time of the scheduled task.
 	//
@@ -380,7 +380,7 @@ type ListCustomAgentResponseBodyDataContent struct {
 	//
 	// 2025-12-11T14:04:32.000+00:00
 	OfflineTime *string `json:"OfflineTime,omitempty" xml:"OfflineTime,omitempty"`
-	// The recommended question list.
+	// The list of recommended questions.
 	//
 	// - You can configure up to 10 recommended questions.
 	RecommendQuestionList []*string `json:"RecommendQuestionList,omitempty" xml:"RecommendQuestionList,omitempty" type:"Repeated"`
@@ -390,7 +390,7 @@ type ListCustomAgentResponseBodyDataContent struct {
 	//
 	// cn-hangzhou
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	// The reference historical session ID.
+	// The referenced historical session ID.
 	//
 	// example:
 	//
@@ -404,7 +404,7 @@ type ListCustomAgentResponseBodyDataContent struct {
 	ReleaseTime *string `json:"ReleaseTime,omitempty" xml:"ReleaseTime,omitempty"`
 	// The scheduled task configuration.
 	ScheduleTaskConfig *ListCustomAgentResponseBodyDataContentScheduleTaskConfig `json:"ScheduleTaskConfig,omitempty" xml:"ScheduleTaskConfig,omitempty" type:"Struct"`
-	// The custom agent status.
+	// The status of the custom agent.
 	//
 	// example:
 	//
@@ -416,7 +416,7 @@ type ListCustomAgentResponseBodyDataContent struct {
 	//
 	// The text report requires all numbers to be written in Chinese characters instead of Arabic numerals
 	TextReportConfig *string `json:"TextReportConfig,omitempty" xml:"TextReportConfig,omitempty"`
-	// The user-specified skill list.
+	// The list of user-specified skills.
 	UserSpecifiedSkillList []*string `json:"UserSpecifiedSkillList,omitempty" xml:"UserSpecifiedSkillList,omitempty" type:"Repeated"`
 	// The web report format.
 	//
@@ -809,29 +809,29 @@ func (s *ListCustomAgentResponseBodyDataContent) Validate() error {
 }
 
 type ListCustomAgentResponseBodyDataContentCallbackConfig struct {
-	// The callback tool invocation parameters.
+	// The parameters to invoke the callback tool calling.
 	//
 	// example:
 	//
 	// {"ID":"test"}
 	CallbackArgs *string `json:"CallbackArgs,omitempty" xml:"CallbackArgs,omitempty"`
-	// The prompt for generating callback tool invocation parameters.
+	// The prompt for generating parameters to invoke the callback tool calling.
 	//
 	// example:
 	//
-	// Invoke the send_email tool to send the web report to 123456@163.com
+	// send report to 123456@163.com
 	CallbackPrompt *string `json:"CallbackPrompt,omitempty" xml:"CallbackPrompt,omitempty"`
-	// The timing for callback tool invocation.
+	// The timing to invoke the callback tool calling.
 	//
 	// example:
 	//
-	// The web report rendering is completed
+	// 0
 	CallbackTime *int32 `json:"CallbackTime,omitempty" xml:"CallbackTime,omitempty"`
 	// The callback tool identifier.
 	//
 	// example:
 	//
-	// For example, MCP server ID (6te...g7a)
+	// Mcp serverId (6te...g7a)
 	ToolId *string `json:"ToolId,omitempty" xml:"ToolId,omitempty"`
 	// The callback tool type.
 	//
@@ -899,13 +899,13 @@ func (s *ListCustomAgentResponseBodyDataContentCallbackConfig) Validate() error 
 }
 
 type ListCustomAgentResponseBodyDataContentExecutionConfig struct {
-	// Specifies whether to prohibit appending data sources in the session.
+	// Specifies whether to prohibit appending data sources during the session.
 	//
 	// example:
 	//
 	// true
 	ForbiddenAppendDataSource *bool `json:"ForbiddenAppendDataSource,omitempty" xml:"ForbiddenAppendDataSource,omitempty"`
-	// Specifies whether to prohibit user inquiries during the process.
+	// Specifies whether to disable user inquiries during the process.
 	//
 	// example:
 	//
@@ -923,7 +923,7 @@ type ListCustomAgentResponseBodyDataContentExecutionConfig struct {
 	//
 	// true
 	SkipSqlConfirm *bool `json:"SkipSqlConfirm,omitempty" xml:"SkipSqlConfirm,omitempty"`
-	// Specifies whether to skip the web report rendering confirmation.
+	// Specifies whether to skip the confirmation for generating the web report.
 	//
 	// example:
 	//
@@ -991,9 +991,9 @@ func (s *ListCustomAgentResponseBodyDataContentExecutionConfig) Validate() error
 type ListCustomAgentResponseBodyDataContentKnowledgeConfigList struct {
 	// The access type. Valid values:
 	//
-	// - mcp: MCP access.
+	// - mcp: Access through MCP.
 	//
-	// - dms_kb: DMS knowledge base access.
+	// - dms_kb: Access through DMS knowledge base.
 	//
 	// example:
 	//
@@ -1005,7 +1005,7 @@ type ListCustomAgentResponseBodyDataContentKnowledgeConfigList struct {
 	//
 	// kb-HZ-6anhdzx7hddf9*******obx
 	KbUuid *string `json:"KbUuid,omitempty" xml:"KbUuid,omitempty"`
-	// The MCP server ID.
+	// The ID of the MCP server.
 	//
 	// example:
 	//
@@ -1144,7 +1144,7 @@ type ListCustomAgentResponseBodyDataContentScheduleTaskConfig struct {
 	//
 	// Analyze this data and provide a brief report
 	Query *string `json:"Query,omitempty" xml:"Query,omitempty"`
-	// The reference historical session ID.
+	// The ID of the referenced historical session.
 	//
 	// example:
 	//

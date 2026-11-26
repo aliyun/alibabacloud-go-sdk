@@ -119,15 +119,15 @@ func (s *ModifyCustomAgentResponseBody) Validate() error {
 type ModifyCustomAgentResponseBodyData struct {
 	// The custom agent type. Valid values:
 	//
-	// - Default: The system-built-in custom agent. Each workspace can have at most one Default type, and it cannot be deleted.
+	// - Default: The built-in custom agent. Each workspace can have at most one Default agent, which cannot be deleted.
 	//
-	// - Common: A common custom agent.
+	// - Common: A regular custom agent.
 	//
 	// example:
 	//
 	// Common
 	AgentType *string `json:"AgentType,omitempty" xml:"AgentType,omitempty"`
-	// The ID of the Alibaba Cloud main account.
+	// The main Alibaba Cloud account ID.
 	//
 	// example:
 	//
@@ -191,7 +191,7 @@ type ModifyCustomAgentResponseBodyData struct {
 	//
 	// example:
 	//
-	// Test agent description
+	// Agent test description
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The current DMS unit.
 	//
@@ -219,11 +219,11 @@ type ModifyCustomAgentResponseBodyData struct {
 	//
 	// Analysis framework:
 	//
-	// 1. Monitor core metrics (GMV, order volume, UV, conversion rate) on a daily, weekly, and monthly basis, and analyze trend changes and year-over-year or month-over-month fluctuations.
+	// 1. Monitor core metrics (GMV, order volume, UV, conversion rate) on a daily, weekly, and monthly basis to analyze trend changes and year-over-year or month-over-month fluctuations.
 	//
-	// 2. Segment by new and existing customers, channels, and regions to identify growth drivers and weaknesses.
+	// 2. Segment by new and returning customers, channels, and regions to identify growth drivers and shortcomings.
 	//
-	// 3. Conduct funnel analysis based on user behavior paths (browse → add to cart → pay) to locate churn points
+	// 3. Conduct funnel analysis based on user behavior paths (browse -> add to cart -> pay) to locate churn points
 	Instruction *string `json:"Instruction,omitempty" xml:"Instruction,omitempty"`
 	// Indicates whether a scheduled task is configured.
 	//
@@ -241,9 +241,9 @@ type ModifyCustomAgentResponseBodyData struct {
 	//
 	// 2. Order volume is the number of valid orders placed per day.
 	//
-	// 3. UV (Unique Visitors) refers to the number of deduplicated users who visit the website or app.
+	// 3. UV (Unique Visitors) refers to the number of deduplicated users visiting the website or app.
 	//
-	// 4. Conversion rate = Number of paid orders / UV, reflecting the traffic conversion efficiency
+	// 4. Conversion rate = paid orders / UV, reflecting the traffic conversion efficiency
 	Knowledge *string `json:"Knowledge,omitempty" xml:"Knowledge,omitempty"`
 	// The external knowledge bases.
 	KnowledgeConfigList []*ModifyCustomAgentResponseBodyDataKnowledgeConfigList `json:"KnowledgeConfigList,omitempty" xml:"KnowledgeConfigList,omitempty" type:"Repeated"`
@@ -265,7 +265,7 @@ type ModifyCustomAgentResponseBodyData struct {
 	//
 	// example:
 	//
-	// Test agent name
+	// Agent test name
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The next run time of the scheduled task.
 	//
@@ -315,7 +315,7 @@ type ModifyCustomAgentResponseBodyData struct {
 	//
 	// example:
 	//
-	// The text report requires that all numbers be spelled out in words instead of using Arabic numerals
+	// For the text report, do not use Arabic numerals. Convert all numbers to Chinese numerals
 	TextReportConfig *string `json:"TextReportConfig,omitempty" xml:"TextReportConfig,omitempty"`
 	// The list of user-specified skills.
 	UserSpecifiedSkillList []*string `json:"UserSpecifiedSkillList,omitempty" xml:"UserSpecifiedSkillList,omitempty" type:"Repeated"`
@@ -323,7 +323,7 @@ type ModifyCustomAgentResponseBodyData struct {
 	//
 	// example:
 	//
-	// The web report requires that all numbers be spelled out in words instead of using Arabic numerals
+	// For the web report, do not use Arabic numerals. Convert all numbers to Chinese numerals
 	WebReportConfig *string `json:"WebReportConfig,omitempty" xml:"WebReportConfig,omitempty"`
 	// The web report theme. Valid values:
 	//
@@ -701,7 +701,7 @@ func (s *ModifyCustomAgentResponseBodyData) Validate() error {
 }
 
 type ModifyCustomAgentResponseBodyDataCallbackConfig struct {
-	// The parameters to invoke callback tool calling.
+	// The callback tool calling parameters to invoke.
 	//
 	// example:
 	//
@@ -791,7 +791,7 @@ func (s *ModifyCustomAgentResponseBodyDataCallbackConfig) Validate() error {
 }
 
 type ModifyCustomAgentResponseBodyDataExecutionConfig struct {
-	// Specifies whether to prohibit appending data sources in a session.
+	// Specifies whether to disable appending data sources during the session.
 	//
 	// example:
 	//
@@ -815,7 +815,7 @@ type ModifyCustomAgentResponseBodyDataExecutionConfig struct {
 	//
 	// true
 	SkipSqlConfirm *bool `json:"SkipSqlConfirm,omitempty" xml:"SkipSqlConfirm,omitempty"`
-	// Specifies whether to skip the confirmation for generating a web report.
+	// Specifies whether to skip the web report generation confirmation.
 	//
 	// example:
 	//
@@ -883,9 +883,9 @@ func (s *ModifyCustomAgentResponseBodyDataExecutionConfig) Validate() error {
 type ModifyCustomAgentResponseBodyDataKnowledgeConfigList struct {
 	// The access type. Valid values:
 	//
-	// - mcp: Access through MCP.
+	// - mcp: access through MCP
 	//
-	// - dms_kb: Access through the DMS knowledge base.
+	// - dms_kb: access through the DMS knowledge base
 	//
 	// example:
 	//

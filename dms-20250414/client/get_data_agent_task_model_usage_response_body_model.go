@@ -24,25 +24,25 @@ type iGetDataAgentTaskModelUsageResponseBody interface {
 type GetDataAgentTaskModelUsageResponseBody struct {
 	// The summary data of model usage for DataAgent analysis tasks.
 	Data *GetDataAgentTaskModelUsageResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The error code returned when a request exception occurs.
+	// The error code, which is returned when a request exception occurs.
 	//
 	// example:
 	//
 	// DMS-DA-40411
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The error message returned when the call fails.
+	// The error message, which is returned when the call fails.
 	//
 	// example:
 	//
 	// UnknownError
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	// The request ID. You can use this ID to locate logs and troubleshoot issues.
+	// The request ID, which is used to locate logs and troubleshoot issues.
 	//
 	// example:
 	//
 	// 67E910F2-***695C
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request is successful. Valid values:
+	// Specifies whether the request is successful. Valid values:
 	//
 	// - **true**: The request is successful.
 	//
@@ -117,18 +117,30 @@ func (s *GetDataAgentTaskModelUsageResponseBody) Validate() error {
 }
 
 type GetDataAgentTaskModelUsageResponseBodyData struct {
-	// The acceleration ratio, which indicates the speed improvement brought by subtask parallelism.
+	// The acceleration ratio, which is the speedup brought by the parallel execution of subtasks.
 	//
 	// example:
 	//
 	// 3.8
 	AccelerationRatio *float64 `json:"AccelerationRatio,omitempty" xml:"AccelerationRatio,omitempty"`
+	// The peak concurrency.
+	//
+	// example:
+	//
+	// 10
+	PeakConcurrency *float64 `json:"PeakConcurrency,omitempty" xml:"PeakConcurrency,omitempty"`
 	// The number of throttled sessions.
 	//
 	// example:
 	//
 	// 8
 	RateLimitedSessionCount *int64 `json:"RateLimitedSessionCount,omitempty" xml:"RateLimitedSessionCount,omitempty"`
+	// The total queueing time for the large language model.
+	//
+	// example:
+	//
+	// 11220
+	TotalLlmQueueDuration *float64 `json:"TotalLlmQueueDuration,omitempty" xml:"TotalLlmQueueDuration,omitempty"`
 	// The total throttling duration of all sessions.
 	//
 	// example:
@@ -179,8 +191,16 @@ func (s *GetDataAgentTaskModelUsageResponseBodyData) GetAccelerationRatio() *flo
 	return s.AccelerationRatio
 }
 
+func (s *GetDataAgentTaskModelUsageResponseBodyData) GetPeakConcurrency() *float64 {
+	return s.PeakConcurrency
+}
+
 func (s *GetDataAgentTaskModelUsageResponseBodyData) GetRateLimitedSessionCount() *int64 {
 	return s.RateLimitedSessionCount
+}
+
+func (s *GetDataAgentTaskModelUsageResponseBodyData) GetTotalLlmQueueDuration() *float64 {
+	return s.TotalLlmQueueDuration
 }
 
 func (s *GetDataAgentTaskModelUsageResponseBodyData) GetTotalLlmWaitDuration() *float64 {
@@ -212,8 +232,18 @@ func (s *GetDataAgentTaskModelUsageResponseBodyData) SetAccelerationRatio(v floa
 	return s
 }
 
+func (s *GetDataAgentTaskModelUsageResponseBodyData) SetPeakConcurrency(v float64) *GetDataAgentTaskModelUsageResponseBodyData {
+	s.PeakConcurrency = &v
+	return s
+}
+
 func (s *GetDataAgentTaskModelUsageResponseBodyData) SetRateLimitedSessionCount(v int64) *GetDataAgentTaskModelUsageResponseBodyData {
 	s.RateLimitedSessionCount = &v
+	return s
+}
+
+func (s *GetDataAgentTaskModelUsageResponseBodyData) SetTotalLlmQueueDuration(v float64) *GetDataAgentTaskModelUsageResponseBodyData {
+	s.TotalLlmQueueDuration = &v
 	return s
 }
 

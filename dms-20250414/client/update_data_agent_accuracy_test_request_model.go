@@ -40,7 +40,7 @@ type iUpdateDataAgentAccuracyTestRequest interface {
 }
 
 type UpdateDataAgentAccuracyTestRequest struct {
-	// The accuracy test instance ID.
+	// The instance ID of the accuracy test.
 	//
 	// example:
 	//
@@ -56,7 +56,7 @@ type UpdateDataAgentAccuracyTestRequest struct {
 	//
 	// example:
 	//
-	// [{\\"DataSourceType\\":\\"database\\",\\"RegionId\\":\\"cn-hangzhou\\",\\"DmsInstanceId\\":\\"27xxxxx\\",\\"DmsDatabaseId\\":\\"752xxxxx\\",\\"Database\\":\\"employees\\",\\"Tables\\":[\\"employees\\",\\"salaries\\",\\"departments\\"]}]
+	// [{\"DataSourceType\":\"database\",\"RegionId\":\"cn-hangzhou\",\"DmsInstanceId\":\"27xxxxx\",\"DmsDatabaseId\":\"752xxxxx\",\"Database\":\"employees\",\"Tables\":[\"employees\",\"salaries\",\"departments\"]}]
 	Dataset *string `json:"Dataset,omitempty" xml:"Dataset,omitempty"`
 	// The data source information.
 	//
@@ -110,7 +110,7 @@ type UpdateDataAgentAccuracyTestRequest struct {
 	//
 	// example:
 	//
-	// no use
+	// false
 	NeedDelete *bool `json:"NeedDelete,omitempty" xml:"NeedDelete,omitempty"`
 	// The region ID.
 	//
@@ -118,7 +118,7 @@ type UpdateDataAgentAccuracyTestRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The workspace ID.
+	// The ID of the workspace.
 	//
 	// example:
 	//

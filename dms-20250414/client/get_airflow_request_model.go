@@ -16,7 +16,7 @@ type iGetAirflowRequest interface {
 }
 
 type GetAirflowRequest struct {
-	// The ID of the Airflow instance.
+	// The Airflow instance ID.
 	//
 	// This parameter is required.
 	//
@@ -24,7 +24,7 @@ type GetAirflowRequest struct {
 	//
 	// af-b3a7f110a6vmvn7****
 	AirflowId *string `json:"AirflowId,omitempty" xml:"AirflowId,omitempty"`
-	// The ID of the workspace.
+	// The workspace ID.
 	//
 	// This parameter is required.
 	//

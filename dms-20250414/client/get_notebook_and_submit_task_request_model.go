@@ -28,7 +28,7 @@ type GetNotebookAndSubmitTaskRequest struct {
 	//
 	// example:
 	//
-	// {\\"dt\\": \\"2022-10-14\\"}
+	// {\"dt\": \"2022-10-14\"}
 	Params *string `json:"Params,omitempty" xml:"Params,omitempty"`
 	// The path of the Notebook file.
 	//
@@ -42,7 +42,7 @@ type GetNotebookAndSubmitTaskRequest struct {
 	//
 	// example:
 	//
-	// true
+	// 10
 	Retry *int64 `json:"Retry,omitempty" xml:"Retry,omitempty"`
 	// The session ID.
 	//

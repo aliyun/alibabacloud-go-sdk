@@ -22,19 +22,19 @@ type iSetWorkspaceQuotaRequest interface {
 }
 
 type SetWorkspaceQuotaRequest struct {
-	// Specifies whether to enable auto-payment for the order.
+	// Specifies whether to enable automatic payment.
 	//
 	// example:
 	//
 	// false
 	AutoPay *bool `json:"AutoPay,omitempty" xml:"AutoPay,omitempty"`
-	// A unique, client-generated token to ensure request idempotence. The token can contain only ASCII characters and must be no longer than 64 characters. For more information, see How to ensure idempotence.
+	// Ensures the idempotence of the request. You can generate a parameter value from your client to ensure that the value is unique across different requests. ClientToken supports only ASCII characters and can be up to 64 characters in length. For more information, see How to ensure idempotence.
 	//
 	// example:
 	//
 	// acdxxx
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// The compute unit (CU) quota for the workspace.
+	// The CU quota.
 	//
 	// This parameter is required.
 	//
@@ -42,7 +42,7 @@ type SetWorkspaceQuotaRequest struct {
 	//
 	// 200
 	CuQuota *int32 `json:"CuQuota,omitempty" xml:"CuQuota,omitempty"`
-	// The ID of the region.
+	// The billing region.
 	//
 	// This parameter is required.
 	//
@@ -50,7 +50,7 @@ type SetWorkspaceQuotaRequest struct {
 	//
 	// cn-hangzhou
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	// The ID of the Data Management Service (DMS) workspace.
+	// The DMS workspace ID.
 	//
 	// This parameter is required.
 	//

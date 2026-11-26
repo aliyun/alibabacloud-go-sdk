@@ -23,10 +23,16 @@ type iCreateAirflowShrinkRequest interface {
 	GetDataMountInfoListShrink() *string
 	SetDescription(v string) *CreateAirflowShrinkRequest
 	GetDescription() *string
+	SetEnableLineage(v bool) *CreateAirflowShrinkRequest
+	GetEnableLineage() *bool
 	SetEnableServerless(v bool) *CreateAirflowShrinkRequest
 	GetEnableServerless() *bool
 	SetGracefulShutdownTimeout(v int32) *CreateAirflowShrinkRequest
 	GetGracefulShutdownTimeout() *int32
+	SetLineageReplicas(v int32) *CreateAirflowShrinkRequest
+	GetLineageReplicas() *int32
+	SetLineageSpec(v string) *CreateAirflowShrinkRequest
+	GetLineageSpec() *string
 	SetOssBucketName(v string) *CreateAirflowShrinkRequest
 	GetOssBucketName() *string
 	SetOssPath(v string) *CreateAirflowShrinkRequest
@@ -80,7 +86,7 @@ type CreateAirflowShrinkRequest struct {
 	//
 	// token-****
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	// The DAG directory scanned by Airflow.
+	// The directory scanned by Airflow for DAGs.
 	//
 	// example:
 	//
@@ -94,14 +100,28 @@ type CreateAirflowShrinkRequest struct {
 	//
 	// order scheduler
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// Specifies whether to enable Worker elasticity.
+	// Specifies whether to enable data lineage. For Airflow 2.x, this feature is always disabled, and the lineage specification and number of replicas are ignored.
+	EnableLineage *bool `json:"EnableLineage,omitempty" xml:"EnableLineage,omitempty"`
+	// Specifies whether to enable elasticity for workers.
 	EnableServerless *bool `json:"EnableServerless,omitempty" xml:"EnableServerless,omitempty"`
-	// The timeout period for the Worker to gracefully shut down.
+	// The timeout period for a worker to gracefully shut down.
 	//
 	// example:
 	//
 	// 60
 	GracefulShutdownTimeout *int32 `json:"GracefulShutdownTimeout,omitempty" xml:"GracefulShutdownTimeout,omitempty"`
+	// The number of replicas for the lineage service. The default value is 1 when enabled. If omitted during an update, the original value is retained.
+	//
+	// example:
+	//
+	// 1
+	LineageReplicas *int32 `json:"LineageReplicas,omitempty" xml:"LineageReplicas,omitempty"`
+	// The specification of the lineage service. It uses the same tier as the Airflow instance specification.
+	//
+	// example:
+	//
+	// SMALL
+	LineageSpec *string `json:"LineageSpec,omitempty" xml:"LineageSpec,omitempty"`
 	// The name of the OSS bucket.
 	//
 	// This parameter is required.
@@ -118,13 +138,13 @@ type CreateAirflowShrinkRequest struct {
 	//
 	// /airflow
 	OssPath *string `json:"OssPath,omitempty" xml:"OssPath,omitempty"`
-	// The plugin directory scanned by the Airflow instance.
+	// The directory scanned by the Airflow instance for plugins.
 	//
 	// example:
 	//
 	// default/plugins
 	PluginsDir *string `json:"PluginsDir,omitempty" xml:"PluginsDir,omitempty"`
-	// The path of the package installation file.
+	// The path to the installation package.
 	//
 	// example:
 	//
@@ -138,7 +158,7 @@ type CreateAirflowShrinkRequest struct {
 	//
 	// sg-bp108t8ldzeyk1****
 	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
-	// The startup script of the Airflow container.
+	// The startup script for the Airflow container.
 	//
 	// example:
 	//
@@ -152,7 +172,7 @@ type CreateAirflowShrinkRequest struct {
 	//
 	// vsw-8vbaf073jawozfp****
 	VSwitchId *string `json:"VSwitchId,omitempty" xml:"VSwitchId,omitempty"`
-	// VPC ID。
+	// The VPC ID.
 	//
 	// This parameter is required.
 	//
@@ -160,7 +180,7 @@ type CreateAirflowShrinkRequest struct {
 	//
 	// vpc-uf63r6coyiw9o5****
 	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
-	// The number of extended Worker node replicas.
+	// The number of worker node extensions.
 	//
 	// This parameter is required.
 	//
@@ -168,7 +188,7 @@ type CreateAirflowShrinkRequest struct {
 	//
 	// 0
 	WorkerServerlessReplicas *int32 `json:"WorkerServerlessReplicas,omitempty" xml:"WorkerServerlessReplicas,omitempty"`
-	// The ID of the Data Management workspace.
+	// The DMS workspace ID.
 	//
 	// This parameter is required.
 	//
@@ -176,7 +196,7 @@ type CreateAirflowShrinkRequest struct {
 	//
 	// 8630242382****
 	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
-	// The zone ID within the region.
+	// The zone ID in the region.
 	//
 	// example:
 	//
@@ -220,12 +240,24 @@ func (s *CreateAirflowShrinkRequest) GetDescription() *string {
 	return s.Description
 }
 
+func (s *CreateAirflowShrinkRequest) GetEnableLineage() *bool {
+	return s.EnableLineage
+}
+
 func (s *CreateAirflowShrinkRequest) GetEnableServerless() *bool {
 	return s.EnableServerless
 }
 
 func (s *CreateAirflowShrinkRequest) GetGracefulShutdownTimeout() *int32 {
 	return s.GracefulShutdownTimeout
+}
+
+func (s *CreateAirflowShrinkRequest) GetLineageReplicas() *int32 {
+	return s.LineageReplicas
+}
+
+func (s *CreateAirflowShrinkRequest) GetLineageSpec() *string {
+	return s.LineageSpec
 }
 
 func (s *CreateAirflowShrinkRequest) GetOssBucketName() *string {
@@ -307,6 +339,11 @@ func (s *CreateAirflowShrinkRequest) SetDescription(v string) *CreateAirflowShri
 	return s
 }
 
+func (s *CreateAirflowShrinkRequest) SetEnableLineage(v bool) *CreateAirflowShrinkRequest {
+	s.EnableLineage = &v
+	return s
+}
+
 func (s *CreateAirflowShrinkRequest) SetEnableServerless(v bool) *CreateAirflowShrinkRequest {
 	s.EnableServerless = &v
 	return s
@@ -314,6 +351,16 @@ func (s *CreateAirflowShrinkRequest) SetEnableServerless(v bool) *CreateAirflowS
 
 func (s *CreateAirflowShrinkRequest) SetGracefulShutdownTimeout(v int32) *CreateAirflowShrinkRequest {
 	s.GracefulShutdownTimeout = &v
+	return s
+}
+
+func (s *CreateAirflowShrinkRequest) SetLineageReplicas(v int32) *CreateAirflowShrinkRequest {
+	s.LineageReplicas = &v
+	return s
+}
+
+func (s *CreateAirflowShrinkRequest) SetLineageSpec(v string) *CreateAirflowShrinkRequest {
+	s.LineageSpec = &v
 	return s
 }
 

@@ -221,7 +221,7 @@ type ListDataCenterDatabaseResponseBodyData struct {
 	//
 	// N
 	IsInternal *string `json:"IsInternal,omitempty" xml:"IsInternal,omitempty"`
-	// The name of the user\\"s OSS bucket.
+	// The name of the user\"s OSS bucket.
 	//
 	// example:
 	//
@@ -233,7 +233,7 @@ type ListDataCenterDatabaseResponseBodyData struct {
 	//
 	// 999
 	Size *int64 `json:"Size,omitempty" xml:"Size,omitempty"`
-	// Indicates whether the user\\"s OSS bucket is used.
+	// Indicates whether the user\"s OSS bucket is used.
 	//
 	// example:
 	//

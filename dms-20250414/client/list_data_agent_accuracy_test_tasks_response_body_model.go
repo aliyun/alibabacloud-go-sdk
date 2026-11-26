@@ -252,7 +252,7 @@ type ListDataAgentAccuracyTestTasksResponseBodyData struct {
 	//
 	// example:
 	//
-	// 0 PENDING,1 RUNNING,2 COMPLETED,3 STOPPED,4 FAILED
+	// 0
 	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
 	// The total number of subtasks in the accuracy test task.
 	//

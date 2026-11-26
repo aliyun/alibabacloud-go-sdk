@@ -22,7 +22,7 @@ type iDeleteAgenticVpcEndpointResponseBody interface {
 }
 
 type DeleteAgenticVpcEndpointResponseBody struct {
-	// The deletion acceptance result. For duplicate requests, downstream errors are retained and idempotence is not guaranteed.
+	// The deletion acceptance result. For duplicate requests, downstream errors are retained, and idempotence is not guaranteed.
 	Data *DeleteAgenticVpcEndpointResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The error code returned when a request exception occurs.
 	//
@@ -123,7 +123,7 @@ type DeleteAgenticVpcEndpointResponseBodyData struct {
 	//
 	// ep-7xvra4ad6619266ba43d
 	EndpointId *string `json:"EndpointId,omitempty" xml:"EndpointId,omitempty"`
-	// The deletion status. A value of DELETING only indicates that the asynchronous deletion request is accepted, not that the deletion in the cloud is complete.
+	// The deletion status. A value of DELETING only indicates that the asynchronous deletion request is accepted, and does not indicate that the deletion in the cloud is complete.
 	//
 	// example:
 	//

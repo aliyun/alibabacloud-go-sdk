@@ -125,7 +125,7 @@ type AddUserToDataAgentWorkspaceResponseBodyData struct {
 	//
 	// 20282*****7591
 	MemberId *string `json:"MemberId,omitempty" xml:"MemberId,omitempty"`
-	// The name of the user\\"s role in the workspace.
+	// The name of the user\"s role in the workspace.
 	//
 	// example:
 	//

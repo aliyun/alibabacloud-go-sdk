@@ -28,7 +28,7 @@ type iListCustomAgentRequest interface {
 type ListCustomAgentRequest struct {
 	// The custom agent type. Valid values:
 	//
-	// - Default: system built-in custom agent
+	// - Default: built-in custom agent
 	//
 	// - Common: regular custom agent
 	//
@@ -58,7 +58,7 @@ type ListCustomAgentRequest struct {
 	//
 	// example:
 	//
-	// Test agent
+	// Test Agent
 	SearchKey *string `json:"SearchKey,omitempty" xml:"SearchKey,omitempty"`
 	// The custom agent status.
 	//

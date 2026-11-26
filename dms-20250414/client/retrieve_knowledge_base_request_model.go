@@ -42,7 +42,7 @@ type RetrieveKnowledgeBaseRequest struct {
 	//
 	// example:
 	//
-	// title = \\"test\\" AND name like \\"test%\\"
+	// title = \"test\" AND name like \"test%\"
 	Filter *string `json:"Filter,omitempty" xml:"Filter,omitempty"`
 	// The hybrid search algorithm. If this parameter is not set, the system directly compares and ranks the scores from the dense vector and full-text searches.
 	//
@@ -132,7 +132,7 @@ type RetrieveKnowledgeBaseRequest struct {
 	//
 	// example:
 	//
-	// { \\"Weight\\": { \\"alpha\\": 0.5 } }
+	// { \"Weight\": { \"alpha\": 0.5 } }
 	HybridSearchArgs *string `json:"HybridSearchArgs,omitempty" xml:"HybridSearchArgs,omitempty"`
 	// The metadata fields to return, separated by commas. By default, no metadata fields are returned.
 	//

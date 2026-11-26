@@ -30,13 +30,13 @@ type iListAirflowsResponseBody interface {
 }
 
 type ListAirflowsResponseBody struct {
-	// The details about the access denial.
+	// The access denied details.
 	//
 	// example:
 	//
 	// NOT_FOUND
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	// The error code. This parameter is returned when an error occurs.
+	// The error code returned when an exception occurs in the request.
 	//
 	// example:
 	//
@@ -48,7 +48,7 @@ type ListAirflowsResponseBody struct {
 	//
 	// 200
 	HttpStatusCode *int64 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The number of entries per page.
+	// The page size.
 	//
 	// example:
 	//
@@ -60,7 +60,7 @@ type ListAirflowsResponseBody struct {
 	//
 	// Successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The token that is used to retrieve the next page of results.
+	// The token for the next query.
 	//
 	// example:
 	//
@@ -72,13 +72,13 @@ type ListAirflowsResponseBody struct {
 	//
 	// 67E910F2-4B62-5B0C-ACA3-7547695C****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The details of the data.
+	// The data details.
 	Root *ListAirflowsResponseBodyRoot `json:"Root,omitempty" xml:"Root,omitempty" type:"Struct"`
-	// Indicates whether the request was successful. Valid values:
+	// Indicates whether the request is successful. Valid values:
 	//
-	// - **true**: The request was successful.
+	// - **true**: The request is successful.
 	//
-	// - **false**: The request failed.
+	// - **false**: The request fails.
 	//
 	// example:
 	//
@@ -185,9 +185,9 @@ func (s *ListAirflowsResponseBody) Validate() error {
 }
 
 type ListAirflowsResponseBodyRoot struct {
-	// The list of data.
+	// The data list.
 	List []*ListAirflowsResponseBodyRootList `json:"List,omitempty" xml:"List,omitempty" type:"Repeated"`
-	// The total number of matching Airflow instances.
+	// The total number of Airflow instances that meet the query conditions.
 	//
 	// example:
 	//
@@ -235,7 +235,7 @@ func (s *ListAirflowsResponseBodyRoot) Validate() error {
 }
 
 type ListAirflowsResponseBodyRootList struct {
-	// The ID of the Airflow instance.
+	// The instance ID.
 	//
 	// example:
 	//
@@ -247,7 +247,7 @@ type ListAirflowsResponseBodyRootList struct {
 	//
 	// test-airflow
 	AirflowName *string `json:"AirflowName,omitempty" xml:"AirflowName,omitempty"`
-	// The specifications of the Airflow instance.
+	// The specification of the Airflow instance.
 	//
 	// example:
 	//
@@ -259,15 +259,15 @@ type ListAirflowsResponseBodyRootList struct {
 	//
 	// AIRFLOW
 	AppType *string `json:"AppType,omitempty" xml:"AppType,omitempty"`
-	// The custom configuration.
+	// The custom configurations.
 	CustomAirflowCfg []*string `json:"CustomAirflowCfg,omitempty" xml:"CustomAirflowCfg,omitempty" type:"Repeated"`
-	// The DAGs folder that Airflow scans.
+	// The DAG directory scanned by Airflow.
 	//
 	// example:
 	//
 	// default/dags
 	DagsDir *string `json:"DagsDir,omitempty" xml:"DagsDir,omitempty"`
-	// The error message returned when the deployment fails.
+	// The deployment error message.
 	//
 	// example:
 	//
@@ -279,31 +279,45 @@ type ListAirflowsResponseBodyRootList struct {
 	//
 	// test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// Indicates whether data lineage is enabled.
+	EnableLineage *bool `json:"EnableLineage,omitempty" xml:"EnableLineage,omitempty"`
 	// The time when the Airflow instance was created.
 	//
 	// example:
 	//
 	// 2025-08-12T05:46:01.000+0000
 	GmtCreated *string `json:"GmtCreated,omitempty" xml:"GmtCreated,omitempty"`
+	// The number of replicas for the lineage service. The default value is 1 when enabled. If omitted during an update, the original value is retained.
+	//
+	// example:
+	//
+	// 1
+	LineageReplicas *int32 `json:"LineageReplicas,omitempty" xml:"LineageReplicas,omitempty"`
+	// The merged specification of the lineage service, which uses the same tier as the Airflow specification.
+	//
+	// example:
+	//
+	// SMALL
+	LineageSpec *string `json:"LineageSpec,omitempty" xml:"LineageSpec,omitempty"`
 	// The name of the OSS bucket.
 	//
 	// example:
 	//
 	// osstest
 	OssBucketName *string `json:"OssBucketName,omitempty" xml:"OssBucketName,omitempty"`
-	// The path in OSS.
+	// The OSS path.
 	//
 	// example:
 	//
 	// /airflow
 	OssPath *string `json:"OssPath,omitempty" xml:"OssPath,omitempty"`
-	// The plugins folder that Airflow scans.
+	// The plugin directory scanned by Airflow.
 	//
 	// example:
 	//
 	// default/plugins
 	PluginsDir *string `json:"PluginsDir,omitempty" xml:"PluginsDir,omitempty"`
-	// The path to the file that contains the dependencies.
+	// The file path of the dependency package.
 	//
 	// example:
 	//
@@ -315,13 +329,13 @@ type ListAirflowsResponseBodyRootList struct {
 	//
 	// sg-2ze1nak7h0alg1w****
 	SecurityGroupId *string `json:"SecurityGroupId,omitempty" xml:"SecurityGroupId,omitempty"`
-	// The path to the script that is loaded when Airflow starts.
+	// The directory of scripts loaded when Airflow starts.
 	//
 	// example:
 	//
 	// default/startup.sh
 	StartupFile *string `json:"StartupFile,omitempty" xml:"StartupFile,omitempty"`
-	// The status of the Airflow instance.
+	// The instance status.
 	//
 	// example:
 	//
@@ -345,13 +359,13 @@ type ListAirflowsResponseBodyRootList struct {
 	//
 	// 0
 	WorkerServerlessReplicas *int32 `json:"WorkerServerlessReplicas,omitempty" xml:"WorkerServerlessReplicas,omitempty"`
-	// The ID of the DMS workspace.
+	// The DMS workspace ID.
 	//
 	// example:
 	//
 	// 8630242382****
 	WorkspaceId *string `json:"WorkspaceId,omitempty" xml:"WorkspaceId,omitempty"`
-	// The ID of the zone in the region.
+	// The zone ID in the region.
 	//
 	// example:
 	//
@@ -399,8 +413,20 @@ func (s *ListAirflowsResponseBodyRootList) GetDescription() *string {
 	return s.Description
 }
 
+func (s *ListAirflowsResponseBodyRootList) GetEnableLineage() *bool {
+	return s.EnableLineage
+}
+
 func (s *ListAirflowsResponseBodyRootList) GetGmtCreated() *string {
 	return s.GmtCreated
+}
+
+func (s *ListAirflowsResponseBodyRootList) GetLineageReplicas() *int32 {
+	return s.LineageReplicas
+}
+
+func (s *ListAirflowsResponseBodyRootList) GetLineageSpec() *string {
+	return s.LineageSpec
 }
 
 func (s *ListAirflowsResponseBodyRootList) GetOssBucketName() *string {
@@ -491,8 +517,23 @@ func (s *ListAirflowsResponseBodyRootList) SetDescription(v string) *ListAirflow
 	return s
 }
 
+func (s *ListAirflowsResponseBodyRootList) SetEnableLineage(v bool) *ListAirflowsResponseBodyRootList {
+	s.EnableLineage = &v
+	return s
+}
+
 func (s *ListAirflowsResponseBodyRootList) SetGmtCreated(v string) *ListAirflowsResponseBodyRootList {
 	s.GmtCreated = &v
+	return s
+}
+
+func (s *ListAirflowsResponseBodyRootList) SetLineageReplicas(v int32) *ListAirflowsResponseBodyRootList {
+	s.LineageReplicas = &v
+	return s
+}
+
+func (s *ListAirflowsResponseBodyRootList) SetLineageSpec(v string) *ListAirflowsResponseBodyRootList {
+	s.LineageSpec = &v
 	return s
 }
 

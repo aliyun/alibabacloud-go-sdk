@@ -143,7 +143,7 @@ type CreateDataAgentWorkspaceResponseBodyData struct {
 	//
 	// 1765961516
 	ModifyTime *int64 `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
-	// The name of the user\\"s role in the workspace.
+	// The name of the user\"s role in the workspace.
 	//
 	// example:
 	//

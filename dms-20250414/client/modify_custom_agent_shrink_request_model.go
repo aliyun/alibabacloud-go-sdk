@@ -68,27 +68,27 @@ type ModifyCustomAgentShrinkRequest struct {
 	DMSUnit *string `json:"DMSUnit,omitempty" xml:"DMSUnit,omitempty"`
 	// The specified data scope in **JSON character string format**.
 	//
-	// - General metric descriptions:
+	// - General metric descriptions
 	//
-	//   - tableFlag: true indicates that a data scope is specified.
+	//   - tableFlag: true indicates that the data scope is specified.
 	//
-	//   - scope: The fixed value personal.
+	//   - scope: personal is a fixed value.
 	//
-	//   - personal: The parameters for file and database types.
+	//   - personal: parameters for file and database types.
 	//
 	// **File type**: Pass parameters in the following format:
 	//
-	// - DataSourceType: The fixed value remote_data_center.
+	// - DataSourceType: remote_data_center is a fixed value.
 	//
-	// - FileId: The file ID.
+	// - FileId: the file ID.
 	//
-	// - Database: The database name returned by the ListDataCenterTable operation, which is usually the file name.
+	// - Database: the database name returned by the ListDataCenterTable operation, which is usually the file name.
 	//
-	// - Tables: The table names returned by the ListDataCenterTable operation.
+	// - Tables: the table names returned by the ListDataCenterTable operation.
 	//
-	// - TableIds: The table IDs returned by the ListDataCenterTable operation.
+	// - TableIds: the table IDs returned by the ListDataCenterTable operation.
 	//
-	// - RegionId: The current region.
+	// - RegionId: the current region.
 	//
 	// ```
 	//
@@ -128,25 +128,25 @@ type ModifyCustomAgentShrinkRequest struct {
 	//
 	// **Database type**: Pass parameters in the following format:
 	//
-	// - DataSourceType: The fixed value database.
+	// - DataSourceType: database is a fixed value.
 	//
-	// - DmsInstanceId: The DMS instance ID returned by the data center operation.
+	// - DmsInstanceId: the DMS instance ID returned by the data center API.
 	//
-	// - DmsDatabaseId: The DMS database ID returned by the data center operation.
+	// - DmsDatabaseId: the DMS database ID returned by the data center API.
 	//
-	// - FileId: The instance name. **[Deprecated]**
+	// - FileId: **[Deprecated]*	- The instance name.
 	//
-	// - DbName: The database name returned by the data center operation.
+	// - DbName: the database name returned by the data center API.
 	//
-	// - Database: The database name returned by the data center operation.
+	// - Database: the database name returned by the data center API.
 	//
-	// - Tables: The table names returned by the data center operation.
+	// - Tables: the table names returned by the data center API.
 	//
-	// - TableIds: The table IDs returned by the data center operation.
+	// - TableIds: the table IDs returned by the data center API.
 	//
-	// - Engine: The DPI engine type (mysql or postgresql).
+	// - Engine: the DPI engine type, such as mysql or postgresql.
 	//
-	// - RegionId: The current region.
+	// - RegionId: the current region.
 	//
 	// ```
 	//
@@ -222,27 +222,27 @@ type ModifyCustomAgentShrinkRequest struct {
 	//
 	// example:
 	//
-	// Test agent description
+	// Agent test description
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The execution configuration.
 	ExecutionConfigShrink *string `json:"ExecutionConfig,omitempty" xml:"ExecutionConfig,omitempty"`
 	// The instructions.
 	//
-	// - Input limit: Maximum of 10,000 characters.
+	// - Input limit: up to 10,000 characters.
 	//
 	// example:
 	//
 	// Analysis framework:
 	//
-	// 1. Monitor core metrics (GMV, order volume, UV, conversion rate) on a daily, weekly, and monthly basis, and analyze trend changes and year-over-year or month-over-month fluctuations.
+	// 1. Monitor core metrics (GMV, order volume, UV, conversion rate) on a daily, weekly, and monthly basis to analyze trend changes and year-over-year or month-over-month fluctuations.
 	//
-	// 2. Segment by new and existing customers, channels, and regions to identify growth drivers and weaknesses.
+	// 2. Segment by new and returning customers, channels, and regions to identify growth drivers and shortcomings.
 	//
-	// 3. Conduct funnel analysis based on user behavior paths (browse → add to cart → pay) to locate churn points
+	// 3. Conduct funnel analysis based on user behavior paths (browse -> add to cart -> pay) to locate churn points
 	Instruction *string `json:"Instruction,omitempty" xml:"Instruction,omitempty"`
 	// The knowledge.
 	//
-	// - Input limit: Maximum of 10,000 characters.
+	// - Input limit: up to 10,000 characters.
 	//
 	// example:
 	//
@@ -252,9 +252,9 @@ type ModifyCustomAgentShrinkRequest struct {
 	//
 	// 2. Order volume is the number of valid orders placed per day.
 	//
-	// 3. UV (Unique Visitors) refers to the number of deduplicated users who visit the website or app.
+	// 3. UV (Unique Visitors) refers to the number of deduplicated users visiting the website or app.
 	//
-	// 4. Conversion rate = Number of paid orders / UV, reflecting the traffic conversion efficiency
+	// 4. Conversion rate = paid orders / UV, reflecting the traffic conversion efficiency
 	Knowledge *string `json:"Knowledge,omitempty" xml:"Knowledge,omitempty"`
 	// The external knowledge bases.
 	KnowledgeConfigListShrink *string `json:"KnowledgeConfigList,omitempty" xml:"KnowledgeConfigList,omitempty"`
@@ -264,7 +264,7 @@ type ModifyCustomAgentShrinkRequest struct {
 	//
 	// example:
 	//
-	// Test agent name
+	// Agent test name
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The list of recommended questions.
 	//
@@ -280,21 +280,21 @@ type ModifyCustomAgentShrinkRequest struct {
 	ScheduleTaskConfigShrink *string `json:"ScheduleTaskConfig,omitempty" xml:"ScheduleTaskConfig,omitempty"`
 	// The text report format.
 	//
-	//  - Input limit: Maximum of 10,000 characters.
+	// - Input limit: up to 10,000 characters.
 	//
 	// example:
 	//
-	// The text report requires that all numbers be spelled out in words instead of using Arabic numerals
+	// For the text report, do not use Arabic numerals. Convert all numbers to Chinese numerals
 	TextReportConfig *string `json:"TextReportConfig,omitempty" xml:"TextReportConfig,omitempty"`
 	// The list of user-specified skills.
 	UserSpecifiedSkillListShrink *string `json:"UserSpecifiedSkillList,omitempty" xml:"UserSpecifiedSkillList,omitempty"`
 	// The web report format.
 	//
-	// - Input limit: Maximum of 50,000 characters.
+	// - Input limit: up to 50,000 characters.
 	//
 	// example:
 	//
-	// The web report requires that all numbers be spelled out in words instead of using Arabic numerals
+	// For the web report, do not use Arabic numerals. Convert all numbers to Chinese numerals
 	WebReportConfig *string `json:"WebReportConfig,omitempty" xml:"WebReportConfig,omitempty"`
 	// The web report theme. Valid values:
 	//

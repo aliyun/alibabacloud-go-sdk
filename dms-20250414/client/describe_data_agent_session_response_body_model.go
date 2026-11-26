@@ -22,7 +22,7 @@ type iDescribeDataAgentSessionResponseBody interface {
 }
 
 type DescribeDataAgentSessionResponseBody struct {
-	// The returned struct.
+	// The returned data structure.
 	Data *DescribeDataAgentSessionResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
 	// The error code.
 	//
@@ -157,11 +157,11 @@ type DescribeDataAgentSessionResponseBodyData struct {
 	File *string `json:"File,omitempty" xml:"File,omitempty"`
 	// The list of historical conversation messages in the session.
 	Messages []*DescribeDataAgentSessionResponseBodyDataMessages `json:"Messages,omitempty" xml:"Messages,omitempty" type:"Repeated"`
-	// The custom agent for the intelligent development session preview.
+	// The custom agent for intelligent development session preview.
 	PreviewCustomAgent *DescribeDataAgentSessionResponseBodyDataPreviewCustomAgent `json:"PreviewCustomAgent,omitempty" xml:"PreviewCustomAgent,omitempty" type:"Struct"`
 	// The recall results from the knowledge base and memory for the current session.
 	RecallResults []*DescribeDataAgentSessionResponseBodyDataRecallResults `json:"RecallResults,omitempty" xml:"RecallResults,omitempty" type:"Repeated"`
-	// Indicates whether the session is favorited by the current logged-on user.
+	// Indicates whether the item is favorited by the current logged-on user.
 	//
 	// example:
 	//
@@ -579,15 +579,15 @@ func (s *DescribeDataAgentSessionResponseBodyDataArtifacts) Validate() error {
 type DescribeDataAgentSessionResponseBodyDataCapabilities struct {
 	// The ID of the mounted capability.
 	//
-	// - If Type is set to skill, the value indicates the skill ID.
+	// - If Type is set to skill, this parameter indicates the skill ID.
 	//
-	// - If Type is set to dms_kb, the value indicates the knowledge base ID.
+	// - If Type is set to dms_kb, this parameter indicates the knowledge base ID.
 	//
 	// example:
 	//
 	// kb-HZ-s3df*******ld08d
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The type. Valid values:
+	// The capability type. Valid values:
 	//
 	// - skill: skill
 	//
@@ -640,7 +640,7 @@ type DescribeDataAgentSessionResponseBodyDataChatHistoryLocations struct {
 	//
 	// example:
 	//
-	// ****
+	// https://***aliyun.com***
 	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
 }
 
@@ -677,7 +677,7 @@ func (s *DescribeDataAgentSessionResponseBodyDataChatHistoryLocations) Validate(
 type DescribeDataAgentSessionResponseBodyDataDataSources struct {
 	// The data source category. Valid values:
 	//
-	// - **CHAT**: The data source is specified in a conversation by calling the CreateDataAgentSession or SendChatMessage operation.
+	// - **CHAT**: The data source is specified in the conversation by calling the CreateDataAgentSession or SendChatMessage operation.
 	//
 	// - **CUSTOM_AGENT**: The data source comes from the preset analysis data scope in a custom agent.
 	//
@@ -728,7 +728,7 @@ type DescribeDataAgentSessionResponseBodyDataMessages struct {
 	//
 	// example:
 	//
-	// Help me check the sales of restaurants in the UK in 2022
+	// Show me the sales of restaurants in the UK in 2022
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
 	// The unique ID of the historical conversation message.
 	//
@@ -736,7 +736,7 @@ type DescribeDataAgentSessionResponseBodyDataMessages struct {
 	//
 	// a5bb5ff643de4124afd4317f79417a81
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The send time of the historical conversation message.
+	// The time when the historical conversation message was sent.
 	//
 	// example:
 	//
@@ -799,7 +799,7 @@ func (s *DescribeDataAgentSessionResponseBodyDataMessages) Validate() error {
 }
 
 type DescribeDataAgentSessionResponseBodyDataPreviewCustomAgent struct {
-	// The Alibaba Cloud main account ID.
+	// The ID of the Alibaba Cloud main account.
 	//
 	// example:
 	//
@@ -1011,15 +1011,15 @@ type DescribeDataAgentSessionResponseBodyDataPreviewCustomAgent struct {
 	WebReportConfig *string `json:"WebReportConfig,omitempty" xml:"WebReportConfig,omitempty"`
 	// The web report theme. Valid values:
 	//
-	// - default: default
+	// - default: Default.
 	//
-	// - journal: journal
+	// - journal: Journal.
 	//
-	// - legacy: legacy
+	// - legacy: Legacy.
 	//
-	// - neobrutalism: stylized
+	// - neobrutalism: Neobrutalism.
 	//
-	// - infographic: infographic
+	// - infographic: Infographic.
 	//
 	// example:
 	//
@@ -1385,7 +1385,7 @@ func (s *DescribeDataAgentSessionResponseBodyDataPreviewCustomAgent) Validate() 
 }
 
 type DescribeDataAgentSessionResponseBodyDataPreviewCustomAgentCallbackConfig struct {
-	// The callback tool invocation parameters.
+	// The parameters used to invoke callback tool calling.
 	//
 	// example:
 	//
@@ -1395,13 +1395,13 @@ type DescribeDataAgentSessionResponseBodyDataPreviewCustomAgentCallbackConfig st
 	//
 	// }
 	CallbackArgs *string `json:"CallbackArgs,omitempty" xml:"CallbackArgs,omitempty"`
-	// The prompt used to generate callback tool invocation parameters.
+	// The prompt used to generate the parameters to invoke callback tool calling.
 	//
 	// example:
 	//
 	// send web report to 123456@163.com
 	CallbackPrompt *string `json:"CallbackPrompt,omitempty" xml:"CallbackPrompt,omitempty"`
-	// The timing for callback tool invocation.
+	// The timing to invoke callback tool calling.
 	//
 	// example:
 	//
@@ -1483,13 +1483,13 @@ type DescribeDataAgentSessionResponseBodyDataPreviewCustomAgentExecutionConfig s
 	//
 	// The following list describes some tendency values:
 	//
-	// - 0.0: Do not ask questions. The agent does not ask the user any questions, skips confirmation after generating a plan, and directly executes the plan.
+	// - 0.0: Do not ask questions. The agent does not ask the user questions, skips confirmation after generating the plan, and directly executes the plan.
 	//
 	// - 0.1: Confirm the plan only. The agent confirms the generated plan only once and does not ask additional questions about requirements or details.
 	//
 	// - 0.4: Ask questions when the task is blocked. The agent handles the task autonomously by default and asks questions only when the task cannot proceed or be completed.
 	//
-	// - 0.7: Ask questions when key criteria are uncertain. The agent proactively asks questions when there is critical ambiguity in the goals, scope, business criteria, or acceptance criteria.
+	// - 0.7: Ask questions when key criteria are uncertain. The agent proactively asks questions when critical ambiguity exists in the goals, scope, business criteria, or acceptance criteria.
 	//
 	// - 1.0: Fully align throughout the process. The agent proactively clarifies requirements during planning and execution, and continuously confirms when encountering important ambiguities, assumptions, or solution branches.
 	//
@@ -1497,31 +1497,31 @@ type DescribeDataAgentSessionResponseBodyDataPreviewCustomAgentExecutionConfig s
 	//
 	// 1.0
 	ClarificationTendency *float64 `json:"ClarificationTendency,omitempty" xml:"ClarificationTendency,omitempty"`
-	// Indicates whether appending data sources in the session is prohibited.
+	// Specifies whether to prohibit appending data sources in the session.
 	//
 	// example:
 	//
 	// true
 	ForbiddenAppendDataSource *bool `json:"ForbiddenAppendDataSource,omitempty" xml:"ForbiddenAppendDataSource,omitempty"`
-	// Indicates whether user inquiries during the process are prohibited.
+	// Specifies whether to prohibit user inquiries during the process.
 	//
 	// example:
 	//
 	// true
 	SkipAskHuman *bool `json:"SkipAskHuman,omitempty" xml:"SkipAskHuman,omitempty"`
-	// Indicates whether the plan confirmation step is skipped.
+	// Specifies whether to skip the plan confirmation step.
 	//
 	// example:
 	//
 	// true
 	SkipPlan *bool `json:"SkipPlan,omitempty" xml:"SkipPlan,omitempty"`
-	// Indicates whether all SQL confirmations are skipped.
+	// Specifies whether to skip all SQL confirmations.
 	//
 	// example:
 	//
 	// true
 	SkipSqlConfirm *bool `json:"SkipSqlConfirm,omitempty" xml:"SkipSqlConfirm,omitempty"`
-	// Indicates whether the confirmation for generating a web report is skipped.
+	// Specifies whether to skip the confirmation for generating web reports.
 	//
 	// example:
 	//
@@ -1596,11 +1596,11 @@ func (s *DescribeDataAgentSessionResponseBodyDataPreviewCustomAgentExecutionConf
 }
 
 type DescribeDataAgentSessionResponseBodyDataPreviewCustomAgentKnowledgeConfigList struct {
-	// The access type. If this parameter is not specified, the default value is mcp. Valid values:
+	// The access type. If you do not specify this parameter, the default value is mcp. Valid values:
 	//
-	// - mcp: MCP access. You must specify the McpServerId parameter.
+	// - mcp: Access through MCP. You must specify the McpServerId parameter.
 	//
-	// - dms_kb: DMS knowledge base access. You must specify the KbUuid parameter.
+	// - dms_kb: Access through a DMS knowledge base. You must specify the KbUuid parameter.
 	//
 	// example:
 	//
@@ -1739,13 +1739,13 @@ func (s *DescribeDataAgentSessionResponseBodyDataPreviewCustomAgentKnowledgeSema
 }
 
 type DescribeDataAgentSessionResponseBodyDataPreviewCustomAgentScheduleTaskConfig struct {
-	// The cron expression for scheduled runs.
+	// The cron expression for scheduled execution.
 	//
 	// example:
 	//
 	// 0 0 0 ? 	- 1-7
 	CronExpression *string `json:"CronExpression,omitempty" xml:"CronExpression,omitempty"`
-	// The question for scheduled runs.
+	// The question for scheduled execution.
 	//
 	// example:
 	//
@@ -1799,13 +1799,13 @@ func (s *DescribeDataAgentSessionResponseBodyDataPreviewCustomAgentScheduleTaskC
 }
 
 type DescribeDataAgentSessionResponseBodyDataRecallResults struct {
-	// The content of the recalled knowledge chunk.
+	// The content of the recalled knowledge block.
 	//
 	// example:
 	//
 	// sky is blue
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
-	// The similarity score of this data entry. The scoring algorithm is related to the algorithm specified when the index is created, such as l2, ip, or cosine.
+	// The similarity score of this data entry. The scoring algorithm is related to the algorithm specified during index creation, such as l2, ip, or cosine.
 	//
 	// example:
 	//
@@ -1867,7 +1867,7 @@ type DescribeDataAgentSessionResponseBodyDataSessionConfig struct {
 	CustomAgentId *string `json:"CustomAgentId,omitempty" xml:"CustomAgentId,omitempty"`
 	// The usage stage of the custom agent. Valid values:
 	//
-	// - **debug**: Debug stage.
+	// - **debug**: Debugging stage.
 	//
 	// - **prod**: Production stage.
 	//
@@ -1881,7 +1881,7 @@ type DescribeDataAgentSessionResponseBodyDataSessionConfig struct {
 	//
 	// True
 	EnableSearch *bool `json:"EnableSearch,omitempty" xml:"EnableSearch,omitempty"`
-	// The encryption key for storing artifacts in OSS, including built-in and user OSS. This key is typically specified in CreateDataAgentSession.
+	// The encryption key for storing artifacts in OSS, including built-in and user OSS. This is typically specified in CreateDataAgentSession.
 	//
 	// example:
 	//
@@ -1921,9 +1921,11 @@ type DescribeDataAgentSessionResponseBodyDataSessionConfig struct {
 	Mode *string `json:"Mode,omitempty" xml:"Mode,omitempty"`
 	// The report page width.
 	//
+	// Unit: mm.
+	//
 	// example:
 	//
-	// 300mm
+	// 300
 	ReportPageWidth *int64 `json:"ReportPageWidth,omitempty" xml:"ReportPageWidth,omitempty"`
 	// The report watermark.
 	//
