@@ -28,7 +28,7 @@ type iListBatchExportTasksRequest interface {
 }
 
 type ListBatchExportTasksRequest struct {
-	// The end time of the creation time range. Format: yyyy-MM-dd\\"T\\"HH:mm:ss\\"Z\\".
+	// The end time of the creation time range. Format: yyyy-MM-dd\"T\"HH:mm:ss\"Z\".
 	//
 	// example:
 	//
@@ -64,7 +64,7 @@ type ListBatchExportTasksRequest struct {
 	//
 	// 10
 	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	// The start time of the creation time range. Format: yyyy-MM-dd\\"T\\"HH:mm:ss\\"Z\\".
+	// The start time of the creation time range. Format: yyyy-MM-dd\"T\"HH:mm:ss\"Z\".
 	//
 	// example:
 	//

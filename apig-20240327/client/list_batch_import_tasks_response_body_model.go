@@ -32,7 +32,7 @@ type ListBatchImportTasksResponseBody struct {
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
 	// The response data.
 	Data *ListBatchImportTasksResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
-	// The maximum number of records returned in the current request.
+	// The maximum number of records returned in the current response.
 	//
 	// example:
 	//
@@ -44,7 +44,7 @@ type ListBatchImportTasksResponseBody struct {
 	//
 	// success
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// The pagination token for the next query. This parameter is empty if no more results are available.
+	// The starting token for the next query. This parameter is empty when no more results are available.
 	//
 	// example:
 	//
@@ -130,7 +130,7 @@ func (s *ListBatchImportTasksResponseBody) Validate() error {
 }
 
 type ListBatchImportTasksResponseBodyData struct {
-	// The list of tasks. Tasks are returned in descending order of creation time, with the latest tasks first.
+	// The list of tasks. The tasks are returned in descending order of creation time, with the latest tasks first.
 	Items []*ListBatchImportTasksResponseBodyDataItems `json:"items,omitempty" xml:"items,omitempty" type:"Repeated"`
 	// The page number.
 	//
@@ -138,13 +138,13 @@ type ListBatchImportTasksResponseBodyData struct {
 	//
 	// 1
 	PageNumber *int32 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
-	// The number of entries per page.
+	// The page size.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	// The total number of tasks.
+	// The total number of entries.
 	//
 	// example:
 	//
@@ -222,7 +222,7 @@ type ListBatchImportTasksResponseBodyDataItems struct {
 	//
 	// some apis failed
 	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
-	// The gateway instance ID associated with the task.
+	// The ID of the gateway instance associated with the task.
 	//
 	// example:
 	//
@@ -252,7 +252,7 @@ type ListBatchImportTasksResponseBodyDataItems struct {
 	//
 	// BatchImport
 	TaskType *string `json:"taskType,omitempty" xml:"taskType,omitempty"`
-	// The total number of tasks.
+	// The total number of entries.
 	//
 	// example:
 	//

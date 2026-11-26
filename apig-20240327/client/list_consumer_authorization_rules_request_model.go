@@ -18,7 +18,7 @@ type iListConsumerAuthorizationRulesRequest interface {
 }
 
 type ListConsumerAuthorizationRulesRequest struct {
-	// The fuzzy search parameter for the API name.
+	// The fuzzy search parameter for API names.
 	//
 	// example:
 	//
@@ -30,7 +30,7 @@ type ListConsumerAuthorizationRulesRequest struct {
 	//
 	// 1
 	PageNumber *int32 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
-	// The number of entries per page. Default value: 10.
+	// The page size. Default value: 10.
 	//
 	// example:
 	//

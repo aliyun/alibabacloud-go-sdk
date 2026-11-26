@@ -15,6 +15,8 @@ type iUpdateServiceRequest interface {
 	GetAgentServiceConfig() *AgentServiceConfig
 	SetAiServiceConfig(v *AiServiceConfig) *UpdateServiceRequest
 	GetAiServiceConfig() *AiServiceConfig
+	SetApiKeyIndexToRemove(v int32) *UpdateServiceRequest
+	GetApiKeyIndexToRemove() *int32
 	SetApiKeyReferencesToAdd(v []*string) *UpdateServiceRequest
 	GetApiKeyReferencesToAdd() []*string
 	SetApiKeysToAdd(v []*string) *UpdateServiceRequest
@@ -44,6 +46,12 @@ type UpdateServiceRequest struct {
 	AgentServiceConfig *AgentServiceConfig `json:"agentServiceConfig,omitempty" xml:"agentServiceConfig,omitempty"`
 	// The AI service configuration.
 	AiServiceConfig *AiServiceConfig `json:"aiServiceConfig,omitempty" xml:"aiServiceConfig,omitempty"`
+	// Removes a custom upstream API key from the current configuration. The index starts from 1. You must specify expectedConfigRevision, maintain the order of the remaining keys, and retain at least one key.
+	//
+	// example:
+	//
+	// 2
+	ApiKeyIndexToRemove *int32 `json:"apiKeyIndexToRemove,omitempty" xml:"apiKeyIndexToRemove,omitempty"`
 	// The list of KMS reference names to append. This parameter is only available in Reference mode. KMS content is not read.
 	//
 	// example:
@@ -58,7 +66,7 @@ type UpdateServiceRequest struct {
 	ApiKeysToAdd []*string `json:"apiKeysToAdd,omitempty" xml:"apiKeysToAdd,omitempty" type:"Repeated"`
 	// The DNS server addresses.
 	DnsServers []*string `json:"dnsServers,omitempty" xml:"dnsServers,omitempty" type:"Repeated"`
-	// The expected configuration revision for conditional updates of the AI service. If this parameter is not provided, backward compatibility with legacy calls is maintained. If the version changes, the Conflict.ServiceConfigurationChanged error is returned.
+	// The expected configuration revision for conditional updates of the AI service. If this parameter is not specified, the call is compatible with legacy versions. If the version changes, Conflict.ServiceConfigurationChanged is returned.
 	//
 	// example:
 	//
@@ -108,6 +116,10 @@ func (s *UpdateServiceRequest) GetAgentServiceConfig() *AgentServiceConfig {
 
 func (s *UpdateServiceRequest) GetAiServiceConfig() *AiServiceConfig {
 	return s.AiServiceConfig
+}
+
+func (s *UpdateServiceRequest) GetApiKeyIndexToRemove() *int32 {
+	return s.ApiKeyIndexToRemove
 }
 
 func (s *UpdateServiceRequest) GetApiKeyReferencesToAdd() []*string {
@@ -162,6 +174,11 @@ func (s *UpdateServiceRequest) SetAgentServiceConfig(v *AgentServiceConfig) *Upd
 
 func (s *UpdateServiceRequest) SetAiServiceConfig(v *AiServiceConfig) *UpdateServiceRequest {
 	s.AiServiceConfig = v
+	return s
+}
+
+func (s *UpdateServiceRequest) SetApiKeyIndexToRemove(v int32) *UpdateServiceRequest {
+	s.ApiKeyIndexToRemove = &v
 	return s
 }
 
@@ -407,13 +424,17 @@ type UpdateServiceRequestOutlierDetectionConfig struct {
 	//
 	// false
 	Enable *bool `json:"enable,omitempty" xml:"enable,omitempty"`
-	// The panic threshold. When the proportion of healthy nodes in the service is greater than the panic threshold, health checks take effect normally, and requests are sent only to healthy nodes, not to ejected nodes. When the proportion of healthy nodes is less than or equal to the panic threshold, health checks are effectively disabled, and requests are sent to all nodes, including ejected ones.
+	// The panic threshold.
+	//
+	// When the proportion of healthy nodes in the service is greater than the panic threshold, health checks take effect normally. Requests are sent only to healthy nodes and not to ejected nodes.
+	//
+	// When the proportion of healthy nodes in the service is less than or equal to the panic threshold, health checks are effectively disabled. Requests are sent to all nodes, including ejected nodes.
 	//
 	// example:
 	//
 	// 1
 	FailurePercentageMinimumHosts *int32 `json:"failurePercentageMinimumHosts,omitempty" xml:"failurePercentageMinimumHosts,omitempty"`
-	// The failure rate threshold. When the proportion of failed requests for a node reaches this threshold, the system triggers the ejection mechanism for the node.
+	// The failure percentage threshold. When the proportion of failed requests for a node reaches this threshold, the system triggers the ejection mechanism for the node.
 	//
 	// example:
 	//

@@ -28,11 +28,11 @@ type iCreateAndAttachPolicyRequest interface {
 }
 
 type CreateAndAttachPolicyRequest struct {
-	// The list of target resource IDs to attach.
+	// The list of target resource IDs to mount.
 	//
 	// This parameter is required.
 	AttachResourceIds []*string `json:"attachResourceIds,omitempty" xml:"attachResourceIds,omitempty" type:"Repeated"`
-	// The type of the target resource to attach.
+	// The type of the target resource to mount.
 	//
 	// This parameter is required.
 	//
@@ -74,7 +74,7 @@ type CreateAndAttachPolicyRequest struct {
 	//
 	// gw-xxx
 	GatewayId *string `json:"gatewayId,omitempty" xml:"gatewayId,omitempty"`
-	// The policy name. This parameter is required when className is set to IpAccessControl, JWTAuth, OIDCAuth, or ExternalZAuth, and must be unique within the same gateway instance specified by gatewayId under the current account. If the name duplicates an existing policy, a PolicyExisted error is returned. When you retry after receiving this error, you must use a new name. Resubmitting the same name will always fail. For other className values such as RateLimit, Timeout, Retry, ServiceTls, and AiProxy, this parameter is optional, used only for display purposes, and can be omitted.
+	// The policy name. This parameter is required when className is set to IpAccessControl, JWTAuth, OIDCAuth, or ExternalZAuth, and must be unique within the same gateway instance (gatewayId) under the current account. If the name duplicates an existing policy, a PolicyExisted error is returned. When you retry after receiving this error, you must specify a new name. Resubmitting the same name will always fail. For other className values (such as RateLimit, Timeout, Retry, ServiceTls, and AiProxy), this parameter is optional and used only for display purposes.
 	//
 	// example:
 	//

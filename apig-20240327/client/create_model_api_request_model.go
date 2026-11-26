@@ -38,7 +38,7 @@ type iCreateModelApiRequest interface {
 }
 
 type CreateModelApiRequest struct {
-	// The API access prefix. The default value is / during creation. If omitted during an update, the original value is retained.
+	// The API access prefix. The default value for creation is /. If omitted during an update, the original value is retained.
 	//
 	// example:
 	//
@@ -48,29 +48,29 @@ type CreateModelApiRequest struct {
 	//
 	// example:
 	//
-	// Model API for service integration
+	// Model API for business integration
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// Specifies whether to enable direct supply fallback. If omitted during creation, the default value is false, which does not implicitly generate pay-as-you-go tail charges. Only an explicit true value is allowed.
+	// Specifies whether to enable direct supply fallback. If omitted in a create request, the default value is false, which does not implicitly incur pay-as-you-go tail charges. You can only enable this feature by explicitly setting this parameter to true.
 	//
 	// if can be null:
 	// false
 	DirectSupplyFallbackEnabled *bool `json:"directSupplyFallbackEnabled,omitempty" xml:"directSupplyFallbackEnabled,omitempty"`
-	// The IDs of the selected custom or default domain names of the instance. This parameter must be explicitly specified and non-empty during creation. If omitted during an update, the original value is retained. Submitted values replace the entire list and cannot be empty.
+	// The IDs of the selected custom or default instance domain names. This parameter must be explicitly specified and cannot be empty during creation. If omitted during an update, the original value is retained. If submitted, the entire list is replaced and cannot be empty.
 	//
 	// This parameter is required.
 	//
 	// if can be null:
 	// false
 	DomainIds []*string `json:"domainIds,omitempty" xml:"domainIds,omitempty" type:"Repeated"`
-	// Specifies whether to enable API key authentication for consumers. If omitted during an update, the original value is retained. The type is fixed to Apikey or Custom.
+	// Specifies whether to enable consumer API key authentication. If omitted during an update, the original value is retained. The type is fixed to Apikey or Custom.
 	EnableAuth *bool `json:"enableAuth,omitempty" xml:"enableAuth,omitempty"`
-	// The time to first byte timeout.
+	// The timeout period for the first byte.
 	//
 	// example:
 	//
 	// 30000
 	FirstByteTimeout *int32 `json:"firstByteTimeout,omitempty" xml:"firstByteTimeout,omitempty"`
-	// The instance ID of the target dedicated gateway.
+	// The target dedicated gateway instance ID.
 	//
 	// This parameter is required.
 	//
@@ -78,12 +78,12 @@ type CreateModelApiRequest struct {
 	//
 	// gw-d00000000000000000000
 	GatewayId *string `json:"gatewayId,omitempty" xml:"gatewayId,omitempty"`
-	// Specifies whether to explicitly perform the initial configuration. If omitted or set to false, standard multi-API creation is retained. If set to true, name=default, basePath=/, and a non-empty clientToken are required. Additionally, multi-API management must be disabled and the number of complete new-version APIs must be zero when saving.
+	// Specifies whether to explicitly perform the initial configuration. If omitted or set to false, standard multi-API creation is retained. If set to true, you must explicitly set name to default, basePath to /, and provide a non-empty clientToken. Additionally, when saving, multi-API management must be disabled and the number of complete new-version APIs must be zero.
 	//
 	// if can be null:
 	// false
 	InitialConfiguration *bool `json:"initialConfiguration,omitempty" xml:"initialConfiguration,omitempty"`
-	// The model selection. This parameter is required during creation. If omitted during an update, the original value is retained. Submitted values replace the entire configuration.
+	// The model selection. This parameter is required for creation. If omitted during an update, the original value is retained. If submitted, the entire value is replaced.
 	//
 	// This parameter is required.
 	//
@@ -98,7 +98,7 @@ type CreateModelApiRequest struct {
 	//
 	// beta-model-api
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
-	// The configurations for AI request logging and AI security protection. If omitted during an update, the original value is retained. Submitted values replace the two types of inline policies entirely. An empty array clears both types. Independent token quotas are not affected.
+	// The configurations for AI request logging and AI security protection only. If omitted during an update, the original values are retained. If submitted, the inline policies of both types are entirely replaced. An empty array clears both types. Independent token quotas are not affected.
 	//
 	// if can be null:
 	// false
@@ -109,7 +109,7 @@ type CreateModelApiRequest struct {
 	//
 	// rg-acf0000000000000000
 	ResourceGroupId *string `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
-	// The idempotency identity. It is a globally unique value generated by the invoker, such as a UUID, and cannot exceed 64 characters in length. Within approximately 24 hours after the initial request succeeds, repeated requests with the same clientToken and identical request parameters return the result of the initial creation. If the request parameters are inconsistent or the initial request is still being processed, a corresponding idempotency error is returned. If this parameter is omitted, the default creation behavior applies.
+	// The idempotency identity. The caller generates a globally unique value (we recommend a UUID) to invoke the API. The maximum length is 64 characters. Within approximately 24 hours after the initial request succeeds, if you invoke a duplicate request with the same clientToken and identical request parameter values, the system directly returns the initial creation result. If a request parameter is inconsistent or the initial request is still being processed, the system returns the corresponding idempotency fault. If omitted, the original creation behavior is retained.
 	//
 	// example:
 	//

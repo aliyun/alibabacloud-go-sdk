@@ -106,7 +106,7 @@ type GetPluginAttachmentResponseBodyData struct {
 	EnvironmentInfo *EnvironmentInfo `json:"environmentInfo,omitempty" xml:"environmentInfo,omitempty"`
 	// The gateway information.
 	GatewayInfo *GatewayInfo `json:"gatewayInfo,omitempty" xml:"gatewayInfo,omitempty"`
-	// The parent mounted resource information.
+	// The parent attached resource information.
 	ParentResourceInfo *ParentResourceInfo `json:"parentResourceInfo,omitempty" xml:"parentResourceInfo,omitempty"`
 	// The ID of the plugin attachment.
 	//
@@ -122,13 +122,13 @@ type GetPluginAttachmentResponseBodyData struct {
 	//
 	// cHJlcGVuZDoKLSByb2xlOiBzeXN0ZW0KICBjb250ZW50OiDor7fkvb/nlKjoi7Hor63lm57nrZTpl67popgKYXBwZW5kOgotIHJvbGU6IHVzZXIKICBjb250ZW50OiDmr4/mrKHlm57nrZTlrozpl67popjvvIzlsJ3or5Xov5vooYzlj43pl64K
 	PluginConfig *string `json:"pluginConfig,omitempty" xml:"pluginConfig,omitempty"`
-	// The plugin ID.
+	// The ID of the plugin.
 	//
 	// example:
 	//
 	// pl-cvo8ub6m1hkvgv03r3k0
 	PluginId *string `json:"pluginId,omitempty" xml:"pluginId,omitempty"`
-	// The list of mounted resource information.
+	// The list of attached resource information.
 	ResourceInfos []*ResourceInfo `json:"resourceInfos,omitempty" xml:"resourceInfos,omitempty" type:"Repeated"`
 }
 

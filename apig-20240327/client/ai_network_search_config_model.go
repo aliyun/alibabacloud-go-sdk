@@ -57,7 +57,7 @@ type AiNetworkSearchConfig struct {
 	//
 	// example:
 	//
-	// Reference source:\\n%s
+	// Reference source:\n%s
 	ReferenceFormat *string `json:"referenceFormat,omitempty" xml:"referenceFormat,omitempty"`
 	// The reference location.
 	//

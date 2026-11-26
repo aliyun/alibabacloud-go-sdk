@@ -168,7 +168,7 @@ type GetMcpServerResponseBodyData struct {
 	//
 	// example:
 	//
-	// {\\"product_code\\":\\"apigw\\"}
+	// {\"product_code\":\"apigw\"}
 	Match *HttpRouteMatch `json:"match,omitempty" xml:"match,omitempty"`
 	// The HTTP-to-MCP configuration.
 	//
@@ -621,7 +621,7 @@ type GetMcpServerResponseBodyDataGrayMcpServerConfigs struct {
 	//
 	// example:
 	//
-	// {\\"change_order_revision\\":\\"3.686.0_fc-sz-futian.1662568293908382_faas-eerouter\\"}
+	// {\"change_order_revision\":\"3.686.0_fc-sz-futian.1662568293908382_faas-eerouter\"}
 	Match *HttpRouteMatch `json:"match,omitempty" xml:"match,omitempty"`
 	// The ID of the canary route.
 	//

@@ -271,7 +271,7 @@ type RiskCheckResultsRiskDetails struct {
 	//
 	// example:
 	//
-	// {"30010010001":"[\\"\\",\\"\\"]"}
+	// {"30010010001":"[\"\",\"\"]"}
 	Data map[string]*string `json:"data,omitempty" xml:"data,omitempty"`
 	// The detailed description of the risk in JSON string format.
 	//

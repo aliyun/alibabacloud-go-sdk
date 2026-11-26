@@ -34,7 +34,7 @@ type HiMarketMcpConfig struct {
 	//
 	// example:
 	//
-	// [{\\"name\\":\\"search\\",\\"description\\":\\"Search tool\\"}]
+	// [{\"name\":\"search\",\"description\":\"Search tool\"}]
 	Tools *string `json:"tools,omitempty" xml:"tools,omitempty"`
 }
 

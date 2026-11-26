@@ -15,27 +15,15 @@ type iDataResultsValue interface {
 	GetStatus() *string
 	SetErrorMessage(v string) *DataResultsValue
 	GetErrorMessage() *string
+	SetSkipReason(v string) *DataResultsValue
+	GetSkipReason() *string
 }
 
 type DataResultsValue struct {
-	// The route ID corresponding to the result, which is the same as the key in results.
-	//
-	// example:
-	//
-	// hr-example001
-	RouteId *string `json:"routeId,omitempty" xml:"routeId,omitempty"`
-	// For asynchronous publishing, Pending indicates that the request is accepted, and Rejected indicates that the request is rejected before submission. For synchronous publishing, Succeeded indicates that the route is successfully published, and Failed indicates that the publishing failed.
-	//
-	// example:
-	//
-	// Succeeded
-	Status *string `json:"status,omitempty" xml:"status,omitempty"`
-	// The cause of the route being rejected or failing to be published. This parameter is returned when the status is Rejected or Failed.
-	//
-	// example:
-	//
-	// ErrorType: Conflict, ErrorCode: DeployRouteForbidden, Message: the route  example-route is not allowed to deploy when it\\"s status is Deploying., Params: [example-route Deploying]
+	RouteId      *string `json:"routeId,omitempty" xml:"routeId,omitempty"`
+	Status       *string `json:"status,omitempty" xml:"status,omitempty"`
 	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
+	SkipReason   *string `json:"skipReason,omitempty" xml:"skipReason,omitempty"`
 }
 
 func (s DataResultsValue) String() string {
@@ -58,6 +46,10 @@ func (s *DataResultsValue) GetErrorMessage() *string {
 	return s.ErrorMessage
 }
 
+func (s *DataResultsValue) GetSkipReason() *string {
+	return s.SkipReason
+}
+
 func (s *DataResultsValue) SetRouteId(v string) *DataResultsValue {
 	s.RouteId = &v
 	return s
@@ -70,6 +62,11 @@ func (s *DataResultsValue) SetStatus(v string) *DataResultsValue {
 
 func (s *DataResultsValue) SetErrorMessage(v string) *DataResultsValue {
 	s.ErrorMessage = &v
+	return s
+}
+
+func (s *DataResultsValue) SetSkipReason(v string) *DataResultsValue {
+	s.SkipReason = &v
 	return s
 }
 

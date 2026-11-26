@@ -30,7 +30,7 @@ type ListAiModelSourceModelsRequest struct {
 	//
 	// gw-d00000000000000000000
 	GatewayId *string `json:"gatewayId,omitempty" xml:"gatewayId,omitempty"`
-	// The query keyword used to match resources by name or identifier.
+	// The search keyword used to match resources by name or identifier.
 	//
 	// example:
 	//
@@ -50,7 +50,7 @@ type ListAiModelSourceModelsRequest struct {
 	//
 	// ms-d00000000000000000000
 	ModelSourceId *string `json:"modelSourceId,omitempty" xml:"modelSourceId,omitempty"`
-	// The pagination token returned from the previous page. Omit this parameter for the first page. For the last page, this parameter is empty or omitted.
+	// The pagination token returned from the previous page. Omit this parameter for the first page. The token is empty or omitted for the last page.
 	//
 	// example:
 	//

@@ -189,13 +189,13 @@ type UpdateAiModelSourceModelRequestCredit struct {
 	//
 	// 0.1
 	CacheCost *float32 `json:"cacheCost,omitempty" xml:"cacheCost,omitempty"`
-	// The number of credits per million input tokens. The value must be a non-negative number. A value of 0 indicates that input is free of charge.
+	// The number of credits per million input tokens. The value must be a non-negative number. A value of 0 indicates that the input is free of charge.
 	//
 	// example:
 	//
 	// 1
 	InputCost *float32 `json:"inputCost,omitempty" xml:"inputCost,omitempty"`
-	// The number of credits per million output tokens. The value must be a non-negative number. A value of 0 indicates that output is free of charge.
+	// The number of credits per million output tokens. The value must be a non-negative number. A value of 0 indicates that the output is free of charge.
 	//
 	// example:
 	//

@@ -60,7 +60,7 @@ type UpdateAndAttachPolicyRequest struct {
 	//
 	// example:
 	//
-	// {\\"enable\\":false}
+	// {\"enable\":false}
 	Config *string `json:"config,omitempty" xml:"config,omitempty"`
 	// The policy description.
 	//

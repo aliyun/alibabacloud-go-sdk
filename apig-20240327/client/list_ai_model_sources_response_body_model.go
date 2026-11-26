@@ -20,7 +20,7 @@ type iListAiModelSourcesResponseBody interface {
 }
 
 type ListAiModelSourcesResponseBody struct {
-	// The response status code. The value is Ok for successful requests, or a specific business error code for failed requests.
+	// The response status code. A value of Ok indicates success. A specific business error code indicates failure.
 	//
 	// example:
 	//
@@ -104,7 +104,7 @@ type ListAiModelSourcesResponseBodyData struct {
 	//
 	// 20
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
-	// The pagination token returned from the previous page. Do not specify this parameter when you query the first page.
+	// The pagination token returned from the previous page. Do not pass this parameter when querying the first page.
 	//
 	// example:
 	//
@@ -176,6 +176,12 @@ func (s *ListAiModelSourcesResponseBodyData) Validate() error {
 }
 
 type ListAiModelSourcesResponseBodyDataItems struct {
+	// The valid invoke name prefix for the model source. You can specify this prefix during model creation. By default, the provider identity is used. This prefix cannot be modified after creation.
+	//
+	// example:
+	//
+	// qwen-prod
+	CallNamePrefix *string `json:"callNamePrefix,omitempty" xml:"callNamePrefix,omitempty"`
 	// The display name of the model source or model provider.
 	//
 	// example:
@@ -194,7 +200,7 @@ type ListAiModelSourcesResponseBodyDataItems struct {
 	//
 	// 4
 	ModelCount *int64 `json:"modelCount,omitempty" xml:"modelCount,omitempty"`
-	// The ID of the model source. Use the modelSourceId returned by CreateAiModelSource.
+	// The model source ID. Use the modelSourceId returned by CreateAiModelSource.
 	//
 	// example:
 	//
@@ -218,7 +224,7 @@ type ListAiModelSourcesResponseBodyDataItems struct {
 	//
 	// 2026-11-12T00:00:00Z
 	UpdateTime *string `json:"updateTime,omitempty" xml:"updateTime,omitempty"`
-	// The current version of the object, which is used for conditional checks during updates or deletions.
+	// The current version of the object, which is used for conditional validation during updates or deletions.
 	//
 	// example:
 	//
@@ -232,6 +238,10 @@ func (s ListAiModelSourcesResponseBodyDataItems) String() string {
 
 func (s ListAiModelSourcesResponseBodyDataItems) GoString() string {
 	return s.String()
+}
+
+func (s *ListAiModelSourcesResponseBodyDataItems) GetCallNamePrefix() *string {
+	return s.CallNamePrefix
 }
 
 func (s *ListAiModelSourcesResponseBodyDataItems) GetDisplayName() *string {
@@ -264,6 +274,11 @@ func (s *ListAiModelSourcesResponseBodyDataItems) GetUpdateTime() *string {
 
 func (s *ListAiModelSourcesResponseBodyDataItems) GetVersion() *int64 {
 	return s.Version
+}
+
+func (s *ListAiModelSourcesResponseBodyDataItems) SetCallNamePrefix(v string) *ListAiModelSourcesResponseBodyDataItems {
+	s.CallNamePrefix = &v
+	return s
 }
 
 func (s *ListAiModelSourcesResponseBodyDataItems) SetDisplayName(v string) *ListAiModelSourcesResponseBodyDataItems {

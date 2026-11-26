@@ -30,7 +30,7 @@ type UpdateGatewayQuotaRuleResponseBody struct {
 	//
 	// example:
 	//
-	// {\\"key\\": \\"value\\"}
+	// {\"key\": \"value\"}
 	Data *UpdateGatewayQuotaRuleResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
 	// The message content.
 	//

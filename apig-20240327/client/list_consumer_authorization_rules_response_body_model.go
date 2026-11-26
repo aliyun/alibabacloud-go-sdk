@@ -104,7 +104,7 @@ type ListConsumerAuthorizationRulesResponseBodyData struct {
 	//
 	// 1
 	PageNumber *int32 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
-	// The number of entries per page.
+	// The page size.
 	//
 	// example:
 	//
@@ -184,7 +184,7 @@ type ListConsumerAuthorizationRulesResponseBodyDataItems struct {
 	//
 	// car-csgeka5lhtggrjcprok0
 	ConsumerAuthorizationRuleId *string `json:"consumerAuthorizationRuleId,omitempty" xml:"consumerAuthorizationRuleId,omitempty"`
-	// The ID of the consumer.
+	// The consumer ID.
 	//
 	// example:
 	//
@@ -224,13 +224,13 @@ type ListConsumerAuthorizationRulesResponseBodyDataItems struct {
 	ExpireTimestamp *int64 `json:"expireTimestamp,omitempty" xml:"expireTimestamp,omitempty"`
 	// The gateway information.
 	GatewayInfo *GatewayInfo `json:"gatewayInfo,omitempty" xml:"gatewayInfo,omitempty"`
-	// The ID of the resource.
+	// The resource ID.
 	//
 	// example:
 	//
 	// 2351944
 	ResourceId *string `json:"resourceId,omitempty" xml:"resourceId,omitempty"`
-	// The type of the resource.
+	// The resource type.
 	//
 	// example:
 	//

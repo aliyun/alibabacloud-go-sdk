@@ -20,15 +20,15 @@ type iGetAiModelSourceModelResponseBody interface {
 }
 
 type GetAiModelSourceModelResponseBody struct {
-	// The response status code. The value is Ok for successful requests and a specific business error code for failed requests.
+	// The response status code. Ok indicates success, and a specific business error code indicates failure.
 	//
 	// example:
 	//
 	// Ok
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// The business result returned by the model source operation.
+	// The business result returned for the AI model in the model source.
 	Data *GetAiModelSourceModelResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
-	// The response message that indicates the result of the request.
+	// The response message that describes the result of the request.
 	//
 	// example:
 	//
@@ -96,9 +96,15 @@ func (s *GetAiModelSourceModelResponseBody) Validate() error {
 }
 
 type GetAiModelSourceModelResponseBodyData struct {
-	// The protocols and invocation paths supported by the model.
+	// The protocols and call paths supported by the model.
 	AvailablePaths []*GetAiModelSourceModelResponseBodyDataAvailablePaths `json:"availablePaths,omitempty" xml:"availablePaths,omitempty" type:"Repeated"`
-	// The credit pricing configuration of the model.
+	// The full name used to call the model, in the format of valid call name prefix of the model source/model name. If the model source uses the default prefix, the prefix is the provider identifier.
+	//
+	// example:
+	//
+	// qwen-prod/qwen-plus
+	CallName *string `json:"callName,omitempty" xml:"callName,omitempty"`
+	// The credit pricing configuration for the model.
 	Credit *GetAiModelSourceModelResponseBodyDataCredit `json:"credit,omitempty" xml:"credit,omitempty" type:"Struct"`
 	// The set of capabilities declared by the model. The key is the capability name, and the value indicates whether the capability is supported.
 	//
@@ -112,9 +118,9 @@ type GetAiModelSourceModelResponseBodyData struct {
 	//
 	// gw-d00000000000000000000
 	GatewayId *string `json:"gatewayId,omitempty" xml:"gatewayId,omitempty"`
-	// The token limits and input and output modality information of the model.
+	// The token limits and the input and output modality information of the model.
 	Meta *GetAiModelSourceModelResponseBodyDataMeta `json:"meta,omitempty" xml:"meta,omitempty" type:"Struct"`
-	// The model identifier. Use the source model card ID for standard models and the vm- identifier for logical model entries.
+	// The model identifier. For standard models, use the source model card ID. For logical model entries, use the vm- identifier.
 	//
 	// example:
 	//
@@ -132,7 +138,7 @@ type GetAiModelSourceModelResponseBodyData struct {
 	//
 	// qwen
 	ModelProvider *string `json:"modelProvider,omitempty" xml:"modelProvider,omitempty"`
-	// The model source ID. Use the modelSourceId returned by the CreateAiModelSource operation.
+	// The model source ID, which is the modelSourceId returned by CreateAiModelSource.
 	//
 	// example:
 	//
@@ -144,7 +150,7 @@ type GetAiModelSourceModelResponseBodyData struct {
 	//
 	// Model Studio model source
 	ModelSourceName *string `json:"modelSourceName,omitempty" xml:"modelSourceName,omitempty"`
-	// The current version of the associated model source.
+	// The current version of the model source to which the model belongs.
 	//
 	// example:
 	//
@@ -156,25 +162,25 @@ type GetAiModelSourceModelResponseBodyData struct {
 	//
 	// Ready
 	PricingStatus *string `json:"pricingStatus,omitempty" xml:"pricingStatus,omitempty"`
-	// The ID of the AI service bound to the model source.
+	// The ID of the actual AI service bound to the model source.
 	//
 	// example:
 	//
 	// svc-d00000000000000000000
 	ServiceId *string `json:"serviceId,omitempty" xml:"serviceId,omitempty"`
-	// The source of the model asset. A value of user indicates a user-defined model, and a value of builtin indicates a system built-in model.
+	// The source of the model asset. A value of user indicates a user-defined model, and builtin indicates a system built-in model.
 	//
 	// example:
 	//
 	// user
 	Source *string `json:"source,omitempty" xml:"source,omitempty"`
-	// The time of the last business update. The time is in RFC 3339 format and in the UTC time zone.
+	// The time of the last business update, in RFC 3339 format and UTC time zone.
 	//
 	// example:
 	//
 	// 2026-11-12T00:00:00Z
 	UpdateTime *string `json:"updateTime,omitempty" xml:"updateTime,omitempty"`
-	// The current version of the object. This version is used for conditional validation during updates or deletions.
+	// The current version of the object, which is used for conditional validation during updates or deletions.
 	//
 	// example:
 	//
@@ -192,6 +198,10 @@ func (s GetAiModelSourceModelResponseBodyData) GoString() string {
 
 func (s *GetAiModelSourceModelResponseBodyData) GetAvailablePaths() []*GetAiModelSourceModelResponseBodyDataAvailablePaths {
 	return s.AvailablePaths
+}
+
+func (s *GetAiModelSourceModelResponseBodyData) GetCallName() *string {
+	return s.CallName
 }
 
 func (s *GetAiModelSourceModelResponseBodyData) GetCredit() *GetAiModelSourceModelResponseBodyDataCredit {
@@ -256,6 +266,11 @@ func (s *GetAiModelSourceModelResponseBodyData) GetVersion() *int64 {
 
 func (s *GetAiModelSourceModelResponseBodyData) SetAvailablePaths(v []*GetAiModelSourceModelResponseBodyDataAvailablePaths) *GetAiModelSourceModelResponseBodyData {
 	s.AvailablePaths = v
+	return s
+}
+
+func (s *GetAiModelSourceModelResponseBodyData) SetCallName(v string) *GetAiModelSourceModelResponseBodyData {
+	s.CallName = &v
 	return s
 }
 
@@ -358,13 +373,13 @@ func (s *GetAiModelSourceModelResponseBodyData) Validate() error {
 }
 
 type GetAiModelSourceModelResponseBodyDataAvailablePaths struct {
-	// The invocation path of the model.
+	// The call path of the model.
 	//
 	// example:
 	//
 	// /v1/chat/completions
 	Path *string `json:"path,omitempty" xml:"path,omitempty"`
-	// The protocol type used by the invocation path.
+	// The protocol type used for the call path.
 	//
 	// example:
 	//
@@ -403,7 +418,7 @@ func (s *GetAiModelSourceModelResponseBodyDataAvailablePaths) Validate() error {
 }
 
 type GetAiModelSourceModelResponseBodyDataCredit struct {
-	// The number of credits per million input tokens that hit the cache. The value must be a non-negative number. A value of 0 indicates that cached input is free of charge.
+	// The number of credits per million cache-hit input tokens. The value must be a non-negative number. A value of 0 indicates that the cached input is free of charge.
 	//
 	// example:
 	//
@@ -421,7 +436,7 @@ type GetAiModelSourceModelResponseBodyDataCredit struct {
 	//
 	// 2
 	OutputCost *float32 `json:"outputCost,omitempty" xml:"outputCost,omitempty"`
-	// The pricing method. Valid values: fixed: fixed credit pricing.
+	// The pricing method. Valid values: fixed: Fixed credit pricing.
 	//
 	// example:
 	//

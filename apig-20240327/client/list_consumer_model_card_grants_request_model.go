@@ -22,7 +22,7 @@ type iListConsumerModelCardGrantsRequest interface {
 }
 
 type ListConsumerModelCardGrantsRequest struct {
-	// Filters results by model card ID.
+	// Filters by model card ID for reverse lookup.
 	//
 	// example:
 	//
@@ -40,13 +40,13 @@ type ListConsumerModelCardGrantsRequest struct {
 	//
 	// 20
 	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	// Filters results by principal ID. This parameter must be specified together with principalType.
+	// Filters by principal ID. This parameter must be paired with principalType.
 	//
 	// example:
 	//
 	// cs-d00000000000000000000
 	PrincipalId *string `json:"principalId,omitempty" xml:"principalId,omitempty"`
-	// Filters results by principal type. Valid values: Consumer and ConsumerGroup. This parameter must be specified together with principalId.
+	// Filters by principal type. Valid values: Consumer and ConsumerGroup. This parameter must be paired with principalId.
 	//
 	// example:
 	//

@@ -20,13 +20,13 @@ type iBatchDeployHttpApiRoutesResponseBody interface {
 }
 
 type BatchDeployHttpApiRoutesResponseBody struct {
-	// The response code of the API call. For the acceptance or publishing results of each route, see data.results.
+	// The response code of the API call. For the acceptance or publish result of each route, see data.results.
 	//
 	// example:
 	//
 	// Ok
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// The per-route results of the batch publishing operation. Synchronous publishing also returns the numbers of successful and failed routes, whereas asynchronous publishing returns only the per-route acceptance results.
+	// The route-level results of the batch publish. A synchronous publish also returns the number of successful and failed routes. An asynchronous publish returns only the route-level acceptance results.
 	Data *BatchDeployHttpApiRoutesResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
 	// The response message of the API call. If a route fails or is rejected, see the errorMessage of the corresponding route for the cause.
 	//
@@ -34,7 +34,7 @@ type BatchDeployHttpApiRoutesResponseBody struct {
 	//
 	// success
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// The request ID of the API call. You can use the ID to locate the request.
+	// The request ID of the API call. You can invoke this ID to locate the active request.
 	//
 	// example:
 	//
@@ -96,19 +96,19 @@ func (s *BatchDeployHttpApiRoutesResponseBody) Validate() error {
 }
 
 type BatchDeployHttpApiRoutesResponseBodyData struct {
-	// The number of routes that failed to be published in the batch. This parameter is returned only for synchronous publishing and can be 0.
+	// The number of routes that fail to be published in the batch. This parameter is returned only for a synchronous publish and can be 0.
 	//
 	// example:
 	//
 	// 0
 	FailedCount *int32 `json:"failedCount,omitempty" xml:"failedCount,omitempty"`
-	// A result map with route IDs as keys. If some routes in the same batch fail, the routes that have been successfully published remain valid.
+	// A map of results with route IDs as keys. If other routes in the same batch fail, the successfully published routes remain valid.
 	//
 	// example:
 	//
 	// {"hr-example001":{"routeId":"hr-example001","status":"Succeeded"},"hr-example002":{"routeId":"hr-example002","status":"Succeeded"}}
 	Results map[string]*DataResultsValue `json:"results,omitempty" xml:"results,omitempty"`
-	// The number of routes successfully published in the batch. This parameter is returned only for synchronous publishing and can be 0.
+	// The number of routes that are successfully published in the batch. This parameter is returned only for a synchronous publish and can be 0.
 	//
 	// example:
 	//

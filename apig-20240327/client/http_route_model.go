@@ -622,7 +622,7 @@ type HttpRouteMcpServerInfo struct {
 	//
 	// example:
 	//
-	// {\\"config\\":{}}
+	// {\"config\":{}}
 	McpServerConfig *string `json:"mcpServerConfig,omitempty" xml:"mcpServerConfig,omitempty"`
 }
 

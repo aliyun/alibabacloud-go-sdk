@@ -336,7 +336,7 @@ type DeployHttpApiRequestRestApiConfigEnvironmentServiceConfigs struct {
 	//
 	// example:
 	//
-	// {\\"change_order_revision\\":\\"3.657.33_fc-hz-yunqi.1662568293908382_faas-eerouter\\"}
+	// {\"change_order_revision\":\"3.657.33_fc-hz-yunqi.1662568293908382_faas-eerouter\"}
 	Match *HttpApiBackendMatchConditions `json:"match,omitempty" xml:"match,omitempty"`
 	// The service port. Do not specify this parameter for dynamic ports.
 	//

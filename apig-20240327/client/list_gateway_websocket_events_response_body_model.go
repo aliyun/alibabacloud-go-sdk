@@ -26,7 +26,7 @@ type ListGatewayWebsocketEventsResponseBody struct {
 	//
 	// Ok
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// The query results.
+	// The query result.
 	//
 	// example:
 	//
@@ -38,7 +38,7 @@ type ListGatewayWebsocketEventsResponseBody struct {
 	//
 	// The specified gateway does not exist.
 	Message *string `json:"message,omitempty" xml:"message,omitempty"`
-	// The ID of the request.
+	// The request ID.
 	//
 	// example:
 	//
@@ -106,7 +106,7 @@ type ListGatewayWebsocketEventsResponseBodyData struct {
 	//
 	// observed
 	Basis *string `json:"basis,omitempty" xml:"basis,omitempty"`
-	// Indicates whether there is a next page.
+	// Indicates whether more pages are available.
 	//
 	// example:
 	//
@@ -124,7 +124,7 @@ type ListGatewayWebsocketEventsResponseBodyData struct {
 	//
 	// 50
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
-	// The pagination token for the next page.
+	// The next pagination token.
 	//
 	// example:
 	//

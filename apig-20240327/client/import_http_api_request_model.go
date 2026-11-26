@@ -42,13 +42,13 @@ type iImportHttpApiRequest interface {
 type ImportHttpApiRequest struct {
 	// The API deployment configurations.
 	DeployConfigs []*HttpApiDeployConfig `json:"deployConfigs,omitempty" xml:"deployConfigs,omitempty" type:"Repeated"`
-	// The description of the imported API. If you do not specify this parameter, the description is extracted from the API definition. The maximum length is 255 bytes.
+	// The description of the API to be imported. If you do not specify this parameter, the description is extracted from the API definition file. The maximum length is 255 bytes.
 	//
 	// example:
 	//
 	// Test API
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
-	// Specifies whether to perform a dry run. If you set this parameter to true, only a check is performed and no import operation is executed.
+	// Specifies whether to perform a dry run. If this parameter is set to true, only the check is performed and no import operation is executed.
 	//
 	// example:
 	//
@@ -66,7 +66,7 @@ type ImportHttpApiRequest struct {
 	//
 	// mcp-route-xxxxxxxx
 	McpRouteId *string `json:"mcpRouteId,omitempty" xml:"mcpRouteId,omitempty"`
-	// The name of the imported API. If you do not specify this parameter, the name is extracted from the API definition file. If an API with the same name and versioning configuration already exists, the existing API definition is updated based on the strategy parameter during this import.
+	// The name of the API to be imported. If you do not specify this parameter, the name is extracted from the API definition file. If an API with the same name and version configuration already exists, the existing API definition is updated based on the strategy parameter.
 	//
 	// example:
 	//
@@ -78,17 +78,17 @@ type ImportHttpApiRequest struct {
 	//
 	// rg-aek23nsa353vmra
 	ResourceGroupId *string `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
-	// The Base64-encoded API definition. Supports OAS 2.0 and OAS 3.0 specifications in YAML and JSON formats. This parameter has a higher priority than the specFileUrl parameter. If the file size exceeds 10 MB, use the specFileUrl parameter instead.
+	// The Base64-encoded API definition. Supports OAS 2.0 and OAS 3.0 specifications in YAML or JSON format. This parameter takes precedence over the specFileUrl parameter. If the file size exceeds 10 MB, use the specFileUrl parameter.
 	//
 	// example:
 	//
 	// b3BlbmFwaTogMy4wLjAKaW5mbzoKICAgIHRpdGxlOiBkZW1vCiAgICBkZXNjcmlwdGlvbjogdGhpc2lzZGVtbwogICAgdmVyc2lvbjogIiIKcGF0aHM6CiAgICAvdXNlci97dXNlcklkfToKICAgICAgICBnZXQ6CiAgICAgICAgICAgIHN1bW1hcnk6IOiOt+WPlueUqOaIt+S/oeaBrwogICAgICAgICAgICBkZXNjcmlwdGlvbjog6I635Y+W55So5oi35L+h5oGvCiAgICAgICAgICAgIG9wZXJhdGlvbklkOiBHZXRVc2VySW5mbwogICAgICAgICAgICByZXNwb25zZXM6CiAgICAgICAgICAgICAgICAiMjAwIjoKICAgICAgICAgICAgICAgICAgICBkZXNjcmlwdGlvbjog5oiQ5YqfCiAgICAgICAgICAgICAgICAgICAgY29udGVudDoKICAgICAgICAgICAgICAgICAgICAgICAgYXBwbGljYXRpb24vanNvbjtjaGFyc2V0PXV0Zi04OgogICAgICAgICAgICAgICAgICAgICAgICAgICAgc2NoZW1hOiBudWxsCnNlcnZlcnM6CiAgICAtIHVybDogaHR0cDovL2FwaS5leGFtcGxlLmNvbS92MQo=
 	SpecContentBase64 *string `json:"specContentBase64,omitempty" xml:"specContentBase64,omitempty"`
-	// The download URL of the API definition file. The file must be downloadable over the Internet or through the internal network of OSS in the same region. The URL must have download permissions. For OSS file links that are not publicly readable, see References [Download objects by using presigned URLs](https://help.aliyun.com/document_detail/39607.html) and provide a URL with download permissions. Currently, only API definition files stored in OSS are supported.
+	// The download URL of the API definition file. The file must be downloadable over the Internet or by using an internal network download URL of OSS in the same region. The URL must have download permissions. For OSS file links that are not publicly readable, refer to References [Download objects by using presigned URLs](https://help.aliyun.com/document_detail/39607.html) and provide a URL with download permissions. Currently, only API definition files stored in OSS are supported.
 	SpecFileUrl *string `json:"specFileUrl,omitempty" xml:"specFileUrl,omitempty"`
 	// The OSS configuration.
 	SpecOssConfig *ImportHttpApiRequestSpecOssConfig `json:"specOssConfig,omitempty" xml:"specOssConfig,omitempty" type:"Struct"`
-	// The update policy to use when the imported API name and version management are the same as those of an existing API. Valid values:
+	// The update policy to specify when the imported API name and version management are the same as those of an existing API. Valid values:
 	//
 	// - SpecOnly: The imported file completely overwrites the existing API.
 	//
@@ -102,13 +102,13 @@ type ImportHttpApiRequest struct {
 	//
 	// ExistFirst
 	Strategy *string `json:"strategy,omitempty" xml:"strategy,omitempty"`
-	// If you specify this parameter, this import updates the specified API instead of importing a new API or searching for an existing API based on the API name and version management configuration. The target API must be of the REST type.
+	// The ID of the HTTP API to be overwritten by the import. If you specify this parameter, the import operation updates the specified API instead of importing a new API or searching for an existing API based on the API name and version management configuration. The name and versionConfig parameters become invalid. The target API must be of the REST type.
 	//
 	// example:
 	//
 	// api-xxxx
 	TargetHttpApiId *string `json:"targetHttpApiId,omitempty" xml:"targetHttpApiId,omitempty"`
-	// The API versioning configuration. If versioning is enabled and an API with the same name and version number already exists, this import is treated as an update. If versioning is disabled and an API with the same name already exists, this import is also treated as an update.
+	// The API versioning configuration. If versioning is enabled and an API with the same name and version number already exists, the import operation is treated as an update. If versioning is disabled and an API with the same name already exists, the import operation is also treated as an update.
 	VersionConfig *HttpApiVersionConfig `json:"versionConfig,omitempty" xml:"versionConfig,omitempty"`
 	// Specifies whether to import gateway extension information.
 	//

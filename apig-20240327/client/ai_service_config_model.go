@@ -815,7 +815,7 @@ type AiServiceConfigVertexServiceConfig struct {
 	//
 	// example:
 	//
-	// {\\"type\\":\\"service_account\\",\\"project_id\\":\\"my-project\\",\\"private_key\\":\\"-----BEGIN PRIVATE KEY-----...\\",\\"client_email\\":\\"xxx@xxx.iam.gserviceaccount.com\\",\\"token_uri\\":\\"https://oauth2.googleapis.com/token\\"}
+	// {\"type\":\"service_account\",\"project_id\":\"my-project\",\"private_key\":\"-----BEGIN PRIVATE KEY-----...\",\"client_email\":\"xxx@xxx.iam.gserviceaccount.com\",\"token_uri\":\"https://oauth2.googleapis.com/token\"}
 	VertexAuthKey *string `json:"vertexAuthKey,omitempty" xml:"vertexAuthKey,omitempty"`
 	// The authentication service name used by Vertex AI.
 	//

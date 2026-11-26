@@ -32,7 +32,7 @@ type GetModelTokenRateLimitResponseBody struct {
 	//
 	// {"gatewayId":"gw-example01","modelId":"msc-example01","revision":1,"appliedRevision":1,"globalTpm":1800,"consumers":[{"consumerId":"cs-example01","tpm":300}],"globalRuleId":"model-tpm/gw-example01/msc-example01/global","consumerRuleIds":{"cs-example01":"model-tpm/gw-example01/msc-example01/consumer/cs-example01"}}
 	Data *GetModelTokenRateLimitResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
-	// The cause of the error. This parameter is omitted if the request is successful.
+	// The cause of the error. This field can be omitted if the request is successful.
 	//
 	// example:
 	//
@@ -100,7 +100,7 @@ func (s *GetModelTokenRateLimitResponseBody) Validate() error {
 }
 
 type GetModelTokenRateLimitResponseBodyData struct {
-	// The most recent configuration revision successfully delivered to the control plane.
+	// The version of the configuration that was last successfully delivered to the control plane.
 	//
 	// example:
 	//
@@ -124,7 +124,7 @@ type GetModelTokenRateLimitResponseBodyData struct {
 	//
 	// gw-example01
 	GatewayId *string `json:"gatewayId,omitempty" xml:"gatewayId,omitempty"`
-	// The rule ID for the global model quota, which can be matched with the rule hits in the gateway throttling logs. This parameter is returned only when the global quota is configured.
+	// The rule ID for the global model quota, which can be matched with the rule hits in the gateway throttling logs. This field is returned only when a global quota is configured.
 	//
 	// example:
 	//
@@ -136,13 +136,13 @@ type GetModelTokenRateLimitResponseBodyData struct {
 	//
 	// 1800
 	GlobalTpm *int64 `json:"globalTpm,omitempty" xml:"globalTpm,omitempty"`
-	// The actual model card ID (prefixed with msc-) or the logical model ID (prefixed with vm-).
+	// The physical model card ID that starts with msc- or the logical model ID that starts with vm-.
 	//
 	// example:
 	//
 	// msc-example01
 	ModelId *string `json:"modelId,omitempty" xml:"modelId,omitempty"`
-	// The saved revision of the model throttling configuration. Pass this value as expectedRevision in subsequent modification requests.
+	// The saved version of the model throttling configuration. Pass this value as expectedRevision in subsequent modification requests.
 	//
 	// example:
 	//
@@ -250,7 +250,7 @@ type GetModelTokenRateLimitResponseBodyDataConsumers struct {
 	//
 	// cs-example01
 	ConsumerId *string `json:"consumerId,omitempty" xml:"consumerId,omitempty"`
-	// The maximum number of tokens per minute (TPM) for this consumer using this model.
+	// The maximum number of tokens per minute (TPM) allowed for this consumer to use this model.
 	//
 	// example:
 	//

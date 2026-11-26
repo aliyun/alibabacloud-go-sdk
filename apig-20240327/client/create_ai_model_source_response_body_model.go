@@ -20,13 +20,13 @@ type iCreateAiModelSourceResponseBody interface {
 }
 
 type CreateAiModelSourceResponseBody struct {
-	// The response status code. Ok is returned for success, and a specific business error code is returned for failure.
+	// The response status code. Ok is returned for a successful request, and a specific business error code is returned for a failed request.
 	//
 	// example:
 	//
 	// Ok
 	Code *string `json:"code,omitempty" xml:"code,omitempty"`
-	// The business result returned for the model source operation.
+	// The business result returned by the model source operation.
 	Data *CreateAiModelSourceResponseBodyData `json:"data,omitempty" xml:"data,omitempty" type:"Struct"`
 	// The response message that describes the request processing result.
 	//
@@ -96,6 +96,12 @@ func (s *CreateAiModelSourceResponseBody) Validate() error {
 }
 
 type CreateAiModelSourceResponseBodyData struct {
+	// The valid invoke name prefix of the model source. You can specify this prefix during model creation. By default, the provider identity is used. The prefix cannot be modified after creation.
+	//
+	// example:
+	//
+	// qwen-prod
+	CallNamePrefix *string `json:"callNamePrefix,omitempty" xml:"callNamePrefix,omitempty"`
 	// The display name of the model source or model provider.
 	//
 	// example:
@@ -126,7 +132,7 @@ type CreateAiModelSourceResponseBodyData struct {
 	//
 	// qwen
 	Provider *string `json:"provider,omitempty" xml:"provider,omitempty"`
-	// The ID of the AI service bound to the model source.
+	// The ID of the actual AI service bound to the model source.
 	//
 	// example:
 	//
@@ -138,7 +144,7 @@ type CreateAiModelSourceResponseBodyData struct {
 	//
 	// 2026-11-12T00:00:00Z
 	UpdateTime *string `json:"updateTime,omitempty" xml:"updateTime,omitempty"`
-	// The current version of the object, used for conditional checks during update or delete operations.
+	// The current version of the object, which is used for conditional checks during updates or deletions.
 	//
 	// example:
 	//
@@ -152,6 +158,10 @@ func (s CreateAiModelSourceResponseBodyData) String() string {
 
 func (s CreateAiModelSourceResponseBodyData) GoString() string {
 	return s.String()
+}
+
+func (s *CreateAiModelSourceResponseBodyData) GetCallNamePrefix() *string {
+	return s.CallNamePrefix
 }
 
 func (s *CreateAiModelSourceResponseBodyData) GetDisplayName() *string {
@@ -184,6 +194,11 @@ func (s *CreateAiModelSourceResponseBodyData) GetUpdateTime() *string {
 
 func (s *CreateAiModelSourceResponseBodyData) GetVersion() *int64 {
 	return s.Version
+}
+
+func (s *CreateAiModelSourceResponseBodyData) SetCallNamePrefix(v string) *CreateAiModelSourceResponseBodyData {
+	s.CallNamePrefix = &v
+	return s
 }
 
 func (s *CreateAiModelSourceResponseBodyData) SetDisplayName(v string) *CreateAiModelSourceResponseBodyData {

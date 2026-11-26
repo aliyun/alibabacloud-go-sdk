@@ -294,7 +294,7 @@ func (client *Client) AddGatewaySecurityGroupRule(gatewayId *string, request *Ad
 
 // Summary:
 //
-// Grants model card licenses to a consumer.
+// Grants model card licenses to consumers.
 //
 // @param request - AuthorizeConsumerModelCardGrantsRequest
 //
@@ -353,7 +353,7 @@ func (client *Client) AuthorizeConsumerModelCardGrantsWithOptions(httpApiId *str
 
 // Summary:
 //
-// Grants model card licenses to a consumer.
+// Grants model card licenses to consumers.
 //
 // @param request - AuthorizeConsumerModelCardGrantsRequest
 //
@@ -504,7 +504,77 @@ func (client *Client) BatchDeleteConsumerAuthorizationRule(request *BatchDeleteC
 
 // Summary:
 //
-// Publishes specified routes or all visible routes under the same HTTP API in batches.
+// 批量删除HttpApi的路由
+//
+// @param request - BatchDeleteHttpApiRoutesRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return BatchDeleteHttpApiRoutesResponse
+func (client *Client) BatchDeleteHttpApiRoutesWithOptions(httpApiId *string, request *BatchDeleteHttpApiRoutesRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *BatchDeleteHttpApiRoutesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.DeleteAll) {
+		body["deleteAll"] = request.DeleteAll
+	}
+
+	if !dara.IsNil(request.RouteIds) {
+		body["routeIds"] = request.RouteIds
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("BatchDeleteHttpApiRoutes"),
+		Version:     dara.String("2024-03-27"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/v1/http-apis/" + dara.PercentEncode(dara.StringValue(httpApiId)) + "/routes/batch-delete"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &BatchDeleteHttpApiRoutesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 批量删除HttpApi的路由
+//
+// @param request - BatchDeleteHttpApiRoutesRequest
+//
+// @return BatchDeleteHttpApiRoutesResponse
+func (client *Client) BatchDeleteHttpApiRoutes(httpApiId *string, request *BatchDeleteHttpApiRoutesRequest) (_result *BatchDeleteHttpApiRoutesResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &BatchDeleteHttpApiRoutesResponse{}
+	_body, _err := client.BatchDeleteHttpApiRoutesWithOptions(httpApiId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Publishes specified routes or all visible routes under the same HTTP API in a batch.
 //
 // Description:
 //
@@ -563,7 +633,7 @@ func (client *Client) BatchDeployHttpApiRoutesWithOptions(httpApiId *string, req
 
 // Summary:
 //
-// Publishes specified routes or all visible routes under the same HTTP API in batches.
+// Publishes specified routes or all visible routes under the same HTTP API in a batch.
 //
 // Description:
 //
@@ -827,6 +897,80 @@ func (client *Client) BatchRemoveConsumerGroupConsumers(consumerGroupId *string,
 	headers := make(map[string]*string)
 	_result = &BatchRemoveConsumerGroupConsumersResponse{}
 	_body, _err := client.BatchRemoveConsumerGroupConsumersWithOptions(consumerGroupId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// 批量下线HttpApi的路由
+//
+// @param request - BatchUndeployHttpApiRoutesRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return BatchUndeployHttpApiRoutesResponse
+func (client *Client) BatchUndeployHttpApiRoutesWithOptions(httpApiId *string, request *BatchUndeployHttpApiRoutesRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *BatchUndeployHttpApiRoutesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Async) {
+		body["async"] = request.Async
+	}
+
+	if !dara.IsNil(request.RouteIds) {
+		body["routeIds"] = request.RouteIds
+	}
+
+	if !dara.IsNil(request.UndeployAll) {
+		body["undeployAll"] = request.UndeployAll
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("BatchUndeployHttpApiRoutes"),
+		Version:     dara.String("2024-03-27"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/v1/http-apis/" + dara.PercentEncode(dara.StringValue(httpApiId)) + "/routes/batch-undeploy"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &BatchUndeployHttpApiRoutesResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 批量下线HttpApi的路由
+//
+// @param request - BatchUndeployHttpApiRoutesRequest
+//
+// @return BatchUndeployHttpApiRoutesResponse
+func (client *Client) BatchUndeployHttpApiRoutes(httpApiId *string, request *BatchUndeployHttpApiRoutesRequest) (_result *BatchUndeployHttpApiRoutesResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &BatchUndeployHttpApiRoutesResponse{}
+	_body, _err := client.BatchUndeployHttpApiRoutesWithOptions(httpApiId, request, headers, runtime)
 	if _err != nil {
 		return _result, _err
 	}
@@ -1256,6 +1400,10 @@ func (client *Client) CreateAiModelSourceWithOptions(request *CreateAiModelSourc
 	}
 
 	body := map[string]interface{}{}
+	if !dara.IsNil(request.CallNamePrefix) {
+		body["callNamePrefix"] = request.CallNamePrefix
+	}
+
 	if !dara.IsNil(request.DisplayName) {
 		body["displayName"] = request.DisplayName
 	}
@@ -1318,7 +1466,7 @@ func (client *Client) CreateAiModelSource(request *CreateAiModelSourceRequest) (
 
 // Summary:
 //
-// Creates an in-source AI model.
+// Creates an AI model in a source.
 //
 // @param request - CreateAiModelSourceModelRequest
 //
@@ -1391,7 +1539,7 @@ func (client *Client) CreateAiModelSourceModelWithOptions(request *CreateAiModel
 
 // Summary:
 //
-// Creates an in-source AI model.
+// Creates an AI model in a source.
 //
 // @param request - CreateAiModelSourceModelRequest
 //
@@ -3184,7 +3332,7 @@ func (client *Client) CreateMigrationTask(request *CreateMigrationTaskRequest) (
 
 // Summary:
 //
-// Creates a model creation API.
+// Creates an API for model creation.
 //
 // @param request - CreateModelApiRequest
 //
@@ -3281,7 +3429,7 @@ func (client *Client) CreateModelApiWithOptions(request *CreateModelApiRequest, 
 
 // Summary:
 //
-// Creates a model creation API.
+// Creates an API for model creation.
 //
 // @param request - CreateModelApiRequest
 //
@@ -5614,7 +5762,7 @@ func (client *Client) DeleteMigrationTask(taskId *string, request *DeleteMigrati
 //
 // Description:
 //
-// Automatically stops the service and cleans up the resources owned by the API when a published new-version model API is deleted. A successful response indicates that the request is accepted or is an idempotent replay of a completed deletion, but does not indicate that all background steps are complete. Monitor the progress by checking the deleteStatus parameter of GetModelApi. Only a NotFound.ModelApi error explicitly indicates that the deletion is fully complete. The object is retained during deletion or upon failure. Shared model sources, model groups, models, services, consumers, and keys are not deleted.
+// When you delete a published new-version model API, the system automatically stops the service and cleans up the dedicated resources of the API. A successful response indicates that the request is accepted or is an idempotent replay of a completed deletion, but it does not indicate that all background steps are complete. Monitor the progress by checking the deleteStatus parameter of GetModelApi. Only a NotFound.ModelApi error explicitly indicates that the deletion is fully complete. The object is retained if the deletion is in progress or fails. Shared model sources, model groups, models, services, consumers, and keys are not deleted.
 //
 // @param request - DeleteModelApiRequest
 //
@@ -5669,7 +5817,7 @@ func (client *Client) DeleteModelApiWithOptions(httpApiId *string, request *Dele
 //
 // Description:
 //
-// Automatically stops the service and cleans up the resources owned by the API when a published new-version model API is deleted. A successful response indicates that the request is accepted or is an idempotent replay of a completed deletion, but does not indicate that all background steps are complete. Monitor the progress by checking the deleteStatus parameter of GetModelApi. Only a NotFound.ModelApi error explicitly indicates that the deletion is fully complete. The object is retained during deletion or upon failure. Shared model sources, model groups, models, services, consumers, and keys are not deleted.
+// When you delete a published new-version model API, the system automatically stops the service and cleans up the dedicated resources of the API. A successful response indicates that the request is accepted or is an idempotent replay of a completed deletion, but it does not indicate that all background steps are complete. Monitor the progress by checking the deleteStatus parameter of GetModelApi. Only a NotFound.ModelApi error explicitly indicates that the deletion is fully complete. The object is retained if the deletion is in progress or fails. Shared model sources, model groups, models, services, consumers, and keys are not deleted.
 //
 // @param request - DeleteModelApiRequest
 //
@@ -6692,6 +6840,76 @@ func (client *Client) DetachAndDeletePolicy(policyId *string, request *DetachAnd
 
 // Summary:
 //
+// 检测HttpApi间的路由冲突
+//
+// @param request - DetectHttpApiConflictsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DetectHttpApiConflictsResponse
+func (client *Client) DetectHttpApiConflictsWithOptions(httpApiId *string, request *DetectHttpApiConflictsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DetectHttpApiConflictsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.RestApiConfig) {
+		body["restApiConfig"] = request.RestApiConfig
+	}
+
+	if !dara.IsNil(request.RouteId) {
+		body["routeId"] = request.RouteId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DetectHttpApiConflicts"),
+		Version:     dara.String("2024-03-27"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/v1/http-apis/" + dara.PercentEncode(dara.StringValue(httpApiId)) + "/detect-conflicts"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DetectHttpApiConflictsResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 检测HttpApi间的路由冲突
+//
+// @param request - DetectHttpApiConflictsRequest
+//
+// @return DetectHttpApiConflictsResponse
+func (client *Client) DetectHttpApiConflicts(httpApiId *string, request *DetectHttpApiConflictsRequest) (_result *DetectHttpApiConflictsResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	headers := make(map[string]*string)
+	_result = &DetectHttpApiConflictsResponse{}
+	_body, _err := client.DetectHttpApiConflictsWithOptions(httpApiId, request, headers, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Exports a specified HTTP API.
 //
 // @param request - ExportHttpApiRequest
@@ -7006,7 +7224,7 @@ func (client *Client) GetAiModelSourceEditImpact(modelSourceId *string, request 
 
 // Summary:
 //
-// Queries AI models in a model source.
+// Queries an AI model in a model source.
 //
 // @param request - GetAiModelSourceModelRequest
 //
@@ -7047,7 +7265,7 @@ func (client *Client) GetAiModelSourceModelWithOptions(modelCardId *string, requ
 
 // Summary:
 //
-// Queries AI models in a model source.
+// Queries an AI model in a model source.
 //
 // @param request - GetAiModelSourceModelRequest
 //
@@ -7444,7 +7662,7 @@ func (client *Client) GetConsumerAccessOverview(consumerId *string, request *Get
 //
 // Summary:
 //
-// Retrieves consumer authorization rules.
+// Retrieves a consumer authorization rule.
 //
 // @param headers - map
 //
@@ -7479,7 +7697,7 @@ func (client *Client) GetConsumerAuthorizationRuleWithOptions(consumerAuthorizat
 //
 // Summary:
 //
-// Retrieves consumer authorization rules.
+// Retrieves a consumer authorization rule.
 //
 // @return GetConsumerAuthorizationRuleResponse
 // Deprecated
@@ -8498,7 +8716,7 @@ func (client *Client) GetGatewayResourceQuotaUsage(gatewayId *string, request *G
 //
 // Description:
 //
-// Retrieves the current half-open cycle Redis summary for the configured metering policy of the current user\\"s dedicated Professional AI gateway. Only total instance counts are supported. Filters for time ranges, models, connections, or SLS destinations are not accepted. If data_present is false, it indicates that no cycle data is available, and the value is not padded with zeros.
+// Retrieves the current half-open cycle Redis summary of the configured metering policy for the dedicated Professional AI gateway of the current user. It only supports the total number of instances and does not accept filtering by time range, model, connection, or SLS destination. A value of false for data_present indicates that no cycle data is available, and it is not padded with zero values.
 //
 // @param request - GetGatewayWebsocketUsageRequest
 //
@@ -8543,7 +8761,7 @@ func (client *Client) GetGatewayWebsocketUsageWithOptions(gatewayId *string, req
 //
 // Description:
 //
-// Retrieves the current half-open cycle Redis summary for the configured metering policy of the current user\\"s dedicated Professional AI gateway. Only total instance counts are supported. Filters for time ranges, models, connections, or SLS destinations are not accepted. If data_present is false, it indicates that no cycle data is available, and the value is not padded with zeros.
+// Retrieves the current half-open cycle Redis summary of the configured metering policy for the dedicated Professional AI gateway of the current user. It only supports the total number of instances and does not accept filtering by time range, model, connection, or SLS destination. A value of false for data_present indicates that no cycle data is available, and it is not padded with zero values.
 //
 // @param request - GetGatewayWebsocketUsageRequest
 //
@@ -8682,7 +8900,7 @@ func (client *Client) GetHiMarketConsumerCredential(consumerId *string, request 
 
 // Summary:
 //
-// Retrieves the HTTP API information.
+// Retrieves HTTP API information.
 //
 // @param request - GetHttpApiRequest
 //
@@ -8729,7 +8947,7 @@ func (client *Client) GetHttpApiWithOptions(httpApiId *string, request *GetHttpA
 
 // Summary:
 //
-// Retrieves the HTTP API information.
+// Retrieves HTTP API information.
 //
 // @param request - GetHttpApiRequest
 //
@@ -8748,7 +8966,7 @@ func (client *Client) GetHttpApi(httpApiId *string, request *GetHttpApiRequest) 
 
 // Summary:
 //
-// Retrieves API operation information.
+// Retrieves the API operation information.
 //
 // @param headers - map
 //
@@ -8781,7 +8999,7 @@ func (client *Client) GetHttpApiOperationWithOptions(httpApiId *string, operatio
 
 // Summary:
 //
-// Retrieves API operation information.
+// Retrieves the API operation information.
 //
 // @return GetHttpApiOperationResponse
 func (client *Client) GetHttpApiOperation(httpApiId *string, operationId *string) (_result *GetHttpApiOperationResponse, _err error) {
@@ -8908,7 +9126,7 @@ func (client *Client) GetLogicalModel(logicalModelId *string, request *GetLogica
 
 // Summary:
 //
-// Queries the configuration delivery of a logical model.
+// Queries the logical model configuration delivery.
 //
 // @param request - GetLogicalModelDeploymentRequest
 //
@@ -8949,7 +9167,7 @@ func (client *Client) GetLogicalModelDeploymentWithOptions(operationId *string, 
 
 // Summary:
 //
-// Queries the configuration delivery of a logical model.
+// Queries the logical model configuration delivery.
 //
 // @param request - GetLogicalModelDeploymentRequest
 //
@@ -10919,7 +11137,7 @@ func (client *Client) ListAiModelSourceModels(request *ListAiModelSourceModelsRe
 
 // Summary:
 //
-// Queries a list of standalone AI model sources.
+// Queries a list of independent AI model sources.
 //
 // @param request - ListAiModelSourcesRequest
 //
@@ -10982,7 +11200,7 @@ func (client *Client) ListAiModelSourcesWithOptions(request *ListAiModelSourcesR
 
 // Summary:
 //
-// Queries a list of standalone AI model sources.
+// Queries a list of independent AI model sources.
 //
 // @param request - ListAiModelSourcesRequest
 //
@@ -11740,7 +11958,7 @@ func (client *Client) ListConsumerGroups(request *ListConsumerGroupsRequest) (_r
 
 // Summary:
 //
-// Queries the list of model card entitlements for consumers.
+// Queries the list of consumer model card entitlements.
 //
 // @param request - ListConsumerModelCardGrantsRequest
 //
@@ -11803,7 +12021,7 @@ func (client *Client) ListConsumerModelCardGrantsWithOptions(httpApiId *string, 
 
 // Summary:
 //
-// Queries the list of model card entitlements for consumers.
+// Queries the list of consumer model card entitlements.
 //
 // @param request - ListConsumerModelCardGrantsRequest
 //
@@ -12813,7 +13031,7 @@ func (client *Client) ListGatewayQuotaRules(gatewayId *string, request *ListGate
 
 // Summary:
 //
-// Queries the historical WebSocket events delivered by a dedicated Professional AI gateway to the Simple Log Service (SLS) of the current user. Supports a time range of up to 31 days, conditional filtering, and cursor-based pagination. The results do not represent the online connection status.
+// Queries the historical WebSocket events delivered by a dedicated Professional AI gateway to the Simple Log Service (SLS) of the current user. This operation supports a time range of up to 31 days, conditional filtering, and cursor-based pagination. The results do not represent the online connection status.
 //
 // Description:
 //
@@ -12896,7 +13114,7 @@ func (client *Client) ListGatewayWebsocketEventsWithOptions(gatewayId *string, r
 
 // Summary:
 //
-// Queries the historical WebSocket events delivered by a dedicated Professional AI gateway to the Simple Log Service (SLS) of the current user. Supports a time range of up to 31 days, conditional filtering, and cursor-based pagination. The results do not represent the online connection status.
+// Queries the historical WebSocket events delivered by a dedicated Professional AI gateway to the Simple Log Service (SLS) of the current user. This operation supports a time range of up to 31 days, conditional filtering, and cursor-based pagination. The results do not represent the online connection status.
 //
 // Description:
 //
@@ -13545,7 +13763,7 @@ func (client *Client) ListHttpApiRoutes(httpApiId *string, request *ListHttpApiR
 
 // Summary:
 //
-// Retrieves the list of HTTP APIs.
+// Retrieves a list of HTTP APIs.
 //
 // @param request - ListHttpApisRequest
 //
@@ -13656,7 +13874,7 @@ func (client *Client) ListHttpApisWithOptions(request *ListHttpApisRequest, head
 
 // Summary:
 //
-// Retrieves the list of HTTP APIs.
+// Retrieves a list of HTTP APIs.
 //
 // @param request - ListHttpApisRequest
 //
@@ -14121,7 +14339,7 @@ func (client *Client) ListMigrationTasks(request *ListMigrationTasksRequest) (_r
 
 // Summary:
 //
-// Queries the list of model APIs.
+// Queries model APIs.
 //
 // @param request - ListModelApisRequest
 //
@@ -14192,7 +14410,7 @@ func (client *Client) ListModelApisWithOptions(request *ListModelApisRequest, he
 
 // Summary:
 //
-// Queries the list of model APIs.
+// Queries model APIs.
 //
 // @param request - ListModelApisRequest
 //
@@ -14415,7 +14633,7 @@ func (client *Client) ListMseNacosSources(gatewayId *string, request *ListMseNac
 
 // Summary:
 //
-// Retrieves the list of plugin mounts.
+// Retrieves the plugin mount list.
 //
 // @param request - ListPluginAttachmentsRequest
 //
@@ -14494,7 +14712,7 @@ func (client *Client) ListPluginAttachmentsWithOptions(request *ListPluginAttach
 
 // Summary:
 //
-// Retrieves the list of plugin mounts.
+// Retrieves the plugin mount list.
 //
 // @param request - ListPluginAttachmentsRequest
 //
@@ -16681,7 +16899,7 @@ func (client *Client) PublishProduct(productId *string, request *PublishProductR
 
 // Summary:
 //
-// Queries consumer authorization rules.
+// Queries the list of consumer authorization rules.
 //
 // @param request - QueryConsumerAuthorizationRulesRequest
 //
@@ -16780,7 +16998,7 @@ func (client *Client) QueryConsumerAuthorizationRulesWithOptions(request *QueryC
 
 // Summary:
 //
-// Queries consumer authorization rules.
+// Queries the list of consumer authorization rules.
 //
 // @param request - QueryConsumerAuthorizationRulesRequest
 //
@@ -18185,7 +18403,7 @@ func (client *Client) UpdateAiModelSource(modelSourceId *string, request *Update
 
 // Summary:
 //
-// Updates an AI model in a source.
+// Updates an AI model in a model source.
 //
 // @param request - UpdateAiModelSourceModelRequest
 //
@@ -18252,7 +18470,7 @@ func (client *Client) UpdateAiModelSourceModelWithOptions(modelCardId *string, r
 
 // Summary:
 //
-// Updates an AI model in a source.
+// Updates an AI model in a model source.
 //
 // @param request - UpdateAiModelSourceModelRequest
 //
@@ -21067,6 +21285,10 @@ func (client *Client) UpdateServiceWithOptions(serviceId *string, request *Updat
 
 	if !dara.IsNil(request.AiServiceConfig) {
 		body["aiServiceConfig"] = request.AiServiceConfig
+	}
+
+	if !dara.IsNil(request.ApiKeyIndexToRemove) {
+		body["apiKeyIndexToRemove"] = request.ApiKeyIndexToRemove
 	}
 
 	if !dara.IsNil(request.ApiKeyReferencesToAdd) {

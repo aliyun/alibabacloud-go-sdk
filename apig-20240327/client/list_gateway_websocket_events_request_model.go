@@ -36,7 +36,7 @@ type ListGatewayWebsocketEventsRequest struct {
 	//
 	// connection-example
 	ConnectionId *string `json:"connectionId,omitempty" xml:"connectionId,omitempty"`
-	// The end time. The value is a UNIX timestamp in seconds since the UTC epoch. Example: 1793919600.
+	// The end time. The value is a UNIX timestamp in seconds (since the UTC epoch), such as 1793919600.
 	//
 	// This parameter is required.
 	//
@@ -56,7 +56,7 @@ type ListGatewayWebsocketEventsRequest struct {
 	//
 	// qwen-plus
 	Model *string `json:"model,omitempty" xml:"model,omitempty"`
-	// The pagination token for the next page.
+	// The pagination token.
 	//
 	// example:
 	//
@@ -74,7 +74,7 @@ type ListGatewayWebsocketEventsRequest struct {
 	//
 	// access.log
 	Source *string `json:"source,omitempty" xml:"source,omitempty"`
-	// The start time. The value is a UNIX timestamp in seconds since the UTC epoch. Example: 1793916000.
+	// The start time. The value is a UNIX timestamp in seconds (since the UTC epoch), such as 1793916000.
 	//
 	// This parameter is required.
 	//

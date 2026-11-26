@@ -210,7 +210,7 @@ func (s *ListBatchExportTasksResponseBodyData) Validate() error {
 }
 
 type ListBatchExportTasksResponseBodyDataItems struct {
-	// The creation time of the task. Format: yyyy-MM-dd\\"T\\"HH:mm:ss\\"Z\\".
+	// The creation time of the task. Format: yyyy-MM-dd\"T\"HH:mm:ss\"Z\".
 	//
 	// example:
 	//

@@ -106,7 +106,7 @@ type GetGatewayWebsocketUsageResponseBodyData struct {
 	//
 	// redis_period
 	Basis *string `json:"basis,omitempty" xml:"basis,omitempty"`
-	// Indicates whether a next page is available.
+	// Indicates whether there is a next page.
 	//
 	// example:
 	//

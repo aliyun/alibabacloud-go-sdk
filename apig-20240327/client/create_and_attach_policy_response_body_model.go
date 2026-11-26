@@ -96,7 +96,7 @@ func (s *CreateAndAttachPolicyResponseBody) Validate() error {
 }
 
 type CreateAndAttachPolicyResponseBodyData struct {
-	// The attachment relationship information.
+	// The mount relationship information.
 	Attachment *Attachment `json:"attachment,omitempty" xml:"attachment,omitempty"`
 	// The ID of the newly created policy.
 	//

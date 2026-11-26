@@ -28,7 +28,7 @@ type iListBatchImportTasksRequest interface {
 }
 
 type ListBatchImportTasksRequest struct {
-	// The end time of the creation time range. Specify the time in RFC 3339 format.
+	// The end time of the creation time range in RFC 3339 format.
 	//
 	// example:
 	//
@@ -46,7 +46,7 @@ type ListBatchImportTasksRequest struct {
 	//
 	// 100
 	MaxResults *int32 `json:"maxResults,omitempty" xml:"maxResults,omitempty"`
-	// The start mark for the paging query.
+	// The starting token for the paging query.
 	//
 	// example:
 	//
@@ -58,13 +58,13 @@ type ListBatchImportTasksRequest struct {
 	//
 	// 1
 	PageNumber *int32 `json:"pageNumber,omitempty" xml:"pageNumber,omitempty"`
-	// The number of entries per page.
+	// The page size.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"pageSize,omitempty" xml:"pageSize,omitempty"`
-	// The start time of the creation time range. Specify the time in RFC 3339 format.
+	// The start time of the creation time range in RFC 3339 format.
 	//
 	// example:
 	//

@@ -49,7 +49,7 @@ type HttpApiPolicyConfigs struct {
 	// if can be null:
 	// true
 	AiNetworkSearchConfig *AiNetworkSearchConfig `json:"aiNetworkSearchConfig,omitempty" xml:"aiNetworkSearchConfig,omitempty"`
-	// The AI security protection configuration.
+	// The AI security Protection Settings.
 	//
 	// if can be null:
 	// false
@@ -61,7 +61,7 @@ type HttpApiPolicyConfigs struct {
 	AiStatisticsConfig *AiStatisticsConfig `json:"aiStatisticsConfig,omitempty" xml:"aiStatisticsConfig,omitempty"`
 	// Deprecated
 	//
-	// The AI token rate limiting configuration.
+	// The AI token rate limit configuration.
 	//
 	// if can be null:
 	// false
@@ -71,13 +71,13 @@ type HttpApiPolicyConfigs struct {
 	// if can be null:
 	// true
 	AiToolSelectionConfig *AiToolSelectionConfig `json:"aiToolSelectionConfig,omitempty" xml:"aiToolSelectionConfig,omitempty"`
-	// Indicates whether the feature is enabled.
+	// Specifies whether it is enabled.
 	//
 	// example:
 	//
 	// false
 	Enable *bool `json:"enable,omitempty" xml:"enable,omitempty"`
-	// The read-only compatible reference. GetHttpApi returns the policyId and policyAttachmentId for ModelAPI AiTokenRateLimit. This field must be stripped before write-path persistence and is not used as a bind or unbind instruction.
+	// The read-only compatibility reference. GetHttpApi returns the policyId or policyAttachmentId for the ModelAPI AiTokenRateLimit. This reference must be removed before persistence in the write path and must not be used as a bind or unbind instruction.
 	//
 	// if can be null:
 	// true
@@ -87,7 +87,7 @@ type HttpApiPolicyConfigs struct {
 	// if can be null:
 	// false
 	SemanticRouterConfig *HttpApiPolicyConfigsSemanticRouterConfig `json:"semanticRouterConfig,omitempty" xml:"semanticRouterConfig,omitempty" type:"Struct"`
-	// The policy template type.
+	// The policy templatetype.
 	//
 	// example:
 	//
@@ -252,7 +252,7 @@ func (s *HttpApiPolicyConfigs) Validate() error {
 }
 
 type HttpApiPolicyConfigsSemanticRouterConfig struct {
-	// The timeout period, in milliseconds.
+	// The timeout period in milliseconds.
 	//
 	// example:
 	//

@@ -58,13 +58,13 @@ type ListHttpApisRequest struct {
 	//
 	// API
 	GatewayType *string `json:"gatewayType,omitempty" xml:"gatewayType,omitempty"`
-	// The search keyword. Supports fuzzy search by API name or exact search by API ID.
+	// The search keyword. Supports fuzzy match for API names and exact match for API IDs.
 	//
 	// example:
 	//
 	// test-
 	Keyword *string `json:"keyword,omitempty" xml:"keyword,omitempty"`
-	// The name for exact search.
+	// The API name for exact search.
 	//
 	// example:
 	//
@@ -88,7 +88,7 @@ type ListHttpApisRequest struct {
 	//
 	// rg-ahr5uil8raz0rq3b
 	ResourceGroupId *string `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
-	// The types of the HTTP APIs. You can specify multiple types separated by commas (,). Valid values:
+	// The type of the HTTP API. Multiple types can be specified and separated by commas (,). Valid values:
 	//
 	// - Http
 	//
@@ -102,25 +102,25 @@ type ListHttpApisRequest struct {
 	//
 	// Http,Rest
 	Types *string `json:"types,omitempty" xml:"types,omitempty"`
-	// Specifies whether to return the information about APIs published to the specified environment.
+	// Specifies whether to return the information of APIs published to the specified environment.
 	//
 	// example:
 	//
 	// true
 	WithAPIsPublishedToEnvironment *bool `json:"withAPIsPublishedToEnvironment,omitempty" xml:"withAPIsPublishedToEnvironment,omitempty"`
-	// The environment ID. If specified, the response includes consumer authentication policy information for each API in the specified environment.
+	// The environment ID. The response includes consumer authentication policy information for each API in the specified environment.
 	//
 	// example:
 	//
 	// env-xxx
 	WithAuthPolicyInEnvironmentId *string `json:"withAuthPolicyInEnvironmentId,omitempty" xml:"withAuthPolicyInEnvironmentId,omitempty"`
-	// Specifies whether the authentication policy is enabled.
+	// Specifies whether to include the authentication policy list.
 	//
 	// example:
 	//
 	// true
 	WithAuthPolicyList *bool `json:"withAuthPolicyList,omitempty" xml:"withAuthPolicyList,omitempty"`
-	// The consumer ID. If specified, the response includes the authorization rule list for the specified consumer in the information of each API.
+	// The consumer ID. The response includes the list of authorization rules for the specified consumer in the API information.
 	//
 	// example:
 	//
@@ -144,7 +144,7 @@ type ListHttpApisRequest struct {
 	//
 	// false
 	WithIngressInfo *bool `json:"withIngressInfo,omitempty" xml:"withIngressInfo,omitempty"`
-	// The plugin ID. If specified, the plugin release information is retrieved based on this ID.
+	// The plugin ID. The response includes plugin release information based on the specified plugin ID.
 	//
 	// example:
 	//

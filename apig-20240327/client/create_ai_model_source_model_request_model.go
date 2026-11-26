@@ -28,7 +28,7 @@ type iCreateAiModelSourceModelRequest interface {
 type CreateAiModelSourceModelRequest struct {
 	// The protocols and invocation paths supported by the model.
 	AvailablePaths []*CreateAiModelSourceModelRequestAvailablePaths `json:"availablePaths,omitempty" xml:"availablePaths,omitempty" type:"Repeated"`
-	// The credit pricing configuration of the model.
+	// The credit pricing configuration for the model.
 	Credit *CreateAiModelSourceModelRequestCredit `json:"credit,omitempty" xml:"credit,omitempty" type:"Struct"`
 	// The set of capabilities declared by the model. The key is the capability name, and the value indicates whether the capability is supported.
 	//
@@ -202,19 +202,19 @@ func (s *CreateAiModelSourceModelRequestAvailablePaths) Validate() error {
 }
 
 type CreateAiModelSourceModelRequestCredit struct {
-	// The number of credits per million cached input tokens. The value must be a non-negative number. A value of 0 indicates free.
+	// The number of credits per million cached input tokens. The value must be a non-negative number. A value of 0 indicates that cached input is free of charge.
 	//
 	// example:
 	//
 	// 0.1
 	CacheCost *float32 `json:"cacheCost,omitempty" xml:"cacheCost,omitempty"`
-	// The number of credits per million input tokens. The value must be a non-negative number. A value of 0 indicates free.
+	// The number of credits per million input tokens. The value must be a non-negative number. A value of 0 indicates that the input is free of charge.
 	//
 	// example:
 	//
 	// 1
 	InputCost *float32 `json:"inputCost,omitempty" xml:"inputCost,omitempty"`
-	// The number of credits per million output tokens. The value must be a non-negative number. A value of 0 indicates free.
+	// The number of credits per million output tokens. The value must be a non-negative number. A value of 0 indicates that the output is free of charge.
 	//
 	// example:
 	//

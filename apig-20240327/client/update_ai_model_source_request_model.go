@@ -32,7 +32,7 @@ type UpdateAiModelSourceRequest struct {
 	//
 	// 1
 	ExpectedVersion *int64 `json:"expectedVersion,omitempty" xml:"expectedVersion,omitempty"`
-	// The ID of the actual AI service bound to the model source.
+	// The ID of the actual AI service that is bound to the model source.
 	//
 	// example:
 	//

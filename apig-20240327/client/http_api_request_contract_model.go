@@ -149,7 +149,7 @@ type HttpApiRequestContractBody struct {
 	//
 	//             "type": "string",
 	//
-	//             "description": "Operation result. \\"ok\\" indicates success."
+	//             "description": "Operation result. \"ok\" indicates success."
 	//
 	//         }
 	//

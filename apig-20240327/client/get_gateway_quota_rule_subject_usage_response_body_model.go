@@ -319,7 +319,7 @@ type GetGatewayQuotaRuleSubjectUsageResponseBodyDataDetails struct {
 	//
 	// example:
 	//
-	// [{"model":"qwen-plus",\\"usedAmount\\":210}]
+	// [{"model":"qwen-plus",\"usedAmount\":210}]
 	Items []*GetGatewayQuotaRuleSubjectUsageResponseBodyDataDetailsItems `json:"items,omitempty" xml:"items,omitempty" type:"Repeated"`
 	// The current page number.
 	//

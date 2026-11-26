@@ -96,7 +96,7 @@ func (s *GetModelGroupResponseBody) Validate() error {
 }
 
 type GetModelGroupResponseBodyData struct {
-	// The summary of the latest group configuration deployment, which is independent of API release and entitlement status. This parameter is not returned when no deployment task exists, and its return does not indicate success. It represents the current version only when the revision matches the current version. List operations do not guarantee that this parameter is populated.
+	// The summary of the latest group configuration deployment, which is independent of API publishing and entitlement status. This field is not returned when no deployment task exists, and its presence does not indicate success. It represents the current version only when the revision matches the current version. List operations do not guarantee that this field is populated.
 	ConfigurationDeployment *GetModelGroupResponseBodyDataConfigurationDeployment `json:"configurationDeployment,omitempty" xml:"configurationDeployment,omitempty" type:"Struct"`
 	// The description of the model group.
 	//
@@ -244,7 +244,7 @@ func (s *GetModelGroupResponseBodyData) Validate() error {
 }
 
 type GetModelGroupResponseBodyDataConfigurationDeployment struct {
-	// The operation ID of the group configuration task, which is used for tracking only. It cannot be used in GetLogicalModelDeployment or RetryLogicalModelDeployment.
+	// The operation ID of the group configuration task, which is used for tracking only. It cannot be used for GetLogicalModelDeployment or RetryLogicalModelDeployment.
 	//
 	// example:
 	//
@@ -316,13 +316,13 @@ type GetModelGroupResponseBodyDataEntitlementState struct {
 	//
 	// 1
 	DesiredRevision *int64 `json:"desiredRevision,omitempty" xml:"desiredRevision,omitempty"`
-	// The error message when entitlement fails. This parameter is not returned when no error occurs.
+	// The error message when entitlement fails. This field is not returned when no error occurs.
 	//
 	// example:
 	//
 	// Entitlement synchronization failed
 	ErrorMessage *string `json:"errorMessage,omitempty" xml:"errorMessage,omitempty"`
-	// The entitlement status. Valid values: Pending, Applying, Committed, and Failed. Committed only indicates that the control plane has successfully submitted and read back the status, and does not mean that all nodes have acknowledged it.
+	// The entitlement status. Valid values: Pending, Applying, Committed, and Failed. Committed indicates only that the control plane has successfully submitted and read back the status, and does not mean that all nodes have acknowledged it.
 	//
 	// example:
 	//
