@@ -16,9 +16,13 @@ type iListSchemeTaskConfigRequest interface {
 }
 
 type ListSchemeTaskConfigRequest struct {
-	// baseMeAgentId
+	// The ID of the business workspace.
+	//
+	// example:
+	//
+	// 123456
 	BaseMeAgentId *int64 `json:"BaseMeAgentId,omitempty" xml:"BaseMeAgentId,omitempty"`
-	// The request parameter JSON. For details, see the supplementary description of request parameters.
+	// The input JSON string. For more information, see the supplementary description of request parameters.
 	//
 	// example:
 	//

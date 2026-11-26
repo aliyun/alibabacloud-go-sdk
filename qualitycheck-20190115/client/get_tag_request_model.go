@@ -16,13 +16,13 @@ type iGetTagRequest interface {
 }
 
 type GetTagRequest struct {
-	// The ID of the business space.
+	// The workspace ID.
 	//
 	// example:
 	//
 	// 123456
 	BaseMeAgentId *int64 `json:"BaseMeAgentId,omitempty" xml:"BaseMeAgentId,omitempty"`
-	// The complete JSON string. For more information, see the following detailed information.
+	// The complete JSON string. For more information, see the following details.
 	//
 	// example:
 	//

@@ -30,7 +30,7 @@ type iListQualityCheckSchemeResponseBody interface {
 }
 
 type ListQualityCheckSchemeResponseBody struct {
-	// The status code. A value of **200*	- indicates success. Other values indicate a failure. Use this code to identify the cause of the failure.
+	// The result code. A value of **200*	- indicates success. Other values indicate failure. You can use this field to determine the cause of the failure.
 	//
 	// example:
 	//
@@ -44,13 +44,13 @@ type ListQualityCheckSchemeResponseBody struct {
 	Count *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
 	// The data of the quality check scheme list.
 	Data []*ListQualityCheckSchemeResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	// The returned message. If the request is successful, \\`successful\\` is returned. If the request fails, an error message is returned.
+	// The error message returned when an error occurs. The value is successful when the request is successful.
 	//
 	// example:
 	//
 	// successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The page number.
+	// The current page number.
 	//
 	// example:
 	//
@@ -68,13 +68,13 @@ type ListQualityCheckSchemeResponseBody struct {
 	//
 	// 82C91484-B2D5-4D2A-A21F-A6D73F4***
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// An internal parameter. You can ignore this parameter.
+	// An internal field. Ignore this field.
 	//
 	// example:
 	//
-	// XXX
+	// Deprecated field
 	ResultCountId *string `json:"ResultCountId,omitempty" xml:"ResultCountId,omitempty"`
-	// Indicates whether the request was successful. A value of true indicates success. A value of **false*	- or **null*	- indicates failure.
+	// Indicates whether the request is successful. **true*	- indicates that the request is successful. **false*	- or **null*	- indicates that the request fails.
 	//
 	// example:
 	//
@@ -185,7 +185,7 @@ func (s *ListQualityCheckSchemeResponseBody) Validate() error {
 }
 
 type ListQualityCheckSchemeResponseBodyData struct {
-	// The time when the scheme was created.
+	// The creation time.
 	//
 	// example:
 	//
@@ -195,9 +195,9 @@ type ListQualityCheckSchemeResponseBodyData struct {
 	//
 	// example:
 	//
-	// 张三
+	// Zhang San
 	CreateUserName *string `json:"CreateUserName,omitempty" xml:"CreateUserName,omitempty"`
-	// The data type of the quality check scheme. Valid values: 0 (text) and 1 (audio).
+	// The data type of the quality check scheme. Valid values: 0: text; 1: audio.
 	//
 	// example:
 	//
@@ -207,7 +207,7 @@ type ListQualityCheckSchemeResponseBodyData struct {
 	//
 	// example:
 	//
-	// 售前使用
+	// Pre-sales use
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The name of the quality check scheme.
 	//
@@ -225,35 +225,35 @@ type ListQualityCheckSchemeResponseBodyData struct {
 	//
 	// 112**
 	SchemeId *int64 `json:"SchemeId,omitempty" xml:"SchemeId,omitempty"`
-	// The status of the quality check scheme. Valid values: 0 (deleted), 1 (published), 2 (unpublished), and 3 (updated but not published).
+	// The status of the quality check scheme. Valid values: 0: deleted; 1: published; 2: unpublished; 3: updated and unpublished.
 	//
 	// example:
 	//
 	// 1
 	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The type of the quality check scheme template. Valid values: 1 (built-in) and 2 (user-defined).
+	// The type of the quality check scheme template. Valid values: 1: built-in; 2: custom.
 	//
 	// example:
 	//
 	// 1
 	TemplateType *int32 `json:"TemplateType,omitempty" xml:"TemplateType,omitempty"`
-	// The type of the quality check scheme. Valid values: 0 (built-in) and 1 (user-defined).
+	// The type of the quality check scheme. Valid values: 0: built-in; 1: custom.
 	//
 	// example:
 	//
 	// 1
 	Type *int32 `json:"Type,omitempty" xml:"Type,omitempty"`
-	// The time when the scheme was last updated.
+	// The update time.
 	//
 	// example:
 	//
 	// 2022-05-10T10:34Z
 	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
-	// The name of the user who last updated the scheme.
+	// The name of the updater.
 	//
 	// example:
 	//
-	// 李四
+	// Li Si
 	UpdateUserName *string `json:"UpdateUserName,omitempty" xml:"UpdateUserName,omitempty"`
 	// The version of the quality check scheme.
 	//
@@ -420,7 +420,7 @@ func (s *ListQualityCheckSchemeResponseBodyData) Validate() error {
 }
 
 type ListQualityCheckSchemeResponseBodyDataRuleList struct {
-	// The rule information. This parameter is reserved for future use. Currently, only one rule is returned.
+	// The rule information. Only one rule is included here and reserved for future extensions.
 	Rules []*ListQualityCheckSchemeResponseBodyDataRuleListRules `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Repeated"`
 }
 
@@ -455,7 +455,7 @@ func (s *ListQualityCheckSchemeResponseBodyDataRuleList) Validate() error {
 }
 
 type ListQualityCheckSchemeResponseBodyDataRuleListRules struct {
-	// The quality check dimension to which the item belongs.
+	// The quality check dimension to which the rule belongs.
 	//
 	// example:
 	//
@@ -465,7 +465,7 @@ type ListQualityCheckSchemeResponseBodyDataRuleListRules struct {
 	//
 	// example:
 	//
-	// 测试规则
+	// Test rule
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The ID of the check item.
 	//
@@ -473,7 +473,7 @@ type ListQualityCheckSchemeResponseBodyDataRuleListRules struct {
 	//
 	// 12
 	Rid *int64 `json:"Rid,omitempty" xml:"Rid,omitempty"`
-	// Indicates whether to calculate a score. Valid values: 1 (no score) and 3 (score).
+	// Specifies whether the score is calculated. Valid values: 1: not calculated; 3: calculated.
 	//
 	// example:
 	//
@@ -485,19 +485,19 @@ type ListQualityCheckSchemeResponseBodyDataRuleListRules struct {
 	//
 	// 2
 	ScoreNum *int32 `json:"ScoreNum,omitempty" xml:"ScoreNum,omitempty"`
-	// The scoring type. Valid values: 0 (Points are added or deducted each time the rule is triggered) and 1 (A one-time score is given when the rule is triggered).
+	// The scoring type. Valid values: 0: add or deduct points after the rule is triggered; 1: award a one-time score after the rule is triggered.
 	//
 	// example:
 	//
 	// 0
 	ScoreNumType *int32 `json:"ScoreNumType,omitempty" xml:"ScoreNumType,omitempty"`
-	// The scoring method. Valid values: 1 (add points) and 3 (deduct points).
+	// The score adjustment type. Valid values: 1: add points; 3: deduct points.
 	//
 	// example:
 	//
 	// 1
 	ScoreType *int32 `json:"ScoreType,omitempty" xml:"ScoreType,omitempty"`
-	// The application scenario of the check item. Valid values: 10 (common check item) and 11 (SOP flow check item).
+	// The common scenarios of the check item. Valid values: 10: common check item. 11: SOP flow check item.
 	//
 	// example:
 	//
@@ -594,7 +594,7 @@ type ListQualityCheckSchemeResponseBodyDataSchemeCheckTypeList struct {
 	//
 	// example:
 	//
-	// 服务规范性检测
+	// Service compliance check
 	CheckName *string `json:"CheckName,omitempty" xml:"CheckName,omitempty"`
 	// The type of the quality check dimension.
 	//
@@ -602,7 +602,7 @@ type ListQualityCheckSchemeResponseBodyDataSchemeCheckTypeList struct {
 	//
 	// 1
 	CheckType *int32 `json:"CheckType,omitempty" xml:"CheckType,omitempty"`
-	// The enabled status. Valid values: 0 (disabled) and 1 (enabled).
+	// The enable status. Valid values: 0: disabled; 1: enabled.
 	//
 	// example:
 	//
@@ -614,7 +614,7 @@ type ListQualityCheckSchemeResponseBodyDataSchemeCheckTypeList struct {
 	//
 	// 20
 	Score *int32 `json:"Score,omitempty" xml:"Score,omitempty"`
-	// An internal parameter. You can ignore this parameter.
+	// An internal field. Ignore this field.
 	//
 	// example:
 	//

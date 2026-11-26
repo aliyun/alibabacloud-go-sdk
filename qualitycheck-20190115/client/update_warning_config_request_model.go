@@ -17,6 +17,10 @@ type iUpdateWarningConfigRequest interface {
 
 type UpdateWarningConfigRequest struct {
 	// workspace ID
+	//
+	// example:
+	//
+	// 123456
 	BaseMeAgentId *int64 `json:"BaseMeAgentId,omitempty" xml:"BaseMeAgentId,omitempty"`
 	// The complete JSON string. For details, see the detailed information below.
 	//

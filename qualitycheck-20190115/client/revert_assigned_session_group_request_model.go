@@ -16,9 +16,13 @@ type iRevertAssignedSessionGroupRequest interface {
 }
 
 type RevertAssignedSessionGroupRequest struct {
-	// The ID of the baseMeAgent.
+	// The business workspace ID.
+	//
+	// example:
+	//
+	// 123456
 	BaseMeAgentId *int64 `json:"BaseMeAgentId,omitempty" xml:"BaseMeAgentId,omitempty"`
-	// For more information, see the description of the request parameters.
+	// For more information, see the supplementary description of request parameters.
 	//
 	// example:
 	//

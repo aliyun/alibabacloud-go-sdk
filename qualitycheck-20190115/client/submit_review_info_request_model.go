@@ -16,9 +16,13 @@ type iSubmitReviewInfoRequest interface {
 }
 
 type SubmitReviewInfoRequest struct {
-	// Workspace ID
+	// The workspace ID.
+	//
+	// example:
+	//
+	// 12345
 	BaseMeAgentId *int64 `json:"BaseMeAgentId,omitempty" xml:"BaseMeAgentId,omitempty"`
-	// The complete JSON string information. See the following details for specific content.
+	// The complete JSON string. For more information, see the following details.
 	//
 	// This parameter is required.
 	//
@@ -26,9 +30,9 @@ type SubmitReviewInfoRequest struct {
 	//
 	// {
 	//
-	//     "taskId": "任务ID",
+	//     "taskId": "Task ID",
 	//
-	//     "vid": "文件ID"
+	//     "vid": "File ID"
 	//
 	// }
 	JsonStr *string `json:"JsonStr,omitempty" xml:"JsonStr,omitempty"`

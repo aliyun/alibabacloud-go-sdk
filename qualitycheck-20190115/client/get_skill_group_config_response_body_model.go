@@ -22,17 +22,17 @@ type iGetSkillGroupConfigResponseBody interface {
 }
 
 type GetSkillGroupConfigResponseBody struct {
-	// The response code. A value of **200*	- indicates a successful response.
+	// The result code. A value of **200*	- indicates success.
 	//
-	// > Other values indicate a failed response. You can use this field to identify the cause of the failure.
+	// > Any other value indicates failure. You can use this field to determine the cause of the failure.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The details of the skill group rule configuration.
+	// The list of skill group rule configuration details.
 	Data *GetSkillGroupConfigResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The response message. If the request is successful, a value of **successful*	- is returned. If the request fails, an error message is returned.
+	// The error details when an error occurs, or **successful*	- when the request is successful.
 	//
 	// example:
 	//
@@ -44,13 +44,13 @@ type GetSkillGroupConfigResponseBody struct {
 	//
 	// 3CEA0495-341B-4482-9AD9-8191EF4***
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	//
-	// The caller can use this field to determine whether the request was successful:
+	// You can use this field to determine whether the request is successful:
 	//
-	// - **true**: The request was successful.
+	// - **true**: The request is successful.
 	//
-	// - false or **null**: The request failed.
+	// - **false/null**: The request failed.
 	//
 	// example:
 	//
@@ -121,24 +121,24 @@ func (s *GetSkillGroupConfigResponseBody) Validate() error {
 }
 
 type GetSkillGroupConfigResponseBodyData struct {
-	// Indicates whether to perform a full-text quality check after the real-time quality check is complete. Valid values:
+	// Specifies whether to perform full-text quality check after the real-time quality check ends. Valid values:
 	//
-	// - 1: yes
+	// - 1: Perform full-text quality check.
 	//
-	// - 0: no
+	// - 0: Do not perform full-text quality check.
 	//
 	// example:
 	//
 	// 1
 	AllContentQualityCheck *int32 `json:"AllContentQualityCheck,omitempty" xml:"AllContentQualityCheck,omitempty"`
-	// The ID of the rule used for the full-text quality check.
+	// The quality check rule IDs for full-text quality check.
 	//
 	// example:
 	//
 	// 223
 	AllRids     *string                                         `json:"AllRids,omitempty" xml:"AllRids,omitempty"`
 	AllRuleList *GetSkillGroupConfigResponseBodyDataAllRuleList `json:"AllRuleList,omitempty" xml:"AllRuleList,omitempty" type:"Struct"`
-	// The time when the configuration was created.
+	// The creation time.
 	//
 	// example:
 	//
@@ -150,11 +150,11 @@ type GetSkillGroupConfigResponseBodyData struct {
 	//
 	// 1212
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// This is an internal parameter. You can ignore it.
+	// An internal field. Ignore this field.
 	//
 	// example:
 	//
-	// xxx
+	// Deprecated field
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
 	// The language model ID.
 	//
@@ -166,19 +166,19 @@ type GetSkillGroupConfigResponseBodyData struct {
 	//
 	// example:
 	//
-	// xxx
+	// General model
 	ModelName *string `json:"ModelName,omitempty" xml:"ModelName,omitempty"`
 	// The configuration name.
 	//
 	// example:
 	//
-	// xxx
+	// General configuration
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The quality check type. Valid values:
 	//
-	// - 0: offline
+	// - 0: Offline quality check.
 	//
-	// - 1: real-time
+	// - 1: Real-time quality check.
 	//
 	// example:
 	//
@@ -191,7 +191,7 @@ type GetSkillGroupConfigResponseBodyData struct {
 	// 2332
 	Rid      *string                                      `json:"Rid,omitempty" xml:"Rid,omitempty"`
 	RuleList *GetSkillGroupConfigResponseBodyDataRuleList `json:"RuleList,omitempty" xml:"RuleList,omitempty" type:"Struct"`
-	// The source of the skill group. The value is fixed at 0.
+	// The source of the skill group. The value is fixed to 0.
 	//
 	// example:
 	//
@@ -207,33 +207,41 @@ type GetSkillGroupConfigResponseBodyData struct {
 	//
 	// example:
 	//
-	// xxx
+	// General skill group
 	SkillGroupName *string `json:"SkillGroupName,omitempty" xml:"SkillGroupName,omitempty"`
-	// The status of the configuration. Valid values: 0 (disabled) and 1 (enabled).
+	// The enabling status. Valid values:
+	//
+	// - 0: Disabled.
+	//
+	// - 1: Enabled.
 	//
 	// example:
 	//
 	// 0
 	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The configuration type. Valid values: 1 (custom configuration) and 0 (built-in configuration).
+	// The configuration type. Valid values:
+	//
+	// - 1: Custom configuration.
+	//
+	// - 0: Built-in system configuration.
 	//
 	// example:
 	//
 	// 1
 	Type *int32 `json:"Type,omitempty" xml:"Type,omitempty"`
-	// The time when the configuration was last updated.
+	// The update time.
 	//
 	// example:
 	//
 	// 2020-12-01T19:28Z
 	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
-	// The hotword ID.
+	// The hot word ID.
 	//
 	// example:
 	//
 	// 123
 	VocabId *int64 `json:"VocabId,omitempty" xml:"VocabId,omitempty"`
-	// The hotword name.
+	// The hot word name.
 	//
 	// example:
 	//

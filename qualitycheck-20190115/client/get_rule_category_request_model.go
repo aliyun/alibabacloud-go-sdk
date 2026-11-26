@@ -17,6 +17,10 @@ type iGetRuleCategoryRequest interface {
 
 type GetRuleCategoryRequest struct {
 	// The workspace ID.
+	//
+	// example:
+	//
+	// 123456
 	BaseMeAgentId *int64 `json:"BaseMeAgentId,omitempty" xml:"BaseMeAgentId,omitempty"`
 	// Set the value to an empty string.
 	//

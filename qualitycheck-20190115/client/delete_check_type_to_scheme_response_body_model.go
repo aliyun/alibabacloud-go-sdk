@@ -36,7 +36,7 @@ type DeleteCheckTypeToSchemeResponseBody struct {
 	//
 	// 48864
 	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	// The message returned. If the request is successful, \\`successful\\` is returned. If the request fails, an error message is returned.
+	// The message returned. If the request is successful, \`successful\` is returned. If the request fails, an error message is returned.
 	//
 	// example:
 	//

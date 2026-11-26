@@ -223,7 +223,7 @@ type TestRuleV4ResponseBodyDataHitRuleReviewInfoList struct {
 	//
 	// 判断节点A
 	JudgeNodeName *string `json:"JudgeNodeName,omitempty" xml:"JudgeNodeName,omitempty"`
-	// Lambda expression. Example: a&\\&b.
+	// Lambda expression. Example: a&\&b.
 	//
 	// example:
 	//
@@ -657,7 +657,7 @@ type TestRuleV4ResponseBodyDataHitRuleReviewInfoListConditionHitInfoListKeyWords
 	//
 	// 无
 	Tid *string `json:"Tid,omitempty" xml:"Tid,omitempty"`
-	// The position of the character that follows the highlighted keyword. The character at the \\`to\\` position is not included in the highlight. For example, if \\`from\\` is 0 and \\`to\\` is 3, the highlighted keyword consists of the characters at indices 0, 1, and 2. The maximum value is one less than the total number of characters in the sentence.
+	// The position of the character that follows the highlighted keyword. The character at the \`to\` position is not included in the highlight. For example, if \`from\` is 0 and \`to\` is 3, the highlighted keyword consists of the characters at indices 0, 1, and 2. The maximum value is one less than the total number of characters in the sentence.
 	//
 	// example:
 	//

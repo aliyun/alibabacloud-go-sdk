@@ -24,7 +24,7 @@ type AddRuleV4Request struct {
 	//
 	// 123456
 	BaseMeAgentId *int64 `json:"BaseMeAgentId,omitempty" xml:"BaseMeAgentId,omitempty"`
-	// Specifies whether to copy the rule. Set this to \\`true\\` to copy the rule.
+	// Specifies whether to copy the rule. Set this to \`true\` to copy the rule.
 	//
 	// example:
 	//

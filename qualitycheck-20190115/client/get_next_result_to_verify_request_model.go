@@ -17,6 +17,10 @@ type iGetNextResultToVerifyRequest interface {
 
 type GetNextResultToVerifyRequest struct {
 	// Workspace ID.
+	//
+	// example:
+	//
+	// 123456
 	BaseMeAgentId *int64 `json:"BaseMeAgentId,omitempty" xml:"BaseMeAgentId,omitempty"`
 	// Complete JSON string information. See the details below.
 	//

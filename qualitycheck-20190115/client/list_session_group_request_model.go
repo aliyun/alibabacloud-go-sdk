@@ -17,6 +17,10 @@ type iListSessionGroupRequest interface {
 
 type ListSessionGroupRequest struct {
 	// The workspace ID.
+	//
+	// example:
+	//
+	// 123456
 	BaseMeAgentId *int64 `json:"BaseMeAgentId,omitempty" xml:"BaseMeAgentId,omitempty"`
 	// For more information, see the notes on request parameters.
 	//

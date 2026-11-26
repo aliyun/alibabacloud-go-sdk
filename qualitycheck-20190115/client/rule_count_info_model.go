@@ -158,7 +158,7 @@ type RuleCountInfo struct {
 	//
 	// 1
 	Deny *int32 `json:"Deny,omitempty" xml:"Deny,omitempty"`
-	// Indicates if the rule is active. \\`0\\`: No. \\`1\\`: Yes.
+	// Indicates if the rule is active. \`0\`: No. \`1\`: Yes.
 	//
 	// example:
 	//
@@ -182,7 +182,7 @@ type RuleCountInfo struct {
 	//
 	// 1650092585176
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// Indicates if the rule is active for the entire lifecycle. \\`0\\`: No. \\`1\\`: Yes.
+	// Indicates if the rule is active for the entire lifecycle. \`0\`: No. \`1\`: Yes.
 	//
 	// example:
 	//
@@ -318,7 +318,7 @@ type RuleCountInfo struct {
 	//
 	// 123
 	Rid *int64 `json:"Rid,omitempty" xml:"Rid,omitempty"`
-	// The scoring type. \\`8\\`: No score is set.
+	// The scoring type. \`8\`: No score is set.
 	//
 	// example:
 	//

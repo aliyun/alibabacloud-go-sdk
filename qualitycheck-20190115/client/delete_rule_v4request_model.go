@@ -19,6 +19,10 @@ type iDeleteRuleV4Request interface {
 
 type DeleteRuleV4Request struct {
 	// Workspace ID
+	//
+	// example:
+	//
+	// 123456
 	BaseMeAgentId *int64 `json:"BaseMeAgentId,omitempty" xml:"BaseMeAgentId,omitempty"`
 	// Whether to delete the rule even if it is associated with quality inspection tasks.
 	//

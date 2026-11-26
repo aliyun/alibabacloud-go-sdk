@@ -22,14 +22,14 @@ type iUploadDataSyncResponseBody interface {
 }
 
 type UploadDataSyncResponseBody struct {
-	// The result code. A value of **200*	- indicates success. Other values indicate failure. You can use this field to determine the cause of failure.
+	// The result code. A value of **200*	- indicates success. Any other value indicates failure. The caller can determine the cause of failure based on this field.
 	//
 	// example:
 	//
 	// 200
 	Code *string                         `json:"Code,omitempty" xml:"Code,omitempty"`
 	Data *UploadDataSyncResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The error details when an error occurs. The value is **successful*	- when the request succeeds.
+	// The error details when an error occurs, or **successful*	- when the request succeeds.
 	//
 	// example:
 	//
@@ -41,7 +41,7 @@ type UploadDataSyncResponseBody struct {
 	//
 	// 4987D326-83D9-4A42-B9A5-0B27F9B***
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. Valid values: true and false/null.
+	// Indicates whether the request is successful. The caller can determine whether the request is successful based on this field. A value of true indicates success. A value of false or null indicates failure.
 	//
 	// example:
 	//

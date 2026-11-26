@@ -17,6 +17,10 @@ type iGetRuleByIdRequest interface {
 
 type GetRuleByIdRequest struct {
 	// The business space ID.
+	//
+	// example:
+	//
+	// 123456
 	BaseMeAgentId *int64 `json:"BaseMeAgentId,omitempty" xml:"BaseMeAgentId,omitempty"`
 	// The rule ID.
 	//

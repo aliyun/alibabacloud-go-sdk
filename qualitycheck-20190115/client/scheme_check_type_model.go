@@ -177,7 +177,7 @@ type SchemeCheckTypeSchemeScoreInfoList struct {
 	//
 	// example:
 	//
-	// xx
+	// 示例规则
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// Rule ID
 	//
@@ -219,7 +219,7 @@ type SchemeCheckTypeSchemeScoreInfoList struct {
 	//
 	// example:
 	//
-	// xx
+	// 示例流程
 	TaskFlowName *string `json:"TaskFlowName,omitempty" xml:"TaskFlowName,omitempty"`
 }
 
@@ -320,9 +320,9 @@ type SchemeCheckTypeTaskFlowScoreInfoList struct {
 	//
 	// example:
 	//
-	// xx
+	// 示例流程
 	TaskFlowName *string `json:"TaskFlowName,omitempty" xml:"TaskFlowName,omitempty"`
-	// \\"Flow version: 0: tree, 1: graph\\"
+	// \"Flow version: 0: tree, 1: graph\"
 	//
 	// example:
 	//
@@ -392,7 +392,7 @@ type SchemeCheckTypeTaskFlowScoreInfoListSchemeScoreInfoList struct {
 	//
 	// example:
 	//
-	// xx
+	// 示例规则
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// Rule ID
 	//
@@ -434,7 +434,7 @@ type SchemeCheckTypeTaskFlowScoreInfoListSchemeScoreInfoList struct {
 	//
 	// example:
 	//
-	// xx
+	// 示例流程
 	TaskFlowName *string `json:"TaskFlowName,omitempty" xml:"TaskFlowName,omitempty"`
 }
 

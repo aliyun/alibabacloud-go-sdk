@@ -42,11 +42,11 @@ type GetAgentTaskResultResponseBody struct {
 	//
 	// F190ADE9-619A-447D-84E3-7E241A5C428E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request is successful. You can use this field to determine whether the request is successful:
+	// Indicates whether the request is successful. You can determine whether the request is successful based on this field:
 	//
-	// - **true**: The request is successful.
+	// - **true**: Successful.
 	//
-	// - **false/null**: The request failed.
+	// - **false/null**: Failed.
 	//
 	// example:
 	//
@@ -117,9 +117,9 @@ func (s *GetAgentTaskResultResponseBody) Validate() error {
 }
 
 type GetAgentTaskResultResponseBodyData struct {
-	// The dialogue data.
+	// The conversation data.
 	Dialogues []*GetAgentTaskResultResponseBodyDataDialogues `json:"Dialogues,omitempty" xml:"Dialogues,omitempty" type:"Repeated"`
-	// The error details when the status is not 0 or 1.
+	// The error details returned when the status is not 0 or 1.
 	//
 	// example:
 	//
@@ -131,17 +131,17 @@ type GetAgentTaskResultResponseBodyData struct {
 	//
 	// 106C6CA0-282D-4AF7-85F0-D2D24***
 	LlmRequestId *string `json:"LlmRequestId,omitempty" xml:"LlmRequestId,omitempty"`
-	// The result of the computation task.
+	// The result of the computing task.
 	Response *GetAgentTaskResultResponseBodyDataResponse `json:"Response,omitempty" xml:"Response,omitempty" type:"Struct"`
 	// The task status. Valid values:
 	//
-	// - 1: pending
+	// - 1: Pending.
 	//
-	// - 2: running
+	// - 2: Running.
 	//
-	// - 3: succeeded
+	// - 3: Successful.
 	//
-	// - 4: failed
+	// - 4: Failed.
 	//
 	// example:
 	//
@@ -153,7 +153,7 @@ type GetAgentTaskResultResponseBodyData struct {
 	//
 	// A6BEC8D-9A5B-4BE5-8432-4F635E***
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	// The token usage information.
+	// The token usage.
 	Usage *GetAgentTaskResultResponseBodyDataUsage `json:"Usage,omitempty" xml:"Usage,omitempty" type:"Struct"`
 	// The session ID.
 	//
@@ -267,37 +267,37 @@ func (s *GetAgentTaskResultResponseBodyData) Validate() error {
 }
 
 type GetAgentTaskResultResponseBodyDataDialogues struct {
-	// The offset of the start time of this sentence relative to the overall start time of the dialogue, in milliseconds. For example, if the total recording duration is 2 minutes and 10 seconds, and a sentence spoken by the customer starts at 1 minute and 12 seconds and ends at 1 minute and 20 seconds, the value of begin is 72000 and the value of end is 80000.
+	// The offset of the start time of this sentence relative to the overall start time of the conversation, in milliseconds. For example, if the total recording duration is 2 minutes and 10 seconds, and the customer starts speaking a sentence at 1 minute and 12 seconds and finishes at 1 minute and 20 seconds, the begin value is 72000 and the end value is 80000.
 	//
 	// example:
 	//
 	// 980
 	Begin *int64 `json:"Begin,omitempty" xml:"Begin,omitempty"`
-	// The emotion energy value, calculated as the volume in decibels divided by 10. Valid values: 1 to 10. A higher value indicates a stronger emotion.
+	// The emotion energy value, which is calculated as the volume in decibels divided by 10. Valid values: [1,10]. A higher value indicates a stronger emotion.
 	//
 	// example:
 	//
 	// 7
 	EmotionValue *int32 `json:"EmotionValue,omitempty" xml:"EmotionValue,omitempty"`
-	// The offset of the start time of this sentence relative to the overall start time of the dialogue, in milliseconds. For example, if the total recording duration is 2 minutes and 10 seconds, and a sentence spoken by the customer starts at 1 minute and 12 seconds and ends at 1 minute and 20 seconds, the value of begin is 72000 and the value of end is 80000.
+	// The offset of the start time of this sentence relative to the overall start time of the conversation, in milliseconds. For example, if the total recording duration is 2 minutes and 10 seconds, and the customer starts speaking a sentence at 1 minute and 12 seconds and finishes at 1 minute and 20 seconds, the begin value is 72000 and the end value is 80000.
 	//
 	// example:
 	//
 	// 80000
 	End *int64 `json:"End,omitempty" xml:"End,omitempty"`
-	// The start time of this sentence in hours, minutes, and seconds format: hh:mm:ss.
+	// The start time of this sentence in the hour-minute-second format. Format: hh:mm:ss.
 	//
 	// example:
 	//
 	// 00:08
 	HourMinSec *string `json:"HourMinSec,omitempty" xml:"HourMinSec,omitempty"`
-	// The role of the speaker for this sentence. Valid values: agent and customer.
+	// The role of the speaker for this sentence. Valid values: Customer service representative, Customer.
 	//
 	// example:
 	//
-	// agent
+	// Customer service representative
 	Role *string `json:"Role,omitempty" xml:"Role,omitempty"`
-	// The average speech rate of this sentence. Unit: words per minute.
+	// The average speech rate of this sentence, in words per minute.
 	//
 	// example:
 	//
@@ -307,7 +307,7 @@ type GetAgentTaskResultResponseBodyDataDialogues struct {
 	//
 	// example:
 	//
-	// Hello, how can I help you
+	// Hello, how can I help you?
 	Words *string `json:"Words,omitempty" xml:"Words,omitempty"`
 }
 
@@ -387,16 +387,18 @@ func (s *GetAgentTaskResultResponseBodyDataDialogues) Validate() error {
 }
 
 type GetAgentTaskResultResponseBodyDataResponse struct {
-	// The result of the custom prompt.
+	// The result returned for the custom instruction.
 	CustomerPromptResponse *GetAgentTaskResultResponseBodyDataResponseCustomerPromptResponse `json:"CustomerPromptResponse,omitempty" xml:"CustomerPromptResponse,omitempty" type:"Struct"`
 	// The attribute extraction result.
-	FieldResponse         *GetAgentTaskResultResponseBodyDataResponseFieldResponse         `json:"FieldResponse,omitempty" xml:"FieldResponse,omitempty" type:"Struct"`
+	FieldResponse *GetAgentTaskResultResponseBodyDataResponseFieldResponse `json:"FieldResponse,omitempty" xml:"FieldResponse,omitempty" type:"Struct"`
+	// The tag tree analysis result.
 	MultiLevelTagResponse *GetAgentTaskResultResponseBodyDataResponseMultiLevelTagResponse `json:"MultiLevelTagResponse,omitempty" xml:"MultiLevelTagResponse,omitempty" type:"Struct"`
 	// The service quality inspection result.
 	ServiceInspectionResponse *GetAgentTaskResultResponseBodyDataResponseServiceInspectionResponse `json:"ServiceInspectionResponse,omitempty" xml:"ServiceInspectionResponse,omitempty" type:"Struct"`
 	// The tag categorization result.
 	TagCategoryResponse *GetAgentTaskResultResponseBodyDataResponseTagCategoryResponse `json:"TagCategoryResponse,omitempty" xml:"TagCategoryResponse,omitempty" type:"Struct"`
-	VoiceprintResponse  *GetAgentTaskResultResponseBodyDataResponseVoiceprintResponse  `json:"VoiceprintResponse,omitempty" xml:"VoiceprintResponse,omitempty" type:"Struct"`
+	// The voiceprint analysis result.
+	VoiceprintResponse *GetAgentTaskResultResponseBodyDataResponseVoiceprintResponse `json:"VoiceprintResponse,omitempty" xml:"VoiceprintResponse,omitempty" type:"Struct"`
 }
 
 func (s GetAgentTaskResultResponseBodyDataResponse) String() string {
@@ -500,7 +502,7 @@ type GetAgentTaskResultResponseBodyDataResponseCustomerPromptResponse struct {
 	//
 	// example:
 	//
-	// 175/xl the fabric feels very comfortable, looks slim when worn, great clothes super good looking, quality and feel are top-notch, very satisfied with this purchase
+	// The 175/XL fabric feels very comfortable to the touch, and it looks quite slim-fitting when worn. It is a really nice piece of clothing and super good-looking. The quality and texture are absolutely top-notch. It was a very satisfying shopping experience
 	Text *string `json:"Text,omitempty" xml:"Text,omitempty"`
 }
 
@@ -526,7 +528,7 @@ func (s *GetAgentTaskResultResponseBodyDataResponseCustomerPromptResponse) Valid
 }
 
 type GetAgentTaskResultResponseBodyDataResponseFieldResponse struct {
-	// The list of attributes.
+	// The attribute list.
 	FieldVoList []*GetAgentTaskResultResponseBodyDataResponseFieldResponseFieldVoList `json:"FieldVoList,omitempty" xml:"FieldVoList,omitempty" type:"Repeated"`
 }
 
@@ -567,13 +569,13 @@ type GetAgentTaskResultResponseBodyDataResponseFieldResponseFieldVoList struct {
 	//
 	// phone
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The sentences referenced in the reasoning.
+	// The sentences referenced for the judgment reason.
 	OriginalUtterances []*int32 `json:"OriginalUtterances,omitempty" xml:"OriginalUtterances,omitempty" type:"Repeated"`
-	// The reasoning for the judgment.
+	// The reason for the judgment.
 	//
 	// example:
 	//
-	// Determined from the first sentence of the customer service representative
+	// Determined based on the first sentence of the customer service representative
 	Remarks *string `json:"Remarks,omitempty" xml:"Remarks,omitempty"`
 	// The attribute value.
 	//
@@ -632,7 +634,7 @@ func (s *GetAgentTaskResultResponseBodyDataResponseFieldResponseFieldVoList) Val
 }
 
 type GetAgentTaskResultResponseBodyDataResponseMultiLevelTagResponse struct {
-	// The list of child nodes.
+	// The child node list.
 	TagList []*GetAgentTaskResultResponseBodyDataResponseMultiLevelTagResponseTagList `json:"TagList,omitempty" xml:"TagList,omitempty" type:"Repeated"`
 }
 
@@ -667,11 +669,19 @@ func (s *GetAgentTaskResultResponseBodyDataResponseMultiLevelTagResponse) Valida
 }
 
 type GetAgentTaskResultResponseBodyDataResponseMultiLevelTagResponseTagList struct {
-	// The list of child nodes.
+	// The child node list.
 	Children []*GetAgentTaskResultResponseBodyDataResponseMultiLevelTagResponseTagListChildren `json:"Children,omitempty" xml:"Children,omitempty" type:"Repeated"`
 	// The tag analysis description.
+	//
+	// example:
+	//
+	// Based on the customer dialogue, the current tag is identified as shopping
 	Remarks *string `json:"Remarks,omitempty" xml:"Remarks,omitempty"`
 	// The tag name.
+	//
+	// example:
+	//
+	// Shopping
 	TagName *string `json:"TagName,omitempty" xml:"TagName,omitempty"`
 }
 
@@ -727,8 +737,16 @@ type GetAgentTaskResultResponseBodyDataResponseMultiLevelTagResponseTagListChild
 	// The tag analysis description.
 	Children []*GetAgentTaskResultResponseBodyDataResponseMultiLevelTagResponseTagListChildrenChildren `json:"Children,omitempty" xml:"Children,omitempty" type:"Repeated"`
 	// The tag analysis description.
+	//
+	// example:
+	//
+	// Based on the customer conversation, the current tag is identified as Purchase appliances
 	Remarks *string `json:"Remarks,omitempty" xml:"Remarks,omitempty"`
 	// The tag name.
+	//
+	// example:
+	//
+	// Purchase appliances
 	TagName *string `json:"TagName,omitempty" xml:"TagName,omitempty"`
 }
 
@@ -784,8 +802,16 @@ type GetAgentTaskResultResponseBodyDataResponseMultiLevelTagResponseTagListChild
 	// The tag name.
 	Children []*GetAgentTaskResultResponseBodyDataResponseMultiLevelTagResponseTagListChildrenChildrenChildren `json:"Children,omitempty" xml:"Children,omitempty" type:"Repeated"`
 	// The tag analysis description.
+	//
+	// example:
+	//
+	// Based on the customer conversation, the current tag is identified as Purchase refrigerators
 	Remarks *string `json:"Remarks,omitempty" xml:"Remarks,omitempty"`
 	// The tag name.
+	//
+	// example:
+	//
+	// Purchase refrigerators
 	TagName *string `json:"TagName,omitempty" xml:"TagName,omitempty"`
 }
 
@@ -838,11 +864,19 @@ func (s *GetAgentTaskResultResponseBodyDataResponseMultiLevelTagResponseTagListC
 }
 
 type GetAgentTaskResultResponseBodyDataResponseMultiLevelTagResponseTagListChildrenChildrenChildren struct {
-	// The list of child nodes.
+	// The child node list.
 	Children []*GetAgentTaskResultResponseBodyDataResponseMultiLevelTagResponseTagListChildrenChildrenChildrenChildren `json:"Children,omitempty" xml:"Children,omitempty" type:"Repeated"`
 	// The tag analysis description.
+	//
+	// example:
+	//
+	// Based on the customer conversation, the current tag is identified as Purchase Tier 1 energy efficiency refrigerators
 	Remarks *string `json:"Remarks,omitempty" xml:"Remarks,omitempty"`
 	// The tag name.
+	//
+	// example:
+	//
+	// Purchase Tier 1 energy efficiency refrigerators
 	TagName *string `json:"TagName,omitempty" xml:"TagName,omitempty"`
 }
 
@@ -896,8 +930,16 @@ func (s *GetAgentTaskResultResponseBodyDataResponseMultiLevelTagResponseTagListC
 
 type GetAgentTaskResultResponseBodyDataResponseMultiLevelTagResponseTagListChildrenChildrenChildrenChildren struct {
 	// The tag analysis description.
+	//
+	// example:
+	//
+	// Based on the customer conversation, the current tag is identified as Purchase compact refrigerators
 	Remarks *string `json:"Remarks,omitempty" xml:"Remarks,omitempty"`
 	// The tag name.
+	//
+	// example:
+	//
+	// Purchase compact refrigerators
 	TagName *string `json:"TagName,omitempty" xml:"TagName,omitempty"`
 }
 
@@ -932,7 +974,7 @@ func (s *GetAgentTaskResultResponseBodyDataResponseMultiLevelTagResponseTagListC
 }
 
 type GetAgentTaskResultResponseBodyDataResponseServiceInspectionResponse struct {
-	// The list of inspection items.
+	// The quality inspection item list.
 	ServiceInspectionVoList []*GetAgentTaskResultResponseBodyDataResponseServiceInspectionResponseServiceInspectionVoList `json:"ServiceInspectionVoList,omitempty" xml:"ServiceInspectionVoList,omitempty" type:"Repeated"`
 }
 
@@ -967,7 +1009,7 @@ func (s *GetAgentTaskResultResponseBodyDataResponseServiceInspectionResponse) Va
 }
 
 type GetAgentTaskResultResponseBodyDataResponseServiceInspectionResponseServiceInspectionVoList struct {
-	// The inspection dimension.
+	// The quality inspection dimension.
 	//
 	// example:
 	//
@@ -979,13 +1021,13 @@ type GetAgentTaskResultResponseBodyDataResponseServiceInspectionResponseServiceI
 	//
 	// true
 	IsMatch *bool `json:"IsMatch,omitempty" xml:"IsMatch,omitempty"`
-	// The sentences referenced in the reasoning.
+	// The sentences referenced for the judgment reason.
 	OriginalUtterances []*string `json:"OriginalUtterances,omitempty" xml:"OriginalUtterances,omitempty" type:"Repeated"`
-	// The reasoning for the judgment.
+	// The reason for the judgment.
 	//
 	// example:
 	//
-	// Determined from the first sentence of the customer service representative
+	// Determined based on the first sentence of the customer service representative
 	Remarks *string `json:"Remarks,omitempty" xml:"Remarks,omitempty"`
 }
 
@@ -1038,7 +1080,7 @@ func (s *GetAgentTaskResultResponseBodyDataResponseServiceInspectionResponseServ
 }
 
 type GetAgentTaskResultResponseBodyDataResponseTagCategoryResponse struct {
-	// The list of tags.
+	// The tag list.
 	TagCategoryVoList []*GetAgentTaskResultResponseBodyDataResponseTagCategoryResponseTagCategoryVoList `json:"TagCategoryVoList,omitempty" xml:"TagCategoryVoList,omitempty" type:"Repeated"`
 }
 
@@ -1085,15 +1127,15 @@ type GetAgentTaskResultResponseBodyDataResponseTagCategoryResponseTagCategoryVoL
 	//
 	// true
 	IsMatch *bool `json:"IsMatch,omitempty" xml:"IsMatch,omitempty"`
-	// The sentences referenced in the reasoning.
+	// The sentences referenced for the judgment reason.
 	OriginalUtterances []*string `json:"OriginalUtterances,omitempty" xml:"OriginalUtterances,omitempty" type:"Repeated"`
-	// The reasoning for the judgment.
+	// The reason for the judgment.
 	//
 	// example:
 	//
-	// Determined from the first sentence of the customer service representative
+	// Determined based on the first sentence of the customer service representative
 	Remarks *string `json:"Remarks,omitempty" xml:"Remarks,omitempty"`
-	// The list of matched labels.
+	// The list of matched tags.
 	ResultLabels []*string `json:"ResultLabels,omitempty" xml:"ResultLabels,omitempty" type:"Repeated"`
 }
 
@@ -1157,7 +1199,7 @@ func (s *GetAgentTaskResultResponseBodyDataResponseTagCategoryResponseTagCategor
 type GetAgentTaskResultResponseBodyDataResponseVoiceprintResponse struct {
 	// The dialogue corpus.
 	Dialogue []*GetAgentTaskResultResponseBodyDataResponseVoiceprintResponseDialogue `json:"Dialogue,omitempty" xml:"Dialogue,omitempty" type:"Repeated"`
-	// The error information of each sub-publishing module. The key is the sub-publishing module and the value is the error message.
+	// The error information of each sub-publishing module. The key is the sub-publishing module, and the value is the error message.
 	Errors []*GetAgentTaskResultResponseBodyDataResponseVoiceprintResponseErrors `json:"Errors,omitempty" xml:"Errors,omitempty" type:"Repeated"`
 }
 
@@ -1210,14 +1252,15 @@ func (s *GetAgentTaskResultResponseBodyDataResponseVoiceprintResponse) Validate(
 }
 
 type GetAgentTaskResultResponseBodyDataResponseVoiceprintResponseDialogue struct {
+	// The additional attributes of the current clause, such as speaker, voiceprint, gender, age, and emotion.
 	Additions *GetAgentTaskResultResponseBodyDataResponseVoiceprintResponseDialogueAdditions `json:"Additions,omitempty" xml:"Additions,omitempty" type:"Struct"`
-	// The start time of this sentence, which is the offset from the starting point in milliseconds.
+	// The start time of the sentence. This is the offset from the starting point, in milliseconds.
 	//
 	// example:
 	//
 	// 443
 	Begin *int64 `json:"Begin,omitempty" xml:"Begin,omitempty"`
-	// The end time of this sentence, which is the offset from the starting point in milliseconds.
+	// The end time of the sentence. This is the offset from the starting point, in milliseconds.
 	//
 	// example:
 	//
@@ -1227,7 +1270,7 @@ type GetAgentTaskResultResponseBodyDataResponseVoiceprintResponseDialogue struct
 	//
 	// example:
 	//
-	// Unclear
+	// I am not sure
 	Words *string `json:"Words,omitempty" xml:"Words,omitempty"`
 }
 
@@ -1309,7 +1352,7 @@ type GetAgentTaskResultResponseBodyDataResponseVoiceprintResponseDialogueAdditio
 	//
 	// 0.6
 	BestVoiceprintScore *float32 `json:"BestVoiceprintScore,omitempty" xml:"BestVoiceprintScore,omitempty"`
-	// The emotion type. Valid values:
+	// The emotion. Valid values:
 	//
 	// - angry
 	//
@@ -1351,7 +1394,7 @@ type GetAgentTaskResultResponseBodyDataResponseVoiceprintResponseDialogueAdditio
 	//
 	// 0.8
 	GenderScore *float32 `json:"GenderScore,omitempty" xml:"GenderScore,omitempty"`
-	// Indicates whether the speaker is the voiceprint owner.
+	// Indicates whether the speaker is the target of voiceprint recognition.
 	//
 	// example:
 	//
@@ -1468,13 +1511,13 @@ func (s *GetAgentTaskResultResponseBodyDataResponseVoiceprintResponseDialogueAdd
 }
 
 type GetAgentTaskResultResponseBodyDataResponseVoiceprintResponseErrors struct {
-	// The result code. A value of **200*	- indicates success. Any other value indicates failure. You can use this field to determine the cause of failure.
+	// The result code. A value of **200*	- indicates success, and any other value indicates failure. You can determine the cause of the failure based on this field.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The error details when an error occurs, or **successful*	- when the operation succeeds.
+	// The error details when an error occurs, or **successful*	- when the request is successful.
 	//
 	// example:
 	//
@@ -1513,17 +1556,35 @@ func (s *GetAgentTaskResultResponseBodyDataResponseVoiceprintResponseErrors) Val
 }
 
 type GetAgentTaskResultResponseBodyDataUsage struct {
-	// The number of input tokens consumed by the LLM.
-	InputTokens *string `json:"InputTokens,omitempty" xml:"InputTokens,omitempty"`
-	// The number of output tokens generated by the LLM.
-	OutputTokens *string `json:"OutputTokens,omitempty" xml:"OutputTokens,omitempty"`
-	// The total number of tokens consumed by this task.
+	// The number of input tokens for the LLM.
 	//
 	// example:
 	//
-	// 0
-	TotalTokens    *string `json:"TotalTokens,omitempty" xml:"TotalTokens,omitempty"`
-	TymxPlusCount  *string `json:"TymxPlusCount,omitempty" xml:"TymxPlusCount,omitempty"`
+	// 100
+	InputTokens *string `json:"InputTokens,omitempty" xml:"InputTokens,omitempty"`
+	// The number of output tokens for the LLM.
+	//
+	// example:
+	//
+	// 100
+	OutputTokens *string `json:"OutputTokens,omitempty" xml:"OutputTokens,omitempty"`
+	// The total number of tokens accumulated for this task.
+	//
+	// example:
+	//
+	// 200
+	TotalTokens *string `json:"TotalTokens,omitempty" xml:"TotalTokens,omitempty"`
+	// The cumulative number of plus model calls.
+	//
+	// example:
+	//
+	// 1
+	TymxPlusCount *string `json:"TymxPlusCount,omitempty" xml:"TymxPlusCount,omitempty"`
+	// The cumulative number of turbo model calls.
+	//
+	// example:
+	//
+	// 1
 	TymxTurboCount *string `json:"TymxTurboCount,omitempty" xml:"TymxTurboCount,omitempty"`
 }
 

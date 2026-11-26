@@ -30,50 +30,54 @@ type iGetResultResponseBody interface {
 }
 
 type GetResultResponseBody struct {
-	// Result code. `200` indicates success. Any other value indicates failure. Use this field to identify the cause of failure.
+	// The result code. A value of **200*	- indicates success, and any other value indicates failure. You can use this field to determine the cause of the failure.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// Total number of records.
+	// The total number of entries.
 	//
 	// example:
 	//
 	// 1
 	Count *int32                     `json:"Count,omitempty" xml:"Count,omitempty"`
 	Data  *GetResultResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// Error details if the request failed. Returns successful if the request succeeded.
+	// The error message. If an error occurs, this field displays the error details. If the request is successful, the value is successful.
 	//
 	// example:
 	//
 	// successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Current page number.
+	// The current page number.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// Number of records per page.
+	// The number of entries per page.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// Unique request ID.
+	// The request ID.
 	//
 	// example:
 	//
 	// 3CEA0495-341B-4482-9AD9-8191EF4***
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Reserved field. Ignore this field.
+	// The reserved field. This field is currently unused and can be ignored.
 	//
 	// example:
 	//
 	// XXX
 	ResultCountId *string `json:"ResultCountId,omitempty" xml:"ResultCountId,omitempty"`
-	// Indicates whether the request succeeded. A value of true means success. A value of false or null means failure.
+	// Indicates whether the request is successful. Valid values:
+	//
+	// - true: The request is successful.
+	//
+	// - false or null: The request failed.
 	//
 	// example:
 	//

@@ -40,7 +40,7 @@ type DelRuleCategoryResponseBody struct {
 	//
 	// example:
 	//
-	// xxx
+	// 4B0A8DCD-0DDF-5E80-8B9C-0A2F68B3403B
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 	// Indicates whether the request was successful.
 	//

@@ -17,6 +17,10 @@ type iDeleteSchemeTaskConfigRequest interface {
 
 type DeleteSchemeTaskConfigRequest struct {
 	// The workspace ID.
+	//
+	// example:
+	//
+	// 123456
 	BaseMeAgentId *int64 `json:"BaseMeAgentId,omitempty" xml:"BaseMeAgentId,omitempty"`
 	// A JSON object that contains the request parameters. For more information, see the parameter details.
 	//

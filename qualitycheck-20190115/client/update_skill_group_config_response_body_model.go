@@ -26,7 +26,7 @@ type UpdateSkillGroupConfigResponseBody struct {
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// If an error occurs, this field provides error details. If the request is successful, the value is \\`successful\\`.
+	// If an error occurs, this field provides error details. If the request is successful, the value is \`successful\`.
 	//
 	// example:
 	//
@@ -38,7 +38,7 @@ type UpdateSkillGroupConfigResponseBody struct {
 	//
 	// 38E7E948-0876-4FEE-B0AA-6*****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. A value of \\`true\\` indicates success. A value of \\`false\\` or \\`null\\` indicates failure.
+	// Indicates whether the request was successful. A value of \`true\` indicates success. A value of \`false\` or \`null\` indicates failure.
 	//
 	// example:
 	//

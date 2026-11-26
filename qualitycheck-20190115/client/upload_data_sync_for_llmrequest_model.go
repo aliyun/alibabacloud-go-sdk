@@ -28,7 +28,7 @@ type UploadDataSyncForLLMRequest struct {
 	//
 	// example:
 	//
-	// {\\"tickets\\":[{\\"dialogue\\":[{\\"role\\":\\"Agent\\",\\"words\\":\\"Yes\\",\\"end\\":0,\\"beginTime\\":1783909236618,\\"begin\\":0}],\\"tid\\":\\"20260713-20240612032225161783909236618\\"}],\\"commonRuleIds\\":[\\"20773\\"]}
+	// {\"tickets\":[{\"dialogue\":[{\"role\":\"Agent\",\"words\":\"Yes\",\"end\":0,\"beginTime\":1783909236618,\"begin\":0}],\"tid\":\"20260713-20240612032225161783909236618\"}],\"commonRuleIds\":[\"20773\"]}
 	JsonStr *string `json:"JsonStr,omitempty" xml:"JsonStr,omitempty"`
 }
 

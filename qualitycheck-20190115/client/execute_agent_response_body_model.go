@@ -22,13 +22,13 @@ type iExecuteAgentResponseBody interface {
 }
 
 type ExecuteAgentResponseBody struct {
-  // The status code. A value of 200 indicates success.
+  // The status code. A value of 200 indicates that the request is successful.
   // 
   // example:
   // 
   // 200
   Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-  // The returned result.
+  // The returned data.
   Data *ExecuteAgentResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
   // The error message returned when an error occurs.
   // 
@@ -42,7 +42,7 @@ type ExecuteAgentResponseBody struct {
   // 
   // F190ADE9-619A-447D-84E3-7E241A5C428E
   RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-  // Indicates whether the request was successful. The caller can use this field to determine whether the request was successful. Valid values: **true**: The request was successful. **false/null**: The request failed.
+  // Indicates whether the request is successful. You can use this field to determine the request result. **true*	- indicates success. **false*	- or **null*	- indicates failure.
   // 
   // example:
   // 
@@ -113,7 +113,7 @@ func (s *ExecuteAgentResponseBody) Validate() error {
 }
 
 type ExecuteAgentResponseBodyData struct {
-  // If streaming output is used, this value is null during generation. When generation is complete, the value is stop if the generation ended due to a stop token.
+  // The reason why the generation finished. For streaming output, this field is null during generation. If the generation stops due to a stop token, the value is stop.
   // 
   // example:
   // 
@@ -141,7 +141,7 @@ type ExecuteAgentResponseBodyData struct {
   // 
   // example:
   // 
-  // 这段对话似乎是客服与客户之间关于一个服务或产品的讨论，但具体内容难以明确理解，因为对话中的言语比较零散和抽象。
+  // This conversation appears to be a discussion between a customer service representative and a customer about a service or product, but the specific content is difficult to understand clearly because the language in the conversation is relatively fragmented and abstract
   Text *string `json:"Text,omitempty" xml:"Text,omitempty"`
   // The total number of tokens.
   // 
@@ -149,13 +149,13 @@ type ExecuteAgentResponseBodyData struct {
   // 
   // 300
   TotalTokens *int64 `json:"TotalTokens,omitempty" xml:"TotalTokens,omitempty"`
-  // The number of times the plus model was used.
+  // The number of times the plus model is used.
   // 
   // example:
   // 
   // 1
   TyxmPlusCount *string `json:"TyxmPlusCount,omitempty" xml:"TyxmPlusCount,omitempty"`
-  // The number of times the turbo model was used.
+  // The number of times the turbo model is used.
   // 
   // example:
   // 

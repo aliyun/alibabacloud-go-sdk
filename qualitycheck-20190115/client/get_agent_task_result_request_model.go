@@ -16,7 +16,7 @@ type iGetAgentTaskResultRequest interface {
 }
 
 type GetAgentTaskResultRequest struct {
-	// The ID of the workspace.
+	// The workspace ID.
 	//
 	// example:
 	//
@@ -26,7 +26,7 @@ type GetAgentTaskResultRequest struct {
 	//
 	// example:
 	//
-	// {\\"vid\\":\\"sip-11-1766561862.293393\\",\\"taskId\\":\\"20251224-D3B32484-2D53-5B53-A618-483A7941029E\\"}
+	// {\"vid\":\"sip-11-1766561862.293393\",\"taskId\":\"20251224-D3B32484-2D53-5B53-A618-483A7941029E\"}
 	JsonStr *string `json:"JsonStr,omitempty" xml:"JsonStr,omitempty"`
 }
 

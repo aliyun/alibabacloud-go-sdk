@@ -22,7 +22,7 @@ type iUpdateTagResponseBody interface {
 }
 
 type UpdateTagResponseBody struct {
-	// The result code. A value of **200*	- indicates success. Other values indicate failure. You can use this field to determine the cause of the failure.
+	// The result code. A value of **200*	- indicates success, whereas any other value indicates failure. You can use this field to determine the cause of the failure.
 	//
 	// example:
 	//
@@ -113,37 +113,37 @@ func (s *UpdateTagResponseBody) Validate() error {
 }
 
 type UpdateTagResponseBodyData struct {
-	// The time when the label node was created.
+	// The time when the tag node was created.
 	//
 	// example:
 	//
 	// 1748428991000
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The label description.
+	// The tag description.
 	//
 	// example:
 	//
-	// 涵盖退款、退货、维修、咨询等售后链路
+	// Covers after-sales processes such as refunds, returns, repairs, and consultations
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The time when the label node was last modified.
+	// The time when the tag node was last modified.
 	//
 	// example:
 	//
 	// 1748431368000
 	ModifyTime *int64 `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
-	// The label name.
+	// The tag name.
 	//
 	// example:
 	//
-	// 售后服务
+	// After-sales service
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The ID of the parent label node.
+	// The ID of the parent tag node.
 	//
 	// example:
 	//
 	// -1
 	ParentTagId *int64 `json:"ParentTagId,omitempty" xml:"ParentTagId,omitempty"`
-	// The label ID.
+	// The tag ID.
 	//
 	// example:
 	//

@@ -16,7 +16,7 @@ type iUpdateAgentRequest interface {
 }
 
 type UpdateAgentRequest struct {
-	// The business space ID.
+	// The workspace ID.
 	//
 	// example:
 	//

@@ -16,13 +16,17 @@ type iUpdateCheckTypeToSchemeRequest interface {
 }
 
 type UpdateCheckTypeToSchemeRequest struct {
-	// The baseMeAgentId.
-	BaseMeAgentId *int64 `json:"BaseMeAgentId,omitempty" xml:"BaseMeAgentId,omitempty"`
-	// Input parameter in JSON format. For more information, see the request parameters.
+	// The workspace ID.
 	//
 	// example:
 	//
-	// {"schemeId":"187","checkName":"服务规范性检测2","sourceScore":20,"checkType":0}
+	// 123456
+	BaseMeAgentId *int64 `json:"BaseMeAgentId,omitempty" xml:"BaseMeAgentId,omitempty"`
+	// The JSON string of the request parameters. For more information, see the supplementary description of request parameters.
+	//
+	// example:
+	//
+	// {"schemeId":"187","checkName":"Service compliance check 2","sourceScore":20,"checkType":0}
 	JsonStr *string `json:"jsonStr,omitempty" xml:"jsonStr,omitempty"`
 }
 

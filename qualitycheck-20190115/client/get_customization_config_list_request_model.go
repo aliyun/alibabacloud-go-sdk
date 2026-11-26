@@ -17,6 +17,10 @@ type iGetCustomizationConfigListRequest interface {
 
 type GetCustomizationConfigListRequest struct {
 	// The workspace ID.
+	//
+	// example:
+	//
+	// 123456
 	BaseMeAgentId *int64 `json:"BaseMeAgentId,omitempty" xml:"BaseMeAgentId,omitempty"`
 	// Set this parameter to an empty string.
 	//

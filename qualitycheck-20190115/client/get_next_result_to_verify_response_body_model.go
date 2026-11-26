@@ -30,7 +30,7 @@ type GetNextResultToVerifyResponseBody struct {
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// File details.
 	Data *GetNextResultToVerifyResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// Error details if an error occurs. If successful, the value is \\"successful\\".
+	// Error details if an error occurs. If successful, the value is \"successful\".
 	//
 	// example:
 	//
@@ -42,7 +42,7 @@ type GetNextResultToVerifyResponseBody struct {
 	//
 	// 106C6CA0-282D-4AF7-85F0-D2D24F4CE647
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. The caller can determine if the request was successful using this field: \\`true\\` indicates success; \\`false\\`/\\`null\\` indicates failure.
+	// Indicates whether the request was successful. The caller can determine if the request was successful using this field: \`true\` indicates success; \`false\`/\`null\` indicates failure.
 	//
 	// example:
 	//
@@ -180,7 +180,7 @@ type GetNextResultToVerifyResponseBodyData struct {
 	//
 	// 2020-03-20T11:26Z
 	UpdateTime *string `json:"UpdateTime,omitempty" xml:"UpdateTime,omitempty"`
-	// Indicates whether manual verification has been performed. Possible values: \\`false\\`: Not yet verified; \\`true\\`: Already verified.
+	// Indicates whether manual verification has been performed. Possible values: \`false\`: Not yet verified; \`true\`: Already verified.
 	//
 	// example:
 	//

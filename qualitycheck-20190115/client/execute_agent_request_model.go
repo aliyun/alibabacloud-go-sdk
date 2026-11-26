@@ -18,19 +18,19 @@ type iExecuteAgentRequest interface {
 }
 
 type ExecuteAgentRequest struct {
-  // The ID of the business workspace.
+  // The ID of the workspace.
   // 
   // example:
   // 
   // 123456
   BaseMeAgentId *int64 `json:"BaseMeAgentId,omitempty" xml:"BaseMeAgentId,omitempty"`
-  // The complete JSON string. For more information, see the following detailed description.
+  // The complete JSON string. For more information, see the following details.
   // 
   // example:
   // 
   // ""
   JsonStr *string `json:"JsonStr,omitempty" xml:"JsonStr,omitempty"`
-  // Specifies whether to enable Server-Sent Events (SSE) responses. Set to true to enable SSE responses. Default value: false.
+  // Specifies whether to enable Server-Sent Events (SSE) responses. Default value: false.
   // 
   // example:
   // 

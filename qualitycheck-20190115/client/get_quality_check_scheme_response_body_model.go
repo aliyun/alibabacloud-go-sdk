@@ -153,7 +153,7 @@ type GetQualityCheckSchemeResponseBodyData struct {
 	//
 	// example:
 	//
-	// xxx
+	// zhangsan
 	CreateUserName *string `json:"CreateUserName,omitempty" xml:"CreateUserName,omitempty"`
 	// The data type of the quality check plan. Valid values: 0 (text) and 1 (audio).
 	//
@@ -177,7 +177,7 @@ type GetQualityCheckSchemeResponseBodyData struct {
 	//
 	// example:
 	//
-	// xxx
+	// 示例质检方案
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The list of associated rule IDs.
 	RuleIds []*string `json:"RuleIds,omitempty" xml:"RuleIds,omitempty" type:"Repeated"`
@@ -225,7 +225,7 @@ type GetQualityCheckSchemeResponseBodyData struct {
 	//
 	// example:
 	//
-	// xxx
+	// lisi
 	UpdateUserName *string `json:"UpdateUserName,omitempty" xml:"UpdateUserName,omitempty"`
 	// The version number.
 	//

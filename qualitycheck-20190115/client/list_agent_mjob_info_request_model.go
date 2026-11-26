@@ -16,13 +16,13 @@ type iListAgentMJobInfoRequest interface {
 }
 
 type ListAgentMJobInfoRequest struct {
-	// The business space ID.
+	// The workspace ID.
 	//
 	// example:
 	//
 	// 12345
 	BaseMeAgentId *int64 `json:"BaseMeAgentId,omitempty" xml:"BaseMeAgentId,omitempty"`
-	// The complete JSON string. For more information, see the following detailed information.
+	// The complete JSON string. For more information, see the following details.
 	//
 	// example:
 	//

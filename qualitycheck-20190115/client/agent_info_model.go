@@ -26,13 +26,44 @@ type iAgentInfo interface {
 }
 
 type AgentInfo struct {
-	AgentDescription     *string                        `json:"AgentDescription,omitempty" xml:"AgentDescription,omitempty"`
-	AgentName            *string                        `json:"AgentName,omitempty" xml:"AgentName,omitempty"`
-	Id                   *int64                         `json:"Id,omitempty" xml:"Id,omitempty"`
-	InputType            *string                        `json:"InputType,omitempty" xml:"InputType,omitempty"`
-	InstructionType      *string                        `json:"InstructionType,omitempty" xml:"InstructionType,omitempty"`
+	// The description of the agent.
+	//
+	// example:
+	//
+	// Agent for customer service session quality inspection
+	AgentDescription *string `json:"AgentDescription,omitempty" xml:"AgentDescription,omitempty"`
+	// The name of the agent.
+	//
+	// example:
+	//
+	// Customer service quality inspection assistant
+	AgentName *string `json:"AgentName,omitempty" xml:"AgentName,omitempty"`
+	// The unique identifier of the agent configuration.
+	//
+	// example:
+	//
+	// 1001
+	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The object type for analysis. Valid values: audio and text.
+	//
+	// example:
+	//
+	// text
+	InputType *string `json:"InputType,omitempty" xml:"InputType,omitempty"`
+	// The instruction type. Valid values: serviceInspection (service quality inspection), field (key property extraction), tagCategory (label classification), multiLevelTag (multi-level label recognition), and customPrompt (custom instruction).
+	//
+	// example:
+	//
+	// field
+	InstructionType *string `json:"InstructionType,omitempty" xml:"InstructionType,omitempty"`
+	// The parameters corresponding to the instruction type. Different InstructionType values require different sub-parameters. Specify only the sub-parameters that correspond to the current InstructionType and leave the others empty.
 	InstructionTypeParam *AgentInfoInstructionTypeParam `json:"InstructionTypeParam,omitempty" xml:"InstructionTypeParam,omitempty" type:"Struct"`
-	ModelType            *string                        `json:"ModelType,omitempty" xml:"ModelType,omitempty"`
+	// The type of the large language model.
+	//
+	// example:
+	//
+	// qwen-max
+	ModelType *string `json:"ModelType,omitempty" xml:"ModelType,omitempty"`
 }
 
 func (s AgentInfo) String() string {
@@ -116,11 +147,16 @@ func (s *AgentInfo) Validate() error {
 }
 
 type AgentInfoInstructionTypeParam struct {
-	CustomPromptParam      *AgentInfoInstructionTypeParamCustomPromptParam      `json:"CustomPromptParam,omitempty" xml:"CustomPromptParam,omitempty" type:"Struct"`
-	FieldsParam            *AgentInfoInstructionTypeParamFieldsParam            `json:"FieldsParam,omitempty" xml:"FieldsParam,omitempty" type:"Struct"`
+	// The custom instruction parameters. Used when InstructionType is set to customPrompt.
+	CustomPromptParam *AgentInfoInstructionTypeParamCustomPromptParam `json:"CustomPromptParam,omitempty" xml:"CustomPromptParam,omitempty" type:"Struct"`
+	// The key attribute extraction parameters. Used when InstructionType is set to field.
+	FieldsParam *AgentInfoInstructionTypeParamFieldsParam `json:"FieldsParam,omitempty" xml:"FieldsParam,omitempty" type:"Struct"`
+	// The service quality inspection parameters. Used when InstructionType is set to serviceInspection.
 	ServiceInspectionParam *AgentInfoInstructionTypeParamServiceInspectionParam `json:"ServiceInspectionParam,omitempty" xml:"ServiceInspectionParam,omitempty" type:"Struct"`
-	TagCategoryParam       *AgentInfoInstructionTypeParamTagCategoryParam       `json:"TagCategoryParam,omitempty" xml:"TagCategoryParam,omitempty" type:"Struct"`
-	TagTreeLevelParam      *AgentInfoInstructionTypeParamTagTreeLevelParam      `json:"TagTreeLevelParam,omitempty" xml:"TagTreeLevelParam,omitempty" type:"Struct"`
+	// The label classification parameters. Used when InstructionType is set to tagCategory.
+	TagCategoryParam *AgentInfoInstructionTypeParamTagCategoryParam `json:"TagCategoryParam,omitempty" xml:"TagCategoryParam,omitempty" type:"Struct"`
+	// The multi-level tag recognition parameters. Used when InstructionType is set to multiLevelTag.
+	TagTreeLevelParam *AgentInfoInstructionTypeParamTagTreeLevelParam `json:"TagTreeLevelParam,omitempty" xml:"TagTreeLevelParam,omitempty" type:"Struct"`
 }
 
 func (s AgentInfoInstructionTypeParam) String() string {
@@ -206,7 +242,13 @@ func (s *AgentInfoInstructionTypeParam) Validate() error {
 }
 
 type AgentInfoInstructionTypeParamCustomPromptParam struct {
-	CustomPrompt     *string                                                           `json:"CustomPrompt,omitempty" xml:"CustomPrompt,omitempty"`
+	// The content of the user-defined prompt template. This parameter is required.
+	//
+	// example:
+	//
+	// Analyze the service attitude of the customer service representative in the following conversation
+	CustomPrompt *string `json:"CustomPrompt,omitempty" xml:"CustomPrompt,omitempty"`
+	// The list of name-value pairs attached to the custom instruction.
 	NameDescPairList []*AgentInfoInstructionTypeParamCustomPromptParamNameDescPairList `json:"NameDescPairList,omitempty" xml:"NameDescPairList,omitempty" type:"Repeated"`
 }
 
@@ -250,7 +292,17 @@ func (s *AgentInfoInstructionTypeParamCustomPromptParam) Validate() error {
 }
 
 type AgentInfoInstructionTypeParamCustomPromptParamNameDescPairList struct {
-	Name  *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The name.
+	//
+	// example:
+	//
+	// Scenario
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The value.
+	//
+	// example:
+	//
+	// After-sales inquiry
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -285,6 +337,7 @@ func (s *AgentInfoInstructionTypeParamCustomPromptParamNameDescPairList) Validat
 }
 
 type AgentInfoInstructionTypeParamFieldsParam struct {
+	// The list of attribute dimensions to be extracted.
 	NameDescPairList []*AgentInfoInstructionTypeParamFieldsParamNameDescPairList `json:"NameDescPairList,omitempty" xml:"NameDescPairList,omitempty" type:"Repeated"`
 }
 
@@ -319,8 +372,23 @@ func (s *AgentInfoInstructionTypeParamFieldsParam) Validate() error {
 }
 
 type AgentInfoInstructionTypeParamFieldsParamNameDescPairList struct {
-	Desc  *string `json:"Desc,omitempty" xml:"Desc,omitempty"`
-	Name  *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The attribute description. This parameter is optional.
+	//
+	// example:
+	//
+	// The specific request raised by the customer during the session
+	Desc *string `json:"Desc,omitempty" xml:"Desc,omitempty"`
+	// The attribute name. This parameter is required.
+	//
+	// example:
+	//
+	// Customer request
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The attribute value. In the key attribute extraction scenario, this is the extracted result value corresponding to the dimension.
+	//
+	// example:
+	//
+	// Refund
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -364,9 +432,20 @@ func (s *AgentInfoInstructionTypeParamFieldsParamNameDescPairList) Validate() er
 }
 
 type AgentInfoInstructionTypeParamServiceInspectionParam struct {
-	Dimensions       []*AgentInfoInstructionTypeParamServiceInspectionParamDimensions `json:"Dimensions,omitempty" xml:"Dimensions,omitempty" type:"Repeated"`
-	SceneDescription *string                                                          `json:"SceneDescription,omitempty" xml:"SceneDescription,omitempty"`
-	SceneName        *string                                                          `json:"SceneName,omitempty" xml:"SceneName,omitempty"`
+	// The list of quality inspection dimensions. This parameter is required.
+	Dimensions []*AgentInfoInstructionTypeParamServiceInspectionParamDimensions `json:"Dimensions,omitempty" xml:"Dimensions,omitempty" type:"Repeated"`
+	// The description of the quality inspection scenario. This parameter is optional.
+	//
+	// example:
+	//
+	// Service quality inspection for after-sales customer service sessions
+	SceneDescription *string `json:"SceneDescription,omitempty" xml:"SceneDescription,omitempty"`
+	// The name of the quality inspection scenario. This parameter is required.
+	//
+	// example:
+	//
+	// After-sales service quality inspection
+	SceneName *string `json:"SceneName,omitempty" xml:"SceneName,omitempty"`
 }
 
 func (s AgentInfoInstructionTypeParamServiceInspectionParam) String() string {
@@ -418,7 +497,17 @@ func (s *AgentInfoInstructionTypeParamServiceInspectionParam) Validate() error {
 }
 
 type AgentInfoInstructionTypeParamServiceInspectionParamDimensions struct {
-	Desc      *string `json:"Desc,omitempty" xml:"Desc,omitempty"`
+	// The dimension description. This parameter is optional.
+	//
+	// example:
+	//
+	// Whether the customer service representative is polite and patient
+	Desc *string `json:"Desc,omitempty" xml:"Desc,omitempty"`
+	// The dimension name. This parameter is required.
+	//
+	// example:
+	//
+	// Service attitude
 	Dimension *string `json:"Dimension,omitempty" xml:"Dimension,omitempty"`
 }
 
@@ -453,6 +542,7 @@ func (s *AgentInfoInstructionTypeParamServiceInspectionParamDimensions) Validate
 }
 
 type AgentInfoInstructionTypeParamTagCategoryParam struct {
+	// The list of label classification dimensions. This parameter is required.
 	NameDescPairList []*AgentInfoInstructionTypeParamTagCategoryParamNameDescPairList `json:"NameDescPairList,omitempty" xml:"NameDescPairList,omitempty" type:"Repeated"`
 }
 
@@ -487,8 +577,19 @@ func (s *AgentInfoInstructionTypeParamTagCategoryParam) Validate() error {
 }
 
 type AgentInfoInstructionTypeParamTagCategoryParamNameDescPairList struct {
-	Desc      *string   `json:"Desc,omitempty" xml:"Desc,omitempty"`
-	Name      *string   `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The dimension description.
+	//
+	// example:
+	//
+	// The classification of the types of issues consulted by the customer
+	Desc *string `json:"Desc,omitempty" xml:"Desc,omitempty"`
+	// The dimension name.
+	//
+	// example:
+	//
+	// Issue type
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The list of candidate tag values.
 	ValueList []*string `json:"ValueList,omitempty" xml:"ValueList,omitempty" type:"Repeated"`
 }
 
@@ -532,7 +633,9 @@ func (s *AgentInfoInstructionTypeParamTagCategoryParamNameDescPairList) Validate
 }
 
 type AgentInfoInstructionTypeParamTagTreeLevelParam struct {
-	TagIds        []*int64                                                       `json:"TagIds,omitempty" xml:"TagIds,omitempty" type:"Repeated"`
+	// The list of starting parent tag IDs at runtime. The first ID is treated as the matched parent tag, and recognition proceeds level by level from its child nodes, skipping the preceding levels. This field also takes effect when AgentId is specified.
+	TagIds []*int64 `json:"TagIds,omitempty" xml:"TagIds,omitempty" type:"Repeated"`
+	// The recognition configuration for each level, arranged in hierarchical order. This parameter is required.
 	TagTreeLevels []*AgentInfoInstructionTypeParamTagTreeLevelParamTagTreeLevels `json:"TagTreeLevels,omitempty" xml:"TagTreeLevels,omitempty" type:"Repeated"`
 }
 
@@ -576,7 +679,13 @@ func (s *AgentInfoInstructionTypeParamTagTreeLevelParam) Validate() error {
 }
 
 type AgentInfoInstructionTypeParamTagTreeLevelParamTagTreeLevels struct {
-	Prompt     *string  `json:"Prompt,omitempty" xml:"Prompt,omitempty"`
+	// The analysis prompt for this level. It is concatenated with the tag data and sent to the large language model. This parameter is required.
+	//
+	// example:
+	//
+	// Determine which tag category this conversation belongs to
+	Prompt *string `json:"Prompt,omitempty" xml:"Prompt,omitempty"`
+	// The list of candidate tag IDs for this level. A value of -1 indicates that all tags at this level are selected. This parameter is required.
 	TagTreeIds []*int64 `json:"TagTreeIds,omitempty" xml:"TagTreeIds,omitempty" type:"Repeated"`
 }
 

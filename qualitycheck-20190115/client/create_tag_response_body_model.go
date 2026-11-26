@@ -22,7 +22,7 @@ type iCreateTagResponseBody interface {
 }
 
 type CreateTagResponseBody struct {
-	// The result code. A value of **200*	- indicates success. Other values indicate failure. You can use this field to determine the cause of failure.
+	// The result code. A value of **200*	- indicates success, whereas other values indicate failure. You can determine the cause of the failure based on this field.
 	//
 	// example:
 	//
@@ -30,7 +30,7 @@ type CreateTagResponseBody struct {
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The returned result.
 	Data *CreateTagResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The error message, if any.
+	// The error message returned if an error occurs.
 	//
 	// example:
 	//
@@ -42,7 +42,11 @@ type CreateTagResponseBody struct {
 	//
 	// 106C6CA0-282D-4AF7-85F0-D2D24***
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the call was successful. Valid values: true: The call was successful. false: The call failed.
+	// Indicates whether the call was successful. Valid values:
+	//
+	// - true: The call was successful.
+	//
+	// - false: The call failed.
 	//
 	// example:
 	//
@@ -113,37 +117,37 @@ func (s *CreateTagResponseBody) Validate() error {
 }
 
 type CreateTagResponseBodyData struct {
-	// The time when the label node was created.
+	// The time when the tag node was created.
 	//
 	// example:
 	//
 	// 1748428991000
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The label description.
+	// The tag description.
 	//
 	// example:
 	//
-	// 用于归集售后服务相关的所有意图与 FAQ
+	// Used to aggregate all intents and FAQs related to after-sales service
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The time when the label node was last modified.
+	// The time when the tag node was last modified.
 	//
 	// example:
 	//
 	// 1748428991000
 	ModifyTime *int64 `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
-	// The label name.
+	// The tag name.
 	//
 	// example:
 	//
-	// 售后问题
+	// After-sales issue
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The parent label node ID.
+	// The parent tag node ID.
 	//
 	// example:
 	//
 	// -1
 	ParentTagId *int64 `json:"ParentTagId,omitempty" xml:"ParentTagId,omitempty"`
-	// The label ID.
+	// The tag ID.
 	//
 	// example:
 	//

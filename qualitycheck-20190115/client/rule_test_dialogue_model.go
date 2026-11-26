@@ -32,7 +32,7 @@ type RuleTestDialogue struct {
 	//
 	// example:
 	//
-	// xx
+	// 示例对话
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// group
 	//

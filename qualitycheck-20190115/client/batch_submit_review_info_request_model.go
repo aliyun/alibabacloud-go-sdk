@@ -17,6 +17,10 @@ type iBatchSubmitReviewInfoRequest interface {
 
 type BatchSubmitReviewInfoRequest struct {
 	// The workspace ID.
+	//
+	// example:
+	//
+	// 123456
 	BaseMeAgentId *int64 `json:"BaseMeAgentId,omitempty" xml:"BaseMeAgentId,omitempty"`
 	// The request parameters are provided in JSON format. For more information, see the supplementary description.
 	//

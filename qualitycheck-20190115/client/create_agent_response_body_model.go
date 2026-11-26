@@ -22,19 +22,19 @@ type iCreateAgentResponseBody interface {
 }
 
 type CreateAgentResponseBody struct {
-	// The result code. A value of **200*	- indicates success. Any other value indicates failure. You can use this field to determine the cause of the failure.
+	// The result code. A value of **200*	- indicates success, and other values indicate failure. You can use this field to determine the cause of the failure.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The AgentId of the task.
+	// The ID of the agent for the task.
 	//
 	// example:
 	//
 	// 12
 	Data *int64 `json:"Data,omitempty" xml:"Data,omitempty"`
-	// The error message, if any.
+	// The error message. This field is returned if an error occurs.
 	//
 	// example:
 	//
@@ -46,7 +46,11 @@ type CreateAgentResponseBody struct {
 	//
 	// 106C6CA0-282D-4AF7-85F0-D2D24***
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the call was successful. Valid values: true: The call was successful. false: The call failed.
+	// Specifies whether the call was successful. Valid values:
+	//
+	// - true: The call was successful.
+	//
+	// - false: The call failed.
 	//
 	// example:
 	//

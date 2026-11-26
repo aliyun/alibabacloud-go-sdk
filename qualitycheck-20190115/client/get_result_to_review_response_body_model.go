@@ -22,27 +22,27 @@ type iGetResultToReviewResponseBody interface {
 }
 
 type GetResultToReviewResponseBody struct {
-	// Result code. **200*	- means success. Any other value means failure. Use this field to identify the cause.
+	// The result code. A value of **200*	- indicates success, and any other value indicates failure. You can use this field to determine the cause of the failure.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// Detailed response data.
+	// The detailed response data.
 	Data *GetResultToReviewResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// Error details if the call fails. Returns **successful*	- on success.
+	// The error details when an error occurs, or **successful*	- when the request is successful.
 	//
 	// example:
 	//
 	// successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Request ID.
+	// The request ID.
 	//
 	// example:
 	//
 	// 82C91484-B2D5-4D2A-A21F-A6D73F4***
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request succeeded. true means success. **false*	- or **null*	- means failure.
+	// Indicates whether the request is successful. **true*	- indicates success, and **false*	- or **null*	- indicates failure.
 	//
 	// example:
 	//
@@ -113,32 +113,38 @@ func (s *GetResultToReviewResponseBody) Validate() error {
 }
 
 type GetResultToReviewResponseBodyData struct {
-	// Protocol used in the audio URL. Possible values: http, https.
+	// The manual review score.
+	//
+	// example:
+	//
+	// 100
+	ArtificialScore *float32 `json:"ArtificialScore,omitempty" xml:"ArtificialScore,omitempty"`
+	// The protocol of the audio URL. Valid values: http and https.
 	//
 	// example:
 	//
 	// https
 	AudioScheme *string `json:"AudioScheme,omitempty" xml:"AudioScheme,omitempty"`
-	// Audio URL without the protocol prefix (http\\:// or https\\://). Combine with AudioScheme to form the full URL.
+	// The audio URL, excluding http:// and https://. This value and AudioScheme form the complete URL.
 	//
 	// example:
 	//
 	// sca-ccc-test.oss-cn-beijing.aliyuncs.com/xxxxx
 	AudioURL *string `json:"AudioURL,omitempty" xml:"AudioURL,omitempty"`
-	// Review comments.
+	// The review comments.
 	//
 	// example:
 	//
-	// xxx
+	// Approved
 	Comments  *string                                     `json:"Comments,omitempty" xml:"Comments,omitempty"`
 	Dialogues *GetResultToReviewResponseBodyDataDialogues `json:"Dialogues,omitempty" xml:"Dialogues,omitempty" type:"Struct"`
-	// File ID.
+	// The file ID.
 	//
 	// example:
 	//
 	// e790e6c919d84b82b64ee*****
 	FileId *string `json:"FileId,omitempty" xml:"FileId,omitempty"`
-	// File name.
+	// The file name.
 	//
 	// example:
 	//
@@ -148,19 +154,31 @@ type GetResultToReviewResponseBodyData struct {
 	ManualScoreInfoList   *GetResultToReviewResponseBodyDataManualScoreInfoList   `json:"ManualScoreInfoList,omitempty" xml:"ManualScoreInfoList,omitempty" type:"Struct"`
 	ReviewHistoryList     *GetResultToReviewResponseBodyDataReviewHistoryList     `json:"ReviewHistoryList,omitempty" xml:"ReviewHistoryList,omitempty" type:"Struct"`
 	ReviewTypeIdList      *GetResultToReviewResponseBodyDataReviewTypeIdList      `json:"ReviewTypeIdList,omitempty" xml:"ReviewTypeIdList,omitempty" type:"Struct"`
-	// Current task status. 0: incomplete. 1: complete. Use this field to check completion. Any other value indicates an error.
+	// The automated check score.
+	//
+	// example:
+	//
+	// 100
+	SmartCheckScore *float32 `json:"SmartCheckScore,omitempty" xml:"SmartCheckScore,omitempty"`
+	// The current status of the task. Valid values:
+	//
+	// - 0: The task is not completed.
+	//
+	// - 1: The task is completed.
+	//
+	// You can use this field to determine whether the task is completed. Any other value indicates an error.
 	//
 	// example:
 	//
 	// 1
 	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
-	// Quality inspection score.
+	// The quality inspection score.
 	//
 	// example:
 	//
 	// 99
 	TotalScore *int32 `json:"TotalScore,omitempty" xml:"TotalScore,omitempty"`
-	// File ID.
+	// The file ID.
 	//
 	// example:
 	//
@@ -174,6 +192,10 @@ func (s GetResultToReviewResponseBodyData) String() string {
 
 func (s GetResultToReviewResponseBodyData) GoString() string {
 	return s.String()
+}
+
+func (s *GetResultToReviewResponseBodyData) GetArtificialScore() *float32 {
+	return s.ArtificialScore
 }
 
 func (s *GetResultToReviewResponseBodyData) GetAudioScheme() *string {
@@ -216,6 +238,10 @@ func (s *GetResultToReviewResponseBodyData) GetReviewTypeIdList() *GetResultToRe
 	return s.ReviewTypeIdList
 }
 
+func (s *GetResultToReviewResponseBodyData) GetSmartCheckScore() *float32 {
+	return s.SmartCheckScore
+}
+
 func (s *GetResultToReviewResponseBodyData) GetStatus() *int32 {
 	return s.Status
 }
@@ -226,6 +252,11 @@ func (s *GetResultToReviewResponseBodyData) GetTotalScore() *int32 {
 
 func (s *GetResultToReviewResponseBodyData) GetVid() *string {
 	return s.Vid
+}
+
+func (s *GetResultToReviewResponseBodyData) SetArtificialScore(v float32) *GetResultToReviewResponseBodyData {
+	s.ArtificialScore = &v
+	return s
 }
 
 func (s *GetResultToReviewResponseBodyData) SetAudioScheme(v string) *GetResultToReviewResponseBodyData {
@@ -275,6 +306,11 @@ func (s *GetResultToReviewResponseBodyData) SetReviewHistoryList(v *GetResultToR
 
 func (s *GetResultToReviewResponseBodyData) SetReviewTypeIdList(v *GetResultToReviewResponseBodyDataReviewTypeIdList) *GetResultToReviewResponseBodyData {
 	s.ReviewTypeIdList = v
+	return s
+}
+
+func (s *GetResultToReviewResponseBodyData) SetSmartCheckScore(v float32) *GetResultToReviewResponseBodyData {
+	s.SmartCheckScore = &v
 	return s
 }
 
@@ -1626,6 +1662,7 @@ type GetResultToReviewResponseBodyDataReviewHistoryListReviewHistory struct {
 	OldScore          *int32                                                                          `json:"OldScore,omitempty" xml:"OldScore,omitempty"`
 	Operator          *int64                                                                          `json:"Operator,omitempty" xml:"Operator,omitempty"`
 	OperatorName      *string                                                                         `json:"OperatorName,omitempty" xml:"OperatorName,omitempty"`
+	ReviewErrorRule   *GetResultToReviewResponseBodyDataReviewHistoryListReviewHistoryReviewErrorRule `json:"ReviewErrorRule,omitempty" xml:"ReviewErrorRule,omitempty" type:"Struct"`
 	ReviewManagerType *string                                                                         `json:"ReviewManagerType,omitempty" xml:"ReviewManagerType,omitempty"`
 	ReviewResult      *int32                                                                          `json:"ReviewResult,omitempty" xml:"ReviewResult,omitempty"`
 	ReviewRightRule   *GetResultToReviewResponseBodyDataReviewHistoryListReviewHistoryReviewRightRule `json:"ReviewRightRule,omitempty" xml:"ReviewRightRule,omitempty" type:"Struct"`
@@ -1661,6 +1698,10 @@ func (s *GetResultToReviewResponseBodyDataReviewHistoryListReviewHistory) GetOpe
 
 func (s *GetResultToReviewResponseBodyDataReviewHistoryListReviewHistory) GetOperatorName() *string {
 	return s.OperatorName
+}
+
+func (s *GetResultToReviewResponseBodyDataReviewHistoryListReviewHistory) GetReviewErrorRule() *GetResultToReviewResponseBodyDataReviewHistoryListReviewHistoryReviewErrorRule {
+	return s.ReviewErrorRule
 }
 
 func (s *GetResultToReviewResponseBodyDataReviewHistoryListReviewHistory) GetReviewManagerType() *string {
@@ -1716,6 +1757,11 @@ func (s *GetResultToReviewResponseBodyDataReviewHistoryListReviewHistory) SetOpe
 	return s
 }
 
+func (s *GetResultToReviewResponseBodyDataReviewHistoryListReviewHistory) SetReviewErrorRule(v *GetResultToReviewResponseBodyDataReviewHistoryListReviewHistoryReviewErrorRule) *GetResultToReviewResponseBodyDataReviewHistoryListReviewHistory {
+	s.ReviewErrorRule = v
+	return s
+}
+
 func (s *GetResultToReviewResponseBodyDataReviewHistoryListReviewHistory) SetReviewManagerType(v string) *GetResultToReviewResponseBodyDataReviewHistoryListReviewHistory {
 	s.ReviewManagerType = &v
 	return s
@@ -1752,12 +1798,76 @@ func (s *GetResultToReviewResponseBodyDataReviewHistoryListReviewHistory) SetTyp
 }
 
 func (s *GetResultToReviewResponseBodyDataReviewHistoryListReviewHistory) Validate() error {
+	if s.ReviewErrorRule != nil {
+		if err := s.ReviewErrorRule.Validate(); err != nil {
+			return err
+		}
+	}
 	if s.ReviewRightRule != nil {
 		if err := s.ReviewRightRule.Validate(); err != nil {
 			return err
 		}
 	}
 	return nil
+}
+
+type GetResultToReviewResponseBodyDataReviewHistoryListReviewHistoryReviewErrorRule struct {
+	ReviewErrorRule []*GetResultToReviewResponseBodyDataReviewHistoryListReviewHistoryReviewErrorRuleReviewErrorRule `json:"reviewErrorRule,omitempty" xml:"reviewErrorRule,omitempty" type:"Repeated"`
+}
+
+func (s GetResultToReviewResponseBodyDataReviewHistoryListReviewHistoryReviewErrorRule) String() string {
+	return dara.Prettify(s)
+}
+
+func (s GetResultToReviewResponseBodyDataReviewHistoryListReviewHistoryReviewErrorRule) GoString() string {
+	return s.String()
+}
+
+func (s *GetResultToReviewResponseBodyDataReviewHistoryListReviewHistoryReviewErrorRule) GetReviewErrorRule() []*GetResultToReviewResponseBodyDataReviewHistoryListReviewHistoryReviewErrorRuleReviewErrorRule {
+	return s.ReviewErrorRule
+}
+
+func (s *GetResultToReviewResponseBodyDataReviewHistoryListReviewHistoryReviewErrorRule) SetReviewErrorRule(v []*GetResultToReviewResponseBodyDataReviewHistoryListReviewHistoryReviewErrorRuleReviewErrorRule) *GetResultToReviewResponseBodyDataReviewHistoryListReviewHistoryReviewErrorRule {
+	s.ReviewErrorRule = v
+	return s
+}
+
+func (s *GetResultToReviewResponseBodyDataReviewHistoryListReviewHistoryReviewErrorRule) Validate() error {
+	if s.ReviewErrorRule != nil {
+		for _, item := range s.ReviewErrorRule {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
+	return nil
+}
+
+type GetResultToReviewResponseBodyDataReviewHistoryListReviewHistoryReviewErrorRuleReviewErrorRule struct {
+	Rid *int64 `json:"Rid,omitempty" xml:"Rid,omitempty"`
+}
+
+func (s GetResultToReviewResponseBodyDataReviewHistoryListReviewHistoryReviewErrorRuleReviewErrorRule) String() string {
+	return dara.Prettify(s)
+}
+
+func (s GetResultToReviewResponseBodyDataReviewHistoryListReviewHistoryReviewErrorRuleReviewErrorRule) GoString() string {
+	return s.String()
+}
+
+func (s *GetResultToReviewResponseBodyDataReviewHistoryListReviewHistoryReviewErrorRuleReviewErrorRule) GetRid() *int64 {
+	return s.Rid
+}
+
+func (s *GetResultToReviewResponseBodyDataReviewHistoryListReviewHistoryReviewErrorRuleReviewErrorRule) SetRid(v int64) *GetResultToReviewResponseBodyDataReviewHistoryListReviewHistoryReviewErrorRuleReviewErrorRule {
+	s.Rid = &v
+	return s
+}
+
+func (s *GetResultToReviewResponseBodyDataReviewHistoryListReviewHistoryReviewErrorRuleReviewErrorRule) Validate() error {
+	return dara.Validate(s)
 }
 
 type GetResultToReviewResponseBodyDataReviewHistoryListReviewHistoryReviewRightRule struct {

@@ -22,11 +22,11 @@ type DeleteAgentRequest struct {
 	//
 	// 123456
 	BaseMeAgentId *int64 `json:"BaseMeAgentId,omitempty" xml:"BaseMeAgentId,omitempty"`
-	// A JSON-formatted string. For more information about the complete JSON string, see the following details.
+	// The JSON-formatted string. For the complete JSON string information, see the following details.
 	//
 	// example:
 	//
-	// {\\"id\\":486}
+	// {\"id\":486}
 	JsonStr *string `json:"JsonStr,omitempty" xml:"JsonStr,omitempty"`
 }
 

@@ -17,14 +17,18 @@ type iGetSkillGroupConfigRequest interface {
 
 type GetSkillGroupConfigRequest struct {
 	// The workspace ID.
+	//
+	// example:
+	//
+	// 123456
 	BaseMeAgentId *int64 `json:"BaseMeAgentId,omitempty" xml:"BaseMeAgentId,omitempty"`
-	// The complete JSON string. For more information, see the details below.
+	// The complete JSON string. For more information, see the following details.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// {"id":"配置ID"}
+	// {"id":"Configuration ID"}
 	JsonStr *string `json:"JsonStr,omitempty" xml:"JsonStr,omitempty"`
 }
 

@@ -17,6 +17,10 @@ type iAssignReviewerRequest interface {
 
 type AssignReviewerRequest struct {
 	// Workspace ID
+	//
+	// example:
+	//
+	// 123456
 	BaseMeAgentId *int64 `json:"BaseMeAgentId,omitempty" xml:"BaseMeAgentId,omitempty"`
 	// A complete JSON string. For details, see the following sections.
 	//

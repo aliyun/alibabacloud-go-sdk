@@ -32,9 +32,9 @@ type DeleteAgentResponseBody struct {
 	//
 	// example:
 	//
-	// 无
+	// None
 	Data *bool `json:"Data,omitempty" xml:"Data,omitempty"`
-	// The error message, if any.
+	// The error message returned if an error occurs.
 	//
 	// example:
 	//
@@ -46,7 +46,7 @@ type DeleteAgentResponseBody struct {
 	//
 	// F190ADE9-619A-447D-84E3-7E241A5C428E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. Valid values: true: The request was successful. false/null: The request failed.
+	// Indicates whether the request is successful. A value of true indicates success. A value of false or null indicates failure.
 	//
 	// example:
 	//

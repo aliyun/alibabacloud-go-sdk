@@ -38,71 +38,71 @@ type iListRulesV4ResponseBody interface {
 }
 
 type ListRulesV4ResponseBody struct {
-	// Business type. This field has no practical use. Ignore it.
+	// The business type. This parameter has no practical meaning and can be ignored.
 	//
 	// example:
 	//
-	// 无
+	// None
 	BusinessType *int32 `json:"BusinessType,omitempty" xml:"BusinessType,omitempty"`
-	// Result code. **200*	- means success. Any other value means failure. Callers can use this field to identify the cause of failure.
+	// The result code. A value of **200*	- indicates success. Any other value indicates failure. You can determine the cause of the failure based on this parameter.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// Total number of items.
+	// The total number of entries.
 	//
 	// example:
 	//
 	// 219
 	Count *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
-	// Current page number.
+	// The current page number.
 	//
 	// example:
 	//
 	// 10
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// Response data.
+	// The returned results.
 	Data []*RuleCountInfo `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	// HTTP status code.
+	// The HTTP status code.
 	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// Error details if the request failed. Returns **successful*	- if the request succeeded.
+	// The error details when an error occurs, or **successful*	- when the request is successful.
 	//
 	// example:
 	//
 	// successful
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Error details if the request failed. Use this field when multiple messages are returned.
+	// The error details when an error occurs. This parameter is used when multiple messages are returned.
 	Messages []*string `json:"Messages,omitempty" xml:"Messages,omitempty" type:"Repeated"`
-	// Current page number.
+	// The current page number.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// Number of rows per page.
+	// The number of entries per page.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// Request ID.
+	// The request ID.
 	//
 	// example:
 	//
 	// 96138D8D-8D26-4E41-BFF4-77AED1088BBD
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request succeeded. Callers can use this field to determine success: true means success. **false*	- or **null*	- means failure.
+	// Indicates whether the request is successful. You can determine whether the request is successful based on this parameter. A value of **true*	- indicates success. A value of **false*	- or **null*	- indicates failure.
 	//
 	// example:
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// Total number of items.
+	// The total number of data entries.
 	//
 	// example:
 	//

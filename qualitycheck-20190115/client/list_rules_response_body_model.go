@@ -204,13 +204,13 @@ type ListRulesResponseBodyData struct {
 	//
 	// 1
 	RuleType *int32 `json:"RuleType,omitempty" xml:"RuleType,omitempty"`
-	// The type value of the rule\\"s rule type.
+	// The type value of the rule\"s rule type.
 	//
 	// example:
 	//
 	// 1
 	Type *int32 `json:"Type,omitempty" xml:"Type,omitempty"`
-	// The name of the rule\\"s rule type.
+	// The name of the rule\"s rule type.
 	//
 	// example:
 	//

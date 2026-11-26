@@ -30,7 +30,7 @@ type ListAgentMJobInfoResponseBody struct {
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The returned data.
 	Data []*ListAgentMJobInfoResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	// The error message, if an error occurs.
+	// The error message returned if an error occurs.
 	//
 	// example:
 	//
@@ -42,11 +42,7 @@ type ListAgentMJobInfoResponseBody struct {
 	//
 	// D10B9203-1A6A-49DA-AE56-4D160DD37DBC
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. Valid values:
-	//
-	// - true: The request was successful.
-	//
-	// - false/null: The request failed.
+	// Indicates whether the request was successful. A value of true indicates success, and a value of false or null indicates failure.
 	//
 	// example:
 	//
@@ -139,7 +135,7 @@ type ListAgentMJobInfoResponseBodyData struct {
 	//
 	// 3
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The error message, if an error occurs.
+	// The error message returned if an error occurs.
 	//
 	// example:
 	//
@@ -155,7 +151,7 @@ type ListAgentMJobInfoResponseBodyData struct {
 	//
 	// - error: The task failed.
 	//
-	// - finish: The task is complete.
+	// - finish: The task is completed.
 	//
 	// - fileUploadUser: The user-specified file is uploaded.
 	//
@@ -173,7 +169,7 @@ type ListAgentMJobInfoResponseBodyData struct {
 	//
 	// 2026-08-26 20:00:00
 	TaskEndTime *string `json:"TaskEndTime,omitempty" xml:"TaskEndTime,omitempty"`
-	// The scheduled task ID.
+	// The ID of the scheduled task.
 	//
 	// example:
 	//

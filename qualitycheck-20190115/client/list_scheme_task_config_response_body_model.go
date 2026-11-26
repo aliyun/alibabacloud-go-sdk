@@ -38,69 +38,69 @@ type iListSchemeTaskConfigResponseBody interface {
 }
 
 type ListSchemeTaskConfigResponseBody struct {
-	// Result code. **200*	- indicates success. Other values indicate failure. Callers can use this field to determine the cause of failure.
+	// The result code. A value of **200*	- indicates success. Any other value indicates failure. You can determine the cause of the failure based on this field.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// Total entries.
+	// The total number of entries.
 	//
 	// example:
 	//
 	// 22
 	Count *int32 `json:"Count,omitempty" xml:"Count,omitempty"`
-	// Current page number.
+	// The current page number.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *int32                                `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
 	Data        *ListSchemeTaskConfigResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// HTTP status code
+	// The HTTP status code.
 	//
 	// example:
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// This field marks the data. When querying more than 10,000 entries using GetResult, include the \\`lastDataId\\` of the last entry from the previous query in each request parameter.
+	// The identifier of the current data record. When you use the GetResult operation to query more than 10,000 data records, you must include the lastDataId value of the last data record from the previous query result in the request parameters of each subsequent request.
 	//
 	// example:
 	//
-	// xxx
+	// 1000
 	LastDataId *string `json:"LastDataId,omitempty" xml:"LastDataId,omitempty"`
-	// Provides error details on failure. For success, it is **successful**.
+	// The error details when an error occurs, or **successful*	- when the request is successful.
 	//
 	// example:
 	//
 	// successful
 	Message  *string                                   `json:"Message,omitempty" xml:"Message,omitempty"`
 	Messages *ListSchemeTaskConfigResponseBodyMessages `json:"Messages,omitempty" xml:"Messages,omitempty" type:"Struct"`
-	// Current page.
+	// The current page.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// Entries displayed per page.
+	// The number of entries per page.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// Request ID
+	// The request ID.
 	//
 	// example:
 	//
 	// 4B0A8DCD-0DDF-5E80-8B9C-0A2F68B3403B
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Internal field. Ignore it.
+	// An internal field. Ignore this field.
 	//
 	// example:
 	//
-	// 忽略
+	// Ignore
 	ResultCountId *string `json:"ResultCountId,omitempty" xml:"ResultCountId,omitempty"`
-	// Indicates whether the request was successful. Callers can use this field to determine if the request succeeded: \\`true\\` for success, \\`false\\`/\\`null\\` for failure.
+	// Indicates whether the request is successful. You can determine whether the request is successful based on this field. A value of true indicates success, and a value of false or null indicates failure.
 	//
 	// example:
 	//

@@ -22,7 +22,7 @@ type iGetTagResponseBody interface {
 }
 
 type GetTagResponseBody struct {
-	// The result code. A value of 200 indicates success. Other values indicate failure. You can use this field to determine the cause of a failure.
+	// The result code. A value of 200 indicates success, and other values indicate failure. You can determine the cause of the failure based on this field.
 	//
 	// example:
 	//
@@ -30,7 +30,7 @@ type GetTagResponseBody struct {
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
 	// The returned result.
 	Data *GetTagResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The error message, if any.
+	// The error message returned if an error occurs.
 	//
 	// example:
 	//
@@ -42,11 +42,7 @@ type GetTagResponseBody struct {
 	//
 	// 3CEA0495-341B-4482-9AD9-8191EF4***
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the call was successful. Valid values:
-	//
-	// - true: The call was successful.
-	//
-	// - false: The call failed.
+	// Indicates whether the call was successful. Valid values: true: The call was successful. false: The call failed.
 	//
 	// example:
 	//
@@ -123,17 +119,17 @@ type GetTagResponseBodyData struct {
 	//
 	// 5
 	ChildCount *int32 `json:"ChildCount,omitempty" xml:"ChildCount,omitempty"`
-	// The time when the label was created.
+	// The time when the tag was created.
 	//
 	// example:
 	//
 	// 1748428991000
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The label description.
+	// The tag description.
 	//
 	// example:
 	//
-	// 用于归集售后服务相关的所有意图与 FAQ
+	// Used to aggregate all intents and FAQs related to after-sales services
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The level of the current node.
 	//
@@ -141,25 +137,25 @@ type GetTagResponseBodyData struct {
 	//
 	// 2
 	Level *int32 `json:"Level,omitempty" xml:"Level,omitempty"`
-	// The time when the label was last modified.
+	// The time when the tag was last modified.
 	//
 	// example:
 	//
 	// 1748428991000
 	ModifyTime *int64 `json:"ModifyTime,omitempty" xml:"ModifyTime,omitempty"`
-	// The label name.
+	// The tag name.
 	//
 	// example:
 	//
-	// 售后问题
+	// After-sales issues
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The ID of the parent label node.
+	// The parent tag node ID.
 	//
 	// example:
 	//
 	// -1
 	ParentTagId *int64 `json:"ParentTagId,omitempty" xml:"ParentTagId,omitempty"`
-	// The label ID.
+	// The tag ID.
 	//
 	// example:
 	//

@@ -16,13 +16,13 @@ type iCreateAgentRequest interface {
 }
 
 type CreateAgentRequest struct {
-	// The business workspace ID.
+	// The workspace ID.
 	//
 	// example:
 	//
 	// 123456
 	BaseMeAgentId *int64 `json:"BaseMeAgentId,omitempty" xml:"BaseMeAgentId,omitempty"`
-	// The complete **JSON string*	- information. For more information, see the following details.
+	// The complete **JSON string**. For more information, see the following details.
 	//
 	// example:
 	//

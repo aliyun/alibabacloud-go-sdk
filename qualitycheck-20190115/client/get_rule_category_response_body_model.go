@@ -29,7 +29,7 @@ type GetRuleCategoryResponseBody struct {
 	// 200
 	Code *string                          `json:"Code,omitempty" xml:"Code,omitempty"`
 	Data *GetRuleCategoryResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// If an error occurs, this field provides error details. If the call is successful, the value is \\`successful\\`.
+	// If an error occurs, this field provides error details. If the call is successful, the value is \`successful\`.
 	//
 	// example:
 	//
@@ -41,7 +41,7 @@ type GetRuleCategoryResponseBody struct {
 	//
 	// F190ADE9-619A-447D-84E3-7E241A5C428E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the call was successful. A value of \\`true\\` indicates success. A value of \\`false\\` or \\`null\\` indicates failure.
+	// Indicates whether the call was successful. A value of \`true\` indicates success. A value of \`false\` or \`null\` indicates failure.
 	//
 	// example:
 	//

@@ -38,7 +38,7 @@ type iListSessionGroupResponseBody interface {
 }
 
 type ListSessionGroupResponseBody struct {
-	// The result code. A value of \\`200\\` indicates that the request was successful. Other values indicate that the request failed.
+	// The result code. A value of \`200\` indicates that the request was successful. Other values indicate that the request failed.
 	//
 	// example:
 	//
@@ -67,9 +67,9 @@ type ListSessionGroupResponseBody struct {
 	//
 	// example:
 	//
-	// xxx
+	// 1000
 	LastDataId *string `json:"LastDataId,omitempty" xml:"LastDataId,omitempty"`
-	// The error details if the request fails. \\`successful\\` is returned if the request is successful.
+	// The error details if the request fails. \`successful\` is returned if the request is successful.
 	//
 	// example:
 	//
@@ -100,7 +100,7 @@ type ListSessionGroupResponseBody struct {
 	//
 	// 忽略
 	ResultCountId *string `json:"ResultCountId,omitempty" xml:"ResultCountId,omitempty"`
-	// Indicates whether the request was successful. A value of \\`true\\` indicates that the request was successful. A value of \\`false\\` or \\`null\\` indicates that the request failed.
+	// Indicates whether the request was successful. A value of \`true\` indicates that the request was successful. A value of \`false\` or \`null\` indicates that the request failed.
 	//
 	// example:
 	//

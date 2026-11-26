@@ -60,7 +60,7 @@ type ConditionBasicInfo struct {
 	//
 	// example:
 	//
-	// xx
+	// 示例条件
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// List of operators
 	Operators []*OperatorBasicInfo `json:"Operators,omitempty" xml:"Operators,omitempty" type:"Repeated"`

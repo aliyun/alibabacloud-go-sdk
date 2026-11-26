@@ -17,6 +17,10 @@ type iGetRuleRequest interface {
 
 type GetRuleRequest struct {
 	// Workspace ID
+	//
+	// example:
+	//
+	// 123456
 	BaseMeAgentId *int64 `json:"BaseMeAgentId,omitempty" xml:"BaseMeAgentId,omitempty"`
 	// A complete JSON string. See the detailed information below.
 	//

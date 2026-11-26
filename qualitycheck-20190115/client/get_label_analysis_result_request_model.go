@@ -16,13 +16,13 @@ type iGetLabelAnalysisResultRequest interface {
 }
 
 type GetLabelAnalysisResultRequest struct {
-	// The business space ID.
+	// The workspace ID.
 	//
 	// example:
 	//
 	// 12345
 	BaseMeAgentId *int64 `json:"BaseMeAgentId,omitempty" xml:"BaseMeAgentId,omitempty"`
-	// The complete JSON string. For more information, see the following detailed description.
+	// The complete JSON string. For details, see the following information.
 	//
 	// example:
 	//

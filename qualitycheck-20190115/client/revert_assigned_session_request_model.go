@@ -17,6 +17,10 @@ type iRevertAssignedSessionRequest interface {
 
 type RevertAssignedSessionRequest struct {
 	// Workspace ID
+	//
+	// example:
+	//
+	// 123456
 	BaseMeAgentId *int64 `json:"BaseMeAgentId,omitempty" xml:"BaseMeAgentId,omitempty"`
 	// Input JSON. For details, see the request parameter description.
 	//

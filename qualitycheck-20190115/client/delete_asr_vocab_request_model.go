@@ -16,15 +16,19 @@ type iDeleteAsrVocabRequest interface {
 }
 
 type DeleteAsrVocabRequest struct {
-	// BaseMeAgentId
+	// The workspace ID.
+	//
+	// example:
+	//
+	// 123456
 	BaseMeAgentId *int64 `json:"BaseMeAgentId,omitempty" xml:"BaseMeAgentId,omitempty"`
-	// A complete JSON string. For details, see the table below.
+	// The complete JSON string. For more information, see the following details.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// {"vocabId":"指定热词Id"}
+	// {"vocabId":"Specified hot word ID"}
 	JsonStr *string `json:"JsonStr,omitempty" xml:"JsonStr,omitempty"`
 }
 

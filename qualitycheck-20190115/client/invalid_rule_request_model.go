@@ -17,6 +17,10 @@ type iInvalidRuleRequest interface {
 
 type InvalidRuleRequest struct {
 	// Workspace ID
+	//
+	// example:
+	//
+	// 123456
 	BaseMeAgentId *int64 `json:"BaseMeAgentId,omitempty" xml:"BaseMeAgentId,omitempty"`
 	// Full JSON string information. See the following details for specific content.
 	//

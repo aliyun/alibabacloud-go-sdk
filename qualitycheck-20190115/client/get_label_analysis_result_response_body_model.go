@@ -22,15 +22,15 @@ type iGetLabelAnalysisResultResponseBody interface {
 }
 
 type GetLabelAnalysisResultResponseBody struct {
-	// The response code. **200*	- indicates success. Other values indicate failure. You can use this field to determine the cause of the failure.
+	// The result code. A value of **200*	- indicates success. Other values indicate failure. You can use this field to determine the cause of the failure.
 	//
 	// example:
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The returned result.
+	// The returned results.
 	Data *GetLabelAnalysisResultResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The error message returned when the call fails.
+	// The error message returned when an error occurs.
 	//
 	// example:
 	//
@@ -42,11 +42,7 @@ type GetLabelAnalysisResultResponseBody struct {
 	//
 	// 3CEA0495-341B-4482-9AD9-8191EF4***
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the call was successful. Valid values:
-	//
-	// - true: The call was successful.
-	//
-	// - false: The call failed.
+	// Indicates whether the call was successful. Valid values: true: The call was successful. false: The call failed.
 	//
 	// example:
 	//
@@ -117,13 +113,13 @@ func (s *GetLabelAnalysisResultResponseBody) Validate() error {
 }
 
 type GetLabelAnalysisResultResponseBodyData struct {
-	// The total number of input tokens accumulated during this task.
+	// The total number of input tokens for this task.
 	//
 	// example:
 	//
 	// 7371
 	InputTokens *int64 `json:"InputTokens,omitempty" xml:"InputTokens,omitempty"`
-	// The total number of output tokens accumulated during this task.
+	// The total number of output tokens for this task.
 	//
 	// example:
 	//
@@ -131,19 +127,19 @@ type GetLabelAnalysisResultResponseBodyData struct {
 	OutputTokens *int64 `json:"OutputTokens,omitempty" xml:"OutputTokens,omitempty"`
 	// The tree-structured tag results.
 	TagList []*GetLabelAnalysisResultResponseBodyDataTagList `json:"TagList,omitempty" xml:"TagList,omitempty" type:"Repeated"`
-	// The total number of tokens accumulated during this task.
+	// The total number of tokens for this task.
 	//
 	// example:
 	//
 	// 7726
 	TotalTokens *int64 `json:"TotalTokens,omitempty" xml:"TotalTokens,omitempty"`
-	// The total number of Qwen-Plus model calls accumulated during this task.
+	// The total number of times the Qwen-Plus model was called for this task.
 	//
 	// example:
 	//
 	// 4
 	TyxmPlusCount *int64 `json:"TyxmPlusCount,omitempty" xml:"TyxmPlusCount,omitempty"`
-	// The total number of Qwen-Turbo model calls accumulated during this task.
+	// The total number of times the Qwen-Turbo model was called for this task.
 	//
 	// example:
 	//
@@ -229,17 +225,17 @@ func (s *GetLabelAnalysisResultResponseBodyData) Validate() error {
 type GetLabelAnalysisResultResponseBodyDataTagList struct {
 	// The list of child nodes.
 	Children []*GetLabelAnalysisResultResponseBodyDataTagListChildren `json:"Children,omitempty" xml:"Children,omitempty" type:"Repeated"`
-	// The description of the tag analysis.
+	// The tag analysis description.
 	//
 	// example:
 	//
-	// 用户在千问内通过高德打车支付17元失败，转支付宝后变原价；客服围绕支付失败与余额、实名认证、授权绑定进行排查。问题发生在千问调用高德打车场景，属千问×高德。
+	// The user failed to pay 17 CNY for an Amap ride-hailing service within Qwen. After switching to Alipay, the price changed to the original price. Customer service investigated the payment failure, balance, real-name verification, and authorization binding. The issue occurred in the scenario where Qwen calls the Amap ride-hailing service, which belongs to Qwen × Amap
 	Remarks *string `json:"Remarks,omitempty" xml:"Remarks,omitempty"`
 	// The tag name.
 	//
 	// example:
 	//
-	// 千问×高德
+	// Qwen × Amap
 	TagName *string `json:"TagName,omitempty" xml:"TagName,omitempty"`
 }
 
@@ -294,17 +290,17 @@ func (s *GetLabelAnalysisResultResponseBodyDataTagList) Validate() error {
 type GetLabelAnalysisResultResponseBodyDataTagListChildren struct {
 	// The list of child nodes.
 	Children []*GetLabelAnalysisResultResponseBodyDataTagListChildrenChildren `json:"Children,omitempty" xml:"Children,omitempty" type:"Repeated"`
-	// The description of the tag analysis.
+	// The tag analysis description.
 	//
 	// example:
 	//
-	// 用户在千问内通过高德打车支付17元失败，转支付宝后变原价；客服围绕支付失败与余额、实名认证、授权绑定进行排查。问题发生在千问调用高德打车场景，属千问×高德。
+	// The user failed to pay 17 CNY for an Amap ride-hailing service within Qwen. After switching to Alipay, the price changed to the original price. Customer service investigated the payment failure, balance, real-name verification, and authorization binding. The issue occurred in the scenario where Qwen calls the Amap ride-hailing service, which belongs to Qwen × Amap
 	Remarks *string `json:"Remarks,omitempty" xml:"Remarks,omitempty"`
 	// The tag name.
 	//
 	// example:
 	//
-	// 千问×高德
+	// Qwen × Amap
 	TagName *string `json:"TagName,omitempty" xml:"TagName,omitempty"`
 }
 
@@ -359,17 +355,17 @@ func (s *GetLabelAnalysisResultResponseBodyDataTagListChildren) Validate() error
 type GetLabelAnalysisResultResponseBodyDataTagListChildrenChildren struct {
 	// The list of child nodes.
 	Children []*GetLabelAnalysisResultResponseBodyDataTagListChildrenChildrenChildren `json:"Children,omitempty" xml:"Children,omitempty" type:"Repeated"`
-	// The description of the tag analysis.
+	// The tag analysis description.
 	//
 	// example:
 	//
-	// 用户在千问内通过高德打车支付17元失败，转支付宝后变原价；客服围绕支付失败与余额、实名认证、授权绑定进行排查。问题发生在千问调用高德打车场景，属千问×高德。
+	// The user failed to pay 17 CNY for an Amap ride-hailing service within Qwen. After switching to Alipay, the price changed to the original price. Customer service investigated the payment failure, balance, real-name verification, and authorization binding. The issue occurred in the scenario where Qwen calls the Amap ride-hailing service, which belongs to Qwen × Amap
 	Remarks *string `json:"Remarks,omitempty" xml:"Remarks,omitempty"`
 	// The tag name.
 	//
 	// example:
 	//
-	// 千问×高德
+	// Qwen × Amap
 	TagName *string `json:"TagName,omitempty" xml:"TagName,omitempty"`
 }
 
@@ -424,17 +420,17 @@ func (s *GetLabelAnalysisResultResponseBodyDataTagListChildrenChildren) Validate
 type GetLabelAnalysisResultResponseBodyDataTagListChildrenChildrenChildren struct {
 	// The list of child nodes.
 	Children []*GetLabelAnalysisResultResponseBodyDataTagListChildrenChildrenChildrenChildren `json:"Children,omitempty" xml:"Children,omitempty" type:"Repeated"`
-	// The description of the tag analysis.
+	// The tag analysis description.
 	//
 	// example:
 	//
-	// 用户在千问内通过高德打车支付17元失败，转支付宝后变原价；客服围绕支付失败与余额、实名认证、授权绑定进行排查。问题发生在千问调用高德打车场景，属千问×高德。
+	// The user failed to pay 17 CNY for an Amap ride-hailing service within Qwen. After switching to Alipay, the price changed to the original price. Customer service investigated the payment failure, balance, real-name verification, and authorization binding. The issue occurred in the scenario where Qwen calls the Amap ride-hailing service, which belongs to Qwen × Amap
 	Remarks *string `json:"Remarks,omitempty" xml:"Remarks,omitempty"`
 	// The tag name.
 	//
 	// example:
 	//
-	// 千问×高德
+	// Qwen × Amap
 	TagName *string `json:"TagName,omitempty" xml:"TagName,omitempty"`
 }
 
@@ -487,17 +483,17 @@ func (s *GetLabelAnalysisResultResponseBodyDataTagListChildrenChildrenChildren) 
 }
 
 type GetLabelAnalysisResultResponseBodyDataTagListChildrenChildrenChildrenChildren struct {
-	// The description of the tag analysis.
+	// The tag analysis description.
 	//
 	// example:
 	//
-	// 当前层级未命中有效标签
+	// No valid tag was matched at the current level
 	Remarks *string `json:"Remarks,omitempty" xml:"Remarks,omitempty"`
 	// The tag name.
 	//
 	// example:
 	//
-	// 无效会话
+	// Invalid session
 	TagName *string `json:"TagName,omitempty" xml:"TagName,omitempty"`
 }
 

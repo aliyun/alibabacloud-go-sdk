@@ -26,42 +26,43 @@ type iJudgeNodeMetaDesc interface {
 }
 
 type JudgeNodeMetaDesc struct {
-	// Actual value
+	// The actual value. **[Deprecated]**
 	//
 	// example:
 	//
-	// xx
+	// **[Deprecated]**
 	ActualValue *string `json:"ActualValue,omitempty" xml:"ActualValue,omitempty"`
-	// Data type
+	// The data type.
 	//
 	// example:
 	//
 	// 1
-	DataType           *int32                               `json:"DataType,omitempty" xml:"DataType,omitempty"`
+	DataType *int32 `json:"DataType,omitempty" xml:"DataType,omitempty"`
+	// **[Deprecated]**
 	ExpressionMetaDesc *JudgeNodeMetaDescExpressionMetaDesc `json:"ExpressionMetaDesc,omitempty" xml:"ExpressionMetaDesc,omitempty" type:"Struct"`
-	// System field
+	// The system field.
 	//
 	// example:
 	//
 	// remark1
 	Field *string `json:"Field,omitempty" xml:"Field,omitempty"`
-	// Field data source type: 1: System predefined field. 2: Quality inspection field for passed parameters.
+	// The field data source type. 1: System predefined field. 2: Parameter-passed quality inspection field.
 	//
 	// example:
 	//
 	// 1
 	FieldType *int32 `json:"FieldType,omitempty" xml:"FieldType,omitempty"`
-	// Expression
+	// The logical expression.
 	//
 	// example:
 	//
 	// 1
 	Symbol *int32 `json:"Symbol,omitempty" xml:"Symbol,omitempty"`
-	// Preset value
+	// The preset value. **[Deprecated]**
 	//
 	// example:
 	//
-	// xxx
+	// **[Deprecated]**
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
 }
 
@@ -146,12 +147,42 @@ func (s *JudgeNodeMetaDesc) Validate() error {
 }
 
 type JudgeNodeMetaDescExpressionMetaDesc struct {
-	LeftFieldType  *int32  `json:"LeftFieldType,omitempty" xml:"LeftFieldType,omitempty"`
-	LeftOperand    *string `json:"LeftOperand,omitempty" xml:"LeftOperand,omitempty"`
-	Operator       *string `json:"Operator,omitempty" xml:"Operator,omitempty"`
-	RightFieldType *int32  `json:"RightFieldType,omitempty" xml:"RightFieldType,omitempty"`
-	RightOperand   *string `json:"RightOperand,omitempty" xml:"RightOperand,omitempty"`
-	RoundingMode   *string `json:"RoundingMode,omitempty" xml:"RoundingMode,omitempty"`
+	// **[Deprecated]**
+	//
+	// example:
+	//
+	// **[Deprecated]**
+	LeftFieldType *int32 `json:"LeftFieldType,omitempty" xml:"LeftFieldType,omitempty"`
+	// **[Deprecated]**
+	//
+	// example:
+	//
+	// **[Deprecated]**
+	LeftOperand *string `json:"LeftOperand,omitempty" xml:"LeftOperand,omitempty"`
+	// **[Deprecated]**
+	//
+	// example:
+	//
+	// **[Deprecated]**
+	Operator *string `json:"Operator,omitempty" xml:"Operator,omitempty"`
+	// **[Deprecated]**
+	//
+	// example:
+	//
+	// **[Deprecated]**
+	RightFieldType *int32 `json:"RightFieldType,omitempty" xml:"RightFieldType,omitempty"`
+	// **[Deprecated]**
+	//
+	// example:
+	//
+	// **[Deprecated]**
+	RightOperand *string `json:"RightOperand,omitempty" xml:"RightOperand,omitempty"`
+	// **[Deprecated]**
+	//
+	// example:
+	//
+	// **[Deprecated]**
+	RoundingMode *string `json:"RoundingMode,omitempty" xml:"RoundingMode,omitempty"`
 }
 
 func (s JudgeNodeMetaDescExpressionMetaDesc) String() string {

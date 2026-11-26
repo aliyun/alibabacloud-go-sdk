@@ -34,7 +34,7 @@ type UpdateAgentResponseBody struct {
 	//
 	// true
 	Data *bool `json:"Data,omitempty" xml:"Data,omitempty"`
-	// The error message, if any.
+	// The error message returned if an error occurs.
 	//
 	// example:
 	//
@@ -46,11 +46,7 @@ type UpdateAgentResponseBody struct {
 	//
 	// 4987D326-83D9-4A42-B9A5-0B27F9B40539
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. The caller can use this field to determine whether the request was successful. Valid values:
-	//
-	// - true: The request was successful.
-	//
-	// - false/null: The request failed.
+	// Indicates whether the request is successful. A value of true indicates success, and a value of false or null indicates failure.
 	//
 	// example:
 	//

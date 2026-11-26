@@ -36,7 +36,7 @@ type BatchSubmitReviewInfoResponseBody struct {
 	//
 	// 200
 	HttpStatusCode *int32 `json:"HttpStatusCode,omitempty" xml:"HttpStatusCode,omitempty"`
-	// The error details if the request fails. If the request is successful, the value is \\`successful\\`.
+	// The error details if the request fails. If the request is successful, the value is \`successful\`.
 	//
 	// example:
 	//
@@ -49,7 +49,7 @@ type BatchSubmitReviewInfoResponseBody struct {
 	//
 	// F190ADE9-619A-447D-84E3-7E241A5C428E
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. A value of \\`true\\` indicates success. A value of \\`false\\` or \\`null\\` indicates failure.
+	// Indicates whether the request was successful. A value of \`true\` indicates success. A value of \`false\` or \`null\` indicates failure.
 	//
 	// example:
 	//

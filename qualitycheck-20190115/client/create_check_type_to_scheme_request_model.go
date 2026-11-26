@@ -17,6 +17,10 @@ type iCreateCheckTypeToSchemeRequest interface {
 
 type CreateCheckTypeToSchemeRequest struct {
 	// Workspace ID
+	//
+	// example:
+	//
+	// 12345
 	BaseMeAgentId *int64 `json:"BaseMeAgentId,omitempty" xml:"BaseMeAgentId,omitempty"`
 	// Request parameter in JSON format. For details, see the additional information about request parameters.
 	//

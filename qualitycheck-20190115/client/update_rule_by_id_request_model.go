@@ -23,6 +23,10 @@ type iUpdateRuleByIdRequest interface {
 
 type UpdateRuleByIdRequest struct {
 	// Workspace ID
+	//
+	// example:
+	//
+	// 123456
 	BaseMeAgentId *int64 `json:"BaseMeAgentId,omitempty" xml:"BaseMeAgentId,omitempty"`
 	// Whether to copy. Setting to true is equivalent to copying the rule.
 	//
@@ -42,7 +46,7 @@ type UpdateRuleByIdRequest struct {
 	//
 	// example:
 	//
-	// 1
+	// true
 	ReturnRelatedSchemes *bool `json:"ReturnRelatedSchemes,omitempty" xml:"ReturnRelatedSchemes,omitempty"`
 	// Rule ID. Not required when creating, required when modifying.
 	//

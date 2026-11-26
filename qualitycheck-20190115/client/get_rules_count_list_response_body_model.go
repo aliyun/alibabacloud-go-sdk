@@ -42,7 +42,7 @@ type GetRulesCountListResponseBody struct {
 	//
 	// example:
 	//
-	// 忽略
+	// 0
 	BusinessType *int32 `json:"BusinessType,omitempty" xml:"BusinessType,omitempty"`
 	// Result code. **200*	- indicates success. Any other value indicates failure. Use this field to identify the cause of failure.
 	//

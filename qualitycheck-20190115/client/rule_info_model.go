@@ -124,27 +124,27 @@ type iRuleInfo interface {
 }
 
 type RuleInfo struct {
-	// The review option. This parameter is used for compatibility with the v4.0 protocol. Valid values: `1` (Manual review) and `3` (Automatic review).
+	// The review option. Valid values: 1: no automatic review. 3: automatic review. This field is used for 4.0 protocol compatibility.
 	//
 	// example:
 	//
 	// 1
 	AutoReview *int32 `json:"AutoReview,omitempty" xml:"AutoReview,omitempty"`
-	// A list of business category names.
+	// The list of business category names.
 	BusinessCategoryNameList []*string `json:"BusinessCategoryNameList,omitempty" xml:"BusinessCategoryNameList,omitempty" type:"Repeated"`
-	// The check type. Valid values: `0` (Service compliance check), `1` (Service attitude check), `2` (Service professionalism check), `3` (Customer attitude check), and `4` (Service process correctness check).
+	// The check type. Valid values: 0: Service standard check. 1: Service attitude check. 2: Service professionalism check. 3: Customer attitude check. 4: Service process correctness check.
 	//
 	// example:
 	//
 	// 3
 	CheckType *int64 `json:"CheckType,omitempty" xml:"CheckType,omitempty"`
-	// Remarks on the rule.
+	// The comments.
 	//
 	// example:
 	//
-	// 违规
+	// Violation
 	Comments *string `json:"Comments,omitempty" xml:"Comments,omitempty"`
-	// The configuration type. This parameter is used for compatibility with the v4.0 protocol. Valid values: `1` (Simple condition configuration) and `2` (Advanced configuration). Default: `1`.
+	// The configuration type. This parameter is dedicated to the version 4.0 protocol. Valid values: 1: Simple condition configuration. 2: Advanced configuration. Default value: 1.
 	//
 	// example:
 	//
@@ -154,7 +154,7 @@ type RuleInfo struct {
 	//
 	// example:
 	//
-	// 张三
+	// Zhang San
 	CreateEmpName *string `json:"CreateEmpName,omitempty" xml:"CreateEmpName,omitempty"`
 	// The employee ID of the creator.
 	//
@@ -162,39 +162,39 @@ type RuleInfo struct {
 	//
 	// 1
 	CreateEmpid *string `json:"CreateEmpid,omitempty" xml:"CreateEmpid,omitempty"`
-	// The creation time. This value is a Unix timestamp in milliseconds.
+	// The creation time.
 	//
 	// example:
 	//
 	// 1641277321000
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// Indicates whether editing the rule is denied. Valid values: `1` (denied), `0` or `null` (allowed).
+	// The edit permission. Valid values: 1: Editing is denied. 0 or null: Editing is allowed.
 	//
 	// example:
 	//
 	// 1
 	Deny *int32 `json:"Deny,omitempty" xml:"Deny,omitempty"`
-	// A list of test dialogues.
+	// The test script.
 	Dialogues []*RuleTestDialogue `json:"Dialogues,omitempty" xml:"Dialogues,omitempty" type:"Repeated"`
-	// Indicates whether the rule is in effect. Valid values: `0` (No) and `1` (Yes).
+	// The effective status. Valid values: 0: Not effective. 1: Effective.
 	//
 	// example:
 	//
 	// 1
 	Effective *int32 `json:"Effective,omitempty" xml:"Effective,omitempty"`
-	// The effective end time of the rule.
+	// The effective end time.
 	//
 	// example:
 	//
 	// OperationMode
 	EffectiveEndTime *string `json:"EffectiveEndTime,omitempty" xml:"EffectiveEndTime,omitempty"`
-	// The effective start time of the rule.
+	// The effective start time.
 	//
 	// example:
 	//
 	// OperationMode
 	EffectiveStartTime *string `json:"EffectiveStartTime,omitempty" xml:"EffectiveStartTime,omitempty"`
-	// The end time. This value is a Unix timestamp in milliseconds.
+	// The end time.
 	//
 	// example:
 	//
@@ -206,67 +206,67 @@ type RuleInfo struct {
 	//
 	// 1
 	ExternalProperty *int32 `json:"ExternalProperty,omitempty" xml:"ExternalProperty,omitempty"`
-	// Indicates whether the rule is effective throughout its lifecycle. Valid values: `0` (No) and `1` (Yes).
+	// The full lifecycle effective status. Valid values: 0: No. 1: Yes.
 	//
 	// example:
 	//
 	// 1
 	FullCycle *int32 `json:"FullCycle,omitempty" xml:"FullCycle,omitempty"`
-	// The graph flow.
+	// The graph flow canvas.
 	//
 	// example:
 	//
 	// {}
 	GraphFlow interface{} `json:"GraphFlow,omitempty" xml:"GraphFlow,omitempty"`
-	// Indicates whether the rule is deleted.
+	// The deletion status.
 	//
 	// example:
 	//
 	// 1
 	IsDelete *int32 `json:"IsDelete,omitempty" xml:"IsDelete,omitempty"`
-	// Indicates whether the rule is online.
+	// The online status.
 	//
 	// example:
 	//
 	// 1
 	IsOnline *int32 `json:"IsOnline,omitempty" xml:"IsOnline,omitempty"`
-	// The conditional expression, such as `a&&b`.
+	// The conditional expression, such as a&&b.
 	//
 	// example:
 	//
 	// a&&b
 	Lambda *string `json:"Lambda,omitempty" xml:"Lambda,omitempty"`
-	// The name of the employee who last updated the rule.
+	// The name of the last updater.
 	//
 	// example:
 	//
-	// 张三
+	// Zhang San
 	LastUpdateEmpName *string `json:"LastUpdateEmpName,omitempty" xml:"LastUpdateEmpName,omitempty"`
-	// The ID of the employee who last updated the rule.
+	// The employee ID of the last updater.
 	//
 	// example:
 	//
 	// 1
 	LastUpdateEmpid *string `json:"LastUpdateEmpid,omitempty" xml:"LastUpdateEmpid,omitempty"`
-	// The last update time. This value is a Unix timestamp in milliseconds.
+	// The last update time.
 	//
 	// example:
 	//
 	// 1641277321000
 	LastUpdateTime *string `json:"LastUpdateTime,omitempty" xml:"LastUpdateTime,omitempty"`
-	// The severity level of the rule. Valid values: `0` (Severe violation), `1` (Moderate violation), and `2` (Minor violation).
+	// The rule level. Valid values: 0: Severe violation. 1: Moderate violation. 2: Minor violation.
 	//
 	// example:
 	//
 	// 1
 	Level *int32 `json:"Level,omitempty" xml:"Level,omitempty"`
-	// Indicates whether the conditions are met.
+	// The fulfillment status.
 	//
 	// example:
 	//
 	// 1
 	Meet *int32 `json:"Meet,omitempty" xml:"Meet,omitempty"`
-	// Indicates whether the rule has been modified within the quality check scheme.
+	// Specifies whether the rule is modified in the quality inspection scheme.
 	//
 	// example:
 	//
@@ -276,16 +276,17 @@ type RuleInfo struct {
 	//
 	// example:
 	//
-	// 开头语规则
+	// Greeting rule
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The operation mode.
 	//
 	// example:
 	//
 	// 1
-	OperationMode *int32            `json:"OperationMode,omitempty" xml:"OperationMode,omitempty"`
-	PreqRule      *RuleInfoPreqRule `json:"PreqRule,omitempty" xml:"PreqRule,omitempty" type:"Struct"`
-	// The quality check type. This parameter is used for compatibility with the v4.0 protocol. Valid values: `0` (offline quality check) and `1` (real-time quality check).
+	OperationMode *int32 `json:"OperationMode,omitempty" xml:"OperationMode,omitempty"`
+	// The prerequisite rule.
+	PreqRule *RuleInfoPreqRule `json:"PreqRule,omitempty" xml:"PreqRule,omitempty" type:"Struct"`
+	// The quality check type. This parameter is used for compatibility with version 4.0 logic. Valid values: 0: Offline quality check. 1: Real-time quality check.
 	//
 	// example:
 	//
@@ -297,19 +298,19 @@ type RuleInfo struct {
 	//
 	// 1
 	Rid *string `json:"Rid,omitempty" xml:"Rid,omitempty"`
-	// The name of the rule category.
+	// The rule category name.
 	//
 	// example:
 	//
-	// 正向规则
+	// Positive rule
 	RuleCategoryName *string `json:"RuleCategoryName,omitempty" xml:"RuleCategoryName,omitempty"`
-	// Specifies whether to score the rule. This parameter is used for compatibility with the v4.0 protocol. Valid values: `1` (Do not score) and `3` (Score).
+	// Specifies whether to calculate the score. Valid values: 1: no scoring. 3: scoring. This field is used for 4.0 protocol compatibility.
 	//
 	// example:
 	//
 	// 3
 	RuleScoreType *int32 `json:"RuleScoreType,omitempty" xml:"RuleScoreType,omitempty"`
-	// The rule type. This parameter is used for compatibility with the v4.0 protocol. Valid values: `0` (Default) and `1` (User-created).
+	// The rule type. Valid values: 0: default. 1: user-created. This field is used for 4.0 logic compatibility.
 	//
 	// example:
 	//
@@ -317,7 +318,7 @@ type RuleInfo struct {
 	RuleType *int32 `json:"RuleType,omitempty" xml:"RuleType,omitempty"`
 	// The quality check dimension object.
 	SchemeCheckType *SchemeCheckType `json:"SchemeCheckType,omitempty" xml:"SchemeCheckType,omitempty"`
-	// The ID of the quality check scheme to which the rule belongs.
+	// The ID of the associated quality check scheme.
 	//
 	// example:
 	//
@@ -327,7 +328,7 @@ type RuleInfo struct {
 	//
 	// example:
 	//
-	// 通用方案
+	// General scheme
 	SchemeName *string `json:"SchemeName,omitempty" xml:"SchemeName,omitempty"`
 	// The mapping ID between the quality check scheme and the rule.
 	//
@@ -335,13 +336,13 @@ type RuleInfo struct {
 	//
 	// 1
 	SchemeRuleMappingId *int64 `json:"SchemeRuleMappingId,omitempty" xml:"SchemeRuleMappingId,omitempty"`
-	// Indicates whether the scoring item is deleted. A deleted item may be displayed as grayed out.
+	// The deletion status of the scoring item, which is used to gray out the item when it is deleted.
 	//
 	// example:
 	//
 	// true
 	ScoreDeleted *bool `json:"ScoreDeleted,omitempty" xml:"ScoreDeleted,omitempty"`
-	// The ID of the main scoring item.
+	// The score category ID.
 	//
 	// example:
 	//
@@ -351,7 +352,7 @@ type RuleInfo struct {
 	//
 	// example:
 	//
-	// 违规
+	// Violation
 	ScoreName *string `json:"ScoreName,omitempty" xml:"ScoreName,omitempty"`
 	// The score value.
 	//
@@ -359,81 +360,81 @@ type RuleInfo struct {
 	//
 	// 1
 	ScoreNum *float32 `json:"ScoreNum,omitempty" xml:"ScoreNum,omitempty"`
-	// The scoring method. This parameter is used for compatibility with the v4.0 protocol. Valid values: `0` (Add/deduct points when the rule is triggered) and `1` (Assign a one-time score when the rule is triggered).
+	// The score calculation type. This parameter is dedicated to the version 4.0 protocol. Valid values: 0: Add or deduct points after the rule is triggered. 1: Award a one-time score after the rule is triggered.
 	//
 	// example:
 	//
 	// 1
 	ScoreNumType *int32 `json:"ScoreNumType,omitempty" xml:"ScoreNumType,omitempty"`
-	// The scoring trigger. Valid values: `0` (Score when a node is hit).
+	// The score rule hit type. Valid values: 0: Score is calculated when a node is hit.
 	//
 	// example:
 	//
 	// 0
 	ScoreRuleHitType *int32 `json:"ScoreRuleHitType,omitempty" xml:"ScoreRuleHitType,omitempty"`
-	// The ID of the scoring subitem.
+	// The sub-item ID.
 	//
 	// example:
 	//
 	// 1
 	ScoreSubId *int64 `json:"ScoreSubId,omitempty" xml:"ScoreSubId,omitempty"`
-	// The name of the scoring subitem.
+	// The sub-scoring item.
 	//
 	// example:
 	//
 	// 1
 	ScoreSubName *string `json:"ScoreSubName,omitempty" xml:"ScoreSubName,omitempty"`
-	// Indicates whether to add or deduct points.
+	// The score adjustment type.
 	//
 	// example:
 	//
 	// 1
 	ScoreType *int32 `json:"ScoreType,omitempty" xml:"ScoreType,omitempty"`
-	// The sort order of the rule in the quality check dimension.
+	// The sort order within the quality inspection dimension.
 	//
 	// example:
 	//
 	// 1
 	SortIndex *int32 `json:"SortIndex,omitempty" xml:"SortIndex,omitempty"`
-	// The start time. This value is a Unix timestamp in milliseconds.
+	// The start time.
 	//
 	// example:
 	//
 	// 1641277321000
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// The status of the rule.
+	// The rule status.
 	//
 	// example:
 	//
 	// 1
 	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The rule category. This parameter is used for compatibility with the v4.0 protocol. Valid values: `10` (General rule for quality check schemes) and `11` (Flow rule for quality check schemes).
+	// The rule category. This parameter is dedicated to the version 4.0 protocol. Valid values: 10: General rule for quality check scheme. 11: Process rule for quality check scheme.
 	//
 	// example:
 	//
 	// 10
 	TargetType *int32 `json:"TargetType,omitempty" xml:"TargetType,omitempty"`
-	// The ID of the flowchart.
+	// The flow canvas ID.
 	//
 	// example:
 	//
 	// 111111111
 	TaskFlowId *int64 `json:"TaskFlowId,omitempty" xml:"TaskFlowId,omitempty"`
-	// The type of the flowchart. This parameter is deprecated. The default value is `1`.
+	// **[Deprecated]*	- The task flow type. Default value: -1.
 	//
 	// example:
 	//
 	// 1
 	TaskFlowType *int32 `json:"TaskFlowType,omitempty" xml:"TaskFlowType,omitempty"`
-	// A list of triggers.
+	// The list of trigger conditions.
 	Triggers []*string `json:"Triggers,omitempty" xml:"Triggers,omitempty" type:"Repeated"`
-	// The rule category. This parameter is used for compatibility with the v4.0 protocol. Valid values: `2` (Public opinion monitoring) and `3` (Business).
+	// The rule category. Valid values: 2: public opinion monitoring. 3: business. This field is used for 4.0 logic compatibility.
 	//
 	// example:
 	//
 	// 2
 	Type *int32 `json:"Type,omitempty" xml:"Type,omitempty"`
-	// The weight of the rule.
+	// The weight.
 	//
 	// example:
 	//
@@ -977,6 +978,11 @@ func (s *RuleInfo) Validate() error {
 }
 
 type RuleInfoPreqRule struct {
+	// The prerequisite rule ID.
+	//
+	// example:
+	//
+	// 1
 	Rid *string `json:"Rid,omitempty" xml:"Rid,omitempty"`
 }
 

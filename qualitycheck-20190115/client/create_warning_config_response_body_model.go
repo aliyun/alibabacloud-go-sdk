@@ -34,7 +34,7 @@ type CreateWarningConfigResponseBody struct {
 	//
 	// 30
 	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	// Error details when an error occurs. Returns \\"successful\\" on success.
+	// Error details when an error occurs. Returns \"successful\" on success.
 	//
 	// example:
 	//

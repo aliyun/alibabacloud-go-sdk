@@ -17,6 +17,10 @@ type iListUsersRequest interface {
 
 type ListUsersRequest struct {
 	// The workspace ID.
+	//
+	// example:
+	//
+	// 123456
 	BaseMeAgentId *int64 `json:"BaseMeAgentId,omitempty" xml:"BaseMeAgentId,omitempty"`
 	// The complete JSON string. For more information, see the details below.
 	//

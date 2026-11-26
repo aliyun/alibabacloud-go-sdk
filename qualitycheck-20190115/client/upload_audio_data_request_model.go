@@ -16,13 +16,13 @@ type iUploadAudioDataRequest interface {
 }
 
 type UploadAudioDataRequest struct {
-	// The business space ID. In multi-business space scenarios, this parameter specifies the business space to use. Default value: the default business space.
+	// The workspace ID. This parameter is used to select a specific workspace in multi-workspace scenarios. Default value: the default workspace.
 	//
 	// example:
 	//
 	// 123456
 	BaseMeAgentId *int64 `json:"BaseMeAgentId,omitempty" xml:"BaseMeAgentId,omitempty"`
-	// The complete JSON string. For details about the content, see the following detailed information.
+	// The complete JSON string. For details, see the following information.
 	//
 	// This parameter is required.
 	//

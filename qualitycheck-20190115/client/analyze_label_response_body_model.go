@@ -22,7 +22,7 @@ type iAnalyzeLabelResponseBody interface {
 }
 
 type AnalyzeLabelResponseBody struct {
-	// The result code. A value of **200*	- indicates success. Other values indicate failure. You can use this field to determine the cause of the failure.
+	// The result code. A value of **200*	- indicates success, whereas other values indicate failure. You can determine the cause of the failure based on this field.
 	//
 	// example:
 	//
@@ -34,7 +34,7 @@ type AnalyzeLabelResponseBody struct {
 	//
 	// 20260629-DCC646E7-BE7F-114E-9F32-0C928292FC7F
 	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
-	// The error message, if any.
+	// The error message returned if an error occurs.
 	//
 	// example:
 	//
@@ -46,7 +46,11 @@ type AnalyzeLabelResponseBody struct {
 	//
 	// 106C6CA0-282D-4AF7-85F0-D2D24***
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the call was successful. true: The call was successful. false: The call failed.
+	// Indicates whether the call was successful. Valid values:
+	//
+	// - true: The call was successful.
+	//
+	// - false: The call failed.
 	//
 	// example:
 	//

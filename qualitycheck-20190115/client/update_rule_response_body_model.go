@@ -32,7 +32,7 @@ type UpdateRuleResponseBody struct {
 	//
 	// example:
 	//
-	// xxx
+	// 100
 	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
 	// Details about the error if the call fails. Returns **successful*	- if the call succeeds.
 	//

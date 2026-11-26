@@ -17,6 +17,10 @@ type iAssignReviewerBySessionGroupRequest interface {
 
 type AssignReviewerBySessionGroupRequest struct {
 	// Workspace ID
+	//
+	// example:
+	//
+	// 12345
 	BaseMeAgentId *int64 `json:"BaseMeAgentId,omitempty" xml:"BaseMeAgentId,omitempty"`
 	// For details, see Additional Information for Request Parameters.
 	//

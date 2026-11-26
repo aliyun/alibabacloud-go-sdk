@@ -66,150 +66,159 @@ type iListRulesV4Request interface {
 }
 
 type ListRulesV4Request struct {
-	// Workspace ID.
+	// The ID of the business workspace.
+	//
+	// example:
+	//
+	// 123456
 	BaseMeAgentId *int64 `json:"BaseMeAgentId,omitempty" xml:"BaseMeAgentId,omitempty"`
-	// Name of the business that owns the rule.
+	// The name of the business to which the rule belongs.
 	//
 	// example:
 	//
-	// 所有业务
+	// All businesses
 	BusinessName *string `json:"BusinessName,omitempty" xml:"BusinessName,omitempty"`
-	// Top-level business category.
+	// The major business category.
 	//
 	// example:
 	//
-	// 无
+	// None
 	BusinessRange *int32 `json:"BusinessRange,omitempty" xml:"BusinessRange,omitempty"`
-	// Category name.
+	// The category name.
 	//
 	// example:
 	//
-	// 分类名称A
+	// Category name A
 	CategoryName *string `json:"CategoryName,omitempty" xml:"CategoryName,omitempty"`
-	// Whether to count the total number of items.
+	// Specifies whether to count the total number of entries.
 	//
 	// example:
 	//
 	// false
 	CountTotal *bool `json:"CountTotal,omitempty" xml:"CountTotal,omitempty"`
-	// ID of the rule creator. Same as CreateUserId. Specify one only.
+	// The ID of the rule creator. This parameter is equivalent to CreateUserId. Specify only one of them.
 	//
 	// example:
 	//
 	// 1
 	CreateEmpid *string `json:"CreateEmpid,omitempty" xml:"CreateEmpid,omitempty"`
-	// ID of the rule creator. Same as CreateEmpId. Specify one only.
+	// The ID of the rule creator. This parameter is equivalent to CreateEmpid. Specify only one of them.
 	//
 	// example:
 	//
 	// 1
 	CreateUserId *int64 `json:"CreateUserId,omitempty" xml:"CreateUserId,omitempty"`
-	// Current page number.
+	// The current page number.
 	//
 	// example:
 	//
 	// 1
 	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// Filter by creation time (right boundary).
+	// The end time for filtering by creation time.
 	//
 	// example:
 	//
 	// 2021-11-29 19:11:09
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
-	// ID of the rule updater. Same as UpdateUserId. Specify one only.
+	// The ID of the rule updater. This parameter is equivalent to UpdateUserId. Specify only one of them.
 	//
 	// example:
 	//
 	// 1
 	LastUpdateEmpid *string `json:"LastUpdateEmpid,omitempty" xml:"LastUpdateEmpid,omitempty"`
-	// Current page number.
+	// The current page number.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// Number of items per page.
+	// The number of entries to return on each page.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// Required fields.
+	// The required fields.
 	RequireInfos []*string `json:"RequireInfos,omitempty" xml:"RequireInfos,omitempty" type:"Repeated"`
-	// Search by rule ID.
+	// The rule ID to search for.
 	//
 	// example:
 	//
 	// 895EAD5312634F5AA708E3B3FA79662E
 	Rid *int64 `json:"Rid,omitempty" xml:"Rid,omitempty"`
-	// Search by rule ID or rule name.
+	// The rule ID or rule name to search for.
 	//
 	// example:
 	//
 	// xx
 	RuleIdOrRuleName *string `json:"RuleIdOrRuleName,omitempty" xml:"RuleIdOrRuleName,omitempty"`
-	// Scoring type.
+	// The scoring type.
 	//
 	// example:
 	//
 	// 1
 	RuleScoreSingleType *int32 `json:"RuleScoreSingleType,omitempty" xml:"RuleScoreSingleType,omitempty"`
-	// Rule category.
+	// The rule category.
 	//
 	// example:
 	//
 	// 1
 	RuleType *int32 `json:"RuleType,omitempty" xml:"RuleType,omitempty"`
-	// Quality inspection scheme ID.
+	// The ID of the quality inspection plan.
 	//
 	// example:
 	//
 	// 1000000090
 	SchemeId *int64 `json:"SchemeId,omitempty" xml:"SchemeId,omitempty"`
-	// Source type.
+	// The source type.
 	//
 	// example:
 	//
 	// 0
 	SourceType *int32 `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
-	// Filter by creation time (left boundary).
+	// The start time for filtering by creation time.
 	//
 	// example:
 	//
 	// 2021-11-29 18:11:09
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
-	// Rule status.
+	// The rule status.
 	//
 	// example:
 	//
 	// 2
-	Status     *int32  `json:"Status,omitempty" xml:"Status,omitempty"`
+	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The rule type.
+	//
+	// example:
+	//
+	// 21
 	TargetType *string `json:"TargetType,omitempty" xml:"TargetType,omitempty"`
-	// Type value of the rule category that the rule belongs to.
+	// The type value of the rule type to which the rule belongs.
 	//
 	// example:
 	//
 	// 1
 	Type *int32 `json:"Type,omitempty" xml:"Type,omitempty"`
-	// Name of the rule category that the rule belongs to.
+	// The name of the rule type to which the rule belongs.
 	//
 	// example:
 	//
-	// 所有类型
+	// All types
 	TypeName *string `json:"TypeName,omitempty" xml:"TypeName,omitempty"`
-	// Filter by update time (right boundary).
+	// The end time for filtering by update time.
 	//
 	// example:
 	//
 	// 2021-11-29 18:11:09
 	UpdateEndTime *string `json:"UpdateEndTime,omitempty" xml:"UpdateEndTime,omitempty"`
-	// Filter by update time (left boundary).
+	// The start time for filtering by update time.
 	//
 	// example:
 	//
 	// 2021-11-29 16:11:09
 	UpdateStartTime *string `json:"UpdateStartTime,omitempty" xml:"UpdateStartTime,omitempty"`
-	// ID of the rule updater. Same as LastUpdateEmpId. Specify one only.
+	// The ID of the rule updater. This parameter is equivalent to LastUpdateEmpid. Specify only one of them.
 	//
 	// example:
 	//

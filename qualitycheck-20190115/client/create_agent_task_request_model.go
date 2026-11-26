@@ -26,7 +26,7 @@ type CreateAgentTaskRequest struct {
 	//
 	// example:
 	//
-	// {\\"\\":\\"\\"}
+	// {\"\":\"\"}
 	JsonStr *string `json:"JsonStr,omitempty" xml:"JsonStr,omitempty"`
 }
 
