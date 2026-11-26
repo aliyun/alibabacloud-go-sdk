@@ -235,7 +235,7 @@ type UpdateProhibitedSoftwareResponseBodySoftwareLinuxProcesses struct {
 	//
 	// example:
 	//
-	// C:\\\\autotest
+	// C:\\autotest
 	Directory *string `json:"Directory,omitempty" xml:"Directory,omitempty"`
 	// The name of the process.
 	//
@@ -310,7 +310,7 @@ type UpdateProhibitedSoftwareResponseBodySoftwareMacOSProcesses struct {
 	//
 	// example:
 	//
-	// C:\\\\autotest
+	// C:\\autotest
 	Directory *string `json:"Directory,omitempty" xml:"Directory,omitempty"`
 	// The name of the process.
 	//
@@ -385,7 +385,7 @@ type UpdateProhibitedSoftwareResponseBodySoftwareWindowsProcesses struct {
 	//
 	// example:
 	//
-	// C:\\\\autotest
+	// C:\\autotest
 	Directory *string `json:"Directory,omitempty" xml:"Directory,omitempty"`
 	// The name of the process.
 	//

@@ -42,7 +42,7 @@ type ListExcessiveDeviceRegistrationApplicationsRequest struct {
 	//
 	// 1
 	CurrentPage *int64 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	// The user\\"s department. The value must be 1 to 128 characters long and can contain Chinese characters, uppercase and lowercase letters, digits, periods (.), commas (,), semicolons (;), hyphens (-), underscores (_), forward slashes (/), at signs (@), and spaces.
+	// The user\"s department. The value must be 1 to 128 characters long and can contain Chinese characters, uppercase and lowercase letters, digits, periods (.), commas (,), semicolons (;), hyphens (-), underscores (_), forward slashes (/), at signs (@), and spaces.
 	//
 	// example:
 	//
@@ -50,7 +50,7 @@ type ListExcessiveDeviceRegistrationApplicationsRequest struct {
 	Department *string `json:"Department,omitempty" xml:"Department,omitempty"`
 	// The device ID. You can get the device ID from the `DeviceTag` parameter returned by the following operations:
 	//
-	// - [GetUserDevice](~~GetUserDevice~~): Queries the details of a user\\"s device.
+	// - [GetUserDevice](~~GetUserDevice~~): Queries the details of a user\"s device.
 	//
 	// - [ListUserDevices](~~ListUserDevices~~): Queries a list of devices for a user.
 	//
@@ -80,7 +80,7 @@ type ListExcessiveDeviceRegistrationApplicationsRequest struct {
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The user ID. You can get the user ID from the `SaseUserId` parameter returned by the following operations:
 	//
-	// - [GetUserDevice](~~GetUserDevice~~): Queries the details of a user\\"s device.
+	// - [GetUserDevice](~~GetUserDevice~~): Queries the details of a user\"s device.
 	//
 	// - [ListUserDevices](~~ListUserDevices~~): Queries a list of devices for a user.
 	//
@@ -90,7 +90,7 @@ type ListExcessiveDeviceRegistrationApplicationsRequest struct {
 	SaseUserId *string `json:"SaseUserId,omitempty" xml:"SaseUserId,omitempty"`
 	// The statuses of excessive device registration applications.
 	Statuses []*string `json:"Statuses,omitempty" xml:"Statuses,omitempty" type:"Repeated"`
-	// The username. The value must be 1 to 128 characters long and can contain Chinese characters, uppercase and lowercase letters, digits, periods (.), underscores (_), hyphens (-), asterisks (\\*), at signs (@), and spaces.
+	// The username. The value must be 1 to 128 characters long and can contain Chinese characters, uppercase and lowercase letters, digits, periods (.), underscores (_), hyphens (-), asterisks (\*), at signs (@), and spaces.
 	//
 	// example:
 	//

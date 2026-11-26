@@ -50,7 +50,7 @@ type UpdateVirusFileStatusRequest struct {
 	//
 	// example:
 	//
-	// C:\\Users\\Public\\Downloads\\setup.exe
+	// C:\Users\Public\Downloads\setup.exe
 	FilePath *string `json:"FilePath,omitempty" xml:"FilePath,omitempty"`
 	// The processing action. Valid values:
 	//

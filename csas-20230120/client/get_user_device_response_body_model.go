@@ -1115,7 +1115,7 @@ type GetUserDeviceResponseBodyDeviceProcesses struct {
 	//
 	// example:
 	//
-	// C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe
+	// C:\Program Files\Google\Chrome\Application\chrome.exe
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The memory usage of the process. Unit: MB.
 	//

@@ -16,7 +16,7 @@ type iUpdatePrivateAccessApplicationL7SwitchResponseBody interface {
 }
 
 type UpdatePrivateAccessApplicationL7SwitchResponseBody struct {
-	// The Layer 7 access switch configurations of the internal access application after the update.
+	// The Layer 7 access switch configuration of the internal access application after this update.
 	L7Switch *UpdatePrivateAccessApplicationL7SwitchResponseBodyL7Switch `json:"L7Switch,omitempty" xml:"L7Switch,omitempty" type:"Struct"`
 	// The ID of the request.
 	//
@@ -88,7 +88,7 @@ type UpdatePrivateAccessApplicationL7SwitchResponseBodyL7Switch struct {
 	//
 	// Disabled
 	DownloadAuditStatus *string `json:"DownloadAuditStatus,omitempty" xml:"DownloadAuditStatus,omitempty"`
-	// The effective port ranges for Layer 7 access, which are the intersection of the ports specified in this request and the configured port ranges of the internal access application. If Status is set to **Disabled**, an empty set is returned.
+	// The effective port ranges for Layer 7 access, which are the intersection of the ports specified in this request and the port ranges already configured for the internal access application. An empty set is returned when Status is set to **Disabled**.
 	PortRanges []*UpdatePrivateAccessApplicationL7SwitchResponseBodyL7SwitchPortRanges `json:"PortRanges,omitempty" xml:"PortRanges,omitempty" type:"Repeated"`
 	// The source IP marking switch. Valid values:
 	//
@@ -110,12 +110,13 @@ type UpdatePrivateAccessApplicationL7SwitchResponseBodyL7Switch struct {
 	//
 	// Enabled
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The request timeout period, in seconds.
+	// The request timeout period in seconds.
 	//
 	// example:
 	//
 	// 60
-	TimeoutSec     *int32                                                                      `json:"TimeoutSec,omitempty" xml:"TimeoutSec,omitempty"`
+	TimeoutSec *int32 `json:"TimeoutSec,omitempty" xml:"TimeoutSec,omitempty"`
+	// The URL access whitelist rules for the application. This parameter takes effect only when Status is set to Enabled. An empty value indicates that URLs and request methods are not restricted. A request passes the URL check only when the request path and the method meet any group of rules at the same time. Otherwise, the request is blocked. Passing the URL check does not allow requests that are already blocked by an access policy.
 	UrlAccessPaths []*UpdatePrivateAccessApplicationL7SwitchResponseBodyL7SwitchUrlAccessPaths `json:"UrlAccessPaths,omitempty" xml:"UrlAccessPaths,omitempty" type:"Repeated"`
 	// The user marking switch. Valid values:
 	//
@@ -127,7 +128,7 @@ type UpdatePrivateAccessApplicationL7SwitchResponseBodyL7Switch struct {
 	//
 	// Enabled
 	UserMarkStatus *string `json:"UserMarkStatus,omitempty" xml:"UserMarkStatus,omitempty"`
-	// The Host bypass prevention switch. Valid values:
+	// The host bypass prevention switch. Valid values:
 	//
 	// - **Enabled**: Enabled.
 	//
@@ -305,8 +306,10 @@ func (s *UpdatePrivateAccessApplicationL7SwitchResponseBodyL7SwitchPortRanges) V
 }
 
 type UpdatePrivateAccessApplicationL7SwitchResponseBodyL7SwitchUrlAccessPaths struct {
+	// The list of HTTP request methods allowed for the paths in this group. An empty value indicates that request methods are not restricted.
 	AllowMethods []*string `json:"AllowMethods,omitempty" xml:"AllowMethods,omitempty" type:"Repeated"`
-	Urls         []*string `json:"Urls,omitempty" xml:"Urls,omitempty" type:"Repeated"`
+	// The list of URL paths allowed for access in this group. You must specify at least 1 path and up to 20 paths. The paths match the path part in the request, excluding the protocol, domain name, and query parameters.
+	Urls []*string `json:"Urls,omitempty" xml:"Urls,omitempty" type:"Repeated"`
 }
 
 func (s UpdatePrivateAccessApplicationL7SwitchResponseBodyL7SwitchUrlAccessPaths) String() string {

@@ -179,7 +179,7 @@ type UpdateProhibitedSoftwareRequestLinuxProcesses struct {
 	//
 	// example:
 	//
-	// C:\\\\autotest
+	// C:\\autotest
 	Directory *string `json:"Directory,omitempty" xml:"Directory,omitempty"`
 	// The name of the process. The name can be up to 1,024 characters in length.
 	//
@@ -254,7 +254,7 @@ type UpdateProhibitedSoftwareRequestMacOSProcesses struct {
 	//
 	// example:
 	//
-	// C:\\\\autotest
+	// C:\\autotest
 	Directory *string `json:"Directory,omitempty" xml:"Directory,omitempty"`
 	// The name of the process. The name can be up to 1,024 characters in length.
 	//
@@ -329,7 +329,7 @@ type UpdateProhibitedSoftwareRequestWindowsProcesses struct {
 	//
 	// example:
 	//
-	// C:\\\\autotest
+	// C:\\autotest
 	Directory *string `json:"Directory,omitempty" xml:"Directory,omitempty"`
 	// The name of the process. The name can be up to 1,024 characters in length.
 	//

@@ -20,7 +20,7 @@ type iExecutePeriod interface {
 }
 
 type ExecutePeriod struct {
-  // The effective days of the week configuration. Used when ValidType is set to Weekly.
+  // The effective days of the week configuration. This parameter is used when ValidType is set to Weekly.
   // 
   // example:
   // 
@@ -44,7 +44,7 @@ type ExecutePeriod struct {
   // 
   // - **Interval**: Periodic execution at a specified frequency. Used in combination with ExecuteMode=Schedule.
   // 
-  // - **Weekly**: Weekly execution on selected days. Used in combination with ExecuteMode=Schedule and EffectDay.
+  // - **Weekly**: Execution on selected days of the week. Used in combination with ExecuteMode=Schedule and EffectDay.
   // 
   // example:
   // 
@@ -116,43 +116,43 @@ func (s *ExecutePeriod) Validate() error {
 }
 
 type ExecutePeriodEffectDay struct {
-  // Specifies whether the policy takes effect on Friday when ValidType is set to Weekly. A value of true indicates that the policy takes effect, and a value of false indicates that the policy does not take effect.
+  // Specifies whether the policy takes effect on Friday when ValidType is set to Weekly. A value of true indicates that the policy takes effect. A value of false indicates that the policy does not take effect.
   // 
   // example:
   // 
   // true
   Friday *bool `json:"Friday,omitempty" xml:"Friday,omitempty"`
-  // Specifies whether the policy takes effect on Monday when ValidType is set to Weekly. A value of true indicates that the policy takes effect, and a value of false indicates that the policy does not take effect.
+  // Specifies whether the policy takes effect on Monday when ValidType is set to Weekly. A value of true indicates that the policy takes effect. A value of false indicates that the policy does not take effect.
   // 
   // example:
   // 
   // true
   Monday *bool `json:"Monday,omitempty" xml:"Monday,omitempty"`
-  // Specifies whether the policy takes effect on Saturday when ValidType is set to Weekly. A value of true indicates that the policy takes effect, and a value of false indicates that the policy does not take effect.
+  // Specifies whether the policy takes effect on Saturday when ValidType is set to Weekly. A value of true indicates that the policy takes effect. A value of false indicates that the policy does not take effect.
   // 
   // example:
   // 
   // false
   Saturday *bool `json:"Saturday,omitempty" xml:"Saturday,omitempty"`
-  // Specifies whether the policy takes effect on Sunday when ValidType is set to Weekly. A value of true indicates that the policy takes effect, and a value of false indicates that the policy does not take effect.
+  // Specifies whether the policy takes effect on Sunday when ValidType is set to Weekly. A value of true indicates that the policy takes effect. A value of false indicates that the policy does not take effect.
   // 
   // example:
   // 
   // false
   Sunday *bool `json:"Sunday,omitempty" xml:"Sunday,omitempty"`
-  // Specifies whether the policy takes effect on Thursday when ValidType is set to Weekly. A value of true indicates that the policy takes effect, and a value of false indicates that the policy does not take effect.
+  // Specifies whether the policy takes effect on Thursday when ValidType is set to Weekly. A value of true indicates that the policy takes effect. A value of false indicates that the policy does not take effect.
   // 
   // example:
   // 
   // true
   Thursday *bool `json:"Thursday,omitempty" xml:"Thursday,omitempty"`
-  // Specifies whether the policy takes effect on Tuesday when ValidType is set to Weekly. A value of true indicates that the policy takes effect, and a value of false indicates that the policy does not take effect.
+  // Specifies whether the policy takes effect on Tuesday when ValidType is set to Weekly. A value of true indicates that the policy takes effect. A value of false indicates that the policy does not take effect.
   // 
   // example:
   // 
   // true
   Tuesday *bool `json:"Tuesday,omitempty" xml:"Tuesday,omitempty"`
-  // Specifies whether the policy takes effect on Wednesday when ValidType is set to Weekly. A value of true indicates that the policy takes effect, and a value of false indicates that the policy does not take effect.
+  // Specifies whether the policy takes effect on Wednesday when ValidType is set to Weekly. A value of true indicates that the policy takes effect. A value of false indicates that the policy does not take effect.
   // 
   // example:
   // 
@@ -236,7 +236,7 @@ func (s *ExecutePeriodEffectDay) Validate() error {
 }
 
 type ExecutePeriodEffectTime struct {
-  // The end time of the daily effective time range. It uses the 24-hour HH:mm format and is interpreted based on the current system time zone of the server. It must not be earlier than Start.
+  // The end time of the daily effective time range. It uses the 24-hour HH:mm format and is interpreted based on the current system time zone of the server. The value cannot be earlier than Start.
   // 
   // example:
   // 
@@ -281,7 +281,7 @@ func (s *ExecutePeriodEffectTime) Validate() error {
 }
 
 type ExecutePeriodScheduleEffect struct {
-  // The frequency unit for periodic execution. It is used together with Interval to specify the execution cycle. For example, a value of day indicates daily execution.
+  // The frequency unit for periodic execution. This parameter is used together with Interval to specify the execution cycle. For example, a value of day indicates daily execution.
   // 
   // example:
   // 

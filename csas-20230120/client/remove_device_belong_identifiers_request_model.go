@@ -14,6 +14,8 @@ type iRemoveDeviceBelongIdentifiersRequest interface {
 }
 
 type RemoveDeviceBelongIdentifiersRequest struct {
+	// The list of identifier record IDs to remove. You can specify 1 to 1,000 IDs per batch. All IDs must exist and belong to the current tenant. Otherwise, an InvalidParameter error is returned and no records are deleted.
+	//
 	// This parameter is required.
 	IdentifierIds []*string `json:"IdentifierIds,omitempty" xml:"IdentifierIds,omitempty" type:"Repeated"`
 }

@@ -20,7 +20,7 @@ type CreateSaseUserTagRequest struct {
 	//
 	// example:
 	//
-	// These are the company\\"s employees
+	// These are the company\"s employees
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The name of the user tag.
 	//

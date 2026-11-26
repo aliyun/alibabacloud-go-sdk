@@ -1409,7 +1409,7 @@ type GetPADiagnosisTaskResponseBodyDiagnosisTaskResultPolicyInfoDeviceAttributeI
 	//
 	// example:
 	//
-	// [{\\"Platform\\":\\"windows\\",\\"Status\\":\\"disabled\\"},{\\"Platform\\":\\"macos\\",\\"Status\\":\\"disabled\\"},{\\"Platform\\":\\"linux\\",\\"Status\\":\\"disabled\\"}]
+	// [{\"Platform\":\"windows\",\"Status\":\"disabled\"},{\"Platform\":\"macos\",\"Status\":\"disabled\"},{\"Platform\":\"linux\",\"Status\":\"disabled\"}]
 	Firewall *string `json:"Firewall,omitempty" xml:"Firewall,omitempty"`
 	// The name of the terminal device. The name must be 1 to 128 characters in length and can contain Chinese characters, uppercase and lowercase letters, digits, periods (.), commas (,), semicolons (;), hyphens (-), underscores (_), forward slashes (/), at signs (@), and spaces. If you enter only an underscore (_), the system additionally queries all terminal devices whose names contain 4-byte UTF-8 characters.
 	//

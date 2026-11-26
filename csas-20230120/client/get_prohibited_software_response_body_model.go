@@ -254,7 +254,7 @@ type GetProhibitedSoftwareResponseBodySoftwareLinuxProcesses struct {
 	//
 	// example:
 	//
-	// C:\\Program Files\\Thunder Network\\Thunder
+	// C:\Program Files\Thunder Network\Thunder
 	Directory *string `json:"Directory,omitempty" xml:"Directory,omitempty"`
 	// The name of the process.
 	//
@@ -329,7 +329,7 @@ type GetProhibitedSoftwareResponseBodySoftwareMacOSProcesses struct {
 	//
 	// example:
 	//
-	// C:\\Program Files\\Thunder Network\\Thunder
+	// C:\Program Files\Thunder Network\Thunder
 	Directory *string `json:"Directory,omitempty" xml:"Directory,omitempty"`
 	// The name of the process.
 	//
@@ -404,7 +404,7 @@ type GetProhibitedSoftwareResponseBodySoftwareWindowsProcesses struct {
 	//
 	// example:
 	//
-	// C:\\Program Files\\Thunder Network\\Thunder
+	// C:\Program Files\Thunder Network\Thunder
 	Directory *string `json:"Directory,omitempty" xml:"Directory,omitempty"`
 	// The name of the process.
 	//

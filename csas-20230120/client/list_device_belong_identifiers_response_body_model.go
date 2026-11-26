@@ -22,11 +22,32 @@ type iListDeviceBelongIdentifiersResponseBody interface {
 }
 
 type ListDeviceBelongIdentifiersResponseBody struct {
+	// The device ownership identifier records on the current page. An empty list is returned if no matching records are found.
 	Identifiers []*ListDeviceBelongIdentifiersResponseBodyIdentifiers `json:"Identifiers,omitempty" xml:"Identifiers,omitempty" type:"Repeated"`
-	MaxResults  *int32                                                `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	NextToken   *string                                               `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	RequestId   *string                                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	TotalCount  *int64                                                `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
+	// A reserved pagination field. No valid value is returned in the current version.
+	//
+	// example:
+	//
+	// 0
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// A reserved pagination cursor. No valid value is returned in the current version.
+	//
+	// example:
+	//
+	// d9fbd0d1ac24be90
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The request ID.
+	//
+	// example:
+	//
+	// 7A92B549-EC82-5F79-8301-63711AFC9DCE
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of records that match the filter conditions for the current tenant.
+	//
+	// example:
+	//
+	// 2
+	TotalCount *int64 `json:"TotalCount,omitempty" xml:"TotalCount,omitempty"`
 }
 
 func (s ListDeviceBelongIdentifiersResponseBody) String() string {
@@ -96,9 +117,29 @@ func (s *ListDeviceBelongIdentifiersResponseBody) Validate() error {
 }
 
 type ListDeviceBelongIdentifiersResponseBodyIdentifiers struct {
-	CreateTime      *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	IdentifierId    *string `json:"IdentifierId,omitempty" xml:"IdentifierId,omitempty"`
-	IdentifierType  *string `json:"IdentifierType,omitempty" xml:"IdentifierType,omitempty"`
+	// The time when the record was created. The time is in RFC 3339 format and includes time zone information.
+	//
+	// example:
+	//
+	// 2026-11-24T10:30:00+08:00
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The ID of the identifier record, returned as a decimal string. You can use the ID to query or remove the record.
+	//
+	// example:
+	//
+	// 482731
+	IdentifierId *string `json:"IdentifierId,omitempty" xml:"IdentifierId,omitempty"`
+	// The identifier type. MAC indicates the MAC address of the network interface controller (NIC), SystemSN indicates the system serial number, and BIOSSN indicates the BIOS serial number.
+	//
+	// example:
+	//
+	// MAC
+	IdentifierType *string `json:"IdentifierType,omitempty" xml:"IdentifierType,omitempty"`
+	// The identifier value in the record. MAC addresses are in the lowercase colon-separated format. System serial numbers and BIOS serial numbers are returned as recorded.
+	//
+	// example:
+	//
+	// 02:00:00:00:00:01
 	IdentifierValue *string `json:"IdentifierValue,omitempty" xml:"IdentifierValue,omitempty"`
 }
 

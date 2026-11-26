@@ -271,7 +271,7 @@ type UpdateBootAndAntiUninstallPolicyResponseBodyStrategyBlockContentBlockTextEn
 	//
 	// example:
 	//
-	// After uninstalling, the device can no longer be used for company work, and it will lose access to the company\\"s intranet!
+	// After uninstalling, the device can no longer be used for company work, and it will lose access to the company\"s intranet!
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
 	// Main button text.
 	//

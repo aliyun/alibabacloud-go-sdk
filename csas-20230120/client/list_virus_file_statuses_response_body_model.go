@@ -95,7 +95,7 @@ type ListVirusFileStatusesResponseBodyFileStatuses struct {
 	//
 	// R&D Department,Security Team
 	Department *string `json:"Department,omitempty" xml:"Department,omitempty"`
-	// The unique identifier of the user\\"s endpoint device that detected this virus file.
+	// The unique identifier of the user\"s endpoint device that detected this virus file.
 	//
 	// example:
 	//
@@ -123,11 +123,11 @@ type ListVirusFileStatusesResponseBodyFileStatuses struct {
 	//
 	// d41d8cd98f00b204e9800998ecf8427e
 	FileMd5 *string `json:"FileMd5,omitempty" xml:"FileMd5,omitempty"`
-	// The absolute path of the virus file on the user\\"s endpoint device.
+	// The absolute path of the virus file on the user\"s endpoint device.
 	//
 	// example:
 	//
-	// C:\\Users\\Public\\Downloads\\setup.exe
+	// C:\Users\Public\Downloads\setup.exe
 	FilePath *string `json:"FilePath,omitempty" xml:"FilePath,omitempty"`
 	// The disposition status. Valid values:
 	//
@@ -145,7 +145,7 @@ type ListVirusFileStatusesResponseBodyFileStatuses struct {
 	//
 	// 20480
 	FileSize *int32 `json:"FileSize,omitempty" xml:"FileSize,omitempty"`
-	// The hostname of the user\\"s endpoint device.
+	// The hostname of the user\"s endpoint device.
 	//
 	// example:
 	//
@@ -169,7 +169,7 @@ type ListVirusFileStatusesResponseBodyFileStatuses struct {
 	//
 	// AdminQuarantine
 	Operation *string `json:"Operation,omitempty" xml:"Operation,omitempty"`
-	// The effective period of the disposition, in the format yyyy-MM-dd HH:mm:ss (UTC+8). The later of the actual disposition time on the user\\"s endpoint device and the time when the administrator initiated the disposition is used. A hyphen (-) is returned when no disposition has been performed.
+	// The effective period of the disposition, in the format yyyy-MM-dd HH:mm:ss (UTC+8). The later of the actual disposition time on the user\"s endpoint device and the time when the administrator initiated the disposition is used. A hyphen (-) is returned when no disposition has been performed.
 	//
 	// example:
 	//
@@ -199,7 +199,7 @@ type ListVirusFileStatusesResponseBodyFileStatuses struct {
 	//
 	// v1:1024772
 	ScanTaskId *string `json:"ScanTaskId,omitempty" xml:"ScanTaskId,omitempty"`
-	// The execution result description of the disposition or scan, reported by the user\\"s endpoint device. If a disposition record exists, the execution result of the disposition task is returned. Otherwise, the execution result of the scan task is returned.
+	// The execution result description of the disposition or scan, reported by the user\"s endpoint device. If a disposition record exists, the execution result of the disposition task is returned. Otherwise, the execution result of the scan task is returned.
 	//
 	// example:
 	//

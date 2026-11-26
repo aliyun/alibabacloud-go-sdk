@@ -193,7 +193,7 @@ type GetUserGroupResponseBodyUserGroupAttributes struct {
 	//
 	// - If UserGroupType is set to **department**, this parameter specifies the value of the department. Example: OU=Department 1,OU=SASE DingTalk.
 	//
-	// - If UserGroupType is set to **email**, this parameter specifies the value of the email address. Example: username\\@example.com.
+	// - If UserGroupType is set to **email**, this parameter specifies the value of the email address. Example: username\@example.com.
 	//
 	// - If UserGroupType is set to **telephone**, this parameter specifies the value of the mobile phone number. Example: 13900001234.
 	//

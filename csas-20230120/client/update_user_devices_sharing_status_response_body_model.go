@@ -94,7 +94,7 @@ type UpdateUserDevicesSharingStatusResponseBodyDevices struct {
 	//
 	// 2023-05-16 17:18:46
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// User\\"s department.
+	// User\"s department.
 	//
 	// example:
 	//

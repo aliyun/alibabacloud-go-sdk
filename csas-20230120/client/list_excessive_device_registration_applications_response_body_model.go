@@ -95,7 +95,7 @@ type ListExcessiveDeviceRegistrationApplicationsResponseBodyApplications struct 
 	//
 	// 2023-07-17 18:46:55
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The user\\"s department.
+	// The user\"s department.
 	//
 	// example:
 	//

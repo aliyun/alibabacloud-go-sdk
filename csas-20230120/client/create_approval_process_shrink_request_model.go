@@ -24,7 +24,7 @@ type CreateApprovalProcessShrinkRequest struct {
 	//
 	// example:
 	//
-	// Process for approving employees\\" temporary access to internal network applications
+	// Process for approving employees\" temporary access to internal network applications
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The matched approval templates.
 	MatchSchemasShrink *string `json:"MatchSchemas,omitempty" xml:"MatchSchemas,omitempty"`

@@ -66,7 +66,7 @@ func (s *ListPrivateAccessApplicationL7SwitchesResponseBody) Validate() error {
 }
 
 type ListPrivateAccessApplicationL7SwitchesResponseBodyL7Switches struct {
-	// The ID of the internal-facing application.
+	// The ID of the internal access application.
 	//
 	// example:
 	//
@@ -98,13 +98,13 @@ type ListPrivateAccessApplicationL7SwitchesResponseBodyL7Switches struct {
 	//
 	// - **Enabled**: Enabled.
 	//
-	// - **Disabled**: Disabled.
+	// - **Disabled**: Disabled.**
 	//
 	// example:
 	//
 	// Disabled
 	SrcIpMarkStatus *string `json:"SrcIpMarkStatus,omitempty" xml:"SrcIpMarkStatus,omitempty"`
-	// The status of the internal-facing access policy. Valid values:
+	// The status of the internal access policy. Valid values:
 	//
 	// - **Enabled**: Enabled.
 	//
@@ -119,7 +119,8 @@ type ListPrivateAccessApplicationL7SwitchesResponseBodyL7Switches struct {
 	// example:
 	//
 	// 60
-	TimeoutSec     *int32                                                                        `json:"TimeoutSec,omitempty" xml:"TimeoutSec,omitempty"`
+	TimeoutSec *int32 `json:"TimeoutSec,omitempty" xml:"TimeoutSec,omitempty"`
+	// The URL access whitelist rules for the application. These rules take effect only when Status is set to Enabled. An empty value indicates that URLs and request methods are not restricted. A request passes the URL check only when the request path and method meet any group of rules at the same time. Otherwise, the request is blocked. Passing the URL check does not allow requests that are already blocked by an access policy.
 	UrlAccessPaths []*ListPrivateAccessApplicationL7SwitchesResponseBodyL7SwitchesUrlAccessPaths `json:"UrlAccessPaths,omitempty" xml:"UrlAccessPaths,omitempty" type:"Repeated"`
 	// The user marking switch. Valid values:
 	//
@@ -131,7 +132,7 @@ type ListPrivateAccessApplicationL7SwitchesResponseBodyL7Switches struct {
 	//
 	// Disabled
 	UserMarkStatus *string `json:"UserMarkStatus,omitempty" xml:"UserMarkStatus,omitempty"`
-	// The host bypass prevention switch. Valid values:
+	// The host anti-bypass switch. Valid values:
 	//
 	// - **Enabled**: Enabled.
 	//
@@ -270,7 +271,7 @@ type ListPrivateAccessApplicationL7SwitchesResponseBodyL7SwitchesPortRanges stru
 	//
 	// 2379
 	Begin *int32 `json:"Begin,omitempty" xml:"Begin,omitempty"`
-	// The end port. The value must be greater than or equal to the start port.
+	// The end port. Must be greater than or equal to the start port.
 	//
 	// example:
 	//
@@ -309,8 +310,10 @@ func (s *ListPrivateAccessApplicationL7SwitchesResponseBodyL7SwitchesPortRanges)
 }
 
 type ListPrivateAccessApplicationL7SwitchesResponseBodyL7SwitchesUrlAccessPaths struct {
+	// The list of HTTP request methods allowed for the paths in this group. An empty value indicates that request methods are not restricted.
 	AllowMethods []*string `json:"AllowMethods,omitempty" xml:"AllowMethods,omitempty" type:"Repeated"`
-	Urls         []*string `json:"Urls,omitempty" xml:"Urls,omitempty" type:"Repeated"`
+	// The list of URL paths allowed for access in this group. The list must contain at least 1 path and up to 20 paths. This parameter matches the path part in the request, excluding the protocol, domain name, and query parameters.
+	Urls []*string `json:"Urls,omitempty" xml:"Urls,omitempty" type:"Repeated"`
 }
 
 func (s ListPrivateAccessApplicationL7SwitchesResponseBodyL7SwitchesUrlAccessPaths) String() string {

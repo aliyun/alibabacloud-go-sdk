@@ -83,13 +83,13 @@ func (s *ListUsersResponseBody) Validate() error {
 }
 
 type ListUsersResponseBodyUsers struct {
-	// The user\\"s department.
+	// The user\"s department.
 	//
 	// example:
 	//
 	// 测试部
 	Department *string `json:"Department,omitempty" xml:"Department,omitempty"`
-	// The user\\"s email address.
+	// The user\"s email address.
 	//
 	// example:
 	//
@@ -103,7 +103,7 @@ type ListUsersResponseBodyUsers struct {
 	//
 	// 飞书
 	IdpName *string `json:"IdpName,omitempty" xml:"IdpName,omitempty"`
-	// The user\\"s phone number.
+	// The user\"s phone number.
 	//
 	// example:
 	//

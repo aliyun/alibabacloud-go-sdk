@@ -18,7 +18,7 @@ type iDeleteVirusFileRequest interface {
 }
 
 type DeleteVirusFileRequest struct {
-	// The unique identifier of the user\\"s endpoint device where the virus file is located. The value can be up to 64 characters in length. You can obtain the value from the following operation:
+	// The unique identifier of the user\"s endpoint device where the virus file is located. The value can be up to 64 characters in length. You can obtain the value from the following operation:
 	//
 	// - [ListVirusFileStatuses](~~ListVirusFileStatuses~~): lists virus file statuses.
 	//
@@ -38,7 +38,7 @@ type DeleteVirusFileRequest struct {
 	//
 	// d41d8cd98f00b204e9800998ecf8427e
 	FileMd5 *string `json:"FileMd5,omitempty" xml:"FileMd5,omitempty"`
-	// The full path of the virus file on the user\\"s endpoint device. Only records with a handling action of Fail can be deleted. You can obtain the value from the following operation:
+	// The full path of the virus file on the user\"s endpoint device. Only records with a handling action of Fail can be deleted. You can obtain the value from the following operation:
 	//
 	// - [ListVirusFileStatuses](~~ListVirusFileStatuses~~): lists virus file statuses.
 	//
@@ -46,7 +46,7 @@ type DeleteVirusFileRequest struct {
 	//
 	// example:
 	//
-	// C:\\Users\\Public\\Downloads\\setup.exe
+	// C:\Users\Public\Downloads\setup.exe
 	FilePath *string `json:"FilePath,omitempty" xml:"FilePath,omitempty"`
 }
 

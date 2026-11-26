@@ -15,6 +15,8 @@ type iListDeviceBelongIdentifiersRequest interface {
 	GetIdentifierIds() []*string
 	SetIdentifierType(v string) *ListDeviceBelongIdentifiersRequest
 	GetIdentifierType() *string
+	SetIdentifierValues(v []*string) *ListDeviceBelongIdentifiersRequest
+	GetIdentifierValues() []*string
 	SetMaxResults(v int32) *ListDeviceBelongIdentifiersRequest
 	GetMaxResults() *int32
 	SetNextToken(v string) *ListDeviceBelongIdentifiersRequest
@@ -24,13 +26,43 @@ type iListDeviceBelongIdentifiersRequest interface {
 }
 
 type ListDeviceBelongIdentifiersRequest struct {
+	// The current page number. Valid values: 1 to 2147483647.
+	//
 	// This parameter is required.
-	CurrentPage    *int32    `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
-	IdentifierIds  []*string `json:"IdentifierIds,omitempty" xml:"IdentifierIds,omitempty" type:"Repeated"`
-	IdentifierType *string   `json:"IdentifierType,omitempty" xml:"IdentifierType,omitempty"`
-	MaxResults     *int32    `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	NextToken      *string   `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	//
+	// example:
+	//
+	// 1
+	CurrentPage *int32 `json:"CurrentPage,omitempty" xml:"CurrentPage,omitempty"`
+	// The list of record IDs to query. You can specify 1 to 100 positive integer decimal strings at a time. If this parameter is specified along with other filter parameters, the records that meet all the conditions are returned.
+	IdentifierIds []*string `json:"IdentifierIds,omitempty" xml:"IdentifierIds,omitempty" type:"Repeated"`
+	// The identifier type. MAC indicates the MAC address of the network interface controller (NIC), SystemSN indicates the system serial number, and BIOSSN indicates the BIOS serial number. This parameter is required when IdentifierValues is specified.
+	//
+	// example:
+	//
+	// MAC
+	IdentifierType *string `json:"IdentifierType,omitempty" xml:"IdentifierType,omitempty"`
+	// The list of identifier values for exact match. You can specify 1 to 100 items at a time, and each item can contain 1 to 128 characters. You must specify IdentifierType at the same time. Records that match any value in the array are returned. MAC addresses are uniformly converted to the lowercase colon-separated format. System serial numbers and BIOS serial numbers are case-sensitive and space-sensitive.
+	IdentifierValues []*string `json:"IdentifierValues,omitempty" xml:"IdentifierValues,omitempty" type:"Repeated"`
+	// A reserved pagination parameter. This value is not used in the current version. Use PageSize to specify the number of entries per page.
+	//
+	// example:
+	//
+	// 100
+	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
+	// A reserved pagination cursor. This value is not used in the current version. Use CurrentPage to specify the page number.
+	//
+	// example:
+	//
+	// d9fbd0d1ac24be90
+	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
+	// The maximum number of records to return per page. Valid values: 1 to 1000.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 100
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 }
 
@@ -52,6 +84,10 @@ func (s *ListDeviceBelongIdentifiersRequest) GetIdentifierIds() []*string {
 
 func (s *ListDeviceBelongIdentifiersRequest) GetIdentifierType() *string {
 	return s.IdentifierType
+}
+
+func (s *ListDeviceBelongIdentifiersRequest) GetIdentifierValues() []*string {
+	return s.IdentifierValues
 }
 
 func (s *ListDeviceBelongIdentifiersRequest) GetMaxResults() *int32 {
@@ -78,6 +114,11 @@ func (s *ListDeviceBelongIdentifiersRequest) SetIdentifierIds(v []*string) *List
 
 func (s *ListDeviceBelongIdentifiersRequest) SetIdentifierType(v string) *ListDeviceBelongIdentifiersRequest {
 	s.IdentifierType = &v
+	return s
+}
+
+func (s *ListDeviceBelongIdentifiersRequest) SetIdentifierValues(v []*string) *ListDeviceBelongIdentifiersRequest {
+	s.IdentifierValues = v
 	return s
 }
 

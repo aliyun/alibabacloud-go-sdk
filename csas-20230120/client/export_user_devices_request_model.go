@@ -102,7 +102,7 @@ type ExportUserDevicesRequest struct {
   // 
   // true
   SharingStatus *bool `json:"SharingStatus,omitempty" xml:"SharingStatus,omitempty"`
-  // Username. Must be 1 to 128 characters long. Supports Chinese, uppercase and lowercase letters, digits, periods (.), underscores (_), hyphens (-), asterisks (\\*), at signs (@), and spaces.
+  // Username. Must be 1 to 128 characters long. Supports Chinese, uppercase and lowercase letters, digits, periods (.), underscores (_), hyphens (-), asterisks (\*), at signs (@), and spaces.
   // 
   // example:
   // 

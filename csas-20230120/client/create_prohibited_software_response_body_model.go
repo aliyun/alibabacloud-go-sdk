@@ -224,7 +224,7 @@ type CreateProhibitedSoftwareResponseBodySoftwareLinuxProcesses struct {
 	//
 	// example:
 	//
-	// C:\\Program Files\\Thunder Network\\Thunder
+	// C:\Program Files\Thunder Network\Thunder
 	Directory *string `json:"Directory,omitempty" xml:"Directory,omitempty"`
 	// The process name.
 	//
@@ -299,7 +299,7 @@ type CreateProhibitedSoftwareResponseBodySoftwareMacOSProcesses struct {
 	//
 	// example:
 	//
-	// C:\\Program Files\\Thunder Network\\Thunder
+	// C:\Program Files\Thunder Network\Thunder
 	Directory *string `json:"Directory,omitempty" xml:"Directory,omitempty"`
 	// The process name.
 	//
@@ -374,7 +374,7 @@ type CreateProhibitedSoftwareResponseBodySoftwareWindowsProcesses struct {
 	//
 	// example:
 	//
-	// C:\\Program Files\\Thunder Network\\Thunder
+	// C:\Program Files\Thunder Network\Thunder
 	Directory *string `json:"Directory,omitempty" xml:"Directory,omitempty"`
 	// The process name.
 	//

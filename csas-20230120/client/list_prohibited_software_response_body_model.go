@@ -436,7 +436,7 @@ type ListProhibitedSoftwareResponseBodySoftwareWindowsProcesses struct {
 	//
 	// example:
 	//
-	// C:\\Program Files\\Thunder Network
+	// C:\Program Files\Thunder Network
 	Directory *string `json:"Directory,omitempty" xml:"Directory,omitempty"`
 	// The process name.
 	//

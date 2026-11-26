@@ -74,7 +74,7 @@ type CreateApprovalProcessResponseBodyProcess struct {
 	//
 	// example:
 	//
-	// Process for approving employees\\" temporary access to internal network applications
+	// Process for approving employees\" temporary access to internal network applications
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The list of policies associated with device registration.
 	DeviceRegistrationPolicies *CreateApprovalProcessResponseBodyProcessDeviceRegistrationPolicies `json:"DeviceRegistrationPolicies,omitempty" xml:"DeviceRegistrationPolicies,omitempty" type:"Struct"`

@@ -111,7 +111,7 @@ type ListDlpOutboundLogsResponseBodyLogs struct {
 	//
 	// example:
 	//
-	// C:\\Users\\a\\Desktop\\x.xlsx
+	// C:\Users\a\Desktop\x.xlsx
 	DevFilePath *string `json:"DevFilePath,omitempty" xml:"DevFilePath,omitempty"`
 	// The unique identifier of the endpoint.
 	//

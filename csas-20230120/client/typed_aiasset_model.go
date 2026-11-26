@@ -100,7 +100,7 @@ type TypedAIAsset struct {
 	//
 	// example:
 	//
-	// 读取并整理指定目录中的文档。
+	// Read and organize the documents in the specified directory.
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The configured service endpoint for an LLM model service or remote MCP. Local stdio MCPs may not have this field. Its presence does not indicate a successful connection or actual invocation.
 	//

@@ -83,7 +83,7 @@ func (s *ListDynamicDisposalProcessesResponseBody) Validate() error {
 }
 
 type ListDynamicDisposalProcessesResponseBodyDisposalProcesses struct {
-	// User\\"s department.
+	// User\"s department.
 	//
 	// example:
 	//

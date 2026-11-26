@@ -14,6 +14,11 @@ type iRemoveDeviceBelongIdentifiersResponseBody interface {
 }
 
 type RemoveDeviceBelongIdentifiersResponseBody struct {
+	// The request ID, which can be used to locate the call.
+	//
+	// example:
+	//
+	// 7A92B549-EC82-5F79-8301-63711AFC9DCE
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
 }
 
