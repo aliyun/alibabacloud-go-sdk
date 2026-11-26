@@ -1,3 +1,10 @@
+2026-11-26 Version: v2.17.0
+- Support API AddScriptHotWord.
+- Support API DeleteScriptHotWord.
+- Support API QueryScriptHotWordList.
+- Support API UpdateScriptHotWord.
+
+
 2026-11-26 Version: v2.16.3
 - Generated golang 2024-03-13 for IntelligentCreation.
 

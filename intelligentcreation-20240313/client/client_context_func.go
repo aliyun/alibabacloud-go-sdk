@@ -10,6 +10,61 @@ import (
 
 // Summary:
 //
+// 新增剧本热词
+//
+// @param request - AddScriptHotWordRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return AddScriptHotWordResponse
+func (client *Client) AddScriptHotWordWithContext(ctx context.Context, request *AddScriptHotWordRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *AddScriptHotWordResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Description) {
+		body["description"] = request.Description
+	}
+
+	if !dara.IsNil(request.HotWord) {
+		body["hotWord"] = request.HotWord
+	}
+
+	if !dara.IsNil(request.ScriptRecordId) {
+		body["scriptRecordId"] = request.ScriptRecordId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("AddScriptHotWord"),
+		Version:     dara.String("2024-03-13"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/yic/yic-console/openService/v1/aicoach/addScriptHotWord"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &AddScriptHotWordResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // 添加文案反馈
 //
 // @param request - AddTextFeedbackRequest
@@ -1718,6 +1773,53 @@ func (client *Client) DeleteIndividuationTextWithContext(ctx context.Context, re
 		BodyType:    dara.String("json"),
 	}
 	_result = &DeleteIndividuationTextResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 删除剧本热词
+//
+// @param request - DeleteScriptHotWordRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteScriptHotWordResponse
+func (client *Client) DeleteScriptHotWordWithContext(ctx context.Context, request *DeleteScriptHotWordRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteScriptHotWordResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.HotWordId) {
+		query["hotWordId"] = request.HotWordId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteScriptHotWord"),
+		Version:     dara.String("2024-03-13"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/yic/yic-console/openService/v1/aicoach/deleteScriptHotWord"),
+		Method:      dara.String("DELETE"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteScriptHotWordResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -3511,6 +3613,65 @@ func (client *Client) QueryIndividuationTextTaskWithContext(ctx context.Context,
 
 // Summary:
 //
+// 检索剧本热词列表
+//
+// @param request - QueryScriptHotWordListRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return QueryScriptHotWordListResponse
+func (client *Client) QueryScriptHotWordListWithContext(ctx context.Context, request *QueryScriptHotWordListRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *QueryScriptHotWordListResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.HotWord) {
+		query["hotWord"] = request.HotWord
+	}
+
+	if !dara.IsNil(request.PageNumber) {
+		query["pageNumber"] = request.PageNumber
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		query["pageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.ScriptRecordId) {
+		query["scriptRecordId"] = request.ScriptRecordId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Query:   openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("QueryScriptHotWordList"),
+		Version:     dara.String("2024-03-13"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/yic/yic-console/openService/v1/aicoach/listScriptHotWord"),
+		Method:      dara.String("GET"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &QueryScriptHotWordListResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // 查询会话信息
 //
 // @param tmpReq - QuerySessionInfoRequest
@@ -4518,6 +4679,61 @@ func (client *Client) UpdateAgentWithContext(ctx context.Context, request *Updat
 		BodyType:    dara.String("json"),
 	}
 	_result = &UpdateAgentResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// 更新剧本热词
+//
+// @param request - UpdateScriptHotWordRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return UpdateScriptHotWordResponse
+func (client *Client) UpdateScriptHotWordWithContext(ctx context.Context, request *UpdateScriptHotWordRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *UpdateScriptHotWordResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.Description) {
+		body["description"] = request.Description
+	}
+
+	if !dara.IsNil(request.HotWord) {
+		body["hotWord"] = request.HotWord
+	}
+
+	if !dara.IsNil(request.HotWordId) {
+		body["hotWordId"] = request.HotWordId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("UpdateScriptHotWord"),
+		Version:     dara.String("2024-03-13"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/yic/yic-console/openService/v1/aicoach/updateScriptHotWord"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &UpdateScriptHotWordResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
