@@ -44,29 +44,29 @@ type iQueryMaterialFileListResponseBody interface {
 }
 
 type QueryMaterialFileListResponseBody struct {
-	// The detailed reason why access is denied.
+	// The detailed reasons for access denial.
 	//
 	// example:
 	//
 	// {}
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	// Specifies whether a retry is allowed. Valid values:
+	// Specifies whether retries are allowed. Valid values:
 	//
-	// - false: A retry is not allowed.
+	// - false: Retries are not allowed.
 	//
-	// - true: A retry is allowed.
+	// - true: Retries are allowed.
 	//
 	// example:
 	//
 	// False
 	AllowRetry *bool `json:"AllowRetry,omitempty" xml:"AllowRetry,omitempty"`
-	// The application name. The name can contain digits, letters, and hyphens (-). It must start with a letter, cannot end with a hyphen (-), and can be up to 36 characters in length.
+	// The application name. The name can contain digits, letters, and hyphens (-). It must start with a letter, cannot end with a hyphen (-), and cannot exceed 36 characters in length.
 	//
 	// example:
 	//
 	// or
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	// The dynamic code. This parameter is currently unused and can be ignored.
+	// The dynamic code. This parameter is not used and can be ignored.
 	//
 	// example:
 	//
@@ -80,7 +80,7 @@ type QueryMaterialFileListResponseBody struct {
 	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
 	// The returned error parameters.
 	ErrorArgs []interface{} `json:"ErrorArgs,omitempty" xml:"ErrorArgs,omitempty" type:"Repeated"`
-	// The error code. If the request is successful, this parameter is not returned. If the request fails, this parameter is returned. For more information, see the error codes in this topic.
+	// The error code. If the request is successful, the ErrorCode parameter is not returned. If the request fails, the ErrorCode parameter is returned. For more information, see the error codes section in this topic.
 	//
 	// example:
 	//
@@ -92,9 +92,7 @@ type QueryMaterialFileListResponseBody struct {
 	//
 	// aliuid:1998006665794443 assumeRole not exist,serviceName:realtimelogpush.dcdnservices.aliyuncs.com
 	ErrorMsg *string `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
-	// The maximum number of entries to return for a single request.
-	//
-	// Valid values: 10 to 100. Default value: 20.
+	// The maximum number of entries to return for a single request. Valid values: 10 to 100. Default value: 20.
 	//
 	// example:
 	//
@@ -102,7 +100,7 @@ type QueryMaterialFileListResponseBody struct {
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
 	// The response data.
 	Module *QueryMaterialFileListResponseBodyModule `json:"Module,omitempty" xml:"Module,omitempty" type:"Struct"`
-	// The token that is used to start the next query. If no next query is available, this parameter is left empty.
+	// The token that is used to start the next query. If no next query exists, this parameter is empty.
 	//
 	// example:
 	//
@@ -114,7 +112,7 @@ type QueryMaterialFileListResponseBody struct {
 	//
 	// 6C6B99AC-39EC-5350-874C-204128C905E6
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The root error code.
+	// The error code.
 	//
 	// example:
 	//
@@ -308,7 +306,7 @@ type QueryMaterialFileListResponseBodyModule struct {
 	//
 	// 1
 	CurrentPageNum *int32 `json:"CurrentPageNum,omitempty" xml:"CurrentPageNum,omitempty"`
-	// The request result.
+	// The query results.
 	Data []*AppMaterialFile `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
 	// Indicates whether a next page exists.
 	NextPage *bool `json:"NextPage,omitempty" xml:"NextPage,omitempty"`
@@ -320,7 +318,7 @@ type QueryMaterialFileListResponseBodyModule struct {
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// Indicates whether a previous page exists.
 	PrePage *bool `json:"PrePage,omitempty" xml:"PrePage,omitempty"`
-	// In addition to the pagination limit, the server processes a maximum of the latest 1,000 records for the current query. If the number of results exceeds 1,000, **ResultLimit*	- is set to **true**. In this case, narrow the time range and search again. Otherwise, **ResultLimit*	- is set to **false**.
+	// In addition to the pagination limit, the server processes a maximum of the latest 1,000 records for the current query. If the number of results exceeds 1,000, **ResultLimit*	- is **true**. In this case, narrow down the time range and search again. Otherwise, **ResultLimit*	- is **false**.
 	ResultLimit *bool `json:"ResultLimit,omitempty" xml:"ResultLimit,omitempty"`
 	// The total number of entries.
 	//

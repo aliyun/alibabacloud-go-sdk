@@ -14,7 +14,7 @@ type iGetAppPluginRequest interface {
 }
 
 type GetAppPluginRequest struct {
-	// The ID of the gateway plugin.
+	// The ID of the gateway plug-in.
 	//
 	// example:
 	//

@@ -30,7 +30,7 @@ type DeleteAppDomainRedirectRequest struct {
 	//
 	// www.aliyun.com
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	// The ID of the domain name redirect record.
+	// The ID of the domain redirect record.
 	//
 	// example:
 	//

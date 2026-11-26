@@ -52,19 +52,19 @@ type iListAppInstancesResponseBody interface {
 }
 
 type ListAppInstancesResponseBody struct {
-	// The detailed reason why access is denied.
+	// The detailed reason for access denial.
 	//
 	// example:
 	//
 	// {}
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	// Specifies whether retries are allowed.
+	// Indicates whether retry is allowed.
 	//
 	// example:
 	//
 	// False
 	AllowRetry *bool `json:"AllowRetry,omitempty" xml:"AllowRetry,omitempty"`
-	// The name of the app.
+	// The app name.
 	//
 	// example:
 	//
@@ -84,7 +84,7 @@ type ListAppInstancesResponseBody struct {
 	//
 	// ERROR-oo1
 	DynamicCode *string `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
-	// The dynamic message. This parameter is not used and can be ignored.
+	// The dynamic message. This parameter is not used. Ignore it.
 	//
 	// example:
 	//
@@ -92,7 +92,9 @@ type ListAppInstancesResponseBody struct {
 	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
 	// The returned error arguments.
 	ErrorArgs []interface{} `json:"ErrorArgs,omitempty" xml:"ErrorArgs,omitempty" type:"Repeated"`
-	// The maximum number of results returned per query. Valid values: 10 to 100. Default value: 20.
+	// The maximum number of results per query.
+	//
+	// Valid values: 10 to 100. Default value: 20.
 	//
 	// example:
 	//
@@ -104,7 +106,7 @@ type ListAppInstancesResponseBody struct {
 	//
 	// False
 	NextPage *bool `json:"NextPage,omitempty" xml:"NextPage,omitempty"`
-	// The token used to start the next query. This parameter is empty if no next query exists.
+	// The token for the next query. It is empty when there is no next query.
 	//
 	// example:
 	//
@@ -128,19 +130,19 @@ type ListAppInstancesResponseBody struct {
 	//
 	// 6C6B99AC-39EC-5350-874C-204128C905E6
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// In addition to the pagination limit, the server processes a maximum of the latest 1,000 records for the current query. If the number of results exceeds 1,000, **ResultLimit*	- is **true**. In this case, narrow the time range and search again. Otherwise, **ResultLimit*	- is **false**.
+	// In addition to the pagination limit, the server processes a maximum of the latest 1,000 records for the current query. If the number of results exceeds 1,000, **ResultLimit*	- is **true**. Narrow the time range and search again. Otherwise, **ResultLimit*	- is **false**.
 	//
 	// example:
 	//
 	// False
 	ResultLimit *bool `json:"ResultLimit,omitempty" xml:"ResultLimit,omitempty"`
-	// The root error code.
+	// The error code.
 	//
 	// example:
 	//
 	// SYSTEM.ERROR
 	RootErrorCode *string `json:"RootErrorCode,omitempty" xml:"RootErrorCode,omitempty"`
-	// The root error message.
+	// The exception message.
 	//
 	// example:
 	//

@@ -100,7 +100,7 @@ type DispatchConsoleAPIForPartnerResponseBodyModule struct {
 	//
 	// example:
 	//
-	// {\\"HasCustomRoleAuth\\": False}
+	// {\"HasCustomRoleAuth\": False}
 	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
 }
 

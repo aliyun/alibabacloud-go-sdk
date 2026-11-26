@@ -40,13 +40,13 @@ type QueryRbacRolePermissionsResponseBody struct {
 	//
 	// {}
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	// Specifies whether retries are allowed.
+	// Indicates whether retries are allowed.
 	//
 	// example:
 	//
 	// False
 	AllowRetry *bool `json:"AllowRetry,omitempty" xml:"AllowRetry,omitempty"`
-	// The name of the application.
+	// The name of the application to query.
 	//
 	// example:
 	//
@@ -58,7 +58,7 @@ type QueryRbacRolePermissionsResponseBody struct {
 	//
 	// ERROR-oo1
 	DynamicCode *string `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
-	// The dynamic message. This parameter is not used. Ignore it.
+	// The dynamic message. This parameter is not used and can be ignored.
 	//
 	// example:
 	//
@@ -66,7 +66,7 @@ type QueryRbacRolePermissionsResponseBody struct {
 	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
 	// The returned error parameters.
 	ErrorArgs []interface{} `json:"ErrorArgs,omitempty" xml:"ErrorArgs,omitempty" type:"Repeated"`
-	// Indicates whether the move is successful.
+	// Indicates whether the move operation is successful.
 	Module *QueryRbacRolePermissionsResponseBodyModule `json:"Module,omitempty" xml:"Module,omitempty" type:"Struct"`
 	// Id of the request
 	//
@@ -86,7 +86,7 @@ type QueryRbacRolePermissionsResponseBody struct {
 	//
 	// System exception
 	RootErrorMsg *string `json:"RootErrorMsg,omitempty" xml:"RootErrorMsg,omitempty"`
-	// Specifies whether synchronous processing is used.
+	// Indicates whether the processing is synchronous.
 	//
 	// example:
 	//
@@ -217,9 +217,9 @@ type QueryRbacRolePermissionsResponseBodyModule struct {
 	//
 	// 12
 	CurrentPageNum *int32 `json:"CurrentPageNum,omitempty" xml:"CurrentPageNum,omitempty"`
-	// The request result.
+	// The request results.
 	Data []*QueryRbacRolePermissionsResponseBodyModuleData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	// The ID of the next feature.
+	// The next feature ID.
 	Next *QueryRbacRolePermissionsResponseBodyModuleNext `json:"Next,omitempty" xml:"Next,omitempty" type:"Struct"`
 	// Indicates whether a next page exists.
 	//
@@ -227,7 +227,7 @@ type QueryRbacRolePermissionsResponseBodyModule struct {
 	//
 	// False
 	NextPage *bool `json:"NextPage,omitempty" xml:"NextPage,omitempty"`
-	// The page size.
+	// The number of entries per page.
 	//
 	// example:
 	//
@@ -239,7 +239,7 @@ type QueryRbacRolePermissionsResponseBodyModule struct {
 	//
 	// False
 	PrePage *bool `json:"PrePage,omitempty" xml:"PrePage,omitempty"`
-	// In addition to the pagination limit, the server processes a maximum of the latest 1,000 records for the current query. If the number of results exceeds 1,000, **ResultLimit*	- is **true**. Narrow the time range and search again. Otherwise, **ResultLimit*	- is **false**.
+	// In addition to the pagination limit, the server processes a maximum of the latest 1,000 records for the current query. If the number of results exceeds 1,000, **ResultLimit*	- is **true**. In this case, narrow the time range and search again. Otherwise, **ResultLimit*	- is **false**.
 	//
 	// example:
 	//
@@ -367,7 +367,7 @@ func (s *QueryRbacRolePermissionsResponseBodyModule) Validate() error {
 }
 
 type QueryRbacRolePermissionsResponseBodyModuleData struct {
-	// The system-defined parameter. Set the value to **DeleteIntegration**.
+	// The system-defined parameter. Valid value: **DeleteIntegration**.
 	//
 	// example:
 	//
@@ -442,7 +442,7 @@ func (s *QueryRbacRolePermissionsResponseBodyModuleData) Validate() error {
 }
 
 type QueryRbacRolePermissionsResponseBodyModuleNext struct {
-	// The system-defined parameter. Set the value to **GetCreateCustomerInfomation**.
+	// The system-defined parameter. Valid value: **GetCreateCustomerInfomation**.
 	//
 	// example:
 	//
@@ -462,7 +462,7 @@ type QueryRbacRolePermissionsResponseBodyModuleNext struct {
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
 	// The statistical method for the Warn level.
 	//
-	// The value of `Statistics` varies with the cloud service. For more information, see [Cloud service monitoring metrics](https://help.aliyun.com/document_detail/163515.html).
+	// The valid values of `Statistics` vary by cloud service. For more information, see [Cloud service monitoring metrics](https://help.aliyun.com/document_detail/163515.html).
 	//
 	// example:
 	//

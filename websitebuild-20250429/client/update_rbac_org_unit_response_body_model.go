@@ -34,19 +34,19 @@ type iUpdateRbacOrgUnitResponseBody interface {
 }
 
 type UpdateRbacOrgUnitResponseBody struct {
-	// The detailed reason for the access denial.
+	// The detailed reason why access is denied.
 	//
 	// example:
 	//
 	// {}
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	// Indicates whether a retry is allowed.
+	// Indicates whether retries are allowed.
 	//
 	// example:
 	//
 	// False
 	AllowRetry *bool `json:"AllowRetry,omitempty" xml:"AllowRetry,omitempty"`
-	// The app name.
+	// The application name.
 	//
 	// example:
 	//

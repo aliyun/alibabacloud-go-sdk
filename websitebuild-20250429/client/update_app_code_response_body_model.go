@@ -34,37 +34,37 @@ type iUpdateAppCodeResponseBody interface {
 }
 
 type UpdateAppCodeResponseBody struct {
-	// The access denial details.
+	// The access denied details.
 	//
 	// example:
 	//
 	// {}
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	// Indicates whether retry is allowed.
+	// Indicates whether a retry is allowed.
 	//
 	// example:
 	//
 	// False
 	AllowRetry *bool `json:"AllowRetry,omitempty" xml:"AllowRetry,omitempty"`
-	// The application name. The application with this name is queried.
+	// The name of the application. You can query the application by this name.
 	//
 	// example:
 	//
 	// ish-intelligence-store-platform-admin-web
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	// The dynamic code. This parameter is not in use. Ignore this parameter.
+	// The dynamic code. This parameter is currently unused and can be ignored.
 	//
 	// example:
 	//
 	// ERROR-oo1
 	DynamicCode *string `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
-	// The dynamic error message. This message is used to replace the %s variable in the ErrMessage response parameter.
+	// The dynamic error message, which is used to replace the %s placeholder in the ErrMessage response parameter.
 	//
 	// example:
 	//
 	// SYSTEM_ERROR
 	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
-	// The error parameters returned.
+	// The returned error parameters.
 	ErrorArgs []interface{} `json:"ErrorArgs,omitempty" xml:"ErrorArgs,omitempty" type:"Repeated"`
 	// The response data.
 	//
@@ -84,11 +84,11 @@ type UpdateAppCodeResponseBody struct {
 	//
 	// SYSTEM.ERROR
 	RootErrorCode *string `json:"RootErrorCode,omitempty" xml:"RootErrorCode,omitempty"`
-	// The root error message.
+	// The exception message.
 	//
 	// example:
 	//
-	// 系统异常
+	// System exception
 	RootErrorMsg *string `json:"RootErrorMsg,omitempty" xml:"RootErrorMsg,omitempty"`
 	// The reserved parameter.
 	//

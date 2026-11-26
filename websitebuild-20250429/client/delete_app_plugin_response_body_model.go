@@ -40,13 +40,13 @@ type DeleteAppPluginResponseBody struct {
 	//
 	// {}
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	// Indicates whether a retry is allowed.
+	// Indicates whether retries are allowed.
 	//
 	// example:
 	//
 	// False
 	AllowRetry *bool `json:"AllowRetry,omitempty" xml:"AllowRetry,omitempty"`
-	// The name of the application.
+	// The application name.
 	//
 	// example:
 	//
@@ -86,7 +86,7 @@ type DeleteAppPluginResponseBody struct {
 	//
 	// System exception
 	RootErrorMsg *string `json:"RootErrorMsg,omitempty" xml:"RootErrorMsg,omitempty"`
-	// Indicates whether the processing is synchronous.
+	// Indicates whether the request is processed synchronously.
 	//
 	// example:
 	//
@@ -217,7 +217,7 @@ type DeleteAppPluginResponseBodyModule struct {
 	//
 	// NORMAL
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// Indicates whether the operation was successful.
+	// Indicates whether the request is successful.
 	//
 	// example:
 	//

@@ -32,27 +32,25 @@ type ListRbacOrgTreeRequest struct {
 	//
 	// WD20250703155602000001
 	BizId *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
-	// The number of results returned per query.
-	//
-	// Valid values: 10 to 100. Default value: 20.
+	// The number of entries to return for each query. Valid values: 10 to 100. Default value: 20.
 	//
 	// example:
 	//
 	// 10
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The token used to start the next query. This parameter is empty if no subsequent query is available.
+	// The token used to start the next query. If no next query is available, this parameter is empty.
 	//
 	// example:
 	//
 	// AAAAARbaCuN6hiD08qrLdwJ9Fh3BFw8paIJ7ylB6A7Qn9JjM
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The field used for sorting.
+	// The sort field.
 	//
 	// example:
 	//
 	// gmtCreated
 	OrderColumn *string `json:"OrderColumn,omitempty" xml:"OrderColumn,omitempty"`
-	// The sort order. Valid values: ASC and DESC.
+	// The sort order. Valid values: ASC, DESC.
 	//
 	// example:
 	//

@@ -22,27 +22,27 @@ type iModuleNextComponentsValue interface {
 }
 
 type ModuleNextComponentsValue struct {
-	// Component unique code (internal system identifier)
+	// The unique component code (internal system identifier).
 	//
 	// example:
 	//
 	// placeholder
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// Component display name (user-visible name)
+	// The display name of the component (user-visible name).
 	//
 	// example:
 	//
 	// placeholder
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// Component instance property configuration
+	// The instance property configuration of the component.
 	InstanceProperty []*ModuleNextComponentsValueInstanceProperty `json:"InstanceProperty,omitempty" xml:"InstanceProperty,omitempty" type:"Repeated"`
-	// Component instance property configuration
+	// The instance property configuration of the component.
 	//
 	// example:
 	//
-	// {"deploy_area":{"Code":"deploy_area","Name":"部署地区","Value":"HongKong","Values":[{"Value":"HongKong","Name":"中国香港"}]}}
+	// {"deploy_area":{"Code":"deploy_area","Name":"Deployment region","Value":"HongKong","Values":[{"Value":"HongKong","Name":"China (Hong Kong)"}]}}
 	Properties map[string]*ModuleNextComponentsValuePropertiesValue `json:"Properties,omitempty" xml:"Properties,omitempty"`
-	// Module property status
+	// The module property status.
 	//
 	// example:
 	//
@@ -117,25 +117,25 @@ func (s *ModuleNextComponentsValue) Validate() error {
 }
 
 type ModuleNextComponentsValueInstanceProperty struct {
-	// Property code (internal system identifier)
+	// The property code (internal system identifier).
 	//
 	// example:
 	//
 	// placeholder
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// Property display name (user-visible name)
+	// The display name of the property (user-visible name).
 	//
 	// example:
 	//
 	// placeholder
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// Property value code (internal system value)
+	// The property value code (internal system value).
 	//
 	// example:
 	//
 	// placeholder
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
-	// Module property value list
+	// The list of module property values.
 	Values []*ModuleNextComponentsValueInstancePropertyValues `json:"Values,omitempty" xml:"Values,omitempty" type:"Repeated"`
 }
 
@@ -197,19 +197,19 @@ func (s *ModuleNextComponentsValueInstanceProperty) Validate() error {
 }
 
 type ModuleNextComponentsValueInstancePropertyValues struct {
-	// Property code (internal system identifier)
+	// The property code (internal system identifier).
 	//
 	// example:
 	//
 	// placeholder
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// Property value code (internal system value)
+	// The property value code (internal system value).
 	//
 	// example:
 	//
 	// placeholder
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
-	// Property display name (user-visible name)
+	// The display name of the property (user-visible name).
 	//
 	// example:
 	//

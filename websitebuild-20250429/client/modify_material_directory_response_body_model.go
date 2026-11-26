@@ -40,7 +40,7 @@ type iModifyMaterialDirectoryResponseBody interface {
 }
 
 type ModifyMaterialDirectoryResponseBody struct {
-	// The detailed reason for the access denial.
+	// The detailed cause of the access denied error.
 	//
 	// example:
 	//
@@ -52,7 +52,7 @@ type ModifyMaterialDirectoryResponseBody struct {
 	//
 	// False
 	AllowRetry *bool `json:"AllowRetry,omitempty" xml:"AllowRetry,omitempty"`
-	// The name of the application.
+	// The application name.
 	//
 	// example:
 	//
@@ -72,7 +72,7 @@ type ModifyMaterialDirectoryResponseBody struct {
 	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
 	// The error parameters.
 	ErrorArgs []interface{} `json:"ErrorArgs,omitempty" xml:"ErrorArgs,omitempty" type:"Repeated"`
-	// The error code. If the request succeeds, the ErrorCode parameter is not returned. If the request fails, the ErrorCode parameter is returned. For more information, see the error codes in this topic.
+	// The error code. If the request is successful, ErrorCode is not returned. If the request fails, ErrorCode is returned. For more information, see the error codes in this topic.
 	//
 	// example:
 	//
@@ -96,7 +96,7 @@ type ModifyMaterialDirectoryResponseBody struct {
 	//
 	// 6C6B99AC-39EC-5350-874C-204128C905E6
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The root error code.
+	// The error code.
 	//
 	// example:
 	//
@@ -108,13 +108,13 @@ type ModifyMaterialDirectoryResponseBody struct {
 	//
 	// System exception
 	RootErrorMsg *string `json:"RootErrorMsg,omitempty" xml:"RootErrorMsg,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	//
 	// example:
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// Indicates whether the request is processed synchronously.
+	// Indicates whether synchronous processing is used.
 	//
 	// example:
 	//

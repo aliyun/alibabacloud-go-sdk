@@ -34,7 +34,7 @@ type iGetAppWorkspaceDirectoryResponseBody interface {
 }
 
 type GetAppWorkspaceDirectoryResponseBody struct {
-	// The detailed reason for access denial.
+	// The detailed cause of access denial.
 	//
 	// example:
 	//
@@ -58,7 +58,7 @@ type GetAppWorkspaceDirectoryResponseBody struct {
 	//
 	// ERROR-oo1
 	DynamicCode *string `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
-	// The dynamic message. This parameter is not used and can be ignored.
+	// The dynamic message. This parameter is not in use and can be ignored.
 	//
 	// example:
 	//

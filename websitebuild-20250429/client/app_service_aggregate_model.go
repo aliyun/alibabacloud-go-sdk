@@ -45,6 +45,8 @@ type iAppServiceAggregate interface {
 	GetStatus() *string
 	SetUserId(v string) *AppServiceAggregate
 	GetUserId() *string
+	SetVisible(v bool) *AppServiceAggregate
+	GetVisible() *bool
 }
 
 type AppServiceAggregate struct {
@@ -60,7 +62,7 @@ type AppServiceAggregate struct {
 	//
 	// 0
 	Deleted *int32 `json:"Deleted,omitempty" xml:"Deleted,omitempty"`
-	// The end time in ISO 8601 format in the UTC time zone (Z).
+	// The end time. The value is in ISO 8601 format and the time zone is UTC (Z).
 	//
 	// example:
 	//
@@ -84,7 +86,7 @@ type AppServiceAggregate struct {
 	//
 	// Tue Sep 09 10:27:49 CST 2025
 	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	// The operation address of the application.
+	// The application operation address.
 	Group *AppServiceGroup `json:"Group,omitempty" xml:"Group,omitempty"`
 	// The associated business ID.
 	//
@@ -100,9 +102,9 @@ type AppServiceAggregate struct {
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The list of flow nodes.
 	NodeList []*TreeNode `json:"NodeList,omitempty" xml:"NodeList,omitempty" type:"Repeated"`
-	// The address used to uniquely identify an operation.
+	// The unique identifier for an operation.
 	OperationAddress *AppOperationAddress `json:"OperationAddress,omitempty" xml:"OperationAddress,omitempty"`
-	// The configuration information of the application service.
+	// The application service configuration information.
 	Profile *AppServiceProfile `json:"Profile,omitempty" xml:"Profile,omitempty"`
 	// The service type.
 	//
@@ -122,7 +124,7 @@ type AppServiceAggregate struct {
 	//
 	// inst-001
 	Slug *string `json:"Slug,omitempty" xml:"Slug,omitempty"`
-	// The start time as a UNIX timestamp in milliseconds.
+	// The start time. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
@@ -140,6 +142,12 @@ type AppServiceAggregate struct {
 	//
 	// 123241414
 	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// Specifies whether the item is visible.
+	//
+	// example:
+	//
+	// true
+	Visible *bool `json:"Visible,omitempty" xml:"Visible,omitempty"`
 }
 
 func (s AppServiceAggregate) String() string {
@@ -220,6 +228,10 @@ func (s *AppServiceAggregate) GetStatus() *string {
 
 func (s *AppServiceAggregate) GetUserId() *string {
 	return s.UserId
+}
+
+func (s *AppServiceAggregate) GetVisible() *bool {
+	return s.Visible
 }
 
 func (s *AppServiceAggregate) SetBizId(v string) *AppServiceAggregate {
@@ -309,6 +321,11 @@ func (s *AppServiceAggregate) SetStatus(v string) *AppServiceAggregate {
 
 func (s *AppServiceAggregate) SetUserId(v string) *AppServiceAggregate {
 	s.UserId = &v
+	return s
+}
+
+func (s *AppServiceAggregate) SetVisible(v bool) *AppServiceAggregate {
+	s.Visible = &v
 	return s
 }
 

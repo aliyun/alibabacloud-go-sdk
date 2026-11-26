@@ -22,7 +22,7 @@ type SubmitMaterialTaskRequest struct {
 	//
 	// example:
 	//
-	// xxx
+	// GROUP_1
 	BizGroupId *string `json:"BizGroupId,omitempty" xml:"BizGroupId,omitempty"`
 	// The task parameters.
 	//

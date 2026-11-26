@@ -28,13 +28,13 @@ type iCheckUserResourceMeasureRequest interface {
 }
 
 type CheckUserResourceMeasureRequest struct {
-	// The belong ID, such as the website ID or Alibaba Cloud user ID.
+	// The owner ID, which can be a website ID or an Alibaba Cloud user ID.
 	//
 	// example:
 	//
 	// 123456
 	BelongId *string `json:"BelongId,omitempty" xml:"BelongId,omitempty"`
-	// The belong ID type, such as siteId or uid.
+	// The owner ID type, such as siteId or uid.
 	//
 	// example:
 	//
@@ -46,7 +46,7 @@ type CheckUserResourceMeasureRequest struct {
 	//
 	// 1
 	BizType *string `json:"BizType,omitempty" xml:"BizType,omitempty"`
-	// The optional compatible total for APP_WORKSPACE. Valid values: 0 to 100000. If provided, it takes precedence over ResourceValue and does not repeatedly add the used quota. For new calls, only ResourceValue is required. This field is not used for APP/USER.
+	// The desired total for APP_WORKSPACE. This is an optional compatible total with a range of 0 to 100,000. If provided, it takes precedence over ResourceValue and does not repeatedly add the used quota. For new calls, only ResourceValue is required. This field is not used for APP or USER.
 	//
 	// example:
 	//
@@ -58,7 +58,7 @@ type CheckUserResourceMeasureRequest struct {
 	//
 	// p20202933455
 	EspBizId *string `json:"EspBizId,omitempty" xml:"EspBizId,omitempty"`
-	// The order component information. If this field is empty, EspBizId and BizType cannot be empty.
+	// The order component information in JSON format. If this parameter is left empty, EspBizId and BizType cannot be empty.
 	//
 	// example:
 	//
@@ -70,7 +70,11 @@ type CheckUserResourceMeasureRequest struct {
 	//
 	// InspirationTokens
 	ResourceCode *string `json:"ResourceCode,omitempty" xml:"ResourceCode,omitempty"`
-	// The resource value. Default is empty. Required only for feature resources. A value of 0 indicates not supported, and 1 indicates supported.
+	// The resource value. This parameter is left empty by default and is required only for feature resources. Valid values:
+	//
+	// - 0: Not supported.
+	//
+	// - 1: Supported.
 	//
 	// example:
 	//

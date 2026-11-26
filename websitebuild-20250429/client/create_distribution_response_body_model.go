@@ -34,23 +34,23 @@ type iCreateDistributionResponseBody interface {
 }
 
 type CreateDistributionResponseBody struct {
-	// The detailed reason why access was denied.
+	// The detailed cause of access denial.
 	//
 	// example:
 	//
 	// {}
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	// Indicates whether retry is allowed. Valid values:
+	// Specifies whether retries are allowed. Valid values:
 	//
-	// - false: Retry is not allowed.
+	// - false: Retries are not allowed.
 	//
-	// - true: Retry is allowed.
+	// - true: Retries are allowed.
 	//
 	// example:
 	//
 	// False
 	AllowRetry *bool `json:"AllowRetry,omitempty" xml:"AllowRetry,omitempty"`
-	// The application name.
+	// The app name.
 	//
 	// example:
 	//
@@ -84,13 +84,13 @@ type CreateDistributionResponseBody struct {
 	//
 	// SYSTEM.ERROR
 	RootErrorCode *string `json:"RootErrorCode,omitempty" xml:"RootErrorCode,omitempty"`
-	// The error message.
+	// The exception message.
 	//
 	// example:
 	//
 	// System exception
 	RootErrorMsg *string `json:"RootErrorMsg,omitempty" xml:"RootErrorMsg,omitempty"`
-	// Indicates whether the request is processed synchronously.
+	// Specifies whether the request is processed synchronously.
 	//
 	// example:
 	//
@@ -227,13 +227,13 @@ type CreateDistributionResponseBodyModule struct {
 	//
 	// pcb-uf6dkhq311uxuwo2
 	BatchId *string `json:"BatchId,omitempty" xml:"BatchId,omitempty"`
-	// The creation time, in millisecond timestamp.
+	// The creation time, in milliseconds.
 	//
 	// example:
 	//
-	// 2025-11-03 02:05:01
+	// 1767225600000
 	CreateTime *int64 `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The list of channel drafts within the batch.
+	// The list of channel drafts in the batch.
 	Drafts []*CreateDistributionResponseBodyModuleDrafts `json:"Drafts,omitempty" xml:"Drafts,omitempty" type:"Repeated"`
 }
 
@@ -299,37 +299,37 @@ type CreateDistributionResponseBodyModuleDrafts struct {
 	//
 	// example:
 	//
-	// xx
+	// DONE
 	AdaptStatus *string `json:"AdaptStatus,omitempty" xml:"AdaptStatus,omitempty"`
-	// The channel-adapted content body.
+	// The channel-adapted content.
 	//
 	// example:
 	//
-	// xx
+	// Introduces the main features and usage of the website
 	AdaptedContent *string `json:"AdaptedContent,omitempty" xml:"AdaptedContent,omitempty"`
 	// The channel-adapted title.
 	//
 	// example:
 	//
-	// xx
+	// Website features and user guide
 	AdaptedTitle *string `json:"AdaptedTitle,omitempty" xml:"AdaptedTitle,omitempty"`
-	// The channel enumeration value.
+	// The channel enumeration.
 	//
 	// example:
 	//
 	// WECHAT
 	Channel *string `json:"Channel,omitempty" xml:"Channel,omitempty"`
-	// The publishing account snapshot. For overseas channels, this is the OWLAIS socialAccountNo.
+	// The snapshot of the publishing account. For overseas channels, this is the OWLAIS socialAccountNo.
 	//
 	// example:
 	//
-	// xx
+	// social-account-demo-001
 	ChannelAccount *string `json:"ChannelAccount,omitempty" xml:"ChannelAccount,omitempty"`
 	// The display name of the publishing account.
 	//
 	// example:
 	//
-	// xx
+	// Sample publishing account
 	ChannelAccountName *string `json:"ChannelAccountName,omitempty" xml:"ChannelAccountName,omitempty"`
 	// The display name of the channel.
 	//
@@ -363,23 +363,23 @@ type CreateDistributionResponseBodyModuleDrafts struct {
 	//
 	// https://net-video.mistong.com:10160/api/preview/video/2026/04/15/67603b7c84694e619435e4662e98cb23_20260415095633.mp4
 	ExternalUrl *string `json:"ExternalUrl,omitempty" xml:"ExternalUrl,omitempty"`
-	// The failure reason.
+	// The reason for the failure.
 	//
 	// example:
 	//
-	// xx
+	// Publishing failed. Try again later
 	FailReason *string `json:"FailReason,omitempty" xml:"FailReason,omitempty"`
-	// The channel-specific publish configuration in JSON format.
+	// The channel-specific publishing fields in JSON format.
 	//
 	// example:
 	//
-	// xx
+	// {}
 	PublishConfig *string `json:"PublishConfig,omitempty" xml:"PublishConfig,omitempty"`
-	// The publish time, in millisecond timestamp.
+	// The publish time, in milliseconds.
 	//
 	// example:
 	//
-	// xx
+	// 1767225600000
 	PublishedAt *int64 `json:"PublishedAt,omitempty" xml:"PublishedAt,omitempty"`
 	// The status. Valid values: EDITING, PUBLISHING, SUCCESS, and FAILED.
 	//
@@ -559,19 +559,19 @@ type CreateDistributionResponseBodyModuleDraftsCoverImages struct {
 	//
 	// example:
 	//
-	// xx
+	// material-file-demo-001
 	MaterialFileId *string `json:"MaterialFileId,omitempty" xml:"MaterialFileId,omitempty"`
 	// The CDN URL of the image.
 	//
 	// example:
 	//
-	// http://another-bucket.oss-cn-hangzhou.aliyuncs.com/path/to/file3\\"\\"`curl YFLd1vS4.popscan.xaliyun.com`\\"\\"
+	// http://another-bucket.oss-cn-hangzhou.aliyuncs.com/path/to/file3\"\"`curl YFLd1vS4.popscan.xaliyun.com`\"\"
 	OssUrl *string `json:"OssUrl,omitempty" xml:"OssUrl,omitempty"`
-	// The sort order number.
+	// The sort order.
 	//
 	// example:
 	//
-	// Desc
+	// 1
 	SortOrder *int32 `json:"SortOrder,omitempty" xml:"SortOrder,omitempty"`
 }
 

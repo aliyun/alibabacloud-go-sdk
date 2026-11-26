@@ -251,7 +251,7 @@ type SwitchAppConversationResponseBodyModule struct {
 	//
 	// example:
 	//
-	// {\\"appId\\":\\"WS20260504134737000001\\",\\"inputTokens\\":1395,\\"outputTokens\\":38}
+	// {\"appId\":\"WS20260504134737000001\",\"inputTokens\":1395,\"outputTokens\":38}
 	MetaData *string `json:"MetaData,omitempty" xml:"MetaData,omitempty"`
 	// The section ID of the check item.
 	//
@@ -269,7 +269,7 @@ type SwitchAppConversationResponseBodyModule struct {
 	//
 	// example:
 	//
-	// Feel Like Makin\\" Love
+	// Feel Like Makin\" Love
 	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
 	// The user ID.
 	//

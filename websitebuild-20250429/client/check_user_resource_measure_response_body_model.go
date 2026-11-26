@@ -34,7 +34,7 @@ type iCheckUserResourceMeasureResponseBody interface {
 }
 
 type CheckUserResourceMeasureResponseBody struct {
-	// The detailed reason for access denial.
+	// The detailed reasons for access denial.
 	//
 	// example:
 	//
@@ -50,7 +50,7 @@ type CheckUserResourceMeasureResponseBody struct {
 	//
 	// False
 	AllowRetry *bool `json:"AllowRetry,omitempty" xml:"AllowRetry,omitempty"`
-	// The name of the application.
+	// The application name, which is used to query the application.
 	//
 	// example:
 	//
@@ -70,7 +70,7 @@ type CheckUserResourceMeasureResponseBody struct {
 	//
 	// SYSTEM_ERROR
 	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
-	// The returned error arguments.
+	// The returned error parameters.
 	ErrorArgs []interface{} `json:"ErrorArgs,omitempty" xml:"ErrorArgs,omitempty" type:"Repeated"`
 	// The returned object.
 	Module *CheckUserResourceMeasureResponseBodyModule `json:"Module,omitempty" xml:"Module,omitempty" type:"Struct"`
@@ -80,19 +80,19 @@ type CheckUserResourceMeasureResponseBody struct {
 	//
 	// 6C6B99AC-39EC-5350-874C-204128C905E6
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The root error code.
+	// The error code.
 	//
 	// example:
 	//
 	// SYSTEM.ERROR
 	RootErrorCode *string `json:"RootErrorCode,omitempty" xml:"RootErrorCode,omitempty"`
-	// The root error message.
+	// The exception message.
 	//
 	// example:
 	//
 	// System exception
 	RootErrorMsg *string `json:"RootErrorMsg,omitempty" xml:"RootErrorMsg,omitempty"`
-	// The backup parameter.
+	// The reserved parameter.
 	//
 	// example:
 	//
@@ -217,25 +217,25 @@ func (s *CheckUserResourceMeasureResponseBody) Validate() error {
 }
 
 type CheckUserResourceMeasureResponseBodyModule struct {
-	// Returned only for APP_WORKSPACE: the target total for this check, which is the used quota in the saved configuration plus ResourceValue. If the compatible DesiredTotal is provided, this total is used directly. The used quota for questions is the sum of common and word-of-mouth questions in the saved configuration. The used quota for competitors is the number of competitors. This field is empty for APP and USER checks.
+	// The target total for the current check. This parameter is returned only for APP_WORKSPACE. It is the sum of the used quota in the saved configuration and ResourceValue. If the compatible DesiredTotal is provided, this total is used directly. The used quota for questions is the sum of common and word-of-mouth questions in the saved configuration, and the used quota for competitors is the number of competitors. This parameter is empty for APP or USER checks.
 	//
 	// example:
 	//
 	// 21
 	DesiredTotal *int64 `json:"DesiredTotal,omitempty" xml:"DesiredTotal,omitempty"`
-	// The error code when the check fails. This field is null when the check passes.
+	// The error code returned when the check fails. This parameter is null when the check is passed.
 	//
 	// example:
 	//
 	// Success
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The error message when the check fails. This field is null when the check passes.
+	// The error message returned when the check fails. This parameter is null when the check is passed.
 	//
 	// example:
 	//
 	// stream push failed
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	// Returned only for APP_WORKSPACE quantity dry runs: the maximum number of questions or competitors allowed by the current commodity edition, not the remaining quota. This field is empty for APP and USER checks or when the edition benefits cannot be determined.
+	// The maximum number of questions or competitors allowed by the current commodity version. This parameter is returned only for APP_WORKSPACE quantity dry runs and does not represent the remaining quota. This parameter is empty for APP or USER checks, or when the version benefits cannot be determined.
 	//
 	// example:
 	//
@@ -253,7 +253,7 @@ type CheckUserResourceMeasureResponseBodyModule struct {
 	//
 	// TransitRouterVpcAttachment
 	ResourceCode *string `json:"ResourceCode,omitempty" xml:"ResourceCode,omitempty"`
-	// Indicates whether a purchasable higher edition exists that can accommodate the DesiredTotal. This field is true only when the current edition capacity is insufficient and a higher edition meets the requirements. Otherwise, it is false. This field may be empty for APP and USER checks. This field does not indicate that an upgrade has been performed or an upgrade order has been created.
+	// Indicates whether a purchasable higher version exists that can accommodate the DesiredTotal. This parameter is true only when the current version capacity is insufficient and a higher version meets the requirements. Otherwise, it is false. This parameter may be empty for APP or USER checks. This field does not indicate that an upgrade has been performed or an upgrade order has been created.
 	//
 	// example:
 	//

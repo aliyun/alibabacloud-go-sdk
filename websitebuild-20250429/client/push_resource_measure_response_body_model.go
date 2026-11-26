@@ -46,7 +46,7 @@ type PushResourceMeasureResponseBody struct {
 	//
 	// False
 	AllowRetry *bool `json:"AllowRetry,omitempty" xml:"AllowRetry,omitempty"`
-	// The application name. The application with this name is queried.
+	// The name of the application to query.
 	//
 	// example:
 	//
@@ -64,7 +64,7 @@ type PushResourceMeasureResponseBody struct {
 	//
 	// SYSTEM_ERROR
 	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
-	// The error parameters returned.
+	// The returned error parameters.
 	ErrorArgs []interface{} `json:"ErrorArgs,omitempty" xml:"ErrorArgs,omitempty" type:"Repeated"`
 	// The response data.
 	//
@@ -84,11 +84,11 @@ type PushResourceMeasureResponseBody struct {
 	//
 	// SYSTEM.ERROR
 	RootErrorCode *string `json:"RootErrorCode,omitempty" xml:"RootErrorCode,omitempty"`
-	// The error message.
+	// The exception message.
 	//
 	// example:
 	//
-	// 系统异常
+	// System error
 	RootErrorMsg *string `json:"RootErrorMsg,omitempty" xml:"RootErrorMsg,omitempty"`
 	// Indicates whether the request is processed synchronously.
 	//

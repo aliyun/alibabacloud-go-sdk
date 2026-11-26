@@ -14,7 +14,7 @@ type iGetAppConversationLockStatusRequest interface {
 }
 
 type GetAppConversationLockStatusRequest struct {
-	// The session ID.
+	// The conversation ID.
 	//
 	// example:
 	//

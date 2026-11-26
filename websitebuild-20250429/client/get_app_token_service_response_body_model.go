@@ -34,17 +34,17 @@ type iGetAppTokenServiceResponseBody interface {
 }
 
 type GetAppTokenServiceResponseBody struct {
-	// The access denied detail.
+	// The access denial information.
 	//
 	// example:
 	//
 	// {}
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	// Indicates whether retry is allowed. Valid values:
+	// Specifies whether retries are allowed. Valid values:
 	//
-	// - false: Retry is not allowed.
+	// - false: Retries are not allowed.
 	//
-	// - true: Retry is allowed.
+	// - true: Retries are allowed.
 	//
 	// example:
 	//
@@ -62,13 +62,13 @@ type GetAppTokenServiceResponseBody struct {
 	//
 	// ERROR-oo1
 	DynamicCode *string `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
-	// The dynamic message. This parameter is not in use. Ignore this parameter.
+	// The dynamic message. This parameter is currently unused and can be ignored.
 	//
 	// example:
 	//
 	// SYSTEM_ERROR
 	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
-	// The error parameters returned.
+	// The returned error parameters.
 	ErrorArgs []interface{} `json:"ErrorArgs,omitempty" xml:"ErrorArgs,omitempty" type:"Repeated"`
 	// The application module.
 	Module *GetAppTokenServiceResponseBodyModule `json:"Module,omitempty" xml:"Module,omitempty" type:"Struct"`
@@ -84,11 +84,11 @@ type GetAppTokenServiceResponseBody struct {
 	//
 	// SYSTEM.ERROR
 	RootErrorCode *string `json:"RootErrorCode,omitempty" xml:"RootErrorCode,omitempty"`
-	// The root error message.
+	// The exception message.
 	//
 	// example:
 	//
-	// 系统异常
+	// System exception
 	RootErrorMsg *string `json:"RootErrorMsg,omitempty" xml:"RootErrorMsg,omitempty"`
 	// The reserved parameter.
 	//
@@ -219,7 +219,7 @@ type GetAppTokenServiceResponseBodyModule struct {
 	//
 	// example:
 	//
-	// {\\"deliveryNodeName\\":\\"绑定域名及发布\\",\\"deliveryNodeStatus\\":\\"Finish\\",\\"deliveryOperatorRole\\":\\"Provider\\"}
+	// {\"deliveryNodeName\":\"Bind domain name and publish\",\"deliveryNodeStatus\":\"Finish\",\"deliveryOperatorRole\":\"Provider\"}
 	Extend *string `json:"Extend,omitempty" xml:"Extend,omitempty"`
 	// trial,draft,live,refunded,expired,released
 	//

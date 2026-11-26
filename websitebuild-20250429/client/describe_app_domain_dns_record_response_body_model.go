@@ -34,19 +34,19 @@ type iDescribeAppDomainDnsRecordResponseBody interface {
 }
 
 type DescribeAppDomainDnsRecordResponseBody struct {
-	// The access denied details. This field is returned only when RAM authentication fails.
+	// The details of the access denied error. This field is returned only when RAM authentication fails.
 	//
 	// example:
 	//
 	// {}
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	// Indicates whether retry is allowed.
+	// Indicates whether retries are allowed.
 	//
 	// example:
 	//
 	// False
 	AllowRetry *bool `json:"AllowRetry,omitempty" xml:"AllowRetry,omitempty"`
-	// The application name. Queries the application with this name.
+	// The name of the application to query.
 	//
 	// example:
 	//
@@ -68,7 +68,7 @@ type DescribeAppDomainDnsRecordResponseBody struct {
 	ErrorArgs []interface{} `json:"ErrorArgs,omitempty" xml:"ErrorArgs,omitempty" type:"Repeated"`
 	// The application module.
 	Module *DescribeAppDomainDnsRecordResponseBodyModule `json:"Module,omitempty" xml:"Module,omitempty" type:"Struct"`
-	// The ID of the request.
+	// Id of the request
 	//
 	// example:
 	//
@@ -84,7 +84,7 @@ type DescribeAppDomainDnsRecordResponseBody struct {
 	//
 	// example:
 	//
-	// 系统异常
+	// System exception
 	RootErrorMsg *string `json:"RootErrorMsg,omitempty" xml:"RootErrorMsg,omitempty"`
 	// The reserved parameter.
 	//

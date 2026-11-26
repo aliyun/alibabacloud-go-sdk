@@ -62,9 +62,7 @@ type QueryMaterialFileListRequest struct {
 	//
 	// 1024
 	MaxFileSize *int64 `json:"MaxFileSize,omitempty" xml:"MaxFileSize,omitempty"`
-	// The maximum number of entries to return for a single request.
-	//
-	// Valid values: 10 to 100. Default value: 20.
+	// The maximum number of entries to return for a single request. Valid values: 10 to 100. Default value: 20.
 	//
 	// example:
 	//
@@ -82,7 +80,7 @@ type QueryMaterialFileListRequest struct {
 	//
 	// Test
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The token that is used to start the next query. If no next query is available, this parameter is left empty.
+	// The token that is used to start the next query. If no next query exists, this parameter is empty.
 	//
 	// example:
 	//
@@ -94,7 +92,7 @@ type QueryMaterialFileListRequest struct {
 	//
 	// gmtCreated
 	OrderColumn *string `json:"OrderColumn,omitempty" xml:"OrderColumn,omitempty"`
-	// The sort order. Valid values: ASC and DESC.
+	// The sort order. Valid values: ASC, DESC.
 	//
 	// example:
 	//
@@ -114,7 +112,7 @@ type QueryMaterialFileListRequest struct {
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// The list of statuses.
 	StatusList []*string `json:"StatusList,omitempty" xml:"StatusList,omitempty" type:"Repeated"`
-	// The list of file extensions.
+	// The list of file name extensions.
 	SuffixList []*string `json:"SuffixList,omitempty" xml:"SuffixList,omitempty" type:"Repeated"`
 	// The list of file types.
 	TypeList []*string `json:"TypeList,omitempty" xml:"TypeList,omitempty" type:"Repeated"`

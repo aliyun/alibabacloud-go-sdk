@@ -64,7 +64,7 @@ type AppMaterialFile struct {
 	//
 	// 2025-11-03 02:05:01
 	DeletedTime *string `json:"DeletedTime,omitempty" xml:"DeletedTime,omitempty"`
-	// The folder ID.
+	// The directory ID.
 	//
 	// example:
 	//
@@ -92,7 +92,7 @@ type AppMaterialFile struct {
 	//
 	// example:
 	//
-	// 文件名
+	// File name
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The file status.
 	//
@@ -100,13 +100,13 @@ type AppMaterialFile struct {
 	//
 	// NORMAL
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The storage size.
+	// The storage space size.
 	//
 	// example:
 	//
 	// 23M
 	StorageSize *string `json:"StorageSize,omitempty" xml:"StorageSize,omitempty"`
-	// The file name extension.
+	// The file extension.
 	//
 	// example:
 	//

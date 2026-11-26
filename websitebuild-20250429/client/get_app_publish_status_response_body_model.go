@@ -34,7 +34,7 @@ type iGetAppPublishStatusResponseBody interface {
 }
 
 type GetAppPublishStatusResponseBody struct {
-	// The detailed reason why access is denied.
+	// The details of the access denial.
 	//
 	// example:
 	//
@@ -211,13 +211,19 @@ func (s *GetAppPublishStatusResponseBody) Validate() error {
 }
 
 type GetAppPublishStatusResponseBodyModule struct {
+	ArtifactDigest *string `json:"ArtifactDigest,omitempty" xml:"ArtifactDigest,omitempty"`
+	AuditId        *string `json:"AuditId,omitempty" xml:"AuditId,omitempty"`
+	BindingId      *string `json:"BindingId,omitempty" xml:"BindingId,omitempty"`
 	// Indicates whether quick rollback is supported.
 	//
 	// example:
 	//
 	// true
-	CanQuickRevert *string `json:"CanQuickRevert,omitempty" xml:"CanQuickRevert,omitempty"`
-	// The current step of the task.
+	CanQuickRevert  *string `json:"CanQuickRevert,omitempty" xml:"CanQuickRevert,omitempty"`
+	CandidateId     *string `json:"CandidateId,omitempty" xml:"CandidateId,omitempty"`
+	CandidateStatus *string `json:"CandidateStatus,omitempty" xml:"CandidateStatus,omitempty"`
+	CommitHash      *string `json:"CommitHash,omitempty" xml:"CommitHash,omitempty"`
+	// The current step number of the task.
 	//
 	// example:
 	//
@@ -259,19 +265,19 @@ type GetAppPublishStatusResponseBodyModule struct {
 	//
 	// - `true`: The call is successful.
 	//
-	// - `false`: The call failed.
+	// - `false`: The call fails.
 	//
 	// example:
 	//
 	// True
 	IsSuccess *bool `json:"IsSuccess,omitempty" xml:"IsSuccess,omitempty"`
-	// The additional description.
+	// The additional information.
 	//
 	// example:
 	//
 	// common notify successfully.
 	Msg *string `json:"Msg,omitempty" xml:"Msg,omitempty"`
-	// The sorting type, such as ASC or DESC.
+	// The sort order. Valid values: ASC and DESC.
 	//
 	// example:
 	//
@@ -288,7 +294,14 @@ type GetAppPublishStatusResponseBodyModule struct {
 	// example:
 	//
 	// 20
-	Percent *int32 `json:"Percent,omitempty" xml:"Percent,omitempty"`
+	Percent               *int32  `json:"Percent,omitempty" xml:"Percent,omitempty"`
+	PlatformAppid         *string `json:"PlatformAppid,omitempty" xml:"PlatformAppid,omitempty"`
+	PluginDeclarationHash *string `json:"PluginDeclarationHash,omitempty" xml:"PluginDeclarationHash,omitempty"`
+	PluginState           *string `json:"PluginState,omitempty" xml:"PluginState,omitempty"`
+	PrivacyDraftId        *string `json:"PrivacyDraftId,omitempty" xml:"PrivacyDraftId,omitempty"`
+	PrivacyRevision       *string `json:"PrivacyRevision,omitempty" xml:"PrivacyRevision,omitempty"`
+	PublishDiagnostics    *string `json:"PublishDiagnostics,omitempty" xml:"PublishDiagnostics,omitempty"`
+	PublishEnv            *string `json:"PublishEnv,omitempty" xml:"PublishEnv,omitempty"`
 	// The publish number.
 	//
 	// example:
@@ -301,15 +314,16 @@ type GetAppPublishStatusResponseBodyModule struct {
 	//
 	// 123
 	PublishOrderId *int64 `json:"PublishOrderId,omitempty" xml:"PublishOrderId,omitempty"`
-	// The scheduled publish time in the UTC format yyyy-MM-dd\\"T\\"HH:mm:ss.SSS\\"Z\\".
+	// The scheduled publish time in UTC format yyyy-MM-dd\"T\"HH:mm:ss.SSS\"Z\".
 	//
 	// Use the UTC time format: yyyy-MM-ddTHH:mm:ss.SSSZ
 	//
 	// example:
 	//
 	// 123123
-	PublishTime *string `json:"PublishTime,omitempty" xml:"PublishTime,omitempty"`
-	// The site ID. You can obtain the site ID by calling the [ListSites](~~ListSites~~) operation.
+	PublishTime    *string `json:"PublishTime,omitempty" xml:"PublishTime,omitempty"`
+	ReadbackStatus *string `json:"ReadbackStatus,omitempty" xml:"ReadbackStatus,omitempty"`
+	// The site ID.
 	//
 	// example:
 	//
@@ -324,7 +338,13 @@ type GetAppPublishStatusResponseBodyModule struct {
 	// example:
 	//
 	// wx0123456789abcdef
-	Subchannel *string `json:"Subchannel,omitempty" xml:"Subchannel,omitempty"`
+	Subchannel         *string `json:"Subchannel,omitempty" xml:"Subchannel,omitempty"`
+	SubmitIntentStatus *string `json:"SubmitIntentStatus,omitempty" xml:"SubmitIntentStatus,omitempty"`
+	UpdatedAt          *int64  `json:"UpdatedAt,omitempty" xml:"UpdatedAt,omitempty"`
+	UploadAttemptId    *string `json:"UploadAttemptId,omitempty" xml:"UploadAttemptId,omitempty"`
+	UploadLeaseState   *string `json:"UploadLeaseState,omitempty" xml:"UploadLeaseState,omitempty"`
+	UploadSequence     *int64  `json:"UploadSequence,omitempty" xml:"UploadSequence,omitempty"`
+	UploadTicketState  *string `json:"UploadTicketState,omitempty" xml:"UploadTicketState,omitempty"`
 }
 
 func (s GetAppPublishStatusResponseBodyModule) String() string {
@@ -335,8 +355,32 @@ func (s GetAppPublishStatusResponseBodyModule) GoString() string {
 	return s.String()
 }
 
+func (s *GetAppPublishStatusResponseBodyModule) GetArtifactDigest() *string {
+	return s.ArtifactDigest
+}
+
+func (s *GetAppPublishStatusResponseBodyModule) GetAuditId() *string {
+	return s.AuditId
+}
+
+func (s *GetAppPublishStatusResponseBodyModule) GetBindingId() *string {
+	return s.BindingId
+}
+
 func (s *GetAppPublishStatusResponseBodyModule) GetCanQuickRevert() *string {
 	return s.CanQuickRevert
+}
+
+func (s *GetAppPublishStatusResponseBodyModule) GetCandidateId() *string {
+	return s.CandidateId
+}
+
+func (s *GetAppPublishStatusResponseBodyModule) GetCandidateStatus() *string {
+	return s.CandidateStatus
+}
+
+func (s *GetAppPublishStatusResponseBodyModule) GetCommitHash() *string {
+	return s.CommitHash
 }
 
 func (s *GetAppPublishStatusResponseBodyModule) GetCurrentStep() *string {
@@ -387,6 +431,34 @@ func (s *GetAppPublishStatusResponseBodyModule) GetPercent() *int32 {
 	return s.Percent
 }
 
+func (s *GetAppPublishStatusResponseBodyModule) GetPlatformAppid() *string {
+	return s.PlatformAppid
+}
+
+func (s *GetAppPublishStatusResponseBodyModule) GetPluginDeclarationHash() *string {
+	return s.PluginDeclarationHash
+}
+
+func (s *GetAppPublishStatusResponseBodyModule) GetPluginState() *string {
+	return s.PluginState
+}
+
+func (s *GetAppPublishStatusResponseBodyModule) GetPrivacyDraftId() *string {
+	return s.PrivacyDraftId
+}
+
+func (s *GetAppPublishStatusResponseBodyModule) GetPrivacyRevision() *string {
+	return s.PrivacyRevision
+}
+
+func (s *GetAppPublishStatusResponseBodyModule) GetPublishDiagnostics() *string {
+	return s.PublishDiagnostics
+}
+
+func (s *GetAppPublishStatusResponseBodyModule) GetPublishEnv() *string {
+	return s.PublishEnv
+}
+
 func (s *GetAppPublishStatusResponseBodyModule) GetPublishNumber() *string {
 	return s.PublishNumber
 }
@@ -397,6 +469,10 @@ func (s *GetAppPublishStatusResponseBodyModule) GetPublishOrderId() *int64 {
 
 func (s *GetAppPublishStatusResponseBodyModule) GetPublishTime() *string {
 	return s.PublishTime
+}
+
+func (s *GetAppPublishStatusResponseBodyModule) GetReadbackStatus() *string {
+	return s.ReadbackStatus
 }
 
 func (s *GetAppPublishStatusResponseBodyModule) GetSiteId() *string {
@@ -415,8 +491,62 @@ func (s *GetAppPublishStatusResponseBodyModule) GetSubchannel() *string {
 	return s.Subchannel
 }
 
+func (s *GetAppPublishStatusResponseBodyModule) GetSubmitIntentStatus() *string {
+	return s.SubmitIntentStatus
+}
+
+func (s *GetAppPublishStatusResponseBodyModule) GetUpdatedAt() *int64 {
+	return s.UpdatedAt
+}
+
+func (s *GetAppPublishStatusResponseBodyModule) GetUploadAttemptId() *string {
+	return s.UploadAttemptId
+}
+
+func (s *GetAppPublishStatusResponseBodyModule) GetUploadLeaseState() *string {
+	return s.UploadLeaseState
+}
+
+func (s *GetAppPublishStatusResponseBodyModule) GetUploadSequence() *int64 {
+	return s.UploadSequence
+}
+
+func (s *GetAppPublishStatusResponseBodyModule) GetUploadTicketState() *string {
+	return s.UploadTicketState
+}
+
+func (s *GetAppPublishStatusResponseBodyModule) SetArtifactDigest(v string) *GetAppPublishStatusResponseBodyModule {
+	s.ArtifactDigest = &v
+	return s
+}
+
+func (s *GetAppPublishStatusResponseBodyModule) SetAuditId(v string) *GetAppPublishStatusResponseBodyModule {
+	s.AuditId = &v
+	return s
+}
+
+func (s *GetAppPublishStatusResponseBodyModule) SetBindingId(v string) *GetAppPublishStatusResponseBodyModule {
+	s.BindingId = &v
+	return s
+}
+
 func (s *GetAppPublishStatusResponseBodyModule) SetCanQuickRevert(v string) *GetAppPublishStatusResponseBodyModule {
 	s.CanQuickRevert = &v
+	return s
+}
+
+func (s *GetAppPublishStatusResponseBodyModule) SetCandidateId(v string) *GetAppPublishStatusResponseBodyModule {
+	s.CandidateId = &v
+	return s
+}
+
+func (s *GetAppPublishStatusResponseBodyModule) SetCandidateStatus(v string) *GetAppPublishStatusResponseBodyModule {
+	s.CandidateStatus = &v
+	return s
+}
+
+func (s *GetAppPublishStatusResponseBodyModule) SetCommitHash(v string) *GetAppPublishStatusResponseBodyModule {
+	s.CommitHash = &v
 	return s
 }
 
@@ -480,6 +610,41 @@ func (s *GetAppPublishStatusResponseBodyModule) SetPercent(v int32) *GetAppPubli
 	return s
 }
 
+func (s *GetAppPublishStatusResponseBodyModule) SetPlatformAppid(v string) *GetAppPublishStatusResponseBodyModule {
+	s.PlatformAppid = &v
+	return s
+}
+
+func (s *GetAppPublishStatusResponseBodyModule) SetPluginDeclarationHash(v string) *GetAppPublishStatusResponseBodyModule {
+	s.PluginDeclarationHash = &v
+	return s
+}
+
+func (s *GetAppPublishStatusResponseBodyModule) SetPluginState(v string) *GetAppPublishStatusResponseBodyModule {
+	s.PluginState = &v
+	return s
+}
+
+func (s *GetAppPublishStatusResponseBodyModule) SetPrivacyDraftId(v string) *GetAppPublishStatusResponseBodyModule {
+	s.PrivacyDraftId = &v
+	return s
+}
+
+func (s *GetAppPublishStatusResponseBodyModule) SetPrivacyRevision(v string) *GetAppPublishStatusResponseBodyModule {
+	s.PrivacyRevision = &v
+	return s
+}
+
+func (s *GetAppPublishStatusResponseBodyModule) SetPublishDiagnostics(v string) *GetAppPublishStatusResponseBodyModule {
+	s.PublishDiagnostics = &v
+	return s
+}
+
+func (s *GetAppPublishStatusResponseBodyModule) SetPublishEnv(v string) *GetAppPublishStatusResponseBodyModule {
+	s.PublishEnv = &v
+	return s
+}
+
 func (s *GetAppPublishStatusResponseBodyModule) SetPublishNumber(v string) *GetAppPublishStatusResponseBodyModule {
 	s.PublishNumber = &v
 	return s
@@ -492,6 +657,11 @@ func (s *GetAppPublishStatusResponseBodyModule) SetPublishOrderId(v int64) *GetA
 
 func (s *GetAppPublishStatusResponseBodyModule) SetPublishTime(v string) *GetAppPublishStatusResponseBodyModule {
 	s.PublishTime = &v
+	return s
+}
+
+func (s *GetAppPublishStatusResponseBodyModule) SetReadbackStatus(v string) *GetAppPublishStatusResponseBodyModule {
+	s.ReadbackStatus = &v
 	return s
 }
 
@@ -512,6 +682,36 @@ func (s *GetAppPublishStatusResponseBodyModule) SetSteps(v []*string) *GetAppPub
 
 func (s *GetAppPublishStatusResponseBodyModule) SetSubchannel(v string) *GetAppPublishStatusResponseBodyModule {
 	s.Subchannel = &v
+	return s
+}
+
+func (s *GetAppPublishStatusResponseBodyModule) SetSubmitIntentStatus(v string) *GetAppPublishStatusResponseBodyModule {
+	s.SubmitIntentStatus = &v
+	return s
+}
+
+func (s *GetAppPublishStatusResponseBodyModule) SetUpdatedAt(v int64) *GetAppPublishStatusResponseBodyModule {
+	s.UpdatedAt = &v
+	return s
+}
+
+func (s *GetAppPublishStatusResponseBodyModule) SetUploadAttemptId(v string) *GetAppPublishStatusResponseBodyModule {
+	s.UploadAttemptId = &v
+	return s
+}
+
+func (s *GetAppPublishStatusResponseBodyModule) SetUploadLeaseState(v string) *GetAppPublishStatusResponseBodyModule {
+	s.UploadLeaseState = &v
+	return s
+}
+
+func (s *GetAppPublishStatusResponseBodyModule) SetUploadSequence(v int64) *GetAppPublishStatusResponseBodyModule {
+	s.UploadSequence = &v
+	return s
+}
+
+func (s *GetAppPublishStatusResponseBodyModule) SetUploadTicketState(v string) *GetAppPublishStatusResponseBodyModule {
+	s.UploadTicketState = &v
 	return s
 }
 

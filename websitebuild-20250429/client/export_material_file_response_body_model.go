@@ -40,7 +40,7 @@ type iExportMaterialFileResponseBody interface {
 }
 
 type ExportMaterialFileResponseBody struct {
-  // The details of the permission check failure.
+  // The details of the access denial.
   // 
   // example:
   // 
@@ -52,7 +52,7 @@ type ExportMaterialFileResponseBody struct {
   // 
   // False
   AllowRetry *bool `json:"AllowRetry,omitempty" xml:"AllowRetry,omitempty"`
-  // The application name. The name can contain digits, letters, and hyphens (-). It must start with a letter, cannot end with a hyphen (-), and can be up to 36 characters in length.
+  // The application name. The name can contain digits, letters, and hyphens (-). It must start with a letter, cannot end with a hyphen (-), and cannot exceed 36 characters in length.
   // 
   // example:
   // 
@@ -262,7 +262,7 @@ func (s *ExportMaterialFileResponseBody) Validate() error {
 }
 
 type ExportMaterialFileResponseBodyModule struct {
-  // The file download URL.
+  // The download URL of the file.
   // 
   // example:
   // 

@@ -26,7 +26,7 @@ type CreateMaterialDirectoryRequest struct {
 	//
 	// WS20260206134746000001
 	BizId *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
-	// The folder name.
+	// The name of the folder.
 	//
 	// This parameter is required.
 	//
@@ -34,7 +34,7 @@ type CreateMaterialDirectoryRequest struct {
 	//
 	// Image management
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The parent folder ID.
+	// The ID of the parent folder.
 	//
 	// This parameter is required.
 	//

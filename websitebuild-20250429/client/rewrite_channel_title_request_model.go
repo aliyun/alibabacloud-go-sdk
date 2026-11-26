@@ -24,11 +24,11 @@ type RewriteChannelTitleRequest struct {
 	//
 	// 7c80359e-835d-4871-a971-8400d008828b
 	DraftId *string `json:"DraftId,omitempty" xml:"DraftId,omitempty"`
-	// The user personalization requirement in free text. This parameter is optional.
+	// The custom requirement specified by the user. This parameter is optional and accepts free text.
 	//
 	// example:
 	//
-	// xxx
+	// Highlight the main features and keep the title concise and clear
 	UserRequirement *string `json:"UserRequirement,omitempty" xml:"UserRequirement,omitempty"`
 }
 

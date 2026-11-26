@@ -32,7 +32,7 @@ type UpdateAppSupabaseSecretRequest struct {
 	//
 	// example:
 	//
-	// ***
+	// EXAMPLE_API_KEY
 	SecretKey *string `json:"SecretKey,omitempty" xml:"SecretKey,omitempty"`
 	// The secret name.
 	//

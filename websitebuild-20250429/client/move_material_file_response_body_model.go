@@ -40,7 +40,7 @@ type iMoveMaterialFileResponseBody interface {
 }
 
 type MoveMaterialFileResponseBody struct {
-	// The details of the permission check failure.
+	// The details of the access denial.
 	//
 	// example:
 	//
@@ -56,7 +56,7 @@ type MoveMaterialFileResponseBody struct {
 	//
 	// False
 	AllowRetry *bool `json:"AllowRetry,omitempty" xml:"AllowRetry,omitempty"`
-	// The application name. The name can contain digits, letters, and hyphens (-). It must start with a letter, cannot end with a hyphen (-), and cannot exceed 36 characters in length.
+	// The name of the application. The name can contain digits, letters, and hyphens (-). It must start with a letter, cannot end with a hyphen (-), and can be up to 36 characters in length.
 	//
 	// example:
 	//
@@ -76,7 +76,7 @@ type MoveMaterialFileResponseBody struct {
 	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
 	// The returned error parameters.
 	ErrorArgs []interface{} `json:"ErrorArgs,omitempty" xml:"ErrorArgs,omitempty" type:"Repeated"`
-	// The error code. If the request is successful, the ErrorCode field is not returned. If the request fails, the ErrorCode field is returned. For more information, see the error code list in this topic.
+	// The error code. If the request is successful, the ErrorCode parameter is not returned. If the request fails, the ErrorCode parameter is returned. For more information, see the error codes section in this topic.
 	//
 	// example:
 	//
@@ -88,7 +88,7 @@ type MoveMaterialFileResponseBody struct {
 	//
 	// aliuid:1998006665794443 assumeRole not exist,serviceName:realtimelogpush.dcdnservices.aliyuncs.com
 	ErrorMsg *string `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
-	// Indicates whether the move operation was successful.
+	// Indicates whether the move operation is successful.
 	//
 	// example:
 	//
@@ -100,7 +100,7 @@ type MoveMaterialFileResponseBody struct {
 	//
 	// 6C6B99AC-39EC-5350-874C-204128C905E6
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The root error code.
+	// The error code.
 	//
 	// example:
 	//
@@ -112,7 +112,7 @@ type MoveMaterialFileResponseBody struct {
 	//
 	// System exception
 	RootErrorMsg *string `json:"RootErrorMsg,omitempty" xml:"RootErrorMsg,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	//
 	// example:
 	//

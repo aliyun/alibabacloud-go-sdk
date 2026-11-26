@@ -50,7 +50,7 @@ type UpdateAppInstanceShrinkRequest struct {
 	//
 	// WD20250703155602000001
 	BizId *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
-	// The client token that is used to ensure the idempotence of the request. Generate a unique value from your client. The ClientToken value can contain only ASCII characters and cannot exceed 64 characters in length.
+	// The client token that is used to ensure the idempotence of the request. You can generate a parameter value on your client to ensure that the value is unique across different requests. The client token supports only ASCII characters and can be up to 64 characters in length.
 	//
 	// example:
 	//
@@ -72,9 +72,9 @@ type UpdateAppInstanceShrinkRequest struct {
 	//
 	// example:
 	//
-	// {\\"user_device_id\\":\\"6bef45cb0c76de284d24de074c088b73\\"}\\n
+	// {\"user_device_id\":\"6bef45cb0c76de284d24de074c088b73\"}\n
 	Extend *string `json:"Extend,omitempty" xml:"Extend,omitempty"`
-	// The application icon URL.
+	// The application icon.
 	//
 	// example:
 	//
@@ -84,7 +84,7 @@ type UpdateAppInstanceShrinkRequest struct {
 	//
 	// example:
 	//
-	// 大角鹿
+	// Dajiaolu
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The payment type.
 	//
@@ -92,7 +92,7 @@ type UpdateAppInstanceShrinkRequest struct {
 	//
 	// AUTO_PAY
 	PaymentType *string `json:"PaymentType,omitempty" xml:"PaymentType,omitempty"`
-	// The ID of the resource group to which the instance belongs.
+	// The ID of the enterprise resource group to which the instance belongs.
 	//
 	// example:
 	//
@@ -106,7 +106,7 @@ type UpdateAppInstanceShrinkRequest struct {
 	SiteVersion *string `json:"SiteVersion,omitempty" xml:"SiteVersion,omitempty"`
 	// The tags.
 	TagsShrink *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
-	// The application thumbnail URL.
+	// The application thumbnail.
 	//
 	// example:
 	//

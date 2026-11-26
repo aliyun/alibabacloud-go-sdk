@@ -40,13 +40,13 @@ type CreateRbacPermissionResponseBody struct {
 	//
 	// {}
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	// Indicates whether a retry is allowed.
+	// Indicates whether retry is allowed.
 	//
 	// example:
 	//
 	// False
 	AllowRetry *bool `json:"AllowRetry,omitempty" xml:"AllowRetry,omitempty"`
-	// The application name.
+	// The app name.
 	//
 	// example:
 	//

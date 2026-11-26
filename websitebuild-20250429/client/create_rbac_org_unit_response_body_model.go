@@ -40,7 +40,7 @@ type CreateRbacOrgUnitResponseBody struct {
 	//
 	// {}
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	// Specifies whether retries are allowed.
+	// Indicates whether retries are allowed.
 	//
 	// example:
 	//
@@ -52,7 +52,7 @@ type CreateRbacOrgUnitResponseBody struct {
 	//
 	// spring-cloud-b
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	// The dynamic code. This field is not used and can be ignored.
+	// The dynamic code. This field is currently unused and can be ignored.
 	//
 	// example:
 	//
@@ -90,7 +90,7 @@ type CreateRbacOrgUnitResponseBody struct {
 	//
 	// System exception
 	RootErrorMsg *string `json:"RootErrorMsg,omitempty" xml:"RootErrorMsg,omitempty"`
-	// Specifies whether synchronous processing is used.
+	// Indicates whether the processing is synchronous.
 	//
 	// example:
 	//

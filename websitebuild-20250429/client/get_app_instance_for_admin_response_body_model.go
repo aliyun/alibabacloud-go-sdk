@@ -34,7 +34,7 @@ type iGetAppInstanceForAdminResponseBody interface {
 }
 
 type GetAppInstanceForAdminResponseBody struct {
-	// The details of the permission check failure.
+	// The details of the access denial.
 	//
 	// example:
 	//

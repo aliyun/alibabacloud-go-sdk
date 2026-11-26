@@ -38,19 +38,19 @@ type iCreateMaterialDirectoryResponseBody interface {
 }
 
 type CreateMaterialDirectoryResponseBody struct {
-	// The detailed reason why access is denied.
+	// The detailed reason for the access denial.
 	//
 	// example:
 	//
 	// {}
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	// Indicates whether a retry is allowed.
+	// Indicates whether retries are allowed.
 	//
 	// example:
 	//
 	// False
 	AllowRetry *bool `json:"AllowRetry,omitempty" xml:"AllowRetry,omitempty"`
-	// The application name, used to query applications with this name.
+	// The name of the application to query.
 	//
 	// example:
 	//
@@ -70,7 +70,7 @@ type CreateMaterialDirectoryResponseBody struct {
 	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
 	// The returned error parameters.
 	ErrorArgs []interface{} `json:"ErrorArgs,omitempty" xml:"ErrorArgs,omitempty" type:"Repeated"`
-	// The error code. Value description: If the request succeeds, the ErrorCode field is not returned. If the request fails, the ErrorCode field is returned. For more information, see the error code list in this topic.
+	// The error code. If the request is successful, this parameter is not returned. If the request fails, this parameter is returned. For more information, see the error code list in this topic.
 	//
 	// example:
 	//
@@ -245,7 +245,7 @@ func (s *CreateMaterialDirectoryResponseBody) Validate() error {
 }
 
 type CreateMaterialDirectoryResponseBodyModule struct {
-	// The folder ID.
+	// The ID of the folder.
 	//
 	// example:
 	//

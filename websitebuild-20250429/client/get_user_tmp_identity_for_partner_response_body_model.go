@@ -24,7 +24,7 @@ type iGetUserTmpIdentityForPartnerResponseBody interface {
 type GetUserTmpIdentityForPartnerResponseBody struct {
 	// The request result.
 	Data *GetUserTmpIdentityForPartnerResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The error code. If the request is successful, the ErrorCode field is not returned. If the request fails, the ErrorCode field is returned. For more information, see the error code list in this topic.
+	// The error code. If the request is successful, the ErrorCode parameter is not returned. If the request fails, the ErrorCode parameter is returned. For more information, see the error codes in this topic.
 	//
 	// example:
 	//
@@ -42,7 +42,7 @@ type GetUserTmpIdentityForPartnerResponseBody struct {
 	//
 	// 6C6B99AC-39EC-5350-874C-204128C905E6
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	//
 	// example:
 	//
@@ -113,9 +113,9 @@ func (s *GetUserTmpIdentityForPartnerResponseBody) Validate() error {
 }
 
 type GetUserTmpIdentityForPartnerResponseBodyData struct {
-	// The security token.
+	// The security credentials.
 	Credentials *GetUserTmpIdentityForPartnerResponseBodyDataCredentials `json:"Credentials,omitempty" xml:"Credentials,omitempty" type:"Struct"`
-	// Indicates whether the customer authorization has been obtained.
+	// Indicates whether customer authorization has been obtained.
 	HasCustomRoleAuth *bool `json:"HasCustomRoleAuth,omitempty" xml:"HasCustomRoleAuth,omitempty"`
 }
 
@@ -167,13 +167,13 @@ type GetUserTmpIdentityForPartnerResponseBodyDataCredentials struct {
 	//
 	// 7t2Rzt37ND7-xxx
 	EncryptedAccessKeySecret *string `json:"EncryptedAccessKeySecret,omitempty" xml:"EncryptedAccessKeySecret,omitempty"`
-	// The encrypted STS token.
+	// The encrypted Security Token Service (STS) token.
 	//
 	// example:
 	//
 	// 7t2Rzt37ND7-xxx
 	EncryptedSecurityToken *string `json:"EncryptedSecurityToken,omitempty" xml:"EncryptedSecurityToken,omitempty"`
-	// The estimated expiration time of the credential.
+	// The expected expiration time of the credentials.
 	//
 	// example:
 	//

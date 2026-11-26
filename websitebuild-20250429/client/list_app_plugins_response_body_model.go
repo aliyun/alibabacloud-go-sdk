@@ -44,7 +44,7 @@ type ListAppPluginsResponseBody struct {
 	//
 	// {}
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	// Indicates whether a retry is allowed.
+	// Specifies whether retries are allowed.
 	//
 	// example:
 	//
@@ -72,9 +72,7 @@ type ListAppPluginsResponseBody struct {
 	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
 	// The returned error parameters.
 	ErrorArgs []interface{} `json:"ErrorArgs,omitempty" xml:"ErrorArgs,omitempty" type:"Repeated"`
-	// The maximum number of results to return per query.
-	//
-	// Valid values: 10 to 100. Default value: 20.
+	// The maximum number of results to return per query. Valid values: 10 to 100. Default value: 20.
 	//
 	// example:
 	//
@@ -82,7 +80,7 @@ type ListAppPluginsResponseBody struct {
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
 	// The response object.
 	Module []*ListAppPluginsResponseBodyModule `json:"Module,omitempty" xml:"Module,omitempty" type:"Repeated"`
-	// The token used to start the next query. This parameter is empty if no more results are available.
+	// The token used to start the next query. If no next query is available, this parameter is empty.
 	//
 	// example:
 	//
@@ -263,7 +261,7 @@ type ListAppPluginsResponseBodyModule struct {
 	//
 	// example:
 	//
-	// ***
+	// {"type":"object","properties":{"label":{"type":"string","title":"Display name"}}}
 	ConfigItems *string `json:"ConfigItems,omitempty" xml:"ConfigItems,omitempty"`
 	// The description of the plugin.
 	//
@@ -271,27 +269,25 @@ type ListAppPluginsResponseBodyModule struct {
 	//
 	// fail to decode json
 	Desc *string `json:"Desc,omitempty" xml:"Desc,omitempty"`
-	// Specifies whether to display the image. Valid values:
+	// Specifies whether the plugin is displayed. Valid values:
 	//
-	// - **0*	- (None): Not displayed.
+	// - 0: No.
 	//
-	// - **1*	- (Always): Always displayed.
+	// - 1: Yes.
 	//
 	// example:
 	//
-	// always
+	// 1
 	Display *int32 `json:"Display,omitempty" xml:"Display,omitempty"`
-	// Specifies whether to enable scheduled delivery of resource snapshots.
+	// Specifies whether the plugin is enabled. Valid values:
 	//
-	// Valid values:
+	// - 0: No.
 	//
-	// - true: Enabled.
-	//
-	// - false: Disabled.
+	// - 1: Yes.
 	//
 	// example:
 	//
-	// True
+	// 1
 	Enabled *int32 `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
 	// The environment.
 	//
@@ -307,7 +303,7 @@ type ListAppPluginsResponseBodyModule struct {
 	//
 	// 1740479834
 	GmtCreateTime *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
-	// The update time in ISO 8601 format in the UTC time zone.
+	// The modification time in ISO 8601 format in the UTC time zone.
 	//
 	// Use the UTC time format: yyyy-MM-ddTHH:mm:ss.SSSZ
 	//
@@ -333,17 +329,21 @@ type ListAppPluginsResponseBodyModule struct {
 	//
 	// 16257
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// Indicates whether the item is deleted. Valid values: 0 (no) and 1 (yes).
+	// Specifies whether the plugin is deleted. Valid values:
+	//
+	// - 0: No.
+	//
+	// - 1: Yes.
 	//
 	// example:
 	//
-	// false
+	// 0
 	IsDeleted *int32 `json:"IsDeleted,omitempty" xml:"IsDeleted,omitempty"`
 	// The name of the plugin.
 	//
 	// example:
 	//
-	// Filename
+	// File name
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The skill header information for model selection.
 	//
@@ -355,7 +355,7 @@ type ListAppPluginsResponseBodyModule struct {
 	//
 	// example:
 	//
-	// [{\\"Key\\": \\"kubernetes.io/cluster-id\\", \\"Value\\": \\"cc67198b13db948c9848599654da5586e\\"}, {\\"Key\\": \\"created-by\\", \\"Value\\": \\"alibabacloud-imagecache-controller\\"}]
+	// [{\"Key\": \"kubernetes.io/cluster-id\", \"Value\": \"cc67198b13db948c9848599654da5586e\"}, {\"Key\": \"created-by\", \"Value\": \"alibabacloud-imagecache-controller\"}]
 	Tags *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
 }
 

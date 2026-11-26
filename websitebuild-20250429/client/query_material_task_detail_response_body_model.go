@@ -92,7 +92,7 @@ type QueryMaterialTaskDetailResponseBody struct {
 	//
 	// example:
 	//
-	// {\\"Success\\": True}
+	// {\"Success\": True}
 	Module *AppMaterialTask `json:"Module,omitempty" xml:"Module,omitempty"`
 	// Id of the request
 	//

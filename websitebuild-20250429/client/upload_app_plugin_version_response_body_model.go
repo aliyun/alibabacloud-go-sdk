@@ -34,17 +34,17 @@ type iUploadAppPluginVersionResponseBody interface {
 }
 
 type UploadAppPluginVersionResponseBody struct {
-	// The detailed reasons for access denial.
+	// The detailed reason why access is denied.
 	//
 	// example:
 	//
 	// {}
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	// Specifies whether a retry is allowed. Valid values:
+	// Indicates whether retries are allowed. Valid values:
 	//
-	// - false: A retry is not allowed.
+	// - false: Retries are not allowed.
 	//
-	// - true: A retry is allowed.
+	// - true: Retries are allowed.
 	//
 	// example:
 	//
@@ -66,7 +66,7 @@ type UploadAppPluginVersionResponseBody struct {
 	//
 	// example:
 	//
-	// https://check-result-file-sh.oss-cn-shanghai.aliyuncs.com/gl3d6l3817id8p1/gl3d6l3817id8p1.diff.zip?Expires=1750392068&OSSAccessKeyId=LTAI5tKUErVCETM4ev9SELNb&Signature=Bcj3eohy8nmlSQ7AAGdq7JZoLjM%3D
+	// https://check-result-file-sh.oss-cn-shanghai.aliyuncs.com/gl3d6l3817id8p1/gl3d6l3817id8p1.diff.zip?Expires=1750392068&OSSAccessKeyId=LTAI5tKUEr****M4ev9SELNb&Signature=Bcj3eohy8nmlS****Gdq7JZoLjM%3D
 	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
 	// The returned error parameters.
 	ErrorArgs []interface{} `json:"ErrorArgs,omitempty" xml:"ErrorArgs,omitempty" type:"Repeated"`
@@ -90,7 +90,7 @@ type UploadAppPluginVersionResponseBody struct {
 	//
 	// System exception
 	RootErrorMsg *string `json:"RootErrorMsg,omitempty" xml:"RootErrorMsg,omitempty"`
-	// Specifies whether synchronous processing is used.
+	// Indicates whether the request is processed synchronously.
 	//
 	// example:
 	//
@@ -219,9 +219,9 @@ type UploadAppPluginVersionResponseBodyModule struct {
 	//
 	// example:
 	//
-	// xxx
+	// 0123456789abcdef0123456789abcdef01234567
 	CommitSha *string `json:"CommitSha,omitempty" xml:"CommitSha,omitempty"`
-	// The ID of the bound API gateway plugin.
+	// The ID of the bound API gateway plug-in.
 	//
 	// example:
 	//

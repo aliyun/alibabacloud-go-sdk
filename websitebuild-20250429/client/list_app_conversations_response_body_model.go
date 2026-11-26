@@ -38,7 +38,7 @@ type iListAppConversationsResponseBody interface {
 }
 
 type ListAppConversationsResponseBody struct {
-	// The detailed reasons for access denial.
+	// The detailed reason for the access denial.
 	//
 	// example:
 	//
@@ -68,7 +68,7 @@ type ListAppConversationsResponseBody struct {
 	//
 	// SYSTEM_ERROR
 	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
-	// The error arguments.
+	// The error parameters.
 	ErrorArgs []interface{} `json:"ErrorArgs,omitempty" xml:"ErrorArgs,omitempty" type:"Repeated"`
 	// The maximum number of results to return for a single query. Valid values: 10 to 100. Default value: 20.
 	//
@@ -78,7 +78,7 @@ type ListAppConversationsResponseBody struct {
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
 	// The response data.
 	Module *ListAppConversationsResponseBodyModule `json:"Module,omitempty" xml:"Module,omitempty" type:"Struct"`
-	// The token that is used to start the next query. If no next query is available, this parameter is empty.
+	// The token used to start the next query. If there is no next query, this parameter is empty.
 	//
 	// example:
 	//
@@ -245,7 +245,7 @@ func (s *ListAppConversationsResponseBody) Validate() error {
 }
 
 type ListAppConversationsResponseBodyModule struct {
-	// The request results.
+	// The results of the request.
 	Data []*ListAppConversationsResponseBodyModuleData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
 	// The page number. Default value: 1.
 	//
@@ -259,7 +259,7 @@ type ListAppConversationsResponseBodyModule struct {
 	//
 	// 50
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The resource count that meets the conditional filters.
+	// The conditional resource count that meets the filter.
 	//
 	// example:
 	//
@@ -329,21 +329,21 @@ type ListAppConversationsResponseBodyModuleData struct {
 	//
 	// example:
 	//
-	// ***
+	// 2468****135790
 	AliyunPk *string `json:"AliyunPk,omitempty" xml:"AliyunPk,omitempty"`
-	// The bot ID.
+	// The ID of the bot.
 	//
 	// example:
 	//
 	// Zero2
 	BotId *string `json:"BotId,omitempty" xml:"BotId,omitempty"`
-	// The number of chat records.
+	// The chat records.
 	//
 	// example:
 	//
 	// 1
 	ChatNum *int32 `json:"ChatNum,omitempty" xml:"ChatNum,omitempty"`
-	// The conversation ID.
+	// The ID of the conversation.
 	//
 	// example:
 	//
@@ -357,7 +357,7 @@ type ListAppConversationsResponseBodyModuleData struct {
 	//
 	// 2026-01-27T17:51:25.415+08:00
 	GmtCreateTime *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
-	// The update time in ISO 8601 format. The time zone is UTC (Z).
+	// The update time in ISO 8601 format, in the UTC (Z) time zone.
 	//
 	// Use the UTC time format: yyyy-MM-ddTHH:mm:ss.SSSZ
 	//
@@ -369,7 +369,7 @@ type ListAppConversationsResponseBodyModuleData struct {
 	//
 	// example:
 	//
-	// {\\"MD5\\":\\"296f6c01e7fea2697ffe1cf41082b774\\",\\"driver\\":\\"vhd\\",\\"flag\\":\\"12845825\\",\\"imds_support\\":\\"v1\\",\\"io_optimized\\":true,\\"nvme_supported\\":true,\\"uefi_preferred\\":false}
+	// {\"MD5\":\"296f6c01e7fea2697ffe1cf41082b774\",\"driver\":\"vhd\",\"flag\":\"12845825\",\"imds_support\":\"v1\",\"io_optimized\":true,\"nvme_supported\":true,\"uefi_preferred\":false}
 	MetaData *string `json:"MetaData,omitempty" xml:"MetaData,omitempty"`
 	// The section ID of the check item.
 	//
@@ -377,7 +377,7 @@ type ListAppConversationsResponseBodyModuleData struct {
 	//
 	// 255
 	SectionId *string `json:"SectionId,omitempty" xml:"SectionId,omitempty"`
-	// The site ID. You can obtain the site ID by calling the [ListSites](~~ListSites~~) operation.
+	// The ID of the site.
 	//
 	// example:
 	//
@@ -389,7 +389,7 @@ type ListAppConversationsResponseBodyModuleData struct {
 	//
 	// Sometimes When We Touch
 	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
-	// The user ID.
+	// The ID of the user.
 	//
 	// example:
 	//

@@ -34,7 +34,7 @@ type iQuerySupabaseConfigsForAdminResponseBody interface {
 }
 
 type QuerySupabaseConfigsForAdminResponseBody struct {
-	// The detailed reason why access is denied.
+	// The detailed reason for access denial.
 	//
 	// example:
 	//
@@ -50,7 +50,7 @@ type QuerySupabaseConfigsForAdminResponseBody struct {
 	//
 	// False
 	AllowRetry *bool `json:"AllowRetry,omitempty" xml:"AllowRetry,omitempty"`
-	// The application name.
+	// The app name.
 	//
 	// example:
 	//
@@ -215,11 +215,11 @@ func (s *QuerySupabaseConfigsForAdminResponseBody) Validate() error {
 }
 
 type QuerySupabaseConfigsForAdminResponseBodyModule struct {
-	// The scope. Valid values: subUser and owner.
+	// The mapping between Supabase configuration items and configuration values.
 	//
 	// example:
 	//
-	// {"SMS_ALIYUN_SIGN_NAME":"示例签名"}
+	// {"SMS_ALIYUN_SIGN_NAME":"Sample signature"}
 	Configs map[string]interface{} `json:"Configs,omitempty" xml:"Configs,omitempty"`
 }
 

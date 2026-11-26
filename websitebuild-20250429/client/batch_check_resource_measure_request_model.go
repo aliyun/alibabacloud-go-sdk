@@ -30,7 +30,7 @@ type BatchCheckResourceMeasureRequest struct {
 	//
 	// 123456
 	BelongId *string `json:"BelongId,omitempty" xml:"BelongId,omitempty"`
-	// The type of the ownership ID, such as siteId or uid.
+	// The ownership ID type, such as siteId or uid.
 	//
 	// example:
 	//
@@ -48,7 +48,7 @@ type BatchCheckResourceMeasureRequest struct {
 	//
 	// p20202933455
 	EspBizId *string `json:"EspBizId,omitempty" xml:"EspBizId,omitempty"`
-	// The order component information. This parameter is automatically populated if left empty.
+	// The order component information. This parameter is automatically completed when it is empty.
 	//
 	// example:
 	//

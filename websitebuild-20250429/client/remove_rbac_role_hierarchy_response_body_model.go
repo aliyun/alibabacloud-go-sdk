@@ -40,7 +40,7 @@ type RemoveRbacRoleHierarchyResponseBody struct {
 	//
 	// {}
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	// Indicates whether a retry is allowed.
+	// Indicates whether retries are allowed.
 	//
 	// example:
 	//
@@ -90,7 +90,7 @@ type RemoveRbacRoleHierarchyResponseBody struct {
 	//
 	// System exception
 	RootErrorMsg *string `json:"RootErrorMsg,omitempty" xml:"RootErrorMsg,omitempty"`
-	// Indicates whether the processing is synchronous.
+	// Indicates whether synchronous processing is used.
 	//
 	// example:
 	//

@@ -30,11 +30,7 @@ type BindAppDomainRequest struct {
 	//
 	// WD20250820143531000001
 	BizId *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
-	// The domain hosting method. Valid values:
-	//
-	// - CUSTOMER_ESA: Uses the customer\\"s own Edge Security Acceleration (ESA). Only supported when DomainType is set to CUSTOM.
-	//
-	// If this parameter is not specified, the original hosting process is used.
+	// The optional domain hosting method. A value of CUSTOMER_ESA indicates that the customer\"s own ESA is used. If you do not specify this parameter, the original hosting process is used. This parameter is supported only when DomainType is set to CUSTOM.
 	//
 	// example:
 	//
@@ -46,13 +42,7 @@ type BindAppDomainRequest struct {
 	//
 	// xiaoniu.link
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	// The domain management type. Valid values:
-	//
-	// - CUSTOM
-	//
-	// - PLATFORM_PREFIX
-	//
-	// Default value: CUSTOM.
+	// The domain management type. Valid values: CUSTOM and PLATFORM_PREFIX. If you do not specify this parameter, CUSTOM is used by default.
 	//
 	// example:
 	//
@@ -62,7 +52,7 @@ type BindAppDomainRequest struct {
 	//
 	// example:
 	//
-	// {\\"deliveryNodeName\\":\\"Website acceptance\\",\\"deliveryNodeStatus\\":\\"Reject\\",\\"deliveryOperatorRole\\":\\"Customer\\"}
+	// {\"deliveryNodeName\":\"Website acceptance\",\"deliveryNodeStatus\":\"Reject\",\"deliveryOperatorRole\":\"Customer\"}
 	Extend *string `json:"Extend,omitempty" xml:"Extend,omitempty"`
 	// The operation type for domain binding.
 	//

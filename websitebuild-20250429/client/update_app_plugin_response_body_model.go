@@ -40,19 +40,19 @@ type UpdateAppPluginResponseBody struct {
 	//
 	// {}
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	// Indicates whether retries are allowed.
+	// Specifies whether retries are allowed.
 	//
 	// example:
 	//
 	// False
 	AllowRetry *bool `json:"AllowRetry,omitempty" xml:"AllowRetry,omitempty"`
-	// The name of the application. It must start with a letter and can contain digits, letters, underscores (_), and hyphens (-). The name can be up to 36 characters in length.
+	// The application name must start with a letter and can contain digits, letters, underscores (_), and hyphens (-). The name can be up to 36 characters in length.
 	//
 	// example:
 	//
 	// dewuApp
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	// The dynamic code. This parameter is not used and can be ignored.
+	// The dynamic code. This parameter is currently unused and can be ignored.
 	//
 	// example:
 	//
@@ -66,7 +66,7 @@ type UpdateAppPluginResponseBody struct {
 	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
 	// The returned error parameters.
 	ErrorArgs []interface{} `json:"ErrorArgs,omitempty" xml:"ErrorArgs,omitempty" type:"Repeated"`
-	// Indicates whether the move was successful.
+	// Specifies whether the move operation is successful.
 	Module *UpdateAppPluginResponseBodyModule `json:"Module,omitempty" xml:"Module,omitempty" type:"Struct"`
 	// Id of the request
 	//
@@ -86,7 +86,7 @@ type UpdateAppPluginResponseBody struct {
 	//
 	// System exception
 	RootErrorMsg *string `json:"RootErrorMsg,omitempty" xml:"RootErrorMsg,omitempty"`
-	// Indicates whether the request is processed synchronously.
+	// Specifies whether the processing is synchronous.
 	//
 	// example:
 	//
@@ -217,7 +217,7 @@ type UpdateAppPluginResponseBodyModule struct {
 	//
 	// NORMAL
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// Indicates whether the operation was successful.
+	// Specifies whether the operation is successful.
 	//
 	// example:
 	//

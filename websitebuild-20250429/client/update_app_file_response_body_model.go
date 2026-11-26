@@ -34,13 +34,13 @@ type iUpdateAppFileResponseBody interface {
 }
 
 type UpdateAppFileResponseBody struct {
-	// The details about the access denial.
+	// The detailed reason for the access denial.
 	//
 	// example:
 	//
 	// {}
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	// Indicates whether retries are allowed.
+	// Specifies whether retries are allowed.
 	//
 	// example:
 	//
@@ -52,23 +52,23 @@ type UpdateAppFileResponseBody struct {
 	//
 	// watermark
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	// The dynamic code. This parameter is not in use. Ignore this parameter.
+	// The dynamic code. This field is not used and can be ignored.
 	//
 	// example:
 	//
 	// ERROR-oo1
 	DynamicCode *string `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
-	// The dynamic error message, which is used to replace the `%s` variable in the **ErrMessage*	- parameter.
+	// The dynamic error message, which is used to replace `%s` in the error message of the **ErrMessage*	- response parameter.
 	//
-	// > If **ErrMessage*	- returns **The Value of Input Parameter %s is not valid*	- and **DynamicMessage*	- returns **DtsJobId**, the value of the **DtsJobId*	- request parameter is invalid.
+	// > If **ErrMessage*	- returns **The Value of Input Parameter %s is not valid*	- and **DynamicMessage*	- returns **DtsJobId**, it indicates that the request parameter **DtsJobId*	- is invalid.
 	//
 	// example:
 	//
 	// abc
 	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
-	// The error parameters.
+	// The invalid parameters.
 	ErrorArgs []interface{} `json:"ErrorArgs,omitempty" xml:"ErrorArgs,omitempty" type:"Repeated"`
-	// Indicates whether the move operation is successful.
+	// Indicates whether the move was successful.
 	//
 	// example:
 	//
@@ -90,9 +90,9 @@ type UpdateAppFileResponseBody struct {
 	//
 	// example:
 	//
-	// 系统异常
+	// System exception
 	RootErrorMsg *string `json:"RootErrorMsg,omitempty" xml:"RootErrorMsg,omitempty"`
-	// Indicates whether the request is synchronously processed.
+	// Specifies whether to process the request synchronously.
 	//
 	// example:
 	//

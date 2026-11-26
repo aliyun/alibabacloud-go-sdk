@@ -42,7 +42,7 @@ type SyncAppInstanceForPartnerShrinkRequest struct {
 	//
 	// 31104757
 	SourceBizId *string `json:"SourceBizId,omitempty" xml:"SourceBizId,omitempty"`
-	// The source. Set this parameter to MARKET_CLOUD_DREAM.
+	// The source type. Valid value: MARKET_CLOUD_DREAM.
 	//
 	// example:
 	//

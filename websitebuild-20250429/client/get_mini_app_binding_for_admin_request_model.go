@@ -34,7 +34,7 @@ type GetMiniAppBindingForAdminRequest struct {
 	//
 	// example:
 	//
-	// xxxx
+	// wxaaa1111111aaa11a
 	PlatformAppid *string `json:"PlatformAppid,omitempty" xml:"PlatformAppid,omitempty"`
 }
 

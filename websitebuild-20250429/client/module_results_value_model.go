@@ -26,25 +26,25 @@ type iModuleResultsValue interface {
 }
 
 type ModuleResultsValue struct {
-	// Returned only for APP_WORKSPACE: the target total amount for this check, which is the used amount in the saved configuration plus the ResourceValue. If a compatible DesiredTotal is provided, this total amount is used directly. The used amount for issues is the sum of regular and reputation issues in the saved configuration, and the used amount for competitors is the number of competitors. This field is empty for APP and USER checks.
+	// Returned only for APP_WORKSPACE. This parameter indicates the target total quantity for this check, which is the used quantity in the saved configuration plus the ResourceValue. If a compatible DesiredTotal is provided, this total quantity is used directly. The used quantity for issues is the sum of normal and word-of-mouth issues in the saved configuration, and the used quantity for competitors is the number of competitors. This parameter is empty for APP and USER checks.
 	//
 	// example:
 	//
 	// 21
 	DesiredTotal *int64 `json:"DesiredTotal,omitempty" xml:"DesiredTotal,omitempty"`
-	// The error code when the check fails. This field is null when the check passes.
+	// The error code when the check fails. This parameter is null when the check passes.
 	//
 	// example:
 	//
 	// Resource.Control.No.Usage
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The error message when the check fails. This field is null when the check passes.
+	// The error message when the check fails. This parameter is null when the check passes.
 	//
 	// example:
 	//
 	// Quota exhausted
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	// Returned only for APP_WORKSPACE quantity pre-checks: the maximum number of issues or competitors allowed by the current product edition, which is not the remaining quota. This field is empty for APP and USER checks or when the edition benefits cannot be determined.
+	// Returned only for APP_WORKSPACE quantity pre-checks. This parameter indicates the maximum number of issues or competitors allowed by the current commodity version, not the remaining quota. This parameter is empty for APP and USER checks or when the version benefits cannot be determined.
 	//
 	// example:
 	//
@@ -56,13 +56,13 @@ type ModuleResultsValue struct {
 	//
 	// true
 	Passed *bool `json:"Passed,omitempty" xml:"Passed,omitempty"`
-	// The resource code.
+	// The resource identifier.
 	//
 	// example:
 	//
 	// InspirationTokens
 	ResourceCode *string `json:"ResourceCode,omitempty" xml:"ResourceCode,omitempty"`
-	// Indicates whether a purchasable higher edition exists that can accommodate the DesiredTotal. This field is true only when the capacity of the current edition is insufficient and a higher edition meets the requirement. Otherwise, it is false. This field may be empty for APP and USER checks. This field does not indicate that an upgrade has been performed or an upgrade order has been created.
+	// Indicates whether a purchasable higher version exists that can accommodate the DesiredTotal. This parameter is true only when the capacity of the current version is insufficient and a higher version meets the requirements. Otherwise, this parameter is false. This parameter may be empty for APP and USER checks. This field does not indicate that an upgrade has been performed or an upgrade order has been created.
 	//
 	// example:
 	//

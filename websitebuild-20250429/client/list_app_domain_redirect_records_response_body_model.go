@@ -38,7 +38,7 @@ type iListAppDomainRedirectRecordsResponseBody interface {
 }
 
 type ListAppDomainRedirectRecordsResponseBody struct {
-	// The detailed reasons for the access denial.
+	// The detailed cause of the access denied error.
 	//
 	// example:
 	//
@@ -62,7 +62,7 @@ type ListAppDomainRedirectRecordsResponseBody struct {
 	//
 	// ERROR-oo1
 	DynamicCode *string `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
-	// The dynamic message. This parameter is not in use and can be ignored.
+	// The dynamic message. This field is currently unused and can be ignored.
 	//
 	// example:
 	//
@@ -70,17 +70,15 @@ type ListAppDomainRedirectRecordsResponseBody struct {
 	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
 	// The error parameters.
 	ErrorArgs []interface{} `json:"ErrorArgs,omitempty" xml:"ErrorArgs,omitempty" type:"Repeated"`
-	// The maximum number of results to return per query.
-	//
-	// Valid values: 10 to 100. Default value: 20.
+	// The maximum number of results to return per query. Valid values: 10 to 100. Default value: 20.
 	//
 	// example:
 	//
 	// 10
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The response object.
+	// The returned object.
 	Module *ListAppDomainRedirectRecordsResponseBodyModule `json:"Module,omitempty" xml:"Module,omitempty" type:"Struct"`
-	// The token used to start the next query. This parameter is empty if no next query is available.
+	// The token used to start the next query. If no more results are available, this parameter is empty.
 	//
 	// example:
 	//
@@ -98,11 +96,11 @@ type ListAppDomainRedirectRecordsResponseBody struct {
 	//
 	// SYSTEM.ERROR
 	RootErrorCode *string `json:"RootErrorCode,omitempty" xml:"RootErrorCode,omitempty"`
-	// The error message.
+	// The exception message.
 	//
 	// example:
 	//
-	// System error
+	// System exception
 	RootErrorMsg *string `json:"RootErrorMsg,omitempty" xml:"RootErrorMsg,omitempty"`
 	// Indicates whether the request is processed synchronously.
 	//
@@ -259,7 +257,7 @@ type ListAppDomainRedirectRecordsResponseBodyModule struct {
 	Next *ListAppDomainRedirectRecordsResponseBodyModuleNext `json:"Next,omitempty" xml:"Next,omitempty" type:"Struct"`
 	// Indicates whether a next page exists.
 	NextPage *bool `json:"NextPage,omitempty" xml:"NextPage,omitempty"`
-	// The page size.
+	// The number of entries per page.
 	//
 	// example:
 	//
@@ -267,7 +265,7 @@ type ListAppDomainRedirectRecordsResponseBodyModule struct {
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// Indicates whether a previous page exists.
 	PrePage *bool `json:"PrePage,omitempty" xml:"PrePage,omitempty"`
-	// In addition to the pagination limit, the server processes a maximum of the latest 1,000 records for the current query. If the number of results exceeds 1,000, **ResultLimit*	- is set to **true**. In this case, narrow the time range and search again. Otherwise, **ResultLimit*	- is set to **false**.
+	// In addition to the pagination limit, the server processes a maximum of the latest 1,000 records for the current query. If the number of results exceeds 1,000, **ResultLimit*	- is **true**. In this case, narrow the time range and search again. Otherwise, **ResultLimit*	- is **false**.
 	ResultLimit *bool `json:"ResultLimit,omitempty" xml:"ResultLimit,omitempty"`
 	// The total number of entries.
 	//
@@ -403,7 +401,7 @@ type ListAppDomainRedirectRecordsResponseBodyModuleData struct {
 	//
 	// abc.wanwang.xin
 	SourceDomain *string `json:"SourceDomain,omitempty" xml:"SourceDomain,omitempty"`
-	// The target domain name.
+	// The destination domain name.
 	//
 	// example:
 	//
@@ -463,7 +461,7 @@ type ListAppDomainRedirectRecordsResponseBodyModuleNext struct {
 	//
 	// abc.wanwang.xin
 	SourceDomain *string `json:"SourceDomain,omitempty" xml:"SourceDomain,omitempty"`
-	// The target domain name.
+	// The destination domain name.
 	//
 	// example:
 	//

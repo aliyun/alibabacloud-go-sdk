@@ -34,13 +34,13 @@ type iUnbindAppDomainResponseBody interface {
 }
 
 type UnbindAppDomainResponseBody struct {
-	// The detailed reason for the access denial.
+	// The detailed reason why access is denied.
 	//
 	// example:
 	//
 	// {}
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	// Indicates whether a retry is allowed.
+	// Indicates whether retries are allowed.
 	//
 	// example:
 	//
@@ -74,7 +74,7 @@ type UnbindAppDomainResponseBody struct {
 	//
 	// 6C6B99AC-39EC-5350-874C-204128C905E6
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The root error code.
+	// The error code.
 	//
 	// example:
 	//

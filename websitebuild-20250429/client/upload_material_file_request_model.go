@@ -38,13 +38,13 @@ type UploadMaterialFileRequest struct {
 	//
 	// 68157a0a-769a-4364-bbdc-a0e2cf3d5ad
 	DirectoryId *string `json:"DirectoryId,omitempty" xml:"DirectoryId,omitempty"`
-	// The file path.
+	// The path of the file.
 	//
 	// example:
 	//
 	// http://docmind-api-cn-hangzhou.oss-cn-hangzhou.aliyuncs.com/4a7f_209934244261306272_14fd429b731245a79f291c64acf3ac77
 	FileUrl *string `json:"FileUrl,omitempty" xml:"FileUrl,omitempty"`
-	// The file name.
+	// The name of the file.
 	//
 	// example:
 	//

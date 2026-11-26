@@ -62,6 +62,11 @@ func (s *UpdateMiniAppBindingResponseBody) Validate() error {
 }
 
 type UpdateMiniAppBindingResponseBodyData struct {
+	PrivacyDraftId  *string `json:"PrivacyDraftId,omitempty" xml:"PrivacyDraftId,omitempty"`
+	PrivacyRevision *string `json:"PrivacyRevision,omitempty" xml:"PrivacyRevision,omitempty"`
+	ReadbackStatus  *string `json:"ReadbackStatus,omitempty" xml:"ReadbackStatus,omitempty"`
+	Revision        *int64  `json:"Revision,omitempty" xml:"Revision,omitempty"`
+	Status          *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	// Indicates whether the request is successful.
 	//
 	// example:
@@ -78,8 +83,53 @@ func (s UpdateMiniAppBindingResponseBodyData) GoString() string {
 	return s.String()
 }
 
+func (s *UpdateMiniAppBindingResponseBodyData) GetPrivacyDraftId() *string {
+	return s.PrivacyDraftId
+}
+
+func (s *UpdateMiniAppBindingResponseBodyData) GetPrivacyRevision() *string {
+	return s.PrivacyRevision
+}
+
+func (s *UpdateMiniAppBindingResponseBodyData) GetReadbackStatus() *string {
+	return s.ReadbackStatus
+}
+
+func (s *UpdateMiniAppBindingResponseBodyData) GetRevision() *int64 {
+	return s.Revision
+}
+
+func (s *UpdateMiniAppBindingResponseBodyData) GetStatus() *string {
+	return s.Status
+}
+
 func (s *UpdateMiniAppBindingResponseBodyData) GetSuccess() *bool {
 	return s.Success
+}
+
+func (s *UpdateMiniAppBindingResponseBodyData) SetPrivacyDraftId(v string) *UpdateMiniAppBindingResponseBodyData {
+	s.PrivacyDraftId = &v
+	return s
+}
+
+func (s *UpdateMiniAppBindingResponseBodyData) SetPrivacyRevision(v string) *UpdateMiniAppBindingResponseBodyData {
+	s.PrivacyRevision = &v
+	return s
+}
+
+func (s *UpdateMiniAppBindingResponseBodyData) SetReadbackStatus(v string) *UpdateMiniAppBindingResponseBodyData {
+	s.ReadbackStatus = &v
+	return s
+}
+
+func (s *UpdateMiniAppBindingResponseBodyData) SetRevision(v int64) *UpdateMiniAppBindingResponseBodyData {
+	s.Revision = &v
+	return s
+}
+
+func (s *UpdateMiniAppBindingResponseBodyData) SetStatus(v string) *UpdateMiniAppBindingResponseBodyData {
+	s.Status = &v
+	return s
 }
 
 func (s *UpdateMiniAppBindingResponseBodyData) SetSuccess(v bool) *UpdateMiniAppBindingResponseBodyData {

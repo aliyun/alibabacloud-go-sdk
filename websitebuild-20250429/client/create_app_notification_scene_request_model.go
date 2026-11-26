@@ -46,13 +46,15 @@ type CreateAppNotificationSceneRequest struct {
 	//
 	// WD20250703155602000001
 	BizId *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
-	// The list of mobile butler delivery platform types in a JSON string array. Valid values: wechat, dingtalk, wecom, and feishu.
+	// The list of mobile butler delivery platform types in a JSON string array. Supported values include wechat, dingtalk, wecom, and feishu.
 	//
 	// example:
 	//
 	// ["feishu"]
 	ButlerChannelTypesJson *string `json:"ButlerChannelTypesJson,omitempty" xml:"ButlerChannelTypesJson,omitempty"`
-	// The list of mobile butler notification fields in a JSON string array. This parameter is required when the butler channel is selected. A maximum of 10 fields are supported. The butler fields in JSON format.
+	// The list of mobile butler notification fields. The value is a JSON string array. This parameter is required when the butler channel is selected. A maximum of 10 fields are supported.
+	//
+	// Butler field JSON.
 	//
 	// example:
 	//
@@ -64,7 +66,7 @@ type CreateAppNotificationSceneRequest struct {
 	//
 	// ["sms","email"]
 	ChannelsJson *string `json:"ChannelsJson,omitempty" xml:"ChannelsJson,omitempty"`
-	// The description of the scenario.
+	// The scenario description.
 	//
 	// example:
 	//
@@ -76,7 +78,7 @@ type CreateAppNotificationSceneRequest struct {
 	//
 	// {}
 	EmailFieldsJson *string `json:"EmailFieldsJson,omitempty" xml:"EmailFieldsJson,omitempty"`
-	// The email sending limit in a JSON string, including the minInterval and dailyLimit fields.
+	// The email sending limits. The value is a JSON string that contains the minInterval and dailyLimit fields.
 	//
 	// example:
 	//
@@ -88,7 +90,7 @@ type CreateAppNotificationSceneRequest struct {
 	//
 	// {}
 	EmailRecipientIdsJson *string `json:"EmailRecipientIdsJson,omitempty" xml:"EmailRecipientIdsJson,omitempty"`
-	// The name of the scenario.
+	// The scenario name.
 	//
 	// example:
 	//
@@ -106,7 +108,7 @@ type CreateAppNotificationSceneRequest struct {
 	//
 	// {}
 	SmsFieldsJson *string `json:"SmsFieldsJson,omitempty" xml:"SmsFieldsJson,omitempty"`
-	// The SMS sending limit in a JSON string, including the minInterval and dailyLimit fields.
+	// The SMS sending limits. The value is a JSON string that contains the minInterval and dailyLimit fields.
 	//
 	// example:
 	//

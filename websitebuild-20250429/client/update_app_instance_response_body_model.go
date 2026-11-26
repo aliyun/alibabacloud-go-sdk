@@ -34,13 +34,13 @@ type iUpdateAppInstanceResponseBody interface {
 }
 
 type UpdateAppInstanceResponseBody struct {
-	// The detailed reason why access was denied.
+	// The detailed reasons for access denial.
 	//
 	// example:
 	//
 	// {}
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	// Indicates whether retry is allowed.
+	// Specifies whether retries are allowed.
 	//
 	// example:
 	//
@@ -58,13 +58,13 @@ type UpdateAppInstanceResponseBody struct {
 	//
 	// ERROR-oo1
 	DynamicCode *string `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
-	// The dynamic message. This parameter is not in use. Ignore this parameter.
+	// The dynamic message. This parameter is currently not in use and can be ignored.
 	//
 	// example:
 	//
 	// SYSTEM_ERROR
 	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
-	// The error parameters.
+	// The returned error parameters.
 	ErrorArgs []interface{} `json:"ErrorArgs,omitempty" xml:"ErrorArgs,omitempty" type:"Repeated"`
 	// The response data.
 	Module *UpdateAppInstanceResponseBodyModule `json:"Module,omitempty" xml:"Module,omitempty" type:"Struct"`
@@ -84,7 +84,7 @@ type UpdateAppInstanceResponseBody struct {
 	//
 	// example:
 	//
-	// 系统异常
+	// System exception
 	RootErrorMsg *string `json:"RootErrorMsg,omitempty" xml:"RootErrorMsg,omitempty"`
 	// The reserved parameter.
 	//
@@ -217,11 +217,11 @@ type UpdateAppInstanceResponseBodyModule struct {
 	//
 	// WD20250703155602000001
 	BizId *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
-	// The application icon URL.
+	// The application icon.
 	//
 	// example:
 	//
-	// https://yzm.zshud.com:34901/cloud-phone/养生_1763631730804.png
+	// https://yzm.zshud.com:34901/cloud-phone/Wellness_1763631730804.png
 	IconUrl *string `json:"IconUrl,omitempty" xml:"IconUrl,omitempty"`
 	// The order ID.
 	//
@@ -229,7 +229,7 @@ type UpdateAppInstanceResponseBodyModule struct {
 	//
 	// 250822465990301
 	OrderId *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
-	// The application thumbnail URL.
+	// The application thumbnail.
 	//
 	// example:
 	//

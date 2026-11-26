@@ -22,7 +22,7 @@ type iGetAppPluginConfigForAdminResponseBody interface {
 }
 
 type GetAppPluginConfigForAdminResponseBody struct {
-	// The operation status or POP error code.
+	// The API operation status or POP error code.
 	//
 	// example:
 	//
@@ -129,7 +129,7 @@ type GetAppPluginConfigForAdminResponseBodyModule struct {
 	//
 	// 1740479834
 	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	// The modification time.
+	// The update time.
 	//
 	// example:
 	//

@@ -20,7 +20,7 @@ type OperateAppInstanceForPartnerRequest struct {
 	//
 	// example:
 	//
-	// {\\"deliveryNodeName\\":\\"交付质检\\",\\"deliveryNodeStatus\\":\\"Finish\\",\\"deliveryOperatorRole\\":\\"Provider\\"}
+	// {"deliveryNodeName":"Delivery inspection","deliveryNodeStatus":"Finish","deliveryOperatorRole":"Provider"}
 	Extend *string `json:"Extend,omitempty" xml:"Extend,omitempty"`
 	// The operation event type.
 	//

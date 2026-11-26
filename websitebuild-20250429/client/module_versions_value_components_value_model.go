@@ -22,27 +22,27 @@ type iModuleVersionsValueComponentsValue interface {
 }
 
 type ModuleVersionsValueComponentsValue struct {
-	// 组件唯一编码（系统内部标识）
+	// The unique code of the component, which is an internal system identifier.
 	//
 	// example:
 	//
 	// ComponentCode
 	ComponentCode *string `json:"ComponentCode,omitempty" xml:"ComponentCode,omitempty"`
-	// 组件显示名称（用户可见名称）
+	// The display name of the component, which is visible to users.
 	//
 	// example:
 	//
 	// ComponentName
 	ComponentName *string `json:"ComponentName,omitempty" xml:"ComponentName,omitempty"`
-	// 组件实例属性配置
+	// The instance property configuration of the component.
 	InstanceProperty []*ModuleVersionsValueComponentsValueInstanceProperty `json:"InstanceProperty,omitempty" xml:"InstanceProperty,omitempty" type:"Repeated"`
-	// 组件实例属性配置
+	// The instance property configuration of the component.
 	//
 	// example:
 	//
 	// {}
 	Properties map[string]*ModuleVersionsValueComponentsValuePropertiesValue `json:"Properties,omitempty" xml:"Properties,omitempty"`
-	// 模块属性状态
+	// The status of the module property.
 	//
 	// example:
 	//
@@ -117,25 +117,25 @@ func (s *ModuleVersionsValueComponentsValue) Validate() error {
 }
 
 type ModuleVersionsValueComponentsValueInstanceProperty struct {
-	// 属性编码（系统内部标识）
+	// The code of the property, which is an internal system identifier.
 	//
 	// example:
 	//
 	// code
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// 属性显示名称（用户可见名称）
+	// The display name of the property, which is visible to users.
 	//
 	// example:
 	//
 	// name
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// 属性值编码（系统内部值）
+	// The code of the property value, which is an internal system value.
 	//
 	// example:
 	//
 	// value
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
-	// 模块属性值列表
+	// The list of module property values.
 	Values []*ModuleVersionsValueComponentsValueInstancePropertyValues `json:"Values,omitempty" xml:"Values,omitempty" type:"Repeated"`
 }
 
@@ -197,19 +197,19 @@ func (s *ModuleVersionsValueComponentsValueInstanceProperty) Validate() error {
 }
 
 type ModuleVersionsValueComponentsValueInstancePropertyValues struct {
-	// 属性编码（系统内部标识）
+	// The code of the property, which is an internal system identifier.
 	//
 	// example:
 	//
 	// code
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// 属性值编码（系统内部值）
+	// The code of the property value, which is an internal system value.
 	//
 	// example:
 	//
 	// value
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
-	// 属性显示名称（用户可见名称）
+	// The display name of the property, which is visible to users.
 	//
 	// example:
 	//

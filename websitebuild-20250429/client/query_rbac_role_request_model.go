@@ -22,17 +22,17 @@ type QueryRbacRoleRequest struct {
 	//
 	// WD20250821161210000001
 	BizId *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
-	// The storage management role ID, including predefined and custom roles:
+	// The storage management role ID, including preset and custom roles:
 	//
-	// - 25: Storage management administrator (predefined role)
+	// - 25: Storage management administrator (preset role)
 	//
-	// - 26: Developer (predefined role)
+	// - 26: Developer (preset role)
 	//
-	// - 27: Analyst (predefined role)
+	// - 27: Analyst (preset role)
 	//
-	// - 30: Viewer (predefined role)
+	// - 30: Viewer (preset role)
 	//
-	// - Custom role: the role ID of the custom role.
+	// - Custom role: the role ID of the custom role
 	//
 	// example:
 	//

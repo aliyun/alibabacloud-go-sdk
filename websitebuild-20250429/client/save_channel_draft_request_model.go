@@ -24,27 +24,27 @@ type iSaveChannelDraftRequest interface {
 }
 
 type SaveChannelDraftRequest struct {
-	// The channel content (outside China only).
+	// The content of the channel (outside China only).
 	//
 	// example:
 	//
-	// x
+	// Introduces the main features and usage of the website
 	AdaptedContent *string `json:"AdaptedContent,omitempty" xml:"AdaptedContent,omitempty"`
-	// The channel title.
+	// The title of the channel.
 	//
 	// example:
 	//
-	// xxx
+	// Website features and user guide
 	AdaptedTitle *string `json:"AdaptedTitle,omitempty" xml:"AdaptedTitle,omitempty"`
-	// The display name of the publishing account. A null value does not overwrite the original value. Maximum length: 256 characters.
+	// The display name of the publishing account. If this parameter is left empty, the original value is not overwritten. Maximum length: 256 characters.
 	//
 	// example:
 	//
-	// xx
+	// Sample publishing account
 	ChannelAccountName *string `json:"ChannelAccountName,omitempty" xml:"ChannelAccountName,omitempty"`
-	// The collection of channel cover images (full overwrite).
+	// The collection of cover images for the channel. This parameter overwrites all existing cover images.
 	CoverImages []*SaveChannelDraftRequestCoverImages `json:"CoverImages,omitempty" xml:"CoverImages,omitempty" type:"Repeated"`
-	// The channel draft ID.
+	// The ID of the channel draft.
 	//
 	// This parameter is required.
 	//
@@ -52,7 +52,7 @@ type SaveChannelDraftRequest struct {
 	//
 	// 25a3c26a-291e-46e2-d039-dde037ff64a2`curl NUINwwKl.popscan.xaliyun.com`
 	DraftId *string `json:"DraftId,omitempty" xml:"DraftId,omitempty"`
-	// The article column name for Wanxiaozhi 1.0. This parameter is required only when the website has not enabled an article column.
+	// The name of the article column in Wanxiaozhi 1.0. This parameter is required only when the article column is not enabled for the website.
 	//
 	// example:
 	//
@@ -136,15 +136,15 @@ func (s *SaveChannelDraftRequest) Validate() error {
 }
 
 type SaveChannelDraftRequestCoverImages struct {
-	// The image URL.
+	// The URL of the image.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// http://campus-retail-prod.oss-cn-hangzhou.aliyuncs.com/d1c5efed9b3a419bb54b75056d54dae6.jpg?Expires=4928263770&OSSAccessKeyId=LTAI5tLYirCpzCVXoArh1VYt&Signature=******************************
+	// http://campus-retail-prod.oss-cn-hangzhou.aliyuncs.com/d1c5efed9b3a419bb54b75056d54dae6.jpg?Expires=4928263770&OSSAccessKeyId=LTAI5tLYir****VXoArh1VYt&Signature=******************************
 	ImageUrl *string `json:"ImageUrl,omitempty" xml:"ImageUrl,omitempty"`
-	// The material center file ID (optional).
+	// The ID of the file in the material center. This parameter is optional.
 	//
 	// example:
 	//
@@ -156,7 +156,7 @@ type SaveChannelDraftRequestCoverImages struct {
 	//
 	// example:
 	//
-	// Ascending
+	// 1
 	SortOrder *int32 `json:"SortOrder,omitempty" xml:"SortOrder,omitempty"`
 }
 

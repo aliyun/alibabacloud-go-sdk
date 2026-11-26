@@ -34,7 +34,7 @@ type iQuerySupabaseInstanceInfoForAdminResponseBody interface {
 }
 
 type QuerySupabaseInstanceInfoForAdminResponseBody struct {
-	// The detailed reason for access denial.
+	// The detailed reason why access is denied.
 	//
 	// example:
 	//
@@ -58,15 +58,13 @@ type QuerySupabaseInstanceInfoForAdminResponseBody struct {
 	//
 	// ERROR-oo1
 	DynamicCode *string `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
-	// The dynamic error message, which is used to replace `%s` in the **ErrMessage*	- response parameter.
-	//
-	// > If **ErrMessage*	- returns **The Value of Input Parameter %s is not valid*	- and **DynamicMessage*	- returns **DtsJobId**, the **DtsJobId*	- request parameter is invalid.
+	// The dynamic error message, which is used to replace `%s` in the **ErrMessage*	- response parameter. If **ErrMessage*	- returns **The Value of Input Parameter %s is not valid*	- and **DynamicMessage*	- returns **DtsJobId**, the **DtsJobId*	- request parameter is invalid.
 	//
 	// example:
 	//
 	// SYSTEM_ERROR
 	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
-	// The returned error parameters.
+	// The error parameters returned.
 	ErrorArgs []interface{} `json:"ErrorArgs,omitempty" xml:"ErrorArgs,omitempty" type:"Repeated"`
 	// The response data.
 	Module *QuerySupabaseInstanceInfoForAdminResponseBodyModule `json:"Module,omitempty" xml:"Module,omitempty" type:"Struct"`
@@ -88,7 +86,7 @@ type QuerySupabaseInstanceInfoForAdminResponseBody struct {
 	//
 	// System exception
 	RootErrorMsg *string `json:"RootErrorMsg,omitempty" xml:"RootErrorMsg,omitempty"`
-	// The reserved parameter.
+	// The backup parameter.
 	//
 	// example:
 	//
@@ -243,7 +241,7 @@ type QuerySupabaseInstanceInfoForAdminResponseBodyModule struct {
 	//
 	// 111
 	DbPublicUrl *string `json:"DbPublicUrl,omitempty" xml:"DbPublicUrl,omitempty"`
-	// The database type. Valid values: rds and polardb.
+	// The database type, such as RDS or PolarDB.
 	//
 	// example:
 	//
@@ -253,7 +251,7 @@ type QuerySupabaseInstanceInfoForAdminResponseBodyModule struct {
 	//
 	// example:
 	//
-	// {\\"appId\\":\\"APP_NTJAK8P11SNZDJ3M6BWC\\"}
+	// {\"appId\":\"APP_NTJAK8P11SNZDJ3M6BWC\"}
 	Extra *string `json:"Extra,omitempty" xml:"Extra,omitempty"`
 	// The time when the instance creation was completed.
 	//
@@ -271,15 +269,15 @@ type QuerySupabaseInstanceInfoForAdminResponseBodyModule struct {
 	//
 	// example:
 	//
-	// false
+	// 0
 	IsDeleted *int32 `json:"IsDeleted,omitempty" xml:"IsDeleted,omitempty"`
-	// The access password for the RDS database.
+	// The access password for the ApsaraDB RDS database.
 	//
 	// example:
 	//
 	// 111
 	RdsDatabasePassword *string `json:"RdsDatabasePassword,omitempty" xml:"RdsDatabasePassword,omitempty"`
-	// The read-only business schema name parsed by the Builder trusted binding. This name cannot be used as input for tenant switching.
+	// The read-only business schema name parsed by Builder trusted binding. This name cannot be used as input for switching tenants.
 	//
 	// example:
 	//
@@ -291,19 +289,19 @@ type QuerySupabaseInstanceInfoForAdminResponseBodyModule struct {
 	//
 	// e80f5a7a08514709a2fb
 	ServiceKey *string `json:"ServiceKey,omitempty" xml:"ServiceKey,omitempty"`
-	// The status. Valid values: 0 (Paused) and 1 (Running).
+	// The status. Valid values: 0 (paused) and 1 (running).
 	//
 	// example:
 	//
-	// RUNNING
+	// 1
 	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The Supabase Dashboard password.
+	// The password for the Supabase Dashboard.
 	//
 	// example:
 	//
 	// 1111
 	SupabaseDashboardPassword *string `json:"SupabaseDashboardPassword,omitempty" xml:"SupabaseDashboardPassword,omitempty"`
-	// The Supabase Dashboard username.
+	// The username for the Supabase Dashboard.
 	//
 	// example:
 	//
@@ -327,19 +325,19 @@ type QuerySupabaseInstanceInfoForAdminResponseBodyModule struct {
 	//
 	// 111
 	SupabaseKongUrl *string `json:"SupabaseKongUrl,omitempty" xml:"SupabaseKongUrl,omitempty"`
-	// The private network endpoint of the Supabase instance.
+	// The private endpoint of the Supabase instance.
 	//
 	// example:
 	//
 	// 1111
 	SupabasePrivateIp *string `json:"SupabasePrivateIp,omitempty" xml:"SupabasePrivateIp,omitempty"`
-	// The public network connection endpoint of the Supabase instance.
+	// The public endpoint of the Supabase instance.
 	//
 	// example:
 	//
 	// 111
 	SupabasePublicIp *string `json:"SupabasePublicIp,omitempty" xml:"SupabasePublicIp,omitempty"`
-	// The public URL of the Supabase instance.
+	// The public URL of Supabase.
 	//
 	// example:
 	//

@@ -52,7 +52,7 @@ type DispatchConsoleAPIForPartnerRequest struct {
 	//
 	// example:
 	//
-	// [\\"\\"]
+	// [\"\"]
 	Params *string `json:"Params,omitempty" xml:"Params,omitempty"`
 	// The product code.
 	//

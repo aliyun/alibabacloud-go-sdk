@@ -22,7 +22,7 @@ type CreateAppAssistantAgentRequest struct {
 	//
 	// example:
 	//
-	// 测试业务空间
+	// Test workspace
 	AgentName *string `json:"AgentName,omitempty" xml:"AgentName,omitempty"`
 	// The business ID.
 	//

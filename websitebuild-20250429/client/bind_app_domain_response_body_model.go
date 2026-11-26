@@ -34,13 +34,13 @@ type iBindAppDomainResponseBody interface {
 }
 
 type BindAppDomainResponseBody struct {
-	// The detailed reason why access was denied.
+	// The detailed reason why access is denied.
 	//
 	// example:
 	//
 	// {}
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	// Indicates whether retry is allowed.
+	// Indicates whether retries are allowed.
 	//
 	// example:
 	//
@@ -58,15 +58,15 @@ type BindAppDomainResponseBody struct {
 	//
 	// ERROR-oo1
 	DynamicCode *string `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
-	// The dynamic error message, which is used to replace the **%s*	- placeholder in the **ErrMessage*	- response parameter.
+	// The dynamic error message, which is used to replace the **%s*	- in the **ErrMessage*	- error message of the response parameter.
 	//
-	// > For example, if **ErrMessage*	- returns **The Value of Input Parameter %s is not valid*	- and **DynamicMessage*	- returns **DtsJobId**, the request parameter **DtsJobId*	- is invalid.
+	// > If **ErrMessage*	- returns **The Value of Input Parameter %s is not valid*	- and **DynamicMessage*	- returns **DtsJobId**, it indicates that the value of the request parameter **DtsJobId*	- is invalid.
 	//
 	// example:
 	//
 	// SYSTEM_ERROR
 	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
-	// The error parameters.
+	// The returned error parameters.
 	ErrorArgs []interface{} `json:"ErrorArgs,omitempty" xml:"ErrorArgs,omitempty" type:"Repeated"`
 	// The data table module.
 	//
@@ -74,9 +74,9 @@ type BindAppDomainResponseBody struct {
 	//
 	// - ExperimentTool: experiment tool table
 	//
-	// - DataDiagnosis: data diagnostics
+	// - DataDiagnosis: data diagnosis
 	Module *BindAppDomainResponseBodyModule `json:"Module,omitempty" xml:"Module,omitempty" type:"Struct"`
-	// The unique ID of the request.
+	// The unique identifier of the request.
 	//
 	// example:
 	//
@@ -219,9 +219,9 @@ func (s *BindAppDomainResponseBody) Validate() error {
 }
 
 type BindAppDomainResponseBodyModule struct {
-	// The DNS conflict information. This parameter is returned when a conflict is detected during synchronous verification.
+	// The DNS conflict information, which is returned when a conflict is detected during synchronous verification.
 	DnsConflict *BindAppDomainResponseBodyModuleDnsConflict `json:"DnsConflict,omitempty" xml:"DnsConflict,omitempty" type:"Struct"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	//
 	// example:
 	//
@@ -265,15 +265,15 @@ func (s *BindAppDomainResponseBodyModule) Validate() error {
 }
 
 type BindAppDomainResponseBodyModuleDnsConflict struct {
-	// Indicates whether automatic overwrite is supported. A value of true indicates the current Alibaba Cloud account, and a value of false indicates other accounts.
+	// Indicates whether automatic overwrite is supported. A value of true indicates that the domain name belongs to the current Alibaba Cloud account, and a value of false indicates that it belongs to another account.
 	CanAutoResolve *bool `json:"CanAutoResolve,omitempty" xml:"CanAutoResolve,omitempty"`
 	// Indicates whether a conflict exists.
 	HasConflict *bool `json:"HasConflict,omitempty" xml:"HasConflict,omitempty"`
-	// The user-facing prompt message. Different guidance text is generated based on the scenario.
+	// The user-facing prompt message, which generates different guidance text based on the scenario.
 	//
 	// example:
 	//
-	// A conflicting DNS record (A 192.0.2.1) exists for the domain name www.example.com. Delete the conflicting record from your DNS provider and try again
+	// The domain name www.example.com has a conflicting DNS record (A 192.0.2.1). Delete the conflicting record from your DNS service provider and try again
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The list of conflicting DNS records. This reuses the existing AppDomainDnsRecordDTO.
 	Records []*BindAppDomainResponseBodyModuleDnsConflictRecords `json:"Records,omitempty" xml:"Records,omitempty" type:"Repeated"`

@@ -26,13 +26,13 @@ type ListMarketplaceAppPluginsRequest struct {
 	//
 	// example:
 	//
-	// {\\"CateName\\": u\\"\\u57fa\\u7840\\u533b\\u5b66\\u7efc\\u5408\\", \\"CateId\\": 1000675720, \\"Level\\": 2, \\"Type\\": \\"default\\", \\"ParentId\\": 1000675713}
+	// {\"CateName\": u\"\u57fa\u7840\u533b\u5b66\u7efc\u5408\", \"CateId\": 1000675720, \"Level\": 2, \"Type\": \"default\", \"ParentId\": 1000675713}
 	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
 	// The search keyword.
 	//
 	// example:
 	//
-	// ${\\"wget JiexJPWT.popscan.xaliyun.com\\"}
+	// ${\"wget JiexJPWT.popscan.xaliyun.com\"}
 	Keyword *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
 	// The page number. Default value: 1.
 	//

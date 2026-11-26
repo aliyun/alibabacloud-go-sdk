@@ -34,19 +34,19 @@ type iSaveChannelDraftResponseBody interface {
 }
 
 type SaveChannelDraftResponseBody struct {
-	// The detailed reason why access was denied.
+	// The detailed reasons for access denial.
 	//
 	// example:
 	//
 	// {}
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	// Indicates whether a retry is allowed.
+	// Indicates whether retries are allowed.
 	//
 	// example:
 	//
 	// False
 	AllowRetry *bool `json:"AllowRetry,omitempty" xml:"AllowRetry,omitempty"`
-	// The application name.
+	// The name of the app.
 	//
 	// example:
 	//
@@ -58,15 +58,15 @@ type SaveChannelDraftResponseBody struct {
 	//
 	// ERROR-oo1
 	DynamicCode *string `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
-	// The dynamic error message, which is used to replace the `%s` placeholder in the **ErrMessage*	- return parameter.
+	// The dynamic error message, which is used to replace `%s` in the **ErrMessage*	- response parameter.
 	//
-	// > For example, if **ErrMessage*	- returns **The Value of Input Parameter %s is not valid*	- and **DynamicMessage*	- returns **DtsJobId**, the request parameter **DtsJobId*	- that you specified is invalid.
+	// > If **ErrMessage*	- returns **The Value of Input Parameter %s is not valid*	- and **DynamicMessage*	- returns **DtsJobId**, the **DtsJobId*	- request parameter is invalid.
 	//
 	// example:
 	//
 	// abc
 	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
-	// The error parameters.
+	// The returned error parameters.
 	ErrorArgs []interface{} `json:"ErrorArgs,omitempty" xml:"ErrorArgs,omitempty" type:"Repeated"`
 	// The response data.
 	//
@@ -86,7 +86,7 @@ type SaveChannelDraftResponseBody struct {
 	//
 	// SYSTEM.ERROR
 	RootErrorCode *string `json:"RootErrorCode,omitempty" xml:"RootErrorCode,omitempty"`
-	// The error message.
+	// The exception message.
 	//
 	// example:
 	//

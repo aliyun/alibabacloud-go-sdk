@@ -34,19 +34,19 @@ type iCreateAIStaffConversationResponseBody interface {
 }
 
 type CreateAIStaffConversationResponseBody struct {
-	// The detailed reason why access was denied.
+	// The detailed reason for the access denial.
 	//
 	// example:
 	//
 	// {}
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	// Indicates whether retry is allowed.
+	// Specifies whether a retry is allowed.
 	//
 	// example:
 	//
 	// False
 	AllowRetry *bool `json:"AllowRetry,omitempty" xml:"AllowRetry,omitempty"`
-	// The application name. The application with this name is queried.
+	// The name of the application to query.
 	//
 	// example:
 	//
@@ -64,7 +64,7 @@ type CreateAIStaffConversationResponseBody struct {
 	//
 	// SYSTEM_ERROR
 	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
-	// The error parameters returned.
+	// The returned error parameters.
 	ErrorArgs []interface{} `json:"ErrorArgs,omitempty" xml:"ErrorArgs,omitempty" type:"Repeated"`
 	// The response data.
 	Module *CreateAIStaffConversationResponseBodyModule `json:"Module,omitempty" xml:"Module,omitempty" type:"Struct"`
@@ -84,7 +84,7 @@ type CreateAIStaffConversationResponseBody struct {
 	//
 	// example:
 	//
-	// 系统异常
+	// System exception
 	RootErrorMsg *string `json:"RootErrorMsg,omitempty" xml:"RootErrorMsg,omitempty"`
 	// The reserved parameter.
 	//
@@ -211,7 +211,7 @@ func (s *CreateAIStaffConversationResponseBody) Validate() error {
 }
 
 type CreateAIStaffConversationResponseBodyModule struct {
-	// The chatbot ID.
+	// The bot ID.
 	//
 	// example:
 	//
@@ -235,17 +235,17 @@ type CreateAIStaffConversationResponseBodyModule struct {
 	//
 	// 11
 	SectionId *string `json:"SectionId,omitempty" xml:"SectionId,omitempty"`
-	// The site ID. You can obtain this value by calling the [ListSites](~~ListSites~~) operation.
+	// The site ID. You can obtain this ID by calling the [ListSites](~~ListSites~~) operation.
 	//
 	// example:
 	//
 	// 865181640657408
 	SiteId *string `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
-	// The current viewpoint, equivalent to the news title.
+	// The current viewpoint, which is equivalent to the news title.
 	//
 	// example:
 	//
-	// Feel Like Makin\\" Love
+	// Feel Like Makin\" Love
 	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
 }
 

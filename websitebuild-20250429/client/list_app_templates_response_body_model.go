@@ -495,7 +495,7 @@ type ListAppTemplatesResponseBodyModuleData struct {
 	//
 	// example:
 	//
-	// {\\"memFrom\\": \\"text\\", \\"uid\\": \\"text\\", \\"labels\\": \\"jsonb\\", \\"content\\": \\"text\\", \\"fromId\\": \\"text\\", \\"uuid\\": \\"text\\"}
+	// {\"memFrom\": \"text\", \"uid\": \"text\", \"labels\": \"jsonb\", \"content\": \"text\", \"fromId\": \"text\", \"uuid\": \"text\"}
 	Metadata *string `json:"Metadata,omitempty" xml:"Metadata,omitempty"`
 	// The preview URL.
 	//
@@ -902,7 +902,7 @@ type ListAppTemplatesResponseBodyModuleNext struct {
 	//
 	// example:
 	//
-	// {\\"knowledge_point\\":\\"text\\",\\"trunk_id\\":\\"text\\",\\"doc_name\\":\\"text\\",\\"knowledge_point_id\\":\\"text\\",\\"doc_id\\":\\"text\\",\\"trunk_content\\":\\"text\\"}
+	// {\"knowledge_point\":\"text\",\"trunk_id\":\"text\",\"doc_name\":\"text\",\"knowledge_point_id\":\"text\",\"doc_id\":\"text\",\"trunk_content\":\"text\"}
 	Metadata *string `json:"Metadata,omitempty" xml:"Metadata,omitempty"`
 	// The preview URL.
 	//

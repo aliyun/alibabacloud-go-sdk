@@ -26,7 +26,7 @@ type RefundAppInstanceForPartnerRequest struct {
 	//
 	// WD20250703155602000001
 	BizId *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
-	// The idempotence token.
+	// The idempotency token.
 	//
 	// example:
 	//
@@ -36,7 +36,7 @@ type RefundAppInstanceForPartnerRequest struct {
 	//
 	// example:
 	//
-	// 渠道商退款
+	// Channel partner refund
 	RefundReason *string `json:"RefundReason,omitempty" xml:"RefundReason,omitempty"`
 	// The ID of the user.
 	//

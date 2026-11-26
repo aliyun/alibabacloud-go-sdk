@@ -30,7 +30,11 @@ type CreateAppInstanceTicketRequest struct {
 	//
 	// d566aaf2-7c88-40a4-982f-6abef0be13c9
 	ClientId *string `json:"ClientId,omitempty" xml:"ClientId,omitempty"`
-	// The user role that the ticket will assume.
+	// The user role assumed by the ticket.
+	//
+	// example:
+	//
+	// admin
 	Role *string `json:"Role,omitempty" xml:"Role,omitempty"`
 }
 

@@ -40,7 +40,7 @@ type QueryRbacUserRolesResponseBody struct {
 	//
 	// {}
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	// Specifies whether a retry is allowed.
+	// Indicates whether retries are allowed.
 	//
 	// example:
 	//
@@ -58,7 +58,7 @@ type QueryRbacUserRolesResponseBody struct {
 	//
 	// ERROR-oo1
 	DynamicCode *string `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
-	// The dynamic message. This parameter is not used. Ignore this parameter.
+	// The dynamic message. This parameter is not in use and can be ignored.
 	//
 	// example:
 	//
@@ -217,7 +217,7 @@ type QueryRbacUserRolesResponseBodyModule struct {
 	//
 	// 1
 	CurrentPageNum *int32 `json:"CurrentPageNum,omitempty" xml:"CurrentPageNum,omitempty"`
-	// The request result.
+	// The request results.
 	Data []*QueryRbacUserRolesResponseBodyModuleData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
 	// The next feature ID.
 	Next *QueryRbacUserRolesResponseBodyModuleNext `json:"Next,omitempty" xml:"Next,omitempty" type:"Struct"`
@@ -387,13 +387,13 @@ type QueryRbacUserRolesResponseBodyModuleData struct {
 	OrgId *string `json:"OrgId,omitempty" xml:"OrgId,omitempty"`
 	// The preset workspace role ID. This will overwrite existing roles. Valid values:
 	//
-	// - 25: storage management administrator
+	// - 25: Storage management administrator.
 	//
-	// - 26: workspace developer
+	// - 26: Workspace developer.
 	//
-	// - 27: storage analysis analyst
+	// - 27: Storage analysis analyst.
 	//
-	// - 30: workspace viewer
+	// - 30: Workspace viewer.
 	//
 	// example:
 	//

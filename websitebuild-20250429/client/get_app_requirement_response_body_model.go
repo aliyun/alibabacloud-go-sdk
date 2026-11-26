@@ -34,19 +34,19 @@ type iGetAppRequirementResponseBody interface {
 }
 
 type GetAppRequirementResponseBody struct {
-	// The access denied details.
+	// The access denial details.
 	//
 	// example:
 	//
 	// {}
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	// Indicates whether retry is allowed.
+	// Indicates whether a retry is allowed.
 	//
 	// example:
 	//
 	// False
 	AllowRetry *bool `json:"AllowRetry,omitempty" xml:"AllowRetry,omitempty"`
-	// The application name.
+	// The app name.
 	//
 	// example:
 	//
@@ -58,17 +58,17 @@ type GetAppRequirementResponseBody struct {
 	//
 	// ERROR-oo1
 	DynamicCode *string `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
-	// The dynamic error message, which is used to replace the `%s` variable in the **ErrMessage*	- response parameter.
+	// The dynamic error message, which is used to replace `%s` in the error message of the **ErrMessage*	- response parameter.
 	//
-	// > If **ErrMessage*	- returns **The Value of Input Parameter %s is not valid*	- and **DynamicMessage*	- returns **DtsJobId**, the value of the **DtsJobId*	- request parameter is invalid.
+	// > If **ErrMessage*	- returns **The Value of Input Parameter %s is not valid*	- and **DynamicMessage*	- returns **DtsJobId**, it indicates that the **DtsJobId*	- request parameter is invalid.
 	//
 	// example:
 	//
 	// SYSTEM_ERROR
 	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
-	// The error parameters.
+	// The returned error parameters.
 	ErrorArgs []interface{} `json:"ErrorArgs,omitempty" xml:"ErrorArgs,omitempty" type:"Repeated"`
-	// Indicates whether the deletion was successful.
+	// Indicates whether the deletion is successful.
 	Module *GetAppRequirementResponseBodyModule `json:"Module,omitempty" xml:"Module,omitempty" type:"Struct"`
 	// Id of the request
 	//
@@ -82,11 +82,11 @@ type GetAppRequirementResponseBody struct {
 	//
 	// SYSTEM.ERROR
 	RootErrorCode *string `json:"RootErrorCode,omitempty" xml:"RootErrorCode,omitempty"`
-	// The root error message.
+	// The exception message.
 	//
 	// example:
 	//
-	// 系统异常
+	// System exception
 	RootErrorMsg *string `json:"RootErrorMsg,omitempty" xml:"RootErrorMsg,omitempty"`
 	// The reserved parameter.
 	//
@@ -213,7 +213,7 @@ func (s *GetAppRequirementResponseBody) Validate() error {
 }
 
 type GetAppRequirementResponseBodyModule struct {
-	// The requirement document description.
+	// The description of the requirement document.
 	//
 	// example:
 	//

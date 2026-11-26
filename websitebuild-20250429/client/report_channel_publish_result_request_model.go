@@ -24,11 +24,11 @@ type iReportChannelPublishResultRequest interface {
 }
 
 type ReportChannelPublishResultRequest struct {
-	// The display name of the publishing account. A null value does not overwrite the original value. Maximum length: 256 characters.
+	// The display name of the publishing account. An empty value does not overwrite the original value. Maximum length: 256 characters.
 	//
 	// example:
 	//
-	// xx
+	// Sample publishing account
 	ChannelAccountName *string `json:"ChannelAccountName,omitempty" xml:"ChannelAccountName,omitempty"`
 	// The channel draft ID.
 	//
@@ -38,7 +38,7 @@ type ReportChannelPublishResultRequest struct {
 	//
 	// draft-789
 	DraftId *string `json:"DraftId,omitempty" xml:"DraftId,omitempty"`
-	// The ID returned by the platform. Set this parameter when the publishing is successful.
+	// The ID returned by the platform. Specify this parameter when the publishing is successful.
 	//
 	// example:
 	//
@@ -50,13 +50,13 @@ type ReportChannelPublishResultRequest struct {
 	//
 	// https://hf-groot.lingostarcdn.com/sparkenglish-sv/groot-parent/1-698a94b7-133b20ab-42ae793d40f6/05a0caf1-abb0-415d-941c-eecf0b613eae.mp4
 	ExternalUrl *string `json:"ExternalUrl,omitempty" xml:"ExternalUrl,omitempty"`
-	// The failure reason. Set this parameter when the publishing fails.
+	// The reason for the failure. Specify this parameter when the publishing fails.
 	//
 	// example:
 	//
-	// xxx
+	// Publishing failed. Try again later
 	FailReason *string `json:"FailReason,omitempty" xml:"FailReason,omitempty"`
-	// Specifies whether the publishing is successful (true/false).
+	// Specifies whether the publishing is successful.
 	//
 	// This parameter is required.
 	//

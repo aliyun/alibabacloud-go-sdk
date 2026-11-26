@@ -40,7 +40,7 @@ type iQueryMaterialFileDetailResponseBody interface {
 }
 
 type QueryMaterialFileDetailResponseBody struct {
-	// The details of the permission check failure.
+	// The details of the failed permission check.
 	//
 	// example:
 	//
@@ -72,7 +72,7 @@ type QueryMaterialFileDetailResponseBody struct {
 	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
 	// The returned error parameters.
 	ErrorArgs []interface{} `json:"ErrorArgs,omitempty" xml:"ErrorArgs,omitempty" type:"Repeated"`
-	// The error code. If the request is successful, the ErrorCode parameter is not returned. If the request fails, the ErrorCode parameter is returned. For more information, see the error codes in this topic.
+	// The error code. If the request is successful, this parameter is not returned. If the request fails, this parameter is returned. For more information, see the error codes in this topic.
 	//
 	// example:
 	//
@@ -88,7 +88,7 @@ type QueryMaterialFileDetailResponseBody struct {
 	//
 	// example:
 	//
-	// {\\"TotalPageNum\\": 1, \\"ResultLimit\\": False, \\"CurrentPageNum\\": 0, \\"PageSize\\": 0, \\"TotalItemNum\\": 0}
+	// {\"TotalPageNum\": 1, \"ResultLimit\": False, \"CurrentPageNum\": 0, \"PageSize\": 0, \"TotalItemNum\": 0}
 	Module *AppMaterialFile `json:"Module,omitempty" xml:"Module,omitempty"`
 	// Id of the request
 	//

@@ -40,7 +40,7 @@ type UpdateRbacRoleResponseBody struct {
 	//
 	// {}
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	// Specifies whether retries are allowed.
+	// Indicates whether retries are allowed.
 	//
 	// example:
 	//
@@ -58,15 +58,15 @@ type UpdateRbacRoleResponseBody struct {
 	//
 	// ERROR-oo1
 	DynamicCode *string `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
-	// The dynamic error message, which is used to replace `%s` in the error message of the **ErrMessage*	- response parameter.
+	// The dynamic error message, which is used to replace `%s` in the **ErrMessage*	- error message.
 	//
-	// > If **ErrMessage*	- returns **The Value of Input Parameter %s is not valid*	- and **DynamicMessage*	- returns **DtsJobId**, the **DtsJobId*	- request parameter is invalid.
+	// > If **ErrMessage*	- returns **The Value of Input Parameter %s is not valid*	- and **DynamicMessage*	- returns **DtsJobId**, it indicates that the specified request parameter **DtsJobId*	- is invalid.
 	//
 	// example:
 	//
 	// abc
 	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
-	// The error arguments.
+	// The returned error parameters.
 	ErrorArgs []interface{} `json:"ErrorArgs,omitempty" xml:"ErrorArgs,omitempty" type:"Repeated"`
 	// Indicates whether the move was successful.
 	//
@@ -92,7 +92,7 @@ type UpdateRbacRoleResponseBody struct {
 	//
 	// System exception
 	RootErrorMsg *string `json:"RootErrorMsg,omitempty" xml:"RootErrorMsg,omitempty"`
-	// Specifies whether the processing is synchronous.
+	// Indicates whether the request is processed synchronously.
 	//
 	// example:
 	//

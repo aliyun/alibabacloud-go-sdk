@@ -41,6 +41,10 @@ type TreeNode struct {
 	// 1
 	FinalStepNo *int32 `json:"FinalStepNo,omitempty" xml:"FinalStepNo,omitempty"`
 	// The completion time.
+	//
+	// example:
+	//
+	// 1767323045000
 	FinishTime *int64 `json:"FinishTime,omitempty" xml:"FinishTime,omitempty"`
 	// Specifies whether the node is a container node.
 	IsContainerNode *bool `json:"IsContainerNode,omitempty" xml:"IsContainerNode,omitempty"`

@@ -34,13 +34,13 @@ type iCreateAppPluginResponseBody interface {
 }
 
 type CreateAppPluginResponseBody struct {
-	// The detailed reasons for the access denial.
+	// The detailed reasons for access denial.
 	//
 	// example:
 	//
 	// {}
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	// Specifies whether a retry is allowed.
+	// Specifies whether retries are allowed.
 	//
 	// example:
 	//
@@ -58,9 +58,9 @@ type CreateAppPluginResponseBody struct {
 	//
 	// ERROR-oo1
 	DynamicCode *string `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
-	// The dynamic error message, which is used to replace the `%s` placeholder in the **ErrMessage*	- response parameter.
+	// The dynamic error message, which is used to replace the `%s` in the **ErrMessage*	- response parameter.
 	//
-	// > If **ErrMessage*	- returns **The Value of Input Parameter %s is not valid*	- and **DynamicMessage*	- returns **DtsJobId**, the **DtsJobId*	- request parameter is invalid.
+	// > If **ErrMessage*	- returns **The Value of Input Parameter %s is not valid*	- and **DynamicMessage*	- returns **DtsJobId**, the specified **DtsJobId*	- request parameter is invalid.
 	//
 	// example:
 	//

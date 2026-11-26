@@ -561,7 +561,7 @@ type ListMyInstalledAppPluginsResponseBodyModuleNext struct {
 	//
 	// example:
 	//
-	// {\\"Depth\\": 2, \\"ParentCategoryId\\": 5260, \\"Name\\": \\"2\\", \\"CategoryId\\": 5280, \\"CreateTime\\": \\"2025-08-26 10:20:37\\"}
+	// {\"Depth\": 2, \"ParentCategoryId\": 5260, \"Name\": \"2\", \"CategoryId\": 5280, \"CreateTime\": \"2025-08-26 10:20:37\"}
 	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
 	// The scenario description.
 	//

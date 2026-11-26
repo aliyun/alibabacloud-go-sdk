@@ -34,23 +34,23 @@ type iDeleteRbacRoleResponseBody interface {
 }
 
 type DeleteRbacRoleResponseBody struct {
-	// The detailed reason for the access denial.
+	// The detailed reasons for access denial.
 	//
 	// example:
 	//
 	// {}
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	// Specifies whether retries are allowed. Valid values:
+	// Specifies whether a retry is allowed. Valid values:
 	//
-	// - false: Retries are not allowed.
+	// - false: A retry is not allowed.
 	//
-	// - true: Retries are allowed.
+	// - true: A retry is allowed.
 	//
 	// example:
 	//
 	// False
 	AllowRetry *bool `json:"AllowRetry,omitempty" xml:"AllowRetry,omitempty"`
-	// The application name. The name can contain digits, letters, and hyphens (-). It must start with a letter, cannot end with a hyphen (-), and cannot exceed 36 characters in length.
+	// The application name. The name can contain digits, letters, and hyphens (-). It must start with a letter, cannot end with a hyphen (-), and can be up to 36 characters in length.
 	//
 	// example:
 	//
@@ -62,9 +62,9 @@ type DeleteRbacRoleResponseBody struct {
 	//
 	// ERROR-oo1
 	DynamicCode *string `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
-	// The dynamic error message, which is used to replace `%s` in the error message returned by the **ErrMessage*	- parameter.
+	// The dynamic error message, which is used to replace `%s` in the **ErrMessage*	- error message.
 	//
-	// > If **ErrMessage*	- returns **The Value of Input Parameter %s is not valid*	- and **DynamicMessage*	- returns **DtsJobId**, it indicates that the value of the request parameter **DtsJobId*	- is invalid.
+	// > If **ErrMessage*	- returns **The Value of Input Parameter %s is not valid*	- and **DynamicMessage*	- returns **DtsJobId**, the specified **DtsJobId*	- request parameter is invalid.
 	//
 	// example:
 	//

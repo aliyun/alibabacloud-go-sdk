@@ -56,11 +56,11 @@ type SearchImageShrinkRequest struct {
 	HasPerson *bool `json:"HasPerson,omitempty" xml:"HasPerson,omitempty"`
 	// The image category. Valid values:
 	//
-	// - normal: illustrations or article images.
+	// - normal: Illustrations and article images.
 	//
-	// - banner: background images or carousel images.
+	// - banner: Background images and carousel images.
 	//
-	// - goods: product or service images.
+	// - goods: Product or service images.
 	//
 	// example:
 	//
@@ -68,17 +68,17 @@ type SearchImageShrinkRequest struct {
 	ImageCategory *string `json:"ImageCategory,omitempty" xml:"ImageCategory,omitempty"`
 	// The aspect ratio of the image. Valid values:
 	//
-	// "16:9"
+	// - "16:9"
 	//
-	// "4:3"
+	// - "4:3"
 	//
-	// "2:1"
+	// - "2:1"
 	//
-	// "1:1"
+	// - "1:1"
 	//
-	// "3:4"
+	// - "3:4"
 	//
-	// "9:16".
+	// - "9:16"
 	//
 	// example:
 	//
@@ -90,7 +90,7 @@ type SearchImageShrinkRequest struct {
 	//
 	// 4000
 	MaxHeight *int32 `json:"MaxHeight,omitempty" xml:"MaxHeight,omitempty"`
-	// The number of entries per page for paging queries. Maximum value: 100. Default value: 20.
+	// The number of entries per page for a paged query. Maximum value: 100. Default value: 20.
 	//
 	// example:
 	//
@@ -114,7 +114,7 @@ type SearchImageShrinkRequest struct {
 	//
 	// 500
 	MinWidth *int32 `json:"MinWidth,omitempty" xml:"MinWidth,omitempty"`
-	// The pagination token. Set this parameter to the NextToken value returned in the previous call. You do not need to set this parameter for the first request. If NextToken is specified, the PageSize and PageNumber request parameters do not take effect, and the TotalCount value in the response is invalid.
+	// The query token. Set the value to the NextToken value returned from the previous call to this operation. You do not need to set this parameter for the first call. If NextToken is set, the PageSize and PageNumber request parameters become invalid, and the TotalCount value in the response is invalid.
 	//
 	// example:
 	//
@@ -126,13 +126,13 @@ type SearchImageShrinkRequest struct {
 	//
 	// backend/detection/objects/r-0008ujvfksltf5j45n81/task-000hckiuwyau0gwn17vq.jpg
 	OssKey *string `json:"OssKey,omitempty" xml:"OssKey,omitempty"`
-	// The number of returned results. Default value: 10.
+	// The number of results to return. Default value: 10.
 	//
 	// example:
 	//
 	// 10
 	Size *int32 `json:"Size,omitempty" xml:"Size,omitempty"`
-	// The start position of the returned results. Valid values: 0 to 499. Default value: 0.
+	// The starting position of the returned results. Valid values: 0 to 499. Default value: 0.
 	//
 	// example:
 	//
@@ -140,13 +140,11 @@ type SearchImageShrinkRequest struct {
 	Start *int32 `json:"Start,omitempty" xml:"Start,omitempty"`
 	// The tags.
 	TagsShrink *string `json:"Tags,omitempty" xml:"Tags,omitempty"`
-	// The description text used to search for images.
-	//
-	// >Maximum length: 512 characters.
+	// The descriptive text used to search for images. A maximum of 512 characters are supported.
 	//
 	// example:
 	//
-	// 卫浴五金产品，表面采用拉丝不锈钢材质，整体色调为现代银灰色，呈现简约且富有质感的风格。产品包括淋浴花洒、水龙头及毛巾架等配件，均具备防锈、耐腐蚀性能，适用于潮湿环境。各部件连接处设计精密，配有隐藏式螺丝结构，提升整体美观度。水龙头和花洒喷头支持多模式出水，把手操作顺滑，符合人体工学设计。所有五金件通过国家节水认证，支持冷热水接入，安装方式为壁挂式。
+	// Bathroom hardware products, featuring a brushed stainless steel surface with an overall modern silver-gray tone, presenting a minimalist and textured style. The products include accessories such as showerheads, faucets, and towel racks, all of which are rust-proof and corrosion-resistant, making them suitable for humid environments. The joints between components are precisely designed with hidden screw structures to enhance overall aesthetics. The faucets and showerheads support multiple water flow modes, and the handles operate smoothly, conforming to ergonomic design. All hardware fittings have passed the national water-saving certification, support both cold and hot water connections, and are wall-mounted
 	Text *string `json:"Text,omitempty" xml:"Text,omitempty"`
 }
 

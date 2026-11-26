@@ -34,13 +34,13 @@ type iRefreshAppInstanceTicketResponseBody interface {
 }
 
 type RefreshAppInstanceTicketResponseBody struct {
-	// The detailed reason why access is denied.
+	// The details about the access denial.
 	//
 	// example:
 	//
 	// {}
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	// Indicates whether retry is allowed.
+	// Specifies whether retries are allowed.
 	//
 	// example:
 	//
@@ -60,13 +60,13 @@ type RefreshAppInstanceTicketResponseBody struct {
 	DynamicCode *string `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
 	// The dynamic error message, which is used to replace the `%s` placeholder in the **ErrMessage*	- response parameter.
 	//
-	// > If **ErrMessage*	- returns **The Value of Input Parameter %s is not valid*	- and **DynamicMessage*	- returns **DtsJobId**, the request parameter **DtsJobId*	- is invalid.
+	// > If **ErrMessage*	- returns **The Value of Input Parameter %s is not valid*	- and **DynamicMessage*	- returns **DtsJobId**, the specified **DtsJobId*	- request parameter is invalid.
 	//
 	// example:
 	//
 	// SYSTEM_ERROR
 	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
-	// The error parameters returned.
+	// The returned error parameters.
 	ErrorArgs []interface{} `json:"ErrorArgs,omitempty" xml:"ErrorArgs,omitempty" type:"Repeated"`
 	// The application module.
 	Module *RefreshAppInstanceTicketResponseBodyModule `json:"Module,omitempty" xml:"Module,omitempty" type:"Struct"`
@@ -86,7 +86,7 @@ type RefreshAppInstanceTicketResponseBody struct {
 	//
 	// example:
 	//
-	// 系统异常
+	// System exception
 	RootErrorMsg *string `json:"RootErrorMsg,omitempty" xml:"RootErrorMsg,omitempty"`
 	// The reserved parameter.
 	//
@@ -225,7 +225,7 @@ type RefreshAppInstanceTicketResponseBodyModule struct {
 	//
 	// 2025-12-18T22:30:00+08:00
 	AccessTokenIssuedAt *string `json:"AccessTokenIssuedAt,omitempty" xml:"AccessTokenIssuedAt,omitempty"`
-	// The access token value.
+	// The value of the access token.
 	//
 	// example:
 	//
@@ -237,7 +237,7 @@ type RefreshAppInstanceTicketResponseBodyModule struct {
 	//
 	// 1907880872137014
 	AliyunPk *string `json:"AliyunPk,omitempty" xml:"AliyunPk,omitempty"`
-	// The extended properties.
+	// The extended attributes.
 	//
 	// example:
 	//
@@ -273,13 +273,13 @@ type RefreshAppInstanceTicketResponseBodyModule struct {
 	//
 	// 2025-12-18T22:30:00+08:00
 	RefreshTokenIssuedAt *string `json:"RefreshTokenIssuedAt,omitempty" xml:"RefreshTokenIssuedAt,omitempty"`
-	// The refresh token value.
+	// The value of the refresh token.
 	//
 	// example:
 	//
 	// 2108341e17661121129745384e79f9
 	RefreshTokenValue *string `json:"RefreshTokenValue,omitempty" xml:"RefreshTokenValue,omitempty"`
-	// The external unique identifier.
+	// The externally unique identifier.
 	//
 	// example:
 	//

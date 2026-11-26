@@ -15,6 +15,8 @@ type iListAppInstancesRequest interface {
 	GetBizId() *string
 	SetBizIds(v []*string) *ListAppInstancesRequest
 	GetBizIds() []*string
+	SetDomain(v string) *ListAppInstancesRequest
+	GetDomain() *string
 	SetEndTimeBegin(v string) *ListAppInstancesRequest
 	GetEndTimeBegin() *string
 	SetEndTimeEnd(v string) *ListAppInstancesRequest
@@ -48,7 +50,7 @@ type ListAppInstancesRequest struct {
 	//
 	// - Mini_Program: mini program.
 	//
-	// If this parameter is not specified or left empty, applications are not filtered by type. For compatibility, historical missing, NULL, or empty types are treated as PC_WebSite.
+	// If this parameter is not specified or is left empty, no filtering by type is performed. Historical missing, NULL, or empty types are compatible with PC_WebSite.
 	//
 	// example:
 	//
@@ -62,6 +64,12 @@ type ListAppInstancesRequest struct {
 	BizId *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
 	// The list of business IDs for the application instances.
 	BizIds []*string `json:"BizIds,omitempty" xml:"BizIds,omitempty" type:"Repeated"`
+	// Used only in the CONTENT_CREATION pattern: exact match for the fully attached domain name, mutually exclusive with Query. It does not include the protocol, port, or path.
+	//
+	// example:
+	//
+	// www.example.com
+	Domain *string `json:"Domain,omitempty" xml:"Domain,omitempty"`
 	// The expiration start time.
 	//
 	// example:
@@ -80,13 +88,15 @@ type ListAppInstancesRequest struct {
 	//
 	// {}
 	Extend *string `json:"Extend,omitempty" xml:"Extend,omitempty"`
-	// The maximum number of results returned per query. Valid values: 10 to 100. Default value: 20.
+	// The maximum number of results per query.
+	//
+	// Valid values: 10 to 100. Default value: 20.
 	//
 	// example:
 	//
 	// 10
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The token used to start the next query. This parameter is empty if no next query exists.
+	// The token for the next query. It is empty when there is no next query.
 	//
 	// example:
 	//
@@ -120,17 +130,15 @@ type ListAppInstancesRequest struct {
 	//
 	// example:
 	//
-	// {\\"RequestId\\":\\"\\"}
+	// {\"RequestId\":\"\"}
 	Query *string `json:"Query,omitempty" xml:"Query,omitempty"`
-	// The query mode. Valid values:
-	//
-	// - CONTENT_CREATION: specifies a lightweight query for the content creation site selector. It queries only published sites and does not load aggregated information such as profiles, services, and AI staff.
+	// The query mode. CONTENT_CREATION indicates a lightweight query for the content creation site selector, which queries only published sites and does not load aggregate information such as Profile, services, or AI Staff.
 	//
 	// example:
 	//
 	// CONTENT_CREATION
 	QueryMode *string `json:"QueryMode,omitempty" xml:"QueryMode,omitempty"`
-	// The status range.
+	// The status scope.
 	StatusList []*string `json:"StatusList,omitempty" xml:"StatusList,omitempty" type:"Repeated"`
 }
 
@@ -152,6 +160,10 @@ func (s *ListAppInstancesRequest) GetBizId() *string {
 
 func (s *ListAppInstancesRequest) GetBizIds() []*string {
 	return s.BizIds
+}
+
+func (s *ListAppInstancesRequest) GetDomain() *string {
+	return s.Domain
 }
 
 func (s *ListAppInstancesRequest) GetEndTimeBegin() *string {
@@ -214,6 +226,11 @@ func (s *ListAppInstancesRequest) SetBizId(v string) *ListAppInstancesRequest {
 
 func (s *ListAppInstancesRequest) SetBizIds(v []*string) *ListAppInstancesRequest {
 	s.BizIds = v
+	return s
+}
+
+func (s *ListAppInstancesRequest) SetDomain(v string) *ListAppInstancesRequest {
+	s.Domain = &v
 	return s
 }
 

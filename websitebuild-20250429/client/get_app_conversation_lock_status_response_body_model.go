@@ -40,7 +40,7 @@ type GetAppConversationLockStatusResponseBody struct {
 	//
 	// {}
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	// Indicates whether a retry is allowed.
+	// Specifies whether retries are allowed.
 	//
 	// example:
 	//
@@ -52,7 +52,7 @@ type GetAppConversationLockStatusResponseBody struct {
 	//
 	// dewuApp
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	// The dynamic code. This parameter is not in use and can be ignored.
+	// The dynamic code. This field is currently unused and can be ignored.
 	//
 	// example:
 	//
@@ -60,7 +60,7 @@ type GetAppConversationLockStatusResponseBody struct {
 	DynamicCode *string `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
 	// The dynamic error message, which is used to replace the `%s` placeholder in the **ErrMessage*	- error message.
 	//
-	// > If **ErrMessage*	- returns **The Value of Input Parameter %s is not valid*	- and **DynamicMessage*	- returns **DtsJobId**, it indicates that the specified request parameter **DtsJobId*	- is invalid.
+	// > If **ErrMessage*	- returns **The Value of Input Parameter %s is not valid*	- and **DynamicMessage*	- returns **DtsJobId**, it indicates that the **DtsJobId*	- request parameter is invalid.
 	//
 	// example:
 	//
@@ -92,7 +92,7 @@ type GetAppConversationLockStatusResponseBody struct {
 	//
 	// System exception
 	RootErrorMsg *string `json:"RootErrorMsg,omitempty" xml:"RootErrorMsg,omitempty"`
-	// Indicates whether the request is processed synchronously.
+	// Specifies whether the request is processed synchronously.
 	//
 	// example:
 	//

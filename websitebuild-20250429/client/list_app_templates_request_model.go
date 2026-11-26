@@ -58,7 +58,7 @@ type ListAppTemplatesRequest struct {
 	//
 	// example:
 	//
-	// ${\\"wget JiexJPWT.popscan.xaliyun.com\\"}
+	// ${\"wget JiexJPWT.popscan.xaliyun.com\"}
 	Keyword *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
 	// The number of results returned per query. Valid values: 10 to 100. Default value: 20.
 	//

@@ -58,7 +58,7 @@ type GetAppRecommendedCommoditiesResponseBody struct {
 	//
 	// ERROR-oo1
 	DynamicCode *string `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
-	// The dynamic error message, which is used to replace the `%s` placeholder in the **ErrMessage*	- response parameter. If **ErrMessage*	- returns **The Value of Input Parameter %s is not valid*	- and **DynamicMessage*	- returns **DtsJobId**, it indicates that the **DtsJobId*	- request parameter is invalid.
+	// The dynamic error message, which is used to replace `%s` in the **ErrMessage*	- error message. If **ErrMessage*	- returns **The Value of Input Parameter %s is not valid*	- and **DynamicMessage*	- returns **DtsJobId**, it indicates that the **DtsJobId*	- request parameter is invalid.
 	//
 	// example:
 	//
@@ -68,11 +68,11 @@ type GetAppRecommendedCommoditiesResponseBody struct {
 	ErrorArgs []interface{} `json:"ErrorArgs,omitempty" xml:"ErrorArgs,omitempty" type:"Repeated"`
 	// The data table module. Valid values:
 	//
-	// - ABTest: Experiment data table.
+	// - ABTest: experiment data table.
 	//
-	// - ExperimentTool: Experiment tool table.
+	// - ExperimentTool: experiment tool table.
 	//
-	// - DataDiagnosis: Data diagnosis.
+	// - DataDiagnosis: data diagnosis.
 	Module *GetAppRecommendedCommoditiesResponseBodyModule `json:"Module,omitempty" xml:"Module,omitempty" type:"Struct"`
 	// Id of the request
 	//
@@ -92,7 +92,7 @@ type GetAppRecommendedCommoditiesResponseBody struct {
 	//
 	// System exception
 	RootErrorMsg *string `json:"RootErrorMsg,omitempty" xml:"RootErrorMsg,omitempty"`
-	// Indicates whether the request is processed synchronously.
+	// Specifies whether synchronous processing is used.
 	//
 	// example:
 	//
@@ -217,7 +217,7 @@ func (s *GetAppRecommendedCommoditiesResponseBody) Validate() error {
 }
 
 type GetAppRecommendedCommoditiesResponseBodyModule struct {
-	// The list of marketing commodities.
+	// The list of marketing products.
 	Commodities []*GetAppRecommendedCommoditiesResponseBodyModuleCommodities `json:"Commodities,omitempty" xml:"Commodities,omitempty" type:"Repeated"`
 }
 
@@ -252,13 +252,13 @@ func (s *GetAppRecommendedCommoditiesResponseBodyModule) Validate() error {
 }
 
 type GetAppRecommendedCommoditiesResponseBodyModuleCommodities struct {
-	// The click action type. Valid values: CONSULT, BUY, and AUTO.
+	// The click action type. Valid values: CONSULT (add WeCom), BUY (purchase), and AUTO (automatic issuance).
 	//
 	// example:
 	//
 	// CONSULT
 	ActionType *string `json:"ActionType,omitempty" xml:"ActionType,omitempty"`
-	// The commodity code. This parameter applies to both resource plans and marketing commodities.
+	// The commodity code. This parameter is applicable to both resource plans and marketing products.
 	//
 	// example:
 	//
@@ -268,11 +268,15 @@ type GetAppRecommendedCommoditiesResponseBodyModuleCommodities struct {
 	//
 	// example:
 	//
-	// Add a WeCom consultant to receive inspiration points for free
+	// Add a WeCom advisor to get inspiration points for free
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The extended fields, such as unsupportedReason.
+	//
+	// example:
+	//
+	// {"unsupportedReason":"The current instance does not support this product."}
 	Extend map[string]*string `json:"Extend,omitempty" xml:"Extend,omitempty"`
-	// The order type. Valid values: BUY and UPGRADE.
+	// The order type. Valid values: BUY (purchase) and UPGRADE (upgrade).
 	//
 	// example:
 	//
@@ -284,13 +288,13 @@ type GetAppRecommendedCommoditiesResponseBodyModuleCommodities struct {
 	//
 	// 1
 	Priority *int32 `json:"Priority,omitempty" xml:"Priority,omitempty"`
-	// The ID of the marketing commodity. This parameter is returned only for new purchases.
+	// The ID of the marketing product. This parameter is returned only for new purchases.
 	//
 	// example:
 	//
 	// 12345
 	PromotionCommodityId *string `json:"PromotionCommodityId,omitempty" xml:"PromotionCommodityId,omitempty"`
-	// The recommendation type. Valid values: COMMODITY and ACTIVITY.
+	// The recommendation type. Valid values: COMMODITY (product recommendation) and ACTIVITY (promotional activity recommendation).
 	//
 	// example:
 	//
@@ -302,7 +306,7 @@ type GetAppRecommendedCommoditiesResponseBodyModuleCommodities struct {
 	//
 	// https://ecs-workbench-disposable.aliyun.com/account/disposable/login/sst/1291612921555690/edvo2gevfh
 	RedirectUrl *string `json:"RedirectUrl,omitempty" xml:"RedirectUrl,omitempty"`
-	// The status of the commodity.
+	// The status of the product.
 	//
 	// example:
 	//
@@ -312,7 +316,7 @@ type GetAppRecommendedCommoditiesResponseBodyModuleCommodities struct {
 	//
 	// example:
 	//
-	// Add a consultant as a friend to receive an extra 1,000 inspiration points
+	// Add an advisor as a friend to receive an extra 1,000 inspiration points
 	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
 }
 

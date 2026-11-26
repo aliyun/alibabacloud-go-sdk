@@ -38,19 +38,19 @@ type iListAppCommoditySpecificationsV2ForPartnerResponseBody interface {
 }
 
 type ListAppCommoditySpecificationsV2ForPartnerResponseBody struct {
-	// The access denied detail.
+	// The details about the access denial.
 	//
 	// example:
 	//
 	// {}
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	// Indicates whether retry is allowed.
+	// Indicates whether retries are allowed.
 	//
 	// example:
 	//
 	// False
 	AllowRetry *bool `json:"AllowRetry,omitempty" xml:"AllowRetry,omitempty"`
-	// The app name.
+	// The application name.
 	//
 	// example:
 	//
@@ -62,9 +62,9 @@ type ListAppCommoditySpecificationsV2ForPartnerResponseBody struct {
 	//
 	// ERROR-oo1
 	DynamicCode *string `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
-	// The dynamic error message, which is used to replace the `%s` in the **ErrMessage*	- error message of the response parameters.
+	// The dynamic error message used to replace `%s` in the error message returned in the **ErrMessage*	- response parameter.
 	//
-	// > If **ErrMessage*	- returns **The Value of Input Parameter %s is not valid*	- and **DynamicMessage*	- returns **DtsJobId**, it indicates that the request parameter **DtsJobId*	- is invalid.
+	// > If **ErrMessage*	- returns **The Value of Input Parameter %s is not valid*	- and **DynamicMessage*	- returns **DtsJobId**, it indicates that the **DtsJobId*	- request parameter is invalid.
 	//
 	// example:
 	//
@@ -72,9 +72,7 @@ type ListAppCommoditySpecificationsV2ForPartnerResponseBody struct {
 	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
 	// The error parameters.
 	ErrorArgs []interface{} `json:"ErrorArgs,omitempty" xml:"ErrorArgs,omitempty" type:"Repeated"`
-	// The number of results per query.
-	//
-	// Valid values: 10 to 100. Default value: 20.
+	// The maximum number of results to return per query. Valid values: 10 to 100. Default value: 20.
 	//
 	// example:
 	//
@@ -82,7 +80,7 @@ type ListAppCommoditySpecificationsV2ForPartnerResponseBody struct {
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
 	// The response data.
 	Module *ListAppCommoditySpecificationsV2ForPartnerResponseBodyModule `json:"Module,omitempty" xml:"Module,omitempty" type:"Struct"`
-	// The token for the next query. This parameter is empty when there is no next query.
+	// The token used to start the next query. This value is empty if there are no more results.
 	//
 	// example:
 	//
@@ -104,7 +102,7 @@ type ListAppCommoditySpecificationsV2ForPartnerResponseBody struct {
 	//
 	// example:
 	//
-	// 系统异常
+	// System exception
 	RootErrorMsg *string `json:"RootErrorMsg,omitempty" xml:"RootErrorMsg,omitempty"`
 	// Indicates whether the request is processed synchronously.
 	//
@@ -255,31 +253,31 @@ type ListAppCommoditySpecificationsV2ForPartnerResponseBodyModule struct {
 	//
 	// 12
 	CurrentPageNum *int32 `json:"CurrentPageNum,omitempty" xml:"CurrentPageNum,omitempty"`
-	// The request result.
+	// The request results.
 	Data []*ListAppCommoditySpecificationsV2ForPartnerResponseBodyModuleData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
 	// The next feature ID.
 	Next *ListAppCommoditySpecificationsV2ForPartnerResponseBodyModuleNext `json:"Next,omitempty" xml:"Next,omitempty" type:"Struct"`
-	// Indicates whether there is a next page.
+	// Indicates whether a next page exists.
 	//
 	// example:
 	//
 	// False
 	NextPage *bool `json:"NextPage,omitempty" xml:"NextPage,omitempty"`
-	// The page size.
+	// The number of entries per page.
 	//
 	// example:
 	//
 	// 50
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// Indicates whether there is a previous page.
+	// Indicates whether a previous page exists.
 	//
 	// example:
 	//
 	// False
 	PrePage *bool `json:"PrePage,omitempty" xml:"PrePage,omitempty"`
-	// In addition to pagination limits, the server processes a maximum of the most recent 1000 records per query. If the results exceed 1000, **ResultLimit*	- is **true**, and you need to narrow the time range and search again. Otherwise, **ResultLimit*	- is **false**.
+	// In addition to the pagination limit, the server processes a maximum of the latest 1,000 records for the current query. If the number of results exceeds 1,000, **ResultLimit*	- is set to **true**. In this case, narrow the time range and search again. Otherwise, **ResultLimit*	- is set to **false**.
 	ResultLimit *bool `json:"ResultLimit,omitempty" xml:"ResultLimit,omitempty"`
-	// The total number of items.
+	// The total number of entries.
 	//
 	// example:
 	//
@@ -407,19 +405,19 @@ type ListAppCommoditySpecificationsV2ForPartnerResponseBodyModuleData struct {
 	//
 	// 200
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The default values.
+	// The component mapping for the product specifications, where the key is the component code.
 	//
 	// example:
 	//
-	// {"deploy_area":{"Code":"deploy_area","Name":"部署地区","ModuleAttrStatus":1,"Properties":{"deploy_area":{"Code":"deploy_area","Name":"部署地区","Value":"HongKong","Values":[{"Value":"HongKong","Name":"中国香港"}]}}}}
+	// {"deploy_area":{"Code":"deploy_area","Name":"Deployment region","ModuleAttrStatus":1,"Properties":{"deploy_area":{"Code":"deploy_area","Name":"Deployment region","Value":"HongKong","Values":[{"Value":"HongKong","Name":"China (Hong Kong)"}]}}}}
 	Components map[string]*ModuleDataComponentsValue `json:"Components,omitempty" xml:"Components,omitempty"`
 	// The file name.
 	//
 	// example:
 	//
-	// 文件名
+	// File name
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The duration.
+	// The property mapping for the product specifications, where the key is the property code.
 	//
 	// example:
 	//
@@ -482,11 +480,11 @@ type ListAppCommoditySpecificationsV2ForPartnerResponseBodyModuleNext struct {
 	//
 	// OK
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// The default values.
+	// The component mapping for the product specifications, where the key is the component code.
 	//
 	// example:
 	//
-	// {"deploy_area":{"Code":"deploy_area","Name":"部署地区","ModuleAttrStatus":1,"Properties":{"deploy_area":{"Code":"deploy_area","Name":"部署地区","Value":"HongKong","Values":[{"Value":"HongKong","Name":"中国香港"}]}}}}
+	// {"deploy_area":{"Code":"deploy_area","Name":"Deployment region","ModuleAttrStatus":1,"Properties":{"deploy_area":{"Code":"deploy_area","Name":"Deployment region","Value":"HongKong","Values":[{"Value":"HongKong","Name":"China (Hong Kong)"}]}}}}
 	Components map[string]*ModuleNextComponentsValue `json:"Components,omitempty" xml:"Components,omitempty"`
 	// The website name.
 	//
@@ -494,7 +492,7 @@ type ListAppCommoditySpecificationsV2ForPartnerResponseBodyModuleNext struct {
 	//
 	// docs
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The frame rate.
+	// The property mapping for the product specifications, where the key is the property code.
 	//
 	// example:
 	//

@@ -38,19 +38,19 @@ type iListAppConversationMessagesResponseBody interface {
 }
 
 type ListAppConversationMessagesResponseBody struct {
-	// The access denied details.
+	// The access denial details.
 	//
 	// example:
 	//
 	// {}
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	// Indicates whether retry is allowed.
+	// Specifies whether a retry is allowed.
 	//
 	// example:
 	//
 	// False
 	AllowRetry *bool `json:"AllowRetry,omitempty" xml:"AllowRetry,omitempty"`
-	// The application name.
+	// The app name.
 	//
 	// example:
 	//
@@ -62,19 +62,17 @@ type ListAppConversationMessagesResponseBody struct {
 	//
 	// ERROR-oo1
 	DynamicCode *string `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
-	// The dynamic error message, which is used to replace the `%s` in the **ErrMessage*	- response parameter.
+	// The dynamic error message, which is used to replace the `%s` placeholder in the **ErrMessage*	- response parameter.
 	//
-	// > If **ErrMessage*	- returns **The Value of Input Parameter %s is not valid*	- and **DynamicMessage*	- returns **DtsJobId**, the request parameter **DtsJobId*	- is invalid.
+	// > If **ErrMessage*	- returns **The Value of Input Parameter %s is not valid*	- and **DynamicMessage*	- returns **DtsJobId**, the **DtsJobId*	- request parameter is invalid.
 	//
 	// example:
 	//
 	// SYSTEM_ERROR
 	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
-	// The error parameters.
+	// The invalid parameters.
 	ErrorArgs []interface{} `json:"ErrorArgs,omitempty" xml:"ErrorArgs,omitempty" type:"Repeated"`
-	// The number of entries per query.
-	//
-	// Valid values: 10 to 100. Default value: 20.
+	// The number of results returned per query. Valid values: 10 to 100. Default value: 20.
 	//
 	// example:
 	//
@@ -82,7 +80,7 @@ type ListAppConversationMessagesResponseBody struct {
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
 	// The response data.
 	Module []*ListAppConversationMessagesResponseBodyModule `json:"Module,omitempty" xml:"Module,omitempty" type:"Repeated"`
-	// The token for the next query. This parameter is empty if no more results are available.
+	// The token used to start the next query. This parameter is empty if there are no more results.
 	//
 	// example:
 	//
@@ -104,9 +102,9 @@ type ListAppConversationMessagesResponseBody struct {
 	//
 	// example:
 	//
-	// System exception.
+	// System exception
 	RootErrorMsg *string `json:"RootErrorMsg,omitempty" xml:"RootErrorMsg,omitempty"`
-	// A reserved parameter.
+	// The reserved parameter.
 	//
 	// example:
 	//
@@ -271,11 +269,11 @@ type ListAppConversationMessagesResponseBodyModule struct {
 	//
 	// created
 	ChatStatus *string `json:"ChatStatus,omitempty" xml:"ChatStatus,omitempty"`
-	// The ID of the data API that is called.
+	// The ID of the called data API operation.
 	//
 	// example:
 	//
-	// {\\"DeviceName\\": u\\"\\u667a\\u80fd\\u63d2\\u5ea716A\\", \\"BlidMac\\": \\"18bc5a53351c\\", \\"DeviceModel\\": \\"ABSP21-16M\\", \\"DeviceCategory\\": u\\"\\u63d2\\u5ea7\\", \\"DeviceManufacturer\\": \\"\\", \\"DeviceType\\": 140}
+	// {\"DeviceName\": u\"\u667a\u80fd\u63d2\u5ea716A\", \"BlidMac\": \"18bc5a53351c\", \"DeviceModel\": \"ABSP21-16M\", \"DeviceCategory\": u\"\u63d2\u5ea7\", \"DeviceManufacturer\": \"\", \"DeviceType\": 140}
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
 	// The content type.
 	//
@@ -295,7 +293,7 @@ type ListAppConversationMessagesResponseBodyModule struct {
 	//
 	// 1740479834
 	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	// The modification time.
+	// The update time.
 	//
 	// example:
 	//
@@ -307,13 +305,13 @@ type ListAppConversationMessagesResponseBodyModule struct {
 	//
 	// 5f9e88ce-f223-4447-a23e-cb574df6c97a
 	MessageId *string `json:"MessageId,omitempty" xml:"MessageId,omitempty"`
-	// The business extension metadata (in Map format, must be a JSON string).
+	// The business extension metadata in Map format. The value must be a JSON string.
 	//
 	// example:
 	//
-	// {\\"appId\\":\\"WS20260507200853000001\\",\\"inputTokens\\":1411,\\"outputTokens\\":51}
+	// {\"appId\":\"WS20260507200853000001\",\"inputTokens\":1411,\"outputTokens\":51}
 	MetaData *string `json:"MetaData,omitempty" xml:"MetaData,omitempty"`
-	// **[Deprecated]*	- The region sequence number. This parameter is deprecated.
+	// **[Deprecated]*	- The region serial number.
 	//
 	// example:
 	//
@@ -321,17 +319,17 @@ type ListAppConversationMessagesResponseBodyModule struct {
 	No *int32 `json:"No,omitempty" xml:"No,omitempty"`
 	// The role of the conversation participant. Valid values:
 	//
-	// - user: User.
+	// - user: The user.
 	//
-	// - assistant: Assistant.
+	// - assistant: The assistant.
 	//
-	// - system: System.
+	// - system: The system.
 	//
-	// - function: Function.
+	// - function: The function.
 	//
-	// - plugin: Plugin.
+	// - plugin: The plug-in.
 	//
-	// - tool: Tool.
+	// - tool: The tool.
 	//
 	// example:
 	//
@@ -343,7 +341,7 @@ type ListAppConversationMessagesResponseBodyModule struct {
 	//
 	// 11
 	SectionId *string `json:"SectionId,omitempty" xml:"SectionId,omitempty"`
-	// The site ID. You can obtain this value by calling the [ListSites](~~ListSites~~) operation.
+	// The site ID.
 	//
 	// example:
 	//

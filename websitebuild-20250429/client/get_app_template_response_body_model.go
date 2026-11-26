@@ -320,7 +320,7 @@ type GetAppTemplateResponseBodyModule struct {
 	//
 	// example:
 	//
-	// {\\"operations\\":[{\\"operator\\":\\"replace\\",\\"oldMetaName\\":\\"character2_add\\",\\"newMetaType\\":\\"varchar(2)\\"}]}
+	// {\"operations\":[{\"operator\":\"replace\",\"oldMetaName\":\"character2_add\",\"newMetaType\":\"varchar(2)\"}]}
 	Metadata *string `json:"Metadata,omitempty" xml:"Metadata,omitempty"`
 	// The preview URL.
 	//

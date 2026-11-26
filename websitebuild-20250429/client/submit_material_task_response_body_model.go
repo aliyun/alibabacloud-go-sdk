@@ -40,23 +40,23 @@ type iSubmitMaterialTaskResponseBody interface {
 }
 
 type SubmitMaterialTaskResponseBody struct {
-	// The details of the permission verification failure.
+	// The details of the permission check failure.
 	//
 	// example:
 	//
 	// {}
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	// Indicates whether retry is allowed. Valid values:
+	// Indicates whether retries are allowed. Valid values:
 	//
-	// - false: Retry is not allowed.
+	// - false: Retries are not allowed.
 	//
-	// - true: Retry is allowed.
+	// - true: Retries are allowed.
 	//
 	// example:
 	//
 	// False
 	AllowRetry *bool `json:"AllowRetry,omitempty" xml:"AllowRetry,omitempty"`
-	// The application name. The application with this name is queried.
+	// The name of the application to query.
 	//
 	// example:
 	//
@@ -74,9 +74,9 @@ type SubmitMaterialTaskResponseBody struct {
 	//
 	// SYSTEM_ERRROR
 	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
-	// The error parameters.
+	// The returned error parameters.
 	ErrorArgs []interface{} `json:"ErrorArgs,omitempty" xml:"ErrorArgs,omitempty" type:"Repeated"`
-	// The error code. The ErrorCode field is not returned if the request is successful. If the request fails, the ErrorCode field is returned. For more information, see the error codes in this topic.
+	// The error code. If the request is successful, the ErrorCode parameter is not returned. If the request fails, the ErrorCode parameter is returned. For more information, see the error code list in this topic.
 	//
 	// example:
 	//
@@ -96,25 +96,25 @@ type SubmitMaterialTaskResponseBody struct {
 	//
 	// 6C6B99AC-39EC-5350-874C-204128C905E6
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The root error code.
+	// The error code.
 	//
 	// example:
 	//
 	// SYSTEM.ERROR
 	RootErrorCode *string `json:"RootErrorCode,omitempty" xml:"RootErrorCode,omitempty"`
-	// The root error message.
+	// The exception message.
 	//
 	// example:
 	//
 	// System exception
 	RootErrorMsg *string `json:"RootErrorMsg,omitempty" xml:"RootErrorMsg,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	//
 	// example:
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// Indicates whether the request is processed synchronously.
+	// Indicates whether the task is processed synchronously.
 	//
 	// example:
 	//
@@ -270,7 +270,7 @@ type SubmitMaterialTaskResponseBodyModule struct {
 	//
 	// example:
 	//
-	// xxx
+	// GROUP_1
 	BizGroupId *string `json:"BizGroupId,omitempty" xml:"BizGroupId,omitempty"`
 	// The task ID.
 	//

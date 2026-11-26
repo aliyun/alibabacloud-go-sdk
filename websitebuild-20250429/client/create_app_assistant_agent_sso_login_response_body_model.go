@@ -34,7 +34,7 @@ type iCreateAppAssistantAgentSsoLoginResponseBody interface {
 }
 
 type CreateAppAssistantAgentSsoLoginResponseBody struct {
-	// The detailed reason for the access denial.
+	// The detailed reasons for the access denial.
 	//
 	// example:
 	//
@@ -58,15 +58,15 @@ type CreateAppAssistantAgentSsoLoginResponseBody struct {
 	//
 	// ERROR-oo1
 	DynamicCode *string `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
-	// The dynamic error message, which is used to replace `%s` in the error message of the **ErrMessage*	- response parameter.
+	// The dynamic error message, which is used to replace the `%s` placeholder in the **ErrMessage*	- response parameter.
 	//
-	// > If **ErrMessage*	- returns **The Value of Input Parameter %s is not valid*	- and **DynamicMessage*	- returns **DtsJobId**, the **DtsJobId*	- request parameter is invalid.
+	// > If **ErrMessage*	- returns **The Value of Input Parameter %s is not valid*	- and **DynamicMessage*	- returns **DtsJobId**, it indicates that the **DtsJobId*	- request parameter is invalid.
 	//
 	// example:
 	//
 	// SYSTEM_ERROR
 	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
-	// The error parameters.
+	// The invalid parameters.
 	ErrorArgs []interface{} `json:"ErrorArgs,omitempty" xml:"ErrorArgs,omitempty" type:"Repeated"`
 	// The response data.
 	Module *CreateAppAssistantAgentSsoLoginResponseBodyModule `json:"Module,omitempty" xml:"Module,omitempty" type:"Struct"`

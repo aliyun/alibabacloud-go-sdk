@@ -38,13 +38,13 @@ type iListAppInstanceDomainsResponseBody interface {
 }
 
 type ListAppInstanceDomainsResponseBody struct {
-	// The detailed reason for the access denial.
+	// The detailed reason why access is denied.
 	//
 	// example:
 	//
 	// {}
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	// Indicates whether a retry is allowed.
+	// Specifies whether retries are allowed.
 	//
 	// example:
 	//
@@ -62,9 +62,9 @@ type ListAppInstanceDomainsResponseBody struct {
 	//
 	// ERROR-oo1
 	DynamicCode *string `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
-	// The dynamic error message, which is used to replace `%s` in the **ErrMessage*	- response parameter.
+	// The dynamic error message, which is used to replace `%s` in the **ErrMessage*	- error message.
 	//
-	// > If **ErrMessage*	- returns **The Value of Input Parameter %s is not valid*	- and **DynamicMessage*	- returns **DtsJobId**, it indicates that the **DtsJobId*	- request parameter is invalid.
+	// > If **ErrMessage*	- returns **The Value of Input Parameter %s is not valid*	- and **DynamicMessage*	- returns **DtsJobId**, it indicates that the request parameter **DtsJobId*	- is invalid.
 	//
 	// example:
 	//
@@ -72,9 +72,7 @@ type ListAppInstanceDomainsResponseBody struct {
 	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
 	// The returned error parameters.
 	ErrorArgs []interface{} `json:"ErrorArgs,omitempty" xml:"ErrorArgs,omitempty" type:"Repeated"`
-	// The number of entries to return for a single query.
-	//
-	// Valid values: 10 to 100. Default value: 20.
+	// The maximum number of entries to return in a single query. Valid values: 10 to 100. Default value: 20.
 	//
 	// example:
 	//
@@ -82,7 +80,7 @@ type ListAppInstanceDomainsResponseBody struct {
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
 	// The response data.
 	Module *ListAppInstanceDomainsResponseBodyModule `json:"Module,omitempty" xml:"Module,omitempty" type:"Struct"`
-	// The token used to start the next query. If no next query is available, this value is empty.
+	// The token used to start the next query. If no next query exists, this value is empty.
 	//
 	// example:
 	//
@@ -100,11 +98,11 @@ type ListAppInstanceDomainsResponseBody struct {
 	//
 	// SYSTEM.ERROR
 	RootErrorCode *string `json:"RootErrorCode,omitempty" xml:"RootErrorCode,omitempty"`
-	// The error message.
+	// The exception message.
 	//
 	// example:
 	//
-	// System error
+	// System exception
 	RootErrorMsg *string `json:"RootErrorMsg,omitempty" xml:"RootErrorMsg,omitempty"`
 	// The reserved parameter.
 	//
@@ -269,7 +267,7 @@ type ListAppInstanceDomainsResponseBodyModule struct {
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
 	// Indicates whether a previous page exists.
 	PrePage *bool `json:"PrePage,omitempty" xml:"PrePage,omitempty"`
-	// In addition to the pagination limit, the server processes a maximum of the latest 1,000 records for the current query. If the number of results exceeds 1,000, **ResultLimit*	- is **true**. Narrow the time range and search again. Otherwise, **ResultLimit*	- is **false**.
+	// In addition to the pagination limit, the server processes a maximum of the latest 1,000 records for the current query. If the number of results exceeds 1,000, **ResultLimit*	- is **true**. In this case, narrow the time range and search again. Otherwise, **ResultLimit*	- is **false**.
 	ResultLimit *bool `json:"ResultLimit,omitempty" xml:"ResultLimit,omitempty"`
 	// The total number of entries.
 	//
@@ -395,7 +393,7 @@ func (s *ListAppInstanceDomainsResponseBodyModule) Validate() error {
 type ListAppInstanceDomainsResponseBodyModuleData struct {
 	// The SSL certificate information of the domain name.
 	Certificate *ListAppInstanceDomainsResponseBodyModuleDataCertificate `json:"Certificate,omitempty" xml:"Certificate,omitempty" type:"Struct"`
-	// The creation time of the instance. Format: yyyy-MM-dd HH:mm:ss. This parameter is required.
+	// The instance creation time. Format: yyyy-MM-dd HH:mm:ss.
 	//
 	// example:
 	//
@@ -407,7 +405,7 @@ type ListAppInstanceDomainsResponseBodyModuleData struct {
 	//
 	// CDN
 	DeployType *string `json:"DeployType,omitempty" xml:"DeployType,omitempty"`
-	// The DNS conflict information. This parameter is returned when resolveStatus is DNS_CONFLICT.
+	// The DNS conflict information. This field has a value when resolveStatus is DNS_CONFLICT.
 	DnsConflict *ListAppInstanceDomainsResponseBodyModuleDataDnsConflict `json:"DnsConflict,omitempty" xml:"DnsConflict,omitempty" type:"Struct"`
 	// The domain name.
 	//
@@ -427,9 +425,9 @@ type ListAppInstanceDomainsResponseBodyModuleData struct {
 	//
 	// FILED
 	IcpFilingStatus *string `json:"IcpFilingStatus,omitempty" xml:"IcpFilingStatus,omitempty"`
-	// The domain name migration information. This parameter is returned when a region switch occurs.
+	// The domain migration information, which is exposed during region switching.
 	Migration *ListAppInstanceDomainsResponseBodyModuleDataMigration `json:"Migration,omitempty" xml:"Migration,omitempty" type:"Struct"`
-	// Indicates whether the website is currently offline. This status belongs to the application instance, and the value is the same for all domain names under the same instance.
+	// Indicates whether the website is offline. This status belongs to the application instance, and the value is the same for all domain names under the same instance.
 	Offline *bool `json:"Offline,omitempty" xml:"Offline,omitempty"`
 	// The overall binding status.
 	//
@@ -437,9 +435,9 @@ type ListAppInstanceDomainsResponseBodyModuleData struct {
 	//
 	// ACTIVE
 	OverallStatus *string `json:"OverallStatus,omitempty" xml:"OverallStatus,omitempty"`
-	// The ownership information of the domain name.
+	// The domain name ownership information.
 	Ownership *ListAppInstanceDomainsResponseBodyModuleDataOwnership `json:"Ownership,omitempty" xml:"Ownership,omitempty" type:"Struct"`
-	// The qualification information of the domain name.
+	// The domain qualification information.
 	Qualification *ListAppInstanceDomainsResponseBodyModuleDataQualification `json:"Qualification,omitempty" xml:"Qualification,omitempty" type:"Struct"`
 	// www.aliyun.com
 	//
@@ -654,7 +652,7 @@ type ListAppInstanceDomainsResponseBodyModuleDataCertificate struct {
 	//
 	// self-signed
 	CertificateType *string `json:"CertificateType,omitempty" xml:"CertificateType,omitempty"`
-	// The expiration time of the certificate. The value is a UNIX timestamp in milliseconds.
+	// The certificate expiration time. The value is a UNIX timestamp in milliseconds.
 	//
 	// example:
 	//
@@ -711,17 +709,17 @@ func (s *ListAppInstanceDomainsResponseBodyModuleDataCertificate) Validate() err
 }
 
 type ListAppInstanceDomainsResponseBodyModuleDataDnsConflict struct {
-	// Indicates whether automatic override is supported. Valid values: true (the domain name belongs to the current Alibaba Cloud account) and false (the domain name belongs to another account).
+	// Specifies whether automatic override is supported. Valid values: true: Supported for the current Alibaba Cloud account. false: Not supported for other accounts.
 	CanAutoResolve *bool `json:"CanAutoResolve,omitempty" xml:"CanAutoResolve,omitempty"`
-	// Indicates whether a conflict exists.
+	// Specifies whether a conflict exists.
 	HasConflict *bool `json:"HasConflict,omitempty" xml:"HasConflict,omitempty"`
-	// The user-facing prompt message. The message varies based on the scenario.
+	// The user-facing prompt message. Different guidance text is generated based on the scenario.
 	//
 	// example:
 	//
-	// The domain name www.example.com has a conflicting DNS record (A 192.0.2.1). Delete the conflicting record at your DNS provider and try again
+	// The domain name www.example.com has a conflicting DNS record (A 192.0.2.1). Delete the conflicting record from your DNS provider and try again
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The list of conflicting DNS records.
+	// The list of conflicting DNS records. This reuses the existing AppDomainDnsRecordDTO.
 	Records []*ListAppInstanceDomainsResponseBodyModuleDataDnsConflictRecords `json:"Records,omitempty" xml:"Records,omitempty" type:"Repeated"`
 }
 
@@ -858,13 +856,13 @@ func (s *ListAppInstanceDomainsResponseBodyModuleDataDnsConflictRecords) Validat
 }
 
 type ListAppInstanceDomainsResponseBodyModuleDataMigration struct {
-	// The migration status. Valid values: NOT_STARTED, IN_PROGRESS, and COMPLETED.
+	// The migration status. Valid values: NOT_STARTED, IN_PROGRESS, COMPLETED.
 	//
 	// example:
 	//
 	// IN_PROGRESS
 	MigrationStatus *string `json:"MigrationStatus,omitempty" xml:"MigrationStatus,omitempty"`
-	// The complete status of the domain name before migration. The structure is the same as the current domain name DTO, allowing the frontend to reuse the rendering logic.
+	// The full domain status before migration. The structure is consistent with the current domain DTO, and the frontend can directly reuse the rendering logic.
 	//
 	// example:
 	//
@@ -909,7 +907,7 @@ type ListAppInstanceDomainsResponseBodyModuleDataOwnership struct {
 	//
 	// 1813244684017878
 	Account *string `json:"Account,omitempty" xml:"Account,omitempty"`
-	// The registrar type. Valid values: ALIYUN and OTHER.
+	// The registrar type. Valid values: ALIYUN, OTHER.
 	//
 	// example:
 	//
@@ -967,19 +965,19 @@ type ListAppInstanceDomainsResponseBodyModuleDataQualification struct {
 	//
 	// example:
 	//
-	// Zhe ICP No. 123456
+	// 浙ICP备123456号
 	IcpRecordNumber *string `json:"IcpRecordNumber,omitempty" xml:"IcpRecordNumber,omitempty"`
 	// The ICP website filing number.
 	//
 	// example:
 	//
-	// Zhe ICP No. 123456-1
+	// 浙ICP备123456号-1
 	IcpSiteRecordNumber *string `json:"IcpSiteRecordNumber,omitempty" xml:"IcpSiteRecordNumber,omitempty"`
 	// The public security filing number.
 	//
 	// example:
 	//
-	// Public Security Filing No. 11040102700048
+	// 京公网安备11040102700048号
 	PoliceRecordNumber *string `json:"PoliceRecordNumber,omitempty" xml:"PoliceRecordNumber,omitempty"`
 }
 
@@ -1144,7 +1142,7 @@ func (s *ListAppInstanceDomainsResponseBodyModuleDataResolutionDnsRecord) Valida
 }
 
 type ListAppInstanceDomainsResponseBodyModuleDataVerification struct {
-	// The guide for DNS records to be configured by the user.
+	// The guide for DNS records that users need to configure.
 	DnsRecord *ListAppInstanceDomainsResponseBodyModuleDataVerificationDnsRecord `json:"DnsRecord,omitempty" xml:"DnsRecord,omitempty" type:"Struct"`
 	// The error message.
 	//
@@ -1158,7 +1156,7 @@ type ListAppInstanceDomainsResponseBodyModuleDataVerification struct {
 	//
 	// SUCCESSFUL
 	VerificationStatus *string `json:"VerificationStatus,omitempty" xml:"VerificationStatus,omitempty"`
-	// The ownership verification status.
+	// The ownership verification status code.
 	//
 	// example:
 	//
@@ -1282,19 +1280,19 @@ func (s *ListAppInstanceDomainsResponseBodyModuleDataVerificationDnsRecord) Vali
 type ListAppInstanceDomainsResponseBodyModuleNext struct {
 	// The SSL certificate information of the domain name.
 	Certificate *ListAppInstanceDomainsResponseBodyModuleNextCertificate `json:"Certificate,omitempty" xml:"Certificate,omitempty" type:"Struct"`
-	// The creation time of the instance. Format: yyyy-MM-dd HH:mm:ss. This parameter is required.
+	// The instance creation time. Format: yyyy-MM-dd HH:mm:ss.
 	//
 	// example:
 	//
 	// 1741572465000
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The network hosting type: CDN / INDEP_DEPLOY / ESA_SAAS.
+	// The network hosting type. Valid values: CDN, INDEP_DEPLOY, ESA_SAAS.
 	//
 	// example:
 	//
 	// CDN
 	DeployType *string `json:"DeployType,omitempty" xml:"DeployType,omitempty"`
-	// The DNS conflict information. This parameter is returned when resolveStatus is DNS_CONFLICT.
+	// The DNS conflict information. This field has a value when resolveStatus is DNS_CONFLICT.
 	DnsConflict *ListAppInstanceDomainsResponseBodyModuleNextDnsConflict `json:"DnsConflict,omitempty" xml:"DnsConflict,omitempty" type:"Struct"`
 	// The domain name.
 	//
@@ -1302,7 +1300,7 @@ type ListAppInstanceDomainsResponseBodyModuleNext struct {
 	//
 	// usdcoin.xin
 	DomainName *string `json:"DomainName,omitempty" xml:"DomainName,omitempty"`
-	// The domain name management type: CUSTOM / PLATFORM_PREFIX.
+	// The domain management type. Valid values: CUSTOM, PLATFORM_PREFIX.
 	//
 	// example:
 	//
@@ -1314,9 +1312,9 @@ type ListAppInstanceDomainsResponseBodyModuleNext struct {
 	//
 	// FILED
 	IcpFilingStatus *string `json:"IcpFilingStatus,omitempty" xml:"IcpFilingStatus,omitempty"`
-	// The domain name migration information. This parameter is returned when a region switch occurs.
+	// The domain migration information, which is exposed during region switching.
 	Migration *ListAppInstanceDomainsResponseBodyModuleNextMigration `json:"Migration,omitempty" xml:"Migration,omitempty" type:"Struct"`
-	// Indicates whether the website is currently offline. This status belongs to the application instance, and the value is the same for all domain names under the same instance.
+	// Indicates whether the website is offline. This status belongs to the application instance, and the value is the same for all domain names under the same instance.
 	Offline *bool `json:"Offline,omitempty" xml:"Offline,omitempty"`
 	// The overall binding status.
 	//
@@ -1324,9 +1322,9 @@ type ListAppInstanceDomainsResponseBodyModuleNext struct {
 	//
 	// ACTIVE
 	OverallStatus *string `json:"OverallStatus,omitempty" xml:"OverallStatus,omitempty"`
-	// The ownership information of the domain name.
+	// The domain name ownership information.
 	Ownership *ListAppInstanceDomainsResponseBodyModuleNextOwnership `json:"Ownership,omitempty" xml:"Ownership,omitempty" type:"Struct"`
-	// The qualification information of the domain name.
+	// The domain qualification information.
 	Qualification *ListAppInstanceDomainsResponseBodyModuleNextQualification `json:"Qualification,omitempty" xml:"Qualification,omitempty" type:"Struct"`
 	// The domain name resolution information.
 	Resolution *ListAppInstanceDomainsResponseBodyModuleNextResolution `json:"Resolution,omitempty" xml:"Resolution,omitempty" type:"Struct"`
@@ -1526,7 +1524,7 @@ type ListAppInstanceDomainsResponseBodyModuleNextCertificate struct {
 	//
 	// Server
 	CertificateType *string `json:"CertificateType,omitempty" xml:"CertificateType,omitempty"`
-	// The expiration date of the certificate. The date is in ISO 8601 format and the UTC (Z) time zone.
+	// The expiration date of the certificate. The time is in ISO 8601 format in UTC (Z).
 	//
 	// example:
 	//
@@ -1583,17 +1581,17 @@ func (s *ListAppInstanceDomainsResponseBodyModuleNextCertificate) Validate() err
 }
 
 type ListAppInstanceDomainsResponseBodyModuleNextDnsConflict struct {
-	// Indicates whether automatic override is supported. Valid values: true (the domain name belongs to the current Alibaba Cloud account) and false (the domain name belongs to another account).
+	// Specifies whether automatic override is supported. Valid values: true: Supported for the current Alibaba Cloud account. false: Not supported for other accounts.
 	CanAutoResolve *bool `json:"CanAutoResolve,omitempty" xml:"CanAutoResolve,omitempty"`
-	// Indicates whether a conflict exists.
+	// Specifies whether a conflict exists.
 	HasConflict *bool `json:"HasConflict,omitempty" xml:"HasConflict,omitempty"`
-	// The user-facing prompt message. The message varies based on the scenario.
+	// The user-facing prompt message. Different guidance text is generated based on the scenario.
 	//
 	// example:
 	//
-	// The domain name www.example.com has a conflicting DNS record (A 192.0.2.1). Delete the conflicting record at your DNS provider and try again
+	// The domain name www.example.com has a conflicting DNS record (A 192.0.2.1). Delete the conflicting record from your DNS provider and try again
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// The list of conflicting DNS records.
+	// The list of conflicting DNS records. This reuses the existing AppDomainDnsRecordDTO.
 	Records []*ListAppInstanceDomainsResponseBodyModuleNextDnsConflictRecords `json:"Records,omitempty" xml:"Records,omitempty" type:"Repeated"`
 }
 
@@ -1715,13 +1713,13 @@ func (s *ListAppInstanceDomainsResponseBodyModuleNextDnsConflictRecords) Validat
 }
 
 type ListAppInstanceDomainsResponseBodyModuleNextMigration struct {
-	// The migration status. Valid values: NOT_STARTED, IN_PROGRESS, and COMPLETED.
+	// The migration status. Valid values: NOT_STARTED, IN_PROGRESS, COMPLETED.
 	//
 	// example:
 	//
 	// IN_PROGRESS
 	MigrationStatus *string `json:"MigrationStatus,omitempty" xml:"MigrationStatus,omitempty"`
-	// The complete status of the domain name before migration. The structure is the same as the current domain name DTO, allowing the frontend to reuse the rendering logic.
+	// The full domain status before migration. The structure is consistent with the current domain DTO, and the frontend can directly reuse the rendering logic.
 	//
 	// example:
 	//
@@ -1766,13 +1764,13 @@ type ListAppInstanceDomainsResponseBodyModuleNextOwnership struct {
 	//
 	// ShisiGavin
 	Account *string `json:"Account,omitempty" xml:"Account,omitempty"`
-	// The registrar type. Valid values: ALIYUN and OTHER.
+	// The registrar type. Valid values: ALIYUN, OTHER.
 	//
 	// example:
 	//
 	// pai
 	Provider *string `json:"Provider,omitempty" xml:"Provider,omitempty"`
-	// The primary domain name.
+	// The root domain name.
 	//
 	// example:
 	//
@@ -1824,19 +1822,19 @@ type ListAppInstanceDomainsResponseBodyModuleNextQualification struct {
 	//
 	// example:
 	//
-	// Zhe ICP No. 123456
+	// 浙ICP备123456号
 	IcpRecordNumber *string `json:"IcpRecordNumber,omitempty" xml:"IcpRecordNumber,omitempty"`
 	// The ICP website filing number.
 	//
 	// example:
 	//
-	// Zhe ICP No. 123456-1
+	// 浙ICP备123456号-1
 	IcpSiteRecordNumber *string `json:"IcpSiteRecordNumber,omitempty" xml:"IcpSiteRecordNumber,omitempty"`
 	// The public security filing number.
 	//
 	// example:
 	//
-	// Public Security Filing No. 11040102700048
+	// 京公网安备11040102700048号
 	PoliceRecordNumber *string `json:"PoliceRecordNumber,omitempty" xml:"PoliceRecordNumber,omitempty"`
 }
 
@@ -2001,7 +1999,7 @@ func (s *ListAppInstanceDomainsResponseBodyModuleNextResolutionDnsRecord) Valida
 }
 
 type ListAppInstanceDomainsResponseBodyModuleNextVerification struct {
-	// The guide for DNS records to be configured by the user.
+	// The guide for DNS records that users need to configure.
 	DnsRecord *ListAppInstanceDomainsResponseBodyModuleNextVerificationDnsRecord `json:"DnsRecord,omitempty" xml:"DnsRecord,omitempty" type:"Struct"`
 	// The error message.
 	//

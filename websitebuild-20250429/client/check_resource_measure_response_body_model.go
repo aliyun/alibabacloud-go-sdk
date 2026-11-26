@@ -34,13 +34,13 @@ type iCheckResourceMeasureResponseBody interface {
 }
 
 type CheckResourceMeasureResponseBody struct {
-	// The detailed reason for access denial.
+	// The detailed reasons for access denial.
 	//
 	// example:
 	//
 	// {}
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	// Specifies whether retries are allowed.
+	// Indicates whether retries are allowed.
 	//
 	// example:
 	//
@@ -60,13 +60,13 @@ type CheckResourceMeasureResponseBody struct {
 	DynamicCode *string `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
 	// The dynamic error message, which is used to replace `%s` in the **ErrMessage*	- response parameter.
 	//
-	// > If **ErrMessage*	- returns **The Value of Input Parameter %s is not valid*	- and **DynamicMessage*	- returns **DtsJobId**, the **DtsJobId*	- request parameter is invalid.
+	// > If **ErrMessage*	- returns **The Value of Input Parameter %s is not valid*	- and **DynamicMessage*	- returns **DtsJobId**, it indicates that the **DtsJobId*	- request parameter is invalid.
 	//
 	// example:
 	//
 	// SYSTEM_ERROR
 	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
-	// The error parameters returned.
+	// The returned error parameters.
 	ErrorArgs []interface{} `json:"ErrorArgs,omitempty" xml:"ErrorArgs,omitempty" type:"Repeated"`
 	// The application module.
 	Module *CheckResourceMeasureResponseBodyModule `json:"Module,omitempty" xml:"Module,omitempty" type:"Struct"`
@@ -76,7 +76,7 @@ type CheckResourceMeasureResponseBody struct {
 	//
 	// 6C6B99AC-39EC-5350-874C-204128C905E6
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The root error code.
+	// The error code.
 	//
 	// example:
 	//
@@ -88,7 +88,7 @@ type CheckResourceMeasureResponseBody struct {
 	//
 	// System exception
 	RootErrorMsg *string `json:"RootErrorMsg,omitempty" xml:"RootErrorMsg,omitempty"`
-	// The backup parameter.
+	// The reserved parameter.
 	//
 	// example:
 	//
@@ -213,25 +213,25 @@ func (s *CheckResourceMeasureResponseBody) Validate() error {
 }
 
 type CheckResourceMeasureResponseBodyModule struct {
-	// The desired total returned only for APP_WORKSPACE. This is the target total for the current check, which is the sum of the existing usage in the saved configuration and ResourceValue. If the compatible DesiredTotal is provided, this total is used directly. The existing usage of issues is the sum of common and word-of-mouth issues in the saved configuration, and the existing usage of competitors is the number of competitors. This parameter is empty for APP and USER checks.
+	// Returned only for APP_WORKSPACE. This parameter indicates the target total for this check, which is the used amount in the saved configuration plus ResourceValue. If the compatible DesiredTotal is provided, this total is used directly. The used amount of issues is the sum of common and word-of-mouth issues in the saved configuration, and the used amount of competitors is the number of competitors. This parameter is empty for APP or USER checks.
 	//
 	// example:
 	//
 	// 21
 	DesiredTotal *int64 `json:"DesiredTotal,omitempty" xml:"DesiredTotal,omitempty"`
-	// The error code returned when the check fails. This parameter is null when the check passes.
+	// The error code returned when the check fails. This parameter is null when the check is passed.
 	//
 	// example:
 	//
 	// Success
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The error message returned when the check fails. This parameter is null when the check passes.
+	// The error message returned when the check fails. This parameter is null when the check is passed.
 	//
 	// example:
 	//
 	// stream push failed
 	ErrorMessage *string `json:"ErrorMessage,omitempty" xml:"ErrorMessage,omitempty"`
-	// The limit returned only for APP_WORKSPACE quantity pre-checks. This is the maximum number of issues or competitors allowed by the current commodity edition, not the remaining quota. This parameter is empty for APP and USER checks or when the edition benefits cannot be determined.
+	// Returned only for APP_WORKSPACE quantity dry runs. This parameter indicates the maximum number of issues or competitors allowed by the current product edition, not the remaining quota. This parameter is empty for APP or USER checks, or when the edition benefits cannot be determined.
 	//
 	// example:
 	//
@@ -249,7 +249,7 @@ type CheckResourceMeasureResponseBodyModule struct {
 	//
 	// TransitRouterVpcAttachment
 	ResourceCode *string `json:"ResourceCode,omitempty" xml:"ResourceCode,omitempty"`
-	// Indicates whether a purchasable higher edition that can accommodate the DesiredTotal exists. This parameter is true only when the capacity of the current edition is insufficient and a higher edition meets the requirements. Otherwise, this parameter is false. This parameter may be empty for APP and USER checks. This field does not indicate that an upgrade has been performed or an upgrade order has been created.
+	// Indicates whether a purchasable higher edition exists that can accommodate the DesiredTotal. This parameter is true only when the capacity of the current edition is insufficient and a higher edition meets the requirements. Otherwise, it is false. This parameter may be empty for APP or USER checks. This field does not indicate that an upgrade has been performed or an upgrade order has been created.
 	//
 	// example:
 	//

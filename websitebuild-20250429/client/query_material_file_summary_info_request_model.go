@@ -52,13 +52,13 @@ type QueryMaterialFileSummaryInfoRequest struct {
 	//
 	// File name
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The field used for sorting.
+	// The sort field.
 	//
 	// example:
 	//
 	// CreationTime
 	OrderColumn *string `json:"OrderColumn,omitempty" xml:"OrderColumn,omitempty"`
-	// The sort order. Valid values: ASC, DESC.
+	// The sort order. Valid values: ASC and DESC.
 	//
 	// example:
 	//

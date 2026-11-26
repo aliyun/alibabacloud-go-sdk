@@ -297,7 +297,7 @@ type ListAIStaffChatEventsResponseBodyModuleEvents struct {
 	//
 	// example:
 	//
-	// {\\"Recorded\\": False}
+	// {\"Recorded\": False}
 	Data *string `json:"Data,omitempty" xml:"Data,omitempty"`
 	// The primary key.
 	//

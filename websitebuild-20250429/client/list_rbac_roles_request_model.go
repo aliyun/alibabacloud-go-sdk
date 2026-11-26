@@ -32,13 +32,15 @@ type ListRbacRolesRequest struct {
 	//
 	// WS20250801154628000001
 	BizId *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
-	// The maximum number of results per query. Valid values: 10 to 100. Default value: 20.
+	// The maximum number of results returned per query.
+	//
+	// Valid values: 10 to 100. Default value: 20.
 	//
 	// example:
 	//
 	// 10
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The token used to start the next query. If there is no next query, this parameter is empty.
+	// The token used to start the next query. This parameter is empty if no subsequent query is available.
 	//
 	// example:
 	//

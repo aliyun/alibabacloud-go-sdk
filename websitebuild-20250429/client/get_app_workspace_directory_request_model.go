@@ -24,7 +24,7 @@ type GetAppWorkspaceDirectoryRequest struct {
 	//
 	// 5b7105a2-2999-430b-ba23-ba09149d5434
 	ConversationId *string `json:"ConversationId,omitempty" xml:"ConversationId,omitempty"`
-	// The directory depth. If this parameter is set to null or 0, all levels are returned.
+	// The directory depth. If you set this parameter to null or 0, all levels are returned.
 	//
 	// example:
 	//

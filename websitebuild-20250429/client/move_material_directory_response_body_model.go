@@ -40,7 +40,7 @@ type iMoveMaterialDirectoryResponseBody interface {
 }
 
 type MoveMaterialDirectoryResponseBody struct {
-	// The detailed reason why access is denied.
+	// The detailed reasons for access denial.
 	//
 	// example:
 	//
@@ -52,7 +52,7 @@ type MoveMaterialDirectoryResponseBody struct {
 	//
 	// False
 	AllowRetry *bool `json:"AllowRetry,omitempty" xml:"AllowRetry,omitempty"`
-	// The name of the application.
+	// The name of the application. You can use this name to query the application.
 	//
 	// example:
 	//
@@ -72,7 +72,7 @@ type MoveMaterialDirectoryResponseBody struct {
 	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
 	// The returned error parameters.
 	ErrorArgs []interface{} `json:"ErrorArgs,omitempty" xml:"ErrorArgs,omitempty" type:"Repeated"`
-	// The error code. If the request succeeds, the ErrorCode field is not returned. If the request fails, the ErrorCode field is returned. For more information, see the error codes in this topic.
+	// The error code. If the request is successful, the ErrorCode parameter is not returned. If the request fails, the ErrorCode parameter is returned. For more information, see the error codes in this topic.
 	//
 	// example:
 	//
@@ -84,7 +84,7 @@ type MoveMaterialDirectoryResponseBody struct {
 	//
 	// aliuid:1998006665794443 assumeRole not exist,serviceName:realtimelogpush.dcdnservices.aliyuncs.com
 	ErrorMsg *string `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
-	// Indicates whether the move operation succeeded.
+	// Indicates whether the move operation is successful.
 	//
 	// example:
 	//
@@ -108,7 +108,7 @@ type MoveMaterialDirectoryResponseBody struct {
 	//
 	// System exception
 	RootErrorMsg *string `json:"RootErrorMsg,omitempty" xml:"RootErrorMsg,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	//
 	// example:
 	//

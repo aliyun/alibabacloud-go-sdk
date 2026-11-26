@@ -13,6 +13,8 @@ type iGetAppPublishStatusRequest interface {
 	GetBizId() *string
 	SetDeployOrderId(v int64) *GetAppPublishStatusRequest
 	GetDeployOrderId() *int64
+	SetPublishOrderId(v int64) *GetAppPublishStatusRequest
+	GetPublishOrderId() *int64
 	SetWebsiteDomain(v string) *GetAppPublishStatusRequest
 	GetWebsiteDomain() *string
 }
@@ -24,12 +26,13 @@ type GetAppPublishStatusRequest struct {
 	//
 	// WS20250731233102000001
 	BizId *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
-	// The deployment ticket ID.
+	// The deployment order ID.
 	//
 	// example:
 	//
 	// 4998717
-	DeployOrderId *int64 `json:"DeployOrderId,omitempty" xml:"DeployOrderId,omitempty"`
+	DeployOrderId  *int64 `json:"DeployOrderId,omitempty" xml:"DeployOrderId,omitempty"`
+	PublishOrderId *int64 `json:"PublishOrderId,omitempty" xml:"PublishOrderId,omitempty"`
 	// The website domain name.
 	//
 	// example:
@@ -54,6 +57,10 @@ func (s *GetAppPublishStatusRequest) GetDeployOrderId() *int64 {
 	return s.DeployOrderId
 }
 
+func (s *GetAppPublishStatusRequest) GetPublishOrderId() *int64 {
+	return s.PublishOrderId
+}
+
 func (s *GetAppPublishStatusRequest) GetWebsiteDomain() *string {
 	return s.WebsiteDomain
 }
@@ -65,6 +72,11 @@ func (s *GetAppPublishStatusRequest) SetBizId(v string) *GetAppPublishStatusRequ
 
 func (s *GetAppPublishStatusRequest) SetDeployOrderId(v int64) *GetAppPublishStatusRequest {
 	s.DeployOrderId = &v
+	return s
+}
+
+func (s *GetAppPublishStatusRequest) SetPublishOrderId(v int64) *GetAppPublishStatusRequest {
+	s.PublishOrderId = &v
 	return s
 }
 

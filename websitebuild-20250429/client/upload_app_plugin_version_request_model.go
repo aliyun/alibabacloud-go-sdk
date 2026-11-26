@@ -30,39 +30,39 @@ type UploadAppPluginVersionRequest struct {
 	//
 	// example:
 	//
-	// x x x
+	// Fixed an issue with reading plug-in configurations
 	Changelog *string `json:"Changelog,omitempty" xml:"Changelog,omitempty"`
-	// The description. This parameter is optional. If this parameter is not empty, the description field in the primary table is updated accordingly.
+	// The description. This parameter is optional. If this parameter is not empty, the description in the main table is synchronously updated.
 	//
 	// example:
 	//
 	// success
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The downloadable URL of the ZIP file. This parameter and OssKey are mutually exclusive.
+	// The downloadable ZIP link. This parameter is mutually exclusive with OssKey.
 	//
 	// example:
 	//
 	// https://sfile.chatglm.cn/chatglm4/file/a8/a87340a5ba.pdf
 	DownloadUrl *string `json:"DownloadUrl,omitempty" xml:"DownloadUrl,omitempty"`
-	// The extended JSON string. This parameter is optional and must be in the same format as the extend parameter synchronized from the sandbox. If this parameter is not empty, the extend field in the primary table is updated accordingly.
+	// The extended JSON. This parameter is optional and uses the same format as the extend synchronized to the sandbox. If this parameter is not empty, the extend in the main table is synchronously updated.
 	//
 	// example:
 	//
-	// {"deliveryNodeName":"Delivery Quality Inspection","deliveryNodeStatus":"Finish","deliveryOperatorRole":"Provider"}
+	// {"deliveryNodeName":"Delivery quality inspection","deliveryNodeStatus":"Finish","deliveryOperatorRole":"Provider"}
 	Extend *string `json:"Extend,omitempty" xml:"Extend,omitempty"`
-	// The Object Storage Service (OSS) key after the file is directly uploaded from the frontend. This parameter and DownloadUrl are mutually exclusive.
+	// The Object Storage Service (OSS) key after frontend direct upload. This parameter is mutually exclusive with DownloadUrl.
 	//
 	// example:
 	//
 	// backend/detection/objects/r-0008ujvfksltf5j45n81/task-000hckiuwyau0gwn17vq.jpg
 	OssKey *string `json:"OssKey,omitempty" xml:"OssKey,omitempty"`
-	// The ID of the gateway plugin.
+	// The ID of the gateway plug-in.
 	//
 	// example:
 	//
 	// aliplayer-react
 	PluginId *string `json:"PluginId,omitempty" xml:"PluginId,omitempty"`
-	// The new version number. The version number must follow the Semantic Versioning (SemVer) specification and be greater than the current version.
+	// The new version number in SemVer format. The value must be greater than the current version.
 	//
 	// example:
 	//

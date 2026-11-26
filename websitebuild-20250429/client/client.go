@@ -70,11 +70,11 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 
 // Summary:
 //
-// Allocates a Supabase instance to a resource allocation.
+// Performs resource allocation of a Supabase instance.
 //
 // Description:
 //
-// Queries the Supabase instance information of a resource.
+// Queries the information about the Supabase instance associated with a resource.
 //
 // @param request - AllocateSupabaseForAdminRequest
 //
@@ -142,11 +142,11 @@ func (client *Client) AllocateSupabaseForAdminWithOptions(request *AllocateSupab
 
 // Summary:
 //
-// Allocates a Supabase instance to a resource allocation.
+// Performs resource allocation of a Supabase instance.
 //
 // Description:
 //
-// Queries the Supabase instance information of a resource.
+// Queries the information about the Supabase instance associated with a resource.
 //
 // @param request - AllocateSupabaseForAdminRequest
 //
@@ -390,7 +390,7 @@ func (client *Client) BatchCheckResourceMeasure(request *BatchCheckResourceMeasu
 
 // Summary:
 //
-// Binds a custom domain name to an application and automatically completes DNS resolution verification.
+// Binds a domain name to an application and automatically completes DNS resolution verification.
 //
 // @param request - BindAppDomainRequest
 //
@@ -454,7 +454,7 @@ func (client *Client) BindAppDomainWithOptions(request *BindAppDomainRequest, ru
 
 // Summary:
 //
-// Binds a custom domain name to an application and automatically completes DNS resolution verification.
+// Binds a domain name to an application and automatically completes DNS resolution verification.
 //
 // @param request - BindAppDomainRequest
 //
@@ -938,11 +938,11 @@ func (client *Client) CopyAppPluginConfig(request *CopyAppPluginConfigRequest) (
 
 // Summary:
 //
-// Asynchronously initiates a conversation with an AI employee.
+// Asynchronously initiates a conversation with an AI agent.
 //
 // Description:
 //
-// Initiates a WanXiaoZhi 2.0 AI conversation.
+// Initiates a Wanxiaozhi 2.0 AI conversation.
 //
 // @param request - CreateAIStaffChatRequest
 //
@@ -1005,11 +1005,11 @@ func (client *Client) CreateAIStaffChatWithOptions(request *CreateAIStaffChatReq
 
 // Summary:
 //
-// Asynchronously initiates a conversation with an AI employee.
+// Asynchronously initiates a conversation with an AI agent.
 //
 // Description:
 //
-// Initiates a WanXiaoZhi 2.0 AI conversation.
+// Initiates a Wanxiaozhi 2.0 AI conversation.
 //
 // @param request - CreateAIStaffChatRequest
 //
@@ -1027,11 +1027,11 @@ func (client *Client) CreateAIStaffChat(request *CreateAIStaffChatRequest) (_res
 
 // Summary:
 //
-// Creates an AI employee session.
+// Creates an AI agent session.
 //
 // Description:
 //
-// Creates an AI session for Wan Xiaozhi 2.0.
+// Creates an AI session in Wanxiaozhi 2.0.
 //
 // @param request - CreateAIStaffConversationRequest
 //
@@ -1075,11 +1075,11 @@ func (client *Client) CreateAIStaffConversationWithOptions(request *CreateAIStaf
 
 // Summary:
 //
-// Creates an AI employee session.
+// Creates an AI agent session.
 //
 // Description:
 //
-// Creates an AI session for Wan Xiaozhi 2.0.
+// Creates an AI session in Wanxiaozhi 2.0.
 //
 // @param request - CreateAIStaffConversationRequest
 //
@@ -1179,7 +1179,7 @@ func (client *Client) CreateAppAssistantAgent(request *CreateAppAssistantAgentRe
 //
 // Description:
 //
-// Retrieves the configuration information of the code generation plugin.
+// Retrieves the configuration information of the code generation plug-in.
 //
 // @param request - CreateAppAssistantAgentSsoLoginRequest
 //
@@ -1235,7 +1235,7 @@ func (client *Client) CreateAppAssistantAgentSsoLoginWithOptions(request *Create
 //
 // Description:
 //
-// Retrieves the configuration information of the code generation plugin.
+// Retrieves the configuration information of the code generation plug-in.
 //
 // @param request - CreateAppAssistantAgentSsoLoginRequest
 //
@@ -1860,7 +1860,7 @@ func (client *Client) CreateAppPlugin(request *CreateAppPluginRequest) (_result 
 
 // Summary:
 //
-// Activates the Wanxiaozhi inspiration value service.
+// Enables the Wanxiaozhi inspiration value service.
 //
 // Description:
 //
@@ -1908,7 +1908,7 @@ func (client *Client) CreateAppTokenServiceWithOptions(request *CreateAppTokenSe
 
 // Summary:
 //
-// Activates the Wanxiaozhi inspiration value service.
+// Enables the Wanxiaozhi inspiration value service.
 //
 // Description:
 //
@@ -1930,11 +1930,11 @@ func (client *Client) CreateAppTokenService(request *CreateAppTokenServiceReques
 
 // Summary:
 //
-// Distributes and generates channel drafts.
+// Generates and distributes channel drafts.
 //
 // Description:
 //
-// Distributes and generates channel drafts.
+// Generates and distributes channel drafts.
 //
 // @param tmpReq - CreateDistributionRequest
 //
@@ -1988,11 +1988,11 @@ func (client *Client) CreateDistributionWithOptions(tmpReq *CreateDistributionRe
 
 // Summary:
 //
-// Distributes and generates channel drafts.
+// Generates and distributes channel drafts.
 //
 // Description:
 //
-// Distributes and generates channel drafts.
+// Generates and distributes channel drafts.
 //
 // @param request - CreateDistributionRequest
 //
@@ -2170,7 +2170,7 @@ func (client *Client) CreateLogoTask(request *CreateLogoTaskRequest) (_result *C
 
 // Summary:
 //
-// Creates a subfolder in a parent folder.
+// Creates a subfolder under a parent folder.
 //
 // @param request - CreateMaterialDirectoryRequest
 //
@@ -2222,7 +2222,7 @@ func (client *Client) CreateMaterialDirectoryWithOptions(request *CreateMaterial
 
 // Summary:
 //
-// Creates a subfolder in a parent folder.
+// Creates a subfolder under a parent folder.
 //
 // @param request - CreateMaterialDirectoryRequest
 //
@@ -2244,7 +2244,7 @@ func (client *Client) CreateMaterialDirectory(request *CreateMaterialDirectoryRe
 //
 // Description:
 //
-// Wanxiaozhi 2.0 AI conversation.
+// The Wanxiaozhi 2.0 AI conversation.
 //
 // @param request - CreateRbacOrgUnitRequest
 //
@@ -2296,7 +2296,7 @@ func (client *Client) CreateRbacOrgUnitWithOptions(request *CreateRbacOrgUnitReq
 //
 // Description:
 //
-// Wanxiaozhi 2.0 AI conversation.
+// The Wanxiaozhi 2.0 AI conversation.
 //
 // @param request - CreateRbacOrgUnitRequest
 //
@@ -2318,7 +2318,7 @@ func (client *Client) CreateRbacOrgUnit(request *CreateRbacOrgUnitRequest) (_res
 //
 // Description:
 //
-// The Wanxiaozhi 2.0 API operation for creating an AI session.
+// Creates an AI session in Wanxiaozhi 2.0.
 //
 // @param request - CreateRbacPermissionRequest
 //
@@ -2370,7 +2370,7 @@ func (client *Client) CreateRbacPermissionWithOptions(request *CreateRbacPermiss
 //
 // Description:
 //
-// The Wanxiaozhi 2.0 API operation for creating an AI session.
+// Creates an AI session in Wanxiaozhi 2.0.
 //
 // @param request - CreateRbacPermissionRequest
 //
@@ -2462,7 +2462,7 @@ func (client *Client) CreateRbacRole(request *CreateRbacRoleRequest) (_result *C
 
 // Summary:
 //
-// Deletes and unbinds the SSL certificate associated with a website.
+// Deletes the SSL certificate bound to a website.
 //
 // @param request - DeleteAppDomainCertificateRequest
 //
@@ -2510,7 +2510,7 @@ func (client *Client) DeleteAppDomainCertificateWithOptions(request *DeleteAppDo
 
 // Summary:
 //
-// Deletes and unbinds the SSL certificate associated with a website.
+// Deletes the SSL certificate bound to a website.
 //
 // @param request - DeleteAppDomainCertificateRequest
 //
@@ -2528,7 +2528,7 @@ func (client *Client) DeleteAppDomainCertificate(request *DeleteAppDomainCertifi
 
 // Summary:
 //
-// Deletes an HTTP 301 status code redirect record bound to a website.
+// Deletes the HTTP 301 status code record attached to a website.
 //
 // @param request - DeleteAppDomainRedirectRequest
 //
@@ -2580,7 +2580,7 @@ func (client *Client) DeleteAppDomainRedirectWithOptions(request *DeleteAppDomai
 
 // Summary:
 //
-// Deletes an HTTP 301 status code redirect record bound to a website.
+// Deletes the HTTP 301 status code record attached to a website.
 //
 // @param request - DeleteAppDomainRedirectRequest
 //
@@ -3034,7 +3034,7 @@ func (client *Client) DeleteAppSupabaseSecrets(request *DeleteAppSupabaseSecrets
 
 // Summary:
 //
-// Deletes a material folder.
+// Deletes an asset folder.
 //
 // @param request - DeleteMaterialDirectoryRequest
 //
@@ -3082,7 +3082,7 @@ func (client *Client) DeleteMaterialDirectoryWithOptions(request *DeleteMaterial
 
 // Summary:
 //
-// Deletes a material folder.
+// Deletes an asset folder.
 //
 // @param request - DeleteMaterialDirectoryRequest
 //
@@ -3246,7 +3246,7 @@ func (client *Client) DeleteRbacOrgUnit(request *DeleteRbacOrgUnitRequest) (_res
 //
 // Description:
 //
-// The API operation for creating an AI session in Wanxiaozhi 2.0.
+// Creates an AI session for Wanxiaozhi 2.0.
 //
 // @param request - DeleteRbacPermissionRequest
 //
@@ -3298,7 +3298,7 @@ func (client *Client) DeleteRbacPermissionWithOptions(request *DeleteRbacPermiss
 //
 // Description:
 //
-// The API operation for creating an AI session in Wanxiaozhi 2.0.
+// Creates an AI session for Wanxiaozhi 2.0.
 //
 // @param request - DeleteRbacPermissionRequest
 //
@@ -3320,7 +3320,7 @@ func (client *Client) DeleteRbacPermission(request *DeleteRbacPermissionRequest)
 //
 // Description:
 //
-// Queries the application instance information.
+// Queries the information of an application instance.
 //
 // @param request - DeleteRbacRoleRequest
 //
@@ -3372,7 +3372,7 @@ func (client *Client) DeleteRbacRoleWithOptions(request *DeleteRbacRoleRequest, 
 //
 // Description:
 //
-// Queries the application instance information.
+// Queries the information of an application instance.
 //
 // @param request - DeleteRbacRoleRequest
 //
@@ -3390,7 +3390,7 @@ func (client *Client) DeleteRbacRole(request *DeleteRbacRoleRequest) (_result *D
 
 // Summary:
 //
-// Query website DNS resolution records. Supports CNAME resolution and verification resolution queries.
+// Queries the DNS resolution records of a website. Supports CNAME and verification resolution queries.
 //
 // @param request - DescribeAppDomainDnsRecordRequest
 //
@@ -3442,7 +3442,7 @@ func (client *Client) DescribeAppDomainDnsRecordWithOptions(request *DescribeApp
 
 // Summary:
 //
-// Query website DNS resolution records. Supports CNAME resolution and verification resolution queries.
+// Queries the DNS resolution records of a website. Supports CNAME and verification resolution queries.
 //
 // @param request - DescribeAppDomainDnsRecordRequest
 //
@@ -3538,7 +3538,7 @@ func (client *Client) DispatchConsoleAPIForPartner(request *DispatchConsoleAPIFo
 
 // Summary:
 //
-// Edits a plug-in configuration.
+// Modifies the plug-in configuration.
 //
 // @param request - EditPluginConfigRequest
 //
@@ -3598,7 +3598,7 @@ func (client *Client) EditPluginConfigWithOptions(request *EditPluginConfigReque
 
 // Summary:
 //
-// Edits a plug-in configuration.
+// Modifies the plug-in configuration.
 //
 // @param request - EditPluginConfigRequest
 //
@@ -3616,7 +3616,7 @@ func (client *Client) EditPluginConfig(request *EditPluginConfigRequest) (_resul
 
 // Summary:
 //
-// Exports material files.
+// Exports asset files.
 //
 // @param tmpReq - ExportMaterialFileRequest
 //
@@ -3670,7 +3670,7 @@ func (client *Client) ExportMaterialFileWithOptions(tmpReq *ExportMaterialFileRe
 
 // Summary:
 //
-// Exports material files.
+// Exports asset files.
 //
 // @param request - ExportMaterialFileRequest
 //
@@ -3836,7 +3836,7 @@ func (client *Client) GetAIStaffPreviewUrl(request *GetAIStaffPreviewUrlRequest)
 //
 // Description:
 //
-// Queries application instance information.
+// Queries information about an application instance.
 //
 // @param request - GetAppCodeWorkspaceDetailRequest
 //
@@ -3884,7 +3884,7 @@ func (client *Client) GetAppCodeWorkspaceDetailWithOptions(request *GetAppCodeWo
 //
 // Description:
 //
-// Queries application instance information.
+// Queries information about an application instance.
 //
 // @param request - GetAppCodeWorkspaceDetailRequest
 //
@@ -3906,7 +3906,7 @@ func (client *Client) GetAppCodeWorkspaceDetail(request *GetAppCodeWorkspaceDeta
 //
 // Description:
 //
-// The Wanxiaozhi 2.0 API operation for creating AI conversations.
+// Creates an AI conversation in Wanxiaozhi 2.0.
 //
 // @param request - GetAppConversationRequest
 //
@@ -3958,7 +3958,7 @@ func (client *Client) GetAppConversationWithOptions(request *GetAppConversationR
 //
 // Description:
 //
-// The Wanxiaozhi 2.0 API operation for creating AI conversations.
+// Creates an AI conversation in Wanxiaozhi 2.0.
 //
 // @param request - GetAppConversationRequest
 //
@@ -3976,11 +3976,11 @@ func (client *Client) GetAppConversation(request *GetAppConversationRequest) (_r
 
 // Summary:
 //
-// Retrieves the lock status of a session.
+// Retrieves the session lock status.
 //
 // Description:
 //
-// The API operation for creating an AI session in Wanxiaozhi 2.0.
+// Creates an AI session in Wanxiaozhi 2.0.
 //
 // @param request - GetAppConversationLockStatusRequest
 //
@@ -4024,11 +4024,11 @@ func (client *Client) GetAppConversationLockStatusWithOptions(request *GetAppCon
 
 // Summary:
 //
-// Retrieves the lock status of a session.
+// Retrieves the session lock status.
 //
 // Description:
 //
-// The API operation for creating an AI session in Wanxiaozhi 2.0.
+// Creates an AI session in Wanxiaozhi 2.0.
 //
 // @param request - GetAppConversationLockStatusRequest
 //
@@ -4120,11 +4120,11 @@ func (client *Client) GetAppDatabaseTableSchemas(request *GetAppDatabaseTableSch
 
 // Summary:
 //
-// Retrieves a file and its modification time.
+// Retrieves the file content and modification time.
 //
 // Description:
 //
-// Retrieves the configuration information of the code generation plugin.
+// Retrieves the configuration information of the code generation plug-in.
 //
 // @param request - GetAppFileContentRequest
 //
@@ -4172,11 +4172,11 @@ func (client *Client) GetAppFileContentWithOptions(request *GetAppFileContentReq
 
 // Summary:
 //
-// Retrieves a file and its modification time.
+// Retrieves the file content and modification time.
 //
 // Description:
 //
-// Retrieves the configuration information of the code generation plugin.
+// Retrieves the configuration information of the code generation plug-in.
 //
 // @param request - GetAppFileContentRequest
 //
@@ -4412,7 +4412,7 @@ func (client *Client) GetAppInstanceForAdmin(request *GetAppInstanceForAdminRequ
 //
 // Description:
 //
-// Retrieves the configuration information of the code generation plug-in.
+// Retrieves the configuration information of the code generation plugin.
 //
 // @param request - GetAppInstanceForPartnerRequest
 //
@@ -4460,7 +4460,7 @@ func (client *Client) GetAppInstanceForPartnerWithOptions(request *GetAppInstanc
 //
 // Description:
 //
-// Retrieves the configuration information of the code generation plug-in.
+// Retrieves the configuration information of the code generation plugin.
 //
 // @param request - GetAppInstanceForPartnerRequest
 //
@@ -4548,11 +4548,11 @@ func (client *Client) GetAppInstanceTempShortUrl(request *GetAppInstanceTempShor
 
 // Summary:
 //
-// Queries the details of an application plugin.
+// Queries the details of an application plug-in.
 //
 // Description:
 //
-// Retrieves the configuration information of a code generation plugin.
+// Retrieves the configuration information of the code generation plug-in.
 //
 // @param request - GetAppPluginRequest
 //
@@ -4596,11 +4596,11 @@ func (client *Client) GetAppPluginWithOptions(request *GetAppPluginRequest, runt
 
 // Summary:
 //
-// Queries the details of an application plugin.
+// Queries the details of an application plug-in.
 //
 // Description:
 //
-// Retrieves the configuration information of a code generation plugin.
+// Retrieves the configuration information of the code generation plug-in.
 //
 // @param request - GetAppPluginRequest
 //
@@ -4618,11 +4618,11 @@ func (client *Client) GetAppPlugin(request *GetAppPluginRequest) (_result *GetAp
 
 // Summary:
 //
-// Retrieves the configuration information of a plugin.
+// Retrieves the plugin configuration information.
 //
 // Description:
 //
-// Retrieves the configuration information of a code generation plugin.
+// Retrieves the configuration information of the code generation plugin.
 //
 // @param request - GetAppPluginConfigRequest
 //
@@ -4670,11 +4670,11 @@ func (client *Client) GetAppPluginConfigWithOptions(request *GetAppPluginConfigR
 
 // Summary:
 //
-// Retrieves the configuration information of a plugin.
+// Retrieves the plugin configuration information.
 //
 // Description:
 //
-// Retrieves the configuration information of a code generation plugin.
+// Retrieves the configuration information of the code generation plugin.
 //
 // @param request - GetAppPluginConfigRequest
 //
@@ -4692,25 +4692,25 @@ func (client *Client) GetAppPluginConfig(request *GetAppPluginConfigRequest) (_r
 
 // Summary:
 //
-// Retrieves the plugin configuration of a Wanxiaozhi site for internal services and returns an encrypted configuration string.
+// Retrieves the plugin configuration of a Wanxiaozhi site for internal services and returns the encrypted configuration string.
 //
 // Description:
 //
 // ## Request description
 //
-// - The service design of this operation is exclusively for internal platform services to read the plugin configuration of a specific site by using a service identity.
+// - This API operation is used in internal platform service design to read the plugin configuration of a specific site by using a service identity.
 //
 // - Authentication relies entirely on gateway RAM control and is available only to trusted internal service accounts.
 //
-// - If the specified plugin is not installed on the site or the request parameters are empty, the operation returns a success status with an empty Module. Clients that invoke the operation should treat this as unconfigured.
+// - If the specified plugin is not installed on the site or the request parameters are empty, the API operation returns a success status but the Module field is empty. The invoker must handle this as an unconfigured state.
 //
-// - The returned `PluginConfig` field contains an AES-encrypted JSON character string. Clients that invoke the operation must perform decryption before use.
+// - The returned PluginConfig field contains an AES-encrypted JSON character string. The invoker must perform decryption before use.
 //
-// - To invoke in user mode, continue to use the `GetAppPluginConfig` operation instead of this operation.
+// - To invoke in user mode, continue to use the GetAppPluginConfig API operation instead of this API operation.
 //
-// - The `BizId` and `PluginId` parameters are both required in the contract. Passing empty character strings is not blocked by the gateway but causes the backend to return an empty Module. This is a fault-tolerance behavior, and clients that invoke the operation should not rely on it.
+// - The BizId and PluginId parameters are required in the contract. Passing empty character strings is not blocked by the gateway but causes the backend to return an empty Module field. This is a fault-tolerance behavior, and invokers must not rely on it.
 //
-// - This operation supports HTTPS and RPC-style POST requests, with parameters passed through formData.
+// - This API operation supports HTTPS and RPC-style POST requests. Parameters are passed by using form data.
 //
 // @param request - GetAppPluginConfigForAdminRequest
 //
@@ -4758,25 +4758,25 @@ func (client *Client) GetAppPluginConfigForAdminWithOptions(request *GetAppPlugi
 
 // Summary:
 //
-// Retrieves the plugin configuration of a Wanxiaozhi site for internal services and returns an encrypted configuration string.
+// Retrieves the plugin configuration of a Wanxiaozhi site for internal services and returns the encrypted configuration string.
 //
 // Description:
 //
 // ## Request description
 //
-// - The service design of this operation is exclusively for internal platform services to read the plugin configuration of a specific site by using a service identity.
+// - This API operation is used in internal platform service design to read the plugin configuration of a specific site by using a service identity.
 //
 // - Authentication relies entirely on gateway RAM control and is available only to trusted internal service accounts.
 //
-// - If the specified plugin is not installed on the site or the request parameters are empty, the operation returns a success status with an empty Module. Clients that invoke the operation should treat this as unconfigured.
+// - If the specified plugin is not installed on the site or the request parameters are empty, the API operation returns a success status but the Module field is empty. The invoker must handle this as an unconfigured state.
 //
-// - The returned `PluginConfig` field contains an AES-encrypted JSON character string. Clients that invoke the operation must perform decryption before use.
+// - The returned PluginConfig field contains an AES-encrypted JSON character string. The invoker must perform decryption before use.
 //
-// - To invoke in user mode, continue to use the `GetAppPluginConfig` operation instead of this operation.
+// - To invoke in user mode, continue to use the GetAppPluginConfig API operation instead of this API operation.
 //
-// - The `BizId` and `PluginId` parameters are both required in the contract. Passing empty character strings is not blocked by the gateway but causes the backend to return an empty Module. This is a fault-tolerance behavior, and clients that invoke the operation should not rely on it.
+// - The BizId and PluginId parameters are required in the contract. Passing empty character strings is not blocked by the gateway but causes the backend to return an empty Module field. This is a fault-tolerance behavior, and invokers must not rely on it.
 //
-// - This operation supports HTTPS and RPC-style POST requests, with parameters passed through formData.
+// - This API operation supports HTTPS and RPC-style POST requests. Parameters are passed by using form data.
 //
 // @param request - GetAppPluginConfigForAdminRequest
 //
@@ -4798,7 +4798,7 @@ func (client *Client) GetAppPluginConfigForAdmin(request *GetAppPluginConfigForA
 //
 // Description:
 //
-// Retrieves the configuration information of the code generation plug-in.
+// Retrieves the configuration information for the code generation plugin.
 //
 // @param request - GetAppPublishStatusRequest
 //
@@ -4819,6 +4819,10 @@ func (client *Client) GetAppPublishStatusWithOptions(request *GetAppPublishStatu
 
 	if !dara.IsNil(request.DeployOrderId) {
 		query["DeployOrderId"] = request.DeployOrderId
+	}
+
+	if !dara.IsNil(request.PublishOrderId) {
+		query["PublishOrderId"] = request.PublishOrderId
 	}
 
 	if !dara.IsNil(request.WebsiteDomain) {
@@ -4854,7 +4858,7 @@ func (client *Client) GetAppPublishStatusWithOptions(request *GetAppPublishStatu
 //
 // Description:
 //
-// Retrieves the configuration information of the code generation plug-in.
+// Retrieves the configuration information for the code generation plugin.
 //
 // @param request - GetAppPublishStatusRequest
 //
@@ -4872,7 +4876,7 @@ func (client *Client) GetAppPublishStatus(request *GetAppPublishStatusRequest) (
 
 // Summary:
 //
-// Queries recommended commodities.
+// Queries recommended products.
 //
 // Description:
 //
@@ -4932,7 +4936,7 @@ func (client *Client) GetAppRecommendedCommoditiesWithOptions(request *GetAppRec
 
 // Summary:
 //
-// Queries recommended commodities.
+// Queries recommended products.
 //
 // Description:
 //
@@ -4958,7 +4962,7 @@ func (client *Client) GetAppRecommendedCommodities(request *GetAppRecommendedCom
 //
 // Description:
 //
-// Retrieves the configuration information of the code generation plugin.
+// Retrieves the configuration information of the code generation plug-in.
 //
 // @param request - GetAppRequirementRequest
 //
@@ -5006,7 +5010,7 @@ func (client *Client) GetAppRequirementWithOptions(request *GetAppRequirementReq
 //
 // Description:
 //
-// Retrieves the configuration information of the code generation plugin.
+// Retrieves the configuration information of the code generation plug-in.
 //
 // @param request - GetAppRequirementRequest
 //
@@ -5624,7 +5628,7 @@ func (client *Client) GetAppTemplate(request *GetAppTemplateRequest) (_result *G
 //
 // Description:
 //
-// Retrieves the configuration information of the code generation plug-in.
+// Retrieves the configuration information of the code generation plugin.
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
@@ -5657,7 +5661,7 @@ func (client *Client) GetAppTokenServiceWithOptions(runtime *dara.RuntimeOptions
 //
 // Description:
 //
-// Retrieves the configuration information of the code generation plug-in.
+// Retrieves the configuration information of the code generation plugin.
 //
 // @return GetAppTokenServiceResponse
 func (client *Client) GetAppTokenService() (_result *GetAppTokenServiceResponse, _err error) {
@@ -5677,7 +5681,7 @@ func (client *Client) GetAppTokenService() (_result *GetAppTokenServiceResponse,
 //
 // Description:
 //
-// Queries the information of an application instance.
+// Queries application instance information.
 //
 // @param request - GetAppWorkspaceDirectoryRequest
 //
@@ -5733,7 +5737,7 @@ func (client *Client) GetAppWorkspaceDirectoryWithOptions(request *GetAppWorkspa
 //
 // Description:
 //
-// Queries the information of an application instance.
+// Queries application instance information.
 //
 // @param request - GetAppWorkspaceDirectoryRequest
 //
@@ -5883,7 +5887,7 @@ func (client *Client) GetDomainInfoForPartner(request *GetDomainInfoForPartnerRe
 
 // Summary:
 //
-// Queries the China Internet Content Provider (ICP) filing information of a domain name.
+// Queries the ICP filing information for a domain name.
 //
 // @param request - GetIcpFilingInfoForPartnerRequest
 //
@@ -5931,7 +5935,7 @@ func (client *Client) GetIcpFilingInfoForPartnerWithOptions(request *GetIcpFilin
 
 // Summary:
 //
-// Queries the China Internet Content Provider (ICP) filing information of a domain name.
+// Queries the ICP filing information for a domain name.
 //
 // @param request - GetIcpFilingInfoForPartnerRequest
 //
@@ -5953,7 +5957,7 @@ func (client *Client) GetIcpFilingInfoForPartner(request *GetIcpFilingInfoForPar
 //
 // Description:
 //
-// Queries the Supabase instance configuration information corresponding to a resource.
+// Queries the configuration information of the Supabase instance associated with the resource.
 //
 // @param request - GetLlmProxyConfigForAdminRequest
 //
@@ -6005,7 +6009,7 @@ func (client *Client) GetLlmProxyConfigForAdminWithOptions(request *GetLlmProxyC
 //
 // Description:
 //
-// Queries the Supabase instance configuration information corresponding to a resource.
+// Queries the configuration information of the Supabase instance associated with the resource.
 //
 // @param request - GetLlmProxyConfigForAdminRequest
 //
@@ -6251,7 +6255,7 @@ func (client *Client) GetMiniAppBindingForAdmin(request *GetMiniAppBindingForAdm
 //
 // Description:
 //
-// Retrieves the configuration information of the code generation plug-in.
+// Retrieves the configuration information of the code generation plugin.
 //
 // @param request - GetOssUploadPolicyRequest
 //
@@ -6299,7 +6303,7 @@ func (client *Client) GetOssUploadPolicyWithOptions(request *GetOssUploadPolicyR
 //
 // Description:
 //
-// Retrieves the configuration information of the code generation plug-in.
+// Retrieves the configuration information of the code generation plugin.
 //
 // @param request - GetOssUploadPolicyRequest
 //
@@ -6321,7 +6325,7 @@ func (client *Client) GetOssUploadPolicy(request *GetOssUploadPolicyRequest) (_r
 //
 // Description:
 //
-// Retrieves the configuration information of the code generation plugin.
+// Retrieves the configuration information of the code generation plug-in.
 //
 // @param request - GetTempDownloadUrlRequest
 //
@@ -6375,7 +6379,7 @@ func (client *Client) GetTempDownloadUrlWithOptions(request *GetTempDownloadUrlR
 //
 // Description:
 //
-// Retrieves the configuration information of the code generation plugin.
+// Retrieves the configuration information of the code generation plug-in.
 //
 // @param request - GetTempDownloadUrlRequest
 //
@@ -6459,7 +6463,7 @@ func (client *Client) GetUserAccessTokenForPartner(request *GetUserAccessTokenFo
 
 // Summary:
 //
-// Obtains temporary credentials for a partner to assume a user\\"s service-linked role.
+// Retrieves temporary credentials for a user\\"s service-linked role (SLR) authorization as a partner.
 //
 // @param request - GetUserTmpIdentityForPartnerRequest
 //
@@ -6519,7 +6523,7 @@ func (client *Client) GetUserTmpIdentityForPartnerWithOptions(request *GetUserTm
 
 // Summary:
 //
-// Obtains temporary credentials for a partner to assume a user\\"s service-linked role.
+// Retrieves temporary credentials for a user\\"s service-linked role (SLR) authorization as a partner.
 //
 // @param request - GetUserTmpIdentityForPartnerRequest
 //
@@ -6627,11 +6631,11 @@ func (client *Client) GrantPromotionOfferForPartner(request *GrantPromotionOffer
 
 // Summary:
 //
-// Installs an application plugin to the current user account.
+// Installs an application plug-in for the current user account.
 //
 // Description:
 //
-// Retrieves the configuration information of the code generation plugin.
+// Retrieves the configuration information of the code generation plug-in.
 //
 // @param request - InstallAppPluginRequest
 //
@@ -6679,11 +6683,11 @@ func (client *Client) InstallAppPluginWithOptions(request *InstallAppPluginReque
 
 // Summary:
 //
-// Installs an application plugin to the current user account.
+// Installs an application plug-in for the current user account.
 //
 // Description:
 //
-// Retrieves the configuration information of the code generation plugin.
+// Retrieves the configuration information of the code generation plug-in.
 //
 // @param request - InstallAppPluginRequest
 //
@@ -6701,7 +6705,7 @@ func (client *Client) InstallAppPlugin(request *InstallAppPluginRequest) (_resul
 
 // Summary:
 //
-// # Introspection analysis of免登 accessToken
+// Introspects the logon-free access token.
 //
 // @param request - IntrospectAppInstanceTicketForPreviewRequest
 //
@@ -6749,7 +6753,7 @@ func (client *Client) IntrospectAppInstanceTicketForPreviewWithOptions(request *
 
 // Summary:
 //
-// # Introspection analysis of免登 accessToken
+// Introspects the logon-free access token.
 //
 // @param request - IntrospectAppInstanceTicketForPreviewRequest
 //
@@ -6851,7 +6855,7 @@ func (client *Client) ListAIStaffChatEvents(request *ListAIStaffChatEventsReques
 
 // Summary:
 //
-// Performs a paging query on the list of conversation messages for an AI agent.
+// Performs a paging query on the list of conversation messages for an AI employee.
 //
 // Description:
 //
@@ -6913,7 +6917,7 @@ func (client *Client) ListAIStaffChatMessagesWithOptions(request *ListAIStaffCha
 
 // Summary:
 //
-// Performs a paging query on the list of conversation messages for an AI agent.
+// Performs a paging query on the list of conversation messages for an AI employee.
 //
 // Description:
 //
@@ -6935,7 +6939,7 @@ func (client *Client) ListAIStaffChatMessages(request *ListAIStaffChatMessagesRe
 
 // Summary:
 //
-// Queries the list of application assistant agents.
+// Queries a list of application assistant agents.
 //
 // Description:
 //
@@ -6987,7 +6991,7 @@ func (client *Client) ListAppAssistantAgentsWithOptions(request *ListAppAssistan
 
 // Summary:
 //
-// Queries the list of application assistant agents.
+// Queries a list of application assistant agents.
 //
 // Description:
 //
@@ -7013,7 +7017,7 @@ func (client *Client) ListAppAssistantAgents(request *ListAppAssistantAgentsRequ
 //
 // Description:
 //
-// Wanxiaozhi 2.0 - AI conversation history query API.
+// The API operation for querying AI conversation history in Wanxiaozhi 2.0.
 //
 // @param request - ListAppChatMessagesRequest
 //
@@ -7077,7 +7081,7 @@ func (client *Client) ListAppChatMessagesWithOptions(request *ListAppChatMessage
 //
 // Description:
 //
-// Wanxiaozhi 2.0 - AI conversation history query API.
+// The API operation for querying AI conversation history in Wanxiaozhi 2.0.
 //
 // @param request - ListAppChatMessagesRequest
 //
@@ -7097,11 +7101,11 @@ func (client *Client) ListAppChatMessages(request *ListAppChatMessagesRequest) (
 //
 // Summary:
 //
-// The product information data.
+// Retrieves product information.
 //
 // Description:
 //
-// Retrieves the configuration information of the code generation plug-in.
+// Retrieves the configuration information for the code generation plug-in.
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
@@ -7133,11 +7137,11 @@ func (client *Client) ListAppCommoditySpecificationsForPartnerWithOptions(runtim
 //
 // Summary:
 //
-// The product information data.
+// Retrieves product information.
 //
 // Description:
 //
-// Retrieves the configuration information of the code generation plug-in.
+// Retrieves the configuration information for the code generation plug-in.
 //
 // @return ListAppCommoditySpecificationsForPartnerResponse
 // Deprecated
@@ -7154,11 +7158,11 @@ func (client *Client) ListAppCommoditySpecificationsForPartner() (_result *ListA
 
 // Summary:
 //
-// # Query Website Build Product Details
+// Queries the details of website builder products.
 //
 // Description:
 //
-// # Get QR code plugin configuration information
+// Retrieves the configuration information of the code generation plug-in.
 //
 // @param request - ListAppCommoditySpecificationsV2ForPartnerRequest
 //
@@ -7206,11 +7210,11 @@ func (client *Client) ListAppCommoditySpecificationsV2ForPartnerWithOptions(requ
 
 // Summary:
 //
-// # Query Website Build Product Details
+// Queries the details of website builder products.
 //
 // Description:
 //
-// # Get QR code plugin configuration information
+// Retrieves the configuration information of the code generation plug-in.
 //
 // @param request - ListAppCommoditySpecificationsV2ForPartnerRequest
 //
@@ -7228,11 +7232,11 @@ func (client *Client) ListAppCommoditySpecificationsV2ForPartner(request *ListAp
 
 // Summary:
 //
-// Queries the list of conversation messages by paging.
+// Queries the conversation message list by using paging. This is a paged query.
 //
 // Description:
 //
-// Wanxiaozhi 2.0 - API for querying AI session history information.
+// The API operation for querying AI session history in Wanxiaozhi 2.0.
 //
 // @param request - ListAppConversationMessagesRequest
 //
@@ -7296,11 +7300,11 @@ func (client *Client) ListAppConversationMessagesWithOptions(request *ListAppCon
 
 // Summary:
 //
-// Queries the list of conversation messages by paging.
+// Queries the conversation message list by using paging. This is a paged query.
 //
 // Description:
 //
-// Wanxiaozhi 2.0 - API for querying AI session history information.
+// The API operation for querying AI session history in Wanxiaozhi 2.0.
 //
 // @param request - ListAppConversationMessagesRequest
 //
@@ -7318,7 +7322,7 @@ func (client *Client) ListAppConversationMessages(request *ListAppConversationMe
 
 // Summary:
 //
-// Queries the conversation list.
+// Queries a list of conversations.
 //
 // Description:
 //
@@ -7394,7 +7398,7 @@ func (client *Client) ListAppConversationsWithOptions(request *ListAppConversati
 
 // Summary:
 //
-// Queries the conversation list.
+// Queries a list of conversations.
 //
 // Description:
 //
@@ -7619,6 +7623,10 @@ func (client *Client) ListAppInstancesWithOptions(tmpReq *ListAppInstancesReques
 
 	if !dara.IsNil(request.BizIdsShrink) {
 		query["BizIds"] = request.BizIdsShrink
+	}
+
+	if !dara.IsNil(request.Domain) {
+		query["Domain"] = request.Domain
 	}
 
 	if !dara.IsNil(request.EndTimeBegin) {
@@ -7864,7 +7872,7 @@ func (client *Client) ListAppPluginFiles(request *ListAppPluginFilesRequest) (_r
 
 // Summary:
 //
-// Queries the application plug-in versions.
+// Queries the list of application plug-in versions.
 //
 // Description:
 //
@@ -7920,7 +7928,7 @@ func (client *Client) ListAppPluginVersionsWithOptions(request *ListAppPluginVer
 
 // Summary:
 //
-// Queries the application plug-in versions.
+// Queries the list of application plug-in versions.
 //
 // Description:
 //
@@ -8850,7 +8858,7 @@ func (client *Client) ListPromotionOfferRecordsForPartner(request *ListPromotion
 //
 // Description:
 //
-// Retrieves the configuration information of the code generation plugin.
+// Retrieves the configuration information of the code generation plug-in.
 //
 // @param request - ListRbacOrgTreeRequest
 //
@@ -8922,7 +8930,7 @@ func (client *Client) ListRbacOrgTreeWithOptions(request *ListRbacOrgTreeRequest
 //
 // Description:
 //
-// Retrieves the configuration information of the code generation plugin.
+// Retrieves the configuration information of the code generation plug-in.
 //
 // @param request - ListRbacOrgTreeRequest
 //
@@ -8940,11 +8948,11 @@ func (client *Client) ListRbacOrgTree(request *ListRbacOrgTreeRequest) (_result 
 
 // Summary:
 //
-// Queries the RBAC permissions.
+// Queries the RBAC permission list.
 //
 // Description:
 //
-// Creates an AI session in Wanxiaozhi 2.0.
+// The API operation for creating an AI conversation in Wanxiaozhi 2.0.
 //
 // @param request - ListRbacPermissionsRequest
 //
@@ -9012,11 +9020,11 @@ func (client *Client) ListRbacPermissionsWithOptions(request *ListRbacPermission
 
 // Summary:
 //
-// Queries the RBAC permissions.
+// Queries the RBAC permission list.
 //
 // Description:
 //
-// Creates an AI session in Wanxiaozhi 2.0.
+// The API operation for creating an AI conversation in Wanxiaozhi 2.0.
 //
 // @param request - ListRbacPermissionsRequest
 //
@@ -9038,7 +9046,7 @@ func (client *Client) ListRbacPermissions(request *ListRbacPermissionsRequest) (
 //
 // Description:
 //
-// Queries the application instance information.
+// Queries application instance information.
 //
 // @param request - ListRbacRoleHierarchyRequest
 //
@@ -9110,7 +9118,7 @@ func (client *Client) ListRbacRoleHierarchyWithOptions(request *ListRbacRoleHier
 //
 // Description:
 //
-// Queries the application instance information.
+// Queries application instance information.
 //
 // @param request - ListRbacRoleHierarchyRequest
 //
@@ -9128,11 +9136,11 @@ func (client *Client) ListRbacRoleHierarchy(request *ListRbacRoleHierarchyReques
 
 // Summary:
 //
-// Queries a list of RBAC roles.
+// Queries the list of RBAC roles.
 //
 // Description:
 //
-// Queries the application instance information.
+// Queries application instance information.
 //
 // @param request - ListRbacRolesRequest
 //
@@ -9200,11 +9208,11 @@ func (client *Client) ListRbacRolesWithOptions(request *ListRbacRolesRequest, ru
 
 // Summary:
 //
-// Queries a list of RBAC roles.
+// Queries the list of RBAC roles.
 //
 // Description:
 //
-// Queries the application instance information.
+// Queries application instance information.
 //
 // @param request - ListRbacRolesRequest
 //
@@ -9316,7 +9324,7 @@ func (client *Client) ModifyAppInstanceSpec(request *ModifyAppInstanceSpecReques
 
 // Summary:
 //
-// Updates a material folder.
+// Updates an asset folder.
 //
 // @param request - ModifyMaterialDirectoryRequest
 //
@@ -9368,7 +9376,7 @@ func (client *Client) ModifyMaterialDirectoryWithOptions(request *ModifyMaterial
 
 // Summary:
 //
-// Updates a material folder.
+// Updates an asset folder.
 //
 // @param request - ModifyMaterialDirectoryRequest
 //
@@ -9386,7 +9394,7 @@ func (client *Client) ModifyMaterialDirectory(request *ModifyMaterialDirectoryRe
 
 // Summary:
 //
-// Updates a material file.
+// Modifies a material file.
 //
 // @param request - ModifyMaterialFileRequest
 //
@@ -9438,7 +9446,7 @@ func (client *Client) ModifyMaterialFileWithOptions(request *ModifyMaterialFileR
 
 // Summary:
 //
-// Updates a material file.
+// Modifies a material file.
 //
 // @param request - ModifyMaterialFileRequest
 //
@@ -9456,7 +9464,7 @@ func (client *Client) ModifyMaterialFile(request *ModifyMaterialFileRequest) (_r
 
 // Summary:
 //
-// Updates the status of material files.
+// Modifies the status of a material file.
 //
 // @param tmpReq - ModifyMaterialFileStatusRequest
 //
@@ -9514,7 +9522,7 @@ func (client *Client) ModifyMaterialFileStatusWithOptions(tmpReq *ModifyMaterial
 
 // Summary:
 //
-// Updates the status of material files.
+// Modifies the status of a material file.
 //
 // @param request - ModifyMaterialFileStatusRequest
 //
@@ -9826,7 +9834,7 @@ func (client *Client) OfflineAppInstance(request *OfflineAppInstanceRequest) (_r
 
 // Summary:
 //
-// Restores a website to online status by reverting the CDN back-to-origin configuration for all domain names under the site to the normal path rewrite rules.
+// Restores a website to online status and restores the CDN back-to-origin path rewrite rules for all domain names under the site to the normal path rewrite rules.
 //
 // @param request - OnlineAppInstanceRequest
 //
@@ -9870,7 +9878,7 @@ func (client *Client) OnlineAppInstanceWithOptions(request *OnlineAppInstanceReq
 
 // Summary:
 //
-// Restores a website to online status by reverting the CDN back-to-origin configuration for all domain names under the site to the normal path rewrite rules.
+// Restores a website to online status and restores the CDN back-to-origin path rewrite rules for all domain names under the site to the normal path rewrite rules.
 //
 // @param request - OnlineAppInstanceRequest
 //
@@ -9888,7 +9896,7 @@ func (client *Client) OnlineAppInstance(request *OnlineAppInstanceRequest) (_res
 
 // Summary:
 //
-// Operates an application by a partner.
+// Operates a partner application.
 //
 // @param request - OperateAppInstanceForPartnerRequest
 //
@@ -9936,7 +9944,7 @@ func (client *Client) OperateAppInstanceForPartnerWithOptions(request *OperateAp
 
 // Summary:
 //
-// Operates an application by a partner.
+// Operates a partner application.
 //
 // @param request - OperateAppInstanceForPartnerRequest
 //
@@ -10235,8 +10243,16 @@ func (client *Client) PublishAppInstanceWithOptions(request *PublishAppInstanceR
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.ArtifactDigest) {
+		query["ArtifactDigest"] = request.ArtifactDigest
+	}
+
 	if !dara.IsNil(request.BizId) {
 		query["BizId"] = request.BizId
+	}
+
+	if !dara.IsNil(request.CandidateId) {
+		query["CandidateId"] = request.CandidateId
 	}
 
 	if !dara.IsNil(request.DeployChannel) {
@@ -10247,12 +10263,44 @@ func (client *Client) PublishAppInstanceWithOptions(request *PublishAppInstanceR
 		query["Description"] = request.Description
 	}
 
+	if !dara.IsNil(request.Ext) {
+		query["Ext"] = request.Ext
+	}
+
+	if !dara.IsNil(request.IdempotencyKey) {
+		query["IdempotencyKey"] = request.IdempotencyKey
+	}
+
 	if !dara.IsNil(request.LogicalNumber) {
 		query["LogicalNumber"] = request.LogicalNumber
 	}
 
+	if !dara.IsNil(request.PlatformAppid) {
+		query["PlatformAppid"] = request.PlatformAppid
+	}
+
+	if !dara.IsNil(request.PluginDeclarationHash) {
+		query["PluginDeclarationHash"] = request.PluginDeclarationHash
+	}
+
+	if !dara.IsNil(request.PrivacyDraftId) {
+		query["PrivacyDraftId"] = request.PrivacyDraftId
+	}
+
+	if !dara.IsNil(request.PrivacyRevision) {
+		query["PrivacyRevision"] = request.PrivacyRevision
+	}
+
 	if !dara.IsNil(request.PublishNumber) {
 		query["PublishNumber"] = request.PublishNumber
+	}
+
+	if !dara.IsNil(request.PublishOrderId) {
+		query["PublishOrderId"] = request.PublishOrderId
+	}
+
+	if !dara.IsNil(request.UploadSequence) {
+		query["UploadSequence"] = request.UploadSequence
 	}
 
 	if !dara.IsNil(request.WeappAction) {
@@ -10310,7 +10358,7 @@ func (client *Client) PublishAppInstance(request *PublishAppInstanceRequest) (_r
 //
 // Description:
 //
-// Queries the Supabase instance information corresponding to a resource.
+// Queries the Supabase instance information associated with the resource.
 //
 // @param request - PushResourceMeasureRequest
 //
@@ -10390,7 +10438,7 @@ func (client *Client) PushResourceMeasureWithOptions(request *PushResourceMeasur
 //
 // Description:
 //
-// Queries the Supabase instance information corresponding to a resource.
+// Queries the Supabase instance information associated with the resource.
 //
 // @param request - PushResourceMeasureRequest
 //
@@ -10502,11 +10550,11 @@ func (client *Client) QueryInspirationAccountDetails(request *QueryInspirationAc
 
 // Summary:
 //
-// Queries the overview of the inspiration value balance.
+// Queries the overview of the inspiration credits balance.
 //
 // Description:
 //
-// Queries the Supabase instance information corresponding to the resource.
+// Queries the information about the Supabase instance associated with the resource.
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
@@ -10535,11 +10583,11 @@ func (client *Client) QueryInspirationBalanceWithOptions(runtime *dara.RuntimeOp
 
 // Summary:
 //
-// Queries the overview of the inspiration value balance.
+// Queries the overview of the inspiration credits balance.
 //
 // Description:
 //
-// Queries the Supabase instance information corresponding to the resource.
+// Queries the information about the Supabase instance associated with the resource.
 //
 // @return QueryInspirationBalanceResponse
 func (client *Client) QueryInspirationBalance() (_result *QueryInspirationBalanceResponse, _err error) {
@@ -11261,7 +11309,7 @@ func (client *Client) QueryMaterialTaskList(request *QueryMaterialTaskListReques
 //
 // Description:
 //
-// Queries the information of an application instance.
+// Queries the information about an application instance.
 //
 // @param request - QueryRbacRoleRequest
 //
@@ -11313,7 +11361,7 @@ func (client *Client) QueryRbacRoleWithOptions(request *QueryRbacRoleRequest, ru
 //
 // Description:
 //
-// Queries the information of an application instance.
+// Queries the information about an application instance.
 //
 // @param request - QueryRbacRoleRequest
 //
@@ -11331,11 +11379,11 @@ func (client *Client) QueryRbacRole(request *QueryRbacRoleRequest) (_result *Que
 
 // Summary:
 //
-// Queries the role permission list.
+// Queries the list of role permissions.
 //
 // Description:
 //
-// The API operation to create an AI session for Wanxiaozhi 2.0.
+// Creates an AI session in Wanxiaozhi 2.0.
 //
 // @param request - QueryRbacRolePermissionsRequest
 //
@@ -11399,11 +11447,11 @@ func (client *Client) QueryRbacRolePermissionsWithOptions(request *QueryRbacRole
 
 // Summary:
 //
-// Queries the role permission list.
+// Queries the list of role permissions.
 //
 // Description:
 //
-// The API operation to create an AI session for Wanxiaozhi 2.0.
+// Creates an AI session in Wanxiaozhi 2.0.
 //
 // @param request - QueryRbacRolePermissionsRequest
 //
@@ -11703,11 +11751,11 @@ func (client *Client) QuerySupabaseConfigsForAdmin(request *QuerySupabaseConfigs
 
 // Summary:
 //
-// Queries the information of the Supabase instance associated with a resource.
+// Queries the Supabase instance information associated with a resource.
 //
 // Description:
 //
-// Queries the information of the Supabase instance associated with a resource.
+// Queries the Supabase instance information associated with a resource.
 //
 // @param request - QuerySupabaseInstanceInfoForAdminRequest
 //
@@ -11775,11 +11823,11 @@ func (client *Client) QuerySupabaseInstanceInfoForAdminWithOptions(request *Quer
 
 // Summary:
 //
-// Queries the information of the Supabase instance associated with a resource.
+// Queries the Supabase instance information associated with a resource.
 //
 // Description:
 //
-// Queries the information of the Supabase instance associated with a resource.
+// Queries the Supabase instance information associated with a resource.
 //
 // @param request - QuerySupabaseInstanceInfoForAdminRequest
 //
@@ -11898,7 +11946,7 @@ func (client *Client) ReconnectAppChat(request *ReconnectAppChatRequest) (_resul
 
 // Summary:
 //
-// Refreshes the password-free login ticket for a website building instance.
+// Refreshes the logon-free ticket for a website builder instance.
 //
 // @param request - RefreshAppInstanceTicketRequest
 //
@@ -11950,7 +11998,7 @@ func (client *Client) RefreshAppInstanceTicketWithOptions(request *RefreshAppIns
 
 // Summary:
 //
-// Refreshes the password-free login ticket for a website building instance.
+// Refreshes the logon-free ticket for a website builder instance.
 //
 // @param request - RefreshAppInstanceTicketRequest
 //
@@ -11968,7 +12016,7 @@ func (client *Client) RefreshAppInstanceTicket(request *RefreshAppInstanceTicket
 
 // Summary:
 //
-// Processes a refund for a channel partner website building service.
+// Issues a refund for a channel partner\\"s website building service.
 //
 // @param request - RefundAppInstanceForPartnerRequest
 //
@@ -12024,7 +12072,7 @@ func (client *Client) RefundAppInstanceForPartnerWithOptions(request *RefundAppI
 
 // Summary:
 //
-// Processes a refund for a channel partner website building service.
+// Issues a refund for a channel partner\\"s website building service.
 //
 // @param request - RefundAppInstanceForPartnerRequest
 //
@@ -12506,11 +12554,11 @@ func (client *Client) RevokeRbacUserRole(request *RevokeRbacUserRoleRequest) (_r
 
 // Summary:
 //
-// Rewrites a channel title using AI.
+// Rewrites the title using AI.
 //
 // Description:
 //
-// Rewrites a channel title.
+// Rewrites the channel title.
 //
 // @param request - RewriteChannelTitleRequest
 //
@@ -12558,11 +12606,11 @@ func (client *Client) RewriteChannelTitleWithOptions(request *RewriteChannelTitl
 
 // Summary:
 //
-// Rewrites a channel title using AI.
+// Rewrites the title using AI.
 //
 // Description:
 //
-// Rewrites a channel title.
+// Rewrites the channel title.
 //
 // @param request - RewriteChannelTitleRequest
 //
@@ -12584,7 +12632,7 @@ func (client *Client) RewriteChannelTitle(request *RewriteChannelTitleRequest) (
 //
 // Description:
 //
-// Retrieves the configuration information of the code generation plug-in.
+// Retrieves the configuration information of the code generation plugin.
 //
 // @param request - RollbackAppCodeSnapshotRequest
 //
@@ -12636,7 +12684,7 @@ func (client *Client) RollbackAppCodeSnapshotWithOptions(request *RollbackAppCod
 //
 // Description:
 //
-// Retrieves the configuration information of the code generation plug-in.
+// Retrieves the configuration information of the code generation plugin.
 //
 // @param request - RollbackAppCodeSnapshotRequest
 //
@@ -12654,11 +12702,11 @@ func (client *Client) RollbackAppCodeSnapshot(request *RollbackAppCodeSnapshotRe
 
 // Summary:
 //
-// Rolls back the release of an application instance.
+// Rolls back the deployment of an application instance.
 //
 // Description:
 //
-// Queries the details of an application instance.
+// Queries application instance information.
 //
 // @param request - RollbackAppInstancePublishRequest
 //
@@ -12714,11 +12762,11 @@ func (client *Client) RollbackAppInstancePublishWithOptions(request *RollbackApp
 
 // Summary:
 //
-// Rolls back the release of an application instance.
+// Rolls back the deployment of an application instance.
 //
 // Description:
 //
-// Queries the details of an application instance.
+// Queries application instance information.
 //
 // @param request - RollbackAppInstancePublishRequest
 //
@@ -12736,11 +12784,11 @@ func (client *Client) RollbackAppInstancePublish(request *RollbackAppInstancePub
 
 // Summary:
 //
-// Rolls back the version of an application plugin.
+// Rolls back the version of an application plug-in.
 //
 // Description:
 //
-// Retrieves the configuration information of the code generation plugin.
+// Retrieves the configuration information of the code generation plug-in.
 //
 // @param request - RollbackAppPluginVersionRequest
 //
@@ -12788,11 +12836,11 @@ func (client *Client) RollbackAppPluginVersionWithOptions(request *RollbackAppPl
 
 // Summary:
 //
-// Rolls back the version of an application plugin.
+// Rolls back the version of an application plug-in.
 //
 // Description:
 //
-// Retrieves the configuration information of the code generation plugin.
+// Retrieves the configuration information of the code generation plug-in.
 //
 // @param request - RollbackAppPluginVersionRequest
 //
@@ -12810,11 +12858,11 @@ func (client *Client) RollbackAppPluginVersion(request *RollbackAppPluginVersion
 
 // Summary:
 //
-// # Save Requirement
+// Saves a requirement.
 //
 // Description:
 //
-// # Get code generation plugin configuration information
+// Retrieves the configuration information of the code generation plug-in.
 //
 // @param request - SaveAppRequirementRequest
 //
@@ -12864,11 +12912,11 @@ func (client *Client) SaveAppRequirementWithOptions(request *SaveAppRequirementR
 
 // Summary:
 //
-// # Save Requirement
+// Saves a requirement.
 //
 // Description:
 //
-// # Get code generation plugin configuration information
+// Retrieves the configuration information of the code generation plug-in.
 //
 // @param request - SaveAppRequirementRequest
 //
@@ -13180,7 +13228,7 @@ func (client *Client) SearchImage(request *SearchImageRequest) (_result *SearchI
 
 // Summary:
 //
-// Sets the SSL certificate for a website.
+// Configures the SSL certificate for a website.
 //
 // @param request - SetAppDomainCertificateRequest
 //
@@ -13244,7 +13292,7 @@ func (client *Client) SetAppDomainCertificateWithOptions(request *SetAppDomainCe
 
 // Summary:
 //
-// Sets the SSL certificate for a website.
+// Configures the SSL certificate for a website.
 //
 // @param request - SetAppDomainCertificateRequest
 //
@@ -13578,7 +13626,7 @@ func (client *Client) SwitchAppConversation(request *SwitchAppConversationReques
 
 // Summary:
 //
-// Synchronizes an application instance from a partner.
+// Synchronizes partner application instances.
 //
 // @param tmpReq - SyncAppInstanceForPartnerRequest
 //
@@ -13644,7 +13692,7 @@ func (client *Client) SyncAppInstanceForPartnerWithOptions(tmpReq *SyncAppInstan
 
 // Summary:
 //
-// Synchronizes an application instance from a partner.
+// Synchronizes partner application instances.
 //
 // @param request - SyncAppInstanceForPartnerRequest
 //
@@ -13732,7 +13780,7 @@ func (client *Client) TranslateChannelDraft(request *TranslateChannelDraftReques
 
 // Summary:
 //
-// Unbinds a domain name from a website and deletes the associated DNS records.
+// Unbinds a domain name from a website and deletes the related DNS records.
 //
 // @param request - UnbindAppDomainRequest
 //
@@ -13780,7 +13828,7 @@ func (client *Client) UnbindAppDomainWithOptions(request *UnbindAppDomainRequest
 
 // Summary:
 //
-// Unbinds a domain name from a website and deletes the associated DNS records.
+// Unbinds a domain name from a website and deletes the related DNS records.
 //
 // @param request - UnbindAppDomainRequest
 //
@@ -13872,7 +13920,7 @@ func (client *Client) UninstallAppPlugin(request *UninstallAppPluginRequest) (_r
 //
 // Description:
 //
-// Queries the AI conversation history for Wanxiaozhi 2.0.
+// The API operation for querying the AI conversation history in Wanxiaozhi 2.0.
 //
 // @param request - UpdateAppChatMessageRequest
 //
@@ -13932,7 +13980,7 @@ func (client *Client) UpdateAppChatMessageWithOptions(request *UpdateAppChatMess
 //
 // Description:
 //
-// Queries the AI conversation history for Wanxiaozhi 2.0.
+// The API operation for querying the AI conversation history in Wanxiaozhi 2.0.
 //
 // @param request - UpdateAppChatMessageRequest
 //
@@ -13954,7 +14002,7 @@ func (client *Client) UpdateAppChatMessage(request *UpdateAppChatMessageRequest)
 //
 // Description:
 //
-// Retrieves the configuration information of the code generation plug-in.
+// Retrieves the configuration information of the code generation plugin.
 //
 // @param request - UpdateAppCodeRequest
 //
@@ -14006,7 +14054,7 @@ func (client *Client) UpdateAppCodeWithOptions(request *UpdateAppCodeRequest, ru
 //
 // Description:
 //
-// Retrieves the configuration information of the code generation plug-in.
+// Retrieves the configuration information of the code generation plugin.
 //
 // @param request - UpdateAppCodeRequest
 //
@@ -14102,7 +14150,7 @@ func (client *Client) UpdateAppFile(request *UpdateAppFileRequest) (_result *Upd
 
 // Summary:
 //
-// Changes the specifications of a website building instance.
+// Changes the specifications of a website builder instance.
 //
 // Description:
 //
@@ -14206,7 +14254,7 @@ func (client *Client) UpdateAppInstanceWithOptions(tmpReq *UpdateAppInstanceRequ
 
 // Summary:
 //
-// Changes the specifications of a website building instance.
+// Changes the specifications of a website builder instance.
 //
 // Description:
 //
@@ -14228,11 +14276,11 @@ func (client *Client) UpdateAppInstance(request *UpdateAppInstanceRequest) (_res
 
 // Summary:
 //
-// Updates an application plugin.
+// Updates an application plug-in.
 //
 // Description:
 //
-// Retrieves the configuration information of the code generation plugin.
+// Retrieves the configuration information of the code generation plug-in.
 //
 // @param request - UpdateAppPluginRequest
 //
@@ -14320,11 +14368,11 @@ func (client *Client) UpdateAppPluginWithOptions(request *UpdateAppPluginRequest
 
 // Summary:
 //
-// Updates an application plugin.
+// Updates an application plug-in.
 //
 // Description:
 //
-// Retrieves the configuration information of the code generation plugin.
+// Retrieves the configuration information of the code generation plug-in.
 //
 // @param request - UpdateAppPluginRequest
 //
@@ -14666,7 +14714,7 @@ func (client *Client) UpdateMiniAppBinding(request *UpdateMiniAppBindingRequest)
 //
 // Description:
 //
-// Retrieves the configuration information of the code generation plug-in.
+// Retrieves the configuration information of the code generation plugin.
 //
 // @param request - UpdateRbacOrgUnitRequest
 //
@@ -14722,7 +14770,7 @@ func (client *Client) UpdateRbacOrgUnitWithOptions(request *UpdateRbacOrgUnitReq
 //
 // Description:
 //
-// Retrieves the configuration information of the code generation plug-in.
+// Retrieves the configuration information of the code generation plugin.
 //
 // @param request - UpdateRbacOrgUnitRequest
 //
@@ -14740,11 +14788,11 @@ func (client *Client) UpdateRbacOrgUnit(request *UpdateRbacOrgUnitRequest) (_res
 
 // Summary:
 //
-// Updates the RBAC role.
+// Updates an RBAC role.
 //
 // Description:
 //
-// Retrieves the configuration information of the code generation plugin.
+// Retrieves the configuration information of the code generation plug-in.
 //
 // @param request - UpdateRbacRoleRequest
 //
@@ -14796,11 +14844,11 @@ func (client *Client) UpdateRbacRoleWithOptions(request *UpdateRbacRoleRequest, 
 
 // Summary:
 //
-// Updates the RBAC role.
+// Updates an RBAC role.
 //
 // Description:
 //
-// Retrieves the configuration information of the code generation plugin.
+// Retrieves the configuration information of the code generation plug-in.
 //
 // @param request - UpdateRbacRoleRequest
 //
@@ -14818,11 +14866,11 @@ func (client *Client) UpdateRbacRole(request *UpdateRbacRoleRequest) (_result *U
 
 // Summary:
 //
-// Uploads an application plugin version.
+// Uploads an application plug-in version.
 //
 // Description:
 //
-// Retrieves the configuration information of the code generation plugin.
+// Retrieves the configuration information of the code generation plug-in.
 //
 // @param request - UploadAppPluginVersionRequest
 //
@@ -14890,11 +14938,11 @@ func (client *Client) UploadAppPluginVersionWithOptions(request *UploadAppPlugin
 
 // Summary:
 //
-// Uploads an application plugin version.
+// Uploads an application plug-in version.
 //
 // Description:
 //
-// Retrieves the configuration information of the code generation plugin.
+// Retrieves the configuration information of the code generation plug-in.
 //
 // @param request - UploadAppPluginVersionRequest
 //

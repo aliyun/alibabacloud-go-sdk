@@ -226,6 +226,10 @@ type QuerySupabaseAuthConfigsForAdminResponseBodyModule struct {
 	// - bot_manager: Bot traffic management.
 	//
 	// - ip_reputation: IP reputation library.
+	//
+	// example:
+	//
+	// {"SMS_ALIYUN_SIGN_NAME":"示例签名"}
 	Configs map[string]interface{} `json:"Configs,omitempty" xml:"Configs,omitempty"`
 }
 

@@ -26,7 +26,7 @@ type MoveMaterialFileRequest struct {
 	//
 	// WD20250703155602000001
 	BizId *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
-	// The directory ID.
+	// The ID of the folder.
 	//
 	// This parameter is required.
 	//

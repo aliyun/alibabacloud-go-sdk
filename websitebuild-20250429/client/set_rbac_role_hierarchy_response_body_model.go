@@ -40,17 +40,17 @@ type SetRbacRoleHierarchyResponseBody struct {
 	//
 	// {}
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	// Specifies whether a retry is allowed. Valid values:
+	// Specifies whether retries are allowed. Valid values:
 	//
-	// - false: A retry is not allowed.
+	// - false: Retries are not allowed.
 	//
-	// - true: A retry is allowed.
+	// - true: Retries are allowed.
 	//
 	// example:
 	//
 	// False
 	AllowRetry *bool `json:"AllowRetry,omitempty" xml:"AllowRetry,omitempty"`
-	// The application name. It can contain digits, letters, and hyphens (-). It must start with a letter, must not end with a hyphen (-), and must not exceed 36 characters in length.
+	// The application name. It can contain digits, letters, and hyphens (-). It must start with a letter, cannot end with a hyphen (-), and can be up to 36 characters in length.
 	//
 	// example:
 	//
@@ -70,7 +70,7 @@ type SetRbacRoleHierarchyResponseBody struct {
 	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
 	// The returned error parameters.
 	ErrorArgs []interface{} `json:"ErrorArgs,omitempty" xml:"ErrorArgs,omitempty" type:"Repeated"`
-	// Indicates whether the move is successful.
+	// Indicates whether the move was successful.
 	//
 	// example:
 	//
@@ -94,7 +94,7 @@ type SetRbacRoleHierarchyResponseBody struct {
 	//
 	// System exception
 	RootErrorMsg *string `json:"RootErrorMsg,omitempty" xml:"RootErrorMsg,omitempty"`
-	// The backup parameter.
+	// The reserved parameter.
 	//
 	// example:
 	//

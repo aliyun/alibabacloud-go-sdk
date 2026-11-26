@@ -34,7 +34,7 @@ type iAssignRbacUserRoleResponseBody interface {
 }
 
 type AssignRbacUserRoleResponseBody struct {
-	// The detailed reason for access denial.
+	// The detailed reasons for access denial.
 	//
 	// example:
 	//
@@ -62,7 +62,7 @@ type AssignRbacUserRoleResponseBody struct {
 	//
 	// ERROR-oo1
 	DynamicCode *string `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
-	// The dynamic error message, which is used to replace %s in the ErrMessage response parameter.
+	// The dynamic error message used to replace %s in the ErrMessage response parameter.
 	//
 	// example:
 	//
@@ -70,7 +70,7 @@ type AssignRbacUserRoleResponseBody struct {
 	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
 	// The error parameters.
 	ErrorArgs []interface{} `json:"ErrorArgs,omitempty" xml:"ErrorArgs,omitempty" type:"Repeated"`
-	// Indicates whether the deletion is successful.
+	// Indicates whether the deletion was successful.
 	//
 	// example:
 	//
@@ -94,7 +94,7 @@ type AssignRbacUserRoleResponseBody struct {
 	//
 	// System exception
 	RootErrorMsg *string `json:"RootErrorMsg,omitempty" xml:"RootErrorMsg,omitempty"`
-	// The backup parameter.
+	// The reserved parameter.
 	//
 	// example:
 	//

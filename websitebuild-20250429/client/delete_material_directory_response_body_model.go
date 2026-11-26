@@ -52,7 +52,7 @@ type DeleteMaterialDirectoryResponseBody struct {
 	//
 	// False
 	AllowRetry *bool `json:"AllowRetry,omitempty" xml:"AllowRetry,omitempty"`
-	// The name of the application.
+	// The application name.
 	//
 	// example:
 	//
@@ -84,7 +84,7 @@ type DeleteMaterialDirectoryResponseBody struct {
 	//
 	// aliuid:1998006665794443 assumeRole not exist,serviceName:realtimelogpush.dcdnservices.aliyuncs.com
 	ErrorMsg *string `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
-	// Indicates whether the deletion was successful.
+	// Indicates whether the deletion is successful.
 	//
 	// example:
 	//
@@ -96,7 +96,7 @@ type DeleteMaterialDirectoryResponseBody struct {
 	//
 	// 6C6B99AC-39EC-5350-874C-204128C905E6
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The root error code.
+	// The error code.
 	//
 	// example:
 	//
@@ -114,7 +114,7 @@ type DeleteMaterialDirectoryResponseBody struct {
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// Indicates whether the operation is processed synchronously.
+	// Indicates whether the request is processed synchronously.
 	//
 	// example:
 	//

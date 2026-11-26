@@ -70,7 +70,7 @@ type OfflineAppInstanceResponseBody struct {
 	//
 	// example:
 	//
-	// {\\"TotalPageNum\\": 1, \\"ResultLimit\\": False, \\"CurrentPageNum\\": 0, \\"PageSize\\": 0, \\"TotalItemNum\\": 0}
+	// {\"TotalPageNum\": 1, \"ResultLimit\": False, \"CurrentPageNum\": 0, \"PageSize\": 0, \"TotalItemNum\": 0}
 	Module map[string]interface{} `json:"Module,omitempty" xml:"Module,omitempty"`
 	// Id of the request
 	//

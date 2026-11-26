@@ -78,7 +78,7 @@ type GetMiniAppBindingForAdminResponseBodyData struct {
 	//
 	// example:
 	//
-	// xxxx
+	// wx1111a1a111a1a111
 	PlatformAppid *string `json:"PlatformAppid,omitempty" xml:"PlatformAppid,omitempty"`
 }
 

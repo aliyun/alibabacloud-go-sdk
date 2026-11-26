@@ -30,7 +30,7 @@ type OperateAppServiceForPartnerRequest struct {
 	//
 	// example:
 	//
-	// {\\"user_device_id\\":\\"6bef45cb0c76de284d24de074c088b73\\"}\\n
+	// {\"user_device_id\":\"6bef45cb0c76de284d24de074c088b73\"}\n
 	Extend *string `json:"Extend,omitempty" xml:"Extend,omitempty"`
 	// The operation event. Valid values:
 	//

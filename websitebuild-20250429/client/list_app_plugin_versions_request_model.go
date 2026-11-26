@@ -18,7 +18,7 @@ type iListAppPluginVersionsRequest interface {
 }
 
 type ListAppPluginVersionsRequest struct {
-	// The page number. Valid values: integers greater than 0. Default value: 1.
+	// The current page number. Valid values: integers greater than 0. Default value: 1.
 	//
 	// example:
 	//

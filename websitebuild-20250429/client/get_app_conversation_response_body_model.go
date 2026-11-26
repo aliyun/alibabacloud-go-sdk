@@ -58,7 +58,7 @@ type GetAppConversationResponseBody struct {
 	//
 	// ERROR-oo1
 	DynamicCode *string `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
-	// The dynamic error message, which is used to replace `%s` in the **ErrMessage*	- error message.
+	// The dynamic error message, which is used to replace the `%s` placeholder in the **ErrMessage*	- response parameter.
 	//
 	// > If **ErrMessage*	- returns **The Value of Input Parameter %s is not valid*	- and **DynamicMessage*	- returns **DtsJobId**, it indicates that the **DtsJobId*	- request parameter is invalid.
 	//
@@ -245,7 +245,7 @@ type GetAppConversationResponseBodyModule struct {
 	//
 	// 1740479834
 	GmtCreateTime *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
-	// The update time. The time is in the ISO 8601 format and the UTC time zone (Z).
+	// The update time. The value is in ISO 8601 format and the time zone is UTC (Z).
 	//
 	// Use the UTC time format: yyyy-MM-ddTHH:mm:ss.SSSZ
 	//
@@ -257,7 +257,7 @@ type GetAppConversationResponseBodyModule struct {
 	//
 	// example:
 	//
-	// {\\"appId\\":\\"WS20260507200853000001\\",\\"inputTokens\\":1411,\\"outputTokens\\":51}
+	// {\"appId\":\"WS20260507200853000001\",\"inputTokens\":1411,\"outputTokens\":51}
 	MetaData *string `json:"MetaData,omitempty" xml:"MetaData,omitempty"`
 	// The section ID of the check item.
 	//
@@ -265,7 +265,7 @@ type GetAppConversationResponseBodyModule struct {
 	//
 	// 11
 	SectionId *string `json:"SectionId,omitempty" xml:"SectionId,omitempty"`
-	// The site ID. You can call the [ListSites](~~ListSites~~) operation to obtain the site ID.
+	// The site ID.
 	//
 	// example:
 	//
@@ -275,7 +275,7 @@ type GetAppConversationResponseBodyModule struct {
 	//
 	// example:
 	//
-	// Feel Like Makin\\" Love
+	// Feel Like Makin\" Love
 	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
 	// The user ID.
 	//

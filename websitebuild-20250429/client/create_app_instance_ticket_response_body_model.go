@@ -34,7 +34,7 @@ type iCreateAppInstanceTicketResponseBody interface {
 }
 
 type CreateAppInstanceTicketResponseBody struct {
-	// The detailed reasons for access denial.
+	// The detailed reasons for the access denial.
 	//
 	// example:
 	//
@@ -46,7 +46,7 @@ type CreateAppInstanceTicketResponseBody struct {
 	//
 	// False
 	AllowRetry *bool `json:"AllowRetry,omitempty" xml:"AllowRetry,omitempty"`
-	// The application name.
+	// The app name.
 	//
 	// example:
 	//
@@ -58,7 +58,9 @@ type CreateAppInstanceTicketResponseBody struct {
 	//
 	// ERROR-oo1
 	DynamicCode *string `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
-	// The dynamic error message, which is used to replace `%s` in the error message of the **ErrMessage*	- response parameter. If **ErrMessage*	- returns **The Value of Input Parameter %s is not valid*	- and **DynamicMessage*	- returns **DtsJobId**, the **DtsJobId*	- request parameter is invalid.
+	// The dynamic error message, which is used to replace `%s` in the **ErrMessage*	- response parameter.
+	//
+	// > If **ErrMessage*	- returns **The Value of Input Parameter %s is not valid*	- and **DynamicMessage*	- returns **DtsJobId**, it indicates that the **DtsJobId*	- request parameter is invalid.
 	//
 	// example:
 	//
@@ -211,19 +213,19 @@ func (s *CreateAppInstanceTicketResponseBody) Validate() error {
 }
 
 type CreateAppInstanceTicketResponseBodyModule struct {
-	// The time when the access token expires.
+	// The expiration time of the access token.
 	//
 	// example:
 	//
 	// 1768619049924
 	AccessTokenExpiresAt *string `json:"AccessTokenExpiresAt,omitempty" xml:"AccessTokenExpiresAt,omitempty"`
-	// The time when the access token was issued.
+	// The issuance time of the access token.
 	//
 	// example:
 	//
 	// 1768619049924
 	AccessTokenIssuedAt *string `json:"AccessTokenIssuedAt,omitempty" xml:"AccessTokenIssuedAt,omitempty"`
-	// The access token value.
+	// The value of the access token.
 	//
 	// example:
 	//
@@ -239,7 +241,7 @@ type CreateAppInstanceTicketResponseBodyModule struct {
 	//
 	// example:
 	//
-	// {\\"resourceGroupId\\":\\"\\",\\"page\\":1,\\"size\\":10,\\"selected\\":\\"[\\\\\\"kvstore\\\\\\"]\\"}
+	// {\"resourceGroupId\":\"\",\"page\":1,\"size\":10,\"selected\":\"[\\\"kvstore\\\"]\"}
 	Attributes *string `json:"Attributes,omitempty" xml:"Attributes,omitempty"`
 	// The authorization code type.
 	//
@@ -259,19 +261,19 @@ type CreateAppInstanceTicketResponseBodyModule struct {
 	//
 	// 12343131221311
 	ParentPk *string `json:"ParentPk,omitempty" xml:"ParentPk,omitempty"`
-	// The time when the refresh token expires.
+	// The expiration time of the refresh token.
 	//
 	// example:
 	//
 	// 1768619049924
 	RefreshTokenExpiresAt *string `json:"RefreshTokenExpiresAt,omitempty" xml:"RefreshTokenExpiresAt,omitempty"`
-	// The time when the refresh token was issued.
+	// The issuance time of the refresh token.
 	//
 	// example:
 	//
 	// 1768619049924
 	RefreshTokenIssuedAt *string `json:"RefreshTokenIssuedAt,omitempty" xml:"RefreshTokenIssuedAt,omitempty"`
-	// The refresh token value.
+	// The value of the refresh token.
 	//
 	// example:
 	//

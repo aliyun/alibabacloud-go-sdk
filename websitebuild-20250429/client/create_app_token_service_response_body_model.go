@@ -34,25 +34,25 @@ type iCreateAppTokenServiceResponseBody interface {
 }
 
 type CreateAppTokenServiceResponseBody struct {
-	// The detailed reason why access is denied.
+	// The detailed reason for the access denial.
 	//
 	// example:
 	//
 	// {}
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	// Indicates whether retry is allowed.
+	// Indicates whether a retry is allowed.
 	//
 	// example:
 	//
 	// False
 	AllowRetry *bool `json:"AllowRetry,omitempty" xml:"AllowRetry,omitempty"`
-	// The application name.
+	// The app name.
 	//
 	// example:
 	//
 	// spring-cloud-b
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	// The dynamic code. This parameter is not in use. Ignore this parameter.
+	// The dynamic code. This parameter is not used and can be ignored.
 	//
 	// example:
 	//
@@ -64,9 +64,9 @@ type CreateAppTokenServiceResponseBody struct {
 	//
 	// SYSTEM_ERROR
 	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
-	// The error parameters returned.
+	// The returned error parameters.
 	ErrorArgs []interface{} `json:"ErrorArgs,omitempty" xml:"ErrorArgs,omitempty" type:"Repeated"`
-	// Indicates whether the operation is successful.
+	// Indicates whether the move was successful.
 	Module *CreateAppTokenServiceResponseBodyModule `json:"Module,omitempty" xml:"Module,omitempty" type:"Struct"`
 	// Id of the request
 	//
@@ -80,13 +80,13 @@ type CreateAppTokenServiceResponseBody struct {
 	//
 	// SYSTEM.ERROR
 	RootErrorCode *string `json:"RootErrorCode,omitempty" xml:"RootErrorCode,omitempty"`
-	// The error message.
+	// The exception message.
 	//
 	// example:
 	//
-	// 系统异常
+	// System exception
 	RootErrorMsg *string `json:"RootErrorMsg,omitempty" xml:"RootErrorMsg,omitempty"`
-	// Indicates whether the request is synchronously processed.
+	// Indicates whether the processing is synchronous.
 	//
 	// example:
 	//
@@ -211,11 +211,11 @@ func (s *CreateAppTokenServiceResponseBody) Validate() error {
 }
 
 type CreateAppTokenServiceResponseBodyModule struct {
-	// The migration extension information (optional).
+	// The optional migration extension information.
 	//
 	// example:
 	//
-	// {\\"serviceApi\\":\\"sendUserMsg\\",\\"bizId\\":\\"sp\\"}
+	// {\"serviceApi\":\"sendUserMsg\",\"bizId\":\"sp\"}
 	ExtInfo *string `json:"ExtInfo,omitempty" xml:"ExtInfo,omitempty"`
 }
 

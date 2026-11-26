@@ -34,19 +34,19 @@ type iListAIStaffChatMessagesResponseBody interface {
 }
 
 type ListAIStaffChatMessagesResponseBody struct {
-	// The access denial details.
+	// The access denied details.
 	//
 	// example:
 	//
 	// {}
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	// Specifies whether a retry is allowed.
+	// Specifies whether retries are allowed.
 	//
 	// example:
 	//
 	// False
 	AllowRetry *bool `json:"AllowRetry,omitempty" xml:"AllowRetry,omitempty"`
-	// The name of the app.
+	// The app name.
 	//
 	// example:
 	//
@@ -80,11 +80,11 @@ type ListAIStaffChatMessagesResponseBody struct {
 	//
 	// SYSTEM.ERROR
 	RootErrorCode *string `json:"RootErrorCode,omitempty" xml:"RootErrorCode,omitempty"`
-	// The error message.
+	// The exception message.
 	//
 	// example:
 	//
-	// System error
+	// System exception
 	RootErrorMsg *string `json:"RootErrorMsg,omitempty" xml:"RootErrorMsg,omitempty"`
 	// The reserved parameter.
 	//
@@ -306,7 +306,11 @@ type ListAIStaffChatMessagesResponseBodyModuleMessages struct {
 	//
 	// 1dafa033-e72b-44c2-99b7-bc202c5b6198
 	MessageId *string `json:"MessageId,omitempty" xml:"MessageId,omitempty"`
-	// The business extension metadata. The value must be a JSON string in map format.
+	// The business extension metadata in map format. The value must be a JSON string.
+	//
+	// example:
+	//
+	// {"appId":"WS20260510153620000001","inputTokens":1120,"outputTokens":32}
 	MetaData map[string]interface{} `json:"MetaData,omitempty" xml:"MetaData,omitempty"`
 	// The role of the conversation participant. Valid values:
 	//

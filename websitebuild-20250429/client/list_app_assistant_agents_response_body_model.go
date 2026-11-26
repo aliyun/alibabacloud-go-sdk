@@ -34,13 +34,13 @@ type iListAppAssistantAgentsResponseBody interface {
 }
 
 type ListAppAssistantAgentsResponseBody struct {
-	// The detailed reason why access was denied.
+	// The detailed reasons for access denial.
 	//
 	// example:
 	//
 	// {}
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	// Indicates whether a retry is allowed.
+	// Specifies whether retries are allowed.
 	//
 	// example:
 	//
@@ -58,15 +58,15 @@ type ListAppAssistantAgentsResponseBody struct {
 	//
 	// ERROR-oo1
 	DynamicCode *string `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
-	// The dynamic error message, which is used to replace the `%s` placeholder in the **ErrMessage*	- response element.
+	// The dynamic error message, which is used to replace `%s` in the **ErrMessage*	- error message.
 	//
-	// > If **ErrMessage*	- returns **The Value of Input Parameter %s is not valid*	- and **DynamicMessage*	- returns **DtsJobId**, the value of the **DtsJobId*	- request parameter is invalid.
+	// > If **ErrMessage*	- returns **The Value of Input Parameter %s is not valid*	- and **DynamicMessage*	- returns **DtsJobId**, it indicates that the request parameter **DtsJobId*	- is invalid.
 	//
 	// example:
 	//
 	// SYSTEM_ERROR
 	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
-	// The error parameters.
+	// The returned error parameters.
 	ErrorArgs []interface{} `json:"ErrorArgs,omitempty" xml:"ErrorArgs,omitempty" type:"Repeated"`
 	// The response data.
 	Module []*ListAppAssistantAgentsResponseBodyModule `json:"Module,omitempty" xml:"Module,omitempty" type:"Repeated"`
@@ -86,9 +86,9 @@ type ListAppAssistantAgentsResponseBody struct {
 	//
 	// example:
 	//
-	// 系统异常
+	// System exception
 	RootErrorMsg *string `json:"RootErrorMsg,omitempty" xml:"RootErrorMsg,omitempty"`
-	// A reserved parameter.
+	// The reserved parameter.
 	//
 	// example:
 	//
@@ -227,7 +227,7 @@ type ListAppAssistantAgentsResponseBodyModule struct {
 	//
 	// example:
 	//
-	// 演示
+	// Demo
 	AgentName *string `json:"AgentName,omitempty" xml:"AgentName,omitempty"`
 	// The business ID of the associated application instance.
 	//
@@ -235,11 +235,11 @@ type ListAppAssistantAgentsResponseBodyModule struct {
 	//
 	// WD20250703155602000001
 	BizId *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
-	// The authentication credential.
+	// The authentication credentials.
 	Credential *ListAppAssistantAgentsResponseBodyModuleCredential `json:"Credential,omitempty" xml:"Credential,omitempty" type:"Struct"`
 	// The embedding configuration.
 	EmbedConfig *ListAppAssistantAgentsResponseBodyModuleEmbedConfig `json:"EmbedConfig,omitempty" xml:"EmbedConfig,omitempty" type:"Struct"`
-	// The extension parameters.
+	// The extra parameters.
 	//
 	// example:
 	//
@@ -257,7 +257,7 @@ type ListAppAssistantAgentsResponseBodyModule struct {
 	//
 	// 2025-08-28T02:25:41Z
 	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	// The platform application ID of the agent.
+	// The application ID of the agent platform.
 	//
 	// example:
 	//
@@ -426,7 +426,7 @@ type ListAppAssistantAgentsResponseBodyModuleCredential struct {
 	//
 	// sk-xxxxxx
 	ApiSecret *string `json:"ApiSecret,omitempty" xml:"ApiSecret,omitempty"`
-	// The extension field.
+	// The extension fields.
 	//
 	// example:
 	//
@@ -436,7 +436,7 @@ type ListAppAssistantAgentsResponseBodyModuleCredential struct {
 	//
 	// example:
 	//
-	// Demo****2026
+	// ***
 	Password *string `json:"Password,omitempty" xml:"Password,omitempty"`
 	// The username.
 	//
@@ -504,7 +504,7 @@ func (s *ListAppAssistantAgentsResponseBodyModuleCredential) Validate() error {
 }
 
 type ListAppAssistantAgentsResponseBodyModuleEmbedConfig struct {
-	// The extension field.
+	// The extension fields.
 	//
 	// example:
 	//

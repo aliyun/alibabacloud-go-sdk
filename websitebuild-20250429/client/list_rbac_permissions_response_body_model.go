@@ -38,19 +38,19 @@ type iListRbacPermissionsResponseBody interface {
 }
 
 type ListRbacPermissionsResponseBody struct {
-	// The detailed reason why access is denied.
+	// The detailed reason for access denial.
 	//
 	// example:
 	//
 	// {}
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	// Specifies whether retries are allowed.
+	// Indicates whether retries are allowed.
 	//
 	// example:
 	//
 	// False
 	AllowRetry *bool `json:"AllowRetry,omitempty" xml:"AllowRetry,omitempty"`
-	// The name of the app.
+	// The application name.
 	//
 	// example:
 	//
@@ -70,7 +70,7 @@ type ListRbacPermissionsResponseBody struct {
 	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
 	// The returned error parameters.
 	ErrorArgs []interface{} `json:"ErrorArgs,omitempty" xml:"ErrorArgs,omitempty" type:"Repeated"`
-	// The number of entries to return in each query.
+	// The number of results returned per query.
 	//
 	// Valid values: 10 to 100. Default value: 20.
 	//
@@ -80,7 +80,7 @@ type ListRbacPermissionsResponseBody struct {
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
 	// The returned object.
 	Module *ListRbacPermissionsResponseBodyModule `json:"Module,omitempty" xml:"Module,omitempty" type:"Struct"`
-	// The token that is used to start the next query. This parameter is empty if no next query exists.
+	// The token used to start the next query. This parameter is empty if no next query exists.
 	//
 	// example:
 	//
@@ -255,7 +255,7 @@ type ListRbacPermissionsResponseBodyModule struct {
 	CurrentPageNum *int32 `json:"CurrentPageNum,omitempty" xml:"CurrentPageNum,omitempty"`
 	// The request results.
 	Data []*ListRbacPermissionsResponseBodyModuleData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
-	// The ID of the next feature.
+	// The next feature ID.
 	Next *ListRbacPermissionsResponseBodyModuleNext `json:"Next,omitempty" xml:"Next,omitempty" type:"Struct"`
 	// Indicates whether a next page exists.
 	//
@@ -275,7 +275,7 @@ type ListRbacPermissionsResponseBodyModule struct {
 	//
 	// False
 	PrePage *bool `json:"PrePage,omitempty" xml:"PrePage,omitempty"`
-	// In addition to the pagination limit, the server processes a maximum of the latest 1,000 records for the current query. If the number of results exceeds 1,000, **ResultLimit*	- is **true**. In this case, narrow the time range and search again. Otherwise, **ResultLimit*	- is **false**.
+	// In addition to the pagination limit, the server processes a maximum of the latest 1,000 records for the current query. If the number of results exceeds 1,000, **ResultLimit*	- is set to **true**. In this case, narrow the time range and search again. Otherwise, **ResultLimit*	- is set to **false**.
 	//
 	// example:
 	//

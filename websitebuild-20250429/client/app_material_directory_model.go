@@ -30,7 +30,7 @@ type AppMaterialDirectory struct {
 	//
 	// WD20250814102215000001
 	BizId *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
-	// The list of subfolders.
+	// The list of child folders.
 	Children []*AppMaterialDirectory `json:"Children,omitempty" xml:"Children,omitempty" type:"Repeated"`
 	// The folder ID.
 	//
@@ -42,9 +42,9 @@ type AppMaterialDirectory struct {
 	//
 	// example:
 	//
-	// 图片管理
+	// Image Management
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The sort number.
+	// The sort order.
 	//
 	// example:
 	//

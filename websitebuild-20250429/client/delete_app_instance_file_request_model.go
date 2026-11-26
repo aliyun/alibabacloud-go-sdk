@@ -16,7 +16,7 @@ type iDeleteAppInstanceFileRequest interface {
 }
 
 type DeleteAppInstanceFileRequest struct {
-	// The session ID.
+	// The conversation ID.
 	//
 	// example:
 	//

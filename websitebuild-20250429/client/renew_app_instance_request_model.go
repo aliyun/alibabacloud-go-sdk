@@ -30,7 +30,7 @@ type RenewAppInstanceRequest struct {
 	//
 	// WD20250718165839000001
 	BizId *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
-	// The client token that is used to ensure the idempotence of the request. Generate a unique value from your client. The ClientToken value can contain only ASCII characters and cannot exceed 64 characters in length.
+	// The client token that is used to ensure request idempotence. You can generate the value from your client and make sure that it is unique across different requests. The token can only contain ASCII characters and cannot exceed 64 characters in length.
 	//
 	// example:
 	//
@@ -46,23 +46,15 @@ type RenewAppInstanceRequest struct {
 	//
 	// example:
 	//
-	// {\\"deliveryNodeName\\":\\"交付质检\\",\\"deliveryNodeStatus\\":\\"Finish\\",\\"deliveryOperatorRole\\":\\"Provider\\"}
+	// {\"deliveryNodeName\":\"Delivery quality inspection\",\"deliveryNodeStatus\":\"Finish\",\"deliveryOperatorRole\":\"Provider\"}
 	Extend *string `json:"Extend,omitempty" xml:"Extend,omitempty"`
-	// The payment type.
+	// The payment method.
 	//
 	// example:
 	//
 	// PayAsYouGo
 	PaymentType *string `json:"PaymentType,omitempty" xml:"PaymentType,omitempty"`
-	// Required. The unit of the subscription period. Valid values:
-	//
-	// - Year: year
-	//
-	// - Month: month
-	//
-	// - Day: day
-	//
-	// - Hour: hour.
+	// Required. The unit of the subscription period. Valid values: Year, Month, Day, and Hour.
 	//
 	// example:
 	//

@@ -99,6 +99,10 @@ type GetMiniAppBindingResponseBodyData struct {
 	// http://xxxx
 	ProductionQrCodeUrl *string `json:"ProductionQrCodeUrl,omitempty" xml:"ProductionQrCodeUrl,omitempty"`
 	// The extended information.
+	//
+	// example:
+	//
+	// {"SERVER_DOMAIN":"{\"requestDomains\":[{\"domain\":\"https://api.example.com\",\"source\":\"managed\"}],\"wsRequestDomains\":[],\"uploadDomains\":[],\"downloadDomains\":[],\"udpDomains\":[],\"tcpDomains\":[]}"}
 	SettingValues map[string]*string `json:"SettingValues,omitempty" xml:"SettingValues,omitempty"`
 }
 

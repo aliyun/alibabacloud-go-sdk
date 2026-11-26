@@ -28,7 +28,7 @@ type CreateAIStaffChatRequest struct {
 	//
 	// WS20250801154628000001
 	BizId *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
-	// The chat ID. Pass in this parameter to resume a conversation after an interruption.
+	// The chat ID. Pass this parameter when resuming from an interruption.
 	//
 	// example:
 	//
@@ -42,7 +42,7 @@ type CreateAIStaffChatRequest struct {
 	ConversationId *string `json:"ConversationId,omitempty" xml:"ConversationId,omitempty"`
 	// The list of conversation messages.
 	Messages []*CreateAIStaffChatRequestMessages `json:"Messages,omitempty" xml:"Messages,omitempty" type:"Repeated"`
-	// The additional information for the conversation.
+	// The additional conversation information.
 	//
 	// example:
 	//
@@ -121,7 +121,7 @@ type CreateAIStaffChatRequestMessages struct {
 	//
 	// example:
 	//
-	// {\\"CodeRevision\\": \\"1750040991876284109\\"}
+	// {\"CodeRevision\": \"1750040991876284109\"}
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
 	// The content type.
 	//
@@ -129,7 +129,7 @@ type CreateAIStaffChatRequestMessages struct {
 	//
 	// application/octet-stream
 	ContentType *string `json:"ContentType,omitempty" xml:"ContentType,omitempty"`
-	// The business extension metadata in Map format. The value must be a JSON string.
+	// The business extension metadata in map format. The value must be a JSON string.
 	//
 	// example:
 	//

@@ -34,19 +34,19 @@ type iDeleteAppDomainRedirectResponseBody interface {
 }
 
 type DeleteAppDomainRedirectResponseBody struct {
-	// The detailed reason why access was denied.
+	// The detailed reason for the access denial.
 	//
 	// example:
 	//
 	// {}
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	// Indicates whether retry is allowed.
+	// Indicates whether a retry is allowed.
 	//
 	// example:
 	//
 	// False
 	AllowRetry *bool `json:"AllowRetry,omitempty" xml:"AllowRetry,omitempty"`
-	// The application name used for the query.
+	// The name of the application used to query the application.
 	//
 	// example:
 	//
@@ -64,7 +64,7 @@ type DeleteAppDomainRedirectResponseBody struct {
 	//
 	// SYSTEM_ERROR
 	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
-	// The error parameters.
+	// The returned error parameters.
 	ErrorArgs []interface{} `json:"ErrorArgs,omitempty" xml:"ErrorArgs,omitempty" type:"Repeated"`
 	// The response data.
 	Module *DeleteAppDomainRedirectResponseBodyModule `json:"Module,omitempty" xml:"Module,omitempty" type:"Struct"`
@@ -80,13 +80,13 @@ type DeleteAppDomainRedirectResponseBody struct {
 	//
 	// SYSTEM.ERROR
 	RootErrorCode *string `json:"RootErrorCode,omitempty" xml:"RootErrorCode,omitempty"`
-	// The error message.
+	// The exception message.
 	//
 	// example:
 	//
 	// System exception
 	RootErrorMsg *string `json:"RootErrorMsg,omitempty" xml:"RootErrorMsg,omitempty"`
-	// Indicates whether the request was processed synchronously.
+	// Indicates whether the request is processed synchronously.
 	//
 	// example:
 	//
@@ -211,7 +211,7 @@ func (s *DeleteAppDomainRedirectResponseBody) Validate() error {
 }
 
 type DeleteAppDomainRedirectResponseBodyModule struct {
-	// Indicates whether the operation was successful.
+	// Indicates whether the operation is successful.
 	//
 	// example:
 	//

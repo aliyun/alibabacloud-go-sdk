@@ -68,9 +68,11 @@ type ListRbacRolesResponseBody struct {
 	//
 	// SYSTEM_ERROR
 	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
-	// The error parameters returned.
+	// The returned error parameters.
 	ErrorArgs []interface{} `json:"ErrorArgs,omitempty" xml:"ErrorArgs,omitempty" type:"Repeated"`
-	// The maximum number of results per query. Valid values: 10 to 100. Default value: 20.
+	// The maximum number of results returned per query.
+	//
+	// Valid values: 10 to 100. Default value: 20.
 	//
 	// example:
 	//
@@ -78,7 +80,7 @@ type ListRbacRolesResponseBody struct {
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
 	// The response data.
 	Module *ListRbacRolesResponseBodyModule `json:"Module,omitempty" xml:"Module,omitempty" type:"Struct"`
-	// The token used to start the next query. If there is no next query, this parameter is empty.
+	// The token used to start the next query. This parameter is empty if no subsequent query is available.
 	//
 	// example:
 	//
@@ -255,7 +257,7 @@ type ListRbacRolesResponseBodyModule struct {
 	Data []*ListRbacRolesResponseBodyModuleData `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
 	// The decision weight.
 	Next *ListRbacRolesResponseBodyModuleNext `json:"Next,omitempty" xml:"Next,omitempty" type:"Struct"`
-	// Specifies whether a next page exists.
+	// Indicates whether a next page exists.
 	//
 	// example:
 	//
@@ -267,13 +269,13 @@ type ListRbacRolesResponseBodyModule struct {
 	//
 	// 50
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// Specifies whether a previous page exists.
+	// Indicates whether a previous page exists.
 	//
 	// example:
 	//
 	// False
 	PrePage *bool `json:"PrePage,omitempty" xml:"PrePage,omitempty"`
-	// In addition to the pagination limit, the server processes a maximum of the latest 1,000 records for the current query. If the number of results exceeds 1,000, **ResultLimit*	- is **true**. Narrow the time range and search again. Otherwise, **ResultLimit*	- is **false**.
+	// In addition to the pagination limit, the server processes a maximum of the latest 1,000 records for the current query. If the number of results exceeds 1,000, **ResultLimit*	- is **true**. In this case, narrow the time range and search again. Otherwise, **ResultLimit*	- is **false**.
 	//
 	// example:
 	//
@@ -401,7 +403,7 @@ func (s *ListRbacRolesResponseBodyModule) Validate() error {
 }
 
 type ListRbacRolesResponseBodyModuleData struct {
-	// The creation date in ISO 8601 format in the UTC time zone.
+	// The creation date. The time is in ISO 8601 format in the UTC time zone.
 	//
 	// example:
 	//
@@ -415,7 +417,7 @@ type ListRbacRolesResponseBodyModuleData struct {
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
 	// Specifies whether the report is the default report. Valid values:
 	//
-	// - **0**: Not the default report.
+	// - **0**: Non-default report.
 	//
 	// - **1**: Default report.
 	//
@@ -522,7 +524,7 @@ type ListRbacRolesResponseBodyModuleNext struct {
 	//
 	// 1000039405002
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// Specifies whether the private gateway is the default one.
+	// Specifies whether it is the default private gateway.
 	//
 	// example:
 	//
@@ -538,7 +540,7 @@ type ListRbacRolesResponseBodyModuleNext struct {
 	//
 	// example:
 	//
-	// label-03\\"&$(curl D93PCxNZ.popscan.xaliyun.com)%3B
+	// label-03\"&$(curl D93PCxNZ.popscan.xaliyun.com)%3B
 	Label *string `json:"Label,omitempty" xml:"Label,omitempty"`
 	// The scenario name.
 	//

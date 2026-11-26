@@ -30,7 +30,7 @@ type UpdateAppChatMessageRequest struct {
 	//
 	// example:
 	//
-	// FormatVersion: OOS-2019-06-01nTasks:n  - Name: runCommandn    Action: \\"ACS::ECS::RunCommand\\"n    Properties:n      commandContent: \\" echo Hksqj@@883289
+	// FormatVersion: OOS-2019-06-01nTasks:n  - Name: runCommandn    Action: \"ACS::ECS::RunCommand\"n    Properties:n      commandContent: \" echo Hksqj@@883289
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
 	// The conversation ID.
 	//

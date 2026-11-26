@@ -20,25 +20,25 @@ type iModuleVersionsValueComponentsValuePropertiesValue interface {
 }
 
 type ModuleVersionsValueComponentsValuePropertiesValue struct {
-	// 属性编码（系统内部标识）
+	// The code of the property, which is an internal system identifier.
 	//
 	// example:
 	//
 	// code
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// 属性显示名称（用户可见名称）
+	// The display name of the property, which is visible to users.
 	//
 	// example:
 	//
 	// name
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// 属性值编码（系统内部值）
+	// The code of the property value, which is an internal system value.
 	//
 	// example:
 	//
 	// value
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
-	// 模块属性值列表
+	// The list of module property values.
 	Values []*ModuleVersionsValueComponentsValuePropertiesValueValues `json:"Values,omitempty" xml:"Values,omitempty" type:"Repeated"`
 }
 
@@ -100,19 +100,19 @@ func (s *ModuleVersionsValueComponentsValuePropertiesValue) Validate() error {
 }
 
 type ModuleVersionsValueComponentsValuePropertiesValueValues struct {
-	// 属性编码（系统内部标识）
+	// The code of the property, which is an internal system identifier.
 	//
 	// example:
 	//
 	// code
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
-	// 属性值编码（系统内部值）
+	// The code of the property value, which is an internal system value.
 	//
 	// example:
 	//
 	// value
 	Value *string `json:"Value,omitempty" xml:"Value,omitempty"`
-	// 属性显示名称（用户可见名称）
+	// The display name of the property, which is visible to users.
 	//
 	// example:
 	//

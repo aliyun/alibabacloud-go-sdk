@@ -22,7 +22,7 @@ type iSearchImageResponseBody interface {
 }
 
 type SearchImageResponseBody struct {
-	// The error code. If the request is successful, this field is not returned. If the request fails, this field is returned. For more information, see the error codes in this topic.
+	// The error code. If the request is successful, the ErrorCode parameter is not returned. If the request fails, the ErrorCode parameter is returned. For more information, see the error code list in this topic.
 	//
 	// example:
 	//
@@ -42,7 +42,7 @@ type SearchImageResponseBody struct {
 	//
 	// 6C6B99AC-39EC-5350-874C-204128C905E6
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	//
 	// example:
 	//
@@ -115,15 +115,13 @@ func (s *SearchImageResponseBody) Validate() error {
 type SearchImageResponseBodyImageResponse struct {
 	// The image list.
 	ImageList []*SearchImageResponseBodyImageResponseImageList `json:"ImageList,omitempty" xml:"ImageList,omitempty" type:"Repeated"`
-	// The number of entries returned per query.
-	//
-	// Valid values: 10 to 100. Default value: 20.
+	// The number of results returned per query. Valid values: 10 to 100. Default value: 20.
 	//
 	// example:
 	//
 	// 3
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The token for the next query. This value is empty if there are no more results.
+	// The token for the next query. This parameter is empty if no next query exists.
 	//
 	// example:
 	//
@@ -180,11 +178,11 @@ func (s *SearchImageResponseBodyImageResponse) Validate() error {
 }
 
 type SearchImageResponseBodyImageResponseImageList struct {
-	// The descriptive tones identified from the image.
+	// The descriptive tones recognized from the image.
 	//
 	// example:
 	//
-	// 冷色调 蓝色
+	// Cool tone, blue
 	DescriptiveTones *string `json:"DescriptiveTones,omitempty" xml:"DescriptiveTones,omitempty"`
 	// The height of the image.
 	//
@@ -194,11 +192,11 @@ type SearchImageResponseBodyImageResponseImageList struct {
 	Height *int32 `json:"Height,omitempty" xml:"Height,omitempty"`
 	// The image category. Valid values:
 	//
-	// - normal: illustrations or article images.
+	// - normal: Illustrations and article images.
 	//
-	// - banner: background images or carousel images.
+	// - banner: Background images and carousel images.
 	//
-	// - goods: product or service images.
+	// - goods: Product or service images.
 	//
 	// example:
 	//
@@ -232,7 +230,7 @@ type SearchImageResponseBodyImageResponseImageList struct {
 	//
 	// example:
 	//
-	// 日出、奔跑
+	// Sunrise, running
 	TagsFromImage *string `json:"TagsFromImage,omitempty" xml:"TagsFromImage,omitempty"`
 	// The temporary access URL of the image.
 	//

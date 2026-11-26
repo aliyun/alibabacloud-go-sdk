@@ -46,13 +46,13 @@ type ModifyMaterialFileStatusResponseBody struct {
 	//
 	// False
 	AllowRetry *bool `json:"AllowRetry,omitempty" xml:"AllowRetry,omitempty"`
-	// The name of the app.
+	// The app name.
 	//
 	// example:
 	//
 	// or
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	// The dynamic code. This parameter is not used and can be ignored.
+	// The dynamic code. This field is not used and can be ignored.
 	//
 	// example:
 	//
@@ -66,7 +66,7 @@ type ModifyMaterialFileStatusResponseBody struct {
 	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
 	// The returned error parameters.
 	ErrorArgs []interface{} `json:"ErrorArgs,omitempty" xml:"ErrorArgs,omitempty" type:"Repeated"`
-	// Indicates whether the update was successful.
+	// Indicates whether the modification was successful.
 	//
 	// example:
 	//
@@ -90,7 +90,7 @@ type ModifyMaterialFileStatusResponseBody struct {
 	//
 	// System exception
 	RootErrorMsg *string `json:"RootErrorMsg,omitempty" xml:"RootErrorMsg,omitempty"`
-	// Indicates whether the request is processed synchronously.
+	// Specifies whether the processing is synchronous.
 	//
 	// example:
 	//

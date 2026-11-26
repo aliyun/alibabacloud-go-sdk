@@ -42,7 +42,7 @@ type SyncAppInstanceForPartnerRequest struct {
 	//
 	// 31104757
 	SourceBizId *string `json:"SourceBizId,omitempty" xml:"SourceBizId,omitempty"`
-	// The source. Set this parameter to MARKET_CLOUD_DREAM.
+	// The source type. Valid value: MARKET_CLOUD_DREAM.
 	//
 	// example:
 	//
@@ -113,7 +113,7 @@ func (s *SyncAppInstanceForPartnerRequest) Validate() error {
 }
 
 type SyncAppInstanceForPartnerRequestAppInstance struct {
-	// The application type. Set this parameter to WEBSITE.
+	// The application type. Valid value: WEBSITE.
 	//
 	// example:
 	//
@@ -149,7 +149,7 @@ type SyncAppInstanceForPartnerRequestAppInstance struct {
 	//
 	// 2025-01-01 00:00:00
 	GmtDelete *string `json:"GmtDelete,omitempty" xml:"GmtDelete,omitempty"`
-	// The timestamp when the vulnerability was published. Unit: milliseconds.
+	// The timestamp when the vulnerability was published, in milliseconds.
 	//
 	// example:
 	//
@@ -171,7 +171,7 @@ type SyncAppInstanceForPartnerRequestAppInstance struct {
 	//
 	// example:
 	//
-	// Website configuration information
+	// {"DeployArea":"ChineseMainland"}
 	Profile *SyncAppInstanceForPartnerRequestAppInstanceProfile `json:"Profile,omitempty" xml:"Profile,omitempty" type:"Struct"`
 	// siteId
 	//
@@ -179,13 +179,13 @@ type SyncAppInstanceForPartnerRequestAppInstance struct {
 	//
 	// xxxx.scd.wezhan.cn
 	SiteHost *string `json:"SiteHost,omitempty" xml:"SiteHost,omitempty"`
-	// The website SiteID.
+	// The site ID of the website.
 	//
 	// example:
 	//
 	// 31104757
 	Slug *string `json:"Slug,omitempty" xml:"Slug,omitempty"`
-	// The start time of the query. If you do not specify the start time or end time, all historical deployment records of the instance are queried. Specify the time in the ISO 8601 standard in the UTC (Z) time zone.
+	// The start time of the query. If you do not specify the start and end times, all historical deployment records of the instance are queried. Specify the time in the ISO 8601 standard in the UTC time zone.
 	//
 	// example:
 	//
@@ -207,11 +207,11 @@ type SyncAppInstanceForPartnerRequestAppInstance struct {
 	//
 	// - Success: Execution succeeded.
 	//
-	// - Checking: Submitted for data quality check.
+	// - Checking: Dispatched for data quality check.
 	//
 	// example:
 	//
-	// {\\"Phase\\": \\"Running\\", \\"SlotNum\\": 1, \\"UsedCapacity\\": \\"500.0Gi\\"}
+	// {\"Phase\": \"Running\", \"SlotNum\": 1, \"UsedCapacity\": \"500.0Gi\"}
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	// The URL of the thumbnail.
 	//

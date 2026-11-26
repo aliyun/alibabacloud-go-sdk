@@ -34,25 +34,25 @@ type iDeleteMaterialTaskResponseBody interface {
 }
 
 type DeleteMaterialTaskResponseBody struct {
-	// The details of the permission verification failure.
+	// The details of the permission check failure.
 	//
 	// example:
 	//
 	// {}
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	// Indicates whether a retry is allowed.
+	// Specifies whether retries are allowed.
 	//
 	// example:
 	//
 	// False
 	AllowRetry *bool `json:"AllowRetry,omitempty" xml:"AllowRetry,omitempty"`
-	// The application name. The application with this name is queried.
+	// The name of the application. This name is used to query the application.
 	//
 	// example:
 	//
 	// dewuApp
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	// The dynamic code. This parameter is not in use. Ignore this parameter.
+	// The dynamic code. This parameter is not used and can be ignored.
 	//
 	// example:
 	//
@@ -66,7 +66,7 @@ type DeleteMaterialTaskResponseBody struct {
 	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
 	// The returned error parameters.
 	ErrorArgs []interface{} `json:"ErrorArgs,omitempty" xml:"ErrorArgs,omitempty" type:"Repeated"`
-	// Indicates whether the deletion was successful.
+	// Specifies whether the deletion was successful.
 	//
 	// example:
 	//
@@ -84,11 +84,11 @@ type DeleteMaterialTaskResponseBody struct {
 	//
 	// SYSTEM.ERROR
 	RootErrorCode *string `json:"RootErrorCode,omitempty" xml:"RootErrorCode,omitempty"`
-	// The error message.
+	// The exception message.
 	//
 	// example:
 	//
-	// 系统异常
+	// System exception
 	RootErrorMsg *string `json:"RootErrorMsg,omitempty" xml:"RootErrorMsg,omitempty"`
 	// The reserved parameter.
 	//

@@ -350,12 +350,17 @@ func (s *ListAppPublishHistoryResponseBodyModule) Validate() error {
 }
 
 type ListAppPublishHistoryResponseBodyModuleHistory struct {
+	ArtifactDigest *string `json:"ArtifactDigest,omitempty" xml:"ArtifactDigest,omitempty"`
+	AuditId        *string `json:"AuditId,omitempty" xml:"AuditId,omitempty"`
+	BindingId      *string `json:"BindingId,omitempty" xml:"BindingId,omitempty"`
 	// Specifies whether quick rollback is supported.
 	//
 	// example:
 	//
 	// true
-	CanQuickRevert *string `json:"CanQuickRevert,omitempty" xml:"CanQuickRevert,omitempty"`
+	CanQuickRevert  *string `json:"CanQuickRevert,omitempty" xml:"CanQuickRevert,omitempty"`
+	CandidateId     *string `json:"CandidateId,omitempty" xml:"CandidateId,omitempty"`
+	CandidateStatus *string `json:"CandidateStatus,omitempty" xml:"CandidateStatus,omitempty"`
 	// The commit hash of the code.
 	//
 	// example:
@@ -433,7 +438,14 @@ type ListAppPublishHistoryResponseBodyModuleHistory struct {
 	// example:
 	//
 	// true
-	Percent *int32 `json:"Percent,omitempty" xml:"Percent,omitempty"`
+	Percent               *int32  `json:"Percent,omitempty" xml:"Percent,omitempty"`
+	PlatformAppid         *string `json:"PlatformAppid,omitempty" xml:"PlatformAppid,omitempty"`
+	PluginDeclarationHash *string `json:"PluginDeclarationHash,omitempty" xml:"PluginDeclarationHash,omitempty"`
+	PluginState           *string `json:"PluginState,omitempty" xml:"PluginState,omitempty"`
+	PrivacyDraftId        *string `json:"PrivacyDraftId,omitempty" xml:"PrivacyDraftId,omitempty"`
+	PrivacyRevision       *string `json:"PrivacyRevision,omitempty" xml:"PrivacyRevision,omitempty"`
+	PublishDiagnostics    *string `json:"PublishDiagnostics,omitempty" xml:"PublishDiagnostics,omitempty"`
+	PublishEnv            *string `json:"PublishEnv,omitempty" xml:"PublishEnv,omitempty"`
 	// The release number.
 	//
 	// example:
@@ -446,14 +458,15 @@ type ListAppPublishHistoryResponseBodyModuleHistory struct {
 	//
 	// 123
 	PublishOrderId *int64 `json:"PublishOrderId,omitempty" xml:"PublishOrderId,omitempty"`
-	// The release time in the UTC format yyyy-MM-dd\\"T\\"HH:mm:ss.SSS\\"Z\\".
+	// The release time in the UTC format yyyy-MM-dd\"T\"HH:mm:ss.SSS\"Z\".
 	//
 	// Use the UTC time format: yyyy-MM-ddTHH:mm:ss.SSSZ
 	//
 	// example:
 	//
 	// 2026
-	PublishTime *string `json:"PublishTime,omitempty" xml:"PublishTime,omitempty"`
+	PublishTime    *string `json:"PublishTime,omitempty" xml:"PublishTime,omitempty"`
+	ReadbackStatus *string `json:"ReadbackStatus,omitempty" xml:"ReadbackStatus,omitempty"`
 	// The list of release step codes.
 	StepCodes []*string `json:"StepCodes,omitempty" xml:"StepCodes,omitempty" type:"Repeated"`
 	// The specific configurations of the component.
@@ -463,7 +476,13 @@ type ListAppPublishHistoryResponseBodyModuleHistory struct {
 	// example:
 	//
 	// wx0123456789abcdef
-	Subchannel *string `json:"Subchannel,omitempty" xml:"Subchannel,omitempty"`
+	Subchannel         *string `json:"Subchannel,omitempty" xml:"Subchannel,omitempty"`
+	SubmitIntentStatus *string `json:"SubmitIntentStatus,omitempty" xml:"SubmitIntentStatus,omitempty"`
+	UpdatedAt          *int64  `json:"UpdatedAt,omitempty" xml:"UpdatedAt,omitempty"`
+	UploadAttemptId    *string `json:"UploadAttemptId,omitempty" xml:"UploadAttemptId,omitempty"`
+	UploadLeaseState   *string `json:"UploadLeaseState,omitempty" xml:"UploadLeaseState,omitempty"`
+	UploadSequence     *int64  `json:"UploadSequence,omitempty" xml:"UploadSequence,omitempty"`
+	UploadTicketState  *string `json:"UploadTicketState,omitempty" xml:"UploadTicketState,omitempty"`
 }
 
 func (s ListAppPublishHistoryResponseBodyModuleHistory) String() string {
@@ -474,8 +493,28 @@ func (s ListAppPublishHistoryResponseBodyModuleHistory) GoString() string {
 	return s.String()
 }
 
+func (s *ListAppPublishHistoryResponseBodyModuleHistory) GetArtifactDigest() *string {
+	return s.ArtifactDigest
+}
+
+func (s *ListAppPublishHistoryResponseBodyModuleHistory) GetAuditId() *string {
+	return s.AuditId
+}
+
+func (s *ListAppPublishHistoryResponseBodyModuleHistory) GetBindingId() *string {
+	return s.BindingId
+}
+
 func (s *ListAppPublishHistoryResponseBodyModuleHistory) GetCanQuickRevert() *string {
 	return s.CanQuickRevert
+}
+
+func (s *ListAppPublishHistoryResponseBodyModuleHistory) GetCandidateId() *string {
+	return s.CandidateId
+}
+
+func (s *ListAppPublishHistoryResponseBodyModuleHistory) GetCandidateStatus() *string {
+	return s.CandidateStatus
 }
 
 func (s *ListAppPublishHistoryResponseBodyModuleHistory) GetCommitHash() *string {
@@ -530,6 +569,34 @@ func (s *ListAppPublishHistoryResponseBodyModuleHistory) GetPercent() *int32 {
 	return s.Percent
 }
 
+func (s *ListAppPublishHistoryResponseBodyModuleHistory) GetPlatformAppid() *string {
+	return s.PlatformAppid
+}
+
+func (s *ListAppPublishHistoryResponseBodyModuleHistory) GetPluginDeclarationHash() *string {
+	return s.PluginDeclarationHash
+}
+
+func (s *ListAppPublishHistoryResponseBodyModuleHistory) GetPluginState() *string {
+	return s.PluginState
+}
+
+func (s *ListAppPublishHistoryResponseBodyModuleHistory) GetPrivacyDraftId() *string {
+	return s.PrivacyDraftId
+}
+
+func (s *ListAppPublishHistoryResponseBodyModuleHistory) GetPrivacyRevision() *string {
+	return s.PrivacyRevision
+}
+
+func (s *ListAppPublishHistoryResponseBodyModuleHistory) GetPublishDiagnostics() *string {
+	return s.PublishDiagnostics
+}
+
+func (s *ListAppPublishHistoryResponseBodyModuleHistory) GetPublishEnv() *string {
+	return s.PublishEnv
+}
+
 func (s *ListAppPublishHistoryResponseBodyModuleHistory) GetPublishNumber() *string {
 	return s.PublishNumber
 }
@@ -540,6 +607,10 @@ func (s *ListAppPublishHistoryResponseBodyModuleHistory) GetPublishOrderId() *in
 
 func (s *ListAppPublishHistoryResponseBodyModuleHistory) GetPublishTime() *string {
 	return s.PublishTime
+}
+
+func (s *ListAppPublishHistoryResponseBodyModuleHistory) GetReadbackStatus() *string {
+	return s.ReadbackStatus
 }
 
 func (s *ListAppPublishHistoryResponseBodyModuleHistory) GetStepCodes() []*string {
@@ -554,8 +625,57 @@ func (s *ListAppPublishHistoryResponseBodyModuleHistory) GetSubchannel() *string
 	return s.Subchannel
 }
 
+func (s *ListAppPublishHistoryResponseBodyModuleHistory) GetSubmitIntentStatus() *string {
+	return s.SubmitIntentStatus
+}
+
+func (s *ListAppPublishHistoryResponseBodyModuleHistory) GetUpdatedAt() *int64 {
+	return s.UpdatedAt
+}
+
+func (s *ListAppPublishHistoryResponseBodyModuleHistory) GetUploadAttemptId() *string {
+	return s.UploadAttemptId
+}
+
+func (s *ListAppPublishHistoryResponseBodyModuleHistory) GetUploadLeaseState() *string {
+	return s.UploadLeaseState
+}
+
+func (s *ListAppPublishHistoryResponseBodyModuleHistory) GetUploadSequence() *int64 {
+	return s.UploadSequence
+}
+
+func (s *ListAppPublishHistoryResponseBodyModuleHistory) GetUploadTicketState() *string {
+	return s.UploadTicketState
+}
+
+func (s *ListAppPublishHistoryResponseBodyModuleHistory) SetArtifactDigest(v string) *ListAppPublishHistoryResponseBodyModuleHistory {
+	s.ArtifactDigest = &v
+	return s
+}
+
+func (s *ListAppPublishHistoryResponseBodyModuleHistory) SetAuditId(v string) *ListAppPublishHistoryResponseBodyModuleHistory {
+	s.AuditId = &v
+	return s
+}
+
+func (s *ListAppPublishHistoryResponseBodyModuleHistory) SetBindingId(v string) *ListAppPublishHistoryResponseBodyModuleHistory {
+	s.BindingId = &v
+	return s
+}
+
 func (s *ListAppPublishHistoryResponseBodyModuleHistory) SetCanQuickRevert(v string) *ListAppPublishHistoryResponseBodyModuleHistory {
 	s.CanQuickRevert = &v
+	return s
+}
+
+func (s *ListAppPublishHistoryResponseBodyModuleHistory) SetCandidateId(v string) *ListAppPublishHistoryResponseBodyModuleHistory {
+	s.CandidateId = &v
+	return s
+}
+
+func (s *ListAppPublishHistoryResponseBodyModuleHistory) SetCandidateStatus(v string) *ListAppPublishHistoryResponseBodyModuleHistory {
+	s.CandidateStatus = &v
 	return s
 }
 
@@ -624,6 +744,41 @@ func (s *ListAppPublishHistoryResponseBodyModuleHistory) SetPercent(v int32) *Li
 	return s
 }
 
+func (s *ListAppPublishHistoryResponseBodyModuleHistory) SetPlatformAppid(v string) *ListAppPublishHistoryResponseBodyModuleHistory {
+	s.PlatformAppid = &v
+	return s
+}
+
+func (s *ListAppPublishHistoryResponseBodyModuleHistory) SetPluginDeclarationHash(v string) *ListAppPublishHistoryResponseBodyModuleHistory {
+	s.PluginDeclarationHash = &v
+	return s
+}
+
+func (s *ListAppPublishHistoryResponseBodyModuleHistory) SetPluginState(v string) *ListAppPublishHistoryResponseBodyModuleHistory {
+	s.PluginState = &v
+	return s
+}
+
+func (s *ListAppPublishHistoryResponseBodyModuleHistory) SetPrivacyDraftId(v string) *ListAppPublishHistoryResponseBodyModuleHistory {
+	s.PrivacyDraftId = &v
+	return s
+}
+
+func (s *ListAppPublishHistoryResponseBodyModuleHistory) SetPrivacyRevision(v string) *ListAppPublishHistoryResponseBodyModuleHistory {
+	s.PrivacyRevision = &v
+	return s
+}
+
+func (s *ListAppPublishHistoryResponseBodyModuleHistory) SetPublishDiagnostics(v string) *ListAppPublishHistoryResponseBodyModuleHistory {
+	s.PublishDiagnostics = &v
+	return s
+}
+
+func (s *ListAppPublishHistoryResponseBodyModuleHistory) SetPublishEnv(v string) *ListAppPublishHistoryResponseBodyModuleHistory {
+	s.PublishEnv = &v
+	return s
+}
+
 func (s *ListAppPublishHistoryResponseBodyModuleHistory) SetPublishNumber(v string) *ListAppPublishHistoryResponseBodyModuleHistory {
 	s.PublishNumber = &v
 	return s
@@ -639,6 +794,11 @@ func (s *ListAppPublishHistoryResponseBodyModuleHistory) SetPublishTime(v string
 	return s
 }
 
+func (s *ListAppPublishHistoryResponseBodyModuleHistory) SetReadbackStatus(v string) *ListAppPublishHistoryResponseBodyModuleHistory {
+	s.ReadbackStatus = &v
+	return s
+}
+
 func (s *ListAppPublishHistoryResponseBodyModuleHistory) SetStepCodes(v []*string) *ListAppPublishHistoryResponseBodyModuleHistory {
 	s.StepCodes = v
 	return s
@@ -651,6 +811,36 @@ func (s *ListAppPublishHistoryResponseBodyModuleHistory) SetSteps(v []*string) *
 
 func (s *ListAppPublishHistoryResponseBodyModuleHistory) SetSubchannel(v string) *ListAppPublishHistoryResponseBodyModuleHistory {
 	s.Subchannel = &v
+	return s
+}
+
+func (s *ListAppPublishHistoryResponseBodyModuleHistory) SetSubmitIntentStatus(v string) *ListAppPublishHistoryResponseBodyModuleHistory {
+	s.SubmitIntentStatus = &v
+	return s
+}
+
+func (s *ListAppPublishHistoryResponseBodyModuleHistory) SetUpdatedAt(v int64) *ListAppPublishHistoryResponseBodyModuleHistory {
+	s.UpdatedAt = &v
+	return s
+}
+
+func (s *ListAppPublishHistoryResponseBodyModuleHistory) SetUploadAttemptId(v string) *ListAppPublishHistoryResponseBodyModuleHistory {
+	s.UploadAttemptId = &v
+	return s
+}
+
+func (s *ListAppPublishHistoryResponseBodyModuleHistory) SetUploadLeaseState(v string) *ListAppPublishHistoryResponseBodyModuleHistory {
+	s.UploadLeaseState = &v
+	return s
+}
+
+func (s *ListAppPublishHistoryResponseBodyModuleHistory) SetUploadSequence(v int64) *ListAppPublishHistoryResponseBodyModuleHistory {
+	s.UploadSequence = &v
+	return s
+}
+
+func (s *ListAppPublishHistoryResponseBodyModuleHistory) SetUploadTicketState(v string) *ListAppPublishHistoryResponseBodyModuleHistory {
+	s.UploadTicketState = &v
 	return s
 }
 

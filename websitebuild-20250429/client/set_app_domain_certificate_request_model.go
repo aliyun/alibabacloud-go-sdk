@@ -36,7 +36,7 @@ type SetAppDomainCertificateRequest struct {
 	//
 	// 2024
 	CertificateName *string `json:"CertificateName,omitempty" xml:"CertificateName,omitempty"`
-	// The certificate type. Valid values: default free certificate and customer-owned certificate.
+	// The certificate type. Valid values: default free certificate, customer-owned certificate.
 	//
 	// example:
 	//

@@ -34,25 +34,25 @@ type iEditPluginConfigResponseBody interface {
 }
 
 type EditPluginConfigResponseBody struct {
-  // The detailed reason why access was denied.
+  // The detailed reasons for the access denial.
   // 
   // example:
   // 
   // {}
   AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-  // Indicates whether retry is allowed.
+  // Indicates whether retries are allowed.
   // 
   // example:
   // 
   // False
   AllowRetry *bool `json:"AllowRetry,omitempty" xml:"AllowRetry,omitempty"`
-  // The application name. The name must start with a letter and can contain letters, digits, underscores (_), and hyphens (-). The name can be up to 36 characters in length.
+  // The application name. It must start with a letter and can contain digits, letters, underscores (_), and hyphens (-). The name can be up to 36 characters in length.
   // 
   // example:
   // 
   // spring-cloud-b
   AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-  // The dynamic code. This parameter is not in use. Ignore this parameter.
+  // The dynamic error code. This field is currently unused and can be ignored.
   // 
   // example:
   // 
@@ -88,9 +88,9 @@ type EditPluginConfigResponseBody struct {
   // 
   // example:
   // 
-  // 系统异常
+  // System exception
   RootErrorMsg *string `json:"RootErrorMsg,omitempty" xml:"RootErrorMsg,omitempty"`
-  // Indicates whether the request is synchronously processed.
+  // Indicates whether the request is processed synchronously.
   // 
   // example:
   // 

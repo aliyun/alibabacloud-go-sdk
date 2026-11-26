@@ -34,13 +34,13 @@ type iInstallAppPluginResponseBody interface {
 }
 
 type InstallAppPluginResponseBody struct {
-	// The detailed reason for access denial.
+	// The detailed reasons for the access denial.
 	//
 	// example:
 	//
 	// {}
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	// Indicates whether retries are allowed.
+	// Indicates whether a retry is allowed.
 	//
 	// example:
 	//
@@ -58,7 +58,7 @@ type InstallAppPluginResponseBody struct {
 	//
 	// ERROR-oo1
 	DynamicCode *string `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
-	// The dynamic error message, which is used to replace `%s` in the error message returned in the **ErrMessage*	- response parameter.
+	// The dynamic error message, which is used to replace the `%s` in the error message returned in the **ErrMessage*	- response parameter.
 	//
 	// > If **ErrMessage*	- returns **The Value of Input Parameter %s is not valid*	- and **DynamicMessage*	- returns **DtsJobId**, the **DtsJobId*	- request parameter is invalid.
 	//

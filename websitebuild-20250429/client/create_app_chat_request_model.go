@@ -44,7 +44,7 @@ type CreateAppChatRequest struct {
 	//
 	// example:
 	//
-	// [\\r\\n  {\\r\\n    \\"role\\": \\"user\\",\\r\\n    \\"content\\": \\"Prove that there are only five platonic solids, namely the tetrahedron, octahedron, icosahedron, cube, and dodecahedron.\\"\\r\\n  }\\r\\n]
+	// [\r\n  {\r\n    \"role\": \"user\",\r\n    \"content\": \"Prove that there are only five platonic solids, namely the tetrahedron, octahedron, icosahedron, cube, and dodecahedron.\"\r\n  }\r\n]
 	Messages *string `json:"Messages,omitempty" xml:"Messages,omitempty"`
 	// The site ID.
 	//

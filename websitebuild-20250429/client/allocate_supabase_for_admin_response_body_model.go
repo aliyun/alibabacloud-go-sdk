@@ -34,7 +34,7 @@ type iAllocateSupabaseForAdminResponseBody interface {
 }
 
 type AllocateSupabaseForAdminResponseBody struct {
-	// The details of the permission check failure.
+	// The details of the access denial.
 	//
 	// example:
 	//
@@ -46,7 +46,7 @@ type AllocateSupabaseForAdminResponseBody struct {
 	//
 	// False
 	AllowRetry *bool `json:"AllowRetry,omitempty" xml:"AllowRetry,omitempty"`
-	// The name of the application.
+	// The application name.
 	//
 	// example:
 	//
@@ -247,11 +247,11 @@ type AllocateSupabaseForAdminResponseBodyModule struct {
 	//
 	// ORACLE
 	DbType *string `json:"DbType,omitempty" xml:"DbType,omitempty"`
-	// The extra information.
+	// The additional information.
 	//
 	// example:
 	//
-	// {\\"appId\\":\\"APP_NTJAK8P11SNZDJ3M6BWC\\"}
+	// {\"appId\":\"APP_NTJAK8P11SNZDJ3M6BWC\"}
 	Extra *string `json:"Extra,omitempty" xml:"Extra,omitempty"`
 	// The time when the instance creation was completed.
 	//
@@ -265,11 +265,11 @@ type AllocateSupabaseForAdminResponseBodyModule struct {
 	//
 	// 1111
 	InstanceCreateStatus *string `json:"InstanceCreateStatus,omitempty" xml:"InstanceCreateStatus,omitempty"`
-	// The deletion flag.
+	// Indicates whether the instance is deleted.
 	//
 	// example:
 	//
-	// false
+	// 0
 	IsDeleted *int32 `json:"IsDeleted,omitempty" xml:"IsDeleted,omitempty"`
 	// The access password for the RDS database.
 	//
@@ -277,7 +277,7 @@ type AllocateSupabaseForAdminResponseBodyModule struct {
 	//
 	// 111
 	RdsDatabasePassword *string `json:"RdsDatabasePassword,omitempty" xml:"RdsDatabasePassword,omitempty"`
-	// The read-only business schema name parsed by the Builder trusted binding. This name cannot be used as input for tenant switching.
+	// The read-only business schema name parsed by the Builder trusted binding. This parameter cannot be used as the input for switching tenants.
 	//
 	// example:
 	//
@@ -289,11 +289,11 @@ type AllocateSupabaseForAdminResponseBodyModule struct {
 	//
 	// e80f5a7a08514709a2fb
 	ServiceKey *string `json:"ServiceKey,omitempty" xml:"ServiceKey,omitempty"`
-	// The status. Valid values: 0 (Paused) and 1 (Running).
+	// The instance status. Valid values: 0: Paused. 1: Running.
 	//
 	// example:
 	//
-	// NORMAL
+	// 1
 	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
 	// The password for the Supabase Dashboard.
 	//
@@ -337,7 +337,7 @@ type AllocateSupabaseForAdminResponseBodyModule struct {
 	//
 	// 111
 	SupabasePublicIp *string `json:"SupabasePublicIp,omitempty" xml:"SupabasePublicIp,omitempty"`
-	// The public URL of Supabase.
+	// The public URL of the Supabase instance.
 	//
 	// example:
 	//
@@ -349,7 +349,7 @@ type AllocateSupabaseForAdminResponseBodyModule struct {
 	//
 	// GFCBAMJH-zh_CN
 	TenantId *string `json:"TenantId,omitempty" xml:"TenantId,omitempty"`
-	// The read-only tenant mode: schema indicates the legacy Builder pool, and db or agenticdb indicates the new platform. The history record can be empty.
+	// The read-only tenant mode. A value of schema indicates the legacy Builder pool, and a value of db or agenticdb indicates the new platform. Historical records can be empty.
 	//
 	// example:
 	//

@@ -34,13 +34,13 @@ type iGetAppFileContentResponseBody interface {
 }
 
 type GetAppFileContentResponseBody struct {
-	// The details of the permission check failure.
+	// The details of the access denial.
 	//
 	// example:
 	//
 	// {}
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	// Specifies whether a retry is allowed.
+	// Indicates whether retries are allowed.
 	//
 	// example:
 	//
@@ -58,9 +58,9 @@ type GetAppFileContentResponseBody struct {
 	//
 	// ERROR-oo1
 	DynamicCode *string `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
-	// The dynamic error message, which is used to replace `%s` in the error message of the **ErrMessage*	- response parameter.
+	// The dynamic error message, which is used to replace `%s` in the error message returned by the **ErrMessage*	- parameter.
 	//
-	// > If **ErrMessage*	- returns **The Value of Input Parameter %s is not valid*	- and **DynamicMessage*	- returns **DtsJobId**, it indicates that the **DtsJobId*	- request parameter is invalid.
+	// > If **ErrMessage*	- returns **The Value of Input Parameter %s is not valid*	- and **DynamicMessage*	- returns **DtsJobId**, it indicates that the request parameter **DtsJobId*	- is invalid.
 	//
 	// example:
 	//

@@ -34,19 +34,19 @@ type iBatchCheckResourceMeasureResponseBody interface {
 }
 
 type BatchCheckResourceMeasureResponseBody struct {
-	// The detailed reasons for access denial.
+	// The detailed reason for access denial.
 	//
 	// example:
 	//
 	// {}
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	// Specifies whether retries are allowed.
+	// Indicates whether retries are allowed.
 	//
 	// example:
 	//
 	// False
 	AllowRetry *bool `json:"AllowRetry,omitempty" xml:"AllowRetry,omitempty"`
-	// The name of the app.
+	// The application name.
 	//
 	// example:
 	//
@@ -74,7 +74,7 @@ type BatchCheckResourceMeasureResponseBody struct {
 	//
 	// 6C6B99AC-39EC-5350-874C-204128C905E6
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The root error code.
+	// The error code.
 	//
 	// example:
 	//
@@ -86,7 +86,7 @@ type BatchCheckResourceMeasureResponseBody struct {
 	//
 	// System exception
 	RootErrorMsg *string `json:"RootErrorMsg,omitempty" xml:"RootErrorMsg,omitempty"`
-	// Specifies whether synchronous processing is used.
+	// Specifies whether the request is processed synchronously.
 	//
 	// example:
 	//
@@ -213,7 +213,7 @@ func (s *BatchCheckResourceMeasureResponseBody) Validate() error {
 type BatchCheckResourceMeasureResponseBodyModule struct {
 	// Indicates whether all checks passed.
 	AllPassed *bool `json:"AllPassed,omitempty" xml:"AllPassed,omitempty"`
-	// The check results for each resource, where the key is the resourceCode.
+	// The check results for each resource. The key is the resourceCode.
 	//
 	// example:
 	//

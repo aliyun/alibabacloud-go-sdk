@@ -34,13 +34,13 @@ type iSetAppDomainCertificateResponseBody interface {
 }
 
 type SetAppDomainCertificateResponseBody struct {
-	// The access denied details.
+	// The access denial details.
 	//
 	// example:
 	//
 	// {}
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	// Specifies whether to allow retries. Valid values:
+	// Specifies whether retries are allowed. Valid values:
 	//
 	// - false: Retries are not allowed.
 	//
@@ -66,9 +66,9 @@ type SetAppDomainCertificateResponseBody struct {
 	//
 	// example:
 	//
-	// https://check-result-file-sh.oss-cn-shanghai.aliyuncs.com/uoa11auyf2565k6/uoa11auyf2565k6.sql.zip?Expires=1730520371&OSSAccessKeyId=LTAI5tKUErVCETM4ev9SELNb&Signature=WIutxAQYbbwxX0aeKmdObduLnDg%3D
+	// https://check-result-file-sh.oss-cn-shanghai.aliyuncs.com/uoa11auyf2565k6/uoa11auyf2565k6.sql.zip?Expires=1730520371&OSSAccessKeyId=LTAI5tKUEr****M4ev9SELNb&Signature=WIutxAQYbbwxX****mdObduLnDg%3D
 	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
-	// The returned error parameters.
+	// The error parameters.
 	ErrorArgs []interface{} `json:"ErrorArgs,omitempty" xml:"ErrorArgs,omitempty" type:"Repeated"`
 	// The response data.
 	Module *SetAppDomainCertificateResponseBodyModule `json:"Module,omitempty" xml:"Module,omitempty" type:"Struct"`
@@ -90,7 +90,7 @@ type SetAppDomainCertificateResponseBody struct {
 	//
 	// System exception
 	RootErrorMsg *string `json:"RootErrorMsg,omitempty" xml:"RootErrorMsg,omitempty"`
-	// Specifies whether the request is processed synchronously.
+	// Indicates whether the request is processed synchronously.
 	//
 	// example:
 	//
@@ -215,7 +215,7 @@ func (s *SetAppDomainCertificateResponseBody) Validate() error {
 }
 
 type SetAppDomainCertificateResponseBodyModule struct {
-	// Indicates whether the operation is successful.
+	// Indicates whether the request is successful.
 	//
 	// example:
 	//

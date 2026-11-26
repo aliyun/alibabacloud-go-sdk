@@ -34,19 +34,19 @@ type iConfirmAppInstanceResponseBody interface {
 }
 
 type ConfirmAppInstanceResponseBody struct {
-	// The details about the access denial.
+	// The detailed reason for the access denial.
 	//
 	// example:
 	//
 	// {}
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	// Indicates whether retry is allowed.
+	// Indicates whether retries are allowed.
 	//
 	// example:
 	//
 	// False
 	AllowRetry *bool `json:"AllowRetry,omitempty" xml:"AllowRetry,omitempty"`
-	// The application name. The application with this name is queried.
+	// The name of the application to query.
 	//
 	// example:
 	//
@@ -64,7 +64,7 @@ type ConfirmAppInstanceResponseBody struct {
 	//
 	// SYSTEM_ERROR
 	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
-	// The error parameters.
+	// The returned error parameters.
 	ErrorArgs []interface{} `json:"ErrorArgs,omitempty" xml:"ErrorArgs,omitempty" type:"Repeated"`
 	// The response data.
 	Module *ConfirmAppInstanceResponseBodyModule `json:"Module,omitempty" xml:"Module,omitempty" type:"Struct"`
@@ -80,11 +80,11 @@ type ConfirmAppInstanceResponseBody struct {
 	//
 	// SYSTEM.ERROR
 	RootErrorCode *string `json:"RootErrorCode,omitempty" xml:"RootErrorCode,omitempty"`
-	// The error message.
+	// The exception message.
 	//
 	// example:
 	//
-	// 系统异常
+	// System exception
 	RootErrorMsg *string `json:"RootErrorMsg,omitempty" xml:"RootErrorMsg,omitempty"`
 	// The reserved parameter.
 	//
@@ -229,7 +229,7 @@ type ConfirmAppInstanceResponseBodyModule struct {
 	//
 	// 247748990880615
 	OrderId *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
-	// The second-level domain name of the website.
+	// The second-level domain name of the site.
 	//
 	// example:
 	//

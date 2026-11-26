@@ -34,19 +34,19 @@ type iReportChannelPublishResultResponseBody interface {
 }
 
 type ReportChannelPublishResultResponseBody struct {
-	// The detailed reason why access was denied.
+	// The detailed reason why access is denied.
 	//
 	// example:
 	//
 	// {}
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	// Indicates whether retry is allowed.
+	// Specifies whether retries are allowed.
 	//
 	// example:
 	//
 	// False
 	AllowRetry *bool `json:"AllowRetry,omitempty" xml:"AllowRetry,omitempty"`
-	// The application name.
+	// The app name.
 	//
 	// example:
 	//
@@ -58,13 +58,13 @@ type ReportChannelPublishResultResponseBody struct {
 	//
 	// ERROR-oo1
 	DynamicCode *string `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
-	// The dynamic error message, which is used to replace the %s placeholder in the ErrMessage response parameter.
+	// The dynamic error message, which is used to replace %s in the ErrMessage response parameter.
 	//
 	// example:
 	//
 	// SYSTEM_ERROR
 	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
-	// The error parameters returned.
+	// The returned error parameters.
 	ErrorArgs []interface{} `json:"ErrorArgs,omitempty" xml:"ErrorArgs,omitempty" type:"Repeated"`
 	// The response data.
 	Module *ReportChannelPublishResultResponseBodyModule `json:"Module,omitempty" xml:"Module,omitempty" type:"Struct"`
@@ -86,7 +86,7 @@ type ReportChannelPublishResultResponseBody struct {
 	//
 	// System exception
 	RootErrorMsg *string `json:"RootErrorMsg,omitempty" xml:"RootErrorMsg,omitempty"`
-	// Indicates whether the request is processed synchronously.
+	// Specifies whether the request is processed synchronously.
 	//
 	// example:
 	//
@@ -215,7 +215,7 @@ type ReportChannelPublishResultResponseBodyModule struct {
 	//
 	// example:
 	//
-	// xxx
+	// PUBLISHED
 	ArticleStatus *string `json:"ArticleStatus,omitempty" xml:"ArticleStatus,omitempty"`
 	// The channel draft ID.
 	//
@@ -223,7 +223,7 @@ type ReportChannelPublishResultResponseBodyModule struct {
 	//
 	// draft-789
 	DraftId *string `json:"DraftId,omitempty" xml:"DraftId,omitempty"`
-	// The draft status. Valid values: SUCCESS and FAILED.
+	// The draft status. Valid values: SUCCESS, FAILED.
 	//
 	// example:
 	//

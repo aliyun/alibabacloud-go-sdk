@@ -34,7 +34,7 @@ type GetMiniAppBindingShrinkRequest struct {
 	//
 	// example:
 	//
-	// SERVER_DOMAIN
+	// ["SERVER_DOMAIN"]
 	SettingKeysShrink *string `json:"SettingKeys,omitempty" xml:"SettingKeys,omitempty"`
 }
 

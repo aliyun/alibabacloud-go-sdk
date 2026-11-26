@@ -34,41 +34,41 @@ type iTranslateChannelDraftResponseBody interface {
 }
 
 type TranslateChannelDraftResponseBody struct {
-	// The detailed reason why access was denied.
+	// The detailed reason why access is denied.
 	//
 	// example:
 	//
 	// {}
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	// Indicates whether retry is allowed.
+	// Indicates whether retries are allowed.
 	//
 	// example:
 	//
 	// False
 	AllowRetry *bool `json:"AllowRetry,omitempty" xml:"AllowRetry,omitempty"`
-	// The application name used to query the application.
+	// The name of the application to query.
 	//
 	// example:
 	//
 	// ish-intelligence-store-platform-admin-web
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	// The dynamic code. This parameter is not in use. Ignore this parameter.
+	// The dynamic code. This field is currently unused and can be ignored.
 	//
 	// example:
 	//
 	// ERROR-oo1
 	DynamicCode *string `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
-	// The dynamic error message that is used to replace the `%s` variable in the **ErrMessage*	- return parameter.
+	// The dynamic error message, which is used to replace `%s` in the **ErrMessage*	- response parameter.
 	//
-	// > If **ErrMessage*	- returns **The Value of Input Parameter %s is not valid*	- and **DynamicMessage*	- returns **DtsJobId**, the value of the request parameter **DtsJobId*	- is invalid.
+	// > If **ErrMessage*	- returns **The Value of Input Parameter %s is not valid*	- and **DynamicMessage*	- returns **DtsJobId**, it indicates that the **DtsJobId*	- request parameter is invalid.
 	//
 	// example:
 	//
 	// abc
 	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
-	// The error parameters.
+	// The invalid parameters.
 	ErrorArgs []interface{} `json:"ErrorArgs,omitempty" xml:"ErrorArgs,omitempty" type:"Repeated"`
-	// Indicates whether the deletion was successful.
+	// Indicates whether the deletion is successful.
 	Module *TranslateChannelDraftResponseBodyModule `json:"Module,omitempty" xml:"Module,omitempty" type:"Struct"`
 	// Id of the request
 	//
@@ -217,37 +217,37 @@ type TranslateChannelDraftResponseBodyModule struct {
 	//
 	// example:
 	//
-	// xx
+	// DONE
 	AdaptStatus *string `json:"AdaptStatus,omitempty" xml:"AdaptStatus,omitempty"`
-	// The channel-adapted content body.
+	// The adapted content for the channel.
 	//
 	// example:
 	//
-	// xx
+	// Introduces the main features and usage of the website
 	AdaptedContent *string `json:"AdaptedContent,omitempty" xml:"AdaptedContent,omitempty"`
-	// The channel-adapted title.
+	// The adapted title for the channel.
 	//
 	// example:
 	//
-	// xx
+	// Website features and user guide
 	AdaptedTitle *string `json:"AdaptedTitle,omitempty" xml:"AdaptedTitle,omitempty"`
-	// The channel enumeration value.
+	// The channel enumeration.
 	//
 	// example:
 	//
 	// WECHAT
 	Channel *string `json:"Channel,omitempty" xml:"Channel,omitempty"`
-	// The publishing account snapshot.
+	// The snapshot of the publishing account.
 	//
 	// example:
 	//
-	// xx
+	// social-account-demo-001
 	ChannelAccount *string `json:"ChannelAccount,omitempty" xml:"ChannelAccount,omitempty"`
 	// The display name of the publishing account.
 	//
 	// example:
 	//
-	// xx
+	// Sample publishing account
 	ChannelAccountName *string `json:"ChannelAccountName,omitempty" xml:"ChannelAccountName,omitempty"`
 	// The display name of the channel.
 	//
@@ -255,13 +255,13 @@ type TranslateChannelDraftResponseBodyModule struct {
 	//
 	// channel_905
 	ChannelName *string `json:"ChannelName,omitempty" xml:"ChannelName,omitempty"`
-	// The channel type. Valid values: DOMESTIC, OVERSEA, and INTERNAL.
+	// The type of the channel. Valid values: DOMESTIC, OVERSEA, and INTERNAL.
 	//
 	// example:
 	//
 	// wechat
 	ChannelType *string `json:"ChannelType,omitempty" xml:"ChannelType,omitempty"`
-	// The list of channel cover images.
+	// The list of cover images for the channel.
 	CoverImages []*TranslateChannelDraftResponseBodyModuleCoverImages `json:"CoverImages,omitempty" xml:"CoverImages,omitempty" type:"Repeated"`
 	// The ID of the channel draft.
 	//
@@ -287,17 +287,17 @@ type TranslateChannelDraftResponseBodyModule struct {
 	//
 	// Invalid parameter
 	FailReason *string `json:"FailReason,omitempty" xml:"FailReason,omitempty"`
-	// The channel-specific publishing configuration in JSON format.
+	// The JSON string of channel-specific publishing fields.
 	//
 	// example:
 	//
-	// xx
+	// {}
 	PublishConfig *string `json:"PublishConfig,omitempty" xml:"PublishConfig,omitempty"`
-	// The publishing time, in millisecond timestamp format.
+	// The publishing time. The value is a millisecond timestamp.
 	//
 	// example:
 	//
-	// xx
+	// 1767225600000
 	PublishedAt *int64 `json:"PublishedAt,omitempty" xml:"PublishedAt,omitempty"`
 	// The status. Valid values: EDITING, PUBLISHING, SUCCESS, and FAILED.
 	//
@@ -473,11 +473,11 @@ func (s *TranslateChannelDraftResponseBodyModule) Validate() error {
 }
 
 type TranslateChannelDraftResponseBodyModuleCoverImages struct {
-	// The file ID in the material center.
+	// The ID of the file in the material center.
 	//
 	// example:
 	//
-	// xx
+	// material-file-demo-001
 	MaterialFileId *string `json:"MaterialFileId,omitempty" xml:"MaterialFileId,omitempty"`
 	// The CDN URL of the image.
 	//
@@ -485,11 +485,11 @@ type TranslateChannelDraftResponseBodyModuleCoverImages struct {
 	//
 	// oss://anchashiscan.oss-cn-hangzhou.aliyuncs.com/prodpopscanBnlK054f
 	OssUrl *string `json:"OssUrl,omitempty" xml:"OssUrl,omitempty"`
-	// The sort order number.
+	// The sort order.
 	//
 	// example:
 	//
-	// Desc
+	// 1
 	SortOrder *int32 `json:"SortOrder,omitempty" xml:"SortOrder,omitempty"`
 }
 

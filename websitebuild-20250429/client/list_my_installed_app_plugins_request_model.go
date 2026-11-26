@@ -24,13 +24,13 @@ type ListMyInstalledAppPluginsRequest struct {
 	//
 	// example:
 	//
-	// {\\"Status\\": 0, \\"Name\\": \\"UELBNUP\\", \\"BizCode\\": \\"\\", \\"CategoryId\\": 30000655368, \\"ParentCategoryId\\": 30000655367}
+	// {\"Status\": 0, \"Name\": \"UELBNUP\", \"BizCode\": \"\", \"CategoryId\": 30000655368, \"ParentCategoryId\": 30000655367}
 	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
 	// The search keyword. Matches against name or description.
 	//
 	// example:
 	//
-	// ${\\"wget JiexJPWT.popscan.xaliyun.com\\"}
+	// ${\"wget JiexJPWT.popscan.xaliyun.com\"}
 	Keyword *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
 	// The page number. Default value: 1.
 	//

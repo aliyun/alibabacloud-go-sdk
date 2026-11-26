@@ -44,23 +44,23 @@ type iQueryMaterialTaskListResponseBody interface {
 }
 
 type QueryMaterialTaskListResponseBody struct {
-	// The detailed reason why access was denied.
+	// The detailed reasons for access denial.
 	//
 	// example:
 	//
 	// {}
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	// Indicates whether a retry is allowed. Valid values:
+	// Indicates whether retries are allowed. Valid values:
 	//
-	// - false: No retry is allowed.
+	// - false: Retries are not allowed.
 	//
-	// - true: A retry is allowed.
+	// - true: Retries are allowed.
 	//
 	// example:
 	//
 	// False
 	AllowRetry *bool `json:"AllowRetry,omitempty" xml:"AllowRetry,omitempty"`
-	// The application name.
+	// The name of the app.
 	//
 	// example:
 	//
@@ -72,15 +72,15 @@ type QueryMaterialTaskListResponseBody struct {
 	//
 	// ERROR-oo1
 	DynamicCode *string `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
-	// The dynamic message. Currently not in use. Ignore this parameter.
+	// The dynamic message. This parameter is not used and can be ignored.
 	//
 	// example:
 	//
 	// SYSTEM_ERROR
 	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
-	// The error parameters.
+	// The returned error parameters.
 	ErrorArgs []interface{} `json:"ErrorArgs,omitempty" xml:"ErrorArgs,omitempty" type:"Repeated"`
-	// The error code. If the request is successful, the ErrorCode field is not returned. If the request fails, the ErrorCode field is returned. For more information, see the error codes in this topic.
+	// The error code. If the request is successful, the ErrorCode parameter is not returned. If the request fails, the ErrorCode parameter is returned. For more information, see the error codes in this topic.
 	//
 	// example:
 	//
@@ -92,9 +92,7 @@ type QueryMaterialTaskListResponseBody struct {
 	//
 	// aliuid:1998006665794443 assumeRole not exist,serviceName:realtimelogpush.dcdnservices.aliyuncs.com
 	ErrorMsg *string `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
-	// The number of entries per query.
-	//
-	// Valid values: 10 to 100. Default value: 20.
+	// The maximum number of entries to return for a single request. Valid values: 10 to 100. Default value: 20.
 	//
 	// example:
 	//
@@ -102,7 +100,7 @@ type QueryMaterialTaskListResponseBody struct {
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
 	// The response data.
 	Module *QueryMaterialTaskListResponseBodyModule `json:"Module,omitempty" xml:"Module,omitempty" type:"Struct"`
-	// The token for the next query. This parameter is empty if no more results exist.
+	// The token used to start the next query. If no next query is available, this parameter is left empty.
 	//
 	// example:
 	//
@@ -114,25 +112,25 @@ type QueryMaterialTaskListResponseBody struct {
 	//
 	// 6C6B99AC-39EC-5350-874C-204128C905E6
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The root error code.
+	// The error code.
 	//
 	// example:
 	//
 	// SYSTEM.ERROR
 	RootErrorCode *string `json:"RootErrorCode,omitempty" xml:"RootErrorCode,omitempty"`
-	// The root error message.
+	// The exception message.
 	//
 	// example:
 	//
 	// System exception
 	RootErrorMsg *string `json:"RootErrorMsg,omitempty" xml:"RootErrorMsg,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	//
 	// example:
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// Indicates whether the request is synchronously processed.
+	// Indicates whether synchronous processing is used.
 	//
 	// example:
 	//
@@ -308,7 +306,7 @@ type QueryMaterialTaskListResponseBodyModule struct {
 	//
 	// 12
 	CurrentPageNum *int32 `json:"CurrentPageNum,omitempty" xml:"CurrentPageNum,omitempty"`
-	// The request result.
+	// The query results.
 	Data []*AppMaterialTask `json:"Data,omitempty" xml:"Data,omitempty" type:"Repeated"`
 	// Indicates whether a next page exists.
 	//
@@ -316,7 +314,7 @@ type QueryMaterialTaskListResponseBodyModule struct {
 	//
 	// False
 	NextPage *bool `json:"NextPage,omitempty" xml:"NextPage,omitempty"`
-	// The page size.
+	// The number of entries per page.
 	//
 	// example:
 	//
@@ -328,7 +326,7 @@ type QueryMaterialTaskListResponseBodyModule struct {
 	//
 	// False
 	PrePage *bool `json:"PrePage,omitempty" xml:"PrePage,omitempty"`
-	// Apart from pagination limits, the server processes up to 1000 recent records per query. If the results exceed 1000 records, **ResultLimit*	- is **true**. Narrow the time range and search again. Otherwise, **ResultLimit*	- is **false**.
+	// In addition to the pagination limit, the server processes a maximum of the latest 1,000 records for the current query. If the number of results exceeds 1,000, **ResultLimit*	- is set to **true**. In this case, narrow the time range and search again. Otherwise, **ResultLimit*	- is set to **false**.
 	//
 	// example:
 	//

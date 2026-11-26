@@ -42,7 +42,7 @@ type GetAppPluginConfigResponseBody struct {
 	//
 	// 6C6B99AC-39EC-5350-874C-204128C905E6
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	//
 	// example:
 	//
@@ -125,7 +125,7 @@ type GetAppPluginConfigResponseBodyModule struct {
 	//
 	// 1740479834
 	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	// The modification time.
+	// The update time.
 	//
 	// example:
 	//
@@ -137,25 +137,25 @@ type GetAppPluginConfigResponseBodyModule struct {
 	//
 	// 16257
 	Id *int64 `json:"Id,omitempty" xml:"Id,omitempty"`
-	// The specific component configuration in JSON string format. Refer to the toJsonString method of the subclasses related to com.alibaba.dataphin.pipeline.common.facade.openapi.model.plugin.OABasePluginConfig. Developers should inherit this component configuration class and implement the corresponding component configuration. Each component configuration has the same structure as the pipeline configuration created on the Dataphin console.
+	// The specific component configuration in JSON string format. Refer to the toJsonString method of the subclasses of the com.alibaba.dataphin.pipeline.common.facade.openapi.model.plugin.OABasePluginConfig utility class. Developers must inherit this component configuration class to implement the corresponding component configuration. Each component configuration has the same structure as the pipeline configuration created on the Dataphin page.
 	//
 	// example:
 	//
 	// {}
 	PluginConfig *string `json:"PluginConfig,omitempty" xml:"PluginConfig,omitempty"`
-	// The description of the plugin.
+	// The description.
 	//
 	// example:
 	//
 	// a simple test plugin
 	PluginDesc *string `json:"PluginDesc,omitempty" xml:"PluginDesc,omitempty"`
-	// The ID of the bound API gateway plugin.
+	// The ID of the associated API gateway plugin.
 	//
 	// example:
 	//
 	// 1bae9ceaceea432d91c7069fab0dfc02
 	PluginId *string `json:"PluginId,omitempty" xml:"PluginId,omitempty"`
-	// The plugin name. The name can contain uppercase and lowercase letters, Chinese characters, digits, and underscores (_). The name must be 4 to 50 characters in length and cannot start with an underscore.
+	// The plugin name. It must be 4 to 50 characters in length and can contain uppercase and lowercase letters, Chinese characters, digits, and underscores (_). It cannot start with an underscore.
 	//
 	// example:
 	//

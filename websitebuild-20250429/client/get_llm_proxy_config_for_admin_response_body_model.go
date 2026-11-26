@@ -34,13 +34,13 @@ type iGetLlmProxyConfigForAdminResponseBody interface {
 }
 
 type GetLlmProxyConfigForAdminResponseBody struct {
-	// The detailed reason why access is denied.
+	// The detailed reason for access denial.
 	//
 	// example:
 	//
 	// {}
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	// Indicates whether retries are allowed. Valid values:
+	// Specifies whether to allow retries. Valid values:
 	//
 	// - false: Retries are not allowed.
 	//
@@ -50,27 +50,27 @@ type GetLlmProxyConfigForAdminResponseBody struct {
 	//
 	// False
 	AllowRetry *bool `json:"AllowRetry,omitempty" xml:"AllowRetry,omitempty"`
-	// The application name. The application with this name is queried.
+	// The name of the application to query.
 	//
 	// example:
 	//
 	// or
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	// The dynamic code. This parameter is not in use. Ignore this parameter.
+	// The dynamic code. This field is not used and can be ignored.
 	//
 	// example:
 	//
 	// ERROR-oo1
 	DynamicCode *string `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
-	// The dynamic error message. This parameter is used to replace the `%s` variable in the **ErrMessage*	- parameter.
+	// The dynamic error message, which is used to replace the `%s` in the **ErrMessage*	- error message.
 	//
-	// > For example, if the **ErrMessage*	- parameter returns **The Value of Input Parameter %s is not valid*	- and the **DynamicMessage*	- parameter returns **DtsJobId**, the **DtsJobId*	- request parameter is invalid.
+	// > If **ErrMessage*	- returns **The Value of Input Parameter %s is not valid*	- and **DynamicMessage*	- returns **DtsJobId**, it indicates that the request parameter **DtsJobId*	- is invalid.
 	//
 	// example:
 	//
 	// SYSTEM_ERROR
 	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
-	// The error parameters.
+	// The returned error parameters.
 	ErrorArgs []interface{} `json:"ErrorArgs,omitempty" xml:"ErrorArgs,omitempty" type:"Repeated"`
 	// The returned object.
 	Module *GetLlmProxyConfigForAdminResponseBodyModule `json:"Module,omitempty" xml:"Module,omitempty" type:"Struct"`
@@ -86,13 +86,13 @@ type GetLlmProxyConfigForAdminResponseBody struct {
 	//
 	// SYSTEM.ERROR
 	RootErrorCode *string `json:"RootErrorCode,omitempty" xml:"RootErrorCode,omitempty"`
-	// The error message.
+	// The exception message.
 	//
 	// example:
 	//
-	// 系统异常
+	// System exception
 	RootErrorMsg *string `json:"RootErrorMsg,omitempty" xml:"RootErrorMsg,omitempty"`
-	// Indicates whether the request is synchronously processed.
+	// Indicates whether the request is processed synchronously.
 	//
 	// example:
 	//
@@ -235,7 +235,7 @@ type GetLlmProxyConfigForAdminResponseBodyModule struct {
 	//
 	// qwen3.5-plus
 	BlockedModels *string `json:"BlockedModels,omitempty" xml:"BlockedModels,omitempty"`
-	// Grants specific permissions to processes in the container. Only NET_ADMIN and NET_RAW are supported.
+	// Grants specific permissions to processes in the container. Currently, only NET_ADMIN and NET_RAW are supported.
 	//
 	// > NET_RAW is not supported by default. Submit a ticket to apply for this permission.
 	//
@@ -243,19 +243,19 @@ type GetLlmProxyConfigForAdminResponseBodyModule struct {
 	//
 	// adds2
 	Capability *string `json:"Capability,omitempty" xml:"Capability,omitempty"`
-	// The maximum number of requests per day.
+	// The daily request limit.
 	//
 	// example:
 	//
 	// -1
 	DailyLimit *int32 `json:"DailyLimit,omitempty" xml:"DailyLimit,omitempty"`
-	// The maximum number of tokens per day.
+	// The daily token limit.
 	//
 	// example:
 	//
 	// -1
 	DailyTokenLimit *int64 `json:"DailyTokenLimit,omitempty" xml:"DailyTokenLimit,omitempty"`
-	// Indicates whether scheduled delivery of resource snapshots is enabled.
+	// Specifies whether to enable scheduled delivery of resource snapshots.
 	//
 	// Valid values:
 	//
@@ -271,7 +271,7 @@ type GetLlmProxyConfigForAdminResponseBodyModule struct {
 	//
 	// example:
 	//
-	// {\\"deliveryNodeName\\":\\"绑定域名及发布\\",\\"deliveryNodeStatus\\":\\"Finish\\",\\"deliveryOperatorRole\\":\\"Provider\\"}
+	// {"deliveryNodeName":"Bind domain name and publish","deliveryNodeStatus":"Finish","deliveryOperatorRole":"Provider"}
 	Extend *string `json:"Extend,omitempty" xml:"Extend,omitempty"`
 	// The creation time.
 	//
@@ -297,13 +297,13 @@ type GetLlmProxyConfigForAdminResponseBodyModule struct {
 	//
 	// 121.41.11.161,10.200.255.60
 	IpBlacklist *string `json:"IpBlacklist,omitempty" xml:"IpBlacklist,omitempty"`
-	// The IP whitelist. Separate multiple IP addresses with commas (,).
+	// The IP whitelist. Separate multiple IP addresses with commas.
 	//
 	// example:
 	//
 	// 121.41.11.161,10.200.255.60
 	IpWhitelist *string `json:"IpWhitelist,omitempty" xml:"IpWhitelist,omitempty"`
-	// The maximum number of requests per minute.
+	// The number of requests per minute.
 	//
 	// example:
 	//
@@ -313,13 +313,13 @@ type GetLlmProxyConfigForAdminResponseBodyModule struct {
 	//
 	// example:
 	//
-	// 1
+	// NORMAL
 	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
 	// The reason for suspension.
 	//
 	// example:
 	//
-	// 服务已暂停。
+	// xxx
 	SuspendReason *string `json:"SuspendReason,omitempty" xml:"SuspendReason,omitempty"`
 }
 

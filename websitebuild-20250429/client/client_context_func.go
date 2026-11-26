@@ -10,11 +10,11 @@ import (
 
 // Summary:
 //
-// Allocates a Supabase instance to a resource allocation.
+// Performs resource allocation of a Supabase instance.
 //
 // Description:
 //
-// Queries the Supabase instance information of a resource.
+// Queries the information about the Supabase instance associated with a resource.
 //
 // @param request - AllocateSupabaseForAdminRequest
 //
@@ -246,7 +246,7 @@ func (client *Client) BatchCheckResourceMeasureWithContext(ctx context.Context, 
 
 // Summary:
 //
-// Binds a custom domain name to an application and automatically completes DNS resolution verification.
+// Binds a domain name to an application and automatically completes DNS resolution verification.
 //
 // @param request - BindAppDomainRequest
 //
@@ -666,11 +666,11 @@ func (client *Client) CopyAppPluginConfigWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// Asynchronously initiates a conversation with an AI employee.
+// Asynchronously initiates a conversation with an AI agent.
 //
 // Description:
 //
-// Initiates a WanXiaoZhi 2.0 AI conversation.
+// Initiates a Wanxiaozhi 2.0 AI conversation.
 //
 // @param request - CreateAIStaffChatRequest
 //
@@ -733,11 +733,11 @@ func (client *Client) CreateAIStaffChatWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// Creates an AI employee session.
+// Creates an AI agent session.
 //
 // Description:
 //
-// Creates an AI session for Wan Xiaozhi 2.0.
+// Creates an AI session in Wanxiaozhi 2.0.
 //
 // @param request - CreateAIStaffConversationRequest
 //
@@ -841,7 +841,7 @@ func (client *Client) CreateAppAssistantAgentWithContext(ctx context.Context, re
 //
 // Description:
 //
-// Retrieves the configuration information of the code generation plugin.
+// Retrieves the configuration information of the code generation plug-in.
 //
 // @param request - CreateAppAssistantAgentSsoLoginRequest
 //
@@ -1380,7 +1380,7 @@ func (client *Client) CreateAppPluginWithContext(ctx context.Context, request *C
 
 // Summary:
 //
-// Activates the Wanxiaozhi inspiration value service.
+// Enables the Wanxiaozhi inspiration value service.
 //
 // Description:
 //
@@ -1428,11 +1428,11 @@ func (client *Client) CreateAppTokenServiceWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// Distributes and generates channel drafts.
+// Generates and distributes channel drafts.
 //
 // Description:
 //
-// Distributes and generates channel drafts.
+// Generates and distributes channel drafts.
 //
 // @param tmpReq - CreateDistributionRequest
 //
@@ -1610,7 +1610,7 @@ func (client *Client) CreateLogoTaskWithContext(ctx context.Context, request *Cr
 
 // Summary:
 //
-// Creates a subfolder in a parent folder.
+// Creates a subfolder under a parent folder.
 //
 // @param request - CreateMaterialDirectoryRequest
 //
@@ -1666,7 +1666,7 @@ func (client *Client) CreateMaterialDirectoryWithContext(ctx context.Context, re
 //
 // Description:
 //
-// Wanxiaozhi 2.0 AI conversation.
+// The Wanxiaozhi 2.0 AI conversation.
 //
 // @param request - CreateRbacOrgUnitRequest
 //
@@ -1718,7 +1718,7 @@ func (client *Client) CreateRbacOrgUnitWithContext(ctx context.Context, request 
 //
 // Description:
 //
-// The Wanxiaozhi 2.0 API operation for creating an AI session.
+// Creates an AI session in Wanxiaozhi 2.0.
 //
 // @param request - CreateRbacPermissionRequest
 //
@@ -1818,7 +1818,7 @@ func (client *Client) CreateRbacRoleWithContext(ctx context.Context, request *Cr
 
 // Summary:
 //
-// Deletes and unbinds the SSL certificate associated with a website.
+// Deletes the SSL certificate bound to a website.
 //
 // @param request - DeleteAppDomainCertificateRequest
 //
@@ -1866,7 +1866,7 @@ func (client *Client) DeleteAppDomainCertificateWithContext(ctx context.Context,
 
 // Summary:
 //
-// Deletes an HTTP 301 status code redirect record bound to a website.
+// Deletes the HTTP 301 status code record attached to a website.
 //
 // @param request - DeleteAppDomainRedirectRequest
 //
@@ -2226,7 +2226,7 @@ func (client *Client) DeleteAppSupabaseSecretsWithContext(ctx context.Context, r
 
 // Summary:
 //
-// Deletes a material folder.
+// Deletes an asset folder.
 //
 // @param request - DeleteMaterialDirectoryRequest
 //
@@ -2380,7 +2380,7 @@ func (client *Client) DeleteRbacOrgUnitWithContext(ctx context.Context, request 
 //
 // Description:
 //
-// The API operation for creating an AI session in Wanxiaozhi 2.0.
+// Creates an AI session for Wanxiaozhi 2.0.
 //
 // @param request - DeleteRbacPermissionRequest
 //
@@ -2432,7 +2432,7 @@ func (client *Client) DeleteRbacPermissionWithContext(ctx context.Context, reque
 //
 // Description:
 //
-// Queries the application instance information.
+// Queries the information of an application instance.
 //
 // @param request - DeleteRbacRoleRequest
 //
@@ -2480,7 +2480,7 @@ func (client *Client) DeleteRbacRoleWithContext(ctx context.Context, request *De
 
 // Summary:
 //
-// Query website DNS resolution records. Supports CNAME resolution and verification resolution queries.
+// Queries the DNS resolution records of a website. Supports CNAME and verification resolution queries.
 //
 // @param request - DescribeAppDomainDnsRecordRequest
 //
@@ -2592,7 +2592,7 @@ func (client *Client) DispatchConsoleAPIForPartnerWithContext(ctx context.Contex
 
 // Summary:
 //
-// Edits a plug-in configuration.
+// Modifies the plug-in configuration.
 //
 // @param request - EditPluginConfigRequest
 //
@@ -2652,7 +2652,7 @@ func (client *Client) EditPluginConfigWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// Exports material files.
+// Exports asset files.
 //
 // @param tmpReq - ExportMaterialFileRequest
 //
@@ -2810,7 +2810,7 @@ func (client *Client) GetAIStaffPreviewUrlWithContext(ctx context.Context, reque
 //
 // Description:
 //
-// Queries application instance information.
+// Queries information about an application instance.
 //
 // @param request - GetAppCodeWorkspaceDetailRequest
 //
@@ -2858,7 +2858,7 @@ func (client *Client) GetAppCodeWorkspaceDetailWithContext(ctx context.Context, 
 //
 // Description:
 //
-// The Wanxiaozhi 2.0 API operation for creating AI conversations.
+// Creates an AI conversation in Wanxiaozhi 2.0.
 //
 // @param request - GetAppConversationRequest
 //
@@ -2906,11 +2906,11 @@ func (client *Client) GetAppConversationWithContext(ctx context.Context, request
 
 // Summary:
 //
-// Retrieves the lock status of a session.
+// Retrieves the session lock status.
 //
 // Description:
 //
-// The API operation for creating an AI session in Wanxiaozhi 2.0.
+// Creates an AI session in Wanxiaozhi 2.0.
 //
 // @param request - GetAppConversationLockStatusRequest
 //
@@ -3006,11 +3006,11 @@ func (client *Client) GetAppDatabaseTableSchemasWithContext(ctx context.Context,
 
 // Summary:
 //
-// Retrieves a file and its modification time.
+// Retrieves the file content and modification time.
 //
 // Description:
 //
-// Retrieves the configuration information of the code generation plugin.
+// Retrieves the configuration information of the code generation plug-in.
 //
 // @param request - GetAppFileContentRequest
 //
@@ -3210,7 +3210,7 @@ func (client *Client) GetAppInstanceForAdminWithContext(ctx context.Context, req
 //
 // Description:
 //
-// Retrieves the configuration information of the code generation plug-in.
+// Retrieves the configuration information of the code generation plugin.
 //
 // @param request - GetAppInstanceForPartnerRequest
 //
@@ -3302,11 +3302,11 @@ func (client *Client) GetAppInstanceTempShortUrlWithContext(ctx context.Context,
 
 // Summary:
 //
-// Queries the details of an application plugin.
+// Queries the details of an application plug-in.
 //
 // Description:
 //
-// Retrieves the configuration information of a code generation plugin.
+// Retrieves the configuration information of the code generation plug-in.
 //
 // @param request - GetAppPluginRequest
 //
@@ -3350,11 +3350,11 @@ func (client *Client) GetAppPluginWithContext(ctx context.Context, request *GetA
 
 // Summary:
 //
-// Retrieves the configuration information of a plugin.
+// Retrieves the plugin configuration information.
 //
 // Description:
 //
-// Retrieves the configuration information of a code generation plugin.
+// Retrieves the configuration information of the code generation plugin.
 //
 // @param request - GetAppPluginConfigRequest
 //
@@ -3402,25 +3402,25 @@ func (client *Client) GetAppPluginConfigWithContext(ctx context.Context, request
 
 // Summary:
 //
-// Retrieves the plugin configuration of a Wanxiaozhi site for internal services and returns an encrypted configuration string.
+// Retrieves the plugin configuration of a Wanxiaozhi site for internal services and returns the encrypted configuration string.
 //
 // Description:
 //
 // ## Request description
 //
-// - The service design of this operation is exclusively for internal platform services to read the plugin configuration of a specific site by using a service identity.
+// - This API operation is used in internal platform service design to read the plugin configuration of a specific site by using a service identity.
 //
 // - Authentication relies entirely on gateway RAM control and is available only to trusted internal service accounts.
 //
-// - If the specified plugin is not installed on the site or the request parameters are empty, the operation returns a success status with an empty Module. Clients that invoke the operation should treat this as unconfigured.
+// - If the specified plugin is not installed on the site or the request parameters are empty, the API operation returns a success status but the Module field is empty. The invoker must handle this as an unconfigured state.
 //
-// - The returned `PluginConfig` field contains an AES-encrypted JSON character string. Clients that invoke the operation must perform decryption before use.
+// - The returned PluginConfig field contains an AES-encrypted JSON character string. The invoker must perform decryption before use.
 //
-// - To invoke in user mode, continue to use the `GetAppPluginConfig` operation instead of this operation.
+// - To invoke in user mode, continue to use the GetAppPluginConfig API operation instead of this API operation.
 //
-// - The `BizId` and `PluginId` parameters are both required in the contract. Passing empty character strings is not blocked by the gateway but causes the backend to return an empty Module. This is a fault-tolerance behavior, and clients that invoke the operation should not rely on it.
+// - The BizId and PluginId parameters are required in the contract. Passing empty character strings is not blocked by the gateway but causes the backend to return an empty Module field. This is a fault-tolerance behavior, and invokers must not rely on it.
 //
-// - This operation supports HTTPS and RPC-style POST requests, with parameters passed through formData.
+// - This API operation supports HTTPS and RPC-style POST requests. Parameters are passed by using form data.
 //
 // @param request - GetAppPluginConfigForAdminRequest
 //
@@ -3472,7 +3472,7 @@ func (client *Client) GetAppPluginConfigForAdminWithContext(ctx context.Context,
 //
 // Description:
 //
-// Retrieves the configuration information of the code generation plug-in.
+// Retrieves the configuration information for the code generation plugin.
 //
 // @param request - GetAppPublishStatusRequest
 //
@@ -3493,6 +3493,10 @@ func (client *Client) GetAppPublishStatusWithContext(ctx context.Context, reques
 
 	if !dara.IsNil(request.DeployOrderId) {
 		query["DeployOrderId"] = request.DeployOrderId
+	}
+
+	if !dara.IsNil(request.PublishOrderId) {
+		query["PublishOrderId"] = request.PublishOrderId
 	}
 
 	if !dara.IsNil(request.WebsiteDomain) {
@@ -3524,7 +3528,7 @@ func (client *Client) GetAppPublishStatusWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// Queries recommended commodities.
+// Queries recommended products.
 //
 // Description:
 //
@@ -3588,7 +3592,7 @@ func (client *Client) GetAppRecommendedCommoditiesWithContext(ctx context.Contex
 //
 // Description:
 //
-// Retrieves the configuration information of the code generation plugin.
+// Retrieves the configuration information of the code generation plug-in.
 //
 // @param request - GetAppRequirementRequest
 //
@@ -4056,7 +4060,7 @@ func (client *Client) GetAppTemplateWithContext(ctx context.Context, request *Ge
 //
 // Description:
 //
-// Queries the information of an application instance.
+// Queries application instance information.
 //
 // @param request - GetAppWorkspaceDirectoryRequest
 //
@@ -4204,7 +4208,7 @@ func (client *Client) GetDomainInfoForPartnerWithContext(ctx context.Context, re
 
 // Summary:
 //
-// Queries the China Internet Content Provider (ICP) filing information of a domain name.
+// Queries the ICP filing information for a domain name.
 //
 // @param request - GetIcpFilingInfoForPartnerRequest
 //
@@ -4256,7 +4260,7 @@ func (client *Client) GetIcpFilingInfoForPartnerWithContext(ctx context.Context,
 //
 // Description:
 //
-// Queries the Supabase instance configuration information corresponding to a resource.
+// Queries the configuration information of the Supabase instance associated with the resource.
 //
 // @param request - GetLlmProxyConfigForAdminRequest
 //
@@ -4474,7 +4478,7 @@ func (client *Client) GetMiniAppBindingForAdminWithContext(ctx context.Context, 
 //
 // Description:
 //
-// Retrieves the configuration information of the code generation plug-in.
+// Retrieves the configuration information of the code generation plugin.
 //
 // @param request - GetOssUploadPolicyRequest
 //
@@ -4522,7 +4526,7 @@ func (client *Client) GetOssUploadPolicyWithContext(ctx context.Context, request
 //
 // Description:
 //
-// Retrieves the configuration information of the code generation plugin.
+// Retrieves the configuration information of the code generation plug-in.
 //
 // @param request - GetTempDownloadUrlRequest
 //
@@ -4620,7 +4624,7 @@ func (client *Client) GetUserAccessTokenForPartnerWithContext(ctx context.Contex
 
 // Summary:
 //
-// Obtains temporary credentials for a partner to assume a user\\"s service-linked role.
+// Retrieves temporary credentials for a user\\"s service-linked role (SLR) authorization as a partner.
 //
 // @param request - GetUserTmpIdentityForPartnerRequest
 //
@@ -4748,11 +4752,11 @@ func (client *Client) GrantPromotionOfferForPartnerWithContext(ctx context.Conte
 
 // Summary:
 //
-// Installs an application plugin to the current user account.
+// Installs an application plug-in for the current user account.
 //
 // Description:
 //
-// Retrieves the configuration information of the code generation plugin.
+// Retrieves the configuration information of the code generation plug-in.
 //
 // @param request - InstallAppPluginRequest
 //
@@ -4800,7 +4804,7 @@ func (client *Client) InstallAppPluginWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// # Introspection analysis of免登 accessToken
+// Introspects the logon-free access token.
 //
 // @param request - IntrospectAppInstanceTicketForPreviewRequest
 //
@@ -4910,7 +4914,7 @@ func (client *Client) ListAIStaffChatEventsWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// Performs a paging query on the list of conversation messages for an AI agent.
+// Performs a paging query on the list of conversation messages for an AI employee.
 //
 // Description:
 //
@@ -4972,7 +4976,7 @@ func (client *Client) ListAIStaffChatMessagesWithContext(ctx context.Context, re
 
 // Summary:
 //
-// Queries the list of application assistant agents.
+// Queries a list of application assistant agents.
 //
 // Description:
 //
@@ -5028,7 +5032,7 @@ func (client *Client) ListAppAssistantAgentsWithContext(ctx context.Context, req
 //
 // Description:
 //
-// Wanxiaozhi 2.0 - AI conversation history query API.
+// The API operation for querying AI conversation history in Wanxiaozhi 2.0.
 //
 // @param request - ListAppChatMessagesRequest
 //
@@ -5088,11 +5092,11 @@ func (client *Client) ListAppChatMessagesWithContext(ctx context.Context, reques
 
 // Summary:
 //
-// # Query Website Build Product Details
+// Queries the details of website builder products.
 //
 // Description:
 //
-// # Get QR code plugin configuration information
+// Retrieves the configuration information of the code generation plug-in.
 //
 // @param request - ListAppCommoditySpecificationsV2ForPartnerRequest
 //
@@ -5140,11 +5144,11 @@ func (client *Client) ListAppCommoditySpecificationsV2ForPartnerWithContext(ctx 
 
 // Summary:
 //
-// Queries the list of conversation messages by paging.
+// Queries the conversation message list by using paging. This is a paged query.
 //
 // Description:
 //
-// Wanxiaozhi 2.0 - API for querying AI session history information.
+// The API operation for querying AI session history in Wanxiaozhi 2.0.
 //
 // @param request - ListAppConversationMessagesRequest
 //
@@ -5208,7 +5212,7 @@ func (client *Client) ListAppConversationMessagesWithContext(ctx context.Context
 
 // Summary:
 //
-// Queries the conversation list.
+// Queries a list of conversations.
 //
 // Description:
 //
@@ -5453,6 +5457,10 @@ func (client *Client) ListAppInstancesWithContext(ctx context.Context, tmpReq *L
 		query["BizIds"] = request.BizIdsShrink
 	}
 
+	if !dara.IsNil(request.Domain) {
+		query["Domain"] = request.Domain
+	}
+
 	if !dara.IsNil(request.EndTimeBegin) {
 		query["EndTimeBegin"] = request.EndTimeBegin
 	}
@@ -5634,7 +5642,7 @@ func (client *Client) ListAppPluginFilesWithContext(ctx context.Context, request
 
 // Summary:
 //
-// Queries the application plug-in versions.
+// Queries the list of application plug-in versions.
 //
 // Description:
 //
@@ -6378,7 +6386,7 @@ func (client *Client) ListPromotionOfferRecordsForPartnerWithContext(ctx context
 //
 // Description:
 //
-// Retrieves the configuration information of the code generation plugin.
+// Retrieves the configuration information of the code generation plug-in.
 //
 // @param request - ListRbacOrgTreeRequest
 //
@@ -6446,11 +6454,11 @@ func (client *Client) ListRbacOrgTreeWithContext(ctx context.Context, request *L
 
 // Summary:
 //
-// Queries the RBAC permissions.
+// Queries the RBAC permission list.
 //
 // Description:
 //
-// Creates an AI session in Wanxiaozhi 2.0.
+// The API operation for creating an AI conversation in Wanxiaozhi 2.0.
 //
 // @param request - ListRbacPermissionsRequest
 //
@@ -6522,7 +6530,7 @@ func (client *Client) ListRbacPermissionsWithContext(ctx context.Context, reques
 //
 // Description:
 //
-// Queries the application instance information.
+// Queries application instance information.
 //
 // @param request - ListRbacRoleHierarchyRequest
 //
@@ -6590,11 +6598,11 @@ func (client *Client) ListRbacRoleHierarchyWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// Queries a list of RBAC roles.
+// Queries the list of RBAC roles.
 //
 // Description:
 //
-// Queries the application instance information.
+// Queries application instance information.
 //
 // @param request - ListRbacRolesRequest
 //
@@ -6734,7 +6742,7 @@ func (client *Client) ModifyAppInstanceSpecWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// Updates a material folder.
+// Updates an asset folder.
 //
 // @param request - ModifyMaterialDirectoryRequest
 //
@@ -6786,7 +6794,7 @@ func (client *Client) ModifyMaterialDirectoryWithContext(ctx context.Context, re
 
 // Summary:
 //
-// Updates a material file.
+// Modifies a material file.
 //
 // @param request - ModifyMaterialFileRequest
 //
@@ -6838,7 +6846,7 @@ func (client *Client) ModifyMaterialFileWithContext(ctx context.Context, request
 
 // Summary:
 //
-// Updates the status of material files.
+// Modifies the status of a material file.
 //
 // @param tmpReq - ModifyMaterialFileStatusRequest
 //
@@ -7114,7 +7122,7 @@ func (client *Client) OfflineAppInstanceWithContext(ctx context.Context, request
 
 // Summary:
 //
-// Restores a website to online status by reverting the CDN back-to-origin configuration for all domain names under the site to the normal path rewrite rules.
+// Restores a website to online status and restores the CDN back-to-origin path rewrite rules for all domain names under the site to the normal path rewrite rules.
 //
 // @param request - OnlineAppInstanceRequest
 //
@@ -7158,7 +7166,7 @@ func (client *Client) OnlineAppInstanceWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// Operates an application by a partner.
+// Operates a partner application.
 //
 // @param request - OperateAppInstanceForPartnerRequest
 //
@@ -7425,8 +7433,16 @@ func (client *Client) PublishAppInstanceWithContext(ctx context.Context, request
 		}
 	}
 	query := map[string]interface{}{}
+	if !dara.IsNil(request.ArtifactDigest) {
+		query["ArtifactDigest"] = request.ArtifactDigest
+	}
+
 	if !dara.IsNil(request.BizId) {
 		query["BizId"] = request.BizId
+	}
+
+	if !dara.IsNil(request.CandidateId) {
+		query["CandidateId"] = request.CandidateId
 	}
 
 	if !dara.IsNil(request.DeployChannel) {
@@ -7437,12 +7453,44 @@ func (client *Client) PublishAppInstanceWithContext(ctx context.Context, request
 		query["Description"] = request.Description
 	}
 
+	if !dara.IsNil(request.Ext) {
+		query["Ext"] = request.Ext
+	}
+
+	if !dara.IsNil(request.IdempotencyKey) {
+		query["IdempotencyKey"] = request.IdempotencyKey
+	}
+
 	if !dara.IsNil(request.LogicalNumber) {
 		query["LogicalNumber"] = request.LogicalNumber
 	}
 
+	if !dara.IsNil(request.PlatformAppid) {
+		query["PlatformAppid"] = request.PlatformAppid
+	}
+
+	if !dara.IsNil(request.PluginDeclarationHash) {
+		query["PluginDeclarationHash"] = request.PluginDeclarationHash
+	}
+
+	if !dara.IsNil(request.PrivacyDraftId) {
+		query["PrivacyDraftId"] = request.PrivacyDraftId
+	}
+
+	if !dara.IsNil(request.PrivacyRevision) {
+		query["PrivacyRevision"] = request.PrivacyRevision
+	}
+
 	if !dara.IsNil(request.PublishNumber) {
 		query["PublishNumber"] = request.PublishNumber
+	}
+
+	if !dara.IsNil(request.PublishOrderId) {
+		query["PublishOrderId"] = request.PublishOrderId
+	}
+
+	if !dara.IsNil(request.UploadSequence) {
+		query["UploadSequence"] = request.UploadSequence
 	}
 
 	if !dara.IsNil(request.WeappAction) {
@@ -7478,7 +7526,7 @@ func (client *Client) PublishAppInstanceWithContext(ctx context.Context, request
 //
 // Description:
 //
-// Queries the Supabase instance information corresponding to a resource.
+// Queries the Supabase instance information associated with the resource.
 //
 // @param request - PushResourceMeasureRequest
 //
@@ -8180,7 +8228,7 @@ func (client *Client) QueryMaterialTaskListWithContext(ctx context.Context, tmpR
 //
 // Description:
 //
-// Queries the information of an application instance.
+// Queries the information about an application instance.
 //
 // @param request - QueryRbacRoleRequest
 //
@@ -8228,11 +8276,11 @@ func (client *Client) QueryRbacRoleWithContext(ctx context.Context, request *Que
 
 // Summary:
 //
-// Queries the role permission list.
+// Queries the list of role permissions.
 //
 // Description:
 //
-// The API operation to create an AI session for Wanxiaozhi 2.0.
+// Creates an AI session in Wanxiaozhi 2.0.
 //
 // @param request - QueryRbacRolePermissionsRequest
 //
@@ -8512,11 +8560,11 @@ func (client *Client) QuerySupabaseConfigsForAdminWithContext(ctx context.Contex
 
 // Summary:
 //
-// Queries the information of the Supabase instance associated with a resource.
+// Queries the Supabase instance information associated with a resource.
 //
 // Description:
 //
-// Queries the information of the Supabase instance associated with a resource.
+// Queries the Supabase instance information associated with a resource.
 //
 // @param request - QuerySupabaseInstanceInfoForAdminRequest
 //
@@ -8663,7 +8711,7 @@ func (client *Client) ReconnectAppChatWithContext(ctx context.Context, request *
 
 // Summary:
 //
-// Refreshes the password-free login ticket for a website building instance.
+// Refreshes the logon-free ticket for a website builder instance.
 //
 // @param request - RefreshAppInstanceTicketRequest
 //
@@ -8715,7 +8763,7 @@ func (client *Client) RefreshAppInstanceTicketWithContext(ctx context.Context, r
 
 // Summary:
 //
-// Processes a refund for a channel partner website building service.
+// Issues a refund for a channel partner\\"s website building service.
 //
 // @param request - RefundAppInstanceForPartnerRequest
 //
@@ -9107,11 +9155,11 @@ func (client *Client) RevokeRbacUserRoleWithContext(ctx context.Context, request
 
 // Summary:
 //
-// Rewrites a channel title using AI.
+// Rewrites the title using AI.
 //
 // Description:
 //
-// Rewrites a channel title.
+// Rewrites the channel title.
 //
 // @param request - RewriteChannelTitleRequest
 //
@@ -9163,7 +9211,7 @@ func (client *Client) RewriteChannelTitleWithContext(ctx context.Context, reques
 //
 // Description:
 //
-// Retrieves the configuration information of the code generation plug-in.
+// Retrieves the configuration information of the code generation plugin.
 //
 // @param request - RollbackAppCodeSnapshotRequest
 //
@@ -9211,11 +9259,11 @@ func (client *Client) RollbackAppCodeSnapshotWithContext(ctx context.Context, re
 
 // Summary:
 //
-// Rolls back the release of an application instance.
+// Rolls back the deployment of an application instance.
 //
 // Description:
 //
-// Queries the details of an application instance.
+// Queries application instance information.
 //
 // @param request - RollbackAppInstancePublishRequest
 //
@@ -9271,11 +9319,11 @@ func (client *Client) RollbackAppInstancePublishWithContext(ctx context.Context,
 
 // Summary:
 //
-// Rolls back the version of an application plugin.
+// Rolls back the version of an application plug-in.
 //
 // Description:
 //
-// Retrieves the configuration information of the code generation plugin.
+// Retrieves the configuration information of the code generation plug-in.
 //
 // @param request - RollbackAppPluginVersionRequest
 //
@@ -9323,11 +9371,11 @@ func (client *Client) RollbackAppPluginVersionWithContext(ctx context.Context, r
 
 // Summary:
 //
-// # Save Requirement
+// Saves a requirement.
 //
 // Description:
 //
-// # Get code generation plugin configuration information
+// Retrieves the configuration information of the code generation plug-in.
 //
 // @param request - SaveAppRequirementRequest
 //
@@ -9609,7 +9657,7 @@ func (client *Client) SearchImageWithContext(ctx context.Context, tmpReq *Search
 
 // Summary:
 //
-// Sets the SSL certificate for a website.
+// Configures the SSL certificate for a website.
 //
 // @param request - SetAppDomainCertificateRequest
 //
@@ -9901,7 +9949,7 @@ func (client *Client) SwitchAppConversationWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// Synchronizes an application instance from a partner.
+// Synchronizes partner application instances.
 //
 // @param tmpReq - SyncAppInstanceForPartnerRequest
 //
@@ -10015,7 +10063,7 @@ func (client *Client) TranslateChannelDraftWithContext(ctx context.Context, requ
 
 // Summary:
 //
-// Unbinds a domain name from a website and deletes the associated DNS records.
+// Unbinds a domain name from a website and deletes the related DNS records.
 //
 // @param request - UnbindAppDomainRequest
 //
@@ -10115,7 +10163,7 @@ func (client *Client) UninstallAppPluginWithContext(ctx context.Context, request
 //
 // Description:
 //
-// Queries the AI conversation history for Wanxiaozhi 2.0.
+// The API operation for querying the AI conversation history in Wanxiaozhi 2.0.
 //
 // @param request - UpdateAppChatMessageRequest
 //
@@ -10175,7 +10223,7 @@ func (client *Client) UpdateAppChatMessageWithContext(ctx context.Context, reque
 //
 // Description:
 //
-// Retrieves the configuration information of the code generation plug-in.
+// Retrieves the configuration information of the code generation plugin.
 //
 // @param request - UpdateAppCodeRequest
 //
@@ -10279,7 +10327,7 @@ func (client *Client) UpdateAppFileWithContext(ctx context.Context, request *Upd
 
 // Summary:
 //
-// Changes the specifications of a website building instance.
+// Changes the specifications of a website builder instance.
 //
 // Description:
 //
@@ -10383,11 +10431,11 @@ func (client *Client) UpdateAppInstanceWithContext(ctx context.Context, tmpReq *
 
 // Summary:
 //
-// Updates an application plugin.
+// Updates an application plug-in.
 //
 // Description:
 //
-// Retrieves the configuration information of the code generation plugin.
+// Retrieves the configuration information of the code generation plug-in.
 //
 // @param request - UpdateAppPluginRequest
 //
@@ -10715,7 +10763,7 @@ func (client *Client) UpdateMiniAppBindingWithContext(ctx context.Context, reque
 //
 // Description:
 //
-// Retrieves the configuration information of the code generation plug-in.
+// Retrieves the configuration information of the code generation plugin.
 //
 // @param request - UpdateRbacOrgUnitRequest
 //
@@ -10767,11 +10815,11 @@ func (client *Client) UpdateRbacOrgUnitWithContext(ctx context.Context, request 
 
 // Summary:
 //
-// Updates the RBAC role.
+// Updates an RBAC role.
 //
 // Description:
 //
-// Retrieves the configuration information of the code generation plugin.
+// Retrieves the configuration information of the code generation plug-in.
 //
 // @param request - UpdateRbacRoleRequest
 //
@@ -10823,11 +10871,11 @@ func (client *Client) UpdateRbacRoleWithContext(ctx context.Context, request *Up
 
 // Summary:
 //
-// Uploads an application plugin version.
+// Uploads an application plug-in version.
 //
 // Description:
 //
-// Retrieves the configuration information of the code generation plugin.
+// Retrieves the configuration information of the code generation plug-in.
 //
 // @param request - UploadAppPluginVersionRequest
 //

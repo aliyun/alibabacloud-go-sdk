@@ -211,12 +211,28 @@ func (s *PublishAppInstanceResponseBody) Validate() error {
 }
 
 type PublishAppInstanceResponseBodyModule struct {
+	ArtifactDigest        *string `json:"ArtifactDigest,omitempty" xml:"ArtifactDigest,omitempty"`
+	AuditId               *string `json:"AuditId,omitempty" xml:"AuditId,omitempty"`
+	CandidateId           *string `json:"CandidateId,omitempty" xml:"CandidateId,omitempty"`
+	CandidateStatus       *string `json:"CandidateStatus,omitempty" xml:"CandidateStatus,omitempty"`
+	CommitHash            *string `json:"CommitHash,omitempty" xml:"CommitHash,omitempty"`
+	PlatformAppid         *string `json:"PlatformAppid,omitempty" xml:"PlatformAppid,omitempty"`
+	PluginDeclarationHash *string `json:"PluginDeclarationHash,omitempty" xml:"PluginDeclarationHash,omitempty"`
+	PluginState           *string `json:"PluginState,omitempty" xml:"PluginState,omitempty"`
+	PrivacyDraftId        *string `json:"PrivacyDraftId,omitempty" xml:"PrivacyDraftId,omitempty"`
+	PrivacyRevision       *string `json:"PrivacyRevision,omitempty" xml:"PrivacyRevision,omitempty"`
+	PublishEnv            *string `json:"PublishEnv,omitempty" xml:"PublishEnv,omitempty"`
+	PublishNumber         *string `json:"PublishNumber,omitempty" xml:"PublishNumber,omitempty"`
 	// The publish order ID.
 	//
 	// example:
 	//
 	// 231
-	PublishOrderId *int64 `json:"PublishOrderId,omitempty" xml:"PublishOrderId,omitempty"`
+	PublishOrderId     *int64  `json:"PublishOrderId,omitempty" xml:"PublishOrderId,omitempty"`
+	ReadbackStatus     *string `json:"ReadbackStatus,omitempty" xml:"ReadbackStatus,omitempty"`
+	SubmitIntentStatus *string `json:"SubmitIntentStatus,omitempty" xml:"SubmitIntentStatus,omitempty"`
+	UpdatedAt          *int64  `json:"UpdatedAt,omitempty" xml:"UpdatedAt,omitempty"`
+	UploadSequence     *int64  `json:"UploadSequence,omitempty" xml:"UploadSequence,omitempty"`
 }
 
 func (s PublishAppInstanceResponseBodyModule) String() string {
@@ -227,12 +243,156 @@ func (s PublishAppInstanceResponseBodyModule) GoString() string {
 	return s.String()
 }
 
+func (s *PublishAppInstanceResponseBodyModule) GetArtifactDigest() *string {
+	return s.ArtifactDigest
+}
+
+func (s *PublishAppInstanceResponseBodyModule) GetAuditId() *string {
+	return s.AuditId
+}
+
+func (s *PublishAppInstanceResponseBodyModule) GetCandidateId() *string {
+	return s.CandidateId
+}
+
+func (s *PublishAppInstanceResponseBodyModule) GetCandidateStatus() *string {
+	return s.CandidateStatus
+}
+
+func (s *PublishAppInstanceResponseBodyModule) GetCommitHash() *string {
+	return s.CommitHash
+}
+
+func (s *PublishAppInstanceResponseBodyModule) GetPlatformAppid() *string {
+	return s.PlatformAppid
+}
+
+func (s *PublishAppInstanceResponseBodyModule) GetPluginDeclarationHash() *string {
+	return s.PluginDeclarationHash
+}
+
+func (s *PublishAppInstanceResponseBodyModule) GetPluginState() *string {
+	return s.PluginState
+}
+
+func (s *PublishAppInstanceResponseBodyModule) GetPrivacyDraftId() *string {
+	return s.PrivacyDraftId
+}
+
+func (s *PublishAppInstanceResponseBodyModule) GetPrivacyRevision() *string {
+	return s.PrivacyRevision
+}
+
+func (s *PublishAppInstanceResponseBodyModule) GetPublishEnv() *string {
+	return s.PublishEnv
+}
+
+func (s *PublishAppInstanceResponseBodyModule) GetPublishNumber() *string {
+	return s.PublishNumber
+}
+
 func (s *PublishAppInstanceResponseBodyModule) GetPublishOrderId() *int64 {
 	return s.PublishOrderId
 }
 
+func (s *PublishAppInstanceResponseBodyModule) GetReadbackStatus() *string {
+	return s.ReadbackStatus
+}
+
+func (s *PublishAppInstanceResponseBodyModule) GetSubmitIntentStatus() *string {
+	return s.SubmitIntentStatus
+}
+
+func (s *PublishAppInstanceResponseBodyModule) GetUpdatedAt() *int64 {
+	return s.UpdatedAt
+}
+
+func (s *PublishAppInstanceResponseBodyModule) GetUploadSequence() *int64 {
+	return s.UploadSequence
+}
+
+func (s *PublishAppInstanceResponseBodyModule) SetArtifactDigest(v string) *PublishAppInstanceResponseBodyModule {
+	s.ArtifactDigest = &v
+	return s
+}
+
+func (s *PublishAppInstanceResponseBodyModule) SetAuditId(v string) *PublishAppInstanceResponseBodyModule {
+	s.AuditId = &v
+	return s
+}
+
+func (s *PublishAppInstanceResponseBodyModule) SetCandidateId(v string) *PublishAppInstanceResponseBodyModule {
+	s.CandidateId = &v
+	return s
+}
+
+func (s *PublishAppInstanceResponseBodyModule) SetCandidateStatus(v string) *PublishAppInstanceResponseBodyModule {
+	s.CandidateStatus = &v
+	return s
+}
+
+func (s *PublishAppInstanceResponseBodyModule) SetCommitHash(v string) *PublishAppInstanceResponseBodyModule {
+	s.CommitHash = &v
+	return s
+}
+
+func (s *PublishAppInstanceResponseBodyModule) SetPlatformAppid(v string) *PublishAppInstanceResponseBodyModule {
+	s.PlatformAppid = &v
+	return s
+}
+
+func (s *PublishAppInstanceResponseBodyModule) SetPluginDeclarationHash(v string) *PublishAppInstanceResponseBodyModule {
+	s.PluginDeclarationHash = &v
+	return s
+}
+
+func (s *PublishAppInstanceResponseBodyModule) SetPluginState(v string) *PublishAppInstanceResponseBodyModule {
+	s.PluginState = &v
+	return s
+}
+
+func (s *PublishAppInstanceResponseBodyModule) SetPrivacyDraftId(v string) *PublishAppInstanceResponseBodyModule {
+	s.PrivacyDraftId = &v
+	return s
+}
+
+func (s *PublishAppInstanceResponseBodyModule) SetPrivacyRevision(v string) *PublishAppInstanceResponseBodyModule {
+	s.PrivacyRevision = &v
+	return s
+}
+
+func (s *PublishAppInstanceResponseBodyModule) SetPublishEnv(v string) *PublishAppInstanceResponseBodyModule {
+	s.PublishEnv = &v
+	return s
+}
+
+func (s *PublishAppInstanceResponseBodyModule) SetPublishNumber(v string) *PublishAppInstanceResponseBodyModule {
+	s.PublishNumber = &v
+	return s
+}
+
 func (s *PublishAppInstanceResponseBodyModule) SetPublishOrderId(v int64) *PublishAppInstanceResponseBodyModule {
 	s.PublishOrderId = &v
+	return s
+}
+
+func (s *PublishAppInstanceResponseBodyModule) SetReadbackStatus(v string) *PublishAppInstanceResponseBodyModule {
+	s.ReadbackStatus = &v
+	return s
+}
+
+func (s *PublishAppInstanceResponseBodyModule) SetSubmitIntentStatus(v string) *PublishAppInstanceResponseBodyModule {
+	s.SubmitIntentStatus = &v
+	return s
+}
+
+func (s *PublishAppInstanceResponseBodyModule) SetUpdatedAt(v int64) *PublishAppInstanceResponseBodyModule {
+	s.UpdatedAt = &v
+	return s
+}
+
+func (s *PublishAppInstanceResponseBodyModule) SetUploadSequence(v int64) *PublishAppInstanceResponseBodyModule {
+	s.UploadSequence = &v
 	return s
 }
 

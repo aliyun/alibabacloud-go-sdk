@@ -34,7 +34,7 @@ type iUpdateAppChatMessageResponseBody interface {
 }
 
 type UpdateAppChatMessageResponseBody struct {
-	// The detailed reasons for access denial.
+	// The detailed reason why access is denied.
 	//
 	// example:
 	//
@@ -52,15 +52,15 @@ type UpdateAppChatMessageResponseBody struct {
 	//
 	// spring-cloud-b
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	// The dynamic code. This parameter is not used and can be ignored.
+	// The dynamic code. This field is currently unused and can be ignored.
 	//
 	// example:
 	//
 	// ERROR-oo1
 	DynamicCode *string `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
-	// The dynamic error message, which is used to replace `%s` in the **ErrMessage*	- error message.
+	// The dynamic error message, which is used to replace the `%s` placeholder in the **ErrMessage*	- response parameter.
 	//
-	// > If **ErrMessage*	- returns **The Value of Input Parameter %s is not valid*	- and **DynamicMessage*	- returns **DtsJobId**, it indicates that the request parameter **DtsJobId*	- is invalid.
+	// > If **ErrMessage*	- returns **The Value of Input Parameter %s is not valid*	- and **DynamicMessage*	- returns **DtsJobId**, it indicates that the **DtsJobId*	- request parameter is invalid.
 	//
 	// example:
 	//
@@ -235,7 +235,7 @@ type UpdateAppChatMessageResponseBodyModule struct {
 	//
 	// example:
 	//
-	// {\\"code\\": \\"200\\", \\"success\\": True, \\"content\\": True, \\"requestId\\": \\"4AF53F7B-FEA9-5966-B0F8-BAF9A1EEFE34\\", \\"businessError\\": False, \\"message\\": \\"success\\", \\"httpStatusCode\\": 200}
+	// {\"code\": \"200\", \"success\": True, \"content\": True, \"requestId\": \"4AF53F7B-FEA9-5966-B0F8-BAF9A1EEFE34\", \"businessError\": False, \"message\": \"success\", \"httpStatusCode\": 200}
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
 	// The content type.
 	//
@@ -257,7 +257,7 @@ type UpdateAppChatMessageResponseBodyModule struct {
 	//
 	// 1740479834
 	GmtCreateTime *string `json:"GmtCreateTime,omitempty" xml:"GmtCreateTime,omitempty"`
-	// The update time in ISO 8601 format in the UTC time zone.
+	// The modification time in ISO 8601 format in the UTC time zone.
 	//
 	// Use the UTC time format: yyyy-MM-ddTHH:mm:ss.SSSZ
 	//
@@ -275,9 +275,9 @@ type UpdateAppChatMessageResponseBodyModule struct {
 	//
 	// example:
 	//
-	// {\\"appId\\":\\"WS20260418211121000001\\",\\"inputTokens\\":273,\\"outputTokens\\":1}
+	// {\"appId\":\"WS20260418211121000001\",\"inputTokens\":273,\"outputTokens\":1}
 	MetaData *string `json:"MetaData,omitempty" xml:"MetaData,omitempty"`
-	// The probability of not wearing a mask, uniform, or hat.
+	// The probability of not wearing a mask, work clothes, or hat.
 	//
 	// example:
 	//
@@ -285,17 +285,17 @@ type UpdateAppChatMessageResponseBodyModule struct {
 	No *int32 `json:"No,omitempty" xml:"No,omitempty"`
 	// The role of the conversation participant. Valid values:
 	//
-	// - user: User
+	// - user: user
 	//
-	// - assistant: Assistant
+	// - assistant: assistant
 	//
-	// - system: System
+	// - system: system
 	//
-	// - function: Function
+	// - function: function
 	//
-	// - plugin: Plug-in
+	// - plugin: plug-in
 	//
-	// - tool: Tool
+	// - tool: tool
 	//
 	// example:
 	//
@@ -307,7 +307,7 @@ type UpdateAppChatMessageResponseBodyModule struct {
 	//
 	// 11
 	SectionId *string `json:"SectionId,omitempty" xml:"SectionId,omitempty"`
-	// The site ID. You can obtain the site ID by calling the [ListSites](~~ListSites~~) operation.
+	// The site ID.
 	//
 	// example:
 	//

@@ -84,7 +84,7 @@ type RenewAppSandboxResponseBody struct {
 	//
 	// example:
 	//
-	// 系统异常
+	// Internal error.
 	RootErrorMsg *string `json:"RootErrorMsg,omitempty" xml:"RootErrorMsg,omitempty"`
 	// The reserved parameter.
 	//

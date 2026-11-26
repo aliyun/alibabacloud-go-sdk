@@ -22,17 +22,17 @@ type iListMyAppPluginsRequest interface {
 }
 
 type ListMyAppPluginsRequest struct {
-	// The category used to filter results.
+	// Filters the results by category.
 	//
 	// example:
 	//
-	// {\\"Status\\": 0, \\"Name\\": \\"JGHDDLT\\", \\"BizCode\\": \\"\\", \\"CategoryId\\": 30000952447, \\"ParentCategoryId\\": 30000952446}
+	// {\"Status\": 0, \"Name\": \"JGHDDLT\", \"BizCode\": \"\", \"CategoryId\": 30000952447, \"ParentCategoryId\": 30000952446}
 	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
-	// The search keyword. The keyword matches the name or description.
+	// The search keyword, which matches the name or description.
 	//
 	// example:
 	//
-	// ${\\"wget JiexJPWT.popscan.xaliyun.com\\"}
+	// ${\"wget JiexJPWT.popscan.xaliyun.com\"}
 	Keyword *string `json:"Keyword,omitempty" xml:"Keyword,omitempty"`
 	// The page number. Default value: 1.
 	//
@@ -46,7 +46,7 @@ type ListMyAppPluginsRequest struct {
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The status used to filter results.
+	// Filters the results by status.
 	//
 	// example:
 	//

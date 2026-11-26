@@ -36,7 +36,7 @@ type CreateLogoTaskRequest struct {
 	//
 	// example:
 	//
-	// {\\"ehpcutilParam\\":\\"sched job_submit --commandline \\\\\\"/ehpcdata/data/usersTest/huangqiaoyi-1725933699384/huangqiaoyi-1725933699384.slurm\\\\\\" --runasuser TestGfjnSimworks\\"}
+	// {\"ehpcutilParam\":\"sched job_submit --commandline \\\"/ehpcdata/data/usersTest/huangqiaoyi-1725933699384/huangqiaoyi-1725933699384.slurm\\\" --runasuser TestGfjnSimworks\"}
 	Parameters *string `json:"Parameters,omitempty" xml:"Parameters,omitempty"`
 	// The positive prompt.
 	//

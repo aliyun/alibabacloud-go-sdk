@@ -34,13 +34,13 @@ type iListAppPluginVersionsResponseBody interface {
 }
 
 type ListAppPluginVersionsResponseBody struct {
-	// The detailed reason for the access denial.
+	// The detailed reasons for access denial.
 	//
 	// example:
 	//
 	// {}
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	// Indicates whether retries are allowed.
+	// Specifies whether retries are allowed.
 	//
 	// example:
 	//
@@ -58,7 +58,7 @@ type ListAppPluginVersionsResponseBody struct {
 	//
 	// ERROR-oo1
 	DynamicCode *string `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
-	// The dynamic message. This parameter is not used and can be ignored.
+	// The dynamic message. This parameter is currently unused and can be ignored.
 	//
 	// example:
 	//
@@ -371,13 +371,13 @@ type ListAppPluginVersionsResponseBodyModuleData struct {
 	//
 	// example:
 	//
-	// x x x
+	// Fixed the plug-in configuration reading issue
 	Changelog *string `json:"Changelog,omitempty" xml:"Changelog,omitempty"`
 	// The commit ID.
 	//
 	// example:
 	//
-	// xxx
+	// 0123456789abcdef0123456789abcdef01234567
 	CommitSha *string `json:"CommitSha,omitempty" xml:"CommitSha,omitempty"`
 	// The creator.
 	//
@@ -403,7 +403,7 @@ type ListAppPluginVersionsResponseBodyModuleData struct {
 	//
 	// RUNNING
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The application instance version.
+	// The version of the application instance.
 	//
 	// example:
 	//
@@ -491,13 +491,13 @@ type ListAppPluginVersionsResponseBodyModuleNext struct {
 	//
 	// example:
 	//
-	// xxx
+	// Fixed the plug-in configuration reading issue
 	Changelog *string `json:"Changelog,omitempty" xml:"Changelog,omitempty"`
 	// The commit ID.
 	//
 	// example:
 	//
-	// xxx
+	// 0123456789abcdef0123456789abcdef01234567
 	CommitSha *string `json:"CommitSha,omitempty" xml:"CommitSha,omitempty"`
 	// The creator.
 	//
@@ -523,7 +523,7 @@ type ListAppPluginVersionsResponseBodyModuleNext struct {
 	//
 	// Succeeded
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The application instance version.
+	// The version of the application instance.
 	//
 	// example:
 	//

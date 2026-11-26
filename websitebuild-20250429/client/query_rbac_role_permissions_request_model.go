@@ -30,13 +30,13 @@ type QueryRbacRolePermissionsRequest struct {
 	//
 	// WS20250731233102000001
 	BizId *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
-	// The field used for sorting.
+	// The sort field.
 	//
 	// example:
 	//
 	// gmtCreated
 	OrderColumn *string `json:"OrderColumn,omitempty" xml:"OrderColumn,omitempty"`
-	// The sort order. Valid values: ASC and DESC.
+	// The sort order. Valid values: ASC, DESC.
 	//
 	// example:
 	//
@@ -62,7 +62,7 @@ type QueryRbacRolePermissionsRequest struct {
 	//
 	// - Regular user (preset role): 111111113
 	//
-	// - Custom role: the role ID of the custom role
+	// - Custom role: the role ID corresponding to the custom role.
 	//
 	// example:
 	//

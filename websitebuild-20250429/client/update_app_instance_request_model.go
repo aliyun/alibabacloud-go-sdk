@@ -50,7 +50,7 @@ type UpdateAppInstanceRequest struct {
 	//
 	// WD20250703155602000001
 	BizId *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
-	// The client token that is used to ensure the idempotence of the request. Generate a unique value from your client. The ClientToken value can contain only ASCII characters and cannot exceed 64 characters in length.
+	// The client token that is used to ensure the idempotence of the request. You can generate a parameter value on your client to ensure that the value is unique across different requests. The client token supports only ASCII characters and can be up to 64 characters in length.
 	//
 	// example:
 	//
@@ -72,9 +72,9 @@ type UpdateAppInstanceRequest struct {
 	//
 	// example:
 	//
-	// {\\"user_device_id\\":\\"6bef45cb0c76de284d24de074c088b73\\"}\\n
+	// {\"user_device_id\":\"6bef45cb0c76de284d24de074c088b73\"}\n
 	Extend *string `json:"Extend,omitempty" xml:"Extend,omitempty"`
-	// The application icon URL.
+	// The application icon.
 	//
 	// example:
 	//
@@ -84,7 +84,7 @@ type UpdateAppInstanceRequest struct {
 	//
 	// example:
 	//
-	// 大角鹿
+	// Dajiaolu
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	// The payment type.
 	//
@@ -92,7 +92,7 @@ type UpdateAppInstanceRequest struct {
 	//
 	// AUTO_PAY
 	PaymentType *string `json:"PaymentType,omitempty" xml:"PaymentType,omitempty"`
-	// The ID of the resource group to which the instance belongs.
+	// The ID of the enterprise resource group to which the instance belongs.
 	//
 	// example:
 	//
@@ -106,7 +106,7 @@ type UpdateAppInstanceRequest struct {
 	SiteVersion *string `json:"SiteVersion,omitempty" xml:"SiteVersion,omitempty"`
 	// The tags.
 	Tags []*UpdateAppInstanceRequestTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
-	// The application thumbnail URL.
+	// The application thumbnail.
 	//
 	// example:
 	//
@@ -253,17 +253,17 @@ func (s *UpdateAppInstanceRequest) Validate() error {
 }
 
 type UpdateAppInstanceRequestTags struct {
-	// The tag key of the instance. Valid values of N: **1*	- to **20**. The tag key cannot be an empty string.
+	// The tag key of the instance. Valid values of N: **1*	- to **20**. The value cannot be an empty string.
 	//
-	// The tag key can be up to 64 characters in length and cannot start with `aliyun` or `acs:`. The tag key cannot contain `http://` or `https://`.
+	// The tag key can be up to 64 characters in length. It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
 	//
 	// example:
 	//
 	// Group
 	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
-	// The tag value of the instance. Valid values of N: **1*	- to **20**. The tag value can be an empty string.
+	// The tag value of the instance. Valid values of N: **1*	- to **20**. The value can be an empty string.
 	//
-	// The tag value can be up to 128 characters in length and cannot start with `aliyun` or `acs:`. The tag value cannot contain `http://` or `https://`.
+	// The tag value can be up to 128 characters in length. It cannot start with `aliyun` or `acs:`, and cannot contain `http://` or `https://`.
 	//
 	// example:
 	//

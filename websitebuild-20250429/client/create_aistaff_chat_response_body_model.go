@@ -34,13 +34,13 @@ type iCreateAIStaffChatResponseBody interface {
 }
 
 type CreateAIStaffChatResponseBody struct {
-	// The detailed reason why access was denied.
+	// The details of the access denial.
 	//
 	// example:
 	//
 	// {}
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	// Indicates whether retry is allowed.
+	// Indicates whether a retry is allowed.
 	//
 	// example:
 	//
@@ -64,7 +64,7 @@ type CreateAIStaffChatResponseBody struct {
 	//
 	// abc
 	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
-	// The error parameters returned.
+	// The returned error parameters.
 	ErrorArgs []interface{} `json:"ErrorArgs,omitempty" xml:"ErrorArgs,omitempty" type:"Repeated"`
 	// The response data.
 	//
@@ -88,9 +88,9 @@ type CreateAIStaffChatResponseBody struct {
 	//
 	// example:
 	//
-	// 系统异常
+	// System exception
 	RootErrorMsg *string `json:"RootErrorMsg,omitempty" xml:"RootErrorMsg,omitempty"`
-	// A reserved parameter.
+	// The reserved parameter.
 	//
 	// example:
 	//

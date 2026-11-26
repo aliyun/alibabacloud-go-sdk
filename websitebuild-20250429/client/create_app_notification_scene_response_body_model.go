@@ -34,13 +34,13 @@ type iCreateAppNotificationSceneResponseBody interface {
 }
 
 type CreateAppNotificationSceneResponseBody struct {
-	// The detailed reason why access was denied.
+	// The detailed reason for access denial.
 	//
 	// example:
 	//
 	// {}
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	// Indicates whether retry is allowed.
+	// Specifies whether retries are allowed.
 	//
 	// example:
 	//
@@ -64,7 +64,7 @@ type CreateAppNotificationSceneResponseBody struct {
 	//
 	// SYSTEM_ERROR
 	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
-	// The error parameters.
+	// The returned error parameters.
 	ErrorArgs []interface{} `json:"ErrorArgs,omitempty" xml:"ErrorArgs,omitempty" type:"Repeated"`
 	// The response data.
 	Module *CreateAppNotificationSceneResponseBodyModule `json:"Module,omitempty" xml:"Module,omitempty" type:"Struct"`
@@ -80,13 +80,13 @@ type CreateAppNotificationSceneResponseBody struct {
 	//
 	// SYSTEM.ERROR
 	RootErrorCode *string `json:"RootErrorCode,omitempty" xml:"RootErrorCode,omitempty"`
-	// The error message.
+	// The exception message.
 	//
 	// example:
 	//
 	// System exception
 	RootErrorMsg *string `json:"RootErrorMsg,omitempty" xml:"RootErrorMsg,omitempty"`
-	// Indicates whether the request is processed synchronously.
+	// Specifies whether the request is processed synchronously.
 	//
 	// example:
 	//
@@ -211,7 +211,7 @@ func (s *CreateAppNotificationSceneResponseBody) Validate() error {
 }
 
 type CreateAppNotificationSceneResponseBodyModule struct {
-	// The ID of the newly created scenario.
+	// The ID of the created scenario.
 	//
 	// example:
 	//

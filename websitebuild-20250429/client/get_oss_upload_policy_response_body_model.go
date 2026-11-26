@@ -50,7 +50,7 @@ type GetOssUploadPolicyResponseBody struct {
 	//
 	// False
 	AllowRetry *bool `json:"AllowRetry,omitempty" xml:"AllowRetry,omitempty"`
-	// The app name.
+	// The application name.
 	//
 	// example:
 	//
@@ -215,13 +215,13 @@ func (s *GetOssUploadPolicyResponseBody) Validate() error {
 }
 
 type GetOssUploadPolicyResponseBodyModule struct {
-	// The upload directory path.
+	// The path of the upload directory.
 	//
 	// example:
 	//
 	// pano_src/100070-2679478/images/
 	Dir *string `json:"Dir,omitempty" xml:"Dir,omitempty"`
-	// The OSS bucket host address.
+	// The host address of the OSS bucket.
 	//
 	// example:
 	//
@@ -233,7 +233,7 @@ type GetOssUploadPolicyResponseBodyModule struct {
 	//
 	// Accept
 	Policy *string `json:"Policy,omitempty" xml:"Policy,omitempty"`
-	// The Security Token Service (STS) token. This value is null in non-STS scenarios.
+	// The Security Token Service (STS) token. This parameter is null in non-STS scenarios.
 	//
 	// example:
 	//

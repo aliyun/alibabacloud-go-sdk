@@ -40,13 +40,13 @@ type CreateAppAssistantAgentResponseBody struct {
 	//
 	// {}
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	// Indicates whether a retry is allowed.
+	// Specifies whether retry is allowed.
 	//
 	// example:
 	//
 	// False
 	AllowRetry *bool `json:"AllowRetry,omitempty" xml:"AllowRetry,omitempty"`
-	// The application name.
+	// The app name.
 	//
 	// example:
 	//
@@ -58,15 +58,15 @@ type CreateAppAssistantAgentResponseBody struct {
 	//
 	// ERROR-oo1
 	DynamicCode *string `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
-	// The dynamic error message, which is used to replace the `%s` placeholder in the **ErrMessage*	- response parameter.
+	// The dynamic error message, which is used to replace `%s` in the **ErrMessage*	- response parameter.
 	//
-	// > If **ErrMessage*	- returns **The Value of Input Parameter %s is not valid*	- and **DynamicMessage*	- returns **DtsJobId**, the value of the request parameter **DtsJobId*	- is invalid.
+	// > If **ErrMessage*	- returns **The Value of Input Parameter %s is not valid*	- and **DynamicMessage*	- returns **DtsJobId**, it indicates that the **DtsJobId*	- request parameter is invalid.
 	//
 	// example:
 	//
 	// SYSTEM_ERROR
 	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
-	// The error parameters.
+	// The returned error parameters.
 	ErrorArgs []interface{} `json:"ErrorArgs,omitempty" xml:"ErrorArgs,omitempty" type:"Repeated"`
 	// The response data.
 	Module *CreateAppAssistantAgentResponseBodyModule `json:"Module,omitempty" xml:"Module,omitempty" type:"Struct"`
@@ -82,13 +82,13 @@ type CreateAppAssistantAgentResponseBody struct {
 	//
 	// SYSTEM.ERROR
 	RootErrorCode *string `json:"RootErrorCode,omitempty" xml:"RootErrorCode,omitempty"`
-	// The error message.
+	// The exception message.
 	//
 	// example:
 	//
-	// 系统异常
+	// System exception
 	RootErrorMsg *string `json:"RootErrorMsg,omitempty" xml:"RootErrorMsg,omitempty"`
-	// A reserved parameter.
+	// The reserved parameter.
 	//
 	// example:
 	//
@@ -213,7 +213,7 @@ func (s *CreateAppAssistantAgentResponseBody) Validate() error {
 }
 
 type CreateAppAssistantAgentResponseBodyModule struct {
-	// The agent ID returned by the platform.
+	// The ID of the agent returned by the platform.
 	//
 	// example:
 	//
@@ -223,7 +223,7 @@ type CreateAppAssistantAgentResponseBodyModule struct {
 	//
 	// example:
 	//
-	// 测试业务空间
+	// Test workspace
 	AgentName *string `json:"AgentName,omitempty" xml:"AgentName,omitempty"`
 	// The business ID of the associated application instance.
 	//
@@ -247,13 +247,13 @@ type CreateAppAssistantAgentResponseBodyModule struct {
 	//
 	// 1740479834
 	GmtCreate *string `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	// The modification time.
+	// The update time.
 	//
 	// example:
 	//
 	// 2025-08-28T02:25:41Z
 	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	// The application ID of the agent on the platform.
+	// The app ID of the agent platform.
 	//
 	// example:
 	//
@@ -271,7 +271,7 @@ type CreateAppAssistantAgentResponseBodyModule struct {
 	//
 	// NORMAL
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The user ID.
+	// The ID of the user.
 	//
 	// example:
 	//

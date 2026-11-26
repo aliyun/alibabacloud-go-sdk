@@ -34,7 +34,7 @@ type iGetTempDownloadUrlResponseBody interface {
 }
 
 type GetTempDownloadUrlResponseBody struct {
-	// The details of the permission verification failure.
+	// The details of the permission check failure.
 	//
 	// example:
 	//
@@ -58,9 +58,9 @@ type GetTempDownloadUrlResponseBody struct {
 	//
 	// ERROR-oo1
 	DynamicCode *string `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
-	// The dynamic error message, which is used to replace the `%s` placeholder in the **ErrMessage*	- response parameter.
+	// The dynamic error message, which is used to replace `%s` in the **ErrMessage*	- error message.
 	//
-	// > If **ErrMessage*	- returns **The Value of Input Parameter %s is not valid*	- and **DynamicMessage*	- returns **DtsJobId**, it indicates that the **DtsJobId*	- request parameter is invalid.
+	// > If **ErrMessage*	- returns **The Value of Input Parameter %s is not valid*	- and **DynamicMessage*	- returns **DtsJobId**, it indicates that the request parameter **DtsJobId*	- is invalid.
 	//
 	// example:
 	//
@@ -80,7 +80,7 @@ type GetTempDownloadUrlResponseBody struct {
 	//
 	// 6C6B99AC-39EC-5350-874C-204128C905E6
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The root error code.
+	// The error code.
 	//
 	// example:
 	//

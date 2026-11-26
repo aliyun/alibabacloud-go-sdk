@@ -34,7 +34,7 @@ type GetMiniAppBindingRequest struct {
 	//
 	// example:
 	//
-	// SERVER_DOMAIN
+	// ["SERVER_DOMAIN"]
 	SettingKeys []*string `json:"SettingKeys,omitempty" xml:"SettingKeys,omitempty" type:"Repeated"`
 }
 

@@ -32,7 +32,7 @@ type ListRbacPermissionsRequest struct {
 	//
 	// WS20250801154628000001
 	BizId *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
-	// The number of entries to return in each query.
+	// The number of results returned per query.
 	//
 	// Valid values: 10 to 100. Default value: 20.
 	//
@@ -40,7 +40,7 @@ type ListRbacPermissionsRequest struct {
 	//
 	// 10
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The token that is used to start the next query. This parameter is empty if no next query exists.
+	// The token used to start the next query. This parameter is empty if no next query exists.
 	//
 	// example:
 	//

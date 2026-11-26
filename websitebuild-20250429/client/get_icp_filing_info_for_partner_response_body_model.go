@@ -70,7 +70,7 @@ type GetIcpFilingInfoForPartnerResponseBodyData struct {
 	IcpNumber *string `json:"IcpNumber,omitempty" xml:"IcpNumber,omitempty"`
 	// Indicates whether the domain name has an ICP filing.
 	Recorded *bool `json:"Recorded,omitempty" xml:"Recorded,omitempty"`
-	// The website ICP filing number associated with the domain name.
+	// The website ICP filing number corresponding to the domain name.
 	//
 	// example:
 	//

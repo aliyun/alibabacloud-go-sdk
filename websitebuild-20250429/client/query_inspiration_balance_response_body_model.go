@@ -34,19 +34,19 @@ type iQueryInspirationBalanceResponseBody interface {
 }
 
 type QueryInspirationBalanceResponseBody struct {
-	// The detailed reason for the access denial.
+	// The detailed reason why access is denied.
 	//
 	// example:
 	//
 	// {}
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	// Specifies whether retries are allowed.
+	// Indicates whether retries are allowed.
 	//
 	// example:
 	//
 	// False
 	AllowRetry *bool `json:"AllowRetry,omitempty" xml:"AllowRetry,omitempty"`
-	// The name of the application.
+	// The name of the application to query.
 	//
 	// example:
 	//
@@ -58,15 +58,15 @@ type QueryInspirationBalanceResponseBody struct {
 	//
 	// ERROR-oo1
 	DynamicCode *string `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
-	// The dynamic error message, which is used to replace `%s` in the **ErrMessage*	- error message.
+	// The dynamic error message, which is used to replace `%s` in the **ErrMessage*	- response parameter.
 	//
-	// > If **ErrMessage*	- returns **The Value of Input Parameter %s is not valid*	- and **DynamicMessage*	- returns **DtsJobId**, it indicates that the request parameter **DtsJobId*	- is invalid.
+	// > If **ErrMessage*	- returns **The Value of Input Parameter %s is not valid*	- and **DynamicMessage*	- returns **DtsJobId**, it indicates that the **DtsJobId*	- request parameter is invalid.
 	//
 	// example:
 	//
 	// SYSTEM_ERROR
 	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
-	// The error parameters.
+	// The invalid parameters.
 	ErrorArgs []interface{} `json:"ErrorArgs,omitempty" xml:"ErrorArgs,omitempty" type:"Repeated"`
 	// The response data.
 	Module *QueryInspirationBalanceResponseBodyModule `json:"Module,omitempty" xml:"Module,omitempty" type:"Struct"`
@@ -88,7 +88,7 @@ type QueryInspirationBalanceResponseBody struct {
 	//
 	// System exception
 	RootErrorMsg *string `json:"RootErrorMsg,omitempty" xml:"RootErrorMsg,omitempty"`
-	// Specifies whether the processing is synchronous.
+	// Indicates whether synchronous processing is performed.
 	//
 	// example:
 	//
@@ -213,7 +213,7 @@ func (s *QueryInspirationBalanceResponseBody) Validate() error {
 }
 
 type QueryInspirationBalanceResponseBodyModule struct {
-	// The remaining quota (totalQuota - totalUsed).
+	// The remaining quota, which is calculated by subtracting totalUsed from totalQuota.
 	//
 	// example:
 	//
@@ -225,7 +225,7 @@ type QueryInspirationBalanceResponseBodyModule struct {
 	//
 	// 8
 	RemainingStr *string `json:"RemainingStr,omitempty" xml:"RemainingStr,omitempty"`
-	// The total quota (the sum of initQuota of all valid accounts).
+	// The total quota, which is the sum of the initQuota values of all valid accounts.
 	//
 	// example:
 	//
@@ -237,13 +237,13 @@ type QueryInspirationBalanceResponseBodyModule struct {
 	//
 	// 10
 	TotalQuotaStr *string `json:"TotalQuotaStr,omitempty" xml:"TotalQuotaStr,omitempty"`
-	// The consumed quota (the sum of used of all valid accounts).
+	// The used quota, which is the sum of the used values of all valid accounts.
 	//
 	// example:
 	//
 	// 1
 	TotalUsed *int64 `json:"TotalUsed,omitempty" xml:"TotalUsed,omitempty"`
-	// The string format of the consumed quota.
+	// The string format of the used quota.
 	//
 	// example:
 	//

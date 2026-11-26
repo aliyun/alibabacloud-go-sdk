@@ -28,21 +28,19 @@ type ListAppPluginsRequest struct {
 	//
 	// WD20250820143531000001
 	BizId *string `json:"BizId,omitempty" xml:"BizId,omitempty"`
-	// The maximum number of results to return per query.
-	//
-	// Valid values: 10 to 100. Default value: 20.
+	// The maximum number of results to return per query. Valid values: 10 to 100. Default value: 20.
 	//
 	// example:
 	//
 	// 10
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The token used to start the next query. This parameter is empty if no more results are available.
+	// The token used to start the next query. If no next query is available, this parameter is empty.
 	//
 	// example:
 	//
 	// 0l45bkwM022Dt+rOvPi/oQ==
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The status of the dataset acceleration instance. Valid values:
+	// The status of the Dataset Accelerator instance. Valid values:
 	//
 	// - Created: Initialized.
 	//

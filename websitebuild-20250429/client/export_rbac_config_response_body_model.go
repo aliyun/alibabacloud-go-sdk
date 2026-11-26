@@ -34,7 +34,7 @@ type iExportRbacConfigResponseBody interface {
 }
 
 type ExportRbacConfigResponseBody struct {
-  // The detailed reason for the access denial.
+  // The details of the access denial.
   // 
   // example:
   // 
@@ -68,7 +68,7 @@ type ExportRbacConfigResponseBody struct {
   DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
   // The returned error parameters.
   ErrorArgs []interface{} `json:"ErrorArgs,omitempty" xml:"ErrorArgs,omitempty" type:"Repeated"`
-  // The returned object.
+  // The response object.
   // 
   // example:
   // 

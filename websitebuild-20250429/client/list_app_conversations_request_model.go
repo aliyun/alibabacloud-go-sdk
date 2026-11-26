@@ -28,13 +28,13 @@ type iListAppConversationsRequest interface {
 }
 
 type ListAppConversationsRequest struct {
-	// The bot ID.
+	// The ID of the bot.
 	//
 	// example:
 	//
 	// Zero2
 	BotId *string `json:"BotId,omitempty" xml:"BotId,omitempty"`
-	// The end modification time in ISO 8601 format.
+	// The end time for the modification in ISO 8601 format.
 	//
 	// example:
 	//
@@ -46,7 +46,7 @@ type ListAppConversationsRequest struct {
 	//
 	// 10
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The token that is used to start the next query. If no next query is available, this parameter is empty.
+	// The token used to start the next query. If there is no next query, this parameter is empty.
 	//
 	// example:
 	//
@@ -58,19 +58,19 @@ type ListAppConversationsRequest struct {
 	//
 	// 1
 	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
-	// The number of entries per page.
+	// The number of items per page.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The site ID.
+	// The ID of the site.
 	//
 	// example:
 	//
 	// 1168642640022064
 	SiteId *string `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
-	// The start modification time in ISO 8601 format.
+	// The start time for the modification in ISO 8601 format.
 	//
 	// example:
 	//

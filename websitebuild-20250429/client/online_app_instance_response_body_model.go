@@ -40,19 +40,19 @@ type OnlineAppInstanceResponseBody struct {
 	//
 	// {}
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	// Indicates whether a retry is allowed.
+	// Indicates whether retries are allowed.
 	//
 	// example:
 	//
 	// False
 	AllowRetry *bool `json:"AllowRetry,omitempty" xml:"AllowRetry,omitempty"`
-	// The name of the application. The name can contain digits, letters, and hyphens (-). It must start with a letter, cannot end with a hyphen (-), and cannot exceed 36 characters in length.
+	// The application name. The name can contain digits, letters, and hyphens (-). It must start with a letter, cannot end with a hyphen (-), and cannot exceed 36 characters in length.
 	//
 	// example:
 	//
 	// stg.mlp_finance_cap_refund_hi
 	AppName *string `json:"AppName,omitempty" xml:"AppName,omitempty"`
-	// The dynamic error code. This parameter is about to be deprecated.
+	// The dynamic error code. This parameter will be deprecated soon.
 	//
 	// example:
 	//
@@ -62,7 +62,7 @@ type OnlineAppInstanceResponseBody struct {
 	//
 	// example:
 	//
-	// xxxxx
+	// BizId
 	DynamicMessage *string `json:"DynamicMessage,omitempty" xml:"DynamicMessage,omitempty"`
 	// The returned error parameters.
 	ErrorArgs []interface{} `json:"ErrorArgs,omitempty" xml:"ErrorArgs,omitempty" type:"Repeated"`
@@ -70,7 +70,7 @@ type OnlineAppInstanceResponseBody struct {
 	//
 	// example:
 	//
-	// {\\"StorageSize\\": \\"3.29 MB\\", \\"FileNum\\": 30}
+	// {}
 	Module map[string]interface{} `json:"Module,omitempty" xml:"Module,omitempty"`
 	// The request ID.
 	//
@@ -90,7 +90,7 @@ type OnlineAppInstanceResponseBody struct {
 	//
 	// System exception
 	RootErrorMsg *string `json:"RootErrorMsg,omitempty" xml:"RootErrorMsg,omitempty"`
-	// Indicates whether the request is processed synchronously.
+	// Indicates whether the operation is processed synchronously.
 	//
 	// example:
 	//

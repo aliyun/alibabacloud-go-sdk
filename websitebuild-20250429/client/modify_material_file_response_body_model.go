@@ -40,13 +40,13 @@ type iModifyMaterialFileResponseBody interface {
 }
 
 type ModifyMaterialFileResponseBody struct {
-	// The details of the permission check failure.
+	// The details of the access denial.
 	//
 	// example:
 	//
 	// {}
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
-	// Indicates whether retries are allowed.
+	// Indicates whether a retry is allowed.
 	//
 	// example:
 	//
@@ -84,7 +84,7 @@ type ModifyMaterialFileResponseBody struct {
 	//
 	// aliuid:1998006665794443 assumeRole not exist,serviceName:realtimelogpush.dcdnservices.aliyuncs.com
 	ErrorMsg *string `json:"ErrorMsg,omitempty" xml:"ErrorMsg,omitempty"`
-	// Indicates whether the update was successful.
+	// Indicates whether the modification was successful.
 	//
 	// example:
 	//

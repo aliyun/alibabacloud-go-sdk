@@ -24,7 +24,7 @@ type UpdateAppFileRequest struct {
 	//
 	// verify_46630893e2b5efde444c82b4e3707adb
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
-	// The session ID.
+	// The conversation ID.
 	//
 	// example:
 	//

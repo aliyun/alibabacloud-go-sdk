@@ -16,13 +16,13 @@ type iUpdateAppCodeRequest interface {
 }
 
 type UpdateAppCodeRequest struct {
-	// The edit operation content in JSON format.
+	// The content of the edit operation in JSON format.
 	//
 	// example:
 	//
 	// verify_6554d8cc0de584306d16506dd119cbfc
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
-	// The session ID.
+	// The conversation ID.
 	//
 	// example:
 	//

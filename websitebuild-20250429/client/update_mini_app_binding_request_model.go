@@ -36,13 +36,13 @@ type UpdateMiniAppBindingRequest struct {
 	//
 	// example:
 	//
-	// xxxx
+	// SERVER_DOMAIN
 	SettingKey *string `json:"SettingKey,omitempty" xml:"SettingKey,omitempty"`
 	// The configuration value.
 	//
 	// example:
 	//
-	// xxxx
+	// {"requestDomains":[{"domain":"https://api.example.com"}],"wsRequestDomains":[],"uploadDomains":[],"downloadDomains":[],"udpDomains":[],"tcpDomains":[]}
 	SettingValue *string `json:"SettingValue,omitempty" xml:"SettingValue,omitempty"`
 }
 

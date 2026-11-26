@@ -38,7 +38,7 @@ type EditPluginConfigRequest struct {
   // 
   // example:
   // 
-  // 根据关键字查询相关的Github Repositories
+  // Query relevant GitHub repositories based on keywords
   PluginDesc *string `json:"PluginDesc,omitempty" xml:"PluginDesc,omitempty"`
   // The plug-in ID.
   // 

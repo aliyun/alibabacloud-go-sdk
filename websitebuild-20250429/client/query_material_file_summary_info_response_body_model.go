@@ -34,7 +34,7 @@ type iQueryMaterialFileSummaryInfoResponseBody interface {
 }
 
 type QueryMaterialFileSummaryInfoResponseBody struct {
-	// The detailed reasons for access denial.
+	// The detailed reason why access is denied.
 	//
 	// example:
 	//

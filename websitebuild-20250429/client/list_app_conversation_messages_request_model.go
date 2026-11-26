@@ -30,21 +30,19 @@ type ListAppConversationMessagesRequest struct {
 	//
 	// 81bc5a34-1d8d-4ef7-a208-7401c51b054b
 	ConversationId *string `json:"ConversationId,omitempty" xml:"ConversationId,omitempty"`
-	// The number of entries per query.
-	//
-	// Valid values: 10 to 100. Default value: 20.
+	// The number of results returned per query. Valid values: 10 to 100. Default value: 20.
 	//
 	// example:
 	//
 	// 10
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The token for the next query. This parameter is empty if no more results are available.
+	// The token used to start the next query. This parameter is empty if there are no more results.
 	//
 	// example:
 	//
 	// FFh3Xqm+JgZ/U9Jyb7wdVr9LWk80Tghn5UZjbcWEVEderBcbVF+Y6PS0i8PpCL4PQZ3e0C9oEH0Asd4tJEuGtkl2WuKdiWZpEwadNydQdJPFM=
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The number of entries per page (10-100).
+	// The number of entries per page. Valid values: 10 to 100.
 	//
 	// example:
 	//
@@ -56,7 +54,7 @@ type ListAppConversationMessagesRequest struct {
 	//
 	// 734600510965856
 	SiteId *string `json:"SiteId,omitempty" xml:"SiteId,omitempty"`
-	// The creation time of the last entry on the previous page (ISO 8601 format).
+	// The creation time of the last entry on the previous page in ISO 8601 format.
 	//
 	// example:
 	//
