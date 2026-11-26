@@ -16,7 +16,7 @@ type iGetKVCacheStoreRequest interface {
 }
 
 type GetKVCacheStoreRequest struct {
-	// The KvCacheStore instance ID.
+	// The ID of the KvCacheStore instance.
 	//
 	// This parameter is required.
 	//

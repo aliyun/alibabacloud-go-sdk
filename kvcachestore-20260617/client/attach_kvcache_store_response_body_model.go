@@ -18,7 +18,7 @@ type iAttachKVCacheStoreResponseBody interface {
 type AttachKVCacheStoreResponseBody struct {
 	// The list of mount results.
 	AttachResults []*AttachKVCacheStoreResponseBodyAttachResults `json:"AttachResults,omitempty" xml:"AttachResults,omitempty" type:"Repeated"`
-	// The request ID. A request ID is returned regardless of whether the call is successful.
+	// The request ID. This ID is returned regardless of whether the API call is successful.
 	//
 	// example:
 	//
@@ -66,13 +66,13 @@ func (s *AttachKVCacheStoreResponseBody) Validate() error {
 }
 
 type AttachKVCacheStoreResponseBodyAttachResults struct {
-	// The error code returned upon failure. This value is null upon success.
+	// The error code returned when the operation fails. This parameter is null when the operation succeeds.
 	//
 	// example:
 	//
 	// InvalidStatus.OperationDenied
 	ErrorCode *string `json:"ErrorCode,omitempty" xml:"ErrorCode,omitempty"`
-	// The error message returned upon failure. This value is null upon success.
+	// The error message returned when the operation fails. This parameter is null when the operation succeeds.
 	//
 	// example:
 	//
@@ -84,21 +84,13 @@ type AttachKVCacheStoreResponseBodyAttachResults struct {
 	//
 	// kvcs-xxxxx
 	KvcsId *string `json:"KvcsId,omitempty" xml:"KvcsId,omitempty"`
-	// The operation result. Valid values:
-	//
-	// - ATTACHING: The request has been accepted and the asynchronous mount is in progress.
-	//
-	// - ATTACHED: Idempotent. The mount is already complete.
-	//
-	// - Success: The synchronous verification passed and the asynchronous operation is complete.
-	//
-	// - Failed: The operation failed.
+	// The operation result. Valid values: ATTACHING (the request is accepted and the asynchronous mounting is in progress), ATTACHED (idempotent: the mounting is complete), Success (synchronous verification passed and asynchronous mounting is complete), and Failed (the operation failed).
 	//
 	// example:
 	//
 	// ATTACHING
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The VSC ID on the compute side.
+	// The ID of the VSC on the compute side.
 	//
 	// example:
 	//

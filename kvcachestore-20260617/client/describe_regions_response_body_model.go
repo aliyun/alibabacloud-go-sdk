@@ -16,9 +16,9 @@ type iDescribeRegionsResponseBody interface {
 }
 
 type DescribeRegionsResponseBody struct {
-	// The list of regions.
+	// The regions.
 	Regions []*DescribeRegionsResponseBodyRegions `json:"Regions,omitempty" xml:"Regions,omitempty" type:"Repeated"`
-	// The request ID. The request ID is returned regardless of whether the API call is successful.
+	// The request ID. A request ID is returned regardless of whether the API call is successful.
 	//
 	// example:
 	//
@@ -66,7 +66,7 @@ func (s *DescribeRegionsResponseBody) Validate() error {
 }
 
 type DescribeRegionsResponseBodyRegions struct {
-	// The localized name of the region.
+	// The local name of the region.
 	//
 	// example:
 	//

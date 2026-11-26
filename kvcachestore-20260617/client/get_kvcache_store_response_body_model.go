@@ -18,7 +18,7 @@ type iGetKVCacheStoreResponseBody interface {
 type GetKVCacheStoreResponseBody struct {
 	// The details of the KvCacheStore instance.
 	KvCacheStore *GetKVCacheStoreResponseBodyKvCacheStore `json:"KvCacheStore,omitempty" xml:"KvCacheStore,omitempty" type:"Struct"`
-	// The request ID. A request ID is returned regardless of whether the call is successful.
+	// The ID of the request. The request ID is returned regardless of whether the call is successful.
 	//
 	// example:
 	//
@@ -62,65 +62,55 @@ func (s *GetKVCacheStoreResponseBody) Validate() error {
 }
 
 type GetKVCacheStoreResponseBodyKvCacheStore struct {
-	// The storage capacity in GiB.
+	// The storage capacity, in GiB.
 	//
 	// example:
 	//
 	// 100
 	Capacity *int64 `json:"Capacity,omitempty" xml:"Capacity,omitempty"`
-	// The creation time in ISO 8601 format.
+	// The time when the instance was created. The time follows the ISO 8601 standard.
 	//
 	// example:
 	//
 	// 2026-06-18T10:00:00Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	// The instance description.
+	// The description of the instance.
 	//
 	// example:
 	//
 	// production kvcachestore
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The extra status information. Valid values:
-	//
-	// - CapacityExpanding: The capacity is being expanded.
-	//
-	// - CapacityExpandSuccess: The capacity expansion succeeded.
-	//
-	// - CapacityExpandFail: The capacity expansion failed.
+	// The extra status information. Valid values: CapacityExpanding, CapacityExpandSuccess, and CapacityExpandFail.
 	//
 	// example:
 	//
 	// CapacityExpanding
 	ExtraStatus *string `json:"ExtraStatus,omitempty" xml:"ExtraStatus,omitempty"`
-	// The cluster ID.
+	// The cluster number.
 	//
 	// example:
 	//
 	// default
 	HpnZone *string `json:"HpnZone,omitempty" xml:"HpnZone,omitempty"`
-	// The instance ID.
+	// The ID of the instance.
 	//
 	// example:
 	//
 	// kvcs-xxxxx
 	KvcsId *string `json:"KvcsId,omitempty" xml:"KvcsId,omitempty"`
-	// The file system-level mount point ID. Instances under the same file system share this mount point. For more information, use ListKVCacheInstanceAttachInfo.
+	// The ID of the file system-level mount point. The mount point is shared by instances in the same file system. For more information, call the ListKVCacheInstanceAttachInfo operation.
 	//
 	// example:
 	//
 	// mp-xxxxx
 	MountPointId *string `json:"MountPointId,omitempty" xml:"MountPointId,omitempty"`
-	// The instance name.
+	// The name of the instance.
 	//
 	// example:
 	//
 	// production-instance
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The payment type. Valid values:
-	//
-	// - PREPAY: subscription.
-	//
-	// - POSTPAY: pay-as-you-go.
+	// The billing method. Valid values: PREPAY and POSTPAY.
 	//
 	// example:
 	//
@@ -132,35 +122,21 @@ type GetKVCacheStoreResponseBodyKvCacheStore struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The resource group ID.
+	// The ID of the resource group.
 	//
 	// example:
 	//
 	// rg-aekzrwkxbdvkctq
 	ResourceGroupId *string `json:"ResourceGroupId,omitempty" xml:"ResourceGroupId,omitempty"`
-	// The instance status. Valid values:
-	//
-	// - Creating: The instance is being created.
-	//
-	// - Available: The instance is available.
-	//
-	// - InUse: The instance is in use.
-	//
-	// - Stopping: The instance is being stopped.
-	//
-	// - Stopped: The instance is stopped.
-	//
-	// - Deleting: The instance is being deleted.
+	// The instance status. Valid values: Creating, Available, InUse, Stopping, Stopped, and Deleting.
 	//
 	// example:
 	//
 	// AVAILABLE
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The list of resource tags.
+	// The tags of the resource.
 	Tags []*GetKVCacheStoreResponseBodyKvCacheStoreTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
-	// The instance type. Valid values:
-	//
-	// - kvcs: KVCacheStore (CPFS).
+	// The instance type, such as kvcs (KVCacheStore, CPFS).
 	//
 	// example:
 	//
@@ -331,13 +307,13 @@ func (s *GetKVCacheStoreResponseBodyKvCacheStore) Validate() error {
 }
 
 type GetKVCacheStoreResponseBodyKvCacheStoreTags struct {
-	// The tag key of the resource.
+	// The key of the tag.
 	//
 	// example:
 	//
 	// ac-cus-tag-6
 	TagKey *string `json:"TagKey,omitempty" xml:"TagKey,omitempty"`
-	// The tag value of the resource.
+	// The value of the tag.
 	//
 	// example:
 	//

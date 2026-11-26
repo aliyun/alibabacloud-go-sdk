@@ -22,7 +22,7 @@ type iListKVCacheStoreAvailableVscsRequest interface {
 }
 
 type ListKVCacheStoreAvailableVscsRequest struct {
-	// The cross-account authorization role chain, used for cross-account VSC queries in ECS or EFLO scenarios.
+	// The cross-account authorization role chain, which is used to query VSCs across accounts in ECS or EFLO scenarios.
 	Arns []*ListKVCacheStoreAvailableVscsRequestArns `json:"Arns,omitempty" xml:"Arns,omitempty" type:"Repeated"`
 	// The compute instance ID.
 	//
@@ -32,11 +32,7 @@ type ListKVCacheStoreAvailableVscsRequest struct {
 	//
 	// i-55kl5wq6j6kvtl4xu5tgunddu
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The compute instance type. Valid values:
-	//
-	// - ECS
-	//
-	// - EFLO
+	// The compute instance type. Valid values: ECS and EFLO.
 	//
 	// This parameter is required.
 	//
@@ -145,11 +141,7 @@ type ListKVCacheStoreAvailableVscsRequestArns struct {
 	//
 	// acs:ram::1028257687084022:role/zeus-locationservicerole
 	RoleArn *string `json:"RoleArn,omitempty" xml:"RoleArn,omitempty"`
-	// The role type. Valid values:
-	//
-	// - service
-	//
-	// - user
+	// The role type. Valid values: service and user.
 	//
 	// This parameter is required.
 	//

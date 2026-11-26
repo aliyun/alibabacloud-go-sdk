@@ -16,7 +16,7 @@ type iListKVCacheStoreAvailableHpnZonesResponseBody interface {
 }
 
 type ListKVCacheStoreAvailableHpnZonesResponseBody struct {
-	// The list of available HpnZones for instances.
+	// The list of available HpnZones for the instances.
 	InstanceHpnZones []*ListKVCacheStoreAvailableHpnZonesResponseBodyInstanceHpnZones `json:"InstanceHpnZones,omitempty" xml:"InstanceHpnZones,omitempty" type:"Repeated"`
 	// The request ID. This ID is returned regardless of whether the API call is successful.
 	//
@@ -68,7 +68,7 @@ func (s *ListKVCacheStoreAvailableHpnZonesResponseBody) Validate() error {
 type ListKVCacheStoreAvailableHpnZonesResponseBodyInstanceHpnZones struct {
 	// The list of available HpnZones for the instance.
 	AvailableHpnZones []*ListKVCacheStoreAvailableHpnZonesResponseBodyInstanceHpnZonesAvailableHpnZones `json:"AvailableHpnZones,omitempty" xml:"AvailableHpnZones,omitempty" type:"Repeated"`
-	// The ID of the KVCacheStore instance.
+	// The KVCacheStore instance ID.
 	//
 	// example:
 	//

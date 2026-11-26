@@ -24,9 +24,9 @@ type iListKVCacheStoreAttachInfoResponseBody interface {
 }
 
 type ListKVCacheStoreAttachInfoResponseBody struct {
-	// The list of mount records.
+	// The list of attachment information.
 	AttachInfos []*ListKVCacheStoreAttachInfoResponseBodyAttachInfos `json:"AttachInfos,omitempty" xml:"AttachInfos,omitempty" type:"Repeated"`
-	// The query token, which is used to query the next batch of data.
+	// The pagination token. It is used to query the next batch of data.
 	//
 	// example:
 	//
@@ -44,13 +44,13 @@ type ListKVCacheStoreAttachInfoResponseBody struct {
 	//
 	// 30
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The request ID. This ID is returned regardless of whether the call is successful.
+	// The request ID. The request ID is returned regardless of whether the call is successful.
 	//
 	// example:
 	//
 	// B127704C-ECB1-5B0A-AA9C-8F394A6F179F
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of entries returned for a paging query.
+	// The total number of entries returned for the paged query.
 	//
 	// example:
 	//
@@ -134,19 +134,25 @@ func (s *ListKVCacheStoreAttachInfoResponseBody) Validate() error {
 }
 
 type ListKVCacheStoreAttachInfoResponseBodyAttachInfos struct {
-	// The time of the last attach operation in ISO 8601 format. If the instance is not attached, the value is null.
+	// The time of the last attachment. The time follows the ISO 8601 standard. If the instance is not attached, the value is null.
 	//
 	// example:
 	//
 	// 2026-06-20T08:30:00Z
 	AttachedAt *string `json:"AttachedAt,omitempty" xml:"AttachedAt,omitempty"`
-	// The capacity of the file system in GiB.
+	// The capacity of the file system. Unit: GiB.
 	//
 	// example:
 	//
 	// 100
 	Capacity *int64 `json:"Capacity,omitempty" xml:"Capacity,omitempty"`
-	// The ID of the compute resource, which is the ECS instance ID or the Lingjun compute node ID.
+	// The serial number (SN) of the NVMe channel disk. This value is returned only when protocol is set to nvme and the channel is bound in the current round. If other protocols are used or the channel is not bound, the value is null.
+	//
+	// example:
+	//
+	// kvaaaaaaaaaaaaaaaa
+	ControlSn *string `json:"ControlSn,omitempty" xml:"ControlSn,omitempty"`
+	// The ID of the compute resource, such as the ECS instance ID or the Lingjun compute node ID.
 	//
 	// example:
 	//
@@ -164,13 +170,25 @@ type ListKVCacheStoreAttachInfoResponseBodyAttachInfos struct {
 	//
 	// mp-xxxxx
 	MountPointId *string `json:"MountPointId,omitempty" xml:"MountPointId,omitempty"`
+	// The NGUID of the KVCacheStore data disk. This value is returned only when protocol is set to nvme and the NGUID is generated for the instance. If other protocols are used or the NGUID is missing, the value is null.
+	//
+	// example:
+	//
+	// 00000000-0000-0000-0000-000000000001
+	Nguid *string `json:"Nguid,omitempty" xml:"Nguid,omitempty"`
+	// The access channel protocol of the instance. Valid values: vsc (VSC channel) and nvme (TDC NVMe channel).
+	//
+	// example:
+	//
+	// nvme
+	Protocol *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
 	// The region where the instance is deployed.
 	//
 	// example:
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The attach status. Valid values: Attaching, Attached, and Detaching. After the instance is detached, the record is deleted and not returned.
+	// The attachment status. Valid values: Attaching, Attached, and Detaching. After an instance is detached, the record is deleted and not returned.
 	//
 	// example:
 	//
@@ -212,6 +230,10 @@ func (s *ListKVCacheStoreAttachInfoResponseBodyAttachInfos) GetCapacity() *int64
 	return s.Capacity
 }
 
+func (s *ListKVCacheStoreAttachInfoResponseBodyAttachInfos) GetControlSn() *string {
+	return s.ControlSn
+}
+
 func (s *ListKVCacheStoreAttachInfoResponseBodyAttachInfos) GetInstanceId() *string {
 	return s.InstanceId
 }
@@ -222,6 +244,14 @@ func (s *ListKVCacheStoreAttachInfoResponseBodyAttachInfos) GetKvcsId() *string 
 
 func (s *ListKVCacheStoreAttachInfoResponseBodyAttachInfos) GetMountPointId() *string {
 	return s.MountPointId
+}
+
+func (s *ListKVCacheStoreAttachInfoResponseBodyAttachInfos) GetNguid() *string {
+	return s.Nguid
+}
+
+func (s *ListKVCacheStoreAttachInfoResponseBodyAttachInfos) GetProtocol() *string {
+	return s.Protocol
 }
 
 func (s *ListKVCacheStoreAttachInfoResponseBodyAttachInfos) GetRegionId() *string {
@@ -254,6 +284,11 @@ func (s *ListKVCacheStoreAttachInfoResponseBodyAttachInfos) SetCapacity(v int64)
 	return s
 }
 
+func (s *ListKVCacheStoreAttachInfoResponseBodyAttachInfos) SetControlSn(v string) *ListKVCacheStoreAttachInfoResponseBodyAttachInfos {
+	s.ControlSn = &v
+	return s
+}
+
 func (s *ListKVCacheStoreAttachInfoResponseBodyAttachInfos) SetInstanceId(v string) *ListKVCacheStoreAttachInfoResponseBodyAttachInfos {
 	s.InstanceId = &v
 	return s
@@ -266,6 +301,16 @@ func (s *ListKVCacheStoreAttachInfoResponseBodyAttachInfos) SetKvcsId(v string) 
 
 func (s *ListKVCacheStoreAttachInfoResponseBodyAttachInfos) SetMountPointId(v string) *ListKVCacheStoreAttachInfoResponseBodyAttachInfos {
 	s.MountPointId = &v
+	return s
+}
+
+func (s *ListKVCacheStoreAttachInfoResponseBodyAttachInfos) SetNguid(v string) *ListKVCacheStoreAttachInfoResponseBodyAttachInfos {
+	s.Nguid = &v
+	return s
+}
+
+func (s *ListKVCacheStoreAttachInfoResponseBodyAttachInfos) SetProtocol(v string) *ListKVCacheStoreAttachInfoResponseBodyAttachInfos {
+	s.Protocol = &v
 	return s
 }
 

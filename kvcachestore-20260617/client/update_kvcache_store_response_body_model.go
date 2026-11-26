@@ -24,13 +24,13 @@ type UpdateKVCacheStoreResponseBody struct {
 	//
 	// kvs-xxxxx
 	KvcsId *string `json:"KvcsId,omitempty" xml:"KvcsId,omitempty"`
-	// The specification change order ID. Returned only when Capacity is modified.
+	// The specification change order ID. This parameter is returned only when the Capacity is modified.
 	//
 	// example:
 	//
 	// order-xxxxx
 	OrderId *string `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
-	// The request ID. The request ID is returned regardless of whether the operation is successful.
+	// The request ID. The request ID is returned regardless of whether the API call is successful.
 	//
 	// example:
 	//

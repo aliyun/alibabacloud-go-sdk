@@ -28,45 +28,45 @@ type iListKVCacheStoresResponseBody interface {
 }
 
 type ListKVCacheStoresResponseBody struct {
-	// The list of KVCacheStore instances. Each element contains the following parameters: KvcsId, Name, Status, ExtraStatus, RegionId, ZoneId, HpnZone, Type, Capacity, PaymentType, MountPointId, CreateTime, and Description.
+	// The list of KVCacheStores. Each element contains sub-parameters such as KvcsId, Name, Status, ExtraStatus, RegionId, ZoneId, HpnZone, Type, Capacity, PaymentType, MountPointId, CreateTime, and Description.
 	KVCacheStores []*ListKVCacheStoresResponseBodyKVCacheStores `json:"KVCacheStores,omitempty" xml:"KVCacheStores,omitempty" type:"Repeated"`
-	// The maximum number of entries returned per page.
+	// The maximum number of entries returned per pagination request.
 	//
 	// example:
 	//
 	// 10
 	MaxResults *int32 `json:"MaxResults,omitempty" xml:"MaxResults,omitempty"`
-	// The pagination token for the next page. This value is empty when no more data is available. This parameter is valid only for cursor-based pagination.
+	// The cursor for the next page. If no more data is available, this parameter is empty. This parameter is valid only when cursor pagination is used.
 	//
 	// example:
 	//
 	// caeba0bbb2be03f84eb48b699f0a4883
 	NextToken *string `json:"NextToken,omitempty" xml:"NextToken,omitempty"`
-	// The current page number. This parameter is valid only for page number-based pagination.
+	// The current page number. This parameter is valid only when page number pagination is used.
 	//
 	// example:
 	//
 	// 1
 	PageNumber *int32 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
-	// The number of entries per page. This parameter is valid only for page number-based pagination.
+	// The number of entries per page. This parameter is valid only when page number pagination is used.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The total number of pages. This parameter is returned only for page number-based pagination.
+	// The total number of pages. This parameter is returned only when page number pagination is used.
 	//
 	// example:
 	//
 	// 1
 	PageTotal *int32 `json:"PageTotal,omitempty" xml:"PageTotal,omitempty"`
-	// The request ID. A request ID is returned regardless of whether the call is successful.
+	// The request ID. This ID is returned regardless of whether the API call is successful.
 	//
 	// example:
 	//
 	// 56AC37CD-388E-5D21-951B-C50D16D8E812
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// The total number of instances. This parameter is returned only for page number-based pagination. For cursor-based pagination, the value is -1.
+	// The total number of instances. This parameter is returned only when page number pagination is used. If cursor pagination is used, the value is -1.
 	//
 	// example:
 	//
@@ -168,13 +168,13 @@ func (s *ListKVCacheStoresResponseBody) Validate() error {
 }
 
 type ListKVCacheStoresResponseBodyKVCacheStores struct {
-	// The storage capacity, in GiB.
+	// The storage capacity. Unit: GiB.
 	//
 	// example:
 	//
 	// 100
 	Capacity *int64 `json:"Capacity,omitempty" xml:"Capacity,omitempty"`
-	// The creation time in ISO 8601 format.
+	// The time when the instance was created. The time follows the ISO 8601 standard.
 	//
 	// example:
 	//
@@ -204,7 +204,7 @@ type ListKVCacheStoresResponseBodyKVCacheStores struct {
 	//
 	// kvcs-xxxxx
 	KvcsId *string `json:"KvcsId,omitempty" xml:"KvcsId,omitempty"`
-	// The file system-level mount point ID. Instances under the same file system share this mount point. For more information, use the ListKVCacheInstanceAttachInfo operation.
+	// The file system-level mount point ID. This mount point is shared by instances within the same file system. For more information, call the ListKVCacheInstanceAttachInfo operation.
 	//
 	// example:
 	//
@@ -216,7 +216,7 @@ type ListKVCacheStoresResponseBodyKVCacheStores struct {
 	//
 	// production-instance
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
-	// The payment type. Valid values: PREPAY and POSTPAY.
+	// The billing method. Valid values: PREPAY and POSTPAY.
 	//
 	// example:
 	//
@@ -242,7 +242,7 @@ type ListKVCacheStoresResponseBodyKVCacheStores struct {
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
 	// The list of resource tags.
 	Tags []*ListKVCacheStoresResponseBodyKVCacheStoresTags `json:"Tags,omitempty" xml:"Tags,omitempty" type:"Repeated"`
-	// The instance type. Valid values: kvcs (KVCacheStore, CPFS).
+	// The instance type. Valid value: kvcs (KVCacheStore, CPFS).
 	//
 	// example:
 	//
