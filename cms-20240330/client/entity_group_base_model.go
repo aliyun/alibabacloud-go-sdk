@@ -179,7 +179,7 @@ type EntityGroupBaseEntityQueries struct {
   // 
   // example:
   // 
-  // .entity with(type=\\"acs.ecs.instance\\") | where region_id in (\\"cn-beijing\\")
+  // .entity with(type=\"acs.ecs.instance\") | where region_id in (\"cn-beijing\")
   Spl *string `json:"spl,omitempty" xml:"spl,omitempty"`
 }
 

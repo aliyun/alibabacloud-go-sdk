@@ -34,7 +34,7 @@ type GetCloudResourceDataRequest struct {
 	//
 	// example:
 	//
-	// .entity with(domain=\\"acs\\", type=\\"acs.k8s.node\\") | limit 0, 10
+	// .entity with(domain=\"acs\", type=\"acs.k8s.node\") | limit 0, 10
 	Query *string `json:"query,omitempty" xml:"query,omitempty"`
 	// The end time of the query.
 	//

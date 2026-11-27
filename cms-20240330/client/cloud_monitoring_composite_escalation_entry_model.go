@@ -64,7 +64,7 @@ type CloudMonitoringCompositeEscalationEntry struct {
 	//
 	// example:
 	//
-	// 连续3次
+	// 3 consecutive times
 	PreCondition *string `json:"preCondition,omitempty" xml:"preCondition,omitempty"`
 	// The sensitivity of the dynamic baseline. This parameter takes effect only when the comparisonOperator is set to a baseline operator. Valid values: HIGH (narrowest band and most sensitive), MEDIUM (medium), and LOW (widest band and least sensitive).
 	//

@@ -93,9 +93,9 @@ type GetAggTaskGroupResponseBodyAggTaskGroup struct {
 	//
 	//   - record: "node_namespace_pod:kube_pod_info:"
 	//
-	//     expr: "max(label_replace(kube_pod_info{job=\\"kubernetes-pods-kube-state-metrics\\"\\
+	//     expr: "max(label_replace(kube_pod_info{job=\"kubernetes-pods-kube-state-metrics\"\
 	//
-	//       }, \\"pod\\", \\"$1\\", \\"pod\\", \\"(.*)\\")) by (node, namespace, pod, cluster)"
+	//       }, \"pod\", \"$1\", \"pod\", \"(.*)\")) by (node, namespace, pod, cluster)"
 	AggTaskGroupConfig *string `json:"aggTaskGroupConfig,omitempty" xml:"aggTaskGroupConfig,omitempty"`
 	// The hash of the aggregation task group configuration.
 	//

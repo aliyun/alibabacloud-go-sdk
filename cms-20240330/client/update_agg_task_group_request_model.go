@@ -60,9 +60,9 @@ type UpdateAggTaskGroupRequest struct {
 	//
 	//   - record: "node_namespace_pod:kube_pod_info:"
 	//
-	//     expr: "max(label_replace(kube_pod_info{job=\\"kubernetes-pods-kube-state-metrics\\"\\
+	//     expr: "max(label_replace(kube_pod_info{job=\"kubernetes-pods-kube-state-metrics\"\
 	//
-	//       }, \\"pod\\", \\"$1\\", \\"pod\\", \\"(.*)\\")) by (node, namespace, pod, cluster)"
+	//       }, \"pod\", \"$1\", \"pod\", \"(.*)\")) by (node, namespace, pod, cluster)"
 	AggTaskGroupConfig *string `json:"aggTaskGroupConfig,omitempty" xml:"aggTaskGroupConfig,omitempty"`
 	// The configuration type of the aggregation task group. Default value: RecordingRuleYaml, which is the RecordingRule format of open-source Prometheus.
 	//
@@ -116,7 +116,7 @@ type UpdateAggTaskGroupRequest struct {
 	//
 	// example:
 	//
-	// {"policy":"skip","prometheusId":"xxx","query":"scalar(sum(count_over_time(up{job=\\"_arms/kubelet/cadvisor\\"}[15s])) / 21)","threshold":0.5,"timeout":15,"type":"promql"}
+	// {"policy":"skip","prometheusId":"xxx","query":"scalar(sum(count_over_time(up{job=\"_arms/kubelet/cadvisor\"}[15s])) / 21)","threshold":0.5,"timeout":15,"type":"promql"}
 	PrecheckString *string `json:"precheckString,omitempty" xml:"precheckString,omitempty"`
 	// The scheduling mode. Valid values: Cron and FixedRate. Default value: FixedRate.
 	//

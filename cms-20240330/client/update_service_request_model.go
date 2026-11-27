@@ -17,10 +17,12 @@ type iUpdateServiceRequest interface {
 	GetDisplayName() *string
 	SetServiceStatus(v string) *UpdateServiceRequest
 	GetServiceStatus() *string
+	SetDryRun(v bool) *UpdateServiceRequest
+	GetDryRun() *bool
 }
 
 type UpdateServiceRequest struct {
-	// The extended properties.
+	// The extended attributes.
 	//
 	// example:
 	//
@@ -44,6 +46,8 @@ type UpdateServiceRequest struct {
 	//
 	// Stopped
 	ServiceStatus *string `json:"serviceStatus,omitempty" xml:"serviceStatus,omitempty"`
+	// Specifies whether to perform a dry run of the request. Valid values: true: sends a check request and does not perform the actual operation. false: sends a normal request. Default value: false.
+	DryRun *bool `json:"dryRun,omitempty" xml:"dryRun,omitempty"`
 }
 
 func (s UpdateServiceRequest) String() string {
@@ -70,6 +74,10 @@ func (s *UpdateServiceRequest) GetServiceStatus() *string {
 	return s.ServiceStatus
 }
 
+func (s *UpdateServiceRequest) GetDryRun() *bool {
+	return s.DryRun
+}
+
 func (s *UpdateServiceRequest) SetAttributes(v string) *UpdateServiceRequest {
 	s.Attributes = &v
 	return s
@@ -87,6 +95,11 @@ func (s *UpdateServiceRequest) SetDisplayName(v string) *UpdateServiceRequest {
 
 func (s *UpdateServiceRequest) SetServiceStatus(v string) *UpdateServiceRequest {
 	s.ServiceStatus = &v
+	return s
+}
+
+func (s *UpdateServiceRequest) SetDryRun(v bool) *UpdateServiceRequest {
+	s.DryRun = &v
 	return s
 }
 

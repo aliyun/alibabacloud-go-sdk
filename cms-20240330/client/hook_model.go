@@ -42,7 +42,7 @@ type Hook struct {
 	//
 	// example:
 	//
-	// 检查工具调用中的命令是否安全。
+	// Check whether the commands in tool calls are safe.
 	Description *string `json:"description,omitempty" xml:"description,omitempty"`
 	// Specifies whether the Hook is enabled. It is executed only when this parameter is set to true. If not configured, the Hook is disabled.
 	//
@@ -208,7 +208,7 @@ type HookExecution struct {
 	//
 	// example:
 	//
-	// 检查当前工具调用是否安全。
+	// Check whether the current tool call is safe.
 	Instruction *string `json:"instruction,omitempty" xml:"instruction,omitempty"`
 	// The maximum number of retries. Specifies the number of additional attempts after a failure. Valid values: 0 to 3.
 	//

@@ -132,7 +132,7 @@ type QueryConfigUnified struct {
 	//
 	// example:
 	//
-	// 示例值
+	// Sample value
 	Expr *string `json:"expr,omitempty" xml:"expr,omitempty"`
 	// The list of Application Performance Monitoring (APM) filter conditions.
 	FilterList []*FilterList `json:"filterList,omitempty" xml:"filterList,omitempty" type:"Repeated"`
@@ -160,7 +160,7 @@ type QueryConfigUnified struct {
 	//
 	// example:
 	//
-	// 示例值
+	// Sample value
 	LegacyRaw *string `json:"legacyRaw,omitempty" xml:"legacyRaw,omitempty"`
 	// The legacy type returned when the type is UNKNOWN_QUERY. This parameter indicates that the rule cannot be edited by using the new API. Submit a ticket to contact the CloudMonitor product team.
 	//
@@ -172,13 +172,13 @@ type QueryConfigUnified struct {
 	//
 	// example:
 	//
-	// 示例名称
+	// Sample name
 	LogSet *string `json:"logSet,omitempty" xml:"logSet,omitempty"`
 	// The measure group key. This parameter is optional when the type is APM_MULTI_QUERY and corresponds to alertMetricInput.groupKey in V1.
 	//
 	// example:
 	//
-	// 示例值
+	// Sample value
 	MeasureGroupKey *string `json:"measureGroupKey,omitempty" xml:"measureGroupKey,omitempty"`
 	// The list of APM measure configurations.
 	MeasureList []*MeasureList `json:"measureList,omitempty" xml:"measureList,omitempty" type:"Repeated"`
@@ -214,7 +214,7 @@ type QueryConfigUnified struct {
 	//
 	// example:
 	//
-	// 示例名称
+	// Sample name
 	Namespace *string `json:"namespace,omitempty" xml:"namespace,omitempty"`
 	// The query time offset in seconds used when the type is UMODEL_METRICSET_QUERY or UMODEL_LOGSET_QUERY. This parameter is used together with windowSecs to implement offset queries in the range of [T - windowSecs - offsetSecs, T - offsetSecs]. Valid values: 0 to 86400.
 	//

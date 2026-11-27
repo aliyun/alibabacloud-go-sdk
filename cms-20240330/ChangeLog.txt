@@ -1,3 +1,6 @@
+2026-11-27 Version: v10.7.4
+- Generated golang 2024-03-30 for Cms.
+
 2026-11-21 Version: v10.7.3
 - Update API CreateEntityStore: add request parameters dryRun.
 - Update API CreateUmodel: add request parameters dryRun.

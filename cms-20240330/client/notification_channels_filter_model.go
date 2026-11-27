@@ -30,7 +30,7 @@ type NotificationChannelsFilter struct {
 	//
 	// example:
 	//
-	// ["张三","李四"]
+	// ["Zhang San","Li Si"]
 	ContainsContacts []*string `json:"containsContacts,omitempty" xml:"containsContacts,omitempty" type:"Repeated"`
 	// The list of custom webhooks in the rule contains any value in the array. This uses OR logic and corresponds to V1 notification.customWebhooks.
 	//
@@ -54,7 +54,7 @@ type NotificationChannelsFilter struct {
 	//
 	// example:
 	//
-	// ["运维组","SRE团队"]
+	// ["O&M team","SRE team"]
 	ContainsGroups []*string `json:"containsGroups,omitempty" xml:"containsGroups,omitempty" type:"Repeated"`
 	// The list of Slack webhooks in the rule contains any value in the array. This uses OR logic and corresponds to V1 notification.slackWebhooks.
 	//

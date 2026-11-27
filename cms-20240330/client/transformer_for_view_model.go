@@ -82,7 +82,7 @@ type TransformerForView struct {
 	//
 	// example:
 	//
-	// 测试处理流
+	// Test processing stream
 	TransformerName *string `json:"transformerName,omitempty" xml:"transformerName,omitempty"`
 	// The update time.
 	//

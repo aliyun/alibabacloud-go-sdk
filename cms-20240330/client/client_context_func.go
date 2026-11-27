@@ -2010,6 +2010,11 @@ func (client *Client) CreateServiceWithContext(ctx context.Context, workspace *s
 			return _result, _err
 		}
 	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DryRun) {
+		query["dryRun"] = request.DryRun
+	}
+
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.Attributes) {
 		body["attributes"] = request.Attributes
@@ -2049,6 +2054,7 @@ func (client *Client) CreateServiceWithContext(ctx context.Context, workspace *s
 
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
+		Query:   openapiutil.Query(query),
 		Body:    openapiutil.ParseToMap(body),
 	}
 	params := &openapiutil.Params{
@@ -2089,8 +2095,14 @@ func (client *Client) CreateServiceObservabilityWithContext(ctx context.Context,
 			return _result, _err
 		}
 	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DryRun) {
+		query["dryRun"] = request.DryRun
+	}
+
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
+		Query:   openapiutil.Query(query),
 	}
 	params := &openapiutil.Params{
 		Action:      dara.String("CreateServiceObservability"),
@@ -3753,7 +3765,62 @@ func (client *Client) DeletePrometheusVirtualInstanceWithContext(ctx context.Con
 
 // Summary:
 //
-// Deletes an application observability service.
+// Deletes RUM symbol files.
+//
+// @param request - DeleteRumSymbolFilesRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return DeleteRumSymbolFilesResponse
+func (client *Client) DeleteRumSymbolFilesWithContext(ctx context.Context, request *DeleteRumSymbolFilesRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *DeleteRumSymbolFilesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.FilePaths) {
+		body["filePaths"] = request.FilePaths
+	}
+
+	if !dara.IsNil(request.ServiceId) {
+		body["serviceId"] = request.ServiceId
+	}
+
+	if !dara.IsNil(request.Workspace) {
+		body["workspace"] = request.Workspace
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("DeleteRumSymbolFiles"),
+		Version:     dara.String("2024-03-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/rum/symbolFiles/delete"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &DeleteRumSymbolFilesResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Deletes the application observability service.
 //
 // @param request - DeleteServiceRequest
 //
@@ -3769,8 +3836,14 @@ func (client *Client) DeleteServiceWithContext(ctx context.Context, workspace *s
 			return _result, _err
 		}
 	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DryRun) {
+		query["dryRun"] = request.DryRun
+	}
+
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
+		Query:   openapiutil.Query(query),
 	}
 	params := &openapiutil.Params{
 		Action:      dara.String("DeleteService"),
@@ -6154,6 +6227,223 @@ func (client *Client) GetPrometheusViewWithContext(ctx context.Context, promethe
 		BodyType:    dara.String("json"),
 	}
 	_result = &GetPrometheusViewResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Retrieves the signature parameters required for uploading RUM symbol files.
+//
+// @param request - GetRumSymbolFileParamsRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetRumSymbolFileParamsResponse
+func (client *Client) GetRumSymbolFileParamsWithContext(ctx context.Context, request *GetRumSymbolFileParamsRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetRumSymbolFileParamsResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.DebugId) {
+		body["debugId"] = request.DebugId
+	}
+
+	if !dara.IsNil(request.FileKind) {
+		body["fileKind"] = request.FileKind
+	}
+
+	if !dara.IsNil(request.FileName) {
+		body["fileName"] = request.FileName
+	}
+
+	if !dara.IsNil(request.ServiceId) {
+		body["serviceId"] = request.ServiceId
+	}
+
+	if !dara.IsNil(request.Version) {
+		body["version"] = request.Version
+	}
+
+	if !dara.IsNil(request.Workspace) {
+		body["workspace"] = request.Workspace
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetRumSymbolFileParams"),
+		Version:     dara.String("2024-03-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/rum/symbolFile/upload/policies"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetRumSymbolFileParamsResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Queries the symbol files uploaded by RUM users and supports filtering by platform, file type, version, and keywords.
+//
+// @param request - GetRumSymbolFilesRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetRumSymbolFilesResponse
+func (client *Client) GetRumSymbolFilesWithContext(ctx context.Context, request *GetRumSymbolFilesRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetRumSymbolFilesResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.ArtifactType) {
+		body["artifactType"] = request.ArtifactType
+	}
+
+	if !dara.IsNil(request.Keywords) {
+		body["keywords"] = request.Keywords
+	}
+
+	if !dara.IsNil(request.NextToken) {
+		body["nextToken"] = request.NextToken
+	}
+
+	if !dara.IsNil(request.PageSize) {
+		body["pageSize"] = request.PageSize
+	}
+
+	if !dara.IsNil(request.Platform) {
+		body["platform"] = request.Platform
+	}
+
+	if !dara.IsNil(request.ServiceId) {
+		body["serviceId"] = request.ServiceId
+	}
+
+	if !dara.IsNil(request.Version) {
+		body["version"] = request.Version
+	}
+
+	if !dara.IsNil(request.Workspace) {
+		body["workspace"] = request.Workspace
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetRumSymbolFiles"),
+		Version:     dara.String("2024-03-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/rum/symbolFiles/query"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetRumSymbolFilesResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Retrieves the symbolicated stack for RUM.
+//
+// @param request - GetRumSymbolicStackRequest
+//
+// @param headers - map
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return GetRumSymbolicStackResponse
+func (client *Client) GetRumSymbolicStackWithContext(ctx context.Context, request *GetRumSymbolicStackRequest, headers map[string]*string, runtime *dara.RuntimeOptions) (_result *GetRumSymbolicStackResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	body := map[string]interface{}{}
+	if !dara.IsNil(request.FileInfo) {
+		body["fileInfo"] = request.FileInfo
+	}
+
+	if !dara.IsNil(request.Images) {
+		body["images"] = request.Images
+	}
+
+	if !dara.IsNil(request.Pid) {
+		body["pid"] = request.Pid
+	}
+
+	if !dara.IsNil(request.ServiceId) {
+		body["serviceId"] = request.ServiceId
+	}
+
+	if !dara.IsNil(request.Stack) {
+		body["stack"] = request.Stack
+	}
+
+	if !dara.IsNil(request.StackType) {
+		body["stackType"] = request.StackType
+	}
+
+	if !dara.IsNil(request.ThreadId) {
+		body["threadId"] = request.ThreadId
+	}
+
+	if !dara.IsNil(request.Workspace) {
+		body["workspace"] = request.Workspace
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Headers: headers,
+		Body:    openapiutil.ParseToMap(body),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("GetRumSymbolicStack"),
+		Version:     dara.String("2024-03-30"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/rum/symbolic"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("ROA"),
+		ReqBodyType: dara.String("json"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &GetRumSymbolicStackResponse{}
 	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
 	if _err != nil {
 		return _result, _err
@@ -11912,7 +12202,7 @@ func (client *Client) UpdatePrometheusViewWithContext(ctx context.Context, prome
 
 // Summary:
 //
-// Updates an application observability service.
+// Updates the application observability service.
 //
 // @param request - UpdateServiceRequest
 //
@@ -11928,6 +12218,11 @@ func (client *Client) UpdateServiceWithContext(ctx context.Context, workspace *s
 			return _result, _err
 		}
 	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DryRun) {
+		query["dryRun"] = request.DryRun
+	}
+
 	body := map[string]interface{}{}
 	if !dara.IsNil(request.Attributes) {
 		body["attributes"] = request.Attributes
@@ -11947,6 +12242,7 @@ func (client *Client) UpdateServiceWithContext(ctx context.Context, workspace *s
 
 	req := &openapiutil.OpenApiRequest{
 		Headers: headers,
+		Query:   openapiutil.Query(query),
 		Body:    openapiutil.ParseToMap(body),
 	}
 	params := &openapiutil.Params{

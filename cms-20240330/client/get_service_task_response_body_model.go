@@ -26,7 +26,7 @@ type GetServiceTaskResponseBody struct {
 	//
 	// example:
 	//
-	// {"taskId":"a1b2c3d4-e5f6-7890-abcd-ef1234567890","serviceId":"ggxw4lnjuz@f2fd3a6265a254a052afb","taskType":"live_debug_log_probe","ip":"10.0.0.1","extraInfo":"{\\"probeType\\":\\"LOG\\",\\"language\\":\\"java\\"}"}
+	// {"taskId":"a1b2c3d4-e5f6-7890-abcd-ef1234567890","serviceId":"ggxw4lnjuz@f2fd3a6265a254a052afb","taskType":"live_debug_log_probe","ip":"10.0.0.1","extraInfo":"{\"probeType\":\"LOG\",\"language\":\"java\"}"}
 	ServiceTask map[string]interface{} `json:"serviceTask,omitempty" xml:"serviceTask,omitempty"`
 }
 

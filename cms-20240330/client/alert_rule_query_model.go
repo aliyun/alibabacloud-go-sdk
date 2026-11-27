@@ -98,7 +98,7 @@ type AlertRuleQuery struct {
 	//
 	// example:
 	//
-	// sum(sum(max_over_time(kube_pod_status_phase{phase=~\\"Pending\\",job=\\"_kube-state-metrics\\"}[5m])) by (pod)) > 1000
+	// sum(sum(max_over_time(kube_pod_status_phase{phase=~\"Pending\",job=\"_kube-state-metrics\"}[5m])) by (pod)) > 1000
 	Expr *string `json:"expr,omitempty" xml:"expr,omitempty"`
 	// Applicable query type: SLS_MULTI_QUERY. The set join operation configuration for the results of subquery 1 (queries[0]) and subquery 2 (queries[1]).
 	FirstJoin *AlertRuleSlsQueryJoin `json:"firstJoin,omitempty" xml:"firstJoin,omitempty"`
@@ -802,7 +802,7 @@ type AlertRuleQueryQueries struct {
 	//
 	// example:
 	//
-	// sum by (rpc,acs_arms_service_id,pid,rpcType) (sum_over_time_lorc(arms_app_requests_count_ign_destid_endpoint_parent_ppid_prpc{callKind=~\\"http|rpc|custom_entry|server|consumer\\",pid=\\"gaddp9ap8q@cb005ffdf44b8ac\\",source=\\"apm\\"}[1m]))
+	// sum by (rpc,acs_arms_service_id,pid,rpcType) (sum_over_time_lorc(arms_app_requests_count_ign_destid_endpoint_parent_ppid_prpc{callKind=~\"http|rpc|custom_entry|server|consumer\",pid=\"gaddp9ap8q@cb005ffdf44b8ac\",source=\"apm\"}[1m]))
 	Expr *string `json:"expr,omitempty" xml:"expr,omitempty"`
 	// Valid only for METRIC_SET_MULTI_QUERY. The label filter conditions. This field is optional and independent for each query.
 	LabelFilters []*AlertRuleQueryQueriesLabelFilters `json:"labelFilters,omitempty" xml:"labelFilters,omitempty" type:"Repeated"`

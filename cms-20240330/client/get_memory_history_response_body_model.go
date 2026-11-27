@@ -108,7 +108,7 @@ type GetMemoryHistoryResponseBodyResults struct {
 	//
 	// example:
 	//
-	// I really don\\"t like Python at all.
+	// I really don\"t like Python at all.
 	OldMemory *string `json:"oldMemory,omitempty" xml:"oldMemory,omitempty"`
 	// The update time.
 	//

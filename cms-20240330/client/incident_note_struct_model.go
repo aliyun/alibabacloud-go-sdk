@@ -151,7 +151,7 @@ type IncidentNoteStructOperator struct {
 	//
 	// example:
 	//
-	// {\\"mobile_phone_num\\":\\"153xxxx8040\\",\\"mobile_country_code\\":\\"86\\",\\"email\\":\\"flightxxg@dida.com\\"}
+	// {\"mobile_phone_num\":\"153xxxx8040\",\"mobile_country_code\":\"86\",\"email\":\"flightxxg@dida.com\"}
 	Contact *string `json:"contact,omitempty" xml:"contact,omitempty"`
 	// The contact ID.
 	//

@@ -40,7 +40,7 @@ type Queries struct {
 	//
 	// example:
 	//
-	// 示例值
+	// Sample value
 	Expr *string `json:"expr,omitempty" xml:"expr,omitempty"`
 	// The label filter conditions for UMODEL_METRICSET_MULTI_QUERY, which are optional and independent per query.
 	//
@@ -52,19 +52,19 @@ type Queries struct {
 	//
 	// example:
 	//
-	// 示例名称
+	// Sample name
 	Metric *string `json:"metric,omitempty" xml:"metric,omitempty"`
 	// The metric set name for UMODEL_METRICSET_MULTI_QUERY.
 	//
 	// example:
 	//
-	// 示例名称
+	// Sample name
 	MetricSet *string `json:"metricSet,omitempty" xml:"metricSet,omitempty"`
 	// The query name for PROMETHEUS_MULTI_QUERY or UMODEL_METRICSET_MULTI_QUERY, such as $A or $B, which is referenced by condition triggers.
 	//
 	// example:
 	//
-	// 示例名称
+	// Sample name
 	Name *string `json:"name,omitempty" xml:"name,omitempty"`
 	// The start offset of the time range for SLS_MULTI_QUERY, which is mutually exclusive with window.
 	//

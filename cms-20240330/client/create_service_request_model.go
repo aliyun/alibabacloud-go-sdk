@@ -27,6 +27,8 @@ type iCreateServiceRequest interface {
 	GetServiceType() *string
 	SetTags(v []*CreateServiceRequestTags) *CreateServiceRequest
 	GetTags() []*CreateServiceRequestTags
+	SetDryRun(v bool) *CreateServiceRequest
+	GetDryRun() *bool
 }
 
 type CreateServiceRequest struct {
@@ -84,6 +86,8 @@ type CreateServiceRequest struct {
 	ServiceType *string `json:"serviceType,omitempty" xml:"serviceType,omitempty"`
 	// The tag array.
 	Tags []*CreateServiceRequestTags `json:"tags,omitempty" xml:"tags,omitempty" type:"Repeated"`
+	// Specifies whether to perform a dry run. Valid values: true: performs a dry run. The system checks the request but does not perform actual operations. false: sends a normal request. Default value: false.
+	DryRun *bool `json:"dryRun,omitempty" xml:"dryRun,omitempty"`
 }
 
 func (s CreateServiceRequest) String() string {
@@ -130,6 +134,10 @@ func (s *CreateServiceRequest) GetTags() []*CreateServiceRequestTags {
 	return s.Tags
 }
 
+func (s *CreateServiceRequest) GetDryRun() *bool {
+	return s.DryRun
+}
+
 func (s *CreateServiceRequest) SetAttributes(v string) *CreateServiceRequest {
 	s.Attributes = &v
 	return s
@@ -172,6 +180,11 @@ func (s *CreateServiceRequest) SetServiceType(v string) *CreateServiceRequest {
 
 func (s *CreateServiceRequest) SetTags(v []*CreateServiceRequestTags) *CreateServiceRequest {
 	s.Tags = v
+	return s
+}
+
+func (s *CreateServiceRequest) SetDryRun(v bool) *CreateServiceRequest {
+	s.DryRun = &v
 	return s
 }
 

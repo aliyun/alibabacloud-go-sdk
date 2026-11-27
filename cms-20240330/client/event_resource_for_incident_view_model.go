@@ -50,7 +50,7 @@ type EventResourceForIncidentView struct {
   // 
   // example:
   // 
-  // [{\\"value\\":\\"测试\\",\\"key\\":\\"环境\\"}]
+  // [{\"value\":\"测试\",\"key\":\"环境\"}]
   Tags *string `json:"tags,omitempty" xml:"tags,omitempty"`
 }
 

@@ -84,7 +84,7 @@ type AlertRuleV2 struct {
 	//
 	// example:
 	//
-	// 示例值
+	// Sample value
 	BizSource *string `json:"bizSource,omitempty" xml:"bizSource,omitempty"`
 	// The detection condition configuration aggregation, including simple Prometheus, UModel, simple APM, and composite APM.
 	ConditionConfig *ConditionConfigUnified `json:"conditionConfig,omitempty" xml:"conditionConfig,omitempty"`
@@ -92,7 +92,7 @@ type AlertRuleV2 struct {
 	//
 	// example:
 	//
-	// 告警触发: ${metricName} 当前值 ${currentValue} 超过阈值 ${threshold}
+	// Alert triggered: the current value ${currentValue} of ${metricName} exceeds the threshold ${threshold}
 	ContentTemplate *string `json:"contentTemplate,omitempty" xml:"contentTemplate,omitempty"`
 	// The creation time in ISO 8601 format. This parameter is read-only.
 	//
@@ -112,7 +112,7 @@ type AlertRuleV2 struct {
 	//
 	// example:
 	//
-	// CPU水位告警95%
+	// CPU usage alert: 95%
 	DisplayName *string `json:"displayName,omitempty" xml:"displayName,omitempty"`
 	// Specifies whether the rule is enabled.
 	//
@@ -164,7 +164,7 @@ type AlertRuleV2 struct {
 	//
 	// example:
 	//
-	// 示例值
+	// Sample value
 	PartitionKey *string `json:"partitionKey,omitempty" xml:"partitionKey,omitempty"`
 	// The query configuration aggregation, including PROMETHEUS_SINGLE_QUERY, UMODEL_METRICSET_QUERY, and APM_MULTI_QUERY.
 	QueryConfig *QueryConfigUnified `json:"queryConfig,omitempty" xml:"queryConfig,omitempty"`

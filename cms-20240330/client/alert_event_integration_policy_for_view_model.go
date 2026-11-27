@@ -50,7 +50,7 @@ type AlertEventIntegrationPolicyForView struct {
 	//
 	// example:
 	//
-	// 集成名
+	// Integration name
 	AlertEventIntegrationPolicyName *string `json:"alertEventIntegrationPolicyName,omitempty" xml:"alertEventIntegrationPolicyName,omitempty"`
 	// The creation time.
 	//

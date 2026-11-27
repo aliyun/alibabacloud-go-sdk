@@ -38,31 +38,83 @@ type iObserveGroupInstance interface {
 }
 
 type ObserveGroupInstance struct {
-	// 实体分类（由 entityType 适配）。
+	// The entity category adapted from entityType.
+	//
+	// example:
+	//
+	// ecs
 	Category *string `json:"category,omitempty" xml:"category,omitempty"`
-	// 监控维度键值对。
+	// The key-value pairs of the monitoring dimensions.
+	//
+	// example:
+	//
+	// {"userId":"1234567890123456","instanceId":"i-bp1gj8wyq4fxk28k6iy2"}
 	Dimension map[string]*string `json:"dimension,omitempty" xml:"dimension,omitempty"`
-	// 实体域（如 acs）。
+	// The entity domain, such as acs.
+	//
+	// example:
+	//
+	// acs
 	EntityDomain *string `json:"entityDomain,omitempty" xml:"entityDomain,omitempty"`
-	// UModel 实体 ID，与实体域和类型共同标识成员。
+	// The UModel entity ID, which corresponds to the __entity_id__ field of the entity and identifies a member of the observation group together with entityDomain and entityType.
+	//
+	// example:
+	//
+	// i-bp1gj8wyq4fxk28k6iy2
 	EntityId *string `json:"entityId,omitempty" xml:"entityId,omitempty"`
-	// 实体角色，main 为主实体、related 为关联子实体。
+	// The role of the entity in the observation group. main indicates the primary entity directly matched by the management rule. related indicates the child entity managed through associations.
+	//
+	// example:
+	//
+	// main
 	EntityRole *string `json:"entityRole,omitempty" xml:"entityRole,omitempty"`
-	// 实体类型（如 acs.ecs.instance）。
+	// The entity type, such as acs.ecs.instance.
+	//
+	// example:
+	//
+	// acs.ecs.instance
 	EntityType *string `json:"entityType,omitempty" xml:"entityType,omitempty"`
-	// 所属观测分组 ID。
+	// The ID of the observation group to which the entity belongs.
+	//
+	// example:
+	//
+	// og-845e0a26455f437c
 	GroupId *string `json:"groupId,omitempty" xml:"groupId,omitempty"`
-	// 实例 ID。
+	// The instance ID.
+	//
+	// example:
+	//
+	// i-bp1gj8wyq4fxk28k6iy2
 	InstanceId *string `json:"instanceId,omitempty" xml:"instanceId,omitempty"`
-	// 实例名称。
+	// The instance name.
+	//
+	// example:
+	//
+	// ecs-prod-01
 	InstanceName *string `json:"instanceName,omitempty" xml:"instanceName,omitempty"`
-	// 实例所属地域 ID。
+	// The ID of the region to which the instance belongs.
+	//
+	// example:
+	//
+	// cn-hangzhou
 	RegionId *string `json:"regionId,omitempty" xml:"regionId,omitempty"`
-	// 实例所属资源组 ID。
+	// The ID of the resource group to which the instance belongs.
+	//
+	// example:
+	//
+	// rg-acfm3gn5i6bigbi
 	ResourceGroupId *string `json:"resourceGroupId,omitempty" xml:"resourceGroupId,omitempty"`
-	// 实例标签键值对。
+	// The key-value pairs of the instance tags.
+	//
+	// example:
+	//
+	// {"env":"prod"}
 	Tags map[string]*string `json:"tags,omitempty" xml:"tags,omitempty"`
-	// 实例归属的用户 UID。
+	// The UID of the user that owns the instance.
+	//
+	// example:
+	//
+	// 1234567890123456
 	UserId *string `json:"userId,omitempty" xml:"userId,omitempty"`
 }
 

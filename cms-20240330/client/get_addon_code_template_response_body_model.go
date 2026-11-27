@@ -70,7 +70,7 @@ type GetAddonCodeTemplateResponseBodyCodes struct {
 	//
 	// example:
 	//
-	// javascript\\nnpm install @arms/rum-miniapp --save
+	// javascript\nnpm install @arms/rum-miniapp --save
 	CodeTemplate *string `json:"codeTemplate,omitempty" xml:"codeTemplate,omitempty"`
 	// The name of the code template.
 	//

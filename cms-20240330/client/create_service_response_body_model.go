@@ -18,7 +18,7 @@ type iCreateServiceResponseBody interface {
 }
 
 type CreateServiceResponseBody struct {
-	// The ARMS application ID for backward compatibility.
+	// The legacy ARMS application ID for backward compatibility.
 	//
 	// example:
 	//

@@ -110,7 +110,7 @@ type UpdateIntegrationPolicyRequestTags struct {
 	//
 	// example:
 	//
-	// [{\\"Id\\": \\"kgqie6hm\\", \\"Name\\": \\"Sheet1\\"}]
+	// [{\"Id\": \"kgqie6hm\", \"Name\": \"Sheet1\"}]
 	Value *string `json:"value,omitempty" xml:"value,omitempty"`
 }
 

@@ -30,7 +30,7 @@ type ManageAlertRulesResult struct {
 	//
 	// example:
 	//
-	// {"uuid":"cms_v2_81d01768-fee9-459f-af49-ab2704f1db2b","displayName":"drill-e2e-验证规则","enabled":true}
+	// {"uuid":"cms_v2_81d01768-fee9-459f-af49-ab2704f1db2b","displayName":"drill-e2e-verification rule","enabled":true}
 	AlertRule *AlertRuleV2 `json:"alertRule,omitempty" xml:"alertRule,omitempty"`
 	// The number of successfully deleted rules.
 	//
