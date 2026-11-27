@@ -18,16 +18,22 @@ type iCreateAppLayoutRequest interface {
 }
 
 type CreateAppLayoutRequest struct {
+	// The application ID. You can create and query the ID in the console. Only a single ID is supported.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ac7N****
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The client token.
+	//
 	// example:
 	//
 	// 53200b81-b761-4c10-842a-a0726d97xxxx
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The layout.
+	//
 	// This parameter is required.
 	Layout *CreateAppLayoutRequestLayout `json:"Layout,omitempty" xml:"Layout,omitempty" type:"Struct"`
 }
@@ -77,12 +83,16 @@ func (s *CreateAppLayoutRequest) Validate() error {
 }
 
 type CreateAppLayoutRequestLayout struct {
+	// The name of the layout.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 布局
+	// Layout
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The list of panes.
+	//
 	// This parameter is required.
 	Panes []*CreateAppLayoutRequestLayoutPanes `json:"Panes,omitempty" xml:"Panes,omitempty" type:"Repeated"`
 }
@@ -127,26 +137,38 @@ func (s *CreateAppLayoutRequestLayout) Validate() error {
 }
 
 type CreateAppLayoutRequestLayoutPanes struct {
+	// The height of the pane, represented as a normalized percentage. Valid values: 0.0 < Height ≤ 1.0.
+	//
 	// example:
 	//
 	// 0.25
 	Height *float64 `json:"Height,omitempty" xml:"Height,omitempty"`
+	// The ID of the pane. The value starts from 0.
+	//
 	// example:
 	//
 	// 0
 	PaneId *int64 `json:"PaneId,omitempty" xml:"PaneId,omitempty"`
+	// The width of the pane, represented as a normalized percentage. Valid values: 0.0 < Width ≤ 1.0.
+	//
 	// example:
 	//
 	// 0.25
 	Width *float64 `json:"Width,omitempty" xml:"Width,omitempty"`
+	// The X coordinate, represented as a normalized percentage. Valid values: 0.0 ≤ X ≤ 1.0.
+	//
 	// example:
 	//
 	// 0.25
 	X *float64 `json:"X,omitempty" xml:"X,omitempty"`
+	// The Y coordinate, represented as a normalized percentage. Valid values: 0.0 ≤ Y ≤ 1.0.
+	//
 	// example:
 	//
 	// 0.25
 	Y *float64 `json:"Y,omitempty" xml:"Y,omitempty"`
+	// The Z-order of the pane. A value of 0 indicates the bottom layer, 1 indicates the layer above 0, and so on.
+	//
 	// example:
 	//
 	// 0

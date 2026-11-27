@@ -16,12 +16,16 @@ type iCreateAppViewTemplateShrinkRequest interface {
 }
 
 type CreateAppViewTemplateShrinkRequest struct {
+	// The application ID. You can create and query it in the console. Only a single ID is supported.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ac7N****
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The template.
+	//
 	// This parameter is required.
 	TemplateShrink *string `json:"Template,omitempty" xml:"Template,omitempty"`
 }

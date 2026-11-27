@@ -16,12 +16,14 @@ type iModifyAppViewTemplateResponseBody interface {
 }
 
 type ModifyAppViewTemplateResponseBody struct {
-	// Id of the request
+	// Request ID
 	//
 	// example:
 	//
 	// 30D41049-D02D-1C21-86AE-B3E5FD805C27
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Template ID
+	//
 	// example:
 	//
 	// ac7N****

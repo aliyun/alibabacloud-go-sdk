@@ -14,6 +14,8 @@ type iStopChannelResponseBody interface {
 }
 
 type StopChannelResponseBody struct {
+	// Request ID.
+	//
 	// example:
 	//
 	// 16A96B9A-F203-4EC5-8E43-CB92E68F4CF8

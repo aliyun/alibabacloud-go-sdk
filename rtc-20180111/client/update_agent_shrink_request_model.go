@@ -20,24 +20,31 @@ type iUpdateAgentShrinkRequest interface {
 }
 
 type UpdateAgentShrinkRequest struct {
+	// The application ID. Specify only one ID. You can create and query applications in the console.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 4eah****
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The existing channel ID. Specify only one ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// yourChannelId
 	ChannelId *string `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
+	// The task ID. Specify only one ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// yourTaskId
-	TaskId                *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// Configuration for AI voice conversation.
 	VoiceChatConfigShrink *string `json:"VoiceChatConfig,omitempty" xml:"VoiceChatConfig,omitempty"`
 }
 

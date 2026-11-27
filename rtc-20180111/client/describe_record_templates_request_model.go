@@ -22,6 +22,8 @@ type iDescribeRecordTemplatesRequest interface {
 }
 
 type DescribeRecordTemplatesRequest struct {
+	// The application ID. You can create and query the ID in the console. Only a single ID is supported.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -29,14 +31,32 @@ type DescribeRecordTemplatesRequest struct {
 	// yourAppId
 	AppId   *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
 	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The page number to return. Default value: **1**.
+	//
 	// example:
 	//
 	// 1
 	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
+	// The number of entries to return on each page. Default value: **10**.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The list of template IDs to query. The format is as follows:
+	//
+	// ```
+	//
+	// TemplateIds.1=****
+	//
+	// TemplateIds.2=****
+	//
+	// ......
+	//
+	// ```
+	//
+	// To obtain the template ID, see [AddRecordTemplate](https://help.aliyun.com/document_detail/193625.html).
+	//
 	// example:
 	//
 	// 76dasgb****

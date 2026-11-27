@@ -16,12 +16,16 @@ type iStartCategoryCallbackShrinkRequest interface {
 }
 
 type StartCategoryCallbackShrinkRequest struct {
+	// The application ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 223***JQb
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The callback.
+	//
 	// This parameter is required.
 	CallbackShrink *string `json:"Callback,omitempty" xml:"Callback,omitempty"`
 }

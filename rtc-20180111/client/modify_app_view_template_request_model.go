@@ -16,12 +16,16 @@ type iModifyAppViewTemplateRequest interface {
 }
 
 type ModifyAppViewTemplateRequest struct {
+	// Application ID. Create and view it in the console. Only one ID is supported.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// wv7N****
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The template.
+	//
 	// This parameter is required.
 	Template *ModifyAppViewTemplateRequestTemplate `json:"Template,omitempty" xml:"Template,omitempty" type:"Struct"`
 }
@@ -62,20 +66,28 @@ func (s *ModifyAppViewTemplateRequest) Validate() error {
 }
 
 type ModifyAppViewTemplateRequestTemplate struct {
+	// List of layout IDs. Maximum of 16 IDs.
+	//
 	// This parameter is required.
 	LayoutIds []*string `json:"LayoutIds,omitempty" xml:"LayoutIds,omitempty" type:"Repeated"`
+	// Encoding option.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1
 	MediaEncode *int32 `json:"MediaEncode,omitempty" xml:"MediaEncode,omitempty"`
+	// Template name.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 模版
+	// 模板
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// Template ID.
+	//
 	// This parameter is required.
 	//
 	// example:

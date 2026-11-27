@@ -22,7 +22,7 @@ type iDescribeEndPointEventListRequest interface {
 }
 
 type DescribeEndPointEventListRequest struct {
-	// APP ID。
+	// The app ID.
 	//
 	// This parameter is required.
 	//
@@ -30,22 +30,30 @@ type DescribeEndPointEventListRequest struct {
 	//
 	// testappid
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The channel ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// testid
 	ChannelId *string `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
+	// The start time of the event query time range. This time cannot be earlier than the actual creation time of the channel or 30 days ago. The time is a UNIX timestamp in seconds.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1614936817
 	CreatedTs *int64 `json:"CreatedTs,omitempty" xml:"CreatedTs,omitempty"`
+	// The end time of the event query time range. This time cannot be later than the release time of the channel. The time is a UNIX timestamp in seconds. If this parameter is left empty, the current time is used.
+	//
 	// example:
 	//
 	// 1614936817
 	DestroyedTs *int64 `json:"DestroyedTs,omitempty" xml:"DestroyedTs,omitempty"`
+	// The list of user IDs. Separate multiple user IDs with commas (,).
+	//
 	// This parameter is required.
 	//
 	// example:

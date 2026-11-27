@@ -40,38 +40,115 @@ type iStartCloudNoteRequest interface {
 }
 
 type StartCloudNoteRequest struct {
+	// The application ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 2ws***z3
-	AppId        *string                            `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The auto chapters feature. When enabled, chapter titles and summaries are generated.
 	AutoChapters *StartCloudNoteRequestAutoChapters `json:"AutoChapters,omitempty" xml:"AutoChapters,omitempty" type:"Struct"`
+	// The channel ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// test
-	ChannelId         *string                                 `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
-	CustomPrompt      *StartCloudNoteRequestCustomPrompt      `json:"CustomPrompt,omitempty" xml:"CustomPrompt,omitempty" type:"Struct"`
-	LanguageHints     []*string                               `json:"LanguageHints,omitempty" xml:"LanguageHints,omitempty" type:"Repeated"`
+	ChannelId *string `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
+	// The custom prompt control parameter object.
+	CustomPrompt *StartCloudNoteRequestCustomPrompt `json:"CustomPrompt,omitempty" xml:"CustomPrompt,omitempty" type:"Struct"`
+	// **[Deprecated]*	- This parameter is deprecated. You do not need to specify it.
+	LanguageHints []*string `json:"LanguageHints,omitempty" xml:"LanguageHints,omitempty" type:"Repeated"`
+	// The intelligent meeting minutes feature. When enabled, keywords, key content, and to-do items are generated.
 	MeetingAssistance *StartCloudNoteRequestMeetingAssistance `json:"MeetingAssistance,omitempty" xml:"MeetingAssistance,omitempty" type:"Struct"`
-	RealtimeSubtitle  *StartCloudNoteRequestRealtimeSubtitle  `json:"RealtimeSubtitle,omitempty" xml:"RealtimeSubtitle,omitempty" type:"Struct"`
+	// The real-time subtitles.
+	RealtimeSubtitle *StartCloudNoteRequestRealtimeSubtitle `json:"RealtimeSubtitle,omitempty" xml:"RealtimeSubtitle,omitempty" type:"Struct"`
+	// The service inspection feature.
 	ServiceInspection *StartCloudNoteRequestServiceInspection `json:"ServiceInspection,omitempty" xml:"ServiceInspection,omitempty" type:"Struct"`
+	// The source language model used by the channel. Valid values:
+	//
+	// - cn: Chinese
+	//
+	// - yue: Cantonese
+	//
+	// - en: English
+	//
+	// - multilingual: Multilingual
+	//
+	// - ja: Japanese
+	//
+	// - ko: Korean
+	//
+	// - de: German
+	//
+	// - fr: French
+	//
+	// - ru: Russian
+	//
+	// - es: Spanish
+	//
+	// - vi: Vietnamese
+	//
+	// - it: Italian
+	//
+	// - sv: Swedish
+	//
+	// - cs: Czech
+	//
+	// - pl: Polish
+	//
+	// - th: Thai
+	//
+	// - fi: Finnish
+	//
+	// - hi: Hindi
+	//
+	// - id: Indonesian
+	//
+	// - pt: Portuguese
+	//
+	// - ar: Arabic
+	//
+	// - fil: Filipino
+	//
+	// - ms: Malay
+	//
+	// - tr: Turkish
+	//
+	// - hu: Hungarian
+	//
+	// - lo: Lao
+	//
+	// - pt-br: Portuguese (Brazil)
+	//
+	// - es-ar: Spanish (Argentina)
+	//
+	// - es-mx: Spanish (Mexico)
+	//
 	// example:
 	//
 	// cn
 	SourceLanguage *string `json:"SourceLanguage,omitempty" xml:"SourceLanguage,omitempty"`
+	// The storage configuration.
+	//
 	// This parameter is required.
 	StorageConfig *StartCloudNoteRequestStorageConfig `json:"StorageConfig,omitempty" xml:"StorageConfig,omitempty" type:"Struct"`
+	// The summarization feature. When enabled, full-text summaries and speaker summaries are generated.
 	Summarization *StartCloudNoteRequestSummarization `json:"Summarization,omitempty" xml:"Summarization,omitempty" type:"Struct"`
+	// The task ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// rtc
-	TaskId        *string                             `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	TextPolish    *StartCloudNoteRequestTextPolish    `json:"TextPolish,omitempty" xml:"TextPolish,omitempty" type:"Struct"`
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// The text polishing feature.
+	TextPolish *StartCloudNoteRequestTextPolish `json:"TextPolish,omitempty" xml:"TextPolish,omitempty" type:"Struct"`
+	// The transcription feature. Enabled by default.
 	Transcription *StartCloudNoteRequestTranscription `json:"Transcription,omitempty" xml:"Transcription,omitempty" type:"Struct"`
 }
 
@@ -259,6 +336,7 @@ func (s *StartCloudNoteRequest) Validate() error {
 }
 
 type StartCloudNoteRequestAutoChapters struct {
+	// Specifies whether to enable the feature.
 	Enabled *bool `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
 }
 
@@ -284,9 +362,12 @@ func (s *StartCloudNoteRequestAutoChapters) Validate() error {
 }
 
 type StartCloudNoteRequestCustomPrompt struct {
+	// The list of parameters for the custom prompt.
+	//
 	// This parameter is required.
 	CustomPromptContents []*StartCloudNoteRequestCustomPromptCustomPromptContents `json:"CustomPromptContents,omitempty" xml:"CustomPromptContents,omitempty" type:"Repeated"`
-	Enabled              *bool                                                    `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
+	// Specifies whether to enable the feature.
+	Enabled *bool `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
 }
 
 func (s StartCloudNoteRequestCustomPrompt) String() string {
@@ -329,22 +410,34 @@ func (s *StartCloudNoteRequestCustomPrompt) Validate() error {
 }
 
 type StartCloudNoteRequestCustomPromptCustomPromptContents struct {
+	// The model used for the prompt. Valid values: tingwu-turbo, tingwu-plus, and qwen-max. Default value: tingwu-turbo.
+	//
 	// example:
 	//
 	// tingwu-turbo
 	Model *string `json:"Model,omitempty" xml:"Model,omitempty"`
+	// The custom name of the prompt, which is used to match the output results.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// split-summary-demo
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The custom content of the prompt. The content must include the {Transcription} tag. The {Transcription} tag is automatically replaced with the speech transcription result as the model input.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 请帮我将下面的对话进行总结，根据发言人来总结:\\n {Transcription}
+	// Summarize the following conversation by speaker:\n {Transcription}
 	Prompt *string `json:"Prompt,omitempty" xml:"Prompt,omitempty"`
+	// The format of the {Transcription} tag. Valid values:
+	//
+	// - chat: The transcription result includes speaker information.
+	//
+	// - default: The transcription result is in plain text format.
+	//
 	// example:
 	//
 	// chat
@@ -400,7 +493,10 @@ func (s *StartCloudNoteRequestCustomPromptCustomPromptContents) Validate() error
 }
 
 type StartCloudNoteRequestMeetingAssistance struct {
+	// Specifies whether to enable the feature.
 	Enabled *bool `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
+	// The algorithm type for the intelligent meeting minutes feature.
+	//
 	// This parameter is required.
 	MeetingAssistanceType []*string `json:"MeetingAssistanceType,omitempty" xml:"MeetingAssistanceType,omitempty" type:"Repeated"`
 }
@@ -436,8 +532,15 @@ func (s *StartCloudNoteRequestMeetingAssistance) Validate() error {
 }
 
 type StartCloudNoteRequestRealtimeSubtitle struct {
-	AsrCallback *bool                                             `json:"AsrCallback,omitempty" xml:"AsrCallback,omitempty"`
-	Enabled     *bool                                             `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
+	// Specifies whether to enable server-side callbacks.
+	//
+	// example:
+	//
+	// true
+	AsrCallback *bool `json:"AsrCallback,omitempty" xml:"AsrCallback,omitempty"`
+	// Specifies whether to enable the feature.
+	Enabled *bool `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
+	// The translation parameters. You can specify the target translation language by using the SDK.
 	Translation *StartCloudNoteRequestRealtimeSubtitleTranslation `json:"Translation,omitempty" xml:"Translation,omitempty" type:"Struct"`
 }
 
@@ -486,6 +589,12 @@ func (s *StartCloudNoteRequestRealtimeSubtitle) Validate() error {
 }
 
 type StartCloudNoteRequestRealtimeSubtitleTranslation struct {
+	// The output level of the translated text. Default value: 2.
+	//
+	// - 1: Returns results when a complete sentence is recognized.
+	//
+	// - 2: Returns results when intermediate results and complete sentences are recognized.
+	//
 	// example:
 	//
 	// 1
@@ -514,20 +623,27 @@ func (s *StartCloudNoteRequestRealtimeSubtitleTranslation) Validate() error {
 }
 
 type StartCloudNoteRequestServiceInspection struct {
+	// Specifies whether to enable the feature.
 	Enabled *bool `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
+	// The list of inspection dimensions for service inspection, including the names and definitions of the dimensions. This specifies the criteria for the large language model to determine whether a dimension is hit.
+	//
 	// This parameter is required.
 	InspectionContents []*StartCloudNoteRequestServiceInspectionInspectionContents `json:"InspectionContents,omitempty" xml:"InspectionContents,omitempty" type:"Repeated"`
+	// The description of the inspection objectives and focus areas for service inspection.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 请监测对话中销售人员表现是否接待热情、态度良好
+	// Monitor whether the sales staff in the dialogue are enthusiastic and have a good attitude when receiving customers
 	InspectionIntroduction *string `json:"InspectionIntroduction,omitempty" xml:"InspectionIntroduction,omitempty"`
+	// The description of the dialogue scene for service inspection.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 汽车门店线下销售场景
+	// Offline sales scenario at an automobile dealership
 	SceneIntroduction *string `json:"SceneIntroduction,omitempty" xml:"SceneIntroduction,omitempty"`
 }
 
@@ -589,17 +705,21 @@ func (s *StartCloudNoteRequestServiceInspection) Validate() error {
 }
 
 type StartCloudNoteRequestServiceInspectionInspectionContents struct {
+	// The definition of the inspection dimension for service inspection.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 销售在开场白的时候主动向客户打招呼进行欢迎
+	// The salesperson proactively greets and welcomes the customer during the opening remarks
 	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// The name of the inspection dimension for service inspection.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 到店欢迎-欢迎语
+	// Store arrival welcome - Welcome greeting
 	Title *string `json:"Title,omitempty" xml:"Title,omitempty"`
 }
 
@@ -634,7 +754,7 @@ func (s *StartCloudNoteRequestServiceInspectionInspectionContents) Validate() er
 }
 
 type StartCloudNoteRequestStorageConfig struct {
-	// accessKey。
+	// The AccessKey.
 	//
 	// This parameter is required.
 	//
@@ -642,19 +762,83 @@ type StartCloudNoteRequestStorageConfig struct {
 	//
 	// LTAX***
 	AccessKey *string `json:"AccessKey,omitempty" xml:"AccessKey,omitempty"`
+	// The bucket name.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// test-bucket-for-recording
 	Bucket *string `json:"Bucket,omitempty" xml:"Bucket,omitempty"`
+	// The storage region.
+	//
+	// | Region | AliYun OSS |
+	//
+	// |--------|------------|
+	//
+	// | 0 | CN_Hangzhou |
+	//
+	// | 1 | CN_Shanghai |
+	//
+	// | 2 | CN_Qingdao |
+	//
+	// | 3 | CN_Beijing |
+	//
+	// | 4 | CN_Zhangjiakou |
+	//
+	// | 5 | CN_Huhehaote |
+	//
+	// | 6 | CN_Shenzhen |
+	//
+	// | 7 | CN_Hongkong |
+	//
+	// | 8 | US_West_1 |
+	//
+	// | 9 | US_East_1 |
+	//
+	// | 10 | AP_Southeast_1 |
+	//
+	// | 11 | AP_Southeast_2 |
+	//
+	// | 12 | AP_Southeast_3 |
+	//
+	// | 13 | AP_Southeast_5 |
+	//
+	// | 14 | AP_Northeast_1 |
+	//
+	// | 15 | AP_South_1 (Offline. Do not use.) |
+	//
+	// | 16 | EU_Central_1 |
+	//
+	// | 17 | EU_West_1 |
+	//
+	// | 18 | EU_East_1(ME_East_1) |
+	//
+	// | 19 | AP_Southeast_6 |
+	//
+	// | 20 | CN_Heyuan |
+	//
+	// | 21 | CN_Guangzhou |
+	//
+	// | 22 | CN_Chengdu |
+	//
+	// | 23 | CN_Nanjing |
+	//
+	// | 24 | CN_Fuzhou |
+	//
+	// | 25 | CN_Wulanchabu |
+	//
+	// | 26 | AP_Northeast_2 |
+	//
+	// | 27 | AP_Southeast_7 |
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 0
 	Region *int32 `json:"Region,omitempty" xml:"Region,omitempty"`
-	// secretKey。
+	// The AccessKey secret.
 	//
 	// This parameter is required.
 	//
@@ -662,6 +846,14 @@ type StartCloudNoteRequestStorageConfig struct {
 	//
 	// APb6qWYEzKtYxE***
 	SecretKey *string `json:"SecretKey,omitempty" xml:"SecretKey,omitempty"`
+	// The storage platform. Valid values:
+	//
+	// | vendor | Object storage service | Remarks |
+	//
+	// |--------|---------|---------|
+	//
+	// | 1 | AliYun OSS | Alibaba Cloud |
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -728,7 +920,10 @@ func (s *StartCloudNoteRequestStorageConfig) Validate() error {
 }
 
 type StartCloudNoteRequestSummarization struct {
+	// Specifies whether to enable the feature.
 	Enabled *bool `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
+	// The specific type.
+	//
 	// This parameter is required.
 	Type []*string `json:"Type,omitempty" xml:"Type,omitempty" type:"Repeated"`
 }
@@ -764,6 +959,7 @@ func (s *StartCloudNoteRequestSummarization) Validate() error {
 }
 
 type StartCloudNoteRequestTextPolish struct {
+	// Specifies whether to enable the feature.
 	Enabled *bool `json:"Enabled,omitempty" xml:"Enabled,omitempty"`
 }
 
@@ -789,12 +985,30 @@ func (s *StartCloudNoteRequestTextPolish) Validate() error {
 }
 
 type StartCloudNoteRequestTranscription struct {
+	// Specifies whether to enable speaker diarization.
 	DiarizationEnabled *bool `json:"DiarizationEnabled,omitempty" xml:"DiarizationEnabled,omitempty"`
+	// The hotword table ID.
+	//
 	// example:
 	//
-	// b401a5da78e94xxxxc3129425c78b6a5
-	PhraseId     *string `json:"PhraseId,omitempty" xml:"PhraseId,omitempty"`
-	SpeakerCount *int32  `json:"SpeakerCount,omitempty" xml:"SpeakerCount,omitempty"`
+	// b27cb31b8ca24c5b8e664e0387bac573
+	PhraseId *string `json:"PhraseId,omitempty" xml:"PhraseId,omitempty"`
+	// The number of speakers for speaker diarization. Default value: 0. Valid values:
+	//
+	// - 0: The number of speakers is unknown.
+	//
+	// - 2: The number of speakers is 2.
+	//
+	// example:
+	//
+	// 2
+	SpeakerCount *int32 `json:"SpeakerCount,omitempty" xml:"SpeakerCount,omitempty"`
+	// The return level of speech recognition results. Default value: 2. Valid values:
+	//
+	// - 1: Returns recognition results when a complete sentence is recognized.
+	//
+	// - 2: Returns recognition results when intermediate results and complete sentences are recognized.
+	//
 	// example:
 	//
 	// 1

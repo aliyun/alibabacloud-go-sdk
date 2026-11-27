@@ -16,6 +16,8 @@ type iDescribeAutoLiveStreamRuleRequest interface {
 }
 
 type DescribeAutoLiveStreamRuleRequest struct {
+	// The application ID. You can create and query the ID in the console.
+	//
 	// This parameter is required.
 	//
 	// example:

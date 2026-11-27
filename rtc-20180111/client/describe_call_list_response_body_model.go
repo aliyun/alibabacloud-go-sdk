@@ -22,19 +22,28 @@ type iDescribeCallListResponseBody interface {
 }
 
 type DescribeCallListResponseBody struct {
+	// List of communications.
 	CallList []*DescribeCallListResponseBodyCallList `json:"CallList,omitempty" xml:"CallList,omitempty" type:"Repeated"`
+	// Page number.
+	//
 	// example:
 	//
 	// 2
 	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	// Quantity per page.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// Request ID.
+	//
 	// example:
 	//
 	// 231470C1-ACFB-4C9F-844F-4CFE1E3804C5
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Total Quantity.
+	//
 	// example:
 	//
 	// 20
@@ -114,30 +123,48 @@ type DescribeCallListResponseBodyCallList struct {
 	//
 	// 9qb1****
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// Number of users with poor communication experience.
+	//
 	// example:
 	//
 	// 0
 	BadExpUserCnt *int32 `json:"BadExpUserCnt,omitempty" xml:"BadExpUserCnt,omitempty"`
+	// Communication status. Valid values:
+	//
+	// - **IN**: In progress.
+	//
+	// - **OUT**: Ended.
+	//
 	// example:
 	//
 	// OUT
 	CallStatus *string `json:"CallStatus,omitempty" xml:"CallStatus,omitempty"`
+	// Channel ID.
+	//
 	// example:
 	//
 	// 904
 	ChannelId *string `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
+	// The UNIX timestamp indicating when the communication was created, in seconds.
+	//
 	// example:
 	//
 	// 1614936817
 	CreatedTs *int64 `json:"CreatedTs,omitempty" xml:"CreatedTs,omitempty"`
+	// The UNIX timestamp indicating when the communication was released, in seconds.
+	//
 	// example:
 	//
 	// 1614936817
 	DestroyedTs *int64 `json:"DestroyedTs,omitempty" xml:"DestroyedTs,omitempty"`
+	// Duration of the communication, in seconds.
+	//
 	// example:
 	//
 	// 10
 	Duration *int64 `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	// User Count.
+	//
 	// example:
 	//
 	// 5

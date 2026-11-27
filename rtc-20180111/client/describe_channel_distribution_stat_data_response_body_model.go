@@ -16,11 +16,14 @@ type iDescribeChannelDistributionStatDataResponseBody interface {
 }
 
 type DescribeChannelDistributionStatDataResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 231470C1-ACFB-4C9F-844F-4CFE1E3804C5
-	RequestId *string                                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	StatList  []*DescribeChannelDistributionStatDataResponseBodyStatList `json:"StatList,omitempty" xml:"StatList,omitempty" type:"Repeated"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The channel distribution statistics list.
+	StatList []*DescribeChannelDistributionStatDataResponseBodyStatList `json:"StatList,omitempty" xml:"StatList,omitempty" type:"Repeated"`
 }
 
 func (s DescribeChannelDistributionStatDataResponseBody) String() string {
@@ -63,14 +66,20 @@ func (s *DescribeChannelDistributionStatDataResponseBody) Validate() error {
 }
 
 type DescribeChannelDistributionStatDataResponseBodyStatList struct {
+	// The number of communicating users.
+	//
 	// example:
 	//
 	// 1
 	CallUserCount *int32 `json:"CallUserCount,omitempty" xml:"CallUserCount,omitempty"`
+	// The proportion of communicating users, represented as a decimal. For example, 1.0000 indicates that the proportion is 100%.
+	//
 	// example:
 	//
 	// 1.0000
 	CallUserRatio *string `json:"CallUserRatio,omitempty" xml:"CallUserRatio,omitempty"`
+	// The statistical dimension.
+	//
 	// example:
 	//
 	// OS

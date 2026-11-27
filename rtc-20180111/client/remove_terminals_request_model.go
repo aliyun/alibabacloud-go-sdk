@@ -20,12 +20,18 @@ type iRemoveTerminalsRequest interface {
 }
 
 type RemoveTerminalsRequest struct {
+	// The application ID. Only one ID is supported.
+	//
+	// You can create and query application IDs in the console.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// yourAppId
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The ID of the channel that the user has joined. Only one ID is supported.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -33,6 +39,8 @@ type RemoveTerminalsRequest struct {
 	// yourChannelId
 	ChannelId *string `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
 	OwnerId   *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// A list of user IDs.
+	//
 	// This parameter is required.
 	//
 	// example:

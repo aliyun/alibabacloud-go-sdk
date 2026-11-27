@@ -20,24 +20,31 @@ type iUpdateAgentRequest interface {
 }
 
 type UpdateAgentRequest struct {
+	// The application ID. Specify only one ID. You can create and query applications in the console.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 4eah****
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The existing channel ID. Specify only one ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// yourChannelId
 	ChannelId *string `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
+	// The task ID. Specify only one ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// yourTaskId
-	TaskId          *string                            `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// Configuration for AI voice conversation.
 	VoiceChatConfig *UpdateAgentRequestVoiceChatConfig `json:"VoiceChatConfig,omitempty" xml:"VoiceChatConfig,omitempty" type:"Struct"`
 }
 
@@ -95,10 +102,14 @@ func (s *UpdateAgentRequest) Validate() error {
 }
 
 type UpdateAgentRequestVoiceChatConfig struct {
+	// 1 – Natural conversation mode. 2 – Walkie-talkie mode.If this field is not included, no update occurs.
+	//
 	// example:
 	//
 	// 2
 	ChatMode *int32 `json:"ChatMode,omitempty" xml:"ChatMode,omitempty"`
+	// 1 – Enable voice interruption. 2 – Disable voice interruption.If this field is not included, no update occurs.
+	//
 	// example:
 	//
 	// 2

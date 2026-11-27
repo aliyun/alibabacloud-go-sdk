@@ -20,15 +20,22 @@ type iDescribeRecordTemplatesResponseBody interface {
 }
 
 type DescribeRecordTemplatesResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// C292B80E-5175-4BA4-8CC292B80E-5175-4BA4-8C1E-2ABEC4D7C2FE1E-2ABEC4D7****
-	RequestId *string                                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The recording configuration templates.
 	Templates []*DescribeRecordTemplatesResponseBodyTemplates `json:"Templates,omitempty" xml:"Templates,omitempty" type:"Repeated"`
+	// The total number of entries returned.
+	//
 	// example:
 	//
 	// 1
 	TotalNum *int64 `json:"TotalNum,omitempty" xml:"TotalNum,omitempty"`
+	// The total number of pages returned.
+	//
 	// example:
 	//
 	// 1
@@ -93,59 +100,93 @@ func (s *DescribeRecordTemplatesResponseBody) Validate() error {
 }
 
 type DescribeRecordTemplatesResponseBodyTemplates struct {
+	// The RGB value of the background color. Default value: **0*	- (black). The calculation formula is R + G × 256 + B × 65536. Valid values for R (red), G (green), and B (blue): **0*	- to **255**.
+	//
 	// example:
 	//
 	// 0
-	BackgroundColor *int32                                                      `json:"BackgroundColor,omitempty" xml:"BackgroundColor,omitempty"`
-	Backgrounds     []*DescribeRecordTemplatesResponseBodyTemplatesBackgrounds  `json:"Backgrounds,omitempty" xml:"Backgrounds,omitempty" type:"Repeated"`
-	ClockWidgets    []*DescribeRecordTemplatesResponseBodyTemplatesClockWidgets `json:"ClockWidgets,omitempty" xml:"ClockWidgets,omitempty" type:"Repeated"`
+	BackgroundColor *int32 `json:"BackgroundColor,omitempty" xml:"BackgroundColor,omitempty"`
+	// The list of background image information.
+	Backgrounds []*DescribeRecordTemplatesResponseBodyTemplatesBackgrounds `json:"Backgrounds,omitempty" xml:"Backgrounds,omitempty" type:"Repeated"`
+	// The list of clock widgets.
+	ClockWidgets []*DescribeRecordTemplatesResponseBodyTemplatesClockWidgets `json:"ClockWidgets,omitempty" xml:"ClockWidgets,omitempty" type:"Repeated"`
+	// The creation time. The time is displayed in the <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z format (UTC time).
+	//
 	// example:
 	//
 	// 2020-09-04T06:22:15Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The delay before stopping the recording. Unit: seconds.
+	//
 	// example:
 	//
 	// 180
 	DelayStopTime *int32 `json:"DelayStopTime,omitempty" xml:"DelayStopTime,omitempty"`
+	// Specifies whether to add the timestamp of the TS file to the recorded M3U8 file.
+	//
 	// example:
 	//
 	// false
 	EnableM3u8DateTime *bool `json:"EnableM3u8DateTime,omitempty" xml:"EnableM3u8DateTime,omitempty"`
+	// The file splitting duration.
+	//
 	// example:
 	//
 	// 1800
-	FileSplitInterval *int32    `json:"FileSplitInterval,omitempty" xml:"FileSplitInterval,omitempty"`
-	Formats           []*string `json:"Formats,omitempty" xml:"Formats,omitempty" type:"Repeated"`
+	FileSplitInterval *int32 `json:"FileSplitInterval,omitempty" xml:"FileSplitInterval,omitempty"`
+	// The list of recording file formats. Valid formats include M3U8, FLV, and MP4.
+	Formats []*string `json:"Formats,omitempty" xml:"Formats,omitempty" type:"Repeated"`
+	// The HTTP callback URL for recording events.
+	//
 	// example:
 	//
 	// http://example.com/callback
-	HttpCallbackUrl *string  `json:"HttpCallbackUrl,omitempty" xml:"HttpCallbackUrl,omitempty"`
-	LayoutIds       []*int64 `json:"LayoutIds,omitempty" xml:"LayoutIds,omitempty" type:"Repeated"`
+	HttpCallbackUrl *string `json:"HttpCallbackUrl,omitempty" xml:"HttpCallbackUrl,omitempty"`
+	// The list of mixed-stream layout IDs used by the recording template.
+	LayoutIds []*int64 `json:"LayoutIds,omitempty" xml:"LayoutIds,omitempty" type:"Repeated"`
+	// The encoding options.
+	//
 	// example:
 	//
 	// 50
 	MediaEncode *int32 `json:"MediaEncode,omitempty" xml:"MediaEncode,omitempty"`
+	// The name of the Message Service (MNS) queue for recording event callbacks.
+	//
 	// example:
 	//
 	// record-callback-queue
 	MnsQueue *string `json:"MnsQueue,omitempty" xml:"MnsQueue,omitempty"`
-	Name     *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The name of the recording configuration template.
+	//
+	// example:
+	//
+	// Template-demo
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The name of the Object Storage Service (OSS) bucket where recording files are stored.
+	//
 	// example:
 	//
 	// rtc-record-oss
 	OssBucket *string `json:"OssBucket,omitempty" xml:"OssBucket,omitempty"`
+	// The naming rule for recording files.
+	//
 	// example:
 	//
 	// record/pre/{AppId}/{ChannelId_TaskId}/{EscapedStartTime}_{EscapedEndTime}
 	OssFilePrefix *string `json:"OssFilePrefix,omitempty" xml:"OssFilePrefix,omitempty"`
+	// The task specifications.
+	//
 	// example:
 	//
 	// 4IN_1080P
 	TaskProfile *string `json:"TaskProfile,omitempty" xml:"TaskProfile,omitempty"`
+	// The ID of the recording configuration template.
+	//
 	// example:
 	//
 	// 1ca698e2-57fa-4314-8e11-00d950d4****
-	TemplateId *string                                                   `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	// The list of watermark information.
 	Watermarks []*DescribeRecordTemplatesResponseBodyTemplatesWatermarks `json:"Watermarks,omitempty" xml:"Watermarks,omitempty" type:"Repeated"`
 }
 
@@ -351,30 +392,48 @@ func (s *DescribeRecordTemplatesResponseBodyTemplates) Validate() error {
 }
 
 type DescribeRecordTemplatesResponseBodyTemplatesBackgrounds struct {
+	// Specifies whether to display the background image. Valid values:
+	//
+	// - **0*	- (None): Not displayed.
+	//
+	// - **1*	- (Always): Always displayed.
+	//
 	// example:
 	//
 	// 0
 	Display *int32 `json:"Display,omitempty" xml:"Display,omitempty"`
+	// The height of the background image pane. The value is a normalized percentage.
+	//
 	// example:
 	//
 	// 0.2456
 	Height *float32 `json:"Height,omitempty" xml:"Height,omitempty"`
+	// The HTTP or HTTPS URL of the background image.
+	//
 	// example:
 	//
 	// https://www.example.com/image.jpg
 	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
+	// The width of the background image pane. The value is a normalized percentage.
+	//
 	// example:
 	//
 	// 0.2456
 	Width *float32 `json:"Width,omitempty" xml:"Width,omitempty"`
+	// The X-coordinate of the background image. The value is a normalized percentage.
+	//
 	// example:
 	//
 	// 0.7576
 	X *float32 `json:"X,omitempty" xml:"X,omitempty"`
+	// The Y-coordinate of the background image. The value is a normalized percentage.
+	//
 	// example:
 	//
 	// 0.7576
 	Y *float32 `json:"Y,omitempty" xml:"Y,omitempty"`
+	// The stacking order of the background image. A value of 0 indicates the bottom layer. A value of 1 indicates the layer above the bottom layer, and so on.
+	//
 	// example:
 	//
 	// 0
@@ -457,26 +516,52 @@ func (s *DescribeRecordTemplatesResponseBodyTemplatesBackgrounds) Validate() err
 }
 
 type DescribeRecordTemplatesResponseBodyTemplatesClockWidgets struct {
+	// The text color of the clock (RGB).
+	//
+	// The calculation formula is `R + G × 256 + B × 65536`. Valid values for R (red), G (green), and B (blue): **0*	- to **255**.
+	//
 	// example:
 	//
 	// 0
 	FontColor *int32 `json:"FontColor,omitempty" xml:"FontColor,omitempty"`
+	// The font size of the clock. Valid values: **(0, 72]**.
+	//
 	// example:
 	//
 	// 1
 	FontSize *int32 `json:"FontSize,omitempty" xml:"FontSize,omitempty"`
+	// The font type of the clock. Valid values:
+	//
+	// - **0*	- (default): NOTO_SERIF_CJKSC_REGULAR
+	//
+	// - **1**: ALIBABA_PUHUITI_REGULAR
+	//
+	// - **2**: ALIBABA_PUHUITI_BOLD
+	//
+	// - **3**: ALIBABA_PUHUITI_Heavy
+	//
+	// - **4**: ALIBABA_PUHUITI_LIGHT
+	//
+	// - **5**: ALIBABA_PUHUITI_MEDIUM
+	//
 	// example:
 	//
 	// 0
 	FontType *int32 `json:"FontType,omitempty" xml:"FontType,omitempty"`
+	// The X-coordinate of the clock. The value is a normalized percentage.
+	//
 	// example:
 	//
 	// 0.7576
 	X *float32 `json:"X,omitempty" xml:"X,omitempty"`
+	// The Y-coordinate of the clock. The value is a normalized percentage.
+	//
 	// example:
 	//
 	// 0.7576
 	Y *float32 `json:"Y,omitempty" xml:"Y,omitempty"`
+	// The stacking order of the clock. A value of 0 indicates the bottom layer. A value of 1 indicates the layer above the bottom layer, and so on.
+	//
 	// example:
 	//
 	// 0
@@ -550,34 +635,54 @@ func (s *DescribeRecordTemplatesResponseBodyTemplatesClockWidgets) Validate() er
 }
 
 type DescribeRecordTemplatesResponseBodyTemplatesWatermarks struct {
+	// The transparency of the watermark. The value is a normalized percentage. A value of 0 indicates transparent, and a value of 1 indicates completely opaque.
+	//
 	// example:
 	//
 	// 0
 	Alpha *float32 `json:"Alpha,omitempty" xml:"Alpha,omitempty"`
+	// Specifies whether to display the watermark. Valid values:
+	//
+	// - **0*	- (None): Not displayed.
+	//
+	// - **1*	- (Always): Always displayed.
+	//
 	// example:
 	//
 	// 0
 	Display *int32 `json:"Display,omitempty" xml:"Display,omitempty"`
+	// The height of the watermark pane. The value is a normalized percentage.
+	//
 	// example:
 	//
 	// 0.2456
 	Height *float32 `json:"Height,omitempty" xml:"Height,omitempty"`
+	// The HTTP or HTTPS URL of the watermark.
+	//
 	// example:
 	//
 	// https://www.example.com/image.jpg
 	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
+	// The width of the watermark pane. The value is a normalized percentage.
+	//
 	// example:
 	//
 	// 0.2456
 	Width *float32 `json:"Width,omitempty" xml:"Width,omitempty"`
+	// The X-coordinate of the watermark. The value is a normalized percentage.
+	//
 	// example:
 	//
 	// 0.7576
 	X *float32 `json:"X,omitempty" xml:"X,omitempty"`
+	// The Y-coordinate of the watermark. The value is a normalized percentage.
+	//
 	// example:
 	//
 	// 0.7576
 	Y *float32 `json:"Y,omitempty" xml:"Y,omitempty"`
+	// The stacking order of the watermark. A value of 0 indicates the bottom layer. A value of 1 indicates the layer above the bottom layer, and so on.
+	//
 	// example:
 	//
 	// 0

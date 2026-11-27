@@ -20,13 +20,26 @@ type iDescribeChannelUserResponseBody interface {
 }
 
 type DescribeChannelUserResponseBody struct {
+	// Indicates whether the channel exists. Valid values:
+	//
+	// - **true**: The channel exists.
+	//
+	// - **false**: The channel does not exist.
 	ChannelExist *bool `json:"ChannelExist,omitempty" xml:"ChannelExist,omitempty"`
-	InChannel    *bool `json:"InChannel,omitempty" xml:"InChannel,omitempty"`
+	// Indicates whether the user is currently in the channel. Valid values:
+	//
+	// - **true**: The user is in the channel.
+	//
+	// - **false**: The user is not in the channel.
+	InChannel *bool `json:"InChannel,omitempty" xml:"InChannel,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 16A96B9A-F203-4EC5-8E43-CB92E68F4CF8
-	RequestId *string                                    `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Sessions  []*DescribeChannelUserResponseBodySessions `json:"Sessions,omitempty" xml:"Sessions,omitempty" type:"Repeated"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The list of session information.
+	Sessions []*DescribeChannelUserResponseBodySessions `json:"Sessions,omitempty" xml:"Sessions,omitempty" type:"Repeated"`
 }
 
 func (s DescribeChannelUserResponseBody) String() string {
@@ -87,14 +100,20 @@ func (s *DescribeChannelUserResponseBody) Validate() error {
 }
 
 type DescribeChannelUserResponseBodySessions struct {
+	// The UNIX timestamp in seconds when the user joined the channel. The time is in UTC.
+	//
 	// example:
 	//
 	// 1557909133
 	Joined *int64 `json:"Joined,omitempty" xml:"Joined,omitempty"`
+	// The session ID.
+	//
 	// example:
 	//
 	// xa744sxx8rtobgj****
 	SessionId *string `json:"SessionId,omitempty" xml:"SessionId,omitempty"`
+	// The user ID.
+	//
 	// example:
 	//
 	// 1811****

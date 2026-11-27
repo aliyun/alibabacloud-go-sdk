@@ -30,43 +30,73 @@ type iCreateEventSubscribeRequest interface {
 }
 
 type CreateEventSubscribeRequest struct {
+	// The ID of the subscribed application.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 9qb1****
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The callback URL. For information about the callback content, see the following callback content example.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// http://****.com/callback
 	CallbackUrl *string `json:"CallbackUrl,omitempty" xml:"CallbackUrl,omitempty"`
+	// The ID of the subscribed channel.
+	//
+	// > This parameter is required if the Users.N parameter is not empty.
+	//
 	// example:
 	//
 	// 123333
 	ChannelId *string `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
+	// The idempotence identifier used by the client to create the subscription.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 123e4567-e89b-12d3-a456-42665544****
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The subscribed events.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ChannelEvent
 	Events []*string `json:"Events,omitempty" xml:"Events,omitempty" type:"Repeated"`
+	// Specifies whether to enable callback authentication. Valid values:
+	//
+	// - **true**: enables callback authentication.
+	//
+	// - **fasle*	- (default): disables callback authentication.
+	//
+	// For more information, see the following callback authentication description.
+	//
 	// example:
 	//
 	// false
 	NeedCallbackAuth *bool  `json:"NeedCallbackAuth,omitempty" xml:"NeedCallbackAuth,omitempty"`
 	OwnerId          *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The user role. Valid values:
+	//
+	// - **1**: subscribes to host messages in the channel.
+	//
+	// - **2**: subscribes to audience messages in the channel.
+	//
+	// - **Empty or other values**: subscribes to messages from all roles in the channel without role filtering.
+	//
 	// example:
 	//
 	// 1
 	Role *int64 `json:"Role,omitempty" xml:"Role,omitempty"`
+	// The subscribed users.
+	//
 	// example:
 	//
 	// user1

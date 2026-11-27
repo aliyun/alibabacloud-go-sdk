@@ -56,67 +56,134 @@ type iStartCloudRecordShrinkRequest interface {
 }
 
 type StartCloudRecordShrinkRequest struct {
+	// Specifies whether to enable the annotation feature.
+	//
 	// example:
 	//
 	// disable
 	Annotation *string `json:"Annotation,omitempty" xml:"Annotation,omitempty"`
-	// appId
+	// The application ID. You can create and query the ID in the console. Only a single ID is supported.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// eo85****
-	AppId       *string                                     `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The local background images for the pane.
 	Backgrounds []*StartCloudRecordShrinkRequestBackgrounds `json:"Backgrounds,omitempty" xml:"Backgrounds,omitempty" type:"Repeated"`
-	BgColor     *StartCloudRecordShrinkRequestBgColor       `json:"BgColor,omitempty" xml:"BgColor,omitempty" type:"Struct"`
-	// channelName
+	// The global background color.
+	BgColor *StartCloudRecordShrinkRequestBgColor `json:"BgColor,omitempty" xml:"BgColor,omitempty" type:"Struct"`
+	// The ID of an existing channel. Only a single ID is supported.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// testid
-	ChannelId    *string                                      `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
+	ChannelId *string `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
+	// The global clock watermark.
 	ClockWidgets []*StartCloudRecordShrinkRequestClockWidgets `json:"ClockWidgets,omitempty" xml:"ClockWidgets,omitempty" type:"Repeated"`
+	// The crop mode. Valid values:
+	//
+	// - **1**: Crops the video while keeping the aspect ratio.
+	//
+	// - **2**: Keeps the aspect ratio and adds padding (default).
+	//
+	// - **3**: Stretches the video to fill the pane.
+	//
 	// example:
 	//
 	// 2
-	CropMode                   *int32                                 `json:"CropMode,omitempty" xml:"CropMode,omitempty"`
-	Images                     []*StartCloudRecordShrinkRequestImages `json:"Images,omitempty" xml:"Images,omitempty" type:"Repeated"`
-	LayoutSpecifiedUsersShrink *string                                `json:"LayoutSpecifiedUsers,omitempty" xml:"LayoutSpecifiedUsers,omitempty"`
-	// panes
-	Panes                       []*StartCloudRecordShrinkRequestPanes     `json:"Panes,omitempty" xml:"Panes,omitempty" type:"Repeated"`
-	RecordMode                  *int32                                    `json:"RecordMode,omitempty" xml:"RecordMode,omitempty"`
-	RegionColor                 *StartCloudRecordShrinkRequestRegionColor `json:"RegionColor,omitempty" xml:"RegionColor,omitempty" type:"Struct"`
-	ReservePaneForNoCameraUser  *bool                                     `json:"ReservePaneForNoCameraUser,omitempty" xml:"ReservePaneForNoCameraUser,omitempty"`
-	ShowDefaultBackgroundOnMute *bool                                     `json:"ShowDefaultBackgroundOnMute,omitempty" xml:"ShowDefaultBackgroundOnMute,omitempty"`
-	SingleStreamingRecordShrink *string                                   `json:"SingleStreamingRecord,omitempty" xml:"SingleStreamingRecord,omitempty"`
-	StartWithoutChannel         *bool                                     `json:"StartWithoutChannel,omitempty" xml:"StartWithoutChannel,omitempty"`
+	CropMode *int32 `json:"CropMode,omitempty" xml:"CropMode,omitempty"`
+	// The global image watermarks.
+	//
+	// example:
+	//
+	// disable
+	Images []*StartCloudRecordShrinkRequestImages `json:"Images,omitempty" xml:"Images,omitempty" type:"Repeated"`
+	// The specified user list for layout generation, which includes Blacklist/Whitelist.
+	//
+	// Whitelist: specifies the users whose video streams are subscribed to in the room.
+	//
+	// 	- After the settings are applied, padding is automatically performed in sequence based on this list.
+	//
+	// 	- When switching between multiple layouts in a template, only users in the whitelist are calculated.
+	//
+	// Blacklist: specifies the users whose video streams are not subscribed to in the room.
+	//
+	// 	- When switching between multiple layouts in a template, only users not in the blacklist are calculated.
+	LayoutSpecifiedUsersShrink *string `json:"LayoutSpecifiedUsers,omitempty" xml:"LayoutSpecifiedUsers,omitempty"`
+	// The pane settings. You can configure up to 16 panes.
+	//
+	// example:
+	//
+	// eo85****
+	Panes []*StartCloudRecordShrinkRequestPanes `json:"Panes,omitempty" xml:"Panes,omitempty" type:"Repeated"`
+	// The recording mode. Valid values:
+	//
+	// - 0: Mixed-stream recording. This is the default value.
+	//
+	// - 1: Single-stream recording. Single-stream recording does not support updates.
+	//
+	// example:
+	//
+	// 1
+	RecordMode *int32 `json:"RecordMode,omitempty" xml:"RecordMode,omitempty"`
+	// The global frame background color.
+	RegionColor *StartCloudRecordShrinkRequestRegionColor `json:"RegionColor,omitempty" xml:"RegionColor,omitempty" type:"Struct"`
+	// Specifies whether to reserve a pane for a user who does not publish a camera stream. Default value: true. A value of true indicates that a pane is reserved. A value of false indicates that no pane is reserved.
+	ReservePaneForNoCameraUser *bool `json:"ReservePaneForNoCameraUser,omitempty" xml:"ReservePaneForNoCameraUser,omitempty"`
+	// Specifies whether to display the default background image of the pane when the user is muted. Valid values:
+	//
+	// - true: Displays the default background image (default).
+	//
+	// - false: Does not display the default background image. The custom background image of the pane is still displayed.
+	ShowDefaultBackgroundOnMute *bool `json:"ShowDefaultBackgroundOnMute,omitempty" xml:"ShowDefaultBackgroundOnMute,omitempty"`
+	// The parameters for single-stream recording.
+	SingleStreamingRecordShrink *string `json:"SingleStreamingRecord,omitempty" xml:"SingleStreamingRecord,omitempty"`
+	// Specifies whether to allow starting the task when the channel does not exist. Valid values:
+	//
+	// - true: Yes.
+	//
+	// - false: No (default).
+	StartWithoutChannel *bool `json:"StartWithoutChannel,omitempty" xml:"StartWithoutChannel,omitempty"`
+	// The wait time for the task when the channel is not started, in seconds. This parameter takes effect only when the StartWithoutChannel parameter is set to true. Valid values: 30 to 120.
+	//
 	// example:
 	//
 	// 30
 	StartWithoutChannelWaitTime *int32 `json:"StartWithoutChannelWaitTime,omitempty" xml:"StartWithoutChannelWaitTime,omitempty"`
-	// storageConfig
+	// The storage configuration.
 	//
 	// This parameter is required.
-	StorageConfig           *StartCloudRecordShrinkRequestStorageConfig `json:"StorageConfig,omitempty" xml:"StorageConfig,omitempty" type:"Struct"`
-	SubHighResolutionStream *bool                                       `json:"SubHighResolutionStream,omitempty" xml:"SubHighResolutionStream,omitempty"`
-	// taskId
+	//
+	// example:
+	//
+	// testid
+	StorageConfig *StartCloudRecordShrinkRequestStorageConfig `json:"StorageConfig,omitempty" xml:"StorageConfig,omitempty" type:"Struct"`
+	// Specifies whether to subscribe to high-resolution streams. Valid values:
+	//
+	// - false: Subscribes to streams of different resolutions based on the pane area (default).
+	//
+	// - true: Uses the highest resolution stream published by the client as padding.
+	SubHighResolutionStream *bool `json:"SubHighResolutionStream,omitempty" xml:"SubHighResolutionStream,omitempty"`
+	// The task ID of the cloud recording task. Only a single ID is supported. The ID can contain letters, digits, underscores (_), and hyphens (-), and can be up to 55 bytes in length.
 	//
 	// example:
 	//
 	// 123
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	// templateId
+	// The template ID.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 567
-	TemplateId *string                               `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
-	Texts      []*StartCloudRecordShrinkRequestTexts `json:"Texts,omitempty" xml:"Texts,omitempty" type:"Repeated"`
+	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	// The global text watermarks.
+	Texts []*StartCloudRecordShrinkRequestTexts `json:"Texts,omitempty" xml:"Texts,omitempty" type:"Repeated"`
 }
 
 func (s StartCloudRecordShrinkRequest) String() string {
@@ -390,42 +457,64 @@ func (s *StartCloudRecordShrinkRequest) Validate() error {
 }
 
 type StartCloudRecordShrinkRequestBackgrounds struct {
+	// The transparency of the image.
+	//
 	// example:
 	//
 	// 0.9
 	Alpha *float64 `json:"Alpha,omitempty" xml:"Alpha,omitempty"`
+	// The crop mode of the image. Valid values:
+	//
+	// - **1**: Crops the image while maintaining the aspect ratio.
+	//
+	// - **2**: Maintains the aspect ratio and adds borders.
+	//
+	// - **3**: Stretches the image to fill the pane.
+	//
 	// example:
 	//
 	// 2
 	BackgroundCropMode *int32 `json:"BackgroundCropMode,omitempty" xml:"BackgroundCropMode,omitempty"`
+	// The height.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 0.2
 	Height *float64 `json:"Height,omitempty" xml:"Height,omitempty"`
+	// The z-axis layer.
+	//
 	// example:
 	//
 	// 0
 	Layer *int32 `json:"Layer,omitempty" xml:"Layer,omitempty"`
+	// The URL of the image.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// https://aliyun.com/123.jpg
 	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
+	// The width.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 0.2
 	Width *float64 `json:"Width,omitempty" xml:"Width,omitempty"`
+	// The x-coordinate.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 0.2
 	X *float64 `json:"X,omitempty" xml:"X,omitempty"`
+	// The y-coordinate.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -519,14 +608,20 @@ func (s *StartCloudRecordShrinkRequestBackgrounds) Validate() error {
 }
 
 type StartCloudRecordShrinkRequestBgColor struct {
+	// The blue component.
+	//
 	// example:
 	//
 	// 255
 	B *int32 `json:"B,omitempty" xml:"B,omitempty"`
+	// The green component.
+	//
 	// example:
 	//
 	// 255
 	G *int32 `json:"G,omitempty" xml:"G,omitempty"`
+	// The red component.
+	//
 	// example:
 	//
 	// 255
@@ -573,45 +668,86 @@ func (s *StartCloudRecordShrinkRequestBgColor) Validate() error {
 }
 
 type StartCloudRecordShrinkRequestClockWidgets struct {
+	// The transparency of the image.
+	//
 	// example:
 	//
 	// 0.9
 	Alpha *float64 `json:"Alpha,omitempty" xml:"Alpha,omitempty"`
+	// The transparency of the text box.
+	//
 	// example:
 	//
 	// 0.6
 	BoxAlpha *float64 `json:"BoxAlpha,omitempty" xml:"BoxAlpha,omitempty"`
+	// The border width of the text box.
+	//
 	// example:
 	//
 	// 5
-	BoxBorderw *int32                                             `json:"BoxBorderw,omitempty" xml:"BoxBorderw,omitempty"`
-	BoxColor   *StartCloudRecordShrinkRequestClockWidgetsBoxColor `json:"BoxColor,omitempty" xml:"BoxColor,omitempty" type:"Struct"`
+	BoxBorderw *int32 `json:"BoxBorderw,omitempty" xml:"BoxBorderw,omitempty"`
+	// The color of the text box.
+	BoxColor *StartCloudRecordShrinkRequestClockWidgetsBoxColor `json:"BoxColor,omitempty" xml:"BoxColor,omitempty" type:"Struct"`
+	// The font. Valid values:
+	//
+	// - **0**: Alibaba PuHuiTi Regular
+	//
+	// - **1**: Alibaba PuHuiTi Light
+	//
+	// - **2**: Alibaba PuHuiTi Medium
+	//
+	// - **3**: Alibaba PuHuiTi Bold
+	//
+	// - **4**: Alibaba PuHuiTi Heavy
+	//
+	// - **5**: Alimama ShuHeiTi
+	//
+	// - **6**: DingTalk JinBuTi
+	//
+	// - **7**: Alimama DaoLiTi
+	//
+	// - **8**: Alimama DongFangDaKai
+	//
+	// - **9**: Alimama FangYuanTi
+	//
 	// example:
 	//
 	// 0
-	Font      *int32                                              `json:"Font,omitempty" xml:"Font,omitempty"`
+	Font *int32 `json:"Font,omitempty" xml:"Font,omitempty"`
+	// The font color.
 	FontColor *StartCloudRecordShrinkRequestClockWidgetsFontColor `json:"FontColor,omitempty" xml:"FontColor,omitempty" type:"Struct"`
+	// The font size of the clock.
+	//
 	// example:
 	//
 	// 30
 	FontSize *int32 `json:"FontSize,omitempty" xml:"FontSize,omitempty"`
-	HasBox   *bool  `json:"HasBox,omitempty" xml:"HasBox,omitempty"`
+	// Specifies whether to display a text box.
+	HasBox *bool `json:"HasBox,omitempty" xml:"HasBox,omitempty"`
+	// The z-axis layer.
+	//
 	// example:
 	//
 	// 0
 	Layer *int32 `json:"Layer,omitempty" xml:"Layer,omitempty"`
+	// The x-coordinate.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 0.2
 	X *float64 `json:"X,omitempty" xml:"X,omitempty"`
+	// The y-coordinate.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 0.2
 	Y *float64 `json:"Y,omitempty" xml:"Y,omitempty"`
+	// The time zone.
+	//
 	// example:
 	//
 	// 8
@@ -749,14 +885,20 @@ func (s *StartCloudRecordShrinkRequestClockWidgets) Validate() error {
 }
 
 type StartCloudRecordShrinkRequestClockWidgetsBoxColor struct {
+	// The blue component.
+	//
 	// example:
 	//
 	// 255
 	B *int32 `json:"B,omitempty" xml:"B,omitempty"`
+	// The green component.
+	//
 	// example:
 	//
 	// 255
 	G *int32 `json:"G,omitempty" xml:"G,omitempty"`
+	// The red component.
+	//
 	// example:
 	//
 	// 255
@@ -803,14 +945,20 @@ func (s *StartCloudRecordShrinkRequestClockWidgetsBoxColor) Validate() error {
 }
 
 type StartCloudRecordShrinkRequestClockWidgetsFontColor struct {
+	// The blue component.
+	//
 	// example:
 	//
 	// 255
 	B *int32 `json:"B,omitempty" xml:"B,omitempty"`
+	// The green component.
+	//
 	// example:
 	//
 	// 255
 	G *int32 `json:"G,omitempty" xml:"G,omitempty"`
+	// The red component.
+	//
 	// example:
 	//
 	// 255
@@ -857,42 +1005,64 @@ func (s *StartCloudRecordShrinkRequestClockWidgetsFontColor) Validate() error {
 }
 
 type StartCloudRecordShrinkRequestImages struct {
+	// The transparency of the image.
+	//
 	// example:
 	//
 	// 0.9
 	Alpha *float64 `json:"Alpha,omitempty" xml:"Alpha,omitempty"`
+	// The height.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 0.2
 	Height *float64 `json:"Height,omitempty" xml:"Height,omitempty"`
+	// The crop mode of the image. Valid values:
+	//
+	// - **1**: Crops the image while maintaining the aspect ratio.
+	//
+	// - **2**: Maintains the aspect ratio and adds borders.
+	//
+	// - **3**: Stretches the image to fill the pane.
+	//
 	// example:
 	//
 	// 2
 	ImageCropMode *int32 `json:"ImageCropMode,omitempty" xml:"ImageCropMode,omitempty"`
+	// The z-axis layer.
+	//
 	// example:
 	//
 	// 0
 	Layer *int32 `json:"Layer,omitempty" xml:"Layer,omitempty"`
+	// The image URL. The image content cannot be updated during stream ingest.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// https://aliyun.com/123xxx.jpg
 	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
+	// The width.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 0.2
 	Width *float64 `json:"Width,omitempty" xml:"Width,omitempty"`
+	// The x-coordinate.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 0.2
 	X *float64 `json:"X,omitempty" xml:"X,omitempty"`
+	// The y-coordinate.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -986,34 +1156,71 @@ func (s *StartCloudRecordShrinkRequestImages) Validate() error {
 }
 
 type StartCloudRecordShrinkRequestPanes struct {
+	// The local background images for the pane.
 	Backgrounds []*StartCloudRecordShrinkRequestPanesBackgrounds `json:"Backgrounds,omitempty" xml:"Backgrounds,omitempty" type:"Repeated"`
-	Images      []*StartCloudRecordShrinkRequestPanesImages      `json:"Images,omitempty" xml:"Images,omitempty" type:"Repeated"`
+	// The local image watermarks for the pane.
+	Images []*StartCloudRecordShrinkRequestPanesImages `json:"Images,omitempty" xml:"Images,omitempty" type:"Repeated"`
+	// The crop mode of the image. Valid values:
+	//
+	// - **1**: Crops the image while maintaining the aspect ratio.
+	//
+	// - **2**: Maintains the aspect ratio and adds borders.
+	//
+	// - **3**: Stretches the image to fill the pane.
+	//
 	// example:
 	//
 	// 3
 	PaneCropMode *int32 `json:"PaneCropMode,omitempty" xml:"PaneCropMode,omitempty"`
-	// paneId
+	// The ID of the pane. The value starts from 0.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 0
-	PaneId                    *int32 `json:"PaneId,omitempty" xml:"PaneId,omitempty"`
-	ReservePaneForOfflineUser *bool  `json:"ReservePaneForOfflineUser,omitempty" xml:"ReservePaneForOfflineUser,omitempty"`
-	// source
+	PaneId *int32 `json:"PaneId,omitempty" xml:"PaneId,omitempty"`
+	// Specifies whether to reserve the pane as a placeholder for users who have not joined the meeting.
+	//
+	// Default value: true. A value of true indicates that if the specific user or wildcard user specified for the pane is offline, the pane is forcibly reserved as a placeholder. A value of false indicates that if the specific user or wildcard user specified for the pane is offline, video streams are displayed based on the automatic fill order.
+	ReservePaneForOfflineUser *bool `json:"ReservePaneForOfflineUser,omitempty" xml:"ReservePaneForOfflineUser,omitempty"`
+	// The media source of the pane. You can specify a user ID. To specify a specific user type, you can use wildcard configurations. The following wildcard types are supported:
+	//
+	// - **$ActiveSpeaker**: the current speaker in the channel.
+	//
+	// - **$ScreenShare**: the user who is sharing the screen. If multiple users are sharing their screens in the channel, the panes are filled in chronological order.
+	//
+	// example:
+	//
+	// 22
 	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
-	// sourceType
+	// The media type of the pane. Valid values:
+	//
+	// - **video**: The user camera or screen sharing stream. This is the default value.
+	//
+	// - **camera**: The camera stream.
+	//
+	// - **screen**: The screen sharing stream.
+	//
+	// - **whiteboard**: The whiteboard.
 	//
 	// example:
 	//
 	// video
-	SourceType *string                                    `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
-	Texts      []*StartCloudRecordShrinkRequestPanesTexts `json:"Texts,omitempty" xml:"Texts,omitempty" type:"Repeated"`
+	SourceType *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
+	// The local text watermarks for the pane.
+	Texts []*StartCloudRecordShrinkRequestPanesTexts `json:"Texts,omitempty" xml:"Texts,omitempty" type:"Repeated"`
+	// The fill order when SourceType is set to video. Valid values:
+	//
+	// - screenFirst: Screen sharing takes precedence. This is the default value.
+	//
+	// - cameraFirst: The camera takes precedence.
+	//
 	// example:
 	//
 	// cameraFirst
-	VideoOrder *string                                       `json:"VideoOrder,omitempty" xml:"VideoOrder,omitempty"`
+	VideoOrder *string `json:"VideoOrder,omitempty" xml:"VideoOrder,omitempty"`
+	// The whiteboard configurations.
 	Whiteboard *StartCloudRecordShrinkRequestPanesWhiteboard `json:"Whiteboard,omitempty" xml:"Whiteboard,omitempty" type:"Struct"`
 }
 
@@ -1152,46 +1359,76 @@ func (s *StartCloudRecordShrinkRequestPanes) Validate() error {
 }
 
 type StartCloudRecordShrinkRequestPanesBackgrounds struct {
+	// The transparency of the image.
+	//
 	// example:
 	//
 	// 0.9
 	Alpha *float64 `json:"Alpha,omitempty" xml:"Alpha,omitempty"`
+	// The condition for displaying the background image. Valid values:
+	//
+	// - streamOnly: The background image is displayed when the current user has a video stream. This is the default value.
+	//
+	// - backup: The background image is displayed when the current user does not have a video stream.
+	//
+	// - always: The background image is always displayed.
+	//
 	// example:
 	//
 	// backup
 	Display *string `json:"Display,omitempty" xml:"Display,omitempty"`
+	// The height.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 0.2
 	Height *float64 `json:"Height,omitempty" xml:"Height,omitempty"`
+	// The z-axis layer.
+	//
 	// example:
 	//
 	// 0
 	Layer *int32 `json:"Layer,omitempty" xml:"Layer,omitempty"`
+	// The crop mode of the image. Valid values:
+	//
+	// - **1**: Crops the image while maintaining the aspect ratio.
+	//
+	// - **2**: Maintains the aspect ratio and adds borders.
+	//
+	// - **3**: Stretches the image to fill the pane.
+	//
 	// example:
 	//
 	// 2
 	PaneBackgroundCropMode *int32 `json:"PaneBackgroundCropMode,omitempty" xml:"PaneBackgroundCropMode,omitempty"`
+	// The URL of the image.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// https://aliyun.com/123xx.jpg
 	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
+	// The width.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 0.2
+	// 0.3
 	Width *float64 `json:"Width,omitempty" xml:"Width,omitempty"`
+	// The x-coordinate.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 0.2
 	X *float64 `json:"X,omitempty" xml:"X,omitempty"`
+	// The y-coordinate.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -1294,46 +1531,76 @@ func (s *StartCloudRecordShrinkRequestPanesBackgrounds) Validate() error {
 }
 
 type StartCloudRecordShrinkRequestPanesImages struct {
+	// The transparency of the image.
+	//
 	// example:
 	//
 	// 0.9
 	Alpha *float64 `json:"Alpha,omitempty" xml:"Alpha,omitempty"`
+	// The condition for displaying the watermark. Valid values:
+	//
+	// - streamOnly: The watermark is displayed when the current user has a video stream. This is the default value.
+	//
+	// - backup: The watermark is displayed when the current user does not have a video stream.
+	//
+	// - always: The watermark is always displayed.
+	//
 	// example:
 	//
 	// backup
 	Display *string `json:"Display,omitempty" xml:"Display,omitempty"`
+	// The height.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 0.2
 	Height *float64 `json:"Height,omitempty" xml:"Height,omitempty"`
+	// The z-axis layer.
+	//
 	// example:
 	//
 	// 0
 	Layer *int32 `json:"Layer,omitempty" xml:"Layer,omitempty"`
+	// The crop mode of the image. Valid values:
+	//
+	// - **1**: Crops the image while maintaining the aspect ratio.
+	//
+	// - **2**: Maintains the aspect ratio and adds borders.
+	//
+	// - **3**: Stretches the image to fill the pane.
+	//
 	// example:
 	//
 	// 2
 	PaneImageCropMode *int32 `json:"PaneImageCropMode,omitempty" xml:"PaneImageCropMode,omitempty"`
+	// The URL of the image. The image content cannot be updated during stream ingest.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// https://aliyun.com/123xx.jpg
 	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
+	// The width.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 0.2
 	Width *float64 `json:"Width,omitempty" xml:"Width,omitempty"`
+	// The x-coordinate.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 0.2
 	X *float64 `json:"X,omitempty" xml:"X,omitempty"`
+	// The y-coordinate.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -1436,49 +1703,98 @@ func (s *StartCloudRecordShrinkRequestPanesImages) Validate() error {
 }
 
 type StartCloudRecordShrinkRequestPanesTexts struct {
+	// The transparency of the watermark.
+	//
 	// example:
 	//
 	// 0.9
 	Alpha *float64 `json:"Alpha,omitempty" xml:"Alpha,omitempty"`
+	// The transparency of the text box.
+	//
 	// example:
 	//
 	// 0.6
 	BoxAlpha *float64 `json:"BoxAlpha,omitempty" xml:"BoxAlpha,omitempty"`
+	// The border width of the text box.
+	//
 	// example:
 	//
 	// 5
-	BoxBorderw *int32                                           `json:"BoxBorderw,omitempty" xml:"BoxBorderw,omitempty"`
-	BoxColor   *StartCloudRecordShrinkRequestPanesTextsBoxColor `json:"BoxColor,omitempty" xml:"BoxColor,omitempty" type:"Struct"`
+	BoxBorderw *int32 `json:"BoxBorderw,omitempty" xml:"BoxBorderw,omitempty"`
+	// The color of the text box.
+	BoxColor *StartCloudRecordShrinkRequestPanesTextsBoxColor `json:"BoxColor,omitempty" xml:"BoxColor,omitempty" type:"Struct"`
+	// The condition for displaying the watermark. Valid values:
+	//
+	// - streamOnly: The watermark is displayed when the current user has a video stream. This is the default value.
+	//
+	// - backup: The watermark is displayed when the current user does not have a video stream.
+	//
+	// - always: The watermark is always displayed.
+	//
 	// example:
 	//
 	// backup
 	Display *string `json:"Display,omitempty" xml:"Display,omitempty"`
+	// The font. Valid values:
+	//
+	// - **0**: Alibaba PuHuiTi Regular
+	//
+	// - **1**: Alibaba PuHuiTi Light
+	//
+	// - **2**: Alibaba PuHuiTi Medium
+	//
+	// - **3**: Alibaba PuHuiTi Bold
+	//
+	// - **4**: Alibaba PuHuiTi Heavy
+	//
+	// - **5**: Alimama ShuHeiTi
+	//
+	// - **6**: DingTalk JinBuTi
+	//
+	// - **7**: Alimama DaoLiTi
+	//
+	// - **8**: Alimama DongFangDaKai
+	//
+	// - **9**: Alimama FangYuanTi
+	//
 	// example:
 	//
 	// 0
-	Font      *int32                                            `json:"Font,omitempty" xml:"Font,omitempty"`
+	Font *int32 `json:"Font,omitempty" xml:"Font,omitempty"`
+	// The font color.
 	FontColor *StartCloudRecordShrinkRequestPanesTextsFontColor `json:"FontColor,omitempty" xml:"FontColor,omitempty" type:"Struct"`
+	// The font size.
+	//
 	// example:
 	//
 	// 36
 	FontSize *int32 `json:"FontSize,omitempty" xml:"FontSize,omitempty"`
-	HasBox   *bool  `json:"HasBox,omitempty" xml:"HasBox,omitempty"`
+	// Specifies whether to display a text box.
+	HasBox *bool `json:"HasBox,omitempty" xml:"HasBox,omitempty"`
+	// The z-axis layer.
+	//
 	// example:
 	//
 	// 0
 	Layer *int32 `json:"Layer,omitempty" xml:"Layer,omitempty"`
+	// The content of the watermark.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 文字水印
+	// Text watermark
 	Texture *string `json:"Texture,omitempty" xml:"Texture,omitempty"`
+	// The x-coordinate.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 0.2
 	X *float64 `json:"X,omitempty" xml:"X,omitempty"`
+	// The y-coordinate.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -1627,14 +1943,20 @@ func (s *StartCloudRecordShrinkRequestPanesTexts) Validate() error {
 }
 
 type StartCloudRecordShrinkRequestPanesTextsBoxColor struct {
+	// The blue component.
+	//
 	// example:
 	//
 	// 255
 	B *int32 `json:"B,omitempty" xml:"B,omitempty"`
+	// The green component.
+	//
 	// example:
 	//
 	// 255
 	G *int32 `json:"G,omitempty" xml:"G,omitempty"`
+	// The red component.
+	//
 	// example:
 	//
 	// 255
@@ -1681,14 +2003,20 @@ func (s *StartCloudRecordShrinkRequestPanesTextsBoxColor) Validate() error {
 }
 
 type StartCloudRecordShrinkRequestPanesTextsFontColor struct {
+	// The blue component.
+	//
 	// example:
 	//
 	// 255
 	B *int32 `json:"B,omitempty" xml:"B,omitempty"`
+	// The green component.
+	//
 	// example:
 	//
 	// 255
 	G *int32 `json:"G,omitempty" xml:"G,omitempty"`
+	// The red component.
+	//
 	// example:
 	//
 	// 255
@@ -1735,6 +2063,8 @@ func (s *StartCloudRecordShrinkRequestPanesTextsFontColor) Validate() error {
 }
 
 type StartCloudRecordShrinkRequestPanesWhiteboard struct {
+	// The ID of the whiteboard. Default value: default.
+	//
 	// example:
 	//
 	// default
@@ -1763,14 +2093,20 @@ func (s *StartCloudRecordShrinkRequestPanesWhiteboard) Validate() error {
 }
 
 type StartCloudRecordShrinkRequestRegionColor struct {
+	// The blue component.
+	//
 	// example:
 	//
 	// 255
 	B *int32 `json:"B,omitempty" xml:"B,omitempty"`
+	// The green component.
+	//
 	// example:
 	//
 	// 255
 	G *int32 `json:"G,omitempty" xml:"G,omitempty"`
+	// The red component.
+	//
 	// example:
 	//
 	// 255
@@ -1817,7 +2153,7 @@ func (s *StartCloudRecordShrinkRequestRegionColor) Validate() error {
 }
 
 type StartCloudRecordShrinkRequestStorageConfig struct {
-	// accessKey
+	// The AccessKey. Make sure that the RAM user associated with the AccessKey pair is granted the **write*	- permissions on the object storage service of the corresponding cloud provider. Otherwise, the result files fail to be written.
 	//
 	// This parameter is required.
 	//
@@ -1825,7 +2161,7 @@ type StartCloudRecordShrinkRequestStorageConfig struct {
 	//
 	// LTAX***
 	AccessKey *string `json:"AccessKey,omitempty" xml:"AccessKey,omitempty"`
-	// bucket
+	// The name of the bucket.
 	//
 	// This parameter is required.
 	//
@@ -1833,11 +2169,97 @@ type StartCloudRecordShrinkRequestStorageConfig struct {
 	//
 	// test-bucket-for-recording
 	Bucket *string `json:"Bucket,omitempty" xml:"Bucket,omitempty"`
+	// The private endpoint for Apsara Stack.
+	//
 	// example:
 	//
 	// https://aliyuns.dalian.oss.com
 	Endpoint *string `json:"Endpoint,omitempty" xml:"Endpoint,omitempty"`
-	// region
+	// The storage region.
+	//
+	// | Region | Alibaba Cloud OSS |
+	//
+	// |--------|------------|
+	//
+	// | 0 | CN_Hangzhou |
+	//
+	// | 1 | CN_Shanghai |
+	//
+	// | 2 | CN_Qingdao |
+	//
+	// | 3 | CN_Beijing |
+	//
+	// | 4 | CN_Zhangjiakou |
+	//
+	// | 5 | CN_Huhehaote |
+	//
+	// | 6 | CN_Shenzhen |
+	//
+	// | 7 | CN_Hongkong |
+	//
+	// | 8 | US_West_1 |
+	//
+	// | 9 | US_East_1 |
+	//
+	// | 10 | AP_Southeast_1 |
+	//
+	// | 11 | AP_Southeast_2 (Deprecated. Do not use.) |
+	//
+	// | 12 | AP_Southeast_3 |
+	//
+	// | 13 | AP_Southeast_5 |
+	//
+	// | 14 | AP_Northeast_1 |
+	//
+	// | 15 | AP_South_1 (Deprecated. Do not use.) |
+	//
+	// | 16 | EU_Central_1 |
+	//
+	// | 17 | EU_West_1 |
+	//
+	// | 18 | EU_East_1(ME_East_1) |
+	//
+	// | 19 | AP_Southeast_6 |
+	//
+	// | 20 | CN_Heyuan |
+	//
+	// | 21 | CN_Guangzhou |
+	//
+	// | 22 | CN_Chengdu |
+	//
+	// | 23 | CN_Nanjing |
+	//
+	// | 24 | CN_Fuzhou |
+	//
+	// | 25 | CN_Wulanchabu |
+	//
+	// | 26 | CN_Northeast_2 |
+	//
+	// | 27 | CN_Southeast_7 |
+	//
+	// | 28 | CN_Wuhan_LR |
+	//
+	// | 100 | oss-cn-hzjbp |
+	//
+	// | 101 | oss-cn-shanghai-finance-1 |
+	//
+	// | 102 | oss-cn-shenzhen-finance-1 |
+	//
+	// | 103 | oss-cn-beijing-finance-1 |
+	//
+	// | 104 | oss-cn-hzfinance |
+	//
+	// | 105 | oss-cn-shanghai-finance-1-pub |
+	//
+	// | 106 | oss-cn-szfinance |
+	//
+	// | 107 | oss-cn-beijing-finance-1-pub |
+	//
+	// | Region | Apsara Stack OSS |
+	//
+	// |--------|------------|
+	//
+	// | 0 | default |
 	//
 	// This parameter is required.
 	//
@@ -1853,7 +2275,15 @@ type StartCloudRecordShrinkRequestStorageConfig struct {
 	//
 	// APb6qWYEzKtYxE***
 	SecretKey *string `json:"SecretKey,omitempty" xml:"SecretKey,omitempty"`
-	// vendor
+	// The storage platform. Valid values:
+	//
+	// | vendor | Object storage service | Remarks |
+	//
+	// |--------|---------|---------|
+	//
+	// | 1 | AliYun OSS | Alibaba Cloud |
+	//
+	// | 2 | Apsara Stack OSS | Alibaba Cloud Apsara Stack |
 	//
 	// This parameter is required.
 	//
@@ -1930,45 +2360,86 @@ func (s *StartCloudRecordShrinkRequestStorageConfig) Validate() error {
 }
 
 type StartCloudRecordShrinkRequestTexts struct {
+	// The transparency of the watermark.
+	//
 	// example:
 	//
 	// 0.1
 	Alpha *float64 `json:"Alpha,omitempty" xml:"Alpha,omitempty"`
+	// The transparency of the text box.
+	//
 	// example:
 	//
 	// 0.6
 	BoxAlpha *float64 `json:"BoxAlpha,omitempty" xml:"BoxAlpha,omitempty"`
+	// The border width of the text box.
+	//
 	// example:
 	//
 	// 5
-	BoxBorderw *int32                                      `json:"BoxBorderw,omitempty" xml:"BoxBorderw,omitempty"`
-	BoxColor   *StartCloudRecordShrinkRequestTextsBoxColor `json:"BoxColor,omitempty" xml:"BoxColor,omitempty" type:"Struct"`
+	BoxBorderw *int32 `json:"BoxBorderw,omitempty" xml:"BoxBorderw,omitempty"`
+	// The color of the text box.
+	BoxColor *StartCloudRecordShrinkRequestTextsBoxColor `json:"BoxColor,omitempty" xml:"BoxColor,omitempty" type:"Struct"`
+	// The font. Valid values:
+	//
+	// - **0**: Alibaba PuHuiTi Regular
+	//
+	// - **1**: Alibaba PuHuiTi Light
+	//
+	// - **2**: Alibaba PuHuiTi Medium
+	//
+	// - **3**: Alibaba PuHuiTi Bold
+	//
+	// - **4**: Alibaba PuHuiTi Heavy
+	//
+	// - **5**: Alimama ShuHeiTi
+	//
+	// - **6**: DingTalk JinBuTi
+	//
+	// - **7**: Alimama DaoLiTi
+	//
+	// - **8**: Alimama DongFangDaKai
+	//
+	// - **9**: Alimama FangYuanTi
+	//
 	// example:
 	//
 	// 0
-	Font      *int32                                       `json:"Font,omitempty" xml:"Font,omitempty"`
+	Font *int32 `json:"Font,omitempty" xml:"Font,omitempty"`
+	// The font color.
 	FontColor *StartCloudRecordShrinkRequestTextsFontColor `json:"FontColor,omitempty" xml:"FontColor,omitempty" type:"Struct"`
+	// The font size.
+	//
 	// example:
 	//
 	// 36
 	FontSize *int32 `json:"FontSize,omitempty" xml:"FontSize,omitempty"`
-	HasBox   *bool  `json:"HasBox,omitempty" xml:"HasBox,omitempty"`
+	// Specifies whether to display a text box.
+	HasBox *bool `json:"HasBox,omitempty" xml:"HasBox,omitempty"`
+	// The z-axis layer.
+	//
 	// example:
 	//
 	// 0
 	Layer *int32 `json:"Layer,omitempty" xml:"Layer,omitempty"`
+	// The content of the watermark.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 文字水印
+	// Text watermark
 	Texture *string `json:"Texture,omitempty" xml:"Texture,omitempty"`
+	// The x-coordinate.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 0.2
 	X *float64 `json:"X,omitempty" xml:"X,omitempty"`
+	// The y-coordinate.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -2108,14 +2579,20 @@ func (s *StartCloudRecordShrinkRequestTexts) Validate() error {
 }
 
 type StartCloudRecordShrinkRequestTextsBoxColor struct {
+	// The blue component.
+	//
 	// example:
 	//
 	// 255
 	B *int32 `json:"B,omitempty" xml:"B,omitempty"`
+	// The green component.
+	//
 	// example:
 	//
 	// 255
 	G *int32 `json:"G,omitempty" xml:"G,omitempty"`
+	// The red component.
+	//
 	// example:
 	//
 	// 255
@@ -2162,14 +2639,20 @@ func (s *StartCloudRecordShrinkRequestTextsBoxColor) Validate() error {
 }
 
 type StartCloudRecordShrinkRequestTextsFontColor struct {
+	// The blue component.
+	//
 	// example:
 	//
 	// 255
 	B *int32 `json:"B,omitempty" xml:"B,omitempty"`
+	// The green component.
+	//
 	// example:
 	//
 	// 255
 	G *int32 `json:"G,omitempty" xml:"G,omitempty"`
+	// The red component.
+	//
 	// example:
 	//
 	// 255

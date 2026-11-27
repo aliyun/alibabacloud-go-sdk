@@ -30,22 +30,32 @@ type DescribeQoeMetricDataRequest struct {
 	//
 	// testappid
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// Channel ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// testid
 	ChannelId *string `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
+	// Channel Creation Time. Supports querying data from the last 30 days. Represented as a UNIX timestamp in seconds.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1614936817
 	CreatedTs *int64 `json:"CreatedTs,omitempty" xml:"CreatedTs,omitempty"`
+	// Channel release time, represented as a UNIX timestamp in seconds. An empty parameter indicates retrieving data up to the current time.
+	//
+	// > If the provided channel release time exceeds the actual release time, data from the Creation Time to the actual release time will be returned.
+	//
 	// example:
 	//
 	// 1614936817
 	DestroyedTs *int64 `json:"DestroyedTs,omitempty" xml:"DestroyedTs,omitempty"`
+	// User ID.
+	//
 	// This parameter is required.
 	//
 	// example:

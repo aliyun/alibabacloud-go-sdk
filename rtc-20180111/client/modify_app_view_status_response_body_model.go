@@ -14,6 +14,8 @@ type iModifyAppViewStatusResponseBody interface {
 }
 
 type ModifyAppViewStatusResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 94D9A316-9750-5928-B18C-59DF182F6BF7

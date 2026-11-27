@@ -18,6 +18,8 @@ type iDeleteAutoLiveStreamRuleRequest interface {
 }
 
 type DeleteAutoLiveStreamRuleRequest struct {
+	// The application ID. You can create and query it in the console.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -25,6 +27,8 @@ type DeleteAutoLiveStreamRuleRequest struct {
 	// eo85****
 	AppId   *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
 	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The ID of the bypass rule. You can query the ID in the console or by calling the [DescribeAutoLiveStreamRule](https://help.aliyun.com/document_detail/353198.html) operation.
+	//
 	// This parameter is required.
 	//
 	// example:

@@ -16,12 +16,16 @@ type iCreateCloudNotePhrasesShrinkRequest interface {
 }
 
 type CreateCloudNotePhrasesShrinkRequest struct {
+	// The application ID. You can create and query application IDs in the console. Only a single ID is supported.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ac7N****
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The hotword parameter.
+	//
 	// This parameter is required.
 	PhraseShrink *string `json:"Phrase,omitempty" xml:"Phrase,omitempty"`
 }

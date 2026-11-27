@@ -54,53 +54,118 @@ type iStartStreamingOutRequest interface {
 }
 
 type StartStreamingOutRequest struct {
+	// The annotation switch.
+	//
 	// example:
 	//
 	// disable
 	Annotation *string `json:"Annotation,omitempty" xml:"Annotation,omitempty"`
+	// The application ID. You can create and query the ID in the console. Only a single ID is supported.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// eo85****
-	AppId       *string                                `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The background image.
 	Backgrounds []*StartStreamingOutRequestBackgrounds `json:"Backgrounds,omitempty" xml:"Backgrounds,omitempty" type:"Repeated"`
-	BgColor     *StartStreamingOutRequestBgColor       `json:"BgColor,omitempty" xml:"BgColor,omitempty" type:"Struct"`
+	// The global background color.
+	BgColor *StartStreamingOutRequestBgColor `json:"BgColor,omitempty" xml:"BgColor,omitempty" type:"Struct"`
+	// The ID of an existing channel. Only a single ID is supported.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// testid
-	ChannelId    *string                                 `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
+	ChannelId *string `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
+	// The global clock watermark.
 	ClockWidgets []*StartStreamingOutRequestClockWidgets `json:"ClockWidgets,omitempty" xml:"ClockWidgets,omitempty" type:"Repeated"`
+	// The crop mode. Valid values:
+	//
+	// - **1**: Crop the image while maintaining the aspect ratio.
+	//
+	// - **2**: Maintain the aspect ratio and add borders (default).
+	//
+	// - **3**: Stretch the image to fill the pane.
+	//
 	// example:
 	//
 	// 2
-	CropMode                    *int32                                        `json:"CropMode,omitempty" xml:"CropMode,omitempty"`
-	Images                      []*StartStreamingOutRequestImages             `json:"Images,omitempty" xml:"Images,omitempty" type:"Repeated"`
-	LayoutSpecifiedUsers        *StartStreamingOutRequestLayoutSpecifiedUsers `json:"LayoutSpecifiedUsers,omitempty" xml:"LayoutSpecifiedUsers,omitempty" type:"Struct"`
-	Panes                       []*StartStreamingOutRequestPanes              `json:"Panes,omitempty" xml:"Panes,omitempty" type:"Repeated"`
-	RegionColor                 *StartStreamingOutRequestRegionColor          `json:"RegionColor,omitempty" xml:"RegionColor,omitempty" type:"Struct"`
-	ReservePaneForNoCameraUser  *bool                                         `json:"ReservePaneForNoCameraUser,omitempty" xml:"ReservePaneForNoCameraUser,omitempty"`
-	ShowDefaultBackgroundOnMute *bool                                         `json:"ShowDefaultBackgroundOnMute,omitempty" xml:"ShowDefaultBackgroundOnMute,omitempty"`
-	SpecMixedUserList           []*string                                     `json:"SpecMixedUserList,omitempty" xml:"SpecMixedUserList,omitempty" type:"Repeated"`
-	StartWithoutChannel         *bool                                         `json:"StartWithoutChannel,omitempty" xml:"StartWithoutChannel,omitempty"`
+	CropMode *int32 `json:"CropMode,omitempty" xml:"CropMode,omitempty"`
+	// The global image watermark.
+	//
+	// example:
+	//
+	// 30
+	Images []*StartStreamingOutRequestImages `json:"Images,omitempty" xml:"Images,omitempty" type:"Repeated"`
+	// The specified user list for layout generation, including Blacklist/Whitelist.
+	//
+	// Whitelist: specifies the users whose video streams are subscribed to in the channel.
+	//
+	// 	- After the settings are applied, automatic padding is performed in sequence based on this list.
+	//
+	// 	- When switching between multiple layouts in a template, only users in the whitelist are considered.
+	//
+	// Blacklist: specifies the users whose video streams are not subscribed to in the channel.
+	//
+	// 	- When switching between multiple layouts in a template, only users not in the blacklist are considered.
+	LayoutSpecifiedUsers *StartStreamingOutRequestLayoutSpecifiedUsers `json:"LayoutSpecifiedUsers,omitempty" xml:"LayoutSpecifiedUsers,omitempty" type:"Struct"`
+	// The pane settings.
+	//
+	// example:
+	//
+	// eo85****
+	Panes []*StartStreamingOutRequestPanes `json:"Panes,omitempty" xml:"Panes,omitempty" type:"Repeated"`
+	// The global pane background color.
+	RegionColor *StartStreamingOutRequestRegionColor `json:"RegionColor,omitempty" xml:"RegionColor,omitempty" type:"Struct"`
+	// Specifies whether to reserve a pane placeholder for users who do not push camera streams. Default value: true. A value of true indicates that a pane is reserved when a user does not push a camera stream. A value of false indicates that no pane is reserved.
+	ReservePaneForNoCameraUser *bool `json:"ReservePaneForNoCameraUser,omitempty" xml:"ReservePaneForNoCameraUser,omitempty"`
+	// Specifies whether to display the default background image of a pane when the user is muted. Valid values:
+	//
+	// - true: Displays the default background image (default).
+	//
+	// - false: Does not display the default background image, but the configured local pane background image is still displayed.
+	ShowDefaultBackgroundOnMute *bool `json:"ShowDefaultBackgroundOnMute,omitempty" xml:"ShowDefaultBackgroundOnMute,omitempty"`
+	// The list of specified users for audio mixing.
+	SpecMixedUserList []*string `json:"SpecMixedUserList,omitempty" xml:"SpecMixedUserList,omitempty" type:"Repeated"`
+	// Specifies whether to allow starting the task when the channel does not exist. Valid values:
+	//
+	// - true: Yes.
+	//
+	// - false: No (default).
+	StartWithoutChannel *bool `json:"StartWithoutChannel,omitempty" xml:"StartWithoutChannel,omitempty"`
+	// The wait time for the task when the channel is not started, in seconds. This parameter is valid only when the StartWithoutChannel parameter is set to true. Valid values: 30 to 120.
+	//
 	// example:
 	//
 	// 30
 	StartWithoutChannelWaitTime *int32 `json:"StartWithoutChannelWaitTime,omitempty" xml:"StartWithoutChannelWaitTime,omitempty"`
-	SubHighResolutionStream     *bool  `json:"SubHighResolutionStream,omitempty" xml:"SubHighResolutionStream,omitempty"`
+	// Specifies whether to subscribe to high resolution streams. Valid values:
+	//
+	// - false: Subscribes to streams of different resolutions based on the pane area (default).
+	//
+	// - true: Uses the highest resolution stream pushed by the client for padding by default.
+	SubHighResolutionStream *bool `json:"SubHighResolutionStream,omitempty" xml:"SubHighResolutionStream,omitempty"`
+	// The task ID of the bypass streaming task. Only a single ID is supported. The ID can contain uppercase and lowercase letters, digits, underscores (_), and hyphens (-), and can be up to 55 bytes in length. If you do not specify this parameter, the system automatically generates a task ID.
+	//
 	// example:
 	//
 	// 123
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// The template ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 567
-	TemplateId *string                          `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
-	Texts      []*StartStreamingOutRequestTexts `json:"Texts,omitempty" xml:"Texts,omitempty" type:"Repeated"`
+	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	// The global text watermark.
+	Texts []*StartStreamingOutRequestTexts `json:"Texts,omitempty" xml:"Texts,omitempty" type:"Repeated"`
+	// The live stream ingest URL. Only a single URL is supported. This URL cannot be used by multiple tasks at the same time.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -371,42 +436,64 @@ func (s *StartStreamingOutRequest) Validate() error {
 }
 
 type StartStreamingOutRequestBackgrounds struct {
+	// The transparency.
+	//
 	// example:
 	//
 	// 0.9
 	Alpha *float64 `json:"Alpha,omitempty" xml:"Alpha,omitempty"`
+	// The crop mode. Valid values:
+	//
+	// - **1**: Crop while maintaining the aspect ratio.
+	//
+	// - **2**: Maintain the aspect ratio and add borders.
+	//
+	// - **3**: Stretch to fill.
+	//
 	// example:
 	//
 	// 2
 	BackgroundCropMode *int32 `json:"BackgroundCropMode,omitempty" xml:"BackgroundCropMode,omitempty"`
+	// The height.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 0.2
 	Height *float64 `json:"Height,omitempty" xml:"Height,omitempty"`
+	// The z-axis layer.
+	//
 	// example:
 	//
 	// 0
 	Layer *int32 `json:"Layer,omitempty" xml:"Layer,omitempty"`
+	// The image URL.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// https://aliyun.com/123.jpg
 	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
+	// The width.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 0.2
 	Width *float64 `json:"Width,omitempty" xml:"Width,omitempty"`
+	// The x-coordinate.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 0.2
 	X *float64 `json:"X,omitempty" xml:"X,omitempty"`
+	// The y-coordinate.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -500,14 +587,20 @@ func (s *StartStreamingOutRequestBackgrounds) Validate() error {
 }
 
 type StartStreamingOutRequestBgColor struct {
+	// The B value.
+	//
 	// example:
 	//
 	// 255
 	B *int32 `json:"B,omitempty" xml:"B,omitempty"`
+	// The G value.
+	//
 	// example:
 	//
 	// 255
 	G *int32 `json:"G,omitempty" xml:"G,omitempty"`
+	// The R value.
+	//
 	// example:
 	//
 	// 255
@@ -554,45 +647,86 @@ func (s *StartStreamingOutRequestBgColor) Validate() error {
 }
 
 type StartStreamingOutRequestClockWidgets struct {
+	// The transparency.
+	//
 	// example:
 	//
 	// 0.9
 	Alpha *float64 `json:"Alpha,omitempty" xml:"Alpha,omitempty"`
+	// The transparency of the rectangle box.
+	//
 	// example:
 	//
 	// 0.6
 	BoxAlpha *float64 `json:"BoxAlpha,omitempty" xml:"BoxAlpha,omitempty"`
+	// The border width of the rectangle box.
+	//
 	// example:
 	//
 	// 5
-	BoxBorderw *int32                                        `json:"BoxBorderw,omitempty" xml:"BoxBorderw,omitempty"`
-	BoxColor   *StartStreamingOutRequestClockWidgetsBoxColor `json:"BoxColor,omitempty" xml:"BoxColor,omitempty" type:"Struct"`
+	BoxBorderw *int32 `json:"BoxBorderw,omitempty" xml:"BoxBorderw,omitempty"`
+	// The color of the rectangle box.
+	BoxColor *StartStreamingOutRequestClockWidgetsBoxColor `json:"BoxColor,omitempty" xml:"BoxColor,omitempty" type:"Struct"`
+	// The font. Valid values:
+	//
+	// - **0**: Alibaba PuHuiTi Regular
+	//
+	// - **1**: Alibaba PuHuiTi Light
+	//
+	// - **2**: Alibaba PuHuiTi Medium
+	//
+	// - **3**: Alibaba PuHuiTi Bold
+	//
+	// - **4**: Alibaba PuHuiTi Heavy
+	//
+	// - **5**: Alimama ShuHeiTi
+	//
+	// - **6**: DingTalk JinBuTi
+	//
+	// - **7**: Alimama DaoLiTi
+	//
+	// - **8**: Alimama DongFangDaKai
+	//
+	// - **9**: Alimama FangYuanTi
+	//
 	// example:
 	//
 	// 0
-	Font      *int32                                         `json:"Font,omitempty" xml:"Font,omitempty"`
+	Font *int32 `json:"Font,omitempty" xml:"Font,omitempty"`
+	// The font color.
 	FontColor *StartStreamingOutRequestClockWidgetsFontColor `json:"FontColor,omitempty" xml:"FontColor,omitempty" type:"Struct"`
+	// The font size of the clock.
+	//
 	// example:
 	//
 	// 30
 	FontSize *int32 `json:"FontSize,omitempty" xml:"FontSize,omitempty"`
-	HasBox   *bool  `json:"HasBox,omitempty" xml:"HasBox,omitempty"`
+	// Specifies whether a rectangle box is required.
+	HasBox *bool `json:"HasBox,omitempty" xml:"HasBox,omitempty"`
+	// The z-axis layer.
+	//
 	// example:
 	//
 	// 0
 	Layer *int32 `json:"Layer,omitempty" xml:"Layer,omitempty"`
+	// The x-coordinate.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 0.2
 	X *float64 `json:"X,omitempty" xml:"X,omitempty"`
+	// The y-coordinate.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 0.2
 	Y *float64 `json:"Y,omitempty" xml:"Y,omitempty"`
+	// The time zone.
+	//
 	// example:
 	//
 	// 8
@@ -730,14 +864,20 @@ func (s *StartStreamingOutRequestClockWidgets) Validate() error {
 }
 
 type StartStreamingOutRequestClockWidgetsBoxColor struct {
+	// The B value.
+	//
 	// example:
 	//
 	// 255
 	B *int32 `json:"B,omitempty" xml:"B,omitempty"`
+	// The G value.
+	//
 	// example:
 	//
 	// 255
 	G *int32 `json:"G,omitempty" xml:"G,omitempty"`
+	// The R value.
+	//
 	// example:
 	//
 	// 255
@@ -784,14 +924,20 @@ func (s *StartStreamingOutRequestClockWidgetsBoxColor) Validate() error {
 }
 
 type StartStreamingOutRequestClockWidgetsFontColor struct {
+	// The B value.
+	//
 	// example:
 	//
 	// 255
 	B *int32 `json:"B,omitempty" xml:"B,omitempty"`
+	// The G value.
+	//
 	// example:
 	//
 	// 255
 	G *int32 `json:"G,omitempty" xml:"G,omitempty"`
+	// The R value.
+	//
 	// example:
 	//
 	// 255
@@ -838,42 +984,64 @@ func (s *StartStreamingOutRequestClockWidgetsFontColor) Validate() error {
 }
 
 type StartStreamingOutRequestImages struct {
+	// The transparency.
+	//
 	// example:
 	//
 	// 0.9
 	Alpha *float64 `json:"Alpha,omitempty" xml:"Alpha,omitempty"`
+	// The height.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 0.2
 	Height *float64 `json:"Height,omitempty" xml:"Height,omitempty"`
+	// The crop mode. Valid values:
+	//
+	// - **1**: Crop while maintaining the aspect ratio.
+	//
+	// - **2**: Maintain the aspect ratio and add borders.
+	//
+	// - **3**: Stretch to fill.
+	//
 	// example:
 	//
 	// 2
 	ImageCropMode *int32 `json:"ImageCropMode,omitempty" xml:"ImageCropMode,omitempty"`
+	// The z-axis layer.
+	//
 	// example:
 	//
 	// 0
 	Layer *int32 `json:"Layer,omitempty" xml:"Layer,omitempty"`
+	// The image URL. The image content cannot be updated during stream ingest.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// https://aliyun.com/123xxx.jpg
 	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
+	// The width.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 0.2
 	Width *float64 `json:"Width,omitempty" xml:"Width,omitempty"`
+	// The x-coordinate.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 0.2
 	X *float64 `json:"X,omitempty" xml:"X,omitempty"`
+	// The y-coordinate.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -967,9 +1135,21 @@ func (s *StartStreamingOutRequestImages) Validate() error {
 }
 
 type StartStreamingOutRequestLayoutSpecifiedUsers struct {
+	// The list of specified user IDs.
+	//
 	// This parameter is required.
 	Ids []*string `json:"Ids,omitempty" xml:"Ids,omitempty" type:"Repeated"`
+	// The type of the user list. Valid values:
+	//
+	// - black: Blacklist.
+	//
+	// - white: Whitelist.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// white
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
 }
 
@@ -1004,32 +1184,73 @@ func (s *StartStreamingOutRequestLayoutSpecifiedUsers) Validate() error {
 }
 
 type StartStreamingOutRequestPanes struct {
+	// The local background images.
 	Backgrounds []*StartStreamingOutRequestPanesBackgrounds `json:"Backgrounds,omitempty" xml:"Backgrounds,omitempty" type:"Repeated"`
-	Images      []*StartStreamingOutRequestPanesImages      `json:"Images,omitempty" xml:"Images,omitempty" type:"Repeated"`
+	// The local image watermarks for the pane.
+	Images []*StartStreamingOutRequestPanesImages `json:"Images,omitempty" xml:"Images,omitempty" type:"Repeated"`
+	// The crop mode. Valid values:
+	//
+	// - **1**: Crop while maintaining the aspect ratio.
+	//
+	// - **2**: Maintain the aspect ratio and add borders.
+	//
+	// - **3**: Stretch to fill.
+	//
 	// example:
 	//
 	// 2
 	PaneCropMode *int32 `json:"PaneCropMode,omitempty" xml:"PaneCropMode,omitempty"`
+	// The pane ID. The value starts from 0.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 0
-	PaneId                    *string `json:"PaneId,omitempty" xml:"PaneId,omitempty"`
-	ReservePaneForOfflineUser *bool   `json:"ReservePaneForOfflineUser,omitempty" xml:"ReservePaneForOfflineUser,omitempty"`
+	PaneId *string `json:"PaneId,omitempty" xml:"PaneId,omitempty"`
+	// Specifies whether to reserve the pane for users who have not joined the meeting.
+	//
+	// Default value: true. This value indicates that when the specific user or wildcard user specified for the grid is offline, the pane is forcibly reserved.
+	//
+	// A value of false indicates that when the specific user or wildcard user specified for the grid is offline, video streams are displayed based on the automatic fill order.
+	ReservePaneForOfflineUser *bool `json:"ReservePaneForOfflineUser,omitempty" xml:"ReservePaneForOfflineUser,omitempty"`
+	// The media source of the pane. You can specify a userId. To specify a specific user type, you can use wildcard configurations. The following types are supported:
+	//
+	// - **$ActiveSpeaker**: The current speaker in the channel.
+	//
+	// - **$ScreenShare**: The user who is sharing their screen. If multiple users are sharing their screens in the channel, the panes are filled in chronological order.
+	//
 	// example:
 	//
-	// 1811****
+	// 22
 	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
+	// The media type of the pane. Valid values:
+	//
+	// - **video**: The user camera or screen sharing stream. This is the default value.
+	//
+	// - **camera**: The camera stream.
+	//
+	// - **screen**: The screen sharing stream.
+	//
+	// - **whiteboard**: The whiteboard.
+	//
 	// example:
 	//
-	// Video
-	SourceType *string                               `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
-	Texts      []*StartStreamingOutRequestPanesTexts `json:"Texts,omitempty" xml:"Texts,omitempty" type:"Repeated"`
+	// video
+	SourceType *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
+	// The local text watermarks for the pane.
+	Texts []*StartStreamingOutRequestPanesTexts `json:"Texts,omitempty" xml:"Texts,omitempty" type:"Repeated"`
+	// The fill order when SourceType is set to video. Valid values:
+	//
+	// - screenFirst: Screen sharing takes precedence. This is the default value.
+	//
+	// - cameraFirst: The camera takes precedence.
+	//
 	// example:
 	//
 	// cameraFirst
-	VideoOrder *string                                  `json:"VideoOrder,omitempty" xml:"VideoOrder,omitempty"`
+	VideoOrder *string `json:"VideoOrder,omitempty" xml:"VideoOrder,omitempty"`
+	// The whiteboard configurations.
 	Whiteboard *StartStreamingOutRequestPanesWhiteboard `json:"Whiteboard,omitempty" xml:"Whiteboard,omitempty" type:"Struct"`
 }
 
@@ -1168,46 +1389,76 @@ func (s *StartStreamingOutRequestPanes) Validate() error {
 }
 
 type StartStreamingOutRequestPanesBackgrounds struct {
+	// The transparency.
+	//
 	// example:
 	//
 	// 0.9
 	Alpha *float64 `json:"Alpha,omitempty" xml:"Alpha,omitempty"`
+	// The display condition. Valid values:
+	//
+	// - streamOnly: Displayed when the current user has a video stream. This is the default value.
+	//
+	// - backup: Displayed when the current user does not have a video stream.
+	//
+	// - always: Always displayed.
+	//
 	// example:
 	//
 	// backup
 	Display *string `json:"Display,omitempty" xml:"Display,omitempty"`
+	// The height.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 0.2
 	Height *float64 `json:"Height,omitempty" xml:"Height,omitempty"`
+	// The z-axis layer.
+	//
 	// example:
 	//
 	// 0
 	Layer *int32 `json:"Layer,omitempty" xml:"Layer,omitempty"`
+	// The crop mode. Valid values:
+	//
+	// - **1**: Crop while maintaining the aspect ratio.
+	//
+	// - **2**: Maintain the aspect ratio and add borders.
+	//
+	// - **3**: Stretch to fill.
+	//
 	// example:
 	//
 	// 2
 	PaneBackgroundCropMode *int32 `json:"PaneBackgroundCropMode,omitempty" xml:"PaneBackgroundCropMode,omitempty"`
+	// The image URL.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// https://aliyun.com/123xx.jpg
 	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
+	// The width.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 0.2
+	// 0.3
 	Width *float64 `json:"Width,omitempty" xml:"Width,omitempty"`
+	// The x-coordinate.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 0.2
 	X *float64 `json:"X,omitempty" xml:"X,omitempty"`
+	// The y-coordinate.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -1310,46 +1561,76 @@ func (s *StartStreamingOutRequestPanesBackgrounds) Validate() error {
 }
 
 type StartStreamingOutRequestPanesImages struct {
+	// The transparency.
+	//
 	// example:
 	//
 	// 0.9
 	Alpha *float64 `json:"Alpha,omitempty" xml:"Alpha,omitempty"`
+	// The condition for displaying the watermark. Valid values:
+	//
+	// - streamOnly: Displayed when the current user has a video stream. This is the default value.
+	//
+	// - backup: Displayed when the current user does not have a video stream.
+	//
+	// - always: Always displayed.
+	//
 	// example:
 	//
 	// backup
 	Display *string `json:"Display,omitempty" xml:"Display,omitempty"`
+	// The height.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 0.2
 	Height *float64 `json:"Height,omitempty" xml:"Height,omitempty"`
+	// The z-axis layer.
+	//
 	// example:
 	//
 	// 0
 	Layer *int32 `json:"Layer,omitempty" xml:"Layer,omitempty"`
+	// The crop mode. Valid values:
+	//
+	// - **1**: Crop while maintaining the aspect ratio.
+	//
+	// - **2**: Maintain the aspect ratio and add borders.
+	//
+	// - **3**: Stretch to fill.
+	//
 	// example:
 	//
 	// 2
 	PaneImageCropMode *int32 `json:"PaneImageCropMode,omitempty" xml:"PaneImageCropMode,omitempty"`
+	// The corresponding image content cannot be updated while streaming.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// https://aliyun.com/123xxx.jpg
 	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
+	// The width.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 0.2
 	Width *float64 `json:"Width,omitempty" xml:"Width,omitempty"`
+	// The x-coordinate.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 0.2
 	X *float64 `json:"X,omitempty" xml:"X,omitempty"`
+	// The y-coordinate.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -1452,49 +1733,98 @@ func (s *StartStreamingOutRequestPanesImages) Validate() error {
 }
 
 type StartStreamingOutRequestPanesTexts struct {
+	// The watermark transparency.
+	//
 	// example:
 	//
 	// 0.9
 	Alpha *float64 `json:"Alpha,omitempty" xml:"Alpha,omitempty"`
+	// The transparency of the rectangle box.
+	//
 	// example:
 	//
 	// 0.6
 	BoxAlpha *float64 `json:"BoxAlpha,omitempty" xml:"BoxAlpha,omitempty"`
+	// The border width of the rectangle box.
+	//
 	// example:
 	//
 	// 5
-	BoxBorderw *int32                                      `json:"BoxBorderw,omitempty" xml:"BoxBorderw,omitempty"`
-	BoxColor   *StartStreamingOutRequestPanesTextsBoxColor `json:"BoxColor,omitempty" xml:"BoxColor,omitempty" type:"Struct"`
+	BoxBorderw *int32 `json:"BoxBorderw,omitempty" xml:"BoxBorderw,omitempty"`
+	// The color of the rectangle box.
+	BoxColor *StartStreamingOutRequestPanesTextsBoxColor `json:"BoxColor,omitempty" xml:"BoxColor,omitempty" type:"Struct"`
+	// The condition for displaying the watermark. Valid values:
+	//
+	// - streamOnly: Displayed when the current user has a video stream. This is the default value.
+	//
+	// - backup: Displayed when the current user does not have a video stream.
+	//
+	// - always: Always displayed.
+	//
 	// example:
 	//
 	// backup
 	Display *string `json:"Display,omitempty" xml:"Display,omitempty"`
+	// The font. Valid values:
+	//
+	// - **0**: Alibaba PuHuiTi Regular
+	//
+	// - **1**: Alibaba PuHuiTi Light
+	//
+	// - **2**: Alibaba PuHuiTi Medium
+	//
+	// - **3**: Alibaba PuHuiTi Bold
+	//
+	// - **4**: Alibaba PuHuiTi Heavy
+	//
+	// - **5**: Alimama ShuHeiTi
+	//
+	// - **6**: DingTalk JinBuTi
+	//
+	// - **7**: Alimama DaoLiTi
+	//
+	// - **8**: Alimama DongFangDaKai
+	//
+	// - **9**: Alimama FangYuanTi
+	//
 	// example:
 	//
 	// 0
-	Font      *int32                                       `json:"Font,omitempty" xml:"Font,omitempty"`
+	Font *int32 `json:"Font,omitempty" xml:"Font,omitempty"`
+	// The font color.
 	FontColor *StartStreamingOutRequestPanesTextsFontColor `json:"FontColor,omitempty" xml:"FontColor,omitempty" type:"Struct"`
+	// The font size.
+	//
 	// example:
 	//
 	// 36
 	FontSize *int32 `json:"FontSize,omitempty" xml:"FontSize,omitempty"`
-	HasBox   *bool  `json:"HasBox,omitempty" xml:"HasBox,omitempty"`
+	// Specifies whether a rectangle box is required.
+	HasBox *bool `json:"HasBox,omitempty" xml:"HasBox,omitempty"`
+	// The z-axis layer.
+	//
 	// example:
 	//
 	// 0
 	Layer *int32 `json:"Layer,omitempty" xml:"Layer,omitempty"`
+	// The watermark content.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 文字水印
+	// Text watermark
 	Texture *string `json:"Texture,omitempty" xml:"Texture,omitempty"`
+	// The x-coordinate.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 0.2
 	X *float64 `json:"X,omitempty" xml:"X,omitempty"`
+	// The y-coordinate.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -1643,14 +1973,20 @@ func (s *StartStreamingOutRequestPanesTexts) Validate() error {
 }
 
 type StartStreamingOutRequestPanesTextsBoxColor struct {
+	// The B value.
+	//
 	// example:
 	//
 	// 255
 	B *int32 `json:"B,omitempty" xml:"B,omitempty"`
+	// The G value.
+	//
 	// example:
 	//
 	// 255
 	G *int32 `json:"G,omitempty" xml:"G,omitempty"`
+	// The R value.
+	//
 	// example:
 	//
 	// 255
@@ -1697,14 +2033,20 @@ func (s *StartStreamingOutRequestPanesTextsBoxColor) Validate() error {
 }
 
 type StartStreamingOutRequestPanesTextsFontColor struct {
+	// The B value.
+	//
 	// example:
 	//
 	// 255
 	B *int32 `json:"B,omitempty" xml:"B,omitempty"`
+	// The G value.
+	//
 	// example:
 	//
 	// 255
 	G *int32 `json:"G,omitempty" xml:"G,omitempty"`
+	// The R value.
+	//
 	// example:
 	//
 	// 255
@@ -1751,6 +2093,8 @@ func (s *StartStreamingOutRequestPanesTextsFontColor) Validate() error {
 }
 
 type StartStreamingOutRequestPanesWhiteboard struct {
+	// The whiteboard ID. Default value: default.
+	//
 	// example:
 	//
 	// default
@@ -1779,14 +2123,20 @@ func (s *StartStreamingOutRequestPanesWhiteboard) Validate() error {
 }
 
 type StartStreamingOutRequestRegionColor struct {
+	// The B value.
+	//
 	// example:
 	//
 	// 255
 	B *int32 `json:"B,omitempty" xml:"B,omitempty"`
+	// The G value.
+	//
 	// example:
 	//
 	// 255
 	G *int32 `json:"G,omitempty" xml:"G,omitempty"`
+	// The R value.
+	//
 	// example:
 	//
 	// 255
@@ -1833,45 +2183,86 @@ func (s *StartStreamingOutRequestRegionColor) Validate() error {
 }
 
 type StartStreamingOutRequestTexts struct {
+	// The watermark transparency.
+	//
 	// example:
 	//
 	// 0.1
 	Alpha *float64 `json:"Alpha,omitempty" xml:"Alpha,omitempty"`
+	// The transparency of the rectangle box.
+	//
 	// example:
 	//
 	// 0.6
 	BoxAlpha *float64 `json:"BoxAlpha,omitempty" xml:"BoxAlpha,omitempty"`
+	// The border width of the rectangle box.
+	//
 	// example:
 	//
 	// 5
-	BoxBorderw *int32                                 `json:"BoxBorderw,omitempty" xml:"BoxBorderw,omitempty"`
-	BoxColor   *StartStreamingOutRequestTextsBoxColor `json:"BoxColor,omitempty" xml:"BoxColor,omitempty" type:"Struct"`
+	BoxBorderw *int32 `json:"BoxBorderw,omitempty" xml:"BoxBorderw,omitempty"`
+	// The color of the rectangle box.
+	BoxColor *StartStreamingOutRequestTextsBoxColor `json:"BoxColor,omitempty" xml:"BoxColor,omitempty" type:"Struct"`
+	// The font. Valid values:
+	//
+	// - **0**: Alibaba PuHuiTi Regular
+	//
+	// - **1**: Alibaba PuHuiTi Light
+	//
+	// - **2**: Alibaba PuHuiTi Medium
+	//
+	// - **3**: Alibaba PuHuiTi Bold
+	//
+	// - **4**: Alibaba PuHuiTi Heavy
+	//
+	// - **5**: Alimama ShuHeiTi
+	//
+	// - **6**: DingTalk JinBuTi
+	//
+	// - **7**: Alimama DaoLiTi
+	//
+	// - **8**: Alimama DongFangDaKai
+	//
+	// - **9**: Alimama FangYuanTi
+	//
 	// example:
 	//
 	// 0
-	Font      *int32                                  `json:"Font,omitempty" xml:"Font,omitempty"`
+	Font *int32 `json:"Font,omitempty" xml:"Font,omitempty"`
+	// The font color.
 	FontColor *StartStreamingOutRequestTextsFontColor `json:"FontColor,omitempty" xml:"FontColor,omitempty" type:"Struct"`
+	// The font size.
+	//
 	// example:
 	//
 	// 36
 	FontSize *int32 `json:"FontSize,omitempty" xml:"FontSize,omitempty"`
-	HasBox   *bool  `json:"HasBox,omitempty" xml:"HasBox,omitempty"`
+	// Specifies whether a rectangle box is required.
+	HasBox *bool `json:"HasBox,omitempty" xml:"HasBox,omitempty"`
+	// The z-axis layer.
+	//
 	// example:
 	//
 	// 0
 	Layer *int32 `json:"Layer,omitempty" xml:"Layer,omitempty"`
+	// The watermark content.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 文字水印
+	// Text watermark
 	Texture *string `json:"Texture,omitempty" xml:"Texture,omitempty"`
+	// The x-coordinate.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 0.2
 	X *float64 `json:"X,omitempty" xml:"X,omitempty"`
+	// The y-coordinate.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -2011,14 +2402,20 @@ func (s *StartStreamingOutRequestTexts) Validate() error {
 }
 
 type StartStreamingOutRequestTextsBoxColor struct {
+	// The B value.
+	//
 	// example:
 	//
 	// 255
 	B *int32 `json:"B,omitempty" xml:"B,omitempty"`
+	// The G value.
+	//
 	// example:
 	//
 	// 255
 	G *int32 `json:"G,omitempty" xml:"G,omitempty"`
+	// The R value.
+	//
 	// example:
 	//
 	// 255
@@ -2065,14 +2462,20 @@ func (s *StartStreamingOutRequestTextsBoxColor) Validate() error {
 }
 
 type StartStreamingOutRequestTextsFontColor struct {
+	// The B value.
+	//
 	// example:
 	//
 	// 255
 	B *int32 `json:"B,omitempty" xml:"B,omitempty"`
+	// The G value.
+	//
 	// example:
 	//
 	// 255
 	G *int32 `json:"G,omitempty" xml:"G,omitempty"`
+	// The R value.
+	//
 	// example:
 	//
 	// 255

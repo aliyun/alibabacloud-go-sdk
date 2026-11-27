@@ -18,18 +18,24 @@ type iStopStreamingOutRequest interface {
 }
 
 type StopStreamingOutRequest struct {
+	// The application ID, which is created and queried via the console. Only a single ID is supported.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// eo85****
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// An existing channel ID. Only a single ID is supported.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// testid
 	ChannelId *string `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
+	// The ID of an existing bypass stream ingest job. Only a single ID is supported. It can contain uppercase and lowercase letters, digits, underscores, and hyphens (-), with a maximum length of 55 bytes. If not specified, the system will automatically generate one.
+	//
 	// This parameter is required.
 	//
 	// example:

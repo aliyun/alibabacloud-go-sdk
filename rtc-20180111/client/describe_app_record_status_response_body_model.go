@@ -16,12 +16,14 @@ type iDescribeAppRecordStatusResponseBody interface {
 }
 
 type DescribeAppRecordStatusResponseBody struct {
-	// Id of the request
+	// Request ID
 	//
 	// example:
 	//
 	// 16A96B9A-F203-4EC5-8E43-CB92E68F4CD8
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Recording status. Valid values: enable or disable.
+	//
 	// example:
 	//
 	// disable

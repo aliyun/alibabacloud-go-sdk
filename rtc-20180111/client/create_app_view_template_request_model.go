@@ -16,12 +16,16 @@ type iCreateAppViewTemplateRequest interface {
 }
 
 type CreateAppViewTemplateRequest struct {
+	// The application ID. You can create and query it in the console. Only a single ID is supported.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ac7N****
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The template.
+	//
 	// This parameter is required.
 	Template *CreateAppViewTemplateRequestTemplate `json:"Template,omitempty" xml:"Template,omitempty" type:"Struct"`
 }
@@ -62,19 +66,25 @@ func (s *CreateAppViewTemplateRequest) Validate() error {
 }
 
 type CreateAppViewTemplateRequestTemplate struct {
+	// The list of layout IDs. A maximum of 16 layout IDs are supported.
+	//
 	// This parameter is required.
 	LayoutIds []*string `json:"LayoutIds,omitempty" xml:"LayoutIds,omitempty" type:"Repeated"`
+	// The encoding options.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1
 	MediaEncode *int32 `json:"MediaEncode,omitempty" xml:"MediaEncode,omitempty"`
+	// The template name.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 模版
+	// Template
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 

@@ -24,28 +24,37 @@ type iModifyMPULayoutRequest interface {
 }
 
 type ModifyMPULayoutRequest struct {
+	// The ID of the application. Only a single ID is supported. You can create and query application IDs in the console.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// yourAppId
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The maximum number of audio mixing tracks. Valid values: **0*	- to **6**.
+	//
 	// example:
 	//
 	// 3
 	AudioMixCount *int32 `json:"AudioMixCount,omitempty" xml:"AudioMixCount,omitempty"`
+	// The ID of the layout. For more information about how to obtain the layout ID, see [CreateMPULayout](https://help.aliyun.com/document_detail/162192.html).
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 10117
 	LayoutId *int64 `json:"LayoutId,omitempty" xml:"LayoutId,omitempty"`
+	// The name of the layout.
+	//
 	// example:
 	//
 	// LayoutName
-	Name    *string                        `json:"Name,omitempty" xml:"Name,omitempty"`
-	OwnerId *int64                         `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
-	Panes   []*ModifyMPULayoutRequestPanes `json:"Panes,omitempty" xml:"Panes,omitempty" type:"Repeated"`
+	Name    *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The list of panes in the layout.
+	Panes []*ModifyMPULayoutRequestPanes `json:"Panes,omitempty" xml:"Panes,omitempty" type:"Repeated"`
 }
 
 func (s ModifyMPULayoutRequest) String() string {
@@ -124,30 +133,48 @@ func (s *ModifyMPULayoutRequest) Validate() error {
 }
 
 type ModifyMPULayoutRequestPanes struct {
+	// The height of the pane, represented as a normalized percentage. Valid values: **0.0 < Height ≤ 1.0**.
+	//
 	// example:
 	//
 	// 0.2456
 	Height *float32 `json:"Height,omitempty" xml:"Height,omitempty"`
+	// Specifies the major pane. Each layout can have only one major pane. Valid values:
+	//
+	// - **0**: Secondary pane.
+	//
+	// - **1**: Major pane.
+	//
 	// example:
 	//
 	// 0
 	MajorPane *int32 `json:"MajorPane,omitempty" xml:"MajorPane,omitempty"`
+	// The ID of the pane. Panes are sorted from top left to bottom right, starting from 0.
+	//
 	// example:
 	//
 	// 0
 	PaneId *int32 `json:"PaneId,omitempty" xml:"PaneId,omitempty"`
+	// The width of the pane, represented as a normalized percentage. Valid values: **0.0 < Width ≤ 1.0**.
+	//
 	// example:
 	//
 	// 0.2456
 	Width *float32 `json:"Width,omitempty" xml:"Width,omitempty"`
+	// The X-coordinate, represented as a normalized percentage. Valid values: **0.0 ≤ X ≤ 1.0**.
+	//
 	// example:
 	//
 	// 0.7576
 	X *float32 `json:"X,omitempty" xml:"X,omitempty"`
+	// The Y-coordinate, represented as a normalized percentage. Valid values: **0.0 ≤ Y ≤ 1.0**.
+	//
 	// example:
 	//
 	// 0.7576
 	Y *float32 `json:"Y,omitempty" xml:"Y,omitempty"`
+	// The Z-order. A value of 0 indicates the bottom layer, 1 indicates the layer above 0, and so on.
+	//
 	// example:
 	//
 	// 0

@@ -19,8 +19,15 @@ type iDescribeChannelResponseBody interface {
 
 type DescribeChannelResponseBody struct {
 	// channel
-	Channel      *DescribeChannelResponseBodyChannel `json:"Channel,omitempty" xml:"Channel,omitempty" type:"Struct"`
-	ChannelExist *bool                               `json:"ChannelExist,omitempty" xml:"ChannelExist,omitempty"`
+	Channel *DescribeChannelResponseBodyChannel `json:"Channel,omitempty" xml:"Channel,omitempty" type:"Struct"`
+	// Indicates whether the channel exists. Valid values:
+	//
+	// - **true**: The channel exists.
+	//
+	// - **false**: The channel does not exist.
+	ChannelExist *bool `json:"ChannelExist,omitempty" xml:"ChannelExist,omitempty"`
+	// Request ID.
+	//
 	// example:
 	//
 	// 16A96B9A-F203-4EC5-8E43-CB92E68F4CF8
@@ -72,10 +79,14 @@ func (s *DescribeChannelResponseBody) Validate() error {
 }
 
 type DescribeChannelResponseBodyChannel struct {
+	// channel ID.
+	//
 	// example:
 	//
 	// testid
 	ChannelId *string `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
+	// The UNIX timestamp (in seconds) indicating when the channel started (UTC).
+	//
 	// example:
 	//
 	// 1557909133

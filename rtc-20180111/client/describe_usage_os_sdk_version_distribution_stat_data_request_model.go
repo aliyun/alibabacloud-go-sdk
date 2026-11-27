@@ -26,12 +26,16 @@ type DescribeUsageOsSdkVersionDistributionStatDataRequest struct {
 	//
 	// 0rbd****
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// End Time of the query, represented as a UNIX timestamp in seconds.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1615910399
 	EndDate *int64 `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
+	// Start Time of the query, represented as a UNIX timestamp in seconds.
+	//
 	// This parameter is required.
 	//
 	// example:

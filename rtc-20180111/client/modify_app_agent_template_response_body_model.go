@@ -16,6 +16,8 @@ type iModifyAppAgentTemplateResponseBody interface {
 }
 
 type ModifyAppAgentTemplateResponseBody struct {
+	// The template ID.
+	//
 	// example:
 	//
 	// 1223131213231313213

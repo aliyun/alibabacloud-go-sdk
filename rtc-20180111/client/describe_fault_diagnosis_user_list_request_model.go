@@ -28,7 +28,7 @@ type iDescribeFaultDiagnosisUserListRequest interface {
 }
 
 type DescribeFaultDiagnosisUserListRequest struct {
-	// APP ID。
+	// The app ID.
 	//
 	// This parameter is required.
 	//
@@ -36,38 +36,66 @@ type DescribeFaultDiagnosisUserListRequest struct {
 	//
 	// 0rbd****
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The ID of the channel to search.
+	//
 	// example:
 	//
 	// 311
 	ChannelId *string `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
+	// The end time of the query. The time is a UNIX timestamp in seconds.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1615892596
 	EndTs *int64 `json:"EndTs,omitempty" xml:"EndTs,omitempty"`
+	// The fault types to filter. Separate multiple fault types with commas (,). Valid values:
+	//
+	// - **JOIN_SLOW**: Slow channel joining.
+	//
+	// - **AUDIO_STUCK**: Audio stuttering.
+	//
+	// - **VIDEO_STUCK**: Video stuttering.
+	//
+	// - **VIDEO_VAGUE**: Blurry video.
+	//
+	// - **HIGH_DELAY**: High call latency.
+	//
+	// - **FIRST_FRAME_SLOW**: Slow first frame rendering.
+	//
+	// For more information about fault types, see [Fault types](https://help.aliyun.com/document_detail/2639494.html).
+	//
 	// example:
 	//
 	// JOIN_SLOW,AUDIO_STUCK
 	FaultTypes *string `json:"FaultTypes,omitempty" xml:"FaultTypes,omitempty"`
+	// The page number.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1
 	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	// The number of entries per page.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The start time of the query. The time is a UNIX timestamp in seconds.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1615806196
 	StartTs *int64 `json:"StartTs,omitempty" xml:"StartTs,omitempty"`
+	// The ID of the user to search.
+	//
 	// example:
 	//
 	// c906531af5f9****

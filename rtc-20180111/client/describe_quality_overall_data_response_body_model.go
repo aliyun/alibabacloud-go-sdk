@@ -16,7 +16,10 @@ type iDescribeQualityOverallDataResponseBody interface {
 }
 
 type DescribeQualityOverallDataResponseBody struct {
+	// List of overview data.
 	QualityOverallData []*DescribeQualityOverallDataResponseBodyQualityOverallData `json:"QualityOverallData,omitempty" xml:"QualityOverallData,omitempty" type:"Repeated"`
+	// Request ID.
+	//
 	// example:
 	//
 	// 231470C1-ACFB-4C9F-844F-4CFE1E3804C5
@@ -63,11 +66,16 @@ func (s *DescribeQualityOverallDataResponseBody) Validate() error {
 }
 
 type DescribeQualityOverallDataResponseBodyQualityOverallData struct {
+	// The average value of the Metric.
+	//
 	// example:
 	//
 	// 0.9376
-	Average *string                                                          `json:"Average,omitempty" xml:"Average,omitempty"`
-	Nodes   []*DescribeQualityOverallDataResponseBodyQualityOverallDataNodes `json:"Nodes,omitempty" xml:"Nodes,omitempty" type:"Repeated"`
+	Average *string `json:"Average,omitempty" xml:"Average,omitempty"`
+	// List of coordinate points for the Trend Indicator.
+	Nodes []*DescribeQualityOverallDataResponseBodyQualityOverallDataNodes `json:"Nodes,omitempty" xml:"Nodes,omitempty" type:"Repeated"`
+	// The Metric Type queried.
+	//
 	// example:
 	//
 	// JOIN_CHANNEL_SUC_RATE
@@ -123,10 +131,14 @@ func (s *DescribeQualityOverallDataResponseBodyQualityOverallData) Validate() er
 }
 
 type DescribeQualityOverallDataResponseBodyQualityOverallDataNodes struct {
+	// The x-axis coordinate in the Trend Indicator.
+	//
 	// example:
 	//
 	// 1615831200
 	X *string `json:"X,omitempty" xml:"X,omitempty"`
+	// The y-axis coordinate in the Trend Indicator.
+	//
 	// example:
 	//
 	// 1.0000

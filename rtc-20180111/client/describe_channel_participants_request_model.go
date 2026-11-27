@@ -24,27 +24,41 @@ type iDescribeChannelParticipantsRequest interface {
 }
 
 type DescribeChannelParticipantsRequest struct {
+	// The application ID. You can create and query the ID in the console. Only a single ID is supported.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// aec****
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The ID of the joined channel. Only a single ID is supported.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// testId
 	ChannelId *string `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
+	// The sort order. Valid values:
+	//
+	// - **asc**: Ascending order.
+	//
+	// - **desc**: Descending order. This is the default value.
+	//
 	// example:
 	//
 	// asc
 	Order   *string `json:"Order,omitempty" xml:"Order,omitempty"`
 	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The page number. Default value: 1.
+	//
 	// example:
 	//
 	// 1
 	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
+	// The number of users to return on each page. Default value: 10.
+	//
 	// example:
 	//
 	// 10

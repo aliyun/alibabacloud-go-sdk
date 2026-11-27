@@ -18,16 +18,22 @@ type iModifyAppRecordTemplateRequest interface {
 }
 
 type ModifyAppRecordTemplateRequest struct {
+	// Application ID. Create and query through the console. Only a single ID is supported.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ac7N****
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// Idempotency parameter.
+	//
 	// example:
 	//
 	// 53200b81-b761-4c10-842a-a0726d97xxxx
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// Recording template.
+	//
 	// This parameter is required.
 	RecordTemplate *ModifyAppRecordTemplateRequestRecordTemplate `json:"RecordTemplate,omitempty" xml:"RecordTemplate,omitempty" type:"Struct"`
 }
@@ -77,38 +83,58 @@ func (s *ModifyAppRecordTemplateRequest) Validate() error {
 }
 
 type ModifyAppRecordTemplateRequestRecordTemplate struct {
+	// Delayed stop recording time. Unit: seconds.
+	//
 	// example:
 	//
 	// 180
 	DelayStopTime *int32 `json:"DelayStopTime,omitempty" xml:"DelayStopTime,omitempty"`
+	// The naming convention for recording files.
+	//
+	// > To ensure unique recording file names, use the following naming convention: `record/{AppId}/{ChannelId}/{TaskId}/{EscapedStartTime}/{EscapedEndTime}`.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// record/{AppId}/{ChannelId}_{TaskId}/{EscapedStartTime}_{EscapedEndTime}
 	FilePrefix *string `json:"FilePrefix,omitempty" xml:"FilePrefix,omitempty"`
+	// Recording file split duration (greater than or equal to 1800). Unit: seconds.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1800
 	FileSplitInterval *int32 `json:"FileSplitInterval,omitempty" xml:"FileSplitInterval,omitempty"`
+	// Recording file format. Currently, only .m3u8, .mp4, and .flv are supported.
+	//
 	// This parameter is required.
 	Formats []*string `json:"Formats,omitempty" xml:"Formats,omitempty" type:"Repeated"`
+	// Layout ID list, up to 16.
+	//
+	// Note: The layouts in the list must not have the same number of data sources.
+	//
 	// This parameter is required.
 	LayoutIds []*string `json:"LayoutIds,omitempty" xml:"LayoutIds,omitempty" type:"Repeated"`
+	// Encoding options.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1
 	MediaEncode *int32 `json:"MediaEncode,omitempty" xml:"MediaEncode,omitempty"`
+	// Template name.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 模版
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// Template ID.
+	//
 	// This parameter is required.
 	//
 	// example:

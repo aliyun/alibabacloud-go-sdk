@@ -18,8 +18,12 @@ type iDescribeFaultDiagnosisOverallDataResponseBody interface {
 }
 
 type DescribeFaultDiagnosisOverallDataResponseBody struct {
-	MetricData  *DescribeFaultDiagnosisOverallDataResponseBodyMetricData  `json:"MetricData,omitempty" xml:"MetricData,omitempty" type:"Struct"`
+	// The exception metric data.
+	MetricData *DescribeFaultDiagnosisOverallDataResponseBodyMetricData `json:"MetricData,omitempty" xml:"MetricData,omitempty" type:"Struct"`
+	// The list of overview data for exception diagnostics.
 	OverallData *DescribeFaultDiagnosisOverallDataResponseBodyOverallData `json:"OverallData,omitempty" xml:"OverallData,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 231470C1-ACFB-4C9F-844F-4CFE1E3804C5
@@ -76,6 +80,7 @@ func (s *DescribeFaultDiagnosisOverallDataResponseBody) Validate() error {
 }
 
 type DescribeFaultDiagnosisOverallDataResponseBodyMetricData struct {
+	// The list of coordinate points for the metric trends chart.
 	Nodes []*DescribeFaultDiagnosisOverallDataResponseBodyMetricDataNodes `json:"Nodes,omitempty" xml:"Nodes,omitempty" type:"Repeated"`
 }
 
@@ -110,11 +115,16 @@ func (s *DescribeFaultDiagnosisOverallDataResponseBodyMetricData) Validate() err
 }
 
 type DescribeFaultDiagnosisOverallDataResponseBodyMetricDataNodes struct {
+	// The extended properties, where ratio indicates the proportion of abnormal users per unit time and totalCount indicates the total number of users per unit time.
 	Ext map[string]interface{} `json:"Ext,omitempty" xml:"Ext,omitempty"`
+	// The x-axis coordinate in the metric trends chart. The unit of time is 1 minute.
+	//
 	// example:
 	//
 	// 1615824000
 	X *string `json:"X,omitempty" xml:"X,omitempty"`
+	// The y-axis coordinate in the metric trends chart.
+	//
 	// example:
 	//
 	// 1
@@ -161,14 +171,20 @@ func (s *DescribeFaultDiagnosisOverallDataResponseBodyMetricDataNodes) Validate(
 }
 
 type DescribeFaultDiagnosisOverallDataResponseBodyOverallData struct {
+	// The number of abnormal user visits or abnormal users.
+	//
 	// example:
 	//
 	// 20
 	FaultUserCount *int32 `json:"FaultUserCount,omitempty" xml:"FaultUserCount,omitempty"`
+	// The total proportion of abnormal users.
+	//
 	// example:
 	//
-	// 0.1
+	// 0.5
 	FaultUserRatio *float32 `json:"FaultUserRatio,omitempty" xml:"FaultUserRatio,omitempty"`
+	// The total number of user visits or total users.
+	//
 	// example:
 	//
 	// 40

@@ -22,19 +22,28 @@ type iDescribeChannelsResponseBody interface {
 }
 
 type DescribeChannelsResponseBody struct {
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	// The number of items per page.
+	//
 	// example:
 	//
 	// 10
-	PageSize *int32    `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	Records  []*string `json:"Records,omitempty" xml:"Records,omitempty" type:"Repeated"`
+	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The active channels.
+	Records []*string `json:"Records,omitempty" xml:"Records,omitempty" type:"Repeated"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 16A96B9A-F203-4EC5-8E43-CB92E68F4CF8
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total count.
+	//
 	// example:
 	//
 	// 1

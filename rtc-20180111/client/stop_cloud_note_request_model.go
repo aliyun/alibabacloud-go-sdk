@@ -20,19 +20,30 @@ type iStopCloudNoteRequest interface {
 }
 
 type StopCloudNoteRequest struct {
+	// The application ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// qwsz1234
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The channel name.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// test
-	ChannelId   *string `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
+	ChannelId *string `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
+	// The idempotency parameter.
+	//
+	// example:
+	//
+	// 53200b81-b761-4c10-842a-a0726d97xxxx
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The task ID.
+	//
 	// This parameter is required.
 	//
 	// example:

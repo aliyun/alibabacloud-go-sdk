@@ -24,25 +24,35 @@ type iDescribeMPULayoutInfoListRequest interface {
 }
 
 type DescribeMPULayoutInfoListRequest struct {
+	// Application ID. You can specify only one ID. Create or view IDs in the console.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// yourAppId
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// Layout ID. To get a layout ID, see [CreateMPULayout](https://help.aliyun.com/document_detail/162192.html).
+	//
 	// example:
 	//
 	// 2
 	LayoutId *int64 `json:"LayoutId,omitempty" xml:"LayoutId,omitempty"`
+	// Layout name.
+	//
 	// example:
 	//
 	// LayoutName
 	Name    *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// Page number. Default value: **1**.
+	//
 	// example:
 	//
 	// 1
 	PageNum *int64 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
+	// Number of entries per page. Default value: **10**.
+	//
 	// example:
 	//
 	// 10

@@ -18,12 +18,16 @@ type iDeleteMPULayoutRequest interface {
 }
 
 type DeleteMPULayoutRequest struct {
+	// The application ID. Only a single ID is supported. You can create and query application IDs in the console.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// yourAppId
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The layout ID. Only a single ID is supported. To obtain a layout ID, see [CreateMPULayout](https://help.aliyun.com/document_detail/162192.html).
+	//
 	// This parameter is required.
 	//
 	// example:

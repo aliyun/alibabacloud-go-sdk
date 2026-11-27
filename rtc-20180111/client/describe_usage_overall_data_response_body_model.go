@@ -16,10 +16,13 @@ type iDescribeUsageOverallDataResponseBody interface {
 }
 
 type DescribeUsageOverallDataResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 231470C1-ACFB-4C9F-844F-4CFE1E3804C5
-	RequestId        *string                                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The usage overview data list.
 	UsageOverallData []*DescribeUsageOverallDataResponseBodyUsageOverallData `json:"UsageOverallData,omitempty" xml:"UsageOverallData,omitempty" type:"Repeated"`
 }
 
@@ -63,7 +66,10 @@ func (s *DescribeUsageOverallDataResponseBody) Validate() error {
 }
 
 type DescribeUsageOverallDataResponseBodyUsageOverallData struct {
+	// The list of coordinate points for the metric trends chart.
 	Nodes []*DescribeUsageOverallDataResponseBodyUsageOverallDataNodes `json:"Nodes,omitempty" xml:"Nodes,omitempty" type:"Repeated"`
+	// The queried metric type.
+	//
 	// example:
 	//
 	// ONLINE_USER_PEAK
@@ -110,10 +116,14 @@ func (s *DescribeUsageOverallDataResponseBodyUsageOverallData) Validate() error 
 }
 
 type DescribeUsageOverallDataResponseBodyUsageOverallDataNodes struct {
+	// The x-axis coordinate in the metric trends chart.
+	//
 	// example:
 	//
 	// 1615824000
 	X *string `json:"X,omitempty" xml:"X,omitempty"`
+	// The y-axis coordinate in the metric trends chart.
+	//
 	// example:
 	//
 	// 1

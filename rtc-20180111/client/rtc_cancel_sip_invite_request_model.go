@@ -20,29 +20,45 @@ type iRtcCancelSipInviteRequest interface {
 }
 
 type RtcCancelSipInviteRequest struct {
+	// The application ID. Create and find this ID in the console. Specify only one ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// eo85****
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The ID of an existing channel. Specify only one ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// testid
+	// $rtc_channelid
 	ChannelId *string `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
+	// The type of the third-party SIP device:
+	//
+	// - sip_device
+	//
+	// - mcu
+	//
+	// - phone
+	//
+	// Note: Only the phone type is supported at this stage.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// mcu
+	// phone
 	DeviceType *string `json:"DeviceType,omitempty" xml:"DeviceType,omitempty"`
+	// The user ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 123
+	// $rtc_userid
 	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 

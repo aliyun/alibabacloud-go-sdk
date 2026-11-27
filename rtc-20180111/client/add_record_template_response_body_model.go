@@ -16,10 +16,14 @@ type iAddRecordTemplateResponseBody interface {
 }
 
 type AddRecordTemplateResponseBody struct {
+	// The ID of the request.
+	//
 	// example:
 	//
 	// 760bad53276431c499e30dc36f6b26be
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the recording configuration template.
+	//
 	// example:
 	//
 	// 76dasgb****

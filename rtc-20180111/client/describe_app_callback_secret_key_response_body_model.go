@@ -16,6 +16,8 @@ type iDescribeAppCallbackSecretKeyResponseBody interface {
 }
 
 type DescribeAppCallbackSecretKeyResponseBody struct {
+	// Callback key.
+	//
 	// example:
 	//
 	// a656b296a30xxxxxxxxxx1cd4

@@ -16,12 +16,16 @@ type iStartCategoryCallbackRequest interface {
 }
 
 type StartCategoryCallbackRequest struct {
+	// The application ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 223***JQb
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The callback.
+	//
 	// This parameter is required.
 	Callback *StartCategoryCallbackRequestCallback `json:"Callback,omitempty" xml:"Callback,omitempty" type:"Struct"`
 }
@@ -62,6 +66,8 @@ func (s *StartCategoryCallbackRequest) Validate() error {
 }
 
 type StartCategoryCallbackRequestCallback struct {
+	// The callback code.
+	//
 	// This parameter is required.
 	//
 	// example:

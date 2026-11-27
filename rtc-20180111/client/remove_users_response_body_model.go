@@ -16,11 +16,14 @@ type iRemoveUsersResponseBody interface {
 }
 
 type RemoveUsersResponseBody struct {
+	// Request ID.
+	//
 	// example:
 	//
 	// 16A96B9A-F203-4EC5-8E43-CB92E68F4CF8
-	RequestId *string                         `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Users     []*RemoveUsersResponseBodyUsers `json:"Users,omitempty" xml:"Users,omitempty" type:"Repeated"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// User List.
+	Users []*RemoveUsersResponseBodyUsers `json:"Users,omitempty" xml:"Users,omitempty" type:"Repeated"`
 }
 
 func (s RemoveUsersResponseBody) String() string {
@@ -63,14 +66,24 @@ func (s *RemoveUsersResponseBody) Validate() error {
 }
 
 type RemoveUsersResponseBodyUsers struct {
+	// Status code. A value of 0 indicates success. An error code is returned upon failure.
+	//
 	// example:
 	//
 	// 0
 	Code *int32 `json:"Code,omitempty" xml:"Code,omitempty"`
+	// Result of the delete operation. Valid values:
+	//
+	// - **Success**: Succeeded.
+	//
+	// - **Failed**: failed.
+	//
 	// example:
 	//
 	// Success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// User ID.
+	//
 	// example:
 	//
 	// 1811****

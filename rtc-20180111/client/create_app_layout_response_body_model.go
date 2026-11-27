@@ -16,6 +16,8 @@ type iCreateAppLayoutResponseBody interface {
 }
 
 type CreateAppLayoutResponseBody struct {
+	// The ID of the layout.
+	//
 	// example:
 	//
 	// 167466539798442****

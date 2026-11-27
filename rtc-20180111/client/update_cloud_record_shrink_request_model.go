@@ -32,36 +32,62 @@ type iUpdateCloudRecordShrinkRequest interface {
 }
 
 type UpdateCloudRecordShrinkRequest struct {
+	// The application ID. You can create and query it in the console. Only one ID is supported.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// eo85****
-	AppId       *string                                      `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// Background images.
 	Backgrounds []*UpdateCloudRecordShrinkRequestBackgrounds `json:"Backgrounds,omitempty" xml:"Backgrounds,omitempty" type:"Repeated"`
+	// The existing channel ID. Only one ID is supported.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// testid
-	ChannelId                  *string                                       `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
-	ClockWidgets               []*UpdateCloudRecordShrinkRequestClockWidgets `json:"ClockWidgets,omitempty" xml:"ClockWidgets,omitempty" type:"Repeated"`
-	Images                     []*UpdateCloudRecordShrinkRequestImages       `json:"Images,omitempty" xml:"Images,omitempty" type:"Repeated"`
-	LayoutSpecifiedUsersShrink *string                                       `json:"LayoutSpecifiedUsers,omitempty" xml:"LayoutSpecifiedUsers,omitempty"`
-	Panes                      []*UpdateCloudRecordShrinkRequestPanes        `json:"Panes,omitempty" xml:"Panes,omitempty" type:"Repeated"`
+	ChannelId *string `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
+	// Global clock watermarks.
+	ClockWidgets []*UpdateCloudRecordShrinkRequestClockWidgets `json:"ClockWidgets,omitempty" xml:"ClockWidgets,omitempty" type:"Repeated"`
+	// Global image watermarks.
+	Images []*UpdateCloudRecordShrinkRequestImages `json:"Images,omitempty" xml:"Images,omitempty" type:"Repeated"`
+	// A list that specifies users for layout generation. It supports both blacklists and whitelists.
+	//
+	// Whitelist: Specifies the users whose video streams are subscribed to in the channel.
+	//
+	// - The auto-fill feature uses this list for sequential filling.
+	//
+	// - During multi-layout switching, only users in the whitelist are included.
+	//
+	// Blacklist: Specifies the users whose video streams are not subscribed to in the channel.
+	//
+	// - During multi-layout switching, only users not in the blacklist are included.
+	LayoutSpecifiedUsersShrink *string `json:"LayoutSpecifiedUsers,omitempty" xml:"LayoutSpecifiedUsers,omitempty"`
+	// Cell settings.
+	Panes []*UpdateCloudRecordShrinkRequestPanes `json:"Panes,omitempty" xml:"Panes,omitempty" type:"Repeated"`
+	// The task ID for this cloud recording. Only one ID is supported. It can contain letters, digits, underscores (_), and hyphens (-), with a maximum length of 55 bytes.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 123
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// The template ID.
+	//
+	// 	Notice: To update the layout, change the template ID. Resolution updates are not supported.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 567
-	TemplateId *string                                `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
-	Texts      []*UpdateCloudRecordShrinkRequestTexts `json:"Texts,omitempty" xml:"Texts,omitempty" type:"Repeated"`
+	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	// Global text watermarks.
+	Texts []*UpdateCloudRecordShrinkRequestTexts `json:"Texts,omitempty" xml:"Texts,omitempty" type:"Repeated"`
 }
 
 func (s UpdateCloudRecordShrinkRequest) String() string {
@@ -212,42 +238,64 @@ func (s *UpdateCloudRecordShrinkRequest) Validate() error {
 }
 
 type UpdateCloudRecordShrinkRequestBackgrounds struct {
+	// Transparency.
+	//
 	// example:
 	//
 	// 0.9
 	Alpha *float64 `json:"Alpha,omitempty" xml:"Alpha,omitempty"`
+	// The cropping mode. Valid values:
+	//
+	// - **1**: Crop while maintaining aspect ratio.
+	//
+	// - **2**: Maintain aspect ratio with padding.
+	//
+	// - **3**: Stretch to fill.
+	//
 	// example:
 	//
 	// 2
 	BackgroundCropMode *int32 `json:"BackgroundCropMode,omitempty" xml:"BackgroundCropMode,omitempty"`
+	// Height.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 0.2
 	Height *float64 `json:"Height,omitempty" xml:"Height,omitempty"`
+	// The z-axis layer.
+	//
 	// example:
 	//
 	// 0
 	Layer *int32 `json:"Layer,omitempty" xml:"Layer,omitempty"`
+	// The image URL.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// https://aliyun.com/123.jpg
 	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
+	// Width.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 0.2
 	Width *float64 `json:"Width,omitempty" xml:"Width,omitempty"`
+	// The horizontal coordinate.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 0.2
 	X *float64 `json:"X,omitempty" xml:"X,omitempty"`
+	// The vertical coordinate.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -341,45 +389,86 @@ func (s *UpdateCloudRecordShrinkRequestBackgrounds) Validate() error {
 }
 
 type UpdateCloudRecordShrinkRequestClockWidgets struct {
+	// Transparency.
+	//
 	// example:
 	//
 	// 0.9
 	Alpha *float64 `json:"Alpha,omitempty" xml:"Alpha,omitempty"`
+	// Rectangle box transparency.
+	//
 	// example:
 	//
 	// 0.6
 	BoxAlpha *float64 `json:"BoxAlpha,omitempty" xml:"BoxAlpha,omitempty"`
+	// Rectangle box border width.
+	//
 	// example:
 	//
 	// 5
-	BoxBorderw *int32                                              `json:"BoxBorderw,omitempty" xml:"BoxBorderw,omitempty"`
-	BoxColor   *UpdateCloudRecordShrinkRequestClockWidgetsBoxColor `json:"BoxColor,omitempty" xml:"BoxColor,omitempty" type:"Struct"`
+	BoxBorderw *int32 `json:"BoxBorderw,omitempty" xml:"BoxBorderw,omitempty"`
+	// Rectangle box color.
+	BoxColor *UpdateCloudRecordShrinkRequestClockWidgetsBoxColor `json:"BoxColor,omitempty" xml:"BoxColor,omitempty" type:"Struct"`
+	// Font.
+	//
+	// - **0**: Alibaba PuHuiTi Regular
+	//
+	// - **1**: Alibaba PuHuiTi Light
+	//
+	// - **2**: Alibaba PuHuiTi Medium
+	//
+	// - **3**: Alibaba PuHuiTi Bold
+	//
+	// - **4**: Alibaba PuHuiTi Heavy
+	//
+	// - **5**: Ali Mama ShuHeiTi
+	//
+	// - **6**: DingTalk JinBuTi
+	//
+	// - **7**: Ali Mama DaoLiTi
+	//
+	// - **8**: Ali Mama DongFang DaKai
+	//
+	// - **9**: Ali Mama FangYuanTi
+	//
 	// example:
 	//
 	// 0
-	Font      *int32                                               `json:"Font,omitempty" xml:"Font,omitempty"`
+	Font *int32 `json:"Font,omitempty" xml:"Font,omitempty"`
+	// Font color.
 	FontColor *UpdateCloudRecordShrinkRequestClockWidgetsFontColor `json:"FontColor,omitempty" xml:"FontColor,omitempty" type:"Struct"`
+	// Clock font size.
+	//
 	// example:
 	//
 	// 30
 	FontSize *int32 `json:"FontSize,omitempty" xml:"FontSize,omitempty"`
-	HasBox   *bool  `json:"HasBox,omitempty" xml:"HasBox,omitempty"`
+	// Whether to draw a rectangle box.
+	HasBox *bool `json:"HasBox,omitempty" xml:"HasBox,omitempty"`
+	// The z-axis layer.
+	//
 	// example:
 	//
 	// 0
 	Layer *int32 `json:"Layer,omitempty" xml:"Layer,omitempty"`
+	// The horizontal coordinate.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 0.2
 	X *float64 `json:"X,omitempty" xml:"X,omitempty"`
+	// The vertical coordinate.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 0.2
 	Y *float64 `json:"Y,omitempty" xml:"Y,omitempty"`
+	// Time zone.
+	//
 	// example:
 	//
 	// 8
@@ -517,14 +606,20 @@ func (s *UpdateCloudRecordShrinkRequestClockWidgets) Validate() error {
 }
 
 type UpdateCloudRecordShrinkRequestClockWidgetsBoxColor struct {
+	// B.
+	//
 	// example:
 	//
 	// 255
 	B *int32 `json:"B,omitempty" xml:"B,omitempty"`
+	// G.
+	//
 	// example:
 	//
 	// 255
 	G *int32 `json:"G,omitempty" xml:"G,omitempty"`
+	// R.
+	//
 	// example:
 	//
 	// 255
@@ -571,14 +666,20 @@ func (s *UpdateCloudRecordShrinkRequestClockWidgetsBoxColor) Validate() error {
 }
 
 type UpdateCloudRecordShrinkRequestClockWidgetsFontColor struct {
+	// B.
+	//
 	// example:
 	//
 	// 255
 	B *int32 `json:"B,omitempty" xml:"B,omitempty"`
+	// G.
+	//
 	// example:
 	//
 	// 255
 	G *int32 `json:"G,omitempty" xml:"G,omitempty"`
+	// R.
+	//
 	// example:
 	//
 	// 255
@@ -625,42 +726,64 @@ func (s *UpdateCloudRecordShrinkRequestClockWidgetsFontColor) Validate() error {
 }
 
 type UpdateCloudRecordShrinkRequestImages struct {
+	// Transparency.
+	//
 	// example:
 	//
 	// 0.9
 	Alpha *float64 `json:"Alpha,omitempty" xml:"Alpha,omitempty"`
+	// Height.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 0.2
 	Height *float64 `json:"Height,omitempty" xml:"Height,omitempty"`
+	// The cropping mode. Valid values:
+	//
+	// - **1**: Crop while maintaining aspect ratio.
+	//
+	// - **2**: Maintain aspect ratio with padding.
+	//
+	// - **3**: Stretch to fill.
+	//
 	// example:
 	//
 	// 2
 	ImageCropMode *int32 `json:"ImageCropMode,omitempty" xml:"ImageCropMode,omitempty"`
+	// The z-axis layer.
+	//
 	// example:
 	//
 	// 0
 	Layer *int32 `json:"Layer,omitempty" xml:"Layer,omitempty"`
+	// The image URL. The image content cannot be updated during stream ingest.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// https://aliyun.com/123.jpg
 	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
+	// Width.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 0.2
 	Width *float64 `json:"Width,omitempty" xml:"Width,omitempty"`
+	// The horizontal coordinate.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 0.2
 	X *float64 `json:"X,omitempty" xml:"X,omitempty"`
+	// The vertical coordinate.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -754,32 +877,69 @@ func (s *UpdateCloudRecordShrinkRequestImages) Validate() error {
 }
 
 type UpdateCloudRecordShrinkRequestPanes struct {
+	// Background images.
 	Backgrounds []*UpdateCloudRecordShrinkRequestPanesBackgrounds `json:"Backgrounds,omitempty" xml:"Backgrounds,omitempty" type:"Repeated"`
-	Images      []*UpdateCloudRecordShrinkRequestPanesImages      `json:"Images,omitempty" xml:"Images,omitempty" type:"Repeated"`
+	// Local image watermarks for the pane.
+	Images []*UpdateCloudRecordShrinkRequestPanesImages `json:"Images,omitempty" xml:"Images,omitempty" type:"Repeated"`
+	// The cropping mode. Valid values:
+	//
+	// - **1**: Crop while maintaining aspect ratio.
+	//
+	// - **2**: Maintain aspect ratio with padding.
+	//
+	// - **3**: Stretch to fill.
+	//
 	// example:
 	//
 	// 2
 	PaneCropMode *int32 `json:"PaneCropMode,omitempty" xml:"PaneCropMode,omitempty"`
+	// The pane ID, starting from 0.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 0
-	PaneId                    *int32 `json:"PaneId,omitempty" xml:"PaneId,omitempty"`
-	ReservePaneForOfflineUser *bool  `json:"ReservePaneForOfflineUser,omitempty" xml:"ReservePaneForOfflineUser,omitempty"`
+	PaneId *int32 `json:"PaneId,omitempty" xml:"PaneId,omitempty"`
+	// Reserves a pane for a user who goes offline. The default value is true. If true, the pane for a specified user or wildcard user remains as a placeholder. If false, the pane is filled with a video stream based on the Auto Fill order.
+	ReservePaneForOfflineUser *bool `json:"ReservePaneForOfflineUser,omitempty" xml:"ReservePaneForOfflineUser,omitempty"`
+	// The media source for the cell. You can specify a userId to target a specific user. Wildcard characters are also supported:
+	//
+	// - **$ActiveSpeaker**: The current active speaker in the channel.
+	//
+	// - **$ScreenShare**: A screen-sharing user. If multiple users share their screens, they are filled in sequence.
+	//
 	// example:
 	//
 	// 22
 	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
+	// The media type of the cell. Valid values:
+	//
+	// - **video**: Camera or screen sharing stream (default).
+	//
+	// - **camera**: Camera stream.
+	//
+	// - **screen**: Screen sharing stream.
+	//
+	// - **whiteboard**: Whiteboard.
+	//
 	// example:
 	//
 	// video
-	SourceType *string                                     `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
-	Texts      []*UpdateCloudRecordShrinkRequestPanesTexts `json:"Texts,omitempty" xml:"Texts,omitempty" type:"Repeated"`
+	SourceType *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
+	// Local text watermarks for the pane.
+	Texts []*UpdateCloudRecordShrinkRequestPanesTexts `json:"Texts,omitempty" xml:"Texts,omitempty" type:"Repeated"`
+	// The fill order when SourceType is video.
+	//
+	// - screenFirst: Prioritize screen sharing (default).
+	//
+	// - cameraFirst: Prioritize camera.
+	//
 	// example:
 	//
 	// cameraFirst
-	VideoOrder *string                                        `json:"VideoOrder,omitempty" xml:"VideoOrder,omitempty"`
+	VideoOrder *string `json:"VideoOrder,omitempty" xml:"VideoOrder,omitempty"`
+	// Whiteboard configuration.
 	Whiteboard *UpdateCloudRecordShrinkRequestPanesWhiteboard `json:"Whiteboard,omitempty" xml:"Whiteboard,omitempty" type:"Struct"`
 }
 
@@ -918,46 +1078,76 @@ func (s *UpdateCloudRecordShrinkRequestPanes) Validate() error {
 }
 
 type UpdateCloudRecordShrinkRequestPanesBackgrounds struct {
+	// Transparency.
+	//
 	// example:
 	//
 	// 0.9
 	Alpha *float64 `json:"Alpha,omitempty" xml:"Alpha,omitempty"`
+	// When to display.
+	//
+	// - streamOnly: Display only when the user has a video stream (default).
+	//
+	// - backup: Display only when the user has no video stream.
+	//
+	// - always: Always display.
+	//
 	// example:
 	//
 	// backup
 	Display *string `json:"Display,omitempty" xml:"Display,omitempty"`
+	// Height.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 0.2
 	Height *float64 `json:"Height,omitempty" xml:"Height,omitempty"`
+	// The z-axis layer.
+	//
 	// example:
 	//
 	// 0
 	Layer *int32 `json:"Layer,omitempty" xml:"Layer,omitempty"`
+	// The cropping mode. Valid values:
+	//
+	// - **1**: Crop while maintaining aspect ratio.
+	//
+	// - **2**: Maintain aspect ratio with padding.
+	//
+	// - **3**: Stretch to fill.
+	//
 	// example:
 	//
 	// 2
 	PaneBackgroundCropMode *int32 `json:"PaneBackgroundCropMode,omitempty" xml:"PaneBackgroundCropMode,omitempty"`
+	// The background image URL.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// https://aliyun.com/123xx.jpg
 	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
+	// Width.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 0.2
 	Width *float64 `json:"Width,omitempty" xml:"Width,omitempty"`
+	// The horizontal coordinate.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 0.2
 	X *float64 `json:"X,omitempty" xml:"X,omitempty"`
+	// The vertical coordinate.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -1060,46 +1250,76 @@ func (s *UpdateCloudRecordShrinkRequestPanesBackgrounds) Validate() error {
 }
 
 type UpdateCloudRecordShrinkRequestPanesImages struct {
+	// Transparency.
+	//
 	// example:
 	//
 	// 0.9
 	Alpha *float64 `json:"Alpha,omitempty" xml:"Alpha,omitempty"`
+	// When to display the watermark.
+	//
+	// - streamOnly: Display only when the user has a video stream (default).
+	//
+	// - backup: Display only when the user has no video stream.
+	//
+	// - always: Always display.
+	//
 	// example:
 	//
 	// backup
 	Display *string `json:"Display,omitempty" xml:"Display,omitempty"`
+	// Height.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 0.2
 	Height *float64 `json:"Height,omitempty" xml:"Height,omitempty"`
+	// The z-axis layer.
+	//
 	// example:
 	//
 	// 0
 	Layer *int32 `json:"Layer,omitempty" xml:"Layer,omitempty"`
+	// The cropping mode. Valid values:
+	//
+	// - **1**: Crop while maintaining aspect ratio.
+	//
+	// - **2**: Maintain aspect ratio with padding.
+	//
+	// - **3**: Stretch to fill.
+	//
 	// example:
 	//
 	// 2
 	PaneImageCropMode *int32 `json:"PaneImageCropMode,omitempty" xml:"PaneImageCropMode,omitempty"`
+	// The image URL. The image content cannot be updated during stream ingest.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// https://aliyun.com/123xxx.jpg
 	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
+	// Width.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 0.2
 	Width *float64 `json:"Width,omitempty" xml:"Width,omitempty"`
+	// The horizontal coordinate.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 0.2
 	X *float64 `json:"X,omitempty" xml:"X,omitempty"`
+	// The vertical coordinate.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -1202,49 +1422,98 @@ func (s *UpdateCloudRecordShrinkRequestPanesImages) Validate() error {
 }
 
 type UpdateCloudRecordShrinkRequestPanesTexts struct {
+	// Watermark transparency.
+	//
 	// example:
 	//
 	// 0.9
 	Alpha *float64 `json:"Alpha,omitempty" xml:"Alpha,omitempty"`
+	// Rectangle box transparency.
+	//
 	// example:
 	//
 	// 0.6
 	BoxAlpha *float64 `json:"BoxAlpha,omitempty" xml:"BoxAlpha,omitempty"`
+	// Rectangle box border width.
+	//
 	// example:
 	//
 	// 5
-	BoxBorderw *int32                                            `json:"BoxBorderw,omitempty" xml:"BoxBorderw,omitempty"`
-	BoxColor   *UpdateCloudRecordShrinkRequestPanesTextsBoxColor `json:"BoxColor,omitempty" xml:"BoxColor,omitempty" type:"Struct"`
+	BoxBorderw *int32 `json:"BoxBorderw,omitempty" xml:"BoxBorderw,omitempty"`
+	// Rectangle box color.
+	BoxColor *UpdateCloudRecordShrinkRequestPanesTextsBoxColor `json:"BoxColor,omitempty" xml:"BoxColor,omitempty" type:"Struct"`
+	// When to display the watermark.
+	//
+	// - streamOnly: Display only when the user has a video stream (default).
+	//
+	// - backup: Display only when the user has no video stream.
+	//
+	// - always: Always display.
+	//
 	// example:
 	//
 	// backup
 	Display *string `json:"Display,omitempty" xml:"Display,omitempty"`
+	// Font.
+	//
+	// - **0**: Alibaba PuHuiTi Regular
+	//
+	// - **1**: Alibaba PuHuiTi Light
+	//
+	// - **2**: Alibaba PuHuiTi Medium
+	//
+	// - **3**: Alibaba PuHuiTi Bold
+	//
+	// - **4**: Alibaba PuHuiTi Heavy
+	//
+	// - **5**: Ali Mama ShuHeiTi
+	//
+	// - **6**: DingTalk JinBuTi
+	//
+	// - **7**: Ali Mama DaoLiTi
+	//
+	// - **8**: Ali Mama DongFang DaKai
+	//
+	// - **9**: Ali Mama FangYuanTi
+	//
 	// example:
 	//
 	// 0
-	Font      *int32                                             `json:"Font,omitempty" xml:"Font,omitempty"`
+	Font *int32 `json:"Font,omitempty" xml:"Font,omitempty"`
+	// Font color.
 	FontColor *UpdateCloudRecordShrinkRequestPanesTextsFontColor `json:"FontColor,omitempty" xml:"FontColor,omitempty" type:"Struct"`
+	// Font size.
+	//
 	// example:
 	//
 	// 36
 	FontSize *int32 `json:"FontSize,omitempty" xml:"FontSize,omitempty"`
-	HasBox   *bool  `json:"HasBox,omitempty" xml:"HasBox,omitempty"`
+	// Whether to draw a rectangle box.
+	HasBox *bool `json:"HasBox,omitempty" xml:"HasBox,omitempty"`
+	// The z-axis layer.
+	//
 	// example:
 	//
 	// 0
 	Layer *int32 `json:"Layer,omitempty" xml:"Layer,omitempty"`
+	// The watermark content.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 文字水印
 	Texture *string `json:"Texture,omitempty" xml:"Texture,omitempty"`
+	// The horizontal coordinate.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 0.2
 	X *float64 `json:"X,omitempty" xml:"X,omitempty"`
+	// The vertical coordinate.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -1393,14 +1662,20 @@ func (s *UpdateCloudRecordShrinkRequestPanesTexts) Validate() error {
 }
 
 type UpdateCloudRecordShrinkRequestPanesTextsBoxColor struct {
+	// B.
+	//
 	// example:
 	//
 	// 255
 	B *int32 `json:"B,omitempty" xml:"B,omitempty"`
+	// G.
+	//
 	// example:
 	//
 	// 255
 	G *int32 `json:"G,omitempty" xml:"G,omitempty"`
+	// R.
+	//
 	// example:
 	//
 	// 255
@@ -1447,14 +1722,20 @@ func (s *UpdateCloudRecordShrinkRequestPanesTextsBoxColor) Validate() error {
 }
 
 type UpdateCloudRecordShrinkRequestPanesTextsFontColor struct {
+	// B.
+	//
 	// example:
 	//
 	// 255
 	B *int32 `json:"B,omitempty" xml:"B,omitempty"`
+	// G.
+	//
 	// example:
 	//
 	// 255
 	G *int32 `json:"G,omitempty" xml:"G,omitempty"`
+	// R.
+	//
 	// example:
 	//
 	// 255
@@ -1501,6 +1782,8 @@ func (s *UpdateCloudRecordShrinkRequestPanesTextsFontColor) Validate() error {
 }
 
 type UpdateCloudRecordShrinkRequestPanesWhiteboard struct {
+	// The whiteboard ID. Default value: default.
+	//
 	// example:
 	//
 	// default
@@ -1529,45 +1812,86 @@ func (s *UpdateCloudRecordShrinkRequestPanesWhiteboard) Validate() error {
 }
 
 type UpdateCloudRecordShrinkRequestTexts struct {
+	// Watermark transparency.
+	//
 	// example:
 	//
 	// 0.1
 	Alpha *float64 `json:"Alpha,omitempty" xml:"Alpha,omitempty"`
+	// Rectangle box transparency.
+	//
 	// example:
 	//
 	// 0.6
 	BoxAlpha *float64 `json:"BoxAlpha,omitempty" xml:"BoxAlpha,omitempty"`
+	// Rectangle box border width.
+	//
 	// example:
 	//
 	// 5
-	BoxBorderw *int32                                       `json:"BoxBorderw,omitempty" xml:"BoxBorderw,omitempty"`
-	BoxColor   *UpdateCloudRecordShrinkRequestTextsBoxColor `json:"BoxColor,omitempty" xml:"BoxColor,omitempty" type:"Struct"`
+	BoxBorderw *int32 `json:"BoxBorderw,omitempty" xml:"BoxBorderw,omitempty"`
+	// Rectangle box color.
+	BoxColor *UpdateCloudRecordShrinkRequestTextsBoxColor `json:"BoxColor,omitempty" xml:"BoxColor,omitempty" type:"Struct"`
+	// Font.
+	//
+	// - **0**: Alibaba PuHuiTi Regular
+	//
+	// - **1**: Alibaba PuHuiTi Light
+	//
+	// - **2**: Alibaba PuHuiTi Medium
+	//
+	// - **3**: Alibaba PuHuiTi Bold
+	//
+	// - **4**: Alibaba PuHuiTi Heavy
+	//
+	// - **5**: Ali Mama ShuHeiTi
+	//
+	// - **6**: DingTalk JinBuTi
+	//
+	// - **7**: Ali Mama DaoLiTi
+	//
+	// - **8**: Ali Mama DongFang DaKai
+	//
+	// - **9**: Ali Mama FangYuanTi
+	//
 	// example:
 	//
 	// 0
-	Font      *int32                                        `json:"Font,omitempty" xml:"Font,omitempty"`
+	Font *int32 `json:"Font,omitempty" xml:"Font,omitempty"`
+	// Font color.
 	FontColor *UpdateCloudRecordShrinkRequestTextsFontColor `json:"FontColor,omitempty" xml:"FontColor,omitempty" type:"Struct"`
+	// Font size.
+	//
 	// example:
 	//
 	// 36
 	FontSize *int32 `json:"FontSize,omitempty" xml:"FontSize,omitempty"`
-	HasBox   *bool  `json:"HasBox,omitempty" xml:"HasBox,omitempty"`
+	// Whether to draw a rectangle box.
+	HasBox *bool `json:"HasBox,omitempty" xml:"HasBox,omitempty"`
+	// The z-axis layer.
+	//
 	// example:
 	//
 	// 0
 	Layer *int32 `json:"Layer,omitempty" xml:"Layer,omitempty"`
+	// The watermark content.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 文字水印
 	Texture *string `json:"Texture,omitempty" xml:"Texture,omitempty"`
+	// The horizontal coordinate.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 0.2
 	X *float64 `json:"X,omitempty" xml:"X,omitempty"`
+	// The vertical coordinate.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -1707,14 +2031,20 @@ func (s *UpdateCloudRecordShrinkRequestTexts) Validate() error {
 }
 
 type UpdateCloudRecordShrinkRequestTextsBoxColor struct {
+	// B.
+	//
 	// example:
 	//
 	// 255
 	B *int32 `json:"B,omitempty" xml:"B,omitempty"`
+	// G.
+	//
 	// example:
 	//
 	// 255
 	G *int32 `json:"G,omitempty" xml:"G,omitempty"`
+	// R.
+	//
 	// example:
 	//
 	// 255
@@ -1761,14 +2091,20 @@ func (s *UpdateCloudRecordShrinkRequestTextsBoxColor) Validate() error {
 }
 
 type UpdateCloudRecordShrinkRequestTextsFontColor struct {
+	// B.
+	//
 	// example:
 	//
 	// 255
 	B *int32 `json:"B,omitempty" xml:"B,omitempty"`
+	// G.
+	//
 	// example:
 	//
 	// 255
 	G *int32 `json:"G,omitempty" xml:"G,omitempty"`
+	// R.
+	//
 	// example:
 	//
 	// 255

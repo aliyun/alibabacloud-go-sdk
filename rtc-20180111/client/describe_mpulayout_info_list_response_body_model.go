@@ -21,14 +21,20 @@ type iDescribeMPULayoutInfoListResponseBody interface {
 
 type DescribeMPULayoutInfoListResponseBody struct {
 	Layouts *DescribeMPULayoutInfoListResponseBodyLayouts `json:"Layouts,omitempty" xml:"Layouts,omitempty" type:"Struct"`
+	// Request ID.
+	//
 	// example:
 	//
 	// 760bad53276431c499e30dc36f6b26be
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Total number of records.
+	//
 	// example:
 	//
 	// 1
 	TotalNum *int64 `json:"TotalNum,omitempty" xml:"TotalNum,omitempty"`
+	// Total number of pages.
+	//
 	// example:
 	//
 	// 1

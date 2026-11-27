@@ -16,10 +16,13 @@ type iDescribeUsageDistributionStatDataResponseBody interface {
 }
 
 type DescribeUsageDistributionStatDataResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 231470C1-ACFB-4C9F-844F-4CFE1E3804C5
-	RequestId     *string                                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The list of usage statistics.
 	UsageStatList []*DescribeUsageDistributionStatDataResponseBodyUsageStatList `json:"UsageStatList,omitempty" xml:"UsageStatList,omitempty" type:"Repeated"`
 }
 
@@ -63,22 +66,38 @@ func (s *DescribeUsageDistributionStatDataResponseBody) Validate() error {
 }
 
 type DescribeUsageDistributionStatDataResponseBodyUsageStatList struct {
+	// The duration of audio calls, in minutes.
+	//
 	// example:
 	//
 	// 51
 	AudioCallDuration *int64 `json:"AudioCallDuration,omitempty" xml:"AudioCallDuration,omitempty"`
+	// The ratio of the call duration, represented by four decimal places, such as 0.9782.
+	//
 	// example:
 	//
 	// 0.9782
 	CallDurationRatio *string `json:"CallDurationRatio,omitempty" xml:"CallDurationRatio,omitempty"`
+	// The statistical dimension. Valid values:
+	//
+	// - When StatDim is set to CHANNEL_ONLINE, valid values are **ONE_TO_FIVE*	- (1 to 5 users), **SIX_TO_TEN*	- (6 to 10 users), **ELEVEN_TO_TWENTY*	- (11 to 20 users), **TWENTY_ONE_TO_FIFTY*	- (21 to 50 users), and **ABOVE_FIFTY*	- (more than 50 users).
+	//
+	// - When StatDim is set to NETWORK, valid values are **WiFi**, **4G**, and others.
+	//
+	// - When StatDim is set to OS, valid values are **iOS**, **Android**, and others.
+	//
 	// example:
 	//
 	// ONE_TO_FIVE
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The total duration of calls, in minutes.
+	//
 	// example:
 	//
 	// 10636
 	TotalCallDuration *int64 `json:"TotalCallDuration,omitempty" xml:"TotalCallDuration,omitempty"`
+	// The duration of video calls, in minutes.
+	//
 	// example:
 	//
 	// 10585

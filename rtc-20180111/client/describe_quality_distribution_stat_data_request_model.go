@@ -28,18 +28,30 @@ type DescribeQualityDistributionStatDataRequest struct {
 	//
 	// 0rbd****
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// End Time of the query, expressed as a UNIX timestamp in seconds.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1615910399
 	EndDate *int64 `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
+	// Start Time of the query, expressed as a UNIX timestamp in seconds.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1615824000
 	StartDate *int64 `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
+	// Statistical dimension. Valid values:
+	//
+	// - **CHANNEL_ONLINE**: Statistics by channel online participant count.
+	//
+	// - **NETWORK**: Statistics by network type.
+	//
+	// - **OS**: Statistics by operating system type.
+	//
 	// This parameter is required.
 	//
 	// example:

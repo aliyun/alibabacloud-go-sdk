@@ -16,7 +16,10 @@ type iDescribeQualityOsSdkVersionDistributionStatDataResponseBody interface {
 }
 
 type DescribeQualityOsSdkVersionDistributionStatDataResponseBody struct {
+	// The list of data for operating systems and SDK versions in quality statistics.
 	QualityOsSdkVersionStatDataList []*DescribeQualityOsSdkVersionDistributionStatDataResponseBodyQualityOsSdkVersionStatDataList `json:"QualityOsSdkVersionStatDataList,omitempty" xml:"QualityOsSdkVersionStatDataList,omitempty" type:"Repeated"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 231470C1-ACFB-4C9F-844F-4CFE1E3804C5
@@ -63,50 +66,74 @@ func (s *DescribeQualityOsSdkVersionDistributionStatDataResponseBody) Validate()
 }
 
 type DescribeQualityOsSdkVersionDistributionStatDataResponseBodyQualityOsSdkVersionStatDataList struct {
+	// The audio delay, in milliseconds.
+	//
 	// example:
 	//
 	// 248
 	AudioDelay *int64 `json:"AudioDelay,omitempty" xml:"AudioDelay,omitempty"`
+	// The audio high-quality transmission rate, represented by four decimal places.
+	//
 	// example:
 	//
 	// 0.9987
 	AudioHighQualityTransmissionRate *string `json:"AudioHighQualityTransmissionRate,omitempty" xml:"AudioHighQualityTransmissionRate,omitempty"`
+	// The audio stuttering rate, represented by four decimal places.
+	//
 	// example:
 	//
 	// 0.0011
 	AudioStuckRate *string `json:"AudioStuckRate,omitempty" xml:"AudioStuckRate,omitempty"`
+	// The call duration ratio, represented by four decimal places. For example, 1.0000 indicates that the call duration ratio is 100%.
+	//
 	// example:
 	//
 	// 0.0984
 	CallDurationRatio *string `json:"CallDurationRatio,omitempty" xml:"CallDurationRatio,omitempty"`
+	// The 5-second channel join success rate, represented by four decimal places.
+	//
 	// example:
 	//
 	// 0.8276
 	JoinChannelSucFiveSecRate *string `json:"JoinChannelSucFiveSecRate,omitempty" xml:"JoinChannelSucFiveSecRate,omitempty"`
+	// The channel join success rate, represented by four decimal places.
+	//
 	// example:
 	//
 	// 0.8276
 	JoinChannelSucRate *string `json:"JoinChannelSucRate,omitempty" xml:"JoinChannelSucRate,omitempty"`
+	// The SDK version name, such as 1.0.0 or 1.1.1.
+	//
 	// example:
 	//
 	// 2.1.0.210316.dev--release/rtcsdk_v2.1
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The operating system name, such as iOS or Android.
+	//
 	// example:
 	//
 	// macOS
 	Os *string `json:"Os,omitempty" xml:"Os,omitempty"`
+	// The video delay, in milliseconds.
+	//
 	// example:
 	//
 	// 333
 	VideoDelay *int64 `json:"VideoDelay,omitempty" xml:"VideoDelay,omitempty"`
+	// The first video frame rendering time, in milliseconds.
+	//
 	// example:
 	//
 	// 5643
 	VideoFirstPicDuration *int64 `json:"VideoFirstPicDuration,omitempty" xml:"VideoFirstPicDuration,omitempty"`
+	// The video high-quality transmission rate, represented by four decimal places.
+	//
 	// example:
 	//
 	// 0.9997
 	VideoHighQualityTransmissionRate *string `json:"VideoHighQualityTransmissionRate,omitempty" xml:"VideoHighQualityTransmissionRate,omitempty"`
+	// The video stuttering rate, represented by four decimal places.
+	//
 	// example:
 	//
 	// 0.0054

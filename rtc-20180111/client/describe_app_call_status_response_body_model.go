@@ -22,6 +22,8 @@ type DescribeAppCallStatusResponseBody struct {
 	//
 	// 20A6D1E3-1F5F-5440-A4F1-EC7831646FE4
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The callback status. Valid values: enable (enabled) and disable (disabled).
+	//
 	// example:
 	//
 	// enable

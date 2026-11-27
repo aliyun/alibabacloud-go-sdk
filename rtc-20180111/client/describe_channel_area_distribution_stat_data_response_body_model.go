@@ -16,7 +16,10 @@ type iDescribeChannelAreaDistributionStatDataResponseBody interface {
 }
 
 type DescribeChannelAreaDistributionStatDataResponseBody struct {
+	// The regional statistics list.
 	AreaStatList []*DescribeChannelAreaDistributionStatDataResponseBodyAreaStatList `json:"AreaStatList,omitempty" xml:"AreaStatList,omitempty" type:"Repeated"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 231470C1-ACFB-4C9F-844F-4CFE1E3804C5
@@ -63,22 +66,32 @@ func (s *DescribeChannelAreaDistributionStatDataResponseBody) Validate() error {
 }
 
 type DescribeChannelAreaDistributionStatDataResponseBodyAreaStatList struct {
+	// The region name, such as China_Zhejiang Province_Hangzhou.
+	//
 	// example:
 	//
-	// 浙江省
+	// China_Zhejiang Province_Hangzhou
 	AreaName *string `json:"AreaName,omitempty" xml:"AreaName,omitempty"`
+	// The number of communicating users.
+	//
 	// example:
 	//
 	// 1
 	CallUserCount *int32 `json:"CallUserCount,omitempty" xml:"CallUserCount,omitempty"`
+	// The high-quality transmission rate, represented as a decimal. For example, 0.9999 indicates a high-quality transmission rate of 99.99%.
+	//
 	// example:
 	//
 	// 0.9999
 	HighQualityTransmissionRate *string `json:"HighQualityTransmissionRate,omitempty" xml:"HighQualityTransmissionRate,omitempty"`
+	// The number of publishers.
+	//
 	// example:
 	//
 	// 1
 	PubUserCount *int32 `json:"PubUserCount,omitempty" xml:"PubUserCount,omitempty"`
+	// The number of subscribers.
+	//
 	// example:
 	//
 	// 1

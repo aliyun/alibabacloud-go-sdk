@@ -18,16 +18,22 @@ type iCreateAppRecordTemplateShrinkRequest interface {
 }
 
 type CreateAppRecordTemplateShrinkRequest struct {
+	// The application ID. You can create and query the ID in the console. Only a single ID is supported.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ac7N****
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The client token.
+	//
 	// example:
 	//
 	// 123e4567-e89b-12d3-a456-42665544****
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The recording template.
+	//
 	// This parameter is required.
 	RecordTemplateShrink *string `json:"RecordTemplate,omitempty" xml:"RecordTemplate,omitempty"`
 }

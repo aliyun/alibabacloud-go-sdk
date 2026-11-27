@@ -18,6 +18,8 @@ type iDeleteRecordTemplateRequest interface {
 }
 
 type DeleteRecordTemplateRequest struct {
+	// The application ID. You can create and query the ID in the console. Only a single ID is supported.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -25,6 +27,8 @@ type DeleteRecordTemplateRequest struct {
 	// yourAppId
 	AppId   *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
 	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The configuration template ID. For more information about how to obtain the template ID, see [AddRecordTemplate](https://help.aliyun.com/document_detail/193625.html).
+	//
 	// This parameter is required.
 	//
 	// example:

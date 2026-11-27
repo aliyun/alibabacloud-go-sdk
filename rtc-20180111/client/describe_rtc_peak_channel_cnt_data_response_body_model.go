@@ -17,6 +17,8 @@ type iDescribeRtcPeakChannelCntDataResponseBody interface {
 
 type DescribeRtcPeakChannelCntDataResponseBody struct {
 	PeakChannelCntDataPerInterval *DescribeRtcPeakChannelCntDataResponseBodyPeakChannelCntDataPerInterval `json:"PeakChannelCntDataPerInterval,omitempty" xml:"PeakChannelCntDataPerInterval,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 16A96B9A-F203-4EC5-8E43-CB92E68F4CD8

@@ -24,7 +24,7 @@ type iDescribeCallRequest interface {
 }
 
 type DescribeCallRequest struct {
-	// APP ID。
+	// The app ID.
 	//
 	// This parameter is required.
 	//
@@ -32,26 +32,42 @@ type DescribeCallRequest struct {
 	//
 	// testappid
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The channel ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// testid
 	ChannelId *string `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
+	// The time when the channel was created. You can query data of the last 30 days. The time is a UNIX timestamp in seconds.
+	//
+	// > The channel creation time must be exactly the same as the actual creation time (accurate to the second). You can call the [DescribeCallList](https://help.aliyun.com/document_detail/2655884.html) operation to view the channel creation time (the CreatedTS parameter in the response).
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1614936817
 	CreatedTs *int64 `json:"CreatedTs,omitempty" xml:"CreatedTs,omitempty"`
+	// The time when the channel was released. The time is a UNIX timestamp in seconds. If this parameter is left empty, the current time is used.
+	//
+	// > If the specified channel release time is later than the actual release time, the data from the creation time to the actual release time is returned.
+	//
 	// example:
 	//
 	// 1614936817
 	DestroyedTs *int64 `json:"DestroyedTs,omitempty" xml:"DestroyedTs,omitempty"`
+	// The extended data type to query. Valid values:
+	//
+	// - USER_DURATION_STAT: user duration statistics.
+	//
 	// example:
 	//
 	// USER_DURATION_STAT
 	ExtDataType *string `json:"ExtDataType,omitempty" xml:"ExtDataType,omitempty"`
+	// Specifies whether to query the communication experience information. Default value: true.
+	//
 	// example:
 	//
 	// false

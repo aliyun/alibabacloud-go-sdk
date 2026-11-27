@@ -40,46 +40,76 @@ type DescribeCallListRequest struct {
 	//
 	// testappid
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// Call status. Valid values:
+	//
+	// - **IN**: In progress.
+	//
+	// - **OUT**: Ended.
+	//
 	// example:
 	//
 	// OUT
 	CallStatus *string `json:"CallStatus,omitempty" xml:"CallStatus,omitempty"`
+	// Channel ID.
+	//
 	// example:
 	//
 	// 311
 	ChannelId *string `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
+	// The end time of the query, expressed as a UNIX timestamp. Unit: seconds.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1615892596
 	EndTs *int64 `json:"EndTs,omitempty" xml:"EndTs,omitempty"`
+	// Sorting field. Valid values:
+	//
+	// - **BAD_EXP_USER_COUNT_DESC**: Sort by the number of users with poor experience in descending order.
+	//
+	// - **BAD_EXP_USER_COUNT_ASC**: Sort by the number of users with poor experience in ascending order.
+	//
 	// example:
 	//
 	// BAD_EXP_USER_COUNT_DESC
 	OrderBy *string `json:"OrderBy,omitempty" xml:"OrderBy,omitempty"`
+	// Page number. Minimum value: 1. Maximum value: 200.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1
 	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	// Quantity per page, minimum value is 1, maximum value is 200.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// Query mode. Valid values:
+	//
+	// - **ALL**: All calls.
+	//
+	// - **FOLLOW**: Followed calls.
+	//
 	// example:
 	//
 	// ALL
 	QueryMode *string `json:"QueryMode,omitempty" xml:"QueryMode,omitempty"`
+	// Start Time of the query, represented as a UNIX timestamp in seconds.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1615806196
 	StartTs *int64 `json:"StartTs,omitempty" xml:"StartTs,omitempty"`
+	// User ID.
+	//
 	// example:
 	//
 	// c906531af5f9****

@@ -18,12 +18,20 @@ type iDescribeChannelAllUsersResponseBody interface {
 }
 
 type DescribeChannelAllUsersResponseBody struct {
+	// Indicates whether the channel exists. Valid values:
+	//
+	// - **true**: The channel exists.
+	//
+	// - **false**: The channel does not exist.
 	ChannelExist *bool `json:"ChannelExist,omitempty" xml:"ChannelExist,omitempty"`
+	// Request ID.
+	//
 	// example:
 	//
 	// 16A96B9A-F203-4EC5-8E43-CB92E68F4CF8
-	RequestId *string                                     `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Users     []*DescribeChannelAllUsersResponseBodyUsers `json:"Users,omitempty" xml:"Users,omitempty" type:"Repeated"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// List of online users in the channel.
+	Users []*DescribeChannelAllUsersResponseBodyUsers `json:"Users,omitempty" xml:"Users,omitempty" type:"Repeated"`
 }
 
 func (s DescribeChannelAllUsersResponseBody) String() string {
@@ -75,6 +83,8 @@ func (s *DescribeChannelAllUsersResponseBody) Validate() error {
 }
 
 type DescribeChannelAllUsersResponseBodyUsers struct {
+	// User ID.
+	//
 	// example:
 	//
 	// 1811****

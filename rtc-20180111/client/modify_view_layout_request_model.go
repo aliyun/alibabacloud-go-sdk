@@ -32,36 +32,50 @@ type iModifyViewLayoutRequest interface {
 }
 
 type ModifyViewLayoutRequest struct {
+	// The application ID. You can create and query the ID in the console. Only a single ID is supported.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// eo85****
-	AppId       *string                               `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The background images.
 	Backgrounds []*ModifyViewLayoutRequestBackgrounds `json:"Backgrounds,omitempty" xml:"Backgrounds,omitempty" type:"Repeated"`
+	// The ID of an existing channel. Only a single ID is supported.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// testid
-	ChannelId            *string                                      `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
-	ClockWidgets         []*ModifyViewLayoutRequestClockWidgets       `json:"ClockWidgets,omitempty" xml:"ClockWidgets,omitempty" type:"Repeated"`
-	Images               []*ModifyViewLayoutRequestImages             `json:"Images,omitempty" xml:"Images,omitempty" type:"Repeated"`
+	ChannelId *string `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
+	// The global clock watermark.
+	ClockWidgets []*ModifyViewLayoutRequestClockWidgets `json:"ClockWidgets,omitempty" xml:"ClockWidgets,omitempty" type:"Repeated"`
+	// The global image watermark.
+	Images []*ModifyViewLayoutRequestImages `json:"Images,omitempty" xml:"Images,omitempty" type:"Repeated"`
+	// The blacklists and whitelists settings.
 	LayoutSpecifiedUsers *ModifyViewLayoutRequestLayoutSpecifiedUsers `json:"LayoutSpecifiedUsers,omitempty" xml:"LayoutSpecifiedUsers,omitempty" type:"Struct"`
-	Panes                []*ModifyViewLayoutRequestPanes              `json:"Panes,omitempty" xml:"Panes,omitempty" type:"Repeated"`
+	// The pane settings. You can configure up to 16 panes.
+	Panes []*ModifyViewLayoutRequestPanes `json:"Panes,omitempty" xml:"Panes,omitempty" type:"Repeated"`
+	// The task ID. Only a single ID is supported. The ID can contain letters, digits, underscores (_), and hyphens (-), and can be up to 55 bytes in length.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 123
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// The template ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 567
-	TemplateId *string                         `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
-	Texts      []*ModifyViewLayoutRequestTexts `json:"Texts,omitempty" xml:"Texts,omitempty" type:"Repeated"`
+	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	// The global text watermark.
+	Texts []*ModifyViewLayoutRequestTexts `json:"Texts,omitempty" xml:"Texts,omitempty" type:"Repeated"`
 }
 
 func (s ModifyViewLayoutRequest) String() string {
@@ -217,42 +231,64 @@ func (s *ModifyViewLayoutRequest) Validate() error {
 }
 
 type ModifyViewLayoutRequestBackgrounds struct {
+	// The opacity of the image.
+	//
 	// example:
 	//
 	// 0.9
 	Alpha *float64 `json:"Alpha,omitempty" xml:"Alpha,omitempty"`
+	// The crop mode of the image. Valid values:
+	//
+	// - **1**: Crops the image while maintaining the aspect ratio.
+	//
+	// - **2**: Maintains the aspect ratio and adds padding.
+	//
+	// - **3**: Stretches the image to fill the area.
+	//
 	// example:
 	//
 	// 2
 	BackgroundCropMode *int32 `json:"BackgroundCropMode,omitempty" xml:"BackgroundCropMode,omitempty"`
+	// The height.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 0.2
 	Height *float64 `json:"Height,omitempty" xml:"Height,omitempty"`
+	// The z-axis layer.
+	//
 	// example:
 	//
 	// 0
 	Layer *int32 `json:"Layer,omitempty" xml:"Layer,omitempty"`
+	// The URL of the image.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// https://aliyun.com/123.jpg
 	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
+	// The width.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 0.2
 	Width *float64 `json:"Width,omitempty" xml:"Width,omitempty"`
+	// The x-coordinate.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 0.2
 	X *float64 `json:"X,omitempty" xml:"X,omitempty"`
+	// The y-coordinate.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -346,45 +382,86 @@ func (s *ModifyViewLayoutRequestBackgrounds) Validate() error {
 }
 
 type ModifyViewLayoutRequestClockWidgets struct {
+	// The opacity of the image.
+	//
 	// example:
 	//
 	// 0.9
 	Alpha *float64 `json:"Alpha,omitempty" xml:"Alpha,omitempty"`
+	// The opacity of the text box.
+	//
 	// example:
 	//
 	// 0.6
 	BoxAlpha *float64 `json:"BoxAlpha,omitempty" xml:"BoxAlpha,omitempty"`
+	// The border width of the text box.
+	//
 	// example:
 	//
 	// 5
-	BoxBorderw *int32                                       `json:"BoxBorderw,omitempty" xml:"BoxBorderw,omitempty"`
-	BoxColor   *ModifyViewLayoutRequestClockWidgetsBoxColor `json:"BoxColor,omitempty" xml:"BoxColor,omitempty" type:"Struct"`
+	BoxBorderw *int32 `json:"BoxBorderw,omitempty" xml:"BoxBorderw,omitempty"`
+	// The border color of the text box.
+	BoxColor *ModifyViewLayoutRequestClockWidgetsBoxColor `json:"BoxColor,omitempty" xml:"BoxColor,omitempty" type:"Struct"`
+	// The font. Valid values:
+	//
+	// - **0**: Alibaba PuHuiTi Regular
+	//
+	// - **1**: Alibaba PuHuiTi Light
+	//
+	// - **2**: Alibaba PuHuiTi Medium
+	//
+	// - **3**: Alibaba PuHuiTi Bold
+	//
+	// - **4**: Alibaba PuHuiTi Heavy
+	//
+	// - **5**: Alimama ShuHeiTi
+	//
+	// - **6**: DingTalk JinBuTi
+	//
+	// - **7**: Alimama DaoLiTi
+	//
+	// - **8**: Alimama DongFangDaKai
+	//
+	// - **9**: Alimama FangYuanTi
+	//
 	// example:
 	//
 	// 0
-	Font      *int32                                        `json:"Font,omitempty" xml:"Font,omitempty"`
+	Font *int32 `json:"Font,omitempty" xml:"Font,omitempty"`
+	// The font color.
 	FontColor *ModifyViewLayoutRequestClockWidgetsFontColor `json:"FontColor,omitempty" xml:"FontColor,omitempty" type:"Struct"`
+	// The clock font size.
+	//
 	// example:
 	//
 	// 30
 	FontSize *int32 `json:"FontSize,omitempty" xml:"FontSize,omitempty"`
-	HasBox   *bool  `json:"HasBox,omitempty" xml:"HasBox,omitempty"`
+	// Specifies whether to display a text box.
+	HasBox *bool `json:"HasBox,omitempty" xml:"HasBox,omitempty"`
+	// The z-axis layer.
+	//
 	// example:
 	//
 	// 0
 	Layer *int32 `json:"Layer,omitempty" xml:"Layer,omitempty"`
+	// The x-coordinate.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 0.2
 	X *float64 `json:"X,omitempty" xml:"X,omitempty"`
+	// The y-coordinate.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 0.2
 	Y *float64 `json:"Y,omitempty" xml:"Y,omitempty"`
+	// The time zone.
+	//
 	// example:
 	//
 	// 8
@@ -522,19 +599,19 @@ func (s *ModifyViewLayoutRequestClockWidgets) Validate() error {
 }
 
 type ModifyViewLayoutRequestClockWidgetsBoxColor struct {
-	// B。
+	// The blue component.
 	//
 	// example:
 	//
 	// 255
 	B *int32 `json:"B,omitempty" xml:"B,omitempty"`
-	// G。
+	// The green component.
 	//
 	// example:
 	//
 	// 255
 	G *int32 `json:"G,omitempty" xml:"G,omitempty"`
-	// R。
+	// The red component.
 	//
 	// example:
 	//
@@ -582,19 +659,19 @@ func (s *ModifyViewLayoutRequestClockWidgetsBoxColor) Validate() error {
 }
 
 type ModifyViewLayoutRequestClockWidgetsFontColor struct {
-	// B。
+	// The blue component.
 	//
 	// example:
 	//
 	// 255
 	B *int32 `json:"B,omitempty" xml:"B,omitempty"`
-	// G。
+	// The green component.
 	//
 	// example:
 	//
 	// 255
 	G *int32 `json:"G,omitempty" xml:"G,omitempty"`
-	// R。
+	// The red component.
 	//
 	// example:
 	//
@@ -642,42 +719,64 @@ func (s *ModifyViewLayoutRequestClockWidgetsFontColor) Validate() error {
 }
 
 type ModifyViewLayoutRequestImages struct {
+	// The opacity of the image.
+	//
 	// example:
 	//
 	// 0.9
 	Alpha *float64 `json:"Alpha,omitempty" xml:"Alpha,omitempty"`
+	// The height.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 0.2
 	Height *float64 `json:"Height,omitempty" xml:"Height,omitempty"`
+	// The crop mode of the image. Valid values:
+	//
+	// - **1**: Crops the image while maintaining the aspect ratio.
+	//
+	// - **2**: Maintains the aspect ratio and adds padding.
+	//
+	// - **3**: Stretches the image to fill the area.
+	//
 	// example:
 	//
 	// 2
 	ImageCropMode *int32 `json:"ImageCropMode,omitempty" xml:"ImageCropMode,omitempty"`
+	// The z-axis layer.
+	//
 	// example:
 	//
 	// 0
 	Layer *int32 `json:"Layer,omitempty" xml:"Layer,omitempty"`
+	// The URL of the image.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// https://aliyun.com/123xxx.jpg
 	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
+	// The width.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 0.2
 	Width *float64 `json:"Width,omitempty" xml:"Width,omitempty"`
+	// The x-coordinate.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 0.2
 	X *float64 `json:"X,omitempty" xml:"X,omitempty"`
+	// The y-coordinate.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -771,8 +870,12 @@ func (s *ModifyViewLayoutRequestImages) Validate() error {
 }
 
 type ModifyViewLayoutRequestLayoutSpecifiedUsers struct {
+	// The list of specified user IDs.
+	//
 	// This parameter is required.
 	Ids []*string `json:"Ids,omitempty" xml:"Ids,omitempty" type:"Repeated"`
+	// The user list type. Valid values: black: Blacklist. white: Whitelist.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -812,26 +915,52 @@ func (s *ModifyViewLayoutRequestLayoutSpecifiedUsers) Validate() error {
 }
 
 type ModifyViewLayoutRequestPanes struct {
+	// The image watermarks for the pane.
 	Images []*ModifyViewLayoutRequestPanesImages `json:"Images,omitempty" xml:"Images,omitempty" type:"Repeated"`
+	// The crop mode of the image. Valid values:
+	//
+	// - **1**: Crops the image while maintaining the aspect ratio.
+	//
+	// - **2**: Maintains the aspect ratio and adds padding.
+	//
+	// - **3**: Stretches the image to fill the area.
+	//
 	// example:
 	//
 	// 2
 	PaneCropMode *int32 `json:"PaneCropMode,omitempty" xml:"PaneCropMode,omitempty"`
+	// The ID of the pane. The ID starts from 0.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 0
 	PaneId *string `json:"PaneId,omitempty" xml:"PaneId,omitempty"`
+	// The media source of the pane. You can specify a userId. To specify a specific user type, you can use wildcard configurations. The following types are supported:
+	//
+	// - **$ActiveSpeaker**: The active speaker in the current channel.
+	//
+	// - **$ScreenShare**: The user who is sharing the screen. If multiple users are sharing their screens in the channel, the panes are filled in chronological order.
+	//
 	// example:
 	//
 	// 22
 	Source *string `json:"Source,omitempty" xml:"Source,omitempty"`
+	// The media type of the pane. Valid values:
+	//
+	// - **video**: The camera or screen sharing stream of the user. This is the default value.
+	//
+	// - **camera**: The camera stream.
+	//
+	// - **screen**: The screen sharing stream.
+	//
 	// example:
 	//
 	// video
-	SourceType *string                              `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
-	Texts      []*ModifyViewLayoutRequestPanesTexts `json:"Texts,omitempty" xml:"Texts,omitempty" type:"Repeated"`
+	SourceType *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
+	// The text watermarks for the pane.
+	Texts []*ModifyViewLayoutRequestPanesTexts `json:"Texts,omitempty" xml:"Texts,omitempty" type:"Repeated"`
 }
 
 func (s ModifyViewLayoutRequestPanes) String() string {
@@ -919,42 +1048,64 @@ func (s *ModifyViewLayoutRequestPanes) Validate() error {
 }
 
 type ModifyViewLayoutRequestPanesImages struct {
+	// The opacity of the image.
+	//
 	// example:
 	//
 	// 0.9
 	Alpha *float64 `json:"Alpha,omitempty" xml:"Alpha,omitempty"`
+	// The height.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 0.2
 	Height *float64 `json:"Height,omitempty" xml:"Height,omitempty"`
+	// The z-axis layer.
+	//
 	// example:
 	//
 	// 0
 	Layer *int32 `json:"Layer,omitempty" xml:"Layer,omitempty"`
+	// The crop mode of the image. Valid values:
+	//
+	// - **1**: Crops the image while maintaining the aspect ratio.
+	//
+	// - **2**: Maintains the aspect ratio and adds padding.
+	//
+	// - **3**: Stretches the image to fill the area.
+	//
 	// example:
 	//
 	// 2
 	PaneImageCropMode *int32 `json:"PaneImageCropMode,omitempty" xml:"PaneImageCropMode,omitempty"`
+	// The URL of the image.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// https://aliyun.com/123xxx.jpg
 	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
+	// The width.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 0.2
 	Width *float64 `json:"Width,omitempty" xml:"Width,omitempty"`
+	// The x-coordinate.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 0.2
 	X *float64 `json:"X,omitempty" xml:"X,omitempty"`
+	// The y-coordinate.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -1048,45 +1199,86 @@ func (s *ModifyViewLayoutRequestPanesImages) Validate() error {
 }
 
 type ModifyViewLayoutRequestPanesTexts struct {
+	// The opacity of the watermark.
+	//
 	// example:
 	//
 	// 0.9
 	Alpha *float64 `json:"Alpha,omitempty" xml:"Alpha,omitempty"`
+	// The opacity of the text box.
+	//
 	// example:
 	//
 	// 0.6
 	BoxAlpha *float64 `json:"BoxAlpha,omitempty" xml:"BoxAlpha,omitempty"`
+	// The border width of the text box.
+	//
 	// example:
 	//
 	// 5
-	BoxBorderw *int32                                     `json:"BoxBorderw,omitempty" xml:"BoxBorderw,omitempty"`
-	BoxColor   *ModifyViewLayoutRequestPanesTextsBoxColor `json:"BoxColor,omitempty" xml:"BoxColor,omitempty" type:"Struct"`
+	BoxBorderw *int32 `json:"BoxBorderw,omitempty" xml:"BoxBorderw,omitempty"`
+	// The border color of the text box.
+	BoxColor *ModifyViewLayoutRequestPanesTextsBoxColor `json:"BoxColor,omitempty" xml:"BoxColor,omitempty" type:"Struct"`
+	// The font. Valid values:
+	//
+	// - **0**: Alibaba PuHuiTi Regular
+	//
+	// - **1**: Alibaba PuHuiTi Light
+	//
+	// - **2**: Alibaba PuHuiTi Medium
+	//
+	// - **3**: Alibaba PuHuiTi Bold
+	//
+	// - **4**: Alibaba PuHuiTi Heavy
+	//
+	// - **5**: Alimama ShuHeiTi
+	//
+	// - **6**: DingTalk JinBuTi
+	//
+	// - **7**: Alimama DaoLiTi
+	//
+	// - **8**: Alimama DongFangDaKai
+	//
+	// - **9**: Alimama FangYuanTi
+	//
 	// example:
 	//
 	// 0
-	Font      *int32                                      `json:"Font,omitempty" xml:"Font,omitempty"`
+	Font *int32 `json:"Font,omitempty" xml:"Font,omitempty"`
+	// The font color.
 	FontColor *ModifyViewLayoutRequestPanesTextsFontColor `json:"FontColor,omitempty" xml:"FontColor,omitempty" type:"Struct"`
+	// The font size.
+	//
 	// example:
 	//
 	// 36
 	FontSize *int32 `json:"FontSize,omitempty" xml:"FontSize,omitempty"`
-	HasBox   *bool  `json:"HasBox,omitempty" xml:"HasBox,omitempty"`
+	// Specifies whether to display a text box.
+	HasBox *bool `json:"HasBox,omitempty" xml:"HasBox,omitempty"`
+	// The z-axis layer.
+	//
 	// example:
 	//
 	// 0
 	Layer *int32 `json:"Layer,omitempty" xml:"Layer,omitempty"`
+	// The content of the watermark.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 文字水印
+	// Text watermark
 	Texture *string `json:"Texture,omitempty" xml:"Texture,omitempty"`
+	// The x-coordinate.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 0.2
 	X *float64 `json:"X,omitempty" xml:"X,omitempty"`
+	// The y-coordinate.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -1226,19 +1418,19 @@ func (s *ModifyViewLayoutRequestPanesTexts) Validate() error {
 }
 
 type ModifyViewLayoutRequestPanesTextsBoxColor struct {
-	// B。
+	// The blue component.
 	//
 	// example:
 	//
 	// 255
 	B *int32 `json:"B,omitempty" xml:"B,omitempty"`
-	// G。
+	// The green component.
 	//
 	// example:
 	//
 	// 255
 	G *int32 `json:"G,omitempty" xml:"G,omitempty"`
-	// R。
+	// The red component.
 	//
 	// example:
 	//
@@ -1286,19 +1478,19 @@ func (s *ModifyViewLayoutRequestPanesTextsBoxColor) Validate() error {
 }
 
 type ModifyViewLayoutRequestPanesTextsFontColor struct {
-	// B。
+	// The blue component.
 	//
 	// example:
 	//
 	// 255
 	B *int32 `json:"B,omitempty" xml:"B,omitempty"`
-	// G。
+	// The green component.
 	//
 	// example:
 	//
 	// 255
 	G *int32 `json:"G,omitempty" xml:"G,omitempty"`
-	// R。
+	// The red component.
 	//
 	// example:
 	//
@@ -1346,45 +1538,86 @@ func (s *ModifyViewLayoutRequestPanesTextsFontColor) Validate() error {
 }
 
 type ModifyViewLayoutRequestTexts struct {
+	// The opacity of the watermark.
+	//
 	// example:
 	//
 	// 0.1
 	Alpha *float64 `json:"Alpha,omitempty" xml:"Alpha,omitempty"`
+	// The opacity of the text box.
+	//
 	// example:
 	//
 	// 0.6
 	BoxAlpha *float64 `json:"BoxAlpha,omitempty" xml:"BoxAlpha,omitempty"`
+	// The border width of the text box.
+	//
 	// example:
 	//
 	// 5
-	BoxBorderw *int32                                `json:"BoxBorderw,omitempty" xml:"BoxBorderw,omitempty"`
-	BoxColor   *ModifyViewLayoutRequestTextsBoxColor `json:"BoxColor,omitempty" xml:"BoxColor,omitempty" type:"Struct"`
+	BoxBorderw *int32 `json:"BoxBorderw,omitempty" xml:"BoxBorderw,omitempty"`
+	// The border color of the text box.
+	BoxColor *ModifyViewLayoutRequestTextsBoxColor `json:"BoxColor,omitempty" xml:"BoxColor,omitempty" type:"Struct"`
+	// The font. Valid values:
+	//
+	// - **0**: Alibaba PuHuiTi Regular
+	//
+	// - **1**: Alibaba PuHuiTi Light
+	//
+	// - **2**: Alibaba PuHuiTi Medium
+	//
+	// - **3**: Alibaba PuHuiTi Bold
+	//
+	// - **4**: Alibaba PuHuiTi Heavy
+	//
+	// - **5**: Alimama ShuHeiTi
+	//
+	// - **6**: DingTalk JinBuTi
+	//
+	// - **7**: Alimama DaoLiTi
+	//
+	// - **8**: Alimama DongFangDaKai
+	//
+	// - **9**: Alimama FangYuanTi
+	//
 	// example:
 	//
 	// 0
-	Font      *int32                                 `json:"Font,omitempty" xml:"Font,omitempty"`
+	Font *int32 `json:"Font,omitempty" xml:"Font,omitempty"`
+	// The font color.
 	FontColor *ModifyViewLayoutRequestTextsFontColor `json:"FontColor,omitempty" xml:"FontColor,omitempty" type:"Struct"`
+	// The font size.
+	//
 	// example:
 	//
 	// 36
 	FontSize *int32 `json:"FontSize,omitempty" xml:"FontSize,omitempty"`
-	HasBox   *bool  `json:"HasBox,omitempty" xml:"HasBox,omitempty"`
+	// Specifies whether to display a text box.
+	HasBox *bool `json:"HasBox,omitempty" xml:"HasBox,omitempty"`
+	// The z-axis layer.
+	//
 	// example:
 	//
 	// 0
 	Layer *int32 `json:"Layer,omitempty" xml:"Layer,omitempty"`
+	// The content of the watermark.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 文字水印
+	// Text watermark
 	Texture *string `json:"Texture,omitempty" xml:"Texture,omitempty"`
+	// The x-coordinate.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 0.2
 	X *float64 `json:"X,omitempty" xml:"X,omitempty"`
+	// The y-coordinate.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -1524,19 +1757,19 @@ func (s *ModifyViewLayoutRequestTexts) Validate() error {
 }
 
 type ModifyViewLayoutRequestTextsBoxColor struct {
-	// B。
+	// The blue component.
 	//
 	// example:
 	//
 	// 255
 	B *int32 `json:"B,omitempty" xml:"B,omitempty"`
-	// G。
+	// The green component.
 	//
 	// example:
 	//
 	// 255
 	G *int32 `json:"G,omitempty" xml:"G,omitempty"`
-	// R。
+	// The red component.
 	//
 	// example:
 	//
@@ -1584,19 +1817,19 @@ func (s *ModifyViewLayoutRequestTextsBoxColor) Validate() error {
 }
 
 type ModifyViewLayoutRequestTextsFontColor struct {
-	// B。
+	// The blue component.
 	//
 	// example:
 	//
 	// 255
 	B *int32 `json:"B,omitempty" xml:"B,omitempty"`
-	// G。
+	// The green component.
 	//
 	// example:
 	//
 	// 255
 	G *int32 `json:"G,omitempty" xml:"G,omitempty"`
-	// R。
+	// The red component.
 	//
 	// example:
 	//

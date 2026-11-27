@@ -22,21 +22,30 @@ type iDescribeAppRecordTemplatesRequest interface {
 }
 
 type DescribeAppRecordTemplatesRequest struct {
+	// The application ID. You can create and query the ID in the console. Only a single ID is supported.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ac7N****
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The idempotency parameter.
+	//
 	// example:
 	//
 	// 123e4567-e89b-12d3-a456-42665544****
-	ClientToken *string                                     `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	Condition   *DescribeAppRecordTemplatesRequestCondition `json:"Condition,omitempty" xml:"Condition,omitempty" type:"Struct"`
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The query conditions.
+	Condition *DescribeAppRecordTemplatesRequestCondition `json:"Condition,omitempty" xml:"Condition,omitempty" type:"Struct"`
+	// The page number. Default value: 1.
+	//
 	// example:
 	//
 	// 1
 	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
+	// The number of entries per page. Default value: 10.
+	//
 	// example:
 	//
 	// 10
@@ -106,10 +115,14 @@ func (s *DescribeAppRecordTemplatesRequest) Validate() error {
 }
 
 type DescribeAppRecordTemplatesRequestCondition struct {
+	// The template name.
+	//
 	// example:
 	//
-	// 测试
+	// Test
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The template ID.
+	//
 	// example:
 	//
 	// ac7N****

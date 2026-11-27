@@ -22,6 +22,8 @@ type DescribeAppKeyResponseBody struct {
 	//
 	// ba133b2cee4ab9be424674892c33****
 	AppKey *string `json:"AppKey,omitempty" xml:"AppKey,omitempty"`
+	// Request ID.
+	//
 	// example:
 	//
 	// 154EF5DE-3D08-1F2C-A482-281F78D74B7C

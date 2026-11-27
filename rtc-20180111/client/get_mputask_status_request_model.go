@@ -18,6 +18,8 @@ type iGetMPUTaskStatusRequest interface {
 }
 
 type GetMPUTaskStatusRequest struct {
+	// The application ID. Only a single ID is supported.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -25,6 +27,8 @@ type GetMPUTaskStatusRequest struct {
 	// yourAppId
 	AppId   *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
 	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The task ID. Only a single ID is supported. The value must be the same as the TaskId parameter in the [StartMpuTask](https://help.aliyun.com/document_detail/93183.html) request.
+	//
 	// This parameter is required.
 	//
 	// example:

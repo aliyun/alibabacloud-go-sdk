@@ -16,6 +16,8 @@ type iDeleteAppAgentTemplateResponseBody interface {
 }
 
 type DeleteAppAgentTemplateResponseBody struct {
+	// The template ID.
+	//
 	// example:
 	//
 	// 1223131213231313213

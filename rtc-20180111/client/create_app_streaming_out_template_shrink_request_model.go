@@ -16,13 +16,21 @@ type iCreateAppStreamingOutTemplateShrinkRequest interface {
 }
 
 type CreateAppStreamingOutTemplateShrinkRequest struct {
+	// The application ID. You can create and query the ID in the console. Only a single ID is supported.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ac7N****
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The template.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// ac7N****
 	StreamingOutTemplateShrink *string `json:"StreamingOutTemplate,omitempty" xml:"StreamingOutTemplate,omitempty"`
 }
 

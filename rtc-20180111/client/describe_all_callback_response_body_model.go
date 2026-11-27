@@ -16,6 +16,7 @@ type iDescribeAllCallbackResponseBody interface {
 }
 
 type DescribeAllCallbackResponseBody struct {
+	// List of callback events.
 	Callbacks []*DescribeAllCallbackResponseBodyCallbacks `json:"Callbacks,omitempty" xml:"Callbacks,omitempty" type:"Repeated"`
 	// Id of the request
 	//
@@ -65,14 +66,19 @@ func (s *DescribeAllCallbackResponseBody) Validate() error {
 }
 
 type DescribeAllCallbackResponseBodyCallbacks struct {
+	// Event code.
+	//
 	// example:
 	//
 	// RecordEvent
 	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
+	// Event name.
+	//
 	// example:
 	//
 	// 录制回调
-	Name     *string                                             `json:"Name,omitempty" xml:"Name,omitempty"`
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// List of subscribed sub-events.
 	SubEvent []*DescribeAllCallbackResponseBodyCallbacksSubEvent `json:"SubEvent,omitempty" xml:"SubEvent,omitempty" type:"Repeated"`
 }
 
@@ -125,14 +131,20 @@ func (s *DescribeAllCallbackResponseBodyCallbacks) Validate() error {
 }
 
 type DescribeAllCallbackResponseBodyCallbacksSubEvent struct {
+	// Subscribed sub-event code.
+	//
 	// example:
 	//
 	// 2000
 	Event *int32 `json:"Event,omitempty" xml:"Event,omitempty"`
+	// Subscribed sub-event name.
+	//
 	// example:
 	//
 	// 录制开始
 	EventName *string `json:"EventName,omitempty" xml:"EventName,omitempty"`
+	// Subscription event type: 0 for system, 1 for custom.
+	//
 	// example:
 	//
 	// 0

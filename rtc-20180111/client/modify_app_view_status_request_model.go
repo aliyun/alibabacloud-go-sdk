@@ -14,6 +14,8 @@ type iModifyAppViewStatusRequest interface {
 }
 
 type ModifyAppViewStatusRequest struct {
+	// The application ID. You can create and query the ID in the console. Only a single ID is supported.
+	//
 	// This parameter is required.
 	//
 	// example:

@@ -18,18 +18,24 @@ type iDescribeStreamingOutStatusRequest interface {
 }
 
 type DescribeStreamingOutStatusRequest struct {
+	// The application ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1qaz***x
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The channel name.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// testChannel
 	ChannelId *string `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
+	// The task ID.
+	//
 	// This parameter is required.
 	//
 	// example:

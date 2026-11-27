@@ -16,12 +16,16 @@ type iDescribeChannelRequest interface {
 }
 
 type DescribeChannelRequest struct {
+	// The application ID. You can create and query this ID in the console. Only a single ID is supported.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// eo85****
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The channel ID to query. Only a single ID is supported.
+	//
 	// This parameter is required.
 	//
 	// example:

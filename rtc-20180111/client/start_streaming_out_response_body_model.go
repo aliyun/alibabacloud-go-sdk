@@ -16,10 +16,14 @@ type iStartStreamingOutResponseBody interface {
 }
 
 type StartStreamingOutResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 16A96B9A-F203-4EC5-8E43-CB92E68F4CF8
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The task ID of the current bypass live streaming.
+	//
 	// example:
 	//
 	// 123

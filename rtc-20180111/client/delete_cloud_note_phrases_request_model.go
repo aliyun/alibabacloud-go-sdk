@@ -16,12 +16,16 @@ type iDeleteCloudNotePhrasesRequest interface {
 }
 
 type DeleteCloudNotePhrasesRequest struct {
+	// The ID of the application. You can create and query application IDs in the console. Only a single ID is supported.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ac7N****
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The hot word table parameters.
+	//
 	// This parameter is required.
 	Phrase *DeleteCloudNotePhrasesRequestPhrase `json:"Phrase,omitempty" xml:"Phrase,omitempty" type:"Struct"`
 }
@@ -62,6 +66,8 @@ func (s *DeleteCloudNotePhrasesRequest) Validate() error {
 }
 
 type DeleteCloudNotePhrasesRequestPhrase struct {
+	// The ID of the hot word table.
+	//
 	// This parameter is required.
 	//
 	// example:

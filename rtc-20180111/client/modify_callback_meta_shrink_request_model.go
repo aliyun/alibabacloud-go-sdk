@@ -18,12 +18,16 @@ type iModifyCallbackMetaShrinkRequest interface {
 }
 
 type ModifyCallbackMetaShrinkRequest struct {
+	// The application ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 223***JQb
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The callback configuration.
+	//
 	// This parameter is required.
 	CallbackShrink *string `json:"Callback,omitempty" xml:"Callback,omitempty"`
 	OwnerId        *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`

@@ -22,24 +22,32 @@ type iGetAgentResponseBody interface {
 }
 
 type GetAgentResponseBody struct {
+	// Status message.
+	//
 	// example:
 	//
 	// Success
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
-	// Id of the request
+	// Request ID.
 	//
 	// example:
 	//
 	// 6159ba01-6687-4fb2-a831-f0cd8d188648
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Start timestamp, in Unix time, measured in milliseconds.
+	//
 	// example:
 	//
 	// 1751513144838
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// Agent status. Valid values: 0 (not started), 1 (starting), 2 (running), 3 (stopping), 4 (stopped), or 5 (failed).
+	//
 	// example:
 	//
 	// 1
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// End timestamp, in Unix time, measured in milliseconds.
+	//
 	// example:
 	//
 	// 1751513144838

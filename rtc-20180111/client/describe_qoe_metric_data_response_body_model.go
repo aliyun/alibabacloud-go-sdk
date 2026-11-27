@@ -18,11 +18,15 @@ type iDescribeQoeMetricDataResponseBody interface {
 }
 
 type DescribeQoeMetricDataResponseBody struct {
+	// Audio data.
 	AudioData []*DescribeQoeMetricDataResponseBodyAudioData `json:"AudioData,omitempty" xml:"AudioData,omitempty" type:"Repeated"`
+	// Request ID.
+	//
 	// example:
 	//
 	// 231470C1-ACFB-4C9F-844F-4CFE1E3804C5
-	RequestId *string                                       `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Video data.
 	VideoData []*DescribeQoeMetricDataResponseBodyVideoData `json:"VideoData,omitempty" xml:"VideoData,omitempty" type:"Repeated"`
 }
 
@@ -84,11 +88,20 @@ func (s *DescribeQoeMetricDataResponseBody) Validate() error {
 }
 
 type DescribeQoeMetricDataResponseBodyAudioData struct {
+	// List of coordinate points for the audio trend indicator.
 	Nodes []*DescribeQoeMetricDataResponseBodyAudioDataNodes `json:"Nodes,omitempty" xml:"Nodes,omitempty" type:"Repeated"`
+	// Communication experience. Valid values:
+	//
+	// - **AUDIO**: Audio bitrate.
+	//
+	// - **AUDIO_STUCK**: Audio downlink stuttering.
+	//
 	// example:
 	//
 	// AUDIO
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// User ID.
+	//
 	// example:
 	//
 	// testuserid
@@ -144,10 +157,14 @@ func (s *DescribeQoeMetricDataResponseBodyAudioData) Validate() error {
 }
 
 type DescribeQoeMetricDataResponseBodyAudioDataNodes struct {
+	// X-axis coordinate in the audio trend indicator.
+	//
 	// example:
 	//
 	// 1548670256
 	X *string `json:"X,omitempty" xml:"X,omitempty"`
+	// Y-axis coordinate in the audio trend indicator.
+	//
 	// example:
 	//
 	// 123
@@ -185,11 +202,28 @@ func (s *DescribeQoeMetricDataResponseBodyAudioDataNodes) Validate() error {
 }
 
 type DescribeQoeMetricDataResponseBodyVideoData struct {
+	// List of coordinate points for the video metric trend graph.
 	Nodes []*DescribeQoeMetricDataResponseBodyVideoDataNodes `json:"Nodes,omitempty" xml:"Nodes,omitempty" type:"Repeated"`
+	// The type of metric that impacts communication experience. Valid values:
+	//
+	// - **VIDEO_CAMERA**: Camera bitrate.
+	//
+	// - **VIDEO_SCREEN_SHARE**: Screen sharing stream bitrate.
+	//
+	// - **VIDEO_STUCK_CAMERA**: Camera stuttering.
+	//
+	// - **VIDEO_STUCK_SCREEN_SHARE**: Screen sharing stuttering.
+	//
+	// - **VIDEO_VAGUE_CAMERA**: Camera blur.
+	//
+	// - **VIDEO_VAGUE_SCREEN_SHARE**: Screen sharing blur.
+	//
 	// example:
 	//
 	// VIDEO_CAMERA
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// User ID
+	//
 	// example:
 	//
 	// testuserid
@@ -245,10 +279,14 @@ func (s *DescribeQoeMetricDataResponseBodyVideoData) Validate() error {
 }
 
 type DescribeQoeMetricDataResponseBodyVideoDataNodes struct {
+	// The x-axis coordinate in the video metric trend graph.
+	//
 	// example:
 	//
 	// 1548670256
 	X *string `json:"X,omitempty" xml:"X,omitempty"`
+	// The y-axis coordinate in the Video Trend Indicator.
+	//
 	// example:
 	//
 	// 123

@@ -16,10 +16,14 @@ type iStartViewResponseBody interface {
 }
 
 type StartViewResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// FA2F9DE9-8EAD-580E-87DF-A3D25EE87C37
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The task ID for the current request.
+	//
 	// example:
 	//
 	// 123

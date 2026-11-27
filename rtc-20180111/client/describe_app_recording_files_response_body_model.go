@@ -22,11 +22,16 @@ type iDescribeAppRecordingFilesResponseBody interface {
 }
 
 type DescribeAppRecordingFilesResponseBody struct {
+	// List of recording files.
 	Items []*DescribeAppRecordingFilesResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
+	// Page number.
+	//
 	// example:
 	//
 	// 1
 	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	// Number of entries per page.
+	//
 	// example:
 	//
 	// 10
@@ -37,6 +42,8 @@ type DescribeAppRecordingFilesResponseBody struct {
 	//
 	// 16A96B9A-F203-4EC5-8E43-CB92E68F4CF8
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Total count.
+	//
 	// example:
 	//
 	// 10
@@ -110,42 +117,62 @@ func (s *DescribeAppRecordingFilesResponseBody) Validate() error {
 }
 
 type DescribeAppRecordingFilesResponseBodyItems struct {
+	// User-defined bucket.
+	//
 	// example:
 	//
 	// rtc-bucket
 	Bucket *string `json:"Bucket,omitempty" xml:"Bucket,omitempty"`
+	// Channel ID.
+	//
 	// example:
 	//
 	// testchannelId
 	ChannelId *string `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
+	// Recording file creation timestamp, in milliseconds.
+	//
 	// example:
 	//
 	// 1712376032000
 	FileCreateTs *int64 `json:"FileCreateTs,omitempty" xml:"FileCreateTs,omitempty"`
+	// Recording file duration, in milliseconds.
+	//
 	// example:
 	//
 	// 200
 	FileDuration *int32 `json:"FileDuration,omitempty" xml:"FileDuration,omitempty"`
+	// Path where the recording file is stored. Use the SDK of your cloud provider\"s Object Storage Service to access the file. For Alibaba Cloud OSS, see [here](https://help.aliyun.com/zh/oss/user-guide/how-to-obtain-the-url-of-a-single-object-or-the-urls-of-multiple-objects).
+	//
 	// example:
 	//
 	// record/appid/12_task_local1/1712279809158_1712279844691/playlist.mp4
 	FilePath *string `json:"FilePath,omitempty" xml:"FilePath,omitempty"`
+	// Recording file size, in bytes.
+	//
 	// example:
 	//
 	// 10000
 	FileSize *int32 `json:"FileSize,omitempty" xml:"FileSize,omitempty"`
+	// See region used in the recording task.
+	//
 	// example:
 	//
 	// 1
 	Region *int32 `json:"Region,omitempty" xml:"Region,omitempty"`
+	// Recording task start timestamp, in milliseconds.
+	//
 	// example:
 	//
 	// 1712376012000
 	StartTs *int64 `json:"StartTs,omitempty" xml:"StartTs,omitempty"`
+	// Recording task ID.
+	//
 	// example:
 	//
 	// test001
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// See vendor used when starting the recording task.
+	//
 	// example:
 	//
 	// 1

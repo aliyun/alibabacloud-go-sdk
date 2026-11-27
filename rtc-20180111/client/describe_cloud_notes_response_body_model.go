@@ -22,11 +22,16 @@ type iDescribeCloudNotesResponseBody interface {
 }
 
 type DescribeCloudNotesResponseBody struct {
+	// List of meeting summary results.
 	Items []*DescribeCloudNotesResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
+	// Page number.
+	//
 	// example:
 	//
 	// 1
 	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	// Quantity per page.
+	//
 	// example:
 	//
 	// 10
@@ -37,6 +42,8 @@ type DescribeCloudNotesResponseBody struct {
 	//
 	// 154EF5DE-3D08-1F2C-A482-281F78D74B7C
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Total quantity.
+	//
 	// example:
 	//
 	// 10
@@ -110,54 +117,80 @@ func (s *DescribeCloudNotesResponseBody) Validate() error {
 }
 
 type DescribeCloudNotesResponseBodyItems struct {
+	// Path where the chapter overview result file is stored.
+	//
 	// example:
 	//
 	// cloudNote/ksvxxppi/88_12/autoChapters_1724914365173.json
 	AutoChaptersFilePath *string `json:"AutoChaptersFilePath,omitempty" xml:"AutoChaptersFilePath,omitempty"`
+	// The user-defined bucket.
+	//
 	// example:
 	//
 	// sample-bucket
 	Bucket *string `json:"Bucket,omitempty" xml:"Bucket,omitempty"`
+	// Channel ID.
+	//
 	// example:
 	//
 	// testchannelId
 	ChannelId *string `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
+	// The path where the custom prompt result file is stored.
+	//
 	// example:
 	//
 	// cloudNote/ksvxxppi/88_12/customPrompt_1724914365173.json
 	CustomPromptFilePath *string `json:"CustomPromptFilePath,omitempty" xml:"CustomPromptFilePath,omitempty"`
+	// The path where the key points extraction result file is stored.
+	//
 	// example:
 	//
 	// cloudNote/ksvxxppi/88_12/meetingAssistance_1724914365173.json
 	MeetingAssistanceFilePath *string `json:"MeetingAssistanceFilePath,omitempty" xml:"MeetingAssistanceFilePath,omitempty"`
+	// Reference job region.
+	//
 	// example:
 	//
 	// 1
 	Region *int32 `json:"Region,omitempty" xml:"Region,omitempty"`
+	// The path where the service quality inspection result file is stored.
+	//
 	// example:
 	//
 	// cloudNote/ksvxxppi/88_12/serviceInspection_1724914365173.json
 	ServiceInspectionFilePath *string `json:"ServiceInspectionFilePath,omitempty" xml:"ServiceInspectionFilePath,omitempty"`
+	// Start Time of the meeting summary job.
+	//
 	// example:
 	//
 	// 1731939816837
 	StartTs *int64 `json:"StartTs,omitempty" xml:"StartTs,omitempty"`
+	// Path where the summary result file is stored.
+	//
 	// example:
 	//
 	// cloudNote/ksvxxppi/88_12/summarization_1724914365173.json
 	SummarizationFilePath *string `json:"SummarizationFilePath,omitempty" xml:"SummarizationFilePath,omitempty"`
+	// Job ID.
+	//
 	// example:
 	//
 	// test001
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// The path where the spoken-to-written text result file is stored.
+	//
 	// example:
 	//
 	// cloudNote/ksvxxppi/88_12/textPolish_1724914365173.json
 	TextPolishFilePath *string `json:"TextPolishFilePath,omitempty" xml:"TextPolishFilePath,omitempty"`
+	// Path where the transcription result file is stored.
+	//
 	// example:
 	//
 	// cloudNote/ksvxxppi/88_12/transcription_1724914365173.json
 	TranscriptionFilePath *string `json:"TranscriptionFilePath,omitempty" xml:"TranscriptionFilePath,omitempty"`
+	// The vendor referenced when enabling the job.
+	//
 	// example:
 	//
 	// 1

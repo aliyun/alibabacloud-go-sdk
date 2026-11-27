@@ -16,12 +16,16 @@ type iDescribeAppLiveStreamStatusRequest interface {
 }
 
 type DescribeAppLiveStreamStatusRequest struct {
+	// The ID of the application. You can create and query the application ID in the console. You can specify only one application ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ac7N****
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// A parameter that ensures the idempotence of the request.
+	//
 	// example:
 	//
 	// 123e4567-e89b-12d3-a456-42665544****

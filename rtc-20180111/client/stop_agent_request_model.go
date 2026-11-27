@@ -18,18 +18,24 @@ type iStopAgentRequest interface {
 }
 
 type StopAgentRequest struct {
+	// The application ID. Only a single ID is supported. You can create and query application IDs in the console.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// aec****
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The joined channel. Only a single ID is supported.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// yourChannelId
 	ChannelId *string `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
+	// The task ID. Only a single ID is supported.
+	//
 	// This parameter is required.
 	//
 	// example:

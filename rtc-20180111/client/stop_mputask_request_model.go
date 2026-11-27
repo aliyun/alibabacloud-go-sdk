@@ -18,6 +18,10 @@ type iStopMPUTaskRequest interface {
 }
 
 type StopMPUTaskRequest struct {
+	// The application ID. Only a single ID can be passed.
+	//
+	// > You can create and query the application ID in the [console](https://rtc.console.aliyun.com/manage/list#/manage/list).
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -25,6 +29,8 @@ type StopMPUTaskRequest struct {
 	// yourAppId
 	AppId   *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
 	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The task ID. Only a single ID can be passed. The value must be the same as the TaskId parameter of [StartMpuTask](https://help.aliyun.com/document_detail/93183.html).
+	//
 	// This parameter is required.
 	//
 	// example:

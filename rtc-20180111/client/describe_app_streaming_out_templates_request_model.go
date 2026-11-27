@@ -20,17 +20,24 @@ type iDescribeAppStreamingOutTemplatesRequest interface {
 }
 
 type DescribeAppStreamingOutTemplatesRequest struct {
+	// Application ID, created and queried through the console. Only a single ID is supported.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ioeh****
-	AppId     *string                                           `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// Search condition.
 	Condition *DescribeAppStreamingOutTemplatesRequestCondition `json:"Condition,omitempty" xml:"Condition,omitempty" type:"Struct"`
+	// Page number. By default, page 1 is queried.
+	//
 	// example:
 	//
 	// 1
 	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
+	// Number of entries per page. The default value is 10.
+	//
 	// example:
 	//
 	// 10
@@ -91,10 +98,14 @@ func (s *DescribeAppStreamingOutTemplatesRequest) Validate() error {
 }
 
 type DescribeAppStreamingOutTemplatesRequestCondition struct {
+	// Template Name.
+	//
 	// example:
 	//
 	// 测试
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// Template ID.
+	//
 	// example:
 	//
 	// Bj6D****

@@ -20,15 +20,25 @@ type iDescribePubUserListBySubUserResponseBody interface {
 }
 
 type DescribePubUserListBySubUserResponseBody struct {
+	// Communication status. Valid values:
+	//
+	// - **IN**: In progress.
+	//
+	// - **OUT**: Ended.
+	//
 	// example:
 	//
 	// IN
-	CallStatus        *string                                                      `json:"CallStatus,omitempty" xml:"CallStatus,omitempty"`
+	CallStatus *string `json:"CallStatus,omitempty" xml:"CallStatus,omitempty"`
+	// Details of publishing users.
 	PubUserDetailList []*DescribePubUserListBySubUserResponseBodyPubUserDetailList `json:"PubUserDetailList,omitempty" xml:"PubUserDetailList,omitempty" type:"Repeated"`
+	// Request ID.
+	//
 	// example:
 	//
 	// 231470C1-ACFB-4C9F-844F-4CFE1E3804C5
-	RequestId     *string                                                `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Subscriber user details.
 	SubUserDetail *DescribePubUserListBySubUserResponseBodySubUserDetail `json:"SubUserDetail,omitempty" xml:"SubUserDetail,omitempty" type:"Struct"`
 }
 
@@ -95,55 +105,83 @@ func (s *DescribePubUserListBySubUserResponseBody) Validate() error {
 }
 
 type DescribePubUserListBySubUserResponseBodyPubUserDetailList struct {
+	// Call IDs of the user\"s communication streams.
 	CallIdList []*string `json:"CallIdList,omitempty" xml:"CallIdList,omitempty" type:"Repeated"`
+	// Client type. Valid values: WEB: Web client. NATIVE: Native client.
+	//
 	// example:
 	//
 	// NATIVE
 	ClientType *string `json:"ClientType,omitempty" xml:"ClientType,omitempty"`
+	// The time when the user first joined the channel, represented as a UNIX timestamp in seconds.
+	//
 	// example:
 	//
 	// 1614936817
 	CreatedTs *int64 `json:"CreatedTs,omitempty" xml:"CreatedTs,omitempty"`
+	// The time when the user last left the channel, represented as a UNIX timestamp in seconds.
+	//
 	// example:
 	//
 	// 1614936817
 	DestroyedTs *int64 `json:"DestroyedTs,omitempty" xml:"DestroyedTs,omitempty"`
+	// Communication duration, measured from the first entry to the final exit, in seconds.
+	//
 	// example:
 	//
 	// 0
 	Duration *int64 `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	// Geographical location information, such as Zhejiang Province-Hangzhou City.
+	//
 	// example:
 	//
 	// 浙江省-杭州市
 	Location *string `json:"Location,omitempty" xml:"Location,omitempty"`
+	// Network type, such as WiFi, 4G, etc.
+	//
 	// example:
 	//
 	// 4G
-	Network     *string   `json:"Network,omitempty" xml:"Network,omitempty"`
+	Network *string `json:"Network,omitempty" xml:"Network,omitempty"`
+	// Network types, such as WiFi, 4G, etc.
 	NetworkList []*string `json:"NetworkList,omitempty" xml:"NetworkList,omitempty" type:"Repeated"`
+	// Online duration, in seconds.
+	//
 	// example:
 	//
 	// 0
-	OnlineDuration *int64                                                                    `json:"OnlineDuration,omitempty" xml:"OnlineDuration,omitempty"`
-	OnlinePeriods  []*DescribePubUserListBySubUserResponseBodyPubUserDetailListOnlinePeriods `json:"OnlinePeriods,omitempty" xml:"OnlinePeriods,omitempty" type:"Repeated"`
+	OnlineDuration *int64 `json:"OnlineDuration,omitempty" xml:"OnlineDuration,omitempty"`
+	// Online period information.
+	OnlinePeriods []*DescribePubUserListBySubUserResponseBodyPubUserDetailListOnlinePeriods `json:"OnlinePeriods,omitempty" xml:"OnlinePeriods,omitempty" type:"Repeated"`
+	// Platform Type: If the client type is WEB, this field indicates the type of the browser. If the client type is NATIVE, this field indicates the operating system.
+	//
 	// example:
 	//
 	// iOS
-	Os     *string   `json:"Os,omitempty" xml:"Os,omitempty"`
+	Os *string `json:"Os,omitempty" xml:"Os,omitempty"`
+	// Platform Type: If the client type is WEB, this field indicates the type of the browser. If the client type is NATIVE, this field indicates the operating system.
 	OsList []*string `json:"OsList,omitempty" xml:"OsList,omitempty" type:"Repeated"`
-	Roles  []*string `json:"Roles,omitempty" xml:"Roles,omitempty" type:"Repeated"`
+	// User roles. Valid values: SENDER: sender. RECEIVER: receiver.
+	Roles []*string `json:"Roles,omitempty" xml:"Roles,omitempty" type:"Repeated"`
+	// SDK Version.
+	//
 	// example:
 	//
 	// 1.0.0
-	SdkVersion     *string   `json:"SdkVersion,omitempty" xml:"SdkVersion,omitempty"`
+	SdkVersion *string `json:"SdkVersion,omitempty" xml:"SdkVersion,omitempty"`
+	// List of software development kit (SDK) versions, such as 1.0.0, 1.1.1, etc.
 	SdkVersionList []*string `json:"SdkVersionList,omitempty" xml:"SdkVersionList,omitempty" type:"Repeated"`
+	// User ID.
+	//
 	// example:
 	//
 	// testuserid
 	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// User ID alias.
+	//
 	// example:
 	//
-	// 旁路转推
+	// yi****
 	UserIdAlias *string `json:"UserIdAlias,omitempty" xml:"UserIdAlias,omitempty"`
 }
 
@@ -322,10 +360,14 @@ func (s *DescribePubUserListBySubUserResponseBodyPubUserDetailList) Validate() e
 }
 
 type DescribePubUserListBySubUserResponseBodyPubUserDetailListOnlinePeriods struct {
+	// The time when the user joined the channel, represented as a UNIX timestamp in seconds.
+	//
 	// example:
 	//
 	// 1614936817
 	JoinTs *int64 `json:"JoinTs,omitempty" xml:"JoinTs,omitempty"`
+	// The time when the user left the channel, represented as a UNIX timestamp in seconds.
+	//
 	// example:
 	//
 	// 1614936817
@@ -363,54 +405,81 @@ func (s *DescribePubUserListBySubUserResponseBodyPubUserDetailListOnlinePeriods)
 }
 
 type DescribePubUserListBySubUserResponseBodySubUserDetail struct {
+	// Client type. Valid values: WEB: Web client. NATIVE: Native client.
+	//
 	// example:
 	//
 	// NATIVE
 	ClientType *string `json:"ClientType,omitempty" xml:"ClientType,omitempty"`
+	// The time when the user first joined the channel, represented as a UNIX timestamp in seconds.
+	//
 	// example:
 	//
 	// 1614936817
 	CreatedTs *int64 `json:"CreatedTs,omitempty" xml:"CreatedTs,omitempty"`
+	// The time when the user last left the channel, represented as a UNIX timestamp, in seconds.
+	//
 	// example:
 	//
 	// 1614936817
 	DestroyedTs *int64 `json:"DestroyedTs,omitempty" xml:"DestroyedTs,omitempty"`
+	// Communication duration, from the first entry to the final exit, in seconds.
+	//
 	// example:
 	//
 	// 0
 	Duration *int64 `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	// Geographic location information, such as Zhejiang Province-Hangzhou City.
+	//
 	// example:
 	//
 	// 浙江省-杭州市
 	Location *string `json:"Location,omitempty" xml:"Location,omitempty"`
+	// Network type, such as WiFi, 4G, etc.
+	//
 	// example:
 	//
 	// 4G
-	Network     *string   `json:"Network,omitempty" xml:"Network,omitempty"`
+	Network *string `json:"Network,omitempty" xml:"Network,omitempty"`
+	// Network type, such as WiFi, 4G, etc.
 	NetworkList []*string `json:"NetworkList,omitempty" xml:"NetworkList,omitempty" type:"Repeated"`
+	// Online duration, in seconds.
+	//
 	// example:
 	//
 	// 0
-	OnlineDuration *int64                                                                `json:"OnlineDuration,omitempty" xml:"OnlineDuration,omitempty"`
-	OnlinePeriods  []*DescribePubUserListBySubUserResponseBodySubUserDetailOnlinePeriods `json:"OnlinePeriods,omitempty" xml:"OnlinePeriods,omitempty" type:"Repeated"`
+	OnlineDuration *int64 `json:"OnlineDuration,omitempty" xml:"OnlineDuration,omitempty"`
+	// Online period information.
+	OnlinePeriods []*DescribePubUserListBySubUserResponseBodySubUserDetailOnlinePeriods `json:"OnlinePeriods,omitempty" xml:"OnlinePeriods,omitempty" type:"Repeated"`
+	// Platform Type: If the client type is WEB, this field indicates the type of the browser. If the client type is NATIVE, this field indicates the operating system type.
+	//
 	// example:
 	//
 	// iOS
-	Os     *string   `json:"Os,omitempty" xml:"Os,omitempty"`
+	Os *string `json:"Os,omitempty" xml:"Os,omitempty"`
+	// Platform Type: If the client type is WEB, this field indicates the type of the browser. If the client type is NATIVE, this field indicates the operating system type.
 	OsList []*string `json:"OsList,omitempty" xml:"OsList,omitempty" type:"Repeated"`
-	Roles  []*string `json:"Roles,omitempty" xml:"Roles,omitempty" type:"Repeated"`
+	// User role.
+	Roles []*string `json:"Roles,omitempty" xml:"Roles,omitempty" type:"Repeated"`
+	// SDK Version.
+	//
 	// example:
 	//
 	// 1.0.0
-	SdkVersion     *string   `json:"SdkVersion,omitempty" xml:"SdkVersion,omitempty"`
+	SdkVersion *string `json:"SdkVersion,omitempty" xml:"SdkVersion,omitempty"`
+	// List of SDK versions, such as 1.0.0, 1.1.1, etc.
 	SdkVersionList []*string `json:"SdkVersionList,omitempty" xml:"SdkVersionList,omitempty" type:"Repeated"`
+	// User ID.
+	//
 	// example:
 	//
 	// testuserid
 	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// User ID alias.
+	//
 	// example:
 	//
-	// 旁路转推
+	// yi****
 	UserIdAlias *string `json:"UserIdAlias,omitempty" xml:"UserIdAlias,omitempty"`
 }
 
@@ -580,10 +649,14 @@ func (s *DescribePubUserListBySubUserResponseBodySubUserDetail) Validate() error
 }
 
 type DescribePubUserListBySubUserResponseBodySubUserDetailOnlinePeriods struct {
+	// The time when the user joined the channel, represented as a UNIX timestamp in seconds.
+	//
 	// example:
 	//
 	// 1614936817
 	JoinTs *int64 `json:"JoinTs,omitempty" xml:"JoinTs,omitempty"`
+	// The time when the user left the channel, represented as a UNIX timestamp in seconds.
+	//
 	// example:
 	//
 	// 1614936817

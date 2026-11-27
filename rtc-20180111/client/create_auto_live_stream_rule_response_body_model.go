@@ -16,10 +16,14 @@ type iCreateAutoLiveStreamRuleResponseBody interface {
 }
 
 type CreateAutoLiveStreamRuleResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 760bad53276431c499e30dc36f6b26be
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The ID of the relay rule.
+	//
 	// example:
 	//
 	// 12

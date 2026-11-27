@@ -20,7 +20,7 @@ type iDescribeChannelTopPubUserListRequest interface {
 }
 
 type DescribeChannelTopPubUserListRequest struct {
-	// APP ID。
+	// The app ID.
 	//
 	// This parameter is required.
 	//
@@ -28,18 +28,26 @@ type DescribeChannelTopPubUserListRequest struct {
 	//
 	// testappid
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The channel ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// testid
 	ChannelId *string `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
+	// The timestamp when the channel was created. Data from the last 30 days can be queried. The value is a UNIX timestamp in seconds.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1615893133
 	CreatedTs *int64 `json:"CreatedTs,omitempty" xml:"CreatedTs,omitempty"`
+	// The timestamp when the channel was released. The value is a UNIX timestamp in seconds. If this parameter is left empty, the current time is used.
+	//
+	// > If the specified channel release time is later than the actual release time, the data from the creation time to the actual release time is returned.
+	//
 	// example:
 	//
 	// 1615893757

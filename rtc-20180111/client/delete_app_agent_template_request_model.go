@@ -16,12 +16,16 @@ type iDeleteAppAgentTemplateRequest interface {
 }
 
 type DeleteAppAgentTemplateRequest struct {
+	// The ID of the application. You can create and query the ID in the console. Only a single ID is supported.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ac7N****
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The template ID.
+	//
 	// This parameter is required.
 	//
 	// example:

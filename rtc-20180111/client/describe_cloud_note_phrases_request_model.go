@@ -20,17 +20,24 @@ type iDescribeCloudNotePhrasesRequest interface {
 }
 
 type DescribeCloudNotePhrasesRequest struct {
+	// The application ID. You can create and query the ID in the console. Only a single ID is supported.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ac7N****
-	AppId     *string                                   `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The query conditions.
 	Condition *DescribeCloudNotePhrasesRequestCondition `json:"Condition,omitempty" xml:"Condition,omitempty" type:"Struct"`
+	// The page number. Default value: 1.
+	//
 	// example:
 	//
 	// 1
 	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
+	// The number of entries per page. Default value: 10.
+	//
 	// example:
 	//
 	// 10
@@ -91,13 +98,17 @@ func (s *DescribeCloudNotePhrasesRequest) Validate() error {
 }
 
 type DescribeCloudNotePhrasesRequestCondition struct {
+	// The hotword list ID.
+	//
 	// example:
 	//
 	// ac7N****112121
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The hotword list name.
+	//
 	// example:
 	//
-	// 测试
+	// Test
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 

@@ -16,12 +16,16 @@ type iDeleteAppViewTemplateShrinkRequest interface {
 }
 
 type DeleteAppViewTemplateShrinkRequest struct {
+	// The application ID. You can create and query the ID in the console. Only a single ID can be specified.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// wv7N****
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The template information.
+	//
 	// This parameter is required.
 	TemplateShrink *string `json:"Template,omitempty" xml:"Template,omitempty"`
 }

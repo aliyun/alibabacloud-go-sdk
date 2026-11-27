@@ -18,6 +18,8 @@ type iDeleteEventSubscribeRequest interface {
 }
 
 type DeleteEventSubscribeRequest struct {
+	// The application ID. You can create and query applications in the console.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -25,6 +27,8 @@ type DeleteEventSubscribeRequest struct {
 	// 9qb1****
 	AppId   *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
 	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The subscription ID. For more information, see [CreateEventSubscribe](https://help.aliyun.com/document_detail/274447.html).
+	//
 	// This parameter is required.
 	//
 	// example:

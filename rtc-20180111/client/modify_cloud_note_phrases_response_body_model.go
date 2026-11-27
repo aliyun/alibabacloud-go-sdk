@@ -16,6 +16,8 @@ type iModifyCloudNotePhrasesResponseBody interface {
 }
 
 type ModifyCloudNotePhrasesResponseBody struct {
+	// The ID of the hotword table.
+	//
 	// example:
 	//
 	// 21088b2617489486958531017d0b19

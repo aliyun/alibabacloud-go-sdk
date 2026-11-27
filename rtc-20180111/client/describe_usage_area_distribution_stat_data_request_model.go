@@ -28,13 +28,22 @@ type DescribeUsageAreaDistributionStatDataRequest struct {
 	//
 	// 0rbd****
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The end time of the query, expressed as a UNIX timestamp in seconds.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1615910399
-	EndDate    *string `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
+	EndDate *string `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
+	// The parent region name. For example, the parent of Hangzhou City is Zhejiang Province, and the parameter should be set to China_Zhejiang Province. An empty parameter indicates statistics at the global scope (country dimension), such as China or the United Kingdom.
+	//
+	// example:
+	//
+	// 中国_浙江省
 	ParentArea *string `json:"ParentArea,omitempty" xml:"ParentArea,omitempty"`
+	// The start time of the query, expressed as a UNIX timestamp in seconds.
+	//
 	// This parameter is required.
 	//
 	// example:

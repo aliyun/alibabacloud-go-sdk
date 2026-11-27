@@ -18,16 +18,22 @@ type iModifyAppLayoutRequest interface {
 }
 
 type ModifyAppLayoutRequest struct {
+	// Application ID. Create and query through the console. Only a single ID is supported.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ac7N****
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// Idempotent parameter.
+	//
 	// example:
 	//
 	// 53200b81-b761-4c10-842a-a0726d97xxxx
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// Layout.
+	//
 	// This parameter is required.
 	Layout *ModifyAppLayoutRequestLayout `json:"Layout,omitempty" xml:"Layout,omitempty" type:"Struct"`
 }
@@ -77,18 +83,23 @@ func (s *ModifyAppLayoutRequest) Validate() error {
 }
 
 type ModifyAppLayoutRequestLayout struct {
+	// Layout ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 123121231313
 	LayoutId *string `json:"LayoutId,omitempty" xml:"LayoutId,omitempty"`
+	// Layout name.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 测试
-	Name  *string                              `json:"Name,omitempty" xml:"Name,omitempty"`
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// List of panes.
 	Panes []*ModifyAppLayoutRequestLayoutPanes `json:"Panes,omitempty" xml:"Panes,omitempty" type:"Repeated"`
 }
 
@@ -141,26 +152,38 @@ func (s *ModifyAppLayoutRequestLayout) Validate() error {
 }
 
 type ModifyAppLayoutRequestLayoutPanes struct {
+	// Pane height, normalized percentage. Height ranges from 0.0\<Height≤1.0.
+	//
 	// example:
 	//
 	// 0.25
 	Height *float64 `json:"Height,omitempty" xml:"Height,omitempty"`
+	// Pane ID, starting from 0.
+	//
 	// example:
 	//
 	// 0
 	PaneId *int64 `json:"PaneId,omitempty" xml:"PaneId,omitempty"`
+	// Pane width, normalized percentage. Width ranges from 0.0\<Width≤1.0.
+	//
 	// example:
 	//
 	// 0.25
 	Width *float64 `json:"Width,omitempty" xml:"Width,omitempty"`
+	// X coordinate, normalized percentage. The X coordinate ranges from 0.0 to 1.0.
+	//
 	// example:
 	//
 	// 0.25
 	X *float64 `json:"X,omitempty" xml:"X,omitempty"`
+	// Y coordinate, normalized percentage. The Y coordinate ranges from 0.0 to 1.0.
+	//
 	// example:
 	//
 	// 0.25
 	Y *float64 `json:"Y,omitempty" xml:"Y,omitempty"`
+	// Stacking order. 0 is the bottom layer, 1 is above 0, and so on.
+	//
 	// example:
 	//
 	// 0

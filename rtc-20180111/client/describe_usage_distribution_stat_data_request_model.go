@@ -20,22 +20,38 @@ type iDescribeUsageDistributionStatDataRequest interface {
 }
 
 type DescribeUsageDistributionStatDataRequest struct {
-	// APP ID
+	// The app ID.
 	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 0rbd****
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The end time of the query. The value is a UNIX timestamp in seconds.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1615910399
 	EndDate *int64 `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
+	// The start time of the query. The value is a UNIX timestamp in seconds.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1615824000
 	StartDate *int64 `json:"StartDate,omitempty" xml:"StartDate,omitempty"`
+	// The statistical dimension. Valid values:
+	//
+	// - **CHANNEL_ONLINE**: aggregates data by the number of online users in a channel.
+	//
+	// - **NETWORK**: aggregates data by network type.
+	//
+	// - **OS**: aggregates data by operating system type.
+	//
 	// This parameter is required.
 	//
 	// example:

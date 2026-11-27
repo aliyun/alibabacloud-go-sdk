@@ -25,12 +25,17 @@ type DescribeAppAgentTemplatesResponseBody struct {
 	// example:
 	//
 	// 30D41049-D02D-1C21-86AE-B3E5FD805C27
-	RequestId *string                                           `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The list of templates.
 	Templates []*DescribeAppAgentTemplatesResponseBodyTemplates `json:"Templates,omitempty" xml:"Templates,omitempty" type:"Repeated"`
+	// The total number of records.
+	//
 	// example:
 	//
 	// 10
 	TotalNum *int64 `json:"TotalNum,omitempty" xml:"TotalNum,omitempty"`
+	// The total number of pages.
+	//
 	// example:
 	//
 	// 1
@@ -95,39 +100,82 @@ func (s *DescribeAppAgentTemplatesResponseBody) Validate() error {
 }
 
 type DescribeAppAgentTemplatesResponseBodyTemplates struct {
+	// The silence configuration for the agent.
 	AgentSilenceConfig *DescribeAppAgentTemplatesResponseBodyTemplatesAgentSilenceConfig `json:"AgentSilenceConfig,omitempty" xml:"AgentSilenceConfig,omitempty" type:"Struct"`
+	// The ambient sound configuration.
 	AmbientSoundConfig *DescribeAppAgentTemplatesResponseBodyTemplatesAmbientSoundConfig `json:"AmbientSoundConfig,omitempty" xml:"AmbientSoundConfig,omitempty" type:"Struct"`
-	AsrConfig          *DescribeAppAgentTemplatesResponseBodyTemplatesAsrConfig          `json:"AsrConfig,omitempty" xml:"AsrConfig,omitempty" type:"Struct"`
-	BackChannelConfig  *DescribeAppAgentTemplatesResponseBodyTemplatesBackChannelConfig  `json:"BackChannelConfig,omitempty" xml:"BackChannelConfig,omitempty" type:"Struct"`
+	// The speech-to-text configuration.
+	AsrConfig *DescribeAppAgentTemplatesResponseBodyTemplatesAsrConfig `json:"AsrConfig,omitempty" xml:"AsrConfig,omitempty" type:"Struct"`
+	// The backchannel configuration.
+	BackChannelConfig *DescribeAppAgentTemplatesResponseBodyTemplatesBackChannelConfig `json:"BackChannelConfig,omitempty" xml:"BackChannelConfig,omitempty" type:"Struct"`
+	// The conversation mode. Valid values:
+	//
+	// - 1: natural conversation mode (default)
+	//
+	// - 2: walkie-talkie mode
+	//
 	// example:
 	//
 	// 1
 	ChatMode *int32 `json:"ChatMode,omitempty" xml:"ChatMode,omitempty"`
+	// The creation time. Format: yyyy-MM-ddTHH:mm:ssZ (UTC).
+	//
 	// example:
 	//
 	// 2020-09-04T06:22:15Z
-	CreateTime               *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	EnableVideoUnderstanding *bool   `json:"EnableVideoUnderstanding,omitempty" xml:"EnableVideoUnderstanding,omitempty"`
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// Specifies whether to enable video understanding. If enabled, the large language model must support multimodal data.
+	EnableVideoUnderstanding *bool `json:"EnableVideoUnderstanding,omitempty" xml:"EnableVideoUnderstanding,omitempty"`
+	// The greeting.
+	//
 	// example:
 	//
-	// 你好，机器人。
+	// Hello, robot
 	Greeting *string `json:"Greeting,omitempty" xml:"Greeting,omitempty"`
+	// The template ID.
+	//
 	// example:
 	//
 	// wv7N****
-	Id              *string                                                        `json:"Id,omitempty" xml:"Id,omitempty"`
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The interruption configuration.
 	InterruptConfig *DescribeAppAgentTemplatesResponseBodyTemplatesInterruptConfig `json:"InterruptConfig,omitempty" xml:"InterruptConfig,omitempty" type:"Struct"`
+	// The interruption mode. Valid values:
+	//
+	// - 1: Allow interruption (default).
+	//
+	// - 2: Disable interruption.
+	//
 	// example:
 	//
 	// 1
-	InterruptMode *int32                                                   `json:"InterruptMode,omitempty" xml:"InterruptMode,omitempty"`
-	LlmConfig     *DescribeAppAgentTemplatesResponseBodyTemplatesLlmConfig `json:"LlmConfig,omitempty" xml:"LlmConfig,omitempty" type:"Struct"`
+	InterruptMode *int32 `json:"InterruptMode,omitempty" xml:"InterruptMode,omitempty"`
+	// The large language model (LLM) configuration.
+	LlmConfig *DescribeAppAgentTemplatesResponseBodyTemplatesLlmConfig `json:"LlmConfig,omitempty" xml:"LlmConfig,omitempty" type:"Struct"`
+	// The template name.
+	//
 	// example:
 	//
-	// 测试
-	Name        *string                                                  `json:"Name,omitempty" xml:"Name,omitempty"`
-	PreferVideo *int32                                                   `json:"PreferVideo,omitempty" xml:"PreferVideo,omitempty"`
-	TtsConfig   *DescribeAppAgentTemplatesResponseBodyTemplatesTtsConfig `json:"TtsConfig,omitempty" xml:"TtsConfig,omitempty" type:"Struct"`
+	// Test
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The preferred video stream for the agent to process when visual understanding is enabled. The agent can process only one video stream. When both the camera stream and the screen sharing stream are pushed, valid values are:
+	//
+	// - 1: The agent prioritizes the camera stream.
+	//
+	// - 2: The agent prioritizes the screen sharing stream.
+	//
+	// Default value: 1.
+	//
+	// example:
+	//
+	// 1
+	PreferVideo *int32 `json:"PreferVideo,omitempty" xml:"PreferVideo,omitempty"`
+	// The text-to-speech settings.
+	TtsConfig *DescribeAppAgentTemplatesResponseBodyTemplatesTtsConfig `json:"TtsConfig,omitempty" xml:"TtsConfig,omitempty" type:"Struct"`
+	// The type of the agent. Valid values:
+	//
+	// - 1: Voice call (default).
+	//
 	// example:
 	//
 	// 1
@@ -326,10 +374,34 @@ func (s *DescribeAppAgentTemplatesResponseBodyTemplates) Validate() error {
 }
 
 type DescribeAppAgentTemplatesResponseBodyTemplatesAgentSilenceConfig struct {
-	AlertTimeout          *int32  `json:"AlertTimeout,omitempty" xml:"AlertTimeout,omitempty"`
-	Content               *string `json:"Content,omitempty" xml:"Content,omitempty"`
-	Strategy              *int32  `json:"Strategy,omitempty" xml:"Strategy,omitempty"`
-	WebhookTriggerTimeout *int32  `json:"WebhookTriggerTimeout,omitempty" xml:"WebhookTriggerTimeout,omitempty"`
+	// The timeout period for the silence alert, in seconds. This alert can be triggered multiple times. If the agent remains silent after the silence alert timeout, it will be triggered again upon the next timeout.
+	//
+	// example:
+	//
+	// 60
+	AlertTimeout *int32 `json:"AlertTimeout,omitempty" xml:"AlertTimeout,omitempty"`
+	// The content of the silence prompt message.
+	//
+	// example:
+	//
+	// Hello, are you still there?
+	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// The silence timeout handling strategy. Valid values:
+	//
+	// - 1: Broadcast the prompt message specified by content to the user via voice.
+	//
+	// - 2: Send the prompt message specified by content and the conversation history to the LLM, and broadcast the reply generated by the model.
+	//
+	// example:
+	//
+	// 1
+	Strategy *int32 `json:"Strategy,omitempty" xml:"Strategy,omitempty"`
+	// The silence timeout period for triggering the agent silence timeout webhook, in seconds. This webhook can be triggered multiple times. If the agent remains silent after the webhook silence timeout, it will be triggered again upon the next timeout.
+	//
+	// example:
+	//
+	// 50
+	WebhookTriggerTimeout *int32 `json:"WebhookTriggerTimeout,omitempty" xml:"WebhookTriggerTimeout,omitempty"`
 }
 
 func (s DescribeAppAgentTemplatesResponseBodyTemplatesAgentSilenceConfig) String() string {
@@ -381,10 +453,14 @@ func (s *DescribeAppAgentTemplatesResponseBodyTemplatesAgentSilenceConfig) Valid
 }
 
 type DescribeAppAgentTemplatesResponseBodyTemplatesAmbientSoundConfig struct {
+	// The ID of the ambient sound.
+	//
 	// example:
 	//
 	// office
 	SoundId *string `json:"SoundId,omitempty" xml:"SoundId,omitempty"`
+	// The volume of the ambient sound.
+	//
 	// example:
 	//
 	// 50
@@ -422,17 +498,28 @@ func (s *DescribeAppAgentTemplatesResponseBodyTemplatesAmbientSoundConfig) Valid
 }
 
 type DescribeAppAgentTemplatesResponseBodyTemplatesAsrConfig struct {
+	// The threshold for detecting sentence pauses in speech, in milliseconds. Default value: 500. Valid values: 200 to 6000.
+	//
 	// example:
 	//
 	// 300
-	MaxSentenceSilence *int32                                                            `json:"MaxSentenceSilence,omitempty" xml:"MaxSentenceSilence,omitempty"`
-	Name               *string                                                           `json:"Name,omitempty" xml:"Name,omitempty"`
-	VadConfig          *DescribeAppAgentTemplatesResponseBodyTemplatesAsrConfigVadConfig `json:"VadConfig,omitempty" xml:"VadConfig,omitempty" type:"Struct"`
+	MaxSentenceSilence *int32 `json:"MaxSentenceSilence,omitempty" xml:"MaxSentenceSilence,omitempty"`
+	// The name.
+	//
+	// example:
+	//
+	// ASR configuration
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The Voice Activity Detection (VAD) configuration.
+	VadConfig *DescribeAppAgentTemplatesResponseBodyTemplatesAsrConfigVadConfig `json:"VadConfig,omitempty" xml:"VadConfig,omitempty" type:"Struct"`
+	// The ID of the hotword vocabulary.
+	//
 	// example:
 	//
 	// ecfadace11114cf08a7f07aceee798ad
-	VocabularyId *string                                                               `json:"VocabularyId,omitempty" xml:"VocabularyId,omitempty"`
-	WordWeights  []*DescribeAppAgentTemplatesResponseBodyTemplatesAsrConfigWordWeights `json:"WordWeights,omitempty" xml:"WordWeights,omitempty" type:"Repeated"`
+	VocabularyId *string `json:"VocabularyId,omitempty" xml:"VocabularyId,omitempty"`
+	// The hotword weights. Each vocabulary can contain up to 500 hotwords, and each hotword can be up to 10 Chinese characters in length. Hotwords must be UTF-8 encoded and cannot contain punctuation marks or special characters. Otherwise, the hotword feature will not take effect.
+	WordWeights []*DescribeAppAgentTemplatesResponseBodyTemplatesAsrConfigWordWeights `json:"WordWeights,omitempty" xml:"WordWeights,omitempty" type:"Repeated"`
 }
 
 func (s DescribeAppAgentTemplatesResponseBodyTemplatesAsrConfig) String() string {
@@ -507,6 +594,11 @@ func (s *DescribeAppAgentTemplatesResponseBodyTemplatesAsrConfig) Validate() err
 }
 
 type DescribeAppAgentTemplatesResponseBodyTemplatesAsrConfigVadConfig struct {
+	// The minimum duration of continuous human voice signal detection required to avoid false interruptions, in milliseconds. Valid values: 0 to 3000.
+	//
+	// example:
+	//
+	// 1200
 	InterruptSpeechDuration *int32 `json:"InterruptSpeechDuration,omitempty" xml:"InterruptSpeechDuration,omitempty"`
 }
 
@@ -532,15 +624,24 @@ func (s *DescribeAppAgentTemplatesResponseBodyTemplatesAsrConfigVadConfig) Valid
 }
 
 type DescribeAppAgentTemplatesResponseBodyTemplatesAsrConfigWordWeights struct {
+	// The language code.
+	//
 	// example:
 	//
 	// zh
 	Lang *string `json:"Lang,omitempty" xml:"Lang,omitempty"`
+	// The weight of the hotword. Valid values: integers from 1 to 5. Common value: 4. If the effect is not obvious, you can increase the weight. However, a large weight may cause negative effects and lead to inaccurate recognition of other words.
+	//
 	// example:
 	//
 	// 1
-	Weight *int32  `json:"Weight,omitempty" xml:"Weight,omitempty"`
-	Word   *string `json:"Word,omitempty" xml:"Word,omitempty"`
+	Weight *int32 `json:"Weight,omitempty" xml:"Weight,omitempty"`
+	// The text of the hotword. Each word can be up to 10 Chinese characters or English words in length.
+	//
+	// example:
+	//
+	// Dezhou
+	Word *string `json:"Word,omitempty" xml:"Word,omitempty"`
 }
 
 func (s DescribeAppAgentTemplatesResponseBodyTemplatesAsrConfigWordWeights) String() string {
@@ -583,6 +684,7 @@ func (s *DescribeAppAgentTemplatesResponseBodyTemplatesAsrConfigWordWeights) Val
 }
 
 type DescribeAppAgentTemplatesResponseBodyTemplatesBackChannelConfig struct {
+	// Specifies whether to enable backchanneling after the user finishes speaking.
 	UserTurnEnd *bool `json:"UserTurnEnd,omitempty" xml:"UserTurnEnd,omitempty"`
 }
 
@@ -608,6 +710,7 @@ func (s *DescribeAppAgentTemplatesResponseBodyTemplatesBackChannelConfig) Valida
 }
 
 type DescribeAppAgentTemplatesResponseBodyTemplatesInterruptConfig struct {
+	// Specifies whether semantic interruption is enabled.
 	SemanticsInterrupt *bool `json:"SemanticsInterrupt,omitempty" xml:"SemanticsInterrupt,omitempty"`
 }
 
@@ -633,40 +736,68 @@ func (s *DescribeAppAgentTemplatesResponseBodyTemplatesInterruptConfig) Validate
 }
 
 type DescribeAppAgentTemplatesResponseBodyTemplatesLlmConfig struct {
+	// The application ID of the agent when the model is a Model Studio agent.
+	//
+	// example:
+	//
+	// 1233312
 	AgentAppId *string `json:"AgentAppId,omitempty" xml:"AgentAppId,omitempty"`
+	// The API key required by the LLM service provider.
+	//
 	// example:
 	//
 	// qW8GpBOdHK/pv9gdUSVLvQ==
 	ApiKey *string `json:"ApiKey,omitempty" xml:"ApiKey,omitempty"`
+	// The number of historical conversation turns provided to the LLM. Maximum value: 100. Default value: 3.
+	//
 	// example:
 	//
 	// 8
 	HistoryDepth *int32 `json:"HistoryDepth,omitempty" xml:"HistoryDepth,omitempty"`
+	// The maximum number of tokens for the output text. Default value: 8192.
+	//
 	// example:
 	//
 	// 1024
 	MaxToken *int32 `json:"MaxToken,omitempty" xml:"MaxToken,omitempty"`
+	// The model provided by Alibaba Cloud Model Studio. Currently, qwen-plus and deepseek-r1 are supported.
+	//
 	// example:
 	//
 	// deepseek-r1
 	Model *string `json:"Model,omitempty" xml:"Model,omitempty"`
+	// The name.
+	//
 	// example:
 	//
 	// llm
-	Name   *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The prompt for the large language model. The maximum length is 5,000 characters.
+	//
+	// example:
+	//
+	// You are a senior psychologist
 	Prompt *string `json:"Prompt,omitempty" xml:"Prompt,omitempty"`
+	// The sampling temperature. Valid values: 0 to 2 (exclusive). Default value: 0.7.
+	//
 	// example:
 	//
 	// 0.8
 	Temperature *float32 `json:"Temperature,omitempty" xml:"Temperature,omitempty"`
+	// The top-p sampling range. Valid values: (0, 1]. Default value: 0.8.
+	//
 	// example:
 	//
 	// 0.8
 	TopP *float32 `json:"TopP,omitempty" xml:"TopP,omitempty"`
+	// The endpoint URL used to connect to a third-party large language model.
+	//
 	// example:
 	//
 	// https://test.com
 	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
+	// The vendor. Currently, Alibaba Cloud Model Studio and third-party configurations that comply with the OpenAI API specification are supported.
+	//
 	// example:
 	//
 	// aliyun
@@ -785,35 +916,102 @@ func (s *DescribeAppAgentTemplatesResponseBodyTemplatesLlmConfig) Validate() err
 }
 
 type DescribeAppAgentTemplatesResponseBodyTemplatesTtsConfig struct {
+	// The API key required by the LLM service provider.
+	//
 	// example:
 	//
 	// N5448VFGI2mXJU8a/A03VQ==
-	ApiKey         *string  `json:"ApiKey,omitempty" xml:"ApiKey,omitempty"`
+	ApiKey *string `json:"ApiKey,omitempty" xml:"ApiKey,omitempty"`
+	// The bracket filtering settings. Valid values:
+	//
+	// - 1: Chinese parentheses （）
+	//
+	// - 2: English parentheses ()
+	//
+	// - 3: Chinese square brackets 【】
+	//
+	// - 4: English square brackets []
+	//
+	// - 5: English curly braces {}
 	FilterBrackets []*int32 `json:"FilterBrackets,omitempty" xml:"FilterBrackets,omitempty" type:"Repeated"`
+	// The model provided by Alibaba Cloud Model Studio. Currently, only the cosyvoice-v1 model is supported.
+	//
 	// example:
 	//
 	// cosyvoice-v1
 	Model *string `json:"Model,omitempty" xml:"Model,omitempty"`
+	// The name.
+	//
 	// example:
 	//
 	// Tts
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The pitch. Valid values: 0.5 to 2.0. Default value: 1.0.
+	//
 	// example:
 	//
 	// 0.8
 	Pitch *float32 `json:"Pitch,omitempty" xml:"Pitch,omitempty"`
+	// The speech rate. Valid values: 0.5 to 2.0. Default value: 1.0.
+	//
 	// example:
 	//
 	// 50
 	Rate *float32 `json:"Rate,omitempty" xml:"Rate,omitempty"`
+	// The vendor. Currently, only Alibaba Cloud Model Studio is supported.
+	//
 	// example:
 	//
 	// aliyun
 	Vendor *string `json:"Vendor,omitempty" xml:"Vendor,omitempty"`
+	// The voice. Default value: longxiaoxia. Valid values:
+	//
+	// - longwan
+	//
+	// - longcheng
+	//
+	// - longhua
+	//
+	// - longxiaochun
+	//
+	// - longxiaoxia
+	//
+	// - longxiaocheng
+	//
+	// - longxiaobai
+	//
+	// - longlaotie
+	//
+	// - longshu
+	//
+	// - longshuo
+	//
+	// - longjing
+	//
+	// - longmiao
+	//
+	// - longyue
+	//
+	// - longyuan
+	//
+	// - longfei
+	//
+	// - longjielidou
+	//
+	// - longtong
+	//
+	// - longxiang
+	//
+	// - loongstella
+	//
+	// - loongbella
+	//
 	// example:
 	//
 	// longwan
 	Voice *string `json:"Voice,omitempty" xml:"Voice,omitempty"`
+	// The volume. Valid values: 0 to 100. Default value: 50.
+	//
 	// example:
 	//
 	// 50

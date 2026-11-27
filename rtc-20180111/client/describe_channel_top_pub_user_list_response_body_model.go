@@ -16,10 +16,13 @@ type iDescribeChannelTopPubUserListResponseBody interface {
 }
 
 type DescribeChannelTopPubUserListResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 231470C1-ACFB-4C9F-844F-4CFE1E3804C5
-	RequestId            *string                                                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The list of details about top publishing users.
 	TopPubUserDetailList []*DescribeChannelTopPubUserListResponseBodyTopPubUserDetailList `json:"TopPubUserDetailList,omitempty" xml:"TopPubUserDetailList,omitempty" type:"Repeated"`
 }
 
@@ -63,27 +66,40 @@ func (s *DescribeChannelTopPubUserListResponseBody) Validate() error {
 }
 
 type DescribeChannelTopPubUserListResponseBodyTopPubUserDetailList struct {
+	// The time when the user first joined the channel. The value is a UNIX timestamp in seconds.
+	//
 	// example:
 	//
 	// 1615893327
 	CreatedTs *int64 `json:"CreatedTs,omitempty" xml:"CreatedTs,omitempty"`
+	// The time when the user last left the channel. The value is a UNIX timestamp in seconds. The value is 0 if the call has not ended.
+	//
 	// example:
 	//
 	// 1615893442
 	DestroyedTs *int64 `json:"DestroyedTs,omitempty" xml:"DestroyedTs,omitempty"`
+	// The total duration in seconds.
+	//
 	// example:
 	//
-	// 0
+	// 115
 	Duration *int64 `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	// The geographic location, such as Beijing-Beijing.
+	//
 	// example:
 	//
-	// 浙江省-杭州市
+	// Zhejiang-Hangzhou
 	Location *string `json:"Location,omitempty" xml:"Location,omitempty"`
+	// The communication duration in seconds.
+	//
 	// example:
 	//
-	// 0
-	OnlineDuration *int64                                                                        `json:"OnlineDuration,omitempty" xml:"OnlineDuration,omitempty"`
-	OnlinePeriods  []*DescribeChannelTopPubUserListResponseBodyTopPubUserDetailListOnlinePeriods `json:"OnlinePeriods,omitempty" xml:"OnlinePeriods,omitempty" type:"Repeated"`
+	// 115
+	OnlineDuration *int64 `json:"OnlineDuration,omitempty" xml:"OnlineDuration,omitempty"`
+	// The list of online periods for the user.
+	OnlinePeriods []*DescribeChannelTopPubUserListResponseBodyTopPubUserDetailListOnlinePeriods `json:"OnlinePeriods,omitempty" xml:"OnlinePeriods,omitempty" type:"Repeated"`
+	// The user ID.
+	//
 	// example:
 	//
 	// testuserid
@@ -175,10 +191,14 @@ func (s *DescribeChannelTopPubUserListResponseBodyTopPubUserDetailList) Validate
 }
 
 type DescribeChannelTopPubUserListResponseBodyTopPubUserDetailListOnlinePeriods struct {
+	// The time when the user joined the channel. The value is a UNIX timestamp in seconds.
+	//
 	// example:
 	//
 	// 1615893327
 	JoinTs *int64 `json:"JoinTs,omitempty" xml:"JoinTs,omitempty"`
+	// The time when the user left the channel. The value is a UNIX timestamp in seconds.
+	//
 	// example:
 	//
 	// 1615893442

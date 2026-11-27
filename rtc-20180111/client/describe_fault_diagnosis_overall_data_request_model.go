@@ -20,7 +20,7 @@ type iDescribeFaultDiagnosisOverallDataRequest interface {
 }
 
 type DescribeFaultDiagnosisOverallDataRequest struct {
-	// APP ID
+	// The app ID.
 	//
 	// This parameter is required.
 	//
@@ -28,18 +28,36 @@ type DescribeFaultDiagnosisOverallDataRequest struct {
 	//
 	// 4eah****
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The end time of the query. The value is a UNIX timestamp in seconds.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1615910399
 	EndTs *int64 `json:"EndTs,omitempty" xml:"EndTs,omitempty"`
+	// The start time of the query. The value is a UNIX timestamp in seconds.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1615824000
 	StartTs *int64 `json:"StartTs,omitempty" xml:"StartTs,omitempty"`
+	// The statistical dimension. Valid values:
+	//
+	// - **JOIN_SLOW_USER**: the number of users who joined the channel slowly
+	//
+	// - **AUDIO_STUCK_USER**: the number of users who experienced audio stuttering
+	//
+	// - **VIDEO_STUCK_USER**: the number of users who experienced video stuttering
+	//
+	// - **VIDEO_VAGUE_USER**: the number of users who experienced blurry video
+	//
+	// - **HIGH_DELAY_USER**: the number of users who experienced high call latency
+	//
+	// - **FIRST_FRAME_SLOW_USER**: the number of users who experienced slow first screen rendering
+	//
 	// This parameter is required.
 	//
 	// example:

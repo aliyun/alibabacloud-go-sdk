@@ -18,12 +18,16 @@ type iModifyCallbackMetaRequest interface {
 }
 
 type ModifyCallbackMetaRequest struct {
+	// The application ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 223***JQb
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The callback configuration.
+	//
 	// This parameter is required.
 	Callback *ModifyCallbackMetaRequestCallback `json:"Callback,omitempty" xml:"Callback,omitempty" type:"Struct"`
 	OwnerId  *int64                             `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
@@ -74,18 +78,31 @@ func (s *ModifyCallbackMetaRequest) Validate() error {
 }
 
 type ModifyCallbackMetaRequestCallback struct {
+	// The callback code.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// RecordEvent
 	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
+	// The callback URL.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// https://www.aliyun.com
-	Conf     *string  `json:"Conf,omitempty" xml:"Conf,omitempty"`
+	Conf *string `json:"Conf,omitempty" xml:"Conf,omitempty"`
+	// The sub-events.
+	//
+	// Recording events:
+	//
+	// - **2010**: Recording service status change.
+	//
+	// - **2011**: Recording audio stream status change.
+	//
+	// - **2012**: Recording video stream status change.
 	SubEvent []*int32 `json:"SubEvent,omitempty" xml:"SubEvent,omitempty" type:"Repeated"`
 }
 

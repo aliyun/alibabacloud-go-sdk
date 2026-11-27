@@ -20,12 +20,16 @@ type iDescribeRtcChannelMetricRequest interface {
 }
 
 type DescribeRtcChannelMetricRequest struct {
+	// The application ID. You can create and query the application ID in the console. Only a single ID is supported.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// aoe****
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The channel ID. Only a single ID is supported.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -33,6 +37,10 @@ type DescribeRtcChannelMetricRequest struct {
 	// testId
 	ChannelId *string `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
 	OwnerId   *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The time when the record is queried, in UTC. Specify the time in the yyyy-MM-ddTHH:mm:ssZ format.
+	//
+	// The time granularity is day.
+	//
 	// This parameter is required.
 	//
 	// example:

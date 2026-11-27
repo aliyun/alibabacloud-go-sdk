@@ -18,18 +18,24 @@ type iRemoveUsersRequest interface {
 }
 
 type RemoveUsersRequest struct {
+	// Application ID. You can create and query it in the console. Only a single ID is supported.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// eo85****
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The ID of the joined channel. Only a single ID is supported.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// testid
 	ChannelId *string `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
+	// User List. Valid values of N: 1 to 30.
+	//
 	// This parameter is required.
 	Users []*RemoveUsersRequestUsers `json:"Users,omitempty" xml:"Users,omitempty" type:"Repeated"`
 }
@@ -83,6 +89,8 @@ func (s *RemoveUsersRequest) Validate() error {
 }
 
 type RemoveUsersRequestUsers struct {
+	// User ID.
+	//
 	// This parameter is required.
 	//
 	// example:

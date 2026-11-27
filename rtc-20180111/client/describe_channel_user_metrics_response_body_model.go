@@ -18,8 +18,12 @@ type iDescribeChannelUserMetricsResponseBody interface {
 }
 
 type DescribeChannelUserMetricsResponseBody struct {
+	// The metric data list.
 	MetricDatas []*DescribeChannelUserMetricsResponseBodyMetricDatas `json:"MetricDatas,omitempty" xml:"MetricDatas,omitempty" type:"Repeated"`
-	OverallData *DescribeChannelUserMetricsResponseBodyOverallData   `json:"OverallData,omitempty" xml:"OverallData,omitempty" type:"Struct"`
+	// The overview data.
+	OverallData *DescribeChannelUserMetricsResponseBodyOverallData `json:"OverallData,omitempty" xml:"OverallData,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 231470C1-ACFB-4C9F-844F-4CFE1E3804C5
@@ -80,7 +84,20 @@ func (s *DescribeChannelUserMetricsResponseBody) Validate() error {
 }
 
 type DescribeChannelUserMetricsResponseBodyMetricDatas struct {
+	// The list of coordinate points in the metric trends chart.
 	Nodes []*DescribeChannelUserMetricsResponseBodyMetricDatasNodes `json:"Nodes,omitempty" xml:"Nodes,omitempty" type:"Repeated"`
+	// The metric type. Valid values:
+	//
+	// - **ALL_NUM**: the number of users per unit of time.
+	//
+	// - **PUB_NUM**: the number of publishing users per unit of time.
+	//
+	// - **SUB_NUM**: the number of subscribing users per unit of time.
+	//
+	// - **JOIN_FAIL_NUM**: the number of users who failed to join the channel per unit of time.
+	//
+	// - **BAD_EXP_NUM**: the number of users with abnormal communication experience per unit of time.
+	//
 	// example:
 	//
 	// ALL_NUM
@@ -127,11 +144,16 @@ func (s *DescribeChannelUserMetricsResponseBodyMetricDatas) Validate() error {
 }
 
 type DescribeChannelUserMetricsResponseBodyMetricDatasNodes struct {
+	// The extended properties.
 	Ext map[string]interface{} `json:"Ext,omitempty" xml:"Ext,omitempty"`
+	// The x-axis coordinate in the metric trends chart.
+	//
 	// example:
 	//
 	// 1612418625
 	X *string `json:"X,omitempty" xml:"X,omitempty"`
+	// The y-axis coordinate in the metric trends chart.
+	//
 	// example:
 	//
 	// 123
@@ -178,22 +200,32 @@ func (s *DescribeChannelUserMetricsResponseBodyMetricDatasNodes) Validate() erro
 }
 
 type DescribeChannelUserMetricsResponseBodyOverallData struct {
+	// The total number of users with abnormal communication experience.
+	//
 	// example:
 	//
 	// 0
 	TotalBadExpNum *int64 `json:"TotalBadExpNum,omitempty" xml:"TotalBadExpNum,omitempty"`
+	// The total number of users who failed to join the channel.
+	//
 	// example:
 	//
 	// 0
 	TotalJoinFailNum *int64 `json:"TotalJoinFailNum,omitempty" xml:"TotalJoinFailNum,omitempty"`
+	// The total number of publishing users.
+	//
 	// example:
 	//
 	// 1
 	TotalPubUserNum *int64 `json:"TotalPubUserNum,omitempty" xml:"TotalPubUserNum,omitempty"`
+	// The total number of subscribing users.
+	//
 	// example:
 	//
 	// 3
 	TotalSubUserNum *int64 `json:"TotalSubUserNum,omitempty" xml:"TotalSubUserNum,omitempty"`
+	// The total number of users.
+	//
 	// example:
 	//
 	// 5

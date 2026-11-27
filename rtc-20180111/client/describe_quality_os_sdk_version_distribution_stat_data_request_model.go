@@ -18,7 +18,7 @@ type iDescribeQualityOsSdkVersionDistributionStatDataRequest interface {
 }
 
 type DescribeQualityOsSdkVersionDistributionStatDataRequest struct {
-	// APP ID
+	// The APP ID.
 	//
 	// This parameter is required.
 	//
@@ -26,12 +26,16 @@ type DescribeQualityOsSdkVersionDistributionStatDataRequest struct {
 	//
 	// 0rbd****
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The end time of the query. The value is a UNIX timestamp in seconds.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1615910399
 	EndDate *int64 `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
+	// The start time of the query. The value is a UNIX timestamp in seconds.
+	//
 	// This parameter is required.
 	//
 	// example:

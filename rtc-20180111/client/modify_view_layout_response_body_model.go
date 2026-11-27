@@ -16,10 +16,14 @@ type iModifyViewLayoutResponseBody interface {
 }
 
 type ModifyViewLayoutResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 231470C1-ACFB-4C9F-844F-4CFE1E3804C5
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The task ID.
+	//
 	// example:
 	//
 	// 123

@@ -18,14 +18,20 @@ type iGetAgentRequest interface {
 }
 
 type GetAgentRequest struct {
+	// Application ID. You can create and view this ID in the console. Only one ID is supported.
+	//
 	// example:
 	//
 	// aec****
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// Channel ID.
+	//
 	// example:
 	//
 	// 1234
 	ChannelId *string `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
+	// Task ID.
+	//
 	// example:
 	//
 	// yourTaskId

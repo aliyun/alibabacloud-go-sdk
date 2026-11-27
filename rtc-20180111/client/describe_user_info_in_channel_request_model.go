@@ -20,12 +20,16 @@ type iDescribeUserInfoInChannelRequest interface {
 }
 
 type DescribeUserInfoInChannelRequest struct {
+	// The application ID, which is created and queried through the console. Only a single ID is supported.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 4eah****
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The channel ID. Only a single ID is supported.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -33,6 +37,8 @@ type DescribeUserInfoInChannelRequest struct {
 	// 1234
 	ChannelId *string `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
 	OwnerId   *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The user ID. Only a single ID is supported.
+	//
 	// This parameter is required.
 	//
 	// example:

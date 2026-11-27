@@ -16,12 +16,16 @@ type iModifyAppLiveStreamStatusRequest interface {
 }
 
 type ModifyAppLiveStreamStatusRequest struct {
+	// Application ID. You can create and query it in the console. Only a single ID is supported.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ac7N****
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// Idempotency parameter
+	//
 	// example:
 	//
 	// 53200b81-b761-4c10-842a-a0726xxxx

@@ -18,18 +18,24 @@ type iStopViewRequest interface {
 }
 
 type StopViewRequest struct {
+	// The application ID. Create and query it in the console. Only one ID is supported.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// eo85****
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// An existing channel ID. Only one ID is supported.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// testid
 	ChannelId *string `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
+	// An existing task ID. Only one ID is supported.
+	//
 	// This parameter is required.
 	//
 	// example:

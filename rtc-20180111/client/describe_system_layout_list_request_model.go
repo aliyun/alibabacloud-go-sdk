@@ -19,10 +19,14 @@ type iDescribeSystemLayoutListRequest interface {
 
 type DescribeSystemLayoutListRequest struct {
 	OwnerId *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// Page number.
+	//
 	// example:
 	//
 	// 1
 	PageNum *int64 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
+	// Number of entries per page.
+	//
 	// example:
 	//
 	// 10

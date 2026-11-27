@@ -24,32 +24,47 @@ type iStartAgentShrinkRequest interface {
 }
 
 type StartAgentShrinkRequest struct {
+	// The application ID. You can create and query the ID in the console. Only a single ID is supported.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// aoe****
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The ID of the channel to join. Only a single ID is supported.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// yourChannelId
 	ChannelId *string `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
+	// The configuration for the agent to join a Real-Time Communication (RTC) channel.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 2
 	RtcConfigShrink *string `json:"RtcConfig,omitempty" xml:"RtcConfig,omitempty"`
+	// The task ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// yourTaskId
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// The template ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 76dasgb****
-	TemplateId            *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	// The configuration for AI voice chat.
 	VoiceChatConfigShrink *string `json:"VoiceChatConfig,omitempty" xml:"VoiceChatConfig,omitempty"`
 }
 

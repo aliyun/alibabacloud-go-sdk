@@ -26,12 +26,16 @@ type DescribeFaultDiagnosisFactorDistributionStatRequest struct {
 	//
 	// 0rbd****
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// End Time of the query, expressed as a UNIX timestamp. Unit: seconds.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1615892596****
 	EndTs *int64 `json:"EndTs,omitempty" xml:"EndTs,omitempty"`
+	// Start Time of the query, expressed as a UNIX timestamp. Unit: seconds.
+	//
 	// This parameter is required.
 	//
 	// example:

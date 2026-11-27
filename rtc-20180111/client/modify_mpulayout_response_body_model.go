@@ -14,6 +14,8 @@ type iModifyMPULayoutResponseBody interface {
 }
 
 type ModifyMPULayoutResponseBody struct {
+	// The ID of the request.
+	//
 	// example:
 	//
 	// 760bad53276431c499e30dc36f6b26be

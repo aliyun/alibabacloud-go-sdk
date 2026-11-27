@@ -34,45 +34,77 @@ type iStartViewRequest interface {
 }
 
 type StartViewRequest struct {
+	// The application ID. You can create and query the ID in the console. Only a single ID is supported.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// eo85****
-	AppId   *string                  `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The global background color.
 	BgColor *StartViewRequestBgColor `json:"BgColor,omitempty" xml:"BgColor,omitempty" type:"Struct"`
+	// The ID of an existing channel. Only a single ID is supported.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// testid
 	ChannelId *string `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
+	// The crop mode. Valid values:
+	//
+	// - **1**: proportional cropping
+	//
+	// - **2**: proportional padding (default)
+	//
+	// - **3**: stretch to fill
+	//
 	// example:
 	//
 	// 2
-	CropMode            *int32                       `json:"CropMode,omitempty" xml:"CropMode,omitempty"`
-	RegionColor         *StartViewRequestRegionColor `json:"RegionColor,omitempty" xml:"RegionColor,omitempty" type:"Struct"`
-	StartWithoutChannel *bool                        `json:"StartWithoutChannel,omitempty" xml:"StartWithoutChannel,omitempty"`
+	CropMode *int32 `json:"CropMode,omitempty" xml:"CropMode,omitempty"`
+	// The global pane background color.
+	RegionColor *StartViewRequestRegionColor `json:"RegionColor,omitempty" xml:"RegionColor,omitempty" type:"Struct"`
+	// Specifies whether to allow starting the task when the channel does not exist. Valid values:
+	//
+	// - true: Yes.
+	//
+	// - false: No (default).
+	StartWithoutChannel *bool `json:"StartWithoutChannel,omitempty" xml:"StartWithoutChannel,omitempty"`
+	// The wait time for the task when the channel is not started, in seconds. This parameter is valid only when the StartWithoutChannel parameter is set to true. Valid values: 30 to 120.
+	//
 	// example:
 	//
 	// 30
 	StartWithoutChannelWaitTime *int32 `json:"StartWithoutChannelWaitTime,omitempty" xml:"StartWithoutChannelWaitTime,omitempty"`
+	// The task ID for the current request. Only a single ID is supported. The ID can contain letters, digits, underscores (_), and hyphens (-), and can be up to 55 bytes in length.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 123
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// The template ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 567
 	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	// The stream property. Valid values:
+	//
+	// - main: main stream
+	//
+	// - screen-cast: shared stream
+	//
 	// example:
 	//
 	// main
-	ViewContent     *string   `json:"ViewContent,omitempty" xml:"ViewContent,omitempty"`
+	ViewContent *string `json:"ViewContent,omitempty" xml:"ViewContent,omitempty"`
+	// The list of user IDs of Session Initiation Protocol (SIP) devices that are allowed to view the main stream or shared stream.
 	ViewSubscribers []*string `json:"ViewSubscribers,omitempty" xml:"ViewSubscribers,omitempty" type:"Repeated"`
 }
 
@@ -198,19 +230,19 @@ func (s *StartViewRequest) Validate() error {
 }
 
 type StartViewRequestBgColor struct {
-	// B。
+	// The B value.
 	//
 	// example:
 	//
 	// 255
 	B *int32 `json:"B,omitempty" xml:"B,omitempty"`
-	// G。
+	// The G value.
 	//
 	// example:
 	//
 	// 255
 	G *int32 `json:"G,omitempty" xml:"G,omitempty"`
-	// R。
+	// The R value.
 	//
 	// example:
 	//
@@ -258,19 +290,19 @@ func (s *StartViewRequestBgColor) Validate() error {
 }
 
 type StartViewRequestRegionColor struct {
-	// B。
+	// The B value.
 	//
 	// example:
 	//
 	// 255
 	B *int32 `json:"B,omitempty" xml:"B,omitempty"`
-	// G。
+	// The G value.
 	//
 	// example:
 	//
 	// 255
 	G *int32 `json:"G,omitempty" xml:"G,omitempty"`
-	// R。
+	// The R value.
 	//
 	// example:
 	//

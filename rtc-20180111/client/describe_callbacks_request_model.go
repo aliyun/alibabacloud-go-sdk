@@ -14,6 +14,8 @@ type iDescribeCallbacksRequest interface {
 }
 
 type DescribeCallbacksRequest struct {
+	// The application ID.
+	//
 	// This parameter is required.
 	//
 	// example:

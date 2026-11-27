@@ -20,9 +20,14 @@ type iDescribeChannelOverallDataResponseBody interface {
 }
 
 type DescribeChannelOverallDataResponseBody struct {
-	CallInfo    *DescribeChannelOverallDataResponseBodyCallInfo      `json:"CallInfo,omitempty" xml:"CallInfo,omitempty" type:"Struct"`
+	// Basic communication information.
+	CallInfo *DescribeChannelOverallDataResponseBodyCallInfo `json:"CallInfo,omitempty" xml:"CallInfo,omitempty" type:"Struct"`
+	// List of metric data.
 	MetricDatas []*DescribeChannelOverallDataResponseBodyMetricDatas `json:"MetricDatas,omitempty" xml:"MetricDatas,omitempty" type:"Repeated"`
-	OverallData *DescribeChannelOverallDataResponseBodyOverallData   `json:"OverallData,omitempty" xml:"OverallData,omitempty" type:"Struct"`
+	// Overview data.
+	OverallData *DescribeChannelOverallDataResponseBodyOverallData `json:"OverallData,omitempty" xml:"OverallData,omitempty" type:"Struct"`
+	// Request ID.
+	//
 	// example:
 	//
 	// 231470C1-ACFB-4C9F-844F-4CFE1E3804C5
@@ -97,26 +102,42 @@ func (s *DescribeChannelOverallDataResponseBody) Validate() error {
 }
 
 type DescribeChannelOverallDataResponseBodyCallInfo struct {
+	// Application ID.
+	//
 	// example:
 	//
 	// rjdhtnqy
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// Communication status. Valid values:
+	//
+	// - **IN**: In progress.
+	//
+	// - **OUT**: Ended.
+	//
 	// example:
 	//
 	// IN
 	CallStatus *string `json:"CallStatus,omitempty" xml:"CallStatus,omitempty"`
+	// Channel ID.
+	//
 	// example:
 	//
 	// 123456
 	ChannelId *string `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
+	// The UNIX timestamp when the channel was created, in seconds.
+	//
 	// example:
 	//
 	// 1615860711
 	CreatedTs *int64 `json:"CreatedTs,omitempty" xml:"CreatedTs,omitempty"`
+	// The UNIX timestamp when the channel was released, in seconds.
+	//
 	// example:
 	//
 	// 1615860811
 	DestroyedTs *int64 `json:"DestroyedTs,omitempty" xml:"DestroyedTs,omitempty"`
+	// Channel duration, in seconds.
+	//
 	// example:
 	//
 	// 100
@@ -190,7 +211,14 @@ func (s *DescribeChannelOverallDataResponseBodyCallInfo) Validate() error {
 }
 
 type DescribeChannelOverallDataResponseBodyMetricDatas struct {
+	// List of coordinate points for the Trend Indicator.
 	Nodes []*DescribeChannelOverallDataResponseBodyMetricDatasNodes `json:"Nodes,omitempty" xml:"Nodes,omitempty" type:"Repeated"`
+	// Metric Type. Valid values:
+	//
+	// - **CALL_QUALITY**: Call quality.
+	//
+	// - **CONN_NUM**: Distribution of time intervals for successful channel joins.
+	//
 	// example:
 	//
 	// CALL_QUALITY
@@ -237,11 +265,16 @@ func (s *DescribeChannelOverallDataResponseBodyMetricDatas) Validate() error {
 }
 
 type DescribeChannelOverallDataResponseBodyMetricDatasNodes struct {
+	// Extension data.
 	Ext map[string]interface{} `json:"Ext,omitempty" xml:"Ext,omitempty"`
+	// X-axis coordinate in the Trend Indicator.
+	//
 	// example:
 	//
 	// 1612418625
 	X *string `json:"X,omitempty" xml:"X,omitempty"`
+	// Y-axis coordinate in the Trend Indicator.
+	//
 	// example:
 	//
 	// 123
@@ -288,22 +321,32 @@ func (s *DescribeChannelOverallDataResponseBodyMetricDatasNodes) Validate() erro
 }
 
 type DescribeChannelOverallDataResponseBodyOverallData struct {
+	// Average communication connection time, in seconds.
+	//
 	// example:
 	//
 	// 0.5
 	ConnAvgTime *float32 `json:"ConnAvgTime,omitempty" xml:"ConnAvgTime,omitempty"`
+	// Connection success rate within 5 seconds, represented as a decimal. For example, 1.0 indicates a 100% connection success rate.
+	//
 	// example:
 	//
 	// 0.91
 	FiveSecJoinRate *float32 `json:"FiveSecJoinRate,omitempty" xml:"FiveSecJoinRate,omitempty"`
+	// Overall audio stuttering rate, represented as a decimal. For example, 0.02 indicates an audio stuttering rate of 2%.
+	//
 	// example:
 	//
 	// 0.02
 	TotalAudioStuckRate *float32 `json:"TotalAudioStuckRate,omitempty" xml:"TotalAudioStuckRate,omitempty"`
+	// Overall video stuttering rate, represented as a decimal. For example, 0.02 indicates a video stuttering rate of 2%.
+	//
 	// example:
 	//
 	// 0.02
 	TotalVideoStuckRate *float32 `json:"TotalVideoStuckRate,omitempty" xml:"TotalVideoStuckRate,omitempty"`
+	// Overall video blur rate, represented as a decimal. For example, 0.02 indicates a video blur rate of 2%.
+	//
 	// example:
 	//
 	// 0.02

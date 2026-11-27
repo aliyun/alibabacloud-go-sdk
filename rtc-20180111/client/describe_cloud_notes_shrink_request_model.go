@@ -34,26 +34,37 @@ type DescribeCloudNotesShrinkRequest struct {
 	//
 	// testappid
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// Channel ID.
+	//
 	// example:
 	//
 	// 311
 	ChannelId *string `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
+	// Query range, closed interval of job start time, in milliseconds.
+	//
 	// example:
 	//
 	// 1712376532000
 	EndTs *int64 `json:"EndTs,omitempty" xml:"EndTs,omitempty"`
+	// Page number.
+	//
 	// example:
 	//
 	// 1
 	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	// Number of items per page.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// Query range, open interval of job start time, in milliseconds. If not specified, defaults to querying recordings from the last 3 days, with a maximum range of one year in the past.
+	//
 	// example:
 	//
 	// 1712376032000
-	StartTs       *int64  `json:"StartTs,omitempty" xml:"StartTs,omitempty"`
+	StartTs *int64 `json:"StartTs,omitempty" xml:"StartTs,omitempty"`
+	// List of job TaskIds.
 	TaskIdsShrink *string `json:"TaskIds,omitempty" xml:"TaskIds,omitempty"`
 }
 

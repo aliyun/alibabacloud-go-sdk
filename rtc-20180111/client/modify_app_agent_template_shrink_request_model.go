@@ -44,45 +44,88 @@ type iModifyAppAgentTemplateShrinkRequest interface {
 }
 
 type ModifyAppAgentTemplateShrinkRequest struct {
+	// The agent silence configuration.
 	AgentSilenceConfigShrink *string `json:"AgentSilenceConfig,omitempty" xml:"AgentSilenceConfig,omitempty"`
+	// The agent ambient environment configuration. If this parameter is not specified, the ambient environment configuration is not used.
 	AmbientSoundConfigShrink *string `json:"AmbientSoundConfig,omitempty" xml:"AmbientSoundConfig,omitempty"`
+	// The application ID. You can create and query the ID in the console. Only a single ID is supported.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ac7N****
-	AppId                   *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
-	AsrConfigShrink         *string `json:"AsrConfig,omitempty" xml:"AsrConfig,omitempty"`
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The speech-to-text settings.
+	AsrConfigShrink *string `json:"AsrConfig,omitempty" xml:"AsrConfig,omitempty"`
+	// The agent backchannel configuration.
 	BackChannelConfigShrink *string `json:"BackChannelConfig,omitempty" xml:"BackChannelConfig,omitempty"`
+	// The conversation mode. Valid values:
+	//
+	// - 1: Natural conversation mode (default).
+	//
+	// - 2: Walkie-talkie mode.
+	//
 	// example:
 	//
 	// 2
-	ChatMode                 *int32  `json:"ChatMode,omitempty" xml:"ChatMode,omitempty"`
-	EnableVideoUnderstanding *bool   `json:"EnableVideoUnderstanding,omitempty" xml:"EnableVideoUnderstanding,omitempty"`
-	Greeting                 *string `json:"Greeting,omitempty" xml:"Greeting,omitempty"`
+	ChatMode *int32 `json:"ChatMode,omitempty" xml:"ChatMode,omitempty"`
+	// If enabled, the LLM must support multimodal data.
+	EnableVideoUnderstanding *bool `json:"EnableVideoUnderstanding,omitempty" xml:"EnableVideoUnderstanding,omitempty"`
+	// The greeting message. The maximum length is 500 characters.
+	//
+	// example:
+	//
+	// Good morning, my friend
+	Greeting *string `json:"Greeting,omitempty" xml:"Greeting,omitempty"`
+	// The template ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1231231312312131231
-	Id                    *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The agent interruption configuration.
 	InterruptConfigShrink *string `json:"InterruptConfig,omitempty" xml:"InterruptConfig,omitempty"`
+	// The interruption mode. Valid values:
+	//
+	// - 1: Interruption supported (default).
+	//
+	// - 2: Interruption disabled.
+	//
 	// example:
 	//
 	// 2
-	InterruptMode   *int32  `json:"InterruptMode,omitempty" xml:"InterruptMode,omitempty"`
+	InterruptMode *int32 `json:"InterruptMode,omitempty" xml:"InterruptMode,omitempty"`
+	// The large language model settings.
 	LlmConfigShrink *string `json:"LlmConfig,omitempty" xml:"LlmConfig,omitempty"`
+	// The template name.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 智能体模版
+	// Agent template
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The preferred video stream for the agent to understand after visual understanding is enabled. The agent can understand only one video stream. When both the camera stream and the screen sharing stream are pushed:
+	//
+	// 1 - The agent prioritizes understanding the camera stream.
+	//
+	// 2 - The agent prioritizes understanding the screen sharing stream.
+	//
+	// By default, the agent prioritizes understanding the camera stream.
+	//
 	// example:
 	//
 	// 2
-	PreferVideo     *int32  `json:"PreferVideo,omitempty" xml:"PreferVideo,omitempty"`
+	PreferVideo *int32 `json:"PreferVideo,omitempty" xml:"PreferVideo,omitempty"`
+	// The text-to-speech settings.
 	TtsConfigShrink *string `json:"TtsConfig,omitempty" xml:"TtsConfig,omitempty"`
+	// The agent type. Valid values:
+	//
+	// - 1: Voice call (default).
+	//
 	// example:
 	//
 	// 1

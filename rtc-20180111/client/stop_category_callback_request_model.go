@@ -16,12 +16,16 @@ type iStopCategoryCallbackRequest interface {
 }
 
 type StopCategoryCallbackRequest struct {
+	// The application ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 223***JQb
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The callback.
+	//
 	// This parameter is required.
 	Callback *StopCategoryCallbackRequestCallback `json:"Callback,omitempty" xml:"Callback,omitempty" type:"Struct"`
 }
@@ -62,6 +66,8 @@ func (s *StopCategoryCallbackRequest) Validate() error {
 }
 
 type StopCategoryCallbackRequestCallback struct {
+	// The callback code.
+	//
 	// This parameter is required.
 	//
 	// example:

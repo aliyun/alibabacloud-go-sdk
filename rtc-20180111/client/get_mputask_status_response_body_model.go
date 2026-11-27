@@ -16,10 +16,30 @@ type iGetMPUTaskStatusResponseBody interface {
 }
 
 type GetMPUTaskStatusResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 760bad53276431c499e30dc36f6b26be
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The status ID of the bypass transcoding task. Valid values:
+	//
+	//  - **0**: Waiting for the channel to start.
+	//
+	// > If the task is not started within 30 days, the task is automatically stopped.
+	//
+	//  - **1**: The task is running.
+	//
+	//  - **2**: The task is stopped.
+	//
+	//  - **3**: The task is stopped by the user.
+	//
+	//  - **4**: The channel is stopped.
+	//
+	//  - **5**: Live streaming is stopped due to CDN network issues.
+	//
+	//  - **6**: Live streaming is stopped due to live streaming URL issues.
+	//
 	// example:
 	//
 	// 0

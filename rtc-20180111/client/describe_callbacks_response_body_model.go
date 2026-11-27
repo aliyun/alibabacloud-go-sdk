@@ -16,6 +16,7 @@ type iDescribeCallbacksResponseBody interface {
 }
 
 type DescribeCallbacksResponseBody struct {
+	// A list of subscribed events for the application.
 	Callbacks []*DescribeCallbacksResponseBodyCallbacks `json:"Callbacks,omitempty" xml:"Callbacks,omitempty" type:"Repeated"`
 	// Id of the request
 	//
@@ -65,30 +66,51 @@ func (s *DescribeCallbacksResponseBody) Validate() error {
 }
 
 type DescribeCallbacksResponseBodyCallbacks struct {
+	// The callback code.
+	//
 	// example:
 	//
 	// RecordEvent
 	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
+	// The callback validation status. 0 indicates validating. 1 indicates validation successful. 2 indicates validation failed.
+	//
 	// example:
 	//
 	// 1
 	CheckStatus *string `json:"CheckStatus,omitempty" xml:"CheckStatus,omitempty"`
+	// The callback validation code.
+	//
 	// example:
 	//
 	// RESPONSE_INVALID
 	Code *string `json:"Code,omitempty" xml:"Code,omitempty"`
+	// The webhook address.
+	//
 	// example:
 	//
 	// https://www.aliyun.com
 	Conf *string `json:"Conf,omitempty" xml:"Conf,omitempty"`
+	// The callback validation message.
+	//
 	// example:
 	//
 	// Success
 	Msg *string `json:"Msg,omitempty" xml:"Msg,omitempty"`
+	// The callback status. 0 indicates enabled. 1 indicates disabled.
+	//
 	// example:
 	//
 	// 1
-	Status   *int32   `json:"Status,omitempty" xml:"Status,omitempty"`
+	Status *int32 `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The sub-events. For more information, see Callback overview.
+	//
+	// Recording events:
+	//
+	// - **2010**: The service status of the recording changes.
+	//
+	// - **2011**: The status of the recording audio stream changes.
+	//
+	// - **2012**: The status of the recording video stream changes.
 	SubEvent []*int32 `json:"SubEvent,omitempty" xml:"SubEvent,omitempty" type:"Repeated"`
 }
 

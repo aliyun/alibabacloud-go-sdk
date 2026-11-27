@@ -16,13 +16,21 @@ type iCreateAppStreamingOutTemplateRequest interface {
 }
 
 type CreateAppStreamingOutTemplateRequest struct {
+	// The application ID. You can create and query the ID in the console. Only a single ID is supported.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ac7N****
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The template.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// ac7N****
 	StreamingOutTemplate *CreateAppStreamingOutTemplateRequestStreamingOutTemplate `json:"StreamingOutTemplate,omitempty" xml:"StreamingOutTemplate,omitempty" type:"Struct"`
 }
 
@@ -62,19 +70,27 @@ func (s *CreateAppStreamingOutTemplateRequest) Validate() error {
 }
 
 type CreateAppStreamingOutTemplateRequestStreamingOutTemplate struct {
+	// The list of layout IDs. A maximum of 16 layout IDs are supported.
+	//
+	// Note: The layouts in the list must not have the same number of data sources.
+	//
 	// This parameter is required.
 	LayoutIds []*string `json:"LayoutIds,omitempty" xml:"LayoutIds,omitempty" type:"Repeated"`
+	// The encoding options.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1
 	MediaEncode *int32 `json:"MediaEncode,omitempty" xml:"MediaEncode,omitempty"`
+	// The name of the template.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 模版
+	// Template
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
 }
 

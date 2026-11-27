@@ -54,55 +54,110 @@ type iUpdateMPUTaskRequest interface {
 }
 
 type UpdateMPUTaskRequest struct {
+	// Application ID. Only a single ID can be passed.
+	//
+	// You can create and query it in the console.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// yourAppId
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// Background color RGB. The default is **0*	- (black).
+	//
+	// The calculation formula is `R + G × 256 + B × 65536`. Values of R (red), G (green), and B (blue): **0*	- to **255**.
+	//
 	// example:
 	//
 	// 0
-	BackgroundColor *int32                              `json:"BackgroundColor,omitempty" xml:"BackgroundColor,omitempty"`
-	Backgrounds     []*UpdateMPUTaskRequestBackgrounds  `json:"Backgrounds,omitempty" xml:"Backgrounds,omitempty" type:"Repeated"`
-	ClockWidgets    []*UpdateMPUTaskRequestClockWidgets `json:"ClockWidgets,omitempty" xml:"ClockWidgets,omitempty" type:"Repeated"`
+	BackgroundColor *int32 `json:"BackgroundColor,omitempty" xml:"BackgroundColor,omitempty"`
+	// The list of canvas background image pane positions.
+	Backgrounds []*UpdateMPUTaskRequestBackgrounds `json:"Backgrounds,omitempty" xml:"Backgrounds,omitempty" type:"Repeated"`
+	// Clock widget.
+	ClockWidgets []*UpdateMPUTaskRequestClockWidgets `json:"ClockWidgets,omitempty" xml:"ClockWidgets,omitempty" type:"Repeated"`
+	// Video cropping mode. Values:
+	//
+	//
+	// - **1**: crop while maintaining ratio.
+	//
+	// - **2*	- (default): keep margins while maintaining ratio.
+	//
 	// example:
 	//
 	// 1
-	CropMode  *int32   `json:"CropMode,omitempty" xml:"CropMode,omitempty"`
+	CropMode *int32 `json:"CropMode,omitempty" xml:"CropMode,omitempty"`
+	// Layout ID data.
 	LayoutIds []*int64 `json:"LayoutIds,omitempty" xml:"LayoutIds,omitempty" type:"Repeated"`
+	// Encoding option. See the MediaEncode enumeration values below.
+	//
 	// example:
 	//
 	// 2
 	MediaEncode *int32 `json:"MediaEncode,omitempty" xml:"MediaEncode,omitempty"`
+	// Stream mixing mode. Values:
+	//
+	// - **0**: single-stream relay. No stream mixing or transcoding. Only the original single stream is relayed. No need to configure stream mixing and transcoding parameters.
+	//
+	// - **1**: stream mixing and transcoding (default). Supports stream mixing and transcoding output.
+	//
+	// > - Valid parameters in single-stream relay mode: **StreamType**, **SourceType**.
+	//
+	// - Valid parameters in stream mixing and transcoding mode: **MediaEncode**, **LayoutIds**, **BackgroundColor**, **SubSpecUsers**, **CropMode**, **UserPanes**, **Backgrounds**, **Watermarks**.
+	//
 	// example:
 	//
 	// 0
 	MixMode *int32 `json:"MixMode,omitempty" xml:"MixMode,omitempty"`
 	OwnerId *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// User video input stream in single-stream relay mode. Values:
+	//
+	// - **camera**: camera.
+	//
+	// - **shareScreen**: screen sharing.
+	//
 	// example:
 	//
 	// camera
 	SourceType *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
+	// Audio stream relayed in single-stream relay mode. Values:
+	//
+	// - **0*	- (default): relay the original stream.
+	//
+	// - **1**: relay only the audio stream.
+	//
+	// - **2**: relay only the video stream.
+	//
 	// example:
 	//
 	// 0
-	StreamType              *int32    `json:"StreamType,omitempty" xml:"StreamType,omitempty"`
-	SubSpecAudioUsers       []*string `json:"SubSpecAudioUsers,omitempty" xml:"SubSpecAudioUsers,omitempty" type:"Repeated"`
-	SubSpecCameraUsers      []*string `json:"SubSpecCameraUsers,omitempty" xml:"SubSpecCameraUsers,omitempty" type:"Repeated"`
+	StreamType *int32 `json:"StreamType,omitempty" xml:"StreamType,omitempty"`
+	// Specifies the users in the room whose audio streams are subscribed to.
+	SubSpecAudioUsers []*string `json:"SubSpecAudioUsers,omitempty" xml:"SubSpecAudioUsers,omitempty" type:"Repeated"`
+	// Specifies the users in the room whose camera video streams are subscribed to.
+	SubSpecCameraUsers []*string `json:"SubSpecCameraUsers,omitempty" xml:"SubSpecCameraUsers,omitempty" type:"Repeated"`
+	// Specifies the users in the room whose shared video streams are subscribed to.
 	SubSpecShareScreenUsers []*string `json:"SubSpecShareScreenUsers,omitempty" xml:"SubSpecShareScreenUsers,omitempty" type:"Repeated"`
-	SubSpecUsers            []*string `json:"SubSpecUsers,omitempty" xml:"SubSpecUsers,omitempty" type:"Repeated"`
+	// The list of users subscribed to by this task.
+	SubSpecUsers []*string `json:"SubSpecUsers,omitempty" xml:"SubSpecUsers,omitempty" type:"Repeated"`
+	// Task ID. Only a single ID can be passed. It is consistent with the input parameter TaskId in [StartMpuTask](https://help.aliyun.com/document_detail/93183.html).
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// testId
-	TaskId                    *string                           `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	UnsubSpecAudioUsers       []*string                         `json:"UnsubSpecAudioUsers,omitempty" xml:"UnsubSpecAudioUsers,omitempty" type:"Repeated"`
-	UnsubSpecCameraUsers      []*string                         `json:"UnsubSpecCameraUsers,omitempty" xml:"UnsubSpecCameraUsers,omitempty" type:"Repeated"`
-	UnsubSpecShareScreenUsers []*string                         `json:"UnsubSpecShareScreenUsers,omitempty" xml:"UnsubSpecShareScreenUsers,omitempty" type:"Repeated"`
-	UserPanes                 []*UpdateMPUTaskRequestUserPanes  `json:"UserPanes,omitempty" xml:"UserPanes,omitempty" type:"Repeated"`
-	Watermarks                []*UpdateMPUTaskRequestWatermarks `json:"Watermarks,omitempty" xml:"Watermarks,omitempty" type:"Repeated"`
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// Specifies the users in the room whose audio streams are not subscribed to.
+	UnsubSpecAudioUsers []*string `json:"UnsubSpecAudioUsers,omitempty" xml:"UnsubSpecAudioUsers,omitempty" type:"Repeated"`
+	// Specifies the users in the room whose camera video streams are not subscribed to.
+	UnsubSpecCameraUsers []*string `json:"UnsubSpecCameraUsers,omitempty" xml:"UnsubSpecCameraUsers,omitempty" type:"Repeated"`
+	// Specifies the users in the room whose shared video streams are not subscribed to.
+	UnsubSpecShareScreenUsers []*string `json:"UnsubSpecShareScreenUsers,omitempty" xml:"UnsubSpecShareScreenUsers,omitempty" type:"Repeated"`
+	// Layout parameters.
+	UserPanes []*UpdateMPUTaskRequestUserPanes `json:"UserPanes,omitempty" xml:"UserPanes,omitempty" type:"Repeated"`
+	// The list of watermark image pane positions.
+	Watermarks []*UpdateMPUTaskRequestWatermarks `json:"Watermarks,omitempty" xml:"Watermarks,omitempty" type:"Repeated"`
 }
 
 func (s UpdateMPUTaskRequest) String() string {
@@ -343,30 +398,48 @@ func (s *UpdateMPUTaskRequest) Validate() error {
 }
 
 type UpdateMPUTaskRequestBackgrounds struct {
+	// Image display. Values:
+	//
+	// - **0 (None)**: not displayed.
+	//
+	// - **1 (Always)**: always displayed.
+	//
 	// example:
 	//
 	// 1
 	Display *int32 `json:"Display,omitempty" xml:"Display,omitempty"`
+	// Pane height, normalized percentage.
+	//
 	// example:
 	//
 	// 0.2456
 	Height *float32 `json:"Height,omitempty" xml:"Height,omitempty"`
+	// HTTP or HTTPS address of the image.
+	//
 	// example:
 	//
 	// https://www.example.com/image.jpg
 	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
+	// Pane width, normalized percentage.
+	//
 	// example:
 	//
 	// 0.2456
 	Width *float32 `json:"Width,omitempty" xml:"Width,omitempty"`
+	// X coordinate, normalized percentage.
+	//
 	// example:
 	//
 	// 0.7576
 	X *float32 `json:"X,omitempty" xml:"X,omitempty"`
+	// Y coordinate, normalized percentage.
+	//
 	// example:
 	//
 	// 0.7576
 	Y *float32 `json:"Y,omitempty" xml:"Y,omitempty"`
+	// Stacking order. 0 is the bottom layer, layer 1 is above layer 0, and so on.
+	//
 	// example:
 	//
 	// 0
@@ -449,50 +522,96 @@ func (s *UpdateMPUTaskRequestBackgrounds) Validate() error {
 }
 
 type UpdateMPUTaskRequestClockWidgets struct {
+	// Transparency of the text box and text. 0.0 indicates transparent, and 1.0 indicates completely opaque.
+	//
 	// example:
 	//
 	// 0
 	Alpha *float32 `json:"Alpha,omitempty" xml:"Alpha,omitempty"`
+	// Text border color.
+	//
+	// The calculation formula is `R + G × 256 + B × 65536`. Values of R (red), G (green), and B (blue): **0*	- to **255**.
+	//
 	// example:
 	//
 	// 0
 	BorderColor *int64 `json:"BorderColor,omitempty" xml:"BorderColor,omitempty"`
+	// Text border width (unit: pixels). The default value is 0.
+	//
 	// example:
 	//
 	// 1
 	BorderWidth *int32 `json:"BorderWidth,omitempty" xml:"BorderWidth,omitempty"`
+	// Whether to display a text box. Values:
+	//
+	// - false (default): not displayed.
+	//
+	// - true: displayed.
+	//
 	// example:
 	//
 	// false
 	Box *bool `json:"Box,omitempty" xml:"Box,omitempty"`
+	// Text box width (unit: pixels). The default value is 0.
+	//
 	// example:
 	//
 	// 0
 	BoxBorderWidth *int32 `json:"BoxBorderWidth,omitempty" xml:"BoxBorderWidth,omitempty"`
+	// Text box color.
+	//
+	// The calculation formula is `R + G × 256 + B × 65536`. Values of R (red), G (green), and B (blue): **0*	- to **255**.
+	//
 	// example:
 	//
 	// 0
 	BoxColor *int64 `json:"BoxColor,omitempty" xml:"BoxColor,omitempty"`
+	// Text color (RGB).
+	//
+	// The calculation formula is `R + G × 256 + B × 65536`. Values of R (red), G (green), and B (blue): **0*	- to **255**.
+	//
 	// example:
 	//
 	// 0
 	FontColor *int32 `json:"FontColor,omitempty" xml:"FontColor,omitempty"`
+	// Font size. Value range: **0*	- to **72**.
+	//
 	// example:
 	//
 	// 1
 	FontSize *int32 `json:"FontSize,omitempty" xml:"FontSize,omitempty"`
+	// Font type. Values:
+	//
+	// - **0*	- (default): NOTO_SERIF_CJKSC_REGULAR
+	//
+	// - **1**: ALIBABA_PUHUITI_REGULAR
+	//
+	// - **2**: ALIBABA_PUHUITI_BOLD
+	//
+	// - **3**: ALIBABA_PUHUITI_Heavy
+	//
+	// - **4**: ALIBABA_PUHUITI_LIGHT
+	//
+	// - **5**: ALIBABA_PUHUITI_MEDIUM
+	//
 	// example:
 	//
 	// 0
 	FontType *int32 `json:"FontType,omitempty" xml:"FontType,omitempty"`
+	// X coordinate, normalized percentage.
+	//
 	// example:
 	//
 	// 0.7576
 	X *float32 `json:"X,omitempty" xml:"X,omitempty"`
+	// Y coordinate, normalized percentage.
+	//
 	// example:
 	//
 	// 0.7576
 	Y *float32 `json:"Y,omitempty" xml:"Y,omitempty"`
+	// Stacking order. 0 is the bottom layer, layer 1 is above layer 0, and so on.
+	//
 	// example:
 	//
 	// 0
@@ -620,20 +739,38 @@ func (s *UpdateMPUTaskRequestClockWidgets) Validate() error {
 }
 
 type UpdateMPUTaskRequestUserPanes struct {
+	// The list of image pane positions for the current layout.
 	Images []*UpdateMPUTaskRequestUserPanesImages `json:"Images,omitempty" xml:"Images,omitempty" type:"Repeated"`
+	// Pane ID. Value range: **0*	- to **15**.
+	//
 	// example:
 	//
 	// 2
 	PaneId *int32 `json:"PaneId,omitempty" xml:"PaneId,omitempty"`
+	// Portrait segmentation type. Values:
+	//
+	// - **0**: no portrait segmentation (default).
+	//
+	// - **1**: portrait segmentation. Only effective after the enhancement parameter (portrait segmentation feature) is enabled.
+	//
 	// example:
 	//
 	// 0
 	SegmentType *int32 `json:"SegmentType,omitempty" xml:"SegmentType,omitempty"`
+	// User video input corresponding to the layout. Values:
+	//
+	// - **camera**: camera stream.
+	//
+	// - **shareScreen**: shared screen stream.
+	//
 	// example:
 	//
 	// camera
-	SourceType *string                               `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
-	Texts      []*UpdateMPUTaskRequestUserPanesTexts `json:"Texts,omitempty" xml:"Texts,omitempty" type:"Repeated"`
+	SourceType *string `json:"SourceType,omitempty" xml:"SourceType,omitempty"`
+	// The list of text pane positions for the current layout.
+	Texts []*UpdateMPUTaskRequestUserPanesTexts `json:"Texts,omitempty" xml:"Texts,omitempty" type:"Repeated"`
+	// The user ID corresponding to the layout pane. Values: **1*	- to **16**.
+	//
 	// example:
 	//
 	// TestUserID
@@ -725,30 +862,50 @@ func (s *UpdateMPUTaskRequestUserPanes) Validate() error {
 }
 
 type UpdateMPUTaskRequestUserPanesImages struct {
+	// Image display. Values:
+	//
+	// - **0 (None)**: not displayed.
+	//
+	// - **1 (Always)**: always displayed.
+	//
+	// - **2 (Backup)**: displayed when the current user has no video stream.
+	//
 	// example:
 	//
 	// 1
 	Display *int32 `json:"Display,omitempty" xml:"Display,omitempty"`
+	// Pane height, normalized percentage.
+	//
 	// example:
 	//
 	// 0.2456
 	Height *float32 `json:"Height,omitempty" xml:"Height,omitempty"`
+	// HTTP or HTTPS address of the image.
+	//
 	// example:
 	//
 	// https://www.example.com/image.jpg
 	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
+	// Pane width, normalized percentage.
+	//
 	// example:
 	//
 	// 0.2456
 	Width *float32 `json:"Width,omitempty" xml:"Width,omitempty"`
+	// X coordinate, normalized percentage.
+	//
 	// example:
 	//
 	// 0.7576
 	X *float32 `json:"X,omitempty" xml:"X,omitempty"`
+	// Y coordinate, normalized percentage.
+	//
 	// example:
 	//
 	// 0.7576
 	Y *float32 `json:"Y,omitempty" xml:"Y,omitempty"`
+	// Stacking order. 0 is the bottom layer, layer 1 is above layer 0, and so on.
+	//
 	// example:
 	//
 	// 0
@@ -831,54 +988,102 @@ func (s *UpdateMPUTaskRequestUserPanesImages) Validate() error {
 }
 
 type UpdateMPUTaskRequestUserPanesTexts struct {
+	// Transparency of the text box and text. 0.0 indicates transparent, and 1.0 indicates completely opaque.
+	//
 	// example:
 	//
 	// 0
 	Alpha *float32 `json:"Alpha,omitempty" xml:"Alpha,omitempty"`
+	// Text border color.
+	//
+	// The calculation formula is `R + G × 256 + B × 65536`. Values of R (red), G (green), and B (blue): **0*	- to **255**.
+	//
 	// example:
 	//
 	// 0
 	BorderColor *int64 `json:"BorderColor,omitempty" xml:"BorderColor,omitempty"`
+	// Text border width (unit: pixels). The default value is 0.
+	//
 	// example:
 	//
 	// 1
 	BorderWidth *int32 `json:"BorderWidth,omitempty" xml:"BorderWidth,omitempty"`
+	// Whether to display a text box. Values:
+	//
+	// - false (default): not displayed.
+	//
+	// - true: displayed.
+	//
 	// example:
 	//
 	// false
 	Box *bool `json:"Box,omitempty" xml:"Box,omitempty"`
+	// Text box width (unit: pixels). The default value is 0.
+	//
 	// example:
 	//
 	// 0
 	BoxBorderWidth *int32 `json:"BoxBorderWidth,omitempty" xml:"BoxBorderWidth,omitempty"`
+	// Text box color.
+	//
+	// The calculation formula is `R + G × 256 + B × 65536`. Values of R (red), G (green), and B (blue): **0*	- to **255**.
+	//
 	// example:
 	//
 	// 0
 	BoxColor *int64 `json:"BoxColor,omitempty" xml:"BoxColor,omitempty"`
+	// Text color (RGB).
+	//
+	// The calculation formula is `R + G × 256 + B × 65536`. Values of R (red), G (green), and B (blue): **0*	- to **255**.
+	//
 	// example:
 	//
 	// 0
 	FontColor *int32 `json:"FontColor,omitempty" xml:"FontColor,omitempty"`
+	// Font size. Value range: **0*	- to **72**.
+	//
 	// example:
 	//
 	// 1
 	FontSize *int32 `json:"FontSize,omitempty" xml:"FontSize,omitempty"`
+	// Font type. Values:
+	//
+	// - **0*	- (default): NOTO_SERIF_CJKSC_REGULAR
+	//
+	// - **1**: ALIBABA_PUHUITI_REGULAR
+	//
+	// - **2**: ALIBABA_PUHUITI_BOLD
+	//
+	// - **3**: ALIBABA_PUHUITI_Heavy
+	//
+	// - **4**: ALIBABA_PUHUITI_LIGHT
+	//
+	// - **5**: ALIBABA_PUHUITI_MEDIUM
+	//
 	// example:
 	//
 	// 0
 	FontType *int32 `json:"FontType,omitempty" xml:"FontType,omitempty"`
+	// Text content.
+	//
 	// example:
 	//
 	// text
 	Text *string `json:"Text,omitempty" xml:"Text,omitempty"`
+	// X coordinate, normalized percentage.
+	//
 	// example:
 	//
 	// 0.7576
 	X *float32 `json:"X,omitempty" xml:"X,omitempty"`
+	// Y coordinate, normalized percentage.
+	//
 	// example:
 	//
 	// 0.7576
 	Y *float32 `json:"Y,omitempty" xml:"Y,omitempty"`
+	// Stacking order. 0 is the bottom layer, layer 1 is above layer 0, and so on.
+	//
 	// example:
 	//
 	// 0
@@ -1015,34 +1220,54 @@ func (s *UpdateMPUTaskRequestUserPanesTexts) Validate() error {
 }
 
 type UpdateMPUTaskRequestWatermarks struct {
+	// Transparency. 0.0 indicates transparent, and 1.0 indicates completely opaque.
+	//
 	// example:
 	//
 	// 0
 	Alpha *float32 `json:"Alpha,omitempty" xml:"Alpha,omitempty"`
+	// Image display. Values:
+	//
+	// - **0 (None)**: not displayed.
+	//
+	// - **1 (Always)**: always displayed.
+	//
 	// example:
 	//
 	// 1
 	Display *int32 `json:"Display,omitempty" xml:"Display,omitempty"`
+	// Pane height, normalized percentage.
+	//
 	// example:
 	//
 	// 0.2456
 	Height *float32 `json:"Height,omitempty" xml:"Height,omitempty"`
+	// HTTP or HTTPS address of the image.
+	//
 	// example:
 	//
 	// https://www.example.com/image.jpg
 	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
+	// Pane width, normalized percentage.
+	//
 	// example:
 	//
 	// 0.2456
 	Width *float32 `json:"Width,omitempty" xml:"Width,omitempty"`
+	// X coordinate, normalized percentage.
+	//
 	// example:
 	//
 	// 0.7576
 	X *float32 `json:"X,omitempty" xml:"X,omitempty"`
+	// Y coordinate, normalized percentage.
+	//
 	// example:
 	//
 	// 0.7576
 	Y *float32 `json:"Y,omitempty" xml:"Y,omitempty"`
+	// Stacking order. 0 is the bottom layer, layer 1 is above layer 0, and so on.
+	//
 	// example:
 	//
 	// 0

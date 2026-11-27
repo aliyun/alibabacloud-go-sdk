@@ -20,15 +20,22 @@ type iDescribeRecordFilesResponseBody interface {
 }
 
 type DescribeRecordFilesResponseBody struct {
+	// The file list.
 	RecordFiles []*DescribeRecordFilesResponseBodyRecordFiles `json:"RecordFiles,omitempty" xml:"RecordFiles,omitempty" type:"Repeated"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 760bad53276431c499e30dc36f6b****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of entries returned.
+	//
 	// example:
 	//
 	// 1
 	TotalNum *int64 `json:"TotalNum,omitempty" xml:"TotalNum,omitempty"`
+	// The total number of pages returned.
+	//
 	// example:
 	//
 	// 1
@@ -93,35 +100,50 @@ func (s *DescribeRecordFilesResponseBody) Validate() error {
 }
 
 type DescribeRecordFilesResponseBodyRecordFiles struct {
+	// The application ID.
+	//
 	// example:
 	//
 	// yourAppId
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The channel ID.
+	//
 	// example:
 	//
 	// yourChannelId
 	ChannelId *string `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
+	// The creation time. Format: <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z (UTC time).
+	//
 	// example:
 	//
 	// 2020-10-02T17:36:00Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The duration of the recording file.
+	//
 	// example:
 	//
 	// 1800
 	Duration *float32 `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	// The start time. Format: <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z (UTC time).
+	//
 	// example:
 	//
 	// 2020-11-01T17:36:00Z
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The end time. Format: <i>yyyy-MM-dd</i>T<i>HH:mm:ss</i>Z (UTC time).
+	//
 	// example:
 	//
 	// 2020-11-02T17:36:00Z
 	StopTime *string `json:"StopTime,omitempty" xml:"StopTime,omitempty"`
+	// The task ID.
+	//
 	// example:
 	//
 	// yourTaskId
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	Url    *string `json:"Url,omitempty" xml:"Url,omitempty"`
+	// The OSS URL of the recording file.
+	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
 }
 
 func (s DescribeRecordFilesResponseBodyRecordFiles) String() string {

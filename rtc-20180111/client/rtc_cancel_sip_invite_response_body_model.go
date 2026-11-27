@@ -14,6 +14,8 @@ type iRtcCancelSipInviteResponseBody interface {
 }
 
 type RtcCancelSipInviteResponseBody struct {
+	// The request ID. Use this ID to locate logs and troubleshoot issues.
+	//
 	// example:
 	//
 	// EB3C3C75-74D5-5F01-9F3C-9974261BAED4

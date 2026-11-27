@@ -14,6 +14,8 @@ type iModifyAppCallbackStatusRequest interface {
 }
 
 type ModifyAppCallbackStatusRequest struct {
+	// The application ID.
+	//
 	// This parameter is required.
 	//
 	// example:

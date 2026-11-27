@@ -14,6 +14,8 @@ type iStartMPUTaskResponseBody interface {
 }
 
 type StartMPUTaskResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 760bad53276431c499e30dc36f6b26be

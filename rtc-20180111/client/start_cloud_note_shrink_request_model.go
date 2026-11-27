@@ -40,38 +40,115 @@ type iStartCloudNoteShrinkRequest interface {
 }
 
 type StartCloudNoteShrinkRequest struct {
+	// The application ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 2ws***z3
-	AppId              *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The auto chapters feature. When enabled, chapter titles and summaries are generated.
 	AutoChaptersShrink *string `json:"AutoChapters,omitempty" xml:"AutoChapters,omitempty"`
+	// The channel ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// test
-	ChannelId               *string   `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
-	CustomPromptShrink      *string   `json:"CustomPrompt,omitempty" xml:"CustomPrompt,omitempty"`
-	LanguageHints           []*string `json:"LanguageHints,omitempty" xml:"LanguageHints,omitempty" type:"Repeated"`
-	MeetingAssistanceShrink *string   `json:"MeetingAssistance,omitempty" xml:"MeetingAssistance,omitempty"`
-	RealtimeSubtitleShrink  *string   `json:"RealtimeSubtitle,omitempty" xml:"RealtimeSubtitle,omitempty"`
-	ServiceInspectionShrink *string   `json:"ServiceInspection,omitempty" xml:"ServiceInspection,omitempty"`
+	ChannelId *string `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
+	// The custom prompt control parameter object.
+	CustomPromptShrink *string `json:"CustomPrompt,omitempty" xml:"CustomPrompt,omitempty"`
+	// **[Deprecated]*	- This parameter is deprecated. You do not need to specify it.
+	LanguageHints []*string `json:"LanguageHints,omitempty" xml:"LanguageHints,omitempty" type:"Repeated"`
+	// The intelligent meeting minutes feature. When enabled, keywords, key content, and to-do items are generated.
+	MeetingAssistanceShrink *string `json:"MeetingAssistance,omitempty" xml:"MeetingAssistance,omitempty"`
+	// The real-time subtitles.
+	RealtimeSubtitleShrink *string `json:"RealtimeSubtitle,omitempty" xml:"RealtimeSubtitle,omitempty"`
+	// The service inspection feature.
+	ServiceInspectionShrink *string `json:"ServiceInspection,omitempty" xml:"ServiceInspection,omitempty"`
+	// The source language model used by the channel. Valid values:
+	//
+	// - cn: Chinese
+	//
+	// - yue: Cantonese
+	//
+	// - en: English
+	//
+	// - multilingual: Multilingual
+	//
+	// - ja: Japanese
+	//
+	// - ko: Korean
+	//
+	// - de: German
+	//
+	// - fr: French
+	//
+	// - ru: Russian
+	//
+	// - es: Spanish
+	//
+	// - vi: Vietnamese
+	//
+	// - it: Italian
+	//
+	// - sv: Swedish
+	//
+	// - cs: Czech
+	//
+	// - pl: Polish
+	//
+	// - th: Thai
+	//
+	// - fi: Finnish
+	//
+	// - hi: Hindi
+	//
+	// - id: Indonesian
+	//
+	// - pt: Portuguese
+	//
+	// - ar: Arabic
+	//
+	// - fil: Filipino
+	//
+	// - ms: Malay
+	//
+	// - tr: Turkish
+	//
+	// - hu: Hungarian
+	//
+	// - lo: Lao
+	//
+	// - pt-br: Portuguese (Brazil)
+	//
+	// - es-ar: Spanish (Argentina)
+	//
+	// - es-mx: Spanish (Mexico)
+	//
 	// example:
 	//
 	// cn
 	SourceLanguage *string `json:"SourceLanguage,omitempty" xml:"SourceLanguage,omitempty"`
+	// The storage configuration.
+	//
 	// This parameter is required.
-	StorageConfig       *StartCloudNoteShrinkRequestStorageConfig `json:"StorageConfig,omitempty" xml:"StorageConfig,omitempty" type:"Struct"`
-	SummarizationShrink *string                                   `json:"Summarization,omitempty" xml:"Summarization,omitempty"`
+	StorageConfig *StartCloudNoteShrinkRequestStorageConfig `json:"StorageConfig,omitempty" xml:"StorageConfig,omitempty" type:"Struct"`
+	// The summarization feature. When enabled, full-text summaries and speaker summaries are generated.
+	SummarizationShrink *string `json:"Summarization,omitempty" xml:"Summarization,omitempty"`
+	// The task ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// rtc
-	TaskId              *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
-	TextPolishShrink    *string `json:"TextPolish,omitempty" xml:"TextPolish,omitempty"`
+	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// The text polishing feature.
+	TextPolishShrink *string `json:"TextPolish,omitempty" xml:"TextPolish,omitempty"`
+	// The transcription feature. Enabled by default.
 	TranscriptionShrink *string `json:"Transcription,omitempty" xml:"Transcription,omitempty"`
 }
 
@@ -219,7 +296,7 @@ func (s *StartCloudNoteShrinkRequest) Validate() error {
 }
 
 type StartCloudNoteShrinkRequestStorageConfig struct {
-	// accessKey。
+	// The AccessKey.
 	//
 	// This parameter is required.
 	//
@@ -227,19 +304,83 @@ type StartCloudNoteShrinkRequestStorageConfig struct {
 	//
 	// LTAX***
 	AccessKey *string `json:"AccessKey,omitempty" xml:"AccessKey,omitempty"`
+	// The bucket name.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// test-bucket-for-recording
 	Bucket *string `json:"Bucket,omitempty" xml:"Bucket,omitempty"`
+	// The storage region.
+	//
+	// | Region | AliYun OSS |
+	//
+	// |--------|------------|
+	//
+	// | 0 | CN_Hangzhou |
+	//
+	// | 1 | CN_Shanghai |
+	//
+	// | 2 | CN_Qingdao |
+	//
+	// | 3 | CN_Beijing |
+	//
+	// | 4 | CN_Zhangjiakou |
+	//
+	// | 5 | CN_Huhehaote |
+	//
+	// | 6 | CN_Shenzhen |
+	//
+	// | 7 | CN_Hongkong |
+	//
+	// | 8 | US_West_1 |
+	//
+	// | 9 | US_East_1 |
+	//
+	// | 10 | AP_Southeast_1 |
+	//
+	// | 11 | AP_Southeast_2 |
+	//
+	// | 12 | AP_Southeast_3 |
+	//
+	// | 13 | AP_Southeast_5 |
+	//
+	// | 14 | AP_Northeast_1 |
+	//
+	// | 15 | AP_South_1 (Offline. Do not use.) |
+	//
+	// | 16 | EU_Central_1 |
+	//
+	// | 17 | EU_West_1 |
+	//
+	// | 18 | EU_East_1(ME_East_1) |
+	//
+	// | 19 | AP_Southeast_6 |
+	//
+	// | 20 | CN_Heyuan |
+	//
+	// | 21 | CN_Guangzhou |
+	//
+	// | 22 | CN_Chengdu |
+	//
+	// | 23 | CN_Nanjing |
+	//
+	// | 24 | CN_Fuzhou |
+	//
+	// | 25 | CN_Wulanchabu |
+	//
+	// | 26 | AP_Northeast_2 |
+	//
+	// | 27 | AP_Southeast_7 |
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 0
 	Region *int32 `json:"Region,omitempty" xml:"Region,omitempty"`
-	// secretKey。
+	// The AccessKey secret.
 	//
 	// This parameter is required.
 	//
@@ -247,6 +388,14 @@ type StartCloudNoteShrinkRequestStorageConfig struct {
 	//
 	// APb6qWYEzKtYxE***
 	SecretKey *string `json:"SecretKey,omitempty" xml:"SecretKey,omitempty"`
+	// The storage platform. Valid values:
+	//
+	// | vendor | Object storage service | Remarks |
+	//
+	// |--------|---------|---------|
+	//
+	// | 1 | AliYun OSS | Alibaba Cloud |
+	//
 	// This parameter is required.
 	//
 	// example:

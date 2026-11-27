@@ -22,24 +22,34 @@ type iDescribeAppAgentTemplatesRequest interface {
 }
 
 type DescribeAppAgentTemplatesRequest struct {
+	// The application ID. You can create and query the ID in the console. Only a single ID is supported.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ac7N****
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The template ID.
+	//
 	// example:
 	//
 	// 123121414122313121313
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The template name.
+	//
 	// example:
 	//
-	// 智能体模版
+	// Agent template
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The page number.
+	//
 	// example:
 	//
 	// 1
 	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
+	// The page size.
+	//
 	// example:
 	//
 	// 10

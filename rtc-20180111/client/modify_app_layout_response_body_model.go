@@ -16,6 +16,8 @@ type iModifyAppLayoutResponseBody interface {
 }
 
 type ModifyAppLayoutResponseBody struct {
+	// Layout ID.
+	//
 	// example:
 	//
 	// 167466539798442****

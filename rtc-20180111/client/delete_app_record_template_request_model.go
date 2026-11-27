@@ -18,16 +18,22 @@ type iDeleteAppRecordTemplateRequest interface {
 }
 
 type DeleteAppRecordTemplateRequest struct {
+	// The application ID. You can create and query the ID in the console. Only a single ID is supported.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ac7N****
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The idempotency parameter.
+	//
 	// example:
 	//
 	// 53200b81-b761-4c10-842a-a0726d97xxxx
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The template information.
+	//
 	// This parameter is required.
 	Template *DeleteAppRecordTemplateRequestTemplate `json:"Template,omitempty" xml:"Template,omitempty" type:"Struct"`
 }
@@ -77,6 +83,8 @@ func (s *DeleteAppRecordTemplateRequest) Validate() error {
 }
 
 type DeleteAppRecordTemplateRequestTemplate struct {
+	// The template ID.
+	//
 	// This parameter is required.
 	//
 	// example:

@@ -18,11 +18,15 @@ type iDescribeCallResponseBody interface {
 }
 
 type DescribeCallResponseBody struct {
+	// The basic communication information.
 	CallInfo *DescribeCallResponseBodyCallInfo `json:"CallInfo,omitempty" xml:"CallInfo,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 231470C1-ACFB-4C9F-844F-4CFE1E3804C5
-	RequestId      *string                                   `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The list of user details.
 	UserDetailList []*DescribeCallResponseBodyUserDetailList `json:"UserDetailList,omitempty" xml:"UserDetailList,omitempty" type:"Repeated"`
 }
 
@@ -80,28 +84,42 @@ func (s *DescribeCallResponseBody) Validate() error {
 }
 
 type DescribeCallResponseBodyCallInfo struct {
-	// App ID。
+	// The app ID.
 	//
 	// example:
 	//
-	// xxxxxxxx
+	// testappid
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The communication status. Valid values:
+	//
+	// - **IN**: In progress.
+	//
+	// - **OUT**: Ended.
+	//
 	// example:
 	//
 	// IN
 	CallStatus *string `json:"CallStatus,omitempty" xml:"CallStatus,omitempty"`
+	// The channel ID.
+	//
 	// example:
 	//
 	// 123456
 	ChannelId *string `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
+	// The time when the channel was created. The value is a UNIX timestamp in seconds.
+	//
 	// example:
 	//
 	// 1615860711
 	CreatedTs *int64 `json:"CreatedTs,omitempty" xml:"CreatedTs,omitempty"`
+	// The time when the channel was released. The value is a UNIX timestamp in seconds.
+	//
 	// example:
 	//
 	// 1615860811
 	DestroyedTs *int64 `json:"DestroyedTs,omitempty" xml:"DestroyedTs,omitempty"`
+	// The duration of the channel. Unit: seconds.
+	//
 	// example:
 	//
 	// 100
@@ -175,48 +193,78 @@ func (s *DescribeCallResponseBodyCallInfo) Validate() error {
 }
 
 type DescribeCallResponseBodyUserDetailList struct {
+	// The call experience. Valid values:
+	//
+	// - **GOOD**: Good.
+	//
+	// - **BAD**: Poor.
+	//
 	// example:
 	//
 	// GOOD
 	CallExp *string `json:"CallExp,omitempty" xml:"CallExp,omitempty"`
+	// The time when the user first joined the channel. The value is a UNIX timestamp in seconds.
+	//
 	// example:
 	//
 	// 1614936817
 	CreatedTs *int64 `json:"CreatedTs,omitempty" xml:"CreatedTs,omitempty"`
+	// The time when the user last left the channel. The value is a UNIX timestamp in seconds. If the communication has not ended, the value is empty.
+	//
 	// example:
 	//
 	// 1614936817
-	DestroyedTs       *int64                                                   `json:"DestroyedTs,omitempty" xml:"DestroyedTs,omitempty"`
+	DestroyedTs *int64 `json:"DestroyedTs,omitempty" xml:"DestroyedTs,omitempty"`
+	// The duration statistics.
 	DurMetricStatData *DescribeCallResponseBodyUserDetailListDurMetricStatData `json:"DurMetricStatData,omitempty" xml:"DurMetricStatData,omitempty" type:"Struct"`
+	// The communication duration from the first join to the last leave. Unit: seconds.
+	//
 	// example:
 	//
 	// 0
 	Duration *int64 `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	// The geographic location, such as Beijing-Beijing.
+	//
 	// example:
 	//
-	// 浙江省-杭州市
+	// Zhejiang-Hangzhou
 	Location *string `json:"Location,omitempty" xml:"Location,omitempty"`
+	// The network type, such as Wi-Fi or 4G.
+	//
 	// example:
 	//
 	// 4G
-	Network     *string   `json:"Network,omitempty" xml:"Network,omitempty"`
+	Network *string `json:"Network,omitempty" xml:"Network,omitempty"`
+	// The network type, such as Wi-Fi or 4G.
 	NetworkList []*string `json:"NetworkList,omitempty" xml:"NetworkList,omitempty" type:"Repeated"`
+	// The online duration. Unit: seconds.
+	//
 	// example:
 	//
 	// 0
-	OnlineDuration *int64                                                 `json:"OnlineDuration,omitempty" xml:"OnlineDuration,omitempty"`
-	OnlinePeriods  []*DescribeCallResponseBodyUserDetailListOnlinePeriods `json:"OnlinePeriods,omitempty" xml:"OnlinePeriods,omitempty" type:"Repeated"`
+	OnlineDuration *int64 `json:"OnlineDuration,omitempty" xml:"OnlineDuration,omitempty"`
+	// The online periods.
+	OnlinePeriods []*DescribeCallResponseBodyUserDetailListOnlinePeriods `json:"OnlinePeriods,omitempty" xml:"OnlinePeriods,omitempty" type:"Repeated"`
+	// The platform type. If the user client is WEB, this indicates the type of the browser. If the client is NATIVE, this indicates the operating system type.
+	//
 	// example:
 	//
 	// iOS
-	Os     *string   `json:"Os,omitempty" xml:"Os,omitempty"`
+	Os *string `json:"Os,omitempty" xml:"Os,omitempty"`
+	// The platform type. If the user client is WEB, this indicates the type of the browser. If the client is NATIVE, this indicates the operating system type.
 	OsList []*string `json:"OsList,omitempty" xml:"OsList,omitempty" type:"Repeated"`
-	Roles  []*string `json:"Roles,omitempty" xml:"Roles,omitempty" type:"Repeated"`
+	// The user roles.
+	Roles []*string `json:"Roles,omitempty" xml:"Roles,omitempty" type:"Repeated"`
+	// The SDK version, such as 1.0.0 or 1.1.1.
+	//
 	// example:
 	//
 	// 1.0.0
-	SdkVersion     *string   `json:"SdkVersion,omitempty" xml:"SdkVersion,omitempty"`
+	SdkVersion *string `json:"SdkVersion,omitempty" xml:"SdkVersion,omitempty"`
+	// The list of SDK versions, such as 1.0.0 or 1.1.1.
 	SdkVersionList []*string `json:"SdkVersionList,omitempty" xml:"SdkVersionList,omitempty" type:"Repeated"`
+	// The user ID.
+	//
 	// example:
 	//
 	// testuserid
@@ -394,42 +442,62 @@ func (s *DescribeCallResponseBodyUserDetailList) Validate() error {
 }
 
 type DescribeCallResponseBodyUserDetailListDurMetricStatData struct {
+	// The duration of published audio. Unit: seconds.
+	//
 	// example:
 	//
 	// 0
 	PubAudio *int64 `json:"PubAudio,omitempty" xml:"PubAudio,omitempty"`
+	// The duration of published 1080P video. Unit: seconds.
+	//
 	// example:
 	//
 	// 0
 	PubVideo1080 *int64 `json:"PubVideo1080,omitempty" xml:"PubVideo1080,omitempty"`
+	// The duration of published 360P video. Unit: seconds.
+	//
 	// example:
 	//
 	// 0
 	PubVideo360 *int64 `json:"PubVideo360,omitempty" xml:"PubVideo360,omitempty"`
+	// The duration of published 720P video. Unit: seconds.
+	//
 	// example:
 	//
 	// 0
 	PubVideo720 *int64 `json:"PubVideo720,omitempty" xml:"PubVideo720,omitempty"`
+	// The duration of published screen sharing. Unit: seconds.
+	//
 	// example:
 	//
 	// 0
 	PubVideoScreenShare *int64 `json:"PubVideoScreenShare,omitempty" xml:"PubVideoScreenShare,omitempty"`
+	// The duration of subscribed audio. Unit: seconds.
+	//
 	// example:
 	//
 	// 0
 	SubAudio *int64 `json:"SubAudio,omitempty" xml:"SubAudio,omitempty"`
+	// The duration of subscribed 1080P video. Unit: seconds.
+	//
 	// example:
 	//
 	// 0
 	SubVideo1080 *int64 `json:"SubVideo1080,omitempty" xml:"SubVideo1080,omitempty"`
+	// The duration of subscribed 360P video. Unit: seconds.
+	//
 	// example:
 	//
 	// 0
 	SubVideo360 *int64 `json:"SubVideo360,omitempty" xml:"SubVideo360,omitempty"`
+	// The duration of subscribed 720P video. Unit: seconds.
+	//
 	// example:
 	//
 	// 0
 	SubVideo720 *int64 `json:"SubVideo720,omitempty" xml:"SubVideo720,omitempty"`
+	// The duration of subscribed screen sharing. Unit: seconds.
+	//
 	// example:
 	//
 	// 0
@@ -539,10 +607,14 @@ func (s *DescribeCallResponseBodyUserDetailListDurMetricStatData) Validate() err
 }
 
 type DescribeCallResponseBodyUserDetailListOnlinePeriods struct {
+	// The time when the user joined the channel. The value is a UNIX timestamp in seconds.
+	//
 	// example:
 	//
 	// 1614936817
 	JoinTs *int64 `json:"JoinTs,omitempty" xml:"JoinTs,omitempty"`
+	// The time when the user left the channel. The value is a UNIX timestamp in seconds.
+	//
 	// example:
 	//
 	// 1614936817

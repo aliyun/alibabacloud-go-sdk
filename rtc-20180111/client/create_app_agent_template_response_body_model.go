@@ -16,6 +16,8 @@ type iCreateAppAgentTemplateResponseBody interface {
 }
 
 type CreateAppAgentTemplateResponseBody struct {
+	// The template ID.
+	//
 	// example:
 	//
 	// 1223131213231313213

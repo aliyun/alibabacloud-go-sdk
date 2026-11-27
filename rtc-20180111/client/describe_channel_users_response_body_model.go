@@ -32,37 +32,62 @@ type iDescribeChannelUsersResponseBody interface {
 }
 
 type DescribeChannelUsersResponseBody struct {
+	// The channel mode. Valid values:
+	//
+	// - **1**: Communication (communication mode).
+	//
+	// - **2**: Interactive_live (live streaming mode).
+	//
 	// example:
 	//
 	// 1
 	ChannelProfile *int32 `json:"ChannelProfile,omitempty" xml:"ChannelProfile,omitempty"`
+	// The total number of users in the channel in communication mode. If the channel is not in communication mode, this parameter is 0.
+	//
 	// example:
 	//
 	// 100
-	CommTotalNum        *int32    `json:"CommTotalNum,omitempty" xml:"CommTotalNum,omitempty"`
+	CommTotalNum *int32 `json:"CommTotalNum,omitempty" xml:"CommTotalNum,omitempty"`
+	// The list of interactive user IDs in the channel in live streaming mode. This parameter is empty if the channel is not in live streaming mode.
 	InteractiveUserList []*string `json:"InteractiveUserList,omitempty" xml:"InteractiveUserList,omitempty" type:"Repeated"`
+	// The total number of interactive users in the channel in live streaming mode. If the channel is not in live streaming mode, this parameter is 0.
+	//
 	// example:
 	//
 	// 0
 	InteractiveUserNum *int32 `json:"InteractiveUserNum,omitempty" xml:"InteractiveUserNum,omitempty"`
+	// Indicates whether the channel exists. Valid values:
+	//
+	// - **true**: The channel exists.
+	//
+	// - **false**: The channel does not exist.
+	//
 	// example:
 	//
 	// true
-	IsChannelExist *bool     `json:"IsChannelExist,omitempty" xml:"IsChannelExist,omitempty"`
-	LiveUserList   []*string `json:"LiveUserList,omitempty" xml:"LiveUserList,omitempty" type:"Repeated"`
+	IsChannelExist *bool `json:"IsChannelExist,omitempty" xml:"IsChannelExist,omitempty"`
+	// The list of viewer IDs in the channel in live streaming mode. A maximum of 1,000 viewers are returned. This parameter is empty if the channel is not in live streaming mode.
+	LiveUserList []*string `json:"LiveUserList,omitempty" xml:"LiveUserList,omitempty" type:"Repeated"`
+	// The total number of viewers in the channel in live streaming mode. If the channel is not in live streaming mode, this parameter is 0.
+	//
 	// example:
 	//
 	// 0
 	LiveUserNum *int32 `json:"LiveUserNum,omitempty" xml:"LiveUserNum,omitempty"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 6159ba01-6687-4fb2-a831-f0cd8d188648
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The timestamp of the current time in UTC.
+	//
 	// example:
 	//
 	// 1557909133
-	Timestamp *int32    `json:"Timestamp,omitempty" xml:"Timestamp,omitempty"`
-	UserList  []*string `json:"UserList,omitempty" xml:"UserList,omitempty" type:"Repeated"`
+	Timestamp *int32 `json:"Timestamp,omitempty" xml:"Timestamp,omitempty"`
+	// The list of user IDs in the channel in communication mode. This parameter is empty if the channel is not in communication mode.
+	UserList []*string `json:"UserList,omitempty" xml:"UserList,omitempty" type:"Repeated"`
 }
 
 func (s DescribeChannelUsersResponseBody) String() string {

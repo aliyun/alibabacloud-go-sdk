@@ -20,17 +20,22 @@ type iDescribeAppViewTemplatesResponseBody interface {
 }
 
 type DescribeAppViewTemplatesResponseBody struct {
-	// Id of the request
+	// Request ID
 	//
 	// example:
 	//
 	// B0A2FCBC-43A4-428F-BC1D-3F4F85837F76
-	RequestId *string                                          `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Template list
 	Templates []*DescribeAppViewTemplatesResponseBodyTemplates `json:"Templates,omitempty" xml:"Templates,omitempty" type:"Repeated"`
+	// Total number of records
+	//
 	// example:
 	//
 	// 10
 	TotalNum *int64 `json:"TotalNum,omitempty" xml:"TotalNum,omitempty"`
+	// Total number of pages
+	//
 	// example:
 	//
 	// 1
@@ -95,19 +100,28 @@ func (s *DescribeAppViewTemplatesResponseBody) Validate() error {
 }
 
 type DescribeAppViewTemplatesResponseBodyTemplates struct {
+	// Creation time. Format: yyyy-MM-ddTHH:mm:ssZ (UTC).
+	//
 	// example:
 	//
 	// 2020-09-04T06:22:15Z
-	CreateTime *string   `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
-	LayoutIds  []*string `json:"LayoutIds,omitempty" xml:"LayoutIds,omitempty" type:"Repeated"`
+	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// List of layout IDs
+	LayoutIds []*string `json:"LayoutIds,omitempty" xml:"LayoutIds,omitempty" type:"Repeated"`
+	// Encoding option
+	//
 	// example:
 	//
 	// 1
 	MediaEncode *int32 `json:"MediaEncode,omitempty" xml:"MediaEncode,omitempty"`
+	// Template name
+	//
 	// example:
 	//
-	// 模版名称
+	// 模板名称
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// Template ID
+	//
 	// example:
 	//
 	// Bj6D****

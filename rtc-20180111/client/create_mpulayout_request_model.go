@@ -22,23 +22,31 @@ type iCreateMPULayoutRequest interface {
 }
 
 type CreateMPULayoutRequest struct {
+	// The application ID. Only a single ID is supported. You can create and query application IDs in the console.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// yourAppId
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The maximum number of audio mixes. Valid values: **0*	- to **6**.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 3
 	AudioMixCount *int32 `json:"AudioMixCount,omitempty" xml:"AudioMixCount,omitempty"`
+	// The name of the layout.
+	//
 	// example:
 	//
 	// LayoutName
 	Name    *string `json:"Name,omitempty" xml:"Name,omitempty"`
 	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The list of panes in the layout.
+	//
 	// This parameter is required.
 	Panes []*CreateMPULayoutRequestPanes `json:"Panes,omitempty" xml:"Panes,omitempty" type:"Repeated"`
 }
@@ -110,30 +118,50 @@ func (s *CreateMPULayoutRequest) Validate() error {
 }
 
 type CreateMPULayoutRequestPanes struct {
+	// The height of the pane, represented as a normalized percentage. Valid values: **0.0 < Height ≤ 1.0**.
+	//
 	// example:
 	//
 	// 0.25
 	Height *float32 `json:"Height,omitempty" xml:"Height,omitempty"`
+	// Specifies the main pane. Each layout can have only one main pane.
+	//
+	// - **0**: secondary pane.
+	//
+	//
+	//
+	// - **1**: main pane.
+	//
 	// example:
 	//
 	// 1
 	MajorPane *int32 `json:"MajorPane,omitempty" xml:"MajorPane,omitempty"`
+	// The pane ID. Panes are sorted from top left to bottom right, starting from 0.
+	//
 	// example:
 	//
 	// 0
 	PaneId *int32 `json:"PaneId,omitempty" xml:"PaneId,omitempty"`
+	// The width of the pane, represented as a normalized percentage. Valid values: **0.0 < Width ≤ 1.0**.
+	//
 	// example:
 	//
 	// 0.25
 	Width *float32 `json:"Width,omitempty" xml:"Width,omitempty"`
+	// The X-coordinate, represented as a normalized percentage. Valid values: **0.0 ≤ X ≤ 1.0**.
+	//
 	// example:
 	//
 	// 0.25
 	X *float32 `json:"X,omitempty" xml:"X,omitempty"`
+	// The Y-coordinate, represented as a normalized percentage. Valid values: **0.0 ≤ Y ≤ 1.0**.
+	//
 	// example:
 	//
 	// 0.25
 	Y *float32 `json:"Y,omitempty" xml:"Y,omitempty"`
+	// The stacking order. A value of 0 indicates the bottom layer. A value of 1 indicates the layer above 0, and so on.
+	//
 	// example:
 	//
 	// 0

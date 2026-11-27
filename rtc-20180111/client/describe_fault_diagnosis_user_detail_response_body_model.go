@@ -24,14 +24,21 @@ type iDescribeFaultDiagnosisUserDetailResponseBody interface {
 }
 
 type DescribeFaultDiagnosisUserDetailResponseBody struct {
-	CallInfo         *DescribeFaultDiagnosisUserDetailResponseBodyCallInfo        `json:"CallInfo,omitempty" xml:"CallInfo,omitempty" type:"Struct"`
-	FactorList       []*DescribeFaultDiagnosisUserDetailResponseBodyFactorList    `json:"FactorList,omitempty" xml:"FactorList,omitempty" type:"Repeated"`
-	FaultMetricData  *DescribeFaultDiagnosisUserDetailResponseBodyFaultMetricData `json:"FaultMetricData,omitempty" xml:"FaultMetricData,omitempty" type:"Struct"`
-	NetworkOperators []*string                                                    `json:"NetworkOperators,omitempty" xml:"NetworkOperators,omitempty" type:"Repeated"`
+	// Basic call information, returned when QueryCallUserInfo=false.
+	CallInfo *DescribeFaultDiagnosisUserDetailResponseBodyCallInfo `json:"CallInfo,omitempty" xml:"CallInfo,omitempty" type:"Struct"`
+	// List of impact factors. An empty list indicates that the impact factors are unknown.
+	FactorList []*DescribeFaultDiagnosisUserDetailResponseBodyFactorList `json:"FactorList,omitempty" xml:"FactorList,omitempty" type:"Repeated"`
+	// Abnormal metrics.
+	FaultMetricData *DescribeFaultDiagnosisUserDetailResponseBodyFaultMetricData `json:"FaultMetricData,omitempty" xml:"FaultMetricData,omitempty" type:"Struct"`
+	// List of Network carriers
+	NetworkOperators []*string `json:"NetworkOperators,omitempty" xml:"NetworkOperators,omitempty" type:"Repeated"`
+	// The Request ID.
+	//
 	// example:
 	//
 	// 231470C1-ACFB-4C9F-844F-4CFE1E3804C5
-	RequestId  *string                                                 `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// [responses_200_schema_properties_UserDetail_properties_CreatedTs_type]integer
 	UserDetail *DescribeFaultDiagnosisUserDetailResponseBodyUserDetail `json:"UserDetail,omitempty" xml:"UserDetail,omitempty" type:"Struct"`
 }
 
@@ -132,22 +139,36 @@ type DescribeFaultDiagnosisUserDetailResponseBodyCallInfo struct {
 	//
 	// 0rbd****
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// Call status. Valid values:
+	//
+	// - **IN**: In progress.
+	//
+	// - **OUT**: Ended.
+	//
 	// example:
 	//
 	// IN
 	CallStatus *string `json:"CallStatus,omitempty" xml:"CallStatus,omitempty"`
+	// Channel ID.
+	//
 	// example:
 	//
 	// 311
 	ChannelId *string `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
+	// The time when the call was created, represented as a UNIX timestamp in seconds.
+	//
 	// example:
 	//
 	// 1620957905
 	CreatedTs *int64 `json:"CreatedTs,omitempty" xml:"CreatedTs,omitempty"`
+	// The time when the call was released, represented as a UNIX timestamp in seconds.
+	//
 	// example:
 	//
 	// 1620958150
 	DestroyedTs *int64 `json:"DestroyedTs,omitempty" xml:"DestroyedTs,omitempty"`
+	// Call duration in seconds.
+	//
 	// example:
 	//
 	// 100
@@ -221,15 +242,21 @@ func (s *DescribeFaultDiagnosisUserDetailResponseBodyCallInfo) Validate() error 
 }
 
 type DescribeFaultDiagnosisUserDetailResponseBodyFactorList struct {
+	// The factor ID. For details, see the factor ID values below.
+	//
 	// example:
 	//
 	// 1
 	FactorId *string `json:"FactorId,omitempty" xml:"FactorId,omitempty"`
+	// Abnormal source: LOCAL indicates the local end; REMOTE indicates the remote end.
+	//
 	// example:
 	//
 	// LOCAL
-	FaultSource        *string                                                                     `json:"FaultSource,omitempty" xml:"FaultSource,omitempty"`
-	RelatedEventDatas  []*DescribeFaultDiagnosisUserDetailResponseBodyFactorListRelatedEventDatas  `json:"RelatedEventDatas,omitempty" xml:"RelatedEventDatas,omitempty" type:"Repeated"`
+	FaultSource *string `json:"FaultSource,omitempty" xml:"FaultSource,omitempty"`
+	// Associated management events, grouped by time. Coordinate data is returned when FaultType is AUDIO_STUCK, VIDEO_STUCK, VIDEO_VAGUE, or HIGH_DELAY.
+	RelatedEventDatas []*DescribeFaultDiagnosisUserDetailResponseBodyFactorListRelatedEventDatas `json:"RelatedEventDatas,omitempty" xml:"RelatedEventDatas,omitempty" type:"Repeated"`
+	// Associated metrics and coordinate data, returned when FaultType is AUDIO_STUCK, VIDEO_STUCK, VIDEO_VAGUE, or HIGH_DELAY.
 	RelatedMetricDatas []*DescribeFaultDiagnosisUserDetailResponseBodyFactorListRelatedMetricDatas `json:"RelatedMetricDatas,omitempty" xml:"RelatedMetricDatas,omitempty" type:"Repeated"`
 }
 
@@ -300,11 +327,20 @@ func (s *DescribeFaultDiagnosisUserDetailResponseBodyFactorList) Validate() erro
 }
 
 type DescribeFaultDiagnosisUserDetailResponseBodyFactorListRelatedEventDatas struct {
+	// List of event data.
 	EventDataItems []*DescribeFaultDiagnosisUserDetailResponseBodyFactorListRelatedEventDatasEventDataItems `json:"EventDataItems,omitempty" xml:"EventDataItems,omitempty" type:"Repeated"`
+	// Source role. Valid values:
+	//
+	// - **SENDER**: Publisher (upstream).
+	//
+	// - **RECEIVER**: Subscriber (downstream).
+	//
 	// example:
 	//
 	// SENDER
 	Role *string `json:"Role,omitempty" xml:"Role,omitempty"`
+	// User ID
+	//
 	// example:
 	//
 	// 0a497933****
@@ -360,7 +396,10 @@ func (s *DescribeFaultDiagnosisUserDetailResponseBodyFactorListRelatedEventDatas
 }
 
 type DescribeFaultDiagnosisUserDetailResponseBodyFactorListRelatedEventDatasEventDataItems struct {
+	// Event List.
 	EventList []*DescribeFaultDiagnosisUserDetailResponseBodyFactorListRelatedEventDatasEventDataItemsEventList `json:"EventList,omitempty" xml:"EventList,omitempty" type:"Repeated"`
+	// [responses_200_schema_properties_FaultMetricData_properties_Nodes_description]List of metric coordinate points.
+	//
 	// example:
 	//
 	// 1614936817
@@ -407,14 +446,24 @@ func (s *DescribeFaultDiagnosisUserDetailResponseBodyFactorListRelatedEventDatas
 }
 
 type DescribeFaultDiagnosisUserDetailResponseBodyFactorListRelatedEventDatasEventDataItemsEventList struct {
+	// Event Name.
+	//
 	// example:
 	//
 	// 开始发布
 	EventName *string `json:"EventName,omitempty" xml:"EventName,omitempty"`
+	// Event Type. Valid values:
+	//
+	// - **USER**: User event.
+	//
+	// - **SYSTEM**: System event.
+	//
 	// example:
 	//
 	// USER
 	EventType *string `json:"EventType,omitempty" xml:"EventType,omitempty"`
+	// The time of the first management event occurrence, represented as a UNIX timestamp in seconds.
+	//
 	// example:
 	//
 	// 1614936817
@@ -461,15 +510,26 @@ func (s *DescribeFaultDiagnosisUserDetailResponseBodyFactorListRelatedEventDatas
 }
 
 type DescribeFaultDiagnosisUserDetailResponseBodyFactorListRelatedMetricDatas struct {
+	// [responses_200_schema_properties_FactorList_items_properties_RelatedEventDatas_items_properties_EventDataItems_items_properties_EventList_items_properties_EventName_type]string
 	Nodes []*DescribeFaultDiagnosisUserDetailResponseBodyFactorListRelatedMetricDatasNodes `json:"Nodes,omitempty" xml:"Nodes,omitempty" type:"Repeated"`
+	// Source role. Valid values:
+	//
+	// - **SENDER**: Publisher.
+	//
+	// - **RECEIVER**: Subscriber.
+	//
 	// example:
 	//
 	// SENDER
 	Role *string `json:"Role,omitempty" xml:"Role,omitempty"`
+	// Metric type, consistent with the metric types defined in the end-to-end metrics API.
+	//
 	// example:
 	//
 	// AUDIO_STUCK
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// User ID of the publisher from which the data originates.
+	//
 	// example:
 	//
 	// 0a497933****
@@ -534,11 +594,16 @@ func (s *DescribeFaultDiagnosisUserDetailResponseBodyFactorListRelatedMetricData
 }
 
 type DescribeFaultDiagnosisUserDetailResponseBodyFactorListRelatedMetricDatasNodes struct {
+	// [responses_200_schema_properties_FactorList_items_properties_RelatedEventDatas_items_properties_EventDataItems_items_properties_EventList_items_properties_Ts_title]The time of the first management event occurrence, represented as a UNIX timestamp in seconds.
 	Ext map[string]interface{} `json:"Ext,omitempty" xml:"Ext,omitempty"`
+	// [responses_200_schema_properties_FactorList_items_properties_FactorId_title]Factor ID: 1: Poor publisher-side Network; 2: Poor subscriber-side Network; 3: Poor publisher-side device Performance; 4: Publisher-side camera shutdown; 5: Publisher-side app moved to background Run
+	//
 	// example:
 	//
 	// 1615892596
 	X *string `json:"X,omitempty" xml:"X,omitempty"`
+	// [responses_200_schema_properties_RequestId_title]The Request ID.
+	//
 	// example:
 	//
 	// 20
@@ -585,6 +650,7 @@ func (s *DescribeFaultDiagnosisUserDetailResponseBodyFactorListRelatedMetricData
 }
 
 type DescribeFaultDiagnosisUserDetailResponseBodyFaultMetricData struct {
+	// List of metric coordinate points.
 	Nodes []*DescribeFaultDiagnosisUserDetailResponseBodyFaultMetricDataNodes `json:"Nodes,omitempty" xml:"Nodes,omitempty" type:"Repeated"`
 }
 
@@ -619,10 +685,14 @@ func (s *DescribeFaultDiagnosisUserDetailResponseBodyFaultMetricData) Validate()
 }
 
 type DescribeFaultDiagnosisUserDetailResponseBodyFaultMetricDataNodes struct {
+	// 指标趋势图中x轴横坐标，单位时间为1分钟。
+	//
 	// example:
 	//
 	// 1620957900
 	X *string `json:"X,omitempty" xml:"X,omitempty"`
+	// 指标趋势图中y轴纵坐标。
+	//
 	// example:
 	//
 	// 0.4540
@@ -660,39 +730,58 @@ func (s *DescribeFaultDiagnosisUserDetailResponseBodyFaultMetricDataNodes) Valid
 }
 
 type DescribeFaultDiagnosisUserDetailResponseBodyUserDetail struct {
+	// Call creation time, represented as a UNIX timestamp in seconds.
+	//
 	// example:
 	//
 	// 1620957919
 	CreatedTs *int64 `json:"CreatedTs,omitempty" xml:"CreatedTs,omitempty"`
+	// [responses_200_schema_properties_UserDetail_properties_OnlineDuration_type]integer
+	//
 	// example:
 	//
 	// 1620958150
 	DestroyedTs *int64 `json:"DestroyedTs,omitempty" xml:"DestroyedTs,omitempty"`
+	// [responses_200_schema_properties_FactorList_title]List of impact factors. An empty value indicates that the impact factors are unknown.
+	//
 	// example:
 	//
 	// 231
 	Duration *int64 `json:"Duration,omitempty" xml:"Duration,omitempty"`
+	// Geographic location information, such as: Beijing City - Beijing Municipality.
+	//
 	// example:
 	//
 	// 浙江省-杭州市
 	Location *string `json:"Location,omitempty" xml:"Location,omitempty"`
+	// [responses_200_schema_properties_UserDetail_properties_OnlinePeriods_items_properties_JoinTs_title]Time of joining the call, represented as a UNIX timestamp in seconds.
+	//
 	// example:
 	//
 	// 4G
 	Network *string `json:"Network,omitempty" xml:"Network,omitempty"`
+	// Online duration, in seconds.
+	//
 	// example:
 	//
 	// 231
-	OnlineDuration *int64                                                                 `json:"OnlineDuration,omitempty" xml:"OnlineDuration,omitempty"`
-	OnlinePeriods  []*DescribeFaultDiagnosisUserDetailResponseBodyUserDetailOnlinePeriods `json:"OnlinePeriods,omitempty" xml:"OnlinePeriods,omitempty" type:"Repeated"`
+	OnlineDuration *int64 `json:"OnlineDuration,omitempty" xml:"OnlineDuration,omitempty"`
+	// Online period information.
+	OnlinePeriods []*DescribeFaultDiagnosisUserDetailResponseBodyUserDetailOnlinePeriods `json:"OnlinePeriods,omitempty" xml:"OnlinePeriods,omitempty" type:"Repeated"`
+	// [responses_200_schema_properties_UserDetail_properties_OnlinePeriods_type]array
+	//
 	// example:
 	//
 	// iOS
 	Os *string `json:"Os,omitempty" xml:"Os,omitempty"`
+	// [responses_200_schema_properties_UserDetail_properties_Location_title]Geographic location information, such as: Beijing City - Beijing Municipality
+	//
 	// example:
 	//
 	// 1.0.0
 	SdkVersion *string `json:"SdkVersion,omitempty" xml:"SdkVersion,omitempty"`
+	// [responses_200_schema_properties_UserDetail_properties_OnlinePeriods_items_properties_LeaveTs_title]Time of leaving the call, represented as a UNIX timestamp in seconds.
+	//
 	// example:
 	//
 	// 0a497933****
@@ -811,10 +900,14 @@ func (s *DescribeFaultDiagnosisUserDetailResponseBodyUserDetail) Validate() erro
 }
 
 type DescribeFaultDiagnosisUserDetailResponseBodyUserDetailOnlinePeriods struct {
+	// Time of joining the call, represented as a UNIX timestamp in seconds.
+	//
 	// example:
 	//
 	// 1620957919
 	JoinTs *int64 `json:"JoinTs,omitempty" xml:"JoinTs,omitempty"`
+	// Time of leaving the call, represented as a UNIX timestamp in seconds.
+	//
 	// example:
 	//
 	// 1620958150

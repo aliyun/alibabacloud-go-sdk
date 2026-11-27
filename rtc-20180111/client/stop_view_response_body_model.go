@@ -16,10 +16,14 @@ type iStopViewResponseBody interface {
 }
 
 type StopViewResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// E8236D21-B690-5251-A361-5971FBF552BA
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The task ID.
+	//
 	// example:
 	//
 	// 2bd80921b81e4d4289f696606885606b

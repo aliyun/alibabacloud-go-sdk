@@ -18,6 +18,8 @@ type iEnableAutoLiveStreamRuleRequest interface {
 }
 
 type EnableAutoLiveStreamRuleRequest struct {
+  // The application ID. You can create and query the ID in the console.
+  // 
   // This parameter is required.
   // 
   // example:
@@ -25,6 +27,8 @@ type EnableAutoLiveStreamRuleRequest struct {
   // eo85****
   AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
   OwnerId *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+  // The bypass rule ID. You can query the ID in the console or call the [DescribeAutoLiveStreamRule](https://help.aliyun.com/document_detail/353198.html) operation to obtain the bypass rule ID.
+  // 
   // This parameter is required.
   // 
   // example:

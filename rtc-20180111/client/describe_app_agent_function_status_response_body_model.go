@@ -22,6 +22,8 @@ type DescribeAppAgentFunctionStatusResponseBody struct {
 	//
 	// 16A96B9A-F203-4EC5-8E43-CB92E68F4CF8
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Switch status. Valid values: enable (on) and disable (off).
+	//
 	// example:
 	//
 	// disable

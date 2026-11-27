@@ -18,16 +18,22 @@ type iModifyAppRecordTemplateShrinkRequest interface {
 }
 
 type ModifyAppRecordTemplateShrinkRequest struct {
+	// Application ID. Create and query through the console. Only a single ID is supported.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ac7N****
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// Idempotency parameter.
+	//
 	// example:
 	//
 	// 53200b81-b761-4c10-842a-a0726d97xxxx
 	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// Recording template.
+	//
 	// This parameter is required.
 	RecordTemplateShrink *string `json:"RecordTemplate,omitempty" xml:"RecordTemplate,omitempty"`
 }

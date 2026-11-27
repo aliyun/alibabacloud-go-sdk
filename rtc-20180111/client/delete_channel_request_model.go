@@ -18,12 +18,16 @@ type iDeleteChannelRequest interface {
 }
 
 type DeleteChannelRequest struct {
+	// The application ID. You can create and query the ID in the console. Only a single ID is supported.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// eo85****
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The ID of the joined channel. Only a single ID is supported.
+	//
 	// This parameter is required.
 	//
 	// example:

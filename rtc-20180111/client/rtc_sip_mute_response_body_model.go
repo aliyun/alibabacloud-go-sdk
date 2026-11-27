@@ -16,7 +16,10 @@ type iRtcSipMuteResponseBody interface {
 }
 
 type RtcSipMuteResponseBody struct {
+	// The error tracks.
 	ErrTracks []*RtcSipMuteResponseBodyErrTracks `json:"ErrTracks,omitempty" xml:"ErrTracks,omitempty" type:"Repeated"`
+	// The request ID.
+	//
 	// example:
 	//
 	// E7997404-5858-5C4D-94E4-33677412ACDC
@@ -63,17 +66,19 @@ func (s *RtcSipMuteResponseBody) Validate() error {
 }
 
 type RtcSipMuteResponseBodyErrTracks struct {
-	// ErrMsg。
+	// The error message.
 	//
 	// example:
 	//
 	// participant does not existed.
 	ErrMsg *string `json:"ErrMsg,omitempty" xml:"ErrMsg,omitempty"`
+	// The user ID.
+	//
 	// example:
 	//
 	// 12
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
-	// OperationId。
+	// The operation ID.
 	//
 	// example:
 	//

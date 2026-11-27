@@ -16,11 +16,14 @@ type iDescribeAutoLiveStreamRuleResponseBody interface {
 }
 
 type DescribeAutoLiveStreamRuleResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 069BCB66-CD80-11E8-A82B-A70F78BBDC00
-	RequestId *string                                        `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	Rules     []*DescribeAutoLiveStreamRuleResponseBodyRules `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Repeated"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The rule details.
+	Rules []*DescribeAutoLiveStreamRuleResponseBodyRules `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Repeated"`
 }
 
 func (s DescribeAutoLiveStreamRuleResponseBody) String() string {
@@ -63,32 +66,52 @@ func (s *DescribeAutoLiveStreamRuleResponseBody) Validate() error {
 }
 
 type DescribeAutoLiveStreamRuleResponseBodyRules struct {
+	// The callback URL.
+	//
 	// example:
 	//
 	// http://example.com/callBack
-	CallBack          *string   `json:"CallBack,omitempty" xml:"CallBack,omitempty"`
+	CallBack *string `json:"CallBack,omitempty" xml:"CallBack,omitempty"`
+	// The prefix list of channel IDs for fuzzy match.
 	ChannelIdPrefixes []*string `json:"ChannelIdPrefixes,omitempty" xml:"ChannelIdPrefixes,omitempty" type:"Repeated"`
-	ChannelIds        []*string `json:"ChannelIds,omitempty" xml:"ChannelIds,omitempty" type:"Repeated"`
+	// The list of channel IDs for exact match.
+	ChannelIds []*string `json:"ChannelIds,omitempty" xml:"ChannelIds,omitempty" type:"Repeated"`
+	// The time when the rule was created.
+	//
 	// example:
 	//
 	// 2021-08-19T02:53:07Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The encoding options.
+	//
 	// example:
 	//
 	// 20
 	MediaEncode *int32 `json:"MediaEncode,omitempty" xml:"MediaEncode,omitempty"`
+	// The playback domain name for automatic bypass.
+	//
 	// example:
 	//
 	// rtmp://${domain}/${app}/${stream}
 	PlayDomain *string `json:"PlayDomain,omitempty" xml:"PlayDomain,omitempty"`
+	// The rule ID.
+	//
 	// example:
 	//
 	// 12
 	RuleId *int64 `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
+	// The rule name.
+	//
 	// example:
 	//
 	// testRule
 	RuleName *string `json:"RuleName,omitempty" xml:"RuleName,omitempty"`
+	// The rule status. Valid values:
+	//
+	// - enable: Enabled.
+	//
+	// - disable: Disabled.
+	//
 	// example:
 	//
 	// disable

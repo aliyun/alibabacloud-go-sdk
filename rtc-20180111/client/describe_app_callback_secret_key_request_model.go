@@ -14,6 +14,8 @@ type iDescribeAppCallbackSecretKeyRequest interface {
 }
 
 type DescribeAppCallbackSecretKeyRequest struct {
+	// Application ID. You can create and query it in the console. Only a single ID is supported.
+	//
 	// This parameter is required.
 	//
 	// example:

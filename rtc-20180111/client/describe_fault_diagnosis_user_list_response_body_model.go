@@ -22,22 +22,31 @@ type iDescribeFaultDiagnosisUserListResponseBody interface {
 }
 
 type DescribeFaultDiagnosisUserListResponseBody struct {
+	// The page number.
+	//
 	// example:
 	//
-	// 2
+	// 1
 	PageNo *int32 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	// The number of entries per page.
+	//
 	// example:
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The ID of the request.
+	//
 	// example:
 	//
 	// 231470C1-ACFB-4C9F-844F-4CFE1E3804C5
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of entries.
+	//
 	// example:
 	//
-	// 20
-	TotalCnt *int32                                                `json:"TotalCnt,omitempty" xml:"TotalCnt,omitempty"`
+	// 1
+	TotalCnt *int32 `json:"TotalCnt,omitempty" xml:"TotalCnt,omitempty"`
+	// The detailed list of users with faults.
 	UserList []*DescribeFaultDiagnosisUserListResponseBodyUserList `json:"UserList,omitempty" xml:"UserList,omitempty" type:"Repeated"`
 }
 
@@ -108,26 +117,37 @@ func (s *DescribeFaultDiagnosisUserListResponseBody) Validate() error {
 }
 
 type DescribeFaultDiagnosisUserListResponseBodyUserList struct {
+	// The creation timestamp of the channel. The time is a UNIX timestamp in seconds.
+	//
 	// example:
 	//
 	// 1614936817
 	ChannelCreatedTs *int64 `json:"ChannelCreatedTs,omitempty" xml:"ChannelCreatedTs,omitempty"`
+	// The ID of the channel.
+	//
 	// example:
 	//
 	// 904
 	ChannelId *string `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
+	// The time when the user first joined the channel. The time is a UNIX timestamp in seconds.
+	//
 	// example:
 	//
 	// 1614936817
 	CreatedTs *int64 `json:"CreatedTs,omitempty" xml:"CreatedTs,omitempty"`
+	// The time when the user last left the channel. The time is a UNIX timestamp in seconds.
+	//
 	// example:
 	//
 	// 1614936817
-	DestroyedTs *int64                                                         `json:"DestroyedTs,omitempty" xml:"DestroyedTs,omitempty"`
-	FaultList   []*DescribeFaultDiagnosisUserListResponseBodyUserListFaultList `json:"FaultList,omitempty" xml:"FaultList,omitempty" type:"Repeated"`
+	DestroyedTs *int64 `json:"DestroyedTs,omitempty" xml:"DestroyedTs,omitempty"`
+	// The list of faults.
+	FaultList []*DescribeFaultDiagnosisUserListResponseBodyUserListFaultList `json:"FaultList,omitempty" xml:"FaultList,omitempty" type:"Repeated"`
+	// The ID of the user.
+	//
 	// example:
 	//
-	// 123456
+	// testuserid
 	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
 }
 
@@ -207,6 +227,8 @@ func (s *DescribeFaultDiagnosisUserListResponseBodyUserList) Validate() error {
 }
 
 type DescribeFaultDiagnosisUserListResponseBodyUserListFaultList struct {
+	// The fault type.
+	//
 	// example:
 	//
 	// JOIN_SLOW

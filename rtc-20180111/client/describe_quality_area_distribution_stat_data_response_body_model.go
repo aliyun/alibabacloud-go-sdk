@@ -16,7 +16,10 @@ type iDescribeQualityAreaDistributionStatDataResponseBody interface {
 }
 
 type DescribeQualityAreaDistributionStatDataResponseBody struct {
+	// The list of quality distribution data.
 	QualityStatDataList []*DescribeQualityAreaDistributionStatDataResponseBodyQualityStatDataList `json:"QualityStatDataList,omitempty" xml:"QualityStatDataList,omitempty" type:"Repeated"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 231470C1-ACFB-4C9F-844F-4CFE1E3804C5
@@ -63,46 +66,68 @@ func (s *DescribeQualityAreaDistributionStatDataResponseBody) Validate() error {
 }
 
 type DescribeQualityAreaDistributionStatDataResponseBodyQualityStatDataList struct {
+	// The audio delay, in milliseconds.
+	//
 	// example:
 	//
 	// 347
 	AudioDelay *int64 `json:"AudioDelay,omitempty" xml:"AudioDelay,omitempty"`
+	// The high-quality transmission rate of audio, represented by a four-decimal number.
+	//
 	// example:
 	//
 	// 0.9933
 	AudioHighQualityTransmissionRate *string `json:"AudioHighQualityTransmissionRate,omitempty" xml:"AudioHighQualityTransmissionRate,omitempty"`
+	// The audio stuttering rate, represented by a four-decimal number.
+	//
 	// example:
 	//
 	// 0.0021
 	AudioStuckRate *string `json:"AudioStuckRate,omitempty" xml:"AudioStuckRate,omitempty"`
+	// The ratio of the call duration, represented by a four-decimal number. For example, 1.0000 indicates that the call duration ratio is 100%.
+	//
 	// example:
 	//
 	// 0.6654
 	CallDurationRatio *string `json:"CallDurationRatio,omitempty" xml:"CallDurationRatio,omitempty"`
+	// The success rate of joining a channel within 5 seconds, represented by a four-decimal number.
+	//
 	// example:
 	//
 	// 0.9338
 	JoinChannelSucFiveSecRate *string `json:"JoinChannelSucFiveSecRate,omitempty" xml:"JoinChannelSucFiveSecRate,omitempty"`
+	// The success rate of joining a channel, represented by a four-decimal number.
+	//
 	// example:
 	//
 	// 0.9356
 	JoinChannelSucRate *string `json:"JoinChannelSucRate,omitempty" xml:"JoinChannelSucRate,omitempty"`
+	// The name of the region.
+	//
 	// example:
 	//
-	// 中国_浙江省
+	// China_Zhejiang Province
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The video delay, in milliseconds.
+	//
 	// example:
 	//
 	// 291
 	VideoDelay *int64 `json:"VideoDelay,omitempty" xml:"VideoDelay,omitempty"`
+	// The time taken to render the first video frame, in milliseconds.
+	//
 	// example:
 	//
 	// 1363
 	VideoFirstPicDuration *int64 `json:"VideoFirstPicDuration,omitempty" xml:"VideoFirstPicDuration,omitempty"`
+	// The high-quality transmission rate of video, represented by a four-decimal number.
+	//
 	// example:
 	//
 	// 0.9967
 	VideoHighQualityTransmissionRate *string `json:"VideoHighQualityTransmissionRate,omitempty" xml:"VideoHighQualityTransmissionRate,omitempty"`
+	// The video stuttering rate, represented by a four-decimal number.
+	//
 	// example:
 	//
 	// 0.0058

@@ -20,7 +20,7 @@ type iDescribeQualityAreaDistributionStatDataRequest interface {
 }
 
 type DescribeQualityAreaDistributionStatDataRequest struct {
-	// APP ID
+	// The app ID.
 	//
 	// This parameter is required.
 	//
@@ -28,16 +28,22 @@ type DescribeQualityAreaDistributionStatDataRequest struct {
 	//
 	// 0rbd****
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The end time of the query. The value is a UNIX timestamp in seconds.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1615910399
 	EndDate *int64 `json:"EndDate,omitempty" xml:"EndDate,omitempty"`
+	// The name of the parent region. For example, the parent region of Hangzhou is Zhejiang Province, and the parameter is set to China_Zhejiang Province. If this parameter is left empty, the statistics are collected at the country level worldwide, such as China and the United Kingdom.
+	//
 	// example:
 	//
-	// 中国
+	// China_Zhejiang Province
 	ParentArea *string `json:"ParentArea,omitempty" xml:"ParentArea,omitempty"`
+	// The start time of the query. The value is a UNIX timestamp in seconds.
+	//
 	// This parameter is required.
 	//
 	// example:

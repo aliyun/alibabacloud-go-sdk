@@ -14,7 +14,7 @@ type iModifyAppRecordTemplateResponseBody interface {
 }
 
 type ModifyAppRecordTemplateResponseBody struct {
-	// Id of the request
+	// Request ID
 	//
 	// example:
 	//

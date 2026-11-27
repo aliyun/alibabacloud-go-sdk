@@ -16,11 +16,14 @@ type iDescribeFaultDiagnosisFactorDistributionStatResponseBody interface {
 }
 
 type DescribeFaultDiagnosisFactorDistributionStatResponseBody struct {
+	// Request ID.
+	//
 	// example:
 	//
 	// 231470C1-ACFB-4C9F-844F-4CFE1E3804C5
-	RequestId *string                                                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	StatList  []*DescribeFaultDiagnosisFactorDistributionStatResponseBodyStatList `json:"StatList,omitempty" xml:"StatList,omitempty" type:"Repeated"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Statistics on the distribution of impact factors.
+	StatList []*DescribeFaultDiagnosisFactorDistributionStatResponseBodyStatList `json:"StatList,omitempty" xml:"StatList,omitempty" type:"Repeated"`
 }
 
 func (s DescribeFaultDiagnosisFactorDistributionStatResponseBody) String() string {
@@ -63,14 +66,20 @@ func (s *DescribeFaultDiagnosisFactorDistributionStatResponseBody) Validate() er
 }
 
 type DescribeFaultDiagnosisFactorDistributionStatResponseBodyStatList struct {
+	// Impact factor ID. For details, see the list of impact factor ID values below.
+	//
 	// example:
 	//
 	// 1
 	FactorId *string `json:"FactorId,omitempty" xml:"FactorId,omitempty"`
+	// Number of impacted users.
+	//
 	// example:
 	//
 	// 100
 	UserCount *int32 `json:"UserCount,omitempty" xml:"UserCount,omitempty"`
+	// Proportion of impacted users.
+	//
 	// example:
 	//
 	// 0.9239

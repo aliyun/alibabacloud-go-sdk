@@ -2,6 +2,7 @@
 package client
 
 import (
+	gatewayclient "github.com/alibabacloud-go/alibabacloud-gateway-pop/client"
 	openapi "github.com/alibabacloud-go/darabonba-openapi/v2/client"
 	openapiutil "github.com/alibabacloud-go/darabonba-openapi/v2/utils"
 	"github.com/alibabacloud-go/tea/dara"
@@ -24,6 +25,13 @@ func (client *Client) Init(config *openapiutil.Config) (_err error) {
 	if _err != nil {
 		return _err
 	}
+	client.ProductId = dara.String("rtc")
+	gatewayClient, _err := gatewayclient.NewClient()
+	if _err != nil {
+		return _err
+	}
+
+	client.Spi = gatewayClient
 	client.EndpointRule = dara.String("central")
 	_err = client.CheckConfig(config)
 	if _err != nil {
@@ -56,6 +64,20 @@ func (client *Client) GetEndpoint(productId *string, regionId *string, endpointR
 	return _result, _err
 }
 
+// Summary:
+//
+// Adds a recording configuration template.
+//
+// Description:
+//
+// # Usage notes
+//
+// This operation adds a recording configuration template. For example, when you add a recording configuration template, you can configure parameters such as recording specifications and encoding options.
+//
+// # QPS limits
+//
+// The QPS limit for a single user is 100 calls per second. If the limit is exceeded, API calls are throttled, which may affect your business. Make API calls at a reasonable rate. For more information, see [QPS limits](https://help.aliyun.com/document_detail/341645.html).
+//
 // @param request - AddRecordTemplateRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -168,6 +190,20 @@ func (client *Client) AddRecordTemplateWithOptions(request *AddRecordTemplateReq
 	return _result, _err
 }
 
+// Summary:
+//
+// Adds a recording configuration template.
+//
+// Description:
+//
+// # Usage notes
+//
+// This operation adds a recording configuration template. For example, when you add a recording configuration template, you can configure parameters such as recording specifications and encoding options.
+//
+// # QPS limits
+//
+// The QPS limit for a single user is 100 calls per second. If the limit is exceeded, API calls are throttled, which may affect your business. Make API calls at a reasonable rate. For more information, see [QPS limits](https://help.aliyun.com/document_detail/341645.html).
+//
 // @param request - AddRecordTemplateRequest
 //
 // @return AddRecordTemplateResponse
@@ -184,7 +220,13 @@ func (client *Client) AddRecordTemplate(request *AddRecordTemplateRequest) (_res
 
 // Summary:
 //
-// 创建应用智能体模版
+// Creates an application agent template.
+//
+// Description:
+//
+// ### QPS limit
+//
+// The QPS limit for a single user is 10 calls per second for this API operation. If the limit is exceeded, API calls are throttled, which may affect your services. Call this API operation at a reasonable frequency.
 //
 // @param tmpReq - CreateAppAgentTemplateRequest
 //
@@ -314,7 +356,13 @@ func (client *Client) CreateAppAgentTemplateWithOptions(tmpReq *CreateAppAgentTe
 
 // Summary:
 //
-// 创建应用智能体模版
+// Creates an application agent template.
+//
+// Description:
+//
+// ### QPS limit
+//
+// The QPS limit for a single user is 10 calls per second for this API operation. If the limit is exceeded, API calls are throttled, which may affect your services. Call this API operation at a reasonable frequency.
 //
 // @param request - CreateAppAgentTemplateRequest
 //
@@ -332,7 +380,13 @@ func (client *Client) CreateAppAgentTemplate(request *CreateAppAgentTemplateRequ
 
 // Summary:
 //
-// 新增app自定义布局
+// Creates a custom layout for an application.
+//
+// Description:
+//
+// ### QPS limit
+//
+// The queries per second (QPS) limit per user is 10. If the limit is exceeded, API calls are throttled, which may affect your services. Call this API operation at a reasonable frequency.
 //
 // @param tmpReq - CreateAppLayoutRequest
 //
@@ -390,7 +444,13 @@ func (client *Client) CreateAppLayoutWithOptions(tmpReq *CreateAppLayoutRequest,
 
 // Summary:
 //
-// 新增app自定义布局
+// Creates a custom layout for an application.
+//
+// Description:
+//
+// ### QPS limit
+//
+// The queries per second (QPS) limit per user is 10. If the limit is exceeded, API calls are throttled, which may affect your services. Call this API operation at a reasonable frequency.
 //
 // @param request - CreateAppLayoutRequest
 //
@@ -408,7 +468,13 @@ func (client *Client) CreateAppLayout(request *CreateAppLayoutRequest) (_result 
 
 // Summary:
 //
-// 增加应用录制模版
+// Creates an application recording template.
+//
+// Description:
+//
+// ### QPS limit
+//
+// The queries per second (QPS) limit for a single user is 10. If the limit is exceeded, API calls are throttled, which may affect your services. Call this API operation at a reasonable rate.
 //
 // @param tmpReq - CreateAppRecordTemplateRequest
 //
@@ -466,7 +532,13 @@ func (client *Client) CreateAppRecordTemplateWithOptions(tmpReq *CreateAppRecord
 
 // Summary:
 //
-// 增加应用录制模版
+// Creates an application recording template.
+//
+// Description:
+//
+// ### QPS limit
+//
+// The queries per second (QPS) limit for a single user is 10. If the limit is exceeded, API calls are throttled, which may affect your services. Call this API operation at a reasonable rate.
 //
 // @param request - CreateAppRecordTemplateRequest
 //
@@ -484,7 +556,17 @@ func (client *Client) CreateAppRecordTemplate(request *CreateAppRecordTemplateRe
 
 // Summary:
 //
-// 创建应用推流模版
+// Creates a stream forwarding template for an RTC 3.0 application.
+//
+// Description:
+//
+// ### Usage notes
+//
+// This operation creates a stream forwarding template for an RTC 3.0 application.
+//
+// ### QPS limit
+//
+// The QPS limit for a single user is 10 calls per second. If the limit is exceeded, API calls are throttled, which may affect your services. Make API calls at a reasonable rate.
 //
 // @param tmpReq - CreateAppStreamingOutTemplateRequest
 //
@@ -538,7 +620,17 @@ func (client *Client) CreateAppStreamingOutTemplateWithOptions(tmpReq *CreateApp
 
 // Summary:
 //
-// 创建应用推流模版
+// Creates a stream forwarding template for an RTC 3.0 application.
+//
+// Description:
+//
+// ### Usage notes
+//
+// This operation creates a stream forwarding template for an RTC 3.0 application.
+//
+// ### QPS limit
+//
+// The QPS limit for a single user is 10 calls per second. If the limit is exceeded, API calls are throttled, which may affect your services. Make API calls at a reasonable rate.
 //
 // @param request - CreateAppStreamingOutTemplateRequest
 //
@@ -556,7 +648,13 @@ func (client *Client) CreateAppStreamingOutTemplate(request *CreateAppStreamingO
 
 // Summary:
 //
-// 创建应用合流模版
+// Creates an application stream mixing template.
+//
+// Description:
+//
+// ### QPS limits
+//
+// The QPS limit for a single user is 10 calls per second. If the limit is exceeded, API calls are throttled, which may affect your services. Call this operation as needed.
 //
 // @param tmpReq - CreateAppViewTemplateRequest
 //
@@ -610,7 +708,13 @@ func (client *Client) CreateAppViewTemplateWithOptions(tmpReq *CreateAppViewTemp
 
 // Summary:
 //
-// 创建应用合流模版
+// Creates an application stream mixing template.
+//
+// Description:
+//
+// ### QPS limits
+//
+// The QPS limit for a single user is 10 calls per second. If the limit is exceeded, API calls are throttled, which may affect your services. Call this operation as needed.
 //
 // @param request - CreateAppViewTemplateRequest
 //
@@ -626,6 +730,20 @@ func (client *Client) CreateAppViewTemplate(request *CreateAppViewTemplateReques
 	return _result, _err
 }
 
+// Summary:
+//
+// Calls CreateAutoLiveStreamRule to create an automatic single-stream relay rule.
+//
+// Description:
+//
+// # Usage notes
+//
+// This operation is used to create a relay rule.
+//
+// # QPS limit
+//
+// The per-user QPS limit of this operation is 1,000 calls per minute. If the limit is exceeded, API calls will be throttled, which may affect your business. Call the operation properly. For more information, see [QPS limits](https://help.aliyun.com/document_detail/341645.html).
+//
 // @param request - CreateAutoLiveStreamRuleRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -694,6 +812,20 @@ func (client *Client) CreateAutoLiveStreamRuleWithOptions(request *CreateAutoLiv
 	return _result, _err
 }
 
+// Summary:
+//
+// Calls CreateAutoLiveStreamRule to create an automatic single-stream relay rule.
+//
+// Description:
+//
+// # Usage notes
+//
+// This operation is used to create a relay rule.
+//
+// # QPS limit
+//
+// The per-user QPS limit of this operation is 1,000 calls per minute. If the limit is exceeded, API calls will be throttled, which may affect your business. Call the operation properly. For more information, see [QPS limits](https://help.aliyun.com/document_detail/341645.html).
+//
 // @param request - CreateAutoLiveStreamRuleRequest
 //
 // @return CreateAutoLiveStreamRuleResponse
@@ -710,7 +842,7 @@ func (client *Client) CreateAutoLiveStreamRule(request *CreateAutoLiveStreamRule
 
 // Summary:
 //
-// 增加纪要热词表
+// Creates a hotword table for meeting minutes.
 //
 // @param tmpReq - CreateCloudNotePhrasesRequest
 //
@@ -764,7 +896,7 @@ func (client *Client) CreateCloudNotePhrasesWithOptions(tmpReq *CreateCloudNoteP
 
 // Summary:
 //
-// 增加纪要热词表
+// Creates a hotword table for meeting minutes.
 //
 // @param request - CreateCloudNotePhrasesRequest
 //
@@ -780,6 +912,20 @@ func (client *Client) CreateCloudNotePhrases(request *CreateCloudNotePhrasesRequ
 	return _result, _err
 }
 
+// Summary:
+//
+// Calls CreateEventSubscribe to create a callback for subscribing to room messages.
+//
+// Description:
+//
+// # Usage notes
+//
+// This operation is used to create a callback for subscribing to room messages. For example, when you create a callback, you can configure parameters such as the callback URL and event type.
+//
+// # QPS limit
+//
+// The per-user QPS limit of this operation is 1,000 calls per minute. If the limit is exceeded, API calls are throttled, which may affect your business. Make sure that you call this operation at a reasonable frequency. For more information, see [QPS limits](https://help.aliyun.com/document_detail/341645.html).
+//
 // @param request - CreateEventSubscribeRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -852,6 +998,20 @@ func (client *Client) CreateEventSubscribeWithOptions(request *CreateEventSubscr
 	return _result, _err
 }
 
+// Summary:
+//
+// Calls CreateEventSubscribe to create a callback for subscribing to room messages.
+//
+// Description:
+//
+// # Usage notes
+//
+// This operation is used to create a callback for subscribing to room messages. For example, when you create a callback, you can configure parameters such as the callback URL and event type.
+//
+// # QPS limit
+//
+// The per-user QPS limit of this operation is 1,000 calls per minute. If the limit is exceeded, API calls are throttled, which may affect your business. Make sure that you call this operation at a reasonable frequency. For more information, see [QPS limits](https://help.aliyun.com/document_detail/341645.html).
+//
 // @param request - CreateEventSubscribeRequest
 //
 // @return CreateEventSubscribeResponse
@@ -866,6 +1026,20 @@ func (client *Client) CreateEventSubscribe(request *CreateEventSubscribeRequest)
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates a bypass live streaming layout.
+//
+// Description:
+//
+// # Usage notes
+//
+// This operation creates a bypass live streaming layout. For example, you can configure parameters such as the number of audio mixes and the main pane.
+//
+// # QPS limit
+//
+// The QPS limit for a single user is 10 calls per second. If the limit is exceeded, API calls are throttled, which may affect your services. Make API calls at a reasonable frequency. For more information, see [QPS limits](https://help.aliyun.com/document_detail/341645.html).
+//
 // @param request - CreateMPULayoutRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -922,6 +1096,20 @@ func (client *Client) CreateMPULayoutWithOptions(request *CreateMPULayoutRequest
 	return _result, _err
 }
 
+// Summary:
+//
+// Creates a bypass live streaming layout.
+//
+// Description:
+//
+// # Usage notes
+//
+// This operation creates a bypass live streaming layout. For example, you can configure parameters such as the number of audio mixes and the main pane.
+//
+// # QPS limit
+//
+// The QPS limit for a single user is 10 calls per second. If the limit is exceeded, API calls are throttled, which may affect your services. Make API calls at a reasonable frequency. For more information, see [QPS limits](https://help.aliyun.com/document_detail/341645.html).
+//
 // @param request - CreateMPULayoutRequest
 //
 // @return CreateMPULayoutResponse
@@ -938,7 +1126,13 @@ func (client *Client) CreateMPULayout(request *CreateMPULayoutRequest) (_result 
 
 // Summary:
 //
-// 删除应用智能体模版
+// Deletes an application agent template.
+//
+// Description:
+//
+// ### QPS limits
+//
+// The QPS limit per user for this API operation is 10 queries per second. If the limit is exceeded, API calls are throttled, which may affect your services. Call this API operation at a reasonable frequency.
 //
 // @param request - DeleteAppAgentTemplateRequest
 //
@@ -986,7 +1180,13 @@ func (client *Client) DeleteAppAgentTemplateWithOptions(request *DeleteAppAgentT
 
 // Summary:
 //
-// 删除应用智能体模版
+// Deletes an application agent template.
+//
+// Description:
+//
+// ### QPS limits
+//
+// The QPS limit per user for this API operation is 10 queries per second. If the limit is exceeded, API calls are throttled, which may affect your services. Call this API operation at a reasonable frequency.
 //
 // @param request - DeleteAppAgentTemplateRequest
 //
@@ -1004,7 +1204,13 @@ func (client *Client) DeleteAppAgentTemplate(request *DeleteAppAgentTemplateRequ
 
 // Summary:
 //
-// 删除app自定义布局
+// Deletes a custom layout for an application.
+//
+// Description:
+//
+// ### QPS limit
+//
+// The queries per second (QPS) limit per user for this API operation is 10. If the limit is exceeded, API calls are throttled, which may affect your services. Call this operation at a reasonable rate.
 //
 // @param tmpReq - DeleteAppLayoutRequest
 //
@@ -1062,7 +1268,13 @@ func (client *Client) DeleteAppLayoutWithOptions(tmpReq *DeleteAppLayoutRequest,
 
 // Summary:
 //
-// 删除app自定义布局
+// Deletes a custom layout for an application.
+//
+// Description:
+//
+// ### QPS limit
+//
+// The queries per second (QPS) limit per user for this API operation is 10. If the limit is exceeded, API calls are throttled, which may affect your services. Call this operation at a reasonable rate.
 //
 // @param request - DeleteAppLayoutRequest
 //
@@ -1080,7 +1292,13 @@ func (client *Client) DeleteAppLayout(request *DeleteAppLayoutRequest) (_result 
 
 // Summary:
 //
-// 删除应用录制模版
+// Deletes an application recording template.
+//
+// Description:
+//
+// ### QPS limits
+//
+// The queries per second (QPS) limit for a single user is 10 calls per second. If the limit is exceeded, API calls are throttled, which may affect your services. Call this operation at a reasonable frequency.
 //
 // @param tmpReq - DeleteAppRecordTemplateRequest
 //
@@ -1138,7 +1356,13 @@ func (client *Client) DeleteAppRecordTemplateWithOptions(tmpReq *DeleteAppRecord
 
 // Summary:
 //
-// 删除应用录制模版
+// Deletes an application recording template.
+//
+// Description:
+//
+// ### QPS limits
+//
+// The queries per second (QPS) limit for a single user is 10 calls per second. If the limit is exceeded, API calls are throttled, which may affect your services. Call this operation at a reasonable frequency.
 //
 // @param request - DeleteAppRecordTemplateRequest
 //
@@ -1156,7 +1380,17 @@ func (client *Client) DeleteAppRecordTemplate(request *DeleteAppRecordTemplateRe
 
 // Summary:
 //
-// 删除应用推流模版
+// Deletes a stream ingest template for an RTC 3.0 application.
+//
+// Description:
+//
+// ### Usage notes
+//
+// This operation deletes a stream ingest template for an RTC 3.0 application.
+//
+// ### QPS limit
+//
+// The QPS limit for a single user is 10 calls per second. If the limit is exceeded, API calls are throttled, which may affect your services. Call this operation at a reasonable frequency.
 //
 // @param tmpReq - DeleteAppStreamingOutTemplateRequest
 //
@@ -1210,7 +1444,17 @@ func (client *Client) DeleteAppStreamingOutTemplateWithOptions(tmpReq *DeleteApp
 
 // Summary:
 //
-// 删除应用推流模版
+// Deletes a stream ingest template for an RTC 3.0 application.
+//
+// Description:
+//
+// ### Usage notes
+//
+// This operation deletes a stream ingest template for an RTC 3.0 application.
+//
+// ### QPS limit
+//
+// The QPS limit for a single user is 10 calls per second. If the limit is exceeded, API calls are throttled, which may affect your services. Call this operation at a reasonable frequency.
 //
 // @param request - DeleteAppStreamingOutTemplateRequest
 //
@@ -1228,7 +1472,13 @@ func (client *Client) DeleteAppStreamingOutTemplate(request *DeleteAppStreamingO
 
 // Summary:
 //
-// 删除应用合流模版
+// Deletes an application\\"s composite stream template.
+//
+// Description:
+//
+// ### QPS limit
+//
+// The queries per second (QPS) limit for this API is 10 calls per second for each user. If you exceed this limit, rate limiting is triggered. This may affect your business. Call this API at a reasonable rate.
 //
 // @param tmpReq - DeleteAppViewTemplateRequest
 //
@@ -1282,7 +1532,13 @@ func (client *Client) DeleteAppViewTemplateWithOptions(tmpReq *DeleteAppViewTemp
 
 // Summary:
 //
-// 删除应用合流模版
+// Deletes an application\\"s composite stream template.
+//
+// Description:
+//
+// ### QPS limit
+//
+// The queries per second (QPS) limit for this API is 10 calls per second for each user. If you exceed this limit, rate limiting is triggered. This may affect your business. Call this API at a reasonable rate.
 //
 // @param request - DeleteAppViewTemplateRequest
 //
@@ -1298,6 +1554,20 @@ func (client *Client) DeleteAppViewTemplate(request *DeleteAppViewTemplateReques
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes an automatic bypass single-stream relay rule.
+//
+// Description:
+//
+// # Usage notes
+//
+// Before you call this operation, you must call [CreateAutoLiveStreamRule](https://help.aliyun.com/document_detail/353179.html) to create a bypass rule.
+//
+// # QPS limits
+//
+// The QPS limit for a single user is 1,000 calls per minute. If the limit is exceeded, API calls are throttled, which may affect your business. Make API calls at a reasonable frequency. For more information, see [QPS limits](https://help.aliyun.com/document_detail/341645.html).
+//
 // @param request - DeleteAutoLiveStreamRuleRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -1346,6 +1616,20 @@ func (client *Client) DeleteAutoLiveStreamRuleWithOptions(request *DeleteAutoLiv
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes an automatic bypass single-stream relay rule.
+//
+// Description:
+//
+// # Usage notes
+//
+// Before you call this operation, you must call [CreateAutoLiveStreamRule](https://help.aliyun.com/document_detail/353179.html) to create a bypass rule.
+//
+// # QPS limits
+//
+// The QPS limit for a single user is 1,000 calls per minute. If the limit is exceeded, API calls are throttled, which may affect your business. Make API calls at a reasonable frequency. For more information, see [QPS limits](https://help.aliyun.com/document_detail/341645.html).
+//
 // @param request - DeleteAutoLiveStreamRuleRequest
 //
 // @return DeleteAutoLiveStreamRuleResponse
@@ -1360,6 +1644,20 @@ func (client *Client) DeleteAutoLiveStreamRule(request *DeleteAutoLiveStreamRule
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes a channel.
+//
+// Description:
+//
+// # Usage notes
+//
+// This operation deletes a channel.
+//
+// # QPS limit
+//
+// This operation has no QPS limit per user. Call this operation as needed. For more information, see [QPS limits](https://help.aliyun.com/document_detail/341645.html).
+//
 // @param request - DeleteChannelRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -1408,6 +1706,20 @@ func (client *Client) DeleteChannelWithOptions(request *DeleteChannelRequest, ru
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes a channel.
+//
+// Description:
+//
+// # Usage notes
+//
+// This operation deletes a channel.
+//
+// # QPS limit
+//
+// This operation has no QPS limit per user. Call this operation as needed. For more information, see [QPS limits](https://help.aliyun.com/document_detail/341645.html).
+//
 // @param request - DeleteChannelRequest
 //
 // @return DeleteChannelResponse
@@ -1424,7 +1736,7 @@ func (client *Client) DeleteChannel(request *DeleteChannelRequest) (_result *Del
 
 // Summary:
 //
-// 删除纪要热词表
+// Deletes a hot word table.
 //
 // @param tmpReq - DeleteCloudNotePhrasesRequest
 //
@@ -1478,7 +1790,7 @@ func (client *Client) DeleteCloudNotePhrasesWithOptions(tmpReq *DeleteCloudNoteP
 
 // Summary:
 //
-// 删除纪要热词表
+// Deletes a hot word table.
 //
 // @param request - DeleteCloudNotePhrasesRequest
 //
@@ -1494,6 +1806,20 @@ func (client *Client) DeleteCloudNotePhrases(request *DeleteCloudNotePhrasesRequ
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes a callback for subscribing to room messages by calling DeleteEventSubscribe.
+//
+// Description:
+//
+// # Usage notes
+//
+// Before you call this operation, you must call [CreateEventSubscribe](https://help.aliyun.com/document_detail/274447.html) to create a callback for subscribing to room messages.
+//
+// # QPS limits
+//
+// The QPS limit of this operation is 1,000 calls per minute per user. If the limit is exceeded, API calls are throttled, which may affect your business. We recommend that you call this operation at a reasonable rate. For more information, see [QPS limits](https://help.aliyun.com/document_detail/341645.html).
+//
 // @param request - DeleteEventSubscribeRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -1542,6 +1868,20 @@ func (client *Client) DeleteEventSubscribeWithOptions(request *DeleteEventSubscr
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes a callback for subscribing to room messages by calling DeleteEventSubscribe.
+//
+// Description:
+//
+// # Usage notes
+//
+// Before you call this operation, you must call [CreateEventSubscribe](https://help.aliyun.com/document_detail/274447.html) to create a callback for subscribing to room messages.
+//
+// # QPS limits
+//
+// The QPS limit of this operation is 1,000 calls per minute per user. If the limit is exceeded, API calls are throttled, which may affect your business. We recommend that you call this operation at a reasonable rate. For more information, see [QPS limits](https://help.aliyun.com/document_detail/341645.html).
+//
 // @param request - DeleteEventSubscribeRequest
 //
 // @return DeleteEventSubscribeResponse
@@ -1556,6 +1896,20 @@ func (client *Client) DeleteEventSubscribe(request *DeleteEventSubscribeRequest)
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes a bypass live streaming layout.
+//
+// Description:
+//
+// # Usage notes
+//
+// Before you call this operation, you must call [CreateMPULayout](https://help.aliyun.com/document_detail/162192.html) to create a bypass live streaming layout.
+//
+// # QPS limits
+//
+// The per-user QPS limit for this operation is 10 calls per second. If the limit is exceeded, API calls are throttled, which may affect your services. Make API calls at a reasonable rate. For more information, see [QPS limits](https://help.aliyun.com/document_detail/341645.html).
+//
 // @param request - DeleteMPULayoutRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -1604,6 +1958,20 @@ func (client *Client) DeleteMPULayoutWithOptions(request *DeleteMPULayoutRequest
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes a bypass live streaming layout.
+//
+// Description:
+//
+// # Usage notes
+//
+// Before you call this operation, you must call [CreateMPULayout](https://help.aliyun.com/document_detail/162192.html) to create a bypass live streaming layout.
+//
+// # QPS limits
+//
+// The per-user QPS limit for this operation is 10 calls per second. If the limit is exceeded, API calls are throttled, which may affect your services. Make API calls at a reasonable rate. For more information, see [QPS limits](https://help.aliyun.com/document_detail/341645.html).
+//
 // @param request - DeleteMPULayoutRequest
 //
 // @return DeleteMPULayoutResponse
@@ -1618,6 +1986,20 @@ func (client *Client) DeleteMPULayout(request *DeleteMPULayoutRequest) (_result 
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes a recording configuration template.
+//
+// Description:
+//
+// # Usage notes
+//
+// Before you call this operation, you must call [AddRecordTemplate](https://help.aliyun.com/document_detail/193625.html) to add a recording configuration template.
+//
+// # QPS limits
+//
+// The QPS limit for a single user is 10 calls per second. If the limit is exceeded, API calls are throttled, which may affect your business. Call this operation as needed. For more information, see [QPS limits](https://help.aliyun.com/document_detail/341645.html).
+//
 // @param request - DeleteRecordTemplateRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -1666,6 +2048,20 @@ func (client *Client) DeleteRecordTemplateWithOptions(request *DeleteRecordTempl
 	return _result, _err
 }
 
+// Summary:
+//
+// Deletes a recording configuration template.
+//
+// Description:
+//
+// # Usage notes
+//
+// Before you call this operation, you must call [AddRecordTemplate](https://help.aliyun.com/document_detail/193625.html) to add a recording configuration template.
+//
+// # QPS limits
+//
+// The QPS limit for a single user is 10 calls per second. If the limit is exceeded, API calls are throttled, which may affect your business. Call this operation as needed. For more information, see [QPS limits](https://help.aliyun.com/document_detail/341645.html).
+//
 // @param request - DeleteRecordTemplateRequest
 //
 // @return DeleteRecordTemplateResponse
@@ -1682,7 +2078,13 @@ func (client *Client) DeleteRecordTemplate(request *DeleteRecordTemplateRequest)
 
 // Summary:
 //
-// 列出系统支持的事件回调
+// Lists the event callbacks supported by the system.
+//
+// Description:
+//
+// ### QPS limit
+//
+// This API supports a maximum of 10 calls per second per user. If you exceed this limit, rate limiting is applied to your API calls, which may affect your business operations. Use this API judiciously.
 //
 // @param runtime - runtime options for this request RuntimeOptions
 //
@@ -1711,7 +2113,13 @@ func (client *Client) DescribeAllCallbackWithOptions(runtime *dara.RuntimeOption
 
 // Summary:
 //
-// 列出系统支持的事件回调
+// Lists the event callbacks supported by the system.
+//
+// Description:
+//
+// ### QPS limit
+//
+// This API supports a maximum of 10 calls per second per user. If you exceed this limit, rate limiting is applied to your API calls, which may affect your business operations. Use this API judiciously.
 //
 // @return DescribeAllCallbackResponse
 func (client *Client) DescribeAllCallback() (_result *DescribeAllCallbackResponse, _err error) {
@@ -1727,7 +2135,13 @@ func (client *Client) DescribeAllCallback() (_result *DescribeAllCallbackRespons
 
 // Summary:
 //
-// 查询应用智能体开关
+// Query the status of the application agent feature.
+//
+// Description:
+//
+// ### QPS limit
+//
+// This API operation supports a maximum of 10 queries per second per user. If you exceed this limit, rate limiting is triggered, which may affect your application. Call this API only as needed.
 //
 // @param request - DescribeAppAgentFunctionStatusRequest
 //
@@ -1771,7 +2185,13 @@ func (client *Client) DescribeAppAgentFunctionStatusWithOptions(request *Describ
 
 // Summary:
 //
-// 查询应用智能体开关
+// Query the status of the application agent feature.
+//
+// Description:
+//
+// ### QPS limit
+//
+// This API operation supports a maximum of 10 queries per second per user. If you exceed this limit, rate limiting is triggered, which may affect your application. Call this API only as needed.
 //
 // @param request - DescribeAppAgentFunctionStatusRequest
 //
@@ -1789,7 +2209,13 @@ func (client *Client) DescribeAppAgentFunctionStatus(request *DescribeAppAgentFu
 
 // Summary:
 //
-// 应用智能体模版列表
+// Lists agent templates.
+//
+// Description:
+//
+// ### Rate limits
+//
+// The rate limit for this API operation is 10 queries per second (QPS) per user. If you exceed the limit, API calls are throttled, which may affect your business. Call this operation at a reasonable frequency.
 //
 // @param request - DescribeAppAgentTemplatesRequest
 //
@@ -1849,7 +2275,13 @@ func (client *Client) DescribeAppAgentTemplatesWithOptions(request *DescribeAppA
 
 // Summary:
 //
-// 应用智能体模版列表
+// Lists agent templates.
+//
+// Description:
+//
+// ### Rate limits
+//
+// The rate limit for this API operation is 10 queries per second (QPS) per user. If you exceed the limit, API calls are throttled, which may affect your business. Call this operation at a reasonable frequency.
 //
 // @param request - DescribeAppAgentTemplatesRequest
 //
@@ -1867,7 +2299,13 @@ func (client *Client) DescribeAppAgentTemplates(request *DescribeAppAgentTemplat
 
 // Summary:
 //
-// 查看app回调开关
+// Queries the callback switch of an application.
+//
+// Description:
+//
+// ### QPS limits
+//
+// The QPS limit for a single user is 10 queries per second. If the limit is exceeded, API calls are throttled, which may affect your services. Call the API operation at a reasonable rate.
 //
 // @param request - DescribeAppCallStatusRequest
 //
@@ -1911,7 +2349,13 @@ func (client *Client) DescribeAppCallStatusWithOptions(request *DescribeAppCallS
 
 // Summary:
 //
-// 查看app回调开关
+// Queries the callback switch of an application.
+//
+// Description:
+//
+// ### QPS limits
+//
+// The QPS limit for a single user is 10 queries per second. If the limit is exceeded, API calls are throttled, which may affect your services. Call the API operation at a reasonable rate.
 //
 // @param request - DescribeAppCallStatusRequest
 //
@@ -1929,7 +2373,13 @@ func (client *Client) DescribeAppCallStatus(request *DescribeAppCallStatusReques
 
 // Summary:
 //
-// 获取app回调密钥
+// # Obtain the application callback key
+//
+// Description:
+//
+// ### Queries per second (QPS) limit
+//
+// The queries per second (QPS) limit for this API is 10 requests per second per user. If the limit is exceeded, API calls will be subject to rate limiting, which may impact your business. Please invoke the API appropriately.
 //
 // @param request - DescribeAppCallbackSecretKeyRequest
 //
@@ -1973,7 +2423,13 @@ func (client *Client) DescribeAppCallbackSecretKeyWithOptions(request *DescribeA
 
 // Summary:
 //
-// 获取app回调密钥
+// # Obtain the application callback key
+//
+// Description:
+//
+// ### Queries per second (QPS) limit
+//
+// The queries per second (QPS) limit for this API is 10 requests per second per user. If the limit is exceeded, API calls will be subject to rate limiting, which may impact your business. Please invoke the API appropriately.
 //
 // @param request - DescribeAppCallbackSecretKeyRequest
 //
@@ -1991,7 +2447,17 @@ func (client *Client) DescribeAppCallbackSecretKey(request *DescribeAppCallbackS
 
 // Summary:
 //
-// 查看AppKey
+// Invoke DescribeAppKey to query the AppKey of a specified application.
+//
+// Description:
+//
+// ### How-To
+//
+// Before invoking this API, you must have already created an application in the RTC console.
+//
+// ### queries per second (QPS) limit
+//
+// The QPS limit for this API is 200 requests per minute per user. If the limit is exceeded, API calls will be subject to Rate Limiting, which may Impact your business. Please invoke the API appropriately.
 //
 // @param request - DescribeAppKeyRequest
 //
@@ -2039,7 +2505,17 @@ func (client *Client) DescribeAppKeyWithOptions(request *DescribeAppKeyRequest, 
 
 // Summary:
 //
-// 查看AppKey
+// Invoke DescribeAppKey to query the AppKey of a specified application.
+//
+// Description:
+//
+// ### How-To
+//
+// Before invoking this API, you must have already created an application in the RTC console.
+//
+// ### queries per second (QPS) limit
+//
+// The QPS limit for this API is 200 requests per minute per user. If the limit is exceeded, API calls will be subject to Rate Limiting, which may Impact your business. Please invoke the API appropriately.
 //
 // @param request - DescribeAppKeyRequest
 //
@@ -2057,7 +2533,13 @@ func (client *Client) DescribeAppKey(request *DescribeAppKeyRequest) (_result *D
 
 // Summary:
 //
-// 查询app自定义布局
+// Query custom application layouts.
+//
+// Description:
+//
+// ### QPS limit
+//
+// This API supports up to 10 queries per second (QPS) per user. Exceeding this limit triggers rate limiting, which may affect your business operations. Use the API judiciously.
 //
 // @param tmpReq - DescribeAppLayoutsRequest
 //
@@ -2103,7 +2585,13 @@ func (client *Client) DescribeAppLayoutsWithOptions(tmpReq *DescribeAppLayoutsRe
 
 // Summary:
 //
-// 查询app自定义布局
+// Query custom application layouts.
+//
+// Description:
+//
+// ### QPS limit
+//
+// This API supports up to 10 queries per second (QPS) per user. Exceeding this limit triggers rate limiting, which may affect your business operations. Use the API judiciously.
 //
 // @param request - DescribeAppLayoutsRequest
 //
@@ -2121,7 +2609,13 @@ func (client *Client) DescribeAppLayouts(request *DescribeAppLayoutsRequest) (_r
 
 // Summary:
 //
-// 查看应用旁路开关
+// View the application bypass switch.
+//
+// Description:
+//
+// ### QPS limit
+//
+// The queries per second (QPS) limit for this API is 10 for each user. API calls that exceed this limit are subject to rate limiting, which may impact your business. We recommend that you call this API at a reasonable rate.
 //
 // @param request - DescribeAppLiveStreamStatusRequest
 //
@@ -2161,7 +2655,13 @@ func (client *Client) DescribeAppLiveStreamStatusWithOptions(request *DescribeAp
 
 // Summary:
 //
-// 查看应用旁路开关
+// View the application bypass switch.
+//
+// Description:
+//
+// ### QPS limit
+//
+// The queries per second (QPS) limit for this API is 10 for each user. API calls that exceed this limit are subject to rate limiting, which may impact your business. We recommend that you call this API at a reasonable rate.
 //
 // @param request - DescribeAppLiveStreamStatusRequest
 //
@@ -2179,7 +2679,13 @@ func (client *Client) DescribeAppLiveStreamStatus(request *DescribeAppLiveStream
 
 // Summary:
 //
-// 查询应用录制开关
+// Queries the recording status of an application.
+//
+// Description:
+//
+// ### QPS limit
+//
+// The QPS limit for this operation is 10 calls per second per user. Exceeding this limit triggers rate limiting, which may affect your business. Call this operation only as needed.
 //
 // @param request - DescribeAppRecordStatusRequest
 //
@@ -2219,7 +2725,13 @@ func (client *Client) DescribeAppRecordStatusWithOptions(request *DescribeAppRec
 
 // Summary:
 //
-// 查询应用录制开关
+// Queries the recording status of an application.
+//
+// Description:
+//
+// ### QPS limit
+//
+// The QPS limit for this operation is 10 calls per second per user. Exceeding this limit triggers rate limiting, which may affect your business. Call this operation only as needed.
 //
 // @param request - DescribeAppRecordStatusRequest
 //
@@ -2237,7 +2749,13 @@ func (client *Client) DescribeAppRecordStatus(request *DescribeAppRecordStatusRe
 
 // Summary:
 //
-// 应用录制模版列表
+// Queries the list of application recording templates.
+//
+// Description:
+//
+// ### QPS limit
+//
+// The QPS limit for a single user calling this API operation is 10 queries per second. If the limit is exceeded, API calls are throttled, which may affect your business. Call this API operation at a reasonable frequency.
 //
 // @param tmpReq - DescribeAppRecordTemplatesRequest
 //
@@ -2283,7 +2801,13 @@ func (client *Client) DescribeAppRecordTemplatesWithOptions(tmpReq *DescribeAppR
 
 // Summary:
 //
-// 应用录制模版列表
+// Queries the list of application recording templates.
+//
+// Description:
+//
+// ### QPS limit
+//
+// The QPS limit for a single user calling this API operation is 10 queries per second. If the limit is exceeded, API calls are throttled, which may affect your business. Call this API operation at a reasonable frequency.
 //
 // @param request - DescribeAppRecordTemplatesRequest
 //
@@ -2301,7 +2825,13 @@ func (client *Client) DescribeAppRecordTemplates(request *DescribeAppRecordTempl
 
 // Summary:
 //
-// 查询录制列表
+// Lists recording files.
+//
+// Description:
+//
+// ### QPS limit
+//
+// The QPS limit for this API is 10 requests per second per user. Exceeding this limit triggers rate limiting, which may affect your service. Call this API only when necessary.
 //
 // @param tmpReq - DescribeAppRecordingFilesRequest
 //
@@ -2347,7 +2877,13 @@ func (client *Client) DescribeAppRecordingFilesWithOptions(tmpReq *DescribeAppRe
 
 // Summary:
 //
-// 查询录制列表
+// Lists recording files.
+//
+// Description:
+//
+// ### QPS limit
+//
+// The QPS limit for this API is 10 requests per second per user. Exceeding this limit triggers rate limiting, which may affect your service. Call this API only when necessary.
 //
 // @param request - DescribeAppRecordingFilesRequest
 //
@@ -2365,7 +2901,17 @@ func (client *Client) DescribeAppRecordingFiles(request *DescribeAppRecordingFil
 
 // Summary:
 //
-// 应用推流模版列表
+// Query the list of stream ingest templates under an RTC 3.0 application.
+//
+// Description:
+//
+// ### How-To
+//
+// This API is used to view the list of stream ingest templates for an RTC 3.0 application.
+//
+// ### Queries per second (QPS) limit
+//
+// The QPS limit for this API is 10 queries per second per user. If this limit is exceeded, API calls will be rate-limited, which may impact your business. Please invoke the API appropriately.
 //
 // @param tmpReq - DescribeAppStreamingOutTemplatesRequest
 //
@@ -2427,7 +2973,17 @@ func (client *Client) DescribeAppStreamingOutTemplatesWithOptions(tmpReq *Descri
 
 // Summary:
 //
-// 应用推流模版列表
+// Query the list of stream ingest templates under an RTC 3.0 application.
+//
+// Description:
+//
+// ### How-To
+//
+// This API is used to view the list of stream ingest templates for an RTC 3.0 application.
+//
+// ### Queries per second (QPS) limit
+//
+// The QPS limit for this API is 10 queries per second per user. If this limit is exceeded, API calls will be rate-limited, which may impact your business. Please invoke the API appropriately.
 //
 // @param request - DescribeAppStreamingOutTemplatesRequest
 //
@@ -2445,7 +3001,13 @@ func (client *Client) DescribeAppStreamingOutTemplates(request *DescribeAppStrea
 
 // Summary:
 //
-// 查看合流开关
+// # View the stream merging switch
+//
+// Description:
+//
+// ### QPS limits
+//
+// This API has a QPS limit of 10 queries per second (QPS) per user. If you exceed this limit, rate limiting is triggered, which can affect your business operations. Call the API at a reasonable rate.
 //
 // @param request - DescribeAppViewStatusRequest
 //
@@ -2489,7 +3051,13 @@ func (client *Client) DescribeAppViewStatusWithOptions(request *DescribeAppViewS
 
 // Summary:
 //
-// 查看合流开关
+// # View the stream merging switch
+//
+// Description:
+//
+// ### QPS limits
+//
+// This API has a QPS limit of 10 queries per second (QPS) per user. If you exceed this limit, rate limiting is triggered, which can affect your business operations. Call the API at a reasonable rate.
 //
 // @param request - DescribeAppViewStatusRequest
 //
@@ -2507,7 +3075,13 @@ func (client *Client) DescribeAppViewStatus(request *DescribeAppViewStatusReques
 
 // Summary:
 //
-// 应用合流模版列表
+// Lists application compositing templates.
+//
+// Description:
+//
+// ### QPS limit
+//
+// The per-user QPS limit for this operation is 10 calls per second. Exceeding this limit triggers rate limiting, which may affect your business. You should call this operation only as needed.
 //
 // @param tmpReq - DescribeAppViewTemplatesRequest
 //
@@ -2569,7 +3143,13 @@ func (client *Client) DescribeAppViewTemplatesWithOptions(tmpReq *DescribeAppVie
 
 // Summary:
 //
-// 应用合流模版列表
+// Lists application compositing templates.
+//
+// Description:
+//
+// ### QPS limit
+//
+// The per-user QPS limit for this operation is 10 calls per second. Exceeding this limit triggers rate limiting, which may affect your business. You should call this operation only as needed.
 //
 // @param request - DescribeAppViewTemplatesRequest
 //
@@ -2587,7 +3167,17 @@ func (client *Client) DescribeAppViewTemplates(request *DescribeAppViewTemplates
 
 // Summary:
 //
-// # App列表
+// Queries the list of applications.
+//
+// Description:
+//
+// ### Usage notes
+//
+// This operation queries the list of applications. For example, you can obtain data such as the application ID, application name, and application type from the query results.
+//
+// ### QPS limits
+//
+// The QPS limit for a single user is 200 calls per minute. If this limit is exceeded, API calls are throttled, which may affect your services. Call this operation at a reasonable rate.
 //
 // @param request - DescribeAppsRequest
 //
@@ -2655,7 +3245,17 @@ func (client *Client) DescribeAppsWithOptions(request *DescribeAppsRequest, runt
 
 // Summary:
 //
-// # App列表
+// Queries the list of applications.
+//
+// Description:
+//
+// ### Usage notes
+//
+// This operation queries the list of applications. For example, you can obtain data such as the application ID, application name, and application type from the query results.
+//
+// ### QPS limits
+//
+// The QPS limit for a single user is 200 calls per minute. If this limit is exceeded, API calls are throttled, which may affect your services. Call this operation at a reasonable rate.
 //
 // @param request - DescribeAppsRequest
 //
@@ -2671,6 +3271,20 @@ func (client *Client) DescribeApps(request *DescribeAppsRequest) (_result *Descr
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the automatic bypass single-stream relay rules.
+//
+// Description:
+//
+// # Usage notes
+//
+// Before you call this operation, you must call [CreateAutoLiveStreamRule](https://help.aliyun.com/document_detail/353179.html) to create a bypass rule.
+//
+// # QPS limit
+//
+// The QPS limit for a single user is 1,000 calls per minute. If the limit is exceeded, API calls are throttled, which may affect your business. Make API calls at a reasonable frequency. For more information, see [QPS limits](https://help.aliyun.com/document_detail/341645.html).
+//
 // @param request - DescribeAutoLiveStreamRuleRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -2715,6 +3329,20 @@ func (client *Client) DescribeAutoLiveStreamRuleWithOptions(request *DescribeAut
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the automatic bypass single-stream relay rules.
+//
+// Description:
+//
+// # Usage notes
+//
+// Before you call this operation, you must call [CreateAutoLiveStreamRule](https://help.aliyun.com/document_detail/353179.html) to create a bypass rule.
+//
+// # QPS limit
+//
+// The QPS limit for a single user is 1,000 calls per minute. If the limit is exceeded, API calls are throttled, which may affect your business. Make API calls at a reasonable frequency. For more information, see [QPS limits](https://help.aliyun.com/document_detail/341645.html).
+//
 // @param request - DescribeAutoLiveStreamRuleRequest
 //
 // @return DescribeAutoLiveStreamRuleResponse
@@ -2731,7 +3359,17 @@ func (client *Client) DescribeAutoLiveStreamRule(request *DescribeAutoLiveStream
 
 // Summary:
 //
-// 调用DescribeCall获取单次通信详情。
+// Queries the details of a single communication session. For example, you can query the communication status and user details.
+//
+// Description:
+//
+// ### Usage notes
+//
+// This operation queries the details of a single communication session. For example, you can query the communication status and user details.
+//
+// ### QPS limit
+//
+// The QPS limit per user for this operation is 10 queries per second. If the limit is exceeded, API calls are throttled, which may affect your business. Make API calls at a reasonable frequency.
 //
 // @param request - DescribeCallRequest
 //
@@ -2795,7 +3433,17 @@ func (client *Client) DescribeCallWithOptions(request *DescribeCallRequest, runt
 
 // Summary:
 //
-// 调用DescribeCall获取单次通信详情。
+// Queries the details of a single communication session. For example, you can query the communication status and user details.
+//
+// Description:
+//
+// ### Usage notes
+//
+// This operation queries the details of a single communication session. For example, you can query the communication status and user details.
+//
+// ### QPS limit
+//
+// The QPS limit per user for this operation is 10 queries per second. If the limit is exceeded, API calls are throttled, which may affect your business. Make API calls at a reasonable frequency.
 //
 // @param request - DescribeCallRequest
 //
@@ -2813,7 +3461,17 @@ func (client *Client) DescribeCall(request *DescribeCallRequest) (_result *Descr
 
 // Summary:
 //
-// 调用DescribeCallList分页查询时间范围内创建的通信信息。
+// Invoke DescribeCallList to perform a paged query of communication records created within a specified time range.
+//
+// Description:
+//
+// ### How-To
+//
+// This API is used to query communication records created within a specified time range. For example, you can query information such as call duration, status, and user count.
+//
+// ### Rate Limiting
+//
+// The queries per second (QPS) limit for this API is 10 calls per second per user. If this limit is exceeded, API calls will be rate-limited, which may impact your business. Please invoke the API appropriately.
 //
 // @param request - DescribeCallListRequest
 //
@@ -2893,7 +3551,17 @@ func (client *Client) DescribeCallListWithOptions(request *DescribeCallListReque
 
 // Summary:
 //
-// 调用DescribeCallList分页查询时间范围内创建的通信信息。
+// Invoke DescribeCallList to perform a paged query of communication records created within a specified time range.
+//
+// Description:
+//
+// ### How-To
+//
+// This API is used to query communication records created within a specified time range. For example, you can query information such as call duration, status, and user count.
+//
+// ### Rate Limiting
+//
+// The queries per second (QPS) limit for this API is 10 calls per second per user. If this limit is exceeded, API calls will be rate-limited, which may impact your business. Please invoke the API appropriately.
 //
 // @param request - DescribeCallListRequest
 //
@@ -2911,7 +3579,13 @@ func (client *Client) DescribeCallList(request *DescribeCallListRequest) (_resul
 
 // Summary:
 //
-// app事件回调列表
+// Lists the event callbacks configured for an application.
+//
+// Description:
+//
+// ### QPS limit
+//
+// This API supports up to 10 queries per second (QPS) per user. If you exceed this limit, the system applies rate limiting to your API calls, which may affect your business operations. Plan your API calls accordingly.
 //
 // @param request - DescribeCallbacksRequest
 //
@@ -2955,7 +3629,13 @@ func (client *Client) DescribeCallbacksWithOptions(request *DescribeCallbacksReq
 
 // Summary:
 //
-// app事件回调列表
+// Lists the event callbacks configured for an application.
+//
+// Description:
+//
+// ### QPS limit
+//
+// This API supports up to 10 queries per second (QPS) per user. If you exceed this limit, the system applies rate limiting to your API calls, which may affect your business operations. Plan your API calls accordingly.
 //
 // @param request - DescribeCallbacksRequest
 //
@@ -2974,6 +3654,16 @@ func (client *Client) DescribeCallbacks(request *DescribeCallbacksRequest) (_res
 // Summary:
 //
 // # DescribeChannel
+//
+// Description:
+//
+// ### How-To
+//
+// This API is used to query online channel information.
+//
+// ### queries per second (QPS) Limit
+//
+// The QPS limit for this API is 10 queries per second per user. If the limit is exceeded, Rate Limiting will be applied to your API Call, which may Impact your business. Please invoke the API reasonably.
 //
 // @param request - DescribeChannelRequest
 //
@@ -3023,6 +3713,16 @@ func (client *Client) DescribeChannelWithOptions(request *DescribeChannelRequest
 //
 // # DescribeChannel
 //
+// Description:
+//
+// ### How-To
+//
+// This API is used to query online channel information.
+//
+// ### queries per second (QPS) Limit
+//
+// The QPS limit for this API is 10 queries per second per user. If the limit is exceeded, Rate Limiting will be applied to your API Call, which may Impact your business. Please invoke the API reasonably.
+//
 // @param request - DescribeChannelRequest
 //
 // @return DescribeChannelResponse
@@ -3039,7 +3739,17 @@ func (client *Client) DescribeChannel(request *DescribeChannelRequest) (_result 
 
 // Summary:
 //
-// 查询频道的所有参会者
+// This API is used to query the user list in a channel.
+//
+// Description:
+//
+// ### How-To
+//
+// This API is used to query the list of users in an online channel.
+//
+// ### QPS Limit
+//
+// The queries per second (QPS) limit for this API is 10 requests per second per user. If the limit is exceeded, API calls will be subject to rate limiting, which may impact your business. Invoke this API appropriately.
 //
 // @param request - DescribeChannelAllUsersRequest
 //
@@ -3087,7 +3797,17 @@ func (client *Client) DescribeChannelAllUsersWithOptions(request *DescribeChanne
 
 // Summary:
 //
-// 查询频道的所有参会者
+// This API is used to query the user list in a channel.
+//
+// Description:
+//
+// ### How-To
+//
+// This API is used to query the list of users in an online channel.
+//
+// ### QPS Limit
+//
+// The queries per second (QPS) limit for this API is 10 requests per second per user. If the limit is exceeded, API calls will be subject to rate limiting, which may impact your business. Invoke this API appropriately.
 //
 // @param request - DescribeChannelAllUsersRequest
 //
@@ -3105,7 +3825,17 @@ func (client *Client) DescribeChannelAllUsers(request *DescribeChannelAllUsersRe
 
 // Summary:
 //
-// 调用DescribeChannelAreaDistributionStatData获取频道地区分布统计数据。
+// Retrieves the regional distribution statistics of a channel.
+//
+// Description:
+//
+// ### Usage notes
+//
+// This operation retrieves the regional distribution statistics of a channel.
+//
+// ### QPS limit
+//
+// The queries per second (QPS) limit per user is 10. If the limit is exceeded, API calls are throttled, which may affect your services. Plan your API calls accordingly.
 //
 // @param request - DescribeChannelAreaDistributionStatDataRequest
 //
@@ -3165,7 +3895,17 @@ func (client *Client) DescribeChannelAreaDistributionStatDataWithOptions(request
 
 // Summary:
 //
-// 调用DescribeChannelAreaDistributionStatData获取频道地区分布统计数据。
+// Retrieves the regional distribution statistics of a channel.
+//
+// Description:
+//
+// ### Usage notes
+//
+// This operation retrieves the regional distribution statistics of a channel.
+//
+// ### QPS limit
+//
+// The queries per second (QPS) limit per user is 10. If the limit is exceeded, API calls are throttled, which may affect your services. Plan your API calls accordingly.
 //
 // @param request - DescribeChannelAreaDistributionStatDataRequest
 //
@@ -3183,7 +3923,17 @@ func (client *Client) DescribeChannelAreaDistributionStatData(request *DescribeC
 
 // Summary:
 //
-// 调用DescribeChannelDistributionStatData获取频道分布统计数据。
+// Queries the channel distribution statistics.
+//
+// Description:
+//
+// ### Usage notes
+//
+// This operation queries the channel distribution statistics. You can query the statistics by dimension, such as operating system type or SDK version.
+//
+// ### QPS limit
+//
+// The queries per second (QPS) limit for a single user is 10. If the limit is exceeded, API calls are throttled, which may affect your services. Call this operation at a reasonable frequency.
 //
 // @param request - DescribeChannelDistributionStatDataRequest
 //
@@ -3243,7 +3993,17 @@ func (client *Client) DescribeChannelDistributionStatDataWithOptions(request *De
 
 // Summary:
 //
-// 调用DescribeChannelDistributionStatData获取频道分布统计数据。
+// Queries the channel distribution statistics.
+//
+// Description:
+//
+// ### Usage notes
+//
+// This operation queries the channel distribution statistics. You can query the statistics by dimension, such as operating system type or SDK version.
+//
+// ### QPS limit
+//
+// The queries per second (QPS) limit for a single user is 10. If the limit is exceeded, API calls are throttled, which may affect your services. Call this operation at a reasonable frequency.
 //
 // @param request - DescribeChannelDistributionStatDataRequest
 //
@@ -3261,7 +4021,17 @@ func (client *Client) DescribeChannelDistributionStatData(request *DescribeChann
 
 // Summary:
 //
-// 调用DescribeChannelOverallData查询频道概览数据。
+// This API is used to query channel overview data.
+//
+// Description:
+//
+// ### How-To
+//
+// This API is used to query channel overview data. For example, you can query basic communication information, Trend Indicators, and other information.
+//
+// ### queries per second (QPS) Limit
+//
+// The QPS limit for this API is 10 queries per second per User. If the limit is exceeded, Rate Limiting will be applied to API Calls, which may Impact your business. Invoke the API appropriately.
 //
 // @param request - DescribeChannelOverallDataRequest
 //
@@ -3317,7 +4087,17 @@ func (client *Client) DescribeChannelOverallDataWithOptions(request *DescribeCha
 
 // Summary:
 //
-// 调用DescribeChannelOverallData查询频道概览数据。
+// This API is used to query channel overview data.
+//
+// Description:
+//
+// ### How-To
+//
+// This API is used to query channel overview data. For example, you can query basic communication information, Trend Indicators, and other information.
+//
+// ### queries per second (QPS) Limit
+//
+// The QPS limit for this API is 10 queries per second per User. If the limit is exceeded, Rate Limiting will be applied to API Calls, which may Impact your business. Invoke the API appropriately.
 //
 // @param request - DescribeChannelOverallDataRequest
 //
@@ -3333,6 +4113,20 @@ func (client *Client) DescribeChannelOverallData(request *DescribeChannelOverall
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the list of online users in a channel without detailed information.
+//
+// Description:
+//
+// # Usage notes
+//
+// This operation queries the list of online users in a channel, excluding detailed user information.
+//
+// # QPS limit
+//
+// The QPS limit for a single user is 1,000 calls per minute. If the limit is exceeded, API calls are throttled, which may affect your business. Make API calls appropriately. For more information, see [QPS limits](https://help.aliyun.com/document_detail/341645.html).
+//
 // @param request - DescribeChannelParticipantsRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -3393,6 +4187,20 @@ func (client *Client) DescribeChannelParticipantsWithOptions(request *DescribeCh
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the list of online users in a channel without detailed information.
+//
+// Description:
+//
+// # Usage notes
+//
+// This operation queries the list of online users in a channel, excluding detailed user information.
+//
+// # QPS limit
+//
+// The QPS limit for a single user is 1,000 calls per minute. If the limit is exceeded, API calls are throttled, which may affect your business. Make API calls appropriately. For more information, see [QPS limits](https://help.aliyun.com/document_detail/341645.html).
+//
 // @param request - DescribeChannelParticipantsRequest
 //
 // @return DescribeChannelParticipantsResponse
@@ -3409,7 +4217,17 @@ func (client *Client) DescribeChannelParticipants(request *DescribeChannelPartic
 
 // Summary:
 //
-// 调用DescribeChannelTopPubUserList获取频道内发布端的用户列表（按用户在线时长降序）。
+// Retrieves the list of publishing users in a channel in descending order of online duration.
+//
+// Description:
+//
+// ### Usage notes
+//
+// This operation retrieves the list of publishing users in a channel in descending order of online duration. For example, you can query information such as the time when a user joined the call and the communication duration from the user list.
+//
+// ### QPS limit
+//
+// The queries per second (QPS) limit for a single user is 10. If the limit is exceeded, API calls are throttled, which may affect your services. Call this operation at a reasonable frequency.
 //
 // @param request - DescribeChannelTopPubUserListRequest
 //
@@ -3465,7 +4283,17 @@ func (client *Client) DescribeChannelTopPubUserListWithOptions(request *Describe
 
 // Summary:
 //
-// 调用DescribeChannelTopPubUserList获取频道内发布端的用户列表（按用户在线时长降序）。
+// Retrieves the list of publishing users in a channel in descending order of online duration.
+//
+// Description:
+//
+// ### Usage notes
+//
+// This operation retrieves the list of publishing users in a channel in descending order of online duration. For example, you can query information such as the time when a user joined the call and the communication duration from the user list.
+//
+// ### QPS limit
+//
+// The queries per second (QPS) limit for a single user is 10. If the limit is exceeded, API calls are throttled, which may affect your services. Call this operation at a reasonable frequency.
 //
 // @param request - DescribeChannelTopPubUserListRequest
 //
@@ -3483,7 +4311,17 @@ func (client *Client) DescribeChannelTopPubUserList(request *DescribeChannelTopP
 
 // Summary:
 //
-// # DescribeChannelUser
+// Queries the information of a user in a channel.
+//
+// Description:
+//
+// ### Usage notes
+//
+// This operation queries the information of a user in an online channel.
+//
+// ### QPS limit
+//
+// The queries per second (QPS) limit per user is 10. If the limit is exceeded, API calls are throttled, which may affect your services. Call the operation at a reasonable rate.
 //
 // @param request - DescribeChannelUserRequest
 //
@@ -3535,7 +4373,17 @@ func (client *Client) DescribeChannelUserWithOptions(request *DescribeChannelUse
 
 // Summary:
 //
-// # DescribeChannelUser
+// Queries the information of a user in a channel.
+//
+// Description:
+//
+// ### Usage notes
+//
+// This operation queries the information of a user in an online channel.
+//
+// ### QPS limit
+//
+// The queries per second (QPS) limit per user is 10. If the limit is exceeded, API calls are throttled, which may affect your services. Call the operation at a reasonable rate.
 //
 // @param request - DescribeChannelUserRequest
 //
@@ -3553,7 +4401,17 @@ func (client *Client) DescribeChannelUser(request *DescribeChannelUserRequest) (
 
 // Summary:
 //
-// 调用DescribeChannelUserMetrics查询频道总览中的用户数据。
+// Queries the user data in the channel overview.
+//
+// Description:
+//
+// ### Usage notes
+//
+// This operation queries the user data in the channel overview. For example, you can query metric data details and overview data.
+//
+// ### QPS limit
+//
+// The QPS limit for a single user is 10 calls per second. If the limit is exceeded, API calls are throttled, which may affect your business. Make API calls at a reasonable frequency.
 //
 // @param request - DescribeChannelUserMetricsRequest
 //
@@ -3609,7 +4467,17 @@ func (client *Client) DescribeChannelUserMetricsWithOptions(request *DescribeCha
 
 // Summary:
 //
-// 调用DescribeChannelUserMetrics查询频道总览中的用户数据。
+// Queries the user data in the channel overview.
+//
+// Description:
+//
+// ### Usage notes
+//
+// This operation queries the user data in the channel overview. For example, you can query metric data details and overview data.
+//
+// ### QPS limit
+//
+// The QPS limit for a single user is 10 calls per second. If the limit is exceeded, API calls are throttled, which may affect your business. Make API calls at a reasonable frequency.
 //
 // @param request - DescribeChannelUserMetricsRequest
 //
@@ -3625,6 +4493,20 @@ func (client *Client) DescribeChannelUserMetrics(request *DescribeChannelUserMet
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the list of real-time online users in a channel.
+//
+// Description:
+//
+// # Usage notes
+//
+// This operation queries the details of online users in a channel. For example, you can query the total number of users in communication mode and live streaming mode.
+//
+// # QPS limit
+//
+// The queries per second (QPS) limit for a single user is 100 calls per second. If the limit is exceeded, API calls are throttled, which may affect your services. Call the operation at a reasonable frequency. For more information, see [QPS limits](https://help.aliyun.com/document_detail/341645.html).
+//
 // @param request - DescribeChannelUsersRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -3673,6 +4555,20 @@ func (client *Client) DescribeChannelUsersWithOptions(request *DescribeChannelUs
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the list of real-time online users in a channel.
+//
+// Description:
+//
+// # Usage notes
+//
+// This operation queries the details of online users in a channel. For example, you can query the total number of users in communication mode and live streaming mode.
+//
+// # QPS limit
+//
+// The queries per second (QPS) limit for a single user is 100 calls per second. If the limit is exceeded, API calls are throttled, which may affect your services. Call the operation at a reasonable frequency. For more information, see [QPS limits](https://help.aliyun.com/document_detail/341645.html).
+//
 // @param request - DescribeChannelUsersRequest
 //
 // @return DescribeChannelUsersResponse
@@ -3689,7 +4585,17 @@ func (client *Client) DescribeChannelUsers(request *DescribeChannelUsersRequest)
 
 // Summary:
 //
-// 查询在线频道列表
+// Queries all active channels under a single AppId.
+//
+// Description:
+//
+// ### Usage notes
+//
+// This operation queries all active channels under a single AppId.
+//
+// ### QPS limit
+//
+// The QPS limit for a single user is 10 queries per second. If the limit is exceeded, API calls are throttled, which may affect your services. Make API calls at a reasonable rate.
 //
 // @param request - DescribeChannelsRequest
 //
@@ -3729,7 +4635,17 @@ func (client *Client) DescribeChannelsWithOptions(request *DescribeChannelsReque
 
 // Summary:
 //
-// 查询在线频道列表
+// Queries all active channels under a single AppId.
+//
+// Description:
+//
+// ### Usage notes
+//
+// This operation queries all active channels under a single AppId.
+//
+// ### QPS limit
+//
+// The QPS limit for a single user is 10 queries per second. If the limit is exceeded, API calls are throttled, which may affect your services. Make API calls at a reasonable rate.
 //
 // @param request - DescribeChannelsRequest
 //
@@ -3747,7 +4663,7 @@ func (client *Client) DescribeChannels(request *DescribeChannelsRequest) (_resul
 
 // Summary:
 //
-// 纪要热词列表
+// Queries the hotword lists for meeting minutes.
 //
 // @param tmpReq - DescribeCloudNotePhrasesRequest
 //
@@ -3809,7 +4725,7 @@ func (client *Client) DescribeCloudNotePhrasesWithOptions(tmpReq *DescribeCloudN
 
 // Summary:
 //
-// 纪要热词列表
+// Queries the hotword lists for meeting minutes.
 //
 // @param request - DescribeCloudNotePhrasesRequest
 //
@@ -3827,7 +4743,17 @@ func (client *Client) DescribeCloudNotePhrases(request *DescribeCloudNotePhrases
 
 // Summary:
 //
-// 纪要列表
+// # Meeting Summary List
+//
+// Description:
+//
+// ### How-To
+//
+// This API is used to query the list of meeting summary job files that have generated summary results.
+//
+// ### Queries Per Second (QPS) Limit
+//
+// The QPS limit for this API is 10 queries per second (QPS) per user. If this limit is exceeded, API calls will be subject to Rate Limiting, which may Impact your business. Please invoke the API appropriately.
 //
 // @param tmpReq - DescribeCloudNotesRequest
 //
@@ -3873,7 +4799,17 @@ func (client *Client) DescribeCloudNotesWithOptions(tmpReq *DescribeCloudNotesRe
 
 // Summary:
 //
-// 纪要列表
+// # Meeting Summary List
+//
+// Description:
+//
+// ### How-To
+//
+// This API is used to query the list of meeting summary job files that have generated summary results.
+//
+// ### Queries Per Second (QPS) Limit
+//
+// The QPS limit for this API is 10 queries per second (QPS) per user. If this limit is exceeded, API calls will be subject to Rate Limiting, which may Impact your business. Please invoke the API appropriately.
 //
 // @param request - DescribeCloudNotesRequest
 //
@@ -3891,7 +4827,13 @@ func (client *Client) DescribeCloudNotes(request *DescribeCloudNotesRequest) (_r
 
 // Summary:
 //
-// 查询录制任务状态
+// Queries the status of a recording task.
+//
+// Description:
+//
+// ### QPS limit
+//
+// The queries per second (QPS) limit per user for this API operation is 10. If the limit is exceeded, API calls are throttled, which may affect your services. Call this operation at a reasonable frequency.
 //
 // @param request - DescribeCloudRecordStatusRequest
 //
@@ -3943,7 +4885,13 @@ func (client *Client) DescribeCloudRecordStatusWithOptions(request *DescribeClou
 
 // Summary:
 //
-// 查询录制任务状态
+// Queries the status of a recording task.
+//
+// Description:
+//
+// ### QPS limit
+//
+// The queries per second (QPS) limit per user for this API operation is 10. If the limit is exceeded, API calls are throttled, which may affect your services. Call this operation at a reasonable frequency.
 //
 // @param request - DescribeCloudRecordStatusRequest
 //
@@ -3961,7 +4909,17 @@ func (client *Client) DescribeCloudRecordStatus(request *DescribeCloudRecordStat
 
 // Summary:
 //
-// 调用DescribeEndPointEventList获取端对端用户事件列表。
+// Retrieves a list of end-to-end user events.
+//
+// Description:
+//
+// ### Usage notes
+//
+// This operation retrieves a list of end-to-end user events. For example, you can obtain information such as the event name and event type from the event list.
+//
+// ### QPS limits
+//
+// The QPS limit per user is 10. If the limit is exceeded, API calls are throttled, which may affect your services. Call this operation at a reasonable rate.
 //
 // @param request - DescribeEndPointEventListRequest
 //
@@ -4021,7 +4979,17 @@ func (client *Client) DescribeEndPointEventListWithOptions(request *DescribeEndP
 
 // Summary:
 //
-// 调用DescribeEndPointEventList获取端对端用户事件列表。
+// Retrieves a list of end-to-end user events.
+//
+// Description:
+//
+// ### Usage notes
+//
+// This operation retrieves a list of end-to-end user events. For example, you can obtain information such as the event name and event type from the event list.
+//
+// ### QPS limits
+//
+// The QPS limit per user is 10. If the limit is exceeded, API calls are throttled, which may affect your services. Call this operation at a reasonable rate.
 //
 // @param request - DescribeEndPointEventListRequest
 //
@@ -4039,7 +5007,17 @@ func (client *Client) DescribeEndPointEventList(request *DescribeEndPointEventLi
 
 // Summary:
 //
-// 调用DescribeEndPointMetricData获取端对端指标数据。
+// Retrieves end-to-end metric data.
+//
+// Description:
+//
+// ### Usage notes
+//
+// This operation retrieves end-to-end metric data. For example, you can retrieve metric information for subscribers and publishers.
+//
+// ### QPS limit
+//
+// The queries per second (QPS) limit for a single user is 10. If the number of calls per second exceeds the limit, throttling is triggered, which may affect your business. Make API calls at a reasonable frequency.
 //
 // @param request - DescribeEndPointMetricDataRequest
 //
@@ -4111,7 +5089,17 @@ func (client *Client) DescribeEndPointMetricDataWithOptions(request *DescribeEnd
 
 // Summary:
 //
-// 调用DescribeEndPointMetricData获取端对端指标数据。
+// Retrieves end-to-end metric data.
+//
+// Description:
+//
+// ### Usage notes
+//
+// This operation retrieves end-to-end metric data. For example, you can retrieve metric information for subscribers and publishers.
+//
+// ### QPS limit
+//
+// The queries per second (QPS) limit for a single user is 10. If the number of calls per second exceeds the limit, throttling is triggered, which may affect your business. Make API calls at a reasonable frequency.
 //
 // @param request - DescribeEndPointMetricDataRequest
 //
@@ -4129,7 +5117,17 @@ func (client *Client) DescribeEndPointMetricData(request *DescribeEndPointMetric
 
 // Summary:
 //
-// 获取异常诊断影响因素分布
+// Invoke the DescribeFaultDiagnosisFactorDistributionStat API to obtain the distribution of factors impacting abnormal diagnosis.
+//
+// Description:
+//
+// ### How-To
+//
+// This API is used to retrieve the distribution of factors impacting abnormal diagnosis. When using this API, you can query data from the last 48 hours, with each query covering a time range of no more than 24 hours.
+//
+// ### QPS Limit
+//
+// The queries per second (QPS) limit for this API is 10 per user. If this limit is exceeded, API calls will be subject to rate limiting, which may impact your service. Please call the API responsibly.
 //
 // @param request - DescribeFaultDiagnosisFactorDistributionStatRequest
 //
@@ -4181,7 +5179,17 @@ func (client *Client) DescribeFaultDiagnosisFactorDistributionStatWithOptions(re
 
 // Summary:
 //
-// 获取异常诊断影响因素分布
+// Invoke the DescribeFaultDiagnosisFactorDistributionStat API to obtain the distribution of factors impacting abnormal diagnosis.
+//
+// Description:
+//
+// ### How-To
+//
+// This API is used to retrieve the distribution of factors impacting abnormal diagnosis. When using this API, you can query data from the last 48 hours, with each query covering a time range of no more than 24 hours.
+//
+// ### QPS Limit
+//
+// The queries per second (QPS) limit for this API is 10 per user. If this limit is exceeded, API calls will be subject to rate limiting, which may impact your service. Please call the API responsibly.
 //
 // @param request - DescribeFaultDiagnosisFactorDistributionStatRequest
 //
@@ -4199,7 +5207,17 @@ func (client *Client) DescribeFaultDiagnosisFactorDistributionStat(request *Desc
 
 // Summary:
 //
-// 获取异常诊断总览数据
+// Retrieves the overview data of exception diagnostics.
+//
+// Description:
+//
+// ### Usage notes
+//
+// This operation retrieves the overview data of exception diagnostics. When you call this operation, you can query data from the last 48 hours, and the query time range cannot exceed 24 hours.
+//
+// ### QPS limits
+//
+// The queries per second (QPS) limit on this operation is 10 per user. If the limit is exceeded, API calls are throttled, which may affect your services. Call this operation as needed.
 //
 // @param request - DescribeFaultDiagnosisOverallDataRequest
 //
@@ -4255,7 +5273,17 @@ func (client *Client) DescribeFaultDiagnosisOverallDataWithOptions(request *Desc
 
 // Summary:
 //
-// 获取异常诊断总览数据
+// Retrieves the overview data of exception diagnostics.
+//
+// Description:
+//
+// ### Usage notes
+//
+// This operation retrieves the overview data of exception diagnostics. When you call this operation, you can query data from the last 48 hours, and the query time range cannot exceed 24 hours.
+//
+// ### QPS limits
+//
+// The queries per second (QPS) limit on this operation is 10 per user. If the limit is exceeded, API calls are throttled, which may affect your services. Call this operation as needed.
 //
 // @param request - DescribeFaultDiagnosisOverallDataRequest
 //
@@ -4273,7 +5301,11 @@ func (client *Client) DescribeFaultDiagnosisOverallData(request *DescribeFaultDi
 
 // Summary:
 //
-// 获取异常诊断用户详情
+// [responses_200_schema_properties_UserDetail_properties_Duration_type]integer
+//
+// Description:
+//
+// [responses_200_schema_properties_UserDetail_properties_CreatedTs_description]Call creation time, represented as a UNIX timestamp in seconds.
 //
 // @param request - DescribeFaultDiagnosisUserDetailRequest
 //
@@ -4337,7 +5369,11 @@ func (client *Client) DescribeFaultDiagnosisUserDetailWithOptions(request *Descr
 
 // Summary:
 //
-// 获取异常诊断用户详情
+// [responses_200_schema_properties_UserDetail_properties_Duration_type]integer
+//
+// Description:
+//
+// [responses_200_schema_properties_UserDetail_properties_CreatedTs_description]Call creation time, represented as a UNIX timestamp in seconds.
 //
 // @param request - DescribeFaultDiagnosisUserDetailRequest
 //
@@ -4355,7 +5391,17 @@ func (client *Client) DescribeFaultDiagnosisUserDetail(request *DescribeFaultDia
 
 // Summary:
 //
-// 获取异常诊断用户明细列表
+// Queries the detailed user list for fault diagnosis.
+//
+// Description:
+//
+// ### Usage notes
+//
+// This operation is used to retrieve the detailed user list for fault diagnosis. When you call this operation, you can query data from the last 48 hours, and the query time range cannot exceed 24 hours.
+//
+// ### QPS limit
+//
+// The queries per second (QPS) limit for a single user is 10. If the limit is exceeded, API calls are throttled, which may affect your services. Call this operation at a reasonable rate.
 //
 // @param request - DescribeFaultDiagnosisUserListRequest
 //
@@ -4427,7 +5473,17 @@ func (client *Client) DescribeFaultDiagnosisUserListWithOptions(request *Describ
 
 // Summary:
 //
-// 获取异常诊断用户明细列表
+// Queries the detailed user list for fault diagnosis.
+//
+// Description:
+//
+// ### Usage notes
+//
+// This operation is used to retrieve the detailed user list for fault diagnosis. When you call this operation, you can query data from the last 48 hours, and the query time range cannot exceed 24 hours.
+//
+// ### QPS limit
+//
+// The queries per second (QPS) limit for a single user is 10. If the limit is exceeded, API calls are throttled, which may affect your services. Call this operation at a reasonable rate.
 //
 // @param request - DescribeFaultDiagnosisUserListRequest
 //
@@ -4443,6 +5499,20 @@ func (client *Client) DescribeFaultDiagnosisUserList(request *DescribeFaultDiagn
 	return _result, _err
 }
 
+// Summary:
+//
+// Call DescribeMPULayoutInfoList to retrieve layout parameters for a bypass live streaming task.
+//
+// Description:
+//
+// # Usage notes
+//
+// Before calling this operation, call [CreateMPULayout](https://help.aliyun.com/document_detail/162192.html) to create a bypass live streaming layout.
+//
+// # QPS limit
+//
+// The per-user QPS limit for this operation is 10 calls per second. Exceeding this limit triggers rate limiting, which may affect your business. Call this operation appropriately. For more information, see [QPS limits](https://help.aliyun.com/document_detail/341645.html).
+//
 // @param request - DescribeMPULayoutInfoListRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -4503,6 +5573,20 @@ func (client *Client) DescribeMPULayoutInfoListWithOptions(request *DescribeMPUL
 	return _result, _err
 }
 
+// Summary:
+//
+// Call DescribeMPULayoutInfoList to retrieve layout parameters for a bypass live streaming task.
+//
+// Description:
+//
+// # Usage notes
+//
+// Before calling this operation, call [CreateMPULayout](https://help.aliyun.com/document_detail/162192.html) to create a bypass live streaming layout.
+//
+// # QPS limit
+//
+// The per-user QPS limit for this operation is 10 calls per second. Exceeding this limit triggers rate limiting, which may affect your business. Call this operation appropriately. For more information, see [QPS limits](https://help.aliyun.com/document_detail/341645.html).
+//
 // @param request - DescribeMPULayoutInfoListRequest
 //
 // @return DescribeMPULayoutInfoListResponse
@@ -4519,7 +5603,17 @@ func (client *Client) DescribeMPULayoutInfoList(request *DescribeMPULayoutInfoLi
 
 // Summary:
 //
-// 调用DescribePubUserListBySubUser根据订阅端获取通信中发布端用户列表。
+// This API is used to obtain the list of publishing users in a communication session based on the subscriber.
+//
+// Description:
+//
+// ### How-To
+//
+// This API is used to obtain the list of publishing users in a communication session based on the subscriber. For example, you can retrieve detailed information about both the subscriber and the publishing users.
+//
+// ### queries per second (QPS) Limit
+//
+// The QPS limit for this API is 10 requests per second per user. If this limit is exceeded, API calls will be subject to rate limiting, which may affect your business. Please invoke the API appropriately.
 //
 // @param request - DescribePubUserListBySubUserRequest
 //
@@ -4579,7 +5673,17 @@ func (client *Client) DescribePubUserListBySubUserWithOptions(request *DescribeP
 
 // Summary:
 //
-// 调用DescribePubUserListBySubUser根据订阅端获取通信中发布端用户列表。
+// This API is used to obtain the list of publishing users in a communication session based on the subscriber.
+//
+// Description:
+//
+// ### How-To
+//
+// This API is used to obtain the list of publishing users in a communication session based on the subscriber. For example, you can retrieve detailed information about both the subscriber and the publishing users.
+//
+// ### queries per second (QPS) Limit
+//
+// The QPS limit for this API is 10 requests per second per user. If this limit is exceeded, API calls will be subject to rate limiting, which may affect your business. Please invoke the API appropriately.
 //
 // @param request - DescribePubUserListBySubUserRequest
 //
@@ -4597,7 +5701,17 @@ func (client *Client) DescribePubUserListBySubUser(request *DescribePubUserListB
 
 // Summary:
 //
-// 调用DescribeQoeMetricData获取单次通信中用户的下行体验质量指标。
+// This API is used to obtain the downlink experience quality metrics of a user in a single communication session.
+//
+// Description:
+//
+// ### How-To
+//
+// This API is used to obtain the downlink experience quality metrics of a user in a single communication session. For example, you can retrieve information such as the metric types that impact communication experience and audio/video trend indicators.
+//
+// ### QPS Limit
+//
+// The queries per second (QPS) limit for this API is 10 per user. If this limit is exceeded, API calls will be subject to rate limiting, which may affect your business. Please invoke the API appropriately.
 //
 // @param request - DescribeQoeMetricDataRequest
 //
@@ -4657,7 +5771,17 @@ func (client *Client) DescribeQoeMetricDataWithOptions(request *DescribeQoeMetri
 
 // Summary:
 //
-// 调用DescribeQoeMetricData获取单次通信中用户的下行体验质量指标。
+// This API is used to obtain the downlink experience quality metrics of a user in a single communication session.
+//
+// Description:
+//
+// ### How-To
+//
+// This API is used to obtain the downlink experience quality metrics of a user in a single communication session. For example, you can retrieve information such as the metric types that impact communication experience and audio/video trend indicators.
+//
+// ### QPS Limit
+//
+// The queries per second (QPS) limit for this API is 10 per user. If this limit is exceeded, API calls will be subject to rate limiting, which may affect your business. Please invoke the API appropriately.
 //
 // @param request - DescribeQoeMetricDataRequest
 //
@@ -4675,7 +5799,21 @@ func (client *Client) DescribeQoeMetricData(request *DescribeQoeMetricDataReques
 
 // Summary:
 //
-// 获取质量统计区域分布统计数据
+// Queries the regional distribution data of quality statistics.
+//
+// Description:
+//
+// ### Usage notes
+//
+// This operation queries the regional distribution data of quality statistics. When you call this operation, the following limits apply:
+//
+// - You can query data within any time range in the last 365 days, excluding the current day.
+//
+// - If the query time range is less than 24 hours, the data is aggregated by hour. If the query time range is 24 hours or more, the data is aggregated by day.
+//
+// ### QPS limit
+//
+// The queries per second (QPS) limit for a single user is 10. If the limit is exceeded, API calls are throttled, which may affect your business. Make API calls at a reasonable frequency.
 //
 // @param request - DescribeQualityAreaDistributionStatDataRequest
 //
@@ -4731,7 +5869,21 @@ func (client *Client) DescribeQualityAreaDistributionStatDataWithOptions(request
 
 // Summary:
 //
-// 获取质量统计区域分布统计数据
+// Queries the regional distribution data of quality statistics.
+//
+// Description:
+//
+// ### Usage notes
+//
+// This operation queries the regional distribution data of quality statistics. When you call this operation, the following limits apply:
+//
+// - You can query data within any time range in the last 365 days, excluding the current day.
+//
+// - If the query time range is less than 24 hours, the data is aggregated by hour. If the query time range is 24 hours or more, the data is aggregated by day.
+//
+// ### QPS limit
+//
+// The queries per second (QPS) limit for a single user is 10. If the limit is exceeded, API calls are throttled, which may affect your business. Make API calls at a reasonable frequency.
 //
 // @param request - DescribeQualityAreaDistributionStatDataRequest
 //
@@ -4749,7 +5901,21 @@ func (client *Client) DescribeQualityAreaDistributionStatData(request *DescribeQ
 
 // Summary:
 //
-// 获取质量统计分布数据
+// This API is used to obtain the distribution data of quality statistics.
+//
+// Description:
+//
+// ### How-To
+//
+// This API is used to obtain the distribution data of quality statistics. The following limits apply when using this API:
+//
+// - You can query data for any period within the last 365 days (excluding the current day).
+//
+// - If the query range is less than 24 hours, the data is aggregated by hour. If the query range is greater than or equal to 24 hours, the data is aggregated by day.
+//
+// ### Queries per second (QPS) limit
+//
+// The QPS limit for this API is 10 queries per second (QPS) per user. If you exceed this limit, your API calls will be subject to Rate Limiting, which may Impact your business. Please invoke the API reasonably.
 //
 // @param request - DescribeQualityDistributionStatDataRequest
 //
@@ -4805,7 +5971,21 @@ func (client *Client) DescribeQualityDistributionStatDataWithOptions(request *De
 
 // Summary:
 //
-// 获取质量统计分布数据
+// This API is used to obtain the distribution data of quality statistics.
+//
+// Description:
+//
+// ### How-To
+//
+// This API is used to obtain the distribution data of quality statistics. The following limits apply when using this API:
+//
+// - You can query data for any period within the last 365 days (excluding the current day).
+//
+// - If the query range is less than 24 hours, the data is aggregated by hour. If the query range is greater than or equal to 24 hours, the data is aggregated by day.
+//
+// ### Queries per second (QPS) limit
+//
+// The QPS limit for this API is 10 queries per second (QPS) per user. If you exceed this limit, your API calls will be subject to Rate Limiting, which may Impact your business. Please invoke the API reasonably.
 //
 // @param request - DescribeQualityDistributionStatDataRequest
 //
@@ -4823,7 +6003,21 @@ func (client *Client) DescribeQualityDistributionStatData(request *DescribeQuali
 
 // Summary:
 //
-// 获取质量统计各操作系统下SDK版本分布数据
+// Retrieves the distribution data of operating systems and SDK versions in quality statistics.
+//
+// Description:
+//
+// ### Usage notes
+//
+// This operation retrieves the distribution data of operating systems and SDK versions in quality statistics. The following limits apply when you call this operation:
+//
+// - You can query data within the last 365 days, excluding the current day.
+//
+// - If the query time range is less than 24 hours, the data is aggregated by hour. If the query time range is 24 hours or more, the data is aggregated by day.
+//
+// ### QPS limit
+//
+// The QPS limit for a single user is 10 calls per second. If the limit is exceeded, API calls are throttled, which may affect your business. Make API calls at a reasonable frequency.
 //
 // @param request - DescribeQualityOsSdkVersionDistributionStatDataRequest
 //
@@ -4875,7 +6069,21 @@ func (client *Client) DescribeQualityOsSdkVersionDistributionStatDataWithOptions
 
 // Summary:
 //
-// 获取质量统计各操作系统下SDK版本分布数据
+// Retrieves the distribution data of operating systems and SDK versions in quality statistics.
+//
+// Description:
+//
+// ### Usage notes
+//
+// This operation retrieves the distribution data of operating systems and SDK versions in quality statistics. The following limits apply when you call this operation:
+//
+// - You can query data within the last 365 days, excluding the current day.
+//
+// - If the query time range is less than 24 hours, the data is aggregated by hour. If the query time range is 24 hours or more, the data is aggregated by day.
+//
+// ### QPS limit
+//
+// The QPS limit for a single user is 10 calls per second. If the limit is exceeded, API calls are throttled, which may affect your business. Make API calls at a reasonable frequency.
 //
 // @param request - DescribeQualityOsSdkVersionDistributionStatDataRequest
 //
@@ -4893,7 +6101,21 @@ func (client *Client) DescribeQualityOsSdkVersionDistributionStatData(request *D
 
 // Summary:
 //
-// 获取质量统计概览数据
+// This API is used to obtain overview data of quality statistics.
+//
+// Description:
+//
+// ### How-To
+//
+// This API is used to obtain overview data of quality statistics. The following restrictions apply when using this API:
+//
+// - You can query data for any time range within the last 365 days (excluding the current day).
+//
+// - If the query range is less than 24 hours, the data is aggregated by hour. If the query range is greater than or equal to 24 hours, the data is aggregated by day.
+//
+// ### queries per second (QPS) Limit
+//
+// The QPS limit for this API is 10 queries per second per user. If you exceed this limit, your API calls will be subject to Rate Limiting, which may Impact your business. Please invoke the API appropriately.
 //
 // @param request - DescribeQualityOverallDataRequest
 //
@@ -4949,7 +6171,21 @@ func (client *Client) DescribeQualityOverallDataWithOptions(request *DescribeQua
 
 // Summary:
 //
-// 获取质量统计概览数据
+// This API is used to obtain overview data of quality statistics.
+//
+// Description:
+//
+// ### How-To
+//
+// This API is used to obtain overview data of quality statistics. The following restrictions apply when using this API:
+//
+// - You can query data for any time range within the last 365 days (excluding the current day).
+//
+// - If the query range is less than 24 hours, the data is aggregated by hour. If the query range is greater than or equal to 24 hours, the data is aggregated by day.
+//
+// ### queries per second (QPS) Limit
+//
+// The QPS limit for this API is 10 queries per second per user. If you exceed this limit, your API calls will be subject to Rate Limiting, which may Impact your business. Please invoke the API appropriately.
 //
 // @param request - DescribeQualityOverallDataRequest
 //
@@ -4965,6 +6201,20 @@ func (client *Client) DescribeQualityOverallData(request *DescribeQualityOverall
 	return _result, _err
 }
 
+// Summary:
+//
+// Calls DescribeRecordFiles to query the list of files generated by recording.
+//
+// Description:
+//
+// # Usage notes
+//
+// This operation is used to query the list of files generated by recording. For example, you can query parameters such as the creation time and recording duration of files generated by recording.
+//
+// # QPS limit
+//
+// The per-user QPS limit of this operation is 10 calls per second. If the limit is exceeded, API calls will be throttled, which may affect your business. Please call this operation reasonably. For more information, see [QPS limit](https://help.aliyun.com/document_detail/341645.html).
+//
 // @param request - DescribeRecordFilesRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -5033,6 +6283,20 @@ func (client *Client) DescribeRecordFilesWithOptions(request *DescribeRecordFile
 	return _result, _err
 }
 
+// Summary:
+//
+// Calls DescribeRecordFiles to query the list of files generated by recording.
+//
+// Description:
+//
+// # Usage notes
+//
+// This operation is used to query the list of files generated by recording. For example, you can query parameters such as the creation time and recording duration of files generated by recording.
+//
+// # QPS limit
+//
+// The per-user QPS limit of this operation is 10 calls per second. If the limit is exceeded, API calls will be throttled, which may affect your business. Please call this operation reasonably. For more information, see [QPS limit](https://help.aliyun.com/document_detail/341645.html).
+//
 // @param request - DescribeRecordFilesRequest
 //
 // @return DescribeRecordFilesResponse
@@ -5047,6 +6311,20 @@ func (client *Client) DescribeRecordFiles(request *DescribeRecordFilesRequest) (
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries a list of recording template configurations.
+//
+// Description:
+//
+// # Usage notes
+//
+// Before you call this operation, you must call [AddRecordTemplate](https://help.aliyun.com/document_detail/193625.html) to add a recording template.
+//
+// # QPS limit
+//
+// The QPS limit for a single user is 100 calls per second. If the limit is exceeded, API calls are throttled, which may affect your business. Make API calls at a reasonable rate. For more information, see [QPS limits](https://help.aliyun.com/document_detail/341645.html).
+//
 // @param request - DescribeRecordTemplatesRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -5103,6 +6381,20 @@ func (client *Client) DescribeRecordTemplatesWithOptions(request *DescribeRecord
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries a list of recording template configurations.
+//
+// Description:
+//
+// # Usage notes
+//
+// Before you call this operation, you must call [AddRecordTemplate](https://help.aliyun.com/document_detail/193625.html) to add a recording template.
+//
+// # QPS limit
+//
+// The QPS limit for a single user is 100 calls per second. If the limit is exceeded, API calls are throttled, which may affect your business. Make API calls at a reasonable rate. For more information, see [QPS limits](https://help.aliyun.com/document_detail/341645.html).
+//
 // @param request - DescribeRecordTemplatesRequest
 //
 // @return DescribeRecordTemplatesResponse
@@ -5117,6 +6409,10 @@ func (client *Client) DescribeRecordTemplates(request *DescribeRecordTemplatesRe
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the list of channel communication records.
+//
 // @param request - DescribeRtcChannelListRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -5189,6 +6485,10 @@ func (client *Client) DescribeRtcChannelListWithOptions(request *DescribeRtcChan
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the list of channel communication records.
+//
 // @param request - DescribeRtcChannelListRequest
 //
 // @return DescribeRtcChannelListResponse
@@ -5203,6 +6503,10 @@ func (client *Client) DescribeRtcChannelList(request *DescribeRtcChannelListRequ
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the details of communication records in a channel. You can query data within the last 180 days.
+//
 // @param request - DescribeRtcChannelMetricRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -5255,6 +6559,10 @@ func (client *Client) DescribeRtcChannelMetricWithOptions(request *DescribeRtcCh
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the details of communication records in a channel. You can query data within the last 180 days.
+//
 // @param request - DescribeRtcChannelMetricRequest
 //
 // @return DescribeRtcChannelMetricResponse
@@ -5269,6 +6577,14 @@ func (client *Client) DescribeRtcChannelMetric(request *DescribeRtcChannelMetric
 	return _result, _err
 }
 
+// Summary:
+//
+// Retrieves the total communication duration for an application within a specified time range. Data is aggregated by audio and video specifications.
+//
+// Description:
+//
+// > The maximum query time range is 30 days.
+//
 // @param request - DescribeRtcDurationDataRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -5329,6 +6645,14 @@ func (client *Client) DescribeRtcDurationDataWithOptions(request *DescribeRtcDur
 	return _result, _err
 }
 
+// Summary:
+//
+// Retrieves the total communication duration for an application within a specified time range. Data is aggregated by audio and video specifications.
+//
+// Description:
+//
+// > The maximum query time range is 30 days.
+//
 // @param request - DescribeRtcDurationDataRequest
 //
 // @return DescribeRtcDurationDataResponse
@@ -5343,6 +6667,14 @@ func (client *Client) DescribeRtcDurationData(request *DescribeRtcDurationDataRe
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the peak number of concurrent channels of an application in a specified time range.
+//
+// Description:
+//
+// > The maximum time range that can be queried is 30 days.
+//
 // @param request - DescribeRtcPeakChannelCntDataRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -5403,6 +6735,14 @@ func (client *Client) DescribeRtcPeakChannelCntDataWithOptions(request *Describe
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the peak number of concurrent channels of an application in a specified time range.
+//
+// Description:
+//
+// > The maximum time range that can be queried is 30 days.
+//
 // @param request - DescribeRtcPeakChannelCntDataRequest
 //
 // @return DescribeRtcPeakChannelCntDataResponse
@@ -5417,6 +6757,14 @@ func (client *Client) DescribeRtcPeakChannelCntData(request *DescribeRtcPeakChan
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the number of active users of an application within a specified time range, that is, the number of user terminals that engaged in communication.
+//
+// Description:
+//
+// > The maximum time span between the start time and the end time of a data query is 30 days.
+//
 // @param request - DescribeRtcUserCntDataRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -5477,6 +6825,14 @@ func (client *Client) DescribeRtcUserCntDataWithOptions(request *DescribeRtcUser
 	return _result, _err
 }
 
+// Summary:
+//
+// Queries the number of active users of an application within a specified time range, that is, the number of user terminals that engaged in communication.
+//
+// Description:
+//
+// > The maximum time span between the start time and the end time of a data query is 30 days.
+//
 // @param request - DescribeRtcUserCntDataRequest
 //
 // @return DescribeRtcUserCntDataResponse
@@ -5493,7 +6849,13 @@ func (client *Client) DescribeRtcUserCntData(request *DescribeRtcUserCntDataRequ
 
 // Summary:
 //
-// 查询旁路推流状态
+// Queries the bypass streaming status.
+//
+// Description:
+//
+// ### QPS limit
+//
+// The QPS limit per user for this API operation is 10 queries per second. If the limit is exceeded, API calls are throttled, which may affect your services. Call this API operation at a reasonable frequency.
 //
 // @param request - DescribeStreamingOutStatusRequest
 //
@@ -5545,7 +6907,13 @@ func (client *Client) DescribeStreamingOutStatusWithOptions(request *DescribeStr
 
 // Summary:
 //
-// 查询旁路推流状态
+// Queries the bypass streaming status.
+//
+// Description:
+//
+// ### QPS limit
+//
+// The QPS limit per user for this API operation is 10 queries per second. If the limit is exceeded, API calls are throttled, which may affect your services. Call this API operation at a reasonable frequency.
 //
 // @param request - DescribeStreamingOutStatusRequest
 //
@@ -5563,7 +6931,13 @@ func (client *Client) DescribeStreamingOutStatus(request *DescribeStreamingOutSt
 
 // Summary:
 //
-// 系统内置布局
+// # Built-in system layouts
+//
+// Description:
+//
+// ### QPS limit
+//
+// The per-user QPS limit for this API is 10 calls per second. Exceeding this limit triggers rate limiting, which may affect your business. Call the API responsibly.
 //
 // @param request - DescribeSystemLayoutListRequest
 //
@@ -5615,7 +6989,13 @@ func (client *Client) DescribeSystemLayoutListWithOptions(request *DescribeSyste
 
 // Summary:
 //
-// 系统内置布局
+// # Built-in system layouts
+//
+// Description:
+//
+// ### QPS limit
+//
+// The per-user QPS limit for this API is 10 calls per second. Exceeding this limit triggers rate limiting, which may affect your business. Call the API responsibly.
 //
 // @param request - DescribeSystemLayoutListRequest
 //
@@ -5633,7 +7013,21 @@ func (client *Client) DescribeSystemLayoutList(request *DescribeSystemLayoutList
 
 // Summary:
 //
-// 获取用量统计地域分布数据
+// This API is used to retrieve the regional distribution data of usage statistics.
+//
+// Description:
+//
+// ### How-To
+//
+// This API is used to retrieve the regional distribution data of usage statistics. The following restrictions apply when using this API:
+//
+// - You can query data for any period within the last 365 days (excluding the current day).
+//
+// - If the query range is less than 24 hours, the data is aggregated by hour. If the query range is greater than or equal to 24 hours, the data is aggregated by day.
+//
+// ### QPS Limit
+//
+// The queries per second (QPS) limit for this API is 10 requests per second per user. If you exceed this limit, your API calls will be subject to rate limiting, which may impact your business. Please invoke the API appropriately.
 //
 // @param request - DescribeUsageAreaDistributionStatDataRequest
 //
@@ -5689,7 +7083,21 @@ func (client *Client) DescribeUsageAreaDistributionStatDataWithOptions(request *
 
 // Summary:
 //
-// 获取用量统计地域分布数据
+// This API is used to retrieve the regional distribution data of usage statistics.
+//
+// Description:
+//
+// ### How-To
+//
+// This API is used to retrieve the regional distribution data of usage statistics. The following restrictions apply when using this API:
+//
+// - You can query data for any period within the last 365 days (excluding the current day).
+//
+// - If the query range is less than 24 hours, the data is aggregated by hour. If the query range is greater than or equal to 24 hours, the data is aggregated by day.
+//
+// ### QPS Limit
+//
+// The queries per second (QPS) limit for this API is 10 requests per second per user. If you exceed this limit, your API calls will be subject to rate limiting, which may impact your business. Please invoke the API appropriately.
 //
 // @param request - DescribeUsageAreaDistributionStatDataRequest
 //
@@ -5707,7 +7115,21 @@ func (client *Client) DescribeUsageAreaDistributionStatData(request *DescribeUsa
 
 // Summary:
 //
-// 获取用量统计分布数据
+// Queries the distribution data of usage statistics.
+//
+// Description:
+//
+// ### Usage notes
+//
+// This operation queries the distribution data of usage statistics. When you call this operation, the following limits apply:
+//
+// - You can query data within any time range in the last 365 days, excluding the current day.
+//
+// - If the query time range is less than 24 hours, the data is aggregated by hour. If the query time range is 24 hours or more, the data is aggregated by day.
+//
+// ### QPS limit
+//
+// The queries per second (QPS) limit for a single user is 10. If the limit is exceeded, API calls are throttled, which may affect your business. Make API calls at a reasonable rate.
 //
 // @param request - DescribeUsageDistributionStatDataRequest
 //
@@ -5763,7 +7185,21 @@ func (client *Client) DescribeUsageDistributionStatDataWithOptions(request *Desc
 
 // Summary:
 //
-// 获取用量统计分布数据
+// Queries the distribution data of usage statistics.
+//
+// Description:
+//
+// ### Usage notes
+//
+// This operation queries the distribution data of usage statistics. When you call this operation, the following limits apply:
+//
+// - You can query data within any time range in the last 365 days, excluding the current day.
+//
+// - If the query time range is less than 24 hours, the data is aggregated by hour. If the query time range is 24 hours or more, the data is aggregated by day.
+//
+// ### QPS limit
+//
+// The queries per second (QPS) limit for a single user is 10. If the limit is exceeded, API calls are throttled, which may affect your business. Make API calls at a reasonable rate.
 //
 // @param request - DescribeUsageDistributionStatDataRequest
 //
@@ -5781,7 +7217,21 @@ func (client *Client) DescribeUsageDistributionStatData(request *DescribeUsageDi
 
 // Summary:
 //
-// 获取用量统计各操作系统下SDK版本分布数据
+// This API is used to obtain the distribution data of operating systems and SDK versions in usage statistics.
+//
+// Description:
+//
+// ### How-To
+//
+// This API is used to obtain the distribution data of operating systems and SDK versions in usage statistics. When using this API, the following restrictions apply:
+//
+// - You can query data for any period within the last 365 days (excluding the current day).
+//
+// - If the query range is less than 24 hours, the data is aggregated by hour. If the query range is greater than or equal to 24 hours, the data is aggregated by day.
+//
+// ### Rate Limiting
+//
+// The queries per second (QPS) limit for this API is 10 requests per second per user. If you exceed this limit, your API calls will be rate-limited, which may impact your business. Please invoke the API appropriately.
 //
 // @param request - DescribeUsageOsSdkVersionDistributionStatDataRequest
 //
@@ -5833,7 +7283,21 @@ func (client *Client) DescribeUsageOsSdkVersionDistributionStatDataWithOptions(r
 
 // Summary:
 //
-// 获取用量统计各操作系统下SDK版本分布数据
+// This API is used to obtain the distribution data of operating systems and SDK versions in usage statistics.
+//
+// Description:
+//
+// ### How-To
+//
+// This API is used to obtain the distribution data of operating systems and SDK versions in usage statistics. When using this API, the following restrictions apply:
+//
+// - You can query data for any period within the last 365 days (excluding the current day).
+//
+// - If the query range is less than 24 hours, the data is aggregated by hour. If the query range is greater than or equal to 24 hours, the data is aggregated by day.
+//
+// ### Rate Limiting
+//
+// The queries per second (QPS) limit for this API is 10 requests per second per user. If you exceed this limit, your API calls will be rate-limited, which may impact your business. Please invoke the API appropriately.
 //
 // @param request - DescribeUsageOsSdkVersionDistributionStatDataRequest
 //
@@ -5851,7 +7315,21 @@ func (client *Client) DescribeUsageOsSdkVersionDistributionStatData(request *Des
 
 // Summary:
 //
-// 获取用量统计概览数据
+// Queries the overview data of usage statistics.
+//
+// Description:
+//
+// ### Usage notes
+//
+// This operation retrieves the overview data of usage statistics. The following limits apply when you call this operation:
+//
+// - You can query data for any time range within the last 365 days, excluding the current day.
+//
+// - If the query time range is less than 24 hours, the data is aggregated by hour. If the query time range is 24 hours or more, the data is aggregated by day.
+//
+// ### QPS limit
+//
+// The QPS limit for a single user is 10 calls per second. If the limit is exceeded, API calls are throttled, which may affect your business. Make API calls at a reasonable rate.
 //
 // @param request - DescribeUsageOverallDataRequest
 //
@@ -5907,7 +7385,21 @@ func (client *Client) DescribeUsageOverallDataWithOptions(request *DescribeUsage
 
 // Summary:
 //
-// 获取用量统计概览数据
+// Queries the overview data of usage statistics.
+//
+// Description:
+//
+// ### Usage notes
+//
+// This operation retrieves the overview data of usage statistics. The following limits apply when you call this operation:
+//
+// - You can query data for any time range within the last 365 days, excluding the current day.
+//
+// - If the query time range is less than 24 hours, the data is aggregated by hour. If the query time range is 24 hours or more, the data is aggregated by day.
+//
+// ### QPS limit
+//
+// The QPS limit for a single user is 10 calls per second. If the limit is exceeded, API calls are throttled, which may affect your business. Make API calls at a reasonable rate.
 //
 // @param request - DescribeUsageOverallDataRequest
 //
@@ -5923,6 +7415,20 @@ func (client *Client) DescribeUsageOverallData(request *DescribeUsageOverallData
 	return _result, _err
 }
 
+// Summary:
+//
+// Calls DescribeUserInfoInChannel to query the real-time information of a user in a channel.
+//
+// Description:
+//
+// # Usage notes
+//
+// This operation is used to query the real-time information of a user in a channel. For example, you can query information such as the user role type and the time of joining the meeting.
+//
+// # QPS limit
+//
+// The per-user QPS limit of this operation is 100 times per second. If the limit is exceeded, API calls will be throttled, which may affect your business. Call this operation properly. For more information, see [QPS limit](https://help.aliyun.com/document_detail/341645.html).
+//
 // @param request - DescribeUserInfoInChannelRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -5975,6 +7481,20 @@ func (client *Client) DescribeUserInfoInChannelWithOptions(request *DescribeUser
 	return _result, _err
 }
 
+// Summary:
+//
+// Calls DescribeUserInfoInChannel to query the real-time information of a user in a channel.
+//
+// Description:
+//
+// # Usage notes
+//
+// This operation is used to query the real-time information of a user in a channel. For example, you can query information such as the user role type and the time of joining the meeting.
+//
+// # QPS limit
+//
+// The per-user QPS limit of this operation is 100 times per second. If the limit is exceeded, API calls will be throttled, which may affect your business. Call this operation properly. For more information, see [QPS limit](https://help.aliyun.com/document_detail/341645.html).
+//
 // @param request - DescribeUserInfoInChannelRequest
 //
 // @return DescribeUserInfoInChannelResponse
@@ -5989,6 +7509,20 @@ func (client *Client) DescribeUserInfoInChannel(request *DescribeUserInfoInChann
 	return _result, _err
 }
 
+// Summary:
+//
+// Disables the automatic bypass single-stream relay rule.
+//
+// Description:
+//
+// # Usage notes
+//
+// Before you call this operation, you must call [CreateAutoLiveStreamRule](https://help.aliyun.com/document_detail/353179.html) to create a bypass rule.
+//
+// # QPS limit
+//
+// The QPS limit per user is 1,000 requests per minute. If the limit is exceeded, API calls are throttled, which may affect your business. Make API calls at a reasonable rate. For more information, see [QPS limit](https://help.aliyun.com/document_detail/341645.html).
+//
 // @param request - DisableAutoLiveStreamRuleRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -6037,6 +7571,20 @@ func (client *Client) DisableAutoLiveStreamRuleWithOptions(request *DisableAutoL
 	return _result, _err
 }
 
+// Summary:
+//
+// Disables the automatic bypass single-stream relay rule.
+//
+// Description:
+//
+// # Usage notes
+//
+// Before you call this operation, you must call [CreateAutoLiveStreamRule](https://help.aliyun.com/document_detail/353179.html) to create a bypass rule.
+//
+// # QPS limit
+//
+// The QPS limit per user is 1,000 requests per minute. If the limit is exceeded, API calls are throttled, which may affect your business. Make API calls at a reasonable rate. For more information, see [QPS limit](https://help.aliyun.com/document_detail/341645.html).
+//
 // @param request - DisableAutoLiveStreamRuleRequest
 //
 // @return DisableAutoLiveStreamRuleResponse
@@ -6051,6 +7599,20 @@ func (client *Client) DisableAutoLiveStreamRule(request *DisableAutoLiveStreamRu
 	return _result, _err
 }
 
+// Summary:
+//
+// Enables the automatic bypass single-stream relay rule.
+//
+// Description:
+//
+// # Usage notes
+//
+// Before you call this operation, you must call [CreateAutoLiveStreamRule](https://help.aliyun.com/document_detail/353179.html) to create a bypass rule.
+//
+// # QPS limit
+//
+// The QPS limit per user for this operation is 1,000 calls per minute. If the limit is exceeded, API calls are throttled, which may affect your business. Make API calls at a reasonable rate. For more information, see [QPS limits](https://help.aliyun.com/document_detail/341645.html).
+//
 // @param request - EnableAutoLiveStreamRuleRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -6099,6 +7661,20 @@ func (client *Client) EnableAutoLiveStreamRuleWithOptions(request *EnableAutoLiv
 	return _result, _err
 }
 
+// Summary:
+//
+// Enables the automatic bypass single-stream relay rule.
+//
+// Description:
+//
+// # Usage notes
+//
+// Before you call this operation, you must call [CreateAutoLiveStreamRule](https://help.aliyun.com/document_detail/353179.html) to create a bypass rule.
+//
+// # QPS limit
+//
+// The QPS limit per user for this operation is 1,000 calls per minute. If the limit is exceeded, API calls are throttled, which may affect your business. Make API calls at a reasonable rate. For more information, see [QPS limits](https://help.aliyun.com/document_detail/341645.html).
+//
 // @param request - EnableAutoLiveStreamRuleRequest
 //
 // @return EnableAutoLiveStreamRuleResponse
@@ -6115,7 +7691,7 @@ func (client *Client) EnableAutoLiveStreamRule(request *EnableAutoLiveStreamRule
 
 // Summary:
 //
-// GetAgent。
+// GetAgent.
 //
 // @param request - GetAgentRequest
 //
@@ -6167,7 +7743,7 @@ func (client *Client) GetAgentWithOptions(request *GetAgentRequest, runtime *dar
 
 // Summary:
 //
-// GetAgent。
+// GetAgent.
 //
 // @param request - GetAgentRequest
 //
@@ -6183,6 +7759,20 @@ func (client *Client) GetAgent(request *GetAgentRequest) (_result *GetAgentRespo
 	return _result, _err
 }
 
+// Summary:
+//
+// Retrieves the status of a bypass transcoding task.
+//
+// Description:
+//
+// # Usage notes
+//
+// Before you call this operation, you must call [StartMpuTask](https://help.aliyun.com/document_detail/93183.html) to start a bypass transcoding task.
+//
+// # QPS limit
+//
+// The QPS limit for a single user is 4,000 calls per minute. If the limit is exceeded, API calls are throttled, which may affect your business. Make API calls at a reasonable rate. For more information, see [QPS limits](https://help.aliyun.com/document_detail/341645.html).
+//
 // @param request - GetMPUTaskStatusRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -6231,6 +7821,20 @@ func (client *Client) GetMPUTaskStatusWithOptions(request *GetMPUTaskStatusReque
 	return _result, _err
 }
 
+// Summary:
+//
+// Retrieves the status of a bypass transcoding task.
+//
+// Description:
+//
+// # Usage notes
+//
+// Before you call this operation, you must call [StartMpuTask](https://help.aliyun.com/document_detail/93183.html) to start a bypass transcoding task.
+//
+// # QPS limit
+//
+// The QPS limit for a single user is 4,000 calls per minute. If the limit is exceeded, API calls are throttled, which may affect your business. Make API calls at a reasonable rate. For more information, see [QPS limits](https://help.aliyun.com/document_detail/341645.html).
+//
 // @param request - GetMPUTaskStatusRequest
 //
 // @return GetMPUTaskStatusResponse
@@ -6247,7 +7851,17 @@ func (client *Client) GetMPUTaskStatus(request *GetMPUTaskStatusRequest) (_resul
 
 // Summary:
 //
-// 修改App信息
+// Modifies the name of a specified application.
+//
+// Description:
+//
+// #### Usage notes
+//
+// This operation modifies the name of a specified application.
+//
+// #### QPS limit
+//
+// The queries per second (QPS) limit per user for this operation is 200 calls per minute. If the limit is exceeded, API calls are throttled, which may affect your services. Call this operation at a reasonable rate.
 //
 // @param request - ModifyAppRequest
 //
@@ -6299,7 +7913,17 @@ func (client *Client) ModifyAppWithOptions(request *ModifyAppRequest, runtime *d
 
 // Summary:
 //
-// 修改App信息
+// Modifies the name of a specified application.
+//
+// Description:
+//
+// #### Usage notes
+//
+// This operation modifies the name of a specified application.
+//
+// #### QPS limit
+//
+// The queries per second (QPS) limit per user for this operation is 200 calls per minute. If the limit is exceeded, API calls are throttled, which may affect your services. Call this operation at a reasonable rate.
 //
 // @param request - ModifyAppRequest
 //
@@ -6317,7 +7941,13 @@ func (client *Client) ModifyApp(request *ModifyAppRequest) (_result *ModifyAppRe
 
 // Summary:
 //
-// 修改应用智能体开关
+// Modifies the agent feature switch for an application.
+//
+// Description:
+//
+// ### QPS limits
+//
+// The queries per second (QPS) limit per user for this API operation is 10 calls per second. If the limit is exceeded, API calls are throttled, which may affect your services. Call this API operation at a reasonable frequency.
 //
 // @param request - ModifyAppAgentFunctionStatusRequest
 //
@@ -6361,7 +7991,13 @@ func (client *Client) ModifyAppAgentFunctionStatusWithOptions(request *ModifyApp
 
 // Summary:
 //
-// 修改应用智能体开关
+// Modifies the agent feature switch for an application.
+//
+// Description:
+//
+// ### QPS limits
+//
+// The queries per second (QPS) limit per user for this API operation is 10 calls per second. If the limit is exceeded, API calls are throttled, which may affect your services. Call this API operation at a reasonable frequency.
 //
 // @param request - ModifyAppAgentFunctionStatusRequest
 //
@@ -6379,7 +8015,13 @@ func (client *Client) ModifyAppAgentFunctionStatus(request *ModifyAppAgentFuncti
 
 // Summary:
 //
-// 更新应用智能体模版
+// Updates an application agent template.
+//
+// Description:
+//
+// ### QPS limit
+//
+// The QPS limit for a single user is 10 calls per second. If the limit is exceeded, API calls are throttled, which may affect your business. Call the API at a reasonable rate.
 //
 // @param tmpReq - ModifyAppAgentTemplateRequest
 //
@@ -6513,7 +8155,13 @@ func (client *Client) ModifyAppAgentTemplateWithOptions(tmpReq *ModifyAppAgentTe
 
 // Summary:
 //
-// 更新应用智能体模版
+// Updates an application agent template.
+//
+// Description:
+//
+// ### QPS limit
+//
+// The QPS limit for a single user is 10 calls per second. If the limit is exceeded, API calls are throttled, which may affect your business. Call the API at a reasonable rate.
 //
 // @param request - ModifyAppAgentTemplateRequest
 //
@@ -6531,7 +8179,13 @@ func (client *Client) ModifyAppAgentTemplate(request *ModifyAppAgentTemplateRequ
 
 // Summary:
 //
-// 更新app回调事件开关
+// Updates the callback event switch for an application.
+//
+// Description:
+//
+// ### QPS limits
+//
+// The QPS limit per user for this API operation is 10 calls per second. If the limit is exceeded, API calls are throttled, which may affect your business. Make API calls at a reasonable rate.
 //
 // @param request - ModifyAppCallbackStatusRequest
 //
@@ -6575,7 +8229,13 @@ func (client *Client) ModifyAppCallbackStatusWithOptions(request *ModifyAppCallb
 
 // Summary:
 //
-// 更新app回调事件开关
+// Updates the callback event switch for an application.
+//
+// Description:
+//
+// ### QPS limits
+//
+// The QPS limit per user for this API operation is 10 calls per second. If the limit is exceeded, API calls are throttled, which may affect your business. Make API calls at a reasonable rate.
 //
 // @param request - ModifyAppCallbackStatusRequest
 //
@@ -6593,7 +8253,13 @@ func (client *Client) ModifyAppCallbackStatus(request *ModifyAppCallbackStatusRe
 
 // Summary:
 //
-// 修改app自定义布局
+// Modify a custom application layout.
+//
+// Description:
+//
+// ### QPS limits
+//
+// This API supports a maximum of 10 calls per second per user. Exceeding this limit triggers rate limiting, which may impact your business operations. Use the API judiciously.
 //
 // @param tmpReq - ModifyAppLayoutRequest
 //
@@ -6651,7 +8317,13 @@ func (client *Client) ModifyAppLayoutWithOptions(tmpReq *ModifyAppLayoutRequest,
 
 // Summary:
 //
-// 修改app自定义布局
+// Modify a custom application layout.
+//
+// Description:
+//
+// ### QPS limits
+//
+// This API supports a maximum of 10 calls per second per user. Exceeding this limit triggers rate limiting, which may impact your business operations. Use the API judiciously.
 //
 // @param request - ModifyAppLayoutRequest
 //
@@ -6669,7 +8341,13 @@ func (client *Client) ModifyAppLayout(request *ModifyAppLayoutRequest) (_result 
 
 // Summary:
 //
-// 修改应用旁路开关
+// # Modify the bypass toggle of an application
+//
+// Description:
+//
+// ### Queries per second (QPS) limit
+//
+// The queries per second (QPS) limit for this API is 10 per user per second. If the limit is exceeded, API calls will be subject to Rate Limiting, which may impact your business. Please invoke the API appropriately.
 //
 // @param request - ModifyAppLiveStreamStatusRequest
 //
@@ -6717,7 +8395,13 @@ func (client *Client) ModifyAppLiveStreamStatusWithOptions(request *ModifyAppLiv
 
 // Summary:
 //
-// 修改应用旁路开关
+// # Modify the bypass toggle of an application
+//
+// Description:
+//
+// ### Queries per second (QPS) limit
+//
+// The queries per second (QPS) limit for this API is 10 per user per second. If the limit is exceeded, API calls will be subject to Rate Limiting, which may impact your business. Please invoke the API appropriately.
 //
 // @param request - ModifyAppLiveStreamStatusRequest
 //
@@ -6735,7 +8419,13 @@ func (client *Client) ModifyAppLiveStreamStatus(request *ModifyAppLiveStreamStat
 
 // Summary:
 //
-// 修改应用录制开关
+// Modifies the recording switch of an application.
+//
+// Description:
+//
+// ### QPS limit
+//
+// The queries per second (QPS) limit per user for this API operation is 10. If the limit is exceeded, API calls are throttled, which may affect your services. Call this API operation at a reasonable rate.
 //
 // @param request - ModifyAppRecordStatusRequest
 //
@@ -6783,7 +8473,13 @@ func (client *Client) ModifyAppRecordStatusWithOptions(request *ModifyAppRecordS
 
 // Summary:
 //
-// 修改应用录制开关
+// Modifies the recording switch of an application.
+//
+// Description:
+//
+// ### QPS limit
+//
+// The queries per second (QPS) limit per user for this API operation is 10. If the limit is exceeded, API calls are throttled, which may affect your services. Call this API operation at a reasonable rate.
 //
 // @param request - ModifyAppRecordStatusRequest
 //
@@ -6801,7 +8497,13 @@ func (client *Client) ModifyAppRecordStatus(request *ModifyAppRecordStatusReques
 
 // Summary:
 //
-// 修改应用录制模版
+// Modify an application recording template.
+//
+// Description:
+//
+// ### QPS limit
+//
+// This API supports up to 10 calls per second per user. If you exceed this limit, rate limiting is triggered, which might affect your service. Call the API at a reasonable frequency.
 //
 // @param tmpReq - ModifyAppRecordTemplateRequest
 //
@@ -6859,7 +8561,13 @@ func (client *Client) ModifyAppRecordTemplateWithOptions(tmpReq *ModifyAppRecord
 
 // Summary:
 //
-// 修改应用录制模版
+// Modify an application recording template.
+//
+// Description:
+//
+// ### QPS limit
+//
+// This API supports up to 10 calls per second per user. If you exceed this limit, rate limiting is triggered, which might affect your service. Call the API at a reasonable frequency.
 //
 // @param request - ModifyAppRecordTemplateRequest
 //
@@ -6877,7 +8585,17 @@ func (client *Client) ModifyAppRecordTemplate(request *ModifyAppRecordTemplateRe
 
 // Summary:
 //
-// 更新应用推流模版
+// Modify the stream ingest template for an RTC 3.0 application.
+//
+// Description:
+//
+// ### How-To
+//
+// This API modifies the stream ingest template for an RTC 3.0 application.
+//
+// ### QPS Limit
+//
+// The queries per second (QPS) limit for this API is 10 per user. If you exceed this limit, your API calls will be subject to rate limiting, which may impact your business. Please invoke the API appropriately.
 //
 // @param tmpReq - ModifyAppStreamingOutTemplateRequest
 //
@@ -6931,7 +8649,17 @@ func (client *Client) ModifyAppStreamingOutTemplateWithOptions(tmpReq *ModifyApp
 
 // Summary:
 //
-// 更新应用推流模版
+// Modify the stream ingest template for an RTC 3.0 application.
+//
+// Description:
+//
+// ### How-To
+//
+// This API modifies the stream ingest template for an RTC 3.0 application.
+//
+// ### QPS Limit
+//
+// The queries per second (QPS) limit for this API is 10 per user. If you exceed this limit, your API calls will be subject to rate limiting, which may impact your business. Please invoke the API appropriately.
 //
 // @param request - ModifyAppStreamingOutTemplateRequest
 //
@@ -6949,7 +8677,13 @@ func (client *Client) ModifyAppStreamingOutTemplate(request *ModifyAppStreamingO
 
 // Summary:
 //
-// 修改合流开关
+// Modifies the merging switch.
+//
+// Description:
+//
+// ### QPS limits
+//
+// The queries per second (QPS) limit for a single user is 10. If the limit is exceeded, API calls are throttled, which may affect your services. Call this operation at a reasonable frequency.
 //
 // @param request - ModifyAppViewStatusRequest
 //
@@ -6993,7 +8727,13 @@ func (client *Client) ModifyAppViewStatusWithOptions(request *ModifyAppViewStatu
 
 // Summary:
 //
-// 修改合流开关
+// Modifies the merging switch.
+//
+// Description:
+//
+// ### QPS limits
+//
+// The queries per second (QPS) limit for a single user is 10. If the limit is exceeded, API calls are throttled, which may affect your services. Call this operation at a reasonable frequency.
 //
 // @param request - ModifyAppViewStatusRequest
 //
@@ -7011,7 +8751,13 @@ func (client *Client) ModifyAppViewStatus(request *ModifyAppViewStatusRequest) (
 
 // Summary:
 //
-// 更新应用合流模版
+// Update an application view template.
+//
+// Description:
+//
+// ### QPS limits
+//
+// This API supports up to 10 calls per second per user. Exceeding this limit triggers rate limiting, which may affect your business. Use this API with caution.
 //
 // @param tmpReq - ModifyAppViewTemplateRequest
 //
@@ -7065,7 +8811,13 @@ func (client *Client) ModifyAppViewTemplateWithOptions(tmpReq *ModifyAppViewTemp
 
 // Summary:
 //
-// 更新应用合流模版
+// Update an application view template.
+//
+// Description:
+//
+// ### QPS limits
+//
+// This API supports up to 10 calls per second per user. Exceeding this limit triggers rate limiting, which may affect your business. Use this API with caution.
 //
 // @param request - ModifyAppViewTemplateRequest
 //
@@ -7083,7 +8835,13 @@ func (client *Client) ModifyAppViewTemplate(request *ModifyAppViewTemplateReques
 
 // Summary:
 //
-// 更新app回调
+// Updates the callback configuration of an application.
+//
+// Description:
+//
+// ### QPS limit
+//
+// The QPS limit for a single user is 10 calls per second. If the limit is exceeded, API calls are throttled, which may affect your services. Call the API at a reasonable frequency.
 //
 // @param tmpReq - ModifyCallbackMetaRequest
 //
@@ -7141,7 +8899,13 @@ func (client *Client) ModifyCallbackMetaWithOptions(tmpReq *ModifyCallbackMetaRe
 
 // Summary:
 //
-// 更新app回调
+// Updates the callback configuration of an application.
+//
+// Description:
+//
+// ### QPS limit
+//
+// The QPS limit for a single user is 10 calls per second. If the limit is exceeded, API calls are throttled, which may affect your services. Call the API at a reasonable frequency.
 //
 // @param request - ModifyCallbackMetaRequest
 //
@@ -7159,7 +8923,7 @@ func (client *Client) ModifyCallbackMeta(request *ModifyCallbackMetaRequest) (_r
 
 // Summary:
 //
-// 更新纪要热词表
+// Updates the hotwords table for meeting minutes.
 //
 // @param tmpReq - ModifyCloudNotePhrasesRequest
 //
@@ -7213,7 +8977,7 @@ func (client *Client) ModifyCloudNotePhrasesWithOptions(tmpReq *ModifyCloudNoteP
 
 // Summary:
 //
-// 更新纪要热词表
+// Updates the hotwords table for meeting minutes.
 //
 // @param request - ModifyCloudNotePhrasesRequest
 //
@@ -7229,6 +8993,20 @@ func (client *Client) ModifyCloudNotePhrases(request *ModifyCloudNotePhrasesRequ
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies a bypass live streaming layout.
+//
+// Description:
+//
+// # Usage notes
+//
+// Before you call this operation, you must call [CreateMPULayout](https://help.aliyun.com/document_detail/162192.html) to create a bypass live streaming layout.
+//
+// # QPS limit
+//
+// The QPS limit for a single user is 10 calls per second. If the limit is exceeded, API calls are throttled, which may affect your services. Make API calls at a reasonable rate. For more information, see [QPS limits](https://help.aliyun.com/document_detail/341645.html).
+//
 // @param request - ModifyMPULayoutRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -7289,6 +9067,20 @@ func (client *Client) ModifyMPULayoutWithOptions(request *ModifyMPULayoutRequest
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies a bypass live streaming layout.
+//
+// Description:
+//
+// # Usage notes
+//
+// Before you call this operation, you must call [CreateMPULayout](https://help.aliyun.com/document_detail/162192.html) to create a bypass live streaming layout.
+//
+// # QPS limit
+//
+// The QPS limit for a single user is 10 calls per second. If the limit is exceeded, API calls are throttled, which may affect your services. Make API calls at a reasonable rate. For more information, see [QPS limits](https://help.aliyun.com/document_detail/341645.html).
+//
 // @param request - ModifyMPULayoutRequest
 //
 // @return ModifyMPULayoutResponse
@@ -7305,7 +9097,13 @@ func (client *Client) ModifyMPULayout(request *ModifyMPULayoutRequest) (_result 
 
 // Summary:
 //
-// 设置流属性
+// Sets the stream properties.
+//
+// Description:
+//
+// ### QPS limit
+//
+// The QPS limit for a single user is 10 queries per second. If the limit is exceeded, API calls are throttled, which may affect your services. Call this API operation at a reasonable frequency.
 //
 // @param tmpReq - ModifyStreamingPropertyRequest
 //
@@ -7371,7 +9169,13 @@ func (client *Client) ModifyStreamingPropertyWithOptions(tmpReq *ModifyStreaming
 
 // Summary:
 //
-// 设置流属性
+// Sets the stream properties.
+//
+// Description:
+//
+// ### QPS limit
+//
+// The QPS limit for a single user is 10 queries per second. If the limit is exceeded, API calls are throttled, which may affect your services. Call this API operation at a reasonable frequency.
 //
 // @param request - ModifyStreamingPropertyRequest
 //
@@ -7389,7 +9193,13 @@ func (client *Client) ModifyStreamingProperty(request *ModifyStreamingPropertyRe
 
 // Summary:
 //
-// 设置合流布局
+// Configures the mixed stream layout.
+//
+// Description:
+//
+// ### QPS limit
+//
+// The QPS limit per user is 10 calls per second. If this limit is exceeded, API calls are throttled, which may affect your services. Call the API at a reasonable rate.
 //
 // @param tmpReq - ModifyViewLayoutRequest
 //
@@ -7475,7 +9285,13 @@ func (client *Client) ModifyViewLayoutWithOptions(tmpReq *ModifyViewLayoutReques
 
 // Summary:
 //
-// 设置合流布局
+// Configures the mixed stream layout.
+//
+// Description:
+//
+// ### QPS limit
+//
+// The QPS limit per user is 10 calls per second. If this limit is exceeded, API calls are throttled, which may affect your services. Call the API at a reasonable rate.
 //
 // @param request - ModifyViewLayoutRequest
 //
@@ -7587,6 +9403,20 @@ func (client *Client) NotifyAgent(request *NotifyAgentRequest) (_result *NotifyA
 	return _result, _err
 }
 
+// Summary:
+//
+// Call the RemoveTerminals operation to remove specified end users from a channel.
+//
+// Description:
+//
+// # Usage notes
+//
+// This API removes specified end users from a channel.
+//
+// # QPS limit
+//
+// The queries per second (QPS) limit for this API is 1,000 calls per minute per user. If you exceed the limit, API calls are subject to rate limiting, which may affect your business. Call this API at a reasonable rate. For more information, see [QPS limit](https://help.aliyun.com/document_detail/341645.html).
+//
 // @param request - RemoveTerminalsRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -7639,6 +9469,20 @@ func (client *Client) RemoveTerminalsWithOptions(request *RemoveTerminalsRequest
 	return _result, _err
 }
 
+// Summary:
+//
+// Call the RemoveTerminals operation to remove specified end users from a channel.
+//
+// Description:
+//
+// # Usage notes
+//
+// This API removes specified end users from a channel.
+//
+// # QPS limit
+//
+// The queries per second (QPS) limit for this API is 1,000 calls per minute per user. If you exceed the limit, API calls are subject to rate limiting, which may affect your business. Call this API at a reasonable rate. For more information, see [QPS limit](https://help.aliyun.com/document_detail/341645.html).
+//
 // @param request - RemoveTerminalsRequest
 //
 // @return RemoveTerminalsResponse
@@ -7656,6 +9500,16 @@ func (client *Client) RemoveTerminals(request *RemoveTerminalsRequest) (_result 
 // Summary:
 //
 // # RemoveUsers
+//
+// Description:
+//
+// ### How-To
+//
+// This API is used to kick users out of an online channel.
+//
+// ### queries per second (QPS) Limit
+//
+// The QPS limit for this API is 10 requests per second per user. If the limit is exceeded, API calls will be subject to Rate Limiting, which may Impact your business. Please invoke the API appropriately.
 //
 // @param request - RemoveUsersRequest
 //
@@ -7709,6 +9563,16 @@ func (client *Client) RemoveUsersWithOptions(request *RemoveUsersRequest, runtim
 //
 // # RemoveUsers
 //
+// Description:
+//
+// ### How-To
+//
+// This API is used to kick users out of an online channel.
+//
+// ### queries per second (QPS) Limit
+//
+// The QPS limit for this API is 10 requests per second per user. If the limit is exceeded, API calls will be subject to Rate Limiting, which may Impact your business. Please invoke the API appropriately.
+//
 // @param request - RemoveUsersRequest
 //
 // @return RemoveUsersResponse
@@ -7725,7 +9589,13 @@ func (client *Client) RemoveUsers(request *RemoveUsersRequest) (_result *RemoveU
 
 // Summary:
 //
-// 取消Sip邀请
+// Cancels a SIP invite.
+//
+// Description:
+//
+// ### QPS limit
+//
+// The queries per second (QPS) limit for this API is 10 per user. If you exceed this limit, API calls are subject to rate limiting, which may affect your business. Call this API at a reasonable frequency.
 //
 // @param request - RtcCancelSipInviteRequest
 //
@@ -7781,7 +9651,13 @@ func (client *Client) RtcCancelSipInviteWithOptions(request *RtcCancelSipInviteR
 
 // Summary:
 //
-// 取消Sip邀请
+// Cancels a SIP invite.
+//
+// Description:
+//
+// ### QPS limit
+//
+// The queries per second (QPS) limit for this API is 10 per user. If you exceed this limit, API calls are subject to rate limiting, which may affect your business. Call this API at a reasonable frequency.
 //
 // @param request - RtcCancelSipInviteRequest
 //
@@ -7799,7 +9675,91 @@ func (client *Client) RtcCancelSipInvite(request *RtcCancelSipInviteRequest) (_r
 
 // Summary:
 //
-// 邀请SIP加入频道
+// Sends DTMF key signals to a target OneRTC SIP call in a specified channel.
+//
+// @param request - RtcSendSipDtmfRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return RtcSendSipDtmfResponse
+func (client *Client) RtcSendSipDtmfWithOptions(request *RtcSendSipDtmfRequest, runtime *dara.RuntimeOptions) (_result *RtcSendSipDtmfResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.AppId) {
+		query["AppId"] = request.AppId
+	}
+
+	if !dara.IsNil(request.ChannelId) {
+		query["ChannelId"] = request.ChannelId
+	}
+
+	if !dara.IsNil(request.ChannelUserId) {
+		query["ChannelUserId"] = request.ChannelUserId
+	}
+
+	if !dara.IsNil(request.DeviceType) {
+		query["DeviceType"] = request.DeviceType
+	}
+
+	if !dara.IsNil(request.Digits) {
+		query["Digits"] = request.Digits
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("RtcSendSipDtmf"),
+		Version:     dara.String("2018-01-11"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &RtcSendSipDtmfResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Sends DTMF key signals to a target OneRTC SIP call in a specified channel.
+//
+// @param request - RtcSendSipDtmfRequest
+//
+// @return RtcSendSipDtmfResponse
+func (client *Client) RtcSendSipDtmf(request *RtcSendSipDtmfRequest) (_result *RtcSendSipDtmfResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &RtcSendSipDtmfResponse{}
+	_body, _err := client.RtcSendSipDtmfWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
+// Invites a SIP endpoint to join a channel.
+//
+// Description:
+//
+// ### Rate limit
+//
+// The queries per second (QPS) limit for a single user is 10. If the limit is exceeded, API calls are throttled, which may affect your services. Call this API operation at a reasonable frequency.
 //
 // @param request - RtcSipInviteMemberRequest
 //
@@ -7899,7 +9859,13 @@ func (client *Client) RtcSipInviteMemberWithOptions(request *RtcSipInviteMemberR
 
 // Summary:
 //
-// 邀请SIP加入频道
+// Invites a SIP endpoint to join a channel.
+//
+// Description:
+//
+// ### Rate limit
+//
+// The queries per second (QPS) limit for a single user is 10. If the limit is exceeded, API calls are throttled, which may affect your services. Call this API operation at a reasonable frequency.
 //
 // @param request - RtcSipInviteMemberRequest
 //
@@ -7917,7 +9883,13 @@ func (client *Client) RtcSipInviteMember(request *RtcSipInviteMemberRequest) (_r
 
 // Summary:
 //
-// # Mute操作
+// Mutes or unmutes the microphone for a SIP endpoint.
+//
+// Description:
+//
+// ### QPS limits
+//
+// The QPS limit for a single user is 10 calls per second. If the limit is exceeded, API calls are throttled, which may affect your services. Call this API operation at a reasonable frequency.
 //
 // @param request - RtcSipMuteRequest
 //
@@ -7969,7 +9941,13 @@ func (client *Client) RtcSipMuteWithOptions(request *RtcSipMuteRequest, runtime 
 
 // Summary:
 //
-// # Mute操作
+// Mutes or unmutes the microphone for a SIP endpoint.
+//
+// Description:
+//
+// ### QPS limits
+//
+// The QPS limit for a single user is 10 calls per second. If the limit is exceeded, API calls are throttled, which may affect your services. Call this API operation at a reasonable frequency.
 //
 // @param request - RtcSipMuteRequest
 //
@@ -7987,7 +9965,7 @@ func (client *Client) RtcSipMute(request *RtcSipMuteRequest) (_result *RtcSipMut
 
 // Summary:
 //
-// 启动AI Agent
+// Starts an AI agent.
 //
 // @param tmpReq - StartAgentRequest
 //
@@ -8061,7 +10039,7 @@ func (client *Client) StartAgentWithOptions(tmpReq *StartAgentRequest, runtime *
 
 // Summary:
 //
-// 启动AI Agent
+// Starts an AI agent.
 //
 // @param request - StartAgentRequest
 //
@@ -8079,7 +10057,13 @@ func (client *Client) StartAgent(request *StartAgentRequest) (_result *StartAgen
 
 // Summary:
 //
-// 开启某个事件回调
+// Starts an event callback.
+//
+// Description:
+//
+// ### QPS limits
+//
+// The queries per second (QPS) limit for this API is 10 calls per second per user. If you exceed the limit, API calls are subject to rate limiting, which may affect your business. Call the API at a reasonable rate.
 //
 // @param tmpReq - StartCategoryCallbackRequest
 //
@@ -8133,7 +10117,13 @@ func (client *Client) StartCategoryCallbackWithOptions(tmpReq *StartCategoryCall
 
 // Summary:
 //
-// 开启某个事件回调
+// Starts an event callback.
+//
+// Description:
+//
+// ### QPS limits
+//
+// The queries per second (QPS) limit for this API is 10 calls per second per user. If you exceed the limit, API calls are subject to rate limiting, which may affect your business. Call the API at a reasonable rate.
 //
 // @param request - StartCategoryCallbackRequest
 //
@@ -8151,7 +10141,23 @@ func (client *Client) StartCategoryCallback(request *StartCategoryCallbackReques
 
 // Summary:
 //
-// 开启智能纪要
+// Starts an intelligent meeting minutes task.
+//
+// Description:
+//
+// ### Usage notes
+//
+// This operation starts a meeting minutes task for an online channel. If you need meeting minutes and subtitles, enable all features.
+//
+// ### QPS limits
+//
+// The queries per second (QPS) limit per user is 10. If the limit is exceeded, API calls are throttled, which may affect your services. Call the operation at a reasonable frequency.
+//
+// > Concurrency limits
+//
+// > - Only one meeting minutes task can run in the same channel at a time.
+//
+// > - You can start and stop meeting minutes tasks multiple times in the same channel, but the TaskId must be different each time.
 //
 // @param tmpReq - StartCloudNoteRequest
 //
@@ -8281,7 +10287,23 @@ func (client *Client) StartCloudNoteWithOptions(tmpReq *StartCloudNoteRequest, r
 
 // Summary:
 //
-// 开启智能纪要
+// Starts an intelligent meeting minutes task.
+//
+// Description:
+//
+// ### Usage notes
+//
+// This operation starts a meeting minutes task for an online channel. If you need meeting minutes and subtitles, enable all features.
+//
+// ### QPS limits
+//
+// The queries per second (QPS) limit per user is 10. If the limit is exceeded, API calls are throttled, which may affect your services. Call the operation at a reasonable frequency.
+//
+// > Concurrency limits
+//
+// > - Only one meeting minutes task can run in the same channel at a time.
+//
+// > - You can start and stop meeting minutes tasks multiple times in the same channel, but the TaskId must be different each time.
 //
 // @param request - StartCloudNoteRequest
 //
@@ -8299,7 +10321,17 @@ func (client *Client) StartCloudNote(request *StartCloudNoteRequest) (_result *S
 
 // Summary:
 //
-// # StartCloudRecord
+// Starts a cloud recording task.
+//
+// Description:
+//
+// ### Usage notes
+//
+// This operation starts a cloud recording task for an online channel.
+//
+// ### QPS limit
+//
+// The queries per second (QPS) limit for a single user is 10. If the limit is exceeded, API calls are throttled, which may affect your services. Call this operation at a reasonable frequency.
 //
 // @param tmpReq - StartCloudRecordRequest
 //
@@ -8437,7 +10469,17 @@ func (client *Client) StartCloudRecordWithOptions(tmpReq *StartCloudRecordReques
 
 // Summary:
 //
-// # StartCloudRecord
+// Starts a cloud recording task.
+//
+// Description:
+//
+// ### Usage notes
+//
+// This operation starts a cloud recording task for an online channel.
+//
+// ### QPS limit
+//
+// The queries per second (QPS) limit for a single user is 10. If the limit is exceeded, API calls are throttled, which may affect your services. Call this operation at a reasonable frequency.
 //
 // @param request - StartCloudRecordRequest
 //
@@ -8453,6 +10495,28 @@ func (client *Client) StartCloudRecord(request *StartCloudRecordRequest) (_resul
 	return _result, _err
 }
 
+// Summary:
+//
+// Starts a bypass relaying task.
+//
+// Description:
+//
+// # Usage notes
+//
+// This operation is used to start a bypass relaying task. When you use the bypass relaying service, ApsaraVideo Live has the following limits:
+//
+// <props="china">- For the concurrency limit on tasks, see [Concurrency limits](https://help.aliyun.com/document_detail/71050.html#section-eaz-anq-a47). If you have special requirements, [submit a ticket](https://selfservice.console.aliyun.com/ticket/createIndex) two weeks in advance.
+//
+// <props="intl">- For the concurrency limit on tasks, see [Concurrency limits](https://www.alibabacloud.com/help/rtc-61399/latest/60e652#section-eaz-anq-a47). If you have special requirements, [submit a ticket](https://workorder-intl.console.aliyun.com/#/ticket/createIndex) two weeks in advance.
+//
+// - If the transcoding feature is disabled, each account can concurrently push up to 20 original-quality live streams per live streaming accelerated domain name by default. If you have special requirements, [submit a ticket](https://selfservice.console.aliyun.com/ticket/createIndex).
+//
+// - If the transcoding feature is enabled, each account can concurrently push up to 10 transcoded live streams per live streaming accelerated domain name by default. If you have special requirements, [submit a ticket](https://selfservice.console.aliyun.com/ticket/createIndex).
+//
+// # QPS limit
+//
+// The QPS limit for a single user calling this operation is 500 queries per second. If the limit is exceeded, API calls are throttled, which may affect your business. Make API calls at a reasonable frequency. For more information, see [QPS limits](https://help.aliyun.com/document_detail/341645.html).
+//
 // @param request - StartMPUTaskRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -8614,6 +10678,28 @@ func (client *Client) StartMPUTaskWithOptions(request *StartMPUTaskRequest, runt
 	return _result, _err
 }
 
+// Summary:
+//
+// Starts a bypass relaying task.
+//
+// Description:
+//
+// # Usage notes
+//
+// This operation is used to start a bypass relaying task. When you use the bypass relaying service, ApsaraVideo Live has the following limits:
+//
+// <props="china">- For the concurrency limit on tasks, see [Concurrency limits](https://help.aliyun.com/document_detail/71050.html#section-eaz-anq-a47). If you have special requirements, [submit a ticket](https://selfservice.console.aliyun.com/ticket/createIndex) two weeks in advance.
+//
+// <props="intl">- For the concurrency limit on tasks, see [Concurrency limits](https://www.alibabacloud.com/help/rtc-61399/latest/60e652#section-eaz-anq-a47). If you have special requirements, [submit a ticket](https://workorder-intl.console.aliyun.com/#/ticket/createIndex) two weeks in advance.
+//
+// - If the transcoding feature is disabled, each account can concurrently push up to 20 original-quality live streams per live streaming accelerated domain name by default. If you have special requirements, [submit a ticket](https://selfservice.console.aliyun.com/ticket/createIndex).
+//
+// - If the transcoding feature is enabled, each account can concurrently push up to 10 transcoded live streams per live streaming accelerated domain name by default. If you have special requirements, [submit a ticket](https://selfservice.console.aliyun.com/ticket/createIndex).
+//
+// # QPS limit
+//
+// The QPS limit for a single user calling this operation is 500 queries per second. If the limit is exceeded, API calls are throttled, which may affect your business. Make API calls at a reasonable frequency. For more information, see [QPS limits](https://help.aliyun.com/document_detail/341645.html).
+//
 // @param request - StartMPUTaskRequest
 //
 // @return StartMPUTaskResponse
@@ -8628,6 +10714,24 @@ func (client *Client) StartMPUTask(request *StartMPUTaskRequest) (_result *Start
 	return _result, _err
 }
 
+// Summary:
+//
+// Starts a video recording task.
+//
+// Description:
+//
+// # Usage notes
+//
+// - Before you call this operation, you must call [AddRecordTemplate](https://help.aliyun.com/document_detail/193625.html) to add a recording configuration template.
+//
+// <props="china">- By default, you can start a maximum of 100 recording tasks at the same time. If the limit is exceeded, new recording tasks become unavailable. If you have special requirements, [submit a ticket](https://selfservice.console.aliyun.com/ticket/createIndex).
+//
+// <props="intl">- By default, you can start a maximum of 100 recording tasks at the same time. If the limit is exceeded, new recording tasks become unavailable. If you have special requirements, [submit a ticket](https://workorder-intl.console.aliyun.com/#/ticket/createIndex).
+//
+// # QPS limit
+//
+// The QPS limit for a single user is 500 queries per second. If the limit is exceeded, API calls are throttled, which may affect your business. Make API calls properly. For more information, see [QPS limits](https://help.aliyun.com/document_detail/341645.html).
+//
 // @param request - StartRecordTaskRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -8744,6 +10848,24 @@ func (client *Client) StartRecordTaskWithOptions(request *StartRecordTaskRequest
 	return _result, _err
 }
 
+// Summary:
+//
+// Starts a video recording task.
+//
+// Description:
+//
+// # Usage notes
+//
+// - Before you call this operation, you must call [AddRecordTemplate](https://help.aliyun.com/document_detail/193625.html) to add a recording configuration template.
+//
+// <props="china">- By default, you can start a maximum of 100 recording tasks at the same time. If the limit is exceeded, new recording tasks become unavailable. If you have special requirements, [submit a ticket](https://selfservice.console.aliyun.com/ticket/createIndex).
+//
+// <props="intl">- By default, you can start a maximum of 100 recording tasks at the same time. If the limit is exceeded, new recording tasks become unavailable. If you have special requirements, [submit a ticket](https://workorder-intl.console.aliyun.com/#/ticket/createIndex).
+//
+// # QPS limit
+//
+// The QPS limit for a single user is 500 queries per second. If the limit is exceeded, API calls are throttled, which may affect your business. Make API calls properly. For more information, see [QPS limits](https://help.aliyun.com/document_detail/341645.html).
+//
 // @param request - StartRecordTaskRequest
 //
 // @return StartRecordTaskResponse
@@ -8760,7 +10882,17 @@ func (client *Client) StartRecordTask(request *StartRecordTaskRequest) (_result 
 
 // Summary:
 //
-// # StartStreamingOut
+// Starts a bypass streaming task.
+//
+// Description:
+//
+// ### Usage notes
+//
+// This operation starts a bypass streaming task for an online channel.
+//
+// ### QPS limit
+//
+// The queries per second (QPS) limit for a single user is 10. If the limit is exceeded, API calls are throttled, which may affect your services. Call this operation at a reasonable frequency.
 //
 // @param tmpReq - StartStreamingOutRequest
 //
@@ -8890,7 +11022,17 @@ func (client *Client) StartStreamingOutWithOptions(tmpReq *StartStreamingOutRequ
 
 // Summary:
 //
-// # StartStreamingOut
+// Starts a bypass streaming task.
+//
+// Description:
+//
+// ### Usage notes
+//
+// This operation starts a bypass streaming task for an online channel.
+//
+// ### QPS limit
+//
+// The queries per second (QPS) limit for a single user is 10. If the limit is exceeded, API calls are throttled, which may affect your services. Call this operation at a reasonable frequency.
 //
 // @param request - StartStreamingOutRequest
 //
@@ -8908,7 +11050,13 @@ func (client *Client) StartStreamingOut(request *StartStreamingOutRequest) (_res
 
 // Summary:
 //
-// 开始合流
+// Starts stream mixing.
+//
+// Description:
+//
+// ### QPS limits
+//
+// The QPS limit for a single user is 10 queries per second. If the limit is exceeded, API calls are throttled, which may affect your services. Call the API operation at a reasonable frequency.
 //
 // @param tmpReq - StartViewRequest
 //
@@ -8998,7 +11146,13 @@ func (client *Client) StartViewWithOptions(tmpReq *StartViewRequest, runtime *da
 
 // Summary:
 //
-// 开始合流
+// Starts stream mixing.
+//
+// Description:
+//
+// ### QPS limits
+//
+// The QPS limit for a single user is 10 queries per second. If the limit is exceeded, API calls are throttled, which may affect your services. Call the API operation at a reasonable frequency.
 //
 // @param request - StartViewRequest
 //
@@ -9016,7 +11170,7 @@ func (client *Client) StartView(request *StartViewRequest) (_result *StartViewRe
 
 // Summary:
 //
-// 停止AI Agent
+// Stops an AI agent.
 //
 // @param request - StopAgentRequest
 //
@@ -9068,7 +11222,7 @@ func (client *Client) StopAgentWithOptions(request *StopAgentRequest, runtime *d
 
 // Summary:
 //
-// 停止AI Agent
+// Stops an AI agent.
 //
 // @param request - StopAgentRequest
 //
@@ -9086,7 +11240,13 @@ func (client *Client) StopAgent(request *StopAgentRequest) (_result *StopAgentRe
 
 // Summary:
 //
-// 关闭某个事件回调
+// Disables an event callback.
+//
+// Description:
+//
+// ### QPS limit
+//
+// The QPS limit for a single user is 10 calls per second. If the limit is exceeded, API calls are throttled, which may affect your services. Make API calls at a reasonable rate.
 //
 // @param tmpReq - StopCategoryCallbackRequest
 //
@@ -9140,7 +11300,13 @@ func (client *Client) StopCategoryCallbackWithOptions(tmpReq *StopCategoryCallba
 
 // Summary:
 //
-// 关闭某个事件回调
+// Disables an event callback.
+//
+// Description:
+//
+// ### QPS limit
+//
+// The QPS limit for a single user is 10 calls per second. If the limit is exceeded, API calls are throttled, which may affect your services. Make API calls at a reasonable rate.
 //
 // @param request - StopCategoryCallbackRequest
 //
@@ -9158,7 +11324,17 @@ func (client *Client) StopCategoryCallback(request *StopCategoryCallbackRequest)
 
 // Summary:
 //
-// 删除频道
+// This API is used by the server to actively shut down a channel.
+//
+// Description:
+//
+// ### How-To
+//
+// This API is used by the server to actively shut down an online channel.
+//
+// ### queries per second (QPS) Limit
+//
+// The QPS limit for this API is 10 queries per second per user. If the limit is exceeded, API calls will be subject to rate limiting, which may impact your service. Invoke this API appropriately.
 //
 // @param request - StopChannelRequest
 //
@@ -9206,7 +11382,17 @@ func (client *Client) StopChannelWithOptions(request *StopChannelRequest, runtim
 
 // Summary:
 //
-// 删除频道
+// This API is used by the server to actively shut down a channel.
+//
+// Description:
+//
+// ### How-To
+//
+// This API is used by the server to actively shut down an online channel.
+//
+// ### queries per second (QPS) Limit
+//
+// The QPS limit for this API is 10 queries per second per user. If the limit is exceeded, API calls will be subject to rate limiting, which may impact your service. Invoke this API appropriately.
 //
 // @param request - StopChannelRequest
 //
@@ -9224,7 +11410,17 @@ func (client *Client) StopChannel(request *StopChannelRequest) (_result *StopCha
 
 // Summary:
 //
-// 停止智能纪要
+// Stops an intelligent meeting minutes task.
+//
+// Description:
+//
+// ### Usage notes
+//
+// This operation stops a meeting minutes task for an online channel.
+//
+// ### QPS limits
+//
+// The QPS limit per user is 10 calls per second. If the limit is exceeded, API calls are throttled, which may affect your services. Call the operation at a reasonable rate.
 //
 // @param request - StopCloudNoteRequest
 //
@@ -9280,7 +11476,17 @@ func (client *Client) StopCloudNoteWithOptions(request *StopCloudNoteRequest, ru
 
 // Summary:
 //
-// 停止智能纪要
+// Stops an intelligent meeting minutes task.
+//
+// Description:
+//
+// ### Usage notes
+//
+// This operation stops a meeting minutes task for an online channel.
+//
+// ### QPS limits
+//
+// The QPS limit per user is 10 calls per second. If the limit is exceeded, API calls are throttled, which may affect your services. Call the operation at a reasonable rate.
 //
 // @param request - StopCloudNoteRequest
 //
@@ -9299,6 +11505,16 @@ func (client *Client) StopCloudNote(request *StopCloudNoteRequest) (_result *Sto
 // Summary:
 //
 // # StopCloudRecord
+//
+// Description:
+//
+// ### How-To
+//
+// This API is used to stop an online channel cloud recording job.
+//
+// ### queries per second (QPS) Limit
+//
+// The QPS limit for this API is 10 queries per second (QPS) per user. If the limit is exceeded, API calls will be subject to rate limiting, which may impact your business. Please invoke the API appropriately.
 //
 // @param request - StopCloudRecordRequest
 //
@@ -9352,6 +11568,16 @@ func (client *Client) StopCloudRecordWithOptions(request *StopCloudRecordRequest
 //
 // # StopCloudRecord
 //
+// Description:
+//
+// ### How-To
+//
+// This API is used to stop an online channel cloud recording job.
+//
+// ### queries per second (QPS) Limit
+//
+// The QPS limit for this API is 10 queries per second (QPS) per user. If the limit is exceeded, API calls will be subject to rate limiting, which may impact your business. Please invoke the API appropriately.
+//
 // @param request - StopCloudRecordRequest
 //
 // @return StopCloudRecordResponse
@@ -9366,6 +11592,22 @@ func (client *Client) StopCloudRecord(request *StopCloudRecordRequest) (_result 
 	return _result, _err
 }
 
+// Summary:
+//
+// Calls the StopMPUTask operation to stop a stream relay task.
+//
+// Description:
+//
+// # Usage notes
+//
+// - Before you call this operation, you must have called [StartMpuTask](https://help.aliyun.com/document_detail/93183.html) to start a stream relay task.
+//
+// - If you need to stop a stream relay task and the stream relay task is abnormal (the StopMPUTask operation is not called to stop the task), the stream relay task is automatically stopped 2 minutes after the last user leaves the channel. After the task is stopped, if you need to resume stream relay, you need to call the [StartMpuTask](https://help.aliyun.com/document_detail/93183.html) operation again.
+//
+// # QPS limit
+//
+// The QPS limit per user for this operation is 500 times per second. If the limit is exceeded, API calls are throttled, which may affect your business. Call the operation properly. For more information, see [QPS limits](https://help.aliyun.com/document_detail/341645.html).
+//
 // @param request - StopMPUTaskRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -9414,6 +11656,22 @@ func (client *Client) StopMPUTaskWithOptions(request *StopMPUTaskRequest, runtim
 	return _result, _err
 }
 
+// Summary:
+//
+// Calls the StopMPUTask operation to stop a stream relay task.
+//
+// Description:
+//
+// # Usage notes
+//
+// - Before you call this operation, you must have called [StartMpuTask](https://help.aliyun.com/document_detail/93183.html) to start a stream relay task.
+//
+// - If you need to stop a stream relay task and the stream relay task is abnormal (the StopMPUTask operation is not called to stop the task), the stream relay task is automatically stopped 2 minutes after the last user leaves the channel. After the task is stopped, if you need to resume stream relay, you need to call the [StartMpuTask](https://help.aliyun.com/document_detail/93183.html) operation again.
+//
+// # QPS limit
+//
+// The QPS limit per user for this operation is 500 times per second. If the limit is exceeded, API calls are throttled, which may affect your business. Call the operation properly. For more information, see [QPS limits](https://help.aliyun.com/document_detail/341645.html).
+//
 // @param request - StopMPUTaskRequest
 //
 // @return StopMPUTaskResponse
@@ -9428,6 +11686,20 @@ func (client *Client) StopMPUTask(request *StopMPUTaskRequest) (_result *StopMPU
 	return _result, _err
 }
 
+// Summary:
+//
+// Calls the StopRecordTask operation to stop a video recording task.
+//
+// Description:
+//
+// # Usage notes
+//
+// Before you call this operation, you must call the [StartRecordTask](https://help.aliyun.com/document_detail/193528.html) operation to start a video recording task.
+//
+// # QPS limit
+//
+// You can call this operation up to 4,000 times per minute per user. If the number of calls per minute exceeds the limit, throttling is triggered, which may affect your business. Call this operation as required. For more information, see [QPS limit](https://help.aliyun.com/document_detail/341645.html).
+//
 // @param request - StopRecordTaskRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -9476,6 +11748,20 @@ func (client *Client) StopRecordTaskWithOptions(request *StopRecordTaskRequest, 
 	return _result, _err
 }
 
+// Summary:
+//
+// Calls the StopRecordTask operation to stop a video recording task.
+//
+// Description:
+//
+// # Usage notes
+//
+// Before you call this operation, you must call the [StartRecordTask](https://help.aliyun.com/document_detail/193528.html) operation to start a video recording task.
+//
+// # QPS limit
+//
+// You can call this operation up to 4,000 times per minute per user. If the number of calls per minute exceeds the limit, throttling is triggered, which may affect your business. Call this operation as required. For more information, see [QPS limit](https://help.aliyun.com/document_detail/341645.html).
+//
 // @param request - StopRecordTaskRequest
 //
 // @return StopRecordTaskResponse
@@ -9493,6 +11779,16 @@ func (client *Client) StopRecordTask(request *StopRecordTaskRequest) (_result *S
 // Summary:
 //
 // # StopStreamingOut
+//
+// Description:
+//
+// ### How-To
+//
+// This API is used to stop a bypass stream ingest job for an online channel.
+//
+// ### queries per second (QPS) Limit
+//
+// The QPS limit for this API is 10 queries per second (QPS) per user. If the limit is exceeded, API calls will be subject to rate limiting, which may impact your business. Invoke this API appropriately.
 //
 // @param request - StopStreamingOutRequest
 //
@@ -9546,6 +11842,16 @@ func (client *Client) StopStreamingOutWithOptions(request *StopStreamingOutReque
 //
 // # StopStreamingOut
 //
+// Description:
+//
+// ### How-To
+//
+// This API is used to stop a bypass stream ingest job for an online channel.
+//
+// ### queries per second (QPS) Limit
+//
+// The QPS limit for this API is 10 queries per second (QPS) per user. If the limit is exceeded, API calls will be subject to rate limiting, which may impact your business. Invoke this API appropriately.
+//
 // @param request - StopStreamingOutRequest
 //
 // @return StopStreamingOutResponse
@@ -9562,7 +11868,13 @@ func (client *Client) StopStreamingOut(request *StopStreamingOutRequest) (_resul
 
 // Summary:
 //
-// 停止合流
+// Stop stream mixing.
+//
+// Description:
+//
+// ### QPS limit
+//
+// The QPS limit for this API is 10 requests per second per user. Exceeding this limit triggers rate limiting, which can affect your application. Therefore, call the API judiciously.
 //
 // @param request - StopViewRequest
 //
@@ -9614,7 +11926,13 @@ func (client *Client) StopViewWithOptions(request *StopViewRequest, runtime *dar
 
 // Summary:
 //
-// 停止合流
+// Stop stream mixing.
+//
+// Description:
+//
+// ### QPS limit
+//
+// The QPS limit for this API is 10 requests per second per user. Exceeding this limit triggers rate limiting, which can affect your application. Therefore, call the API judiciously.
 //
 // @param request - StopViewRequest
 //
@@ -9632,7 +11950,7 @@ func (client *Client) StopView(request *StopViewRequest) (_result *StopViewRespo
 
 // Summary:
 //
-// 更新AI Agent
+// # Update an AI Agent
 //
 // @param tmpReq - UpdateAgentRequest
 //
@@ -9694,7 +12012,7 @@ func (client *Client) UpdateAgentWithOptions(tmpReq *UpdateAgentRequest, runtime
 
 // Summary:
 //
-// 更新AI Agent
+// # Update an AI Agent
 //
 // @param request - UpdateAgentRequest
 //
@@ -9710,6 +12028,20 @@ func (client *Client) UpdateAgent(request *UpdateAgentRequest) (_result *UpdateA
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies an automatic bypass single-stream relay rule.
+//
+// Description:
+//
+// # Usage notes
+//
+// Before you call this operation, you must call [CreateAutoLiveStreamRule](https://help.aliyun.com/document_detail/353179.html) to create a bypass rule.
+//
+// # QPS limits
+//
+// The QPS limit for a single user is 1,000 calls per minute. If the limit is exceeded, API calls are throttled, which may affect your business. Make API calls at a reasonable frequency. For more information, see [QPS limits](https://help.aliyun.com/document_detail/341645.html).
+//
 // @param request - UpdateAutoLiveStreamRuleRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -9782,6 +12114,20 @@ func (client *Client) UpdateAutoLiveStreamRuleWithOptions(request *UpdateAutoLiv
 	return _result, _err
 }
 
+// Summary:
+//
+// Modifies an automatic bypass single-stream relay rule.
+//
+// Description:
+//
+// # Usage notes
+//
+// Before you call this operation, you must call [CreateAutoLiveStreamRule](https://help.aliyun.com/document_detail/353179.html) to create a bypass rule.
+//
+// # QPS limits
+//
+// The QPS limit for a single user is 1,000 calls per minute. If the limit is exceeded, API calls are throttled, which may affect your business. Make API calls at a reasonable frequency. For more information, see [QPS limits](https://help.aliyun.com/document_detail/341645.html).
+//
 // @param request - UpdateAutoLiveStreamRuleRequest
 //
 // @return UpdateAutoLiveStreamRuleResponse
@@ -9798,7 +12144,17 @@ func (client *Client) UpdateAutoLiveStreamRule(request *UpdateAutoLiveStreamRule
 
 // Summary:
 //
-// 更新云端录制任务
+// Updates a cloud recording task.
+//
+// Description:
+//
+// ### Usage
+//
+// Updates a cloud recording task for an online channel.
+//
+// ### QPS limit
+//
+// This API supports up to 10 requests per second per user. Exceeding this limit triggers rate limiting, which may affect your service. Call the API responsibly.
 //
 // @param tmpReq - UpdateCloudRecordRequest
 //
@@ -9884,7 +12240,17 @@ func (client *Client) UpdateCloudRecordWithOptions(tmpReq *UpdateCloudRecordRequ
 
 // Summary:
 //
-// 更新云端录制任务
+// Updates a cloud recording task.
+//
+// Description:
+//
+// ### Usage
+//
+// Updates a cloud recording task for an online channel.
+//
+// ### QPS limit
+//
+// This API supports up to 10 requests per second per user. Exceeding this limit triggers rate limiting, which may affect your service. Call the API responsibly.
 //
 // @param request - UpdateCloudRecordRequest
 //
@@ -9900,6 +12266,22 @@ func (client *Client) UpdateCloudRecord(request *UpdateCloudRecordRequest) (_res
 	return _result, _err
 }
 
+// Summary:
+//
+// Call UpdateMPUTask to update a bypass relay task.
+//
+// Description:
+//
+// # Usage notes
+//
+// - Before calling this API, you must have called [StartMpuTask](https://help.aliyun.com/document_detail/93183.html) to start a bypass relay task.
+//
+// - This API must be called while the task is running normally. Calls are invalid when the task has not started, has ended, or is in an abnormal state. You can call [GetMPUTaskStatus](https://help.aliyun.com/document_detail/93181.html) to obtain the task running status.
+//
+// # QPS limit
+//
+// The per-user QPS limit of this API is 4,000 calls per minute. If the limit is exceeded, API calls are throttled, which may affect your business. Please call reasonably. For more information, see [QPS Limits](https://help.aliyun.com/document_detail/341645.html).
+//
 // @param request - UpdateMPUTaskRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -10020,6 +12402,22 @@ func (client *Client) UpdateMPUTaskWithOptions(request *UpdateMPUTaskRequest, ru
 	return _result, _err
 }
 
+// Summary:
+//
+// Call UpdateMPUTask to update a bypass relay task.
+//
+// Description:
+//
+// # Usage notes
+//
+// - Before calling this API, you must have called [StartMpuTask](https://help.aliyun.com/document_detail/93183.html) to start a bypass relay task.
+//
+// - This API must be called while the task is running normally. Calls are invalid when the task has not started, has ended, or is in an abnormal state. You can call [GetMPUTaskStatus](https://help.aliyun.com/document_detail/93181.html) to obtain the task running status.
+//
+// # QPS limit
+//
+// The per-user QPS limit of this API is 4,000 calls per minute. If the limit is exceeded, API calls are throttled, which may affect your business. Please call reasonably. For more information, see [QPS Limits](https://help.aliyun.com/document_detail/341645.html).
+//
 // @param request - UpdateMPUTaskRequest
 //
 // @return UpdateMPUTaskResponse
@@ -10034,6 +12432,20 @@ func (client *Client) UpdateMPUTask(request *UpdateMPUTaskRequest) (_result *Upd
 	return _result, _err
 }
 
+// Summary:
+//
+// Updates a video recording task.
+//
+// Description:
+//
+// # Usage notes
+//
+// Before you call this operation, you must call [StartRecordTask](https://help.aliyun.com/document_detail/193528.html) to start a video recording task.
+//
+// # QPS limits
+//
+// The QPS limit for a single user is 100 calls per second. If the limit is exceeded, API calls are throttled, which may affect your business. Make API calls at a reasonable frequency. For more information, see [QPS limits](https://help.aliyun.com/document_detail/341645.html).
+//
 // @param request - UpdateRecordTaskRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -10138,6 +12550,20 @@ func (client *Client) UpdateRecordTaskWithOptions(request *UpdateRecordTaskReque
 	return _result, _err
 }
 
+// Summary:
+//
+// Updates a video recording task.
+//
+// Description:
+//
+// # Usage notes
+//
+// Before you call this operation, you must call [StartRecordTask](https://help.aliyun.com/document_detail/193528.html) to start a video recording task.
+//
+// # QPS limits
+//
+// The QPS limit for a single user is 100 calls per second. If the limit is exceeded, API calls are throttled, which may affect your business. Make API calls at a reasonable frequency. For more information, see [QPS limits](https://help.aliyun.com/document_detail/341645.html).
+//
 // @param request - UpdateRecordTaskRequest
 //
 // @return UpdateRecordTaskResponse
@@ -10152,6 +12578,20 @@ func (client *Client) UpdateRecordTask(request *UpdateRecordTaskRequest) (_resul
 	return _result, _err
 }
 
+// Summary:
+//
+// Updates a recording configuration template.
+//
+// Description:
+//
+// # Usage notes
+//
+// Before you call this operation, you must call [AddRecordTemplate](https://help.aliyun.com/document_detail/193625.html) to add a recording configuration template.
+//
+// # QPS limits
+//
+// The QPS limit for a single user is 100 calls per second. If the limit is exceeded, API calls are throttled, which may affect your business. Make API calls at a reasonable rate. For more information, see [QPS limits](https://help.aliyun.com/document_detail/341645.html).
+//
 // @param request - UpdateRecordTemplateRequest
 //
 // @param runtime - runtime options for this request RuntimeOptions
@@ -10268,6 +12708,20 @@ func (client *Client) UpdateRecordTemplateWithOptions(request *UpdateRecordTempl
 	return _result, _err
 }
 
+// Summary:
+//
+// Updates a recording configuration template.
+//
+// Description:
+//
+// # Usage notes
+//
+// Before you call this operation, you must call [AddRecordTemplate](https://help.aliyun.com/document_detail/193625.html) to add a recording configuration template.
+//
+// # QPS limits
+//
+// The QPS limit for a single user is 100 calls per second. If the limit is exceeded, API calls are throttled, which may affect your business. Make API calls at a reasonable rate. For more information, see [QPS limits](https://help.aliyun.com/document_detail/341645.html).
+//
 // @param request - UpdateRecordTemplateRequest
 //
 // @return UpdateRecordTemplateResponse
@@ -10284,7 +12738,17 @@ func (client *Client) UpdateRecordTemplate(request *UpdateRecordTemplateRequest)
 
 // Summary:
 //
-// 更新旁路推流任务
+// Updates a bypass live streaming task.
+//
+// Description:
+//
+// ### Usage notes
+//
+// This operation updates a bypass live streaming task for an online channel.
+//
+// ### QPS limit
+//
+// The QPS limit for a single user is 10 requests per second. If the limit is exceeded, API calls are throttled, which may affect your services. Make API calls at a reasonable frequency.
 //
 // @param tmpReq - UpdateStreamingOutRequest
 //
@@ -10386,7 +12850,17 @@ func (client *Client) UpdateStreamingOutWithOptions(tmpReq *UpdateStreamingOutRe
 
 // Summary:
 //
-// 更新旁路推流任务
+// Updates a bypass live streaming task.
+//
+// Description:
+//
+// ### Usage notes
+//
+// This operation updates a bypass live streaming task for an online channel.
+//
+// ### QPS limit
+//
+// The QPS limit for a single user is 10 requests per second. If the limit is exceeded, API calls are throttled, which may affect your services. Make API calls at a reasonable frequency.
 //
 // @param request - UpdateStreamingOutRequest
 //

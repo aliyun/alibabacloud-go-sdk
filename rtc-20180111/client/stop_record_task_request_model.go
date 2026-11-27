@@ -18,6 +18,8 @@ type iStopRecordTaskRequest interface {
 }
 
 type StopRecordTaskRequest struct {
+	// The application ID. Create and query the ID in the console. Only a single ID is supported.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -25,6 +27,8 @@ type StopRecordTaskRequest struct {
 	// yourAppId
 	AppId   *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
 	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The task ID. Only a single ID is supported. The value must be the same as the TaskId parameter of the [StartRecordTask](https://help.aliyun.com/document_detail/193528.html) operation.
+	//
 	// This parameter is required.
 	//
 	// example:

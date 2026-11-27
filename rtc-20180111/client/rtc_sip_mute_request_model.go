@@ -18,18 +18,24 @@ type iRtcSipMuteRequest interface {
 }
 
 type RtcSipMuteRequest struct {
+	// The application ID. You can create and query the ID in the console. Only a single ID is supported.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// eo85****
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The ID of an existing channel. Only a single ID is supported.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// testid
 	ChannelId *string `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
+	// The operations.
+	//
 	// This parameter is required.
 	Operations []*RtcSipMuteRequestOperations `json:"Operations,omitempty" xml:"Operations,omitempty" type:"Repeated"`
 }
@@ -83,26 +89,40 @@ func (s *RtcSipMuteRequest) Validate() error {
 }
 
 type RtcSipMuteRequestOperations struct {
+	// The list of user IDs.
+	//
 	// This parameter is required.
 	Ids []*string `json:"Ids,omitempty" xml:"Ids,omitempty" type:"Repeated"`
+	// The operation type.
+	//
+	// - replace
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// replace
 	Op *string `json:"Op,omitempty" xml:"Op,omitempty"`
+	// The operation ID. If some operations fail, you can use this ID for troubleshooting.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 12122121
 	OperationId *string `json:"OperationId,omitempty" xml:"OperationId,omitempty"`
+	// The operation scope.
+	//
+	// - /media/audio/status: Modifies the audio stream status of the user.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// /media/audio/status
 	Path *string `json:"Path,omitempty" xml:"Path,omitempty"`
+	// The operation value.
+	//
 	// This parameter is required.
 	Value *RtcSipMuteRequestOperationsValue `json:"Value,omitempty" xml:"Value,omitempty" type:"Struct"`
 }
@@ -170,6 +190,12 @@ func (s *RtcSipMuteRequestOperations) Validate() error {
 }
 
 type RtcSipMuteRequestOperationsValue struct {
+	// The actual value.
+	//
+	// - active: Unmutes the microphone.
+	//
+	// - inactive: Mutes the microphone.
+	//
 	// This parameter is required.
 	//
 	// example:

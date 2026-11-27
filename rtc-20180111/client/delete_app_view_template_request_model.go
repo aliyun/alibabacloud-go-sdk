@@ -16,12 +16,16 @@ type iDeleteAppViewTemplateRequest interface {
 }
 
 type DeleteAppViewTemplateRequest struct {
+	// The application ID. You can create and query the ID in the console. Only a single ID can be specified.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// wv7N****
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The template information.
+	//
 	// This parameter is required.
 	Template *DeleteAppViewTemplateRequestTemplate `json:"Template,omitempty" xml:"Template,omitempty" type:"Struct"`
 }
@@ -62,6 +66,8 @@ func (s *DeleteAppViewTemplateRequest) Validate() error {
 }
 
 type DeleteAppViewTemplateRequestTemplate struct {
+	// The template ID.
+	//
 	// This parameter is required.
 	//
 	// example:

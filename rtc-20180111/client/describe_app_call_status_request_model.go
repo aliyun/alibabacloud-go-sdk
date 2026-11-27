@@ -14,6 +14,8 @@ type iDescribeAppCallStatusRequest interface {
 }
 
 type DescribeAppCallStatusRequest struct {
+	// The application ID.
+	//
 	// This parameter is required.
 	//
 	// example:

@@ -16,7 +16,10 @@ type iDescribeRtcChannelMetricResponseBody interface {
 }
 
 type DescribeRtcChannelMetricResponseBody struct {
+	// The detailed information.
 	ChannelMetricInfo *DescribeRtcChannelMetricResponseBodyChannelMetricInfo `json:"ChannelMetricInfo,omitempty" xml:"ChannelMetricInfo,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 16A96B9A-F203-4EC5-8E43-CB92E68F4CD8
@@ -59,8 +62,10 @@ func (s *DescribeRtcChannelMetricResponseBody) Validate() error {
 }
 
 type DescribeRtcChannelMetricResponseBodyChannelMetricInfo struct {
+	// The user information of the channel.
 	ChannelMetric *DescribeRtcChannelMetricResponseBodyChannelMetricInfoChannelMetric `json:"ChannelMetric,omitempty" xml:"ChannelMetric,omitempty" type:"Struct"`
-	Duration      *DescribeRtcChannelMetricResponseBodyChannelMetricInfoDuration      `json:"Duration,omitempty" xml:"Duration,omitempty" type:"Struct"`
+	// The duration information.
+	Duration *DescribeRtcChannelMetricResponseBodyChannelMetricInfoDuration `json:"Duration,omitempty" xml:"Duration,omitempty" type:"Struct"`
 }
 
 func (s DescribeRtcChannelMetricResponseBodyChannelMetricInfo) String() string {
@@ -104,26 +109,38 @@ func (s *DescribeRtcChannelMetricResponseBodyChannelMetricInfo) Validate() error
 }
 
 type DescribeRtcChannelMetricResponseBodyChannelMetricInfoChannelMetric struct {
+	// The channel ID.
+	//
 	// example:
 	//
 	// example_channel
 	ChannelId *string `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
+	// The time when the user left the channel, in UTC. The time is in the yyyy-MM-ddTHH:mm:ssZ format.
+	//
 	// example:
 	//
 	// 2019-06-06T18:57:00Z
 	EndTime *string `json:"EndTime,omitempty" xml:"EndTime,omitempty"`
+	// The number of users that entered the channel and successfully published streams.
+	//
 	// example:
 	//
 	// 10
 	PubUserCount *int32 `json:"PubUserCount,omitempty" xml:"PubUserCount,omitempty"`
+	// The time when the user joined the channel, in UTC. The time is in the yyyy-MM-ddTHH:mm:ssZ format.
+	//
 	// example:
 	//
 	// 2019-06-06T17:57:00Z
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
+	// The number of users that entered the channel and successfully subscribed to streams.
+	//
 	// example:
 	//
 	// 25
 	SubUserCount *int32 `json:"SubUserCount,omitempty" xml:"SubUserCount,omitempty"`
+	// The number of users that entered the channel.
+	//
 	// example:
 	//
 	// 30
@@ -197,7 +214,9 @@ func (s *DescribeRtcChannelMetricResponseBodyChannelMetricInfoChannelMetric) Val
 }
 
 type DescribeRtcChannelMetricResponseBodyChannelMetricInfoDuration struct {
+	// The duration information about publishing streams.
 	PubDuration *DescribeRtcChannelMetricResponseBodyChannelMetricInfoDurationPubDuration `json:"PubDuration,omitempty" xml:"PubDuration,omitempty" type:"Struct"`
+	// The duration information about subscribing to streams.
 	SubDuration *DescribeRtcChannelMetricResponseBodyChannelMetricInfoDurationSubDuration `json:"SubDuration,omitempty" xml:"SubDuration,omitempty" type:"Struct"`
 }
 
@@ -242,22 +261,32 @@ func (s *DescribeRtcChannelMetricResponseBodyChannelMetricInfoDuration) Validate
 }
 
 type DescribeRtcChannelMetricResponseBodyChannelMetricInfoDurationPubDuration struct {
+	// The duration of audio. Unit: minutes.
+	//
 	// example:
 	//
 	// 100
 	Audio *int32 `json:"Audio,omitempty" xml:"Audio,omitempty"`
+	// The duration of screen sharing. Unit: minutes.
+	//
 	// example:
 	//
 	// 100
 	Content *int32 `json:"Content,omitempty" xml:"Content,omitempty"`
+	// The duration of full high-definition (FHD) videos. Unit: minutes.
+	//
 	// example:
 	//
 	// 100
 	Video1080 *int32 `json:"Video1080,omitempty" xml:"Video1080,omitempty"`
+	// The duration of standard-definition (SD) videos. Unit: minutes.
+	//
 	// example:
 	//
 	// 100
 	Video360 *int32 `json:"Video360,omitempty" xml:"Video360,omitempty"`
+	// The duration of high-definition (HD) videos. Unit: minutes.
+	//
 	// example:
 	//
 	// 100
@@ -322,22 +351,32 @@ func (s *DescribeRtcChannelMetricResponseBodyChannelMetricInfoDurationPubDuratio
 }
 
 type DescribeRtcChannelMetricResponseBodyChannelMetricInfoDurationSubDuration struct {
+	// The duration of audio. Unit: minutes.
+	//
 	// example:
 	//
 	// 100
 	Audio *int32 `json:"Audio,omitempty" xml:"Audio,omitempty"`
+	// The duration of screen sharing. Unit: minutes.
+	//
 	// example:
 	//
 	// 100
 	Content *int32 `json:"Content,omitempty" xml:"Content,omitempty"`
+	// The duration of full high-definition (FHD) videos. Unit: minutes.
+	//
 	// example:
 	//
 	// 100
 	Video1080 *int32 `json:"Video1080,omitempty" xml:"Video1080,omitempty"`
+	// The duration of standard-definition (SD) videos. Unit: minutes.
+	//
 	// example:
 	//
 	// 100
 	Video360 *int32 `json:"Video360,omitempty" xml:"Video360,omitempty"`
+	// The duration of high-definition (HD) videos. Unit: minutes.
+	//
 	// example:
 	//
 	// 100

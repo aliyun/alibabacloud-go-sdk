@@ -21,14 +21,20 @@ type iDescribeSystemLayoutListResponseBody interface {
 
 type DescribeSystemLayoutListResponseBody struct {
 	Layouts *DescribeSystemLayoutListResponseBodyLayouts `json:"Layouts,omitempty" xml:"Layouts,omitempty" type:"Struct"`
+	// Request ID.
+	//
 	// example:
 	//
 	// 16A96B9A-F203-4EC5-8E43-CB92E68F4CD8
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// Total number of pages.
+	//
 	// example:
 	//
 	// 6
 	TotalNum *int64 `json:"TotalNum,omitempty" xml:"TotalNum,omitempty"`
+	// Total number of pages.
+	//
 	// example:
 	//
 	// 2

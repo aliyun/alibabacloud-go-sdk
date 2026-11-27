@@ -20,17 +20,22 @@ type iDescribeCloudNotePhrasesResponseBody interface {
 }
 
 type DescribeCloudNotePhrasesResponseBody struct {
+	// The hotword lists.
 	Phrases []*DescribeCloudNotePhrasesResponseBodyPhrases `json:"Phrases,omitempty" xml:"Phrases,omitempty" type:"Repeated"`
-	// Id of the request。
+	// The ID of the request.
 	//
 	// example:
 	//
 	// 3A26E1E3-3CBB-599E-AD68-CB78F5A42FA1
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of records.
+	//
 	// example:
 	//
 	// 10
 	TotalNum *int64 `json:"TotalNum,omitempty" xml:"TotalNum,omitempty"`
+	// The total number of pages.
+	//
 	// example:
 	//
 	// 1
@@ -95,22 +100,32 @@ func (s *DescribeCloudNotePhrasesResponseBody) Validate() error {
 }
 
 type DescribeCloudNotePhrasesResponseBodyPhrases struct {
+	// The creation time. Format: yyyy-MM-ddTHH:mm:ssZ (UTC time).
+	//
 	// example:
 	//
 	// 2025-03-04T06:22:15Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The description.
+	//
 	// example:
 	//
-	// 水果描述
+	// Fruit description
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
+	// The hotword list ID.
+	//
 	// example:
 	//
 	// 1qweadca332121212
 	Id *string `json:"Id,omitempty" xml:"Id,omitempty"`
+	// The hotword list name.
+	//
 	// example:
 	//
-	// 水果
+	// Fruit
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The hotword weights.
+	//
 	// This parameter is required.
 	WordWeights []*DescribeCloudNotePhrasesResponseBodyPhrasesWordWeights `json:"WordWeights,omitempty" xml:"WordWeights,omitempty" type:"Repeated"`
 }
@@ -182,13 +197,17 @@ func (s *DescribeCloudNotePhrasesResponseBodyPhrases) Validate() error {
 }
 
 type DescribeCloudNotePhrasesResponseBodyPhrasesWordWeights struct {
+	// The weight value.
+	//
 	// example:
 	//
 	// 0
 	Weight *int32 `json:"Weight,omitempty" xml:"Weight,omitempty"`
+	// The hotword.
+	//
 	// example:
 	//
-	// 苹果
+	// Apple
 	Word *string `json:"Word,omitempty" xml:"Word,omitempty"`
 }
 

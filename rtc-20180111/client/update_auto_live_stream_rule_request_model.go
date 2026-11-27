@@ -30,35 +30,55 @@ type iUpdateAutoLiveStreamRuleRequest interface {
 }
 
 type UpdateAutoLiveStreamRuleRequest struct {
+	// The application ID. You can create and query application IDs in the console.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// eo85****
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The callback URL for starting and stopping the bypass. You can query the bypass callback URL in the console or by calling the [DescribeAutoLiveStreamRule](https://help.aliyun.com/document_detail/353198.html) operation.
+	//
 	// example:
 	//
 	// http://example.com/callback
-	CallBack          *string   `json:"CallBack,omitempty" xml:"CallBack,omitempty"`
+	CallBack *string `json:"CallBack,omitempty" xml:"CallBack,omitempty"`
+	// The prefix list of channel IDs for fuzzy matching.
 	ChannelIdPrefixes []*string `json:"ChannelIdPrefixes,omitempty" xml:"ChannelIdPrefixes,omitempty" type:"Repeated"`
-	ChannelIds        []*string `json:"ChannelIds,omitempty" xml:"ChannelIds,omitempty" type:"Repeated"`
+	// The list of channel IDs for exact matching.
+	ChannelIds []*string `json:"ChannelIds,omitempty" xml:"ChannelIds,omitempty" type:"Repeated"`
+	// The encoding options. For more information, see the valid values of MediaEncode in [CreateAutoLiveStreamRule](https://help.aliyun.com/document_detail/353179.html).
+	//
 	// example:
 	//
 	// 20
 	MediaEncode *int32 `json:"MediaEncode,omitempty" xml:"MediaEncode,omitempty"`
 	OwnerId     *int64 `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The streaming domain name for automatic bypass. The streaming URL for an automatic bypass task is rtmp://${domain}/${app}/${stream}.
+	//
+	// - domain: Your live streaming domain name.
+	//
+	// - app: live.
+	//
+	// - stream: urlencode(${AppId}_${ChannelId}_${UserId}_${SourceType}), where SourceType is the input source type.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// rtmp://${domain}/${app}/${stream}
 	PlayDomain *string `json:"PlayDomain,omitempty" xml:"PlayDomain,omitempty"`
+	// The ID of the bypass rule. You can query the bypass rule ID in the console or by calling the [DescribeAutoLiveStreamRule](https://help.aliyun.com/document_detail/353198.html) operation.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 12
 	RuleId *int32 `json:"RuleId,omitempty" xml:"RuleId,omitempty"`
+	// The name of the bypass rule.
+	//
 	// example:
 	//
 	// testRule

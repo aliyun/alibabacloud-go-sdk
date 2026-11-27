@@ -22,18 +22,26 @@ type iDescribeChannelParticipantsResponseBody interface {
 }
 
 type DescribeChannelParticipantsResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 6159ba01-6687-4fb2-a831-f0cd8d188648
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The time when the result is returned. The value is a UNIX timestamp in seconds.
+	//
 	// example:
 	//
 	// 1557909133
 	Timestamp *int32 `json:"Timestamp,omitempty" xml:"Timestamp,omitempty"`
+	// The total number of results returned.
+	//
 	// example:
 	//
 	// 3
 	TotalNum *int32 `json:"TotalNum,omitempty" xml:"TotalNum,omitempty"`
+	// The total number of pages returned.
+	//
 	// example:
 	//
 	// 1

@@ -20,17 +20,24 @@ type iDescribeAppViewTemplatesShrinkRequest interface {
 }
 
 type DescribeAppViewTemplatesShrinkRequest struct {
+	// Application ID. Create and view it in the console. You can specify only one ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ioeh****
-	AppId           *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// Search condition.
 	ConditionShrink *string `json:"Condition,omitempty" xml:"Condition,omitempty"`
+	// Page number. Default value: 1.
+	//
 	// example:
 	//
 	// 1
 	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
+	// Number of entries per page. Default value: 10.
+	//
 	// example:
 	//
 	// 10

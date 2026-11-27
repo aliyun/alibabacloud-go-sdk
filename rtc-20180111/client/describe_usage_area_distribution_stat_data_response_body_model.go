@@ -16,10 +16,13 @@ type iDescribeUsageAreaDistributionStatDataResponseBody interface {
 }
 
 type DescribeUsageAreaDistributionStatDataResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// 231470C1-ACFB-4C9F-844F-4CFE1E3804C5
-	RequestId         *string                                                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The regional distribution data of usage statistics.
 	UsageAreaStatList []*DescribeUsageAreaDistributionStatDataResponseBodyUsageAreaStatList `json:"UsageAreaStatList,omitempty" xml:"UsageAreaStatList,omitempty" type:"Repeated"`
 }
 
@@ -63,18 +66,26 @@ func (s *DescribeUsageAreaDistributionStatDataResponseBody) Validate() error {
 }
 
 type DescribeUsageAreaDistributionStatDataResponseBodyUsageAreaStatList struct {
+	// Audio call duration, in minutes.
+	//
 	// example:
 	//
 	// 45
 	AudioCallDuration *int32 `json:"AudioCallDuration,omitempty" xml:"AudioCallDuration,omitempty"`
+	// Region name, such as China.
+	//
 	// example:
 	//
-	// 中国
+	// 中国_浙江省
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// Total call duration, in minutes.
+	//
 	// example:
 	//
 	// 4821
 	TotalCallDuration *int32 `json:"TotalCallDuration,omitempty" xml:"TotalCallDuration,omitempty"`
+	// Video call duration, in minutes.
+	//
 	// example:
 	//
 	// 4776

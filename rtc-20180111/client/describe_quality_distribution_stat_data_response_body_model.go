@@ -16,7 +16,10 @@ type iDescribeQualityDistributionStatDataResponseBody interface {
 }
 
 type DescribeQualityDistributionStatDataResponseBody struct {
+	// The list of quality statistics data.
 	QualityStatDataList []*DescribeQualityDistributionStatDataResponseBodyQualityStatDataList `json:"QualityStatDataList,omitempty" xml:"QualityStatDataList,omitempty" type:"Repeated"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 231470C1-ACFB-4C9F-844F-4CFE1E3804C5
@@ -63,46 +66,74 @@ func (s *DescribeQualityDistributionStatDataResponseBody) Validate() error {
 }
 
 type DescribeQualityDistributionStatDataResponseBodyQualityStatDataList struct {
+	// Audio delay, in milliseconds.
+	//
 	// example:
 	//
 	// 554
 	AudioDelay *int64 `json:"AudioDelay,omitempty" xml:"AudioDelay,omitempty"`
+	// Audio high-quality transmission rate, represented as a four-digit decimal.
+	//
 	// example:
 	//
 	// 0.9953
 	AudioHighQualityTransmissionRate *string `json:"AudioHighQualityTransmissionRate,omitempty" xml:"AudioHighQualityTransmissionRate,omitempty"`
+	// The Audio Lag Rate, represented as a four-digit decimal.
+	//
 	// example:
 	//
 	// 0.0014
 	AudioStuckRate *string `json:"AudioStuckRate,omitempty" xml:"AudioStuckRate,omitempty"`
+	// The call duration ratio, represented as a four-digit decimal. For example, 1.0000 indicates that the call duration accounts for 100% of the total usage.
+	//
 	// example:
 	//
 	// 1.0000
 	CallDurationRatio *string `json:"CallDurationRatio,omitempty" xml:"CallDurationRatio,omitempty"`
+	// Five-second channel join success rate, represented as a four-digit decimal.
+	//
 	// example:
 	//
 	// 0.9560
 	JoinChannelSucFiveSecRate *string `json:"JoinChannelSucFiveSecRate,omitempty" xml:"JoinChannelSucFiveSecRate,omitempty"`
+	// The channel join success rate, represented as a four-digit decimal.
+	//
 	// example:
 	//
 	// 0.9575
 	JoinChannelSucRate *string `json:"JoinChannelSucRate,omitempty" xml:"JoinChannelSucRate,omitempty"`
+	// Statistical dimension. Valid values:
+	//
+	// - When StatDim is CHANNELONLINE: **ONE_TO_FIVE*	- (1–5 participants), **SIX_TO_TEN*	- (6–10 participants), **ELEVEN_TO_TWENTY*	- (11–20 participants), **TWENTYONE_TO_FIFTY*	- (21–50 participants), **ABOVE_FIFTY*	- (more than 50 participants).
+	//
+	// - When StatDim is NETWORK: **WiFi**, **4G**, etc.
+	//
+	// - When StatDim is OS: **iOS**, **Android**, etc.
+	//
 	// example:
 	//
 	// ONE_TO_FIVE
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// Video delay, in milliseconds.
+	//
 	// example:
 	//
 	// 517
 	VideoDelay *int64 `json:"VideoDelay,omitempty" xml:"VideoDelay,omitempty"`
+	// Time to first video frame, in milliseconds.
+	//
 	// example:
 	//
 	// 1299
 	VideoFirstPicDuration *int64 `json:"VideoFirstPicDuration,omitempty" xml:"VideoFirstPicDuration,omitempty"`
+	// Video high-quality transmission rate, represented as a four-digit decimal.
+	//
 	// example:
 	//
 	// 0.9981
 	VideoHighQualityTransmissionRate *string `json:"VideoHighQualityTransmissionRate,omitempty" xml:"VideoHighQualityTransmissionRate,omitempty"`
+	// The Video Lag Rate, represented as a four-digit decimal.
+	//
 	// example:
 	//
 	// 0.0264

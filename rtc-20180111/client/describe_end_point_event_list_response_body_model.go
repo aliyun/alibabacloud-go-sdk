@@ -16,7 +16,10 @@ type iDescribeEndPointEventListResponseBody interface {
 }
 
 type DescribeEndPointEventListResponseBody struct {
+	// The list of basic user information.
 	Nodes []*DescribeEndPointEventListResponseBodyNodes `json:"Nodes,omitempty" xml:"Nodes,omitempty" type:"Repeated"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 231470C1-ACFB-4C9F-844F-4CFE1E3804C5
@@ -63,7 +66,10 @@ func (s *DescribeEndPointEventListResponseBody) Validate() error {
 }
 
 type DescribeEndPointEventListResponseBodyNodes struct {
+	// The list of event data.
 	EventDataItems []*DescribeEndPointEventListResponseBodyNodesEventDataItems `json:"EventDataItems,omitempty" xml:"EventDataItems,omitempty" type:"Repeated"`
+	// The user ID.
+	//
 	// example:
 	//
 	// testuserid
@@ -110,7 +116,10 @@ func (s *DescribeEndPointEventListResponseBodyNodes) Validate() error {
 }
 
 type DescribeEndPointEventListResponseBodyNodesEventDataItems struct {
+	// The list of events.
 	EventList []*DescribeEndPointEventListResponseBodyNodesEventDataItemsEventList `json:"EventList,omitempty" xml:"EventList,omitempty" type:"Repeated"`
+	// The time when the first event occurred. The time is a UNIX timestamp in seconds.
+	//
 	// example:
 	//
 	// 1614936817
@@ -157,18 +166,30 @@ func (s *DescribeEndPointEventListResponseBodyNodesEventDataItems) Validate() er
 }
 
 type DescribeEndPointEventListResponseBodyNodesEventDataItemsEventList struct {
+	// The event name.
+	//
 	// example:
 	//
-	// 开始发布
+	// Start publishing
 	EventName *string `json:"EventName,omitempty" xml:"EventName,omitempty"`
+	// The event type. Valid values:
+	//
+	// - **USER**: user event
+	//
+	// - **SYSTEM**: system event
+	//
 	// example:
 	//
 	// USER
 	EventType *string `json:"EventType,omitempty" xml:"EventType,omitempty"`
+	// The time when the event occurred. The time is a UNIX timestamp in seconds.
+	//
 	// example:
 	//
 	// 1614936817
 	Ts *int64 `json:"Ts,omitempty" xml:"Ts,omitempty"`
+	// The time when the event occurred. The time is a UNIX timestamp in milliseconds.
+	//
 	// example:
 	//
 	// 1614936817123

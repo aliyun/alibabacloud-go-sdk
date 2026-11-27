@@ -22,6 +22,8 @@ type DescribeAppLiveStreamStatusResponseBody struct {
 	//
 	// 231470C1-ACFB-4C9F-844F-4CFE1E3804C5
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The status of the switch. enable indicates that the feature is enabled. disable indicates that the feature is disabled.
+	//
 	// example:
 	//
 	// disable

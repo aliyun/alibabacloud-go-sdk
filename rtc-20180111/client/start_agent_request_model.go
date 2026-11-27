@@ -24,32 +24,47 @@ type iStartAgentRequest interface {
 }
 
 type StartAgentRequest struct {
+	// The application ID. You can create and query the ID in the console. Only a single ID is supported.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// aoe****
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The ID of the channel to join. Only a single ID is supported.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// yourChannelId
 	ChannelId *string `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
+	// The configuration for the agent to join a Real-Time Communication (RTC) channel.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// 2
 	RtcConfig *StartAgentRequestRtcConfig `json:"RtcConfig,omitempty" xml:"RtcConfig,omitempty" type:"Struct"`
+	// The task ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// yourTaskId
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// The template ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 76dasgb****
-	TemplateId      *string                           `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	TemplateId *string `json:"TemplateId,omitempty" xml:"TemplateId,omitempty"`
+	// The configuration for AI voice chat.
 	VoiceChatConfig *StartAgentRequestVoiceChatConfig `json:"VoiceChatConfig,omitempty" xml:"VoiceChatConfig,omitempty" type:"Struct"`
 }
 
@@ -130,14 +145,32 @@ func (s *StartAgentRequest) Validate() error {
 }
 
 type StartAgentRequestRtcConfig struct {
+	// The list of user IDs subscribed by the agent. Currently, only one user ID is supported.
 	TargetUserIds []*string `json:"TargetUserIds,omitempty" xml:"TargetUserIds,omitempty" type:"Repeated"`
+	// The user ID of the agent in the RTC channel.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 423341
-	UserId                *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
-	UserInactivityTimeout *int32  `json:"UserInactivityTimeout,omitempty" xml:"UserInactivityTimeout,omitempty"`
+	UserId *string `json:"UserId,omitempty" xml:"UserId,omitempty"`
+	// The maximum duration threshold for user inactivity, in seconds.
+	//
+	// When the duration of any of the following states reaches this threshold, the agent automatically stops and exits the channel:
+	//
+	// 1. All users in the targetUserIds list have left the channel.
+	//
+	// 2. The users in the targetUserIds list have not joined the channel.
+	//
+	// Default value: 30.
+	//
+	// Valid values: 5 to 180.
+	//
+	// example:
+	//
+	// 30
+	UserInactivityTimeout *int32 `json:"UserInactivityTimeout,omitempty" xml:"UserInactivityTimeout,omitempty"`
 }
 
 func (s StartAgentRequestRtcConfig) String() string {
@@ -180,24 +213,60 @@ func (s *StartAgentRequestRtcConfig) Validate() error {
 }
 
 type StartAgentRequestVoiceChatConfig struct {
-	ASRConfig          *StartAgentRequestVoiceChatConfigASRConfig          `json:"ASRConfig,omitempty" xml:"ASRConfig,omitempty" type:"Struct"`
+	// The Automatic Speech Recognition (ASR) configuration.
+	ASRConfig *StartAgentRequestVoiceChatConfigASRConfig `json:"ASRConfig,omitempty" xml:"ASRConfig,omitempty" type:"Struct"`
+	// The configuration for agent behavior during silence timeout. When a user joins the channel but does not interact effectively with the agent (the user does not speak), the agent is in a silent state. You can configure the agent to broadcast a voice messaging reminder or send a webhook notification during this silent state.
 	AgentSilenceConfig *StartAgentRequestVoiceChatConfigAgentSilenceConfig `json:"AgentSilenceConfig,omitempty" xml:"AgentSilenceConfig,omitempty" type:"Struct"`
+	// The ambient sound settings.
 	AmbientSoundConfig *StartAgentRequestVoiceChatConfigAmbientSoundConfig `json:"AmbientSoundConfig,omitempty" xml:"AmbientSoundConfig,omitempty" type:"Struct"`
-	BackChannelConfig  *StartAgentRequestVoiceChatConfigBackChannelConfig  `json:"BackChannelConfig,omitempty" xml:"BackChannelConfig,omitempty" type:"Struct"`
+	// The backchannel settings.
+	BackChannelConfig *StartAgentRequestVoiceChatConfigBackChannelConfig `json:"BackChannelConfig,omitempty" xml:"BackChannelConfig,omitempty" type:"Struct"`
+	// The chat mode. Valid values:
+	//
+	// - 1: natural conversation mode. This is the default value.
+	//
+	// - 2: walkie-talkie mode.
+	//
 	// example:
 	//
 	// 1
-	ChatMode                 *int32                                           `json:"ChatMode,omitempty" xml:"ChatMode,omitempty"`
-	EnableVideoUnderstanding *bool                                            `json:"EnableVideoUnderstanding,omitempty" xml:"EnableVideoUnderstanding,omitempty"`
-	Greeting                 *string                                          `json:"Greeting,omitempty" xml:"Greeting,omitempty"`
-	InterruptConfig          *StartAgentRequestVoiceChatConfigInterruptConfig `json:"InterruptConfig,omitempty" xml:"InterruptConfig,omitempty" type:"Struct"`
+	ChatMode *int32 `json:"ChatMode,omitempty" xml:"ChatMode,omitempty"`
+	// Specifies whether to enable visual understanding. If enabled, the large language model (LLM) must support multimodal data.
+	EnableVideoUnderstanding *bool `json:"EnableVideoUnderstanding,omitempty" xml:"EnableVideoUnderstanding,omitempty"`
+	// The greeting message.
+	//
+	// example:
+	//
+	// Good morning, my friend
+	Greeting *string `json:"Greeting,omitempty" xml:"Greeting,omitempty"`
+	// The interrupt settings.
+	InterruptConfig *StartAgentRequestVoiceChatConfigInterruptConfig `json:"InterruptConfig,omitempty" xml:"InterruptConfig,omitempty" type:"Struct"`
+	// The interrupt mode. Valid values:
+	//
+	// - 1: voice interruption supported. This is the default value.
+	//
+	// - 2: voice interruption disabled.
+	//
 	// example:
 	//
 	// 1
-	InterruptMode *int32                                     `json:"InterruptMode,omitempty" xml:"InterruptMode,omitempty"`
-	LLMConfig     *StartAgentRequestVoiceChatConfigLLMConfig `json:"LLMConfig,omitempty" xml:"LLMConfig,omitempty" type:"Struct"`
-	TTSConfig     *StartAgentRequestVoiceChatConfigTTSConfig `json:"TTSConfig,omitempty" xml:"TTSConfig,omitempty" type:"Struct"`
-	PreferVideo   *int32                                     `json:"preferVideo,omitempty" xml:"preferVideo,omitempty"`
+	InterruptMode *int32 `json:"InterruptMode,omitempty" xml:"InterruptMode,omitempty"`
+	// The large language model (LLM) configuration.
+	LLMConfig *StartAgentRequestVoiceChatConfigLLMConfig `json:"LLMConfig,omitempty" xml:"LLMConfig,omitempty" type:"Struct"`
+	// The text-to-speech (TTS) configuration.
+	TTSConfig *StartAgentRequestVoiceChatConfigTTSConfig `json:"TTSConfig,omitempty" xml:"TTSConfig,omitempty" type:"Struct"`
+	// After visual understanding is enabled, you can specify the video stream that the agent prioritizes for understanding. The agent can understand only one video stream when both the camera stream and the screen sharing stream are pushed simultaneously.
+	//
+	// 1. The agent prioritizes the camera stream.
+	//
+	// 2. The agent prioritizes the screen sharing stream.
+	//
+	// By default, the camera stream is prioritized.
+	//
+	// example:
+	//
+	// 1
+	PreferVideo *int32 `json:"preferVideo,omitempty" xml:"preferVideo,omitempty"`
 }
 
 func (s StartAgentRequestVoiceChatConfig) String() string {
@@ -356,20 +425,42 @@ func (s *StartAgentRequestVoiceChatConfig) Validate() error {
 }
 
 type StartAgentRequestVoiceChatConfigASRConfig struct {
+	// If this parameter is not specified, the model automatically identifies the language.
+	//
+	// Currently supported language codes:
+	//
+	// - zh: Chinese, including Mandarin and dialects such as Shanghainese, Wu, Minnan, Northeastern, Gansu, Guizhou, Henan, Hubei, Hunan, Jiangxi, Ningxia, Shanxi, Shaanxi, Shandong, Sichuan, Tianjin, Yunnan, and Cantonese.
+	//
+	// - en: English.
+	//
+	// - ja: Japanese.
+	//
+	// - yue: Cantonese.
+	//
+	// - ko: Korean.
 	LanguageHints []*string `json:"LanguageHints,omitempty" xml:"LanguageHints,omitempty" type:"Repeated"`
+	// The voice segmentation detection threshold. Default value: 800. Unit: milliseconds. Recommended range: 200 to 6000.
+	//
 	// example:
 	//
 	// 800
 	MaxSentenceSilence *int32 `json:"MaxSentenceSilence,omitempty" xml:"MaxSentenceSilence,omitempty"`
+	// Specifies whether semantic or voice segmentation is enabled.
+	//
 	// example:
 	//
 	// false
 	SemanticPunctuationEnabled *bool `json:"SemanticPunctuationEnabled,omitempty" xml:"SemanticPunctuationEnabled,omitempty"`
+	// No configuration is required.
+	//
 	// example:
 	//
 	// zh
-	SourceLanguage *string                                             `json:"SourceLanguage,omitempty" xml:"SourceLanguage,omitempty"`
-	VadConfig      *StartAgentRequestVoiceChatConfigASRConfigVadConfig `json:"VadConfig,omitempty" xml:"VadConfig,omitempty" type:"Struct"`
+	SourceLanguage *string `json:"SourceLanguage,omitempty" xml:"SourceLanguage,omitempty"`
+	// The Voice Activity Detection (VAD) configuration.
+	VadConfig *StartAgentRequestVoiceChatConfigASRConfigVadConfig `json:"VadConfig,omitempty" xml:"VadConfig,omitempty" type:"Struct"`
+	// The ID of the supported hot word.
+	//
 	// example:
 	//
 	// vocab-xxx-24ee19fa8cfb4d52902170a0xxxxxxxx
@@ -448,6 +539,15 @@ func (s *StartAgentRequestVoiceChatConfigASRConfig) Validate() error {
 }
 
 type StartAgentRequestVoiceChatConfigASRConfigVadConfig struct {
+	// The minimum duration of continuous human voice signals required to avoid false interruptions, in milliseconds.
+	//
+	// Valid values: 0 to 3000.
+	//
+	// Default value: 300.
+	//
+	// example:
+	//
+	// 300
 	InterruptSpeechDuration *int32 `json:"InterruptSpeechDuration,omitempty" xml:"InterruptSpeechDuration,omitempty"`
 }
 
@@ -473,11 +573,54 @@ func (s *StartAgentRequestVoiceChatConfigASRConfigVadConfig) Validate() error {
 }
 
 type StartAgentRequestVoiceChatConfigAgentSilenceConfig struct {
-	AlertTimeout          *int32  `json:"AlertTimeout,omitempty" xml:"AlertTimeout,omitempty"`
-	Content               *string `json:"Content,omitempty" xml:"Content,omitempty"`
-	Enable                *bool   `json:"Enable,omitempty" xml:"Enable,omitempty"`
-	Strategy              *int32  `json:"Strategy,omitempty" xml:"Strategy,omitempty"`
-	WebhookTriggerTimeout *int32  `json:"WebhookTriggerTimeout,omitempty" xml:"WebhookTriggerTimeout,omitempty"`
+	// The timeout period for silence reminders, in seconds.
+	//
+	// This reminder can be triggered multiple times. If the agent remains silent after a silence reminder timeout, the reminder is triggered again upon the next timeout.
+	//
+	// Valid values: 5 to 600.
+	//
+	// Default value: 0. A value of 0 indicates that no reminder is sent.
+	//
+	// example:
+	//
+	// 0
+	AlertTimeout *int32 `json:"AlertTimeout,omitempty" xml:"AlertTimeout,omitempty"`
+	// The content of the silence prompt message.
+	//
+	// example:
+	//
+	// **
+	Content *string `json:"Content,omitempty" xml:"Content,omitempty"`
+	// The switch.
+	//
+	// example:
+	//
+	// false
+	Enable *bool `json:"Enable,omitempty" xml:"Enable,omitempty"`
+	// The script strategy for silence reminders. Valid values:
+	//
+	// - 1: Broadcast the prompt message specified by Content to the user by voice.
+	//
+	// - 2: Send the prompt message specified by Content and the conversation history to the LLM, and broadcast the generated reply by voice.
+	//
+	// Default value: 1.
+	//
+	// example:
+	//
+	// 1
+	Strategy *int32 `json:"Strategy,omitempty" xml:"Strategy,omitempty"`
+	// The silence timeout period for triggering the agent silence timeout webhook, in seconds.
+	//
+	// This webhook can be triggered multiple times. If the agent remains silent after a webhook silence timeout, the webhook is triggered again upon the next timeout.
+	//
+	// Valid values: 10 to 600.
+	//
+	// Default value: 0. A value of 0 indicates that the webhook is not triggered.
+	//
+	// example:
+	//
+	// 0
+	WebhookTriggerTimeout *int32 `json:"WebhookTriggerTimeout,omitempty" xml:"WebhookTriggerTimeout,omitempty"`
 }
 
 func (s StartAgentRequestVoiceChatConfigAgentSilenceConfig) String() string {
@@ -538,13 +681,27 @@ func (s *StartAgentRequestVoiceChatConfigAgentSilenceConfig) Validate() error {
 }
 
 type StartAgentRequestVoiceChatConfigAmbientSoundConfig struct {
+	// The ambient sound ID. Built-in and download modes are planned. Currently, only the built-in mode is supported.
+	//
+	// - If this parameter is not specified or is left empty, ambient sound is disabled.
+	//
+	// - Built-in mode: The agent provides the following default ambient sounds: white_noise (white noise) and office (office environment).
+	//
+	// - Download mode: You can specify a custom soundId in the console (which must be different from built-in IDs) and provide a URL. The agent will download and bind the sound internally.
+	//
 	// example:
 	//
-	// office
+	// white_noise
 	SoundId *string `json:"SoundId,omitempty" xml:"SoundId,omitempty"`
+	// The volume of the ambient sound.
+	//
+	// Default value: 50 (original volume).
+	//
+	// Valid values: 0 to 100.
+	//
 	// example:
 	//
-	// 100
+	// 50
 	Volume *int32 `json:"Volume,omitempty" xml:"Volume,omitempty"`
 }
 
@@ -579,8 +736,16 @@ func (s *StartAgentRequestVoiceChatConfigAmbientSoundConfig) Validate() error {
 }
 
 type StartAgentRequestVoiceChatConfigBackChannelConfig struct {
-	UserTurnEnd *bool  `json:"UserTurnEnd,omitempty" xml:"UserTurnEnd,omitempty"`
-	Version     *int32 `json:"Version,omitempty" xml:"Version,omitempty"`
+	// Specifies whether to enable backchannel responses after the user finishes speaking. Default value: false.
+	//
+	// example:
+	//
+	// false
+	UserTurnEnd *bool `json:"UserTurnEnd,omitempty" xml:"UserTurnEnd,omitempty"`
+	// example:
+	//
+	// 1
+	Version *int32 `json:"Version,omitempty" xml:"Version,omitempty"`
 }
 
 func (s StartAgentRequestVoiceChatConfigBackChannelConfig) String() string {
@@ -614,6 +779,11 @@ func (s *StartAgentRequestVoiceChatConfigBackChannelConfig) Validate() error {
 }
 
 type StartAgentRequestVoiceChatConfigInterruptConfig struct {
+	// Specifies whether to enable semantic interruption. Default value: true.
+	//
+	// example:
+	//
+	// true
 	SemanticsInterrupt *bool `json:"SemanticsInterrupt,omitempty" xml:"SemanticsInterrupt,omitempty"`
 }
 
@@ -639,43 +809,92 @@ func (s *StartAgentRequestVoiceChatConfigInterruptConfig) Validate() error {
 }
 
 type StartAgentRequestVoiceChatConfigLLMConfig struct {
+	// The API key of the service provider.
+	//
 	// example:
 	//
 	// xxxxxxxxxxx
-	ApiKey    *string     `json:"ApiKey,omitempty" xml:"ApiKey,omitempty"`
-	AppId     *string     `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	ApiKey *string `json:"ApiKey,omitempty" xml:"ApiKey,omitempty"`
+	// The agent application ID. You must specify either Model or AppId. If both are specified, AppId takes precedence.
+	//
+	// example:
+	//
+	// e****
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The custom parameters.
 	BizParams interface{} `json:"BizParams,omitempty" xml:"BizParams,omitempty"`
+	// The number of historical conversation turns provided to the LLM.
+	//
+	// Default value: 3.
+	//
 	// example:
 	//
 	// 3
 	HistoryDepth *int32 `json:"HistoryDepth,omitempty" xml:"HistoryDepth,omitempty"`
+	// The maximum number of tokens for the output text.
+	//
+	// Default value: 8192.
+	//
+	// The maximum value for DeepSeek and Qwen models is 8192.
+	//
 	// example:
 	//
 	// 500
 	MaxToken *int32 `json:"MaxToken,omitempty" xml:"MaxToken,omitempty"`
+	// The model name.
+	//
+	// Supported models under the aliyun provider:
+	//
+	// ["qwen-plus", "deepseek-r1", "qwen-omni-turbo"]
+	//
 	// example:
 	//
 	// qwen-plus
-	Model  *string                `json:"Model,omitempty" xml:"Model,omitempty"`
+	Model *string `json:"Model,omitempty" xml:"Model,omitempty"`
+	// The custom user parameters in key-value pairs. This parameter is deprecated. Use the BizParams parameter instead.
+	//
+	// example:
+	//
+	// {\"verification_code\": \"xxx\"}
 	Params map[string]interface{} `json:"Params,omitempty" xml:"Params,omitempty"`
+	// The prompt used to instruct the model on the role or behavior to adopt.
+	//
 	// example:
 	//
 	// xxxx
 	Prompt *string `json:"Prompt,omitempty" xml:"Prompt,omitempty"`
+	// The sampling temperature used to control the randomness and creativity of the generated text. A higher value indicates higher randomness.
+	//
+	// Default value: 0.7.
+	//
+	// Valid values: 0 to 2, excluding 2.
+	//
+	// Note: This parameter does not take effect for deepseek-r1.
+	//
 	// example:
 	//
 	// 0.7
 	Temperature         *float64      `json:"Temperature,omitempty" xml:"Temperature,omitempty"`
 	ToolExecutionConfig interface{}   `json:"ToolExecutionConfig,omitempty" xml:"ToolExecutionConfig,omitempty"`
 	Tools               []interface{} `json:"Tools,omitempty" xml:"Tools,omitempty" type:"Repeated"`
+	// The sampling range used to control the diversity of output tokens. The model samples from tokens whose cumulative probability exceeds this value to ensure the sampling range is not too broad. A higher value indicates a richer variety of output tokens.
+	//
+	// Valid values: 0 to 1, excluding 0.
+	//
+	// Default value: 0.8.
+	//
 	// example:
 	//
 	// 0.8
 	TopP *float64 `json:"TopP,omitempty" xml:"TopP,omitempty"`
+	// The endpoint URL for integrating a third-party LLM.
+	//
 	// example:
 	//
 	// https://xxxxx
 	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
+	// The name of the service provider when a cloud service provider is integrated. Examples: aliyun for Model Studio, thirdparty.
+	//
 	// example:
 	//
 	// aliyun
@@ -821,31 +1040,66 @@ func (s *StartAgentRequestVoiceChatConfigLLMConfig) Validate() error {
 }
 
 type StartAgentRequestVoiceChatConfigTTSConfig struct {
+	// The API key of the service provider.
+	//
 	// example:
 	//
 	// xxxxxx
-	ApiKey         *string  `json:"ApiKey,omitempty" xml:"ApiKey,omitempty"`
+	ApiKey *string `json:"ApiKey,omitempty" xml:"ApiKey,omitempty"`
+	// The configuration to filter out characters within specified brackets from text-to-speech conversion.
+	//
+	// example:
+	//
+	// [1,2]
 	FilterBrackets []*int32 `json:"FilterBrackets,omitempty" xml:"FilterBrackets,omitempty" type:"Repeated"`
+	// The model name. Example: cosyvoice-v1.
+	//
 	// example:
 	//
 	// cosyvoice-v1
 	Model *string `json:"Model,omitempty" xml:"Model,omitempty"`
+	// The pitch.
+	//
+	// Valid values: 0.5 to 2.0.
+	//
+	// Default value: 1.0.
+	//
 	// example:
 	//
 	// 1
 	Pitch *float64 `json:"Pitch,omitempty" xml:"Pitch,omitempty"`
+	// The speech rate.
+	//
+	// Valid values: 0.5 to 2.0.
+	//
+	// Default value: 1.0.
+	//
 	// example:
 	//
 	// 1
 	Rate *float64 `json:"Rate,omitempty" xml:"Rate,omitempty"`
+	// The service provider. Example: aliyun for Model Studio.
+	//
 	// example:
 	//
 	// aliyun
 	Vendor *string `json:"Vendor,omitempty" xml:"Vendor,omitempty"`
+	// The voice. If you select the Alibaba Cloud cosyvoice-v1 model, the default voice is longxiaoxia.
+	//
+	// Available voices:
+	//
+	// longwan, longcheng, longhua, longxiaochun, longxiaoxia, longxiaocheng, longxiaobai, longlaotie, longshu, longshuo, longjing, longmiao, longyue, longyuan, longfei, longjielidou, longtong, longxiang, loongstella, and loongbella.
+	//
 	// example:
 	//
 	// longxiaoxia
 	Voice *string `json:"Voice,omitempty" xml:"Voice,omitempty"`
+	// The volume.
+	//
+	// Valid values: 0 to 100.
+	//
+	// Default value: 50.
+	//
 	// example:
 	//
 	// 50

@@ -16,12 +16,16 @@ type iDescribeAppRecordStatusRequest interface {
 }
 
 type DescribeAppRecordStatusRequest struct {
+	// Application ID. You can create and view this ID in the console. Only one ID is supported.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ac7N****
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// Idempotency token
+	//
 	// example:
 	//
 	// 123e4567-e89b-12d3-a456-42665544****

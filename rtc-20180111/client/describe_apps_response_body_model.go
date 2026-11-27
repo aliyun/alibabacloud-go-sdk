@@ -21,14 +21,20 @@ type iDescribeAppsResponseBody interface {
 
 type DescribeAppsResponseBody struct {
 	AppList *DescribeAppsResponseBodyAppList `json:"AppList,omitempty" xml:"AppList,omitempty" type:"Struct"`
+	// The request ID.
+	//
 	// example:
 	//
-	// 6159ba01-6687-4fb2-a831-f0cd8d188648
+	// 231470C1-ACFB-4C9F-844F-4CFE1E3804C6
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The total number of results returned.
+	//
 	// example:
 	//
 	// 1
 	TotalNum *int32 `json:"TotalNum,omitempty" xml:"TotalNum,omitempty"`
+	// The total number of pages returned.
+	//
 	// example:
 	//
 	// 1

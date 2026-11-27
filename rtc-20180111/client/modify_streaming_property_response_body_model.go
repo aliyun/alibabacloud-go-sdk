@@ -14,6 +14,8 @@ type iModifyStreamingPropertyResponseBody interface {
 }
 
 type ModifyStreamingPropertyResponseBody struct {
+	// The request ID.
+	//
 	// example:
 	//
 	// E7C44674-9065-5BBA-AB77-A5F20908E73B

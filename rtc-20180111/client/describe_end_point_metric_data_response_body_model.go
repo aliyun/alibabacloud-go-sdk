@@ -18,11 +18,15 @@ type iDescribeEndPointMetricDataResponseBody interface {
 }
 
 type DescribeEndPointMetricDataResponseBody struct {
+	// The metric data of the publisher.
 	PubMetrics []*DescribeEndPointMetricDataResponseBodyPubMetrics `json:"PubMetrics,omitempty" xml:"PubMetrics,omitempty" type:"Repeated"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 231470C1-ACFB-4C9F-844F-4CFE1E3804C5
-	RequestId  *string                                             `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The metric data of the subscriber.
 	SubMetrics []*DescribeEndPointMetricDataResponseBodySubMetrics `json:"SubMetrics,omitempty" xml:"SubMetrics,omitempty" type:"Repeated"`
 }
 
@@ -84,11 +88,16 @@ func (s *DescribeEndPointMetricDataResponseBody) Validate() error {
 }
 
 type DescribeEndPointMetricDataResponseBodyPubMetrics struct {
+	// The list of coordinate points.
 	Nodes []*DescribeEndPointMetricDataResponseBodyPubMetricsNodes `json:"Nodes,omitempty" xml:"Nodes,omitempty" type:"Repeated"`
+	// The metric type corresponding to the Metrics request parameter.
+	//
 	// example:
 	//
 	// VIDEO_STUCK_CAMERA
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The user ID.
+	//
 	// example:
 	//
 	// testuserid
@@ -144,11 +153,16 @@ func (s *DescribeEndPointMetricDataResponseBodyPubMetrics) Validate() error {
 }
 
 type DescribeEndPointMetricDataResponseBodyPubMetricsNodes struct {
+	// The extended properties.
 	Ext map[string]interface{} `json:"Ext,omitempty" xml:"Ext,omitempty"`
+	// The x-axis coordinate in the publisher metric trends chart.
+	//
 	// example:
 	//
 	// 1548670257
 	X *string `json:"X,omitempty" xml:"X,omitempty"`
+	// The y-axis coordinate in the publisher metric trends chart.
+	//
 	// example:
 	//
 	// 230100
@@ -195,11 +209,16 @@ func (s *DescribeEndPointMetricDataResponseBodyPubMetricsNodes) Validate() error
 }
 
 type DescribeEndPointMetricDataResponseBodySubMetrics struct {
+	// The list of coordinate points for the subscriber metric trends chart.
 	Nodes []*DescribeEndPointMetricDataResponseBodySubMetricsNodes `json:"Nodes,omitempty" xml:"Nodes,omitempty" type:"Repeated"`
+	// The metric type corresponding to the Metrics request parameter.
+	//
 	// example:
 	//
 	// VIDEO_STUCK_CAMERA
 	Type *string `json:"Type,omitempty" xml:"Type,omitempty"`
+	// The user ID.
+	//
 	// example:
 	//
 	// testuserid
@@ -255,11 +274,16 @@ func (s *DescribeEndPointMetricDataResponseBodySubMetrics) Validate() error {
 }
 
 type DescribeEndPointMetricDataResponseBodySubMetricsNodes struct {
+	// The extended properties.
 	Ext map[string]interface{} `json:"Ext,omitempty" xml:"Ext,omitempty"`
+	// The x-axis coordinate in the subscriber metric trends chart.
+	//
 	// example:
 	//
 	// 1548670257
 	X *string `json:"X,omitempty" xml:"X,omitempty"`
+	// The y-axis coordinate in the subscriber metric trends chart.
+	//
 	// example:
 	//
 	// 230100

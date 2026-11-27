@@ -22,19 +22,36 @@ type iDescribeUserInfoInChannelResponseBody interface {
 }
 
 type DescribeUserInfoInChannelResponseBody struct {
+	// Indicates whether the channel exists. Valid values:
+	//
+	// - **true**: The channel exists.
+	//
+	// - **false**: The channel does not exist.
+	//
 	// example:
 	//
 	// true
 	IsChannelExist *bool `json:"IsChannelExist,omitempty" xml:"IsChannelExist,omitempty"`
+	// Indicates whether the user is currently in the channel. Valid values:
+	//
+	// - **true**: The user is in the channel.
+	//
+	// - **false**: The user is not in the channel.
+	//
 	// example:
 	//
 	// true
-	IsInChannel *bool                                            `json:"IsInChannel,omitempty" xml:"IsInChannel,omitempty"`
-	Property    []*DescribeUserInfoInChannelResponseBodyProperty `json:"Property,omitempty" xml:"Property,omitempty" type:"Repeated"`
+	IsInChannel *bool `json:"IsInChannel,omitempty" xml:"IsInChannel,omitempty"`
+	// The information of the user in the channel.
+	Property []*DescribeUserInfoInChannelResponseBodyProperty `json:"Property,omitempty" xml:"Property,omitempty" type:"Repeated"`
+	// The request ID.
+	//
 	// example:
 	//
 	// 6159ba01-6687-4fb2-a831-f0cd8d188648
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The timestamp of the current moment (UTC time).
+	//
 	// example:
 	//
 	// 1557909133
@@ -108,14 +125,30 @@ func (s *DescribeUserInfoInChannelResponseBody) Validate() error {
 }
 
 type DescribeUserInfoInChannelResponseBodyProperty struct {
+	// The time when the user joined the meeting (UTC time).
+	//
 	// example:
 	//
 	// 1557909133
 	Join *int32 `json:"Join,omitempty" xml:"Join,omitempty"`
+	// The role type in the meeting. Valid values:
+	//
+	// - **0**: The user role in communication mode.
+	//
+	//
+	//
+	// - **1**: The interactive role.
+	//
+	//
+	//
+	// - **2**: The live (view only) role.
+	//
 	// example:
 	//
 	// 1
 	Role *int32 `json:"Role,omitempty" xml:"Role,omitempty"`
+	// The session ID.
+	//
 	// example:
 	//
 	// xa744sxx8rtobgj****

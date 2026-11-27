@@ -22,29 +22,37 @@ type iModifyStreamingPropertyRequest interface {
 }
 
 type ModifyStreamingPropertyRequest struct {
+	// The application ID. You can create and query the ID in the console. Only a single ID is supported.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// eo85****
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The ID of an existing channel. Only a single ID is supported.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// testid
 	ChannelId *string `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
+	// The ID of the stream mixing task.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// testid
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// The stream mixing content.
+	//
 	// example:
 	//
 	// main
 	ViewContent *string `json:"ViewContent,omitempty" xml:"ViewContent,omitempty"`
-	// ViewSubscribers。
+	// The view subscribers.
 	ViewSubscribers []*string `json:"ViewSubscribers,omitempty" xml:"ViewSubscribers,omitempty" type:"Repeated"`
 }
 

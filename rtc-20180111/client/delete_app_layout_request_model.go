@@ -18,17 +18,22 @@ type iDeleteAppLayoutRequest interface {
 }
 
 type DeleteAppLayoutRequest struct {
+	// The application ID. You can create and query the ID in the console. Only a single ID is supported.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ac7N****
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The client token that is used to ensure idempotence.
+	//
 	// example:
 	//
 	// 123e4567-e89b-12d3-a456-42665544****
-	ClientToken *string                       `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
-	Layout      *DeleteAppLayoutRequestLayout `json:"Layout,omitempty" xml:"Layout,omitempty" type:"Struct"`
+	ClientToken *string `json:"ClientToken,omitempty" xml:"ClientToken,omitempty"`
+	// The layout information.
+	Layout *DeleteAppLayoutRequestLayout `json:"Layout,omitempty" xml:"Layout,omitempty" type:"Struct"`
 }
 
 func (s DeleteAppLayoutRequest) String() string {
@@ -76,6 +81,8 @@ func (s *DeleteAppLayoutRequest) Validate() error {
 }
 
 type DeleteAppLayoutRequestLayout struct {
+	// The layout ID.
+	//
 	// This parameter is required.
 	//
 	// example:

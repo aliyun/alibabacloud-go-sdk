@@ -42,81 +42,143 @@ type iRtcSipInviteMemberRequest interface {
 }
 
 type RtcSipInviteMemberRequest struct {
+	// The application ID. You can create and query the ID in the console. Only a single ID is supported.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// eo85****
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The meeting token. For code generation, refer to https://help.aliyun.com/document_detail/2689025.html.
+	//
 	// example:
 	//
 	// 000qaaasas……b
 	AppToken *string `json:"AppToken,omitempty" xml:"AppToken,omitempty"`
+	// The custom line number in PSTN scenarios.
+	//
 	// example:
 	//
 	// 055112345678
 	CallNumber *string `json:"CallNumber,omitempty" xml:"CallNumber,omitempty"`
+	// The channel ID. Only a single ID is supported.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// testid
+	// $rtc_channelid
 	ChannelId *string `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
+	// The type of the device used to call the third-party SIP endpoint. Valid values:
+	//
+	// - sip_device
+	//
+	// - mcu
+	//
+	// - phone
+	//
+	// Note: Currently, only the phone type is supported.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// mcu
+	// phone
 	DeviceType *string `json:"DeviceType,omitempty" xml:"DeviceType,omitempty"`
+	// Specifies whether the third-party meeting system requires registration for inbound calls.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// false
 	Registered *bool `json:"Registered,omitempty" xml:"Registered,omitempty"`
+	// 1. The IP address of the nearest RTC SIP server.
+	//
+	// 2. You can resolve the domain name rtcsip.dingtalk.com locally to obtain the nearest access address.
+	//
+	// For example, run dig rtcsip.dingtalk.com to obtain the address.
+	//
 	// example:
 	//
-	// 47.116.80.180
+	// 39.101.232.13
 	ServerAddress *string `json:"ServerAddress,omitempty" xml:"ServerAddress,omitempty"`
+	// The username displayed on the third-party system.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// ceo
+	// testdevice
 	SipDisplayName *string `json:"SipDisplayName,omitempty" xml:"SipDisplayName,omitempty"`
+	// 1. When the device is mcu, it indicates the channel number of the third-party meeting system to be called.
+	//
+	// 2. When the device is sip_device, it indicates the registration number of the registered device to be invited.
+	//
+	// 3. When the device is phone, it indicates the called phone number.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 123
+	// 18512514528
 	SipRoomId *string `json:"SipRoomId,omitempty" xml:"SipRoomId,omitempty"`
+	// 1. When the device is mcu, it indicates the address information of the third-party meeting system in the format of ip:port;transport=tcp/udp/tls.
+	//
+	// Example: "30.240.160.66:5060;transport=tcp"
+	//
+	// 2. When the device is sip_device, it indicates the registration address of the registered device to be invited.
+	//
+	// Example: 39.101.232.13
+	//
+	// 3. When the device is phone, it indicates the address information of the telephone gateway.
+	//
+	// Example: "30.240.160.66:5060;transport=tcp"
+	//
 	// example:
 	//
 	// 30.240.160.66:5060;transport=tcp
 	SipUri *string `json:"SipUri,omitempty" xml:"SipUri,omitempty"`
+	// The brand and model of the third-party SIP endpoint being called, such as polycom, cisco, tencent, zoom, or pstn.
+	//
 	// example:
 	//
 	// pstn
 	SipUserAgent *string `json:"SipUserAgent,omitempty" xml:"SipUserAgent,omitempty"`
+	// 1. When DeviceType is mcu, it represents the third-party meeting system.
+	//
+	// 2. When DeviceType is sip_device, it represents the registered device.
+	//
+	// 3. If the third-party meeting system requires registration for inbound calls, it is the account provided by the third-party system to create an account.
+	//
+	// 4. If registration is not required, it is the SIP username or RTC user ID for calling the third-party system.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 123
+	// $reg_userid
 	SipUserId *string `json:"SipUserId,omitempty" xml:"SipUserId,omitempty"`
+	// The registration password that matches the SipUserId if the third-party system requires registration for inbound calls.
+	//
 	// example:
 	//
-	// 123
+	// 654321
 	SipUserPassword *string `json:"SipUserPassword,omitempty" xml:"SipUserPassword,omitempty"`
+	// The task ID.
+	//
 	// example:
 	//
 	// taskId
 	TaskId *string `json:"TaskId,omitempty" xml:"TaskId,omitempty"`
+	// The user ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 1234
+	// $rtc_userid
 	Uid *string `json:"Uid,omitempty" xml:"Uid,omitempty"`
 }
 

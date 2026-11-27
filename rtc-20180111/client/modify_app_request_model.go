@@ -18,12 +18,16 @@ type iModifyAppRequest interface {
 }
 
 type ModifyAppRequest struct {
+	// The ID of the application. You can create and query the ID in the console. Only a single ID is supported.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ioeh****
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The name of the application. Only a single name is supported.
+	//
 	// This parameter is required.
 	//
 	// example:

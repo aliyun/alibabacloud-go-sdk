@@ -20,17 +20,24 @@ type iDescribeAppViewTemplatesRequest interface {
 }
 
 type DescribeAppViewTemplatesRequest struct {
+	// Application ID. Create and view it in the console. You can specify only one ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ioeh****
-	AppId     *string                                   `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// Search condition.
 	Condition *DescribeAppViewTemplatesRequestCondition `json:"Condition,omitempty" xml:"Condition,omitempty" type:"Struct"`
+	// Page number. Default value: 1.
+	//
 	// example:
 	//
 	// 1
 	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
+	// Number of entries per page. Default value: 10.
+	//
 	// example:
 	//
 	// 10
@@ -91,10 +98,14 @@ func (s *DescribeAppViewTemplatesRequest) Validate() error {
 }
 
 type DescribeAppViewTemplatesRequestCondition struct {
+	// Template name.
+	//
 	// example:
 	//
 	// 测试
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// Template ID.
+	//
 	// example:
 	//
 	// Bj6D****

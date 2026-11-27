@@ -20,17 +20,24 @@ type iDescribeAppStreamingOutTemplatesShrinkRequest interface {
 }
 
 type DescribeAppStreamingOutTemplatesShrinkRequest struct {
+	// Application ID, created and queried through the console. Only a single ID is supported.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// ioeh****
-	AppId           *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// Search condition.
 	ConditionShrink *string `json:"Condition,omitempty" xml:"Condition,omitempty"`
+	// Page number. By default, page 1 is queried.
+	//
 	// example:
 	//
 	// 1
 	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
+	// Number of entries per page. The default value is 10.
+	//
 	// example:
 	//
 	// 10

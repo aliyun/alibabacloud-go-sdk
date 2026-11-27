@@ -50,67 +50,112 @@ type iAddRecordTemplateRequest interface {
 }
 
 type AddRecordTemplateRequest struct {
+	// The application ID. You can create and query the ID in the console. Only a single ID is supported.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// yourAppId
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The background color in RGB format. Default value: 0 (black). The calculation formula is R + G × 256 + B × 65536. Valid values for R (red), G (green), and B (blue): **0*	- to **255**.
+	//
 	// example:
 	//
 	// 0
-	BackgroundColor *int32                                  `json:"BackgroundColor,omitempty" xml:"BackgroundColor,omitempty"`
-	Backgrounds     []*AddRecordTemplateRequestBackgrounds  `json:"Backgrounds,omitempty" xml:"Backgrounds,omitempty" type:"Repeated"`
-	ClockWidgets    []*AddRecordTemplateRequestClockWidgets `json:"ClockWidgets,omitempty" xml:"ClockWidgets,omitempty" type:"Repeated"`
+	BackgroundColor *int32 `json:"BackgroundColor,omitempty" xml:"BackgroundColor,omitempty"`
+	// The list of background images.
+	Backgrounds []*AddRecordTemplateRequestBackgrounds `json:"Backgrounds,omitempty" xml:"Backgrounds,omitempty" type:"Repeated"`
+	// The list of clocks.
+	ClockWidgets []*AddRecordTemplateRequestClockWidgets `json:"ClockWidgets,omitempty" xml:"ClockWidgets,omitempty" type:"Repeated"`
+	// The delay time before stopping the recording. Unit: seconds. Default value: **180**.
+	//
 	// example:
 	//
 	// 180
 	DelayStopTime *int32 `json:"DelayStopTime,omitempty" xml:"DelayStopTime,omitempty"`
+	// Specifies whether to add the timestamp of the TS file to the recorded M3U8 file.
+	//
 	// example:
 	//
 	// false
 	EnableM3u8DateTime *bool `json:"EnableM3u8DateTime,omitempty" xml:"EnableM3u8DateTime,omitempty"`
+	// The splitting duration of the recording file. The value must be greater than or equal to 1800. Unit: seconds.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1800
 	FileSplitInterval *int32 `json:"FileSplitInterval,omitempty" xml:"FileSplitInterval,omitempty"`
+	// The list of recording file formats.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// mp4
 	Formats []*string `json:"Formats,omitempty" xml:"Formats,omitempty" type:"Repeated"`
+	// The HTTP callback URL for recording events.
+	//
+	// > You must specify either this parameter or MnsQueue. You cannot specify both or neither.
+	//
 	// example:
 	//
 	// http://example.com/callback
 	HttpCallbackUrl *string `json:"HttpCallbackUrl,omitempty" xml:"HttpCallbackUrl,omitempty"`
+	// The list of layout IDs.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 2
 	LayoutIds []*int64 `json:"LayoutIds,omitempty" xml:"LayoutIds,omitempty" type:"Repeated"`
+	// The encoding option. For more information, see the MediaEncode enum values below.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 20
 	MediaEncode *int32 `json:"MediaEncode,omitempty" xml:"MediaEncode,omitempty"`
+	// The MSMQ for recording event callbacks.
+	//
+	// > You must specify either this parameter or HttpCallbackUrl. You cannot specify both or neither.
+	//
 	// example:
 	//
 	// record-callback-queue
 	MnsQueue *string `json:"MnsQueue,omitempty" xml:"MnsQueue,omitempty"`
+	// The name of the recording configuration template.
+	//
 	// This parameter is required.
+	//
+	// example:
+	//
+	// Recording template
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The OSS bucket where the recording files are stored.
+	//
+	// > Only OSS buckets in the China (Shanghai) region are supported.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// rtc-record-oss
-	OssBucket   *string `json:"OssBucket,omitempty" xml:"OssBucket,omitempty"`
+	OssBucket *string `json:"OssBucket,omitempty" xml:"OssBucket,omitempty"`
+	// The OSS endpoint of the region where the recording files are stored.
+	//
+	// example:
+	//
+	// oss-cn-shanghai.aliyuncs.com
 	OssEndpoint *string `json:"OssEndpoint,omitempty" xml:"OssEndpoint,omitempty"`
+	// The naming rule for recording files.
+	//
+	// > To ensure the uniqueness of recording file names, the naming rule is record/{AppId}/{ChannelId_TaskId}/{EscapedStartTime}_{EscapedEndTime}.
+	//
 	// This parameter is required.
 	//
 	// example:
@@ -118,13 +163,20 @@ type AddRecordTemplateRequest struct {
 	// record/{AppId}/{ChannelId_TaskId}/{EscapedStartTime}_{EscapedEndTime}
 	OssFilePrefix *string `json:"OssFilePrefix,omitempty" xml:"OssFilePrefix,omitempty"`
 	OwnerId       *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The billing configuration of the task. You are charged based on your settings. For more information, see the TaskProfile enum values below.
+	//
+	// > - The resolution of the MediaEncode encoding option must be less than or equal to the resolution of TaskProfile.
+	//
+	// - The maximum number of layout panes must be less than or equal to the number of input channels of TaskProfile.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 4IN_1080P
-	TaskProfile *string                               `json:"TaskProfile,omitempty" xml:"TaskProfile,omitempty"`
-	Watermarks  []*AddRecordTemplateRequestWatermarks `json:"Watermarks,omitempty" xml:"Watermarks,omitempty" type:"Repeated"`
+	TaskProfile *string `json:"TaskProfile,omitempty" xml:"TaskProfile,omitempty"`
+	// The list of watermarks.
+	Watermarks []*AddRecordTemplateRequestWatermarks `json:"Watermarks,omitempty" xml:"Watermarks,omitempty" type:"Repeated"`
 }
 
 func (s AddRecordTemplateRequest) String() string {
@@ -338,30 +390,48 @@ func (s *AddRecordTemplateRequest) Validate() error {
 }
 
 type AddRecordTemplateRequestBackgrounds struct {
+	// Specifies whether to display the background image. Valid values:
+	//
+	// - **0*	- (None): Not displayed.
+	//
+	// - **1*	- (Always): Always displayed.
+	//
 	// example:
 	//
 	// 0
 	Display *int32 `json:"Display,omitempty" xml:"Display,omitempty"`
+	// The height of the background image pane, as a normalized percentage.
+	//
 	// example:
 	//
 	// 0.2456
 	Height *float32 `json:"Height,omitempty" xml:"Height,omitempty"`
+	// The HTTP or HTTPS URL of the background image.
+	//
 	// example:
 	//
 	// https://www.example.com/image.jpg
 	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
+	// The width of the background image pane, as a normalized percentage.
+	//
 	// example:
 	//
 	// 0.2456
 	Width *float32 `json:"Width,omitempty" xml:"Width,omitempty"`
+	// The X-coordinate of the background image, as a normalized percentage.
+	//
 	// example:
 	//
 	// 0.7576
 	X *float32 `json:"X,omitempty" xml:"X,omitempty"`
+	// The Y-coordinate of the background image, as a normalized percentage.
+	//
 	// example:
 	//
 	// 0.7576
 	Y *float32 `json:"Y,omitempty" xml:"Y,omitempty"`
+	// The Z-order of the background image. A value of 0 indicates the bottom layer. A value of 1 indicates the layer above 0, and so on.
+	//
 	// example:
 	//
 	// 0
@@ -444,26 +514,52 @@ func (s *AddRecordTemplateRequestBackgrounds) Validate() error {
 }
 
 type AddRecordTemplateRequestClockWidgets struct {
+	// The text color of the clock in RGB format.
+	//
+	// The calculation formula is `R + G × 256 + B × 65536`. Valid values for R (red), G (green), and B (blue): **0*	- to **255**.
+	//
 	// example:
 	//
 	// 0
 	FontColor *int32 `json:"FontColor,omitempty" xml:"FontColor,omitempty"`
+	// The font size of the clock. Valid values: **(0, 72]**.
+	//
 	// example:
 	//
 	// 1
 	FontSize *int32 `json:"FontSize,omitempty" xml:"FontSize,omitempty"`
+	// The font type of the clock. Valid values:
+	//
+	// - **0*	- (default): NOTO_SERIF_CJKSC_REGULAR.
+	//
+	// - **1**: ALIBABA_PUHUITI_REGULAR.
+	//
+	// - **2**: ALIBABA_PUHUITI_BOLD.
+	//
+	// - **3**: ALIBABA_PUHUITI_Heavy.
+	//
+	// - **4**: ALIBABA_PUHUITI_LIGHT.
+	//
+	// - **5**: ALIBABA_PUHUITI_MEDIUM.
+	//
 	// example:
 	//
 	// 0
 	FontType *int32 `json:"FontType,omitempty" xml:"FontType,omitempty"`
+	// The X-coordinate of the clock, as a normalized percentage.
+	//
 	// example:
 	//
 	// 0.7576
 	X *float32 `json:"X,omitempty" xml:"X,omitempty"`
+	// The Y-coordinate of the clock, as a normalized percentage.
+	//
 	// example:
 	//
 	// 0.7576
 	Y *float32 `json:"Y,omitempty" xml:"Y,omitempty"`
+	// The Z-order of the clock. A value of 0 indicates the bottom layer. A value of 1 indicates the layer above 0, and so on.
+	//
 	// example:
 	//
 	// 0
@@ -537,34 +633,54 @@ func (s *AddRecordTemplateRequestClockWidgets) Validate() error {
 }
 
 type AddRecordTemplateRequestWatermarks struct {
+	// The transparency of the watermark. A value of 0.0 indicates fully transparent, and a value of 1.0 indicates fully opaque.
+	//
 	// example:
 	//
 	// 0
 	Alpha *float32 `json:"Alpha,omitempty" xml:"Alpha,omitempty"`
+	// Specifies whether to display the watermark. Valid values:
+	//
+	// - **0*	- (None): Not displayed.
+	//
+	// - **1*	- (Always): Always displayed.
+	//
 	// example:
 	//
 	// 0
 	Display *int32 `json:"Display,omitempty" xml:"Display,omitempty"`
+	// The height of the watermark pane, as a normalized percentage.
+	//
 	// example:
 	//
 	// 0.2456
 	Height *float32 `json:"Height,omitempty" xml:"Height,omitempty"`
+	// The HTTP or HTTPS URL of the watermark.
+	//
 	// example:
 	//
 	// https://www.example.com/image.jpg
 	Url *string `json:"Url,omitempty" xml:"Url,omitempty"`
+	// The width of the watermark pane, as a normalized percentage.
+	//
 	// example:
 	//
 	// 0.2456
 	Width *float32 `json:"Width,omitempty" xml:"Width,omitempty"`
+	// The X-coordinate of the watermark, as a normalized percentage.
+	//
 	// example:
 	//
 	// 0.7576
 	X *float32 `json:"X,omitempty" xml:"X,omitempty"`
+	// The Y-coordinate of the watermark, as a normalized percentage.
+	//
 	// example:
 	//
 	// 0.7576
 	Y *float32 `json:"Y,omitempty" xml:"Y,omitempty"`
+	// The Z-order of the watermark. A value of 0 indicates the bottom layer. A value of 1 indicates the layer above 0, and so on.
+	//
 	// example:
 	//
 	// 0

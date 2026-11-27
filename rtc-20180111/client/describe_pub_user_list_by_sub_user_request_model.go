@@ -30,22 +30,32 @@ type DescribePubUserListBySubUserRequest struct {
 	//
 	// testappid
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// Channel ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// testid
 	ChannelId *string `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
+	// The channel creation time. You can query data from the last 30 days. The value is represented as a UNIX timestamp in seconds.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1614936817
 	CreatedTs *int64 `json:"CreatedTs,omitempty" xml:"CreatedTs,omitempty"`
+	// The channel release time, represented as a UNIX timestamp in seconds. If this parameter is empty, the current time is used.
+	//
+	// > If the provided channel release time exceeds the actual release time, data from the creation time to the actual release time will be returned.
+	//
 	// example:
 	//
 	// 1614936817
 	DestroyedTs *int64 `json:"DestroyedTs,omitempty" xml:"DestroyedTs,omitempty"`
+	// Subscriber User ID.
+	//
 	// This parameter is required.
 	//
 	// example:

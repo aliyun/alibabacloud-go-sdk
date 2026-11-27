@@ -22,6 +22,8 @@ type CreateAppViewTemplateResponseBody struct {
 	//
 	// 30D41049-D02D-1C21-86AE-B3E5FD805C27
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The template ID.
+	//
 	// example:
 	//
 	// bc5v****

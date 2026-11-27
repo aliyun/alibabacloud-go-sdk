@@ -25,12 +25,17 @@ type DescribeAppRecordTemplatesResponseBody struct {
 	// example:
 	//
 	// 2A7497D0-BEAE-58E7-B13A-751BD8EAE4C6
-	RequestId *string                                            `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// The list of templates.
 	Templates []*DescribeAppRecordTemplatesResponseBodyTemplates `json:"Templates,omitempty" xml:"Templates,omitempty" type:"Repeated"`
+	// The total number of records.
+	//
 	// example:
 	//
 	// 10
 	TotalNum *int64 `json:"TotalNum,omitempty" xml:"TotalNum,omitempty"`
+	// The total number of pages.
+	//
 	// example:
 	//
 	// 1
@@ -95,32 +100,52 @@ func (s *DescribeAppRecordTemplatesResponseBody) Validate() error {
 }
 
 type DescribeAppRecordTemplatesResponseBodyTemplates struct {
+	// The creation time. The time is displayed in the yyyy-MM-ddTHH:mm:ssZ format. The time is in UTC.
+	//
 	// example:
 	//
 	// 2020-09-04T06:22:15Z
 	CreateTime *string `json:"CreateTime,omitempty" xml:"CreateTime,omitempty"`
+	// The delay time before stopping the recording. Unit: seconds.
+	//
 	// example:
 	//
 	// 180
 	DelayStopTime *int64 `json:"DelayStopTime,omitempty" xml:"DelayStopTime,omitempty"`
+	// The naming rule for recording files.
+	//
+	// > To ensure the uniqueness of recording file names, the current naming rule is record/{AppId}/{ChannelId}_{TaskId}/{EscapedStartTime}_{EscapedEndTime}.
+	//
 	// example:
 	//
 	// record/{AppId}/{ChannelId_TaskId}/{EscapedStartTime}_{EscapedEndTime}
 	FilePrefix *string `json:"FilePrefix,omitempty" xml:"FilePrefix,omitempty"`
+	// The splitting duration of the recording file. The value must be greater than or equal to 1800. Unit: seconds.
+	//
 	// example:
 	//
 	// 1800
-	FileSplitInterval *int64    `json:"FileSplitInterval,omitempty" xml:"FileSplitInterval,omitempty"`
-	Formats           []*string `json:"Formats,omitempty" xml:"Formats,omitempty" type:"Repeated"`
-	LayoutIds         []*string `json:"LayoutIds,omitempty" xml:"LayoutIds,omitempty" type:"Repeated"`
+	FileSplitInterval *int64 `json:"FileSplitInterval,omitempty" xml:"FileSplitInterval,omitempty"`
+	// The formats of the recording file. Valid values: .m3u8, .mp4, and .flv.
+	//
+	// > Only lowercase letters are supported for file formats.
+	Formats []*string `json:"Formats,omitempty" xml:"Formats,omitempty" type:"Repeated"`
+	// The list of layout IDs.
+	LayoutIds []*string `json:"LayoutIds,omitempty" xml:"LayoutIds,omitempty" type:"Repeated"`
+	// The encoding options.
+	//
 	// example:
 	//
 	// 1
 	MediaEncode *int32 `json:"MediaEncode,omitempty" xml:"MediaEncode,omitempty"`
+	// The template name.
+	//
 	// example:
 	//
-	// 测试
+	// Test
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// The template ID.
+	//
 	// example:
 	//
 	// wv7N****

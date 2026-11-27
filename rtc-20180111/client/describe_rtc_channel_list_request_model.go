@@ -30,41 +30,61 @@ type iDescribeRtcChannelListRequest interface {
 }
 
 type DescribeRtcChannelListRequest struct {
+	// The application ID. You can create and query the ID in the console. Only a single ID is supported.
+	//
 	// example:
 	//
 	// aoe****
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The channel ID. Only a single ID is supported.
+	//
 	// example:
 	//
 	// testChannel
 	ChannelId *string `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
 	OwnerId   *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The page number. Valid values: greater than **0**. Default value: 1.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1
 	PageNo *int64 `json:"PageNo,omitempty" xml:"PageNo,omitempty"`
+	// The number of entries per page. Valid values: greater than **0**. Default value: 10.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 20
 	PageSize *int64 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The service area. By default, all areas are queried. Valid values:
+	//
+	// - **cn**: China.
+	//
+	// - **us**: United States.
+	//
 	// example:
 	//
 	// cn
 	ServiceArea *string `json:"ServiceArea,omitempty" xml:"ServiceArea,omitempty"`
+	// The sort order. By default, the records are sorted in descending order of StartTime.
+	//
 	// example:
 	//
 	// desc
 	SortType *string `json:"SortType,omitempty" xml:"SortType,omitempty"`
+	// The query time in UTC. The format is yyyy-MM-ddTHH:mm:ssZ. The time granularity is one day.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 2018-01-29T00:00:00Z
 	TimePoint *string `json:"TimePoint,omitempty" xml:"TimePoint,omitempty"`
+	// The user ID. Only a single ID is supported.
+	//
 	// example:
 	//
 	// testUser

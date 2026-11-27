@@ -16,10 +16,13 @@ type iDescribeUsageOsSdkVersionDistributionStatDataResponseBody interface {
 }
 
 type DescribeUsageOsSdkVersionDistributionStatDataResponseBody struct {
+	// Request ID.
+	//
 	// example:
 	//
 	// 231470C1-ACFB-4C9F-844F-4CFE1E3804C5
-	RequestId                 *string                                                                               `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
+	// List of SDK version data in usage statistics.
 	UsageOsSdkVersionStatList []*DescribeUsageOsSdkVersionDistributionStatDataResponseBodyUsageOsSdkVersionStatList `json:"UsageOsSdkVersionStatList,omitempty" xml:"UsageOsSdkVersionStatList,omitempty" type:"Repeated"`
 }
 
@@ -63,26 +66,38 @@ func (s *DescribeUsageOsSdkVersionDistributionStatDataResponseBody) Validate() e
 }
 
 type DescribeUsageOsSdkVersionDistributionStatDataResponseBodyUsageOsSdkVersionStatList struct {
+	// Audio call duration, in minutes.
+	//
 	// example:
 	//
 	// 3
 	AudioCallDuration *int64 `json:"AudioCallDuration,omitempty" xml:"AudioCallDuration,omitempty"`
+	// Call duration ratio, represented as a four-decimal number, such as 0.0984.
+	//
 	// example:
 	//
 	// 0.0984
 	CallDurationRatio *string `json:"CallDurationRatio,omitempty" xml:"CallDurationRatio,omitempty"`
+	// SDK version name, such as 1.0.0 or 1.1.1.
+	//
 	// example:
 	//
 	// 1.0.0
 	Name *string `json:"Name,omitempty" xml:"Name,omitempty"`
+	// Operating system, such as iOS or Android.
+	//
 	// example:
 	//
 	// macOS
 	Os *string `json:"Os,omitempty" xml:"Os,omitempty"`
+	// Total call duration, in minutes.
+	//
 	// example:
 	//
 	// 476
 	TotalCallDuration *int64 `json:"TotalCallDuration,omitempty" xml:"TotalCallDuration,omitempty"`
+	// Video call duration, in minutes.
+	//
 	// example:
 	//
 	// 473

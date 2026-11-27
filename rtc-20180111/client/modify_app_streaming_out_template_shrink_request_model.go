@@ -16,12 +16,16 @@ type iModifyAppStreamingOutTemplateShrinkRequest interface {
 }
 
 type ModifyAppStreamingOutTemplateShrinkRequest struct {
+	// Application ID. You can create and query it in the console. Only a single ID is supported.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// wv7N****
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// Template.
+	//
 	// This parameter is required.
 	StreamingOutTemplateShrink *string `json:"StreamingOutTemplate,omitempty" xml:"StreamingOutTemplate,omitempty"`
 }

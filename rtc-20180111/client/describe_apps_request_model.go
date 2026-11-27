@@ -26,27 +26,51 @@ type iDescribeAppsRequest interface {
 }
 
 type DescribeAppsRequest struct {
+	// The application ID. You can create and query application IDs in the console. Only a single ID is supported. If this parameter is left empty, all application IDs are queried.
+	//
 	// example:
 	//
 	// yourAppId
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The application version.
+	//
 	// example:
 	//
 	// 3.0
 	AppVersion *string `json:"AppVersion,omitempty" xml:"AppVersion,omitempty"`
+	// The sort order. Valid values:
+	//
+	// - **asc**: Ascending.
+	//
+	//
+	//
+	// - **desc**: Descending. Default value.
+	//
 	// example:
 	//
 	// asc
 	Order   *string `json:"Order,omitempty" xml:"Order,omitempty"`
 	OwnerId *int64  `json:"OwnerId,omitempty" xml:"OwnerId,omitempty"`
+	// The page number. Default value: **1**.
+	//
 	// example:
 	//
 	// 1
 	PageNum *int32 `json:"PageNum,omitempty" xml:"PageNum,omitempty"`
+	// The number of entries per page. Default value: **10**.
+	//
 	// example:
 	//
 	// 2
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
+	// The application status. If this parameter is left empty, all statuses are queried. Valid values:
+	//
+	// - **1**: Available.
+	//
+	// - **2**: Disabled.
+	//
+	// - **3**: Disabled due to overdue payments.
+	//
 	// example:
 	//
 	// 1

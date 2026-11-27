@@ -28,18 +28,26 @@ type DescribeChannelOverallDataRequest struct {
 	//
 	// testappid
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// Channel ID.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// testid
 	ChannelId *string `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
+	// UNIX timestamp indicating the channel creation time. Supports querying data from the last 30 days. Expressed as a UNIX timestamp in seconds.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// 1615893133
 	CreatedTs *int64 `json:"CreatedTs,omitempty" xml:"CreatedTs,omitempty"`
+	// Channel release time, represented as a UNIX timestamp in seconds. If this parameter is empty, the current time is used.
+	//
+	// > If the provided channel release time exceeds the actual release time, data from the Creation Time to the actual release time is returned.
+	//
 	// example:
 	//
 	// 1615893757

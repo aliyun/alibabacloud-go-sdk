@@ -17,6 +17,8 @@ type iDescribeRtcDurationDataResponseBody interface {
 
 type DescribeRtcDurationDataResponseBody struct {
 	DurationDataPerInterval *DescribeRtcDurationDataResponseBodyDurationDataPerInterval `json:"DurationDataPerInterval,omitempty" xml:"DurationDataPerInterval,omitempty" type:"Struct"`
+	// The ID of the request.
+	//
 	// example:
 	//
 	// 16A96B9A-F203-4EC5-8E43-CB92E68F4CD8

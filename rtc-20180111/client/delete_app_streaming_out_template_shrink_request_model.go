@@ -16,12 +16,16 @@ type iDeleteAppStreamingOutTemplateShrinkRequest interface {
 }
 
 type DeleteAppStreamingOutTemplateShrinkRequest struct {
+	// The application ID. You can create and query the ID in the console. Only a single ID is supported.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// wv7N****
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The stream ingest template information.
+	//
 	// This parameter is required.
 	StreamingOutTemplateShrink *string `json:"StreamingOutTemplate,omitempty" xml:"StreamingOutTemplate,omitempty"`
 }

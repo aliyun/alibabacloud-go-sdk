@@ -18,18 +18,24 @@ type iStopCloudRecordRequest interface {
 }
 
 type StopCloudRecordRequest struct {
+	// The application ID, created and queried via the console. Only a single ID is supported.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// eo85****
 	AppId *string `json:"AppId,omitempty" xml:"AppId,omitempty"`
+	// The existing channel ID. Only a single ID is supported.
+	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// testid
 	ChannelId *string `json:"ChannelId,omitempty" xml:"ChannelId,omitempty"`
+	// The existing cloud recording job ID. Only a single ID is supported.
+	//
 	// This parameter is required.
 	//
 	// example:
