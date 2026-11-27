@@ -16,7 +16,7 @@ type iDescribeRegionsResponseBody interface {
 }
 
 type DescribeRegionsResponseBody struct {
-	// The list of region data.
+	// The list of regions.
 	RegionModelList []*DescribeRegionsResponseBodyRegionModelList `json:"RegionModelList,omitempty" xml:"RegionModelList,omitempty" type:"Repeated"`
 	// The request ID.
 	//
@@ -116,7 +116,7 @@ func (s *DescribeRegionsResponseBodyRegionModelList) Validate() error {
 }
 
 type DescribeRegionsResponseBodyRegionModelListZones struct {
-	// The zone description.
+	// The description of the zone.
 	//
 	// example:
 	//
@@ -134,7 +134,7 @@ type DescribeRegionsResponseBodyRegionModelListZones struct {
 	//
 	// test
 	Label *string `json:"Label,omitempty" xml:"Label,omitempty"`
-	// The zone name.
+	// The name of the zone.
 	//
 	// example:
 	//

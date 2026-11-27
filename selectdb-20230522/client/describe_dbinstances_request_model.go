@@ -34,7 +34,7 @@ type DescribeDBInstancesRequest struct {
 	//
 	// example:
 	//
-	// New instance test
+	// Create instance test
 	DBInstanceDescription *string `json:"DBInstanceDescription,omitempty" xml:"DBInstanceDescription,omitempty"`
 	// The instance IDs. Separate multiple instance IDs with commas (,).
 	//
@@ -44,17 +44,17 @@ type DescribeDBInstancesRequest struct {
 	DBInstanceIds *string `json:"DBInstanceIds,omitempty" xml:"DBInstanceIds,omitempty"`
 	// The status of the instance. Valid values:
 	//
-	// - **CREATING**: Creating.
+	// - **CREATING**: The instance is being created.
 	//
-	// - **ACTIVATION**: Running.
+	// - **ACTIVATION**: The instance is running.
 	//
-	// - **RESOURCE_CHANGING**: Changing specifications.
+	// - **RESOURCE_CHANGING**: The instance specifications are being changed.
 	//
-	// - **ORDER_PREPARING**: Confirming order.
+	// - **ORDER_PREPARING**: The order is being confirmed.
 	//
-	// - **READONLY_RESOURCE_CHANGING**: Changing resources (the instance is locked for write operations).
+	// - **READONLY_RESOURCE_CHANGING**: The instance resources are being changed and the instance is locked for writes.
 	//
-	// - **DELETING**: Deleting.
+	// - **DELETING**: The instance is being deleted.
 	//
 	// example:
 	//
@@ -68,7 +68,7 @@ type DescribeDBInstancesRequest struct {
 	PageNumber *int64 `json:"PageNumber,omitempty" xml:"PageNumber,omitempty"`
 	// The number of entries per page. Valid values:
 	//
-	// - **30**: Default value.
+	// - **30*	- (default)
 	//
 	// - **50**
 	//

@@ -20,7 +20,11 @@ type iDescribeDBClusterConfigRequest interface {
 }
 
 type DescribeDBClusterConfigRequest struct {
-	// The configuration file to modify. - For compute clusters: be.conf. - For FE clusters: fe.conf.
+	// The configuration file to modify.
+	//
+	// - For compute clusters: be.conf.
+	//
+	// - For FE clusters: fe.conf.
 	//
 	// This parameter is required.
 	//

@@ -30,13 +30,13 @@ type DescribeDBClusterConfigChangeLogsResponseBody struct {
 	AccessDeniedDetail *string `json:"AccessDeniedDetail,omitempty" xml:"AccessDeniedDetail,omitempty"`
 	// The returned data.
 	Data *DescribeDBClusterConfigChangeLogsResponseBodyData `json:"Data,omitempty" xml:"Data,omitempty" type:"Struct"`
-	// The dynamic code. This parameter is not in use and can be ignored.
+	// The dynamic code. This parameter is not used and can be ignored.
 	//
 	// example:
 	//
 	// 0
 	DynamicCode *string `json:"DynamicCode,omitempty" xml:"DynamicCode,omitempty"`
-	// The dynamic message. This parameter is not in use and can be ignored.
+	// The dynamic message. This parameter is not used and can be ignored.
 	//
 	// example:
 	//

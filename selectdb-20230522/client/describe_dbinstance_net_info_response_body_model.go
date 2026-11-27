@@ -18,7 +18,7 @@ type iDescribeDBInstanceNetInfoResponseBody interface {
 }
 
 type DescribeDBInstanceNetInfoResponseBody struct {
-	// The network information of the BE instances.
+	// The network list of BE instances.
 	DBClustersNetInfos []*DescribeDBInstanceNetInfoResponseBodyDBClustersNetInfos `json:"DBClustersNetInfos,omitempty" xml:"DBClustersNetInfos,omitempty" type:"Repeated"`
 	// The network information of the instance.
 	DBInstanceNetInfos []*DescribeDBInstanceNetInfoResponseBodyDBInstanceNetInfos `json:"DBInstanceNetInfos,omitempty" xml:"DBInstanceNetInfos,omitempty" type:"Repeated"`
@@ -112,13 +112,13 @@ type DescribeDBInstanceNetInfoResponseBodyDBClustersNetInfos struct {
 	//
 	// VPC/PUBLIC
 	NetType *string `json:"NetType,omitempty" xml:"NetType,omitempty"`
-	// The ports.
+	// The port list.
 	PortList []*DescribeDBInstanceNetInfoResponseBodyDBClustersNetInfosPortList `json:"PortList,omitempty" xml:"PortList,omitempty" type:"Repeated"`
-	// Indicates whether the network information is visible to users.
+	// Indicates whether the network information is visible to users. Example values include true and false.
 	//
 	// example:
 	//
-	// true/false
+	// true
 	UserVisible *bool `json:"UserVisible,omitempty" xml:"UserVisible,omitempty"`
 	// The VPC ID.
 	//
@@ -126,7 +126,7 @@ type DescribeDBInstanceNetInfoResponseBodyDBClustersNetInfos struct {
 	//
 	// vpc-****
 	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
-	// The VPC instance ID.
+	// The VPC-connected instance ID.
 	//
 	// example:
 	//
@@ -243,11 +243,11 @@ func (s *DescribeDBInstanceNetInfoResponseBodyDBClustersNetInfos) Validate() err
 }
 
 type DescribeDBInstanceNetInfoResponseBodyDBClustersNetInfosPortList struct {
-	// The connection port number.
+	// The connection port number. Example values include 9030 and 8080.
 	//
 	// example:
 	//
-	// 9030/8080
+	// 9030
 	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
 	// The port type.
 	//
@@ -318,7 +318,7 @@ type DescribeDBInstanceNetInfoResponseBodyDBInstanceNetInfos struct {
 	//
 	// VPC
 	NetType *string `json:"NetType,omitempty" xml:"NetType,omitempty"`
-	// The ports.
+	// The port objects.
 	PortList []*DescribeDBInstanceNetInfoResponseBodyDBInstanceNetInfosPortList `json:"PortList,omitempty" xml:"PortList,omitempty" type:"Repeated"`
 	// Indicates whether the network information is visible to users. Valid values:
 	//
@@ -336,7 +336,7 @@ type DescribeDBInstanceNetInfoResponseBodyDBInstanceNetInfos struct {
 	//
 	// vpc-wz90scxq6ods388ft****
 	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
-	// The VPC instance ID.
+	// The VPC-connected instance ID.
 	//
 	// example:
 	//
@@ -457,7 +457,7 @@ type DescribeDBInstanceNetInfoResponseBodyDBInstanceNetInfosPortList struct {
 	//
 	// example:
 	//
-	// MySQLPort
+	// 9030
 	Port *int32 `json:"Port,omitempty" xml:"Port,omitempty"`
 	// The port type. Valid values:
 	//
@@ -467,7 +467,7 @@ type DescribeDBInstanceNetInfoResponseBodyDBInstanceNetInfosPortList struct {
 	//
 	// example:
 	//
-	// 9030
+	// MySQLPort
 	Protocol *string `json:"Protocol,omitempty" xml:"Protocol,omitempty"`
 }
 

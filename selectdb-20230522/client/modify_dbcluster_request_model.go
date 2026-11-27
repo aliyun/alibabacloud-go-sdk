@@ -47,28 +47,28 @@ type ModifyDBClusterRequest struct {
 	// 1
 	ClusterNodeCount *int32 `json:"ClusterNodeCount,omitempty" xml:"ClusterNodeCount,omitempty"`
 	// The cluster node type. This parameter takes effect only in Serverless mode.
+	//
+	// example:
+	//
+	// base
 	ClusterNodeType *string `json:"ClusterNodeType,omitempty" xml:"ClusterNodeType,omitempty"`
 	// The cluster specifications. Valid values:
 	//
-	// - **selectdb.xlarge**: 4 cores and 32 GB.
+	// - **selectdb.g.xlarge**: 4 vCPUs and 16 GB of memory.
 	//
-	// - **selectdb.2xlarge**: 8 cores and 64 GB.
+	// - **selectdb.g.2xlarge**: 8 vCPUs and 32 GB of memory.
 	//
-	// - **selectdb.4xlarge**: 16 cores and 128 GB.
+	// - **selectdb.g.4xlarge**: 16 vCPUs and 64 GB of memory.
 	//
-	// - **selectdb.8xlarge**: 32 cores and 256 GB.
+	// - **selectdb.g.8xlarge**: 32 vCPUs and 128 GB of memory.
 	//
-	// - **selectdb.16xlarge**: 16 cores and 512 GB.
-	//
-	// - **selectdb.24xlarge**: 24 cores and 768 GB.
-	//
-	// - **selectdb.32xlarge**: 32 cores and 1024 GB.
+	// - **selectdb.g.16xlarge**: 64 vCPUs and 256 GB of memory.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// selectdb.2xlarge
+	// selectdb.g.2xlarge
 	DBClusterClass *string `json:"DBClusterClass,omitempty" xml:"DBClusterClass,omitempty"`
 	// The cluster ID.
 	//
@@ -101,13 +101,13 @@ type ModifyDBClusterRequest struct {
 	// cn-hangzhou
 	RegionId        *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
 	ResourceOwnerId *int64  `json:"ResourceOwnerId,omitempty" xml:"ResourceOwnerId,omitempty"`
-	// The maximum value of the auto-scaling range for the instance RCU (RDS Capacity Unit).
+	// The maximum value of the auto-scaling range for instance RCUs (RDS Capacity Units).
 	//
 	// example:
 	//
 	// 32
 	ScaleMax *float64 `json:"ScaleMax,omitempty" xml:"ScaleMax,omitempty"`
-	// The minimum value of the auto-scaling range for the instance RCU (RDS Capacity Unit).
+	// The minimum value of the auto-scaling range for instance RCUs (RDS Capacity Units).
 	//
 	// example:
 	//

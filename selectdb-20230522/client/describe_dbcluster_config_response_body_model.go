@@ -220,13 +220,13 @@ type DescribeDBClusterConfigResponseBodyDataParams struct {
 	//
 	// 15
 	DefaultValue *string `json:"DefaultValue,omitempty" xml:"DefaultValue,omitempty"`
-	// Specifies whether the parameter takes effect dynamically without a restart.
+	// Indicates whether the parameter takes effect dynamically without a restart.
 	//
 	// example:
 	//
 	// true
 	IsDynamic *int32 `json:"IsDynamic,omitempty" xml:"IsDynamic,omitempty"`
-	// Specifies whether users are allowed to modify the parameter.
+	// Indicates whether the parameter can be modified by users.
 	//
 	// example:
 	//

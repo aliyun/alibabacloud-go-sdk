@@ -46,7 +46,7 @@ type DescribeDBClusterConfigChangeLogsRequest struct {
 	//
 	// selectdb-cn-7213c8****
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
-	// The end time to query change records. Format: yyyy-MM-dd HH:mm:ss.
+	// The end time of the query for change records. Format: yyyy-MM-dd HH:mm:ss.
 	//
 	// This parameter is required.
 	//
@@ -62,7 +62,7 @@ type DescribeDBClusterConfigChangeLogsRequest struct {
 	//
 	// cn-hangzhou
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The start time to query change records. Format: yyyy-MM-dd HH:mm:ss.
+	// The start time of the query for change records. Format: yyyy-MM-dd HH:mm:ss.
 	//
 	// This parameter is required.
 	//

@@ -2,6 +2,7 @@
 package client
 
 import (
+	gatewayclient "github.com/alibabacloud-go/alibabacloud-gateway-pop/client"
 	openapi "github.com/alibabacloud-go/darabonba-openapi/v2/client"
 	openapiutil "github.com/alibabacloud-go/darabonba-openapi/v2/utils"
 	"github.com/alibabacloud-go/tea/dara"
@@ -24,6 +25,13 @@ func (client *Client) Init(config *openapiutil.Config) (_err error) {
 	if _err != nil {
 		return _err
 	}
+	client.ProductId = dara.String("selectdb")
+	gatewayClient, _err := gatewayclient.NewClient()
+	if _err != nil {
+		return _err
+	}
+
+	client.Spi = gatewayClient
 	client.EndpointRule = dara.String("regional")
 	client.EndpointMap = map[string]*string{
 		"ap-southeast-3": dara.String("selectdb.aliyuncs.com"),
@@ -1609,7 +1617,7 @@ func (client *Client) DescribeAllDBInstanceClass(request *DescribeAllDBInstanceC
 
 // Summary:
 //
-// Queries the cluster configuration.
+// Queries the configurations of a cluster.
 //
 // @param request - DescribeDBClusterConfigRequest
 //
@@ -1665,7 +1673,7 @@ func (client *Client) DescribeDBClusterConfigWithOptions(request *DescribeDBClus
 
 // Summary:
 //
-// Queries the cluster configuration.
+// Queries the configurations of a cluster.
 //
 // @param request - DescribeDBClusterConfigRequest
 //
@@ -1839,7 +1847,7 @@ func (client *Client) DescribeDBClusterStorageLimitation(request *DescribeDBClus
 //
 // Description:
 //
-// Subscription instances cannot be deleted.
+// You cannot delete subscription instances.
 //
 // @param request - DescribeDBInstanceAttributeRequest
 //
@@ -1895,7 +1903,7 @@ func (client *Client) DescribeDBInstanceAttributeWithOptions(request *DescribeDB
 //
 // Description:
 //
-// Subscription instances cannot be deleted.
+// You cannot delete subscription instances.
 //
 // @param request - DescribeDBInstanceAttributeRequest
 //
@@ -1913,7 +1921,7 @@ func (client *Client) DescribeDBInstanceAttribute(request *DescribeDBInstanceAtt
 
 // Summary:
 //
-// Queries the network information of a specified ApsaraDB for SelectDB instance.
+// Queries the network information of a specified ApsaraDB for SelectDB database instance.
 //
 // @param request - DescribeDBInstanceNetInfoRequest
 //
@@ -1965,7 +1973,7 @@ func (client *Client) DescribeDBInstanceNetInfoWithOptions(request *DescribeDBIn
 
 // Summary:
 //
-// Queries the network information of a specified ApsaraDB for SelectDB instance.
+// Queries the network information of a specified ApsaraDB for SelectDB database instance.
 //
 // @param request - DescribeDBInstanceNetInfoRequest
 //
@@ -2083,7 +2091,7 @@ func (client *Client) DescribeDBInstances(request *DescribeDBInstancesRequest) (
 
 // Summary:
 //
-// Queries the time-based elastic rules.
+// Queries time-based elastic rules.
 //
 // @param request - DescribeElasticRulesRequest
 //
@@ -2123,7 +2131,7 @@ func (client *Client) DescribeElasticRulesWithOptions(request *DescribeElasticRu
 
 // Summary:
 //
-// Queries the time-based elastic rules.
+// Queries time-based elastic rules.
 //
 // @param request - DescribeElasticRulesRequest
 //
@@ -2889,7 +2897,7 @@ func (client *Client) GetCreateBEClusterInquiry(request *GetCreateBEClusterInqui
 
 // Summary:
 //
-// Retrieves the pricing information for creating a cluster in a specified ApsaraDB for SelectDB instance.
+// Queries the pricing information for creating a cluster in a specified ApsaraDB for SelectDB instance.
 //
 // @param request - GetModifyBEClusterInquiryRequest
 //
@@ -2929,7 +2937,7 @@ func (client *Client) GetModifyBEClusterInquiryWithOptions(request *GetModifyBEC
 
 // Summary:
 //
-// Retrieves the pricing information for creating a cluster in a specified ApsaraDB for SelectDB instance.
+// Queries the pricing information for creating a cluster in a specified ApsaraDB for SelectDB instance.
 //
 // @param request - GetModifyBEClusterInquiryRequest
 //
@@ -3389,6 +3397,88 @@ func (client *Client) ModifyElasticRule(request *ModifyElasticRuleRequest) (_res
 
 // Summary:
 //
+// Scales the FE cluster of a specified ApsaraDB for SelectDB instance.
+//
+// @param request - ModifyFEClusterRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyFEClusterResponse
+func (client *Client) ModifyFEClusterWithOptions(request *ModifyFEClusterRequest, runtime *dara.RuntimeOptions) (_result *ModifyFEClusterResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DBInstanceId) {
+		query["DBInstanceId"] = request.DBInstanceId
+	}
+
+	if !dara.IsNil(request.FEClassCode) {
+		query["FEClassCode"] = request.FEClassCode
+	}
+
+	if !dara.IsNil(request.FEClusterId) {
+		query["FEClusterId"] = request.FEClusterId
+	}
+
+	if !dara.IsNil(request.FENodeCount) {
+		query["FENodeCount"] = request.FENodeCount
+	}
+
+	if !dara.IsNil(request.Product) {
+		query["Product"] = request.Product
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ModifyFECluster"),
+		Version:     dara.String("2023-05-22"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ModifyFEClusterResponse{}
+	_body, _err := client.CallApi(params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
+// Scales the FE cluster of a specified ApsaraDB for SelectDB instance.
+//
+// @param request - ModifyFEClusterRequest
+//
+// @return ModifyFEClusterResponse
+func (client *Client) ModifyFECluster(request *ModifyFEClusterRequest) (_result *ModifyFEClusterResponse, _err error) {
+	runtime := &dara.RuntimeOptions{}
+	_result = &ModifyFEClusterResponse{}
+	_body, _err := client.ModifyFEClusterWithOptions(request, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_result = _body
+	return _result, _err
+}
+
+// Summary:
+//
 // Modifies the IP addresses in the whitelist of a specified ApsaraDB for SelectDB instance.
 //
 // @param request - ModifySecurityIPListRequest
@@ -3569,7 +3659,7 @@ func (client *Client) ModifyVirtualCluster(request *ModifyVirtualClusterRequest)
 
 // Summary:
 //
-// Releases the public endpoint of an ApsaraDB for SelectDB instance.
+// Releases the public endpoint of a specified ApsaraDB for SelectDB instance.
 //
 // @param request - ReleaseInstancePublicConnectionRequest
 //
@@ -3625,7 +3715,7 @@ func (client *Client) ReleaseInstancePublicConnectionWithOptions(request *Releas
 
 // Summary:
 //
-// Releases the public endpoint of an ApsaraDB for SelectDB instance.
+// Releases the public endpoint of a specified ApsaraDB for SelectDB instance.
 //
 // @param request - ReleaseInstancePublicConnectionRequest
 //

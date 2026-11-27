@@ -74,9 +74,9 @@ type iCreateDBInstanceShrinkRequest interface {
 type CreateDBInstanceShrinkRequest struct {
 	// Specifies whether to add the VPC CIDR block to the whitelist. Valid values:
 	//
-	// - 1: yes
+	// - 1: yes.
 	//
-	// - 0: no
+	// - 0: no.
 	//
 	// example:
 	//
@@ -92,9 +92,9 @@ type CreateDBInstanceShrinkRequest struct {
 	CacheSize *int32 `json:"CacheSize,omitempty" xml:"CacheSize,omitempty"`
 	// The billing method of the instance. Valid values:
 	//
-	// - **Postpaid**: pay-as-you-go
+	// - **Postpaid**: pay-as-you-go.
 	//
-	// - **Prepaid**: subscription
+	// - **Prepaid**: subscription.
 	//
 	// This parameter is required.
 	//
@@ -144,7 +144,7 @@ type CreateDBInstanceShrinkRequest struct {
 	//
 	// example:
 	//
-	// New instance test
+	// Test new instance
 	DBInstanceDescription *string `json:"DBInstanceDescription,omitempty" xml:"DBInstanceDescription,omitempty"`
 	// The deployment mode of the instance.
 	//
@@ -170,13 +170,13 @@ type CreateDBInstanceShrinkRequest struct {
 	//
 	// 4.1
 	EngineVersion *string `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
-	// The node specifications of a single node in the frontend (FE) cluster. This parameter takes effect only when you create a pay-as-you-go or subscription instance. Default value: selectdb_fe.xlarge16.
+	// The single node specifications of the FE cluster. This parameter takes effect only when you create a pay-as-you-go or subscription instance. Default value: selectdb_fe.xlarge16.
 	//
 	// example:
 	//
 	// selectdb_fe.xlarge16
 	FEClassCode *string `json:"FEClassCode,omitempty" xml:"FEClassCode,omitempty"`
-	// The number of nodes in the FE cluster. This parameter takes effect only when you create a pay-as-you-go or subscription instance. Default value: 3. Valid values: 1 to 11. The value must be an odd number.
+	// The number of FE cluster nodes. This parameter takes effect only when you create a pay-as-you-go or subscription instance. Default value: 3. Valid values: 1 to 11, and the value must be an odd number.
 	//
 	// example:
 	//
@@ -191,11 +191,11 @@ type CreateDBInstanceShrinkRequest struct {
 	// if can be null:
 	// false
 	MultiZoneShrink *string `json:"MultiZone,omitempty" xml:"MultiZone,omitempty"`
-	// Specifies the billing cycle of the subscription cluster. Valid values:
+	// The subscription period unit of the subscription cluster. Valid values:
 	//
-	// - **Year**: yearly.
+	// - **Year**: yearly subscription.
 	//
-	// - **Month**: monthly.
+	// - **Month**: monthly subscription.
 	//
 	// > This parameter takes effect and is required only when **ChargeType*	- is set to **Prepaid**.
 	//
@@ -236,25 +236,25 @@ type CreateDBInstanceShrinkRequest struct {
 	//
 	// 192.168.1.1
 	SecurityIPList *string `json:"SecurityIPList,omitempty" xml:"SecurityIPList,omitempty"`
-	// The tag list information of the instance.
+	// The instance label list information.
 	TagShrink *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
-	// Specifies whether to enable TDE on the instance.
+	// Specifies whether to enable TDE for the instance.
 	//
 	// example:
 	//
 	// True
 	TdeEnabled *string `json:"TdeEnabled,omitempty" xml:"TdeEnabled,omitempty"`
-	// The mode for enabling Transparent Data Encryption (TDE) on the instance.
+	// The specific mode for enabling TDE on the instance.
 	//
 	// example:
 	//
 	// MANAGED
 	TdeMode *string `json:"TdeMode,omitempty" xml:"TdeMode,omitempty"`
-	// The subscription duration of the instance. The unit is specified by the Period parameter. Year indicates years, and Month indicates months. Valid values:
+	// The subscription duration of the subscription instance. The unit is specified by the Period parameter. Year indicates years, and Month indicates months. Valid values:
 	//
-	// - If Period is set to Year, valid values are 1, 2, 3, 4, and 5.
+	// - If Period is set to Year, valid values of UsedTime are 1, 2, 3, 4, and 5.
 	//
-	// - If Period is set to Month, valid values are 1 to 12.
+	// - If Period is set to Month, valid values of UsedTime are 1 to 12.
 	//
 	// > This parameter takes effect and is required only when **ChargeType*	- is set to **Prepaid**.
 	//

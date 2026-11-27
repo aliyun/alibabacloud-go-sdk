@@ -99,7 +99,7 @@ type DescribeSecurityIPListResponseBodyGroupItems struct {
 	//
 	// group1
 	GroupName *string `json:"GroupName,omitempty" xml:"GroupName,omitempty"`
-	// The group tag.
+	// The tag of the group.
 	//
 	// example:
 	//

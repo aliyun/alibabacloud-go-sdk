@@ -127,7 +127,7 @@ func (s *DescribeElasticRulesResponseBodyData) Validate() error {
 }
 
 type DescribeElasticRulesResponseBodyDataRules struct {
-	// The target compute resource rule of the cluster.
+	// The target compute resource rule for the cluster.
 	//
 	// example:
 	//

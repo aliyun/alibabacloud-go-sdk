@@ -26,7 +26,7 @@ type DescribeDBInstancesResponseBody struct {
 	Items []*DescribeDBInstancesResponseBodyItems `json:"Items,omitempty" xml:"Items,omitempty" type:"Repeated"`
 	// The number of entries per page. Valid values:
 	//
-	// - **30**: Default value.
+	// - **30*	- (default)
 	//
 	// - **50**
 	//
@@ -123,7 +123,7 @@ func (s *DescribeDBInstancesResponseBody) Validate() error {
 }
 
 type DescribeDBInstancesResponseBodyItems struct {
-	// The edition of the instance. Default value: basic.
+	// The instance edition. Default value: basic.
 	//
 	// example:
 	//
@@ -131,9 +131,9 @@ type DescribeDBInstancesResponseBodyItems struct {
 	Category *string `json:"Category,omitempty" xml:"Category,omitempty"`
 	// The billing method of the instance. Valid values:
 	//
-	// - **Postpaid**: pay-as-you-go
+	// - **Postpaid**: pay-as-you-go.
 	//
-	// - **Prepaid**: subscription
+	// - **Prepaid**: subscription.
 	//
 	// example:
 	//
@@ -153,9 +153,9 @@ type DescribeDBInstancesResponseBodyItems struct {
 	DBInstanceId *string `json:"DBInstanceId,omitempty" xml:"DBInstanceId,omitempty"`
 	// The deployment mode of the instance. Valid values:
 	//
-	// - multi_az: zone-redundant
+	// - multi_az: zone-redundant.
 	//
-	// - single_az: locally redundant
+	// - single_az: locally redundant.
 	//
 	// example:
 	//
@@ -165,7 +165,7 @@ type DescribeDBInstancesResponseBodyItems struct {
 	//
 	// example:
 	//
-	// New instance test
+	// Create instance test
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The database engine.
 	//
@@ -185,7 +185,7 @@ type DescribeDBInstancesResponseBodyItems struct {
 	//
 	// 2.4
 	EngineVersion *string `json:"EngineVersion,omitempty" xml:"EngineVersion,omitempty"`
-	// The expiration time of the cluster. The time is displayed in ISO 8601 format and includes the time zone.
+	// The expiration time of the cluster. The time follows the ISO 8601 standard and includes time zone information.
 	//
 	// > This parameter is returned only for clusters whose billing method is **Prepaid*	- (subscription). For clusters whose billing method is **Postpaid*	- (pay-as-you-go), an empty value is returned.
 	//
@@ -193,7 +193,7 @@ type DescribeDBInstancesResponseBodyItems struct {
 	//
 	// 2024-03-29T03:47:05Z
 	ExpireTime *string `json:"ExpireTime,omitempty" xml:"ExpireTime,omitempty"`
-	// The FE cluster list.
+	// The list of FE clusters.
 	FEClusterList []*DescribeDBInstancesResponseBodyItemsFEClusterList `json:"FEClusterList,omitempty" xml:"FEClusterList,omitempty" type:"Repeated"`
 	// The time when the task was created (GMT).
 	//
@@ -207,7 +207,7 @@ type DescribeDBInstancesResponseBodyItems struct {
 	//
 	// 2023-08-12T19:05Z
 	GmtModified *string `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
-	// The usage type of the instance.
+	// The instance usage type.
 	//
 	// example:
 	//
@@ -215,9 +215,9 @@ type DescribeDBInstancesResponseBodyItems struct {
 	InstanceUsedType *string `json:"InstanceUsedType,omitempty" xml:"InstanceUsedType,omitempty"`
 	// Indicates whether the instance is deleted. Valid values:
 	//
-	// - **true**: deleted
+	// - **true**: The instance is deleted.
 	//
-	// - **fasle**: not deleted
+	// - **fasle**: The instance is not deleted.
 	//
 	// example:
 	//
@@ -241,7 +241,7 @@ type DescribeDBInstancesResponseBodyItems struct {
 	//
 	// Reserved parameter. Not returned
 	MaintainEndTimeStr *string `json:"MaintainEndTimeStr,omitempty" xml:"MaintainEndTimeStr,omitempty"`
-	// Reserved parameter. Not returned. Therefore, the time format does not apply.
+	// A reserved parameter. It is not returned at the moment, so the time format does not apply.
 	//
 	// example:
 	//
@@ -253,7 +253,7 @@ type DescribeDBInstancesResponseBodyItems struct {
 	//
 	// Reserved parameter. Not returned
 	MaintainStartTimeStr *string `json:"MaintainStartTimeStr,omitempty" xml:"MaintainStartTimeStr,omitempty"`
-	// Reserved parameter. Not returned. Therefore, the time format does not apply.
+	// A reserved parameter. It is not returned at the moment, so the time format does not apply.
 	//
 	// example:
 	//
@@ -297,23 +297,23 @@ type DescribeDBInstancesResponseBodyItems struct {
 	//
 	// 64
 	ResourceMemory *int64 `json:"ResourceMemory,omitempty" xml:"ResourceMemory,omitempty"`
-	// The maximum value of the automatic scaling range for the RDS Capacity Unit (RCU) of the instance.
+	// The maximum number of RDS capacity units (RCUs) for automatic scaling of the instance.
 	//
 	// example:
 	//
 	// 0
 	ScaleMax *int64 `json:"ScaleMax,omitempty" xml:"ScaleMax,omitempty"`
-	// The minimum value of the automatic scaling range for the RDS Capacity Unit (RCU) of the instance.
+	// The minimum number of RDS capacity units (RCUs) for automatic scaling of the instance.
 	//
 	// example:
 	//
 	// 0
 	ScaleMin *int64 `json:"ScaleMin,omitempty" xml:"ScaleMin,omitempty"`
-	// The redundant field.
+	// A redundant field.
 	//
 	// example:
 	//
-	// Empty
+	// 1
 	ScaleReplica *int64 `json:"ScaleReplica,omitempty" xml:"ScaleReplica,omitempty"`
 	// Indicates whether the instance is a serverless instance.
 	//
@@ -323,23 +323,23 @@ type DescribeDBInstancesResponseBodyItems struct {
 	Serverless *bool `json:"Serverless,omitempty" xml:"Serverless,omitempty"`
 	// The status of the instance. Valid values:
 	//
-	// - **CREATING**: Creating.
+	// - **CREATING**: The instance is being created.
 	//
-	// - **ACTIVATION**: Running.
+	// - **ACTIVATION**: The instance is running.
 	//
-	// - **RESOURCE_CHANGING**: Changing specifications.
+	// - **RESOURCE_CHANGING**: The instance specifications are being changed.
 	//
-	// - **ORDER_PREPARING**: Confirming order.
+	// - **ORDER_PREPARING**: The order is being confirmed.
 	//
-	// - **READONLY_RESOURCE_CHANGING**: Changing resources (the instance is locked for write operations).
+	// - **READONLY_RESOURCE_CHANGING**: The instance resources are being changed and the instance is locked for writes.
 	//
-	// - **DELETING**: Deleting.
+	// - **DELETING**: The instance is being deleted.
 	//
 	// example:
 	//
 	// ACTIVATION
 	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
-	// The storage space size.
+	// The storage capacity.
 	//
 	// example:
 	//
@@ -391,7 +391,7 @@ type DescribeDBInstancesResponseBodyItems struct {
 	//
 	// cn-hangzhou-i
 	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
-	// The connection endpoint.
+	// The endpoint.
 	//
 	// example:
 	//

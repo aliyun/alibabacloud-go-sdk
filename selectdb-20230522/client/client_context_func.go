@@ -1213,7 +1213,7 @@ func (client *Client) DescribeAllDBInstanceClassWithContext(ctx context.Context,
 
 // Summary:
 //
-// Queries the cluster configuration.
+// Queries the configurations of a cluster.
 //
 // @param request - DescribeDBClusterConfigRequest
 //
@@ -1389,7 +1389,7 @@ func (client *Client) DescribeDBClusterStorageLimitationWithContext(ctx context.
 //
 // Description:
 //
-// Subscription instances cannot be deleted.
+// You cannot delete subscription instances.
 //
 // @param request - DescribeDBInstanceAttributeRequest
 //
@@ -1441,7 +1441,7 @@ func (client *Client) DescribeDBInstanceAttributeWithContext(ctx context.Context
 
 // Summary:
 //
-// Queries the network information of a specified ApsaraDB for SelectDB instance.
+// Queries the network information of a specified ApsaraDB for SelectDB database instance.
 //
 // @param request - DescribeDBInstanceNetInfoRequest
 //
@@ -1575,7 +1575,7 @@ func (client *Client) DescribeDBInstancesWithContext(ctx context.Context, tmpReq
 
 // Summary:
 //
-// Queries the time-based elastic rules.
+// Queries time-based elastic rules.
 //
 // @param request - DescribeElasticRulesRequest
 //
@@ -2171,7 +2171,7 @@ func (client *Client) GetCreateBEClusterInquiryWithContext(ctx context.Context, 
 
 // Summary:
 //
-// Retrieves the pricing information for creating a cluster in a specified ApsaraDB for SelectDB instance.
+// Queries the pricing information for creating a cluster in a specified ApsaraDB for SelectDB instance.
 //
 // @param request - GetModifyBEClusterInquiryRequest
 //
@@ -2563,6 +2563,70 @@ func (client *Client) ModifyElasticRuleWithContext(ctx context.Context, request 
 
 // Summary:
 //
+// Scales the FE cluster of a specified ApsaraDB for SelectDB instance.
+//
+// @param request - ModifyFEClusterRequest
+//
+// @param runtime - runtime options for this request RuntimeOptions
+//
+// @return ModifyFEClusterResponse
+func (client *Client) ModifyFEClusterWithContext(ctx context.Context, request *ModifyFEClusterRequest, runtime *dara.RuntimeOptions) (_result *ModifyFEClusterResponse, _err error) {
+	if dara.BoolValue(client.EnableValidate) == true {
+		_err = request.Validate()
+		if _err != nil {
+			return _result, _err
+		}
+	}
+	query := map[string]interface{}{}
+	if !dara.IsNil(request.DBInstanceId) {
+		query["DBInstanceId"] = request.DBInstanceId
+	}
+
+	if !dara.IsNil(request.FEClassCode) {
+		query["FEClassCode"] = request.FEClassCode
+	}
+
+	if !dara.IsNil(request.FEClusterId) {
+		query["FEClusterId"] = request.FEClusterId
+	}
+
+	if !dara.IsNil(request.FENodeCount) {
+		query["FENodeCount"] = request.FENodeCount
+	}
+
+	if !dara.IsNil(request.Product) {
+		query["Product"] = request.Product
+	}
+
+	if !dara.IsNil(request.RegionId) {
+		query["RegionId"] = request.RegionId
+	}
+
+	req := &openapiutil.OpenApiRequest{
+		Query: openapiutil.Query(query),
+	}
+	params := &openapiutil.Params{
+		Action:      dara.String("ModifyFECluster"),
+		Version:     dara.String("2023-05-22"),
+		Protocol:    dara.String("HTTPS"),
+		Pathname:    dara.String("/"),
+		Method:      dara.String("POST"),
+		AuthType:    dara.String("AK"),
+		Style:       dara.String("RPC"),
+		ReqBodyType: dara.String("formData"),
+		BodyType:    dara.String("json"),
+	}
+	_result = &ModifyFEClusterResponse{}
+	_body, _err := client.CallApiWithCtx(ctx, params, req, runtime)
+	if _err != nil {
+		return _result, _err
+	}
+	_err = dara.Convert(_body, &_result)
+	return _result, _err
+}
+
+// Summary:
+//
 // Modifies the IP addresses in the whitelist of a specified ApsaraDB for SelectDB instance.
 //
 // @param request - ModifySecurityIPListRequest
@@ -2697,7 +2761,7 @@ func (client *Client) ModifyVirtualClusterWithContext(ctx context.Context, reque
 
 // Summary:
 //
-// Releases the public endpoint of an ApsaraDB for SelectDB instance.
+// Releases the public endpoint of a specified ApsaraDB for SelectDB instance.
 //
 // @param request - ReleaseInstancePublicConnectionRequest
 //

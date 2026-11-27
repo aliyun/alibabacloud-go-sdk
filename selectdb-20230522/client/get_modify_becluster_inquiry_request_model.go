@@ -108,7 +108,7 @@ type GetModifyBEClusterInquiryRequest struct {
 	//
 	// Hour
 	PricingCycle *string `json:"PricingCycle,omitempty" xml:"PricingCycle,omitempty"`
-	// The coupon ID.
+	// The coupon code.
 	//
 	// example:
 	//
