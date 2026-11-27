@@ -40,17 +40,17 @@ type DescribeNamespacesResponseBody struct {
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The request ID.
+	// The ID of the request.
 	//
 	// example:
 	//
 	// 67F33190-946B-1105-B6A1-E2DF0426DD51
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful. Valid values:
+	// Indicates whether the request is successful. Valid values:
 	//
-	// - true: Successful.
+	// - true: The request is successful.
 	//
-	// - false: Failed.
+	// - false: The request failed.
 	//
 	// example:
 	//
@@ -155,6 +155,7 @@ func (s *DescribeNamespacesResponseBody) Validate() error {
 }
 
 type DescribeNamespacesResponseBodyNamespaces struct {
+	// The elastic resource specifications of the namespace.
 	ElasticResourceSpec *DescribeNamespacesResponseBodyNamespacesElasticResourceSpec `json:"ElasticResourceSpec,omitempty" xml:"ElasticResourceSpec,omitempty" type:"Struct"`
 	// The creation time.
 	//
@@ -162,7 +163,7 @@ type DescribeNamespacesResponseBodyNamespaces struct {
 	//
 	// 1629879567394
 	GmtCreate *int64 `json:"GmtCreate,omitempty" xml:"GmtCreate,omitempty"`
-	// The modification time.
+	// The update time.
 	//
 	// example:
 	//
@@ -170,7 +171,7 @@ type DescribeNamespacesResponseBodyNamespaces struct {
 	GmtModified *int64 `json:"GmtModified,omitempty" xml:"GmtModified,omitempty"`
 	// The subscription resources allocated to the namespace.
 	GuaranteedResourceSpec *DescribeNamespacesResponseBodyNamespacesGuaranteedResourceSpec `json:"GuaranteedResourceSpec,omitempty" xml:"GuaranteedResourceSpec,omitempty" type:"Struct"`
-	// Indicates whether zone-disaster recovery is enabled for the namespace.
+	// Indicates whether high availability across zones is enabled for the namespace.
 	//
 	// example:
 	//
@@ -188,15 +189,15 @@ type DescribeNamespacesResponseBodyNamespaces struct {
 	ResourceUsed *DescribeNamespacesResponseBodyNamespacesResourceUsed `json:"ResourceUsed,omitempty" xml:"ResourceUsed,omitempty" type:"Struct"`
 	// The status of the namespace. Valid values:
 	//
-	// - CREATING: Being created.
+	// - CREATING: The namespace is being created.
 	//
-	// - DELETING: Being deleted.
+	// - DELETING: The namespace is being deleted.
 	//
-	// - MODIFYING: Resource specifications are being modified.
+	// - MODIFYING: The resource specifications are being modified.
 	//
-	// - SUCCESS: The last operation was successful.
+	// - SUCCESS: The previous operation was successful.
 	//
-	// - FAILED: The last operation failed.
+	// - FAILED: The previous operation failed.
 	//
 	// example:
 	//
@@ -338,13 +339,13 @@ func (s *DescribeNamespacesResponseBodyNamespaces) Validate() error {
 }
 
 type DescribeNamespacesResponseBodyNamespacesElasticResourceSpec struct {
-	// The maximum CPU limit for pay-as-you-go resources.
+	// The CPU limit for pay-as-you-go resources.
 	//
 	// example:
 	//
 	// 0
 	Cpu *int32 `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
-	// The maximum memory limit for pay-as-you-go resources. Unit: GB.
+	// The memory limit for pay-as-you-go resources. Unit: GB.
 	//
 	// example:
 	//
@@ -383,7 +384,7 @@ func (s *DescribeNamespacesResponseBodyNamespacesElasticResourceSpec) Validate()
 }
 
 type DescribeNamespacesResponseBodyNamespacesGuaranteedResourceSpec struct {
-	// The number of CPUs for subscription resources.
+	// The number of CPU cores for subscription resources.
 	//
 	// example:
 	//
@@ -428,7 +429,7 @@ func (s *DescribeNamespacesResponseBodyNamespacesGuaranteedResourceSpec) Validat
 }
 
 type DescribeNamespacesResponseBodyNamespacesResourceSpec struct {
-	// The number of CPUs.
+	// The number of CPU cores.
 	//
 	// example:
 	//
@@ -473,19 +474,19 @@ func (s *DescribeNamespacesResponseBodyNamespacesResourceSpec) Validate() error 
 }
 
 type DescribeNamespacesResponseBodyNamespacesResourceUsed struct {
-	// The number of CPUs used.
+	// The number of used CPU cores.
 	//
 	// example:
 	//
 	// 2
 	Cpu *float32 `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
-	// The number of compute units (CUs) used.
+	// The number of used compute units (CUs).
 	//
 	// example:
 	//
 	// 0
 	Cu *float32 `json:"Cu,omitempty" xml:"Cu,omitempty"`
-	// The amount of memory used.
+	// The amount of used memory.
 	//
 	// example:
 	//

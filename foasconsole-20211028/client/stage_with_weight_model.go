@@ -18,9 +18,20 @@ type iStageWithWeight interface {
 }
 
 type StageWithWeight struct {
-	StepIndex *int32  `json:"StepIndex,omitempty" xml:"StepIndex,omitempty"`
-	StepName  *string `json:"StepName,omitempty" xml:"StepName,omitempty"`
-	Weight    *int32  `json:"Weight,omitempty" xml:"Weight,omitempty"`
+	// The ordinal number of the execution stage.
+	//
+	// example:
+	//
+	// 0
+	StepIndex *int32 `json:"StepIndex,omitempty" xml:"StepIndex,omitempty"`
+	// The name of the execution stage.
+	StepName *string `json:"StepName,omitempty" xml:"StepName,omitempty"`
+	// The weight of the stage in the overall progress.
+	//
+	// example:
+	//
+	// 0
+	Weight *int32 `json:"Weight,omitempty" xml:"Weight,omitempty"`
 }
 
 func (s StageWithWeight) String() string {

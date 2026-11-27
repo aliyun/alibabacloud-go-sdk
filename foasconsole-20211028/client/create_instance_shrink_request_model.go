@@ -64,9 +64,9 @@ type CreateInstanceShrinkRequest struct {
 	ArchitectureType *string `json:"ArchitectureType,omitempty" xml:"ArchitectureType,omitempty"`
 	// Specifies whether to enable auto-renewal. Valid values:
 	//
-	// - **true**: Enabled.
+	// - **true**: enables auto-renewal.
 	//
-	// - **false**: Disabled. This is the default value.
+	// - **false**: disables auto-renewal. This is the default value.
 	//
 	// > This parameter does not take effect for pay-as-you-go instances.
 	//
@@ -76,9 +76,9 @@ type CreateInstanceShrinkRequest struct {
 	AutoRenew *bool `json:"AutoRenew,omitempty" xml:"AutoRenew,omitempty"`
 	// The billing method. Valid values:
 	//
-	// - POST: pay-as-you-go.
+	// - POST: pay-as-you-go
 	//
-	// - PRE: subscription.
+	// - PRE: subscription
 	//
 	// This parameter is required.
 	//
@@ -86,11 +86,11 @@ type CreateInstanceShrinkRequest struct {
 	//
 	// PRE
 	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
-	// The default high-availability namespace resource configuration.
+	// The resource configurations for the default high-availability namespace.
 	DefaultHaNamespaceResourceSpecShrink *string `json:"DefaultHaNamespaceResourceSpec,omitempty" xml:"DefaultHaNamespaceResourceSpec,omitempty"`
-	// The default namespace resource configuration.
+	// The resource configurations for the default namespace.
 	DefaultNamespaceResourceSpecShrink *string `json:"DefaultNamespaceResourceSpec,omitempty" xml:"DefaultNamespaceResourceSpec,omitempty"`
-	// The subscription duration.
+	// The number of subscription periods.
 	//
 	// > This parameter is required when ChargeType is set to PRE.
 	//
@@ -113,17 +113,17 @@ type CreateInstanceShrinkRequest struct {
 	//
 	// true
 	Ha *bool `json:"Ha,omitempty" xml:"Ha,omitempty"`
-	// The zone-disaster recovery resource specifications.
+	// The resource specifications for zone-disaster recovery.
 	//
 	// if can be null:
 	// true
 	HaResourceSpecShrink *string `json:"HaResourceSpec,omitempty" xml:"HaResourceSpec,omitempty"`
-	// The list of vSwitch IDs in the secondary zone for zone-disaster recovery.
+	// The vSwitches in the secondary zone for zone-disaster recovery.
 	//
 	// if can be null:
 	// true
 	HaVSwitchIdsShrink *string `json:"HaVSwitchIds,omitempty" xml:"HaVSwitchIds,omitempty"`
-	// The workspace name. The name must start with a lowercase letter and can contain lowercase letters, digits, and hyphens (-). The name cannot end with a hyphen.
+	// The name of the workspace. The name must start with a lowercase letter and can contain lowercase letters, digits, and hyphens. It cannot end with a hyphen.
 	//
 	// This parameter is required.
 	//
@@ -137,13 +137,13 @@ type CreateInstanceShrinkRequest struct {
 	//
 	// TAIHAO
 	MonitorType *string `json:"MonitorType,omitempty" xml:"MonitorType,omitempty"`
-	// The billing cycle of the subscription instance. Valid values:
+	// The subscription period unit for the subscription instance. Valid values:
 	//
-	// - **year**: yearly.
+	// - **year**: year
 	//
-	// - **month**: monthly.
+	// - **month**: month
 	//
-	// > This parameter is required when ChargeType is set to PRE.
+	// > This parameter is required when the billing method is subscription.
 	//
 	// example:
 	//
@@ -163,7 +163,7 @@ type CreateInstanceShrinkRequest struct {
 	//
 	// cn-beijing
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	// The resource group ID.
+	// The ID of the resource group.
 	//
 	// example:
 	//
@@ -177,23 +177,23 @@ type CreateInstanceShrinkRequest struct {
 	//
 	// This parameter is required.
 	StorageShrink *string `json:"Storage,omitempty" xml:"Storage,omitempty"`
-	// The list of tags. A maximum of 20 tags can be specified.
+	// The list of tags. You can add up to 20 tags.
 	TagShrink *string `json:"Tag,omitempty" xml:"Tag,omitempty"`
 	// Specifies whether to use a coupon. Valid values:
 	//
-	// - true: Use a coupon.
+	// - true: uses a coupon.
 	//
-	// - false: Do not use a coupon.
+	// - false: does not use a coupon.
 	//
 	// example:
 	//
 	// true
 	UsePromotionCode *bool `json:"UsePromotionCode,omitempty" xml:"UsePromotionCode,omitempty"`
-	// The list of vSwitch IDs.
+	// The vSwitch IDs.
 	//
 	// This parameter is required.
 	VSwitchIdsShrink *string `json:"VSwitchIds,omitempty" xml:"VSwitchIds,omitempty"`
-	// The virtual private cloud (VPC) ID.
+	// The ID of the virtual private cloud (VPC).
 	//
 	// This parameter is required.
 	//

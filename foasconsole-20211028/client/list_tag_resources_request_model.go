@@ -22,7 +22,7 @@ type iListTagResourcesRequest interface {
 }
 
 type ListTagResourcesRequest struct {
-	// The token for the next query.
+	// The token used to start the next query.
 	//
 	// example:
 	//
@@ -36,7 +36,7 @@ type ListTagResourcesRequest struct {
 	//
 	// cn-beijing
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The order instance IDs.
+	// The IDs of the order instances. You can call DescribeInstances to query the instance IDs of the workspace.
 	ResourceId []*string `json:"ResourceId,omitempty" xml:"ResourceId,omitempty" type:"Repeated"`
 	// The resource type. Set the value to vvpinstance.
 	//
@@ -46,7 +46,7 @@ type ListTagResourcesRequest struct {
 	//
 	// vvpinstance
 	ResourceType *string `json:"ResourceType,omitempty" xml:"ResourceType,omitempty"`
-	// The tag list. A maximum of 20 items are supported.
+	// The list of tags. You can specify up to 20 tags.
 	Tag []*ListTagResourcesRequestTag `json:"Tag,omitempty" xml:"Tag,omitempty" type:"Repeated"`
 }
 

@@ -38,7 +38,7 @@ type DescribeSupportedRegionsResponseBody struct {
 	//
 	// 10
 	PageSize *int32 `json:"PageSize,omitempty" xml:"PageSize,omitempty"`
-	// The list of region information.
+	// The list of regions.
 	Regions []*DescribeSupportedRegionsResponseBodyRegions `json:"Regions,omitempty" xml:"Regions,omitempty" type:"Repeated"`
 	// The request ID.
 	//
@@ -56,7 +56,7 @@ type DescribeSupportedRegionsResponseBody struct {
 	//
 	// true
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
-	// The total number of regions returned.
+	// The number of regions returned.
 	//
 	// example:
 	//

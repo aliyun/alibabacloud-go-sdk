@@ -18,7 +18,7 @@ type iQueryCreateInstancePriceResponseBody interface {
 }
 
 type QueryCreateInstancePriceResponseBody struct {
-	// The price information, including the price and promotion rules.
+	// The price information, including the price and discount rules.
 	PriceInfo *QueryCreateInstancePriceResponseBodyPriceInfo `json:"PriceInfo,omitempty" xml:"PriceInfo,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -26,7 +26,7 @@ type QueryCreateInstancePriceResponseBody struct {
 	//
 	// 67F33190-946B-1105-B6A1-E2DF0426DD51
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	Success *bool `json:"Success,omitempty" xml:"Success,omitempty"`
 }
 
@@ -95,9 +95,9 @@ type QueryCreateInstancePriceResponseBodyPriceInfo struct {
 	//
 	// 655.2
 	DiscountAmount *float32 `json:"DiscountAmount,omitempty" xml:"DiscountAmount,omitempty"`
-	// Indicates whether an enterprise discount is applied.
+	// Indicates whether the key account promotion is applied.
 	IsContractActivity *bool `json:"IsContractActivity,omitempty" xml:"IsContractActivity,omitempty"`
-	// The Lingxiao request ID of the call.
+	// The Lingxiao request ID.
 	//
 	// example:
 	//
@@ -107,11 +107,13 @@ type QueryCreateInstancePriceResponseBodyPriceInfo struct {
 	//
 	// example:
 	//
-	// An unpaid order exists. Pay for or cancel the existing order first
+	// Unpaid orders exist. Pay for or cancel the existing orders first
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The module prices.
+	ModulePrices []*QueryCreateInstancePriceResponseBodyPriceInfoModulePrices `json:"ModulePrices,omitempty" xml:"ModulePrices,omitempty" type:"Repeated"`
 	// The coupon group information.
 	OptionalPromotions []*QueryCreateInstancePriceResponseBodyPriceInfoOptionalPromotions `json:"OptionalPromotions,omitempty" xml:"OptionalPromotions,omitempty" type:"Repeated"`
-	// The original price.
+	// The original amount.
 	//
 	// example:
 	//
@@ -119,11 +121,19 @@ type QueryCreateInstancePriceResponseBodyPriceInfo struct {
 	OriginalAmount *float32 `json:"OriginalAmount,omitempty" xml:"OriginalAmount,omitempty"`
 	// The promotion rules.
 	Rules []*QueryCreateInstancePriceResponseBodyPriceInfoRules `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Repeated"`
-	// The promotional price based on the standard discount from the official website.
+	// The discounted price based on the official website discount.
+	//
+	// example:
+	//
+	// 21321
 	StandDiscountPrice *string `json:"StandDiscountPrice,omitempty" xml:"StandDiscountPrice,omitempty"`
-	// The standard discounted price on the official website or the direct sales contract discounted price.
+	// The discounted price on the official website or the discounted price in the direct sales contract.
+	//
+	// example:
+	//
+	// 32432
 	StandPrice *string `json:"StandPrice,omitempty" xml:"StandPrice,omitempty"`
-	// The final price, which is the original price minus the discount.
+	// The final amount, which is the original amount minus the discount.
 	//
 	// example:
 	//
@@ -165,6 +175,10 @@ func (s *QueryCreateInstancePriceResponseBodyPriceInfo) GetLxRequestId() *string
 
 func (s *QueryCreateInstancePriceResponseBodyPriceInfo) GetMessage() *string {
 	return s.Message
+}
+
+func (s *QueryCreateInstancePriceResponseBodyPriceInfo) GetModulePrices() []*QueryCreateInstancePriceResponseBodyPriceInfoModulePrices {
+	return s.ModulePrices
 }
 
 func (s *QueryCreateInstancePriceResponseBodyPriceInfo) GetOptionalPromotions() []*QueryCreateInstancePriceResponseBodyPriceInfoOptionalPromotions {
@@ -226,6 +240,11 @@ func (s *QueryCreateInstancePriceResponseBodyPriceInfo) SetMessage(v string) *Qu
 	return s
 }
 
+func (s *QueryCreateInstancePriceResponseBodyPriceInfo) SetModulePrices(v []*QueryCreateInstancePriceResponseBodyPriceInfoModulePrices) *QueryCreateInstancePriceResponseBodyPriceInfo {
+	s.ModulePrices = v
+	return s
+}
+
 func (s *QueryCreateInstancePriceResponseBodyPriceInfo) SetOptionalPromotions(v []*QueryCreateInstancePriceResponseBodyPriceInfoOptionalPromotions) *QueryCreateInstancePriceResponseBodyPriceInfo {
 	s.OptionalPromotions = v
 	return s
@@ -262,6 +281,15 @@ func (s *QueryCreateInstancePriceResponseBodyPriceInfo) Validate() error {
 			return err
 		}
 	}
+	if s.ModulePrices != nil {
+		for _, item := range s.ModulePrices {
+			if item != nil {
+				if err := item.Validate(); err != nil {
+					return err
+				}
+			}
+		}
+	}
 	if s.OptionalPromotions != nil {
 		for _, item := range s.OptionalPromotions {
 			if item != nil {
@@ -284,17 +312,37 @@ func (s *QueryCreateInstancePriceResponseBodyPriceInfo) Validate() error {
 }
 
 type QueryCreateInstancePriceResponseBodyPriceInfoDepreciateInfo struct {
-	// The price reduction ratio.
+	// The price reduction rate.
+	//
+	// example:
+	//
+	// 34%
 	CheapRate *string `json:"CheapRate,omitempty" xml:"CheapRate,omitempty"`
-	// The total list price after the price reduction.
+	// The total price on the official website after the price reduction.
+	//
+	// example:
+	//
+	// 8000
 	CheapStandAmount *string `json:"CheapStandAmount,omitempty" xml:"CheapStandAmount,omitempty"`
-	// Indicates whether to display the price reduction percentage.
+	// Indicates whether to display the price reduction rate.
 	IsShow *bool `json:"IsShow,omitempty" xml:"IsShow,omitempty"`
-	// The monthly equivalent price.
+	// The equivalent monthly price.
+	//
+	// example:
+	//
+	// 1000
 	MonthPrice *string `json:"MonthPrice,omitempty" xml:"MonthPrice,omitempty"`
-	// The original total list price.
+	// The original total price on the official website.
+	//
+	// example:
+	//
+	// 12000
 	OriginalStandAmount *string `json:"OriginalStandAmount,omitempty" xml:"OriginalStandAmount,omitempty"`
-	// The start time of the price reduction.
+	// The start time of the price reduction, in ISO 8601 format.
+	//
+	// example:
+	//
+	// 2024-08-21T02:06:00Z
 	StartTime *string `json:"StartTime,omitempty" xml:"StartTime,omitempty"`
 }
 
@@ -364,26 +412,176 @@ func (s *QueryCreateInstancePriceResponseBodyPriceInfoDepreciateInfo) Validate()
 	return dara.Validate(s)
 }
 
+type QueryCreateInstancePriceResponseBodyPriceInfoModulePrices struct {
+	// The discount amount.
+	//
+	// example:
+	//
+	// 648.0
+	DiscountAmount *float32 `json:"DiscountAmount,omitempty" xml:"DiscountAmount,omitempty"`
+	// The unit price of the module.
+	//
+	// example:
+	//
+	// 183600.0000
+	FinalUnitFee *string `json:"FinalUnitFee,omitempty" xml:"FinalUnitFee,omitempty"`
+	// The module code.
+	//
+	// example:
+	//
+	// overhead_cu
+	ModuleCode *string `json:"ModuleCode,omitempty" xml:"ModuleCode,omitempty"`
+	// The module name.
+	//
+	// example:
+	//
+	// Control and Management Services
+	ModuleName *string `json:"ModuleName,omitempty" xml:"ModuleName,omitempty"`
+	// The original amount.
+	//
+	// example:
+	//
+	// 4320.0
+	OriginalAmount *float32 `json:"OriginalAmount,omitempty" xml:"OriginalAmount,omitempty"`
+	// The payment amount.
+	//
+	// example:
+	//
+	// 3672.0
+	PayAmount *float32 `json:"PayAmount,omitempty" xml:"PayAmount,omitempty"`
+	// The billing method.
+	//
+	// example:
+	//
+	// yearPrice
+	PriceType *string `json:"PriceType,omitempty" xml:"PriceType,omitempty"`
+	// The pricing unit.
+	//
+	// example:
+	//
+	// Yuan/CU
+	PriceUnit *string `json:"PriceUnit,omitempty" xml:"PriceUnit,omitempty"`
+	// The order quantity.
+	//
+	// example:
+	//
+	// 1
+	Quantity *string `json:"Quantity,omitempty" xml:"Quantity,omitempty"`
+}
+
+func (s QueryCreateInstancePriceResponseBodyPriceInfoModulePrices) String() string {
+	return dara.Prettify(s)
+}
+
+func (s QueryCreateInstancePriceResponseBodyPriceInfoModulePrices) GoString() string {
+	return s.String()
+}
+
+func (s *QueryCreateInstancePriceResponseBodyPriceInfoModulePrices) GetDiscountAmount() *float32 {
+	return s.DiscountAmount
+}
+
+func (s *QueryCreateInstancePriceResponseBodyPriceInfoModulePrices) GetFinalUnitFee() *string {
+	return s.FinalUnitFee
+}
+
+func (s *QueryCreateInstancePriceResponseBodyPriceInfoModulePrices) GetModuleCode() *string {
+	return s.ModuleCode
+}
+
+func (s *QueryCreateInstancePriceResponseBodyPriceInfoModulePrices) GetModuleName() *string {
+	return s.ModuleName
+}
+
+func (s *QueryCreateInstancePriceResponseBodyPriceInfoModulePrices) GetOriginalAmount() *float32 {
+	return s.OriginalAmount
+}
+
+func (s *QueryCreateInstancePriceResponseBodyPriceInfoModulePrices) GetPayAmount() *float32 {
+	return s.PayAmount
+}
+
+func (s *QueryCreateInstancePriceResponseBodyPriceInfoModulePrices) GetPriceType() *string {
+	return s.PriceType
+}
+
+func (s *QueryCreateInstancePriceResponseBodyPriceInfoModulePrices) GetPriceUnit() *string {
+	return s.PriceUnit
+}
+
+func (s *QueryCreateInstancePriceResponseBodyPriceInfoModulePrices) GetQuantity() *string {
+	return s.Quantity
+}
+
+func (s *QueryCreateInstancePriceResponseBodyPriceInfoModulePrices) SetDiscountAmount(v float32) *QueryCreateInstancePriceResponseBodyPriceInfoModulePrices {
+	s.DiscountAmount = &v
+	return s
+}
+
+func (s *QueryCreateInstancePriceResponseBodyPriceInfoModulePrices) SetFinalUnitFee(v string) *QueryCreateInstancePriceResponseBodyPriceInfoModulePrices {
+	s.FinalUnitFee = &v
+	return s
+}
+
+func (s *QueryCreateInstancePriceResponseBodyPriceInfoModulePrices) SetModuleCode(v string) *QueryCreateInstancePriceResponseBodyPriceInfoModulePrices {
+	s.ModuleCode = &v
+	return s
+}
+
+func (s *QueryCreateInstancePriceResponseBodyPriceInfoModulePrices) SetModuleName(v string) *QueryCreateInstancePriceResponseBodyPriceInfoModulePrices {
+	s.ModuleName = &v
+	return s
+}
+
+func (s *QueryCreateInstancePriceResponseBodyPriceInfoModulePrices) SetOriginalAmount(v float32) *QueryCreateInstancePriceResponseBodyPriceInfoModulePrices {
+	s.OriginalAmount = &v
+	return s
+}
+
+func (s *QueryCreateInstancePriceResponseBodyPriceInfoModulePrices) SetPayAmount(v float32) *QueryCreateInstancePriceResponseBodyPriceInfoModulePrices {
+	s.PayAmount = &v
+	return s
+}
+
+func (s *QueryCreateInstancePriceResponseBodyPriceInfoModulePrices) SetPriceType(v string) *QueryCreateInstancePriceResponseBodyPriceInfoModulePrices {
+	s.PriceType = &v
+	return s
+}
+
+func (s *QueryCreateInstancePriceResponseBodyPriceInfoModulePrices) SetPriceUnit(v string) *QueryCreateInstancePriceResponseBodyPriceInfoModulePrices {
+	s.PriceUnit = &v
+	return s
+}
+
+func (s *QueryCreateInstancePriceResponseBodyPriceInfoModulePrices) SetQuantity(v string) *QueryCreateInstancePriceResponseBodyPriceInfoModulePrices {
+	s.Quantity = &v
+	return s
+}
+
+func (s *QueryCreateInstancePriceResponseBodyPriceInfoModulePrices) Validate() error {
+	return dara.Validate(s)
+}
+
 type QueryCreateInstancePriceResponseBodyPriceInfoOptionalPromotions struct {
-	// The coupon description.
+	// The description of the coupon.
 	//
 	// example:
 	//
 	// ¥1,391.5 coupon (valid until 03/23/2022)
 	PromotionDesc *string `json:"PromotionDesc,omitempty" xml:"PromotionDesc,omitempty"`
-	// The coupon name.
+	// The name of the coupon.
 	//
 	// example:
 	//
 	// ¥1,391.5 coupon
 	PromotionName *string `json:"PromotionName,omitempty" xml:"PromotionName,omitempty"`
-	// The coupon ID.
+	// The ID of the coupon.
 	//
 	// example:
 	//
 	// 500011220010099
 	PromotionOptionNo *string `json:"PromotionOptionNo,omitempty" xml:"PromotionOptionNo,omitempty"`
-	// Indicates whether the coupon is selected. Valid values:
+	// Specifies whether the coupon is selected. Valid values:
 	//
 	// - true: Selected.
 	//
@@ -448,9 +646,9 @@ type QueryCreateInstancePriceResponseBodyPriceInfoRules struct {
 	//
 	// example:
 	//
-	// Purchase for one year or longer and enjoy a 15% discount off the list price
+	// Enjoy a 15% discount on the official website price for a 1-year subscription
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
-	// The promotion ID.
+	// The ID of the promotion rule.
 	//
 	// example:
 	//

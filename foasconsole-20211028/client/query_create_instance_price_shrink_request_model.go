@@ -52,9 +52,9 @@ type QueryCreateInstancePriceShrinkRequest struct {
 	ArchitectureType *string `json:"ArchitectureType,omitempty" xml:"ArchitectureType,omitempty"`
 	// Specifies whether to enable auto-renewal. Valid values:
 	//
-	// - **true**: Enabled.
+	// - **true**: enables auto-renewal.
 	//
-	// - **false**: Disabled (default).
+	// - **false**: disables auto-renewal (default).
 	//
 	// > This parameter does not take effect for pay-as-you-go instances.
 	//
@@ -76,7 +76,7 @@ type QueryCreateInstancePriceShrinkRequest struct {
 	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
 	// The number of billing cycles.
 	//
-	// > When ChargeType is set to PRE, the Duration parameter is required.
+	// > This parameter is required when ChargeType is set to PRE.
 	//
 	// example:
 	//
@@ -94,18 +94,18 @@ type QueryCreateInstancePriceShrinkRequest struct {
 	//
 	// true
 	Ha *bool `json:"Ha,omitempty" xml:"Ha,omitempty"`
-	// The zone-disaster recovery resource specifications.
+	// The description of zone-disaster recovery resources.
 	//
 	// if can be null:
 	// true
 	HaResourceSpecShrink *string `json:"HaResourceSpec,omitempty" xml:"HaResourceSpec,omitempty"`
-	// The workspace name.
+	// The name of the workspace.
 	//
 	// example:
 	//
 	// rtc-e2e-test-post
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	// The billing cycle. Subscription instances support only Year and Month. Pay-as-you-go instances support Hour.
+	// The billing cycle. Subscription instances support only yearly (Year) and monthly (Month) billing cycles. Pay-as-you-go instances support only hourly (Hour) billing cycles.
 	//
 	// example:
 	//
@@ -131,9 +131,9 @@ type QueryCreateInstancePriceShrinkRequest struct {
 	StorageShrink *string `json:"Storage,omitempty" xml:"Storage,omitempty"`
 	// Specifies whether to use a coupon. Valid values:
 	//
-	// - true: Use a coupon.
+	// - true: uses a coupon.
 	//
-	// - false: Do not use a coupon.
+	// - false: does not use a coupon.
 	//
 	// example:
 	//
@@ -141,7 +141,7 @@ type QueryCreateInstancePriceShrinkRequest struct {
 	UsePromotionCode *bool `json:"UsePromotionCode,omitempty" xml:"UsePromotionCode,omitempty"`
 	// The vSwitch IDs.
 	VSwitchIdsShrink *string `json:"VSwitchIds,omitempty" xml:"VSwitchIds,omitempty"`
-	// The VPC ID of the user.
+	// The ID of the VPC.
 	//
 	// example:
 	//

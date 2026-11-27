@@ -28,7 +28,7 @@ type iQueryConvertInstancePriceRequest interface {
 }
 
 type QueryConvertInstancePriceRequest struct {
-	// The number of pricing cycles.
+	// The duration of the billing cycle.
 	//
 	// This parameter is required.
 	//
@@ -36,7 +36,7 @@ type QueryConvertInstancePriceRequest struct {
 	//
 	// 1
 	Duration *int32 `json:"Duration,omitempty" xml:"Duration,omitempty"`
-	// The order instance ID.
+	// The instance ID of the order.
 	//
 	// This parameter is required.
 	//
@@ -52,18 +52,23 @@ type QueryConvertInstancePriceRequest struct {
 	//
 	// true
 	IsAutoRenew *bool `json:"IsAutoRenew,omitempty" xml:"IsAutoRenew,omitempty"`
-	// The resource specifications of the namespace.
+	// The resource specifications of the workspace.
 	//
 	// This parameter is required.
 	NamespaceResourceSpecs []*QueryConvertInstancePriceRequestNamespaceResourceSpecs `json:"NamespaceResourceSpecs,omitempty" xml:"NamespaceResourceSpecs,omitempty" type:"Repeated"`
-	// The pricing cycle. Only Year and Month are supported.
+	// The billing cycle. Only Year and Month are supported.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// Month
-	PricingCycle  *string `json:"PricingCycle,omitempty" xml:"PricingCycle,omitempty"`
+	PricingCycle *string `json:"PricingCycle,omitempty" xml:"PricingCycle,omitempty"`
+	// The coupon code.
+	//
+	// example:
+	//
+	// 500043499350689
 	PromotionCode *string `json:"PromotionCode,omitempty" xml:"PromotionCode,omitempty"`
 	// The region.
 	//
@@ -72,8 +77,13 @@ type QueryConvertInstancePriceRequest struct {
 	// example:
 	//
 	// cn-beijing
-	Region           *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	UsePromotionCode *bool   `json:"UsePromotionCode,omitempty" xml:"UsePromotionCode,omitempty"`
+	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	// Specifies whether to use a coupon. Valid values:
+	//
+	// - true: Uses a coupon.
+	//
+	// - false: Does not use a coupon.
+	UsePromotionCode *bool `json:"UsePromotionCode,omitempty" xml:"UsePromotionCode,omitempty"`
 }
 
 func (s QueryConvertInstancePriceRequest) String() string {
@@ -170,7 +180,7 @@ func (s *QueryConvertInstancePriceRequest) Validate() error {
 }
 
 type QueryConvertInstancePriceRequestNamespaceResourceSpecs struct {
-	// The namespace name.
+	// The name of the workspace.
 	//
 	// This parameter is required.
 	//
@@ -178,7 +188,7 @@ type QueryConvertInstancePriceRequestNamespaceResourceSpecs struct {
 	//
 	// lm-test-default
 	Namespace *string `json:"Namespace,omitempty" xml:"Namespace,omitempty"`
-	// The resource specifications of the namespace.
+	// The resource specifications of the workspace.
 	//
 	// This parameter is required.
 	ResourceSpec *QueryConvertInstancePriceRequestNamespaceResourceSpecsResourceSpec `json:"ResourceSpec,omitempty" xml:"ResourceSpec,omitempty" type:"Struct"`
@@ -230,7 +240,7 @@ type QueryConvertInstancePriceRequestNamespaceResourceSpecsResourceSpec struct {
 	Cpu *int32 `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
 	// The memory size. Unit: GB.
 	//
-	// > The memory size must be 4 times the number of CPUs.
+	// > The memory size must be four times the number of CPUs.
 	//
 	// This parameter is required.
 	//

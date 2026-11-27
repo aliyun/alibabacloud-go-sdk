@@ -28,30 +28,35 @@ type iQueryModifyInstancePriceRequest interface {
 }
 
 type QueryModifyInstancePriceRequest struct {
-	// Specifies whether to select zone-disaster recovery resources.
+	// Specifies whether to select high-availability resources for zone-disaster recovery.
 	//
 	// example:
 	//
 	// true
 	Ha *bool `json:"Ha,omitempty" xml:"Ha,omitempty"`
-	// The zone-disaster recovery resource description.
+	// The description of high-availability resources for zone-disaster recovery.
 	//
 	// if can be null:
 	// true
 	HaResourceSpec *QueryModifyInstancePriceRequestHaResourceSpec `json:"HaResourceSpec,omitempty" xml:"HaResourceSpec,omitempty" type:"Struct"`
-	// The vSwitch group for the zone-disaster recovery secondary zone.
+	// The vSwitch group in the secondary zone for zone-disaster recovery.
 	//
 	// if can be null:
 	// true
 	HaVSwitchIds []*string `json:"HaVSwitchIds,omitempty" xml:"HaVSwitchIds,omitempty" type:"Repeated"`
-	// The order instance ID.
+	// The instance ID of the order.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// f-cn-wwo36qj4g06
-	InstanceId    *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The coupon code.
+	//
+	// example:
+	//
+	// 500043499350689
 	PromotionCode *string `json:"PromotionCode,omitempty" xml:"PromotionCode,omitempty"`
 	// The region ID.
 	//
@@ -64,8 +69,13 @@ type QueryModifyInstancePriceRequest struct {
 	// The resource specifications.
 	//
 	// This parameter is required.
-	ResourceSpec     *QueryModifyInstancePriceRequestResourceSpec `json:"ResourceSpec,omitempty" xml:"ResourceSpec,omitempty" type:"Struct"`
-	UsePromotionCode *bool                                        `json:"UsePromotionCode,omitempty" xml:"UsePromotionCode,omitempty"`
+	ResourceSpec *QueryModifyInstancePriceRequestResourceSpec `json:"ResourceSpec,omitempty" xml:"ResourceSpec,omitempty" type:"Struct"`
+	// Specifies whether to use a coupon. Valid values:
+	//
+	// - true: Yes.
+	//
+	// - false: No.
+	UsePromotionCode *bool `json:"UsePromotionCode,omitempty" xml:"UsePromotionCode,omitempty"`
 }
 
 func (s QueryModifyInstancePriceRequest) String() string {
@@ -163,13 +173,13 @@ func (s *QueryModifyInstancePriceRequest) Validate() error {
 }
 
 type QueryModifyInstancePriceRequestHaResourceSpec struct {
-	// The number of CPUs for zone-disaster recovery.
+	// The number of CPUs for zone-disaster recovery high availability.
 	//
 	// example:
 	//
 	// 20
 	Cpu *int32 `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
-	// The active memory size for zone-disaster recovery.
+	// The memory size for high availability in zone-disaster recovery.
 	//
 	// example:
 	//
@@ -218,7 +228,7 @@ type QueryModifyInstancePriceRequestResourceSpec struct {
 	Cpu *int32 `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
 	// The memory size after the specification change.
 	//
-	// >The memory size must be 4 times the number of CPUs.
+	// >The memory size must be four times the number of CPUs.
 	//
 	// This parameter is required.
 	//

@@ -34,7 +34,7 @@ type ConvertHybridInstanceResponseBody struct {
 	//
 	// 67F33190-946B-1105-B6A1-E2DF042*****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the operation was successful.
 	//
 	// example:
 	//

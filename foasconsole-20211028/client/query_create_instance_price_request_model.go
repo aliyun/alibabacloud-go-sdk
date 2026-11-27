@@ -52,9 +52,9 @@ type QueryCreateInstancePriceRequest struct {
 	ArchitectureType *string `json:"ArchitectureType,omitempty" xml:"ArchitectureType,omitempty"`
 	// Specifies whether to enable auto-renewal. Valid values:
 	//
-	// - **true**: Enabled.
+	// - **true**: enables auto-renewal.
 	//
-	// - **false**: Disabled (default).
+	// - **false**: disables auto-renewal (default).
 	//
 	// > This parameter does not take effect for pay-as-you-go instances.
 	//
@@ -76,7 +76,7 @@ type QueryCreateInstancePriceRequest struct {
 	ChargeType *string `json:"ChargeType,omitempty" xml:"ChargeType,omitempty"`
 	// The number of billing cycles.
 	//
-	// > When ChargeType is set to PRE, the Duration parameter is required.
+	// > This parameter is required when ChargeType is set to PRE.
 	//
 	// example:
 	//
@@ -94,18 +94,18 @@ type QueryCreateInstancePriceRequest struct {
 	//
 	// true
 	Ha *bool `json:"Ha,omitempty" xml:"Ha,omitempty"`
-	// The zone-disaster recovery resource specifications.
+	// The description of zone-disaster recovery resources.
 	//
 	// if can be null:
 	// true
 	HaResourceSpec *QueryCreateInstancePriceRequestHaResourceSpec `json:"HaResourceSpec,omitempty" xml:"HaResourceSpec,omitempty" type:"Struct"`
-	// The workspace name.
+	// The name of the workspace.
 	//
 	// example:
 	//
 	// rtc-e2e-test-post
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	// The billing cycle. Subscription instances support only Year and Month. Pay-as-you-go instances support Hour.
+	// The billing cycle. Subscription instances support only yearly (Year) and monthly (Month) billing cycles. Pay-as-you-go instances support only hourly (Hour) billing cycles.
 	//
 	// example:
 	//
@@ -131,9 +131,9 @@ type QueryCreateInstancePriceRequest struct {
 	Storage *QueryCreateInstancePriceRequestStorage `json:"Storage,omitempty" xml:"Storage,omitempty" type:"Struct"`
 	// Specifies whether to use a coupon. Valid values:
 	//
-	// - true: Use a coupon.
+	// - true: uses a coupon.
 	//
-	// - false: Do not use a coupon.
+	// - false: does not use a coupon.
 	//
 	// example:
 	//
@@ -141,7 +141,7 @@ type QueryCreateInstancePriceRequest struct {
 	UsePromotionCode *bool `json:"UsePromotionCode,omitempty" xml:"UsePromotionCode,omitempty"`
 	// The vSwitch IDs.
 	VSwitchIds []*string `json:"VSwitchIds,omitempty" xml:"VSwitchIds,omitempty" type:"Repeated"`
-	// The VPC ID of the user.
+	// The ID of the VPC.
 	//
 	// example:
 	//
@@ -330,7 +330,7 @@ type QueryCreateInstancePriceRequestHaResourceSpec struct {
 	//
 	// 20
 	Cpu *int32 `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
-	// The active memory size for zone-disaster recovery.
+	// The memory size of the active zone-disaster recovery resource.
 	//
 	// if can be null:
 	// false
@@ -380,7 +380,7 @@ type QueryCreateInstancePriceRequestResourceSpec struct {
 	Cpu *int32 `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
 	// The memory size.
 	//
-	// > The memory size must be 4 times the number of CPUs.
+	// > The memory size must be four times the number of CPUs.
 	//
 	// example:
 	//

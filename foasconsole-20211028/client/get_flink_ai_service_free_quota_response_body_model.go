@@ -18,7 +18,7 @@ type iGetFlinkAiServiceFreeQuotaResponseBody interface {
 }
 
 type GetFlinkAiServiceFreeQuotaResponseBody struct {
-	// The Flink AI free quota data transfer object.
+	// The Flink AI free quota DTO.
 	FlinkAiFreeQuotaDTO *GetFlinkAiServiceFreeQuotaResponseBodyFlinkAiFreeQuotaDTO `json:"FlinkAiFreeQuotaDTO,omitempty" xml:"FlinkAiFreeQuotaDTO,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -26,7 +26,7 @@ type GetFlinkAiServiceFreeQuotaResponseBody struct {
 	//
 	// C8DF2A5B-6FBA-5651-A3D4-960F3664****
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	//
 	// example:
 	//
@@ -129,7 +129,7 @@ func (s *GetFlinkAiServiceFreeQuotaResponseBodyFlinkAiFreeQuotaDTO) Validate() e
 }
 
 type GetFlinkAiServiceFreeQuotaResponseBodyFlinkAiFreeQuotaDTOUsedQuotaDetails struct {
-	// The used quota for this usage type.
+	// The used quota for the usage type.
 	//
 	// example:
 	//

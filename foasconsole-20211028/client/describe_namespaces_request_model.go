@@ -26,10 +26,12 @@ type iDescribeNamespacesRequest interface {
 }
 
 type DescribeNamespacesRequest struct {
+	// Specifies whether to enable high availability across zones.
+	//
 	// if can be null:
 	// true
 	Ha *bool `json:"Ha,omitempty" xml:"Ha,omitempty"`
-	// The order instance ID.
+	// The instance ID of the order.
 	//
 	// This parameter is required.
 	//
@@ -37,7 +39,7 @@ type DescribeNamespacesRequest struct {
 	//
 	// f-cn-wwo36qj4g06
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The namespace name.
+	// The name of the namespace.
 	//
 	// example:
 	//

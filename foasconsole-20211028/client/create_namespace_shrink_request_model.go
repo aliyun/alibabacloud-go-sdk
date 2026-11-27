@@ -22,6 +22,8 @@ type iCreateNamespaceShrinkRequest interface {
 }
 
 type CreateNamespaceShrinkRequest struct {
+	// Specifies whether to enable cross-zone high availability.
+	//
 	// if can be null:
 	// true
 	Ha *bool `json:"Ha,omitempty" xml:"Ha,omitempty"`
@@ -33,7 +35,7 @@ type CreateNamespaceShrinkRequest struct {
 	//
 	// f-cn-wwo36qj4g06
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The namespace name.
+	// The name of the namespace.
 	//
 	// This parameter is required.
 	//

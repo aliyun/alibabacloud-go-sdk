@@ -18,7 +18,7 @@ type iQueryRenewInstancePriceResponseBody interface {
 }
 
 type QueryRenewInstancePriceResponseBody struct {
-	// The price information, including the price and promotion rules.
+	// The price information, including the price and discount rules.
 	PriceInfo *QueryRenewInstancePriceResponseBodyPriceInfo `json:"PriceInfo,omitempty" xml:"PriceInfo,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -26,7 +26,7 @@ type QueryRenewInstancePriceResponseBody struct {
 	//
 	// 67F33190-946B-1105-B6A1-E2DF0426DD51
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	//
 	// example:
 	//
@@ -99,13 +99,13 @@ type QueryRenewInstancePriceResponseBodyPriceInfo struct {
 	//
 	// 655.2
 	DiscountAmount *float32 `json:"DiscountAmount,omitempty" xml:"DiscountAmount,omitempty"`
-	// Indicates whether an enterprise discount is applied.
+	// Indicates whether an enterprise agreement discount is applied.
 	//
 	// example:
 	//
 	// true
 	IsContractActivity *bool `json:"IsContractActivity,omitempty" xml:"IsContractActivity,omitempty"`
-	// The Lingxiao request ID of the call.
+	// The request ID of the Lingxiao call.
 	//
 	// example:
 	//
@@ -115,7 +115,7 @@ type QueryRenewInstancePriceResponseBodyPriceInfo struct {
 	//
 	// example:
 	//
-	// An unpaid order exists. Pay for or cancel the existing order first
+	// Unpaid orders exist. Pay for or cancel the existing orders first
 	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
 	// The coupon group information.
 	OptionalPromotions []*QueryRenewInstancePriceResponseBodyPriceInfoOptionalPromotions `json:"OptionalPromotions,omitempty" xml:"OptionalPromotions,omitempty" type:"Repeated"`
@@ -127,19 +127,19 @@ type QueryRenewInstancePriceResponseBodyPriceInfo struct {
 	OriginalAmount *float32 `json:"OriginalAmount,omitempty" xml:"OriginalAmount,omitempty"`
 	// The promotion rule group.
 	Rules []*QueryRenewInstancePriceResponseBodyPriceInfoRules `json:"Rules,omitempty" xml:"Rules,omitempty" type:"Repeated"`
-	// The promotional price based on the standard website discount.
+	// The discounted price based on the list price discount.
 	//
 	// example:
 	//
 	// 21321
 	StandDiscountPrice *string `json:"StandDiscountPrice,omitempty" xml:"StandDiscountPrice,omitempty"`
-	// The list price with the website discount or direct sales contract discount applied.
+	// The list price discount or direct sales contract discount.
 	//
 	// example:
 	//
 	// 32432
 	StandPrice *string `json:"StandPrice,omitempty" xml:"StandPrice,omitempty"`
-	// The final price, which is the original price minus the discount amount.
+	// The final price, which is the original price minus the discount.
 	//
 	// example:
 	//
@@ -300,19 +300,19 @@ func (s *QueryRenewInstancePriceResponseBodyPriceInfo) Validate() error {
 }
 
 type QueryRenewInstancePriceResponseBodyPriceInfoDepreciateInfo struct {
-	// The price reduction ratio.
+	// The price reduction rate.
 	//
 	// example:
 	//
 	// 34%
 	CheapRate *string `json:"CheapRate,omitempty" xml:"CheapRate,omitempty"`
-	// The total list price after the price reduction.
+	// The reduced total list price.
 	//
 	// example:
 	//
 	// 8000
 	CheapStandAmount *string `json:"CheapStandAmount,omitempty" xml:"CheapStandAmount,omitempty"`
-	// Indicates whether the price reduction percentage is displayed.
+	// Indicates whether to display the price reduction margin.
 	//
 	// example:
 	//
@@ -409,21 +409,21 @@ type QueryRenewInstancePriceResponseBodyPriceInfoOptionalPromotions struct {
 	//
 	// example:
 	//
-	// ￥1,391.5 coupon (valid until 03/23/2022)
+	// CNY 1,391.5 coupon (valid until 03/23/2022)
 	PromotionDesc *string `json:"PromotionDesc,omitempty" xml:"PromotionDesc,omitempty"`
 	// The coupon name.
 	//
 	// example:
 	//
-	// ￥1,391.5 coupon
+	// CNY 1,391.5 coupon
 	PromotionName *string `json:"PromotionName,omitempty" xml:"PromotionName,omitempty"`
-	// The coupon number.
+	// The coupon ID.
 	//
 	// example:
 	//
 	// 500011220010099
 	PromotionOptionNo *string `json:"PromotionOptionNo,omitempty" xml:"PromotionOptionNo,omitempty"`
-	// Indicates whether the coupon is selected. Valid values:
+	// Specifies whether the coupon is selected. Valid values:
 	//
 	// - true: Selected.
 	//
@@ -484,11 +484,11 @@ func (s *QueryRenewInstancePriceResponseBodyPriceInfoOptionalPromotions) Validat
 }
 
 type QueryRenewInstancePriceResponseBodyPriceInfoRules struct {
-	// The description of the promotion rule.
+	// The promotion rule description.
 	//
 	// example:
 	//
-	// Purchase for 1 year or more and enjoy a 15% discount off the list price
+	// Get a 15% discount on the list price for a 1-year subscription
 	Description *string `json:"Description,omitempty" xml:"Description,omitempty"`
 	// The promotion ID.
 	//

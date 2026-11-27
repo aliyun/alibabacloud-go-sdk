@@ -95,13 +95,13 @@ type ConvertHybridInstanceRequestResourceSpec struct {
 	Cpu *int32 `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
 	// The memory size. Unit: GB.
 	//
-	// > The memory size must be 4 times the number of CPUs.
+	// > The memory size must be four times the number of CPUs.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// 40GB
+	// 40
 	MemoryGB *int32 `json:"MemoryGB,omitempty" xml:"MemoryGB,omitempty"`
 }
 

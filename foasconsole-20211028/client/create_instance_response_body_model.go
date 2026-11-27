@@ -26,7 +26,7 @@ type CreateInstanceResponseBody struct {
 	//
 	// 67F33190-946B-1105-B6A1-E2DF0426DD51
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	//
 	// example:
 	//
@@ -79,7 +79,7 @@ func (s *CreateInstanceResponseBody) Validate() error {
 }
 
 type CreateInstanceResponseBodyOrderInfo struct {
-	// The order instance ID.
+	// The ID of the instance in the order.
 	//
 	// example:
 	//
@@ -91,13 +91,13 @@ type CreateInstanceResponseBodyOrderInfo struct {
 	//
 	// 210406354694567
 	OrderId *int64 `json:"OrderId,omitempty" xml:"OrderId,omitempty"`
-	// The storage instance ID.
+	// The ID of the storage instance.
 	//
 	// example:
 	//
 	// sc_flinkstorage_public_cn-w*****
 	StorageInstanceId *string `json:"StorageInstanceId,omitempty" xml:"StorageInstanceId,omitempty"`
-	// The storage order ID.
+	// The ID of the storage order.
 	//
 	// example:
 	//

@@ -28,17 +28,17 @@ type iModifyInstanceSpecRequest interface {
 }
 
 type ModifyInstanceSpecRequest struct {
-	// Specifies whether the workspace has zone-disaster recovery resources.
+	// Specifies whether the workspace has cross-zone high-availability resources.
 	//
 	// example:
 	//
 	// true
 	Ha *bool `json:"Ha,omitempty" xml:"Ha,omitempty"`
-	// The zone-disaster recovery resource specifications.
+	// The description of the cross-zone high-availability resources.
 	HaResourceSpec *ModifyInstanceSpecRequestHaResourceSpec `json:"HaResourceSpec,omitempty" xml:"HaResourceSpec,omitempty" type:"Struct"`
-	// The vSwitch group in the secondary zone for zone-disaster recovery.
+	// The vSwitch group in the secondary zone for cross-zone high availability.
 	HaVSwitchIds []*string `json:"HaVSwitchIds,omitempty" xml:"HaVSwitchIds,omitempty" type:"Repeated"`
-	// The order instance ID.
+	// The instance ID of the order.
 	//
 	// This parameter is required.
 	//
@@ -165,7 +165,7 @@ type ModifyInstanceSpecRequestHaResourceSpec struct {
 	Cpu *int32 `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
 	// The memory size.
 	//
-	// >The memory size must be 4 times the number of CPUs.
+	// > The memory size must be four times the number of CPUs.
 	//
 	// example:
 	//
@@ -214,7 +214,7 @@ type ModifyInstanceSpecRequestResourceSpec struct {
 	Cpu *int32 `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
 	// The memory size.
 	//
-	// > The memory size must be 4 times the number of CPUs.
+	// > The memory size must be four times the number of CPUs.
 	//
 	// This parameter is required.
 	//

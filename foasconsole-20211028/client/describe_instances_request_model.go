@@ -34,7 +34,7 @@ type iDescribeInstancesRequest interface {
 }
 
 type DescribeInstancesRequest struct {
-	// The processor architecture. Valid values: X86 and ARM.
+	// The processor architecture. Valid values: x86 and ARM.
 	//
 	// example:
 	//
@@ -76,7 +76,7 @@ type DescribeInstancesRequest struct {
 	//
 	// 2
 	PageIndex *int32 `json:"PageIndex,omitempty" xml:"PageIndex,omitempty"`
-	// The number of entries per page for a paged query. Maximum value: 100. Default value: 10.
+	// The number of entries to return on each page in the paging Settings for a paged query. Maximum value: 100. Default value: 10.
 	//
 	// example:
 	//
@@ -227,7 +227,9 @@ type DescribeInstancesRequestTags struct {
 	//
 	// test
 	Key *string `json:"Key,omitempty" xml:"Key,omitempty"`
-	// The tag value. The value can be up to 64 Unicode characters in length.
+	// The tag value.
+	//
+	// The value can be up to 64 Unicode characters in length.
 	//
 	// example:
 	//

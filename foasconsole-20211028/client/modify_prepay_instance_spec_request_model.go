@@ -26,7 +26,7 @@ type iModifyPrepayInstanceSpecRequest interface {
 }
 
 type ModifyPrepayInstanceSpecRequest struct {
-	// Specifies whether to enable zone-disaster recovery resources for the workspace.
+	// Specifies whether cross-zone high-availability resources are enabled for the workspace.
 	//
 	// if can be null:
 	// true
@@ -35,22 +35,26 @@ type ModifyPrepayInstanceSpecRequest struct {
 	//
 	// true
 	Ha *bool `json:"Ha,omitempty" xml:"Ha,omitempty"`
-	// The resource specifications for zone-disaster recovery.
+	// The resource specifications for cross-zone high availability.
 	//
 	// if can be null:
 	// true
 	HaResourceSpec *ModifyPrepayInstanceSpecRequestHaResourceSpec `json:"HaResourceSpec,omitempty" xml:"HaResourceSpec,omitempty" type:"Struct"`
-	// The list of vSwitch IDs in the secondary zone for zone-disaster recovery.
+	// The list of vSwitch IDs in the secondary zone for cross-zone high availability.
 	//
 	// if can be null:
 	// true
 	HaVSwitchIds []*string `json:"HaVSwitchIds,omitempty" xml:"HaVSwitchIds,omitempty" type:"Repeated"`
-	// The ID of the secondary zone for zone-disaster recovery.
+	// The ID of the secondary zone for cross-zone high availability.
 	//
 	// if can be null:
 	// true
+	//
+	// example:
+	//
+	// cn-hongkong-b
 	HaZoneId *string `json:"HaZoneId,omitempty" xml:"HaZoneId,omitempty"`
-	// The order instance ID.
+	// The instance ID of the order.
 	//
 	// This parameter is required.
 	//
@@ -66,7 +70,7 @@ type ModifyPrepayInstanceSpecRequest struct {
 	//
 	// cn-beijing
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	// The resource specification information.
+	// The resource specifications.
 	//
 	// This parameter is required.
 	ResourceSpec *ModifyPrepayInstanceSpecRequestResourceSpec `json:"ResourceSpec,omitempty" xml:"ResourceSpec,omitempty" type:"Struct"`
@@ -158,13 +162,13 @@ func (s *ModifyPrepayInstanceSpecRequest) Validate() error {
 }
 
 type ModifyPrepayInstanceSpecRequestHaResourceSpec struct {
-	// The number of CPUs for zone-disaster recovery resources.
+	// The number of CPUs for cross-zone high-availability resources.
 	//
 	// example:
 	//
 	// 10
 	Cpu *int32 `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
-	// The memory size of zone-disaster recovery resources, in GB. The value must be 4 times the number of CPUs.
+	// The memory size of cross-zone high-availability resources, in GB. The value must be four times the number of CPUs.
 	//
 	// example:
 	//
@@ -213,7 +217,7 @@ type ModifyPrepayInstanceSpecRequestResourceSpec struct {
 	Cpu *int32 `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
 	// The memory size.
 	//
-	// > The memory size must be 4 times the number of CPUs.
+	// > The memory size must be four times the number of CPUs.
 	//
 	// This parameter is required.
 	//

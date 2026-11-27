@@ -40,22 +40,19 @@ type RenewInstanceRequest struct {
 	//
 	// sc_flinkserverless_public_cn-7e22ae5sess
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The subscription period. Valid values:
-	//
-	// - Month: month.
-	//
-	// - Year: year.
-	//
-	// - Hour: hour.
-	//
-	// - Day: day.
+	// The subscription period.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// Month
-	PricingCycle  *string `json:"PricingCycle,omitempty" xml:"PricingCycle,omitempty"`
+	PricingCycle *string `json:"PricingCycle,omitempty" xml:"PricingCycle,omitempty"`
+	// The coupon code.
+	//
+	// example:
+	//
+	// 500043499350689
 	PromotionCode *string `json:"PromotionCode,omitempty" xml:"PromotionCode,omitempty"`
 	// The region ID.
 	//
@@ -64,8 +61,13 @@ type RenewInstanceRequest struct {
 	// example:
 	//
 	// cn-beijing
-	Region           *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	UsePromotionCode *bool   `json:"UsePromotionCode,omitempty" xml:"UsePromotionCode,omitempty"`
+	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
+	// Specifies whether to use a coupon. Valid values:
+	//
+	// - true: Use a coupon.
+	//
+	// - false: Do not use a coupon.
+	UsePromotionCode *bool `json:"UsePromotionCode,omitempty" xml:"UsePromotionCode,omitempty"`
 }
 
 func (s RenewInstanceRequest) String() string {

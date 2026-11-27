@@ -20,9 +20,25 @@ type iClusterStage interface {
 }
 
 type ClusterStage struct {
-	CurrentStage         *int32             `json:"CurrentStage,omitempty" xml:"CurrentStage,omitempty"`
-	Message              *string            `json:"Message,omitempty" xml:"Message,omitempty"`
-	Status               *string            `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The ordinal number of the current execution stage.
+	//
+	// example:
+	//
+	// 0
+	CurrentStage *int32 `json:"CurrentStage,omitempty" xml:"CurrentStage,omitempty"`
+	// The execution information of the current stage.
+	//
+	// example:
+	//
+	// Creating resources
+	Message *string `json:"Message,omitempty" xml:"Message,omitempty"`
+	// The execution status of the current stage.
+	//
+	// example:
+	//
+	// CREATING
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The list of execution stages and their weights.
 	TotalStageWithWeight []*StageWithWeight `json:"TotalStageWithWeight,omitempty" xml:"TotalStageWithWeight,omitempty" type:"Repeated"`
 }
 

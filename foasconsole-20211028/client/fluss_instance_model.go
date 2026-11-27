@@ -50,42 +50,99 @@ type iFlussInstance interface {
 }
 
 type FlussInstance struct {
+	// The running state information of the cluster.
 	ClusterState *ClusterState `json:"ClusterState,omitempty" xml:"ClusterState,omitempty"`
-	// The cluster status.
+	// The status of the Fluss cluster.
+	//
+	// example:
+	//
+	// RUNNING
 	ClusterStatus *string `json:"ClusterStatus,omitempty" xml:"ClusterStatus,omitempty"`
-	// The URL of the instance management console.
+	// The console access URL of the Fluss instance.
 	ConsoleUrl *string `json:"ConsoleUrl,omitempty" xml:"ConsoleUrl,omitempty"`
-	// The disk size, in GB.
+	// The disk size of a single TabletServer node, in GiB.
+	//
+	// example:
+	//
+	// 900
 	DiskSize *int64 `json:"DiskSize,omitempty" xml:"DiskSize,omitempty"`
-	// Specifies whether high availability (HA) is enabled.
+	// Specifies whether multi-zone high availability is enabled.
 	Ha *bool `json:"Ha,omitempty" xml:"Ha,omitempty"`
-	// The instance ID.
+	// The ID of the Fluss instance.
+	//
+	// example:
+	//
+	// f-cn-zvp2q0z****
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The instance name.
+	// The name of the Fluss instance.
+	//
+	// example:
+	//
+	// fluss-test
 	InstanceName *string `json:"InstanceName,omitempty" xml:"InstanceName,omitempty"`
-	// The order state.
+	// The order status of the instance.
+	//
+	// example:
+	//
+	// NORMAL
 	OrderState *string `json:"OrderState,omitempty" xml:"OrderState,omitempty"`
-	// The ID of the region.
+	// The ID of the region where the instance resides.
+	//
+	// example:
+	//
+	// cn-beijing
 	RegionId *string `json:"RegionId,omitempty" xml:"RegionId,omitempty"`
-	// The creation time of the resource, as a UNIX timestamp in milliseconds.
+	// The creation time of the instance, represented as a UNIX timestamp in milliseconds.
+	//
+	// example:
+	//
+	// 1629879567394
 	ResourceCreateTime *int64 `json:"ResourceCreateTime,omitempty" xml:"ResourceCreateTime,omitempty"`
-	// The expiration time of the resource, as a UNIX timestamp in milliseconds.
+	// The time when the instance expires, represented as a UNIX timestamp in milliseconds.
+	//
+	// example:
+	//
+	// 1637337600000
 	ResourceExpiredTime *int64 `json:"ResourceExpiredTime,omitempty" xml:"ResourceExpiredTime,omitempty"`
-	// The tablet server model.
+	// The TabletServer node specifications.
+	//
+	// example:
+	//
+	// 4 RCU
 	TabletServerModel *string `json:"TabletServerModel,omitempty" xml:"TabletServerModel,omitempty"`
-	// The number of tablet servers.
+	// The number of TabletServer nodes.
+	//
+	// example:
+	//
+	// 3
 	TabletServerNum *int64 `json:"TabletServerNum,omitempty" xml:"TabletServerNum,omitempty"`
-	// The tablet server type.
+	// The type of TabletServer node specifications.
+	//
+	// example:
+	//
+	// 4 RCU
 	TabletServerType *string `json:"TabletServerType,omitempty" xml:"TabletServerType,omitempty"`
-	// The number of compute units (CUs) for post-tiering.
+	// The upper limit of elastic compute resources for the lake-stream synchronization service, in CUs.
+	//
+	// example:
+	//
+	// 100
 	TieringPostCu *int64 `json:"TieringPostCu,omitempty" xml:"TieringPostCu,omitempty"`
-	// The number of compute units (CUs) for pre-tiering.
+	// The base compute resource count for the lake-stream synchronization service, in CUs.
 	TieringPreCu *int64 `json:"TieringPreCu,omitempty" xml:"TieringPreCu,omitempty"`
-	// The Alibaba Cloud account ID (UID).
+	// The UID of the Alibaba Cloud account to which the instance belongs.
+	//
+	// example:
+	//
+	// 183899668736****
 	Uid *string `json:"Uid,omitempty" xml:"Uid,omitempty"`
-	// The VSwitch details.
+	// The list of zone and vSwitch configurations used by the instance.
 	VSwitches []*FlussVswitch `json:"VSwitches,omitempty" xml:"VSwitches,omitempty" type:"Repeated"`
-	// The VPC ID.
+	// The ID of the VPC to which the instance belongs.
+	//
+	// example:
+	//
+	// vpc-2ze9*******nxfmfcdi
 	VpcId *string `json:"VpcId,omitempty" xml:"VpcId,omitempty"`
 }
 

@@ -18,9 +18,20 @@ type iClusterState interface {
 }
 
 type ClusterState struct {
+	// The stage progress information for cluster operations.
 	ClusterStage *ClusterStage `json:"ClusterStage,omitempty" xml:"ClusterStage,omitempty"`
-	Status       *string       `json:"Status,omitempty" xml:"Status,omitempty"`
-	SubStatus    *string       `json:"SubStatus,omitempty" xml:"SubStatus,omitempty"`
+	// The cluster running status.
+	//
+	// example:
+	//
+	// RUNNING
+	Status *string `json:"Status,omitempty" xml:"Status,omitempty"`
+	// The cluster running sub-status.
+	//
+	// example:
+	//
+	// RUNNING
+	SubStatus *string `json:"SubStatus,omitempty" xml:"SubStatus,omitempty"`
 }
 
 func (s ClusterState) String() string {

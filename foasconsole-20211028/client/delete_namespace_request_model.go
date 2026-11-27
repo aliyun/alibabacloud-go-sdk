@@ -18,7 +18,7 @@ type iDeleteNamespaceRequest interface {
 }
 
 type DeleteNamespaceRequest struct {
-	// The order instance ID.
+	// The instance ID of the order.
 	//
 	// This parameter is required.
 	//
@@ -26,7 +26,7 @@ type DeleteNamespaceRequest struct {
 	//
 	// f-cn-wwo36qj4g06
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The namespace name.
+	// The name of the namespace.
 	//
 	// This parameter is required.
 	//

@@ -18,7 +18,7 @@ type iGetFlinkAiServiceResponseBody interface {
 }
 
 type GetFlinkAiServiceResponseBody struct {
-	// The Flink AI service data transfer object.
+	// The data transfer object for the Flink AI service.
 	FlinkAiServiceDTO *GetFlinkAiServiceResponseBodyFlinkAiServiceDTO `json:"FlinkAiServiceDTO,omitempty" xml:"FlinkAiServiceDTO,omitempty" type:"Struct"`
 	// The request ID.
 	//
@@ -26,7 +26,7 @@ type GetFlinkAiServiceResponseBody struct {
 	//
 	// B21DC47E-8928-199A-9F32-36D45E4693B4
 	RequestId *string `json:"RequestId,omitempty" xml:"RequestId,omitempty"`
-	// Indicates whether the request was successful.
+	// Indicates whether the request is successful.
 	//
 	// example:
 	//
@@ -79,7 +79,7 @@ func (s *GetFlinkAiServiceResponseBody) Validate() error {
 }
 
 type GetFlinkAiServiceResponseBodyFlinkAiServiceDTO struct {
-	// Indicates whether deletion protection is enabled.
+	// Indicates whether release protection is enabled.
 	//
 	// example:
 	//
@@ -87,23 +87,23 @@ type GetFlinkAiServiceResponseBodyFlinkAiServiceDTO struct {
 	DeletionProtection *bool `json:"DeletionProtection,omitempty" xml:"DeletionProtection,omitempty"`
 	// The status of the Flink AI instance. Valid values:
 	//
-	// - CLOSED: closed or not activated.
+	// - CLOSED: Closed or not activated.
 	//
-	// - WAITING: waiting to be activated after payment.
+	// - WAITING: Waiting for activation after successful payment.
 	//
-	// - OPENING: being activated.
+	// - OPENING: Activating.
 	//
-	// - RUNNING: activated.
+	// - RUNNING: Activated.
 	//
-	// - CLOSING: being closed.
+	// - CLOSING: Closing.
 	//
-	// - DISABLE: overdue payment.
+	// - DISABLE: Overdue payment.
 	//
 	// example:
 	//
 	// CLOSED
 	FlinkAiInstanceStatus *string `json:"FlinkAiInstanceStatus,omitempty" xml:"FlinkAiInstanceStatus,omitempty"`
-	// The AI service order instance ID.
+	// The instance ID of the AI service order.
 	//
 	// example:
 	//
@@ -115,7 +115,7 @@ type GetFlinkAiServiceResponseBodyFlinkAiServiceDTO struct {
 	//
 	// cn-hangzhou
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	// The time when the AI service was activated, in timestamp format (milliseconds).
+	// The time when the AI service was activated, in the millisecond timestamp format.
 	//
 	// example:
 	//

@@ -28,17 +28,17 @@ type iModifyInstanceSpecShrinkRequest interface {
 }
 
 type ModifyInstanceSpecShrinkRequest struct {
-	// Specifies whether the workspace has zone-disaster recovery resources.
+	// Specifies whether the workspace has cross-zone high-availability resources.
 	//
 	// example:
 	//
 	// true
 	Ha *bool `json:"Ha,omitempty" xml:"Ha,omitempty"`
-	// The zone-disaster recovery resource specifications.
+	// The description of the cross-zone high-availability resources.
 	HaResourceSpecShrink *string `json:"HaResourceSpec,omitempty" xml:"HaResourceSpec,omitempty"`
-	// The vSwitch group in the secondary zone for zone-disaster recovery.
+	// The vSwitch group in the secondary zone for cross-zone high availability.
 	HaVSwitchIdsShrink *string `json:"HaVSwitchIds,omitempty" xml:"HaVSwitchIds,omitempty"`
-	// The order instance ID.
+	// The instance ID of the order.
 	//
 	// This parameter is required.
 	//

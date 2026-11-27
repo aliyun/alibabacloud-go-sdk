@@ -16,8 +16,14 @@ type iFlussVswitch interface {
 }
 
 type FlussVswitch struct {
+	// The list of vSwitch IDs in the zone.
 	VSwitchIds []*string `json:"VSwitchIds,omitempty" xml:"VSwitchIds,omitempty" type:"Repeated"`
-	ZoneId     *string   `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
+	// The ID of the zone to which the vSwitch belongs.
+	//
+	// example:
+	//
+	// cn-beijing-g
+	ZoneId *string `json:"ZoneId,omitempty" xml:"ZoneId,omitempty"`
 }
 
 func (s FlussVswitch) String() string {

@@ -22,15 +22,31 @@ type iFlussResourceSpec interface {
 }
 
 type FlussResourceSpec struct {
-	// Disk size per node, in GB.
+	// The disk capacity of a single TabletServer node, in GiB.
+	//
+	// example:
+	//
+	// 900
 	DiskSizeInGB *int64 `json:"DiskSizeInGB,omitempty" xml:"DiskSizeInGB,omitempty"`
-	// Instance type of the slave nodes.
+	// The node specifications of the TabletServer.
+	//
+	// example:
+	//
+	// 4 RCU
 	SlaveModel *string `json:"SlaveModel,omitempty" xml:"SlaveModel,omitempty"`
-	// Number of slave nodes.
+	// The number of TabletServer nodes.
+	//
+	// example:
+	//
+	// 3
 	SlaveNum *int64 `json:"SlaveNum,omitempty" xml:"SlaveNum,omitempty"`
-	// Number of CUs for the post-tiering stage.
+	// The maximum number of elastic compute resources for the lake-stream synchronization service, in CUs.
+	//
+	// example:
+	//
+	// 100
 	TieringPostCu *int64 `json:"TieringPostCu,omitempty" xml:"TieringPostCu,omitempty"`
-	// Number of compute units (CUs) for the pre-tiering stage.
+	// The baseline resource count of the lake-stream synchronization service, in CUs.
 	TieringPreCu *int64 `json:"TieringPreCu,omitempty" xml:"TieringPreCu,omitempty"`
 }
 

@@ -16,7 +16,7 @@ type iModifyAiServiceProtectionRequest interface {
 }
 
 type ModifyAiServiceProtectionRequest struct {
-	// Specifies whether to enable manual shutdown protection.
+	// Specifies whether to enable protection against manual shutdown operations.
 	//
 	// This parameter is required.
 	//
@@ -24,13 +24,13 @@ type ModifyAiServiceProtectionRequest struct {
 	//
 	// true
 	DeletionProtection *bool `json:"DeletionProtection,omitempty" xml:"DeletionProtection,omitempty"`
-	// The region ID.
+	// The region ID. It must match the region where the API endpoint is deployed.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
-	// cn-hangzhou
+	// cn-beijing
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
 }
 

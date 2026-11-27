@@ -26,7 +26,7 @@ type iModifyPrepayInstanceSpecShrinkRequest interface {
 }
 
 type ModifyPrepayInstanceSpecShrinkRequest struct {
-	// Specifies whether to enable zone-disaster recovery resources for the workspace.
+	// Specifies whether cross-zone high-availability resources are enabled for the workspace.
 	//
 	// if can be null:
 	// true
@@ -35,22 +35,26 @@ type ModifyPrepayInstanceSpecShrinkRequest struct {
 	//
 	// true
 	Ha *bool `json:"Ha,omitempty" xml:"Ha,omitempty"`
-	// The resource specifications for zone-disaster recovery.
+	// The resource specifications for cross-zone high availability.
 	//
 	// if can be null:
 	// true
 	HaResourceSpecShrink *string `json:"HaResourceSpec,omitempty" xml:"HaResourceSpec,omitempty"`
-	// The list of vSwitch IDs in the secondary zone for zone-disaster recovery.
+	// The list of vSwitch IDs in the secondary zone for cross-zone high availability.
 	//
 	// if can be null:
 	// true
 	HaVSwitchIdsShrink *string `json:"HaVSwitchIds,omitempty" xml:"HaVSwitchIds,omitempty"`
-	// The ID of the secondary zone for zone-disaster recovery.
+	// The ID of the secondary zone for cross-zone high availability.
 	//
 	// if can be null:
 	// true
+	//
+	// example:
+	//
+	// cn-hongkong-b
 	HaZoneId *string `json:"HaZoneId,omitempty" xml:"HaZoneId,omitempty"`
-	// The order instance ID.
+	// The instance ID of the order.
 	//
 	// This parameter is required.
 	//
@@ -66,7 +70,7 @@ type ModifyPrepayInstanceSpecShrinkRequest struct {
 	//
 	// cn-beijing
 	Region *string `json:"Region,omitempty" xml:"Region,omitempty"`
-	// The resource specification information.
+	// The resource specifications.
 	//
 	// This parameter is required.
 	ResourceSpecShrink *string `json:"ResourceSpec,omitempty" xml:"ResourceSpec,omitempty"`

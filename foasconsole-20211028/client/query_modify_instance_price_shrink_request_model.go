@@ -28,30 +28,35 @@ type iQueryModifyInstancePriceShrinkRequest interface {
 }
 
 type QueryModifyInstancePriceShrinkRequest struct {
-	// Specifies whether to select zone-disaster recovery resources.
+	// Specifies whether to select high-availability resources for zone-disaster recovery.
 	//
 	// example:
 	//
 	// true
 	Ha *bool `json:"Ha,omitempty" xml:"Ha,omitempty"`
-	// The zone-disaster recovery resource description.
+	// The description of high-availability resources for zone-disaster recovery.
 	//
 	// if can be null:
 	// true
 	HaResourceSpecShrink *string `json:"HaResourceSpec,omitempty" xml:"HaResourceSpec,omitempty"`
-	// The vSwitch group for the zone-disaster recovery secondary zone.
+	// The vSwitch group in the secondary zone for zone-disaster recovery.
 	//
 	// if can be null:
 	// true
 	HaVSwitchIdsShrink *string `json:"HaVSwitchIds,omitempty" xml:"HaVSwitchIds,omitempty"`
-	// The order instance ID.
+	// The instance ID of the order.
 	//
 	// This parameter is required.
 	//
 	// example:
 	//
 	// f-cn-wwo36qj4g06
-	InstanceId    *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
+	// The coupon code.
+	//
+	// example:
+	//
+	// 500043499350689
 	PromotionCode *string `json:"PromotionCode,omitempty" xml:"PromotionCode,omitempty"`
 	// The region ID.
 	//
@@ -65,7 +70,12 @@ type QueryModifyInstancePriceShrinkRequest struct {
 	//
 	// This parameter is required.
 	ResourceSpecShrink *string `json:"ResourceSpec,omitempty" xml:"ResourceSpec,omitempty"`
-	UsePromotionCode   *bool   `json:"UsePromotionCode,omitempty" xml:"UsePromotionCode,omitempty"`
+	// Specifies whether to use a coupon. Valid values:
+	//
+	// - true: Yes.
+	//
+	// - false: No.
+	UsePromotionCode *bool `json:"UsePromotionCode,omitempty" xml:"UsePromotionCode,omitempty"`
 }
 
 func (s QueryModifyInstancePriceShrinkRequest) String() string {

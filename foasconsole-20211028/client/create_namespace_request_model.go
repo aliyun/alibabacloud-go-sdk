@@ -22,6 +22,8 @@ type iCreateNamespaceRequest interface {
 }
 
 type CreateNamespaceRequest struct {
+	// Specifies whether to enable cross-zone high availability.
+	//
 	// if can be null:
 	// true
 	Ha *bool `json:"Ha,omitempty" xml:"Ha,omitempty"`
@@ -33,7 +35,7 @@ type CreateNamespaceRequest struct {
 	//
 	// f-cn-wwo36qj4g06
 	InstanceId *string `json:"InstanceId,omitempty" xml:"InstanceId,omitempty"`
-	// The namespace name.
+	// The name of the namespace.
 	//
 	// This parameter is required.
 	//
@@ -124,7 +126,7 @@ type CreateNamespaceRequestResourceSpec struct {
 	Cpu *int32 `json:"Cpu,omitempty" xml:"Cpu,omitempty"`
 	// The memory size. Unit: GB.
 	//
-	// > The memory size must be 4 times the number of CPUs.
+	// > The memory size must be four times the number of CPUs.
 	//
 	// example:
 	//
